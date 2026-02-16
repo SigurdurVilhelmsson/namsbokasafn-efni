@@ -1,0 +1,351 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Fyrstu hugmyndir í atómkenningunni</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68685</md:content-id>
+  <md:title>Early Ideas in Atomic Theory</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Sett fram kennisetningar
+atómkenningar Daltons</item><item>Notað kennisetningar
+atómkenningar Daltons til að útskýra lögmálið um föst massahlutföll og
+lögmálið um margföld massahlutföll</item></list></md:abstract>
+  <md:uuid>3c9c47d2-06f5-42b3-ba17-2248cc3dd7a9</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp22389648">Elstu skráðu umræðurnar um
+grunnbyggingu efnis koma frá forngrískum heimspekingum, vísindamönnum
+síns tíma. Á fimmtu öld f.Kr. héldu Levkippos og Demókrítos því fram að
+allt efni væri samsett úr litlum, afmörkuðum eindum sem þeir kölluðu
+<emphasis effect="italics">atomos</emphasis>, hugtak sem er dregið af gríska orðinu yfir „ódeilanlegt“. Þeir
+hugsuðu sér atóm sem eindir á hreyfingu sem væru mismunandi í lögun og
+stærð og gætu tengst saman. Seinna komust Aristóteles og aðrir að þeirri
+niðurstöðu að efni samanstæði af ýmsum samsetningum „frumefnanna“
+fjögurra – elds, jarðar, lofts og vatns – og væri hægt að skipta því
+óendanlega. Athyglisvert er að þessir heimspekingar hugsuðu um atóm og
+„frumefni“ sem heimspekileg hugtök, en íhuguðu greinilega aldrei að gera
+tilraunir til að prófa hugmyndir sínar.</para>
+<para id="fs-idp136823072">Sýn Aristótelesar á samsetningu
+efnis var ríkjandi í yfir tvö þúsund ár, þar til enski skólakennarinn
+John Dalton átti þátt í að gjörbylta efnafræðinni með tilgátu sinni um
+að hægt væri að útskýra hegðun efnis með atómkenningu. Margar af
+tilgátum Daltons um smásæja eiginleika efnis, sem fyrst voru birtar árið
+1807, gilda enn í nútíma atómkenningu. Hér eru kennisetningar
+<emphasis effect="bold">atómkenningar Daltons</emphasis>.</para>
+<list id="fs-idp28280144" list-type="enumerated" number-style="arabic">
+<item>Efni er samsett úr afar smáum
+eindum sem kallast atóm. <emphasis effect="bold">Atóm</emphasis> er minnsta eining frumefnis sem getur
+tekið þátt í efnabreytingu.</item>
+<item><emphasis effect="bold">Frumefni</emphasis> samanstendur af
+aðeins einni tegund atóma, sem hefur massa sem er einkennandi fyrir
+frumefnið og er sá sami fyrir öll atóm þess frumefnis (<link target-id="CNX_Chem_02_01_Dalton1"/>). Sýni
+af frumefni sem sést með berum augum inniheldur ótrúlega mikinn fjölda
+atóma, sem öll hafa sömu efnaeiginleika.</item>
+<item>Atóm eins frumefnis eru ólík í
+eiginleikum atómum allra annarra frumefna.</item>
+<item>Efnasamband samanstendur af
+atómum tveggja eða fleiri frumefna sem sameinast í litlu
+heiltöluhlutfalli. Í tilteknu efnasambandi er fjöldi atóma hvers
+frumefnis alltaf í sama hlutfalli (<link target-id="CNX_Chem_02_01_Dalton2"/>).</item>
+<item>Atóm verða hvorki til né
+eyðast við efnabreytingu, heldur endurraðast þau til að mynda efni sem
+eru frábrugðin þeim sem voru til staðar fyrir breytinguna (<link target-id="CNX_Chem_02_01_Dalton3"/>).</item>
+</list>
+<figure id="CNX_Chem_02_01_Dalton1" class="scaled-down">
+<media id="fs-idm67856816" alt="The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton1.jpg"/>
+</media>
+<caption>Koparpeningur frá
+því fyrir 1982 (til vinstri) inniheldur um það bil 3 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>
+10<sup>22</sup> koparatóm (nokkrir tugir eru sýndir sem brúnar kúlur til hægri),
+sem hvert um sig hefur sömu efnaeiginleika. (heimild: breyting á verki
+eftir „slgckgc“/Flickr)</caption>
+</figure>
+<figure id="CNX_Chem_02_01_Dalton2" class="scaled-down">
+<media id="fs-idp25149184" alt="The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton2.jpg"/>
+</media>
+<caption>Kopar(II)oxíð,
+duftkennt, svart efnasamband, verður til úr samsetningu tveggja tegunda
+atóma – kopars (brúnar kúlur) og súrefnis (rauðar kúlur) – í hlutfallinu
+1:1. (heimild: breyting á verki eftir „Chemicalinterest“/Wikimedia
+Commons)</caption>
+</figure>
+<figure id="CNX_Chem_02_01_Dalton3" class="scaled-down">
+<media id="fs-idm75378992" alt="The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton3.jpg"/>
+</media>
+<caption>Þegar frumefnin
+kopar (glansandi, rauðbrúnt fast efni, sýnt hér sem brúnar kúlur) og
+súrefni (tært og litlaust gas, sýnt hér sem rauðar kúlur) hvarfast,
+endurraðast atóm þeirra til að mynda efnasamband sem inniheldur kopar og
+súrefni (duftkennt, svart fast efni). (heimild kopar: breyting á verki
+eftir http://images-of-elements.com/copper.php)</caption>
+</figure>
+<para id="fs-idp64032864">Atómkenning Daltons gefur smásæja
+skýringu á mörgum af þeim stórsæju eiginleikum efnis sem þú hefur lært
+um. Til dæmis, ef frumefni eins og kopar samanstendur af aðeins einni
+tegund atóma, þá er ekki hægt að brjóta það niður í einfaldari efni, það
+er að segja í efni sem eru samsett úr færri tegundum atóma. Og ef atóm
+verða hvorki til né eyðast við efnabreytingu, þá helst heildarmassi
+efnis sem er til staðar þegar efni breytist úr einni tegund í aðra
+óbreyttur (lögmálið um varðveislu efnis).</para>
+<example id="fs-idp23171216">
+<para id="fs-idm69166560"><title>Prófun á atómkenningu
+Daltons</title>Á eftirfarandi teikningu tákna grænu
+kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm annars
+frumefnis. Ef kúlurnar snertast eru þær hluti af einni einingu
+efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum
+táknum, í bága við einhverjar af hugmyndum atómkenningar Daltons? Ef svo
+er, hverja?</para>
+<media id="fs-idp71137024" alt="This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton6_img.jpg"/>
+</media>
+<para id="fs-idm4192784"><title>Lausn</title>Hvarfefnin samanstanda af tveimur
+grænum kúlum og tveimur fjólubláum kúlum. Myndefnin samanstanda af
+aðeins einni grænni kúlu og einni fjólublárri kúlu. Þetta brýtur í bága
+við kennisetningu Daltons um að atóm verði hvorki til né eyðist við
+efnabreytingu, heldur sé þeim aðeins endurraðað. (Í þessu tilfelli
+virðist atómum hafa verið eytt.)</para>
+<para id="fs-idp39901584"><title>Prófaðu þekkingu þína</title>Á eftirfarandi teikningu tákna grænu
+kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm annars
+frumefnis. Ef kúlurnar snertast eru þær hluti af einni einingu
+efnasambands. Brýtur eftirfarandi efnahvarf, sem táknað er með þessum
+táknum, í bága við einhverja af hugmyndum atómkenningar Daltons? Ef svo
+er, hverja?</para>
+<media id="fs-idp149298560" alt="This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton8_img.jpg"/>
+</media>
+<note id="fs-idm55003792">
+<title>Answer:</title>
+<para id="fs-idp136824288">Hvarfefnin samanstanda af fjórum
+grænum kúlum og tveimur fjólubláum kúlum. Myndefnin samanstanda af
+fjórum grænum kúlum og tveimur fjólubláum kúlum. Þetta brýtur ekki í
+bága við neina af kenningum Daltons: Atóm verða hvorki til né eyðast,
+heldur endurraðast þau í litlum heiltöluhlutföllum.</para>
+</note>
+</example>
+<para id="fs-idp28034944">Dalton þekkti til tilrauna franska
+efnafræðingsins Joseph Proust, sem sýndi fram á að <emphasis effect="italics">öll sýni af hreinu
+efnasambandi innihalda sömu frumefnin í sömu massahlutföllum</emphasis>. Þessi
+staðhæfing er þekkt sem <emphasis effect="bold">lögmálið um föst hlutföll</emphasis> eða <emphasis effect="bold">lögmálið um
+fasta samsetningu</emphasis>. Sú tillaga að fjöldi atóma frumefnanna í tilteknu
+efnasambandi sé alltaf í sama hlutfalli er í samræmi við þessar
+athuganir. Til dæmis, þegar mismunandi sýni af ísóoktani (hluti af
+bensíni og einn af stöðlunum sem notaðir eru í oktanmatakerfinu) eru
+greind, kemur í ljós að þau hafa massahlutfall kolefnis á móti vetni sem
+er 5,33:1, eins og sýnt er í <link target-id="fs-idp114534448"/>.</para>
+<table id="fs-idp114534448" class="top-titled" summary="This table displays how much carbon and hydrogen are in samples A, B and C, as well as the mass ratio of each. Sample A contains 14.82 grams of carbon and 2.78 grams of hydrogen. Its mass ratio is, therefore, 14.82 grams of carbon over 2.78 grams of hydrogen. This ratio is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample B contains 22.33 grams of carbon and 4.19 grams of hydrogen. Its mass ratio is 22.3 grams of carbon over 4.19 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample C contains 19.40 grams of carbon and 3.64 grams of hydrogen. Its mass ratio is 19.40 grams of carbon over 3.63 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen.">
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c4" align="center">Föst samsetning ísóoktans</entry>
+</row>
+<row valign="top">
+<entry align="left">Sýni</entry><entry align="left">Kolefni</entry><entry align="left">Vetni</entry><entry align="left">Massahlutfall</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="center">A</entry><entry align="center">14,82 g</entry><entry align="center">2,78 g</entry><entry align="center"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>14.82 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>2.78 g hydrogen</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>5.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>1.00 g hydrogen</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry></row>
+<row valign="top">
+<entry align="center">B</entry><entry align="center">22,33 g</entry><entry align="center">4,19 g</entry><entry align="center"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>22.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>4.19 g hydrogen</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>5.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>1.00 g hydrogen</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry></row>
+<row valign="top">
+<entry align="center">C</entry><entry align="center">19,40 g</entry><entry align="center">3,64 g</entry><entry align="center"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>19.40 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>3.63 g hydrogen</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>5.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>1.00 g hydrogen</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry></row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp149501712">Rétt er að geta þess að þótt öll
+sýni af tilteknu efnasambandi hafi sama massahlutfall, þá er hið
+gagnstæða almennt ekki rétt. Það er að segja, sýni sem hafa sama
+massahlutfall eru ekki endilega sama efnið. Til dæmis eru mörg önnur
+efnasambönd en ísóoktan sem hafa einnig massahlutfall kolefnis á móti
+vetni sem er 5,33:1,00.</para>
+<para id="fs-idp113358288">Dalton notaði einnig gögn frá
+Proust, auk niðurstaðna úr eigin tilraunum, til að setja fram annað
+áhugavert lögmál. <emphasis effect="bold">Lögmálið um margfeldnishlutföll</emphasis> segir að <emphasis effect="italics">þegar
+tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur
+massi eins frumefnis hvarfast við massa hins frumefnisins í hlutfalli
+lítilla, heilla talna</emphasis>. Til dæmis geta kopar og klór myndað grænt,
+kristalkennt fastefni með massahlutfallinu 0,558 g af klór á móti 1 g af
+kopar, auk brúns kristalkennds fastefnis með massahlutfallinu 1,116 g af
+klór á móti 1 g af kopar. Þessi hlutföll í sjálfu sér virðast kannski
+ekki sérstaklega áhugaverð eða upplýsandi; hins vegar, ef við tökum
+hlutfall þessara hlutfalla, fáum við gagnlega og hugsanlega óvænta
+niðurstöðu: lítið heiltöluhlutfall.</para>
+<equation id="fs-idp92779296" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>1.116 g Cl</m:mtext></m:mrow><m:mrow><m:mtext>1 g Cu</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>0.558 g Cl</m:mtext></m:mrow><m:mrow><m:mtext>1 g Cu</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>2</m:mn><m:mn>1</m:mn></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp35032848">Þetta 2-á-móti-1 hlutfall þýðir að
+brúna efnasambandið hefur tvöfalt magn af klór á hvert magn af kopar
+miðað við græna efnasambandið.</para>
+<para id="fs-idm113441696">Þetta má útskýra með atómkenningunni
+ef hlutfall kopars og klórs í brúna efnasambandinu er 1 koparatóm á móti
+2 klóratómum og hlutfallið í græna efnasambandinu er 1 koparatóm á móti
+1 klóratómi. Hlutfall klóratóma (og þar með hlutfall massa þeirra) er
+því 2 á móti 1 (<link target-id="CNX_Chem_02_01_MultProp"/>).</para>
+<figure id="CNX_Chem_02_01_MultProp" class="scaled-down">
+<media id="fs-idp111881472" alt="Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_MultProp.jpg"/>
+</media>
+<caption>Í samanburði við
+koparklórsambandið í (a), þar sem kopar er táknaður með brúnum kúlum og
+klór með grænum kúlum, hefur koparklórsambandið í (b) tvöfalt fleiri
+klóratóm á hvert koparatóm. (heimild a: breyting á verki eftir
+„Benjah-bmm27“/Wikimedia Commons; heimild b: breyting á verki eftir
+„Walkerma“/Wikimedia Commons)</caption>
+</figure>
+<example id="fs-idp28025040">
+<para id="fs-idp31315072"><title>Lögmálið um föst
+massahlutföll og lögmálið um margföld massahlutföll</title>Sýni af efnasambandi A (glær, litlaus
+lofttegund) er greint og reynist innihalda 4,27 g af kolefni og 5,69 g
+af súrefni. Sýni af efnasambandi B (einnig glær, litlaus lofttegund) er
+greint og reynist innihalda 5,19 g af kolefni og 13,84 g af súrefni. Eru
+þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld
+massahlutföll eða hvorugt? Hvað segja þessi gögn þér um efnin A og B?</para>
+<para id="fs-idm71104640"><title>Lausn</title>Í efnasambandi A er massahlutfall
+súrefnis og kolefnis: <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></para><para id="fs-idp26443712">Í efnasambandi B er massahlutfall
+súrefnis og kolefnis: <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></para><para id="fs-idp25964592">Hlutfall þessara hlutfalla er:
+<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idm85625680">Þetta styður lögmálið um margföld
+massahlutföll. Þetta þýðir að A og B eru mismunandi efnasambönd, þar sem
+A hefur helmingi minna súrefni á móti magni kolefnis (eða tvöfalt meira
+kolefni á móti magni súrefnis) en B. Hugsanlegt par efnasambanda sem
+myndi passa við þetta samband væri A = CO og B = CO<sub>2</sub>.</para><para id="fs-idp13365184"><title>Prófaðu þekkingu þína</title>Sýni af efnasambandi X (glær,
+litlaus, eldfimur vökvi með áberandi lykt) er greint og reynist
+innihalda 14,13 g af kolefni og 2,96 g af vetni. Sýni af efnasambandi Y
+(glær, litlaus, eldfimur vökvi með áberandi lykt sem er örlítið
+frábrugðin lykt X) er greint og reynist innihalda 19,91 g af kolefni og
+3,34 g af vetni. Eru þessi gögn dæmi um lögmálið um föst massahlutföll,
+lögmálið um margföld massahlutföll eða hvorugt? Hvað segja þessi gögn
+þér um efnin X og Y?</para>
+<note id="fs-idp90686448">
+<title>Answer:</title>
+<para id="fs-idp130268400">Í efnasambandi X er massahlutfall
+kolefnis og vetnis <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Í efnasambandi Y er massahlutfall
+kolefnis og vetnis <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>19.91 g C</m:mtext></m:mrow><m:mrow><m:mtext>3.34 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Hlutfall þessara hlutfalla er
+<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>19.91 g C</m:mtext></m:mrow><m:mrow><m:mtext>3.34 g H</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>4.77 g C/g H</m:mtext></m:mrow><m:mrow><m:mtext>5.96 g C/g H</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.800</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>4</m:mn><m:mn>5</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Þetta litla heiltöluhlutfall styður lögmálið um margföld
+massahlutföll. Þetta þýðir að X og Y eru mismunandi efnasambönd.</para>
+</note>
+</example>
+<section id="fs-idp7570768" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm8092064">Forn-Grikkir lögðu til að efni
+samanstæði af afar smáum eindum sem kallast atóm. Dalton setti fram þá
+tilgátu að hvert frumefni hefði einkennandi gerð atóms sem væri
+frábrugðin í eiginleikum frá atómum allra annarra frumefna og að atóm
+mismunandi frumefna gætu sameinast í föstum, litlum heiltöluhlutföllum
+til að mynda efnasambönd. Sýni af tilteknu efnasambandi hafa öll sömu
+frumefnahlutföll miðað við massa. Þegar tvö frumefni mynda mismunandi
+efnasambönd mun tiltekinn massi af öðru frumefninu sameinast mössum hins
+frumefnisins í litlu heiltöluhlutfalli. Við efnabreytingar verða atóm
+hvorki til né eyðast.</para>
+</section>
+<section id="fs-idm51563888" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idp69222896">
+<problem id="fs-idm56556832">
+<para id="fs-idm80213408">Á eftirfarandi teikningu tákna
+grænu kúlurnar atóm af tilteknu frumefni. Fjólubláu kúlurnar tákna atóm
+af öðru frumefni. Ef kúlur mismunandi frumefna snertast eru þær hluti af
+einni einingu efnasambands. Eftirfarandi efnabreyting, sem táknuð er með
+þessum kúlum, gæti brotið í bága við eina af hugmyndum atómkenningar
+Daltons. Hverja?</para>
+<media id="fs-idp159684336" alt="This equation contains the starting materials of a single, green sphere plus two smaller, purple spheres bonded together. When the starting materials are added together the products of the change are one purple sphere bonded with one green sphere plus one purple sphere bonded with one green sphere." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton10_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idm51350640"><para id="fs-idp159650544">Hvarfefnin samanstanda af einni
+grænni kúlu og tveimur fjólubláum kúlum. Myndefnin samanstanda af
+tveimur grænum kúlum og tveimur fjólubláum kúlum. Þetta brýtur í bága
+við setningu Daltons um að atóm verði ekki til við efnabreytingu, heldur
+endurraðist aðeins.</para></solution>
+</exercise>
+<exercise id="fs-idp28065472">
+<problem id="fs-idp130270640">
+<para id="fs-idp88764640">Hvaða setning í kenningu Daltons
+er í samræmi við eftirfarandi athugun varðandi þyngd hvarfefna og
+myndefna? Þegar 100 grömm af föstu kalsíumkarbónati eru hituð myndast 44
+grömm af koldíoxíði og 56 grömm af kalsíumoxíði.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm83132240">
+<problem id="fs-idp124557504">
+<para id="fs-idm69044608">Tilgreindu hvaða setningu í
+kenningu Daltons er brotin með eftirfarandi athugunum: 59,95% af einu
+sýni af títantvíoxíði er títan; 60,10% af öðru sýni af títantvíoxíði er
+títan.</para>
+</problem>
+<solution id="fs-idp140553984"><para id="fs-idp110196432">Þessi staðhæfing brýtur í bága
+við fjórðu setningu Daltons: Í tilteknu efnasambandi hefur fjöldi atóma
+af hverri gerð (og þar með einnig prósentuhlutfallið) alltaf sama
+hlutfall.</para></solution>
+</exercise>
+<exercise id="fs-idp146757152">
+<problem id="fs-idm73587216">
+<para id="fs-idp38338048">Sýni af efnasamböndum X, Y og Z
+eru greind og niðurstöðurnar eru sýndar hér.</para>
+<!-- table handled separately -->
+<para id="fs-idm32094368">Eru þessi gögn dæmi um lögmálið um
+föst efnahlutföll, lögmálið um margföld efnahlutföll, hvorugt eða bæði?
+Hvað segja þessi gögn þér um efnasamböndin X, Y og Z?</para>
+</problem>
+</exercise>
+<table id="fs-idp22296752" class="unnumbered" summary="This table has a “description” column, a “mass of carbon” column, and a “mass of hydrogen” column for compounds X, Y and Z. Compound X is a clear, colorless liquid with a strong odor. Its mass of carbon is 1.776 grams, and its mass of hydrogen is 0.148 grams. Compound Y is also a clear, colorless liquid with a strong odor. Its mass of carbon is 1.974 grams, and its mass of hydrogen is 0.329 grams. Compound Z is also a clear, colorless liquid with a strong odor. Its mass of carbon is 7.812 grams and its mass of hydrogen is 0.651 g.">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Efnasamband</entry><entry align="center">Lýsing</entry><entry align="center">Massi kolefnis</entry><entry align="center">Massi vetnis</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">X</entry><entry align="center">tær, litlaus vökvi með sterkri lykt</entry><entry align="center">1,776 g</entry><entry align="center">0,148 g</entry>
+</row>
+<row valign="top">
+<entry align="left">Y</entry><entry align="center">tær, litlaus vökvi með sterkri lykt</entry><entry align="center">1,974 g</entry><entry align="center">0,329 g</entry>
+</row>
+<row valign="top">
+<entry align="left">Z</entry><entry align="center">tær, litlaus vökvi með sterkri lykt</entry><entry align="center">7,812 g</entry><entry align="center">0,651 g</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp110829184">
+<term>Atómkenning Daltons</term>
+<meaning id="fs-idp110829184-meaning">safn fullyrðinga sem
+settu fram grundvallareiginleika atóma</meaning>
+</definition>
+<definition id="fs-idm56716560">
+<term>lögmálið um fasta
+efnasamsetningu</term>
+<meaning id="fs-idm56716560-meaning">(einnig, lögmálið um föst
+efnahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í
+sömu hlutföllum miðað við massa</meaning>
+</definition>
+<definition id="fs-idp76336256">
+<term>lögmálið um föst
+efnahlutföll</term>
+<meaning id="fs-idp76336256-meaning">(einnig, lögmálið um
+fasta efnasamsetningu) öll sýni af hreinu efnasambandi innihalda sömu
+frumefnin í sömu hlutföllum miðað við massa</meaning>
+</definition>
+<definition id="fs-idp47442976">
+<term>lögmálið um margföld
+efnahlutföll</term>
+<meaning id="fs-idp47442976-meaning">þegar tvö frumefni
+hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu
+frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla
+talna</meaning>
+</definition>
+</glossary>
+</document>

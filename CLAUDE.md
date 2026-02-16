@@ -203,8 +203,9 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Phase 9: Close the Write Gap** — Apply approved segment edits to `03-faithful-translation/` files so the inject→render pipeline has input. This unblocks the faithful publication track.
+**Phase 10: Publication Migration** — Replace `publicationService.js` markdown assembly with HTML pipeline output. The three tracks (mt-preview, faithful, localized) use inject→render instead of chapter-assembler.
 
-See [ROADMAP.md](ROADMAP.md) Phase 9 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
+See [ROADMAP.md](ROADMAP.md) Phase 10 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
 
+**Phase 9 Status:** COMPLETE (2026-02-16) — Faithful track initialized and rendered for 8 chapters + appendices.
 **Phase 8 Status:** COMPLETE (2026-02-05) — Editor rebuild for CNXML→HTML pipeline delivered.

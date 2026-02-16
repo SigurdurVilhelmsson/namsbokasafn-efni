@@ -1,0 +1,725 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Mælingar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68674</md:content-id>
+  <md:title>Measurements</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla
+getur þú:</para><list id="list-00001"><item>Útskýrt ferlið við mælingar</item><item>Greint þrjá
+grundvallarþætti stærðar</item><item>Lýst eiginleikum og
+einingum lengdar, massa, rúmmáls, eðlismassa, hitastigs og tíma</item><item>Framkvæmt einfalda
+einingaútreikninga og umreikninga í metrakerfinu og öðrum einingakerfum</item></list></md:abstract>
+  <md:uuid>8f4e1efc-5485-4cd0-b213-d33c9be94310</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm75764096">Mælingar veita stóran hluta þeirra
+upplýsinga sem liggja til grundvallar tilgátum, kenningum og lögmálum
+sem lýsa hegðun efnis og orku bæði á stórsæju og smásæju sviði
+efnafræðinnar. Hver mæling veitir þrenns konar upplýsingar: stærð eða
+umfang mælingarinnar (tölu), samanburðarstaðal fyrir mælinguna (einingu)
+og vísbendingu um óvissu mælingarinnar. Þó að talan og einingin séu
+skýrt táknuð þegar stærð er skrifuð er óvissan þáttur í niðurstöðu
+mælingarinnar sem er táknaður á óbeinan hátt og verður ræddur síðar.</para>
+<para id="fs-idm128012432">Talan í mælingunni getur verið
+táknuð á mismunandi vegu, þar á meðal með tugabrotum og á staðalformi.
+(Staðalform er einnig þekkt sem veldisvísirform; yfirlit yfir þetta efni
+er að finna í B-viðauka.) Til dæmis er hámarksflugtaksmassi Boeing
+777-200ER farþegaþotu 298.000 kílógrömm, sem einnig má skrifa sem 2,98
+<m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> kg. Massi meðalmoskítóflugunnar er um 0,0000025
+kílógrömm, sem má skrifa sem 2,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> kg.</para>
+<para id="fs-idp178656"><emphasis effect="bold">Einingar</emphasis>, eins og lítrar, pund og
+sentimetrar, eru samanburðarstaðlar fyrir mælingar. Tveggja lítra
+gosflaska inniheldur tvöfalt meira rúmmál af drykk en viðurkennt rúmmál
+eins lítra. Kjötið sem notað er til að útbúa 0,25 punda hamborgara vegur
+fjórðung af viðurkenndri þyngd eins punds. Án eininga getur tala verið
+merkingarlaus, ruglingsleg eða jafnvel lífshættuleg. Segjum sem svo að
+læknir ávísi fenobarbitali til að stjórna flogum sjúklings og tilgreini
+skammtinn „100“ án þess að tilgreina einingar. Þetta er ekki aðeins
+ruglingslegt fyrir heilbrigðisstarfsmanninn sem gefur skammtinn, heldur
+geta afleiðingarnar verið skelfilegar: 100 mg gefin þrisvar á dag geta
+verið áhrifarík sem krampaleysandi lyf, en stakur skammtur af 100 g er
+meira en 10 sinnum banvænn skammtur.</para>
+<para id="fs-idm144392592">Mælieiningar fyrir sjö
+grundvallareiginleika („grunneiningar“) eru taldar upp í <link target-id="fs-idm81346144"/>.
+Staðlarnir fyrir þessar einingar eru fastsettir með alþjóðasamningi og
+þær eru kallaðar <emphasis effect="bold">Alþjóðlega einingakerfið</emphasis> eða <emphasis effect="bold">SI-einingar</emphasis> (úr
+frönsku, <emphasis effect="italics">Le Système International d’Unités</emphasis>). SI-einingar hafa verið
+notaðar af National Institute of Standards and Technology (NIST) í
+Bandaríkjunum síðan 1964. Einingar fyrir aðra eiginleika má leiða af
+þessum sjö grunneiningum.</para>
+<table id="fs-idm81346144" class="top-titled" summary="Length is measured with the meter, which is symbolized using a lowercase M. Mass is measured with the kilogram which is symbolized with a lowercase K G. Time is measured with the second, which is symbolized with a lowercase S. Temperature is measured with the kelvin which is symbolized with an uppercase K. Electric current is measured with the ampere which is symbolized with an uppercase A. The amount of a substance is measured with the mole, which is symbolized with the lowercase letters, M O L. Luminous intensity is measured with the candela, which is symbolized with the lowercase letters C D.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Grunneiningar SI-kerfisins</entry>
+</row>
+<row valign="top">
+<entry align="left">Mældur eiginleiki</entry>
+<entry align="left">Heiti einingar</entry>
+<entry align="left">Tákn einingar</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">lengd</entry>
+<entry align="left">metri</entry>
+<entry align="left">m</entry>
+</row>
+<row valign="top">
+<entry align="left">massi</entry>
+<entry align="left">kílógramm</entry>
+<entry align="left">kg</entry>
+</row>
+<row valign="top">
+<entry align="left">tími</entry>
+<entry align="left">sekúnda</entry>
+<entry align="left">s</entry>
+</row>
+<row valign="top">
+<entry align="left">hitastig</entry>
+<entry align="left">kelvin</entry>
+<entry align="left">K</entry>
+</row>
+<row valign="top">
+<entry align="left">rafstraumur</entry>
+<entry align="left">amper</entry>
+<entry align="left">A</entry>
+</row>
+<row valign="top">
+<entry align="left">efnismagn</entry>
+<entry align="left">mól</entry>
+<entry align="left">mol</entry>
+</row>
+<row valign="top">
+<entry align="left">ljósstyrkur</entry>
+<entry align="left">kandela</entry>
+<entry align="left">cd</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="eip-134">Daglegar mælieiningar eru oft skilgreindar
+sem brot eða margfeldi af öðrum einingum
+
+. Mjólk er venjulega pakkað í ílát sem eru 1 gallon (4 kvart), 1 kvart
+(0,25 gallon) og einn pinti (0,5 kvart). Sama aðferð er notuð með
+SI-einingum, en þessi brot eða margfeldi eru alltaf veldi af 10. Brot
+eða margfeldi SI-eininga eru nefnd með forskeyti og nafni
+grunneiningarinnar. Til dæmis er lengd upp á 1000 metra einnig kölluð
+kílómetri vegna þess að forskeytið <emphasis effect="italics">kíló</emphasis> þýðir „eitt þúsund“, sem í
+vísindalegu rithætti er 10<sup>3</sup> (1 kílómetri = 1000 m = 10<sup>3</sup> m).
+Forskeytin sem notuð eru og veldin sem 10 er hafið í eru talin upp í
+<link target-id="fs-idm81128320"/>.</para>
+<table id="fs-idm81128320" class="top-titled" summary="The prefix femto has the symbol lowercase f and a factor of 10 to the negative fifteenth power. Therefore, 1 femtosecond, F S, is equal to 1 times 10 to the negative 15 of a meter, or 0.000000000001 of a meter. The prefix pico has the symbol lowercase P and a factor of 10 to the negative twelfth power. Therefore, 1 picosecond, P S, is equal to 1 times 10 to the negative 12 of a meter, or 0.000000000001 of a meter. The prefix nano has the symbol lowercase N and a factor of 10 to the negative ninth power. Therefore, 4 nanograms, or NG, equals 4 times ten to the negative 9, or 0.000000004 g. The prefix micro has the greek letter mu as its symbol and a factor of 10 to the negative sixth power. Therefore, 1 microliter, or mu L, is equal to one times ten to the negative 6 or 0.000001 L. The prefix milli has a lowercase M as its symbol and a factor of 10 to the negative third power. Therefore, 2 millimoles, or M mol, are equal to two times ten to the negative 3 or 0.002 mol. The prefix centi has a lowercase C as its symbol and a factor of 10 to the negative second power. Therefore, 7 centimeters, or C M, are equal to seven times ten to the negative 2 meters or 0.07 M O L. The prefix deci has a lowercase D as its symbol and a factor of 10 to the negative first power. Therefore, 1 deciliter, or lowercase D uppercase L, are equal to one times ten to the negative 1 meters or 0.1 L. The prefix kilo has a lowercase K as its symbol and a factor of 10 to the third power. Therefore, 1 kilometer, or K M, is equal to one times ten to the third meters or 1000 M. The prefix mega has an uppercase M as its symbol and a factor of 10 to the sixth power. Therefore, 3 megahertz, or M H Z, are equal to three times 10 to the sixth hertz, or 3000000 H Z. The prefix giga has an uppercase G as its symbol and a factor of 10 to the ninth power. Therefore, 8 gigayears, or G Y R, are equal to eight times 10 to the ninth years, or 800000000 G Y R. The prefix tera has an uppercase T as its symbol and a factor of 10 to the twelfth power. Therefore, 5 terawatts, or T W, are equal to five times 10 to the twelfth watts, or 5000000000000 W."><tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c4" align="center">Algeng forskeyti eininga</entry>
+</row>
+<row valign="top">
+<entry align="left">Forskeyti</entry>
+<entry align="left">Tákn</entry>
+<entry align="left">Þáttur</entry>
+<entry align="left">Dæmi</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">femtó</entry>
+<entry align="left">f</entry>
+<entry align="left">10<sup>−15</sup></entry>
+<entry align="left">1 femtósekúnda (fs) = 1 <m:math><m:mo>×</m:mo></m:math>
+10<sup>−15</sup> s (0,000000000000001 s)</entry>
+</row>
+<row valign="top">
+<entry align="left">píkó</entry>
+<entry align="left">p</entry>
+<entry align="left">10<sup>−12</sup></entry>
+<entry align="left">1 píkómetri (pm) = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−12</sup>
+m (0,000000000001 m)</entry>
+</row>
+<row valign="top">
+<entry align="left">nanó</entry>
+<entry align="left">n</entry>
+<entry align="left">10<sup>−9</sup></entry>
+<entry align="left">4 nanógrömm (ng) = 4 <m:math><m:mo>×</m:mo></m:math> 10<sup>−9</sup>
+g (0,000000004 g)</entry>
+</row>
+<row valign="top">
+<entry align="left">míkró</entry>
+<entry align="left">µ</entry>
+<entry align="left">10<sup>−6</sup></entry>
+<entry align="left">1 míkrólítri (αL) = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup>
+L (0,000001 L)</entry>
+</row>
+<row valign="top">
+<entry align="left">millí</entry>
+<entry align="left">m</entry>
+<entry align="left">10<sup>−3</sup></entry>
+<entry align="left">2 millímól (mmol) = 2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup>
+mól (0,002 mól)</entry>
+</row>
+<row valign="top">
+<entry align="left">sentí</entry>
+<entry align="left">c</entry>
+<entry align="left">10<sup>−2</sup></entry>
+<entry align="left">7 sentímetrar (cm) = 7 <m:math><m:mo>×</m:mo></m:math>
+10<sup>−2</sup> m (0,07 m)</entry>
+</row>
+<row valign="top">
+<entry align="left">desí</entry>
+<entry align="left">d</entry>
+<entry align="left">10<sup>−1</sup></entry>
+<entry align="left">1 desilítri (dL) = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−1</sup>
+L (0.1 L)</entry>
+</row>
+<row valign="top">
+<entry align="left">kíló</entry>
+<entry align="left">k</entry>
+<entry align="left">10<sup>3</sup></entry>
+<entry align="left">1 kílómetri (km) = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup>
+m (1000 m)</entry>
+</row>
+<row valign="top">
+<entry align="left">mega</entry>
+<entry align="left">M</entry>
+<entry align="left">10<sup>6</sup></entry>
+<entry align="left">3 megahertz (MHz) = 3 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup>
+Hz (3.000.000 Hz)</entry>
+</row>
+<row valign="top">
+<entry align="left">gíga</entry>
+<entry align="left">G</entry>
+<entry align="left">10<sup>9</sup></entry>
+<entry align="left">8 gígaár (Gyr) = 8 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> ár
+(8.000.000.000 ár)</entry>
+</row>
+<row valign="top">
+<entry align="left">tera</entry>
+<entry align="left">T</entry>
+<entry align="left">10<sup>12</sup></entry>
+<entry align="left">5 teravött (TW) = 5 <m:math><m:mo>×</m:mo></m:math> 10<sup>12</sup>
+W (5.000.000.000.000 W)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<note id="fs-idp86805728" class="chemistry link-to-learning">
+<para id="fs-idm169361696">Þarftu upprifjun eða meiri æfingu
+með staðalform? Farðu á þessa <link url="http://openstax.org/l/16notation">síðu</link> til að fara yfir
+grunnatriði staðalforms.</para>
+</note>
+<section id="fs-idp25374912">
+<title>Grunneiningar SI-kerfisins</title>
+<section id="fs-idp679312">
+<title>Lengd</title>
+<para id="fs-idm64613648">Staðaleining <emphasis effect="bold">lengdar</emphasis> í bæði
+SI-kerfinu og upprunalega metrakerfinu er <emphasis effect="bold">metri (m)</emphasis>. Metri var
+upphaflega skilgreindur sem 1/10.000.000 af vegalengdinni frá
+norðurpólnum að miðbaug. Hann er nú skilgreindur sem vegalengdin sem
+ljós fer í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum
+lengri en stika (<link target-id="CNX_Chem_01_04_MYdCmIn"/>); einn metri er um 39,37 tommur eða 1,094
+stikur. Lengri vegalengdir eru oft gefnar upp í kílómetrum (1 km = 1000
+m = 10<sup>3</sup> m), en styttri vegalengdir má gefa upp í sentímetrum (1 cm =
+0,01 m = 10<sup>−2</sup> m) eða millímetrum (1 mm = 0,001 m = 10<sup>−3</sup> m).</para>
+<figure id="CNX_Chem_01_04_MYdCmIn" class="scaled-down">
+<media id="fs-idm2958720" alt="One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_MYdCmIn.jpg"/>
+</media>
+<caption>Hlutfallslegar
+lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru sýndar (ekki í raunstærð),
+ásamt samanburði á 2,54 cm og 1 tommu, og 1 m og 1,094 stikum.</caption>
+</figure>
+</section>
+<section id="fs-idm1313360">
+<title>Massi</title>
+<para id="fs-idp222999216">Staðaleining massa í SI-kerfinu er
+<emphasis effect="bold">kílógramm (kg)</emphasis>. Kílógrammið var áður skilgreint af Alþjóðasamtökunum
+um hreina og hagnýta efnafræði (<emphasis effect="bold">IUPAC</emphasis>) sem massi tiltekins
+viðmiðunarhlutar. Þessi hlutur var upphaflega einn lítri af hreinu
+vatni, en síðar var það málmhólkur úr platínu-iridíum-melmi með hæð og
+þvermál 39 mm (<link target-id="CNX_Chem_01_04_Kilogram"/>). Í maí 2019 var þessari skilgreiningu breytt
+í skilgreiningu sem byggir þess í stað á nákvæmlega mældum gildum
+nokkurra grundvallareðlisfræðilegra fasta.<footnote>Nánari
+upplýsingar má finna á
+https://www.nist.gov/pml/weights-and-measures/si-units-mass</footnote>. Eitt
+kílógramm er um 2,2 pund. Grammið (g) er nákvæmlega jafnt og 1/1000 af
+massa kílógrammsins (10<sup>−3</sup> kg).</para>
+<figure id="CNX_Chem_01_04_Kilogram" class="scaled-down"><media id="fs-idm80189648" alt="The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_Kilogram.jpg"/>
+</media>
+
+<caption>Þessi eftirmynd
+af frumgerð kílógrammsins eins og það var áður skilgreint er geymd hjá
+National Institute of Standards and Technology (NIST) í Maryland.
+(heimild: National Institutes of Standards and Technology)</caption></figure>
+</section>
+<section id="fs-idm1531808">
+<title>Hitastig</title>
+<para id="fs-idp3379184">Hitastig er ástandseiginleiki.
+SI-eining hitastigs er <emphasis effect="bold">kelvin (K)</emphasis>. Samkvæmt venju IUPAC er notað
+kelvin (með litlum staf) fyrir orðið, K (hástafur) fyrir tákn
+einingarinnar, og hvorki orðið „gráða“ né gráðumerkið (°).
+<emphasis effect="bold">Selsíusgráða (°C)</emphasis> er einnig leyfð í SI-kerfinu, þar sem bæði orðið
+„gráða“ og gráðumerkið eru notuð fyrir selsíusmælingar. Selsíusgráður
+eru jafnstórar kelvingráðum, en kvarðarnir tveir setja núllpunkt sinn á
+mismunandi staði. Vatn frýs við 273,15 K (0 °C) og sýður við 373,15 K
+(100 °C), og eðlilegur líkamshiti manns er um það bil 310 K (37 °C).
+Fjallað verður um umbreytingu milli þessara tveggja eininga og
+Fahrenheit-kvarðans síðar í þessum kafla.</para>
+</section>
+<section id="fs-idm101578432">
+<title>Tími</title>
+<para id="fs-idm101738864">Grunneining SI-kerfisins fyrir tíma
+er <emphasis effect="bold">sekúnda (s)</emphasis>. Hægt er að tákna lítil og stór tímabil með
+viðeigandi forskeiti; til dæmis, 3 míkrósekúndur = 0,000003 s = 3
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> og 5 megasekúndur = 5.000.000 s = 5
+<m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> s. Einnig er hægt að nota klukkustundir, daga og
+ár.</para>
+</section>
+<para id="fs-idp389936">Upprunalegu einingar metrakerfisins,
+sem þróaðist síðar yfir í SI-kerfið, voru stofnaðar í Frakklandi í
+frönsku byltingunni. Upprunalegu staðlarnir fyrir metra og kílógramm
+voru teknir upp þar árið 1799 og síðar af öðrum löndum. Í þessum kafla
+eru kynntar fjórar af grunneiningum SI-kerfisins sem eru almennt notaðar
+í efnafræði. Aðrar SI-einingar verða kynntar í síðari köflum.</para>
+</section>
+<section id="fs-idm23668768">
+<title>Afleiddar SI-einingar</title>
+<section id="fs-idm16046736">
+<title>Rúmmál</title>
+<para id="fs-idm77137776"><emphasis effect="bold">Rúmmál</emphasis> er mælikvarði á það rými
+sem hlutur tekur. Staðlaða SI-eining rúmmáls er skilgreind með
+grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðalrúmmálið er <emphasis effect="bold">rúmmetri (m3)</emphasis>,
+teningur með brúnlengd nákvæmlega einn metra. Til að skammta einn
+rúmmetra af vatni gætum við smíðað teningslaga kassa með brúnlengd
+nákvæmlega einn metra. Þessi kassi myndi rúma einn rúmmetra af vatni eða
+einhverju öðru efni.</para>
+<para id="fs-idm81813264">Algengari eining rúmmáls er dregin af
+desímetranum (0.1 m, eða 10 cm). Teningur með hliðarlengd upp á
+nákvæmlega einn desimetra hefur rúmmál upp á einn rúmdesimetra (dm<sup>3</sup>).
+<term>Lítri (L)</term> er algengara heiti yfir rúmdesimetra. Einn lítri er um
+það bil 1,06 kvartar.</para>
+<para id="fs-idm163691744"><emphasis effect="bold">Rúmsentimetri (cm3)</emphasis> er rúmmál
+tenings með hliðarlengd upp á nákvæmlega einn sentimetra. Skammstöfunin
+<emphasis effect="bold">cc</emphasis> (úr ensku <emphasis effect="bold">c</emphasis>ubic <emphasis effect="bold">c</emphasis>entimeter) er oft notuð af
+heilbrigðisstarfsfólki. Rúmsentimetri jafngildir <emphasis effect="bold">millilítra (mL)</emphasis> og
+er 1/1000 úr lítra.</para>
+<figure id="CNX_Chem_01_04_Volume" class="scaled-down">
+<media id="fs-idm75233216" alt="Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_Volume.jpg"/>
+</media>
+<caption>(a) Hlutfallslegt
+rúmmál er sýnt fyrir teninga sem eru 1 m<sup>3</sup>, 1 dm<sup>3</sup> (1 L) og 1 cm<sup>3</sup> (1
+mL) (ekki í réttum hlutföllum). (b) Þvermál tíu senta Bandaríkjadals er
+borið saman við hliðarlengd 1 cm<sup>3</sup> (1 mL) tenings.</caption>
+</figure>
+</section>
+<section id="fs-idm18447104">
+<title>Eðlismassi</title>
+<para id="fs-idp205372288">Við notum massa og rúmmál efnis til
+að ákvarða eðlismassa þess. Þannig eru einingar eðlismassa skilgreindar
+út frá grunneiningum massa og lengdar.</para>
+<para id="fs-idm74744496"><emphasis effect="bold">Eðlismassi</emphasis> efnis er hlutfallið
+milli massa sýnis af efninu og rúmmáls þess. SI-einingin fyrir
+eðlismassa er kílógramm á rúmmetra (kg/m<sup>3</sup>). Í mörgum tilfellum er
+þetta þó óhentug eining og við notum oft grömm á rúmsentimetra (g/cm<sup>3</sup>)
+fyrir eðlismassa fastra efna og vökva, og grömm á lítra (g/L) fyrir gös.
+Þótt undantekningar séu til hafa flestir vökvar og föst efni eðlismassa
+á bilinu frá um 0,7 g/cm<sup>3</sup> (eðlismassi bensíns) til 19 g/cm<sup>3</sup>
+(eðlismassi gulls). Eðlismassi lofts er um 1,2 g/L. <link target-id="fs-idm45639696"/> sýnir
+eðlismassa nokkurra algengra efna.</para>
+<table id="fs-idm45639696" class="top-titled" summary="This table reports the density of solids, liquids, and gases in grams per centimeters cubed. The values for solids are ice 0.92, oak wood 0.60 to 0.90, iron 7.9, copper 9.0, lead 11.3, silver 10.5, and gold 19.3. The values for liquids are water 1.0, ethanol 0.79, acetone 0.79, glycerin 1.26, olive oil 0.92, gasoline 0.70 to 0.77, and Mercury 13.6. The values for gases, which were measured when the gas was at 25 degrees Celsius and 1 atmosphere, are dry air 1.20, oxygen 1.31, nitrogen 1.14, carbon dioxide 1.80, helium 0.16, neon 0.83, and radon 9.1.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Densities of Common Substances</entry>
+</row>
+<row valign="top">
+<entry align="left">Solids</entry>
+<entry align="left">Liquids</entry>
+<entry align="left">Gases (at 25 °C and 1 atm)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">ice (at 0 °C) 0.92 g/cm<sup>3</sup></entry>
+<entry align="left">water 1.0 g/cm<sup>3</sup></entry>
+<entry align="left">dry air 1.20 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">oak (wood) 0.60–0.90 g/cm<sup>3</sup></entry>
+<entry align="left">ethanol 0.79 g/cm<sup>3</sup></entry>
+<entry align="left">oxygen 1.31 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">Eðlismassi algengra efna</entry>
+<entry align="left">Föst efni</entry>
+<entry align="left">Vökvar</entry>
+</row>
+<row valign="top">
+<entry align="left">Gös (við 25 °C og 1 atm)</entry>
+<entry align="left">ís (við 0 °C) 0,92 g/cm<sup>3</sup></entry>
+<entry align="left">vatn 1,0 g/cm<sup>3</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">þurrt loft 1,20 g/L</entry>
+<entry align="left">eik (viður) 0,60–0,90 g/cm<sup>3</sup></entry>
+<entry align="left">etanól 0,79 g/cm<sup>3</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">súrefni 1,31 g/L</entry>
+<entry align="left">járn 7,9 g/cm<sup>3</sup></entry>
+<entry align="left">asetón 0,79 g/cm<sup>3</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">nitur 1,14 g/L</entry>
+<entry align="left">kopar 9,0 g/cm<sup>3</sup></entry>
+<entry align="left">glýserín 1,26 g/cm<sup>3</sup></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm81523280">Þótt til séu margar leiðir til að
+ákvarða eðlismassa hlutar er einfaldasta aðferðin líklega sú að finna
+massa og rúmmál hlutarins hvort í sínu lagi og deila síðan massa
+sýnisins með rúmmáli þess. Í eftirfarandi dæmi er massi hlutarins mældur
+með vog en rúmmál hans er reiknað út rúmfræðilega út frá
+lengdarmælingum.</para>
+<equation id="fs-idm166517584" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
+</section>
+<para id="fs-idm10854912">Við getum leitt margar einingar af
+sjö grunnstærðum SI-kerfisins. Til dæmis getum við notað grunneiningu
+lengdar til að skilgreina einingu fyrir rúmmál og grunneiningar massa og
+lengdar til að skilgreina einingu fyrir eðlismassa.</para>
+<example id="Example_01_04_01">
+<para id="fs-idm112138272"><title>Útreikningur á
+eðlismassa</title>Gull – í formi hleifa, stanga og
+myntar – hefur verið gjaldmiðill um aldir. Til að svindla á fólki og fá
+það til að borga fyrir gullhleif án þess að fjárfesta í raunverulegum
+gullhleif hefur fólk íhugað að fylla holan gullhleif með blýi til að
+blekkja kaupendur til að halda að allur hleifurinn sé úr gulli. Það
+virkar ekki: Blý er þétt efni en eðlismassi þess er ekki jafn mikill og
+eðlismassi gulls, 19,3 g/cm<sup>3</sup>. Hver er eðlismassi blýs ef teningur úr
+blýi hefur hliðarlengdina 2,00 cm og massa upp á 90,7 g?</para>
+<para id="fs-idp40298832"><title>Lausn</title>Hægt er að reikna út eðlismassa efnis
+með því að deila massa þess með rúmmáli þess. Rúmmál tenings er reiknað
+út með því að hefja hliðarlengdina upp í þriðja veldi.</para>
+<equation id="fs-idm163080256" class="unnumbered"><m:math><m:mrow><m:mtext>volume of lead cube</m:mtext><m:mo>=</m:mo><m:mn>2.00 cm</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2.00 cm</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2.00 cm</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<equation id="fs-idm193550528" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>90.7 g</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>11.3 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation><para id="fs-idp264752">(Við munum ræða ástæðuna fyrir því að
+námunda að fyrsta aukastaf í næsta kafla.)</para>
+<para id="fs-idp2742064"><title>Prófaðu þekkingu þína</title>(a) Hvert er rúmmál tenings (cm<sup>3</sup>)
+með brúnarlengd 0,843 cm, með þremur aukastöfum?</para>
+<para id="fs-idp116749488">(b) Ef teningurinn í hluta (a) er úr
+kopar og hefur massa 5,34 g, hver er eðlismassi kopars með tveimur
+aukastöfum?</para>
+<note id="fs-idp2744272">
+<title>Answer:</title>
+<para id="fs-idp2744784">(a) 0,599 cm<sup>3</sup>; (b) 8,91 g/cm<sup>3</sup></para>
+</note>
+</example>
+<note id="fs-idm83823632" class="chemistry link-to-learning">
+<para id="fs-idm108028240">Til að læra meira um sambandið milli
+massa, rúmmáls og eðlismassa skaltu nota þennan <link url="http://openstax.org/l/16phetmasvolden">gagnvirka
+hermi</link> til að kanna eðlismassa mismunandi efna.</para>
+</note>
+<example id="Example_01_04_02">
+<para id="fs-idm108240880"><title>Notkun vatnsrýmdar
+til að ákvarða eðlismassa</title>Þessi æfing notar
+<link url="http://openstax.org/l/16phetmasvolden">hermi</link> til að sýna aðra aðferð við að ákvarða
+eðlismassa sem felur í sér að mæla rúmmál hlutarins með vatnsrýmd.
+Notaðu herminn til að ákvarða eðlismassa járns og viðar.</para>
+<para id="fs-idp206606992"><title>Lausn</title>Smelltu á hnappinn „breyta vökva í
+vatn“ í herminum til að stilla eðlismassa vökvans í bikarglasinu á 1,00
+g/ml. Fjarlægðu rauðu blokkina úr bikarglasinu og athugaðu að rúmmál
+vatnsins er 25,5 ml. Veldu járnsýnið með því að smella á „járn“ í
+efnistöflunni neðst á skjánum, settu járnblokkina á vogarskálina og
+athugaðu að massi hennar er 31,48 g. Færðu járnblokkina yfir í
+bikarglasið og taktu eftir því að hún sekkur, ryður frá sér vatnsrúmmáli
+sem jafngildir eigin rúmmáli og veldur því að vatnsyfirborðið hækkar í
+29,5 ml. Rúmmál járnblokkarinnar er því:</para>
+<equation id="fs-idm94054304" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>iron</m:mtext></m:msub><m:mo>=</m:mo><m:mn>29.5 mL</m:mn><m:mo>–</m:mo><m:mn>25.5 mL</m:mn><m:mo>=</m:mo><m:mn>4.0 mL</m:mn>
+</m:mrow></m:math></equation><para id="newness">Eðlismassi járnsins er þá reiknaður út sem:</para>
+<equation id="fs-idm14274016" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac>
+<m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/>
+<m:mfrac><m:mrow><m:mtext>31.48 g</m:mtext></m:mrow><m:mrow><m:mn>4.0 mL</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>7.9 g/mL</m:mtext></m:mrow></m:math></equation>
+<para id="newness2">Fjarlægðu járnblokkina úr bikarglasinu,
+breyttu efninu í blokkinni í við og endurtaktu síðan massa- og
+rúmmálsmælingarnar. Ólíkt járni sekkur viðarblokkin ekki í vatninu
+heldur flýtur á yfirborði vatnsins. Til að mæla rúmmál hennar skaltu
+draga hana undir yfirborð vatnsins þannig að hún sé alveg á kafi.</para>
+<equation id="fs-idm1774016" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac>
+<m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/>
+<m:mfrac><m:mrow><m:mtext>1.95 g</m:mtext></m:mrow><m:mrow><m:mn>3.0 mL</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.65 g/mL</m:mtext></m:mrow></m:math></equation>
+
+<para id="fs-idm92012848">Athugið: Hegðunin að sökkva á móti
+því að fljóta sem sýnd er í þessu dæmi sýnir eiginleikann „uppdrif“ (sjá
+lok kafla <link target-id="fs-idm307823136"/> og <link target-id="fs-idm160286704"/>).</para><para id="fs-idp10631184"><title>Prófaðu þekkingu þína</title>Notaðu herminn til að mæla eðlismassa
+froðusýnisins með því að fylgja aðferðinni með vatnsrýmd.</para>
+<note id="fs-idp101664288"><title>Answer:</title>
+<para id="fs-idm118978144">0,230 g/ml</para>
+</note>
+</example>
+</section>
+<section id="fs-idm333536464" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm330017088">Mælingar veita magnbundnar
+upplýsingar sem eru mikilvægar við nám og iðkun efnafræði. Hver mæling
+hefur stærð, einingu til samanburðar og óvissu. Mælingar má tákna með
+tugabrotum eða á staðalformi. Vísindamenn nota aðallega SI-einingar
+(alþjóðlega einingakerfið) eins og metra, sekúndur og kílógrömm, auk
+afleiddra eininga eins og lítra (fyrir rúmmál) og g/cm<sup>3</sup> (fyrir
+eðlismassa). Í mörgum tilfellum er hentugt að nota forskeyti sem gefa
+brot úr einingum og margfeldi þeirra, eins og míkrósekúndur (10<sup>−6</sup>
+sekúndur) og megahertz (10<sup>6</sup> hertz).</para>
+</section>
+<section id="fs-idm313032912" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm357067232" class="exercises">
+<title>Efnafræði – Æfingar í lok
+kafla</title>
+<exercise id="fs-idm230641408">
+<problem id="fs-idm297205264">
+<para id="fs-idm263137792">Er einn lítri um það bil únsa,
+pint, kvart eða gallon?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm323373040">
+<problem id="fs-idm330864880">
+<para id="fs-idm382474864">Er einn metri um það bil tommur,
+fet, yard eða míla?</para>
+</problem>
+<solution id="fs-idm313935680">
+<para id="fs-idm339638512">um það bil eitt yard</para>
+</solution>
+</exercise>
+<exercise id="fs-idm147829600">
+<problem id="fs-idm312783648">
+<para id="fs-idm332221616">Tilgreindu þær SI-grunneiningar
+eða afleiddu einingar sem eiga við um eftirfarandi mælingar:</para>
+<para id="fs-idm344160384">(a) lengd maraþonhlaups (26 mílur
+385 yard)</para>
+<para id="fs-idm329494928">(b) massi bifreiðar</para>
+<para id="fs-idm49093392">(c) rúmmál sundlaugar</para>
+<para id="fs-idm326110528">(d) hraði flugvélar</para>
+<para id="fs-idm150356736">(e) eðlismassi gulls</para>
+<para id="fs-idm226840320">(f) flatarmál fótboltavallar</para>
+<para id="fs-idm16612928">(g) hámarkshitastig á
+Suðurpólnum 1. apríl 1913</para>
+</problem>
+</exercise>
+<exercise id="fs-idm314038064">
+<problem id="fs-idm150926272">
+<para id="fs-idm231715616">Tilgreindu þær SI-grunneiningar
+eða afleiddu einingar sem eiga við um eftirfarandi mælingar:</para>
+<para id="fs-idm270779504">(a) massi tunglsins</para>
+<para id="fs-idm7152592">(b) fjarlægðin frá Dallas til
+Oklahoma City</para>
+<para id="fs-idm241075344">(c) hljóðhraði</para>
+<para id="fs-idm11255792">(d) eðlismassi lofts</para>
+<para id="fs-idm386910128">(e) hitastigið sem alkóhól sýður
+við</para>
+<para id="fs-idm312450912">(f) flatarmál Delaware-fylkis</para>
+<para id="fs-idm332809616">(g) rúmmál inflúensubólusetningar
+eða mislingabólusetningar</para>
+</problem>
+<solution id="fs-idm15748736">
+<para id="fs-idm123011200">(a) kílógrömm; (b) metrar; (c)
+metrar/sekúndu; (d) kílógrömm/rúmmetra; (e) kelvin; (f) fermetrar; (g)
+rúmmetrar</para></solution>
+</exercise>
+<exercise id="fs-idm323234992">
+<problem id="fs-idm344113968">
+<para id="fs-idm309359760">Gefðu upp heiti og tákn þeirra
+forskeyta sem notuð eru með SI-einingum til að gefa til kynna margföldun
+með eftirfarandi nákvæmum stærðum.</para>
+<para id="fs-idm326870592">(a) 10<sup>3</sup></para>
+<para id="fs-idm317616224">(b) 10<sup>−2</sup></para>
+<para id="fs-idm317895296">(c) 0,1</para>
+<para id="fs-idm315649600">(d) 10<sup>−3</sup></para>
+<para id="fs-idm325331296">(e) 1.000.000</para>
+<para id="fs-idm231824208">(f) 0,000001</para>
+</problem>
+</exercise>
+<exercise id="fs-idm344858160">
+<problem id="fs-idm157452784">
+<para id="fs-idm267043248">Gefðu upp heiti forskeytisins og
+stærðina sem eftirfarandi tákn gefa til kynna, sem eru notuð með
+SI-grunneiningum.</para>
+<para id="fs-idm184430352">(a) c</para>
+<para id="fs-idm330040176">(b) d</para>
+<para id="fs-idm327113744">(c) G</para>
+<para id="fs-idm12728864">(d) k</para>
+<para id="fs-idm272595216">(e) m</para>
+<para id="fs-idm338385360">(f) n</para>
+<para id="fs-idm294656720">(g) p</para>
+<para id="fs-idm55226416">(h) T</para>
+</problem>
+<solution id="fs-idm151111408">
+<para id="fs-idm341565728">(a) senti-, <m:math><m:mo>×</m:mo></m:math>
+10<sup>−2</sup>; (b) desi-, <m:math><m:mo>×</m:mo></m:math> 10<sup>−1</sup>; (c) gíga-, <m:math><m:mo>×</m:mo></m:math>
+10<sup>9</sup>; (d) kíló-, <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup>; (e) milli-, <m:math><m:mo>×</m:mo></m:math>
+10<sup>−3</sup>; (f) nanó-, <m:math><m:mo>×</m:mo></m:math> 10<sup>−9</sup>; (g) píkó-, [[MATH:25]]
+10<sup>−12</sup>; (h) tera-, [[MATH:26]] 10<sup>12</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idm239239696">
+<problem id="fs-idm273253232">
+<para id="fs-idm250646432">Stór skartgripur hefur massann
+132,6 g. Mæliglas inniheldur upphaflega 48,6 ml af vatni. Þegar
+skartgripnum er sökkt í mæliglasið eykst heildarrúmmálið í 61,2 ml.</para>
+<para id="fs-idp11615024">(a) Ákvarðaðu eðlismassa þessa
+skartgrips.</para>
+<para id="fs-idm305498784">(b) Ef gert er ráð fyrir að
+skartgripurinn sé aðeins úr einu efni, hvaða efni er það líklega?
+Útskýrðu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm165750544">
+  <problem id="fs-idm233862592">
+    <para id="fs-idm250881440">Farðu í þessa
+<link url="http://openstax.org/l/16phetmasvolden">eðlismassahermun</link> og smelltu á hnappinn „breyta vökva
+í vatn“ til að stilla eðlismassa vökvans í bikarglasinu á 1,00 g/ml.</para>
+    <para id="fs-idm148389344">(a) Notaðu aðferðina með
+vatnsyfirfærslu til að mæla massa og rúmmál óþekkta efnisins (veldu
+grænu blokkina með spurningamerkjum).</para>
+    <para id="fs-idm329801072">(b) Notaðu mældan massa og
+rúmmálsgögn úr skrefi (a) til að reikna út eðlismassa óþekkta efnisins.</para>
+    <para id="fs-idm338418880">(c) Ef gert er ráð fyrir að þetta
+efni sé víða fáanlegur kopar-innihaldandi gimsteinn, hver er þá líkleg
+auðkenning hans? Berðu saman mældan eðlismassa við gildin í töflunni í
+<link url="https://www.gemsociety.org/article/select-gems-ordered-density/">þessari handbók um eðlismassa gimsteina</link>.</para>
+    <para id="fs-idm310048112">(d) Hvernig tengjast massi og
+eðlismassi fyrir blokkir með sama rúmmál?</para>
+    </problem>
+    <solution id="fs-idm23354144">
+    <para id="fs-idp31066016">(a) m = 18,58 g, V = 5,7 ml; (b)
+d = 3,3 g/ml; (c) malakít (basískt koparkarbónat, d = 3,25–4,10 g/ml).</para></solution>
+    </exercise>
+<exercise id="fs-idm307823136">
+<problem id="fs-idm201651312">
+<para id="fs-idm366109136">Farðu í þessa
+<link url="http://openstax.org/l/16phetmasvolden">eðlismassahermun</link> og smelltu á „endurstilla“ hnappinn
+til að tryggja að allar stillingar hermisins séu á sjálfgefnum gildum.</para>
+<para id="fs-idm59188672">(a) Notaðu aðferðina með
+vatnsyfirfærslu til að mæla massa og rúmmál rauðu blokkarinnar.</para>
+<para id="fs-idm317502864">(b) Notaðu mældan massa og
+rúmmálsgögn úr skrefi (a) til að reikna út eðlismassa rauðu
+blokkarinnar.</para>
+<para id="fs-idm307356048">(c) Notaðu lóðrétta græna sleðann
+til að stilla eðlismassa vökvans á gildi vel yfir, síðan vel undir og að
+lokum næstum jafnt eðlismassa rauðu blokkarinnar og skráðu athuganir
+þínar.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm160286704">
+<problem id="fs-idm16668912">
+<para id="fs-idp8023104">Farðu í þessa
+<link url="http://openstax.org/l/16phetmasvolden">eðlismassahermun</link> og smelltu á hnappinn „breyta vökva
+í vatn“ til að stilla eðlismassa vökvans í bikarglasinu á 1,00 g/ml.
+Breyttu efninu í blokkinni í frauð og bíddu síðan þolinmóð/ur þar til
+frauðblokkin hættir að veltast upp og niður í vatninu.</para>
+<para id="fs-idm153136896">(a) Frauðblokkin ætti að fljóta á
+yfirborði vatnsins (þ.e. aðeins að hluta til á kafi). Hvert er rúmmál
+vatnsins sem færist úr stað? (b) Notaðu rúmmál vatnsins úr hluta (a) og
+eðlismassa vatns (1,00 g/ml) til að reikna út massa vatnsins sem færist
+úr stað. (c) Fjarlægðu og vigtaðu frauðblokkina. Hvernig er massi
+blokkarinnar í samanburði við massa vatnsins sem færðist úr stað í hluta
+(b)?</para>
+</problem>
+<solution id="fs-idm296419808">
+<para id="fs-idm315474368">(a) rúmmál vatns sem færðist úr
+stað = 2,8 ml; (b) massi vatns sem færðist úr stað = 2,8 g; (c) Massi
+blokkarinnar er 2,76 g, í raun jafn massa vatnsins sem færðist úr stað
+(2,8 g) og í samræmi við lögmál Arkímedesar um uppdrif.</para></solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm285658848">
+<term>Selsíus (°C)</term>
+<meaning id="fs-idm285658848-meaning">eining fyrir hitastig;
+vatn frýs við 0 °C og sýður við 100 °C á þessum skala</meaning>
+</definition>
+<definition id="fs-idm227540096">
+<term>rúmsentimetri (cm3 eða
+cc)</term>
+<meaning id="fs-idm227540096-meaning">rúmmál tenings með
+brúnarlengd nákvæmlega 1 cm</meaning>
+</definition>
+<definition id="fs-idm244788352">
+<term>rúmmetri (m3)</term>
+<meaning id="fs-idm244788352-meaning">SI-eining rúmmáls</meaning>
+</definition>
+<definition id="fs-idm147403536">
+<term>eðlismassi</term>
+<meaning id="fs-idm147403536-meaning">hlutfall massa og
+rúmmáls fyrir efni eða hlut</meaning>
+</definition>
+<definition id="fs-idm160547456">
+<term>kelvin (K)</term>
+<meaning id="fs-idm160547456-meaning">SI-eining hitastigs;
+273,15 K = 0 °C</meaning>
+</definition>
+<definition id="fs-idm228140240">
+<term>kílógramm (kg)</term>
+<meaning id="fs-idm228140240-meaning">stöðluð SI-eining massa</meaning>
+</definition>
+<definition id="fs-idp28932848">
+<term>lengd</term>
+<meaning id="fs-idp28932848-meaning">mælikvarði á eina vídd
+hlutar</meaning>
+</definition>
+<definition id="fs-idm238691152">
+<term>lítri (L)</term>
+<meaning id="fs-idm238691152-meaning">(einnig rúmdesimetri)
+eining rúmmáls; 1 L = 1.000 cm3</meaning>
+</definition>
+<definition id="fs-idm22681216">
+<term>metri (m)</term>
+<meaning id="fs-idm22681216-meaning">stöðluð metra- og
+SI-eining lengdar; 1 m = u.þ.b. 1,094 yardar</meaning>
+</definition>
+<definition id="fs-idp19165184">
+<term>millilítri (mL)</term>
+<meaning id="fs-idp19165184-meaning">1/1.000 úr lítra;
+jafngildir 1 cm3</meaning>
+</definition>
+<definition id="fs-idm310839680">
+<term>sekúnda (s)</term>
+<meaning id="fs-idm310839680-meaning">SI-eining tíma</meaning>
+</definition>
+<definition id="fs-idm23328032">
+<term>SI-einingar (Alþjóðlega
+einingakerfið)</term>
+<meaning id="fs-idm23328032-meaning">staðlar sem ákvarðaðir
+eru með alþjóðasamningi í Alþjóðlega einingakerfinu (Le Système
+International d’Unités)</meaning>
+</definition>
+<definition id="fs-idm331555696">
+<term>eining</term>
+<meaning id="fs-idm331555696-meaning">samanburðarstaðall fyrir
+mælingar</meaning>
+</definition>
+<definition id="fs-idm207134160">
+<term>rúmmál</term>
+<meaning id="fs-idm207134160-meaning">rými sem hlutur tekur</meaning>
+</definition>
+</glossary>
+</document>

@@ -1,0 +1,353 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Hegðun raungass</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68759</md:content-id>
+  <md:title>Non-Ideal Gas Behavior</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst þeim eðlisfræðilegu
+þáttum sem leiða til frávika frá hegðun kjörgass</item><item>Útskýrt hvernig þessir
+þættir eru settir fram í van der Waals-jöfnunni</item><item>Skilgreint samþrýstanleika
+(Z) og lýst því hvernig breytileiki hans með þrýstingi endurspeglar
+hegðun raungass</item><item>Magngreint hegðun raungass
+með því að bera saman útreikninga á eiginleikum gass með
+kjörgaslögmálinu og van der Waals-jöfnunni</item></list></md:abstract>
+  <md:uuid>6c7ade02-773b-44d1-945a-61ae6b0cc79b</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm10764416">Hingað til hefur kjörgaslögmálinu,
+<emphasis effect="italics">PV = nRT</emphasis>, verið beitt á margvísleg verkefni, allt frá
+hlutfallaefnafræði efnahvarfa og verkefnum um reynsluformúlur og
+sameindaformúlur til þess að ákvarða eðlismassa og mólmassa gass. Eins
+og fram hefur komið í fyrri einingum þessa kafla er hegðun gass þó oft
+ekki eins og kjörgass, sem þýðir að þau tengsl sem sjást milli
+þrýstings, rúmmáls og hitastigs eru ekki nákvæmlega í samræmi við
+gaslögmálin. Í þessum kafla eru ástæðurnar fyrir þessum frávikum frá
+hegðun kjörgass skoðaðar.</para>
+<para id="fs-idp138594304">Ein leið til að meta nákvæmni <emphasis effect="italics">PV =
+nRT</emphasis> er að bera saman raunverulegt rúmmál eins móls af gasi (mólrúmmál
+þess, <emphasis effect="italics">V</emphasis><sub>m</sub>) við mólrúmmál kjörgass við sama hitastig og þrýsting.
+Þetta hlutfall er kallað <emphasis effect="bold">samþrýstanleikastuðull (Z)</emphasis> og er:</para>
+<equation id="fs-idp41001616" class="unnumbered"><m:math><m:mrow><m:mtext>Z</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molar volume of gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow><m:mrow><m:mtext>molar volume of ideal gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mi>P</m:mi><m:msub><m:mi>V</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>measured</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm92799184">Hegðun kjörgass er því gefin til
+kynna þegar þetta hlutfall er jafnt og 1 og öll frávik frá 1 eru
+vísbending um hegðun raungass. <link target-id="CNX_Chem_09_06_ZvsPgraph"/> sýnir línurit af Z yfir stórt
+þrýstingssvið fyrir nokkur algeng gös.</para>
+<figure id="CNX_Chem_09_06_ZvsPgraph" class="scaled-down">
+<media id="fs-idp194949440" alt="A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale begins at zero with markings provided by multiples of 200 up to 1000. The vertical axis is labeled, “Z le( k P a ).” This scale begins at zero and includes multiples of 0.5 up to 2.0. Six curves are drawn of varying colors. One of these curves is a horizontal, light purple line extending right from 1.0 k P a on the vertical axis, which is labeled “Ideal gas.” The region of the graph beneath this line is shaded tan. The remaining curves also start at the same point on the vertical axis. An orange line extends to the upper right corner of the graph, reaching a value of approximately 1.7 k P a at 1000 a t m. This orange curve is labeled, “H subscript 2.” A blue curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 200 a t m. This curve reaches a value of nearly 2.0 k P a at about 800 a t m. This curve is labeled, “N subscript 2.” A red curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 400 a t m. This curve reaches a value of nearly 1.5 k P a at about 750 a t m. This curve is labeled, “O subscript 2.” A purple curve dips below the horizontal ideal gas line, dipping even lower than the O subscript 2 curve initially, then increases to cross the ideal gas line at about 400 a t m. This curve reaches a value of nearly 2.0 k P a at about 850 a t m. This curve is labeled, “C H subscript 4.” A yellow curve dips below the horizontal ideal gas line, dipping lower than the other curves to a minimum of about 0.4 k P a at about 0.75 a t m, then increases to cross the ideal gas line at about 500 a t m. This curve reaches a value of about 1.6 k P a at about 900 a t m. This curve is labeled, “C O subscript 2.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_06_ZvsPgraph.jpg"/>
+</media>
+<caption>Línurit af
+samþrýstanleikastuðlinum (Z) á móti þrýstingi sýnir að gös geta sýnt
+veruleg frávik frá þeirri hegðun sem kjörgaslögmálið spáir fyrir um.</caption>
+</figure>
+<para id="fs-idp70317840">Eins og sést á <link target-id="CNX_Chem_09_06_ZvsPgraph"/> lýsir
+kjörgaslögmálið ekki vel hegðun gass við tiltölulega háan þrýsting. Til
+að ákvarða hvers vegna þetta er skulum við skoða muninn á eiginleikum
+raungass og því sem búist er við af ímynduðu kjörgasi.</para>
+<para id="fs-idp26015584">Eindir ímyndaðs kjörgass hafa ekkert
+marktækt rúmmál og laða hvorki að sér né hrinda frá sér öðrum eindum.
+Almennt séð líkist hegðun raungass þessu við tiltölulega lágan þrýsting
+og hátt hitastig. Við háan þrýsting þjappast sameindir gass hins vegar
+þéttar saman og tómarúmið milli sameindanna minnkar. Við þennan hærri
+þrýsting verður rúmmál gassameindanna sjálfra umtalsvert miðað við
+heildarrúmmálið sem gasið tekur. Gasið verður því minna samþrýstanlegt
+við þennan háa þrýsting og þótt rúmmál þess haldi áfram að minnka með
+auknum þrýstingi er þessi minnkun ekki <emphasis effect="italics">í réttu hlutfalli</emphasis> eins og
+lögmál Boyle gerir ráð fyrir.</para>
+<para id="fs-idp46559584">Við tiltölulega lágan þrýsting hafa
+gassameindir nánast engan aðdráttarkraft hver til annarrar vegna þess að
+þær eru (að meðaltali) svo langt í burtu og þær hegða sér næstum eins og
+eindir kjörgass. Við hærri þrýsting er aðdráttarkrafturinn hins vegar
+heldur ekki lengur óverulegur. Þessi kraftur togar sameindirnar aðeins
+nær hvor annarri, sem minnkar örlítið þrýstinginn (ef rúmmálið er fast)
+eða minnkar rúmmálið (við fastan þrýsting) (<link target-id="CNX_Chem_09_06_RealGas2"/>). Þessi breyting
+er meira áberandi við lágt hitastig vegna þess að sameindirnar hafa
+lægri hreyfiorku miðað við aðdráttarkraftana og eru því ólíklegri til að
+yfirstíga þessa aðdráttarkrafta eftir árekstur við aðra sameind.</para>
+<figure id="CNX_Chem_09_06_RealGas2">
+<media id="fs-idm161409328" alt="This figure includes two diagrams. Each involves two lavender shaded boxes that contain 14 relatively evenly distributed, purple spheres. The first box in a on the left is labeled “ideal.” In the second slightly smaller box, on the right, a nearly centrally located purple sphere has 6 double-headed arrows extending outward from it to nearby spheres. This box is labeled “real.” In b, in the first box on the left, a single arrow points to a purple sphere at the right side that appears to be moving and impacting the right side of the box. There are no other spheres positioned near the right edge. This box is labeled “ideal.” The second box, on the right, shows the same image but has 5 double-headed arrows radiating out to the top, bottom, and left to other spheres. This box is labeled “real.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_06_RealGas2.jpg"/>
+</media>
+<caption>(a)
+Aðdráttarkraftar milli gassameinda draga úr rúmmáli gassins við fastan
+þrýsting samanborið við kjörgas þar sem sameindirnar hafa enga
+aðdráttarkrafta. (b) Þessir aðdráttarkraftar munu minnka kraft árekstra
+milli sameindanna og ílátsveggjanna og minnka þannig þrýstinginn sem
+myndast við fast rúmmál samanborið við kjörgas.</caption>
+</figure>
+<para id="fs-idm16170960">Það eru til nokkrar mismunandi jöfnur
+sem líkja betur eftir hegðun gass en kjörgaslögmálið. Sú fyrsta og
+einfaldasta var þróuð af hollenska vísindamanninum Johannes van der
+Waals árið 1879. <emphasis effect="bold">Van der Waals-jafnan</emphasis> bætir kjörgaslögmálið með því
+að bæta við tveimur liðum: einum til að taka tillit til rúmmáls
+gassameindanna og öðrum fyrir aðdráttarkrafta þeirra á milli.</para>
+<media id="fs-idm139964416" class="scaled-down" alt="This figure shows the equation P V equals n R T, with the P in blue text and the V in red text. This equation is followed by a right pointing arrow. Following this arrow, to the right in blue text appears the equation ( P minus a n superscript 2 divided by V squared ),” which is followed by the red text ( V minus n b ). This is followed in black text with equals n R T. Beneath the second equation appears the label, “Correction for molecular attraction” which is connected with a line segment to V squared. A second label, “Correction for volume of molecules,” is similarly connected to n b which appears in red.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_06_vanderWaals_img.jpg"/>
+</media>
+<para id="fs-idm12594352">Fastinn <emphasis effect="italics">a</emphasis> samsvarar styrk
+aðdráttarkraftsins milli sameinda tiltekins gass og fastinn <emphasis effect="italics">b</emphasis>
+samsvarar stærð sameinda tiltekins gass. „Leiðréttingin“ á
+þrýstingsliðnum í kjörgaslögmálinu er <m:math><m:mrow><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mi>a</m:mi></m:mrow><m:mrow><m:msup><m:mi>V</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> og „leiðréttingin“
+á rúmmálinu er <emphasis effect="italics">nb</emphasis>. Athugaðu að þegar <emphasis effect="italics">V</emphasis> er tiltölulega stórt og <emphasis effect="italics">n</emphasis>
+er tiltölulega lítið verða báðir þessir leiðréttingarliðir hverfandi og
+van der Waals-jafnan einfaldast yfir í kjörgaslögmálið, <emphasis effect="italics">PV = nRT</emphasis>.
+Slíkt ástand samsvarar gasi þar sem tiltölulega lítill fjöldi sameinda
+tekur tiltölulega stórt rúmmál, þ.e. gas við tiltölulega lágan þrýsting.
+Tilraunagildi fyrir van der Waals-fasta sumra algengra gasa eru gefin í
+<link target-id="fs-idm15100464"/>.</para>
+<table class="top-titled" id="fs-idm15100464" summary="This table has three columns and seven rows. The first row is a header, and it labels each column, “Gas,” “a ( L to the second power a t m divided by m o l to the second power ),” “b ( L divided by m o l ).” Under “Gas” are the following: N subscript 2, O subscript 2, C O subscript 2, H subscript 2 O, H e, and C C l subscript 4. Under “a ( L to the second power a t m divided by m o l to the second power )” are the following: 1.39, 1.36, 3.59, 5.46, 0.0342, and 20.4. Under “b ( L divided by m o l )” are the following: 0.0391, 0.0318, 0.0427, 0.0305, 0.0237, and 0.1383.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry namest="c1" nameend="c3" align="center">Gildi van der Waals-fasta fyrir nokkur
+algeng gös</entry>
+</row>
+<row valign="top">
+<entry align="left">Gas</entry>
+<entry align="left"><emphasis effect="italics">a</emphasis> (L<sup>2</sup> atm/mól<sup>2</sup>)</entry>
+<entry align="left"><emphasis effect="italics">b</emphasis> (L/mól)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">N<sub>2</sub></entry>
+<entry align="left">1,39</entry>
+<entry align="left">0,0391</entry>
+</row>
+<row valign="top">
+<entry align="left">O<sub>2</sub></entry>
+<entry align="left">1,36</entry>
+<entry align="left">0,0318</entry>
+</row>
+<row valign="top">
+<entry align="left">CO<sub>2</sub></entry>
+<entry align="left">3,59</entry>
+<entry align="left">0,0427</entry>
+</row>
+<row valign="top">
+<entry align="left">H<sub>2</sub>O</entry>
+<entry align="left">5,46</entry>
+<entry align="left">0,0305</entry>
+</row>
+<row valign="top">
+<entry align="left">He</entry>
+<entry align="left">0,0342</entry>
+<entry align="left">0,0237</entry>
+</row>
+<row valign="top">
+<entry align="left">CCl<sub>4</sub></entry>
+<entry align="left">20,4</entry>
+<entry align="left">0,1383</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp95888368">Við lágan þrýsting er leiðréttingin
+fyrir aðdráttarkrafta milli sameinda, <emphasis effect="italics">a</emphasis>, mikilvægari en leiðréttingin
+fyrir rúmmál sameinda, <emphasis effect="italics">b</emphasis>. Við háan þrýsting og lítið rúmmál verður
+leiðréttingin fyrir rúmmál sameindanna mikilvæg vegna þess að
+sameindirnar sjálfar eru óþjappanlegar og mynda umtalsverðan hluta af
+heildarrúmmálinu. Við einhvern millistigsþrýsting hafa leiðréttingarnar
+tvær andstæð áhrif og gasið virðist fylgja sambandinu sem gefið er með
+<emphasis effect="italics">PV = nRT</emphasis> á litlu þrýstingsbili. Þessi hegðun endurspeglast í „dýfunum“
+á nokkrum samþjöppunarferlanna sem sýndar eru í <link target-id="CNX_Chem_09_06_ZvsPgraph"/>.
+Aðdráttarkrafturinn milli sameinda gerir gasið í upphafi meira
+samþjappanlegt en kjörgas þegar þrýstingur er aukinn (Z minnkar með
+auknum <emphasis effect="italics">P</emphasis>). Við mjög háan þrýsting verður gasið minna samþjappanlegt (Z
+eykst með <emphasis effect="italics">P</emphasis>) þar sem gassameindirnar byrja að taka upp sífellt stærri
+hluta af heildarrúmmáli gassins.</para>
+<para id="fs-idp87631424">Strangt til tekið virkar
+kjörgasjafnan vel þegar aðdráttarkraftar milli gassameinda eru hverfandi
+og gassameindirnar sjálfar taka ekki upp umtalsverðan hluta af
+heildarrúmmálinu. Þessi skilyrði eru uppfyllt við <emphasis effect="italics">lágan þrýsting og
+hátt hitastig</emphasis>. Við slíkar aðstæður er sagt að gasið hegði sér eins og
+kjörgas og frávik frá gaslögmálunum eru nógu lítil til að hægt sé að
+horfa fram hjá þeim – þetta er þó oft alls ekki raunin.</para>
+<example id="fs-idp133812128">
+<para id="fs-idm26240"><title>Samanburður á
+kjörgaslögmálinu og van der Waals-jöfnunni</title>4,25 L flaska inniheldur 3,46 mól af
+CO<sub>2</sub> við 229 °C. Reiknaðu þrýstinginn á þessu sýni af CO<sub>2</sub>:</para>
+<para id="fs-idm66840432">(a) út frá kjörgaslögmálinu</para>
+<para id="fs-idp5462416">(b) út frá van der Waals-jöfnunni</para>
+<para id="fs-idm139915872">(c) Útskýrðu ástæðuna/ástæðurnar
+fyrir mismuninum.</para>
+<para id="fs-idp71956336"><title>Lausn</title>(a) Út frá kjörgaslögmálinu:</para>
+<equation class="unnumbered" id="fs-idm23230176"><m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>V</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.46</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>502</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>4.25</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>33.5</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp14703728">(b) Út frá van der Waals-jöfnunni:</para>
+<equation class="unnumbered" id="fs-idm122220784"><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>P</m:mi><m:mo>+</m:mo><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mi>a</m:mi></m:mrow><m:mrow><m:msup><m:mi>V</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>V</m:mi><m:mo>−</m:mo><m:mi>n</m:mi><m:mi>b</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>V</m:mi><m:mo>−</m:mo><m:mi>n</m:mi><m:mi>b</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mi>a</m:mi></m:mrow><m:mrow><m:msup><m:mi>V</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
+
+<equation class="unnumbered" id="fs-idp204240560"><m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.46</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>502 K</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>4.25</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mo>−</m:mo><m:mn>3.46</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.0427</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.46</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>3.59</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>4.25</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp24938016">Þetta gefur að lokum <emphasis effect="italics">P</emphasis> = 32,4 atm.</para>
+<para id="fs-idp70504128">(c) Þetta er ekki mjög frábrugðið
+gildinu úr kjörgaslögmálinu vegna þess að þrýstingurinn er ekki mjög hár
+og hitastigið er ekki mjög lágt. Gildið er nokkuð frábrugðið vegna þess
+að CO<sub>2</sub>-sameindir hafa eitthvert rúmmál og aðdráttarkrafta á milli sín,
+en kjörgaslögmálið gerir ráð fyrir að þær hafi hvorki rúmmál né
+aðdráttarkrafta.</para>
+<para id="fs-idp8228960"><title>Spurningar til íhugunar</title>560 ml flaska inniheldur 21,3 g af
+N<sub>2</sub> við 145 °C. Reiknaðu þrýsting N<sub>2</sub>:</para>
+<para id="fs-idm52984064">(a) út frá kjörgaslögmálinu</para>
+<para id="fs-idp68055984">(b) út frá van der Waals-jöfnunni</para>
+<para id="fs-idm24430976">(c) Útskýrðu ástæðuna/ástæðurnar
+fyrir muninum.</para>
+<note id="fs-idm71592544">
+<title>Answer:</title>
+<para id="fs-idp6517264">(a) 46,562 atm; (b) 46,594 atm; (c)
+Van der Waals-jafnan tekur tillit til rúmmáls gassameindanna sjálfra sem
+og aðdráttarkrafta milli sameinda.</para>
+</note>
+</example>
+<section id="fs-idp83168080" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm3555504">Gassameindir hafa endanlegt rúmmál og
+verða fyrir aðdráttarkröftum hver frá annarri. Þar af leiðandi er hegðun
+gass ekki endilega vel lýst með kjörgaslögmálinu. Við lágan þrýsting og
+hátt hitastig eru þessir þættir óverulegir, kjörgasjafnan er nákvæm
+lýsing á hegðun gass og sagt er að gasið sýni kjörhegðun. Hins vegar,
+við lægra hitastig og hærri þrýsting, þarf að gera leiðréttingar fyrir
+rúmmáli sameinda og aðdráttarkröftum milli sameinda til að taka tillit
+til endanlegrar stærðar sameinda og aðdráttarkrafta. Van der
+Waals-jafnan er breytt útgáfa af kjörgaslögmálinu sem hægt er að nota
+til að gera grein fyrir ókjörhegðun gasa við þessar aðstæður.</para>
+</section>
+<section id="fs-idm24142800" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mtext>Z</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molar</m:mtext><m:mspace width="0.2em"/><m:mtext>volume of gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow><m:mrow><m:mtext>molar volume of ideal gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mi>P</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>V</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:mrow><m:mi>R</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>measured</m:mtext></m:mrow></m:msub></m:mrow></m:math></entry>
+</row>
+<row><entry><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>P</m:mi><m:mo>+</m:mo><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mi>a</m:mi></m:mrow><m:mrow><m:msup><m:mi>V</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>V</m:mi><m:mo>−</m:mo><m:mi>n</m:mi><m:mi>b</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idp25013184" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idm14870688">
+<problem id="fs-idp141055504">
+<para id="fs-idm139673280">Eftirfarandi línurit sýna hegðun
+nokkurra mismunandi gasa. Hvaða þessara gasa sýna hegðun sem er verulega
+frábrugðin því sem búist er við af kjörgösum?</para>
+<media id="fs-idp4796912" alt="This figure includes 6 graphs. The first, which is labeled, “Gas A,” has a horizontal axis labeled, “Temperature,” and a vertical axis labeled, “Volume.” A straight blue line segment extends from the lower left to the upper right of this graph. The open area in the lower right portion of the graph contains the label, “n, P constant.” The second, which is labeled, “Gas B,” has a horizontal axis labeled, “P,” and a vertical axis labeled, “P V.” A straight blue line segment extends horizontally across the center of this graph. The open area in the lower right portion of the graph contains the label, “n, T constant.” The third, which is labeled, “Gas C,” has a horizontal axis labeled,“P V divided by R T,” and a vertical axis labeled, “Moles.” A blue curve begins about halfway up the vertical axis, dips slightly, then increases steadily to the upper right region of the graph. The fourth, which is labeled, “Gas D,” has a horizontal axis labeled, “P V divided by R T,” and a vertical axis labeled, “Moles.” A straight blue line segment extends horizontally across the center of this graph. The open area in the lower right portion of the graph contains the label “n, P constant.” The fifth, which is labeled, “Gas E,” has a horizontal axis labeled, “Temperature,” and a vertical axis labeled, “Volume.” A blue curve extends from the lower left to the upper right of this graph. The open area in the lower right portion of the graph contains the label “n, P constant.” The sixth graph, which is labeled, “Gas F,” has a horizontal axis labeled, “Temperature,” and a vertical axis labeled, “Pressure.” A blue curve begins toward the lower left region of the graph, increases at a rapid rate, then continues to increase at a relatively slow rate moving left to right across the graph. The open area in the lower right portion of the graph contains the label, “n, V constant.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_06_Exercise1_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idm13752624">
+<para id="fs-idm25923008">Gös C, E og F</para></solution>
+</exercise>
+<exercise id="fs-idp200327600">
+<problem id="fs-idm12532832">
+<para id="fs-idp99769680">Útskýrðu hvers vegna línuritið
+fyrir <emphasis effect="italics">PV</emphasis> fyrir CO<sub>2</sub> er frábrugðið línuriti fyrir kjörgas.</para>
+<media id="fs-idp12016592" alt="A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale is marked at 0, 1, and 2. The vertical axis is labeled, “P V ( a t m L ).” This scale includes markings at 0, 22.4, 22.5, and 22.6. Two curves and two lines are drawn of varying colors. One line is a horizontal, blue line extending right from about 22.42 a t m L on the vertical axis, and is labeled, “Ideal gas.” The remaining two curves and one line start at the same point on the vertical axis. A green line extends up and to the right slightly on the graph, reaching a value of approximately 22.46 a t m L at 2 a t m. This green line is labeled, “H e.” An orange curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 1 a t m. This curve reaches a value of about 22.52 a t m L at 2 a t m. This curve is labeled, “C H subscript 4.” A purple curve dips below the horizontal ideal gas line initially, then increases to cross the line at about 0.8 a t m. This curve reaches a value of nearly 22.62 a t m L at nearly 1.2 a t m. This curve is labeled, “C O subscript 2.”" class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_06_RealGases.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idm29887312">
+<problem id="fs-idm22648064">
+<para id="fs-idm67092976">Við hvaða af eftirfarandi aðstæðum
+hegðar raungas sér mest eins og kjörgas og við hvaða aðstæður er búist
+við að raungas víki frá kjörhegðun? Útskýrðu.</para>
+<para id="fs-idm93192160">(a) hár þrýstingur, lítið rúmmál</para>
+<para id="fs-idp46639136">(b) hátt hitastig, lágur
+þrýstingur</para>
+<para id="fs-idm50151104">(c) lágt hitastig, hár þrýstingur</para>
+</problem>
+<solution id="fs-idp166785728">
+<para id="fs-idm86729712">Hegðun gassins líkist mest
+kjörgasi við aðstæður sem lágmarka líkur á marktækri víxlverkun milli
+gasatóma/sameinda, þ.e. lágur þrýstingur (færri atóm/sameindir á
+rúmmálseiningu) og hátt hitastig (meiri hreyfiorka atóma/sameinda gerir
+þau minna næm fyrir aðdráttarkröftum). Aðstæðurnar sem lýst er í (b),
+hátt hitastig og lágur þrýstingur, eru því líklegastar til að leiða til
+kjörgashegðunar.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm58636672">
+<problem id="fs-idp20572816">
+<para id="fs-idm25283104">Lýstu þeim þáttum sem valda
+fráviki í hegðun raungasa frá hegðun</para>
+<para id="fs-idp20157600">kjörgass.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp137909616">
+<problem id="fs-idp145170976">
+<para id="fs-idp14775088">Fyrir hvaða af eftirfarandi gösum
+ætti leiðréttingin fyrir rúmmáli sameinda að vera stærst:</para>
+<para id="fs-idp183905312">CO, CO<sub>2</sub>, H<sub>2</sub>, He, NH<sub>3</sub>,
+SF<sub>6</sub>?</para>
+</problem>
+<solution id="fs-idm140362336">
+<para id="fs-idp166227744">SF<sub>6</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idm23432208">
+<problem id="fs-idm14492800">
+<para id="fs-idm21675952">0,245 L flaska inniheldur 0,467
+mól af CO<sub>2</sub> við 159 °C. Reiknaðu þrýstinginn:</para>
+<para id="fs-idm25312816">(a) með kjörgaslögmálinu</para>
+<para id="fs-idp82472240">(b) með van der Waals-jöfnunni</para>
+<para id="fs-idm50198336">(c) Útskýrðu ástæðuna fyrir
+muninum.</para>
+<para id="fs-idm91663776">(d) Tilgreindu hvor leiðréttingin
+(fyrir P eða V) er ríkjandi og hvers vegna.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm89275552">
+<problem id="fs-idp45753600">
+<para id="fs-idp35689520">Svaraðu eftirfarandi spurningum:</para>
+<para id="fs-idp40148288">(a) Ef XX hegðaði sér sem kjörgas,
+hvernig myndi línuritið fyrir Z á móti. P líta út?</para>
+<para id="fs-idm51678160">(b) Í stærstum hluta þessa kafla
+gerðum við útreikninga þar sem við meðhöndluðum gös sem kjörgös. Var það
+réttlætanlegt?</para>
+<para id="fs-idm94302800">(c) Hver eru áhrif rúmmáls
+gassameinda á Z? Við hvaða aðstæður eru þessi áhrif lítil? Hvenær eru
+þau mikil? Útskýrðu með viðeigandi skýringarmynd.</para>
+<para id="fs-idp70053648">(d) Hver eru áhrif aðdráttarkrafta
+milli sameinda á gildi Z? Við hvaða aðstæður eru þessi áhrif lítil?
+Hvenær eru þau mikil? Útskýrðu með viðeigandi skýringarmynd.</para>
+<para id="fs-idm60019952">(e) Almennt séð, við hvaða
+hitastigsaðstæður myndir þú búast við að Z hefði mestu frávikin frá Z
+fyrir kjörgas?</para>
+</problem>
+<solution id="fs-idm46435024">
+<para id="fs-idp26561024">(a) Bein lárétt lína við 1,0; (b)
+Þegar raungös eru við lágan þrýsting og hátt hitastig hegða þau sér
+nægilega líkt kjörgösum til að þau séu nálguð sem slík; hins vegar sjáum
+við í sumum tilfellum að við háan þrýsting og hitastig bregst
+kjörgasnálgunin og er verulega frábrugðin þrýstingnum sem reiknaður er
+með kjörgasjöfnunni. (c) Því meiri sem samþjappanleikinn er, því meira
+máli skiptir rúmmálið. Við lágan þrýsting er leiðréttingarstuðullinn
+fyrir aðdráttarkrafta milli sameinda marktækari og áhrif rúmmáls
+gassameindanna á Z væru lítil lækkun á samþjappanleika. Við hærri
+þrýsting myndu áhrif rúmmáls gassameindanna sjálfra á Z auka
+samþjappanleikann (sjá <link target-id="CNX_Chem_09_06_ZvsPgraph"/>). (d) Aftur, við lágan þrýsting, væru
+áhrif aðdráttarkrafta milli sameinda á Z mikilvægari en
+leiðréttingarstuðullinn fyrir rúmmál gassameindanna sjálfra, þó kannski
+enn lítil. Við hærri þrýsting og lágt hitastig væru áhrif
+aðdráttarkrafta milli sameinda meiri. Sjá <link target-id="CNX_Chem_09_06_ZvsPgraph"/>. (e) Lágt hitastig</para></solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp3716528">
+<term>samþjappanleikastuðull
+(Z)</term>
+<meaning id="fs-idp3716528-meaning">hlutfallið milli
+mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það
+er reiknað út frá jöfnu kjörgass</meaning>
+</definition>
+<definition id="fs-idm15517248">
+<term>van der Waals-jafnan</term>
+<meaning id="fs-idm15517248-meaning">breytt útgáfa af jöfnu
+kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá
+hegðun kjörgass</meaning>
+</definition>
+</glossary>
+</document>

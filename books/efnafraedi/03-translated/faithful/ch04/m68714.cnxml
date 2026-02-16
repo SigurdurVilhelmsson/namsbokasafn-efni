@@ -1,0 +1,472 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Heimtur efnahvarfa</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68714</md:content-id>
+  <md:title>Reaction Yields</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Skýrt hugtökin fræðilegar
+heimtur og takmarkandi hvarfefni.</item><item>Leitt út fræðilegar heimtur
+fyrir efnahvarf við tilgreindar aðstæður.</item><item>Reiknað prósentuheimtur
+fyrir efnahvarf.</item></list></md:abstract>
+  <md:uuid>3da1a637-2826-47bf-8b06-e32ffbdfd60a</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp24998416">Hlutfallslegt magn hvarfefna og
+myndefna sem sýnt er í stilltri efnajöfnu er oft kallað
+<emphasis effect="italics">hlutfallaefnafræðilegt magn</emphasis>. Allar æfingar í fyrri einingu snerust um
+hlutfallaefnafræðilegt magn hvarfefna. Til dæmis, þegar reiknað var magn
+myndefnis sem myndaðist úr tilteknu magni hvarfefnis, var gert ráð fyrir
+að öll önnur nauðsynleg hvarfefni væru til staðar í
+hlutfallaefnafræðilegu magni (eða meira). Í þessari einingu eru
+raunhæfari aðstæður skoðaðar, þar sem hvarfefni eru ekki til staðar í
+hlutfallaefnafræðilegu magni.</para>
+<section id="fs-idp5731792">
+<title>Takmarkandi hvarfefni</title>
+<para id="fs-idp103911360">Íhugum aðra samlíkingu úr eldhúsinu,
+gerð grillaðra ostasamloka (<link target-id="CNX_Chem_04_04_sandwich"/>):</para>
+<equation id="fs-idp59817360" class="unnumbered"><m:math><m:mrow><m:mtext>1 slice of cheese</m:mtext><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>2 slices of bread</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>1 sandwich</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp39531056">Hlutfallaefnafræðilegt magn hráefna í
+þessari uppskrift er brauðsneiðar og ostsneiðar í hlutfallinu 2:1. Ef
+við höfum 28 brauðsneiðar og 11 ostsneiðar getum við útbúið 11 samlokur
+samkvæmt uppskriftinni, notað allan ostinn og átt sex brauðsneiðar
+afgangs. Í þessu tilviki hefur fjöldi samloka sem hægt er að útbúa verið
+<emphasis effect="italics">takmarkaður</emphasis> af fjölda ostsneiða og brauðsneiðarnar hafa verið til
+staðar í <emphasis effect="italics">umframmagni</emphasis>.</para>
+<figure id="CNX_Chem_04_04_sandwich">
+<media id="fs-idm59912944" alt="This figure has three rows showing the ingredients needed to make a sandwich. The first row reads, “1 sandwich = 2 slices of bread + 1 slice of cheese.” Two slices of bread and one slice of cheese are shown. The second row reads, “Provided with: 28 slices of bread + 11 slices of cheese.” There are 28 slices of bread and 11 slices of cheese shown. The third row reads, “We can make: 11 sandwiches + 6 slices of bread left over.” 11 sandwiches are shown with six extra slices of bread.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_04_sandwich.jpg"/>
+</media>
+<caption>Samlokugerð getur
+lýst hugtökunum takmarkandi og umframhvarfefni.</caption>
+</figure>
+<para id="fs-idm48112848">Íhugum nú þetta hugtak með tilliti
+til efnaferlis, hvarfs vetnis við klór til að mynda vetnisklóríð:</para>
+<equation id="fs-idp62209424" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2HCl</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></equation>
+<para id="fs-idp157494624">Stillta jafnan sýnir að vetni og
+klór hvarfast í hlutfallaefnafræðilegu hlutfalli 1:1. Ef þessi hvarfefni
+eru til staðar í einhverju öðru magni mun annað hvarfefnið nánast alltaf
+klárast alveg og takmarkar þannig magn myndefnis sem getur myndast.
+Þetta efni er <emphasis effect="bold">takmarkandi hvarfefni</emphasis> og hitt efnið er
+<emphasis effect="bold">umframhvarfefni</emphasis>. Til að bera kennsl á takmarkandi og umframhvarfefni
+í tilteknum aðstæðum þarf að reikna mólmagn hvers hvarfefnis sem er til
+staðar og bera það saman við hlutfallaefnafræðilegt magn sem sýnt er í
+stilltu efnajöfnunni. Ímyndum okkur til dæmis að blanda saman 3 mólum af
+H<sub>2</sub> og 2 mólum af Cl<sub>2</sub>. Þetta táknar hlutfall vetnis og klórs sem er
+til staðar fyrir hvarfið 3:2 (eða 1,5:1), sem er hærra en
+hlutfallaefnafræðilega hlutfallið 1:1. Vetni er því til staðar í
+umframmagni og klór er takmarkandi hvarfefni. Hvarf alls klórsins sem er
+til staðar (2 mól) mun eyða 2 mólum af þeim 3 mólum af vetni sem voru
+til staðar og skilja eftir 1 mól af óhvarfuðu vetni.</para>
+<para id="fs-idp22005824">Önnur aðferð til að bera kennsl á
+takmarkandi hvarfefni felur í sér að bera saman magn myndefnis sem búist
+er við fyrir fullkomið hvarf hvers hvarfefnis. Magn hvers hvarfefnis er
+notað til að reikna sérstaklega magn myndefnis sem myndi myndast
+samkvæmt hlutfallaefnafræði hvarfsins. Hvarfefnið sem gefur minna magn
+af myndefni er takmarkandi hvarfefni. Í dæminu í fyrri málsgrein myndi
+fullkomið hvarf vetnisins gefa</para>
+<equation id="fs-idp67209632" class="unnumbered"><m:math><m:mrow><m:mtext>mol HCl produced</m:mtext><m:mo>=</m:mo><m:mtext>3 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>2 mol HCl</m:mtext></m:mrow><m:mrow><m:mtext>1 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>6 mol HCl</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm20022400">Fullkomið hvarf klórsins sem er til
+staðar myndi framleiða</para>
+<equation id="fs-idp10471024" class="unnumbered"><m:math><m:mrow><m:mtext>mol HCl produced</m:mtext><m:mo>=</m:mo><m:mtext>2 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>2 mol HCl</m:mtext></m:mrow><m:mrow><m:mtext>1 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>4 mol HCl</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm39942944">Klórinn mun klárast alveg þegar 4 mól
+af HCl hafa verið framleidd. Þar sem nægilegt vetni var til staðar til
+að gefa 6 mól af HCl, verður óhvarfað vetni eftir þegar þessu hvarfi er
+lokið. Klór er því takmarkandi hvarfefni og vetni er umframhvarfefni
+(<link target-id="CNX_Chem_04_04_limiting"/>).</para>
+<figure id="CNX_Chem_04_04_limiting">
+<media id="fs-idp182564432" alt="The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_04_limiting.jpg"/>
+</media>
+<caption>Þegar H<sub>2</sub> og
+Cl<sub>2</sub> er blandað saman í óhlutfallslegu magni mun annað þessara
+hvarfefna takmarka magn HCl sem hægt er að framleiða. Þessi mynd sýnir
+hvarf þar sem vetni er til staðar í umframmagni og klór er takmarkandi
+hvarfefni.</caption>
+</figure>
+<note id="fs-idp162031984" class="chemistry link-to-learning">
+<para id="fs-idm52028528">Skoðaðu þessa gagnvirku
+<link url="http://openstax.org/l/16reactantprod">hermun</link> sem sýnir hugtökin takmarkandi og
+umframhvarfefni.</para>
+</note>
+<example id="fs-idp70587344">
+<para id="fs-idm3583984"><title>Að bera kennsl á
+takmarkandi hvarfefni</title>Kísilnítríð er mjög hart, háhitaþolið
+keramik sem notað er sem hluti af túrbínublöðum í þotuhreyflum. Það er
+útbúið samkvæmt eftirfarandi jöfnu:</para>
+<equation class="unnumbered" id="fs-idm22587536"><m:math><m:mrow><m:mtext>3Si</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp52711328">Hvert er takmarkandi hvarfefni þegar
+2,00 g af Si og 1,50 g af N<sub>2</sub> hvarfast?</para>
+<para id="fs-idm18749312"><title>Lausn</title>Reiknið mólmagn hvarfefna sem er til
+staðar og berið síðan þetta magn saman við stilltu jöfnuna til að bera
+kennsl á takmarkandi hvarfefni.</para>
+<equation class="unnumbered" id="fs-idp16604400"><m:math><m:mrow><m:mtext>mol Si</m:mtext><m:mo>=</m:mo><m:mn>2.00</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g Si</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol Si</m:mtext></m:mrow><m:mrow><m:mn>28.09</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g Si</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.0712 mol Si</m:mtext></m:mrow></m:math></equation>
+<equation class="unnumbered" id="fs-idp42210944"><m:math><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>1.50</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>28.02</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.0535 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation><para id="fs-idp47057824">Mólhlutfall Si:N<sub>2</sub> er:</para>
+<equation class="unnumbered" id="fs-idp107313360"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>0.0712 mol Si</m:mtext></m:mrow><m:mrow><m:mtext>0.0535 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1.33 mol Si</m:mtext></m:mrow><m:mrow><m:mtext>1 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm100978944">Hlutfallaefnafræðilegt hlutfall
+Si:N<sub>2</sub> er:</para>
+<equation class="unnumbered" id="fs-idm60202256"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>3 mol Si</m:mtext></m:mrow><m:mrow><m:mtext>2 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1.5 mol Si</m:mtext></m:mrow><m:mrow><m:mtext>1 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm1915936">Samanburður á þessum hlutföllum sýnir
+að Si er í minna en hlutfallaefnafræðilegu magni og er því takmarkandi
+hvarfefni.</para>
+<para id="fs-idm9495168">Einnig er hægt að reikna út magn
+myndefnis sem búast má við ef hvort hvarfefni um sig hvarfast að fullu.
+0,0712 mól af kísli myndu gefa</para>
+<equation class="unnumbered" id="fs-idp161973712"><m:math><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.1em"/><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub><m:mspace width="0.2em"/><m:mtext>produced</m:mtext><m:mo>=</m:mo><m:mtext>0.0712 mol Si</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.1em"/><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub></m:mrow><m:mrow><m:mtext>3 mol Si</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.0237 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.1em"/><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm3691696">á meðan 0,0535 mól af nitri myndu
+framleiða</para>
+<equation class="unnumbered" id="fs-idm62043536"><m:math><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.1em"/><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub><m:mspace width="0.2em"/><m:mtext>produced</m:mtext><m:mo>=</m:mo><m:mtext>0.0535 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.1em"/><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub></m:mrow><m:mrow><m:mtext>2 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.0268 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.1em"/><m:msub><m:mtext>N</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm55343248">Þar sem kísill gefur minna magn af
+myndefni er hann takmarkandi hvarfefni.</para>
+<para id="fs-idp70544208"><title>Prófaðu þig áfram</title>Hvert er takmarkandi hvarfefni þegar
+5,00 g af H<sub>2</sub> og 10,0 g af O<sub>2</sub> hvarfast og mynda vatn?</para>
+<note id="fs-idm19095728">
+<title>Answer:</title>
+<para id="fs-idp69025056">O<sub>2</sub></para>
+</note>
+</example>
+</section>
+<section id="fs-idm20935792">
+<title>Prósentuheimtur</title>
+<para id="fs-idm22072192">Magn myndefnis sem <emphasis effect="italics">gæti</emphasis> myndast við
+efnahvarf við tilteknar aðstæður, eins og reiknað er út samkvæmt
+hlutfallaefnafræði viðeigandi stilltrar efnajöfnu, er kallað
+<emphasis effect="bold">fræðilegar heimtur</emphasis> hvarfsins. Í reynd er magn myndefnis sem fæst
+kallað <emphasis effect="bold">raunheimtur</emphasis> og þær eru oft minni en fræðilegar heimtur af
+ýmsum ástæðum. Sum efnahvörf eru í eðli sínu óskilvirk og þeim fylgja
+<emphasis effect="italics">hliðarhvörf</emphasis> sem mynda önnur myndefni. Önnur eru í eðli sínu ófullkomin
+(hugsaðu um ófullkomin hvörf veikra sýra og basa sem fjallað var um fyrr
+í þessum kafla). Sum myndefni er erfitt að safna án þess að eitthvað
+tapist og því mun ófullkomin endurheimt draga úr raunheimtum. Að hve
+miklu leyti fræðilegum heimtum hvarfs er náð er almennt gefið upp sem
+<emphasis effect="bold">prósentuheimtur</emphasis> þess:</para>
+<equation id="fs-idp47653952" class="unnumbered"><m:math><m:mrow><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>actual yield</m:mtext></m:mrow><m:mrow><m:mtext>theoretical yield</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm52282816">Raunheimtur og fræðilegar heimtur má
+gefa upp sem massa eða mólmagn (eða annan viðeigandi eiginleika, t.d.
+rúmmál ef myndefnið er gas). Svo lengi sem báðar heimtur eru gefnar upp
+með sömu einingum munu þær styttast út þegar prósentuheimtur eru
+reiknaðar.</para>
+<example id="fs-idm49018784">
+<para id="fs-idm68646768"><title>Útreikningur á
+prósentuheimtum</title>Við hvarf 1,274 g af koparsúlfati við
+umfram-sinkmálm fengust 0,392 g af koparmálmi samkvæmt jöfnunni:</para>
+<equation class="unnumbered" id="fs-idp101757552"><m:math><m:mrow><m:msub><m:mtext>CuSO</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Zn</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Cu</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>ZnSO</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp104261712">Hverjar eru prósentuheimturnar?</para>
+<para id="fs-idp98890704"><title>Lausn</title>Gefnar upplýsingar sýna að
+koparsúlfat er takmarkandi hvarfefni og því eru fræðilegar heimtur
+fundnar með aðferðinni sem sýnd var í fyrri einingu, eins og sýnt er
+hér:</para>
+<equation class="unnumbered" id="fs-idp104521856"><m:math><m:mrow><m:mn>1.274</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CuSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CuSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>159.62</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CuSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol Cu</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CuSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>63.55</m:mn><m:mspace width="0.2em"/><m:mtext>g Cu</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol Cu</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.5072 g Cu</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp47540336">Með því að nota þessar fræðilegu
+heimtur og uppgefið gildi fyrir raunheimtur eru prósentuheimturnar
+reiknaðar út sem</para>
+<equation class="unnumbered" id="fs-idp217309712"><m:math><m:mrow><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>actual yield</m:mtext></m:mrow><m:mrow><m:mtext>theoretical yield</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mrow></m:math></equation>
+<equation class="unnumbered" id="fs-idp182503696"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>0.392 g Cu</m:mtext></m:mrow><m:mrow><m:mtext>0.5072 g Cu</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>77.3</m:mn><m:mi>%</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp38988928"><title>Prófaðu þig áfram</title>Hverjar eru prósentuheimtur hvarfs
+sem framleiðir 12,5 g af gasinu Freon CF<sub>2</sub>Cl<sub>2</sub> úr 32,9 g af CCl<sub>4</sub> og
+umfram-HF?</para><equation class="unnumbered" id="fs-idp61435552"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>HF</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CF</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>HCl</m:mtext></m:mrow></m:math></equation>
+<note id="fs-idp47749920">
+<title>Answer:</title>
+<para id="fs-idp47655136">48,3%</para>
+</note>
+</example>
+<note id="fs-idm21958480" class="chemistry sciences-interconnect">
+<title>Græn efnafræði og
+atómhagkvæmni</title>
+<para id="fs-idm49080288">Markviss hönnun efnavara og ferla sem
+lágmarkar notkun umhverfishættulegra efna og myndun úrgangs er þekkt sem
+<emphasis effect="italics">græn efnafræði</emphasis>. Græn efnafræði er heimspekileg nálgun sem er beitt á
+mörgum sviðum vísinda og tækni og iðkun hennar er tekin saman í
+leiðbeiningum sem kallast „Tólf meginreglur grænnar efnafræði“ (sjá
+nánar á þessari <link url="http://openstax.org/l/16greenchem">vefsíðu</link>). Ein af 12 meginreglunum
+miðar sérstaklega að því að hámarka skilvirkni ferla við framleiðslu
+efnavara. <emphasis effect="italics">Atómhagkvæmni</emphasis> ferlis er mælikvarði á þessa skilvirkni,
+skilgreind sem massaprósenta lokaafurðar framleiðsluferlis miðað við
+massa <emphasis effect="italics">allra</emphasis> hvarfefna sem notuð eru:</para>
+<equation class="unnumbered" id="fs-idp116950848"><m:math><m:mrow><m:mtext>atom economy</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass of product</m:mtext></m:mrow><m:mrow><m:mtext>mass of reactants</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
+<para id="fs-idp59920960">Þótt skilgreiningin á atómhagkvæmni
+virðist við fyrstu sýn mjög svipuð skilgreiningunni á prósentuheimtum,
+skal hafa í huga að þessi eiginleiki táknar mun á <emphasis effect="italics">fræðilegri</emphasis>
+skilvirkni <emphasis effect="italics">ólíkra</emphasis> efnaferla. Prósentuheimtur tiltekins efnahvarfs meta
+aftur á móti skilvirkni ferlis með því að bera saman heimtur myndefnis
+sem raunverulega fæst við hámarksheimtur sem spáð er fyrir um með
+hlutfallaefnafræði.</para>
+<para id="fs-idp167996000">Framleiðsla á hinu algenga
+lausasölulyfi íbúprófeni sýnir vel árangur grænnar efnafræði
+(<link target-id="CNX_Chem_04_04_GreenChem"/>). Íbúprófen kom fyrst á markað snemma á sjöunda áratugnum og
+var framleitt með sex þrepa nýmyndun sem krafðist 514 g af hvarfefnum
+til að búa til hvert mól (206 g) af íbúprófeni, sem er atómhagkvæmni upp
+á 40%. Á tíunda áratugnum þróaði BHC Company (nú BASF Corporation) annað
+ferli sem krefst aðeins þriggja þrepa og hefur atómhagkvæmni upp á ~80%,
+næstum tvöfalt meira en upprunalega ferlið. BHC-ferlið myndar umtalsvert
+minni efnaúrgang, notar minna hættuleg og endurvinnanleg efni og veitir
+framleiðandanum (og þar með neytandanum) verulegan kostnaðarsparnað. Til
+viðurkenningar á jákvæðum umhverfisáhrifum BHC-ferlisins hlaut
+fyrirtækið Greener Synthetic Pathways verðlaunin frá
+Umhverfisverndarstofnun Bandaríkjanna árið 1997.</para>
+<figure id="CNX_Chem_04_04_GreenChem" class="scaled-down">
+<media id="fs-idp994368" alt="This figure is labeled, “a,” and, “b.” Part a shows an open bottle of ibuprofen and a small pile of ibuprofen tablets beside it. Part b shows a reaction along with line structures. The first line structure looks like a diagonal line pointing down and to the right, then up and to the right and then down and to the right. At this point it connects to a hexagon with alternating double bonds. At the first trough there is a line that points straight down. From this structure, there is an arrow pointing downward. The arrow is labeled, “H F,” on the left and “( C H subscript 3 C O ) subscript 2 O,” on the right. The next line structure looks exactly like the first line structure, but it has a line angled down and to the right from the lower right point of the hexagon. This line is connected to another line which points straight down. Where these two lines meet, there is a double bond to an O atom. There is another arrow pointing downward, and it is labeled, “H subscript 2, Raney N i.” The next structure looks very similar to the second, previous structure, except in place of the double bonded O, there is a singly bonded O H group. There is a final reaction arrow pointing downward, and it is labeled, “C O, [ P d ].” The final structure is similar to the third, previous structure except in place of the O H group, there is another line that points down and to the right to an O H group. At these two lines, there is a double bonded O.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_04_GreenChem.jpg"/>
+</media>
+<caption>(a) Íbúprófen er
+vinsælt lausasöluverkjalyf sem er almennt selt í 200 mg töflum. (b)
+BHC-ferlið til að nýmynda íbúprófen krefst aðeins þriggja þrepa og sýnir
+glæsilega atómhagkvæmni. (heimild a: breyting á verki eftir Derrick
+Coetzee)</caption>
+</figure>
+</note>
+</section>
+<section id="fs-idm64875168" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm5314032">Þegar efnahvörf eru framkvæmd með
+minna en hlutfallslegu magni hvarfefna, ræðst magn myndefnisins af
+takmarkandi hvarfefninu. Magn myndefnis sem myndast við efnahvarf eru
+raunheimtur þess. Þessar heimtur eru oft minni en magn myndefnis sem
+spáð er fyrir um með hlutfallaefnafræði jafnaðrar efnajöfnu sem táknar
+hvarfið (fræðilegar heimtur þess). Að hve miklu leyti efnahvarf myndar
+fræðilegt magn myndefnis er gefið upp sem prósentuheimtur þess.</para>
+</section>
+<section id="fs-idp36036608" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>actual yield</m:mtext></m:mrow><m:mrow><m:mtext>theoretical yield</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm49138160" class="exercises">
+<title>Efnafræði – Æfingar í lok
+kafla</title>
+<exercise id="fs-idm72007808">
+<problem id="fs-idp58837040">
+<para id="fs-idp158025632">Eftirfarandi magn er sett í ílát:
+1,5 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>24</sup> vetnisatóm, 1,0 mól af brennisteini og 88,0 g
+af tvíatóma súrefni.</para>
+<para id="fs-idp10708080">(a) Hver er heildarmassinn í
+grömmum fyrir safn allra þriggja frumefnanna?</para>
+<para id="fs-idm64569408">(b) Hver er heildarfjöldi móla af
+atómum fyrir þrjú frumefnin?</para>
+<para id="fs-idp46468992">(c) Ef efnablanda þriggja
+frumefnanna myndaði efnasamband með sameindum sem innihalda tvö
+vetnisatóm, eitt brennisteinsatóm og fjögur súrefnisatóm, hvaða efni
+klárast fyrst?</para>
+<para id="fs-idm56547920">(d) Hversu mörg atóm af hverju
+frumefni sem eftir er yrðu óhvarfað í breytingunni sem lýst er í (c)?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm48529264">
+<problem id="fs-idp11141376">
+<para id="fs-idp101303920">Hvert er takmarkandi hvarfefnið í
+efnahvarfi sem framleiðir natríumklóríð úr 8 g af natríum og 8 g af
+tvíatóma klór?</para>
+</problem>
+<solution id="fs-idp69899344">
+<para id="fs-idp22297728">Takmarkandi hvarfefnið er Cl2.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm47361200">
+<problem id="fs-idp26308256">
+<para id="fs-idp62729328">Hver af kenningum Daltons um atóm
+útskýrir hvers vegna við getum reiknað fræðilegar heimtur fyrir
+efnahvarf?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm38653920">
+<problem id="fs-idp98512336">
+<para id="fs-idp10358416">Nemandi einangraði 25 g af
+efnasambandi eftir aðferð sem ætti fræðilega að gefa 81 g. Hverjar voru
+prósentuheimtur hans?</para>
+</problem>
+<solution id="fs-idm45772288">
+<para id="fs-idp46323152"><m:math><m:mrow><m:mtext>Percent yield</m:mtext><m:mo>=</m:mo><m:mtext>31%</m:mtext></m:mrow></m:math></para>
+</solution>
+</exercise>
+<exercise id="fs-idp61299760">
+<problem id="fs-idp221706336">
+<para id="fs-idp6755168">Sýni sem innihélt 0,53 g af
+koldíoxíði var fengið með því að hita 1,31 g af kalsíumkarbónati.
+Hverjar eru prósentuheimtur fyrir þetta efnahvarf?</para>
+<para id="fs-idp4609920"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>CaO</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idm57693344">
+<problem id="fs-idm6761360">
+<para id="fs-idp5068384">Freon-12, CCl<sub>2</sub>F<sub>2</sub>, er framleitt
+úr CCl<sub>4</sub> með hvarfi við HF. Hitt myndefnið í þessu efnahvarfi er HCl.
+Lýstu skrefunum sem þarf til að ákvarða prósentuheimtur efnahvarfs sem
+framleiðir 12,5 g af CCl<sub>2</sub>F<sub>2</sub> úr 32,9 g af CCl<sub>4</sub>. Freon-12 hefur
+verið bannað og er ekki lengur notað sem kælimiðill vegna þess að það
+hvetur niðurbrot ózons og hefur mjög langan líftíma í andrúmsloftinu.
+Ákvarðaðu prósentuheimturnar.</para>
+</problem>
+<solution id="fs-idp215202608">
+<para id="fs-idp59773152"><m:math><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mtext>48.3%</m:mtext></m:mrow></m:math></para>
+</solution>
+</exercise>
+<exercise id="fs-idp99327968">
+<problem id="fs-idm34002944">
+<para id="fs-idp27686272">Sítrónusýra, C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>, sem er
+hluti af sultum, hlaupum og ávaxtagosdrykkjum, er framleidd í iðnaði með
+gerjun súkrósa með myglusveppnum <emphasis effect="italics">Aspergillus niger</emphasis>. Jafnan sem táknar
+þetta efnahvarf er <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></para>
+<para id="fs-idm8793984">Hvaða massi sítrónusýru er
+framleiddur úr nákvæmlega 1 tonni (1.000 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>3</sup> kg) af
+súkrósa ef heimturnar eru 92,30%?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp34342864">
+<problem id="fs-idm26296528">
+<para id="fs-idm48555120">Tólúen, C<sub>6</sub>H<sub>5</sub>CH<sub>3</sub>, er oxað með
+lofti við vandlega stýrðar aðstæður yfir í bensósýru, C<sub>6</sub>H<sub>5</sub>CO<sub>2</sub>H,
+sem er notuð til að framleiða matvælaverndarefnið natríumbensóat,
+C<sub>6</sub>H<sub>5</sub>CO<sub>2</sub>Na. Hverjar eru prósentuheimtur efnahvarfs sem breytir
+1,000 kg af tólúeni í 1,21 kg af bensósýru?</para>
+<para id="fs-idp58383920"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp161963872">
+<para id="fs-idm18984464"><m:math><m:mrow><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mtext>91.3%</m:mtext></m:mrow></m:math></para>
+</solution>
+</exercise>
+<exercise id="fs-idm7557120">
+<problem id="fs-idp67978352">
+<para id="fs-idp94004800">Í tilraun á rannsóknarstofu
+mynduðu 3,0 mól af H<sub>2</sub> og 2,0 mól af I<sub>2</sub> 1,0 mól af HI. Ákvarðaðu
+fræðilegar heimtur í grömmum og prósentuheimtur fyrir þetta efnahvarf.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm46525040">
+<problem id="fs-idp107511744">
+<para id="fs-idm3264240">Lýstu skrefunum sem þarf til að
+leysa eftirfarandi verkefni og framkvæmdu síðan útreikningana. Eter,
+(C<sub>2</sub>H<sub>5</sub>)<sub>2</sub>O, sem upphaflega var notaður sem svæfingarlyf en hefur
+verið skipt út fyrir öruggari og áhrifaríkari lyf, er framleiddur með
+hvarfi etanóls við brennisteinssýru.</para>
+<para id="fs-idm120301824">2C<sub>2</sub>H<sub>5</sub>OH + H<sub>2</sub>SO<sub>4</sub> ⟶
+(C<sub>2</sub>H<sub>5</sub>)<sub>2</sub>O + H<sub>2</sub>SO<sub>4</sub>·H<sub>2</sub>O</para><para id="fs-idp39307056">Hverjar eru prósentuheimtur eters
+ef 1,17 L (eðlismassi = 0,7134 g/mL) er einangrað úr hvarfi 1,500 L af
+C<sub>2</sub>H<sub>5</sub>OH (eðlismassi = 0,7894 g/mL)?</para>
+</problem>
+<solution id="fs-idp98805200">
+<para id="fs-idm48114608">Umbreyttu massa etanóls í mól af
+etanóli; tengdu mól etanóls við mól eters sem myndast með því að nota
+hlutfallaefnafræði jöfnunnar. Umbreyttu mólum eters í grömm; deildu
+raunverulegum grömmum af eter (ákvörðuð með eðlismassa) með fræðilegum
+massa til að ákvarða prósentuheimtur; 87,6%</para>
+</solution>
+</exercise>
+<exercise id="fs-idm43326768">
+<problem id="fs-idp52880736">
+<para id="fs-idp68715040">Lýstu skrefunum sem þarf til að
+ákvarða takmarkandi hvarfefni þegar 30,0 g af própani, C<sub>3</sub>H<sub>8</sub>, er
+brennt með 75,0 g af súrefni.</para><para id="fs-idp201350320">Ákvarðaðu takmarkandi hvarfefni.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm49726752">
+<problem id="fs-idp65728368">
+<para id="fs-idp101414208">Lýstu skrefunum sem þarf til að
+ákvarða takmarkandi hvarfefni þegar 0,50 mól af Cr og 0,75 mól af
+H<sub>3</sub>PO<sub>4</sub> hvarfast samkvæmt eftirfarandi efnajöfnu. <m:math><m:mrow><m:mn>2</m:mn><m:mtext>Cr</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>CrPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></para><para id="fs-idm522144">Ákvarðaðu takmarkandi hvarfefni.</para>
+</problem>
+<solution id="fs-idp31491504">
+<para id="fs-idm38791728">Umbreytingin sem þarf er
+<m:math><m:mrow><m:mtext>mol Cr</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math> Berðu síðan saman magn Cr við magn sýru sem er til
+staðar. Cr er takmarkandi hvarfefni.</para></solution>
+</exercise>
+<exercise id="fs-idm21873728">
+<problem id="fs-idp26219728">
+<para id="fs-idp47839312">Hvert er takmarkandi hvarfefni
+þegar 1,50 g af litíum og 1,50 g af nitri sameinast og mynda
+litíumnítríð, sem er hluti af fullkomnum rafhlöðum, samkvæmt
+eftirfarandi óstilltri jöfnu? <m:math><m:mrow><m:mtext>Li</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Li</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>N</m:mtext></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp70668864">
+<problem id="fs-idm47524112">
+<para id="fs-idp62392768">Hægt er að einangra úran úr
+málmgrýti þess með því að leysa það upp sem UO<sub>2</sub>(NO<sub>3</sub>)<sub>2</sub> og skilja
+það síðan frá sem fast efni UO<sub>2</sub>(C<sub>2</sub>O<sub>4</sub>)·3H<sub>2</sub>O. Álagning 0,4031 g af
+natríumoxalati, Na<sub>2</sub>C<sub>2</sub>O<sub>4</sub>, í lausn sem inniheldur 1,481 g af
+úranýlnítrati, UO<sub>2</sub>(NO<sub>3</sub>)<sub>2</sub>, gefur 1,073 g af föstu efninu
+UO<sub>2</sub>(C<sub>2</sub>O<sub>4</sub>)·3H<sub>2</sub>O.</para><para id="fs-idm72766640">Na<sub>2</sub>C<sub>2</sub>O<sub>4</sub> + UO<sub>2</sub>(NO<sub>3</sub>)<sub>2</sub> +
+3H<sub>2</sub>O ⟶ UO<sub>2</sub>(C<sub>2</sub>O<sub>4</sub>)·3H<sub>2</sub>O + 2NaNO<sub>3</sub></para>
+<para id="fs-idp232896464">Ákvarðaðu takmarkandi hvarfefni
+og prósentuheimtur þessa efnahvarfs.</para>
+</problem>
+<solution id="fs-idp91587744"><para id="fs-idp74993536">Na<sub>2</sub>C<sub>2</sub>O<sub>4</sub> er takmarkandi
+hvarfefni. prósentuheimtur = 86,56%</para></solution>
+</exercise>
+<exercise id="fs-idm574992">
+<problem id="fs-idm64892416">
+<para id="fs-idm51429104">Hversu margar sameindir af
+C<sub>2</sub>H<sub>4</sub>Cl<sub>2</sub> er hægt að búa til úr 15 C<sub>2</sub>H<sub>4</sub> sameindum og 8 Cl<sub>2</sub>
+sameindum?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm71853216">
+<problem id="fs-idp98807392">
+<para id="fs-idp16595856">Hversu margar sameindir af
+sætuefninu sakkaríni er hægt að búa til úr 30 C atómum, 25 H atómum, 12
+O atómum, 8 S atómum og 14 N atómum?</para>
+<media id="fs-idp36082896" alt="A structural formula is shown. A hexagonal ring of 6 C atoms with alternating double bonds has single H atoms bonded to four consecutive C atoms on the left side of the ring. The two C atoms on the right side of the ring, which are joined by a double bond, are also included in a 5 atom ring to their right. The C atom of this pair that is nearest the top of the structure is singly bonded to a C atom at the top of the 5 atom ring which has an O atom double bonded above. An N atom is singly bonded to the lower right of this same C atom. The N atom has an H atom bonded to its right and to its lower left, it is bonded to an S atom. The S atom is connected to the second C atom that is shared in the two rings. The S atom is also double bonded to an O atom to its lower right and is double bonded to a second O atom directly below it.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_04_saccharin_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idp30000464"><para id="fs-idp81228400">Aðeins er hægt að búa til fjórar
+sameindir.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp41861648">
+<problem id="fs-idp130711232">
+<para id="fs-idm1521280">Fosfórpentoxíðið sem notað er til
+að framleiða fosfórsýru fyrir kók gosdrykki er búið til með því að
+brenna fosfór í súrefni.</para>
+<para id="fs-idm55530368">(a) Hvert er takmarkandi
+hvarfefnið þegar 0,200 mól af P<sub>4</sub> og 0,200 mól af O<sub>2</sub> hvarfast
+samkvæmt <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub></m:mrow></m:math></para>
+<para id="fs-idp39236672">(b) Reiknaðu prósentuheimtur ef
+10,0 g af P<sub>4</sub>O<sub>10</sub> einangrast úr hvarfinu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm19471568">
+<problem id="fs-idp215625584">
+<para id="fs-idp8946384">Myndir þú samþykkja að kaupa 1
+billjón (1.000.000.000.000) gullatóm fyrir 5 dollara? Útskýrðu hvers
+vegna eða hvers vegna ekki. Finndu núverandi verð á gulli á
+http://money.cnn.com/data/commodities/ <m:math><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mtext>1 troy ounce</m:mtext><m:mo>=</m:mo><m:mtext>31.1 g</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp17552400"><para id="fs-idp8960064">Ekki er hægt að vega þetta magn á
+venjulegri vog og það er verðlaust.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm47393392">
+<term>raunheimtur</term>
+<meaning id="fs-idm47393392-meaning">magn myndefnis sem
+myndast í efnahvarfi</meaning>
+</definition>
+<definition id="fs-idm46343008">
+<term>umframhvarfefni</term>
+<meaning id="fs-idm46343008-meaning">hvarfefni sem er til
+staðar í meira magni en hlutfallaefnafræði hvarfsins krefst</meaning>
+</definition>
+<definition id="fs-idp182610272">
+<term>takmarkandi hvarfefni</term>
+<meaning id="fs-idp182610272-meaning">hvarfefni sem er til
+staðar í minna magni en hlutfallaefnafræði hvarfsins krefst og takmarkar
+þannig magn myndefnis sem myndast</meaning>
+</definition>
+<definition id="fs-idp51447712">
+<term>prósentuheimtur</term>
+<meaning id="fs-idp51447712-meaning">mælikvarði á skilvirkni
+efnahvarfs, gefinn upp sem prósenta af fræðilegum heimtum</meaning>
+</definition>
+<definition id="fs-idp30967968">
+<term>fræðilegar heimtur</term>
+<meaning id="fs-idp30967968-meaning">magn myndefnis sem hægt
+er að framleiða úr tilteknu magni hvarfefna samkvæmt hlutfallaefnafræði
+hvarfsins</meaning>
+</definition>
+</glossary>
+</document>

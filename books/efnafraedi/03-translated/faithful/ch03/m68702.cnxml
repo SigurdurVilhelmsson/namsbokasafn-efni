@@ -1,0 +1,483 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Ákvörðun reynsluformúla og sameindaformúla</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68702</md:content-id>
+  <md:title>Determining Empirical and Molecular Formulas</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Reiknað massaprósentu
+efnasambands</item><item>Ákvarðað reynsluformúlu
+efnasambands</item><item>Ákvarðað sameindaformúlu
+efnasambands</item></list></md:abstract>
+  <md:uuid>a4d0d6e1-b161-4cfd-ab54-23632839d0df</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp63066960">Í fyrri kafla var fjallað um
+sambandið milli heildarmassa efnis og fjölda atóma eða sameinda sem það
+inniheldur (mól). Ef efnaformúla efnisins er þekkt er hægt að ákvarða
+magn efnisins (mól) út frá massa þess og öfugt. En hvað ef efnaformúla
+efnis er óþekkt? Í þessum kafla verður sömu meginreglum beitt til að
+leiða út efnaformúlur óþekktra efna út frá tilraunamælingum á massa.</para>
+<section id="fs-idm175230352">
+<title>Massaprósenta</title>
+<section id="fs-idm114973648">
+<title>Ákvörðun massaprósentu út frá
+sameinda- eða reynsluformúlum</title>
+<para id="fs-idm153839088">Massaprósenta er einnig gagnleg til
+að meta hlutfallslegt magn tiltekins frumefnis í mismunandi
+efnasamböndum með þekktar formúlur. Sem dæmi má nefna algengan
+nituráburð eins og ammóníak (NH<sub>3</sub>), ammóníumnítrat (NH<sub>4</sub>NO<sub>3</sub>) og
+þvagefni (CH<sub>4</sub>N<sub>2</sub>O). Frumefnið nitur er virka efnið í landbúnaði,
+þannig að massaprósenta niturs í efnasambandinu er hagnýtt og
+efnahagslegt atriði fyrir neytendur sem velja á milli þessara
+áburðartegunda. Fyrir slíka notkun er massaprósenta efnasambands
+auðveldlega fengin út frá formúlumassa þess og atómmössum frumefnanna
+sem það er gert úr. Sameind af NH<sub>3</sub> inniheldur eitt N-atóm sem vegur
+14,01 amu og þrjú H-atóm sem vega samtals (3 <m:math><m:mo>×</m:mo></m:math> 1,008 amu) =
+3,024 amu. Formúlumassi ammóníaks er því (14,01 amu + 3,024 amu) = 17,03
+amu og massaprósenta þess er:</para>
+<equation id="fs-idm150406144" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>N</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>14.01</m:mn><m:mspace width="0.2em"/><m:mtext>amu N</m:mtext></m:mrow><m:mrow><m:mn>17.03</m:mn><m:mspace width="0.2em"/><m:mtext>amu</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>82.27</m:mn><m:mi>%</m:mi></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.024</m:mn><m:mspace width="0.2em"/><m:mtext>amu H</m:mtext></m:mrow><m:mrow><m:mn>17.03</m:mn><m:mspace width="0.2em"/><m:mtext>amu</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>17.76</m:mn><m:mi>%</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm159904272">Hægt er að beita sömu aðferð fyrir
+par af sameindum, tylft sameinda eða mól af sameindum o.s.frv.
+Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun
+mólmassa í stað atóm- og formúlumassa, eins og sýnt er í <link target-id="fs-idm162294688"/>. Svo
+lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt
+er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna
+efnasambandsins.</para>
+<example id="fs-idm162294688">
+<para id="fs-idm28923440"><title>Ákvörðun
+massaprósentu út frá sameindaformúlu</title>Aspirín er efnasamband með
+sameindaformúluna C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>. Hver er massaprósenta þess?</para>
+<para id="fs-idm77779888"><title>Lausn</title>Til að reikna út massaprósentuna þarf
+að vita massa C, H og O í þekktum massa af C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>. Það er hentugt
+að skoða 1 mól af C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> og nota mólmassa þess (180,159 g/mól,
+ákvarðað út frá efnaformúlunni) til að reikna út prósentuhlutföll hvers
+frumefnis:</para>
+<equation id="fs-idm106112" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>9</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>molar mass C</m:mtext></m:mrow><m:mrow><m:mtext>molar mass</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>9</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>8</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>12.01</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>180.159</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>108.09</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>180.159</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mn>60.00</m:mn><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation><equation id="fs-idm172254128" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>molar mass H</m:mtext></m:mrow><m:mrow><m:mtext>molar mass</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>9</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>8</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1.008</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>180.159</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>8.064</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>180.159</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mo>=</m:mo><m:mn>4.476</m:mn><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation><equation id="fs-idp8443552" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>4</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>molar mass O</m:mtext></m:mrow><m:mrow><m:mtext>molar mass</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>9</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>8</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>16.00</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>180.159</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>64.00</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>180.159</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mn>35.52</m:mn><m:mi>%</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idp47168">Athugið að þegar þessar prósentur eru
+lagðar saman er summan 100,00% ef námundað er á viðeigandi hátt.</para>
+<para id="fs-idm29762576"><title>Prófaðu þig áfram</title>Hver er massaprósenta járns í
+efnasambandinu Fe<sub>2</sub>O<sub>3</sub>, með þremur markverðum stöfum?</para>
+<note id="fs-idm63137328"><title>Answer:</title>
+<para id="fs-idm72116192">69,9% Fe</para>
+</note>
+</example>
+</section>
+<para id="fs-idm144417840">Frumefnasamsetning efnasambands
+skilgreinir efnafræðilegt eðli þess og efnaformúlur eru hnitmiðaðasta
+leiðin til að tákna þessa frumefnasamsetningu. Þegar formúla
+efnasambands er óþekkt er mæling á massa hvers frumefnis sem það er gert
+úr oft fyrsta skrefið í því ferli að ákvarða formúluna með tilraunum.
+Niðurstöður þessara mælinga gera kleift að reikna út <emphasis effect="bold">massaprósentu</emphasis>
+efnasambandsins, sem er skilgreind sem massaprósenta hvers frumefnis í
+efnasambandinu. Tökum sem dæmi efnasamband í gasformi sem samanstendur
+eingöngu af kolefni og vetni. Massaprósentu þessa efnasambands mætti
+tákna á eftirfarandi hátt:</para>
+<equation id="fs-idp62101552" class="unnumbered"><m:math><m:mrow><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass H</m:mtext></m:mrow><m:mrow><m:mtext>mass compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idp85788016" class="unnumbered"><m:math><m:mrow><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass C</m:mtext></m:mrow><m:mrow><m:mtext>mass compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm144352192">Ef greining á 10,0 g sýni af þessu
+gasi sýndi að það innihéldi 2,5 g H og 7,5 g C, yrði massaprósentan
+reiknuð 25% H og 75% C:</para>
+<equation id="fs-idm95716912" class="unnumbered"><m:math><m:mrow><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2.5</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>25</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idp9583632" class="unnumbered"><m:math><m:mrow><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>7.5</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>75</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
+<example id="fs-idm150394080">
+<para id="fs-idm20386912"><title>Útreikningur á
+massaprósentu</title>Greining á 12,04 g sýni af
+efnasambandi í vökvaformi sem samanstendur af kolefni, vetni og nitri
+sýndi að það innihéldi 7,34 g C, 1,85 g H og 2,85 g N. Hver er
+prósentusamsetning þessa efnasambands?</para>
+<para id="fs-idm111369568"><title>Lausn</title>Til að reikna út prósentusamsetningu
+skal deila massa hvers frumefnis, sem fenginn er með tilraun, með
+heildarmassa efnasambandsins og breyta síðan í prósentu:</para>
+<equation id="fs-idm181555088" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>7.34</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow><m:mrow><m:mn>12.04</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>61.0</m:mn><m:mi>%</m:mi></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.85</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext></m:mrow><m:mrow><m:mn>12.04</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>15.4</m:mn><m:mi>%</m:mi></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>N</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2.85</m:mn><m:mspace width="0.2em"/><m:mtext>g N</m:mtext></m:mrow><m:mrow><m:mn>12.04</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi><m:mo>=</m:mo><m:mn>23.7</m:mn><m:mi>%</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm125592496">Niðurstöður greiningarinnar benda
+til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við
+massa.</para>
+<para id="fs-idp63575312"><title>Spurningar úr kaflanum</title>24,81 g sýni af efnasambandi í
+gasfasa sem inniheldur aðeins kolefni, súrefni og klór er ákvarðað að
+innihalda 3,01 g C, 4,00 g O og 17,81 g Cl. Hver er prósentusamsetning
+þessa efnasambands?</para>
+<note id="fs-idp63474576"><title>Answer:</title>
+<para id="fs-idm146819008">12,1% C, 16,1% O, 71,79% Cl</para>
+</note>
+</example>
+</section>
+<section id="fs-idm186235344">
+<title>Ákvörðun reynsluformúla</title>
+<section id="fs-idp48607392">
+<title>Afleiðsla reynsluformúla út
+frá prósentusamsetningu</title>
+<para id="fs-idm130157248">Að lokum, varðandi afleiðslu
+reynsluformúla, skulum við skoða tilvik þar sem prósentusamsetning
+efnasambands er þekkt frekar en nákvæmur massi frumefnanna sem það er
+myndað úr. Í slíkum tilvikum er hægt að nota prósentusamsetninguna til
+að reikna út massa frumefna í hvaða hentugum massa efnasambands sem er;
+þessa massa er síðan hægt að nota til að leiða út reynsluformúluna á
+venjulegan hátt.</para>
+<example id="fs-idp11336208"><para id="fs-idm16856224"><title>Ákvörðun
+reynsluformúlu út frá prósentusamsetningu</title>Við gerjun á korni með bakteríum til
+að framleiða etanól myndast gas með prósentusamsetningunni 27,29% C og
+72,71% O (<link target-id="CNX_Chem_03_03_BrewTank"/>). Hver er reynsluformúla þessa gass?</para>
+<!-- figure handled separately -->
+<para id="fs-idp8854528"><title>Lausn</title>Þar sem prósentustiginn er 100 er
+hentugast að reikna út massa frumefna í 100 g sýni. Útreikningurinn er
+„hentugastur“ vegna þess að samkvæmt skilgreiningu á prósentusamsetningu
+er massi tiltekins frumefnis í grömmum tölulega jafngildur massaprósentu
+frumefnisins. Þetta tölulega jafngildi stafar af skilgreiningu á
+einingunni „prósenta“, en nafn hennar er dregið af latneska
+orðasambandinu <emphasis effect="italics">per centum</emphasis> sem þýðir „af hundraði“. Með þessa
+skilgreiningu í huga má setja uppgefnar massaprósentur fram á þægilegri
+hátt sem brot:</para>
+<equation id="fs-idm50369216" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>27.29</m:mn><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>27.29</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow><m:mrow><m:mn>100</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>72.71</m:mn><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>O</m:mtext></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>72.71</m:mn><m:mspace width="0.2em"/><m:mtext>g O</m:mtext></m:mrow><m:mrow><m:mn>100</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp6456464">Mólmagn kolefnis og súrefnis í 100 g
+sýni er reiknað með því að deila massa hvers frumefnis með mólmassa
+þess:</para><equation id="fs-idm107059040" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>27.29</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol C</m:mtext></m:mrow><m:mrow><m:mn>12.01</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>2.272</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>72.71</m:mn><m:mspace width="0.2em"/><m:mtext>g O</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol O</m:mtext></m:mrow><m:mrow><m:mn>16.00</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>4.544</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm174491744">Stuðlar fyrir
+bráðabirgðareynsluformúluna eru fengnir með því að deila hvoru mólmagni
+fyrir sig með því minna af þeim tveimur:</para>
+<equation id="fs-idm112786736" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2.272</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mrow><m:mrow><m:mn>2.272</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>4.544</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext></m:mrow><m:mrow><m:mn>2.272</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm106276304">Þar sem hlutfallið sem fæst er eitt
+kolefnisatóm á móti tveimur súrefnisatómum er reynsluformúlan CO<sub>2</sub>.</para>
+<para id="fs-idm153398992"><title>Spurningar úr kaflanum</title>Hver er reynsluformúla efnasambands
+sem inniheldur 40,0% C, 6,71% H og 53,28% O?</para>
+<note id="fs-idm61160608"><title>Answer:</title>
+<para id="fs-idm49848016">CH<sub>2</sub>O</para>
+</note>
+</example>
+<figure id="CNX_Chem_03_03_BrewTank" class="scaled-down">
+<media id="fs-idm183208576" alt="A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_BrewTank.jpg"/>
+</media>
+<caption>Kolefnisoxíð er
+fjarlægt úr þessum gerjunartönkum í gegnum stóru koparrörin efst.
+(Heimild: „Dual Freq“/Wikimedia Commons)</caption>
+</figure>
+</section>
+<para id="fs-idm181573632">Eins og áður hefur komið fram er
+algengasta aðferðin til að ákvarða efnaformúlu efnasambands að mæla
+fyrst massa frumefnanna sem það er myndað úr. Hafðu þó í huga að
+efnaformúlur tákna hlutfallslegan <emphasis effect="italics">fjölda</emphasis> atóma í efninu, ekki massa
+þeirra. Þess vegna verður að nota öll tilraunagögn sem fela í sér massa
+til að leiða út samsvarandi fjölda atóma í efnasambandinu. Þetta er gert
+með því að nota mólmassa til að breyta massa hvers frumefnis í fjölda
+móla. Þetta mólmagn er notað til að reikna út heiltöluhlutföll sem hægt
+er að nota til að leiða út reynsluformúlu efnisins. Ímyndum okkur sýni
+af efnasambandi sem ákvarðað er að innihaldi 1,71 g C og 0,287 g H.
+Samsvarandi fjöldi atóma (í mólum) er:</para>
+<equation id="fs-idm182904000" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>1.71</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mrow><m:mrow><m:mn>12.01</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.142</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>0.287</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mrow><m:mrow><m:mn>1.008</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.284</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm89096592">Þannig má tákna þetta efnasamband með
+formúlunni C<sub>0,142</sub>H<sub>0,284</sub>. Samkvæmt venju innihalda formúlur
+heiltölustuðla, sem hægt er að fá með því að deila hverjum stuðli með
+minnsta stuðlinum:</para>
+<equation id="fs-idm173344864" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.142</m:mn></m:mrow><m:mrow><m:mn>0.142</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.284</m:mn></m:mrow><m:mrow><m:mn>0.142</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:msub><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm154418400">(Munið að stuðullinn „1“ er ekki
+skrifaður heldur er gert ráð fyrir honum ef engin önnur tala er til
+staðar.)</para>
+<para id="fs-idm83793840">Reynsluformúla þessa efnasambands er
+því CH<sub>2</sub>. Þetta gæti verið <emphasis effect="italics">sameindaformúla</emphasis> efnasambandsins eða ekki;
+þó þarf frekari upplýsingar til að ákvarða það (eins og fjallað er um
+síðar í þessum kafla).</para>
+<para id="fs-idm172411952">Lítum á annað dæmi, sýni af
+efnasambandi sem inniheldur 5,31 g af Cl og 8,40 g af O. Með sömu aðferð
+fæst bráðabirgðareynsluformúlan:</para>
+<equation id="fs-idm153644640" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mrow><m:mn>0.150</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>0.525</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.150</m:mn></m:mrow><m:mrow><m:mn>0.150</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.525</m:mn></m:mrow><m:mrow><m:mn>0.150</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mrow><m:mn>3.5</m:mn></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm146854160">Í þessu tilfelli erum við enn með
+tugabrot í stuðlinum í reynsluformúlunni eftir að hafa deilt með minnsta
+stuðlinum. Til að breyta þessu í heila tölu skal margfalda hvern stuðul
+með tveimur, halda sama atómhlutfalli og fá Cl<sub>2</sub>O<sub>7</sub> sem endanlega
+reynsluformúlu.</para>
+<para id="fs-idm99418064">Í stuttu máli eru reynsluformúlur
+fengnar úr tilraunamældum massa frumefna með því að:</para>
+<list id="fs-idm105983184" list-type="enumerated" number-style="arabic">
+<item>Finna fjölda móla hvers
+frumefnis út frá massa þess</item>
+<item>Deila mólmagni hvers
+frumefnis með minnsta mólmagninu til að fá stuðla fyrir
+bráðabirgðareynsluformúlu</item>
+<item>Margfalda alla stuðla með
+heiltölu, ef nauðsyn krefur, til að tryggja að minnsta heiltöluhlutfall
+stuðla fáist</item>
+</list>
+<para id="fs-idm116173824"><link target-id="CNX_Chem_03_03_empform"/> sýnir þessa aðferð á
+flæðiriti fyrir efni sem inniheldur frumefnin A og X.</para>
+<figure id="CNX_Chem_03_03_empform">
+<media id="fs-idm114759824" alt="A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_empform.jpg"/>
+</media>
+<caption>Reynsluformúlu
+efnasambands má finna út frá massa allra frumefna í sýninu.</caption>
+</figure>
+<example id="fs-idp70151968">
+<para id="fs-idm148697040"><title>Ákvörðun
+reynsluformúlu efnasambands út frá massa frumefna þess</title>Sýni af svarta steinefninu hematíti
+(<link target-id="CNX_Chem_03_03_hematite"/>), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97
+g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?</para>
+<!-- figure handled separately -->
+<para id="fs-idp9584080"><title>Lausn</title>Í þessu dæmi er massi hvers frumefnis
+gefinn í grömmum. Byrjið á því að finna mól hvers þeirra:</para>
+<equation id="fs-idp81202080" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>34.97</m:mn><m:mspace width="0.2em"/><m:mtext>g Fe</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol Fe</m:mtext></m:mrow><m:mrow><m:mn>55.85</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>0.6261</m:mn><m:mspace width="0.2em"/><m:mtext>mol Fe</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>15.03</m:mn><m:mspace width="0.2em"/><m:mtext>g O</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol O</m:mtext></m:mrow><m:mrow><m:mn>16.00</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>0.9394</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp19490304">Næst skal finna mólhlutfall járns og
+súrefnis með því að deila með minni mólfjöldanum:</para>
+<equation id="fs-idm186572544" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.6261</m:mn></m:mrow><m:mrow><m:mn>0.6261</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.000</m:mn><m:mspace width="0.2em"/><m:mtext>mol Fe</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.9394</m:mn></m:mrow><m:mrow><m:mn>0.6261</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.500</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm169565728">Hlutfallið er 1,000 mól af járni á
+móti 1,500 mólum af súrefni (Fe<sub>1</sub>O<sub>1,5</sub>). Að lokum skal margfalda
+hlutfallið með tveimur til að fá minnstu mögulegu heiltölustuðlana en
+halda samt réttu hlutfalli járns og súrefnis:</para>
+<equation id="fs-idm9646560" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>1</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>1.5</m:mn></m:mrow></m:msub></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm196066368">Reynsluformúlan er Fe<sub>2</sub>O<sub>3</sub>.</para>
+<para id="fs-idm180356384"><title>Spurningar úr kaflanum</title>Hver er reynsluformúla efnasambands
+ef sýni inniheldur 0,130 g af nitri og 0,370 g af súrefni?</para>
+<note id="fs-idp52798448"><title>Answer:</title>
+<para id="fs-idm112291760">N<sub>2</sub>O<sub>5</sub></para>
+</note>
+</example>
+<figure id="CNX_Chem_03_03_hematite" class="scaled-down">
+<media id="fs-idm156718064" alt="Two rounded, smooth black stones are shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_hematite.jpg"/>
+</media>
+<caption>Hematít er
+járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)</caption>
+</figure>
+<note id="fs-idm160004320" class="chemistry link-to-learning">
+<para id="fs-idp89502368">Til að sjá fleiri dæmi um útreikninga
+á reynsluformúlum má horfa á stutta <link url="http://openstax.org/l/16empforms">myndbandið</link>.</para></note>
+</section>
+<section id="fs-idp23895104">
+<title>Ákvörðun sameindaformúla</title>
+<para id="fs-idp60635424">Munið að reynsluformúlur eru tákn sem
+sýna <emphasis effect="italics">hlutfallslegan</emphasis> fjölda frumefna í efnasambandi. Til að ákvarða
+<emphasis effect="italics">raunverulegan</emphasis> fjölda atóma sem mynda eina sameind samgilds
+efnasambands þarf að þekkja bæði reynsluformúlu þess og sameindamassa
+eða mólmassa. Hægt er að ákvarða þessar stærðir með ýmsum
+mælingaraðferðum í tilraunum. Sameindamassi er til dæmis oft fenginn úr
+massarófi efnasambandsins (sjá umfjöllun um þessa tækni í fyrri kafla um
+atóm og sameindir). Mólmassa má mæla með ýmsum tilraunaaðferðum og
+margar þeirra verða kynntar í síðari köflum þessarar bókar.</para>
+<para id="fs-idm152826480">Sameindaformúlur eru fengnar með því
+að bera saman sameindar- eða mólmassa efnasambandsins við <emphasis effect="bold">massa
+reynsluformúlunnar</emphasis>. Eins og nafnið gefur til kynna er
+reynsluformúlumassi summa meðalatómassa allra atóma sem koma fram í
+reynsluformúlu. Ef sameinda- (eða mól-) massi efnisins er þekktur má
+deila honum með reynsluformúlumassanum til að fá fjölda
+reynsluformúlueininga á hverja sameind (<emphasis effect="italics">n</emphasis>):</para>
+<equation id="fs-idm157027008" class="unnumbered"><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molecular or molar mass</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>amu or</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mtext>g</m:mtext><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>empirical formula mass</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>amu or</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mtext>g</m:mtext><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mi>n</m:mi><m:mspace width="0.2em"/><m:mtext>formula units/molecule</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp7653408">Sameindaformúlan er síðan fengin með
+því að margfalda hvern neðanáskrifaðan staf í reynsluformúlunni með <emphasis effect="italics">n</emphasis>,
+eins og sýnt er með almennu reynsluformúlunni A<sub>x</sub>B<sub>y</sub>:</para>
+<equation id="fs-idp3369296" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>A</m:mtext></m:mrow><m:mtext>x</m:mtext></m:msub><m:msub><m:mtext>B</m:mtext><m:mtext>y</m:mtext></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mtext>n</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mtext>A</m:mtext><m:mrow><m:mtext>nx</m:mtext></m:mrow></m:msub><m:msub><m:mtext>B</m:mtext><m:mrow><m:mtext>ny</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm149844688">Tökum sem dæmi samgilt efnasamband
+þar sem reynsluformúlan er ákvörðuð sem CH<sub>2</sub>O. Reynsluformúlumassi
+þessa efnasambands er um það bil 30 ame (summa 12 ame fyrir eitt C-atóm,
+2 ame fyrir tvö H-atóm og 16 ame fyrir eitt O-atóm). Ef sameindamassi
+efnasambandsins er ákvarðaður sem 180 ame, bendir það til þess að
+sameindir þessa efnasambands innihaldi sex sinnum fleiri atóm en koma
+fram í reynsluformúlunni:</para>
+<equation id="fs-idm11480608" class="unnumbered"><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>180</m:mn><m:mspace width="0.2em"/><m:mtext>amu/molecule</m:mtext></m:mrow><m:mrow><m:mn>30</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>amu</m:mtext></m:mrow><m:mrow><m:mtext>formula unit</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>6</m:mn><m:mspace width="0.2em"/><m:mtext>formula units/molecule</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm156812016">Sameindir þessa efnasambands eru þá
+táknaðar með sameindaformúlum þar sem neðanáskrifuðu stafirnir eru sex
+sinnum stærri en þeir í reynsluformúlunni:</para>
+<equation id="fs-idp29668368" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:msub><m:mrow><m:mtext>O)</m:mtext></m:mrow><m:mtext>6</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mtext>C</m:mtext><m:mtext>6</m:mtext></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mtext>12</m:mtext></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mtext>6</m:mtext></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm146366240">Athugið að nota má sömu aðferð þegar
+mólmassi (g/mól) er notaður í stað sameindamassa (ame). Í því tilviki er
+litið á <emphasis effect="italics">eitt mól</emphasis> af reynsluformúlueiningum og sameindum, öfugt við
+stakar einingar og sameindir.</para>
+<example id="fs-idm153155296"><para id="fs-idm56345360"><title>Ákvörðun
+sameindaformúlu fyrir nikótín</title>Nikótín, alkalóíð í náttskuggaætt
+plantna sem er aðallega ábyrgt fyrir ávanabindandi eðli sígarettna,
+inniheldur 74,02% C, 8,710% H og 17,27% N. Ef 40,57 g af nikótíni
+innihalda 0,2500 mól af nikótíni, hver er þá sameindaformúlan?</para>
+<para id="fs-idm146789392"><title>Lausn</title>Til að ákvarða sameindaformúluna út
+frá gefnum gögnum þarf að bera saman reynsluformúlumassa efnasambandsins
+við mólmassa þess. Í fyrsta skrefi skal nota prósentusamsetninguna til
+að leiða út reynsluformúlu efnasambandsins. Ef við gerum ráð fyrir
+hentugu 100 g sýni af nikótíni fáum við eftirfarandi mólmagn frumefna
+þess:</para>
+<equation id="fs-idm165807504" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>74.02</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mrow><m:mrow><m:mn>12.01</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>6.163</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>8.710</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mrow><m:mrow><m:mn>1.008</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>8.641</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>17.27</m:mn><m:mspace width="0.2em"/><m:mtext>g N</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol N</m:mtext></m:mrow><m:mrow><m:mn>14.01</m:mn><m:mspace width="0.2em"/><m:mtext>g N</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>1.233</m:mn><m:mspace width="0.2em"/><m:mtext>mol N</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm3598576">Næst skaltu reikna mólhlutföll þessara
+frumefna miðað við það frumefni sem er í minnstu magni, N.</para><equation id="eip-876" class="unnumbered"><m:math><m:mn>6.163</m:mn><m:mspace width="0.2em"/><m:mtext>mol </m:mtext><m:mspace width="0.2em"/><m:mo>C</m:mo><m:mo>/</m:mo><m:mspace width="0.2em"/><m:mn>1.233</m:mn><m:mspace width="0.2em"/><m:mtext> mol  </m:mtext><m:mspace width="0.2em"/><m:mn>N</m:mn><m:mo>=</m:mo><m:mn>5</m:mn>
+</m:math></equation><equation id="eip-272" class="unnumbered"><m:math>
+<m:mn>8.641</m:mn><m:mspace width="0.2em"/><m:mtext>mol </m:mtext><m:mspace width="0.2em"/><m:mo>H</m:mo><m:mo>/</m:mo><m:mspace width="0.2em"/><m:mn>1.233</m:mn><m:mspace width="0.2em"/><m:mtext> mol  </m:mtext><m:mspace width="0.2em"/><m:mn>N</m:mn><m:mo>=</m:mo><m:mn>7</m:mn>
+
+
+</m:math></equation><equation id="eip-610" class="unnumbered"><m:math><m:mn>1.233</m:mn><m:mspace width="0.2em"/><m:mtext>mol </m:mtext><m:mspace width="0.2em"/><m:mo>N</m:mo><m:mo>/</m:mo><m:mspace width="0.2em"/><m:mn>1.233</m:mn><m:mspace width="0.2em"/><m:mtext> mol  </m:mtext><m:mspace width="0.2em"/><m:mn>N</m:mn><m:mo>=</m:mo><m:mn>1</m:mn></m:math></equation><equation id="eip-909" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mrow><m:mrow><m:mfrac><m:mrow><m:mn>1.233</m:mn></m:mrow><m:mrow><m:mn>1.233</m:mn></m:mrow></m:mfrac></m:mrow></m:mrow></m:mtd>
+<m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>1.000</m:mn><m:mspace width="0.2em"/><m:mtext>mol N</m:mtext></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mrow><m:mfrac><m:mrow><m:mn>6.163</m:mn></m:mrow><m:mrow><m:mn>1.233</m:mn></m:mrow></m:mfrac></m:mrow></m:mtd>
+<m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>4.998</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mrow><m:mfrac><m:mrow><m:mn>8.624</m:mn></m:mrow><m:mrow><m:mn>1.233</m:mn></m:mrow></m:mfrac></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>6.994</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mtd>
+</m:mtr></m:mtable></m:math></equation><para id="fs-idm152642880">Mólhlutföll C-á-móti-N og H-á-móti-N
+eru nægilega nálægt heilum tölum og því er reynsluformúlan C<sub>5</sub>H<sub>7</sub>N.
+Reynsluformúlumassi þessa efnasambands er því 81,13 ame/formúlueiningu,
+eða 81,13 g/mól formúlueiningu.</para>
+<para id="fs-idm172291248">Reiknaðu mólmassa nikótíns út frá
+gefnum massa og mólmagni efnasambandsins:</para>
+<equation id="fs-idp7634272" class="unnumbered"><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>40.57</m:mn><m:mspace width="0.2em"/><m:mtext>g nicotine</m:mtext></m:mrow><m:mrow><m:mn>0.2500</m:mn><m:mspace width="0.2em"/><m:mtext>mol nicotine</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>162.3</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:math></equation>
+<para id="fs-idm113144656">Samanburður á mólmassa og
+reynsluformúlumassa bendir til þess að hver nikótínsameind innihaldi
+tvær formúlueiningar:</para>
+<equation id="fs-idp64453248" class="unnumbered"><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>162.3</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:mn>81.13</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mtext>g</m:mtext><m:mrow><m:mtext>formula unit</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>formula units/molecule</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm217123120">Að lokum skal leiða út
+sameindaformúlu nikótíns út frá reynsluformúlunni með því að margfalda
+hvern neðanáskrifaðan staf með tveimur:</para>
+<equation id="fs-idp60197184" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>(C</m:mtext></m:mrow><m:mtext>5</m:mtext></m:msub><m:msub><m:mtext>H</m:mtext><m:mtext>7</m:mtext></m:msub><m:msub><m:mtext>N)</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mtext>C</m:mtext><m:mrow><m:mtext>10</m:mtext></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mtext>14</m:mtext></m:mrow></m:msub><m:msub><m:mtext>N</m:mtext><m:mtext>2</m:mtext></m:msub></m:mrow></m:math></equation><para id="fs-idp8627344"><title>Spurningar til íhugunar</title>Hver er sameindaformúla efnasambands
+með prósentusamsetninguna 49,47% C, 5,201% H, 28,84% N og 16,48% O og
+sameindamassann 194,2 ame?</para>
+<note id="fs-idm149132352"><title>Answer:</title>
+<para id="fs-idm152847216">C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></para>
+</note>
+</example>
+</section>
+<section id="fs-idm130412048" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm171937152">Efnaauðkenni efnis er skilgreint af
+tegundum og hlutfallslegum fjölda atóma sem mynda grunneiningar þess
+(sameindir í tilfelli samgildra efnasambanda, jónir í tilfelli
+jónaefna). Prósentusamsetning efnasambands gefur upp massaprósentu hvers
+frumefnis í efnasambandinu og er hún oft ákvörðuð með tilraunum og notuð
+til að leiða út reynsluformúlu efnasambandsins. Hægt er að bera saman
+reynsluformúlumassa samgilds efnasambands við sameinda- eða mólmassa
+efnasambandsins til að leiða út sameindaformúlu.</para>
+</section>
+<section id="fs-idm151713456" class="exercises">
+<exercise id="fs-idm115920688">
+<problem id="fs-idm175734160">
+<para id="fs-idm219427632">Hvaða upplýsingar þarf til að
+ákvarða sameindaformúlu efnasambands út frá reynsluformúlunni?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm130496608"><problem id="fs-idp36347168">
+<para id="fs-idm160000">Reiknaðu eftirfarandi með fjórum
+markverðum stöfum:</para>
+<para id="fs-idm177315056">(a) prósentusamsetningu
+ammoníaks, NH<sub>3</sub></para>
+<para id="fs-idm105706256">(b) prósentusamsetningu
+ljósmyndafestingarlausnar („hypo“), Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub></para><para id="fs-idm105710800">(c) prósentu kalsíumjónar í
+Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></para>
+</problem>
+<solution id="fs-idm167888272"><para id="fs-idm8723440">(a) % N = 82,24%, % H = 17,76%;
+(b) % Na = 29,08%, % S = 40,56%, % O = 30,36%; (c) % Ca<sup>2+</sup> = 38,76%</para></solution>
+</exercise>
+<exercise id="fs-idm99186192">
+<problem id="fs-idp106952544">
+<para id="fs-idp268768">Ákvarðaðu eftirfarandi með fjórum
+markverðum stöfum:</para>
+<para id="fs-idm149211856">(a) prósentusamsetningu
+vetnisasíðsýru, HN<sub>3</sub></para>
+<para id="fs-idm162962720">(b) prósentusamsetningu TNT,
+C<sub>6</sub>H<sub>2</sub>(CH<sub>3</sub>)(NO<sub>2</sub>)<sub>3</sub></para>
+<para id="fs-idm183984960">(c) prósentu SO<sub>4</sub><sup>2–</sup> í
+Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp103798128">
+<problem id="fs-idm33204800">
+<para id="fs-idm151196704">Ákvarðaðu prósentu ammoníaks,
+NH<sub>3</sub>, í Co(NH<sub>3</sub>)<sub>6</sub>Cl<sub>3</sub>, með þremur markverðum stöfum.</para></problem>
+<solution id="fs-idm168846720">
+<para id="fs-idp36459552">% NH<sub>3</sub> = 38,2%</para></solution>
+</exercise>
+<exercise id="fs-idm78648848">
+<problem id="fs-idp2095568">
+<para id="fs-idm107182224">Ákvarðaðu prósentu vatns í
+CuSO<sub>4</sub>∙5H<sub>2</sub>O með þremur markverðum stöfum.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm2827872">
+<problem id="fs-idm153658944">
+<para id="fs-idm157957232">Ákvarðaðu reynsluformúlur fyrir
+efnasambönd með eftirfarandi prósentusamsetningu:</para>
+<para id="fs-idm115884896">(a) 15,8% kolefni og 84,2%
+brennisteinn</para>
+<para id="fs-idm154543312">(b) 40,0% kolefni, 6,7% vetni og
+53,3% súrefni</para>
+</problem>
+<solution id="fs-idm165665504"><para id="fs-idm165665376">(a) CS<sub>2</sub>; (b) CH<sub>2</sub>O</para></solution>
+</exercise>
+<exercise id="fs-idm106900080">
+<problem id="fs-idp82011888">
+<para id="fs-idm133574896">Ákvarðaðu reynsluformúlur fyrir
+efnasambönd með eftirfarandi prósentusamsetningu:</para>
+<para id="fs-idp103824992">(a) 43,6% fosfór og 56,4% súrefni</para>
+<para id="fs-idm117014832">(b) 28,7% K, 1,5% H, 22,8% P og
+47,0% O</para>
+</problem>
+</exercise>
+<exercise id="fs-idm108358432">
+<problem id="fs-idp35192144">
+<para id="fs-idm116098896">Efnasamband kolefnis og vetnis
+inniheldur 92,3% C og hefur mólmassa 78,1 g/mól. Hver er sameindaformúla
+þess?</para>
+</problem>
+<solution id="fs-idp2588192"><para id="fs-idp6839584">C<sub>6</sub>H<sub>6</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idm234233056">
+<problem id="fs-idm234232800">
+<para id="fs-idm8281104">Díklóretan, efnasamband sem oft er
+notað í fatahreinsun, inniheldur kolefni, vetni og klór. Það hefur
+mólmassa 99 g/mól. Greining á sýni sýnir að það inniheldur 24,3% kolefni
+og 4,1% vetni. Hver er sameindaformúla þess?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm149528800">
+<problem id="fs-idp1815456">
+<para id="fs-idp1815712">Ákvarðaðu reynsluformúlu og
+sameindaformúlu fyrir krýsótíl asbest. Krýsótíl hefur eftirfarandi
+prósentusamsetningu: 28,03% Mg, 21,60% Si, 1,16% H og 49,21% O. Mólmassi
+krýsótíls er 520,8 g/mól.</para>
+</problem>
+<solution id="fs-idp28427520">
+<para id="fs-idp63157456">Mg<sub>3</sub>Si<sub>2</sub>H<sub>3</sub>O<sub>8</sub>
+(reynsluformúla), Mg<sub>6</sub>Si<sub>4</sub>H<sub>6</sub>O<sub>16</sub> (sameindaformúla)</para>
+</solution>
+</exercise>
+<exercise id="fs-idp2230736">
+<problem id="fs-idm174074016">
+<para id="fs-idm174073760">Fjölliður eru stórar sameindir
+sem samanstanda af einföldum einingum sem eru endurteknar mörgum sinnum.
+Þess vegna hafa þær oft tiltölulega einfaldar reynsluformúlur. Reiknaðu
+reynsluformúlur eftirfarandi fjölliða:</para>
+<para id="fs-idm12982896">(a) Lúsít (Plexiglas); 59,9% C,
+8,06% H, 32,0% O</para>
+<para id="fs-idm174073504">(b) Saran; 24,8% C, 2,0% H, 73,1%
+Cl</para>
+<para id="fs-idm157598016">(c) Pólýetýlen; 86% C, 14% H</para>
+<para id="fs-idm157597632">(d) Pólýstýren; 92,3% C, 7,7% H</para>
+<para id="fs-idp44067504">(e) Orlon; 67,9% C, 5,70% H, 26,4%
+N</para>
+</problem>
+</exercise>
+<exercise id="fs-idp63104368">
+<problem id="fs-idp63104624">
+<para id="fs-idp14848">Stór framleiðandi textíllitarefna
+þróaði nýtt gult litarefni. Litarefnið hefur massaprósentusamsetninguna
+75,95% C, 17,72% N og 6,33% H og mólmassa um 240 g/mól. Ákvarðaðu
+sameindaformúlu litarefnisins.</para>
+</problem>
+<solution id="fs-idm160039264"><para id="fs-idm160039136">C<sub>15</sub>H<sub>15</sub>N<sub>3</sub></para>
+</solution>
+</exercise>
+</section>
+<section id="fs-idp39993248" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+
+<row><entry><m:math><m:mrow><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>X</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass X</m:mtext></m:mrow><m:mrow><m:mtext>mass compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></entry></row>
+<row>
+<entry><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molecular or molar mass</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>amu or</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mtext>g</m:mtext><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>empirical formula mass</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>amu or</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mtext>g</m:mtext><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mi>n</m:mi><m:mspace width="0.2em"/><m:mtext>formula units/molecule</m:mtext></m:mrow></m:math></entry></row>
+<row>
+<entry>(A<sub>x</sub>B<sub>y</sub>)<sub>n</sub> = A<sub>nx</sub>B<sub>ny</sub></entry></row>
+</tbody></tgroup></table>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp78258880">
+<term>massi reynsluformúlu</term>
+<meaning id="fs-idp78258880-meaning">summa meðalatómmassa
+allra atóma í reynsluformúlu</meaning>
+</definition>
+<definition id="fs-idp78260032">
+<term>prósentusamsetning</term>
+<meaning id="fs-idp78260032-meaning">massaprósenta hinna ýmsu
+frumefna í efnasambandi</meaning>
+</definition>
+</glossary>
+</document>

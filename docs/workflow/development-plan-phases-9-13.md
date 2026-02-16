@@ -33,12 +33,12 @@ This is the single highest-priority item.
 |-----------|----------|-------|
 | `01-source/` | — | CNXML originals (fetched on demand) |
 | `02-for-mt/` | ch01-ch05 | EN segments extracted |
-| `02-mt-output/` | ch01-ch05 | IS segments from MT (59 files) |
-| `03-faithful-translation/` | **empty** | No Pass 1 files written yet |
-| `03-translated/` | ch01-ch05 | Translated CNXML from injection |
+| `02-mt-output/` | ch01-ch05, ch09, ch12-ch13, appendices | IS segments from MT |
+| `03-faithful-translation/` | ch01-ch05, ch09, ch12-ch13, appendices | Initialized from MT output (2026-02-16) |
+| `03-translated/faithful/` | ch01-ch05, ch09, ch12-ch13, appendices | Translated CNXML from injection |
 | `04-localized-content/` | **empty** | Pass 2 not started |
 | `05-publication/mt-preview/` | ch01 | HTML rendered |
-| `05-publication/faithful/` | **empty** | Blocked on write gap |
+| `05-publication/faithful/` | ch01-ch05, ch09, ch12-ch13, appendices | Faithful HTML rendered (2026-02-16) |
 
 ### Open Pipeline Issues
 
@@ -54,9 +54,17 @@ Issues 5 and 6 need investigation to determine whether the fix belongs in cnxml-
 
 ---
 
-## Phase 9: Close the Write Gap
+## Phase 9: Close the Write Gap ✅ (2026-02-16)
 
 **Goal:** Approved edits flow to `03-faithful-translation/` files, unblocking the downstream pipeline.
+
+**Status:** COMPLETE. Code for 9.1-9.3 was implemented in Phase 8. Faithful track initialized from MT output and rendered to HTML for 8 chapters + appendices on 2026-02-16.
+
+**Initialization (2026-02-16):**
+- Initialized `03-faithful-translation/` from `02-mt-output/` for ch01-ch05, ch09, ch12-ch13, appendices (50 segment files, 9,854 segments)
+- Injected faithful track → `03-translated/faithful/` (50 CNXML files)
+- Rendered faithful HTML → `05-publication/faithful/` (101 HTML files across 9 directories including appendices)
+- The faithful track is now populated with MT baseline content. As editors review and approve segments via the segment editor, `applyApprovedEdits()` overwrites these files with human-reviewed content.
 
 ### 9.1 — Apply Approved Edits to Files
 

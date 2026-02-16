@@ -9,10 +9,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phase 9: Close the Write Gap |
-| **Latest Milestone** | Old pipeline retired (2026-02-16), Phase 8 complete (2026-02-05) |
+| **Current Phase** | Phase 10: Publication Migration |
+| **Latest Milestone** | Phase 9 complete (2026-02-16), old pipeline retired (2026-02-16), Phase 8 complete (2026-02-05) |
 
-**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 (current) → 10 → 11 → 12 → 13
+**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 (current) → 11 → 12 → 13
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
 
 ---
@@ -192,16 +192,18 @@ See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvem
 
 ## Active Development
 
-### Phase 9: Close the Write Gap
+### Phase 9: Close the Write Gap ✅ (2026-02-16)
 
-**Status:** NOT STARTED
+**Status:** COMPLETE
 
-**Problem:** Approved edits only update a `status` column in SQLite. Nothing writes the approved content to `03-faithful-translation/` segment files. Without those files, `cnxml-inject` has no input for the faithful track and the entire downstream pipeline is blocked.
+Code for 9.1-9.3 was implemented during Phase 8. Faithful track initialized from MT output (8 chapters + appendices) and rendered to HTML on 2026-02-16.
 
 **Work:**
-- [ ] 9.1 — `applyApprovedEdits()`: overlay approved DB edits onto MT output, write to `03-faithful-translation/`
-- [ ] 9.2 — "Apply & Render" flow: apply → inject → render → preview in one click
-- [ ] 9.3 — Bulk chapter apply: process all approved modules in a chapter at once
+- [x] 9.1 — `applyApprovedEdits()`: overlay approved DB edits onto MT output, write to `03-faithful-translation/`
+- [x] 9.2 — "Apply & Render" flow: apply → inject → render → preview in one click
+- [x] 9.3 — Bulk chapter apply: process all approved modules in a chapter at once
+- [x] Initialize faithful track from MT output for ch01-05, ch09, ch12-13, appendices
+- [x] Render faithful HTML for all initialized chapters
 
 ### Phase 10: Publication Migration
 
@@ -395,15 +397,11 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Close the Write Gap (Phase 9)
+### Current Priority: Publication Migration (Phase 10)
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
-1. [ ] Apply approved edits to `03-faithful-translation/` segment files
-2. [ ] "Apply & Render" one-click flow for head editors
-3. [ ] Bulk chapter apply for operational efficiency
-
-### Then: Publication Migration (Phase 10)
+### Publication Migration (Phase 10)
 1. [ ] Rewrite publication service to use inject→render → HTML
 2. [ ] Update publication routes (keep API, change internals)
 3. [ ] Re-render existing content through HTML pipeline
@@ -415,7 +413,7 @@ See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-pl
 
 ### Ongoing
 1. [ ] Complete Pass 1 reviews for chapters 1-4 (using segment editor)
-2. [ ] Publish Ch 1 as `faithful` (blocked on Phase 9)
+2. [ ] Publish Ch 1 as `faithful` (faithful HTML now available)
 3. [ ] End-to-end workflow tests
 4. [ ] Session cleanup job for stale workflows
 

@@ -1,0 +1,763 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Að skrifa og stilla efnajöfnur</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68709</md:content-id>
+  <md:title>Writing and Balancing Chemical Equations</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Leitt út efnajöfnur úr
+frásagnarlýsingum á efnahvörfum.</item><item>Skrifað og stillt
+efnajöfnur á sameinda-, heildarjóna- og nettójónaformi.</item></list></md:abstract>
+  <md:uuid>824e8777-c9bf-46b1-b232-d0bc764f4729</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp47467664">Í fyrri kafla þessa texta var kynnt
+notkun tákna fyrir frumefni til að tákna einstök atóm. Þegar atóm fá eða
+missa rafeindir til að mynda jónir, eða sameinast öðrum atómum til að
+mynda sameindir, er táknum þeirra breytt eða þau sameinuð til að búa til
+efnaformúlur sem tákna þessar eindir á viðeigandi hátt. Að útvíkka þetta
+táknmál til að tákna bæði auðkenni og hlutfallslegt magn efna sem
+gangast undir efna- (eða eðlis-) breytingu felur í sér að skrifa og
+stilla <emphasis effect="bold">efnajöfnu</emphasis>. Tökum sem dæmi hvarfið milli einnar metansameindar
+(CH<sub>4</sub>) og tveggja tvíatóma súrefnissameinda (O<sub>2</sub>) til að mynda eina
+koldíoxíðsameind (CO<sub>2</sub>) og tvær vatnssameindir (H<sub>2</sub>O). Efnajafnan sem
+táknar þetta ferli er sýnd í efri helmingi <link target-id="CNX_Chem_04_01_rxn2"/>, með
+rúmfyllingarlíkönum af sameindum sýndum í neðri helmingi myndarinnar.</para>
+<figure id="CNX_Chem_04_01_rxn2"><media id="fs-idp26251152" alt="This figure shows a balanced chemical equation followed below by a representation of the equation using space-filling models. The equation reads C H subscript 4 plus 2 O subscript 2 arrow C O subscript 2 plus 2 H subscript 2 O. Under the C H subscript 4, the molecule is shown with a central black sphere, representing a C atom, to which 4 smaller white spheres, representing H atoms, are distributed evenly around. All four H atoms are bonded to the central black C atom. This is followed by a plus sign. Under the 2 O subscript 2, two molecules are shown. The molecules are each composed of two red spheres bonded together. The red spheres represent O atoms. To the right of an arrow and under the C O subscript 2, appears a single molecule with a black central sphere with two red spheres bonded to the left and right. Following a plus sign and under the 2 H subscript 2 O, are two molecules, each with a central red sphere and two smaller white spheres attached to the lower right and lower left sides of the central red sphere. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_01_rxn2.jpg"/>
+</media>
+
+<caption>Hvarfið milli metans
+og súrefnis sem myndar koldíoxíð og vatn (sýnt neðst) má tákna með
+efnajöfnu með formúlum (efst).</caption></figure>
+<para id="fs-idp80311968">Þetta dæmi sýnir grundvallarþætti
+hvers kyns efnajöfnu:</para>
+<list id="fs-idm9329568" list-type="enumerated" number-style="arabic">
+<item>Efnin sem gangast undir hvarf
+kallast <emphasis effect="bold">hvarfefni</emphasis> og formúlur þeirra eru settar vinstra megin við
+jöfnuna.</item>
+<item>Efnin sem myndast við hvarfið
+kallast <emphasis effect="bold">myndefni</emphasis> og formúlur þeirra eru settar hægra megin við
+jöfnuna.</item>
+<item>Plúsmerki (+) aðskilja
+einstakar formúlur hvarfefna og myndefna og ör <m:math><m:mrow><m:mtext>(⟶)</m:mtext></m:mrow></m:math> aðskilur
+hliðar hvarfefna og myndefna (vinstri og hægri) í jöfnunni.</item>
+<item>Hlutfallslegur fjöldi
+hvarfefna- og myndefnaeinda er táknaður með <emphasis effect="bold">stuðlum</emphasis> (tölur sem eru
+settar strax vinstra megin við hverja formúlu). Stuðullinn 1 er
+yfirleitt sleppt.</item>
+</list>
+<para id="fs-idm33251968">Algengt er að nota lægstu mögulegu
+heiltölustuðla í efnajöfnu, eins og gert er í þessu dæmi. Hafðu þó í
+huga að þessir stuðlar tákna <emphasis effect="italics">hlutfallslegan</emphasis> fjölda hvarfefna og
+myndefna og því má túlka þá réttilega sem hlutföll. Metan og súrefni
+hvarfast og mynda koldíoxíð og vatn í hlutfallinu 1:2:1:2. Þetta
+hlutfall er uppfyllt ef fjöldi þessara sameinda er, í sömu röð, 1-2-1-2,
+eða 2-4-2-4, eða 3-6-3-6, og svo framvegis (<link target-id="CNX_Chem_04_01_rxn3"/>). Sömuleiðis má
+túlka þessa stuðla með tilliti til hvaða magnseiningar (fjölda) sem er,
+og því má lesa þessa jöfnu réttilega á marga vegu, þar á meðal:</para>
+<figure id="CNX_Chem_04_01_rxn3"><media id="fs-idp178489152" alt="This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_01_rxn3.jpg"/>
+</media>
+
+<caption>Óháð raunverulegum
+fjölda sameinda sem koma við sögu eru hlutföllin milli fjölda sameinda
+hverrar eindar sem hvarfast (hvarfefnin) og sameinda hverrar eindar sem
+myndast (myndefnin) þau sömu og eru gefin með efnahvarfsjöfnunni.</caption></figure>
+<list id="fs-idp42981680" list-type="bulleted" bullet-style="bullet">
+<item><emphasis effect="italics">Ein</emphasis> metansameind og <emphasis effect="italics">tvær</emphasis>
+súrefnissameindir hvarfast og mynda <emphasis effect="italics">eina</emphasis> koldíoxíðsameind og <emphasis effect="italics">tvær</emphasis>
+vatnssameindir.</item>
+<item><emphasis effect="italics">Einn tylft</emphasis> metansameinda og
+<emphasis effect="italics">tvær tylftir</emphasis> súrefnissameinda hvarfast og mynda <emphasis effect="italics">eina tylft</emphasis>
+koldíoxíðsameinda og <emphasis effect="italics">tvær tylftir</emphasis> vatnssameinda.</item>
+<item><emphasis effect="italics">Eitt mól</emphasis> af metansameindum
+og <emphasis effect="italics">2 mól</emphasis> af súrefnissameindum hvarfast og mynda <emphasis effect="italics">1 mól</emphasis> af
+koldíoxíðsameindum og <emphasis effect="italics">2 mól</emphasis> af vatnssameindum.</item>
+</list>
+<section id="fs-idp23923488">
+<title>Að stilla jöfnur</title>
+<para id="fs-idp13839872">Efnajafnan sem lýst er í kafla 4.1 er
+<emphasis effect="bold">stillt</emphasis>, sem þýðir að jafn fjöldi atóma fyrir hvert frumefni sem
+tekur þátt í hvarfinu er táknaður á hvarfefna- og myndefnahliðunum.
+Þetta er krafa sem jafnan verður að uppfylla til að vera í samræmi við
+lögmálið um varðveislu massans. Það má staðfesta með því einfaldlega að
+leggja saman fjölda atóma hvoru megin við örina og bera þessar summur
+saman til að tryggja að þær séu jafnar. Athugaðu að fjöldi atóma fyrir
+tiltekið frumefni er reiknaður út með því að margfalda stuðul hvers
+konar formúlu sem inniheldur það frumefni með lágvísi frumefnisins í
+formúlunni. Ef frumefni kemur fyrir í fleiri en einni formúlu á
+tiltekinni hlið jöfnunnar verður að reikna út fjölda atóma sem táknaður
+er í hverri þeirra og leggja þá saman. Til dæmis innihalda bæði
+myndefnin í dæminu, CO<sub>2</sub> og H<sub>2</sub>O, frumefnið súrefni og því er fjöldi
+súrefnisatóma í myndefnum jöfnunnar</para>
+<equation id="fs-idp219991408" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mtext>molecule</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>2 O atoms</m:mtext></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mtext>molecule</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O molecules</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 O atom</m:mtext></m:mrow><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O molecule</m:mtext><m:mspace width="0.2em"/></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>4 O atoms</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp52518864">Jafnan fyrir efnahvarf metans og
+súrefnis sem gefur af sér koldíoxíð og vatn er staðfest sem stillt með
+þessari aðferð, eins og sýnt er hér:</para>
+<equation id="fs-idp38334880" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
+<table id="fs-idp140513680" summary="This is a table with four columns and four rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters C, H, and O. Under the “Reactants” column are the equations “1 times 1 equals 1,” “4 times 1 equals 4,” and “2 times 2 equals 4.” Under the “Products” column are the equations, “1 times 1 equals 1,” “2 times 2 equals 4,” and “( 1 times 2 ) plus ( 2 times 1 ) equals 4.” Under the “Balanced?” column are, “1 equals 1, yes,” “4 equals 4, yes,” “4 equals 4, yes.”" class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Stillt?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">C</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1 = 1</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1 = 1</entry>
+<entry align="left">1 = 1, já</entry>
+</row>
+<row valign="top">
+<entry align="left">H</entry>
+<entry align="left">4 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1 = 4</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">4 = 4, já</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">(1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2) + (2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1)
+= 4</entry>
+<entry align="left">4 = 4, já</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp8426240">Oft er hægt að leiða út stillta
+efnajöfnu út frá þáttbundinni lýsingu á efnahvarfi með frekar einfaldri
+aðferð sem kallast stilling með yfirsýn. Tökum sem dæmi sundrun vatns
+sem gefur af sér vetni og súrefni á sameindaformi. Þetta ferli er táknað
+með þáttbundinni en <emphasis effect="italics">óstilltri</emphasis> efnajöfnu:</para>
+<equation id="fs-idm60111376" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp20832160">Samanburður á fjölda H- og O-atóma
+hvorum megin við jöfnuna staðfestir að hún er óstillt:</para>
+<table id="fs-idp104786160" summary="This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 1 equals 1.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “2 equals 2, yes,” and “1 does not equal 2, no.”" class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Stillt?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">H</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">2 = 2, já</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1 = 1</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">1 ≠ 2, nei</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp116453584">Fjöldi H-atóma í hvarfefnum og
+myndefnum jöfnunnar er jafn en fjöldi O-atóma er það ekki. Til að stilla
+jöfnuna má breyta <emphasis effect="italics">stuðlum</emphasis> hennar eftir þörfum. Hafðu þó í huga að
+<emphasis effect="italics">neðanmálsstafir í formúlum</emphasis> skilgreina að hluta til auðkenni efnisins
+og því er ekki hægt að breyta þeim án þess að breyta þáttbundinni
+merkingu jöfnunnar. Til dæmis, ef formúlu hvarfefnisins er breytt úr
+H<sub>2</sub>O í H<sub>2</sub>O<sub>2</sub> myndi fjöldi atóma stillast en það breytir líka
+auðkenni hvarfefnisins (það er nú vetnisperoxíð en ekki vatn). Hægt er
+að stilla O-atómin með því að breyta stuðlinum fyrir H<sub>2</sub>O í 2.</para>
+<equation id="fs-idm1006576" class="unnumbered"><m:math><m:mrow><m:mn mathvariant="bold">2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<table id="fs-idm15543696" summary="This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” The first 2 in the “2 times 2 equals 4” equation is bold. Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “4 does not equal 2, no,” and “2 equals 2, yes.”" class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Jafnað?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">H</entry>
+<entry align="left"><emphasis effect="bold">2</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">4 ≠ 2, nei</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1 = 2</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">2 = 2, já</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp53902400">Jafnvægi H-atómanna raskaðist við
+þessa breytingu, en það er auðveldlega endurheimt með því að breyta
+stuðlinum fyrir myndefnið H<sub>2</sub> í 2.</para>
+<equation id="fs-idm94539648" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn mathvariant="bold">2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(balanced)</m:mtext></m:mrow></m:math></equation>
+<table id="fs-idp151419504" summary="This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” Under the “Products” column are the equations, “2 times 2 equals 2,” and “1 times 2 equals 2.” The first 2 in the “2 times 2 equals 2” equation is bold. Under the “Balanced?” column are, “4 equals 4, yes,” and “2 equals 2, yes.”" class="unnumbered"><label/>
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Jafnað?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">H</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left"><emphasis effect="bold">2</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">4 = 4, já</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 1 = 2</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">2 = 2, já</entry>
+</row>
+</tbody>
+
+</tgroup>
+</table>
+<para id="fs-idp147875376">Þessir stuðlar gefa jafnan fjölda
+bæði H- og O-atóma á hvarfefna- og myndefnahliðinni og jafnaða jafnan er
+því:</para>
+<equation id="fs-idp105215584" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<example id="fs-idp1783792">
+<para id="fs-idp22283888"><title>Jöfnun efnajafna</title>Skrifaðu jafnaða jöfnu fyrir hvarf
+nitursameindar (N<sub>2</sub>) og súrefnis (O<sub>2</sub>) til að mynda tvíniturpentoxíð.</para>
+<para id="fs-idp154895936"><title>Lausn</title>Skrifaðu fyrst ójafnaða jöfnu.</para>
+<equation class="unnumbered" id="fs-idp147872544"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp239172416">Teldu síðan fjölda hverrar
+atómtegundar sem er til staðar í ójafnaðri jöfnu.</para>
+<!-- table handled separately -->
+<para id="fs-idp266947552">Þrátt fyrir að nitur sé jafnað þarf
+að breyta stuðlum til að jafna fjölda súrefnisatóma. Til að jafna fjölda
+súrefnisatóma væri skynsamleg fyrsta tilraun að breyta stuðlunum fyrir
+O<sub>2</sub> og N<sub>2</sub>O<sub>5</sub> í heiltölur sem gefa 10 O-atóm (lægsta samfeldi fyrir
+O-atómvísana í þessum tveimur formúlum).</para>
+<equation class="unnumbered" id="fs-idp80836160"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn mathvariant="bold">5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn mathvariant="bold">2</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<!-- table handled separately -->
+<para id="fs-idp27772864">Jafnvægi N-atómanna hefur raskast við
+þessa breytingu; það er endurheimt með því að breyta stuðlinum fyrir
+hvarfefnið N<sub>2</sub> í 2.</para>
+<equation class="unnumbered" id="fs-idp107722208"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub></m:mrow></m:math></equation>
+<!-- table handled separately -->
+<para id="fs-idp17727056">Fjöldi N- og O-atóma á hvorri hlið
+jöfnunnar er nú jafn og því er jafnan jöfnuð.</para>
+<para id="fs-idp79125936"><title>Spurningar til íhugunar</title>Skrifaðu jafnaða jöfnu fyrir
+niðurbrot ammóníumnítrats til að mynda nitursameind, súrefnissameind og
+vatn. (Vísbending: Jafnaðu súrefni síðast, þar sem það er til staðar í
+fleiri en einni sameind hægra megin við jöfnuna.)</para>
+<note id="fs-idp114338576">
+<title>Answer:</title> <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>
+</note>
+</example>
+<table id="fs-idp107503280" summary="This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 5 equals 5.” Under the “Balanced?” column are, “2 equals 2, yes,” and “2 does not equal 5, no.”" class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Jafnað?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">N</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">2 = 2, já</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 5 = 5</entry>
+<entry align="left">2 ≠ 5, nei</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table id="fs-idp7305424" summary="This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “5 times 2 equals 10.” The 5 in the second equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” The initial 2 in each equation is bold. Under the “Balanced?” column are, “2 does not equal 4, no,” and “10 equals 10, yes.”" class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Jafnað?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">N</entry>
+<entry align="left">1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 2</entry>
+<entry align="left"><emphasis effect="bold">2</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">2 ≠ 4, nei</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left"><emphasis effect="bold">5</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 10</entry>
+<entry align="left"><emphasis effect="bold">2</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 5 = 10</entry>
+<entry align="left">10 = 10, já</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table id="fs-idm9607408" summary="This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “5 times 2 equals 10.” The initial 2 in the first equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” Under the “Balanced?” column are, “4 equals 4, yes,” and “10 equals 10, yes.”" class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Hvarfefni</entry>
+<entry align="left">Myndefni</entry>
+<entry align="left">Jafnað?</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">N</entry>
+<entry align="left"><emphasis effect="bold">2</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 4</entry>
+<entry align="left">4 = 4, já</entry>
+</row>
+<row valign="top">
+<entry align="left">O</entry>
+<entry align="left">5 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 2 = 10</entry>
+<entry align="left">2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 5 = 10</entry>
+<entry align="left">10 = 10, já</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp261408544">Stundum er hentugt að nota almenn
+brot í stað heilla talna sem millistuðla þegar efnajafna er jöfnuð.
+Þegar jafnvægi er náð má margfalda alla stuðla jöfnunnar með heilli tölu
+til að breyta brotastuðlunum í heilar tölur án þess að raska
+atómajafnvæginu. Skoðum til dæmis hvarf etans (C<sub>2</sub>H<sub>6</sub>) við súrefni þar
+sem myndast H<sub>2</sub>O og CO<sub>2</sub>, sem er táknað með ójafnaðri jöfnu:</para>
+<equation id="fs-idp25579440" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp115010864">Samkvæmt venjulegri skoðunaraðferð
+gæti maður fyrst jafnað C- og H-atóm með því að breyta stuðlunum fyrir
+myndefnin tvö, eins og sýnt er:</para>
+<equation id="fs-idp71981056" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp16121888">Þetta leiðir til sjö O-atóma í
+myndefnum jöfnunnar, sem er oddatala – enginn heiltölustuðull er hægt að
+nota með O<sub>2</sub> hvarfefninu til að fá oddatölu, þannig að brotastuðull,
+<m:math><m:mrow><m:mfrac><m:mn>7</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>,</m:mo></m:mrow></m:math>, er notaður í staðinn til að fá bráðabirgðajafnaða
+jöfnu:</para>
+<equation id="fs-idp37794464" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>7</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp54942992">Hefðbundin jöfnuð jafna með eingöngu
+heiltölustuðlum er fengin með því að margfalda hvern stuðul með 2:</para>
+<equation id="fs-idm26016768" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp57635360">Að lokum, varðandi jafnaðar jöfnur,
+skal muna að venja er að nota <emphasis effect="italics">lægstu heiltölustuðlana</emphasis>. Þótt jafnan
+fyrir efnahvarf milli nitursameinda og vetnissameinda til að mynda
+ammoníak sé vissulega stillt,</para>
+<equation id="fs-idp93360688" class="unnumbered"><m:math><m:mrow><m:mn>3</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>9</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>6</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp117890176">eru stuðlarnir ekki lægstu mögulegu
+heiltölurnar sem tákna hlutfallslegan fjölda hvarfefna- og
+myndefnasameinda. Með því að deila hverjum stuðli með stærsta samdeili,
+3, fæst æskileg jafna:</para>
+<equation id="fs-idm15551488" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
+<note id="fs-idp54281248" class="chemistry link-to-learning">
+<para id="fs-idp94095504">Notaðu þetta gagnvirka
+<link url="http://openstax.org/l/16BalanceEq">kennsluefni</link> til að æfa þig meira í að stilla jöfnur.</para>
+</note>
+</section>
+<section id="fs-idp50900304">
+<title>Viðbótarupplýsingar í
+efnajöfnum</title>
+<para id="fs-idp46664848">Hamur hvarfefna og myndefna í
+efnajöfnum er mjög oft tilgreindur með skammstöfun í sviga á eftir
+formúlunum. Algengar skammstafanir eru <emphasis effect="italics">s</emphasis> fyrir föst efni, <emphasis effect="italics">l</emphasis> fyrir
+vökva, <emphasis effect="italics">g</emphasis> fyrir gös og <emphasis effect="italics">aq</emphasis> fyrir efni sem eru leyst upp í vatni
+(<emphasis effect="italics">vatnslausnir</emphasis>, eins og kynnt var í fyrri kafla). Þessi merking er sýnd
+í dæmisjöfnunni hér:</para>
+<equation id="fs-idp55940384" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:mtext>Na</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp38373104">Þessi jafna táknar efnahvarfið sem á
+sér stað þegar natríummálmur er settur í vatn. Fast natríum hvarfast við
+fljótandi vatn og myndar vetnisgas og jónaefnið natríumhýdroxíð (fast
+efni í hreinu formi, en leysist auðveldlega upp í vatni).</para>
+<para id="fs-idp53095760">Sérstök skilyrði sem eru nauðsynleg
+fyrir efnahvarf eru stundum tilgreind með því að skrifa orð eða tákn
+fyrir ofan eða neðan örina í jöfnunni. Til dæmis má gefa til kynna
+efnahvarf sem framkvæmt er með hitun með hástaf gríska bókstafsins delta
+(Δ) yfir örinni.</para>
+<equation id="fs-idp144225920" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo stretchy="false">⟶</m:mo><m:mtext>Δ</m:mtext></m:mover><m:mspace width="0.2em"/><m:mtext>CaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp104838720">Önnur dæmi um þessi sérstöku
+skilyrði verða skoðuð nánar í síðari köflum.</para>
+</section>
+<section id="fs-idp44459328">
+<title>Jöfnur fyrir jónahvörf</title>
+<para id="fs-idm1065424">Í ljósi þess hve mikið vatn er á
+jörðinni er rökrétt að álykta að fjölmörg efnahvörf eigi sér stað í
+vatnslausnum. Þegar jónir taka þátt í þessum efnahvörfum má skrifa
+efnajöfnurnar með mismunandi smáatriðum eftir því hvað hentar tilgangi
+þeirra. Til að útskýra þetta skulum við skoða efnahvarf milli jónaefna
+sem á sér stað í vatnslausn. Þegar vatnslausnum af CaCl<sub>2</sub> og AgNO<sub>3</sub> er
+blandað saman á sér stað efnahvarf sem myndar vatnslausn af Ca(NO<sub>3</sub>)<sub>2</sub>
+og fast AgCl:</para>
+<equation id="fs-idp15979216" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>AgNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Ca</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:msub><m:mrow/><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp204481712">Þessi stillta jafna, sem er fengin á
+venjulegan hátt, er kölluð <emphasis effect="bold">sameindajafna</emphasis> vegna þess að hún sýnir
+ekki berum orðum þær jónategundir sem eru til staðar í lausninni. Þegar
+jónaefni leysast upp í vatni geta þau <emphasis effect="italics">klofnað</emphasis> í jónir sínar, sem
+dreifast síðan einsleitt um lausnina sem myndast (ítarleg umfjöllun um
+þetta mikilvæga ferli er í kaflanum um lausnir). Jónaefni sem eru leyst
+upp í vatni eru því raunhæfara að tákna sem klofnar jónir, í þessu
+tilfelli:</para>
+<equation id="fs-idm1980352" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>CaCl</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>Ca</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:msub><m:mtext>AgNO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msup><m:mtext>Ag</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Ca</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:msub><m:mrow/><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>Ca</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp24388656">Ólíkt þessum þremur jónaefnum leysist
+AgCl ekki upp í vatni að neinu marki, eins og hamur þess, <emphasis effect="italics">s</emphasis>, gefur til
+kynna.</para>
+<para id="fs-idp6577008">Með því að tákna allar uppleystar
+jónir berum orðum fæst <emphasis effect="bold">fullkomin jónajafna</emphasis>. Í þessu tiltekna
+tilfelli er formúlum fyrir uppleystu jónaefnin skipt út fyrir formúlur
+fyrir klofnu jónirnar þeirra:</para>
+<equation id="fs-idp116409536" class="unnumbered"><m:math><m:mrow><m:msup><m:mtext>Ca</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp146097648">Þegar þessi jafna er skoðuð sést að
+tvær efnatengundir eru til staðar í nákvæmlega sömu mynd beggja vegna
+örvarinnar, Ca<sup>2+</sup>(<emphasis effect="italics">aq</emphasis>) og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Þessar <emphasis effect="bold">áhorfendajónir</emphasis> –
+jónir sem eru nauðsynlegar til að viðhalda hleðsluhlutleysi – breytast
+hvorki efnafræðilega né eðlisfræðilega í ferlinu og því má fjarlægja þær
+úr jöfnunni til að fá hnitmiðaðri framsetningu sem kallast <emphasis effect="bold">nettó
+jónajafna</emphasis>:</para>
+<equation id="fs-idp235470368" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mtext>Ca</m:mtext><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:menclose><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Ag</m:mtext><m:mn>+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:menclose notation="horizontalstrike"><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:menclose><m:mo>+</m:mo><m:menclose notation="horizontalstrike"><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:menclose><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Ag</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp8534256">Samkvæmt venjunni um að nota lægstu
+mögulegu heiltölur sem stuðla er þessi jafna síðan skrifuð:</para>
+<equation id="fs-idp266868512" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>Ag</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp42466432">Þessi nettó jónajafna gefur til kynna
+að fast silfurklóríð geti myndast úr uppleystum klóríð- og
+silfur(I)-jónum, óháð uppruna þessara jóna. Þessar sameindajöfnur og
+fullkomnu jónajöfnur veita viðbótarupplýsingar, nefnilega hvaða jónaefni
+voru notuð sem uppspretta Cl<sup>−</sup> og Ag<sup>+</sup>.</para>
+<example id="fs-idp44418832">
+<para id="fs-idm27450736"><title>Jóna- og
+sameindajöfnur</title>Þegar koldíoxíð er leyst upp í
+vatnslausn af natríumhýdroxíði hvarfast efnablandan og myndar vatnslausn
+af natríumkarbónati og fljótandi vatn. Skrifaðu stilltar sameindajöfnur,
+fullkomnar jónajöfnur og nettó jónajöfnur fyrir þetta ferli..</para>
+<para id="fs-idp41941568"><title>Lausn</title>Byrjaðu á því að finna formúlur fyrir
+hvarfefnin og myndefnin og raða þeim rétt upp í efnajöfnu:</para>
+<equation class="unnumbered" id="fs-idp114521376"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(unbalanced)</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp277452576">Jafnvægi næst auðveldlega í þessu
+tilviki með því að breyta stuðlinum fyrir NaOH í 2, sem gefur
+sameindajöfnuna fyrir þetta efnahvarf:</para>
+<equation class="unnumbered" id="fs-idp54247424"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp71749568">Hægt er að tákna tvö uppleyst
+jónaefni, NaOH og Na<sub>2</sub>CO<sub>3</sub>, sem klofnar jónir til að fá
+heildarjónajöfnuna:</para>
+<equation class="unnumbered" id="fs-idp41721264"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msup><m:mtext>Na</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp111986480">Að lokum skaltu finna
+áhorfendajónina/jónirnar, í þessu tilviki Na<sup>+</sup>(<emphasis effect="italics">aq</emphasis>), og fjarlægja hana
+úr báðum hliðum jöfnunnar til að fá nettójónajöfnuna:</para>
+<equation class="unnumbered" id="fs-idp56132768"><m:math><m:mtable><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:menclose notation="horizontalstrike"><m:mrow><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:menclose><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mn>2</m:mn><m:mrow><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:menclose><m:mo>+</m:mo><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp71485312"><title>Prófaðu þekkingu þína</title>Tvíatóma klór og natríumhýdroxíð
+(lútur) eru verslunarvara sem framleidd er í miklu magni, ásamt tvíatóma
+vetni, með rafgreiningu á pækli, samkvæmt eftirfarandi óstilltri jöfnu:</para>
+<equation class="unnumbered" id="fs-idp47302160"><m:math><m:mtable><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mtext>NaCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.2em"/><m:mtext>electricity</m:mtext><m:mspace width="0.2em"/></m:mrow></m:mover><m:mspace width="0.2em"/><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>Cl</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp124894848">Skrifaðu stilltar sameindajöfnur,
+heildarjónajöfnur og nettójónajöfnur fyrir þetta ferli.</para>
+<note id="fs-idp79691824">
+<title>Answer:</title>
+<m:math><m:mn>2</m:mn><m:mtext>NaCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>Cl</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mtext>molecular</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:math><newline/>
+<m:math><m:mn>2</m:mn><m:msup><m:mtext>Na</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msup><m:mtext>Na</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>Cl</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mtext>complete ionic</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:math><newline/>
+<m:math><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>Cl</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(net ionic)</m:mtext></m:math></note>
+</example>
+</section>
+<section id="fs-idp114420064" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp43480096">Efnajöfnur eru táknrænar
+framsetningar á efna- og eðlisfræðilegum breytingum. Formúlur fyrir
+efnin sem gangast undir breytinguna (hvarfefni) og efnin sem myndast við
+breytinguna (myndefni) eru aðskildar með ör og á undan þeim koma
+heiltölustuðlar sem gefa til kynna hlutfallslegan fjölda þeirra.
+Stillaðar jöfnur eru þær þar sem stuðlarnir leiða til jafns fjölda atóma
+fyrir hvert frumefni í hvarfefnum og myndefnum. Efnahvörf í vatnslausn
+sem fela í sér jónísk hvarfefni eða myndefni má setja fram á raunhæfari
+hátt með fullkomnum jónajöfnum og á hnitmiðaðri hátt með nettó
+jónajöfnum.</para>
+</section>
+<section id="fs-idm23851744" class="exercises">
+<title>Efnafræði – Æfingar í lok
+kafla</title>
+<exercise id="fs-idp56139840">
+<problem id="fs-idp76428336">
+<para id="fs-idp53525312">Hvað þýðir það að segja að jafna
+sé stillt? Hvers vegna er mikilvægt að jafna sé stillt?</para>
+</problem>
+<solution id="fs-idm15480208">
+<para id="fs-idm10510096">Jafna er stillt þegar sami fjöldi
+hvers frumefnis er táknaður beggja vegna, bæði hjá hvarfefnum og
+myndefnum. Jöfnur verða að vera stilltar til að endurspegla
+massavarðveislulögmálið nákvæmlega.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp138111360">
+<problem id="fs-idm19720384">
+<para id="fs-idm11951008">Lítum á sameindajöfnur, fullkomnar
+jónajöfnur og nettó jónajöfnur.</para>
+<para id="fs-idp53468064">(a) Hver er munurinn á þessum
+tegundum jafna?</para>
+<para id="fs-idp63946720">(b) Við hvaða aðstæður væru
+fullkomnar jónajöfnur og nettó jónajöfnur fyrir efnahvarf eins?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp267125008">
+<problem id="fs-idm4918080">
+<para id="fs-idp7901376">Stillið eftirfarandi jöfnur:</para>
+<para id="fs-idp156664864">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>POCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm5703840">(b) <m:math><m:mrow><m:mtext>Cu</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Cu</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp26705376">(c) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm2545856">(d) <m:math><m:mrow><m:mtext>Fe</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp38879216">(e) <m:math><m:mrow><m:mtext>Na</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>NaOH</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp261699472">(f) <m:math>
+<m:mrow>
+<m:mo stretchy="false">(</m:mo><m:mrow>
+<m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub>
+</m:mrow><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub>
+
+<m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para><para id="fs-idp78017472">(g) <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp44039696">(h) <m:math><m:mrow><m:msub><m:mrow><m:mtext>PtCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Pt</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idm90785792">
+<para id="fs-idm90785536">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>POCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (b)
+<m:math><m:mrow><m:mn>3</m:mn><m:mtext>Cu</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>8</m:mn><m:msub><m:mrow><m:mtext>HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:mtext>Cu</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (c) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (d) <m:math><m:mrow><m:mn>4</m:mn><m:mtext>Fe</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (e)
+<m:math><m:mrow><m:mn>2</m:mn><m:mtext>Na</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (f) <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow>
+<m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (g) <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (h)
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>PtCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Pt</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para></solution>
+</exercise>
+<exercise id="fs-idp14690896">
+<problem id="fs-idp14691152">
+<para id="fs-idp14691408">Stillið eftirfarandi jöfnur:</para>
+<para id="fs-idp14691792">(a) <m:math><m:mrow><m:mtext>Ag</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>S</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>S</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></para>
+<para id="fs-idp41951632">(b) <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp215876720">(c) <m:math><m:mrow><m:mtext>Pb</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Pb(OH)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp7611408">(d) <m:math><m:mrow><m:mtext>Fe</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp51158528">(e) <m:math><m:mrow><m:msub><m:mrow><m:mtext>Sc</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Sc</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>S</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp77422352">(f) <m:math><m:mrow><m:msub><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mtext>3</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>P</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Ca</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp48923840">(g) <m:math><m:mrow><m:mtext>Al</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>S</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp73552">(h) <m:math><m:mrow><m:msub><m:mrow><m:mtext>TiCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>TiO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp122928448">
+<problem id="fs-idp122928704">
+<para id="fs-idp122928960">Skrifið stillta sameindajöfnu sem
+lýsir hverju eftirfarandi efnahvarfa.</para>
+<para id="fs-idp105395536">(a) Fast kalsíumkarbónat er hitað
+og brotnar niður í fast kalsíumoxíð og koldíoxíðgas.</para>
+<para id="fs-idp105396032">(b) Bútangas, C<sub>4</sub>H<sub>10</sub>, hvarfast
+við tvíatóma súrefnisgas og myndar koldíoxíðgas og vatnsgufu.</para>
+<para id="fs-idp45919792">(c) Vatnslausnir af
+magnesíumklóríði og natríumhýdroxíði hvarfast og mynda fast
+magnesíumhýdroxíð og natríumklóríð í vatnslausn.</para>
+<para id="fs-idp45920336">(d) Vatnsgufa hvarfast við
+natríummálm og myndar fast natríumhýdroxíð og vetnisgas.</para>
+</problem>
+<solution id="fs-idp45920960">
+<para id="fs-idp45921216">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>CaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (b)
+<m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>13</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>8</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>10</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>MgC1</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Mg</m:mtext><m:msub><m:mrow><m:mtext>(OH)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NaCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (d) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>Na</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</solution>
+</exercise>
+<exercise id="fs-idp106387184">
+<problem id="fs-idp106387440">
+<para id="fs-idp106387696">Skrifið stillta jöfnu sem lýsir
+hverju eftirfarandi efnahvarfa.</para>
+<para id="fs-idp106388080">(a) Fast kalíumklórat, KClO<sub>3</sub>,
+brotnar niður og myndar fast kalíumklóríð og tvíatóma súrefnisgas.</para>
+<para id="fs-idp216390688">(b) Fastur álmálmur hvarfast við
+fast tvíatóma joð og myndar fast Al<sub>2</sub>I<sub>6</sub>.</para>
+<para id="fs-idp216391840">(c) Þegar föstu natríumklóríði er
+bætt við brennisteinssýru í vatnslausn myndast vetnisklóríðgas og
+natríumsúlfat í vatnslausn.</para>
+<para id="fs-idp55297936">(d) Vatnslausnir af fosfórsýru og
+kalíumhýdroxíði hvarfast og mynda kalíumtvívetnisfosfat í vatnslausn og
+fljótandi vatn.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp208990784">
+<problem id="fs-idm22160640">
+<para id="fs-idm22160384">Litríkir flugeldar fela oft í sér
+niðurbrot baríumnítrats og kalíumklórats og hvarf málmanna magnesíums,
+áls og járns við súrefni.</para>
+<para id="fs-idm22159824">(a) Skrifið efnaformúlur
+baríumnítrats og kalíumklórats.</para>
+<para id="fs-idm22159440">(b) Niðurbrot á föstu
+kalíumklórati leiðir til myndunar á föstu kalíumklóríði og tvíatóma
+súrefnisgasi. Skrifið efnajöfnu fyrir hvarfið.</para>
+<para id="fs-idm22158880">(c) Niðurbrot á föstu
+baríumnítrati leiðir til myndunar á föstu baríumoxíði, tvíatóma
+niturgasi og tvíatóma súrefnisgasi. Skrifið efnajöfnu fyrir hvarfið.</para>
+<para id="fs-idp208977456">(d) Skrifið aðskildar jöfnur
+fyrir hvarf föstu málmanna magnesíums, áls og járns við tvíatóma
+súrefnisgas til að fá samsvarandi málmoxíð. (Gerið ráð fyrir að
+járnoxíðið innihaldi Fe<sup>3+</sup> jónir.)</para></problem>
+<solution id="fs-idp208978560">
+<para id="fs-idp208978816">(a) Ba(NO<sub>3</sub>)<sub>2</sub>, KClO<sub>3</sub>; (b)
+<m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>KClO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>KCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (c) <m:math><m:mrow><m:mn>2</m:mn><m:mtext>Ba</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>BaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (d) <m:math><m:mn>2</m:mn><m:mtext>Mg</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>MgO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>;</m:mo></m:math> <m:math><m:mn>4</m:mn><m:mtext>Al</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>Al</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>;</m:mo></m:math>
+<m:math><m:mn>4</m:mn><m:mtext>Fe</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>Fe</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:math></para></solution>
+</exercise>
+<exercise id="fs-idp109313632">
+<problem id="fs-idp109313888">
+<para id="fs-idp109314144">Fyllið í eyðuna með einni
+efnaformúlu fyrir samgilt efnasamband sem stillir jöfnuna:</para>
+<media id="fs-idp109314656" alt="This figure shows a chemical reaction. On the left side of the reaction arrow, a structural formula for a molecule is shown on the far left. It has a C atom on the left to which H atoms are bonded above, below, and to the left. To the right, another C atom is bonded which has H atoms bonded above and below. To the right, another C atom is bonded, which has a double bonded O atom above and another O atom singly bonded to the right. To the right of the singly bonded O atom, an H atom is bonded. This is followed by a plus sign and N a O H. A reaction arrow appears to the right, which is followed by another structural formula. It has a C atom on the left to which H atoms are bonded above, below, and to the left. To the right, another C atom is bonded which has H atoms bonded above and below. To the right, another C atom is bonded, which has a double bonded O atom above and another O atom singly bonded to the right. The singly bonded O atom is followed by a superscript negative sign. This is followed to the right by a plus sign, N a superscript positive sign, another plus sign, and a horizontal line segment, indicating a space for an answer to be written.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_01_basehyd_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idp220078048">
+<problem id="fs-idp220078304">
+<para id="fs-idp126128016">Vetnisflúoríð í vatnslausn
+(flúorsýra) er notað til að æta gler og til að greina steinefni með
+tilliti til kísilinnihalds. Vetnisflúoríð hvarfast einnig við sand
+(kísildíoxíð).</para>
+<para id="fs-idm98641232">(a) Skrifið jöfnu fyrir hvarf
+fasts kísildíoxíðs við flúorsýru sem gefur af sér kísiltetraflúoríð á
+gasformi og vatn á vökvaformi.</para>
+<para id="fs-idp126128736">(b) Steinefnið flúorít
+(kalsíumflúoríð) er algengt í Illinois. Einnig er hægt að búa til fast
+kalsíumflúoríð með hvarfi vatnslausna af kalsíumklóríði og
+natríumflúoríði, sem gefur af sér natríumklóríð í vatnslausn sem hitt
+myndefnið. Skrifið heildar- og nettójónajöfnur fyrir þetta hvarf.</para>
+</problem>
+<solution id="fs-idp126129568">
+<para id="fs-idp126129824">(a) <m:math><m:mrow><m:mn>4</m:mn><m:mtext>HF</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mtext>);</m:mtext></m:mrow></m:math> (b)
+heildarjónajafna: <m:math><m:mrow><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>F</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Ca</m:mtext><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mtext>),</m:mtext></m:mrow></m:math> nettójónajafna: <m:math><m:mrow><m:mn>2</m:mn><m:msup><m:mtext>F</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CaF</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</solution>
+</exercise>
+<exercise id="fs-idp61581984">
+<problem id="fs-idp61582240">
+<para id="fs-idp61582496">Nýstárlegt ferli til að vinna
+magnesíum úr sjó felur í sér nokkur efnahvörf. Skrifið stillta efnajöfnu
+fyrir hvert skref ferlisins.</para>
+<para id="fs-idp61583040">(a) Fyrsta skrefið er niðurbrot á
+föstu kalsíumkarbónati úr skelfiski til að mynda fast kalsíumoxíð og
+koldíoxíð á gasformi.</para>
+<para id="fs-idp61583584">(b) Annað skrefið er myndun á
+föstu kalsíumhýdroxíði sem eina myndefnið úr hvarfi fasts kalsíumoxíðs
+við vatn á vökvaformi.</para>
+<para id="fs-idm721584">(c) Föstu kalsíumhýdroxíði er síðan
+bætt út í sjóinn og hvarfast það við uppleyst magnesíumklóríð og gefur
+af sér fast magnesíumhýdroxíð og kalsíumklóríð í vatnslausn.</para>
+<para id="fs-idm721024">(d) Fasta magnesíumhýdroxíðinu er
+bætt við saltsýrulausn og myndast þá uppleyst magnesíumklóríð og vatn á
+vökvaformi.</para>
+<para id="fs-idm720496">(e) Að lokum er magnesíumklóríðið
+brætt og rafgreint til að gefa af sér magnesíummálm á vökvaformi og
+tvíatóma klórgas.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp41635696">
+<problem id="fs-idp41635952">
+<para id="fs-idp41636208">Skrifið heildarjónajöfnur og
+nettójónajöfnur fyrir eftirfarandi út frá stilltum sameindajöfnum:</para>
+<para id="fs-idp41636720">(a) <m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Ba</m:mtext><m:msub><m:mrow><m:mtext>(OH)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>KOH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>BaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para><para id="fs-idp46970864">(b) <m:math><m:mrow><m:mtext>Pb</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>N</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>PbSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm2481664">(c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CaSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp48468160">
+<para id="fs-idp198600416">(a) <m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:mn>2</m:mn><m:msup><m:mtext>K</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>Ba</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msup><m:mtext>K</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>BaC</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(complete)</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:msup><m:mtext>Ba</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>BaC</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(net)</m:mtext></m:mtd></m:mtr></m:mtable></m:math> (b)
+<m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:msup><m:mtext>Pb</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>PbSO</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(complete)</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:msup><m:mtext>Pb</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>PbSO</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(net)</m:mtext></m:mtd></m:mtr></m:mtable></m:math> (c) <m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>CaCO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>CaSO</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(complete)</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>CaCO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>CaSO</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>(net)</m:mtext></m:mtd></m:mtr></m:mtable></m:math></para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp25650896">
+<term>Stillt jafna</term>
+<meaning id="fs-idp25650896-meaning">Efnajafna með jöfnum
+fjölda atóma fyrir hvert frumefni í hvarfefninu og myndefninu</meaning>
+</definition>
+<definition id="fs-idp46927152">
+<term>Efnajafna</term>
+<meaning id="fs-idp46927152-meaning">Táknræn framsetning á
+efnahvarfi</meaning>
+</definition>
+<definition id="fs-idp46928304">
+<term>Stuðull</term>
+<meaning id="fs-idp46928304-meaning">Tala sem er sett fyrir
+framan tákn eða formúlur í efnajöfnu til að gefa til kynna hlutfallslegt
+magn þeirra</meaning>
+</definition>
+<definition id="fs-idp261286592">
+<term>Heildarjónajafna</term>
+<meaning id="fs-idp261286592-meaning">Efnajafna þar sem öll
+uppleyst jónísk hvarfefni og myndefni, þar með taldar áhorfendajónir,
+eru sýnd með formúlum fyrir klofnuðu jónirnar sínar</meaning>
+</definition>
+<definition id="fs-idp94343888">
+<term>Sameindajafna</term>
+<meaning id="fs-idp94343888-meaning">Efnajafna þar sem öll
+hvarfefni og myndefni eru sýnd sem hlutlaus efni</meaning>
+</definition>
+<definition id="fs-idp94345152">
+<term>Nettójónajafna</term>
+<meaning id="fs-idp94345152-meaning">Efnajafna þar sem aðeins
+þau uppleystu jónísku hvarfefni og myndefni sem gangast undir efna- eða
+eðlisfræðilega breytingu eru sýnd (sleppir áhorfendajónum)</meaning>
+</definition>
+<definition id="fs-idp145224064">
+<term>Myndefni</term>
+<meaning id="fs-idp145224064-meaning">Efni sem myndast við
+efna- eða eðlisfræðilega breytingu; sýnt hægra megin við örina í
+efnajöfnu</meaning>
+</definition>
+<definition id="fs-idp145225344">
+<term>Hvarfefni</term>
+<meaning id="fs-idp145225344-meaning">Efni sem gengst undir
+efna- eða eðlisfræðilega breytingu; sýnt vinstra megin við örina í
+efnajöfnu</meaning>
+</definition>
+<definition id="fs-idp271280640">
+<term>Áhorfendajón</term>
+<meaning id="fs-idp271280640-meaning">Jón sem gengst ekki
+undir efna- eða eðlisfræðilega breytingu í hvarfi, en nærvera hennar er
+nauðsynleg til að viðhalda hleðsluhlutleysi</meaning>
+</definition>
+</glossary>
+</document>

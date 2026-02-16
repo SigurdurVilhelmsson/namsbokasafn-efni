@@ -1,0 +1,929 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Tengsl þrýstings, rúmmáls, magns og
+hitastigs: Lögmál kjörgass</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68751</md:content-id>
+  <md:title>Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Greint stærðfræðileg tengsl
+milli hinna ýmsu eiginleika lofttegunda</item><item>Notað lögmál kjörgass og
+skyld lögmál um gas til að reikna út gildi ýmissa eiginleika gass við
+tilgreindar aðstæður</item></list></md:abstract>
+  <md:uuid>1f39d5df-ef6a-43de-a533-117a5dc92f44</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm111531200">Á sautjándu og sérstaklega átjándu
+öld, knúin áfram bæði af löngun til að skilja náttúruna og leit að því
+að búa til loftbelgi sem hægt væri að fljúga í (<link target-id="CNX_Chem_09_02_Ballooning"/>), komu
+nokkrir vísindamenn á fót tengslum milli stórsærra eðliseiginleika
+lofttegunda, þ.e. þrýstings, rúmmáls, hitastigs og magns gass. Þrátt
+fyrir að mælingar þeirra væru ekki nákvæmar miðað við nútíma staðla,
+gátu þeir ákvarðað stærðfræðileg tengsl milli para þessara breytna (t.d.
+þrýstings og hitastigs, þrýstings og rúmmáls) sem gilda fyrir <emphasis effect="italics">kjörgas</emphasis>
+– tilgátulegt fyrirbæri sem raunverulegt gas nálgast við ákveðnar
+aðstæður. Að lokum voru þessi einstaklingslögmál sameinuð í eina jöfnu –
+<emphasis effect="italics">lögmál kjörgass</emphasis> – sem tengir saman magn lofttegunda og er nokkuð
+nákvæm fyrir lágan þrýsting og hóflegt hitastig. Við munum skoða helstu
+þróun í einstökum tengslum (af kennslufræðilegum ástæðum ekki alveg í
+sögulegri röð), og setja þau síðan saman í lögmál kjörgass.</para>
+<figure id="CNX_Chem_09_02_Ballooning">
+<media id="fs-idm140387808" alt="This figure includes three images. Image a is a black and white image of a hydrogen balloon apparently being deflated by a mob of people. In image b, a blue, gold, and red balloon is being held to the ground with ropes while positioned above a platform from which smoke is rising beneath the balloon. In c, an image is shown in grey on a peach-colored background of an inflated balloon with vertical striping in the air. It appears to have a basket attached to its lower side. A large stately building appears in the background.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Ballooning.jpg"/>
+</media>
+<caption>Árið 1783 átti
+sér stað fyrsta (a) flug vetnisfyllts loftbelgs, (b) mannað flug
+loftbelgs með heitu lofti og (c) mannað flug vetnisfyllts loftbelgs.
+Þegar vetnisfyllti loftbelgurinn sem sýndur er í (a) lenti, er sagt að
+hræddir þorpsbúar í Gonesse hafi eyðilagt hann með heykvíslum og hnífum.
+Sjósetningu þess síðarnefnda fylgdust að sögn 400.000 manns með í París.</caption>
+</figure>
+<section id="fs-idm39174352">
+<title>Þrýstingur og hitastig: Lögmál
+Amontons</title>
+<para id="fs-idm131642544">Ímyndaðu þér að fylla stíft ílát sem
+er tengt við þrýstimæli með gasi og loka síðan ílátinu þannig að ekkert
+gas sleppi út. Ef ílátið er kælt verður gasið inni í því einnig kaldara
+og sést að þrýstingur þess minnkar. Þar sem ílátið er stíft og vel lokað
+haldast bæði rúmmál og mólfjöldi gassins stöðug. Ef við hitum kúluna
+verður gasið inni í henni heitara (<link target-id="CNX_Chem_09_01_Amontons1"/>) og þrýstingurinn eykst.</para>
+<figure id="CNX_Chem_09_01_Amontons1"><media id="fs-idp8042736" alt="This figure includes three similar diagrams. In the first diagram to the left, a rigid spherical container of a gas to which a pressure gauge is attached at the top is placed in a large beaker of water, indicated in light blue, atop a hot plate. The needle on the pressure gauge points to the far left on the gauge. The diagram is labeled “low P” above and “hot plate off” below. The second similar diagram also has the rigid spherical container of gas placed in a large beaker from which light blue wavy line segments extend from the top of the liquid in the beaker. The beaker is situated on top of a slightly reddened circular area. The needle on the pressure gauge points straight up, or to the middle on the gauge. The diagram is labeled “medium P” above and “hot plate on medium” below. The third diagram also has the rigid spherical container of gas placed in a large beaker in which bubbles appear near the liquid surface and several wavy light blue line segments extend from the surface out of the beaker. The beaker is situated on top of a bright red circular area. The needle on the pressure gauge points to the far right on the gauge. The diagram is labeled “high P” above and “hot plate on high” below.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Amontons1.jpg"/>
+</media>
+<caption>Áhrif hitastigs
+á gasþrýsting: Þegar slökkt er á hitahrærunni er þrýstingur gassins í
+kúlunni tiltölulega lágur. Þegar gasið er hitað eykst þrýstingur gassins
+í kúlunni.</caption></figure>
+<para id="fs-idm111816736">Þessi tengsl milli hitastigs og
+þrýstings sjást fyrir hvaða sýni af gasi sem er lokað í stöðugu rúmmáli.
+Dæmi um tilraunagögn um þrýsting og hitastig er sýnt fyrir loftsýni við
+þessar aðstæður í <link target-id="CNX_Chem_09_02_Amontons2"/>. Við komumst að því að hitastig og
+þrýstingur eru línulega tengd, og ef hitastigið er á kelvinkvarða, þá
+eru <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">T</emphasis> í beinu hlutfalli (aftur, þegar <emphasis effect="italics">rúmmál og mólfjöldi gass
+eru haldnir stöðugir</emphasis>); ef hitastigið á kelvinkvarða eykst um ákveðinn
+þátt, eykst gasþrýstingurinn um sama þátt.</para>
+<figure id="CNX_Chem_09_02_Amontons2">
+<media id="fs-idm113341280" alt="This figure includes a table and a graph. The table has 3 columns and 7 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, kPa.” The first column contains the following values from top to bottom: negative 100, negative 50, 0, 50, 100, and 150. The second column contains the values, from top to bottom, 173, 223, 273, 323, 373, and 423. The third column contains the values 36.0, 46.4, 56.7, 67.1, 77.5, and 88.0. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 500. The vertical axis is labeled “Pressure ( kPa )” with markings and labels provided for multiples of 10, beginning at 0 and ending at 100. Six data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. A dashed line extends from the data point furthest to the left to the origin. The graph shows a positive linear trend.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Amontons2.jpg"/>
+</media>
+<caption>Fyrir stöðugt
+rúmmál og magn lofts eru þrýstingur og hitastig í beinu hlutfalli, að
+því tilskildu að hitastigið sé í kelvin. (Ekki er hægt að gera mælingar
+við lægra hitastig vegna þéttingar gassins.) Þegar þessi lína er
+framlengd að lægri þrýstingi nær hún þrýstingnum 0 við –273 °C, sem er 0
+á kelvinkvarða og lægsta mögulega hitastig, kallað alkul.</caption>
+</figure>
+<para id="fs-idm33029376">Guillaume Amontons var fyrstur til að
+staðfesta með reynslu tengslin milli þrýstings og hitastigs gass
+(~1700), og Joseph Louis Gay-Lussac ákvarðaði tengslin nákvæmar (~1800).
+Vegna þessa er <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">T</emphasis> sambandið fyrir lofttegundir þekkt sem annaðhvort
+<emphasis effect="bold">lögmál Amontons</emphasis> eða <emphasis effect="bold">lögmál Gay-Lussacs</emphasis>. Undir hvoru nafni sem
+er, segir það að <emphasis effect="italics">þrýstingur ákveðins magns gass sé í beinu hlutfalli
+við hitastig þess á kelvinkvarða þegar rúmmálið er haldið stöðugu</emphasis>.
+Stærðfræðilega má skrifa þetta:</para>
+<equation id="fs-idp58663824" class="unnumbered"><m:math><m:mrow><m:mi>P</m:mi><m:mo>∝</m:mo><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mtext>constant</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>T</m:mi></m:mrow></m:math></equation>
+<para id="fs-idp12374848">þar sem ∝ þýðir „er í hlutfalli við,“
+og <emphasis effect="italics">k</emphasis> er hlutfallsvakinn sem fer eftir auðkenni, magni og rúmmáli
+gassins.</para>
+<para id="fs-idm100617456">Fyrir innilokað, stöðugt rúmmál gass
+er hlutfallið <m:math><m:mrow><m:mfrac><m:mi>P</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> því stöðugt (þ.e. <m:math><m:mrow><m:mfrac><m:mi>P</m:mi><m:mi>T</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mi>k</m:mi></m:mrow></m:math>). Ef gasið
+er upphaflega í „ástandi 1“ (með <emphasis effect="italics">P</emphasis> = <emphasis effect="italics">P</emphasis><sub>1</sub> og <emphasis effect="italics">T</emphasis> = <emphasis effect="italics">T</emphasis><sub>1</sub>), og
+breytist síðan í „ástand 2“ (með <emphasis effect="italics">P</emphasis> = <emphasis effect="italics">P</emphasis><sub>2</sub> og <emphasis effect="italics">T</emphasis> = <emphasis effect="italics">T</emphasis><sub>2</sub>), höfum
+við að <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mi>k</m:mi></m:mrow></m:math> og <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>,</m:mo></m:mrow></m:math> sem einfaldast í <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>
+Þessi jafna er gagnleg fyrir útreikninga á þrýstingi og hitastigi fyrir
+innilokað gas við stöðugt rúmmál. Athugið að hitastig verður að vera á
+kelvinkvarða fyrir alla útreikninga á gaslögmálum (0 á kelvinkvarða og
+lægsta mögulega hitastig er kallað <emphasis effect="bold">alkul</emphasis>). (Athugið einnig að það
+eru að minnsta kosti þrjár leiðir til að lýsa því hvernig þrýstingur
+gass breytist þegar hitastig þess breytist: Við getum notað gildistöflu,
+graf eða stærðfræðijöfnu.)</para>
+<example id="fs-idm66260928">
+<para id="fs-idm61839504"><title>Að spá fyrir um
+breytingu á þrýstingi með hitastigi</title>Hárspreybrúsi er notaður þar til hann
+er tómur, fyrir utan drifefnið, ísóbútangas.</para>
+<para id="fs-idp96109888">(a) Á brúsanum er viðvörunin „Geymist
+aðeins við lægra hitastig en 120 °F (48,8 °C). Má ekki brenna.“ Hvers
+vegna?</para>
+<para id="fs-idm53382240">(b) Gasið í brúsanum er upphaflega
+við 24 °C og 360 kPa og brúsinn hefur rúmmálið 350 ml. Ef brúsinn er
+skilinn eftir í bíl sem nær 50 °C á heitum degi, hver er þá nýr
+þrýstingur í brúsanum?</para>
+<para id="fs-idm152475936"><title>Lausn</title>(a) Brúsinn inniheldur magn af
+ísóbútangasi við fast rúmmál, þannig að ef hitastigið er aukið með hitun
+mun þrýstingurinn aukast í réttu hlutfalli. Hátt hitastig gæti leitt til
+hás þrýstings sem veldur því að brúsinn springur. (Ísóbútan er einnig
+eldfimt, þannig að brennsla gæti valdið því að brúsinn springi.)</para>
+<para id="fs-idp91458240">(b) Við erum að leita að
+þrýstingsbreytingu vegna hitastigsbreytingar við fast rúmmál, þannig að
+við munum nota lögmál Amontons/Gay-Lussac. Ef við tökum <emphasis effect="italics">P</emphasis><sub>1</sub> og <emphasis effect="italics">T</emphasis><sub>1</sub>
+sem upphafsgildi, <emphasis effect="italics">T</emphasis><sub>2</sub> sem hitastigið þar sem þrýstingurinn er
+óþekktur og <emphasis effect="italics">P</emphasis><sub>2</sub> sem óþekkta þrýstinginn og breytum °C í K, fáum við:</para>
+<equation id="fs-idp253098544" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mtext>which means that</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mn>360</m:mn><m:mspace width="0.2em"/><m:mtext>kPa</m:mtext></m:mrow><m:mrow><m:mn>297</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>323</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm99533072">Með því að endurraða og leysa fæst:
+<m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>360</m:mn><m:mspace width="0.2em"/><m:mtext>kPa</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>323</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>297</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>390</m:mn><m:mspace width="0.2em"/><m:mtext>kPa</m:mtext></m:mrow></m:math></para>
+<para id="fs-idm87475200"><title>Prófaðu þekkingu þína</title>Sýni af köfnunarefni, N<sub>2</sub>, tekur
+45,0 ml við 27 °C og 600 torr. Hver verður þrýstingurinn ef það er kælt
+niður í –73 °C á meðan rúmmálið helst óbreytt?</para>
+<note id="fs-idp78288768">
+<title>Answer:</title>
+<para id="fs-idm117579760">400 torr</para>
+</note>
+</example>
+</section>
+<section id="fs-idp20892224">
+<title>Rúmmál og hitastig: Lögmál
+Charles</title>
+<para id="fs-idm19167872">Ef við fyllum blöðru af lofti og
+lokum henni inniheldur blaðran ákveðið magn af lofti við loftþrýsting,
+segjum 1 atm. Ef við setjum blöðruna í ísskáp kólnar gasið inni í henni
+og blaðran skreppur saman (þótt bæði magn gassins og þrýstingur þess
+haldist óbreytt). Ef við gerum blöðruna mjög kalda mun hún skreppa mikið
+saman og hún þenst út aftur þegar hún hitnar.</para>
+<note id="fs-idp27422192" class="chemistry link-to-learning">
+<para id="fs-idp60978480">Þetta <link url="http://openstax.org/l/16CharlesLaw">myndband</link>
+sýnir hvernig kæling og hitun á gasi veldur því að rúmmál þess minnkar
+eða eykst.</para>
+</note>
+<para id="fs-idp49208960">Þessi dæmi um áhrif hitastigs á
+rúmmál tiltekins magns af afmörkuðu gasi við fastan þrýsting eiga
+almennt við: Rúmmálið eykst þegar hitastigið eykst og minnkar þegar
+hitastigið minnkar. Gögn um rúmmál og hitastig fyrir 1 móls sýni af
+metangasi við 1 atm eru skráð og sýnd á línuriti í <link target-id="CNX_Chem_09_02_Charles2"/>.</para>
+<figure id="CNX_Chem_09_02_Charles2">
+<media id="fs-idm62135472" alt="This figure includes a table and a graph. The table has 3 columns and 6 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, k P a.” The first column contains the values from top to bottom negative 100, negative 50, 0, 100, and 200. The second column contains the values from top to bottom 173, 223, 273, 373, and 473. The third column contains the values 14.10, 18.26, 22.40, 30.65, and 38.88. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 300. The vertical axis is labeled “Volume ( L )” with marking and labels provided for multiples of 10, beginning at 0 and ending at 30. Five data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. The graph shows a positive linear trend.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Charles2.jpg"/>
+</media>
+<caption>Rúmmál og
+hitastig eru í línulegu sambandi fyrir 1 mól af metangasi við fastan
+þrýsting upp á 1 atm. Ef hitastigið er í kelvin eru rúmmál og hitastig í
+beinu hlutfalli. Línan stoppar við 111 K vegna þess að metan verður að
+vökva við þetta hitastig; þegar hún er framlengd sker hún upphafspunkt
+grafsins, sem táknar hitastig alkuls.</caption>
+</figure>
+<para id="fs-idp38621856">Sambandið milli rúmmáls og hitastigs
+tiltekins magns af gasi við fastan þrýsting er þekkt sem lögmál Charles
+til heiðurs franska vísindamanninum og frumkvöðli í loftbelgsflugi,
+Jacques Alexandre César Charles. <emphasis effect="bold">Lögmál Charles</emphasis> segir að <emphasis effect="italics">rúmmál
+tiltekins magns af gasi sé í beinu hlutfalli við hitastig þess á
+kelvinkvarða þegar þrýstingi er haldið föstum</emphasis>.</para>
+<para id="fs-idp174747472">Stærðfræðilega má skrifa þetta sem:</para>
+<equation id="fs-idm59931152" class="unnumbered"><m:math><m:mrow><m:mi>V</m:mi><m:mspace width="0.2em"/><m:mtext>α</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>V</m:mi><m:mo>=</m:mo><m:mtext>constant</m:mtext><m:mtext>·</m:mtext><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mtext>·</m:mtext><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mtext>/</m:mtext><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mtext>/</m:mtext><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp134528">þar sem <emphasis effect="italics">k</emphasis> er hlutfallfasti sem fer
+eftir magni og þrýstingi gassins.</para>
+<para id="fs-idp8180592">Fyrir afmarkað gassýni með föstum
+þrýstingi er <m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> fasti (þ.e. hlutfallið = <emphasis effect="italics">k</emphasis>) og eins og
+sést með <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">T</emphasis> sambandinu leiðir þetta til annarrar myndar af lögmáli
+Charles: <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math></para>
+<example id="fs-idm45782128">
+<para id="fs-idp8413888"><title>Að spá fyrir um
+breytingu á rúmmáli með hitastigi</title>Sýni af koldíoxíði, CO<sub>2</sub>, tekur 0,300
+L við 10 °C og 750 torr. Hvert verður rúmmál gassins við 30 °C og 750
+torr?</para>
+<para id="fs-idp207430880"><title>Lausn</title>Þar sem við erum að leita að
+rúmmálsbreytingu sem stafar af hitastigsbreytingu við stöðugan þrýsting
+er þetta verkefni fyrir lögmál Charles. Við tökum <emphasis effect="italics">V</emphasis><sub>1</sub> og <emphasis effect="italics">T</emphasis><sub>1</sub> sem
+upphafsgildi, <emphasis effect="italics">T</emphasis><sub>2</sub> sem hitastigið þar sem rúmmálið er óþekkt og <emphasis effect="italics">V</emphasis><sub>2</sub>
+sem óþekkta rúmmálið og breytum °C í K og fáum:</para>
+<equation id="fs-idp22541168" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mtext>which means that</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mn>0.300</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow><m:mrow><m:mn>283</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>303</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp170393776">Með umröðun og lausn fæst:
+<m:math><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.300</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>303</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>283</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.321</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp111256368">Þetta svar styður væntingar okkar út
+frá lögmáli Charles, þ.e. að hækkun á hitastigi gassins (úr 283 K í 303
+K) við stöðugan þrýsting muni gefa aukningu á rúmmáli þess (úr 0,300 L í
+0,321 L).</para>
+<para id="fs-idp28974272"><title>Prófaðu þekkingu þína</title>Sýni af súrefni, O<sub>2</sub>, tekur 32,2 ml
+við 30 °C og 452 torr. Hvaða rúmmál mun það taka við –70 °C og sama
+þrýstingi?</para>
+<note id="fs-idm7218016">
+<title>Answer:</title>
+<para id="fs-idp96328352">21,6 ml</para>
+</note>
+</example>
+<example id="fs-idm51209248">
+<para id="fs-idp100881520"><title>Mæling á hitastigi með
+rúmmálsbreytingu</title>Hitastig er stundum mælt með
+gashitamæli með því að fylgjast með breytingu á rúmmáli gassins þegar
+hitastigið breytist við stöðugan þrýsting. Vetnið í tilteknum
+vetnisgashitamæli hefur rúmmálið 150,0 cm<sup>3</sup> þegar því er dýft í
+efnablöndu af ís og vatni (0,00 °C). Þegar því er dýft í sjóðandi
+fljótandi ammóníak er rúmmál vetnisins, við sama þrýsting, 131,7 cm<sup>3</sup>.
+Finndu hitastig sjóðandi ammóníaks á kelvin- og celsíuskvarða.</para>
+<para id="fs-idm38946752"><title>Lausn</title>Þegar hitamælinum er dýft í
+ísvatnsbað við 0,00 °C (<emphasis effect="italics">T</emphasis><sub>1</sub>) er rúmmál gassins í honum 150,0 cm<sup>3</sup>
+(<emphasis effect="italics">V</emphasis><sub>1</sub>). Þegar honum er dýft í sjóðandi fljótandi ammóníak (<emphasis effect="italics">T</emphasis><sub>2</sub>) er
+rúmmál gassins í hitamælinum 131,7 cm<sup>3</sup>. Sambandið milli rúmmáls og
+hitastigs við stöðugan þrýsting er gefið með lögmáli Charles:</para>
+<equation id="fs-idp40102160" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mtext>which means that</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mn>150.0</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mrow><m:mn>273.15</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>131.7</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp6920384">Umröðun gefur <m:math><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>131.7</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>cm</m:mtext></m:mrow></m:menclose></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>273.15</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow><m:mrow><m:mn>150.0</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>cm</m:mtext></m:mrow></m:menclose></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>239.8</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:math></para>
+<para id="fs-idm36267744">Með því að draga 273,15 frá 239,8 K
+finnum við að hitastig sjóðandi ammóníaks á celsíuskvarða er –33,4 °C.</para>
+<para id="fs-idm26636752"><title>Prófaðu þekkingu þína</title>Hvert er rúmmál sýnis af etani við
+467 K og 1,1 atm ef það tekur 405 ml við 298 K og 1,1 atm?</para>
+<note id="fs-idm69251328">
+<title>Answer:</title>
+<para id="fs-idp170212592">635 ml</para>
+</note>
+</example>
+</section>
+<section id="fs-idm198797136">
+<title>Rúmmál og þrýstingur: Lögmál
+Boyle</title>
+<para id="fs-idm87156432">Ef við fyllum loftþétta sprautu að
+hluta með lofti inniheldur sprautan tiltekið magn af lofti við stöðugt
+hitastig, segjum 25 °C. Ef við ýtum stimplinum hægt inn á meðan
+hitastigið er stöðugt er gasinu í sprautunni þjappað saman í minna
+rúmmál og þrýstingur þess eykst; ef við drögum stimpilinn út eykst
+rúmmálið og þrýstingurinn minnkar. Þetta dæmi um áhrif rúmmáls á
+þrýsting tiltekins magns af afmörkuðu gasi gildir almennt. Með því að
+minnka rúmmál afmarkaðs gass eykst þrýstingur þess og með því að auka
+rúmmál þess minnkar þrýstingur þess. Reyndar, ef rúmmálið eykst um
+ákveðinn þátt, minnkar þrýstingurinn um sama þátt og öfugt. Rúmmáls- og
+þrýstingsgögn fyrir loftsýni við stofuhita eru sýnd á línuriti í
+<link target-id="CNX_Chem_09_03_BoylesLaw1"/>.</para>
+<figure id="CNX_Chem_09_03_BoylesLaw1" class="scaled-down">
+<media id="fs-idm8799376" alt="This figure contains a diagram and two graphs. The diagram shows a syringe labeled with a scale in m l or c c with multiples of 5 labeled beginning at 5 and ending at 30. The markings halfway between these measurements are also provided. Attached at the top of the syringe is a pressure gauge with a scale marked by fives from 40 on the left to 5 on the right. The gauge needle rests between 10 and 15, slightly closer to 15. The syringe plunger position indicates a volume measurement about halfway between 10 and 15 m l or c c. The first graph is labeled “V ( m L )” on the horizontal axis and “P ( p s i )” on the vertical axis. Points are labeled at 5, 10, 15, 20, and 25 m L with corresponding values of 39.0, 19.5, 13.0, 9.8, and 6.5 p s i. The points are connected with a smooth curve that is declining at a decreasing rate of change. The second graph is labeled “V ( m L )” on the horizontal axis and “1 divided by P ( p s i )” on the vertical axis. The horizontal axis is labeled at multiples of 5, beginning at zero and extending up to 35 m L. The vertical axis is labeled by multiples of 0.02, beginning at 0 and extending up to 0.18. Six points indicated by black dots on this graph are connected with a black line segment showing a positive linear trend.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_BoylesLaw1.jpg"/>
+</media>
+<caption>Þegar gas tekur
+minna rúmmál beitir það hærri þrýstingi; þegar það tekur stærra rúmmál
+beitir það lægri þrýstingi (að því gefnu að magn gass og hitastig
+breytist ekki). Þar sem <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">V</emphasis> eru í öfugu hlutfalli er línurit af
+<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">V</emphasis> línulegt.</caption></figure>
+<para id="fs-idm298625584">Ólíkt <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">T</emphasis> og <emphasis effect="italics">V</emphasis>-<emphasis effect="italics">T</emphasis> sambandinu
+eru þrýstingur og rúmmál ekki í beinu hlutfalli við hvort annað. Þess í
+stað sýna <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">V</emphasis> andhverfa proportionalitet: Aukning á þrýstingi
+leiðir til minnkunar á rúmmáli gassins. Stærðfræðilega má skrifa þetta
+svona:</para>
+<equation id="fs-idp169510384" class="unnumbered"><m:math><m:mrow><m:mi>P</m:mi><m:mspace width="0.2em"/><m:mtext>α</m:mtext><m:mspace width="0.2em"/><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mi>V</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mtext>·</m:mtext><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mi>V</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi><m:mtext>·</m:mtext><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm132946352">þar sem <emphasis effect="italics">k</emphasis> er fasti. Þetta samband
+sést á myndrænan hátt á beinni línunni sem myndast þegar andhverfa
+þrýstingsins <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> er teiknuð á móti rúmmálinu (<emphasis effect="italics">V</emphasis>), eða
+andhverfa rúmmálsins <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>V</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> á móti þrýstingnum (<emphasis effect="italics">P</emphasis>). Erfitt er
+að lesa nákvæmlega af línuritum með sveigðum línum við lág eða há gildi
+breytanna og erfiðara er að nota þau til að aðlaga fræðilegar jöfnur og
+færibreytur að tilraunagögnum. Af þeim sökum reyna vísindamenn oft að
+finna leið til að gera gögnin sín „línuleg“. Ef við teiknum <emphasis effect="italics">P</emphasis> á móti
+<emphasis effect="italics">V</emphasis> fáum við breiðboga (sjá <link target-id="CNX_Chem_09_02_Boyleslaw2"/>).</para>
+<figure id="CNX_Chem_09_02_Boyleslaw2" class="scaled-down"><media id="fs-idm137483904" alt="This diagram shows two graphs. In a, a graph is shown with volume on the horizontal axis and pressure on the vertical axis. A curved line is shown on the graph showing a decreasing trend with a decreasing rate of change. In b, a graph is shown with volume on the horizontal axis and one divided by pressure on the vertical axis. A line segment, beginning at the origin of the graph, shows a positive, linear trend.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Boyleslaw2.jpg"/>
+</media>
+
+<caption>Sambandið milli
+þrýstings og rúmmáls er í öfugu hlutfalli. (a) Línuritið fyrir <emphasis effect="italics">P</emphasis> á
+móti <emphasis effect="italics">V</emphasis> er breiðbogi, en (b) línuritið fyrir <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> á móti <emphasis effect="italics">V</emphasis>
+er línulegt.</caption></figure>
+<para id="fs-idm207692112">Enski náttúruspekingurinn Robert
+Boyle birti fyrstur niðurstöður um sambandið milli rúmmáls og þrýstings
+ákveðins magns af gasi við fast hitastig fyrir rúmum 300 árum. Það er
+tekið saman í fullyrðingunni sem nú er þekkt sem <emphasis effect="bold">lögmál Boyles</emphasis>:
+<emphasis effect="italics">Rúmmál ákveðins magns af gasi sem haldið er við fast hitastig er í
+öfugu hlutfalli við þrýstinginn sem það er mælt við.</emphasis></para>
+<example id="fs-idp10418864">
+<para id="fs-idm205798208"><title>Rúmmál gassýnis</title>Gassýnið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/> hefur rúmmálið
+15,0 ml við þrýstinginn 13,0 psi. Ákvarðaðu þrýsting gassins við
+rúmmálið 7,5 ml með því að nota:</para>
+<para id="fs-idm127753872">(a) <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
+<para id="fs-idm129344864">(b) <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">V</emphasis>
+línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
+<para id="fs-idm92820144">(c) jöfnu lögmáls Boyles</para>
+<para id="fs-idm215125536">Gerðu athugasemd við líklega hittni
+hverrar aðferðar.</para>
+<para id="fs-idm126059440"><title>Lausn</title>(a) Mat út frá <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritinu
+gefur gildi fyrir <emphasis effect="italics">P</emphasis> í kringum 27 psi.</para>
+<para id="fs-idm112322224">(b) Mat út frá <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math> á
+móti <emphasis effect="italics">V</emphasis> línuritinu gefur gildi um 26 psi.</para>
+<para id="fs-idm124214336">(c) Samkvæmt lögmáli Boyles vitum
+við að myndefni þrýstings og rúmmáls (<emphasis effect="italics">PV</emphasis>) fyrir tiltekið gassýni við
+fast hitastig er alltaf jafnt sama gildinu. Þess vegna höfum við
+<emphasis effect="italics">P</emphasis><sub>1</sub><emphasis effect="italics">V</emphasis><sub>1</sub> = <emphasis effect="italics">k</emphasis> og <emphasis effect="italics">P</emphasis><sub>2</sub><emphasis effect="italics">V</emphasis><sub>2</sub> = <emphasis effect="italics">k</emphasis> sem þýðir að <emphasis effect="italics">P</emphasis><sub>1</sub><emphasis effect="italics">V</emphasis><sub>1</sub> =
+<emphasis effect="italics">P</emphasis><sub>2</sub><emphasis effect="italics">V</emphasis><sub>2</sub>.</para>
+<para id="fs-idm207111184">Með því að nota <emphasis effect="italics">P</emphasis><sub>1</sub> og <emphasis effect="italics">V</emphasis><sub>1</sub> sem
+þekktu gildin 13,0 psi og 15,0 ml, <emphasis effect="italics">P</emphasis><sub>2</sub> sem þrýstinginn þar sem
+rúmmálið er óþekkt og <emphasis effect="italics">V</emphasis><sub>2</sub> sem óþekkta rúmmálið, höfum við:</para><equation id="fs-idp70444944" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mn>13.0</m:mn><m:mspace width="0.2em"/><m:mtext>psi</m:mtext><m:mspace width="0.2em"/><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>15.0</m:mn><m:mspace width="0.2em"/><m:mtext>mL</m:mtext><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>7.5</m:mn><m:mspace width="0.2em"/><m:mtext>mL</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm167382656">Lausn:</para>
+<equation id="fs-idp79285632" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>13.0</m:mn><m:mspace width="0.2em"/><m:mtext>psi</m:mtext><m:mspace width="0.2em"/><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>15.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>7.5</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>26</m:mn><m:mspace width="0.2em"/><m:mtext>psi</m:mtext></m:mrow></m:math></equation><para id="fs-idm146893296">Það var erfiðara að meta vel út frá
+<emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritinu, þannig að (a) er líklega ónákvæmara en (b) eða (c).
+Útreikningurinn verður jafn nákvæmur og jafnan og mælingarnar leyfa.</para>
+<para id="fs-idm111326864"><title>Prófaðu þekkingu þína</title>Gassýnið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/> hefur
+rúmmálið 30,0 ml við þrýstinginn 6,5 psi. Ákvarðaðu rúmmál gassins við
+þrýstinginn 11,0 psi með því að nota:</para><para id="fs-idm161358576">(a) <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
+<para id="fs-idm130543696">(b) <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">V</emphasis>
+línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
+<para id="fs-idm208892896">(c) jöfnu lögmáls Boyles</para>
+<para id="fs-idm265464784">Gerðu athugasemd við líklega hittni
+hverrar aðferðar.</para>
+<note id="fs-idp7933296">
+<title>Answer:</title>
+<para id="fs-idm53855168">(a) um 17–18 ml; (b) ~18 ml; (c) 17,7
+ml; það var erfiðara að áætla vel út frá <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis>-grafinu, þannig að (a)
+er líklega ónákvæmara en (b); útreikningurinn verður eins nákvæmur og
+jafnan og mælingarnar leyfa</para>
+</note>
+</example>
+<note id="fs-idm202428608" class="chemistry everyday-life">
+<title>Öndun og lögmál Boyles</title>
+<para id="fs-idm208195776">Hvað gerir þú um 20 sinnum á mínútu
+alla ævi, án afláts og oft án þess að vera meðvitaður um það? Svarið er
+auðvitað öndun. Hvernig virkar hún? Það kemur í ljós að gaslögmálin eiga
+við hér. Lungun þín taka inn gas sem líkaminn þarf á að halda (súrefni)
+og losa sig við úrgangsgas (koltvísýring). Lungun eru gerð úr
+svampkenndum, teygjanlegum vef sem þenst út og dregst saman á meðan þú
+andar. Þegar þú andar inn dragast þindin og millirifjavöðvarnir
+(vöðvarnir milli rifbeinanna) saman, sem stækkar brjóstholið og eykur
+rúmmál lungnanna. Aukningin á rúmmáli leiðir til minnkunar á þrýstingi
+(lögmál Boyles). Þetta veldur því að loft streymir inn í lungun (frá
+háum þrýstingi yfir í lágan þrýsting). Þegar þú andar frá sér snýst
+ferlið við: Þindin og rifjavöðvarnir slaka á, brjóstholið dregst saman
+og rúmmál lungnanna minnkar, sem veldur því að þrýstingurinn eykst
+(aftur lögmál Boyles), og loft streymir út úr lungunum (frá háum
+þrýstingi yfir í lágan þrýsting). Þú andar svo inn og út aftur og aftur
+og endurtekur þessa hringrás lögmáls Boyles það sem eftir er ævinnar
+(<link target-id="CNX_Chem_09_02_BoylesLaw4"/>).</para>
+<figure id="CNX_Chem_09_02_BoylesLaw4">
+<media id="fs-idm198513808" alt="This figure contains two diagrams of a cross section of the human head and torso. The first diagram on the left is labeled “Inspiration.” It shows curved arrows in gray proceeding through the nasal passages and mouth to the lungs. An arrow points downward from the diaphragm, which is relatively flat, just beneath the lungs. This arrow is labeled “Diaphragm contracts.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr lower” is provided. The second, similar diagram, which is labeled “Expiration,” reverses the direction of both arrows. Arrows extend from the lungs out through the nasal passages and mouth. Similarly, an arrow points up to the diaphragm, showing a curved diaphragm and lungs reduced in size from the previous image. This arrow is labeled “Diaphragm relaxes.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr higher” is provided.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_BoylesLaw4.jpg"/>
+</media>
+<caption>Öndun á sér
+stað vegna þess að stækkun og samdráttur lungnarúmmáls skapar lítinn
+þrýstingsmun milli lungnanna og umhverfisins, sem veldur því að loft
+sogast inn í og þrýstist út úr lungunum.</caption>
+</figure>
+</note>
+</section>
+<section id="fs-idp47884080">
+<title>Mól af gasi og rúmmál: Lögmál
+Avogadros</title>
+<para id="fs-idm52917120">Ítalski vísindamaðurinn Amedeo
+Avogadro setti fram tilgátu árið 1811 til að útskýra hegðun lofttegunda
+og sagði að jafnt rúmmál allra lofttegunda, mælt við sömu skilyrði
+hitastigs og þrýstings, innihaldi sama fjölda sameinda. Með tímanum var
+þetta samband stutt af mörgum athugunum úr tilraunum eins og það er sett
+fram í <emphasis effect="bold">lögmáli Avogadros</emphasis>: <emphasis effect="italics">Fyrir innilokað gas eru rúmmál (V) og
+mólfjöldi (n) í beinu hlutfalli ef þrýstingur og hitastig haldast bæði
+föst</emphasis>.</para>
+<para id="fs-idp65662512">Í jöfnulíki er þetta skrifað sem:</para>
+<equation id="fs-idm8943936" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:mi>V</m:mi><m:mo>∝</m:mo><m:mi>n</m:mi></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>or</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>n</m:mi></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>or</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idm94717808">Einnig er hægt að ákvarða
+stærðfræðileg sambönd fyrir hin breytupörin, svo sem <emphasis effect="italics">P</emphasis> á móti <emphasis effect="italics">n</emphasis> og
+<emphasis effect="italics">n</emphasis> á móti <emphasis effect="italics">T</emphasis>.</para>
+<note id="fs-idm50116432" class="chemistry link-to-learning">
+<para id="fs-idm91270672">Farðu í þessa <link url="http://openstax.org/l/16IdealGasLaw">gagnvirku
+PhET-hermun</link> til að rannsaka samböndin milli þrýstings, rúmmáls,
+hitastigs og magns gass. Notaðu hermunina til að skoða áhrif þess að
+breyta einni stærð á aðra á meðan hinum stærðunum er haldið föstum (eins
+og lýst er í fyrri köflum um hin ýmsu gaslögmál).</para>
+</note>
+</section>
+<section id="fs-idm68358176">
+<title>Kjörgaslögmálið</title>
+<para id="fs-idp161797856">Hingað til hefur verið fjallað um
+fjögur aðskilin lögmál sem tengja saman þrýsting, rúmmál, hitastig og
+mólfjölda gass:</para>
+<list id="fs-idp25403616" list-type="bulleted" bullet-style="bullet">
+<item>Lögmál Boyles: <emphasis effect="italics">PV</emphasis> = fasti
+við fast <emphasis effect="italics">T</emphasis> og <emphasis effect="italics">n</emphasis></item>
+<item>Lögmál Amontons:
+<m:math><m:mrow><m:mfrac><m:mi>P</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> = fasti við fast <emphasis effect="italics">V</emphasis> og <emphasis effect="italics">n</emphasis></item>
+<item>Lögmál Charles:
+<m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> = fasti við fast <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">n</emphasis></item>
+<item>Lögmál Avogadros:
+<m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math> = fasti við fast <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">T</emphasis></item>
+</list>
+<para id="fs-idp47645536">Með því að sameina þessi fjögur
+lögmál fæst <emphasis effect="bold">kjörgaslögmálið</emphasis>, samband milli þrýstings, rúmmáls,
+hitastigs og mólfjölda gass:</para>
+<equation id="fs-idp190457648" class="unnumbered"><m:math><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
+<para id="fs-idp83793536">þar sem <emphasis effect="italics">P</emphasis> er þrýstingur gass, <emphasis effect="italics">V</emphasis>
+er rúmmál þess, <emphasis effect="italics">n</emphasis> er mólfjöldi gassins, <emphasis effect="italics">T</emphasis> er hitastig þess á
+kelvinkvarða og <emphasis effect="italics">R</emphasis> er fasti sem kallast <emphasis effect="bold">kjörgasfastinn</emphasis> eða alheims
+gasfastinn. Einingarnar sem notaðar eru til að tákna þrýsting, rúmmál og
+hitastig munu ákvarða rétt form gasfastans eins og krafist er í
+einingagreiningu, en algengustu gildin eru 0.08206 L atm mól<sup>–1</sup> K<sup>–1</sup>
+og 8.314 kPa L mól<sup>–1</sup> K<sup>–1</sup>.</para>
+<para id="fs-idp100115520">Sagt er að gastegundir þar sem
+eiginleikarnir <emphasis effect="italics">Þ</emphasis>, <emphasis effect="italics">R</emphasis> og <emphasis effect="italics">H</emphasis> eru nákvæmlega lýstir með
+kjörgaslögmálinu (eða öðrum gaslögmálum) sýni <emphasis effect="italics">kjörhegðun</emphasis> eða nálgist
+eiginleika <emphasis effect="bold">kjörgass</emphasis>. Kjörgas er fræðilegt hugtak sem hægt er að nota
+ásamt <emphasis effect="italics">sameindahreyfingafræði</emphasis> til að útskýra gaslögmálin á skilvirkan
+hátt eins og lýst verður síðar í þessum kafla. Þótt allir útreikningar
+sem sýndir eru í þessum hluta geri ráð fyrir kjörhegðun er þessi
+forsenda aðeins raunhæf fyrir gastegundir við tiltölulega lágan þrýsting
+og hátt hitastig. Í síðasta hluta þessa kafla verður kynnt breytt
+gaslögmál sem tekur mið af <emphasis effect="italics">ókjörhegðun</emphasis> sem sést hjá mörgum gastegundum
+við tiltölulega háan þrýsting og lágt hitastig.</para>
+<para id="fs-idp9263600">Kjörgasjafnan inniheldur fimm liði,
+gasfastann <emphasis effect="italics">R</emphasis> og breytilegu eiginleikana <emphasis effect="italics">Þ</emphasis>, <emphasis effect="italics">R</emphasis>, <emphasis effect="italics">n</emphasis> og <emphasis effect="italics">H</emphasis>. Ef
+fjórir þessara liða eru tilgreindir er hægt að nota kjörgaslögmálið til
+að reikna út fimmta liðinn eins og sýnt er í eftirfarandi dæmum.</para>
+<example id="fs-idm72969744">
+<para id="fs-idm36042832"><title>Notkun
+kjörgaslögmálsins</title>Verið er að íhuga notkun metans,
+CH<sub>4</sub>, sem annars konar eldsneytis fyrir ökutæki í stað bensíns. Eitt
+gallon af bensíni mætti koma í stað 655 g af CH<sub>4</sub>. Hvert er rúmmál
+þessa magns af metani við 25 °C og 745 torr?</para>
+<para id="fs-idp9667456"><title>Lausn</title>Við verðum að umraða <emphasis effect="italics">ÞR</emphasis> = <emphasis effect="italics">nRH</emphasis> til
+að leysa fyrir <emphasis effect="italics">R</emphasis>: <m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>P</m:mi></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idp84134864">Ef við veljum að nota <emphasis effect="italics">R</emphasis> = 0,08206 L
+atm mól<sup>–1</sup> K<sup>–1</sup> verður magnið að vera í mólum, hitastigið í kelvinum
+og þrýstingurinn í atm.</para>
+<para id="fs-idm113078592">Umbreyting í „réttar“ einingar:</para>
+<equation id="fs-idp39691024" class="unnumbered"><m:math><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>6</m:mn><m:mspace width="0.2em"/><m:mn>55</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>16.043</m:mn><m:mspace width="0.2em"/><m:msub><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g CH</m:mtext></m:mrow></m:menclose></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>40.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:math></equation><equation id="fs-idp101238448" class="unnumbered"><m:math><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mn>25</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>+</m:mo><m:mn>273</m:mn><m:mo>=</m:mo><m:mn>298</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow></m:math></equation>
+<equation id="fs-idp11744096" class="unnumbered"><m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mn>745</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.980</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation>
+<equation id="fs-idp248570064" class="unnumbered"><m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>P</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>40.8</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mtext>atm mol</m:mtext><m:mrow><m:mn>–1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>–1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>298</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>0.980</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.02</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mtext>L</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm139345632">Það þyrfti 1020 L (269 gal) af
+metani í gasformi við um það bil 1 atm þrýsting til að koma í stað 1 gal
+af bensíni. Það þarf stórt ílát til að geyma nóg metan við 1 atm til að
+koma í stað nokkurra gallona af bensíni.</para>
+<para id="fs-idp147095712"><title>Prófaðu þig áfram</title>Reiknaðu þrýstinginn í börum fyrir
+2520 mól af vetnisgasi sem geymt er við 27 °C í 180 L geymslutanki í
+nútíma vetnisknúnum bíl.</para>
+<note id="fs-idp77431312">
+<title>Answer:</title>
+<para id="fs-idp4504752">350 bör</para>
+</note>
+</example>
+<para id="fs-idp141407616">Ef fjöldi móla kjörgass er hafður
+fastur við tvær mismunandi aðstæður fæst gagnlegt stærðfræðilegt samband
+sem kallast sameinaða gaslögmálið: <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math> með einingunum atm, L
+og K. Báðar aðstæður eru jafnar margfeldi <emphasis effect="italics">n</emphasis> <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> <emphasis effect="italics">R</emphasis> (þar
+sem <emphasis effect="italics">n</emphasis> = fjöldi móla gassins og <emphasis effect="italics">R</emphasis> er gasfastinn í kjörgaslögmálinu).</para>
+<example id="fs-idp23616944">
+<para id="fs-idm24051840"><title>Notkun sameinaða
+gaslögmálsins</title>Þegar dæmigerður köfunarkútur með
+13,2 L rúmmáli er fylltur með lofti er þrýstingurinn 153 atm
+(<link target-id="CNX_Chem_09_02_Scuba"/>). Ef hitastig vatnsins er 27 °C, hversu marga lítra af
+lofti mun slíkur kútur veita lungum kafara á um það bil 70 feta dýpi í
+sjónum þar sem þrýstingurinn er 3,13 atm?</para>
+<!-- figure handled separately -->
+<para id="fs-idm78575136"><title>Lausn</title>Látum <emphasis effect="italics">1</emphasis> tákna loftið í
+köfunarkútnum og <emphasis effect="italics">2</emphasis> tákna loftið í lungunum og athugum að líkamshiti
+(hitastigið sem loftið verður í lungunum) er 37 °C, þá höfum við:</para>
+<equation id="fs-idp224060000" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>153</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>13.2</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>300</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.13</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>310</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp72690672">Leysum fyrir <emphasis effect="italics">R</emphasis><sub>2</sub>:</para>
+<equation id="fs-idp102261440" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>153</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>13.2</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>310</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>300</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.13</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>667</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow></m:math></equation><para id="fs-idp54320688">(Athugið: Vert er að taka fram að
+þetta tiltekna dæmi er eitt þar sem forsendan um kjörgashegðun er ekki
+mjög raunhæf, þar sem hún felur í sér gastegundir við tiltölulega háan
+þrýsting og lágt hitastig. Þrátt fyrir þessa takmörkun má líta á
+útreiknað rúmmál sem góða „grófa“ nálgun.)</para>
+<para id="fs-idp128482944"><title>Prófaðu þig áfram</title>Sýni af ammóníaki reynist taka 0.250
+L við rannsóknarstofuaðstæður, 27 °C og 0,850 atm. Finndu rúmmál þessa
+sýnis við 0 °C og 1,00 atm.</para>
+<note id="fs-idp104450512">
+<title>Answer:</title>
+<para id="fs-idm29667248">0,193 L</para></note>
+</example>
+<figure id="CNX_Chem_09_02_Scuba" class="scaled-down">
+<media id="fs-idm23330944" alt="This photograph shows a scuba diver underwater with a tank on his or her back and bubbles ascending from the breathing apparatus.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Scuba.jpg"/>
+</media>
+<caption>Kafarar nota þjappað
+loft til að anda neðansjávar. (heimild: breyting á verki eftir Mark
+Goodchild)</caption>
+</figure>
+<note id="fs-idp8804032" class="chemistry everyday-life">
+<title>Tengslin milli sjávardýpis
+og þrýstings við köfun</title>
+<para id="fs-idp78164736">Hvort sem kafað er við Kóralrifið
+mikla í Ástralíu (sýnt í <link target-id="CNX_Chem_09_02_GreatBarri"/>) eða í Karíbahafinu verða kafarar
+að skilja hvernig þrýstingur hefur áhrif á ýmis atriði sem tengjast
+þægindum þeirra og öryggi.</para>
+<figure id="CNX_Chem_09_02_GreatBarri" class="scaled-down">
+<media id="fs-idm71283872" alt="This picture shows colorful underwater corals and anemones in hues of yellow, orange, green, and brown, surrounded by water that appears blue in color.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_GreatBarri.jpg"/>
+</media>
+<caption>Kafarar, hvort
+sem er við Kóralrifið mikla eða í Karíbahafi, verða að vera meðvitaðir
+um flothæfni, þrýstingsjöfnun og þann tíma sem þeir eyða neðansjávar til
+að forðast áhættuna sem fylgir þrýstilofttegundum í líkamanum. (heimild:
+Kyle Taylor)</caption>
+</figure>
+<para id="fs-idp128156112">Þrýstingur eykst með dýpi í hafinu
+og þrýstingsbreytingar eru hraðastar þegar kafarar nálgast yfirborðið.
+Þrýstingurinn sem kafari verður fyrir er summa alls þrýstings fyrir ofan
+kafarann (frá vatni og lofti). Flestar þrýstingsmælingar eru gefnar í
+einingum sem kallast loftþyngdir, tjáðar sem „algildar loftþyngdir“ eða
+ATA í kafarasamfélaginu: Hver 33 fet af söltu vatni samsvara 1 ATA af
+þrýstingi til viðbótar við 1 ATA af þrýstingi frá andrúmsloftinu við
+sjávarmál. Þegar kafari fer niður veldur aukinn þrýstingur því að
+loftvasar líkamans í eyrum og lungum þjappast saman; við uppstig veldur
+minnkandi þrýstingur því að þessir loftvasar þenjast út, sem getur
+hugsanlega rofið hljóðhimnur eða sprengt lungun. Kafarar verða því að
+jafna þrýsting með því að bæta lofti í loftrými líkamans á niðurleið með
+því að anda eðlilega og bæta lofti í grímuna með því að anda út um nefið
+eða bæta lofti í eyru og skúta með jöfnunaraðferðum; hið gagnstæða
+gildir einnig við uppstig, kafarar verða að losa loft úr líkamanum til
+að viðhalda jöfnun. Flothæfni, eða hæfnin til að stjórna því hvort
+kafari sekkur eða flýtur, er stjórnað af flotvesti (BCD). Ef kafari er
+að stíga upp þenst loftið í flotvestinu út vegna lægri þrýstings
+samkvæmt lögmáli Boyles (minnkandi þrýstingur lofttegunda eykur
+rúmmálið). Útþanið loft eykur flothæfni kafarans og hann byrjar að stíga
+upp. Kafarinn verður að hleypa lofti úr flotvestinu eða hætta á
+stjórnlausu uppstigi sem gæti rofið lungun. Við niðurstig veldur aukinn
+þrýstingur því að loftið í flotvestinu þjappast saman og kafarinn sekkur
+mun hraðar; kafarinn verður að bæta lofti í flotvestið eða hætta á
+stjórnlausu niðurstigi, þar sem hann stendur frammi fyrir mun hærri
+þrýstingi nálægt hafsbotninum. Þrýstingurinn hefur einnig áhrif á hversu
+lengi kafari getur verið neðansjávar áður en hann stígur upp. Því dýpra
+sem kafari kafar, því meira þjappað er loftið sem andað er að sér vegna
+aukins þrýstings: Ef kafari kafar 33 fet er þrýstingurinn 2 ATA og
+loftið yrði þjappað niður í helming af upprunalegu rúmmáli sínu.
+Kafarinn notar tiltækt loft tvöfalt hraðar en við yfirborðið.</para></note>
+</section>
+<section id="fs-idp117090992">
+<title>Staðalaðstæður hitastigs og
+þrýstings</title>
+<para id="fs-idp92943776">Við höfum séð að rúmmál tiltekins
+magns af gasi og fjöldi sameinda (móla) í tilteknu rúmmáli af gasi
+breytast með breytingum á þrýstingi og hitastigi. Efnafræðingar gera
+stundum samanburð við <emphasis effect="bold">staðalaðstæður (STP)</emphasis> þegar þeir gefa upp
+eiginleika lofttegunda: 273,15 K og 1 atm (101,325 kPa).
+[neðanmálsgrein: Skilgreiningu IUPAC á staðalþrýstingi var breytt úr 1
+atm í 1 bar (100 kPa) árið 1982, en fyrri skilgreiningin er enn í notkun
+í mörgum heimildum og verður notuð í þessum texta.] Við staðalaðstæður
+hefur eitt mól af kjörgasi rúmmál sem er um 22,4 L – þetta er kallað
+<emphasis effect="bold">staðalmólrúmmál</emphasis> (<link target-id="CNX_Chem_09_02_HENH3O2"/>).</para>
+<figure id="CNX_Chem_09_02_HENH3O2"><media id="fs-idp59520544" alt="This figure shows three balloons each filled with He, NH subscript 2, and O subscript 2, respectively. Beneath the first balloon is the label “4 g of He” Beneath the second balloon is the label, “17 g of NH subscript 2.” Beneath the third balloon is the label “32 g of O subscript 2.” Each balloon contains the same number of molecules of their respective gases.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_HENH3O2.jpg"/>
+</media>
+<caption>Óháð
+efnafræðilegri samsetningu tekur eitt mól af gasi sem hegðar sér sem
+kjörgas rúmmál sem er ~22,4 L við staðalaðstæður.</caption></figure>
+</section>
+<section id="fs-idp68486960" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp19784464">Hægt er að lýsa hegðun lofttegunda
+með nokkrum lögmálum sem byggja á tilraunaathugunum á eiginleikum
+þeirra. Þrýstingur tiltekins magns af gasi er í beinu hlutfalli við
+algilt hitastig þess, að því gefnu að rúmmálið breytist ekki (lögmál
+Amontons). Rúmmál tiltekins gassýnis er í beinu hlutfalli við algilt
+hitastig þess við fastan þrýsting (lögmál Charles). Rúmmál tiltekins
+magns af gasi er í öfugu hlutfalli við þrýsting þess þegar hitastigi er
+haldið föstu (lögmál Boyles). Við sömu skilyrði hitastigs og þrýstings
+innihalda jöfn rúmmál allra lofttegunda sama fjölda sameinda (lögmál
+Avogadros).</para>
+<para id="fs-idp115685936">Jöfnurnar sem lýsa þessum lögmálum
+eru sértilvik kjörgasjöfnunnar, <emphasis effect="italics">PV</emphasis> = <emphasis effect="italics">nRT</emphasis>, þar sem <emphasis effect="italics">P</emphasis> er þrýstingur
+gassins, <emphasis effect="italics">V</emphasis> er rúmmál þess, <emphasis effect="italics">n</emphasis> er fjöldi móla gassins, <emphasis effect="italics">T</emphasis> er hitastig
+þess í kelvin og <emphasis effect="italics">R</emphasis> er kjörgasfastinn (alheimsfastinn).</para>
+</section>
+<section id="fs-idm157803264" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><emphasis effect="italics">PV</emphasis> = <emphasis effect="italics">nRT</emphasis></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm132049520" class="exercises">
+<title>Efnafræði – æfingar í lok
+kafla</title>
+<exercise id="fs-idm6254784">
+<problem id="fs-idm79480432">
+<para id="fs-idm226964944">Stundum springur á reiðhjóli ef
+það er skilið eftir í sólinni á heitum degi. Hvers vegna?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp16137760">
+<problem id="fs-idm190058640">
+<para id="fs-idm232268528">Útskýrðu hvernig rúmmál
+loftbólanna sem kafari andar frá sér (<link target-id="CNX_Chem_09_02_Scuba"/>) breytist þegar þær
+stíga upp á yfirborðið, að því gefnu að þær haldist heilar.</para>
+</problem>
+<solution id="fs-idm158859536">
+<para id="fs-idm129149552">Þegar bólurnar stíga upp minnkar
+þrýstingurinn, þannig að rúmmál þeirra eykst eins og lögmál Boyles gefur
+til kynna.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm228222512">
+<problem id="fs-idm56983200">
+<para id="fs-idm240310992">Ein leið til að setja fram lögmál
+Boyles er: „Að öllu öðru jöfnu er þrýstingur gass í öfugu hlutfalli við
+rúmmál þess.“ (a) Hver er merking hugtaksins „öfugt hlutfall?“ (b) Hvað
+er það „annað“ sem þarf að vera jafnt?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm153017968">
+<problem id="fs-idm250301104">
+<para id="fs-idm68690704">Önnur leið til að setja fram
+lögmál Avogadros er „Að öllu öðru jöfnu er fjöldi sameinda í gasi í
+beinu hlutfalli við rúmmál gassins.“ (a) Hver er merking hugtaksins
+„beint hlutfall?“ (b) Hvað er það „annað“ sem þarf að vera jafnt?</para>
+</problem>
+<solution id="fs-idm244332560">
+<para id="fs-idm224240624">(a) Fjöldi einda í gasinu eykst
+eftir því sem rúmmálið eykst. (b) hitastig, þrýstingur</para>
+</solution>
+</exercise>
+<exercise id="fs-idm119503088">
+<problem id="fs-idm122972656">
+<para id="fs-idm26964784">Hvernig myndi línuritið í
+<link target-id="CNX_Chem_09_02_Charles2"/> breytast ef fjöldi móla af gasi í sýninu sem notað var til
+að ákvarða ferilinn væri tvöfaldaður?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm150329120">
+<problem id="fs-idm188427552">
+<para id="fs-idm241276032">Hvernig myndi línuritið í
+<link target-id="CNX_Chem_09_03_BoylesLaw1"/> breytast ef fjöldi móla af gasi í sýninu sem notað var til
+að ákvarða ferilinn væri tvöfaldaður?</para>
+</problem>
+<solution id="fs-idm181098208">
+<para id="fs-idm183267472">Ferillinn væri lengra til hægri
+og ofar, en með sama grunnform.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm221266736">
+<problem id="fs-idm227817104">
+<para id="fs-idm190325632">Til viðbótar við gögnin sem finna
+má í <link target-id="CNX_Chem_09_03_BoylesLaw1"/>, hvaða aðrar upplýsingar þurfum við til að finna massa
+loftsýnisins sem notað var til að ákvarða línuritið?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm162722032">
+<problem id="fs-idm129289120">
+<para id="fs-idm223838704">Ákvarðaðu rúmmál 1 móls af CH<sub>4</sub>
+gasi við 150 K og 1 atm með því að nota <link target-id="CNX_Chem_09_02_Charles2"/>.</para>
+</problem>
+<solution id="fs-idm207209024">
+<para id="fs-idp31441392">Um 12,5 L</para></solution>
+</exercise>
+<exercise id="fs-idm179450656">
+<problem id="fs-idm235612144">
+<para id="fs-idm118272896">Ákvarðaðu þrýsting gassins í
+sprautunni sem sýnd er í <link target-id="CNX_Chem_09_03_BoylesLaw1"/> þegar rúmmál hennar er 12,5 ml, með
+því að nota:</para>
+<para id="fs-idm163780992">(a) viðeigandi línurit</para>
+<para id="fs-idm234849104">(b) lögmál Boyles</para>
+</problem>
+</exercise>
+<exercise id="fs-idm211017328">
+<problem id="fs-idm109304128">
+<para id="fs-idm138731120">Úðabrúsi er notaður þar til hann
+er tómur fyrir utan drifgasið, sem hefur þrýstinginn 1344 torr við 23
+°C. Ef brúsanum er kastað í eld (T = 475 °C), hver verður þrýstingurinn
+í heitum brúsanum?</para>
+</problem>
+<solution id="fs-idm121334432">
+<para id="fs-idm234500544">3,40 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> torr</para>
+</solution>
+</exercise>
+<exercise id="fs-idm244984432">
+<problem id="fs-idm220274224">
+<para id="fs-idm188609648">Hvert er hitastig 11,2 L sýnis af
+kolmónoxíði, CO, við 744 torr ef það tekur 13,3 L við 55 °C og 744 torr?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm221278704">
+<problem id="fs-idm83914304">
+<para id="fs-idm207552272">2,50 L rúmmál af vetni mælt við
+–196 °C er hitað í 100 °C. Reiknaðu rúmmál gassins við hærra hitastig,
+að því gefnu að engin breyting verði á þrýstingi.</para>
+</problem>
+<solution id="fs-idm213171488">
+<para id="fs-idm179451664">12,1 L</para>
+</solution>
+</exercise>
+<exercise id="fs-idm179333888">
+<problem id="fs-idm248411792">
+<para id="fs-idm246603456">Blaðra sem blásin er upp með
+þremur andardráttum hefur rúmmálið 1,7 L. Við sama hitastig og þrýsting,
+hvert er rúmmál blöðrunnar ef fimm jafnstórum andardráttum til viðbótar
+er bætt í blöðruna?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm24946256">
+<problem id="fs-idm126307840">
+<para id="fs-idp28199904">Veðurathugunarbelgur inniheldur
+8,80 mól af helíum við þrýstinginn 0,992 atm og hitastigið 25 °C við
+jörðu. Hvert er rúmmál belgjarins við þessar aðstæður?</para>
+<media id="fs-idm227684464" alt="This image shows a white balloon that appears to have an attached white card. The balloon is being held by a person in an outdoor setting." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_WeatherBall_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idm78551216">
+<para id="fs-idm244311136">217 L</para>
+</solution>
+</exercise>
+<exercise id="fs-idm207691136">
+<problem id="fs-idm329170336">
+<para id="fs-idm288109888">Rúmmál loftpúða í bifreið var
+66,8 L þegar hann var blásinn upp við 25 °C með 77,8 g af niturgasi.
+Hver var þrýstingurinn í púðanum í kPa?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm95690800">
+<problem id="fs-idm130104720">
+<para id="fs-idm72005728">Hversu mörg mól af bórtríflúoríði
+í gasformi, BF<sub>3</sub>, eru í 4,3410 L kúlu við 788,0 K ef þrýstingurinn er
+1,220 atm? Hversu mörg grömm af BF<sub>3</sub>?</para>
+</problem>
+<solution id="fs-idm95261248">
+<para id="fs-idm209223808">8,190 <m:math><m:mo>×</m:mo></m:math> 10<sup>–2</sup>
+mól; 5,553 g</para>
+</solution>
+</exercise>
+<exercise id="fs-idm171506192">
+<problem id="fs-idm198324288">
+<para id="fs-idm130364096">Joð, I<sub>2</sub>, er fast efni við
+stofuhita en þurrgufar (breytist úr föstu efni í gas) þegar það er
+hitað. Hvert er hitastigið í 73,3 ml kúlu sem inniheldur 0,292 g af I<sub>2</sub>
+gufu við þrýstinginn 0,462 atm?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm192798240">
+<problem id="fs-idm26608320">
+<para id="fs-idm141545152">Hversu mörg grömm af gasi eru til
+staðar í hverju eftirfarandi tilvika?</para>
+<para id="fs-idm78787920">(a) 0,100 L af CO<sub>2</sub> við 307 torr
+og 26 °C</para>
+<para id="fs-idm162758736">(b) 8,75 L af C<sub>2</sub>H<sub>4</sub>, við 378.3
+kPa og 483 K</para>
+<para id="fs-idm197462832">(c) 221 ml af Ar við 0,23 torr og
+–54 °C</para>
+</problem>
+<solution id="fs-idm33816112">
+<para id="fs-idp16283888">(a) 7,24 <m:math><m:mo>×</m:mo></m:math> 10<sup>–2</sup>
+g; (b) 23,1 g; (c) 1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>–4</sup> g</para>
+</solution>
+</exercise>
+<exercise id="fs-idm87206720">
+<problem id="fs-idm240294896">
+<para id="fs-idm151037808">Loftbelgur í mikilli hæð er
+fylltur með 1,41 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> L af vetni við 21 °C hitastig og
+745 torr þrýsting. Hvert er rúmmál loftbelgsins í 20 km hæð þar sem
+hitastigið er –48 °C og þrýstingurinn er 63,1 torr?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm71892416">
+<problem id="fs-idm188094080">
+<para id="fs-idm226416640">Hylki með súrefni til lækninga
+hefur 35,4 L rúmmál og inniheldur O<sub>2</sub> við 151 atm þrýsting og 25 °C
+hitastig. Hvaða rúmmáli af O<sub>2</sub> samsvarar þetta við venjulegar
+líkamsaðstæður, þ.e. 1 atm og 37 °C?</para>
+</problem>
+<solution id="fs-idm87356096">
+<para id="fs-idm210873680">5561 L</para>
+</solution>
+</exercise>
+<exercise id="fs-idm131888352">
+<problem id="fs-idm207038512">
+<para id="fs-idm183236768">Stór köfunarkútur (<link target-id="CNX_Chem_09_02_Scuba"/>)
+með 18 L rúmmáli er metinn fyrir 220 bara þrýsting. Kúturinn er fylltur
+við 20 °C og inniheldur nóg loft til að veita kafara 1860 L af lofti við
+2,37 atm þrýsting (45 feta dýpi). Var kúturinn fylltur að hámarki við 20
+°C?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm247077296">
+<problem id="fs-idm241031792">
+<para id="fs-idm242471664">20,0 L hylki sem innihélt 11,34
+kg af bútani, C<sub>4</sub>H<sub>10</sub>, var opnað út í andrúmsloftið. Reiknaðu massa
+gassins sem eftir er í hylkinu ef það var opnað og gasið slapp út þar
+til þrýstingurinn í hylkinu var jafn loftþrýstingi, 0,983 atm, og
+hitastigið 27 °C.</para>
+</problem>
+<solution id="fs-idm237039312">
+<para id="fs-idm250627520">46,4 g</para>
+</solution>
+</exercise>
+<exercise id="fs-idp25823920">
+<problem id="fs-idm127911872">
+<para id="fs-idm211956816">Í hvíld notar meðalmaður sem
+vegur 70 kg 14 L af hreinu O<sub>2</sub> á klukkustund við 25 °C og 100 kPa.
+Hversu mörg mól af O<sub>2</sub> notar 70 kg maður í hvíld í 1,0 klst.?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm188679440">
+<problem id="fs-idm166948240">
+<para id="fs-idm33917680">Fyrir tiltekið magn af gasi sem
+sýnir kjörhegðun, teiknaðu merkt línurit af:</para>
+<para id="fs-idm187706512">(a) breytingu á <emphasis effect="italics">P</emphasis> með <emphasis effect="italics">V</emphasis></para>
+<para id="fs-idm118579008">(b) breytingu á <emphasis effect="italics">V</emphasis> með <emphasis effect="italics">T</emphasis></para>
+<para id="fs-idm247454720">(c) breytingu á <emphasis effect="italics">P</emphasis> með <emphasis effect="italics">T</emphasis></para>
+<para id="fs-idm149859408">(d) breytingu á <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>
+með <emphasis effect="italics">V</emphasis></para>
+</problem>
+<solution id="fs-idm328507840">
+<para id="fs-idm121529056">Fyrir gas sem sýnir kjörhegðun:</para>
+</solution>
+</exercise>
+<exercise id="fs-idm259995696">
+<problem id="fs-idm190622512">
+<para id="fs-idm158397552">Einn lítri af metangasi, CH<sub>4</sub>,
+við staðalaðstæður inniheldur fleiri vetnisatóm en einn lítri af hreinu
+vetnisgasi, H<sub>2</sub>, við staðalaðstæður. Notaðu lögmál Avogadros sem
+upphafspunkt og útskýrðu hvers vegna.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp25675936">
+<problem id="fs-idm210098944">
+<para id="fs-idm180268096">Áhrif klórflúorkolefna (svo sem
+CCl<sub>2</sub>F<sub>2</sub>) á eyðingu ósonlagsins eru vel þekkt. Notkun staðgengla, svo
+sem CH<sub>3</sub>CH<sub>2</sub>F(<emphasis effect="italics">g</emphasis>), fyrir klórflúorkolefni, hefur að mestu leyst
+vandamálið. Reiknaðu rúmmál sem 10,0 g af hvoru þessara efnasambanda
+tekur við staðalaðstæður:</para>
+<para id="fs-idm198422416">(a) CCl<sub>2</sub>F<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</para>
+<para id="fs-idm139801328">(b) CH<sub>3</sub>CH<sub>2</sub>F(<emphasis effect="italics">g</emphasis>)</para>
+</problem>
+<solution id="fs-idm286430688">
+<para id="fs-idm152319568">(a) 1,85 L CCl<sub>2</sub>F<sub>2</sub>; (b) 4,66
+L CH<sub>3</sub>CH<sub>2</sub>F</para>
+</solution>
+</exercise>
+<exercise id="fs-idm26646416">
+<problem id="fs-idm213950816">
+<para id="fs-idm192031120">Þegar 1 g af geislavirka
+frumefninu radíum rotnar á einu ári, framleiðir það 1,16 <m:math><m:mo>×</m:mo></m:math>
+10<sup>18</sup> alfaeindir (helíumkjarna). Hver alfaeind verður að atómi af
+helíumgasi. Hver er þrýstingurinn í paskölum á helíumgasinu sem
+framleitt er ef það tekur 125 ml rúmmál við 25 °C hitastig?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm23005472">
+<problem id="fs-idm19206048">
+<para id="fs-idm19205792">Loftbelgur með rúmmálið 100,21 L
+við 21 °C og 0,981 atm er sleppt og sleppur naumlega yfir topp
+Crumpit-fjalls í Bresku Kólumbíu. Ef lokarúmmál loftbelgsins er 144,53 L
+við hitastigið 5.24 °C, hver er þrýstingurinn sem loftbelgurinn verður
+fyrir þegar hann fer yfir Crumpit-fjall?</para></problem>
+<solution id="fs-idm213823792">
+<para id="fs-idm213823536">0,644 atm</para>
+</solution>
+</exercise>
+<exercise id="fs-idm189510384">
+<problem id="fs-idm5787616">
+<para id="fs-idm157793824">Ef hitastig ákveðins magns af
+gasi er tvöfaldað við fast rúmmál, hvað gerist þá með þrýstinginn?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm136587680">
+<problem id="fs-idm136587424">
+<para id="fs-idm193016160">Ef rúmmál ákveðins magns af gasi
+er þrefaldað við fast hitastig, hvað gerist þá með þrýstinginn?</para>
+</problem>
+<solution id="fs-idm232238480">
+<para id="fs-idm232238224">Þrýstingurinn minnkar um þáttinn
+3.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp80443824">
+<term>alkul</term>
+<meaning id="fs-idp80443824-meaning">hitastig þar sem rúmmál
+gass yrði núll samkvæmt lögmáli Charles.</meaning>
+</definition>
+<definition id="fs-idp77543648">
+<term>lögmál Amontons</term>
+<meaning id="fs-idp77543648-meaning">(einnig lögmál
+Gay-Lussac) þrýstingur ákveðins fjölda móla af gasi er í beinu hlutfalli
+við kelvinhitastig þess þegar rúmmálinu er haldið föstu</meaning>
+</definition>
+<definition id="fs-idm85214288">
+<term>lögmál Avogadros</term>
+<meaning id="fs-idm85214288-meaning">rúmmál gass við fast
+hitastig og þrýsting er í hlutfalli við fjölda gassameinda</meaning>
+</definition>
+<definition id="fs-idm51295520">
+<term>lögmál Boyles</term>
+<meaning id="fs-idm51295520-meaning">rúmmál ákveðins fjölda
+móla af gasi sem haldið er við fast hitastig er í öfugu hlutfalli við
+þrýstinginn sem það er mælt við</meaning>
+</definition>
+<definition id="fs-idm100735488">
+<term>lögmál Charles</term>
+<meaning id="fs-idm100735488-meaning">rúmmál ákveðins fjölda
+móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar
+þrýstingnum er haldið föstum</meaning>
+</definition>
+<definition id="fs-idm161542192">
+<term>kjörgas</term>
+<meaning id="fs-idm161542192-meaning">tilbúið gas sem
+eðliseiginleikum þess er fullkomlega lýst með gaslögmálunum</meaning>
+</definition>
+<definition id="fs-idm78852976">
+<term>kjörgasfastinn (R)</term>
+<meaning id="fs-idm78852976-meaning">fasti fenginn úr
+kjörgasjöfnunni R = 0,08206 L atm mól–1 K–1 eða 8,314 L kPa mól–1 K–1</meaning>
+</definition>
+<definition id="fs-idm111878496">
+<term>kjörgaslögmálið</term>
+<meaning id="fs-idm111878496-meaning">samband milli þrýstings,
+rúmmáls, magns og hitastigs gass við aðstæður sem fengnar eru með
+samsetningu einföldu gaslögmálanna</meaning>
+</definition>
+<definition id="fs-idm158190720">
+<term>staðalaðstæður
+hitastigs og þrýstings (STP)</term>
+<meaning id="fs-idm158190720-meaning">273,15 K (0 °C) og 1 atm
+(101,325 kPa)</meaning>
+</definition>
+<definition id="fs-idm62647600">
+<term>staðalmólrúmmál</term>
+<meaning id="fs-idm62647600-meaning">rúmmál 1 móls af gasi við
+STP, um það bil 22,4 L fyrir gös sem hegða sér eins og kjörgas</meaning>
+</definition>
+</glossary>
+</document>
