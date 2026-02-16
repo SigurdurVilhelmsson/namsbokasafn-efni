@@ -35,9 +35,10 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
 // Valid books
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 
-// Simplified 7-step pipeline stages (extract-inject-render workflow)
+// 8-step pipeline stages (extract-inject-render workflow)
 const PIPELINE_STAGES = [
   'extraction',
+  'mtReady',
   'mtOutput',
   'linguisticReview',
   'tmCreated',
@@ -45,29 +46,6 @@ const PIPELINE_STAGES = [
   'rendering',
   'publication',
 ];
-
-// Map old stage names to current ones (backward compatibility)
-const STAGE_MAPPING = {
-  source: 'extraction',
-  enMarkdown: 'extraction',
-  matecat: 'tmCreated',
-  editorialPass1: 'linguisticReview',
-  tmUpdated: 'tmCreated',
-  editorialPass2: 'publication',
-};
-
-// Helper to normalize stage names from old status files
-function normalizeStageStatus(status) {
-  const normalized = {};
-  for (const [key, value] of Object.entries(status)) {
-    const newKey = STAGE_MAPPING[key] || key;
-    // Prefer newer stage name if both exist
-    if (!normalized[newKey] || (value && value.complete)) {
-      normalized[newKey] = value;
-    }
-  }
-  return normalized;
-}
 
 // Status symbols for display
 const STATUS_SYMBOLS = {
@@ -579,11 +557,18 @@ router.get('/:book/summary', (req, res) => {
           const status = statusData.status || {};
 
           for (const stage of PIPELINE_STAGES) {
-            const stageStatus = status[stage]?.status || 'not-started';
+            const stageData = status[stage] || {};
+            let isComplete;
+            if (stage === 'publication') {
+              isComplete =
+                stageData.mtPreview?.complete === true &&
+                stageData.faithful?.complete === true &&
+                stageData.localized?.complete === true;
+            } else {
+              isComplete = stageData.complete === true;
+            }
 
-            if (stageStatus === 'complete') stageCounts[stage].complete++;
-            else if (stageStatus === 'in-progress') stageCounts[stage].inProgress++;
-            else if (stageStatus === 'pending') stageCounts[stage].pending++;
+            if (isComplete) stageCounts[stage].complete++;
             else stageCounts[stage].notStarted++;
           }
         } catch (err) {
@@ -715,10 +700,11 @@ router.get('/:book/:chapter/sections', (req, res) => {
     const chapterStr = String(chapterNum).padStart(2, '0');
     const stagePaths = {
       extraction: path.join(bookPath, '02-for-mt', chapterDir),
+      mtReady: path.join(bookPath, '02-for-mt', chapterDir), // Check for -links.json
       mtOutput: path.join(bookPath, '02-mt-output', chapterDir),
       linguisticReview: path.join(bookPath, '03-faithful-translation', chapterDir),
       tmCreated: path.join(bookPath, 'tm', chapterDir),
-      injection: path.join(bookPath, '03-translated', chapterDir),
+      injection: path.join(bookPath, '03-translated', 'mt-preview', chapterDir),
       rendering: path.join(bookPath, '05-publication', 'mt-preview', 'chapters', chapterStr),
       publication: path.join(bookPath, '05-publication', 'faithful', 'chapters', chapterStr),
     };
@@ -765,6 +751,14 @@ router.get('/:book/:chapter/sections', (req, res) => {
       // Check extraction (EN source — may be split into parts like "1-2(a).en.md")
       const enFileExists = sectionHasAnyFile(stagePaths.extraction, sectionId, '.en.md');
       stages.extraction = enFileExists ? 'complete' : 'not-started';
+
+      // Check mtReady (protected files with -links.json sidecars)
+      const linksFile = path.join(stagePaths.mtReady, `${sectionId}-links.json`);
+      stages.mtReady = fs.existsSync(linksFile)
+        ? 'complete'
+        : stages.extraction === 'complete'
+          ? 'pending'
+          : 'not-started';
 
       // Check MT output (may be split into parts like "1-2(a).is.md")
       const mtFileExists = sectionHasAnyFile(stagePaths.mtOutput, sectionId, '.is.md');
@@ -854,6 +848,7 @@ router.get('/:book/:chapter/sections', (req, res) => {
         shortLabel:
           {
             extraction: 'Ext',
+            mtReady: 'Rdy',
             mtOutput: 'MT',
             linguisticReview: 'Y1',
             tmCreated: 'TM',
@@ -876,17 +871,26 @@ router.get('/:book/:chapter/sections', (req, res) => {
  * Format chapter status for API response
  */
 function formatChapterStatus(statusData) {
-  // Normalize old stage names to new 5-step schema
   const rawStatus = statusData.status || {};
-  const status = normalizeStageStatus(rawStatus);
 
   const stages = PIPELINE_STAGES.map((stage) => {
-    const stageData = status[stage] || {};
+    const stageData = rawStatus[stage] || {};
+    let isComplete;
+    if (stage === 'publication') {
+      // Publication is complete when all sub-tracks are complete
+      isComplete =
+        stageData.mtPreview?.complete === true &&
+        stageData.faithful?.complete === true &&
+        stageData.localized?.complete === true;
+    } else {
+      isComplete = stageData.complete === true;
+    }
+    const status = isComplete ? 'complete' : 'not-started';
     return {
       stage,
-      status: stageData.status || 'not-started',
-      symbol: STATUS_SYMBOLS[stageData.status] || STATUS_SYMBOLS['not-started'],
-      complete: stageData.status === 'complete',
+      status,
+      symbol: STATUS_SYMBOLS[status] || STATUS_SYMBOLS['not-started'],
+      complete: isComplete,
       date: stageData.date || null,
       editor: stageData.editor || null,
       notes: stageData.notes || null,
@@ -894,14 +898,10 @@ function formatChapterStatus(statusData) {
   });
 
   // Calculate current stage
-  let currentStage = null;
+  const currentStage = null;
   let nextStage = null;
 
   for (let i = 0; i < stages.length; i++) {
-    if (stages[i].status === 'in-progress') {
-      currentStage = stages[i].stage;
-      break;
-    }
     if (stages[i].status !== 'complete') {
       nextStage = stages[i].stage;
       break;
@@ -956,21 +956,26 @@ function calculateSummary(chapters) {
 
 /**
  * Suggest next actions based on current status.
- * Uses normalized stage names from the 7-step pipeline.
+ * Uses canonical stage names from the 8-step pipeline.
  */
 function suggestNextActions(statusData) {
   const rawStatus = statusData.status || {};
-  const status = normalizeStageStatus(rawStatus);
   const actions = [];
 
   // Helper: is a stage complete?
-  const isComplete = (stage) => status[stage]?.complete === true;
+  const isComplete = (stage) => rawStatus[stage]?.complete === true;
 
   if (!isComplete('extraction')) {
     actions.push({
       stage: 'extraction',
       action: 'Extract EN segments from CNXML',
       command: 'node tools/cnxml-extract.js --chapter N',
+    });
+  } else if (!isComplete('mtReady')) {
+    actions.push({
+      stage: 'mtReady',
+      action: 'Protect segments for MT',
+      command: 'node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/chNN/',
     });
   } else if (!isComplete('mtOutput')) {
     actions.push({
@@ -1340,7 +1345,11 @@ router.get('/analytics', async (req, res) => {
 
       for (const chapterDir of chapterDirs) {
         // Count sections in this chapter
-        const faithfulPath = path.join(bookPath, '03-faithful-translation', chapterDir.replace('ch', 'ch'));
+        const faithfulPath = path.join(
+          bookPath,
+          '03-faithful-translation',
+          chapterDir.replace('ch', 'ch')
+        );
         const mtOutputPath = path.join(bookPath, '02-mt-output', chapterDir.replace('ch', 'ch'));
 
         // Estimate sections based on files (normalize split files to base sections)
@@ -1485,13 +1494,20 @@ router.get('/analytics', async (req, res) => {
 
         try {
           const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-          const status = normalizeStageStatus(statusData.status || {});
+          const status = statusData.status || {};
 
           for (const stage of PIPELINE_STAGES) {
-            const stageStatus = status[stage]?.status || 'not-started';
-            if (stageStatus === 'complete') stageStats[stage].complete++;
-            else if (stageStatus === 'in-progress') stageStats[stage].inProgress++;
-            else if (stageStatus === 'pending') stageStats[stage].pending++;
+            const stageData = status[stage] || {};
+            let isComplete;
+            if (stage === 'publication') {
+              isComplete =
+                stageData.mtPreview?.complete === true &&
+                stageData.faithful?.complete === true &&
+                stageData.localized?.complete === true;
+            } else {
+              isComplete = stageData.complete === true;
+            }
+            if (isComplete) stageStats[stage].complete++;
             else stageStats[stage].notStarted++;
           }
         } catch {
@@ -1548,7 +1564,13 @@ router.get('/analytics', async (req, res) => {
 
     for (const chNum of pilotChapters) {
       const chDir = `ch${String(chNum).padStart(2, '0')}`;
-      const faithfulPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '03-faithful-translation', chDir);
+      const faithfulPath = path.join(
+        PROJECT_ROOT,
+        'books',
+        'efnafraedi',
+        '03-faithful-translation',
+        chDir
+      );
       const mtOutputPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '02-mt-output', chDir);
 
       if (fs.existsSync(mtOutputPath)) {
