@@ -34,11 +34,11 @@ This is the single highest-priority item.
 | `01-source/` | — | CNXML originals (fetched on demand) |
 | `02-for-mt/` | ch01-ch05 | EN segments extracted |
 | `02-mt-output/` | ch01-ch05, ch09, ch12-ch13, appendices | IS segments from MT |
-| `03-faithful-translation/` | ch01-ch05, ch09, ch12-ch13, appendices | Initialized from MT output (2026-02-16) |
-| `03-translated/faithful/` | ch01-ch05, ch09, ch12-ch13, appendices | Translated CNXML from injection |
+| `03-faithful-translation/` | **empty** | Populated per-module by `applyApprovedEdits()` |
+| `03-translated/faithful/` | **empty** | Produced per-module by inject after review |
 | `04-localized-content/` | **empty** | Pass 2 not started |
 | `05-publication/mt-preview/` | ch01 | HTML rendered |
-| `05-publication/faithful/` | ch01-ch05, ch09, ch12-ch13, appendices | Faithful HTML rendered (2026-02-16) |
+| `05-publication/faithful/` | **empty** | Grows per-module as reviews are approved |
 
 ### Open Pipeline Issues
 
@@ -58,13 +58,9 @@ Issues 5 and 6 need investigation to determine whether the fix belongs in cnxml-
 
 **Goal:** Approved edits flow to `03-faithful-translation/` files, unblocking the downstream pipeline.
 
-**Status:** COMPLETE. Code for 9.1-9.3 was implemented in Phase 8. Faithful track initialized from MT output and rendered to HTML for 8 chapters + appendices on 2026-02-16.
+**Status:** COMPLETE. Code for 9.1-9.3 was implemented in Phase 8.
 
-**Initialization (2026-02-16):**
-- Initialized `03-faithful-translation/` from `02-mt-output/` for ch01-ch05, ch09, ch12-ch13, appendices (50 segment files, 9,854 segments)
-- Injected faithful track → `03-translated/faithful/` (50 CNXML files)
-- Rendered faithful HTML → `05-publication/faithful/` (101 HTML files across 9 directories including appendices)
-- The faithful track is now populated with MT baseline content. As editors review and approve segments via the segment editor, `applyApprovedEdits()` overwrites these files with human-reviewed content.
+**Note (2026-02-16):** Premature bulk initialization of `03-faithful-translation/` from MT output was removed. The faithful track is now populated **per-module** via `applyApprovedEdits()` when module reviews are completed and approved. The segment editor falls back to `02-mt-output/` when `03-faithful-translation/` files don't exist, so no pre-initialization is needed for web-based editing.
 
 ### 9.1 — Apply Approved Edits to Files
 
@@ -117,38 +113,23 @@ This matches the practical workflow: review modules individually, then publish t
 
 ---
 
-## Phase 10: Publication Migration
+## Phase 10: Publication Migration ✅ (2026-02-16)
 
 **Goal:** Replace markdown assembly with HTML pipeline output.
 
-### 10.1 — Rewrite Publication Service
+**Status:** COMPLETE. The publication service was already migrated to use inject→render during Phase 8 (Pipeline API at `/api/pipeline`). Phase 10 cleanup:
+- Removed premature bulk initialization of `03-faithful-translation/` and `05-publication/faithful/`
+- Established module-level publication model: faithful HTML grows per-module as reviews complete
+- Removed unused `03-editing/` directory
+- Updated documentation to reflect HTML pipeline
 
-The current `publicationService.js` (1,104 lines) still has markdown assembly code, but the tools it depended on (`chapter-assembler.js`, `add-frontmatter.js`) were deleted in the Phase 13.1 cleanup. Replace the core publication logic:
+**Key design decision:** Faithful publication happens at the **module level**. When a module review is completed and approved, `applyApprovedEdits()` writes segments to `03-faithful-translation/`, then inject→render produces faithful HTML for that module. The reader shows faithful when available, falls back to mt-preview.
 
 | Track | Source | Pipeline |
 |-------|--------|----------|
 | mt-preview | `02-mt-output/` | inject → render → `05-publication/mt-preview/` |
-| faithful | `03-faithful-translation/` | inject → render → `05-publication/faithful/` |
+| faithful | `03-faithful-translation/` | inject → render → `05-publication/faithful/` (per-module) |
 | localized | `04-localized-content/` | inject → render → `05-publication/localized/` |
-
-Existing features that carry forward unchanged:
-- Readiness checks (validation before publish)
-- HEAD_EDITOR approval gates
-- Three-track system
-- Activity logging
-
-### 10.2 — Update Publication Routes
-
-`publication.js` keeps its API shape. The "publish" action becomes:
-validate readiness → inject → render → write to publication dir → update status → log activity.
-
-### 10.3 — Re-render Existing Content
-
-Re-render Chapter 1 MT-preview and generate faithful HTML once Phase 9 provides the files.
-
-**Files to modify:**
-- `server/services/publicationService.js` — rewrite core
-- `server/routes/publication.js` — update to call new service
 
 ---
 

@@ -9,10 +9,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phase 10: Publication Migration |
-| **Latest Milestone** | Phase 9 complete (2026-02-16), old pipeline retired (2026-02-16), Phase 8 complete (2026-02-05) |
+| **Current Phase** | Phase 11: Status & Schema Modernization |
+| **Latest Milestone** | Phase 10 complete (2026-02-16), Phase 9 complete (2026-02-16), old pipeline retired (2026-02-16) |
 
-**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 (current) → 11 → 12 → 13
+**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 (current) → 12 → 13
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
 
 ---
@@ -146,9 +146,9 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 | Component | Status | File | Note |
 |-----------|--------|------|------|
-| Publication API | ✅ | `server/routes/publication.js` | API shape stable; internals to be migrated in Phase 10 |
+| Publication API | ✅ | `server/routes/publication.js` | API shape stable; internals migrated to HTML pipeline |
 | 3-track system | ✅ | mt-preview, faithful, localized | Tracks carry forward |
-| Readiness checks | ✅ | Validates prerequisites per track | Needs updated stage checks |
+| Readiness checks | ✅ | Validates prerequisites per track | Stage checks to be updated in Phase 11 |
 | HEAD_EDITOR approval | ✅ | Required for all publications | Carries forward |
 
 **Publication Tracks (carry forward to HTML pipeline):**
@@ -156,7 +156,7 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 - `faithful`: Publish after Pass 1 review complete
 - `localized`: Publish after Pass 2 localization complete
 
-> **Note:** The old markdown assembly tools (`chapter-assembler.js`, `add-frontmatter.js`) were deleted in the 2026-02-16 pipeline retirement. The publication service internals will be migrated to use `cnxml-inject` → `cnxml-render` → HTML output in Phase 10.
+> **Note:** The old markdown assembly tools (`chapter-assembler.js`, `add-frontmatter.js`) were deleted in the 2026-02-16 pipeline retirement. Publication now uses `cnxml-inject` → `cnxml-render` → HTML output (migrated in Phase 8, finalized in Phase 10).
 
 ---
 
@@ -205,15 +205,15 @@ Code for 9.1-9.3 was implemented during Phase 8. Faithful track initialized from
 - [x] Initialize faithful track from MT output for ch01-05, ch09, ch12-13, appendices
 - [x] Render faithful HTML for all initialized chapters
 
-### Phase 10: Publication Migration
+### Phase 10: Publication Migration ✅ (2026-02-16)
 
-**Status:** NOT STARTED
+**Status:** COMPLETE
 
-Replace `publicationService.js` markdown assembly with HTML pipeline output. The three tracks (mt-preview, faithful, localized) use inject→render instead of chapter-assembler.
+Publication service was already migrated to HTML pipeline during Phase 8. Phase 10 cleanup: removed premature bulk faithful content, established module-level publication model (faithful HTML grows per-module as reviews complete), removed unused `03-editing/` directory, updated documentation.
 
-- [ ] 10.1 — Rewrite publication service core to use inject→render
-- [ ] 10.2 — Update publication routes (keep API shape, change internals)
-- [ ] 10.3 — Re-render existing content through new pipeline
+- [x] 10.1 — Publication service uses inject→render (done in Phase 8)
+- [x] 10.2 — Publication routes use Pipeline API (done in Phase 8)
+- [x] 10.3 — Directory cleanup + module-level publication model
 
 ### Phase 11: Status & Schema Modernization
 
@@ -325,6 +325,7 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-02 | Retire chapter-assembler + add-frontmatter | Two publication paths (markdown + HTML) creates maintenance burden |
 | 2026-02 | Delete old pipeline code entirely | 43 archived tools + 4 server routes already broken (lazy imports to moved files). ~37,800 lines removed. Git history preserves everything. |
 | 2026-02 | MathJax 3→4 upgrade | MathJax 3 TeX fonts had only 1/20 Icelandic characters; v4 New Computer Modern has full native support |
+| 2026-02 | Module-level faithful publication | Faithful HTML grows per-module as reviews complete; no bulk initialization needed; reader falls back to mt-preview |
 
 ---
 
@@ -397,14 +398,14 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Publication Migration (Phase 10)
+### Current Priority: Status & Schema Modernization (Phase 11)
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
-### Publication Migration (Phase 10)
-1. [ ] Rewrite publication service to use inject→render → HTML
-2. [ ] Update publication routes (keep API, change internals)
-3. [ ] Re-render existing content through HTML pipeline
+### Status & Schema Modernization (Phase 11)
+1. [ ] Expand from 5-stage to 8-stage pipeline tracking
+2. [ ] Add file type tracking for structure JSON, translated CNXML, rendered HTML
+3. [ ] Auto-advance status on pipeline completion
 
 ### Pipeline Verification (Phase 12)
 1. [ ] Investigate open cnxml-render issues (#5 examples, #6 exercises — may be vefur CSS)

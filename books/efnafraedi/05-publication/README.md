@@ -1,116 +1,83 @@
-# Publication Folder Structure
+# Publication Directory
 
-This folder contains web-ready markdown content in two parallel tracks:
+Web-ready semantic HTML produced by the Extract-Inject-Render pipeline (`cnxml-render.js`).
 
-## Folder Structure
+## Three Publication Tracks
 
-```
-05-publication/
-├── mt-preview/          # Machine translation previews
-│   ├── chapters/        # Chapter markdown files
-│   └── toc.json         # Table of contents for MT version
-├── faithful/            # Human-reviewed translations
-│   ├── chapters/        # Chapter markdown files
-│   └── toc.json         # Table of contents for faithful version
-├── glossary.json        # Shared terminology (both versions)
-└── toc.json             # Index of available versions
-```
+| Track | Source | When Published |
+|-------|--------|----------------|
+| `mt-preview/` | `02-mt-output/` (unreviewed MT) | Immediately after MT — early access for students |
+| `faithful/` | `03-faithful-translation/` (reviewed) | Per-module, as reviews are completed and approved |
+| `localized/` | `04-localized-content/` (adapted) | After Pass 2 localization complete |
 
-## Version Tracks
+## Module-Level Publication
 
-### mt-preview (Vélþýðing)
+Faithful HTML appears **per module** as reviews complete:
 
-**Source:** `02-mt-output/` (machine translation from malstadur.is)
+1. Editor reviews segments in the segment editor
+2. Head editor approves module review
+3. `applyApprovedEdits()` writes reviewed segments to `03-faithful-translation/`
+4. Inject + render produces faithful HTML for that module
+5. Reader shows faithful when available, falls back to mt-preview
 
-**Quality level:** Unreviewed machine translation
-
-**Use case:** Early access for students while editorial review is in progress
-
-**Status tracking:** `publication.mtPreview` in chapter status.json
-
-**Workflow:**
-1. Convert MT output from `02-mt-output/` to markdown
-2. Add frontmatter with `version: mt-preview`
-3. Place in `mt-preview/chapters/ch##/`
-4. Update `mt-preview/toc.json`
-
-### faithful (Yfirfarin þýðing)
-
-**Source:** `03-faithful-translation/` (after Pass 1 editorial review)
-
-**Quality level:** Human-reviewed faithful translation
-
-**Use case:** Production content after linguistic review complete
-
-**Status tracking:** `publication.faithful` in chapter status.json
-
-**Workflow:**
-1. Convert reviewed content from `03-faithful-translation/` to markdown
-2. Add frontmatter with `version: faithful`
-3. Place in `faithful/chapters/ch##/`
-4. Update `faithful/toc.json`
-
-## Future: Localized Version
-
-When Pass 2 (localization) is implemented, add:
+## Directory Structure
 
 ```
 05-publication/
-└── localized/           # Localized for Iceland (future)
-    ├── chapters/
-    └── toc.json
+├── mt-preview/
+│   ├── chapters/
+│   │   └── {NN}/
+│   │       ├── {NN}-0-introduction.html
+│   │       ├── {NN}-{S}-{slug}.html          # Module content pages
+│   │       ├── {NN}-exercises.html            # Compiled exercises
+│   │       ├── {NN}-summary.html              # Compiled summaries
+│   │       ├── {NN}-key-equations.html        # Key equations
+│   │       ├── {NN}-key-terms.html            # Glossary terms
+│   │       ├── {NN}-answer-key.html           # Exercise solutions
+│   │       └── images/                        # Chapter images
+│   ├── glossary.json
+│   ├── index.json
+│   └── toc.json
+├── faithful/                                  # Same structure as mt-preview
+│   └── chapters/{NN}/                         # Grows as modules are reviewed
+├── localized/                                 # Same structure (future)
+└── README.md
 ```
 
-## File Naming
+## Pipeline
 
 ```
-chapters/
-└── ch##/
-    ├── index.md         # Chapter introduction
-    ├── ##.1.md          # Section files
-    ├── ##.2.md
-    └── ...
+02-mt-output/ ──→ cnxml-inject ──→ cnxml-render ──→ 05-publication/mt-preview/
+03-faithful-translation/ ──→ cnxml-inject ──→ cnxml-render ──→ 05-publication/faithful/
+04-localized-content/ ──→ cnxml-inject ──→ cnxml-render ──→ 05-publication/localized/
 ```
 
-## Frontmatter Requirements
+**Tools:**
+- `cnxml-inject.js` — inject translated segments into CNXML structure
+- `cnxml-render.js` — render CNXML to semantic HTML with pre-rendered MathJax SVG
 
-Each markdown file must include:
+## HTML Output
 
-```yaml
----
-title: "Section Title"
-titleIs: "Icelandic Title"
-chapter: 3
-section: 1
-version: "mt-preview"  # or "faithful" or "localized"
-sourceVersion: "2024-11-01"
-lastUpdated: "2026-01-12"
----
-```
+Each module produces one HTML file containing:
+- Semantic markup with preserved OpenStax IDs
+- Pre-rendered MathJax 4 SVG equations (inline and display)
+- Data attributes for numbering (`data-figure-number`, `data-table-number`, etc.)
+- Embedded page data JSON
 
-## Reader Website Integration
+End-of-chapter pages are compiled from tagged sections across all modules in the chapter.
 
-The reader website should:
+## CLI Usage
 
-1. Check available versions in root `toc.json`
-2. Default to highest quality version available
-3. Allow user to switch between versions
-4. Display version badge (e.g., "Vélþýðing" vs "Yfirfarin")
+```bash
+# MT preview for a chapter
+node tools/cnxml-inject.js --chapter 1
+node tools/cnxml-render.js --chapter 1 --track mt-preview
 
-## Status Tracking
+# Faithful for a single reviewed module
+node tools/cnxml-inject.js --chapter 1 --module m68663
+node tools/cnxml-render.js --chapter 1 --module m68663 --track faithful
 
-Chapter status.json now tracks publication per version:
-
-```json
-{
-  "publication": {
-    "mtPreview": {
-      "complete": true,
-      "date": "2026-01-12"
-    },
-    "faithful": {
-      "complete": false
-    }
-  }
-}
+# Appendices
+node tools/cnxml-inject.js --chapter appendices
+node tools/cnxml-render.js --chapter appendices --track mt-preview
 ```

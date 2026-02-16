@@ -188,41 +188,52 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 
 **Goal:** Human editor produces faithful translation.
 
-**Step 3a: Initialize 03-faithful-translation with complete MT output**
+There are two paths for linguistic review:
 
-**Critical:** Before starting review, ensure `03-faithful-translation` has complete segment files. This prevents English fallback during injection.
+#### Option A: Web-based Segment Editor (Recommended)
+
+Use the segment editor at `/segment-editor` for module-by-module review:
+
+1. Open the segment editor, select book/chapter/module
+2. The editor loads segments from `03-faithful-translation/` if available, falling back to `02-mt-output/`
+3. Edit segments for grammar, spelling, natural Icelandic phrasing, terminology
+4. Submit for head editor review
+5. When approved, `applyApprovedEdits()` writes reviewed segments to `03-faithful-translation/`
+6. Inject + render produces faithful HTML for that module
+
+**No initialization needed** — the segment editor falls back to `02-mt-output/` automatically.
+
+**Module-level publication:** Each module is published as faithful individually when its review is approved. Other modules in the same chapter remain as mt-preview until reviewed.
+
+#### Option B: Manual Offline Editing
+
+For editing in VS Code or another text editor, first initialize the files:
 
 ```bash
-# Initialize chapter for review (copies complete MT output to 03-faithful-translation)
+# Initialize chapter for review (copies MT output to 03-faithful-translation)
 node tools/init-faithful-review.js --chapter 5 --verbose
 
 # Force overwrite if needed
 node tools/init-faithful-review.js --chapter 5 --force
 ```
 
-**What this does:**
-- Copies all `*-segments.is.md` files from `02-mt-output/ch05/` to `03-faithful-translation/ch05/`
-- Ensures reviewers start with complete content (no missing segments)
-- Prevents English fallback when injecting from `03-faithful-translation`
-- Skips files that already exist (use `--force` to overwrite)
+Then edit the segment files directly:
+1. Open `03-faithful-translation/ch05/m68724-segments.is.md` in your editor
+2. Review and edit for grammar, spelling, natural Icelandic phrasing, terminology
+3. Run inject + render when ready:
+   ```bash
+   node tools/cnxml-inject.js --chapter 5
+   node tools/cnxml-render.js --chapter 5 --track faithful
+   ```
 
-**Step 3b: Review and edit markdown**
+**Note:** `init-faithful-review.js` copies complete MT output so there are no missing segments during injection.
 
-**Process:**
-1. Open the segment files in any text editor (VS Code, Typora, etc.)
-2. Review and edit for:
-   - Grammar and spelling
-   - Natural Icelandic phrasing
-   - Sentence flow and readability
-   - Terminology consistency (check glossary)
-   - Technical accuracy preserved
+#### Review Guidelines (Both Options)
 
 **What NOT to do:**
 - NO localization (keep imperial units, American examples)
 - NO adding content
 - Focus only on making the translation faithful and well-written
-
-**Location:** `03-faithful-translation/ch05/m68724-segments.is.md`
 
 **Deliverable:** Human-verified faithful translation that accurately represents the source in natural Icelandic.
 
@@ -508,7 +519,9 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
 # Step 2→3: Restore protected segments in MT output
 node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 
-# Step 3: Review MT output, save to 03-faithful-translation/ (manual)
+# Step 3 Option A: Review via segment editor at /segment-editor (recommended)
+# Step 3 Option B: Manual editing — first initialize, then edit files
+# node tools/init-faithful-review.js --chapter 5 --verbose
 
 # Step 4: Prepare for Matecat Align
 node tools/prepare-for-align.js \

@@ -73,8 +73,7 @@ books/{book}/
 │   └── ch{NN}/         #   m{NNNNN}-structure.json, -equations.json
 ├── 02-mt-output/       # 🔒 READ ONLY - Raw IS segments from MT
 ├── 02-machine-translated/ # Merged MT segments (ready for injection)
-├── 03-editing/         # ✏️ Editorial review in progress
-├── 03-faithful-translation/ # ✏️ Reviewed IS segments (faithful translation)
+├── 03-faithful-translation/ # ✏️ Reviewed IS segments (per-module, written by applyApprovedEdits)
 ├── 03-translated/      # Translated CNXML from injection
 │   └── {track}/ch{NN}/ #   m{NNNNN}.cnxml (track = mt-preview, faithful, localized)
 ├── 04-localization/    # ✏️ Localization in progress
@@ -114,8 +113,8 @@ CNXML → Extract → EN Segments → MT → Initialize → Review → Inject �
 | 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments |
 | 2a | Machine translation | malstadur.is | `02-mt-output/` |
 | 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection |
-| 3a | Initialize for review | `init-faithful-review.js` | `03-faithful-translation/` (complete) |
-| 3b | Linguistic review | Manual editing | `03-faithful-translation/` ★ |
+| 3a | Linguistic review | Segment editor (web) or manual editing | `03-faithful-translation/` ★ |
+| 3b | Apply approved edits | `applyApprovedEdits()` (per-module) | `03-faithful-translation/` |
 | 4 | TM creation | `prepare-for-align.js` + Matecat Align | `tm/` ★ |
 | 5a | Inject translations | `cnxml-inject.js` | `03-translated/` |
 | 5b | Render to HTML | `cnxml-render.js` | `05-publication/` |
@@ -203,9 +202,10 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Phase 10: Publication Migration** — Replace `publicationService.js` markdown assembly with HTML pipeline output. The three tracks (mt-preview, faithful, localized) use inject→render instead of chapter-assembler.
+**Phase 11: Status & Schema Modernization** — Expand from 5-stage to 8-stage pipeline tracking. Add file type tracking for structure JSON, translated CNXML, and rendered HTML. Auto-advance status on pipeline completion.
 
-See [ROADMAP.md](ROADMAP.md) Phase 10 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
+See [ROADMAP.md](ROADMAP.md) Phase 11 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
 
-**Phase 9 Status:** COMPLETE (2026-02-16) — Faithful track initialized and rendered for 8 chapters + appendices.
+**Phase 10 Status:** COMPLETE (2026-02-16) — Publication service already migrated to HTML pipeline in Phase 8; premature faithful content removed; faithful track now grows per-module as reviews complete.
+**Phase 9 Status:** COMPLETE (2026-02-16) — `applyApprovedEdits()` writes reviewed segments to `03-faithful-translation/` per-module.
 **Phase 8 Status:** COMPLETE (2026-02-05) — Editor rebuild for CNXML→HTML pipeline delivered.
