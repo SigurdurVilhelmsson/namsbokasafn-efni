@@ -201,12 +201,18 @@ Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` f
 
 `server/services/session.js` is the largest file. Consider splitting by responsibility (session CRUD, session search, session export, etc.).
 
-### 2.10 Duplicated `escapeHtml()` Across 4+ Files
+### 2.10 Duplicated `escapeHtml()` Across 4+ Files ✅ COMPLETE
 **Severity:** LOW | **Effort:** QUICK-FIX | **Area:** Code Quality
 
-The same `escapeHtml()` function is copy-pasted in `server/views/admin-users.html`, `server/routes/meetings.js`, `server/services/notifications.js`, and at least 17 other view files. Should be a shared utility.
+~~The same `escapeHtml()` function is copy-pasted in `server/views/admin-users.html`, `server/routes/meetings.js`, `server/services/notifications.js`, and at least 17 other view files. Should be a shared utility.~~
 
-5 view files use `innerHTML` WITHOUT `escapeHtml`: `pipeline-dashboard.html`, `reports.html`, `dashboard.html`, `images.html`, `feedback.html`. Low risk since data comes from the server API (not direct user input), but worth noting.
+**Status:** Complete. Shared utilities already exist and are used everywhere:
+- **Server-side:** `server/services/htmlUtils.js` (CJS) — imported by `meetings.js`, `notifications.js`
+- **Client-side:** `server/public/js/htmlUtils.js` — loaded by all 24 view files via `<script src="/js/htmlUtils.js">`
+- **Tools:** `tools/lib/cnxml-elements.js` has a minimal 3-char version (only &, <, >) appropriate for HTML content output
+- Zero inline `escapeHtml` definitions remain in view files
+
+**Note:** Some views use `innerHTML` without calling `escapeHtml()`. Low risk since data comes from server APIs (not direct user input), and the function is available in all views.
 
 ---
 
@@ -330,7 +336,7 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 10. **Pipeline integration tests (2026-02-16)** — 22 tests covering inject, render, 8 regression issues, round-trip. 49 total tests across 4 files.
 
 **Tier 1 Status:** 11 of 11 items complete (100%) ✅
-**Tier 2 Status:** 9 of 10 items complete (90%) ✅ (all HIGH and MEDIUM severity complete except 2.8 partial)
+**Tier 2 Status:** 10 of 10 items complete (100%) ✅ (2.8 partial — consolidation ongoing)
 **Tier 3 Status:** 4 of 11 items complete (36%)
 **Overall Quick-Win Checklist:** 19 of 19 items complete (100%) ✅
 
@@ -338,10 +344,9 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 
 **All critical and high-priority items complete!** ✅
 
-**Tier 2 remaining (1 partial, non-urgent):**
+**Tier 2 remaining (fix-when-touching, non-urgent):**
 - 2.8: Server over-engineering — consolidate services when next modifying them (3 orphans already deleted)
 - 2.9: session.js 1745 lines — split when modifying
-- 2.10: Duplicated `escapeHtml()` — extract to shared utility when touching those files
 
 ### Risk Assessment
 **Current risk level: LOW** ✅
