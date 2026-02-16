@@ -166,7 +166,7 @@ npm run validate
 - `rendering` - Step 5b: HTML produced
 - `publication` - Step 5c: Published to web
 
-**Statuses:** `complete`, `in-progress`, `pending`, `not-started`
+**Statuses:** `complete`, `not-started` (binary in status.json; `pending` used in section-level display)
 
 ## Human Review Required
 
@@ -202,10 +202,11 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Phase 11: Status & Schema Modernization** — Expand from 5-stage to 8-stage pipeline tracking. Add file type tracking for structure JSON, translated CNXML, and rendered HTML. Auto-advance status on pipeline completion.
+**Phase 12: Pipeline Verification** — Cross-reference resolution, examples/exercises structure, end-to-end test.
 
-See [ROADMAP.md](ROADMAP.md) Phase 11 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
+See [ROADMAP.md](ROADMAP.md) Phase 12 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
 
-**Phase 10 Status:** COMPLETE (2026-02-16) — Publication service already migrated to HTML pipeline in Phase 8; premature faithful content removed; faithful track now grows per-module as reviews complete.
-**Phase 9 Status:** COMPLETE (2026-02-16) — `applyApprovedEdits()` writes reviewed segments to `03-faithful-translation/` per-module.
+**Phase 11 Status:** COMPLETE (2026-02-16) — 8-stage schema migration, canonical stage names, auto-advance hooks, filesystem sync updated.
+**Phase 10 Status:** COMPLETE (2026-02-16) — Publication service migrated; faithful track grows per-module.
+**Phase 9 Status:** COMPLETE (2026-02-16) — `applyApprovedEdits()` writes reviewed segments per-module.
 **Phase 8 Status:** COMPLETE (2026-02-05) — Editor rebuild for CNXML→HTML pipeline delivered.

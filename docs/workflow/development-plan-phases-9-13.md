@@ -133,52 +133,22 @@ This matches the practical workflow: review modules individually, then publish t
 
 ---
 
-## Phase 11: Status & Schema Modernization
+## Phase 11: Status & Schema Modernization ✅ (2026-02-16)
 
 **Goal:** Pipeline tracking reflects reality.
 
-### 11.1 — Expand Pipeline Stages
+**Status:** COMPLETE. Migrated from mixed-name 7-stage model to canonical 8-stage pipeline.
 
-Current 5-stage model is outdated. Update to 8 stages:
+### What was done:
 
-| Stage | Step | Description |
-|-------|------|-------------|
-| `extraction` | 1 | CNXML → segments + structure |
-| `mtReady` | 1b | Segments protected for MT |
-| `mtOutput` | 2 | MT output received |
-| `linguisticReview` | 3 | Pass 1 review complete |
-| `tmCreated` | 4 | TM created via Matecat Align |
-| `injection` | 5a | Translated CNXML produced |
-| `rendering` | 5b | HTML produced |
-| `publication` | 5c | Published to web |
+- **11.1 — Schema migration:** One-time migration script (`tools/migrate-status-schema.js`) rewrote all 22 `status.json` files. Legacy names removed: `source`, `enMarkdown`, `editorialPass1`, `matecat`, `tmUpdated`, `editorialPass2`. JSON schema updated to match.
+- **11.2 — Status routes updated:** `PIPELINE_STAGES` expanded to 8 stages. Removed `STAGE_MAPPING` and `normalizeStageStatus()`. Updated `formatChapterStatus()`, `suggestNextActions()`, section-level status, summary, and analytics routes.
+- **11.3 — Filesystem sync updated:** `bookRegistration.js` `scanAndUpdateStatus()` uses canonical names and module-based file detection. Checks `02-for-mt/` for extraction + mtReady, `02-mt-output/` for mtOutput, `03-faithful-translation/` for linguisticReview, `tm/` for tmCreated, `03-translated/mt-preview/` for injection, `05-publication/mt-preview/` for rendering.
+- **11.4 — Auto-advance hook:** `segmentEditorService.js` `applyApprovedEdits()` checks if all modules have faithful files after each apply. When all modules reviewed, marks `linguisticReview: complete`. `pipelineService.js` already auto-advances `injection` and `rendering`.
 
-**Files to modify:**
-- `schemas/chapter-status.schema.json`
-- `server/routes/status.js` — update `PIPELINE_STAGES` and mapper
+**Design docs:** `docs/plans/2026-02-16-phase11-status-modernization-design.md`, `docs/plans/2026-02-16-phase11-implementation.md`
 
-### 11.2 — Chapter Files Tracking
-
-Add tracking for new file types in `chapterFilesService.js`:
-
-| File Type | Directory |
-|-----------|-----------|
-| `structure` | `02-structure/` |
-| `equations` | `02-structure/` |
-| `translated-cnxml` | `03-translated/` |
-| `rendered-html` | `05-publication/` |
-
-### 11.3 — Auto-Advance Status
-
-When pipeline actions complete, automatically update chapter status:
-- Edits applied → `linguisticReview: complete`
-- Inject succeeds → `injection: complete`
-- Render succeeds → `rendering: complete`
-- Published → `publication: complete`
-
-**Files to modify:**
-- `server/services/chapterFilesService.js`
-- `server/services/pipelineService.js` — add status updates on completion
-- `server/migrations/009-*.js` or `010-*.js`
+**Note on 11.2 (Chapter Files Tracking):** Deferred. The `chapterFilesService.js` file type tracking for structure JSON, translated CNXML, and rendered HTML was not implemented — the filesystem sync in `bookRegistration.js` provides sufficient tracking at the chapter level.
 
 ---
 

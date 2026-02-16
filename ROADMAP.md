@@ -9,10 +9,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phase 11: Status & Schema Modernization |
-| **Latest Milestone** | Phase 10 complete (2026-02-16), Phase 9 complete (2026-02-16), old pipeline retired (2026-02-16) |
+| **Current Phase** | Phase 12: Pipeline Verification |
+| **Latest Milestone** | Phase 11 complete (2026-02-16), Phase 10 complete (2026-02-16), old pipeline retired (2026-02-16) |
 
-**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 (current) → 12 → 13
+**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 (current) → 13
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
 
 ---
@@ -215,11 +215,16 @@ Publication service was already migrated to HTML pipeline during Phase 8. Phase 
 - [x] 10.2 — Publication routes use Pipeline API (done in Phase 8)
 - [x] 10.3 — Directory cleanup + module-level publication model
 
-### Phase 11: Status & Schema Modernization
+### Phase 11: Status & Schema Modernization ✅ (2026-02-16)
 
-**Status:** NOT STARTED
+**Status:** COMPLETE
 
-Expand from 5-stage to 8-stage pipeline tracking. Add file type tracking for structure JSON, translated CNXML, and rendered HTML. Auto-advance status on pipeline completion.
+Migrated chapter status tracking from mixed-name 7-stage model to canonical 8-stage pipeline. One-time migration script rewrote all 22 status.json files. Schema, routes, filesystem sync, and auto-advance hooks all updated.
+
+- [x] 11.1 — Schema migration: 8 canonical stages (extraction, mtReady, mtOutput, linguisticReview, tmCreated, injection, rendering, publication)
+- [x] 11.2 — Status routes updated: PIPELINE_STAGES, removed legacy STAGE_MAPPING
+- [x] 11.3 — Filesystem sync: module-based detection with canonical names
+- [x] 11.4 — Auto-advance: linguisticReview marked complete when all modules have faithful files
 
 ### Phase 12: Pipeline Verification
 
@@ -326,6 +331,7 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-02 | Delete old pipeline code entirely | 43 archived tools + 4 server routes already broken (lazy imports to moved files). ~37,800 lines removed. Git history preserves everything. |
 | 2026-02 | MathJax 3→4 upgrade | MathJax 3 TeX fonts had only 1/20 Icelandic characters; v4 New Computer Modern has full native support |
 | 2026-02 | Module-level faithful publication | Faithful HTML grows per-module as reviews complete; no bulk initialization needed; reader falls back to mt-preview |
+| 2026-02 | 8-stage pipeline model | extraction → mtReady → mtOutput → linguisticReview → tmCreated → injection → rendering → publication; binary complete/not-started; auto-advance on pipeline actions |
 
 ---
 
@@ -398,14 +404,9 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Status & Schema Modernization (Phase 11)
+### Current Priority: Pipeline Verification (Phase 12)
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
-
-### Status & Schema Modernization (Phase 11)
-1. [ ] Expand from 5-stage to 8-stage pipeline tracking
-2. [ ] Add file type tracking for structure JSON, translated CNXML, rendered HTML
-3. [ ] Auto-advance status on pipeline completion
 
 ### Pipeline Verification (Phase 12)
 1. [ ] Investigate open cnxml-render issues (#5 examples, #6 exercises — may be vefur CSS)
