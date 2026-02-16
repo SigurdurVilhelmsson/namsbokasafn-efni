@@ -35,31 +35,30 @@
     }
   ],
   "status": {
-    "source": {
+    "extraction": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
+    },
+    "mtReady": {
+      "complete": false
     },
     "mtOutput": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
     },
-    "matecat": {
-      "complete": true,
-      "date": "2024-11-15"
-    },
-    "editorialPass1": {
+    "linguisticReview": {
       "complete": true,
       "date": "2024-12-10",
       "editor": "[FÁ Teacher]"
     },
-    "tmUpdated": {
+    "tmCreated": {
+      "complete": true,
+      "date": "2024-11-15"
+    },
+    "injection": {
       "complete": false
     },
-    "editorialPass2": {
+    "rendering": {
       "complete": false
     },
     "publication": {
@@ -71,6 +70,9 @@
       "faithful": {
         "complete": false,
         "notes": "Pass 1 review complete, awaiting TM update and republish"
+      },
+      "localized": {
+        "complete": false
       }
     }
   },

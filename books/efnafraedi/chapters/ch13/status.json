@@ -4,29 +4,38 @@
   "titleIs": "Grundvallarhugtök jafnvægis",
   "sections": [],
   "status": {
-    "source": {
+    "extraction": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
+    },
+    "mtReady": {
+      "complete": false
     },
     "mtOutput": {
       "complete": false
     },
-    "matecat": {
+    "linguisticReview": {
       "complete": false
     },
-    "editorialPass1": {
+    "tmCreated": {
       "complete": false
     },
-    "tmUpdated": {
+    "injection": {
       "complete": false
     },
-    "editorialPass2": {
+    "rendering": {
       "complete": false
     },
     "publication": {
-      "complete": false
+      "mtPreview": {
+        "complete": false
+      },
+      "faithful": {
+        "complete": false
+      },
+      "localized": {
+        "complete": false
+      }
     }
   },
   "images": {

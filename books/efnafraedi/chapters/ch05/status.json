@@ -20,31 +20,28 @@
     }
   ],
   "status": {
-    "source": {
+    "extraction": {
       "complete": true,
-      "date": "2026-01-29",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-29"
+    },
+    "mtReady": {
+      "complete": false
     },
     "mtOutput": {
       "complete": true,
-      "date": "2026-01-30",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-30"
     },
-    "matecat": {
+    "linguisticReview": {
+      "complete": false
+    },
+    "tmCreated": {
       "complete": false,
-      "inProgress": false,
-      "pending": true,
       "notes": "Not yet started"
     },
-    "editorialPass1": {
+    "injection": {
       "complete": false
     },
-    "tmUpdated": {
-      "complete": false
-    },
-    "editorialPass2": {
+    "rendering": {
       "complete": false
     },
     "publication": {
@@ -54,6 +51,9 @@
         "notes": "Regenerated with current pipeline (8 files)"
       },
       "faithful": {
+        "complete": false
+      },
+      "localized": {
         "complete": false
       }
     }

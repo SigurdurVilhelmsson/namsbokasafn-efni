@@ -4,33 +4,41 @@
   "titleIs": null,
   "sections": [],
   "status": {
-    "source": {
+    "extraction": {
       "complete": true,
       "date": "2026-01-12",
-      "notes": "Only specific subchapters TBD by teacher",
-      "inProgress": false,
-      "pending": false
+      "notes": "Only specific subchapters TBD by teacher"
+    },
+    "mtReady": {
+      "complete": false
     },
     "mtOutput": {
       "complete": true,
       "date": "2024-11-01"
     },
-    "matecat": {
+    "linguisticReview": {
+      "complete": false
+    },
+    "tmCreated": {
       "complete": false,
-      "pending": true,
       "targetDate": "2025-02"
     },
-    "editorialPass1": {
+    "injection": {
       "complete": false
     },
-    "tmUpdated": {
-      "complete": false
-    },
-    "editorialPass2": {
+    "rendering": {
       "complete": false
     },
     "publication": {
-      "complete": false
+      "mtPreview": {
+        "complete": false
+      },
+      "faithful": {
+        "complete": false
+      },
+      "localized": {
+        "complete": false
+      }
     }
   },
   "images": {

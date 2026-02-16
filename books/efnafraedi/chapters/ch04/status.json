@@ -30,32 +30,29 @@
     }
   ],
   "status": {
-    "source": {
+    "extraction": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
+    },
+    "mtReady": {
+      "complete": false
     },
     "mtOutput": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
     },
-    "matecat": {
+    "linguisticReview": {
+      "complete": false
+    },
+    "tmCreated": {
       "complete": true,
-      "inProgress": false,
       "notes": "Currently being aligned in Matecat",
-      "date": "2026-01-12",
-      "pending": false
+      "date": "2026-01-12"
     },
-    "editorialPass1": {
+    "injection": {
       "complete": false
     },
-    "tmUpdated": {
-      "complete": false
-    },
-    "editorialPass2": {
+    "rendering": {
       "complete": false
     },
     "publication": {
@@ -65,6 +62,9 @@
         "notes": "MT with Chemistry Reader tags (11 files, 79 tags)"
       },
       "faithful": {
+        "complete": false
+      },
+      "localized": {
         "complete": false
       }
     }

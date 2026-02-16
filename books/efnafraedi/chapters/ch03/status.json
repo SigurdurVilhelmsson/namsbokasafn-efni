@@ -25,31 +25,29 @@
     }
   ],
   "status": {
-    "source": {
+    "extraction": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
+    },
+    "mtReady": {
+      "complete": false
     },
     "mtOutput": {
       "complete": true,
-      "date": "2026-01-12",
-      "inProgress": false,
-      "pending": false
+      "date": "2026-01-12"
     },
-    "matecat": {
+    "linguisticReview": {
+      "complete": false,
+      "notes": "Delivered to editor, awaiting review"
+    },
+    "tmCreated": {
       "complete": true,
       "date": "2024-12-01"
     },
-    "editorialPass1": {
-      "complete": false,
-      "pending": true,
-      "notes": "Delivered to editor, awaiting review"
-    },
-    "tmUpdated": {
+    "injection": {
       "complete": false
     },
-    "editorialPass2": {
+    "rendering": {
       "complete": false
     },
     "publication": {
@@ -59,6 +57,9 @@
         "notes": "MT with Chemistry Reader tags (10 files, 53 tags)"
       },
       "faithful": {
+        "complete": false
+      },
+      "localized": {
         "complete": false
       }
     }
