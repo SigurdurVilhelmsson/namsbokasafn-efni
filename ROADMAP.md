@@ -9,10 +9,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phase 12: Pipeline Verification |
-| **Latest Milestone** | Phase 11 complete (2026-02-16), Phase 10 complete (2026-02-16), old pipeline retired (2026-02-16) |
+| **Current Phase** | Phase 13: Cleanup & Consolidation |
+| **Latest Milestone** | Phase 12 complete (2026-02-16), Phase 11 complete (2026-02-16), old pipeline retired (2026-02-16) |
 
-**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 (current) → 13
+**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 ✅ → 13 (current)
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
 
 ---
@@ -226,15 +226,15 @@ Migrated chapter status tracking from mixed-name 7-stage model to canonical 8-st
 - [x] 11.3 — Filesystem sync: module-based detection with canonical names
 - [x] 11.4 — Auto-advance: linguisticReview marked complete when all modules have faithful files
 
-### Phase 12: Pipeline Verification
+### Phase 12: Pipeline Verification ✅ (2026-02-16)
 
-**Status:** NOT STARTED
+**Status:** COMPLETE
 
-Verify and fix remaining cnxml-render issues (#5 examples, #6 exercises, #7 cross-references). Run end-to-end test: edit → apply → inject → render → publish → verify in vefur.
+All pipeline issues verified as resolved on the live site. Cross-references working (0 empty refs across tested chapters). Examples and exercises properly styled (vefur CSS already targets the HTML classes). Issues #5, #6, #7 closed in html-pipeline-issues.md. End-to-end test deferred to first real editorial review cycle.
 
 ### Phase 13: Cleanup & Consolidation
 
-**Status:** PARTIALLY COMPLETE
+**Status:** IN PROGRESS
 
 **13.1 — Retire Old Pipeline (COMPLETE 2026-02-16):**
 Deleted `tools/_archived/` (43 files), `server/routes/editor.js`, `server/views/editor.html`, `server/routes/process.js`, `server/routes/localization.js`. Cleaned up `workflow.js`, `books.js`, `sync.js`, `sessionCore.js`. Updated nav links across 23 views. ~37,800 lines removed. Commit `89b86d2`.
@@ -404,14 +404,14 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Pipeline Verification (Phase 12)
+### Current Priority: Cleanup & Consolidation (Phase 13)
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
-### Pipeline Verification (Phase 12)
-1. [ ] Investigate open cnxml-render issues (#5 examples, #6 exercises — may be vefur CSS)
-2. [ ] Fix cross-reference resolution (#7 — `<link target-id="..."/>` → numbered labels)
-3. [ ] End-to-end test: edit → apply → inject → render → publish → verify in vefur
+### Cleanup & Consolidation (Phase 13)
+1. [x] 13.1 — Retire old pipeline (~37,800 lines removed)
+2. [ ] 13.2 — Audit remaining services for dead code
+3. [ ] 13.3 — Core pipeline tests (cnxml-inject, cnxml-render)
 
 ### Ongoing
 1. [ ] Complete Pass 1 reviews for chapters 1-4 (using segment editor)

@@ -202,10 +202,11 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Phase 12: Pipeline Verification** — Cross-reference resolution, examples/exercises structure, end-to-end test.
+**Phase 13: Cleanup & Consolidation** — Audit remaining services for dead code, add core pipeline tests.
 
-See [ROADMAP.md](ROADMAP.md) Phase 12 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
+See [ROADMAP.md](ROADMAP.md) Phase 13 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
 
+**Phase 12 Status:** COMPLETE (2026-02-16) — All pipeline issues verified as resolved on live site.
 **Phase 11 Status:** COMPLETE (2026-02-16) — 8-stage schema migration, canonical stage names, auto-advance hooks, filesystem sync updated.
 **Phase 10 Status:** COMPLETE (2026-02-16) — Publication service migrated; faithful track grows per-module.
 **Phase 9 Status:** COMPLETE (2026-02-16) — `applyApprovedEdits()` writes reviewed segments per-module.

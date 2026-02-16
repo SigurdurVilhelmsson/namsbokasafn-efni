@@ -95,16 +95,16 @@ if (noteInExamplePattern.test(originalCnxml)) {
 
 ---
 
-## Open Issues
+## Resolved Issues (formerly Open)
 
 ### 5. Examples — Vefur CSS Alignment
-**Status:** Vefur-side fix needed
+**Status:** FIXED (verified 2026-02-16)
 **Severity:** Medium - functional but poor UX
 
 **Problem:**
 Examples are rendered with correct semantic HTML but vefur CSS may not target these classes yet.
 
-**Current output (correct):**
+**HTML output:**
 ```html
 <aside id="fs-idp17719968" class="example">
   <p class="example-label">Dæmi 3.1</p>
@@ -119,32 +119,26 @@ Examples are rendered with correct semantic HTML but vefur CSS may not target th
 </aside>
 ```
 
-**CSS classes to style in vefur:**
-- `.example` — Example container
-- `.example-label` — Auto-numbered label ("Dæmi X.Y")
-- `.para-title` — Sub-section title within example ("Lausn", "Prófaðu þekkingu þína")
-- Nested `.note` within examples for "Check Your Learning" sections
-
-**Action:** Update `content.css` in namsbokasafn-vefur to style these classes.
+**Resolution:** CSS already exists in vefur `content.css` for `.example`, `.example-label`, `.para-title`, and nested notes. Verified on live site — examples display with gray background, proper labels, structured solution/check-your-learning sections.
 
 ---
 
 ### 6. Exercises — Vefur CSS Alignment
-**Status:** Vefur-side fix needed
+**Status:** FIXED (verified 2026-02-16)
 **Severity:** Medium
 
 **Problem:**
 In-body exercises render correctly (`<div class="exercise"><div class="problem">/<div class="solution">`). End-of-chapter exercises come from the old markdown pipeline and use a different structure. Vefur CSS needs to target both.
 
-**In-body exercise output (correct):**
+**HTML output:**
 ```html
-<div id="fs-id..." class="exercise">
+<div id="fs-id..." class="eoc-exercise has-answer-link" data-exercise-number="1">
+  <a class="exercise-number-link" href="/efnafraedi/svarlykill/3#fs-id...">1.</a>
   <div class="problem"><p>Question...</p></div>
-  <div class="solution"><p>Answer...</p></div>
 </div>
 ```
 
-**Action:** Update `content.css` in namsbokasafn-vefur to style `.exercise`, `.problem`, `.solution`.
+**Resolution:** CSS already exists in vefur `content.css` for `.exercise`, `.eoc-exercise`, `.problem`, `.solution`. End-of-chapter exercises now use HTML pipeline output with `eoc-exercise` class and answer key links. Verified on live site — 80 exercises on chapter 3 exercises page render correctly with numbered links to answer key.
 
 ---
 
@@ -214,8 +208,8 @@ After fixes, verify:
 | Content duplication | FIXED | cnxml-inject.js - stripNestedElements() |
 | Equations | FIXED | cnxml-render.js, cnxml-elements.js - KaTeX pre-render |
 | Duplicate notes | FIXED | cnxml-inject.js - skip nested notes |
-| Examples structure | Vefur CSS | HTML correct, needs CSS in namsbokasafn-vefur |
-| Exercises structure | Vefur CSS | HTML correct, needs CSS in namsbokasafn-vefur |
+| Examples structure | FIXED | HTML correct, CSS exists in vefur content.css |
+| Exercises structure | FIXED | HTML correct, CSS exists in vefur content.css |
 | Cross-references | FIXED | cnxml-elements.js - added example number resolution |
 | Inline \times | FIXED | cnxml-elements.js - preserve HTML tags in stripping |
 
@@ -232,4 +226,4 @@ After fixes, verify:
 | Complexity | Higher | Lower |
 | Maintenance | Single source | Multiple transforms |
 
-**Conclusion so far:** The HTML pipeline preserves more structure and IDs from the original CNXML. Core functionality (images, equations, content) is now working. Remaining issues are lower priority (CSS alignment, cross-references).
+**Conclusion:** The HTML pipeline preserves more structure and IDs from the original CNXML. All 8 tracked issues are now resolved. The pipeline produces correct semantic HTML, and the vefur CSS properly styles all content types (examples, exercises, notes, tables, figures, cross-references).
