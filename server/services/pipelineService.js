@@ -346,8 +346,8 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
 setInterval(() => cleanupJobs(), 1800000);
 
 /**
- * Run prepare-for-align.js for all sections in a chapter.
- * Requires linguisticReview to be complete (all modules have faithful files).
+ * Run prepare-for-align.js for all modules in a chapter.
+ * Requires linguisticReview to be complete (faithful files exist).
  *
  * @param {Object} params
  * @param {string} params.book - Book slug
@@ -361,49 +361,40 @@ function runPrepareTm({ book, chapter, userId }) {
   const isDir = path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${chapterStr}`);
   const outputDir = path.join(BOOKS_DIR, book, 'for-align', `ch${chapterStr}`);
 
-  // Prerequisite: check faithful files exist
+  if (!fs.existsSync(enDir)) {
+    throw new Error(`EN segments directory not found: 02-for-mt/ch${chapterStr}`);
+  }
   if (!fs.existsSync(isDir)) {
     throw new Error(
       `Faithful translation directory not found: 03-faithful-translation/ch${chapterStr}`
     );
   }
 
-  // Find all EN section files
-  if (!fs.existsSync(enDir)) {
-    throw new Error(`EN segments directory not found: 02-for-mt/ch${chapterStr}`);
-  }
-
-  const enFiles = fs.readdirSync(enDir).filter((f) => f.match(/^\d+-\d+.*\.en\.md$/));
+  // Find EN segment files (module-style: m68724-segments.en.md)
+  const enFiles = fs.readdirSync(enDir).filter((f) => f.endsWith('-segments.en.md'));
   if (enFiles.length === 0) {
     throw new Error(`No EN segment files found in 02-for-mt/ch${chapterStr}`);
   }
 
-  // Extract unique section IDs (e.g., "5-1" from "5-1.en.md" or "5-1(a).en.md")
-  const sections = [
-    ...new Set(
-      enFiles
-        .map((f) => {
-          const match = f.match(/^(\d+-\d+)/);
-          return match ? match[1] : null;
-        })
-        .filter(Boolean)
-    ),
-  ].sort();
+  // Find matching IS files
+  const isFileSet = new Set(fs.readdirSync(isDir).filter((f) => f.endsWith('-segments.is.md')));
 
-  // Check which sections have IS files
-  const isFiles = fs.readdirSync(isDir).filter((f) => f.endsWith('.is.md'));
-  const isSections = new Set(
-    isFiles
-      .map((f) => {
-        const match = f.match(/^(\d+-\d+)/);
-        return match ? match[1] : null;
-      })
-      .filter(Boolean)
-  );
+  // Build pairs: EN file + matching IS file
+  const pairs = [];
+  for (const enFile of enFiles) {
+    const moduleId = enFile.replace('-segments.en.md', '');
+    const isFile = `${moduleId}-segments.is.md`;
+    if (isFileSet.has(isFile)) {
+      pairs.push({
+        moduleId,
+        en: path.join(enDir, enFile),
+        is: path.join(isDir, isFile),
+      });
+    }
+  }
 
-  const readySections = sections.filter((s) => isSections.has(s));
-  if (readySections.length === 0) {
-    throw new Error(`No sections have both EN and IS files for chapter ${chapter}`);
+  if (pairs.length === 0) {
+    throw new Error(`No modules have both EN and IS files for chapter ${chapter}`);
   }
 
   const jobId = generateJobId();
@@ -417,32 +408,29 @@ function runPrepareTm({ book, chapter, userId }) {
     status: 'running',
     startedAt: new Date().toISOString(),
     completedAt: null,
-    output: [`Preparing ${readySections.length} sections for Matecat Align...`],
+    output: [`Preparing ${pairs.length} modules for Matecat Align...`],
     error: null,
   };
   jobs.set(jobId, job);
 
   const promise = (async () => {
     try {
-      // Ensure output directory exists
       if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
       }
 
-      for (const section of readySections) {
-        job.output.push(`Processing section ${section}...`);
+      for (const pair of pairs) {
+        job.output.push(`Processing ${pair.moduleId}...`);
 
         await new Promise((resolve, reject) => {
           const child = spawn(
             'node',
             [
               path.join(TOOLS_DIR, 'prepare-for-align.js'),
-              '--en-dir',
-              enDir,
-              '--is-dir',
-              isDir,
-              '--section',
-              section,
+              '--en',
+              pair.en,
+              '--is',
+              pair.is,
               '--output-dir',
               outputDir,
               '--verbose',
@@ -465,7 +453,7 @@ function runPrepareTm({ book, chapter, userId }) {
             if (code === 0) resolve();
             else
               reject(
-                new Error(`prepare-for-align failed for section ${section} (exit code ${code})`)
+                new Error(`prepare-for-align failed for ${pair.moduleId} (exit code ${code})`)
               );
           });
         });
@@ -473,9 +461,7 @@ function runPrepareTm({ book, chapter, userId }) {
 
       job.status = 'completed';
       job.completedAt = new Date().toISOString();
-      job.output.push(
-        `Done. ${readySections.length} section pairs ready in for-align/ch${chapterStr}/`
-      );
+      job.output.push(`Done. ${pairs.length} module pairs ready in for-align/ch${chapterStr}/`);
     } catch (err) {
       job.status = 'failed';
       job.error = err.message;

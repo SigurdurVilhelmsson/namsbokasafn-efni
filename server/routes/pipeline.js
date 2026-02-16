@@ -8,6 +8,7 @@
  *   POST /api/pipeline/inject      Run inject for a chapter/module
  *   POST /api/pipeline/render      Run render for a chapter/module
  *   POST /api/pipeline/run         Run full pipeline (inject + render)
+ *   POST /api/pipeline/prepare-tm  Prepare files for Matecat Align (TM creation)
  *   GET  /api/pipeline/jobs        List recent jobs
  *   GET  /api/pipeline/jobs/:jobId Get job status and output
  */
@@ -145,6 +146,50 @@ router.post('/run', (req, res) => {
     jobId,
     message: `Pipeline started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
   });
+});
+
+/**
+ * POST /prepare-tm
+ * Prepare files for Matecat Align (TM creation).
+ */
+router.post('/prepare-tm', (req, res) => {
+  const { book, chapter } = req.body;
+
+  if (!book || !VALID_BOOKS.includes(book)) {
+    return res
+      .status(400)
+      .json({ error: `Invalid book. Must be one of: ${VALID_BOOKS.join(', ')}` });
+  }
+
+  const chapterNum = parseInt(chapter, 10);
+  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 50) {
+    return res.status(400).json({ error: 'Invalid chapter number' });
+  }
+
+  const running = pipeline.hasRunningJob(chapterNum, 'prepare-tm');
+  if (running) {
+    return res.status(409).json({
+      error: 'A TM preparation job is already running for this chapter',
+      jobId: running.id,
+    });
+  }
+
+  try {
+    const { jobId } = pipeline.runPrepareTm({
+      book,
+      chapter: chapterNum,
+      userId: req.user.id,
+    });
+
+    res.json({
+      success: true,
+      jobId,
+      message: `TM preparation started for chapter ${chapterNum}`,
+    });
+  } catch (err) {
+    console.error('Error starting TM preparation:', err);
+    res.status(400).json({ error: err.message });
+  }
 });
 
 /**
