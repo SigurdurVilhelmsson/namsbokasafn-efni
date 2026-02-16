@@ -8,7 +8,9 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const { advanceChapterStatus } = require('./pipelineService');
 
+const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 let db;
@@ -484,6 +486,34 @@ function applyApprovedEdits(book, chapter, moduleId) {
   });
 
   markAll(approvedEdits.map((e) => e.id));
+
+  // Check if all modules in this chapter now have faithful translation files.
+  // If so, auto-advance linguisticReview status to complete.
+  try {
+    const chDir = chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+    const mtOutputDir = path.join(BOOKS_DIR, book, '02-mt-output', chDir);
+    const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful-translation', chDir);
+
+    if (fs.existsSync(mtOutputDir) && fs.existsSync(faithfulDir)) {
+      const mtModules = fs
+        .readdirSync(mtOutputDir)
+        .filter((f) => f.endsWith('-segments.is.md'))
+        .map((f) => f.replace('-segments.is.md', ''));
+      const faithfulModules = fs
+        .readdirSync(faithfulDir)
+        .filter((f) => f.endsWith('-segments.is.md'))
+        .map((f) => f.replace('-segments.is.md', ''));
+
+      const allModulesReviewed = mtModules.every((m) => faithfulModules.includes(m));
+
+      if (allModulesReviewed) {
+        advanceChapterStatus(book, chapter, 'linguisticReview');
+      }
+    }
+  } catch (err) {
+    // Best-effort — don't fail the apply operation
+    console.error('Auto-advance linguisticReview failed:', err.message);
+  }
 
   return {
     appliedCount: Object.keys(approvedLookup).length,
