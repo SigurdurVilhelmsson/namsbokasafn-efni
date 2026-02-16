@@ -198,10 +198,18 @@ function validateBeforePublish(bookSlug, chapterNum, track) {
  * @param {string} userId - User who triggered the publish
  * @returns {object} { jobId, track, chapter, moduleCount, modules }
  */
-function publishChapter(bookSlug, chapterNum, track, userId) {
+async function publishChapter(bookSlug, chapterNum, track, userId) {
   const readiness = checkTrackReadiness(bookSlug, chapterNum, track);
   if (!readiness.ready) {
     throw new Error(`Chapter not ready for ${track} publication: ${readiness.reason}`);
+  }
+
+  // Run content validation
+  const validation = await validateBeforePublish(bookSlug, chapterNum, track);
+  if (!validation.valid) {
+    const err = new Error(`Validation failed: ${validation.summary.errors} error(s)`);
+    err.validation = validation;
+    throw err;
   }
 
   // Check for already-running pipeline
@@ -242,6 +250,10 @@ function publishChapter(bookSlug, chapterNum, track, userId) {
     chapter: chapterNum,
     moduleCount: readiness.moduleCount,
     modules: readiness.modules,
+    validation: {
+      warnings: validation.warnings,
+      summary: validation.summary,
+    },
   };
 }
 

@@ -127,12 +127,12 @@ router.post(
   requireAuth,
   requireRole(ROLES.HEAD_EDITOR),
   validateChapterParams,
-  (req, res) => {
+  async (req, res) => {
     const { bookSlug } = req.params;
     const { chapter } = req;
 
     try {
-      const result = publicationService.publishMtPreview(bookSlug, chapter, req.user.id);
+      const result = await publicationService.publishMtPreview(bookSlug, chapter, req.user.id);
 
       // Log activity
       try {
@@ -156,6 +156,13 @@ router.post(
       });
     } catch (err) {
       console.error('Error publishing MT preview:', err);
+      if (err.validation) {
+        return res.status(400).json({
+          error: 'Content validation failed',
+          message: err.message,
+          validation: err.validation,
+        });
+      }
       const status = err.message.includes('not ready')
         ? 400
         : err.message.includes('already running')
@@ -179,12 +186,12 @@ router.post(
   requireAuth,
   requireRole(ROLES.HEAD_EDITOR),
   validateChapterParams,
-  (req, res) => {
+  async (req, res) => {
     const { bookSlug } = req.params;
     const { chapter } = req;
 
     try {
-      const result = publicationService.publishFaithful(bookSlug, chapter, req.user.id);
+      const result = await publicationService.publishFaithful(bookSlug, chapter, req.user.id);
 
       try {
         activityLog.log({
@@ -207,6 +214,13 @@ router.post(
       });
     } catch (err) {
       console.error('Error publishing faithful translation:', err);
+      if (err.validation) {
+        return res.status(400).json({
+          error: 'Content validation failed',
+          message: err.message,
+          validation: err.validation,
+        });
+      }
       const status = err.message.includes('not ready')
         ? 400
         : err.message.includes('already running')
@@ -232,12 +246,12 @@ router.post(
   requireAuth,
   requireRole(ROLES.HEAD_EDITOR),
   validateChapterParams,
-  (req, res) => {
+  async (req, res) => {
     const { bookSlug } = req.params;
     const { chapter } = req;
 
     try {
-      const result = publicationService.publishLocalized(bookSlug, chapter, req.user.id);
+      const result = await publicationService.publishLocalized(bookSlug, chapter, req.user.id);
 
       try {
         activityLog.log({
@@ -260,6 +274,13 @@ router.post(
       });
     } catch (err) {
       console.error('Error publishing localized content:', err);
+      if (err.validation) {
+        return res.status(400).json({
+          error: 'Content validation failed',
+          message: err.message,
+          validation: err.validation,
+        });
+      }
       const status = err.message.includes('not ready')
         ? 400
         : err.message.includes('already running')
