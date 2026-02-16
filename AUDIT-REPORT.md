@@ -196,10 +196,12 @@ Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` f
 
 **Note:** Not urgent. The server works. Consider consolidating when next modifying these areas.
 
-### 2.9 session.js is 1745 Lines
+### 2.9 session.js Size ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** MODERATE | **Area:** Code Quality
 
-`server/services/session.js` is the largest file. Consider splitting by responsibility (session CRUD, session search, session export, etc.).
+~~`server/services/session.js` is the largest file (1745 lines). Consider splitting by responsibility (session CRUD, session search, session export, etc.).~~
+
+**Status:** Complete. File is now 288 lines after Phase 13.1 dead code cleanup. No longer needs splitting.
 
 ### 2.10 Duplicated `escapeHtml()` Across 4+ Files ✅ COMPLETE
 **Severity:** LOW | **Effort:** QUICK-FIX | **Area:** Code Quality
@@ -346,7 +348,6 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 
 **Tier 2 remaining (fix-when-touching, non-urgent):**
 - 2.8: Server over-engineering — consolidate services when next modifying them (3 orphans already deleted)
-- 2.9: session.js 1745 lines — split when modifying
 
 ### Risk Assessment
 **Current risk level: LOW** ✅
