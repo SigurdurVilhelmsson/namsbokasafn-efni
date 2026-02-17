@@ -16,6 +16,7 @@
       <a href="/status">Stjórnborð</a>
       <a href="/segment-editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
+      <a href="/review-queue">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -69,6 +70,10 @@
           <a href="#" class="btn btn-secondary" id="editor-link">
             <i class="fas fa-edit"></i> Opna ritstjóra
           </a>
+          <button class="btn btn-secondary" id="btn-prepare-tm" style="display:none">
+            <i class="fas fa-database"></i> Undirbúa TM
+          </button>
+          <span class="tm-status-badge" id="prepare-tm-badge" style="display:none"></span>
         </div>
       </div>
 
@@ -257,7 +262,8 @@
       await Promise.all([
         loadChapterSections(book, chapter),
         loadChapterIssues(book, chapter),
-        loadChapterActivity(book, chapter)
+        loadChapterActivity(book, chapter),
+        loadChapterStatus(book, chapter)
       ]);
     }
 
@@ -395,6 +401,102 @@
         console.error('Error loading activity:', err);
         panel.innerHTML = '<p class="text-muted">Engin virkni</p>';
       }
+    }
+
+    // TM Preparation
+    let tmPollingTimer = null;
+
+    async function loadChapterStatus(book, chapter) {
+      try {
+        const res = await fetch(`/api/status/${book}/${chapter}`);
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const stages = data.stages || {};
+        const linguisticReview = stages.linguisticReview || {};
+        const tmCreated = stages.tmCreated || {};
+
+        const tmBtn = document.getElementById('btn-prepare-tm');
+        const tmBadge = document.getElementById('prepare-tm-badge');
+
+        if (linguisticReview.complete) {
+          tmBtn.style.display = '';
+          tmBtn.onclick = prepareTm;
+
+          if (tmCreated.complete) {
+            tmBadge.style.display = '';
+            tmBadge.textContent = 'TM tilbúið';
+            tmBadge.className = 'tm-status-badge completed';
+          }
+        }
+      } catch (err) {
+        console.error('Error loading chapter status:', err);
+      }
+    }
+
+    async function prepareTm() {
+      const tmBtn = document.getElementById('btn-prepare-tm');
+      const tmBadge = document.getElementById('prepare-tm-badge');
+
+      tmBtn.disabled = true;
+      tmBadge.style.display = '';
+      tmBadge.textContent = 'Í gangi...';
+      tmBadge.className = 'tm-status-badge running';
+
+      try {
+        const res = await fetch('/api/pipeline/prepare-tm', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ book: currentBook, chapter: currentChapter }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          tmBadge.textContent = 'Villa';
+          tmBadge.className = 'tm-status-badge failed';
+          tmBtn.disabled = false;
+          return;
+        }
+
+        pollTmJob(data.jobId);
+      } catch (err) {
+        tmBadge.textContent = 'Villa';
+        tmBadge.className = 'tm-status-badge failed';
+        tmBtn.disabled = false;
+      }
+    }
+
+    function pollTmJob(jobId) {
+      clearInterval(tmPollingTimer);
+
+      tmPollingTimer = setInterval(async () => {
+        try {
+          const res = await fetch(`/api/pipeline/jobs/${jobId}`, { credentials: 'include' });
+          if (!res.ok) return;
+
+          const { job } = await res.json();
+          const tmBtn = document.getElementById('btn-prepare-tm');
+          const tmBadge = document.getElementById('prepare-tm-badge');
+
+          if (job.status === 'completed') {
+            clearInterval(tmPollingTimer);
+            tmBadge.textContent = 'TM tilbúið';
+            tmBadge.className = 'tm-status-badge completed';
+            tmBtn.disabled = false;
+          } else if (job.status === 'failed') {
+            clearInterval(tmPollingTimer);
+            tmBadge.textContent = 'Mistókst';
+            tmBadge.className = 'tm-status-badge failed';
+            tmBtn.disabled = false;
+          } else {
+            tmBadge.textContent = 'Í gangi...';
+          }
+        } catch {
+          // Polling error — ignore, will retry
+        }
+      }, 1500);
     }
 
     // Helper functions
@@ -660,6 +762,18 @@
     .activity-content { flex: 1; font-size: 0.875rem; }
     .activity-user { font-weight: 500; }
     .activity-time { display: block; font-size: 0.75rem; color: var(--gray-500); }
+
+    /* TM Status Badge */
+    .tm-status-badge {
+      display: inline-block;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .tm-status-badge.running { background: #dbeafe; color: #1e40af; }
+    .tm-status-badge.completed { background: #dcfce7; color: #166534; }
+    .tm-status-badge.failed { background: #fee2e2; color: #991b1b; }
 
     /* Empty State */
     .empty-state { text-align: center; padding: 2rem; color: var(--gray-500); }

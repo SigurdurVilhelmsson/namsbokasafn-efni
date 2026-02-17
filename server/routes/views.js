@@ -68,6 +68,14 @@ router.get('/reviews', (req, res) => {
 });
 
 /**
+ * GET /review-queue
+ * Cross-chapter review queue
+ */
+router.get('/review-queue', (req, res) => {
+  sendView(res, 'review-queue.html');
+});
+
+/**
  * GET /status
  * Status overview page
  */
