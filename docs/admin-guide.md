@@ -16,13 +16,8 @@ Start each day by checking these items:
 - [ ] Make terminology decisions if needed
 - [ ] Unblock work by resolving critical issues
 
-### 3. Overdue Assignments (`/assignments`)
-- [ ] Check for assignments past due date
-- [ ] Contact editors with overdue work
-- [ ] Reassign if editor is unavailable
-
-### 4. Pending Reviews (`/reviews`)
-- [ ] Check SLA summary panel for review status
+### 3. Pending Reviews (`/review-queue`)
+- [ ] Check SLA summary for review status across all chapters
 - [ ] Complete reviews pending >2 days (SLA target)
 - [ ] Address critical (red) reviews immediately
 - [ ] Prioritize reviews blocking publication
@@ -35,19 +30,11 @@ Start each day by checking these items:
 | Orange | Overdue | 3-5 | Process immediately |
 | Red | Critical | 5+ | Drop everything, handle now |
 
-### 5. Team Communications
+### 4. Team Communications
 - [ ] Respond to editor questions
 - [ ] Update team on priorities if needed
 
 ## Weekly Team Coordination
-
-### Weekly Meeting Preparation
-1. Go to `/meetings` to generate meeting agenda
-2. Review:
-   - Decisions made this week
-   - Issues needing team discussion
-   - Chapters ready for next stage
-3. Share agenda with team 24h before meeting
 
 ### Meeting Topics
 1. **Progress Review** (5 min)
@@ -61,76 +48,49 @@ Start each day by checking these items:
    - Localization policy questions
 
 3. **Planning** (10 min)
-   - Next week's assignments
+   - Next week's focus areas
    - Capacity discussion
    - Risk identification
 
 ### Post-Meeting Actions
-1. Record decisions at `/decisions`
-2. Update assignments at `/assignments`
-3. Resolve marked issues at `/issues`
-4. Send meeting summary to team
+1. Record decisions in shared document (Google Docs / GitHub Issues)
+2. Resolve marked issues at `/issues`
+3. Send meeting summary to team
 
 ## Approval Gates and Authority Matrix
 
 | Action | Who Can Do It | Where |
 |--------|--------------|-------|
-| Create assignments | Head Editor, Admin | `/assignments` |
-| Cancel assignments | Head Editor, Admin | `/assignments` |
-| Approve translations | Head Editor, Editor | `/reviews` |
-| Request changes | Head Editor, Editor | `/reviews` |
+| Approve translations | Head Editor, Editor | `/segment-editor` (review mode) |
+| Request changes | Head Editor, Editor | `/segment-editor` (review mode) |
 | Resolve QUICK_FIX issues | Any Editor | `/issues` |
 | Resolve TEAM_DISCUSSION issues | Head Editor only | `/issues` |
-| Make terminology decisions | Head Editor (after team input) | `/decisions` |
-| Publish MT preview | Head Editor, Admin | `/chapter` |
-| Publish faithful translation | Head Editor, Admin | `/chapter` |
+| Make terminology decisions | Head Editor (after team input) | `/terminology` |
+| Publish MT preview | Head Editor, Admin | `/chapter` → Pipeline buttons |
+| Publish faithful translation | Head Editor, Admin | `/chapter` → Pipeline buttons |
+| Prepare TM files | Head Editor, Admin | `/chapter` → "Undirbúa TM" button |
 
-## Assignment Best Practices
+## Editor Workflow
 
-### Creating Assignments
-1. Check editor workload before assigning:
-   - Go to `/assignments` and view the **Workload Panel**
-   - Look for the capacity indicator when typing assignee name
-   - Verify editor has capacity (see defaults below)
-2. Set realistic due dates:
-   - Linguistic review: 1-2 weeks per chapter
-   - Localization: 1 week per chapter
-3. Add helpful notes:
-   - Priority level
-   - Special considerations
-   - Related decisions to follow
+### Assigning Work
+1. Tell editors which chapters/modules to review via team communication channel
+2. Editors log in at `/segment-editor`, select the assigned book/chapter/module
+3. Review progress at `/review-queue` (shows all pending submissions across chapters)
+4. Use `/chapter` for single-chapter overview with section progress
 
-### Capacity Defaults
+### Capacity Guidelines
 
-| Setting | Default | Description |
-|---------|---------|-------------|
+| Guideline | Default | Description |
+|-----------|---------|-------------|
 | Weekly chapters | 2 | Max new assignments per week |
-| Concurrent max | 3 | Max active assignments at once |
+| Concurrent max | 3 | Max active chapters at once |
 | Hours/week | 10 | Available translation hours |
-
-### Capacity Indicators
-
-When assigning work, watch for these warnings:
-
-| Icon | Status | Meaning |
-|------|--------|---------|
-| ✓ (green) | Available | Editor can take more work |
-| ⚡ (yellow) | Nearly Full | Assign only if urgent |
-| ⛔ (red) | At Capacity | Do not assign; suggest alternatives |
-
-The system will show **suggested alternative assignees** if you try to assign to someone at capacity.
-
-### Reassigning Work
-1. Communicate with current assignee first
-2. Cancel existing assignment with reason
-3. Create new assignment
-4. Update any related deadlines
 
 ### Handling Blocked Work
 When work is blocked:
 1. Identify the blocking issue in `/chapter`
 2. Determine if you can resolve it:
-   - Terminology: Make decision at `/decisions`
+   - Terminology: Decide at `/terminology` or in team meeting
    - Policy: Discuss at weekly meeting
    - Technical: Contact development team
 3. Document the resolution
@@ -152,7 +112,7 @@ When a section exceeds 18,000 characters, it's automatically split for machine t
 ## Escalation Procedures
 
 ### Level 1: Editor Question (same day)
-- Editor posts question in comments
+- Editor posts question in segment editor comments
 - Head Editor responds same day
 - No formal escalation needed
 
@@ -186,15 +146,9 @@ When a section exceeds 18,000 characters, it's automatically split for machine t
 ### If malstadur.is is Down
 1. Notify team that MT is unavailable
 2. Editors can continue reviewing existing MT output
-3. Stage 1 (EN Markdown) can continue
+3. Stage 1 (EN segments) can continue
 4. Contact malstadur.is support
 5. Resume normal workflow when service restored
-
-### If a Team Member is Unavailable
-1. Check their current assignments at `/assignments`
-2. Determine urgency of each assignment
-3. Reassign critical work immediately
-4. Hold non-urgent work for their return
 
 ## Useful URLs
 
@@ -202,33 +156,38 @@ When a section exceeds 18,000 characters, it's automatically split for machine t
 |------|-----|---------|
 | Dashboard | `/status` | Overall progress |
 | My Work | `/my-work` | Individual editor view |
-| Chapter Control | `/chapter` | Single chapter management |
-| Assignments | `/assignments` | Team assignment overview |
-| Reviews | `/reviews` | Pending reviews |
+| Chapter Control | `/chapter` | Single chapter management + TM prep |
+| Review Queue | `/review-queue` | Cross-chapter review overview with SLA |
+| Reviews | `/reviews` | Detailed review dashboard |
 | Issues | `/issues` | Issue tracker |
-| Decisions | `/decisions` | Decision log |
 | Terminology | `/terminology` | Term database |
-| Meetings | `/meetings` | Meeting agenda generator |
+| Segment Editor | `/segment-editor` | Pass 1 editing and review |
+| Localization Editor | `/localization-editor` | Pass 2 editing |
 
 ## API Quick Reference
 
 ```bash
-# List all assignments
-curl /api/assignments
+# Get chapter status
+curl /api/status/efnafraedi/1
 
-# Team overview
-curl /api/assignments/overview
-
-# Create assignment
-curl -X POST /api/assignments \
-  -H "Content-Type: application/json" \
-  -d '{"book":"efnafraedi","chapter":1,"stage":"linguisticReview","assignedTo":"username"}'
-
-# Cancel assignment
-curl -X DELETE /api/assignments/{id}
+# Get review queue
+curl /api/segment-editor/review-queue?book=efnafraedi
 
 # Get chapter issues
 curl /api/issues?book=efnafraedi&chapter=1&status=pending
+
+# Run inject + render pipeline
+curl -X POST /api/pipeline/run \
+  -H "Content-Type: application/json" \
+  -d '{"book":"efnafraedi","chapter":1,"track":"faithful"}'
+
+# Prepare TM files for a chapter
+curl -X POST /api/pipeline/prepare-tm \
+  -H "Content-Type: application/json" \
+  -d '{"book":"efnafraedi","chapter":1}'
+
+# Check pipeline job status
+curl /api/pipeline/jobs/{jobId}
 ```
 
 ## Contact Information
@@ -239,4 +198,4 @@ curl /api/issues?book=efnafraedi&chapter=1&status=pending
 
 ---
 
-*Last updated: January 2026*
+*Last updated: February 2026*

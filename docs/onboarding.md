@@ -139,7 +139,8 @@ If you encounter a term not in the glossary:
 | Localization Editor | `/localization-editor` | Pass 2 cultural adaptation |
 | Terminology | `/terminology` | Term database and lookup |
 | Pipeline Status | `/status` | Overall translation progress |
-| Reviews | `/reviews` | Pending review queue (Head Editor) |
+| Review Queue | `/review-queue` | Cross-chapter review overview (Head Editor) |
+| Reviews | `/reviews` | Detailed review dashboard |
 | Dashboard | `/dashboard` | Head Editor overview |
 | Feedback | `/feedback` | Reader feedback form (public) |
 

@@ -9,8 +9,8 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phases 9-13 complete; operational use |
-| **Latest Milestone** | Phase 13 complete (2026-02-16), all pipeline issues resolved, 49 tests passing |
+| **Current Phase** | Phases 8-13 complete; pre-editorial-test polish done |
+| **Latest Milestone** | UI polish complete (2026-02-17): TM prep button, review queue UI, nav updates, docs refresh |
 
 **Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 ✅ → 13 ✅
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
@@ -242,6 +242,22 @@ All pipeline issues verified as resolved on the live site. Cross-references work
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
+### Pre-Editorial-Test Polish (2026-02-17)
+
+Features A, B, and D — backend + UI completed ahead of first full editorial workflow test.
+
+| Feature | Backend | UI | Description |
+|---------|---------|-----|-------------|
+| A: Validation Gate | `validateBeforePublish()` in publicationService | Wired into `/api/publication` endpoints | Blocks publish if prerequisite stages incomplete |
+| B: TM Prep | `runPrepareTm()` in pipelineService, `POST /api/pipeline/prepare-tm` | "Undirbúa TM" button in `/chapter` with job polling | Prepare files for Matecat Align from chapter control panel |
+| D: Review Queue | `getReviewQueue()` in segmentEditorService, `GET /api/segment-editor/review-queue` | `/review-queue` page with SLA badges, edit counts, filters | Cross-chapter view of all pending reviews |
+
+Additional work:
+- [x] "Yfirferðarröð" nav link added to all 21 view files
+- [x] Icelandic diacritics fixed in review-queue.html
+- [x] Documentation refresh: admin-guide, pass1-linguistic, onboarding, deployment checklist, server-operations guide
+- [x] Session cleanup job (runs automatically on server start)
+
 ### Phase 3: Enhanced Dashboard (If Needed)
 
 **Build Phase 3 only when:**
@@ -411,8 +427,12 @@ Phases 9-13 are complete. The pipeline is fully verified with 49 automated tests
 ### Ongoing
 1. [ ] Complete Pass 1 reviews for chapters 1-4 (using segment editor)
 2. [ ] Publish Ch 1 as `faithful` (faithful HTML now available)
-3. [ ] End-to-end workflow tests
-4. [ ] Session cleanup job for stale workflows
+3. [ ] End-to-end workflow test (editorial test planned)
+4. [x] Session cleanup job for stale workflows
+5. [x] TM prep button in chapter control panel
+6. [x] Review queue UI with SLA tracking
+7. [x] Validation gate on publication endpoints
+8. [x] Documentation refresh (admin guide, editorial docs, deployment)
 
 ### Post-Stabilization: OpenStax Integration Evaluation
 

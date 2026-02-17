@@ -42,55 +42,36 @@ The faithful translation has value because:
 
 ---
 
-## Process (Markdown Workflow)
+## Process (Segment Editor)
 
-This is the primary workflow for the simplified 5-step pipeline.
+This is the primary workflow using the web-based segment editor.
 
-1. **Get MT output** from `02-mt-output/ch##/`
-2. **Open in any editor** (VS Code, Typora, or the web editor at `/editor`)
-3. **Read through** the entire section once before editing
-4. **Review systematically:**
-   - Go section by section
-   - Make direct edits to the markdown
-   - Use HTML comments `<!-- QUESTION: ... -->` for questions
+1. **Open the segment editor** at `/segment-editor`
+2. **Select** the book, chapter, and module you're reviewing
+3. **Read through** the module once before editing to understand context
+4. **Review each segment:**
+   - English source is shown on the left (read-only)
+   - Icelandic translation is on the right (editable)
+   - Make your correction in the Icelandic text
+   - Select a **category** for your edit:
+     - `terminology` — Term replacement or standardization
+     - `accuracy` — Factual correction
+     - `readability` — Grammar or clarity improvement
+     - `style` — Tone or style adjustment
+     - `omission` — Missing content added
+   - Optionally add an **editor note** explaining your change
+   - Save the edit
 5. **Check terminology** against the glossary and `/terminology` page
-6. **Save** to `03-faithful-translation/ch##/` with the same filename
+6. **Submit for review** when you've reviewed all segments in the module
 
-### Web Editor Option
+### What Happens After Submission
 
-The server provides a web-based editor at `http://localhost:3000/editor`:
-- Side-by-side English/Icelandic view
-- Built-in terminology lookup
-- Save with review submission workflow
-- History tracking
+- Your edits go to the Head Editor for review at `/review-queue`
+- The Head Editor will **approve**, **reject** (with feedback), or **mark for discussion**
+- Approved edits are applied to `03-faithful-translation/` via `applyApprovedEdits()`
+- The pipeline then runs inject → render to produce updated faithful HTML
 
----
-
-## Process (DOCX Workflow - Legacy)
-
-For chapters started before the markdown workflow was implemented:
-
-1. **Receive** the .docx file from the translator
-2. **Enable Track Changes** in Microsoft Word before making any edits
-   - Review → Track Changes → Track Changes
-   - Verify your name is set correctly
-3. **Read through** the entire section once before editing
-4. **Review systematically:**
-   - Go section by section
-   - Make edits using Track Changes
-   - Add comments for questions or flagged issues
-5. **Check terminology** against the glossary
-6. **Save** your reviewed file
-
-### Using Word Track Changes
-
-All edits must be visible:
-- Deletions should show strikethrough
-- Insertions should be highlighted
-- Use comments (Insert → Comment) for:
-  - Questions about meaning
-  - Terminology suggestions
-  - Notes about uncertainty
+For detailed instructions on using the segment editor, see [onboarding.md](../onboarding.md).
 
 ---
 
@@ -101,21 +82,17 @@ When you encounter a term that seems wrong or unclear:
 1. Check [terminology.md](terminology.md)
 2. Check the glossary in `glossary/terminology-en-is.csv`
 3. Search [Íðorðabankinn](https://idord.arnastofnun.is/)
-4. If still unsure, add a comment and flag for discussion
+4. If still unsure, add an editor note on the segment and flag for discussion
 
 ---
 
 ## Deliverables
 
-### Markdown Workflow (Primary)
-- Reviewed `.is.md` file
-- Save to: `03-faithful-translation/ch##/`
-- Naming: Same as input file (e.g., `5-1.is.md`)
-
-### DOCX Workflow (Legacy)
-- Reviewed .docx file with Track Changes
-- Save to: `03-faithful-translation/docx/ch##/`
-- Naming: `[section]-pass1-[your initials].docx`
+### Segment Editor (Primary)
+- Segment edits submitted via the web editor
+- Head Editor reviews and approves
+- System writes approved edits to `03-faithful-translation/ch##/`
+- Files are named: `m#####-segments.is.md` (matching module ID)
 
 ---
 
@@ -125,8 +102,9 @@ When you encounter a term that seems wrong or unclear:
 |---------|-------------------|
 | Converting units | Pass 1 should be faithful to source |
 | Adding examples | Changes should wait for Pass 2 |
-| Forgetting Track Changes | Edits can't be incorporated into TM |
+| Not categorizing edits | Makes review harder for Head Editor |
 | Inconsistent terminology | Creates confusion for students |
+| Submitting partial modules | All segments should be reviewed before submission |
 
 ---
 
@@ -134,36 +112,24 @@ When you encounter a term that seems wrong or unclear:
 
 Before submitting your review:
 
-- [ ] Track Changes enabled throughout
-- [ ] All sections reviewed
+- [ ] All segments reviewed
 - [ ] Terminology consistent with glossary
-- [ ] Comments added for questions
+- [ ] Editor notes added for non-obvious changes
 - [ ] No localization changes made
-- [ ] File saved to correct location
-- [ ] Correct naming convention used
+- [ ] Edit categories assigned correctly
 
 ---
 
 ## Quick Reference
 
-### Markdown (Primary)
 ```
-□ Get MT output from 02-mt-output/
-□ Review for grammar/spelling
+□ Open /segment-editor, select book/chapter/module
+□ Review each segment for grammar/spelling/accuracy
 □ Check terminology (glossary + /terminology)
-□ Use HTML comments for questions
+□ Categorize each edit
+□ Add editor notes where needed
 □ NO localization
-□ Save to 03-faithful-translation/ch##/
-```
-
-### DOCX (Legacy)
-```
-□ Enable Track Changes
-□ Review for grammar/spelling
-□ Check terminology (glossary)
-□ Add comments for questions
-□ NO localization
-□ Save to 03-faithful-translation/docx/ch##/
+□ Submit for review when complete
 ```
 
 ---
@@ -195,20 +161,37 @@ Before submitting your review:
 ### Questions and Communication
 
 **During review:**
-- Add comments directly in the Word document
-- Mark urgency: [QUESTION], [URGENT], [DISCUSS]
+- Add editor notes directly on segments in the segment editor
+- Mark urgency in your notes: [QUESTION], [URGENT], [DISCUSS]
 
 **For broader issues:**
-- Contact the project lead
-- Terminology discussions should be documented
+- Contact the Head Editor
+- Terminology discussions should be documented at `/terminology`
+
+---
+
+<details>
+<summary>Legacy: DOCX Workflow</summary>
+
+For chapters started before the segment editor was implemented:
+
+1. **Receive** the .docx file from the translator
+2. **Enable Track Changes** in Microsoft Word before making any edits
+3. **Review systematically** with Track Changes enabled
+4. **Save** reviewed file to `03-faithful-translation/docx/ch##/`
+5. **Naming**: `[section]-pass1-[your initials].docx`
+
+This workflow is no longer used for new chapters. All new work uses the segment editor.
+</details>
 
 ---
 
 ## See Also
 
+- [Onboarding Guide](../onboarding.md) - Detailed segment editor instructions
 - [Pass 2: Localization](pass2-localization.md) - The next editorial step
 - [Terminology Standards](terminology.md) - Term conventions and glossary
-- [Simplified Workflow](../workflow/simplified-workflow.md) - Current 5-step pipeline
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Current pipeline overview
 
 ---
 

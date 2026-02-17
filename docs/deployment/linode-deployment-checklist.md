@@ -120,17 +120,20 @@ cd namsbokasafn-efni/server
 npm install
 ```
 
-Database migrations run automatically on first request to `POST /api/admin/migrate`
-(requires admin login). Alternatively, start the server and call the endpoint:
+**Database notes:**
+- SQLite database (`pipeline-output/sessions.db`) is created automatically on first server start
+- Migrations run via the admin endpoint after first login (see below)
+- The `pipeline-output/` directory is auto-created; it contains the DB and session uploads
 
 ```bash
-# Start server, then from another terminal:
+# After starting the server and logging in as admin:
 curl -X POST https://ritstjorn.namsbokasafn.is/api/admin/migrate \
   -H "Cookie: auth_token=<your-jwt>"
 ```
 
 - [ ] Repo cloned
 - [ ] Dependencies installed
+- [ ] Database created (automatic on first start)
 - [ ] Database migrations run (via admin endpoint after first login)
 
 ---
@@ -285,6 +288,72 @@ sudo journalctl -u ritstjorn -n 50
 
 - [ ] Update process documented/tested
 - [ ] Migration process documented
+
+---
+
+## 11. Upgrading an Existing Deployment
+
+When upgrading the server with new code (e.g., new features, DB schema changes):
+
+```bash
+# SSH to server
+ssh namsbokasafn@<linode-ip>
+
+# Backup the database first
+cp ~/namsbokasafn-efni/pipeline-output/sessions.db \
+   ~/namsbokasafn-efni/pipeline-output/sessions.db.$(date +%Y%m%d)
+
+# Pull latest code
+cd ~/namsbokasafn-efni
+git pull origin main
+
+# Install any new dependencies
+cd server
+npm install
+
+# Restart the service (as root)
+sudo systemctl restart ritstjorn
+
+# Verify service is healthy
+sudo systemctl status ritstjorn
+sudo journalctl -u ritstjorn -n 50
+```
+
+### Running Migrations
+
+After restart, run database migrations via the admin endpoint:
+
+```bash
+curl -X POST https://ritstjorn.namsbokasafn.is/api/admin/migrate \
+  -H "Cookie: auth_token=<your-jwt>"
+```
+
+The migration system handles both old-format (001-007: `migrate()/rollback()`) and new-format (008+: `up(db)/down(db)`) migrations automatically. All migrations are idempotent (safe to re-run).
+
+### What migrations 008-009 add
+
+| Migration | Tables Created |
+|-----------|---------------|
+| 008 | `segment_edits`, `module_reviews`, `segment_discussions` |
+| 009 | Indexes and additional columns for review tracking |
+
+### Verifying migrations
+
+```bash
+# Check that tables exist
+sqlite3 ~/namsbokasafn-efni/pipeline-output/sessions.db ".tables"
+# Should list: segment_edits, module_reviews, segment_discussions (among others)
+```
+
+### Session cleanup
+
+Session cleanup runs automatically on server start — it removes zombie and stale workflow sessions. No manual action needed.
+
+- [ ] Database backed up
+- [ ] Code pulled and dependencies installed
+- [ ] Service restarted
+- [ ] Migrations run
+- [ ] Logs checked for errors
 
 ---
 
