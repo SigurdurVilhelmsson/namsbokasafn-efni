@@ -37,7 +37,7 @@ router.get('/catalogue', requireAuth, requireAdmin(), (req, res) => {
     res.json({
       books,
       total: books.length,
-      registered: books.filter(b => b.registered).length
+      registered: books.filter((b) => b.registered).length,
     });
   } catch (err) {
     console.error('List catalogue error:', err);
@@ -47,13 +47,13 @@ router.get('/catalogue', requireAuth, requireAdmin(), (req, res) => {
       return res.status(503).json({
         error: 'Database not ready',
         message: 'Run migration 003-book-catalogue first',
-        suggestion: 'node server/migrations/003-book-catalogue.js'
+        suggestion: 'node server/migrations/003-book-catalogue.js',
       });
     }
 
     res.status(500).json({
       error: 'Failed to list catalogue',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -70,7 +70,7 @@ router.get('/catalogue/predefined', requireAuth, requireAdmin(), (req, res) => {
   res.json({
     books,
     total: books.length,
-    note: 'These are predefined books available for sync'
+    note: 'These are predefined books available for sync',
   });
 });
 
@@ -87,7 +87,7 @@ router.post('/catalogue/sync', requireAuth, requireAdmin(), (req, res) => {
     res.json({
       success: true,
       ...result,
-      message: `Synced ${result.added} new books, updated ${result.updated} existing`
+      message: `Synced ${result.added} new books, updated ${result.updated} existing`,
     });
   } catch (err) {
     console.error('Sync catalogue error:', err);
@@ -96,13 +96,13 @@ router.post('/catalogue/sync', requireAuth, requireAdmin(), (req, res) => {
       return res.status(503).json({
         error: 'Database not ready',
         message: 'Run migration 003-book-catalogue first',
-        suggestion: 'node server/migrations/003-book-catalogue.js'
+        suggestion: 'node server/migrations/003-book-catalogue.js',
       });
     }
 
     res.status(500).json({
       error: 'Failed to sync catalogue',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -125,7 +125,7 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
   if (!slug || !title) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'slug and title are required'
+      message: 'slug and title are required',
     });
   }
 
@@ -136,13 +136,13 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
       description,
       repoUrl,
       chapterCount,
-      hasAppendices
+      hasAppendices,
     });
 
     res.json({
       success: true,
       book,
-      message: `Added ${title} to catalogue`
+      message: `Added ${title} to catalogue`,
     });
   } catch (err) {
     console.error('Add to catalogue error:', err);
@@ -150,13 +150,13 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
     if (err.message.includes('already exists')) {
       return res.status(409).json({
         error: 'Already exists',
-        message: err.message
+        message: err.message,
       });
     }
 
     res.status(500).json({
       error: 'Failed to add to catalogue',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -177,12 +177,13 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
  *   - forceReregister: If true, delete existing registration first (optional)
  */
 router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => {
-  const { catalogueSlug, slug, titleIs, fetchFromOpenstax, forceReregister, headEditorId } = req.body;
+  const { catalogueSlug, slug, titleIs, fetchFromOpenstax, forceReregister, headEditorId } =
+    req.body;
 
   if (!catalogueSlug || !slug || !titleIs) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'catalogueSlug, slug, and titleIs are required'
+      message: 'catalogueSlug, slug, and titleIs are required',
     });
   }
 
@@ -193,7 +194,7 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       titleIs,
       registeredBy: req.user.id,
       fetchFromOpenstax: fetchFromOpenstax === true,
-      forceReregister: forceReregister === true
+      forceReregister: forceReregister === true,
     });
 
     // Assign head editor if specified
@@ -215,27 +216,27 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       return res.status(409).json({
         error: 'Already registered',
         message: err.message,
-        hint: 'Use forceReregister: true to replace the existing registration'
+        hint: 'Use forceReregister: true to replace the existing registration',
       });
     }
 
     if (err.message.includes('not found')) {
       return res.status(404).json({
         error: 'Not found',
-        message: err.message
+        message: err.message,
       });
     }
 
     if (err.message.includes('not available for fetching')) {
       return res.status(400).json({
         error: 'Not available',
-        message: err.message
+        message: err.message,
       });
     }
 
     res.status(500).json({
       error: 'Failed to register book',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -250,13 +251,13 @@ router.get('/books', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
 
     res.json({
       books,
-      total: books.length
+      total: books.length,
     });
   } catch (err) {
     console.error('List books error:', err);
     res.status(500).json({
       error: 'Failed to list books',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -274,7 +275,7 @@ router.get('/books/:slug', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
     if (!book) {
       return res.status(404).json({
         error: 'Not found',
-        message: `Book '${slug}' not found`
+        message: `Book '${slug}' not found`,
       });
     }
 
@@ -283,7 +284,7 @@ router.get('/books/:slug', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
     console.error('Get book error:', err);
     res.status(500).json({
       error: 'Failed to get book',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -301,17 +302,17 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
     if (!book) {
       return res.status(404).json({
         error: 'Not found',
-        message: `Book '${slug}' not found`
+        message: `Book '${slug}' not found`,
       });
     }
 
     const chapterNum = parseInt(chapter, 10);
-    const chapterData = book.chapters.find(c => c.chapterNum === chapterNum);
+    const chapterData = book.chapters.find((c) => c.chapterNum === chapterNum);
 
     if (!chapterData) {
       return res.status(404).json({
         error: 'Not found',
-        message: `Chapter ${chapter} not found in ${slug}`
+        message: `Chapter ${chapter} not found in ${slug}`,
       });
     }
 
@@ -322,18 +323,18 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
       book: {
         id: book.id,
         slug: book.slug,
-        titleIs: book.titleIs
+        titleIs: book.titleIs,
       },
       chapter: {
         ...chapterData,
-        sections
-      }
+        sections,
+      },
     });
   } catch (err) {
     console.error('Get chapter error:', err);
     res.status(500).json({
       error: 'Failed to get chapter',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -371,7 +372,7 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
 
     res.json({
       success: true,
-      ...result
+      ...result,
     });
   } catch (err) {
     console.error('Generate book data error:', err);
@@ -379,13 +380,13 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
     if (err.message.includes('not available')) {
       return res.status(400).json({
         error: 'Book not available',
-        message: err.message
+        message: err.message,
       });
     }
 
     res.status(500).json({
       error: 'Failed to generate book data',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -401,15 +402,15 @@ router.get('/books/data-status', requireAuth, requireAdmin(), (req, res) => {
     res.json({
       books,
       total: books.length,
-      withDataFile: books.filter(b => b.hasDataFile).length,
-      needsUpdate: books.filter(b => b.needsUpdate).length,
-      missingFile: books.filter(b => !b.hasDataFile).length
+      withDataFile: books.filter((b) => b.hasDataFile).length,
+      needsUpdate: books.filter((b) => b.needsUpdate).length,
+      missingFile: books.filter((b) => !b.hasDataFile).length,
     });
   } catch (err) {
     console.error('List book data status error:', err);
     res.status(500).json({
       error: 'Failed to list book data status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -434,7 +435,7 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
       return res.status(503).json({
         error: 'Database not ready',
         message: 'Run migration 006-user-management first',
-        suggestion: 'POST /api/admin/migrate'
+        suggestion: 'POST /api/admin/migrate',
       });
     }
 
@@ -442,7 +443,7 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
       role: req.query.role,
       isActive: req.query.active !== undefined ? req.query.active === 'true' : undefined,
       limit: parseInt(req.query.limit, 10) || 100,
-      offset: parseInt(req.query.offset, 10) || 0
+      offset: parseInt(req.query.offset, 10) || 0,
     };
 
     const result = userService.listUsers(options);
@@ -451,13 +452,13 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
       users: result.users.map(formatUser),
       total: result.total,
       limit: options.limit,
-      offset: options.offset
+      offset: options.offset,
     });
   } catch (err) {
     console.error('List users error:', err);
     res.status(500).json({
       error: 'Failed to list users',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -473,7 +474,7 @@ router.get('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     if (!user) {
       return res.status(404).json({
         error: 'Not found',
-        message: 'User not found'
+        message: 'User not found',
       });
     }
 
@@ -482,7 +483,7 @@ router.get('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     console.error('Get user error:', err);
     res.status(500).json({
       error: 'Failed to get user',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -501,7 +502,7 @@ router.post('/users', requireAuth, requireAdmin(), async (req, res) => {
   if (!githubUsername) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'githubUsername is required'
+      message: 'githubUsername is required',
     });
   }
 
@@ -512,7 +513,7 @@ router.post('/users', requireAuth, requireAdmin(), async (req, res) => {
       return res.status(409).json({
         error: 'Already exists',
         message: `User ${githubUsername} is already registered`,
-        user: formatUser(existing)
+        user: formatUser(existing),
       });
     }
 
@@ -521,30 +522,33 @@ router.post('/users', requireAuth, requireAdmin(), async (req, res) => {
     if (!githubUser) {
       return res.status(404).json({
         error: 'GitHub user not found',
-        message: `Could not find GitHub user: ${githubUsername}`
+        message: `Could not find GitHub user: ${githubUsername}`,
       });
     }
 
     // Create user
-    const user = userService.createUser({
-      githubId: githubUser.id,
-      githubUsername: githubUser.login,
-      displayName: githubUser.name || githubUser.login,
-      avatarUrl: githubUser.avatar_url,
-      email: githubUser.email,
-      role
-    }, req.user.username);
+    const user = userService.createUser(
+      {
+        githubId: githubUser.id,
+        githubUsername: githubUser.login,
+        displayName: githubUser.name || githubUser.login,
+        avatarUrl: githubUser.avatar_url,
+        email: githubUser.email,
+        role,
+      },
+      req.user.username
+    );
 
     res.status(201).json({
       success: true,
       message: `User ${githubUsername} added successfully`,
-      user: formatUser(user)
+      user: formatUser(user),
     });
   } catch (err) {
     console.error('Add user error:', err);
     res.status(500).json({
       error: 'Failed to add user',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -567,7 +571,7 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     if (!existing) {
       return res.status(404).json({
         error: 'Not found',
-        message: 'User not found'
+        message: 'User not found',
       });
     }
 
@@ -575,7 +579,7 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     if (existing.github_username === req.user.username && role && role !== 'admin') {
       return res.status(400).json({
         error: 'Invalid operation',
-        message: 'You cannot demote yourself'
+        message: 'You cannot demote yourself',
       });
     }
 
@@ -589,13 +593,13 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     res.json({
       success: true,
       message: 'User updated successfully',
-      user: formatUser(user)
+      user: formatUser(user),
     });
   } catch (err) {
     console.error('Update user error:', err);
     res.status(500).json({
       error: 'Failed to update user',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -616,7 +620,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     if (!existing) {
       return res.status(404).json({
         error: 'Not found',
-        message: 'User not found'
+        message: 'User not found',
       });
     }
 
@@ -624,7 +628,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     if (existing.github_username === req.user.username) {
       return res.status(400).json({
         error: 'Invalid operation',
-        message: 'You cannot delete yourself'
+        message: 'You cannot delete yourself',
       });
     }
 
@@ -632,20 +636,20 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       userService.deleteUser(userId);
       res.json({
         success: true,
-        message: 'User permanently deleted'
+        message: 'User permanently deleted',
       });
     } else {
       userService.deactivateUser(userId);
       res.json({
         success: true,
-        message: 'User deactivated'
+        message: 'User deactivated',
       });
     }
   } catch (err) {
     console.error('Delete user error:', err);
     res.status(500).json({
       error: 'Failed to delete user',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -665,7 +669,7 @@ router.post('/users/:id/books', requireAuth, requireAdmin(), (req, res) => {
   if (!bookSlug || !role) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'bookSlug and role are required'
+      message: 'bookSlug and role are required',
     });
   }
 
@@ -675,13 +679,13 @@ router.post('/users/:id/books', requireAuth, requireAdmin(), (req, res) => {
     res.json({
       success: true,
       message: `Assigned ${role} access to ${bookSlug}`,
-      user: formatUser(user)
+      user: formatUser(user),
     });
   } catch (err) {
     console.error('Assign book access error:', err);
     res.status(500).json({
       error: 'Failed to assign book access',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -700,13 +704,13 @@ router.delete('/users/:id/books/:bookSlug', requireAuth, requireAdmin(), (req, r
     res.json({
       success: true,
       message: `Removed access to ${bookSlug}`,
-      user: formatUser(user)
+      user: formatUser(user),
     });
   } catch (err) {
     console.error('Remove book access error:', err);
     res.status(500).json({
       error: 'Failed to remove book access',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -719,11 +723,16 @@ router.get('/users/roles', requireAuth, requireAdmin(), (req, res) => {
   res.json({
     roles: [
       { id: 'admin', name: 'Kerfisstjóri', description: 'Full access to all features', level: 5 },
-      { id: 'head-editor', name: 'Aðalritstjóri', description: 'Manage assigned books and reviewers', level: 4 },
+      {
+        id: 'head-editor',
+        name: 'Aðalritstjóri',
+        description: 'Manage assigned books and reviewers',
+        level: 4,
+      },
       { id: 'editor', name: 'Ritstjóri', description: 'Review and approve translations', level: 3 },
       { id: 'contributor', name: 'Þýðandi', description: 'Contribute translations', level: 2 },
-      { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 }
-    ]
+      { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 },
+    ],
   });
 });
 
@@ -746,7 +755,7 @@ function formatUser(user) {
     createdAt: user.created_at,
     updatedAt: user.updated_at,
     lastLoginAt: user.last_login_at,
-    createdBy: user.created_by
+    createdBy: user.created_by,
   };
 }
 
@@ -760,14 +769,14 @@ function fetchGitHubUser(username) {
       path: `/users/${username}`,
       method: 'GET',
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'namsbokasafn-pipeline'
-      }
+        Accept: 'application/vnd.github.v3+json',
+        'User-Agent': 'namsbokasafn-pipeline',
+      },
     };
 
     const req = https.request(options, (res) => {
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', (chunk) => (data += chunk));
       res.on('end', () => {
         if (res.statusCode === 404) {
           resolve(null);
@@ -793,6 +802,28 @@ function fetchGitHubUser(username) {
 // ============================================================================
 
 /**
+ * GET /api/admin/migrate
+ * Show migration info (hint to use POST)
+ */
+router.get('/migrate', requireAuth, requireAdmin(), (req, res) => {
+  res.json({
+    message: 'Use POST /api/admin/migrate to run pending migrations',
+    method: 'POST',
+    migrations: [
+      '001-add-error-recovery',
+      '002-editor-tables',
+      '003-book-catalogue',
+      '004-terminology',
+      '005-feedback',
+      '006-user-management',
+      '007-chapter-files',
+      '008-segment-editing',
+      '009-segment-edit-apply',
+    ],
+  });
+});
+
+/**
  * POST /api/admin/migrate
  * Run pending database migrations
  */
@@ -807,7 +838,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/006-user-management'),
       require('../migrations/007-chapter-files'),
       require('../migrations/008-segment-editing'),
-      require('../migrations/009-segment-edit-apply')
+      require('../migrations/009-segment-edit-apply'),
     ];
 
     const results = [];
@@ -815,7 +846,13 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
     // Migrations 001-007 use migrate() with internal DB connection.
     // Migrations 008+ use up(db) and expect a DB instance.
     const Database = require('better-sqlite3');
-    const migrationDbPath = require('path').join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+    const migrationDbPath = require('path').join(
+      __dirname,
+      '..',
+      '..',
+      'pipeline-output',
+      'sessions.db'
+    );
     let migrationDb;
 
     for (const migration of migrations) {
@@ -837,11 +874,15 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
           }
         }
       } else {
-        result = { success: false, error: 'No migrate() or up() function', name: migration.name || 'unknown' };
+        result = {
+          success: false,
+          error: 'No migrate() or up() function',
+          name: migration.name || 'unknown',
+        };
       }
       results.push({
         name: migration.name || 'unknown',
-        ...result
+        ...result,
       });
     }
 
@@ -849,9 +890,9 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       migrationDb.close();
     }
 
-    const applied = results.filter(r => r.success && !r.alreadyApplied).length;
-    const skipped = results.filter(r => r.alreadyApplied).length;
-    const failed = results.filter(r => !r.success).length;
+    const applied = results.filter((r) => r.success && !r.alreadyApplied).length;
+    const skipped = results.filter((r) => r.alreadyApplied).length;
+    const failed = results.filter((r) => !r.success).length;
 
     res.json({
       success: failed === 0,
@@ -859,15 +900,16 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       skipped,
       failed,
       results,
-      message: failed > 0
-        ? `${failed} migration(s) failed`
-        : `Applied ${applied} migration(s), skipped ${skipped} already applied`
+      message:
+        failed > 0
+          ? `${failed} migration(s) failed`
+          : `Applied ${applied} migration(s), skipped ${skipped} already applied`,
     });
   } catch (err) {
     console.error('Migration error:', err);
     res.status(500).json({
       error: 'Migration failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
