@@ -86,8 +86,17 @@ const app = express();
 // Helmet sets various HTTP headers for security
 app.use(
   helmet({
-    // Allow inline scripts for the simple web UI
-    contentSecurityPolicy: config.isProduction ? undefined : false,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrcAttr: ["'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https://cdnjs.cloudflare.com'],
+        fontSrc: ["'self'", 'https://cdnjs.cloudflare.com'],
+        imgSrc: ["'self'", 'data:', 'https://avatars.githubusercontent.com'],
+        connectSrc: ["'self'"],
+      },
+    },
     // Allow cross-origin requests for API
     crossOriginResourcePolicy: { policy: 'cross-origin' },
   })
