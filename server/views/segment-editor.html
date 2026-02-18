@@ -60,6 +60,18 @@
     .segment-row.rejected { background: rgba(239, 68, 68, 0.05); }
     .segment-row.discuss { background: rgba(234, 179, 8, 0.05); }
 
+    .original-text {
+      margin-top: 0.375rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border-left: 2px solid var(--border-color);
+      border-radius: 2px;
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+
     .segment-type-badge {
       display: inline-block;
       padding: 0.125rem 0.5rem;
@@ -652,6 +664,7 @@
     let moduleData = null;
     let termData = null; // Per-segment term matches and issues
     let userRole = 'viewer';
+    let userName = null;
     let termLookupTimer = null;
 
     const API_BASE = '/api/segment-editor';
@@ -668,6 +681,7 @@
         }
         const data = await res.json();
         userRole = data.user?.role || 'viewer';
+        userName = data.user?.username || null;
         const userInfo = document.getElementById('user-info');
         if (data.user) {
           userInfo.textContent = data.user.name || data.user.username;
@@ -879,8 +893,19 @@
         rowClass += ` has-edit ${latestEdit.status}`;
       }
 
+      // Determine what IS text to display and what to pre-fill in the editor
+      const hasActiveEdit = latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
+      const displayIs = hasActiveEdit ? latestEdit.edited_content : seg.is;
+      const editableText = hasActiveEdit ? latestEdit.edited_content : seg.is;
+
       let enHtml = highlightMath(escapeHtml(seg.en));
-      const isHtml = highlightMath(escapeHtml(seg.is));
+      const isHtml = highlightMath(escapeHtml(displayIs));
+
+      // Show original text dimmed when an active edit changes it
+      let originalHint = '';
+      if (hasActiveEdit && latestEdit.edited_content !== seg.is) {
+        originalHint = `<div class="original-text" title="Upprunalegt">${highlightMath(escapeHtml(seg.is))}</div>`;
+      }
 
       // Apply term highlights to EN text
       const segTerms = termData?.[seg.segmentId];
@@ -901,6 +926,16 @@
 
       const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
 
+      // Determine whether editing is allowed:
+      // - No edit yet → can edit
+      // - Own pending edit → can re-edit
+      // - Rejected edit → can try again
+      // - Discuss edit → can re-edit based on feedback
+      const canEdit = !latestEdit
+        || latestEdit.status === 'rejected'
+        || latestEdit.status === 'discuss'
+        || (latestEdit.status === 'pending' && latestEdit.editor_username === userName);
+
       let actionsHtml = '';
       if (latestEdit) {
         actionsHtml = `
@@ -915,6 +950,11 @@
               <button class="btn-sm btn-discuss" onclick="reviewEdit(${latestEdit.id}, 'discuss')" title="Ræða">💬</button>
             </div>
           ` : ''}
+          ${canEdit ? `
+            <button class="btn btn-edit btn-secondary" onclick="openEditPanel('${seg.segmentId}')" style="margin-top: 0.25rem;">
+              <i class="fas fa-pen"></i> Breyta
+            </button>
+          ` : ''}
         `;
       } else {
         actionsHtml = `
@@ -923,6 +963,9 @@
           </button>
         `;
       }
+
+      // Pre-select the category in the dropdown if re-editing
+      const selectedCat = latestEdit?.category || '';
 
       return `
         <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
@@ -934,19 +977,20 @@
           </td>
           <td class="col-is">
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
+            ${originalHint}
             ${termIssuesHtml}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
-              <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(seg.is)}</textarea>
+              <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(editableText)}</textarea>
               <div class="edit-controls">
                 <select id="cat-${cssId(seg.segmentId)}" title="Veldu flokk breytingar">
                   <option value="">Flokkur...</option>
-                  <option value="terminology" title="Fagorð, skilgreiningar, samræmi hugtaka">Hugtök</option>
-                  <option value="accuracy" title="Efnislegir gallar eða rangar þýðingar">Nákvæmni</option>
-                  <option value="readability" title="Málfar, setningaskipan, læsileiki">Læsileiki</option>
-                  <option value="style" title="Tónlag, orðalag, stílbrigði">Stíll</option>
-                  <option value="omission" title="Vantar efni eða hluta úr upprunalega textanum">Úrfelling</option>
+                  <option value="terminology" title="Fagorð, skilgreiningar, samræmi hugtaka" ${selectedCat === 'terminology' ? 'selected' : ''}>Hugtök</option>
+                  <option value="accuracy" title="Efnislegir gallar eða rangar þýðingar" ${selectedCat === 'accuracy' ? 'selected' : ''}>Nákvæmni</option>
+                  <option value="readability" title="Málfar, setningaskipan, læsileiki" ${selectedCat === 'readability' ? 'selected' : ''}>Læsileiki</option>
+                  <option value="style" title="Tónlag, orðalag, stílbrigði" ${selectedCat === 'style' ? 'selected' : ''}>Stíll</option>
+                  <option value="omission" title="Vantar efni eða hluta úr upprunalega textanum" ${selectedCat === 'omission' ? 'selected' : ''}>Úrfelling</option>
                 </select>
-                <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)">
+                <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
                 <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
               </div>
@@ -978,9 +1022,11 @@
       const category = document.getElementById('cat-' + cssId(segmentId)).value;
       const editorNote = document.getElementById('note-' + cssId(segmentId)).value;
 
-      if (editedContent === seg.is && !category) {
+      // Compare against the file text (seg.is), not any existing edit
+      // Even if content matches the original, a category tag is meaningful
+      if (editedContent === seg.is && !category && !editorNote) {
         closeEditPanel(segmentId);
-        return; // No change
+        return; // No change from original and no annotation
       }
 
       try {
