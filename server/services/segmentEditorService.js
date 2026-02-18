@@ -160,6 +160,9 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
   const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
   if (!edit) throw new Error('Edit not found');
+  if (edit.editor_id === reviewerId) {
+    throw new Error('Cannot approve your own edit');
+  }
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
   conn
@@ -221,6 +224,32 @@ function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
      WHERE id = ?`
     )
     .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
+/**
+ * Revert an approved edit back to pending (only if not yet applied to files).
+ * Clears all reviewer fields so the edit can be re-reviewed.
+ */
+function unapproveEdit(editId) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.status !== 'approved') throw new Error('Edit is not approved');
+  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+
+  conn
+    .prepare(
+      `UPDATE segment_edits
+     SET status = 'pending',
+         reviewer_id = NULL,
+         reviewer_username = NULL,
+         reviewer_note = NULL,
+         reviewed_at = NULL
+     WHERE id = ?`
+    )
+    .run(editId);
 
   return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
 }
@@ -701,6 +730,7 @@ module.exports = {
   approveEdit,
   rejectEdit,
   markForDiscussion,
+  unapproveEdit,
   // Module reviews
   submitModuleForReview,
   getPendingModuleReviews,

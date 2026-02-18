@@ -74,6 +74,30 @@
       opacity: 0.7;
     }
 
+    .diff-hint {
+      margin-top: 0.375rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      background: var(--bg-subtle);
+      border-left: 2px solid var(--border-color);
+      border-radius: 2px;
+      line-height: 1.6;
+    }
+    .diff-del {
+      background: rgba(239, 68, 68, 0.15);
+      color: #b91c1c;
+      text-decoration: line-through;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+    .diff-ins {
+      background: rgba(34, 197, 94, 0.15);
+      color: #15803d;
+      text-decoration: none;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
     .segment-type-badge {
       display: inline-block;
       padding: 0.125rem 0.5rem;
@@ -913,10 +937,11 @@
       let enHtml = highlightMath(escapeHtml(seg.en));
       const isHtml = highlightMath(escapeHtml(displayIs));
 
-      // Show original text dimmed when an active edit changes it
+      // Show word-level inline diff when an active edit changes the text
       let originalHint = '';
       if (hasActiveEdit && latestEdit.edited_content !== seg.is) {
-        originalHint = `<div class="original-text" title="Upprunalegt">${highlightMath(escapeHtml(seg.is))}</div>`;
+        const diffHtml = renderInlineDiff(seg.is || '', latestEdit.edited_content || '');
+        originalHint = `<div class="diff-hint" title="Breytingar frá upprunalegu">${diffHtml}</div>`;
       }
 
       // Apply term highlights to EN text
@@ -946,7 +971,8 @@
       const canEdit = !latestEdit
         || latestEdit.status === 'rejected'
         || latestEdit.status === 'discuss'
-        || (latestEdit.status === 'pending' && latestEdit.editor_username === userName);
+        || (latestEdit.status === 'pending' && latestEdit.editor_username === userName)
+        || (latestEdit.status === 'approved' && !latestEdit.applied_at && latestEdit.editor_username === userName);
 
       let actionsHtml = '';
       if (latestEdit) {
@@ -955,12 +981,17 @@
             <span class="edit-status ${latestEdit.status}">${statusLabel(latestEdit.status)}</span>
             ${latestEdit.category ? `<span class="category-badge ${latestEdit.category}">${categoryLabel(latestEdit.category)}</span>` : ''}
           </div>
-          ${isHeadEditor && latestEdit.status === 'pending' ? `
+          ${isHeadEditor && latestEdit.status === 'pending' && latestEdit.editor_username !== userName ? `
             <div class="review-actions" style="margin-top: 0.25rem;">
               <button class="btn-sm btn-approve" onclick="reviewEdit(${latestEdit.id}, 'approve')" title="Samþykkja">✓</button>
               <button class="btn-sm btn-reject" onclick="reviewEdit(${latestEdit.id}, 'reject')" title="Hafna">✗</button>
               <button class="btn-sm btn-discuss" onclick="reviewEdit(${latestEdit.id}, 'discuss')" title="Ræða">💬</button>
             </div>
+          ` : ''}
+          ${isHeadEditor && latestEdit.status === 'approved' && !latestEdit.applied_at ? `
+            <button class="btn btn-sm btn-secondary" onclick="unapproveEdit(${latestEdit.id})" style="margin-top: 0.25rem;" title="Afturkalla samþykki — breytir stöðu í 'bíður'">
+              ↩ Afturkalla
+            </button>
           ` : ''}
           ${canEdit ? `
             <button class="btn btn-edit btn-secondary" onclick="openEditPanel('${seg.segmentId}')" style="margin-top: 0.25rem;">
@@ -1096,6 +1127,27 @@
       }
     }
 
+    async function unapproveEdit(editId) {
+      if (!confirm('Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".')) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/edit/${editId}/unapprove`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed');
+        }
+
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
     // ================================================================
     // SUBMIT FOR REVIEW
     // ================================================================
@@ -1159,6 +1211,81 @@
 
     function cssId(segmentId) {
       return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
+    }
+
+    // ================================================================
+    // WORD-LEVEL INLINE DIFF
+    // ================================================================
+
+    /**
+     * Tokenize text for diffing. Treats [[MATH:N]] placeholders as single
+     * tokens and splits on whitespace boundaries.
+     */
+    function tokenizeForDiff(text) {
+      if (!text) return [];
+      const tokens = [];
+      const re = /(\[\[MATH:\d+\]\]|\S+|\s+)/g;
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        tokens.push(m[1]);
+      }
+      return tokens;
+    }
+
+    /**
+     * LCS-based word diff. Returns array of {type, text} operations.
+     * type: 'equal' | 'delete' | 'insert'
+     */
+    function computeWordDiff(oldText, newText) {
+      const oldTokens = tokenizeForDiff(oldText);
+      const newTokens = tokenizeForDiff(newText);
+
+      // Build LCS table
+      const m = oldTokens.length;
+      const n = newTokens.length;
+      const dp = Array.from({ length: m + 1 }, () => new Uint16Array(n + 1));
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (oldTokens[i - 1] === newTokens[j - 1]) {
+            dp[i][j] = dp[i - 1][j - 1] + 1;
+          } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+          }
+        }
+      }
+
+      // Backtrack to produce diff ops
+      const ops = [];
+      let i = m, j = n;
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && oldTokens[i - 1] === newTokens[j - 1]) {
+          ops.push({ type: 'equal', text: oldTokens[i - 1] });
+          i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+          ops.push({ type: 'insert', text: newTokens[j - 1] });
+          j--;
+        } else {
+          ops.push({ type: 'delete', text: oldTokens[i - 1] });
+          i--;
+        }
+      }
+      ops.reverse();
+      return ops;
+    }
+
+    /**
+     * Render word-level inline diff as HTML with <del> and <ins> tags.
+     */
+    function renderInlineDiff(oldText, newText) {
+      const ops = computeWordDiff(oldText, newText);
+      return ops.map(op => {
+        const escaped = highlightMath(escapeHtml(op.text));
+        switch (op.type) {
+          case 'delete': return `<del class="diff-del">${escaped}</del>`;
+          case 'insert': return `<ins class="diff-ins">${escaped}</ins>`;
+          default: return escaped;
+        }
+      }).join('');
     }
 
     function statusLabel(status) {

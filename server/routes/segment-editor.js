@@ -366,6 +366,19 @@ router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR)
 });
 
 /**
+ * POST /edit/:editId/unapprove
+ * Revert an approved edit back to pending (only if not yet applied to files).
+ */
+router.post('/edit/:editId/unapprove', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  try {
+    const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
+    res.json({ success: true, edit });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+/**
  * POST /reviews/:reviewId/complete
  * Complete a module review. If all edits are approved, automatically
  * applies them to 03-faithful-translation/ segment files.
