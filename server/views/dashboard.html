@@ -384,23 +384,23 @@
       color: var(--gray-700);
     }
 
-    .stage-label.enMarkdown { background: #dbeafe; color: #1e40af; }
-    .stage-label.mtOutput { background: #fef3c7; color: #92400e; }
+    .stage-label.enMarkdown { background: var(--primary-light); color: var(--primary-dark); }
+    .stage-label.mtOutput { background: var(--warning-light); color: #92400e; }
     .stage-label.linguisticReview { background: #d1fae5; color: #065f46; }
     .stage-label.tmCreated { background: #ede9fe; color: #5b21b6; }
     .stage-label.publication { background: #fce7f3; color: #9d174d; }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
-      <a href="/workflow">Verkflæði</a>
       <a href="/status">Staða</a>
       <a href="/segment-editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue">Yfirferðarröð</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -414,7 +414,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content">
     <nav class="breadcrumb">
       <a href="/admin">Stjórnandi</a>
       <span class="breadcrumb-separator">/</span>
@@ -446,7 +446,7 @@
         <div class="attention-items" id="attention-items">
           <div class="empty-state">
             <i class="fas fa-spinner fa-spin"></i>
-            <p>Hleður...</p>
+            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
           </div>
         </div>
       </div>
@@ -469,7 +469,7 @@
             <tr>
               <td colspan="4" class="empty-state">
                 <i class="fas fa-spinner fa-spin"></i>
-                <p>Hleður...</p>
+                <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
               </td>
             </tr>
           </tbody>
@@ -484,7 +484,7 @@
         <div id="ready-list">
           <div class="empty-state">
             <i class="fas fa-spinner fa-spin"></i>
-            <p>Hleður...</p>
+            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
           </div>
         </div>
       </div>
@@ -498,7 +498,7 @@
         <div class="activity-list" id="activity-list">
           <div class="empty-state">
             <i class="fas fa-spinner fa-spin"></i>
-            <p>Hleður...</p>
+            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
           </div>
         </div>
       </div>
@@ -629,7 +629,7 @@
       if (hiddenItems.length > 0) {
         html += `
           <div class="accordion collapsed" id="attention-more-accordion">
-            <button class="accordion-header" onclick="toggleAccordion('attention-more-accordion')">
+            <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('attention-more-accordion')">
               <div class="accordion-header-left">
                 <span class="accordion-toggle">▼</span>
                 <span>Sýna ${hiddenItems.length} fleiri atriði</span>
@@ -732,7 +732,7 @@
       if (hiddenItems.length > 0) {
         html += `
           <div class="accordion collapsed" id="ready-more-accordion">
-            <button class="accordion-header" onclick="toggleAccordion('ready-more-accordion')">
+            <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('ready-more-accordion')">
               <div class="accordion-header-left">
                 <span class="accordion-toggle">▼</span>
                 <span>Sýna ${hiddenItems.length} fleiri</span>
@@ -788,7 +788,7 @@
       if (hiddenActivities.length > 0) {
         html += `
           <div class="accordion collapsed" id="activity-more-accordion">
-            <button class="accordion-header" onclick="toggleAccordion('activity-more-accordion')">
+            <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('activity-more-accordion')">
               <div class="accordion-header-left">
                 <span class="accordion-toggle">▼</span>
                 <span>Sýna ${hiddenActivities.length} fleiri</span>

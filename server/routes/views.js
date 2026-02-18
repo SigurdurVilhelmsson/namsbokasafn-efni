@@ -13,10 +13,10 @@ const viewsDir = path.join(__dirname, '..', 'views');
 
 /**
  * GET /
- * Redirect to workflow or login
+ * Redirect to personal work dashboard
  */
 router.get('/', (req, res) => {
-  res.redirect('/workflow');
+  res.redirect('/my-work');
 });
 
 /**
@@ -29,10 +29,10 @@ router.get('/login', (req, res) => {
 
 /**
  * GET /workflow
- * Workflow wizard page
+ * Deprecated — redirect to /my-work
  */
 router.get('/workflow', (req, res) => {
-  sendView(res, 'workflow.html');
+  res.redirect('/my-work');
 });
 
 /**
@@ -171,10 +171,10 @@ router.get('/localization-editor', (req, res) => {
 
 /**
  * GET /localization-review
- * Split-panel localization review page
+ * Deprecated — redirect to /localization-editor
  */
 router.get('/localization-review', (req, res) => {
-  sendView(res, 'localization-review.html');
+  res.redirect('/localization-editor');
 });
 
 /**
@@ -226,6 +226,18 @@ router.get('/for-teachers', (req, res) => {
 });
 
 /**
+ * Catch-all 404 handler — must be registered last
+ */
+router.use((req, res) => {
+  const filePath = path.join(viewsDir, '404.html');
+  if (fs.existsSync(filePath)) {
+    res.status(404).sendFile(filePath);
+  } else {
+    res.status(404).send('Síða finnst ekki');
+  }
+});
+
+/**
  * Helper to send a view file
  */
 function sendView(res, filename) {
@@ -234,7 +246,7 @@ function sendView(res, filename) {
   if (fs.existsSync(filePath)) {
     res.sendFile(filePath);
   } else {
-    res.status(404).send('Page not found');
+    res.status(404).send('Síða finnst ekki');
   }
 }
 

@@ -379,7 +379,7 @@ async function notifyReviewApproved(review, editor) {
     type: NOTIFICATION_TYPES.REVIEW_APPROVED,
     title: 'Þýðing samþykkt',
     message: `Þýðingin þín á ${review.book} / ${review.chapter} / ${review.section} hefur verið samþykkt af ${review.reviewedByUsername}.`,
-    link: `/editor?book=${review.book}&chapter=${review.chapter}&section=${review.section}`,
+    link: `/segment-editor?book=${review.book}&chapter=${review.chapter}&module=${review.section}`,
     metadata: {
       reviewId: review.id,
       book: review.book,
@@ -400,7 +400,7 @@ async function notifyChangesRequested(review, editor, notes) {
     type: NOTIFICATION_TYPES.CHANGES_REQUESTED,
     title: 'Breytingar óskast',
     message: `${review.reviewedByUsername} óskar eftir breytingum á ${review.book} / ${review.chapter} / ${review.section}.\n\nAthugasemdir: ${notes}`,
-    link: `/editor?book=${review.book}&chapter=${review.chapter}&section=${review.section}`,
+    link: `/segment-editor?book=${review.book}&chapter=${review.chapter}&module=${review.section}`,
     metadata: {
       reviewId: review.id,
       book: review.book,
@@ -435,7 +435,7 @@ async function notifyAssignmentCreated(assignment, assignee, assignedByUsername)
     type: NOTIFICATION_TYPES.ASSIGNMENT_CREATED,
     title: 'Nýtt verkefni úthlutað',
     message: `${assignedByUsername} úthlutaði þér verkefninu "${stageLabel}" fyrir ${assignment.book} kafla ${assignment.chapter}.${dueDate ? ` Skiladagur: ${dueDate}` : ''}`,
-    link: `/editor?book=${assignment.book}&chapter=${assignment.chapter}`,
+    link: `/segment-editor?book=${assignment.book}&chapter=${assignment.chapter}`,
     metadata: {
       assignmentId: assignment.id,
       book: assignment.book,
@@ -474,7 +474,7 @@ async function notifyHandoff(
     type: NOTIFICATION_TYPES.ASSIGNMENT_HANDOFF,
     title: 'Verkefni tilbúið fyrir þig',
     message: `${completedByUsername} kláraði "${completedStageLabel}" fyrir ${completedAssignment.book} kafla ${completedAssignment.chapter}. Þú getur nú hafist handa við "${nextStageLabel}".${dueDate ? ` Skiladagur: ${dueDate}` : ''}`,
-    link: `/editor?book=${nextAssignment.book}&chapter=${nextAssignment.chapter}`,
+    link: `/segment-editor?book=${nextAssignment.book}&chapter=${nextAssignment.chapter}`,
     metadata: {
       completedAssignmentId: completedAssignment.id,
       nextAssignmentId: nextAssignment.id,
@@ -541,7 +541,7 @@ async function notifyChapterKickoff(book, chapter, assignments, kickedOffByUsern
       type: NOTIFICATION_TYPES.CHAPTER_KICKOFF,
       title: 'Kafli hafinn',
       message: `${kickedOffByUsername} hóf vinnu á ${book} kafla ${chapter}. Þér var úthlutað "${stageLabel}".${dueDate ? ` Skiladagur: ${dueDate}` : ''}`,
-      link: `/editor?book=${book}&chapter=${chapter}`,
+      link: `/segment-editor?book=${book}&chapter=${chapter}`,
       metadata: {
         book,
         chapter,

@@ -47,9 +47,9 @@ const STAGE_TO_PASS = {
  * Build editor URL with stage parameter
  */
 function buildEditorUrl(book, chapter, section, stage) {
-  let url = `/editor?book=${book}&chapter=${chapter}`;
+  let url = `/segment-editor?book=${book}&chapter=${chapter}`;
   if (section) {
-    url += `&section=${section}`;
+    url += `&module=${section}`;
   }
   if (stage && STAGE_TO_PASS[stage]) {
     url += `&stage=${STAGE_TO_PASS[stage]}`;

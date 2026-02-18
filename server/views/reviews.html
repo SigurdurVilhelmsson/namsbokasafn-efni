@@ -9,15 +9,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
-      <a href="/workflow">Verkflæði</a>
-      <a href="/status">Framvinda</a>
       <a href="/segment-editor">Ritstjóri</a>
+      <a href="/status">Framvinda</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue">Yfirferðarröð</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -27,7 +27,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
         <span class="notification-badge" id="notification-count" style="display: none;">0</span>
       </div>
@@ -35,10 +35,10 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content">
     <!-- SLA Summary - Accordion -->
     <div class="accordion" id="sla-accordion" style="display: none;">
-      <button class="accordion-header" onclick="toggleAccordion('sla-accordion')">
+      <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('sla-accordion')">
         <div class="accordion-header-left">
           <span class="accordion-toggle">▼</span>
           <span><i class="fas fa-clock" style="margin-right: 0.5rem; color: var(--primary);"></i> SLA Staða</span>
@@ -105,12 +105,12 @@
       </div>
 
       <div id="reviews-list">
-        <p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>
+        <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
       </div>
     </div>
 
     <!-- Review Detail Modal -->
-    <div class="modal" id="review-modal" style="display: none;">
+    <div class="modal" role="dialog" aria-modal="true" id="review-modal" style="display: none;">
       <div class="modal-content">
         <div class="modal-header">
           <h2 id="modal-title">Yfirferð</h2>
@@ -133,7 +133,7 @@
           </div>
 
           <!-- Tab navigation -->
-          <div class="tabs">
+          <div class="tabs" role="tablist">
             <button class="tab active" data-tab="content">Þýðing</button>
             <button class="tab" data-tab="source">Enska</button>
             <button class="tab" data-tab="diff">Breytingar</button>
@@ -234,7 +234,7 @@
       const listEl = document.getElementById('reviews-list');
       const book = document.getElementById('book-filter').value;
 
-      listEl.innerHTML = '<p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>';
+      listEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         const url = book ? '/api/reviews?book=' + book : '/api/reviews';
@@ -664,18 +664,18 @@
       --success: #16a34a;
       --warning: #d97706;
       --error: #dc2626;
-      --gray-50: #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-300: #d1d5db;
-      --gray-500: #6b7280;
-      --gray-700: #374151;
-      --gray-900: #111827;
+      --gray-50: var(--gray-50);
+      --gray-100: var(--gray-100);
+      --gray-200: var(--border-color);
+      --gray-300: var(--gray-300);
+      --gray-500: var(--text-muted);
+      --gray-700: var(--text-secondary);
+      --gray-900: var(--text-primary);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
 
-    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header { background: var(--bg-card); border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
     .header h1 { font-size: 1.25rem; font-weight: 600; }
     .header nav { display: flex; gap: 1.5rem; align-items: center; }
     .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center; gap: 0.25rem; }
@@ -686,20 +686,20 @@
     .badge { background: var(--error); color: white; font-size: 0.625rem; padding: 0.125rem 0.375rem; border-radius: 9999px; font-weight: 600; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
-    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; }
+    .card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 1.5rem; }
     .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
     .card-title { font-size: 1.125rem; font-weight: 600; }
 
-    .form-select { padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select { padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: var(--radius-md); font-size: 0.875rem; }
     .form-select-small { padding: 0.375rem 0.5rem; font-size: 0.75rem; }
     .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
-    .form-textarea { width: 100%; min-height: 100px; padding: 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; resize: vertical; }
+    .form-textarea { width: 100%; min-height: 100px; padding: 0.75rem; border: 1px solid var(--gray-300); border-radius: var(--radius-md); font-size: 0.875rem; resize: vertical; }
 
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
     .btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .btn-primary { background: var(--primary); color: white; }
     .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
-    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary { background: var(--bg-card); color: var(--gray-700); border: 1px solid var(--gray-300); }
     .btn-success { background: var(--success); color: white; }
     .btn-success:hover:not(:disabled) { background: #15803d; }
     .btn-small { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
@@ -713,19 +713,19 @@
     .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
     .empty-state i { font-size: 3rem; margin-bottom: 1rem; color: var(--success); }
 
-    .alert { padding: 1rem; border-radius: 0.375rem; }
-    .alert-error { background: #fee2e2; color: #991b1b; }
-    .alert-warning { background: #fef3c7; color: #92400e; }
+    .alert { padding: 1rem; border-radius: var(--radius-md); }
+    .alert-error { background: var(--error-light); color: #991b1b; }
+    .alert-warning { background: var(--warning-light); color: #92400e; }
 
     /* Modal */
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-    .modal-content { background: white; border-radius: 0.5rem; width: 90%; max-width: 900px; max-height: 90vh; display: flex; flex-direction: column; }
+    .modal-content { background: var(--bg-card); border-radius: var(--radius-lg); width: 90%; max-width: 900px; max-height: 90vh; display: flex; flex-direction: column; }
     .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); }
     .modal-header h2 { font-size: 1.125rem; font-weight: 600; }
     .modal-body { flex: 1; padding: 1.5rem; overflow-y: auto; }
     .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); }
 
-    .review-info { margin-bottom: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 0.375rem; }
+    .review-info { margin-bottom: 1rem; padding: 1rem; background: var(--gray-50); border-radius: var(--radius-md); }
     .info-row { display: flex; gap: 0.5rem; margin-bottom: 0.25rem; font-size: 0.875rem; }
     .info-label { font-weight: 500; color: var(--gray-500); min-width: 80px; }
 
@@ -734,7 +734,7 @@
     .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
     .tab:hover:not(.active) { color: var(--gray-700); }
 
-    .tab-content { background: var(--gray-50); border-radius: 0.375rem; padding: 1rem; max-height: 400px; overflow: auto; }
+    .tab-content { background: var(--gray-50); border-radius: var(--radius-md); padding: 1rem; max-height: 400px; overflow: auto; }
     .tab-content pre { white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 0.875rem; line-height: 1.6; margin: 0; }
 
     .notes-section { margin-top: 1rem; }
@@ -750,11 +750,11 @@
       background: var(--gray-100);
       color: var(--gray-500);
     }
-    .category-badge.terminology { background: #dbeafe; color: #1e40af; }
-    .category-badge.accuracy { background: #fee2e2; color: #991b1b; }
+    .category-badge.terminology { background: var(--primary-light); color: var(--primary-dark); }
+    .category-badge.accuracy { background: var(--error-light); color: #991b1b; }
     .category-badge.readability { background: #f0fdf4; color: #166534; }
     .category-badge.style { background: #f3e8ff; color: #7c3aed; }
-    .category-badge.omission { background: #fef3c7; color: #92400e; }
+    .category-badge.omission { background: var(--warning-light); color: #92400e; }
 
     /* Diff2html overrides */
     .d2h-wrapper { font-size: 0.8rem; }
@@ -766,8 +766,8 @@
       align-items: center;
       gap: 1rem;
       padding: 0.75rem 1rem;
-      background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
-      border-radius: 0.375rem;
+      background: linear-gradient(135deg, #e0f2fe 0%, var(--primary-light) 100%);
+      border-radius: var(--radius-md);
       margin-bottom: 1rem;
       border: 1px solid #93c5fd;
     }
@@ -836,8 +836,8 @@
       margin-top: 1rem;
       padding: 0.75rem 1rem;
       background: var(--error);
-      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-      border-radius: 0.375rem;
+      background: linear-gradient(135deg, var(--error-light) 0%, #fecaca 100%);
+      border-radius: var(--radius-md);
       border: 1px solid #fca5a5;
       font-size: 0.875rem;
       color: #991b1b;
@@ -915,11 +915,11 @@
       letter-spacing: 0.02em;
     }
     .sla-status-badge.sla-on-track {
-      background: #dcfce7;
+      background: var(--success-light);
       color: #166534;
     }
     .sla-status-badge.sla-at-risk {
-      background: #fef3c7;
+      background: var(--warning-light);
       color: #92400e;
     }
     .sla-status-badge.sla-overdue {
@@ -927,7 +927,7 @@
       color: #9a3412;
     }
     .sla-status-badge.sla-critical {
-      background: #fee2e2;
+      background: var(--error-light);
       color: #991b1b;
     }
     .sla-time {
@@ -939,13 +939,13 @@
       background: #fef2f2 !important;
     }
     tr.sla-critical:hover {
-      background: #fee2e2 !important;
+      background: var(--error-light) !important;
     }
     tr.sla-overdue {
       background: #fffbeb !important;
     }
     tr.sla-overdue:hover {
-      background: #fef3c7 !important;
+      background: var(--warning-light) !important;
     }
     tr.sla-at-risk {
       background: #fefce8 !important;

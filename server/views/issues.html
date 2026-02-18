@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
-      <a href="/workflow">Verkflæði</a>
-      <a href="/status">Framvinda</a>
       <a href="/segment-editor">Ritstjóri</a>
+      <a href="/status">Framvinda</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue">Yfirferðarröð</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -25,7 +25,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
         <span class="notification-badge" id="notification-count" style="display: none;">0</span>
       </div>
@@ -33,7 +33,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content">
     <!-- Summary Stats -->
     <div class="card">
       <h2 class="card-title">Atriðayfirlit</h2>
@@ -57,7 +57,7 @@
     </div>
 
     <!-- Tab Navigation -->
-    <div class="tabs">
+    <div class="tabs" role="tablist">
       <button class="tab active" onclick="showTab('quick-fix')">
         Fljótleg lagfæring
         <span class="tab-badge" id="quick-fix-badge">0</span>
@@ -83,7 +83,7 @@
           </select>
         </div>
         <div id="quick-fix-list" class="issues-list">
-          <p class="text-muted">Hleður...</p>
+          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
         </div>
       </div>
     </div>
@@ -102,7 +102,7 @@
           </select>
         </div>
         <div id="discussion-list" class="issues-list">
-          <p class="text-muted">Hleður...</p>
+          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
         </div>
       </div>
     </div>
@@ -115,14 +115,14 @@
           <p class="card-subtitle">Síðustu 7 daga</p>
         </div>
         <div id="resolved-list" class="issues-list">
-          <p class="text-muted">Hleður...</p>
+          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
         </div>
       </div>
     </div>
   </main>
 
   <!-- Resolve Modal -->
-  <div class="modal" id="resolve-modal" style="display: none;">
+  <div class="modal" role="dialog" aria-modal="true" id="resolve-modal" style="display: none;">
     <div class="modal-content">
       <div class="modal-header">
         <h3>Leysa atriði</h3>
@@ -143,7 +143,7 @@
   </div>
 
   <!-- Flag for Discussion Modal -->
-  <div class="modal" id="flag-modal" style="display: none;">
+  <div class="modal" role="dialog" aria-modal="true" id="flag-modal" style="display: none;">
     <div class="modal-content">
       <div class="modal-header">
         <h3>Flytja í umræðu</h3>
@@ -232,7 +232,7 @@
     async function loadQuickFix() {
       const container = document.getElementById('quick-fix-list');
       const book = document.getElementById('quick-fix-book-filter').value;
-      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         let url = '/api/issues?status=pending';
@@ -263,7 +263,7 @@
     async function loadDiscussion() {
       const container = document.getElementById('discussion-list');
       const book = document.getElementById('discussion-book-filter').value;
-      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         let url = '/api/issues?status=pending';
@@ -293,7 +293,7 @@
 
     async function loadResolved() {
       const container = document.getElementById('resolved-list');
-      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         const res = await fetch('/api/issues?status=resolved&limit=50');
@@ -521,7 +521,7 @@
 
     /* Stats Grid */
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .stat-card { text-align: center; padding: 1.5rem 1rem; background: var(--gray-50); border-radius: 0.5rem; border: 2px solid transparent; }
+    .stat-card { text-align: center; padding: 1.5rem 1rem; background: var(--gray-50); border-radius: var(--radius-lg); border: 2px solid transparent; }
     .stat-card:first-child { border-color: var(--primary); background: var(--primary-light); }
     .stat-card.stat-warning { border-color: var(--warning); background: var(--warning-light); }
     .stat-card.stat-success { border-color: var(--success); background: var(--success-light); }
@@ -533,7 +533,7 @@
 
     /* Tab Badge */
     .tab-badge { background: var(--gray-200); color: var(--gray-700); padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
-    .tab.active .tab-badge { background: white; color: var(--primary); }
+    .tab.active .tab-badge { background: var(--bg-card); color: var(--primary); }
     .tab-badge-warning { background: var(--warning-light); color: #92400e; }
 
     /* Filters */
@@ -541,14 +541,14 @@
 
     /* Issues List */
     .issues-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .issue-item { padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; border: 1px solid var(--border-color); }
+    .issue-item { padding: 1rem; background: var(--gray-50); border-radius: var(--radius-lg); border: 1px solid var(--border-color); }
     .issue-item:hover { border-color: var(--gray-300); }
     .issue-blocked { border-left: 4px solid var(--error); }
     .issue-resolved { opacity: 0.7; }
     .issue-main { display: flex; gap: 0.75rem; margin-bottom: 0.5rem; }
     .issue-badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; flex-shrink: 0; height: fit-content; }
     .badge-auto-fix { background: var(--success-light); color: #166534; }
-    .badge-editor-confirm { background: var(--primary-light); color: #1e40af; }
+    .badge-editor-confirm { background: var(--primary-light); color: var(--primary-dark); }
     .badge-board-review { background: var(--warning-light); color: #92400e; }
     .badge-blocked { background: var(--error-light); color: #991b1b; }
     .badge-resolved { background: var(--gray-200); color: var(--gray-700); }
@@ -564,7 +564,7 @@
     .issue-actions { display: flex; gap: 0.5rem; }
 
     /* Issue Preview */
-    .issue-preview { background: var(--gray-50); padding: 0.75rem; border-radius: 0.375rem; margin-bottom: 1rem; font-size: 0.875rem; }
+    .issue-preview { background: var(--gray-50); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 1rem; font-size: 0.875rem; }
 
     @media (max-width: 768px) {
       .grid-3 { grid-template-columns: 1fr; }

@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
-      <a href="/workflow">Verkflæði</a>
-      <a href="/status">Framvinda</a>
       <a href="/segment-editor">Ritstjóri</a>
+      <a href="/status">Framvinda</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue">Yfirferðarröð</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -26,7 +26,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
         <span class="notification-badge" id="notification-count" style="display: none;">0</span>
       </div>
@@ -34,7 +34,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content">
     <!-- Focus Mode (default) -->
     <div id="focus-view">
       <!-- Welcome Section -->
@@ -139,7 +139,7 @@
             <span class="badge" id="submissions-badge">0</span>
           </div>
           <div class="card-body" id="submissions-list">
-            <p class="text-muted">Hleður...</p>
+            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
           </div>
         </div>
 
@@ -150,7 +150,7 @@
             <span class="badge badge-warning" id="changes-badge">0</span>
           </div>
           <div class="card-body" id="changes-list">
-            <p class="text-muted">Hleður...</p>
+            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
           </div>
         </div>
 
@@ -161,7 +161,7 @@
             <span class="badge" id="terms-badge">0</span>
           </div>
           <div class="card-body" id="terms-list">
-            <p class="text-muted">Hleður...</p>
+            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
           </div>
           <div class="card-footer">
             <a href="/terminology" class="btn btn-secondary btn-sm">Sjá orðasafn</a>
@@ -175,14 +175,14 @@
           <h2 class="card-title">Nýleg virkni þín</h2>
         </div>
         <div class="card-body" id="activity-list">
-          <p class="text-muted">Hleður...</p>
+          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
         </div>
       </div>
     </div>
   </main>
 
   <!-- Settings Modal -->
-  <div class="modal" id="settings-modal" style="display: none;">
+  <div class="modal" role="dialog" aria-modal="true" id="settings-modal" style="display: none;">
     <div class="modal-content">
       <div class="modal-header">
         <h3><i class="fas fa-cog"></i> Stillingar</h3>
@@ -193,7 +193,7 @@
         <p class="settings-description">Veldu hvers konar tilkynningar þú vilt fá.</p>
 
         <div class="preference-list" id="preference-list">
-          <p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>
+          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
         </div>
       </div>
       <div class="modal-footer">
@@ -407,7 +407,7 @@
       if (hiddenTasks.length > 0) {
         html += `
           <div class="accordion collapsed" id="up-next-more-accordion">
-            <button class="accordion-header" onclick="toggleAccordion('up-next-more-accordion')">
+            <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('up-next-more-accordion')">
               <div class="accordion-header-left">
                 <span class="accordion-toggle">▼</span>
                 <span>Sýna ${hiddenTasks.length} fleiri verkefni</span>
@@ -709,7 +709,7 @@
 
     async function loadNotificationPreferences() {
       const list = document.getElementById('preference-list');
-      list.innerHTML = '<p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>';
+      list.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         const res = await fetch('/api/notifications/preferences');
@@ -845,7 +845,7 @@
       padding: 0.875rem 1rem;
       background: var(--warning-light);
       border: 1px solid var(--warning);
-      border-radius: 0.5rem;
+      border-radius: var(--radius-lg);
       margin-bottom: 1.5rem;
     }
     .alert-icon { font-size: 1.25rem; }
@@ -855,7 +855,7 @@
     .blocked-banner {
       background: var(--error-light);
       border: 2px solid var(--error);
-      border-radius: 0.5rem;
+      border-radius: var(--radius-lg);
       margin-bottom: 1.5rem;
       overflow: hidden;
     }
@@ -886,8 +886,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.75rem;
-      background: white;
-      border-radius: 0.375rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
       margin-bottom: 0.5rem;
     }
     .blocked-item:last-child { margin-bottom: 0; }
@@ -937,7 +937,7 @@
     .current-task-section { margin-bottom: 2rem; }
 
     .current-task-card {
-      background: white;
+      background: var(--bg-card);
       border-radius: 0.75rem;
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
       overflow: hidden;
@@ -998,7 +998,7 @@
     .task-notes {
       background: var(--gray-50);
       padding: 0.75rem;
-      border-radius: 0.375rem;
+      border-radius: var(--radius-md);
       margin-bottom: 1rem;
       font-size: 0.875rem;
       color: var(--gray-700);
@@ -1037,9 +1037,9 @@
     .up-next-section { margin-bottom: 2rem; }
 
     .up-next-list {
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
       overflow: hidden;
     }
 
@@ -1089,9 +1089,9 @@
       display: flex;
       gap: 1rem;
       padding: 1rem;
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
     }
     .stat-item {
       flex: 1;
@@ -1136,11 +1136,11 @@
       margin-bottom: 1.5rem;
     }
     .summary-card {
-      background: white;
+      background: var(--bg-card);
       padding: 1.25rem;
-      border-radius: 0.5rem;
+      border-radius: var(--radius-lg);
       text-align: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-md);
     }
     .summary-card.highlight { border-left: 4px solid var(--warning); }
     .summary-card.highlight-error { border-left: 4px solid var(--error); }
@@ -1183,7 +1183,7 @@
     .chapter-label, .section-label { color: var(--gray-600); }
     .stage-badge {
       background: var(--primary-light);
-      color: #1e40af;
+      color: var(--primary-dark);
       padding: 0.125rem 0.5rem;
       border-radius: 0.25rem;
       font-size: 0.75rem;
@@ -1195,7 +1195,7 @@
     .due-today { color: var(--warning); }
 
     .review-notes {
-      background: white;
+      background: var(--bg-card);
       padding: 0.5rem 0.75rem;
       border-radius: 0.25rem;
       margin: 0.5rem 0;
@@ -1219,7 +1219,7 @@
       border-radius: 0.25rem;
       font-weight: 500;
     }
-    .status-proposed { background: var(--primary-light); color: #1e40af; }
+    .status-proposed { background: var(--primary-light); color: var(--primary-dark); }
     .status-needs_review { background: var(--warning-light); color: #92400e; }
 
     /* Activity Items */
@@ -1254,7 +1254,7 @@
       padding: 0.5rem;
       cursor: pointer;
       color: var(--gray-400);
-      border-radius: 0.375rem;
+      border-radius: var(--radius-md);
       transition: color 0.15s, background-color 0.15s;
     }
     .settings-btn:hover {
@@ -1280,7 +1280,7 @@
     .preference-item {
       padding: 1rem;
       background: var(--gray-50);
-      border-radius: 0.5rem;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--gray-200);
     }
     .preference-info {

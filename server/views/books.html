@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
-      <a href="/workflow">Verkflæði</a>
-      <a href="/status">Framvinda</a>
       <a href="/segment-editor">Ritstjóri</a>
+      <a href="/status">Framvinda</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue">Yfirferðarröð</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -25,7 +25,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
         <span class="notification-badge" id="notification-count" style="display: none;">0</span>
       </div>
@@ -33,7 +33,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content">
     <!-- Registered Books Section -->
     <div class="card">
       <div class="card-header">
@@ -43,7 +43,7 @@
         </button>
       </div>
       <div id="books-list">
-        <p class="text-muted">Hleður...</p>
+        <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
       </div>
     </div>
 
@@ -68,14 +68,14 @@
 
   <!-- Catalogue Modal -->
   <div class="modal-overlay" id="catalogue-modal" style="display: none;">
-    <div class="modal">
+    <div class="modal" role="dialog" aria-modal="true">
       <div class="modal-header">
         <h3>Skrá nýja bók</h3>
         <button class="modal-close" onclick="hideCatalogueModal()">&times;</button>
       </div>
       <div class="modal-body">
         <div id="catalogue-list">
-          <p class="text-muted">Hleður...</p>
+          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
         </div>
         <div id="register-form" style="display: none;">
           <h4>Skrá bók: <span id="selected-book-title"></span></h4>
@@ -281,7 +281,7 @@
 
       detailEl.style.display = 'block';
       titleEl.textContent = `Kafli ${chapterNum}`;
-      sectionsEl.innerHTML = '<p class="text-muted">Hleður...</p>';
+      sectionsEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         const res = await fetch(`/api/admin/books/${slug}/chapters/${chapterNum}`);
@@ -364,7 +364,7 @@
 
       modal.style.display = 'flex';
       formEl.style.display = 'none';
-      listEl.innerHTML = '<p class="text-muted">Hleður...</p>';
+      listEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
         // First try to sync catalogue
@@ -517,7 +517,7 @@
 
     /* Badge muted variant */
     .badge-muted { background: var(--gray-100); color: var(--text-muted); }
-    .badge-info { background: var(--primary-light); color: #1e40af; }
+    .badge-info { background: var(--primary-light); color: var(--primary-dark); }
 
     /* Modal overlay */
     .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }

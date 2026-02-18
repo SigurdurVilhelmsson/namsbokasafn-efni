@@ -82,6 +82,14 @@
   --transition-fast: 0.15s ease;
   --transition-normal: 0.2s ease;
   --transition-slow: 0.3s ease;
+
+  /* Aliases for cross-page compatibility */
+  --bg-subtle: var(--gray-50);
+  --bg-input: var(--bg-card);
+  --text-color: var(--text-primary);
+  --danger: var(--error);
+  --danger-light: #fef2f2;
+  --color-warning: var(--warning);
 }
 
 /* Dark Mode */
@@ -114,6 +122,7 @@
   --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
   --border-color: #334155;
+  --danger-light: #450a0a;
 }
 
 /* System preference detection (when no explicit theme is set) */
@@ -147,6 +156,7 @@
     --text-secondary: #e2e8f0;
     --text-muted: #94a3b8;
     --border-color: #334155;
+    --danger-light: #450a0a;
   }
 }
 
@@ -271,8 +281,9 @@ a:hover {
   margin: 0 0.25rem;
 }
 
-/* Admin-only elements - hidden by default, shown by nav.js when authorized */
-.admin-only {
+/* Role-based visibility - hidden by default, shown by nav.js when authorized */
+.admin-only,
+.reviewer-only {
   display: none;
 }
 
@@ -1600,7 +1611,197 @@ a:hover {
 }
 
 /* ==========================================================================
-   12. RESPONSIVE BREAKPOINTS
+   12. DATA TABLE COMPONENT
+   ========================================================================== */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: top;
+  color: var(--text-primary);
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: var(--bg-subtle);
+}
+
+.data-table tbody tr:hover {
+  background: var(--primary-light);
+}
+
+.data-table .col-actions {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.data-table .col-narrow {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   13. BUTTON ALIASES & FOCUS
+   ========================================================================== */
+
+/* Semantic aliases used in review/approval flows */
+.btn-approve {
+  background: var(--success);
+  color: white;
+}
+.btn-approve:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.btn-reject {
+  background: var(--error);
+  color: white;
+}
+.btn-reject:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.btn-discuss {
+  background: var(--warning);
+  color: white;
+}
+.btn-discuss:hover:not(:disabled) {
+  background: #b45309;
+}
+
+/* Focus indicators for keyboard navigation */
+.btn:focus-visible,
+a:focus-visible,
+.tab:focus-visible,
+.accordion-header:focus-visible,
+.theme-toggle:focus-visible,
+.notification-bell:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   14. BADGE INFO VARIANT
+   ========================================================================== */
+
+.badge-info {
+  background: var(--info-light);
+  color: #0e7490;
+}
+
+/* ==========================================================================
+   15. LOADING, ERROR, EMPTY STATES
+   ========================================================================== */
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.error-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: var(--error);
+  font-size: 0.875rem;
+}
+
+.error-state .error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--error-light);
+  color: var(--error);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+.empty-state a {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   16. SKIP LINK & ACCESSIBILITY
+   ========================================================================== */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   17. INTERACTIVE CARD HOVER
+   ========================================================================== */
+
+.card-interactive {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   18. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
 @media (max-width: 1024px) {

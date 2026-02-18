@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Þýðingarleiðsla | Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -73,8 +74,8 @@
       z-index: 1000;
     }
 
-    /* Header */
-    .header {
+    /* Pipeline Hero Banner */
+    .pipeline-hero {
       background: linear-gradient(135deg, var(--obsidian) 0%, var(--basalt) 100%);
       color: var(--snow);
       padding: var(--space-xl) var(--space-2xl);
@@ -82,7 +83,7 @@
       overflow: hidden;
     }
 
-    .header::after {
+    .pipeline-hero::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -114,7 +115,7 @@
       gap: var(--space-xl);
     }
 
-    .header h1 {
+    .pipeline-hero h2 {
       font-family: var(--font-display);
       font-size: 2.5rem;
       font-weight: 300;
@@ -122,7 +123,7 @@
       line-height: 1.1;
     }
 
-    .header h1 span {
+    .pipeline-hero h2 span {
       display: block;
       font-size: 0.9rem;
       font-family: var(--font-body);
@@ -796,12 +797,34 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/segment-editor">Ritstjóri</a>
+      <a href="/status">Framvinda</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <div class="pipeline-hero">
     <div class="header-content">
-      <h1>
+      <h2>
         <span>Námsbókasafn</span>
         Þýðingarleiðsla
-      </h1>
+      </h2>
       <div class="header-stats">
         <div class="stat-block">
           <div class="stat-value" id="totalProgress">—</div>
@@ -817,9 +840,9 @@
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main class="main">
+  <main class="main" id="main-content">
     <!-- Pipeline Flow -->
     <section class="pipeline-section">
       <div class="section-header">
@@ -902,6 +925,8 @@
     Uppfæri...
   </div>
 
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script>
     // Configuration

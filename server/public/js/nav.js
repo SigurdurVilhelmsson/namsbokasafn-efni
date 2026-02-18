@@ -25,16 +25,22 @@
   }
 
   /**
-   * Show/hide admin navigation based on user role
+   * Show/hide role-based navigation links
    * @param {string} role - User's role
    */
-  function updateAdminVisibility(role) {
-    const adminLinks = document.querySelectorAll('.admin-only');
+  function updateRoleVisibility(role) {
     const adminRoles = ['admin', 'head-editor'];
-    const showAdmin = adminRoles.includes(role);
+    const reviewerRoles = ['admin', 'head-editor', 'editor'];
 
-    adminLinks.forEach((el) => {
+    const showAdmin = adminRoles.includes(role);
+    const showReviewer = reviewerRoles.includes(role);
+
+    document.querySelectorAll('.admin-only').forEach((el) => {
       el.style.display = showAdmin ? 'inline' : 'none';
+    });
+
+    document.querySelectorAll('.reviewer-only').forEach((el) => {
+      el.style.display = showReviewer ? 'inline' : 'none';
     });
   }
 
@@ -97,12 +103,12 @@
     if (cached) {
       if (cached.authenticated && cached.user) {
         updateUserInfo(cached.user);
-        updateAdminVisibility(cached.user.role);
+        updateRoleVisibility(cached.user.role);
         window.currentUser = cached.user;
         window.dispatchEvent(new CustomEvent('userLoaded', { detail: cached.user }));
       } else {
         updateUserInfo(null);
-        updateAdminVisibility(null);
+        updateRoleVisibility(null);
       }
       return;
     }
@@ -127,7 +133,7 @@
 
       if (data.authenticated && data.user) {
         updateUserInfo(data.user);
-        updateAdminVisibility(data.user.role);
+        updateRoleVisibility(data.user.role);
 
         // Store user for other scripts to access
         window.currentUser = data.user;
@@ -136,12 +142,12 @@
         window.dispatchEvent(new CustomEvent('userLoaded', { detail: data.user }));
       } else {
         updateUserInfo(null);
-        updateAdminVisibility(null);
+        updateRoleVisibility(null);
       }
     } catch (error) {
       console.warn('Could not fetch user info:', error);
       updateUserInfo(null);
-      updateAdminVisibility(null);
+      updateRoleVisibility(null);
     }
   }
 
@@ -155,7 +161,7 @@
   // Expose functions globally for manual use
   window.navUtils = {
     highlightActiveNav,
-    updateAdminVisibility,
+    updateRoleVisibility,
     updateUserInfo,
     initNavigation,
   };

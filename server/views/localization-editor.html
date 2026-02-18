@@ -71,9 +71,9 @@
       background: var(--bg-subtle);
       color: var(--text-muted);
     }
-    .segment-type-badge.title { background: #dbeafe; color: #1e40af; }
-    .segment-type-badge.para { background: #f3f4f6; color: #374151; }
-    .segment-type-badge.caption { background: #fef3c7; color: #92400e; }
+    .segment-type-badge.title { background: var(--primary-light); color: var(--primary-dark); }
+    .segment-type-badge.para { background: var(--gray-100); color: var(--text-secondary); }
+    .segment-type-badge.caption { background: var(--warning-light); color: #92400e; }
 
     .segment-content {
       font-size: 0.85rem;
@@ -135,8 +135,8 @@
       border-radius: 3px;
       font-size: 0.7rem;
     }
-    .category-badge.unit-conversion { background: #dbeafe; color: #1e40af; }
-    .category-badge.cultural-adaptation { background: #fef3c7; color: #92400e; }
+    .category-badge.unit-conversion { background: var(--primary-light); color: var(--primary-dark); }
+    .category-badge.cultural-adaptation { background: var(--warning-light); color: #92400e; }
     .category-badge.example-replacement { background: #f3e8ff; color: #7c3aed; }
     .category-badge.formatting { background: #f0fdf4; color: #166534; }
     .category-badge.unchanged { background: var(--bg-subtle); color: var(--text-muted); }
@@ -172,7 +172,7 @@
     }
     .save-indicator.saving { color: var(--accent); }
     .save-indicator.saved { color: #10b981; }
-    .save-indicator.error { color: #ef4444; }
+    .save-indicator.error { color: var(--error); }
 
     /* Math placeholder styling */
     .math-placeholder {
@@ -247,16 +247,16 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Fara í efni</a>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
-      <a href="/workflow">Verkflæði</a>
-      <a href="/status">Framvinda</a>
       <a href="/segment-editor">Ritstjóri</a>
+      <a href="/status">Framvinda</a>
       <a href="/localization-editor" class="active">Staðfærsla</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue">Yfirferðarröð</a>
+      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -270,7 +270,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content">
     <!-- Module Selector -->
     <div class="card" id="module-selector">
       <h2 class="card-title">Velja einingu til staðfærslu (Pass 2)</h2>
@@ -427,7 +427,7 @@
       if (!currentChapter) return;
 
       const container = document.getElementById('modules-container');
-      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
       document.getElementById('modules-list').style.display = 'block';
 
       try {
