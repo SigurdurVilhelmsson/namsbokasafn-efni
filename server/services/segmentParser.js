@@ -164,6 +164,7 @@ function getModulePaths(book, chapter, moduleId) {
     localized: path.join(bookDir, '04-localized-content', chapterDir, `${moduleId}-segments.is.md`),
     structure: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-structure.json`),
     equations: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-equations.json`),
+    manifest: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-manifest.json`),
   };
 }
 
@@ -215,6 +216,12 @@ function loadModuleForEditing(book, chapter, moduleId) {
     structure = JSON.parse(fs.readFileSync(paths.structure, 'utf-8'));
   }
 
+  // Load extraction manifest for version tracking
+  let manifest = null;
+  if (fs.existsSync(paths.manifest)) {
+    manifest = JSON.parse(fs.readFileSync(paths.manifest, 'utf-8'));
+  }
+
   // Pair EN and IS segments
   const paired = enSegments.map((en) => ({
     segmentId: en.segmentId,
@@ -238,6 +245,8 @@ function loadModuleForEditing(book, chapter, moduleId) {
     equations,
     segmentCount: paired.length,
     translatedCount: paired.filter((s) => s.hasTranslation).length,
+    extractedAt: manifest?.extractedAt || null,
+    sourceHash: manifest?.sourceHash || null,
   };
 }
 

@@ -425,7 +425,7 @@ const segmentParser = require('./segmentParser');
 function applyApprovedEdits(book, chapter, moduleId) {
   const conn = getDb();
 
-  // 1. Get all approved edits for this module (not yet applied), latest first per segment
+  // Pre-check: any approved edits at all?
   const approvedEdits = conn
     .prepare(
       `SELECT id, segment_id, edited_content
@@ -436,7 +436,6 @@ function applyApprovedEdits(book, chapter, moduleId) {
     .all(book, moduleId);
 
   if (approvedEdits.length === 0) {
-    // Check if there are any approved edits at all (already applied)
     const anyApproved = conn
       .prepare(
         `SELECT COUNT(*) as count FROM segment_edits
@@ -465,83 +464,111 @@ function applyApprovedEdits(book, chapter, moduleId) {
            WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
         )
         .run(book, moduleId);
-      // Re-query to pick up the reset edits
       return applyApprovedEdits(book, chapter, moduleId);
     }
 
     throw new Error('All approved edits have already been applied');
   }
 
-  // 2. Load module data — loadModuleForEditing uses faithful if it exists, otherwise mt-output
-  const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+  // Use IMMEDIATE transaction to hold write lock for the entire apply cycle.
+  // This prevents concurrent apply calls from reading the same edits.
+  const applyTransaction = conn.transaction(() => {
+    // Re-query inside the transaction to ensure consistency
+    const edits = conn
+      .prepare(
+        `SELECT id, segment_id, edited_content
+         FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
+         ORDER BY reviewed_at DESC`
+      )
+      .all(book, moduleId);
 
-  // 3. Build approved-content lookup (latest approved edit per segment wins)
-  const approvedLookup = {};
-  const supersededIds = [];
-  for (const edit of approvedEdits) {
-    // First edit per segment_id is the latest (ordered by reviewed_at DESC)
-    if (!approvedLookup[edit.segment_id]) {
-      approvedLookup[edit.segment_id] = edit;
-    } else {
-      // This is an older approved edit for the same segment — it loses
-      supersededIds.push(edit.id);
+    if (edits.length === 0) {
+      throw new Error('Edits were applied by a concurrent request');
     }
-  }
 
-  // 4. Build the full segment list: approved content overrides existing IS content
-  const segments = data.segments.map((seg) => {
-    const approved = approvedLookup[seg.segmentId];
-    return {
-      segmentId: seg.segmentId,
-      content: approved ? approved.edited_content : seg.is,
-    };
-  });
+    // 1. Load module data
+    const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
 
-  // 5. Write to 03-faithful-translation/
-  const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
+    // 2. Build approved-content lookup (latest approved edit per segment wins)
+    const approvedLookup = {};
+    const supersededIds = [];
+    for (const edit of edits) {
+      if (!approvedLookup[edit.segment_id]) {
+        approvedLookup[edit.segment_id] = edit;
+      } else {
+        supersededIds.push(edit.id);
+      }
+    }
 
-  // 5b. Verify the file was actually written
-  if (!fs.existsSync(savedPath)) {
-    throw new Error(`Failed to write faithful file: ${savedPath}`);
-  }
-  const written = fs.readFileSync(savedPath, 'utf-8');
-  const appliedCount = Object.keys(approvedLookup).length;
-  if (written.length === 0) {
-    throw new Error(`Faithful file written but empty: ${savedPath}`);
-  }
-  // Verify at least one approved edit's content appears in the file
-  const sampleEdit = Object.values(approvedLookup)[0];
-  const sampleText = sampleEdit?.edited_content || '';
-  if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
-    console.error(
-      `Warning: Sample edit content not found in faithful file. ` +
-        `Segment ID format may not match. Edit segment_id: ${sampleEdit.segment_id}`
+    // 3. Warn about stale edits (segment IDs that no longer exist in current extraction)
+    const currentSegIds = new Set(data.segments.map((s) => s.segmentId));
+    for (const [segId, edit] of Object.entries(approvedLookup)) {
+      if (!currentSegIds.has(segId)) {
+        console.error(
+          `Warning: Approved edit ${edit.id} references segment ${segId} which no longer exists in current extraction`
+        );
+      }
+    }
+
+    // 4. Build the full segment list: approved content overrides existing IS content
+    const segments = data.segments.map((seg) => {
+      const approved = approvedLookup[seg.segmentId];
+      return {
+        segmentId: seg.segmentId,
+        content: approved ? approved.edited_content : seg.is,
+      };
+    });
+
+    // 5. Write to 03-faithful-translation/
+    const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
+
+    // 5b. Verify the file was actually written
+    if (!fs.existsSync(savedPath)) {
+      throw new Error(`Failed to write faithful file: ${savedPath}`);
+    }
+    const written = fs.readFileSync(savedPath, 'utf-8');
+    const appliedCount = Object.keys(approvedLookup).length;
+    if (written.length === 0) {
+      throw new Error(`Faithful file written but empty: ${savedPath}`);
+    }
+    // Verify at least one approved edit's content appears in the file
+    const sampleEdit = Object.values(approvedLookup)[0];
+    const sampleText = sampleEdit?.edited_content || '';
+    if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
+      console.error(
+        `Warning: Sample edit content not found in faithful file. ` +
+          `Segment ID format may not match. Edit segment_id: ${sampleEdit.segment_id}`
+      );
+    }
+
+    // 6. Mark winning edits as applied; mark superseded edits as rejected
+    const winnerIds = Object.values(approvedLookup).map((e) => e.id);
+    const markApplied = conn.prepare(
+      `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
-  }
+    const markSuperseded = conn.prepare(
+      `UPDATE segment_edits SET status = 'rejected', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+    );
 
-  // 6. Mark winning edits as applied; mark superseded edits as rejected
-  const winnerIds = Object.values(approvedLookup).map((e) => e.id);
-
-  const markApplied = conn.prepare(
-    `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
-  );
-  const markSuperseded = conn.prepare(
-    `UPDATE segment_edits SET status = 'rejected', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
-  );
-
-  const markAll = conn.transaction(() => {
     for (const id of winnerIds) {
       markApplied.run(id);
     }
     for (const id of supersededIds) {
       markSuperseded.run(id);
     }
+
+    return {
+      appliedCount,
+      supersededCount: supersededIds.length,
+      totalEditsMarked: edits.length,
+      savedPath,
+    };
   });
 
-  markAll();
+  const result = applyTransaction.immediate();
 
-  // Check if all modules in this chapter now have faithful translation files.
-  // If so, auto-advance linguisticReview status to complete.
+  // Auto-advance status (best-effort, outside transaction)
   try {
     const chDir = chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
     const mtOutputDir = path.join(BOOKS_DIR, book, '02-mt-output', chDir);
@@ -564,16 +591,10 @@ function applyApprovedEdits(book, chapter, moduleId) {
       }
     }
   } catch (err) {
-    // Best-effort — don't fail the apply operation
     console.error('Auto-advance linguisticReview failed:', err.message);
   }
 
-  return {
-    appliedCount,
-    supersededCount: supersededIds.length,
-    totalEditsMarked: approvedEdits.length,
-    savedPath,
-  };
+  return result;
 }
 
 /**
