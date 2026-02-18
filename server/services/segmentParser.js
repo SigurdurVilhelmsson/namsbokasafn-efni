@@ -22,6 +22,18 @@ const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 const SEG_MARKER_REGEX =
   /(?:<!--\s*SEG:([\w]+):([\w-]+):([\w-]+)\s*-->|\{\{SEG:([\w]+):([\w-]+):([\w-]+)\}\})/;
 /**
+ * Normalize hard line wraps in segment content.
+ * Joins single-newline continuation lines into spaces while preserving
+ * intentional paragraph breaks (double newlines).
+ *
+ * @param {string} text - Raw segment content
+ * @returns {string} Content with hard wraps normalized
+ */
+function normalizeWraps(text) {
+  return text.replace(/(?<!\n)\n(?!\n)/g, ' ');
+}
+
+/**
  * Parse a segment file into structured segments.
  *
  * @param {string} content - Raw file content
@@ -38,7 +50,7 @@ function parseSegments(content) {
     if (match) {
       // Save previous segment
       if (currentSegment) {
-        currentSegment.content = contentLines.join('\n').trim();
+        currentSegment.content = normalizeWraps(contentLines.join('\n').trim());
         segments.push(currentSegment);
       }
 
@@ -55,6 +67,12 @@ function parseSegments(content) {
         content: '',
       };
       contentLines = [];
+
+      // Capture any text after the marker on the same line
+      const remainder = line.substring(match.index + match[0].length);
+      if (remainder.trim()) {
+        contentLines.push(remainder.trim());
+      }
     } else if (currentSegment) {
       contentLines.push(line);
     }
@@ -62,7 +80,7 @@ function parseSegments(content) {
 
   // Don't forget the last segment
   if (currentSegment) {
-    currentSegment.content = contentLines.join('\n').trim();
+    currentSegment.content = normalizeWraps(contentLines.join('\n').trim());
     segments.push(currentSegment);
   }
 
@@ -101,7 +119,12 @@ function getModulePaths(book, chapter, moduleId) {
   return {
     enSource: path.join(bookDir, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`),
     mtOutput: path.join(bookDir, '02-mt-output', chapterDir, `${moduleId}-segments.is.md`),
-    faithful: path.join(bookDir, '03-faithful-translation', chapterDir, `${moduleId}-segments.is.md`),
+    faithful: path.join(
+      bookDir,
+      '03-faithful-translation',
+      chapterDir,
+      `${moduleId}-segments.is.md`
+    ),
     localized: path.join(bookDir, '04-localized-content', chapterDir, `${moduleId}-segments.is.md`),
     structure: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-structure.json`),
     equations: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-equations.json`),
@@ -367,6 +390,7 @@ function listChapterModules(book, chapter) {
 }
 
 module.exports = {
+  normalizeWraps,
   parseSegments,
   assembleSegments,
   getModulePaths,

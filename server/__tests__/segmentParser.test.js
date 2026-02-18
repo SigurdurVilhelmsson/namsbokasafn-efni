@@ -55,7 +55,7 @@ Paragraph text`;
     expect(segments[1].moduleId).toBe('m68663');
   });
 
-  it('handles multiline content', () => {
+  it('normalizes hard-wrapped content into single line', () => {
     const content = `<!-- SEG:m68663:para:fs-id001 -->
 Line one.
 Line two.
@@ -63,7 +63,52 @@ Line three.`;
 
     const segments = parseSegments(content);
     expect(segments).toHaveLength(1);
-    expect(segments[0].content).toBe('Line one.\nLine two.\nLine three.');
+    expect(segments[0].content).toBe('Line one. Line two. Line three.');
+  });
+
+  it('preserves double-newline paragraph breaks', () => {
+    const content = `<!-- SEG:m68663:para:fs-id001 -->
+Paragraph one.
+
+Paragraph two.`;
+
+    const segments = parseSegments(content);
+    expect(segments).toHaveLength(1);
+    expect(segments[0].content).toBe('Paragraph one.\n\nParagraph two.');
+  });
+
+  it('captures content on same line as HTML comment marker', () => {
+    const content = `<!-- SEG:m68663:para:fs-id001 --> Þetta er efnisgrein.
+
+<!-- SEG:m68663:title:fs-id002 --> Þetta er titill.`;
+
+    const segments = parseSegments(content);
+    expect(segments).toHaveLength(2);
+    expect(segments[0].content).toBe('Þetta er efnisgrein.');
+    expect(segments[1].content).toBe('Þetta er titill.');
+  });
+
+  it('captures content on same line as mustache marker', () => {
+    const content = `{{SEG:m68663:para:fs-id001}} Fyrsta efnisgrein.
+
+{{SEG:m68663:para:fs-id002}} Önnur efnisgrein.`;
+
+    const segments = parseSegments(content);
+    expect(segments).toHaveLength(2);
+    expect(segments[0].content).toBe('Fyrsta efnisgrein.');
+    expect(segments[1].content).toBe('Önnur efnisgrein.');
+  });
+
+  it('handles inline content with hard wraps (MT output format)', () => {
+    const content = `<!-- SEG:m68663:para:fs-id001 --> Þetta er langt
+innihald sem er brotið yfir í
+margar línur vegna MT úttaks.`;
+
+    const segments = parseSegments(content);
+    expect(segments).toHaveLength(1);
+    expect(segments[0].content).toBe(
+      'Þetta er langt innihald sem er brotið yfir í margar línur vegna MT úttaks.'
+    );
   });
 
   it('returns empty array for content with no markers', () => {
@@ -115,6 +160,27 @@ First paragraph.
 A title.`;
 
     const segments = parseSegments(original);
+    const reassembled = assembleSegments(segments);
+    const reparsed = parseSegments(reassembled);
+
+    expect(reparsed).toHaveLength(segments.length);
+    for (let i = 0; i < segments.length; i++) {
+      expect(reparsed[i].segmentId).toBe(segments[i].segmentId);
+      expect(reparsed[i].content).toBe(segments[i].content);
+    }
+  });
+
+  it('round-trips inline-content format through parse and assemble', () => {
+    const inlineFormat = `<!-- SEG:m68663:para:fs-id001 --> Fyrsta efnisgrein.
+
+<!-- SEG:m68663:title:fs-id002 --> Titill.`;
+
+    const segments = parseSegments(inlineFormat);
+    expect(segments).toHaveLength(2);
+    expect(segments[0].content).toBe('Fyrsta efnisgrein.');
+    expect(segments[1].content).toBe('Titill.');
+
+    // Assemble produces canonical format (marker on own line)
     const reassembled = assembleSegments(segments);
     const reparsed = parseSegments(reassembled);
 
