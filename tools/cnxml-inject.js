@@ -253,6 +253,9 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
     if (equations[mathId]) {
       return equations[mathId].mathml;
     }
+    console.error(
+      `  Warning: Unresolved math placeholder ${match} (no ${mathId} in equations.json)`
+    );
     return match;
   });
 

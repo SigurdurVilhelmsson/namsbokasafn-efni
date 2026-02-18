@@ -313,7 +313,8 @@ function generateJobId() {
  */
 function advanceChapterStatus(book, chapter, stage, extra = {}) {
   try {
-    const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
+    const chapterDir =
+      chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
     const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
 
     let status = {};
