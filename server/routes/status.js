@@ -15,6 +15,8 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const activityLog = require('../services/activityLog');
+const { requireAuth } = require('../middleware/requireAuth');
+const { requireAdmin } = require('../middleware/requireRole');
 const {
   extractBaseSectionId,
   sectionHasAnyFile,
@@ -1066,7 +1068,7 @@ router.get('/:book/scan', (req, res) => {
  * POST /api/status/:book/sync
  * Actually update status.json files based on filesystem
  */
-router.post('/:book/sync', (req, res) => {
+router.post('/:book/sync', requireAuth, requireAdmin(), (req, res) => {
   const { book } = req.params;
 
   if (!VALID_BOOKS.includes(book)) {
@@ -1106,7 +1108,7 @@ router.post('/:book/sync', (req, res) => {
  * POST /api/status/:book/:chapter/sync
  * Update status for a single chapter
  */
-router.post('/:book/:chapter/sync', (req, res) => {
+router.post('/:book/:chapter/sync', requireAuth, requireAdmin(), (req, res) => {
   const { book, chapter } = req.params;
   const chapterNum = parseInt(chapter);
 

@@ -241,7 +241,12 @@
     <!-- Full Matrix Tab -->
     <div id="tab-matrix" class="tab-content" style="display: none;">
       <div class="card">
-        <h2 class="card-title">Framvinda kafla</h2>
+        <div class="card-header-flex">
+          <h2 class="card-title">Framvinda kafla</h2>
+          <button class="btn btn-sm btn-outline admin-only" onclick="startStatusSync()" title="Samstilla stöðu við skráarkerfi">
+            Samstilla stöðu
+          </button>
+        </div>
         <div class="form-group">
           <label class="form-label">Veldu bók</label>
           <select class="form-select" id="book-select" onchange="loadFullMatrix()">
@@ -345,6 +350,23 @@
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="closeAssignmentModal()">Hætta við</button>
         <button class="btn btn-primary" onclick="submitAssignment()">Úthluta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Sync Modal -->
+  <div class="modal" id="sync-status-modal" style="display: none;">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3>Samstilla stöðu við skráarkerfi</h3>
+        <button class="btn-close" onclick="closeSyncModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="sync-modal-content">
+        <p class="text-muted">Hleður...</p>
+      </div>
+      <div class="modal-footer" id="sync-modal-footer" style="display: none;">
+        <button class="btn btn-secondary" onclick="closeSyncModal()">Hætta við</button>
+        <button class="btn btn-primary" id="sync-confirm-btn" onclick="confirmStatusSync()">Staðfesta samstillingu</button>
       </div>
     </div>
   </div>
@@ -1406,6 +1428,105 @@
       });
     }
 
+    // ============================================================================
+    // STATUS SYNC
+    // ============================================================================
+
+    async function startStatusSync() {
+      const modal = document.getElementById('sync-status-modal');
+      const content = document.getElementById('sync-modal-content');
+      const footer = document.getElementById('sync-modal-footer');
+      modal.style.display = 'flex';
+      footer.style.display = 'none';
+      content.innerHTML = '<p class="text-muted">Skoða skráarkerfi...</p>';
+
+      try {
+        const book = document.getElementById('book-select')?.value || 'efnafraedi';
+        const res = await fetch(`/api/status/${book}/scan`);
+        const data = await res.json();
+
+        if (!data.chapters || data.chapters.length === 0) {
+          content.innerHTML = '<p>Engir kaflar fundust.</p>';
+          return;
+        }
+
+        // Build change list
+        const changes = [];
+        for (const ch of data.chapters) {
+          for (const [stage, info] of Object.entries(ch.stages)) {
+            if (info.wouldUpdate) {
+              const action = info.action === 'demote'
+                ? '<span style="color: var(--danger, #dc2626);">lækka</span>'
+                : '<span style="color: var(--success, #16a34a);">hækka</span>';
+              changes.push(
+                `<tr><td>Kafli ${ch.chapter}</td><td>${stage}</td>` +
+                `<td>${info.currentStatus}</td><td>${action}</td></tr>`
+              );
+            }
+          }
+        }
+
+        if (changes.length === 0) {
+          content.innerHTML = '<p>Engar breytingar þarf — staða samræmist skráarkerfi.</p>';
+          return;
+        }
+
+        content.innerHTML =
+          `<p><strong>${changes.length}</strong> breyting${changes.length > 1 ? 'ar' : ''} fundust:</p>` +
+          '<table class="sync-changes-table">' +
+          '<thead><tr><th>Kafli</th><th>Stig</th><th>Núverandi</th><th>Aðgerð</th></tr></thead>' +
+          '<tbody>' + changes.join('') + '</tbody></table>';
+        footer.style.display = 'flex';
+      } catch (err) {
+        content.innerHTML = `<p style="color: var(--danger, #dc2626);">Villa: ${err.message}</p>`;
+      }
+    }
+
+    async function confirmStatusSync() {
+      const content = document.getElementById('sync-modal-content');
+      const btn = document.getElementById('sync-confirm-btn');
+      btn.disabled = true;
+      btn.textContent = 'Samstilli...';
+
+      try {
+        const book = document.getElementById('book-select')?.value || 'efnafraedi';
+        const res = await fetch(`/api/status/${book}/sync`, { method: 'POST' });
+        const data = await res.json();
+
+        if (!res.ok) {
+          content.innerHTML = `<p style="color: var(--danger, #dc2626);">Villa: ${data.message || data.error}</p>`;
+          return;
+        }
+
+        content.innerHTML =
+          `<p style="color: var(--success, #16a34a);">Samstilling lokið.</p>` +
+          `<p>${data.updated} kafla${data.updated !== 1 ? 'r' : ''} uppfærð${data.updated !== 1 ? 'ir' : ''}, ` +
+          `${data.unchanged} óbreyttir.</p>` +
+          (data.changes?.length > 0
+            ? '<ul>' + data.changes.map(c =>
+                `<li>Kafli ${c.chapter}: ${c.stage} — ${c.action}</li>`
+              ).join('') + '</ul>'
+            : '');
+
+        document.getElementById('sync-modal-footer').style.display = 'none';
+
+        // Refresh the matrix after sync
+        setTimeout(() => {
+          loadFullMatrix();
+          loadDashboard();
+        }, 500);
+      } catch (err) {
+        content.innerHTML = `<p style="color: var(--danger, #dc2626);">Villa: ${err.message}</p>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Staðfesta samstillingu';
+      }
+    }
+
+    function closeSyncModal() {
+      document.getElementById('sync-status-modal').style.display = 'none';
+    }
+
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
       loadDashboard();
@@ -2074,6 +2195,10 @@
     .sections-progress {
       color: var(--success-600, #16a34a);
     }
+
+    .sync-changes-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin-top: 0.5rem; }
+    .sync-changes-table th, .sync-changes-table td { padding: 0.375rem 0.75rem; border-bottom: 1px solid var(--gray-200, #e5e7eb); text-align: left; }
+    .sync-changes-table th { font-weight: 600; background: var(--gray-50, #f9fafb); }
   </style>
   <script src="/js/theme.js"></script>
   <script src="/js/nav.js"></script>

@@ -1,6 +1,34 @@
 #!/usr/bin/env node
+
+// ============================================================================
+// DEPRECATED — This script uses old stage names incompatible with the 8-stage
+// pipeline schema (extraction, mtReady, mtOutput, linguisticReview, tmCreated,
+// injection, rendering, publication). Using it will write incorrect keys to
+// status.json files.
+//
+// Use the Framvinda sync button or the API instead:
+//   GET  /api/status/efnafraedi/scan        (dry-run preview)
+//   POST /api/status/efnafraedi/sync        (apply to all chapters)
+//   POST /api/status/efnafraedi/4/sync      (single chapter)
+// ============================================================================
+
+console.warn('');
+console.warn('============================================================');
+console.warn('  DEPRECATED: scripts/update-status.js');
+console.warn('');
+console.warn('  This script uses OLD stage names (source, matecat,');
+console.warn('  editorialPass1, etc.) that are incompatible with the');
+console.warn('  current 8-stage pipeline schema.');
+console.warn('');
+console.warn('  Use the Framvinda sync button or the API instead:');
+console.warn('    GET  /api/status/efnafraedi/scan      (dry-run)');
+console.warn('    POST /api/status/efnafraedi/sync      (apply)');
+console.warn('    POST /api/status/efnafraedi/4/sync    (single chapter)');
+console.warn('============================================================');
+console.warn('');
+
 /**
- * Update chapter status
+ * Update chapter status (DEPRECATED)
  *
  * Usage: node scripts/update-status.js <book> <chapter> <stage> <status>
  * Example: node scripts/update-status.js efnafraedi 1 matecat complete
@@ -57,39 +85,39 @@ const VALID_STAGES = [
   'editorialPass1',
   'tmUpdated',
   'editorialPass2',
-  'publication'
+  'publication',
 ];
 
 const VALID_STATUSES = ['complete', 'in-progress', 'pending', 'not-started'];
 
 // Status transition definitions
 const STATUS_TRANSITIONS = {
-  'complete': (stageData, today) => ({
+  complete: (stageData, today) => ({
     ...stageData,
     complete: true,
     date: today,
     inProgress: false,
-    pending: false
+    pending: false,
   }),
   'in-progress': (stageData) => ({
     ...stageData,
     complete: false,
     inProgress: true,
-    pending: false
+    pending: false,
   }),
-  'pending': (stageData) => ({
+  pending: (stageData) => ({
     ...stageData,
     complete: false,
     inProgress: false,
-    pending: true
+    pending: true,
   }),
   'not-started': (stageData) => ({
     ...stageData,
     complete: false,
     date: null,
     inProgress: false,
-    pending: false
-  })
+    pending: false,
+  }),
 };
 
 function printUsage() {

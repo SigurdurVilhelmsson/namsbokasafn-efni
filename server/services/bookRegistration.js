@@ -749,6 +749,18 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
       const dir = path.join(BOOKS_DIR, book, '05-publication', 'mt-preview', 'chapters', ch);
       return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('.html'));
     },
+    'publication.mtPreview': (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '05-publication', 'mt-preview', 'chapters', ch);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('.html'));
+    },
+    'publication.faithful': (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '05-publication', 'faithful', 'chapters', ch);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('.html'));
+    },
+    'publication.localized': (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '05-publication', 'localized', 'chapters', ch);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('.html'));
+    },
   };
 
   const results = {
@@ -800,55 +812,36 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
       statusData.status = {};
     }
 
-    // Scan for extraction (EN segments in 02-for-mt)
-    if (STATUS_RULES.extraction(bookSlug, ch)) {
-      if (!statusData.status.extraction?.complete) {
-        statusData.status.extraction = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
+    const today = new Date().toISOString().split('T')[0];
+
+    // Bidirectional sync for simple stages (promote if files exist, demote if missing)
+    const simpleStages = [
+      'extraction',
+      'mtReady',
+      'mtOutput',
+      'linguisticReview',
+      'injection',
+      'rendering',
+    ];
+    for (const stage of simpleStages) {
+      const filesExist = STATUS_RULES[stage](bookSlug, ch);
+      const currentlyComplete = statusData.status[stage]?.complete;
+
+      if (filesExist && !currentlyComplete) {
+        statusData.status[stage] = { complete: true, date: today };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage, action: 'promoted to complete' });
+      } else if (!filesExist && currentlyComplete) {
+        statusData.status[stage] = {
+          complete: false,
+          notes: `Reset: no files found (was: ${statusData.status[stage]?.date || 'unknown'})`,
         };
         chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'extraction', action: 'set complete' });
+        results.changes.push({ chapter: ch, stage, action: 'demoted to incomplete' });
       }
     }
 
-    // Scan for MT-ready (links.json files in 02-for-mt)
-    if (STATUS_RULES.mtReady(bookSlug, ch)) {
-      if (!statusData.status.mtReady?.complete) {
-        statusData.status.mtReady = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
-        };
-        chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'mtReady', action: 'set complete' });
-      }
-    }
-
-    // Scan for MT output (IS segments in 02-mt-output)
-    if (STATUS_RULES.mtOutput(bookSlug, ch)) {
-      if (!statusData.status.mtOutput?.complete) {
-        statusData.status.mtOutput = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
-        };
-        chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'mtOutput', action: 'set complete' });
-      }
-    }
-
-    // Scan for linguistic review (IS segments in 03-faithful-translation)
-    if (STATUS_RULES.linguisticReview(bookSlug, ch)) {
-      if (!statusData.status.linguisticReview?.complete) {
-        statusData.status.linguisticReview = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
-        };
-        chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'linguisticReview', action: 'set complete' });
-      }
-    }
-
-    // Scan for TM files (per-section check)
+    // Bidirectional sync for TM (per-section check)
     let tmComplete = true;
     for (const section of sections) {
       const sectionId = section.id.replace('.', '-');
@@ -857,38 +850,52 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
         break;
       }
     }
-    if (tmComplete && sections.length > 0) {
-      if (!statusData.status.tmCreated?.complete) {
-        statusData.status.tmCreated = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
-        };
-        chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'tmCreated', action: 'set complete' });
-      }
+    const tmCurrentlyComplete = statusData.status.tmCreated?.complete;
+    if (tmComplete && sections.length > 0 && !tmCurrentlyComplete) {
+      statusData.status.tmCreated = { complete: true, date: today };
+      chapterChanged = true;
+      results.changes.push({ chapter: ch, stage: 'tmCreated', action: 'promoted to complete' });
+    } else if ((!tmComplete || sections.length === 0) && tmCurrentlyComplete) {
+      statusData.status.tmCreated = {
+        complete: false,
+        notes: `Reset: TM files missing (was: ${statusData.status.tmCreated?.date || 'unknown'})`,
+      };
+      chapterChanged = true;
+      results.changes.push({ chapter: ch, stage: 'tmCreated', action: 'demoted to incomplete' });
     }
 
-    // Scan for injection (CNXML files in 03-translated/mt-preview)
-    if (STATUS_RULES.injection(bookSlug, ch)) {
-      if (!statusData.status.injection?.complete) {
-        statusData.status.injection = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
-        };
-        chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'injection', action: 'set complete' });
-      }
+    // Bidirectional sync for publication sub-tracks
+    if (!statusData.status.publication) {
+      statusData.status.publication = {};
     }
+    const pubTracks = [
+      { key: 'mtPreview', rule: 'publication.mtPreview' },
+      { key: 'faithful', rule: 'publication.faithful' },
+      { key: 'localized', rule: 'publication.localized' },
+    ];
+    for (const { key, rule } of pubTracks) {
+      const filesExist = STATUS_RULES[rule](bookSlug, ch);
+      const currentlyComplete = statusData.status.publication[key]?.complete;
 
-    // Scan for rendering (HTML files in 05-publication/mt-preview)
-    if (STATUS_RULES.rendering(bookSlug, ch)) {
-      if (!statusData.status.rendering?.complete) {
-        statusData.status.rendering = {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
+      if (filesExist && !currentlyComplete) {
+        statusData.status.publication[key] = { complete: true, date: today };
+        chapterChanged = true;
+        results.changes.push({
+          chapter: ch,
+          stage: `publication.${key}`,
+          action: 'promoted to complete',
+        });
+      } else if (!filesExist && currentlyComplete) {
+        statusData.status.publication[key] = {
+          complete: false,
+          notes: `Reset: no HTML files found (was: ${statusData.status.publication[key]?.date || 'unknown'})`,
         };
         chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'rendering', action: 'set complete' });
+        results.changes.push({
+          chapter: ch,
+          stage: `publication.${key}`,
+          action: 'demoted to incomplete',
+        });
       }
     }
 
@@ -969,10 +976,38 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
         pattern: '.html',
         useChNum: true,
       },
+      {
+        stage: 'publication.mtPreview',
+        dir: path.join('05-publication', 'mt-preview', 'chapters'),
+        pattern: '.html',
+        useChNum: true,
+      },
+      {
+        stage: 'publication.faithful',
+        dir: path.join('05-publication', 'faithful', 'chapters'),
+        pattern: '.html',
+        useChNum: true,
+      },
+      {
+        stage: 'publication.localized',
+        dir: path.join('05-publication', 'localized', 'chapters'),
+        pattern: '.html',
+        useChNum: true,
+      },
     ];
 
+    // Load current status once per chapter
+    let statusData = null;
+    if (fs.existsSync(statusPath)) {
+      try {
+        statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+      } catch (e) {
+        // Ignore parse errors
+      }
+    }
+
     for (const check of stageChecks) {
-      // rendering stage uses zero-padded ch number as directory name (not chDir)
+      // rendering/publication stages use zero-padded ch number as directory name (not chDir)
       const stageDir = check.useChNum
         ? path.join(BOOKS_DIR, bookSlug, check.dir, ch)
         : path.join(BOOKS_DIR, bookSlug, check.dir, chDir);
@@ -980,21 +1015,26 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
         fs.existsSync(stageDir) &&
         fs.readdirSync(stageDir).filter((f) => f.endsWith(check.pattern)).length > 0;
 
-      // Load current status
+      // Resolve current status from nested path (e.g., 'publication.mtPreview')
       let currentStatus = 'not-started';
-      if (fs.existsSync(statusPath)) {
-        try {
-          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-          currentStatus = statusData.status?.[check.stage]?.complete ? 'complete' : 'not-started';
-        } catch (e) {
-          // Ignore parse errors
+      if (statusData) {
+        const parts = check.stage.split('.');
+        let val = statusData.status;
+        for (const p of parts) {
+          val = val?.[p];
         }
+        currentStatus = val?.complete ? 'complete' : 'not-started';
       }
+
+      // Bidirectional: promote OR demote
+      const wouldPromote = filesExist && currentStatus !== 'complete';
+      const wouldDemote = !filesExist && currentStatus === 'complete';
 
       chapterInfo.stages[check.stage] = {
         filesExist,
         currentStatus,
-        wouldUpdate: filesExist && currentStatus !== 'complete',
+        wouldUpdate: wouldPromote || wouldDemote,
+        action: wouldPromote ? 'promote' : wouldDemote ? 'demote' : null,
       };
     }
 

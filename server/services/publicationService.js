@@ -403,11 +403,14 @@ function updateChapterStatus(bookSlug, chapterNum, stage, data) {
     status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
   }
 
-  if (!status[stage]) {
-    status[stage] = {};
+  if (!status.status) {
+    status.status = {};
+  }
+  if (!status.status[stage]) {
+    status.status[stage] = {};
   }
 
-  Object.assign(status[stage], data);
+  Object.assign(status.status[stage], data);
 
   const statusDir = path.dirname(statusPath);
   if (!fs.existsSync(statusDir)) {
