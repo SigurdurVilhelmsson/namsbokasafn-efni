@@ -166,6 +166,11 @@
       background: var(--bg-subtle);
       color: var(--text-muted);
     }
+    .category-badge.terminology { background: #dbeafe; color: #1e40af; }
+    .category-badge.accuracy { background: #fee2e2; color: #991b1b; }
+    .category-badge.readability { background: #f0fdf4; color: #166534; }
+    .category-badge.style { background: #f3e8ff; color: #7c3aed; }
+    .category-badge.omission { background: #fef3c7; color: #92400e; }
 
     /* Review mode */
     .review-actions {
@@ -472,7 +477,7 @@
     <nav>
       <a href="/my-work">Mín verkefni</a>
       <a href="/workflow">Verkflæði</a>
-      <a href="/status">Stjórnborð</a>
+      <a href="/status">Framvinda</a>
       <a href="/segment-editor" class="active">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
       <a href="/review-queue">Yfirferðarröð</a>
@@ -526,7 +531,7 @@
             <button class="btn btn-secondary" id="btn-back" title="Til baka">
               <i class="fas fa-arrow-left"></i> Til baka
             </button>
-            <button class="btn btn-primary" id="btn-submit" title="Senda til yfirlestrar">
+            <button class="btn btn-primary" id="btn-submit" title="Sendir allar breytingar til yfirferðar hjá aðalritstjóra">
               <i class="fas fa-paper-plane"></i> Senda til yfirlestrar
             </button>
           </div>
@@ -534,7 +539,7 @@
 
         <!-- Pipeline Panel (HEAD_EDITOR only) -->
         <div class="pipeline-panel" id="pipeline-panel" style="display: none;">
-          <h4>Leiðsluvinnsla (inject → render)</h4>
+          <h4 title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef">Leiðsluvinnsla (inject → render)</h4>
           <div class="pipeline-controls">
             <label style="font-size: 0.8rem;">Rás:</label>
             <select id="pipeline-track">
@@ -597,6 +602,17 @@
             <div class="term-lookup-results" id="term-lookup-results"></div>
           </div>
         </div>
+
+        <details style="margin: 0.25rem 0 0.5rem; font-size: 0.8rem;">
+          <summary style="cursor: pointer; color: var(--text-muted);">Litaskýring flokka</summary>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; padding: 0.5rem 0;">
+            <span class="category-badge terminology">Hugtök — fagorð og skilgreiningar</span>
+            <span class="category-badge accuracy">Nákvæmni — efnislegir gallar</span>
+            <span class="category-badge readability">Læsileiki — málfar og lestur</span>
+            <span class="category-badge style">Stíll — tónlag og orðalag</span>
+            <span class="category-badge omission">Úrfelling — vantar efni</span>
+          </div>
+        </details>
 
         <div style="overflow-x: auto;">
           <table class="segments-table">
@@ -778,9 +794,17 @@
     function renderModule() {
       document.getElementById('module-title').textContent =
         `${moduleData.moduleId} — ${moduleData.title}`;
-      document.getElementById('module-meta').textContent =
+      const sourceLabels = {
+        'mt-output': 'MT — vélþýðing',
+        'faithful': 'Riststyrt — yfirfarin þýðing',
+        'localized': 'Staðfærð — aðlöguð að íslensku samhengi',
+      };
+      const sourceLabel = sourceLabels[moduleData.isSource] || moduleData.isSource || 'engin';
+      const metaEl = document.getElementById('module-meta');
+      metaEl.textContent =
         `Kafli ${moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
-        `${moduleData.translatedCount} þýddar · Heimild: ${moduleData.isSource || 'engin'}`;
+        `${moduleData.translatedCount} þýddar · Heimild: ${sourceLabel}`;
+      metaEl.title = 'MT = óyfirfarin vélþýðing · Riststyrt = mannleg yfirferð lokið · Staðfærð = aðlöguð að íslensku';
 
       renderStats();
       renderSegments();
@@ -875,14 +899,14 @@
         `).join('');
       }
 
-      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+      const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
 
       let actionsHtml = '';
       if (latestEdit) {
         actionsHtml = `
           <div>
             <span class="edit-status ${latestEdit.status}">${statusLabel(latestEdit.status)}</span>
-            ${latestEdit.category ? `<span class="category-badge">${categoryLabel(latestEdit.category)}</span>` : ''}
+            ${latestEdit.category ? `<span class="category-badge ${latestEdit.category}">${categoryLabel(latestEdit.category)}</span>` : ''}
           </div>
           ${isHeadEditor && latestEdit.status === 'pending' ? `
             <div class="review-actions" style="margin-top: 0.25rem;">
@@ -914,13 +938,13 @@
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
               <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(seg.is)}</textarea>
               <div class="edit-controls">
-                <select id="cat-${cssId(seg.segmentId)}">
+                <select id="cat-${cssId(seg.segmentId)}" title="Veldu flokk breytingar">
                   <option value="">Flokkur...</option>
-                  <option value="terminology">Hugtök</option>
-                  <option value="accuracy">Nákvæmni</option>
-                  <option value="readability">Læsileiki</option>
-                  <option value="style">Stíll</option>
-                  <option value="omission">Úrfelling</option>
+                  <option value="terminology" title="Fagorð, skilgreiningar, samræmi hugtaka">Hugtök</option>
+                  <option value="accuracy" title="Efnislegir gallar eða rangar þýðingar">Nákvæmni</option>
+                  <option value="readability" title="Málfar, setningaskipan, læsileiki">Læsileiki</option>
+                  <option value="style" title="Tónlag, orðalag, stílbrigði">Stíll</option>
+                  <option value="omission" title="Vantar efni eða hluta úr upprunalega textanum">Úrfelling</option>
                 </select>
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
@@ -1107,7 +1131,7 @@
     let pipelinePollingTimer = null;
 
     function showPipelinePanel() {
-      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+      const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
       const panel = document.getElementById('pipeline-panel');
       panel.style.display = isHeadEditor ? 'block' : 'none';
     }
@@ -1219,7 +1243,7 @@
     // ================================================================
 
     function showApplyPanel() {
-      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+      const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
       const panel = document.getElementById('apply-panel');
       panel.style.display = isHeadEditor ? 'block' : 'none';
       if (isHeadEditor) {

@@ -715,6 +715,83 @@ router.delete('/users/:id/books/:bookSlug', requireAuth, requireAdmin(), (req, r
   }
 });
 
+// ================================================================
+// CHAPTER ASSIGNMENTS
+// ================================================================
+
+/**
+ * GET /api/admin/users/:id/chapters
+ * List chapter assignments for a user (optionally filtered by book)
+ */
+router.get('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { book } = req.query;
+
+  try {
+    const assignments = book
+      ? userService.getChapterAssignments(userId, book)
+      : userService.getAllChapterAssignments(userId);
+
+    res.json({ assignments });
+  } catch (err) {
+    console.error('Get chapter assignments error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/admin/users/:id/chapters
+ * Assign chapters to a user
+ * Body: { bookSlug, chapters: [1, 2, 3] }
+ */
+router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { bookSlug, chapters } = req.body;
+
+  if (!bookSlug || !chapters || !Array.isArray(chapters)) {
+    return res.status(400).json({ error: 'bookSlug and chapters array required' });
+  }
+
+  try {
+    for (const ch of chapters) {
+      userService.assignChapter(userId, bookSlug, ch, req.user.username);
+    }
+
+    const assignments = userService.getChapterAssignments(userId, bookSlug);
+    res.json({
+      success: true,
+      message: `Assigned ${chapters.length} chapter(s) to user`,
+      assignments,
+    });
+  } catch (err) {
+    console.error('Assign chapters error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * DELETE /api/admin/users/:id/chapters/:book/:chapter
+ * Remove a chapter assignment
+ */
+router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { book, chapter } = req.params;
+
+  try {
+    userService.removeChapterAssignment(userId, book, parseInt(chapter, 10));
+
+    const assignments = userService.getChapterAssignments(userId, book);
+    res.json({
+      success: true,
+      message: `Removed chapter ${chapter} assignment`,
+      assignments,
+    });
+  } catch (err) {
+    console.error('Remove chapter assignment error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 /**
  * GET /api/admin/users/roles
  * Get available roles and their descriptions
@@ -819,6 +896,7 @@ router.get('/migrate', requireAuth, requireAdmin(), (req, res) => {
       '007-chapter-files',
       '008-segment-editing',
       '009-segment-edit-apply',
+      '010-chapter-assignments',
     ],
   });
 });
@@ -839,6 +917,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/007-chapter-files'),
       require('../migrations/008-segment-editing'),
       require('../migrations/009-segment-edit-apply'),
+      require('../migrations/010-chapter-assignments'),
     ];
 
     const results = [];

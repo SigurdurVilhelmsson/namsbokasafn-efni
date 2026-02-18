@@ -37,7 +37,7 @@ const router = express.Router();
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 const VALID_CATEGORIES = ['terminology', 'accuracy', 'readability', 'style', 'omission'];
@@ -143,8 +143,8 @@ router.get(
 router.post(
   '/:book/:chapter/:moduleId/edit',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
+  requireBookAccess(),
   validateModule,
   (req, res) => {
     const { segmentId, originalContent, editedContent, category, editorNote } = req.body;
@@ -207,8 +207,8 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req
 router.post(
   '/:book/:chapter/:moduleId/submit',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
+  requireBookAccess(),
   validateModule,
   (req, res) => {
     try {

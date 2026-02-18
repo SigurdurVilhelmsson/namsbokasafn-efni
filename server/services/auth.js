@@ -186,6 +186,17 @@ async function isOrgOwner(accessToken, username) {
 async function determineUserRole(accessToken, username, githubUser = null) {
   // Check explicit admin list first (for org owners, useful when API check fails)
   if (CONFIG.adminUsers.includes(username)) {
+    // Still upsert into DB so admin appears in users table
+    if (githubUser && userService.isUserTableReady()) {
+      const dbUser = userService.upsertFromGitHub(githubUser, {
+        autoCreate: true,
+        defaultRole: ROLES.ADMIN,
+      });
+      if (dbUser && dbUser.role !== ROLES.ADMIN) {
+        userService.updateUser(dbUser.id, { role: ROLES.ADMIN });
+      }
+      return { role: ROLES.ADMIN, books: [], source: 'admin-list', dbUserId: dbUser?.id };
+    }
     return { role: ROLES.ADMIN, books: [], source: 'admin-list' };
   }
 

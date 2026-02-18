@@ -510,6 +510,125 @@ function getHeadEditorBooks(user) {
   return user.bookAccess.filter((ba) => ba.role === ROLES.HEAD_EDITOR).map((ba) => ba.book);
 }
 
+// ================================================================
+// CHAPTER ASSIGNMENTS
+// ================================================================
+
+/**
+ * Check if user has access to a specific chapter.
+ * Backward compat: if user has NO assignments for the book, they can access all chapters.
+ */
+function hasChapterAccess(userId, bookSlug, chapter) {
+  if (!isUserTableReady()) return true;
+
+  const db = getDb();
+  try {
+    const count = db
+      .prepare(
+        'SELECT COUNT(*) as cnt FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ?'
+      )
+      .get(userId, bookSlug);
+
+    // No assignments for this book = full access (backward compat)
+    if (!count || count.cnt === 0) return true;
+
+    const assignment = db
+      .prepare(
+        'SELECT id FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? AND chapter = ?'
+      )
+      .get(userId, bookSlug, parseInt(chapter, 10));
+
+    return !!assignment;
+  } catch (err) {
+    // Table might not exist yet — allow access
+    if (err.message && err.message.includes('no such table')) return true;
+    throw err;
+  } finally {
+    db.close();
+  }
+}
+
+/**
+ * Assign a chapter to a user
+ */
+function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
+  if (!isUserTableReady()) {
+    throw new Error('User management not available - run migrations first');
+  }
+
+  const db = getDb();
+  try {
+    db.prepare(
+      `
+      INSERT OR IGNORE INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+      VALUES (?, ?, ?, ?)
+    `
+    ).run(userId, bookSlug, parseInt(chapter, 10), assignedBy);
+  } finally {
+    db.close();
+  }
+}
+
+/**
+ * Remove a chapter assignment
+ */
+function removeChapterAssignment(userId, bookSlug, chapter) {
+  if (!isUserTableReady()) {
+    throw new Error('User management not available - run migrations first');
+  }
+
+  const db = getDb();
+  try {
+    db.prepare(
+      'DELETE FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? AND chapter = ?'
+    ).run(userId, bookSlug, parseInt(chapter, 10));
+  } finally {
+    db.close();
+  }
+}
+
+/**
+ * Get all chapter assignments for a user in a book
+ */
+function getChapterAssignments(userId, bookSlug) {
+  if (!isUserTableReady()) return [];
+
+  const db = getDb();
+  try {
+    return db
+      .prepare(
+        'SELECT * FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? ORDER BY chapter'
+      )
+      .all(userId, bookSlug);
+  } catch (err) {
+    if (err.message && err.message.includes('no such table')) return [];
+    throw err;
+  } finally {
+    db.close();
+  }
+}
+
+/**
+ * Get all chapter assignments for a user across all books
+ */
+function getAllChapterAssignments(userId) {
+  if (!isUserTableReady()) return [];
+
+  const db = getDb();
+  try {
+    return db
+      .prepare(
+        'SELECT * FROM user_chapter_assignments WHERE user_id = ? ORDER BY book_slug, chapter'
+      )
+      .all(userId);
+  } catch (err) {
+    if (err.message && err.message.includes('no such table')) return [];
+    throw err;
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   // Query
   findByGithubId,
@@ -528,6 +647,13 @@ module.exports = {
   // Book access
   assignBookAccess,
   removeBookAccess,
+
+  // Chapter assignments
+  hasChapterAccess,
+  assignChapter,
+  removeChapterAssignment,
+  getChapterAssignments,
+  getAllChapterAssignments,
 
   // Auth integration
   upsertFromGitHub,

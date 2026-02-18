@@ -17,7 +17,7 @@ const router = express.Router();
 
 const segmentParser = require('../services/segmentParser');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 const VALID_CATEGORIES = [
@@ -121,8 +121,8 @@ router.get(
 router.post(
   '/:book/:chapter/:moduleId/save',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
+  requireBookAccess(),
   validateModule,
   (req, res) => {
     const { segmentId, content, category } = req.body;
@@ -181,8 +181,8 @@ router.post(
 router.post(
   '/:book/:chapter/:moduleId/save-all',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
+  requireBookAccess(),
   validateModule,
   (req, res) => {
     const { segments } = req.body;

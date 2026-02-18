@@ -7,12 +7,24 @@
   <link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
+  <!--
+    NAV TEMPLATE — duplicated in 20+ view files:
+    admin.html, admin-books.html, admin-users.html, analytics.html,
+    books.html, chapter.html, dashboard.html, feedback.html,
+    feedback-admin.html, images.html, issues.html, layout.html,
+    localization-editor.html, localization-review.html, my-work.html,
+    review-queue.html, reviews.html, segment-editor.html, status.html,
+    terminology.html, workflow.html
+
+    When changing nav structure, update ALL files above.
+    Long-term: consider shared nav injection via nav.js.
+  -->
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
       <a href="/workflow">Verkflæði</a>
-      <a href="/status">Stjórnborð</a>
+      <a href="/status">Framvinda</a>
       <a href="/segment-editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
       <a href="/review-queue">Yfirferðarröð</a>

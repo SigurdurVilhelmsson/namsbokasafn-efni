@@ -82,6 +82,16 @@
     // Always highlight active nav first
     highlightActiveNav();
 
+    // After login redirect, clear stale auth cache and clean up URL
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('loggedIn')) {
+      sessionStorage.removeItem('authCache');
+      params.delete('loggedIn');
+      const clean = params.toString();
+      const newUrl = window.location.pathname + (clean ? '?' + clean : '') + window.location.hash;
+      window.history.replaceState(null, '', newUrl);
+    }
+
     // Use cached auth data if available (avoids /api/auth/me on every page)
     const cached = getCachedAuth();
     if (cached) {

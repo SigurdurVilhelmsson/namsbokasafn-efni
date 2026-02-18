@@ -121,8 +121,9 @@ router.get('/callback', async (req, res) => {
       path: '/',
     });
 
-    // Redirect to original destination
-    const redirectUrl = stateData.redirect || '/';
+    // Redirect to original destination, with cache-bust param so nav.js refreshes
+    const base = stateData.redirect || '/';
+    const redirectUrl = base + (base.includes('?') ? '&' : '?') + 'loggedIn=1';
 
     // If this looks like an API request, return JSON instead
     if (req.headers.accept?.includes('application/json')) {
