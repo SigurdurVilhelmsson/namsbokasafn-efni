@@ -1760,6 +1760,30 @@
     // INIT
     // ================================================================
     checkAuth();
+
+    // Auto-load from URL params: ?book=...&chapter=...&module=...
+    (async function autoLoadFromParams() {
+      const params = new URLSearchParams(window.location.search);
+      const book = params.get('book');
+      const chapter = params.get('chapter');
+      const module = params.get('module');
+      if (!book || !chapter) return;
+
+      // Set book select and trigger chapter population
+      bookSelect.value = book;
+      bookSelect.dispatchEvent(new Event('change'));
+
+      // Set chapter select and trigger module list load
+      await new Promise(r => setTimeout(r, 50));
+      chapterSelect.value = chapter;
+      chapterSelect.dispatchEvent(new Event('change'));
+
+      // If module specified, wait for module list then load it
+      if (module) {
+        await new Promise(r => setTimeout(r, 300));
+        loadModule(module);
+      }
+    })();
   </script>
 </body>
 </html>

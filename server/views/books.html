@@ -333,7 +333,7 @@
                     <td><span class="badge badge-${status.class}">${status.text}</span></td>
                     <td>${sec.linguisticReviewerName ? escapeHtml(sec.linguisticReviewerName) : '<span class="text-muted">-</span>'}</td>
                     <td>
-                      <a href="/editor?book=${slug}&chapter=${chapterNum}&section=${sec.sectionNum}" class="btn btn-secondary btn-sm">Opna</a>
+                      <a href="/segment-editor?book=${slug}&chapter=${chapterNum}&module=${sec.moduleId}" class="btn btn-secondary btn-sm">Opna</a>
                     </td>
                   </tr>
                 `;

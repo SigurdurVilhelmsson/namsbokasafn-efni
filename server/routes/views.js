@@ -120,11 +120,13 @@ router.get('/books/:bookId', (req, res) => {
  * Legacy editor redirect → segment editor
  */
 router.get('/editor', (req, res) => {
-  const { book, chapter } = req.query;
-  let target = '/segment-editor';
-  if (book && chapter)
-    target += `?book=${encodeURIComponent(book)}&chapter=${encodeURIComponent(chapter)}`;
-  res.redirect(target);
+  const { book, chapter, module } = req.query;
+  const params = new URLSearchParams();
+  if (book) params.set('book', book);
+  if (chapter) params.set('chapter', chapter);
+  if (module) params.set('module', module);
+  const qs = params.toString();
+  res.redirect('/segment-editor' + (qs ? `?${qs}` : ''));
 });
 
 /**
