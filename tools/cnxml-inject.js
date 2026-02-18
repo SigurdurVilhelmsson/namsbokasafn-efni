@@ -83,6 +83,7 @@ function parseArgs(args) {
     sourceDir: null,
     track: null,
     verbose: false,
+    allowIncomplete: false,
     help: false,
   };
 
@@ -90,6 +91,7 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
+    else if (arg === '--allow-incomplete') result.allowIncomplete = true;
     else if (arg === '--chapter' && args[i + 1]) {
       const chapterArg = args[++i];
       // Accept either numeric chapter or "appendices"
@@ -124,6 +126,7 @@ Options:
   --track <name>       Publication track: mt-preview, faithful, localized
                        (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
+  --allow-incomplete   Write output even if segments are missing (for diagnostics)
   -h, --help           Show this help
 
 Input Files (read from):
@@ -387,7 +390,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
 
   // Helper to get segment text
   const getSeg = (segmentId) => {
-    if (!segmentId) return null;
+    if (!segmentId) return '';
     stats.segmentsRequested++;
     const text = segments.get(segmentId);
     if (!text) {
@@ -395,7 +398,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
       if (verbose) {
         console.error(`Warning: Missing segment ${segmentId}`);
       }
-      return null;
+      return '';
     }
     stats.segmentsFound++;
     return reverseInlineMarkup(
@@ -1347,6 +1350,19 @@ async function main() {
       const result = buildCnxml(structure, segments, equations, originalCnxml, {
         verbose: args.verbose,
       });
+
+      if (!result.report.complete && !args.allowIncomplete) {
+        console.error(`${moduleId}: SKIPPED — incomplete injection`);
+        if (result.report.segmentsMissing.length > 0) {
+          console.error(`  Missing segments: ${result.report.segmentsMissing.length}`);
+        }
+        if (result.report.unresolvedMathPlaceholders.length > 0) {
+          console.error(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
+        }
+        console.error('  Use --allow-incomplete to write anyway');
+        process.exitCode = 1;
+        continue;
+      }
 
       const outputPath = writeOutput(args.chapter, moduleId, result.cnxml, track);
 

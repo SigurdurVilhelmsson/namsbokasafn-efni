@@ -60,7 +60,9 @@ describe('cnxml-inject', () => {
   });
 
   it('should inject a full chapter', () => {
-    run(`node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-machine-translated`);
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-machine-translated --allow-incomplete`
+    );
 
     const outputPath = join(BOOKS, '03-translated', 'mt-preview', 'ch01');
     const modules = ['m68663', 'm68664', 'm68667', 'm68670', 'm68674', 'm68683', 'm68690'];

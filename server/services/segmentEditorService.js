@@ -447,6 +447,28 @@ function applyApprovedEdits(book, chapter, moduleId) {
     if (anyApproved.count === 0) {
       throw new Error('No approved edits to apply for this module');
     }
+
+    // Check if faithful file actually exists — if not, allow re-application
+    const chDir = chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+    const faithfulPath = path.join(
+      BOOKS_DIR,
+      book,
+      '03-faithful-translation',
+      chDir,
+      `${moduleId}-segments.is.md`
+    );
+    if (!fs.existsSync(faithfulPath)) {
+      // File was deleted — reset applied_at so edits can be re-applied
+      conn
+        .prepare(
+          `UPDATE segment_edits SET applied_at = NULL
+           WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
+        )
+        .run(book, moduleId);
+      // Re-query to pick up the reset edits
+      return applyApprovedEdits(book, chapter, moduleId);
+    }
+
     throw new Error('All approved edits have already been applied');
   }
 
@@ -455,10 +477,14 @@ function applyApprovedEdits(book, chapter, moduleId) {
 
   // 3. Build approved-content lookup (latest approved edit per segment wins)
   const approvedLookup = {};
+  const supersededIds = [];
   for (const edit of approvedEdits) {
     // First edit per segment_id is the latest (ordered by reviewed_at DESC)
     if (!approvedLookup[edit.segment_id]) {
       approvedLookup[edit.segment_id] = edit;
+    } else {
+      // This is an older approved edit for the same segment — it loses
+      supersededIds.push(edit.id);
     }
   }
 
@@ -474,18 +500,45 @@ function applyApprovedEdits(book, chapter, moduleId) {
   // 5. Write to 03-faithful-translation/
   const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
 
-  // 6. Mark edits as applied
+  // 5b. Verify the file was actually written
+  if (!fs.existsSync(savedPath)) {
+    throw new Error(`Failed to write faithful file: ${savedPath}`);
+  }
+  const written = fs.readFileSync(savedPath, 'utf-8');
+  const appliedCount = Object.keys(approvedLookup).length;
+  if (written.length === 0) {
+    throw new Error(`Faithful file written but empty: ${savedPath}`);
+  }
+  // Verify at least one approved edit's content appears in the file
+  const sampleEdit = Object.values(approvedLookup)[0];
+  const sampleText = sampleEdit?.edited_content || '';
+  if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
+    console.error(
+      `Warning: Sample edit content not found in faithful file. ` +
+        `Segment ID format may not match. Edit segment_id: ${sampleEdit.segment_id}`
+    );
+  }
+
+  // 6. Mark winning edits as applied; mark superseded edits as rejected
+  const winnerIds = Object.values(approvedLookup).map((e) => e.id);
+
   const markApplied = conn.prepare(
     `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
   );
+  const markSuperseded = conn.prepare(
+    `UPDATE segment_edits SET status = 'rejected', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+  );
 
-  const markAll = conn.transaction((editIds) => {
-    for (const id of editIds) {
+  const markAll = conn.transaction(() => {
+    for (const id of winnerIds) {
       markApplied.run(id);
+    }
+    for (const id of supersededIds) {
+      markSuperseded.run(id);
     }
   });
 
-  markAll(approvedEdits.map((e) => e.id));
+  markAll();
 
   // Check if all modules in this chapter now have faithful translation files.
   // If so, auto-advance linguisticReview status to complete.
@@ -516,7 +569,8 @@ function applyApprovedEdits(book, chapter, moduleId) {
   }
 
   return {
-    appliedCount: Object.keys(approvedLookup).length,
+    appliedCount,
+    supersededCount: supersededIds.length,
     totalEditsMarked: approvedEdits.length,
     savedPath,
   };
