@@ -19,6 +19,17 @@
   },
   "overrides": [
     {
+      "files": ["server/public/**/*.js"],
+      "env": {
+        "browser": true,
+        "node": false,
+        "commonjs": false
+      },
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    },
+    {
       "files": ["server/**/*.js"],
       "parserOptions": {
         "sourceType": "script"

@@ -3,7 +3,7 @@
  * Handles navigation highlighting, admin visibility, and user info display
  */
 
-(function() {
+(function () {
   'use strict';
 
   /**
@@ -13,7 +13,7 @@
     const path = window.location.pathname;
     const navLinks = document.querySelectorAll('.header nav a');
 
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
       const href = link.getAttribute('href');
       link.classList.remove('active');
 
@@ -33,7 +33,7 @@
     const adminRoles = ['admin', 'head-editor'];
     const showAdmin = adminRoles.includes(role);
 
-    adminLinks.forEach(el => {
+    adminLinks.forEach((el) => {
       el.style.display = showAdmin ? '' : 'none';
     });
   }
@@ -57,16 +57,63 @@
   }
 
   /**
+   * Get cached auth data from sessionStorage, or null if stale/missing.
+   * Cache lives for 60 seconds to avoid hitting /api/auth/me on every page.
+   */
+  function getCachedAuth() {
+    try {
+      const raw = sessionStorage.getItem('authCache');
+      if (!raw) return null;
+      const cached = JSON.parse(raw);
+      if (Date.now() - cached.timestamp > 60 * 1000) {
+        sessionStorage.removeItem('authCache');
+        return null;
+      }
+      return cached.data;
+    } catch {
+      return null;
+    }
+  }
+
+  /**
    * Fetch user info and update navigation accordingly
    */
   async function initNavigation() {
     // Always highlight active nav first
     highlightActiveNav();
 
-    // Try to get user info
+    // Use cached auth data if available (avoids /api/auth/me on every page)
+    const cached = getCachedAuth();
+    if (cached) {
+      if (cached.authenticated && cached.user) {
+        updateUserInfo(cached.user);
+        updateAdminVisibility(cached.user.role);
+        window.currentUser = cached.user;
+        window.dispatchEvent(new CustomEvent('userLoaded', { detail: cached.user }));
+      } else {
+        updateUserInfo(null);
+        updateAdminVisibility(null);
+      }
+      return;
+    }
+
+    // Try to get user info from server
     try {
       const response = await fetch('/api/auth/me');
       const data = await response.json();
+
+      // Cache the response for 60 seconds
+      try {
+        sessionStorage.setItem(
+          'authCache',
+          JSON.stringify({
+            timestamp: Date.now(),
+            data: data,
+          })
+        );
+      } catch {
+        /* sessionStorage may be unavailable */
+      }
 
       if (data.authenticated && data.user) {
         updateUserInfo(data.user);
@@ -100,6 +147,6 @@
     highlightActiveNav,
     updateAdminVisibility,
     updateUserInfo,
-    initNavigation
+    initNavigation,
   };
 })();

@@ -178,8 +178,10 @@ app.use('/api/status', statusRoutes);
 app.use('/api/matecat', matecatRoutes);
 
 // Phase 2 API Routes
-// Apply stricter rate limiting to auth endpoints
-app.use('/api/auth', authLimiter, authRoutes);
+// Apply stricter rate limiting only to login/callback (not session checks like /me)
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/callback', authLimiter);
+app.use('/api/auth', authRoutes);
 app.use('/api/books', booksRoutes);
 app.use('/api/workflow', workflowRoutes);
 app.use('/api/issues', issuesRoutes);
