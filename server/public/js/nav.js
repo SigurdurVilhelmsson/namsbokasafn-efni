@@ -34,7 +34,7 @@
     const showAdmin = adminRoles.includes(role);
 
     adminLinks.forEach((el) => {
-      el.style.display = showAdmin ? '' : 'none';
+      el.style.display = showAdmin ? 'inline' : 'none';
     });
   }
 
