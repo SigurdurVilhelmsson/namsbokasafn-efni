@@ -11,9 +11,6 @@
  * - BLOCKED: Copyright concern, major error - cannot proceed
  */
 
-const fs = require('fs');
-const path = require('path');
-
 // Issue categories with their routing (detailed 4-tier for processing)
 const ISSUE_CATEGORIES = {
   AUTO_FIX: {
@@ -28,8 +25,8 @@ const ISSUE_CATEGORIES = {
       'line-ending',
       'known-typo',
       'double-space',
-      'nbsp-normalization'
-    ]
+      'nbsp-normalization',
+    ],
   },
   EDITOR_CONFIRM: {
     name: 'Editor Confirmation',
@@ -42,8 +39,8 @@ const ISSUE_CATEGORIES = {
       'minor-edit',
       'formatting-choice',
       'punctuation',
-      'capitalization'
-    ]
+      'capitalization',
+    ],
   },
   BOARD_REVIEW: {
     name: 'Editorial Board Review',
@@ -56,8 +53,8 @@ const ISSUE_CATEGORIES = {
       'localization-policy',
       'cultural-adaptation',
       'measurement-conversion',
-      'regional-reference'
-    ]
+      'regional-reference',
+    ],
   },
   BLOCKED: {
     name: 'Blocked',
@@ -65,14 +62,8 @@ const ISSUE_CATEGORIES = {
     action: 'halt',
     approver: 'manual',
     simpleTier: 'TEAM_DISCUSSION',
-    patterns: [
-      'copyright',
-      'major-error',
-      'unclear-source',
-      'missing-content',
-      'structural-issue'
-    ]
-  }
+    patterns: ['copyright', 'major-error', 'unclear-source', 'missing-content', 'structural-issue'],
+  },
 };
 
 // Simplified 2-tier categories for small teams
@@ -82,15 +73,15 @@ const SIMPLE_TIERS = {
     nameEn: 'Quick Fix',
     description: 'Ritstjóri leysir án umræðu',
     action: 'resolve',
-    categories: ['AUTO_FIX', 'EDITOR_CONFIRM']
+    categories: ['AUTO_FIX', 'EDITOR_CONFIRM'],
   },
   TEAM_DISCUSSION: {
     name: 'Umræða í hóp',
     nameEn: 'Team Discussion',
     description: 'Ræða á vikulegum fundi',
     action: 'discuss',
-    categories: ['BOARD_REVIEW', 'BLOCKED']
-  }
+    categories: ['BOARD_REVIEW', 'BLOCKED'],
+  },
 };
 
 /**
@@ -108,20 +99,20 @@ const ISSUE_PATTERNS = {
     regex: / +$/gm,
     category: 'AUTO_FIX',
     description: 'Trailing whitespace',
-    fix: () => ''
+    fix: () => '',
   },
   'double-space': {
     regex: /  +/g,
     category: 'AUTO_FIX',
     description: 'Multiple consecutive spaces',
     fix: () => ' ',
-    excludeInCode: true
+    excludeInCode: true,
   },
   'nbsp-normalization': {
     regex: /\u00A0/g,
     category: 'AUTO_FIX',
     description: 'Non-breaking space normalization',
-    fix: () => ' '
+    fix: () => ' ',
   },
 
   // Line ending issues (AUTO_FIX)
@@ -129,7 +120,7 @@ const ISSUE_PATTERNS = {
     regex: /\r\n/g,
     category: 'AUTO_FIX',
     description: 'Windows line endings',
-    fix: () => '\n'
+    fix: () => '\n',
   },
 
   // Known typos (AUTO_FIX)
@@ -139,11 +130,14 @@ const ISSUE_PATTERNS = {
     description: 'Common English typo',
     fix: (match) => {
       const fixes = {
-        'teh': 'the', 'hte': 'the',
-        'taht': 'that', 'adn': 'and', 'nad': 'and'
+        teh: 'the',
+        hte: 'the',
+        taht: 'that',
+        adn: 'and',
+        nad: 'and',
       };
       return fixes[match.toLowerCase()] || match;
-    }
+    },
   },
 
   // Icelandic-specific issues (EDITOR_CONFIRM)
@@ -170,9 +164,9 @@ const ISSUE_PATTERNS = {
     category: 'BOARD_REVIEW',
     description: 'Temperature in Fahrenheit - consider Celsius conversion',
     suggestion: (match, value) => {
-      const celsius = ((parseFloat(value) - 32) * 5/9).toFixed(1);
+      const celsius = (((parseFloat(value) - 32) * 5) / 9).toFixed(1);
       return celsius + ' °C (' + value + ' °F)';
-    }
+    },
   },
   'pounds-to-kg': {
     regex: /(\d+(?:\.\d+)?)\s*(pounds?|lbs?)\b/gi,
@@ -181,7 +175,7 @@ const ISSUE_PATTERNS = {
     suggestion: (match, value) => {
       const kg = (parseFloat(value) * 0.453592).toFixed(2);
       return kg + ' kg';
-    }
+    },
   },
   'miles-to-km': {
     regex: /(\d+(?:\.\d+)?)\s*miles?\b/gi,
@@ -190,7 +184,7 @@ const ISSUE_PATTERNS = {
     suggestion: (match, value) => {
       const km = (parseFloat(value) * 1.60934).toFixed(1);
       return km + ' km';
-    }
+    },
   },
   'gallons-to-liters': {
     regex: /(\d+(?:\.\d+)?)\s*gallons?\b/gi,
@@ -199,31 +193,31 @@ const ISSUE_PATTERNS = {
     suggestion: (match, value) => {
       const liters = (parseFloat(value) * 3.78541).toFixed(2);
       return liters + ' L';
-    }
+    },
   },
 
   // Cultural references (BOARD_REVIEW)
   'us-specific-reference': {
     regex: /\b(FDA|EPA|USDA|CDC|NIH|US\s+Department)\b/g,
     category: 'BOARD_REVIEW',
-    description: 'US-specific agency reference - consider Icelandic equivalent'
+    description: 'US-specific agency reference - consider Icelandic equivalent',
   },
   'dollar-amount': {
     regex: /\$\s*(\d+(?:,\d{3})*(?:\.\d{2})?)/g,
     category: 'BOARD_REVIEW',
-    description: 'Dollar amount - consider ISK conversion or removal'
+    description: 'Dollar amount - consider ISK conversion or removal',
   },
 
   // Potential errors (EDITOR_CONFIRM)
   'broken-link': {
     regex: /\[([^\]]+)\]\(\s*\)/g,
     category: 'EDITOR_CONFIRM',
-    description: 'Empty link URL'
+    description: 'Empty link URL',
   },
   'duplicate-word': {
-    regex: /\b(\w{4,}) \1\b/gi,  // Require 4+ chars and single space (not newlines) to reduce false positives
+    regex: /\b(\w{4,}) \1\b/gi, // Require 4+ chars and single space (not newlines) to reduce false positives
     category: 'EDITOR_CONFIRM',
-    description: 'Duplicate word'
+    description: 'Duplicate word',
   },
 
   // Structural issues (BLOCKED)
@@ -237,27 +231,27 @@ const ISSUE_PATTERNS = {
     regex: /\[EQUATION_\d+\]/g,
     category: 'EDITOR_CONFIRM',
     description: 'Equation placeholder - verify restoration',
-    requiresContext: true
-  }
+    requiresContext: true,
+  },
 };
 
 // Glossary terms that should be checked (would load from file in production)
 const GLOSSARY_TERMS = {
-  'atom': 'frumeind',
-  'molecule': 'sameind',
-  'electron': 'rafeind',
-  'proton': 'roteind',
-  'neutron': 'nifteind',
-  'nucleus': 'frumeindakjarni',
+  atom: 'frumeind',
+  molecule: 'sameind',
+  electron: 'rafeind',
+  proton: 'roteind',
+  neutron: 'nifteind',
+  nucleus: 'frumeindakjarni',
   'chemical bond': 'efnatengi',
   'covalent bond': 'samgildistengi',
   'ionic bond': 'jonatengi',
-  'mole': 'mol',
-  'molarity': 'molstyrkur',
-  'concentration': 'styrkur',
-  'solution': 'lausn',
-  'solvent': 'leysiefni',
-  'solute': 'leysisefni'
+  mole: 'mol',
+  molarity: 'molstyrkur',
+  concentration: 'styrkur',
+  solution: 'lausn',
+  solvent: 'leysiefni',
+  solute: 'leysisefni',
 };
 
 /**
@@ -272,7 +266,7 @@ const GLOSSARY_TERMS = {
  * @returns {Promise<object[]>} Array of classified issues
  */
 async function classifyIssues(content, options = {}) {
-  const { type, book, chapter, skipLocalization = false } = options;
+  const { type, skipLocalization = false } = options;
   const issues = [];
 
   // Check each pattern
@@ -299,7 +293,7 @@ async function classifyIssues(content, options = {}) {
         match: match[0],
         position: match.index,
         line: getLineNumber(content, match.index),
-        context: getContext(content, match.index, 50)
+        context: getContext(content, match.index, 50),
       };
 
       // Add suggestion if available
@@ -325,10 +319,10 @@ async function classifyIssues(content, options = {}) {
 
   // Sort by category priority (BLOCKED first, then BOARD_REVIEW, etc.)
   const categoryPriority = {
-    'BLOCKED': 0,
-    'BOARD_REVIEW': 1,
-    'EDITOR_CONFIRM': 2,
-    'AUTO_FIX': 3
+    BLOCKED: 0,
+    BOARD_REVIEW: 1,
+    EDITOR_CONFIRM: 2,
+    AUTO_FIX: 3,
   };
 
   issues.sort((a, b) => {
@@ -362,7 +356,7 @@ async function checkGlossaryTerms(content) {
         line: getLineNumber(content, match.index),
         context: getContext(content, match.index, 50),
         suggestion: icelandic,
-        glossaryTerm: true
+        glossaryTerm: true,
       });
     }
   }
@@ -378,7 +372,7 @@ async function checkGlossaryTerms(content) {
  * @returns {object} Fixed content and applied fixes
  */
 function applyAutoFixes(content, issues) {
-  const autoFixIssues = issues.filter(i => i.autoFixable && i.category === 'AUTO_FIX');
+  const autoFixIssues = issues.filter((i) => i.autoFixable && i.category === 'AUTO_FIX');
 
   // Sort by position descending so we can apply fixes without shifting indices
   autoFixIssues.sort((a, b) => b.position - a.position);
@@ -395,14 +389,14 @@ function applyAutoFixes(content, issues) {
       patternId: issue.patternId,
       original: issue.match,
       replacement: issue.fix,
-      line: issue.line
+      line: issue.line,
     });
   }
 
   return {
     content: fixedContent,
     fixesApplied: appliedFixes.length,
-    fixes: appliedFixes
+    fixes: appliedFixes,
   };
 }
 
@@ -415,11 +409,11 @@ function getIssueStats(issues) {
     byCategory: {},
     autoFixable: 0,
     requiresReview: 0,
-    blocked: 0
+    blocked: 0,
   };
 
   for (const category of Object.keys(ISSUE_CATEGORIES)) {
-    stats.byCategory[category] = issues.filter(i => i.category === category).length;
+    stats.byCategory[category] = issues.filter((i) => i.category === category).length;
   }
 
   stats.autoFixable = stats.byCategory['AUTO_FIX'] || 0;
@@ -461,20 +455,20 @@ function escapeRegex(string) {
  */
 const ESCALATION_RULES = {
   reviewPending: {
-    notice: 3,    // Days until notice level
-    warning: 5,   // Days until warning level
-    critical: 7   // Days until critical (auto-escalate)
+    notice: 3, // Days until notice level
+    warning: 5, // Days until warning level
+    critical: 7, // Days until critical (auto-escalate)
   },
   assignmentOverdue: {
-    notice: 0,    // Immediately on overdue
-    warning: 3,   // 3 days overdue
-    critical: 7   // 7 days overdue (auto-reassign candidate)
+    notice: 0, // Immediately on overdue
+    warning: 3, // 3 days overdue
+    critical: 7, // 7 days overdue (auto-reassign candidate)
   },
   blockedIssue: {
-    notice: 1,    // 1 day blocked
-    warning: 3,   // 3 days blocked
-    critical: 7   // 7 days blocked (requires immediate attention)
-  }
+    notice: 1, // 1 day blocked
+    warning: 3, // 3 days blocked
+    critical: 7, // 7 days blocked (requires immediate attention)
+  },
 };
 
 /**
@@ -514,8 +508,8 @@ function calculateEscalationLevel(startDate, ruleType = 'reviewPending') {
     targetDays: {
       notice: rules.notice,
       warning: rules.warning,
-      critical: rules.critical
-    }
+      critical: rules.critical,
+    },
   };
 }
 
@@ -527,7 +521,7 @@ function calculateEscalationLevel(startDate, ruleType = 'reviewPending') {
  * @returns {object[]} Items that should be escalated
  */
 function getItemsForEscalation(items, ruleType = 'reviewPending') {
-  return items.filter(item => {
+  return items.filter((item) => {
     const dateField = item.submittedAt || item.createdAt || item.assignedAt;
     if (!dateField) return false;
 
@@ -547,5 +541,5 @@ module.exports = {
   checkGlossaryTerms,
   getSimpleTier,
   calculateEscalationLevel,
-  getItemsForEscalation
+  getItemsForEscalation,
 };

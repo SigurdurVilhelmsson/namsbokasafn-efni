@@ -11,7 +11,6 @@
  */
 
 const https = require('https');
-const fs = require('fs');
 const path = require('path');
 
 // Configuration
@@ -19,7 +18,7 @@ const CONFIG = {
   owner: process.env.GITHUB_REPO_OWNER || 'namsbokasafn',
   repo: process.env.GITHUB_REPO_NAME || 'namsbokasafn-efni',
   baseBranch: process.env.GITHUB_BASE_BRANCH || 'main',
-  apiVersion: '2022-11-28'
+  apiVersion: '2022-11-28',
 };
 
 /**
@@ -74,7 +73,7 @@ class GitHubClient {
     const body = {
       message,
       content: encodedContent,
-      branch
+      branch,
     };
 
     if (sha) {
@@ -116,14 +115,10 @@ class GitHubClient {
     );
 
     // Create new branch
-    return this.request(
-      'POST',
-      `/repos/${CONFIG.owner}/${CONFIG.repo}/git/refs`,
-      {
-        ref: `refs/heads/${branchName}`,
-        sha: baseRef.object.sha
-      }
-    );
+    return this.request('POST', `/repos/${CONFIG.owner}/${CONFIG.repo}/git/refs`, {
+      ref: `refs/heads/${branchName}`,
+      sha: baseRef.object.sha,
+    });
   }
 
   /**
@@ -132,48 +127,36 @@ class GitHubClient {
   async createPullRequest(options) {
     const { title, body, head, base = CONFIG.baseBranch, draft = false } = options;
 
-    return this.request(
-      'POST',
-      `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls`,
-      {
-        title,
-        body,
-        head,
-        base,
-        draft
-      }
-    );
+    return this.request('POST', `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls`, {
+      title,
+      body,
+      head,
+      base,
+      draft,
+    });
   }
 
   /**
    * Get pull request status
    */
   async getPullRequest(prNumber) {
-    return this.request(
-      'GET',
-      `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls/${prNumber}`
-    );
+    return this.request('GET', `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls/${prNumber}`);
   }
 
   /**
    * List pull requests
    */
   async listPullRequests(state = 'open') {
-    return this.request(
-      'GET',
-      `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls?state=${state}`
-    );
+    return this.request('GET', `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls?state=${state}`);
   }
 
   /**
    * Add labels to a PR
    */
   async addLabels(prNumber, labels) {
-    return this.request(
-      'POST',
-      `/repos/${CONFIG.owner}/${CONFIG.repo}/issues/${prNumber}/labels`,
-      { labels }
-    );
+    return this.request('POST', `/repos/${CONFIG.owner}/${CONFIG.repo}/issues/${prNumber}/labels`, {
+      labels,
+    });
   }
 
   /**
@@ -191,10 +174,7 @@ class GitHubClient {
    * Get PR review status
    */
   async getPullRequestReviews(prNumber) {
-    return this.request(
-      'GET',
-      `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls/${prNumber}/reviews`
-    );
+    return this.request('GET', `/repos/${CONFIG.owner}/${CONFIG.repo}/pulls/${prNumber}/reviews`);
   }
 
   /**
@@ -206,7 +186,7 @@ class GitHubClient {
       mergeable: pr.mergeable,
       mergeableState: pr.mergeable_state,
       merged: pr.merged,
-      state: pr.state
+      state: pr.state,
     };
   }
 
@@ -220,11 +200,11 @@ class GitHubClient {
         path: endpoint,
         method,
         headers: {
-          'Authorization': `Bearer ${this.accessToken}`,
-          'Accept': 'application/vnd.github+json',
+          Authorization: `Bearer ${this.accessToken}`,
+          Accept: 'application/vnd.github+json',
           'X-GitHub-Api-Version': CONFIG.apiVersion,
-          'User-Agent': 'namsbokasafn-pipeline'
-        }
+          'User-Agent': 'namsbokasafn-pipeline',
+        },
       };
 
       if (body) {
@@ -233,7 +213,7 @@ class GitHubClient {
 
       const req = https.request(options, (res) => {
         let data = '';
-        res.on('data', chunk => data += chunk);
+        res.on('data', (chunk) => (data += chunk));
         res.on('end', () => {
           if (res.statusCode >= 400) {
             let errorMessage = 'GitHub API error: ' + res.statusCode;
@@ -308,7 +288,7 @@ async function createSyncPR(options) {
   const prBody = `## Translation Sync: ${book} Chapter ${chapter}
 
 ### Files Updated
-${files.map(f => '- `' + f.path + '`').join('\n')}
+${files.map((f) => '- `' + f.path + '`').join('\n')}
 
 ### Description
 ${description || 'Syncing approved translations from pipeline.'}
@@ -327,7 +307,7 @@ Via: Pipeline Automation System
     title: `[Sync] ${book} Chapter ${chapter} translations`,
     body: prBody,
     head: branchName,
-    base: CONFIG.baseBranch
+    base: CONFIG.baseBranch,
   });
 
   // Add labels
@@ -342,7 +322,7 @@ Via: Pipeline Automation System
     url: pr.html_url,
     branch: branchName,
     state: pr.state,
-    createdAt: pr.created_at
+    createdAt: pr.created_at,
   };
 }
 
@@ -358,7 +338,7 @@ function getConfigStatus() {
     configured: isConfigured(),
     owner: CONFIG.owner,
     repo: CONFIG.repo,
-    baseBranch: CONFIG.baseBranch
+    baseBranch: CONFIG.baseBranch,
   };
 }
 
@@ -367,5 +347,5 @@ module.exports = {
   createSyncPR,
   isConfigured,
   getConfigStatus,
-  CONFIG
+  CONFIG,
 };

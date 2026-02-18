@@ -20,7 +20,7 @@ const ROLES = {
   HEAD_EDITOR: 'head-editor',
   EDITOR: 'editor',
   CONTRIBUTOR: 'contributor',
-  VIEWER: 'viewer'
+  VIEWER: 'viewer',
 };
 
 const ROLE_HIERARCHY = {
@@ -28,7 +28,7 @@ const ROLE_HIERARCHY = {
   [ROLES.HEAD_EDITOR]: 4,
   [ROLES.EDITOR]: 3,
   [ROLES.CONTRIBUTOR]: 2,
-  [ROLES.VIEWER]: 1
+  [ROLES.VIEWER]: 1,
 };
 
 /**
@@ -48,7 +48,9 @@ function getDb() {
 function isUserTableReady() {
   const db = getDb();
   try {
-    const result = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='users'").get();
+    const result = db
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='users'")
+      .get();
     return !!result;
   } finally {
     db.close();
@@ -63,9 +65,13 @@ function findByGithubId(githubId) {
 
   const db = getDb();
   try {
-    const user = db.prepare(`
+    const user = db
+      .prepare(
+        `
       SELECT * FROM users WHERE github_id = ?
-    `).get(String(githubId));
+    `
+      )
+      .get(String(githubId));
 
     if (user) {
       user.bookAccess = getBookAccess(db, user.id);
@@ -85,9 +91,13 @@ function findByUsername(username) {
 
   const db = getDb();
   try {
-    const user = db.prepare(`
+    const user = db
+      .prepare(
+        `
       SELECT * FROM users WHERE github_username = ?
-    `).get(username.toLowerCase());
+    `
+      )
+      .get(username.toLowerCase());
 
     if (user) {
       user.bookAccess = getBookAccess(db, user.id);
@@ -107,9 +117,13 @@ function findById(id) {
 
   const db = getDb();
   try {
-    const user = db.prepare(`
+    const user = db
+      .prepare(
+        `
       SELECT * FROM users WHERE id = ?
-    `).get(id);
+    `
+      )
+      .get(id);
 
     if (user) {
       user.bookAccess = getBookAccess(db, user.id);
@@ -125,15 +139,19 @@ function findById(id) {
  * Get book access for a user
  */
 function getBookAccess(db, userId) {
-  const rows = db.prepare(`
+  const rows = db
+    .prepare(
+      `
     SELECT book_slug, role_for_book
     FROM user_book_access
     WHERE user_id = ?
-  `).all(userId);
+  `
+    )
+    .all(userId);
 
-  return rows.map(r => ({
+  return rows.map((r) => ({
     book: r.book_slug,
-    role: r.role_for_book
+    role: r.role_for_book,
   }));
 }
 
@@ -160,16 +178,24 @@ function listUsers(options = {}) {
       params.push(isActive ? 1 : 0);
     }
 
-    const total = db.prepare(`
+    const total = db
+      .prepare(
+        `
       SELECT COUNT(*) as count FROM users WHERE ${whereClause}
-    `).get(...params).count;
+    `
+      )
+      .get(...params).count;
 
-    const users = db.prepare(`
+    const users = db
+      .prepare(
+        `
       SELECT * FROM users
       WHERE ${whereClause}
       ORDER BY created_at DESC
       LIMIT ? OFFSET ?
-    `).all(...params, limit, offset);
+    `
+      )
+      .all(...params, limit, offset);
 
     // Add book access to each user
     for (const user of users) {
@@ -198,7 +224,7 @@ function createUser(userData, createdBy = null) {
       displayName,
       avatarUrl,
       email,
-      role = ROLES.VIEWER
+      role = ROLES.VIEWER,
     } = userData;
 
     // Validate role
@@ -206,18 +232,22 @@ function createUser(userData, createdBy = null) {
       throw new Error(`Invalid role: ${role}`);
     }
 
-    const result = db.prepare(`
+    const result = db
+      .prepare(
+        `
       INSERT INTO users (github_id, github_username, display_name, avatar_url, email, role, created_by)
       VALUES (?, ?, ?, ?, ?, ?, ?)
-    `).run(
-      String(githubId),
-      githubUsername.toLowerCase(),
-      displayName || githubUsername,
-      avatarUrl || '',
-      email || '',
-      role,
-      createdBy
-    );
+    `
+      )
+      .run(
+        String(githubId),
+        githubUsername.toLowerCase(),
+        displayName || githubUsername,
+        avatarUrl || '',
+        email || '',
+        role,
+        createdBy
+      );
 
     return findById(result.lastInsertRowid);
   } finally {
@@ -228,7 +258,7 @@ function createUser(userData, createdBy = null) {
 /**
  * Update user
  */
-function updateUser(id, updates, updatedBy = null) {
+function updateUser(id, updates, _updatedBy = null) {
   if (!isUserTableReady()) {
     throw new Error('User management not available - run migrations first');
   }
@@ -256,9 +286,11 @@ function updateUser(id, updates, updatedBy = null) {
     }
 
     params.push(id);
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE users SET ${setClause.join(', ')} WHERE id = ?
-    `).run(...params);
+    `
+    ).run(...params);
 
     return findById(id);
   } finally {
@@ -311,22 +343,27 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
     // Validate role
     const validBookRoles = [ROLES.HEAD_EDITOR, ROLES.EDITOR, ROLES.CONTRIBUTOR];
     if (!validBookRoles.includes(roleForBook)) {
-      throw new Error(`Invalid book role: ${roleForBook}. Must be one of: ${validBookRoles.join(', ')}`);
+      throw new Error(
+        `Invalid book role: ${roleForBook}. Must be one of: ${validBookRoles.join(', ')}`
+      );
     }
 
     // Upsert
-    db.prepare(`
+    db.prepare(
+      `
       INSERT INTO user_book_access (user_id, book_slug, role_for_book, assigned_by)
       VALUES (?, ?, ?, ?)
       ON CONFLICT(user_id, book_slug)
       DO UPDATE SET role_for_book = excluded.role_for_book, assigned_by = excluded.assigned_by, assigned_at = CURRENT_TIMESTAMP
-    `).run(userId, bookSlug, roleForBook, assignedBy);
+    `
+    ).run(userId, bookSlug, roleForBook, assignedBy);
 
     // Send notification (async, don't block)
     try {
       const notifications = require('./notifications');
-      notifications.notifyBookAccessAssigned(userId, bookSlug, roleForBook, assignedBy || 'kerfi')
-        .catch(err => console.error('Failed to send book access notification:', err.message));
+      notifications
+        .notifyBookAccessAssigned(userId, bookSlug, roleForBook, assignedBy || 'kerfi')
+        .catch((err) => console.error('Failed to send book access notification:', err.message));
     } catch (notifyErr) {
       console.error('Failed to notify book access:', notifyErr.message);
     }
@@ -347,9 +384,11 @@ function removeBookAccess(userId, bookSlug) {
 
   const db = getDb();
   try {
-    db.prepare(`
+    db.prepare(
+      `
       DELETE FROM user_book_access WHERE user_id = ? AND book_slug = ?
-    `).run(userId, bookSlug);
+    `
+    ).run(userId, bookSlug);
 
     return findById(userId);
   } finally {
@@ -365,9 +404,11 @@ function updateLastLogin(id) {
 
   const db = getDb();
   try {
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ?
-    `).run(id);
+    `
+    ).run(id);
   } finally {
     db.close();
   }
@@ -382,17 +423,23 @@ function upsertFromGitHub(githubUser, options = {}) {
 
   const db = getDb();
   try {
-    const existing = db.prepare(`
+    const existing = db
+      .prepare(
+        `
       SELECT * FROM users WHERE github_id = ?
-    `).get(String(githubUser.id));
+    `
+      )
+      .get(String(githubUser.id));
 
     if (existing) {
       // Update info but not role
-      db.prepare(`
+      db.prepare(
+        `
         UPDATE users
         SET display_name = ?, avatar_url = ?, email = ?, last_login_at = CURRENT_TIMESTAMP
         WHERE id = ?
-      `).run(
+      `
+      ).run(
         githubUser.name || githubUser.login,
         githubUser.avatar_url,
         githubUser.email || '',
@@ -409,17 +456,21 @@ function upsertFromGitHub(githubUser, options = {}) {
     }
 
     const defaultRole = options.defaultRole || ROLES.VIEWER;
-    const result = db.prepare(`
+    const result = db
+      .prepare(
+        `
       INSERT INTO users (github_id, github_username, display_name, avatar_url, email, role, last_login_at)
       VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-    `).run(
-      String(githubUser.id),
-      githubUser.login.toLowerCase(),
-      githubUser.name || githubUser.login,
-      githubUser.avatar_url,
-      githubUser.email || '',
-      defaultRole
-    );
+    `
+      )
+      .run(
+        String(githubUser.id),
+        githubUser.login.toLowerCase(),
+        githubUser.name || githubUser.login,
+        githubUser.avatar_url,
+        githubUser.email || '',
+        defaultRole
+      );
 
     return findById(result.lastInsertRowid);
   } finally {
@@ -438,7 +489,7 @@ function getEffectiveRole(user, bookSlug = null) {
 
   // Check book-specific role if book is specified
   if (bookSlug && user.bookAccess) {
-    const bookRole = user.bookAccess.find(ba => ba.book === bookSlug);
+    const bookRole = user.bookAccess.find((ba) => ba.book === bookSlug);
     if (bookRole) {
       // Use higher of base role and book role
       if (ROLE_HIERARCHY[bookRole.role] > ROLE_HIERARCHY[effectiveRole]) {
@@ -456,9 +507,7 @@ function getEffectiveRole(user, bookSlug = null) {
 function getHeadEditorBooks(user) {
   if (!user || !user.bookAccess) return [];
 
-  return user.bookAccess
-    .filter(ba => ba.role === ROLES.HEAD_EDITOR)
-    .map(ba => ba.book);
+  return user.bookAccess.filter((ba) => ba.role === ROLES.HEAD_EDITOR).map((ba) => ba.book);
 }
 
 module.exports = {
@@ -488,5 +537,5 @@ module.exports = {
   getEffectiveRole,
   getHeadEditorBooks,
   ROLES,
-  ROLE_HIERARCHY
+  ROLE_HIERARCHY,
 };

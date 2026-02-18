@@ -16,20 +16,24 @@ const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
 const auth = require('../services/auth');
-const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
+const { optionalAuth } = require('../middleware/requireAuth');
 
 // State tokens for CSRF protection (in production, use Redis or similar)
 const stateTokens = new Map();
 
 // Clean up expired state tokens every 5 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [token, data] of stateTokens) {
-    if (now - data.created > 10 * 60 * 1000) { // 10 minute expiry
-      stateTokens.delete(token);
+setInterval(
+  () => {
+    const now = Date.now();
+    for (const [token, data] of stateTokens) {
+      if (now - data.created > 10 * 60 * 1000) {
+        // 10 minute expiry
+        stateTokens.delete(token);
+      }
     }
-  }
-}, 5 * 60 * 1000);
+  },
+  5 * 60 * 1000
+);
 
 /**
  * GET /api/auth/status
@@ -50,7 +54,8 @@ router.get('/login', (req, res) => {
   if (!auth.isConfigured()) {
     return res.status(503).json({
       error: 'Authentication not configured',
-      message: 'GitHub OAuth credentials are not set. Set GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET environment variables.'
+      message:
+        'GitHub OAuth credentials are not set. Set GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET environment variables.',
     });
   }
 
@@ -58,7 +63,7 @@ router.get('/login', (req, res) => {
   const state = uuidv4();
   stateTokens.set(state, {
     created: Date.now(),
-    redirect: req.query.redirect || '/'
+    redirect: req.query.redirect || '/',
   });
 
   // Redirect to GitHub
@@ -81,7 +86,7 @@ router.get('/callback', async (req, res) => {
   if (error) {
     return res.status(400).json({
       error: 'GitHub authorization failed',
-      message: error_description || error
+      message: error_description || error,
     });
   }
 
@@ -89,7 +94,7 @@ router.get('/callback', async (req, res) => {
   if (!state || !stateTokens.has(state)) {
     return res.status(400).json({
       error: 'Invalid state token',
-      message: 'CSRF verification failed. Please try logging in again.'
+      message: 'CSRF verification failed. Please try logging in again.',
     });
   }
 
@@ -99,7 +104,7 @@ router.get('/callback', async (req, res) => {
   if (!code) {
     return res.status(400).json({
       error: 'Missing authorization code',
-      message: 'No authorization code received from GitHub'
+      message: 'No authorization code received from GitHub',
     });
   }
 
@@ -113,7 +118,7 @@ router.get('/callback', async (req, res) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      path: '/'
+      path: '/',
     });
 
     // Redirect to original destination
@@ -129,20 +134,19 @@ router.get('/callback', async (req, res) => {
           name: user.name,
           avatar: user.avatar,
           role: user.role,
-          books: user.books
+          books: user.books,
         },
-        redirect: redirectUrl
+        redirect: redirectUrl,
       });
     }
 
     // For browser requests, redirect
     res.redirect(redirectUrl);
-
   } catch (err) {
     console.error('Authentication error:', err);
     res.status(401).json({
       error: 'Authentication failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -155,7 +159,7 @@ router.get('/me', optionalAuth, (req, res) => {
   if (!req.user) {
     return res.json({
       authenticated: false,
-      loginUrl: '/api/auth/login'
+      loginUrl: '/api/auth/login',
     });
   }
 
@@ -167,8 +171,8 @@ router.get('/me', optionalAuth, (req, res) => {
       name: req.user.name,
       avatar: req.user.avatar,
       role: req.user.role,
-      books: req.user.books
-    }
+      books: req.user.books,
+    },
   });
 });
 
@@ -181,12 +185,12 @@ router.post('/logout', (req, res) => {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    path: '/'
+    path: '/',
   });
 
   res.json({
     success: true,
-    message: 'Logged out successfully'
+    message: 'Logged out successfully',
   });
 });
 
@@ -201,9 +205,9 @@ router.get('/roles', (req, res) => {
       { name: 'head-editor', description: 'Manage assigned books, approve content' },
       { name: 'editor', description: 'Review and approve content' },
       { name: 'contributor', description: 'Upload translations, report issues' },
-      { name: 'viewer', description: 'View status, download published content' }
+      { name: 'viewer', description: 'View status, download published content' },
     ],
-    note: 'Roles are determined by GitHub organization and team membership'
+    note: 'Roles are determined by GitHub organization and team membership',
   });
 });
 

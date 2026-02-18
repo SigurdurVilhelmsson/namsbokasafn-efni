@@ -21,7 +21,7 @@ const path = require('path');
 // Default configuration
 const DEFAULT_CONFIG = {
   baseUrl: 'https://www.matecat.com',
-  timeout: 30000
+  timeout: 30000,
 };
 
 /**
@@ -73,7 +73,7 @@ class MatecatClient {
       projectName,
       subject = 'general',
       tmKey,
-      pretranslate = false
+      pretranslate = false,
     } = options;
 
     if (!files || !sourceLang || !targetLang) {
@@ -110,18 +110,7 @@ class MatecatClient {
       parts.push(this._buildFileField('files', fileName, fileContent));
     }
 
-    // Build request body
-    const body = Buffer.concat([
-      ...parts.map(p => Buffer.from(`--${boundary}\r\n${p.header}\r\n\r\n`)),
-      ...parts.map((p, i) => Buffer.concat([
-        Buffer.from(`--${boundary}\r\n${p.header}\r\n\r\n`),
-        p.content,
-        Buffer.from('\r\n')
-      ])),
-      Buffer.from(`--${boundary}--\r\n`)
-    ].flat().filter(Boolean));
-
-    // Properly build multipart body
+    // Build multipart body
     const bodyParts = [];
     for (const part of parts) {
       bodyParts.push(Buffer.from(`--${boundary}\r\n`));
@@ -134,7 +123,7 @@ class MatecatClient {
 
     return this._request('POST', '/api/new', requestBody, {
       'Content-Type': `multipart/form-data; boundary=${boundary}`,
-      'Content-Length': requestBody.length
+      'Content-Length': requestBody.length,
     });
   }
 
@@ -148,7 +137,7 @@ class MatecatClient {
   async getStatus(idProject, password) {
     const params = new URLSearchParams({
       id_project: idProject,
-      project_pass: password
+      project_pass: password,
     });
 
     return this._request('GET', `/api/status?${params}`);
@@ -164,7 +153,7 @@ class MatecatClient {
   async getStats(idJob, password) {
     const params = new URLSearchParams({
       id_job: idJob,
-      project_pass: password
+      project_pass: password,
     });
 
     return this._request('GET', `/api/stats?${params}`);
@@ -180,7 +169,7 @@ class MatecatClient {
   async getUrls(idJob, password) {
     const params = new URLSearchParams({
       id_job: idJob,
-      password: password
+      password: password,
     });
 
     return this._request('GET', `/api/url?${params}`);
@@ -230,15 +219,11 @@ class MatecatClient {
    * @returns {Promise<object>} Final status
    */
   async pollUntilDone(idProject, password, options = {}) {
-    const {
-      interval = 5000,
-      timeout = 3600000,
-      onProgress
-    } = options;
+    const { interval = 5000, timeout = 3600000, onProgress } = options;
 
     const startTime = Date.now();
 
-    while (true) {
+    for (;;) {
       const status = await this.getStatus(idProject, password);
 
       if (onProgress) {
@@ -276,15 +261,11 @@ class MatecatClient {
    * @returns {Promise<object>} Final stats
    */
   async pollJobUntilComplete(idJob, password, options = {}) {
-    const {
-      interval = 10000,
-      timeout = 86400000,
-      onProgress
-    } = options;
+    const { interval = 10000, timeout = 86400000, onProgress } = options;
 
     const startTime = Date.now();
 
-    while (true) {
+    for (;;) {
       const stats = await this.getStats(idJob, password);
 
       if (onProgress) {
@@ -316,7 +297,7 @@ class MatecatClient {
   _buildFormField(name, value) {
     return {
       header: `Content-Disposition: form-data; name="${name}"`,
-      content: Buffer.from(String(value))
+      content: Buffer.from(String(value)),
     };
   }
 
@@ -324,7 +305,7 @@ class MatecatClient {
     const mimeType = this._getMimeType(filename);
     return {
       header: `Content-Disposition: form-data; name="${name}"; filename="${filename}"\r\nContent-Type: ${mimeType}`,
-      content: Buffer.isBuffer(content) ? content : Buffer.from(content)
+      content: Buffer.isBuffer(content) ? content : Buffer.from(content),
     };
   }
 
@@ -339,7 +320,7 @@ class MatecatClient {
       '.html': 'text/html',
       '.htm': 'text/html',
       '.json': 'application/json',
-      '.md': 'text/markdown'
+      '.md': 'text/markdown',
     };
     return mimeTypes[ext] || 'application/octet-stream';
   }
@@ -354,15 +335,15 @@ class MatecatClient {
         timeout: this.timeout,
         headers: {
           'x-matecat-key': this.apiKey,
-          'Accept': 'application/json',
-          ...additionalHeaders
-        }
+          Accept: 'application/json',
+          ...additionalHeaders,
+        },
       };
 
       const req = this.protocol.request(options, (res) => {
         let data = '';
 
-        res.on('data', chunk => data += chunk);
+        res.on('data', (chunk) => (data += chunk));
 
         res.on('end', () => {
           try {
@@ -412,40 +393,40 @@ class MatecatClient {
 
       const file = fs.createWriteStream(outputPath);
 
-      protocol.get(url, (response) => {
-        if (response.statusCode === 301 || response.statusCode === 302) {
-          // Handle redirect
-          this._downloadFile(response.headers.location, outputPath)
-            .then(resolve)
-            .catch(reject);
-          return;
-        }
+      protocol
+        .get(url, (response) => {
+          if (response.statusCode === 301 || response.statusCode === 302) {
+            // Handle redirect
+            this._downloadFile(response.headers.location, outputPath).then(resolve).catch(reject);
+            return;
+          }
 
-        if (response.statusCode !== 200) {
-          reject(new Error(`Download failed: HTTP ${response.statusCode}`));
-          return;
-        }
+          if (response.statusCode !== 200) {
+            reject(new Error(`Download failed: HTTP ${response.statusCode}`));
+            return;
+          }
 
-        response.pipe(file);
+          response.pipe(file);
 
-        file.on('finish', () => {
-          file.close();
-          resolve(outputPath);
-        });
+          file.on('finish', () => {
+            file.close();
+            resolve(outputPath);
+          });
 
-        file.on('error', (err) => {
+          file.on('error', (err) => {
+            fs.unlink(outputPath, () => {}); // Delete partial file
+            reject(err);
+          });
+        })
+        .on('error', (err) => {
           fs.unlink(outputPath, () => {}); // Delete partial file
           reject(err);
         });
-      }).on('error', (err) => {
-        fs.unlink(outputPath, () => {}); // Delete partial file
-        reject(err);
-      });
     });
   }
 
   _sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
 
@@ -467,7 +448,7 @@ function createClientFromEnv() {
 
   return new MatecatClient({
     apiKey,
-    baseUrl: baseUrl || undefined
+    baseUrl: baseUrl || undefined,
   });
 }
 
@@ -490,7 +471,7 @@ async function createTranslationProject(xliffPath, sourceLang, targetLang, optio
     projectName: options.projectName,
     subject: options.subject,
     tmKey: options.tmKey,
-    pretranslate: options.pretranslate
+    pretranslate: options.pretranslate,
   });
 
   return {
@@ -498,7 +479,7 @@ async function createTranslationProject(xliffPath, sourceLang, targetLang, optio
     password: result.project_pass,
     jobs: result.jobs || [],
     analyzeUrl: result.analyze_url,
-    raw: result
+    raw: result,
   };
 }
 
@@ -521,7 +502,7 @@ module.exports = {
     SWEDISH: 'sv-SE',
     GERMAN: 'de-DE',
     FRENCH: 'fr-FR',
-    SPANISH: 'es-ES'
+    SPANISH: 'es-ES',
   },
 
   // Subject codes
@@ -532,6 +513,6 @@ module.exports = {
     TECHNICAL: 'technical_documentation',
     MARKETING: 'marketing_advertising',
     EDUCATION: 'education_training',
-    SCIENCE: 'science'
-  }
+    SCIENCE: 'science',
+  },
 };

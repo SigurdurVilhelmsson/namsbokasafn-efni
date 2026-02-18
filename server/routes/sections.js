@@ -17,7 +17,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, requireHeadEditor, ROLES } = require('../middleware/requireRole');
+const { requireRole, ROLES } = require('../middleware/requireRole');
 const bookRegistration = require('../services/bookRegistration');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
@@ -38,13 +38,25 @@ const storage = multer.diskStorage({
 
     switch (req.params.uploadType) {
       case 'mt':
-        uploadDir = path.join(bookDir, '02-mt-output', `ch${String(section.chapterNum).padStart(2, '0')}`);
+        uploadDir = path.join(
+          bookDir,
+          '02-mt-output',
+          `ch${String(section.chapterNum).padStart(2, '0')}`
+        );
         break;
       case 'faithful':
-        uploadDir = path.join(bookDir, '03-faithful-translation', `ch${String(section.chapterNum).padStart(2, '0')}`);
+        uploadDir = path.join(
+          bookDir,
+          '03-faithful-translation',
+          `ch${String(section.chapterNum).padStart(2, '0')}`
+        );
         break;
       case 'localized':
-        uploadDir = path.join(bookDir, '04-localized-content', `ch${String(section.chapterNum).padStart(2, '0')}`);
+        uploadDir = path.join(
+          bookDir,
+          '04-localized-content',
+          `ch${String(section.chapterNum).padStart(2, '0')}`
+        );
         break;
       default:
         return cb(new Error('Invalid upload type'));
@@ -59,7 +71,7 @@ const storage = multer.diskStorage({
     const section = req.sectionData;
     const sectionNum = section.sectionNum.replace('.', '-');
     cb(null, `${sectionNum}.is.md`);
-  }
+  },
 });
 
 const upload = multer({
@@ -72,7 +84,7 @@ const upload = multer({
     } else {
       cb(new Error('Only markdown (.md) files are allowed'));
     }
-  }
+  },
 });
 
 // Middleware to load section data before upload
@@ -84,7 +96,7 @@ function loadSection(req, res, next) {
     if (!section) {
       return res.status(404).json({
         error: 'Section not found',
-        message: `No section with ID ${sectionId}`
+        message: `No section with ID ${sectionId}`,
       });
     }
     req.sectionData = section;
@@ -93,7 +105,7 @@ function loadSection(req, res, next) {
     console.error('Load section error:', err);
     res.status(500).json({
       error: 'Failed to load section',
-      message: err.message
+      message: err.message,
     });
   }
 }
@@ -115,7 +127,7 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res
     if (!section) {
       return res.status(404).json({
         error: 'Section not found',
-        message: `No section with ID ${sectionId}`
+        message: `No section with ID ${sectionId}`,
       });
     }
 
@@ -124,7 +136,7 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res
     console.error('Get section error:', err);
     res.status(500).json({
       error: 'Failed to get section',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -150,13 +162,17 @@ router.post(
     const { uploadType } = req.params;
 
     // MT re-upload requires HEAD_EDITOR
-    if (uploadType === 'mt' && section.status !== 'not_started' && section.status !== 'mt_pending') {
+    if (
+      uploadType === 'mt' &&
+      section.status !== 'not_started' &&
+      section.status !== 'mt_pending'
+    ) {
       if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
         return res.status(403).json({
           error: 'Re-upload restricted',
           message: 'Re-uploading MT translation requires head editor or admin role',
           currentStatus: section.status,
-          yourRole: req.user.role
+          yourRole: req.user.role,
         });
       }
     }
@@ -167,7 +183,7 @@ router.post(
         return res.status(403).json({
           error: 'Re-upload restricted',
           message: 'Re-uploading approved translation requires head editor or admin role',
-          currentStatus: section.status
+          currentStatus: section.status,
         });
       }
     }
@@ -182,14 +198,14 @@ router.post(
     if (!req.file) {
       return res.status(400).json({
         error: 'No file uploaded',
-        message: 'Please upload a markdown file'
+        message: 'Please upload a markdown file',
       });
     }
 
     try {
       // Update section status and path based on upload type
       let newStatus;
-      let updates = {};
+      const updates = {};
 
       switch (uploadType) {
         case 'mt':
@@ -233,8 +249,8 @@ router.post(
           filename: req.file.originalname,
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
-          book: section.bookSlug
-        }
+          book: section.bookSlug,
+        },
       });
 
       res.json({
@@ -243,19 +259,19 @@ router.post(
         section: {
           id: section.id,
           sectionNum: section.sectionNum,
-          status: newStatus || section.status
+          status: newStatus || section.status,
         },
         file: {
           name: req.file.filename,
           path: req.file.path,
-          size: req.file.size
-        }
+          size: req.file.size,
+        },
       });
     } catch (err) {
       console.error('Upload error:', err);
       res.status(500).json({
         error: 'Failed to process upload',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -285,7 +301,7 @@ router.post(
     if (!reviewerId || !reviewerName) {
       return res.status(400).json({
         error: 'Missing parameters',
-        message: 'reviewerId and reviewerName are required'
+        message: 'reviewerId and reviewerName are required',
       });
     }
 
@@ -295,7 +311,7 @@ router.post(
       return res.status(400).json({
         error: 'Invalid status',
         message: `Cannot assign reviewer to section in status '${section.status}'`,
-        requiredStatuses: validStatuses
+        requiredStatuses: validStatuses,
       });
     }
 
@@ -308,7 +324,7 @@ router.post(
         type: 'assignment',
         title: 'Ný yfirferð úthlutað',
         message: `Þú hefur verið úthlutað yfirferð á kafla ${section.sectionNum} í ${section.bookTitleIs}`,
-        link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}`
+        link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}`,
       });
 
       // Log activity
@@ -323,8 +339,8 @@ router.post(
           reviewerName,
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
-          book: section.bookSlug
-        }
+          book: section.bookSlug,
+        },
       });
 
       res.json({
@@ -334,14 +350,14 @@ router.post(
           id: section.id,
           status: 'review_assigned',
           linguisticReviewer: reviewerId,
-          linguisticReviewerName: reviewerName
-        }
+          linguisticReviewerName: reviewerName,
+        },
       });
     } catch (err) {
       console.error('Assign reviewer error:', err);
       res.status(500).json({
         error: 'Failed to assign reviewer',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -367,7 +383,7 @@ router.post(
     if (!localizerId || !localizerName) {
       return res.status(400).json({
         error: 'Missing parameters',
-        message: 'localizerId and localizerName are required'
+        message: 'localizerId and localizerName are required',
       });
     }
 
@@ -377,7 +393,7 @@ router.post(
       return res.status(400).json({
         error: 'Invalid status',
         message: `Cannot assign localizer to section in status '${section.status}'`,
-        requiredStatuses: validStatuses
+        requiredStatuses: validStatuses,
       });
     }
 
@@ -390,7 +406,7 @@ router.post(
         type: 'assignment',
         title: 'Ný staðfæring úthlutað',
         message: `Þú hefur verið úthlutað staðfæringu á kafla ${section.sectionNum} í ${section.bookTitleIs}`,
-        link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}&mode=localization`
+        link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}&mode=localization`,
       });
 
       // Log activity
@@ -405,8 +421,8 @@ router.post(
           localizerName,
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
-          book: section.bookSlug
-        }
+          book: section.bookSlug,
+        },
       });
 
       res.json({
@@ -416,14 +432,14 @@ router.post(
           id: section.id,
           status: 'localization_assigned',
           localizer: localizerId,
-          localizerName: localizerName
-        }
+          localizerName: localizerName,
+        },
       });
     } catch (err) {
       console.error('Assign localizer error:', err);
       res.status(500).json({
         error: 'Failed to assign localizer',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -453,26 +469,26 @@ router.post(
     if (!status) {
       return res.status(400).json({
         error: 'Missing status',
-        message: 'status is required'
+        message: 'status is required',
       });
     }
 
     // Define valid transitions
     const validTransitions = {
-      'not_started': ['mt_pending'],
-      'mt_pending': ['mt_uploaded', 'not_started'],
-      'mt_uploaded': ['review_assigned'],
-      'review_assigned': ['review_in_progress'],
-      'review_in_progress': ['review_submitted', 'review_assigned'],
-      'review_submitted': ['review_approved', 'review_in_progress'],
-      'review_approved': ['faithful_published', 'tm_created', 'localization_assigned'],
-      'faithful_published': ['localization_assigned', 'tm_created'],
-      'tm_created': ['localization_assigned'],
-      'localization_assigned': ['localization_in_progress'],
-      'localization_in_progress': ['localization_submitted', 'localization_assigned'],
-      'localization_submitted': ['localization_approved', 'localization_in_progress'],
-      'localization_approved': ['localized_published'],
-      'localized_published': []
+      not_started: ['mt_pending'],
+      mt_pending: ['mt_uploaded', 'not_started'],
+      mt_uploaded: ['review_assigned'],
+      review_assigned: ['review_in_progress'],
+      review_in_progress: ['review_submitted', 'review_assigned'],
+      review_submitted: ['review_approved', 'review_in_progress'],
+      review_approved: ['faithful_published', 'tm_created', 'localization_assigned'],
+      faithful_published: ['localization_assigned', 'tm_created'],
+      tm_created: ['localization_assigned'],
+      localization_assigned: ['localization_in_progress'],
+      localization_in_progress: ['localization_submitted', 'localization_assigned'],
+      localization_submitted: ['localization_approved', 'localization_in_progress'],
+      localization_approved: ['localized_published'],
+      localized_published: [],
     };
 
     const allowedNext = validTransitions[section.status] || [];
@@ -481,7 +497,7 @@ router.post(
         error: 'Invalid transition',
         message: `Cannot transition from '${section.status}' to '${status}'`,
         currentStatus: section.status,
-        allowedTransitions: allowedNext
+        allowedTransitions: allowedNext,
       });
     }
 
@@ -491,7 +507,7 @@ router.post(
       if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
         return res.status(403).json({
           error: 'Insufficient permissions',
-          message: `Status '${status}' requires head editor or admin role`
+          message: `Status '${status}' requires head editor or admin role`,
         });
       }
     }
@@ -512,8 +528,8 @@ router.post(
           notes,
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
-          book: section.bookSlug
-        }
+          book: section.bookSlug,
+        },
       });
 
       res.json({
@@ -522,14 +538,14 @@ router.post(
         section: {
           id: section.id,
           previousStatus: section.status,
-          status
-        }
+          status,
+        },
       });
     } catch (err) {
       console.error('Update status error:', err);
       res.status(500).json({
         error: 'Failed to update status',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -551,7 +567,7 @@ router.post(
     if (section.status !== 'review_in_progress') {
       return res.status(400).json({
         error: 'Invalid status',
-        message: `Cannot submit review from status '${section.status}'`
+        message: `Cannot submit review from status '${section.status}'`,
       });
     }
 
@@ -559,7 +575,7 @@ router.post(
     if (section.linguisticReviewer !== req.user.id && req.user.role !== ROLES.ADMIN) {
       return res.status(403).json({
         error: 'Not assigned',
-        message: 'Only the assigned reviewer can submit this section'
+        message: 'Only the assigned reviewer can submit this section',
       });
     }
 
@@ -578,8 +594,8 @@ router.post(
         details: {
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
-          book: section.bookSlug
-        }
+          book: section.bookSlug,
+        },
       });
 
       res.json({
@@ -587,14 +603,14 @@ router.post(
         message: 'Review submitted for approval',
         section: {
           id: section.id,
-          status: 'review_submitted'
-        }
+          status: 'review_submitted',
+        },
       });
     } catch (err) {
       console.error('Submit review error:', err);
       res.status(500).json({
         error: 'Failed to submit review',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -615,14 +631,14 @@ router.post(
     if (section.status !== 'review_submitted') {
       return res.status(400).json({
         error: 'Invalid status',
-        message: `Cannot approve review from status '${section.status}'`
+        message: `Cannot approve review from status '${section.status}'`,
       });
     }
 
     try {
       bookRegistration.updateSectionStatus(section.id, 'review_approved', {
         linguisticApprovedBy: req.user.id,
-        linguisticApprovedByName: req.user.name
+        linguisticApprovedByName: req.user.name,
       });
 
       // Notify the reviewer
@@ -632,7 +648,7 @@ router.post(
           type: 'approval',
           title: 'Yfirferð samþykkt',
           message: `Yfirferð þín á kafla ${section.sectionNum} hefur verið samþykkt`,
-          link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}`
+          link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}`,
         });
       }
 
@@ -646,8 +662,8 @@ router.post(
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
           book: section.bookSlug,
-          reviewer: section.linguisticReviewerName
-        }
+          reviewer: section.linguisticReviewerName,
+        },
       });
 
       res.json({
@@ -655,14 +671,14 @@ router.post(
         message: 'Review approved',
         section: {
           id: section.id,
-          status: 'review_approved'
-        }
+          status: 'review_approved',
+        },
       });
     } catch (err) {
       console.error('Approve review error:', err);
       res.status(500).json({
         error: 'Failed to approve review',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -687,28 +703,26 @@ router.post(
     if (!notes) {
       return res.status(400).json({
         error: 'Missing notes',
-        message: 'Feedback notes are required when requesting changes'
+        message: 'Feedback notes are required when requesting changes',
       });
     }
 
     if (section.status !== 'review_submitted' && section.status !== 'localization_submitted') {
       return res.status(400).json({
         error: 'Invalid status',
-        message: `Cannot request changes from status '${section.status}'`
+        message: `Cannot request changes from status '${section.status}'`,
       });
     }
 
     try {
-      const newStatus = section.status === 'review_submitted'
-        ? 'review_in_progress'
-        : 'localization_in_progress';
+      const newStatus =
+        section.status === 'review_submitted' ? 'review_in_progress' : 'localization_in_progress';
 
       bookRegistration.updateSectionStatus(section.id, newStatus);
 
       // Notify the reviewer/localizer
-      const assignedUserId = section.status === 'review_submitted'
-        ? section.linguisticReviewer
-        : section.localizer;
+      const assignedUserId =
+        section.status === 'review_submitted' ? section.linguisticReviewer : section.localizer;
 
       if (assignedUserId) {
         await notifications.create({
@@ -716,7 +730,7 @@ router.post(
           type: 'changes_requested',
           title: 'Breytingar óskast',
           message: `Breytingar óskast á kafla ${section.sectionNum}: ${notes.substring(0, 100)}...`,
-          link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}`
+          link: `/editor?book=${section.bookSlug}&chapter=${section.chapterNum}&section=${section.sectionNum}`,
         });
       }
 
@@ -730,8 +744,8 @@ router.post(
           sectionNum: section.sectionNum,
           chapterNum: section.chapterNum,
           book: section.bookSlug,
-          notes
-        }
+          notes,
+        },
       });
 
       res.json({
@@ -739,14 +753,14 @@ router.post(
         message: 'Changes requested',
         section: {
           id: section.id,
-          status: newStatus
-        }
+          status: newStatus,
+        },
       });
     } catch (err) {
       console.error('Request changes error:', err);
       res.status(500).json({
         error: 'Failed to request changes',
-        message: err.message
+        message: err.message,
       });
     }
   }

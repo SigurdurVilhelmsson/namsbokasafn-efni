@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     const uniqueName = `${Date.now()}-${file.originalname}`;
     cb(null, uniqueName);
-  }
+  },
 });
 
 const upload = multer({
@@ -47,7 +47,7 @@ const upload = multer({
     } else {
       cb(new Error(`File type ${ext} not supported. Allowed: ${allowedExts.join(', ')}`));
     }
-  }
+  },
 });
 
 // In-memory storage for project tracking (could be Redis/DB in production)
@@ -67,20 +67,20 @@ function getClient(req, res, next) {
   if (!apiKey) {
     return res.status(401).json({
       error: 'API key required',
-      message: 'Provide MATECAT_API_KEY env var or x-matecat-key header'
+      message: 'Provide MATECAT_API_KEY env var or x-matecat-key header',
     });
   }
 
   try {
     req.matecat = new MatecatClient({
       apiKey,
-      baseUrl: baseUrl || undefined
+      baseUrl: baseUrl || undefined,
     });
     next();
   } catch (err) {
     res.status(500).json({
       error: 'Failed to create Matecat client',
-      message: err.message
+      message: err.message,
     });
   }
 }
@@ -102,17 +102,14 @@ router.get('/', (req, res) => {
       'GET /api/matecat/projects/:id/status': 'Get project status',
       'GET /api/matecat/jobs/:id/stats': 'Get job translation statistics',
       'GET /api/matecat/jobs/:id/download': 'Download translated file',
-      'GET /api/matecat/config': 'Check API configuration status'
+      'GET /api/matecat/config': 'Check API configuration status',
     },
     authentication: {
-      methods: [
-        'x-matecat-key header',
-        'MATECAT_API_KEY environment variable'
-      ],
-      note: 'Get your API key from your Matecat profile settings'
+      methods: ['x-matecat-key header', 'MATECAT_API_KEY environment variable'],
+      note: 'Get your API key from your Matecat profile settings',
     },
     languages: LANGUAGE_CODES,
-    subjects: SUBJECTS
+    subjects: SUBJECTS,
   });
 });
 
@@ -127,9 +124,9 @@ router.get('/config', (req, res) => {
 
   res.json({
     configured: hasEnvKey || hasHeaderKey,
-    source: hasHeaderKey ? 'header' : (hasEnvKey ? 'environment' : 'none'),
+    source: hasHeaderKey ? 'header' : hasEnvKey ? 'environment' : 'none',
     baseUrl,
-    selfHosted: baseUrl !== 'https://www.matecat.com'
+    selfHosted: baseUrl !== 'https://www.matecat.com',
   });
 });
 
@@ -150,7 +147,7 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({
       error: 'No file uploaded',
-      message: 'Please upload a file for translation'
+      message: 'Please upload a file for translation',
     });
   }
 
@@ -161,7 +158,7 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
     fs.unlinkSync(req.file.path);
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'sourceLang and targetLang are required'
+      message: 'sourceLang and targetLang are required',
     });
   }
 
@@ -173,7 +170,7 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
       projectName: projectName || `Pipeline_${Date.now()}`,
       subject: subject || 'general',
       tmKey,
-      pretranslate: pretranslate === 'true' || pretranslate === true
+      pretranslate: pretranslate === 'true' || pretranslate === true,
     });
 
     // Store project info
@@ -187,7 +184,7 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
       sourceFile: req.file.originalname,
       createdAt: new Date().toISOString(),
       jobs: result.jobs || [],
-      analyzeUrl: result.analyze_url
+      analyzeUrl: result.analyze_url,
     });
 
     // Clean up uploaded file
@@ -199,22 +196,21 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
         id: projectId,
         password: result.project_pass,
         analyzeUrl: result.analyze_url,
-        jobs: (result.jobs || []).map(job => ({
+        jobs: (result.jobs || []).map((job) => ({
           id: job.id,
           password: job.password,
           sourceLang: job.source,
-          targetLang: job.target
-        }))
+          targetLang: job.target,
+        })),
       },
       links: {
         status: `/api/matecat/projects/${projectId}/status?password=${result.project_pass}`,
-        jobs: (result.jobs || []).map(job => ({
+        jobs: (result.jobs || []).map((job) => ({
           stats: `/api/matecat/jobs/${job.id}/stats?password=${job.password}`,
-          download: `/api/matecat/jobs/${job.id}/download?password=${job.password}`
-        }))
-      }
+          download: `/api/matecat/jobs/${job.id}/download?password=${job.password}`,
+        })),
+      },
     });
-
   } catch (err) {
     // Clean up uploaded file on error
     if (req.file && fs.existsSync(req.file.path)) {
@@ -225,7 +221,7 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
     res.status(err.statusCode || 500).json({
       error: 'Failed to create project',
       message: err.message,
-      details: err.response || null
+      details: err.response || null,
     });
   }
 });
@@ -244,7 +240,7 @@ router.get('/projects/:id/status', getClient, async (req, res) => {
   if (!password) {
     return res.status(400).json({
       error: 'Missing password',
-      message: 'Project password is required as query parameter'
+      message: 'Project password is required as query parameter',
     });
   }
 
@@ -261,21 +257,25 @@ router.get('/projects/:id/status', getClient, async (req, res) => {
     res.json({
       projectId: id,
       status: status.status,
-      message: status.status === 'ANALYZING' ? 'Project is being analyzed' :
-               status.status === 'DONE' ? 'Analysis complete, ready for translation' :
-               status.status === 'FAIL' ? 'Analysis failed' : 'Unknown status',
+      message:
+        status.status === 'ANALYZING'
+          ? 'Project is being analyzed'
+          : status.status === 'DONE'
+            ? 'Analysis complete, ready for translation'
+            : status.status === 'FAIL'
+              ? 'Analysis failed'
+              : 'Unknown status',
       details: {
         jobs: status.jobs || [],
-        summary: status.summary || null
+        summary: status.summary || null,
       },
-      raw: status
+      raw: status,
     });
-
   } catch (err) {
     console.error('Matecat status error:', err);
     res.status(err.statusCode || 500).json({
       error: 'Failed to get status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -294,7 +294,7 @@ router.get('/jobs/:id/stats', getClient, async (req, res) => {
   if (!password) {
     return res.status(400).json({
       error: 'Missing password',
-      message: 'Job password is required as query parameter'
+      message: 'Job password is required as query parameter',
     });
   }
 
@@ -318,17 +318,16 @@ router.get('/jobs/:id/stats', getClient, async (req, res) => {
         draft,
         translated,
         approved,
-        rejected
+        rejected,
       },
       isComplete: progress === 100,
-      raw: stats
+      raw: stats,
     });
-
   } catch (err) {
     console.error('Matecat stats error:', err);
     res.status(err.statusCode || 500).json({
       error: 'Failed to get stats',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -347,7 +346,7 @@ router.get('/jobs/:id/urls', getClient, async (req, res) => {
   if (!password) {
     return res.status(400).json({
       error: 'Missing password',
-      message: 'Job password is required as query parameter'
+      message: 'Job password is required as query parameter',
     });
   }
 
@@ -359,15 +358,14 @@ router.get('/jobs/:id/urls', getClient, async (req, res) => {
       urls: {
         original: urls.original_download,
         translation: urls.translation_download,
-        xliff: urls.xliff_download
-      }
+        xliff: urls.xliff_download,
+      },
     });
-
   } catch (err) {
     console.error('Matecat urls error:', err);
     res.status(err.statusCode || 500).json({
       error: 'Failed to get URLs',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -387,14 +385,14 @@ router.get('/jobs/:id/download', getClient, async (req, res) => {
   if (!password) {
     return res.status(400).json({
       error: 'Missing password',
-      message: 'Job password is required as query parameter'
+      message: 'Job password is required as query parameter',
     });
   }
 
   if (!['translation', 'original', 'xliff'].includes(type)) {
     return res.status(400).json({
       error: 'Invalid type',
-      message: 'Type must be: translation, original, or xliff'
+      message: 'Type must be: translation, original, or xliff',
     });
   }
 
@@ -403,37 +401,32 @@ router.get('/jobs/:id/download', getClient, async (req, res) => {
     const urls = await req.matecat.getUrls(id, password);
 
     let downloadUrl;
-    let filename;
     switch (type) {
       case 'original':
         downloadUrl = urls.original_download;
-        filename = `job-${id}-original`;
         break;
       case 'xliff':
         downloadUrl = urls.xliff_download;
-        filename = `job-${id}-translated.xliff`;
         break;
       case 'translation':
       default:
         downloadUrl = urls.translation_download;
-        filename = `job-${id}-translation`;
     }
 
     if (!downloadUrl) {
       return res.status(404).json({
         error: 'Download not available',
-        message: `${type} download URL is not available`
+        message: `${type} download URL is not available`,
       });
     }
 
     // Redirect to Matecat's download URL
     res.redirect(downloadUrl);
-
   } catch (err) {
     console.error('Matecat download error:', err);
     res.status(err.statusCode || 500).json({
       error: 'Failed to get download',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -450,7 +443,7 @@ router.get('/projects', (req, res) => {
   res.json({
     projects,
     total: projectStore.size,
-    note: 'This only shows projects created through this API'
+    note: 'This only shows projects created through this API',
   });
 });
 
@@ -472,28 +465,27 @@ router.post('/projects/:id/poll', getClient, async (req, res) => {
   if (!password) {
     return res.status(400).json({
       error: 'Missing password',
-      message: 'Project password is required as query parameter'
+      message: 'Project password is required as query parameter',
     });
   }
 
   try {
     const finalStatus = await req.matecat.pollUntilDone(id, password, {
       interval,
-      timeout
+      timeout,
     });
 
     res.json({
       success: true,
       projectId: id,
       status: finalStatus.status,
-      jobs: finalStatus.jobs || []
+      jobs: finalStatus.jobs || [],
     });
-
   } catch (err) {
     console.error('Matecat poll error:', err);
     res.status(err.statusCode || 500).json({
       error: 'Polling failed',
-      message: err.message
+      message: err.message,
     });
   }
 });

@@ -11,28 +11,28 @@ const https = require('https');
 const BOOK_REPOS = {
   'chemistry-2e': {
     repo: 'openstax/osbooks-chemistry-bundle',
-    collection: 'chemistry-2e.collection.xml'
+    collection: 'chemistry-2e.collection.xml',
   },
   'chemistry-atoms-first-2e': {
     repo: 'openstax/osbooks-chemistry-bundle',
-    collection: 'chemistry-atoms-first-2e.collection.xml'
+    collection: 'chemistry-atoms-first-2e.collection.xml',
   },
   'biology-2e': {
     repo: 'openstax/osbooks-biology-bundle',
-    collection: 'biology-2e.collection.xml'
+    collection: 'biology-2e.collection.xml',
   },
-  'physics': {
+  physics: {
     repo: 'openstax/osbooks-physics',
-    collection: 'physics.collection.xml'
+    collection: 'physics.collection.xml',
   },
   'college-algebra': {
     repo: 'openstax/osbooks-college-algebra-bundle',
-    collection: 'college-algebra.collection.xml'
+    collection: 'college-algebra.collection.xml',
   },
   'calculus-volume-1': {
     repo: 'openstax/osbooks-calculus-bundle',
-    collection: 'calculus-volume-1.collection.xml'
-  }
+    collection: 'calculus-volume-1.collection.xml',
+  },
 };
 
 /**
@@ -42,25 +42,27 @@ function fetchRaw(url) {
   return new Promise((resolve, reject) => {
     const options = {
       headers: {
-        'User-Agent': 'namsbokasafn-pipeline'
-      }
+        'User-Agent': 'namsbokasafn-pipeline',
+      },
     };
 
-    https.get(url, options, (res) => {
-      if (res.statusCode === 301 || res.statusCode === 302) {
-        return fetchRaw(res.headers.location).then(resolve).catch(reject);
-      }
+    https
+      .get(url, options, (res) => {
+        if (res.statusCode === 301 || res.statusCode === 302) {
+          return fetchRaw(res.headers.location).then(resolve).catch(reject);
+        }
 
-      if (res.statusCode !== 200) {
-        reject(new Error(`HTTP ${res.statusCode}: ${url}`));
-        return;
-      }
+        if (res.statusCode !== 200) {
+          reject(new Error(`HTTP ${res.statusCode}: ${url}`));
+          return;
+        }
 
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
-      res.on('error', reject);
-    }).on('error', reject);
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => resolve(data));
+        res.on('error', reject);
+      })
+      .on('error', reject);
   });
 }
 
@@ -69,12 +71,10 @@ function fetchRaw(url) {
  */
 function parseCollectionXml(xml) {
   const chapters = [];
-  const standaloneModules = [];
 
   // Match subcollections (chapters)
   const subcollectionRegex = /<col:subcollection[^>]*>([\s\S]*?)<\/col:subcollection>/g;
   const titleRegex = /<md:title>([^<]+)<\/md:title>/;
-  const moduleRegex = /<col:module\s+document="([^"]+)"/g;
 
   let match;
   let chapterNum = 0;
@@ -88,7 +88,7 @@ function parseCollectionXml(xml) {
       const chapter = {
         chapter: chapterNum,
         title: titleMatch[1].trim(),
-        modules: []
+        modules: [],
       };
 
       // Extract module IDs from this chapter
@@ -142,7 +142,7 @@ async function fetchModuleTitle(repo, moduleId) {
  * Determine section number from module position in chapter
  * First module is typically "intro", rest are numbered
  */
-function determineSectionNumber(chapterNum, moduleIndex, totalModules) {
+function determineSectionNumber(chapterNum, moduleIndex, _totalModules) {
   if (moduleIndex === 0) {
     return 'intro';
   }
@@ -186,9 +186,7 @@ async function fetchBookStructure(bookSlug) {
   const batchSize = 10;
   for (let i = 0; i < allModules.length; i += batchSize) {
     const batch = allModules.slice(i, i + batchSize);
-    const titles = await Promise.all(
-      batch.map(({ moduleId }) => fetchModuleTitle(repo, moduleId))
-    );
+    const titles = await Promise.all(batch.map(({ moduleId }) => fetchModuleTitle(repo, moduleId)));
 
     batch.forEach((item, idx) => {
       item.title = titles[idx];
@@ -196,18 +194,18 @@ async function fetchBookStructure(bookSlug) {
 
     // Small delay between batches
     if (i + batchSize < allModules.length) {
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
     }
   }
 
   // Build final structure
-  const chaptersWithTitles = chapters.map(chapter => {
+  const chaptersWithTitles = chapters.map((chapter) => {
     const modulesWithTitles = chapter.modules.map((moduleId, idx) => {
-      const moduleInfo = allModules.find(m => m.moduleId === moduleId && m.chapter === chapter);
+      const moduleInfo = allModules.find((m) => m.moduleId === moduleId && m.chapter === chapter);
       return {
         id: moduleId,
         section: determineSectionNumber(chapter.chapter, idx, chapter.modules.length),
-        title: moduleInfo ? moduleInfo.title : moduleId
+        title: moduleInfo ? moduleInfo.title : moduleId,
       };
     });
 
@@ -215,7 +213,7 @@ async function fetchBookStructure(bookSlug) {
       chapter: chapter.chapter,
       title: chapter.title,
       titleIs: null, // Will be filled in during registration if available
-      modules: modulesWithTitles
+      modules: modulesWithTitles,
     };
   });
 
@@ -226,19 +224,17 @@ async function fetchBookStructure(bookSlug) {
 
     for (let i = 0; i < appendixModules.length; i += batchSize) {
       const batch = appendixModules.slice(i, i + batchSize);
-      const titles = await Promise.all(
-        batch.map(moduleId => fetchModuleTitle(repo, moduleId))
-      );
+      const titles = await Promise.all(batch.map((moduleId) => fetchModuleTitle(repo, moduleId)));
 
       batch.forEach((moduleId, idx) => {
         appendices.push({
           id: moduleId,
-          title: titles[idx]
+          title: titles[idx],
         });
       });
 
       if (i + batchSize < appendixModules.length) {
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
     }
   }
@@ -249,7 +245,7 @@ async function fetchBookStructure(bookSlug) {
     preface,
     chapters: chaptersWithTitles,
     appendices,
-    fetchedAt: new Date().toISOString()
+    fetchedAt: new Date().toISOString(),
   };
 }
 
@@ -271,5 +267,5 @@ module.exports = {
   fetchBookStructure,
   getAvailableBooks,
   isBookAvailable,
-  BOOK_REPOS
+  BOOK_REPOS,
 };

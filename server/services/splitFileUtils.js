@@ -105,12 +105,13 @@ function isSectionComplete(parts, expectedPartCount = 1) {
 
   // For splits, need all parts (a, b, c, etc.)
   const partLetters = parts
-    .map(f => extractPartLetter(f))
+    .map((f) => extractPartLetter(f))
     .filter(Boolean)
     .sort();
 
-  const expectedLetters = Array.from({ length: expectedPartCount }, (_, i) =>
-    String.fromCharCode(97 + i) // 'a', 'b', 'c', ...
+  const expectedLetters = Array.from(
+    { length: expectedPartCount },
+    (_, i) => String.fromCharCode(97 + i) // 'a', 'b', 'c', ...
   );
 
   return JSON.stringify(partLetters) === JSON.stringify(expectedLetters);
@@ -126,14 +127,13 @@ function isSectionComplete(parts, expectedPartCount = 1) {
  */
 function sectionHasAnyFile(directory, sectionId, extension) {
   const fs = require('fs');
-  const path = require('path');
 
   if (!fs.existsSync(directory)) {
     return false;
   }
 
   const files = fs.readdirSync(directory);
-  return files.some(f => {
+  return files.some((f) => {
     if (!f.endsWith(extension)) return false;
     const base = extractBaseSectionId(f);
     return base === sectionId;
@@ -155,7 +155,7 @@ function getSectionFiles(directory, sectionId, extension) {
   }
 
   const files = fs.readdirSync(directory);
-  return files.filter(f => {
+  return files.filter((f) => {
     if (!f.endsWith(extension)) return false;
     const base = extractBaseSectionId(f);
     return base === sectionId;
@@ -200,5 +200,5 @@ module.exports = {
   sectionHasAnyFile,
   getSectionFiles,
   countUniqueSections,
-  getUniqueSections
+  getUniqueSections,
 };

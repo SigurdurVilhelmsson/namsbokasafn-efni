@@ -450,11 +450,13 @@ function runPrepareTm({ book, chapter, userId }) {
 
           child.on('error', (err) => reject(err));
           child.on('close', (code) => {
-            if (code === 0) resolve();
-            else
+            if (code === 0) {
+              resolve();
+            } else {
               reject(
                 new Error(`prepare-for-align failed for ${pair.moduleId} (exit code ${code})`)
               );
+            }
           });
         });
       }

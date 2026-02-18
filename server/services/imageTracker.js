@@ -21,19 +21,19 @@ const IMAGE_STATUS = {
   IN_PROGRESS: 'in-progress',
   TRANSLATED: 'translated',
   APPROVED: 'approved',
-  NOT_NEEDED: 'not-needed'
+  NOT_NEEDED: 'not-needed',
 };
 
 // OneDrive base paths (configurable)
 const ONEDRIVE_CONFIG = {
   baseUrl: process.env.ONEDRIVE_BASE_URL || 'onedrive://Namsbokasafn',
-  sharePointUrl: process.env.SHAREPOINT_URL || null
+  sharePointUrl: process.env.SHAREPOINT_URL || null,
 };
 
 /**
  * Extract image references from CNXML content
  */
-function extractImagesFromCnxml(cnxmlContent, options = {}) {
+function extractImagesFromCnxml(cnxmlContent, _options = {}) {
   const images = [];
 
   // Match image tags
@@ -50,7 +50,7 @@ function extractImagesFromCnxml(cnxmlContent, options = {}) {
       mimeType,
       type: getImageType(mimeType),
       containsText: detectTextInImage(cnxmlContent, src),
-      position: match.index
+      position: match.index,
     });
   }
 
@@ -58,14 +58,14 @@ function extractImagesFromCnxml(cnxmlContent, options = {}) {
   const mediaRegex = /<media[^>]*>\s*<image\s+[^>]*src="([^"]+)"[^>]*>/gi;
   while ((match = mediaRegex.exec(cnxmlContent)) !== null) {
     const src = match[1];
-    if (!images.find(i => i.originalSrc === src)) {
+    if (!images.find((i) => i.originalSrc === src)) {
       images.push({
         id: generateImageId(src),
         originalSrc: src,
         mimeType: 'image/jpeg',
         type: 'figure',
         containsText: true,
-        position: match.index
+        position: match.index,
       });
     }
   }
@@ -98,13 +98,18 @@ function detectTextInImage(content, src) {
   const context = content.substring(Math.max(0, srcIndex - 200), srcIndex + 200);
 
   const textIndicators = [
-    'figure', 'diagram', 'chart', 'graph', 'table',
-    'label', 'equation', 'formula', 'legend'
+    'figure',
+    'diagram',
+    'chart',
+    'graph',
+    'table',
+    'label',
+    'equation',
+    'formula',
+    'legend',
   ];
 
-  return textIndicators.some(indicator =>
-    context.toLowerCase().includes(indicator)
-  );
+  return textIndicators.some((indicator) => context.toLowerCase().includes(indicator));
 }
 
 /**
@@ -113,8 +118,14 @@ function detectTextInImage(content, src) {
 function loadImageData(book, chapter) {
   const chapterStr = String(chapter).padStart(2, '0');
   const dataPath = path.join(
-    __dirname, '..', '..',
-    'books', book, 'chapters', 'ch' + chapterStr, 'images.json'
+    __dirname,
+    '..',
+    '..',
+    'books',
+    book,
+    'chapters',
+    'ch' + chapterStr,
+    'images.json'
   );
 
   if (fs.existsSync(dataPath)) {
@@ -133,10 +144,7 @@ function loadImageData(book, chapter) {
  */
 function saveImageData(book, chapter, data) {
   const chapterStr = String(chapter).padStart(2, '0');
-  const dataDir = path.join(
-    __dirname, '..', '..',
-    'books', book, 'chapters', 'ch' + chapterStr
-  );
+  const dataDir = path.join(__dirname, '..', '..', 'books', book, 'chapters', 'ch' + chapterStr);
   const dataPath = path.join(dataDir, 'images.json');
 
   if (!fs.existsSync(dataDir)) {
@@ -153,18 +161,34 @@ function saveImageData(book, chapter, data) {
 function getEditableSourceLink(book, chapter, imageId, extension) {
   extension = extension || '.pdf';
   const chapterStr = String(chapter).padStart(2, '0');
-  const onedrivePath = ONEDRIVE_CONFIG.baseUrl + '/' + book + '/images-editable/ch' + chapterStr + '/' + imageId + extension;
+  const onedrivePath =
+    ONEDRIVE_CONFIG.baseUrl +
+    '/' +
+    book +
+    '/images-editable/ch' +
+    chapterStr +
+    '/' +
+    imageId +
+    extension;
 
   if (ONEDRIVE_CONFIG.sharePointUrl) {
     return {
       onedrive: onedrivePath,
-      sharepoint: ONEDRIVE_CONFIG.sharePointUrl + '/' + book + '/images-editable/ch' + chapterStr + '/' + imageId + extension
+      sharepoint:
+        ONEDRIVE_CONFIG.sharePointUrl +
+        '/' +
+        book +
+        '/images-editable/ch' +
+        chapterStr +
+        '/' +
+        imageId +
+        extension,
     };
   }
 
   return {
     onedrive: onedrivePath,
-    sharepoint: null
+    sharepoint: null,
   };
 }
 
@@ -186,7 +210,7 @@ function updateImageStatus(book, chapter, imageId, status, metadata) {
   if (!data.images[imageId]) {
     data.images[imageId] = {
       id: imageId,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
   }
 
@@ -194,7 +218,7 @@ function updateImageStatus(book, chapter, imageId, status, metadata) {
     ...data.images[imageId],
     status: status,
     ...metadata,
-    updatedAt: new Date().toISOString()
+    updatedAt: new Date().toISOString(),
   };
 
   saveImageData(book, chapter, data);
@@ -211,13 +235,13 @@ function getChapterImageStats(book, chapter) {
 
   return {
     total: images.length,
-    pending: images.filter(i => i.status === IMAGE_STATUS.PENDING).length,
-    inProgress: images.filter(i => i.status === IMAGE_STATUS.IN_PROGRESS).length,
-    translated: images.filter(i => i.status === IMAGE_STATUS.TRANSLATED).length,
-    approved: images.filter(i => i.status === IMAGE_STATUS.APPROVED).length,
-    notNeeded: images.filter(i => i.status === IMAGE_STATUS.NOT_NEEDED).length,
-    withText: images.filter(i => i.containsText).length,
-    lastUpdated: data.lastUpdated
+    pending: images.filter((i) => i.status === IMAGE_STATUS.PENDING).length,
+    inProgress: images.filter((i) => i.status === IMAGE_STATUS.IN_PROGRESS).length,
+    translated: images.filter((i) => i.status === IMAGE_STATUS.TRANSLATED).length,
+    approved: images.filter((i) => i.status === IMAGE_STATUS.APPROVED).length,
+    notNeeded: images.filter((i) => i.status === IMAGE_STATUS.NOT_NEEDED).length,
+    withText: images.filter((i) => i.containsText).length,
+    lastUpdated: data.lastUpdated,
   };
 }
 
@@ -231,14 +255,15 @@ function getBookImageStats(book) {
     return { chapters: [], totals: {} };
   }
 
-  const chapters = fs.readdirSync(bookPath)
-    .filter(d => d.startsWith('ch'))
-    .map(d => parseInt(d.replace('ch', '')))
+  const chapters = fs
+    .readdirSync(bookPath)
+    .filter((d) => d.startsWith('ch'))
+    .map((d) => parseInt(d.replace('ch', '')))
     .sort((a, b) => a - b);
 
-  const chapterStats = chapters.map(ch => ({
+  const chapterStats = chapters.map((ch) => ({
     chapter: ch,
-    ...getChapterImageStats(book, ch)
+    ...getChapterImageStats(book, ch),
   }));
 
   // Calculate totals
@@ -249,17 +274,15 @@ function getBookImageStats(book) {
     inProgress: chapterStats.reduce((sum, ch) => sum + ch.inProgress, 0),
     translated: chapterStats.reduce((sum, ch) => sum + ch.translated, 0),
     approved: chapterStats.reduce((sum, ch) => sum + ch.approved, 0),
-    notNeeded: chapterStats.reduce((sum, ch) => sum + ch.notNeeded, 0)
+    notNeeded: chapterStats.reduce((sum, ch) => sum + ch.notNeeded, 0),
   };
 
   const doneCount = totals.translated + totals.approved + totals.notNeeded;
-  totals.percentComplete = totals.total > 0
-    ? Math.round((doneCount / totals.total) * 100)
-    : 0;
+  totals.percentComplete = totals.total > 0 ? Math.round((doneCount / totals.total) * 100) : 0;
 
   return {
     chapters: chapterStats,
-    totals: totals
+    totals: totals,
   };
 }
 
@@ -272,7 +295,7 @@ function initializeFromCnxml(book, chapter, cnxmlContent) {
 
   const data = {
     images: { ...existingData.images },
-    sourceExtractedAt: new Date().toISOString()
+    sourceExtractedAt: new Date().toISOString(),
   };
 
   // Add new images, preserve existing status
@@ -283,7 +306,7 @@ function initializeFromCnxml(book, chapter, cnxmlContent) {
         status: IMAGE_STATUS.PENDING,
         source: getEditableSourceLink(book, chapter, img.id),
         targetPath: getTranslatedImagePath(book, chapter, img.id),
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       };
     } else {
       // Update source info without changing status
@@ -291,7 +314,7 @@ function initializeFromCnxml(book, chapter, cnxmlContent) {
         ...data.images[img.id],
         ...img,
         source: getEditableSourceLink(book, chapter, img.id),
-        targetPath: getTranslatedImagePath(book, chapter, img.id)
+        targetPath: getTranslatedImagePath(book, chapter, img.id),
       };
     }
   }
@@ -301,7 +324,7 @@ function initializeFromCnxml(book, chapter, cnxmlContent) {
   return {
     extracted: extractedImages.length,
     newImages: extractedImages.length - Object.keys(existingData.images).length,
-    existing: Object.keys(existingData.images).length
+    existing: Object.keys(existingData.images).length,
   };
 }
 
@@ -315,5 +338,5 @@ module.exports = {
   updateImageStatus: updateImageStatus,
   getChapterImageStats: getChapterImageStats,
   getBookImageStats: getBookImageStats,
-  initializeFromCnxml: initializeFromCnxml
+  initializeFromCnxml: initializeFromCnxml,
 };

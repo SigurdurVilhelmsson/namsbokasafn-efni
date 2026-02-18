@@ -105,7 +105,7 @@ const statements = {
       AND pr.reviewed_at > datetime('now', '-7 days')
     ORDER BY pr.reviewed_at DESC
     LIMIT 1
-  `)
+  `),
 };
 
 /**
@@ -121,7 +121,14 @@ function hashContent(content) {
 function getFilePath(book, chapter, section) {
   // Format: books/{book}/03-faithful-translation/{chapter}/{section}.is.md
   const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
-  return path.join(PROJECT_ROOT, 'books', book, '03-faithful-translation', chapterDir, `${section}.is.md`);
+  return path.join(
+    PROJECT_ROOT,
+    'books',
+    book,
+    '03-faithful-translation',
+    chapterDir,
+    `${section}.is.md`
+  );
 }
 
 /**
@@ -193,7 +200,7 @@ function loadSectionContent(book, chapter, section) {
       const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
       metadata = {
         title: statusData.title,
-        chapter: statusData.chapter
+        chapter: statusData.chapter,
       };
     }
   } catch (err) {
@@ -206,7 +213,7 @@ function loadSectionContent(book, chapter, section) {
     metadata,
     filePath: isPath,
     enFilePath: enPath,
-    exists: isContent !== null
+    exists: isContent !== null,
   };
 }
 
@@ -223,13 +230,21 @@ function saveDraft(book, chapter, section, content, userId, username) {
     return {
       success: true,
       unchanged: true,
-      historyId: latest.id
+      historyId: latest.id,
     };
   }
 
   // Insert history entry
   const result = statements.insertHistory.run(
-    book, chapter, section, content, userId, username, 0, filePath, contentHash
+    book,
+    chapter,
+    section,
+    content,
+    userId,
+    username,
+    0,
+    filePath,
+    contentHash
   );
 
   // Write to disk
@@ -238,7 +253,7 @@ function saveDraft(book, chapter, section, content, userId, username) {
   return {
     success: true,
     historyId: result.lastInsertRowid,
-    written
+    written,
   };
 }
 
@@ -258,19 +273,32 @@ function submitForReview(book, chapter, section, content, userId, username) {
       existingReview: {
         id: existingReview.id,
         submittedBy: existingReview.submitted_by_username,
-        submittedAt: existingReview.submitted_at
-      }
+        submittedAt: existingReview.submitted_at,
+      },
     };
   }
 
   // Insert history entry marked as submission
   const historyResult = statements.insertHistory.run(
-    book, chapter, section, content, userId, username, 1, filePath, contentHash
+    book,
+    chapter,
+    section,
+    content,
+    userId,
+    username,
+    1,
+    filePath,
+    contentHash
   );
 
   // Create pending review
   const reviewResult = statements.insertReview.run(
-    book, chapter, section, historyResult.lastInsertRowid, userId, username
+    book,
+    chapter,
+    section,
+    historyResult.lastInsertRowid,
+    userId,
+    username
   );
 
   // Write to disk
@@ -279,7 +307,7 @@ function submitForReview(book, chapter, section, content, userId, username) {
   return {
     success: true,
     historyId: historyResult.lastInsertRowid,
-    reviewId: reviewResult.lastInsertRowid
+    reviewId: reviewResult.lastInsertRowid,
   };
 }
 
@@ -288,13 +316,13 @@ function submitForReview(book, chapter, section, content, userId, username) {
  */
 function getVersionHistory(book, chapter, section, limit = 20) {
   const rows = statements.getHistory.all(book, chapter, section, limit);
-  return rows.map(row => ({
+  return rows.map((row) => ({
     id: row.id,
     userId: row.user_id,
     username: row.username,
     createdAt: row.created_at,
     isSubmission: row.is_submission === 1,
-    contentHash: row.content_hash
+    contentHash: row.content_hash,
   }));
 }
 
@@ -314,7 +342,7 @@ function getVersion(historyId) {
     userId: row.user_id,
     username: row.username,
     createdAt: row.created_at,
-    isSubmission: row.is_submission === 1
+    isSubmission: row.is_submission === 1,
   };
 }
 
@@ -328,7 +356,14 @@ function restoreVersion(historyId, userId, username) {
   }
 
   // Save as new draft
-  return saveDraft(version.book, version.chapter, version.section, version.content, userId, username);
+  return saveDraft(
+    version.book,
+    version.chapter,
+    version.section,
+    version.content,
+    userId,
+    username
+  );
 }
 
 /**
@@ -339,7 +374,7 @@ function getPendingReviews(book = null) {
     ? statements.getPendingReviewsForBook.all(book)
     : statements.getPendingReviews.all();
 
-  return rows.map(row => ({
+  return rows.map((row) => ({
     id: row.id,
     book: row.book,
     chapter: row.chapter,
@@ -349,7 +384,7 @@ function getPendingReviews(book = null) {
     submittedByUsername: row.submitted_by_username,
     submittedAt: row.submitted_at,
     content: row.content,
-    editCreatedAt: row.edit_created_at
+    editCreatedAt: row.edit_created_at,
   }));
 }
 
@@ -388,7 +423,7 @@ function getReview(reviewId) {
     reviewNotes: row.review_notes,
     commitSha: row.commit_sha,
     content: history?.content,
-    filePath: history?.file_path
+    filePath: history?.file_path,
   };
 }
 
@@ -406,12 +441,17 @@ function approveReview(reviewId, reviewerId, reviewerUsername, commitSha = null)
   }
 
   statements.updateReviewStatus.run(
-    'approved', reviewerId, reviewerUsername, null, commitSha, reviewId
+    'approved',
+    reviewerId,
+    reviewerUsername,
+    null,
+    commitSha,
+    reviewId
   );
 
   return {
     success: true,
-    review: getReview(reviewId)
+    review: getReview(reviewId),
   };
 }
 
@@ -429,12 +469,17 @@ function requestChanges(reviewId, reviewerId, reviewerUsername, notes) {
   }
 
   statements.updateReviewStatus.run(
-    'changes_requested', reviewerId, reviewerUsername, notes, null, reviewId
+    'changes_requested',
+    reviewerId,
+    reviewerUsername,
+    notes,
+    null,
+    reviewId
   );
 
   return {
     success: true,
-    review: getReview(reviewId)
+    review: getReview(reviewId),
   };
 }
 
@@ -464,7 +509,7 @@ function parseSplitInfo(section) {
     isSplit: true,
     baseSection,
     partLetter,
-    partNumber
+    partNumber,
   };
 }
 
@@ -480,28 +525,28 @@ function listSections(book, chapter) {
 
   // Check 03-faithful-translation first (edited versions)
   if (fs.existsSync(faithfulDir)) {
-    const files = fs.readdirSync(faithfulDir).filter(f => f.endsWith('.is.md'));
+    const files = fs.readdirSync(faithfulDir).filter((f) => f.endsWith('.is.md'));
     for (const file of files) {
       const section = file.replace('.is.md', '');
       sections.push({
         section,
         source: 'faithful',
-        path: path.join(faithfulDir, file)
+        path: path.join(faithfulDir, file),
       });
     }
   }
 
   // Also check 02-mt-output for sections not yet edited
   if (fs.existsSync(mtOutputDir)) {
-    const files = fs.readdirSync(mtOutputDir).filter(f => f.endsWith('.is.md'));
+    const files = fs.readdirSync(mtOutputDir).filter((f) => f.endsWith('.is.md'));
     for (const file of files) {
       const section = file.replace('.is.md', '');
       // Only add if not already in faithful
-      if (!sections.find(s => s.section === section)) {
+      if (!sections.find((s) => s.section === section)) {
         sections.push({
           section,
           source: 'mt-output',
-          path: path.join(mtOutputDir, file)
+          path: path.join(mtOutputDir, file),
         });
       }
     }
@@ -521,11 +566,11 @@ function listSections(book, chapter) {
   }
 
   // Add total parts count to each split section
-  for (const [baseSection, group] of splitGroups) {
+  for (const group of splitGroups.values()) {
     const totalParts = group.length;
     for (const s of group) {
       s.splitInfo.totalParts = totalParts;
-      s.splitInfo.partsInGroup = group.map(g => g.section).sort();
+      s.splitInfo.partsInGroup = group.map((g) => g.section).sort();
     }
   }
 
@@ -562,19 +607,21 @@ function getSplitInfo(book, chapter, section) {
 
   // List all sections to find siblings
   const sections = listSections(book, chapter);
-  const siblings = sections.filter(s =>
-    s.splitInfo && s.splitInfo.baseSection === splitInfo.baseSection
+  const siblings = sections.filter(
+    (s) => s.splitInfo && s.splitInfo.baseSection === splitInfo.baseSection
   );
 
   return {
     ...splitInfo,
     totalParts: siblings.length,
-    parts: siblings.map(s => ({
-      section: s.section,
-      partNumber: s.splitInfo.partNumber,
-      partLetter: s.splitInfo.partLetter,
-      source: s.source
-    })).sort((a, b) => a.partNumber - b.partNumber)
+    parts: siblings
+      .map((s) => ({
+        section: s.section,
+        partNumber: s.splitInfo.partNumber,
+        partLetter: s.splitInfo.partLetter,
+        source: s.source,
+      }))
+      .sort((a, b) => a.partNumber - b.partNumber),
   };
 }
 
@@ -593,7 +640,7 @@ function getRecentFeedback(book, chapter, section) {
     reviewedAt: row.reviewed_at,
     notes: row.review_notes,
     submittedBy: row.submitted_by_username,
-    submittedAt: row.submitted_at
+    submittedAt: row.submitted_at,
   };
 }
 
@@ -615,5 +662,5 @@ module.exports = {
   getSplitInfo,
   getFilePath,
   getEnSourcePath,
-  PROJECT_ROOT
+  PROJECT_ROOT,
 };

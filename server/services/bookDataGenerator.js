@@ -41,7 +41,9 @@ function getRegistrationData(catalogueSlug) {
 
   try {
     // Find the registered book by catalogue slug
-    const book = db.prepare(`
+    const book = db
+      .prepare(
+        `
       SELECT
         rb.id,
         rb.slug,
@@ -52,7 +54,9 @@ function getRegistrationData(catalogueSlug) {
       FROM registered_books rb
       JOIN openstax_catalogue oc ON oc.id = rb.catalogue_id
       WHERE oc.slug = ?
-    `).get(catalogueSlug);
+    `
+      )
+      .get(catalogueSlug);
 
     if (!book) {
       db.close();
@@ -60,22 +64,30 @@ function getRegistrationData(catalogueSlug) {
     }
 
     // Get chapters with Icelandic titles
-    const chapters = db.prepare(`
+    const chapters = db
+      .prepare(
+        `
       SELECT chapter_num, title_en, title_is
       FROM book_chapters
       WHERE book_id = ?
       ORDER BY chapter_num
-    `).all(book.id);
+    `
+      )
+      .all(book.id);
 
     // Get sections with Icelandic titles
-    const sections = db.prepare(`
+    const sections = db
+      .prepare(
+        `
       SELECT chapter_num, section_num, module_id, title_en, title_is
       FROM book_sections
       WHERE book_id = ?
       ORDER BY chapter_num,
         CASE WHEN section_num = 'intro' THEN 0 ELSE 1 END,
         section_num
-    `).all(book.id);
+    `
+      )
+      .all(book.id);
 
     db.close();
 
@@ -83,19 +95,19 @@ function getRegistrationData(catalogueSlug) {
       slug: book.slug,
       titleIs: book.title_is,
       titleEn: book.title_en,
-      chapters: chapters.map(ch => ({
+      chapters: chapters.map((ch) => ({
         chapter: ch.chapter_num,
         titleEn: ch.title_en,
         titleIs: ch.title_is,
         sections: sections
-          .filter(s => s.chapter_num === ch.chapter_num)
-          .map(s => ({
+          .filter((s) => s.chapter_num === ch.chapter_num)
+          .map((s) => ({
             section: s.section_num,
             moduleId: s.module_id,
             titleEn: s.title_en,
-            titleIs: s.title_is
-          }))
-      }))
+            titleIs: s.title_is,
+          })),
+      })),
     };
   } catch (err) {
     db.close();
@@ -113,13 +125,13 @@ function getRegistrationData(catalogueSlug) {
  * @returns {Promise<object>} Generation result
  */
 async function generateBookData(catalogueSlug, options = {}) {
-  const { force = false, fetchFresh = false } = options;
+  const { force = false } = options;
 
   // Check if book is available in openstaxFetcher
   if (!openstaxFetcher.isBookAvailable(catalogueSlug)) {
     throw new Error(
       `Book '${catalogueSlug}' is not available for fetching. ` +
-      `Available books: ${openstaxFetcher.getAvailableBooks().join(', ')}`
+        `Available books: ${openstaxFetcher.getAvailableBooks().join(', ')}`
     );
   }
 
@@ -147,7 +159,7 @@ async function generateBookData(catalogueSlug, options = {}) {
         skipped: true,
         message: `File already exists with ${existing.chapters.length} chapters. Use force=true to regenerate.`,
         path: outputPath,
-        chapters: existing.chapters.length
+        chapters: existing.chapters.length,
       };
     }
   }
@@ -173,32 +185,32 @@ async function generateBookData(catalogueSlug, options = {}) {
     titleIs: registration?.titleIs || null,
     repo: openstaxData.repo,
     preface: openstaxData.preface || null,
-    chapters: openstaxData.chapters.map(chapter => {
+    chapters: openstaxData.chapters.map((chapter) => {
       // Find matching registration data for Icelandic titles
-      const regChapter = registration?.chapters?.find(c => c.chapter === chapter.chapter);
+      const regChapter = registration?.chapters?.find((c) => c.chapter === chapter.chapter);
 
       return {
         chapter: chapter.chapter,
         title: chapter.title,
         titleIs: regChapter?.titleIs || chapter.titleIs || null,
-        modules: chapter.modules.map(mod => {
+        modules: chapter.modules.map((mod) => {
           // Find matching section for Icelandic title
           const regSection = regChapter?.sections?.find(
-            s => s.moduleId === mod.id || s.section === mod.section
+            (s) => s.moduleId === mod.id || s.section === mod.section
           );
 
           return {
             id: mod.id,
             section: mod.section,
             title: mod.title,
-            titleIs: regSection?.titleIs || null
+            titleIs: regSection?.titleIs || null,
           };
-        })
+        }),
       };
     }),
     appendices: openstaxData.appendices || [],
     generatedAt: new Date().toISOString(),
-    fetchedFrom: 'openstax-github'
+    fetchedFrom: 'openstax-github',
   };
 
   // Ensure data directory exists
@@ -218,7 +230,7 @@ async function generateBookData(catalogueSlug, options = {}) {
     modules: bookData.chapters.reduce((sum, ch) => sum + ch.modules.length, 0),
     appendices: bookData.appendices.length,
     hasIcelandicTitles: !!registration,
-    message: `Generated ${outputPath} with ${bookData.chapters.length} chapters and ${bookData.chapters.reduce((sum, ch) => sum + ch.modules.length, 0)} modules`
+    message: `Generated ${outputPath} with ${bookData.chapters.length} chapters and ${bookData.chapters.reduce((sum, ch) => sum + ch.modules.length, 0)} modules`,
   };
 }
 
@@ -236,7 +248,7 @@ async function generateAllBookData(options = {}) {
     generated: 0,
     skipped: 0,
     failed: 0,
-    books: []
+    books: [],
   };
 
   for (const bookSlug of availableBooks) {
@@ -255,7 +267,7 @@ async function generateAllBookData(options = {}) {
       results.books.push({
         book: bookSlug,
         success: false,
-        error: err.message
+        error: err.message,
       });
     }
   }
@@ -271,7 +283,7 @@ async function generateAllBookData(options = {}) {
 function listBooks() {
   const availableBooks = openstaxFetcher.getAvailableBooks();
 
-  return availableBooks.map(slug => {
+  return availableBooks.map((slug) => {
     const dataPath = path.join(DATA_DIR, `${slug}.json`);
     const exists = fs.existsSync(dataPath);
     let chapters = 0;
@@ -315,7 +327,7 @@ function listBooks() {
       generatedAt,
       isRegistered: !!registration,
       icelandicSlug: registration?.slug || null,
-      icelandicTitle: registration?.titleIs || null
+      icelandicTitle: registration?.titleIs || null,
     };
   });
 }
@@ -324,5 +336,5 @@ module.exports = {
   generateBookData,
   generateAllBookData,
   listBooks,
-  getRegistrationData
+  getRegistrationData,
 };

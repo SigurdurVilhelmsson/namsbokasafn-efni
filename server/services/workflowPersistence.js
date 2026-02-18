@@ -24,36 +24,36 @@ const DB_PATH = path.join(PROJECT_ROOT, 'pipeline-output', 'sessions.db');
 
 // Step to folder and status mapping
 const STEP_CONFIG = {
-  'source': {
+  source: {
     folder: '02-for-mt',
     status: 'mt_pending',
     filePattern: (section) => `${section.replace('.', '-')}.en.md`,
-    dbField: 'en_md_path'
+    dbField: 'en_md_path',
   },
   'mt-upload': {
     folder: '02-mt-output',
     status: 'mt_uploaded',
     filePattern: (section) => `${section.replace('.', '-')}.is.md`,
-    dbField: 'mt_output_path'
+    dbField: 'mt_output_path',
   },
   'faithful-edit': {
     folder: '03-faithful-translation',
     status: 'review_approved',
     filePattern: (section) => `${section.replace('.', '-')}.is.md`,
-    dbField: 'faithful_path'
+    dbField: 'faithful_path',
   },
   'tm-creation': {
     folder: 'tm',
     status: 'tm_created',
     filePattern: (section) => `${section.replace('.', '-')}.tmx`,
-    dbField: null // TMX doesn't have a dedicated column
+    dbField: null, // TMX doesn't have a dedicated column
   },
-  'localization': {
+  localization: {
     folder: '04-localized-content',
     status: 'localization_approved',
     filePattern: (section) => `${section.replace('.', '-')}.is.md`,
-    dbField: 'localized_path'
-  }
+    dbField: 'localized_path',
+  },
 };
 
 // Step order for resume detection
@@ -161,12 +161,16 @@ function updateSectionFromWorkflow(bookSlug, chapter, section, stepId, options =
     }
 
     // Find the section in book_sections
-    const sectionRow = db.prepare(`
+    const sectionRow = db
+      .prepare(
+        `
       SELECT bs.id, bs.status
       FROM book_sections bs
       JOIN registered_books rb ON rb.id = bs.book_id
       WHERE rb.slug = ? AND bs.chapter_num = ? AND bs.section_num = ?
-    `).get(bookSlug, chapter, section);
+    `
+      )
+      .get(bookSlug, chapter, section);
 
     if (!sectionRow) {
       db.close();
@@ -187,11 +191,11 @@ function updateSectionFromWorkflow(bookSlug, chapter, section, stepId, options =
 
     // Add timestamp for specific statuses
     const timestampFields = {
-      'mt_pending': null,
-      'mt_uploaded': null,
-      'review_approved': 'linguistic_approved_at',
-      'tm_created': 'tm_created_at',
-      'localization_approved': 'localization_approved_at'
+      mt_pending: null,
+      mt_uploaded: null,
+      review_approved: 'linguistic_approved_at',
+      tm_created: 'tm_created_at',
+      localization_approved: 'localization_approved_at',
     };
 
     if (timestampFields[config.status]) {
@@ -228,7 +232,9 @@ function detectExistingProgress(bookSlug, chapter) {
 
   try {
     // Get sections for this chapter from database
-    const sections = db.prepare(`
+    const sections = db
+      .prepare(
+        `
       SELECT bs.section_num, bs.module_id, bs.title_en, bs.status,
              bs.en_md_path, bs.mt_output_path, bs.faithful_path, bs.localized_path
       FROM book_sections bs
@@ -237,7 +243,9 @@ function detectExistingProgress(bookSlug, chapter) {
       ORDER BY
         CASE WHEN bs.section_num = 'intro' THEN 0 ELSE 1 END,
         CAST(REPLACE(bs.section_num, '.', '') AS INTEGER)
-    `).all(bookSlug, chapter);
+    `
+      )
+      .all(bookSlug, chapter);
 
     if (sections.length === 0) {
       db.close();
@@ -247,7 +255,7 @@ function detectExistingProgress(bookSlug, chapter) {
         resumeStepIndex: 0,
         sections: [],
         completedSteps: [],
-        error: 'No sections found for this chapter'
+        error: 'No sections found for this chapter',
       };
     }
 
@@ -261,7 +269,7 @@ function detectExistingProgress(bookSlug, chapter) {
       const folderPath = path.join(BOOKS_DIR, bookSlug, config.folder, chapterDir);
 
       let filesFound = 0;
-      let filesExpected = sections.length;
+      const filesExpected = sections.length;
 
       if (fs.existsSync(folderPath)) {
         for (const section of sections) {
@@ -277,7 +285,7 @@ function detectExistingProgress(bookSlug, chapter) {
         filesFound,
         filesExpected,
         complete: filesFound === filesExpected && filesFound > 0,
-        partial: filesFound > 0 && filesFound < filesExpected
+        partial: filesFound > 0 && filesFound < filesExpected,
       };
 
       if (stepProgress[stepId].complete) {
@@ -312,10 +320,11 @@ function detectExistingProgress(bookSlug, chapter) {
       }
     }
 
-    const canResume = completedSteps.length > 0 || Object.values(stepProgress).some(s => s.partial);
+    const canResume =
+      completedSteps.length > 0 || Object.values(stepProgress).some((s) => s.partial);
 
     // Build section details with file status
-    const sectionDetails = sections.map(s => ({
+    const sectionDetails = sections.map((s) => ({
       section: s.section_num,
       moduleId: s.module_id,
       title: s.title_en,
@@ -325,8 +334,8 @@ function detectExistingProgress(bookSlug, chapter) {
         mtOutput: checkFileExists(bookSlug, chapter, s.section_num, 'mt-upload'),
         faithful: checkFileExists(bookSlug, chapter, s.section_num, 'faithful-edit'),
         localized: checkFileExists(bookSlug, chapter, s.section_num, 'localization'),
-        tm: checkFileExists(bookSlug, chapter, s.section_num, 'tm-creation')
-      }
+        tm: checkFileExists(bookSlug, chapter, s.section_num, 'tm-creation'),
+      },
     }));
 
     db.close();
@@ -337,7 +346,7 @@ function detectExistingProgress(bookSlug, chapter) {
       resumeStepIndex,
       sections: sectionDetails,
       completedSteps,
-      stepProgress
+      stepProgress,
     };
   } catch (err) {
     db.close();
@@ -347,7 +356,7 @@ function detectExistingProgress(bookSlug, chapter) {
       resumeStepIndex: 0,
       sections: [],
       completedSteps: [],
-      error: err.message
+      error: err.message,
     };
   }
 }
@@ -373,7 +382,7 @@ function checkFileExists(bookSlug, chapter, section, stepId) {
 
   return {
     exists: fs.existsSync(filePath),
-    path: filePath
+    path: filePath,
   };
 }
 
@@ -396,7 +405,7 @@ function getCompletedStepDownloads(bookSlug, chapter, completedSteps) {
     const folderPath = path.join(BOOKS_DIR, bookSlug, config.folder, chapterDir);
     if (!fs.existsSync(folderPath)) continue;
 
-    const files = fs.readdirSync(folderPath).filter(f => {
+    const files = fs.readdirSync(folderPath).filter((f) => {
       // Match the expected pattern
       const ext = path.extname(f);
       if (stepId === 'source') return ext === '.md' && f.endsWith('.en.md');
@@ -409,12 +418,12 @@ function getCompletedStepDownloads(bookSlug, chapter, completedSteps) {
 
     downloads[stepId] = {
       folder: path.join(bookSlug, config.folder, chapterDir),
-      files: files.map(f => ({
+      files: files.map((f) => ({
         name: f,
         path: path.join(folderPath, f),
-        size: fs.statSync(path.join(folderPath, f)).size
+        size: fs.statSync(path.join(folderPath, f)).size,
       })),
-      fileCount: files.length
+      fileCount: files.length,
     };
   }
 
@@ -434,7 +443,7 @@ function batchUpdateSections(bookSlug, chapter, stepId, sectionFiles) {
   const results = {
     success: true,
     updated: 0,
-    errors: []
+    errors: [],
   };
 
   for (const { section, filePath } of sectionFiles) {
@@ -459,5 +468,5 @@ module.exports = {
   detectExistingProgress,
   checkFileExists,
   getCompletedStepDownloads,
-  batchUpdateSections
+  batchUpdateSections,
 };
