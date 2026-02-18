@@ -6,7 +6,11 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { parseSegments, assembleSegments } = require('../services/segmentParser');
+const {
+  parseSegments,
+  assembleSegments,
+  normalizeTermMarkers,
+} = require('../services/segmentParser');
 
 describe('parseSegments', () => {
   it('parses HTML comment markers', () => {
@@ -135,6 +139,46 @@ The formula [[MATH:1]] shows that [[MATH:2]] is valid.`;
     expect(segments).toHaveLength(1);
     expect(segments[0].content).toContain('[[MATH:1]]');
     expect(segments[0].content).toContain('[[MATH:2]]');
+  });
+});
+
+describe('normalizeTermMarkers', () => {
+  it('converts ** back to __ when EN has terms and IS has bold', () => {
+    const en = 'A __term__ in context';
+    const is = 'Ein **hugtak** í samhengi';
+    expect(normalizeTermMarkers(en, is)).toBe('Ein __hugtak__ í samhengi');
+  });
+
+  it('only converts excess bold when EN has both terms and bold', () => {
+    const en = 'A __term__ and **bold** text';
+    const is = 'Ein **hugtak** og **feitletrað** texti';
+    const result = normalizeTermMarkers(en, is);
+    // One term in EN, one bold in EN → one excess bold in IS to convert
+    expect(result).toBe('Ein __hugtak__ og **feitletrað** texti');
+  });
+
+  it('leaves IS unchanged when EN has no terms', () => {
+    const en = 'Some **bold** text';
+    const is = 'Nokkur **feitletruð** texti';
+    expect(normalizeTermMarkers(en, is)).toBe('Nokkur **feitletruð** texti');
+  });
+
+  it('leaves IS unchanged when terms already correct', () => {
+    const en = 'A __term__ here';
+    const is = 'Ein __hugtak__ hér';
+    expect(normalizeTermMarkers(en, is)).toBe('Ein __hugtak__ hér');
+  });
+
+  it('handles multiple terms converted by MT', () => {
+    const en = 'Both __alpha__ and __beta__ are terms';
+    const is = 'Bæði **alfa** og **beta** eru hugtök';
+    const result = normalizeTermMarkers(en, is);
+    expect(result).toBe('Bæði __alfa__ og __beta__ eru hugtök');
+  });
+
+  it('returns IS unchanged for empty inputs', () => {
+    expect(normalizeTermMarkers('', 'some text')).toBe('some text');
+    expect(normalizeTermMarkers('has __term__', '')).toBe('');
   });
 });
 

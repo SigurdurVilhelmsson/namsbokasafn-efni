@@ -34,6 +34,42 @@ function normalizeWraps(text) {
 }
 
 /**
+ * Normalize term markers in IS content based on EN source.
+ * MT engines (e.g. malstadur.is) convert __term__ to **term**.
+ * This detects excess ** in IS (compared to EN) and converts them back to __.
+ *
+ * @param {string} enContent - EN source segment content
+ * @param {string} isContent - IS translation segment content
+ * @returns {string} IS content with term markers normalized
+ */
+function normalizeTermMarkers(enContent, isContent) {
+  if (!enContent || !isContent) return isContent;
+
+  const enTermCount = (enContent.match(/__(.+?)__/g) || []).length;
+  if (enTermCount === 0) return isContent;
+
+  const enBoldCount = (enContent.match(/\*\*(.+?)\*\*/g) || []).length;
+  const isTermCount = (isContent.match(/__(.+?)__/g) || []).length;
+  const isBoldCount = (isContent.match(/\*\*(.+?)\*\*/g) || []).length;
+
+  const missingTerms = enTermCount - isTermCount;
+  if (missingTerms <= 0) return isContent;
+
+  const excessBold = isBoldCount - enBoldCount;
+  if (excessBold <= 0) return isContent;
+
+  const termsToConvert = Math.min(missingTerms, excessBold);
+  let converted = 0;
+  return isContent.replace(/\*\*(.+?)\*\*/g, (match, text) => {
+    if (converted < termsToConvert) {
+      converted++;
+      return `__${text}__`;
+    }
+    return match;
+  });
+}
+
+/**
  * Parse a segment file into structured segments.
  *
  * @param {string} content - Raw file content
@@ -186,7 +222,9 @@ function loadModuleForEditing(book, chapter, moduleId) {
     segmentType: en.segmentType,
     elementId: en.elementId,
     en: en.content,
-    is: isLookup[en.segmentId] ? isLookup[en.segmentId].content : '',
+    is: isLookup[en.segmentId]
+      ? normalizeTermMarkers(en.content, isLookup[en.segmentId].content)
+      : '',
     hasTranslation: !!isLookup[en.segmentId],
   }));
 
@@ -302,7 +340,7 @@ function loadModuleForLocalization(book, chapter, moduleId) {
       segmentType: en.segmentType,
       elementId: en.elementId,
       en: en.content,
-      faithful: faithful ? faithful.content : '',
+      faithful: faithful ? normalizeTermMarkers(en.content, faithful.content) : '',
       localized: localized ? localized.content : '',
       hasFaithful: !!faithful,
       hasLocalized: !!localized,
@@ -391,6 +429,7 @@ function listChapterModules(book, chapter) {
 
 module.exports = {
   normalizeWraps,
+  normalizeTermMarkers,
   parseSegments,
   assembleSegments,
   getModulePaths,

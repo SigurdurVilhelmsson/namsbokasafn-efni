@@ -44,6 +44,8 @@ const INVISIBLE_PATTERNS = [
   /<!--\s*SEG:[^>]+-->/g, // Original segment tags (before conversion)
   /\{\{LINK:\d+\}\}/g, // Link placeholders (opening)
   /\{\{\/LINK\}\}/g, // Link placeholders (closing)
+  /\{\{TERM\}\}/g, // Term placeholders (opening)
+  /\{\{\/TERM\}\}/g, // Term placeholders (closing)
 ];
 
 function parseArgs(args) {
@@ -151,6 +153,14 @@ function protectLinks(content) {
   });
 
   return { content: result, links };
+}
+
+/**
+ * Protect term markers from being mangled by MT.
+ * __text__ → {{TERM}}text{{/TERM}}
+ */
+function protectTerms(content) {
+  return content.replace(/__(.+?)__/g, '{{TERM}}$1{{/TERM}}');
 }
 
 /**
@@ -300,6 +310,9 @@ function processFile(inputPath, outputDir, options) {
   const { content: linkProtectedContent, links } = protectLinks(protectedContent);
   protectedContent = linkProtectedContent;
   const linkCount = Object.keys(links).length;
+
+  // Step 2b: Protect term markers
+  protectedContent = protectTerms(protectedContent);
 
   if (verbose && linkCount > 0) {
     console.log(`  Links protected: ${linkCount}`);

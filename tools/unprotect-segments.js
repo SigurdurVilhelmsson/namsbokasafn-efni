@@ -167,6 +167,10 @@ function mergeFiles(basePath, splitPaths, verbose) {
 function unprotectTags(content) {
   let result = content;
 
+  // Restore term markers before generic tag conversions
+  // {{TERM}}text{{/TERM}} → __text__
+  result = result.replace(/\{\{TERM\}\}(.+?)\{\{\/TERM\}\}/g, '__$1__');
+
   // Convert {{SEG:...}} → <!-- SEG:... -->
   result = result.replace(/\{\{SEG:([^}]+)\}\}/g, '<!-- SEG:$1 -->');
 
