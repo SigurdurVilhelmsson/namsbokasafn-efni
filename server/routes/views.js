@@ -108,6 +108,26 @@ router.get('/books', (req, res) => {
 });
 
 /**
+ * GET /books/:bookId
+ * Book detail page (serves same view, auto-loads book)
+ */
+router.get('/books/:bookId', (req, res) => {
+  sendView(res, 'books.html');
+});
+
+/**
+ * GET /editor
+ * Legacy editor redirect → segment editor
+ */
+router.get('/editor', (req, res) => {
+  const { book, chapter } = req.query;
+  let target = '/segment-editor';
+  if (book && chapter)
+    target += `?book=${encodeURIComponent(book)}&chapter=${encodeURIComponent(chapter)}`;
+  res.redirect(target);
+});
+
+/**
  * GET /terminology
  * Terminology database page
  */

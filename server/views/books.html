@@ -127,6 +127,12 @@
         }
 
         loadBooks();
+
+        // Auto-load book if URL is /books/:slug
+        const pathMatch = window.location.pathname.match(/^\/books\/([a-z0-9-]+)$/);
+        if (pathMatch) {
+          setTimeout(() => loadBookDetail(pathMatch[1]), 100);
+        }
       } else {
         userInfo.innerHTML = '<a href="/api/auth/login" class="btn btn-primary">Innskráning</a>';
         document.getElementById('books-list').innerHTML = '<p class="text-muted">Innskráning krafist til að sjá bækur</p>';
