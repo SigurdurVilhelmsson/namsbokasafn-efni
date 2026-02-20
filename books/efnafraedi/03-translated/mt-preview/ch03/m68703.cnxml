@@ -43,21 +43,21 @@ tækni af mannavöldum. Nánari umfjöllun um eiginleika lausna er að finna
 í kaflanum um lausnir og dreifur, en hér er kynning á nokkrum af
 grunneiginleikum lausna.</para>
 <para id="fs-idm635664">Hlutfallslegt magn tiltekins
-efnisþáttar í lausn er þekkt sem <term>styrkur</term> hans. Oft, þó ekki alltaf,
+efnisþáttar í lausn er þekkt sem <term>styrkur (e. concentration)</term> hans. Oft, þó ekki alltaf,
 inniheldur lausn einn efnisþátt með styrk sem er verulega meiri en allra
-annarra efnisþátta. Þessi efnisþáttur er kallaður <term>leysir</term> og má líta
+annarra efnisþátta. Þessi efnisþáttur er kallaður <term>leysir (e. solvent)</term> og má líta
 á hann sem miðilinn sem hinir efnisþættirnir eru dreifðir eða <emphasis effect="bold">leystir
 upp</emphasis> í. Lausnir þar sem vatn er leysirinn eru að sjálfsögðu mjög
 algengar á plánetunni okkar. Lausn þar sem vatn er leysirinn er kölluð
-<term>vatnslausn</term>.</para>
-<para id="fs-idm64279024"><term>Uppleysanlegt efni</term> er efnisþáttur
+<term>vatnslausn (e. dissolved)</term>.</para>
+<para id="fs-idm64279024"><term>Uppleysanlegt efni (e. solute)</term> er efnisþáttur
 í lausn sem er venjulega til staðar í mun lægri styrk en leysirinn.
 Styrkur uppleysanlegra efna er oft lýst með þáttbundnum hugtökum eins og
-<term>þynnt</term> (af tiltölulega lágum styrk) og <term>óþynnt</term> (af tiltölulega
+<term>þynnt (e. dilute)</term> (af tiltölulega lágum styrk) og <term>óþynnt (e. concentrated)</term> (af tiltölulega
 háum styrk).</para>
 <para id="fs-idm62212352">Hægt er að meta styrk magngreinanlega
 með ýmsum mælieiningum, sem hver um sig hentar fyrir tiltekin not.
-<term>Mólstyrkur (<emphasis effect="italics">M</emphasis>)</term> er gagnleg styrkleining fyrir mörg not í efnafræði.
+<term>Mólstyrkur (<emphasis effect="italics">M</emphasis>) (e. molarity (<emphasis effect="italics">m</emphasis>))</term> er gagnleg styrkleining fyrir mörg not í efnafræði.
 Mólstyrkur er skilgreindur sem fjöldi móla af uppleystu efni í
 nákvæmlega 1 lítra (1 L) af lausninni:</para>
 <equation id="fs-idm57520096" class="unnumbered"><m:math><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:math></equation>
@@ -156,7 +156,7 @@ sem inniheldur 66,0 g af KBr?</para>
 </section>
 <section id="fs-idm97949648">
 <title>Þynning lausna</title>
-<para id="fs-idm134700400"><term>Þynning</term> er ferli þar sem styrkur
+<para id="fs-idm134700400"><term>Þynning (e. dilution)</term> er ferli þar sem styrkur
 lausnar er minnkaður með því að bæta við leysi. Til dæmis þynnist íste
 smám saman þegar ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál
 leysisins (vatnsins) og heildarrúmmál lausnarinnar (ísteiðsins) og
@@ -557,47 +557,47 @@ hámarks leyfilegur mólstyrkur þess efnis?</para>
 </content>
 <glossary>
 <definition id="fs-idm26450752">
-<term>vatnslausn</term>
+<term>vatnslausn (e. aqueous solution)</term>
 <meaning id="fs-idm26450752-meaning">lausn þar sem vatn er
 leysirinn</meaning>
 </definition>
 <definition id="fs-idm26449216">
-<term>óþynnt</term>
+<term>óþynnt (e. concentrated)</term>
 <meaning id="fs-idm26449216-meaning">þáttbundið hugtak yfir
 lausn sem inniheldur uppleyst efni í tiltölulega háum styrk</meaning>
 </definition>
 <definition id="fs-idm26447680">
-<term>styrkur</term>
+<term>styrkur (e. concentration)</term>
 <meaning id="fs-idm26447680-meaning">magnbundin mæling á
 hlutfallslegu magni uppleysts efnis og leysis í lausn</meaning>
 </definition>
 <definition id="fs-idm26674336">
-<term>þynnt</term>
+<term>þynnt (e. dilute)</term>
 <meaning id="fs-idm26674336-meaning">þáttbundið hugtak yfir
 lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk</meaning>
 </definition>
 <definition id="fs-idm26672800">
-<term>þynning</term>
+<term>þynning (e. dilution)</term>
 <meaning id="fs-idm26672800-meaning">ferli þar sem leysi er
 bætt við lausn til að minnka styrk uppleystra efna</meaning>
 </definition>
 <definition id="fs-idm26671264">
-<term>uppleyst</term>
+<term>uppleyst (e. dissolved)</term>
 <meaning id="fs-idm26671264-meaning">lýsir ferlinu þar sem
 uppleystir efnisþættir dreifast í leysi</meaning>
 </definition>
 <definition id="fs-idm26669728">
-<term>mólstyrkur (M)</term>
+<term>mólstyrkur (M) (e. molarity (m))</term>
 <meaning id="fs-idm26669728-meaning">styrkleikaeining,
 skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn</meaning>
 </definition>
 <definition id="fs-idm26667568">
-<term>uppleyst efni</term>
+<term>uppleyst efni (e. solute)</term>
 <meaning id="fs-idm26667568-meaning">efnisþáttur lausnar sem
 er í lægri styrk en leysirinn</meaning>
 </definition>
 <definition id="fs-idm26666032">
-<term>leysir</term>
+<term>leysir (e. solvent)</term>
 <meaning id="fs-idm26666032-meaning">efnisþáttur lausnar sem
 er í hærri styrk miðað við aðra efnisþætti</meaning>
 </definition>

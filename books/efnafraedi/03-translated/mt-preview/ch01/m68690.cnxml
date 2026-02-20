@@ -16,7 +16,7 @@ námundunarreglum á útreiknaðar stærðir</item></list></md:abstract>
 <para id="fs-idm288863760">Talning er eina tegund mælinga sem
 er laus við óvissu, að því gefnu að fjöldi hluta sem verið er að telja
 breytist ekki á meðan talningin fer fram. Niðurstaða slíkrar
-talningarmælingar er dæmi um <term>nákvæma tölu</term>. Með því að telja eggin í
+talningarmælingar er dæmi um <term>nákvæma tölu (e. exact number)</term>. Með því að telja eggin í
 öskju er hægt að ákvarða <emphasis effect="italics">nákvæmlega</emphasis> hversu mörg egg askjan inniheldur.
 Tölur skilgreindra stærða eru einnig nákvæmar. Samkvæmt skilgreiningu er
 1 fet nákvæmlega 12 tommur, 1 tomma er nákvæmlega 2,54 sentimetrar og 1
@@ -61,10 +61,10 @@ krónupeningsins sé líklega á milli 6,71 og 6,73 grömm. Krónupeningurinn
 vegur <emphasis effect="italics">um það bil</emphasis> 6,72 grömm, með nafnóvissu í mælingunni upp á ± 0,01
 gramm. Ef peningurinn er vigtaður á næmari vog gæti massinn verið 6,723
 g. Þetta þýðir að massi hans liggur á milli 6,722 og 6,724 grömm, sem er
-óvissa upp á 0,001 gramm. Sérhver mæling hefur einhverja <term>óvissu</term>, sem
+óvissa upp á 0,001 gramm. Sérhver mæling hefur einhverja <term>óvissu (e. uncertainty)</term>, sem
 fer eftir tækinu sem notað er (og hæfni notandans). Allir tölustafir í
 mælingu, þar með talinn óvissi síðasti tölustafurinn, eru kallaðir
-<term>markverðir stafir</term> eða <term>marktækir tölustafir</term>. Athugaðu að núll
+<term>markverðir stafir (e. significant figures)</term> eða <term>marktækir tölustafir (e. significant digits)</term>. Athugaðu að núll
 getur verið mælt gildi; til dæmis, ef þú stendur á vog sem sýnir þyngd
 með nákvæmni upp á næsta pund og hún sýnir „120“, þá eru 1 (hundruð), 2
 (tugir) og 0 (einingar) öll marktæk (mæld) gildi.</para>
@@ -132,7 +132,7 @@ kosti jafn óvissar og mælingin sjálf. Takið tillit til óvissu í mælingum
 til að forðast að gefa ranga mynd af óvissu í reiknuðum niðurstöðum. Ein
 leið til þess er að gefa upp niðurstöðu útreiknings með réttum fjölda
 markverðra stafa, sem er ákvarðaður af eftirfarandi þremur reglum um
-<term>námundun</term> talna:</para>
+<term>námundun (e. rounding)</term> talna:</para>
 <list id="fs-idm65809616" list-type="enumerated" number-style="arabic">
 <item>Þegar tölur eru lagðar saman
 eða dregnar frá, námundið niðurstöðuna að sama fjölda aukastafa og talan
@@ -320,7 +320,7 @@ eðlismassa sem gefinn er fyrir gull í <link target-id="fs-idm45639696"/>.</par
 <title>Hittni og nákvæmni</title>
 <para id="fs-idp4474304">Vísindamenn gera yfirleitt endurteknar
 mælingar á stærð til að tryggja gæði niðurstaðna sinna og til að meta
-bæði <term>nákvæmni</term> og <term>hittni</term> niðurstaðna sinna. Mælingar eru sagðar
+bæði <term>nákvæmni (e. precision)</term> og <term>hittni (e. accuracy)</term> niðurstaðna sinna. Mælingar eru sagðar
 nákvæmar ef þær gefa mjög svipaðar niðurstöður þegar þær eru endurteknar
 á sama hátt. Mæling er talin hafa mikla hittni ef hún gefur niðurstöðu
 sem er mjög nálægt sönnu eða viðteknu gildi. Nákvæm gildi eru í samræmi
@@ -617,34 +617,34 @@ pípettum: 27,02 ml, 26,99 ml, 26,97 ml, 27,01 ml</para>
 </content>
 <glossary>
 <definition id="fs-idp330245120">
-<term>nákvæmni</term>
+<term>nákvæmni (e. accuracy)</term>
 <meaning id="fs-idp330245120-meaning">hversu nálægt mæling er
 réttu gildi</meaning>
 </definition>
 <definition id="fs-idp17670352">
-<term>nákvæm tala</term>
+<term>nákvæm tala (e. exact number)</term>
 <meaning id="fs-idp17670352-meaning">tala fengin með talningu
 eða samkvæmt skilgreiningu</meaning>
 </definition>
 <definition id="fs-idp28800512">
-<term>prentnákvæmni</term>
+<term>prentnákvæmni (e. precision)</term>
 <meaning id="fs-idp28800512-meaning">hversu nálægt mæling er
 sömu mælingu þegar hún er endurtekin</meaning>
 </definition>
 <definition id="fs-idp68905696">
-<term>námundun</term>
+<term>námundun (e. rounding)</term>
 <meaning id="fs-idp68905696-meaning">aðferð sem notuð er til
 að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna
 í þeim mælingum sem notaðar eru í útreikningnum</meaning>
 </definition>
 <definition id="fs-idp3346000">
-<term>markverðir stafir</term>
+<term>markverðir stafir (e. significant figures)</term>
 <meaning id="fs-idp3346000-meaning">(einnig, marktækir
 tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi
 síðasti tölustafurinn</meaning>
 </definition>
 <definition id="fs-idp96606928">
-<term>óvissa</term>
+<term>óvissa (e. uncertainty)</term>
 <meaning id="fs-idp96606928-meaning">mat á því hversu mikið
 mæling víkur frá sönnu gildi</meaning>
 </definition>

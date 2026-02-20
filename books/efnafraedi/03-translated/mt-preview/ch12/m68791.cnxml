@@ -15,7 +15,7 @@ frá gögnum um styrk/tíma</item></list></md:abstract>
 <para id="fs-idp89497264">Hraðalögmálin sem fjallað hefur verið
 um hingað til tengja saman hvarfhraða og styrk hvarfefna. Við getum
 einnig ákvarðað annað form hvers hraðalögmáls sem tengir saman styrk
-hvarfefna og tíma. Þau eru kölluð <term>heildun hraðalögmála</term>. Við getum
+hvarfefna og tíma. Þau eru kölluð <term>heildun hraðalögmála (e. integrated rate laws)</term>. Við getum
 notað heildað hraðalögmál til að ákvarða magn hvarfefnis eða myndefnis
 sem er til staðar eftir ákveðinn tíma eða til að meta þann tíma sem það
 tekur fyrir efnahvarf að ná ákveðnu marki. Til dæmis er heildað
@@ -1158,12 +1158,12 @@ torr.</para>
 <glossary>
 <definition id="fs-idm46849712">
 <term>helmingunartími hvarfs
-(t1/2)</term>
+(t1/2) (e. half-life of a reaction (tl/2))</term>
 <meaning id="fs-idm46849712-meaning">tími sem það tekur fyrir
 helming af tilteknu magni hvarfefnis að eyðast</meaning>
 </definition>
 <definition id="fs-idm46847680">
-<term>heildað hraðalögmál</term>
+<term>heildað hraðalögmál (e. integrated rate law)</term>
 <meaning id="fs-idm46847680-meaning">jafna sem tengir styrk
 hvarfefnis við liðinn tíma hvarfs</meaning>
 </definition>

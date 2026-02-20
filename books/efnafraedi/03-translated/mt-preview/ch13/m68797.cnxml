@@ -13,10 +13,10 @@ efnajafnvægis</item></list></md:abstract>
 felur í sér að setja formúlur hvarfefna vinstra megin við hvarför og
 formúlur myndefna hægra megin. Samkvæmt þessari hefð og skilgreiningum á
 „hvarfefni“ og „myndefni“ táknar efnajafna viðkomandi efnahvarf sem
-gengur frá vinstri til hægri. <term>Afturkræf</term> efnahvörf geta þó gengið í
+gengur frá vinstri til hægri. <term>Afturkræf (e. reversible reactions)</term> efnahvörf geta þó gengið í
 báðar áttir, bæði fram (frá vinstri til hægri) og aftur (frá hægri til
 vinstri). Þegar hvarfhraði fram- og afturhvarfa er jafn, helst styrkur
-hvarfefna og myndefna stöðugur með tímanum og kerfið er í <term>jafnvægi</term>.
+hvarfefna og myndefna stöðugur með tímanum og kerfið er í <term>jafnvægi (e. equilibrium)</term>.
 Hlutfallslegur styrkur hvarfefna og myndefna í jafnvægiskerfum er mjög
 breytilegur; sum kerfi innihalda aðallega myndefni í jafnvægi, sum
 innihalda aðallega hvarfefni og sum innihalda umtalsvert magn af báðum.</para>
@@ -142,13 +142,13 @@ hvarfefna og myndefna þarf ekki að vera jafn.</para>
 </content>
 <glossary>
 <definition id="fs-idp87452944">
-<term>jafnvægi</term>
+<term>jafnvægi (e. equilibrium)</term>
 <meaning id="fs-idp87452944-meaning">ástand afturkræfs
 efnahvarfs þar sem framhvarfið og bakhvarfið eiga sér stað með jöfnum
 hraða</meaning>
 </definition>
 <definition id="fs-idp4379168">
-<term>afturkræft efnahvarf</term>
+<term>afturkræft efnahvarf (e. reversible reaction)</term>
 <meaning id="fs-idp4379168-meaning">efnahvarf sem getur gengið
 bæði í framátt og bakátt við gefnar aðstæður</meaning>
 </definition>

@@ -84,6 +84,7 @@ function parseArgs(args) {
     track: null,
     verbose: false,
     allowIncomplete: false,
+    annotateEn: true,
     help: false,
   };
 
@@ -92,6 +93,7 @@ function parseArgs(args) {
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
     else if (arg === '--allow-incomplete') result.allowIncomplete = true;
+    else if (arg === '--no-annotate-en') result.annotateEn = false;
     else if (arg === '--chapter' && args[i + 1]) {
       const chapterArg = args[++i];
       // Accept either numeric chapter or "appendices"
@@ -127,6 +129,7 @@ Options:
                        (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
   --allow-incomplete   Write output even if segments are missing (for diagnostics)
+  --no-annotate-en     Disable English term annotations (e. term) in output
   -h, --help           Show this help
 
 Input Files (read from):
@@ -240,6 +243,70 @@ function restoreTermMarkers(isSegments, enSegments) {
   }
 
   return { segments: isSegments, restoredCount };
+}
+
+/**
+ * Annotate inline __term__ markers in IS segments with the English original.
+ *
+ * For each segment present in both maps, extracts __term__ texts from the EN
+ * source in order and inserts `(e. en_term)` after the IS term inside the
+ * markers: `__IS_term (e. en_term)__`.
+ *
+ * Skips annotation when IS and EN terms are identical (case-insensitive),
+ * e.g. "pH", "ATP".
+ *
+ * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
+ * @param {Map<string, string>} enSegments - Original English segments
+ * @returns {{ segments: Map<string, string>, annotatedCount: number }}
+ */
+function annotateInlineTerms(isSegments, enSegments) {
+  let annotatedCount = 0;
+
+  // Same regex strategy as restoreTermMarkers():
+  // EN has distinct __term__ and **bold** — extract only __term__ texts
+  const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*)/g;
+  // IS already has __term__ restored (after restoreTermMarkers)
+  const isTermPattern = /__([^_]+)__/g;
+
+  for (const [segId, isText] of isSegments) {
+    const enText = enSegments.get(segId);
+    if (!enText) continue;
+
+    // Extract EN term texts in order (skip bold markers)
+    const enTermTexts = [];
+    let enMatch;
+    enMarkerPattern.lastIndex = 0;
+    while ((enMatch = enMarkerPattern.exec(enText)) !== null) {
+      if (enMatch[2] !== undefined) {
+        // __term__ match — record the term text
+        enTermTexts.push(enMatch[2]);
+      }
+      // **bold** — skip
+    }
+
+    if (enTermTexts.length === 0) continue;
+
+    // Replace IS __term__ markers positionally
+    let termIndex = 0;
+    const annotated = isText.replace(isTermPattern, (match, inner) => {
+      if (termIndex >= enTermTexts.length) return match;
+
+      const enTerm = enTermTexts[termIndex].toLowerCase();
+      termIndex++;
+
+      // Skip if IS and EN terms are the same (case-insensitive)
+      if (inner.toLowerCase() === enTerm) return match;
+
+      annotatedCount++;
+      return `__${inner} (e. ${enTerm})__`;
+    });
+
+    if (annotated !== isText) {
+      isSegments.set(segId, annotated);
+    }
+  }
+
+  return { segments: isSegments, annotatedCount };
 }
 
 /**
@@ -554,13 +621,43 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
 
   // Add glossary if present
   if (structure.glossary) {
+    const enSegments = options.enSegments;
+    const annotateEn = options.annotateEn !== false;
+
     lines.push('<glossary>');
     for (const item of structure.glossary.items) {
       const termText = getSeg(item.termSegmentId);
       const defText = getSeg(item.definitionSegmentId);
       if (termText && defText) {
+        // Annotate glossary term with English original
+        let annotatedTerm = termText;
+        if (annotateEn && enSegments && item.termSegmentId) {
+          const enTermRaw = enSegments.get(item.termSegmentId);
+          if (enTermRaw) {
+            // EN glossary terms may have __term__ markers — strip them
+            const enTerm = enTermRaw
+              .replace(/__([^_]+)__/g, '$1')
+              .trim()
+              .toLowerCase();
+            // Strip any __term__ markers from IS text for comparison
+            const isTermClean = annotatedTerm
+              .replace(/__([^_]+)__/g, '$1')
+              .replace(/<term>([^<]*)<\/term>/g, '$1')
+              .trim();
+            if (isTermClean.toLowerCase() !== enTerm) {
+              // Insert annotation before closing </term> if it's a CNXML term element,
+              // or append if plain text
+              if (annotatedTerm.includes('</term>')) {
+                annotatedTerm = annotatedTerm.replace(/<\/term>/, ` (e. ${enTerm})</term>`);
+              } else {
+                annotatedTerm = `${annotatedTerm} (e. ${enTerm})`;
+              }
+            }
+          }
+        }
+
         lines.push(`<definition id="${item.id}">`);
-        lines.push(`<term>${termText}</term>`);
+        lines.push(`<term>${annotatedTerm}</term>`);
         lines.push(`<meaning id="${item.id}-meaning">${defText}</meaning>`);
         lines.push('</definition>');
       }
@@ -1423,8 +1520,18 @@ async function main() {
         console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
       }
 
+      // Annotate inline terms with English originals: __IS (e. en)__
+      if (args.annotateEn) {
+        const { annotatedCount } = annotateInlineTerms(segments, enSegments);
+        if (args.verbose && annotatedCount > 0) {
+          console.error(`  Annotated ${annotatedCount} inline term(s) with EN originals`);
+        }
+      }
+
       const result = buildCnxml(structure, segments, equations, originalCnxml, {
         verbose: args.verbose,
+        enSegments,
+        annotateEn: args.annotateEn,
       });
 
       if (!result.report.complete && !args.allowIncomplete) {
@@ -1465,4 +1572,4 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }
 
-export { restoreTermMarkers, parseSegments };
+export { restoreTermMarkers, annotateInlineTerms, parseSegments };

@@ -16,7 +16,7 @@ jafnvægiskerfi verður fyrir breytingu á aðstæðum sem hefur mismunandi
 áhrif á þessa hvarfhraða (<emphasis effect="italics">röskun</emphasis>), þá eru hraðarnir ekki lengur jafnir
 og kerfið er ekki í jafnvægi. Kerfið mun í kjölfarið gangast undir
 nettóhvarf í átt að meiri hraða (<emphasis effect="italics">hliðrun</emphasis>) sem mun endurheimta
-jafnvægið. Þetta fyrirbæri er tekið saman í <term>lögmáli Le Châteliers</term>:
+jafnvægið. Þetta fyrirbæri er tekið saman í <term>lögmáli Le Châteliers (e. le châtelier’s principle)</term>:
 <emphasis effect="italics">ef jafnvægiskerfi er raskað mun kerfið gangast undir hliðrun til að
 bregðast við röskuninni sem endurheimtir jafnvægi</emphasis>.</para>
 <para id="fs-idp137820032">Hvarfhraðar verða fyrst og fremst
@@ -656,7 +656,7 @@ sýrujónun?</para>
 </content>
 <glossary>
 <definition id="fs-idp108249008">
-<term>Lögmál Le Châteliers</term>
+<term>Lögmál Le Châteliers (e. le châtelier’s principle)</term>
 <meaning id="fs-idp108249008-meaning">jafnvægi sem verður
 fyrir álagi mun hliðrast á þann hátt að það vinnur gegn álaginu og kemur
 aftur á jafnvægi</meaning>

@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { execSync } from 'child_process';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import { restoreTermMarkers, parseSegments } from '../cnxml-inject.js';
+import { restoreTermMarkers, annotateInlineTerms } from '../cnxml-inject.js';
 
 const ROOT = join(import.meta.dirname, '..', '..');
 const TOOLS = join(ROOT, 'tools');
@@ -445,5 +445,140 @@ describe('restoreTermMarkers', () => {
     expect(segments.get('seg2')).toBe('Engin hugtök hér.');
     expect(segments.get('seg3')).toBe('__Varmi__ og **feitletrað**.');
     expect(restoredCount).toBe(2);
+  });
+});
+
+// =====================================================================
+// annotateInlineTerms unit tests
+// =====================================================================
+
+describe('annotateInlineTerms', () => {
+  it('should annotate a single term with EN original', () => {
+    const en = new Map([['seg1', 'This is __chemistry__.']]);
+    const is = new Map([['seg1', 'Þetta er __efnafræði__.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('Þetta er __efnafræði (e. chemistry)__.');
+    expect(annotatedCount).toBe(1);
+  });
+
+  it('should skip when IS and EN terms are identical (case-insensitive)', () => {
+    const en = new Map([['seg1', 'The __pH__ is important.']]);
+    const is = new Map([['seg1', '__pH__ er mikilvægt.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('__pH__ er mikilvægt.');
+    expect(annotatedCount).toBe(0);
+  });
+
+  it('should annotate multiple terms in one segment', () => {
+    const en = new Map([['seg1', '__Energy__ and __work__ are related.']]);
+    const is = new Map([['seg1', '__Orka__ og __vinna__ eru skyld.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('__Orka (e. energy)__ og __vinna (e. work)__ eru skyld.');
+    expect(annotatedCount).toBe(2);
+  });
+
+  it('should only annotate terms, not bold markers', () => {
+    const en = new Map([['seg1', '__Energy__ is **important**. __Work__ too.']]);
+    const is = new Map([['seg1', '__Orka__ er **mikilvæg**. __Vinna__ líka.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe(
+      '__Orka (e. energy)__ er **mikilvæg**. __Vinna (e. work)__ líka.'
+    );
+    expect(annotatedCount).toBe(2);
+  });
+
+  it('should handle fewer IS term markers than EN terms', () => {
+    const en = new Map([['seg1', '__Energy__ and __work__ are concepts.']]);
+    const is = new Map([['seg1', '__Orka__ og vinna eru hugtök.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('__Orka (e. energy)__ og vinna eru hugtök.');
+    expect(annotatedCount).toBe(1);
+  });
+
+  it('should skip segments not present in EN', () => {
+    const en = new Map();
+    const is = new Map([['seg1', '__Orka__ er hugtak.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('__Orka__ er hugtak.');
+    expect(annotatedCount).toBe(0);
+  });
+
+  it('should lowercase EN terms in annotations', () => {
+    const en = new Map([['seg1', '__Thermochemistry__ is a field.']]);
+    const is = new Map([['seg1', '__Varmaefnafræði__ er fræðigrein.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('__Varmaefnafræði (e. thermochemistry)__ er fræðigrein.');
+    expect(annotatedCount).toBe(1);
+  });
+
+  it('should skip segments with no EN terms (only bold)', () => {
+    const en = new Map([['seg1', 'This is **important** text.']]);
+    const is = new Map([['seg1', 'Þetta er __mikilvægur__ texti.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    // No EN terms to match against — IS terms left untouched
+    expect(segments.get('seg1')).toBe('Þetta er __mikilvægur__ texti.');
+    expect(annotatedCount).toBe(0);
+  });
+});
+
+// =====================================================================
+// English annotation integration tests
+// =====================================================================
+
+describe('English term annotation integration', () => {
+  it('should produce annotated terms in CNXML output', () => {
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-machine-translated`
+    );
+
+    const cnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68664.cnxml'),
+      'utf8'
+    );
+
+    // Should contain annotated terms with (e. ...)
+    expect(cnxml).toMatch(/\(e\. [a-z]/);
+    // Should contain <term> elements with annotations
+    expect(cnxml).toMatch(/<term>[^<]*\(e\. [a-z][^)]*\)[^<]*<\/term>/);
+  });
+
+  it('should NOT produce annotations with --no-annotate-en', () => {
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-machine-translated --no-annotate-en`
+    );
+
+    const cnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68664.cnxml'),
+      'utf8'
+    );
+
+    // Should NOT contain (e. ...) annotations
+    expect(cnxml).not.toMatch(/\(e\. [a-z]/);
+  });
+
+  it('should annotate glossary terms with EN originals', () => {
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-machine-translated`
+    );
+
+    const cnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68664.cnxml'),
+      'utf8'
+    );
+
+    // Glossary section should have annotated terms
+    const glossaryMatch = cnxml.match(/<glossary>[\s\S]*?<\/glossary>/);
+    expect(glossaryMatch).not.toBeNull();
+    if (glossaryMatch) {
+      expect(glossaryMatch[0]).toMatch(/\(e\. [a-z]/);
+    }
   });
 });

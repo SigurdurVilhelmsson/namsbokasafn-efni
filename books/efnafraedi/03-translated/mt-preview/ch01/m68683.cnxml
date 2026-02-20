@@ -45,8 +45,8 @@ eins og með tölur, þegar einingu er deilt með sams konar einingu (í
 þessu tilfelli, m/m), er niðurstaðan „1“ — eða, eins og almennt er
 orðað, einingarnar „styttast út“.</para>
 <para id="fs-idp44099792">Þessir útreikningar eru dæmi um
-fjölhæfa stærðfræðilega nálgun sem kallast <term>einingagreining</term> (eða
-<term>þáttamerkingaraðferðin</term>). Einingagreining byggir á þessari forsendu:
+fjölhæfa stærðfræðilega nálgun sem kallast <term>einingagreining (e. dimensional analysis)</term> (eða
+<term>þáttamerkingaraðferðin (e. factor-label method)</term>). Einingagreining byggir á þessari forsendu:
 <emphasis effect="italics">einingar stærða verða að lúta sömu stærðfræðilegu aðgerðum og
 tilheyrandi tölur þeirra</emphasis>. Þessa aðferð má beita á útreikninga, allt frá
 einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem
@@ -56,7 +56,7 @@ fela í sér nokkrar mismunandi stærðir.</para>
 einingagreining</title>
 <para id="fs-idm273312256">Hlutfall tveggja jafngildra stærða
 sem gefnar eru upp með mismunandi mælieiningum má nota sem
-<term>umreikningsstuðul fyrir einingar</term>. Til dæmis eru lengdirnar 2,54 cm
+<term>umreikningsstuðul fyrir einingar (e. unit conversion factor)</term>. Til dæmis eru lengdirnar 2,54 cm
 og 1 tommur jafngildar (samkvæmt skilgreiningu) og því má leiða út
 umreikningsstuðul fyrir einingar úr hlutfallinu,</para>
 <equation id="fs-idm256748160" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.54 cm</m:mtext></m:mrow><m:mrow><m:mtext>1 in.</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mtext>(2.54 cm</m:mtext><m:mo>=</m:mo><m:mtext>1 in.) or 2.54</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mrow><m:mtext>in.</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -223,7 +223,7 @@ gallonið, hver var eldsneytiskostnaðurinn fyrir þessa ferð?</para>
 <section id="fs-idm206910464">
 <title>Umreikningur á
 hitastigseiningum</title>
-<para id="fs-idm262720192">Við notum orðið <term>hitastig</term> til að
+<para id="fs-idm262720192">Við notum orðið <term>hitastig (e. temperature)</term> til að
 vísa til þess hversu heitt eða kalt efni er. Ein leið til að mæla
 breytingu á hitastigi er að nýta sér þá staðreynd að flest efni þenjast
 út þegar hitastig þeirra hækkar og dragast saman þegar hitastig þeirra
@@ -798,7 +798,7 @@ Hvert var hitastigið á Fahrenheit-kvarðanum?</para>
 </content>
 <glossary>
 <definition id="fs-idm216300016">
-<term>víddagreining</term>
+<term>víddagreining (e. dimensional analysis)</term>
 <meaning id="fs-idm216300016-meaning">(einnig
 þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita
 við útreikninga, allt frá einföldum einingabreytingum til flóknari,
@@ -810,13 +810,13 @@ margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir</meaning
 vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða</meaning>
 </definition>
 <definition id="fs-idm327357936">
-<term>hitastig</term>
+<term>hitastig (e. temperature)</term>
 <meaning id="fs-idm327357936-meaning">ástandseiginleiki sem
 táknar hita eða kulda efnis</meaning>
 </definition>
 <definition id="fs-idm307214528">
 <term>umreikningsstuðull
-eininga</term>
+eininga (e. unit conversion factor)</term>
 <meaning id="fs-idm307214528-meaning">hlutfall jafngildra
 stærða gefið upp með mismunandi einingum; notað til að breyta úr einni
 einingu í aðra</meaning>

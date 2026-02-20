@@ -18,7 +18,7 @@ hvarfefni og myndefni taka þátt í efnahvarfinu og gera þannig kleift að
 flokka hvarfið. Stuðlar gefa upp hlutfallslegan fjölda þessara efna og
 gera kleift að framkvæma magnbundið mat á sambandi milli magns efna sem
 notuð eru og myndast við hvarfið. Þessi magnbundnu sambönd eru þekkt sem
-<term>hlutfallaefnafræði</term> hvarfsins, hugtak sem er dregið af grísku orðunum
+<term>hlutfallaefnafræði (e. stoichiometry)</term> hvarfsins, hugtak sem er dregið af grísku orðunum
 <emphasis effect="italics">stoicheion</emphasis> (sem þýðir „frumefni“) og <emphasis effect="italics">metron</emphasis> (sem þýðir
 „mælikvarði“). Í þessari einingu er fjallað um notkun stilltra efnajafna
 fyrir ýmis konar notkun í hlutfallaefnafræði.</para>
@@ -39,7 +39,7 @@ pönnukökur:</para>
 svipaðan hátt til að ákvarða magn eins hvarfefnis sem þarf til að
 hvarfast við tiltekið magn af öðru hvarfefni, eða til að gefa af sér
 tiltekið magn af myndefni, og svo framvegis. Stuðlarnir í stilltu
-jöfnunni eru notaðir til að leiða út <term>hlutfallsstuðla</term> sem gera kleift
+jöfnunni eru notaðir til að leiða út <term>hlutfallsstuðla (e. stoichiometric factors)</term> sem gera kleift
 að reikna út æskilegt magn. Til að útskýra þessa hugmynd skulum við
 skoða framleiðslu á ammoníaki með hvarfi vetnis og köfnunarefnis:</para>
 <equation id="fs-idp124603552" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
@@ -431,13 +431,13 @@ massa? <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>FeTiO</m:mtext></m
 </content>
 <glossary>
 <definition id="fs-idp127461392">
-<term>hlutfallaþáttur</term>
+<term>hlutfallaþáttur (e. stoichiometric factor)</term>
 <meaning id="fs-idp127461392-meaning">hlutfall stuðla í
 stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og
 myndefna</meaning>
 </definition>
 <definition id="fs-idp127462672">
-<term>hlutfallaefnafræði</term>
+<term>hlutfallaefnafræði (e. stoichiometry)</term>
 <meaning id="fs-idp127462672-meaning">tengsl milli magns
 hvarfefna og myndefna í efnahvarfi</meaning>
 </definition>

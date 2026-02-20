@@ -129,7 +129,7 @@ formúlumassi (amu) kalsíumfosfats?</para>
 <para id="fs-idp76705136">Í fyrri kafla þessa texta var lýst
 þróun atómmassaeiningarinnar, hugtakinu um meðalatómmassa og notkun
 efnaformúla til að tákna frumefnasamsetningu efna. Hægt er að útvíkka
-þessar hugmyndir til að reikna út <term>formúlumassa</term> efnis með því að
+þessar hugmyndir til að reikna út <term>formúlumassa (e. formula mass)</term> efnis með því að
 leggja saman meðalatómmassa allra atóma sem táknuð eru í efnaformúlu
 efnisins.</para>
 </section>
@@ -155,7 +155,7 @@ einingum eins og par, tylft, gros o.s.frv. Hún gefur tiltekna mælingu á
 „mole“ er „mikill massi“ eða „magn“, sem er í samræmi við notkun þess
 sem heiti á þessari einingu. Mól veitir tengingu milli auðmælds stórsæs
 eiginleika, heildarmassa, og afar mikilvægs grundvallareiginleika,
-fjölda atóma, sameinda og svo framvegis. <term>Mól</term> af efni er það magn sem
+fjölda atóma, sameinda og svo framvegis. <term>Mól (e. mole)</term> af efni er það magn sem
 inniheldur 6,02214076 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> stakar einingar (atóm eða
 sameindir). Þessi stóra tala er grundvallarfasti þekktur sem *<emphasis effect="italics">tala
 Avogadros (</emphasis>N<sub>A</sub><emphasis effect="italics">)</emphasis>* eða Avogadros-fasti til heiðurs ítalska
@@ -166,7 +166,7 @@ skýrri einingu „á mól“, en þægilega námunduð útgáfa er 6,022
 magneining inniheldur 1 mól af hvaða frumefni sem er sama fjölda atóma
 og 1 mól af hvaða öðru frumefni sem er. Massi 1 móls af mismunandi
 frumefnum er hins vegar mismunandi, þar sem massi einstakra atóma er
-verulega ólíkur. <term>Mólmassi</term> frumefnis (eða efnasambands) er massi í
+verulega ólíkur. <term>Mólmassi (e. molar mass)</term> frumefnis (eða efnasambands) er massi í
 grömmum af 1 móli af því efni, eiginleiki sem er gefinn upp í einingum
 grömm á mól (g/mól) (sjá <link target-id="CNX_Chem_03_02_moles"/>).</para>
 <figure id="CNX_Chem_03_02_moles" class="scaled-down">
@@ -884,23 +884,23 @@ sameindir þar sem það hefur fæst mól.</para>
 </content>
 <glossary>
 <definition id="fs-idp40901280">
-<term>Tala Avogadros (NA)</term>
+<term>Tala Avogadros (NA) (e. avogadro’s number (na))</term>
 <meaning id="fs-idp40901280-meaning">tilraunakennt ákvarðað
 gildi fjölda einda sem mynda 1 mól af efni, jafnt og 6,022 × 1023 mól−1</meaning>
 </definition>
 <definition id="fs-idp40905984">
-<term>formúlumassi</term>
+<term>formúlumassi (e. formula mass)</term>
 <meaning id="fs-idp40905984-meaning">summa meðalmassa allra
 atóma sem koma fram í efnaformúlu; fyrir samgild efnasambönd er þetta
 einnig sameindamassinn</meaning>
 </definition>
 <definition id="fs-idp40907280">
-<term>mólmassi</term>
+<term>mólmassi (e. molar mass)</term>
 <meaning id="fs-idp40907280-meaning">massi í grömmum af 1 móli
 af efni</meaning>
 </definition>
 <definition id="fs-idp40908432">
-<term>mól</term>
+<term>mól (e. mole)</term>
 <meaning id="fs-idp40908432-meaning">efnismagn sem inniheldur
 sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í
 nákvæmlega 12 grömmum af 12C</meaning>

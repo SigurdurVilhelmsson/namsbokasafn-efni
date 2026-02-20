@@ -66,7 +66,7 @@ skilgreinir efnafræðilegt eðli þess og efnaformúlur eru hnitmiðaðasta
 leiðin til að tákna þessa frumefnasamsetningu. Þegar formúla
 efnasambands er óþekkt er mæling á massa hvers frumefnis sem það er gert
 úr oft fyrsta skrefið í því ferli að ákvarða formúluna með tilraunum.
-Niðurstöður þessara mælinga gera kleift að reikna út <term>massaprósentu</term>
+Niðurstöður þessara mælinga gera kleift að reikna út <term>massaprósentu (e. percent composition)</term>
 efnasambandsins, sem er skilgreind sem massaprósenta hvers frumefnis í
 efnasambandinu. Tökum sem dæmi efnasamband í gasformi sem samanstendur
 eingöngu af kolefni og vetni. Massaprósentu þessa efnasambands mætti
@@ -470,12 +470,12 @@ sameindaformúlu litarefnisins.</para>
 </content>
 <glossary>
 <definition id="fs-idp78258880">
-<term>massi reynsluformúlu</term>
+<term>massi reynsluformúlu (e. empirical formula mass)</term>
 <meaning id="fs-idp78258880-meaning">summa meðalatómmassa
 allra atóma í reynsluformúlu</meaning>
 </definition>
 <definition id="fs-idp78260032">
-<term>prósentusamsetning</term>
+<term>prósentusamsetning (e. percent composition)</term>
 <meaning id="fs-idp78260032-meaning">massaprósenta hinna ýmsu
 frumefna í efnasambandi</meaning>
 </definition>

@@ -52,7 +52,7 @@ borða plöntur. Bruni kola og jarðolíu losar einnig geymda sólarorku:
 <para id="fs-idm26174720">Þessi kafli mun kynna grunnhugmyndir
 mikilvægs sviðs vísinda sem fjallar um magn varma sem frásogast eða
 losnar við efna- og eðlisfræðilegar breytingar – svið sem kallast
-<term>varmaefnafræði</term>. Hugtökin sem kynnt eru í þessum kafla eru víða notuð
+<term>varmaefnafræði (e. thermochemistry)</term>. Hugtökin sem kynnt eru í þessum kafla eru víða notuð
 á næstum öllum vísinda- og tæknisviðum. Matvælafræðingar nota þau til að
 ákvarða orkuinnihald matvæla. Líffræðingar rannsaka orkuferla lifandi
 vera, svo sem efnaskiptabruna sykurs í koldíoxíð og vatn. Olíu-, gas- og
@@ -67,15 +67,15 @@ jarðfræðinga, allar tegundir verkfræðinga og nánast alla sem stunda eða
 vinna að hvers kyns vísindum.</para>
 <section id="fs-idp13589600">
 <title>Orka</title>
-<para id="fs-idp38067952"><term>Orku</term> má skilgreina sem getuna til
-að veita varma eða vinna vinnu. Ein tegund <term>vinnu (<emphasis effect="italics">w</emphasis>)</term> er ferlið við
+<para id="fs-idp38067952"><term>Orku (e. energy)</term> má skilgreina sem getuna til
+að veita varma eða vinna vinnu. Ein tegund <term>vinnu (<emphasis effect="italics">w</emphasis>) (e. work (<emphasis effect="italics">w</emphasis>))</term> er ferlið við
 að láta efni hreyfast gegn andstæðum krafti. Til dæmis vinnum við vinnu
 þegar við pumpum í reiðhjóladekk – við hreyfum efni (loftið í pumpunni)
 gegn andstæðum krafti loftsins sem þegar er í dekkinu.</para>
 <para id="fs-idp11831328">Eins og efni kemur orka fyrir í
 mismunandi gerðum. Ein flokkun skiptir orku í tvær tegundir:
-<term>stöðuorku</term>, orkan sem hlutur hefur vegna hlutfallslegrar stöðu
-sinnar, samsetningar eða ástands, og <term>hreyfiorku</term>, orkan sem hlutur
+<term>stöðuorku (e. potential energy)</term>, orkan sem hlutur hefur vegna hlutfallslegrar stöðu
+sinnar, samsetningar eða ástands, og <term>hreyfiorku (e. kinetic energy)</term>, orkan sem hlutur
 býr yfir vegna hreyfingar sinnar. Vatn efst í fossi eða stíflu hefur
 stöðuorku vegna stöðu sinnar; þegar það rennur niður í gegnum rafala
 hefur það hreyfiorku sem hægt er að nota til að vinna vinnu og framleiða
@@ -119,8 +119,8 @@ kjarnaefnafræði.</para>
 </section>
 <section id="fs-idm67028192">
 <title>Varmaorka, hitastig og varmi</title>
-<para id="fs-idp24322848"><term>Varmaorka</term> er hreyfiorka sem
-tengist tilviljanakenndri hreyfingu atóma og sameinda. <term>Hitastig</term> er
+<para id="fs-idp24322848"><term>Varmaorka (e. thermal energy)</term> er hreyfiorka sem
+tengist tilviljanakenndri hreyfingu atóma og sameinda. <term>Hitastig (e. temperature)</term> er
 magnbundinn mælikvarði á „hita“ eða „kulda“. Þegar atóm og sameindir í
 hlut hreyfast eða titra hratt hafa þau hærri meðalhreyfiorku (KE) og við
 segjum að hluturinn sé „heitur“. Þegar atóm og sameindir hreyfast hægt
@@ -163,7 +163,7 @@ sér. Báðar gerðir hitamæla hafa kvarðaðan skala sem sýnir hitastigið.
 <link url="http://openstax.org/l/16Bimetallic">sýnikennsla</link> gerir manni kleift að sjá áhrif þess að
 hita og kæla uppvafða tvímálmsræmu.</para>
 </note>
-<para id="fs-idp26888640"><term>Varmi (<emphasis effect="italics">q</emphasis>)</term> er flutningur
+<para id="fs-idp26888640"><term>Varmi (<emphasis effect="italics">q</emphasis>) (e. heat (<emphasis effect="italics">q</emphasis>))</term> er flutningur
 varmaorku milli tveggja hluta með mismunandi hitastig. Varmaflæði
 (óþarft orðalag, en algengt) eykur varmaorku eins hlutar og minnkar
 varmaorku hins. Gerum ráð fyrir að við höfum í upphafi efni (H) með hátt
@@ -194,7 +194,7 @@ orkuflutninginn fyrir þér.</para>
 </note>
 <para id="fs-idm61604880">Efni sem gangast undir efnahvörf og
 eðlisfræðilegar breytingar geta losað eða tekið upp varma. Breyting sem
-losar varma er kölluð <term>útvermið ferli</term>. Til dæmis er bruni sem á sér
+losar varma er kölluð <term>útvermið ferli (e. exothermic process)</term>. Til dæmis er bruni sem á sér
 stað við notkun á súrefnis-asetýlen logsuðutæki úthverfið ferli – þetta
 ferli losar einnig orku í formi ljóss eins og sést á loga tækisins
 (<link target-id="CNX_Chem_05_01_OxyacTorch"/>). Hvarf eða breyting sem tekur upp varma er <emphasis effect="bold">innvermið
@@ -214,13 +214,13 @@ að skapa kuldatilfinningu. (Heimild a: breyting á verki eftir
 „Skatebiker“/Wikimedia commons)</caption>
 </figure>
 <para id="fs-idp24669072">Fyrr á tímum var orka mæld í
-einingunni <term>kaloría (cal)</term>. Ein kaloría er orkumagnið sem þarf til að
+einingunni <term>kaloría (cal) (e. calories (cal))</term>. Ein kaloría er orkumagnið sem þarf til að
 hita eitt gramm af vatni um 1 gráðu á Celsíus (1 kelvin). Þetta magn er
 þó háð loftþrýstingi og upphafshitastigi vatnsins. Auðvelt er að mæla
 orkubreytingar í kaloríum og því er kalorían enn oft notuð. Kalorían
 (með stóru K), eða stóra kalorían, sem almennt er notuð til að
 magngreina orkuinnihald matvæla, er kílókaloría. SI-eining varma, vinnu
-og orku er júl. Eitt <term>júl (J)</term> er skilgreint sem orkumagnið sem notað
+og orku er júl. Eitt <term>júl (J) (e. joule (j))</term> er skilgreint sem orkumagnið sem notað
 er þegar kraftur upp á 1 njúton færir hlut um 1 metra. Það er nefnt til
 heiðurs enska eðlisfræðingnum James Prescott Joule. Eitt júl jafngildir
 1 kg m<sup>2</sup>/s<sup>2</sup>, sem er einnig kallað 1 njútonmetri. Eitt kílójúl (kJ) er
@@ -250,7 +250,7 @@ pönnunnar um 50,0 °C:</para>
 stærra magn efnis krefst (hlutfallslega) meiri orku til að ná sömu
 hitastigsbreytingu:</para>
 <equation id="fs-idp13532880" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mrow><m:mtext>large pan</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>90,700 J</m:mtext></m:mrow><m:mrow><m:mn>50.0</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1814</m:mn><m:mspace width="0.2em"/><m:mtext>J/°C</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idp11756944"><term>Eðlisvarmi (<emphasis effect="italics">c</emphasis>)</term> efnis er það
+<para id="fs-idp11756944"><term>Eðlisvarmi (<emphasis effect="italics">c</emphasis>) (e. specific heat capacity (<emphasis effect="italics">c</emphasis>))</term> efnis er það
 magn varma sem þarf til að hækka hitastig 1 gramms af efni um 1 gráðu á
 Celsíus (eða 1 kelvin):</para>
 <equation id="fs-idm28369232" class="unnumbered"><m:math><m:mrow><m:mi>c</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>q</m:mi><m:mrow><m:mstyle mathvariant="italic"><m:mtext>m</m:mtext></m:mstyle><m:mtext>Δ</m:mtext><m:mstyle mathvariant="italic"><m:mtext>T</m:mtext></m:mstyle></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -642,77 +642,77 @@ fyrir að aðeins vatnið verði hitað. Orka sem þarf = 7,47 kWst</para>
 </content>
 <glossary>
 <definition id="fs-idp25499888">
-<term>kalóría (cal)</term>
+<term>kalóría (cal) (e. calorie (cal))</term>
 <meaning id="fs-idp25499888-meaning">eining fyrir varma eða
 aðra orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni
 um 1 gráðu á Celsíus; 1 cal er skilgreint sem 4,184 J</meaning>
 </definition>
 <definition id="fs-idp25501040">
-<term>innvermið ferli</term>
+<term>innvermið ferli (e. endothermic process)</term>
 <meaning id="fs-idp25501040-meaning">efnahvarf eða
 eðlisbreyting sem gleypir varma</meaning>
 </definition>
 <definition id="fs-idp25502192">
-<term>orka</term>
+<term>orka (e. energy)</term>
 <meaning id="fs-idp25502192-meaning">geta til að veita varma
 eða vinna vinnu</meaning>
 </definition>
 <definition id="fs-idp25503344">
-<term>útvermið ferli</term>
+<term>útvermið ferli (e. exothermic process)</term>
 <meaning id="fs-idp25503344-meaning">efnahvarf eða
 eðlisbreyting sem losar varma</meaning>
 </definition>
 <definition id="fs-idp25504496">
-<term>varmi (q)</term>
+<term>varmi (q) (e. heat (q))</term>
 <meaning id="fs-idp25504496-meaning">flutningur varmaorku
 milli tveggja hluta</meaning>
 </definition>
 <definition id="fs-idp25506160">
-<term>varmarýmd (C)</term>
+<term>varmarýmd (C) (e. heat capacity (c))</term>
 <meaning id="fs-idp25506160-meaning">útþaninn eiginleiki efnis
 sem táknar magn varma sem þarf til að hækka hitastig þess um 1 gráðu á
 Celsíus (eða 1 kelvín)</meaning>
 </definition>
 <definition id="fs-idp25507984">
-<term>júl (J)</term>
+<term>júl (J) (e. joule (j))</term>
 <meaning id="fs-idp25507984-meaning">SI-eining orku; orkumagn
 sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1
 kg m2/s2 og 4.184 J = 1 cal</meaning>
 </definition>
 <definition id="fs-idp25509680">
-<term>hreyfiorka</term>
+<term>hreyfiorka (e. kinetic energy)</term>
 <meaning id="fs-idp25509680-meaning">orka sem tengist
 hreyfingu hlutar, jöfn helmingi margfeldis massa hlutarins og hraða hans
 í öðru veldi, 12mv2 (þar sem m = massi og v = hraði)</meaning>
 </definition>
 <definition id="fs-idp25515184">
-<term>stöðuorka</term>
+<term>stöðuorka (e. potential energy)</term>
 <meaning id="fs-idp25515184-meaning">orka eindar eða kerfis
 einda sem er fengin úr afstæðri stöðu, samsetningu eða ástandi</meaning>
 </definition>
 <definition id="fs-idp31727024">
-<term>eðlisvarmi (c)</term>
+<term>eðlisvarmi (c) (e. specific heat capacity (c))</term>
 <meaning id="fs-idp31727024-meaning">innri eiginleiki efnis
 sem táknar það varmamagn sem þarf til að hækka hitastig 1 gramms af
 efninu um 1 gráðu á Celsíus (eða 1 kelvin)</meaning>
 </definition>
 <definition id="fs-idp31728864">
-<term>hitastig</term>
+<term>hitastig (e. temperature)</term>
 <meaning id="fs-idp31728864-meaning">innri eiginleiki efnis
 sem er magnbundin mæling á „hita“ og „kulda“</meaning>
 </definition>
 <definition id="fs-idp31730416">
-<term>varmaorka</term>
+<term>varmaorka (e. thermal energy)</term>
 <meaning id="fs-idp31730416-meaning">hreyfiorka sem tengist
 tilviljunarkenndri hreyfingu atóma og sameinda</meaning>
 </definition>
 <definition id="fs-idp31731568">
-<term>varmaefnafræði</term>
+<term>varmaefnafræði (e. thermochemistry)</term>
 <meaning id="fs-idp31731568-meaning">rannsókn á mælingu á
 magni varma sem binst eða losnar við efnahvarf eða eðlisbreytingu</meaning>
 </definition>
 <definition id="fs-idp31732848">
-<term>vinna (w)</term>
+<term>vinna (w) (e. work (w))</term>
 <meaning id="fs-idp31732848-meaning">orkuflutningur vegna
 breytinga á ytri, stórsæjum breytum eins og þrýstingi og rúmmáli; eða
 sem veldur því að efni hreyfist gegn andstæðum krafti</meaning>

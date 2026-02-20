@@ -13,16 +13,16 @@ og tengda eiginleika með dæmigerðum gögnum úr varmamælingum</item></list><
 <content>
 <para id="fs-idm52788928">Ein aðferð sem við getum notað til að
 mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli er þekkt
-sem <term>varmamæling</term>. Varmamæling er notuð til að mæla magn varma sem
+sem <term>varmamæling (e. calorimetry)</term>. Varmamæling er notuð til að mæla magn varma sem
 flyst til eða frá efni. Til þess er varmanum skipt við kvarðaðan hlut
 (varmamæli). Hitastigsbreytingin sem mæld er með varmamælinum er notuð
 til að leiða út magn varma sem fluttist í ferlinu sem er til rannsóknar.
 Mæling á varmaflutningi með þessari aðferð krefst skilgreiningar á
-<term>kerfi</term> (efnið eða efnin sem gangast undir efna- eða eðlisfræðilega
-breytingu) og <term>umhverfi</term> þess (allt annað efni, þar á meðal hlutar
+<term>kerfi (e. system)</term> (efnið eða efnin sem gangast undir efna- eða eðlisfræðilega
+breytingu) og <term>umhverfi (e. surroundings)</term> þess (allt annað efni, þar á meðal hlutar
 mælibúnaðarins, sem annaðhvort veita kerfinu varma eða gleypa varma úr
 kerfinu).</para>
-<para id="fs-idm64462704"><term>Varmamælir</term> er tæki sem notað er
+<para id="fs-idm64462704"><term>Varmamælir (e. calorimeter)</term> er tæki sem notað er
 til að mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli.
 Til dæmis, þegar útvermið efnahvarf á sér stað í lausn í varmamæli,
 gleypir lausnin varmann sem myndast við hvarfið, sem eykur hitastig
@@ -335,7 +335,7 @@ gleypa.</para>
 hannaðir til að starfa við stöðugan (loft-)þrýsting og eru hentugir til
 að mæla varmaflæði sem fylgir ferlum sem eiga sér stað í lausn. Annars
 konar varmamælir sem starfar við stöðugt rúmmál, í daglegu tali kallaður
-<term>sprengivarmamælir</term>, er notaður til að mæla orkuna sem myndast við
+<term>sprengivarmamælir (e. bomb calorimeter)</term>, er notaður til að mæla orkuna sem myndast við
 hvörf sem gefa af sér mikið magn af varma og loftkenndar afurðir, svo
 sem brunahvörf. (Orðið „sprengja“ kemur af þeirri athugun að þessi hvörf
 geta verið nógu kröftug til að líkjast sprengingum sem myndu skemma aðra
@@ -452,7 +452,7 @@ Sýni af mat er vegið, blandað í blandara, frostþurrkað, malað í duft og
 mótað í köggul. Köggullinn er brenndur inni í sprengihitaeiningamæli og
 mæld hitastigsbreyting er umreiknuð í orku á hvert gramm af mat.</para>
 <para id="fs-idm53626320">Í dag er hitaeiningainnihald á
-matarmerkingum fengið með aðferð sem kallast <term>Atwater-kerfið</term> og notar
+matarmerkingum fengið með aðferð sem kallast <term>Atwater-kerfið (e. atwater system)</term> og notar
 meðalhitaeiningainnihald mismunandi efnaþátta matvæla, próteina,
 kolvetna og fitu. Meðalmagnið er það sem gefið er upp í jöfnunni og er
 fengið úr ýmsum niðurstöðum úr sprengihitaeiningamælingum á heilum
@@ -767,37 +767,37 @@ skammtur af morgunkorninu gefur 130 kaloríur.</para>
 </content>
 <glossary>
 <definition id="fs-idm56360448">
-<term>sprengikaloríumælir</term>
+<term>sprengikaloríumælir (e. bomb calorimeter)</term>
 <meaning id="fs-idm56360448-meaning">tæki sem er hannað til að
 mæla orkubreytingu fyrir ferli sem eiga sér stað við fast rúmmál;
 almennt notað fyrir efnahvörf sem fela í sér föst efni og loftkennd
 hvarfefni eða myndefni</meaning>
 </definition>
 <definition id="fs-idm56359488">
-<term>kaloríumælir</term>
+<term>kaloríumælir (e. calorimeter)</term>
 <meaning id="fs-idm56359488-meaning">tæki sem notað er til að
 mæla magn varma sem frásogast eða losnar í efna- eða eðlisfræðilegu
 ferli</meaning>
 </definition>
 <definition id="fs-idm56358720">
-<term>kaloríumæling</term>
+<term>kaloríumæling (e. calorimetry)</term>
 <meaning id="fs-idm56358720-meaning">ferlið við að mæla magn
 varma sem tekur þátt í efna- eða eðlisfræðilegu ferli</meaning>
 </definition>
 <definition id="fs-idm56357952">
 <term>næringarkaloría
-(kaloría)</term>
+(kaloría) (e. nutritional calorie (calorie))</term>
 <meaning id="fs-idm56357952-meaning">eining sem notuð er til
 að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000
 cal eða 1 kkal</meaning>
 </definition>
 <definition id="fs-idp41853040">
-<term>umhverfi</term>
+<term>umhverfi (e. surroundings)</term>
 <meaning id="fs-idp41853040-meaning">allt efni annað en kerfið
 sem er til rannsóknar</meaning>
 </definition>
 <definition id="fs-idp41853808">
-<term>kerfi</term>
+<term>kerfi (e. system)</term>
 <meaning id="fs-idp41853808-meaning">hluti efnis sem er að
 gangast undir efna- eða eðlisfræðilega breytingu sem er til rannsóknar</meaning>
 </definition>

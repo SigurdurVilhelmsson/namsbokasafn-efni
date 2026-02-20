@@ -22,7 +22,7 @@ verður fjallað um nokkrar aðrar styrkeiningar sem eru almennt notaðar í
 <para id="fs-idm26991728">Fyrr í þessum kafla var
 prósentusamsetning kynnt sem mælikvarði á hlutfallslegt magn tiltekins
 frumefnis í efnasambandi. Prósentur eru einnig almennt notaðar til að
-gefa upp samsetningu blanda, þar á meðal lausna. <term>Massaprósenta</term>
+gefa upp samsetningu blanda, þar á meðal lausna. <term>Massaprósenta (e. mass percentage)</term>
 innihaldsefnis í lausn er skilgreind sem hlutfall massa
 innihaldsefnisins af massa lausnarinnar, gefið upp sem prósenta:</para>
 <equation id="fs-idm5911152" class="unnumbered"><m:math><m:mrow><m:mtext>mass percentage</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass of component</m:mtext></m:mrow><m:mrow><m:mtext>mass of solution</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
@@ -112,7 +112,7 @@ inniheldur 125 g af HCl?</para>
 <para id="fs-idp14105408">Rúmmál vökva á breiðu stærðarbili eru
 þægilega mæld með algengum og tiltölulega ódýrum rannsóknarstofubúnaði.
 Styrkur lausnar sem myndast við að leysa upp fljótandi uppleyst efni í
-fljótandi leysi er því oft gefinn upp sem <term>rúmmálsprósenta</term>, %vol eða
+fljótandi leysi er því oft gefinn upp sem <term>rúmmálsprósenta (e. volume percentage)</term>, %vol eða
 (v/v)%:</para>
 <equation id="fs-idm2717488" class="unnumbered"><m:math><m:mrow><m:mtext>volume percentage</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>volume solute</m:mtext></m:mrow><m:mrow><m:mtext>volume solution</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
 <example id="fs-idm1441136">
@@ -137,7 +137,7 @@ vínflösku?</para>
 <title>Massa-rúmmálsprósenta</title>
 <para id="fs-idm16796176">„Blandaðar“ prósentueiningar, fengnar
 úr massa uppleysts efnis og rúmmáli lausnar, eru vinsælar fyrir ákveðin
-lífefnafræðileg og læknisfræðileg not. <term>Massa-rúmmálsprósenta</term> er
+lífefnafræðileg og læknisfræðileg not. <term>Massa-rúmmálsprósenta (e. mass-volume percent)</term> er
 hlutfall massa uppleysts efnis og rúmmáls lausnarinnar gefið upp sem
 prósenta. Sértækar einingar sem notaðar eru fyrir massa uppleysts efnis
 og rúmmál lausnar geta verið mismunandi, allt eftir lausninni. Til dæmis
@@ -166,7 +166,7 @@ Ganguly)</caption>
 milljarð</title>
 <para id="fs-idm39037584">Mjög lágur styrkur uppleystra efna er
 oft gefinn upp með viðeigandi litlum einingum eins og <emphasis effect="bold">pörtum á milljón
-(ppm)<term> eða </term>pörtum á milljarð (ppb)</emphasis>. Líkt og prósentueiningar
+(ppm)<term> eða  (e. parts per million (ppm))</term>pörtum á milljarð (ppb)</emphasis>. Líkt og prósentueiningar
 („partur á hundrað“) er hægt að skilgreina ppm og ppb með tilliti til
 massa, rúmmáls eða blandaðra massa-rúmmálseininga. Það eru líka til ppm
 og ppb einingar sem eru skilgreindar með tilliti til fjölda atóma og
@@ -360,28 +360,28 @@ af brennisteinssýru, H<sub>2</sub>SO<sub>4</sub>, miðað við massa, en eðlis
 </content>
 <glossary>
 <definition id="fs-idp13058656">
-<term>massaprósenta</term>
+<term>massaprósenta (e. mass percentage)</term>
 <meaning id="fs-idp13058656-meaning">hlutfall massa uppleysts
 efnis á móti massa lausnar, gefið upp sem prósenta</meaning>
 </definition>
 <definition id="fs-idm12309360">
-<term>massa-rúmmálsprósenta</term>
+<term>massa-rúmmálsprósenta (e. mass-volume percent)</term>
 <meaning id="fs-idm12309360-meaning">hlutfall massa uppleysts
 efnis á móti rúmmáli lausnar, gefið upp sem prósenta</meaning>
 </definition>
 <definition id="fs-idp23298832">
-<term>milljarðshlutar (ppb)</term>
+<term>milljarðshlutar (ppb) (e. parts per billion (ppb))</term>
 <meaning id="fs-idp23298832-meaning">hlutfall massa uppleysts
 efnis á móti massa lausnar margfaldað með 109</meaning>
 </definition>
 <definition id="fs-idm85251264">
 <term>milljónustu hlutar
-(ppm)</term>
+(ppm) (e. parts per million (ppm))</term>
 <meaning id="fs-idm85251264-meaning">hlutfall massa uppleysts
 efnis á móti massa lausnar margfaldað með 106</meaning>
 </definition>
 <definition id="fs-idp17597424">
-<term>rúmmálsprósenta</term>
+<term>rúmmálsprósenta (e. volume percentage)</term>
 <meaning id="fs-idp17597424-meaning">hlutfall rúmmáls
 uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta</meaning>
 </definition>

@@ -27,7 +27,7 @@ er að finna í B-viðauka.) Til dæmis er hámarksflugtaksmassi Boeing
 777-200ER farþegaþotu 298.000 kílógrömm, sem einnig má skrifa sem 2,98
 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> kg. Massi meðalmoskítóflugunnar er um 0,0000025
 kílógrömm, sem má skrifa sem 2,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> kg.</para>
-<para id="fs-idp178656"><term>Einingar</term>, eins og lítrar, pund og
+<para id="fs-idp178656"><term>Einingar (e. units)</term>, eins og lítrar, pund og
 sentimetrar, eru samanburðarstaðlar fyrir mælingar. Tveggja lítra
 gosflaska inniheldur tvöfalt meira rúmmál af drykk en viðurkennt rúmmál
 eins lítra. Kjötið sem notað er til að útbúa 0,25 punda hamborgara vegur
@@ -42,7 +42,7 @@ meira en 10 sinnum banvænn skammtur.</para>
 <para id="fs-idm144392592">Mælieiningar fyrir sjö
 grundvallareiginleika („grunneiningar“) eru taldar upp í <link target-id="fs-idm81346144"/>.
 Staðlarnir fyrir þessar einingar eru fastsettir með alþjóðasamningi og
-þær eru kallaðar <term>Alþjóðlega einingakerfið</term> eða <term>SI-einingar</term> (úr
+þær eru kallaðar <term>Alþjóðlega einingakerfið (e. international system of units)</term> eða <term>SI-einingar (e. si units)</term> (úr
 frönsku, <emphasis effect="italics">Le Système International d’Unités</emphasis>). SI-einingar hafa verið
 notaðar af National Institute of Standards and Technology (NIST) í
 Bandaríkjunum síðan 1964. Einingar fyrir aðra eiginleika má leiða af
@@ -219,8 +219,8 @@ grunnatriði staðalforms.</para>
 <title>Grunneiningar SI-kerfisins</title>
 <section id="fs-idp679312">
 <title>Lengd</title>
-<para id="fs-idm64613648">Staðaleining <term>lengdar</term> í bæði
-SI-kerfinu og upprunalega metrakerfinu er <term>metri (m)</term>. Metri var
+<para id="fs-idm64613648">Staðaleining <term>lengdar (e. length)</term> í bæði
+SI-kerfinu og upprunalega metrakerfinu er <term>metri (m) (e. meter (m))</term>. Metri var
 upphaflega skilgreindur sem 1/10.000.000 af vegalengdinni frá
 norðurpólnum að miðbaug. Hann er nú skilgreindur sem vegalengdin sem
 ljós fer í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum
@@ -240,7 +240,7 @@ lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru sýndar (ekki í raunstærð),
 <section id="fs-idm1313360">
 <title>Massi</title>
 <para id="fs-idp222999216">Staðaleining massa í SI-kerfinu er
-<term>kílógramm (kg)</term>. Kílógrammið var áður skilgreint af Alþjóðasamtökunum
+<term>kílógramm (kg) (e. kilogram (kg))</term>. Kílógrammið var áður skilgreint af Alþjóðasamtökunum
 um hreina og hagnýta efnafræði (<term>IUPAC</term>) sem massi tiltekins
 viðmiðunarhlutar. Þessi hlutur var upphaflega einn lítri af hreinu
 vatni, en síðar var það málmhólkur úr platínu-iridíum-melmi með hæð og
@@ -266,7 +266,7 @@ National Institute of Standards and Technology (NIST) í Maryland.
 SI-eining hitastigs er <term>kelvin (K)</term>. Samkvæmt venju IUPAC er notað
 kelvin (með litlum staf) fyrir orðið, K (hástafur) fyrir tákn
 einingarinnar, og hvorki orðið „gráða“ né gráðumerkið (°).
-<term>Selsíusgráða (°C)</term> er einnig leyfð í SI-kerfinu, þar sem bæði orðið
+<term>Selsíusgráða (°C) (e. celsius (°c))</term> er einnig leyfð í SI-kerfinu, þar sem bæði orðið
 „gráða“ og gráðumerkið eru notuð fyrir selsíusmælingar. Selsíusgráður
 eru jafnstórar kelvingráðum, en kvarðarnir tveir setja núllpunkt sinn á
 mismunandi staði. Vatn frýs við 273,15 K (0 °C) og sýður við 373,15 K
@@ -277,7 +277,7 @@ Fahrenheit-kvarðans síðar í þessum kafla.</para>
 <section id="fs-idm101578432">
 <title>Tími</title>
 <para id="fs-idm101738864">Grunneining SI-kerfisins fyrir tíma
-er <term>sekúnda (s)</term>. Hægt er að tákna lítil og stór tímabil með
+er <term>sekúnda (s) (e. second (s))</term>. Hægt er að tákna lítil og stór tímabil með
 viðeigandi forskeiti; til dæmis, 3 míkrósekúndur = 0,000003 s = 3
 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> og 5 megasekúndur = 5.000.000 s = 5
 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> s. Einnig er hægt að nota klukkustundir, daga og
@@ -294,9 +294,9 @@ eru kynntar fjórar af grunneiningum SI-kerfisins sem eru almennt notaðar
 <title>Afleiddar SI-einingar</title>
 <section id="fs-idm16046736">
 <title>Rúmmál</title>
-<para id="fs-idm77137776"><term>Rúmmál</term> er mælikvarði á það rými
+<para id="fs-idm77137776"><term>Rúmmál (e. volume)</term> er mælikvarði á það rými
 sem hlutur tekur. Staðlaða SI-eining rúmmáls er skilgreind með
-grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðalrúmmálið er <term>rúmmetri (m3)</term>,
+grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðalrúmmálið er <term>rúmmetri (m3) (e. cubic meter (m<sup>3</sup>))</term>,
 teningur með brúnlengd nákvæmlega einn metra. Til að skammta einn
 rúmmetra af vatni gætum við smíðað teningslaga kassa með brúnlengd
 nákvæmlega einn metra. Þessi kassi myndi rúma einn rúmmetra af vatni eða
@@ -306,10 +306,10 @@ desímetranum (0.1 m, eða 10 cm). Teningur með hliðarlengd upp á
 nákvæmlega einn desimetra hefur rúmmál upp á einn rúmdesimetra (dm<sup>3</sup>).
 <term>Lítri (L)</term> er algengara heiti yfir rúmdesimetra. Einn lítri er um
 það bil 1,06 kvartar.</para>
-<para id="fs-idm163691744"><term>Rúmsentimetri (cm3)</term> er rúmmál
+<para id="fs-idm163691744"><term>Rúmsentimetri (cm3) (e. cubic centimeter (cm<sup>3</sup>))</term> er rúmmál
 tenings með hliðarlengd upp á nákvæmlega einn sentimetra. Skammstöfunin
 <emphasis effect="bold">cc</emphasis> (úr ensku <emphasis effect="bold">c</emphasis>ubic <emphasis effect="bold">c</emphasis>entimeter) er oft notuð af
-heilbrigðisstarfsfólki. Rúmsentimetri jafngildir <term>millilítra (mL)</term> og
+heilbrigðisstarfsfólki. Rúmsentimetri jafngildir <term>millilítra (mL) (e. milliliter (ml))</term> og
 er 1/1000 úr lítra.</para>
 <figure id="CNX_Chem_01_04_Volume" class="scaled-down">
 <media id="fs-idm75233216" alt="Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.">
@@ -326,7 +326,7 @@ borið saman við hliðarlengd 1 cm<sup>3</sup> (1 mL) tenings.</caption>
 <para id="fs-idp205372288">Við notum massa og rúmmál efnis til
 að ákvarða eðlismassa þess. Þannig eru einingar eðlismassa skilgreindar
 út frá grunneiningum massa og lengdar.</para>
-<para id="fs-idm74744496"><term>Eðlismassi</term> efnis er hlutfallið
+<para id="fs-idm74744496"><term>Eðlismassi (e. density)</term> efnis er hlutfallið
 milli massa sýnis af efninu og rúmmáls þess. SI-einingin fyrir
 eðlismassa er kílógramm á rúmmetra (kg/m<sup>3</sup>). Í mörgum tilfellum er
 þetta þó óhentug eining og við notum oft grömm á rúmsentimetra (g/cm<sup>3</sup>)
@@ -653,22 +653,22 @@ blokkarinnar er 2,76 g, í raun jafn massa vatnsins sem færðist úr stað
 </content>
 <glossary>
 <definition id="fs-idm285658848">
-<term>Selsíus (°C)</term>
+<term>Selsíus (°C) (e. celsius (°c))</term>
 <meaning id="fs-idm285658848-meaning">eining fyrir hitastig;
 vatn frýs við 0 °C og sýður við 100 °C á þessum skala</meaning>
 </definition>
 <definition id="fs-idm227540096">
 <term>rúmsentimetri (cm3 eða
-cc)</term>
+cc) (e. cubic centimeter (cm3 or cc))</term>
 <meaning id="fs-idm227540096-meaning">rúmmál tenings með
 brúnarlengd nákvæmlega 1 cm</meaning>
 </definition>
 <definition id="fs-idm244788352">
-<term>rúmmetri (m3)</term>
+<term>rúmmetri (m3) (e. cubic meter (m3))</term>
 <meaning id="fs-idm244788352-meaning">SI-eining rúmmáls</meaning>
 </definition>
 <definition id="fs-idm147403536">
-<term>eðlismassi</term>
+<term>eðlismassi (e. density)</term>
 <meaning id="fs-idm147403536-meaning">hlutfall massa og
 rúmmáls fyrir efni eða hlut</meaning>
 </definition>
@@ -678,47 +678,47 @@ rúmmáls fyrir efni eða hlut</meaning>
 273,15 K = 0 °C</meaning>
 </definition>
 <definition id="fs-idm228140240">
-<term>kílógramm (kg)</term>
+<term>kílógramm (kg) (e. kilogram (kg))</term>
 <meaning id="fs-idm228140240-meaning">stöðluð SI-eining massa</meaning>
 </definition>
 <definition id="fs-idp28932848">
-<term>lengd</term>
+<term>lengd (e. length)</term>
 <meaning id="fs-idp28932848-meaning">mælikvarði á eina vídd
 hlutar</meaning>
 </definition>
 <definition id="fs-idm238691152">
-<term>lítri (L)</term>
+<term>lítri (L) (e. liter (l))</term>
 <meaning id="fs-idm238691152-meaning">(einnig rúmdesimetri)
 eining rúmmáls; 1 L = 1.000 cm3</meaning>
 </definition>
 <definition id="fs-idm22681216">
-<term>metri (m)</term>
+<term>metri (m) (e. meter (m))</term>
 <meaning id="fs-idm22681216-meaning">stöðluð metra- og
 SI-eining lengdar; 1 m = u.þ.b. 1,094 yardar</meaning>
 </definition>
 <definition id="fs-idp19165184">
-<term>millilítri (mL)</term>
+<term>millilítri (mL) (e. milliliter (ml))</term>
 <meaning id="fs-idp19165184-meaning">1/1.000 úr lítra;
 jafngildir 1 cm3</meaning>
 </definition>
 <definition id="fs-idm310839680">
-<term>sekúnda (s)</term>
+<term>sekúnda (s) (e. second (s))</term>
 <meaning id="fs-idm310839680-meaning">SI-eining tíma</meaning>
 </definition>
 <definition id="fs-idm23328032">
 <term>SI-einingar (Alþjóðlega
-einingakerfið)</term>
+einingakerfið) (e. si units (international system of units))</term>
 <meaning id="fs-idm23328032-meaning">staðlar sem ákvarðaðir
 eru með alþjóðasamningi í Alþjóðlega einingakerfinu (Le Système
 International d’Unités)</meaning>
 </definition>
 <definition id="fs-idm331555696">
-<term>eining</term>
+<term>eining (e. unit)</term>
 <meaning id="fs-idm331555696-meaning">samanburðarstaðall fyrir
 mælingar</meaning>
 </definition>
 <definition id="fs-idm207134160">
-<term>rúmmál</term>
+<term>rúmmál (e. volume)</term>
 <meaning id="fs-idm207134160-meaning">rými sem hlutur tekur</meaning>
 </definition>
 </glossary>

@@ -23,7 +23,7 @@ Ediksýra hvarfast við kalíumkarbónat samkvæmt eftirfarandi jöfnu:</para>
 <equation id="fs-idm1518128" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>K</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mn>2</m:mn><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mtext>K</m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></equation>
 <para id="fs-idp89786672">Freyðingin stafaði af myndun CO<sub>2</sub>.</para>
 <para id="fs-idp55621088">Prófunin á ediki með kalíumkarbónati
-er ein tegund <term>magnbundinnar greiningar</term> – ákvörðun á magni eða styrk
+er ein tegund <term>magnbundinnar greiningar (e. quantitative analysis)</term> – ákvörðun á magni eða styrk
 efnis í sýni. Í greiningu á ediki var styrkur uppleysta efnisins
 (ediksýru) ákvarðaður út frá magni hvarfefnis sem hvarfaðist við
 uppleysta efnið sem var til staðar í þekktu rúmmáli lausnarinnar. Í
@@ -33,24 +33,24 @@ uppleysta efnið sem var til staðar í þekktu rúmmáli lausnarinnar. Í
 <title>Títrun</title>
 <para id="fs-idp43277952">Aðferðin sem lýst er til að mæla
 styrk ediks var snemmbúin útgáfa af greiningartækninni sem kallast
-<term>títrunargreining</term>. Dæmigerð títrunargreining felur í sér notkun á
-<term>búrettu</term> (<link target-id="CNX_Chem_04_05_titration"/>) til að bæta í skömmtum lausn sem inniheldur
-þekktan styrk af einhverju efni (<term>títrantinum</term>) við sýnislausn sem
-inniheldur efnið sem á að mæla styrk þess (<term>greiningarefnið</term>).
+<term>títrunargreining (e. titration analysis)</term>. Dæmigerð títrunargreining felur í sér notkun á
+<term>búrettu (e. buret)</term> (<link target-id="CNX_Chem_04_05_titration"/>) til að bæta í skömmtum lausn sem inniheldur
+þekktan styrk af einhverju efni (<term>títrantinum (e. titrant)</term>) við sýnislausn sem
+inniheldur efnið sem á að mæla styrk þess (<term>greiningarefnið (e. analyte)</term>).
 Títranturinn og greiningarefnið gangast undir efnahvarf með þekktri
 hlutfallaefnafræði, og því gerir mæling á rúmmáli títrantslausnar sem
 þarf til að ljúka efnahvarfinu við greiningarefnið
-(<term>jafngildispunktur</term> títrunarinnar) kleift að reikna út styrk
+(<term>jafngildispunktur (e. equivalence point)</term> títrunarinnar) kleift að reikna út styrk
 greiningarefnisins. Hægt er að greina jafngildispunkt títrunar með berum
 augum ef greinileg breyting á útliti sýnislausnarinnar fylgir lokum
 efnahvarfsins. Stöðvun freyðimyndunar í klassísku ediksgreiningunni er
 eitt slíkt dæmi, þótt algengara sé að sérstök litarefni sem kallast
-<term>litvísar</term> séu bætt við sýnislausnirnar til að valda litabreytingu við
+<term>litvísar (e. indicators)</term> séu bætt við sýnislausnirnar til að valda litabreytingu við
 eða mjög nálægt jafngildispunkti títrunarinnar. Einnig er hægt að greina
 jafngildispunkta með því að mæla einhvern eiginleika lausnarinnar sem
 breytist á fyrirsjáanlegan hátt í gegnum títrunina. Óháð því hvaða
 aðferð er notuð til að greina jafngildispunkt títrunar er rúmmál
-títrantsins sem raunverulega er mælt kallað <term>endapunktur</term>. Rétt
+títrantsins sem raunverulega er mælt kallað <term>endapunktur (e. end point)</term>. Rétt
 hannaðar títrunaraðferðir tryggja yfirleitt að munurinn á
 jafngildispunkti og endapunkti sé hverfandi. Þótt hvers kyns efnahvarf
 geti legið til grundvallar títrunargreiningu eru þau þrjú sem lýst er í
@@ -107,7 +107,7 @@ jafngildispunkti. Hver er mólstyrkur oxalsýrunnar?</para>
 </section>
 <section id="fs-idp68434144">
 <title>Þyngdarmælingagreining</title>
-<para id="fs-idp27521328"><term>Þyngdarmælingagreining</term> er
+<para id="fs-idp27521328"><term>Þyngdarmælingagreining (e. gravimetric analysis)</term> er
 greining þar sem sýni er meðhöndlað á þann hátt að eðlisástand
 greiniefnisins breytist þannig að hægt er að skilja það frá öðrum
 efnisþáttum sýnisins. Massamælingar á sýninu, einangraða greiniefninu
@@ -161,7 +161,7 @@ umfram-Ag<sup>+</sup>?</para>
 </example>
 <para id="fs-idp91356704">Hægt er að ákvarða
 frumefnasamsetningu kolvetna og skyldra efnasambanda með
-þyngdarmælingaraðferð sem kallast <term>brunaefnagreining</term>. Í
+þyngdarmælingaraðferð sem kallast <term>brunaefnagreining (e. combustion analysis)</term>. Í
 brunaefnagreiningu er vegið sýni af efnasambandinu hitað upp í hátt
 hitastig undir straumi af súrefnisgasi, sem leiðir til fullkomins bruna
 þess og myndar loftkennd myndefni með þekkta eiginleika. Fullkominn
@@ -413,59 +413,59 @@ wolframklóríðsins?</para>
 </content>
 <glossary>
 <definition id="fs-idp17888704">
-<term>greiningarefni</term>
+<term>greiningarefni (e. analyte)</term>
 <meaning id="fs-idp17888704-meaning">efni sem á að greina</meaning>
 </definition>
 <definition id="fs-idp237960512">
-<term>búretta</term>
+<term>búretta (e. buret)</term>
 <meaning id="fs-idp237960512-meaning">tæki sem notað er til að
 skammta nákvæmlega breytilegt rúmmál vökva, til dæmis við
 títrunargreiningu</meaning>
 </definition>
 <definition id="fs-idp72814256">
-<term>brunagreining</term>
+<term>brunagreining (e. combustion analysis)</term>
 <meaning id="fs-idp72814256-meaning">þyngdarmælingaraðferð sem
 notuð er til að ákvarða frumefnasamsetningu efnasambands með söfnun og
 vigtun á loftkenndum myndefnum bruna þess</meaning>
 </definition>
 <definition id="fs-idp276080304">
-<term>jafngildispunktur</term>
+<term>jafngildispunktur (e. end point)</term>
 <meaning id="fs-idp276080304-meaning">mælt rúmmál
 títrantslausnar sem veldur breytingu á útliti sýnislausnar eða öðrum
 eiginleikum sem búist er við fyrir efnajafngildi (sjá jafngildispunktur)</meaning>
 </definition>
 <definition id="fs-idp90910688">
-<term>jafngildispunktur</term>
+<term>jafngildispunktur (e. equivalence point)</term>
 <meaning id="fs-idp90910688-meaning">rúmmál títrantslausnar
 sem þarf til að hvarfast að fullu við greiningarefnið í
 títrunargreiningu; gefur efnajafngilt magn títrants fyrir greiningarefni
 sýnisins samkvæmt títrunarhvarfinu</meaning>
 </definition>
 <definition id="fs-idp83288512">
-<term>þyngdarmælingagreining</term>
+<term>þyngdarmælingagreining (e. gravimetric analysis)</term>
 <meaning id="fs-idp83288512-meaning">magnbundin
 efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni
 með eðlisfræðilegu eða efnafræðilegu ferli og síðan massamælingar á
 greiningarefninu, myndefninu og/eða sýninu</meaning>
 </definition>
 <definition id="fs-idp83289888">
-<term>litvísir</term>
+<term>litvísir (e. indicator)</term>
 <meaning id="fs-idp83289888-meaning">efni sem bætt er við
 sýnið í títrunargreiningu til að gera sjónræna greiningu á
 jafngildispunkti mögulega</meaning>
 </definition>
 <definition id="fs-idp188325600">
-<term>magnbundin greining</term>
+<term>magnbundin greining (e. quantitative analysis)</term>
 <meaning id="fs-idp188325600-meaning">ákvörðun á magni eða
 styrk efnis í sýni</meaning>
 </definition>
 <definition id="fs-idp122976560">
-<term>títrantur</term>
+<term>títrantur (e. titrant)</term>
 <meaning id="fs-idp122976560-meaning">lausn sem inniheldur
 þekktan styrk efnis sem hvarfast við greiningarefnið í títrunargreiningu</meaning>
 </definition>
 <definition id="fs-idp122977840">
-<term>títrunargreining</term>
+<term>títrunargreining (e. titration analysis)</term>
 <meaning id="fs-idp122977840-meaning">magnbundin
 efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnislausnar
 sem þarf til að hvarfast að fullu við greiningarefnið í sýni</meaning>

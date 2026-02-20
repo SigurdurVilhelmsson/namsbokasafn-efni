@@ -11,13 +11,13 @@ innan sameinda með byggingarformúlum</item></list></md:abstract>
 </metadata>
 
 <content>
-<para id="fs-idm194401296"><term>Sameindaformúla</term> er framsetning á
+<para id="fs-idm194401296"><term>Sameindaformúla (e. molecular formula)</term> er framsetning á
 sameind sem notar efnatákn til að gefa til kynna gerðir atóma og síðan
 neðanmálsstafi til að sýna fjölda atóma af hverri gerð í sameindinni.
 (Neðanmálsstafur er aðeins notaður þegar fleiri en eitt atóm af
 tiltekinni gerð er til staðar.) Sameindaformúlur eru einnig notaðar sem
 skammstafanir fyrir nöfn efnasambanda.</para>
-<para id="fs-idp69721696"><term>Byggingarformúla</term> efnasambands
+<para id="fs-idp69721696"><term>Byggingarformúla (e. structural formula)</term> efnasambands
 gefur sömu upplýsingar og sameindaformúla þess (gerðir og fjölda atóma í
 sameindinni) en sýnir einnig hvernig atómin eru tengd í sameindinni.
 Byggingarformúla metans inniheldur tákn fyrir eitt C-atóm og fjögur
@@ -75,7 +75,7 @@ H<sub>2</sub> og 2H<sub>2</sub> tákna mjög ólíkar eindir.</caption>
 fleiri frumefni sameinast efnafræðilega og mynda tengi. Til dæmis geta
 vetni og súrefni hvarfast og myndað vatn og natríum og klór geta
 hvarfast og myndað matarsalt. Við lýsum stundum samsetningu þessara
-efnasambanda með <term>reynsluformúlu</term>, sem gefur til kynna gerðir atóma
+efnasambanda með <term>reynsluformúlu (e. empirical formula)</term>, sem gefur til kynna gerðir atóma
 sem eru til staðar og <emphasis effect="italics">einfaldasta heiltöluhlutfall fjölda atóma (eða
 jóna) í efnasambandinu</emphasis>. Til dæmis hefur títantvíoxíð (notað sem
 litarefni í hvíta málningu og í þykka, hvíta, þekjandi sólarvörn)
@@ -96,7 +96,7 @@ hlutfallinu 1 á móti 2. Títanatóm eru grá og súrefnisatóm eru rauð.
 við lýst efnasambandi með sameindaformúlu þar sem neðanmálsstafirnir
 gefa til kynna <emphasis effect="italics">raunverulegan fjölda atóma</emphasis> hvers frumefnis í sameind
 efnasambandsins. Í mörgum tilfellum er sameindaformúla efnis fengin með
-tilraunaákvörðun á bæði reynsluformúlu þess og <term>sameindamassa</term>
+tilraunaákvörðun á bæði reynsluformúlu þess og <term>sameindamassa (e. molecular mass)</term>
 (samanlagður atómmassi allra atóma sem mynda sameindina). Til dæmis er
 hægt að ákvarða með tilraunum að bensen inniheldur tvö frumefni, kolefni
 (C) og vetni (H), og að fyrir hvert kolefnisatóm í benseni er eitt
@@ -219,7 +219,7 @@ metýlformat, sem er notað í framleiðslu, sem skordýraeitur og í
 hraðþornandi áferðarefni. Sameindir metýlformats hafa eitt
 súrefnisatómann á milli kolefnisatómanna tveggja, sem er frábrugðið
 fyrirkomulaginu í sameindum ediksýru. Ediksýra og metýlformat eru dæmi
-um <term>hverfur</term> – efnasambönd með sömu efnaformúlu en mismunandi
+um <term>hverfur (e. isomers)</term> – efnasambönd með sömu efnaformúlu en mismunandi
 sameindabyggingu (<link target-id="CNX_Chem_02_04_Isomers"/>). Athugaðu að þessi litli munur á röðun
 atómanna hefur mikil áhrif á efnaeiginleika þeirra. Þú myndir örugglega
 ekki vilja nota lausn af metýlformati í staðinn fyrir lausn af ediksýru
@@ -233,9 +233,9 @@ ediksýru og (b) metýlformats eru byggingarhverfur; þær hafa sömu formúlu
 efnaeiginleika).</caption>
 </figure>
 <para id="fs-idm177313504">Til eru margar gerðir af hverfum
-(<link target-id="CNX_Chem_02_04_Isomers2"/>). Ediksýra og metýlformat eru <term>byggingarhverfur</term>,
+(<link target-id="CNX_Chem_02_04_Isomers2"/>). Ediksýra og metýlformat eru <term>byggingarhverfur (e. structural isomers)</term>,
 efnasambönd þar sem sameindirnar eru ólíkar að því leyti hvernig atómin
-eru tengd saman. Einnig eru til ýmsar gerðir af <term>rúmhverfum</term>, þar sem
+eru tengd saman. Einnig eru til ýmsar gerðir af <term>rúmhverfum (e. spatial isomers)</term>, þar sem
 hlutfallsleg afstaða atómanna í rúmi getur verið mismunandi. Til dæmis
 samanstendur efnasambandið karvón (sem finnst í kúmeni, garðmyntu og
 mandarínuberki) af tveimur hverfum sem eru spegilmyndir hvorrar
@@ -400,34 +400,34 @@ kallast þær (tegund sambandsins milli þessara sameinda, ekki nöfn
 </content>
 <glossary>
 <definition id="fs-idm164678176">
-<term>reynsluformúla</term>
+<term>reynsluformúla (e. empirical formula)</term>
 <meaning id="fs-idm164678176-meaning">formúla sem sýnir
 samsetningu efnasambands gefna upp sem einfaldasta heiltöluhlutfall
 atóma</meaning>
 </definition>
 <definition id="fs-idp55104">
-<term>ísómerur</term>
+<term>ísómerur (e. isomers)</term>
 <meaning id="fs-idp55104-meaning">efnasambönd með sömu
 efnaformúlu en ólíka byggingu</meaning>
 </definition>
 <definition id="fs-idm86848640">
-<term>sameindaformúla</term>
+<term>sameindaformúla (e. molecular formula)</term>
 <meaning id="fs-idm86848640-meaning">formúla sem gefur til
 kynna samsetningu sameindar efnasambands og gefur upp raunverulegan
 fjölda atóma hvers frumefnis í sameind efnasambandsins.</meaning>
 </definition>
 <definition id="fs-idm54570400">
-<term>rúmísómerur</term>
+<term>rúmísómerur (e. spatial isomers)</term>
 <meaning id="fs-idm54570400-meaning">efnasambönd þar sem
 afstæð afstaða atómanna í rúmi er ólík</meaning>
 </definition>
 <definition id="fs-idm163422864">
-<term>byggingarformúla</term>
+<term>byggingarformúla (e. structural formula)</term>
 <meaning id="fs-idm163422864-meaning">sýnir atómin í sameind
 og hvernig þau eru tengd</meaning>
 </definition>
 <definition id="fs-idp1084128">
-<term>byggingarísómera</term>
+<term>byggingarísómera (e. structural isomer)</term>
 <meaning id="fs-idp1084128-meaning">annað tveggja efna sem
 hafa sömu sameindaformúlu en ólíka eðlis- og efnaeiginleika vegna þess
 að atóm þeirra eru tengd á mismunandi hátt</meaning>
