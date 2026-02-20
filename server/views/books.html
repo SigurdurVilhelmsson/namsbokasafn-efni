@@ -3,98 +3,1029 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bækur - Námsbókasafn</title>
+  <title>B&#243;kasafn - N&#225;msb&#243;kasafn</title>
   <link rel="stylesheet" href="/css/common.css">
+  <style>
+    /* ==========================================================================
+       LIBRARY PAGE &#8212; Basalt & Vellum
+       Merged: books + chapter + images
+       ========================================================================== */
+
+    /* ========================================
+       VIEW NAVIGATION TABS
+       ======================================== */
+
+    .library-tabs {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--spacing-sm);
+    }
+
+    .library-tab {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      font-family: var(--font-body);
+      cursor: pointer;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .library-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .library-tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); font-weight: 600; }
+    .library-tab svg { flex-shrink: 0; }
+
+    /* ========================================
+       BREADCRUMB
+       ======================================== */
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .breadcrumb a:hover { color: var(--accent-hover); }
+    .breadcrumb-sep { color: var(--text-muted); }
+    .breadcrumb-current { color: var(--text-primary); font-weight: 500; }
+
+    /* ========================================
+       BOOK LIST (books view)
+       ======================================== */
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .book-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .book-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+
+    .book-card-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .book-card-subtitle {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .book-card-stats {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .book-card-progress {
+      height: 6px;
+      background: var(--bg-elevated);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .book-card-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    /* ========================================
+       CHAPTER GRID (book detail)
+       ======================================== */
+
+    .book-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .book-header-info h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .book-header-meta {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      display: flex;
+      gap: var(--spacing-md);
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .chapter-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .chapter-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .chapter-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .chapter-card-num {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .chapter-card-badge {
+      font-size: var(--text-xs);
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    .chapter-card-badge.complete { background: var(--success-subtle); color: var(--success); }
+    .chapter-card-badge.in-progress { background: var(--warning-subtle); color: var(--warning); }
+    .chapter-card-badge.not-started { background: var(--bg-elevated); color: var(--text-muted); }
+
+    .chapter-card-title {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+      font-weight: 500;
+    }
+
+    .chapter-card-stats {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .chapter-card-progress {
+      height: 4px;
+      background: var(--bg-elevated);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .chapter-card-progress-bar {
+      display: flex;
+      height: 100%;
+    }
+
+    .progress-segment-complete { background: var(--success); }
+    .progress-segment-wip { background: var(--warning); }
+
+    .chapter-card-legend {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-xs);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 2px;
+    }
+
+    .legend-dot.complete-dot { background: var(--success); }
+    .legend-dot.wip-dot { background: var(--warning); }
+    .legend-dot.wait-dot { background: var(--bg-elevated); }
+
+    /* ========================================
+       CHAPTER DETAIL PANEL
+       ======================================== */
+
+    .detail-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md) var(--spacing-lg);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .detail-header h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+    }
+
+    .detail-header-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+      align-items: center;
+    }
+
+    /* Stats row within detail */
+    .detail-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-md);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-stat {
+      text-align: center;
+    }
+
+    .detail-stat-value {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .detail-stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .detail-stat.warning-stat .detail-stat-value { color: var(--warning); }
+    .detail-stat.critical-stat .detail-stat-value { color: var(--error); }
+
+    /* Sub-tabs for detail panel content */
+    .detail-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+
+    .detail-tab {
+      padding: 0.625rem var(--spacing-md);
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition-fast);
+    }
+
+    .detail-tab:hover { color: var(--text-primary); }
+    .detail-tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+    .detail-tab-content { display: none; }
+    .detail-tab-content.active { display: block; }
+
+    /* Sections list */
+    .detail-body { padding: var(--spacing-md) var(--spacing-lg); }
+
+    .section-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-row:last-child { border-bottom: none; }
+
+    .section-info { display: flex; align-items: center; gap: 0.75rem; flex: 1; }
+    .section-num { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--text-muted); min-width: 3rem; }
+
+    .section-title-text {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+    }
+
+    .section-status-badge {
+      font-size: var(--text-xs);
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+    }
+
+    .badge-muted { background: var(--bg-elevated); color: var(--text-muted); }
+    .badge-info { background: var(--info-subtle); color: var(--info); }
+    .badge-warning { background: var(--warning-subtle); color: var(--warning); }
+    .badge-success { background: var(--success-subtle); color: var(--success); }
+    .badge-error { background: var(--error-subtle); color: var(--error); }
+
+    .section-reviewer { font-size: var(--text-sm); color: var(--text-muted); margin: 0 var(--spacing-md); }
+
+    /* Blocked alert */
+    .blocked-alert {
+      background: var(--error-subtle);
+      border: 2px solid var(--error);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-md);
+      overflow: hidden;
+    }
+
+    .blocked-alert-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: 0.75rem var(--spacing-md);
+      background: rgba(181,74,74,0.1);
+      color: var(--error);
+      font-weight: 600;
+    }
+
+    .blocked-alert-content { padding: var(--spacing-md); }
+
+    .blocked-issue {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .blocked-issue:last-child { margin-bottom: 0; }
+
+    /* Issues list */
+    .issue-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .issue-row:last-child { border-bottom: none; }
+
+    .issue-cat-badge {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .issue-cat-badge.cat-blocked { background: var(--error-subtle); color: var(--error); }
+    .issue-cat-badge.cat-board_review { background: var(--warning-subtle); color: var(--warning); }
+    .issue-cat-badge.cat-editor_confirm { background: var(--info-subtle); color: var(--info); }
+
+    .issue-desc { font-size: var(--text-base); color: var(--text-secondary); }
+
+    .show-more-link {
+      display: block;
+      text-align: center;
+      padding: var(--spacing-sm);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: var(--text-base);
+    }
+
+    .show-more-link:hover { color: var(--accent-hover); }
+
+    /* Activity list */
+    .activity-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .activity-row:last-child { border-bottom: none; }
+    .activity-icon { font-size: 1rem; }
+    .activity-content { flex: 1; font-size: var(--text-base); }
+    .activity-user { font-weight: 500; }
+    .activity-time { display: block; font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* TM Badge */
+    .tm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .tm-badge.running { background: var(--info-subtle); color: var(--info); }
+    .tm-badge.completed { background: var(--success-subtle); color: var(--success); }
+    .tm-badge.failed { background: var(--error-subtle); color: var(--error); }
+
+    /* Panels grid for chapter detail */
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+
+    .panel-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .panel-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem var(--spacing-md);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-card-header h4 {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .panel-card-body {
+      padding: var(--spacing-md);
+      max-height: 350px;
+      overflow-y: auto;
+    }
+
+    /* ========================================
+       IMAGES TAB
+       ======================================== */
+
+    .images-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .images-stat-card {
+      text-align: center;
+      padding: var(--spacing-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .images-stat-value {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .images-stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--spacing-xs);
+    }
+
+    .images-chapter-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .images-chapter-table th,
+    .images-chapter-table td {
+      padding: 0.75rem var(--spacing-sm);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .images-chapter-table th {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .images-chapter-table tbody tr {
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .images-chapter-table tbody tr:hover { background: var(--bg-hover); }
+
+    .image-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .image-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+    }
+
+    .image-status-badge {
+      display: inline-block;
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-full);
+      font-size: 0.625rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .image-status-badge.status-pending { background: var(--warning-subtle); color: var(--warning); }
+    .image-status-badge.status-in-progress { background: var(--info-subtle); color: var(--info); }
+    .image-status-badge.status-translated { background: var(--success-subtle); color: var(--success); }
+    .image-status-badge.status-approved { background: var(--success-subtle); color: var(--success); }
+
+    .image-id { font-weight: 500; color: var(--text-primary); margin-bottom: var(--spacing-sm); }
+    .image-tag { font-size: 0.625rem; color: var(--text-muted); margin-bottom: var(--spacing-sm); }
+    .image-actions { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+
+    .img-progress-bar {
+      height: 6px;
+      background: var(--bg-elevated);
+      border-radius: 3px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .img-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    /* ========================================
+       CATALOGUE MODAL
+       ======================================== */
+
+    .catalogue-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .catalogue-table th,
+    .catalogue-table td {
+      padding: 0.75rem var(--spacing-sm);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .catalogue-table th {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .form-help {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--spacing-xs);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+      justify-content: flex-end;
+      margin-top: var(--spacing-lg);
+    }
+
+    /* ========================================
+       EMPTY STATE
+       ======================================== */
+
+    .empty-state-large {
+      text-align: center;
+      padding: var(--spacing-2xl);
+      color: var(--text-muted);
+    }
+
+    .empty-state-large svg {
+      margin-bottom: var(--spacing-md);
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    .empty-state-large p {
+      margin-top: var(--spacing-sm);
+      font-size: var(--text-base);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+
+    @media (max-width: 1024px) {
+      .book-grid { grid-template-columns: 1fr; }
+      .chapter-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+      .detail-stats { grid-template-columns: repeat(2, 1fr); }
+      .panel-grid { grid-template-columns: 1fr; }
+      .images-stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .book-header { flex-direction: column; gap: var(--spacing-md); }
+      .chapter-grid { grid-template-columns: 1fr; }
+      .detail-stats { grid-template-columns: 1fr; }
+      .images-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .image-card-grid { grid-template-columns: 1fr; }
+      .library-tabs { flex-wrap: wrap; }
+    }
+  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Fara í efni</a>
-  <header class="header">
-    <h1>Námsbókasafn</h1>
-    <nav>
-      <a href="/my-work">Mín verkefni</a>
-      <a href="/segment-editor">Ritstjóri</a>
-      <a href="/status">Framvinda</a>
-      <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
-      <span class="nav-separator admin-only"></span>
-      <a href="/dashboard" class="admin-only">Stjórnborð</a>
-      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" title="Skipta um þema">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <main class="page-content" id="main-content" data-page="library" data-title="B&#243;kasafn">
+
+    <!-- View Tabs -->
+    <div class="library-tabs" id="library-tabs">
+      <button class="library-tab active" data-view="books" onclick="switchView('books')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        B&#230;kur
       </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
-      </div>
-      <div class="user-info" id="user-info"></div>
-    </div>
-  </header>
-
-  <main class="container" id="main-content">
-    <!-- Registered Books Section -->
-    <div class="card">
-      <div class="card-header">
-        <h2 class="card-title">Skráðar bækur</h2>
-        <button class="btn btn-secondary" onclick="showCatalogueModal()" id="register-btn" style="display: none;">
-          + Skrá nýja bók
-        </button>
-      </div>
-      <div id="books-list">
-        <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-      </div>
+      <button class="library-tab" data-view="chapter" onclick="switchView('chapter')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Kafli
+      </button>
+      <button class="library-tab" data-view="images" onclick="switchView('images')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        Myndir
+      </button>
     </div>
 
-    <!-- Book Detail Section (shown when a book is selected) -->
-    <div class="card" id="book-detail" style="display: none;">
-      <div class="card-header">
-        <h2 class="card-title" id="book-title"></h2>
-        <div class="book-meta" id="book-meta"></div>
+    <!-- ============================================================
+         BOOKS VIEW &#8212; Book list + book detail + chapter sections
+         ============================================================ -->
+    <div id="view-books" class="library-view">
+
+      <!-- Breadcrumb -->
+      <div class="breadcrumb" id="books-breadcrumb">
+        <span class="breadcrumb-current">B&#230;kur</span>
       </div>
-      <div id="chapters-list"></div>
+
+      <!-- Book List -->
+      <div id="books-list-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--spacing-md)">
+          <h2 style="font-family:var(--font-heading);font-size:var(--text-xl);color:var(--text-primary)">Skr&#225;&#240;ar b&#230;kur</h2>
+          <button class="btn btn-sm btn-primary admin-only" onclick="showCatalogueModal()" id="register-btn" style="display:none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Skr&#225; n&#253;ja b&#243;k
+          </button>
+        </div>
+        <div id="books-list">
+          <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+        </div>
+      </div>
+
+      <!-- Book Detail (chapters grid) -->
+      <div id="book-detail-section" style="display:none">
+        <div class="book-header">
+          <div class="book-header-info">
+            <h2 id="book-title">Hle&#240;ur...</h2>
+            <div class="book-header-meta" id="book-meta"></div>
+          </div>
+          <div style="display:flex;gap:var(--spacing-sm)">
+            <button class="btn btn-sm btn-secondary" onclick="downloadBookMarkdown(selectedBook)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              S&#230;kja allt EN markdown
+            </button>
+          </div>
+        </div>
+        <div id="chapters-grid" class="chapter-grid"></div>
+      </div>
+
+      <!-- Chapter Detail Panel -->
+      <div id="chapter-detail-section" style="display:none">
+        <div class="detail-panel">
+          <div class="detail-header">
+            <div class="detail-header-left">
+              <h3 id="chapter-detail-title">Kafli</h3>
+              <span class="chapter-card-badge" id="chapter-detail-badge">Hle&#240;ur...</span>
+            </div>
+            <div class="detail-header-actions">
+              <a href="#" class="btn btn-sm btn-secondary" id="chapter-editor-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                Opna ritstj&#243;ra
+              </a>
+              <button class="btn btn-sm btn-secondary" id="btn-prepare-tm" style="display:none" onclick="prepareTm()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Undirb&#250;a TM
+              </button>
+              <span class="tm-badge" id="prepare-tm-badge" style="display:none"></span>
+              <button class="btn btn-sm btn-secondary" onclick="downloadChapterMarkdown(selectedBook, selectedChapter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                EN
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="detail-stats">
+            <div class="detail-stat">
+              <div class="detail-stat-value" id="stat-sections">-</div>
+              <div class="detail-stat-label">Hlutar</div>
+            </div>
+            <div class="detail-stat">
+              <div class="detail-stat-value" id="stat-progress">-</div>
+              <div class="detail-stat-label">Framvinda</div>
+            </div>
+            <div class="detail-stat warning-stat" id="stat-card-issues">
+              <div class="detail-stat-value" id="stat-issues">-</div>
+              <div class="detail-stat-label">Atri&#240;i</div>
+            </div>
+          </div>
+
+          <!-- Blocked Alert -->
+          <div class="blocked-alert" id="blocked-alert" style="display:none">
+            <div class="blocked-alert-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <strong>Vinna st&#246;&#240;vu&#240;</strong>
+            </div>
+            <div class="blocked-alert-content" id="blocked-alert-content"></div>
+          </div>
+
+          <!-- Detail sub-tabs -->
+          <div class="detail-tabs">
+            <button class="detail-tab active" onclick="switchDetailTab('sections')">Hlutar</button>
+            <button class="detail-tab" onclick="switchDetailTab('issues')">Atri&#240;i</button>
+            <button class="detail-tab" onclick="switchDetailTab('activity')">Virkni</button>
+          </div>
+
+          <!-- Sections tab -->
+          <div class="detail-tab-content active" id="dtab-sections">
+            <div class="detail-body" id="sections-panel">
+              <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+            </div>
+          </div>
+
+          <!-- Issues tab -->
+          <div class="detail-tab-content" id="dtab-issues">
+            <div class="detail-body" id="issues-panel">
+              <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+            </div>
+          </div>
+
+          <!-- Activity tab -->
+          <div class="detail-tab-content" id="dtab-activity">
+            <div class="detail-body" id="activity-panel">
+              <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Chapter Detail Section (shown when a chapter is selected) -->
-    <div class="card" id="chapter-detail" style="display: none;">
-      <div class="card-header">
-        <h2 class="card-title" id="chapter-title"></h2>
-        <button class="btn btn-secondary" onclick="hideChapterDetail()">Til baka</button>
+    <!-- ============================================================
+         CHAPTER VIEW &#8212; Book/chapter selector + control panel
+         ============================================================ -->
+    <div id="view-chapter" class="library-view" style="display:none">
+
+      <!-- Chapter Selector -->
+      <div class="card" style="margin-bottom:var(--spacing-lg)">
+        <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:var(--spacing-md);align-items:end">
+          <div class="form-group">
+            <label class="form-label">B&#243;k</label>
+            <select class="form-select" id="cv-book-select">
+              <option value="">Veldu b&#243;k...</option>
+              <option value="efnafraedi">Efnafr&#230;&#240;i</option>
+              <option value="liffraedi">L&#237;ffr&#230;&#240;i</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kafli</label>
+            <select class="form-select" id="cv-chapter-select" disabled>
+              <option value="">Veldu kafla...</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="cv-load-btn" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+            Hla&#240;a kafla
+          </button>
+        </div>
       </div>
-      <div id="sections-list"></div>
+
+      <!-- Chapter Control Panel -->
+      <div id="cv-control-panel" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--spacing-lg)">
+          <div style="display:flex;align-items:center;gap:var(--spacing-md)">
+            <h2 id="cv-chapter-title" style="font-family:var(--font-heading);font-size:var(--text-xl);color:var(--text-primary)">Kafli</h2>
+            <span class="chapter-card-badge" id="cv-chapter-status">Hle&#240;ur...</span>
+          </div>
+          <div style="display:flex;gap:var(--spacing-sm);align-items:center">
+            <a href="#" class="btn btn-sm btn-secondary" id="cv-editor-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              Opna ritstj&#243;ra
+            </a>
+            <button class="btn btn-sm btn-secondary" id="cv-btn-prepare-tm" style="display:none" onclick="cvPrepareTm()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              Undirb&#250;a TM
+            </button>
+            <span class="tm-badge" id="cv-prepare-tm-badge" style="display:none"></span>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-md);margin-bottom:var(--spacing-lg)">
+          <div class="card" style="text-align:center;padding:var(--spacing-md)">
+            <div style="font-size:var(--text-xl);font-weight:700;color:var(--accent)" id="cv-stat-sections">-</div>
+            <div style="font-size:var(--text-xs);color:var(--text-muted)">Hlutar</div>
+          </div>
+          <div class="card" style="text-align:center;padding:var(--spacing-md)">
+            <div style="font-size:var(--text-xl);font-weight:700;color:var(--accent)" id="cv-stat-progress">-</div>
+            <div style="font-size:var(--text-xs);color:var(--text-muted)">Framvinda</div>
+          </div>
+          <div class="card" style="text-align:center;padding:var(--spacing-md)" id="cv-stat-card-issues">
+            <div style="font-size:var(--text-xl);font-weight:700;color:var(--warning)" id="cv-stat-issues">-</div>
+            <div style="font-size:var(--text-xs);color:var(--text-muted)">Atri&#240;i</div>
+          </div>
+        </div>
+
+        <!-- Blocked Alert -->
+        <div class="blocked-alert" id="cv-blocked-alert" style="display:none">
+          <div class="blocked-alert-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <strong>Vinna st&#246;&#240;vu&#240;</strong>
+          </div>
+          <div class="blocked-alert-content" id="cv-blocked-alert-content"></div>
+        </div>
+
+        <!-- Panels Grid -->
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                Hlutar
+              </h4>
+            </div>
+            <div class="panel-card-body" id="cv-sections-panel">
+              <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+            </div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Atri&#240;i
+              </h4>
+              <a href="#" class="btn btn-sm btn-secondary" id="cv-issues-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                &#214;ll atri&#240;i
+              </a>
+            </div>
+            <div class="panel-card-body" id="cv-issues-panel">
+              <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+            </div>
+          </div>
+          <div class="panel-card" style="grid-column:1/-1">
+            <div class="panel-card-header">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                N&#253;leg virkni
+              </h4>
+            </div>
+            <div class="panel-card-body" id="cv-activity-panel">
+              <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- ============================================================
+         IMAGES VIEW &#8212; Image translation tracker
+         ============================================================ -->
+    <div id="view-images" class="library-view" style="display:none">
+
+      <div style="margin-bottom:var(--spacing-lg)">
+        <h2 style="font-family:var(--font-heading);font-size:var(--text-xl);color:var(--text-primary);margin-bottom:var(--spacing-md)">Mynd a&#254;&#253;&#240;ingaeftirlit</h2>
+        <div class="form-group" style="max-width:300px">
+          <label class="form-label">Veldu b&#243;k</label>
+          <select class="form-select" id="img-book-select" onchange="loadBookImages()">
+            <option value="">Veldu b&#243;k...</option>
+            <option value="efnafraedi">Efnafr&#230;&#240;i (Chemistry 2e)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Book stats overview -->
+      <div id="img-book-stats" style="display:none">
+        <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);color:var(--text-primary);margin-bottom:var(--spacing-md)">Yfirlit b&#243;kar</h3>
+        <div class="images-stats-grid" id="img-stats-grid"></div>
+        <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);color:var(--text-primary);margin-bottom:var(--spacing-md)">Kaflar</h3>
+        <table class="images-chapter-table">
+          <thead>
+            <tr><th>Kafli</th><th>Samtals</th><th>&#205; bi&#240;</th><th>&#222;&#253;tt</th><th>Sam&#254;ykkt</th><th>Framvinda</th></tr>
+          </thead>
+          <tbody id="img-chapters-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Chapter images detail -->
+      <div id="img-chapter-images" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--spacing-md)">
+          <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);color:var(--text-primary)">Myndir &#237; kafla <span id="img-chapter-num"></span></h3>
+          <button class="btn btn-sm btn-secondary" onclick="imgBackToOverview()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Til baka &#237; yfirlit
+          </button>
+        </div>
+        <div id="img-images-grid" class="image-card-grid"></div>
+      </div>
+    </div>
+
   </main>
 
   <!-- Catalogue Modal -->
-  <div class="modal-overlay" id="catalogue-modal" style="display: none;">
-    <div class="modal" role="dialog" aria-modal="true">
+  <div class="modal" role="dialog" aria-modal="true" id="catalogue-modal" style="display:none">
+    <div class="modal-content">
       <div class="modal-header">
-        <h3>Skrá nýja bók</h3>
-        <button class="modal-close" onclick="hideCatalogueModal()">&times;</button>
+        <h3>Skr&#225; n&#253;ja b&#243;k</h3>
+        <button class="btn-close" onclick="hideCatalogueModal()">&times;</button>
       </div>
       <div class="modal-body">
         <div id="catalogue-list">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+          <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
         </div>
-        <div id="register-form" style="display: none;">
-          <h4>Skrá bók: <span id="selected-book-title"></span></h4>
+        <div id="register-form" style="display:none">
+          <h4 style="margin-bottom:var(--spacing-md)">Skr&#225; b&#243;k: <span id="selected-book-title"></span></h4>
           <form onsubmit="return submitRegistration(event)">
             <input type="hidden" id="catalogue-slug" name="catalogueSlug">
             <div class="form-group">
-              <label class="form-label">Íslenskt stuttnefni (slug)</label>
+              <label class="form-label">&#205;slenskt stuttnefni (slug)</label>
               <input type="text" class="form-input" id="book-slug" name="slug" required
                      placeholder="t.d. efnafraedi" pattern="[a-z0-9-]+">
-              <small class="form-help">Notað í slóðum og skráarheitum</small>
+              <small class="form-help">Nota&#240; &#237; sl&#243;&#240;um og skr&#225;arheitum</small>
             </div>
             <div class="form-group">
-              <label class="form-label">Íslenskt heiti</label>
+              <label class="form-label">&#205;slenskt heiti</label>
               <input type="text" class="form-input" id="book-title-is" name="titleIs" required
-                     placeholder="t.d. Efnafræði">
+                     placeholder="t.d. Efnafr&#230;&#240;i">
             </div>
             <div class="form-actions">
-              <button type="button" class="btn btn-secondary" onclick="cancelRegistration()">Hætta við</button>
-              <button type="submit" class="btn btn-primary">Skrá bók</button>
+              <button type="button" class="btn btn-secondary" onclick="cancelRegistration()">H&#230;tta vi&#240;</button>
+              <button type="submit" class="btn btn-primary">Skr&#225; b&#243;k</button>
             </div>
           </form>
         </div>
@@ -102,321 +1033,1028 @@
     </div>
   </div>
 
-    <script src="/js/htmlUtils.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/htmlUtils.js"></script>
   <script>
-    let currentUser = null;
-    let selectedBook = null;
+    // ========================================================================
+    // LIBRARY PAGE — Merged books + chapter + images
+    // ========================================================================
 
-    // ============================================================================
-    // INITIALIZATION
-    // ============================================================================
+    var selectedBook = null;
+    var selectedChapter = null;
+    var chapterData = null;
+    var tmPollingTimer = null;
+    var cvCurrentBook = null;
+    var cvCurrentChapter = null;
+    var cvTmPollingTimer = null;
+    var imgCurrentBook = '';
 
-    async function init() {
-      // Check auth
-      const authRes = await fetch('/api/auth/me');
-      const authData = await authRes.json();
+    // Status labels for sections (from chapter.html and books.html)
+    var STATUS_LABELS = {
+      'not_started': { text: 'Ekki byrja\u00f0', cls: 'badge-muted' },
+      'mt_pending': { text: 'B\u00ed\u00f0ur \u00fe\u00fd\u00f0ingar', cls: 'badge-info' },
+      'mt_uploaded': { text: '\u00de\u00fd\u00f0ing m\u00f3tteki\u00f0', cls: 'badge-info' },
+      'review_assigned': { text: 'Ritstj\u00f3ri \u00fathluta\u00f0ur', cls: 'badge-warning' },
+      'review_in_progress': { text: '\u00cd yfirfer\u00f0', cls: 'badge-warning' },
+      'review_submitted': { text: 'B\u00ed\u00f0ur sam\u00feykkis', cls: 'badge-warning' },
+      'review_approved': { text: 'Sam\u00feykkt', cls: 'badge-success' },
+      'faithful_published': { text: 'Birt (tr\u00fa \u00fe\u00fd\u00f0ing)', cls: 'badge-success' },
+      'localization_assigned': { text: 'Sta\u00f0f\u00e6ring \u00fathluta\u00f0', cls: 'badge-info' },
+      'localization_in_progress': { text: 'Sta\u00f0f\u00e6ring \u00ed vinnslu', cls: 'badge-info' },
+      'localization_submitted': { text: 'Sta\u00f0f\u00e6ring b\u00ed\u00f0ur sam\u00feykkis', cls: 'badge-warning' },
+      'localization_approved': { text: 'Sta\u00f0f\u00e6ring sam\u00feykkt', cls: 'badge-success' },
+      'localized_published': { text: 'Birt (sta\u00f0f\u00e6rt)', cls: 'badge-success' }
+    };
 
-      const userInfo = document.getElementById('user-info');
-      if (authData.authenticated) {
-        currentUser = authData.user;
-        userInfo.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+    var IMAGE_STATUS_LABELS = {
+      'pending': '\u00cd bi\u00f0',
+      'in-progress': '\u00cd vinnslu',
+      'translated': '\u00de\u00fdtt',
+      'approved': 'Sam\u00feykkt'
+    };
 
-        // Show register button for admins
-        if (authData.user.role === 'admin') {
-          document.getElementById('register-btn').style.display = 'block';
-        }
+    var CATEGORY_LABELS = {
+      'BLOCKED': 'St\u00f6\u00f0va\u00f0',
+      'BOARD_REVIEW': 'Umr\u00e6\u00f0a',
+      'EDITOR_CONFIRM': 'Yfirfer\u00f0',
+      'AUTO_FIX': 'Sj\u00e1lfvirk'
+    };
 
-        loadBooks();
+    // ========================================================================
+    // INITIALIZATION — listens for layout.js userLoaded event
+    // ========================================================================
 
-        // Auto-load book if URL is /books/:slug
-        const pathMatch = window.location.pathname.match(/^\/books\/([a-z0-9-]+)$/);
-        if (pathMatch) {
-          setTimeout(() => loadBookDetail(pathMatch[1]), 100);
-        }
-      } else {
-        userInfo.innerHTML = '<a href="/api/auth/login" class="btn btn-primary">Innskráning</a>';
-        document.getElementById('books-list').innerHTML = '<p class="text-muted">Innskráning krafist til að sjá bækur</p>';
+    window.addEventListener('userLoaded', function(e) {
+      var user = e.detail;
+
+      // Show register button for admins
+      if (user.role === 'admin') {
+        var regBtn = document.getElementById('register-btn');
+        if (regBtn) regBtn.style.display = '';
+      }
+
+      // Load books list
+      loadBooks();
+
+      // Check for URL-based auto-loading
+      var pathMatch = window.location.pathname.match(/^\/books\/([a-z0-9-]+)$/);
+      if (pathMatch) {
+        setTimeout(function() { loadBookDetail(pathMatch[1]); }, 100);
+      }
+
+      // Check URL params for chapter view
+      var params = new URLSearchParams(window.location.search);
+      var bookParam = params.get('book');
+      var chapterParam = params.get('chapter');
+      var viewParam = params.get('view');
+
+      if (viewParam === 'chapter' && bookParam && chapterParam) {
+        switchView('chapter');
+        document.getElementById('cv-book-select').value = bookParam;
+        cvLoadChapters(bookParam).then(function() {
+          document.getElementById('cv-chapter-select').value = chapterParam;
+          document.getElementById('cv-load-btn').disabled = false;
+          cvLoadChapter(bookParam, chapterParam);
+        });
+      } else if (viewParam === 'images') {
+        switchView('images');
+      }
+    });
+
+    // Fallback: if user is not authenticated after 3 seconds
+    setTimeout(function() {
+      if (!window.currentUser) {
+        document.getElementById('books-list').innerHTML =
+          '<div class="empty-state-large">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>' +
+            '<p>Innskr\u00e1ning krafist til a\u00f0 sj\u00e1 b\u00e6kur</p>' +
+          '</div>';
+      }
+    }, 3000);
+
+    // ========================================================================
+    // VIEW SWITCHING
+    // ========================================================================
+
+    function switchView(viewName) {
+      // Hide all views
+      var views = document.querySelectorAll('.library-view');
+      for (var i = 0; i < views.length; i++) {
+        views[i].style.display = 'none';
+      }
+
+      // Deactivate all tabs
+      var tabs = document.querySelectorAll('.library-tab');
+      for (var j = 0; j < tabs.length; j++) {
+        tabs[j].classList.remove('active');
+      }
+
+      // Show selected view and activate tab
+      var target = document.getElementById('view-' + viewName);
+      if (target) target.style.display = 'block';
+
+      var activeTab = document.querySelector('.library-tab[data-view="' + viewName + '"]');
+      if (activeTab) activeTab.classList.add('active');
+
+      // Setup chapter view event listeners if needed
+      if (viewName === 'chapter') {
+        setupChapterViewListeners();
       }
     }
 
-    // ============================================================================
-    // BOOKS LIST
-    // ============================================================================
+    // ========================================================================
+    // DETAIL TAB SWITCHING (within chapter detail panel)
+    // ========================================================================
+
+    function switchDetailTab(tabName) {
+      var tabs = document.querySelectorAll('.detail-tab');
+      var contents = document.querySelectorAll('.detail-tab-content');
+
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+      for (var j = 0; j < contents.length; j++) {
+        contents[j].classList.remove('active');
+      }
+
+      // Activate clicked tab
+      var activeTab = document.querySelector('.detail-tab');
+      var allTabs = document.querySelectorAll('.detail-tab');
+      for (var k = 0; k < allTabs.length; k++) {
+        if (allTabs[k].textContent.trim() === (tabName === 'sections' ? 'Hlutar' : tabName === 'issues' ? 'Atri\u00f0i' : 'Virkni')) {
+          allTabs[k].classList.add('active');
+        }
+      }
+
+      var content = document.getElementById('dtab-' + tabName);
+      if (content) content.classList.add('active');
+    }
+
+    // ========================================================================
+    // BOOKS VIEW — Book list
+    // ========================================================================
 
     async function loadBooks() {
-      const booksEl = document.getElementById('books-list');
+      var booksEl = document.getElementById('books-list');
 
       try {
-        const res = await fetch('/api/admin/books');
-        const data = await res.json();
+        var res = await fetch('/api/admin/books');
+        var data = await res.json();
 
         if (!data.books || data.books.length === 0) {
-          booksEl.innerHTML = `
-            <div class="empty-state">
-              <p>Engar bækur skráðar</p>
-              ${currentUser?.role === 'admin' ? '<button class="btn btn-primary" onclick="showCatalogueModal()">Skrá fyrstu bókina</button>' : ''}
-            </div>
-          `;
+          booksEl.innerHTML =
+            '<div class="empty-state-large">' +
+              '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>' +
+              '<p>Engar b\u00e6kur skr\u00e1\u00f0ar</p>' +
+              (window.currentUser && window.currentUser.role === 'admin'
+                ? '<button class="btn btn-primary" onclick="showCatalogueModal()" style="margin-top:var(--spacing-md)">Skr\u00e1 fyrstu b\u00f3kina</button>'
+                : '') +
+            '</div>';
           return;
         }
 
-        booksEl.innerHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Bók</th>
-                <th>Kaflar</th>
-                <th>Framvinda</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              ${data.books.map(book => `
-                <tr>
-                  <td>
-                    <strong>${escapeHtml(book.titleIs)}</strong>
-                    <small class="text-muted">(${escapeHtml(book.titleEn)})</small>
-                  </td>
-                  <td>${book.chapters} kaflar</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar">
-                        <div class="progress-bar-fill" style="width: ${book.progress}%"></div>
-                      </div>
-                      <span class="progress-text">${book.progress}%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <button class="btn btn-secondary" onclick="loadBookDetail('${book.slug}')">Skoða</button>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        `;
+        booksEl.innerHTML = '<div class="book-grid">' + data.books.map(function(book) {
+          return '<div class="book-card" onclick="loadBookDetail(\'' + book.slug + '\')">' +
+            '<div class="book-card-title">' + escapeHtml(book.titleIs) + '</div>' +
+            '<div class="book-card-subtitle">' + escapeHtml(book.titleEn) + '</div>' +
+            '<div class="book-card-stats">' +
+              '<span>' + book.chapters + ' kaflar</span>' +
+              '<span>' + book.progress + '% loki\u00f0</span>' +
+            '</div>' +
+            '<div class="book-card-progress">' +
+              '<div class="book-card-progress-fill" style="width:' + book.progress + '%"></div>' +
+            '</div>' +
+          '</div>';
+        }).join('') + '</div>';
+
       } catch (err) {
         console.error('Failed to load books:', err);
-        booksEl.innerHTML = '<p class="text-error">Villa við að hlaða bókum</p>';
+        booksEl.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a b\u00f3kum</p>';
       }
     }
 
-    // ============================================================================
-    // BOOK DETAIL
-    // ============================================================================
+    // ========================================================================
+    // BOOKS VIEW — Book detail (chapters grid)
+    // ========================================================================
 
     async function loadBookDetail(slug) {
       selectedBook = slug;
-      const detailEl = document.getElementById('book-detail');
-      const titleEl = document.getElementById('book-title');
-      const metaEl = document.getElementById('book-meta');
-      const chaptersEl = document.getElementById('chapters-list');
+      selectedChapter = null;
 
-      detailEl.style.display = 'block';
-      titleEl.textContent = 'Hleður...';
-      chaptersEl.innerHTML = '';
+      // Show book detail, hide book list and chapter detail
+      document.getElementById('books-list-section').style.display = 'none';
+      document.getElementById('book-detail-section').style.display = 'block';
+      document.getElementById('chapter-detail-section').style.display = 'none';
+
+      // Update breadcrumb
+      document.getElementById('books-breadcrumb').innerHTML =
+        '<a href="javascript:void(0)" onclick="backToBookList()">B\u00e6kur</a>' +
+        '<span class="breadcrumb-sep">/</span>' +
+        '<span class="breadcrumb-current" id="breadcrumb-book"></span>';
+
+      var titleEl = document.getElementById('book-title');
+      var metaEl = document.getElementById('book-meta');
+      var chaptersEl = document.getElementById('chapters-grid');
+
+      titleEl.textContent = 'Hle\u00f0ur...';
+      chaptersEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hle\u00f0ur...</span></div>';
 
       try {
-        const res = await fetch('/api/admin/books/' + slug);
-        const book = await res.json();
+        var res = await fetch('/api/admin/books/' + slug);
+        var book = await res.json();
 
         titleEl.textContent = book.titleIs;
-        metaEl.innerHTML = '<span class="meta-item">' + escapeHtml(book.titleEn) + '</span>' +
-          '<span class="meta-separator">|</span>' +
-          '<span class="meta-item">' + book.chapters.length + ' kaflar</span>';
+        document.getElementById('breadcrumb-book').textContent = book.titleIs;
+        metaEl.innerHTML =
+          '<span>' + escapeHtml(book.titleEn) + '</span>' +
+          '<span>' + book.chapters.length + ' kaflar</span>';
 
-        let chaptersHtml = '<div class="chapter-actions-bar">' +
-          '<button class="btn btn-secondary" onclick="downloadBookMarkdown(\'' + slug + '\')">' +
-          '<span class="icon">⬇</span> Sækja allt EN markdown</button></div>' +
-          '<table class="table"><thead><tr>' +
-          '<th>Kafli</th><th>Heiti</th><th style="width: 220px;">Framvinda</th><th>Aðgerðir</th>' +
-          '</tr></thead><tbody>';
+        chaptersEl.innerHTML = book.chapters.map(function(ch) {
+          var total = ch.progress.total;
+          var completed = (ch.progress.published || 0) + (ch.progress.reviewApproved || 0);
+          var inProgress = (ch.progress.inReview || 0) + (ch.progress.inMT || 0) + (ch.progress.inLocalization || 0);
+          var notStarted = ch.progress.notStarted || 0;
+          var pctComplete = total > 0 ? Math.round((completed / total) * 100) : 0;
+          var pctInProgress = total > 0 ? Math.round((inProgress / total) * 100) : 0;
 
-        book.chapters.forEach(function(ch) {
-          const total = ch.progress.total;
-          const completed = (ch.progress.published || 0) + (ch.progress.reviewApproved || 0);
-          const inProgress = (ch.progress.inReview || 0) + (ch.progress.inMT || 0) + (ch.progress.inLocalization || 0);
-          const notStarted = ch.progress.notStarted || 0;
-          const pctComplete = total > 0 ? Math.round((completed / total) * 100) : 0;
-          const pctInProgress = total > 0 ? Math.round((inProgress / total) * 100) : 0;
+          var badgeClass = pctComplete === 100 ? 'complete' : (completed + inProgress > 0 ? 'in-progress' : 'not-started');
+          var badgeText = pctComplete === 100 ? 'Kl\u00e1rt' : (completed + inProgress > 0 ? '\u00cd vinnslu' : 'Ekki byrja\u00f0');
 
-          let legendHtml = '';
-          if (completed > 0) legendHtml += '<span class="legend-item"><span class="dot bg-success"></span>' + completed + ' lokið</span>';
-          if (inProgress > 0) legendHtml += '<span class="legend-item"><span class="dot bg-warning"></span>' + inProgress + ' í vinnslu</span>';
-          if (notStarted > 0) legendHtml += '<span class="legend-item"><span class="dot bg-muted"></span>' + notStarted + ' bíður</span>';
+          var legendHtml = '';
+          if (completed > 0) legendHtml += '<span><span class="legend-dot complete-dot"></span>' + completed + ' loki\u00f0</span>';
+          if (inProgress > 0) legendHtml += '<span><span class="legend-dot wip-dot"></span>' + inProgress + ' \u00ed vinnslu</span>';
+          if (notStarted > 0) legendHtml += '<span><span class="legend-dot wait-dot"></span>' + notStarted + ' b\u00ed\u00f0ur</span>';
 
-          chaptersHtml += '<tr>' +
-            '<td><strong>K. ' + ch.chapterNum + '</strong></td>' +
-            '<td>' + escapeHtml(ch.titleIs || ch.titleEn) + '<small class="text-muted block">' + total + ' einingar</small></td>' +
-            '<td><div class="chapter-progress">' +
-            '<div class="progress-bar stacked">' +
-            '<div class="progress-bar-fill bg-success" style="width: ' + pctComplete + '%"></div>' +
-            '<div class="progress-bar-fill bg-warning" style="width: ' + pctInProgress + '%"></div>' +
-            '</div><div class="progress-legend">' + legendHtml + '</div></div></td>' +
-            '<td><div class="btn-group">' +
-            '<button class="btn btn-secondary btn-sm" onclick="loadChapterDetail(\'' + slug + '\', ' + ch.chapterNum + ')">Skoða</button>' +
-            '<button class="btn btn-secondary btn-sm" onclick="downloadChapterMarkdown(\'' + slug + '\', ' + ch.chapterNum + ')" title="Sækja EN markdown">⬇ EN</button>' +
-            '</div></td></tr>';
-        });
+          return '<div class="chapter-card" onclick="loadChapterDetailFromBooks(\'' + slug + '\', ' + ch.chapterNum + ')">' +
+            '<div class="chapter-card-header">' +
+              '<span class="chapter-card-num">K. ' + ch.chapterNum + '</span>' +
+              '<span class="chapter-card-badge ' + badgeClass + '">' + badgeText + '</span>' +
+            '</div>' +
+            '<div class="chapter-card-title">' + escapeHtml(ch.titleIs || ch.titleEn) + '</div>' +
+            '<div class="chapter-card-stats">' + total + ' einingar</div>' +
+            '<div class="chapter-card-progress"><div class="chapter-card-progress-bar">' +
+              '<div class="progress-segment-complete" style="width:' + pctComplete + '%"></div>' +
+              '<div class="progress-segment-wip" style="width:' + pctInProgress + '%"></div>' +
+            '</div></div>' +
+            '<div class="chapter-card-legend">' + legendHtml + '</div>' +
+          '</div>';
+        }).join('');
 
-        chaptersHtml += '</tbody></table>';
-        chaptersEl.innerHTML = chaptersHtml;
-
-        // Scroll to detail
-        detailEl.scrollIntoView({ behavior: 'smooth' });
+        // Update URL
+        history.pushState(null, '', '/books/' + slug);
       } catch (err) {
         console.error('Failed to load book:', err);
         titleEl.textContent = 'Villa';
-        chaptersEl.innerHTML = '<p class="text-error">Villa við að hlaða bók</p>';
+        chaptersEl.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a b\u00f3k</p>';
       }
     }
 
-    // ============================================================================
-    // CHAPTER DETAIL
-    // ============================================================================
+    function backToBookList() {
+      document.getElementById('books-list-section').style.display = '';
+      document.getElementById('book-detail-section').style.display = 'none';
+      document.getElementById('chapter-detail-section').style.display = 'none';
+      document.getElementById('books-breadcrumb').innerHTML = '<span class="breadcrumb-current">B\u00e6kur</span>';
+      selectedBook = null;
+      selectedChapter = null;
+      history.pushState(null, '', '/books');
+    }
 
-    async function loadChapterDetail(slug, chapterNum) {
-      const detailEl = document.getElementById('chapter-detail');
-      const titleEl = document.getElementById('chapter-title');
-      const sectionsEl = document.getElementById('sections-list');
+    // ========================================================================
+    // BOOKS VIEW — Chapter detail panel (merged from books + chapter)
+    // ========================================================================
 
-      detailEl.style.display = 'block';
-      titleEl.textContent = `Kafli ${chapterNum}`;
-      sectionsEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
+    async function loadChapterDetailFromBooks(slug, chapterNum) {
+      selectedBook = slug;
+      selectedChapter = chapterNum;
+
+      document.getElementById('chapter-detail-section').style.display = 'block';
+
+      // Update breadcrumb
+      var breadcrumb = document.getElementById('books-breadcrumb');
+      breadcrumb.innerHTML =
+        '<a href="javascript:void(0)" onclick="backToBookList()">B\u00e6kur</a>' +
+        '<span class="breadcrumb-sep">/</span>' +
+        '<a href="javascript:void(0)" onclick="loadBookDetail(\'' + slug + '\')">' + escapeHtml(document.getElementById('book-title').textContent) + '</a>' +
+        '<span class="breadcrumb-sep">/</span>' +
+        '<span class="breadcrumb-current">Kafli ' + chapterNum + '</span>';
+
+      var titleEl = document.getElementById('chapter-detail-title');
+      var badgeEl = document.getElementById('chapter-detail-badge');
+
+      titleEl.textContent = 'Kafli ' + chapterNum;
+      badgeEl.textContent = 'Hle\u00f0ur...';
+      badgeEl.className = 'chapter-card-badge';
+
+      // Update links
+      document.getElementById('chapter-editor-link').href = '/segment-editor?book=' + slug + '&chapter=' + chapterNum;
+
+      // Load all data in parallel
+      await Promise.all([
+        loadChapterSections(slug, chapterNum),
+        loadChapterIssues(slug, chapterNum),
+        loadChapterActivity(slug, chapterNum),
+        loadChapterStatus(slug, chapterNum),
+        loadAdminChapterSections(slug, chapterNum)
+      ]);
+
+      // Scroll to detail
+      document.getElementById('chapter-detail-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Sections tab — from books.html chapter detail
+    async function loadAdminChapterSections(slug, chapterNum) {
+      var panel = document.getElementById('sections-panel');
 
       try {
-        const res = await fetch(`/api/admin/books/${slug}/chapters/${chapterNum}`);
-        const data = await res.json();
+        var res = await fetch('/api/admin/books/' + slug + '/chapters/' + chapterNum);
+        var data = await res.json();
 
-        // Validate response before accessing nested properties
         if (!res.ok || !data.chapter) {
-          sectionsEl.innerHTML = '<p class="text-error">Villa við að hlaða kafla: ' +
-            escapeHtml(data.error || data.message || 'Óþekkt villa') + '</p>';
+          panel.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a kafla: ' +
+            escapeHtml(data.error || data.message || '\u00d3\u00feekkt villa') + '</p>';
           return;
         }
 
-        titleEl.textContent = `Kafli ${chapterNum}: ${data.chapter.titleIs || data.chapter.titleEn}`;
+        var titleEl = document.getElementById('chapter-detail-title');
+        titleEl.textContent = 'Kafli ' + chapterNum + ': ' + (data.chapter.titleIs || data.chapter.titleEn);
 
-        const statusLabels = {
-          'not_started': { text: 'Ekki byrjað', class: 'muted' },
-          'mt_pending': { text: 'Bíður þýðingar', class: 'info' },
-          'mt_uploaded': { text: 'Þýðing móttekið', class: 'info' },
-          'review_assigned': { text: 'Ritstjóri úthlutaður', class: 'warning' },
-          'review_in_progress': { text: 'Í yfirferð', class: 'warning' },
-          'review_submitted': { text: 'Bíður samþykkis', class: 'warning' },
-          'review_approved': { text: 'Samþykkt', class: 'success' },
-          'faithful_published': { text: 'Birt (trú þýðing)', class: 'success' },
-          'localization_assigned': { text: 'Staðfæring úthlutað', class: 'info' },
-          'localization_in_progress': { text: 'Staðfæring í vinnslu', class: 'info' },
-          'localization_submitted': { text: 'Staðfæring bíður samþykkis', class: 'warning' },
-          'localization_approved': { text: 'Staðfæring samþykkt', class: 'success' },
-          'localized_published': { text: 'Birt (staðfært)', class: 'success' }
-        };
+        panel.innerHTML = data.chapter.sections.map(function(sec) {
+          var status = STATUS_LABELS[sec.status] || { text: sec.status, cls: 'badge-muted' };
+          return '<div class="section-row">' +
+            '<div class="section-info">' +
+              '<span class="section-num">' + sec.sectionNum + '</span>' +
+              '<span class="section-title-text">' + escapeHtml(sec.titleEn) + '</span>' +
+            '</div>' +
+            '<span class="section-status-badge ' + status.cls + '">' + status.text + '</span>' +
+            '<span class="section-reviewer">' +
+              (sec.linguisticReviewerName ? escapeHtml(sec.linguisticReviewerName) : '<span style="color:var(--text-muted)">-</span>') +
+            '</span>' +
+            '<a href="/segment-editor?book=' + slug + '&chapter=' + chapterNum + '&module=' + sec.moduleId + '" class="btn btn-sm btn-secondary">Opna</a>' +
+          '</div>';
+        }).join('');
 
-        sectionsEl.innerHTML = `
-          <table class="table sections-table">
-            <thead>
-              <tr>
-                <th>Nr.</th>
-                <th>Heiti</th>
-                <th>Staða</th>
-                <th>Ritstjóri</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              ${data.chapter.sections.map(sec => {
-                const status = statusLabels[sec.status] || { text: sec.status, class: 'muted' };
-                return `
-                  <tr>
-                    <td><code>${sec.sectionNum}</code></td>
-                    <td>${escapeHtml(sec.titleEn)}</td>
-                    <td><span class="badge badge-${status.class}">${status.text}</span></td>
-                    <td>${sec.linguisticReviewerName ? escapeHtml(sec.linguisticReviewerName) : '<span class="text-muted">-</span>'}</td>
-                    <td>
-                      <a href="/segment-editor?book=${slug}&chapter=${chapterNum}&module=${sec.moduleId}" class="btn btn-secondary btn-sm">Opna</a>
-                    </td>
-                  </tr>
-                `;
-              }).join('')}
-            </tbody>
-          </table>
-        `;
-
-        detailEl.scrollIntoView({ behavior: 'smooth' });
       } catch (err) {
-        console.error('Failed to load chapter:', err);
-        sectionsEl.innerHTML = '<p class="text-error">Villa við að hlaða kafla</p>';
+        console.error('Failed to load chapter sections:', err);
+        panel.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a kafla</p>';
       }
     }
 
-    function hideChapterDetail() {
-      document.getElementById('chapter-detail').style.display = 'none';
+    // Module sections from segment-editor API (for stats)
+    async function loadChapterSections(book, chapter) {
+      try {
+        var res = await fetch('/api/segment-editor/' + book + '/' + chapter);
+        var data = await res.json();
+
+        var modules = data.modules || [];
+        var faithful = modules.filter(function(m) { return m.hasFaithful; }).length;
+        var total = modules.length;
+
+        // Update stats
+        document.getElementById('stat-sections').textContent = total;
+        document.getElementById('stat-progress').textContent = faithful + '/' + total;
+
+        // Update badge
+        var badgeEl = document.getElementById('chapter-detail-badge');
+        if (faithful === total && total > 0) {
+          badgeEl.textContent = 'Kl\u00e1rt';
+          badgeEl.className = 'chapter-card-badge complete';
+        } else if (faithful > 0) {
+          badgeEl.textContent = '\u00cd vinnslu';
+          badgeEl.className = 'chapter-card-badge in-progress';
+        } else {
+          badgeEl.textContent = 'Ekki hafi\u00f0';
+          badgeEl.className = 'chapter-card-badge not-started';
+        }
+
+      } catch (err) {
+        console.error('Error loading sections:', err);
+      }
     }
 
-    // ============================================================================
-    // CATALOGUE & REGISTRATION
-    // ============================================================================
+    // Issues from issues API
+    async function loadChapterIssues(book, chapter) {
+      var panel = document.getElementById('issues-panel');
+      var blockedAlert = document.getElementById('blocked-alert');
+
+      try {
+        var res = await fetch('/api/issues?book=' + book + '&chapter=' + chapter + '&status=pending');
+        var data = await res.json();
+
+        var issues = [].concat(data.byCategory.BLOCKED || [], data.byCategory.BOARD_REVIEW || [], data.byCategory.EDITOR_CONFIRM || []);
+
+        // Update stats
+        document.getElementById('stat-issues').textContent = issues.length;
+
+        // Blocked issues
+        var blocked = data.byCategory.BLOCKED || [];
+        if (blocked.length > 0) {
+          blockedAlert.style.display = 'block';
+          document.getElementById('blocked-alert-content').innerHTML = blocked.map(function(b) {
+            return '<div class="blocked-issue">' +
+              '<span>' + escapeHtml(b.description) + '</span>' +
+              '<a href="/issues?id=' + b.id + '" class="btn btn-sm btn-primary">Leysa</a>' +
+            '</div>';
+          }).join('');
+          var issueCard = document.getElementById('stat-card-issues');
+          if (issueCard) issueCard.classList.add('critical-stat');
+        } else {
+          blockedAlert.style.display = 'none';
+          var issueCard2 = document.getElementById('stat-card-issues');
+          if (issueCard2) issueCard2.classList.remove('critical-stat');
+        }
+
+        if (issues.length === 0) {
+          panel.innerHTML = '<p style="color:var(--success)">Engin atri\u00f0i \u00ed bi\u00f0</p>';
+          return;
+        }
+
+        panel.innerHTML = issues.slice(0, 10).map(function(i) {
+          return '<div class="issue-row">' +
+            '<span class="issue-cat-badge cat-' + i.category.toLowerCase() + '">' + (CATEGORY_LABELS[i.category] || i.category) + '</span>' +
+            '<span class="issue-desc">' + escapeHtml(i.description || 'Engin l\u00fdsing') + '</span>' +
+          '</div>';
+        }).join('') +
+        (issues.length > 10 ? '<a href="/issues?book=' + book + '&chapter=' + chapter + '" class="show-more-link">+' + (issues.length - 10) + ' fleiri atri\u00f0i</a>' : '');
+
+      } catch (err) {
+        console.error('Error loading issues:', err);
+        panel.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a atri\u00f0i</p>';
+      }
+    }
+
+    // Activity from activity API
+    async function loadChapterActivity(book, chapter) {
+      var panel = document.getElementById('activity-panel');
+
+      try {
+        var res = await fetch('/api/activity?book=' + book + '&chapter=' + chapter + '&limit=10');
+        var data = await res.json();
+
+        var activities = data.activities || [];
+
+        if (activities.length === 0) {
+          panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni skr\u00e1\u00f0</p>';
+          return;
+        }
+
+        panel.innerHTML = activities.map(function(a) {
+          return '<div class="activity-row">' +
+            '<span class="activity-icon">' + getActivityIcon(a.action) + '</span>' +
+            '<div class="activity-content">' +
+              '<span class="activity-user">' + escapeHtml(a.userName || 'Kerfi') + '</span> ' +
+              '<span>' + escapeHtml(a.details) + '</span>' +
+              '<span class="activity-time">' + formatTimeAgo(a.timestamp) + '</span>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+
+      } catch (err) {
+        console.error('Error loading activity:', err);
+        panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
+      }
+    }
+
+    // Chapter status (for TM button)
+    async function loadChapterStatus(book, chapter) {
+      try {
+        var res = await fetch('/api/status/' + book + '/' + chapter);
+        if (!res.ok) return;
+        var data = await res.json();
+
+        var stages = data.stages || {};
+        var linguisticReview = stages.linguisticReview || {};
+        var tmCreated = stages.tmCreated || {};
+
+        var tmBtn = document.getElementById('btn-prepare-tm');
+        var tmBadge = document.getElementById('prepare-tm-badge');
+
+        if (linguisticReview.complete) {
+          tmBtn.style.display = '';
+
+          if (tmCreated.complete) {
+            tmBadge.style.display = '';
+            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
+            tmBadge.className = 'tm-badge completed';
+          }
+        }
+      } catch (err) {
+        console.error('Error loading chapter status:', err);
+      }
+    }
+
+    // Prepare TM
+    async function prepareTm() {
+      var tmBtn = document.getElementById('btn-prepare-tm');
+      var tmBadge = document.getElementById('prepare-tm-badge');
+
+      tmBtn.disabled = true;
+      tmBadge.style.display = '';
+      tmBadge.textContent = '\u00cd gangi...';
+      tmBadge.className = 'tm-badge running';
+
+      try {
+        var res = await fetch('/api/pipeline/prepare-tm', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
+        });
+
+        var data = await res.json();
+
+        if (!res.ok) {
+          tmBadge.textContent = 'Villa';
+          tmBadge.className = 'tm-badge failed';
+          tmBtn.disabled = false;
+          return;
+        }
+
+        pollTmJob(data.jobId, 'btn-prepare-tm', 'prepare-tm-badge');
+      } catch (err) {
+        tmBadge.textContent = 'Villa';
+        tmBadge.className = 'tm-badge failed';
+        tmBtn.disabled = false;
+      }
+    }
+
+    function pollTmJob(jobId, btnId, badgeId) {
+      clearInterval(tmPollingTimer);
+
+      tmPollingTimer = setInterval(async function() {
+        try {
+          var res = await fetch('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
+          if (!res.ok) return;
+
+          var result = await res.json();
+          var job = result.job;
+          var tmBtn = document.getElementById(btnId);
+          var tmBadge = document.getElementById(badgeId);
+
+          if (job.status === 'completed') {
+            clearInterval(tmPollingTimer);
+            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
+            tmBadge.className = 'tm-badge completed';
+            tmBtn.disabled = false;
+          } else if (job.status === 'failed') {
+            clearInterval(tmPollingTimer);
+            tmBadge.textContent = 'Mist\u00f3kst';
+            tmBadge.className = 'tm-badge failed';
+            tmBtn.disabled = false;
+          } else {
+            tmBadge.textContent = '\u00cd gangi...';
+          }
+        } catch (e) {
+          // Polling error - ignore, will retry
+        }
+      }, 1500);
+    }
+
+    // ========================================================================
+    // CHAPTER VIEW — Book/chapter selector + control panel
+    // ========================================================================
+
+    var cvListenersSetup = false;
+
+    function setupChapterViewListeners() {
+      if (cvListenersSetup) return;
+      cvListenersSetup = true;
+
+      document.getElementById('cv-book-select').addEventListener('change', async function(e) {
+        var book = e.target.value;
+        if (book) {
+          await cvLoadChapters(book);
+        } else {
+          document.getElementById('cv-chapter-select').disabled = true;
+          document.getElementById('cv-load-btn').disabled = true;
+        }
+      });
+
+      document.getElementById('cv-chapter-select').addEventListener('change', function(e) {
+        document.getElementById('cv-load-btn').disabled = !e.target.value;
+      });
+
+      document.getElementById('cv-load-btn').addEventListener('click', function() {
+        var book = document.getElementById('cv-book-select').value;
+        var chapter = document.getElementById('cv-chapter-select').value;
+        if (book && chapter) {
+          cvLoadChapter(book, chapter);
+          history.pushState(null, '', '/books?view=chapter&book=' + book + '&chapter=' + chapter);
+        }
+      });
+    }
+
+    async function cvLoadChapters(book) {
+      var chapterSelect = document.getElementById('cv-chapter-select');
+      chapterSelect.disabled = true;
+      chapterSelect.innerHTML = '<option value="">Hle\u00f0ur...</option>';
+
+      try {
+        var res = await fetch('/api/books/' + book);
+        var data = await res.json();
+
+        var chapters = data.chapters || [];
+        chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>' +
+          chapters.map(function(ch) {
+            return '<option value="' + ch.chapter + '">Kafli ' + ch.chapter + '</option>';
+          }).join('');
+
+        chapterSelect.disabled = false;
+      } catch (err) {
+        console.error('Error loading chapters:', err);
+        chapterSelect.innerHTML = '<option value="">Villa vi\u00f0 a\u00f0 hla\u00f0a k\u00f6flum</option>';
+      }
+    }
+
+    async function cvLoadChapter(book, chapter) {
+      cvCurrentBook = book;
+      cvCurrentChapter = chapter;
+
+      document.getElementById('cv-control-panel').style.display = 'block';
+      document.getElementById('cv-chapter-title').textContent = 'Kafli ' + chapter;
+
+      // Update links
+      document.getElementById('cv-editor-link').href = '/segment-editor?book=' + book + '&chapter=' + chapter;
+      document.getElementById('cv-issues-link').href = '/issues?book=' + book + '&chapter=' + chapter;
+
+      // Load all data in parallel
+      await Promise.all([
+        cvLoadSections(book, chapter),
+        cvLoadIssues(book, chapter),
+        cvLoadActivity(book, chapter),
+        cvLoadStatus(book, chapter)
+      ]);
+    }
+
+    async function cvLoadSections(book, chapter) {
+      var panel = document.getElementById('cv-sections-panel');
+
+      try {
+        var res = await fetch('/api/segment-editor/' + book + '/' + chapter);
+        var data = await res.json();
+
+        var modules = data.modules || [];
+        var faithful = modules.filter(function(m) { return m.hasFaithful; }).length;
+        var total = modules.length;
+
+        // Update stats
+        document.getElementById('cv-stat-sections').textContent = total;
+        document.getElementById('cv-stat-progress').textContent = faithful + '/' + total;
+
+        // Update status badge
+        var statusBadge = document.getElementById('cv-chapter-status');
+        if (faithful === total && total > 0) {
+          statusBadge.textContent = 'Kl\u00e1rt';
+          statusBadge.className = 'chapter-card-badge complete';
+        } else if (faithful > 0) {
+          statusBadge.textContent = '\u00cd vinnslu';
+          statusBadge.className = 'chapter-card-badge in-progress';
+        } else {
+          statusBadge.textContent = 'Ekki hafi\u00f0';
+          statusBadge.className = 'chapter-card-badge not-started';
+        }
+
+        // Render modules list
+        if (modules.length === 0) {
+          panel.innerHTML = '<p style="color:var(--text-muted)">Engir hlutar fundust</p>';
+          return;
+        }
+
+        panel.innerHTML = modules.map(function(m) {
+          var sourceClass = m.hasFaithful ? 'badge-success' : (m.hasMtOutput ? 'badge-warning' : 'badge-muted');
+          var sourceText = m.hasFaithful ? 'Yfirfari\u00f0' : (m.hasMtOutput ? 'V\u00e9l\u00fe\u00fd\u00f0ing' : 'Ekki \u00fe\u00fdtt');
+
+          return '<div class="section-row">' +
+            '<div class="section-info">' +
+              '<span class="section-num">' + escapeHtml(m.moduleId) + '</span>' +
+              '<span class="section-status-badge ' + sourceClass + '">' + sourceText + '</span>' +
+            '</div>' +
+            '<a href="/segment-editor?book=' + book + '&chapter=' + chapter + '" class="btn btn-sm btn-secondary">Opna</a>' +
+          '</div>';
+        }).join('');
+
+      } catch (err) {
+        console.error('Error loading sections:', err);
+        panel.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a hlutum</p>';
+      }
+    }
+
+    async function cvLoadIssues(book, chapter) {
+      var panel = document.getElementById('cv-issues-panel');
+      var blockedAlert = document.getElementById('cv-blocked-alert');
+
+      try {
+        var res = await fetch('/api/issues?book=' + book + '&chapter=' + chapter + '&status=pending');
+        var data = await res.json();
+
+        var issues = [].concat(data.byCategory.BLOCKED || [], data.byCategory.BOARD_REVIEW || [], data.byCategory.EDITOR_CONFIRM || []);
+
+        // Update stats
+        document.getElementById('cv-stat-issues').textContent = issues.length;
+
+        // Check for blocked issues
+        var blocked = data.byCategory.BLOCKED || [];
+        if (blocked.length > 0) {
+          blockedAlert.style.display = 'block';
+          document.getElementById('cv-blocked-alert-content').innerHTML = blocked.map(function(b) {
+            return '<div class="blocked-issue">' +
+              '<span>' + escapeHtml(b.description) + '</span>' +
+              '<a href="/issues?id=' + b.id + '" class="btn btn-sm btn-primary">Leysa</a>' +
+            '</div>';
+          }).join('');
+          var issueCard = document.getElementById('cv-stat-card-issues');
+          if (issueCard) issueCard.style.borderColor = 'var(--error)';
+        } else {
+          blockedAlert.style.display = 'none';
+        }
+
+        if (issues.length === 0) {
+          panel.innerHTML = '<p style="color:var(--success)">Engin atri\u00f0i \u00ed bi\u00f0</p>';
+          return;
+        }
+
+        panel.innerHTML = issues.slice(0, 10).map(function(i) {
+          return '<div class="issue-row">' +
+            '<span class="issue-cat-badge cat-' + i.category.toLowerCase() + '">' + (CATEGORY_LABELS[i.category] || i.category) + '</span>' +
+            '<span class="issue-desc">' + escapeHtml(i.description || 'Engin l\u00fdsing') + '</span>' +
+          '</div>';
+        }).join('') +
+        (issues.length > 10 ? '<a href="/issues?book=' + book + '&chapter=' + chapter + '" class="show-more-link">+' + (issues.length - 10) + ' fleiri atri\u00f0i</a>' : '');
+
+      } catch (err) {
+        console.error('Error loading issues:', err);
+        panel.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a atri\u00f0i</p>';
+      }
+    }
+
+    async function cvLoadActivity(book, chapter) {
+      var panel = document.getElementById('cv-activity-panel');
+
+      try {
+        var res = await fetch('/api/activity?book=' + book + '&chapter=' + chapter + '&limit=10');
+        var data = await res.json();
+
+        var activities = data.activities || [];
+
+        if (activities.length === 0) {
+          panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni skr\u00e1\u00f0</p>';
+          return;
+        }
+
+        panel.innerHTML = activities.map(function(a) {
+          return '<div class="activity-row">' +
+            '<span class="activity-icon">' + getActivityIcon(a.action) + '</span>' +
+            '<div class="activity-content">' +
+              '<span class="activity-user">' + escapeHtml(a.userName || 'Kerfi') + '</span> ' +
+              '<span>' + escapeHtml(a.details) + '</span>' +
+              '<span class="activity-time">' + formatTimeAgo(a.timestamp) + '</span>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+
+      } catch (err) {
+        console.error('Error loading activity:', err);
+        panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
+      }
+    }
+
+    async function cvLoadStatus(book, chapter) {
+      try {
+        var res = await fetch('/api/status/' + book + '/' + chapter);
+        if (!res.ok) return;
+        var data = await res.json();
+
+        var stages = data.stages || {};
+        var linguisticReview = stages.linguisticReview || {};
+        var tmCreated = stages.tmCreated || {};
+
+        var tmBtn = document.getElementById('cv-btn-prepare-tm');
+        var tmBadge = document.getElementById('cv-prepare-tm-badge');
+
+        if (linguisticReview.complete) {
+          tmBtn.style.display = '';
+
+          if (tmCreated.complete) {
+            tmBadge.style.display = '';
+            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
+            tmBadge.className = 'tm-badge completed';
+          }
+        }
+      } catch (err) {
+        console.error('Error loading chapter status:', err);
+      }
+    }
+
+    async function cvPrepareTm() {
+      var tmBtn = document.getElementById('cv-btn-prepare-tm');
+      var tmBadge = document.getElementById('cv-prepare-tm-badge');
+
+      tmBtn.disabled = true;
+      tmBadge.style.display = '';
+      tmBadge.textContent = '\u00cd gangi...';
+      tmBadge.className = 'tm-badge running';
+
+      try {
+        var res = await fetch('/api/pipeline/prepare-tm', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ book: cvCurrentBook, chapter: cvCurrentChapter })
+        });
+
+        var data = await res.json();
+
+        if (!res.ok) {
+          tmBadge.textContent = 'Villa';
+          tmBadge.className = 'tm-badge failed';
+          tmBtn.disabled = false;
+          return;
+        }
+
+        pollCvTmJob(data.jobId);
+      } catch (err) {
+        tmBadge.textContent = 'Villa';
+        tmBadge.className = 'tm-badge failed';
+        tmBtn.disabled = false;
+      }
+    }
+
+    function pollCvTmJob(jobId) {
+      clearInterval(cvTmPollingTimer);
+
+      cvTmPollingTimer = setInterval(async function() {
+        try {
+          var res = await fetch('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
+          if (!res.ok) return;
+
+          var result = await res.json();
+          var job = result.job;
+          var tmBtn = document.getElementById('cv-btn-prepare-tm');
+          var tmBadge = document.getElementById('cv-prepare-tm-badge');
+
+          if (job.status === 'completed') {
+            clearInterval(cvTmPollingTimer);
+            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
+            tmBadge.className = 'tm-badge completed';
+            tmBtn.disabled = false;
+          } else if (job.status === 'failed') {
+            clearInterval(cvTmPollingTimer);
+            tmBadge.textContent = 'Mist\u00f3kst';
+            tmBadge.className = 'tm-badge failed';
+            tmBtn.disabled = false;
+          } else {
+            tmBadge.textContent = '\u00cd gangi...';
+          }
+        } catch (e) {
+          // Polling error - ignore
+        }
+      }, 1500);
+    }
+
+    // ========================================================================
+    // IMAGES VIEW — Image translation tracker
+    // ========================================================================
+
+    async function loadBookImages() {
+      imgCurrentBook = document.getElementById('img-book-select').value;
+      if (!imgCurrentBook) {
+        document.getElementById('img-book-stats').style.display = 'none';
+        return;
+      }
+
+      var res = await fetch('/api/images/' + imgCurrentBook);
+      var data = await res.json();
+
+      document.getElementById('img-book-stats').style.display = 'block';
+      document.getElementById('img-chapter-images').style.display = 'none';
+
+      var t = data.totals;
+      document.getElementById('img-stats-grid').innerHTML =
+        '<div class="images-stat-card"><div class="images-stat-value">' + t.total + '</div><div class="images-stat-label">Samtals</div></div>' +
+        '<div class="images-stat-card"><div class="images-stat-value">' + t.pending + '</div><div class="images-stat-label">\u00cd bi\u00f0</div></div>' +
+        '<div class="images-stat-card"><div class="images-stat-value">' + t.inProgress + '</div><div class="images-stat-label">\u00cd vinnslu</div></div>' +
+        '<div class="images-stat-card"><div class="images-stat-value">' + t.translated + '</div><div class="images-stat-label">\u00de\u00fdtt</div></div>' +
+        '<div class="images-stat-card"><div class="images-stat-value">' + t.percentComplete + '%</div><div class="images-stat-label">Loki\u00f0</div></div>';
+
+      document.getElementById('img-chapters-body').innerHTML = data.chapters.map(function(ch) {
+        var pct = ch.total > 0 ? Math.round((ch.translated + ch.approved) / ch.total * 100) : 0;
+        return '<tr onclick="loadChapterImages(' + ch.chapter + ')">' +
+          '<td>Kafli ' + ch.chapter + '</td>' +
+          '<td>' + ch.total + '</td>' +
+          '<td>' + ch.pending + '</td>' +
+          '<td>' + ch.translated + '</td>' +
+          '<td>' + ch.approved + '</td>' +
+          '<td><div class="img-progress-bar"><div class="img-progress-fill" style="width:' + pct + '%"></div></div></td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    async function loadChapterImages(chapter) {
+      document.getElementById('img-book-stats').style.display = 'none';
+      document.getElementById('img-chapter-images').style.display = 'block';
+      document.getElementById('img-chapter-num').textContent = chapter;
+
+      var res = await fetch('/api/images/' + imgCurrentBook + '/' + chapter);
+      var data = await res.json();
+
+      document.getElementById('img-images-grid').innerHTML = data.images.map(function(img) {
+        return '<div class="image-card">' +
+          '<div class="image-status-badge status-' + img.status + '">' + (IMAGE_STATUS_LABELS[img.status] || img.status) + '</div>' +
+          '<div class="image-id">' + escapeHtml(img.id) + '</div>' +
+          (img.containsText ? '<div class="image-tag">Inniheldur texta</div>' : '') +
+          '<div class="image-actions">' +
+            (img.editLink ? '<a href="' + img.editLink + '" target="_blank" class="btn btn-sm btn-secondary">Breyta upprunaskr\u00e1</a>' : '') +
+            '<button class="btn btn-sm btn-primary" onclick="uploadImage(\'' + img.id + '\', ' + chapter + ')">Hla\u00f0a upp</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    function imgBackToOverview() {
+      document.getElementById('img-book-stats').style.display = 'block';
+      document.getElementById('img-chapter-images').style.display = 'none';
+    }
+
+    function uploadImage(imageId, chapter) {
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/png,image/jpeg';
+      input.onchange = async function(e) {
+        var file = e.target.files[0];
+        if (!file) return;
+
+        var formData = new FormData();
+        formData.append('image', file);
+
+        var res = await fetch('/api/images/' + imgCurrentBook + '/' + chapter + '/' + imageId + '/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (res.ok) {
+          loadChapterImages(chapter);
+        } else {
+          alert('Villa vi\u00f0 a\u00f0 hla\u00f0a upp');
+        }
+      };
+      input.click();
+    }
+
+    // ========================================================================
+    // CATALOGUE & REGISTRATION (from books.html)
+    // ========================================================================
 
     async function showCatalogueModal() {
-      const modal = document.getElementById('catalogue-modal');
-      const listEl = document.getElementById('catalogue-list');
-      const formEl = document.getElementById('register-form');
+      var modal = document.getElementById('catalogue-modal');
+      var listEl = document.getElementById('catalogue-list');
+      var formEl = document.getElementById('register-form');
 
       modal.style.display = 'flex';
       formEl.style.display = 'none';
-      listEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
+      listEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hle\u00f0ur...</span></div>';
 
       try {
-        // First try to sync catalogue
+        // Sync catalogue first
         await fetch('/api/admin/catalogue/sync', { method: 'POST' });
 
-        // Then load it
-        const res = await fetch('/api/admin/catalogue');
-        const data = await res.json();
+        // Load catalogue
+        var res = await fetch('/api/admin/catalogue');
+        var data = await res.json();
 
         if (!data.books || data.books.length === 0) {
-          listEl.innerHTML = '<p class="text-muted">Enginn bækur í skráning</p>';
+          listEl.innerHTML = '<p style="color:var(--text-muted)">Enginn b\u00e6kur \u00ed skr\u00e1ning</p>';
           return;
         }
 
-        listEl.innerHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Bók</th>
-                <th>Kaflar</th>
-                <th>Staða</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              ${data.books.map(book => `
-                <tr>
-                  <td>
-                    <strong>${escapeHtml(book.title)}</strong>
-                    <small class="text-muted block">${escapeHtml(book.description || '').substring(0, 60)}...</small>
-                  </td>
-                  <td>${book.chapterCount} kaflar</td>
-                  <td>
-                    ${book.registered
-                      ? `<span class="badge badge-success">Skráð sem ${escapeHtml(book.registeredSlug)}</span>`
-                      : '<span class="badge badge-muted">Ekki skráð</span>'
-                    }
-                  </td>
-                  <td>
-                    ${!book.registered
-                      ? `<button class="btn btn-primary btn-sm" onclick="selectForRegistration('${book.slug}', '${escapeHtml(book.title)}')">Skrá</button>`
-                      : ''
-                    }
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        `;
+        listEl.innerHTML =
+          '<table class="catalogue-table"><thead><tr>' +
+            '<th>B\u00f3k</th><th>Kaflar</th><th>Sta\u00f0a</th><th></th>' +
+          '</tr></thead><tbody>' +
+          data.books.map(function(book) {
+            return '<tr>' +
+              '<td>' +
+                '<strong>' + escapeHtml(book.title) + '</strong>' +
+                '<div style="font-size:var(--text-xs);color:var(--text-muted)">' + escapeHtml(book.description || '').substring(0, 60) + '...</div>' +
+              '</td>' +
+              '<td>' + book.chapterCount + ' kaflar</td>' +
+              '<td>' +
+                (book.registered
+                  ? '<span class="section-status-badge badge-success">Skr\u00e1\u00f0 sem ' + escapeHtml(book.registeredSlug) + '</span>'
+                  : '<span class="section-status-badge badge-muted">Ekki skr\u00e1\u00f0</span>'
+                ) +
+              '</td>' +
+              '<td>' +
+                (!book.registered
+                  ? '<button class="btn btn-sm btn-primary" onclick="selectForRegistration(\'' + book.slug + '\', \'' + escapeHtml(book.title) + '\')">Skr\u00e1</button>'
+                  : ''
+                ) +
+              '</td>' +
+            '</tr>';
+          }).join('') +
+          '</tbody></table>';
       } catch (err) {
         console.error('Failed to load catalogue:', err);
-        listEl.innerHTML = '<p class="text-error">Villa við að hlaða skrá</p>';
+        listEl.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a skr\u00e1</p>';
       }
     }
 
@@ -441,21 +2079,21 @@
     async function submitRegistration(e) {
       e.preventDefault();
 
-      const catalogueSlug = document.getElementById('catalogue-slug').value;
-      const slug = document.getElementById('book-slug').value;
-      const titleIs = document.getElementById('book-title-is').value;
+      var catalogueSlug = document.getElementById('catalogue-slug').value;
+      var slug = document.getElementById('book-slug').value;
+      var titleIs = document.getElementById('book-title-is').value;
 
       try {
-        const res = await fetch('/api/admin/books/register', {
+        var res = await fetch('/api/admin/books/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ catalogueSlug, slug, titleIs })
+          body: JSON.stringify({ catalogueSlug: catalogueSlug, slug: slug, titleIs: titleIs })
         });
 
-        const result = await res.json();
+        var result = await res.json();
 
         if (result.success) {
-          alert(`Bók skráð!\n\n${result.chapters} kaflar og ${result.sections} einingar búnar til.`);
+          alert('B\u00f3k skr\u00e1\u00f0!\n\n' + result.chapters + ' kaflar og ' + result.sections + ' einingar b\u00fanar til.');
           hideCatalogueModal();
           loadBooks();
         } else {
@@ -468,12 +2106,11 @@
       return false;
     }
 
-    // ============================================================================
+    // ========================================================================
     // DOWNLOAD FUNCTIONS
-    // ============================================================================
+    // ========================================================================
 
     function downloadChapterMarkdown(slug, chapterNum) {
-      const chapterDir = 'ch' + String(chapterNum).padStart(2, '0');
       window.location.href = '/api/books/' + slug + '/download?chapter=' + chapterNum + '&type=en-md';
     }
 
@@ -481,72 +2118,37 @@
       window.location.href = '/api/books/' + slug + '/download?type=en-md';
     }
 
-    // ============================================================================
-    // UTILITIES
-    // ============================================================================
-    // Initialize on load
-    init();
+    // ========================================================================
+    // UTILITY FUNCTIONS
+    // ========================================================================
+
+    function formatTimeAgo(dateStr) {
+      if (!dateStr) return '';
+      var date = new Date(dateStr);
+      var now = new Date();
+      var diffMs = now - date;
+      var diffMins = Math.floor(diffMs / 60000);
+      var diffHours = Math.floor(diffMs / 3600000);
+      var diffDays = Math.floor(diffMs / 86400000);
+
+      if (diffMins < 1) return 'R\u00e9tt \u00ed \u00feessu';
+      if (diffMins < 60) return diffMins + ' m\u00edn s\u00ed\u00f0an';
+      if (diffHours < 24) return diffHours + ' klst s\u00ed\u00f0an';
+      if (diffDays === 1) return '\u00cd g\u00e6r';
+      return diffDays + ' d\u00f6gum s\u00ed\u00f0an';
+    }
+
+    function getActivityIcon(action) {
+      var icons = {
+        'edit': '\u270F\uFE0F',
+        'submit': '\uD83D\uDCE4',
+        'approve': '\u2705',
+        'reject': '\u274C',
+        'assignment_created': '\uD83D\uDC64',
+        'assignment_completed': '\u2713'
+      };
+      return icons[action] || '\uD83D\uDCCC';
+    }
   </script>
-
-  <script src="/js/theme.js"></script>
-  <script src="/js/nav.js"></script>
-
-  <style>
-    /* Page-specific styles for books management */
-
-    .card { padding: 1.5rem; margin-bottom: 1.5rem; }
-    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: none; padding: 0; background: transparent; }
-    .card-title { font-size: 1.125rem; font-weight: 600; margin: 0; }
-
-    /* Table */
-    .table { width: 100%; border-collapse: collapse; }
-    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color); }
-    .table th { font-weight: 500; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; }
-
-    /* Progress */
-    .progress-container { display: flex; align-items: center; gap: 0.5rem; }
-    .progress-bar { min-width: 100px; }
-    .progress-text { font-size: 0.75rem; color: var(--text-muted); min-width: 35px; }
-
-    /* Meta */
-    .meta-item { font-size: 0.875rem; color: var(--text-muted); }
-    .meta-separator { color: var(--gray-300); margin: 0 0.5rem; }
-    .book-meta { display: flex; align-items: center; }
-    .status-badges { display: flex; flex-wrap: wrap; gap: 0.25rem; }
-    .block { display: block; }
-
-    /* Badge muted variant */
-    .badge-muted { background: var(--gray-100); color: var(--text-muted); }
-    .badge-info { background: var(--primary-light); color: var(--primary-dark); }
-
-    /* Modal overlay */
-    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-    .modal-overlay .modal { display: flex; flex-direction: column; max-width: 700px; width: 90%; max-height: 80vh; overflow: hidden; }
-    .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
-    .modal-body { overflow-y: auto; }
-    .form-help { display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
-    .form-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.5rem; }
-
-    /* Code */
-    code { background: var(--gray-100); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.8rem; }
-
-    /* Chapter progress */
-    .chapter-actions-bar { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
-    .chapter-progress { display: flex; flex-direction: column; gap: 0.25rem; }
-    .progress-bar.stacked { display: flex; overflow: hidden; }
-    .progress-bar.stacked .progress-bar-fill { border-radius: 0; }
-    .progress-bar.stacked .progress-bar-fill:first-child { border-radius: 9999px 0 0 9999px; }
-    .progress-bar.stacked .progress-bar-fill:last-child { border-radius: 0 9999px 9999px 0; }
-    .bg-success { background: var(--success); }
-    .bg-warning { background: var(--warning); }
-    .bg-muted { background: var(--gray-300); }
-    .progress-legend { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.7rem; color: var(--text-muted); }
-    .legend-item { display: flex; align-items: center; gap: 0.25rem; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    .btn-group { display: flex; gap: 0.25rem; }
-    .icon { font-size: 0.875rem; }
-
-    @media (max-width: 768px) { .modal-overlay .modal { width: 95%; } }
-  </style>
 </body>
 </html>

@@ -44,11 +44,19 @@ router.get('/issues', (req, res) => {
 });
 
 /**
+ * GET /library
+ * Unified library page (books + chapter + images)
+ */
+router.get('/library', (req, res) => {
+  sendView(res, 'books.html');
+});
+
+/**
  * GET /images
- * Image tracker page
+ * Redirect to library page (images view)
  */
 router.get('/images', (req, res) => {
-  sendView(res, 'images.html');
+  res.redirect('/library?view=images');
 });
 
 /**
@@ -147,10 +155,15 @@ router.get('/my-work', (req, res) => {
 
 /**
  * GET /chapter
- * Chapter control panel for admin/head editor
+ * Redirect to library page (chapter view)
  */
 router.get('/chapter', (req, res) => {
-  sendView(res, 'chapter.html');
+  const { book, chapter } = req.query;
+  const params = new URLSearchParams();
+  params.set('view', 'chapter');
+  if (book) params.set('book', book);
+  if (chapter) params.set('chapter', chapter);
+  res.redirect('/library?' + params.toString());
 });
 
 /**
