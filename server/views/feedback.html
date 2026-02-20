@@ -3,189 +3,366 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Endurgjöf - Námsbókasafn</title>
+  <title>Álit - Námsbókasafn</title>
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ==========================================================================
+       FEEDBACK PAGE — Basalt & Vellum
+       Public feedback form for translation errors, suggestions, and issues.
+       ========================================================================== */
+
+    .feedback-container {
+      max-width: 700px;
+    }
+
+    /* --- Success Message --- */
+    .feedback-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--spacing-2xl) var(--spacing-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .feedback-success:hover {
+      background: var(--bg-elevated);
+    }
+
+    .feedback-success-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--success-subtle);
+      color: var(--success);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .feedback-success-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .feedback-success h3 {
+      font-family: var(--font-heading);
+      color: var(--success);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .feedback-success p {
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .feedback-success .hint {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    /* --- Form Card --- */
+    .feedback-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .feedback-card-header {
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+
+    .feedback-card-header h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .feedback-card-body {
+      padding: var(--spacing-lg);
+    }
+
+    .intro-text {
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-lg);
+      font-size: var(--text-base);
+      line-height: 1.6;
+    }
+
+    /* --- Radio Cards --- */
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .radio-option {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-md);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .radio-option:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-hover);
+    }
+
+    .radio-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .radio-option input:checked + .radio-label {
+      color: var(--accent);
+    }
+
+    .radio-option:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      font-weight: 500;
+      font-size: var(--text-base);
+      color: var(--text-primary);
+    }
+
+    .radio-label svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .radio-option:has(input:checked) .radio-label svg {
+      color: var(--accent);
+    }
+
+    .radio-desc {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--spacing-xs);
+    }
+
+    /* --- Form Elements --- */
+    .form-label.required::after {
+      content: ' *';
+      color: var(--error);
+    }
+
+    .form-hint {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--spacing-xs);
+    }
+
+    .form-actions {
+      margin-top: var(--spacing-lg);
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-large {
+      padding: 0.75rem 2rem;
+      font-size: var(--text-md);
+    }
+
+    /* --- Admin Link --- */
+    .admin-feedback-link {
+      margin-top: var(--spacing-lg);
+      text-align: center;
+    }
+
+    /* --- Spinner animation --- */
+    @keyframes feedback-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .submit-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(250,247,242,0.3);
+      border-top-color: #faf7f2;
+      border-radius: 50%;
+      animation: feedback-spin 0.6s linear infinite;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 600px) {
+      .feedback-card-body {
+        padding: var(--spacing-md);
+      }
+      .radio-group {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Fara í efni</a>
-  <header class="header">
-    <h1>Námsbókasafn</h1>
-    <nav>
-      <a href="/my-work">Mín verkefni</a>
-      <a href="/segment-editor">Ritstjóri</a>
-      <a href="/status">Framvinda</a>
-      <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
-      <span class="nav-separator admin-only"></span>
-      <a href="/dashboard" class="admin-only">Stjórnborð</a>
-      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" title="Skipta um þema">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
-      </div>
-      <div class="user-info" id="user-info"></div>
-    </div>
-  </header>
+  <main class="page-content" id="main-content" data-page="feedback" data-title="Álit">
+    <div class="feedback-container">
 
-  <main class="container" id="main-content">
-    <!-- Success Message (hidden by default) -->
-    <div class="alert alert-success" id="success-message" style="display: none;">
-      <i class="fas fa-check-circle"></i>
-      <div>
-        <strong>Takk fyrir!</strong>
+      <!-- Success Message (hidden by default) -->
+      <div class="feedback-success" id="success-message" title="Smelltu til að senda aðra athugasemd">
+        <div class="feedback-success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3>Takk fyrir!</h3>
         <p>Endurgjöfin þín hefur verið móttekin. Við munum skoða hana eins fljótt og auðið er.</p>
-      </div>
-    </div>
-
-    <!-- Feedback Form -->
-    <div class="card" id="feedback-card">
-      <div class="card-header">
-        <h2 class="card-title">Endurgjöf / Feedback</h2>
+        <span class="hint">Smelltu hér til að senda aðra athugasemd</span>
       </div>
 
-      <p class="intro-text">
-        Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur
-        eða hefur tillögur að bætingum.
-      </p>
-
-      <form id="feedback-form">
-        <!-- Feedback Type -->
-        <div class="form-group">
-          <label class="form-label required">Tegund athugasemdar</label>
-          <div class="radio-group" id="type-group">
-            <label class="radio-option">
-              <input type="radio" name="type" value="translation_error">
-              <span class="radio-label">
-                <i class="fas fa-language"></i>
-                Villa í þýðingu
-              </span>
-              <span class="radio-desc">Translation error</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="type" value="technical_issue">
-              <span class="radio-label">
-                <i class="fas fa-bug"></i>
-                Tæknilegt vandamál
-              </span>
-              <span class="radio-desc">Technical issue</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="type" value="improvement">
-              <span class="radio-label">
-                <i class="fas fa-lightbulb"></i>
-                Tillaga að bætingu
-              </span>
-              <span class="radio-desc">Improvement suggestion</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="type" value="other">
-              <span class="radio-label">
-                <i class="fas fa-comment"></i>
-                Annað
-              </span>
-              <span class="radio-desc">Other</span>
-            </label>
-          </div>
+      <!-- Feedback Form -->
+      <div class="feedback-card" id="feedback-card">
+        <div class="feedback-card-header">
+          <h2>Endurgjöf / Feedback</h2>
         </div>
 
-        <!-- Location (optional) -->
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="book">Bók (valfrjálst)</label>
-            <select id="book" name="book" class="form-select">
-              <option value="">-- Veldu bók --</option>
-              <option value="efnafraedi">Efnafræði</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="chapter">Kafli</label>
-            <input type="text" id="chapter" name="chapter" class="form-input" placeholder="t.d. 1 eða 1.2">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="section">Hluti</label>
-            <input type="text" id="section" name="section" class="form-input" placeholder="t.d. 1-1">
-          </div>
-        </div>
+        <div class="feedback-card-body">
+          <p class="intro-text">
+            Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur
+            eða hefur tillögur að bætingum.
+          </p>
 
-        <!-- Message -->
-        <div class="form-group">
-          <label class="form-label required" for="message">Lýsing</label>
-          <textarea
-            id="message"
-            name="message"
-            class="form-textarea"
-            rows="5"
-            placeholder="Lýstu vandamálinu eða tillögunni. Ef þetta er villa í þýðingu, vinsamlegast tilgreindu hvaða texti er rangur og hvað ætti að standa í staðinn."
-            required
-            minlength="10"
-          ></textarea>
-          <span class="form-hint">Lágmark 10 stafir</span>
-        </div>
+          <form id="feedback-form">
+            <!-- Feedback Type -->
+            <div class="form-group">
+              <label class="form-label required">Tegund athugasemdar</label>
+              <div class="radio-group" id="type-group">
+                <label class="radio-option">
+                  <input type="radio" name="type" value="translation_error">
+                  <span class="radio-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                    Villa í þýðingu
+                  </span>
+                  <span class="radio-desc">Translation error</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="type" value="technical_issue">
+                  <span class="radio-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    Tæknilegt vandamál
+                  </span>
+                  <span class="radio-desc">Technical issue</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="type" value="improvement">
+                  <span class="radio-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+                    Tillaga að bætingu
+                  </span>
+                  <span class="radio-desc">Improvement suggestion</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="type" value="other">
+                  <span class="radio-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Annað
+                  </span>
+                  <span class="radio-desc">Other</span>
+                </label>
+              </div>
+            </div>
 
-        <!-- Contact Info (optional) -->
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="userName">Nafn (valfrjálst)</label>
-            <input type="text" id="userName" name="userName" class="form-input" placeholder="Nafnið þitt">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="userEmail">Netfang (valfrjálst)</label>
-            <input type="email" id="userEmail" name="userEmail" class="form-input" placeholder="netfang@domain.is">
-            <span class="form-hint">Ef þú vilt fá svar</span>
-          </div>
-        </div>
+            <!-- Location (optional) -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="book">Bók (valfrjálst)</label>
+                <select id="book" name="book" class="form-select">
+                  <option value="">-- Veldu bók --</option>
+                  <option value="efnafraedi">Efnafræði</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="chapter">Kafli</label>
+                <input type="text" id="chapter" name="chapter" class="form-input" placeholder="t.d. 1 eða 1.2">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="section">Hluti</label>
+              <input type="text" id="section" name="section" class="form-input" placeholder="t.d. 1-1">
+            </div>
 
-        <!-- Submit -->
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary btn-large" id="submit-btn">
-            <i class="fas fa-paper-plane"></i>
-            Senda endurgjöf
-          </button>
-        </div>
-      </form>
-    </div>
+            <!-- Message -->
+            <div class="form-group">
+              <label class="form-label required" for="message">Lýsing</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                rows="5"
+                placeholder="Lýstu vandamálinu eða tillögunni. Ef þetta er villa í þýðingu, vinsamlegast tilgreindu hvaða texti er rangur og hvað ætti að standa í staðinn."
+                required
+                minlength="10"
+              ></textarea>
+              <span class="form-hint">Lágmark 10 stafir</span>
+            </div>
 
-    <!-- Admin Link (only shown if logged in as admin) -->
-    <div class="admin-link" id="admin-link" style="display: none;">
-      <a href="/admin/feedback" class="btn btn-secondary">
-        <i class="fas fa-cog"></i>
-        Stjórnborð endurgjafar
-      </a>
+            <!-- Contact Info (optional) -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="userName">Nafn (valfrjálst)</label>
+                <input type="text" id="userName" name="userName" class="form-input" placeholder="Nafnið þitt">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="userEmail">Netfang (valfrjálst)</label>
+                <input type="email" id="userEmail" name="userEmail" class="form-input" placeholder="netfang@domain.is">
+                <span class="form-hint">Ef þú vilt fá svar</span>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-large" id="submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                Senda endurgjöf
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Admin Link (only shown if logged in as admin) -->
+      <div class="admin-feedback-link admin-only" id="admin-link">
+        <a href="/admin/feedback" class="btn btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Stjórnborð endurgjafar
+        </a>
+      </div>
+
     </div>
   </main>
 
-  <footer class="footer">
-    <p>Námsbókasafn er verkefni til að þýða opnar kennslubækur yfir á íslensku.</p>
-    <p>Upprunalegt efni frá <a href="https://openstax.org" target="_blank">OpenStax</a> - CC BY 4.0</p>
-  </footer>
-
+  <script src="/js/layout.js"></script>
+  <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script>
     const form = document.getElementById('feedback-form');
     const submitBtn = document.getElementById('submit-btn');
     const successMessage = document.getElementById('success-message');
     const feedbackCard = document.getElementById('feedback-card');
-
-    // Check if user is admin
-    async function checkAdmin() {
-      try {
-        const res = await fetch('/api/auth/me');
-        const data = await res.json();
-        if (data.authenticated && ['admin', 'head-editor'].includes(data.user.role)) {
-          document.getElementById('admin-link').style.display = 'block';
-        }
-      } catch (e) {
-        // Ignore auth errors
-      }
-    }
-    checkAdmin();
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -205,7 +382,7 @@
 
       // Disable button
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sendir...';
+      submitBtn.innerHTML = '<span class="submit-spinner"></span> Sendir...';
 
       try {
         const res = await fetch('/api/feedback', {
@@ -238,7 +415,7 @@
         alert('Villa: ' + err.message);
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Senda endurgjöf';
+        submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Senda endurgjöf';
       }
     });
 
@@ -248,123 +425,5 @@
       feedbackCard.style.display = 'block';
     });
   </script>
-
-  <script src="/js/theme.js"></script>
-  <script src="/js/nav.js"></script>
-
-  <style>
-    /* Page-specific styles for feedback form */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      max-width: 700px;
-      flex: 1;
-    }
-
-    .card {
-      padding: 1.5rem 2rem;
-    }
-    .card-header { margin-bottom: 1rem; }
-    .card-title { font-size: 1.25rem; font-weight: 600; }
-
-    .intro-text {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .form-label.required::after {
-      content: ' *';
-      color: var(--error);
-    }
-    .form-hint {
-      display: block;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-    }
-
-    .radio-group {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-    }
-    .radio-option {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      border: 2px solid var(--gray-200);
-      border-radius: var(--radius-lg);
-      cursor: pointer;
-      transition: border-color 0.15s, background-color 0.15s;
-    }
-    .radio-option:hover { border-color: var(--gray-300); background: var(--gray-50); }
-    .radio-option input {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .radio-option input:checked + .radio-label {
-      color: var(--primary);
-    }
-    .radio-option:has(input:checked) {
-      border-color: var(--primary);
-      background: rgba(37, 99, 235, 0.05);
-    }
-    .radio-label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-    .radio-label i { font-size: 1rem; }
-    .radio-desc {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-    }
-
-    .form-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-    }
-
-    .btn-large { padding: 0.75rem 2rem; font-size: 1rem; }
-
-    .alert i { font-size: 1.5rem; margin-top: 0.25rem; }
-    .alert-success {
-      cursor: pointer;
-    }
-    .alert-success:hover { background: #bbf7d0; }
-
-    .admin-link {
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-
-    .footer {
-      background: var(--gray-100);
-      border-top: 1px solid var(--border-color);
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .footer a { color: var(--primary); text-decoration: none; }
-    .footer p { margin-bottom: 0.25rem; }
-
-    @media (max-width: 600px) {
-      .card { padding: 1rem; }
-      .radio-group { grid-template-columns: 1fr; }
-    }
-  </style>
 </body>
 </html>
