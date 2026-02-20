@@ -4,46 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Innskráning - Námsbókasafn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #16181d;
+      background-image: radial-gradient(ellipse at center, rgba(200, 121, 65, 0.08) 0%, transparent 60%);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #a09b93;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
 
     .login-card {
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      padding: 3rem;
-      max-width: 400px;
+      background: #1e2128;
+      border: 1px solid #353a44;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+      padding: 2.5rem 2rem;
+      max-width: 420px;
       width: 100%;
       text-align: center;
+      animation: fadeInUp 0.4s ease-out both;
     }
 
-    .logo {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .accent-rule {
+      width: 40px;
+      height: 2px;
+      background: #c87941;
+      margin: 0 auto 1.25rem;
+      border: none;
     }
 
     h1 {
-      font-size: 1.5rem;
-      color: #111827;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #c87941;
       margin-bottom: 0.5rem;
     }
 
     .subtitle {
-      color: #6b7280;
       font-size: 0.875rem;
+      font-weight: 300;
+      color: #6b665f;
       margin-bottom: 2rem;
     }
 
@@ -55,35 +89,38 @@
       width: 100%;
       padding: 0.875rem 1.5rem;
       background: #24292e;
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
+      color: #e0ddd8;
+      border: 1px solid #353a44;
+      border-radius: 8px;
+      font-family: 'Source Sans 3', sans-serif;
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
     .github-btn:hover {
-      background: #1b1f23;
+      border-color: #c87941;
+      transform: scale(1.01);
     }
 
     .github-icon {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
     }
 
     .info {
-      margin-top: 2rem;
+      margin-top: 1.75rem;
       padding-top: 1.5rem;
-      border-top: 1px solid #e5e7eb;
-      font-size: 0.75rem;
-      color: #9ca3af;
+      border-top: 1px solid #353a44;
+      font-size: 0.8rem;
+      color: #6b665f;
+      line-height: 1.6;
     }
 
     .info p {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .roles {
@@ -92,17 +129,18 @@
     }
 
     .roles h3 {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-bottom: 0.5rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #6b665f;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.625rem;
     }
 
     .role-list {
       list-style: none;
       font-size: 0.8rem;
-      color: #4b5563;
     }
 
     .role-list li {
@@ -111,14 +149,20 @@
       justify-content: space-between;
     }
 
+    .role-list li span:first-child {
+      color: #a09b93;
+      font-weight: 400;
+    }
+
     .role-list li span:last-child {
-      color: #9ca3af;
+      color: #545049;
+      font-weight: 300;
     }
   </style>
 </head>
 <body>
   <div class="login-card">
-    <div class="logo">📚</div>
+    <hr class="accent-rule">
     <h1>Námsbókasafn</h1>
     <p class="subtitle">Þýðingaverkflæði fyrir OpenStax kennslubækur</p>
 
