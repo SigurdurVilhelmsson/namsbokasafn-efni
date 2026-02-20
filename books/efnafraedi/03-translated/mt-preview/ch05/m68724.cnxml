@@ -52,7 +52,7 @@ borða plöntur. Bruni kola og jarðolíu losar einnig geymda sólarorku:
 <para id="fs-idm26174720">Þessi kafli mun kynna grunnhugmyndir
 mikilvægs sviðs vísinda sem fjallar um magn varma sem frásogast eða
 losnar við efna- og eðlisfræðilegar breytingar – svið sem kallast
-<emphasis effect="bold">varmaefnafræði</emphasis>. Hugtökin sem kynnt eru í þessum kafla eru víða notuð
+<term>varmaefnafræði</term>. Hugtökin sem kynnt eru í þessum kafla eru víða notuð
 á næstum öllum vísinda- og tæknisviðum. Matvælafræðingar nota þau til að
 ákvarða orkuinnihald matvæla. Líffræðingar rannsaka orkuferla lifandi
 vera, svo sem efnaskiptabruna sykurs í koldíoxíð og vatn. Olíu-, gas- og
@@ -67,15 +67,15 @@ jarðfræðinga, allar tegundir verkfræðinga og nánast alla sem stunda eða
 vinna að hvers kyns vísindum.</para>
 <section id="fs-idp13589600">
 <title>Orka</title>
-<para id="fs-idp38067952"><emphasis effect="bold">Orku</emphasis> má skilgreina sem getuna til
-að veita varma eða vinna vinnu. Ein tegund *<emphasis effect="italics">vinnu (</emphasis>w<emphasis effect="italics">)</emphasis>* er ferlið við
+<para id="fs-idp38067952"><term>Orku</term> má skilgreina sem getuna til
+að veita varma eða vinna vinnu. Ein tegund <term>vinnu (<emphasis effect="italics">w</emphasis>)</term> er ferlið við
 að láta efni hreyfast gegn andstæðum krafti. Til dæmis vinnum við vinnu
 þegar við pumpum í reiðhjóladekk – við hreyfum efni (loftið í pumpunni)
 gegn andstæðum krafti loftsins sem þegar er í dekkinu.</para>
 <para id="fs-idp11831328">Eins og efni kemur orka fyrir í
 mismunandi gerðum. Ein flokkun skiptir orku í tvær tegundir:
-<emphasis effect="bold">stöðuorku</emphasis>, orkan sem hlutur hefur vegna hlutfallslegrar stöðu
-sinnar, samsetningar eða ástands, og <emphasis effect="bold">hreyfiorku</emphasis>, orkan sem hlutur
+<term>stöðuorku</term>, orkan sem hlutur hefur vegna hlutfallslegrar stöðu
+sinnar, samsetningar eða ástands, og <term>hreyfiorku</term>, orkan sem hlutur
 býr yfir vegna hreyfingar sinnar. Vatn efst í fossi eða stíflu hefur
 stöðuorku vegna stöðu sinnar; þegar það rennur niður í gegnum rafala
 hefur það hreyfiorku sem hægt er að nota til að vinna vinnu og framleiða
@@ -119,8 +119,8 @@ kjarnaefnafræði.</para>
 </section>
 <section id="fs-idm67028192">
 <title>Varmaorka, hitastig og varmi</title>
-<para id="fs-idp24322848"><emphasis effect="bold">Varmaorka</emphasis> er hreyfiorka sem
-tengist tilviljanakenndri hreyfingu atóma og sameinda. <emphasis effect="bold">Hitastig</emphasis> er
+<para id="fs-idp24322848"><term>Varmaorka</term> er hreyfiorka sem
+tengist tilviljanakenndri hreyfingu atóma og sameinda. <term>Hitastig</term> er
 magnbundinn mælikvarði á „hita“ eða „kulda“. Þegar atóm og sameindir í
 hlut hreyfast eða titra hratt hafa þau hærri meðalhreyfiorku (KE) og við
 segjum að hluturinn sé „heitur“. Þegar atóm og sameindir hreyfast hægt
@@ -163,7 +163,7 @@ sér. Báðar gerðir hitamæla hafa kvarðaðan skala sem sýnir hitastigið.
 <link url="http://openstax.org/l/16Bimetallic">sýnikennsla</link> gerir manni kleift að sjá áhrif þess að
 hita og kæla uppvafða tvímálmsræmu.</para>
 </note>
-<para id="fs-idp26888640">*<emphasis effect="italics">Varmi (</emphasis>q<emphasis effect="italics">)</emphasis>* er flutningur
+<para id="fs-idp26888640"><term>Varmi (<emphasis effect="italics">q</emphasis>)</term> er flutningur
 varmaorku milli tveggja hluta með mismunandi hitastig. Varmaflæði
 (óþarft orðalag, en algengt) eykur varmaorku eins hlutar og minnkar
 varmaorku hins. Gerum ráð fyrir að við höfum í upphafi efni (H) með hátt
@@ -194,7 +194,7 @@ orkuflutninginn fyrir þér.</para>
 </note>
 <para id="fs-idm61604880">Efni sem gangast undir efnahvörf og
 eðlisfræðilegar breytingar geta losað eða tekið upp varma. Breyting sem
-losar varma er kölluð <emphasis effect="bold">útvermið ferli</emphasis>. Til dæmis er bruni sem á sér
+losar varma er kölluð <term>útvermið ferli</term>. Til dæmis er bruni sem á sér
 stað við notkun á súrefnis-asetýlen logsuðutæki úthverfið ferli – þetta
 ferli losar einnig orku í formi ljóss eins og sést á loga tækisins
 (<link target-id="CNX_Chem_05_01_OxyacTorch"/>). Hvarf eða breyting sem tekur upp varma er <emphasis effect="bold">innvermið
@@ -214,13 +214,13 @@ að skapa kuldatilfinningu. (Heimild a: breyting á verki eftir
 „Skatebiker“/Wikimedia commons)</caption>
 </figure>
 <para id="fs-idp24669072">Fyrr á tímum var orka mæld í
-einingunni <emphasis effect="bold">kaloría (cal)</emphasis>. Ein kaloría er orkumagnið sem þarf til að
+einingunni <term>kaloría (cal)</term>. Ein kaloría er orkumagnið sem þarf til að
 hita eitt gramm af vatni um 1 gráðu á Celsíus (1 kelvin). Þetta magn er
 þó háð loftþrýstingi og upphafshitastigi vatnsins. Auðvelt er að mæla
 orkubreytingar í kaloríum og því er kalorían enn oft notuð. Kalorían
 (með stóru K), eða stóra kalorían, sem almennt er notuð til að
 magngreina orkuinnihald matvæla, er kílókaloría. SI-eining varma, vinnu
-og orku er júl. Eitt <emphasis effect="bold">júl (J)</emphasis> er skilgreint sem orkumagnið sem notað
+og orku er júl. Eitt <term>júl (J)</term> er skilgreint sem orkumagnið sem notað
 er þegar kraftur upp á 1 njúton færir hlut um 1 metra. Það er nefnt til
 heiðurs enska eðlisfræðingnum James Prescott Joule. Eitt júl jafngildir
 1 kg m<sup>2</sup>/s<sup>2</sup>, sem er einnig kallað 1 njútonmetri. Eitt kílójúl (kJ) er
@@ -250,7 +250,7 @@ pönnunnar um 50,0 °C:</para>
 stærra magn efnis krefst (hlutfallslega) meiri orku til að ná sömu
 hitastigsbreytingu:</para>
 <equation id="fs-idp13532880" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mrow><m:mtext>large pan</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>90,700 J</m:mtext></m:mrow><m:mrow><m:mn>50.0</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1814</m:mn><m:mspace width="0.2em"/><m:mtext>J/°C</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idp11756944">*<emphasis effect="italics">Eðlisvarmi (</emphasis>c<emphasis effect="italics">)</emphasis>* efnis er það
+<para id="fs-idp11756944"><term>Eðlisvarmi (<emphasis effect="italics">c</emphasis>)</term> efnis er það
 magn varma sem þarf til að hækka hitastig 1 gramms af efni um 1 gráðu á
 Celsíus (eða 1 kelvin):</para>
 <equation id="fs-idm28369232" class="unnumbered"><m:math><m:mrow><m:mi>c</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>q</m:mi><m:mrow><m:mstyle mathvariant="italic"><m:mtext>m</m:mtext></m:mstyle><m:mtext>Δ</m:mtext><m:mstyle mathvariant="italic"><m:mtext>T</m:mtext></m:mstyle></m:mrow></m:mfrac></m:mrow></m:math></equation>

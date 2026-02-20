@@ -16,7 +16,7 @@ námundunarreglum á útreiknaðar stærðir</item></list></md:abstract>
 <para id="fs-idm288863760">Talning er eina tegund mælinga sem
 er laus við óvissu, að því gefnu að fjöldi hluta sem verið er að telja
 breytist ekki á meðan talningin fer fram. Niðurstaða slíkrar
-talningarmælingar er dæmi um <emphasis effect="bold">nákvæma tölu</emphasis>. Með því að telja eggin í
+talningarmælingar er dæmi um <term>nákvæma tölu</term>. Með því að telja eggin í
 öskju er hægt að ákvarða <emphasis effect="italics">nákvæmlega</emphasis> hversu mörg egg askjan inniheldur.
 Tölur skilgreindra stærða eru einnig nákvæmar. Samkvæmt skilgreiningu er
 1 fet nákvæmlega 12 tommur, 1 tomma er nákvæmlega 2,54 sentimetrar og 1
@@ -61,10 +61,10 @@ krónupeningsins sé líklega á milli 6,71 og 6,73 grömm. Krónupeningurinn
 vegur <emphasis effect="italics">um það bil</emphasis> 6,72 grömm, með nafnóvissu í mælingunni upp á ± 0,01
 gramm. Ef peningurinn er vigtaður á næmari vog gæti massinn verið 6,723
 g. Þetta þýðir að massi hans liggur á milli 6,722 og 6,724 grömm, sem er
-óvissa upp á 0,001 gramm. Sérhver mæling hefur einhverja <emphasis effect="bold">óvissu</emphasis>, sem
+óvissa upp á 0,001 gramm. Sérhver mæling hefur einhverja <term>óvissu</term>, sem
 fer eftir tækinu sem notað er (og hæfni notandans). Allir tölustafir í
 mælingu, þar með talinn óvissi síðasti tölustafurinn, eru kallaðir
-<emphasis effect="bold">markverðir stafir</emphasis> eða <emphasis effect="bold">marktækir tölustafir</emphasis>. Athugaðu að núll
+<term>markverðir stafir</term> eða <term>marktækir tölustafir</term>. Athugaðu að núll
 getur verið mælt gildi; til dæmis, ef þú stendur á vog sem sýnir þyngd
 með nákvæmni upp á næsta pund og hún sýnir „120“, þá eru 1 (hundruð), 2
 (tugir) og 0 (einingar) öll marktæk (mæld) gildi.</para>
@@ -132,7 +132,7 @@ kosti jafn óvissar og mælingin sjálf. Takið tillit til óvissu í mælingum
 til að forðast að gefa ranga mynd af óvissu í reiknuðum niðurstöðum. Ein
 leið til þess er að gefa upp niðurstöðu útreiknings með réttum fjölda
 markverðra stafa, sem er ákvarðaður af eftirfarandi þremur reglum um
-<emphasis effect="bold">námundun</emphasis> talna:</para>
+<term>námundun</term> talna:</para>
 <list id="fs-idm65809616" list-type="enumerated" number-style="arabic">
 <item>Þegar tölur eru lagðar saman
 eða dregnar frá, námundið niðurstöðuna að sama fjölda aukastafa og talan
@@ -320,7 +320,7 @@ eðlismassa sem gefinn er fyrir gull í <link target-id="fs-idm45639696"/>.</par
 <title>Hittni og nákvæmni</title>
 <para id="fs-idp4474304">Vísindamenn gera yfirleitt endurteknar
 mælingar á stærð til að tryggja gæði niðurstaðna sinna og til að meta
-bæði <emphasis effect="bold">nákvæmni</emphasis> og <emphasis effect="bold">hittni</emphasis> niðurstaðna sinna. Mælingar eru sagðar
+bæði <term>nákvæmni</term> og <term>hittni</term> niðurstaðna sinna. Mælingar eru sagðar
 nákvæmar ef þær gefa mjög svipaðar niðurstöður þegar þær eru endurteknar
 á sama hátt. Mæling er talin hafa mikla hittni ef hún gefur niðurstöðu
 sem er mjög nálægt sönnu eða viðteknu gildi. Nákvæm gildi eru í samræmi

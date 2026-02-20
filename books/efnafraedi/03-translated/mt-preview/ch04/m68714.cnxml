@@ -46,8 +46,8 @@ til efnaferlis, hvarfs vetnis við klór til að mynda vetnisklóríð:</para>
 klór hvarfast í hlutfallaefnafræðilegu hlutfalli 1:1. Ef þessi hvarfefni
 eru til staðar í einhverju öðru magni mun annað hvarfefnið nánast alltaf
 klárast alveg og takmarkar þannig magn myndefnis sem getur myndast.
-Þetta efni er <emphasis effect="bold">takmarkandi hvarfefni</emphasis> og hitt efnið er
-<emphasis effect="bold">umframhvarfefni</emphasis>. Til að bera kennsl á takmarkandi og umframhvarfefni
+Þetta efni er <term>takmarkandi hvarfefni</term> og hitt efnið er
+<term>umframhvarfefni</term>. Til að bera kennsl á takmarkandi og umframhvarfefni
 í tilteknum aðstæðum þarf að reikna mólmagn hvers hvarfefnis sem er til
 staðar og bera það saman við hlutfallaefnafræðilegt magn sem sýnt er í
 stilltu efnajöfnunni. Ímyndum okkur til dæmis að blanda saman 3 mólum af
@@ -130,15 +130,15 @@ myndefni er hann takmarkandi hvarfefni.</para>
 <para id="fs-idm22072192">Magn myndefnis sem <emphasis effect="italics">gæti</emphasis> myndast við
 efnahvarf við tilteknar aðstæður, eins og reiknað er út samkvæmt
 hlutfallaefnafræði viðeigandi stilltrar efnajöfnu, er kallað
-<emphasis effect="bold">fræðilegar heimtur</emphasis> hvarfsins. Í reynd er magn myndefnis sem fæst
-kallað <emphasis effect="bold">raunheimtur</emphasis> og þær eru oft minni en fræðilegar heimtur af
+<term>fræðilegar heimtur</term> hvarfsins. Í reynd er magn myndefnis sem fæst
+kallað <term>raunheimtur</term> og þær eru oft minni en fræðilegar heimtur af
 ýmsum ástæðum. Sum efnahvörf eru í eðli sínu óskilvirk og þeim fylgja
 <emphasis effect="italics">hliðarhvörf</emphasis> sem mynda önnur myndefni. Önnur eru í eðli sínu ófullkomin
 (hugsaðu um ófullkomin hvörf veikra sýra og basa sem fjallað var um fyrr
 í þessum kafla). Sum myndefni er erfitt að safna án þess að eitthvað
 tapist og því mun ófullkomin endurheimt draga úr raunheimtum. Að hve
 miklu leyti fræðilegum heimtum hvarfs er náð er almennt gefið upp sem
-<emphasis effect="bold">prósentuheimtur</emphasis> þess:</para>
+<term>prósentuheimtur</term> þess:</para>
 <equation id="fs-idp47653952" class="unnumbered"><m:math><m:mrow><m:mtext>percent yield</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>actual yield</m:mtext></m:mrow><m:mrow><m:mtext>theoretical yield</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math></equation>
 <para id="fs-idm52282816">Raunheimtur og fræðilegar heimtur má
 gefa upp sem massa eða mólmagn (eða annan viðeigandi eiginleika, t.d.

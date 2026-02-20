@@ -13,16 +13,16 @@ og tengda eiginleika með dæmigerðum gögnum úr varmamælingum</item></list><
 <content>
 <para id="fs-idm52788928">Ein aðferð sem við getum notað til að
 mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli er þekkt
-sem <emphasis effect="bold">varmamæling</emphasis>. Varmamæling er notuð til að mæla magn varma sem
+sem <term>varmamæling</term>. Varmamæling er notuð til að mæla magn varma sem
 flyst til eða frá efni. Til þess er varmanum skipt við kvarðaðan hlut
 (varmamæli). Hitastigsbreytingin sem mæld er með varmamælinum er notuð
 til að leiða út magn varma sem fluttist í ferlinu sem er til rannsóknar.
 Mæling á varmaflutningi með þessari aðferð krefst skilgreiningar á
-<emphasis effect="bold">kerfi</emphasis> (efnið eða efnin sem gangast undir efna- eða eðlisfræðilega
-breytingu) og <emphasis effect="bold">umhverfi</emphasis> þess (allt annað efni, þar á meðal hlutar
+<term>kerfi</term> (efnið eða efnin sem gangast undir efna- eða eðlisfræðilega
+breytingu) og <term>umhverfi</term> þess (allt annað efni, þar á meðal hlutar
 mælibúnaðarins, sem annaðhvort veita kerfinu varma eða gleypa varma úr
 kerfinu).</para>
-<para id="fs-idm64462704"><emphasis effect="bold">Varmamælir</emphasis> er tæki sem notað er
+<para id="fs-idm64462704"><term>Varmamælir</term> er tæki sem notað er
 til að mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli.
 Til dæmis, þegar útvermið efnahvarf á sér stað í lausn í varmamæli,
 gleypir lausnin varmann sem myndast við hvarfið, sem eykur hitastig
@@ -335,7 +335,7 @@ gleypa.</para>
 hannaðir til að starfa við stöðugan (loft-)þrýsting og eru hentugir til
 að mæla varmaflæði sem fylgir ferlum sem eiga sér stað í lausn. Annars
 konar varmamælir sem starfar við stöðugt rúmmál, í daglegu tali kallaður
-<emphasis effect="bold">sprengivarmamælir</emphasis>, er notaður til að mæla orkuna sem myndast við
+<term>sprengivarmamælir</term>, er notaður til að mæla orkuna sem myndast við
 hvörf sem gefa af sér mikið magn af varma og loftkenndar afurðir, svo
 sem brunahvörf. (Orðið „sprengja“ kemur af þeirri athugun að þessi hvörf
 geta verið nógu kröftug til að líkjast sprengingum sem myndu skemma aðra
@@ -452,7 +452,7 @@ Sýni af mat er vegið, blandað í blandara, frostþurrkað, malað í duft og
 mótað í köggul. Köggullinn er brenndur inni í sprengihitaeiningamæli og
 mæld hitastigsbreyting er umreiknuð í orku á hvert gramm af mat.</para>
 <para id="fs-idm53626320">Í dag er hitaeiningainnihald á
-matarmerkingum fengið með aðferð sem kallast <emphasis effect="bold">Atwater-kerfið</emphasis> og notar
+matarmerkingum fengið með aðferð sem kallast <term>Atwater-kerfið</term> og notar
 meðalhitaeiningainnihald mismunandi efnaþátta matvæla, próteina,
 kolvetna og fitu. Meðalmagnið er það sem gefið er upp í jöfnunni og er
 fengið úr ýmsum niðurstöðum úr sprengihitaeiningamælingum á heilum

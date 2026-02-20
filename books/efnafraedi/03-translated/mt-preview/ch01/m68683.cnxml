@@ -45,8 +45,8 @@ eins og með tölur, þegar einingu er deilt með sams konar einingu (í
 þessu tilfelli, m/m), er niðurstaðan „1“ — eða, eins og almennt er
 orðað, einingarnar „styttast út“.</para>
 <para id="fs-idp44099792">Þessir útreikningar eru dæmi um
-fjölhæfa stærðfræðilega nálgun sem kallast <emphasis effect="bold">einingagreining</emphasis> (eða
-<emphasis effect="bold">þáttamerkingaraðferðin</emphasis>). Einingagreining byggir á þessari forsendu:
+fjölhæfa stærðfræðilega nálgun sem kallast <term>einingagreining</term> (eða
+<term>þáttamerkingaraðferðin</term>). Einingagreining byggir á þessari forsendu:
 <emphasis effect="italics">einingar stærða verða að lúta sömu stærðfræðilegu aðgerðum og
 tilheyrandi tölur þeirra</emphasis>. Þessa aðferð má beita á útreikninga, allt frá
 einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem
@@ -56,7 +56,7 @@ fela í sér nokkrar mismunandi stærðir.</para>
 einingagreining</title>
 <para id="fs-idm273312256">Hlutfall tveggja jafngildra stærða
 sem gefnar eru upp með mismunandi mælieiningum má nota sem
-<emphasis effect="bold">umreikningsstuðul fyrir einingar</emphasis>. Til dæmis eru lengdirnar 2,54 cm
+<term>umreikningsstuðul fyrir einingar</term>. Til dæmis eru lengdirnar 2,54 cm
 og 1 tommur jafngildar (samkvæmt skilgreiningu) og því má leiða út
 umreikningsstuðul fyrir einingar úr hlutfallinu,</para>
 <equation id="fs-idm256748160" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.54 cm</m:mtext></m:mrow><m:mrow><m:mtext>1 in.</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mtext>(2.54 cm</m:mtext><m:mo>=</m:mo><m:mtext>1 in.) or 2.54</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mrow><m:mtext>in.</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -223,7 +223,7 @@ gallonið, hver var eldsneytiskostnaðurinn fyrir þessa ferð?</para>
 <section id="fs-idm206910464">
 <title>Umreikningur á
 hitastigseiningum</title>
-<para id="fs-idm262720192">Við notum orðið <emphasis effect="bold">hitastig</emphasis> til að
+<para id="fs-idm262720192">Við notum orðið <term>hitastig</term> til að
 vísa til þess hversu heitt eða kalt efni er. Ein leið til að mæla
 breytingu á hitastigi er að nýta sér þá staðreynd að flest efni þenjast
 út þegar hitastig þeirra hækkar og dragast saman þegar hitastig þeirra
@@ -235,7 +235,7 @@ við valin viðmiðunarhitastig: Tvö af þeim algengustu eru frostmark og
 suðumark vatns við tiltekinn loftþrýsting. Á Celsíuskvarðanum er 0 °C
 skilgreint sem frostmark vatns og 100 °C sem suðumark vatns. Bilinu
 milli þessara tveggja hitastiga er skipt í 100 jöfn bil sem við köllum
-gráður. Á <emphasis effect="bold">Fahrenheit</emphasis>-kvarðanum er frostmark vatns skilgreint sem 32
+gráður. Á <term>Fahrenheit</term>-kvarðanum er frostmark vatns skilgreint sem 32
 °F og suðumarkið sem 212 °F. Bilinu milli þessara tveggja punkta á
 Fahrenheit-hitamæli er skipt í 180 jafna hluta (gráður).</para>
 <para id="fs-idm288396336">Skilgreining Celsíus- og

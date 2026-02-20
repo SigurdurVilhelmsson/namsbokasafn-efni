@@ -23,7 +23,7 @@ Ediksýra hvarfast við kalíumkarbónat samkvæmt eftirfarandi jöfnu:</para>
 <equation id="fs-idm1518128" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>K</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mn>2</m:mn><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mtext>K</m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></equation>
 <para id="fs-idp89786672">Freyðingin stafaði af myndun CO<sub>2</sub>.</para>
 <para id="fs-idp55621088">Prófunin á ediki með kalíumkarbónati
-er ein tegund <emphasis effect="bold">magnbundinnar greiningar</emphasis> – ákvörðun á magni eða styrk
+er ein tegund <term>magnbundinnar greiningar</term> – ákvörðun á magni eða styrk
 efnis í sýni. Í greiningu á ediki var styrkur uppleysta efnisins
 (ediksýru) ákvarðaður út frá magni hvarfefnis sem hvarfaðist við
 uppleysta efnið sem var til staðar í þekktu rúmmáli lausnarinnar. Í
@@ -33,24 +33,24 @@ uppleysta efnið sem var til staðar í þekktu rúmmáli lausnarinnar. Í
 <title>Títrun</title>
 <para id="fs-idp43277952">Aðferðin sem lýst er til að mæla
 styrk ediks var snemmbúin útgáfa af greiningartækninni sem kallast
-<emphasis effect="bold">títrunargreining</emphasis>. Dæmigerð títrunargreining felur í sér notkun á
-<emphasis effect="bold">búrettu</emphasis> (<link target-id="CNX_Chem_04_05_titration"/>) til að bæta í skömmtum lausn sem inniheldur
-þekktan styrk af einhverju efni (<emphasis effect="bold">títrantinum</emphasis>) við sýnislausn sem
-inniheldur efnið sem á að mæla styrk þess (<emphasis effect="bold">greiningarefnið</emphasis>).
+<term>títrunargreining</term>. Dæmigerð títrunargreining felur í sér notkun á
+<term>búrettu</term> (<link target-id="CNX_Chem_04_05_titration"/>) til að bæta í skömmtum lausn sem inniheldur
+þekktan styrk af einhverju efni (<term>títrantinum</term>) við sýnislausn sem
+inniheldur efnið sem á að mæla styrk þess (<term>greiningarefnið</term>).
 Títranturinn og greiningarefnið gangast undir efnahvarf með þekktri
 hlutfallaefnafræði, og því gerir mæling á rúmmáli títrantslausnar sem
 þarf til að ljúka efnahvarfinu við greiningarefnið
-(<emphasis effect="bold">jafngildispunktur</emphasis> títrunarinnar) kleift að reikna út styrk
+(<term>jafngildispunktur</term> títrunarinnar) kleift að reikna út styrk
 greiningarefnisins. Hægt er að greina jafngildispunkt títrunar með berum
 augum ef greinileg breyting á útliti sýnislausnarinnar fylgir lokum
 efnahvarfsins. Stöðvun freyðimyndunar í klassísku ediksgreiningunni er
 eitt slíkt dæmi, þótt algengara sé að sérstök litarefni sem kallast
-<emphasis effect="bold">litvísar</emphasis> séu bætt við sýnislausnirnar til að valda litabreytingu við
+<term>litvísar</term> séu bætt við sýnislausnirnar til að valda litabreytingu við
 eða mjög nálægt jafngildispunkti títrunarinnar. Einnig er hægt að greina
 jafngildispunkta með því að mæla einhvern eiginleika lausnarinnar sem
 breytist á fyrirsjáanlegan hátt í gegnum títrunina. Óháð því hvaða
 aðferð er notuð til að greina jafngildispunkt títrunar er rúmmál
-títrantsins sem raunverulega er mælt kallað <emphasis effect="bold">endapunktur</emphasis>. Rétt
+títrantsins sem raunverulega er mælt kallað <term>endapunktur</term>. Rétt
 hannaðar títrunaraðferðir tryggja yfirleitt að munurinn á
 jafngildispunkti og endapunkti sé hverfandi. Þótt hvers kyns efnahvarf
 geti legið til grundvallar títrunargreiningu eru þau þrjú sem lýst er í
@@ -107,7 +107,7 @@ jafngildispunkti. Hver er mólstyrkur oxalsýrunnar?</para>
 </section>
 <section id="fs-idp68434144">
 <title>Þyngdarmælingagreining</title>
-<para id="fs-idp27521328"><emphasis effect="bold">Þyngdarmælingagreining</emphasis> er
+<para id="fs-idp27521328"><term>Þyngdarmælingagreining</term> er
 greining þar sem sýni er meðhöndlað á þann hátt að eðlisástand
 greiniefnisins breytist þannig að hægt er að skilja það frá öðrum
 efnisþáttum sýnisins. Massamælingar á sýninu, einangraða greiniefninu
@@ -161,7 +161,7 @@ umfram-Ag<sup>+</sup>?</para>
 </example>
 <para id="fs-idp91356704">Hægt er að ákvarða
 frumefnasamsetningu kolvetna og skyldra efnasambanda með
-þyngdarmælingaraðferð sem kallast <emphasis effect="bold">brunaefnagreining</emphasis>. Í
+þyngdarmælingaraðferð sem kallast <term>brunaefnagreining</term>. Í
 brunaefnagreiningu er vegið sýni af efnasambandinu hitað upp í hátt
 hitastig undir straumi af súrefnisgasi, sem leiðir til fullkomins bruna
 þess og myndar loftkennd myndefni með þekkta eiginleika. Fullkominn

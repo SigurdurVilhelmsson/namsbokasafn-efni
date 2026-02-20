@@ -2,6 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { execSync } from 'child_process';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import { restoreTermMarkers, parseSegments } from '../cnxml-inject.js';
 
 const ROOT = join(import.meta.dirname, '..', '..');
 const TOOLS = join(ROOT, 'tools');
@@ -345,5 +346,104 @@ describe('inject → render round-trip', () => {
     expect(html).toContain('Inngangur');
     expect(html).toContain('Vekjaraklukkan'); // First word of first paragraph
     expect(html).toContain('id="fs-idp32962032"'); // Paragraph ID preserved
+  });
+});
+
+// =====================================================================
+// restoreTermMarkers unit tests
+// =====================================================================
+
+describe('restoreTermMarkers', () => {
+  it('should restore terms when EN has __term__ and IS has **term**', () => {
+    const en = new Map([['seg1', 'This is __thermochemistry__.']]);
+    const is = new Map([['seg1', 'Þetta er **varmaefnafræði**.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('Þetta er __varmaefnafræði__.');
+    expect(restoredCount).toBe(1);
+  });
+
+  it('should keep bold as bold when EN has **bold**', () => {
+    const en = new Map([['seg1', 'This is **important**.']]);
+    const is = new Map([['seg1', 'Þetta er **mikilvægt**.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('Þetta er **mikilvægt**.');
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should handle mixed terms and bold in correct positional order', () => {
+    const en = new Map([['seg1', '__Energy__ is **important**. One type of __work__ is motion.']]);
+    const is = new Map([['seg1', '**Orka** er **mikilvæg**. Ein tegund **vinnu** er hreyfing.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe(
+      '__Orka__ er **mikilvæg**. Ein tegund __vinnu__ er hreyfing.'
+    );
+    expect(restoredCount).toBe(2);
+  });
+
+  it('should handle terms with embedded italics like __work (*w*)__', () => {
+    const en = new Map([['seg1', '__Energy__ and __work (*w*)__ are related.']]);
+    const is = new Map([['seg1', '**Orka** og **vinna (*w*)** eru skyldar.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('__Orka__ og __vinna (*w*)__ eru skyldar.');
+    expect(restoredCount).toBe(2);
+  });
+
+  it('should handle IS having fewer markers than EN', () => {
+    const en = new Map([['seg1', '__Energy__ and __work__ are concepts.']]);
+    const is = new Map([['seg1', '**Orka** og vinna eru hugtök.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('__Orka__ og vinna eru hugtök.');
+    expect(restoredCount).toBe(1);
+  });
+
+  it('should treat extra IS markers as bold when IS has more markers than EN', () => {
+    const en = new Map([['seg1', '__Energy__ is a concept.']]);
+    const is = new Map([['seg1', '**Orka** er **mikilvægt** hugtak.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('__Orka__ er **mikilvægt** hugtak.');
+    expect(restoredCount).toBe(1);
+  });
+
+  it('should skip segments not present in EN', () => {
+    const en = new Map();
+    const is = new Map([['seg1', '**Orka** er hugtak.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('**Orka** er hugtak.');
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should skip segments with no terms in EN', () => {
+    const en = new Map([['seg1', 'Energy is **important**.']]);
+    const is = new Map([['seg1', 'Orka er **mikilvæg**.']]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('Orka er **mikilvæg**.');
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should process multiple segments independently', () => {
+    const en = new Map([
+      ['seg1', '__Energy__ is key.'],
+      ['seg2', 'No terms here.'],
+      ['seg3', '__Heat__ and **bold**.'],
+    ]);
+    const is = new Map([
+      ['seg1', '**Orka** er lykilatriði.'],
+      ['seg2', 'Engin hugtök hér.'],
+      ['seg3', '**Varmi** og **feitletrað**.'],
+    ]);
+
+    const { segments, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('__Orka__ er lykilatriði.');
+    expect(segments.get('seg2')).toBe('Engin hugtök hér.');
+    expect(segments.get('seg3')).toBe('__Varmi__ og **feitletrað**.');
+    expect(restoredCount).toBe(2);
   });
 });

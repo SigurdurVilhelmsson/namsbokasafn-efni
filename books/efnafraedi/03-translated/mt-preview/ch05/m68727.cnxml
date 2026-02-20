@@ -14,7 +14,7 @@ notað það til að reikna út hvarfvermi</item></list></md:abstract>
 
 <content>
 <para id="fs-idp160276224">Varmaefnafræði er grein innan
-<emphasis effect="bold">varmaefnafræði</emphasis>, vísindanna sem fjalla um tengslin milli varma, vinnu
+<term>varmaefnafræði</term>, vísindanna sem fjalla um tengslin milli varma, vinnu
 og annarra orkuforma í samhengi við efna- og eðlisfræðilega ferla. Þar
 sem við einbeitum okkur að varmaefnafræði í þessum kafla þurfum við að
 skoða nokkur mikið notuð hugtök úr varmafræðinni.</para>
@@ -25,7 +25,7 @@ hreyfiorka getur verið í formi aukinnar færslu (ferðalags eða hreyfingar
 í beinni línu), titrings eða snúnings atómanna eða sameindanna. Þegar
 varmaorka tapast minnkar styrkur þessara hreyfinga og hreyfiorkan
 minnkar. Heildarsumma allra mögulegra tegunda orku sem er til staðar í
-efni er kölluð *<emphasis effect="italics">innri orka (</emphasis>U<emphasis effect="italics">)</emphasis><emphasis effect="italics">, stundum táknuð með </emphasis>E*.</para>
+efni er kölluð <term>innri orka (<emphasis effect="italics">U</emphasis>)</term>, stundum táknuð með <emphasis effect="italics">E</emphasis>.</para>
 <para id="fs-idm1690784">Þegar kerfi gengur í gegnum breytingu
 getur innri orka þess breyst og orka getur flust frá kerfinu yfir í
 umhverfið eða frá umhverfinu yfir í kerfið. Orka flyst inn í kerfi þegar
@@ -41,7 +41,7 @@ vinnur vinnu á umhverfinu.</para>
 vinnu má tákna með jöfnunni:</para>
 <equation id="fs-idm150109936" class="unnumbered"><m:math><m:mtext>Δ</m:mtext><m:mi>U</m:mi><m:mo>=</m:mo><m:mi>q</m:mi><m:mo>+</m:mo><m:mi>w</m:mi></m:math></equation>
 <para id="fs-idp146392048">eins og sýnt er í <link target-id="CNX_Chem_05_03_Systemqw"/>. Þetta
-er ein útgáfa af <emphasis effect="bold">fyrsta lögmáli varmafræðinnar</emphasis> og hún sýnir að innri
+er ein útgáfa af <term>fyrsta lögmáli varmafræðinnar</term> og hún sýnir að innri
 orka kerfis breytist með varmaflæði inn í eða út úr kerfinu (jákvætt <emphasis effect="italics">q</emphasis>
 er varmaflæði inn; neikvætt <emphasis effect="italics">q</emphasis> er varmaflæði út) eða vinnu sem er unnin
 á eða af kerfinu. Vinnan, <emphasis effect="italics">w</emphasis>, er jákvæð ef hún er unnin á kerfinu og
@@ -55,7 +55,7 @@ kerfis má breyta með varmaflæði og vinnu. Ef varmi flæðir inn í kerfið,
 Δ<emphasis effect="italics">U</emphasis> \> 0. Ef varmi flæðir út úr kerfinu, <emphasis effect="italics">q</emphasis><sub>út</sub>, eða vinna er unnin af
 kerfinu, <emphasis effect="italics">w</emphasis><sub>af</sub>, minnkar innri orka þess, Δ<emphasis effect="italics">U</emphasis> \&lt; 0.</caption></figure>
 <para id="fs-idp6896176">Tegund vinnu sem kallast
-<emphasis effect="bold">þensluvinna</emphasis> (eða þrýstings-rúmmálsvinna) á sér stað þegar kerfi
+<term>þensluvinna</term> (eða þrýstings-rúmmálsvinna) á sér stað þegar kerfi
 þrýstir á umhverfið gegn aðhaldsþrýstingi eða þegar umhverfið þjappar
 kerfinu saman. Dæmi um þetta á sér stað við notkun brunahreyfils. Hvarf
 bensíns og súrefnis er útvermið. Hluti þessarar orku losnar sem varmi og
@@ -74,7 +74,7 @@ kaflanum um varmafræði.</para>
 </note>
 <para id="fs-idp120420048">Eins og fjallað var um má tákna
 sambandið milli innri orku, varma og vinnu sem Δ<emphasis effect="italics">U</emphasis> = <emphasis effect="italics">q</emphasis> + <emphasis effect="italics">w</emphasis>. Innri
-orka er dæmi um <emphasis effect="bold">ástandsfall</emphasis> (eða ástandsbreytu), en varmi og vinna
+orka er dæmi um <term>ástandsfall</term> (eða ástandsbreytu), en varmi og vinna
 eru ekki ástandsföll. Gildi ástandsfalls veltur aðeins á því ástandi sem
 kerfi er í, en ekki á því hvernig því ástandi er náð. Ef stærð er ekki
 ástandsfall, þá veltur gildi hennar <emphasis effect="italics">á</emphasis> því hvernig ástandinu er náð.
@@ -97,10 +97,10 @@ vegalengd er ekki ástandsfall; hún er háð leiðinni). (heimild: breyting
 á verki eftir Paul Shaffner)</caption>
 </figure>
 <para id="fs-idp107461968">Efnafræðingar nota venjulega
-eiginleika sem kallast *<emphasis effect="italics">vermi (</emphasis>H<emphasis effect="italics">)</emphasis><emphasis effect="italics"> til að lýsa varmafræði efna- og
+eiginleika sem kallast <term>vermi (<emphasis effect="italics">H</emphasis>)</term> til að lýsa varmafræði efna- og
 eðlisfræðilegra ferla. Vermi er skilgreint sem summa innri orku kerfis
-(</emphasis>U<emphasis effect="italics">) og stærðfræðilegs margfeldis þrýstings þess (</emphasis>P<emphasis effect="italics">) og rúmmáls
-(</emphasis>V*):</para>
+(<emphasis effect="italics">U</emphasis>) og stærðfræðilegs margfeldis þrýstings þess (<emphasis effect="italics">P</emphasis>) og rúmmáls
+(<emphasis effect="italics">V</emphasis>):</para>
 <equation id="fs-idm231773856" class="unnumbered"><m:math><m:mi>H</m:mi><m:mo>=</m:mo><m:mi>U</m:mi><m:mo>+</m:mo><m:mi>P</m:mi><m:mi>V</m:mi></m:math></equation>
 <para id="fs-idm20812336">Vermi er einnig ástandsfall. Ekki er
 hægt að mæla vermigildi fyrir tiltekin efni beint; aðeins er hægt að
@@ -342,7 +342,7 @@ myndast?</para>
 </example>
 <para id="fs-idm18196832">Vermibreytingar eru venjulega settar
 fram í töflum fyrir efnahvörf þar sem bæði hvarfefni og myndefni eru við
-sömu aðstæður. <emphasis effect="bold">Staðalástand</emphasis> er almennt viðurkennd samsetning
+sömu aðstæður. <term>Staðalástand</term> er almennt viðurkennd samsetning
 aðstæðna sem notuð er sem viðmiðunarpunktur til að ákvarða eiginleika
 við aðrar aðstæður. Fyrir efnafræðinga vísar staðalástand IUPAC til efna
 við 1 bar þrýsting og lausna við 1 M og tilgreinir ekki hitastig. Margar
@@ -371,7 +371,7 @@ innþenslueiginleikann eðlisvarma út frá útþenslueiginleikanum varmarýmd,
 eins og áður hefur komið fram.)</para>
 <section id="fs-idp4580336">
 <title>Staðalbrunavermi</title>
-<para id="fs-idp8281184"><emphasis effect="bold">Staðalbrunavermi</emphasis> <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>C</m:mi><m:mtext>°</m:mtext></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> er
+<para id="fs-idp8281184"><term>Staðalbrunavermi</term> <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>C</m:mi><m:mtext>°</m:mtext></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> er
 vermibreytingin þegar 1 mól af efni brennur (gengur í snöggt samband við
 súrefni) við staðalaðstæður; það er stundum kallað „brunavermi“. Til
 dæmis er brunavermi etanóls, −1366,8 kJ/mól, það magn varma sem myndast
@@ -381,7 +381,7 @@ loftþrýsting, sem skilar myndefnum einnig við 25 °C og 1 loftþrýsting.</pa
 <para id="fs-idm75327968">Brunavermi fyrir mörg efni hefur
 verið mældur; nokkur þeirra eru talin upp í <link target-id="fs-idp98710048"/>. Mörg aðgengileg
 efni með hátt brunavermi eru notuð sem eldsneyti, þar á meðal vetni,
-kolefni (sem kol eða viðarkol) og <emphasis effect="bold">kolvetni</emphasis> (efnasambönd sem
+kolefni (sem kol eða viðarkol) og <term>kolvetni</term> (efnasambönd sem
 innihalda aðeins vetni og kolefni), svo sem metan, própan og helstu
 efnisþættir bensíns.</para>
 <table id="fs-idp98710048" class="top-titled" summary="A data table is shown that has three columns and eleven rows. The header row reads “Substance,” “Combustion reaction,” and “Enthalpy of Combustion, Δ H subscript C superscript degree symbol (k J/ mol at 25 ° C).” The first column contains entries reading “carbon,” “hydrogen,” “magnesium,” “sulfur,” “carbon monoxide,” “methane,” “acetylene,” “ethanol,” “methanol,” and “isooctane.” The second column contains the equations “C (s) + O (g) right-facing arrow C O subscript 2 (g),” “H subscript 2 (g) + one half O subscript 2 (g) right-facing arrow H subscript 2 O (l),” “M g (s) + one half O subscript 2 (g) right-facing arrow M g O (s),” “S (s) + O subscript 2 (g) right-facing arrow S O subscript 2 (g),” “C O (g) + one half O subscript 2 (g) right-facing arrow C O subscript 2 (g),” “C H subscript 4 (g) + 2 O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 2 H subscript 2 O (g),” “C subscript 2 H subscript 2 (g) + five halves O subscript 2 (g) right-facing arrow 2 C O subscript 2 (g) + H subscript 2 O (l),” “C subscript 2 H subscript 5 O H (l) + 2 O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 3 H subscript 2 O (l),” “C H subscript 3 O H (l) + three halves O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 2 H subscript 2 O (l),” and “C subscript 8 H subscript 18 (l) + twenty five halves O subscript 2 (g) right-facing arrow 8 C O subscript 2 (g) + 9 H subscript 2 O (l).” The final column contains the values “–393.5,” “–285.8,” “–601.6,” “–296.8,” “–283.0,” “–890.8,” “–1301.1,” “–1366.8,” “–726.1,” and “–5460.”">
@@ -491,7 +491,7 @@ lofa mestu góðu eru þau sem unnin eru úr þörungum (<link target-id="CNX_Ch
 þörungategundir sem notaðar eru eru óeitraðar, lífbrjótanlegar og meðal
 hraðvaxnustu lífvera heims. Um 50% af þyngd þörunga er olía, sem
 auðveldlega má breyta í eldsneyti eins og lífdísil. Þörungar geta gefið
-af sér 26.000 gallon af <emphasis effect="bold">lífeldsneyti</emphasis> á hvern hektara – mun meiri
+af sér 26.000 gallon af <term>lífeldsneyti</term> á hvern hektara – mun meiri
 orku á hvern hektara en aðrar nytjaplöntur. Sumir þörungastofnar geta
 dafnað í ísöltu vatni sem ekki er hægt að nota til að rækta aðrar
 nytjaplöntur. Þörungar geta framleitt lífdísil, lífbensín, etanól,
@@ -623,7 +623,7 @@ mælingar á með tilraunum. Og jafnvel þegar ekki er erfitt að framkvæma
 hvarf eða mæla það er þægilegt að geta ákvarðað varmann sem fylgir
 hvarfi án þess að þurfa að gera tilraun.</para>
 <para id="fs-idp177508528">Útreikningar af þessu tagi fela
-yfirleitt í sér notkun á <emphasis effect="bold">lögmáli Hess</emphasis>, sem segir: <emphasis effect="italics">Ef hægt er að
+yfirleitt í sér notkun á <term>lögmáli Hess</term>, sem segir: <emphasis effect="italics">Ef hægt er að
 skrifa ferli sem summu nokkurra skrefaferla er vermibreyting
 heildarferlisins jöfn summu vermibreytinga hinna ýmsu skrefa</emphasis>. Lögmál
 Hess gildir vegna þess að vermi er ástandsfall: Vermibreytingar ráðast

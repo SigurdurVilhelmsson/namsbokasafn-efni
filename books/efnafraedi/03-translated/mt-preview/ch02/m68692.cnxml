@@ -36,11 +36,11 @@ nifteindirnar og rafeindirnar sem þau samanstanda af — eru afar smá. Til
 dæmis vegur kolefnisatóm minna en 2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−23</sup> g og rafeind
 hefur hleðslu sem er minni en 2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−19</sup> C (kúlomb). Þegar
 eiginleikum örsmárra hluta eins og atóma er lýst notum við viðeigandi
-litlar mælieiningar, svo sem <emphasis effect="bold">sameinaða atómmassaeiningu (u)</emphasis> og
-<emphasis effect="bold">grunneiningu hleðslu (e)</emphasis>. Sameinaða atómmassaeiningin er skilgreind
+litlar mælieiningar, svo sem <term>sameinaða atómmassaeiningu (u)</term> og
+<term>grunneiningu hleðslu (e)</term>. Sameinaða atómmassaeiningin er skilgreind
 sem nákvæmlega 1/12 af massa eins atóms af kolefni-12 samsætunni (meira
 um samsætur síðar í þessum kafla) og jafngildir 1,6605 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>
-10<sup>−24</sup> g. <emphasis effect="bold">Dalton (Da)</emphasis> er önnur massaeining sem jafngildir u. Í
+10<sup>−24</sup> g. <term>Dalton (Da)</term> er önnur massaeining sem jafngildir u. Í
 mörgum heimildum, þar á meðal þessum texta, er eldra hugtakið
 atómmassaeining (amu) notað þegar vísað er til u eða Da. Grunneining
 hleðslu (einnig kölluð einingarhleðsla) jafngildir stærð hleðslu
@@ -101,28 +101,28 @@ hann í kaflanum um kjarnaefnafræði.)</para>
 </tgroup>
 </table>
 <para id="fs-idp27048016">Fjöldi róteinda í kjarna atóms er
-<emphasis effect="bold">sætistala (Z)</emphasis> þess. Þetta er skilgreinandi eiginleiki frumefnis:
+<term>sætistala (Z)</term> þess. Þetta er skilgreinandi eiginleiki frumefnis:
 Gildið ákvarðar hvaða atóm er um að ræða. Til dæmis er hvert atóm sem
 inniheldur sex róteindir frumefnið kolefni og hefur sætistöluna 6, óháð
 því hversu margar nifteindir eða rafeindir það kann að hafa. Hlutlaust
 atóm verður að innihalda jafnmargar jákvæðar og neikvæðar hleðslur,
 þannig að fjöldi róteinda er jafn fjölda rafeinda. Þess vegna gefur
 sætistalan einnig til kynna fjölda rafeinda í atómi. Heildarfjöldi
-róteinda og nifteinda í atómi er kallaður <emphasis effect="bold">massatala (A)</emphasis> þess. Fjöldi
+róteinda og nifteinda í atómi er kallaður <term>massatala (A)</term> þess. Fjöldi
 nifteinda er því mismunurinn á massatölu og sætistölu: A – Z = fjöldi
 nifteinda.</para>
 <equation id="fs-idp109266704" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>atomic number</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>Z</m:mtext><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>number of protons</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mtext>mass number</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>number of protons</m:mtext><m:mo>+</m:mo><m:mtext>number of neutrons</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mtext>A</m:mtext><m:mo>−</m:mo><m:mtext>Z</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>number of neutrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm159569776">Atóm eru rafhlutlaus ef þau
 innihalda jafnmargar jákvætt hlaðnar róteindir og neikvætt hlaðnar
 rafeindir. Þegar fjöldi þessara undiratómeinda er <emphasis effect="italics">ekki</emphasis> jafn er atómið
-rafmagnað og kallast <emphasis effect="bold">jón</emphasis>. Hleðsla atóms er skilgreind sem hér segir:</para>
+rafmagnað og kallast <term>jón</term>. Hleðsla atóms er skilgreind sem hér segir:</para>
 <para id="fs-idp142952368">Hleðsla atóms = fjöldi róteinda −
 fjöldi rafeinda</para>
 <para id="fs-idp59351760">Eins og fjallað verður nánar um síðar
 í þessum kafla öðlast atóm (og sameindir) venjulega hleðslu með því að
 fá eða missa rafeindir. Atóm sem fær eina eða fleiri rafeindir mun sýna
-neikvæða hleðslu og kallast <emphasis effect="bold">anjón</emphasis>. Jákvætt hlaðin atóm sem kallast
-<emphasis effect="bold">katjónir</emphasis> myndast þegar atóm missir eina eða fleiri rafeindir. Til
+neikvæða hleðslu og kallast <term>anjón</term>. Jákvætt hlaðin atóm sem kallast
+<term>katjónir</term> myndast þegar atóm missir eina eða fleiri rafeindir. Til
 dæmis hefur hlutlaust natríumatóm (Z = 11) 11 rafeindir. Ef þetta atóm
 missir eina rafeind verður það katjón með 1+ hleðslu (11 − 10 = 1+).
 Hlutlaust súrefnisatóm (Z = 8) hefur átta rafeindir og ef það fær tvær
@@ -166,7 +166,7 @@ b: breyting á verki eftir Mike Mozart)</caption>
 </figure>
 <section id="fs-idm176092496">
 <title>Frumeindatákn</title>
-<para id="fs-idm48306304"><emphasis effect="bold">Frumeindatákn</emphasis> er skammstöfun sem
+<para id="fs-idm48306304"><term>Frumeindatákn</term> er skammstöfun sem
 við notum til að tákna frumefni eða atóm frumefnis. Til dæmis er táknið
 fyrir kvikasilfur Hg (<link target-id="CNX_Chem_02_03_SiSymbol"/>). Við notum sama tákn til að tákna
 eitt atóm kvikasilfurs (smásætt svið) eða til að merkja ílát með mörgum
@@ -522,7 +522,7 @@ samsætutáknum.</para>
 <title>Atómmassi</title>
 <para id="fs-idp64485984">Þar sem hver róteind og hver nifteind
 leggur um það bil eina ame til massa atóms og hver rafeind leggur mun
-minna til, er <emphasis effect="bold">atómmassi</emphasis> staks atóms um það bil jafn massatölu þess
+minna til, er <term>atómmassi</term> staks atóms um það bil jafn massatölu þess
 (heil tala). Meðalmassi atóma flestra frumefna er þó ekki heil tala því
 flest frumefni eru náttúrulega til sem blöndur tveggja eða fleiri
 samsæta.</para>

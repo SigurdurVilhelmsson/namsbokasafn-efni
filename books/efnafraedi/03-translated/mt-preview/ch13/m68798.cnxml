@@ -13,7 +13,7 @@ við eiginleika efnakerfisins</item></list></md:abstract>
 
 <content>
 <para id="fs-idp120703584">Stöðu afturkræfs efnahvarfs er
-þægilega hægt að meta með því að reikna út *<emphasis effect="italics">hvarfstuðul (</emphasis>Q<emphasis effect="italics">)</emphasis>* þess.
+þægilega hægt að meta með því að reikna út <term>hvarfstuðul (<emphasis effect="italics">Q</emphasis>)</term> þess.
 Fyrir afturkræft efnahvarf sem lýst er með</para>
 <equation id="fs-idp5986304" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo>+</m:mo><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp11973152">er hvarfstuðullinn leiddur beint út
@@ -86,12 +86,12 @@ minnka með tímanum, styrkur hvarfefna og nefnari <emphasis effect="italics">Q<
 hvarfstuðullinn minnkar þar af leiðandi þar til hann verður fasti við
 jafnvægi.</para>
 <para id="fs-idm389114784">Fastagildi <emphasis effect="italics">Q</emphasis> sem kerfi sýnir við
-jafnvægi er kallað *<emphasis effect="italics">jafnvægisfasti, </emphasis>K***:</para>
+jafnvægi er kallað <term>jafnvægisfasti, <emphasis effect="italics">K</term></emphasis>:</para>
 <equation id="fs-idp266400656" class="unnumbered"><m:math><m:mrow><m:mi>K</m:mi><m:mo>≡</m:mo><m:mi>Q</m:mi><m:mspace width="0.2em"/><m:mtext>at equilibrium</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm328721280">Samanburður á gagnapunktum í
 <link target-id="CNX_Chem_13_02_quotient"/> sýnir að báðar tilraunaaðstæður leiddu til sama gildis fyrir
 jafnvægisfastann. Þetta er almenn athugun fyrir öll jafnvægiskerfi,
-þekkt sem <emphasis effect="bold">massavirknilögmálið</emphasis>: Við tiltekið hitastig er hvarfstuðull
+þekkt sem <term>massavirknilögmálið</term>: Við tiltekið hitastig er hvarfstuðull
 kerfis við jafnvægi fasti.</para>
 <example id="fs-idp54423808">
 <para id="fs-idp23994768"><title>Mat á hvarfstuðli</title>Niturtvíoxíð á gasformi myndar
@@ -239,7 +239,7 @@ g af SO<sub>3</sub>(g):</para>
 </table>
 <section id="fs-idp86160096">
 <title>Einsleit jafnvægi</title>
-<para id="fs-idm54871216"><emphasis effect="bold">Einsleitt jafnvægi</emphasis> er jafnvægi
+<para id="fs-idm54871216"><term>Einsleitt jafnvægi</term> er jafnvægi
 þar sem öll hvarfefni og myndefni (og allir hvatar, ef við á) eru til
 staðar í sama fasa. Samkvæmt þessari skilgreiningu eiga einsleit
 jafnvægi sér stað í <emphasis effect="italics">lausnum</emphasis>. Þessar lausnir eru oftast annaðhvort í
@@ -324,7 +324,7 @@ hitastig?</para>
 </section>
 <section id="fs-idp112997072">
 <title>Misleitt jafnvægi</title>
-<para id="fs-idp27217312"><emphasis effect="bold">Misleitt jafnvægi</emphasis> felur í sér
+<para id="fs-idp27217312"><term>Misleitt jafnvægi</term> felur í sér
 hvarfefni og myndefni í tveimur eða fleiri mismunandi fösum, eins og
 sýnt er í eftirfarandi dæmum:</para>
 <equation id="fs-idp129666976" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mrow><m:mtext>PbCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd columnalign="left"><m:mo stretchy="false">⇌</m:mo></m:mtd><m:mtd columnalign="left"><m:msup><m:mrow><m:mtext>Pb</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd/><m:mtd columnalign="right"><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Pb</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mtd></m:mtr>

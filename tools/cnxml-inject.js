@@ -182,6 +182,67 @@ function parseSegments(content) {
 }
 
 /**
+ * Restore __term__ markers in IS segments by comparing with EN segment marker positions.
+ *
+ * The MT service converts __term__ to **term**, making terms indistinguishable from
+ * bold text. This function compares the EN source (which has distinct __term__ and
+ * **bold** markers) with the IS translation to restore the correct marker type.
+ *
+ * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
+ * @param {Map<string, string>} enSegments - Original English segments
+ * @returns {{ segments: Map<string, string>, restoredCount: number }}
+ */
+function restoreTermMarkers(isSegments, enSegments) {
+  let restoredCount = 0;
+
+  // Regex to find inline markers in order: __term__ or **bold**
+  // Uses lazy .+? for bold to handle content with single * inside (e.g., **work (*w*)**)
+  const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*)/g;
+  // In IS segments, all markers are **text** (MT converted __ to **)
+  const isMarkerPattern = /\*\*(.+?)\*\*/g;
+
+  for (const [segId, isText] of isSegments) {
+    const enText = enSegments.get(segId);
+    if (!enText) continue;
+
+    // Parse EN markers to determine the type sequence
+    const enTypes = [];
+    let enMatch;
+    enMarkerPattern.lastIndex = 0;
+    while ((enMatch = enMarkerPattern.exec(enText)) !== null) {
+      if (enMatch[2] !== undefined) {
+        // __text__ match — this is a term
+        enTypes.push('term');
+      } else {
+        // **text** match — this is bold
+        enTypes.push('bold');
+      }
+    }
+
+    // Skip if no terms in EN (nothing to restore)
+    if (!enTypes.some((t) => t === 'term')) continue;
+
+    // Replace IS **text** markers positionally based on EN types
+    let markerIndex = 0;
+    const restored = isText.replace(isMarkerPattern, (match, inner) => {
+      const type = markerIndex < enTypes.length ? enTypes[markerIndex] : 'bold';
+      markerIndex++;
+      if (type === 'term') {
+        restoredCount++;
+        return `__${inner}__`;
+      }
+      return match; // Keep as **bold**
+    });
+
+    if (restored !== isText) {
+      isSegments.set(segId, restored);
+    }
+  }
+
+  return { segments: isSegments, restoredCount };
+}
+
+/**
  * Infer MIME type from file extension.
  * @param {string} src - Image source filename
  * @returns {string} MIME type
@@ -1282,6 +1343,12 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   const eqPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-equations.json`);
   const equations = fs.existsSync(eqPath) ? JSON.parse(fs.readFileSync(eqPath, 'utf-8')) : {};
 
+  // Load EN segments (for term marker restoration)
+  const enSegPath = path.join(BOOKS_DIR, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`);
+  const enSegments = fs.existsSync(enSegPath)
+    ? parseSegments(fs.readFileSync(enSegPath, 'utf-8'))
+    : new Map();
+
   // Load original CNXML
   const originalPath = path.join(BOOKS_DIR, '01-source', chapterDir, `${moduleId}.cnxml`);
   if (!fs.existsSync(originalPath)) {
@@ -1289,7 +1356,7 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   }
   const originalCnxml = fs.readFileSync(originalPath, 'utf-8');
 
-  return { structure, segments, equations, originalCnxml };
+  return { structure, segments, equations, originalCnxml, enSegments };
 }
 
 /**
@@ -1343,12 +1410,18 @@ async function main() {
         console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
       }
 
-      const { structure, segments, equations, originalCnxml } = loadModuleInputs(
+      const { structure, segments, equations, originalCnxml, enSegments } = loadModuleInputs(
         args.chapter,
         moduleId,
         args.lang,
         sourceDir
       );
+
+      // Restore __term__ markers that MT converted to **bold**
+      const { restoredCount } = restoreTermMarkers(segments, enSegments);
+      if (args.verbose && restoredCount > 0) {
+        console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
+      }
 
       const result = buildCnxml(structure, segments, equations, originalCnxml, {
         verbose: args.verbose,
@@ -1386,4 +1459,10 @@ async function main() {
   }
 }
 
-main();
+// Only run main when executed directly (not imported for testing)
+import { fileURLToPath } from 'url';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
+
+export { restoreTermMarkers, parseSegments };

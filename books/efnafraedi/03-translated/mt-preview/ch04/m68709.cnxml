@@ -17,7 +17,7 @@ mynda sameindir, er táknum þeirra breytt eða þau sameinuð til að búa til
 efnaformúlur sem tákna þessar eindir á viðeigandi hátt. Að útvíkka þetta
 táknmál til að tákna bæði auðkenni og hlutfallslegt magn efna sem
 gangast undir efna- (eða eðlis-) breytingu felur í sér að skrifa og
-stilla <emphasis effect="bold">efnajöfnu</emphasis>. Tökum sem dæmi hvarfið milli einnar metansameindar
+stilla <term>efnajöfnu</term>. Tökum sem dæmi hvarfið milli einnar metansameindar
 (CH<sub>4</sub>) og tveggja tvíatóma súrefnissameinda (O<sub>2</sub>) til að mynda eina
 koldíoxíðsameind (CO<sub>2</sub>) og tvær vatnssameindir (H<sub>2</sub>O). Efnajafnan sem
 táknar þetta ferli er sýnd í efri helmingi <link target-id="CNX_Chem_04_01_rxn2"/>, með
@@ -33,16 +33,16 @@ efnajöfnu með formúlum (efst).</caption></figure>
 hvers kyns efnajöfnu:</para>
 <list id="fs-idm9329568" list-type="enumerated" number-style="arabic">
 <item>Efnin sem gangast undir hvarf
-kallast <emphasis effect="bold">hvarfefni</emphasis> og formúlur þeirra eru settar vinstra megin við
+kallast <term>hvarfefni</term> og formúlur þeirra eru settar vinstra megin við
 jöfnuna.</item>
 <item>Efnin sem myndast við hvarfið
-kallast <emphasis effect="bold">myndefni</emphasis> og formúlur þeirra eru settar hægra megin við
+kallast <term>myndefni</term> og formúlur þeirra eru settar hægra megin við
 jöfnuna.</item>
 <item>Plúsmerki (+) aðskilja
 einstakar formúlur hvarfefna og myndefna og ör <m:math><m:mrow><m:mtext>(⟶)</m:mtext></m:mrow></m:math> aðskilur
 hliðar hvarfefna og myndefna (vinstri og hægri) í jöfnunni.</item>
 <item>Hlutfallslegur fjöldi
-hvarfefna- og myndefnaeinda er táknaður með <emphasis effect="bold">stuðlum</emphasis> (tölur sem eru
+hvarfefna- og myndefnaeinda er táknaður með <term>stuðlum</term> (tölur sem eru
 settar strax vinstra megin við hverja formúlu). Stuðullinn 1 er
 yfirleitt sleppt.</item>
 </list>
@@ -77,7 +77,7 @@ koldíoxíðsameindum og <emphasis effect="italics">2 mól</emphasis> af vatnssa
 <section id="fs-idp23923488">
 <title>Að stilla jöfnur</title>
 <para id="fs-idp13839872">Efnajafnan sem lýst er í kafla 4.1 er
-<emphasis effect="bold">stillt</emphasis>, sem þýðir að jafn fjöldi atóma fyrir hvert frumefni sem
+<term>stillt</term>, sem þýðir að jafn fjöldi atóma fyrir hvert frumefni sem
 tekur þátt í hvarfinu er táknaður á hvarfefna- og myndefnahliðunum.
 Þetta er krafa sem jafnan verður að uppfylla til að vera í samræmi við
 lögmálið um varðveislu massans. Það má staðfesta með því einfaldlega að
@@ -444,7 +444,7 @@ blandað saman á sér stað efnahvarf sem myndar vatnslausn af Ca(NO<sub>3</sub
 og fast AgCl:</para>
 <equation id="fs-idp15979216" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>AgNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Ca</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:msub><m:mrow/><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp204481712">Þessi stillta jafna, sem er fengin á
-venjulegan hátt, er kölluð <emphasis effect="bold">sameindajafna</emphasis> vegna þess að hún sýnir
+venjulegan hátt, er kölluð <term>sameindajafna</term> vegna þess að hún sýnir
 ekki berum orðum þær jónategundir sem eru til staðar í lausninni. Þegar
 jónaefni leysast upp í vatni geta þau <emphasis effect="italics">klofnað</emphasis> í jónir sínar, sem
 dreifast síðan einsleitt um lausnina sem myndast (ítarleg umfjöllun um
@@ -456,13 +456,13 @@ tilfelli:</para>
 AgCl ekki upp í vatni að neinu marki, eins og hamur þess, <emphasis effect="italics">s</emphasis>, gefur til
 kynna.</para>
 <para id="fs-idp6577008">Með því að tákna allar uppleystar
-jónir berum orðum fæst <emphasis effect="bold">fullkomin jónajafna</emphasis>. Í þessu tiltekna
+jónir berum orðum fæst <term>fullkomin jónajafna</term>. Í þessu tiltekna
 tilfelli er formúlum fyrir uppleystu jónaefnin skipt út fyrir formúlur
 fyrir klofnu jónirnar þeirra:</para>
 <equation id="fs-idp116409536" class="unnumbered"><m:math><m:mrow><m:msup><m:mtext>Ca</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp146097648">Þegar þessi jafna er skoðuð sést að
 tvær efnatengundir eru til staðar í nákvæmlega sömu mynd beggja vegna
-örvarinnar, Ca<sup>2+</sup>(<emphasis effect="italics">aq</emphasis>) og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Þessar <emphasis effect="bold">áhorfendajónir</emphasis> –
+örvarinnar, Ca<sup>2+</sup>(<emphasis effect="italics">aq</emphasis>) og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Þessar <term>áhorfendajónir</term> –
 jónir sem eru nauðsynlegar til að viðhalda hleðsluhlutleysi – breytast
 hvorki efnafræðilega né eðlisfræðilega í ferlinu og því má fjarlægja þær
 úr jöfnunni til að fá hnitmiðaðri framsetningu sem kallast <emphasis effect="bold">nettó
