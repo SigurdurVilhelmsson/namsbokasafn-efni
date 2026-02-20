@@ -3,245 +3,1224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mín verkefni - Námsbókasafn</title>
+  <title>Heim - Námsbókasafn</title>
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ==========================================================================
+       HOME PAGE — Basalt & Vellum
+       Role-adaptive: editor view + admin oversight panels
+       ========================================================================== */
+
+    /* ========================================
+       WELCOME SECTION
+       ======================================== */
+
+    .welcome-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .welcome-text h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .greeting-subtitle {
+      color: var(--text-secondary);
+      font-size: var(--text-md);
+    }
+
+    .view-toggle .btn {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    /* ========================================
+       ALERT BANNER
+       ======================================== */
+
+    .alert-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem var(--spacing-md);
+      background: var(--warning-subtle);
+      border: 1px solid var(--warning);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-lg);
+      color: var(--warning);
+    }
+
+    .alert-icon { font-size: 1.25rem; }
+    .alert-text { font-weight: 500; }
+
+    /* ========================================
+       BLOCKED ISSUES BANNER
+       ======================================== */
+
+    .blocked-banner {
+      background: var(--error-subtle);
+      border: 2px solid var(--error);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-lg);
+      overflow: hidden;
+    }
+
+    .blocked-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: 0.75rem var(--spacing-md);
+      background: rgba(181,74,74,0.1);
+      border-bottom: 1px solid rgba(181,74,74,0.2);
+    }
+
+    .blocked-icon { font-size: 1.25rem; }
+    .blocked-header strong { color: var(--error); }
+
+    .blocked-count {
+      background: var(--error);
+      color: white;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-full);
+      margin-left: auto;
+    }
+
+    .blocked-list { padding: var(--spacing-sm); }
+
+    .blocked-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .blocked-item:last-child { margin-bottom: 0; }
+
+    .blocked-item-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .blocked-item-location {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .blocked-item-description {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+    }
+
+    .btn-blocked {
+      background: var(--error);
+      color: white;
+      padding: 0.375rem 0.75rem;
+      font-size: var(--text-xs);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      transition: filter var(--transition-fast);
+    }
+
+    .btn-blocked:hover {
+      filter: brightness(1.1);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* ========================================
+       SECTION LABEL (sidebar-style)
+       ======================================== */
+
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .count-badge {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+    }
+
+    /* ========================================
+       CURRENT TASK CARD
+       ======================================== */
+
+    .current-task-section { margin-bottom: var(--spacing-xl); }
+
+    .current-task-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .task-card-content { padding: var(--spacing-lg); }
+
+    .task-card-content.priority-urgent {
+      border-left: 4px solid var(--error);
+      margin-left: -4px;
+    }
+
+    .task-card-content.priority-soon {
+      border-left: 4px solid var(--warning);
+      margin-left: -4px;
+    }
+
+    .task-priority-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) 0.75rem;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .task-priority-badge.badge-changes {
+      background: var(--warning-subtle);
+      color: var(--warning);
+    }
+
+    .task-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+    }
+
+    .meta-stage {
+      background: var(--bg-elevated);
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+    }
+
+    .meta-due { font-weight: 500; }
+    .meta-due.due-overdue { color: var(--error); }
+    .meta-due.due-today { color: var(--warning); }
+    .meta-reviewer { font-style: italic; }
+
+    .task-notes {
+      background: var(--bg-elevated);
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      border-left: 3px solid var(--accent);
+    }
+
+    .task-actions { padding-top: var(--spacing-sm); }
+
+    /* Empty Task State */
+    .empty-task {
+      text-align: center;
+      padding: var(--spacing-2xl) var(--spacing-xl);
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .empty-task h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+    }
+
+    .empty-task p { color: var(--text-secondary); }
+
+    /* ========================================
+       UP NEXT SECTION
+       ======================================== */
+
+    .up-next-section { margin-bottom: var(--spacing-xl); }
+
+    .up-next-list {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .up-next-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: background var(--transition-fast);
+    }
+
+    .up-next-item:last-child { border-bottom: none; }
+    .up-next-item:hover { background: var(--bg-hover); text-decoration: none; }
+    .up-next-item.item-urgent { background: var(--error-subtle); }
+    .up-next-item.item-soon { background: var(--warning-subtle); }
+
+    .item-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .item-title { font-weight: 500; }
+
+    .item-badge {
+      font-size: var(--text-xs);
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+    }
+
+    .item-badge.badge-changes {
+      background: var(--warning-subtle);
+      color: var(--warning);
+    }
+
+    .item-badge.badge-overdue {
+      background: var(--error-subtle);
+      color: var(--error);
+    }
+
+    .item-arrow {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    /* ========================================
+       QUICK STATS
+       ======================================== */
+
+    .quick-stats {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .quick-stat-item {
+      flex: 1;
+      text-align: center;
+      padding: var(--spacing-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .quick-stat-value {
+      display: block;
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .quick-stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--spacing-xs);
+    }
+
+    /* ========================================
+       DETAILED VIEW
+       ======================================== */
+
+    .view-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .view-header h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .summary-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .summary-card.highlight { border-left: 4px solid var(--warning); }
+    .summary-card.highlight-error { border-left: 4px solid var(--error); }
+    .summary-icon { font-size: 1.5rem; margin-bottom: var(--spacing-sm); }
+    .summary-value { font-size: var(--text-2xl); font-weight: 700; color: var(--accent); }
+    .summary-card.warning .summary-value { color: var(--warning); }
+    .summary-label { font-size: var(--text-base); color: var(--text-secondary); }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Card body max height override */
+    .detailed-view .card-body { max-height: 400px; overflow-y: auto; }
+
+    /* Work Items */
+    .work-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .work-item:last-child { border-bottom: none; }
+
+    .work-item.item-attention {
+      background: var(--warning-subtle);
+      margin: 0 -1.25rem;
+      padding: 0.875rem 1.25rem;
+    }
+
+    .work-item-main { flex: 1; }
+
+    .work-item-title {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .work-item-meta {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .work-item-action { margin-left: var(--spacing-md); }
+
+    .book-label { font-weight: 600; color: var(--text-secondary); }
+    .section-label-text { color: var(--text-muted); }
+
+    .review-notes {
+      background: var(--bg-elevated);
+      padding: var(--spacing-sm) 0.75rem;
+      border-radius: var(--radius-sm);
+      margin: var(--spacing-sm) 0;
+      font-size: var(--text-base);
+      border-left: 3px solid var(--warning);
+    }
+
+    /* Term Items */
+    .term-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .term-item:last-child { border-bottom: none; }
+    .term-pair { margin-bottom: var(--spacing-xs); }
+    .term-en { color: var(--text-muted); }
+    .term-arrow { color: var(--text-muted); margin: 0 var(--spacing-sm); }
+    .term-is { font-weight: 500; color: var(--text-primary); }
+    .term-meta { font-size: var(--text-xs); display: flex; gap: 0.75rem; }
+
+    .term-status {
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+    }
+
+    /* Activity Items (editor personal) */
+    .editor-activity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .editor-activity-item:last-child { border-bottom: none; }
+    .editor-activity-icon { font-size: 1rem; }
+    .editor-activity-content { flex: 1; }
+    .editor-activity-desc { display: block; font-size: var(--text-base); }
+    .editor-activity-time { font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* ========================================
+       ADMIN DIVIDER
+       ======================================== */
+
+    .admin-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: var(--spacing-2xl) 0 var(--spacing-xl) 0;
+    }
+
+    .admin-section-header {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* ========================================
+       ADMIN: ATTENTION PANEL
+       ======================================== */
+
+    .attention-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .attention-panel.has-issues {
+      border-left: 4px solid var(--warning);
+    }
+
+    .attention-panel.all-clear {
+      border-left: 4px solid var(--success);
+    }
+
+    .attention-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .attention-header h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .attention-stats {
+      display: flex;
+      gap: var(--spacing-lg);
+    }
+
+    .attention-stat { text-align: center; }
+
+    .attention-stat-value {
+      font-size: var(--text-xl);
+      font-weight: 700;
+    }
+
+    .attention-stat-value.zero { color: var(--success); }
+    .attention-stat-value.warning { color: var(--warning); }
+    .attention-stat-value.danger { color: var(--error); }
+
+    .attention-stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .attention-items {
+      margin-top: var(--spacing-md);
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .attention-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      padding: 0.75rem;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .attention-item:last-child { margin-bottom: 0; }
+
+    .attention-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-base);
+      flex-shrink: 0;
+    }
+
+    .attention-item-icon.overdue { background: var(--error-subtle); color: var(--error); }
+    .attention-item-icon.blocked { background: var(--error-subtle); color: var(--error); }
+    .attention-item-icon.unassigned { background: var(--warning-subtle); color: var(--warning); }
+    .attention-item-icon.review { background: var(--info-subtle); color: var(--info); }
+
+    .attention-item-content { flex: 1; }
+
+    .attention-item-title {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .attention-item-meta {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .attention-item-action {
+      padding: var(--spacing-xs) 0.75rem;
+      font-size: var(--text-xs);
+    }
+
+    /* ========================================
+       ADMIN: WORKLOAD + READY GRID
+       ======================================== */
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Workload table */
+    .workload-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .panel-header h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
+    .workload-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .workload-table th {
+      text-align: left;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--spacing-sm);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .workload-table td {
+      padding: 0.75rem var(--spacing-sm);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+
+    .workload-table tr:last-child td { border-bottom: none; }
+
+    .workload-user {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .workload-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: var(--text-base);
+    }
+
+    .workload-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-elevated);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .workload-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .workload-bar-fill.low { background: var(--success); }
+    .workload-bar-fill.medium { background: var(--warning); }
+    .workload-bar-fill.high { background: var(--error); }
+
+    /* Ready for assignment */
+    .ready-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+    }
+
+    .ready-item {
+      padding: 0.75rem;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-sm);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .ready-item:hover { background: var(--accent-subtle); }
+
+    .ready-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ready-item-title {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .ready-item-stage {
+      font-size: var(--text-xs);
+      padding: 0.125rem var(--spacing-sm);
+      background: var(--success-subtle);
+      color: var(--success);
+      border-radius: var(--radius-sm);
+    }
+
+    .ready-item-meta {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--spacing-xs);
+    }
+
+    /* Stage labels */
+    .stage-label {
+      font-size: var(--text-xs);
+      padding: 0.125rem var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+    }
+
+    .stage-label.enMarkdown { background: var(--accent-subtle); color: var(--accent); }
+    .stage-label.mtOutput { background: var(--warning-subtle); color: var(--warning); }
+    .stage-label.linguisticReview { background: var(--success-subtle); color: var(--success); }
+    .stage-label.tmCreated { background: var(--info-subtle); color: var(--info); }
+    .stage-label.publication { background: var(--error-subtle); color: var(--error); }
+
+    /* ========================================
+       ADMIN: ACTIVITY FEED
+       ======================================== */
+
+    .activity-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .admin-activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .admin-activity-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-sm);
+    }
+
+    .admin-activity-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .admin-activity-content { flex: 1; }
+
+    .admin-activity-text {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+    }
+
+    .admin-activity-time {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    /* Last updated */
+    .last-updated {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    /* ========================================
+       SETTINGS MODAL
+       ======================================== */
+
+    .settings-section-title {
+      margin: 0 0 var(--spacing-xs) 0;
+      font-size: var(--text-md);
+    }
+
+    .settings-description {
+      color: var(--text-muted);
+      font-size: var(--text-base);
+      margin: 0 0 var(--spacing-md) 0;
+    }
+
+    .preference-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .preference-item {
+      padding: var(--spacing-md);
+      background: var(--bg-elevated);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+
+    .preference-info { margin-bottom: 0.75rem; }
+
+    .preference-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-primary);
+    }
+
+    .preference-description {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .preference-toggles {
+      display: flex;
+      gap: var(--spacing-lg);
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      cursor: pointer;
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+    }
+
+    .toggle-label input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+
+    .toggle-text {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+
+    @media (max-width: 1024px) {
+      .admin-grid { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-grid { grid-template-columns: 1fr; }
+      .attention-stats { flex-wrap: wrap; gap: var(--spacing-md); }
+    }
+
+    @media (max-width: 640px) {
+      .welcome-section { flex-direction: column; gap: var(--spacing-md); }
+      .quick-stats { flex-direction: column; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Fara í efni</a>
-  <header class="header">
-    <h1>Námsbókasafn</h1>
-    <nav>
-      <a href="/my-work">Mín verkefni</a>
-      <a href="/segment-editor">Ritstjóri</a>
-      <a href="/status">Framvinda</a>
-      <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
-      <span class="nav-separator admin-only"></span>
-      <a href="/dashboard" class="admin-only">Stjórnborð</a>
-      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" title="Skipta um þema">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
-      </div>
-      <div class="user-info" id="user-info"></div>
-    </div>
-  </header>
+  <main class="page-content" id="main-content" data-page="home" data-title="Heim">
 
-  <main class="container" id="main-content">
+    <!-- ============================================================
+         EDITOR VIEW — shown to all authenticated users
+         ============================================================ -->
+
     <!-- Focus Mode (default) -->
     <div id="focus-view">
+
       <!-- Welcome Section -->
       <div class="welcome-section">
         <div class="welcome-text">
-          <h1 id="greeting">Hleður...</h1>
+          <h1 id="greeting">Hle&#240;ur...</h1>
           <p class="greeting-subtitle" id="greeting-subtitle"></p>
         </div>
         <div class="view-toggle">
           <button class="btn btn-secondary btn-sm" onclick="toggleView('detailed')">
-            <span class="toggle-icon">📋</span> Nákvæmt yfirlit
+            N&aacute;kv&aelig;mt yfirlit
           </button>
         </div>
       </div>
 
-      <!-- Alert Banner (if needed) -->
+      <!-- Alert Banner -->
       <div class="alert-banner" id="alert-banner" style="display: none;">
-        <span class="alert-icon">⚠️</span>
+        <span class="alert-icon">&#9888;</span>
         <span class="alert-text" id="alert-text"></span>
       </div>
 
-      <!-- Blocked Issues Banner (critical - always show first) -->
+      <!-- Blocked Issues Banner -->
       <div class="blocked-banner" id="blocked-banner" style="display: none;">
         <div class="blocked-header">
-          <span class="blocked-icon">🚫</span>
-          <strong>Verk stöðvað</strong>
+          <span class="blocked-icon">&#128683;</span>
+          <strong>Verk st&ouml;&#240;va&#240;</strong>
           <span class="blocked-count" id="blocked-count">0</span>
         </div>
-        <div class="blocked-list" id="blocked-list">
-          <!-- Populated by JS -->
-        </div>
+        <div class="blocked-list" id="blocked-list"></div>
       </div>
 
       <!-- Current Task Card -->
       <div class="current-task-section" id="current-task-section">
-        <h2 class="section-label">Núverandi verkefni</h2>
+        <div class="section-label">N&uacute;verandi verkefni</div>
         <div class="current-task-card" id="current-task-card">
           <div class="loading-state">
-            <p>Hleður verkefnum...</p>
+            <span class="spinner"></span>
+            <span>Hle&#240;ur verkefnum...</span>
           </div>
         </div>
       </div>
 
       <!-- Up Next Section -->
       <div class="up-next-section" id="up-next-section" style="display: none;">
-        <h2 class="section-label">Næst á dagskrá <span class="count-badge" id="up-next-count">0</span></h2>
+        <div class="section-label">N&aelig;st &aacute; dagskr&aacute; <span class="count-badge" id="up-next-count">0</span></div>
         <div class="up-next-list" id="up-next-list"></div>
       </div>
 
       <!-- Quick Stats -->
       <div class="quick-stats" id="quick-stats">
-        <div class="stat-item">
-          <span class="stat-value" id="stat-completed">-</span>
-          <span class="stat-label">Kláruð í vikunni</span>
+        <div class="quick-stat-item">
+          <span class="quick-stat-value" id="stat-completed">-</span>
+          <div class="quick-stat-label">Kl&aacute;ru&#240; &iacute; vikunni</div>
         </div>
-        <div class="stat-item">
-          <span class="stat-value" id="stat-pending">-</span>
-          <span class="stat-label">Bíður yfirferðar</span>
+        <div class="quick-stat-item">
+          <span class="quick-stat-value" id="stat-pending">-</span>
+          <div class="quick-stat-label">B&iacute;&#240;ur yfirfer&#240;ar</div>
         </div>
-        <div class="stat-item">
-          <span class="stat-value" id="stat-terms">-</span>
-          <span class="stat-label">Orðatillögur</span>
+        <div class="quick-stat-item">
+          <span class="quick-stat-value" id="stat-terms">-</span>
+          <div class="quick-stat-label">Or&#240;atill&ouml;gur</div>
         </div>
       </div>
     </div>
 
     <!-- Detailed View (hidden by default) -->
-    <div id="detailed-view" style="display: none;">
-      <!-- View Toggle -->
+    <div id="detailed-view" class="detailed-view" style="display: none;">
       <div class="view-header">
-        <h2>Nákvæmt yfirlit</h2>
+        <h2>N&aacute;kv&aelig;mt yfirlit</h2>
         <button class="btn btn-primary btn-sm" onclick="toggleView('focus')">
-          <span class="toggle-icon">🎯</span> Einbeitt sýn
+          Einbeitt s&yacute;n
         </button>
       </div>
 
       <!-- Summary Cards -->
       <div class="summary-grid" id="summary-grid">
         <div class="summary-card" id="card-pending">
-          <div class="summary-icon">⏳</div>
           <div class="summary-value" id="summary-pending">-</div>
-          <div class="summary-label">Bíður yfirferðar</div>
+          <div class="summary-label">B&iacute;&#240;ur yfirfer&#240;ar</div>
         </div>
         <div class="summary-card warning" id="card-changes">
-          <div class="summary-icon">📝</div>
           <div class="summary-value" id="summary-changes">-</div>
-          <div class="summary-label">Breytingar óskast</div>
+          <div class="summary-label">Breytingar &oacute;skast</div>
         </div>
         <div class="summary-card" id="card-terms">
-          <div class="summary-icon">📖</div>
           <div class="summary-value" id="summary-terms">-</div>
-          <div class="summary-label">Orðatillögur</div>
+          <div class="summary-label">Or&#240;atill&ouml;gur</div>
         </div>
       </div>
 
-      <!-- Main Content Grid -->
+      <!-- Content Grid -->
       <div class="content-grid">
-        <!-- Pending Submissions Section -->
-        <div class="card submissions-card">
+        <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Bíður yfirferðar</h2>
+            <h2 class="card-title" style="margin-bottom:0">B&iacute;&#240;ur yfirfer&#240;ar</h2>
             <span class="badge" id="submissions-badge">0</span>
           </div>
           <div class="card-body" id="submissions-list">
-            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+            <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
           </div>
         </div>
 
-        <!-- Changes Requested Section -->
-        <div class="card changes-card">
+        <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Breytingar óskast</h2>
+            <h2 class="card-title" style="margin-bottom:0">Breytingar &oacute;skast</h2>
             <span class="badge badge-warning" id="changes-badge">0</span>
           </div>
           <div class="card-body" id="changes-list">
-            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+            <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
           </div>
         </div>
 
-        <!-- Terminology Proposals Section -->
-        <div class="card terms-card">
+        <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Orðatillögur þínar</h2>
+            <h2 class="card-title" style="margin-bottom:0">Or&#240;atill&ouml;gur &thorn;&iacute;nar</h2>
             <span class="badge" id="terms-badge">0</span>
           </div>
           <div class="card-body" id="terms-list">
-            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+            <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
           </div>
           <div class="card-footer">
-            <a href="/terminology" class="btn btn-secondary btn-sm">Sjá orðasafn</a>
+            <a href="/terminology" class="btn btn-secondary btn-sm">Sj&aacute; or&#240;asafn</a>
           </div>
         </div>
       </div>
 
-      <!-- Recent Activity -->
-      <div class="card activity-card">
+      <!-- Recent Personal Activity -->
+      <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Nýleg virkni þín</h2>
+          <h2 class="card-title" style="margin-bottom:0">N&yacute;leg virkni &thorn;&iacute;n</h2>
         </div>
-        <div class="card-body" id="activity-list">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+        <div class="card-body" id="editor-activity-list">
+          <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
         </div>
       </div>
     </div>
+
+    <!-- ============================================================
+         ADMIN VIEW — shown only to admin/head-editor below editor view
+         ============================================================ -->
+
+    <div id="admin-view" style="display: none;">
+      <hr class="admin-divider">
+      <div class="admin-section-header">Stj&oacute;rnun &amp; yfirlit</div>
+
+      <!-- Attention Panel -->
+      <div class="attention-panel" id="attention-panel">
+        <div class="attention-header">
+          <h3>&THORN;arfnast athygli</h3>
+          <div class="attention-stats" id="attention-stats"></div>
+        </div>
+        <div class="attention-items" id="attention-items">
+          <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+        </div>
+      </div>
+
+      <!-- Workload + Ready Grid -->
+      <div class="admin-grid">
+        <!-- Editor Workload -->
+        <div class="workload-panel">
+          <div class="panel-header">
+            <h3>Vinnu&aacute;lag ritstj&oacute;ra</h3>
+          </div>
+          <table class="workload-table" id="workload-table">
+            <thead>
+              <tr>
+                <th>Ritstj&oacute;ri</th>
+                <th>Virk</th>
+                <th>T&iacute;mafrestur</th>
+                <th>&Aacute;lag</th>
+              </tr>
+            </thead>
+            <tbody id="workload-body">
+              <tr>
+                <td colspan="4">
+                  <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Ready for Assignment -->
+        <div class="ready-panel">
+          <div class="panel-header">
+            <h3>Tilb&uacute;i&#240; til &uacute;thlutunar</h3>
+          </div>
+          <div id="ready-list">
+            <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Activity Feed -->
+      <div class="activity-panel">
+        <div class="panel-header">
+          <h3>N&yacute;leg virkni teymis</h3>
+          <div style="display:flex;align-items:center;gap:var(--spacing-md)">
+            <span class="last-updated" id="last-updated"></span>
+            <a href="/progress" class="btn btn-sm btn-secondary">Sj&aacute; allt</a>
+          </div>
+        </div>
+        <div class="admin-activity-list" id="admin-activity-list">
+          <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- Settings Modal -->
   <div class="modal" role="dialog" aria-modal="true" id="settings-modal" style="display: none;">
     <div class="modal-content">
       <div class="modal-header">
-        <h3><i class="fas fa-cog"></i> Stillingar</h3>
+        <h3>Stillingar</h3>
         <button class="btn-close" onclick="closeSettingsModal()">&times;</button>
       </div>
       <div class="modal-body">
         <h4 class="settings-section-title">Tilkynningar</h4>
-        <p class="settings-description">Veldu hvers konar tilkynningar þú vilt fá.</p>
-
+        <p class="settings-description">Veldu hvers konar tilkynningar &thorn;&uacute; vilt f&aacute;.</p>
         <div class="preference-list" id="preference-list">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+          <div class="loading-state"><span class="spinner"></span><span>Hle&#240;ur...</span></div>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeSettingsModal()">Hætta við</button>
-        <button class="btn btn-primary" onclick="savePreferences()">
-          <i class="fas fa-save"></i> Vista
-        </button>
+        <button class="btn btn-secondary" onclick="closeSettingsModal()">H&aelig;tta vi&#240;</button>
+        <button class="btn btn-primary" onclick="savePreferences()">Vista</button>
       </div>
     </div>
   </div>
 
-    <script src="/js/htmlUtils.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/htmlUtils.js"></script>
   <script>
+    // ========================================================================
+    // HOME PAGE — Merged my-work + dashboard JavaScript
+    // ========================================================================
+
     let todayData = null;
     let notificationPreferences = null;
     let detailedData = null;
     let currentView = 'focus';
+    let adminRefreshInterval = null;
 
-    async function init() {
-      // Check auth
-      const authRes = await fetch('/api/auth/me');
-      const authData = await authRes.json();
-      const userEl = document.getElementById('user-info');
+    // Stage label translations (from dashboard)
+    const STAGE_LABELS = {
+      'enMarkdown': 'EN Markdown',
+      'mtOutput': 'Vélþýðing',
+      'linguisticReview': 'Yfirferð 1',
+      'tmCreated': 'Þýðingaminni',
+      'publication': 'Útgáfa'
+    };
 
-      if (!authData.authenticated) {
-        userEl.innerHTML = '<a href="/api/auth/login?redirect=/my-work" class="btn btn-primary">Innskráning</a>';
-        document.getElementById('greeting').textContent = 'Vinsamlegast skráðu þig inn';
-        document.getElementById('current-task-card').innerHTML = `
-          <div class="empty-state">
-            <p>Skráðu þig inn til að sjá verkefnin þín</p>
-          </div>
-        `;
-        return;
+    // ========================================================================
+    // INITIALIZATION — listens for layout.js userLoaded event
+    // ========================================================================
+
+    window.addEventListener('userLoaded', function(e) {
+      const user = e.detail;
+
+      // Load editor data for all users
+      loadEditorData(user);
+
+      // Show admin panels for admin/head-editor
+      if (['admin', 'head-editor'].includes(user.role)) {
+        document.getElementById('admin-view').style.display = '';
+        loadAdminData();
+        // Auto-refresh admin data every 2 minutes
+        adminRefreshInterval = setInterval(loadAdminData, 120000);
       }
+    });
 
-      userEl.innerHTML = `
-        <button class="btn-icon settings-btn" onclick="openSettingsModal()" title="Stillingar">
-          <i class="fas fa-cog"></i>
-        </button>
-        <img src="${authData.user.avatar}" alt="">
-        <span>${authData.user.name}</span>
-      `;
+    // Fallback: if user is not authenticated, show login prompt
+    // Give layout.js a moment, then check
+    setTimeout(function() {
+      if (!window.currentUser) {
+        var greetingEl = document.getElementById('greeting');
+        if (greetingEl && greetingEl.textContent.indexOf('Hleður') !== -1) {
+          greetingEl.textContent = 'Vinsamlegast skráðu þig inn';
+          document.getElementById('current-task-card').innerHTML =
+            '<div class="empty-state"><p>Skráðu þig inn til að sjá verkefnin þín</p></div>';
+        }
+      }
+    }, 3000);
 
-      // Load focus view data
-      await loadTodayView();
+    // ========================================================================
+    // EDITOR DATA LOADING
+    // ========================================================================
+
+    async function loadEditorData(user) {
+      await loadTodayView(user);
     }
 
-    async function loadTodayView() {
+    async function loadTodayView(user) {
       try {
         const res = await fetch('/api/my-work/today');
         todayData = await res.json();
@@ -254,14 +1233,19 @@
         else if (hour < 18) greeting = 'Góðan daginn';
         else greeting = 'Gott kvöld';
 
-        document.getElementById('greeting').textContent = `${greeting}, ${todayData.user.name}`;
+        const displayName = todayData.user ? todayData.user.name : (user ? user.name : '');
+        document.getElementById('greeting').textContent = greeting + ', ' + displayName;
 
         // Update subtitle based on task count
-        const subtitle = todayData.quickStats.totalTasks === 0
-          ? 'Engin verkefni í dag - vel gert!'
-          : todayData.quickStats.totalTasks === 1
-            ? 'Þú ert með 1 verkefni'
-            : `Þú ert með ${todayData.quickStats.totalTasks} verkefni`;
+        var totalTasks = todayData.quickStats ? todayData.quickStats.totalTasks : 0;
+        var subtitle;
+        if (totalTasks === 0) {
+          subtitle = 'Engin verkefni í dag \u2013 vel gert!';
+        } else if (totalTasks === 1) {
+          subtitle = 'Þú ert með 1 verkefni';
+        } else {
+          subtitle = 'Þú ert með ' + totalTasks + ' verkefni';
+        }
         document.getElementById('greeting-subtitle').textContent = subtitle;
 
         // Show blocked issues banner (highest priority)
@@ -270,20 +1254,20 @@
         }
 
         // Show alert if needed
-        if (todayData.needsAttention.length > 0) {
-          const alertBanner = document.getElementById('alert-banner');
-          const alertText = document.getElementById('alert-text');
+        if (todayData.needsAttention && todayData.needsAttention.length > 0) {
+          var alertBanner = document.getElementById('alert-banner');
+          var alertText = document.getElementById('alert-text');
 
-          const overdue = todayData.quickStats.overdue;
-          const changes = todayData.quickStats.changesRequested;
+          var overdue = todayData.quickStats.overdue;
+          var changes = todayData.quickStats.changesRequested;
 
-          let alertMsg = '';
+          var alertMsg = '';
           if (overdue > 0 && changes > 0) {
-            alertMsg = `${overdue} verkefni yfir tíma og ${changes} með óskum um breytingar`;
+            alertMsg = overdue + ' verkefni yfir tíma og ' + changes + ' með óskum um breytingar';
           } else if (overdue > 0) {
-            alertMsg = `${overdue} ${overdue === 1 ? 'verkefni er' : 'verkefni eru'} yfir tíma`;
+            alertMsg = overdue + (overdue === 1 ? ' verkefni er' : ' verkefni eru') + ' yfir tíma';
           } else if (changes > 0) {
-            alertMsg = `${changes} ${changes === 1 ? 'verkefni þarfnast' : 'verkefni þarfnast'} lagfæringa`;
+            alertMsg = changes + ' verkefni þarfnast lagfæringa';
           }
 
           if (alertMsg) {
@@ -299,9 +1283,11 @@
         renderUpNext(todayData.upNext);
 
         // Update quick stats
-        document.getElementById('stat-completed').textContent = todayData.quickStats.completedThisWeek;
-        document.getElementById('stat-pending').textContent = todayData.quickStats.pendingReview;
-        document.getElementById('stat-terms').textContent = todayData.quickStats.proposedTerms;
+        if (todayData.quickStats) {
+          document.getElementById('stat-completed').textContent = todayData.quickStats.completedThisWeek;
+          document.getElementById('stat-pending').textContent = todayData.quickStats.pendingReview;
+          document.getElementById('stat-terms').textContent = todayData.quickStats.proposedTerms;
+        }
 
       } catch (err) {
         console.error('Failed to load today view:', err);
@@ -309,62 +1295,67 @@
       }
     }
 
+    // ========================================================================
+    // CURRENT TASK RENDERING
+    // ========================================================================
+
     function renderCurrentTask(task) {
-      const container = document.getElementById('current-task-card');
+      var container = document.getElementById('current-task-card');
 
       if (!task) {
-        container.innerHTML = `
-          <div class="empty-task">
-            <div class="empty-icon">🎉</div>
-            <h3>Ekkert verkefni í dag!</h3>
-            <p>Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutanum.</p>
-          </div>
-        `;
+        container.innerHTML =
+          '<div class="empty-task">' +
+            '<div class="empty-icon">\uD83C\uDF89</div>' +
+            '<h3>Ekkert verkefni í dag!</h3>' +
+            '<p>Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutanum.</p>' +
+          '</div>';
         return;
       }
 
-      const isChangesRequested = task.type === 'changes_requested';
-      const priorityClass = task.priority === 1 ? 'priority-urgent' : task.priority === 2 ? 'priority-soon' : '';
+      var isChangesRequested = task.type === 'changes_requested';
+      var priorityClass = task.priority === 1 ? 'priority-urgent' : task.priority === 2 ? 'priority-soon' : '';
 
-      let taskTitle = '';
-      let taskMeta = '';
+      var taskTitle = '';
+      var taskMeta = '';
 
       if (isChangesRequested) {
-        taskTitle = `${task.bookLabel} - Kafli ${task.chapter}, ${task.section}`;
-        taskMeta = `<span class="meta-reviewer">Athugasemdir frá ${escapeHtml(task.reviewedBy)}</span>`;
+        taskTitle = task.bookLabel + ' - Kafli ' + task.chapter + ', ' + task.section;
+        taskMeta = '<span class="meta-reviewer">Athugasemdir frá ' + escapeHtml(task.reviewedBy) + '</span>';
       } else {
-        taskTitle = `${task.bookLabel} - Kafli ${task.chapter}`;
-        taskMeta = `<span class="meta-stage">${escapeHtml(task.stageLabel)}</span>`;
+        taskTitle = task.bookLabel + ' - Kafli ' + task.chapter;
+        taskMeta = '<span class="meta-stage">' + escapeHtml(task.stageLabel) + '</span>';
         if (task.dueDate) {
-          const dueDateClass = task.dueDate.status === 'overdue' ? 'due-overdue' :
-                               task.dueDate.status === 'today' ? 'due-today' : '';
-          taskMeta += ` <span class="meta-due ${dueDateClass}">${task.priorityLabel}</span>`;
+          var dueDateClass = task.dueDate.status === 'overdue' ? 'due-overdue' :
+                             task.dueDate.status === 'today' ? 'due-today' : '';
+          taskMeta += ' <span class="meta-due ' + dueDateClass + '">' + task.priorityLabel + '</span>';
         }
       }
 
-      container.innerHTML = `
-        <div class="task-card-content ${priorityClass}">
-          <div class="task-priority-badge ${isChangesRequested ? 'badge-changes' : ''}">
-            ${isChangesRequested ? '📝 Breytingar óskast' : '📋 ' + task.priorityLabel}
-          </div>
-          <h3 class="task-title">${escapeHtml(taskTitle)}</h3>
-          <div class="task-meta">${taskMeta}</div>
-          ${task.notes ? `<div class="task-notes">${escapeHtml(task.notes)}</div>` : ''}
-          <div class="task-actions">
-            <a href="${task.editorUrl}" class="btn btn-primary btn-large">
-              <span class="btn-icon">✏️</span>
-              ${isChangesRequested ? 'Laga nú' : 'Byrja að vinna'}
-            </a>
-          </div>
-        </div>
-      `;
+      container.innerHTML =
+        '<div class="task-card-content ' + priorityClass + '">' +
+          '<div class="task-priority-badge ' + (isChangesRequested ? 'badge-changes' : '') + '">' +
+            (isChangesRequested ? 'Breytingar óskast' : task.priorityLabel) +
+          '</div>' +
+          '<h3 class="task-title">' + escapeHtml(taskTitle) + '</h3>' +
+          '<div class="task-meta">' + taskMeta + '</div>' +
+          (task.notes ? '<div class="task-notes">' + escapeHtml(task.notes) + '</div>' : '') +
+          '<div class="task-actions">' +
+            '<a href="' + task.editorUrl + '" class="btn btn-primary btn-large">' +
+              (isChangesRequested ? 'Laga nú' : 'Byrja að vinna') +
+            '</a>' +
+          '</div>' +
+        '</div>';
     }
 
+    // ========================================================================
+    // UP NEXT RENDERING
+    // ========================================================================
+
     function renderUpNext(tasks) {
-      const section = document.getElementById('up-next-section');
-      const container = document.getElementById('up-next-list');
-      const countBadge = document.getElementById('up-next-count');
-      const INITIAL_SHOW = 3;
+      var section = document.getElementById('up-next-section');
+      var container = document.getElementById('up-next-list');
+      var countBadge = document.getElementById('up-next-count');
+      var INITIAL_SHOW = 3;
 
       if (!tasks || tasks.length === 0) {
         section.style.display = 'none';
@@ -374,66 +1365,107 @@
       section.style.display = 'block';
       countBadge.textContent = tasks.length;
 
-      const renderTask = (task) => {
-        const isChangesRequested = task.type === 'changes_requested';
-        const priorityClass = task.priority === 1 ? 'item-urgent' : task.priority === 2 ? 'item-soon' : '';
+      var renderTask = function(task) {
+        var isChangesRequested = task.type === 'changes_requested';
+        var priorityClass = task.priority === 1 ? 'item-urgent' : task.priority === 2 ? 'item-soon' : '';
 
-        let title = isChangesRequested
-          ? `${task.bookLabel} K${task.chapter}/${task.section}`
-          : `${task.bookLabel} - Kafli ${task.chapter}`;
+        var title = isChangesRequested
+          ? task.bookLabel + ' K' + task.chapter + '/' + task.section
+          : task.bookLabel + ' - Kafli ' + task.chapter;
 
-        let badge = isChangesRequested
+        var badge = isChangesRequested
           ? '<span class="item-badge badge-changes">Laga</span>'
           : task.dueDate
-            ? `<span class="item-badge ${task.dueDate.status === 'overdue' ? 'badge-overdue' : ''}">${task.priorityLabel}</span>`
-            : `<span class="item-badge">${task.stageLabel}</span>`;
+            ? '<span class="item-badge ' + (task.dueDate.status === 'overdue' ? 'badge-overdue' : '') + '">' + task.priorityLabel + '</span>'
+            : '<span class="item-badge">' + task.stageLabel + '</span>';
 
-        return `
-          <a href="${task.editorUrl}" class="up-next-item ${priorityClass}">
-            <div class="item-content">
-              <span class="item-title">${escapeHtml(title)}</span>
-              ${badge}
-            </div>
-            <span class="item-arrow">→</span>
-          </a>
-        `;
+        return '<a href="' + task.editorUrl + '" class="up-next-item ' + priorityClass + '">' +
+          '<div class="item-content">' +
+            '<span class="item-title">' + escapeHtml(title) + '</span>' +
+            badge +
+          '</div>' +
+          '<span class="item-arrow">\u2192</span>' +
+        '</a>';
       };
 
-      const visibleTasks = tasks.slice(0, INITIAL_SHOW);
-      const hiddenTasks = tasks.slice(INITIAL_SHOW);
+      var visibleTasks = tasks.slice(0, INITIAL_SHOW);
+      var hiddenTasks = tasks.slice(INITIAL_SHOW);
 
-      let html = visibleTasks.map(renderTask).join('');
+      var html = visibleTasks.map(renderTask).join('');
 
       if (hiddenTasks.length > 0) {
-        html += `
-          <div class="accordion collapsed" id="up-next-more-accordion">
-            <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('up-next-more-accordion')">
-              <div class="accordion-header-left">
-                <span class="accordion-toggle">▼</span>
-                <span>Sýna ${hiddenTasks.length} fleiri verkefni</span>
-              </div>
-            </button>
-            <div class="accordion-body">
-              ${hiddenTasks.map(renderTask).join('')}
-            </div>
-          </div>
-        `;
+        html +=
+          '<div class="accordion collapsed" id="up-next-more-accordion">' +
+            '<button class="accordion-header" aria-expanded="true" onclick="toggleAccordion(\'up-next-more-accordion\')">' +
+              '<div class="accordion-header-left">' +
+                '<span class="accordion-toggle">\u25BC</span>' +
+                '<span>Sýna ' + hiddenTasks.length + ' fleiri verkefni</span>' +
+              '</div>' +
+            '</button>' +
+            '<div class="accordion-body">' +
+              hiddenTasks.map(renderTask).join('') +
+            '</div>' +
+          '</div>';
       }
 
       container.innerHTML = html;
     }
 
-    // Toggle accordion open/closed
-    function toggleAccordion(accordionId) {
-      const accordion = document.getElementById(accordionId);
-      if (accordion) {
-        accordion.classList.toggle('collapsed');
+    // ========================================================================
+    // BLOCKED ISSUES BANNER
+    // ========================================================================
+
+    function renderBlockedBanner(blockedIssues) {
+      var banner = document.getElementById('blocked-banner');
+      var countEl = document.getElementById('blocked-count');
+      var listEl = document.getElementById('blocked-list');
+
+      if (!blockedIssues || blockedIssues.length === 0) {
+        banner.style.display = 'none';
+        return;
       }
+
+      countEl.textContent = blockedIssues.length;
+
+      listEl.innerHTML = blockedIssues.map(function(issue) {
+        return '<div class="blocked-item">' +
+          '<div class="blocked-item-main">' +
+            '<span class="blocked-item-location">' +
+              escapeHtml(issue.bookLabel) + ' - Kafli ' + issue.chapter +
+            '</span>' +
+            '<span class="blocked-item-description">' + escapeHtml(issue.description) + '</span>' +
+          '</div>' +
+          '<a href="/issues?id=' + issue.id + '" class="btn-blocked">Sjá atriði</a>' +
+        '</div>';
+      }).join('');
+
+      banner.style.display = 'block';
     }
 
-    // ========================================
+    // ========================================================================
+    // VIEW TOGGLE (focus / detailed)
+    // ========================================================================
+
+    function toggleView(view) {
+      currentView = view;
+      var focusView = document.getElementById('focus-view');
+      var detailedView = document.getElementById('detailed-view');
+
+      if (view === 'focus') {
+        focusView.style.display = 'block';
+        detailedView.style.display = 'none';
+      } else {
+        focusView.style.display = 'none';
+        detailedView.style.display = 'block';
+        loadDetailedView();
+      }
+
+      localStorage.setItem('myWorkView', view);
+    }
+
+    // ========================================================================
     // DETAILED VIEW (Legacy)
-    // ========================================
+    // ========================================================================
 
     async function loadDetailedView() {
       if (detailedData) {
@@ -442,7 +1474,7 @@
       }
 
       try {
-        const res = await fetch('/api/my-work');
+        var res = await fetch('/api/my-work');
         detailedData = await res.json();
         renderDetailedView();
       } catch (err) {
@@ -465,238 +1497,413 @@
       if (detailedData.summary.changesRequestedCount > 0) {
         document.getElementById('card-changes').classList.add('highlight');
       }
+
       // Render lists
       renderSubmissions(detailedData.pendingSubmissions);
-      renderChangesRequested(detailedData.recentReviews.filter(r => r.status === 'changes_requested'));
+      renderChangesRequested(detailedData.recentReviews.filter(function(r) { return r.status === 'changes_requested'; }));
       renderTerms(detailedData.proposedTerms);
-      renderActivity(detailedData.recentActivity);
+      renderEditorActivity(detailedData.recentActivity);
     }
 
     function renderSubmissions(submissions) {
-      const container = document.getElementById('submissions-list');
+      var container = document.getElementById('submissions-list');
 
       if (submissions.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <p>Engin verkefni bíða yfirferðar</p>
-          </div>
-        `;
+        container.innerHTML = '<div class="empty-state"><p>Engin verkefni bíða yfirferðar</p></div>';
         return;
       }
 
-      container.innerHTML = submissions.map(s => `
-        <div class="work-item">
-          <div class="work-item-main">
-            <div class="work-item-title">
-              <span class="book-label">${escapeHtml(s.bookLabel)}</span>
-              <span class="section-label">Kafli ${s.chapter}, hluti ${s.section}</span>
-            </div>
-            <div class="work-item-meta">
-              <span class="submitted-at">Sent ${formatDate(s.submittedAt)}</span>
-              <span class="days-pending ${s.daysPending > 3 ? 'text-warning' : ''}">
-                (${s.daysPending} ${s.daysPending === 1 ? 'dagur' : 'dagar'} síðan)
-              </span>
-            </div>
-          </div>
-          <div class="work-item-action">
-            <a href="${s.editorUrl}" class="btn btn-secondary btn-sm">Skoða</a>
-          </div>
-        </div>
-      `).join('');
+      container.innerHTML = submissions.map(function(s) {
+        return '<div class="work-item">' +
+          '<div class="work-item-main">' +
+            '<div class="work-item-title">' +
+              '<span class="book-label">' + escapeHtml(s.bookLabel) + '</span>' +
+              '<span class="section-label-text">Kafli ' + s.chapter + ', hluti ' + s.section + '</span>' +
+            '</div>' +
+            '<div class="work-item-meta">' +
+              '<span>Sent ' + formatDate(s.submittedAt) + '</span>' +
+              '<span class="' + (s.daysPending > 3 ? 'text-warning' : '') + '">' +
+                '(' + s.daysPending + (s.daysPending === 1 ? ' dagur' : ' dagar') + ' síðan)' +
+              '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="work-item-action">' +
+            '<a href="' + s.editorUrl + '" class="btn btn-secondary btn-sm">Skoða</a>' +
+          '</div>' +
+        '</div>';
+      }).join('');
     }
 
     function renderChangesRequested(reviews) {
-      const container = document.getElementById('changes-list');
+      var container = document.getElementById('changes-list');
 
       if (reviews.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <p class="text-success">Engar breytingar óskast</p>
-          </div>
-        `;
+        container.innerHTML = '<div class="empty-state"><p class="text-success">Engar breytingar óskast</p></div>';
         return;
       }
 
-      container.innerHTML = reviews.map(r => `
-        <div class="work-item item-attention">
-          <div class="work-item-main">
-            <div class="work-item-title">
-              <span class="book-label">${escapeHtml(r.bookLabel)}</span>
-              <span class="section-label">Kafli ${r.chapter}, hluti ${r.section}</span>
-            </div>
-            ${r.notes ? `<div class="review-notes"><strong>Athugasemd:</strong> ${escapeHtml(r.notes)}</div>` : ''}
-            <div class="work-item-meta">
-              <span class="reviewed-by">Frá ${escapeHtml(r.reviewedBy)}</span>
-              <span class="reviewed-at">${formatDate(r.reviewedAt)}</span>
-            </div>
-          </div>
-          <div class="work-item-action">
-            <a href="${r.editorUrl}" class="btn btn-primary btn-sm">Laga</a>
-          </div>
-        </div>
-      `).join('');
+      container.innerHTML = reviews.map(function(r) {
+        return '<div class="work-item item-attention">' +
+          '<div class="work-item-main">' +
+            '<div class="work-item-title">' +
+              '<span class="book-label">' + escapeHtml(r.bookLabel) + '</span>' +
+              '<span class="section-label-text">Kafli ' + r.chapter + ', hluti ' + r.section + '</span>' +
+            '</div>' +
+            (r.notes ? '<div class="review-notes"><strong>Athugasemd:</strong> ' + escapeHtml(r.notes) + '</div>' : '') +
+            '<div class="work-item-meta">' +
+              '<span>Frá ' + escapeHtml(r.reviewedBy) + '</span>' +
+              '<span>' + formatDate(r.reviewedAt) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="work-item-action">' +
+            '<a href="' + r.editorUrl + '" class="btn btn-primary btn-sm">Laga</a>' +
+          '</div>' +
+        '</div>';
+      }).join('');
     }
 
     function renderTerms(terms) {
-      const container = document.getElementById('terms-list');
+      var container = document.getElementById('terms-list');
 
       if (terms.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <p>Engar orðatillögur í bið</p>
-          </div>
-        `;
+        container.innerHTML = '<div class="empty-state"><p>Engar orðatillögur í bið</p></div>';
         return;
       }
 
-      container.innerHTML = terms.map(t => `
-        <div class="term-item">
-          <div class="term-pair">
-            <span class="term-en">${escapeHtml(t.english)}</span>
-            <span class="term-arrow">→</span>
-            <span class="term-is">${escapeHtml(t.icelandic)}</span>
-          </div>
-          <div class="term-meta">
-            <span class="term-status status-${t.status}">${getStatusLabel(t.status)}</span>
-            ${t.discussionCount > 0 ? `<span class="term-discussions">${t.discussionCount} athugasemdir</span>` : ''}
-          </div>
-        </div>
-      `).join('');
+      container.innerHTML = terms.map(function(t) {
+        return '<div class="term-item">' +
+          '<div class="term-pair">' +
+            '<span class="term-en">' + escapeHtml(t.english) + '</span>' +
+            '<span class="term-arrow">\u2192</span>' +
+            '<span class="term-is">' + escapeHtml(t.icelandic) + '</span>' +
+          '</div>' +
+          '<div class="term-meta">' +
+            '<span class="term-status status-' + t.status + '">' + getStatusLabel(t.status) + '</span>' +
+            (t.discussionCount > 0 ? '<span>' + t.discussionCount + ' athugasemdir</span>' : '') +
+          '</div>' +
+        '</div>';
+      }).join('');
     }
 
-    function renderActivity(activities) {
-      const container = document.getElementById('activity-list');
+    function renderEditorActivity(activities) {
+      var container = document.getElementById('editor-activity-list');
 
       if (!activities || activities.length === 0) {
-        container.innerHTML = `<div class="empty-state"><p class="text-muted">Engin virkni skráð enn.</p></div>`;
+        container.innerHTML = '<div class="empty-state"><p>Engin virkni skráð enn.</p></div>';
         return;
       }
 
-      container.innerHTML = activities.map(a => `
-        <div class="activity-item">
-          <span class="activity-icon">${getActivityIcon(a.type)}</span>
-          <div class="activity-content">
-            <span class="activity-desc">${escapeHtml(a.description)}</span>
-            <span class="activity-time">${formatTimeAgo(a.created_at)}</span>
-          </div>
-        </div>
-      `).join('');
+      container.innerHTML = activities.map(function(a) {
+        return '<div class="editor-activity-item">' +
+          '<span class="editor-activity-icon">' + getActivityIcon(a.type) + '</span>' +
+          '<div class="editor-activity-content">' +
+            '<span class="editor-activity-desc">' + escapeHtml(a.description) + '</span>' +
+            '<span class="editor-activity-time">' + formatTimeAgo(a.created_at) + '</span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
     }
 
-    // ========================================
-    // VIEW TOGGLE
-    // ========================================
+    // ========================================================================
+    // ADMIN DATA LOADING (from dashboard.html)
+    // ========================================================================
 
-    function toggleView(view) {
-      currentView = view;
-      const focusView = document.getElementById('focus-view');
-      const detailedView = document.getElementById('detailed-view');
+    async function loadAdminData() {
+      try {
+        var response = await fetch('/api/status/dashboard');
+        if (!response.ok) throw new Error('Failed to load dashboard');
+        var data = await response.json();
 
-      if (view === 'focus') {
-        focusView.style.display = 'block';
-        detailedView.style.display = 'none';
-      } else {
-        focusView.style.display = 'none';
-        detailedView.style.display = 'block';
-        loadDetailedView();
+        renderAttentionPanel(data.needsAttention, data.overdueItems);
+        renderWorkload(data.workload);
+        renderReadyList(data.readyForAssignment);
+        renderAdminActivity(data.teamActivity);
+
+        document.getElementById('last-updated').textContent =
+          'Uppfært: ' + new Date().toLocaleTimeString('is-IS');
+      } catch (err) {
+        console.error('Dashboard error:', err);
       }
-
-      // Store preference
-      localStorage.setItem('myWorkView', view);
     }
 
-    // ========================================
-    // HELPER FUNCTIONS
-    // ========================================
-    function formatDate(dateStr) {
-      if (!dateStr) return '';
-      return new Date(dateStr).toLocaleDateString('is-IS');
-    }
+    // ========================================================================
+    // ADMIN: ATTENTION PANEL
+    // ========================================================================
 
-    function formatTimeAgo(dateStr) {
-      if (!dateStr) return '';
-      const date = new Date(dateStr);
-      const now = new Date();
-      const diffMs = now - date;
-      const diffMins = Math.floor(diffMs / 60000);
-      const diffHours = Math.floor(diffMs / 3600000);
-      const diffDays = Math.floor(diffMs / 86400000);
+    function renderAttentionPanel(attention, overdueItems) {
+      var panel = document.getElementById('attention-panel');
+      var statsEl = document.getElementById('attention-stats');
+      var itemsEl = document.getElementById('attention-items');
 
-      if (diffMins < 1) return 'Rétt í þessu';
-      if (diffMins < 60) return `${diffMins} mín síðan`;
-      if (diffHours < 24) return `${diffHours} klst síðan`;
-      if (diffDays === 1) return 'Í gær';
-      if (diffDays < 7) return `${diffDays} dögum síðan`;
-      return formatDate(dateStr);
-    }
+      var totalIssues = attention.overdueCount + attention.blockedIssues +
+                       attention.unassignedWork + attention.pendingReviews;
 
-    function getDueDateText(dueInfo) {
-      if (!dueInfo) return '';
-      if (dueInfo.status === 'overdue') {
-        const days = Math.abs(dueInfo.daysUntil);
-        return `${days} ${days === 1 ? 'dagur' : 'dagar'} yfir tíma!`;
-      }
-      if (dueInfo.status === 'today') return 'Skiladagur í dag!';
-      if (dueInfo.status === 'soon') {
-        return `${dueInfo.daysUntil} ${dueInfo.daysUntil === 1 ? 'dagur' : 'dagar'} eftir`;
-      }
-      return `Skiladagur: ${dueInfo.formatted}`;
-    }
+      panel.className = totalIssues > 0 ? 'attention-panel has-issues' : 'attention-panel all-clear';
 
-    function getStatusLabel(status) {
-      const labels = {
-        'proposed': 'Í bið',
-        'needs_review': 'Þarf yfirferð',
-        'approved': 'Samþykkt',
-        'disputed': 'Deilt um'
-      };
-      return labels[status] || status;
-    }
+      statsEl.innerHTML =
+        '<div class="attention-stat">' +
+          '<div class="attention-stat-value ' + (attention.overdueCount > 0 ? 'danger' : 'zero') + '">' +
+            attention.overdueCount +
+          '</div>' +
+          '<div class="attention-stat-label">Tímafrestur</div>' +
+        '</div>' +
+        '<div class="attention-stat">' +
+          '<div class="attention-stat-value ' + (attention.blockedIssues > 0 ? 'danger' : 'zero') + '">' +
+            attention.blockedIssues +
+          '</div>' +
+          '<div class="attention-stat-label">Lokað</div>' +
+        '</div>' +
+        '<div class="attention-stat">' +
+          '<div class="attention-stat-value ' + (attention.unassignedWork > 0 ? 'warning' : 'zero') + '">' +
+            attention.unassignedWork +
+          '</div>' +
+          '<div class="attention-stat-label">Óúthlutað</div>' +
+        '</div>' +
+        '<div class="attention-stat">' +
+          '<div class="attention-stat-value ' + (attention.pendingReviews > 0 ? 'warning' : 'zero') + '">' +
+            attention.pendingReviews +
+          '</div>' +
+          '<div class="attention-stat-label">Í bið</div>' +
+        '</div>';
 
-    function getActivityIcon(type) {
-      const icons = {
-        'edit': '✏️', 'submit': '📤', 'approve': '✅', 'reject': '❌',
-        'term_propose': '📖', 'term_approve': '✓', 'assign': '👤'
-      };
-      return icons[type] || '📌';
-    }
-
-    // ========================================
-    // BLOCKED ISSUES BANNER
-    // ========================================
-
-    function renderBlockedBanner(blockedIssues) {
-      const banner = document.getElementById('blocked-banner');
-      const countEl = document.getElementById('blocked-count');
-      const listEl = document.getElementById('blocked-list');
-
-      if (!blockedIssues || blockedIssues.length === 0) {
-        banner.style.display = 'none';
+      // Render items
+      if (attention.items.length === 0) {
+        itemsEl.innerHTML =
+          '<div class="empty-state">' +
+            '<p style="color:var(--success)">Ekkert þarfnast athygli!</p>' +
+          '</div>';
         return;
       }
 
-      countEl.textContent = blockedIssues.length;
+      var INITIAL_SHOW = 5;
 
-      listEl.innerHTML = blockedIssues.map(issue => `
-        <div class="blocked-item">
-          <div class="blocked-item-main">
-            <span class="blocked-item-location">
-              ${escapeHtml(issue.bookLabel)} - Kafli ${issue.chapter}
-            </span>
-            <span class="blocked-item-description">${escapeHtml(issue.description)}</span>
-          </div>
-          <a href="/issues?id=${issue.id}" class="btn btn-small btn-blocked">
-            Sjá atriði
-          </a>
-        </div>
-      `).join('');
+      var renderItem = function(item) {
+        var iconClass = item.type;
+        var icons = {
+          overdue: '\u23F0',
+          blocked: '\u26D4',
+          unassigned: '\uD83D\uDC64',
+          review: '\uD83D\uDC41\uFE0F'
+        };
+        var icon = icons[item.type] || '\u26A0';
 
-      banner.style.display = 'block';
+        return '<div class="attention-item">' +
+          '<div class="attention-item-icon ' + iconClass + '">' + icon + '</div>' +
+          '<div class="attention-item-content">' +
+            '<div class="attention-item-title">' + escapeHtml(item.message) + '</div>' +
+            '<div class="attention-item-meta">' +
+              (item.book ? item.book + ' / ' : '') +
+              (item.chapter ? 'Kafli ' + item.chapter : '') +
+              (item.assignedTo ? ' - ' + escapeHtml(item.assignedTo) : '') +
+              (item.daysOld ? ' (' + item.daysOld + ' dagar)' : '') +
+            '</div>' +
+          '</div>' +
+          '<button class="btn btn-sm btn-primary attention-item-action" ' +
+            'onclick="handleAttentionItem(\'' + item.type + '\', \'' + (item.book || '') + '\', ' + (item.chapter || 0) + ', \'' + (item.stage || '') + '\')">' +
+            'Skoða' +
+          '</button>' +
+        '</div>';
+      };
+
+      var visibleItems = attention.items.slice(0, INITIAL_SHOW);
+      var hiddenItems = attention.items.slice(INITIAL_SHOW);
+
+      var html = visibleItems.map(renderItem).join('');
+
+      if (hiddenItems.length > 0) {
+        html +=
+          '<div class="accordion collapsed" id="attention-more-accordion">' +
+            '<button class="accordion-header" aria-expanded="true" onclick="toggleAccordion(\'attention-more-accordion\')">' +
+              '<div class="accordion-header-left">' +
+                '<span class="accordion-toggle">\u25BC</span>' +
+                '<span>Sýna ' + hiddenItems.length + ' fleiri atriði</span>' +
+              '</div>' +
+            '</button>' +
+            '<div class="accordion-body">' +
+              hiddenItems.map(renderItem).join('') +
+            '</div>' +
+          '</div>';
+      }
+
+      itemsEl.innerHTML = html;
     }
 
-    // ========================================
+    // ========================================================================
+    // ADMIN: WORKLOAD TABLE
+    // ========================================================================
+
+    function renderWorkload(workload) {
+      var tbody = document.getElementById('workload-body');
+
+      if (!workload || workload.length === 0) {
+        tbody.innerHTML =
+          '<tr><td colspan="4">' +
+            '<div class="empty-state"><p>Engar úthlutanir</p></div>' +
+          '</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = workload.map(function(user) {
+        var initials = escapeHtml(user.username).substring(0, 2).toUpperCase();
+        var utilization = user.utilizationPercent || 0;
+        var barClass = utilization < 50 ? 'low' : utilization < 80 ? 'medium' : 'high';
+
+        return '<tr>' +
+          '<td>' +
+            '<div class="workload-user">' +
+              '<div class="workload-avatar">' + initials + '</div>' +
+              '<span>' + escapeHtml(user.username) + '</span>' +
+            '</div>' +
+          '</td>' +
+          '<td>' + user.pending + '</td>' +
+          '<td>' + (user.overdue > 0 ? '<span style="color:var(--error)">' + user.overdue + '</span>' : '0') + '</td>' +
+          '<td style="width:150px">' +
+            '<div class="workload-bar">' +
+              '<div class="workload-bar-fill ' + barClass + '" style="width:' + Math.min(utilization, 100) + '%"></div>' +
+            '</div>' +
+            '<div style="font-size:var(--text-xs);color:var(--text-muted);margin-top:2px">' + utilization + '%</div>' +
+          '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    // ========================================================================
+    // ADMIN: READY FOR ASSIGNMENT
+    // ========================================================================
+
+    function renderReadyList(items) {
+      var listEl = document.getElementById('ready-list');
+      var INITIAL_SHOW = 4;
+
+      if (!items || items.length === 0) {
+        listEl.innerHTML = '<div class="empty-state"><p>Ekkert tilbúið</p></div>';
+        return;
+      }
+
+      var renderReadyItem = function(item) {
+        return '<div class="ready-item" onclick="assignChapter(\'' + item.book + '\', ' + item.chapter + ', \'' + item.nextStage + '\')">' +
+          '<div class="ready-item-header">' +
+            '<span class="ready-item-title">Kafli ' + item.chapter + '</span>' +
+            '<span class="stage-label ' + item.nextStage + '">' + (STAGE_LABELS[item.nextStage] || item.nextStage) + '</span>' +
+          '</div>' +
+          '<div class="ready-item-meta">' +
+            (item.title || item.book) + ' - ' + item.progress + '% lokið' +
+          '</div>' +
+        '</div>';
+      };
+
+      var visibleItems = items.slice(0, INITIAL_SHOW);
+      var hiddenItems = items.slice(INITIAL_SHOW);
+
+      var html = visibleItems.map(renderReadyItem).join('');
+
+      if (hiddenItems.length > 0) {
+        html +=
+          '<div class="accordion collapsed" id="ready-more-accordion">' +
+            '<button class="accordion-header" aria-expanded="true" onclick="toggleAccordion(\'ready-more-accordion\')">' +
+              '<div class="accordion-header-left">' +
+                '<span class="accordion-toggle">\u25BC</span>' +
+                '<span>Sýna ' + hiddenItems.length + ' fleiri</span>' +
+              '</div>' +
+            '</button>' +
+            '<div class="accordion-body">' +
+              hiddenItems.map(renderReadyItem).join('') +
+            '</div>' +
+          '</div>';
+      }
+
+      listEl.innerHTML = html;
+    }
+
+    // ========================================================================
+    // ADMIN: TEAM ACTIVITY FEED
+    // ========================================================================
+
+    function renderAdminActivity(activities) {
+      var listEl = document.getElementById('admin-activity-list');
+      var INITIAL_SHOW = 5;
+
+      if (!activities || activities.length === 0) {
+        listEl.innerHTML = '<div class="empty-state"><p>Engin virkni</p></div>';
+        return;
+      }
+
+      var renderActivityItem = function(activity) {
+        return '<div class="admin-activity-item">' +
+          '<div class="admin-activity-icon" ' +
+            (activity.color ? 'style="background:' + activity.color + '20;color:' + activity.color + '"' : '') + '>' +
+            (activity.icon ? '' : '\u25CF') +
+          '</div>' +
+          '<div class="admin-activity-content">' +
+            '<div class="admin-activity-text">' +
+              '<strong>' + escapeHtml(activity.userId || 'Kerfi') + '</strong> ' +
+              escapeHtml(activity.description || activity.type) +
+              (activity.book ? ' í ' + escapeHtml(activity.book) : '') +
+              (activity.chapter ? ' kafla ' + activity.chapter : '') +
+            '</div>' +
+            '<div class="admin-activity-time">' + (activity.timeAgo || '') + '</div>' +
+          '</div>' +
+        '</div>';
+      };
+
+      var visibleActivities = activities.slice(0, INITIAL_SHOW);
+      var hiddenActivities = activities.slice(INITIAL_SHOW);
+
+      var html = visibleActivities.map(renderActivityItem).join('');
+
+      if (hiddenActivities.length > 0) {
+        html +=
+          '<div class="accordion collapsed" id="activity-more-accordion">' +
+            '<button class="accordion-header" aria-expanded="true" onclick="toggleAccordion(\'activity-more-accordion\')">' +
+              '<div class="accordion-header-left">' +
+                '<span class="accordion-toggle">\u25BC</span>' +
+                '<span>Sýna ' + hiddenActivities.length + ' fleiri</span>' +
+              '</div>' +
+            '</button>' +
+            '<div class="accordion-body">' +
+              hiddenActivities.map(renderActivityItem).join('') +
+            '</div>' +
+          '</div>';
+      }
+
+      listEl.innerHTML = html;
+    }
+
+    // ========================================================================
+    // ADMIN: EVENT HANDLERS
+    // ========================================================================
+
+    function handleAttentionItem(type, book, chapter, stage) {
+      switch (type) {
+        case 'blocked':
+          window.location.href = '/issues?category=BLOCKED';
+          break;
+        case 'review':
+          window.location.href = '/reviews';
+          break;
+        default:
+          window.location.href = '/status/' + book;
+      }
+    }
+
+    function assignChapter(book, chapter, stage) {
+      window.location.href = '/status/' + book;
+    }
+
+    // ========================================================================
+    // ACCORDION TOGGLE (shared)
+    // ========================================================================
+
+    function toggleAccordion(accordionId) {
+      var accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
+    // ========================================================================
     // SETTINGS / NOTIFICATION PREFERENCES
-    // ========================================
+    // ========================================================================
 
     async function openSettingsModal() {
       document.getElementById('settings-modal').style.display = 'flex';
@@ -708,52 +1915,50 @@
     }
 
     async function loadNotificationPreferences() {
-      const list = document.getElementById('preference-list');
+      var list = document.getElementById('preference-list');
       list.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
-        const res = await fetch('/api/notifications/preferences');
-        const data = await res.json();
+        var res = await fetch('/api/notifications/preferences');
+        var data = await res.json();
         notificationPreferences = data.preferences;
 
-        list.innerHTML = Object.entries(data.categories).map(([key, category]) => {
-          const prefs = notificationPreferences[key] || { inApp: true, email: true };
-          return `
-            <div class="preference-item">
-              <div class="preference-info">
-                <span class="preference-label">${category.label}</span>
-                <span class="preference-description">${category.description}</span>
-              </div>
-              <div class="preference-toggles">
-                <label class="toggle-label">
-                  <input type="checkbox" id="pref-${key}-inApp" ${prefs.inApp ? 'checked' : ''}>
-                  <span class="toggle-text"><i class="fas fa-bell"></i> Í appinu</span>
-                </label>
-                <label class="toggle-label">
-                  <input type="checkbox" id="pref-${key}-email" ${prefs.email ? 'checked' : ''}>
-                  <span class="toggle-text"><i class="fas fa-envelope"></i> Tölvupóstur</span>
-                </label>
-              </div>
-            </div>
-          `;
+        list.innerHTML = Object.entries(data.categories).map(function(entry) {
+          var key = entry[0];
+          var category = entry[1];
+          var prefs = notificationPreferences[key] || { inApp: true, email: true };
+          return '<div class="preference-item">' +
+            '<div class="preference-info">' +
+              '<span class="preference-label">' + escapeHtml(category.label) + '</span>' +
+              '<span class="preference-description">' + escapeHtml(category.description) + '</span>' +
+            '</div>' +
+            '<div class="preference-toggles">' +
+              '<label class="toggle-label">' +
+                '<input type="checkbox" id="pref-' + key + '-inApp" ' + (prefs.inApp ? 'checked' : '') + '>' +
+                '<span class="toggle-text">Í appinu</span>' +
+              '</label>' +
+              '<label class="toggle-label">' +
+                '<input type="checkbox" id="pref-' + key + '-email" ' + (prefs.email ? 'checked' : '') + '>' +
+                '<span class="toggle-text">Tölvupóstur</span>' +
+              '</label>' +
+            '</div>' +
+          '</div>';
         }).join('');
-
       } catch (err) {
         console.error('Error loading preferences:', err);
-        list.innerHTML = '<p class="error">Villa við að hlaða stillingum</p>';
+        list.innerHTML = '<p class="text-error">Villa við að hlaða stillingum</p>';
       }
     }
 
     async function savePreferences() {
-      const preferences = {};
+      var preferences = {};
 
-      // Collect values from checkboxes
-      document.querySelectorAll('.preference-item').forEach(item => {
-        const inAppInput = item.querySelector('input[id$="-inApp"]');
-        const emailInput = item.querySelector('input[id$="-email"]');
+      document.querySelectorAll('.preference-item').forEach(function(item) {
+        var inAppInput = item.querySelector('input[id$="-inApp"]');
+        var emailInput = item.querySelector('input[id$="-email"]');
 
         if (inAppInput && emailInput) {
-          const key = inAppInput.id.replace('pref-', '').replace('-inApp', '');
+          var key = inAppInput.id.replace('pref-', '').replace('-inApp', '');
           preferences[key] = {
             inApp: inAppInput.checked,
             email: emailInput.checked
@@ -762,13 +1967,13 @@
       });
 
       try {
-        const res = await fetch('/api/notifications/preferences', {
+        var res = await fetch('/api/notifications/preferences', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(preferences)
         });
 
-        const data = await res.json();
+        var data = await res.json();
 
         if (data.success) {
           notificationPreferences = data.preferences;
@@ -783,554 +1988,76 @@
       }
     }
 
-    function showToast(message, type = 'info') {
-      // Simple toast notification
-      const toast = document.createElement('div');
-      toast.className = `toast toast-${type}`;
-      toast.innerHTML = message;
+    // ========================================================================
+    // HELPER FUNCTIONS
+    // ========================================================================
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      return new Date(dateStr).toLocaleDateString('is-IS');
+    }
+
+    function formatTimeAgo(dateStr) {
+      if (!dateStr) return '';
+      var date = new Date(dateStr);
+      var now = new Date();
+      var diffMs = now - date;
+      var diffMins = Math.floor(diffMs / 60000);
+      var diffHours = Math.floor(diffMs / 3600000);
+      var diffDays = Math.floor(diffMs / 86400000);
+
+      if (diffMins < 1) return 'Rétt í þessu';
+      if (diffMins < 60) return diffMins + ' mín síðan';
+      if (diffHours < 24) return diffHours + ' klst síðan';
+      if (diffDays === 1) return 'Í gær';
+      if (diffDays < 7) return diffDays + ' dögum síðan';
+      return formatDate(dateStr);
+    }
+
+    function getDueDateText(dueInfo) {
+      if (!dueInfo) return '';
+      if (dueInfo.status === 'overdue') {
+        var days = Math.abs(dueInfo.daysUntil);
+        return days + (days === 1 ? ' dagur' : ' dagar') + ' yfir tíma!';
+      }
+      if (dueInfo.status === 'today') return 'Skiladagur í dag!';
+      if (dueInfo.status === 'soon') {
+        return dueInfo.daysUntil + (dueInfo.daysUntil === 1 ? ' dagur' : ' dagar') + ' eftir';
+      }
+      return 'Skiladagur: ' + dueInfo.formatted;
+    }
+
+    function getStatusLabel(status) {
+      var labels = {
+        'proposed': 'Í bið',
+        'needs_review': 'Þarf yfirferð',
+        'approved': 'Samþykkt',
+        'disputed': 'Deilt um'
+      };
+      return labels[status] || status;
+    }
+
+    function getActivityIcon(type) {
+      var icons = {
+        'edit': '\u270F\uFE0F', 'submit': '\uD83D\uDCE4', 'approve': '\u2705', 'reject': '\u274C',
+        'term_propose': '\uD83D\uDCD6', 'term_approve': '\u2713', 'assign': '\uD83D\uDC64'
+      };
+      return icons[type] || '\uD83D\uDCCC';
+    }
+
+    function showToast(message, type) {
+      type = type || 'info';
+      var toast = document.createElement('div');
+      toast.className = 'toast toast-' + type;
+      toast.innerHTML = escapeHtml(message);
       document.body.appendChild(toast);
 
-      setTimeout(() => toast.classList.add('show'), 10);
-      setTimeout(() => {
+      setTimeout(function() { toast.classList.add('show'); }, 10);
+      setTimeout(function() {
         toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
+        setTimeout(function() { toast.remove(); }, 300);
       }, 3000);
     }
-
-    // Initialize
-    init();
   </script>
-
-  <style>
-    /* ==========================================================================
-       MY-WORK PAGE SPECIFIC STYLES
-       Extends common.css with page-specific components
-       ========================================================================== */
-
-    /* Container override for narrower content */
-    .container { max-width: 800px; }
-
-    /* ========================================
-       FOCUS VIEW STYLES
-       ======================================== */
-
-    .welcome-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-    .welcome-text h1 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--gray-900);
-      margin-bottom: 0.25rem;
-    }
-    .greeting-subtitle {
-      color: var(--gray-500);
-      font-size: 1rem;
-    }
-    .view-toggle .btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .toggle-icon { font-size: 1rem; }
-
-    /* Alert Banner */
-    .alert-banner {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.875rem 1rem;
-      background: var(--warning-light);
-      border: 1px solid var(--warning);
-      border-radius: var(--radius-lg);
-      margin-bottom: 1.5rem;
-    }
-    .alert-icon { font-size: 1.25rem; }
-    .alert-text { font-weight: 500; color: #92400e; }
-
-    /* Blocked Issues Banner */
-    .blocked-banner {
-      background: var(--error-light);
-      border: 2px solid var(--error);
-      border-radius: var(--radius-lg);
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-    }
-    .blocked-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      background: rgba(220, 38, 38, 0.1);
-      border-bottom: 1px solid rgba(220, 38, 38, 0.2);
-    }
-    .blocked-icon { font-size: 1.25rem; }
-    .blocked-header strong { color: #991b1b; }
-    .blocked-count {
-      background: var(--error);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.125rem 0.5rem;
-      border-radius: 9999px;
-      margin-left: auto;
-    }
-    .blocked-list {
-      padding: 0.5rem;
-    }
-    .blocked-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem;
-      background: var(--bg-card);
-      border-radius: var(--radius-md);
-      margin-bottom: 0.5rem;
-    }
-    .blocked-item:last-child { margin-bottom: 0; }
-    .blocked-item-main {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .blocked-item-location {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--gray-700);
-    }
-    .blocked-item-description {
-      font-size: 0.875rem;
-      color: var(--gray-600);
-    }
-    .btn-blocked {
-      background: var(--error);
-      color: white;
-      padding: 0.375rem 0.75rem;
-      font-size: 0.75rem;
-    }
-    .btn-blocked:hover { background: #b91c1c; }
-
-    /* Section Label */
-    .section-label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--gray-500);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .count-badge {
-      background: var(--gray-200);
-      color: var(--gray-700);
-      padding: 0.125rem 0.5rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-    }
-
-    /* Current Task Card */
-    .current-task-section { margin-bottom: 2rem; }
-
-    .current-task-card {
-      background: var(--bg-card);
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-
-    .task-card-content {
-      padding: 1.5rem;
-    }
-    .task-card-content.priority-urgent {
-      border-left: 4px solid var(--error);
-    }
-    .task-card-content.priority-soon {
-      border-left: 4px solid var(--warning);
-    }
-
-    .task-priority-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.75rem;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-    .task-priority-badge.badge-changes {
-      background: var(--warning-light);
-      color: #92400e;
-    }
-
-    .task-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--gray-900);
-      margin-bottom: 0.5rem;
-    }
-
-    .task-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.875rem;
-      color: var(--gray-500);
-    }
-    .meta-stage {
-      background: var(--gray-100);
-      padding: 0.125rem 0.5rem;
-      border-radius: 0.25rem;
-    }
-    .meta-due { font-weight: 500; }
-    .meta-due.due-overdue { color: var(--error); }
-    .meta-due.due-today { color: var(--warning); }
-    .meta-reviewer { font-style: italic; }
-
-    .task-notes {
-      background: var(--gray-50);
-      padding: 0.75rem;
-      border-radius: var(--radius-md);
-      margin-bottom: 1rem;
-      font-size: 0.875rem;
-      color: var(--gray-700);
-      border-left: 3px solid var(--primary);
-    }
-
-    .task-actions {
-      padding-top: 0.5rem;
-    }
-
-    .btn-large {
-      padding: 0.875rem 1.5rem;
-      font-size: 1rem;
-    }
-    .btn-icon { margin-right: 0.5rem; }
-
-    /* Empty Task State */
-    .empty-task {
-      text-align: center;
-      padding: 3rem 2rem;
-    }
-    .empty-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .empty-task h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: var(--gray-900);
-    }
-    .empty-task p {
-      color: var(--gray-500);
-    }
-
-    /* Up Next Section */
-    .up-next-section { margin-bottom: 2rem; }
-
-    .up-next-list {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-    }
-
-    .up-next-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.875rem 1rem;
-      border-bottom: 1px solid var(--gray-100);
-      text-decoration: none;
-      color: var(--gray-900);
-      transition: background 0.15s;
-    }
-    .up-next-item:last-child { border-bottom: none; }
-    .up-next-item:hover { background: var(--gray-50); }
-    .up-next-item.item-urgent { background: var(--error-light); }
-    .up-next-item.item-soon { background: var(--warning-light); }
-
-    .item-content {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .item-title { font-weight: 500; }
-    .item-badge {
-      font-size: 0.75rem;
-      padding: 0.125rem 0.5rem;
-      border-radius: 0.25rem;
-      background: var(--gray-100);
-      color: var(--gray-700);
-    }
-    .item-badge.badge-changes {
-      background: var(--warning-light);
-      color: #92400e;
-    }
-    .item-badge.badge-overdue {
-      background: var(--error-light);
-      color: #991b1b;
-    }
-    .item-arrow {
-      color: var(--gray-400);
-      font-size: 1.25rem;
-    }
-
-    /* Quick Stats */
-    .quick-stats {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-    }
-    .stat-item {
-      flex: 1;
-      text-align: center;
-      padding: 0.5rem;
-    }
-    .stat-value {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--gray-500);
-    }
-
-    /* Loading State */
-    .loading-state {
-      text-align: center;
-      padding: 3rem;
-      color: var(--gray-500);
-    }
-
-    /* ========================================
-       DETAILED VIEW STYLES (Legacy)
-       ======================================== */
-
-    .view-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .view-header h2 { font-size: 1.5rem; }
-
-    /* Summary Grid */
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .summary-card {
-      background: var(--bg-card);
-      padding: 1.25rem;
-      border-radius: var(--radius-lg);
-      text-align: center;
-      box-shadow: var(--shadow-md);
-    }
-    .summary-card.highlight { border-left: 4px solid var(--warning); }
-    .summary-card.highlight-error { border-left: 4px solid var(--error); }
-    .summary-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .summary-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
-    .summary-card.warning .summary-value { color: var(--warning); }
-    .summary-label { font-size: 0.875rem; color: var(--gray-500); }
-
-    /* Content Grid */
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Card body max height override for this page */
-    .card-body { max-height: 400px; overflow-y: auto; }
-
-    /* Work Items */
-    .work-item {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding: 0.875rem 0;
-      border-bottom: 1px solid var(--gray-100);
-    }
-    .work-item:last-child { border-bottom: none; }
-    .work-item.item-overdue { background: var(--error-light); margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
-    .work-item.item-today { background: var(--warning-light); margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
-    .work-item.item-attention { background: var(--warning-light); margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
-
-    .work-item-main { flex: 1; }
-    .work-item-title { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
-    .work-item-notes { font-size: 0.875rem; color: var(--gray-600); margin: 0.25rem 0; font-style: italic; }
-    .work-item-meta { font-size: 0.75rem; color: var(--gray-500); display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .work-item-action { margin-left: 1rem; }
-
-    .book-label { font-weight: 600; color: var(--gray-700); }
-    .chapter-label, .section-label { color: var(--gray-600); }
-    .stage-badge {
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 0.125rem 0.5rem;
-      border-radius: 0.25rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-    }
-
-    .due-date { font-weight: 500; }
-    .due-overdue { color: var(--error); }
-    .due-today { color: var(--warning); }
-
-    .review-notes {
-      background: var(--bg-card);
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.25rem;
-      margin: 0.5rem 0;
-      font-size: 0.875rem;
-      border-left: 3px solid var(--warning);
-    }
-
-    /* Term Items */
-    .term-item {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--gray-100);
-    }
-    .term-item:last-child { border-bottom: none; }
-    .term-pair { margin-bottom: 0.25rem; }
-    .term-en { color: var(--gray-500); }
-    .term-arrow { color: var(--gray-400); margin: 0 0.5rem; }
-    .term-is { font-weight: 500; color: var(--gray-700); }
-    .term-meta { font-size: 0.75rem; display: flex; gap: 0.75rem; }
-    .term-status {
-      padding: 0.125rem 0.5rem;
-      border-radius: 0.25rem;
-      font-weight: 500;
-    }
-    .status-proposed { background: var(--primary-light); color: var(--primary-dark); }
-    .status-needs_review { background: var(--warning-light); color: #92400e; }
-
-    /* Activity Items */
-    .activity-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--gray-100);
-    }
-    .activity-item:last-child { border-bottom: none; }
-    .activity-icon { font-size: 1rem; }
-    .activity-content { flex: 1; }
-    .activity-desc { display: block; font-size: 0.875rem; }
-    .activity-time { font-size: 0.75rem; color: var(--gray-500); }
-
-    /* Page-specific responsive */
-    @media (max-width: 1024px) {
-      .summary-grid { grid-template-columns: repeat(2, 1fr); }
-      .content-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .welcome-section { flex-direction: column; gap: 1rem; }
-      .quick-stats { flex-direction: column; }
-      .summary-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* Settings Button */
-    .settings-btn {
-      background: transparent;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      color: var(--gray-400);
-      border-radius: var(--radius-md);
-      transition: color 0.15s, background-color 0.15s;
-    }
-    .settings-btn:hover {
-      color: var(--primary);
-      background: var(--gray-100);
-    }
-
-    /* Settings Styles (page-specific) */
-    .settings-section-title {
-      margin: 0 0 0.25rem 0;
-      font-size: 1rem;
-    }
-    .settings-description {
-      color: var(--gray-500);
-      font-size: 0.875rem;
-      margin: 0 0 1rem 0;
-    }
-    .preference-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .preference-item {
-      padding: 1rem;
-      background: var(--gray-50);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--gray-200);
-    }
-    .preference-info {
-      margin-bottom: 0.75rem;
-    }
-    .preference-label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    .preference-description {
-      font-size: 0.8rem;
-      color: var(--gray-500);
-    }
-    .preference-toggles {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .toggle-label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      font-size: 0.875rem;
-    }
-    .toggle-label input[type="checkbox"] {
-      width: 1rem;
-      height: 1rem;
-      cursor: pointer;
-    }
-    .toggle-text {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .toggle-text i {
-      font-size: 0.75rem;
-      color: var(--gray-400);
-    }
-
-  </style>
-
-  <!-- Floating Feedback Button -->
-  <div class="feedback-fab">
-    <a href="/feedback" class="feedback-fab-btn" title="Senda endurgjöf">
-      <i class="fas fa-comment-dots"></i>
-    </a>
-  </div>
-
-  <script src="/js/theme.js"></script>
-  <script src="/js/nav.js"></script>
 </body>
 </html>
