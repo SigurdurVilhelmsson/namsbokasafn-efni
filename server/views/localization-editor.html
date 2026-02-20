@@ -3,80 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staðfærsluritstjóri - Námsbókasafn</title>
+  <title>Sta&#240;f&#230;rsla - N&#225;msb&#243;kasafn</title>
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Localization editor specific styles */
+    /* ==========================================================================
+       LOCALIZATION PAGE — Basalt & Vellum
+       Merged: segment editor + review queue in a tabbed view.
+       ========================================================================== */
+
+    /* ========================================
+       VIEW TABS (Editor / Review toggle)
+       ======================================== */
+
+    .view-tabs {
+      display: flex;
+      gap: var(--spacing-xs);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .view-tab {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: var(--text-base);
+      font-family: var(--font-body);
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .view-tab:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      font-weight: 500;
+    }
+
+    .view-panel {
+      display: none;
+    }
+
+    .view-panel.active {
+      display: block;
+    }
+
+    /* ========================================
+       EDITOR VIEW — Module Selector
+       ======================================== */
+
+    .module-selector-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .module-selector-card h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .module-selector-desc {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.5;
+    }
+
+    .selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .module-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      margin-bottom: var(--spacing-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .module-item.clickable {
+      cursor: pointer;
+    }
+
+    .module-item.clickable:hover {
+      background: var(--bg-hover);
+      border-color: var(--accent);
+    }
+
+    .module-item.disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    /* ========================================
+       EDITOR VIEW — Segment Table
+       ======================================== */
+
     .module-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: var(--spacing-md);
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
     }
-    .module-header h2 { margin: 0; font-size: 1.25rem; }
-    .module-meta { color: var(--text-muted); font-size: 0.875rem; }
+
+    .module-header h2 {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .module-meta {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
 
     .stats-bar {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
       flex-wrap: wrap;
     }
-    .stat-item {
-      padding: 0.5rem 1rem;
-      background: var(--bg-subtle);
-      border-radius: 6px;
-      font-size: 0.875rem;
-    }
-    .stat-item strong { font-weight: 600; }
-    .stat-item.localized { background: rgba(59, 130, 246, 0.1); }
-    .stat-item.remaining { background: rgba(245, 158, 11, 0.1); }
-    .stat-item.saved { background: rgba(16, 185, 129, 0.1); }
 
-    /* Three-column segment table */
+    .stat-item {
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+    }
+
+    .stat-item strong {
+      font-weight: 600;
+    }
+
+    .stat-item.localized {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+    }
+
+    .stat-item.remaining {
+      border-color: var(--warning);
+      background: var(--warning-subtle);
+    }
+
+    .stat-item.saved {
+      border-color: var(--success);
+      background: var(--success-subtle, rgba(16, 185, 129, 0.08));
+    }
+
     .segments-table {
       width: 100%;
       border-collapse: collapse;
     }
+
     .segments-table th {
       text-align: left;
-      padding: 0.75rem 0.75rem;
-      background: var(--bg-subtle);
-      border-bottom: 2px solid var(--border-color);
-      font-size: 0.8rem;
+      padding: 0.75rem;
+      background: var(--bg-elevated);
+      border-bottom: 2px solid var(--border);
+      font-size: 0.6875rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-muted);
     }
+
     .segments-table td {
       padding: 0.75rem;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
-    .segment-row { transition: background 0.15s; }
-    .segment-row:hover { background: var(--bg-subtle); }
-    .segment-row.modified { background: rgba(59, 130, 246, 0.05); }
-    .segment-row.saved { background: rgba(16, 185, 129, 0.04); }
+
+    .segment-row {
+      transition: background var(--transition-fast);
+    }
+
+    .segment-row:hover {
+      background: var(--bg-hover);
+    }
+
+    .segment-row.modified {
+      background: var(--accent-subtle);
+    }
+
+    .segment-row.saved {
+      background: var(--success-subtle, rgba(16, 185, 129, 0.04));
+    }
 
     .segment-type-badge {
       display: inline-block;
       padding: 0.125rem 0.5rem;
-      border-radius: 3px;
-      font-size: 0.7rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
       font-weight: 600;
       text-transform: uppercase;
-      background: var(--bg-subtle);
+      background: var(--bg-elevated);
       color: var(--text-muted);
     }
-    .segment-type-badge.title { background: var(--primary-light); color: var(--primary-dark); }
-    .segment-type-badge.para { background: var(--gray-100); color: var(--text-secondary); }
-    .segment-type-badge.caption { background: var(--warning-light); color: #92400e; }
+
+    .segment-type-badge.title {
+      background: var(--accent-subtle);
+      color: var(--accent);
+    }
+
+    .segment-type-badge.para {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+    }
+
+    .segment-type-badge.caption {
+      background: var(--warning-subtle);
+      color: var(--warning);
+    }
 
     .segment-content {
-      font-size: 0.85rem;
+      font-size: var(--text-sm);
       line-height: 1.5;
       white-space: pre-wrap;
       word-break: break-word;
@@ -90,742 +258,2026 @@
     .col-localized { width: 34%; }
     .col-actions { width: 7%; text-align: center; }
 
-    /* EN column is reference — slightly muted */
-    .col-en .segment-content { color: var(--text-muted); font-size: 0.8rem; }
+    .col-en .segment-content {
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+    }
 
-    /* Editable localized textarea */
     .localized-textarea {
       width: 100%;
       min-height: 60px;
-      padding: 0.5rem;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.85rem;
+      padding: var(--spacing-sm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
       line-height: 1.5;
       resize: vertical;
-      background: var(--bg-input);
-      color: var(--text-color);
-      transition: border-color 0.15s;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      transition: border-color var(--transition-fast);
     }
+
     .localized-textarea:focus {
       border-color: var(--accent);
       outline: none;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
-    }
-    .localized-textarea.modified {
-      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
     }
 
-    /* Category selector for segment */
+    .localized-textarea.modified {
+      border-color: var(--warning);
+    }
+
     .category-select {
       width: 100%;
       margin-top: 0.35rem;
       padding: 0.25rem 0.4rem;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-size: 0.75rem;
-      background: var(--bg-input);
-      color: var(--text-color);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      background: var(--bg-surface);
+      color: var(--text-primary);
     }
 
     .category-badge {
       display: inline-block;
       padding: 0.1rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.7rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
     }
-    .category-badge.unit-conversion { background: var(--primary-light); color: var(--primary-dark); }
-    .category-badge.cultural-adaptation { background: var(--warning-light); color: #92400e; }
-    .category-badge.example-replacement { background: #f3e8ff; color: #7c3aed; }
-    .category-badge.formatting { background: #f0fdf4; color: #166534; }
-    .category-badge.unchanged { background: var(--bg-subtle); color: var(--text-muted); }
 
-    /* Action buttons */
+    .category-badge.unit-conversion { background: var(--accent-subtle); color: var(--accent); }
+    .category-badge.cultural-adaptation { background: var(--warning-subtle); color: var(--warning); }
+    .category-badge.example-replacement { background: var(--bg-elevated); color: var(--text-secondary); }
+    .category-badge.formatting { background: var(--success-subtle, rgba(16, 185, 129, 0.08)); color: var(--success); }
+    .category-badge.unchanged { background: var(--bg-elevated); color: var(--text-muted); }
+
     .btn-save-seg {
-      font-size: 0.75rem;
+      font-size: var(--text-xs);
       padding: 0.2rem 0.5rem;
       background: var(--accent);
-      color: white;
+      color: var(--bg-surface);
       border: none;
-      border-radius: 4px;
+      border-radius: var(--radius-md);
       cursor: pointer;
       white-space: nowrap;
+      transition: opacity var(--transition-fast);
     }
-    .btn-save-seg:hover { opacity: 0.9; }
-    .btn-save-seg:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-copy-faithful {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.4rem;
-      background: var(--bg-subtle);
-      color: var(--text-muted);
-      border: 1px solid var(--border-color);
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    .btn-copy-faithful:hover { background: var(--bg-card); }
 
-    /* Save status indicator */
+    .btn-save-seg:hover { opacity: 0.85; }
+    .btn-save-seg:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-copy-faithful {
+      font-size: var(--text-xs);
+      padding: 0.15rem 0.4rem;
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background var(--transition-fast);
+    }
+
+    .btn-copy-faithful:hover {
+      background: var(--bg-hover);
+    }
+
     .save-indicator {
-      font-size: 0.7rem;
+      font-size: var(--text-xs);
       color: var(--text-muted);
     }
+
     .save-indicator.saving { color: var(--accent); }
-    .save-indicator.saved { color: #10b981; }
+    .save-indicator.saved { color: var(--success); }
     .save-indicator.error { color: var(--error); }
 
-    /* Math placeholder styling */
     .math-placeholder {
       display: inline;
       padding: 0.1rem 0.3rem;
-      background: #f3e8ff;
-      border-radius: 3px;
-      font-family: monospace;
-      font-size: 0.8rem;
-      color: #7c3aed;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono, monospace);
+      font-size: var(--text-xs);
+      color: var(--accent);
     }
 
-    /* Filter */
-    .filter-bar {
+    .editor-filter-bar {
       display: flex;
       gap: 0.75rem;
-      margin-bottom: 1rem;
+      margin-bottom: var(--spacing-md);
       align-items: center;
       flex-wrap: wrap;
     }
-    .filter-bar label { font-size: 0.8rem; color: var(--text-muted); }
-    .filter-bar select {
-      padding: 0.35rem 0.5rem;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-size: 0.8rem;
-      background: var(--bg-input);
-      color: var(--text-color);
+
+    .editor-filter-bar label {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-weight: 500;
     }
 
-    /* Toolbar */
+    .editor-filter-bar select {
+      padding: 0.375rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+    }
+
+    .editor-filter-bar select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
+    }
+
     .toolbar {
       display: flex;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
       align-items: center;
       flex-wrap: wrap;
     }
+
     .toolbar .btn { white-space: nowrap; }
 
-    /* Diff view */
     .diff-indicator {
       display: inline-block;
       width: 8px;
       height: 8px;
-      border-radius: 50%;
+      border-radius: var(--radius-full);
       margin-right: 0.25rem;
     }
-    .diff-indicator.same { background: var(--text-muted); opacity: 0.3; }
-    .diff-indicator.different { background: #f59e0b; }
 
-    /* Progress bar */
+    .diff-indicator.same { background: var(--text-muted); opacity: 0.3; }
+    .diff-indicator.different { background: var(--warning); }
+
     .progress-bar {
       width: 100%;
       height: 6px;
-      background: var(--bg-subtle);
-      border-radius: 3px;
-      margin-bottom: 1rem;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--spacing-md);
       overflow: hidden;
     }
+
     .progress-bar-fill {
       height: 100%;
       background: var(--accent);
-      border-radius: 3px;
+      border-radius: var(--radius-sm);
       transition: width 0.3s;
     }
 
-    /* Responsive */
+    .editor-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* ========================================
+       REVIEW VIEW — Section selector & panels
+       ======================================== */
+
+    .review-selector-row {
+      display: flex;
+      gap: var(--spacing-md);
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .review-selector-row .form-group {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .section-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .section-info {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .section-info h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
+    .section-status-badge {
+      font-size: var(--text-xs);
+      padding: 0.25rem 0.75rem;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+    }
+
+    .section-actions-bar {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    /* Review stats */
+    .review-stats-bar {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .review-stat {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .review-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+    }
+
+    .review-stat-value.pending { color: var(--warning); }
+    .review-stat-value.accepted { color: var(--success); }
+    .review-stat-value.rejected { color: var(--error); }
+
+    .review-stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Split panel view */
+    .split-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 0.75rem var(--spacing-md);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-header h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      color: var(--text-primary);
+    }
+
+    .panel-hint {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .panel-content {
+      padding: var(--spacing-md);
+      max-height: 400px;
+      overflow-y: auto;
+      font-size: var(--text-sm);
+      line-height: 1.8;
+    }
+
+    .panel-content h1,
+    .panel-content h2,
+    .panel-content h3 {
+      margin: var(--spacing-md) 0 var(--spacing-sm);
+    }
+
+    /* Suggestions panel */
+    .suggestions-panel,
+    .log-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .suggestions-header,
+    .log-header {
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .suggestions-header h3,
+    .log-header h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      color: var(--text-primary);
+    }
+
+    .suggestions-filters {
+      padding: 0.75rem var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    .filter-btn {
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      font-size: var(--text-xs);
+      font-family: var(--font-body);
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+
+    .filter-btn:hover {
+      background: var(--bg-hover);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: var(--bg-surface);
+      border-color: var(--accent);
+    }
+
+    .suggestions-list,
+    .log-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .suggestion-item {
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .suggestion-item:last-child { border-bottom: none; }
+
+    .suggestion-accepted { background: var(--success-subtle, rgba(22, 163, 74, 0.05)); }
+    .suggestion-rejected { background: var(--error-subtle, rgba(220, 38, 38, 0.05)); }
+    .suggestion-modified { background: var(--accent-subtle); }
+
+    .suggestion-type {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .type-badge {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+    }
+
+    .type-unit_conversion { background: var(--accent-subtle); color: var(--accent); }
+    .type-cultural_reference,
+    .type-cultural_adaptation { background: var(--warning-subtle); color: var(--warning); }
+    .type-currency { background: var(--success-subtle, rgba(22, 163, 74, 0.08)); color: var(--success); }
+    .type-agency_reference { background: var(--bg-elevated); color: var(--text-secondary); }
+    .type-other { background: var(--bg-elevated); color: var(--text-secondary); }
+
+    .line-number {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .suggestion-content {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .suggestion-content label {
+      font-size: 0.625rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .original span { color: var(--error); }
+    .suggested span { color: var(--success); }
+
+    .suggestion-arrow {
+      color: var(--text-muted);
+    }
+
+    .suggestion-context {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .suggestion-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    .status-label {
+      font-size: var(--text-xs);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+    }
+
+    .status-accepted,
+    .status-modified {
+      background: var(--success-subtle, rgba(22, 163, 74, 0.08));
+      color: var(--success);
+    }
+
+    .status-rejected {
+      background: var(--error-subtle, rgba(220, 38, 38, 0.08));
+      color: var(--error);
+    }
+
+    /* Log entries */
+    .log-entry {
+      padding: 0.75rem var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .log-entry:last-child { border-bottom: none; }
+
+    .log-type { margin-bottom: 0.25rem; }
+
+    .log-content {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      font-size: var(--text-sm);
+      margin-bottom: 0.25rem;
+    }
+
+    .log-original { color: var(--error); }
+    .log-changed { color: var(--success); }
+    .log-reason { font-size: var(--text-xs); color: var(--text-muted); }
+    .log-location { font-size: 0.625rem; color: var(--text-muted); }
+
+    /* Placeholder text */
+    .placeholder-text {
+      color: var(--text-muted);
+      text-align: center;
+      padding: var(--spacing-xl);
+      font-size: var(--text-sm);
+    }
+
+    .error-text { color: var(--error); }
+
+    /* ========================================
+       MODALS
+       ======================================== */
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-md);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .modal-body { padding: var(--spacing-lg); }
+
+    .modal-footer {
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .btn-close:hover {
+      color: var(--text-primary);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+
     @media (max-width: 1024px) {
       .segments-table { display: block; overflow-x: auto; }
       .col-en, .col-faithful, .col-localized { min-width: 220px; }
+      .split-view { grid-template-columns: 1fr; }
+      .selector-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .review-selector-row { flex-direction: column; }
+      .section-header-bar { flex-direction: column; gap: var(--spacing-md); }
+      .review-stats-bar { flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Fara í efni</a>
-  <header class="header">
-    <h1>Námsbókasafn</h1>
-    <nav>
-      <a href="/my-work">Mín verkefni</a>
-      <a href="/segment-editor">Ritstjóri</a>
-      <a href="/status">Framvinda</a>
-      <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
-      <span class="nav-separator admin-only"></span>
-      <a href="/dashboard" class="admin-only">Stjórnborð</a>
-      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" id="theme-toggle" title="Skipta um þema">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <main class="page-content" id="main-content" data-page="localization" data-title="Sta&#240;f&#230;rsla">
+
+    <!-- View Toggle Tabs -->
+    <div class="view-tabs">
+      <button class="view-tab active" data-view="editor" onclick="switchView('editor')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        Sta&#240;f&#230;rsluristj&#243;ri
       </button>
-      <div class="user-info" id="user-info"></div>
-    </div>
-  </header>
-
-  <main class="container" id="main-content">
-    <!-- Module Selector -->
-    <div class="card" id="module-selector">
-      <h2 class="card-title">Velja einingu til staðfærslu (Pass 2)</h2>
-      <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.85rem;">
-        Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi.
-      </p>
-      <div class="grid grid-2">
-        <div class="form-group">
-          <label class="form-label">Bók</label>
-          <select class="form-select" id="book-select">
-            <option value="">Veldu bók...</option>
-            <option value="efnafraedi">Efnafræði</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Kafli</label>
-          <select class="form-select" id="chapter-select" disabled>
-            <option value="">Veldu kafla...</option>
-          </select>
-        </div>
-      </div>
-      <div id="modules-list" style="display: none;">
-        <h3>Einingar í kafla:</h3>
-        <div id="modules-container"></div>
-      </div>
+      <button class="view-tab" data-view="review" onclick="switchView('review')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2 2h11"></path></svg>
+        Yfirfer&#240; &#225; sta&#240;f&#230;ringu
+      </button>
     </div>
 
-    <!-- Localization Editor -->
-    <div id="editor-container" style="display: none;">
-      <div class="card">
-        <div class="module-header">
-          <div>
-            <h2 id="module-title"></h2>
-            <div class="module-meta" id="module-meta"></div>
+    <!-- ================================================================
+         EDITOR VIEW
+         ================================================================ -->
+    <div class="view-panel active" id="view-editor">
+
+      <!-- Module Selector -->
+      <div class="module-selector-card" id="module-selector">
+        <h2>Velja einingu til sta&#240;f&#230;rslu (Pass 2)</h2>
+        <p class="module-selector-desc">
+          Sta&#240;f&#230;rsla a&#240;lagar tr&#250;a &#254;&#253;&#240;ingu (Pass 1) fyrir &#237;slenskan lesanda: einingabreytingar, menningarleg a&#240;l&#246;gun og d&#230;mi.
+        </p>
+        <div class="selector-grid">
+          <div class="form-group">
+            <label class="form-label">B&#243;k</label>
+            <select class="form-select" id="ed-book-select">
+              <option value="">Veldu b&#243;k...</option>
+              <option value="efnafraedi">Efnafr&#230;&#240;i</option>
+            </select>
           </div>
-          <div class="toolbar">
-            <button class="btn btn-secondary" id="btn-back" title="Til baka">
-              <i class="fas fa-arrow-left"></i> Til baka
-            </button>
-            <button class="btn btn-primary" id="btn-save-all" title="Vista allar breytingar">
-              <i class="fas fa-save"></i> Vista allt
-            </button>
-            <span class="save-indicator" id="global-save-indicator"></span>
+          <div class="form-group">
+            <label class="form-label">Kafli</label>
+            <select class="form-select" id="ed-chapter-select" disabled>
+              <option value="">Veldu kafla...</option>
+            </select>
           </div>
         </div>
-
-        <div class="progress-bar" id="progress-bar">
-          <div class="progress-bar-fill" id="progress-fill" style="width: 0%;"></div>
+        <div id="modules-list" style="display: none;">
+          <h3 style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:600;margin-bottom:var(--spacing-sm)">Einingar &#237; kafla:</h3>
+          <div id="modules-container"></div>
         </div>
+      </div>
 
-        <div class="stats-bar" id="stats-bar"></div>
+      <!-- Localization Editor -->
+      <div id="editor-container" style="display: none;">
+        <div class="editor-card">
+          <div class="module-header">
+            <div>
+              <h2 id="module-title"></h2>
+              <div class="module-meta" id="module-meta"></div>
+            </div>
+            <div class="toolbar">
+              <button class="btn btn-secondary" id="btn-back" title="Til baka">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Til baka
+              </button>
+              <button class="btn btn-primary" id="btn-save-all" title="Vista allar breytingar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                Vista allt
+              </button>
+              <span class="save-indicator" id="global-save-indicator"></span>
+            </div>
+          </div>
 
-        <div class="filter-bar">
-          <label>Sýna:</label>
-          <select id="filter-type">
-            <option value="all">Allar bútur</option>
-            <option value="modified">Breyttar (óvistaðar)</option>
-            <option value="localized">Staðfærðar</option>
-            <option value="remaining">Eftir að staðfæra</option>
-            <option value="title">Titlar</option>
-            <option value="para">Málsgreinar</option>
-          </select>
-          <label>Flokkur:</label>
-          <select id="filter-category">
-            <option value="all">Allir flokkar</option>
-            <option value="unit-conversion">Einingabreytingar</option>
-            <option value="cultural-adaptation">Menningarleg aðlögun</option>
-            <option value="example-replacement">Dæmaskipti</option>
-            <option value="formatting">Snið</option>
-          </select>
-        </div>
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-bar-fill" id="progress-fill" style="width: 0%;"></div>
+          </div>
 
-        <div style="overflow-x: auto;">
-          <table class="segments-table">
-            <thead>
-              <tr>
-                <th class="col-type">Tegund</th>
-                <th class="col-en">Enska (viðmið)</th>
-                <th class="col-faithful">Trú þýðing (Pass 1)</th>
-                <th class="col-localized">Staðfært (Pass 2)</th>
-                <th class="col-actions"></th>
-              </tr>
-            </thead>
-            <tbody id="segments-body"></tbody>
-          </table>
+          <div class="stats-bar" id="stats-bar"></div>
+
+          <div class="editor-filter-bar">
+            <label>S&#253;na:</label>
+            <select id="filter-type">
+              <option value="all">Allar b&#250;tur</option>
+              <option value="modified">Breyttar (&#243;vista&#240;ar)</option>
+              <option value="localized">Sta&#240;f&#230;r&#240;ar</option>
+              <option value="remaining">Eftir a&#240; sta&#240;f&#230;ra</option>
+              <option value="title">Titlar</option>
+              <option value="para">M&#225;lsgreinar</option>
+            </select>
+            <label>Flokkur:</label>
+            <select id="filter-category">
+              <option value="all">Allir flokkar</option>
+              <option value="unit-conversion">Einingabreytingar</option>
+              <option value="cultural-adaptation">Menningarleg a&#240;l&#246;gun</option>
+              <option value="example-replacement">D&#230;maskipti</option>
+              <option value="formatting">Sni&#240;</option>
+            </select>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="segments-table">
+              <thead>
+                <tr>
+                  <th class="col-type">Tegund</th>
+                  <th class="col-en">Enska (vi&#240;mi&#240;)</th>
+                  <th class="col-faithful">Tr&#250; &#254;&#253;&#240;ing (Pass 1)</th>
+                  <th class="col-localized">Sta&#240;f&#230;rt (Pass 2)</th>
+                  <th class="col-actions"></th>
+                </tr>
+              </thead>
+              <tbody id="segments-body"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- ================================================================
+         REVIEW VIEW
+         ================================================================ -->
+    <div class="view-panel" id="view-review">
+
+      <!-- Section Selector -->
+      <div class="module-selector-card" id="rv-section-selector">
+        <h2>Velja kafla til sta&#240;f&#230;ringar</h2>
+        <div class="review-selector-row">
+          <div class="form-group">
+            <label class="form-label">B&#243;k</label>
+            <select id="rv-book-select" class="form-select">
+              <option value="">Veldu b&#243;k...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kafli</label>
+            <select id="rv-chapter-select" class="form-select" disabled>
+              <option value="">Veldu kafla...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hluti</label>
+            <select id="rv-section-select" class="form-select" disabled>
+              <option value="">Veldu hluta...</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="rv-load-btn" disabled onclick="rvLoadSection()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Hla&#240;a
+          </button>
+        </div>
+      </div>
+
+      <!-- Review Interface (hidden until section loaded) -->
+      <div id="rv-review-interface" style="display: none;">
+        <!-- Section Header -->
+        <div class="section-header-bar">
+          <div class="section-info">
+            <button class="btn btn-secondary btn-sm" onclick="rvShowSelector()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              Til baka
+            </button>
+            <h2 id="rv-section-title">Hluti</h2>
+            <span class="section-status-badge" id="rv-section-status"></span>
+          </div>
+          <div class="section-actions-bar">
+            <button class="btn btn-secondary" onclick="rvScanForSuggestions()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Skanna
+            </button>
+            <button class="btn btn-primary" onclick="rvSyncToLog()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              Samstilla vi&#240; skr&#225;
+            </button>
+          </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="review-stats-bar" id="rv-stats-bar">
+          <div class="review-stat">
+            <span class="review-stat-value" id="rv-stat-total">0</span>
+            <span class="review-stat-label">Till&#246;gur</span>
+          </div>
+          <div class="review-stat">
+            <span class="review-stat-value pending" id="rv-stat-pending">0</span>
+            <span class="review-stat-label">&#205; bi&#240;</span>
+          </div>
+          <div class="review-stat">
+            <span class="review-stat-value accepted" id="rv-stat-accepted">0</span>
+            <span class="review-stat-label">Sam&#254;ykkt</span>
+          </div>
+          <div class="review-stat">
+            <span class="review-stat-value rejected" id="rv-stat-rejected">0</span>
+            <span class="review-stat-label">Hafna&#240;</span>
+          </div>
+        </div>
+
+        <!-- Split Panel View -->
+        <div class="split-view">
+          <div class="panel panel-left">
+            <div class="panel-header">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Tr&#250; &#254;&#253;&#240;ing
+              </h3>
+              <span class="panel-hint">Lesa&#240;gang</span>
+            </div>
+            <div class="panel-content" id="rv-faithful-content">
+              <p class="placeholder-text">Engin &#254;&#253;&#240;ing hla&#240;in.</p>
+            </div>
+          </div>
+          <div class="panel panel-right">
+            <div class="panel-header">
+              <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                Sta&#240;f&#230;r&#240; &#250;tg&#225;fa
+              </h3>
+              <span class="panel-hint">Breytanlegt</span>
+            </div>
+            <div class="panel-content" id="rv-localized-content">
+              <p class="placeholder-text">Engin &#254;&#253;&#240;ing hla&#240;in.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggestions Panel -->
+        <div class="suggestions-panel">
+          <div class="suggestions-header">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+              Till&#246;gur a&#240; sta&#240;f&#230;ringu
+            </h3>
+            <div style="display:flex;gap:var(--spacing-sm)">
+              <button class="btn btn-sm btn-success" onclick="rvAcceptAllPending()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Sam&#254;ykkja allt
+              </button>
+              <button class="btn btn-sm btn-secondary" onclick="rvRejectAllPending()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Hafna &#246;llu
+              </button>
+            </div>
+          </div>
+
+          <div class="suggestions-filters">
+            <button class="filter-btn active" data-filter="all" onclick="rvFilterSuggestions('all')">Allt</button>
+            <button class="filter-btn" data-filter="pending" onclick="rvFilterSuggestions('pending')">&#205; bi&#240;</button>
+            <button class="filter-btn" data-filter="accepted" onclick="rvFilterSuggestions('accepted')">Sam&#254;ykkt</button>
+            <button class="filter-btn" data-filter="rejected" onclick="rvFilterSuggestions('rejected')">Hafna&#240;</button>
+          </div>
+
+          <div class="suggestions-list" id="rv-suggestions-list">
+            <p class="placeholder-text">Engar till&#246;gur fundust. Smelltu &#225; &#8220;Skanna&#8221; til a&#240; finna sta&#240;f&#230;ringart&#230;kif&#230;ri.</p>
+          </div>
+        </div>
+
+        <!-- Localization Log Panel -->
+        <div class="log-panel">
+          <div class="log-header">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              Sta&#240;f&#230;ringarskr&#225;
+            </h3>
+            <button class="btn btn-sm btn-secondary" onclick="rvAddManualLogEntry()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              B&#230;ta vi&#240;
+            </button>
+          </div>
+          <div class="log-list" id="rv-log-list">
+            <p class="placeholder-text">Engar f&#230;rslur &#237; skr&#225;.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
-    <script src="/js/htmlUtils.js"></script>
+  <!-- Edit Suggestion Modal -->
+  <div class="modal" id="edit-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Breyta till&#246;gu</h3>
+        <button class="btn-close" onclick="closeModal('edit-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Upprunalegt</label>
+          <input type="text" id="edit-original" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Till&#246;ga</label>
+          <input type="text" id="edit-suggested" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label">&#222;&#237;n breyting</label>
+          <input type="text" id="edit-modified" class="form-input" placeholder="Sl&#225;&#240;u inn breytingu...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('edit-modal')">H&#230;tta vi&#240;</button>
+        <button class="btn btn-primary" onclick="rvSaveModifiedSuggestion()">Vista</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Log Entry Modal -->
+  <div class="modal" id="log-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>B&#230;ta vi&#240; f&#230;rslu</h3>
+        <button class="btn-close" onclick="closeModal('log-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Tegund</label>
+          <select id="log-type" class="form-select">
+            <option value="unit_conversion">Einingaumreikningur</option>
+            <option value="cultural_adaptation">Menningarleg a&#240;l&#246;gun</option>
+            <option value="added_context">Vi&#240;b&#230;ttar sk&#253;ringar</option>
+            <option value="removed_content">Efni fjarl&#230;gt</option>
+            <option value="terminology">Or&#240;anotkun</option>
+            <option value="other">Anna&#240;</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Upprunalegt</label>
+          <input type="text" id="log-original" class="form-input" placeholder="Upprunalegur texti...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Breytt &#237;</label>
+          <input type="text" id="log-changed" class="form-input" placeholder="N&#253;r texti...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">&#193;st&#230;&#240;a</label>
+          <textarea id="log-reason" class="form-textarea" rows="2" placeholder="Hvers vegna var breytt..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Sta&#240;setning (valfr&#225;lst)</label>
+          <input type="text" id="log-location" class="form-input" placeholder="t.d. M&#225;lsgrein 3">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('log-modal')">H&#230;tta vi&#240;</button>
+        <button class="btn btn-primary" onclick="rvSaveLogEntry()">Vista</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/layout.js"></script>
   <script src="/js/theme.js"></script>
-  <script src="/js/nav.js"></script>
+  <script src="/js/htmlUtils.js"></script>
   <script>
-    // ================================================================
-    // STATE
-    // ================================================================
-    let currentBook = '';
-    let currentChapter = 0;
-    let currentModuleId = '';
-    let moduleData = null;
-    let userRole = 'viewer';
-
-    // Track unsaved changes: { segmentId: { content, category } }
-    let pendingChanges = {};
-
-    const API_BASE = '/api/localization-editor';
+    /* ==========================================================================
+       LOCALIZATION PAGE — Client Logic
+       Merged: Editor view + Review queue view.
+       All API calls, event handlers, DOM manipulation from both source files.
+       ========================================================================== */
 
     // ================================================================
-    // AUTH
+    // VIEW SWITCHING
     // ================================================================
-    async function checkAuth() {
-      try {
-        const res = await fetch('/api/auth/me', { credentials: 'include' });
-        if (!res.ok) {
-          window.location.href = '/login';
-          return;
-        }
-        const data = await res.json();
-        userRole = data.user?.role || 'viewer';
-        const userInfo = document.getElementById('user-info');
-        if (data.user) {
-          userInfo.textContent = data.user.name || data.user.username;
-        }
-      } catch {
-        // Auth check failed silently
-      }
+
+    function switchView(viewName) {
+      // Toggle tab active state
+      document.querySelectorAll('.view-tab').forEach(function (tab) {
+        tab.classList.toggle('active', tab.dataset.view === viewName);
+      });
+
+      // Toggle panel visibility
+      document.querySelectorAll('.view-panel').forEach(function (panel) {
+        panel.classList.toggle('active', panel.id === 'view-' + viewName);
+      });
     }
 
     // ================================================================
-    // MODULE SELECTOR
+    // SHARED — Modal helper
     // ================================================================
-    const bookSelect = document.getElementById('book-select');
-    const chapterSelect = document.getElementById('chapter-select');
 
-    bookSelect.addEventListener('change', () => {
-      currentBook = bookSelect.value;
-      chapterSelect.disabled = !currentBook;
-      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // ================================================================
+    //
+    //   EDITOR VIEW — All JS from localization-editor.html
+    //
+    // ================================================================
+
+    let edCurrentBook = '';
+    let edCurrentChapter = 0;
+    let edCurrentModuleId = '';
+    let edModuleData = null;
+    let edUserRole = 'viewer';
+
+    // Track unsaved changes: { segmentId: { content, category } }
+    let edPendingChanges = {};
+
+    const ED_API_BASE = '/api/localization-editor';
+
+    // ----------------------------------------------------------------
+    // MODULE SELECTOR
+    // ----------------------------------------------------------------
+
+    const edBookSelect = document.getElementById('ed-book-select');
+    const edChapterSelect = document.getElementById('ed-chapter-select');
+
+    edBookSelect.addEventListener('change', function () {
+      edCurrentBook = edBookSelect.value;
+      edChapterSelect.disabled = !edCurrentBook;
+      edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
       document.getElementById('modules-list').style.display = 'none';
 
-      if (currentBook) {
+      if (edCurrentBook) {
         for (let i = 1; i <= 21; i++) {
-          const opt = document.createElement('option');
+          var opt = document.createElement('option');
           opt.value = i;
-          opt.textContent = `Kafli ${i}`;
-          chapterSelect.appendChild(opt);
+          opt.textContent = 'Kafli ' + i;
+          edChapterSelect.appendChild(opt);
         }
       }
     });
 
-    chapterSelect.addEventListener('change', async () => {
-      currentChapter = parseInt(chapterSelect.value, 10);
-      if (!currentChapter) return;
+    edChapterSelect.addEventListener('change', async function () {
+      edCurrentChapter = parseInt(edChapterSelect.value, 10);
+      if (!edCurrentChapter) return;
 
-      const container = document.getElementById('modules-container');
-      container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
+      var container = document.getElementById('modules-container');
+      container.innerHTML = '<div class="placeholder-text"><span class="spinner"></span><span>Hle\u00F0ur...</span></div>';
       document.getElementById('modules-list').style.display = 'block';
 
       try {
-        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}`, {
+        var res = await fetch(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter, {
           credentials: 'include',
         });
-        const data = await res.json();
+        var data = await res.json();
 
         if (!data.modules || data.modules.length === 0) {
-          container.innerHTML = '<p class="text-muted">Engar einingar fundust.</p>';
+          container.innerHTML = '<p class="placeholder-text">Engar einingar fundust.</p>';
           return;
         }
 
         container.innerHTML = data.modules
-          .map(
-            (m) => `
-            <div class="card" style="padding: 0.75rem; margin-bottom: 0.5rem; cursor: ${m.hasFaithful ? 'pointer' : 'not-allowed'}; opacity: ${m.hasFaithful ? '1' : '0.6'};"
-                 ${m.hasFaithful ? `onclick="loadModule('${m.moduleId}')" title="Smelltu til að staðfæra"` : 'title="Þarf Pass 1 fyrst"'}>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong>${m.moduleId}</strong>
-                <div style="display: flex; gap: 0.5rem;">
-                  ${m.hasFaithful ? '<span class="edit-status approved">Pass 1</span>' : '<span class="edit-status pending">Vantar Pass 1</span>'}
-                  ${m.hasLocalized ? '<span class="edit-status approved">Staðfært</span>' : ''}
-                </div>
-              </div>
-            </div>
-          `
-          )
+          .map(function (m) {
+            var clickable = m.hasFaithful;
+            return '<div class="module-item ' + (clickable ? 'clickable' : 'disabled') + '"' +
+              (clickable
+                ? ' onclick="edLoadModule(\'' + m.moduleId + '\')" title="Smelltu til a\u00F0 sta\u00F0f\u00E6ra"'
+                : ' title="\u00DEarf Pass 1 fyrst"') +
+              '>' +
+              '<strong>' + escapeHtml(m.moduleId) + '</strong>' +
+              '<div style="display:flex;gap:0.5rem">' +
+                (m.hasFaithful ? '<span class="status-badge status-approved">Pass 1</span>' : '<span class="status-badge status-pending">Vantar Pass 1</span>') +
+                (m.hasLocalized ? '<span class="status-badge status-approved">Sta\u00F0f\u00E6rt</span>' : '') +
+              '</div>' +
+            '</div>';
+          })
           .join('');
       } catch (err) {
-        container.innerHTML = `<p class="text-muted" style="color: var(--error);">Villa: ${err.message}</p>`;
+        container.innerHTML = '<p class="placeholder-text error-text">Villa: ' + escapeHtml(err.message) + '</p>';
       }
     });
 
-    // ================================================================
+    // ----------------------------------------------------------------
     // LOAD MODULE
-    // ================================================================
-    async function loadModule(moduleId) {
-      currentModuleId = moduleId;
-      pendingChanges = {};
+    // ----------------------------------------------------------------
+
+    async function edLoadModule(moduleId) {
+      edCurrentModuleId = moduleId;
+      edPendingChanges = {};
 
       try {
-        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
+        var res = await fetch(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId, {
           credentials: 'include',
         });
         if (!res.ok) throw new Error((await res.json()).error || 'Failed to load');
-        moduleData = await res.json();
+        edModuleData = await res.json();
 
         document.getElementById('module-selector').style.display = 'none';
         document.getElementById('editor-container').style.display = 'block';
 
-        renderModule();
+        edRenderModule();
       } catch (err) {
-        alert('Villa við að hlaða einingu: ' + err.message);
+        alert('Villa vi\u00F0 a\u00F0 hla\u00F0a einingu: ' + err.message);
       }
     }
 
-    // ================================================================
+    // ----------------------------------------------------------------
     // RENDER MODULE
-    // ================================================================
-    function renderModule() {
+    // ----------------------------------------------------------------
+
+    function edRenderModule() {
       document.getElementById('module-title').textContent =
-        `${moduleData.moduleId} — ${moduleData.title}`;
+        edModuleData.moduleId + ' \u2014 ' + edModuleData.title;
       document.getElementById('module-meta').textContent =
-        `Kafli ${moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
-        `${moduleData.faithfulCount} þýddar (Pass 1) · ` +
-        `${moduleData.localizedCount} staðfærðar`;
+        'Kafli ' + edModuleData.chapter + ' \u00B7 ' + edModuleData.segmentCount + ' b\u00FAtar \u00B7 ' +
+        edModuleData.faithfulCount + ' \u00FE\u00FDddar (Pass 1) \u00B7 ' +
+        edModuleData.localizedCount + ' sta\u00F0f\u00E6r\u00F0ar';
 
-      renderStats();
-      renderSegments();
-      updateProgress();
+      edRenderStats();
+      edRenderSegments();
+      edUpdateProgress();
     }
 
-    function renderStats() {
-      const bar = document.getElementById('stats-bar');
-      const total = moduleData.segmentCount;
-      const localized = moduleData.localizedCount;
-      const remaining = total - localized;
-      const modified = Object.keys(pendingChanges).length;
+    function edRenderStats() {
+      var bar = document.getElementById('stats-bar');
+      var total = edModuleData.segmentCount;
+      var localized = edModuleData.localizedCount;
+      var remaining = total - localized;
+      var modified = Object.keys(edPendingChanges).length;
 
-      bar.innerHTML = `
-        <div class="stat-item"><strong>${total}</strong> bútar</div>
-        <div class="stat-item localized"><strong>${localized}</strong> staðfærðar</div>
-        <div class="stat-item remaining"><strong>${remaining}</strong> eftir</div>
-        ${modified > 0 ? `<div class="stat-item saved"><strong>${modified}</strong> óvistaðar breytingar</div>` : ''}
-      `;
+      bar.innerHTML =
+        '<div class="stat-item"><strong>' + total + '</strong> b\u00FAtar</div>' +
+        '<div class="stat-item localized"><strong>' + localized + '</strong> sta\u00F0f\u00E6r\u00F0ar</div>' +
+        '<div class="stat-item remaining"><strong>' + remaining + '</strong> eftir</div>' +
+        (modified > 0 ? '<div class="stat-item saved"><strong>' + modified + '</strong> \u00F3vista\u00F0ar breytingar</div>' : '');
     }
 
-    function updateProgress() {
-      const total = moduleData.segmentCount || 1;
-      const localized = moduleData.localizedCount + Object.keys(pendingChanges).length;
-      const pct = Math.min(100, Math.round((localized / total) * 100));
+    function edUpdateProgress() {
+      var total = edModuleData.segmentCount || 1;
+      var localized = edModuleData.localizedCount + Object.keys(edPendingChanges).length;
+      var pct = Math.min(100, Math.round((localized / total) * 100));
       document.getElementById('progress-fill').style.width = pct + '%';
     }
 
-    function renderSegments() {
-      const tbody = document.getElementById('segments-body');
-      const filterType = document.getElementById('filter-type').value;
-      const filterCat = document.getElementById('filter-category').value;
+    function edRenderSegments() {
+      var tbody = document.getElementById('segments-body');
+      var filterType = document.getElementById('filter-type').value;
+      var filterCat = document.getElementById('filter-category').value;
 
-      let segments = moduleData.segments;
+      var segments = edModuleData.segments.slice();
 
       // Apply filters
       if (filterType === 'modified') {
-        segments = segments.filter((s) => pendingChanges[s.segmentId]);
+        segments = segments.filter(function (s) { return edPendingChanges[s.segmentId]; });
       } else if (filterType === 'localized') {
-        segments = segments.filter((s) => s.hasLocalized || pendingChanges[s.segmentId]);
+        segments = segments.filter(function (s) { return s.hasLocalized || edPendingChanges[s.segmentId]; });
       } else if (filterType === 'remaining') {
-        segments = segments.filter((s) => !s.hasLocalized && !pendingChanges[s.segmentId]);
+        segments = segments.filter(function (s) { return !s.hasLocalized && !edPendingChanges[s.segmentId]; });
       } else if (filterType !== 'all') {
-        segments = segments.filter((s) => s.segmentType === filterType);
+        segments = segments.filter(function (s) { return s.segmentType === filterType; });
       }
 
-      // Category filter would require stored categories — skip for now unless we track in pendingChanges
       if (filterCat !== 'all') {
-        segments = segments.filter((s) => {
-          const change = pendingChanges[s.segmentId];
+        segments = segments.filter(function (s) {
+          var change = edPendingChanges[s.segmentId];
           return change && change.category === filterCat;
         });
       }
 
-      tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+      tbody.innerHTML = segments.map(function (seg) { return edRenderSegmentRow(seg); }).join('');
 
       // Attach event listeners for textareas
-      segments.forEach((seg) => {
-        const ta = document.getElementById('ta-' + cssId(seg.segmentId));
+      segments.forEach(function (seg) {
+        var ta = document.getElementById('ta-' + edCssId(seg.segmentId));
         if (ta) {
-          ta.addEventListener('input', () => onSegmentEdit(seg.segmentId));
-          ta.addEventListener('blur', () => onSegmentBlur(seg.segmentId));
+          ta.addEventListener('input', function () { edOnSegmentEdit(seg.segmentId); });
+          ta.addEventListener('blur', function () { edOnSegmentBlur(seg.segmentId); });
         }
       });
     }
 
-    function renderSegmentRow(seg) {
-      const pending = pendingChanges[seg.segmentId];
-      const isDifferent = seg.hasLocalized && seg.localized !== seg.faithful;
-      let rowClass = 'segment-row';
+    function edRenderSegmentRow(seg) {
+      var pending = edPendingChanges[seg.segmentId];
+      var isDifferent = seg.hasLocalized && seg.localized !== seg.faithful;
+      var rowClass = 'segment-row';
       if (pending) rowClass += ' modified';
       else if (seg.hasLocalized) rowClass += ' saved';
 
-      const enHtml = highlightMath(escapeHtml(seg.en));
-      const faithfulHtml = highlightMath(escapeHtml(seg.faithful));
+      var enHtml = edHighlightMath(escapeHtml(seg.en));
+      var faithfulHtml = edHighlightMath(escapeHtml(seg.faithful));
 
-      // Current localized content: pending changes > existing localized > faithful (as starting point)
-      const currentContent = pending
+      var currentContent = pending
         ? pending.content
         : (seg.hasLocalized ? seg.localized : seg.faithful);
 
-      return `
-        <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
-          <td class="col-type">
-            <span class="segment-type-badge ${seg.segmentType}">${seg.segmentType}</span>
-            ${isDifferent ? '<span class="diff-indicator different" title="Breytt frá trúri þýðingu"></span>' : ''}
-          </td>
-          <td class="col-en">
-            <div class="segment-content">${enHtml || '<em class="text-muted">—</em>'}</div>
-          </td>
-          <td class="col-faithful">
-            <div class="segment-content">${faithfulHtml || '<em class="text-muted">—</em>'}</div>
-            <button class="btn-copy-faithful" onclick="copyFaithful('${seg.segmentId}')" title="Afrita trúa þýðingu">
-              <i class="fas fa-copy"></i> Afrita
-            </button>
-          </td>
-          <td class="col-localized">
-            <textarea class="localized-textarea ${pending ? 'modified' : ''}"
-                      id="ta-${cssId(seg.segmentId)}">${escapeHtml(currentContent)}</textarea>
-            <span class="save-indicator" id="ind-${cssId(seg.segmentId)}">
-              ${seg.hasLocalized && !pending ? 'Vistað' : ''}
-            </span>
-          </td>
-          <td class="col-actions">
-            <button class="btn-save-seg" onclick="saveSingleSegment('${seg.segmentId}')" title="Vista bút">
-              <i class="fas fa-check"></i>
-            </button>
-          </td>
-        </tr>
-      `;
+      // SVG for copy button
+      var copySvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+      // SVG for save button
+      var checkSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+      return '<tr class="' + rowClass + '" id="row-' + edCssId(seg.segmentId) + '">' +
+        '<td class="col-type">' +
+          '<span class="segment-type-badge ' + seg.segmentType + '">' + escapeHtml(seg.segmentType) + '</span>' +
+          (isDifferent ? '<span class="diff-indicator different" title="Breytt fr\u00E1 tr\u00FAri \u00FE\u00FD\u00F0ingu"></span>' : '') +
+        '</td>' +
+        '<td class="col-en">' +
+          '<div class="segment-content">' + (enHtml || '<em style="color:var(--text-muted)">\u2014</em>') + '</div>' +
+        '</td>' +
+        '<td class="col-faithful">' +
+          '<div class="segment-content">' + (faithfulHtml || '<em style="color:var(--text-muted)">\u2014</em>') + '</div>' +
+          '<button class="btn-copy-faithful" onclick="edCopyFaithful(\'' + seg.segmentId + '\')" title="Afrita tr\u00FAa \u00FE\u00FD\u00F0ingu">' +
+            copySvg + ' Afrita' +
+          '</button>' +
+        '</td>' +
+        '<td class="col-localized">' +
+          '<textarea class="localized-textarea' + (pending ? ' modified' : '') + '" ' +
+            'id="ta-' + edCssId(seg.segmentId) + '">' + escapeHtml(currentContent) + '</textarea>' +
+          '<span class="save-indicator" id="ind-' + edCssId(seg.segmentId) + '">' +
+            (seg.hasLocalized && !pending ? 'Vista\u00F0' : '') +
+          '</span>' +
+        '</td>' +
+        '<td class="col-actions">' +
+          '<button class="btn-save-seg" onclick="edSaveSingleSegment(\'' + seg.segmentId + '\')" title="Vista b\u00FAt">' +
+            checkSvg +
+          '</button>' +
+        '</td>' +
+      '</tr>';
     }
 
-    // ================================================================
+    // ----------------------------------------------------------------
     // EDIT TRACKING
-    // ================================================================
-    function onSegmentEdit(segmentId) {
-      const ta = document.getElementById('ta-' + cssId(segmentId));
+    // ----------------------------------------------------------------
+
+    function edOnSegmentEdit(segmentId) {
+      var ta = document.getElementById('ta-' + edCssId(segmentId));
       if (!ta) return;
 
-      const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+      var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
       if (!seg) return;
 
-      const currentSaved = seg.hasLocalized ? seg.localized : seg.faithful;
-      const newContent = ta.value;
+      var currentSaved = seg.hasLocalized ? seg.localized : seg.faithful;
+      var newContent = ta.value;
 
       if (newContent !== currentSaved) {
-        pendingChanges[segmentId] = {
+        edPendingChanges[segmentId] = {
           content: newContent,
-          category: pendingChanges[segmentId]?.category || '',
+          category: edPendingChanges[segmentId]?.category || '',
         };
         ta.classList.add('modified');
-        const row = document.getElementById('row-' + cssId(segmentId));
+        var row = document.getElementById('row-' + edCssId(segmentId));
         if (row) row.className = 'segment-row modified';
       } else {
-        delete pendingChanges[segmentId];
+        delete edPendingChanges[segmentId];
         ta.classList.remove('modified');
-        const row = document.getElementById('row-' + cssId(segmentId));
+        var row = document.getElementById('row-' + edCssId(segmentId));
         if (row) row.className = seg.hasLocalized ? 'segment-row saved' : 'segment-row';
       }
 
-      const ind = document.getElementById('ind-' + cssId(segmentId));
-      if (ind) ind.textContent = pendingChanges[segmentId] ? 'Breytt' : (seg.hasLocalized ? 'Vistað' : '');
+      var ind = document.getElementById('ind-' + edCssId(segmentId));
+      if (ind) ind.textContent = edPendingChanges[segmentId] ? 'Breytt' : (seg.hasLocalized ? 'Vista\u00F0' : '');
 
-      renderStats();
-      updateProgress();
+      edRenderStats();
+      edUpdateProgress();
     }
 
-    function onSegmentBlur(segmentId) {
+    function edOnSegmentBlur(segmentId) {
       // Auto-save on blur could be added here if desired
     }
 
-    // ================================================================
+    // ----------------------------------------------------------------
     // SAVE ACTIONS
-    // ================================================================
-    async function saveSingleSegment(segmentId) {
-      const ta = document.getElementById('ta-' + cssId(segmentId));
-      const ind = document.getElementById('ind-' + cssId(segmentId));
+    // ----------------------------------------------------------------
+
+    async function edSaveSingleSegment(segmentId) {
+      var ta = document.getElementById('ta-' + edCssId(segmentId));
+      var ind = document.getElementById('ind-' + edCssId(segmentId));
       if (!ta) return;
 
-      const content = ta.value;
+      var content = ta.value;
       ind.textContent = 'Vistar...';
       ind.className = 'save-indicator saving';
 
       try {
-        const res = await fetch(
-          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/save`,
+        var res = await fetch(
+          ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ segmentId, content }),
+            body: JSON.stringify({ segmentId: segmentId, content: content }),
           }
         );
 
         if (!res.ok) {
-          const err = await res.json();
+          var err = await res.json();
           throw new Error(err.error || 'Failed to save');
         }
 
         // Update local state
-        const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+        var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
         if (seg) {
           seg.localized = content;
           seg.hasLocalized = true;
-          if (!moduleData.segments.some(s => s.segmentId === segmentId && !s.hasLocalized)) {
-            moduleData.localizedCount = moduleData.segments.filter(s => s.hasLocalized).length;
-          }
         }
 
-        delete pendingChanges[segmentId];
+        delete edPendingChanges[segmentId];
         ta.classList.remove('modified');
 
-        const row = document.getElementById('row-' + cssId(segmentId));
+        var row = document.getElementById('row-' + edCssId(segmentId));
         if (row) row.className = 'segment-row saved';
 
-        ind.textContent = 'Vistað';
+        ind.textContent = 'Vista\u00F0';
         ind.className = 'save-indicator saved';
 
-        // Recount
-        moduleData.localizedCount = moduleData.segments.filter(s => s.hasLocalized).length;
-        renderStats();
-        updateProgress();
+        edModuleData.localizedCount = edModuleData.segments.filter(function (s) { return s.hasLocalized; }).length;
+        edRenderStats();
+        edUpdateProgress();
       } catch (err) {
         ind.textContent = 'Villa!';
         ind.className = 'save-indicator error';
-        alert('Villa við að vista: ' + err.message);
+        alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
       }
     }
 
-    async function saveAllSegments() {
-      const keys = Object.keys(pendingChanges);
+    async function edSaveAllSegments() {
+      var keys = Object.keys(edPendingChanges);
       if (keys.length === 0) {
-        alert('Engar óvistaðar breytingar.');
+        alert('Engar \u00F3vista\u00F0ar breytingar.');
         return;
       }
 
-      const globalInd = document.getElementById('global-save-indicator');
-      globalInd.textContent = `Vistar ${keys.length} búta...`;
+      var globalInd = document.getElementById('global-save-indicator');
+      globalInd.textContent = 'Vistar ' + keys.length + ' b\u00FAta...';
       globalInd.className = 'save-indicator saving';
 
-      const segments = keys.map((segmentId) => ({
-        segmentId,
-        content: pendingChanges[segmentId].content,
-      }));
+      var segments = keys.map(function (segmentId) {
+        return {
+          segmentId: segmentId,
+          content: edPendingChanges[segmentId].content,
+        };
+      });
 
       try {
-        const res = await fetch(
-          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/save-all`,
+        var res = await fetch(
+          ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save-all',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ segments }),
+            body: JSON.stringify({ segments: segments }),
           }
         );
 
         if (!res.ok) {
-          const err = await res.json();
+          var err = await res.json();
           throw new Error(err.error || 'Failed to save');
         }
 
-        const result = await res.json();
+        var result = await res.json();
 
         // Update local state for all saved segments
-        for (const segmentId of keys) {
-          const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+        for (var i = 0; i < keys.length; i++) {
+          var segmentId = keys[i];
+          var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
           if (seg) {
-            seg.localized = pendingChanges[segmentId].content;
+            seg.localized = edPendingChanges[segmentId].content;
             seg.hasLocalized = true;
           }
         }
-        pendingChanges = {};
+        edPendingChanges = {};
 
-        moduleData.localizedCount = moduleData.segments.filter(s => s.hasLocalized).length;
+        edModuleData.localizedCount = edModuleData.segments.filter(function (s) { return s.hasLocalized; }).length;
 
-        globalInd.textContent = `${result.savedSegments} bútar vistaðar`;
+        globalInd.textContent = result.savedSegments + ' b\u00FAtar vista\u00F0ar';
         globalInd.className = 'save-indicator saved';
-        setTimeout(() => { globalInd.textContent = ''; }, 3000);
+        setTimeout(function () { globalInd.textContent = ''; }, 3000);
 
-        renderSegments();
-        renderStats();
-        updateProgress();
+        edRenderSegments();
+        edRenderStats();
+        edUpdateProgress();
       } catch (err) {
         globalInd.textContent = 'Villa!';
         globalInd.className = 'save-indicator error';
-        alert('Villa við að vista: ' + err.message);
+        alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
       }
     }
 
-    function copyFaithful(segmentId) {
-      const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+    function edCopyFaithful(segmentId) {
+      var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
       if (!seg) return;
 
-      const ta = document.getElementById('ta-' + cssId(segmentId));
+      var ta = document.getElementById('ta-' + edCssId(segmentId));
       if (ta) {
         ta.value = seg.faithful;
-        onSegmentEdit(segmentId);
+        edOnSegmentEdit(segmentId);
       }
     }
 
-    // ================================================================
+    // ----------------------------------------------------------------
     // BACK BUTTON
-    // ================================================================
-    document.getElementById('btn-back').addEventListener('click', () => {
-      if (Object.keys(pendingChanges).length > 0) {
-        if (!confirm('Þú átt óvistaðar breytingar. Viltu yfirgefa?')) return;
+    // ----------------------------------------------------------------
+
+    document.getElementById('btn-back').addEventListener('click', function () {
+      if (Object.keys(edPendingChanges).length > 0) {
+        if (!confirm('\u00DE\u00FA \u00E1tt \u00F3vista\u00F0ar breytingar. Viltu yfirgefa?')) return;
       }
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
-      moduleData = null;
-      pendingChanges = {};
+      edModuleData = null;
+      edPendingChanges = {};
     });
 
-    // ================================================================
+    // ----------------------------------------------------------------
     // SAVE ALL BUTTON
-    // ================================================================
-    document.getElementById('btn-save-all').addEventListener('click', saveAllSegments);
+    // ----------------------------------------------------------------
 
-    // ================================================================
+    document.getElementById('btn-save-all').addEventListener('click', edSaveAllSegments);
+
+    // ----------------------------------------------------------------
     // FILTERS
-    // ================================================================
-    document.getElementById('filter-type').addEventListener('change', renderSegments);
-    document.getElementById('filter-category').addEventListener('change', renderSegments);
+    // ----------------------------------------------------------------
 
-    // ================================================================
+    document.getElementById('filter-type').addEventListener('change', edRenderSegments);
+    document.getElementById('filter-category').addEventListener('change', edRenderSegments);
+
+    // ----------------------------------------------------------------
     // WARN BEFORE LEAVING WITH UNSAVED CHANGES
-    // ================================================================
-    window.addEventListener('beforeunload', (e) => {
-      if (Object.keys(pendingChanges).length > 0) {
+    // ----------------------------------------------------------------
+
+    window.addEventListener('beforeunload', function (e) {
+      if (Object.keys(edPendingChanges).length > 0) {
         e.preventDefault();
         e.returnValue = '';
       }
     });
 
-    // ================================================================
-    // HELPERS
-    // ================================================================
-    function highlightMath(html) {
+    // ----------------------------------------------------------------
+    // EDITOR HELPERS
+    // ----------------------------------------------------------------
+
+    function edHighlightMath(html) {
       return html.replace(
         /\[\[MATH:(\d+)\]\]/g,
         '<span class="math-placeholder">[[MATH:$1]]</span>'
       );
     }
 
-    function cssId(segmentId) {
+    function edCssId(segmentId) {
       return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
     }
 
+
     // ================================================================
-    // INIT
+    //
+    //   REVIEW VIEW — All JS from localization-review.html
+    //
     // ================================================================
-    checkAuth();
+
+    let rvCurrentUser = null;
+    let rvCurrentSectionId = null;
+    let rvCurrentSuggestions = [];
+    let rvCurrentFilter = 'all';
+    let rvEditingSuggestionId = null;
+
+    // ----------------------------------------------------------------
+    // REVIEW: Event Listeners
+    // ----------------------------------------------------------------
+
+    function rvSetupEventListeners() {
+      document.getElementById('rv-book-select').addEventListener('change', async function (e) {
+        var bookSlug = e.target.value;
+        if (bookSlug) {
+          await rvLoadChapters(bookSlug);
+        } else {
+          rvResetSelectors(['rv-chapter-select', 'rv-section-select']);
+        }
+      });
+
+      document.getElementById('rv-chapter-select').addEventListener('change', async function (e) {
+        var chapterNum = e.target.value;
+        var bookSlug = document.getElementById('rv-book-select').value;
+        if (bookSlug && chapterNum) {
+          await rvLoadSections(bookSlug, chapterNum);
+        } else {
+          rvResetSelectors(['rv-section-select']);
+        }
+      });
+
+      document.getElementById('rv-section-select').addEventListener('change', function () {
+        var sectionId = document.getElementById('rv-section-select').value;
+        document.getElementById('rv-load-btn').disabled = !sectionId;
+      });
+    }
+
+    // ----------------------------------------------------------------
+    // REVIEW: Load books / chapters / sections
+    // ----------------------------------------------------------------
+
+    async function rvLoadBooks() {
+      try {
+        var res = await fetch('/api/admin/books');
+        var data = await res.json();
+        var select = document.getElementById('rv-book-select');
+
+        data.books.forEach(function (book) {
+          select.innerHTML += '<option value="' + escapeHtml(book.slug) + '">' + escapeHtml(book.titleIs) + '</option>';
+        });
+      } catch (err) {
+        console.error('Failed to load books:', err);
+      }
+    }
+
+    async function rvLoadChapters(bookSlug) {
+      var select = document.getElementById('rv-chapter-select');
+      select.innerHTML = '<option value="">Hle\u00F0ur...</option>';
+      select.disabled = true;
+      rvResetSelectors(['rv-section-select']);
+
+      try {
+        var res = await fetch('/api/books/' + bookSlug);
+        var data = await res.json();
+
+        select.innerHTML = '<option value="">Veldu kafla...</option>';
+        data.chapters.forEach(function (ch) {
+          select.innerHTML += '<option value="' + ch.chapter + '">Kafli ' + ch.chapter + ': ' + escapeHtml(ch.titleIs || ch.title) + '</option>';
+        });
+        select.disabled = false;
+      } catch (err) {
+        select.innerHTML = '<option value="">Villa</option>';
+      }
+    }
+
+    async function rvLoadSections(bookSlug, chapterNum) {
+      var select = document.getElementById('rv-section-select');
+      select.innerHTML = '<option value="">Hle\u00F0ur...</option>';
+      select.disabled = true;
+
+      try {
+        var res = await fetch('/api/sections/' + bookSlug + '/' + chapterNum);
+        var data = await res.json();
+
+        select.innerHTML = '<option value="">Veldu hluta...</option>';
+        data.sections.forEach(function (sec) {
+          var status = sec.status === 'localization_in_progress' ? ' (\u00ED vinnslu)' :
+                       sec.status === 'faithful_approved' ? ' (tilb\u00FAinn)' : '';
+          select.innerHTML += '<option value="' + sec.id + '">' + escapeHtml(sec.sectionNum) + status + '</option>';
+        });
+        select.disabled = false;
+      } catch (err) {
+        select.innerHTML = '<option value="">Villa</option>';
+      }
+    }
+
+    function rvResetSelectors(ids) {
+      ids.forEach(function (id) {
+        var el = document.getElementById(id);
+        el.innerHTML = '<option value="">Veldu...</option>';
+        el.disabled = true;
+      });
+      document.getElementById('rv-load-btn').disabled = true;
+    }
+
+    // ----------------------------------------------------------------
+    // REVIEW: Load section
+    // ----------------------------------------------------------------
+
+    async function rvLoadSection() {
+      var sectionId = document.getElementById('rv-section-select').value;
+      if (!sectionId) return;
+      await rvLoadSectionById(parseInt(sectionId, 10));
+    }
+
+    async function rvLoadSectionById(sectionId) {
+      rvCurrentSectionId = sectionId;
+
+      // Update URL
+      var url = new URL(window.location);
+      url.searchParams.set('sectionId', sectionId);
+      window.history.pushState({}, '', url);
+
+      // Hide selector, show interface
+      document.getElementById('rv-section-selector').style.display = 'none';
+      document.getElementById('rv-review-interface').style.display = 'block';
+
+      try {
+        var sectionRes = await fetch('/api/localization/' + sectionId);
+        var sectionData = await sectionRes.json();
+
+        document.getElementById('rv-section-title').textContent =
+          sectionData.section.sectionNum + ' - ' + (sectionData.section.titleEn || 'Hluti');
+        document.getElementById('rv-section-status').textContent = rvFormatStatus(sectionData.section.status);
+
+        await rvLoadPanelContent(sectionData.section);
+        await rvLoadSuggestions();
+
+        if (sectionData.log && sectionData.log.entries) {
+          rvRenderLogEntries(sectionData.log.entries);
+        }
+      } catch (err) {
+        console.error('Failed to load section:', err);
+        alert('Villa vi\u00F0 a\u00F0 hla\u00F0a hluta: ' + err.message);
+      }
+    }
+
+    async function rvLoadPanelContent(section) {
+      var faithfulEl = document.getElementById('rv-faithful-content');
+
+      try {
+        var res = await fetch('/api/editor/' + section.bookSlug + '/' + section.chapterNum + '/' + section.sectionNum);
+        var data = await res.json();
+
+        if (data.content && data.content.is) {
+          faithfulEl.innerHTML = rvFormatMarkdownPreview(data.content.is);
+        } else {
+          faithfulEl.innerHTML = '<p class="placeholder-text">Tr\u00FA \u00FE\u00FD\u00F0ing ekki tilt\u00E6k.</p>';
+        }
+      } catch (err) {
+        faithfulEl.innerHTML = '<p class="placeholder-text">Villa vi\u00F0 a\u00F0 hla\u00F0a \u00FE\u00FD\u00F0ingu.</p>';
+      }
+
+      var localizedEl = document.getElementById('rv-localized-content');
+      localizedEl.innerHTML = faithfulEl.innerHTML;
+    }
+
+    // ----------------------------------------------------------------
+    // REVIEW: Suggestions
+    // ----------------------------------------------------------------
+
+    async function rvLoadSuggestions() {
+      try {
+        var res = await fetch('/api/suggestions/' + rvCurrentSectionId);
+        var data = await res.json();
+
+        rvCurrentSuggestions = data.suggestions || [];
+        rvUpdateStats(data.stats);
+        rvRenderSuggestions();
+      } catch (err) {
+        console.error('Failed to load suggestions:', err);
+        document.getElementById('rv-suggestions-list').innerHTML =
+          '<p class="placeholder-text error-text">Villa vi\u00F0 a\u00F0 hla\u00F0a till\u00F6gum.</p>';
+      }
+    }
+
+    function rvUpdateStats(stats) {
+      document.getElementById('rv-stat-total').textContent = stats?.total || 0;
+      document.getElementById('rv-stat-pending').textContent = stats?.byStatus?.pending || 0;
+      document.getElementById('rv-stat-accepted').textContent =
+        (stats?.byStatus?.accepted || 0) + (stats?.byStatus?.modified || 0);
+      document.getElementById('rv-stat-rejected').textContent = stats?.byStatus?.rejected || 0;
+    }
+
+    function rvRenderSuggestions() {
+      var list = document.getElementById('rv-suggestions-list');
+
+      var filtered = rvCurrentFilter === 'all'
+        ? rvCurrentSuggestions
+        : rvCurrentSuggestions.filter(function (s) {
+            if (rvCurrentFilter === 'accepted') {
+              return s.status === 'accepted' || s.status === 'modified';
+            }
+            return s.status === rvCurrentFilter;
+          });
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<p class="placeholder-text">Engar till\u00F6gur \u00ED \u00FEessum flokki.</p>';
+        return;
+      }
+
+      // Arrow SVG
+      var arrowSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+      var checkSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      var editSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>';
+      var xSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+
+      list.innerHTML = filtered.map(function (s) {
+        var actionsHtml;
+        if (s.status === 'pending') {
+          actionsHtml =
+            '<button class="btn btn-sm btn-success" onclick="rvAcceptSuggestion(' + s.id + ')">' + checkSvg + ' Sam\u00FEykkja</button>' +
+            '<button class="btn btn-sm btn-secondary" onclick="rvEditSuggestion(' + s.id + ')">' + editSvg + ' Breyta</button>' +
+            '<button class="btn btn-sm btn-secondary" onclick="rvRejectSuggestion(' + s.id + ')">' + xSvg + ' Hafna</button>';
+        } else {
+          actionsHtml = '<span class="status-label status-' + s.status + '">' + rvFormatSuggestionStatus(s.status) + '</span>';
+        }
+
+        return '<div class="suggestion-item suggestion-' + s.status + '" data-id="' + s.id + '">' +
+          '<div class="suggestion-type">' +
+            '<span class="type-badge type-' + s.type + '">' + rvFormatType(s.type) + '</span>' +
+            '<span class="line-number">L\u00EDna ' + s.lineNumber + '</span>' +
+          '</div>' +
+          '<div class="suggestion-content">' +
+            '<div class="original"><label>Upprunalegt:</label><span>' + escapeHtml(s.originalText) + '</span></div>' +
+            '<div class="suggestion-arrow">' + arrowSvg + '</div>' +
+            '<div class="suggested"><label>Till\u00F6ga:</label><span>' + escapeHtml(s.reviewerModifiedText || s.suggestedText) + '</span>' +
+              (s.status === 'modified' ? '<em>(breytt)</em>' : '') +
+            '</div>' +
+          '</div>' +
+          '<div class="suggestion-context">' + escapeHtml(s.context || '') + '</div>' +
+          '<div class="suggestion-actions">' + actionsHtml + '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    function rvFilterSuggestions(filter) {
+      rvCurrentFilter = filter;
+
+      document.querySelectorAll('.filter-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.dataset.filter === filter);
+      });
+
+      rvRenderSuggestions();
+    }
+
+    async function rvScanForSuggestions() {
+      var btn = event.target.closest('button');
+      btn.disabled = true;
+      var originalHtml = btn.innerHTML;
+      btn.innerHTML = '<span class="spinner"></span> Skannar...';
+
+      try {
+        var res = await fetch('/api/suggestions/scan/' + rvCurrentSectionId, { method: 'POST' });
+        var data = await res.json();
+
+        if (data.success) {
+          await rvLoadSuggestions();
+          alert('Skanna\u00F0! ' + data.suggestionsCount + ' till\u00F6gur fundust.');
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+      }
+    }
+
+    async function rvAcceptSuggestion(id) {
+      try {
+        var res = await fetch('/api/suggestions/' + id + '/accept', { method: 'POST' });
+        var data = await res.json();
+
+        if (data.success) {
+          await rvLoadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function rvRejectSuggestion(id) {
+      try {
+        var res = await fetch('/api/suggestions/' + id + '/reject', { method: 'POST' });
+        var data = await res.json();
+
+        if (data.success) {
+          await rvLoadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function rvEditSuggestion(id) {
+      rvEditingSuggestionId = id;
+      var suggestion = rvCurrentSuggestions.find(function (s) { return s.id === id; });
+
+      document.getElementById('edit-original').value = suggestion.originalText;
+      document.getElementById('edit-suggested').value = suggestion.suggestedText;
+      document.getElementById('edit-modified').value = suggestion.reviewerModifiedText || suggestion.suggestedText;
+
+      document.getElementById('edit-modal').style.display = 'flex';
+    }
+
+    async function rvSaveModifiedSuggestion() {
+      var modifiedText = document.getElementById('edit-modified').value.trim();
+
+      if (!modifiedText) {
+        alert('Breyting er nau\u00F0synleg');
+        return;
+      }
+
+      try {
+        var res = await fetch('/api/suggestions/' + rvEditingSuggestionId + '/modify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ modifiedText: modifiedText })
+        });
+
+        var data = await res.json();
+
+        if (data.success) {
+          closeModal('edit-modal');
+          await rvLoadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function rvAcceptAllPending() {
+      var pendingIds = rvCurrentSuggestions
+        .filter(function (s) { return s.status === 'pending'; })
+        .map(function (s) { return s.id; });
+
+      if (pendingIds.length === 0) {
+        alert('Engar till\u00F6gur \u00ED bi\u00F0');
+        return;
+      }
+
+      if (!confirm('Sam\u00FEykkja ' + pendingIds.length + ' till\u00F6gur?')) return;
+
+      try {
+        var res = await fetch('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: pendingIds, action: 'accept' })
+        });
+
+        var data = await res.json();
+
+        if (data.success) {
+          await rvLoadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function rvRejectAllPending() {
+      var pendingIds = rvCurrentSuggestions
+        .filter(function (s) { return s.status === 'pending'; })
+        .map(function (s) { return s.id; });
+
+      if (pendingIds.length === 0) {
+        alert('Engar till\u00F6gur \u00ED bi\u00F0');
+        return;
+      }
+
+      if (!confirm('Hafna ' + pendingIds.length + ' till\u00F6gum?')) return;
+
+      try {
+        var res = await fetch('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: pendingIds, action: 'reject' })
+        });
+
+        var data = await res.json();
+
+        if (data.success) {
+          await rvLoadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function rvSyncToLog() {
+      var accepted = rvCurrentSuggestions.filter(function (s) {
+        return s.status === 'accepted' || s.status === 'modified';
+      });
+
+      if (accepted.length === 0) {
+        alert('Engar sam\u00FEykktar till\u00F6gur til a\u00F0 samstilla');
+        return;
+      }
+
+      try {
+        var res = await fetch('/api/suggestions/' + rvCurrentSectionId + '/sync-log', { method: 'POST' });
+        var data = await res.json();
+
+        if (data.success) {
+          alert(data.entriesCreated + ' f\u00E6rslur b\u00E6ttar vi\u00F0 skr\u00E1');
+          var sectionRes = await fetch('/api/localization/' + rvCurrentSectionId);
+          var sectionData = await sectionRes.json();
+          if (sectionData.log && sectionData.log.entries) {
+            rvRenderLogEntries(sectionData.log.entries);
+          }
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // ----------------------------------------------------------------
+    // REVIEW: Log entries
+    // ----------------------------------------------------------------
+
+    function rvRenderLogEntries(entries) {
+      var list = document.getElementById('rv-log-list');
+      var arrowSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+
+      if (!entries || entries.length === 0) {
+        list.innerHTML = '<p class="placeholder-text">Engar f\u00E6rslur \u00ED skr\u00E1.</p>';
+        return;
+      }
+
+      list.innerHTML = entries.map(function (e) {
+        return '<div class="log-entry">' +
+          '<div class="log-type"><span class="type-badge type-' + e.type + '">' + rvFormatLogType(e.type) + '</span></div>' +
+          '<div class="log-content">' +
+            '<span class="log-original">' + escapeHtml(e.original) + '</span>' +
+            arrowSvg +
+            '<span class="log-changed">' + escapeHtml(e.changedTo) + '</span>' +
+          '</div>' +
+          '<div class="log-reason">' + escapeHtml(e.reason) + '</div>' +
+          (e.location ? '<div class="log-location">' + escapeHtml(e.location) + '</div>' : '') +
+        '</div>';
+      }).join('');
+    }
+
+    function rvAddManualLogEntry() {
+      document.getElementById('log-type').value = 'other';
+      document.getElementById('log-original').value = '';
+      document.getElementById('log-changed').value = '';
+      document.getElementById('log-reason').value = '';
+      document.getElementById('log-location').value = '';
+      document.getElementById('log-modal').style.display = 'flex';
+    }
+
+    async function rvSaveLogEntry() {
+      var entry = {
+        type: document.getElementById('log-type').value,
+        original: document.getElementById('log-original').value.trim(),
+        changedTo: document.getElementById('log-changed').value.trim(),
+        reason: document.getElementById('log-reason').value.trim(),
+        location: document.getElementById('log-location').value.trim() || undefined
+      };
+
+      if (!entry.original || !entry.changedTo || !entry.reason) {
+        alert('Upprunalegt, breytt \u00ED, og \u00E1st\u00E6\u00F0a eru nau\u00F0synleg');
+        return;
+      }
+
+      try {
+        var res = await fetch('/api/localization/' + rvCurrentSectionId + '/log/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        });
+
+        var data = await res.json();
+
+        if (data.success) {
+          closeModal('log-modal');
+          var sectionRes = await fetch('/api/localization/' + rvCurrentSectionId);
+          var sectionData = await sectionRes.json();
+          if (sectionData.log && sectionData.log.entries) {
+            rvRenderLogEntries(sectionData.log.entries);
+          }
+        } else {
+          alert('Villa: ' + data.message);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // ----------------------------------------------------------------
+    // REVIEW: Show selector / navigation
+    // ----------------------------------------------------------------
+
+    function rvShowSelector() {
+      document.getElementById('rv-review-interface').style.display = 'none';
+      document.getElementById('rv-section-selector').style.display = 'block';
+
+      var url = new URL(window.location);
+      url.searchParams.delete('sectionId');
+      window.history.pushState({}, '', url);
+
+      rvCurrentSectionId = null;
+    }
+
+    // ----------------------------------------------------------------
+    // REVIEW: Formatting utilities
+    // ----------------------------------------------------------------
+
+    function rvFormatStatus(status) {
+      var names = {
+        'faithful_approved': 'Tilb\u00FAi\u00F0 fyrir sta\u00F0f\u00E6ringu',
+        'localization_in_progress': '\u00CD vinnslu',
+        'localization_submitted': 'Sent til sam\u00FEykktar',
+        'localization_approved': 'Sam\u00FEykkt'
+      };
+      return names[status] || status;
+    }
+
+    function rvFormatType(type) {
+      var names = {
+        'unit_conversion': 'Einingar',
+        'cultural_reference': 'Menning',
+        'currency': 'Gjaldmi\u00F0ill',
+        'agency_reference': 'Stofnanir',
+        'regional_example': 'D\u00E6mi',
+        'other': 'Anna\u00F0'
+      };
+      return names[type] || type;
+    }
+
+    function rvFormatSuggestionStatus(status) {
+      var names = {
+        'accepted': 'Sam\u00FEykkt',
+        'rejected': 'Hafna\u00F0',
+        'modified': 'Breytt og sam\u00FEykkt'
+      };
+      return names[status] || status;
+    }
+
+    function rvFormatLogType(type) {
+      var names = {
+        'unit_conversion': 'Einingarumreikn.',
+        'cultural_adaptation': 'Menningarlegt',
+        'added_context': 'Sk\u00FDringar',
+        'removed_content': 'Fjarl\u00E6gt',
+        'terminology': 'Or\u00F0',
+        'other': 'Anna\u00F0'
+      };
+      return names[type] || type;
+    }
+
+    function rvFormatMarkdownPreview(md) {
+      return md
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>');
+    }
+
+
+    // ================================================================
+    // INITIALIZATION
+    // ================================================================
+
+    async function initPage() {
+      // Auth comes from layout.js via window.currentUser / userLoaded event.
+      // If user is already loaded, grab it; otherwise wait.
+      if (window.currentUser) {
+        onUserReady(window.currentUser);
+      } else {
+        window.addEventListener('userLoaded', function (e) {
+          onUserReady(e.detail);
+        });
+      }
+
+      // Initialize review view selectors and event listeners
+      await rvLoadBooks();
+      rvSetupEventListeners();
+
+      // Check URL params for review deep-link
+      var params = new URLSearchParams(window.location.search);
+      var sectionId = params.get('sectionId');
+      if (sectionId) {
+        switchView('review');
+        await rvLoadSectionById(parseInt(sectionId, 10));
+      }
+    }
+
+    function onUserReady(user) {
+      edUserRole = user?.role || 'viewer';
+      rvCurrentUser = user;
+    }
+
+    initPage();
   </script>
 </body>
 </html>
