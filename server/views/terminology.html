@@ -5,151 +5,656 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orðasafn - Námsbókasafn</title>
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ==========================================================================
+       TERMINOLOGY PAGE — Basalt & Vellum
+       Search, filter, and manage the EN/IS chemistry glossary.
+       ========================================================================== */
+
+    /* ========================================
+       SEARCH SECTION
+       ======================================== */
+
+    .search-section {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .search-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .search-field {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-field svg {
+      position: absolute;
+      left: var(--spacing-md);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-field input {
+      width: 100%;
+      padding: 0.875rem var(--spacing-md) 0.875rem 2.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-md);
+      font-family: var(--font-body);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .search-field input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
+    }
+
+    .search-field input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* ========================================
+       FILTER BAR
+       ======================================== */
+
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .filter-item label {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .filter-item select {
+      padding: 0.375rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+    }
+
+    .filter-item select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
+    }
+
+    .filter-count {
+      margin-left: auto;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .filter-count strong {
+      color: var(--accent);
+    }
+
+    /* ========================================
+       STATS ROW
+       ======================================== */
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .stat-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+
+    .stat-box .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+    }
+
+    .stat-box .stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+
+    .stat-number.color-total   { color: var(--accent); }
+    .stat-number.color-success { color: var(--success); }
+    .stat-number.color-warning { color: var(--warning); }
+    .stat-number.color-error   { color: var(--error); }
+
+    /* ========================================
+       REVIEW QUEUE ALERT
+       ======================================== */
+
+    .review-alert {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem var(--spacing-md);
+      background: var(--warning-subtle);
+      border: 1px solid var(--warning);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-lg);
+      color: var(--warning);
+      font-size: var(--text-base);
+    }
+
+    .review-alert a {
+      color: var(--warning);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .review-alert a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* ========================================
+       TERM CARDS (Table-like Card Layout)
+       ======================================== */
+
+    .terms-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .terms-header h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .terms-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .terms-list-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 120px 110px 120px 60px;
+      gap: var(--spacing-md);
+      padding: 0.625rem 1rem;
+      background: var(--bg-elevated);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .term-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr 120px 110px 120px 60px;
+      gap: var(--spacing-md);
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--bg-surface);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .term-card:hover {
+      background: var(--bg-hover);
+    }
+
+    .term-en {
+      font-weight: 500;
+      color: var(--text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .term-is {
+      color: var(--accent);
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .term-category {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .term-status .status-badge {
+      font-size: var(--text-xs);
+    }
+
+    .term-source {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .term-actions {
+      display: flex;
+      justify-content: center;
+    }
+
+    .term-actions .btn-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Empty / Loading / Error states inside term list */
+    .terms-state {
+      padding: var(--spacing-xl);
+      text-align: center;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      font-size: var(--text-base);
+    }
+
+    .terms-state.error {
+      color: var(--error);
+    }
+
+    /* ========================================
+       PAGINATION
+       ======================================== */
+
+    .pagination-row {
+      display: flex;
+      justify-content: center;
+      padding: var(--spacing-md) 0;
+    }
+
+    /* ========================================
+       DETAIL MODAL CONTENT
+       ======================================== */
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .detail-field label {
+      display: block;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .detail-field span {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+    }
+
+    .detail-full {
+      grid-column: span 2;
+    }
+
+    /* Discussion section in detail modal */
+    .discussion-section {
+      margin-top: var(--spacing-lg);
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid var(--border);
+    }
+
+    .discussion-section h4 {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-primary);
+    }
+
+    .discussions-list {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .discussion-item {
+      padding: 0.75rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .discussion-meta {
+      display: flex;
+      gap: var(--spacing-sm);
+      font-size: var(--text-xs);
+      margin-bottom: 4px;
+    }
+
+    .discussion-user {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .discussion-date {
+      color: var(--text-muted);
+    }
+
+    .discussion-content {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+    }
+
+    .discussion-proposal {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .add-discussion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .discussions-empty {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      font-style: italic;
+      padding: var(--spacing-sm) 0;
+    }
+
+    /* ========================================
+       IMPORT MODAL CONTENT
+       ======================================== */
+
+    .import-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .import-card {
+      padding: var(--spacing-md);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+
+    .import-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+    }
+
+    .import-card svg {
+      display: block;
+      margin: 0 auto var(--spacing-sm);
+      color: var(--accent);
+    }
+
+    .import-card h4 {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .import-card p {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .file-drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      text-align: center;
+      margin-bottom: var(--spacing-md);
+      transition: all var(--transition-fast);
+    }
+
+    .file-drop-zone.dragover {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+    }
+
+    .file-drop-zone svg {
+      display: block;
+      margin: 0 auto var(--spacing-sm);
+      color: var(--text-muted);
+    }
+
+    .file-drop-zone a {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .import-result {
+      text-align: center;
+      padding: var(--spacing-md);
+    }
+
+    .import-result.success svg { color: var(--success); }
+    .import-result.error svg { color: var(--error); }
+
+    .import-result h4 {
+      font-family: var(--font-heading);
+      font-size: var(--text-md);
+      margin: var(--spacing-sm) 0;
+    }
+
+    .import-result p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+
+    @media (max-width: 1024px) {
+      .terms-list-header,
+      .term-card {
+        grid-template-columns: 1fr 1fr 100px 90px;
+      }
+
+      .terms-list-header .col-source,
+      .terms-list-header .col-actions,
+      .term-source,
+      .term-actions {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .search-row {
+        flex-direction: column;
+      }
+
+      .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .terms-list-header {
+        display: none;
+      }
+
+      .term-card {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-md);
+      }
+
+      .term-card .term-status,
+      .term-card .term-category {
+        display: inline-block;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-full {
+        grid-column: span 1;
+      }
+
+      .import-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Fara í efni</a>
-  <header class="header">
-    <h1>Námsbókasafn</h1>
-    <nav>
-      <a href="/my-work">Mín verkefni</a>
-      <a href="/segment-editor">Ritstjóri</a>
-      <a href="/status">Framvinda</a>
-      <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
-      <span class="nav-separator admin-only"></span>
-      <a href="/dashboard" class="admin-only">Stjórnborð</a>
-      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" title="Skipta um þema">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
-      </div>
-      <div class="user-info" id="user-info"></div>
-    </div>
-  </header>
+  <main class="page-content" id="main-content" data-page="terminology" data-title="Orðasafn">
 
-  <main class="container" id="main-content">
-    <!-- Search and Filters -->
-    <div class="card">
-      <div class="search-bar">
-        <div class="search-input-wrapper">
-          <i class="fas fa-search"></i>
-          <input type="text" id="search-input" placeholder="Leita að orði (enska eða íslenska)..." autocomplete="off">
+    <!-- Search Section -->
+    <div class="search-section">
+      <div class="search-row">
+        <div class="search-field">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="search-input" placeholder="Leita a&eth; or&eth;i (enska e&eth;a &iacute;slenska)..." autocomplete="off">
         </div>
         <button class="btn btn-primary" onclick="searchTerms()">
-          <i class="fas fa-search"></i> Leita
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          Leita
         </button>
         <button class="btn btn-secondary" onclick="showAddModal()">
-          <i class="fas fa-plus"></i> Bæta við orði
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          B&#230;ta vi&#240;
         </button>
       </div>
 
-      <div class="accordion" id="filters-accordion">
-        <button class="accordion-header" aria-expanded="true" onclick="toggleAccordion('filters-accordion')">
-          <div class="accordion-header-left">
-            <span class="accordion-toggle">▼</span>
-            <span>Síur</span>
-          </div>
-          <span id="active-filters-badge" class="badge" style="display: none;">0</span>
-        </button>
-        <div class="accordion-body">
-          <div class="filters" style="margin: 0; padding: 0; border: none;">
-            <div class="filter-group">
-              <label>Flokkur:</label>
-              <select id="filter-category" onchange="searchTerms(); updateFilterBadge();">
-                <option value="">Allir flokkar</option>
-              </select>
-            </div>
-            <div class="filter-group">
-              <label>Staða:</label>
-              <select id="filter-status" onchange="searchTerms(); updateFilterBadge();">
-                <option value="">Allar stöður</option>
-                <option value="approved">Samþykkt</option>
-                <option value="proposed">Í bið</option>
-                <option value="disputed">Til umræðu</option>
-                <option value="needs_review">Þarf yfirferð</option>
-              </select>
-            </div>
-            <div class="filter-group">
-              <label>Uppruni:</label>
-              <select id="filter-source" onchange="searchTerms(); updateFilterBadge();">
-                <option value="">Allir upprunar</option>
-              </select>
-            </div>
-          </div>
+      <div class="filter-bar">
+        <div class="filter-item">
+          <label for="filter-category">Flokkur:</label>
+          <select id="filter-category" onchange="searchTerms(); updateFilterBadge();">
+            <option value="">Allir flokkar</option>
+          </select>
         </div>
+        <div class="filter-item">
+          <label for="filter-status">Sta&#240;a:</label>
+          <select id="filter-status" onchange="searchTerms(); updateFilterBadge();">
+            <option value="">Allar st&#246;&#240;ur</option>
+            <option value="approved">Sam&#254;ykkt</option>
+            <option value="proposed">&#205; bi&#240;</option>
+            <option value="disputed">Til umr&#230;&#240;u</option>
+            <option value="needs_review">&#222;arf yfirfer&#240;</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label for="filter-source">Uppruni:</label>
+          <select id="filter-source" onchange="searchTerms(); updateFilterBadge();">
+            <option value="">Allir upprunar</option>
+          </select>
+        </div>
+        <span class="filter-count" id="active-filters-badge" style="display: none;">
+          <strong id="active-filter-num">0</strong> s&#237;ur virkar
+        </span>
       </div>
     </div>
 
     <!-- Statistics -->
     <div class="stats-row" id="stats-row">
-      <div class="stat-card">
-        <div class="stat-value" id="stat-total">-</div>
+      <div class="stat-box">
+        <div class="stat-number color-total" id="stat-total">-</div>
         <div class="stat-label">Samtals</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value stat-success" id="stat-approved">-</div>
-        <div class="stat-label">Samþykkt</div>
+      <div class="stat-box">
+        <div class="stat-number color-success" id="stat-approved">-</div>
+        <div class="stat-label">Sam&#254;ykkt</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value stat-warning" id="stat-proposed">-</div>
-        <div class="stat-label">Í bið</div>
+      <div class="stat-box">
+        <div class="stat-number color-warning" id="stat-proposed">-</div>
+        <div class="stat-label">&#205; bi&#240;</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value stat-error" id="stat-disputed">-</div>
-        <div class="stat-label">Til umræðu</div>
+      <div class="stat-box">
+        <div class="stat-number color-error" id="stat-disputed">-</div>
+        <div class="stat-label">Til umr&#230;&#240;u</div>
       </div>
     </div>
 
     <!-- Review Queue Alert -->
-    <div class="alert alert-warning" id="review-queue-alert" style="display: none;">
-      <i class="fas fa-exclamation-triangle"></i>
-      <span id="review-queue-count"></span> orð bíða yfirferðar.
-      <a href="#" onclick="showReviewQueue()">Skoða</a>
+    <div class="review-alert" id="review-queue-alert" style="display: none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      <span><span id="review-queue-count"></span> or&#240; b&#237;&#240;a yfirfer&#240;ar.</span>
+      <a href="#" onclick="showReviewQueue(); return false;">Sko&#240;a</a>
     </div>
 
     <!-- Terms List -->
-    <div class="card">
-      <div class="card-header">
-        <h2 class="card-title" id="results-title">Orðasafn</h2>
-        <div class="card-actions">
-          <button class="btn btn-secondary btn-small" onclick="showImportModal()">
-            <i class="fas fa-file-import"></i> Flytja inn
-          </button>
-        </div>
-      </div>
-      <div class="terms-table-wrapper">
-        <table class="terms-table">
-          <thead>
-            <tr>
-              <th>Enska</th>
-              <th>Íslenska</th>
-              <th>Flokkur</th>
-              <th>Staða</th>
-              <th>Uppruni</th>
-              <th>Aðgerðir</th>
-            </tr>
-          </thead>
-          <tbody id="terms-body">
-            <tr><td colspan="6" class="loading">Hleður...</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="pagination" id="pagination"></div>
+    <div class="terms-header">
+      <h2 id="results-title">Or&#240;asafn</h2>
+      <button class="btn btn-sm btn-secondary" onclick="showImportModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Flytja inn
+      </button>
     </div>
+
+    <div class="terms-list" id="terms-list">
+      <div class="terms-list-header">
+        <span>Enska</span>
+        <span>&#205;slenska</span>
+        <span>Flokkur</span>
+        <span>Sta&#240;a</span>
+        <span class="col-source">Uppruni</span>
+        <span class="col-actions">A&#240;ger&#240;</span>
+      </div>
+      <div id="terms-body">
+        <div class="terms-state">Hle&#240;ur...</div>
+      </div>
+    </div>
+
+    <div class="pagination-row" id="pagination"></div>
+
   </main>
 
   <!-- Add/Edit Term Modal -->
   <div class="modal" role="dialog" aria-modal="true" id="term-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 id="modal-title">Bæta við orði</h3>
+        <h3 id="modal-title">B&#230;ta vi&#240; or&#240;i</h3>
         <button class="btn-close" onclick="closeModal('term-modal')">&times;</button>
       </div>
       <div class="modal-body">
@@ -158,12 +663,12 @@
           <input type="text" id="term-english" class="form-input" placeholder="English term">
         </div>
         <div class="form-group">
-          <label class="form-label">Íslenska *</label>
-          <input type="text" id="term-icelandic" class="form-input" placeholder="Íslenskt orð">
+          <label class="form-label">&#205;slenska *</label>
+          <input type="text" id="term-icelandic" class="form-input" placeholder="&#205;slenskt or&#240;">
         </div>
         <div class="form-group">
-          <label class="form-label">Aðrar þýðingar</label>
-          <input type="text" id="term-alternatives" class="form-input" placeholder="Aðskilið með kommu">
+          <label class="form-label">A&#240;rar &#254;&#253;&#240;ingar</label>
+          <input type="text" id="term-alternatives" class="form-input" placeholder="A&#240;skili&#240; me&#240; kommu">
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -177,11 +682,11 @@
         </div>
         <div class="form-group">
           <label class="form-label">Athugasemdir</label>
-          <textarea id="term-notes" class="form-textarea" rows="3" placeholder="Viðbótarupplýsingar..."></textarea>
+          <textarea id="term-notes" class="form-textarea" rows="3" placeholder="Vi&#240;b&#243;taruppl&#253;singar..."></textarea>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeModal('term-modal')">Hætta við</button>
+        <button class="btn btn-secondary" onclick="closeModal('term-modal')">H&#230;tta vi&#240;</button>
         <button class="btn btn-primary" id="save-term-btn" onclick="saveTerm()">Vista</button>
       </div>
     </div>
@@ -191,36 +696,36 @@
   <div class="modal" role="dialog" aria-modal="true" id="detail-modal">
     <div class="modal-content modal-large">
       <div class="modal-header">
-        <h3 id="detail-title">Orð</h3>
+        <h3 id="detail-title">Or&#240;</h3>
         <button class="btn-close" onclick="closeModal('detail-modal')">&times;</button>
       </div>
       <div class="modal-body">
         <div class="detail-grid">
-          <div class="detail-item">
+          <div class="detail-field">
             <label>Enska:</label>
             <span id="detail-english"></span>
           </div>
-          <div class="detail-item">
-            <label>Íslenska:</label>
+          <div class="detail-field">
+            <label>&#205;slenska:</label>
             <span id="detail-icelandic"></span>
           </div>
-          <div class="detail-item">
-            <label>Aðrar þýðingar:</label>
+          <div class="detail-field">
+            <label>A&#240;rar &#254;&#253;&#240;ingar:</label>
             <span id="detail-alternatives"></span>
           </div>
-          <div class="detail-item">
+          <div class="detail-field">
             <label>Flokkur:</label>
             <span id="detail-category"></span>
           </div>
-          <div class="detail-item">
+          <div class="detail-field">
             <label>Uppruni:</label>
             <span id="detail-source"></span>
           </div>
-          <div class="detail-item">
-            <label>Staða:</label>
+          <div class="detail-field">
+            <label>Sta&#240;a:</label>
             <span id="detail-status"></span>
           </div>
-          <div class="detail-item detail-full">
+          <div class="detail-field detail-full">
             <label>Athugasemdir:</label>
             <span id="detail-notes"></span>
           </div>
@@ -228,13 +733,14 @@
 
         <!-- Discussion Section -->
         <div class="discussion-section">
-          <h4>Umræður</h4>
+          <h4>Umr&#230;&#240;ur</h4>
           <div id="discussions-list" class="discussions-list"></div>
           <div class="add-discussion">
-            <textarea id="new-discussion" class="form-textarea" rows="2" placeholder="Bæta við athugasemd..."></textarea>
-            <input type="text" id="proposed-translation" class="form-input" placeholder="Leggja til aðra þýðingu (valfrjálst)">
-            <button class="btn btn-secondary" onclick="addDiscussion()">
-              <i class="fas fa-comment"></i> Bæta við athugasemd
+            <textarea id="new-discussion" class="form-textarea" rows="2" placeholder="B&#230;ta vi&#240; athugasemd..."></textarea>
+            <input type="text" id="proposed-translation" class="form-input" placeholder="Leggja til a&#240;ra &#254;&#253;&#240;ingu (valfr&#225;lst)">
+            <button class="btn btn-secondary btn-sm" onclick="addDiscussion()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              B&#230;ta vi&#240; athugasemd
             </button>
           </div>
         </div>
@@ -242,13 +748,16 @@
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="closeModal('detail-modal')">Loka</button>
         <button class="btn btn-warning" id="dispute-btn" onclick="disputeTerm()">
-          <i class="fas fa-flag"></i> Senda til umræðu
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+          Senda til umr&#230;&#240;u
         </button>
         <button class="btn btn-success" id="approve-btn" onclick="approveTerm()">
-          <i class="fas fa-check"></i> Samþykkja
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Sam&#254;ykkja
         </button>
         <button class="btn btn-primary" onclick="editTerm()">
-          <i class="fas fa-edit"></i> Breyta
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          Breyta
         </button>
       </div>
     </div>
@@ -256,44 +765,45 @@
 
   <!-- Import Modal -->
   <div class="modal" role="dialog" aria-modal="true" id="import-modal">
-    <div class="modal-content">
+    <div class="modal-content modal-large">
       <div class="modal-header">
-        <h3>Flytja inn orð</h3>
+        <h3>Flytja inn or&#240;</h3>
         <button class="btn-close" onclick="closeModal('import-modal')">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="import-options">
-          <div class="import-option" onclick="importExistingGlossary()">
-            <i class="fas fa-book"></i>
-            <h4>Núverandi orðalisti</h4>
-            <p>Flytja inn terminology-en-is.csv úr books/efnafraedi/glossary/</p>
+        <div class="import-grid">
+          <div class="import-card" onclick="importExistingGlossary()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <h4>N&#250;verandi or&#240;alisti</h4>
+            <p>Flytja inn terminology-en-is.csv &#250;r books/efnafraedi/glossary/</p>
           </div>
-          <div class="import-option" onclick="showCsvUpload()">
-            <i class="fas fa-file-csv"></i>
-            <h4>CSV skrá</h4>
-            <p>Hlaða upp CSV skrá með english, icelandic dálkum</p>
+          <div class="import-card" onclick="showCsvUpload()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <h4>CSV skr&#225;</h4>
+            <p>Hla&#240;a upp CSV skr&#225; me&#240; english, icelandic d&#225;lkum</p>
           </div>
-          <div class="import-option" onclick="showExcelUpload()">
-            <i class="fas fa-file-excel"></i>
-            <h4>Excel skrá</h4>
-            <p>Flytja inn frá Efnafélaginu (Excel snið)</p>
+          <div class="import-card" onclick="showExcelUpload()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <h4>Excel skr&#225;</h4>
+            <p>Flytja inn fr&#225; Efnaf&#233;laginu (Excel sni&#240;)</p>
           </div>
-          <div class="import-option" onclick="importKeyTerms()">
-            <i class="fas fa-key"></i>
-            <h4>Lykilorð úr köflum</h4>
-            <p>Draga út orð úr key-terms skrám</p>
+          <div class="import-card" onclick="importKeyTerms()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+            <h4>Lykilor&#240; &#250;r k&#246;flum</h4>
+            <p>Draga &#250;t or&#240; &#250;r key-terms skr&#225;m</p>
           </div>
         </div>
 
         <div id="file-upload-section" style="display: none;">
           <input type="file" id="import-file" accept=".csv,.xlsx,.xls" style="display: none;">
           <div class="file-drop-zone" id="file-drop-zone">
-            <i class="fas fa-cloud-upload-alt"></i>
-            <p>Dragðu skrá hingað eða <a href="#" onclick="document.getElementById('import-file').click()">veldu skrá</a></p>
-            <span id="selected-file-name"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+            <p>Drag&#240;u skr&#225; hinga&#240; e&#240;a <a href="#" onclick="document.getElementById('import-file').click(); return false;">veldu skr&#225;</a></p>
+            <span id="selected-file-name" style="font-size:var(--text-sm);color:var(--text-muted)"></span>
           </div>
           <button class="btn btn-primary" onclick="uploadFile()" id="upload-btn" disabled>
-            <i class="fas fa-upload"></i> Hlaða upp
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            Hla&#240;a upp
           </button>
         </div>
 
@@ -305,8 +815,15 @@
     </div>
   </div>
 
-    <script src="/js/htmlUtils.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/htmlUtils.js"></script>
   <script>
+    /* ==========================================================================
+       TERMINOLOGY PAGE — Client Logic
+       All API calls, CRUD, search, filter, pagination, modals preserved.
+       ========================================================================== */
+
     let currentUser = null;
     let currentTermId = null;
     let categories = [];
@@ -314,15 +831,8 @@
     let currentPage = 0;
     const pageSize = 50;
 
-    // Toggle accordion open/closed
-    function toggleAccordion(accordionId) {
-      const accordion = document.getElementById(accordionId);
-      if (accordion) {
-        accordion.classList.toggle('collapsed');
-      }
-    }
+    // ─── Filter badge ─────────────────────────────────────────────
 
-    // Update filter badge to show active filter count
     function updateFilterBadge() {
       const category = document.getElementById('filter-category').value;
       const status = document.getElementById('filter-status').value;
@@ -334,27 +844,27 @@
       if (source) activeCount++;
 
       const badge = document.getElementById('active-filters-badge');
+      const num = document.getElementById('active-filter-num');
       if (activeCount > 0) {
-        badge.textContent = activeCount;
+        num.textContent = activeCount;
         badge.style.display = 'inline';
       } else {
         badge.style.display = 'none';
       }
     }
 
-    // Initialize
+    // ─── Initialization ───────────────────────────────────────────
+
     async function init() {
+      // Wait for layout.js to provide auth via userLoaded event, or fetch it ourselves
       const authRes = await fetch('/api/auth/me');
       const authData = await authRes.json();
-      const userEl = document.getElementById('user-info');
 
       if (!authData.authenticated) {
-        userEl.innerHTML = '<a href="/api/auth/login?redirect=/terminology" class="btn btn-primary">Innskráning</a>';
-        return;
+        // Not logged in — still show the glossary read-only
+      } else {
+        currentUser = authData.user;
       }
-
-      currentUser = authData.user;
-      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
 
       // Load categories and sources
       await loadMetadata();
@@ -420,6 +930,8 @@
       }
     }
 
+    // ─── Search & Display ─────────────────────────────────────────
+
     async function searchTerms() {
       const query = document.getElementById('search-input').value;
       const category = document.getElementById('filter-category').value;
@@ -435,43 +947,46 @@
       if (status) params.set('status', status);
 
       const tbody = document.getElementById('terms-body');
-      tbody.innerHTML = '<tr><td colspan="6" class="loading">Hleður...</td></tr>';
+      tbody.innerHTML = '<div class="terms-state">Hle\u00F0ur...</div>';
 
       try {
         const res = await fetch('/api/terminology?' + params);
         const data = await res.json();
 
         if (data.terms.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="6" class="empty">Engin orð fundust.</td></tr>';
-          document.getElementById('results-title').textContent = 'Engin niðurstöður';
+          tbody.innerHTML = '<div class="terms-state">Engin or\u00F0 fundust.</div>';
+          document.getElementById('results-title').textContent = 'Engin ni\u00F0urst\u00F6\u00F0ur';
+          document.getElementById('pagination').innerHTML = '';
           return;
         }
 
         document.getElementById('results-title').textContent =
-          'Niðurstöður (' + data.pagination.total + ' orð)';
+          'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' or\u00F0)';
 
         tbody.innerHTML = data.terms.map(term => `
-          <tr onclick="showTermDetail(${term.id})">
-            <td class="term-english">${escapeHtml(term.english)}</td>
-            <td class="term-icelandic">${escapeHtml(term.icelandic)}</td>
-            <td>${formatCategory(term.category)}</td>
-            <td><span class="status-badge status-${term.status}">${formatStatus(term.status)}</span></td>
-            <td>${formatSource(term.source)}</td>
-            <td class="actions">
-              <button class="btn btn-icon" onclick="event.stopPropagation(); showTermDetail(${term.id})" title="Skoða">
-                <i class="fas fa-eye"></i>
+          <div class="term-card" onclick="showTermDetail(${term.id})">
+            <span class="term-en">${escapeHtml(term.english)}</span>
+            <span class="term-is">${escapeHtml(term.icelandic)}</span>
+            <span class="term-category">${formatCategory(term.category)}</span>
+            <span class="term-status"><span class="status-badge status-${term.status}">${formatStatus(term.status)}</span></span>
+            <span class="term-source">${formatSource(term.source)}</span>
+            <span class="term-actions">
+              <button class="btn-icon" onclick="event.stopPropagation(); showTermDetail(${term.id})" title="Sko\u00F0a">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               </button>
-            </td>
-          </tr>
+            </span>
+          </div>
         `).join('');
 
         // Update pagination
         renderPagination(data.pagination);
 
       } catch (err) {
-        tbody.innerHTML = '<tr><td colspan="6" class="error">Villa: ' + err.message + '</td></tr>';
+        tbody.innerHTML = '<div class="terms-state error">Villa: ' + escapeHtml(err.message) + '</div>';
       }
     }
+
+    // ─── Pagination ───────────────────────────────────────────────
 
     function renderPagination(pagination) {
       const totalPages = Math.ceil(pagination.total / pagination.limit);
@@ -486,7 +1001,9 @@
 
       // Previous button
       html += '<button class="pagination-btn" onclick="goToPage(' + (currentPageNum - 1) + ')" ' +
-              (currentPageNum === 0 ? 'disabled' : '') + '><i class="fas fa-chevron-left"></i></button>';
+              (currentPageNum === 0 ? 'disabled' : '') + '>' +
+              '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>' +
+              '</button>';
 
       // Page numbers (show max 5 pages around current)
       const startPage = Math.max(0, currentPageNum - 2);
@@ -513,7 +1030,9 @@
 
       // Next button
       html += '<button class="pagination-btn" onclick="goToPage(' + (currentPageNum + 1) + ')" ' +
-              (currentPageNum >= totalPages - 1 ? 'disabled' : '') + '><i class="fas fa-chevron-right"></i></button>';
+              (currentPageNum >= totalPages - 1 ? 'disabled' : '') + '>' +
+              '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+              '</button>';
 
       html += '</div>';
 
@@ -524,6 +1043,8 @@
       currentPage = page;
       searchTerms();
     }
+
+    // ─── Term Detail ──────────────────────────────────────────────
 
     async function showTermDetail(id) {
       currentTermId = id;
@@ -557,7 +1078,7 @@
           </div>
         `).join('');
       } else {
-        discussionsList.innerHTML = '<p class="empty">Engar athugasemdir enn.</p>';
+        discussionsList.innerHTML = '<p class="discussions-empty">Engar athugasemdir enn.</p>';
       }
 
       // Show/hide action buttons based on user role and term status
@@ -579,15 +1100,18 @@
       document.getElementById('detail-modal').style.display = 'flex';
     }
 
+    // ─── Add / Edit ───────────────────────────────────────────────
+
     function showAddModal() {
       currentTermId = null;
-      document.getElementById('modal-title').textContent = 'Bæta við orði';
+      document.getElementById('modal-title').textContent = 'B\u00E6ta vi\u00F0 or\u00F0i';
       document.getElementById('term-english').value = '';
       document.getElementById('term-icelandic').value = '';
       document.getElementById('term-alternatives').value = '';
       document.getElementById('term-category').value = 'other';
       document.getElementById('term-source').value = 'manual';
       document.getElementById('term-notes').value = '';
+      document.getElementById('term-english').disabled = false;
       document.getElementById('term-modal').style.display = 'flex';
     }
 
@@ -598,7 +1122,7 @@
         .then(res => res.json())
         .then(data => {
           const term = data.term;
-          document.getElementById('modal-title').textContent = 'Breyta orði';
+          document.getElementById('modal-title').textContent = 'Breyta or\u00F0i';
           document.getElementById('term-english').value = term.english;
           document.getElementById('term-english').disabled = true; // Can't change English term
           document.getElementById('term-icelandic').value = term.icelandic;
@@ -620,7 +1144,7 @@
       const notes = document.getElementById('term-notes').value.trim();
 
       if (!english || !icelandic) {
-        alert('Enska og íslenska eru nauðsynleg');
+        alert('Enska og \u00EDslenska eru nau\u00F0synleg');
         return;
       }
 
@@ -645,15 +1169,17 @@
           searchTerms();
           loadStats();
         } else {
-          alert('Villa: ' + (data.message || 'Gat ekki vistað'));
+          alert('Villa: ' + (data.message || 'Gat ekki vista\u00F0'));
         }
       } catch (err) {
         alert('Villa: ' + err.message);
       }
     }
 
+    // ─── Approve / Dispute ────────────────────────────────────────
+
     async function approveTerm() {
-      if (!confirm('Ertu viss um að þú viljir samþykkja þetta orð?')) return;
+      if (!confirm('Ertu viss um a\u00F0 \u00FE\u00FA viljir sam\u00FEykkja \u00FEetta or\u00F0?')) return;
 
       try {
         const res = await fetch('/api/terminology/' + currentTermId + '/approve', { method: 'POST' });
@@ -672,7 +1198,7 @@
     }
 
     async function disputeTerm() {
-      const comment = prompt('Hvers vegna vilt þú senda þetta orð til umræðu?');
+      const comment = prompt('Hvers vegna vilt \u00FE\u00FA senda \u00FEetta or\u00F0 til umr\u00E6\u00F0u?');
       if (!comment) return;
 
       try {
@@ -696,12 +1222,14 @@
       }
     }
 
+    // ─── Discussions ──────────────────────────────────────────────
+
     async function addDiscussion() {
       const comment = document.getElementById('new-discussion').value.trim();
       const proposedTranslation = document.getElementById('proposed-translation').value.trim();
 
       if (!comment) {
-        alert('Athugasemd er nauðsynleg');
+        alert('Athugasemd er nau\u00F0synleg');
         return;
       }
 
@@ -726,10 +1254,15 @@
       }
     }
 
+    // ─── Review Queue ─────────────────────────────────────────────
+
     function showReviewQueue() {
       document.getElementById('filter-status').value = 'disputed';
       searchTerms();
+      updateFilterBadge();
     }
+
+    // ─── Import ───────────────────────────────────────────────────
 
     function showImportModal() {
       document.getElementById('file-upload-section').style.display = 'none';
@@ -738,7 +1271,7 @@
     }
 
     async function importExistingGlossary() {
-      if (!confirm('Flytja inn núverandi orðalista frá books/efnafraedi/glossary/terminology-en-is.csv?')) return;
+      if (!confirm('Flytja inn n\u00FAverandi or\u00F0alista fr\u00E1 books/efnafraedi/glossary/terminology-en-is.csv?')) return;
 
       try {
         const res = await fetch('/api/terminology/import/existing-glossary', {
@@ -755,7 +1288,7 @@
     }
 
     async function importKeyTerms() {
-      if (!confirm('Draga út orð úr key-terms skrám í efnafræði?')) return;
+      if (!confirm('Draga \u00FAt or\u00F0 \u00FAr key-terms skr\u00E1m \u00ED efnafr\u00E6\u00F0i?')) return;
 
       try {
         const res = await fetch('/api/terminology/import/key-terms', {
@@ -785,35 +1318,38 @@
       document.getElementById('file-upload-section').style.display = 'block';
     }
 
+    // File upload drag-and-drop + file input
     document.addEventListener('DOMContentLoaded', () => {
       const fileInput = document.getElementById('import-file');
       const dropZone = document.getElementById('file-drop-zone');
 
-      fileInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-          document.getElementById('selected-file-name').textContent = e.target.files[0].name;
-          document.getElementById('upload-btn').disabled = false;
-        }
-      });
+      if (fileInput && dropZone) {
+        fileInput.addEventListener('change', (e) => {
+          if (e.target.files.length > 0) {
+            document.getElementById('selected-file-name').textContent = e.target.files[0].name;
+            document.getElementById('upload-btn').disabled = false;
+          }
+        });
 
-      dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
-      });
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.classList.add('dragover');
+        });
 
-      dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
-      });
+        dropZone.addEventListener('dragleave', () => {
+          dropZone.classList.remove('dragover');
+        });
 
-      dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-        if (e.dataTransfer.files.length > 0) {
-          fileInput.files = e.dataTransfer.files;
-          document.getElementById('selected-file-name').textContent = e.dataTransfer.files[0].name;
-          document.getElementById('upload-btn').disabled = false;
-        }
-      });
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('dragover');
+          if (e.dataTransfer.files.length > 0) {
+            fileInput.files = e.dataTransfer.files;
+            document.getElementById('selected-file-name').textContent = e.dataTransfer.files[0].name;
+            document.getElementById('upload-btn').disabled = false;
+          }
+        });
+      }
     });
 
     async function uploadFile() {
@@ -841,11 +1377,11 @@
       const resultEl = document.getElementById('import-result');
       if (data.success) {
         resultEl.innerHTML = `
-          <div class="import-success">
-            <i class="fas fa-check-circle"></i>
-            <h4>Innflutningur lokið!</h4>
-            <p>Bætt við: ${data.added}</p>
-            <p>Uppfært: ${data.updated || 0}</p>
+          <div class="import-result success">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <h4>Innflutningur loki\u00F0!</h4>
+            <p>B\u00E6tt vi\u00F0: ${data.added}</p>
+            <p>Uppf\u00E6rt: ${data.updated || 0}</p>
             <p>Sleppt: ${data.skipped}</p>
           </div>
         `;
@@ -853,47 +1389,50 @@
         loadStats();
       } else {
         resultEl.innerHTML = `
-          <div class="import-error">
-            <i class="fas fa-exclamation-circle"></i>
-            <h4>Villa við innflutning</h4>
-            <p>${data.message || 'Óþekkt villa'}</p>
+          <div class="import-result error">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            <h4>Villa vi\u00F0 innflutning</h4>
+            <p>${escapeHtml(data.message || '\u00D3\u00FEekkt villa')}</p>
           </div>
         `;
       }
       resultEl.style.display = 'block';
     }
 
+    // ─── Modal Helper ─────────────────────────────────────────────
+
     function closeModal(id) {
       document.getElementById(id).style.display = 'none';
     }
 
-    // Utility functions
+    // ─── Formatting Utilities ─────────────────────────────────────
+
     function formatCategory(cat) {
       const names = {
-        'fundamental': 'Grunnhugtök',
+        'fundamental': 'Grunnhugt\u00F6k',
         'bonding': 'Efnatengi',
-        'reactions': 'Efnahvörf',
+        'reactions': 'Efnahv\u00F6rf',
         'solutions': 'Lausnir',
-        'acids-bases': 'Sýrur og basar',
+        'acids-bases': 'S\u00FDrur og basar',
         'periodic-table': 'Lotukerfi',
         'structure': 'Bygging',
-        'states': 'Efnisástand',
+        'states': 'Efnis\u00E1stand',
         'properties': 'Eiginleikar',
         'changes': 'Breytingar',
-        'measurements': 'Mælingar',
-        'concepts': 'Hugtök',
+        'measurements': 'M\u00E6lingar',
+        'concepts': 'Hugt\u00F6k',
         'constants': 'Fastar',
         'units': 'Einingar',
-        'other': 'Annað'
+        'other': 'Anna\u00F0'
       };
       return names[cat] || cat;
     }
 
     function formatSource(src) {
       const names = {
-        'idordabankinn': 'Íðorðabankinn',
-        'chemistry-association': 'Efnafélagið',
-        'chapter-glossary': 'Kaflaorðasafn',
+        'idordabankinn': '\u00CD\u00F0or\u00F0abankinn',
+        'chemistry-association': 'Efnaf\u00E9lagi\u00F0',
+        'chapter-glossary': 'Kaflaor\u00F0asafn',
         'manual': 'Handvirkt',
         'imported-csv': 'CSV innflutningur',
         'imported-excel': 'Excel innflutningur'
@@ -903,10 +1442,10 @@
 
     function formatStatus(status) {
       const names = {
-        'approved': 'Samþykkt',
-        'proposed': 'Í bið',
-        'disputed': 'Til umræðu',
-        'needs_review': 'Þarf yfirferð'
+        'approved': 'Sam\u00FEykkt',
+        'proposed': '\u00CD bi\u00F0',
+        'disputed': 'Til umr\u00E6\u00F0u',
+        'needs_review': '\u00DEarf yfirfer\u00F0'
       };
       return names[status] || status;
     }
@@ -920,78 +1459,10 @@
         minute: '2-digit'
       });
     }
+
+    // ─── Boot ─────────────────────────────────────────────────────
+
     init();
   </script>
-
-  <style>
-    /* ==========================================================================
-       TERMINOLOGY PAGE SPECIFIC STYLES
-       Extends common.css with page-specific components
-       ========================================================================== */
-
-    /* Container override */
-    .container { max-width: 1400px; }
-
-    /* Card padding override */
-    .card { padding: 1.5rem; }
-
-    /* Stats row layout for this page */
-    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-
-    /* Terms Table */
-    .terms-table-wrapper { overflow-x: auto; }
-    .terms-table { width: 100%; border-collapse: collapse; }
-    .terms-table th, .terms-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
-    .terms-table th { background: var(--gray-50); font-weight: 600; font-size: 0.875rem; color: var(--text-secondary); }
-    .terms-table tr { cursor: pointer; }
-    .terms-table tr:hover { background: var(--gray-50); }
-    .term-english { font-weight: 500; }
-    .term-icelandic { color: var(--primary); }
-
-    /* Error state */
-    .error { color: var(--error); }
-
-    /* Term Detail Grid */
-    .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .detail-item label { font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
-    .detail-item span { font-size: 0.875rem; }
-    .detail-full { grid-column: span 2; }
-
-    .discussion-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200); }
-    .discussion-section h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
-    .discussions-list { max-height: 200px; overflow-y: auto; margin-bottom: 1rem; }
-    .discussion-item { padding: 0.75rem; background: var(--gray-50); border-radius: var(--radius-md); margin-bottom: 0.5rem; }
-    .discussion-meta { display: flex; gap: 0.5rem; font-size: 0.75rem; margin-bottom: 0.25rem; }
-    .discussion-user { font-weight: 500; }
-    .discussion-date { color: var(--gray-500); }
-    .discussion-content { font-size: 0.875rem; }
-    .discussion-proposal { font-size: 0.75rem; color: var(--primary); margin-top: 0.25rem; }
-    .add-discussion { display: flex; flex-direction: column; gap: 0.5rem; }
-
-    .import-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
-    .import-option { padding: 1rem; border: 2px solid var(--gray-200); border-radius: var(--radius-lg); cursor: pointer; text-align: center; transition: all 0.2s; }
-    .import-option:hover { border-color: var(--primary); background: var(--gray-50); }
-    .import-option i { font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem; }
-    .import-option h4 { font-size: 0.875rem; margin-bottom: 0.25rem; }
-    .import-option p { font-size: 0.75rem; color: var(--gray-500); }
-
-    .file-drop-zone { border: 2px dashed var(--gray-300); border-radius: var(--radius-lg); padding: 2rem; text-align: center; margin-bottom: 1rem; }
-    .file-drop-zone.dragover { border-color: var(--primary); background: rgba(37, 99, 235, 0.05); }
-    .file-drop-zone i { font-size: 2rem; color: var(--gray-400); margin-bottom: 0.5rem; }
-    .file-drop-zone a { color: var(--primary); cursor: pointer; }
-
-    .import-success, .import-error { text-align: center; padding: 1rem; }
-    .import-success i { color: var(--success); font-size: 2rem; }
-    .import-error i { color: var(--error); font-size: 2rem; }
-
-    /* Page-specific responsive */
-    @media (max-width: 768px) {
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .detail-grid { grid-template-columns: 1fr; }
-      .import-options { grid-template-columns: 1fr; }
-    }
-  </style>
-  <script src="/js/theme.js"></script>
-  <script src="/js/nav.js"></script>
 </body>
 </html>
