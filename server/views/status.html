@@ -558,7 +558,7 @@
       font-size: var(--text-xs);
     }
     .stage-detail { display: flex; align-items: center; gap: 3px; }
-    .stage-detail.complete { color: var(--success); }
+    .stage-detail.complete { color: var(--accent); }
     .stage-detail.in-progress { color: var(--accent); }
     .stage-detail.pending { color: var(--warning); }
 
@@ -714,10 +714,16 @@
       background: transparent;
       border: 2px solid var(--accent);
     }
+    .legend-dot.pending {
+      background: var(--warning);
+    }
     .legend-dot.not-started {
       background: transparent;
       border: 2px solid var(--text-muted);
       opacity: 0.4;
+    }
+    .legend-dot.blocked {
+      background: var(--error);
     }
 
     /* Matrix table */
@@ -744,13 +750,9 @@
       text-align: left;
     }
 
-    /* Matrix cell status symbols */
-    .matrix-cell { font-size: var(--text-md); }
-    .matrix-cell.status-complete { color: var(--accent); }
-    .matrix-cell.status-in-progress { color: var(--accent); opacity: 0.65; }
-    .matrix-cell.status-pending { color: var(--warning); }
-    .matrix-cell.status-not-started { color: var(--text-muted); opacity: 0.35; }
-    .matrix-cell.status-blocked { color: var(--error); }
+    /* Matrix cell — contains dot indicators */
+    .matrix-cell { text-align: center; }
+    .matrix-cell .legend-dot { vertical-align: middle; }
 
     /* Expandable chapter rows */
     .chapter-row { cursor: pointer; transition: background var(--transition-fast); }
@@ -811,10 +813,8 @@
       color: var(--text-primary);
     }
     .section-cell { font-size: var(--text-base); }
-    .section-cell.status-complete { color: var(--success); }
-    .section-cell.status-in-progress { color: var(--accent); }
-    .section-cell.status-pending { color: var(--warning); }
-    .section-cell.status-not-started { color: var(--text-muted); opacity: 0.35; }
+    .section-cell { text-align: center; }
+    .section-cell .legend-dot { vertical-align: middle; }
     .sections-summary {
       margin-top: var(--spacing-sm);
       font-size: var(--text-sm);
@@ -1194,6 +1194,11 @@
               <span class="panel-title" style="font-size:var(--text-base)">Kaflayfirlit</span>
               <a href="#" onclick="showTab('matrix'); return false;" class="btn btn-secondary btn-sm">Sjá allt</a>
             </div>
+            <div class="matrix-legend" style="margin-bottom:var(--spacing-sm)">
+              <span class="legend-item"><span class="legend-dot complete"></span> Loki&#240;</span>
+              <span class="legend-item"><span class="legend-dot in-progress"></span> &#205; vinnslu</span>
+              <span class="legend-item"><span class="legend-dot not-started"></span> Ekki byrja&#240;</span>
+            </div>
             <div id="chapter-pipeline-list">
               <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
             </div>
@@ -1346,9 +1351,11 @@
           </div>
         </div>
         <div class="matrix-legend">
-          <span class="legend-item"><span class="legend-dot complete"></span> Lokið</span>
-          <span class="legend-item"><span class="legend-dot in-progress"></span> Í vinnslu</span>
-          <span class="legend-item"><span class="legend-dot not-started"></span> Ekki byrjað</span>
+          <span class="legend-item"><span class="legend-dot complete"></span> Loki&#240;</span>
+          <span class="legend-item"><span class="legend-dot in-progress"></span> &#205; vinnslu</span>
+          <span class="legend-item"><span class="legend-dot pending"></span> &#205; bi&#240;</span>
+          <span class="legend-item"><span class="legend-dot not-started"></span> Ekki byrja&#240;</span>
+          <span class="legend-item"><span class="legend-dot blocked"></span> Lokað</span>
         </div>
       </div>
       <div class="panel">
@@ -2235,13 +2242,11 @@
     }
 
     function getStatusSymbol(status) {
-      const symbols = { 'complete': '&#10003;', 'in-progress': '&#9680;', 'pending': '&#9675;', 'not-started': '&middot;', 'blocked': '&#10005;' };
-      return symbols[status] || '&middot;';
+      return '<span class="legend-dot ' + (status || 'not-started') + '" style="display:inline-block;margin:auto"></span>';
     }
 
     function getSectionStatusSymbol(status) {
-      const symbols = { 'complete': '&#10003;', 'in-progress': '&#9680;', 'pending': '&#9675;', 'not-started': '&middot;' };
-      return symbols[status] || '&middot;';
+      return '<span class="legend-dot ' + (status || 'not-started') + '" style="display:inline-block;margin:auto"></span>';
     }
 
     // ============================================================================
