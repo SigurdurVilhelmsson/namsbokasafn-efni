@@ -49,7 +49,7 @@ gríðarlegar stærðir, og það eru þær, en líf á jörðinni hefur þróas
 slíkan loftþrýsting. Ef þú setur keilukúlu á þumalfingursnöglina þína er
 þrýstingurinn sem þú finnur fyrir <emphasis effect="italics">tvöfaldur</emphasis> venjulegur þrýstingur og
 tilfinningin er óþægileg.</para>
-<para id="fs-idp26888784">Almennt er <emphasis effect="bold">þrýstingur</emphasis>
+<para id="fs-idp26888784">Almennt er <term>þrýstingur (e. pressure)</term>
 skilgreindur sem krafturinn sem beitt er á tiltekið svæði:
 <m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>F</m:mi><m:mi>A</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Athugaðu að þrýstingur er í beinu hlutfalli við kraft og
 í öfugu hlutfalli við flatarmál. Þannig má auka þrýsting annaðhvort með
@@ -85,10 +85,10 @@ beitt er verulega vegna stærra flatarmáls sem þyngd hans dreifist yfir:</para
 (Pa)</emphasis>, þar sem 1 Pa = 1 N/m<sup>2</sup>, þar sem N er njúton, krafteining
 skilgreind sem 1 kg m/s<sup>2</sup>. Eitt paskal er lítill þrýstingur; í mörgum
 tilfellum er hentugra að nota einingarnar kílópaskal (1 kPa = 1000 Pa)
-eða <emphasis effect="bold">bar</emphasis> (1 bar = 100.000 Pa). Í Bandaríkjunum er þrýstingur oft
+eða <term>bar (e. pascal (pa))</term> (1 bar = 100.000 Pa). Í Bandaríkjunum er þrýstingur oft
 mældur í pundum af krafti á flatarmál einnar fertommu – <emphasis effect="bold">pund á
 fertommu (psi)</emphasis> – til dæmis í bíldekkjum. Einnig er hægt að mæla
-þrýsting með einingunni <emphasis effect="bold">loftþyngd (atm)</emphasis>, sem upphaflega táknaði
+þrýsting með einingunni <term>loftþyngd (atm) (e. bar)</term>, sem upphaflega táknaði
 meðalloftþrýsting við sjávarmál á áætlaðri breiddargráðu Parísar (45°).
 <link target-id="fs-idp189967312"/> veitir upplýsingar um þessar og nokkrar aðrar algengar
 einingar fyrir þrýstingsmælingar</para>
@@ -178,7 +178,7 @@ millimetrum kvikasilfurs, í kílópaskölum og í börum?</para>
 </note>
 </example>
 <para id="fs-idm69336128">Við getum mælt loftþrýsting, kraftinn
-sem lofthjúpurinn beitir á yfirborð jarðar, með <emphasis effect="bold">loftvog</emphasis>
+sem lofthjúpurinn beitir á yfirborð jarðar, með <term>loftvog (e. barometer)</term>
 (<link target-id="CNX_Chem_09_01_Barometer"/>). Loftvog er glerpípa sem er lokuð í annan endann, fyllt með
 órokgjörnum vökva eins og kvikasilfri og síðan hvolft og sökkt í ílát
 með þeim vökva. Loftþrýstingurinn þrýstir á vökvann utan rörsins,
@@ -202,10 +202,10 @@ frekar óþægilegt til að smíða (og lesa af) loftvog. Þar sem kvikasilfur
 að vera <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>13.6</m:mn></m:mrow></m:mfrac></m:mrow></m:math> jafn há og vatnsloftvog – sem er hentugri stærð.
 Staðlaður loftþrýstingur upp á 1 atm við sjávarmál (101.325 Pa)
 samsvarar kvikasilfurssúlu sem er um 760 mm (29,92 tommur) á hæð.
-<emphasis effect="bold">Torr</emphasis> var upphaflega ætlað að vera eining sem jafngildir einum
+<term>Torr</term> var upphaflega ætlað að vera eining sem jafngildir einum
 millimetra af kvikasilfri, en það samsvarar ekki lengur nákvæmlega.
 Þrýstingurinn sem vökvi beitir vegna þyngdarafls er þekktur sem
-<emphasis effect="bold">vökvastöðuþrýstingur</emphasis>, <emphasis effect="italics">p</emphasis>:</para>
+<term>vökvastöðuþrýstingur (e. hydrostatic pressure)</term>, <emphasis effect="italics">p</emphasis>:</para>
 <equation id="fs-idm35258720" class="unnumbered"><m:math><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mi>h</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:math></equation>
 <para id="fs-idm61000288">þar sem <emphasis effect="italics">h</emphasis> er hæð vökvans, <emphasis effect="italics">ρ</emphasis>
 (gríski lágstafurinn rhó) er eðlismassi vökvans og <emphasis effect="italics">g</emphasis> er hröðun vegna
@@ -232,7 +232,7 @@ er 1,0 g/cm<sup>3</sup>.</para>
 <para id="fs-idp2146864">10,3 m</para>
 </note>
 </example>
-<para id="fs-idp189718992"><emphasis effect="bold">Þrýstimælir</emphasis> er tæki svipað
+<para id="fs-idp189718992"><term>Þrýstimælir (e. manometer)</term> er tæki svipað
 loftvog sem hægt er að nota til að mæla þrýsting á gasi sem er lokað
 inni í íláti. Þrýstimælir með lokuðum enda er U-laga rör með einum
 lokuðum armi, einum armi sem tengist gasinu sem á að mæla og rokgjörnum
@@ -626,7 +626,7 @@ sem <emphasis effect="italics">Þ</emphasis><sub>gas</sub> = <emphasis effect="i
 <glossary>
 <definition id="fs-idm92046304">
 <term>staðalloftþrýstingur
-(atm)</term>
+(atm) (e. atmosphere (atm))</term>
 <meaning id="fs-idm92046304-meaning">þrýstingseining; 1 atm =
 101.325 Pa</meaning>
 </definition>
@@ -636,32 +636,32 @@ sem <emphasis effect="italics">Þ</emphasis><sub>gas</sub> = <emphasis effect="i
 þrýstingseining; 1 bar = 100.000 Pa</meaning>
 </definition>
 <definition id="fs-idp128557152">
-<term>loftvog</term>
+<term>loftvog (e. barometer)</term>
 <meaning id="fs-idp128557152-meaning">tæki sem notað er til að
 mæla loftþrýsting</meaning>
 </definition>
 <definition id="fs-idp1898224">
-<term>vökvastöðuþrýstingur</term>
+<term>vökvastöðuþrýstingur (e. hydrostatic pressure)</term>
 <meaning id="fs-idp1898224-meaning">þrýstingur sem vökvi
 beitir vegna þyngdarafls</meaning>
 </definition>
 <definition id="fs-idm30126128">
-<term>þrýstimælir</term>
+<term>þrýstimælir (e. manometer)</term>
 <meaning id="fs-idm30126128-meaning">tæki sem notað er til að
 mæla þrýsting gass sem er lokað inni í íláti</meaning>
 </definition>
 <definition id="fs-idm69533872">
-<term>paskal (Pa)</term>
+<term>paskal (Pa) (e. pascal (pa))</term>
 <meaning id="fs-idm69533872-meaning">SI-eining þrýstings; 1 Pa
 = 1 N/m2</meaning>
 </definition>
 <definition id="fs-idm87137504">
-<term>pund á fertommu (psi)</term>
+<term>pund á fertommu (psi) (e. pounds per square inch (psi))</term>
 <meaning id="fs-idm87137504-meaning">þrýstingseining sem er
 algeng í Bandaríkjunum</meaning>
 </definition>
 <definition id="fs-idm61385376">
-<term>þrýstingur</term>
+<term>þrýstingur (e. pressure)</term>
 <meaning id="fs-idm61385376-meaning">kraftur sem beitt er á
 flatareiningu</meaning>
 </definition>

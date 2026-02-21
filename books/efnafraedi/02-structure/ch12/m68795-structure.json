@@ -845,5 +845,71 @@
       }
     ]
   },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm228138944",
+      "class": null,
+      "alt": "In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy (k J).” The y-axis of the first graph is marked off from 0 to 30 in intervals of 5. The y-axis of the second graph is marked off from 0 to 25 by intervals of 5. In a, a blue curve is shown. It begins with a horizontal region at about 12. The curve then rises sharply near the middle to reach a maximum of about 24 and similarly falls to another horizontal segment at 5. In b, the curve begins and ends similarly, but the maximum reached near the center of the graph is only 20.",
+      "src": "../../media/CNX_Chem_12_07_Exercise4a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm190586416",
+      "class": null,
+      "alt": "In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy.” The y-axes are marked off from 0 to 50 in intervals of 5. In a, a blue curve is shown. It begins with a horizontal region at about 2. The curve then rises sharply near the middle to reach a maximum of about 43 and similarly falls to another horizontal segment at 15. In b, the curve begins and ends similarly, but the maximum reached near the center of the graph is only about 32.",
+      "src": "../../media/CNX_Chem_12_07_Exercise4b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idm241665200",
+      "class": null,
+      "alt": "In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction” and the y-axes are labeled, “Energy (k J).” The y-axes are marked off from 0 to 50 at intervals of 5. In a, a blue curve is shown. It begins with a horizontal segment at about 2J. The curve then rises sharply near the middle to reach a maximum of about 46, then sharply falls to about 35, again rises to about 38 and falls to another horizontal segment at about 15. In b, the curve begins and ends similarly, but the first peak reaches about 46, drops to about 35, then rises to about 43 before falling to the horizontal region at about 15.",
+      "src": "../../media/CNX_Chem_12_07_Exercise5a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idm274120656",
+      "class": null,
+      "alt": "In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy (k J).” The y-axes are marked off from 0 to 50 at intervals of 5. In a, a blue curve is shown. It begins with a horizontal segment at about 34. The curve then rises sharply near the middle to reach a maximum of about 45, then sharply falls to about 25, again rises sharply to about 35 and falls to another horizontal segment at about 15. In b, the curve begins and ends similarly, but the first peak reaches about 40, drops to 25, then rises to 35 before falling to the horizontal region at about 15.",
+      "src": "../../media/CNX_Chem_12_07_Exercise5b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm271936272",
+      "class": "scaled-down",
+      "alt": "This figure shows a graph. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” The y-axis is marked off from 0 to 40 at intervals of 5. A blue curve is shown. It begins with a horizontal region at 10. The curve then rises sharply near the middle to reach a maximum of 35 and similarly falls to another horizontal segment at 5.",
+      "src": "../../media/CNX_Chem_12_07_Exercise6a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idm239333712",
+      "class": "scaled-down",
+      "alt": "This figure shows a graph. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” The y-axis is marked off from 0 to 40 at intervals of 5. A blue curve is shown. It begins with a horizontal region at 10. The curve then rises sharply near the middle to reach a maximum of 20 and similarly falls to another horizontal segment at 5.",
+      "src": "../../media/CNX_Chem_12_07_Exercise6b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idm235765824",
+      "class": "scaled-down",
+      "alt": "In this figure, a graph is shown. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” A blue curve is shown. It begins with a horizontal segment at about 35. The curve then rises sharply near the middle to reach a maximum of about 45, then sharply falls to about 24, again rises to about 30 and falls to another horizontal segment at about 15.",
+      "src": "../../media/CNX_Chem_12_07_Exercise7a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idm266488640",
+      "class": "scaled-down",
+      "alt": "In this figure, a graph is shown. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” A blue curve is shown. It begins with a horizontal segment at about 35. The curve then rises sharply near the middle to reach a maximum of about 45, then sharply falls to about 40, again rises to about 45 and falls to another horizontal segment at about 20.",
+      "src": "../../media/CNX_Chem_12_07_Exercise7b_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
   "sectionOrder": 7
 }

@@ -602,7 +602,7 @@ Returning to the reactions used to introduce this topic, they may now both be id
 Several subclasses of redox reactions are recognized, including __combustion reactions__ in which the reductant (also called a *fuel*) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [#CNX_Chem_04_00_Rocket] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
 
 <!-- SEG:m68710:para:fs-idm5712736 -->
-Watch a brief [video](http://openstax.org/l/16hybridrocket) showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA. The first engines firing at3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.
+Watch a brief [video](http://openstax.org/l/16hybridrocket) showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA. The first engines firing at[[BR]]3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.
 
 <!-- SEG:m68710:para:fs-idm580304 -->
 __Single-displacement (replacement) reactions__ are redox reactions in which an ion in solution is displaced (or replaced) via the oxidation of a metallic element. One common example of this type of reaction is the acid oxidation of certain metals:

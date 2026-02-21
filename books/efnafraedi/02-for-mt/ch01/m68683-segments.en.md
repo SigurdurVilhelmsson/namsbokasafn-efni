@@ -368,7 +368,7 @@ Write conversion factors (as ratios) for the number of:
 The label on a soft drink bottle gives the volume in two units: 2.0 L and 67.6 fl oz. Use this information to derive a conversion factor between the English and metric units. How many significant figures can you justify in your conversion factor?
 
 <!-- SEG:m68683:solution:fs-idm205490112 -->
-[[MATH:15]] Only two significant figures are justified.
+[[MATH:15]][[BR]] Only two significant figures are justified.
 
 <!-- SEG:m68683:problem:fs-idm29733712 -->
 The label on a box of cereal gives the mass of cereal in two units: 978 grams and 34.5 oz. Use this information to find a conversion factor between the English and metric units. How many significant figures can you justify in your conversion factor?

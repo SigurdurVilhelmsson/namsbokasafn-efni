@@ -137,7 +137,7 @@ Explain why the symbol for the element sulfur and the formula for a molecule of 
 Write the molecular and empirical formulas of the following compounds:
 
 <!-- SEG:m68693:problem:fs-idm177730944 -->
-(a)[[MEDIA:1]] (b)[[MEDIA:2]] (c)[[MEDIA:3]] (d)[[MEDIA:4]]
+(a)[[BR]][[MEDIA:1]][[BR]] (b)[[BR]][[MEDIA:2]][[BR]] (c)[[BR]][[MEDIA:3]][[BR]] (d)[[BR]][[MEDIA:4]]
 
 <!-- SEG:m68693:solution:fs-idm117784944 -->
 (a) molecular CO~2~, empirical CO~2~; (b) molecular C~2~H~2~, empirical CH; (c) molecular C~2~H~4~, empirical CH~2~; (d) molecular H~2~SO~4~, empirical H~2~SO~4~
@@ -146,7 +146,7 @@ Write the molecular and empirical formulas of the following compounds:
 Write the molecular and empirical formulas of the following compounds:
 
 <!-- SEG:m68693:problem:fs-idm171785904 -->
-(a)[[MEDIA:5]] (b)[[MEDIA:6]] (c)[[MEDIA:7]] (d)[[MEDIA:8]]
+(a)[[BR]][[MEDIA:5]][[BR]] (b)[[BR]][[MEDIA:6]][[BR]] (c)[[BR]][[MEDIA:7]][[BR]] (d)[[BR]][[MEDIA:8]]
 
 <!-- SEG:m68693:problem:fs-idp221135936 -->
 Determine the empirical formulas for the following compounds:
@@ -191,7 +191,7 @@ Determine the empirical formulas for the following compounds:
 Write the empirical formulas for the following compounds:
 
 <!-- SEG:m68693:problem:fs-idm121078656 -->
-(a)[[MEDIA:9]] (b)[[MEDIA:10]]
+(a)[[BR]][[MEDIA:9]][[BR]] (b)[[BR]][[MEDIA:10]]
 
 <!-- SEG:m68693:solution:fs-idm28441984 -->
 (a) CH~2~O; (b) C~2~H~4~O

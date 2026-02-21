@@ -17,14 +17,14 @@ staðreynd að gassameindir geta dreifst hratt um herbergið, eins og sést
 gassameindir ferðist á gríðarlegum hraða (hundruð metra á sekúndu)
 rekast þær á aðrar gassameindir og ferðast í margar mismunandi áttir
 áður en þær ná áfangastað. Við stofuhita verður gassameind fyrir
-milljörðum árekstra á sekúndu. <emphasis effect="bold">Meðalfrívegalengd</emphasis> er meðalvegalengdin
+milljörðum árekstra á sekúndu. <term>Meðalfrívegalengd (e. mean free path)</term> er meðalvegalengdin
 sem sameind ferðast á milli árekstra. Meðalfrívegalengdin eykst með
 minnkandi þrýstingi; almennt séð er meðalfrívegalengd gassameindar
 hundruðum sinnum stærri en þvermál sameindarinnar.</para>
 <para id="fs-idp34604992">Almennt vitum við að þegar gassýni er
 komið fyrir í einum hluta lokaðs íláts dreifast sameindir þess mjög
 hratt um allt ílátið; þetta ferli þar sem sameindir dreifast í rúmi til
-að bregðast við mismunandi styrk er kallað <emphasis effect="bold">sveim</emphasis> (sýnt í
+að bregðast við mismunandi styrk er kallað <term>sveim (e. diffusion)</term> (sýnt í
 <link target-id="CNX_Chem_09_04_Diffusion"/>). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
 styrkfallanda, þau hreyfast einfaldlega af handahófi – svæði með hærri
 styrk hafa fleiri eindir en svæði með lægri styrk og því á sér stað
@@ -46,7 +46,7 @@ sameindir yfir á O<sub>2</sub> hliðina en O<sub>2</sub> sameindir fara yfir á
 hliðina. (c) Eftir stutta stund hafa bæði hægfara O<sub>2</sub> sameindirnar og
 hraðfara H<sub>2</sub> sameindirnar dreift sér jafnt á báðar hliðar ílátsins.</caption>
 </figure>
-<para id="fs-idp67962064">Við höfum oft áhuga á <emphasis effect="bold">sveimhraða</emphasis>,
+<para id="fs-idp67962064">Við höfum oft áhuga á <term>sveimhraða (e. rate of diffusion)</term>,
 þ.e. magni gass sem fer í gegnum ákveðið svæði á tímaeiningu:</para>
 <equation id="fs-idm44153792" class="unnumbered"><m:math><m:mrow><m:mtext>rate of diffusion</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>amount of gas passing through an area</m:mtext></m:mrow><m:mrow><m:mtext>unit of time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp14262464">Sveimhraðinn fer eftir nokkrum
@@ -57,7 +57,7 @@ ferðast. Athugaðu einnig að tíminn sem það tekur fyrir sveim að eiga sér
 stað er í öfugu hlutfalli við sveimhraðann, eins og sýnt er í jöfnunni
 fyrir sveimhraða.</para>
 <para id="fs-idm29004912">Ferli sem felur í sér hreyfingu
-gastegunda svipað sveimi er <emphasis effect="bold">útstreymi</emphasis>, þ.e. þegar gassameindir
+gastegunda svipað sveimi er <term>útstreymi (e. effusion)</term>, þ.e. þegar gassameindir
 sleppa út í lofttæmi í gegnum örlítið gat, eins og nálarstungu á blöðru
 (<link target-id="CNX_Chem_09_04_DiffEff"/>). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
 mólmassa gassins sem um ræðir eru hraðarnir ekki jafnir; hlutföll
@@ -326,31 +326,31 @@ NH<sub>3</sub> og HCl og komstu að því hversu miklu hraðar NH<sub>3</sub> sv
 </content>
 <glossary>
 <definition id="fs-idp133388272">
-<term>sveim</term>
+<term>sveim (e. diffusion)</term>
 <meaning id="fs-idp133388272-meaning">flutningur atóms eða
 sameindar frá svæði með tiltölulega háum styrk yfir á svæði með
 tiltölulega lágum styrk (fjallað um í þessum kafla með tilliti til
 gasefna, en á við um efni í hvaða fasa sem er)</meaning>
 </definition>
 <definition id="fs-idp39360864">
-<term>útstreymi</term>
+<term>útstreymi (e. effusion)</term>
 <meaning id="fs-idp39360864-meaning">flutningur loftkenndra
 atóma eða sameinda úr íláti yfir í lofttæmi í gegnum mjög lítil op</meaning>
 </definition>
 <definition id="fs-idp257364480">
 <term>útstreymislögmál
-Grahams</term>
+Grahams (e. graham’s law of effusion)</term>
 <meaning id="fs-idp257364480-meaning">sveim- og
 útstreymishraði gasa er í öfugu hlutfalli við kvaðratrætur sameindamassa
 þeirra</meaning>
 </definition>
 <definition id="fs-idp132026496">
-<term>meðalfrívegalengd</term>
+<term>meðalfrívegalengd (e. mean free path)</term>
 <meaning id="fs-idp132026496-meaning">meðalvegalengd sem
 sameind ferðast á milli árekstra</meaning>
 </definition>
 <definition id="fs-idp43914864">
-<term>sveimhraði</term>
+<term>sveimhraði (e. rate of diffusion)</term>
 <meaning id="fs-idp43914864-meaning">magn gass sem sveimar í
 gegnum tiltekið svæði á tilteknum tíma</meaning>
 </definition>

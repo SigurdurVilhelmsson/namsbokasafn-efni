@@ -578,6 +578,10 @@ export function processInlineContent(content, context) {
     return `<a href="${escapeAttr(doc)}">${escapeHtml(doc)}</a>`;
   });
 
+  // Convert CNXML newline/space to HTML equivalents
+  result = result.replace(/<newline\s*\/>/g, '<br/>');
+  result = result.replace(/<space[^>]*\/>/g, '&nbsp;');
+
   // Convert footnotes - collect them for rendering at end of page
   // Replace inline footnote with superscript reference link
   result = result.replace(

@@ -72,7 +72,7 @@ kJ.</para>
 </example>
 <section id="fs-idm65053840">
 <title>Einsleitir hvatar</title>
-<para id="fs-idm243256336"><emphasis effect="bold">Einsleitur hvati</emphasis> er í sama fasa
+<para id="fs-idm243256336"><term>Einsleitur hvati (e. homogeneous catalyst)</term> er í sama fasa
 og hvarfefnin. Hann víxlverkar við hvarfefni og myndar milliefni, sem
 síðan brotnar niður eða hvarfast við annað hvarfefni í einu eða fleiri
 þrepum til að endurmynda upprunalega hvatann og mynda myndefni.</para>
@@ -101,7 +101,7 @@ hvarfinu.</para>
 <note id="fs-idm195911072" class="chemistry chemist-portrait">
 <title>Mario J. Molina</title>
 <para id="fs-idm149608448">Nóbelsverðlaununum í efnafræði árið
-1995 var deilt á milli Paul J. Crutzen, Mario J. <emphasis effect="bold">Molina</emphasis> (<link target-id="CNX_Chem_12_07_Molina"/>)
+1995 var deilt á milli Paul J. Crutzen, Mario J. <term>Molina</term> (<link target-id="CNX_Chem_12_07_Molina"/>)
 og F. Sherwood Rowland „fyrir vinnu þeirra í efnafræði andrúmsloftsins,
 sérstaklega varðandi myndun og niðurbrot ósons.“<footnote>„The
 Nobel Prize in Chemistry 1995,“ Nobel Prize.org, skoðað 18. febrúar
@@ -184,7 +184,7 @@ blóðkorn og aðrar frumur gegn oxunarskemmdum.</caption></figure></note>
 </section>
 <section id="fs-idm254642320">
 <title>Misleitir hvatar</title>
-<para id="fs-idm31937584"><emphasis effect="bold">Misleitur hvati</emphasis> er hvati sem er í
+<para id="fs-idm31937584"><term>Misleitur hvati (e. heterogeneous catalyst)</term> er hvati sem er í
 öðrum fasa (venjulega föstu efni) en hvarfefnin. Slíkir hvatar virka
 yfirleitt með því að útvega virkt yfirborð þar sem hvarf getur átt sér
 stað. Gas- og vökvafasahvörf sem eru hvötuð af misleitum hvötum eiga sér
@@ -443,12 +443,12 @@ stað með tveimur mismunandi hvarfgöngum? Útskýrðu svarið.</para></problem
 </content>
 <glossary>
 <definition id="fs-idm228167568">
-<term>misleitur hvati</term>
+<term>misleitur hvati (e. heterogeneous catalyst)</term>
 <meaning id="fs-idm228167568-meaning">hvati sem er í öðrum
 fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað</meaning>
 </definition>
 <definition id="fs-idm218392224">
-<term>einsleitur hvati</term>
+<term>einsleitur hvati (e. homogeneous catalyst)</term>
 <meaning id="fs-idm218392224-meaning">hvati sem er í sama fasa
 og hvarfefnin</meaning>
 </definition>

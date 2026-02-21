@@ -1187,5 +1187,157 @@
       }
     ]
   },
+  "inlineTables": [
+    {
+      "tableId": "fs-idm124800496",
+      "structure": {
+        "type": "table",
+        "id": "fs-idm124800496",
+        "class": "unnumbered",
+        "summary": "This table has two columns and five rows. The first column is labeled, “Temperature ( K ),” and the second column is labeled, “k ( M superscript negative 1 s superscript negative 1 ).” Under the first column are the numbers: 555, 575, 645, and 700. Under the second column are the numbers: 6.23 times ten to the negative 7; 2.42 times ten to the negative 6; 1.44 times ten to the negative 4; and 2.01 times ten to the negative 3.",
+        "rows": [
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-146",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-147",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-148",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-149",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-150",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-151",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-152",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-153",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-154",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-155",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tableId": "fs-idm163198896",
+      "structure": {
+        "type": "table",
+        "id": "fs-idm163198896",
+        "class": "unnumbered",
+        "summary": "This table contains two columns and three rows. The first row is a header row, and it labels each column, “T ( K )” and “k ( s superscript negative 1 ).” Under the first column are the numbers 293 and 298. Under the second column are the numbers 0.054 and 0.100.",
+        "rows": [
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-156",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-157",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-158",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-159",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68793:entry:auto-160",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-161",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
   "sectionOrder": 5
 }

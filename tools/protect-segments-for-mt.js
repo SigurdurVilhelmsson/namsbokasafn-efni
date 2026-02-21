@@ -46,6 +46,8 @@ const INVISIBLE_PATTERNS = [
   /\{\{\/LINK\}\}/g, // Link placeholders (closing)
   /\{\{TERM\}\}/g, // Term placeholders (opening)
   /\{\{\/TERM\}\}/g, // Term placeholders (closing)
+  /\[\[BR\]\]/g, // Newline placeholders
+  /\[\[SPACE\]\]/g, // Space placeholders
 ];
 
 function parseArgs(args) {

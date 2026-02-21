@@ -107,13 +107,13 @@ Check Your Learning
 Graph the following data to determine whether the reaction [[MATH:2]] is first order.
 
 <!-- SEG:m68791:para:fs-idp73329760 -->
-The plot of ln[*A*]*t* vs. *t* is not linear, indicating the reaction is not first order:
+The plot of ln[*A*]*t* vs. *t* is not linear, indicating the reaction is not first order:[[BR]]
 
 <!-- SEG:m68791:note-title:fs-idm206842256-title -->
 Answer:
 
 <!-- SEG:m68791:para:fs-idp73329760 -->
-The plot of ln[*A*]*t* vs. *t* is not linear, indicating the reaction is not first order:
+The plot of ln[*A*]*t* vs. *t* is not linear, indicating the reaction is not first order:[[BR]]
 
 <!-- SEG:m68791:entry:auto-40 -->
 Time (h)
@@ -566,10 +566,10 @@ Equations for both differential and integrated rate laws and the corresponding h
 Summary of Rate Laws for Zero-, First-, and Second-Order Reactions
 
 <!-- SEG:m68791:entry:auto-190 -->
-Zero-Order
+[[SPACE]]Zero-Order[[SPACE]]
 
 <!-- SEG:m68791:entry:auto-191 -->
-First-Order
+[[SPACE]]First-Order[[SPACE]]
 
 <!-- SEG:m68791:entry:auto-192 -->
 Second-Order
@@ -716,7 +716,7 @@ Describe how graphical methods can be used to determine the order of a reaction 
 Use the data provided to graphically determine the order and rate constant of the following reaction: [[MATH:44]]
 
 <!-- SEG:m68791:solution:fs-idp6601344 -->
-Plotting a graph of ln[SO~2~Cl~2~] versus *t* reveals a linear trend; therefore we know this is a first-order reaction: [[MEDIA:1]] *k* = 2.20 [[MATH:45]] 10^–5^ s^−1^
+Plotting a graph of ln[SO~2~Cl~2~] versus *t* reveals a linear trend; therefore we know this is a first-order reaction:[[BR]] [[MEDIA:1]][[BR]] *k* = 2.20 [[MATH:45]] 10^–5^ s^−1^
 
 <!-- SEG:m68791:entry:auto-241 -->
 Time (s)
@@ -773,10 +773,10 @@ Time (s)
 0.0415
 
 <!-- SEG:m68791:problem:fs-idp79344992 -->
-Pure ozone decomposes slowly to oxygen, [[MATH:52]] Use the data provided in a graphical method and determine the order and rate constant of the reaction. [[TABLE:fs-idp72766816]]
+Pure ozone decomposes slowly to oxygen, [[MATH:52]] Use the data provided in a graphical method and determine the order and rate constant of the reaction.[[BR]] [[TABLE:fs-idp72766816]]
 
 <!-- SEG:m68791:solution:fs-idm228482928 -->
-[[MEDIA:2]] The plot is nicely linear, so the reaction is second order. *k* = 50.1 L mol^−1^ h^−1^
+[[MEDIA:2]][[BR]] The plot is nicely linear, so the reaction is second order. *k* = 50.1 L mol^−1^ h^−1^
 
 <!-- SEG:m68791:entry:auto-261 -->
 Time (h)
@@ -833,7 +833,7 @@ Time (h)
 1.05 [[MATH:78]] 10^−6^
 
 <!-- SEG:m68791:problem:fs-idp122307472 -->
-From the given data, use a graphical method to determine the order and rate constant of the following reaction: [[MATH:79]] [[TABLE:fs-idm133654768]]
+From the given data, use a graphical method to determine the order and rate constant of the following reaction:[[BR]] [[MATH:79]][[BR]] [[TABLE:fs-idm133654768]]
 
 <!-- SEG:m68791:entry:auto-280 -->
 Time (s)
@@ -917,7 +917,7 @@ The reaction of compound *A* to give compounds *C* and *D* was found to be secon
 The half-life of a reaction of compound *A* to give compounds *D* and *E* is 8.50 min when the initial concentration of *A* is 0.150 M. How long will it take for the concentration to drop to 0.0300 M if the reaction is (a) first order with respect to *A* or (b) second order with respect to *A*?
 
 <!-- SEG:m68791:problem:fs-idp55839088 -->
-Some bacteria are resistant to the antibiotic penicillin because they produce penicillinase, an enzyme with a molecular weight of 3 [[MATH:87]] 10^4^ g/mol that converts penicillin into inactive molecules. Although the kinetics of enzyme-catalyzed reactions can be complex, at low concentrations this reaction can be described by a rate law that is first order in the catalyst (penicillinase) and that also involves the concentration of penicillin. From the following data: 1.0 L of a solution containing 0.15 µg (0.15 [[MATH:88]] 10^−6^ g) of penicillinase, determine the order of the reaction with respect to penicillin and the value of the rate constant. [[TABLE:fs-idp79245440]]
+Some bacteria are resistant to the antibiotic penicillin because they produce penicillinase, an enzyme with a molecular weight of 3 [[MATH:87]] 10^4^ g/mol that converts penicillin into inactive molecules. Although the kinetics of enzyme-catalyzed reactions can be complex, at low concentrations this reaction can be described by a rate law that is first order in the catalyst (penicillinase) and that also involves the concentration of penicillin. From the following data: 1.0 L of a solution containing 0.15 µg (0.15 [[MATH:88]] 10^−6^ g) of penicillinase, determine the order of the reaction with respect to penicillin and the value of the rate constant.[[BR]] [[TABLE:fs-idp79245440]]
 
 <!-- SEG:m68791:solution:fs-idp69326720 -->
 The reaction is first order. *k* = 1.0 [[MATH:95]] 10^7^ L mol^−1^ min^−1^
@@ -950,10 +950,10 @@ Rate (mol L^−1^ min^−1^)
 Both technetium-99 and thallium-201 are used to image heart muscle in patients with suspected heart problems. The half-lives are 6 h and 73 h, respectively. What percent of the radioactivity would remain for each of the isotopes after 2 days (48 h)?
 
 <!-- SEG:m68791:problem:fs-idm84405120 -->
-There are two molecules with the formula C~3~H~6~. Propene, [[MATH:102]] is the monomer of the polymer polypropylene, which is used for indoor-outdoor carpets. Cyclopropane is used as an anesthetic: [[MEDIA:3]]
+There are two molecules with the formula C~3~H~6~. Propene, [[MATH:102]] is the monomer of the polymer polypropylene, which is used for indoor-outdoor carpets. Cyclopropane is used as an anesthetic:[[BR]] [[MEDIA:3]]
 
 <!-- SEG:m68791:problem:fs-idm21762608 -->
-When heated to 499 °C, cyclopropane rearranges (isomerizes) and forms propene with a rate constant of5.95 [[MATH:103]] 10^−4^ s^−1^. What is the half-life of this reaction? What fraction of the cyclopropane remains after 0.75 h at 499 °C?
+When heated to 499 °C, cyclopropane rearranges (isomerizes) and forms propene with a rate constant of[[BR]]5.95 [[MATH:103]] 10^−4^ s^−1^. What is the half-life of this reaction? What fraction of the cyclopropane remains after 0.75 h at 499 °C?
 
 <!-- SEG:m68791:solution:fs-idp5273216 -->
 1.16 × 10^3^ s ; 20% remains
@@ -980,7 +980,7 @@ Suppose that the half-life of steroids taken by an athlete is 42 days. Assuming 
 Recently, the skeleton of King Richard III was found under a parking lot in England. If tissue samples from the skeleton contain about 93.79% of the carbon-14 expected in living tissue, what year did King Richard III die? The half-life for carbon-14 is 5730 years.
 
 <!-- SEG:m68791:problem:fs-idp121893664 -->
-Nitroglycerine is an extremely sensitive explosive. In a series of carefully controlled experiments, samples of the explosive were heated to 160 °C and their first-order decomposition studied. Determine the average rate constants for each experiment using the following data: [[TABLE:fs-idp121895360]]
+Nitroglycerine is an extremely sensitive explosive. In a series of carefully controlled experiments, samples of the explosive were heated to 160 °C and their first-order decomposition studied. Determine the average rate constants for each experiment using the following data:[[BR]] [[TABLE:fs-idp121895360]]
 
 <!-- SEG:m68791:solution:fs-idm215408672 -->
 [[TABLE:fs-idm247275488]]
@@ -1121,7 +1121,7 @@ Initial [C~3~H~5~N~3~O~9~] (*M*)
 2.43
 
 <!-- SEG:m68791:problem:fs-idm43018368 -->
-For the past 10 years, the unsaturated hydrocarbon 1,3-butadiene [[MATH:108]] has ranked 38th among the top 50 industrial chemicals. It is used primarily for the manufacture of synthetic rubber. An isomer exists also as cyclobutene: [[MEDIA:4]]
+For the past 10 years, the unsaturated hydrocarbon 1,3-butadiene [[MATH:108]] has ranked 38th among the top 50 industrial chemicals. It is used primarily for the manufacture of synthetic rubber. An isomer exists also as cyclobutene:[[BR]] [[MEDIA:4]]
 
 <!-- SEG:m68791:problem:fs-idp18442736 -->
 The isomerization of cyclobutene to butadiene is first-order and the rate constant has been measured as 2.0 [[MATH:109]] 10^−4^ s^−1^ at 150 °C in a 0.53-L flask. Determine the partial pressure of cyclobutene and its concentration after 30.0 minutes if an isomerization reaction is carried out at 150 °C with an initial pressure of 55 torr.

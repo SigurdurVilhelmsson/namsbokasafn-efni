@@ -76,7 +76,7 @@ framlengd að lægri þrýstingi nær hún þrýstingnum 0 við –273 °C, sem 
 staðfesta með reynslu tengslin milli þrýstings og hitastigs gass
 (~1700), og Joseph Louis Gay-Lussac ákvarðaði tengslin nákvæmar (~1800).
 Vegna þessa er <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">T</emphasis> sambandið fyrir lofttegundir þekkt sem annaðhvort
-<emphasis effect="bold">lögmál Amontons</emphasis> eða <emphasis effect="bold">lögmál Gay-Lussacs</emphasis>. Undir hvoru nafni sem
+<term>lögmál Amontons (e. amontons’s law)</term> eða <term>lögmál Gay-Lussacs (e. gay-lussac’s law)</term>. Undir hvoru nafni sem
 er, segir það að <emphasis effect="italics">þrýstingur ákveðins magns gass sé í beinu hlutfalli
 við hitastig þess á kelvinkvarða þegar rúmmálið er haldið stöðugu</emphasis>.
 Stærðfræðilega má skrifa þetta:</para>
@@ -92,7 +92,7 @@ við að <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></
 Þessi jafna er gagnleg fyrir útreikninga á þrýstingi og hitastigi fyrir
 innilokað gas við stöðugt rúmmál. Athugið að hitastig verður að vera á
 kelvinkvarða fyrir alla útreikninga á gaslögmálum (0 á kelvinkvarða og
-lægsta mögulega hitastig er kallað <emphasis effect="bold">alkul</emphasis>). (Athugið einnig að það
+lægsta mögulega hitastig er kallað <term>alkul (e. absolute zero)</term>). (Athugið einnig að það
 eru að minnsta kosti þrjár leiðir til að lýsa því hvernig þrýstingur
 gass breytist þegar hitastig þess breytist: Við getum notað gildistöflu,
 graf eða stærðfræðijöfnu.)</para>
@@ -162,7 +162,7 @@ grafsins, sem táknar hitastig alkuls.</caption>
 <para id="fs-idp38621856">Sambandið milli rúmmáls og hitastigs
 tiltekins magns af gasi við fastan þrýsting er þekkt sem lögmál Charles
 til heiðurs franska vísindamanninum og frumkvöðli í loftbelgsflugi,
-Jacques Alexandre César Charles. <emphasis effect="bold">Lögmál Charles</emphasis> segir að <emphasis effect="italics">rúmmál
+Jacques Alexandre César Charles. <term>Lögmál Charles (e. charles’s law)</term> segir að <emphasis effect="italics">rúmmál
 tiltekins magns af gasi sé í beinu hlutfalli við hitastig þess á
 kelvinkvarða þegar þrýstingi er haldið föstum</emphasis>.</para>
 <para id="fs-idp174747472">Stærðfræðilega má skrifa þetta sem:</para>
@@ -274,7 +274,7 @@ er línulegt.</caption></figure>
 <para id="fs-idm207692112">Enski náttúruspekingurinn Robert
 Boyle birti fyrstur niðurstöður um sambandið milli rúmmáls og þrýstings
 ákveðins magns af gasi við fast hitastig fyrir rúmum 300 árum. Það er
-tekið saman í fullyrðingunni sem nú er þekkt sem <emphasis effect="bold">lögmál Boyles</emphasis>:
+tekið saman í fullyrðingunni sem nú er þekkt sem <term>lögmál Boyles (e. boyle’s law)</term>:
 <emphasis effect="italics">Rúmmál ákveðins magns af gasi sem haldið er við fast hitastig er í
 öfugu hlutfalli við þrýstinginn sem það er mælt við.</emphasis></para>
 <example id="fs-idp10418864">
@@ -357,7 +357,7 @@ Avogadro setti fram tilgátu árið 1811 til að útskýra hegðun lofttegunda
 og sagði að jafnt rúmmál allra lofttegunda, mælt við sömu skilyrði
 hitastigs og þrýstings, innihaldi sama fjölda sameinda. Með tímanum var
 þetta samband stutt af mörgum athugunum úr tilraunum eins og það er sett
-fram í <emphasis effect="bold">lögmáli Avogadros</emphasis>: <emphasis effect="italics">Fyrir innilokað gas eru rúmmál (V) og
+fram í <term>lögmáli Avogadros (e. avogadro’s law)</term>: <emphasis effect="italics">Fyrir innilokað gas eru rúmmál (V) og
 mólfjöldi (n) í beinu hlutfalli ef þrýstingur og hitastig haldast bæði
 föst</emphasis>.</para>
 <para id="fs-idp65662512">Í jöfnulíki er þetta skrifað sem:</para>
@@ -389,12 +389,12 @@ við fast <emphasis effect="italics">T</emphasis> og <emphasis effect="italics">
 <m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math> = fasti við fast <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">T</emphasis></item>
 </list>
 <para id="fs-idp47645536">Með því að sameina þessi fjögur
-lögmál fæst <emphasis effect="bold">kjörgaslögmálið</emphasis>, samband milli þrýstings, rúmmáls,
+lögmál fæst <term>kjörgaslögmálið (e. ideal gas law)</term>, samband milli þrýstings, rúmmáls,
 hitastigs og mólfjölda gass:</para>
 <equation id="fs-idp190457648" class="unnumbered"><m:math><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
 <para id="fs-idp83793536">þar sem <emphasis effect="italics">P</emphasis> er þrýstingur gass, <emphasis effect="italics">V</emphasis>
 er rúmmál þess, <emphasis effect="italics">n</emphasis> er mólfjöldi gassins, <emphasis effect="italics">T</emphasis> er hitastig þess á
-kelvinkvarða og <emphasis effect="italics">R</emphasis> er fasti sem kallast <emphasis effect="bold">kjörgasfastinn</emphasis> eða alheims
+kelvinkvarða og <emphasis effect="italics">R</emphasis> er fasti sem kallast <term>kjörgasfastinn (e. ideal gas constant)</term> eða alheims
 gasfastinn. Einingarnar sem notaðar eru til að tákna þrýsting, rúmmál og
 hitastig munu ákvarða rétt form gasfastans eins og krafist er í
 einingagreiningu, en algengustu gildin eru 0.08206 L atm mól<sup>–1</sup> K<sup>–1</sup>
@@ -402,7 +402,7 @@ og 8.314 kPa L mól<sup>–1</sup> K<sup>–1</sup>.</para>
 <para id="fs-idp100115520">Sagt er að gastegundir þar sem
 eiginleikarnir <emphasis effect="italics">Þ</emphasis>, <emphasis effect="italics">R</emphasis> og <emphasis effect="italics">H</emphasis> eru nákvæmlega lýstir með
 kjörgaslögmálinu (eða öðrum gaslögmálum) sýni <emphasis effect="italics">kjörhegðun</emphasis> eða nálgist
-eiginleika <emphasis effect="bold">kjörgass</emphasis>. Kjörgas er fræðilegt hugtak sem hægt er að nota
+eiginleika <term>kjörgass (e. ideal gas)</term>. Kjörgas er fræðilegt hugtak sem hægt er að nota
 ásamt <emphasis effect="italics">sameindahreyfingafræði</emphasis> til að útskýra gaslögmálin á skilvirkan
 hátt eins og lýst verður síðar í þessum kafla. Þótt allir útreikningar
 sem sýndir eru í þessum hluta geri ráð fyrir kjörhegðun er þessi
@@ -534,13 +534,13 @@ Kafarinn notar tiltækt loft tvöfalt hraðar en við yfirborðið.</para></note
 <para id="fs-idp92943776">Við höfum séð að rúmmál tiltekins
 magns af gasi og fjöldi sameinda (móla) í tilteknu rúmmáli af gasi
 breytast með breytingum á þrýstingi og hitastigi. Efnafræðingar gera
-stundum samanburð við <emphasis effect="bold">staðalaðstæður (STP)</emphasis> þegar þeir gefa upp
+stundum samanburð við <term>staðalaðstæður (STP) (e. standard temperature and pressure (stp))</term> þegar þeir gefa upp
 eiginleika lofttegunda: 273,15 K og 1 atm (101,325 kPa).
 [neðanmálsgrein: Skilgreiningu IUPAC á staðalþrýstingi var breytt úr 1
 atm í 1 bar (100 kPa) árið 1982, en fyrri skilgreiningin er enn í notkun
 í mörgum heimildum og verður notuð í þessum texta.] Við staðalaðstæður
 hefur eitt mól af kjörgasi rúmmál sem er um 22,4 L – þetta er kallað
-<emphasis effect="bold">staðalmólrúmmál</emphasis> (<link target-id="CNX_Chem_09_02_HENH3O2"/>).</para>
+<term>staðalmólrúmmál (e. standard molar volume)</term> (<link target-id="CNX_Chem_09_02_HENH3O2"/>).</para>
 <figure id="CNX_Chem_09_02_HENH3O2"><media id="fs-idp59520544" alt="This figure shows three balloons each filled with He, NH subscript 2, and O subscript 2, respectively. Beneath the first balloon is the label “4 g of He” Beneath the second balloon is the label, “17 g of NH subscript 2.” Beneath the third balloon is the label “32 g of O subscript 2.” Each balloon contains the same number of molecules of their respective gases.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_HENH3O2.jpg"/>
 </media>
@@ -871,57 +871,57 @@ er þrefaldað við fast hitastig, hvað gerist þá með þrýstinginn?</para>
 </content>
 <glossary>
 <definition id="fs-idp80443824">
-<term>alkul</term>
+<term>alkul (e. absolute zero)</term>
 <meaning id="fs-idp80443824-meaning">hitastig þar sem rúmmál
 gass yrði núll samkvæmt lögmáli Charles.</meaning>
 </definition>
 <definition id="fs-idp77543648">
-<term>lögmál Amontons</term>
+<term>lögmál Amontons (e. amontons’s law)</term>
 <meaning id="fs-idp77543648-meaning">(einnig lögmál
 Gay-Lussac) þrýstingur ákveðins fjölda móla af gasi er í beinu hlutfalli
 við kelvinhitastig þess þegar rúmmálinu er haldið föstu</meaning>
 </definition>
 <definition id="fs-idm85214288">
-<term>lögmál Avogadros</term>
+<term>lögmál Avogadros (e. avogadro’s law)</term>
 <meaning id="fs-idm85214288-meaning">rúmmál gass við fast
 hitastig og þrýsting er í hlutfalli við fjölda gassameinda</meaning>
 </definition>
 <definition id="fs-idm51295520">
-<term>lögmál Boyles</term>
+<term>lögmál Boyles (e. boyle’s law)</term>
 <meaning id="fs-idm51295520-meaning">rúmmál ákveðins fjölda
 móla af gasi sem haldið er við fast hitastig er í öfugu hlutfalli við
 þrýstinginn sem það er mælt við</meaning>
 </definition>
 <definition id="fs-idm100735488">
-<term>lögmál Charles</term>
+<term>lögmál Charles (e. charles’s law)</term>
 <meaning id="fs-idm100735488-meaning">rúmmál ákveðins fjölda
 móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar
 þrýstingnum er haldið föstum</meaning>
 </definition>
 <definition id="fs-idm161542192">
-<term>kjörgas</term>
+<term>kjörgas (e. ideal gas)</term>
 <meaning id="fs-idm161542192-meaning">tilbúið gas sem
 eðliseiginleikum þess er fullkomlega lýst með gaslögmálunum</meaning>
 </definition>
 <definition id="fs-idm78852976">
-<term>kjörgasfastinn (R)</term>
+<term>kjörgasfastinn (R) (e. ideal gas constant (r))</term>
 <meaning id="fs-idm78852976-meaning">fasti fenginn úr
 kjörgasjöfnunni R = 0,08206 L atm mól–1 K–1 eða 8,314 L kPa mól–1 K–1</meaning>
 </definition>
 <definition id="fs-idm111878496">
-<term>kjörgaslögmálið</term>
+<term>kjörgaslögmálið (e. ideal gas law)</term>
 <meaning id="fs-idm111878496-meaning">samband milli þrýstings,
 rúmmáls, magns og hitastigs gass við aðstæður sem fengnar eru með
 samsetningu einföldu gaslögmálanna</meaning>
 </definition>
 <definition id="fs-idm158190720">
 <term>staðalaðstæður
-hitastigs og þrýstings (STP)</term>
+hitastigs og þrýstings (STP) (e. standard conditions of temperature and pressure (stp))</term>
 <meaning id="fs-idm158190720-meaning">273,15 K (0 °C) og 1 atm
 (101,325 kPa)</meaning>
 </definition>
 <definition id="fs-idm62647600">
-<term>staðalmólrúmmál</term>
+<term>staðalmólrúmmál (e. standard molar volume)</term>
 <meaning id="fs-idm62647600-meaning">rúmmál 1 móls af gasi við
 STP, um það bil 22,4 L fyrir gös sem hegða sér eins og kjörgas</meaning>
 </definition>

@@ -263,7 +263,7 @@ I~2~ is produced by the reaction of 0.4235 mol of CuCl~2~ according to the follo
 (b) What mass of I~2~ is produced?
 
 <!-- SEG:m68713:problem:fs-idp172099568 -->
-Silver is often extracted from ores such as K[Ag(CN)~2~] and then recovered by the reaction [[MATH:17]]
+Silver is often extracted from ores such as K[Ag(CN)~2~] and then recovered by the reaction[[BR]] [[MATH:17]]
 
 <!-- SEG:m68713:problem:fs-idp124132784 -->
 (a) How many molecules of Zn(CN)~2~ are produced by the reaction of 35.27 g of K[Ag(CN)~2~]?
@@ -275,7 +275,7 @@ Silver is often extracted from ores such as K[Ag(CN)~2~] and then recovered by t
 (a) 5.337 [[MATH:18]] 10^22^ molecules; (b) 10.41 g Zn(CN)~2~
 
 <!-- SEG:m68713:problem:fs-idp216214496 -->
-What mass of silver oxide, Ag~2~O, is required to produce 25.0 g of silver sulfadiazine, AgC~10~H~9~N~4~SO~2~, from the reaction of silver oxide and sulfadiazine? [[MATH:19]]
+What mass of silver oxide, Ag~2~O, is required to produce 25.0 g of silver sulfadiazine, AgC~10~H~9~N~4~SO~2~, from the reaction of silver oxide and sulfadiazine?[[BR]] [[MATH:19]]
 
 <!-- SEG:m68713:problem:fs-idp65199872 -->
 Carborundum is silicon carbide, SiC, a very hard material used as an abrasive on sandpaper and in other applications. It is prepared by the reaction of pure sand, SiO~2~, with carbon at high temperature. Carbon monoxide, CO, is the other product of this reaction. Write the balanced equation for the reaction, and calculate how much SiO~2~ is required to produce 3.00 kg of SiC.
@@ -284,10 +284,10 @@ Carborundum is silicon carbide, SiC, a very hard material used as an abrasive on
 [[MATH:20]] 4.50 kg SiO~2~
 
 <!-- SEG:m68713:problem:fs-idp92390640 -->
-Automotive air bags inflate when a sample of sodium azide, NaN~3~, is very rapidly decomposed. [[MATH:21]] What mass of sodium azide is required to produce 2.6 ft^3^ (73.6 L) of nitrogen gas with a density of 1.25 g/L?
+Automotive air bags inflate when a sample of sodium azide, NaN~3~, is very rapidly decomposed.[[BR]] [[MATH:21]][[BR]] What mass of sodium azide is required to produce 2.6 ft^3^ (73.6 L) of nitrogen gas with a density of 1.25 g/L?
 
 <!-- SEG:m68713:problem:fs-idp220471984 -->
-Urea, CO(NH~2~)~2~, is manufactured on a large scale for use in producing urea-formaldehyde plastics and as a fertilizer. What is the maximum mass of urea that can be manufactured from the CO~2~ produced by combustion of [[MATH:22]] of carbon followed by the reaction? [[MATH:23]]
+Urea, CO(NH~2~)~2~, is manufactured on a large scale for use in producing urea-formaldehyde plastics and as a fertilizer. What is the maximum mass of urea that can be manufactured from the CO~2~ produced by combustion of [[MATH:22]] of carbon followed by the reaction?[[BR]] [[MATH:23]]
 
 <!-- SEG:m68713:solution:fs-idp125512976 -->
 5.00 [[MATH:24]] 10^3^ kg
@@ -302,22 +302,22 @@ A compact car gets 37.5 miles per gallon on the highway. If gasoline contains 84
 1.28 [[MATH:25]] 10^5^ g CO~2~
 
 <!-- SEG:m68713:problem:fs-idp10650608 -->
-What volume of 0.750 M hydrochloric acid solution can be prepared from the HCl produced by the reaction of 25.0 g of NaCl with excess sulfuric acid? [[MATH:26]]
+What volume of 0.750 M hydrochloric acid solution can be prepared from the HCl produced by the reaction of 25.0 g of NaCl with excess sulfuric acid?[[BR]] [[MATH:26]]
 
 <!-- SEG:m68713:problem:fs-idp52899312 -->
-What volume of a 0.2089 *M* KI solution contains enough KI to react exactly with the Cu(NO~3~)~2~ in 43.88 mL of a 0.3842 *M* solution of Cu(NO~3~)~2~? [[MATH:27]]
+What volume of a 0.2089 *M* KI solution contains enough KI to react exactly with the Cu(NO~3~)~2~ in 43.88 mL of a 0.3842 *M* solution of Cu(NO~3~)~2~?[[BR]] [[MATH:27]]
 
 <!-- SEG:m68713:solution:fs-idp74230176 -->
 161.4 mL KI solution
 
 <!-- SEG:m68713:problem:fs-idp120503856 -->
-A mordant is a substance that combines with a dye to produce a stable fixed color in a dyed fabric. Calcium acetate is used as a mordant. It is prepared by the reaction of acetic acid with calcium hydroxide. [[MATH:28]]
+A mordant is a substance that combines with a dye to produce a stable fixed color in a dyed fabric. Calcium acetate is used as a mordant. It is prepared by the reaction of acetic acid with calcium hydroxide.[[BR]] [[MATH:28]]
 
 <!-- SEG:m68713:problem:fs-idp222482608 -->
 What mass of Ca(OH)~2~ is required to react with the acetic acid in 25.0 mL of a solution having a density of 1.065 g/mL and containing 58.0% acetic acid by mass?
 
 <!-- SEG:m68713:problem:fs-idp160104288 -->
-The toxic pigment called white lead, Pb~3~(OH)~2~(CO~3~)~2~, has been replaced in white paints by rutile, TiO~2~. How much rutile (g) can be prepared from 379 g of an ore that contains 88.3% ilmenite (FeTiO~3~) by mass? [[MATH:29]]
+The toxic pigment called white lead, Pb~3~(OH)~2~(CO~3~)~2~, has been replaced in white paints by rutile, TiO~2~. How much rutile (g) can be prepared from 379 g of an ore that contains 88.3% ilmenite (FeTiO~3~) by mass?[[BR]] [[MATH:29]]
 
 <!-- SEG:m68713:solution:fs-idp100940480 -->
 176 g TiO~2~

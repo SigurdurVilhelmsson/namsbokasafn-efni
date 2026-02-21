@@ -446,7 +446,7 @@ When a 0.740-g sample of trinitrotoluene (TNT), C~7~H~5~N~2~O~6~, is burned in a
 One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator. To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter. When 1.00 g of coal is burned in a bomb calorimeter ([#CNX_Chem_05_02_BombCalor]), the temperature increases by 1.48 °C. If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 [[MATH:8]] 10^3^ pounds).
 
 <!-- SEG:m68726:problem:fs-idp11693072 -->
-The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g. What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is9.1 Calories/g?
+The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g. What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is[[BR]]9.1 Calories/g?
 
 <!-- SEG:m68726:solution:fs-idm30338240 -->
 30%
@@ -461,7 +461,7 @@ What is the maximum mass of carbohydrate in a 6-oz serving of diet soda that con
 0.24 g
 
 <!-- SEG:m68726:problem:fs-idm30519232 -->
-A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:9]] 10^3^ Calories if the average number of Calories for fat is9.1 Calories/g?
+A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:9]] 10^3^ Calories if the average number of Calories for fat is[[BR]]9.1 Calories/g?
 
 <!-- SEG:m68726:problem:fs-idm50956864 -->
 A serving of a breakfast cereal contains 3 g of protein, 18 g of carbohydrates, and 6 g of fat. What is the Calorie content of a serving of this cereal if the average number of Calories for fat is 9.1 Calories/g, for carbohydrates is 4.1 Calories/g, and for protein is 4.1 Calories/g?

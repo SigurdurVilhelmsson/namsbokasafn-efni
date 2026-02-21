@@ -2469,5 +2469,74 @@
       }
     ]
   },
+  "inlineTables": [
+    {
+      "tableId": "fs-idm121830912",
+      "structure": {
+        "type": "table",
+        "id": "fs-idm121830912",
+        "class": "column-header unnumbered",
+        "summary": "This table has four columns and two rows. The first column serves as a header and labels each row, “[ C subscript 2 H subscript 5 O H ] ( M ),” and, “Rate ( mol / L / h ).” To the right of the “Initial Rate ( mol / L / s)” header are the numbers: 4.4 times ten to the negative 2; 3.3 times ten to the negative 2; 2.2 times ten to the negative 2. To the right of the “Rate ( mol / L / h )” header are the numbers: 2.0 times ten to the negative 2, 2.0 times ten to the negative 2, and 2.0 times ten to the negative 2.",
+        "rows": [
+          {
+            "cells": [
+              {
+                "segmentId": "m68789:entry:auto-322",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68789:entry:auto-323",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68789:entry:auto-324",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68789:entry:auto-325",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68789:entry:auto-326",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68789:entry:auto-327",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68789:entry:auto-328",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68789:entry:auto-329",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
   "sectionOrder": 3
 }

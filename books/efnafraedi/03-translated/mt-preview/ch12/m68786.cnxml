@@ -19,7 +19,7 @@ sem táknar þá upphæð sem einstaklingur þénar fyrir að vinna í tiltekinn
 tíma. Á sama hátt er hvarfhraði efnahvarfs mælikvarði á hversu miklu
 hvarfefni er eytt, eða hversu mikið myndefni myndast, við hvarfið á
 tilteknum tíma.</para>
-<para id="fs-idp11492384"><emphasis effect="bold">Hvarfhraði</emphasis> er breyting á magni
+<para id="fs-idp11492384"><term>Hvarfhraði (e. rate of reaction)</term> er breyting á magni
 hvarfefnis eða myndefnis á tímaeiningu. Hvarfhraði er því ákvarðaður með
 því að mæla tímabundna breytingu á einhverjum eiginleika sem hægt er að
 tengja við magn hvarfefna eða myndefna. Hraða efnahvarfa sem eyða eða
@@ -37,7 +37,7 @@ vatnslausn hægt með tímanum þegar það brotnar niður samkvæmt jöfnunni:<
 niður á má tákna með breytingarhraða styrks þess, eins og sýnt er hér:</para>
 <equation id="fs-idm23827472" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>rate of decomposition of</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>change in concentration of reactant</m:mtext></m:mrow><m:mrow><m:mtext>time interval</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>t</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp37715584">Þessi stærðfræðilega framsetning á
-breytingu á styrk efnis yfir tíma er <emphasis effect="bold">hraðajafna</emphasis> fyrir efnahvarfið.
+breytingu á styrk efnis yfir tíma er <term>hraðajafna (e. rate expression)</term> fyrir efnahvarfið.
 Hornklofarnir tákna mólstyrk og táknið delta (Δ) táknar „breytingu á“.
 Þannig táknar <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> mólstyrk vetnisperoxíðs á einhverjum tíma
 <emphasis effect="italics">t</emphasis><sub>1</sub>; sömuleiðis táknar <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> mólstyrk vetnisperoxíðs á
@@ -68,10 +68,10 @@ fyrir síðustu 6 klukkustundirnar gefa hvarfhraðann:</para>
 <para id="fs-idp101513872">Þessi hegðun gefur til kynna að
 efnahvarfið hægir stöðugt á sér með tímanum. Með því að nota styrkinn í
 upphafi og lok tímabils þar sem hvarfhraðinn breytist fæst útreikningur
-á <emphasis effect="bold">meðalhraða</emphasis> fyrir efnahvarfið á þessu tímabili. Á hverjum tilteknum
+á <term>meðalhraða (e. average rate)</term> fyrir efnahvarfið á þessu tímabili. Á hverjum tilteknum
 tíma er hraðinn sem efnahvarf á sér stað á þekktur sem
-<emphasis effect="bold">augnablikshraði</emphasis> þess. Augnablikshraði efnahvarfs á „tíma núll“,
-þegar efnahvarfið hefst, er <emphasis effect="bold">upphafshraði</emphasis> þess. Íhugaðu samlíkingu
+<term>augnablikshraði (e. instantaneous rate)</term> þess. Augnablikshraði efnahvarfs á „tíma núll“,
+þegar efnahvarfið hefst, er <term>upphafshraði (e. initial rate)</term> þess. Íhugaðu samlíkingu
 við bíl sem hægir á sér þegar hann nálgast stöðvunarskilti. Upphafshraði
 ökutækisins – hliðstætt við upphaf efnahvarfs – væri aflestur
 hraðamælisins á því augnabliki sem ökumaðurinn byrjar að stíga á
@@ -400,29 +400,29 @@ L<sup>−1</sup> <emphasis effect="italics">s</emphasis><sup>−1</sup>, hver er
 </content>
 <glossary>
 <definition id="fs-idp11569888">
-<term>meðalhraði</term>
+<term>meðalhraði (e. average rate)</term>
 <meaning id="fs-idp11569888-meaning">hvarfhraði efnahvarfs
 reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og
 tímabilsins sem breytingin á sér stað yfir</meaning>
 </definition>
 <definition id="fs-idp24984224">
-<term>upphafshraði</term>
+<term>upphafshraði (e. initial rate)</term>
 <meaning id="fs-idp24984224-meaning">augnablikshraði
 efnahvarfs við t = 0 s (strax eftir að efnahvarfið hefst)</meaning>
 </definition>
 <definition id="fs-idp70925872">
-<term>augnablikshraði</term>
+<term>augnablikshraði (e. instantaneous rate)</term>
 <meaning id="fs-idp70925872-meaning">hvarfhraði efnahvarfs á
 hverjum tíma, ákvarðaður af halla snertils við línurit yfir styrk sem
 fall af tíma</meaning>
 </definition>
 <definition id="fs-idp172602144">
-<term>hvarfhraði</term>
+<term>hvarfhraði (e. rate of reaction)</term>
 <meaning id="fs-idp172602144-meaning">mælikvarði á hraða
 efnahvarfs</meaning>
 </definition>
 <definition id="fs-idp193131840">
-<term>hraðajafna</term>
+<term>hraðajafna (e. rate expression)</term>
 <meaning id="fs-idp193131840-meaning">stærðfræðileg
 framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða
 þrýstingi hvarfefnis eða myndefnis á tímaeiningu</meaning>

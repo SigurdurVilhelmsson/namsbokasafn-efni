@@ -638,7 +638,7 @@ From the balanced molecular equations, write the complete ionic and net ionic eq
 (c) [[MATH:73]]
 
 <!-- SEG:m68709:solution:fs-idp198600416 -->
-(a) [[MATH:74]] (b) [[MATH:75]] (c) [[MATH:76]]
+(a) [[MATH:74]][[BR]] (b) [[MATH:75]] [[BR]](c) [[MATH:76]]
 
 <!-- SEG:m68709:glossary-term:fs-idp25650896-term -->
 balanced equation

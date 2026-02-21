@@ -212,7 +212,7 @@ Freon-12, CCl~2~F~2~, is prepared from CCl~4~ by reaction with HF. The other pro
 [[MATH:5]] [[MATH:6]]
 
 <!-- SEG:m68714:problem:fs-idp27686272 -->
-Citric acid, C~6~H~8~O~7~, a component of jams, jellies, and fruity soft drinks, is prepared industrially via fermentation of sucrose by the mold *Aspergillus niger*. The equation representing this reaction is [[MATH:7]]
+Citric acid, C~6~H~8~O~7~, a component of jams, jellies, and fruity soft drinks, is prepared industrially via fermentation of sucrose by the mold *Aspergillus niger*. The equation representing this reaction is[[BR]] [[MATH:7]]
 
 <!-- SEG:m68714:problem:fs-idm8793984 -->
 What mass of citric acid is produced from exactly 1 metric ton (1.000 [[MATH:8]] 10^3^ kg) of sucrose if the yield is 92.30%?
@@ -236,7 +236,7 @@ Outline the steps needed to solve the following problem, then do the calculation
 2C~2~H~5~OH + H~2~SO~4~ ⟶ (C~2~H~5~)~2~O + H~2~SO~4~·H~2~O
 
 <!-- SEG:m68714:problem:fs-idp39307056 -->
-What is the percent yield of ether if 1.17 L (d = 0.7134 g/mL) is isolated from the reaction of 1.500 L of C~2~H~5~OH(d = 0.7894 g/mL)?
+What is the percent yield of ether if 1.17 L (d = 0.7134 g/mL) is isolated from the reaction of 1.500 L of C~2~H~5~OH[[BR]](d = 0.7894 g/mL)?
 
 <!-- SEG:m68714:solution:fs-idm48114608 -->
 Convert mass of ethanol to moles of ethanol; relate the moles of ethanol to the moles of ether produced using the stoichiometry of the balanced equation. Convert moles of ether to grams; divide the actual grams of ether (determined through the density) by the theoretical mass to determine the percent yield; 87.6%
@@ -248,7 +248,7 @@ Outline the steps needed to determine the limiting reactant when 30.0 g of propa
 Determine the limiting reactant.
 
 <!-- SEG:m68714:problem:fs-idp101414208 -->
-Outline the steps needed to determine the limiting reactant when 0.50 mol of Cr and 0.75 mol of H~3~PO~4~ react according to the following chemical equation. [[MATH:11]]
+Outline the steps needed to determine the limiting reactant when 0.50 mol of Cr and 0.75 mol of H~3~PO~4~ react according to the following chemical equation.[[BR]] [[MATH:11]]
 
 <!-- SEG:m68714:problem:fs-idm522144 -->
 Determine the limiting reactant.
@@ -257,7 +257,7 @@ Determine the limiting reactant.
 The conversion needed is [[MATH:12]] Then compare the amount of Cr to the amount of acid present. Cr is the limiting reactant.
 
 <!-- SEG:m68714:problem:fs-idp47839312 -->
-What is the limiting reactant when 1.50 g of lithium and 1.50 g of nitrogen combine to form lithium nitride, a component of advanced batteries, according to the following unbalanced equation? [[MATH:13]]
+What is the limiting reactant when 1.50 g of lithium and 1.50 g of nitrogen combine to form lithium nitride, a component of advanced batteries, according to the following unbalanced equation?[[BR]] [[MATH:13]]
 
 <!-- SEG:m68714:problem:fs-idp62392768 -->
 Uranium can be isolated from its ores by dissolving it as UO~2~(NO~3~)~2~, then separating it as solid UO~2~(C~2~O~4~)·3H~2~O. Addition of 0.4031 g of sodium oxalate, Na~2~C~2~O~4~, to a solution containing 1.481 g of uranyl nitrate, UO~2~(NO~3~)~2~, yields 1.073 g of solid UO~2~(C~2~O~4~)·3H~2~O.

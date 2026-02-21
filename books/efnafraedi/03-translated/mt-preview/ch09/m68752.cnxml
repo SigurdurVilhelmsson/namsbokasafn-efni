@@ -15,7 +15,7 @@ hlutþrýsting og notað það í útreikningum sem fela í sér gasblöndur</it
 <para id="fs-idp201619456">Rannsóknir á efnafræðilegri hegðun
 lofttegunda voru hluti af grundvelli ef til vill mestu
 grundvallarbyltingar í efnafræði sögunnar. Franski aðalsmaðurinn Antoine
-<emphasis effect="bold">Lavoisier</emphasis>, sem er almennt talinn „faðir nútímaefnafræði“, breytti
+<term>Lavoisier</term>, sem er almennt talinn „faðir nútímaefnafræði“, breytti
 efnafræði úr þáttbundnum vísindum í magnbundin vísindi með vinnu sinni
 með lofttegundir. Hann uppgötvaði lögmálið um varðveislu efnis,
 uppgötvaði hlutverk súrefnis í brunahvörfum, ákvarðaði samsetningu
@@ -187,7 +187,7 @@ hvert annað hafa einstök gös í efnablöndu gasa ekki áhrif á þrýsting
 hvers annars. Hvert einstakt gas í efnablöndu beitir sama þrýstingi og
 það myndi beita ef það væri eitt í ílátinu (<link target-id="CNX_Chem_09_03_DaltonLaw1"/>). Þrýstingurinn
 sem hvert einstakt gas í efnablöndu beitir er kallaður
-<emphasis effect="bold">hlutþrýstingur</emphasis> þess. Þessi athugun er tekin saman í <emphasis effect="bold">lögmáli
+<term>hlutþrýstingur (e. partial pressure)</term> þess. Þessi athugun er tekin saman í <emphasis effect="bold">lögmáli
 Daltons um hlutþrýsting</emphasis>: <emphasis effect="italics">Heildarþrýstingur efnablöndu kjörgasa er
 jafn summu hlutþrýstings efnishlutagasanna</emphasis>:</para>
 <equation id="fs-idp65742144" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mi>A</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>P</m:mi><m:mi>B</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>P</m:mi><m:mi>C</m:mi></m:msub><m:mo>+</m:mo><m:mn>...</m:mn><m:mo>=</m:mo><m:msub><m:mtext>Σ</m:mtext><m:mtext>i</m:mtext></m:msub><m:msub><m:mi>P</m:mi><m:mtext>i</m:mtext></m:msub></m:mrow></m:math></equation>
@@ -204,7 +204,7 @@ jöfnu rúmmáli sem innihalda gös við þrýstinginn 300 kPa, 450 kPa og 600
 kPa er öllum blandað saman í strokk af sömu stærð er heildarþrýstingur
 gasblöndunnar 1350 kPa.</caption></figure>
 <para id="fs-idp110759216">Hlutþrýstingur gass A er tengdur
-heildarþrýstingi gasefnablöndunnar með *<emphasis effect="italics">mólhlutfalli (</emphasis>X<emphasis effect="italics">)</emphasis>* þess,
+heildarþrýstingi gasefnablöndunnar með <term>mólhlutfalli (<emphasis effect="italics">X</emphasis>) (e. mole fraction (<emphasis effect="italics">x</emphasis>))</term> þess,
 einingu fyrir styrk sem er skilgreind sem fjöldi móla efnishluta í lausn
 deilt með heildarfjölda móla allra efnishluta:</para>
 <equation id="fs-idp18188304" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub><m:mspace width="2em"/><m:mtext>where</m:mtext><m:mspace width="2em"/><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -287,7 +287,7 @@ mettað af vatnsgufu og heildarþrýstingur efnablöndunnar jafngildir
 hlutþrýstingi gassins auk hlutþrýstings vatnsgufunnar. Þrýstingur hreina
 gassins er því jafn heildarþrýstingnum að frádregnum þrýstingi
 vatnsgufunnar – þetta er kallað „þurr“ gasþrýstingur, það er að segja
-þrýstingur gassins eingöngu, án vatnsgufu. <emphasis effect="bold">Gufunarþrýstingur vatns</emphasis>,
+þrýstingur gassins eingöngu, án vatnsgufu. <term>Gufunarþrýstingur vatns (e. vapor pressure of water)</term>,
 sem er þrýstingurinn sem vatnsgufa í jafnvægi við fljótandi vatn í
 lokuðu íláti beitir, fer eftir hitastiginu (<link target-id="CNX_Chem_09_03_WaterVapor2"/>); nánari
 upplýsingar um hitastigsfylgni vatnsgufu má finna í <link target-id="fs-idm68841392"/> og
@@ -616,7 +616,7 @@ jarðar.</para>
 <note id="fs-idp18054480" class="chemistry chemist-portrait">
 <title>Susan Solomon</title>
 <para id="fs-idp97050544">Loftslags- og
-andrúmsloftsfræðingurinn Susan <emphasis effect="bold">Solomon</emphasis> (<link target-id="CNX_Chem_09_03_SusanSolom"/>) er höfundur
+andrúmsloftsfræðingurinn Susan <term>Solomon</term> (<link target-id="CNX_Chem_09_03_SusanSolom"/>) er höfundur
 einnar af bókum ársins hjá <emphasis effect="italics">The New York Times</emphasis> (<emphasis effect="italics">The Coldest March</emphasis>,
 2001), ein af 100 áhrifamestu einstaklingum heims að mati Time
 tímaritsins (2008) og leiðtogi vinnuhóps Milliríkjanefndar um
@@ -1023,23 +1023,23 @@ glýsíns í sýninu? <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:m
 <glossary>
 <definition id="fs-idp142977184">
 <term>Daltons-lögmálið um
-hlutþrýsting</term>
+hlutþrýsting (e. dalton’s law of partial pressures)</term>
 <meaning id="fs-idp142977184-meaning">heildarþrýstingur
 efnablöndu af kjörgasi er jafn summu hlutþrýstings íhlutagasanna</meaning>
 </definition>
 <definition id="fs-idp1132336">
-<term>mólhlutfall (X)</term>
+<term>mólhlutfall (X) (e. mole fraction (x))</term>
 <meaning id="fs-idp1132336-meaning">styrkurseining sem er
 skilgreind sem hlutfall mólmagns íhlutar í efnablöndu og heildarfjölda
 móla allra íhluta efnablöndunnar</meaning>
 </definition>
 <definition id="fs-idp104769888">
-<term>hlutþrýstingur</term>
+<term>hlutþrýstingur (e. partial pressure)</term>
 <meaning id="fs-idp104769888-meaning">þrýstingur sem einstakt
 gas í efnablöndu beitir</meaning>
 </definition>
 <definition id="fs-idp57901520">
-<term>gufunarþrýstingur vatns</term>
+<term>gufunarþrýstingur vatns (e. vapor pressure of water)</term>
 <meaning id="fs-idp57901520-meaning">þrýstingur sem vatnsgufa
 beitir í jafnvægi við fljótandi vatn í lokuðu íláti við ákveðið hitastig</meaning>
 </definition>

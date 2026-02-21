@@ -167,7 +167,7 @@ Systems at equilibrium can be disturbed by changes to temperature, concentration
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68799:problem:fs-idp736656 -->
-The following equation represents a reversible decomposition: [[MATH:1]]
+The following equation represents a reversible decomposition:[[BR]] [[MATH:1]]
 
 <!-- SEG:m68799:problem:fs-idp25940960 -->
 Under what conditions will decomposition in a closed container proceed to completion so that no CaCO~3~ remains?
@@ -185,7 +185,7 @@ What property of a reaction can we use to predict the effect of a change in temp
 The change in enthalpy may be used. If the reaction is exothermic, the heat produced can be thought of as a product. If the reaction is endothermic the heat added can be thought of as a reactant. Additional heat would shift an exothermic reaction back to the reactants but would shift an endothermic reaction to the products. Cooling an exothermic reaction causes the reaction to shift toward the product side; cooling an endothermic reaction would cause it to shift to the reactants’ side.
 
 <!-- SEG:m68799:problem:fs-idp88632768 -->
-The following reaction occurs when a burner on a gas stove is lit: [[MATH:4]]
+The following reaction occurs when a burner on a gas stove is lit:[[BR]] [[MATH:4]]
 
 <!-- SEG:m68799:problem:fs-idp113241664 -->
 Is an equilibrium among CH~4~, O~2~, CO~2~, and H~2~O established under these conditions? Explain your answer.
@@ -194,7 +194,7 @@ Is an equilibrium among CH~4~, O~2~, CO~2~, and H~2~O established under these co
 No, it is not at equilibrium. Because the system is not confined, products continuously escape from the region of the flame; reactants are also added continuously from the burner and surrounding atmosphere.
 
 <!-- SEG:m68799:problem:fs-idp138000784 -->
-A necessary step in the manufacture of sulfuric acid is the formation of sulfur trioxide, SO~3~, from sulfur dioxide, SO~2~, and oxygen, O~2~, shown here. At high temperatures, the rate of formation of SO~3~ is higher, but the equilibrium amount (concentration or partial pressure) of SO~3~ is lower than it would be at lower temperatures. [[MATH:5]]
+A necessary step in the manufacture of sulfuric acid is the formation of sulfur trioxide, SO~3~, from sulfur dioxide, SO~2~, and oxygen, O~2~, shown here. At high temperatures, the rate of formation of SO~3~ is higher, but the equilibrium amount (concentration or partial pressure) of SO~3~ is lower than it would be at lower temperatures.[[BR]] [[MATH:5]]
 
 <!-- SEG:m68799:problem:fs-idp28525136 -->
 (a) Does the equilibrium constant for the reaction increase, decrease, or remain about the same as the temperature increases?
@@ -203,13 +203,13 @@ A necessary step in the manufacture of sulfuric acid is the formation of sulfur 
 (b) Is the reaction endothermic or exothermic?
 
 <!-- SEG:m68799:problem:fs-idp45632 -->
-Suggest four ways in which the concentration of hydrazine, N~2~H~4~, could be increased in an equilibrium described by the following equation: [[MATH:6]]
+Suggest four ways in which the concentration of hydrazine, N~2~H~4~, could be increased in an equilibrium described by the following equation:[[BR]] [[MATH:6]]
 
 <!-- SEG:m68799:solution:fs-idp27030640 -->
 Add N~2~; add H~2~; decrease the container volume; heat the mixture.
 
 <!-- SEG:m68799:problem:fs-idp208675872 -->
-Suggest four ways in which the concentration of PH~3~ could be increased in an equilibrium described by the following equation: [[MATH:7]]
+Suggest four ways in which the concentration of PH~3~ could be increased in an equilibrium described by the following equation:[[BR]] [[MATH:7]]
 
 <!-- SEG:m68799:problem:fs-idp54257744 -->
 How will an increase in temperature affect each of the following equilibria? How will a decrease in the volume of the reaction vessel affect each?
@@ -248,7 +248,7 @@ How will an increase in temperature affect each of the following equilibria? How
 Methanol can be prepared from carbon monoxide and hydrogen at high temperature and pressure in the presence of a suitable catalyst.
 
 <!-- SEG:m68799:problem:fs-idp47071392 -->
-(a) Write the expression for the equilibrium constant (*K~c~*) for the reversible reaction [[MATH:16]]
+(a) Write the expression for the equilibrium constant (*K~c~*) for the reversible reaction[[BR]] [[MATH:16]]
 
 <!-- SEG:m68799:problem:fs-idp114921120 -->
 (b) What will happen to the concentrations of H~2~, CO, and CH~3~OH at equilibrium if more H~2~ is added?
@@ -272,7 +272,7 @@ Methanol can be prepared from carbon monoxide and hydrogen at high temperature a
 Nitrogen and oxygen react at high temperatures.
 
 <!-- SEG:m68799:problem:fs-idp76209904 -->
-(a) Write the expression for the equilibrium constant (*K~c~*) for the reversible reaction [[MATH:18]]
+(a) Write the expression for the equilibrium constant (*K~c~*) for the reversible reaction[[BR]] [[MATH:18]]
 
 <!-- SEG:m68799:problem:fs-idp215116176 -->
 (b) What will happen to the concentrations of N~2~, O~2~, and NO at equilibrium if more O~2~ is added?
@@ -296,7 +296,7 @@ Nitrogen and oxygen react at high temperatures.
 Water gas, a mixture of H~2~ and CO, is an important industrial fuel produced by the reaction of steam with red hot coke, essentially pure carbon.
 
 <!-- SEG:m68799:problem:fs-idp153944320 -->
-(a) Write the expression for the equilibrium constant for the reversible reaction [[MATH:19]]
+(a) Write the expression for the equilibrium constant for the reversible reaction[[BR]] [[MATH:19]]
 
 <!-- SEG:m68799:problem:fs-idp139982336 -->
 (b) What will happen to the concentration of each reactant and product at equilibrium if more C is added?
@@ -317,7 +317,7 @@ Water gas, a mixture of H~2~ and CO, is an important industrial fuel produced by
 Pure iron metal can be produced by the reduction of iron(III) oxide with hydrogen gas.
 
 <!-- SEG:m68799:problem:fs-idm5772208 -->
-(a) Write the expression for the equilibrium constant (*K~c~*) for the reversible reaction [[MATH:21]]
+(a) Write the expression for the equilibrium constant (*K~c~*) for the reversible reaction[[BR]] [[MATH:21]]
 
 <!-- SEG:m68799:problem:fs-idp103391248 -->
 (b) What will happen to the concentration of each reactant and product at equilibrium if more Fe is added?
@@ -335,7 +335,7 @@ Pure iron metal can be produced by the reduction of iron(III) oxide with hydroge
 (f) What will happen to the concentration of each reactant and product at equilibrium if the temperature of the system is increased?
 
 <!-- SEG:m68799:problem:fs-idp260986272 -->
-Ammonia is a weak base that reacts with water according to this equation: [[MATH:22]]
+Ammonia is a weak base that reacts with water according to this equation:[[BR]] [[MATH:22]]
 
 <!-- SEG:m68799:problem:fs-idp41532304 -->
 Will any of the following increase the percent of ammonia that is converted to the ammonium ion in water?
@@ -353,7 +353,7 @@ Will any of the following increase the percent of ammonia that is converted to t
 Only (b)
 
 <!-- SEG:m68799:problem:fs-idp25609312 -->
-Acetic acid is a weak acid that reacts with water according to this equation: [[MATH:23]]
+Acetic acid is a weak acid that reacts with water according to this equation:[[BR]] [[MATH:23]]
 
 <!-- SEG:m68799:problem:fs-idp114009808 -->
 Will any of the following increase the percent of acetic acid that reacts and produces [[MATH:24]] ion?
@@ -368,16 +368,16 @@ Will any of the following increase the percent of acetic acid that reacts and pr
 (c) Addition of NaCH~3~CO~2~
 
 <!-- SEG:m68799:problem:fs-idp150087168 -->
-Suggest two ways in which the equilibrium concentration of Ag^+^ can be reduced in a solution of Na^+^, Cl^−^, Ag^+^, and [[MATH:25]] in contact with solid AgCl. [[MATH:26]] [[MATH:27]]
+Suggest two ways in which the equilibrium concentration of Ag^+^ can be reduced in a solution of Na^+^, Cl^−^, Ag^+^, and [[MATH:25]] in contact with solid AgCl.[[BR]] [[MATH:26]][[BR]] [[MATH:27]]
 
 <!-- SEG:m68799:solution:fs-idm2616544 -->
 Add NaCl or some other salt that produces Cl^−^ to the solution. Cooling the solution forces the equilibrium to the right, precipitating more AgCl(*s*).
 
 <!-- SEG:m68799:problem:fs-idp157407472 -->
-How can the pressure of water vapor be increased in the following equilibrium? [[MATH:28]]
+How can the pressure of water vapor be increased in the following equilibrium?[[BR]] [[MATH:28]]
 
 <!-- SEG:m68799:problem:fs-idm15433728 -->
-A solution is saturated with silver sulfate and contains excess solid silver sulfate: [[MATH:29]]
+A solution is saturated with silver sulfate and contains excess solid silver sulfate:[[BR]] [[MATH:29]]
 
 <!-- SEG:m68799:problem:fs-idm200271568 -->
 A small amount of solid silver sulfate containing a radioactive isotope of silver is added to this solution. Within a few minutes, a portion of the solution phase is sampled and tests positive for radioactive Ag^+^ ions. Explain this observation.

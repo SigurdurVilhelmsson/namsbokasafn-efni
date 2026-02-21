@@ -246,6 +246,79 @@ function restoreTermMarkers(isSegments, enSegments) {
 }
 
 /**
+ * Restore [[BR]] placeholders in IS segments by matching EN segment positions.
+ *
+ * For already-processed IS segments that went through MT without [[BR]]:
+ * looks at what follows [[BR]] in EN (the "anchor" pattern) and inserts
+ * [[BR]] before the same anchor in IS.
+ *
+ * Common anchors: (a), (b), (c), [[MEDIA:N]], start-of-text after break.
+ *
+ * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
+ * @param {Map<string, string>} enSegments - Original English segments
+ * @returns {{ segments: Map<string, string>, restoredCount: number }}
+ */
+function restoreNewlines(isSegments, enSegments) {
+  let restoredCount = 0;
+
+  for (const [segId, isText] of isSegments) {
+    const enText = enSegments.get(segId);
+    if (!enText) continue;
+
+    // Skip if EN has no [[BR]] or IS already has [[BR]]
+    if (!enText.includes('[[BR]]') || isText.includes('[[BR]]')) continue;
+
+    // Split EN text by [[BR]] to find anchor patterns after each break
+    const enParts = enText.split('[[BR]]');
+    if (enParts.length < 2) continue;
+
+    let result = isText;
+    let modified = false;
+
+    // For each [[BR]] in EN, find the anchor (start of the next part) in IS
+    for (let i = 1; i < enParts.length; i++) {
+      const afterBreak = enParts[i].trimStart();
+
+      // Extract anchor pattern: (a), (b), [[MEDIA:N]], [[MATH:N]], or first few words
+      let anchor = null;
+
+      // Try parenthesized letter/number: (a), (b), (1), etc.
+      const parenMatch = afterBreak.match(/^\(([a-z0-9]+)\)/);
+      if (parenMatch) {
+        anchor = `(${parenMatch[1]})`;
+      }
+
+      // Try [[MEDIA:N]] or [[MATH:N]] placeholder
+      if (!anchor) {
+        const placeholderMatch = afterBreak.match(/^(\[\[(MEDIA|MATH):\d+\]\])/);
+        if (placeholderMatch) {
+          anchor = placeholderMatch[1];
+        }
+      }
+
+      if (!anchor) continue; // No recognizable anchor — skip this break
+
+      // Find anchor in IS text and insert [[BR]] before it
+      const anchorIdx = result.indexOf(anchor);
+      if (anchorIdx > 0) {
+        // Insert [[BR]] before the anchor, trimming trailing space before it
+        const before = result.substring(0, anchorIdx).replace(/\s+$/, '');
+        const after = result.substring(anchorIdx);
+        result = `${before} [[BR]]${after}`;
+        modified = true;
+        restoredCount++;
+      }
+    }
+
+    if (modified) {
+      isSegments.set(segId, result);
+    }
+  }
+
+  return { segments: isSegments, restoredCount };
+}
+
+/**
  * Annotate inline __term__ markers in IS segments with the English original.
  *
  * For each segment present in both maps, extracts __term__ texts from the EN
@@ -375,6 +448,10 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
   // Remove backslash escapes from emphasis markers (e.g., \*text\* → *text*)
   result = result.replace(/\\\*/g, '*');
 
+  // Restore newline and space placeholders to CNXML
+  result = result.replace(/\[\[BR\]\]/g, '<newline/>');
+  result = result.replace(/\[\[SPACE\]\]/g, '<space/>');
+
   // Restore math placeholders
   result = result.replace(/\[\[MATH:(\d+)\]\]/g, (match, num) => {
     const mathId = `math-${num}`;
@@ -467,7 +544,11 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
   result = result.replace(/(?<=[^\s^])\^([^\s^]{1,15})\^/g, '<sup>$1</sup>');
 
   // Convert footnotes back — handle both English marker and MT-translated Icelandic
-  result = result.replace(/ \[(?:footnote|neðanmálsgrein): ([^\]]+)\]/g, '<footnote>$1</footnote>');
+  // Use lazy [\s\S]+? with lookahead to handle footnotes containing ] (e.g., math placeholders)
+  result = result.replace(
+    / \[(?:footnote|neðanmálsgrein): ([\s\S]+?)\](?=\s|$|[.,;:])/g,
+    '<footnote>$1</footnote>'
+  );
 
   // Escape XML entities that might have been introduced
   // (but be careful not to double-escape, and don't escape HTML comments)
@@ -1520,6 +1601,12 @@ async function main() {
         console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
       }
 
+      // Restore [[BR]] placeholders from EN source into IS segments
+      const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
+      if (args.verbose && brRestoredCount > 0) {
+        console.error(`  Restored ${brRestoredCount} newline placeholder(s) from EN source`);
+      }
+
       // Annotate inline terms with English originals: __IS (e. en)__
       if (args.annotateEn) {
         const { annotatedCount } = annotateInlineTerms(segments, enSegments);
@@ -1572,4 +1659,4 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }
 
-export { restoreTermMarkers, annotateInlineTerms, parseSegments };
+export { restoreTermMarkers, restoreNewlines, annotateInlineTerms, parseSegments };

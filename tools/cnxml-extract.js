@@ -63,8 +63,10 @@ function parseArgs(args) {
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
     else if (arg === '--input' && args[i + 1]) result.input = args[++i];
-    else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
-    else if (arg === '--module' && args[i + 1]) result.module = args[++i];
+    else if (arg === '--chapter' && args[i + 1]) {
+      const chapterArg = args[++i];
+      result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
+    } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
     else if (arg === '--output-dir' && args[i + 1]) result.outputDir = args[++i];
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
@@ -186,6 +188,10 @@ function extractInlineText(
       return placeholder;
     });
   }
+
+  // Convert <newline/> and <space/> to placeholders before stripTags()
+  text = text.replace(/<newline\s*\/>/g, '[[BR]]');
+  text = text.replace(/<space[^>]*\/>/g, '[[SPACE]]');
 
   // Convert leaf-level inline markup to markdown FIRST, before processing
   // outer tags like <term>, <link>, <footnote>. This prevents stripTags()
@@ -1287,7 +1293,9 @@ function formatSegmentsMarkdown(segments) {
  * @returns {Array<string>} Array of file paths
  */
 function findChapterFiles(chapter, moduleId = null) {
-  const chapterDir = path.join(BOOKS_DIR, '01-source', `ch${String(chapter).padStart(2, '0')}`);
+  const chapterDirName =
+    chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+  const chapterDir = path.join(BOOKS_DIR, '01-source', chapterDirName);
 
   if (!fs.existsSync(chapterDir)) {
     throw new Error(`Chapter directory not found: ${chapterDir}`);
@@ -1310,10 +1318,11 @@ function findChapterFiles(chapter, moduleId = null) {
  * @param {number} chapter - Chapter number
  */
 function ensureOutputDirs(chapter) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir =
+    chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
   const dirs = [
-    path.join(BOOKS_DIR, '02-for-mt', `ch${chapterStr}`),
-    path.join(BOOKS_DIR, '02-structure', `ch${chapterStr}`),
+    path.join(BOOKS_DIR, '02-for-mt', chapterDir),
+    path.join(BOOKS_DIR, '02-structure', chapterDir),
   ];
 
   for (const dir of dirs) {
@@ -1404,9 +1413,10 @@ function buildManifest(result, sourceContent) {
  * @param {string} sourceContent - Original CNXML content for manifest hashing
  */
 function writeOutput(result, chapter, moduleId, sourceContent) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const mtDir = path.join(BOOKS_DIR, '02-for-mt', `ch${chapterStr}`);
-  const structDir = path.join(BOOKS_DIR, '02-structure', `ch${chapterStr}`);
+  const chapterDir =
+    chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+  const mtDir = path.join(BOOKS_DIR, '02-for-mt', chapterDir);
+  const structDir = path.join(BOOKS_DIR, '02-structure', chapterDir);
 
   // Write segments markdown
   const segmentsPath = path.join(mtDir, `${moduleId}-segments.en.md`);

@@ -329,13 +329,13 @@ Calculation of *K~P~* Write the equations relating *K~c~* to *K~P~* for each of 
 What is *K~P~* at this temperature?
 
 <!-- SEG:m68798:para:fs-idp22632784 -->
-(a) Δ*n* = (2) − (1) = 1 *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^1^ = *K~c~* (*RT*)
+(a) Δ*n* = (2) − (1) = 1[[BR]] *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^1^ = *K~c~* (*RT*)
 
 <!-- SEG:m68798:para:fs-idp15495888 -->
-(b) Δ*n* = (2) − (2) = 0 *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^0^ = *K~c~*
+(b) Δ*n* = (2) − (2) = 0[[BR]] *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^0^ = *K~c~*
 
 <!-- SEG:m68798:para:fs-idp64674800 -->
-(c) Δ*n* = (2) − (1 + 3) = −2 *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^−2^ = [[MATH:27]]
+(c) Δ*n* = (2) − (1 + 3) = −2[[BR]] *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^−2^ = [[MATH:27]]
 
 <!-- SEG:m68798:para:fs-idp100458064 -->
 (d) *K~P~* = *K~c~* (RT)Δ*n* = (0.28)[(0.0821)(1173)]^−2^ = 3.0 [[MATH:28]] 10^−5^
@@ -488,7 +488,7 @@ Explain why an equilibrium between Br~2~(*l*) and Br~2~(*g*) would not be establ
 Equilibrium cannot be established between the liquid and the gas phase if the top is removed from the bottle because the system is not closed; one of the components of the equilibrium, the Br~2~ vapor, would escape from the bottle until all liquid disappeared. Thus, more liquid would evaporate than can condense back from the gas phase to the liquid phase.
 
 <!-- SEG:m68798:problem:fs-idp251450064 -->
-If you observe the following reaction at equilibrium, is it possible to tell whether the reaction started with pure NO~2~ or with pure N~2~O~4~? [[MATH:36]]
+If you observe the following reaction at equilibrium, is it possible to tell whether the reaction started with pure NO~2~ or with pure N~2~O~4~?[[BR]] [[MATH:36]]
 
 <!-- SEG:m68798:problem:fs-idp10903072 -->
 Among the solubility rules previously discussed is the statement: All chlorides are soluble except Hg~2~Cl~2~, AgCl, PbCl~2~, and CuCl.
@@ -632,7 +632,7 @@ The initial concentrations or pressures of reactants and products are given for 
 (f) [[MATH:79]] [N~2~] = 0.100 *M*, [O~2~] = 0.200 *M*, [NO] = 1.00 *M*
 
 <!-- SEG:m68798:problem:fs-idp114845120 -->
-The following reaction has *K~P~* = 4.50 [[MATH:80]] 10^−5^ at 720 K. [[MATH:81]]
+The following reaction has *K~P~* = 4.50 [[MATH:80]] 10^−5^ at 720 K.[[BR]] [[MATH:81]]
 
 <!-- SEG:m68798:problem:fs-idp126609152 -->
 If a reaction vessel is filled with each gas to the partial pressures listed, in which direction will it shift to reach equilibrium? *P*(NH~3~) = 93 atm, *P*(N~2~) = 48 atm, and *P*(H~2~) = 52 atm
@@ -641,7 +641,7 @@ If a reaction vessel is filled with each gas to the partial pressures listed, in
 The system will shift toward the reactants to reach equilibrium.
 
 <!-- SEG:m68798:problem:fs-idp163618592 -->
-Determine if the following system is at equilibrium. If not, in which direction will the system need to shift to reach equilibrium? [[MATH:82]]
+Determine if the following system is at equilibrium. If not, in which direction will the system need to shift to reach equilibrium?[[BR]] [[MATH:82]]
 
 <!-- SEG:m68798:problem:fs-idp125056768 -->
 [SO~2~Cl~2~] = 0.12 *M*, [Cl~2~] = 0.16 *M* and [SO~2~] = 0.050 *M*. *K~c~* for the reaction is 0.078.

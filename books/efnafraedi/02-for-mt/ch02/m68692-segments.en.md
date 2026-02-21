@@ -374,7 +374,7 @@ Mass (amu)
 hydrogen
 
 <!-- SEG:m68692:entry:auto-126 -->
-[[MATH:10]](protium)
+[[MATH:10]][[BR]](protium)
 
 <!-- SEG:m68692:entry:auto-127 -->
 1
@@ -392,7 +392,7 @@ hydrogen
 99.989
 
 <!-- SEG:m68692:entry:auto-132 -->
-[[MATH:11]](deuterium)
+[[MATH:11]][[BR]](deuterium)
 
 <!-- SEG:m68692:entry:auto-133 -->
 1
@@ -410,7 +410,7 @@ hydrogen
 0.0115
 
 <!-- SEG:m68692:entry:auto-138 -->
-[[MATH:12]](tritium)
+[[MATH:12]][[BR]](tritium)
 
 <!-- SEG:m68692:entry:auto-139 -->
 1
@@ -965,7 +965,7 @@ Open the [Build an Atom simulation](http://openstax.org/l/16PhetAtomBld) and cli
 (a) Pick any one of the first 10 elements that you would like to build and state its symbol.
 
 <!-- SEG:m68692:problem:fs-idm125643536 -->
-(b) Drag protons, neutrons, and electrons onto the atom template to make an atom of your element. State the numbers of protons, neutrons, and electrons in your atom, as well as the net charge and mass number.
+(b) Drag protons, neutrons, and electrons onto the atom template to make an atom of your element.[[BR]] State the numbers of protons, neutrons, and electrons in your atom, as well as the net charge and mass number.
 
 <!-- SEG:m68692:problem:fs-idm8547328 -->
 (c) Click on “Net Charge” and “Mass Number,” check your answers to (b), and correct, if needed.

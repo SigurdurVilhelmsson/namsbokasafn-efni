@@ -671,7 +671,7 @@ Key Equations
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68727:problem:fs-idp167492528 -->
-Explain how the heat measured in [#fs-idm19242032] differs from the enthalpy change for the exothermic reaction described by the following equation:[[MATH:75]]
+Explain how the heat measured in [#fs-idm19242032] differs from the enthalpy change for the exothermic reaction described by the following equation:[[BR]][[MATH:75]]
 
 <!-- SEG:m68727:solution:fs-idp167503872 -->
 The enthalpy change of the indicated reaction is for exactly 1 mol HCL and 1 mol NaOH; the heat in the example is produced by 0.0500 mol HCl and 0.0500 mol NaOH.
@@ -686,7 +686,7 @@ Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~
 25 kJ mol^−1^
 
 <!-- SEG:m68727:problem:fs-idp140737280 -->
-Calculate Δ*H* for the reaction described by the equation. (*Hint*: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[MATH:77]]
+Calculate Δ*H* for the reaction described by the equation. (*Hint*: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[BR]][[MATH:77]]
 
 <!-- SEG:m68727:problem:fs-idp107667792 -->
 Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of CaCl~2~ (refer to [#fs-idm68277040]).
@@ -722,7 +722,7 @@ When 2.50 g of methane burns in oxygen, 125 kJ of heat is produced. What is the 
 –802 kJ mol^−1^
 
 <!-- SEG:m68727:problem:fs-idp155925136 -->
-How much heat is produced when 100 mL of 0.250 M HCl (density, 1.00 g/mL) and 200 mL of 0.150 M NaOH (density, 1.00 g/mL) are mixed?[[MATH:79]]
+How much heat is produced when 100 mL of 0.250 M HCl (density, 1.00 g/mL) and 200 mL of 0.150 M NaOH (density, 1.00 g/mL) are mixed?[[BR]][[MATH:79]]
 
 <!-- SEG:m68727:problem:fs-idm11092064 -->
 If both solutions are at the same temperature and the specific heat of the products is 4.19 J/g °C, how much will the temperature increase? What assumption did you make in your calculation?
@@ -767,7 +767,7 @@ How many kilojoules of heat will be released when exactly 1 mole of manganese, M
 How many kilojoules of heat will be released when exactly 1 mole of iron, Fe, is burned to form Fe~2~O~3~(*s*) at standard state conditions?
 
 <!-- SEG:m68727:problem:fs-idp184316624 -->
-The following sequence of reactions occurs in the commercial production of aqueous nitric acid:[[MATH:83]][[MATH:84]][[MATH:85]]
+The following sequence of reactions occurs in the commercial production of aqueous nitric acid:[[BR]][[MATH:83]][[BR]][[MATH:84]][[BR]][[MATH:85]]
 
 <!-- SEG:m68727:problem:fs-idm165324304 -->
 Determine the total enthalpy change for the production of one mole of aqueous nitric acid by this process. Coproducts of the net reaction include water and nitrogen monoxide.
@@ -776,10 +776,10 @@ Determine the total enthalpy change for the production of one mole of aqueous ni
 −494 kJ/mol
 
 <!-- SEG:m68727:problem:fs-idp154783040 -->
-Both graphite and diamond burn.[[MATH:86]]
+Both graphite and diamond burn.[[BR]][[MATH:86]]
 
 <!-- SEG:m68727:problem:fs-idp1114976 -->
-For the conversion of graphite to diamond:[[MATH:87]]
+For the conversion of graphite to diamond:[[BR]][[MATH:87]]
 
 <!-- SEG:m68727:problem:fs-idm24454080 -->
 Which produces more heat, the combustion of graphite or the combustion of diamond?
@@ -791,16 +791,16 @@ From the molar heats of formation in Appendix G, determine how much heat is requ
 44.01 kJ/mol
 
 <!-- SEG:m68727:problem:fs-idp157715136 -->
-Which produces more heat?[[MATH:89]] or[[MATH:90]]
+Which produces more heat?[[BR]][[MATH:89]][[BR]] or[[BR]][[MATH:90]]
 
 <!-- SEG:m68727:problem:fs-idm22161072 -->
 for the phase change [[MATH:91]]
 
 <!-- SEG:m68727:problem:fs-idp155266144 -->
-Calculate [[MATH:92]] for the process[[MATH:93]]
+Calculate [[MATH:92]] for the process[[BR]][[MATH:93]]
 
 <!-- SEG:m68727:problem:fs-idm114989872 -->
-from the following information:[[MATH:94]]
+from the following information:[[BR]][[MATH:94]]
 
 <!-- SEG:m68727:solution:fs-idp198391216 -->
 −394 kJ
@@ -809,13 +809,13 @@ from the following information:[[MATH:94]]
 Calculate [[MATH:95]] for the process [[MATH:96]]
 
 <!-- SEG:m68727:problem:fs-idm116484704 -->
-from the following information:[[MATH:97]]
+from the following information:[[BR]][[MATH:97]]
 
 <!-- SEG:m68727:problem:fs-idp128497888 -->
 Calculate Δ*H* for the process [[MATH:98]]
 
 <!-- SEG:m68727:problem:fs-idm141516000 -->
-from the following information:[[MATH:99]]
+from the following information:[[BR]][[MATH:99]]
 
 <!-- SEG:m68727:solution:fs-idp149326576 -->
 265 kJ
@@ -824,10 +824,10 @@ from the following information:[[MATH:99]]
 Calculate [[MATH:100]] for the process [[MATH:101]]
 
 <!-- SEG:m68727:problem:fs-idm80871856 -->
-from the following information:[[MATH:102]]
+from the following information:[[BR]][[MATH:102]]
 
 <!-- SEG:m68727:problem:fs-idp28900272 -->
-Calculate the standard molar enthalpy of formation of NO(*g*) from the following data:[[MATH:103]]
+Calculate the standard molar enthalpy of formation of NO(*g*) from the following data:[[BR]][[MATH:103]]
 
 <!-- SEG:m68727:solution:fs-idp164763184 -->
 90.3 kJ/mol
@@ -881,7 +881,7 @@ The following reactions can be used to prepare samples of metals. Determine the 
 (d) [[MATH:115]]
 
 <!-- SEG:m68727:problem:fs-idp184431072 -->
-The decomposition of hydrogen peroxide, H~2~O~2~, has been used to provide thrust in the control jets of various space vehicles. Using the data in Appendix G, determine how much heat is produced by the decomposition of exactly 1 mole of H~2~O~2~ under standard conditions.[[MATH:116]]
+The decomposition of hydrogen peroxide, H~2~O~2~, has been used to provide thrust in the control jets of various space vehicles. Using the data in Appendix G, determine how much heat is produced by the decomposition of exactly 1 mole of H~2~O~2~ under standard conditions.[[BR]][[MATH:116]]
 
 <!-- SEG:m68727:solution:fs-idm226656768 -->
 −54.04 kJ mol^−1^
@@ -923,7 +923,7 @@ Under the conditions of the reaction, methanol forms as a gas. Calculate [[MATH:
 (c) Calculate the heat of combustion of 1 mole of liquid methanol to H~2~O(*g*) and CO~2~(*g*).
 
 <!-- SEG:m68727:problem:fs-idp160736192 -->
-In the early days of automobiles, illumination at night was provided by burning acetylene, C~2~H~2~. Though no longer used as auto headlamps, acetylene is still used as a source of light by some cave explorers. The acetylene is (was) prepared in the lamp by the reaction of water with calcium carbide, CaC~2~:[[MATH:122]] Calculate the standard enthalpy of the reaction. The [[MATH:123]] of CaC~2~ is −15.14 kcal/mol.
+In the early days of automobiles, illumination at night was provided by burning acetylene, C~2~H~2~. Though no longer used as auto headlamps, acetylene is still used as a source of light by some cave explorers. The acetylene is (was) prepared in the lamp by the reaction of water with calcium carbide, CaC~2~:[[BR]][[MATH:122]][[BR]] Calculate the standard enthalpy of the reaction. The [[MATH:123]] of CaC~2~ is −15.14 kcal/mol.
 
 <!-- SEG:m68727:solution:fs-idp160756880 -->
 −122.8 kJ
@@ -968,7 +968,7 @@ Using the data in the table in Appendix G, calculate Δ*H*° for the reaction.
 −88.2 kJ
 
 <!-- SEG:m68727:problem:fs-idp149398400 -->
-The oxidation of the sugar glucose, C~6~H~12~O~6~, is described by the following equation:[[MATH:128]]
+The oxidation of the sugar glucose, C~6~H~12~O~6~, is described by the following equation:[[BR]][[MATH:128]]
 
 <!-- SEG:m68727:problem:fs-idp149417584 -->
 The metabolism of glucose gives the same products, although the glucose reacts with oxygen in a series of steps in the body.

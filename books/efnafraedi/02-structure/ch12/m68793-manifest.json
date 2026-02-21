@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68793",
-  "extractedAt": "2026-02-08T17:36:12.497Z",
+  "extractedAt": "2026-02-20T12:30:37.727Z",
   "sourceHash": "4d3b594a81841aa6",
-  "segmentCount": 145,
+  "segmentCount": 161,
   "segmentIds": [
     "m68793:title:auto-1",
     "m68793:abstract:auto-2",
@@ -149,7 +149,23 @@
     "m68793:glossary-term:fs-idm206488448-term",
     "m68793:glossary-def:fs-idm206488448-def",
     "m68793:glossary-term:fs-idm355773584-term",
-    "m68793:glossary-def:fs-idm355773584-def"
+    "m68793:glossary-def:fs-idm355773584-def",
+    "m68793:entry:auto-146",
+    "m68793:entry:auto-147",
+    "m68793:entry:auto-148",
+    "m68793:entry:auto-149",
+    "m68793:entry:auto-150",
+    "m68793:entry:auto-151",
+    "m68793:entry:auto-152",
+    "m68793:entry:auto-153",
+    "m68793:entry:auto-154",
+    "m68793:entry:auto-155",
+    "m68793:entry:auto-156",
+    "m68793:entry:auto-157",
+    "m68793:entry:auto-158",
+    "m68793:entry:auto-159",
+    "m68793:entry:auto-160",
+    "m68793:entry:auto-161"
   ],
   "equationCount": 62,
   "equationIds": [

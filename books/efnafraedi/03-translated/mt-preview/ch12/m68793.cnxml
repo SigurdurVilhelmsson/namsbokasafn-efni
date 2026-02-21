@@ -18,7 +18,7 @@ hvert við annað. Atóm verða að vera nálægt hvort öðru til að mynda
 efnatengi. Þessi einfalda forsenda er grundvöllur að mjög öflugri
 kenningu sem útskýrir margar athuganir varðandi efnahvörf, þar á meðal
 þætti sem hafa áhrif á hvarfhraða.</para>
-<para id="fs-idm148062976"><emphasis effect="bold">Árekstrakenningin</emphasis> byggir á
+<para id="fs-idm148062976"><term>Árekstrakenningin (e. collision theory)</term> byggir á
 eftirfarandi kenningarsetningum:</para>
 <list id="fs-idm90348816" list-type="enumerated" number-style="arabic">
 <item>Hraði efnahvarfs er í réttu
@@ -80,8 +80,8 @@ stefnu er samt engin trygging fyrir því að efnahvarfið haldi áfram og
 myndi koldíoxíð. Auk réttarar stefnu verður áreksturinn einnig að eiga
 sér stað með nægilegri orku til að leiða til myndunar myndefnis. Þegar
 hvarfefni rekast á með bæði réttri stefnu og nægilegri orku, sameinast
-þau og mynda óstöðugt efni sem kallast <emphasis effect="bold">virkjaður flóki</emphasis> eða
-<emphasis effect="bold">virkniástand</emphasis>. Þessi efni eru mjög skammlíf og yfirleitt ógreinanleg
+þau og mynda óstöðugt efni sem kallast <term>virkjaður flóki (e. activated complex)</term> eða
+<term>virkniástand (e. transition state)</term>. Þessi efni eru mjög skammlíf og yfirleitt ógreinanleg
 með flestum greiningartækjum. Í sumum tilfellum hafa háþróaðar
 litrófsmælingar verið notaðar til að fylgjast með virkniástöndum.</para>
 <para id="fs-idm207258608">Árekstrakenningin útskýrir hvers
@@ -106,7 +106,7 @@ fyrir sig.</para>
 efnafræðilegs kerfis breytist þegar það gengst undir efnahvarf sem
 breytir hvarfefnum í myndefni samkvæmt jöfnunni</para>
 <equation id="fs-idm156839952" class="unnumbered"><m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi></m:mrow></m:math></equation>
-<para id="fs-idm92123120">Þessi <emphasis effect="bold">hvarfrit</emphasis> eru mikið notuð í
+<para id="fs-idm92123120">Þessi <term>hvarfrit (e. reaction diagrams)</term> eru mikið notuð í
 efnahraðafræði til að sýna ýmsa eiginleika hvarfsins sem um ræðir. Ef
 litið er á ritið frá vinstri til hægri samanstendur kerfið í upphafi
 aðeins af hvarfefnum, <emphasis effect="italics">A</emphasis> + <emphasis effect="italics">B</emphasis>. Hvarfefnasameindir með nægilega orku
@@ -123,13 +123,13 @@ leiðir til minnkunar á vermi kerfisins.</para>
 </media>
 <caption>Hvarfrit fyrir
 útvermið hvarf <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi><m:mo>.</m:mo></m:mrow></m:math></caption></figure>
-<para id="fs-idm93458160"><emphasis effect="bold">Arrheniusar-jafnan</emphasis> tengir saman
+<para id="fs-idm93458160"><term>Arrheniusar-jafnan (e. arrhenius equation)</term> tengir saman
 virkjunarorkuna og hraðafastann, <emphasis effect="italics">k</emphasis>, fyrir mörg efnahvörf:</para>
 <equation id="fs-idm62676240" class="unnumbered"><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mtext>/</m:mtext><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idp69522176">Í þessari jöfnu er <emphasis effect="italics">R</emphasis>
 kjörgasfastinn, sem hefur gildið 8,314 J/mól/K, T er hitastig á
 Kelvin-kvarða, <emphasis effect="italics">E</emphasis><sub>a</sub> er virkjunarorkan í júlum á mól, <emphasis effect="italics">e</emphasis> er fastinn
-2,7183 og <emphasis effect="italics">A</emphasis> er fasti sem kallast <emphasis effect="bold">tíðniþáttur</emphasis>, sem tengist tíðni
+2,7183 og <emphasis effect="italics">A</emphasis> er fasti sem kallast <term>tíðniþáttur (e. frequency factor)</term>, sem tengist tíðni
 árekstra og stefnumörkun hvarfefnasameindanna.</para>
 <para id="fs-idm378964576">Ályktanir árekstrakenningarinnar
 falla vel að Arrheniusar-jöfnunni. Tíðniþátturinn, <emphasis effect="italics">A</emphasis>, endurspeglar
@@ -592,34 +592,34 @@ eiga sér stað.</para>
 </content>
 <glossary>
 <definition id="fs-idm89472432">
-<term>virkjaður flóki</term>
+<term>virkjaður flóki (e. activated complex)</term>
 <meaning id="fs-idm89472432-meaning">(einnig, virkniástand)
 óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf</meaning>
 </definition>
 <definition id="fs-idm162201904">
-<term>virkjunarorka (Ea)</term>
+<term>virkjunarorka (Ea) (e. activation energy (ea))</term>
 <meaning id="fs-idm162201904-meaning">lágmarksorka sem er
 nauðsynleg til að hvarf geti átt sér stað</meaning>
 </definition>
 <definition id="fs-idm187159584">
-<term>Arrheniusar-jafna</term>
+<term>Arrheniusar-jafna (e. arrhenius equation)</term>
 <meaning id="fs-idm187159584-meaning">stærðfræðilegt samband
 milli hraðafasta, virkjunarorku og hitastigs hvarfs</meaning>
 </definition>
 <definition id="fs-idm101548864">
-<term>árekstrakenningin</term>
+<term>árekstrakenningin (e. collision theory)</term>
 <meaning id="fs-idm101548864-meaning">líkan sem leggur áherslu
 á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um
 hraðafræði hvarfa</meaning>
 </definition>
 <definition id="fs-idm206488448">
-<term>tíðnistuðull (A)</term>
+<term>tíðnistuðull (A) (e. frequency factor (a))</term>
 <meaning id="fs-idm206488448-meaning">jöfnunarfasti í
 Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem
 hafa stefnu sem getur leitt til myndunar myndefnis</meaning>
 </definition>
 <definition id="fs-idm355773584">
-<term>hvarfrit</term>
+<term>hvarfrit (e. reaction diagram)</term>
 <meaning id="fs-idm355773584-meaning">notað í efnahraðafræði
 til að sýna ýmsa eiginleika hvarfs</meaning>
 </definition>

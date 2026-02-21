@@ -149,13 +149,13 @@ A sample of compound A (a clear, colorless gas) is analyzed and found to contain
 Solution
 
 <!-- SEG:m68685:para:fs-idm71104640 -->
-In compound A, the mass ratio of oxygen to carbon is: [[MATH:5]]
+In compound A, the mass ratio of oxygen to carbon is:[[BR]] [[MATH:5]]
 
 <!-- SEG:m68685:para:fs-idp26443712 -->
-In compound B, the mass ratio of oxygen to carbon is: [[MATH:6]]
+In compound B, the mass ratio of oxygen to carbon is:[[BR]] [[MATH:6]]
 
 <!-- SEG:m68685:para:fs-idp25964592 -->
-The ratio of these ratios is: [[MATH:7]]
+The ratio of these ratios is:[[BR]] [[MATH:7]]
 
 <!-- SEG:m68685:para:fs-idm85625680 -->
 This supports the law of multiple proportions. This means that A and B are different compounds, with A having one-half as much oxygen per amount of carbon (or twice as much carbon per amount of oxygen) as B. A possible pair of compounds that would fit this relationship would be A = CO and B = CO~2~.
@@ -185,7 +185,7 @@ The ancient Greeks proposed that matter consists of extremely small particles ca
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68685:problem:fs-idm80213408 -->
-In the following drawing, the green spheres represent atoms of a certain element. The purple spheres represent atoms of another element. If the spheres of different elements touch, they are part of a single unit of a compound. The following chemical change represented by these spheres may violate one of the ideas of Dalton’s atomic theory. Which one?
+In the following drawing, the green spheres represent atoms of a certain element. The purple spheres represent atoms of another element. If the spheres of different elements touch, they are part of a single unit of a compound. The following chemical change represented by these spheres may violate one of the ideas of Dalton’s atomic theory. Which one?[[BR]]
 
 <!-- SEG:m68685:solution:fs-idp159650544 -->
 The starting materials consist of one green sphere and two purple spheres. The products consist of two green spheres and two purple spheres. This violates Dalton’s postulate that that atoms are not created during a chemical change, but are merely redistributed.

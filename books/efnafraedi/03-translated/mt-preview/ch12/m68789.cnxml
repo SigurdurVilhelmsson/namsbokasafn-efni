@@ -12,8 +12,8 @@ styrk til að bera kennsl á hvarfstig og leiða út hraðajöfnur</item></list>
 
 <content>
 <para id="fs-idm238441168">Eins og lýst var í fyrri einingu
-hefur styrkur hvarfefna oft áhrif á hraða efnahvarfs. <emphasis effect="bold">Hraðajöfnur</emphasis>
-(stundum kallaðar <emphasis effect="italics">diffruð hraðalögmál</emphasis>) eða <emphasis effect="bold">hraðajöfnur</emphasis> eru
+hefur styrkur hvarfefna oft áhrif á hraða efnahvarfs. <term>Hraðajöfnur (e. rate laws)</term>
+(stundum kallaðar <emphasis effect="italics">diffruð hraðalögmál</emphasis>) eða <term>hraðajöfnur (e. rate equations)</term> eru
 stærðfræðilegar jöfnur sem lýsa sambandi milli hraða efnahvarfs og
 styrks hvarfefna þess. Sem dæmi má nefna efnahvarfið sem lýst er með
 efnajöfnunni</para>
@@ -22,9 +22,9 @@ efnajöfnunni</para>
 hlutfallaefnafræði. Hraðajafnan fyrir þetta efnahvarf er skrifuð sem:</para>
 <equation id="fs-idm276589968" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>[</m:mo><m:mi>A</m:mi><m:msup><m:mrow><m:mo>]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo>[</m:mo><m:mi>B</m:mi><m:msup><m:mrow><m:mo>]</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math></equation>
 <para id="fs-idp18257184">þar sem [<emphasis effect="italics">A</emphasis>] og [<emphasis effect="italics">B</emphasis>] tákna
-mólstyrk hvarfefna og <emphasis effect="italics">k</emphasis> er <emphasis effect="bold">hraðafastinn</emphasis>, sem er sértækur fyrir
+mólstyrk hvarfefna og <emphasis effect="italics">k</emphasis> er <term>hraðafastinn (e. rate constant)</term>, sem er sértækur fyrir
 tiltekið efnahvarf við tiltekið hitastig. Veldin <emphasis effect="italics">m</emphasis> og <emphasis effect="italics">n</emphasis> eru
-<emphasis effect="bold">hvarfstigin</emphasis> og eru yfirleitt jákvæðar heiltölur, þó þau geti verið
+<term>hvarfstigin (e. reaction orders)</term> og eru yfirleitt jákvæðar heiltölur, þó þau geti verið
 brot, neikvæð eða núll. Hraðafastinn <emphasis effect="italics">k</emphasis> og hvarfstigin <emphasis effect="italics">m</emphasis> og <emphasis effect="italics">n</emphasis> verða
 að vera ákvörðuð með tilraunum með því að fylgjast með því hvernig hraði
 efnahvarfs breytist þegar styrkur hvarfefnanna breytist. Hraðafastinn
@@ -34,7 +34,7 @@ stærðfræðilegu sambandi hraða og styrks hvarfefna. Ef við vísum í
 almennu hraðajöfnuna hér að ofan er efnahvarfið af <emphasis effect="italics">m</emphasis>-ta stigi með
 tilliti til <emphasis effect="italics">A</emphasis> og af <emphasis effect="italics">n</emphasis>-ta stigi með tilliti til <emphasis effect="italics">B</emphasis>. Til dæmis, ef
 <emphasis effect="italics">m</emphasis> = 1 og <emphasis effect="italics">n</emphasis> = 2, er efnahvarfið af fyrsta stigi í <emphasis effect="italics">A</emphasis> og öðru stigi í
-<emphasis effect="italics">B</emphasis>. <emphasis effect="bold">Heildarhvarfstig</emphasis> er einfaldlega summa stiga fyrir hvert
+<emphasis effect="italics">B</emphasis>. <term>Heildarhvarfstig (e. overall reaction order)</term> er einfaldlega summa stiga fyrir hvert
 hvarfefni. Fyrir dæmið um hraðajöfnuna hér er efnahvarfið af þriðja
 stigi í heildina (1 + 2 = 3). Nokkur sértæk dæmi eru sýnd hér að neðan
 til að útskýra þetta hugtak nánar.</para>
@@ -91,7 +91,7 @@ stig með tilliti til CH<sub>3</sub>CH<sub>2</sub>OCOCH<sub>3</sub> = 0; heildar
 </note>
 </example>
 <para id="fs-idm147402384">Algeng tilraunaaðferð til að ákvarða
-hraðajöfnur er <emphasis effect="bold">aðferð upphafshraða</emphasis>. Þessi aðferð felur í sér að mæla
+hraðajöfnur er <term>aðferð upphafshraða (e. method of initial rates)</term>. Þessi aðferð felur í sér að mæla
 hvarfhraða fyrir margar tilraunir sem gerðar eru með mismunandi
 upphafsstyrk hvarfefna. Með því að bera saman mælda hraða fyrir þessar
 tilraunir er hægt að ákvarða stig efnahvarfsins og síðan hraðafastann,
@@ -929,29 +929,29 @@ hraðafastann fyrir þetta efnahvarf.</para>
 </content>
 <glossary>
 <definition id="fs-idm176826832">
-<term>aðferð upphafshraða</term>
+<term>aðferð upphafshraða (e. method of initial rates)</term>
 <meaning id="fs-idm176826832-meaning">algeng tilraunaaðferð
 til að ákvarða hraðajöfnur sem felur í sér að mæla hvarfhraða við
 mismunandi upphafsstyrk hvarfefna</meaning>
 </definition>
 <definition id="fs-idm276164832">
-<term>heildarstig efnahvarfs</term>
+<term>heildarstig efnahvarfs (e. overall reaction order)</term>
 <meaning id="fs-idm276164832-meaning">summa stiga efnahvarfs
 fyrir hvert efni sem kemur fram í hraðajöfnunni</meaning>
 </definition>
 <definition id="fs-idm185628880">
-<term>hraðafasti (k)</term>
+<term>hraðafasti (k) (e. rate constant (k))</term>
 <meaning id="fs-idm185628880-meaning">jöfnunarfasti í
 hraðajöfnu</meaning>
 </definition>
 <definition id="fs-idm215968704">
-<term>hraðajafna</term>
+<term>hraðajafna (e. rate law)</term>
 <meaning id="fs-idm215968704-meaning">(einnig, hraðalögmál)
 (einnig, diffrað hraðalögmál) stærðfræðileg jafna sem sýnir hvernig
 hvarfhraði er háður hraðafasta og styrk eins eða fleiri hvarfefna</meaning>
 </definition>
 <definition id="fs-idm333854336">
-<term>stig efnahvarfs</term>
+<term>stig efnahvarfs (e. reaction order)</term>
 <meaning id="fs-idm333854336-meaning">gildi veldisvísis í
 hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað
 stig fyrir 2 og svo framvegis)</meaning>

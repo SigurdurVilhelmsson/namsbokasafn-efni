@@ -785,4 +785,4 @@ Liquid N~2~O~3~ is dark blue at low temperatures, but the color fades and become
 [[MATH:96]]
 
 <!-- SEG:m68801:problem:fs-idp97795424 -->
-A 1.00-L vessel at 400 °C contains the following equilibrium concentrations: N~2~, 1.00 *M*; H~2~, 0.50 *M*; and NH~3~, 0.25 *M*. How many moles of hydrogen must be removed from the vessel to increase the concentration of nitrogen to 1.1 *M*? The equilibrium reaction is [[MATH:97]]
+A 1.00-L vessel at 400 °C contains the following equilibrium concentrations: N~2~, 1.00 *M*; H~2~, 0.50 *M*; and NH~3~, 0.25 *M*. How many moles of hydrogen must be removed from the vessel to increase the concentration of nitrogen to 1.1 *M*? The equilibrium reaction is[[BR]] [[MATH:97]]

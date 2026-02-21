@@ -182,7 +182,7 @@ The stoichiometry of chemical reactions may serve as the basis for quantitative 
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68716:problem:fs-idm47784592 -->
-What volume of 0.0105-M HBr solution is required to titrate 125 mL of a 0.0100-*M* Ca(OH)~2~ solution? [[MATH:1]]
+What volume of 0.0105-M HBr solution is required to titrate 125 mL of a 0.0100-*M* Ca(OH)~2~ solution?[[BR]] [[MATH:1]]
 
 <!-- SEG:m68716:problem:fs-idp15073216 -->
 Titration of a 20.0-mL sample of acid rain required 1.7 mL of 0.0811 *M* NaOH to reach the end point. If we assume that the acidity of the rain is due to the presence of sulfuric acid, what was the concentration of sulfuric acid in this sample of rain?
@@ -191,10 +191,10 @@ Titration of a 20.0-mL sample of acid rain required 1.7 mL of 0.0811 *M* NaOH to
 3.4 [[MATH:2]] 10^−3^ *M* H~2~SO~4~
 
 <!-- SEG:m68716:problem:fs-idp22780032 -->
-What is the concentration of NaCl in a solution if titration of 15.00 mL of the solution with 0.2503 *M* AgNO~3~ requires 20.22 mL of the AgNO~3~ solution to reach the end point? [[MATH:3]]
+What is the concentration of NaCl in a solution if titration of 15.00 mL of the solution with 0.2503 *M* AgNO~3~ requires 20.22 mL of the AgNO~3~ solution to reach the end point?[[BR]] [[MATH:3]]
 
 <!-- SEG:m68716:problem:fs-idm49690448 -->
-In a common medical laboratory determination of the concentration of free chloride ion in blood serum, a serum sample is titrated with a Hg(NO~3~)~2~ solution. [[MATH:4]]
+In a common medical laboratory determination of the concentration of free chloride ion in blood serum, a serum sample is titrated with a Hg(NO~3~)~2~ solution.[[BR]] [[MATH:4]]
 
 <!-- SEG:m68716:problem:fs-idm1068656 -->
 What is the Cl^−^ concentration in a 0.25-mL sample of normal serum that requires 1.46 mL of 8.25 [[MATH:5]] 10^−4^ *M* Hg(NO~3~)~2~(*aq*) to reach the end point?
@@ -224,25 +224,25 @@ The empirical formula is BH~3~. The molecular formula is B~2~H~6~.
 Sodium bicarbonate (baking soda), NaHCO~3~, can be purified by dissolving it in hot water (60 °C), filtering to remove insoluble impurities, cooling to 0 °C to precipitate solid NaHCO~3~, and then filtering to remove the solid, leaving soluble impurities in solution. Any NaHCO~3~ that remains in solution is not recovered. The solubility of NaHCO~3~ in hot water of 60 °C is 164 g/L. Its solubility in cold water of 0 °C is 69 g/L. What is the percent yield of NaHCO~3~ when it is purified by this method?
 
 <!-- SEG:m68716:problem:fs-idp39627680 -->
-What volume of 0.600 *M* HCl is required to react completely with 2.50 g of sodium hydrogen carbonate? [[MATH:7]]
+What volume of 0.600 *M* HCl is required to react completely with 2.50 g of sodium hydrogen carbonate?[[BR]] [[MATH:7]]
 
 <!-- SEG:m68716:solution:fs-idp51612096 -->
 49.6 mL
 
 <!-- SEG:m68716:problem:fs-idm43072400 -->
-What volume of 0.08892 *M* HNO~3~ is required to react completely with 0.2352 g of potassium hydrogen phosphate? [[MATH:8]]
+What volume of 0.08892 *M* HNO~3~ is required to react completely with 0.2352 g of potassium hydrogen phosphate?[[BR]] [[MATH:8]]
 
 <!-- SEG:m68716:problem:fs-idm37154064 -->
-What volume of a 0.3300-*M* solution of sodium hydroxide would be required to titrate 15.00 mL of 0.1500 *M* oxalic acid? [[MATH:9]]
+What volume of a 0.3300-*M* solution of sodium hydroxide would be required to titrate 15.00 mL of 0.1500 *M* oxalic acid?[[BR]] [[MATH:9]]
 
 <!-- SEG:m68716:solution:fs-idm27864640 -->
 13.64 mL
 
 <!-- SEG:m68716:problem:fs-idp126851936 -->
-What volume of a 0.00945-*M* solution of potassium hydroxide would be required to titrate 50.00 mL of a sample of acid rain with a H~2~SO~4~ concentration of 1.23 [[MATH:10]] 10^−4^ *M*. [[MATH:11]]
+What volume of a 0.00945-*M* solution of potassium hydroxide would be required to titrate 50.00 mL of a sample of acid rain with a H~2~SO~4~ concentration of 1.23 [[MATH:10]] 10^−4^ *M*.[[BR]] [[MATH:11]]
 
 <!-- SEG:m68716:problem:fs-idm49266896 -->
-A sample of solid calcium hydroxide, Ca(OH)~2~, is allowed to stand in water until a saturated solution is formed. A titration of 75.00 mL of this solution with 5.00 [[MATH:12]] 10^−2^ *M* HCl requires 36.6 mL of the acid to reach the end point. [[MATH:13]]
+A sample of solid calcium hydroxide, Ca(OH)~2~, is allowed to stand in water until a saturated solution is formed. A titration of 75.00 mL of this solution with 5.00 [[MATH:12]] 10^−2^ *M* HCl requires 36.6 mL of the acid to reach the end point.[[BR]] [[MATH:13]]
 
 <!-- SEG:m68716:problem:fs-idm404608 -->
 What is the molarity?
@@ -254,13 +254,13 @@ What is the molarity?
 What mass of Ca(OH)~2~ will react with 25.0 g of butanoic to form the preservative calcium butanoate according to the equation?
 
 <!-- SEG:m68716:problem:fs-idp126876816 -->
-How many milliliters of a 0.1500-*M* solution of KOH will be required to titrate 40.00 mL of a 0.0656-*M* solution of H~3~PO~4~? [[MATH:14]]
+How many milliliters of a 0.1500-*M* solution of KOH will be required to titrate 40.00 mL of a 0.0656-*M* solution of H~3~PO~4~?[[BR]] [[MATH:14]]
 
 <!-- SEG:m68716:solution:fs-idp46830048 -->
 34.99 mL KOH
 
 <!-- SEG:m68716:problem:fs-idm30525392 -->
-Potassium hydrogen phthalate, KHC~8~H~4~O~4~, or KHP, is used in many laboratories, including general chemistry laboratories, to standardize solutions of base. KHP is one of only a few stable solid acids that can be dried by warming and weighed. A 0.3420-g sample of KHC~8~H~4~O~4~ reacts with 35.73 mL of a NaOH solution in a titration. What is the molar concentration of the NaOH? [[MATH:15]]
+Potassium hydrogen phthalate, KHC~8~H~4~O~4~, or KHP, is used in many laboratories, including general chemistry laboratories, to standardize solutions of base. KHP is one of only a few stable solid acids that can be dried by warming and weighed. A 0.3420-g sample of KHC~8~H~4~O~4~ reacts with 35.73 mL of a NaOH solution in a titration. What is the molar concentration of the NaOH?[[BR]] [[MATH:15]]
 
 <!-- SEG:m68716:problem:fs-idp92291424 -->
 The reaction of WCl~6~ with Al at ~400 °C gives black crystals of a compound containing only tungsten and chlorine. A sample of this compound, when reduced with hydrogen, gives 0.2232 g of tungsten metal and hydrogen chloride, which is absorbed in water. Titration of the hydrochloric acid thus produced requires 46.2 mL of 0.1051 *M* NaOH to reach the end point. What is the empirical formula of the black tungsten chloride?

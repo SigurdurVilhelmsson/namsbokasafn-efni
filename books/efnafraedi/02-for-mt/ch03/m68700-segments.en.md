@@ -509,31 +509,31 @@ Calculate the molecular or formula mass of each of the following:
 Determine the molecular mass of the following compounds:
 
 <!-- SEG:m68700:problem:fs-idm10660032 -->
-(a) [[MEDIA:1]]
+(a)[[BR]] [[MEDIA:1]]
 
 <!-- SEG:m68700:problem:fs-idp16510560 -->
-(b) [[MEDIA:2]]
+(b)[[BR]] [[MEDIA:2]]
 
 <!-- SEG:m68700:problem:fs-idp76406016 -->
-(c) [[MEDIA:3]]
+(c)[[BR]] [[MEDIA:3]]
 
 <!-- SEG:m68700:problem:fs-idp9023344 -->
-(d) [[MEDIA:4]]
+(d)[[BR]] [[MEDIA:4]]
 
 <!-- SEG:m68700:problem:fs-idp52450416 -->
 Determine the molecular mass of the following compounds:
 
 <!-- SEG:m68700:problem:fs-idp12831088 -->
-(a) [[MEDIA:5]]
+(a)[[BR]] [[MEDIA:5]]
 
 <!-- SEG:m68700:problem:fs-idp76139456 -->
-(b) [[MEDIA:6]]
+(b)[[BR]] [[MEDIA:6]]
 
 <!-- SEG:m68700:problem:fs-idp55882592 -->
-(c) [[MEDIA:7]]
+(c)[[BR]] [[MEDIA:7]]
 
 <!-- SEG:m68700:problem:fs-idp17404336 -->
-(d) [[MEDIA:8]]
+(d)[[BR]] [[MEDIA:8]]
 
 <!-- SEG:m68700:solution:fs-idp18584256 -->
 (a) 56.107 amu; (b) 54.091 amu; (c) 199.9976 amu; (d) 97.9950 amu
@@ -542,13 +542,13 @@ Determine the molecular mass of the following compounds:
 Which molecule has a molecular mass of 28.05 amu?
 
 <!-- SEG:m68700:problem:fs-idp50214144 -->
-(a) [[MEDIA:9]]
+(a)[[BR]] [[MEDIA:9]]
 
 <!-- SEG:m68700:problem:fs-idp66877424 -->
-(b) [[MEDIA:10]]
+(b)[[BR]] [[MEDIA:10]]
 
 <!-- SEG:m68700:problem:fs-idp49595584 -->
-(c) [[MEDIA:11]]
+(c)[[BR]] [[MEDIA:11]]
 
 <!-- SEG:m68700:problem:fs-idp17738352 -->
 Write a sentence that describes how to determine the number of moles of a compound in a known mass of the compound using its molecular formula.
@@ -734,7 +734,7 @@ Determine the mass of each of the following:
 (e) 0.5758 mol FeSO~4~(H~2~O)~7~
 
 <!-- SEG:m68700:solution:fs-idp51043760 -->
-(a) 99.41 g; (b) 2.27 g; (c) 3.5 g; (d) 222 kg; (e) 160.1 g
+(a) 99.41 g; (b) 2.27 g; (c) 3.5 g; (d) 222 kg; (e) 160.1 g[[BR]]
 
 <!-- SEG:m68700:problem:fs-idp41400320 -->
 The approximate minimum daily dietary requirement of the amino acid leucine, C~6~H~13~NO~2~, is 1.1 g. What is this requirement in moles?

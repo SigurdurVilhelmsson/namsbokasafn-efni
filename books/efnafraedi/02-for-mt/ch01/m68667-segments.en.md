@@ -491,7 +491,7 @@ As stated in the text, convincing examples that demonstrate the law of conservat
 (c) Antoine Lavoisier, the French scientist credited with first stating the law of conservation of matter, heated a mixture of tin and air in a sealed flask to produce tin oxide. Did the mass of the sealed flask and contents decrease, increase, or remain the same after the heating?
 
 <!-- SEG:m68667:problem:fs-idp17769984 -->
-Yeast converts glucose to ethanol and carbon dioxide during anaerobic fermentation as depicted in the simple chemical equation here: [[MATH:4]]
+Yeast converts glucose to ethanol and carbon dioxide during anaerobic fermentation as depicted in the simple chemical equation here:[[BR]] [[MATH:4]]
 
 <!-- SEG:m68667:problem:fs-idp49584 -->
 (a) If 200.0 g of glucose is fully converted, what will be the total mass of ethanol and carbon dioxide produced?

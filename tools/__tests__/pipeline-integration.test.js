@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { execSync } from 'child_process';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import { restoreTermMarkers, annotateInlineTerms } from '../cnxml-inject.js';
+import { restoreTermMarkers, restoreNewlines, annotateInlineTerms } from '../cnxml-inject.js';
 
 const ROOT = join(import.meta.dirname, '..', '..');
 const TOOLS = join(ROOT, 'tools');
@@ -580,5 +580,103 @@ describe('English term annotation integration', () => {
     if (glossaryMatch) {
       expect(glossaryMatch[0]).toMatch(/\(e\. [a-z]/);
     }
+  });
+});
+
+// =====================================================================
+// restoreNewlines unit tests
+// =====================================================================
+
+describe('restoreNewlines', () => {
+  it('should insert [[BR]] before matching parenthesized anchor', () => {
+    const is = new Map([['seg1', 'First part (b) second part']]);
+    const en = new Map([['seg1', 'First part [[BR]](b) second part']]);
+    const { restoredCount } = restoreNewlines(is, en);
+    expect(restoredCount).toBe(1);
+    expect(is.get('seg1')).toContain('[[BR]](b)');
+  });
+
+  it('should insert [[BR]] before [[MEDIA:N]] anchor', () => {
+    const is = new Map([['seg1', 'Text before [[MEDIA:3]] text after']]);
+    const en = new Map([['seg1', 'Text before [[BR]][[MEDIA:3]] text after']]);
+    const { restoredCount } = restoreNewlines(is, en);
+    expect(restoredCount).toBe(1);
+    expect(is.get('seg1')).toContain('[[BR]][[MEDIA:3]]');
+  });
+
+  it('should handle multiple [[BR]] in one segment', () => {
+    const is = new Map([['seg1', 'Part (a) first (b) second (c) third']]);
+    const en = new Map([['seg1', 'Part [[BR]](a) first [[BR]](b) second [[BR]](c) third']]);
+    const { restoredCount } = restoreNewlines(is, en);
+    expect(restoredCount).toBe(3);
+    expect(is.get('seg1')).toContain('[[BR]](a)');
+    expect(is.get('seg1')).toContain('[[BR]](b)');
+    expect(is.get('seg1')).toContain('[[BR]](c)');
+  });
+
+  it('should skip when no anchor is found', () => {
+    const is = new Map([['seg1', 'Some translated text without anchors']]);
+    const en = new Map([['seg1', 'Some [[BR]]text without matching anchors']]);
+    const { restoredCount } = restoreNewlines(is, en);
+    expect(restoredCount).toBe(0);
+    expect(is.get('seg1')).toBe('Some translated text without anchors');
+  });
+
+  it('should not modify segments where IS already has [[BR]]', () => {
+    const is = new Map([['seg1', 'Already has [[BR]](b) marker']]);
+    const en = new Map([['seg1', 'Already has [[BR]](b) marker']]);
+    const { restoredCount } = restoreNewlines(is, en);
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should not modify segments where EN has no [[BR]]', () => {
+    const original = 'No breaks here';
+    const is = new Map([['seg1', original]]);
+    const en = new Map([['seg1', 'No breaks here']]);
+    const { restoredCount } = restoreNewlines(is, en);
+    expect(restoredCount).toBe(0);
+    expect(is.get('seg1')).toBe(original);
+  });
+});
+
+// =====================================================================
+// Newline/space preservation integration tests
+// =====================================================================
+
+describe('newline and space tag preservation', () => {
+  it('should extract [[BR]] markers from source with <newline/> (m68674, ch01)', () => {
+    const enSegments = readFileSync(
+      join(BOOKS, '02-for-mt', 'ch01', 'm68674-segments.en.md'),
+      'utf8'
+    );
+    expect(enSegments).toContain('[[BR]]');
+  });
+
+  it('should produce <newline/> in translated CNXML (m68674, ch01)', () => {
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68674 --source-dir 02-machine-translated`
+    );
+    const cnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68674.cnxml'),
+      'utf8'
+    );
+    expect(cnxml).toContain('<newline/>');
+  });
+
+  it('should produce <br/> in rendered HTML (ch05 exercises)', () => {
+    // ch05 m68727 has 16 [[BR]] markers — exercises with sub-questions
+    const html = readFileSync(
+      join(BOOKS, '05-publication', 'mt-preview', 'chapters', '05', '5-exercises.html'),
+      'utf8'
+    );
+    expect(html).toContain('<br/>');
+  });
+
+  it('should extract [[SPACE]] markers from source with <space/> (m68791, ch12)', () => {
+    const enSegments = readFileSync(
+      join(BOOKS, '02-for-mt', 'ch12', 'm68791-segments.en.md'),
+      'utf8'
+    );
+    expect(enSegments).toContain('[[SPACE]]');
   });
 });

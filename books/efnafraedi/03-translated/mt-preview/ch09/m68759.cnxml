@@ -26,7 +26,7 @@ hegðun kjörgass skoðaðar.</para>
 <para id="fs-idp138594304">Ein leið til að meta nákvæmni <emphasis effect="italics">PV =
 nRT</emphasis> er að bera saman raunverulegt rúmmál eins móls af gasi (mólrúmmál
 þess, <emphasis effect="italics">V</emphasis><sub>m</sub>) við mólrúmmál kjörgass við sama hitastig og þrýsting.
-Þetta hlutfall er kallað <emphasis effect="bold">samþrýstanleikastuðull (Z)</emphasis> og er:</para>
+Þetta hlutfall er kallað <term>samþrýstanleikastuðull (Z) (e. compressibility factor (z))</term> og er:</para>
 <equation id="fs-idp41001616" class="unnumbered"><m:math><m:mrow><m:mtext>Z</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molar volume of gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow><m:mrow><m:mtext>molar volume of ideal gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mi>P</m:mi><m:msub><m:mi>V</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>measured</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm92799184">Hegðun kjörgass er því gefin til
 kynna þegar þetta hlutfall er jafnt og 1 og öll frávik frá 1 eru
@@ -78,7 +78,7 @@ myndast við fast rúmmál samanborið við kjörgas.</caption>
 <para id="fs-idm16170960">Það eru til nokkrar mismunandi jöfnur
 sem líkja betur eftir hegðun gass en kjörgaslögmálið. Sú fyrsta og
 einfaldasta var þróuð af hollenska vísindamanninum Johannes van der
-Waals árið 1879. <emphasis effect="bold">Van der Waals-jafnan</emphasis> bætir kjörgaslögmálið með því
+Waals árið 1879. <term>Van der Waals-jafnan (e. van der waals equation)</term> bætir kjörgaslögmálið með því
 að bæta við tveimur liðum: einum til að taka tillit til rúmmáls
 gassameindanna og öðrum fyrir aðdráttarkrafta þeirra á milli.</para>
 <media id="fs-idm139964416" class="scaled-down" alt="This figure shows the equation P V equals n R T, with the P in blue text and the V in red text. This equation is followed by a right pointing arrow. Following this arrow, to the right in blue text appears the equation ( P minus a n superscript 2 divided by V squared ),” which is followed by the red text ( V minus n b ). This is followed in black text with equals n R T. Beneath the second equation appears the label, “Correction for molecular attraction” which is connected with a line segment to V squared. A second label, “Correction for volume of molecules,” is similarly connected to n b which appears in red.">
@@ -338,13 +338,13 @@ aðdráttarkrafta milli sameinda meiri. Sjá <link target-id="CNX_Chem_09_06_Zvs
 <glossary>
 <definition id="fs-idp3716528">
 <term>samþjappanleikastuðull
-(Z)</term>
+(Z) (e. compressibility factor (z))</term>
 <meaning id="fs-idp3716528-meaning">hlutfallið milli
 mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það
 er reiknað út frá jöfnu kjörgass</meaning>
 </definition>
 <definition id="fs-idm15517248">
-<term>van der Waals-jafnan</term>
+<term>van der Waals-jafnan (e. van der waals equation)</term>
 <meaning id="fs-idm15517248-meaning">breytt útgáfa af jöfnu
 kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá
 hegðun kjörgass</meaning>

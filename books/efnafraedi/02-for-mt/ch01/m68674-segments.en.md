@@ -641,7 +641,7 @@ Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click
 Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click the “turn fluid into water” button to adjust the density of liquid in the beaker to 1.00 g/mL. Change the block material to foam, and then wait patiently until the foam block stops bobbing up and down in the water.
 
 <!-- SEG:m68674:problem:fs-idm153136896 -->
-(a) The foam block should be floating on the surface of the water (that is, only partially submerged). What is the volume of water displaced? (b) Use the water volume from part (a) and the density of water (1.00 g/mL) to calculate the mass of water displaced. (c) Remove and weigh the foam block. How does the block’s mass compare to the mass of displaced water from part (b)?
+(a) The foam block should be floating on the surface of the water (that is, only partially submerged). What is the volume of water displaced?[[BR]] (b) Use the water volume from part (a) and the density of water (1.00 g/mL) to calculate the mass of water displaced. [[BR]] (c) Remove and weigh the foam block. How does the block’s mass compare to the mass of displaced water from part (b)?
 
 <!-- SEG:m68674:solution:fs-idm315474368 -->
 (a) displaced water volume = 2.8 mL; (b) displaced water mass = 2.8 g; (c) The block mass is 2.76 g, essentially equal to the mass of displaced water (2.8 g) and consistent with Archimedes’ principle of buoyancy.

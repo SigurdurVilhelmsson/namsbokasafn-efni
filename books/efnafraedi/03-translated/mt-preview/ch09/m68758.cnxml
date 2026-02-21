@@ -17,7 +17,7 @@ lögmála lýsa náið hegðun flestra gasa á stórsæjum skala við þrýsting
 er lægri en um 1 eða 2 atm. Þótt gaslögmálin lýsi samböndum sem hafa
 verið staðfest með mörgum tilraunum, segja þau okkur ekki hvers vegna
 gös fylgja þessum samböndum.</para>
-<para id="fs-idm165041184"><emphasis effect="bold">Hreyfi- og sameindakenningin</emphasis>
+<para id="fs-idm165041184"><term>Hreyfi- og sameindakenningin (e. kinetic molecular theory)</term>
 (KMT) er einfalt smásætt líkan sem útskýrir á áhrifaríkan hátt
 gaslögmálin sem lýst er í fyrri einingum þessa kafla. Þessi kenning
 byggir á eftirfarandi fimm grundvallarsetningum sem lýst er hér.
@@ -128,9 +128,9 @@ en 400 m/s, á meðan meðalkvaðratrótarhraðinn, <emphasis effect="italics">u
 <para id="fs-idm178023104">Ef massi er gefinn í kílógrömmum og
 hraði í metrum á sekúndu fást orkugildi í einingunni júl (J = kg m<sup>2</sup>
 s<sup>–2</sup>). Til að fást við mikinn fjölda gassameinda notum við meðaltöl
-fyrir bæði hraða og hreyfiorku. Í KMT er <emphasis effect="bold">meðalkvaðratrótarhraði</emphasis>
-eindar, **<emphasis effect="italics">u</emphasis><sub>rms</sub>*<emphasis effect="italics">, skilgreindur sem kvaðratrótin af meðaltali
-kvaðrata hraðanna þar sem </emphasis>n* = fjöldi einda:</para>
+fyrir bæði hraða og hreyfiorku. Í KMT er <term>meðalkvaðratrótarhraði (e. root mean square speed)</term>
+eindar, <term><emphasis effect="italics">u</emphasis><sub>rms</sub></term>, skilgreindur sem kvaðratrótin af meðaltali
+kvaðrata hraðanna þar sem <emphasis effect="italics">n</emphasis> = fjöldi einda:</para>
 <equation id="fs-idp57614544" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent="true"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy="true">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
 <para id="fs-idm140862528">Meðalhreyfiorka fyrir eitt mól af
 eindum, KE<sub>avg</sub>, er þá jöfn:</para>
@@ -367,13 +367,13 @@ mín<sup>−1</sup></para>
 <glossary>
 <definition id="fs-idm198763536">
 <term>hreyfifræðikenning
-sameinda</term>
+sameinda (e. kinetic molecular theory)</term>
 <meaning id="fs-idm198763536-meaning">kenning sem byggir á
 einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun
 kjörgass</meaning>
 </definition>
 <definition id="fs-idm271276336">
-<term>meðalferningsrótarhraði (urms)</term>
+<term>meðalferningsrótarhraði (urms) (e. root mean square speed (urms))</term>
 <meaning id="fs-idm271276336-meaning">mælikvarði á meðalhraða
 fyrir hóp einda, reiknaður sem kvaðratrót meðaltals kvaðrats hraðans</meaning>
 </definition>

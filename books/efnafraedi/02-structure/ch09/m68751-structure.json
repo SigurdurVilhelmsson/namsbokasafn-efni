@@ -1674,5 +1674,15 @@
       }
     ]
   },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm159072736",
+      "class": null,
+      "alt": "Four graphs are shown. In a, Volume is on the horizontal axis and Pressure is on the vertical axis. A downward trend with a decreasing rate of change is shown by a curved line. The label n, P cons is shown on the graph. In b, Temperature is on the horizontal axis and Volume is on the vertical axis. An increasing linear trend is shown by a straight line segment. The label n, P cons is shown on the graph. In c, Temperature is on the horizontal axis and Pressure is on the vertical axis. An increasing linear trend is shown by a straight line segment. The label n, P cons is shown on the graph. In d, Volume is on the horizontal axis and 1 divided by Pressure is on the vertical axis. An increasing linear trend is shown by a straight line segment on the graph. The label n, P cons is shown on the graph.",
+      "src": "../../media/CNX_Chem_09_02_Exercise25_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
   "sectionOrder": 2
 }
