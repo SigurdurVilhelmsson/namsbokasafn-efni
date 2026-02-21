@@ -3,257 +3,1214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stjórnandi - Námsbókasafn</title>
+  <title>Stj&#243;rnandi - N&#225;msb&#243;kasafn</title>
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .admin-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
+    /* ==========================================================================
+       ADMIN PAGE — Basalt & Vellum
+       Merges: admin, admin-users, admin-books, analytics, feedback-admin
+       4 tabs: Notendur | Bækur | Endurgjöf | Tölfræði
+       ========================================================================== */
 
-    .admin-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-md);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
+    /* Loading / Access denied */
+    .admin-loading { text-align: center; padding: 4rem 2rem; }
+    .admin-loading .spinner { width: 2rem; height: 2rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; display: inline-block; margin-bottom: 1rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .admin-denied { text-align: center; padding: 4rem 2rem; }
+    .admin-denied svg { width: 3rem; height: 3rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .admin-denied h2 { font-family: var(--font-heading); font-size: var(--text-xl); color: var(--text-primary); margin-bottom: 0.5rem; }
+    .admin-denied p { color: var(--text-muted); margin-bottom: 1.5rem; }
 
-    .admin-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      text-decoration: none;
-    }
+    /* ========================================
+       USERS TAB
+       ======================================== */
+    .users-toolbar { display: flex; gap: 0.75rem; align-items: center; margin-bottom: var(--spacing-lg); flex-wrap: wrap; }
+    .users-toolbar .search-field { flex: 1; min-width: 200px; position: relative; }
+    .users-toolbar .search-field svg { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; width: 16px; height: 16px; }
+    .users-toolbar .search-field input { width: 100%; padding: 0.625rem 0.625rem 0.625rem 2.25rem; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg-surface); color: var(--text-primary); font-size: var(--text-sm); }
+    .users-toolbar .search-field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(200,121,65,0.15); }
 
-    .admin-card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
+    .user-table { width: 100%; border-collapse: collapse; }
+    .user-table th { padding: 0.625rem 0.75rem; text-align: left; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .user-table td { padding: 0.75rem; border-bottom: 1px solid var(--border-subtle, var(--border)); }
+    .user-table tr:hover td { background: var(--bg-surface); }
+    .user-table tr { cursor: pointer; }
 
-    .admin-card-icon.users { background: var(--primary-light); color: var(--primary); }
-    .admin-card-icon.books { background: var(--success-light); color: var(--success); }
-    .admin-card-icon.feedback { background: var(--warning-light); color: var(--warning); }
-    .admin-card-icon.reports { background: var(--info-light); color: var(--info); }
-    .admin-card-icon.settings { background: var(--gray-200); color: var(--gray-600); }
-    .admin-card-icon.analytics { background: #fae8ff; color: #a855f7; }
+    .user-info-cell { display: flex; align-items: center; gap: 0.75rem; }
+    .user-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .user-name { font-weight: 500; color: var(--text-primary); font-size: var(--text-sm); }
+    .user-username { font-size: 0.75rem; color: var(--text-muted); }
 
-    .admin-card h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
+    .role-badge { display: inline-flex; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 500; }
+    .role-admin { background: rgba(220,38,38,0.12); color: #ef4444; }
+    .role-head-editor { background: rgba(200,121,65,0.15); color: var(--accent); }
+    .role-editor { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .role-contributor { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .role-viewer { background: var(--bg-surface); color: var(--text-muted); }
 
-    .admin-card p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
+    .status-dot { display: inline-flex; align-items: center; gap: 0.35rem; font-size: var(--text-sm); }
+    .status-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .status-dot.active::before { background: #4ade80; }
+    .status-dot.inactive::before { background: #ef4444; }
 
-    .admin-card .badge {
-      margin-top: 0.75rem;
-      display: inline-flex;
-    }
+    .action-btn { padding: 0.3rem 0.5rem; border: none; background: transparent; color: var(--text-muted); cursor: pointer; border-radius: var(--radius-md); }
+    .action-btn:hover { background: var(--bg-surface); color: var(--accent); }
+    .action-btn.danger:hover { color: #ef4444; }
 
-    .page-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+    /* Edit panel (slide-in) */
+    .edit-panel-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; display: none; }
+    .edit-panel-backdrop.open { display: block; }
+    .edit-panel { position: fixed; top: 0; right: 0; width: 420px; max-width: 100%; height: 100vh; background: var(--bg-card); border-left: 1px solid var(--border); z-index: 1001; transform: translateX(100%); transition: transform 0.25s ease; overflow-y: auto; }
+    .edit-panel.open { transform: translateX(0); }
+    .edit-panel-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+    .edit-panel-header h3 { font-family: var(--font-heading); font-size: var(--text-lg); color: var(--text-primary); }
+    .edit-panel-body { padding: 1.25rem; }
+    .edit-panel-footer { padding: 1rem 1.25rem; border-top: 1px solid var(--border); display: flex; gap: 0.75rem; justify-content: flex-end; }
 
-    .page-header h1 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .user-detail-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .user-detail-header img { width: 56px; height: 56px; border-radius: 50%; }
 
-    .page-header h1 i {
-      color: var(--warning);
-    }
+    .book-access-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+    .book-access-item:last-child { border-bottom: none; }
 
-    .section-title {
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      margin-top: 2rem;
-    }
+    .chapter-tag { display: inline-flex; align-items: center; gap: 0.2rem; padding: 0.1rem 0.45rem; border-radius: 9999px; font-size: 0.7rem; background: rgba(200,121,65,0.12); color: var(--accent); margin: 0.1rem; }
+    .chapter-tag .remove-ch { cursor: pointer; font-weight: bold; margin-left: 0.2rem; }
+    .chapter-tag .remove-ch:hover { color: #ef4444; }
+    .add-chapter-row { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem; }
+    .add-chapter-row select, .add-chapter-row input { font-size: 0.8rem; padding: 0.25rem 0.5rem; }
 
-    .access-denied {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
+    .github-preview { display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--bg-surface); border-radius: var(--radius-md); margin-bottom: 1rem; }
+    .github-preview img { width: 56px; height: 56px; border-radius: 50%; }
 
-    .access-denied i {
-      font-size: 4rem;
-      color: var(--error);
-      margin-bottom: 1rem;
-    }
+    .migration-notice { text-align: center; padding: 2rem; }
 
-    .access-denied h2 {
-      font-size: 1.5rem;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
+    /* ========================================
+       BOOKS TAB
+       ======================================== */
+    .books-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: var(--spacing-lg); }
+    .books-stat { background: var(--bg-surface); border-radius: var(--radius-lg); padding: 1rem; text-align: center; }
+    .books-stat .val { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+    .books-stat .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .access-denied p {
-      color: var(--text-muted);
+    .books-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg); flex-wrap: wrap; gap: 0.75rem; }
+    .books-subtabs { display: flex; gap: 0; }
+    .books-subtab { padding: 0.5rem 1rem; background: none; border: 1px solid var(--border); font-size: var(--text-sm); color: var(--text-muted); cursor: pointer; }
+    .books-subtab:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+    .books-subtab:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+    .books-subtab:not(:first-child) { margin-left: -1px; }
+    .books-subtab.active { background: var(--accent); color: var(--bg-base); border-color: var(--accent); }
+
+    .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .book-card { background: var(--bg-surface); border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid var(--border); transition: border-color 0.2s; }
+    .book-card:hover { border-color: var(--accent); }
+    .book-card.registered { border-left: 3px solid var(--accent); }
+    .book-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+    .book-card h3 { font-size: var(--text-md); font-weight: 600; color: var(--text-primary); }
+    .book-card .subtitle { font-size: var(--text-sm); color: var(--text-muted); }
+    .book-card .description { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: 0.75rem; line-height: 1.5; }
+    .book-card .meta { font-size: 0.75rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .book-card .actions { display: flex; gap: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+
+    /* ========================================
+       FEEDBACK TAB
+       ======================================== */
+    .fb-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: var(--spacing-lg); }
+    .fb-stat { background: var(--bg-surface); border-radius: var(--radius-lg); padding: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .fb-stat-icon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; }
+    .fb-stat-icon.open { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .fb-stat-icon.progress { background: rgba(200,121,65,0.12); color: var(--accent); }
+    .fb-stat-icon.resolved { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .fb-stat-icon.total { background: var(--bg-surface); color: var(--text-muted); border: 1px solid var(--border); }
+    .fb-stat .val { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); display: block; }
+    .fb-stat .lbl { font-size: 0.7rem; color: var(--text-muted); }
+
+    .fb-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: var(--spacing-md); }
+    .fb-table { width: 100%; border-collapse: collapse; }
+    .fb-table th { padding: 0.625rem 0.75rem; text-align: left; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .fb-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); font-size: var(--text-sm); }
+    .fb-table tr:hover td { background: var(--bg-surface); }
+    .fb-table tr.high-priority td { border-left: 2px solid #ef4444; }
+    .fb-pagination { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .fb-pagination span { font-size: var(--text-sm); color: var(--text-muted); }
+
+    /* Feedback badges */
+    .badge-type { background: var(--bg-surface); color: var(--text-secondary); }
+    .badge-open { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .badge-progress { background: rgba(200,121,65,0.12); color: var(--accent); }
+    .badge-success { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .badge-muted { background: var(--bg-surface); color: var(--text-muted); }
+    .badge-critical { background: rgba(220,38,38,0.12); color: #ef4444; }
+    .badge-high { background: rgba(251,146,60,0.12); color: #fb923c; }
+    .badge-normal { background: var(--bg-surface); color: var(--text-secondary); }
+    .badge-low { background: rgba(99,102,241,0.12); color: #818cf8; }
+
+    /* Feedback modal */
+    .feedback-meta { background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; }
+    .meta-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; font-size: var(--text-sm); }
+    .meta-row:last-child { margin-bottom: 0; }
+    .meta-label { font-weight: 500; color: var(--text-muted); min-width: 100px; }
+    .feedback-message, .feedback-responses, .resolution-section { margin-top: 1.25rem; }
+    .feedback-message h3, .feedback-responses h3, .resolution-section h3 { font-size: var(--text-sm); font-weight: 600; margin-bottom: 0.5rem; color: var(--text-secondary); }
+    .message-content { background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); white-space: pre-wrap; font-size: var(--text-sm); color: var(--text-primary); }
+    .response { background: var(--bg-surface); padding: 0.75rem 1rem; border-radius: var(--radius-md); margin-bottom: 0.5rem; }
+    .response.internal { border-left: 2px solid var(--accent); }
+    .response-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; font-size: 0.75rem; }
+    .response-date { color: var(--text-muted); margin-left: auto; }
+    .response p { font-size: var(--text-sm); margin: 0; }
+    .add-response { margin-top: 1rem; }
+    .response-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+    .checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted); cursor: pointer; }
+    .resolution-meta { margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted); display: flex; gap: 1rem; }
+
+    /* ========================================
+       ANALYTICS TAB
+       ======================================== */
+    .an-toolbar { display: flex; justify-content: flex-end; margin-bottom: var(--spacing-lg); }
+    .period-selector { display: flex; gap: 0; }
+    .period-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); background: none; font-size: var(--text-sm); color: var(--text-muted); cursor: pointer; }
+    .period-btn:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+    .period-btn:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+    .period-btn:not(:first-child) { margin-left: -1px; }
+    .period-btn.active { background: var(--accent); color: var(--bg-base); border-color: var(--accent); }
+
+    .an-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: var(--spacing-lg); }
+    .an-stat { background: var(--bg-surface); border-radius: var(--radius-lg); padding: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .an-stat svg { width: 20px; height: 20px; color: var(--accent); opacity: 0.7; }
+    .an-stat .val { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); display: block; }
+    .an-stat .lbl { font-size: 0.7rem; color: var(--text-muted); }
+
+    .an-card { background: var(--bg-surface); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: var(--spacing-lg); }
+    .an-card h3 { font-family: var(--font-heading); font-size: var(--text-md); color: var(--text-primary); margin-bottom: 1rem; }
+    .an-table { width: 100%; border-collapse: collapse; }
+    .an-table th { padding: 0.5rem 0.75rem; text-align: left; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .an-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); font-size: var(--text-sm); }
+    .views-col { text-align: right; font-variant-numeric: tabular-nums; }
+    .progress-col { width: 100px; }
+    .mini-progress { height: 5px; background: var(--bg-base); border-radius: 3px; overflow: hidden; }
+    .mini-progress-bar { height: 100%; background: var(--accent); border-radius: 3px; }
+
+    .activity-list { display: flex; flex-direction: column; }
+    .activity-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+    .activity-icon { color: var(--text-muted); width: 1.25rem; text-align: center; }
+    .activity-text { flex: 1; font-size: var(--text-sm); color: var(--text-primary); }
+    .activity-time { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* ========================================
+       SHARED
+       ======================================== */
+    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
+    .empty-state svg { width: 2.5rem; height: 2.5rem; margin-bottom: 0.75rem; opacity: 0.5; }
+    .text-error { color: #ef4444; }
+
+    @media (max-width: 768px) {
+      .fb-stats, .an-stats { grid-template-columns: repeat(2, 1fr); }
+      .books-stats { grid-template-columns: 1fr; }
+      .book-grid { grid-template-columns: 1fr; }
+      .edit-panel { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Fara í efni</a>
-  <header class="header">
-    <h1>Námsbókasafn</h1>
-    <nav>
-      <a href="/my-work">Mín verkefni</a>
-      <a href="/segment-editor">Ritstjóri</a>
-      <a href="/status">Framvinda</a>
-      <a href="/terminology">Orðasafn</a>
-      <a href="/review-queue" class="reviewer-only">Yfirferðarröð</a>
-      <span class="nav-separator admin-only"></span>
-      <a href="/dashboard" class="admin-only">Stjórnborð</a>
-      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
-    </nav>
-    <div class="header-actions">
-      <button class="theme-toggle" title="Skipta um þema">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      </button>
-      <div class="notification-bell" id="notification-bell" title="Tilkynningar" aria-label="Tilkynningar" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
-      </div>
-      <div class="user-info" id="user-info"></div>
-    </div>
-  </header>
+  <main class="page-content" id="main-content" data-page="admin" data-title="Stj&#243;rnandi">
 
-  <main class="container" id="main-content">
-    <div class="loading" id="loading">
-      <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
+    <!-- Loading -->
+    <div class="admin-loading" id="admin-loading">
+      <div class="spinner"></div>
+      <p>Hle&#240;ur...</p>
     </div>
 
-    <div id="admin-content" style="display: none;">
-      <div class="page-header">
-        <h1><i class="fas fa-shield-halved"></i> Stjórnandi</h1>
-      </div>
-
-      <p class="text-muted">Stjórnunarverkfæri fyrir kerfisstjóra og aðalritstjóra.</p>
-
-      <h2 class="section-title">Kerfisstjórnun</h2>
-      <div class="admin-grid">
-        <a href="/admin/users" class="admin-card" id="users-card">
-          <div class="admin-card-icon users">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3>Notendur</h3>
-          <p>Stjórna notendum, úthluta hlutverkum og aðgangi að bókum.</p>
-        </a>
-
-        <a href="/admin/books" class="admin-card">
-          <div class="admin-card-icon books">
-            <i class="fas fa-book"></i>
-          </div>
-          <h3>Bækur</h3>
-          <p>Skrá nýjar bækur, skoða stöðu þýðinga og kafla.</p>
-        </a>
-
-        <a href="/admin/feedback" class="admin-card">
-          <div class="admin-card-icon feedback">
-            <i class="fas fa-comments"></i>
-          </div>
-          <h3>Endurgjöf</h3>
-          <p>Skoða og svara endurgjöf frá notendum og kennurum.</p>
-          <span class="badge" id="feedback-badge" style="display: none;"></span>
-        </a>
-      </div>
-
-      <h2 class="section-title">Skýrslur og tölfræði</h2>
-      <div class="admin-grid">
-        <a href="/analytics" class="admin-card">
-          <div class="admin-card-icon analytics">
-            <i class="fas fa-chart-pie"></i>
-          </div>
-          <h3>Tölfræði</h3>
-          <p>Notkunartölfræði og greining á virkni kerfisins.</p>
-        </a>
-
-      </div>
+    <!-- Access denied -->
+    <div class="admin-denied" id="admin-denied" style="display:none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <h2>A&#240;gangur banna&#240;ur</h2>
+      <p>&#222;&#250; hefur ekki heimild til a&#240; sko&#240;a &#254;essa s&#237;&#240;u. Haf&#240;u samband vi&#240; kerfistj&#243;ra ef &#254;&#250; telur &#254;etta vera villu.</p>
+      <a href="/" class="btn btn-secondary">Til baka</a>
     </div>
 
-    <div id="access-denied" style="display: none;">
-      <div class="access-denied">
-        <i class="fas fa-lock"></i>
-        <h2>Aðgangur bannaður</h2>
-        <p>Þú hefur ekki heimild til að skoða þessa síðu. Hafðu samband við kerfisstjóra ef þú telur þetta vera villu.</p>
-        <a href="/my-work" class="btn btn-primary mt-4">Til baka</a>
+    <!-- Admin content -->
+    <div id="admin-content" style="display:none">
+      <div class="tabs">
+        <button class="tab active" data-tab="users">Notendur</button>
+        <button class="tab" data-tab="books">B&#230;kur</button>
+        <button class="tab" data-tab="feedback">Endurgj&#246;f</button>
+        <button class="tab" data-tab="analytics">T&#246;lfr&#230;&#240;i</button>
+      </div>
+
+      <!-- ============================================================
+           TAB: USERS (Notendur)
+           ============================================================ -->
+      <div class="tab-content active" id="tab-users">
+        <div id="users-migration" style="display:none">
+          <div class="card card-padded migration-notice">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);margin-bottom:0.75rem"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            <h3>Gagnagrunnur ekki tilb&#250;inn</h3>
+            <p class="text-muted">Keyra &#254;arf flutning (migration) til a&#240; virkja notendastj&#243;rnun.</p>
+            <button class="btn btn-primary" style="margin-top:1rem" onclick="usersRunMigration()">Keyra flutning</button>
+          </div>
+        </div>
+        <div id="users-content" style="display:none">
+          <div class="users-toolbar">
+            <div class="search-field">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="users-search" placeholder="Leita a&#240; notanda..." oninput="usersFilter()">
+            </div>
+            <select class="form-select" id="users-role-filter" onchange="usersFilter()" style="width:auto">
+              <option value="">&#214;ll hlutverk</option>
+              <option value="admin">Kerfistj&#243;ri</option>
+              <option value="head-editor">A&#240;alritstj&#243;ri</option>
+              <option value="editor">Ritstj&#243;ri</option>
+              <option value="contributor">&#222;&#253;&#240;andi</option>
+              <option value="viewer">Lesandi</option>
+            </select>
+            <button class="btn btn-primary" onclick="usersShowAddModal()">B&#230;ta vi&#240;</button>
+          </div>
+          <div class="card" style="overflow-x:auto">
+            <table class="user-table">
+              <thead>
+                <tr><th>Notandi</th><th>Hlutverk</th><th>B&#230;kur</th><th>Sta&#240;a</th><th>S&#237;&#240;ast innskr&#225;&#240;ur</th><th></th></tr>
+              </thead>
+              <tbody id="users-tbody"></tbody>
+            </table>
+            <div id="users-empty" class="empty-state" style="display:none"><p>Engir notendur fundust</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TAB: BOOKS (Bækur)
+           ============================================================ -->
+      <div class="tab-content" id="tab-books">
+        <div class="books-stats">
+          <div class="books-stat"><div class="val" id="books-stat-total">-</div><div class="lbl">&#205; lista</div></div>
+          <div class="books-stat"><div class="val" id="books-stat-registered">-</div><div class="lbl">Skr&#225;&#240;ar</div></div>
+          <div class="books-stat"><div class="val" id="books-stat-unregistered">-</div><div class="lbl">&#211;skr&#225;&#240;ar</div></div>
+        </div>
+        <div class="books-toolbar">
+          <div class="books-subtabs">
+            <button class="books-subtab active" data-filter="all">Allar</button>
+            <button class="books-subtab" data-filter="registered">Skr&#225;&#240;ar</button>
+            <button class="books-subtab" data-filter="unregistered">&#211;skr&#225;&#240;ar</button>
+          </div>
+          <div style="display:flex;gap:0.5rem">
+            <button class="btn btn-secondary" id="books-sync-btn" onclick="booksSyncCatalogue()">Samstilla</button>
+            <button class="btn btn-primary" onclick="booksShowAddModal()">B&#230;ta vi&#240; b&#243;k</button>
+          </div>
+        </div>
+        <div class="book-grid" id="books-grid">
+          <div class="empty-state"><p>Engar b&#230;kur fundust</p></div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TAB: FEEDBACK (Endurgjöf)
+           ============================================================ -->
+      <div class="tab-content" id="tab-feedback">
+        <div class="fb-stats">
+          <div class="fb-stat"><div class="fb-stat-icon open"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg></div><div><span class="val" id="fb-stat-open">-</span><span class="lbl">Opin</span></div></div>
+          <div class="fb-stat"><div class="fb-stat-icon progress"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg></div><div><span class="val" id="fb-stat-progress">-</span><span class="lbl">&#205; vinnslu</span></div></div>
+          <div class="fb-stat"><div class="fb-stat-icon resolved"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div><div><span class="val" id="fb-stat-resolved">-</span><span class="lbl">Leyst</span></div></div>
+          <div class="fb-stat"><div class="fb-stat-icon total"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div><span class="val" id="fb-stat-total">-</span><span class="lbl">Samtals</span></div></div>
+        </div>
+        <div class="fb-filters">
+          <select id="fb-status-filter" class="form-select" style="width:auto">
+            <option value="">Allar st&#246;&#240;ur</option>
+            <option value="open" selected>Opin</option>
+            <option value="in_progress">&#205; vinnslu</option>
+            <option value="resolved">Leyst</option>
+            <option value="wont_fix">Ver&#240;ur ekki laga&#240;</option>
+          </select>
+          <select id="fb-type-filter" class="form-select" style="width:auto">
+            <option value="">Allar tegundir</option>
+            <option value="translation_error">Villa &#237; &#254;&#253;&#240;ingu</option>
+            <option value="technical_issue">T&#230;knilegt vandam&#225;l</option>
+            <option value="improvement">Tillaga a&#240; b&#230;tingu</option>
+            <option value="other">Anna&#240;</option>
+          </select>
+          <select id="fb-priority-filter" class="form-select" style="width:auto">
+            <option value="">&#214;ll forgangs</option>
+            <option value="critical">Mj&#246;g h&#225;</option>
+            <option value="high">H&#225;</option>
+            <option value="normal">Venjuleg</option>
+            <option value="low">L&#225;g</option>
+          </select>
+        </div>
+        <div id="fb-list"><div class="empty-state"><p>Hle&#240;ur...</p></div></div>
+        <div class="fb-pagination" id="fb-pagination" style="display:none">
+          <button class="btn btn-secondary btn-sm" id="fb-prev-btn" disabled>Fyrri</button>
+          <span id="fb-page-info"></span>
+          <button class="btn btn-secondary btn-sm" id="fb-next-btn">N&#230;sta</button>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TAB: ANALYTICS (Tölfræði)
+           ============================================================ -->
+      <div class="tab-content" id="tab-analytics">
+        <div class="an-toolbar">
+          <div class="period-selector">
+            <button class="period-btn active" data-period="-7 days">7 dagar</button>
+            <button class="period-btn" data-period="-30 days">30 dagar</button>
+            <button class="period-btn" data-period="-90 days">90 dagar</button>
+          </div>
+        </div>
+        <div class="an-stats">
+          <div class="an-stat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg><div><span class="val" id="an-stat-pageviews">-</span><span class="lbl">S&#237;&#240;uflettingar</span></div></div>
+          <div class="an-stat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><div><span class="val" id="an-stat-sessions">-</span><span class="lbl">Einstakar lotur</span></div></div>
+          <div class="an-stat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><div><span class="val" id="an-stat-chapters">-</span><span class="lbl">Kaflar sko&#240;a&#240;ir</span></div></div>
+          <div class="an-stat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><div><span class="val" id="an-stat-downloads">-</span><span class="lbl">Ni&#240;urhal</span></div></div>
+        </div>
+        <div class="an-card">
+          <h3>Vins&#230;lasta efni&#240;</h3>
+          <table class="an-table">
+            <thead><tr><th>Kafli</th><th>Flettingar</th><th class="progress-col">%</th></tr></thead>
+            <tbody id="an-popular-body"><tr><td colspan="3" style="text-align:center;color:var(--text-muted)">Hle&#240;ur...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="an-card">
+          <h3>N&#253;leg virkni</h3>
+          <div class="activity-list" id="an-activity-list"><p style="text-align:center;color:var(--text-muted)">Hle&#240;ur...</p></div>
+        </div>
       </div>
     </div>
   </main>
 
-  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <!-- ============================================================
+       MODALS
+       ============================================================ -->
+
+  <!-- Add User Modal -->
+  <div class="modal" role="dialog" aria-modal="true" id="add-user-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>B&#230;ta vi&#240; notanda</h3>
+        <button class="btn-close" onclick="usersHideAddModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">GitHub notandanafn</label>
+          <input type="text" class="form-input" id="add-github-username" placeholder="t.d. octocat" oninput="usersPreviewGitHub()">
+        </div>
+        <div id="github-preview" style="display:none"></div>
+        <div class="form-group">
+          <label class="form-label">Hlutverk</label>
+          <select class="form-select" id="add-role">
+            <option value="viewer">Lesandi</option>
+            <option value="contributor">&#222;&#253;&#240;andi</option>
+            <option value="editor">Ritstj&#243;ri</option>
+            <option value="head-editor">A&#240;alritstj&#243;ri</option>
+            <option value="admin">Kerfistj&#243;ri</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="usersHideAddModal()">H&#230;tta vi&#240;</button>
+        <button class="btn btn-primary" id="add-user-btn" onclick="usersAddUser()" disabled>B&#230;ta vi&#240;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit User Panel -->
+  <div class="edit-panel-backdrop" id="edit-backdrop" onclick="usersHideEditPanel()"></div>
+  <div class="edit-panel" id="edit-panel">
+    <div class="edit-panel-header">
+      <h3>Breyta notanda</h3>
+      <button class="btn-close" onclick="usersHideEditPanel()">&times;</button>
+    </div>
+    <div class="edit-panel-body" id="edit-panel-body"></div>
+    <div class="edit-panel-footer">
+      <button class="btn btn-secondary" onclick="usersHideEditPanel()">H&#230;tta vi&#240;</button>
+      <button class="btn btn-primary" onclick="usersSaveUser()">Vista</button>
+    </div>
+  </div>
+
+  <!-- Register Book Modal -->
+  <div class="modal" role="dialog" aria-modal="true" id="register-book-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Skr&#225; b&#243;k</h3>
+        <button class="btn-close" onclick="booksCloseRegisterModal()">&times;</button>
+      </div>
+      <form id="register-form">
+        <div class="modal-body">
+          <input type="hidden" name="catalogueSlug" id="reg-catalogue-slug">
+          <div class="form-group"><label class="form-label">Ensk heiti</label><input type="text" class="form-input" id="reg-title-en" disabled></div>
+          <div class="form-group"><label class="form-label">&#205;slenskt heiti</label><input type="text" class="form-input" name="titleIs" id="reg-title-is" required placeholder="t.d. Efnafr&#230;&#240;i"></div>
+          <div class="form-group"><label class="form-label">Slug (stytting)</label><input type="text" class="form-input" name="slug" id="reg-slug" required placeholder="t.d. efnafraedi" pattern="[a-z0-9-]+"><small class="text-muted">Nota&#240; &#237; sl&#243;&#240;ir, a&#240;eins l&#225;gstafir og bandstrik</small></div>
+          <div class="form-group"><label class="form-label">A&#240;alritstj&#243;ri (valkv&#230;tt)</label><select class="form-select" name="headEditorId" id="reg-head-editor"><option value="">Velja s&#237;&#240;ar...</option></select></div>
+          <div class="form-group"><label class="form-check"><input type="checkbox" name="fetchFromOpenstax" id="reg-fetch" checked><span>S&#230;kja kaflaskipan fr&#225; OpenStax</span></label></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="booksCloseRegisterModal()">H&#230;tta vi&#240;</button>
+          <button type="submit" class="btn btn-primary">Skr&#225; b&#243;k</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Book Modal -->
+  <div class="modal" role="dialog" aria-modal="true" id="add-book-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>B&#230;ta vi&#240; b&#243;k &#237; lista</h3>
+        <button class="btn-close" onclick="booksCloseAddModal()">&times;</button>
+      </div>
+      <form id="add-book-form">
+        <div class="modal-body">
+          <div class="form-group"><label class="form-label">Slug (kennimerki)</label><input type="text" class="form-input" name="slug" id="add-book-slug" required placeholder="t.d. physics-2e" pattern="[a-z0-9-]+"><small class="text-muted">OpenStax slug, a&#240;eins l&#225;gstafir, t&#246;lur og bandstrik</small></div>
+          <div class="form-group"><label class="form-label">Enskt heiti</label><input type="text" class="form-input" name="title" id="add-book-title" required placeholder="t.d. University Physics Volume 1"></div>
+          <div class="form-group"><label class="form-label">L&#253;sing (valkv&#230;tt)</label><textarea class="form-textarea" name="description" id="add-book-description" rows="2" placeholder="Stutt l&#253;sing &#225; b&#243;kinni"></textarea></div>
+          <div class="form-group"><label class="form-label">GitHub repo URL (valkv&#230;tt)</label><input type="url" class="form-input" name="repoUrl" id="add-book-repo-url" placeholder="https://github.com/openstax/osbooks-..."></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="form-group"><label class="form-label">Fj&#246;ldi kafla</label><input type="number" class="form-input" name="chapterCount" id="add-book-chapter-count" min="1" max="100" placeholder="t.d. 21"></div>
+            <div class="form-group"><label class="form-label">&nbsp;</label><label class="form-check"><input type="checkbox" name="hasAppendices" id="add-book-appendices"><span>Hefur vi&#240;auka</span></label></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="booksCloseAddModal()">H&#230;tta vi&#240;</button>
+          <button type="submit" class="btn btn-primary">B&#230;ta vi&#240;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Feedback Detail Modal -->
+  <div class="modal" role="dialog" aria-modal="true" id="fb-detail-modal" style="display:none">
+    <div class="modal-content" style="max-width:700px">
+      <div class="modal-header">
+        <h3>Endurgj&#246;f #<span id="fb-modal-id"></span></h3>
+        <button class="btn-close" onclick="fbCloseModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="max-height:60vh;overflow-y:auto">
+        <div class="feedback-meta">
+          <div class="meta-row"><span class="meta-label">Tegund:</span><span id="fb-detail-type" class="badge"></span></div>
+          <div class="meta-row"><span class="meta-label">Sta&#240;a:</span><select id="fb-detail-status" class="form-select" style="width:auto"><option value="open">Opi&#240;</option><option value="in_progress">&#205; vinnslu</option><option value="resolved">Leyst</option><option value="wont_fix">Ver&#240;ur ekki laga&#240;</option></select></div>
+          <div class="meta-row"><span class="meta-label">Forgangur:</span><select id="fb-detail-priority" class="form-select" style="width:auto"><option value="low">L&#225;gur</option><option value="normal">Venjulegur</option><option value="high">H&#225;r</option><option value="critical">Mj&#246;g h&#225;r</option></select></div>
+          <div class="meta-row"><span class="meta-label">Sta&#240;setning:</span><span id="fb-detail-location"></span></div>
+          <div class="meta-row"><span class="meta-label">Sent:</span><span id="fb-detail-created"></span></div>
+          <div class="meta-row" id="fb-detail-contact-row" style="display:none"><span class="meta-label">Tengili&#240;ur:</span><span id="fb-detail-contact"></span></div>
+        </div>
+        <div class="feedback-message"><h3>Skilabo&#240;</h3><div id="fb-detail-message" class="message-content"></div></div>
+        <div class="feedback-responses"><h3>Sv&#246;r</h3><div id="fb-responses-list"></div>
+          <div class="add-response">
+            <textarea id="fb-response-input" class="form-textarea" rows="3" placeholder="Skrifa svar..."></textarea>
+            <div class="response-actions">
+              <label class="checkbox-label"><input type="checkbox" id="fb-response-internal"> Innanh&#250;ssathugasemd</label>
+              <button class="btn btn-primary btn-sm" onclick="fbAddResponse()">Svara</button>
+            </div>
+          </div>
+        </div>
+        <div class="resolution-section" id="fb-resolution-section" style="display:none">
+          <h3>Lausn</h3>
+          <div id="fb-resolution-notes" class="message-content"></div>
+          <div class="resolution-meta"><span>Leyst af: <strong id="fb-resolved-by"></strong></span><span id="fb-resolved-at"></span></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="fbCloseModal()">Loka</button>
+        <button class="btn btn-primary" id="fb-resolve-btn" onclick="fbResolveFeedback()">Merkja sem leyst</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resolve Modal -->
+  <div class="modal" role="dialog" aria-modal="true" id="fb-resolve-modal" style="display:none">
+    <div class="modal-content" style="max-width:450px">
+      <div class="modal-header">
+        <h3>Merkja sem leyst</h3>
+        <button class="btn-close" onclick="fbCloseResolveModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Lausnarathugasemd (valfr&#225;lst)</label>
+          <textarea id="fb-resolution-input" class="form-textarea" rows="3" placeholder="L&#253;si&#240; &#254;v&#237; hva&#240; var gert til a&#240; leysa m&#225;li&#240;..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="fbCloseResolveModal()">H&#230;tta vi&#240;</button>
+        <button class="btn btn-primary" onclick="fbConfirmResolve()">Sta&#240;festa</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/layout.js"></script>
   <script src="/js/theme.js"></script>
-  <script src="/js/nav.js"></script>
+  <script src="/js/htmlUtils.js"></script>
   <script>
-    const adminRoles = ['admin', 'head-editor'];
+  /* ==================================================================
+     ADMIN PAGE — MASTER CONTROLLER
+     ================================================================== */
+  (function() {
+    'use strict';
 
-    async function checkAccess() {
-      try {
-        const res = await fetch('/api/auth/me');
-        const data = await res.json();
+    const ADMIN_ROLES = ['admin', 'head-editor'];
+    const ADMIN_ONLY_ROLES = ['admin'];
 
-        document.getElementById('loading').style.display = 'none';
+    /* ---- Tab switching ---- */
+    function initTabs() {
+      const tabs = document.querySelectorAll('#admin-content > .tabs .tab');
+      const panels = document.querySelectorAll('#admin-content > .tab-content');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          panels.forEach(function(p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          var target = document.getElementById('tab-' + tab.dataset.tab);
+          if (target) target.classList.add('active');
+          // Update URL param
+          var url = new URL(window.location);
+          url.searchParams.set('tab', tab.dataset.tab);
+          history.replaceState(null, '', url);
+        });
+      });
+      // Activate tab from URL param
+      var params = new URLSearchParams(window.location.search);
+      var tabParam = params.get('tab');
+      if (tabParam) {
+        var btn = document.querySelector('.tabs .tab[data-tab="' + tabParam + '"]');
+        if (btn) btn.click();
+      }
+    }
 
-        if (data.authenticated && adminRoles.includes(data.user.role)) {
+    /* ---- Auth check ---- */
+    function checkAdminAccess() {
+      window.addEventListener('userLoaded', function(e) {
+        var user = e.detail;
+        document.getElementById('admin-loading').style.display = 'none';
+        if (user && ADMIN_ROLES.indexOf(user.role) !== -1) {
           document.getElementById('admin-content').style.display = 'block';
-          loadFeedbackCount();
+          initTabs();
+          // Init all tabs
+          usersInit(user);
+          booksInit();
+          fbInit();
+          anInit();
         } else {
-          document.getElementById('access-denied').style.display = 'block';
+          document.getElementById('admin-denied').style.display = 'block';
         }
-      } catch (error) {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('access-denied').style.display = 'block';
+      });
+      // Fallback: if userLoaded already fired
+      if (window.currentUser) {
+        document.getElementById('admin-loading').style.display = 'none';
+        if (ADMIN_ROLES.indexOf(window.currentUser.role) !== -1) {
+          document.getElementById('admin-content').style.display = 'block';
+          initTabs();
+          usersInit(window.currentUser);
+          booksInit();
+          fbInit();
+          anInit();
+        } else {
+          document.getElementById('admin-denied').style.display = 'block';
+        }
       }
     }
 
-    async function loadFeedbackCount() {
+    function showToast(msg, type) { alert(msg); }
+
+    /* ==================================================================
+       USERS TAB
+       ================================================================== */
+    var usersData = [];
+    var currentEditUser = null;
+    var userBooks = [];
+    var previewTimeout = null;
+    var roleNames = { 'admin':'Kerfisstj\u00f3ri', 'head-editor':'A\u00f0alritstj\u00f3ri', 'editor':'Ritstj\u00f3ri', 'contributor':'\u00de\u00fd\u00f0andi', 'viewer':'Lesandi' };
+
+    function usersInit(user) {
+      if (ADMIN_ONLY_ROLES.indexOf(user.role) !== -1) {
+        usersLoadUsers();
+        usersLoadBooks();
+      } else {
+        document.getElementById('tab-users').innerHTML = '<div class="empty-state"><p>A\u00f0eins kerfistj\u00f3rar geta s\u00e9\u00f0 notendastj\u00f3rnun.</p></div>';
+      }
+    }
+
+    window.usersFilter = function() {
+      usersRenderUsers();
+    };
+
+    async function usersLoadUsers() {
       try {
-        const res = await fetch('/api/feedback/stats');
-        if (res.ok) {
-          const data = await res.json();
-          const pending = data.byStatus?.new || 0;
-          if (pending > 0) {
-            const badge = document.getElementById('feedback-badge');
-            badge.textContent = pending + ' ný';
-            badge.classList.add('badge-warning');
-            badge.style.display = '';
-          }
+        var res = await fetch('/api/admin/users');
+        var data = await res.json();
+        if (res.status === 503) {
+          document.getElementById('users-migration').style.display = 'block';
+          return;
         }
-      } catch (e) {
-        // Ignore error - feedback count is optional
+        usersData = data.users;
+        document.getElementById('users-content').style.display = 'block';
+        usersRenderUsers();
+      } catch(e) { console.error('Failed to load users:', e); }
+    }
+
+    async function usersLoadBooks() {
+      try {
+        var res = await fetch('/api/admin/books');
+        if (res.ok) { var data = await res.json(); userBooks = data.books || []; }
+      } catch(e) {}
+    }
+
+    function usersRenderUsers() {
+      var search = document.getElementById('users-search').value.toLowerCase();
+      var roleFilter = document.getElementById('users-role-filter').value;
+      var filtered = usersData.filter(function(u) {
+        var ms = !search || u.displayName.toLowerCase().indexOf(search) !== -1 || u.githubUsername.toLowerCase().indexOf(search) !== -1;
+        var mr = !roleFilter || u.role === roleFilter;
+        return ms && mr;
+      });
+      var tbody = document.getElementById('users-tbody');
+      var empty = document.getElementById('users-empty');
+      if (filtered.length === 0) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = filtered.map(function(u) {
+        return '<tr onclick="usersEditUser(' + u.id + ')">' +
+          '<td><div class="user-info-cell"><img src="' + escapeHtml(u.avatarUrl || '') + '" alt="" class="user-avatar" onerror="this.style.display=\'none\'"><div><div class="user-name">' + escapeHtml(u.displayName) + '</div><div class="user-username">@' + escapeHtml(u.githubUsername) + '</div></div></div></td>' +
+          '<td><span class="role-badge role-' + u.role + '">' + (roleNames[u.role] || u.role) + '</span></td>' +
+          '<td>' + (u.bookAccess ? u.bookAccess.length : 0) + '</td>' +
+          '<td><span class="status-dot ' + (u.isActive ? 'active' : 'inactive') + '">' + (u.isActive ? 'Virkur' : '\u00d3virkur') + '</span></td>' +
+          '<td>' + (u.lastLoginAt ? usersFormatDate(u.lastLoginAt) : 'Aldrei') + '</td>' +
+          '<td><button class="action-btn" onclick="event.stopPropagation();usersEditUser(' + u.id + ')" title="Breyta">\u270e</button>' +
+          '<button class="action-btn danger" onclick="event.stopPropagation();usersConfirmDeactivate(' + u.id + ')" title="' + (u.isActive ? 'Gera \u00f3virkan' : 'Virkja') + '">' + (u.isActive ? '\u2718' : '\u2714') + '</button></td></tr>';
+      }).join('');
+    }
+
+    function usersFormatDate(s) { if (!s) return ''; return new Date(s).toLocaleDateString('is-IS'); }
+
+    window.usersShowAddModal = function() {
+      document.getElementById('add-github-username').value = '';
+      document.getElementById('add-role').value = 'viewer';
+      document.getElementById('github-preview').style.display = 'none';
+      document.getElementById('add-user-btn').disabled = true;
+      document.getElementById('add-user-modal').style.display = 'flex';
+    };
+    window.usersHideAddModal = function() { document.getElementById('add-user-modal').style.display = 'none'; };
+
+    window.usersPreviewGitHub = function() {
+      var username = document.getElementById('add-github-username').value.trim();
+      var preview = document.getElementById('github-preview');
+      var addBtn = document.getElementById('add-user-btn');
+      if (!username) { preview.style.display = 'none'; addBtn.disabled = true; return; }
+      clearTimeout(previewTimeout);
+      previewTimeout = setTimeout(async function() {
+        try {
+          var res = await fetch('https://api.github.com/users/' + username);
+          if (res.ok) {
+            var user = await res.json();
+            preview.innerHTML = '<div class="github-preview"><img src="' + user.avatar_url + '" alt=""><div><h4 style="margin:0;font-size:1rem">' + escapeHtml(user.name || user.login) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.875rem">@' + escapeHtml(user.login) + '</p></div></div>';
+            preview.style.display = 'block';
+            preview.dataset.user = JSON.stringify(user);
+            addBtn.disabled = false;
+          } else {
+            preview.innerHTML = '<p class="text-error">Notandi fannst ekki \u00e1 GitHub</p>';
+            preview.style.display = 'block';
+            addBtn.disabled = true;
+          }
+        } catch(e) {
+          preview.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 s\u00e6kja notanda</p>';
+          preview.style.display = 'block';
+          addBtn.disabled = true;
+        }
+      }, 500);
+    };
+
+    window.usersAddUser = async function() {
+      var username = document.getElementById('add-github-username').value.trim();
+      var role = document.getElementById('add-role').value;
+      try {
+        var res = await fetch('/api/admin/users', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({githubUsername:username,role:role}) });
+        var data = await res.json();
+        if (res.ok) { usersHideAddModal(); usersLoadUsers(); showToast('Notandi b\u00e6tt vi\u00f0','success'); }
+        else { showToast(data.message || 'Villa','error'); }
+      } catch(e) { showToast('Villa vi\u00f0 a\u00f0 b\u00e6ta vi\u00f0 notanda','error'); }
+    };
+
+    window.usersEditUser = function(id) {
+      var user = usersData.find(function(u){return u.id===id;});
+      if (!user) return;
+      currentEditUser = user;
+      var body = document.getElementById('edit-panel-body');
+      body.innerHTML =
+        '<div class="user-detail-header"><img src="' + escapeHtml(user.avatarUrl||'') + '" alt="" style="width:56px;height:56px;border-radius:50%"><div><h4 style="margin:0">' + escapeHtml(user.displayName) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted)">@' + escapeHtml(user.githubUsername) + '</p></div></div>' +
+        '<div class="form-group"><label class="form-label">Nafn</label><input type="text" class="form-input" id="edit-display-name" value="' + escapeHtml(user.displayName) + '"></div>' +
+        '<div class="form-group"><label class="form-label">Hlutverk</label><select class="form-select" id="edit-role"><option value="viewer"' + (user.role==='viewer'?' selected':'') + '>Lesandi</option><option value="contributor"' + (user.role==='contributor'?' selected':'') + '>\u00de\u00fd\u00f0andi</option><option value="editor"' + (user.role==='editor'?' selected':'') + '>Ritstj\u00f3ri</option><option value="head-editor"' + (user.role==='head-editor'?' selected':'') + '>A\u00f0alritstj\u00f3ri</option><option value="admin"' + (user.role==='admin'?' selected':'') + '>Kerfisstj\u00f3ri</option></select></div>' +
+        '<div class="form-group"><label class="form-label">Sta\u00f0a</label><select class="form-select" id="edit-active"><option value="true"' + (user.isActive?' selected':'') + '>Virkur</option><option value="false"' + (!user.isActive?' selected':'') + '>\u00d3virkur</option></select></div>' +
+        '<div class="form-group"><label class="form-label">B\u00f3kaheimildir</label><div id="book-access-list">' + usersRenderBookAccess(user) + '</div><button class="btn btn-sm btn-secondary" style="margin-top:0.5rem" onclick="usersShowAddBookAccess()">B\u00e6ta vi\u00f0 b\u00f3k</button></div>' +
+        '<div class="form-group" id="add-book-access-form" style="display:none"><div style="display:flex;gap:0.5rem"><select class="form-select" id="new-book-slug"><option value="">Veldu b\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><select class="form-select" id="new-book-role"><option value="contributor">\u00de\u00fd\u00f0andi</option><option value="editor">Ritstj\u00f3ri</option><option value="head-editor">A\u00f0alritstj\u00f3ri</option></select></div><button class="btn btn-sm btn-primary" style="margin-top:0.5rem" onclick="usersAddBookAccess()">B\u00e6ta vi\u00f0</button></div>' +
+        '<div class="form-group"><label class="form-label">Kaflaverkefni</label><p style="font-size:0.8rem;color:var(--text-muted);font-style:italic">Ef engir kaflar eru \u00fathluta\u00f0ir hefur notandi a\u00f0gang a\u00f0 \u00f6llum k\u00f6flum.</p><div id="chapter-assignments"><div style="text-align:center;color:var(--text-muted)">Hle\u00f0ur...</div></div>' +
+        '<div class="add-chapter-row"><select class="form-select" id="assign-book"><option value="">B\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><input type="number" id="assign-chapter" min="1" max="30" placeholder="Kafli nr." style="width:80px"><button class="btn btn-sm btn-secondary" onclick="usersAssignChapter()">\u00dathluta</button></div></div>';
+      document.getElementById('edit-backdrop').classList.add('open');
+      document.getElementById('edit-panel').classList.add('open');
+      usersLoadChapterAssignments();
+    };
+
+    function usersRenderBookAccess(user) {
+      if (!user.bookAccess || user.bookAccess.length === 0) return '<p style="color:var(--text-muted)">Engir s\u00e9rstakir b\u00f3kar\u00e9ttindi</p>';
+      return user.bookAccess.map(function(ba) {
+        return '<div class="book-access-item"><div><strong>' + escapeHtml(ba.book) + '</strong> <span class="role-badge role-' + ba.role + '" style="margin-left:0.5rem">' + (roleNames[ba.role]||ba.role) + '</span></div><button class="action-btn danger" onclick="usersRemoveBookAccess(\'' + ba.book + '\')" title="Fjarl\u00e6gja">\u2718</button></div>';
+      }).join('');
+    }
+
+    window.usersShowAddBookAccess = function() { document.getElementById('add-book-access-form').style.display = 'block'; };
+
+    window.usersAddBookAccess = async function() {
+      var slug = document.getElementById('new-book-slug').value;
+      var role = document.getElementById('new-book-role').value;
+      if (!slug) { showToast('Veldu b\u00f3k','error'); return; }
+      try {
+        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/books', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:slug,role:role}) });
+        if (res.ok) { var data = await res.json(); currentEditUser = data.user; document.getElementById('book-access-list').innerHTML = usersRenderBookAccess(currentEditUser); document.getElementById('add-book-access-form').style.display = 'none'; document.getElementById('new-book-slug').value = ''; usersLoadUsers(); showToast('B\u00f3kaheimild b\u00e6tt vi\u00f0','success'); }
+        else { showToast('Villa','error'); }
+      } catch(e) { showToast('Villa','error'); }
+    };
+
+    window.usersRemoveBookAccess = async function(bookSlug) {
+      try {
+        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/books/' + bookSlug, { method:'DELETE' });
+        if (res.ok) { var data = await res.json(); currentEditUser = data.user; document.getElementById('book-access-list').innerHTML = usersRenderBookAccess(currentEditUser); usersLoadUsers(); showToast('B\u00f3kaheimild fjarl\u00e6g\u00f0','success'); }
+      } catch(e) { showToast('Villa','error'); }
+    };
+
+    async function usersLoadChapterAssignments() {
+      if (!currentEditUser) return;
+      var container = document.getElementById('chapter-assignments');
+      if (!container) return;
+      try {
+        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters');
+        var data = await res.json();
+        if (!data.assignments || data.assignments.length === 0) { container.innerHTML = '<p style="font-size:0.8rem;color:var(--text-muted);font-style:italic">Engir kaflar \u00fathluta\u00f0ir \u2014 a\u00f0gangur a\u00f0 \u00f6llum k\u00f6flum.</p>'; return; }
+        var byBook = {};
+        data.assignments.forEach(function(a) { if (!byBook[a.book_slug]) byBook[a.book_slug] = []; byBook[a.book_slug].push(a.chapter); });
+        var html = '';
+        Object.keys(byBook).forEach(function(book) {
+          html += '<div style="margin-bottom:0.5rem"><strong>' + escapeHtml(book) + ':</strong> ';
+          html += byBook[book].map(function(ch) { return '<span class="chapter-tag">K' + ch + '<span class="remove-ch" onclick="usersRemoveChapter(\'' + book + '\',' + ch + ')" title="Fjarl\u00e6gja">&times;</span></span>'; }).join('');
+          html += '</div>';
+        });
+        container.innerHTML = html;
+      } catch(e) { container.innerHTML = '<p style="color:var(--text-muted)">Villa vi\u00f0 a\u00f0 s\u00e6kja kaflaverkefni</p>'; }
+    }
+
+    window.usersAssignChapter = async function() {
+      if (!currentEditUser) return;
+      var bookSlug = document.getElementById('assign-book').value;
+      var chapter = parseInt(document.getElementById('assign-chapter').value, 10);
+      if (!bookSlug) { showToast('Veldu b\u00f3k','error'); return; }
+      if (!chapter || chapter < 1) { showToast('Sl\u00e1\u00f0u inn kaflan\u00famer','error'); return; }
+      try {
+        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
+        if (res.ok) { document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('Kafli ' + chapter + ' \u00fathluta\u00f0ur','success'); }
+        else { var d = await res.json(); showToast(d.error || 'Villa','error'); }
+      } catch(e) { showToast('Villa vi\u00f0 \u00fathlutun','error'); }
+    };
+
+    window.usersRemoveChapter = async function(book, chapter) {
+      if (!currentEditUser) return;
+      try {
+        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters/' + book + '/' + chapter, { method:'DELETE' });
+        if (res.ok) { usersLoadChapterAssignments(); showToast('Kafli ' + chapter + ' fjarl\u00e6g\u00f0ur','success'); }
+      } catch(e) { showToast('Villa','error'); }
+    };
+
+    window.usersHideEditPanel = function() {
+      document.getElementById('edit-backdrop').classList.remove('open');
+      document.getElementById('edit-panel').classList.remove('open');
+      currentEditUser = null;
+    };
+
+    window.usersSaveUser = async function() {
+      var role = document.getElementById('edit-role').value;
+      var isActive = document.getElementById('edit-active').value === 'true';
+      var displayName = document.getElementById('edit-display-name').value;
+      try {
+        var res = await fetch('/api/admin/users/' + currentEditUser.id, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({role:role,isActive:isActive,displayName:displayName}) });
+        if (res.ok) { usersHideEditPanel(); usersLoadUsers(); showToast('Notandi uppf\u00e6r\u00f0ur','success'); }
+        else { var d = await res.json(); showToast(d.message || 'Villa','error'); }
+      } catch(e) { showToast('Villa','error'); }
+    };
+
+    window.usersConfirmDeactivate = async function(id) {
+      var user = usersData.find(function(u){return u.id===id;});
+      if (!user) return;
+      var action = user.isActive ? 'gera \u00f3virkan' : 'virkja';
+      if (!confirm('Ertu viss um a\u00f0 \u00fe\u00fa viljir ' + action + ' ' + user.displayName + '?')) return;
+      try {
+        var res = await fetch('/api/admin/users/' + id, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({isActive:!user.isActive}) });
+        if (res.ok) { usersLoadUsers(); showToast(user.isActive ? 'Notandi ger\u00f0ur \u00f3virkur' : 'Notandi virkja\u00f0ur','success'); }
+      } catch(e) { showToast('Villa','error'); }
+    };
+
+    window.usersRunMigration = async function() {
+      try {
+        var res = await fetch('/api/admin/migrate', { method:'POST' });
+        var data = await res.json();
+        if (res.ok && data.success) { showToast('Flutningur t\u00f3kst','success'); document.getElementById('users-migration').style.display = 'none'; usersLoadUsers(); }
+        else { showToast(data.message || 'Flutningur mist\u00f3kst','error'); }
+      } catch(e) { showToast('Villa vi\u00f0 flutning','error'); }
+    };
+
+    /* ==================================================================
+       BOOKS TAB
+       ================================================================== */
+    var catalogueData = [];
+    var booksCurrentFilter = 'all';
+
+    function booksInit() { booksLoadCatalogue(); booksInitSubtabs(); }
+
+    function booksInitSubtabs() {
+      document.querySelectorAll('.books-subtab').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.books-subtab').forEach(function(b){b.classList.remove('active');});
+          btn.classList.add('active');
+          booksCurrentFilter = btn.dataset.filter;
+          booksRender();
+        });
+      });
+    }
+
+    async function booksLoadCatalogue() {
+      try {
+        var res = await fetch('/api/admin/catalogue');
+        var data = await res.json();
+        if (!res.ok) { if (res.status === 503) { document.getElementById('books-grid').innerHTML = '<div class="empty-state"><p>Gagnagrunnur ekki tilb\u00fainn</p><button class="btn btn-primary" onclick="booksRunMigration()">Keyra uppsetningu</button></div>'; return; } throw new Error(data.message); }
+        catalogueData = data.books;
+        document.getElementById('books-stat-total').textContent = data.total || 0;
+        document.getElementById('books-stat-registered').textContent = data.registered || 0;
+        document.getElementById('books-stat-unregistered').textContent = (data.total||0) - (data.registered||0);
+        booksRender();
+      } catch(e) { console.error('Load catalogue error:', e); document.getElementById('books-grid').innerHTML = '<div class="empty-state"><p>Villa vi\u00f0 a\u00f0 hla\u00f0a b\u00f3kum</p></div>'; }
+    }
+
+    function booksRender() {
+      var grid = document.getElementById('books-grid');
+      var books = catalogueData;
+      if (booksCurrentFilter === 'registered') books = books.filter(function(b){return b.registered;});
+      else if (booksCurrentFilter === 'unregistered') books = books.filter(function(b){return !b.registered;});
+      if (books.length === 0) { grid.innerHTML = '<div class="empty-state"><p>Engar b\u00e6kur fundust</p></div>'; return; }
+      grid.innerHTML = books.map(function(book) {
+        var reg = book.registration || {};
+        var isReg = book.registered;
+        return '<div class="book-card' + (isReg ? ' registered' : '') + '"><div class="book-card-header"><div><h3>' + escapeHtml(book.title) + '</h3>' + (isReg && reg.titleIs ? '<div class="subtitle">' + escapeHtml(reg.titleIs) + '</div>' : '') + '</div>' + (isReg ? '<span class="badge badge-success">Skr\u00e1\u00f0</span>' : '<span class="badge badge-muted">\u00d3skr\u00e1\u00f0</span>') + '</div>' + (book.description ? '<p class="description">' + escapeHtml(book.description.substring(0,150)) + (book.description.length>150?'...':'') + '</p>' : '') + '<div class="meta"><span>' + escapeHtml(book.slug) + '</span>' + (book.chapterCount ? '<span>' + book.chapterCount + ' kaflar</span>' : '') + '</div><div class="actions">' + (isReg ? '<a href="/library?book=' + escapeHtml(reg.slug||book.slug) + '" class="btn btn-sm btn-secondary">Sko\u00f0a</a><button class="btn btn-sm btn-secondary" onclick="booksGenerateData(\'' + escapeHtml(book.slug) + '\')" title="Endurgera">&#8635;</button>' : '<button class="btn btn-sm btn-primary" onclick="booksOpenRegisterModal(\'' + escapeHtml(book.slug) + '\',\'' + escapeHtml(book.title.replace(/'/g,"\\'")) + '\')">Skr\u00e1</button>') + (book.repoUrl ? '<a href="' + escapeHtml(book.repoUrl) + '" target="_blank" class="btn btn-sm btn-secondary">\u2197</a>' : '') + '</div></div>';
+      }).join('');
+    }
+
+    window.booksSyncCatalogue = async function() {
+      var btn = document.getElementById('books-sync-btn');
+      btn.disabled = true; btn.textContent = 'Samstillir...';
+      try {
+        var res = await fetch('/api/admin/catalogue/sync', { method:'POST' });
+        var data = await res.json();
+        if (data.success) { showToast('Samstilling loki\u00f0: ' + data.message,'success'); booksLoadCatalogue(); }
+        else { showToast('Villa: ' + (data.message||data.error),'error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+      finally { btn.disabled = false; btn.textContent = 'Samstilla'; }
+    };
+
+    window.booksOpenRegisterModal = async function(slug, title) {
+      document.getElementById('reg-catalogue-slug').value = slug;
+      document.getElementById('reg-title-en').value = title;
+      document.getElementById('reg-title-is').value = '';
+      document.getElementById('reg-slug').value = '';
+      document.getElementById('reg-fetch').checked = true;
+      try {
+        var res = await fetch('/api/admin/users');
+        var data = await res.json();
+        var sel = document.getElementById('reg-head-editor');
+        sel.innerHTML = '<option value="">Velja s\u00ed\u00f0ar...</option>';
+        if (data.users) data.users.filter(function(u){return ['admin','head-editor','editor'].indexOf(u.role)!==-1 && u.isActive;}).forEach(function(u){ var opt = document.createElement('option'); opt.value = u.id; opt.textContent = (u.displayName||u.githubUsername) + ' (' + u.role + ')'; sel.appendChild(opt); });
+      } catch(e) {}
+      document.getElementById('register-book-modal').style.display = 'flex';
+    };
+    window.booksCloseRegisterModal = function() { document.getElementById('register-book-modal').style.display = 'none'; };
+
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn = form.querySelector('button[type="submit"]');
+      var headEditorId = document.getElementById('reg-head-editor').value;
+      var data = { catalogueSlug: form.catalogueSlug.value, slug: form.slug.value, titleIs: form.titleIs.value, fetchFromOpenstax: form.fetchFromOpenstax.checked };
+      if (headEditorId) data.headEditorId = parseInt(headEditorId, 10);
+      btn.disabled = true; btn.textContent = 'Skr\u00e1ir...';
+      try {
+        var res = await fetch('/api/admin/books/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+        var result = await res.json();
+        if (result.success) { showToast('B\u00f3k skr\u00e1\u00f0!','success'); booksCloseRegisterModal(); booksLoadCatalogue(); }
+        else { showToast('Villa: ' + (result.message||result.error),'error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+      finally { btn.disabled = false; btn.textContent = 'Skr\u00e1 b\u00f3k'; }
+    });
+
+    document.getElementById('register-book-modal').addEventListener('click', function(e) { if (e.target === e.currentTarget) booksCloseRegisterModal(); });
+
+    window.booksShowAddModal = function() {
+      document.getElementById('add-book-slug').value = '';
+      document.getElementById('add-book-title').value = '';
+      document.getElementById('add-book-description').value = '';
+      document.getElementById('add-book-repo-url').value = '';
+      document.getElementById('add-book-chapter-count').value = '';
+      document.getElementById('add-book-appendices').checked = false;
+      document.getElementById('add-book-modal').style.display = 'flex';
+    };
+    window.booksCloseAddModal = function() { document.getElementById('add-book-modal').style.display = 'none'; };
+    document.getElementById('add-book-modal').addEventListener('click', function(e) { if (e.target === e.currentTarget) booksCloseAddModal(); });
+
+    document.getElementById('add-book-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn = form.querySelector('button[type="submit"]');
+      var data = { slug:form.slug.value.trim(), title:form.title.value.trim(), description:form.description.value.trim()||undefined, repoUrl:form.repoUrl.value.trim()||undefined, chapterCount:form.chapterCount.value?parseInt(form.chapterCount.value,10):undefined, hasAppendices:form.hasAppendices.checked };
+      btn.disabled = true; btn.textContent = 'B\u00e6tir vi\u00f0...';
+      try {
+        var res = await fetch('/api/admin/catalogue/add', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+        var result = await res.json();
+        if (result.success) { showToast('B\u00f3k b\u00e6tt vi\u00f0 lista','success'); booksCloseAddModal(); booksLoadCatalogue(); }
+        else { showToast('Villa: ' + (result.message||result.error),'error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+      finally { btn.disabled = false; btn.textContent = 'B\u00e6ta vi\u00f0'; }
+    });
+
+    window.booksRunMigration = async function() {
+      try {
+        var res = await fetch('/api/admin/migrate', { method:'POST' });
+        var data = await res.json();
+        if (data.success) { showToast('Uppsetning loki\u00f0!','success'); booksLoadCatalogue(); }
+        else { showToast('Villa vi\u00f0 uppsetningu','error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+    };
+
+    window.booksGenerateData = async function(slug) {
+      if (!confirm('Viltu endurgera kaflaskipan fyrir \u00feessa b\u00f3k?')) return;
+      try {
+        var res = await fetch('/api/admin/books/' + encodeURIComponent(slug) + '/generate-data?force=true', { method:'POST' });
+        var data = await res.json();
+        if (data.success) { showToast(data.skipped ? 'Kaflaskipan \u00feegar til sta\u00f0ar' : 'Kaflaskipan endurger\u00f0! Kaflar: ' + data.chapters,'success'); }
+        else { showToast('Villa: ' + (data.message||data.error),'error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+    };
+
+    /* ==================================================================
+       FEEDBACK TAB
+       ================================================================== */
+    var fbCurrentFeedback = null;
+    var fbCurrentOffset = 0;
+    var FB_LIMIT = 20;
+
+    function fbInit() {
+      fbLoadStats();
+      fbLoadFeedback();
+      document.getElementById('fb-status-filter').addEventListener('change', function() { fbCurrentOffset = 0; fbLoadFeedback(); });
+      document.getElementById('fb-type-filter').addEventListener('change', function() { fbCurrentOffset = 0; fbLoadFeedback(); });
+      document.getElementById('fb-priority-filter').addEventListener('change', function() { fbCurrentOffset = 0; fbLoadFeedback(); });
+      document.getElementById('fb-prev-btn').addEventListener('click', function() { if (fbCurrentOffset >= FB_LIMIT) { fbCurrentOffset -= FB_LIMIT; fbLoadFeedback(); } });
+      document.getElementById('fb-next-btn').addEventListener('click', function() { fbCurrentOffset += FB_LIMIT; fbLoadFeedback(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { fbCloseModal(); fbCloseResolveModal(); } });
+      document.getElementById('fb-detail-modal').addEventListener('click', function(e) { if (e.target.id === 'fb-detail-modal') fbCloseModal(); });
+      document.getElementById('fb-resolve-modal').addEventListener('click', function(e) { if (e.target.id === 'fb-resolve-modal') fbCloseResolveModal(); });
+    }
+
+    async function fbLoadStats() {
+      try {
+        var res = await fetch('/api/feedback/stats');
+        var stats = await res.json();
+        document.getElementById('fb-stat-open').textContent = stats.open || 0;
+        document.getElementById('fb-stat-progress').textContent = stats.inProgress || 0;
+        document.getElementById('fb-stat-resolved').textContent = (stats.byStatus && stats.byStatus.resolved) || 0;
+        document.getElementById('fb-stat-total').textContent = stats.total || 0;
+      } catch(e) {}
+    }
+
+    async function fbLoadFeedback() {
+      var listEl = document.getElementById('fb-list');
+      var status = document.getElementById('fb-status-filter').value;
+      var type = document.getElementById('fb-type-filter').value;
+      var priority = document.getElementById('fb-priority-filter').value;
+      listEl.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">Hle\u00f0ur...</div>';
+      try {
+        var params = new URLSearchParams();
+        if (status) params.append('status', status);
+        if (type) params.append('type', type);
+        if (priority) params.append('priority', priority);
+        params.append('limit', FB_LIMIT);
+        params.append('offset', fbCurrentOffset);
+        var res = await fetch('/api/feedback?' + params.toString());
+        var data = await res.json();
+        if (data.items.length === 0) { listEl.innerHTML = '<div class="empty-state"><p>Engin endurgj\u00f6f fannst</p></div>'; document.getElementById('fb-pagination').style.display = 'none'; return; }
+        listEl.innerHTML = '<div style="overflow-x:auto"><table class="fb-table"><thead><tr><th>#</th><th>Tegund</th><th>Skilabo\u00f0</th><th>Sta\u00f0a</th><th>Forgangur</th><th>Dags</th><th></th></tr></thead><tbody>' +
+          data.items.map(function(f) {
+            var date = new Date(f.createdAt).toLocaleDateString('is-IS');
+            return '<tr class="' + (f.priority==='critical'||f.priority==='high' ? 'high-priority' : '') + '"><td>' + f.id + '</td><td><span class="badge badge-type">' + f.typeLabel + '</span></td><td style="max-width:250px">' + escapeHtml(f.message.substring(0,60)) + (f.message.length>60?'...':'') + '</td><td><span class="badge badge-' + fbGetStatusClass(f.status) + '">' + f.statusLabel + '</span></td><td><span class="badge badge-' + fbGetPriorityClass(f.priority) + '">' + f.priorityLabel + '</span></td><td>' + date + '</td><td><button class="btn btn-sm btn-secondary" onclick="fbOpenFeedback(' + f.id + ')">Sko\u00f0a</button></td></tr>';
+          }).join('') + '</tbody></table></div>';
+        var pag = document.getElementById('fb-pagination');
+        pag.style.display = 'flex';
+        document.getElementById('fb-prev-btn').disabled = fbCurrentOffset === 0;
+        document.getElementById('fb-next-btn').disabled = fbCurrentOffset + data.items.length >= data.total;
+        document.getElementById('fb-page-info').textContent = (fbCurrentOffset+1) + '-' + (fbCurrentOffset+data.items.length) + ' af ' + data.total;
+      } catch(e) { listEl.innerHTML = '<div class="empty-state"><p>Villa: ' + e.message + '</p></div>'; }
+    }
+
+    function fbGetStatusClass(s) { return {open:'open',in_progress:'progress',resolved:'success',wont_fix:'muted'}[s]||'muted'; }
+    function fbGetPriorityClass(p) { return {critical:'critical',high:'high',normal:'normal',low:'low'}[p]||'normal'; }
+
+    window.fbOpenFeedback = async function(id) {
+      try {
+        var res = await fetch('/api/feedback/' + id);
+        var fb = await res.json();
+        fbCurrentFeedback = fb;
+        document.getElementById('fb-modal-id').textContent = fb.id;
+        document.getElementById('fb-detail-type').textContent = fb.typeLabel;
+        document.getElementById('fb-detail-type').className = 'badge badge-type';
+        document.getElementById('fb-detail-status').value = fb.status;
+        document.getElementById('fb-detail-priority').value = fb.priority;
+        var loc = [fb.book,fb.chapter,fb.section].filter(Boolean).join(' / ');
+        document.getElementById('fb-detail-location').textContent = loc || '(Ekki tilgreint)';
+        document.getElementById('fb-detail-created').textContent = new Date(fb.createdAt).toLocaleString('is-IS');
+        if (fb.userName || fb.userEmail) {
+          document.getElementById('fb-detail-contact-row').style.display = 'flex';
+          var contact = fb.userName || '';
+          if (fb.userEmail) contact += (contact?' - ':'') + fb.userEmail;
+          document.getElementById('fb-detail-contact').textContent = contact;
+        } else { document.getElementById('fb-detail-contact-row').style.display = 'none'; }
+        document.getElementById('fb-detail-message').textContent = fb.message;
+        var rl = document.getElementById('fb-responses-list');
+        if (fb.responses && fb.responses.length > 0) {
+          rl.innerHTML = fb.responses.map(function(r) {
+            var d = new Date(r.createdAt).toLocaleString('is-IS');
+            return '<div class="response' + (r.isInternal?' internal':'') + '"><div class="response-header"><strong>' + escapeHtml(r.responderName) + '</strong>' + (r.isInternal?' <span class="badge badge-muted">Innanh\u00fass</span>':'') + '<span class="response-date">' + d + '</span></div><p>' + escapeHtml(r.message) + '</p></div>';
+          }).join('');
+        } else { rl.innerHTML = '<p style="color:var(--text-muted)">Engin sv\u00f6r enn\u00fe\u00e1</p>'; }
+        if (fb.status === 'resolved' && fb.resolutionNotes) {
+          document.getElementById('fb-resolution-section').style.display = 'block';
+          document.getElementById('fb-resolution-notes').textContent = fb.resolutionNotes;
+          document.getElementById('fb-resolved-by').textContent = fb.resolvedByName || '-';
+          document.getElementById('fb-resolved-at').textContent = fb.resolvedAt ? new Date(fb.resolvedAt).toLocaleString('is-IS') : '';
+        } else { document.getElementById('fb-resolution-section').style.display = 'none'; }
+        document.getElementById('fb-resolve-btn').style.display = fb.status !== 'resolved' ? 'inline-flex' : 'none';
+        document.getElementById('fb-response-input').value = '';
+        document.getElementById('fb-response-internal').checked = false;
+        document.getElementById('fb-detail-status').onchange = function() { fbUpdateStatus(); };
+        document.getElementById('fb-detail-priority').onchange = function() { fbUpdatePriority(); };
+        document.getElementById('fb-detail-modal').style.display = 'flex';
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+    };
+
+    window.fbCloseModal = function() { document.getElementById('fb-detail-modal').style.display = 'none'; fbCurrentFeedback = null; };
+
+    async function fbUpdateStatus() {
+      if (!fbCurrentFeedback) return;
+      try { await fetch('/api/feedback/' + fbCurrentFeedback.id + '/status', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({status:document.getElementById('fb-detail-status').value}) }); fbLoadStats(); fbLoadFeedback(); } catch(e) {}
+    }
+    async function fbUpdatePriority() {
+      if (!fbCurrentFeedback) return;
+      try { await fetch('/api/feedback/' + fbCurrentFeedback.id + '/priority', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({priority:document.getElementById('fb-detail-priority').value}) }); fbLoadFeedback(); } catch(e) {}
+    }
+
+    window.fbAddResponse = async function() {
+      if (!fbCurrentFeedback) return;
+      var msg = document.getElementById('fb-response-input').value.trim();
+      var isInternal = document.getElementById('fb-response-internal').checked;
+      if (!msg) { showToast('Vinsamlegast skrifa\u00f0u svar','error'); return; }
+      try {
+        var res = await fetch('/api/feedback/' + fbCurrentFeedback.id + '/respond', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:msg,isInternal:isInternal}) });
+        var data = await res.json();
+        if (data.success) { fbOpenFeedback(fbCurrentFeedback.id); } else { showToast('Villa: ' + data.message,'error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+    };
+
+    window.fbResolveFeedback = function() { document.getElementById('fb-resolve-modal').style.display = 'flex'; };
+    window.fbCloseResolveModal = function() { document.getElementById('fb-resolve-modal').style.display = 'none'; document.getElementById('fb-resolution-input').value = ''; };
+
+    window.fbConfirmResolve = async function() {
+      if (!fbCurrentFeedback) return;
+      var notes = document.getElementById('fb-resolution-input').value.trim();
+      try {
+        var res = await fetch('/api/feedback/' + fbCurrentFeedback.id + '/resolve', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:notes}) });
+        var data = await res.json();
+        if (data.success) { fbCloseResolveModal(); fbCloseModal(); fbLoadStats(); fbLoadFeedback(); }
+        else { showToast('Villa: ' + data.message,'error'); }
+      } catch(e) { showToast('Villa: ' + e.message,'error'); }
+    };
+
+    /* ==================================================================
+       ANALYTICS TAB
+       ================================================================== */
+    var anCurrentPeriod = '-7 days';
+
+    function anInit() {
+      document.querySelectorAll('.period-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.period-btn').forEach(function(b){b.classList.remove('active');});
+          btn.classList.add('active');
+          anCurrentPeriod = btn.dataset.period;
+          anLoadData();
+        });
+      });
+      anLoadData();
+    }
+
+    async function anLoadData() {
+      try {
+        var [statsRes, recentRes] = await Promise.all([
+          fetch('/api/analytics/stats?period=' + encodeURIComponent(anCurrentPeriod)),
+          fetch('/api/analytics/recent?limit=20')
+        ]);
+        var stats = await statsRes.json();
+        var recent = await recentRes.json();
+        anUpdateStats(stats);
+        anUpdatePopular(stats);
+        anUpdateActivity(recent.events);
+      } catch(e) { console.error('Analytics error:', e); }
+    }
+
+    function anUpdateStats(stats) {
+      document.getElementById('an-stat-pageviews').textContent = anFormatNumber(stats.totalPageViews||0);
+      document.getElementById('an-stat-sessions').textContent = anFormatNumber(stats.uniqueSessions||0);
+      document.getElementById('an-stat-chapters').textContent = anFormatNumber(stats.chaptersViewed||0);
+      document.getElementById('an-stat-downloads').textContent = anFormatNumber(stats.downloads||0);
+    }
+
+    function anUpdatePopular(stats) {
+      var tbody = document.getElementById('an-popular-body');
+      if (!stats.topContent || stats.topContent.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--text-muted)">Engin g\u00f6gn</td></tr>'; return; }
+      var maxViews = Math.max.apply(null, stats.topContent.map(function(c){return c.views;}));
+      tbody.innerHTML = stats.topContent.slice(0,10).map(function(item) {
+        var pct = Math.round((item.views/maxViews)*100);
+        return '<tr><td><strong>' + escapeHtml(item.book||'Efnafr\u00e6\u00f0i') + '</strong>' + (item.chapter ? ' / K' + item.chapter : '') + (item.section ? ' / ' + item.section : '') + '</td><td class="views-col">' + anFormatNumber(item.views) + '</td><td class="progress-col"><div class="mini-progress"><div class="mini-progress-bar" style="width:' + pct + '%"></div></div></td></tr>';
+      }).join('');
+    }
+
+    function anUpdateActivity(events) {
+      var list = document.getElementById('an-activity-list');
+      if (!events || events.length === 0) { list.innerHTML = '<p style="text-align:center;color:var(--text-muted)">Engin n\u00fdleg virkni</p>'; return; }
+      list.innerHTML = events.slice(0,20).map(function(ev) {
+        var time = new Date(ev.timestamp).toLocaleString('is-IS',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+        return '<div class="activity-item"><span class="activity-icon">\u25cf</span><span class="activity-text">' + anGetEventDesc(ev) + '</span><span class="activity-time">' + time + '</span></div>';
+      }).join('');
+    }
+
+    function anGetEventDesc(ev) {
+      var parts = [];
+      if (ev.book) parts.push(ev.book);
+      if (ev.chapter) parts.push('K' + ev.chapter);
+      if (ev.section) parts.push(ev.section);
+      var loc = parts.join(' / ');
+      switch(ev.eventType) {
+        case 'page_view': return 'S\u00ed\u00f0a sko\u00f0u\u00f0 ' + loc;
+        case 'chapter_view': return 'Kafli sko\u00f0a\u00f0ur: ' + loc;
+        case 'section_view': return 'Hluti sko\u00f0a\u00f0ur: ' + loc;
+        case 'download': return 'Hla\u00f0i\u00f0 ni\u00f0ur: ' + loc;
+        case 'search': return 'Leita\u00f0: ' + ((ev.metadata && ev.metadata.query) || '');
+        default: return ev.eventType;
       }
     }
 
-    // Check access on page load
-    checkAccess();
+    function anFormatNumber(n) {
+      if (n >= 1000000) return (n/1000000).toFixed(1) + 'm';
+      if (n >= 1000) return (n/1000).toFixed(1) + 'k';
+      return n.toLocaleString('is-IS');
+    }
+
+    /* ---- Bootstrap ---- */
+    checkAdminAccess();
+  })();
   </script>
 </body>
 </html>
