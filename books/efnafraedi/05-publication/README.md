@@ -36,8 +36,7 @@ Faithful HTML appears **per module** as reviews complete:
 │   │       ├── {NN}-answer-key.html           # Exercise solutions
 │   │       └── images/                        # Chapter images
 │   ├── glossary.json
-│   ├── index.json
-│   └── toc.json
+│   └── index.json
 ├── faithful/                                  # Same structure as mt-preview
 │   └── chapters/{NN}/                         # Grows as modules are reviewed
 ├── localized/                                 # Same structure (future)

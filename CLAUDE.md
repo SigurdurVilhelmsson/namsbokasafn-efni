@@ -182,6 +182,8 @@ All AI suggestions require human approval before:
 | Content issues | **HERE** (namsbokasafn-efni) |
 | Rendering bugs | namsbokasafn-vefur |
 
+**Cross-repo CSS contract:** Rendered HTML from `cnxml-render.js` produces semantic HTML that relies on `/styles/content.css` served by namsbokasafn-vefur (located at `static/styles/content.css`). Changes to CNXML class names or structure must be coordinated with that stylesheet.
+
 **Sync command** (run in namsbokasafn-vefur):
 ```bash
 node scripts/sync-content.js --source ../namsbokasafn-efni

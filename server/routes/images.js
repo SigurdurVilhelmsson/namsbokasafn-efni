@@ -28,8 +28,13 @@ const storage = multer.diskStorage({
     const { book, chapter } = req.params;
     const chapterStr = String(chapter).padStart(2, '0');
     const uploadDir = path.join(
-      __dirname, '..', '..',
-      'pipeline-output', 'images', book, `ch${chapterStr}`
+      __dirname,
+      '..',
+      '..',
+      'pipeline-output',
+      'images',
+      book,
+      `ch${chapterStr}`
     );
 
     if (!fs.existsSync(uploadDir)) {
@@ -41,7 +46,7 @@ const storage = multer.diskStorage({
     const { id } = req.params;
     const ext = path.extname(file.originalname);
     cb(null, `${id}${ext}`);
-  }
+  },
 });
 
 const upload = multer({
@@ -54,7 +59,7 @@ const upload = multer({
     } else {
       cb(new Error('Only PNG, JPEG, and SVG images are allowed'));
     }
-  }
+  },
 });
 
 /**
@@ -69,12 +74,12 @@ router.get('/:book', requireAuth, (req, res) => {
 
     res.json({
       book,
-      ...stats
+      ...stats,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get book images',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -93,14 +98,14 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
 
     // Filter by status if provided
     if (status) {
-      images = images.filter(i => i.status === status);
+      images = images.filter((i) => i.status === status);
     }
 
     // Add links
-    images = images.map(img => ({
+    images = images.map((img) => ({
       ...img,
       editLink: img.source?.sharepoint || img.source?.onedrive,
-      downloadLink: `/api/images/${book}/${chapter}/${img.id}/download`
+      downloadLink: `/api/images/${book}/${chapter}/${img.id}/download`,
     }));
 
     const stats = imageTracker.getChapterImageStats(book, parseInt(chapter));
@@ -110,12 +115,12 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
       chapter: parseInt(chapter),
       stats,
       images,
-      lastUpdated: data.lastUpdated
+      lastUpdated: data.lastUpdated,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get chapter images',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -133,7 +138,7 @@ router.get('/:book/:chapter/:id', requireAuth, (req, res) => {
 
     if (!image) {
       return res.status(404).json({
-        error: 'Image not found'
+        error: 'Image not found',
       });
     }
 
@@ -143,13 +148,13 @@ router.get('/:book/:chapter/:id', requireAuth, (req, res) => {
       image: {
         ...image,
         editLink: image.source?.sharepoint || image.source?.onedrive,
-        downloadLink: `/api/images/${book}/${chapter}/${id}/download`
-      }
+        downloadLink: `/api/images/${book}/${chapter}/${id}/download`,
+      },
     });
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get image',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -170,24 +175,24 @@ router.post('/:book/:chapter/:id/status', requireAuth, requireContributor(), (re
   if (!validStatuses.includes(status)) {
     return res.status(400).json({
       error: 'Invalid status',
-      validStatuses
+      validStatuses,
     });
   }
 
   try {
     const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, status, {
       notes,
-      updatedBy: req.user.username
+      updatedBy: req.user.username,
     });
 
     res.json({
       success: true,
-      image: updated
+      image: updated,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Failed to update status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -196,44 +201,56 @@ router.post('/:book/:chapter/:id/status', requireAuth, requireContributor(), (re
  * POST /api/images/:book/:chapter/:id/upload
  * Upload translated image
  */
-router.post('/:book/:chapter/:id/upload', requireAuth, requireContributor(), upload.single('image'), async (req, res) => {
-  const { book, chapter, id } = req.params;
-
-  if (!req.file) {
-    return res.status(400).json({
-      error: 'No image uploaded'
-    });
-  }
-
-  try {
-    // Update tracking status
-    const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, 'translated', {
-      translatedPath: req.file.path,
-      translatedBy: req.user.username,
-      translatedAt: new Date().toISOString(),
-      fileSize: req.file.size
-    });
-
-    res.json({
-      success: true,
-      image: updated,
-      file: {
-        path: req.file.path,
-        size: req.file.size,
-        mimetype: req.file.mimetype
-      }
-    });
-  } catch (err) {
-    // Clean up uploaded file on error
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
+router.post(
+  '/:book/:chapter/:id/upload',
+  requireAuth,
+  requireContributor(),
+  (req, res, next) => {
+    if (!/^[a-zA-Z0-9_-]+$/.test(req.params.id)) {
+      return res.status(400).json({ error: 'Invalid image ID' });
     }
-    res.status(500).json({
-      error: 'Failed to upload image',
-      message: err.message
-    });
+    next();
+  },
+  upload.single('image'),
+  async (req, res) => {
+    const { book, chapter, id } = req.params;
+
+    if (!req.file) {
+      return res.status(400).json({
+        error: 'No image uploaded',
+      });
+    }
+
+    try {
+      // Update tracking status
+      const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, 'translated', {
+        translatedPath: req.file.path,
+        translatedBy: req.user.username,
+        translatedAt: new Date().toISOString(),
+        fileSize: req.file.size,
+      });
+
+      res.json({
+        success: true,
+        image: updated,
+        file: {
+          path: req.file.path,
+          size: req.file.size,
+          mimetype: req.file.mimetype,
+        },
+      });
+    } catch (err) {
+      // Clean up uploaded file on error
+      if (req.file && fs.existsSync(req.file.path)) {
+        fs.unlinkSync(req.file.path);
+      }
+      res.status(500).json({
+        error: 'Failed to upload image',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 /**
  * GET /api/images/:book/:chapter/:id/download
@@ -248,13 +265,13 @@ router.get('/:book/:chapter/:id/download', requireAuth, (req, res) => {
 
     if (!image || !image.translatedPath) {
       return res.status(404).json({
-        error: 'Translated image not found'
+        error: 'Translated image not found',
       });
     }
 
     if (!fs.existsSync(image.translatedPath)) {
       return res.status(404).json({
-        error: 'Image file not found'
+        error: 'Image file not found',
       });
     }
 
@@ -262,7 +279,7 @@ router.get('/:book/:chapter/:id/download', requireAuth, (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: 'Failed to download image',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -282,7 +299,7 @@ router.post('/:book/:chapter/init', requireAuth, requireEditor(), async (req, re
 
   if (!cnxmlContent && !moduleId) {
     return res.status(400).json({
-      error: 'Provide either cnxmlContent or moduleId'
+      error: 'Provide either cnxmlContent or moduleId',
     });
   }
 
@@ -300,12 +317,12 @@ router.post('/:book/:chapter/init', requireAuth, requireEditor(), async (req, re
     res.json({
       success: true,
       ...result,
-      stats: imageTracker.getChapterImageStats(book, parseInt(chapter))
+      stats: imageTracker.getChapterImageStats(book, parseInt(chapter)),
     });
   } catch (err) {
     res.status(500).json({
       error: 'Failed to initialize image tracking',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -329,24 +346,24 @@ router.post('/:book/:chapter/:id/approve', requireAuth, requireEditor(), (req, r
     if (image.status !== 'translated') {
       return res.status(400).json({
         error: 'Image must be translated before approval',
-        currentStatus: image.status
+        currentStatus: image.status,
       });
     }
 
     const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, 'approved', {
       approvedBy: req.user.username,
       approvedAt: new Date().toISOString(),
-      approvalNotes: notes
+      approvalNotes: notes,
     });
 
     res.json({
       success: true,
-      image: updated
+      image: updated,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Failed to approve image',
-      message: err.message
+      message: err.message,
     });
   }
 });

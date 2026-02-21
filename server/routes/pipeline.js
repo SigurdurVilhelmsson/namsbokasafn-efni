@@ -135,6 +135,7 @@ router.post('/run', (req, res) => {
   }
 
   const { jobId } = pipeline.runPipeline({
+    book: params.book,
     chapter: params.chapter,
     moduleId: params.moduleId,
     track: params.track,

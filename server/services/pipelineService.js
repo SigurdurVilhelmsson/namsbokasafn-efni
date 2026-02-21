@@ -42,11 +42,13 @@ const TRACK_SOURCE_DIR = {
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runInject({ chapter, moduleId, track = 'faithful', userId }) {
+function runInject({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
   const sourceDir = TRACK_SOURCE_DIR[track] || '03-faithful-translation';
 
   const args = [
     path.join(TOOLS_DIR, 'cnxml-inject.js'),
+    '--book',
+    book,
     '--chapter',
     String(chapter),
     '--source-dir',
@@ -79,9 +81,11 @@ function runInject({ chapter, moduleId, track = 'faithful', userId }) {
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runRender({ chapter, moduleId, track = 'faithful', userId }) {
+function runRender({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
   const args = [
     path.join(TOOLS_DIR, 'cnxml-render.js'),
+    '--book',
+    book,
     '--chapter',
     String(chapter),
     '--track',
@@ -114,7 +118,7 @@ function runRender({ chapter, moduleId, track = 'faithful', userId }) {
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runPipeline({ chapter, moduleId, track = 'faithful', userId }) {
+function runPipeline({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
   const jobId = generateJobId();
 
   const job = {
@@ -134,14 +138,11 @@ function runPipeline({ chapter, moduleId, track = 'faithful', userId }) {
 
   jobs.set(jobId, job);
 
-  // Default book for status updates (single-book project for now)
-  const book = 'efnafraedi';
-
   const promise = (async () => {
     try {
       // Phase 1: Inject
       job.output.push('=== Phase 1: Inject ===');
-      const injectResult = await runInject({ chapter, moduleId, track, userId });
+      const injectResult = await runInject({ book, chapter, moduleId, track, userId });
       await injectResult.promise;
 
       const injectJob = jobs.get(injectResult.jobId);
@@ -156,7 +157,7 @@ function runPipeline({ chapter, moduleId, track = 'faithful', userId }) {
       // Phase 2: Render
       job.phase = 'render';
       job.output.push('', '=== Phase 2: Render ===');
-      const renderResult = await runRender({ chapter, moduleId, track, userId });
+      const renderResult = await runRender({ book, chapter, moduleId, track, userId });
       await renderResult.promise;
 
       const renderJob = jobs.get(renderResult.jobId);

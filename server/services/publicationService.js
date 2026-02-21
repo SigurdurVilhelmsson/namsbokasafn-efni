@@ -223,6 +223,7 @@ async function publishChapter(bookSlug, chapterNum, track, userId) {
 
   // Launch inject → render pipeline
   const { jobId, promise } = pipelineService.runPipeline({
+    book: bookSlug,
     chapter: chapterNum,
     track,
     userId,

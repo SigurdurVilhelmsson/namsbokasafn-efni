@@ -42,8 +42,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PROJECT_ROOT = path.join(__dirname, '..');
-const BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi');
-const ERRATA_DIR = path.join(BOOKS_DIR, 'errata');
+let BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi');
+let ERRATA_DIR = path.join(BOOKS_DIR, 'errata');
 const LOG_PATH = path.join(ERRATA_DIR, 'errata-log.json');
 
 // OpenStax API endpoint (may return 403 from non-browser environments)
@@ -441,6 +441,7 @@ function parseArgs(args) {
     notes: null,
     applied: false,
     chapter: null,
+    book: 'efnafraedi',
     verbose: false,
     help: false,
   };
@@ -449,6 +450,7 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose' || arg === '-v') result.verbose = true;
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--applied') result.applied = true;
     else if (arg === '--decision' && args[i + 1]) result.decision = args[++i];
     else if (arg === '--notes' && args[i + 1]) result.notes = args[++i];
@@ -506,6 +508,8 @@ Examples:
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = path.join(PROJECT_ROOT, 'books', args.book);
+  ERRATA_DIR = path.join(BOOKS_DIR, 'errata');
 
   if (args.help || !args.command) {
     printHelp();

@@ -19,6 +19,7 @@
  *   --input <file>     Input CNXML file path
  *   --chapter <num>    Process chapter number (finds files in 01-source/chNN/)
  *   --module <id>      Specific module ID to process (default: all in chapter)
+ *   --book <slug>      Book slug (default: efnafraedi)
  *   --output-dir <dir> Output directory (default: auto-determined)
  *   --verbose          Show detailed progress
  *   -h, --help         Show this help
@@ -42,7 +43,7 @@ import { getChapterModules } from './lib/chapter-modules.js';
 // CONFIGURATION
 // =====================================================================
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
 
 // =====================================================================
 // ARGUMENT PARSING
@@ -53,6 +54,7 @@ function parseArgs(args) {
     input: null,
     chapter: null,
     module: null,
+    book: 'efnafraedi',
     outputDir: null,
     verbose: false,
     help: false,
@@ -63,6 +65,7 @@ function parseArgs(args) {
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
     else if (arg === '--input' && args[i + 1]) result.input = args[++i];
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--chapter' && args[i + 1]) {
       const chapterArg = args[++i];
       result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
@@ -1446,6 +1449,7 @@ function writeOutput(result, chapter, moduleId, sourceContent) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = `books/${args.book}`;
 
   if (args.help) {
     printHelp();

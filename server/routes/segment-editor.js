@@ -637,6 +637,7 @@ router.post(
       }
 
       const { jobId } = pipelineService.runPipeline({
+        book: req.params.book,
         chapter: req.chapterNum,
         moduleId: req.params.moduleId,
         track: 'faithful',
@@ -705,6 +706,7 @@ router.post(
         const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
         if (!existing) {
           const job = pipelineService.runPipeline({
+            book: req.params.book,
             chapter: req.chapterNum,
             track: 'faithful',
             userId: req.user.id,

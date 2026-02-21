@@ -29,7 +29,7 @@ All content is released under CC BY 4.0. The tooling is MIT-licensed. If you're 
 
 ## Tech Stack
 
-- **Runtime:** Node.js >= 18 (`.nvmrc` specifies 20)
+- **Runtime:** Node.js >= 20 (`.nvmrc` specifies 20)
 - **Pipeline tools:** Custom CLI scripts in `tools/` (ES modules)
 - **Server:** Express 4 (CommonJS), better-sqlite3, GitHub OAuth (JWT), Helmet, rate limiting
 - **Content format:** CNXML (OpenStax source) → extracted segments → translated → injected → rendered to HTML
@@ -39,7 +39,7 @@ All content is released under CC BY 4.0. The tooling is MIT-licensed. If you're 
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 18.0.0 (20 recommended, see `.nvmrc`)
+- [Node.js](https://nodejs.org/) >= 20.0.0 (see `.nvmrc`)
 - npm
 
 For the workflow server in production:

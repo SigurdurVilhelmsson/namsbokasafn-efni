@@ -13,11 +13,12 @@
 import fs from 'fs';
 import path from 'path';
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
 
 function parseArgs(args) {
   const result = {
     chapter: null,
+    book: 'efnafraedi',
     dryRun: false,
     help: false,
   };
@@ -26,6 +27,7 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--dry-run') result.dryRun = true;
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
   }
 
@@ -320,6 +322,7 @@ function processChapter(chapter, dryRun) {
 
 // Main
 const args = parseArgs(process.argv.slice(2));
+BOOKS_DIR = `books/${args.book}`;
 
 if (args.help || !args.chapter) {
   printHelp();

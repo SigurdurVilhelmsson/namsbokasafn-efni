@@ -17,12 +17,13 @@
 import fs from 'fs';
 import path from 'path';
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
 
 function parseArgs(args) {
-  const result = { chapter: null, verbose: false };
+  const result = { chapter: null, book: 'efnafraedi', verbose: false };
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i]);
+    else if (args[i] === '--book' && args[i + 1]) result.book = args[++i];
     else if (args[i] === '--verbose') result.verbose = true;
   }
   return result;
@@ -83,6 +84,7 @@ function findEquationFiles(chapter) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = `books/${args.book}`;
   const dictionary = loadDictionary();
   const dictEntries = Object.keys(dictionary).length;
 

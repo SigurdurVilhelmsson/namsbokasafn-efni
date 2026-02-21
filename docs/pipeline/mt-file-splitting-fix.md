@@ -124,7 +124,7 @@ Users can override the default with `--char-limit N`, but lowering it below 10,0
 
 ## Files Changed
 
-- `/home/siggi/dev/repos/namsbokasafn-efni/tools/protect-segments-for-mt.js`
+- `tools/protect-segments-for-mt.js`
   - Lines 37-39: Reduced DEFAULT_CHAR_LIMIT to 12000, enabled HARD_LIMIT
   - Lines 171-237: Added single-paragraph check and post-split validation
   - Lines 313-326: Enhanced verbose output with overhead analysis

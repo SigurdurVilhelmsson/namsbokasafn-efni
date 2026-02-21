@@ -236,7 +236,7 @@ git commit -m "feat(content): extract ch01 resources (glossary, exercises, summa
 ### Task 8: Sync to vefur and verify in browser
 
 ```bash
-node /home/siggi/dev/repos/namsbokasafn-vefur/scripts/sync-content.js --source /home/siggi/dev/repos/namsbokasafn-efni
+node ../namsbokasafn-vefur/scripts/sync-content.js --source ../namsbokasafn-efni
 ```
 
 **Verify in browser:**

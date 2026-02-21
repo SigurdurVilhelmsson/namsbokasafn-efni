@@ -30,12 +30,13 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
 
 function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
+    book: 'efnafraedi',
     track: 'mt-preview',
     verbose: false,
     json: false,
@@ -47,6 +48,7 @@ function parseArgs(args) {
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
     else if (arg === '--json') result.json = true;
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
     else if (arg === '--module' && args[i + 1]) result.module = args[++i];
     else if (arg === '--track' && args[i + 1]) result.track = args[++i];
@@ -455,6 +457,7 @@ function findModules(chapter, moduleId) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = `books/${args.book}`;
 
   if (args.help) {
     printHelp();

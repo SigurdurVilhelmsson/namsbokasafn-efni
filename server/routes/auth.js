@@ -63,7 +63,12 @@ router.get('/login', (req, res) => {
   const state = uuidv4();
   stateTokens.set(state, {
     created: Date.now(),
-    redirect: req.query.redirect || '/',
+    redirect:
+      typeof req.query.redirect === 'string' &&
+      req.query.redirect.startsWith('/') &&
+      !req.query.redirect.startsWith('//')
+        ? req.query.redirect
+        : '/',
   });
 
   // Redirect to GitHub

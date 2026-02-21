@@ -42,7 +42,7 @@ import path from 'path';
 // CONFIGURATION
 // =====================================================================
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
 
 // =====================================================================
 // HELPER FUNCTIONS
@@ -79,6 +79,7 @@ function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
+    book: 'efnafraedi',
     lang: 'is',
     sourceDir: null,
     track: null,
@@ -99,6 +100,7 @@ function parseArgs(args) {
       // Accept either numeric chapter or "appendices"
       result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
     } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
     else if (arg === '--source-dir' && args[i + 1]) result.sourceDir = args[++i];
     else if (arg === '--track' && args[i + 1]) result.track = args[++i];
@@ -1565,6 +1567,7 @@ function writeOutput(chapter, moduleId, cnxml, track) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = `books/${args.book}`;
 
   if (args.help) {
     printHelp();

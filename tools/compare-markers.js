@@ -10,9 +10,11 @@
  */
 
 import { readFileSync, readdirSync, existsSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const BOOK_DIR = '/home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const BOOK_DIR = join(__dirname, '..', 'books', 'efnafraedi');
 const EN_DIR = join(BOOK_DIR, '02-for-mt');
 const IS_DIR = join(BOOK_DIR, '02-machine-translated');
 const CNXML_DIR = join(BOOK_DIR, '03-translated', 'mt-preview');

@@ -17,40 +17,31 @@ const DEPRECATED_TOOLS = new Set([
   'create-bilingual-xliff',
   'md-to-xliff',
   'xliff-to-md',
-  'xliff-to-tmx'
+  'xliff-to-tmx',
 ]);
 
-// Core tools for simplified workflow
+// Core tools for extract-inject-render pipeline
 const CORE_TOOLS = new Set([
-  'pipeline-runner',
-  'cnxml-to-md',
-  'split-for-erlendur',
+  'cnxml-extract',
+  'protect-segments-for-mt',
+  'cnxml-inject',
+  'cnxml-render',
   'prepare-for-align',
-  'add-frontmatter'
 ]);
 
 // Manual descriptions for tools without proper JSDoc
 const MANUAL_DESCRIPTIONS = {
-  'apply-equations': 'Restore LaTeX equations from JSON mapping file',
-  'clean-markdown': 'Fix Pandoc artifacts (mspace, orphan directives, escaped tildes)',
-  'cnxml-math-extract': 'Extract MathML equations from CNXML and convert to LaTeX',
-  'cnxml-to-md': 'Convert CNXML to Markdown with equation placeholders',
+  'cnxml-extract': 'Extract EN segments and structure from CNXML source',
+  'cnxml-inject': 'Inject translated segments back into CNXML',
+  'cnxml-render': 'Render translated CNXML to semantic HTML',
+  'prepare-for-align': 'Prepare markdown files for Matecat Align',
+  'protect-segments-for-mt': 'Protect segments for machine translation',
+  'validate-chapter': 'Validate chapter structure and status',
   'cnxml-to-xliff': 'Convert CNXML to XLIFF format (DEPRECATED)',
   'create-bilingual-xliff': 'Create bilingual XLIFF from EN/IS pairs (DEPRECATED)',
-  'docx-to-md': 'Convert DOCX files to Markdown format',
-  'export-parallel-corpus': 'Export Translation Memory to parallel text files',
-  'fix-figure-captions': 'Fix figure caption formatting issues',
   'md-to-xliff': 'Convert Markdown to XLIFF format (DEPRECATED)',
-  'pipeline-runner': 'Full CNXML → Markdown pipeline with equation extraction',
-  'prepare-for-align': 'Prepare markdown files for Matecat Align',
-  'process-chapter': 'Full chapter processing pipeline',
-  'repair-directives': 'Fix directive syntax issues in markdown',
-  'replace-math-images': 'Replace equation images with LaTeX code',
-  'split-for-erlendur': 'Split files at 18k characters for Erlendur MT',
-  'strip-docx-to-txt': 'Extract plain text from DOCX files',
-  'validate-chapter': 'Validate chapter structure and status',
   'xliff-to-md': 'Convert XLIFF back to Markdown (DEPRECATED)',
-  'xliff-to-tmx': 'Convert XLIFF to TMX format (DEPRECATED)'
+  'xliff-to-tmx': 'Convert XLIFF to TMX format (DEPRECATED)',
 };
 
 /**
@@ -72,18 +63,20 @@ function extractDescription(content, toolName) {
     // Skip the opening /**, the tool name line, and find first real description
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i]
-        .replace(/^\s*\*\s?/, '')  // Remove leading *
+        .replace(/^\s*\*\s?/, '') // Remove leading *
         .trim();
 
       // Skip empty lines, the tool name, and common headers
-      if (!line ||
-          line === '*/' ||
-          line.toLowerCase().includes('.js') ||
-          line.startsWith('@') ||
-          line.startsWith('Usage:') ||
-          line.startsWith('Options:') ||
-          line.startsWith('Output:') ||
-          line.startsWith('Features:')) {
+      if (
+        !line ||
+        line === '*/' ||
+        line.toLowerCase().includes('.js') ||
+        line.startsWith('@') ||
+        line.startsWith('Usage:') ||
+        line.startsWith('Options:') ||
+        line.startsWith('Output:') ||
+        line.startsWith('Features:')
+      ) {
         continue;
       }
 
@@ -105,15 +98,16 @@ function extractDescription(content, toolName) {
 fs.mkdirSync(path.dirname(outputFile), { recursive: true });
 
 // Get all .js files in tools/
-const tools = fs.readdirSync(toolsDir)
-  .filter(f => f.endsWith('.js'))
-  .map(f => f.replace('.js', ''))
+const tools = fs
+  .readdirSync(toolsDir)
+  .filter((f) => f.endsWith('.js'))
+  .map((f) => f.replace('.js', ''))
   .sort();
 
 // Categorize tools
-const coreTools = tools.filter(t => CORE_TOOLS.has(t));
-const deprecatedTools = tools.filter(t => DEPRECATED_TOOLS.has(t));
-const utilityTools = tools.filter(t => !CORE_TOOLS.has(t) && !DEPRECATED_TOOLS.has(t));
+const coreTools = tools.filter((t) => CORE_TOOLS.has(t));
+const deprecatedTools = tools.filter((t) => DEPRECATED_TOOLS.has(t));
+const utilityTools = tools.filter((t) => !CORE_TOOLS.has(t) && !DEPRECATED_TOOLS.has(t));
 
 let output = `# CLI Tools
 
@@ -127,11 +121,11 @@ let output = `# CLI Tools
 
 // Add core tools with step info
 const stepInfo = {
-  'pipeline-runner': '1',
-  'cnxml-to-md': '1',
-  'split-for-erlendur': '1',
+  'cnxml-extract': '1a',
+  'protect-segments-for-mt': '1b',
+  'cnxml-inject': '5a',
+  'cnxml-render': '5b',
   'prepare-for-align': '4',
-  'add-frontmatter': '5'
 };
 
 for (const tool of coreTools) {

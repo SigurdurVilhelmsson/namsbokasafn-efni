@@ -34,16 +34,17 @@ import {
   verifyLocalization,
 } from './lib/mathml-to-latex.js';
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
 
 // ============================================================================
 // Argument parsing
 // ============================================================================
 
 function parseArgs(args) {
-  const result = { chapter: null, verbose: false, fixCheck: false };
+  const result = { chapter: null, book: 'efnafraedi', verbose: false, fixCheck: false };
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i]);
+    else if (args[i] === '--book' && args[i + 1]) result.book = args[++i];
     else if (args[i] === '--verbose') result.verbose = true;
     else if (args[i] === '--fix-check') result.fixCheck = true;
   }
@@ -63,7 +64,10 @@ function findEquationFiles(chapter) {
 
   const chapters = chapter
     ? [`ch${String(chapter).padStart(2, '0')}`]
-    : fs.readdirSync(structureDir).filter((d) => d.startsWith('ch') || d === 'appendices').sort();
+    : fs
+        .readdirSync(structureDir)
+        .filter((d) => d.startsWith('ch') || d === 'appendices')
+        .sort();
 
   const files = [];
   for (const ch of chapters) {
@@ -264,6 +268,7 @@ function extractNumbers(mathml) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = `books/${args.book}`;
   const files = findEquationFiles(args.chapter);
 
   if (files.length === 0) {

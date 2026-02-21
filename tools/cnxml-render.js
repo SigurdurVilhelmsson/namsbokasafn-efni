@@ -113,7 +113,8 @@ function translateTitle(title) {
 // CONFIGURATION
 // =====================================================================
 
-const BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi';
+let BOOK_SLUG = 'efnafraedi';
 
 // =====================================================================
 // HELPER FUNCTIONS
@@ -184,6 +185,7 @@ function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
+    book: 'efnafraedi',
     track: 'mt-preview',
     lang: 'is',
     verbose: false,
@@ -194,6 +196,7 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--chapter' && args[i + 1]) {
       const chapterArg = args[++i];
       // Accept either numeric chapter or "appendices"
@@ -918,7 +921,7 @@ function renderFigure(figure, context) {
       const chapterStr = formatChapterOutput(context.chapter);
       const normalizedSrc = src.replace(
         /^\.\.\/\.\.\/media\//,
-        `/content/efnafraedi/chapters/${chapterStr}/images/media/`
+        `/content/${BOOK_SLUG}/chapters/${chapterStr}/images/media/`
       );
       const alt = mediaAttrs.alt || '';
 
@@ -965,7 +968,7 @@ function renderMedia(media, context) {
     const chapterStr = formatChapterOutput(context.chapter);
     normalizedSrc = src.replace(
       /^\.\.\/\.\.\/media\//,
-      `/content/efnafraedi/chapters/${chapterStr}/images/media/`
+      `/content/${BOOK_SLUG}/chapters/${chapterStr}/images/media/`
     );
   }
 
@@ -2410,6 +2413,8 @@ function writeAnswerKey(chapter, track, html) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOK_SLUG = args.book;
+  BOOKS_DIR = `books/${args.book}`;
 
   if (args.help) {
     printHelp();
@@ -2428,10 +2433,10 @@ async function main() {
     const chapterStr = formatChapterOutput(args.chapter);
 
     // Build module sections map from structure + segment files
-    const moduleSections = buildModuleSections('efnafraedi', args.chapter);
+    const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
     // Load equation text translation dictionary
-    const equationTextDictionary = loadEquationTextDictionary('efnafraedi');
+    const equationTextDictionary = loadEquationTextDictionary(BOOK_SLUG);
 
     // Build chapter-wide figure/table/example/equation number maps across ALL modules
     // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
@@ -2571,11 +2576,11 @@ async function main() {
   <p style="font-size: 1.1rem; margin: 1.5rem 0;">
     Skoðaðu gagnavirkt lotukerfi okkar þar sem þú getur séð nákvæmar upplýsingar um öll frumefni.
   </p>
-  <a href="/efnafraedi/lotukerfi" class="periodic-table-link" style="display: inline-block; padding: 1rem 2rem; background-color: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 1.1rem; margin-top: 1rem;">
+  <a href="/${BOOK_SLUG}/lotukerfi" class="periodic-table-link" style="display: inline-block; padding: 1rem 2rem; background-color: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 1.1rem; margin-top: 1rem;">
     Opna gagnavirka lotukerfið
   </a>
   <p style="margin-top: 2rem; color: #666;">
-    <em>Einnig er hægt að nálgast lotukerfið beint á: <a href="/efnafraedi/lotukerfi">/efnafraedi/lotukerfi</a></em>
+    <em>Einnig er hægt að nálgast lotukerfið beint á: <a href="/${BOOK_SLUG}/lotukerfi">/${BOOK_SLUG}/lotukerfi</a></em>
   </p>
 </div>
 </main>`;

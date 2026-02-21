@@ -35,10 +35,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PROJECT_ROOT = path.join(__dirname, '..');
-const BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi');
-const SOURCE_DIR = path.join(BOOKS_DIR, '01-source');
-const STRUCTURE_DIR = path.join(BOOKS_DIR, '02-structure');
-const LOG_DIR = path.join(BOOKS_DIR, 'source-updates');
+let BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi');
+let SOURCE_DIR = path.join(BOOKS_DIR, '01-source');
+let STRUCTURE_DIR = path.join(BOOKS_DIR, '02-structure');
+let LOG_DIR = path.join(BOOKS_DIR, 'source-updates');
 const LOG_PATH = path.join(LOG_DIR, 'update-log.json');
 
 // GitHub configuration
@@ -671,6 +671,7 @@ function parseArgs(args) {
     command: null,
     input: null,
     book: 'chemistry-2e',
+    localBook: 'efnafraedi',
     chapter: null,
     verbose: false,
     json: false,
@@ -683,6 +684,7 @@ function parseArgs(args) {
     else if (arg === '--verbose') result.verbose = true;
     else if (arg === '--json') result.json = true;
     else if (arg === '--book' && args[i + 1]) result.book = args[++i];
+    else if (arg === '--local-book' && args[i + 1]) result.localBook = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i]);
     else if (!arg.startsWith('-') && !result.command) result.command = arg;
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
@@ -744,6 +746,10 @@ Rate Limiting:
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  BOOKS_DIR = path.join(PROJECT_ROOT, 'books', args.localBook);
+  SOURCE_DIR = path.join(BOOKS_DIR, '01-source');
+  STRUCTURE_DIR = path.join(BOOKS_DIR, '02-structure');
+  LOG_DIR = path.join(BOOKS_DIR, 'source-updates');
 
   if (args.help) {
     printHelp();
