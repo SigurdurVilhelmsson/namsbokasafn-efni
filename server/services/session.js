@@ -254,7 +254,8 @@ function cleanupStaleSessions() {
 }
 
 // Run cleanup every hour
-setInterval(cleanupStaleSessions, 60 * 60 * 1000);
+const sessionCleanupInterval = setInterval(cleanupStaleSessions, 60 * 60 * 1000);
+sessionCleanupInterval.unref();
 
 // Clean up on startup
 cleanupStaleSessions();

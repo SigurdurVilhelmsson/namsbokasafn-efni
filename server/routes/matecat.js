@@ -20,7 +20,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { MatecatClient, LANGUAGE_CODES, SUBJECTS } = require('../services/matecat');
-const { requireAuth } = require('../services/auth');
+const { requireAuth } = require('../middleware/requireAuth');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({

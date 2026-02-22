@@ -269,7 +269,7 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
-    const review = editorHistory.getReview(parseInt(id));
+    const review = editorHistory.getReview(parseInt(id, 10));
 
     if (!review) {
       return res.status(404).json({
@@ -288,7 +288,7 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     // Get EN source for context
     const enContent = editorHistory.loadSectionContent(
       review.book,
-      parseInt(review.chapter),
+      parseInt(review.chapter, 10),
       review.section
     ).en;
 
@@ -315,7 +315,7 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
   const { commit = false } = req.body;
 
   try {
-    const review = editorHistory.getReview(parseInt(id));
+    const review = editorHistory.getReview(parseInt(id, 10));
 
     if (!review) {
       return res.status(404).json({
@@ -345,7 +345,7 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
 
     // Mark as approved
     const result = editorHistory.approveReview(
-      parseInt(id),
+      parseInt(id, 10),
       req.user.id,
       req.user.username,
       commitSha
@@ -362,7 +362,7 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
       review.book,
       review.chapter,
       review.section,
-      parseInt(id),
+      parseInt(id, 10),
       commitSha
     );
 
@@ -418,7 +418,7 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
 
   for (const id of reviewIds) {
     try {
-      const review = editorHistory.getReview(parseInt(id));
+      const review = editorHistory.getReview(parseInt(id, 10));
 
       if (!review) {
         results.failed.push({ id, error: 'Review not found' });
@@ -443,7 +443,7 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
 
       // Mark as approved
       const result = editorHistory.approveReview(
-        parseInt(id),
+        parseInt(id, 10),
         req.user.id,
         req.user.username,
         commitSha
@@ -465,7 +465,7 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
           review.book,
           review.chapter,
           review.section,
-          parseInt(id),
+          parseInt(id, 10),
           commitSha
         );
 
@@ -513,7 +513,7 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
   }
 
   try {
-    const review = editorHistory.getReview(parseInt(id));
+    const review = editorHistory.getReview(parseInt(id, 10));
 
     if (!review) {
       return res.status(404).json({
@@ -523,7 +523,7 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
     }
 
     const result = editorHistory.requestChanges(
-      parseInt(id),
+      parseInt(id, 10),
       req.user.id,
       req.user.username,
       notes
@@ -540,7 +540,7 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
       review.book,
       review.chapter,
       review.section,
-      parseInt(id),
+      parseInt(id, 10),
       notes
     );
 

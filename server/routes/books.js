@@ -15,6 +15,7 @@ const archiver = require('archiver');
 const multer = require('multer');
 
 const { requireAuth } = require('../middleware/requireAuth');
+const { requireEditor, requireAdmin } = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
 const { VALID_BOOKS } = require('../config');
 
@@ -186,7 +187,7 @@ router.get('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
  * POST /api/books/:bookId/chapters/:chapter/files/scan
  * Scan existing files on disk and register them in database
  */
-router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, (req, res) => {
+router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, requireEditor(), (req, res) => {
   const { bookId, chapter } = req.params;
   const chapterNum = parseInt(chapter, 10);
   const userId = req.user?.username || 'system';
@@ -213,7 +214,7 @@ router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, (req, res) => 
  * DELETE /api/books/:bookId/chapters/:chapter/files
  * Clear generated files for regeneration
  */
-router.delete('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
+router.delete('/:bookId/chapters/:chapter/files', requireAuth, requireAdmin(), (req, res) => {
   const { bookId, chapter } = req.params;
   const { deleteFromDisk } = req.query;
   const chapterNum = parseInt(chapter, 10);
@@ -385,6 +386,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 router.post(
   '/:bookId/chapters/:chapter/import',
   requireAuth,
+  requireEditor(),
   upload.array('files', 50),
   async (req, res) => {
     const { bookId, chapter } = req.params;

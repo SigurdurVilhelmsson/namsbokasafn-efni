@@ -28,8 +28,8 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
       book: book || null,
       type: type || null,
       userId: user || null,
-      limit: parseInt(limit) || 50,
-      offset: parseInt(offset) || 0
+      limit: parseInt(limit, 10) || 50,
+      offset: parseInt(offset, 10) || 0,
     });
 
     res.json(result);
@@ -37,7 +37,7 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     console.error('Error getting activity:', err);
     res.status(500).json({
       error: 'Failed to get activity',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -50,13 +50,13 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getRecent(parseInt(limit) || 50);
+    const activities = activityLog.getRecent(parseInt(limit, 10) || 50);
     res.json({ activities });
   } catch (err) {
     console.error('Error getting recent activity:', err);
     res.status(500).json({
       error: 'Failed to get activity',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -70,13 +70,13 @@ router.get('/user/:userId', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getByUser(userId, parseInt(limit) || 50);
+    const activities = activityLog.getByUser(userId, parseInt(limit, 10) || 50);
     res.json({ userId, activities });
   } catch (err) {
     console.error('Error getting user activity:', err);
     res.status(500).json({
       error: 'Failed to get activity',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -90,13 +90,13 @@ router.get('/book/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getByBook(book, parseInt(limit) || 50);
+    const activities = activityLog.getByBook(book, parseInt(limit, 10) || 50);
     res.json({ book, activities });
   } catch (err) {
     console.error('Error getting book activity:', err);
     res.status(500).json({
       error: 'Failed to get activity',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -110,13 +110,13 @@ router.get('/section/:book/:chapter/:section', requireAuth, (req, res) => {
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getBySection(book, chapter, section, parseInt(limit) || 50);
+    const activities = activityLog.getBySection(book, chapter, section, parseInt(limit, 10) || 50);
     res.json({ book, chapter, section, activities });
   } catch (err) {
     console.error('Error getting section activity:', err);
     res.status(500).json({
       error: 'Failed to get activity',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -129,13 +129,13 @@ router.get('/my', requireAuth, (req, res) => {
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getByUser(req.user.id, parseInt(limit) || 50);
+    const activities = activityLog.getByUser(req.user.id, parseInt(limit, 10) || 50);
     res.json({ activities });
   } catch (err) {
     console.error('Error getting my activity:', err);
     res.status(500).json({
       error: 'Failed to get activity',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -148,8 +148,8 @@ router.get('/types', requireAuth, (req, res) => {
   res.json({
     types: Object.entries(activityLog.ACTIVITY_TYPES).map(([key, value]) => ({
       key,
-      value
-    }))
+      value,
+    })),
   });
 });
 

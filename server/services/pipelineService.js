@@ -373,7 +373,8 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
 }
 
 // Periodically clean up old jobs (every 30 minutes)
-setInterval(() => cleanupJobs(), 1800000);
+const cleanupInterval = setInterval(() => cleanupJobs(), 1800000);
+cleanupInterval.unref();
 
 /**
  * Run prepare-for-align.js for all modules in a chapter.

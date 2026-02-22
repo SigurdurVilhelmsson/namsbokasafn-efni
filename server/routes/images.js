@@ -117,7 +117,7 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
   const { status } = req.query;
 
   try {
-    const data = imageTracker.loadImageData(book, parseInt(chapter));
+    const data = imageTracker.loadImageData(book, parseInt(chapter, 10));
     let images = Object.values(data.images);
 
     // Filter by status if provided
@@ -132,11 +132,11 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
       downloadLink: `/api/images/${book}/${chapter}/${img.id}/download`,
     }));
 
-    const stats = imageTracker.getChapterImageStats(book, parseInt(chapter));
+    const stats = imageTracker.getChapterImageStats(book, parseInt(chapter, 10));
 
     res.json({
       book,
-      chapter: parseInt(chapter),
+      chapter: parseInt(chapter, 10),
       stats,
       images,
       lastUpdated: data.lastUpdated,
@@ -157,7 +157,7 @@ router.get('/:book/:chapter/:id', requireAuth, (req, res) => {
   const { book, chapter, id } = req.params;
 
   try {
-    const data = imageTracker.loadImageData(book, parseInt(chapter));
+    const data = imageTracker.loadImageData(book, parseInt(chapter, 10));
     const image = data.images[id];
 
     if (!image) {
@@ -168,7 +168,7 @@ router.get('/:book/:chapter/:id', requireAuth, (req, res) => {
 
     res.json({
       book,
-      chapter: parseInt(chapter),
+      chapter: parseInt(chapter, 10),
       image: {
         ...image,
         editLink: image.source?.sharepoint || image.source?.onedrive,
@@ -204,7 +204,7 @@ router.post('/:book/:chapter/:id/status', requireAuth, requireContributor(), (re
   }
 
   try {
-    const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, status, {
+    const updated = imageTracker.updateImageStatus(book, parseInt(chapter, 10), id, status, {
       notes,
       updatedBy: req.user.username,
     });
@@ -247,12 +247,18 @@ router.post(
 
     try {
       // Update tracking status
-      const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, 'translated', {
-        translatedPath: req.file.path,
-        translatedBy: req.user.username,
-        translatedAt: new Date().toISOString(),
-        fileSize: req.file.size,
-      });
+      const updated = imageTracker.updateImageStatus(
+        book,
+        parseInt(chapter, 10),
+        id,
+        'translated',
+        {
+          translatedPath: req.file.path,
+          translatedBy: req.user.username,
+          translatedAt: new Date().toISOString(),
+          fileSize: req.file.size,
+        }
+      );
 
       res.json({
         success: true,
@@ -284,7 +290,7 @@ router.get('/:book/:chapter/:id/download', requireAuth, (req, res) => {
   const { book, chapter, id } = req.params;
 
   try {
-    const data = imageTracker.loadImageData(book, parseInt(chapter));
+    const data = imageTracker.loadImageData(book, parseInt(chapter, 10));
     const image = data.images[id];
 
     if (!image || !image.translatedPath) {
@@ -335,12 +341,12 @@ router.post('/:book/:chapter/init', requireAuth, requireEditor(), async (req, re
       content = await fetchModule(moduleId);
     }
 
-    const result = imageTracker.initializeFromCnxml(book, parseInt(chapter), content);
+    const result = imageTracker.initializeFromCnxml(book, parseInt(chapter, 10), content);
 
     res.json({
       success: true,
       ...result,
-      stats: imageTracker.getChapterImageStats(book, parseInt(chapter)),
+      stats: imageTracker.getChapterImageStats(book, parseInt(chapter, 10)),
     });
   } catch (err) {
     res.status(500).json({
@@ -359,7 +365,7 @@ router.post('/:book/:chapter/:id/approve', requireAuth, requireEditor(), (req, r
   const { notes } = req.body;
 
   try {
-    const data = imageTracker.loadImageData(book, parseInt(chapter));
+    const data = imageTracker.loadImageData(book, parseInt(chapter, 10));
     const image = data.images[id];
 
     if (!image) {
@@ -373,7 +379,7 @@ router.post('/:book/:chapter/:id/approve', requireAuth, requireEditor(), (req, r
       });
     }
 
-    const updated = imageTracker.updateImageStatus(book, parseInt(chapter), id, 'approved', {
+    const updated = imageTracker.updateImageStatus(book, parseInt(chapter, 10), id, 'approved', {
       approvedBy: req.user.username,
       approvedAt: new Date().toISOString(),
       approvalNotes: notes,

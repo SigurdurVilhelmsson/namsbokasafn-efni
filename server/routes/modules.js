@@ -27,7 +27,7 @@ const { CHEMISTRY_MODULES, BOOKS, getModulesForBook } = require('../../tools/ope
  */
 router.get('/', (req, res) => {
   const book = req.query.book || 'chemistry-2e';
-  const chapter = req.query.chapter ? parseInt(req.query.chapter) : null;
+  const chapter = req.query.chapter ? parseInt(req.query.chapter, 10) : null;
   const format = req.query.format || 'simple';
 
   try {
@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
       return res.json({
         message: `No hardcoded modules for book: ${book}. Module data only available for chemistry-2e.`,
         availableBooks: Object.keys(BOOKS),
-        modules: []
+        modules: [],
       });
     }
 
@@ -47,31 +47,31 @@ router.get('/', (req, res) => {
         bookTitle: BOOKS[book]?.title || book,
         chapter: chapter || 'all',
         totalModules: modules.length,
-        modules: modules.map(m => ({
+        modules: modules.map((m) => ({
           id: m.id,
           chapter: m.chapter,
           section: m.section,
           title: m.title,
           urls: {
             cnxml: `https://raw.githubusercontent.com/openstax/${BOOKS[book]?.repo || 'osbooks-chemistry-bundle'}/main/modules/${m.id}/index.cnxml`,
-            process: `/api/process/module/${m.id}`
-          }
-        }))
+            process: `/api/process/module/${m.id}`,
+          },
+        })),
       });
     } else {
       res.json({
         book,
-        modules: modules.map(m => ({
+        modules: modules.map((m) => ({
           id: m.id,
           section: m.section,
-          title: m.title
-        }))
+          title: m.title,
+        })),
       });
     }
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get modules',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -85,12 +85,12 @@ router.get('/books', (req, res) => {
     id,
     title: info.title,
     repo: info.repo,
-    hasModuleData: id === 'chemistry-2e'
+    hasModuleData: id === 'chemistry-2e',
   }));
 
   res.json({
     books,
-    note: 'Module metadata is currently only available for chemistry-2e. Other books require fetching collection.xml.'
+    note: 'Module metadata is currently only available for chemistry-2e. Other books require fetching collection.xml.',
   });
 });
 
@@ -100,13 +100,13 @@ router.get('/books', (req, res) => {
  */
 router.get('/book/:bookId', (req, res) => {
   const { bookId } = req.params;
-  const chapter = req.query.chapter ? parseInt(req.query.chapter) : null;
+  const chapter = req.query.chapter ? parseInt(req.query.chapter, 10) : null;
 
   if (!BOOKS[bookId]) {
     return res.status(404).json({
       error: 'Book not found',
       message: `Unknown book: ${bookId}`,
-      availableBooks: Object.keys(BOOKS)
+      availableBooks: Object.keys(BOOKS),
     });
   }
 
@@ -117,7 +117,7 @@ router.get('/book/:bookId', (req, res) => {
     bookTitle: BOOKS[bookId].title,
     chapter: chapter || 'all',
     totalModules: modules.length,
-    modules
+    modules,
   });
 });
 
@@ -126,12 +126,12 @@ router.get('/book/:bookId', (req, res) => {
  * List modules for a specific chapter (chemistry-2e only)
  */
 router.get('/chapter/:chapter', (req, res) => {
-  const chapter = parseInt(req.params.chapter);
+  const chapter = parseInt(req.params.chapter, 10);
 
   if (isNaN(chapter) || chapter < 1) {
     return res.status(400).json({
       error: 'Invalid chapter',
-      message: 'Chapter must be a positive number'
+      message: 'Chapter must be a positive number',
     });
   }
 
@@ -140,7 +140,7 @@ router.get('/chapter/:chapter', (req, res) => {
   if (modules.length === 0) {
     return res.status(404).json({
       error: 'No modules found',
-      message: `No modules found for chapter ${chapter}. Chemistry 2e chapters 1-4 are available.`
+      message: `No modules found for chapter ${chapter}. Chemistry 2e chapters 1-4 are available.`,
     });
   }
 
@@ -148,7 +148,7 @@ router.get('/chapter/:chapter', (req, res) => {
     book: 'chemistry-2e',
     chapter,
     totalModules: modules.length,
-    modules
+    modules,
   });
 });
 
@@ -163,7 +163,7 @@ router.get('/:moduleId', (req, res) => {
   if (!/^m\d+$/.test(moduleId)) {
     return res.status(400).json({
       error: 'Invalid module ID',
-      message: 'Module ID should be in format mXXXXX (e.g., m68690)'
+      message: 'Module ID should be in format mXXXXX (e.g., m68690)',
     });
   }
 
@@ -174,7 +174,7 @@ router.get('/:moduleId', (req, res) => {
     return res.status(404).json({
       error: 'Module not found',
       message: `Module ${moduleId} not found in known modules. It may exist but not be in our database.`,
-      hint: 'Use POST /api/process/module/:id to process any valid OpenStax module ID.'
+      hint: 'Use POST /api/process/module/:id to process any valid OpenStax module ID.',
     });
   }
 
@@ -187,15 +187,15 @@ router.get('/:moduleId', (req, res) => {
     urls: {
       cnxml: `https://raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/main/modules/${moduleId}/index.cnxml`,
       github: `https://github.com/openstax/osbooks-chemistry-bundle/tree/main/modules/${moduleId}`,
-      openstax: `https://openstax.org/books/chemistry-2e/pages/${moduleInfo.section.replace('.', '-')}`
+      openstax: `https://openstax.org/books/chemistry-2e/pages/${moduleInfo.section.replace('.', '-')}`,
     },
     actions: {
       process: {
         method: 'POST',
         url: `/api/process/module/${moduleId}`,
-        description: 'Process this module through the translation pipeline'
-      }
-    }
+        description: 'Process this module through the translation pipeline',
+      },
+    },
   });
 });
 
