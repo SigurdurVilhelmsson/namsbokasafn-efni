@@ -3,6 +3,8 @@
  *
  * Handles image tracking and upload for translation workflow.
  *
+ * Book parameter: :book (Icelandic slug, e.g., 'efnafraedi')
+ *
  * Endpoints:
  *   GET  /api/images/:book              Get book image overview
  *   GET  /api/images/:book/:chapter     Get chapter image details
@@ -22,6 +24,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor, requireEditor } = require('../middleware/requireRole');
 const imageTracker = require('../services/imageTracker');
 const { VALID_BOOKS } = require('../config');
+const { fetchModule } = require('../../tools/openstax-fetch.cjs');
 
 // Validate :book param on all routes that use it
 router.param('book', (req, res, next, book) => {
@@ -329,7 +332,6 @@ router.post('/:book/:chapter/init', requireAuth, requireEditor(), async (req, re
 
     // Fetch CNXML if moduleId provided
     if (moduleId) {
-      const { fetchModule } = require('../../tools/openstax-fetch.cjs');
       content = await fetchModule(moduleId);
     }
 

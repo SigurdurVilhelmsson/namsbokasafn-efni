@@ -36,7 +36,7 @@ router.post('/scan/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
       action: 'scan_section_suggestions',
       entityType: 'section',
       entityId: parseInt(sectionId, 10),
-      details: { suggestionsFound: result.suggestionsCount }
+      details: { suggestionsFound: result.suggestionsCount },
     });
 
     res.json(result);
@@ -44,7 +44,7 @@ router.post('/scan/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
     console.error('Scan section error:', err);
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to scan section',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -64,7 +64,7 @@ router.post('/scan-book/:bookSlug', requireAuth, requireRole(ROLES.HEAD_EDITOR),
       username: req.user.username,
       action: 'scan_book_suggestions',
       entityType: 'book',
-      details: { bookSlug, totalSuggestions: result.totalSuggestions }
+      details: { bookSlug, totalSuggestions: result.totalSuggestions },
     });
 
     res.json(result);
@@ -72,7 +72,7 @@ router.post('/scan-book/:bookSlug', requireAuth, requireRole(ROLES.HEAD_EDITOR),
     console.error('Scan book error:', err);
     res.status(500).json({
       error: 'Failed to scan book',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -80,6 +80,25 @@ router.post('/scan-book/:bookSlug', requireAuth, requireRole(ROLES.HEAD_EDITOR),
 // ============================================================================
 // GET SUGGESTIONS
 // ============================================================================
+
+/**
+ * GET /api/suggestions/patterns
+ * Get available localization patterns
+ * NOTE: Must be defined before /:sectionId to avoid "patterns" being matched as :sectionId
+ */
+router.get('/patterns', requireAuth, (req, res) => {
+  const patterns = Object.entries(suggestions.LOCALIZATION_PATTERNS).map(([id, pattern]) => ({
+    id,
+    type: pattern.type,
+    description: pattern.regex.toString(),
+  }));
+
+  res.json({
+    patterns,
+    types: suggestions.SUGGESTION_TYPES,
+    statuses: suggestions.SUGGESTION_STATUSES,
+  });
+});
 
 /**
  * GET /api/suggestions/:sectionId
@@ -93,22 +112,19 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res
   const { status } = req.query;
 
   try {
-    const sectionSuggestions = suggestions.getSuggestions(
-      parseInt(sectionId, 10),
-      status
-    );
+    const sectionSuggestions = suggestions.getSuggestions(parseInt(sectionId, 10), status);
 
     const stats = suggestions.getSuggestionStats(parseInt(sectionId, 10));
 
     res.json({
       suggestions: sectionSuggestions,
-      stats
+      stats,
     });
   } catch (err) {
     console.error('Get suggestions error:', err);
     res.status(500).json({
       error: 'Failed to get suggestions',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -127,27 +143,9 @@ router.get('/:sectionId/stats', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
     console.error('Get stats error:', err);
     res.status(500).json({
       error: 'Failed to get statistics',
-      message: err.message
+      message: err.message,
     });
   }
-});
-
-/**
- * GET /api/suggestions/patterns
- * Get available localization patterns
- */
-router.get('/patterns', requireAuth, (req, res) => {
-  const patterns = Object.entries(suggestions.LOCALIZATION_PATTERNS).map(([id, pattern]) => ({
-    id,
-    type: pattern.type,
-    description: pattern.regex.toString()
-  }));
-
-  res.json({
-    patterns,
-    types: suggestions.SUGGESTION_TYPES,
-    statuses: suggestions.SUGGESTION_STATUSES
-  });
 });
 
 // ============================================================================
@@ -162,11 +160,7 @@ router.post('/:id/accept', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
   const { id } = req.params;
 
   try {
-    const suggestion = suggestions.acceptSuggestion(
-      parseInt(id, 10),
-      req.user.id,
-      req.user.name
-    );
+    const suggestion = suggestions.acceptSuggestion(parseInt(id, 10), req.user.id, req.user.name);
 
     activityLog.log({
       userId: req.user.id,
@@ -177,19 +171,19 @@ router.post('/:id/accept', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
       details: {
         sectionId: suggestion.sectionId,
         type: suggestion.type,
-        original: suggestion.originalText
-      }
+        original: suggestion.originalText,
+      },
     });
 
     res.json({
       success: true,
-      suggestion
+      suggestion,
     });
   } catch (err) {
     console.error('Accept suggestion error:', err);
     res.status(500).json({
       error: 'Failed to accept suggestion',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -202,11 +196,7 @@ router.post('/:id/reject', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
   const { id } = req.params;
 
   try {
-    const suggestion = suggestions.rejectSuggestion(
-      parseInt(id, 10),
-      req.user.id,
-      req.user.name
-    );
+    const suggestion = suggestions.rejectSuggestion(parseInt(id, 10), req.user.id, req.user.name);
 
     activityLog.log({
       userId: req.user.id,
@@ -217,19 +207,19 @@ router.post('/:id/reject', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
       details: {
         sectionId: suggestion.sectionId,
         type: suggestion.type,
-        original: suggestion.originalText
-      }
+        original: suggestion.originalText,
+      },
     });
 
     res.json({
       success: true,
-      suggestion
+      suggestion,
     });
   } catch (err) {
     console.error('Reject suggestion error:', err);
     res.status(500).json({
       error: 'Failed to reject suggestion',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -248,7 +238,7 @@ router.post('/:id/modify', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
   if (!modifiedText) {
     return res.status(400).json({
       error: 'Missing modifiedText',
-      message: 'modifiedText is required'
+      message: 'modifiedText is required',
     });
   }
 
@@ -270,19 +260,19 @@ router.post('/:id/modify', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
         sectionId: suggestion.sectionId,
         type: suggestion.type,
         original: suggestion.originalText,
-        modified: modifiedText
-      }
+        modified: modifiedText,
+      },
     });
 
     res.json({
       success: true,
-      suggestion
+      suggestion,
     });
   } catch (err) {
     console.error('Modify suggestion error:', err);
     res.status(500).json({
       error: 'Failed to modify suggestion',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -302,20 +292,20 @@ router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({
       error: 'Missing ids',
-      message: 'ids array is required'
+      message: 'ids array is required',
     });
   }
 
   if (!['accept', 'reject'].includes(action)) {
     return res.status(400).json({
       error: 'Invalid action',
-      message: 'action must be "accept" or "reject"'
+      message: 'action must be "accept" or "reject"',
     });
   }
 
   try {
     const result = suggestions.bulkUpdateSuggestions(
-      ids.map(id => parseInt(id, 10)),
+      ids.map((id) => parseInt(id, 10)),
       action,
       req.user.id,
       req.user.name
@@ -327,7 +317,7 @@ router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
       action: `bulk_${action}_suggestions`,
       entityType: 'section',
       entityId: parseInt(sectionId, 10),
-      details: { count: ids.length, action }
+      details: { count: ids.length, action },
     });
 
     res.json(result);
@@ -335,7 +325,7 @@ router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
     console.error('Bulk update error:', err);
     res.status(500).json({
       error: 'Failed to bulk update suggestions',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -357,26 +347,24 @@ router.post('/:sectionId/sync-log', requireAuth, requireRole(ROLES.CONTRIBUTOR),
 
     if (!section) {
       return res.status(404).json({
-        error: 'Section not found'
+        error: 'Section not found',
       });
     }
 
     // Check if user is localizer or has elevated permissions
-    const canSync = section.localizer === req.user.id ||
-                    req.user.role === ROLES.ADMIN ||
-                    req.user.role === ROLES.HEAD_EDITOR;
+    const canSync =
+      section.localizer === req.user.id ||
+      req.user.role === ROLES.ADMIN ||
+      req.user.role === ROLES.HEAD_EDITOR;
 
     if (!canSync) {
       return res.status(403).json({
         error: 'Not authorized',
-        message: 'Only the assigned localizer can sync suggestions'
+        message: 'Only the assigned localizer can sync suggestions',
       });
     }
 
-    const result = suggestions.syncToLocalizationLog(
-      parseInt(sectionId, 10),
-      req.user.id
-    );
+    const result = suggestions.syncToLocalizationLog(parseInt(sectionId, 10), req.user.id);
 
     activityLog.log({
       userId: req.user.id,
@@ -384,7 +372,7 @@ router.post('/:sectionId/sync-log', requireAuth, requireRole(ROLES.CONTRIBUTOR),
       action: 'sync_suggestions_to_log',
       entityType: 'section',
       entityId: parseInt(sectionId, 10),
-      details: { entriesCreated: result.entriesCreated }
+      details: { entriesCreated: result.entriesCreated },
     });
 
     res.json(result);
@@ -392,7 +380,7 @@ router.post('/:sectionId/sync-log', requireAuth, requireRole(ROLES.CONTRIBUTOR),
     console.error('Sync to log error:', err);
     res.status(500).json({
       error: 'Failed to sync to localization log',
-      message: err.message
+      message: err.message,
     });
   }
 });

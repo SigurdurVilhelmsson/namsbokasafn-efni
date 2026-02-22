@@ -9,6 +9,8 @@
  * All publication actions require HEAD_EDITOR approval.
  * Publish endpoints are async: they return a jobId for polling via /api/pipeline/status/:jobId.
  *
+ * Book parameter: :bookSlug (Icelandic slug, e.g., 'efnafraedi')
+ *
  * Endpoints:
  *   GET  /api/publication/:bookSlug/:chapterNum/status       Publication status for all tracks
  *   GET  /api/publication/:bookSlug/:chapterNum/readiness    Readiness check for each track

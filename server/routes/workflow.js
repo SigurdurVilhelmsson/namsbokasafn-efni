@@ -3,6 +3,8 @@
  *
  * Handles multi-step workflow sessions for the translation pipeline.
  *
+ * Book parameter: book (in request body or :book in URL, Icelandic slug, e.g., 'efnafraedi')
+ *
  * Endpoints:
  *   POST /api/workflow/start              Create new workflow session
  *   GET  /api/workflow/:sessionId         Get session status
@@ -22,6 +24,7 @@ const archiver = require('archiver');
 
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor, requireAdmin } = require('../middleware/requireRole');
+const { VALID_BOOKS } = require('../config');
 const session = require('../services/session');
 const gitService = require('../services/gitService');
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
@@ -108,6 +111,13 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
     return res.status(400).json({
       error: 'Missing parameters',
       message: 'book and chapter are required',
+    });
+  }
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 

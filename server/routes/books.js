@@ -3,6 +3,8 @@
  *
  * Provides book and chapter metadata for the workflow UI.
  * Also handles downloading content for the MT workflow.
+ *
+ * Book parameter: :bookId (Icelandic slug, e.g., 'efnafraedi')
  */
 
 const express = require('express');
@@ -267,7 +269,7 @@ router.get('/:bookId/files/summary', requireAuth, (req, res) => {
 });
 
 /**
- * GET /api/books/:slug/download
+ * GET /api/books/:bookId/download
  * Download book content as ZIP
  *
  * Query params:
@@ -277,13 +279,9 @@ router.get('/:bookId/files/summary', requireAuth, (req, res) => {
  *     - 'is-md': Icelandic markdown from 02-mt-output/
  *     - 'faithful': Reviewed IS markdown from 03-faithful/
  */
-router.get('/:slug/download', requireAuth, async (req, res) => {
-  const { slug } = req.params;
+router.get('/:bookId/download', requireAuth, async (req, res) => {
+  const { bookId } = req.params;
   const { chapter, type = 'en-md' } = req.query;
-
-  if (!VALID_BOOKS.includes(slug)) {
-    return res.status(400).json({ error: 'Invalid book' });
-  }
 
   // Determine source directory based on type
   const typeDirs = {
@@ -300,7 +298,7 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
     });
   }
 
-  const bookDir = path.join(booksDir, slug);
+  const bookDir = path.join(booksDir, bookId);
   const sourceDir = path.join(bookDir, sourceType);
 
   if (!fs.existsSync(sourceDir)) {
@@ -315,7 +313,7 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
     let zipName;
     if (chapter) {
       const chapterDir = 'ch' + String(chapter).padStart(2, '0');
-      zipName = `${slug}-K${chapter}-${type}.zip`;
+      zipName = `${bookId}-K${chapter}-${type}.zip`;
 
       // Check chapter directory exists
       const chapterPath = path.join(sourceDir, chapterDir);
@@ -326,7 +324,7 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
         });
       }
     } else {
-      zipName = `${slug}-${type}.zip`;
+      zipName = `${bookId}-${type}.zip`;
     }
 
     res.setHeader('Content-Type', 'application/zip');

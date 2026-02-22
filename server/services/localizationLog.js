@@ -29,16 +29,12 @@ const LOG_ENTRY_TYPES = [
   'other', // Other adaptations
 ];
 
-/**
- * Initialize database connection
- */
-function getDb() {
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-  return new Database(DB_PATH);
+// Module-level singleton database connection (matches sessionCore.js pattern)
+const dbDir = path.dirname(DB_PATH);
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
 }
+const db = new Database(DB_PATH);
 
 /**
  * Get or create a localization log for a section
@@ -48,54 +44,44 @@ function getDb() {
  * @returns {object} Log record
  */
 function getOrCreateLog(sectionId, localizer) {
-  const db = getDb();
+  // Check for existing log
+  const log = db
+    .prepare(
+      `
+    SELECT * FROM localization_logs WHERE section_id = ?
+  `
+    )
+    .get(sectionId);
 
-  try {
-    // Check for existing log
-    const log = db
-      .prepare(
-        `
-      SELECT * FROM localization_logs WHERE section_id = ?
-    `
-      )
-      .get(sectionId);
-
-    if (log) {
-      db.close();
-      return {
-        id: log.id,
-        sectionId: log.section_id,
-        localizer: log.localizer,
-        entries: JSON.parse(log.entries || '[]'),
-        createdAt: log.created_at,
-        updatedAt: log.updated_at,
-      };
-    }
-
-    // Create new log
-    const result = db
-      .prepare(
-        `
-      INSERT INTO localization_logs (section_id, localizer, entries)
-      VALUES (?, ?, '[]')
-    `
-      )
-      .run(sectionId, localizer);
-
-    db.close();
-
+  if (log) {
     return {
-      id: result.lastInsertRowid,
-      sectionId,
-      localizer,
-      entries: [],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      id: log.id,
+      sectionId: log.section_id,
+      localizer: log.localizer,
+      entries: JSON.parse(log.entries || '[]'),
+      createdAt: log.created_at,
+      updatedAt: log.updated_at,
     };
-  } catch (err) {
-    db.close();
-    throw err;
   }
+
+  // Create new log
+  const result = db
+    .prepare(
+      `
+    INSERT INTO localization_logs (section_id, localizer, entries)
+    VALUES (?, ?, '[]')
+  `
+    )
+    .run(sectionId, localizer);
+
+  return {
+    id: result.lastInsertRowid,
+    sectionId,
+    localizer,
+    entries: [],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
 }
 
 /**
@@ -122,71 +108,62 @@ function addEntry(sectionId, entry, localizer) {
     throw new Error('Entry must include original, changedTo, and reason');
   }
 
-  const db = getDb();
+  // Get current log
+  const log = db
+    .prepare(
+      `
+    SELECT * FROM localization_logs WHERE section_id = ?
+  `
+    )
+    .get(sectionId);
 
-  try {
-    // Get current log
-    const log = db
+  let logId;
+  let entries = [];
+
+  if (log) {
+    logId = log.id;
+    entries = JSON.parse(log.entries || '[]');
+  } else {
+    // Create new log
+    const result = db
       .prepare(
         `
-      SELECT * FROM localization_logs WHERE section_id = ?
+      INSERT INTO localization_logs (section_id, localizer, entries)
+      VALUES (?, ?, '[]')
     `
       )
-      .get(sectionId);
-
-    let logId;
-    let entries = [];
-
-    if (log) {
-      logId = log.id;
-      entries = JSON.parse(log.entries || '[]');
-    } else {
-      // Create new log
-      const result = db
-        .prepare(
-          `
-        INSERT INTO localization_logs (section_id, localizer, entries)
-        VALUES (?, ?, '[]')
-      `
-        )
-        .run(sectionId, localizer);
-      logId = result.lastInsertRowid;
-    }
-
-    // Add new entry
-    const newEntry = {
-      id: uuidv4(),
-      timestamp: new Date().toISOString(),
-      type: entry.type,
-      original: entry.original,
-      changedTo: entry.changedTo,
-      reason: entry.reason,
-      location: entry.location || null,
-    };
-
-    entries.push(newEntry);
-
-    // Update log
-    db.prepare(
-      `
-      UPDATE localization_logs
-      SET entries = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `
-    ).run(JSON.stringify(entries), logId);
-
-    db.close();
-
-    return {
-      id: logId,
-      sectionId,
-      entry: newEntry,
-      totalEntries: entries.length,
-    };
-  } catch (err) {
-    db.close();
-    throw err;
+      .run(sectionId, localizer);
+    logId = result.lastInsertRowid;
   }
+
+  // Add new entry
+  const newEntry = {
+    id: uuidv4(),
+    timestamp: new Date().toISOString(),
+    type: entry.type,
+    original: entry.original,
+    changedTo: entry.changedTo,
+    reason: entry.reason,
+    location: entry.location || null,
+  };
+
+  entries.push(newEntry);
+
+  // Update log
+  db.prepare(
+    `
+    UPDATE localization_logs
+    SET entries = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `
+  ).run(JSON.stringify(entries), logId);
+
+  return {
+    id: logId,
+    sectionId,
+    entry: newEntry,
+    totalEntries: entries.length,
+  };
 }
 
 /**
@@ -198,58 +175,49 @@ function addEntry(sectionId, entry, localizer) {
  * @returns {object} Updated entry
  */
 function updateEntry(sectionId, entryId, updates) {
-  const db = getDb();
-
-  try {
-    const log = db
-      .prepare(
-        `
-      SELECT * FROM localization_logs WHERE section_id = ?
-    `
-      )
-      .get(sectionId);
-
-    if (!log) {
-      throw new Error('Log not found');
-    }
-
-    const entries = JSON.parse(log.entries || '[]');
-    const entryIndex = entries.findIndex((e) => e.id === entryId);
-
-    if (entryIndex === -1) {
-      throw new Error('Entry not found');
-    }
-
-    // Update fields
-    if (updates.type) {
-      if (!LOG_ENTRY_TYPES.includes(updates.type)) {
-        throw new Error(`Invalid entry type: ${updates.type}`);
-      }
-      entries[entryIndex].type = updates.type;
-    }
-    if (updates.original) entries[entryIndex].original = updates.original;
-    if (updates.changedTo) entries[entryIndex].changedTo = updates.changedTo;
-    if (updates.reason) entries[entryIndex].reason = updates.reason;
-    if (updates.location !== undefined) entries[entryIndex].location = updates.location;
-
-    entries[entryIndex].updatedAt = new Date().toISOString();
-
-    // Save
-    db.prepare(
+  const log = db
+    .prepare(
       `
-      UPDATE localization_logs
-      SET entries = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `
-    ).run(JSON.stringify(entries), log.id);
+    SELECT * FROM localization_logs WHERE section_id = ?
+  `
+    )
+    .get(sectionId);
 
-    db.close();
-
-    return entries[entryIndex];
-  } catch (err) {
-    db.close();
-    throw err;
+  if (!log) {
+    throw new Error('Log not found');
   }
+
+  const entries = JSON.parse(log.entries || '[]');
+  const entryIndex = entries.findIndex((e) => e.id === entryId);
+
+  if (entryIndex === -1) {
+    throw new Error('Entry not found');
+  }
+
+  // Update fields
+  if (updates.type) {
+    if (!LOG_ENTRY_TYPES.includes(updates.type)) {
+      throw new Error(`Invalid entry type: ${updates.type}`);
+    }
+    entries[entryIndex].type = updates.type;
+  }
+  if (updates.original) entries[entryIndex].original = updates.original;
+  if (updates.changedTo) entries[entryIndex].changedTo = updates.changedTo;
+  if (updates.reason) entries[entryIndex].reason = updates.reason;
+  if (updates.location !== undefined) entries[entryIndex].location = updates.location;
+
+  entries[entryIndex].updatedAt = new Date().toISOString();
+
+  // Save
+  db.prepare(
+    `
+    UPDATE localization_logs
+    SET entries = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `
+  ).run(JSON.stringify(entries), log.id);
+
+  return entries[entryIndex];
 }
 
 /**
@@ -260,42 +228,34 @@ function updateEntry(sectionId, entryId, updates) {
  * @returns {boolean} Success
  */
 function removeEntry(sectionId, entryId) {
-  const db = getDb();
-
-  try {
-    const log = db
-      .prepare(
-        `
-      SELECT * FROM localization_logs WHERE section_id = ?
-    `
-      )
-      .get(sectionId);
-
-    if (!log) {
-      throw new Error('Log not found');
-    }
-
-    const entries = JSON.parse(log.entries || '[]');
-    const newEntries = entries.filter((e) => e.id !== entryId);
-
-    if (newEntries.length === entries.length) {
-      throw new Error('Entry not found');
-    }
-
-    db.prepare(
+  const log = db
+    .prepare(
       `
-      UPDATE localization_logs
-      SET entries = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `
-    ).run(JSON.stringify(newEntries), log.id);
+    SELECT * FROM localization_logs WHERE section_id = ?
+  `
+    )
+    .get(sectionId);
 
-    db.close();
-    return true;
-  } catch (err) {
-    db.close();
-    throw err;
+  if (!log) {
+    throw new Error('Log not found');
   }
+
+  const entries = JSON.parse(log.entries || '[]');
+  const newEntries = entries.filter((e) => e.id !== entryId);
+
+  if (newEntries.length === entries.length) {
+    throw new Error('Entry not found');
+  }
+
+  db.prepare(
+    `
+    UPDATE localization_logs
+    SET entries = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `
+  ).run(JSON.stringify(newEntries), log.id);
+
+  return true;
 }
 
 /**
@@ -305,33 +265,24 @@ function removeEntry(sectionId, entryId) {
  * @returns {object|null} Log with entries
  */
 function getLog(sectionId) {
-  const db = getDb();
+  const log = db
+    .prepare(
+      `
+    SELECT * FROM localization_logs WHERE section_id = ?
+  `
+    )
+    .get(sectionId);
 
-  try {
-    const log = db
-      .prepare(
-        `
-      SELECT * FROM localization_logs WHERE section_id = ?
-    `
-      )
-      .get(sectionId);
+  if (!log) return null;
 
-    db.close();
-
-    if (!log) return null;
-
-    return {
-      id: log.id,
-      sectionId: log.section_id,
-      localizer: log.localizer,
-      entries: JSON.parse(log.entries || '[]'),
-      createdAt: log.created_at,
-      updatedAt: log.updated_at,
-    };
-  } catch (err) {
-    db.close();
-    throw err;
-  }
+  return {
+    id: log.id,
+    sectionId: log.section_id,
+    localizer: log.localizer,
+    entries: JSON.parse(log.entries || '[]'),
+    createdAt: log.created_at,
+    updatedAt: log.updated_at,
+  };
 }
 
 /**
@@ -353,58 +304,49 @@ function saveEntries(sectionId, entries, localizer) {
     }
   }
 
-  const db = getDb();
+  // Ensure each entry has an ID
+  const processedEntries = entries.map((e) => ({
+    id: e.id || uuidv4(),
+    timestamp: e.timestamp || new Date().toISOString(),
+    type: e.type,
+    original: e.original,
+    changedTo: e.changedTo,
+    reason: e.reason,
+    location: e.location || null,
+  }));
 
-  try {
-    // Ensure each entry has an ID
-    const processedEntries = entries.map((e) => ({
-      id: e.id || uuidv4(),
-      timestamp: e.timestamp || new Date().toISOString(),
-      type: e.type,
-      original: e.original,
-      changedTo: e.changedTo,
-      reason: e.reason,
-      location: e.location || null,
-    }));
+  // Check for existing log
+  const existing = db
+    .prepare(
+      `
+    SELECT id FROM localization_logs WHERE section_id = ?
+  `
+    )
+    .get(sectionId);
 
-    // Check for existing log
-    const existing = db
-      .prepare(
-        `
-      SELECT id FROM localization_logs WHERE section_id = ?
+  if (existing) {
+    db.prepare(
+      `
+      UPDATE localization_logs
+      SET entries = ?, localizer = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
     `
-      )
-      .get(sectionId);
-
-    if (existing) {
-      db.prepare(
-        `
-        UPDATE localization_logs
-        SET entries = ?, localizer = ?, updated_at = CURRENT_TIMESTAMP
-        WHERE id = ?
+    ).run(JSON.stringify(processedEntries), localizer, existing.id);
+  } else {
+    db.prepare(
       `
-      ).run(JSON.stringify(processedEntries), localizer, existing.id);
-    } else {
-      db.prepare(
-        `
-        INSERT INTO localization_logs (section_id, localizer, entries)
-        VALUES (?, ?, ?)
-      `
-      ).run(sectionId, localizer, JSON.stringify(processedEntries));
-    }
-
-    db.close();
-
-    return {
-      sectionId,
-      localizer,
-      entries: processedEntries,
-      totalEntries: processedEntries.length,
-    };
-  } catch (err) {
-    db.close();
-    throw err;
+      INSERT INTO localization_logs (section_id, localizer, entries)
+      VALUES (?, ?, ?)
+    `
+    ).run(sectionId, localizer, JSON.stringify(processedEntries));
   }
+
+  return {
+    sectionId,
+    localizer,
+    entries: processedEntries,
+    totalEntries: processedEntries.length,
+  };
 }
 
 /**
@@ -414,59 +356,50 @@ function saveEntries(sectionId, entries, localizer) {
  * @returns {object} Statistics
  */
 function getStats(bookId = null) {
-  const db = getDb();
+  let query = `
+    SELECT
+      COUNT(DISTINCT ll.section_id) as sections_with_logs,
+      SUM(json_array_length(ll.entries)) as total_entries
+    FROM localization_logs ll
+  `;
 
-  try {
-    let query = `
-      SELECT
-        COUNT(DISTINCT ll.section_id) as sections_with_logs,
-        SUM(json_array_length(ll.entries)) as total_entries
-      FROM localization_logs ll
+  if (bookId) {
+    query += `
+      JOIN book_sections bs ON bs.id = ll.section_id
+      WHERE bs.book_id = ?
     `;
+  }
 
-    if (bookId) {
-      query += `
-        JOIN book_sections bs ON bs.id = ll.section_id
-        WHERE bs.book_id = ?
-      `;
-    }
+  const stats = bookId ? db.prepare(query).get(bookId) : db.prepare(query).get();
 
-    const stats = bookId ? db.prepare(query).get(bookId) : db.prepare(query).get();
+  // Get breakdown by type
+  const logs = db
+    .prepare(
+      `
+    SELECT entries FROM localization_logs
+  `
+    )
+    .all();
 
-    // Get breakdown by type
-    const logs = db
-      .prepare(
-        `
-      SELECT entries FROM localization_logs
-    `
-      )
-      .all();
+  const byType = {};
+  for (const type of LOG_ENTRY_TYPES) {
+    byType[type] = 0;
+  }
 
-    const byType = {};
-    for (const type of LOG_ENTRY_TYPES) {
-      byType[type] = 0;
-    }
-
-    for (const log of logs) {
-      const entries = JSON.parse(log.entries || '[]');
-      for (const entry of entries) {
-        if (byType[entry.type] !== undefined) {
-          byType[entry.type]++;
-        }
+  for (const log of logs) {
+    const entries = JSON.parse(log.entries || '[]');
+    for (const entry of entries) {
+      if (byType[entry.type] !== undefined) {
+        byType[entry.type]++;
       }
     }
-
-    db.close();
-
-    return {
-      sectionsWithLogs: stats?.sections_with_logs || 0,
-      totalEntries: stats?.total_entries || 0,
-      byType,
-    };
-  } catch (err) {
-    db.close();
-    throw err;
   }
+
+  return {
+    sectionsWithLogs: stats?.sections_with_logs || 0,
+    totalEntries: stats?.total_entries || 0,
+    byType,
+  };
 }
 
 module.exports = {

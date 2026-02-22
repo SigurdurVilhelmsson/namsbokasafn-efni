@@ -7,6 +7,8 @@
  * - User management (future)
  *
  * All routes require admin authentication.
+ *
+ * Book parameter: :slug (OpenStax or Icelandic slug, e.g., 'efnafraedi')
  */
 
 const express = require('express');
@@ -464,6 +466,28 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
 });
 
 /**
+ * GET /api/admin/users/roles
+ * Get available roles and their descriptions
+ * NOTE: Must be defined before /users/:id to avoid "roles" being matched as :id
+ */
+router.get('/users/roles', requireAuth, requireAdmin(), (req, res) => {
+  res.json({
+    roles: [
+      { id: 'admin', name: 'Kerfisstjóri', description: 'Full access to all features', level: 5 },
+      {
+        id: 'head-editor',
+        name: 'Aðalritstjóri',
+        description: 'Manage assigned books and reviewers',
+        level: 4,
+      },
+      { id: 'editor', name: 'Ritstjóri', description: 'Review and approve translations', level: 3 },
+      { id: 'contributor', name: 'Þýðandi', description: 'Contribute translations', level: 2 },
+      { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 },
+    ],
+  });
+});
+
+/**
  * GET /api/admin/users/:id
  * Get user details
  */
@@ -790,27 +814,6 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
     console.error('Remove chapter assignment error:', err);
     res.status(500).json({ error: err.message });
   }
-});
-
-/**
- * GET /api/admin/users/roles
- * Get available roles and their descriptions
- */
-router.get('/users/roles', requireAuth, requireAdmin(), (req, res) => {
-  res.json({
-    roles: [
-      { id: 'admin', name: 'Kerfisstjóri', description: 'Full access to all features', level: 5 },
-      {
-        id: 'head-editor',
-        name: 'Aðalritstjóri',
-        description: 'Manage assigned books and reviewers',
-        level: 4,
-      },
-      { id: 'editor', name: 'Ritstjóri', description: 'Review and approve translations', level: 3 },
-      { id: 'contributor', name: 'Þýðandi', description: 'Contribute translations', level: 2 },
-      { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 },
-    ],
-  });
 });
 
 /**

@@ -23,22 +23,17 @@ const jwt = require('jsonwebtoken');
 const https = require('https');
 const userService = require('./userService');
 
-// Configuration from environment
-// Note: Required secrets are validated at startup by server/config.js
+// Enforce JWT_SECRET in all environments
+if (!process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is required');
+}
+
+// Configuration from environment (internal only - not exported)
 const CONFIG = {
   githubClientId: process.env.GITHUB_CLIENT_ID,
   githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
   githubOrg: process.env.GITHUB_ORG || 'namsbokasafn',
-  // JWT_SECRET is required in production - see server/config.js for validation
-  // In development, we allow a fallback but warn about it
-  jwtSecret:
-    process.env.JWT_SECRET ||
-    (() => {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn('⚠️  Using development JWT secret - do not use in production');
-      }
-      return 'development-secret-do-not-use-in-production';
-    })(),
+  jwtSecret: process.env.JWT_SECRET,
   jwtExpiry: process.env.JWT_EXPIRY || '24h',
   callbackUrl: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/api/auth/callback',
   // Comma-separated list of GitHub usernames with admin access (useful for org owners)
@@ -437,5 +432,4 @@ module.exports = {
   // Configuration
   isConfigured,
   getConfigStatus,
-  CONFIG,
 };

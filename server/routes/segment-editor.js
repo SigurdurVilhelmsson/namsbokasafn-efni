@@ -38,36 +38,8 @@ const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
-const { VALID_BOOKS } = require('../config');
+const { validateBookChapter, validateModule } = require('../middleware/validateParams');
 const VALID_CATEGORIES = ['terminology', 'accuracy', 'readability', 'style', 'omission'];
-
-// =====================================================================
-// PARAMETER VALIDATION
-// =====================================================================
-
-function validateBookChapter(req, res, next) {
-  const { book, chapter } = req.params;
-
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({ error: `Invalid book: ${book}` });
-  }
-
-  const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 50) {
-    return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
-  }
-
-  req.chapterNum = chapterNum;
-  next();
-}
-
-function validateModule(req, res, next) {
-  const { moduleId } = req.params;
-  if (!moduleId || !/^m\d{5}$/.test(moduleId)) {
-    return res.status(400).json({ error: `Invalid module ID: ${moduleId}` });
-  }
-  next();
-}
 
 // =====================================================================
 // EDITOR ENDPOINTS

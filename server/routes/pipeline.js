@@ -49,7 +49,7 @@ function validateParams(req, res) {
 
   const moduleId = req.body.moduleId;
   if (moduleId && !/^m\d{5}$/.test(moduleId)) {
-    res.status(400).json({ error: `Invalid module ID: ${moduleId}` });
+    res.status(400).json({ error: 'Invalid module ID format. Expected: m followed by 5 digits' });
     return null;
   }
 

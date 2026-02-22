@@ -3,6 +3,8 @@
  *
  * Provides pipeline status information for books and chapters.
  *
+ * Book parameter: :book (Icelandic slug, e.g., 'efnafraedi')
+ *
  * Endpoints:
  *   GET /api/status/dashboard          Get unified dashboard data (Mission Control)
  *   GET /api/status/:book              Get aggregated status for a book
@@ -26,6 +28,17 @@ const { VALID_BOOKS } = require('../config');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
+
+// Validate :book param on all routes that use it
+router.param('book', (req, res, next, book) => {
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
+    });
+  }
+  next();
+});
 
 // 8-step pipeline stages (extract-inject-render workflow)
 const PIPELINE_STAGES = [
@@ -323,13 +336,6 @@ router.get('/activity/types', requireAuth, (req, res) => {
 router.get('/:book', requireAuth, (req, res) => {
   const { book } = req.params;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
-
   try {
     const bookPath = path.join(PROJECT_ROOT, 'books', book);
     const chaptersPath = path.join(bookPath, 'chapters');
@@ -398,13 +404,6 @@ router.get('/:book', requireAuth, (req, res) => {
  */
 router.get('/:book/summary', requireAuth, (req, res) => {
   const { book } = req.params;
-
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
 
   try {
     const chaptersPath = path.join(PROJECT_ROOT, 'books', book, 'chapters');
@@ -487,13 +486,6 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
   const chapterNum = parseInt(chapter);
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
-
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
       error: 'Invalid chapter',
@@ -556,13 +548,6 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
 router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
   const chapterNum = parseInt(chapter);
-
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
@@ -1004,13 +989,6 @@ try {
 router.get('/:book/scan', requireAuth, (req, res) => {
   const { book } = req.params;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
-
   if (!bookRegistration || !bookRegistration.scanStatusDryRun) {
     return res.status(501).json({
       error: 'Not implemented',
@@ -1066,13 +1044,6 @@ router.get('/:book/scan', requireAuth, (req, res) => {
 router.post('/:book/sync', requireAuth, requireAdmin(), (req, res) => {
   const { book } = req.params;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
-
   if (!bookRegistration || !bookRegistration.scanAndUpdateStatus) {
     return res.status(501).json({
       error: 'Not implemented',
@@ -1106,13 +1077,6 @@ router.post('/:book/sync', requireAuth, requireAdmin(), (req, res) => {
 router.post('/:book/:chapter/sync', requireAuth, requireAdmin(), (req, res) => {
   const { book, chapter } = req.params;
   const chapterNum = parseInt(chapter);
-
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
