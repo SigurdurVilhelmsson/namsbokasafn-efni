@@ -9,17 +9,19 @@
  *
  * Output format:
  * {
+ *   "generated": "2026-02-22T14:30:00Z",
+ *   "termCount": 250,
  *   "entries": [
  *     {
- *       "term": "efnafræði",
- *       "definition": "rannsóknir á samsetningu, eiginleikum og samspili efnis",
- *       "chapters": [
- *         {
- *           "chapter": 1,
- *           "section": "1.1",
- *           "moduleId": "m68664"
- *         }
- *       ]
+ *       "termIs": "atóm",
+ *       "termEn": "atom",
+ *       "termFull": "atóm (e. atom)",
+ *       "definition": "minnsta eind frumefnis sem getur tekið þátt í efnahvarfi",
+ *       "chapter": 1,
+ *       "section": "1.2",
+ *       "sectionTitle": "Efnishamur og flokkun efnis",
+ *       "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+ *       "termId": "fs-idm8143856"
  *     }
  *   ]
  * }
@@ -27,7 +29,8 @@
  * Usage:
  *   node tools/generate-index.js --book efnafraedi
  *   node tools/generate-index.js --book efnafraedi --chapters 9,12,13
- *   node tools/generate-index.js --book efnafraedi --track faithful
+ *   node tools/generate-index.js --book efnafraedi --track mt-preview
+ *   node tools/generate-index.js --book efnafraedi --toc ../namsbokasafn-vefur/static/content/efnafraedi/toc.json
  */
 
 import fs from 'fs';
@@ -49,6 +52,7 @@ function parseArgs(args) {
     track: 'faithful',
     chapters: null,
     output: null,
+    toc: null,
     verbose: false,
     help: false,
   };
@@ -68,6 +72,8 @@ function parseArgs(args) {
       result.chapters = args[++i].split(',').map((n) => parseInt(n.trim(), 10));
     } else if (arg === '--output' && args[i + 1]) {
       result.output = args[++i];
+    } else if (arg === '--toc' && args[i + 1]) {
+      result.toc = args[++i];
     }
   }
 
@@ -79,7 +85,7 @@ function printHelp() {
 generate-index.js - Generate alphabetical index from glossary terms
 
 Extracts glossary terms from all chapters and creates an alphabetical
-index with chapter/section references.
+index with chapter/section references and IS/EN term splitting.
 
 Usage:
   node tools/generate-index.js --book <id> [options]
@@ -91,16 +97,92 @@ Options:
   --track TRACK     Publication track: faithful, mt-preview (default: faithful)
   --chapters N,N    Comma-separated chapters to process (default: all)
   --output PATH     Output file path (default: auto-detected)
+  --toc PATH        Path to toc.json for section slug/title info
   --verbose         Show detailed progress
   -h, --help        Show this help message
 
 Examples:
   # Generate index for all chapters
-  node tools/generate-index.js --book efnafraedi
+  node tools/generate-index.js --book efnafraedi --track mt-preview
 
-  # Generate for specific chapters
-  node tools/generate-index.js --book efnafraedi --chapters 9,12,13
+  # Generate for specific chapters with toc
+  node tools/generate-index.js --book efnafraedi --chapters 1,2,3 --toc ../namsbokasafn-vefur/static/content/efnafraedi/toc.json
 `);
+}
+
+// ============================================================================
+// Term Splitting
+// ============================================================================
+
+/**
+ * Split a term like "atóm (e. atom)" into IS and EN parts.
+ * Uses lastIndexOf to handle nested parentheses like "vermi (H) (e. enthalpy (h))".
+ */
+function splitTerm(fullTerm) {
+  const marker = ' (e. ';
+  const idx = fullTerm.lastIndexOf(marker);
+  if (idx === -1) return { termIs: fullTerm.trim(), termEn: null };
+  const termIs = fullTerm.substring(0, idx).trim();
+  let termEn = fullTerm.substring(idx + marker.length);
+  if (termEn.endsWith(')')) termEn = termEn.slice(0, -1);
+  return { termIs, termEn: termEn.trim() || null };
+}
+
+// ============================================================================
+// Section Mapping
+// ============================================================================
+
+/**
+ * Build moduleId → { chapter, section } mapping from chemistry-2e.json
+ */
+function loadModuleMap(_book) {
+  const dataPath = path.join('server', 'data', 'chemistry-2e.json');
+  if (!fs.existsSync(dataPath)) {
+    return null;
+  }
+  const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  const map = new Map();
+  for (const ch of data.chapters) {
+    for (const mod of ch.modules) {
+      map.set(mod.id, {
+        chapter: ch.chapter,
+        section: mod.section,
+      });
+    }
+  }
+  return map;
+}
+
+/**
+ * Load toc.json and build section number → { title, slug } mapping.
+ * Tries multiple auto-detection paths if no explicit path given.
+ */
+function loadTocMap(tocPath, book) {
+  // Auto-detect toc.json location
+  const candidates = tocPath
+    ? [tocPath]
+    : [path.join('..', 'namsbokasafn-vefur', 'static', 'content', book, 'toc.json')];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      const toc = JSON.parse(fs.readFileSync(candidate, 'utf8'));
+      const map = new Map();
+      for (const ch of toc.chapters || []) {
+        for (const sec of ch.sections || []) {
+          if (sec.number && sec.file) {
+            const slug = sec.file.replace('.html', '');
+            map.set(sec.number, {
+              title: sec.title,
+              slug,
+              chapter: ch.number,
+            });
+          }
+        }
+      }
+      return map;
+    }
+  }
+  return null;
 }
 
 // ============================================================================
@@ -220,7 +302,7 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
  * Build index from all glossary terms
  */
 function generateIndex(options) {
-  const { book, chapters, track, verbose } = options;
+  const { book, chapters, track, toc: tocPath, verbose } = options;
 
   console.log('');
   console.log('═'.repeat(60));
@@ -231,7 +313,21 @@ function generateIndex(options) {
   if (verbose) {
     console.log('Configuration:');
     console.log(`  Book: ${book}`);
+    console.log(`  Track: ${track}`);
     console.log(`  Chapters: ${chapters ? chapters.join(', ') : 'all'}`);
+    console.log('');
+  }
+
+  // Load module → section mapping
+  const moduleMap = loadModuleMap(book);
+  if (verbose) {
+    console.log(`Module map: ${moduleMap ? moduleMap.size + ' modules' : 'not loaded'}`);
+  }
+
+  // Load toc for section titles and slugs
+  const tocMap = loadTocMap(tocPath, book);
+  if (verbose) {
+    console.log(`TOC map: ${tocMap ? tocMap.size + ' sections' : 'not loaded'}`);
     console.log('');
   }
 
@@ -246,64 +342,75 @@ function generateIndex(options) {
     console.log('');
   }
 
-  // Collect all terms with their locations
+  // Collect all terms — one entry per term occurrence
   console.log('Extracting glossary terms...');
-  const termMap = new Map(); // term (normalized) -> entry object
+  const entries = [];
 
   for (const [chapterNum, modules] of modulesByChapter.entries()) {
     const chapterStr = String(chapterNum).padStart(2, '0');
+    let chapterTermCount = 0;
 
-    // Process only the last module (where glossary typically appears)
-    const lastModule = modules[modules.length - 1];
-    const cnxmlPath = path.join(
-      BOOKS_DIR,
-      book,
-      '03-translated',
-      track,
-      `ch${chapterStr}`,
-      `${lastModule}.cnxml`
-    );
+    // Process ALL modules in the chapter (bug fix: was only processing last module)
+    for (const moduleId of modules) {
+      const cnxmlPath = path.join(
+        BOOKS_DIR,
+        book,
+        '03-translated',
+        track,
+        `ch${chapterStr}`,
+        `${moduleId}.cnxml`
+      );
 
-    const terms = extractGlossaryFromCnxml(cnxmlPath, verbose);
+      const terms = extractGlossaryFromCnxml(cnxmlPath, verbose);
 
-    if (verbose && terms.length > 0) {
-      console.log(`  Chapter ${chapterNum}: ${terms.length} terms`);
+      for (const { term, definition, termId } of terms) {
+        const { termIs, termEn } = splitTerm(term);
+
+        // Look up section info from module map
+        const modInfo = moduleMap?.get(moduleId);
+        const section = modInfo?.section || null;
+
+        // Look up slug and title from toc map
+        const tocInfo = section ? tocMap?.get(section) : null;
+
+        const entry = {
+          termIs,
+          termEn,
+          termFull: term,
+          definition,
+          chapter: chapterNum,
+          section: section || null,
+          sectionTitle: tocInfo?.title || null,
+          sectionSlug: tocInfo?.slug || null,
+          termId,
+        };
+
+        entries.push(entry);
+        chapterTermCount++;
+      }
     }
 
-    // Add terms to index
-    for (const { term, definition, termId } of terms) {
-      const normalizedTerm = term.toLowerCase().trim();
-
-      if (!termMap.has(normalizedTerm)) {
-        termMap.set(normalizedTerm, {
-          term, // Use original case
-          definition,
-          chapters: [],
-        });
-      }
-
-      // Add chapter reference
-      const entry = termMap.get(normalizedTerm);
-      entry.chapters.push({
-        chapter: chapterNum,
-        moduleId: lastModule,
-        termId,
-      });
+    if (verbose && chapterTermCount > 0) {
+      console.log(`  Chapter ${chapterNum}: ${chapterTermCount} terms`);
     }
   }
 
-  console.log(`  Total unique terms: ${termMap.size}`);
+  console.log(`  Total term entries: ${entries.length}`);
   console.log('');
 
-  // Convert to array and sort alphabetically
+  // Sort alphabetically by Icelandic term
   console.log('Sorting entries...');
-  const entries = Array.from(termMap.values()).sort((a, b) =>
-    a.term.toLowerCase().localeCompare(b.term.toLowerCase(), 'is')
-  );
+  entries.sort((a, b) => a.termIs.toLowerCase().localeCompare(b.termIs.toLowerCase(), 'is'));
 
-  console.log(`Total index entries: ${entries.length}`);
+  // Count unique IS terms
+  const uniqueTerms = new Set(entries.map((e) => e.termIs.toLowerCase()));
+  console.log(`Total entries: ${entries.length} (${uniqueTerms.size} unique terms)`);
 
-  return { entries };
+  return {
+    generated: new Date().toISOString(),
+    termCount: entries.length,
+    entries,
+  };
 }
 
 // ============================================================================
@@ -352,7 +459,9 @@ async function main() {
     if (index.entries.length > 0) {
       console.log('Sample entries (first 5):');
       for (const entry of index.entries.slice(0, 5)) {
-        console.log(`  - ${entry.term} (appears in ${entry.chapters.length} chapter(s))`);
+        const en = entry.termEn ? ` (${entry.termEn})` : '';
+        const sec = entry.section ? ` — ${entry.section}` : '';
+        console.log(`  - ${entry.termIs}${en}${sec}`);
       }
     }
   } catch (err) {

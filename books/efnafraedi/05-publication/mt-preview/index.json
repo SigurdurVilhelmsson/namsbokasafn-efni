@@ -1,345 +1,3141 @@
 {
+  "generated": "2026-02-22T15:19:34.232Z",
+  "termCount": 285,
   "entries": [
     {
-      "term": "ástandsháð stærð",
+      "termIs": "aðalflokka frumefni",
+      "termEn": "main-group element",
+      "termFull": "aðalflokka frumefni (e. main-group element)",
+      "definition": "(einnig, dæmigert frumefni) frumefni í hópum 1, 2 og 13–18",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm316504400"
+    },
+    {
+      "termIs": "aðalflokkafrumefni",
+      "termEn": "representative element",
+      "termFull": "aðalflokkafrumefni (e. representative element)",
+      "definition": "frumefni í dálkum 1, 2 og 12–18",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm334010160"
+    },
+    {
+      "termIs": "aðferð upphafshraða",
+      "termEn": "method of initial rates",
+      "termFull": "aðferð upphafshraða (e. method of initial rates)",
+      "definition": "algeng tilraunaaðferð til að ákvarða hraðajöfnur sem felur í sér að mæla hvarfhraða við mismunandi upphafsstyrk hvarfefna",
+      "chapter": 12,
+      "section": "12.3",
+      "sectionTitle": "Hraðajöfnur",
+      "sectionSlug": "12-3-rate-laws",
+      "termId": "fs-idm176826832"
+    },
+    {
+      "termIs": "Afoxari",
+      "termEn": "reducing agent",
+      "termFull": "Afoxari (e. reducing agent)",
+      "definition": "efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp55091776"
+    },
+    {
+      "termIs": "Afoxun",
+      "termEn": "reduction",
+      "termFull": "Afoxun (e. reduction)",
+      "definition": "ferli þar sem oxunartala frumefnis lækkar vegna rafeindaásóknar",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp55090448"
+    },
+    {
+      "termIs": "afturkræft efnahvarf",
+      "termEn": "reversible reaction",
+      "termFull": "afturkræft efnahvarf (e. reversible reaction)",
+      "definition": "efnahvarf sem getur gengið bæði í framátt og bakátt við gefnar aðstæður",
+      "chapter": 13,
+      "section": "13.1",
+      "sectionTitle": "Efnajafnvægi",
+      "sectionSlug": "13-1-chemical-equilibria",
+      "termId": "fs-idp4379168"
+    },
+    {
+      "termIs": "aktiníð",
+      "termEn": "actinide",
+      "termFull": "aktiníð (e. actinide)",
+      "definition": "innri hliðarmálmur í neðri af tveimur neðstu röðum lotukerfisins",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm201164080"
+    },
+    {
+      "termIs": "alfaeind (α-eind)",
+      "termEn": "alpha particle (α particle)",
+      "termFull": "alfaeind (α-eind) (e. alpha particle (α particle))",
+      "definition": "jákvætt hlaðin eind sem samanstendur af tveimur róteindum og tveimur nifteindum",
+      "chapter": 2,
+      "section": "2.2",
+      "sectionTitle": "Þróun atómkenningarinnar",
+      "sectionSlug": "2-2-throun-atomkenningarinnar",
+      "termId": "fs-idm10811088"
+    },
+    {
+      "termIs": "alkalímálmur",
+      "termEn": "alkali metal",
+      "termFull": "alkalímálmur (e. alkali metal)",
+      "definition": "frumefni í hópi 1",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm207304016"
+    },
+    {
+      "termIs": "alkul",
+      "termEn": "absolute zero",
+      "termFull": "alkul (e. absolute zero)",
+      "definition": "hitastig þar sem rúmmál gass yrði núll samkvæmt lögmáli Charles.",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idp80443824"
+    },
+    {
+      "termIs": "anjón",
+      "termEn": "anion",
+      "termFull": "anjón (e. anion)",
+      "definition": "neikvætt hlaðið atóm eða sameind (inniheldur fleiri rafeindir en róteindir)",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idm68508272"
+    },
+    {
+      "termIs": "Arrheniusar-jafna",
+      "termEn": "arrhenius equation",
+      "termFull": "Arrheniusar-jafna (e. arrhenius equation)",
+      "definition": "stærðfræðilegt samband milli hraðafasta, virkjunarorku og hitastigs hvarfs",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-5-reaction-mechanisms",
+      "termId": "fs-idm187159584"
+    },
+    {
+      "termIs": "atóm",
+      "termEn": "atom",
+      "termFull": "atóm (e. atom)",
+      "definition": "minnsta eind frumefnis sem getur tekið þátt í efnahvarfi",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm8143856"
+    },
+    {
+      "termIs": "Atómkenning Daltons",
+      "termEn": "dalton’s atomic theory",
+      "termFull": "Atómkenning Daltons (e. dalton’s atomic theory)",
+      "definition": "safn fullyrðinga sem settu fram grundvallareiginleika atóma",
+      "chapter": 2,
+      "section": "2.1",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
+      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
+      "termId": "fs-idp110829184"
+    },
+    {
+      "termIs": "atómmassaeining (amu)",
+      "termEn": "atomic mass unit (amu)",
+      "termFull": "atómmassaeining (amu) (e. atomic mass unit (amu))",
+      "definition": "(einnig, sameinuð atómmassaeining, u, eða Dalton, Da) massaeining sem jafngildir 1/12 af massa 12C atóms",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idm20897872"
+    },
+    {
+      "termIs": "atómmassi",
+      "termEn": "atomic mass",
+      "termFull": "atómmassi (e. atomic mass)",
+      "definition": "meðalmassi atóma frumefnis, gefinn upp í atómmassaeiningum (amu)",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idp230158528"
+    },
+    {
+      "termIs": "Auðleystur",
+      "termEn": "soluble",
+      "termFull": "Auðleystur (e. soluble)",
+      "definition": "með tiltölulega mikinn leysni; leysist upp að tiltölulega miklu leyti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp64228624"
+    },
+    {
+      "termIs": "augnablikshraði",
+      "termEn": "instantaneous rate",
+      "termFull": "augnablikshraði (e. instantaneous rate)",
+      "definition": "hvarfhraði efnahvarfs á hverjum tíma, ákvarðaður af halla snertils við línurit yfir styrk sem fall af tíma",
+      "chapter": 12,
+      "section": "12.1",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-chemical-reaction-rates",
+      "termId": "fs-idp70925872"
+    },
+    {
+      "termIs": "Áhorfendajón",
+      "termEn": "spectator ion",
+      "termFull": "Áhorfendajón (e. spectator ion)",
+      "definition": "Jón sem gengst ekki undir efna- eða eðlisfræðilega breytingu í hvarfi, en nærvera hennar er nauðsynleg til að viðhalda hleðsluhlutleysi",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp271280640"
+    },
+    {
+      "termIs": "árekstrakenningin",
+      "termEn": "collision theory",
+      "termFull": "árekstrakenningin (e. collision theory)",
+      "definition": "líkan sem leggur áherslu á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um hraðafræði hvarfa",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-5-reaction-mechanisms",
+      "termId": "fs-idm101548864"
+    },
+    {
+      "termIs": "ástandsháð stærð",
+      "termEn": "state function",
+      "termFull": "ástandsháð stærð (e. state function)",
       "definition": "eiginleiki sem fer aðeins eftir ástandi kerfis en ekki leiðinni sem farin var til að ná því ástandi",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102396512"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102396512"
     },
     {
-      "term": "efnavarmafræði",
+      "termIs": "bar",
+      "termEn": null,
+      "termFull": "bar",
+      "definition": "(bar eða b) þrýstingseining; 1 bar = 100.000 Pa",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm49164816"
+    },
+    {
+      "termIs": "basi",
+      "termEn": "base",
+      "termFull": "basi (e. base)",
+      "definition": "efni sem myndar OH− þegar það er leyst upp í vatni",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm54008672"
+    },
+    {
+      "termIs": "blanda",
+      "termEn": "mixture",
+      "termFull": "blanda (e. mixture)",
+      "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm5111888"
+    },
+    {
+      "termIs": "Botnfall",
+      "termEn": "precipitate",
+      "termFull": "Botnfall (e. precipitate)",
+      "definition": "torleyst myndefni sem myndast við efnahvarf auðleystra hvarfefna",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp57132192"
+    },
+    {
+      "termIs": "brunagreining",
+      "termEn": "combustion analysis",
+      "termFull": "brunagreining (e. combustion analysis)",
+      "definition": "þyngdarmælingaraðferð sem notuð er til að ákvarða frumefnasamsetningu efnasambands með söfnun og vigtun á loftkenndum myndefnum bruna þess",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp72814256"
+    },
+    {
+      "termIs": "brunahvarf",
+      "termEn": "combustion reaction",
+      "termFull": "brunahvarf (e. combustion reaction)",
+      "definition": "kröftugt oxunar-afoxunarhvarf sem framleiðir umtalsvert magn af orku í formi varma og stundum ljóss",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm54007136"
+    },
+    {
+      "termIs": "búretta",
+      "termEn": "buret",
+      "termFull": "búretta (e. buret)",
+      "definition": "tæki sem notað er til að skammta nákvæmlega breytilegt rúmmál vökva, til dæmis við títrunargreiningu",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp237960512"
+    },
+    {
+      "termIs": "byggingarformúla",
+      "termEn": "structural formula",
+      "termFull": "byggingarformúla (e. structural formula)",
+      "definition": "sýnir atómin í sameind og hvernig þau eru tengd",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idm163422864"
+    },
+    {
+      "termIs": "byggingarísómera",
+      "termEn": "structural isomer",
+      "termFull": "byggingarísómera (e. structural isomer)",
+      "definition": "annað tveggja efna sem hafa sömu sameindaformúlu en ólíka eðlis- og efnaeiginleika vegna þess að atóm þeirra eru tengd á mismunandi hátt",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idp1084128"
+    },
+    {
+      "termIs": "Dalton (Da)",
+      "termEn": null,
+      "termFull": "Dalton (Da)",
+      "definition": "önnur eining sem jafngildir atómmassaeiningu",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idm103888640"
+    },
+    {
+      "termIs": "Daltons-lögmálið um\nhlutþrýsting",
+      "termEn": "dalton’s law of partial pressures",
+      "termFull": "Daltons-lögmálið um\nhlutþrýsting (e. dalton’s law of partial pressures)",
+      "definition": "heildarþrýstingur efnablöndu af kjörgasi er jafn summu hlutþrýstings íhlutagasanna",
+      "chapter": 9,
+      "section": "9.3",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda\nog efnahvarfa",
+      "sectionSlug": "9-3-stoichiometry-of-gaseous-substances-mixtures-and-r",
+      "termId": "fs-idp142977184"
+    },
+    {
+      "termIs": "eðalgas",
+      "termEn": "noble gas",
+      "termFull": "eðalgas (e. noble gas)",
+      "definition": "(einnig, hlutlaust gas) frumefni í hópi 18",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm212442080"
+    },
+    {
+      "termIs": "eðlisbreyting",
+      "termEn": "physical change",
+      "termFull": "eðlisbreyting (e. physical change)",
+      "definition": "breyting á ástandi eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idm13656928"
+    },
+    {
+      "termIs": "eðliseiginleiki",
+      "termEn": "physical property",
+      "termFull": "eðliseiginleiki (e. physical property)",
+      "definition": "einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idm12232368"
+    },
+    {
+      "termIs": "eðlismassi",
+      "termEn": "density",
+      "termFull": "eðlismassi (e. density)",
+      "definition": "hlutfall massa og rúmmáls fyrir efni eða hlut",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm147403536"
+    },
+    {
+      "termIs": "eðlisvarmi (c)",
+      "termEn": "specific heat capacity (c)",
+      "termFull": "eðlisvarmi (c) (e. specific heat capacity (c))",
+      "definition": "innri eiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig 1 gramms af efninu um 1 gráðu á Celsíus (eða 1 kelvin)",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp31727024"
+    },
+    {
+      "termIs": "efnabreyting",
+      "termEn": "chemical change",
+      "termFull": "efnabreyting (e. chemical change)",
+      "definition": "breyting sem framleiðir annars konar efni en upprunalega efnið",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idp392534800"
+    },
+    {
+      "termIs": "efnaeiginleiki",
+      "termEn": "chemical property",
+      "termFull": "efnaeiginleiki (e. chemical property)",
+      "definition": "hegðun sem tengist breytingu á einni tegund efnis í aðra",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idm88320752"
+    },
+    {
+      "termIs": "efnafræði",
+      "termEn": "chemistry",
+      "termFull": "efnafræði (e. chemistry)",
+      "definition": "rannsókn á samsetningu, eiginleikum og víxlverkun efnis",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idm42704816"
+    },
+    {
+      "termIs": "Efnajafna",
+      "termEn": "chemical equation",
+      "termFull": "Efnajafna (e. chemical equation)",
+      "definition": "Táknræn framsetning á efnahvarfi",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp46927152"
+    },
+    {
+      "termIs": "efnasamband",
+      "termEn": "compound",
+      "termFull": "efnasamband (e. compound)",
+      "definition": "hreint efni sem hægt er að sundra í tvö eða fleiri frumefni",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm115227296"
+    },
+    {
+      "termIs": "efnatákn",
+      "termEn": "chemical symbol",
+      "termFull": "efnatákn (e. chemical symbol)",
+      "definition": "eins, tveggja eða þriggja stafa skammstöfun sem notuð er til að tákna frumefni eða atóm þess",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idm109251440"
+    },
+    {
+      "termIs": "efnavarmafræði",
+      "termEn": "chemical thermodynamics",
+      "termFull": "efnavarmafræði (e. chemical thermodynamics)",
       "definition": "vísindasvið sem fjallar um tengslin milli varma, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102379584"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102379584"
     },
     {
-      "term": "einsleitur hvati",
+      "termIs": "efni",
+      "termEn": "matter",
+      "termFull": "efni (e. matter)",
+      "definition": "allt sem tekur pláss og hefur massa",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm23865104"
+    },
+    {
+      "termIs": "eigindlegur eiginleiki",
+      "termEn": "intensive property",
+      "termFull": "eigindlegur eiginleiki (e. intensive property)",
+      "definition": "eiginleiki efnis sem er óháður magni efnisins",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idp42386976"
+    },
+    {
+      "termIs": "einatóma jón",
+      "termEn": "monatomic ion",
+      "termFull": "einatóma jón (e. monatomic ion)",
+      "definition": "jón sem samanstendur af einu atómi",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp136404896"
+    },
+    {
+      "termIs": "Einföld skipti",
+      "termEn": "single-displacement reaction",
+      "termFull": "Einföld skipti (e. single-displacement reaction)",
+      "definition": "oxunar-afoxunarhvarf sem felur í sér oxun frumefnis með jónaefni",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp64227344"
+    },
+    {
+      "termIs": "eining",
+      "termEn": "unit",
+      "termFull": "eining (e. unit)",
+      "definition": "samanburðarstaðall fyrir mælingar",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm331555696"
+    },
+    {
+      "termIs": "einsameindahvarf",
+      "termEn": "unimolecular reaction",
+      "termFull": "einsameindahvarf (e. unimolecular reaction)",
+      "definition": "grunnskrefshvarf sem felur í sér eina hvarfefnaeind",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idm2926992"
+    },
+    {
+      "termIs": "einsleit blanda",
+      "termEn": "homogeneous mixture",
+      "termFull": "einsleit blanda (e. homogeneous mixture)",
+      "definition": "(einnig lausn) blanda efna með samsetningu sem er einsleit í gegn",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm25215648"
+    },
+    {
+      "termIs": "einsleitt jafnvægi",
+      "termEn": "homogeneous equilibria",
+      "termFull": "einsleitt jafnvægi (e. homogeneous equilibria)",
+      "definition": "jafnvægi þar sem öll hvarfefni og myndefni eru í sama fasa",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-equilibrium-constants",
+      "termId": "fs-idp35066960"
+    },
+    {
+      "termIs": "einsleitur hvati",
+      "termEn": "homogeneous catalyst",
+      "termFull": "einsleitur hvati (e. homogeneous catalyst)",
       "definition": "hvati sem er í sama fasa og hvarfefnin",
-      "chapters": [
-        {
-          "chapter": 12,
-          "moduleId": "m68795",
-          "termId": "fs-idm218392224"
-        }
-      ]
+      "chapter": 12,
+      "section": "12.7",
+      "sectionTitle": "Heildun hraðalögmála",
+      "sectionSlug": "12-7-integrated-rate-laws",
+      "termId": "fs-idm218392224"
     },
     {
-      "term": "fyrsta lögmál\nvarmafræðinnar",
+      "termIs": "Fahrenheit",
+      "termEn": null,
+      "termFull": "Fahrenheit",
+      "definition": "eining fyrir hitastig; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð niðurstaðna mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "termId": "fs-idm207141104"
+    },
+    {
+      "termIs": "fast efni",
+      "termEn": "solid",
+      "termFull": "fast efni (e. solid)",
+      "definition": "efnishamur sem er stífur, hefur ákveðna lögun og nokkuð fast rúmmál",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm10806528"
+    },
+    {
+      "termIs": "fjölatóma jón",
+      "termEn": "polyatomic ion",
+      "termFull": "fjölatóma jón (e. polyatomic ion)",
+      "definition": "jón sem samanstendur af fleiri en einu atómi",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp93746160"
+    },
+    {
+      "termIs": "formúlumassi",
+      "termEn": "formula mass",
+      "termFull": "formúlumassi (e. formula mass)",
+      "definition": "summa meðalmassa allra atóma sem koma fram í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassinn",
+      "chapter": 3,
+      "section": "3.1",
+      "sectionTitle": "Formúlumassi og mólhugtakið",
+      "sectionSlug": "3-1-formulumassi-og-molhugtakid",
+      "termId": "fs-idp40905984"
+    },
+    {
+      "termIs": "frumefni",
+      "termEn": "element",
+      "termFull": "frumefni (e. element)",
+      "definition": "efni sem er samsett úr einni tegund atóma; efni sem ekki er hægt að sundra með efnabreytingu",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm6667232"
+    },
+    {
+      "termIs": "fræðilegar heimtur",
+      "termEn": "theoretical yield",
+      "termFull": "fræðilegar heimtur (e. theoretical yield)",
+      "definition": "magn myndefnis sem hægt er að framleiða úr tilteknu magni hvarfefna samkvæmt hlutfallaefnafræði hvarfsins",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idp30967968"
+    },
+    {
+      "termIs": "fyrsta lögmál\nvarmafræðinnar",
+      "termEn": "first law of thermodynamics",
+      "termFull": "fyrsta lögmál\nvarmafræðinnar (e. first law of thermodynamics)",
       "definition": "innri orka kerfis breytist vegna varmaflæðis inn í eða út úr kerfinu eða vinnu sem er unnin á kerfinu eða af því",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102384368"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102384368"
     },
     {
-      "term": "innri orka (U)",
+      "termIs": "gas",
+      "termEn": null,
+      "termFull": "gas",
+      "definition": "efnishamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm37203312"
+    },
+    {
+      "termIs": "greiningarefni",
+      "termEn": "analyte",
+      "termFull": "greiningarefni (e. analyte)",
+      "definition": "efni sem á að greina",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp17888704"
+    },
+    {
+      "termIs": "grunneining hleðslu",
+      "termEn": "fundamental unit of charge",
+      "termFull": "grunneining hleðslu (e. fundamental unit of charge)",
+      "definition": "(einnig kölluð einingarhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 × 10−19 C",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idp226765840"
+    },
+    {
+      "termIs": "grunnskrefshvarf",
+      "termEn": "elementary reaction",
+      "termFull": "grunnskrefshvarf (e. elementary reaction)",
+      "definition": "hvarf sem á sér stað í einu skrefi, nákvæmlega eins og sýnt er í efnajöfnu þess",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp36862592"
+    },
+    {
+      "termIs": "gufunarþrýstingur vatns",
+      "termEn": "vapor pressure of water",
+      "termFull": "gufunarþrýstingur vatns (e. vapor pressure of water)",
+      "definition": "þrýstingur sem vatnsgufa beitir í jafnvægi við fljótandi vatn í lokuðu íláti við ákveðið hitastig",
+      "chapter": 9,
+      "section": "9.3",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda\nog efnahvarfa",
+      "sectionSlug": "9-3-stoichiometry-of-gaseous-substances-mixtures-and-r",
+      "termId": "fs-idp57901520"
+    },
+    {
+      "termIs": "halógen",
+      "termEn": "halogen",
+      "termFull": "halógen (e. halogen)",
+      "definition": "frumefni í hópi 17",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm222932416"
+    },
+    {
+      "termIs": "hálfhvarf",
+      "termEn": "half-reaction",
+      "termFull": "hálfhvarf (e. half-reaction)",
+      "definition": "jafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í hvarfi.",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28945840"
+    },
+    {
+      "termIs": "hálfmálmur",
+      "termEn": "metalloid",
+      "termFull": "hálfmálmur (e. metalloid)",
+      "definition": "frumefni sem leiðir varma og rafmagn í meðallagi vel og býr yfir sumum eiginleikum málma og sumum eiginleikum málmleysingja",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm212688864"
+    },
+    {
+      "termIs": "heildað hraðalögmál",
+      "termEn": "integrated rate law",
+      "termFull": "heildað hraðalögmál (e. integrated rate law)",
+      "definition": "jafna sem tengir styrk hvarfefnis við liðinn tíma hvarfs",
+      "chapter": 12,
+      "section": "12.4",
+      "sectionTitle": "Árekstrakenningin",
+      "sectionSlug": "12-4-collision-theory",
+      "termId": "fs-idm46847680"
+    },
+    {
+      "termIs": "Heildarjónajafna",
+      "termEn": "complete ionic equation",
+      "termFull": "Heildarjónajafna (e. complete ionic equation)",
+      "definition": "Efnajafna þar sem öll uppleyst jónísk hvarfefni og myndefni, þar með taldar áhorfendajónir, eru sýnd með formúlum fyrir klofnuðu jónirnar sínar",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp261286592"
+    },
+    {
+      "termIs": "heildarstig efnahvarfs",
+      "termEn": "overall reaction order",
+      "termFull": "heildarstig efnahvarfs (e. overall reaction order)",
+      "definition": "summa stiga efnahvarfs fyrir hvert efni sem kemur fram í hraðajöfnunni",
+      "chapter": 12,
+      "section": "12.3",
+      "sectionTitle": "Hraðajöfnur",
+      "sectionSlug": "12-3-rate-laws",
+      "termId": "fs-idm276164832"
+    },
+    {
+      "termIs": "helmingunartími hvarfs\n(t1/2)",
+      "termEn": "half-life of a reaction (tl/2)",
+      "termFull": "helmingunartími hvarfs\n(t1/2) (e. half-life of a reaction (tl/2))",
+      "definition": "tími sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast",
+      "chapter": 12,
+      "section": "12.4",
+      "sectionTitle": "Árekstrakenningin",
+      "sectionSlug": "12-4-collision-theory",
+      "termId": "fs-idm46849712"
+    },
+    {
+      "termIs": "hitastig",
+      "termEn": "temperature",
+      "termFull": "hitastig (e. temperature)",
+      "definition": "ástandseiginleiki sem táknar hita eða kulda efnis",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð niðurstaðna mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "termId": "fs-idm327357936"
+    },
+    {
+      "termIs": "hitastig",
+      "termEn": "temperature",
+      "termFull": "hitastig (e. temperature)",
+      "definition": "innri eiginleiki efnis sem er magnbundin mæling á „hita“ og „kulda“",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp31728864"
+    },
+    {
+      "termIs": "hliðarmálmur",
+      "termEn": "transition metal",
+      "termFull": "hliðarmálmur (e. transition metal)",
+      "definition": "frumefni í hópum 3–12 (nánar tiltekið, 3–11; sjá kafla um hliðarmálma og samhæfingarefnafræði)",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm231758480"
+    },
+    {
+      "termIs": "hlutfallaefnafræði",
+      "termEn": "stoichiometry",
+      "termFull": "hlutfallaefnafræði (e. stoichiometry)",
+      "definition": "tengsl milli magns hvarfefna og myndefna í efnahvarfi",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Hlutfallaefnafræði efnahvarfa",
+      "sectionSlug": "4-3-hlutfallaefnafraedi-efnahvarfa",
+      "termId": "fs-idp127462672"
+    },
+    {
+      "termIs": "hlutfallaþáttur",
+      "termEn": "stoichiometric factor",
+      "termFull": "hlutfallaþáttur (e. stoichiometric factor)",
+      "definition": "hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Hlutfallaefnafræði efnahvarfa",
+      "sectionSlug": "4-3-hlutfallaefnafraedi-efnahvarfa",
+      "termId": "fs-idp127461392"
+    },
+    {
+      "termIs": "hlutlaust gas",
+      "termEn": "inert gas",
+      "termFull": "hlutlaust gas (e. inert gas)",
+      "definition": "(einnig eðalgas) frumefni í hópi 18",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm318657088"
+    },
+    {
+      "termIs": "Hlutleysing",
+      "termEn": "neutralization reaction",
+      "termFull": "Hlutleysing (e. neutralization reaction)",
+      "definition": "efnahvarf milli sýru og basa sem myndar salt og vatn",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28943536"
+    },
+    {
+      "termIs": "hlutþrýstingur",
+      "termEn": "partial pressure",
+      "termFull": "hlutþrýstingur (e. partial pressure)",
+      "definition": "þrýstingur sem einstakt gas í efnablöndu beitir",
+      "chapter": 9,
+      "section": "9.3",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda\nog efnahvarfa",
+      "sectionSlug": "9-3-stoichiometry-of-gaseous-substances-mixtures-and-r",
+      "termId": "fs-idp104769888"
+    },
+    {
+      "termIs": "hópur",
+      "termEn": "group",
+      "termFull": "hópur (e. group)",
+      "definition": "lóðréttur dálkur í lotukerfinu",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm20590592"
+    },
+    {
+      "termIs": "hraðafasti (k)",
+      "termEn": "rate constant (k)",
+      "termFull": "hraðafasti (k) (e. rate constant (k))",
+      "definition": "jöfnunarfasti í hraðajöfnu",
+      "chapter": 12,
+      "section": "12.3",
+      "sectionTitle": "Hraðajöfnur",
+      "sectionSlug": "12-3-rate-laws",
+      "termId": "fs-idm185628880"
+    },
+    {
+      "termIs": "hraðajafna",
+      "termEn": "rate expression",
+      "termFull": "hraðajafna (e. rate expression)",
+      "definition": "stærðfræðileg framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða þrýstingi hvarfefnis eða myndefnis á tímaeiningu",
+      "chapter": 12,
+      "section": "12.1",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-chemical-reaction-rates",
+      "termId": "fs-idp193131840"
+    },
+    {
+      "termIs": "hraðajafna",
+      "termEn": "rate law",
+      "termFull": "hraðajafna (e. rate law)",
+      "definition": "(einnig, hraðalögmál) (einnig, diffrað hraðalögmál) stærðfræðileg jafna sem sýnir hvernig hvarfhraði er háður hraðafasta og styrk eins eða fleiri hvarfefna",
+      "chapter": 12,
+      "section": "12.3",
+      "sectionTitle": "Hraðajöfnur",
+      "sectionSlug": "12-3-rate-laws",
+      "termId": "fs-idm215968704"
+    },
+    {
+      "termIs": "hraðatakmarkandi skref",
+      "termEn": "rate-determining step",
+      "termFull": "hraðatakmarkandi skref (e. rate-determining step)",
+      "definition": "(einnig hraðatakmarkandi þrep) hægasta grunnskrefshvarfið í hvarfgangi; ákvarðar hraða heildarhvarfsins",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp105000160"
+    },
+    {
+      "termIs": "hreint efni",
+      "termEn": "pure substance",
+      "termFull": "hreint efni (e. pure substance)",
+      "definition": "einsleitt efni sem hefur fasta samsetningu",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm37107584"
+    },
+    {
+      "termIs": "hreyfifræðikenning\nsameinda",
+      "termEn": "kinetic molecular theory",
+      "termFull": "hreyfifræðikenning\nsameinda (e. kinetic molecular theory)",
+      "definition": "kenning sem byggir á einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun kjörgass",
+      "chapter": 9,
+      "section": "9.5",
+      "sectionTitle": "Hreyfi- og sameindakenningin",
+      "sectionSlug": "9-5-the-kinetic-molecular-theory",
+      "termId": "fs-idm198763536"
+    },
+    {
+      "termIs": "hreyfiorka",
+      "termEn": "kinetic energy",
+      "termFull": "hreyfiorka (e. kinetic energy)",
+      "definition": "orka sem tengist hreyfingu hlutar, jöfn helmingi margfeldis massa hlutarins og hraða hans í öðru veldi, 12mv2 (þar sem m = massi og v = hraði)",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25509680"
+    },
+    {
+      "termIs": "Hvarfefni",
+      "termEn": "reactant",
+      "termFull": "Hvarfefni (e. reactant)",
+      "definition": "Efni sem gengst undir efna- eða eðlisfræðilega breytingu; sýnt vinstra megin við örina í efnajöfnu",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp145225344"
+    },
+    {
+      "termIs": "hvarfgangur",
+      "termEn": "reaction mechanism",
+      "termFull": "hvarfgangur (e. reaction mechanism)",
+      "definition": "skrefaskipt röð grunnskrefshvarfa þar sem efnabreyting á sér stað",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp154473568"
+    },
+    {
+      "termIs": "hvarfhraði",
+      "termEn": "rate of reaction",
+      "termFull": "hvarfhraði (e. rate of reaction)",
+      "definition": "mælikvarði á hraða efnahvarfs",
+      "chapter": 12,
+      "section": "12.1",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-chemical-reaction-rates",
+      "termId": "fs-idp172602144"
+    },
+    {
+      "termIs": "hvarfrit",
+      "termEn": "reaction diagram",
+      "termFull": "hvarfrit (e. reaction diagram)",
+      "definition": "notað í efnahraðafræði til að sýna ýmsa eiginleika hvarfs",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-5-reaction-mechanisms",
+      "termId": "fs-idm355773584"
+    },
+    {
+      "termIs": "hvarfstuðull (Q)",
+      "termEn": "reaction quotient (q)",
+      "termFull": "hvarfstuðull (Q) (e. reaction quotient (q))",
+      "definition": "stærðfræðilegt fall sem lýsir hlutfallslegu magni hvarfefna og myndefna í efnablöndu; má gefa upp með styrk (Qc) eða þrýstingi (Qp)",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-equilibrium-constants",
+      "termId": "fs-idp74361936"
+    },
+    {
+      "termIs": "hvati",
+      "termEn": "catalyst",
+      "termFull": "hvati (e. catalyst)",
+      "definition": "efni sem eykur hvarfhraða án þess að eyðast sjálft í hvarfinu",
+      "chapter": 12,
+      "section": "12.2",
+      "sectionTitle": "Þættir sem hafa áhrif á hvarfhraða",
+      "sectionSlug": "12-2-factors-affecting-reaction-rates",
+      "termId": "fs-idp102379584"
+    },
+    {
+      "termIs": "hýdrat",
+      "termEn": "hydrate",
+      "termFull": "hýdrat (e. hydrate)",
+      "definition": "efnasamband sem inniheldur eina eða fleiri vatnssameindir bundnar innan kristalla sinna",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm237806112"
+    },
+    {
+      "termIs": "innri hliðarmálmur",
+      "termEn": "inner transition metal",
+      "termFull": "innri hliðarmálmur (e. inner transition metal)",
+      "definition": "(einnig lanþaníð eða aktiníð) frumefni í tveimur neðstu röðunum; ef í fyrstu röðinni, einnig kallað lanþaníð, eða ef í annarri röðinni, einnig kallað aktiníð",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm376829360"
+    },
+    {
+      "termIs": "innri orka (U)",
+      "termEn": "internal energy (u)",
+      "termFull": "innri orka (U) (e. internal energy (u))",
       "definition": "heildarsumma allra mögulegra tegunda orku sem er til staðar í efni eða efnum",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102386960"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102386960"
     },
     {
-      "term": "kolvetni",
+      "termIs": "innvermið ferli",
+      "termEn": "endothermic process",
+      "termFull": "innvermið ferli (e. endothermic process)",
+      "definition": "efnahvarf eða eðlisbreyting sem gleypir varma",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25501040"
+    },
+    {
+      "termIs": "ísómerur",
+      "termEn": "isomers",
+      "termFull": "ísómerur (e. isomers)",
+      "definition": "efnasambönd með sömu efnaformúlu en ólíka byggingu",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idp55104"
+    },
+    {
+      "termIs": "jafngildispunktur",
+      "termEn": "end point",
+      "termFull": "jafngildispunktur (e. end point)",
+      "definition": "mælt rúmmál títrantslausnar sem veldur breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við fyrir efnajafngildi (sjá jafngildispunktur)",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp276080304"
+    },
+    {
+      "termIs": "jafngildispunktur",
+      "termEn": "equivalence point",
+      "termFull": "jafngildispunktur (e. equivalence point)",
+      "definition": "rúmmál títrantslausnar sem þarf til að hvarfast að fullu við greiningarefnið í títrunargreiningu; gefur efnajafngilt magn títrants fyrir greiningarefni sýnisins samkvæmt títrunarhvarfinu",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp90910688"
+    },
+    {
+      "termIs": "jafnvægi",
+      "termEn": "equilibrium",
+      "termFull": "jafnvægi (e. equilibrium)",
+      "definition": "ástand afturkræfs efnahvarfs þar sem framhvarfið og bakhvarfið eiga sér stað með jöfnum hraða",
+      "chapter": 13,
+      "section": "13.1",
+      "sectionTitle": "Efnajafnvægi",
+      "sectionSlug": "13-1-chemical-equilibria",
+      "termId": "fs-idp87452944"
+    },
+    {
+      "termIs": "jafnvægisfasti (K)",
+      "termEn": "equilibrium constant (k)",
+      "termFull": "jafnvægisfasti (K) (e. equilibrium constant (k))",
+      "definition": "gildi hvarfstuðuls fyrir kerfi í jafnvægi; má gefa upp með styrk (Kc) eða hlutþrýstingi (Kp)",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-equilibrium-constants",
+      "termId": "fs-idp63345136"
+    },
+    {
+      "termIs": "jarðalkalímálmur",
+      "termEn": "alkaline earth metal",
+      "termFull": "jarðalkalímálmur (e. alkaline earth metal)",
+      "definition": "frumefni í hópi 2",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm187131904"
+    },
+    {
+      "termIs": "jón",
+      "termEn": "ion",
+      "termFull": "jón (e. ion)",
+      "definition": "rafmagnslega hlaðið atóm eða sameind (inniheldur ójafnan fjölda róteinda og rafeinda)",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idp277782656"
+    },
+    {
+      "termIs": "jónaefni",
+      "termEn": "ionic compound",
+      "termFull": "jónaefni (e. ionic compound)",
+      "definition": "efnasamband sem samanstendur af katjónum og anjónum í ákveðnum hlutföllum sem gefa rafhlutlaust efni",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp182712496"
+    },
+    {
+      "termIs": "jónatengi",
+      "termEn": "ionic bond",
+      "termFull": "jónatengi (e. ionic bond)",
+      "definition": "rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna jónaefnis",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp160949776"
+    },
+    {
+      "termIs": "júl (J)",
+      "termEn": "joule (j)",
+      "termFull": "júl (J) (e. joule (j))",
+      "definition": "SI-eining orku; orkumagn sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1 kg m2/s2 og 4.184 J = 1 cal",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25507984"
+    },
+    {
+      "termIs": "kalkógen",
+      "termEn": "chalcogen",
+      "termFull": "kalkógen (e. chalcogen)",
+      "definition": "frumefni í hópi 16",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm30748464"
+    },
+    {
+      "termIs": "kaloríumæling",
+      "termEn": "calorimetry",
+      "termFull": "kaloríumæling (e. calorimetry)",
+      "definition": "ferlið við að mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idm56358720"
+    },
+    {
+      "termIs": "kaloríumælir",
+      "termEn": "calorimeter",
+      "termFull": "kaloríumælir (e. calorimeter)",
+      "definition": "tæki sem notað er til að mæla magn varma sem frásogast eða losnar í efna- eða eðlisfræðilegu ferli",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idm56359488"
+    },
+    {
+      "termIs": "kalóría (cal)",
+      "termEn": "calorie (cal)",
+      "termFull": "kalóría (cal) (e. calorie (cal))",
+      "definition": "eining fyrir varma eða aðra orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni um 1 gráðu á Celsíus; 1 cal er skilgreint sem 4,184 J",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25499888"
+    },
+    {
+      "termIs": "katjón",
+      "termEn": "cation",
+      "termFull": "katjón (e. cation)",
+      "definition": "jákvætt hlaðið atóm eða sameind (inniheldur færri rafeindir en róteindir)",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idp1800912"
+    },
+    {
+      "termIs": "kelvin (K)",
+      "termEn": null,
+      "termFull": "kelvin (K)",
+      "definition": "SI-eining hitastigs; 273,15 K = 0 °C",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm160547456"
+    },
+    {
+      "termIs": "kenning",
+      "termEn": "theory",
+      "termFull": "kenning (e. theory)",
+      "definition": "vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idm134113488"
+    },
+    {
+      "termIs": "kerfi",
+      "termEn": "system",
+      "termFull": "kerfi (e. system)",
+      "definition": "hluti efnis sem er að gangast undir efna- eða eðlisfræðilega breytingu sem er til rannsóknar",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idp41853808"
+    },
+    {
+      "termIs": "kílógramm (kg)",
+      "termEn": "kilogram (kg)",
+      "termFull": "kílógramm (kg) (e. kilogram (kg))",
+      "definition": "stöðluð SI-eining massa",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm228140240"
+    },
+    {
+      "termIs": "kjarni",
+      "termEn": "nucleus",
+      "termFull": "kjarni (e. nucleus)",
+      "definition": "massamikil, jákvætt hlaðin miðja atóms sem samanstendur af róteindum og nifteindum",
+      "chapter": 2,
+      "section": "2.2",
+      "sectionTitle": "Þróun atómkenningarinnar",
+      "sectionSlug": "2-2-throun-atomkenningarinnar",
+      "termId": "fs-idp130134704"
+    },
+    {
+      "termIs": "kjörgas",
+      "termEn": "ideal gas",
+      "termFull": "kjörgas (e. ideal gas)",
+      "definition": "tilbúið gas sem eðliseiginleikum þess er fullkomlega lýst með gaslögmálunum",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm161542192"
+    },
+    {
+      "termIs": "kjörgasfastinn (R)",
+      "termEn": "ideal gas constant (r)",
+      "termFull": "kjörgasfastinn (R) (e. ideal gas constant (r))",
+      "definition": "fasti fenginn úr kjörgasjöfnunni R = 0,08206 L atm mól–1 K–1 eða 8,314 L kPa mól–1 K–1",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm78852976"
+    },
+    {
+      "termIs": "kjörgaslögmálið",
+      "termEn": "ideal gas law",
+      "termFull": "kjörgaslögmálið (e. ideal gas law)",
+      "definition": "samband milli þrýstings, rúmmáls, magns og hitastigs gass við aðstæður sem fengnar eru með samsetningu einföldu gaslögmálanna",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm111878496"
+    },
+    {
+      "termIs": "kolvetni",
+      "termEn": "hydrocarbon",
+      "termFull": "kolvetni (e. hydrocarbon)",
       "definition": "efnasamband sem samanstendur eingöngu af vetni og kolefni; aðalefnið í jarðefnaeldsneyti",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102386192"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102386192"
     },
     {
-      "term": "lögmál Hess",
+      "termIs": "lanþaníð",
+      "termEn": "lanthanide",
+      "termFull": "lanþaníð (e. lanthanide)",
+      "definition": "innri hliðarmálmur í efri af tveimur neðstu röðum lotukerfisins",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm380448704"
+    },
+    {
+      "termIs": "lengd",
+      "termEn": "length",
+      "termFull": "lengd (e. length)",
+      "definition": "mælikvarði á eina vídd hlutar",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idp28932848"
+    },
+    {
+      "termIs": "leysir",
+      "termEn": "solvent",
+      "termFull": "leysir (e. solvent)",
+      "definition": "efnisþáttur lausnar sem er í hærri styrk miðað við aðra efnisþætti",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26666032"
+    },
+    {
+      "termIs": "Leysni",
+      "termEn": "solubility",
+      "termFull": "Leysni (e. solubility)",
+      "definition": "að hve miklu leyti efni getur leyst upp í vatni eða öðrum leysi",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp67579088"
+    },
+    {
+      "termIs": "litvísir",
+      "termEn": "indicator",
+      "termFull": "litvísir (e. indicator)",
+      "definition": "efni sem bætt er við sýnið í títrunargreiningu til að gera sjónræna greiningu á jafngildispunkti mögulega",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp83289888"
+    },
+    {
+      "termIs": "lítri (L)",
+      "termEn": "liter (l)",
+      "termFull": "lítri (L) (e. liter (l))",
+      "definition": "(einnig rúmdesimetri) eining rúmmáls; 1 L = 1.000 cm3",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm238691152"
+    },
+    {
+      "termIs": "loftvog",
+      "termEn": "barometer",
+      "termFull": "loftvog (e. barometer)",
+      "definition": "tæki sem notað er til að mæla loftþrýsting",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idp128557152"
+    },
+    {
+      "termIs": "lota",
+      "termEn": "period",
+      "termFull": "lota (e. period)",
+      "definition": "(einnig, röð) lárétt röð í lotukerfinu",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm418320336"
+    },
+    {
+      "termIs": "lota",
+      "termEn": "series",
+      "termFull": "lota (e. series)",
+      "definition": "lárétt röð í lotukerfinu",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm430389008"
+    },
+    {
+      "termIs": "lotukerfið",
+      "termEn": "periodic table",
+      "termFull": "lotukerfið (e. periodic table)",
+      "definition": "tafla yfir frumefnin sem setur frumefni með svipaða efnaeiginleika saman",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm227073184"
+    },
+    {
+      "termIs": "lotulögmálið",
+      "termEn": "periodic law",
+      "termFull": "lotulögmálið (e. periodic law)",
+      "definition": "eiginleikar frumefnanna eru lotubundin virkni sætistalna þeirra.",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm64490640"
+    },
+    {
+      "termIs": "lögmál",
+      "termEn": "law",
+      "termFull": "lögmál (e. law)",
+      "definition": "staðhæfing sem tekur saman fjölda tilraunaathugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idp16592704"
+    },
+    {
+      "termIs": "lögmál Amontons",
+      "termEn": "amontons’s law",
+      "termFull": "lögmál Amontons (e. amontons’s law)",
+      "definition": "(einnig lögmál Gay-Lussac) þrýstingur ákveðins fjölda móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar rúmmálinu er haldið föstu",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idp77543648"
+    },
+    {
+      "termIs": "lögmál Avogadros",
+      "termEn": "avogadro’s law",
+      "termFull": "lögmál Avogadros (e. avogadro’s law)",
+      "definition": "rúmmál gass við fast hitastig og þrýsting er í hlutfalli við fjölda gassameinda",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm85214288"
+    },
+    {
+      "termIs": "lögmál Boyles",
+      "termEn": "boyle’s law",
+      "termFull": "lögmál Boyles (e. boyle’s law)",
+      "definition": "rúmmál ákveðins fjölda móla af gasi sem haldið er við fast hitastig er í öfugu hlutfalli við þrýstinginn sem það er mælt við",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm51295520"
+    },
+    {
+      "termIs": "lögmál Charles",
+      "termEn": "charles’s law",
+      "termFull": "lögmál Charles (e. charles’s law)",
+      "definition": "rúmmál ákveðins fjölda móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar þrýstingnum er haldið föstum",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm100735488"
+    },
+    {
+      "termIs": "lögmál Hess",
+      "termEn": "hess’s law",
+      "termFull": "lögmál Hess (e. hess’s law)",
       "definition": "ef hægt er að tákna ferli sem summu nokkurra skrefa er vermibreyting ferlisins jöfn summu vermibreytinga skrefanna",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102385264"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102385264"
     },
     {
-      "term": "markverðir stafir",
+      "termIs": "Lögmál Le Châteliers",
+      "termEn": "le châtelier’s principle",
+      "termFull": "Lögmál Le Châteliers (e. le châtelier’s principle)",
+      "definition": "jafnvægi sem verður fyrir álagi mun hliðrast á þann hátt að það vinnur gegn álaginu og kemur aftur á jafnvægi",
+      "chapter": 13,
+      "section": "13.3",
+      "sectionTitle": "Hliðrun jafnvægis: Lögmál Le Châteliers",
+      "sectionSlug": "13-3-shifting-equilibria-le-chteliers-principle",
+      "termId": "fs-idp108249008"
+    },
+    {
+      "termIs": "lögmál um massaverkun",
+      "termEn": "law of mass action",
+      "termFull": "lögmál um massaverkun (e. law of mass action)",
+      "definition": "þegar afturkræft hvarf hefur náð jafnvægi við tiltekið hitastig, helst hvarfstuðullinn óbreyttur",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-equilibrium-constants",
+      "termId": "fs-idp89564720"
+    },
+    {
+      "termIs": "lögmálið um fasta\nefnasamsetningu",
+      "termEn": "law of constant composition",
+      "termFull": "lögmálið um fasta\nefnasamsetningu (e. law of constant composition)",
+      "definition": "(einnig, lögmálið um föst efnahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu hlutföllum miðað við massa",
+      "chapter": 2,
+      "section": "2.1",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
+      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
+      "termId": "fs-idm56716560"
+    },
+    {
+      "termIs": "lögmálið um föst\nefnahlutföll",
+      "termEn": "law of definite proportions",
+      "termFull": "lögmálið um föst\nefnahlutföll (e. law of definite proportions)",
+      "definition": "(einnig, lögmálið um fasta efnasamsetningu) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu hlutföllum miðað við massa",
+      "chapter": 2,
+      "section": "2.1",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
+      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
+      "termId": "fs-idp76336256"
+    },
+    {
+      "termIs": "lögmálið um margföld\nefnahlutföll",
+      "termEn": "law of multiple proportions",
+      "termFull": "lögmálið um margföld\nefnahlutföll (e. law of multiple proportions)",
+      "definition": "þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna",
+      "chapter": 2,
+      "section": "2.1",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
+      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
+      "termId": "fs-idp47442976"
+    },
+    {
+      "termIs": "lögmálið um varðveislu\nefnis",
+      "termEn": "law of conservation of matter",
+      "termFull": "lögmálið um varðveislu\nefnis (e. law of conservation of matter)",
+      "definition": "þegar efni breytist úr einni tegund í aðra eða breytir um form verður engin greinanleg breyting á heildarmagni efnisins",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idp19511536"
+    },
+    {
+      "termIs": "magnbundin greining",
+      "termEn": "quantitative analysis",
+      "termFull": "magnbundin greining (e. quantitative analysis)",
+      "definition": "ákvörðun á magni eða styrk efnis í sýni",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp188325600"
+    },
+    {
+      "termIs": "magnbundinn eiginleiki",
+      "termEn": "extensive property",
+      "termFull": "magnbundinn eiginleiki (e. extensive property)",
+      "definition": "eiginleiki efnis sem fer eftir magni efnisins",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idp102584192"
+    },
+    {
+      "termIs": "markverðir stafir",
+      "termEn": "significant figures",
+      "termFull": "markverðir stafir (e. significant figures)",
       "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
-      "chapters": [
-        {
-          "chapter": 1,
-          "moduleId": "m68690",
-          "termId": "fs-idp3346000"
-        }
-      ]
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "termId": "fs-idp3346000"
     },
     {
-      "term": "massa-rúmmálsprósenta",
+      "termIs": "massa-rúmmálsprósenta",
+      "termEn": "mass-volume percent",
+      "termFull": "massa-rúmmálsprósenta (e. mass-volume percent)",
       "definition": "hlutfall massa uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
-      "chapters": [
-        {
-          "chapter": 3,
-          "moduleId": "m68704",
-          "termId": "fs-idm12309360"
-        }
-      ]
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idm12309360"
     },
     {
-      "term": "massaprósenta",
+      "termIs": "massaprósenta",
+      "termEn": "mass percentage",
+      "termFull": "massaprósenta (e. mass percentage)",
       "definition": "hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósenta",
-      "chapters": [
-        {
-          "chapter": 3,
-          "moduleId": "m68704",
-          "termId": "fs-idp13058656"
-        }
-      ]
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idp13058656"
     },
     {
-      "term": "milljarðshlutar (ppb)",
+      "termIs": "massatala (A)",
+      "termEn": "mass number (a)",
+      "termFull": "massatala (A) (e. mass number (a))",
+      "definition": "summa fjölda nifteinda og róteinda í kjarna atóms",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idp22869776"
+    },
+    {
+      "termIs": "massi",
+      "termEn": "mass",
+      "termFull": "massi (e. mass)",
+      "definition": "grundvallareiginleiki sem gefur til kynna magn efnis",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm23882384"
+    },
+    {
+      "termIs": "massi reynsluformúlu",
+      "termEn": "empirical formula mass",
+      "termFull": "massi reynsluformúlu (e. empirical formula mass)",
+      "definition": "summa meðalatómmassa allra atóma í reynsluformúlu",
+      "chapter": 3,
+      "section": "3.2",
+      "sectionTitle": "Ákvörðun reynsluformúla og sameindaformúla",
+      "sectionSlug": "3-2-akvordun-reynsluformula-og-sameindaformula",
+      "termId": "fs-idp78258880"
+    },
+    {
+      "termIs": "málmleysingi",
+      "termEn": "nonmetal",
+      "termFull": "málmleysingi (e. nonmetal)",
+      "definition": "frumefni sem virðist daufleitt, lélegur leiðari varma og rafmagns",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm236984448"
+    },
+    {
+      "termIs": "málmur",
+      "termEn": "metal",
+      "termFull": "málmur (e. metal)",
+      "definition": "frumefni sem er glansandi, mótanlegt, góður leiðari varma og rafmagns",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm336887376"
+    },
+    {
+      "termIs": "meðalferningsrótarhraði (urms)",
+      "termEn": "root mean square speed (urms)",
+      "termFull": "meðalferningsrótarhraði (urms) (e. root mean square speed (urms))",
+      "definition": "mælikvarði á meðalhraða fyrir hóp einda, reiknaður sem kvaðratrót meðaltals kvaðrats hraðans",
+      "chapter": 9,
+      "section": "9.5",
+      "sectionTitle": "Hreyfi- og sameindakenningin",
+      "sectionSlug": "9-5-the-kinetic-molecular-theory",
+      "termId": "fs-idm271276336"
+    },
+    {
+      "termIs": "meðalfrívegalengd",
+      "termEn": "mean free path",
+      "termFull": "meðalfrívegalengd (e. mean free path)",
+      "definition": "meðalvegalengd sem sameind ferðast á milli árekstra",
+      "chapter": 9,
+      "section": "9.4",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-effusion-and-diffusion-of-gases",
+      "termId": "fs-idp132026496"
+    },
+    {
+      "termIs": "meðalhraði",
+      "termEn": "average rate",
+      "termFull": "meðalhraði (e. average rate)",
+      "definition": "hvarfhraði efnahvarfs reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og tímabilsins sem breytingin á sér stað yfir",
+      "chapter": 12,
+      "section": "12.1",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-chemical-reaction-rates",
+      "termId": "fs-idp11569888"
+    },
+    {
+      "termIs": "metri (m)",
+      "termEn": "meter (m)",
+      "termFull": "metri (m) (e. meter (m))",
+      "definition": "stöðluð metra- og SI-eining lengdar; 1 m = u.þ.b. 1,094 yardar",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm22681216"
+    },
+    {
+      "termIs": "milliefni",
+      "termEn": "intermediate",
+      "termFull": "milliefni (e. intermediate)",
+      "definition": "eindir sem myndast í einu skrefi hvarfgangs og eyðast í síðara skrefi",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp63453216"
+    },
+    {
+      "termIs": "millilítri (mL)",
+      "termEn": "milliliter (ml)",
+      "termFull": "millilítri (mL) (e. milliliter (ml))",
+      "definition": "1/1.000 úr lítra; jafngildir 1 cm3",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idp19165184"
+    },
+    {
+      "termIs": "milljarðshlutar (ppb)",
+      "termEn": "parts per billion (ppb)",
+      "termFull": "milljarðshlutar (ppb) (e. parts per billion (ppb))",
       "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 109",
-      "chapters": [
-        {
-          "chapter": 3,
-          "moduleId": "m68704",
-          "termId": "fs-idp23298832"
-        }
-      ]
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idp23298832"
     },
     {
-      "term": "milljónustu hlutar\n(ppm)",
+      "termIs": "milljónustu hlutar\n(ppm)",
+      "termEn": "parts per million (ppm)",
+      "termFull": "milljónustu hlutar\n(ppm) (e. parts per million (ppm))",
       "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 106",
-      "chapters": [
-        {
-          "chapter": 3,
-          "moduleId": "m68704",
-          "termId": "fs-idm85251264"
-        }
-      ]
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idm85251264"
     },
     {
-      "term": "misleitur hvati",
+      "termIs": "misleit blanda",
+      "termEn": "heterogeneous mixture",
+      "termFull": "misleit blanda (e. heterogeneous mixture)",
+      "definition": "blanda efna með samsetningu sem er breytileg eftir staðsetningu",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idp85033264"
+    },
+    {
+      "termIs": "misleitt jafnvægi",
+      "termEn": "heterogeneous equilibria",
+      "termFull": "misleitt jafnvægi (e. heterogeneous equilibria)",
+      "definition": "jafnvægi þar sem hvarfefni og myndefni eru í tveimur eða fleiri mismunandi fösum",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-equilibrium-constants",
+      "termId": "fs-idp102632368"
+    },
+    {
+      "termIs": "misleitur hvati",
+      "termEn": "heterogeneous catalyst",
+      "termFull": "misleitur hvati (e. heterogeneous catalyst)",
       "definition": "hvati sem er í öðrum fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað",
-      "chapters": [
-        {
-          "chapter": 12,
-          "moduleId": "m68795",
-          "termId": "fs-idm228167568"
-        }
-      ]
+      "chapter": 12,
+      "section": "12.7",
+      "sectionTitle": "Heildun hraðalögmála",
+      "sectionSlug": "12-7-integrated-rate-laws",
+      "termId": "fs-idm228167568"
     },
     {
-      "term": "nafnakerfi",
+      "termIs": "mól",
+      "termEn": "mole",
+      "termFull": "mól (e. mole)",
+      "definition": "efnismagn sem inniheldur sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í nákvæmlega 12 grömmum af 12C",
+      "chapter": 3,
+      "section": "3.1",
+      "sectionTitle": "Formúlumassi og mólhugtakið",
+      "sectionSlug": "3-1-formulumassi-og-molhugtakid",
+      "termId": "fs-idp40908432"
+    },
+    {
+      "termIs": "mólhlutfall (X)",
+      "termEn": "mole fraction (x)",
+      "termFull": "mólhlutfall (X) (e. mole fraction (x))",
+      "definition": "styrkurseining sem er skilgreind sem hlutfall mólmagns íhlutar í efnablöndu og heildarfjölda móla allra íhluta efnablöndunnar",
+      "chapter": 9,
+      "section": "9.3",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda\nog efnahvarfa",
+      "sectionSlug": "9-3-stoichiometry-of-gaseous-substances-mixtures-and-r",
+      "termId": "fs-idp1132336"
+    },
+    {
+      "termIs": "mólmassi",
+      "termEn": "molar mass",
+      "termFull": "mólmassi (e. molar mass)",
+      "definition": "massi í grömmum af 1 móli af efni",
+      "chapter": 3,
+      "section": "3.1",
+      "sectionTitle": "Formúlumassi og mólhugtakið",
+      "sectionSlug": "3-1-formulumassi-og-molhugtakid",
+      "termId": "fs-idp40907280"
+    },
+    {
+      "termIs": "mólstyrkur (M)",
+      "termEn": "molarity (m)",
+      "termFull": "mólstyrkur (M) (e. molarity (m))",
+      "definition": "styrkleikaeining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26669728"
+    },
+    {
+      "termIs": "Myndefni",
+      "termEn": "product",
+      "termFull": "Myndefni (e. product)",
+      "definition": "Efni sem myndast við efna- eða eðlisfræðilega breytingu; sýnt hægra megin við örina í efnajöfnu",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp145224064"
+    },
+    {
+      "termIs": "nafnakerfi",
+      "termEn": "nomenclature",
+      "termFull": "nafnakerfi (e. nomenclature)",
       "definition": "reglukerfi til að nefna fyrirbæri",
-      "chapters": [
-        {
-          "chapter": 2,
-          "moduleId": "m68698",
-          "termId": "fs-idp282227200"
-        }
-      ]
+      "chapter": 2,
+      "section": "2.7",
+      "sectionTitle": "Nafnakerfi efna",
+      "sectionSlug": "2-7-nafnakerfi-efna",
+      "termId": "fs-idp282227200"
     },
     {
-      "term": "nákvæm tala",
+      "termIs": "nákvæm tala",
+      "termEn": "exact number",
+      "termFull": "nákvæm tala (e. exact number)",
       "definition": "tala fengin með talningu eða samkvæmt skilgreiningu",
-      "chapters": [
-        {
-          "chapter": 1,
-          "moduleId": "m68690",
-          "termId": "fs-idp17670352"
-        }
-      ]
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "termId": "fs-idp17670352"
     },
     {
-      "term": "nákvæmni",
+      "termIs": "nákvæmni",
+      "termEn": "accuracy",
+      "termFull": "nákvæmni (e. accuracy)",
       "definition": "hversu nálægt mæling er réttu gildi",
-      "chapters": [
-        {
-          "chapter": 1,
-          "moduleId": "m68690",
-          "termId": "fs-idp330245120"
-        }
-      ]
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "termId": "fs-idp330245120"
     },
     {
-      "term": "námundun",
+      "termIs": "námundun",
+      "termEn": "rounding",
+      "termFull": "námundun (e. rounding)",
       "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum",
-      "chapters": [
-        {
-          "chapter": 1,
-          "moduleId": "m68690",
-          "termId": "fs-idp68905696"
-        }
-      ]
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "termId": "fs-idp68905696"
     },
     {
-      "term": "oxósýra",
+      "termIs": "Nettójónajafna",
+      "termEn": "net ionic equation",
+      "termFull": "Nettójónajafna (e. net ionic equation)",
+      "definition": "Efnajafna þar sem aðeins þau uppleystu jónísku hvarfefni og myndefni sem gangast undir efna- eða eðlisfræðilega breytingu eru sýnd (sleppir áhorfendajónum)",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp94345152"
+    },
+    {
+      "termIs": "nifteind",
+      "termEn": "neutron",
+      "termFull": "nifteind (e. neutron)",
+      "definition": "óhlaðin öreind staðsett í kjarnanum",
+      "chapter": 2,
+      "section": "2.2",
+      "sectionTitle": "Þróun atómkenningarinnar",
+      "sectionSlug": "2-2-throun-atomkenningarinnar",
+      "termId": "fs-idp100350096"
+    },
+    {
+      "termIs": "næringarkaloría\n(kaloría)",
+      "termEn": "nutritional calorie (calorie)",
+      "termFull": "næringarkaloría\n(kaloría) (e. nutritional calorie (calorie))",
+      "definition": "eining sem notuð er til að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000 cal eða 1 kkal",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idm56357952"
+    },
+    {
+      "termIs": "orka",
+      "termEn": "energy",
+      "termFull": "orka (e. energy)",
+      "definition": "geta til að veita varma eða vinna vinnu",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25502192"
+    },
+    {
+      "termIs": "Oxari",
+      "termEn": "oxidizing agent",
+      "termFull": "Oxari (e. oxidizing agent)",
+      "definition": "efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp57130912"
+    },
+    {
+      "termIs": "oxóanjón",
+      "termEn": "oxyanion",
+      "termFull": "oxóanjón (e. oxyanion)",
+      "definition": "fjölatóma anjón sem samanstendur af miðatómi sem er tengt súrefnisatómum",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp484916992"
+    },
+    {
+      "termIs": "oxósýra",
+      "termEn": "oxyacid",
+      "termFull": "oxósýra (e. oxyacid)",
       "definition": "efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
-      "chapters": [
-        {
-          "chapter": 2,
-          "moduleId": "m68698",
-          "termId": "fs-idp282228224"
-        }
-      ]
+      "chapter": 2,
+      "section": "2.7",
+      "sectionTitle": "Nafnakerfi efna",
+      "sectionSlug": "2-7-nafnakerfi-efna",
+      "termId": "fs-idp282228224"
     },
     {
-      "term": "óvissa",
+      "termIs": "Oxun",
+      "termEn": "oxidation",
+      "termFull": "Oxun (e. oxidation)",
+      "definition": "ferli þar sem oxunartala frumefnis hækkar vegna rafeindamissis",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm73914400"
+    },
+    {
+      "termIs": "Oxunar-afoxunarhvarf",
+      "termEn": "oxidation-reduction reaction",
+      "termFull": "Oxunar-afoxunarhvarf (e. oxidation-reduction reaction)",
+      "definition": "(einnig, redoxhvarf) efnahvarf sem felur í sér breytingu á oxunartölu fyrir eitt eða fleiri hvarfefni",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm73913072"
+    },
+    {
+      "termIs": "Oxunartala",
+      "termEn": "oxidation number",
+      "termFull": "Oxunartala (e. oxidation number)",
+      "definition": "(einnig, oxunarástand) hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp57129632"
+    },
+    {
+      "termIs": "óvissa",
+      "termEn": "uncertainty",
+      "termFull": "óvissa (e. uncertainty)",
       "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
-      "chapters": [
-        {
-          "chapter": 1,
-          "moduleId": "m68690",
-          "termId": "fs-idp96606928"
-        }
-      ]
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "termId": "fs-idp96606928"
     },
     {
-      "term": "prentnákvæmni",
+      "termIs": "óþynnt",
+      "termEn": "concentrated",
+      "termFull": "óþynnt (e. concentrated)",
+      "definition": "þáttbundið hugtak yfir lausn sem inniheldur uppleyst efni í tiltölulega háum styrk",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26449216"
+    },
+    {
+      "termIs": "paskal (Pa)",
+      "termEn": "pascal (pa)",
+      "termFull": "paskal (Pa) (e. pascal (pa))",
+      "definition": "SI-eining þrýstings; 1 Pa = 1 N/m2",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm69533872"
+    },
+    {
+      "termIs": "plasma",
+      "termEn": null,
+      "termFull": "plasma",
+      "definition": "gaskenndur efnishamur sem inniheldur mikinn fjölda rafhladdra atóma og/eða sameinda",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm37314320"
+    },
+    {
+      "termIs": "pniktógen",
+      "termEn": "pnictogen",
+      "termFull": "pniktógen (e. pnictogen)",
+      "definition": "frumefni í hóp 15",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm434186032"
+    },
+    {
+      "termIs": "prentnákvæmni",
+      "termEn": "precision",
+      "termFull": "prentnákvæmni (e. precision)",
       "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
-      "chapters": [
-        {
-          "chapter": 1,
-          "moduleId": "m68690",
-          "termId": "fs-idp28800512"
-        }
-      ]
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "termId": "fs-idp28800512"
     },
     {
-      "term": "rúmmálsprósenta",
+      "termIs": "prósentuheimtur",
+      "termEn": "percent yield",
+      "termFull": "prósentuheimtur (e. percent yield)",
+      "definition": "mælikvarði á skilvirkni efnahvarfs, gefinn upp sem prósenta af fræðilegum heimtum",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idp51447712"
+    },
+    {
+      "termIs": "prósentusamsetning",
+      "termEn": "percent composition",
+      "termFull": "prósentusamsetning (e. percent composition)",
+      "definition": "massaprósenta hinna ýmsu frumefna í efnasambandi",
+      "chapter": 3,
+      "section": "3.2",
+      "sectionTitle": "Ákvörðun reynsluformúla og sameindaformúla",
+      "sectionSlug": "3-2-akvordun-reynsluformula-og-sameindaformula",
+      "termId": "fs-idp78260032"
+    },
+    {
+      "termIs": "pund á fertommu (psi)",
+      "termEn": "pounds per square inch (psi)",
+      "termFull": "pund á fertommu (psi) (e. pounds per square inch (psi))",
+      "definition": "þrýstingseining sem er algeng í Bandaríkjunum",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm87137504"
+    },
+    {
+      "termIs": "rafeind",
+      "termEn": "electron",
+      "termFull": "rafeind (e. electron)",
+      "definition": "neikvætt hlaðin öreind með tiltölulega lítinn massa sem er staðsett fyrir utan kjarnann",
+      "chapter": 2,
+      "section": "2.2",
+      "sectionTitle": "Þróun atómkenningarinnar",
+      "sectionSlug": "2-2-throun-atomkenningarinnar",
+      "termId": "fs-idp27115648"
+    },
+    {
+      "termIs": "raunheimtur",
+      "termEn": "actual yield",
+      "termFull": "raunheimtur (e. actual yield)",
+      "definition": "magn myndefnis sem myndast í efnahvarfi",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idm47393392"
+    },
+    {
+      "termIs": "reynsluformúla",
+      "termEn": "empirical formula",
+      "termFull": "reynsluformúla (e. empirical formula)",
+      "definition": "formúla sem sýnir samsetningu efnasambands gefna upp sem einfaldasta heiltöluhlutfall atóma",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idm164678176"
+    },
+    {
+      "termIs": "róteind",
+      "termEn": "proton",
+      "termFull": "róteind (e. proton)",
+      "definition": "jákvætt hlaðin öreind staðsett í kjarnanum",
+      "chapter": 2,
+      "section": "2.2",
+      "sectionTitle": "Þróun atómkenningarinnar",
+      "sectionSlug": "2-2-throun-atomkenningarinnar",
+      "termId": "fs-idp21637408"
+    },
+    {
+      "termIs": "rúmísómerur",
+      "termEn": "spatial isomers",
+      "termFull": "rúmísómerur (e. spatial isomers)",
+      "definition": "efnasambönd þar sem afstæð afstaða atómanna í rúmi er ólík",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idm54570400"
+    },
+    {
+      "termIs": "rúmmál",
+      "termEn": "volume",
+      "termFull": "rúmmál (e. volume)",
+      "definition": "rými sem hlutur tekur",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm207134160"
+    },
+    {
+      "termIs": "rúmmálsprósenta",
+      "termEn": "volume percentage",
+      "termFull": "rúmmálsprósenta (e. volume percentage)",
       "definition": "hlutfall rúmmáls uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
-      "chapters": [
-        {
-          "chapter": 3,
-          "moduleId": "m68704",
-          "termId": "fs-idp17597424"
-        }
-      ]
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idp17597424"
     },
     {
-      "term": "samþjappanleikastuðull\n(Z)",
+      "termIs": "rúmmetri (m3)",
+      "termEn": "cubic meter (m3)",
+      "termFull": "rúmmetri (m3) (e. cubic meter (m3))",
+      "definition": "SI-eining rúmmáls",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm244788352"
+    },
+    {
+      "termIs": "rúmsentimetri (cm3 eða\ncc)",
+      "termEn": "cubic centimeter (cm3 or cc)",
+      "termFull": "rúmsentimetri (cm3 eða\ncc) (e. cubic centimeter (cm3 or cc))",
+      "definition": "rúmmál tenings með brúnarlengd nákvæmlega 1 cm",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm227540096"
+    },
+    {
+      "termIs": "Salt",
+      "termEn": null,
+      "termFull": "Salt",
+      "definition": "jónaefni sem getur myndast við efnahvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp64226032"
+    },
+    {
+      "termIs": "sameind",
+      "termEn": "molecule",
+      "termFull": "sameind (e. molecule)",
+      "definition": "tengt safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm6673632"
+    },
+    {
+      "termIs": "sameindaefnasamband",
+      "termEn": "molecular compound",
+      "termFull": "sameindaefnasamband (e. molecular compound)",
+      "definition": "(einnig, samgilt efnasamband) samsett úr sameindum sem myndast af atómum tveggja eða fleiri mismunandi frumefna",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp93864192"
+    },
+    {
+      "termIs": "sameindaformúla",
+      "termEn": "molecular formula",
+      "termFull": "sameindaformúla (e. molecular formula)",
+      "definition": "formúla sem gefur til kynna samsetningu sameindar efnasambands og gefur upp raunverulegan fjölda atóma hvers frumefnis í sameind efnasambandsins.",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idm86848640"
+    },
+    {
+      "termIs": "Sameindajafna",
+      "termEn": "molecular equation",
+      "termFull": "Sameindajafna (e. molecular equation)",
+      "definition": "Efnajafna þar sem öll hvarfefni og myndefni eru sýnd sem hlutlaus efni",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp94343888"
+    },
+    {
+      "termIs": "sameindatala",
+      "termEn": "molecularity",
+      "termFull": "sameindatala (e. molecularity)",
+      "definition": "fjöldi hvarfefnaeinda sem taka þátt í grunnskrefshvarfi",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp7133520"
+    },
+    {
+      "termIs": "sameinuð atómmassaeining\n(u)",
+      "termEn": "unified atomic mass unit (u)",
+      "termFull": "sameinuð atómmassaeining\n(u) (e. unified atomic mass unit (u))",
+      "definition": "önnur eining sem jafngildir atómmassaeiningu",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idm284976"
+    },
+    {
+      "termIs": "samgilt efnasamband",
+      "termEn": "covalent compound",
+      "termFull": "samgilt efnasamband (e. covalent compound)",
+      "definition": "(einnig sameindaefnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp184530720"
+    },
+    {
+      "termIs": "samgilt tengi",
+      "termEn": "covalent bond",
+      "termFull": "samgilt tengi (e. covalent bond)",
+      "definition": "aðdráttarkraftur milli kjarna atóma sameindar og rafeindapara milli atómanna",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindaefnasambönd",
+      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "termId": "fs-idp97231552"
+    },
+    {
+      "termIs": "samsætur",
+      "termEn": "isotopes",
+      "termFull": "samsætur (e. isotopes)",
+      "definition": "atóm sem innihalda sama fjölda róteinda en mismunandi fjölda nifteinda",
+      "chapter": 2,
+      "section": "2.2",
+      "sectionTitle": "Þróun atómkenningarinnar",
+      "sectionSlug": "2-2-throun-atomkenningarinnar",
+      "termId": "fs-idm25241664"
+    },
+    {
+      "termIs": "samþjappanleikastuðull\n(Z)",
+      "termEn": "compressibility factor (z)",
+      "termFull": "samþjappanleikastuðull\n(Z) (e. compressibility factor (z))",
       "definition": "hlutfallið milli mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það er reiknað út frá jöfnu kjörgass",
-      "chapters": [
-        {
-          "chapter": 9,
-          "moduleId": "m68759",
-          "termId": "fs-idp3716528"
-        }
-      ]
+      "chapter": 9,
+      "section": "9.6",
+      "sectionTitle": "Hegðun raungass",
+      "sectionSlug": "9-6-non-ideal-gas-behavior",
+      "termId": "fs-idp3716528"
     },
     {
-      "term": "staðalástand",
+      "termIs": "sekúnda (s)",
+      "termEn": "second (s)",
+      "termFull": "sekúnda (s) (e. second (s))",
+      "definition": "SI-eining tíma",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm310839680"
+    },
+    {
+      "termIs": "Selsíus (°C)",
+      "termEn": "celsius (°c)",
+      "termFull": "Selsíus (°C) (e. celsius (°c))",
+      "definition": "eining fyrir hitastig; vatn frýs við 0 °C og sýður við 100 °C á þessum skala",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm285658848"
+    },
+    {
+      "termIs": "SI-einingar (Alþjóðlega\neiningakerfið)",
+      "termEn": "si units (international system of units)",
+      "termFull": "SI-einingar (Alþjóðlega\neiningakerfið) (e. si units (international system of units))",
+      "definition": "staðlar sem ákvarðaðir eru með alþjóðasamningi í Alþjóðlega einingakerfinu (Le Système International d’Unités)",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm23328032"
+    },
+    {
+      "termIs": "smásætt svið",
+      "termEn": "microscopic domain",
+      "termFull": "smásætt svið (e. microscopic domain)",
+      "definition": "svið hluta sem eru allt of litlir til að vera skynjaðir beint",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idm121167952"
+    },
+    {
+      "termIs": "sprengikaloríumælir",
+      "termEn": "bomb calorimeter",
+      "termFull": "sprengikaloríumælir (e. bomb calorimeter)",
+      "definition": "tæki sem er hannað til að mæla orkubreytingu fyrir ferli sem eiga sér stað við fast rúmmál; almennt notað fyrir efnahvörf sem fela í sér föst efni og loftkennd hvarfefni eða myndefni",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idm56360448"
+    },
+    {
+      "termIs": "staðalaðstæður\nhitastigs og þrýstings (STP)",
+      "termEn": "standard conditions of temperature and pressure (stp)",
+      "termFull": "staðalaðstæður\nhitastigs og þrýstings (STP) (e. standard conditions of temperature and pressure (stp))",
+      "definition": "273,15 K (0 °C) og 1 atm (101,325 kPa)",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm158190720"
+    },
+    {
+      "termIs": "staðalástand",
+      "termEn": "standard state",
+      "termFull": "staðalástand (e. standard state)",
       "definition": "safn eðlisfræðilegra skilyrða sem eru viðurkennd sem algeng viðmiðunarskilyrði til að skrá varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólstyrk, venjulega við 298,15 K hitastig",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102395520"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102395520"
     },
     {
-      "term": "staðalbrunavermi\n(ΔHc°)",
+      "termIs": "staðalbrunavermi\n(ΔHc°)",
+      "termEn": "standard enthalpy of combustion (δhc°)",
+      "termFull": "staðalbrunavermi\n(ΔHc°) (e. standard enthalpy of combustion (δhc°))",
       "definition": "varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102388352"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102388352"
     },
     {
-      "term": "staðalmyndunarvermi\n(ΔHf°)",
+      "termIs": "staðalloftþrýstingur\n(atm)",
+      "termEn": "atmosphere (atm)",
+      "termFull": "staðalloftþrýstingur\n(atm) (e. atmosphere (atm))",
+      "definition": "þrýstingseining; 1 atm = 101.325 Pa",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm92046304"
+    },
+    {
+      "termIs": "staðalmólrúmmál",
+      "termEn": "standard molar volume",
+      "termFull": "staðalmólrúmmál (e. standard molar volume)",
+      "definition": "rúmmál 1 móls af gasi við STP, um það bil 22,4 L fyrir gös sem hegða sér eins og kjörgas",
+      "chapter": 9,
+      "section": "9.2",
+      "sectionTitle": "Tengsl þrýstings, rúmmáls, magns og\nhitastigs: Lögmál kjörgass",
+      "sectionSlug": "9-2-relating-pressure-volume-amount-and-temperature-th",
+      "termId": "fs-idm62647600"
+    },
+    {
+      "termIs": "staðalmyndunarvermi\n(ΔHf°)",
+      "termEn": "standard enthalpy of formation (δhf°)",
+      "termFull": "staðalmyndunarvermi\n(ΔHf°) (e. standard enthalpy of formation (δhf°))",
       "definition": "vermibreyting efnahvarfs þar sem 1 mól af hreinu efni myndast úr frumefnum sínum í sínum stöðugasta efnisham við staðalaðstæður",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102391904"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102391904"
     },
     {
-      "term": "tvíliða efnasamband",
+      "termIs": "Sterk sýra",
+      "termEn": "strong acid",
+      "termFull": "Sterk sýra (e. strong acid)",
+      "definition": "sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp67580240"
+    },
+    {
+      "termIs": "Sterkur basi",
+      "termEn": "strong base",
+      "termFull": "Sterkur basi (e. strong base)",
+      "definition": "basi sem hvarfast að fullu þegar hann er leystur upp í vatni og myndar hýdroxíðjónir",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp67581392"
+    },
+    {
+      "termIs": "stig efnahvarfs",
+      "termEn": "reaction order",
+      "termFull": "stig efnahvarfs (e. reaction order)",
+      "definition": "gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2 og svo framvegis)",
+      "chapter": 12,
+      "section": "12.3",
+      "sectionTitle": "Hraðajöfnur",
+      "sectionSlug": "12-3-rate-laws",
+      "termId": "fs-idm333854336"
+    },
+    {
+      "termIs": "Stillt jafna",
+      "termEn": "balanced equation",
+      "termFull": "Stillt jafna (e. balanced equation)",
+      "definition": "Efnajafna með jöfnum fjölda atóma fyrir hvert frumefni í hvarfefninu og myndefninu",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp25650896"
+    },
+    {
+      "termIs": "stórsætt svið",
+      "termEn": "macroscopic domain",
+      "termFull": "stórsætt svið (e. macroscopic domain)",
+      "definition": "svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu manna",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idm41373200"
+    },
+    {
+      "termIs": "Stuðull",
+      "termEn": "coefficient",
+      "termFull": "Stuðull (e. coefficient)",
+      "definition": "Tala sem er sett fyrir framan tákn eða formúlur í efnajöfnu til að gefa til kynna hlutfallslegt magn þeirra",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Að skrifa og stilla efnajöfnur",
+      "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
+      "termId": "fs-idp46928304"
+    },
+    {
+      "termIs": "styrkur",
+      "termEn": "concentration",
+      "termFull": "styrkur (e. concentration)",
+      "definition": "magnbundin mæling á hlutfallslegu magni uppleysts efnis og leysis í lausn",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26447680"
+    },
+    {
+      "termIs": "stöðuorka",
+      "termEn": "potential energy",
+      "termFull": "stöðuorka (e. potential energy)",
+      "definition": "orka eindar eða kerfis einda sem er fengin úr afstæðri stöðu, samsetningu eða ástandi",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25515184"
+    },
+    {
+      "termIs": "sveim",
+      "termEn": "diffusion",
+      "termFull": "sveim (e. diffusion)",
+      "definition": "flutningur atóms eða sameindar frá svæði með tiltölulega háum styrk yfir á svæði með tiltölulega lágum styrk (fjallað um í þessum kafla með tilliti til gasefna, en á við um efni í hvaða fasa sem er)",
+      "chapter": 9,
+      "section": "9.4",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-effusion-and-diffusion-of-gases",
+      "termId": "fs-idp133388272"
+    },
+    {
+      "termIs": "sveimhraði",
+      "termEn": "rate of diffusion",
+      "termFull": "sveimhraði (e. rate of diffusion)",
+      "definition": "magn gass sem sveimar í gegnum tiltekið svæði á tilteknum tíma",
+      "chapter": 9,
+      "section": "9.4",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-effusion-and-diffusion-of-gases",
+      "termId": "fs-idp43914864"
+    },
+    {
+      "termIs": "sýra",
+      "termEn": "acid",
+      "termFull": "sýra (e. acid)",
+      "definition": "efni sem myndar H3O+ þegar það er leyst upp í vatni",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm39846352"
+    },
+    {
+      "termIs": "sýru-basa hvarf",
+      "termEn": "acid-base reaction",
+      "termFull": "sýru-basa hvarf (e. acid-base reaction)",
+      "definition": "hvarf sem felur í sér flutning vetnisjónar milli hvarfefna",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm54009824"
+    },
+    {
+      "termIs": "sætistala (Z)",
+      "termEn": "atomic number (z)",
+      "termFull": "sætistala (Z) (e. atomic number (z))",
+      "definition": "fjöldi róteinda í kjarna atóms",
+      "chapter": 2,
+      "section": "2.3",
+      "sectionTitle": "Bygging atóms og táknmál",
+      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "termId": "fs-idp42201168"
+    },
+    {
+      "termIs": "takmarkandi hvarfefni",
+      "termEn": "limiting reactant",
+      "termFull": "takmarkandi hvarfefni (e. limiting reactant)",
+      "definition": "hvarfefni sem er til staðar í minna magni en hlutfallaefnafræði hvarfsins krefst og takmarkar þannig magn myndefnis sem myndast",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idp182610272"
+    },
+    {
+      "termIs": "Tala Avogadros (NA)",
+      "termEn": "avogadro’s number (na)",
+      "termFull": "Tala Avogadros (NA) (e. avogadro’s number (na))",
+      "definition": "tilraunakennt ákvarðað gildi fjölda einda sem mynda 1 mól af efni, jafnt og 6,022 × 1023 mól−1",
+      "chapter": 3,
+      "section": "3.1",
+      "sectionTitle": "Formúlumassi og mólhugtakið",
+      "sectionSlug": "3-1-formulumassi-og-molhugtakid",
+      "termId": "fs-idp40901280"
+    },
+    {
+      "termIs": "táknrænt svið",
+      "termEn": "symbolic domain",
+      "termFull": "táknrænt svið (e. symbolic domain)",
+      "definition": "sérhæft tungumál sem notað er til að tákna þætti stórsæja og smásæja sviðsins, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idm105060976"
+    },
+    {
+      "termIs": "tilgáta",
+      "termEn": "hypothesis",
+      "termFull": "tilgáta (e. hypothesis)",
+      "definition": "bráðabirgðaútskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idm100774384"
+    },
+    {
+      "termIs": "tíðnistuðull (A)",
+      "termEn": "frequency factor (a)",
+      "termFull": "tíðnistuðull (A) (e. frequency factor (a))",
+      "definition": "jöfnunarfasti í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-5-reaction-mechanisms",
+      "termId": "fs-idm206488448"
+    },
+    {
+      "termIs": "títrantur",
+      "termEn": "titrant",
+      "termFull": "títrantur (e. titrant)",
+      "definition": "lausn sem inniheldur þekktan styrk efnis sem hvarfast við greiningarefnið í títrunargreiningu",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp122976560"
+    },
+    {
+      "termIs": "títrunargreining",
+      "termEn": "titration analysis",
+      "termFull": "títrunargreining (e. titration analysis)",
+      "definition": "magnbundin efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnislausnar sem þarf til að hvarfast að fullu við greiningarefnið í sýni",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp122977840"
+    },
+    {
+      "termIs": "Torleystur",
+      "termEn": "insoluble",
+      "termFull": "Torleystur (e. insoluble)",
+      "definition": "með tiltölulega lítinn leysni; leysist aðeins upp að litlu leyti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28944688"
+    },
+    {
+      "termIs": "torr",
+      "termEn": null,
+      "termFull": "torr",
+      "definition": "þrýstingseining; 1 torr=1760atm",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm23965520"
+    },
+    {
+      "termIs": "tvíliða efnasamband",
+      "termEn": "binary compound",
+      "termFull": "tvíliða efnasamband (e. binary compound)",
       "definition": "efnasamband sem inniheldur tvö mismunandi frumefni.",
-      "chapters": [
-        {
-          "chapter": 2,
-          "moduleId": "m68698",
-          "termId": "fs-idp282226176"
-        }
-      ]
+      "chapter": 2,
+      "section": "2.7",
+      "sectionTitle": "Nafnakerfi efna",
+      "sectionSlug": "2-7-nafnakerfi-efna",
+      "termId": "fs-idp282226176"
     },
     {
-      "term": "tvíliða sýra",
+      "termIs": "tvíliða sýra",
+      "termEn": "binary acid",
+      "termFull": "tvíliða sýra (e. binary acid)",
       "definition": "efnasamband sem inniheldur vetni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
-      "chapters": [
-        {
-          "chapter": 2,
-          "moduleId": "m68698",
-          "termId": "fs-idp282291040"
-        }
-      ]
+      "chapter": 2,
+      "section": "2.7",
+      "sectionTitle": "Nafnakerfi efna",
+      "sectionSlug": "2-7-nafnakerfi-efna",
+      "termId": "fs-idp282291040"
     },
     {
-      "term": "van der Waals-jafnan",
+      "termIs": "tvísameindahvarf",
+      "termEn": "bimolecular reaction",
+      "termFull": "tvísameindahvarf (e. bimolecular reaction)",
+      "definition": "grunnskrefshvarf sem felur í sér tvær hvarfefnaeindir",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp131244384"
+    },
+    {
+      "termIs": "umframhvarfefni",
+      "termEn": "excess reactant",
+      "termFull": "umframhvarfefni (e. excess reactant)",
+      "definition": "hvarfefni sem er til staðar í meira magni en hlutfallaefnafræði hvarfsins krefst",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idm46343008"
+    },
+    {
+      "termIs": "umhverfi",
+      "termEn": "surroundings",
+      "termFull": "umhverfi (e. surroundings)",
+      "definition": "allt efni annað en kerfið sem er til rannsóknar",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idp41853040"
+    },
+    {
+      "termIs": "umreikningsstuðull\neininga",
+      "termEn": "unit conversion factor",
+      "termFull": "umreikningsstuðull\neininga (e. unit conversion factor)",
+      "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð niðurstaðna mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "termId": "fs-idm307214528"
+    },
+    {
+      "termIs": "upphafshraði",
+      "termEn": "initial rate",
+      "termFull": "upphafshraði (e. initial rate)",
+      "definition": "augnablikshraði efnahvarfs við t = 0 s (strax eftir að efnahvarfið hefst)",
+      "chapter": 12,
+      "section": "12.1",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-chemical-reaction-rates",
+      "termId": "fs-idp24984224"
+    },
+    {
+      "termIs": "uppleyst",
+      "termEn": "dissolved",
+      "termFull": "uppleyst (e. dissolved)",
+      "definition": "lýsir ferlinu þar sem uppleystir efnisþættir dreifast í leysi",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26671264"
+    },
+    {
+      "termIs": "uppleyst efni",
+      "termEn": "solute",
+      "termFull": "uppleyst efni (e. solute)",
+      "definition": "efnisþáttur lausnar sem er í lægri styrk en leysirinn",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26667568"
+    },
+    {
+      "termIs": "Útfelling",
+      "termEn": "precipitation reaction",
+      "termFull": "Útfelling (e. precipitation reaction)",
+      "definition": "efnahvarf sem myndar eitt eða fleiri torleyst myndefni; þegar hvarfefnin eru jónaefni er það stundum kallað tvöföld skipti eða metatesa",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp55089136"
+    },
+    {
+      "termIs": "útstreymi",
+      "termEn": "effusion",
+      "termFull": "útstreymi (e. effusion)",
+      "definition": "flutningur loftkenndra atóma eða sameinda úr íláti yfir í lofttæmi í gegnum mjög lítil op",
+      "chapter": 9,
+      "section": "9.4",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-effusion-and-diffusion-of-gases",
+      "termId": "fs-idp39360864"
+    },
+    {
+      "termIs": "útstreymislögmál\nGrahams",
+      "termEn": "graham’s law of effusion",
+      "termFull": "útstreymislögmál\nGrahams (e. graham’s law of effusion)",
+      "definition": "sveim- og útstreymishraði gasa er í öfugu hlutfalli við kvaðratrætur sameindamassa þeirra",
+      "chapter": 9,
+      "section": "9.4",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-effusion-and-diffusion-of-gases",
+      "termId": "fs-idp257364480"
+    },
+    {
+      "termIs": "útvermið ferli",
+      "termEn": "exothermic process",
+      "termFull": "útvermið ferli (e. exothermic process)",
+      "definition": "efnahvarf eða eðlisbreyting sem losar varma",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25503344"
+    },
+    {
+      "termIs": "van der Waals-jafnan",
+      "termEn": "van der waals equation",
+      "termFull": "van der Waals-jafnan (e. van der waals equation)",
       "definition": "breytt útgáfa af jöfnu kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá hegðun kjörgass",
-      "chapters": [
-        {
-          "chapter": 9,
-          "moduleId": "m68759",
-          "termId": "fs-idm15517248"
-        }
-      ]
+      "chapter": 9,
+      "section": "9.6",
+      "sectionTitle": "Hegðun raungass",
+      "sectionSlug": "9-6-non-ideal-gas-behavior",
+      "termId": "fs-idm15517248"
     },
     {
-      "term": "vermi (H)",
+      "termIs": "varmaefnafræði",
+      "termEn": "thermochemistry",
+      "termFull": "varmaefnafræði (e. thermochemistry)",
+      "definition": "rannsókn á mælingu á magni varma sem binst eða losnar við efnahvarf eða eðlisbreytingu",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp31731568"
+    },
+    {
+      "termIs": "varmaorka",
+      "termEn": "thermal energy",
+      "termFull": "varmaorka (e. thermal energy)",
+      "definition": "hreyfiorka sem tengist tilviljunarkenndri hreyfingu atóma og sameinda",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp31730416"
+    },
+    {
+      "termIs": "varmarýmd (C)",
+      "termEn": "heat capacity (c)",
+      "termFull": "varmarýmd (C) (e. heat capacity (c))",
+      "definition": "útþaninn eiginleiki efnis sem táknar magn varma sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvín)",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25506160"
+    },
+    {
+      "termIs": "varmi (q)",
+      "termEn": "heat (q)",
+      "termFull": "varmi (q) (e. heat (q))",
+      "definition": "flutningur varmaorku milli tveggja hluta",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp25504496"
+    },
+    {
+      "termIs": "vatnslausn",
+      "termEn": "aqueous solution",
+      "termFull": "vatnslausn (e. aqueous solution)",
+      "definition": "lausn þar sem vatn er leysirinn",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26450752"
+    },
+    {
+      "termIs": "Veik sýra",
+      "termEn": "weak acid",
+      "termFull": "Veik sýra (e. weak acid)",
+      "definition": "sýra sem hvarfast aðeins að litlu leyti þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm4238672"
+    },
+    {
+      "termIs": "Veikur basi",
+      "termEn": "weak base",
+      "termFull": "Veikur basi (e. weak base)",
+      "definition": "basi sem hvarfast aðeins að litlu leyti þegar hann er leystur upp í vatni og myndar hýdroxíðjónir",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm4237408"
+    },
+    {
+      "termIs": "vermi (H)",
+      "termEn": "enthalpy (h)",
+      "termFull": "vermi (H) (e. enthalpy (h))",
       "definition": "summa innri orku kerfis og stærðfræðilegs margfeldis þrýstings þess og rúmmáls",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102380512"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102380512"
     },
     {
-      "term": "vermibreyting (ΔH)",
+      "termIs": "vermibreyting (ΔH)",
+      "termEn": "enthalpy change (δh)",
+      "termFull": "vermibreyting (ΔH) (e. enthalpy change (δh))",
       "definition": "varmi sem losnar eða er tekinn upp af kerfi við stöðugan þrýsting í efna- eða eðlisfræðilegu ferli",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102382096"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102382096"
     },
     {
-      "term": "þensluvinna\n(þrýstings-rúmmálsvinna)",
+      "termIs": "vinna (w)",
+      "termEn": "work (w)",
+      "termFull": "vinna (w) (e. work (w))",
+      "definition": "orkuflutningur vegna breytinga á ytri, stórsæjum breytum eins og þrýstingi og rúmmáli; eða sem veldur því að efni hreyfist gegn andstæðum krafti",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grunnatriði orku",
+      "sectionSlug": "5-1-grunnatridi-orku",
+      "termId": "fs-idp31732848"
+    },
+    {
+      "termIs": "virkjaður flóki",
+      "termEn": "activated complex",
+      "termFull": "virkjaður flóki (e. activated complex)",
+      "definition": "(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-5-reaction-mechanisms",
+      "termId": "fs-idm89472432"
+    },
+    {
+      "termIs": "virkjunarorka (Ea)",
+      "termEn": "activation energy (ea)",
+      "termFull": "virkjunarorka (Ea) (e. activation energy (ea))",
+      "definition": "lágmarksorka sem er nauðsynleg til að hvarf geti átt sér stað",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-5-reaction-mechanisms",
+      "termId": "fs-idm162201904"
+    },
+    {
+      "termIs": "víddagreining",
+      "termEn": "dimensional analysis",
+      "termFull": "víddagreining (e. dimensional analysis)",
+      "definition": "(einnig þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð niðurstaðna mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "termId": "fs-idm216300016"
+    },
+    {
+      "termIs": "vísindaleg aðferð",
+      "termEn": "scientific method",
+      "termFull": "vísindaleg aðferð (e. scientific method)",
+      "definition": "uppgötvunarferli sem leiðir frá spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt tilraunakenndri sannprófun á tilgátunni og hvers kyns nauðsynlegri breytingu á kenningunni",
+      "chapter": 1,
+      "section": "1.1",
+      "sectionTitle": "Efnafræði í samhengi",
+      "sectionSlug": "1-1-efnafraedi-i-samhengi",
+      "termId": "fs-idp132867984"
+    },
+    {
+      "termIs": "vökvastöðuþrýstingur",
+      "termEn": "hydrostatic pressure",
+      "termFull": "vökvastöðuþrýstingur (e. hydrostatic pressure)",
+      "definition": "þrýstingur sem vökvi beitir vegna þyngdarafls",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idp1898224"
+    },
+    {
+      "termIs": "vökvi",
+      "termEn": "liquid",
+      "termFull": "vökvi (e. liquid)",
+      "definition": "efnishamur sem hefur ákveðið rúmmál en óákveðna lögun",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idp9074576"
+    },
+    {
+      "termIs": "þensluvinna\n(þrýstings-rúmmálsvinna)",
+      "termEn": "expansion work (pressure-volume work)",
+      "termFull": "þensluvinna\n(þrýstings-rúmmálsvinna) (e. expansion work (pressure-volume work))",
       "definition": "vinna sem er unnin þegar kerfi þenst út eða dregst saman gegn ytri þrýstingi",
-      "chapters": [
-        {
-          "chapter": 5,
-          "moduleId": "m68727",
-          "termId": "fs-idp102383600"
-        }
-      ]
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102383600"
+    },
+    {
+      "termIs": "þrísameindahvarf",
+      "termEn": "termolecular reaction",
+      "termFull": "þrísameindahvarf (e. termolecular reaction)",
+      "definition": "grunnskrefshvarf sem felur í sér þrjár hvarfefnaeindir",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-6-catalysis",
+      "termId": "fs-idp251542624"
+    },
+    {
+      "termIs": "þrýstimælir",
+      "termEn": "manometer",
+      "termFull": "þrýstimælir (e. manometer)",
+      "definition": "tæki sem notað er til að mæla þrýsting gass sem er lokað inni í íláti",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm30126128"
+    },
+    {
+      "termIs": "þrýstingur",
+      "termEn": "pressure",
+      "termFull": "þrýstingur (e. pressure)",
+      "definition": "kraftur sem beitt er á flatareiningu",
+      "chapter": 9,
+      "section": "9.1",
+      "sectionTitle": "Þrýstingur gass",
+      "sectionSlug": "9-1-gas-pressure",
+      "termId": "fs-idm61385376"
+    },
+    {
+      "termIs": "þyngd",
+      "termEn": "weight",
+      "termFull": "þyngd (e. weight)",
+      "definition": "kraftur sem þyngdarafl beitir á hlut",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Efnishamur og flokkun efnis",
+      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "termId": "fs-idm6297360"
+    },
+    {
+      "termIs": "þyngdarmælingagreining",
+      "termEn": "gravimetric analysis",
+      "termFull": "þyngdarmælingagreining (e. gravimetric analysis)",
+      "definition": "magnbundin efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni með eðlisfræðilegu eða efnafræðilegu ferli og síðan massamælingar á greiningarefninu, myndefninu og/eða sýninu",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "termId": "fs-idp83288512"
+    },
+    {
+      "termIs": "þynning",
+      "termEn": "dilution",
+      "termFull": "þynning (e. dilution)",
+      "definition": "ferli þar sem leysi er bætt við lausn til að minnka styrk uppleystra efna",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26672800"
+    },
+    {
+      "termIs": "þynnt",
+      "termEn": "dilute",
+      "termFull": "þynnt (e. dilute)",
+      "definition": "þáttbundið hugtak yfir lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26674336"
     }
   ]
 }
