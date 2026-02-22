@@ -19,8 +19,7 @@ const router = express.Router();
 const pipeline = require('../services/pipelineService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
-
-const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
+const { VALID_BOOKS } = require('../config');
 const VALID_TRACKS = ['mt-preview', 'faithful', 'localized'];
 
 // All pipeline operations require HEAD_EDITOR

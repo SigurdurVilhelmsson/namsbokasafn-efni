@@ -23,6 +23,14 @@ const { requireContributor, requireEditor } = require('../middleware/requireRole
 const imageTracker = require('../services/imageTracker');
 const { VALID_BOOKS } = require('../config');
 
+// Validate :book param on all routes that use it
+router.param('book', (req, res, next, book) => {
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: 'Invalid book' });
+  }
+  next();
+});
+
 // Configure multer for image uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

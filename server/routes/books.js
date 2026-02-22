@@ -35,6 +35,14 @@ const upload = multer({
   },
 });
 
+// Validate :bookId param on all routes that use it
+router.param('bookId', (req, res, next, bookId) => {
+  if (!VALID_BOOKS.includes(bookId)) {
+    return res.status(400).json({ error: 'Invalid book' });
+  }
+  next();
+});
+
 // Load book data
 const dataDir = path.join(__dirname, '..', 'data');
 const booksDir = path.join(__dirname, '..', '..', 'books');
@@ -102,13 +110,6 @@ router.get('/', requireAuth, (req, res) => {
 router.get('/:bookId', requireAuth, (req, res) => {
   const { bookId } = req.params;
 
-  if (!VALID_BOOKS.includes(bookId)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
-
   const book = loadBookData(bookId);
 
   if (!book) {
@@ -124,13 +125,6 @@ router.get('/:bookId', requireAuth, (req, res) => {
  */
 router.get('/:bookId/chapters/:chapter', requireAuth, (req, res) => {
   const { bookId, chapter } = req.params;
-
-  if (!VALID_BOOKS.includes(bookId)) {
-    return res.status(400).json({
-      error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
-    });
-  }
 
   const book = loadBookData(bookId);
 
@@ -286,6 +280,10 @@ router.get('/:bookId/files/summary', requireAuth, (req, res) => {
 router.get('/:slug/download', requireAuth, async (req, res) => {
   const { slug } = req.params;
   const { chapter, type = 'en-md' } = req.query;
+
+  if (!VALID_BOOKS.includes(slug)) {
+    return res.status(400).json({ error: 'Invalid book' });
+  }
 
   // Determine source directory based on type
   const typeDirs = {

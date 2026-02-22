@@ -21,6 +21,8 @@
 
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
 
 const publicationService = require('../services/publicationService');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -300,8 +302,10 @@ router.post(
  */
 router.get('/:bookSlug/overview', requireAuth, (req, res) => {
   const { bookSlug } = req.params;
-  const fs = require('fs');
-  const path = require('path');
+
+  if (!VALID_BOOKS.includes(bookSlug)) {
+    return res.status(400).json({ error: 'Invalid book' });
+  }
 
   const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
   const bookDir = path.join(BOOKS_DIR, bookSlug);
@@ -309,7 +313,7 @@ router.get('/:bookSlug/overview', requireAuth, (req, res) => {
   if (!fs.existsSync(bookDir)) {
     return res.status(404).json({
       error: 'Book not found',
-      message: `Book '${bookSlug}' does not exist`,
+      message: 'The requested book does not exist',
     });
   }
 
