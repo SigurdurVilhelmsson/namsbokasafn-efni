@@ -843,7 +843,7 @@ function fetchGitHubUser(username) {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.github.com',
-      path: `/users/${username}`,
+      path: `/users/${encodeURIComponent(username)}`,
       method: 'GET',
       headers: {
         Accept: 'application/vnd.github.v3+json',
@@ -862,7 +862,7 @@ function fetchGitHubUser(username) {
         } else {
           try {
             resolve(JSON.parse(data));
-          } catch (e) {
+          } catch {
             reject(new Error('Failed to parse GitHub response'));
           }
         }

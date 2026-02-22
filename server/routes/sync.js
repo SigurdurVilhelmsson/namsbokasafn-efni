@@ -24,6 +24,38 @@ const session = require('../services/session');
 
 // Track created PRs (would use database in production)
 const prStore = new Map();
+const PR_STORE_MAX_SIZE = 200;
+const PR_STORE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+/**
+ * Clean up old entries from prStore to prevent unbounded growth.
+ * Removes entries older than PR_STORE_TTL_MS.
+ */
+function cleanupPrStore() {
+  const cutoff = Date.now() - PR_STORE_TTL_MS;
+  for (const [key, pr] of prStore.entries()) {
+    const createdAt = pr.createdAt ? new Date(pr.createdAt).getTime() : 0;
+    if (createdAt < cutoff) {
+      prStore.delete(key);
+    }
+  }
+  // If still over max size, remove oldest entries
+  if (prStore.size > PR_STORE_MAX_SIZE) {
+    const entries = Array.from(prStore.entries()).sort((a, b) => {
+      const aTime = a[1].createdAt ? new Date(a[1].createdAt).getTime() : 0;
+      const bTime = b[1].createdAt ? new Date(b[1].createdAt).getTime() : 0;
+      return aTime - bTime;
+    });
+    const toRemove = entries.slice(0, prStore.size - PR_STORE_MAX_SIZE);
+    for (const [key] of toRemove) {
+      prStore.delete(key);
+    }
+  }
+}
+
+// Clean up prStore every 30 minutes (unref to not prevent process exit)
+const _prCleanupInterval = setInterval(cleanupPrStore, 30 * 60 * 1000);
+if (_prCleanupInterval.unref) _prCleanupInterval.unref();
 
 /**
  * GET /api/sync/config
@@ -151,7 +183,7 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
   }
 
   // Get user's GitHub access token
-  const accessToken = req.user.githubAccessToken || process.env.GITHUB_BOT_TOKEN;
+  const accessToken = process.env.GITHUB_BOT_TOKEN;
   if (!accessToken) {
     return res.status(401).json({
       error: 'GitHub access token required',
@@ -237,7 +269,7 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
 router.get('/status/:prNumber', requireAuth, async (req, res) => {
   const { prNumber } = req.params;
 
-  const accessToken = req.user.githubAccessToken || process.env.GITHUB_BOT_TOKEN;
+  const accessToken = process.env.GITHUB_BOT_TOKEN;
   if (!accessToken) {
     return res.status(401).json({
       error: 'GitHub access token required',
@@ -285,7 +317,7 @@ router.get('/status/:prNumber', requireAuth, async (req, res) => {
 router.get('/prs', requireAuth, async (req, res) => {
   const { state = 'open', book } = req.query;
 
-  const accessToken = req.user.githubAccessToken || process.env.GITHUB_BOT_TOKEN;
+  const accessToken = process.env.GITHUB_BOT_TOKEN;
   if (!accessToken) {
     // Return only stored PRs if no token
     let prs = Array.from(prStore.values());

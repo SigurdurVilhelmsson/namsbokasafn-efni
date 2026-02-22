@@ -25,6 +25,9 @@ const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 // Track running and completed jobs
 const jobs = new Map();
 
+// Maximum concurrent pipeline jobs
+const MAX_JOBS = 5;
+
 // Source directory for each publication track
 const TRACK_SOURCE_DIR = {
   'mt-preview': '02-machine-translated',
@@ -119,6 +122,13 @@ function runRender({ book = 'efnafraedi', chapter, moduleId, track = 'faithful',
  * @returns {Object} { jobId, promise }
  */
 function runPipeline({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
+  // Guard: reject if too many concurrent jobs
+  if (runningJobCount() >= MAX_JOBS) {
+    throw new Error(
+      `Maximum concurrent jobs limit reached (${MAX_JOBS}). Please wait for running jobs to complete.`
+    );
+  }
+
   const jobId = generateJobId();
 
   const job = {
@@ -188,9 +198,27 @@ function runPipeline({ book = 'efnafraedi', chapter, moduleId, track = 'faithful
 }
 
 /**
+ * Count currently running jobs.
+ */
+function runningJobCount() {
+  let count = 0;
+  for (const job of jobs.values()) {
+    if (job.status === 'running') count++;
+  }
+  return count;
+}
+
+/**
  * Spawn a child process and track it as a job.
  */
 function spawnJob({ type, chapter, moduleId, track, userId, command, args }) {
+  // Guard: reject if too many concurrent jobs
+  if (runningJobCount() >= MAX_JOBS) {
+    throw new Error(
+      `Maximum concurrent jobs limit reached (${MAX_JOBS}). Please wait for running jobs to complete.`
+    );
+  }
+
   const jobId = generateJobId();
 
   const job = {
@@ -397,6 +425,13 @@ function runPrepareTm({ book, chapter, userId }) {
 
   if (pairs.length === 0) {
     throw new Error(`No modules have both EN and IS files for chapter ${chapter}`);
+  }
+
+  // Guard: reject if too many concurrent jobs
+  if (runningJobCount() >= MAX_JOBS) {
+    throw new Error(
+      `Maximum concurrent jobs limit reached (${MAX_JOBS}). Please wait for running jobs to complete.`
+    );
   }
 
   const jobId = generateJobId();

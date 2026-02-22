@@ -76,6 +76,9 @@ const segmentEditorRoutes = require('./routes/segment-editor');
 const pipelineRoutes = require('./routes/pipeline');
 const localizationEditorRoutes = require('./routes/localization-editor');
 
+// Load version from package.json
+const serverVersion = require('./package.json').version;
+
 // Configuration (use validated config)
 const PORT = config.port;
 const HOST = config.host;
@@ -91,7 +94,7 @@ app.use(
       directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "'unsafe-inline'"],
-        scriptSrcAttr: ["'unsafe-inline'"],
+        scriptSrcAttr: ["'self'"],
         styleSrc: ["'self'", "'unsafe-inline'"],
         fontSrc: ["'self'"],
         imgSrc: ["'self'", 'data:', 'https://avatars.githubusercontent.com'],
@@ -244,7 +247,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    version: '2.0.0',
+    version: serverVersion,
     phase: 2,
   });
 });
@@ -253,7 +256,7 @@ app.get('/api/health', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({
     name: 'Translation Pipeline API',
-    version: '2.0.0',
+    version: serverVersion,
     phase: 2,
     endpoints: {
       // Phase 1
@@ -402,7 +405,7 @@ app.use((err, req, res, _next) => {
 app.listen(PORT, HOST, () => {
   console.log('');
   console.log('═'.repeat(55));
-  console.log('Translation Pipeline API Server v2.0 (Phase 2)');
+  console.log(`Translation Pipeline API Server v${serverVersion}`);
   console.log('═'.repeat(55));
   console.log('');
   console.log(`  Server: http://${HOST}:${PORT}`);

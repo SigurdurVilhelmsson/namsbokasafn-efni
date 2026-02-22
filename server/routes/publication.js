@@ -26,15 +26,16 @@ const publicationService = require('../services/publicationService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const activityLog = require('../services/activityLog');
+const { VALID_BOOKS } = require('../config');
 
 // Validation middleware for chapter params
 function validateChapterParams(req, res, next) {
   const { bookSlug, chapterNum } = req.params;
 
-  if (!bookSlug || !/^[a-z0-9-]+$/.test(bookSlug)) {
+  if (!bookSlug || !VALID_BOOKS.includes(bookSlug)) {
     return res.status(400).json({
       error: 'Invalid book slug',
-      message: 'Book slug must be lowercase alphanumeric with hyphens',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 

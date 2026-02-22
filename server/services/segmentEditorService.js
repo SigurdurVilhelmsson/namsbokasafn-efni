@@ -441,6 +441,10 @@ function getDiscussion(segmentEditId) {
 
 const segmentParser = require('./segmentParser');
 
+// Guard against infinite recursion in applyApprovedEdits
+const _applyRetryState = new Map();
+const MAX_APPLY_RETRIES = 1;
+
 /**
  * Apply all approved (and not yet applied) edits for a module to the
  * 03-faithful-translation/ segment file. Starts from MT output as the base text
@@ -486,6 +490,17 @@ function applyApprovedEdits(book, chapter, moduleId) {
       `${moduleId}-segments.is.md`
     );
     if (!fs.existsSync(faithfulPath)) {
+      // Guard against infinite recursion
+      const retryKey = `${book}:${moduleId}`;
+      const retryCount = _applyRetryState.get(retryKey) || 0;
+      if (retryCount >= MAX_APPLY_RETRIES) {
+        _applyRetryState.delete(retryKey);
+        throw new Error(
+          'Max retries exceeded for applyApprovedEdits — faithful file still missing after reset'
+        );
+      }
+      _applyRetryState.set(retryKey, retryCount + 1);
+
       // File was deleted — reset applied_at so edits can be re-applied
       conn
         .prepare(
@@ -493,7 +508,14 @@ function applyApprovedEdits(book, chapter, moduleId) {
            WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
         )
         .run(book, moduleId);
-      return applyApprovedEdits(book, chapter, moduleId);
+      try {
+        const result = applyApprovedEdits(book, chapter, moduleId);
+        _applyRetryState.delete(retryKey);
+        return result;
+      } catch (err) {
+        _applyRetryState.delete(retryKey);
+        throw err;
+      }
     }
 
     throw new Error('All approved edits have already been applied');

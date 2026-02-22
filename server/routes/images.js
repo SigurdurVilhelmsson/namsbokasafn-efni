@@ -21,12 +21,25 @@ const fs = require('fs');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor, requireEditor } = require('../middleware/requireRole');
 const imageTracker = require('../services/imageTracker');
+const { VALID_BOOKS } = require('../config');
 
 // Configure multer for image uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const { book, chapter } = req.params;
-    const chapterStr = String(chapter).padStart(2, '0');
+
+    // Validate book parameter before using in file path
+    if (!VALID_BOOKS.includes(book)) {
+      return cb(new Error(`Invalid book: ${book}`));
+    }
+
+    // Validate chapter is a positive integer
+    const chapterNum = parseInt(chapter, 10);
+    if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
+      return cb(new Error(`Invalid chapter: ${chapter}`));
+    }
+
+    const chapterStr = String(chapterNum).padStart(2, '0');
     const uploadDir = path.join(
       __dirname,
       '..',

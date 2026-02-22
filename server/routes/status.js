@@ -22,12 +22,10 @@ const {
   sectionHasAnyFile,
   getUniqueSections,
 } = require('../services/splitFileUtils');
+const { VALID_BOOKS } = require('../config');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
-
-// Valid books
-const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 
 // 8-step pipeline stages (extract-inject-render workflow)
 const PIPELINE_STAGES = [
@@ -59,7 +57,7 @@ const STATUS_SYMBOLS = {
  * Get unified dashboard data for admin overview
  * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics, workload, overdueItems
  */
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', requireAuth, async (req, res) => {
   try {
     const dashboard = {
       needsAttention: {
@@ -115,7 +113,6 @@ router.get('/dashboard', async (req, res) => {
             const formatted = formatChapterStatus(statusData);
             chapterData.title = statusData.title;
             chapterData.progress = formatted.progress;
-            chapterData.currentStage = formatted.currentStage;
             chapterData.nextStage = formatted.nextStage;
 
             // Build stage map for matrix
@@ -124,13 +121,13 @@ router.get('/dashboard', async (req, res) => {
             }
 
             // Check for unassigned in-progress work
-            if (formatted.currentStage && !chapterData.assignment) {
+            if (formatted.nextStage && !chapterData.assignment) {
               dashboard.needsAttention.unassignedWork++;
               dashboard.needsAttention.items.push({
                 type: 'unassigned',
                 book,
                 chapter: chapterNum,
-                stage: formatted.currentStage,
+                stage: formatted.nextStage,
                 message: `Kafli ${chapterNum} í vinnslu án úthlutunar`,
               });
             }
@@ -221,7 +218,7 @@ router.get('/dashboard', async (req, res) => {
           });
         }
       }
-    } catch (err) {
+    } catch {
       // Reviews file may not exist
     }
 
@@ -243,7 +240,7 @@ router.get('/dashboard', async (req, res) => {
           });
         }
       }
-    } catch (err) {
+    } catch {
       // Issues file may not exist
     }
 
@@ -265,7 +262,7 @@ router.get('/dashboard', async (req, res) => {
  * GET /api/status/activity/timeline
  * Get activity timeline with optional filters
  */
-router.get('/activity/timeline', (req, res) => {
+router.get('/activity/timeline', requireAuth, (req, res) => {
   const { book, type, user, limit = 50, offset = 0 } = req.query;
 
   try {
@@ -305,7 +302,7 @@ router.get('/activity/timeline', (req, res) => {
  * GET /api/status/activity/types
  * Get available activity types for filtering
  */
-router.get('/activity/types', (req, res) => {
+router.get('/activity/types', requireAuth, (req, res) => {
   res.json({
     types: Object.entries(activityLog.ACTIVITY_TYPES).map(([key, value]) => ({
       key,
@@ -323,7 +320,7 @@ router.get('/activity/types', (req, res) => {
  * GET /api/status/:book
  * Get aggregated status for all chapters in a book
  */
-router.get('/:book', (req, res) => {
+router.get('/:book', requireAuth, (req, res) => {
   const { book } = req.params;
 
   if (!VALID_BOOKS.includes(book)) {
@@ -399,7 +396,7 @@ router.get('/:book', (req, res) => {
  * GET /api/status/:book/summary
  * Get summary statistics for a book
  */
-router.get('/:book/summary', (req, res) => {
+router.get('/:book/summary', requireAuth, (req, res) => {
   const { book } = req.params;
 
   if (!VALID_BOOKS.includes(book)) {
@@ -453,7 +450,7 @@ router.get('/:book/summary', (req, res) => {
             if (isComplete) stageCounts[stage].complete++;
             else stageCounts[stage].notStarted++;
           }
-        } catch (err) {
+        } catch {
           // Skip invalid status files
         }
       }
@@ -486,7 +483,7 @@ router.get('/:book/summary', (req, res) => {
  * GET /api/status/:book/:chapter
  * Get detailed status for a specific chapter
  */
-router.get('/:book/:chapter', (req, res) => {
+router.get('/:book/:chapter', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
   const chapterNum = parseInt(chapter);
 
@@ -530,7 +527,7 @@ router.get('/:book/:chapter', (req, res) => {
     if (fs.existsSync(filesPath)) {
       try {
         filesData = JSON.parse(fs.readFileSync(filesPath, 'utf-8'));
-      } catch (err) {
+      } catch {
         // Ignore files.json errors
       }
     }
@@ -556,7 +553,7 @@ router.get('/:book/:chapter', (req, res) => {
  * Get section-level status for a specific chapter
  * Returns per-section stage status for expandable view
  */
-router.get('/:book/:chapter/sections', (req, res) => {
+router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
   const chapterNum = parseInt(chapter);
 
@@ -779,8 +776,7 @@ function formatChapterStatus(statusData) {
     };
   });
 
-  // Calculate current stage
-  const currentStage = null;
+  // Calculate next stage
   let nextStage = null;
 
   for (let i = 0; i < stages.length; i++) {
@@ -797,7 +793,6 @@ function formatChapterStatus(statusData) {
   return {
     title: statusData.title || null,
     progress,
-    currentStage,
     nextStage,
     stages,
   };
@@ -997,7 +992,7 @@ function formatActivityType(type) {
 let bookRegistration;
 try {
   bookRegistration = require('../services/bookRegistration');
-} catch (e) {
+} catch {
   // Service may not be available in all contexts
   bookRegistration = null;
 }
@@ -1006,7 +1001,7 @@ try {
  * GET /api/status/:book/scan
  * Dry-run: show what would change if status were synced
  */
-router.get('/:book/scan', (req, res) => {
+router.get('/:book/scan', requireAuth, (req, res) => {
   const { book } = req.params;
 
   if (!VALID_BOOKS.includes(book)) {
@@ -1169,7 +1164,7 @@ router.post('/:book/:chapter/sync', requireAuth, requireAdmin(), (req, res) => {
  *   - teamMetrics: Per-user productivity
  *   - stageMetrics: Completion rates per stage
  */
-router.get('/analytics', async (req, res) => {
+router.get('/analytics', requireAuth, async (req, res) => {
   try {
     const analytics = {
       generatedAt: new Date().toISOString(),

@@ -18,8 +18,7 @@ const router = express.Router();
 const segmentParser = require('../services/segmentParser');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
-
-const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
+const { VALID_BOOKS } = require('../config');
 const VALID_CATEGORIES = [
   'unit-conversion',
   'cultural-adaptation',

@@ -38,8 +38,7 @@ const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
-
-const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
+const { VALID_BOOKS } = require('../config');
 const VALID_CATEGORIES = ['terminology', 'accuracy', 'readability', 'style', 'omission'];
 
 // =====================================================================

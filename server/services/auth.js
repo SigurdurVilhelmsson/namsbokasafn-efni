@@ -118,7 +118,7 @@ async function exchangeCodeForToken(code) {
           } else {
             resolve(json.access_token);
           }
-        } catch (e) {
+        } catch {
           reject(new Error('Failed to parse GitHub response'));
         }
       });
@@ -142,9 +142,12 @@ async function getGitHubUser(accessToken) {
  */
 async function checkOrgMembership(accessToken, username) {
   try {
-    await githubApiRequest(`/orgs/${CONFIG.githubOrg}/members/${username}`, accessToken);
+    await githubApiRequest(
+      `/orgs/${encodeURIComponent(CONFIG.githubOrg)}/members/${encodeURIComponent(username)}`,
+      accessToken
+    );
     return true;
-  } catch (err) {
+  } catch {
     return false;
   }
 }
@@ -159,7 +162,7 @@ async function getUserTeams(accessToken) {
     return teams
       .filter((team) => team.organization?.login === CONFIG.githubOrg)
       .map((team) => team.slug);
-  } catch (err) {
+  } catch {
     return [];
   }
 }
@@ -170,11 +173,11 @@ async function getUserTeams(accessToken) {
 async function isOrgOwner(accessToken, username) {
   try {
     const membership = await githubApiRequest(
-      `/orgs/${CONFIG.githubOrg}/memberships/${username}`,
+      `/orgs/${encodeURIComponent(CONFIG.githubOrg)}/memberships/${encodeURIComponent(username)}`,
       accessToken
     );
     return membership.role === 'admin';
-  } catch (err) {
+  } catch {
     return false;
   }
 }
@@ -353,7 +356,7 @@ function verifyToken(token) {
     return jwt.verify(token, CONFIG.jwtSecret, {
       issuer: 'namsbokasafn-pipeline',
     });
-  } catch (err) {
+  } catch {
     return null;
   }
 }

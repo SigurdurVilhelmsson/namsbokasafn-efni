@@ -83,8 +83,15 @@ const config = {
     : [],
 };
 
+/**
+ * Valid book identifiers used across route files for parameter validation.
+ * Add new books here as they are registered for translation.
+ */
+const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
+
 module.exports = {
   validateSecrets,
   config,
   REQUIRED_PRODUCTION_SECRETS,
+  VALID_BOOKS,
 };

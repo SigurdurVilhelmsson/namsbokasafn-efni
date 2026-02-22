@@ -14,6 +14,7 @@ const multer = require('multer');
 
 const { requireAuth } = require('../middleware/requireAuth');
 const chapterFilesService = require('../services/chapterFilesService');
+const { VALID_BOOKS } = require('../config');
 
 // Configure multer for file uploads
 const uploadDir = path.join(__dirname, '..', '..', 'pipeline-output', 'uploads');
@@ -54,7 +55,7 @@ function loadBookData(bookId) {
         if (data.slug === bookId || data.book === bookId) {
           return data;
         }
-      } catch (e) {
+      } catch {
         // Skip files that can't be parsed
       }
     }
@@ -67,7 +68,7 @@ function loadBookData(bookId) {
  * GET /api/books
  * List available books
  */
-router.get('/', (req, res) => {
+router.get('/', requireAuth, (req, res) => {
   const books = [];
 
   if (fs.existsSync(dataDir)) {
@@ -98,8 +99,16 @@ router.get('/', (req, res) => {
  * GET /api/books/:bookId
  * Get book details including chapters
  */
-router.get('/:bookId', (req, res) => {
+router.get('/:bookId', requireAuth, (req, res) => {
   const { bookId } = req.params;
+
+  if (!VALID_BOOKS.includes(bookId)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
+    });
+  }
+
   const book = loadBookData(bookId);
 
   if (!book) {
@@ -113,8 +122,16 @@ router.get('/:bookId', (req, res) => {
  * GET /api/books/:bookId/chapters/:chapter
  * Get chapter details including all modules
  */
-router.get('/:bookId/chapters/:chapter', (req, res) => {
+router.get('/:bookId/chapters/:chapter', requireAuth, (req, res) => {
   const { bookId, chapter } = req.params;
+
+  if (!VALID_BOOKS.includes(bookId)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
+    });
+  }
+
   const book = loadBookData(bookId);
 
   if (!book) {
