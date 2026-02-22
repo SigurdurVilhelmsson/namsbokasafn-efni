@@ -24,21 +24,22 @@ router.get('/', requireAuth, (req, res) => {
   const { unread, limit } = req.query;
 
   try {
-    const maxLimit = Math.min(parseInt(limit) || 20, 100);
+    const maxLimit = Math.min(parseInt(limit, 10) || 20, 100);
 
-    const items = unread === 'true'
-      ? notifications.getUnreadNotifications(req.user.id, maxLimit)
-      : notifications.getAllNotifications(req.user.id, maxLimit);
+    const items =
+      unread === 'true'
+        ? notifications.getUnreadNotifications(req.user.id, maxLimit)
+        : notifications.getAllNotifications(req.user.id, maxLimit);
 
     res.json({
       notifications: items,
-      unreadCount: notifications.getUnreadCount(req.user.id)
+      unreadCount: notifications.getUnreadCount(req.user.id),
     });
   } catch (err) {
     console.error('Error getting notifications:', err);
     res.status(500).json({
       error: 'Failed to get notifications',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -55,7 +56,7 @@ router.get('/count', requireAuth, (req, res) => {
     console.error('Error getting notification count:', err);
     res.status(500).json({
       error: 'Failed to get notification count',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -68,13 +69,13 @@ router.post('/:id/read', requireAuth, (req, res) => {
   const { id } = req.params;
 
   try {
-    notifications.markAsRead(parseInt(id));
+    notifications.markAsRead(parseInt(id, 10), req.user.id);
     res.json({ success: true });
   } catch (err) {
     console.error('Error marking notification as read:', err);
     res.status(500).json({
       error: 'Failed to mark notification as read',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -91,7 +92,7 @@ router.post('/read-all', requireAuth, (req, res) => {
     console.error('Error marking notifications as read:', err);
     res.status(500).json({
       error: 'Failed to mark notifications as read',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -106,13 +107,13 @@ router.get('/preferences', requireAuth, (req, res) => {
     res.json({
       preferences: prefs,
       categories: notifications.NOTIFICATION_CATEGORIES,
-      defaults: notifications.DEFAULT_PREFERENCES
+      defaults: notifications.DEFAULT_PREFERENCES,
     });
   } catch (err) {
     console.error('Error getting notification preferences:', err);
     res.status(500).json({
       error: 'Failed to get preferences',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -138,7 +139,7 @@ router.put('/preferences', requireAuth, (req, res) => {
     if (body[category]) {
       preferences[category] = {
         inApp: body[category].inApp !== false,
-        email: body[category].email !== false
+        email: body[category].email !== false,
       };
     }
   }
@@ -147,13 +148,13 @@ router.put('/preferences', requireAuth, (req, res) => {
     const updated = notifications.setPreferences(req.user.id, preferences);
     res.json({
       success: true,
-      preferences: updated
+      preferences: updated,
     });
   } catch (err) {
     console.error('Error updating notification preferences:', err);
     res.status(500).json({
       error: 'Failed to update preferences',
-      message: err.message
+      message: err.message,
     });
   }
 });

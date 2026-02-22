@@ -126,7 +126,7 @@ const statements = {
     LIMIT ?
   `),
   markAsRead: db.prepare(`
-    UPDATE notifications SET read = 1 WHERE id = ?
+    UPDATE notifications SET read = 1 WHERE id = ? AND user_id = ?
   `),
   markAllAsRead: db.prepare(`
     UPDATE notifications SET read = 1 WHERE user_id = ?
@@ -695,8 +695,8 @@ function getUnreadCount(userId) {
 /**
  * Mark notification as read
  */
-function markAsRead(notificationId) {
-  statements.markAsRead.run(notificationId);
+function markAsRead(notificationId, userId) {
+  statements.markAsRead.run(notificationId, userId);
 }
 
 /**

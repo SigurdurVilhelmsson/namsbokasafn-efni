@@ -99,8 +99,8 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         .readdirSync(chaptersPath)
         .filter((d) => d.startsWith('ch'))
         .sort((a, b) => {
-          const aNum = parseInt(a.replace('ch', ''));
-          const bNum = parseInt(b.replace('ch', ''));
+          const aNum = parseInt(a.replace('ch', ''), 10);
+          const bNum = parseInt(b.replace('ch', ''), 10);
           return aNum - bNum;
         });
 
@@ -110,7 +110,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       };
 
       for (const chapterDir of chapterDirs) {
-        const chapterNum = parseInt(chapterDir.replace('ch', ''));
+        const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
         const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
 
         const chapterData = {
@@ -353,8 +353,8 @@ router.get('/:book', requireAuth, (req, res) => {
       .readdirSync(chaptersPath)
       .filter((d) => d.startsWith('ch'))
       .sort((a, b) => {
-        const aNum = parseInt(a.replace('ch', ''));
-        const bNum = parseInt(b.replace('ch', ''));
+        const aNum = parseInt(a.replace('ch', ''), 10);
+        const bNum = parseInt(b.replace('ch', ''), 10);
         return aNum - bNum;
       });
 
@@ -367,13 +367,13 @@ router.get('/:book', requireAuth, (req, res) => {
         try {
           const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
           chapters.push({
-            chapter: parseInt(chapterDir.replace('ch', '')),
+            chapter: parseInt(chapterDir.replace('ch', ''), 10),
             chapterDir,
             ...formatChapterStatus(statusData),
           });
         } catch (err) {
           chapters.push({
-            chapter: parseInt(chapterDir.replace('ch', '')),
+            chapter: parseInt(chapterDir.replace('ch', ''), 10),
             chapterDir,
             error: `Failed to parse status: ${err.message}`,
           });
@@ -484,7 +484,7 @@ router.get('/:book/summary', requireAuth, (req, res) => {
  */
 router.get('/:book/:chapter', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
-  const chapterNum = parseInt(chapter);
+  const chapterNum = parseInt(chapter, 10);
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
@@ -547,7 +547,7 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
  */
 router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
-  const chapterNum = parseInt(chapter);
+  const chapterNum = parseInt(chapter, 10);
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
@@ -1076,7 +1076,7 @@ router.post('/:book/sync', requireAuth, requireAdmin(), (req, res) => {
  */
 router.post('/:book/:chapter/sync', requireAuth, requireAdmin(), (req, res) => {
   const { book, chapter } = req.params;
-  const chapterNum = parseInt(chapter);
+  const chapterNum = parseInt(chapter, 10);
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({

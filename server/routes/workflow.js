@@ -224,13 +224,7 @@ router.get('/sessions', requireAuth, (req, res) => {
  * GET /api/workflow/sessions/all
  * List all active sessions (admin only)
  */
-router.get('/sessions/all', requireAuth, (req, res) => {
-  if (req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Admin access required',
-    });
-  }
-
+router.get('/sessions/all', requireAuth, requireAdmin(), (req, res) => {
   const sessions = session.listAllSessions();
 
   res.json({

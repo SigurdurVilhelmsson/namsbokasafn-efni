@@ -38,8 +38,8 @@ router.get('/types', (req, res) => {
   res.json({
     types: Object.entries(feedbackService.FEEDBACK_TYPE_LABELS).map(([value, label]) => ({
       value,
-      label
-    }))
+      label,
+    })),
   });
 });
 
@@ -54,14 +54,14 @@ router.post('/', optionalAuth, async (req, res) => {
   if (!type) {
     return res.status(400).json({
       error: 'Missing type',
-      message: 'Feedback type is required'
+      message: 'Feedback type is required',
     });
   }
 
   if (!message || message.trim().length < 10) {
     return res.status(400).json({
       error: 'Invalid message',
-      message: 'Message must be at least 10 characters'
+      message: 'Message must be at least 10 characters',
     });
   }
 
@@ -79,8 +79,8 @@ router.post('/', optionalAuth, async (req, res) => {
       section: section || null,
       message,
       userEmail: userEmail || null,
-      userName: userName || (req.user?.name) || null,
-      priority
+      userName: userName || req.user?.name || null,
+      priority,
     });
 
     // Send email notification to admins
@@ -101,13 +101,13 @@ router.post('/', optionalAuth, async (req, res) => {
     res.status(201).json({
       success: true,
       feedback,
-      message: 'Takk fyrir endurgjöfina! (Thank you for your feedback!)'
+      message: 'Takk fyrir endurgjöfina! (Thank you for your feedback!)',
     });
   } catch (err) {
     console.error('Error submitting feedback:', err);
     res.status(400).json({
       error: 'Submission failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -129,8 +129,8 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
       type: type || null,
       book: book || null,
       priority: priority || null,
-      limit: parseInt(limit),
-      offset: parseInt(offset)
+      limit: parseInt(limit, 10),
+      offset: parseInt(offset, 10),
     });
 
     res.json(result);
@@ -138,7 +138,7 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     console.error('Error listing feedback:', err);
     res.status(500).json({
       error: 'Failed to list feedback',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -155,7 +155,7 @@ router.get('/stats', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => 
     console.error('Error getting stats:', err);
     res.status(500).json({
       error: 'Failed to get stats',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -168,13 +168,13 @@ router.get('/open', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { limit = 100 } = req.query;
 
   try {
-    const items = feedbackService.getOpenFeedback(parseInt(limit));
+    const items = feedbackService.getOpenFeedback(parseInt(limit, 10));
     res.json({ items, count: items.length });
   } catch (err) {
     console.error('Error getting open feedback:', err);
     res.status(500).json({
       error: 'Failed to get open feedback',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -187,12 +187,12 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
-    const feedback = feedbackService.getFeedback(parseInt(id));
+    const feedback = feedbackService.getFeedback(parseInt(id, 10));
 
     if (!feedback) {
       return res.status(404).json({
         error: 'Not found',
-        message: `Feedback ${id} not found`
+        message: `Feedback ${id} not found`,
       });
     }
 
@@ -201,7 +201,7 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     console.error('Error getting feedback:', err);
     res.status(500).json({
       error: 'Failed to get feedback',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -217,22 +217,22 @@ router.post('/:id/status', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, re
   if (!status) {
     return res.status(400).json({
       error: 'Missing status',
-      message: 'Status is required'
+      message: 'Status is required',
     });
   }
 
   try {
-    const feedback = feedbackService.updateStatus(parseInt(id), status);
+    const feedback = feedbackService.updateStatus(parseInt(id, 10), status);
 
     res.json({
       success: true,
-      feedback
+      feedback,
     });
   } catch (err) {
     console.error('Error updating status:', err);
     res.status(400).json({
       error: 'Update failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -247,7 +247,7 @@ router.post('/:id/resolve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
 
   try {
     const feedback = feedbackService.resolveFeedback(
-      parseInt(id),
+      parseInt(id, 10),
       req.user.id,
       req.user.name || req.user.username,
       notes
@@ -255,13 +255,13 @@ router.post('/:id/resolve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
 
     res.json({
       success: true,
-      feedback
+      feedback,
     });
   } catch (err) {
     console.error('Error resolving feedback:', err);
     res.status(400).json({
       error: 'Resolve failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -277,22 +277,22 @@ router.post('/:id/priority', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, 
   if (!priority) {
     return res.status(400).json({
       error: 'Missing priority',
-      message: 'Priority is required'
+      message: 'Priority is required',
     });
   }
 
   try {
-    const feedback = feedbackService.setPriority(parseInt(id), priority);
+    const feedback = feedbackService.setPriority(parseInt(id, 10), priority);
 
     res.json({
       success: true,
-      feedback
+      feedback,
     });
   } catch (err) {
     console.error('Error setting priority:', err);
     res.status(400).json({
       error: 'Update failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -306,17 +306,17 @@ router.post('/:id/assign', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, re
   const { assignee } = req.body;
 
   try {
-    const feedback = feedbackService.assignFeedback(parseInt(id), assignee || null);
+    const feedback = feedbackService.assignFeedback(parseInt(id, 10), assignee || null);
 
     res.json({
       success: true,
-      feedback
+      feedback,
     });
   } catch (err) {
     console.error('Error assigning feedback:', err);
     res.status(400).json({
       error: 'Assign failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -332,13 +332,13 @@ router.post('/:id/respond', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
   if (!message || message.trim().length < 1) {
     return res.status(400).json({
       error: 'Missing message',
-      message: 'Response message is required'
+      message: 'Response message is required',
     });
   }
 
   try {
     const response = feedbackService.addResponse(
-      parseInt(id),
+      parseInt(id, 10),
       req.user.id,
       req.user.name || req.user.username,
       message,
@@ -347,13 +347,13 @@ router.post('/:id/respond', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
 
     res.json({
       success: true,
-      response
+      response,
     });
   } catch (err) {
     console.error('Error adding response:', err);
     res.status(400).json({
       error: 'Response failed',
-      message: err.message
+      message: err.message,
     });
   }
 });

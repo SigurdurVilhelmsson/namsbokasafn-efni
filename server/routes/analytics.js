@@ -34,7 +34,7 @@ router.get('/stats', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => 
     console.error('Error getting analytics stats:', err);
     res.status(500).json({
       error: 'Failed to get stats',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -47,13 +47,13 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
   const { limit = 100 } = req.query;
 
   try {
-    const events = analyticsService.getRecentEvents(parseInt(limit));
+    const events = analyticsService.getRecentEvents(parseInt(limit, 10));
     res.json({ events });
   } catch (err) {
     console.error('Error getting recent events:', err);
     res.status(500).json({
       error: 'Failed to get events',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -70,7 +70,16 @@ router.post('/event', optionalAuth, (req, res) => {
   if (!eventType || !allowedTypes.includes(eventType)) {
     return res.status(400).json({
       error: 'Invalid event type',
-      message: `Event type must be one of: ${allowedTypes.join(', ')}`
+      message: `Event type must be one of: ${allowedTypes.join(', ')}`,
+    });
+  }
+
+  // Validate metadata size to prevent abuse
+  const metadataStr = JSON.stringify(metadata);
+  if (metadataStr.length > 2048) {
+    return res.status(400).json({
+      error: 'Metadata too large',
+      message: `Metadata must be under 2048 characters when serialized (got ${metadataStr.length})`,
     });
   }
 
@@ -83,7 +92,7 @@ router.post('/event', optionalAuth, (req, res) => {
       userAgent: req.get('user-agent'),
       referrer: req.get('referer'),
       sessionId: req.cookies?.sessionId || null,
-      metadata
+      metadata,
     });
 
     res.json({ success: true, eventId: event.id });
@@ -91,7 +100,7 @@ router.post('/event', optionalAuth, (req, res) => {
     console.error('Error logging event:', err);
     res.status(500).json({
       error: 'Failed to log event',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -112,14 +121,14 @@ router.get('/dashboard-data', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         weeklyPageViews: weekStats.totalPageViews,
         monthlyPageViews: monthStats.totalPageViews,
         weeklyUniqueSessions: weekStats.uniqueSessions,
-        monthlyUniqueSessions: monthStats.uniqueSessions
-      }
+        monthlyUniqueSessions: monthStats.uniqueSessions,
+      },
     });
   } catch (err) {
     console.error('Error getting dashboard data:', err);
     res.status(500).json({
       error: 'Failed to get dashboard data',
-      message: err.message
+      message: err.message,
     });
   }
 });

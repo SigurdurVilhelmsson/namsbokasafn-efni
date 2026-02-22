@@ -14,8 +14,11 @@
 const express = require('express');
 const router = express.Router();
 
+const { v4: uuidv4 } = require('uuid');
+
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireEditor } = require('../middleware/requireRole');
+const { requireEditor, ROLES } = require('../middleware/requireRole');
+const { hasRole } = require('../services/auth');
 const session = require('../services/session');
 const { ISSUE_CATEGORIES } = require('../services/issueClassifier');
 
@@ -191,12 +194,8 @@ router.get('/session/:sessionId', requireAuth, (req, res) => {
     });
   }
 
-  // Check access
-  if (
-    sessionData.userId !== req.user.id &&
-    req.user.role !== 'admin' &&
-    req.user.role !== 'editor'
-  ) {
+  // Check access — owner or editor+ can view session issues
+  if (sessionData.userId !== req.user.id && !hasRole(req.user.role, ROLES.EDITOR)) {
     return res.status(403).json({
       error: 'Access denied',
     });
@@ -254,12 +253,8 @@ router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
     });
   }
 
-  // Check access
-  if (
-    sessionData.userId !== req.user.id &&
-    req.user.role !== 'admin' &&
-    req.user.role !== 'editor'
-  ) {
+  // Check access — owner or editor+ can resolve session issues
+  if (sessionData.userId !== req.user.id && !hasRole(req.user.role, ROLES.EDITOR)) {
     return res.status(403).json({
       error: 'Access denied',
     });
@@ -279,13 +274,8 @@ router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
     });
   }
 
-  // Check permissions for BOARD_REVIEW
-  if (
-    issue.category === 'BOARD_REVIEW' &&
-    req.user.role !== 'admin' &&
-    req.user.role !== 'head-editor' &&
-    req.user.role !== 'editor'
-  ) {
+  // Check permissions for BOARD_REVIEW — requires editor role or higher
+  if (issue.category === 'BOARD_REVIEW' && !hasRole(req.user.role, ROLES.EDITOR)) {
     return res.status(403).json({
       error: 'Editor access required for board review issues',
     });
@@ -581,7 +571,6 @@ router.post('/report', requireAuth, (req, res) => {
     });
   }
 
-  const { v4: uuidv4 } = require('uuid');
   const issueId = uuidv4();
 
   const issue = {

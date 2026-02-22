@@ -62,7 +62,7 @@ function validateSecrets() {
 const config = {
   // Server settings
   port: parseInt(process.env.PORT, 10) || 3000,
-  host: ['localhost', '127.0.0.1', '::1'].includes(process.env.HOST)
+  host: ['localhost', '127.0.0.1', '::1', '0.0.0.0'].includes(process.env.HOST)
     ? process.env.HOST
     : 'localhost',
   nodeEnv: process.env.NODE_ENV || 'development',

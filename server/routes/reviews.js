@@ -13,7 +13,8 @@
 
 const express = require('express');
 const router = express.Router();
-const { execFileSync } = require('child_process');
+const { promisify } = require('util');
+const execFileAsync = promisify(require('child_process').execFile);
 const path = require('path');
 
 const editorHistory = require('../services/editorHistory');
@@ -580,7 +581,7 @@ async function commitApprovedReview(review, admin) {
 
   try {
     // Stage the file
-    execFileSync('git', ['add', relativePath], { cwd: projectRoot });
+    await execFileAsync('git', ['add', relativePath], { cwd: projectRoot });
 
     // Create commit message
     const commitMessage = `feat(translation): ${review.section} reviewed by ${review.submittedByUsername}
@@ -593,7 +594,7 @@ Section: ${review.section}
 Co-Authored-By: ${review.submittedByUsername} <${review.submittedBy}@users.noreply.github.com>`;
 
     // Commit
-    execFileSync('git', ['commit', '-m', commitMessage], {
+    await execFileAsync('git', ['commit', '-m', commitMessage], {
       cwd: projectRoot,
       env: {
         ...process.env,
@@ -605,17 +606,18 @@ Co-Authored-By: ${review.submittedByUsername} <${review.submittedBy}@users.norep
     });
 
     // Get the commit SHA
-    const sha = execFileSync('git', ['rev-parse', 'HEAD'], {
+    const { stdout } = await execFileAsync('git', ['rev-parse', 'HEAD'], {
       cwd: projectRoot,
       encoding: 'utf-8',
-    }).trim();
+    });
+    const sha = stdout.trim();
 
     // Log the commit creation
     activityLog.logCommitCreated(admin, review.book, review.chapter, review.section, sha);
 
     // Push to origin (optional, may fail if no push access)
     try {
-      execFileSync('git', ['push', 'origin', 'HEAD'], { cwd: projectRoot });
+      await execFileAsync('git', ['push', 'origin', 'HEAD'], { cwd: projectRoot });
     } catch (pushErr) {
       console.warn('Git push failed (may need manual push):', pushErr.message);
     }

@@ -265,6 +265,31 @@ router.get('/books', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
 });
 
 /**
+ * GET /api/admin/books/data-status
+ * Get status of book data files for all available books
+ * NOTE: Must be defined BEFORE /books/:slug to avoid Express matching "data-status" as :slug
+ */
+router.get('/books/data-status', requireAuth, requireAdmin(), (req, res) => {
+  try {
+    const books = bookDataGenerator.listBooks();
+
+    res.json({
+      books,
+      total: books.length,
+      withDataFile: books.filter((b) => b.hasDataFile).length,
+      needsUpdate: books.filter((b) => b.needsUpdate).length,
+      missingFile: books.filter((b) => !b.hasDataFile).length,
+    });
+  } catch (err) {
+    console.error('List book data status error:', err);
+    res.status(500).json({
+      error: 'Failed to list book data status',
+      message: err.message,
+    });
+  }
+});
+
+/**
  * GET /api/admin/books/:slug
  * Get detailed book information including chapters
  */
@@ -388,30 +413,6 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
 
     res.status(500).json({
       error: 'Failed to generate book data',
-      message: err.message,
-    });
-  }
-});
-
-/**
- * GET /api/admin/books/data-status
- * Get status of book data files for all available books
- */
-router.get('/books/data-status', requireAuth, requireAdmin(), (req, res) => {
-  try {
-    const books = bookDataGenerator.listBooks();
-
-    res.json({
-      books,
-      total: books.length,
-      withDataFile: books.filter((b) => b.hasDataFile).length,
-      needsUpdate: books.filter((b) => b.needsUpdate).length,
-      missingFile: books.filter((b) => !b.hasDataFile).length,
-    });
-  } catch (err) {
-    console.error('List book data status error:', err);
-    res.status(500).json({
-      error: 'Failed to list book data status',
       message: err.message,
     });
   }

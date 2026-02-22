@@ -22,7 +22,7 @@ const { optionalAuth } = require('../middleware/requireAuth');
 const stateTokens = new Map();
 
 // Clean up expired state tokens every 5 minutes
-setInterval(
+const stateTokenCleanupInterval = setInterval(
   () => {
     const now = Date.now();
     for (const [token, data] of stateTokens) {
@@ -34,6 +34,7 @@ setInterval(
   },
   5 * 60 * 1000
 );
+stateTokenCleanupInterval.unref();
 
 /**
  * GET /api/auth/status

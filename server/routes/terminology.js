@@ -32,7 +32,7 @@ const upload = multer({
     } else {
       cb(new Error('Only CSV and Excel files are allowed'));
     }
-  }
+  },
 });
 
 // ============================================================================
@@ -60,7 +60,7 @@ router.get('/', requireAuth, (req, res) => {
       category,
       status,
       limit: limit ? parseInt(limit, 10) : 50,
-      offset: offset ? parseInt(offset, 10) : 0
+      offset: offset ? parseInt(offset, 10) : 0,
     });
 
     res.json(result);
@@ -68,7 +68,7 @@ router.get('/', requireAuth, (req, res) => {
     console.error('Search terms error:', err);
     res.status(500).json({
       error: 'Failed to search terms',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -95,7 +95,7 @@ router.get('/lookup', requireAuth, (req, res) => {
     console.error('Lookup error:', err);
     res.status(500).json({
       error: 'Lookup failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -114,7 +114,7 @@ router.get('/stats', requireAuth, (req, res) => {
     console.error('Stats error:', err);
     res.status(500).json({
       error: 'Failed to get statistics',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -130,7 +130,7 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
     const terms = terminology.getReviewQueue({
       bookId: bookId ? parseInt(bookId, 10) : undefined,
       limit: limit ? parseInt(limit, 10) : 50,
-      offset: offset ? parseInt(offset, 10) : 0
+      offset: offset ? parseInt(offset, 10) : 0,
     });
 
     res.json({ terms });
@@ -138,7 +138,7 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
     console.error('Review queue error:', err);
     res.status(500).json({
       error: 'Failed to get review queue',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -151,7 +151,7 @@ router.get('/categories', requireAuth, (req, res) => {
   res.json({
     categories: terminology.TERM_CATEGORIES,
     statuses: terminology.TERM_STATUSES,
-    sources: terminology.TERM_SOURCES
+    sources: terminology.TERM_SOURCES,
   });
 });
 
@@ -167,7 +167,7 @@ router.get('/:id', requireAuth, (req, res) => {
 
     if (!term) {
       return res.status(404).json({
-        error: 'Term not found'
+        error: 'Term not found',
       });
     }
 
@@ -176,7 +176,7 @@ router.get('/:id', requireAuth, (req, res) => {
     console.error('Get term error:', err);
     res.status(500).json({
       error: 'Failed to get term',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -200,12 +200,13 @@ router.get('/:id', requireAuth, (req, res) => {
  *   bookId: Book ID (null for global term)
  */
 router.post('/', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
-  const { english, icelandic, alternatives, category, notes, source, sourceChapter, bookId } = req.body;
+  const { english, icelandic, alternatives, category, notes, source, sourceChapter, bookId } =
+    req.body;
 
   if (!english || !icelandic) {
     return res.status(400).json({
       error: 'Missing required fields',
-      message: 'english and icelandic are required'
+      message: 'english and icelandic are required',
     });
   }
 
@@ -223,18 +224,18 @@ router.post('/', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
       action: 'create_term',
       entityType: 'terminology',
       entityId: term.id,
-      details: { english, icelandic, category }
+      details: { english, icelandic, category },
     });
 
     res.status(201).json({
       success: true,
-      term
+      term,
     });
   } catch (err) {
     console.error('Create term error:', err);
     res.status(err.message.includes('already exists') ? 409 : 500).json({
       error: 'Failed to create term',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -255,18 +256,18 @@ router.put('/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
       action: 'update_term',
       entityType: 'terminology',
       entityId: term.id,
-      details: { english: term.english, updates: Object.keys(req.body) }
+      details: { english: term.english, updates: Object.keys(req.body) },
     });
 
     res.json({
       success: true,
-      term
+      term,
     });
   } catch (err) {
     console.error('Update term error:', err);
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to update term',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -287,7 +288,7 @@ router.delete('/:id', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
         username: req.user.username,
         action: 'delete_term',
         entityType: 'terminology',
-        entityId: parseInt(id, 10)
+        entityId: parseInt(id, 10),
       });
     }
 
@@ -296,7 +297,7 @@ router.delete('/:id', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
     console.error('Delete term error:', err);
     res.status(500).json({
       error: 'Failed to delete term',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -321,18 +322,18 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
       action: 'approve_term',
       entityType: 'terminology',
       entityId: term.id,
-      details: { english: term.english, icelandic: term.icelandic }
+      details: { english: term.english, icelandic: term.icelandic },
     });
 
     res.json({
       success: true,
-      term
+      term,
     });
   } catch (err) {
     console.error('Approve term error:', err);
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to approve term',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -352,7 +353,7 @@ router.post('/:id/dispute', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
   if (!comment) {
     return res.status(400).json({
       error: 'Missing comment',
-      message: 'A comment explaining the dispute is required'
+      message: 'A comment explaining the dispute is required',
     });
   }
 
@@ -371,18 +372,18 @@ router.post('/:id/dispute', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
       action: 'dispute_term',
       entityType: 'terminology',
       entityId: term.id,
-      details: { english: term.english, comment }
+      details: { english: term.english, comment },
     });
 
     res.json({
       success: true,
-      term
+      term,
     });
   } catch (err) {
     console.error('Dispute term error:', err);
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to dispute term',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -402,7 +403,7 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
   if (!comment) {
     return res.status(400).json({
       error: 'Missing comment',
-      message: 'Comment text is required'
+      message: 'Comment text is required',
     });
   }
 
@@ -417,13 +418,13 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
 
     res.json({
       success: true,
-      discussion
+      discussion,
     });
   } catch (err) {
     console.error('Add discussion error:', err);
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to add discussion',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -440,92 +441,99 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
  *   bookId: Optional book ID
  *   overwrite: Whether to overwrite existing non-approved terms
  */
-router.post('/import/csv', requireAuth, requireRole(ROLES.HEAD_EDITOR), upload.single('file'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({
-      error: 'No file uploaded'
-    });
-  }
+router.post(
+  '/import/csv',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  upload.single('file'),
+  (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({
+        error: 'No file uploaded',
+      });
+    }
 
-  const { bookId, overwrite } = req.query;
+    const { bookId, overwrite } = req.query;
 
-  try {
-    // Write buffer to temp file
-    const tempPath = path.join('/tmp', `terminology-import-${Date.now()}.csv`);
-    fs.writeFileSync(tempPath, req.file.buffer);
+    try {
+      // Write buffer to temp file
+      const tempPath = path.join('/tmp', `terminology-import-${Date.now()}.csv`);
+      fs.writeFileSync(tempPath, req.file.buffer);
 
-    const result = terminology.importFromCSV(
-      tempPath,
-      req.user.id,
-      req.user.name,
-      {
+      const result = terminology.importFromCSV(tempPath, req.user.id, req.user.name, {
         bookId: bookId ? parseInt(bookId, 10) : null,
-        overwrite: overwrite === 'true'
-      }
-    );
+        overwrite: overwrite === 'true',
+      });
 
-    // Clean up temp file
-    fs.unlinkSync(tempPath);
+      // Clean up temp file
+      fs.unlinkSync(tempPath);
 
-    activityLog.log({
-      userId: req.user.id,
-      username: req.user.username,
-      action: 'import_terminology_csv',
-      entityType: 'terminology',
-      details: result
-    });
+      activityLog.log({
+        userId: req.user.id,
+        username: req.user.username,
+        action: 'import_terminology_csv',
+        entityType: 'terminology',
+        details: result,
+      });
 
-    res.json(result);
-  } catch (err) {
-    console.error('CSV import error:', err);
-    res.status(500).json({
-      error: 'Failed to import CSV',
-      message: err.message
-    });
+      res.json(result);
+    } catch (err) {
+      console.error('CSV import error:', err);
+      res.status(500).json({
+        error: 'Failed to import CSV',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 /**
  * POST /api/terminology/import/excel
  * Import terms from Excel file (Chemistry Association format)
  */
-router.post('/import/excel', requireAuth, requireRole(ROLES.HEAD_EDITOR), upload.single('file'), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({
-      error: 'No file uploaded'
-    });
+router.post(
+  '/import/excel',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  upload.single('file'),
+  async (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({
+        error: 'No file uploaded',
+      });
+    }
+
+    const { bookId, sheetName } = req.query;
+
+    try {
+      const result = await terminology.importFromExcel(
+        req.file.buffer,
+        req.user.id,
+        req.user.name,
+        {
+          bookId: bookId ? parseInt(bookId, 10) : null,
+          sheetName,
+        }
+      );
+
+      activityLog.log({
+        userId: req.user.id,
+        username: req.user.username,
+        action: 'import_terminology_excel',
+        entityType: 'terminology',
+        details: result,
+      });
+
+      res.json(result);
+    } catch (err) {
+      console.error('Excel import error:', err);
+      res.status(500).json({
+        error: 'Failed to import Excel',
+        message: err.message,
+      });
+    }
   }
-
-  const { bookId, sheetName } = req.query;
-
-  try {
-    const result = await terminology.importFromExcel(
-      req.file.buffer,
-      req.user.id,
-      req.user.name,
-      {
-        bookId: bookId ? parseInt(bookId, 10) : null,
-        sheetName
-      }
-    );
-
-    activityLog.log({
-      userId: req.user.id,
-      username: req.user.username,
-      action: 'import_terminology_excel',
-      entityType: 'terminology',
-      details: result
-    });
-
-    res.json(result);
-  } catch (err) {
-    console.error('Excel import error:', err);
-    res.status(500).json({
-      error: 'Failed to import Excel',
-      message: err.message
-    });
-  }
-});
+);
 
 /**
  * POST /api/terminology/import/key-terms
@@ -540,7 +548,7 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
 
   if (!bookSlug) {
     return res.status(400).json({
-      error: 'Missing bookSlug'
+      error: 'Missing bookSlug',
     });
   }
 
@@ -557,7 +565,7 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
       username: req.user.username,
       action: 'import_terminology_keyterms',
       entityType: 'terminology',
-      details: { bookSlug, chapterNum, ...result }
+      details: { bookSlug, chapterNum, ...result },
     });
 
     res.json(result);
@@ -565,7 +573,7 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
     console.error('Key-terms import error:', err);
     res.status(500).json({
       error: 'Failed to import key terms',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -574,49 +582,60 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
  * POST /api/terminology/import/existing-glossary
  * Import the existing terminology-en-is.csv from the books directory
  */
-router.post('/import/existing-glossary', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  const { bookSlug } = req.body;
+router.post(
+  '/import/existing-glossary',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    const { bookSlug } = req.body;
 
-  if (!bookSlug) {
-    return res.status(400).json({
-      error: 'Missing bookSlug'
-    });
-  }
+    if (!bookSlug) {
+      return res.status(400).json({
+        error: 'Missing bookSlug',
+      });
+    }
 
-  const glossaryPath = path.join(__dirname, '..', '..', 'books', bookSlug, 'glossary', 'terminology-en-is.csv');
-
-  if (!fs.existsSync(glossaryPath)) {
-    return res.status(404).json({
-      error: 'Glossary not found',
-      message: `No glossary found at ${glossaryPath}`
-    });
-  }
-
-  try {
-    const result = terminology.importFromCSV(
-      glossaryPath,
-      req.user.id,
-      req.user.name,
-      { bookId: null, overwrite: false }
+    const glossaryPath = path.join(
+      __dirname,
+      '..',
+      '..',
+      'books',
+      bookSlug,
+      'glossary',
+      'terminology-en-is.csv'
     );
 
-    activityLog.log({
-      userId: req.user.id,
-      username: req.user.username,
-      action: 'import_terminology_glossary',
-      entityType: 'terminology',
-      details: { bookSlug, ...result }
-    });
+    if (!fs.existsSync(glossaryPath)) {
+      return res.status(404).json({
+        error: 'Glossary not found',
+        message: `No glossary found for book '${bookSlug}'`,
+      });
+    }
 
-    res.json(result);
-  } catch (err) {
-    console.error('Glossary import error:', err);
-    res.status(500).json({
-      error: 'Failed to import glossary',
-      message: err.message
-    });
+    try {
+      const result = terminology.importFromCSV(glossaryPath, req.user.id, req.user.name, {
+        bookId: null,
+        overwrite: false,
+      });
+
+      activityLog.log({
+        userId: req.user.id,
+        username: req.user.username,
+        action: 'import_terminology_glossary',
+        entityType: 'terminology',
+        details: { bookSlug, ...result },
+      });
+
+      res.json(result);
+    } catch (err) {
+      console.error('Glossary import error:', err);
+      res.status(500).json({
+        error: 'Failed to import glossary',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 // ============================================================================
 // CONSISTENCY CHECK
@@ -637,7 +656,7 @@ router.post('/check-consistency', requireAuth, (req, res) => {
   if (!content) {
     return res.status(400).json({
       error: 'Missing content',
-      message: 'Content is required for consistency check'
+      message: 'Content is required for consistency check',
     });
   }
 
@@ -646,7 +665,7 @@ router.post('/check-consistency', requireAuth, (req, res) => {
     const termsResult = terminology.searchTerms('', {
       bookId: bookId ? parseInt(bookId, 10) : undefined,
       status: 'approved',
-      limit: 1000
+      limit: 1000,
     });
 
     const issues = [];
@@ -660,7 +679,7 @@ router.post('/check-consistency', requireAuth, (req, res) => {
           termMap.set(enLower, {
             approved: term.is_term,
             category: term.category,
-            id: term.id
+            id: term.id,
           });
         }
       }
@@ -682,8 +701,11 @@ router.post('/check-consistency', requireAuth, (req, res) => {
             // The approved Icelandic term is missing
             // Check for other translations of the same word
             const alternatives = termsResult.terms
-              .filter(t => t.en_term && t.en_term.toLowerCase() === enTerm && t.is_term !== termInfo.approved)
-              .map(t => t.is_term);
+              .filter(
+                (t) =>
+                  t.en_term && t.en_term.toLowerCase() === enTerm && t.is_term !== termInfo.approved
+              )
+              .map((t) => t.is_term);
 
             // Check if any alternative is used
             let alternativeUsed = null;
@@ -703,7 +725,7 @@ router.post('/check-consistency', requireAuth, (req, res) => {
                 expectedTerm: termInfo.approved,
                 foundTerm: alternativeUsed,
                 message: `"${enTerm}" ætti að vera "${termInfo.approved}" (ekki "${alternativeUsed}")`,
-                termId: termInfo.id
+                termId: termInfo.id,
               });
             } else {
               issues.push({
@@ -712,7 +734,7 @@ router.post('/check-consistency', requireAuth, (req, res) => {
                 enTerm: enTerm,
                 expectedTerm: termInfo.approved,
                 message: `Hugtakið "${enTerm}" → "${termInfo.approved}" fannst ekki í þýðingunni`,
-                termId: termInfo.id
+                termId: termInfo.id,
               });
             }
           }
@@ -726,7 +748,8 @@ router.post('/check-consistency', requireAuth, (req, res) => {
 
     for (const word of words) {
       const lower = word.toLowerCase();
-      if (lower.length >= 4) { // Skip short words
+      if (lower.length >= 4) {
+        // Skip short words
         wordFreq.set(lower, (wordFreq.get(lower) || 0) + 1);
       }
     }
@@ -737,16 +760,15 @@ router.post('/check-consistency', requireAuth, (req, res) => {
       stats: {
         termsChecked: termMap.size,
         issuesFound: issues.length,
-        warnings: issues.filter(i => i.severity === 'warning').length,
-        infos: issues.filter(i => i.severity === 'info').length
-      }
+        warnings: issues.filter((i) => i.severity === 'warning').length,
+        infos: issues.filter((i) => i.severity === 'info').length,
+      },
     });
-
   } catch (err) {
     console.error('Consistency check error:', err);
     res.status(500).json({
       error: 'Failed to check consistency',
-      message: err.message
+      message: err.message,
     });
   }
 });

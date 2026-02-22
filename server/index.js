@@ -248,7 +248,7 @@ app.get('/api/health', (req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     version: serverVersion,
-    phase: 2,
+    phase: 13,
   });
 });
 

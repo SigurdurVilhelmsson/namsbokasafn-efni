@@ -14,11 +14,13 @@
 
 const express = require('express');
 const router = express.Router();
+const crypto = require('crypto');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
 const { MatecatClient, LANGUAGE_CODES, SUBJECTS } = require('../services/matecat');
+const { requireAuth } = require('../services/auth');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -30,7 +32,7 @@ const storage = multer.diskStorage({
     cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
-    const uniqueName = `${Date.now()}-${file.originalname}`;
+    const uniqueName = `${crypto.randomUUID()}-${file.originalname}`;
     cb(null, uniqueName);
   },
 });
@@ -52,6 +54,35 @@ const upload = multer({
 
 // In-memory storage for project tracking (could be Redis/DB in production)
 const projectStore = new Map();
+const PROJECT_STORE_MAX_SIZE = 100;
+const PROJECT_STORE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+// Clean up expired project entries every hour
+const projectStoreCleanupInterval = setInterval(
+  () => {
+    const now = Date.now();
+    for (const [key, entry] of projectStore) {
+      const createdAt = entry.createdAt ? new Date(entry.createdAt).getTime() : 0;
+      if (now - createdAt > PROJECT_STORE_TTL_MS) {
+        projectStore.delete(key);
+      }
+    }
+    // If still over max size after TTL cleanup, remove oldest entries
+    if (projectStore.size > PROJECT_STORE_MAX_SIZE) {
+      const entries = Array.from(projectStore.entries()).sort((a, b) => {
+        const aTime = a[1].createdAt ? new Date(a[1].createdAt).getTime() : 0;
+        const bTime = b[1].createdAt ? new Date(b[1].createdAt).getTime() : 0;
+        return aTime - bTime;
+      });
+      const toRemove = entries.slice(0, projectStore.size - PROJECT_STORE_MAX_SIZE);
+      for (const [key] of toRemove) {
+        projectStore.delete(key);
+      }
+    }
+  },
+  60 * 60 * 1000
+); // Every hour
+projectStoreCleanupInterval.unref();
 
 // ============================================================================
 // Middleware
@@ -117,7 +148,7 @@ router.get('/', (req, res) => {
  * GET /api/matecat/config
  * Check if Matecat is configured
  */
-router.get('/config', (req, res) => {
+router.get('/config', requireAuth, (req, res) => {
   const hasEnvKey = !!process.env.MATECAT_API_KEY;
   const hasHeaderKey = !!req.headers['x-matecat-key'];
   const baseUrl = process.env.MATECAT_BASE_URL || 'https://www.matecat.com';
@@ -143,7 +174,7 @@ router.get('/config', (req, res) => {
  *   - tmKey: (optional) Translation Memory key
  *   - pretranslate: (optional) Enable TM pre-translation
  */
-router.post('/projects', getClient, upload.single('file'), async (req, res) => {
+router.post('/projects', requireAuth, getClient, upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({
       error: 'No file uploaded',
@@ -233,7 +264,7 @@ router.post('/projects', getClient, upload.single('file'), async (req, res) => {
  * Query params:
  *   - password: Project password (required)
  */
-router.get('/projects/:id/status', getClient, async (req, res) => {
+router.get('/projects/:id/status', requireAuth, getClient, async (req, res) => {
   const { id } = req.params;
   const { password } = req.query;
 
@@ -287,7 +318,7 @@ router.get('/projects/:id/status', getClient, async (req, res) => {
  * Query params:
  *   - password: Job password (required)
  */
-router.get('/jobs/:id/stats', getClient, async (req, res) => {
+router.get('/jobs/:id/stats', requireAuth, getClient, async (req, res) => {
   const { id } = req.params;
   const { password } = req.query;
 
@@ -339,7 +370,7 @@ router.get('/jobs/:id/stats', getClient, async (req, res) => {
  * Query params:
  *   - password: Job password (required)
  */
-router.get('/jobs/:id/urls', getClient, async (req, res) => {
+router.get('/jobs/:id/urls', requireAuth, getClient, async (req, res) => {
   const { id } = req.params;
   const { password } = req.query;
 
@@ -378,7 +409,7 @@ router.get('/jobs/:id/urls', getClient, async (req, res) => {
  *   - password: Job password (required)
  *   - type: 'translation' (default), 'original', or 'xliff'
  */
-router.get('/jobs/:id/download', getClient, async (req, res) => {
+router.get('/jobs/:id/download', requireAuth, getClient, async (req, res) => {
   const { id } = req.params;
   const { password, type = 'translation' } = req.query;
 
@@ -435,7 +466,7 @@ router.get('/jobs/:id/download', getClient, async (req, res) => {
  * GET /api/matecat/projects
  * List tracked projects (from local store)
  */
-router.get('/projects', (req, res) => {
+router.get('/projects', requireAuth, (req, res) => {
   const projects = Array.from(projectStore.values())
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, 50);
@@ -456,11 +487,11 @@ router.get('/projects', (req, res) => {
  *   - interval: Poll interval in ms (default: 5000)
  *   - timeout: Max wait time in ms (default: 300000 = 5 min)
  */
-router.post('/projects/:id/poll', getClient, async (req, res) => {
+router.post('/projects/:id/poll', requireAuth, getClient, async (req, res) => {
   const { id } = req.params;
   const { password } = req.query;
-  const interval = parseInt(req.query.interval) || 5000;
-  const timeout = parseInt(req.query.timeout) || 300000;
+  const interval = parseInt(req.query.interval, 10) || 5000;
+  const timeout = parseInt(req.query.timeout, 10) || 300000;
 
   if (!password) {
     return res.status(400).json({
