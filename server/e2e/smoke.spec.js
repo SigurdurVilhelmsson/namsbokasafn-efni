@@ -171,6 +171,10 @@ test.describe('Layout shell', () => {
 // ─── Legacy redirects ─────────────────────────────────────────
 
 test.describe('Legacy redirects', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
   test('/my-work redirects to /', async ({ page }) => {
     await page.goto('/my-work');
     expect(page.url()).toMatch(/\/$/);
