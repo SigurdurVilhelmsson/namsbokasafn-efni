@@ -8,6 +8,9 @@
     "start": "node index.js",
     "dev": "node --watch index.js"
   },
+  "overrides": {
+    "minimatch": ">=10.2.1"
+  },
   "dependencies": {
     "archiver": "^7.0.1",
     "better-sqlite3": "^11.10.0",
