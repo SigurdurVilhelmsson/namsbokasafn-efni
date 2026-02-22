@@ -25,7 +25,7 @@ const https = require('https');
 // ============================================================================
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/openstax';
-const GITHUB_API_BASE = 'https://api.github.com/repos/openstax';
+// const GITHUB_API_BASE = 'https://api.github.com/repos/openstax';
 
 // Known OpenStax book repositories
 const BOOKS = {

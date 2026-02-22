@@ -22,8 +22,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "eslint": "^9.20.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.1",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^15.15.0",
     "husky": "^9.1.0",
@@ -67,6 +67,15 @@
     "node": ">=20.0.0"
   },
   "homepage": "https://namsbokasafn.is",
+  "overrides": {
+    "mj-context-menu": {
+      "rimraf": {
+        "glob": {
+          "minimatch": ">=10.2.1"
+        }
+      }
+    }
+  },
   "dependencies": {
     "@mathjax/src": "^4.1.0"
   }

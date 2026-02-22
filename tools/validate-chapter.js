@@ -1073,7 +1073,7 @@ async function validateChapter(options) {
   if (fs.existsSync(statusPath)) {
     try {
       statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-    } catch (e) {
+    } catch {
       // Ignore parse errors
     }
   }
