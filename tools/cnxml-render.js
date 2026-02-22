@@ -1971,6 +1971,103 @@ function writeKeyEquations(chapter, track, html) {
 }
 
 // =====================================================================
+// CHAPTER GLOSSARY COMPILATION
+// =====================================================================
+
+/**
+ * Extract glossary definitions from all modules in a chapter.
+ * Returns array of { id, term, meaningContent, moduleId } sorted alphabetically (Icelandic).
+ */
+function extractChapterGlossary(chapter, modules, track) {
+  const chapterDir = formatChapterDir(chapter);
+  const definitions = [];
+
+  for (const moduleId of modules) {
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
+
+    if (!fs.existsSync(modulePath)) {
+      continue;
+    }
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+
+    const glossaryMatch = cnxml.match(/<glossary>([\s\S]*?)<\/glossary>/);
+    if (!glossaryMatch) continue;
+
+    const defs = extractNestedElements(glossaryMatch[1], 'definition');
+    for (const def of defs) {
+      const termMatch = def.content.match(/<term>([^<]*)<\/term>/);
+      const meaningMatch = def.content.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);
+
+      if (termMatch && meaningMatch) {
+        definitions.push({
+          id: def.id || null,
+          term: termMatch[1].trim(),
+          meaningContent: meaningMatch[1],
+          moduleId,
+        });
+      }
+    }
+  }
+
+  // Sort alphabetically using Icelandic collation
+  const collator = new Intl.Collator('is');
+  definitions.sort((a, b) => collator.compare(a.term, b.term));
+
+  return definitions;
+}
+
+/**
+ * Render compiled glossary as HTML definition list.
+ */
+function renderCompiledGlossary(chapter, definitions, context) {
+  const lines = [];
+
+  lines.push('<section class="glossary">');
+  lines.push('  <h2>Lykilhugtök</h2>');
+
+  if (definitions.length === 0) {
+    lines.push('  <p>Engin lykilhugtök í þessum kafla.</p>');
+  } else {
+    lines.push('  <dl>');
+
+    for (const def of definitions) {
+      const meaning = processInlineContent(def.meaningContent, context);
+      lines.push(
+        `    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${escapeHtml(def.term)}</dt>`
+      );
+      lines.push(`    <dd>${meaning}</dd>`);
+    }
+
+    lines.push('  </dl>');
+  }
+
+  lines.push('</section>');
+
+  return lines.join('\n');
+}
+
+/**
+ * Write compiled glossary HTML to file.
+ */
+function writeCompiledGlossary(chapter, track, html) {
+  const chapterStr = formatChapterOutput(chapter);
+  const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
+  const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const filename = `${chapter}-key-terms.html`;
+  const outputPath = path.join(outputDir, filename);
+
+  fs.writeFileSync(outputPath, html, 'utf-8');
+
+  return outputPath;
+}
+
+// =====================================================================
 // SECTION SUMMARY COMPILATION
 // =====================================================================
 
@@ -2632,6 +2729,7 @@ async function main() {
       }
 
       for (const section of endOfChapterSections) {
+        if (section.class === 'glossary') continue; // compiled from all modules below
         if (args.verbose) {
           console.log(`Rendering: ${section.titleIs} (${section.slug})`);
         }
@@ -2658,6 +2756,66 @@ async function main() {
         console.log(`${section.titleIs}: Rendered to HTML`);
         console.log(`  → ${outputPath}`);
       }
+    }
+
+    // Extract and render compiled glossary from all modules
+    if (args.verbose) {
+      console.log('\nExtracting glossary definitions...');
+    }
+
+    const chapterGlossary = extractChapterGlossary(args.chapter, allModules, args.track);
+
+    if (chapterGlossary.length > 0) {
+      if (args.verbose) {
+        console.log(
+          `Found ${chapterGlossary.length} definition(s) across ${allModules.length} module(s)`
+        );
+      }
+
+      const glossaryContext = {
+        chapter: args.chapter,
+        figures: {},
+        tables: {},
+        examples: {},
+        terms: {},
+        footnotes: [],
+        equationTextDictionary,
+      };
+
+      const glossaryContentHtml = renderCompiledGlossary(
+        args.chapter,
+        chapterGlossary,
+        glossaryContext
+      );
+
+      // Build terms map for pageData
+      const termsMap = {};
+      for (const def of chapterGlossary) {
+        termsMap[def.term] = stripTags(def.meaningContent).trim();
+      }
+
+      const fullGlossaryHtml = buildHtmlDocument({
+        title: 'Lykilhugtök',
+        lang: args.lang,
+        content: glossaryContentHtml,
+        pageData: {
+          moduleId: `${chapterStr}-key-terms`,
+          chapter: args.chapter,
+          section: `${args.chapter}.0`,
+          title: 'Lykilhugtök',
+          equations: [],
+          terms: termsMap,
+        },
+        sectionNumber: `${args.chapter}.0`,
+        isIntro: true,
+      });
+
+      const glossaryPath = writeCompiledGlossary(args.chapter, args.track, fullGlossaryHtml);
+
+      console.log(`Lykilhugtök: Rendered ${chapterGlossary.length} definitions to HTML`);
+      console.log(`  → ${glossaryPath}`);
+    } else if (args.verbose) {
+      console.log('No glossary definitions found in this chapter');
     }
 
     // Extract and render compiled summary (matching chapters 1-5 format)
