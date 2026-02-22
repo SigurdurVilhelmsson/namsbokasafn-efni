@@ -128,26 +128,14 @@ Most views use `fetch('/api/...')` without `{ credentials: 'include' }`. On same
 
 ---
 
-### ISSUE-6: No auto-redirect on 401 responses
+### ISSUE-6: No auto-redirect on 401 responses — FIXED (`bf2dbef`)
 
 - **Severity:** LOW
-- **Location:** All views
+- **Location:** `server/public/js/htmlUtils.js`
 
 When a session expires, API calls return 401. Most views catch the error and show a message, but none redirect the user to `/login`. The user might continue interacting with a broken session.
 
-**Fix (optional):** Add a global 401 handler:
-```javascript
-// Could add to layout.js or a shared utility
-async function authFetch(url, options = {}) {
-  const res = await fetch(url, options);
-  if (res.status === 401) {
-    sessionStorage.removeItem('authCache');
-    window.location.href = '/login';
-    return;
-  }
-  return res;
-}
-```
+**Fix:** Added a global `window.fetch` interceptor in `htmlUtils.js` (loaded by all 9 views) that detects 401 responses, clears the stale `sessionStorage` auth cache, and redirects to `/login`. Skips redirect if already on the login page or if a redirect is already in progress.
 
 ---
 
