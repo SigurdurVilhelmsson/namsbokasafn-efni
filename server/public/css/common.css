@@ -610,10 +610,9 @@ pre {
 .theme-toggle {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
+  gap: var(--spacing-sm);
   height: 36px;
-  padding: 0;
+  padding: 0 var(--spacing-sm);
   background: transparent;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -2344,4 +2343,40 @@ a:focus-visible,
 .admin-only,
 .reviewer-only {
   display: none;
+}
+
+
+/* ==========================================================================
+   18. ROLE PREVIEW DROPDOWN (Admin Only)
+   ========================================================================== */
+
+.role-preview-wrapper {
+  padding: var(--spacing-xs) 0;
+}
+
+.role-preview-label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--spacing-xs);
+}
+
+.role-preview-select {
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  background: var(--warning-subtle);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.role-preview-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(196,150,58,0.2);
 }

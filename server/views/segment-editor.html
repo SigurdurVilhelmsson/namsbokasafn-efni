@@ -1079,6 +1079,14 @@
     let userName = null;
     let termLookupTimer = null;
 
+    /** Get effective role (respects admin role preview override) */
+    function getEffectiveRole() {
+      if (window.navUtils && typeof window.navUtils.getEffectiveRole === 'function') {
+        return window.navUtils.getEffectiveRole(userRole);
+      }
+      return userRole;
+    }
+
     const API_BASE = '/api/segment-editor';
 
     // ================================================================
@@ -1347,7 +1355,7 @@
         `).join('');
       }
 
-      const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
+      const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
 
       // Determine whether editing is allowed:
       // - No edit yet -> can edit
@@ -1720,7 +1728,7 @@
     let pipelinePollingTimer = null;
 
     function showPipelinePanel() {
-      const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
+      const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
       const panel = document.getElementById('pipeline-panel');
       panel.style.display = isHeadEditor ? 'block' : 'none';
     }
@@ -1832,13 +1840,21 @@
     // ================================================================
 
     function showApplyPanel() {
-      const isHeadEditor = userRole === 'head-editor' || userRole === 'admin';
+      const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
       const panel = document.getElementById('apply-panel');
       panel.style.display = isHeadEditor ? 'block' : 'none';
       if (isHeadEditor) {
         loadApplyStatus();
       }
     }
+
+    // Re-render panels when admin changes role preview
+    window.addEventListener('roleVisibilityChanged', function () {
+      if (currentModuleId) {
+        showPipelinePanel();
+        showApplyPanel();
+      }
+    });
 
     async function loadApplyStatus() {
       const statusEl = document.getElementById('apply-status');

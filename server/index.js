@@ -107,11 +107,16 @@ app.use(
 );
 
 // Rate limiting - general limiter for all routes
+// Authenticated users are exempted (already tracked by session/JWT)
 const generalLimiter = rateLimit({
   windowMs: config.rateLimit.windowMs,
   max: config.rateLimit.maxRequests,
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => {
+    // Skip rate limiting for authenticated users (they have a valid JWT cookie)
+    return Boolean(req.cookies && req.cookies.token);
+  },
   message: {
     error: 'Too many requests',
     message: 'Please try again later',
@@ -144,7 +149,15 @@ const publicSubmitLimiter = rateLimit({
   },
 });
 
-// Apply general rate limiting to all routes
+// Static file serving for public assets (CSS, JS) — BEFORE rate limiter
+// so static assets don't consume rate limit budget
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
+
+// Cookie parser must run before rate limiter so skip() can check auth cookies
+app.use(cookieParser());
+
+// Apply general rate limiting to all routes (static assets already served above)
 app.use(generalLimiter);
 
 // CORS configuration - allow requests from web reader (vefur)
@@ -185,7 +198,6 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
@@ -266,10 +278,6 @@ app.get('/api', (req, res) => {
 // Static file serving for downloads (authenticated)
 const downloadsPath = path.join(__dirname, '..', 'pipeline-output');
 app.use('/downloads', requireAuth, express.static(downloadsPath));
-
-// Static file serving for public assets (CSS, JS)
-const publicPath = path.join(__dirname, 'public');
-app.use(express.static(publicPath));
 
 // HTML Views (must be after API routes)
 app.use('/', viewRoutes);

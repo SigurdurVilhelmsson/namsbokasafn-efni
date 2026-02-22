@@ -81,10 +81,20 @@
   </nav>
 
   <div class="sidebar-footer">
+    <div class="role-preview-wrapper" id="role-preview-wrapper" style="display:none">
+      <label for="role-preview-select" class="role-preview-label">Skoða sem:</label>
+      <select id="role-preview-select" class="role-preview-select">
+        <option value="">Stjórnandi (raunhlutverk)</option>
+        <option value="head-editor">Aðalritstjóri</option>
+        <option value="editor">Ritstjóri</option>
+        <option value="contributor">Þátttakandi</option>
+        <option value="viewer">Áhorfandi</option>
+      </select>
+    </div>
     <button class="theme-toggle" title="Skipta um þema" aria-label="Skipta um þema">
       <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      <span class="theme-label" style="font-size:var(--text-sm);color:var(--text-secondary);margin-left:var(--spacing-sm)">Þema</span>
+      <span class="theme-label" style="font-size:var(--text-sm);color:var(--text-secondary);margin-left:var(--spacing-sm)"></span>
     </button>
     <div class="sidebar-user" id="sidebar-user-info">
       <a href="/login" class="nav-link">
@@ -203,6 +213,7 @@
     setupSidebarInteractions();
     highlightActiveNav();
     bindThemeToggle();
+    setupRolePreview();
   }
 
   /* ====================================================================
@@ -299,7 +310,7 @@
         return null;
       }
       return cached.data;
-    } catch (e) {
+    } catch {
       return null;
     }
   }
@@ -317,7 +328,7 @@
           data: data,
         })
       );
-    } catch (e) {
+    } catch {
       /* sessionStorage may be unavailable */
     }
   }
@@ -327,17 +338,35 @@
      ==================================================================== */
 
   /**
+   * Get the effective role for UI display.
+   * If the admin has activated role preview, returns the preview role.
+   * Otherwise returns the user's actual role.
+   * @param {string|null} actualRole - User's real role
+   * @returns {string|null} Effective role for UI visibility
+   */
+  function getEffectiveRole(actualRole) {
+    const override = sessionStorage.getItem('rolePreviewOverride');
+    if (override && actualRole === 'admin') {
+      return override;
+    }
+    return actualRole;
+  }
+
+  /**
    * Show or hide sidebar role-restricted sections by ID.
    * Also handles .admin-only / .reviewer-only elements in page content
    * (those carry display:none from CSS section 17).
+   * Respects role preview override for admin users.
    * @param {string|null} role - User's role, or null if not authenticated
    */
   function updateRoleVisibility(role) {
+    const effectiveRole = getEffectiveRole(role);
+
     const adminRoles = ['admin', 'head-editor'];
     const reviewerRoles = ['admin', 'head-editor', 'editor'];
 
-    const showAdmin = role && adminRoles.indexOf(role) !== -1;
-    const showReviewer = role && reviewerRoles.indexOf(role) !== -1;
+    const showAdmin = effectiveRole && adminRoles.indexOf(effectiveRole) !== -1;
+    const showReviewer = effectiveRole && reviewerRoles.indexOf(effectiveRole) !== -1;
 
     // Sidebar sections (use IDs — no .admin-only class so no CSS conflict)
     const reviewSection = document.getElementById('sidebar-section-review');
@@ -358,6 +387,47 @@
 
     document.querySelectorAll('.reviewer-only').forEach(function (el) {
       el.style.display = showReviewer ? 'block' : 'none';
+    });
+
+    // Show role preview dropdown only for actual admins
+    const previewWrapper = document.getElementById('role-preview-wrapper');
+    if (previewWrapper) {
+      previewWrapper.style.display = role === 'admin' ? 'block' : 'none';
+    }
+
+    // Dispatch event so page-specific scripts can react to role preview changes
+    window.dispatchEvent(
+      new CustomEvent('roleVisibilityChanged', {
+        detail: { actualRole: role, effectiveRole: effectiveRole },
+      })
+    );
+  }
+
+  /**
+   * Set up the role preview dropdown change handler.
+   * Only functional for admin users.
+   */
+  function setupRolePreview() {
+    const select = document.getElementById('role-preview-select');
+    if (!select) return;
+
+    // Restore previous selection
+    const saved = sessionStorage.getItem('rolePreviewOverride');
+    if (saved) {
+      select.value = saved;
+    }
+
+    select.addEventListener('change', function () {
+      const value = select.value;
+      if (value) {
+        sessionStorage.setItem('rolePreviewOverride', value);
+      } else {
+        sessionStorage.removeItem('rolePreviewOverride');
+      }
+      // Re-apply visibility with the user's actual role
+      if (window.currentUser) {
+        updateRoleVisibility(window.currentUser.role);
+      }
     });
   }
 
@@ -487,5 +557,6 @@
     updateRoleVisibility: updateRoleVisibility,
     updateUserInfo: updateUserInfo,
     initNavigation: initLayout,
+    getEffectiveRole: getEffectiveRole,
   };
 })();

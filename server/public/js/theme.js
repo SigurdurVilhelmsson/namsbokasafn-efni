@@ -3,7 +3,7 @@
  * Handles light/dark mode switching with localStorage persistence
  */
 
-(function() {
+(function () {
   'use strict';
 
   // Get saved theme or detect system preference
@@ -23,14 +23,18 @@
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
 
-    // Update toggle button icons
+    // Update toggle button icons and labels
     const toggleBtns = document.querySelectorAll('.theme-toggle');
-    toggleBtns.forEach(btn => {
+    toggleBtns.forEach((btn) => {
       const sunIcon = btn.querySelector('.icon-sun');
       const moonIcon = btn.querySelector('.icon-moon');
+      const label = btn.querySelector('.theme-label');
       if (sunIcon && moonIcon) {
         sunIcon.style.display = theme === 'dark' ? 'block' : 'none';
         moonIcon.style.display = theme === 'dark' ? 'none' : 'block';
+      }
+      if (label) {
+        label.textContent = theme === 'dark' ? 'Dimmt' : 'Ljóst';
       }
     });
   }
@@ -48,7 +52,7 @@
     applyTheme(getTheme());
 
     // Bind click handlers to all theme toggle buttons
-    document.querySelectorAll('.theme-toggle').forEach(btn => {
+    document.querySelectorAll('.theme-toggle').forEach((btn) => {
       btn.addEventListener('click', toggleTheme);
     });
 
