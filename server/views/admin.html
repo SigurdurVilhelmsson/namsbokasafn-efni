@@ -696,7 +696,7 @@
           var res = await fetch('https://api.github.com/users/' + username);
           if (res.ok) {
             var user = await res.json();
-            preview.innerHTML = '<div class="github-preview"><img src="' + user.avatar_url + '" alt=""><div><h4 style="margin:0;font-size:1rem">' + escapeHtml(user.name || user.login) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.875rem">@' + escapeHtml(user.login) + '</p></div></div>';
+            preview.innerHTML = '<div class="github-preview"><img src="' + escapeHtml(user.avatar_url || '') + '" alt=""><div><h4 style="margin:0;font-size:1rem">' + escapeHtml(user.name || user.login) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.875rem">@' + escapeHtml(user.login) + '</p></div></div>';
             preview.style.display = 'block';
             preview.dataset.user = JSON.stringify(user);
             addBtn.disabled = false;

@@ -48,6 +48,10 @@ pipeline-output/
 # Test coverage
 coverage/
 
+# Playwright
+server/test-results/
+server/playwright-report/
+
 # Archived tools (keep in separate branch if needed)
 # tools/archived/
 

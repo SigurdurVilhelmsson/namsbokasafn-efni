@@ -6,7 +6,10 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "test:e2e": "npx playwright test --config=e2e/playwright.config.js",
+    "test:e2e:headed": "npx playwright test --config=e2e/playwright.config.js --headed",
+    "test:e2e:debug": "npx playwright test --config=e2e/playwright.config.js --debug"
   },
   "overrides": {
     "glob": ">=11.0.0",
@@ -36,5 +39,8 @@
     "api"
   ],
   "author": "Sigurður E. Vilhelmsson",
-  "license": "SEE LICENSE FILE"
+  "license": "SEE LICENSE FILE",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
 }

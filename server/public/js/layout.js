@@ -279,9 +279,16 @@
 
   /**
    * Bind click handlers on newly injected theme toggle buttons.
-   * Delegates to window.toggleTheme (exposed by theme.js).
+   * Only binds if theme.js hasn't already set up window.toggleTheme;
+   * otherwise theme.js init() handles binding after layout injection.
    */
   function bindThemeToggle() {
+    // theme.js (loaded after layout.js) binds its own click listeners
+    // in its init(). If we also bind here, the toggle fires twice
+    // (light→dark→light). So we only bind as a fallback if theme.js
+    // hasn't loaded yet (e.g., on a page that doesn't include theme.js).
+    if (typeof window.toggleTheme === 'function') return;
+
     document.querySelectorAll('.theme-toggle').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (typeof window.toggleTheme === 'function') {
@@ -380,13 +387,14 @@
     }
 
     // Page content elements with .admin-only / .reviewer-only classes.
-    // These have CSS `display: none`, so we must set an explicit display value to override.
+    // CSS hides via `.admin-only:not(.visible)`, so toggling .visible lets each
+    // element keep its natural display type (block for div, inline-block for button, etc.)
     document.querySelectorAll('.admin-only').forEach(function (el) {
-      el.style.display = showAdmin ? 'block' : 'none';
+      el.classList.toggle('visible', showAdmin);
     });
 
     document.querySelectorAll('.reviewer-only').forEach(function (el) {
-      el.style.display = showReviewer ? 'block' : 'none';
+      el.classList.toggle('visible', showReviewer);
     });
 
     // Show role preview dropdown only for actual admins

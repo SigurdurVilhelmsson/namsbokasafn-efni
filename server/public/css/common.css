@@ -2340,8 +2340,8 @@ a:focus-visible,
    17. ADMIN/REVIEWER ROLE VISIBILITY
    ========================================================================== */
 
-.admin-only,
-.reviewer-only {
+.admin-only:not(.visible),
+.reviewer-only:not(.visible) {
   display: none;
 }
 
