@@ -1,269 +1,1682 @@
 {
   "terms": [
     {
-      "term": "Celsíus (°C)",
-      "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða",
-      "chapter": 1
+      "term": "aðalflokka frumefni",
+      "definition": "(einnig, dæmigert frumefni) frumefni í hópum 1, 2 og 13–18",
+      "chapter": 2,
+      "english": "main-group element"
+    },
+    {
+      "term": "aðalflokkafrumefni",
+      "definition": "frumefni í dálkum 1, 2 og 12–18",
+      "chapter": 2,
+      "english": "representative element"
+    },
+    {
+      "term": "aðferð upphafshraða",
+      "definition": "algeng tilraunaaðferð til að ákvarða hraðajöfnur sem felur í sér að mæla hvarfhraða við mismunandi upphafsstyrk hvarfefna",
+      "chapter": 12,
+      "english": "method of initial rates"
+    },
+    {
+      "term": "Afoxari",
+      "definition": "efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu",
+      "chapter": 4,
+      "english": "reducing agent"
+    },
+    {
+      "term": "Afoxun",
+      "definition": "ferli þar sem oxunartala frumefnis lækkar vegna rafeindaásóknar",
+      "chapter": 4,
+      "english": "reduction"
+    },
+    {
+      "term": "afturkræft efnahvarf",
+      "definition": "efnahvarf sem getur gengið bæði í framátt og bakátt við gefnar aðstæður",
+      "chapter": 13,
+      "english": "reversible reaction"
+    },
+    {
+      "term": "aktiníð",
+      "definition": "innri hliðarmálmur í neðri af tveimur neðstu röðum lotukerfisins",
+      "chapter": 2,
+      "english": "actinide"
+    },
+    {
+      "term": "alfaeind (α-eind)",
+      "definition": "jákvætt hlaðin eind sem samanstendur af tveimur róteindum og tveimur nifteindum",
+      "chapter": 2,
+      "english": "alpha particle (α particle)"
+    },
+    {
+      "term": "alkalímálmur",
+      "definition": "frumefni í hópi 1",
+      "chapter": 2,
+      "english": "alkali metal"
+    },
+    {
+      "term": "alkul",
+      "definition": "hitastig þar sem rúmmál gass yrði núll samkvæmt lögmáli Charles.",
+      "chapter": 9,
+      "english": "absolute zero"
+    },
+    {
+      "term": "anjón",
+      "definition": "neikvætt hlaðið atóm eða sameind (inniheldur fleiri rafeindir en róteindir)",
+      "chapter": 2,
+      "english": "anion"
+    },
+    {
+      "term": "Arrheniusar-jafna",
+      "definition": "stærðfræðilegt samband milli hraðafasta, virkjunarorku og hitastigs hvarfs",
+      "chapter": 12,
+      "english": "arrhenius equation"
+    },
+    {
+      "term": "atóm",
+      "definition": "minnsta eind frumefnis sem getur tekið þátt í efnahvarfi",
+      "chapter": 1,
+      "english": "atom"
+    },
+    {
+      "term": "Atómkenning Daltons",
+      "definition": "safn fullyrðinga sem settu fram grundvallareiginleika atóma",
+      "chapter": 2,
+      "english": "dalton’s atomic theory"
+    },
+    {
+      "term": "atómmassaeining (amu)",
+      "definition": "(einnig, sameinuð atómmassaeining, u, eða Dalton, Da) massaeining sem jafngildir 1/12 af massa 12C atóms",
+      "chapter": 2,
+      "english": "atomic mass unit (amu)"
+    },
+    {
+      "term": "atómmassi",
+      "definition": "meðalmassi atóma frumefnis, gefinn upp í atómmassaeiningum (amu)",
+      "chapter": 2,
+      "english": "atomic mass"
+    },
+    {
+      "term": "Auðleystur",
+      "definition": "með tiltölulega mikinn leysni; leysist upp að tiltölulega miklu leyti",
+      "chapter": 4,
+      "english": "soluble"
+    },
+    {
+      "term": "augnablikshraði",
+      "definition": "hvarfhraði efnahvarfs á hverjum tíma, ákvarðaður af halla snertils við línurit yfir styrk sem fall af tíma",
+      "chapter": 12,
+      "english": "instantaneous rate"
+    },
+    {
+      "term": "Áhorfendajón",
+      "definition": "Jón sem gengst ekki undir efna- eða eðlisfræðilega breytingu í hvarfi, en nærvera hennar er nauðsynleg til að viðhalda hleðsluhlutleysi",
+      "chapter": 4,
+      "english": "spectator ion"
+    },
+    {
+      "term": "árekstrakenningin",
+      "definition": "líkan sem leggur áherslu á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um hraðafræði hvarfa",
+      "chapter": 12,
+      "english": "collision theory"
+    },
+    {
+      "term": "ástandsháð stærð",
+      "definition": "eiginleiki sem fer aðeins eftir ástandi kerfis en ekki leiðinni sem farin var til að ná því ástandi",
+      "chapter": 5,
+      "english": "state function"
+    },
+    {
+      "term": "bar",
+      "definition": "(bar eða b) þrýstingseining; 1 bar = 100.000 Pa",
+      "chapter": 9
+    },
+    {
+      "term": "basi",
+      "definition": "efni sem myndar OH− þegar það er leyst upp í vatni",
+      "chapter": 4,
+      "english": "base"
+    },
+    {
+      "term": "blanda",
+      "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
+      "chapter": 1,
+      "english": "mixture"
+    },
+    {
+      "term": "Botnfall",
+      "definition": "torleyst myndefni sem myndast við efnahvarf auðleystra hvarfefna",
+      "chapter": 4,
+      "english": "precipitate"
+    },
+    {
+      "term": "brunagreining",
+      "definition": "þyngdarmælingaraðferð sem notuð er til að ákvarða frumefnasamsetningu efnasambands með söfnun og vigtun á loftkenndum myndefnum bruna þess",
+      "chapter": 4,
+      "english": "combustion analysis"
+    },
+    {
+      "term": "brunahvarf",
+      "definition": "kröftugt oxunar-afoxunarhvarf sem framleiðir umtalsvert magn af orku í formi varma og stundum ljóss",
+      "chapter": 4,
+      "english": "combustion reaction"
+    },
+    {
+      "term": "búretta",
+      "definition": "tæki sem notað er til að skammta nákvæmlega breytilegt rúmmál vökva, til dæmis við títrunargreiningu",
+      "chapter": 4,
+      "english": "buret"
+    },
+    {
+      "term": "byggingarformúla",
+      "definition": "sýnir atómin í sameind og hvernig þau eru tengd",
+      "chapter": 2,
+      "english": "structural formula"
+    },
+    {
+      "term": "byggingarísómera",
+      "definition": "annað tveggja efna sem hafa sömu sameindaformúlu en ólíka eðlis- og efnaeiginleika vegna þess að atóm þeirra eru tengd á mismunandi hátt",
+      "chapter": 2,
+      "english": "structural isomer"
+    },
+    {
+      "term": "Dalton (Da)",
+      "definition": "önnur eining sem jafngildir atómmassaeiningu",
+      "chapter": 2
+    },
+    {
+      "term": "Daltons-lögmálið um\nhlutþrýsting",
+      "definition": "heildarþrýstingur efnablöndu af kjörgasi er jafn summu hlutþrýstings íhlutagasanna",
+      "chapter": 9,
+      "english": "dalton’s law of partial pressures"
+    },
+    {
+      "term": "eðalgas",
+      "definition": "(einnig, hlutlaust gas) frumefni í hópi 18",
+      "chapter": 2,
+      "english": "noble gas"
     },
     {
       "term": "eðlisbreyting",
-      "definition": "breyting á efnisham eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess",
-      "chapter": 1
-    },
-    {
-      "term": "eðlisbundinn eiginleiki",
-      "definition": "eiginleiki efnis sem er óháður magni efnisins",
-      "chapter": 1
+      "definition": "breyting á ástandi eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess",
+      "chapter": 1,
+      "english": "physical change"
     },
     {
       "term": "eðliseiginleiki",
       "definition": "einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess",
-      "chapter": 1
+      "chapter": 1,
+      "english": "physical property"
     },
     {
-      "term": "Eðlismassi",
+      "term": "eðlismassi",
       "definition": "hlutfall massa og rúmmáls fyrir efni eða hlut",
-      "chapter": 1
+      "chapter": 1,
+      "english": "density"
     },
     {
-      "term": "efnablanda",
-      "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
-      "chapter": 1
+      "term": "eðlisvarmi (c)",
+      "definition": "innri eiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig 1 gramms af efninu um 1 gráðu á Celsíus (eða 1 kelvin)",
+      "chapter": 5,
+      "english": "specific heat capacity (c)"
     },
     {
-      "term": "efnabreytingar",
-      "definition": "breyting sem myndar nýtt efni úr upprunalega efninu",
-      "chapter": 1
+      "term": "efnabreyting",
+      "definition": "breyting sem framleiðir annars konar efni en upprunalega efnið",
+      "chapter": 1,
+      "english": "chemical change"
     },
     {
-      "term": "efnaeiginleikar",
-      "definition": "hegðun sem tengist breytingu á einu efni í annað",
-      "chapter": 1
+      "term": "efnaeiginleiki",
+      "definition": "hegðun sem tengist breytingu á einni tegund efnis í aðra",
+      "chapter": 1,
+      "english": "chemical property"
     },
     {
       "term": "efnafræði",
-      "definition": "rannsóknir á samsetningu, eiginleikum og samspili efnis",
-      "chapter": 1
+      "definition": "rannsókn á samsetningu, eiginleikum og víxlverkun efnis",
+      "chapter": 1,
+      "english": "chemistry"
+    },
+    {
+      "term": "Efnajafna",
+      "definition": "Táknræn framsetning á efnahvarfi",
+      "chapter": 4,
+      "english": "chemical equation"
     },
     {
       "term": "efnasamband",
-      "definition": "hreint efni sem hægt er að brjóta niður í tvö eða fleiri frumefni",
-      "chapter": 1
+      "definition": "hreint efni sem hægt er að sundra í tvö eða fleiri frumefni",
+      "chapter": 1,
+      "english": "compound"
+    },
+    {
+      "term": "efnatákn",
+      "definition": "eins, tveggja eða þriggja stafa skammstöfun sem notuð er til að tákna frumefni eða atóm þess",
+      "chapter": 2,
+      "english": "chemical symbol"
+    },
+    {
+      "term": "efnavarmafræði",
+      "definition": "vísindasvið sem fjallar um tengslin milli varma, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum",
+      "chapter": 5,
+      "english": "chemical thermodynamics"
     },
     {
       "term": "efni",
       "definition": "allt sem tekur pláss og hefur massa",
-      "chapter": 1
+      "chapter": 1,
+      "english": "matter"
+    },
+    {
+      "term": "eigindlegur eiginleiki",
+      "definition": "eiginleiki efnis sem er óháður magni efnisins",
+      "chapter": 1,
+      "english": "intensive property"
+    },
+    {
+      "term": "einatóma jón",
+      "definition": "jón sem samanstendur af einu atómi",
+      "chapter": 2,
+      "english": "monatomic ion"
+    },
+    {
+      "term": "Einföld skipti",
+      "definition": "oxunar-afoxunarhvarf sem felur í sér oxun frumefnis með jónaefni",
+      "chapter": 4,
+      "english": "single-displacement reaction"
     },
     {
       "term": "eining",
       "definition": "samanburðarstaðall fyrir mælingar",
-      "chapter": 1
+      "chapter": 1,
+      "english": "unit"
     },
     {
-      "term": "Einingagreining",
-      "definition": "fjölhæf stærðfræðileg aðferð sem hægt er að beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir",
-      "chapter": 1
+      "term": "einsameindahvarf",
+      "definition": "grunnskrefshvarf sem felur í sér eina hvarfefnaeind",
+      "chapter": 12,
+      "english": "unimolecular reaction"
     },
     {
-      "term": "Einsleit efnablanda",
-      "definition": "(einnig lausn) sambland efna með samsetningu sem er einsleit í gegn",
-      "chapter": 1
+      "term": "einsleit blanda",
+      "definition": "(einnig lausn) blanda efna með samsetningu sem er einsleit í gegn",
+      "chapter": 1,
+      "english": "homogeneous mixture"
+    },
+    {
+      "term": "einsleitt jafnvægi",
+      "definition": "jafnvægi þar sem öll hvarfefni og myndefni eru í sama fasa",
+      "chapter": 13,
+      "english": "homogeneous equilibria"
+    },
+    {
+      "term": "einsleitur hvati",
+      "definition": "hvati sem er í sama fasa og hvarfefnin",
+      "chapter": 12,
+      "english": "homogeneous catalyst"
     },
     {
       "term": "Fahrenheit",
-      "definition": "hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
+      "definition": "eining fyrir hitastig; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
       "chapter": 1
     },
     {
       "term": "fast efni",
-      "definition": "efnishamur sem er stífur, hefur ákveðið form og nokkuð fast rúmmál",
+      "definition": "efnishamur sem er stífur, hefur ákveðna lögun og nokkuð fast rúmmál",
+      "chapter": 1,
+      "english": "solid"
+    },
+    {
+      "term": "fjölatóma jón",
+      "definition": "jón sem samanstendur af fleiri en einu atómi",
+      "chapter": 2,
+      "english": "polyatomic ion"
+    },
+    {
+      "term": "formúlumassi",
+      "definition": "summa meðalmassa allra atóma sem koma fram í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassinn",
+      "chapter": 3,
+      "english": "formula mass"
+    },
+    {
+      "term": "frumefni",
+      "definition": "efni sem er samsett úr einni tegund atóma; efni sem ekki er hægt að sundra með efnabreytingu",
+      "chapter": 1,
+      "english": "element"
+    },
+    {
+      "term": "fræðilegar heimtur",
+      "definition": "magn myndefnis sem hægt er að framleiða úr tilteknu magni hvarfefna samkvæmt hlutfallaefnafræði hvarfsins",
+      "chapter": 4,
+      "english": "theoretical yield"
+    },
+    {
+      "term": "fyrsta lögmál\nvarmafræðinnar",
+      "definition": "innri orka kerfis breytist vegna varmaflæðis inn í eða út úr kerfinu eða vinnu sem er unnin á kerfinu eða af því",
+      "chapter": 5,
+      "english": "first law of thermodynamics"
+    },
+    {
+      "term": "gas",
+      "definition": "efnishamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
       "chapter": 1
     },
     {
-      "term": "Frumefni",
-      "definition": "efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnahvarfi",
-      "chapter": 1
+      "term": "greiningarefni",
+      "definition": "efni sem á að greina",
+      "chapter": 4,
+      "english": "analyte"
     },
     {
-      "term": "frumeind",
-      "definition": "minnsta ögn frumefnis sem getur gengið í efnasamband",
-      "chapter": 1
+      "term": "grunneining hleðslu",
+      "definition": "(einnig kölluð einingarhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 × 10−19 C",
+      "chapter": 2,
+      "english": "fundamental unit of charge"
     },
     {
-      "term": "Gas",
-      "definition": "ástand þar sem efni hefur hvorki ákveðið rúmmál né lögun",
-      "chapter": 1
+      "term": "grunnskrefshvarf",
+      "definition": "hvarf sem á sér stað í einu skrefi, nákvæmlega eins og sýnt er í efnajöfnu þess",
+      "chapter": 12,
+      "english": "elementary reaction"
+    },
+    {
+      "term": "gufunarþrýstingur vatns",
+      "definition": "þrýstingur sem vatnsgufa beitir í jafnvægi við fljótandi vatn í lokuðu íláti við ákveðið hitastig",
+      "chapter": 9,
+      "english": "vapor pressure of water"
+    },
+    {
+      "term": "halógen",
+      "definition": "frumefni í hópi 17",
+      "chapter": 2,
+      "english": "halogen"
+    },
+    {
+      "term": "hálfhvarf",
+      "definition": "jafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í hvarfi.",
+      "chapter": 4,
+      "english": "half-reaction"
+    },
+    {
+      "term": "hálfmálmur",
+      "definition": "frumefni sem leiðir varma og rafmagn í meðallagi vel og býr yfir sumum eiginleikum málma og sumum eiginleikum málmleysingja",
+      "chapter": 2,
+      "english": "metalloid"
+    },
+    {
+      "term": "heildað hraðalögmál",
+      "definition": "jafna sem tengir styrk hvarfefnis við liðinn tíma hvarfs",
+      "chapter": 12,
+      "english": "integrated rate law"
+    },
+    {
+      "term": "Heildarjónajafna",
+      "definition": "Efnajafna þar sem öll uppleyst jónísk hvarfefni og myndefni, þar með taldar áhorfendajónir, eru sýnd með formúlum fyrir klofnuðu jónirnar sínar",
+      "chapter": 4,
+      "english": "complete ionic equation"
+    },
+    {
+      "term": "heildarstig efnahvarfs",
+      "definition": "summa stiga efnahvarfs fyrir hvert efni sem kemur fram í hraðajöfnunni",
+      "chapter": 12,
+      "english": "overall reaction order"
+    },
+    {
+      "term": "helmingunartími hvarfs\n(t1/2)",
+      "definition": "tími sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast",
+      "chapter": 12,
+      "english": "half-life of a reaction (tl/2)"
     },
     {
       "term": "hitastig",
-      "definition": "eðlisbundinn eiginleiki sem táknar hita eða kulda efnis",
-      "chapter": 1
+      "definition": "ástandseiginleiki sem táknar hita eða kulda efnis",
+      "chapter": 1,
+      "english": "temperature"
+    },
+    {
+      "term": "hliðarmálmur",
+      "definition": "frumefni í hópum 3–12 (nánar tiltekið, 3–11; sjá kafla um hliðarmálma og samhæfingarefnafræði)",
+      "chapter": 2,
+      "english": "transition metal"
+    },
+    {
+      "term": "hlutfallaefnafræði",
+      "definition": "tengsl milli magns hvarfefna og myndefna í efnahvarfi",
+      "chapter": 4,
+      "english": "stoichiometry"
+    },
+    {
+      "term": "hlutfallaþáttur",
+      "definition": "hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna",
+      "chapter": 4,
+      "english": "stoichiometric factor"
+    },
+    {
+      "term": "hlutlaust gas",
+      "definition": "(einnig eðalgas) frumefni í hópi 18",
+      "chapter": 2,
+      "english": "inert gas"
+    },
+    {
+      "term": "Hlutleysing",
+      "definition": "efnahvarf milli sýru og basa sem myndar salt og vatn",
+      "chapter": 4,
+      "english": "neutralization reaction"
+    },
+    {
+      "term": "hlutþrýstingur",
+      "definition": "þrýstingur sem einstakt gas í efnablöndu beitir",
+      "chapter": 9,
+      "english": "partial pressure"
+    },
+    {
+      "term": "hópur",
+      "definition": "lóðréttur dálkur í lotukerfinu",
+      "chapter": 2,
+      "english": "group"
+    },
+    {
+      "term": "hraðafasti (k)",
+      "definition": "jöfnunarfasti í hraðajöfnu",
+      "chapter": 12,
+      "english": "rate constant (k)"
+    },
+    {
+      "term": "hraðajafna",
+      "definition": "stærðfræðileg framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða þrýstingi hvarfefnis eða myndefnis á tímaeiningu",
+      "chapter": 12,
+      "english": "rate expression"
+    },
+    {
+      "term": "hraðatakmarkandi skref",
+      "definition": "(einnig hraðatakmarkandi þrep) hægasta grunnskrefshvarfið í hvarfgangi; ákvarðar hraða heildarhvarfsins",
+      "chapter": 12,
+      "english": "rate-determining step"
     },
     {
       "term": "hreint efni",
       "definition": "einsleitt efni sem hefur fasta samsetningu",
-      "chapter": 1
+      "chapter": 1,
+      "english": "pure substance"
     },
     {
-      "term": "Kelvin (K)",
-      "definition": "SI eining fyrir hitastig; 273,15 K = 0 ºC",
+      "term": "hreyfifræðikenning\nsameinda",
+      "definition": "kenning sem byggir á einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun kjörgass",
+      "chapter": 9,
+      "english": "kinetic molecular theory"
+    },
+    {
+      "term": "hreyfiorka",
+      "definition": "orka sem tengist hreyfingu hlutar, jöfn helmingi margfeldis massa hlutarins og hraða hans í öðru veldi, 12mv2 (þar sem m = massi og v = hraði)",
+      "chapter": 5,
+      "english": "kinetic energy"
+    },
+    {
+      "term": "Hvarfefni",
+      "definition": "Efni sem gengst undir efna- eða eðlisfræðilega breytingu; sýnt vinstra megin við örina í efnajöfnu",
+      "chapter": 4,
+      "english": "reactant"
+    },
+    {
+      "term": "hvarfgangur",
+      "definition": "skrefaskipt röð grunnskrefshvarfa þar sem efnabreyting á sér stað",
+      "chapter": 12,
+      "english": "reaction mechanism"
+    },
+    {
+      "term": "hvarfhraði",
+      "definition": "mælikvarði á hraða efnahvarfs",
+      "chapter": 12,
+      "english": "rate of reaction"
+    },
+    {
+      "term": "hvarfrit",
+      "definition": "notað í efnahraðafræði til að sýna ýmsa eiginleika hvarfs",
+      "chapter": 12,
+      "english": "reaction diagram"
+    },
+    {
+      "term": "hvarfstuðull (Q)",
+      "definition": "stærðfræðilegt fall sem lýsir hlutfallslegu magni hvarfefna og myndefna í efnablöndu; má gefa upp með styrk (Qc) eða þrýstingi (Qp)",
+      "chapter": 13,
+      "english": "reaction quotient (q)"
+    },
+    {
+      "term": "hvati",
+      "definition": "efni sem eykur hvarfhraða án þess að eyðast sjálft í hvarfinu",
+      "chapter": 12,
+      "english": "catalyst"
+    },
+    {
+      "term": "hýdrat",
+      "definition": "efnasamband sem inniheldur eina eða fleiri vatnssameindir bundnar innan kristalla sinna",
+      "chapter": 2,
+      "english": "hydrate"
+    },
+    {
+      "term": "innri hliðarmálmur",
+      "definition": "(einnig lanþaníð eða aktiníð) frumefni í tveimur neðstu röðunum; ef í fyrstu röðinni, einnig kallað lanþaníð, eða ef í annarri röðinni, einnig kallað aktiníð",
+      "chapter": 2,
+      "english": "inner transition metal"
+    },
+    {
+      "term": "innri orka (U)",
+      "definition": "heildarsumma allra mögulegra tegunda orku sem er til staðar í efni eða efnum",
+      "chapter": 5,
+      "english": "internal energy (u)"
+    },
+    {
+      "term": "innvermið ferli",
+      "definition": "efnahvarf eða eðlisbreyting sem gleypir varma",
+      "chapter": 5,
+      "english": "endothermic process"
+    },
+    {
+      "term": "ísómerur",
+      "definition": "efnasambönd með sömu efnaformúlu en ólíka byggingu",
+      "chapter": 2,
+      "english": "isomers"
+    },
+    {
+      "term": "jafngildispunktur",
+      "definition": "mælt rúmmál títrantslausnar sem veldur breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við fyrir efnajafngildi (sjá jafngildispunktur)",
+      "chapter": 4,
+      "english": "end point"
+    },
+    {
+      "term": "jafnvægi",
+      "definition": "ástand afturkræfs efnahvarfs þar sem framhvarfið og bakhvarfið eiga sér stað með jöfnum hraða",
+      "chapter": 13,
+      "english": "equilibrium"
+    },
+    {
+      "term": "jafnvægisfasti (K)",
+      "definition": "gildi hvarfstuðuls fyrir kerfi í jafnvægi; má gefa upp með styrk (Kc) eða hlutþrýstingi (Kp)",
+      "chapter": 13,
+      "english": "equilibrium constant (k)"
+    },
+    {
+      "term": "jarðalkalímálmur",
+      "definition": "frumefni í hópi 2",
+      "chapter": 2,
+      "english": "alkaline earth metal"
+    },
+    {
+      "term": "jón",
+      "definition": "rafmagnslega hlaðið atóm eða sameind (inniheldur ójafnan fjölda róteinda og rafeinda)",
+      "chapter": 2,
+      "english": "ion"
+    },
+    {
+      "term": "jónaefni",
+      "definition": "efnasamband sem samanstendur af katjónum og anjónum í ákveðnum hlutföllum sem gefa rafhlutlaust efni",
+      "chapter": 2,
+      "english": "ionic compound"
+    },
+    {
+      "term": "jónatengi",
+      "definition": "rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna jónaefnis",
+      "chapter": 2,
+      "english": "ionic bond"
+    },
+    {
+      "term": "júl (J)",
+      "definition": "SI-eining orku; orkumagn sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1 kg m2/s2 og 4.184 J = 1 cal",
+      "chapter": 5,
+      "english": "joule (j)"
+    },
+    {
+      "term": "kalkógen",
+      "definition": "frumefni í hópi 16",
+      "chapter": 2,
+      "english": "chalcogen"
+    },
+    {
+      "term": "kaloríumæling",
+      "definition": "ferlið við að mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli",
+      "chapter": 5,
+      "english": "calorimetry"
+    },
+    {
+      "term": "kaloríumælir",
+      "definition": "tæki sem notað er til að mæla magn varma sem frásogast eða losnar í efna- eða eðlisfræðilegu ferli",
+      "chapter": 5,
+      "english": "calorimeter"
+    },
+    {
+      "term": "kalóría (cal)",
+      "definition": "eining fyrir varma eða aðra orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni um 1 gráðu á Celsíus; 1 cal er skilgreint sem 4,184 J",
+      "chapter": 5,
+      "english": "calorie (cal)"
+    },
+    {
+      "term": "katjón",
+      "definition": "jákvætt hlaðið atóm eða sameind (inniheldur færri rafeindir en róteindir)",
+      "chapter": 2,
+      "english": "cation"
+    },
+    {
+      "term": "kelvin (K)",
+      "definition": "SI-eining hitastigs; 273,15 K = 0 °C",
       "chapter": 1
     },
     {
       "term": "kenning",
       "definition": "vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar",
-      "chapter": 1
+      "chapter": 1,
+      "english": "theory"
+    },
+    {
+      "term": "kerfi",
+      "definition": "hluti efnis sem er að gangast undir efna- eða eðlisfræðilega breytingu sem er til rannsóknar",
+      "chapter": 5,
+      "english": "system"
     },
     {
       "term": "kílógramm (kg)",
-      "definition": "staðaleining SI-kerfisins fyrir massa",
-      "chapter": 1
+      "definition": "stöðluð SI-eining massa",
+      "chapter": 1,
+      "english": "kilogram (kg)"
+    },
+    {
+      "term": "kjarni",
+      "definition": "massamikil, jákvætt hlaðin miðja atóms sem samanstendur af róteindum og nifteindum",
+      "chapter": 2,
+      "english": "nucleus"
+    },
+    {
+      "term": "kjörgas",
+      "definition": "tilbúið gas sem eðliseiginleikum þess er fullkomlega lýst með gaslögmálunum",
+      "chapter": 9,
+      "english": "ideal gas"
+    },
+    {
+      "term": "kjörgasfastinn (R)",
+      "definition": "fasti fenginn úr kjörgasjöfnunni R = 0,08206 L atm mól–1 K–1 eða 8,314 L kPa mól–1 K–1",
+      "chapter": 9,
+      "english": "ideal gas constant (r)"
+    },
+    {
+      "term": "kjörgaslögmálið",
+      "definition": "samband milli þrýstings, rúmmáls, magns og hitastigs gass við aðstæður sem fengnar eru með samsetningu einföldu gaslögmálanna",
+      "chapter": 9,
+      "english": "ideal gas law"
+    },
+    {
+      "term": "kolvetni",
+      "definition": "efnasamband sem samanstendur eingöngu af vetni og kolefni; aðalefnið í jarðefnaeldsneyti",
+      "chapter": 5,
+      "english": "hydrocarbon"
+    },
+    {
+      "term": "lanþaníð",
+      "definition": "innri hliðarmálmur í efri af tveimur neðstu röðum lotukerfisins",
+      "chapter": 2,
+      "english": "lanthanide"
     },
     {
       "term": "lengd",
       "definition": "mælikvarði á eina vídd hlutar",
-      "chapter": 1
+      "chapter": 1,
+      "english": "length"
+    },
+    {
+      "term": "leysir",
+      "definition": "efnisþáttur lausnar sem er í hærri styrk miðað við aðra efnisþætti",
+      "chapter": 3,
+      "english": "solvent"
+    },
+    {
+      "term": "Leysni",
+      "definition": "að hve miklu leyti efni getur leyst upp í vatni eða öðrum leysi",
+      "chapter": 4,
+      "english": "solubility"
+    },
+    {
+      "term": "litvísir",
+      "definition": "efni sem bætt er við sýnið í títrunargreiningu til að gera sjónræna greiningu á jafngildispunkti mögulega",
+      "chapter": 4,
+      "english": "indicator"
     },
     {
       "term": "lítri (L)",
-      "definition": "(einnig rúmdesimetri) rúmmálseining; 1 L = 1.000 cm3",
-      "chapter": 1
+      "definition": "(einnig rúmdesimetri) eining rúmmáls; 1 L = 1.000 cm3",
+      "chapter": 1,
+      "english": "liter (l)"
+    },
+    {
+      "term": "loftvog",
+      "definition": "tæki sem notað er til að mæla loftþrýsting",
+      "chapter": 9,
+      "english": "barometer"
+    },
+    {
+      "term": "lota",
+      "definition": "(einnig, röð) lárétt röð í lotukerfinu",
+      "chapter": 2,
+      "english": "period"
+    },
+    {
+      "term": "lotukerfið",
+      "definition": "tafla yfir frumefnin sem setur frumefni með svipaða efnaeiginleika saman",
+      "chapter": 2,
+      "english": "periodic table"
+    },
+    {
+      "term": "lotulögmálið",
+      "definition": "eiginleikar frumefnanna eru lotubundin virkni sætistalna þeirra.",
+      "chapter": 2,
+      "english": "periodic law"
     },
     {
       "term": "lögmál",
-      "definition": "staðhæfing sem dregur saman mikinn fjölda athugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar.",
-      "chapter": 1
+      "definition": "staðhæfing sem tekur saman fjölda tilraunaathugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar",
+      "chapter": 1,
+      "english": "law"
     },
     {
-      "term": "lögmál um varðveislu efnis",
-      "definition": "þegar efni breytist úr einni gerð í aðra, eða breytir um form, verður engin greinanleg breyting á heildarmagni þess efnis sem er til staðar",
-      "chapter": 1
+      "term": "lögmál Amontons",
+      "definition": "(einnig lögmál Gay-Lussac) þrýstingur ákveðins fjölda móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar rúmmálinu er haldið föstu",
+      "chapter": 9,
+      "english": "amontons’s law"
     },
     {
-      "term": "Magnbundinn eiginleiki",
-      "definition": "eiginleiki efnis sem er háður magni efnisins",
-      "chapter": 1
+      "term": "lögmál Avogadros",
+      "definition": "rúmmál gass við fast hitastig og þrýsting er í hlutfalli við fjölda gassameinda",
+      "chapter": 9,
+      "english": "avogadro’s law"
+    },
+    {
+      "term": "lögmál Boyles",
+      "definition": "rúmmál ákveðins fjölda móla af gasi sem haldið er við fast hitastig er í öfugu hlutfalli við þrýstinginn sem það er mælt við",
+      "chapter": 9,
+      "english": "boyle’s law"
+    },
+    {
+      "term": "lögmál Charles",
+      "definition": "rúmmál ákveðins fjölda móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar þrýstingnum er haldið föstum",
+      "chapter": 9,
+      "english": "charles’s law"
+    },
+    {
+      "term": "lögmál Hess",
+      "definition": "ef hægt er að tákna ferli sem summu nokkurra skrefa er vermibreyting ferlisins jöfn summu vermibreytinga skrefanna",
+      "chapter": 5,
+      "english": "hess’s law"
+    },
+    {
+      "term": "Lögmál Le Châteliers",
+      "definition": "jafnvægi sem verður fyrir álagi mun hliðrast á þann hátt að það vinnur gegn álaginu og kemur aftur á jafnvægi",
+      "chapter": 13,
+      "english": "le châtelier’s principle"
+    },
+    {
+      "term": "lögmál um massaverkun",
+      "definition": "þegar afturkræft hvarf hefur náð jafnvægi við tiltekið hitastig, helst hvarfstuðullinn óbreyttur",
+      "chapter": 13,
+      "english": "law of mass action"
+    },
+    {
+      "term": "lögmálið um fasta\nefnasamsetningu",
+      "definition": "(einnig, lögmálið um föst efnahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu hlutföllum miðað við massa",
+      "chapter": 2,
+      "english": "law of constant composition"
+    },
+    {
+      "term": "lögmálið um föst\nefnahlutföll",
+      "definition": "(einnig, lögmálið um fasta efnasamsetningu) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu hlutföllum miðað við massa",
+      "chapter": 2,
+      "english": "law of definite proportions"
+    },
+    {
+      "term": "lögmálið um margföld\nefnahlutföll",
+      "definition": "þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna",
+      "chapter": 2,
+      "english": "law of multiple proportions"
+    },
+    {
+      "term": "lögmálið um varðveislu\nefnis",
+      "definition": "þegar efni breytist úr einni tegund í aðra eða breytir um form verður engin greinanleg breyting á heildarmagni efnisins",
+      "chapter": 1,
+      "english": "law of conservation of matter"
+    },
+    {
+      "term": "magnbundin greining",
+      "definition": "ákvörðun á magni eða styrk efnis í sýni",
+      "chapter": 4,
+      "english": "quantitative analysis"
+    },
+    {
+      "term": "magnbundinn eiginleiki",
+      "definition": "eiginleiki efnis sem fer eftir magni efnisins",
+      "chapter": 1,
+      "english": "extensive property"
     },
     {
       "term": "markverðir stafir",
-      "definition": "(einnig, markverðir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
-      "chapter": 1
+      "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
+      "chapter": 1,
+      "english": "significant figures"
+    },
+    {
+      "term": "massa-rúmmálsprósenta",
+      "definition": "hlutfall massa uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
+      "chapter": 3,
+      "english": "mass-volume percent"
+    },
+    {
+      "term": "massaprósenta",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósenta",
+      "chapter": 3,
+      "english": "mass percentage"
+    },
+    {
+      "term": "massatala (A)",
+      "definition": "summa fjölda nifteinda og róteinda í kjarna atóms",
+      "chapter": 2,
+      "english": "mass number (a)"
     },
     {
       "term": "massi",
-      "definition": "grunneiginleiki sem gefur til kynna magn efnis",
-      "chapter": 1
+      "definition": "grundvallareiginleiki sem gefur til kynna magn efnis",
+      "chapter": 1,
+      "english": "mass"
+    },
+    {
+      "term": "massi reynsluformúlu",
+      "definition": "summa meðalatómmassa allra atóma í reynsluformúlu",
+      "chapter": 3,
+      "english": "empirical formula mass"
+    },
+    {
+      "term": "málmleysingi",
+      "definition": "frumefni sem virðist daufleitt, lélegur leiðari varma og rafmagns",
+      "chapter": 2,
+      "english": "nonmetal"
+    },
+    {
+      "term": "málmur",
+      "definition": "frumefni sem er glansandi, mótanlegt, góður leiðari varma og rafmagns",
+      "chapter": 2,
+      "english": "metal"
+    },
+    {
+      "term": "meðalferningsrótarhraði (urms)",
+      "definition": "mælikvarði á meðalhraða fyrir hóp einda, reiknaður sem kvaðratrót meðaltals kvaðrats hraðans",
+      "chapter": 9,
+      "english": "root mean square speed (urms)"
+    },
+    {
+      "term": "meðalfrívegalengd",
+      "definition": "meðalvegalengd sem sameind ferðast á milli árekstra",
+      "chapter": 9,
+      "english": "mean free path"
+    },
+    {
+      "term": "meðalhraði",
+      "definition": "hvarfhraði efnahvarfs reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og tímabilsins sem breytingin á sér stað yfir",
+      "chapter": 12,
+      "english": "average rate"
     },
     {
       "term": "metri (m)",
-      "definition": "stöðluð lengdareining metrakerfisins og SI-kerfisins; 1 m = u.þ.b. 1,094 yardar",
-      "chapter": 1
+      "definition": "stöðluð metra- og SI-eining lengdar; 1 m = u.þ.b. 1,094 yardar",
+      "chapter": 1,
+      "english": "meter (m)"
+    },
+    {
+      "term": "milliefni",
+      "definition": "eindir sem myndast í einu skrefi hvarfgangs og eyðast í síðara skrefi",
+      "chapter": 12,
+      "english": "intermediate"
     },
     {
       "term": "millilítri (mL)",
       "definition": "1/1.000 úr lítra; jafngildir 1 cm3",
-      "chapter": 1
+      "chapter": 1,
+      "english": "milliliter (ml)"
     },
     {
-      "term": "Misleit efnablanda",
-      "definition": "sambland efna með samsetningu sem er breytileg frá einum punkti til annars",
-      "chapter": 1
+      "term": "milljarðshlutar (ppb)",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 109",
+      "chapter": 3,
+      "english": "parts per billion (ppb)"
     },
     {
-      "term": "Nákvæm tala",
+      "term": "milljónustu hlutar\n(ppm)",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 106",
+      "chapter": 3,
+      "english": "parts per million (ppm)"
+    },
+    {
+      "term": "misleit blanda",
+      "definition": "blanda efna með samsetningu sem er breytileg eftir staðsetningu",
+      "chapter": 1,
+      "english": "heterogeneous mixture"
+    },
+    {
+      "term": "misleitt jafnvægi",
+      "definition": "jafnvægi þar sem hvarfefni og myndefni eru í tveimur eða fleiri mismunandi fösum",
+      "chapter": 13,
+      "english": "heterogeneous equilibria"
+    },
+    {
+      "term": "misleitur hvati",
+      "definition": "hvati sem er í öðrum fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað",
+      "chapter": 12,
+      "english": "heterogeneous catalyst"
+    },
+    {
+      "term": "mól",
+      "definition": "efnismagn sem inniheldur sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í nákvæmlega 12 grömmum af 12C",
+      "chapter": 3,
+      "english": "mole"
+    },
+    {
+      "term": "mólhlutfall (X)",
+      "definition": "styrkurseining sem er skilgreind sem hlutfall mólmagns íhlutar í efnablöndu og heildarfjölda móla allra íhluta efnablöndunnar",
+      "chapter": 9,
+      "english": "mole fraction (x)"
+    },
+    {
+      "term": "mólmassi",
+      "definition": "massi í grömmum af 1 móli af efni",
+      "chapter": 3,
+      "english": "molar mass"
+    },
+    {
+      "term": "mólstyrkur (M)",
+      "definition": "styrkleikaeining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn",
+      "chapter": 3,
+      "english": "molarity (m)"
+    },
+    {
+      "term": "Myndefni",
+      "definition": "Efni sem myndast við efna- eða eðlisfræðilega breytingu; sýnt hægra megin við örina í efnajöfnu",
+      "chapter": 4,
+      "english": "product"
+    },
+    {
+      "term": "nafnakerfi",
+      "definition": "reglukerfi til að nefna fyrirbæri",
+      "chapter": 2,
+      "english": "nomenclature"
+    },
+    {
+      "term": "nákvæm tala",
       "definition": "tala fengin með talningu eða samkvæmt skilgreiningu",
-      "chapter": 1
+      "chapter": 1,
+      "english": "exact number"
     },
     {
       "term": "nákvæmni",
-      "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
-      "chapter": 1
+      "definition": "hversu nálægt mæling er réttu gildi",
+      "chapter": 1,
+      "english": "accuracy"
     },
     {
       "term": "námundun",
       "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum",
-      "chapter": 1
+      "chapter": 1,
+      "english": "rounding"
+    },
+    {
+      "term": "Nettójónajafna",
+      "definition": "Efnajafna þar sem aðeins þau uppleystu jónísku hvarfefni og myndefni sem gangast undir efna- eða eðlisfræðilega breytingu eru sýnd (sleppir áhorfendajónum)",
+      "chapter": 4,
+      "english": "net ionic equation"
+    },
+    {
+      "term": "nifteind",
+      "definition": "óhlaðin öreind staðsett í kjarnanum",
+      "chapter": 2,
+      "english": "neutron"
+    },
+    {
+      "term": "næringarkaloría\n(kaloría)",
+      "definition": "eining sem notuð er til að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000 cal eða 1 kkal",
+      "chapter": 5,
+      "english": "nutritional calorie (calorie)"
+    },
+    {
+      "term": "orka",
+      "definition": "geta til að veita varma eða vinna vinnu",
+      "chapter": 5,
+      "english": "energy"
+    },
+    {
+      "term": "Oxari",
+      "definition": "efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu",
+      "chapter": 4,
+      "english": "oxidizing agent"
+    },
+    {
+      "term": "oxóanjón",
+      "definition": "fjölatóma anjón sem samanstendur af miðatómi sem er tengt súrefnisatómum",
+      "chapter": 2,
+      "english": "oxyanion"
+    },
+    {
+      "term": "oxósýra",
+      "definition": "efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
+      "chapter": 2,
+      "english": "oxyacid"
+    },
+    {
+      "term": "Oxun",
+      "definition": "ferli þar sem oxunartala frumefnis hækkar vegna rafeindamissis",
+      "chapter": 4,
+      "english": "oxidation"
+    },
+    {
+      "term": "Oxunar-afoxunarhvarf",
+      "definition": "(einnig, redoxhvarf) efnahvarf sem felur í sér breytingu á oxunartölu fyrir eitt eða fleiri hvarfefni",
+      "chapter": 4,
+      "english": "oxidation-reduction reaction"
+    },
+    {
+      "term": "Oxunartala",
+      "definition": "(einnig, oxunarástand) hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni",
+      "chapter": 4,
+      "english": "oxidation number"
     },
     {
       "term": "óvissa",
       "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
+      "chapter": 1,
+      "english": "uncertainty"
+    },
+    {
+      "term": "óþynnt",
+      "definition": "þáttbundið hugtak yfir lausn sem inniheldur uppleyst efni í tiltölulega háum styrk",
+      "chapter": 3,
+      "english": "concentrated"
+    },
+    {
+      "term": "paskal (Pa)",
+      "definition": "SI-eining þrýstings; 1 Pa = 1 N/m2",
+      "chapter": 9,
+      "english": "pascal (pa)"
+    },
+    {
+      "term": "plasma",
+      "definition": "gaskenndur efnishamur sem inniheldur mikinn fjölda rafhladdra atóma og/eða sameinda",
       "chapter": 1
     },
     {
-      "term": "rafgas",
-      "definition": "gaskenndur efnishamur sem inniheldur mikinn fjölda rafhlaðinna atóma og/eða sameinda",
-      "chapter": 1
+      "term": "pniktógen",
+      "definition": "frumefni í hóp 15",
+      "chapter": 2,
+      "english": "pnictogen"
+    },
+    {
+      "term": "prentnákvæmni",
+      "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
+      "chapter": 1,
+      "english": "precision"
+    },
+    {
+      "term": "prósentuheimtur",
+      "definition": "mælikvarði á skilvirkni efnahvarfs, gefinn upp sem prósenta af fræðilegum heimtum",
+      "chapter": 4,
+      "english": "percent yield"
+    },
+    {
+      "term": "prósentusamsetning",
+      "definition": "massaprósenta hinna ýmsu frumefna í efnasambandi",
+      "chapter": 3,
+      "english": "percent composition"
+    },
+    {
+      "term": "pund á fertommu (psi)",
+      "definition": "þrýstingseining sem er algeng í Bandaríkjunum",
+      "chapter": 9,
+      "english": "pounds per square inch (psi)"
+    },
+    {
+      "term": "rafeind",
+      "definition": "neikvætt hlaðin öreind með tiltölulega lítinn massa sem er staðsett fyrir utan kjarnann",
+      "chapter": 2,
+      "english": "electron"
+    },
+    {
+      "term": "raunheimtur",
+      "definition": "magn myndefnis sem myndast í efnahvarfi",
+      "chapter": 4,
+      "english": "actual yield"
+    },
+    {
+      "term": "reynsluformúla",
+      "definition": "formúla sem sýnir samsetningu efnasambands gefna upp sem einfaldasta heiltöluhlutfall atóma",
+      "chapter": 2,
+      "english": "empirical formula"
+    },
+    {
+      "term": "róteind",
+      "definition": "jákvætt hlaðin öreind staðsett í kjarnanum",
+      "chapter": 2,
+      "english": "proton"
+    },
+    {
+      "term": "rúmísómerur",
+      "definition": "efnasambönd þar sem afstæð afstaða atómanna í rúmi er ólík",
+      "chapter": 2,
+      "english": "spatial isomers"
     },
     {
       "term": "rúmmál",
       "definition": "rými sem hlutur tekur",
-      "chapter": 1
+      "chapter": 1,
+      "english": "volume"
+    },
+    {
+      "term": "rúmmálsprósenta",
+      "definition": "hlutfall rúmmáls uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
+      "chapter": 3,
+      "english": "volume percentage"
     },
     {
       "term": "rúmmetri (m3)",
       "definition": "SI-eining rúmmáls",
-      "chapter": 1
+      "chapter": 1,
+      "english": "cubic meter (m3)"
     },
     {
-      "term": "rúmsentimetri (cm3 eða cc)",
-      "definition": "rúmmál tenings með brúnarlengdina nákvæmlega 1 cm",
-      "chapter": 1
+      "term": "rúmsentimetri (cm3 eða\ncc)",
+      "definition": "rúmmál tenings með brúnarlengd nákvæmlega 1 cm",
+      "chapter": 1,
+      "english": "cubic centimeter (cm3 or cc)"
+    },
+    {
+      "term": "Salt",
+      "definition": "jónaefni sem getur myndast við efnahvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
+      "chapter": 4
     },
     {
       "term": "sameind",
       "definition": "tengt safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum",
-      "chapter": 1
+      "chapter": 1,
+      "english": "molecule"
+    },
+    {
+      "term": "sameindaefnasamband",
+      "definition": "(einnig, samgilt efnasamband) samsett úr sameindum sem myndast af atómum tveggja eða fleiri mismunandi frumefna",
+      "chapter": 2,
+      "english": "molecular compound"
+    },
+    {
+      "term": "sameindaformúla",
+      "definition": "formúla sem gefur til kynna samsetningu sameindar efnasambands og gefur upp raunverulegan fjölda atóma hvers frumefnis í sameind efnasambandsins.",
+      "chapter": 2,
+      "english": "molecular formula"
+    },
+    {
+      "term": "Sameindajafna",
+      "definition": "Efnajafna þar sem öll hvarfefni og myndefni eru sýnd sem hlutlaus efni",
+      "chapter": 4,
+      "english": "molecular equation"
+    },
+    {
+      "term": "sameindatala",
+      "definition": "fjöldi hvarfefnaeinda sem taka þátt í grunnskrefshvarfi",
+      "chapter": 12,
+      "english": "molecularity"
+    },
+    {
+      "term": "sameinuð atómmassaeining\n(u)",
+      "definition": "önnur eining sem jafngildir atómmassaeiningu",
+      "chapter": 2,
+      "english": "unified atomic mass unit (u)"
+    },
+    {
+      "term": "samgilt efnasamband",
+      "definition": "(einnig sameindaefnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna",
+      "chapter": 2,
+      "english": "covalent compound"
+    },
+    {
+      "term": "samgilt tengi",
+      "definition": "aðdráttarkraftur milli kjarna atóma sameindar og rafeindapara milli atómanna",
+      "chapter": 2,
+      "english": "covalent bond"
+    },
+    {
+      "term": "samsætur",
+      "definition": "atóm sem innihalda sama fjölda róteinda en mismunandi fjölda nifteinda",
+      "chapter": 2,
+      "english": "isotopes"
+    },
+    {
+      "term": "samþjappanleikastuðull\n(Z)",
+      "definition": "hlutfallið milli mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það er reiknað út frá jöfnu kjörgass",
+      "chapter": 9,
+      "english": "compressibility factor (z)"
     },
     {
       "term": "sekúnda (s)",
       "definition": "SI-eining tíma",
-      "chapter": 1
+      "chapter": 1,
+      "english": "second (s)"
     },
     {
-      "term": "SI-einingar (Alþjóðlega einingakerfið)",
-      "definition": "staðlar sem eru fastsettir með alþjóðlegum samningi í Alþjóðlega einingakerfinu (_Le Système International d’Unités_)",
-      "chapter": 1
+      "term": "Selsíus (°C)",
+      "definition": "eining fyrir hitastig; vatn frýs við 0 °C og sýður við 100 °C á þessum skala",
+      "chapter": 1,
+      "english": "celsius (°c)"
+    },
+    {
+      "term": "SI-einingar (Alþjóðlega\neiningakerfið)",
+      "definition": "staðlar sem ákvarðaðir eru með alþjóðasamningi í Alþjóðlega einingakerfinu (Le Système International d’Unités)",
+      "chapter": 1,
+      "english": "si units (international system of units)"
     },
     {
       "term": "smásætt svið",
-      "definition": "svið hluta sem eru of smáir til að vera skynjaðir beint",
-      "chapter": 1
+      "definition": "svið hluta sem eru allt of litlir til að vera skynjaðir beint",
+      "chapter": 1,
+      "english": "microscopic domain"
+    },
+    {
+      "term": "sprengikaloríumælir",
+      "definition": "tæki sem er hannað til að mæla orkubreytingu fyrir ferli sem eiga sér stað við fast rúmmál; almennt notað fyrir efnahvörf sem fela í sér föst efni og loftkennd hvarfefni eða myndefni",
+      "chapter": 5,
+      "english": "bomb calorimeter"
+    },
+    {
+      "term": "staðalaðstæður\nhitastigs og þrýstings (STP)",
+      "definition": "273,15 K (0 °C) og 1 atm (101,325 kPa)",
+      "chapter": 9,
+      "english": "standard conditions of temperature and pressure (stp)"
+    },
+    {
+      "term": "staðalástand",
+      "definition": "safn eðlisfræðilegra skilyrða sem eru viðurkennd sem algeng viðmiðunarskilyrði til að skrá varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólstyrk, venjulega við 298,15 K hitastig",
+      "chapter": 5,
+      "english": "standard state"
+    },
+    {
+      "term": "staðalbrunavermi\n(ΔHc°)",
+      "definition": "varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
+      "chapter": 5,
+      "english": "standard enthalpy of combustion (δhc°)"
+    },
+    {
+      "term": "staðalloftþrýstingur\n(atm)",
+      "definition": "þrýstingseining; 1 atm = 101.325 Pa",
+      "chapter": 9,
+      "english": "atmosphere (atm)"
+    },
+    {
+      "term": "staðalmólrúmmál",
+      "definition": "rúmmál 1 móls af gasi við STP, um það bil 22,4 L fyrir gös sem hegða sér eins og kjörgas",
+      "chapter": 9,
+      "english": "standard molar volume"
+    },
+    {
+      "term": "staðalmyndunarvermi\n(ΔHf°)",
+      "definition": "vermibreyting efnahvarfs þar sem 1 mól af hreinu efni myndast úr frumefnum sínum í sínum stöðugasta efnisham við staðalaðstæður",
+      "chapter": 5,
+      "english": "standard enthalpy of formation (δhf°)"
+    },
+    {
+      "term": "Sterk sýra",
+      "definition": "sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
+      "chapter": 4,
+      "english": "strong acid"
+    },
+    {
+      "term": "Sterkur basi",
+      "definition": "basi sem hvarfast að fullu þegar hann er leystur upp í vatni og myndar hýdroxíðjónir",
+      "chapter": 4,
+      "english": "strong base"
+    },
+    {
+      "term": "stig efnahvarfs",
+      "definition": "gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2 og svo framvegis)",
+      "chapter": 12,
+      "english": "reaction order"
+    },
+    {
+      "term": "Stillt jafna",
+      "definition": "Efnajafna með jöfnum fjölda atóma fyrir hvert frumefni í hvarfefninu og myndefninu",
+      "chapter": 4,
+      "english": "balanced equation"
     },
     {
       "term": "stórsætt svið",
-      "definition": "svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu",
-      "chapter": 1
+      "definition": "svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu manna",
+      "chapter": 1,
+      "english": "macroscopic domain"
+    },
+    {
+      "term": "Stuðull",
+      "definition": "Tala sem er sett fyrir framan tákn eða formúlur í efnajöfnu til að gefa til kynna hlutfallslegt magn þeirra",
+      "chapter": 4,
+      "english": "coefficient"
+    },
+    {
+      "term": "styrkur",
+      "definition": "magnbundin mæling á hlutfallslegu magni uppleysts efnis og leysis í lausn",
+      "chapter": 3,
+      "english": "concentration"
+    },
+    {
+      "term": "stöðuorka",
+      "definition": "orka eindar eða kerfis einda sem er fengin úr afstæðri stöðu, samsetningu eða ástandi",
+      "chapter": 5,
+      "english": "potential energy"
+    },
+    {
+      "term": "sveim",
+      "definition": "flutningur atóms eða sameindar frá svæði með tiltölulega háum styrk yfir á svæði með tiltölulega lágum styrk (fjallað um í þessum kafla með tilliti til gasefna, en á við um efni í hvaða fasa sem er)",
+      "chapter": 9,
+      "english": "diffusion"
+    },
+    {
+      "term": "sveimhraði",
+      "definition": "magn gass sem sveimar í gegnum tiltekið svæði á tilteknum tíma",
+      "chapter": 9,
+      "english": "rate of diffusion"
+    },
+    {
+      "term": "sýra",
+      "definition": "efni sem myndar H3O+ þegar það er leyst upp í vatni",
+      "chapter": 4,
+      "english": "acid"
+    },
+    {
+      "term": "sýru-basa hvarf",
+      "definition": "hvarf sem felur í sér flutning vetnisjónar milli hvarfefna",
+      "chapter": 4,
+      "english": "acid-base reaction"
+    },
+    {
+      "term": "sætistala (Z)",
+      "definition": "fjöldi róteinda í kjarna atóms",
+      "chapter": 2,
+      "english": "atomic number (z)"
+    },
+    {
+      "term": "takmarkandi hvarfefni",
+      "definition": "hvarfefni sem er til staðar í minna magni en hlutfallaefnafræði hvarfsins krefst og takmarkar þannig magn myndefnis sem myndast",
+      "chapter": 4,
+      "english": "limiting reactant"
+    },
+    {
+      "term": "Tala Avogadros (NA)",
+      "definition": "tilraunakennt ákvarðað gildi fjölda einda sem mynda 1 mól af efni, jafnt og 6,022 × 1023 mól−1",
+      "chapter": 3,
+      "english": "avogadro’s number (na)"
     },
     {
       "term": "táknrænt svið",
-      "definition": "sérhæft tungumál sem notað er til að tákna þætti á stórsæja og smásæja sviðinu, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
-      "chapter": 1
+      "definition": "sérhæft tungumál sem notað er til að tákna þætti stórsæja og smásæja sviðsins, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
+      "chapter": 1,
+      "english": "symbolic domain"
     },
     {
-      "term": "Tilgáta",
-      "definition": "bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
-      "chapter": 1
+      "term": "tilgáta",
+      "definition": "bráðabirgðaútskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
+      "chapter": 1,
+      "english": "hypothesis"
     },
     {
-      "term": "umbreytistuðull eininga",
-      "definition": "hlutfall jafngildra magntalna gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
-      "chapter": 1
+      "term": "tíðnistuðull (A)",
+      "definition": "jöfnunarfasti í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
+      "chapter": 12,
+      "english": "frequency factor (a)"
+    },
+    {
+      "term": "títrantur",
+      "definition": "lausn sem inniheldur þekktan styrk efnis sem hvarfast við greiningarefnið í títrunargreiningu",
+      "chapter": 4,
+      "english": "titrant"
+    },
+    {
+      "term": "títrunargreining",
+      "definition": "magnbundin efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnislausnar sem þarf til að hvarfast að fullu við greiningarefnið í sýni",
+      "chapter": 4,
+      "english": "titration analysis"
+    },
+    {
+      "term": "Torleystur",
+      "definition": "með tiltölulega lítinn leysni; leysist aðeins upp að litlu leyti",
+      "chapter": 4,
+      "english": "insoluble"
+    },
+    {
+      "term": "torr",
+      "definition": "þrýstingseining; 1 torr=1760atm",
+      "chapter": 9
+    },
+    {
+      "term": "tvíliða efnasamband",
+      "definition": "efnasamband sem inniheldur tvö mismunandi frumefni.",
+      "chapter": 2,
+      "english": "binary compound"
+    },
+    {
+      "term": "tvíliða sýra",
+      "definition": "efnasamband sem inniheldur vetni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
+      "chapter": 2,
+      "english": "binary acid"
+    },
+    {
+      "term": "tvísameindahvarf",
+      "definition": "grunnskrefshvarf sem felur í sér tvær hvarfefnaeindir",
+      "chapter": 12,
+      "english": "bimolecular reaction"
+    },
+    {
+      "term": "umframhvarfefni",
+      "definition": "hvarfefni sem er til staðar í meira magni en hlutfallaefnafræði hvarfsins krefst",
+      "chapter": 4,
+      "english": "excess reactant"
+    },
+    {
+      "term": "umhverfi",
+      "definition": "allt efni annað en kerfið sem er til rannsóknar",
+      "chapter": 5,
+      "english": "surroundings"
+    },
+    {
+      "term": "umreikningsstuðull\neininga",
+      "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
+      "chapter": 1,
+      "english": "unit conversion factor"
+    },
+    {
+      "term": "upphafshraði",
+      "definition": "augnablikshraði efnahvarfs við t = 0 s (strax eftir að efnahvarfið hefst)",
+      "chapter": 12,
+      "english": "initial rate"
+    },
+    {
+      "term": "uppleyst",
+      "definition": "lýsir ferlinu þar sem uppleystir efnisþættir dreifast í leysi",
+      "chapter": 3,
+      "english": "dissolved"
+    },
+    {
+      "term": "uppleyst efni",
+      "definition": "efnisþáttur lausnar sem er í lægri styrk en leysirinn",
+      "chapter": 3,
+      "english": "solute"
+    },
+    {
+      "term": "Útfelling",
+      "definition": "efnahvarf sem myndar eitt eða fleiri torleyst myndefni; þegar hvarfefnin eru jónaefni er það stundum kallað tvöföld skipti eða metatesa",
+      "chapter": 4,
+      "english": "precipitation reaction"
+    },
+    {
+      "term": "útstreymi",
+      "definition": "flutningur loftkenndra atóma eða sameinda úr íláti yfir í lofttæmi í gegnum mjög lítil op",
+      "chapter": 9,
+      "english": "effusion"
+    },
+    {
+      "term": "útstreymislögmál\nGrahams",
+      "definition": "sveim- og útstreymishraði gasa er í öfugu hlutfalli við kvaðratrætur sameindamassa þeirra",
+      "chapter": 9,
+      "english": "graham’s law of effusion"
+    },
+    {
+      "term": "útvermið ferli",
+      "definition": "efnahvarf eða eðlisbreyting sem losar varma",
+      "chapter": 5,
+      "english": "exothermic process"
+    },
+    {
+      "term": "van der Waals-jafnan",
+      "definition": "breytt útgáfa af jöfnu kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá hegðun kjörgass",
+      "chapter": 9,
+      "english": "van der waals equation"
+    },
+    {
+      "term": "varmaefnafræði",
+      "definition": "rannsókn á mælingu á magni varma sem binst eða losnar við efnahvarf eða eðlisbreytingu",
+      "chapter": 5,
+      "english": "thermochemistry"
+    },
+    {
+      "term": "varmaorka",
+      "definition": "hreyfiorka sem tengist tilviljunarkenndri hreyfingu atóma og sameinda",
+      "chapter": 5,
+      "english": "thermal energy"
+    },
+    {
+      "term": "varmarýmd (C)",
+      "definition": "útþaninn eiginleiki efnis sem táknar magn varma sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvín)",
+      "chapter": 5,
+      "english": "heat capacity (c)"
+    },
+    {
+      "term": "varmi (q)",
+      "definition": "flutningur varmaorku milli tveggja hluta",
+      "chapter": 5,
+      "english": "heat (q)"
+    },
+    {
+      "term": "vatnslausn",
+      "definition": "lausn þar sem vatn er leysirinn",
+      "chapter": 3,
+      "english": "aqueous solution"
+    },
+    {
+      "term": "Veik sýra",
+      "definition": "sýra sem hvarfast aðeins að litlu leyti þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
+      "chapter": 4,
+      "english": "weak acid"
+    },
+    {
+      "term": "Veikur basi",
+      "definition": "basi sem hvarfast aðeins að litlu leyti þegar hann er leystur upp í vatni og myndar hýdroxíðjónir",
+      "chapter": 4,
+      "english": "weak base"
+    },
+    {
+      "term": "vermi (H)",
+      "definition": "summa innri orku kerfis og stærðfræðilegs margfeldis þrýstings þess og rúmmáls",
+      "chapter": 5,
+      "english": "enthalpy (h)"
+    },
+    {
+      "term": "vermibreyting (ΔH)",
+      "definition": "varmi sem losnar eða er tekinn upp af kerfi við stöðugan þrýsting í efna- eða eðlisfræðilegu ferli",
+      "chapter": 5,
+      "english": "enthalpy change (δh)"
+    },
+    {
+      "term": "vinna (w)",
+      "definition": "orkuflutningur vegna breytinga á ytri, stórsæjum breytum eins og þrýstingi og rúmmáli; eða sem veldur því að efni hreyfist gegn andstæðum krafti",
+      "chapter": 5,
+      "english": "work (w)"
+    },
+    {
+      "term": "virkjaður flóki",
+      "definition": "(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf",
+      "chapter": 12,
+      "english": "activated complex"
+    },
+    {
+      "term": "virkjunarorka (Ea)",
+      "definition": "lágmarksorka sem er nauðsynleg til að hvarf geti átt sér stað",
+      "chapter": 12,
+      "english": "activation energy (ea)"
+    },
+    {
+      "term": "víddagreining",
+      "definition": "(einnig þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir",
+      "chapter": 1,
+      "english": "dimensional analysis"
     },
     {
       "term": "vísindaleg aðferð",
       "definition": "uppgötvunarferli sem leiðir frá spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt tilraunakenndri sannprófun á tilgátunni og hvers kyns nauðsynlegri breytingu á kenningunni",
-      "chapter": 1
+      "chapter": 1,
+      "english": "scientific method"
+    },
+    {
+      "term": "vökvastöðuþrýstingur",
+      "definition": "þrýstingur sem vökvi beitir vegna þyngdarafls",
+      "chapter": 9,
+      "english": "hydrostatic pressure"
     },
     {
       "term": "vökvi",
-      "definition": "ástand efnis sem hefur ákveðið rúmmál en óákveðna lögun",
-      "chapter": 1
+      "definition": "efnishamur sem hefur ákveðið rúmmál en óákveðna lögun",
+      "chapter": 1,
+      "english": "liquid"
+    },
+    {
+      "term": "þensluvinna\n(þrýstings-rúmmálsvinna)",
+      "definition": "vinna sem er unnin þegar kerfi þenst út eða dregst saman gegn ytri þrýstingi",
+      "chapter": 5,
+      "english": "expansion work (pressure-volume work)"
+    },
+    {
+      "term": "þrísameindahvarf",
+      "definition": "grunnskrefshvarf sem felur í sér þrjár hvarfefnaeindir",
+      "chapter": 12,
+      "english": "termolecular reaction"
+    },
+    {
+      "term": "þrýstimælir",
+      "definition": "tæki sem notað er til að mæla þrýsting gass sem er lokað inni í íláti",
+      "chapter": 9,
+      "english": "manometer"
+    },
+    {
+      "term": "þrýstingur",
+      "definition": "kraftur sem beitt er á flatareiningu",
+      "chapter": 9,
+      "english": "pressure"
     },
     {
       "term": "þyngd",
       "definition": "kraftur sem þyngdarafl beitir á hlut",
-      "chapter": 1
+      "chapter": 1,
+      "english": "weight"
+    },
+    {
+      "term": "þyngdarmælingagreining",
+      "definition": "magnbundin efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni með eðlisfræðilegu eða efnafræðilegu ferli og síðan massamælingar á greiningarefninu, myndefninu og/eða sýninu",
+      "chapter": 4,
+      "english": "gravimetric analysis"
+    },
+    {
+      "term": "þynning",
+      "definition": "ferli þar sem leysi er bætt við lausn til að minnka styrk uppleystra efna",
+      "chapter": 3,
+      "english": "dilution"
+    },
+    {
+      "term": "þynnt",
+      "definition": "þáttbundið hugtak yfir lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk",
+      "chapter": 3,
+      "english": "dilute"
     }
   ]
 }
