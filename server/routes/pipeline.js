@@ -203,7 +203,7 @@ router.get('/jobs', (req, res) => {
     chapter: chapter ? parseInt(chapter, 10) : undefined,
     type,
     status,
-    limit: limit ? parseInt(limit, 10) : 20,
+    limit: Math.min(parseInt(limit, 10) || 20, 200),
   });
 
   res.json({ jobs: jobsList });

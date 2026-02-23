@@ -28,8 +28,8 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
       book: book || null,
       type: type || null,
       userId: user || null,
-      limit: parseInt(limit, 10) || 50,
-      offset: parseInt(offset, 10) || 0,
+      limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
+      offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
 
     res.json(result);
@@ -50,7 +50,7 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getRecent(parseInt(limit, 10) || 50);
+    const activities = activityLog.getRecent(Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ activities });
   } catch (err) {
     console.error('Error getting recent activity:', err);
@@ -70,7 +70,7 @@ router.get('/user/:userId', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getByUser(userId, parseInt(limit, 10) || 50);
+    const activities = activityLog.getByUser(userId, Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ userId, activities });
   } catch (err) {
     console.error('Error getting user activity:', err);
@@ -90,7 +90,7 @@ router.get('/book/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getByBook(book, parseInt(limit, 10) || 50);
+    const activities = activityLog.getByBook(book, Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ book, activities });
   } catch (err) {
     console.error('Error getting book activity:', err);
@@ -110,7 +110,12 @@ router.get('/section/:book/:chapter/:section', requireAuth, (req, res) => {
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getBySection(book, chapter, section, parseInt(limit, 10) || 50);
+    const activities = activityLog.getBySection(
+      book,
+      chapter,
+      section,
+      Math.min(parseInt(limit, 10) || 50, 200)
+    );
     res.json({ book, chapter, section, activities });
   } catch (err) {
     console.error('Error getting section activity:', err);
@@ -129,7 +134,7 @@ router.get('/my', requireAuth, (req, res) => {
   const { limit } = req.query;
 
   try {
-    const activities = activityLog.getByUser(req.user.id, parseInt(limit, 10) || 50);
+    const activities = activityLog.getByUser(req.user.id, Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ activities });
   } catch (err) {
     console.error('Error getting my activity:', err);

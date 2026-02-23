@@ -47,7 +47,7 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
   const { limit = 100 } = req.query;
 
   try {
-    const events = analyticsService.getRecentEvents(parseInt(limit, 10));
+    const events = analyticsService.getRecentEvents(Math.min(parseInt(limit, 10) || 100, 200));
     res.json({ events });
   } catch (err) {
     console.error('Error getting recent events:', err);

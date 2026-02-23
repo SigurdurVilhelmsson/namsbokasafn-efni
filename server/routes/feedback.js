@@ -129,8 +129,8 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
       type: type || null,
       book: book || null,
       priority: priority || null,
-      limit: parseInt(limit, 10),
-      offset: parseInt(offset, 10),
+      limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
+      offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
 
     res.json(result);
@@ -168,7 +168,7 @@ router.get('/open', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { limit = 100 } = req.query;
 
   try {
-    const items = feedbackService.getOpenFeedback(parseInt(limit, 10));
+    const items = feedbackService.getOpenFeedback(Math.min(parseInt(limit, 10) || 100, 200));
     res.json({ items, count: items.length });
   } catch (err) {
     console.error('Error getting open feedback:', err);

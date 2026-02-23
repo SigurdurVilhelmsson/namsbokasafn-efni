@@ -399,6 +399,7 @@
           })
         });
 
+        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
         const data = await res.json();
 
         if (data.success) {

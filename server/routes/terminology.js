@@ -59,8 +59,8 @@ router.get('/', requireAuth, (req, res) => {
       bookId: bookId ? parseInt(bookId, 10) : undefined,
       category,
       status,
-      limit: limit ? parseInt(limit, 10) : 50,
-      offset: offset ? parseInt(offset, 10) : 0,
+      limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
+      offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
 
     res.json(result);
@@ -129,8 +129,8 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
   try {
     const terms = terminology.getReviewQueue({
       bookId: bookId ? parseInt(bookId, 10) : undefined,
-      limit: limit ? parseInt(limit, 10) : 50,
-      offset: offset ? parseInt(offset, 10) : 0,
+      limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
+      offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
 
     res.json({ terms });

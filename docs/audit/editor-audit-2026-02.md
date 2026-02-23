@@ -1,6 +1,6 @@
 # Editor Interface Audit Report
 
-**Date:** 2026-02-22 (Iteration 1), 2026-02-23 (Iteration 2)
+**Date:** 2026-02-22 (Iteration 1), 2026-02-23 (Iterations 2-3)
 **Scope:** 11 view files in `server/views/`, layout.js, htmlUtils.js, all route + middleware files
 **Method:** Automated code analysis + manual cross-referencing
 
@@ -190,6 +190,56 @@ All user-supplied data (names, segment text, terminology) is escaped via `escape
 All sensitive API routes are protected by `requireAuth` + `requireRole()` / `requireAdmin()` middleware. View routes serve static HTML (no server-side auth), with auth handled client-side via `/api/auth/me`.
 
 ---
+
+---
+
+## Iteration 3 — 2026-02-23
+
+Third pass focused on systemic patterns across all routes and views. Three parallel exploration agents analyzed routes/middleware, client-side views, and public JS/config respectively.
+
+### Summary
+
+| Category | Issues Found | High | Moderate | Low |
+|----------|-------------|------|----------|-----|
+| Error handling (systemic) | 1 | 0 | 1 | 0 |
+| Input validation | 1 | 0 | 1 | 0 |
+| **Total** | **2** | **0** | **2** | **0** |
+
+### ISSUE-15: Missing `res.ok` check in feedback.html — FIXED
+
+- **Severity:** MODERATE
+- **Location:** `server/views/feedback.html:402`
+- **Bug:** POST feedback submission calls `.json()` without checking `res.ok`
+- **Fix:** Added `if (!res.ok) throw new Error('Villa: HTTP ' + res.status)`
+
+### ISSUE-16: Unbounded `limit` query parameter in multiple routes — FIXED
+
+- **Severity:** MODERATE
+- **Pattern:** User-supplied `limit` parameter passed to SQL `LIMIT ?` without cap
+- **Impact:** `?limit=999999999` could force large result sets, consuming server memory
+- **Locations fixed (all capped at 200):**
+  - `routes/terminology.js` — `searchTerms()`, `getReviewQueue()`
+  - `routes/activity.js` — `search()`, `getRecent()`, `getByUser()`, `getByBook()`, `getBySection()`, `my`
+  - `routes/feedback.js` — `searchFeedback()`, `getOpenFeedback()`
+  - `routes/analytics.js` — `getRecentEvents()`
+  - `routes/pipeline.js` — `listJobs()`
+- **Already capped:** `routes/status.js` (200), `routes/notifications.js` (100)
+
+### Systemic Pattern: 74 unguarded `.json()` calls
+
+A deep scan found ~74 fetch calls across all views that call `.json()` without checking `res.ok` first. Of these, iterations 2 and 3 fixed the highest-risk locations (user-facing endpoints, POST operations). The remaining ~70 are in admin-only pages where:
+- All pages are behind authentication
+- All fetches are in try/catch blocks (JSON parse errors are caught)
+- Express error handlers return JSON (so `.json()` succeeds even on errors)
+
+**Recommendation:** Add a `fetchJson()` helper to `htmlUtils.js` for incremental adoption by views.
+
+### Discarded False Positives
+
+| Agent claim | Why not an issue |
+|---|---|
+| CORS origin regex bypass | Regex `/^https:\/\/[\w-]+\.namsbokasafn\.is$/` only matches subdomains of `namsbokasafn.is` — requires DNS ownership to exploit |
+| Unvalidated `book` in segment editor reviews | Service uses parameterized queries; returns empty result for invalid book |
 
 ---
 
