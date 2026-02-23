@@ -1,7 +1,7 @@
 # Editor Interface Audit Report
 
-**Date:** 2026-02-22
-**Scope:** 11 view files in `server/views/`, layout.js, htmlUtils.js, all route files
+**Date:** 2026-02-22 (Iteration 1), 2026-02-23 (Iteration 2)
+**Scope:** 11 view files in `server/views/`, layout.js, htmlUtils.js, all route + middleware files
 **Method:** Automated code analysis + manual cross-referencing
 
 ---
@@ -188,6 +188,91 @@ All user-supplied data (names, segment text, terminology) is escaped via `escape
 ### Server-Side Auth (Passed)
 
 All sensitive API routes are protected by `requireAuth` + `requireRole()` / `requireAdmin()` middleware. View routes serve static HTML (no server-side auth), with auth handled client-side via `/api/auth/me`.
+
+---
+
+---
+
+## Iteration 2 — 2026-02-23
+
+Re-audit of entire `server/` codebase with broader scope covering error handling, input validation, accessibility, and race conditions. Three parallel exploration agents analyzed the codebase; findings verified against actual code with false positives discarded.
+
+### Summary
+
+| Category | Issues Found | High | Moderate | Low |
+|----------|-------------|------|----------|-----|
+| Null safety | 1 | 1 | 0 | 0 |
+| Error handling | 1 | 1 | 0 | 0 |
+| Auth/config | 1 | 0 | 1 | 0 |
+| Input validation | 1 | 0 | 1 | 0 |
+| XSS | 1 | 0 | 1 | 0 |
+| Race condition | 1 | 0 | 0 | 1 |
+| Accessibility | 1 | 0 | 0 | 1 |
+| **Total** | **7** | **2** | **3** | **2** |
+
+### ISSUE-8: Null crash in terminology search — FIXED
+
+- **Severity:** HIGH
+- **Location:** `server/views/terminology.html:957`
+- **Bug:** `data.terms.length === 0` crashes if `data.terms` is `undefined` or `null`
+- **Fix:** Added guard: `if (!data.terms || data.terms.length === 0)` and `res.ok` check
+
+### ISSUE-9: Missing `res.ok` checks before `.json()` — FIXED
+
+- **Severity:** HIGH
+- **Pattern:** `const data = await res.json()` without first checking `res.ok`
+- **Impact:** If API returns 4xx/5xx, response body may lack expected structure, causing crashes
+- **Locations fixed:**
+  - `reviews.html` — `loadReviews()` and `openReview()`
+  - `segment-editor.html` — chapter loading
+  - `terminology.html` — `loadTerms()`
+- **Fix:** Added `if (!res.ok) throw new Error('Villa: HTTP ' + res.status)` before `.json()` calls
+
+### ISSUE-10: Rate limiter checks wrong cookie name — FIXED
+
+- **Severity:** MODERATE
+- **Location:** `server/index.js:118`
+- **Bug:** Rate limit skip checks `req.cookies.token` but auth cookie is named `auth_token`
+- **Impact:** Skip never triggers — all users rate-limited, even authenticated ones
+- **Fix:** Changed to `req.cookies.auth_token`
+
+### ISSUE-11: No role validation on admin user update — FIXED
+
+- **Severity:** MODERATE
+- **Location:** `server/routes/admin.js:612`
+- **Bug:** `PUT /api/admin/users/:id` accepts any string as `role` without validation
+- **Fix:** Added validation against `ROLES` constant (already imported via `requireRole`)
+
+### ISSUE-12: Unescaped `err.message` in segment-editor — FIXED
+
+- **Severity:** MODERATE
+- **Location:** `server/views/segment-editor.html:1167`
+- **Bug:** Error message inserted via template literal into `innerHTML` without escaping
+- **Fix:** Wrapped with `escapeHtml()` (already available via htmlUtils.js)
+
+### ISSUE-13: Race condition in term data loading — FIXED
+
+- **Severity:** LOW
+- **Location:** `server/views/segment-editor.html:1198`
+- **Bug:** Rapid module switching could cause stale term data to overwrite current module
+- **Fix:** Capture `currentModuleId` at call time, check it hasn't changed after each `await`
+
+### ISSUE-14: Term cards not keyboard-accessible — FIXED
+
+- **Severity:** LOW
+- **Location:** `server/views/terminology.html:968`
+- **Bug:** `<div onclick="...">` not focusable or announced as interactive
+- **Fix:** Added `tabindex="0" role="button" onkeydown="if(event.key==='Enter')..."`
+
+### Discarded False Positives
+
+| Agent claim | Why not an issue |
+|---|---|
+| SQL injection in terminologyService.js:373 | Column names validated against hardcoded `allowedFields` whitelist |
+| Missing Helmet headers (X-Frame-Options, HSTS, noSniff) | Helmet v8 enables these by default; only CSP is explicitly configured |
+| Multer filename path traversal via `id` param | `id` is a database image ID; `book`/`chapter` validated via router.param + range check |
+| IDOR in session routes | Ownership checks exist on all session endpoints |
+| Missing graceful shutdown handlers | Operational concern, not a bug; runs behind nginx + systemd |
 
 ---
 

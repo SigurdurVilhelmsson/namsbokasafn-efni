@@ -952,9 +952,10 @@
 
       try {
         const res = await fetch('/api/terminology?' + params);
+        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
         const data = await res.json();
 
-        if (data.terms.length === 0) {
+        if (!data.terms || data.terms.length === 0) {
           tbody.innerHTML = '<div class="terms-state">Engin or\u00F0 fundust.</div>';
           document.getElementById('results-title').textContent = 'Engin ni\u00F0urst\u00F6\u00F0ur';
           document.getElementById('pagination').innerHTML = '';
@@ -965,7 +966,7 @@
           'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' or\u00F0)';
 
         tbody.innerHTML = data.terms.map(term => `
-          <div class="term-card" onclick="showTermDetail(${term.id})">
+          <div class="term-card" tabindex="0" role="button" onclick="showTermDetail(${term.id})" onkeydown="if(event.key==='Enter')showTermDetail(${term.id})">
             <span class="term-en">${escapeHtml(term.english)}</span>
             <span class="term-is">${escapeHtml(term.icelandic)}</span>
             <span class="term-category">${formatCategory(term.category)}</span>

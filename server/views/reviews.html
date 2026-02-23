@@ -790,6 +790,7 @@
       try {
         var url = book ? '/api/reviews?book=' + book : '/api/reviews';
         var res = await fetch(url);
+        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
         var data = await res.json();
 
         // Update SLA summary
@@ -1043,6 +1044,7 @@
 
       try {
         var res = await fetch('/api/reviews/' + id);
+        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
         var review = await res.json();
         currentReview = review;
 

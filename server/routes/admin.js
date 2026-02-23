@@ -608,6 +608,14 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       });
     }
 
+    const VALID_ROLES = Object.values(ROLES);
+    if (role !== undefined && !VALID_ROLES.includes(role)) {
+      return res.status(400).json({
+        error: 'Invalid role',
+        message: 'Role must be one of: ' + VALID_ROLES.join(', '),
+      });
+    }
+
     const updates = {};
     if (role !== undefined) updates.role = role;
     if (isActive !== undefined) updates.isActive = isActive;

@@ -115,7 +115,7 @@ const generalLimiter = rateLimit({
   legacyHeaders: false,
   skip: (req) => {
     // Skip rate limiting for authenticated users (they have a valid JWT cookie)
-    return Boolean(req.cookies && req.cookies.token);
+    return Boolean(req.cookies && req.cookies.auth_token);
   },
   message: {
     error: 'Too many requests',
