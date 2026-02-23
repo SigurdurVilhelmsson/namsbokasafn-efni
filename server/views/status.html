@@ -1591,14 +1591,13 @@
 
     async function loadDashboard() {
       try {
-        const [dashRes, analyticsRes, bookRes] = await Promise.all([
-          fetch(API_BASE + '/dashboard'),
-          fetch(API_BASE + '/analytics'),
-          fetch(API_BASE + '/' + BOOK)
+        const [dashResult, analyticsResult, bookStatus] = await Promise.all([
+          fetchJson(API_BASE + '/dashboard'),
+          fetchJson(API_BASE + '/analytics'),
+          fetchJson(API_BASE + '/' + BOOK)
         ]);
-        dashboardData = await dashRes.json();
-        analyticsData = await analyticsRes.json();
-        const bookStatus = await bookRes.json();
+        dashboardData = dashResult;
+        analyticsData = analyticsResult;
         const chapters = bookStatus.chapters || [];
 
         // Attention stats
@@ -1890,8 +1889,7 @@
       const container = document.getElementById('disputed-terms-content');
 
       try {
-        const res = await fetch('/api/terminology/review-queue?limit=5');
-        const data = await res.json();
+        const data = await fetchJson('/api/terminology/review-queue?limit=5');
 
         if (!data.terms || data.terms.length === 0) {
           container.innerHTML = '<p class="text-success text-center" style="padding:var(--spacing-sm)">Engin hugtök í umræðu!</p>';
@@ -2107,8 +2105,7 @@
       container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
-        const res = await fetch(API_BASE + '/' + book);
-        const data = await res.json();
+        const data = await fetchJson(API_BASE + '/' + book);
 
         let html = '<table class="matrix-table"><thead><tr>';
         html += '<th>Kafli</th>';
@@ -2194,8 +2191,7 @@
       contentEl.innerHTML = '';
 
       try {
-        const res = await fetch(API_BASE + '/' + book + '/' + chapter + '/sections');
-        const data = await res.json();
+        const data = await fetchJson(API_BASE + '/' + book + '/' + chapter + '/sections');
 
         loadingEl.style.display = 'none';
 
@@ -2255,8 +2251,7 @@
 
     async function loadActivityTypes() {
       try {
-        const res = await fetch(API_BASE + '/activity/types');
-        const data = await res.json();
+        const data = await fetchJson(API_BASE + '/activity/types');
 
         const select = document.getElementById('timeline-type-filter');
         const firstOption = select.options[0];
@@ -2291,8 +2286,7 @@
         if (book) params.set('book', book);
         if (type) params.set('type', type);
 
-        const res = await fetch(API_BASE + '/activity/timeline?' + params);
-        const data = await res.json();
+        const data = await fetchJson(API_BASE + '/activity/timeline?' + params);
 
         timelineTotal = data.total;
 
@@ -2378,7 +2372,7 @@
       }
 
       try {
-        const res = await fetch('/api/workflow/assignments', {
+        const data = await fetchJson('/api/workflow/assignments', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -2390,8 +2384,6 @@
             notes: notes || undefined
           })
         });
-
-        const data = await res.json();
 
         if (data.success) {
           alert('Verkefni úthlutað!');
@@ -2417,8 +2409,7 @@
       modal.style.display = 'flex';
 
       try {
-        const res = await fetch(API_BASE + '/meeting-agenda');
-        currentAgenda = await res.json();
+        currentAgenda = await fetchJson(API_BASE + '/meeting-agenda');
 
         let html = '<div class="agenda">';
 
@@ -2528,8 +2519,7 @@
 
       try {
         const book = document.getElementById('book-select')?.value || 'efnafraedi';
-        const res = await fetch(API_BASE + '/' + book + '/scan');
-        const data = await res.json();
+        const data = await fetchJson(API_BASE + '/' + book + '/scan');
 
         if (!data.chapters || data.chapters.length === 0) {
           content.innerHTML = '<p>Engir kaflar fundust.</p>';
@@ -2575,13 +2565,7 @@
 
       try {
         const book = document.getElementById('book-select')?.value || 'efnafraedi';
-        const res = await fetch(API_BASE + '/' + book + '/sync', { method: 'POST' });
-        const data = await res.json();
-
-        if (!res.ok) {
-          content.innerHTML = '<p style="color:var(--error)">Villa: ' + (data.message || data.error) + '</p>';
-          return;
-        }
+        const data = await fetchJson(API_BASE + '/' + book + '/sync', { method: 'POST' });
 
         content.innerHTML =
           '<p style="color:var(--success)">Samstilling lokið.</p>' +

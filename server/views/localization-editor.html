@@ -1265,10 +1265,9 @@
       document.getElementById('modules-list').style.display = 'block';
 
       try {
-        var res = await fetch(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter, {
+        var data = await fetchJson(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter, {
           credentials: 'include',
         });
-        var data = await res.json();
 
         if (!data.modules || data.modules.length === 0) {
           container.innerHTML = '<p class="placeholder-text">Engar einingar fundust.</p>';
@@ -1305,11 +1304,9 @@
       edPendingChanges = {};
 
       try {
-        var res = await fetch(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId, {
+        edModuleData = await fetchJson(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId, {
           credentials: 'include',
         });
-        if (!res.ok) throw new Error((await res.json()).error || 'Failed to load');
-        edModuleData = await res.json();
 
         document.getElementById('module-selector').style.display = 'none';
         document.getElementById('editor-container').style.display = 'block';
@@ -1497,7 +1494,7 @@
       ind.className = 'save-indicator saving';
 
       try {
-        var res = await fetch(
+        await fetchJson(
           ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save',
           {
             method: 'POST',
@@ -1506,11 +1503,6 @@
             body: JSON.stringify({ segmentId: segmentId, content: content }),
           }
         );
-
-        if (!res.ok) {
-          var err = await res.json();
-          throw new Error(err.error || 'Failed to save');
-        }
 
         // Update local state
         var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
@@ -1557,7 +1549,7 @@
       });
 
       try {
-        var res = await fetch(
+        var result = await fetchJson(
           ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save-all',
           {
             method: 'POST',
@@ -1566,13 +1558,6 @@
             body: JSON.stringify({ segments: segments }),
           }
         );
-
-        if (!res.ok) {
-          var err = await res.json();
-          throw new Error(err.error || 'Failed to save');
-        }
-
-        var result = await res.json();
 
         // Update local state for all saved segments
         for (var i = 0; i < keys.length; i++) {
@@ -1714,8 +1699,7 @@
 
     async function rvLoadBooks() {
       try {
-        var res = await fetch('/api/admin/books');
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/books');
         var select = document.getElementById('rv-book-select');
 
         data.books.forEach(function (book) {
@@ -1733,8 +1717,7 @@
       rvResetSelectors(['rv-section-select']);
 
       try {
-        var res = await fetch('/api/books/' + bookSlug);
-        var data = await res.json();
+        var data = await fetchJson('/api/books/' + bookSlug);
 
         select.innerHTML = '<option value="">Veldu kafla...</option>';
         data.chapters.forEach(function (ch) {
@@ -1752,8 +1735,7 @@
       select.disabled = true;
 
       try {
-        var res = await fetch('/api/sections/' + bookSlug + '/' + chapterNum);
-        var data = await res.json();
+        var data = await fetchJson('/api/sections/' + bookSlug + '/' + chapterNum);
 
         select.innerHTML = '<option value="">Veldu hluta...</option>';
         data.sections.forEach(function (sec) {
@@ -1799,8 +1781,7 @@
       document.getElementById('rv-review-interface').style.display = 'block';
 
       try {
-        var sectionRes = await fetch('/api/localization/' + sectionId);
-        var sectionData = await sectionRes.json();
+        var sectionData = await fetchJson('/api/localization/' + sectionId);
 
         document.getElementById('rv-section-title').textContent =
           sectionData.section.sectionNum + ' - ' + (sectionData.section.titleEn || 'Hluti');
@@ -1822,8 +1803,7 @@
       var faithfulEl = document.getElementById('rv-faithful-content');
 
       try {
-        var res = await fetch('/api/editor/' + section.bookSlug + '/' + section.chapterNum + '/' + section.sectionNum);
-        var data = await res.json();
+        var data = await fetchJson('/api/editor/' + section.bookSlug + '/' + section.chapterNum + '/' + section.sectionNum);
 
         if (data.content && data.content.is) {
           faithfulEl.innerHTML = rvFormatMarkdownPreview(data.content.is);
@@ -1844,8 +1824,7 @@
 
     async function rvLoadSuggestions() {
       try {
-        var res = await fetch('/api/suggestions/' + rvCurrentSectionId);
-        var data = await res.json();
+        var data = await fetchJson('/api/suggestions/' + rvCurrentSectionId);
 
         rvCurrentSuggestions = data.suggestions || [];
         rvUpdateStats(data.stats);
@@ -1934,8 +1913,7 @@
       btn.innerHTML = '<span class="spinner"></span> Skannar...';
 
       try {
-        var res = await fetch('/api/suggestions/scan/' + rvCurrentSectionId, { method: 'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/suggestions/scan/' + rvCurrentSectionId, { method: 'POST' });
 
         if (data.success) {
           await rvLoadSuggestions();
@@ -1951,8 +1929,7 @@
 
     async function rvAcceptSuggestion(id) {
       try {
-        var res = await fetch('/api/suggestions/' + id + '/accept', { method: 'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/suggestions/' + id + '/accept', { method: 'POST' });
 
         if (data.success) {
           await rvLoadSuggestions();
@@ -1964,8 +1941,7 @@
 
     async function rvRejectSuggestion(id) {
       try {
-        var res = await fetch('/api/suggestions/' + id + '/reject', { method: 'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/suggestions/' + id + '/reject', { method: 'POST' });
 
         if (data.success) {
           await rvLoadSuggestions();
@@ -1995,13 +1971,11 @@
       }
 
       try {
-        var res = await fetch('/api/suggestions/' + rvEditingSuggestionId + '/modify', {
+        var data = await fetchJson('/api/suggestions/' + rvEditingSuggestionId + '/modify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ modifiedText: modifiedText })
         });
-
-        var data = await res.json();
 
         if (data.success) {
           closeModal('edit-modal');
@@ -2025,13 +1999,11 @@
       if (!confirm('Sam\u00FEykkja ' + pendingIds.length + ' till\u00F6gur?')) return;
 
       try {
-        var res = await fetch('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
+        var data = await fetchJson('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ids: pendingIds, action: 'accept' })
         });
-
-        var data = await res.json();
 
         if (data.success) {
           await rvLoadSuggestions();
@@ -2054,13 +2026,11 @@
       if (!confirm('Hafna ' + pendingIds.length + ' till\u00F6gum?')) return;
 
       try {
-        var res = await fetch('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
+        var data = await fetchJson('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ids: pendingIds, action: 'reject' })
         });
-
-        var data = await res.json();
 
         if (data.success) {
           await rvLoadSuggestions();
@@ -2081,13 +2051,11 @@
       }
 
       try {
-        var res = await fetch('/api/suggestions/' + rvCurrentSectionId + '/sync-log', { method: 'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/suggestions/' + rvCurrentSectionId + '/sync-log', { method: 'POST' });
 
         if (data.success) {
           alert(data.entriesCreated + ' f\u00E6rslur b\u00E6ttar vi\u00F0 skr\u00E1');
-          var sectionRes = await fetch('/api/localization/' + rvCurrentSectionId);
-          var sectionData = await sectionRes.json();
+          var sectionData = await fetchJson('/api/localization/' + rvCurrentSectionId);
           if (sectionData.log && sectionData.log.entries) {
             rvRenderLogEntries(sectionData.log.entries);
           }
@@ -2148,18 +2116,15 @@
       }
 
       try {
-        var res = await fetch('/api/localization/' + rvCurrentSectionId + '/log/add', {
+        var data = await fetchJson('/api/localization/' + rvCurrentSectionId + '/log/add', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(entry)
         });
 
-        var data = await res.json();
-
         if (data.success) {
           closeModal('log-modal');
-          var sectionRes = await fetch('/api/localization/' + rvCurrentSectionId);
-          var sectionData = await sectionRes.json();
+          var sectionData = await fetchJson('/api/localization/' + rvCurrentSectionId);
           if (sectionData.log && sectionData.log.entries) {
             rvRenderLogEntries(sectionData.log.entries);
           }

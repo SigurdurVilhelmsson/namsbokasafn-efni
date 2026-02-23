@@ -385,7 +385,7 @@
       submitBtn.innerHTML = '<span class="submit-spinner"></span> Sendir...';
 
       try {
-        const res = await fetch('/api/feedback', {
+        const data = await fetchJson('/api/feedback', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -398,9 +398,6 @@
             userEmail: document.getElementById('userEmail').value || null
           })
         });
-
-        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
-        const data = await res.json();
 
         if (data.success) {
           // Show success message

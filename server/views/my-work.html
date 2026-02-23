@@ -1222,8 +1222,7 @@
 
     async function loadTodayView(user) {
       try {
-        const res = await fetch('/api/my-work/today');
-        todayData = await res.json();
+        todayData = await fetchJson('/api/my-work/today');
 
         // Update greeting
         const hour = new Date().getHours();
@@ -1474,8 +1473,7 @@
       }
 
       try {
-        var res = await fetch('/api/my-work');
-        detailedData = await res.json();
+        detailedData = await fetchJson('/api/my-work');
         renderDetailedView();
       } catch (err) {
         console.error('Failed to load detailed view:', err);
@@ -1610,9 +1608,7 @@
 
     async function loadAdminData() {
       try {
-        var response = await fetch('/api/status/dashboard');
-        if (!response.ok) throw new Error('Failed to load dashboard');
-        var data = await response.json();
+        var data = await fetchJson('/api/status/dashboard');
 
         renderAttentionPanel(data.needsAttention, data.overdueItems);
         renderWorkload(data.workload);
@@ -1919,8 +1915,7 @@
       list.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
 
       try {
-        var res = await fetch('/api/notifications/preferences');
-        var data = await res.json();
+        var data = await fetchJson('/api/notifications/preferences');
         notificationPreferences = data.preferences;
 
         list.innerHTML = Object.entries(data.categories).map(function(entry) {
@@ -1967,13 +1962,11 @@
       });
 
       try {
-        var res = await fetch('/api/notifications/preferences', {
+        var data = await fetchJson('/api/notifications/preferences', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(preferences)
         });
-
-        var data = await res.json();
 
         if (data.success) {
           notificationPreferences = data.preferences;

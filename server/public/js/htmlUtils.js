@@ -23,6 +23,30 @@ function escapeHtml(text) {
 }
 
 /**
+ * Fetch JSON with automatic res.ok check.
+ * On success: returns parsed JSON.
+ * On error: throws Error with server message or HTTP status.
+ * @param {string} url - URL to fetch
+ * @param {RequestInit} [options] - fetch options (method, headers, body, etc.)
+ * @returns {Promise<any>} Parsed JSON response
+ */
+// eslint-disable-next-line no-unused-vars
+async function fetchJson(url, options) {
+  const res = await fetch(url, options);
+  if (!res.ok) {
+    let msg = 'Villa: HTTP ' + res.status;
+    try {
+      const data = await res.json();
+      msg = data.error || data.message || msg;
+    } catch {
+      /* non-JSON error body */
+    }
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
+/**
  * Global 401 interceptor.
  *
  * Wraps window.fetch so that any API response with status 401
@@ -47,8 +71,7 @@ function escapeHtml(text) {
         // Clear stale auth cache so layout.js doesn't use old data
         try {
           sessionStorage.removeItem('authCache');
-        } catch (e) {
-          // eslint-disable-line no-unused-vars
+        } catch {
           /* sessionStorage may be unavailable */
         }
 

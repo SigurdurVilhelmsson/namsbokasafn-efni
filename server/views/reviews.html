@@ -789,9 +789,7 @@
 
       try {
         var url = book ? '/api/reviews?book=' + book : '/api/reviews';
-        var res = await fetch(url);
-        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
-        var data = await res.json();
+        var data = await fetchJson(url);
 
         // Update SLA summary
         updateSLASummary(data.slaStats);
@@ -875,11 +873,7 @@
       container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hle\u00F0ur...</span></div>';
 
       try {
-        var res = await fetch('/api/segment-editor/review-queue?book=' + encodeURIComponent(book));
-        if (!res.ok) {
-          throw new Error('\u00DEj\u00F3nn svara\u00F0i me\u00F0 st\u00F6\u00F0u ' + res.status);
-        }
-        var data = await res.json();
+        var data = await fetchJson('/api/segment-editor/review-queue?book=' + encodeURIComponent(book));
 
         if (!data.reviews || data.reviews.length === 0) {
           container.innerHTML = '<div class="empty-state"><p>Engar yfirfer\u00F0ir \u00ED bi\u00F0</p></div>';
@@ -1027,8 +1021,7 @@
 
     async function updateBadge() {
       try {
-        var res = await fetch('/api/reviews/count');
-        var data = await res.json();
+        var data = await fetchJson('/api/reviews/count');
         // Badge is handled by layout.js notification bell if needed
       } catch (err) {
         // Ignore badge errors
@@ -1043,9 +1036,7 @@
       currentReviewId = id;
 
       try {
-        var res = await fetch('/api/reviews/' + id);
-        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
-        var review = await res.json();
+        var review = await fetchJson('/api/reviews/' + id);
         currentReview = review;
 
         // Set modal content
@@ -1196,12 +1187,11 @@
       btn.innerHTML = '<span class="spinner spinner-sm"></span> Vinnur...';
 
       try {
-        var res = await fetch('/api/reviews/' + currentReviewId + '/approve', {
+        var data = await fetchJson('/api/reviews/' + currentReviewId + '/approve', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ commit: commit })
         });
-        var data = await res.json();
 
         if (data.success) {
           var msg = '\u00DE\u00FD\u00F0ing sam\u00FEykkt!';
@@ -1237,12 +1227,11 @@
       btn.disabled = true;
 
       try {
-        var res = await fetch('/api/reviews/' + currentReviewId + '/changes', {
+        var data = await fetchJson('/api/reviews/' + currentReviewId + '/changes', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ notes: notes })
         });
-        var data = await res.json();
 
         if (data.success) {
           alert('Athugasemdir sendar til ritstj\u00F3ra.');
@@ -1333,7 +1322,7 @@
 
       try {
         var reviewIds = Array.from(selectedReviews);
-        var res = await fetch('/api/reviews/bulk/approve', {
+        var data = await fetchJson('/api/reviews/bulk/approve', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1341,8 +1330,6 @@
             commit: false
           })
         });
-
-        var data = await res.json();
 
         // Show results
         var message = 'Sam\u00FEykkt: ' + data.summary.approved;

@@ -631,22 +631,23 @@
 
     async function usersLoadUsers() {
       try {
-        var res = await fetch('/api/admin/users');
-        var data = await res.json();
-        if (res.status === 503) {
-          document.getElementById('users-migration').style.display = 'block';
-          return;
-        }
+        var data = await fetchJson('/api/admin/users');
         usersData = data.users;
         document.getElementById('users-content').style.display = 'block';
         usersRenderUsers();
-      } catch(e) { console.error('Failed to load users:', e); }
+      } catch(e) {
+        if (e.message && e.message.indexOf('503') !== -1) {
+          document.getElementById('users-migration').style.display = 'block';
+          return;
+        }
+        console.error('Failed to load users:', e);
+      }
     }
 
     async function usersLoadBooks() {
       try {
-        var res = await fetch('/api/admin/books');
-        if (res.ok) { var data = await res.json(); userBooks = data.books || []; }
+        var data = await fetchJson('/api/admin/books');
+        userBooks = data.books || [];
       } catch(e) {}
     }
 
@@ -693,20 +694,13 @@
       clearTimeout(previewTimeout);
       previewTimeout = setTimeout(async function() {
         try {
-          var res = await fetch('https://api.github.com/users/' + username);
-          if (res.ok) {
-            var user = await res.json();
-            preview.innerHTML = '<div class="github-preview"><img src="' + escapeHtml(user.avatar_url || '') + '" alt=""><div><h4 style="margin:0;font-size:1rem">' + escapeHtml(user.name || user.login) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.875rem">@' + escapeHtml(user.login) + '</p></div></div>';
-            preview.style.display = 'block';
-            preview.dataset.user = JSON.stringify(user);
-            addBtn.disabled = false;
-          } else {
-            preview.innerHTML = '<p class="text-error">Notandi fannst ekki \u00e1 GitHub</p>';
-            preview.style.display = 'block';
-            addBtn.disabled = true;
-          }
+          var user = await fetchJson('https://api.github.com/users/' + username);
+          preview.innerHTML = '<div class="github-preview"><img src="' + escapeHtml(user.avatar_url || '') + '" alt=""><div><h4 style="margin:0;font-size:1rem">' + escapeHtml(user.name || user.login) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.875rem">@' + escapeHtml(user.login) + '</p></div></div>';
+          preview.style.display = 'block';
+          preview.dataset.user = JSON.stringify(user);
+          addBtn.disabled = false;
         } catch(e) {
-          preview.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 s\u00e6kja notanda</p>';
+          preview.innerHTML = '<p class="text-error">Notandi fannst ekki \u00e1 GitHub</p>';
           preview.style.display = 'block';
           addBtn.disabled = true;
         }
@@ -717,11 +711,9 @@
       var username = document.getElementById('add-github-username').value.trim();
       var role = document.getElementById('add-role').value;
       try {
-        var res = await fetch('/api/admin/users', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({githubUsername:username,role:role}) });
-        var data = await res.json();
-        if (res.ok) { usersHideAddModal(); usersLoadUsers(); showToast('Notandi b\u00e6tt vi\u00f0','success'); }
-        else { showToast(data.message || 'Villa','error'); }
-      } catch(e) { showToast('Villa vi\u00f0 a\u00f0 b\u00e6ta vi\u00f0 notanda','error'); }
+        await fetchJson('/api/admin/users', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({githubUsername:username,role:role}) });
+        usersHideAddModal(); usersLoadUsers(); showToast('Notandi b\u00e6tt vi\u00f0','success');
+      } catch(e) { showToast(e.message || 'Villa vi\u00f0 a\u00f0 b\u00e6ta vi\u00f0 notanda','error'); }
     };
 
     window.usersEditUser = function(id) {
@@ -757,16 +749,15 @@
       var role = document.getElementById('new-book-role').value;
       if (!slug) { showToast('Veldu b\u00f3k','error'); return; }
       try {
-        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/books', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:slug,role:role}) });
-        if (res.ok) { var data = await res.json(); currentEditUser = data.user; document.getElementById('book-access-list').innerHTML = usersRenderBookAccess(currentEditUser); document.getElementById('add-book-access-form').style.display = 'none'; document.getElementById('new-book-slug').value = ''; usersLoadUsers(); showToast('B\u00f3kaheimild b\u00e6tt vi\u00f0','success'); }
-        else { showToast('Villa','error'); }
+        var data = await fetchJson('/api/admin/users/' + currentEditUser.id + '/books', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:slug,role:role}) });
+        currentEditUser = data.user; document.getElementById('book-access-list').innerHTML = usersRenderBookAccess(currentEditUser); document.getElementById('add-book-access-form').style.display = 'none'; document.getElementById('new-book-slug').value = ''; usersLoadUsers(); showToast('B\u00f3kaheimild b\u00e6tt vi\u00f0','success');
       } catch(e) { showToast('Villa','error'); }
     };
 
     window.usersRemoveBookAccess = async function(bookSlug) {
       try {
-        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/books/' + bookSlug, { method:'DELETE' });
-        if (res.ok) { var data = await res.json(); currentEditUser = data.user; document.getElementById('book-access-list').innerHTML = usersRenderBookAccess(currentEditUser); usersLoadUsers(); showToast('B\u00f3kaheimild fjarl\u00e6g\u00f0','success'); }
+        var data = await fetchJson('/api/admin/users/' + currentEditUser.id + '/books/' + bookSlug, { method:'DELETE' });
+        currentEditUser = data.user; document.getElementById('book-access-list').innerHTML = usersRenderBookAccess(currentEditUser); usersLoadUsers(); showToast('B\u00f3kaheimild fjarl\u00e6g\u00f0','success');
       } catch(e) { showToast('Villa','error'); }
     };
 
@@ -775,8 +766,7 @@
       var container = document.getElementById('chapter-assignments');
       if (!container) return;
       try {
-        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters');
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/users/' + currentEditUser.id + '/chapters');
         if (!data.assignments || data.assignments.length === 0) { container.innerHTML = '<p style="font-size:0.8rem;color:var(--text-muted);font-style:italic">Engir kaflar \u00fathluta\u00f0ir \u2014 a\u00f0gangur a\u00f0 \u00f6llum k\u00f6flum.</p>'; return; }
         var byBook = {};
         data.assignments.forEach(function(a) { if (!byBook[a.book_slug]) byBook[a.book_slug] = []; byBook[a.book_slug].push(a.chapter); });
@@ -797,10 +787,9 @@
       if (!bookSlug) { showToast('Veldu b\u00f3k','error'); return; }
       if (!chapter || chapter < 1) { showToast('Sl\u00e1\u00f0u inn kaflan\u00famer','error'); return; }
       try {
-        var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
-        if (res.ok) { document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('Kafli ' + chapter + ' \u00fathluta\u00f0ur','success'); }
-        else { var d = await res.json(); showToast(d.error || 'Villa','error'); }
-      } catch(e) { showToast('Villa vi\u00f0 \u00fathlutun','error'); }
+        await fetchJson('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
+        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('Kafli ' + chapter + ' \u00fathluta\u00f0ur','success');
+      } catch(e) { showToast(e.message || 'Villa vi\u00f0 \u00fathlutun','error'); }
     };
 
     window.usersRemoveChapter = async function(book, chapter) {
@@ -822,10 +811,9 @@
       var isActive = document.getElementById('edit-active').value === 'true';
       var displayName = document.getElementById('edit-display-name').value;
       try {
-        var res = await fetch('/api/admin/users/' + currentEditUser.id, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({role:role,isActive:isActive,displayName:displayName}) });
-        if (res.ok) { usersHideEditPanel(); usersLoadUsers(); showToast('Notandi uppf\u00e6r\u00f0ur','success'); }
-        else { var d = await res.json(); showToast(d.message || 'Villa','error'); }
-      } catch(e) { showToast('Villa','error'); }
+        await fetchJson('/api/admin/users/' + currentEditUser.id, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({role:role,isActive:isActive,displayName:displayName}) });
+        usersHideEditPanel(); usersLoadUsers(); showToast('Notandi uppf\u00e6r\u00f0ur','success');
+      } catch(e) { showToast(e.message || 'Villa','error'); }
     };
 
     window.usersConfirmDeactivate = async function(id) {
@@ -841,11 +829,10 @@
 
     window.usersRunMigration = async function() {
       try {
-        var res = await fetch('/api/admin/migrate', { method:'POST' });
-        var data = await res.json();
-        if (res.ok && data.success) { showToast('Flutningur t\u00f3kst','success'); document.getElementById('users-migration').style.display = 'none'; usersLoadUsers(); }
+        var data = await fetchJson('/api/admin/migrate', { method:'POST' });
+        if (data.success) { showToast('Flutningur t\u00f3kst','success'); document.getElementById('users-migration').style.display = 'none'; usersLoadUsers(); }
         else { showToast(data.message || 'Flutningur mist\u00f3kst','error'); }
-      } catch(e) { showToast('Villa vi\u00f0 flutning','error'); }
+      } catch(e) { showToast(e.message || 'Villa vi\u00f0 flutning','error'); }
     };
 
     /* ==================================================================
@@ -869,15 +856,16 @@
 
     async function booksLoadCatalogue() {
       try {
-        var res = await fetch('/api/admin/catalogue');
-        var data = await res.json();
-        if (!res.ok) { if (res.status === 503) { document.getElementById('books-grid').innerHTML = '<div class="empty-state"><p>Gagnagrunnur ekki tilb\u00fainn</p><button class="btn btn-primary" onclick="booksRunMigration()">Keyra uppsetningu</button></div>'; return; } throw new Error(data.message); }
+        var data = await fetchJson('/api/admin/catalogue');
         catalogueData = data.books;
         document.getElementById('books-stat-total').textContent = data.total || 0;
         document.getElementById('books-stat-registered').textContent = data.registered || 0;
         document.getElementById('books-stat-unregistered').textContent = (data.total||0) - (data.registered||0);
         booksRender();
-      } catch(e) { console.error('Load catalogue error:', e); document.getElementById('books-grid').innerHTML = '<div class="empty-state"><p>Villa vi\u00f0 a\u00f0 hla\u00f0a b\u00f3kum</p></div>'; }
+      } catch(e) {
+        if (e.message && e.message.indexOf('503') !== -1) { document.getElementById('books-grid').innerHTML = '<div class="empty-state"><p>Gagnagrunnur ekki tilb\u00fainn</p><button class="btn btn-primary" onclick="booksRunMigration()">Keyra uppsetningu</button></div>'; return; }
+        console.error('Load catalogue error:', e); document.getElementById('books-grid').innerHTML = '<div class="empty-state"><p>Villa vi\u00f0 a\u00f0 hla\u00f0a b\u00f3kum</p></div>';
+      }
     }
 
     function booksRender() {
@@ -897,8 +885,7 @@
       var btn = document.getElementById('books-sync-btn');
       btn.disabled = true; btn.textContent = 'Samstillir...';
       try {
-        var res = await fetch('/api/admin/catalogue/sync', { method:'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/catalogue/sync', { method:'POST' });
         if (data.success) { showToast('Samstilling loki\u00f0: ' + data.message,'success'); booksLoadCatalogue(); }
         else { showToast('Villa: ' + (data.message||data.error),'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
@@ -912,8 +899,7 @@
       document.getElementById('reg-slug').value = '';
       document.getElementById('reg-fetch').checked = true;
       try {
-        var res = await fetch('/api/admin/users');
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/users');
         var sel = document.getElementById('reg-head-editor');
         sel.innerHTML = '<option value="">Velja s\u00ed\u00f0ar...</option>';
         if (data.users) data.users.filter(function(u){return ['admin','head-editor','editor'].indexOf(u.role)!==-1 && u.isActive;}).forEach(function(u){ var opt = document.createElement('option'); opt.value = u.id; opt.textContent = (u.displayName||u.githubUsername) + ' (' + u.role + ')'; sel.appendChild(opt); });
@@ -931,8 +917,7 @@
       if (headEditorId) data.headEditorId = parseInt(headEditorId, 10);
       btn.disabled = true; btn.textContent = 'Skr\u00e1ir...';
       try {
-        var res = await fetch('/api/admin/books/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
-        var result = await res.json();
+        var result = await fetchJson('/api/admin/books/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
         if (result.success) { showToast('B\u00f3k skr\u00e1\u00f0!','success'); booksCloseRegisterModal(); booksLoadCatalogue(); }
         else { showToast('Villa: ' + (result.message||result.error),'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
@@ -960,8 +945,7 @@
       var data = { slug:form.slug.value.trim(), title:form.title.value.trim(), description:form.description.value.trim()||undefined, repoUrl:form.repoUrl.value.trim()||undefined, chapterCount:form.chapterCount.value?parseInt(form.chapterCount.value,10):undefined, hasAppendices:form.hasAppendices.checked };
       btn.disabled = true; btn.textContent = 'B\u00e6tir vi\u00f0...';
       try {
-        var res = await fetch('/api/admin/catalogue/add', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
-        var result = await res.json();
+        var result = await fetchJson('/api/admin/catalogue/add', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
         if (result.success) { showToast('B\u00f3k b\u00e6tt vi\u00f0 lista','success'); booksCloseAddModal(); booksLoadCatalogue(); }
         else { showToast('Villa: ' + (result.message||result.error),'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
@@ -970,8 +954,7 @@
 
     window.booksRunMigration = async function() {
       try {
-        var res = await fetch('/api/admin/migrate', { method:'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/migrate', { method:'POST' });
         if (data.success) { showToast('Uppsetning loki\u00f0!','success'); booksLoadCatalogue(); }
         else { showToast('Villa vi\u00f0 uppsetningu','error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
@@ -980,8 +963,7 @@
     window.booksGenerateData = async function(slug) {
       if (!confirm('Viltu endurgera kaflaskipan fyrir \u00feessa b\u00f3k?')) return;
       try {
-        var res = await fetch('/api/admin/books/' + encodeURIComponent(slug) + '/generate-data?force=true', { method:'POST' });
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/books/' + encodeURIComponent(slug) + '/generate-data?force=true', { method:'POST' });
         if (data.success) { showToast(data.skipped ? 'Kaflaskipan \u00feegar til sta\u00f0ar' : 'Kaflaskipan endurger\u00f0! Kaflar: ' + data.chapters,'success'); }
         else { showToast('Villa: ' + (data.message||data.error),'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
@@ -1009,8 +991,7 @@
 
     async function fbLoadStats() {
       try {
-        var res = await fetch('/api/feedback/stats');
-        var stats = await res.json();
+        var stats = await fetchJson('/api/feedback/stats');
         document.getElementById('fb-stat-open').textContent = stats.open || 0;
         document.getElementById('fb-stat-progress').textContent = stats.inProgress || 0;
         document.getElementById('fb-stat-resolved').textContent = (stats.byStatus && stats.byStatus.resolved) || 0;
@@ -1031,8 +1012,7 @@
         if (priority) params.append('priority', priority);
         params.append('limit', FB_LIMIT);
         params.append('offset', fbCurrentOffset);
-        var res = await fetch('/api/feedback?' + params.toString());
-        var data = await res.json();
+        var data = await fetchJson('/api/feedback?' + params.toString());
         if (data.items.length === 0) { listEl.innerHTML = '<div class="empty-state"><p>Engin endurgj\u00f6f fannst</p></div>'; document.getElementById('fb-pagination').style.display = 'none'; return; }
         listEl.innerHTML = '<div style="overflow-x:auto"><table class="fb-table"><thead><tr><th>#</th><th>Tegund</th><th>Skilabo\u00f0</th><th>Sta\u00f0a</th><th>Forgangur</th><th>Dags</th><th></th></tr></thead><tbody>' +
           data.items.map(function(f) {
@@ -1052,8 +1032,7 @@
 
     window.fbOpenFeedback = async function(id) {
       try {
-        var res = await fetch('/api/feedback/' + id);
-        var fb = await res.json();
+        var fb = await fetchJson('/api/feedback/' + id);
         fbCurrentFeedback = fb;
         document.getElementById('fb-modal-id').textContent = fb.id;
         document.getElementById('fb-detail-type').textContent = fb.typeLabel;
@@ -1109,8 +1088,7 @@
       var isInternal = document.getElementById('fb-response-internal').checked;
       if (!msg) { showToast('Vinsamlegast skrifa\u00f0u svar','error'); return; }
       try {
-        var res = await fetch('/api/feedback/' + fbCurrentFeedback.id + '/respond', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:msg,isInternal:isInternal}) });
-        var data = await res.json();
+        var data = await fetchJson('/api/feedback/' + fbCurrentFeedback.id + '/respond', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:msg,isInternal:isInternal}) });
         if (data.success) { fbOpenFeedback(fbCurrentFeedback.id); } else { showToast('Villa: ' + data.message,'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
     };
@@ -1122,8 +1100,7 @@
       if (!fbCurrentFeedback) return;
       var notes = document.getElementById('fb-resolution-input').value.trim();
       try {
-        var res = await fetch('/api/feedback/' + fbCurrentFeedback.id + '/resolve', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:notes}) });
-        var data = await res.json();
+        var data = await fetchJson('/api/feedback/' + fbCurrentFeedback.id + '/resolve', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:notes}) });
         if (data.success) { fbCloseResolveModal(); fbCloseModal(); fbLoadStats(); fbLoadFeedback(); }
         else { showToast('Villa: ' + data.message,'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
@@ -1148,12 +1125,10 @@
 
     async function anLoadData() {
       try {
-        var [statsRes, recentRes] = await Promise.all([
-          fetch('/api/analytics/stats?period=' + encodeURIComponent(anCurrentPeriod)),
-          fetch('/api/analytics/recent?limit=20')
+        var [stats, recent] = await Promise.all([
+          fetchJson('/api/analytics/stats?period=' + encodeURIComponent(anCurrentPeriod)),
+          fetchJson('/api/analytics/recent?limit=20')
         ]);
-        var stats = await statsRes.json();
-        var recent = await recentRes.json();
         anUpdateStats(stats);
         anUpdatePopular(stats);
         anUpdateActivity(recent.events);

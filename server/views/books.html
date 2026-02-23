@@ -1199,8 +1199,7 @@
       var booksEl = document.getElementById('books-list');
 
       try {
-        var res = await fetch('/api/admin/books');
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/books');
 
         if (!data.books || data.books.length === 0) {
           booksEl.innerHTML =
@@ -1261,8 +1260,7 @@
       chaptersEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hle\u00f0ur...</span></div>';
 
       try {
-        var res = await fetch('/api/admin/books/' + slug);
-        var book = await res.json();
+        var book = await fetchJson('/api/admin/books/' + slug);
 
         titleEl.textContent = book.titleIs;
         document.getElementById('breadcrumb-book').textContent = book.titleIs;
@@ -1367,10 +1365,9 @@
       var panel = document.getElementById('sections-panel');
 
       try {
-        var res = await fetch('/api/admin/books/' + slug + '/chapters/' + chapterNum);
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/books/' + slug + '/chapters/' + chapterNum);
 
-        if (!res.ok || !data.chapter) {
+        if (!data.chapter) {
           panel.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a kafla: ' +
             escapeHtml(data.error || data.message || '\u00d3\u00feekkt villa') + '</p>';
           return;
@@ -1403,8 +1400,7 @@
     // Module sections from segment-editor API (for stats)
     async function loadChapterSections(book, chapter) {
       try {
-        var res = await fetch('/api/segment-editor/' + book + '/' + chapter);
-        var data = await res.json();
+        var data = await fetchJson('/api/segment-editor/' + book + '/' + chapter);
 
         var modules = data.modules || [];
         var faithful = modules.filter(function(m) { return m.hasFaithful; }).length;
@@ -1438,8 +1434,7 @@
       var blockedAlert = document.getElementById('blocked-alert');
 
       try {
-        var res = await fetch('/api/issues?book=' + book + '&chapter=' + chapter + '&status=pending');
-        var data = await res.json();
+        var data = await fetchJson('/api/issues?book=' + book + '&chapter=' + chapter + '&status=pending');
 
         var issues = [].concat(data.byCategory.BLOCKED || [], data.byCategory.BOARD_REVIEW || [], data.byCategory.EDITOR_CONFIRM || []);
 
@@ -1488,8 +1483,7 @@
       var panel = document.getElementById('activity-panel');
 
       try {
-        var res = await fetch('/api/activity?book=' + book + '&chapter=' + chapter + '&limit=10');
-        var data = await res.json();
+        var data = await fetchJson('/api/activity?book=' + book + '&chapter=' + chapter + '&limit=10');
 
         var activities = data.activities || [];
 
@@ -1518,9 +1512,7 @@
     // Chapter status (for TM button)
     async function loadChapterStatus(book, chapter) {
       try {
-        var res = await fetch('/api/status/' + book + '/' + chapter);
-        if (!res.ok) return;
-        var data = await res.json();
+        var data = await fetchJson('/api/status/' + book + '/' + chapter);
 
         var stages = data.stages || {};
         var linguisticReview = stages.linguisticReview || {};
@@ -1554,21 +1546,12 @@
       tmBadge.className = 'tm-badge running';
 
       try {
-        var res = await fetch('/api/pipeline/prepare-tm', {
+        var data = await fetchJson('/api/pipeline/prepare-tm', {
           method: 'POST',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
         });
-
-        var data = await res.json();
-
-        if (!res.ok) {
-          tmBadge.textContent = 'Villa';
-          tmBadge.className = 'tm-badge failed';
-          tmBtn.disabled = false;
-          return;
-        }
 
         pollTmJob(data.jobId, 'btn-prepare-tm', 'prepare-tm-badge');
       } catch (err) {
@@ -1583,10 +1566,7 @@
 
       tmPollingTimer = setInterval(async function() {
         try {
-          var res = await fetch('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
-          if (!res.ok) return;
-
-          var result = await res.json();
+          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
           var job = result.job;
           var tmBtn = document.getElementById(btnId);
           var tmBadge = document.getElementById(badgeId);
@@ -1650,8 +1630,7 @@
       chapterSelect.innerHTML = '<option value="">Hle\u00f0ur...</option>';
 
       try {
-        var res = await fetch('/api/books/' + book);
-        var data = await res.json();
+        var data = await fetchJson('/api/books/' + book);
 
         var chapters = data.chapters || [];
         chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>' +
@@ -1690,8 +1669,7 @@
       var panel = document.getElementById('cv-sections-panel');
 
       try {
-        var res = await fetch('/api/segment-editor/' + book + '/' + chapter);
-        var data = await res.json();
+        var data = await fetchJson('/api/segment-editor/' + book + '/' + chapter);
 
         var modules = data.modules || [];
         var faithful = modules.filter(function(m) { return m.hasFaithful; }).length;
@@ -1744,8 +1722,7 @@
       var blockedAlert = document.getElementById('cv-blocked-alert');
 
       try {
-        var res = await fetch('/api/issues?book=' + book + '&chapter=' + chapter + '&status=pending');
-        var data = await res.json();
+        var data = await fetchJson('/api/issues?book=' + book + '&chapter=' + chapter + '&status=pending');
 
         var issues = [].concat(data.byCategory.BLOCKED || [], data.byCategory.BOARD_REVIEW || [], data.byCategory.EDITOR_CONFIRM || []);
 
@@ -1791,8 +1768,7 @@
       var panel = document.getElementById('cv-activity-panel');
 
       try {
-        var res = await fetch('/api/activity?book=' + book + '&chapter=' + chapter + '&limit=10');
-        var data = await res.json();
+        var data = await fetchJson('/api/activity?book=' + book + '&chapter=' + chapter + '&limit=10');
 
         var activities = data.activities || [];
 
@@ -1820,9 +1796,7 @@
 
     async function cvLoadStatus(book, chapter) {
       try {
-        var res = await fetch('/api/status/' + book + '/' + chapter);
-        if (!res.ok) return;
-        var data = await res.json();
+        var data = await fetchJson('/api/status/' + book + '/' + chapter);
 
         var stages = data.stages || {};
         var linguisticReview = stages.linguisticReview || {};
@@ -1855,21 +1829,12 @@
       tmBadge.className = 'tm-badge running';
 
       try {
-        var res = await fetch('/api/pipeline/prepare-tm', {
+        var data = await fetchJson('/api/pipeline/prepare-tm', {
           method: 'POST',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ book: cvCurrentBook, chapter: cvCurrentChapter })
         });
-
-        var data = await res.json();
-
-        if (!res.ok) {
-          tmBadge.textContent = 'Villa';
-          tmBadge.className = 'tm-badge failed';
-          tmBtn.disabled = false;
-          return;
-        }
 
         pollCvTmJob(data.jobId);
       } catch (err) {
@@ -1884,10 +1849,7 @@
 
       cvTmPollingTimer = setInterval(async function() {
         try {
-          var res = await fetch('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
-          if (!res.ok) return;
-
-          var result = await res.json();
+          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
           var job = result.job;
           var tmBtn = document.getElementById('cv-btn-prepare-tm');
           var tmBadge = document.getElementById('cv-prepare-tm-badge');
@@ -1922,8 +1884,7 @@
         return;
       }
 
-      var res = await fetch('/api/images/' + imgCurrentBook);
-      var data = await res.json();
+      var data = await fetchJson('/api/images/' + imgCurrentBook);
 
       document.getElementById('img-book-stats').style.display = 'block';
       document.getElementById('img-chapter-images').style.display = 'none';
@@ -1954,8 +1915,7 @@
       document.getElementById('img-chapter-images').style.display = 'block';
       document.getElementById('img-chapter-num').textContent = chapter;
 
-      var res = await fetch('/api/images/' + imgCurrentBook + '/' + chapter);
-      var data = await res.json();
+      var data = await fetchJson('/api/images/' + imgCurrentBook + '/' + chapter);
 
       document.getElementById('img-images-grid').innerHTML = data.images.map(function(img) {
         return '<div class="image-card">' +
@@ -2018,8 +1978,7 @@
         await fetch('/api/admin/catalogue/sync', { method: 'POST' });
 
         // Load catalogue
-        var res = await fetch('/api/admin/catalogue');
-        var data = await res.json();
+        var data = await fetchJson('/api/admin/catalogue');
 
         if (!data.books || data.books.length === 0) {
           listEl.innerHTML = '<p style="color:var(--text-muted)">Enginn b\u00e6kur \u00ed skr\u00e1ning</p>';
@@ -2084,13 +2043,11 @@
       var titleIs = document.getElementById('book-title-is').value;
 
       try {
-        var res = await fetch('/api/admin/books/register', {
+        var result = await fetchJson('/api/admin/books/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ catalogueSlug: catalogueSlug, slug: slug, titleIs: titleIs })
         });
-
-        var result = await res.json();
 
         if (result.success) {
           alert('B\u00f3k skr\u00e1\u00f0!\n\n' + result.chapters + ' kaflar og ' + result.sections + ' einingar b\u00fanar til.');

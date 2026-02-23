@@ -857,8 +857,7 @@
 
     async function init() {
       // Wait for layout.js to provide auth via userLoaded event, or fetch it ourselves
-      const authRes = await fetch('/api/auth/me');
-      const authData = await authRes.json();
+      const authData = await fetchJson('/api/auth/me');
 
       if (!authData.authenticated) {
         // Not logged in — still show the glossary read-only
@@ -885,8 +884,7 @@
     }
 
     async function loadMetadata() {
-      const res = await fetch('/api/terminology/categories');
-      const data = await res.json();
+      const data = await fetchJson('/api/terminology/categories');
 
       categories = data.categories;
       sources = data.sources;
@@ -909,8 +907,7 @@
     }
 
     async function loadStats() {
-      const res = await fetch('/api/terminology/stats');
-      const stats = await res.json();
+      const stats = await fetchJson('/api/terminology/stats');
 
       var byStatus = stats.byStatus || {};
       document.getElementById('stat-total').textContent = stats.total || 0;
@@ -922,8 +919,7 @@
     async function checkReviewQueue() {
       if (!currentUser || !['admin', 'head-editor', 'editor'].includes(currentUser.role)) return;
 
-      const res = await fetch('/api/terminology/review-queue?limit=1');
-      const data = await res.json();
+      const data = await fetchJson('/api/terminology/review-queue?limit=1');
 
       if (data.terms && data.terms.length > 0) {
         document.getElementById('review-queue-count').textContent = data.terms.length + '+';
@@ -951,9 +947,7 @@
       tbody.innerHTML = '<div class="terms-state">Hle\u00F0ur...</div>';
 
       try {
-        const res = await fetch('/api/terminology?' + params);
-        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
-        const data = await res.json();
+        const data = await fetchJson('/api/terminology?' + params);
 
         if (!data.terms || data.terms.length === 0) {
           tbody.innerHTML = '<div class="terms-state">Engin or\u00F0 fundust.</div>';
@@ -1051,8 +1045,7 @@
     async function showTermDetail(id) {
       currentTermId = id;
 
-      const res = await fetch('/api/terminology/' + id);
-      const data = await res.json();
+      const data = await fetchJson('/api/terminology/' + id);
       const term = data.term;
 
       document.getElementById('detail-title').textContent = term.english;
@@ -1120,8 +1113,7 @@
     function editTerm() {
       closeModal('detail-modal');
       // Load term data for editing
-      fetch('/api/terminology/' + currentTermId)
-        .then(res => res.json())
+      fetchJson('/api/terminology/' + currentTermId)
         .then(data => {
           const term = data.term;
           document.getElementById('modal-title').textContent = 'Breyta or\u00F0i';
@@ -1157,13 +1149,11 @@
         const url = currentTermId ? '/api/terminology/' + currentTermId : '/api/terminology';
         const method = currentTermId ? 'PUT' : 'POST';
 
-        const res = await fetch(url, {
+        const data = await fetchJson(url, {
           method,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         });
-
-        const data = await res.json();
 
         if (data.success || data.term) {
           closeModal('term-modal');
@@ -1184,8 +1174,7 @@
       if (!confirm('Ertu viss um a\u00F0 \u00FE\u00FA viljir sam\u00FEykkja \u00FEetta or\u00F0?')) return;
 
       try {
-        const res = await fetch('/api/terminology/' + currentTermId + '/approve', { method: 'POST' });
-        const data = await res.json();
+        const data = await fetchJson('/api/terminology/' + currentTermId + '/approve', { method: 'POST' });
 
         if (data.success) {
           closeModal('detail-modal');
@@ -1204,13 +1193,11 @@
       if (!comment) return;
 
       try {
-        const res = await fetch('/api/terminology/' + currentTermId + '/dispute', {
+        const data = await fetchJson('/api/terminology/' + currentTermId + '/dispute', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ comment })
         });
-
-        const data = await res.json();
 
         if (data.success) {
           showTermDetail(currentTermId); // Refresh
@@ -1236,13 +1223,11 @@
       }
 
       try {
-        const res = await fetch('/api/terminology/' + currentTermId + '/discuss', {
+        const data = await fetchJson('/api/terminology/' + currentTermId + '/discuss', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ comment, proposedTranslation: proposedTranslation || undefined })
         });
-
-        const data = await res.json();
 
         if (data.success) {
           document.getElementById('new-discussion').value = '';
@@ -1276,13 +1261,11 @@
       if (!confirm('Flytja inn n\u00FAverandi or\u00F0alista fr\u00E1 books/efnafraedi/glossary/terminology-en-is.csv?')) return;
 
       try {
-        const res = await fetch('/api/terminology/import/existing-glossary', {
+        const data = await fetchJson('/api/terminology/import/existing-glossary', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ bookSlug: 'efnafraedi' })
         });
-
-        const data = await res.json();
         showImportResult(data);
       } catch (err) {
         alert('Villa: ' + err.message);
@@ -1293,13 +1276,11 @@
       if (!confirm('Draga \u00FAt or\u00F0 \u00FAr key-terms skr\u00E1m \u00ED efnafr\u00E6\u00F0i?')) return;
 
       try {
-        const res = await fetch('/api/terminology/import/key-terms', {
+        const data = await fetchJson('/api/terminology/import/key-terms', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ bookSlug: 'efnafraedi' })
         });
-
-        const data = await res.json();
         showImportResult(data);
       } catch (err) {
         alert('Villa: ' + err.message);
@@ -1363,12 +1344,10 @@
 
       try {
         const endpoint = uploadType === 'csv' ? '/api/terminology/import/csv' : '/api/terminology/import/excel';
-        const res = await fetch(endpoint, {
+        const data = await fetchJson(endpoint, {
           method: 'POST',
           body: formData
         });
-
-        const data = await res.json();
         showImportResult(data);
       } catch (err) {
         alert('Villa: ' + err.message);

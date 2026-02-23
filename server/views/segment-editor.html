@@ -1094,16 +1094,11 @@
     // ================================================================
     async function checkAuth() {
       try {
-        const res = await fetch('/api/auth/me', { credentials: 'include' });
-        if (!res.ok) {
-          window.location.href = '/login';
-          return;
-        }
-        const data = await res.json();
+        const data = await fetchJson('/api/auth/me', { credentials: 'include' });
         userRole = data.user?.role || 'viewer';
         userName = data.user?.username || null;
       } catch {
-        // Auth check failed silently - user may still be able to view
+        window.location.href = '/login';
       }
     }
 
@@ -1139,11 +1134,9 @@
       document.getElementById('modules-list').style.display = 'block';
 
       try {
-        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}`, {
+        const data = await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}`, {
           credentials: 'include',
         });
-        if (!res.ok) throw new Error('Villa: HTTP ' + res.status);
-        const data = await res.json();
 
         if (!data.modules || data.modules.length === 0) {
           container.innerHTML = '<p class="text-muted">Engar einingar fundust.</p>';
@@ -1176,11 +1169,9 @@
       currentModuleId = moduleId;
 
       try {
-        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
+        moduleData = await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
           credentials: 'include',
         });
-        if (!res.ok) throw new Error((await res.json()).error || 'Failed to load');
-        moduleData = await res.json();
 
         document.getElementById('module-selector').style.display = 'none';
         document.getElementById('editor-container').style.display = 'block';
@@ -1482,7 +1473,7 @@
       }
 
       try {
-        const res = await fetch(
+        await fetchJson(
           `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`,
           {
             method: 'POST',
@@ -1497,11 +1488,6 @@
             }),
           }
         );
-
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error || 'Failed to save');
-        }
 
         // Reload module to refresh edits
         await loadModule(currentModuleId);
@@ -1518,17 +1504,12 @@
       if ((action === 'reject' || action === 'discuss') && note === null) return; // Cancelled
 
       try {
-        const res = await fetch(`${API_BASE}/edit/${editId}/${action}`, {
+        await fetchJson(`${API_BASE}/edit/${editId}/${action}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
           body: JSON.stringify({ note }),
         });
-
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error || 'Failed');
-        }
 
         await loadModule(currentModuleId);
       } catch (err) {
@@ -1540,16 +1521,11 @@
       if (!confirm('Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".')) return;
 
       try {
-        const res = await fetch(`${API_BASE}/edit/${editId}/unapprove`, {
+        await fetchJson(`${API_BASE}/edit/${editId}/unapprove`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
         });
-
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error || 'Failed');
-        }
 
         await loadModule(currentModuleId);
       } catch (err) {
@@ -1570,7 +1546,7 @@
       if (!confirm(`Senda ${stats.total_edits} breytingar til yfirlestrar?`)) return;
 
       try {
-        const res = await fetch(
+        await fetchJson(
           `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/submit`,
           {
             method: 'POST',
@@ -1578,11 +1554,6 @@
             credentials: 'include',
           }
         );
-
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error || 'Failed to submit');
-        }
 
         alert('Sent til yfirlestrar!');
         await loadModule(currentModuleId);
@@ -1762,7 +1733,7 @@
       output.classList.add('active');
 
       try {
-        const res = await fetch(`/api/pipeline/${action}`, {
+        const data = await fetchJson(`/api/pipeline/${action}`, {
           method: 'POST',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
@@ -1773,16 +1744,6 @@
             track,
           }),
         });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          badge.textContent = 'Villa';
-          badge.className = 'pipeline-status-badge failed';
-          output.textContent += `Error: ${data.error}\n`;
-          setPipelineButtonsDisabled(false);
-          return;
-        }
 
         // Start polling for job status
         pollJobStatus(data.jobId);
@@ -1799,12 +1760,9 @@
 
       pipelinePollingTimer = setInterval(async () => {
         try {
-          const res = await fetch(`/api/pipeline/jobs/${jobId}`, {
+          const { job } = await fetchJson(`/api/pipeline/jobs/${jobId}`, {
             credentials: 'include',
           });
-          if (!res.ok) return;
-
-          const { job } = await res.json();
           const badge = document.getElementById('pipeline-badge');
           const output = document.getElementById('pipeline-output');
 
@@ -1871,12 +1829,10 @@
       badge.style.display = 'none';
 
       try {
-        const res = await fetch(
+        const data = await fetchJson(
           `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply-status`,
           { credentials: 'include' }
         );
-        if (!res.ok) throw new Error('Failed to load apply status');
-        const data = await res.json();
 
         const { unapplied_count, applied_count, total_approved } = data;
 
@@ -1907,15 +1863,10 @@
       badge.className = 'pipeline-status-badge running';
 
       try {
-        const res = await fetch(
+        const data = await fetchJson(
           `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply`,
           { method: 'POST', credentials: 'include' }
         );
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.error || 'Apply failed');
-        }
-        const data = await res.json();
         badge.textContent = `Vistað (${data.appliedCount} breytingar)`;
         badge.className = 'pipeline-status-badge success';
         // Refresh status
@@ -1941,15 +1892,10 @@
       badge.className = 'pipeline-status-badge running';
 
       try {
-        const res = await fetch(
+        const data = await fetchJson(
           `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply-and-render`,
           { method: 'POST', credentials: 'include' }
         );
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.error || 'Apply and render failed');
-        }
-        const data = await res.json();
 
         badge.textContent = `Vistað (${data.applied.appliedCount}), render í gangi...`;
 
@@ -1975,11 +1921,9 @@
 
       const timer = setInterval(async () => {
         try {
-          const res = await fetch(`/api/pipeline/status/${jobId}`, {
+          const job = await fetchJson(`/api/pipeline/status/${jobId}`, {
             credentials: 'include',
           });
-          if (!res.ok) return;
-          const job = await res.json();
 
           if (job.status === 'completed') {
             clearInterval(timer);
@@ -2134,12 +2078,10 @@
 
       termLookupTimer = setTimeout(async () => {
         try {
-          const res = await fetch(
+          const data = await fetchJson(
             `${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}`,
             { credentials: 'include' }
           );
-          if (!res.ok) return;
-          const data = await res.json();
 
           if (!data.terms || data.terms.length === 0) {
             termLookupResults.innerHTML = '<div class="term-lookup-item" style="color: var(--text-muted);">Ekkert fannst</div>';
