@@ -857,25 +857,18 @@
 
     async function init() {
       // Wait for layout.js to provide auth via userLoaded event, or fetch it ourselves
-      const authData = await fetchJson('/api/auth/me');
+      try {
+        const authData = await fetchJson('/api/auth/me');
+        if (authData.authenticated) {
+          currentUser = authData.user;
+        }
+      } catch (e) { console.error('Auth check failed:', e); }
 
-      if (!authData.authenticated) {
-        // Not logged in — still show the glossary read-only
-      } else {
-        currentUser = authData.user;
-      }
-
-      // Load categories and sources
-      await loadMetadata();
-
-      // Load stats
-      await loadStats();
-
-      // Check review queue
-      await checkReviewQueue();
-
-      // Initial search
-      await searchTerms();
+      // Load categories and sources (non-critical — page still works without)
+      try { await loadMetadata(); } catch (e) { console.error('Load metadata failed:', e); }
+      try { await loadStats(); } catch (e) { console.error('Load stats failed:', e); }
+      try { await checkReviewQueue(); } catch (e) { console.error('Review queue check failed:', e); }
+      try { await searchTerms(); } catch (e) { console.error('Search failed:', e); }
 
       // Setup event listeners
       document.getElementById('search-input').addEventListener('keyup', (e) => {

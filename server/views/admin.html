@@ -641,6 +641,9 @@
           return;
         }
         console.error('Failed to load users:', e);
+        document.getElementById('users-content').style.display = 'block';
+        usersData = [];
+        usersRenderUsers();
       }
     }
 
