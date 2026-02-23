@@ -1914,7 +1914,6 @@ function renderKeyEquations(chapter, equations, equationTextDictionary) {
   };
 
   lines.push('<section class="key-equations">');
-  lines.push('  <h2>Lykiljöfnur</h2>');
 
   if (equations.length === 0) {
     lines.push('  <p>Engar lykiljöfnur í þessum kafla.</p>');
@@ -2024,7 +2023,6 @@ function renderCompiledGlossary(chapter, definitions, context) {
   const lines = [];
 
   lines.push('<section class="glossary">');
-  lines.push('  <h2>Lykilhugtök</h2>');
 
   if (definitions.length === 0) {
     lines.push('  <p>Engin lykilhugtök í þessum kafla.</p>');
