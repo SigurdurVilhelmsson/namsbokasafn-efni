@@ -1479,6 +1479,16 @@ a:focus-visible,
   font-weight: 500;
 }
 
+.tab-content,
+.tab-panel {
+  display: none;
+}
+
+.tab-content.active,
+.tab-panel.active {
+  display: block;
+}
+
 
 /* ==========================================================================
    12. UTILITY CLASSES
