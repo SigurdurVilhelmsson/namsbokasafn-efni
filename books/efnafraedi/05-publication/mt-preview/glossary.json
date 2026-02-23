@@ -185,7 +185,7 @@
       "chapter": 2
     },
     {
-      "term": "Daltons-lögmálið um\nhlutþrýsting",
+      "term": "Daltons-lögmálið um hlutþrýsting",
       "definition": "heildarþrýstingur efnablöndu af kjörgasi er jafn summu hlutþrýstings íhlutagasanna",
       "chapter": 9,
       "english": "dalton’s law of partial pressures"
@@ -352,7 +352,7 @@
       "english": "theoretical yield"
     },
     {
-      "term": "fyrsta lögmál\nvarmafræðinnar",
+      "term": "fyrsta lögmál varmafræðinnar",
       "definition": "innri orka kerfis breytist vegna varmaflæðis inn í eða út úr kerfinu eða vinnu sem er unnin á kerfinu eða af því",
       "chapter": 5,
       "english": "first law of thermodynamics"
@@ -423,7 +423,7 @@
       "english": "overall reaction order"
     },
     {
-      "term": "helmingunartími hvarfs\n(t1/2)",
+      "term": "helmingunartími hvarfs (t1/2)",
       "definition": "tími sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast",
       "chapter": 12,
       "english": "half-life of a reaction (tl/2)"
@@ -501,7 +501,7 @@
       "english": "pure substance"
     },
     {
-      "term": "hreyfifræðikenning\nsameinda",
+      "term": "hreyfifræðikenning sameinda",
       "definition": "kenning sem byggir á einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun kjörgass",
       "chapter": 9,
       "english": "kinetic molecular theory"
@@ -818,25 +818,25 @@
       "english": "law of mass action"
     },
     {
-      "term": "lögmálið um fasta\nefnasamsetningu",
+      "term": "lögmálið um fasta efnasamsetningu",
       "definition": "(einnig, lögmálið um föst efnahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu hlutföllum miðað við massa",
       "chapter": 2,
       "english": "law of constant composition"
     },
     {
-      "term": "lögmálið um föst\nefnahlutföll",
+      "term": "lögmálið um föst efnahlutföll",
       "definition": "(einnig, lögmálið um fasta efnasamsetningu) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu hlutföllum miðað við massa",
       "chapter": 2,
       "english": "law of definite proportions"
     },
     {
-      "term": "lögmálið um margföld\nefnahlutföll",
+      "term": "lögmálið um margföld efnahlutföll",
       "definition": "þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna",
       "chapter": 2,
       "english": "law of multiple proportions"
     },
     {
-      "term": "lögmálið um varðveislu\nefnis",
+      "term": "lögmálið um varðveislu efnis",
       "definition": "þegar efni breytist úr einni tegund í aðra eða breytir um form verður engin greinanleg breyting á heildarmagni efnisins",
       "chapter": 1,
       "english": "law of conservation of matter"
@@ -944,7 +944,7 @@
       "english": "parts per billion (ppb)"
     },
     {
-      "term": "milljónustu hlutar\n(ppm)",
+      "term": "milljónustu hlutar (ppm)",
       "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 106",
       "chapter": 3,
       "english": "parts per million (ppm)"
@@ -1034,7 +1034,7 @@
       "english": "neutron"
     },
     {
-      "term": "næringarkaloría\n(kaloría)",
+      "term": "næringarkaloría (kaloría)",
       "definition": "eining sem notuð er til að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000 cal eða 1 kkal",
       "chapter": 5,
       "english": "nutritional calorie (calorie)"
@@ -1183,7 +1183,7 @@
       "english": "cubic meter (m3)"
     },
     {
-      "term": "rúmsentimetri (cm3 eða\ncc)",
+      "term": "rúmsentimetri (cm3 eða cc)",
       "definition": "rúmmál tenings með brúnarlengd nákvæmlega 1 cm",
       "chapter": 1,
       "english": "cubic centimeter (cm3 or cc)"
@@ -1224,7 +1224,7 @@
       "english": "molecularity"
     },
     {
-      "term": "sameinuð atómmassaeining\n(u)",
+      "term": "sameinuð atómmassaeining (u)",
       "definition": "önnur eining sem jafngildir atómmassaeiningu",
       "chapter": 2,
       "english": "unified atomic mass unit (u)"
@@ -1248,7 +1248,7 @@
       "english": "isotopes"
     },
     {
-      "term": "samþjappanleikastuðull\n(Z)",
+      "term": "samþjappanleikastuðull (Z)",
       "definition": "hlutfallið milli mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það er reiknað út frá jöfnu kjörgass",
       "chapter": 9,
       "english": "compressibility factor (z)"
@@ -1266,7 +1266,7 @@
       "english": "celsius (°c)"
     },
     {
-      "term": "SI-einingar (Alþjóðlega\neiningakerfið)",
+      "term": "SI-einingar (Alþjóðlega einingakerfið)",
       "definition": "staðlar sem ákvarðaðir eru með alþjóðasamningi í Alþjóðlega einingakerfinu (Le Système International d’Unités)",
       "chapter": 1,
       "english": "si units (international system of units)"
@@ -1284,7 +1284,7 @@
       "english": "bomb calorimeter"
     },
     {
-      "term": "staðalaðstæður\nhitastigs og þrýstings (STP)",
+      "term": "staðalaðstæður hitastigs og þrýstings (STP)",
       "definition": "273,15 K (0 °C) og 1 atm (101,325 kPa)",
       "chapter": 9,
       "english": "standard conditions of temperature and pressure (stp)"
@@ -1296,13 +1296,13 @@
       "english": "standard state"
     },
     {
-      "term": "staðalbrunavermi\n(ΔHc°)",
+      "term": "staðalbrunavermi (ΔHc°)",
       "definition": "varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
       "chapter": 5,
       "english": "standard enthalpy of combustion (δhc°)"
     },
     {
-      "term": "staðalloftþrýstingur\n(atm)",
+      "term": "staðalloftþrýstingur (atm)",
       "definition": "þrýstingseining; 1 atm = 101.325 Pa",
       "chapter": 9,
       "english": "atmosphere (atm)"
@@ -1314,7 +1314,7 @@
       "english": "standard molar volume"
     },
     {
-      "term": "staðalmyndunarvermi\n(ΔHf°)",
+      "term": "staðalmyndunarvermi (ΔHf°)",
       "definition": "vermibreyting efnahvarfs þar sem 1 mól af hreinu efni myndast úr frumefnum sínum í sínum stöðugasta efnisham við staðalaðstæður",
       "chapter": 5,
       "english": "standard enthalpy of formation (δhf°)"
@@ -1481,7 +1481,7 @@
       "english": "surroundings"
     },
     {
-      "term": "umreikningsstuðull\neininga",
+      "term": "umreikningsstuðull eininga",
       "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
       "chapter": 1,
       "english": "unit conversion factor"
@@ -1517,7 +1517,7 @@
       "english": "effusion"
     },
     {
-      "term": "útstreymislögmál\nGrahams",
+      "term": "útstreymislögmál Grahams",
       "definition": "sveim- og útstreymishraði gasa er í öfugu hlutfalli við kvaðratrætur sameindamassa þeirra",
       "chapter": 9,
       "english": "graham’s law of effusion"
@@ -1631,7 +1631,7 @@
       "english": "liquid"
     },
     {
-      "term": "þensluvinna\n(þrýstings-rúmmálsvinna)",
+      "term": "þensluvinna (þrýstings-rúmmálsvinna)",
       "definition": "vinna sem er unnin þegar kerfi þenst út eða dregst saman gegn ytri þrýstingi",
       "chapter": 5,
       "english": "expansion work (pressure-volume work)"

@@ -195,7 +195,7 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
 
     // Extract term text
     const termMatch = defContent.match(/<term>([^<]+)<\/term>/);
-    const term = termMatch ? termMatch[1].trim() : null;
+    const term = termMatch ? termMatch[1].replace(/\s+/g, ' ').trim() : null;
 
     // Extract meaning and strip XML tags
     const meaningMatch = defContent.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);
