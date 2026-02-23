@@ -15,8 +15,9 @@ let output = `# API Routes
 `;
 
 // Get all route files
-const routeFiles = fs.readdirSync(routesDir)
-  .filter(f => f.endsWith('.js'))
+const routeFiles = fs
+  .readdirSync(routesDir)
+  .filter((f) => f.endsWith('.js'))
   .sort();
 
 for (const file of routeFiles) {

@@ -912,10 +912,11 @@
       const res = await fetch('/api/terminology/stats');
       const stats = await res.json();
 
-      document.getElementById('stat-total').textContent = stats.total;
-      document.getElementById('stat-approved').textContent = stats.byStatus.approved;
-      document.getElementById('stat-proposed').textContent = stats.byStatus.proposed;
-      document.getElementById('stat-disputed').textContent = stats.byStatus.disputed + stats.byStatus.needsReview;
+      var byStatus = stats.byStatus || {};
+      document.getElementById('stat-total').textContent = stats.total || 0;
+      document.getElementById('stat-approved').textContent = byStatus.approved || 0;
+      document.getElementById('stat-proposed').textContent = byStatus.proposed || 0;
+      document.getElementById('stat-disputed').textContent = (byStatus.disputed || 0) + (byStatus.needsReview || 0);
     }
 
     async function checkReviewQueue() {
