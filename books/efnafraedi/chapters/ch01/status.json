@@ -40,20 +40,18 @@
       "date": "2026-01-12"
     },
     "mtReady": {
-      "complete": false
+      "complete": true,
+      "date": "2026-01-12"
     },
     "mtOutput": {
       "complete": true,
       "date": "2026-01-12"
     },
     "linguisticReview": {
-      "complete": true,
-      "date": "2024-12-10",
-      "editor": "[FÁ Teacher]"
+      "complete": false,
     },
     "tmCreated": {
-      "complete": true,
-      "date": "2024-11-15"
+      "complete": false,
     },
     "injection": {
       "complete": false
