@@ -1680,7 +1680,7 @@
         if (Array.isArray(ch.stages)) {
           return ch.stages.find(s => (s.stage || s.key) === 'linguisticReview')?.status === 'complete';
         }
-        return ch.stages?.linguisticReview === 'complete';
+        return false;
       }).length;
       sectionsEl.textContent = pass1Done;
 
@@ -1700,7 +1700,7 @@
         if (Array.isArray(ch.stages)) {
           return ch.stages.find(s => (s.stage || s.key) === 'publication')?.status === 'complete';
         }
-        return ch.stages?.publication === 'complete';
+        return false;
       }).length;
       publishedEl.textContent = pubDone;
     }
