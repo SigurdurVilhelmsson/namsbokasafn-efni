@@ -45,7 +45,8 @@
       "date": "2026-01-12"
     },
     "mtReady": {
-      "complete": false
+      "complete": true,
+      "date": "2026-01-12"
     },
     "mtOutput": {
       "complete": true,
@@ -56,8 +57,7 @@
       "editor": "[FÁ Teacher]"
     },
     "tmCreated": {
-      "complete": true,
-      "date": "2024-11-20"
+      "complete": false,
     },
     "injection": {
       "complete": false
