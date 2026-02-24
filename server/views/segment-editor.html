@@ -960,11 +960,11 @@
 
       <!-- Pipeline Panel (HEAD_EDITOR only) -->
       <div class="pipeline-panel" id="pipeline-panel" style="display: none;">
-        <h4 title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef">Leiðsluvinnsla (inject &#8594; render)</h4>
+        <h4 title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef">Ferill (inject &#8594; render)</h4>
         <div class="pipeline-controls">
           <label>Rás:</label>
           <select id="pipeline-track">
-            <option value="faithful">Trú þýðing (faithful)</option>
+            <option value="faithful">Hrein þýðing (faithful)</option>
             <option value="mt-preview">MT forskoðun</option>
             <option value="localized">Staðfærð (localized)</option>
           </select>
@@ -1003,7 +1003,7 @@
         <div class="filter-bar">
           <label>Sýna:</label>
           <select id="filter-type">
-            <option value="all">Allar bútur</option>
+            <option value="all">Allir hlutar</option>
             <option value="edited">Með breytingum</option>
             <option value="pending">Bíður yfirlestrar</option>
             <option value="term-issues">Hugtakavandamál</option>
@@ -1031,7 +1031,7 @@
             <span class="category-badge terminology">Hugtök — fagorð og skilgreiningar</span>
             <span class="category-badge accuracy">Nákvæmni — efnislegir gallar</span>
             <span class="category-badge readability">Læsileiki — málfar og lestur</span>
-            <span class="category-badge style">Stíll — tónlag og orðalag</span>
+            <span class="category-badge style">Stíll — tónn og orðalag</span>
             <span class="category-badge omission">Úrfelling — vantar efni</span>
           </div>
         </details>
@@ -1216,7 +1216,7 @@
         `${moduleData.moduleId} — ${moduleData.title}`;
       const sourceLabels = {
         'mt-output': 'MT — vélþýðing',
-        'faithful': 'Riststyrt — yfirfarin þýðing',
+        'faithful': 'Ritstýrt — yfirfarin þýðing',
         'localized': 'Staðfærð — aðlöguð að íslensku samhengi',
       };
       const sourceLabel = sourceLabels[moduleData.isSource] || moduleData.isSource || 'engin';
@@ -1231,7 +1231,7 @@
       metaEl.innerHTML = missing > 0
         ? metaText.replace(`${missing} óþýdd(ar)`, `<span style="color: var(--warning); font-weight: 600;">${missing} óþýdd(ar)</span>`)
         : metaText;
-      metaEl.title = 'MT = óyfirfarin vélþýðing · Riststyrt = mannleg yfirferð lokið · Staðfærð = aðlöguð að íslensku';
+      metaEl.title = 'MT = óyfirfarin vélþýðing · Yfirlesið = mannlegri yfirferð lokið · Staðfærð = aðlöguð að Íslandi';
 
       // Update topbar breadcrumb
       const topbarTitle = document.getElementById('topbar-title');
@@ -1418,7 +1418,7 @@
                   <option value="terminology" title="Fagorð, skilgreiningar, samræmi hugtaka" ${selectedCat === 'terminology' ? 'selected' : ''}>Hugtök</option>
                   <option value="accuracy" title="Efnislegir gallar eða rangar þýðingar" ${selectedCat === 'accuracy' ? 'selected' : ''}>Nákvæmni</option>
                   <option value="readability" title="Málfar, setningaskipan, læsileiki" ${selectedCat === 'readability' ? 'selected' : ''}>Læsileiki</option>
-                  <option value="style" title="Tónlag, orðalag, stílbrigði" ${selectedCat === 'style' ? 'selected' : ''}>Stíll</option>
+                  <option value="style" title="Tónn, orðalag, stílbrigði" ${selectedCat === 'style' ? 'selected' : ''}>Stíll</option>
                   <option value="omission" title="Vantar efni eða hluta úr upprunalega textanum" ${selectedCat === 'omission' ? 'selected' : ''}>Úrfelling</option>
                 </select>
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
@@ -1837,7 +1837,7 @@
         const { unapplied_count, applied_count, total_approved } = data;
 
         if (unapplied_count > 0) {
-          statusEl.textContent = `${unapplied_count} samþykkt breytingar til að vista`;
+          statusEl.textContent = `${unapplied_count} samþykktar breytingar til að vista`;
           btnApply.disabled = false;
           btnApplyRender.disabled = false;
         } else if (total_approved > 0) {
