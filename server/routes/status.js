@@ -771,9 +771,10 @@ function formatChapterStatus(statusData) {
     }
   }
 
-  // Calculate progress percentage
-  const completedStages = stages.filter((s) => s.complete).length;
-  const progress = Math.round((completedStages / stages.length) * 100);
+  // Calculate progress percentage (exclude extraction — it's a setup step, not translation work)
+  const PROGRESS_STAGES = stages.filter((s) => s.stage !== 'extraction');
+  const completedStages = PROGRESS_STAGES.filter((s) => s.complete).length;
+  const progress = Math.round((completedStages / PROGRESS_STAGES.length) * 100);
 
   return {
     title: statusData.title || null,
