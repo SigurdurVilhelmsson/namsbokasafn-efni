@@ -1171,15 +1171,6 @@
           <div class="panel-header">
             <span class="panel-title">Framvinda</span>
           </div>
-          <div class="milestone-section" id="pilot-milestone">
-            <div class="milestone-label-row">
-              <span class="milestone-name">Kaflar 1-4 fyrir tilraunakennslu</span>
-              <span class="milestone-fraction" id="pilot-progress">-</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" id="pilot-progress-bar" style="width: 0%"></div>
-            </div>
-          </div>
           <div class="velocity-stat" id="velocity-stat">
             <span>Hleður...</span>
           </div>
@@ -1601,13 +1592,6 @@
         document.getElementById('blocked-issues-count').textContent = dashboardData.needsAttention.blockedIssues;
         document.getElementById('unassigned-count').textContent = dashboardData.needsAttention.unassignedWork;
         renderAttentionItems(dashboardData.needsAttention.items);
-
-        // Milestone
-        if (dashboardData.metrics.milestones.length > 0) {
-          const pilot = dashboardData.metrics.milestones[0];
-          document.getElementById('pilot-progress').textContent = pilot.complete + '/' + pilot.total;
-          document.getElementById('pilot-progress-bar').style.width = pilot.percentage + '%';
-        }
 
         // Velocity stat
         if (dashboardData.metrics.velocity) {
