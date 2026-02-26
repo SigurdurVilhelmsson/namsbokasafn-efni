@@ -302,6 +302,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   // Context for rendering
   const context = {
     chapter,
+    bookSlug: BOOK_SLUG,
     moduleId,
     equations: [],
     terms: {},

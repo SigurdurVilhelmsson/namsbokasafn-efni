@@ -578,6 +578,34 @@ export function processInlineContent(content, context) {
     return `<a href="${escapeAttr(doc)}">${escapeHtml(doc)}</a>`;
   });
 
+  // Convert inline <media><image> elements (e.g., images inside table cells)
+  result = result.replace(
+    /<media\s([^>]*)>\s*<image[^>]*src="([^"]*)"[^>]*\/>\s*<\/media>/g,
+    (match, mediaAttrsStr, src) => {
+      // Extract alt and class from media attributes
+      const altMatch = mediaAttrsStr.match(/alt="([^"]*)"/);
+      const classMatch = mediaAttrsStr.match(/class="([^"]*)"/);
+      const alt = altMatch ? altMatch[1] : '';
+      const mediaClass = classMatch ? classMatch[1] : '';
+
+      // Build absolute image path using context
+      let normalizedSrc = src;
+      if (src.startsWith('../../media/') && context.bookSlug && context.chapter != null) {
+        const chapterStr =
+          context.chapter === 'appendices'
+            ? 'appendices'
+            : String(context.chapter).padStart(2, '0');
+        normalizedSrc = `/content/${context.bookSlug}/chapters/${chapterStr}/images/media/${src.replace('../../media/', '')}`;
+      }
+
+      const imgTag = `<img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy"/>`;
+      if (mediaClass.includes('scaled-down')) {
+        return `<span class="scaled-down">${imgTag}</span>`;
+      }
+      return imgTag;
+    }
+  );
+
   // Convert CNXML newline/space to HTML equivalents
   result = result.replace(/<newline\s*\/>/g, '<br/>');
   result = result.replace(/<space[^>]*\/>/g, '&nbsp;');
