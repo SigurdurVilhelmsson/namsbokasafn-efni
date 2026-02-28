@@ -2,7 +2,12 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { execSync } from 'child_process';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import { restoreTermMarkers, restoreNewlines, annotateInlineTerms } from '../cnxml-inject.js';
+import {
+  restoreTermMarkers,
+  restoreNewlines,
+  annotateInlineTerms,
+  reverseInlineMarkup,
+} from '../cnxml-inject.js';
 
 const ROOT = join(import.meta.dirname, '..', '..');
 const TOOLS = join(ROOT, 'tools');
@@ -678,5 +683,71 @@ describe('newline and space tag preservation', () => {
       'utf8'
     );
     expect(enSegments).toContain('[[SPACE]]');
+  });
+});
+
+// =====================================================================
+// reverseInlineMarkup XML escaping tests
+// =====================================================================
+
+describe('reverseInlineMarkup XML escaping', () => {
+  const equations = {};
+
+  it('should escape <script> tags in user content', () => {
+    const result = reverseInlineMarkup('<script>alert("xss")</script>', equations);
+    expect(result).not.toContain('<script>');
+    expect(result).toContain('&lt;script');
+  });
+
+  it('should escape <div> and other HTML tags', () => {
+    const result = reverseInlineMarkup('text with <div>html</div> inside', equations);
+    expect(result).not.toContain('<div>');
+    expect(result).toContain('&lt;div');
+  });
+
+  it('should preserve CNXML <term> tags', () => {
+    const result = reverseInlineMarkup('__efni__', equations);
+    expect(result).toContain('<term>efni</term>');
+  });
+
+  it('should preserve CNXML <emphasis> tags', () => {
+    const result = reverseInlineMarkup('**bold text**', equations);
+    expect(result).toContain('<emphasis effect="bold">bold text</emphasis>');
+  });
+
+  it('should preserve <newline/> and <space/> tags', () => {
+    const result = reverseInlineMarkup('before [[BR]] after [[SPACE]] end', equations);
+    expect(result).toContain('<newline/>');
+    expect(result).toContain('<space/>');
+  });
+
+  it('should preserve <sup> and <sub> inside terms', () => {
+    const result = reverseInlineMarkup('__H~2~O__', equations);
+    expect(result).toContain('<term>H<sub>2</sub>O</term>');
+  });
+
+  it('should escape ampersands in user content', () => {
+    const result = reverseInlineMarkup('A & B', equations);
+    expect(result).toContain('A &amp; B');
+  });
+
+  it('should not double-escape existing XML entities', () => {
+    const result = reverseInlineMarkup('&amp; already escaped', equations);
+    expect(result).toContain('&amp;');
+    expect(result).not.toContain('&amp;amp;');
+  });
+
+  it('should preserve MathML blocks from equations', () => {
+    const eqs = { 'math-1': { mathml: '<m:math><m:mi>x</m:mi></m:math>' } };
+    const result = reverseInlineMarkup('value is [[MATH:1]]', eqs);
+    expect(result).toContain('<m:math><m:mi>x</m:mi></m:math>');
+  });
+
+  it('should handle mixed CNXML tags and escaped HTML in same text', () => {
+    const result = reverseInlineMarkup('__efni__ og <img src=x> og **feitletrað**', equations);
+    expect(result).toContain('<term>efni</term>');
+    expect(result).toContain('<emphasis effect="bold">feitletrað</emphasis>');
+    expect(result).toContain('&lt;img');
+    expect(result).not.toContain('<img');
   });
 });

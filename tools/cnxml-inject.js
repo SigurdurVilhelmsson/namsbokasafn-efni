@@ -552,10 +552,34 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
     '<footnote>$1</footnote>'
   );
 
-  // Escape XML entities that might have been introduced
-  // (but be careful not to double-escape, and don't escape HTML comments)
+  // Safely escape XML entities: protect known-good CNXML tags with placeholders,
+  // escape ALL remaining < and &, then restore the placeholders.
+  // This prevents user-typed HTML (e.g. <script>, <div>) from passing through unescaped.
+  const cnxmlTags = [];
+  result = result.replace(
+    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|m:math|m:[a-z]+)([\s>\/])/g,
+    (match) => {
+      cnxmlTags.push(match);
+      return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
+    }
+  );
+  // Also protect self-closing tags like <newline/>, <space/>, <link ... />
+  result = result.replace(/<(newline|space|link)\s[^>]*\/>/g, (match) => {
+    cnxmlTags.push(match);
+    return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
+  });
+  // Protect full MathML blocks (already restored from placeholders above)
+  result = result.replace(/<m:math>[\s\S]*?<\/m:math>/g, (match) => {
+    cnxmlTags.push(match);
+    return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
+  });
+
+  // Now safely escape ALL remaining < and &
   result = result.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, '&amp;');
-  result = result.replace(/<(?!\/?\w|!--)/g, '&lt;'); // Don't escape <!-- comments -->
+  result = result.replace(/</g, '&lt;');
+
+  // Restore CNXML tags
+  result = result.replace(/\x00CNXML:(\d+)\x00/g, (_, i) => cnxmlTags[parseInt(i)]);
 
   return result;
 }
@@ -1662,4 +1686,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }
 
-export { restoreTermMarkers, restoreNewlines, annotateInlineTerms, parseSegments };
+export {
+  restoreTermMarkers,
+  restoreNewlines,
+  annotateInlineTerms,
+  parseSegments,
+  reverseInlineMarkup,
+};

@@ -128,6 +128,9 @@ router.post(
     if (content === undefined || content === null) {
       return res.status(400).json({ error: 'content is required' });
     }
+    if (typeof content === 'string' && content.length > 10000) {
+      return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
+    }
     if (category && !VALID_CATEGORIES.includes(category)) {
       return res.status(400).json({
         error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
@@ -240,6 +243,14 @@ router.post(
 
     if (!segments || !Array.isArray(segments)) {
       return res.status(400).json({ error: 'segments array is required' });
+    }
+    const oversized = segments.find(
+      (s) => typeof s.content === 'string' && s.content.length > 10000
+    );
+    if (oversized) {
+      return res.status(400).json({
+        error: `Content too long for segment ${oversized.segmentId} (max 10,000 characters)`,
+      });
     }
 
     const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;

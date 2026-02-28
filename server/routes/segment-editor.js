@@ -126,6 +126,9 @@ router.post(
     if (!editedContent && editedContent !== '') {
       return res.status(400).json({ error: 'editedContent is required' });
     }
+    if (typeof editedContent === 'string' && editedContent.length > 10000) {
+      return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
+    }
     if (category && !VALID_CATEGORIES.includes(category)) {
       return res.status(400).json({
         error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,

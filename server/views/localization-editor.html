@@ -411,6 +411,23 @@
 
     .history-arrow { color: var(--text-muted); }
 
+    .btn-history-restore {
+      font-size: var(--text-xs);
+      padding: 0.1rem 0.35rem;
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .btn-history-restore:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
     .btn-copy-faithful {
       font-size: var(--text-xs);
       padding: 0.15rem 0.4rem;
@@ -2107,11 +2124,28 @@
               '<span class="history-prev" title="' + escapeHtml(entry.previous_content) + '">' + escapeHtml(prevTrunc) + '</span>' +
               '<span class="history-arrow">\u2192</span>' +
               '<span class="history-new" title="' + escapeHtml(entry.new_content) + '">' + escapeHtml(newTrunc) + '</span>' +
+              '<button class="btn-history-restore" data-restore-idx="' + i + '" title="Setja \u00FEessa \u00FAtg\u00E1fu \u00ED textareitinn">Endurheimta</button>' +
             '</div>' +
             catBadge +
           '</div>';
         }
         popover.innerHTML = html;
+
+        // Attach restore button handlers
+        var historyEntries = data.history;
+        popover.querySelectorAll('.btn-history-restore').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var idx = parseInt(btn.getAttribute('data-restore-idx'));
+            var content = historyEntries[idx].new_content || '';
+            var ta = document.getElementById('ta-' + edCssId(segmentId));
+            if (ta) {
+              ta.value = content;
+              edOnSegmentEdit(segmentId);
+              edClosePopover();
+            }
+          });
+        });
       } catch (err) {
         popover.innerHTML = '<div class="history-popover-header"><span>Breytingasaga</span>' +
           '<button class="btn-close" onclick="edClosePopover()" style="font-size:1rem">&times;</button></div>' +
