@@ -908,6 +908,36 @@
     .editor-card .table-wrap {
       overflow-x: auto;
     }
+
+    /* --- Save status bar --- */
+    .save-status-bar {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-elevated); border: 1px solid var(--border);
+      border-radius: var(--radius-md); margin-bottom: var(--spacing-md);
+      font-size: var(--text-sm); color: var(--text-secondary);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .save-status-bar.has-unsaved {
+      border-color: var(--warning); background: var(--warning-subtle);
+    }
+    .save-status-bar.all-saved {
+      border-color: var(--success); background: var(--success-subtle);
+    }
+    .save-status-bar.saving {
+      border-color: var(--accent); background: var(--accent-subtle);
+    }
+    .save-status-dot { font-size: 0.6rem; }
+    .save-status-bar.has-unsaved .save-status-dot { color: var(--warning); }
+    .save-status-bar.all-saved .save-status-dot { color: var(--success); }
+    .save-status-bar.saving .save-status-dot { color: var(--accent); }
+    .save-status-time { margin-left: auto; font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* --- Per-segment save indicators --- */
+    .seg-save-ind { font-size: var(--text-xs); margin-left: 0.5rem; }
+    .seg-save-ind.dirty { color: var(--warning); }
+    .seg-save-ind.saving { color: var(--accent); }
+    .seg-save-ind.saved { color: var(--success); }
   </style>
 </head>
 <body>
@@ -998,6 +1028,11 @@
       </div>
 
       <div class="editor-card">
+        <div class="save-status-bar" id="save-status-bar" style="display:none">
+          <span class="save-status-dot" id="save-status-dot">&#9679;</span>
+          <span id="save-status-text">Engar breytingar</span>
+          <span class="save-status-time" id="save-status-time"></span>
+        </div>
         <div class="stats-bar" id="stats-bar"></div>
 
         <div class="filter-bar">
@@ -1082,6 +1117,30 @@
     let termLookupTimer = null;
     const dirtyEdits = new Set(); // Track segment IDs with unsaved textarea edits
     let draftTimer = null;
+    let lastServerSaveTime = null;
+    const recentlySaved = new Set(); // Track recently saved segment IDs for indicators
+
+    // ================================================================
+    // SAVE STATUS BAR
+    // ================================================================
+
+    function updateSaveStatusBar() {
+      const bar = document.getElementById('save-status-bar');
+      if (!bar) return;
+      const count = dirtyEdits.size;
+      bar.classList.remove('has-unsaved', 'all-saved', 'saving');
+      if (count > 0) {
+        bar.classList.add('has-unsaved');
+        document.getElementById('save-status-text').textContent =
+          count === 1 ? '1 óvistuð breyting' : count + ' óvistaðar breytingar';
+      } else {
+        bar.classList.add('all-saved');
+        document.getElementById('save-status-text').textContent = 'Allar breytingar vistaðar';
+      }
+      document.getElementById('save-status-time').textContent = lastServerSaveTime
+        ? 'Síðast vistað: ' + new Date(lastServerSaveTime).toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' })
+        : '';
+    }
 
     // ================================================================
     // DRAFT PERSISTENCE (localStorage)
@@ -1144,6 +1203,7 @@
         }
         // Clean up all tab-specific drafts after restore
         tabGuard.clearDraftsByPrefix(draftPrefix());
+        updateSaveStatusBar();
       } catch (e) {
         tabGuard.clearDraftsByPrefix(draftPrefix());
       }
@@ -1254,6 +1314,10 @@
         showApplyPanel();
         restoreDraft();
         startDraftTimer();
+
+        // Show save status bar and update it
+        document.getElementById('save-status-bar').style.display = 'flex';
+        updateSaveStatusBar();
 
         // Load term data in background (non-blocking)
         loadTermData(moduleId);
@@ -1502,7 +1566,7 @@
               </div>
             </div>
           </td>
-          <td class="col-actions">${actionsHtml}</td>
+          <td class="col-actions">${actionsHtml}<span class="seg-save-ind${recentlySaved.has(seg.segmentId) ? ' saved' : ''}" id="seg-ind-${cssId(seg.segmentId)}">${recentlySaved.has(seg.segmentId) ? 'Vistað' : ''}</span></td>
         </tr>
       `;
     }
@@ -1524,6 +1588,10 @@
           textarea.focus();
           textarea.addEventListener('input', function onInput() {
             dirtyEdits.add(segmentId);
+            // Update per-segment indicator
+            const ind = document.getElementById('seg-ind-' + cssId(segmentId));
+            if (ind) { ind.textContent = 'Breytt'; ind.className = 'seg-save-ind dirty'; }
+            updateSaveStatusBar();
           }, { once: true });
         }
       }
@@ -1537,6 +1605,7 @@
         if (row) row.classList.remove('editing');
       }
       dirtyEdits.delete(segmentId);
+      updateSaveStatusBar();
     }
 
     async function saveEdit(segmentId) {
@@ -1568,6 +1637,10 @@
         }),
       };
 
+      // Update per-segment indicator to "saving"
+      const savingInd = document.getElementById('seg-ind-' + cssId(segmentId));
+      if (savingInd) { savingInd.textContent = 'Vistar...'; savingInd.className = 'seg-save-ind saving'; }
+
       try {
         await saveRetry.attempt(
           `seg:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`,
@@ -1576,10 +1649,16 @@
         );
 
         dirtyEdits.delete(segmentId);
+        lastServerSaveTime = Date.now();
+        recentlySaved.add(segmentId);
+        setTimeout(() => { recentlySaved.delete(segmentId); }, 4000);
         saveDraft(); // update draft (or clear if empty)
+        updateSaveStatusBar();
         // Reload module to refresh edits
         await loadModule(currentModuleId);
       } catch (err) {
+        // Revert per-segment indicator on error
+        if (savingInd) { savingInd.textContent = 'Breytt'; savingInd.className = 'seg-save-ind dirty'; }
         if (!saveRetry.isRetryable(err)) {
           alert('Villa við að vista: ' + err.message);
         }
@@ -1661,8 +1740,11 @@
       tabGuard.release();
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
+      document.getElementById('save-status-bar').style.display = 'none';
       moduleData = null;
       termData = null;
+      lastServerSaveTime = null;
+      recentlySaved.clear();
       clearInterval(pipelinePollingTimer);
 
       // Reset topbar title
@@ -2227,7 +2309,10 @@
           if (row) row.classList.remove('editing');
           // Clear dirty state — find the segmentId from the textarea data
           const textarea = activePanel.querySelector('textarea');
-          if (textarea && textarea._segmentId) dirtyEdits.delete(textarea._segmentId);
+          if (textarea && textarea._segmentId) {
+            dirtyEdits.delete(textarea._segmentId);
+            updateSaveStatusBar();
+          }
         }
       }
 

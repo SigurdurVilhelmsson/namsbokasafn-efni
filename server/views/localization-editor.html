@@ -923,6 +923,30 @@
       .section-header-bar { flex-direction: column; gap: var(--spacing-md); }
       .review-stats-bar { flex-wrap: wrap; }
     }
+
+    /* --- Save status bar --- */
+    .save-status-bar {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-elevated); border: 1px solid var(--border);
+      border-radius: var(--radius-md); margin-bottom: var(--spacing-md);
+      font-size: var(--text-sm); color: var(--text-secondary);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .save-status-bar.has-unsaved {
+      border-color: var(--warning); background: var(--warning-subtle);
+    }
+    .save-status-bar.all-saved {
+      border-color: var(--success); background: var(--success-subtle);
+    }
+    .save-status-bar.saving {
+      border-color: var(--accent); background: var(--accent-subtle);
+    }
+    .save-status-dot { font-size: 0.6rem; }
+    .save-status-bar.has-unsaved .save-status-dot { color: var(--warning); }
+    .save-status-bar.all-saved .save-status-dot { color: var(--success); }
+    .save-status-bar.saving .save-status-dot { color: var(--accent); }
+    .save-status-time { margin-left: auto; font-size: var(--text-xs); color: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -995,6 +1019,12 @@
 
           <div class="progress-bar" id="progress-bar">
             <div class="progress-bar-fill" id="progress-fill" style="width: 0%;"></div>
+          </div>
+
+          <div class="save-status-bar" id="save-status-bar" style="display:none">
+            <span class="save-status-dot" id="save-status-dot">&#9679;</span>
+            <span id="save-status-text">Engar breytingar</span>
+            <span class="save-status-time" id="save-status-time"></span>
           </div>
 
           <div class="stats-bar" id="stats-bar"></div>
@@ -1318,8 +1348,118 @@
     // Track unsaved changes: { segmentId: { content, category } }
     let edPendingChanges = {};
     let edDraftTimer = null;
+    var edLastServerSaveTime = null;
+    var edAutoSaveTimer = null;
+    var edSaveInFlight = false;
+    var ED_AUTOSAVE_MS = 60000;
 
     const ED_API_BASE = '/api/localization-editor';
+
+    // ----------------------------------------------------------------
+    // SAVE STATUS BAR
+    // ----------------------------------------------------------------
+
+    function edUpdateSaveStatusBar() {
+      var bar = document.getElementById('save-status-bar');
+      if (!bar) return;
+      var count = Object.keys(edPendingChanges).length;
+      bar.classList.remove('has-unsaved', 'all-saved', 'saving');
+      if (count > 0) {
+        bar.classList.add('has-unsaved');
+        document.getElementById('save-status-text').textContent =
+          count === 1 ? '1 óvistuð breyting' : count + ' óvistaðar breytingar';
+      } else {
+        bar.classList.add('all-saved');
+        document.getElementById('save-status-text').textContent = 'Allar breytingar vistaðar';
+      }
+      document.getElementById('save-status-time').textContent = edLastServerSaveTime
+        ? 'Síðast vistað: ' + new Date(edLastServerSaveTime).toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' })
+        : '';
+    }
+
+    // ----------------------------------------------------------------
+    // SERVER AUTOSAVE (every 60s when dirty)
+    // ----------------------------------------------------------------
+
+    async function edAutoSave() {
+      if (edSaveInFlight) return;
+      var keys = Object.keys(edPendingChanges);
+      if (keys.length === 0) return;
+
+      edSaveInFlight = true;
+      var bar = document.getElementById('save-status-bar');
+      if (bar) {
+        bar.classList.remove('has-unsaved', 'all-saved');
+        bar.classList.add('saving');
+        document.getElementById('save-status-text').textContent = 'Sjálfvirk vistun...';
+      }
+
+      var segments = keys.map(function (segmentId) {
+        return {
+          segmentId: segmentId,
+          content: edPendingChanges[segmentId].content,
+        };
+      });
+
+      var saveUrl = ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save-all';
+      var saveBody = { segments: segments };
+      if (edLastModified != null) saveBody.lastModified = edLastModified;
+      var saveOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(saveBody),
+      };
+
+      try {
+        var result = await saveRetry.attempt(
+          'loc-auto:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId,
+          saveUrl,
+          saveOptions
+        );
+
+        if (result.lastModified != null) edLastModified = result.lastModified;
+
+        // Update local state for all saved segments
+        for (var i = 0; i < keys.length; i++) {
+          var segmentId = keys[i];
+          var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
+          if (seg) {
+            seg.localized = edPendingChanges[segmentId].content;
+            seg.hasLocalized = true;
+          }
+          // Update per-segment indicator
+          var ind = document.getElementById('ind-' + edCssId(segmentId));
+          if (ind) { ind.textContent = 'Vistað'; ind.className = 'save-indicator saved'; }
+          var ta = document.getElementById('ta-' + edCssId(segmentId));
+          if (ta) ta.classList.remove('modified');
+          var row = document.getElementById('row-' + edCssId(segmentId));
+          if (row) row.className = 'segment-row saved';
+        }
+        edPendingChanges = {};
+        edClearDraft();
+
+        edModuleData.localizedCount = edModuleData.segments.filter(function (s) { return s.hasLocalized; }).length;
+        edLastServerSaveTime = Date.now();
+        edRenderStats();
+        edUpdateProgress();
+        edUpdateSaveStatusBar();
+      } catch (err) {
+        if (err.status === 409) {
+          // Conflict — show warning in status bar but keep changes
+          if (bar) {
+            bar.classList.remove('saving');
+            bar.classList.add('has-unsaved');
+            document.getElementById('save-status-text').textContent = 'Árekstur! Annar notandi breytti skránni.';
+          }
+        } else {
+          // Other error — revert to unsaved count
+          edUpdateSaveStatusBar();
+        }
+      } finally {
+        edSaveInFlight = false;
+      }
+    }
 
     // ----------------------------------------------------------------
     // DRAFT PERSISTENCE (localStorage)
@@ -1355,6 +1495,8 @@
     function edStartDraftTimer() {
       if (edDraftTimer) clearInterval(edDraftTimer);
       edDraftTimer = setInterval(edSaveDraft, 5000);
+      if (edAutoSaveTimer) clearInterval(edAutoSaveTimer);
+      edAutoSaveTimer = setInterval(edAutoSave, ED_AUTOSAVE_MS);
     }
 
     function edRestoreDraft() {
@@ -1383,6 +1525,7 @@
         }
         // Clean up all tab-specific drafts for this module after restore
         tabGuard.clearDraftsByPrefix(edDraftPrefix());
+        edUpdateSaveStatusBar();
       } catch (e) {
         tabGuard.clearDraftsByPrefix(edDraftPrefix());
       }
@@ -1475,6 +1618,10 @@
         edRenderModule();
         edRestoreDraft();
         edStartDraftTimer();
+
+        // Show save status bar and update it
+        document.getElementById('save-status-bar').style.display = 'flex';
+        edUpdateSaveStatusBar();
       } catch (err) {
         alert('Villa vi\u00F0 a\u00F0 hla\u00F0a einingu: ' + err.message);
       }
@@ -1644,6 +1791,7 @@
 
       edRenderStats();
       edUpdateProgress();
+      edUpdateSaveStatusBar();
     }
 
     function edOnSegmentBlur(segmentId) {
@@ -1701,8 +1849,10 @@
         ind.className = 'save-indicator saved';
 
         edModuleData.localizedCount = edModuleData.segments.filter(function (s) { return s.hasLocalized; }).length;
+        edLastServerSaveTime = Date.now();
         edRenderStats();
         edUpdateProgress();
+        edUpdateSaveStatusBar();
       } catch (err) {
         if (err.status === 409) {
           ind.textContent = '\u00C1rekstrar!';
@@ -1722,12 +1872,14 @@
     }
 
     async function edSaveAllSegments() {
+      if (edSaveInFlight) return;
       var keys = Object.keys(edPendingChanges);
       if (keys.length === 0) {
         alert('Engar \u00F3vista\u00F0ar breytingar.');
         return;
       }
 
+      edSaveInFlight = true;
       var globalInd = document.getElementById('global-save-indicator');
       globalInd.textContent = 'Vistar ' + keys.length + ' b\u00FAta...';
       globalInd.className = 'save-indicator saving';
@@ -1777,9 +1929,15 @@
         globalInd.className = 'save-indicator saved';
         setTimeout(function () { globalInd.textContent = ''; }, 3000);
 
+        edLastServerSaveTime = Date.now();
         edRenderSegments();
         edRenderStats();
         edUpdateProgress();
+        edUpdateSaveStatusBar();
+
+        // Reset autosave timer to avoid redundant save right after manual save
+        if (edAutoSaveTimer) clearInterval(edAutoSaveTimer);
+        edAutoSaveTimer = setInterval(edAutoSave, ED_AUTOSAVE_MS);
       } catch (err) {
         if (err.status === 409) {
           globalInd.textContent = '\u00C1rekstrar!';
@@ -1795,6 +1953,8 @@
         if (!saveRetry.isRetryable(err)) {
           alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
         }
+      } finally {
+        edSaveInFlight = false;
       }
     }
 
@@ -1819,11 +1979,14 @@
       }
       edClearDraft();
       if (edDraftTimer) clearInterval(edDraftTimer);
+      if (edAutoSaveTimer) clearInterval(edAutoSaveTimer);
       tabGuard.release();
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
+      document.getElementById('save-status-bar').style.display = 'none';
       edModuleData = null;
       edPendingChanges = {};
+      edLastServerSaveTime = null;
     });
 
     // ----------------------------------------------------------------
