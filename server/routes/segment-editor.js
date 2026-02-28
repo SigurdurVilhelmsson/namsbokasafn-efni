@@ -49,19 +49,25 @@ const VALID_CATEGORIES = ['terminology', 'accuracy', 'readability', 'style', 'om
  * GET /:book/:chapter
  * List available modules in a chapter for editing.
  */
-router.get('/:book/:chapter', requireAuth, validateBookChapter, (req, res) => {
-  try {
-    const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
-    res.json({
-      book: req.params.book,
-      chapter: req.chapterNum,
-      modules,
-    });
-  } catch (err) {
-    console.error('Error listing modules:', err.message);
-    res.status(500).json({ error: err.message });
+router.get(
+  '/:book/:chapter',
+  requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
+      res.json({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        modules,
+      });
+    } catch (err) {
+      console.error('Error listing modules:', err.message);
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 /**
  * GET /:book/:chapter/:moduleId
@@ -70,6 +76,7 @@ router.get('/:book/:chapter', requireAuth, validateBookChapter, (req, res) => {
 router.get(
   '/:book/:chapter/:moduleId',
   requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -227,7 +234,7 @@ router.get('/reviews', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
  * GET /review-queue
  * Cross-chapter review queue with edit counts and SLA indicators.
  */
-router.get('/review-queue', requireAuth, (req, res) => {
+router.get('/review-queue', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
   try {
     const { book } = req.query;
     const reviews = segmentEditor.getReviewQueue(book || undefined);
@@ -425,7 +432,7 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.CONTRIBUTOR)
  * GET /edit/:editId/comments
  * Get discussion thread for a segment edit.
  */
-router.get('/edit/:editId/comments', requireAuth, (req, res) => {
+router.get('/edit/:editId/comments', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
   try {
     const comments = segmentEditor.getDiscussion(parseInt(req.params.editId, 10));
     res.json({ comments });

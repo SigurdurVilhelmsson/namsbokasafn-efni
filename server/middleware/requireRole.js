@@ -146,16 +146,19 @@ function requireBookAccess() {
 
     // Check chapter assignment (backward compat: no assignments = full access)
     const chapter = req.chapterNum || req.params.chapter;
-    const userId = req.user.dbUserId || req.user.id;
 
-    if (userId && chapter) {
-      const allowed = userService.hasChapterAccess(userId, book, chapter);
-      if (!allowed) {
-        return res.status(403).json({
-          error: 'Chapter access denied',
-          message: `You are not assigned to chapter ${chapter} of ${book}`,
-          yourRole: req.user.role,
-        });
+    if (chapter) {
+      // Look up the DB user ID from the GitHub ID in the JWT
+      const dbUser = userService.findByGithubId(req.user.id);
+      if (dbUser) {
+        const allowed = userService.hasChapterAccess(dbUser.id, book, chapter);
+        if (!allowed) {
+          return res.status(403).json({
+            error: 'Chapter access denied',
+            message: `You are not assigned to chapter ${chapter} of ${book}`,
+            yourRole: req.user.role,
+          });
+        }
       }
     }
 

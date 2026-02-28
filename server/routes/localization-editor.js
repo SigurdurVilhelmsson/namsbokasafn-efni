@@ -59,19 +59,25 @@ function acquireModuleLock(key) {
  * GET /:book/:chapter
  * List modules in a chapter with localization status.
  */
-router.get('/:book/:chapter', requireAuth, validateBookChapter, (req, res) => {
-  try {
-    const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
-    res.json({
-      book: req.params.book,
-      chapter: req.chapterNum,
-      modules,
-    });
-  } catch (err) {
-    console.error('Error listing modules for localization:', err.message);
-    res.status(500).json({ error: err.message });
+router.get(
+  '/:book/:chapter',
+  requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
+      res.json({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        modules,
+      });
+    } catch (err) {
+      console.error('Error listing modules for localization:', err.message);
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 // =====================================================================
 // LOAD MODULE FOR LOCALIZATION
@@ -370,6 +376,7 @@ router.post(
 router.get(
   '/:book/:chapter/:moduleId/history',
   requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -395,6 +402,7 @@ router.get(
 router.get(
   '/:book/:chapter/:moduleId/:segmentId/history',
   requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
