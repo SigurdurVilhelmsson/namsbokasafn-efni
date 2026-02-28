@@ -17,7 +17,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
-const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
+let BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 
 // Match both marker formats
 const SEG_MARKER_REGEX =
@@ -469,6 +469,11 @@ function listChapterModules(book, chapter) {
   });
 }
 
+/** @internal Test-only: override BOOKS_DIR for isolated tests */
+function _setTestBooksDir(dir) {
+  BOOKS_DIR = dir;
+}
+
 module.exports = {
   normalizeWraps,
   normalizeTermMarkers,
@@ -483,5 +488,8 @@ module.exports = {
   listChapterModules,
   SEG_MARKER_REGEX,
   PROJECT_ROOT,
-  BOOKS_DIR,
+  get BOOKS_DIR() {
+    return BOOKS_DIR;
+  },
+  _setTestBooksDir,
 };

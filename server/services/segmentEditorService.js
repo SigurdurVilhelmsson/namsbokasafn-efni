@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 const { advanceChapterStatus } = require('./pipelineService');
 
-const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
+let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 let db;
@@ -741,6 +741,16 @@ function getReviewQueue(book) {
   return conn.prepare(query).all(...params);
 }
 
+/** @internal Test-only: inject an in-memory DB instance */
+function _setTestDb(testDb) {
+  db = testDb;
+}
+
+/** @internal Test-only: override BOOKS_DIR for isolated tests */
+function _setTestBooksDir(dir) {
+  BOOKS_DIR = dir;
+}
+
 module.exports = {
   // Segment edits
   saveSegmentEdit,
@@ -768,4 +778,7 @@ module.exports = {
   getModuleStats,
   // Review queue
   getReviewQueue,
+  // Test helpers
+  _setTestDb,
+  _setTestBooksDir,
 };
