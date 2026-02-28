@@ -1270,6 +1270,7 @@
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script src="/js/saveRetry.js"></script>
+  <script src="/js/tabGuard.js"></script>
   <script>
     /* ==========================================================================
        LOCALIZATION PAGE — Client Logic
@@ -1312,6 +1313,7 @@
     let edCurrentModuleId = '';
     let edModuleData = null;
     let edUserRole = 'viewer';
+    let edLastModified = null; // file mtime for conflict detection
 
     // Track unsaved changes: { segmentId: { content, category } }
     let edPendingChanges = {};
@@ -1324,7 +1326,11 @@
     // ----------------------------------------------------------------
 
     function edDraftKey() {
-      return 'loc-draft:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId;
+      return 'loc-draft:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + ':' + tabGuard.tabId;
+    }
+
+    function edDraftPrefix() {
+      return 'loc-draft:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + ':';
     }
 
     function edSaveDraft() {
@@ -1343,7 +1349,7 @@
     }
 
     function edClearDraft() {
-      if (edCurrentModuleId) localStorage.removeItem(edDraftKey());
+      if (edCurrentModuleId) tabGuard.clearDraftsByPrefix(edDraftPrefix());
     }
 
     function edStartDraftTimer() {
@@ -1352,19 +1358,19 @@
     }
 
     function edRestoreDraft() {
-      var raw = localStorage.getItem(edDraftKey());
-      if (!raw) return;
+      var found = tabGuard.findNewestDraft(edDraftPrefix());
+      if (!found) return;
       try {
-        var draft = JSON.parse(raw);
+        var draft = found.data;
         // Discard drafts older than 7 days
         if (Date.now() - draft.ts > 7 * 24 * 60 * 60 * 1000) {
-          localStorage.removeItem(edDraftKey());
+          tabGuard.clearDraftsByPrefix(edDraftPrefix());
           return;
         }
         var count = Object.keys(draft.changes).length;
         if (count === 0) return;
         if (!confirm('Fundust ' + count + ' óvistaðar drög frá síðustu lotu. Endurheimta?')) {
-          localStorage.removeItem(edDraftKey());
+          tabGuard.clearDraftsByPrefix(edDraftPrefix());
           return;
         }
         // Apply drafts to textareas
@@ -1375,8 +1381,10 @@
             edOnSegmentEdit(segId);
           }
         }
+        // Clean up all tab-specific drafts for this module after restore
+        tabGuard.clearDraftsByPrefix(edDraftPrefix());
       } catch (e) {
-        localStorage.removeItem(edDraftKey());
+        tabGuard.clearDraftsByPrefix(edDraftPrefix());
       }
     }
 
@@ -1454,6 +1462,12 @@
         edModuleData = await fetchJson(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId, {
           credentials: 'include',
         });
+
+        // Track file version for conflict detection
+        edLastModified = edModuleData.lastModified || null;
+
+        // Claim module for cross-tab conflict detection
+        tabGuard.claim('loc:' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId);
 
         document.getElementById('module-selector').style.display = 'none';
         document.getElementById('editor-container').style.display = 'block';
@@ -1650,19 +1664,24 @@
       ind.className = 'save-indicator saving';
 
       var saveUrl = ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save';
+      var saveBody = { segmentId: segmentId, content: content };
+      if (edLastModified != null) saveBody.lastModified = edLastModified;
       var saveOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ segmentId: segmentId, content: content }),
+        body: JSON.stringify(saveBody),
       };
 
       try {
-        await saveRetry.attempt(
+        var result = await saveRetry.attempt(
           'loc:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + ':' + segmentId,
           saveUrl,
           saveOptions
         );
+
+        // Update conflict tracking with new mtime
+        if (result.lastModified != null) edLastModified = result.lastModified;
 
         // Update local state
         var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
@@ -1685,6 +1704,15 @@
         edRenderStats();
         edUpdateProgress();
       } catch (err) {
+        if (err.status === 409) {
+          ind.textContent = '\u00C1rekstrar!';
+          ind.className = 'save-indicator error';
+          if (confirm('Einingin hefur veri\u00F0 breytt af \u00F6\u00F0rum notanda.\nEndurhla\u00F0a til a\u00F0 sj\u00E1 n\u00FDjustu \u00FAtg\u00E1fu?\n\n(\u00D3vista\u00F0ar breytingar \u00FE\u00EDnar ver\u00F0a geymdar sem dr\u00F6g.)')) {
+            edSaveDraft();
+            edLoadModule(edCurrentModuleId);
+          }
+          return;
+        }
         ind.textContent = 'Villa!';
         ind.className = 'save-indicator error';
         if (!saveRetry.isRetryable(err)) {
@@ -1712,11 +1740,13 @@
       });
 
       var saveUrl = ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save-all';
+      var saveBody = { segments: segments };
+      if (edLastModified != null) saveBody.lastModified = edLastModified;
       var saveOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ segments: segments }),
+        body: JSON.stringify(saveBody),
       };
 
       try {
@@ -1725,6 +1755,9 @@
           saveUrl,
           saveOptions
         );
+
+        // Update conflict tracking with new mtime
+        if (result.lastModified != null) edLastModified = result.lastModified;
 
         // Update local state for all saved segments
         for (var i = 0; i < keys.length; i++) {
@@ -1748,6 +1781,15 @@
         edRenderStats();
         edUpdateProgress();
       } catch (err) {
+        if (err.status === 409) {
+          globalInd.textContent = '\u00C1rekstrar!';
+          globalInd.className = 'save-indicator error';
+          if (confirm('Einingin hefur veri\u00F0 breytt af \u00F6\u00F0rum notanda.\nEndurhla\u00F0a til a\u00F0 sj\u00E1 n\u00FDjustu \u00FAtg\u00E1fu?\n\n(\u00D3vista\u00F0ar breytingar \u00FE\u00EDnar ver\u00F0a geymdar sem dr\u00F6g.)')) {
+            edSaveDraft();
+            edLoadModule(edCurrentModuleId);
+          }
+          return;
+        }
         globalInd.textContent = 'Villa!';
         globalInd.className = 'save-indicator error';
         if (!saveRetry.isRetryable(err)) {
@@ -1777,6 +1819,7 @@
       }
       edClearDraft();
       if (edDraftTimer) clearInterval(edDraftTimer);
+      tabGuard.release();
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
       edModuleData = null;

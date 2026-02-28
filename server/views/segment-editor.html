@@ -1067,6 +1067,7 @@
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script src="/js/saveRetry.js"></script>
+  <script src="/js/tabGuard.js"></script>
   <script>
     // ================================================================
     // STATE
@@ -1087,7 +1088,11 @@
     // ================================================================
 
     function draftKey() {
-      return 'seg-draft:' + currentBook + '/' + currentChapter + '/' + currentModuleId;
+      return 'seg-draft:' + currentBook + '/' + currentChapter + '/' + currentModuleId + ':' + tabGuard.tabId;
+    }
+
+    function draftPrefix() {
+      return 'seg-draft:' + currentBook + '/' + currentChapter + '/' + currentModuleId + ':';
     }
 
     function saveDraft() {
@@ -1106,7 +1111,7 @@
     }
 
     function clearDraft() {
-      if (currentModuleId) localStorage.removeItem(draftKey());
+      if (currentModuleId) tabGuard.clearDraftsByPrefix(draftPrefix());
     }
 
     function startDraftTimer() {
@@ -1115,18 +1120,18 @@
     }
 
     function restoreDraft() {
-      const raw = localStorage.getItem(draftKey());
-      if (!raw) return;
+      const found = tabGuard.findNewestDraft(draftPrefix());
+      if (!found) return;
       try {
-        const draft = JSON.parse(raw);
+        const draft = found.data;
         if (Date.now() - draft.ts > 7 * 24 * 60 * 60 * 1000) {
-          localStorage.removeItem(draftKey());
+          tabGuard.clearDraftsByPrefix(draftPrefix());
           return;
         }
         const ids = Object.keys(draft.drafts);
         if (ids.length === 0) return;
         if (!confirm('Fundust ' + ids.length + ' óvistuð drög frá síðustu lotu. Endurheimta?')) {
-          localStorage.removeItem(draftKey());
+          tabGuard.clearDraftsByPrefix(draftPrefix());
           return;
         }
         for (const segId of ids) {
@@ -1137,8 +1142,10 @@
             dirtyEdits.add(segId);
           }
         }
+        // Clean up all tab-specific drafts after restore
+        tabGuard.clearDraftsByPrefix(draftPrefix());
       } catch (e) {
-        localStorage.removeItem(draftKey());
+        tabGuard.clearDraftsByPrefix(draftPrefix());
       }
     }
 
@@ -1161,7 +1168,7 @@
         userRole = data.user?.role || 'viewer';
         userName = data.user?.username || null;
       } catch {
-        window.location.href = '/login';
+        window.location.href = '/api/auth/login?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
       }
     }
 
@@ -1235,6 +1242,9 @@
         moduleData = await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
           credentials: 'include',
         });
+
+        // Claim module for cross-tab conflict detection
+        tabGuard.claim('seg:' + currentBook + '/' + currentChapter + '/' + moduleId);
 
         document.getElementById('module-selector').style.display = 'none';
         document.getElementById('editor-container').style.display = 'block';
@@ -1646,6 +1656,9 @@
     // BACK BUTTON
     // ================================================================
     document.getElementById('btn-back').addEventListener('click', () => {
+      clearDraft();
+      if (draftTimer) clearInterval(draftTimer);
+      tabGuard.release();
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
       moduleData = null;

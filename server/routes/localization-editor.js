@@ -120,7 +120,7 @@ router.post(
   requireBookAccess(),
   validateModule,
   async (req, res) => {
-    const { segmentId, content, category } = req.body;
+    const { segmentId, content, category, lastModified } = req.body;
 
     if (!segmentId) {
       return res.status(400).json({ error: 'segmentId is required' });
@@ -137,6 +137,23 @@ router.post(
     const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;
     const release = await acquireModuleLock(lockKey);
     try {
+      // Conflict detection: check if file was modified since client loaded it
+      if (lastModified != null) {
+        const currentMtime = segmentParser.getLocalizedMtime(
+          req.params.book,
+          req.chapterNum,
+          req.params.moduleId
+        );
+        if (currentMtime != null && Math.abs(currentMtime - lastModified) > 1) {
+          return res.status(409).json({
+            error: 'conflict',
+            message:
+              'Einingin hefur verið breytt af öðrum notanda. Endurhlaðið til að sjá nýjustu útgáfu.',
+            currentLastModified: currentMtime,
+          });
+        }
+      }
+
       const data = segmentParser.loadModuleForLocalization(
         req.params.book,
         req.chapterNum,
@@ -166,6 +183,13 @@ router.post(
         segments
       );
 
+      // Get updated mtime for client
+      const newMtime = segmentParser.getLocalizedMtime(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+
       // Fire-and-forget audit log — don't block the response
       if (previousContent !== content) {
         try {
@@ -189,6 +213,7 @@ router.post(
         success: true,
         segmentId,
         savedPath,
+        lastModified: newMtime,
       });
     } catch (err) {
       console.error('Error saving localized segment:', err.message);
@@ -211,7 +236,7 @@ router.post(
   requireBookAccess(),
   validateModule,
   async (req, res) => {
-    const { segments } = req.body;
+    const { segments, lastModified } = req.body;
 
     if (!segments || !Array.isArray(segments)) {
       return res.status(400).json({ error: 'segments array is required' });
@@ -220,6 +245,23 @@ router.post(
     const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;
     const release = await acquireModuleLock(lockKey);
     try {
+      // Conflict detection: check if file was modified since client loaded it
+      if (lastModified != null) {
+        const currentMtime = segmentParser.getLocalizedMtime(
+          req.params.book,
+          req.chapterNum,
+          req.params.moduleId
+        );
+        if (currentMtime != null && Math.abs(currentMtime - lastModified) > 1) {
+          return res.status(409).json({
+            error: 'conflict',
+            message:
+              'Einingin hefur verið breytt af öðrum notanda. Endurhlaðið til að sjá nýjustu útgáfu.',
+            currentLastModified: currentMtime,
+          });
+        }
+      }
+
       // Build lookup from request
       const editLookup = {};
       for (const seg of segments) {
@@ -274,6 +316,13 @@ router.post(
         allSegments
       );
 
+      // Get updated mtime for client
+      const newMtime = segmentParser.getLocalizedMtime(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+
       // Fire-and-forget audit log — don't block the response
       if (auditEdits.length > 0) {
         try {
@@ -288,6 +337,7 @@ router.post(
         savedSegments: Object.keys(editLookup).length,
         totalSegments: allSegments.length,
         savedPath,
+        lastModified: newMtime,
       });
     } catch (err) {
       console.error('Error saving localized segments:', err.message);

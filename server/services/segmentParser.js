@@ -359,11 +359,22 @@ function loadModuleForLocalization(book, chapter, moduleId) {
     };
   });
 
+  // Include file mtime for conflict detection
+  let lastModified = null;
+  if (hasLocalized) {
+    try {
+      lastModified = fs.statSync(paths.localized).mtimeMs;
+    } catch {
+      // stat failed — leave null
+    }
+  }
+
   return {
     book,
     chapter,
     moduleId,
     hasLocalized,
+    lastModified,
     title: structure ? structure.title?.text : moduleId,
     segments: paired,
     equations,
@@ -409,6 +420,23 @@ function saveLocalizedSegments(book, chapter, moduleId, segments) {
 }
 
 /**
+ * Get the mtime (in ms) of the localized file, or null if it doesn't exist.
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @param {string} moduleId - Module ID
+ * @returns {number|null}
+ */
+function getLocalizedMtime(book, chapter, moduleId) {
+  const paths = getModulePaths(book, chapter, moduleId);
+  try {
+    return fs.statSync(paths.localized).mtimeMs;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * List all modules available for a chapter.
  * Looks in 02-for-mt/ for EN source files.
  *
@@ -451,6 +479,7 @@ module.exports = {
   saveModuleSegments,
   loadModuleForLocalization,
   saveLocalizedSegments,
+  getLocalizedMtime,
   listChapterModules,
   SEG_MARKER_REGEX,
   PROJECT_ROOT,

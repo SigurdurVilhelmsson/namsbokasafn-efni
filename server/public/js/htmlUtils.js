@@ -82,7 +82,9 @@ async function fetchJson(url, options) {
           /* sessionStorage may be unavailable */
         }
 
-        window.location.href = '/login';
+        // Redirect to OAuth with return URL so user comes back to current page
+        const returnPath = window.location.pathname + window.location.search;
+        window.location.href = '/api/auth/login?redirect=' + encodeURIComponent(returnPath);
       }
       return response;
     });
