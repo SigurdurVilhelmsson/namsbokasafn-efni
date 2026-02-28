@@ -521,6 +521,7 @@
     // Step 4: Fetch fresh auth state from server
     try {
       const response = await fetch('/api/auth/me');
+      if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
 
       // Cache for 60 seconds

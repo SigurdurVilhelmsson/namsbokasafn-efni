@@ -1932,12 +1932,17 @@
 
     function pollJobStatus(jobId) {
       clearInterval(pipelinePollingTimer);
+      let pollAttempts = 0;
+      const MAX_POLL_ATTEMPTS = 40; // ~60 seconds at 1.5s interval
 
       pipelinePollingTimer = setInterval(async () => {
+        pollAttempts++;
         try {
           const { job } = await fetchJson(`/api/pipeline/jobs/${jobId}`, {
             credentials: 'include',
           });
+          pollAttempts = 0; // Reset on success
+
           const badge = document.getElementById('pipeline-badge');
           const output = document.getElementById('pipeline-output');
 
@@ -1960,7 +1965,14 @@
             badge.textContent = job.phase ? `Í gangi (${job.phase})...` : 'Í gangi...';
           }
         } catch {
-          // Polling error — ignore, will retry
+          if (pollAttempts >= MAX_POLL_ATTEMPTS) {
+            clearInterval(pipelinePollingTimer);
+            const badge = document.getElementById('pipeline-badge');
+            badge.textContent = 'Tenging rofnaði';
+            badge.className = 'pipeline-status-badge failed';
+            document.getElementById('pipeline-output').textContent += '\nGat ekki náð sambandi við þjón.';
+            setPipelineButtonsDisabled(false);
+          }
         }
       }, 1500);
     }
@@ -2093,12 +2105,16 @@
 
     function pollApplyRenderJob(jobId) {
       const badge = document.getElementById('apply-badge');
+      let pollAttempts = 0;
+      const MAX_POLL_ATTEMPTS = 40; // ~60 seconds at 1.5s interval
 
       const timer = setInterval(async () => {
+        pollAttempts++;
         try {
           const job = await fetchJson(`/api/pipeline/status/${jobId}`, {
             credentials: 'include',
           });
+          pollAttempts = 0; // Reset on success
 
           if (job.status === 'completed') {
             clearInterval(timer);
@@ -2117,7 +2133,13 @@
               : 'Render í gangi...';
           }
         } catch {
-          // Polling error — ignore, will retry
+          if (pollAttempts >= MAX_POLL_ATTEMPTS) {
+            clearInterval(timer);
+            badge.textContent = 'Tenging rofnaði';
+            badge.className = 'pipeline-status-badge failed';
+            document.getElementById('btn-apply').disabled = false;
+            document.getElementById('btn-apply-render').disabled = false;
+          }
         }
       }, 1500);
     }
