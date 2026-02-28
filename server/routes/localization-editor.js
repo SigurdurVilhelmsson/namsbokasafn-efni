@@ -10,12 +10,15 @@
  *   GET  /api/localization-editor/:book/:chapter/:moduleId Load module for localization
  *   POST /api/localization-editor/:book/:chapter/:moduleId/save      Save single segment
  *   POST /api/localization-editor/:book/:chapter/:moduleId/save-all  Save all segments
+ *   GET  /api/localization-editor/:book/:chapter/:moduleId/history           Module edit history
+ *   GET  /api/localization-editor/:book/:chapter/:moduleId/:segmentId/history Segment edit history
  */
 
 const express = require('express');
 const router = express.Router();
 
 const segmentParser = require('../services/segmentParser');
+const localizationEditService = require('../services/localizationEditService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
@@ -148,12 +151,39 @@ router.post(
           seg.segmentId === segmentId ? content : seg.hasLocalized ? seg.localized : seg.faithful,
       }));
 
+      // Compute previous content for audit trail
+      const targetSeg = data.segments.find((seg) => seg.segmentId === segmentId);
+      const previousContent = targetSeg
+        ? targetSeg.hasLocalized
+          ? targetSeg.localized
+          : targetSeg.faithful
+        : '';
+
       const savedPath = segmentParser.saveLocalizedSegments(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         segments
       );
+
+      // Fire-and-forget audit log — don't block the response
+      if (previousContent !== content) {
+        try {
+          localizationEditService.logLocalizationEdit({
+            book: req.params.book,
+            chapter: req.chapterNum,
+            moduleId: req.params.moduleId,
+            segmentId,
+            previousContent,
+            newContent: content,
+            category: category || null,
+            editorId: String(req.user.id),
+            editorUsername: req.user.username,
+          });
+        } catch (logErr) {
+          console.error('Audit log failed (single save):', logErr.message);
+        }
+      }
 
       res.json({
         success: true,
@@ -215,12 +245,43 @@ router.post(
               : seg.faithful,
       }));
 
+      // Build audit trail entries before saving
+      const auditEdits = [];
+      for (const seg of data.segments) {
+        if (editLookup[seg.segmentId] !== undefined) {
+          const previousContent = seg.hasLocalized ? seg.localized : seg.faithful;
+          const newContent = editLookup[seg.segmentId];
+          if (previousContent !== newContent) {
+            auditEdits.push({
+              book: req.params.book,
+              chapter: req.chapterNum,
+              moduleId: req.params.moduleId,
+              segmentId: seg.segmentId,
+              previousContent,
+              newContent,
+              category: null,
+              editorId: String(req.user.id),
+              editorUsername: req.user.username,
+            });
+          }
+        }
+      }
+
       const savedPath = segmentParser.saveLocalizedSegments(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         allSegments
       );
+
+      // Fire-and-forget audit log — don't block the response
+      if (auditEdits.length > 0) {
+        try {
+          localizationEditService.logLocalizationEdits(auditEdits);
+        } catch (logErr) {
+          console.error('Audit log failed (bulk save):', logErr.message);
+        }
+      }
 
       res.json({
         success: true,
@@ -233,6 +294,61 @@ router.post(
       res.status(500).json({ error: err.message });
     } finally {
       release();
+    }
+  }
+);
+
+// =====================================================================
+// EDIT HISTORY
+// =====================================================================
+
+/**
+ * GET /:book/:chapter/:moduleId/history
+ * Get localization edit history for a module.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/history',
+  requireAuth,
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
+      const history = localizationEditService.getModuleHistory(
+        req.params.book,
+        req.params.moduleId,
+        limit
+      );
+      res.json({ history });
+    } catch (err) {
+      console.error('Error fetching module history:', err.message);
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/:segmentId/history
+ * Get localization edit history for a specific segment.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/:segmentId/history',
+  requireAuth,
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const limit = Math.min(parseInt(req.query.limit, 10) || 20, 200);
+      const history = localizationEditService.getSegmentHistory(
+        req.params.book,
+        req.params.moduleId,
+        req.params.segmentId,
+        limit
+      );
+      res.json({ history });
+    } catch (err) {
+      console.error('Error fetching segment history:', err.message);
+      res.status(500).json({ error: err.message });
     }
   }
 );

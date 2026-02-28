@@ -1066,6 +1066,7 @@
   <script src="/js/layout.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
+  <script src="/js/saveRetry.js"></script>
   <script>
     // ================================================================
     // STATE
@@ -1543,21 +1544,25 @@
         return; // No change from original and no annotation
       }
 
+      const saveUrl = `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`;
+      const saveOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          segmentId,
+          originalContent: seg.is,
+          editedContent,
+          category: category || undefined,
+          editorNote: editorNote || undefined,
+        }),
+      };
+
       try {
-        await fetchJson(
-          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({
-              segmentId,
-              originalContent: seg.is,
-              editedContent,
-              category: category || undefined,
-              editorNote: editorNote || undefined,
-            }),
-          }
+        await saveRetry.attempt(
+          `seg:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`,
+          saveUrl,
+          saveOptions
         );
 
         dirtyEdits.delete(segmentId);
@@ -1565,7 +1570,9 @@
         // Reload module to refresh edits
         await loadModule(currentModuleId);
       } catch (err) {
-        alert('Villa við að vista: ' + err.message);
+        if (!saveRetry.isRetryable(err)) {
+          alert('Villa við að vista: ' + err.message);
+        }
       }
     }
 

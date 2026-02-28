@@ -327,6 +327,90 @@
     .btn-save-seg:hover { opacity: 0.85; }
     .btn-save-seg:disabled { opacity: 0.5; cursor: not-allowed; }
 
+    .btn-history-seg {
+      font-size: var(--text-xs);
+      padding: 0.2rem 0.4rem;
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--transition-fast);
+      margin-top: 0.25rem;
+    }
+
+    .btn-history-seg:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+    .history-popover {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      z-index: 100;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 360px;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: var(--spacing-sm);
+    }
+
+    .history-popover-header {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-bottom: var(--spacing-xs);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--spacing-xs);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .history-entry {
+      padding: var(--spacing-xs) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-xs);
+    }
+
+    .history-entry:last-child { border-bottom: none; }
+
+    .history-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .history-diff {
+      display: flex;
+      gap: var(--spacing-xs);
+      align-items: baseline;
+    }
+
+    .history-prev {
+      color: var(--error);
+      text-decoration: line-through;
+      max-width: 45%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .history-new {
+      color: var(--success);
+      max-width: 45%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .history-arrow { color: var(--text-muted); }
+
     .btn-copy-faithful {
       font-size: var(--text-xs);
       padding: 0.15rem 0.4rem;
@@ -1185,6 +1269,7 @@
   <script src="/js/layout.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
+  <script src="/js/saveRetry.js"></script>
   <script>
     /* ==========================================================================
        LOCALIZATION PAGE — Client Logic
@@ -1475,6 +1560,9 @@
       // SVG for save button
       var checkSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
+      // SVG for history button
+      var historySvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>';
+
       return '<tr class="' + rowClass + '" id="row-' + edCssId(seg.segmentId) + '">' +
         '<td class="col-type">' +
           '<span class="segment-type-badge ' + seg.segmentType + '">' + escapeHtml(seg.segmentType) + '</span>' +
@@ -1496,10 +1584,14 @@
             (seg.hasLocalized && !pending ? 'Vista\u00F0' : '') +
           '</span>' +
         '</td>' +
-        '<td class="col-actions">' +
+        '<td class="col-actions" style="position:relative">' +
           '<button class="btn-save-seg" onclick="edSaveSingleSegment(\'' + seg.segmentId + '\')" title="Vista b\u00FAt">' +
             checkSvg +
           '</button>' +
+          '<button class="btn-history-seg" onclick="edShowHistory(\'' + seg.segmentId + '\', this)" title="Breytingasaga">' +
+            historySvg +
+          '</button>' +
+          '<div id="hist-' + edCssId(seg.segmentId) + '"></div>' +
         '</td>' +
       '</tr>';
     }
@@ -1557,15 +1649,19 @@
       ind.textContent = 'Vistar...';
       ind.className = 'save-indicator saving';
 
+      var saveUrl = ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save';
+      var saveOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ segmentId: segmentId, content: content }),
+      };
+
       try {
-        await fetchJson(
-          ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({ segmentId: segmentId, content: content }),
-          }
+        await saveRetry.attempt(
+          'loc:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + ':' + segmentId,
+          saveUrl,
+          saveOptions
         );
 
         // Update local state
@@ -1591,7 +1687,9 @@
       } catch (err) {
         ind.textContent = 'Villa!';
         ind.className = 'save-indicator error';
-        alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
+        if (!saveRetry.isRetryable(err)) {
+          alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
+        }
       }
     }
 
@@ -1613,15 +1711,19 @@
         };
       });
 
+      var saveUrl = ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save-all';
+      var saveOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ segments: segments }),
+      };
+
       try {
-        var result = await fetchJson(
-          ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/save-all',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({ segments: segments }),
-          }
+        var result = await saveRetry.attempt(
+          'loc-all:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId,
+          saveUrl,
+          saveOptions
         );
 
         // Update local state for all saved segments
@@ -1648,7 +1750,9 @@
       } catch (err) {
         globalInd.textContent = 'Villa!';
         globalInd.className = 'save-indicator error';
-        alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
+        if (!saveRetry.isRetryable(err)) {
+          alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
+        }
       }
     }
 
@@ -1722,6 +1826,91 @@
 
     function edCssId(segmentId) {
       return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
+    }
+
+    // ----------------------------------------------------------------
+    // SEGMENT HISTORY POPOVER
+    // ----------------------------------------------------------------
+
+    var edOpenPopover = null;
+
+    function edClosePopover() {
+      if (edOpenPopover) {
+        edOpenPopover.remove();
+        edOpenPopover = null;
+      }
+    }
+
+    // Close popover on outside click
+    document.addEventListener('click', function (e) {
+      if (edOpenPopover && !edOpenPopover.contains(e.target) && !e.target.closest('.btn-history-seg')) {
+        edClosePopover();
+      }
+    });
+
+    async function edShowHistory(segmentId, btn) {
+      // Toggle off if already showing for this segment
+      var container = document.getElementById('hist-' + edCssId(segmentId));
+      if (edOpenPopover && edOpenPopover.parentElement === container) {
+        edClosePopover();
+        return;
+      }
+      edClosePopover();
+
+      var popover = document.createElement('div');
+      popover.className = 'history-popover';
+      popover.innerHTML = '<div class="history-popover-header"><span>Breytingasaga</span></div>' +
+        '<div style="text-align:center;padding:var(--spacing-sm);color:var(--text-muted)"><span class="spinner"></span> Hle\u00F0ur...</div>';
+      container.appendChild(popover);
+      edOpenPopover = popover;
+
+      try {
+        var data = await fetchJson(
+          ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId + '/' + encodeURIComponent(segmentId) + '/history',
+          { credentials: 'include' }
+        );
+
+        if (!data.history || data.history.length === 0) {
+          popover.innerHTML = '<div class="history-popover-header"><span>Breytingasaga</span>' +
+            '<button class="btn-close" onclick="edClosePopover()" style="font-size:1rem">&times;</button></div>' +
+            '<div style="text-align:center;padding:var(--spacing-sm);color:var(--text-muted)">Engin saga.</div>';
+          return;
+        }
+
+        var html = '<div class="history-popover-header"><span>Breytingasaga (' + data.history.length + ')</span>' +
+          '<button class="btn-close" onclick="edClosePopover()" style="font-size:1rem">&times;</button></div>';
+
+        for (var i = 0; i < data.history.length; i++) {
+          var entry = data.history[i];
+          var dateStr = new Date(entry.created_at + 'Z').toLocaleString('is-IS', {
+            day: 'numeric', month: 'short', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          });
+          var prevTrunc = (entry.previous_content || '').substring(0, 60);
+          var newTrunc = (entry.new_content || '').substring(0, 60);
+          var catBadge = entry.category
+            ? '<span class="category-badge ' + entry.category + '">' + escapeHtml(entry.category) + '</span>'
+            : '';
+
+          html += '<div class="history-entry">' +
+            '<div class="history-meta">' +
+              '<span>' + escapeHtml(entry.editor_username) + '</span>' +
+              '<span>' + escapeHtml(dateStr) + '</span>' +
+            '</div>' +
+            '<div class="history-diff">' +
+              '<span class="history-prev" title="' + escapeHtml(entry.previous_content) + '">' + escapeHtml(prevTrunc) + '</span>' +
+              '<span class="history-arrow">\u2192</span>' +
+              '<span class="history-new" title="' + escapeHtml(entry.new_content) + '">' + escapeHtml(newTrunc) + '</span>' +
+            '</div>' +
+            catBadge +
+          '</div>';
+        }
+        popover.innerHTML = html;
+      } catch (err) {
+        popover.innerHTML = '<div class="history-popover-header"><span>Breytingasaga</span>' +
+          '<button class="btn-close" onclick="edClosePopover()" style="font-size:1rem">&times;</button></div>' +
+          '<div style="text-align:center;padding:var(--spacing-sm);color:var(--error)">Villa: ' + escapeHtml(err.message) + '</div>';
+      }
     }
 
 
