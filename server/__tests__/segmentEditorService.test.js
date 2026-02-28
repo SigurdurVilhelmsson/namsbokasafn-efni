@@ -300,6 +300,60 @@ describe('segmentEditorService — DB lifecycle', () => {
     expect(edit).toBeUndefined();
   });
 
+  it('deleteSegmentEdit works when editor_id types differ (number vs string)', () => {
+    // Bug: SQLite may store editor_id as "99999" (text) but JWT provides 99999 (number).
+    // Strict comparison (!==) fails across types.
+    const { id } = service.saveSegmentEdit({
+      book: 'efnafraedi',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Edited',
+      editorId: 99999,
+      editorUsername: 'test-admin',
+    });
+
+    // Delete with the same numeric ID — should succeed
+    service.deleteSegmentEdit(id, 99999);
+    const edit = service.getEditById(id);
+    expect(edit).toBeUndefined();
+  });
+
+  it('deleteSegmentEdit works when editor_id stored as string, deleted with number', () => {
+    // Simulate the real-world case: save with string, delete with number
+    const { id } = service.saveSegmentEdit({
+      book: 'efnafraedi',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Edited',
+      editorId: '99999',
+      editorUsername: 'test-admin',
+    });
+
+    // Delete with numeric ID — should succeed (type coercion)
+    service.deleteSegmentEdit(id, 99999);
+    const edit = service.getEditById(id);
+    expect(edit).toBeUndefined();
+  });
+
+  it('deleteSegmentEdit still rejects wrong editor (different value, not just type)', () => {
+    const { id } = service.saveSegmentEdit({
+      book: 'efnafraedi',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Edited',
+      editorId: 99999,
+      editorUsername: 'test-admin',
+    });
+
+    expect(() => service.deleteSegmentEdit(id, 88888)).toThrow('Not your edit');
+  });
+
   it('deleteSegmentEdit rejects deletion of approved edit', () => {
     const { id } = service.saveSegmentEdit({
       book: 'efnafraedi',

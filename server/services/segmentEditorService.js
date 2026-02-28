@@ -142,7 +142,10 @@ function deleteSegmentEdit(editId, editorId) {
   const conn = getDb();
   const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
   if (!edit) throw new Error('Edit not found');
-  if (edit.editor_id !== editorId) throw new Error('Not your edit');
+  // Use == for type-coercing comparison: SQLite TEXT column may store "99999.0"
+  // while JS provides 99999 (number) — strict === would reject the owner's own edit
+  // eslint-disable-next-line eqeqeq
+  if (edit.editor_id != editorId) throw new Error('Not your edit');
   if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
 
   conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
@@ -160,7 +163,8 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
   const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
   if (!edit) throw new Error('Edit not found');
-  if (edit.editor_id === reviewerId) {
+  // eslint-disable-next-line eqeqeq
+  if (edit.editor_id == reviewerId) {
     throw new Error('Cannot approve your own edit');
   }
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
