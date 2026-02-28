@@ -1238,19 +1238,23 @@
     const bookSelect = document.getElementById('book-select');
     const chapterSelect = document.getElementById('chapter-select');
 
-    bookSelect.addEventListener('change', () => {
+    bookSelect.addEventListener('change', async () => {
       currentBook = bookSelect.value;
       chapterSelect.disabled = !currentBook;
       chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
       document.getElementById('modules-list').style.display = 'none';
 
       if (currentBook) {
-        // Chemistry has chapters 1-21 + appendices
-        for (let i = 1; i <= 21; i++) {
-          const opt = document.createElement('option');
-          opt.value = i;
-          opt.textContent = `Kafli ${i}`;
-          chapterSelect.appendChild(opt);
+        try {
+          const data = await fetchJson(`${API_BASE}/${currentBook}/chapters`, { credentials: 'include' });
+          for (const ch of data.chapters) {
+            const opt = document.createElement('option');
+            opt.value = ch;
+            opt.textContent = `Kafli ${ch}`;
+            chapterSelect.appendChild(opt);
+          }
+        } catch (err) {
+          console.error('Failed to load chapters:', err);
         }
       }
     });

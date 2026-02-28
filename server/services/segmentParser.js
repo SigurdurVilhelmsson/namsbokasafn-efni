@@ -444,6 +444,24 @@ function getLocalizedMtime(book, chapter, moduleId) {
  * @param {number} chapter - Chapter number
  * @returns {Array<{moduleId: string, hasEnSource: boolean, hasMtOutput: boolean, hasFaithful: boolean, hasLocalized: boolean}>}
  */
+/**
+ * List chapters available for a given book by scanning the 02-for-mt directory.
+ *
+ * @param {string} book - Book slug (e.g. 'efnafraedi')
+ * @returns {number[]} Sorted array of chapter numbers
+ */
+function listChapters(book) {
+  const mtDir = path.join(BOOKS_DIR, book, '02-for-mt');
+  if (!fs.existsSync(mtDir)) {
+    return [];
+  }
+  return fs
+    .readdirSync(mtDir)
+    .filter((d) => /^ch\d+$/.test(d))
+    .map((d) => parseInt(d.replace('ch', ''), 10))
+    .sort((a, b) => a - b);
+}
+
 function listChapterModules(book, chapter) {
   const chapterStr = String(chapter).padStart(2, '0');
   const enDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
@@ -485,6 +503,7 @@ module.exports = {
   loadModuleForLocalization,
   saveLocalizedSegments,
   getLocalizedMtime,
+  listChapters,
   listChapterModules,
   SEG_MARKER_REGEX,
   PROJECT_ROOT,

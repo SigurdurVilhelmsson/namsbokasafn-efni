@@ -7,8 +7,10 @@
 
 const https = require('https');
 
-// Known OpenStax book repositories
+// Known OpenStax book repositories — maps slug to GitHub repo and collection.xml filename.
+// Pattern: collections/{slug}.collection.xml in the repo's collections/ directory.
 const BOOK_REPOS = {
+  // ── Chemistry ──────────────────────────────────────────────────────
   'chemistry-2e': {
     repo: 'openstax/osbooks-chemistry-bundle',
     collection: 'chemistry-2e.collection.xml',
@@ -17,21 +19,129 @@ const BOOK_REPOS = {
     repo: 'openstax/osbooks-chemistry-bundle',
     collection: 'chemistry-atoms-first-2e.collection.xml',
   },
+  'organic-chemistry': {
+    repo: 'openstax/osbooks-organic-chemistry',
+    collection: 'organic-chemistry.collection.xml',
+  },
+
+  // ── Biology ────────────────────────────────────────────────────────
   'biology-2e': {
     repo: 'openstax/osbooks-biology-bundle',
     collection: 'biology-2e.collection.xml',
   },
+  'biology-ap-courses': {
+    repo: 'openstax/osbooks-biology-bundle',
+    collection: 'biology-ap-courses.collection.xml',
+  },
+  'concepts-biology': {
+    repo: 'openstax/osbooks-biology-bundle',
+    collection: 'concepts-biology.collection.xml',
+  },
+  'anatomy-physiology-2e': {
+    repo: 'openstax/osbooks-anatomy-physiology',
+    collection: 'anatomy-physiology-2e.collection.xml',
+  },
+  microbiology: {
+    repo: 'openstax/osbooks-microbiology',
+    collection: 'microbiology.collection.xml',
+  },
+
+  // ── Physics ────────────────────────────────────────────────────────
   physics: {
     repo: 'openstax/osbooks-physics',
     collection: 'physics.collection.xml',
   },
-  'college-algebra': {
-    repo: 'openstax/osbooks-college-algebra-bundle',
-    collection: 'college-algebra.collection.xml',
+  'college-physics-2e': {
+    repo: 'openstax/osbooks-college-physics-bundle',
+    collection: 'college-physics-2e.collection.xml',
   },
+  'college-physics-ap-courses-2e': {
+    repo: 'openstax/osbooks-college-physics-bundle',
+    collection: 'college-physics-ap-courses-2e.collection.xml',
+  },
+  'university-physics-volume-1': {
+    repo: 'openstax/osbooks-university-physics-bundle',
+    collection: 'university-physics-volume-1.collection.xml',
+  },
+  'university-physics-volume-2': {
+    repo: 'openstax/osbooks-university-physics-bundle',
+    collection: 'university-physics-volume-2.collection.xml',
+  },
+  'university-physics-volume-3': {
+    repo: 'openstax/osbooks-university-physics-bundle',
+    collection: 'university-physics-volume-3.collection.xml',
+  },
+
+  // ── Astronomy ──────────────────────────────────────────────────────
+  'astronomy-2e': {
+    repo: 'openstax/osbooks-astronomy',
+    collection: 'astronomy-2e.collection.xml',
+  },
+
+  // ── Algebra & Trigonometry ─────────────────────────────────────────
+  'algebra-and-trigonometry-2e': {
+    repo: 'openstax/osbooks-college-algebra-bundle',
+    collection: 'algebra-and-trigonometry-2e.collection.xml',
+  },
+  'college-algebra-2e': {
+    repo: 'openstax/osbooks-college-algebra-bundle',
+    collection: 'college-algebra-2e.collection.xml',
+  },
+  'college-algebra-corequisite-support-2e': {
+    repo: 'openstax/osbooks-college-algebra-bundle',
+    collection: 'college-algebra-corequisite-support-2e.collection.xml',
+  },
+  'precalculus-2e': {
+    repo: 'openstax/osbooks-college-algebra-bundle',
+    collection: 'precalculus-2e.collection.xml',
+  },
+
+  // ── Calculus ───────────────────────────────────────────────────────
   'calculus-volume-1': {
     repo: 'openstax/osbooks-calculus-bundle',
     collection: 'calculus-volume-1.collection.xml',
+  },
+  'calculus-volume-2': {
+    repo: 'openstax/osbooks-calculus-bundle',
+    collection: 'calculus-volume-2.collection.xml',
+  },
+  'calculus-volume-3': {
+    repo: 'openstax/osbooks-calculus-bundle',
+    collection: 'calculus-volume-3.collection.xml',
+  },
+
+  // ── Pre-Algebra & Elementary Algebra ───────────────────────────────
+  'prealgebra-2e': {
+    repo: 'openstax/osbooks-prealgebra-bundle',
+    collection: 'prealgebra-2e.collection.xml',
+  },
+  'elementary-algebra-2e': {
+    repo: 'openstax/osbooks-prealgebra-bundle',
+    collection: 'elementary-algebra-2e.collection.xml',
+  },
+  'intermediate-algebra-2e': {
+    repo: 'openstax/osbooks-prealgebra-bundle',
+    collection: 'intermediate-algebra-2e.collection.xml',
+  },
+
+  // ── Statistics ─────────────────────────────────────────────────────
+  'introductory-statistics-2e': {
+    repo: 'openstax/osbooks-introductory-statistics-bundle',
+    collection: 'introductory-statistics-2e.collection.xml',
+  },
+  'introductory-business-statistics-2e': {
+    repo: 'openstax/osbooks-introductory-statistics-bundle',
+    collection: 'introductory-business-statistics-2e.collection.xml',
+  },
+  statistics: {
+    repo: 'openstax/osbooks-statistics',
+    collection: 'statistics.collection.xml',
+  },
+
+  // ── Other Math ─────────────────────────────────────────────────────
+  'contemporary-mathematics': {
+    repo: 'openstax/osbooks-contemporary-mathematics',
+    collection: 'contemporary-mathematics.collection.xml',
   },
 };
 

@@ -1555,18 +1555,23 @@
     const edBookSelect = document.getElementById('ed-book-select');
     const edChapterSelect = document.getElementById('ed-chapter-select');
 
-    edBookSelect.addEventListener('change', function () {
+    edBookSelect.addEventListener('change', async function () {
       edCurrentBook = edBookSelect.value;
       edChapterSelect.disabled = !edCurrentBook;
       edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
       document.getElementById('modules-list').style.display = 'none';
 
       if (edCurrentBook) {
-        for (let i = 1; i <= 21; i++) {
-          var opt = document.createElement('option');
-          opt.value = i;
-          opt.textContent = 'Kafli ' + i;
-          edChapterSelect.appendChild(opt);
+        try {
+          var data = await fetchJson(ED_API_BASE + '/' + edCurrentBook + '/chapters', { credentials: 'include' });
+          for (var j = 0; j < data.chapters.length; j++) {
+            var opt = document.createElement('option');
+            opt.value = data.chapters[j];
+            opt.textContent = 'Kafli ' + data.chapters[j];
+            edChapterSelect.appendChild(opt);
+          }
+        } catch (err) {
+          console.error('Failed to load chapters:', err);
         }
       }
     });

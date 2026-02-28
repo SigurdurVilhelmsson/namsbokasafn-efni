@@ -39,11 +39,30 @@ const segmentEditor = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
+const { VALID_BOOKS } = require('../config');
 const VALID_CATEGORIES = ['terminology', 'accuracy', 'readability', 'style', 'omission'];
 
 // =====================================================================
 // EDITOR ENDPOINTS
 // =====================================================================
+
+/**
+ * GET /:book/chapters
+ * List available chapters for a book (scans 02-for-mt directory).
+ */
+router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+  const { book } = req.params;
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Invalid book: ${book}` });
+  }
+  try {
+    const chapters = segmentParser.listChapters(book);
+    res.json({ book, chapters });
+  } catch (err) {
+    console.error('Error listing chapters:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
 
 /**
  * GET /:book/:chapter
