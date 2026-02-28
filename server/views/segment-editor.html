@@ -1078,6 +1078,68 @@
     let userRole = 'viewer';
     let userName = null;
     let termLookupTimer = null;
+    const dirtyEdits = new Set(); // Track segment IDs with unsaved textarea edits
+    let draftTimer = null;
+
+    // ================================================================
+    // DRAFT PERSISTENCE (localStorage)
+    // ================================================================
+
+    function draftKey() {
+      return 'seg-draft:' + currentBook + '/' + currentChapter + '/' + currentModuleId;
+    }
+
+    function saveDraft() {
+      if (!currentModuleId || dirtyEdits.size === 0) {
+        if (currentModuleId) localStorage.removeItem(draftKey());
+        return;
+      }
+      const drafts = {};
+      for (const segId of dirtyEdits) {
+        const ta = document.getElementById('textarea-' + cssId(segId));
+        if (ta) drafts[segId] = ta.value;
+      }
+      try {
+        localStorage.setItem(draftKey(), JSON.stringify({ ts: Date.now(), drafts }));
+      } catch (e) { /* quota exceeded */ }
+    }
+
+    function clearDraft() {
+      if (currentModuleId) localStorage.removeItem(draftKey());
+    }
+
+    function startDraftTimer() {
+      if (draftTimer) clearInterval(draftTimer);
+      draftTimer = setInterval(saveDraft, 5000);
+    }
+
+    function restoreDraft() {
+      const raw = localStorage.getItem(draftKey());
+      if (!raw) return;
+      try {
+        const draft = JSON.parse(raw);
+        if (Date.now() - draft.ts > 7 * 24 * 60 * 60 * 1000) {
+          localStorage.removeItem(draftKey());
+          return;
+        }
+        const ids = Object.keys(draft.drafts);
+        if (ids.length === 0) return;
+        if (!confirm('Fundust ' + ids.length + ' óvistuð drög frá síðustu lotu. Endurheimta?')) {
+          localStorage.removeItem(draftKey());
+          return;
+        }
+        for (const segId of ids) {
+          openEditPanel(segId);
+          const ta = document.getElementById('textarea-' + cssId(segId));
+          if (ta) {
+            ta.value = draft.drafts[segId];
+            dirtyEdits.add(segId);
+          }
+        }
+      } catch (e) {
+        localStorage.removeItem(draftKey());
+      }
+    }
 
     /** Get effective role (respects admin role preview override) */
     function getEffectiveRole() {
@@ -1179,6 +1241,8 @@
         renderModule();
         showPipelinePanel();
         showApplyPanel();
+        restoreDraft();
+        startDraftTimer();
 
         // Load term data in background (non-blocking)
         loadTermData(moduleId);
@@ -1442,9 +1506,15 @@
         // Add copper left-border to the row
         const row = document.getElementById('row-' + cssId(segmentId));
         if (row) row.classList.add('editing');
-        // Focus the textarea
+        // Focus the textarea and track dirty state
         const textarea = document.getElementById('textarea-' + cssId(segmentId));
-        if (textarea) textarea.focus();
+        if (textarea) {
+          textarea._segmentId = segmentId;
+          textarea.focus();
+          textarea.addEventListener('input', function onInput() {
+            dirtyEdits.add(segmentId);
+          }, { once: true });
+        }
       }
     }
 
@@ -1455,6 +1525,7 @@
         const row = document.getElementById('row-' + cssId(segmentId));
         if (row) row.classList.remove('editing');
       }
+      dirtyEdits.delete(segmentId);
     }
 
     async function saveEdit(segmentId) {
@@ -1489,6 +1560,8 @@
           }
         );
 
+        dirtyEdits.delete(segmentId);
+        saveDraft(); // update draft (or clear if empty)
         // Reload module to refresh edits
         await loadModule(currentModuleId);
       } catch (err) {
@@ -2129,12 +2202,12 @@
       if (e.key === 'Escape') {
         const activePanel = document.querySelector('.edit-panel.active');
         if (activePanel) {
-          const segId = activePanel.id.replace('edit-', '');
-          // Reverse the cssId transform to get original segmentId is complex,
-          // so just remove the active class directly
           activePanel.classList.remove('active');
-          const row = activePanel.closest('.segment-row');
+          const row = activePanel.closest('tr');
           if (row) row.classList.remove('editing');
+          // Clear dirty state — find the segmentId from the textarea data
+          const textarea = activePanel.querySelector('textarea');
+          if (textarea && textarea._segmentId) dirtyEdits.delete(textarea._segmentId);
         }
       }
 
@@ -2149,6 +2222,22 @@
           }
         }
       }
+    });
+
+    // ================================================================
+    // WARN BEFORE LEAVING WITH UNSAVED EDITS
+    // ================================================================
+    window.addEventListener('beforeunload', function (e) {
+      if (dirtyEdits.size > 0) {
+        saveDraft(); // last-chance save to localStorage
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+
+    // Save drafts on auth expiry (before 401 redirect)
+    window.addEventListener('auth-expired', function () {
+      if (dirtyEdits.size > 0) saveDraft();
     });
 
     // ================================================================

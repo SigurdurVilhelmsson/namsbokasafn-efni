@@ -320,7 +320,7 @@ app.use((err, req, res, _next) => {
 });
 
 // Start server
-app.listen(PORT, HOST, () => {
+const server = app.listen(PORT, HOST, () => {
   console.log('');
   console.log('═'.repeat(55));
   console.log(`Translation Pipeline API Server v${serverVersion}`);
@@ -346,5 +346,22 @@ app.listen(PORT, HOST, () => {
   console.log('Press Ctrl+C to stop');
   console.log('');
 });
+
+// Graceful shutdown — let in-flight requests complete before exiting
+function gracefulShutdown(signal) {
+  console.log(`\n[${signal}] Shutting down gracefully...`);
+  server.close(() => {
+    console.log('All connections closed. Exiting.');
+    process.exit(0);
+  });
+  // Force exit after 10 seconds if connections don't close
+  setTimeout(() => {
+    console.error('Forced shutdown after timeout.');
+    process.exit(1);
+  }, 10000).unref();
+}
+
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 
 module.exports = app;

@@ -1230,8 +1230,70 @@
 
     // Track unsaved changes: { segmentId: { content, category } }
     let edPendingChanges = {};
+    let edDraftTimer = null;
 
     const ED_API_BASE = '/api/localization-editor';
+
+    // ----------------------------------------------------------------
+    // DRAFT PERSISTENCE (localStorage)
+    // ----------------------------------------------------------------
+
+    function edDraftKey() {
+      return 'loc-draft:' + edCurrentBook + '/' + edCurrentChapter + '/' + edCurrentModuleId;
+    }
+
+    function edSaveDraft() {
+      if (!edCurrentModuleId) return;
+      var keys = Object.keys(edPendingChanges);
+      if (keys.length === 0) {
+        localStorage.removeItem(edDraftKey());
+        return;
+      }
+      try {
+        localStorage.setItem(edDraftKey(), JSON.stringify({
+          ts: Date.now(),
+          changes: edPendingChanges
+        }));
+      } catch (e) { /* quota exceeded — ignore */ }
+    }
+
+    function edClearDraft() {
+      if (edCurrentModuleId) localStorage.removeItem(edDraftKey());
+    }
+
+    function edStartDraftTimer() {
+      if (edDraftTimer) clearInterval(edDraftTimer);
+      edDraftTimer = setInterval(edSaveDraft, 5000);
+    }
+
+    function edRestoreDraft() {
+      var raw = localStorage.getItem(edDraftKey());
+      if (!raw) return;
+      try {
+        var draft = JSON.parse(raw);
+        // Discard drafts older than 7 days
+        if (Date.now() - draft.ts > 7 * 24 * 60 * 60 * 1000) {
+          localStorage.removeItem(edDraftKey());
+          return;
+        }
+        var count = Object.keys(draft.changes).length;
+        if (count === 0) return;
+        if (!confirm('Fundust ' + count + ' óvistaðar drög frá síðustu lotu. Endurheimta?')) {
+          localStorage.removeItem(edDraftKey());
+          return;
+        }
+        // Apply drafts to textareas
+        for (var segId in draft.changes) {
+          var ta = document.getElementById('ta-' + edCssId(segId));
+          if (ta) {
+            ta.value = draft.changes[segId].content;
+            edOnSegmentEdit(segId);
+          }
+        }
+      } catch (e) {
+        localStorage.removeItem(edDraftKey());
+      }
+    }
 
     // ----------------------------------------------------------------
     // MODULE SELECTOR
@@ -1312,6 +1374,8 @@
         document.getElementById('editor-container').style.display = 'block';
 
         edRenderModule();
+        edRestoreDraft();
+        edStartDraftTimer();
       } catch (err) {
         alert('Villa vi\u00F0 a\u00F0 hla\u00F0a einingu: ' + err.message);
       }
@@ -1512,6 +1576,7 @@
         }
 
         delete edPendingChanges[segmentId];
+        edSaveDraft(); // update draft (or clear if empty)
         ta.classList.remove('modified');
 
         var row = document.getElementById('row-' + edCssId(segmentId));
@@ -1569,6 +1634,7 @@
           }
         }
         edPendingChanges = {};
+        edClearDraft();
 
         edModuleData.localizedCount = edModuleData.segments.filter(function (s) { return s.hasLocalized; }).length;
 
@@ -1605,6 +1671,8 @@
       if (Object.keys(edPendingChanges).length > 0) {
         if (!confirm('\u00DE\u00FA \u00E1tt \u00F3vista\u00F0ar breytingar. Viltu yfirgefa?')) return;
       }
+      edClearDraft();
+      if (edDraftTimer) clearInterval(edDraftTimer);
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
       edModuleData = null;
@@ -1630,9 +1698,15 @@
 
     window.addEventListener('beforeunload', function (e) {
       if (Object.keys(edPendingChanges).length > 0) {
+        edSaveDraft(); // last-chance save to localStorage
         e.preventDefault();
         e.returnValue = '';
       }
+    });
+
+    // Save drafts on auth expiry (before 401 redirect)
+    window.addEventListener('auth-expired', function () {
+      if (Object.keys(edPendingChanges).length > 0) edSaveDraft();
     });
 
     // ----------------------------------------------------------------

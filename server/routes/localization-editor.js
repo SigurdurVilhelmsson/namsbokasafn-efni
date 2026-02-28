@@ -27,6 +27,27 @@ const VALID_CATEGORIES = [
   'unchanged',
 ];
 
+// Per-module write lock to prevent read-modify-write race conditions.
+// Key: "book/chapter/moduleId", Value: Promise chain
+const moduleLocks = new Map();
+
+/**
+ * Acquire a per-module lock. Returns a release function.
+ * Concurrent callers for the same module key are serialized.
+ */
+function acquireModuleLock(key) {
+  let release;
+  const gate = new Promise((resolve) => {
+    release = resolve;
+  });
+  const prev = moduleLocks.get(key) || Promise.resolve();
+  moduleLocks.set(
+    key,
+    prev.then(() => gate)
+  );
+  return prev.then(() => release);
+}
+
 // =====================================================================
 // MODULE LISTING
 // =====================================================================
@@ -95,7 +116,7 @@ router.post(
   validateBookChapter,
   requireBookAccess(),
   validateModule,
-  (req, res) => {
+  async (req, res) => {
     const { segmentId, content, category } = req.body;
 
     if (!segmentId) {
@@ -110,6 +131,8 @@ router.post(
       });
     }
 
+    const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;
+    const release = await acquireModuleLock(lockKey);
     try {
       const data = segmentParser.loadModuleForLocalization(
         req.params.book,
@@ -140,6 +163,8 @@ router.post(
     } catch (err) {
       console.error('Error saving localized segment:', err.message);
       res.status(500).json({ error: err.message });
+    } finally {
+      release();
     }
   }
 );
@@ -155,13 +180,15 @@ router.post(
   validateBookChapter,
   requireBookAccess(),
   validateModule,
-  (req, res) => {
+  async (req, res) => {
     const { segments } = req.body;
 
     if (!segments || !Array.isArray(segments)) {
       return res.status(400).json({ error: 'segments array is required' });
     }
 
+    const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;
+    const release = await acquireModuleLock(lockKey);
     try {
       // Build lookup from request
       const editLookup = {};
@@ -204,6 +231,8 @@ router.post(
     } catch (err) {
       console.error('Error saving localized segments:', err.message);
       res.status(500).json({ error: err.message });
+    } finally {
+      release();
     }
   }
 );

@@ -68,6 +68,13 @@ async function fetchJson(url, options) {
       if (response.status === 401 && !_redirecting && window.location.pathname !== '/login') {
         _redirecting = true;
 
+        // Let editors save drafts before redirect
+        try {
+          window.dispatchEvent(new Event('auth-expired'));
+        } catch {
+          /* ignore */
+        }
+
         // Clear stale auth cache so layout.js doesn't use old data
         try {
           sessionStorage.removeItem('authCache');

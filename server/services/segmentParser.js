@@ -14,6 +14,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
@@ -271,14 +272,16 @@ function saveModuleSegments(book, chapter, moduleId, segments) {
   // Create backup if file exists
   if (fs.existsSync(paths.faithful)) {
     const now = new Date();
-    const timestamp = now.toISOString().replace(/[T:]/g, '-').substring(0, 16);
+    const timestamp = now.toISOString().replace(/[T:]/g, '-').substring(0, 19);
     const bakPath = paths.faithful.replace('.is.md', `.${timestamp}.bak`);
     fs.copyFileSync(paths.faithful, bakPath);
   }
 
-  // Assemble and write
+  // Atomic write: write to temp file then rename (rename is atomic on Linux within same FS)
   const content = assembleSegments(segments);
-  fs.writeFileSync(paths.faithful, content, 'utf-8');
+  const tmpPath = paths.faithful + '.tmp.' + crypto.randomBytes(4).toString('hex');
+  fs.writeFileSync(tmpPath, content, 'utf-8');
+  fs.renameSync(tmpPath, paths.faithful);
 
   return paths.faithful;
 }
@@ -391,14 +394,16 @@ function saveLocalizedSegments(book, chapter, moduleId, segments) {
   // Create backup if file exists
   if (fs.existsSync(paths.localized)) {
     const now = new Date();
-    const timestamp = now.toISOString().replace(/[T:]/g, '-').substring(0, 16);
+    const timestamp = now.toISOString().replace(/[T:]/g, '-').substring(0, 19);
     const bakPath = paths.localized.replace('.is.md', `.${timestamp}.bak`);
     fs.copyFileSync(paths.localized, bakPath);
   }
 
-  // Assemble and write
+  // Atomic write: write to temp file then rename (rename is atomic on Linux within same FS)
   const content = assembleSegments(segments);
-  fs.writeFileSync(paths.localized, content, 'utf-8');
+  const tmpPath = paths.localized + '.tmp.' + crypto.randomBytes(4).toString('hex');
+  fs.writeFileSync(tmpPath, content, 'utf-8');
+  fs.renameSync(tmpPath, paths.localized);
 
   return paths.localized;
 }
