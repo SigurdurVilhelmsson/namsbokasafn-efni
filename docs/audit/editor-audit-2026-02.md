@@ -1,7 +1,7 @@
 # Editor Interface Audit Report
 
-**Date:** 2026-02-22 (Iteration 1), 2026-02-23 (Iterations 2-3)
-**Scope:** 11 view files in `server/views/`, layout.js, htmlUtils.js, all route + middleware files
+**Date:** 2026-02-22 (Iteration 1), 2026-02-23 (Iterations 2-3), 2026-03-01 (Iteration 4)
+**Scope:** 11 view files in `server/views/`, layout.js, htmlUtils.js, all route + middleware files, scripts/
 **Method:** Automated code analysis + manual cross-referencing
 
 ---
@@ -323,6 +323,65 @@ Re-audit of entire `server/` codebase with broader scope covering error handling
 | Multer filename path traversal via `id` param | `id` is a database image ID; `book`/`chapter` validated via router.param + range check |
 | IDOR in session routes | Ownership checks exist on all session endpoints |
 | Missing graceful shutdown handlers | Operational concern, not a bug; runs behind nginx + systemd |
+
+---
+
+## Iteration 4 — 2026-03-01
+
+Follow-up audit after iterations 1-3. Regression check (138 Vitest + 50 Playwright all passing), fix verification, interaction effects between independently-implemented features, and edge cases.
+
+### Summary
+
+| Category | Issues Found | High | Moderate | Low |
+|----------|-------------|------|----------|-----|
+| Shell scripting | 1 | 1 | 0 | 0 |
+| Editor UX | 1 | 0 | 1 | 0 |
+| Auth consistency | 1 | 0 | 0 | 1 |
+| Logging | 1 | 0 | 0 | 1 |
+| **Total** | **4** | **1** | **1** | **2** |
+
+### ISSUE-17: Git backup script silently stages nothing — FIXED
+
+- **Severity:** HIGH
+- **Location:** `scripts/git-backup.sh:58-65`
+- **Bug:** Quoted glob patterns `"books/*/03-faithful-translation/"` treat `*` as literal in git pathspecs. Combined with `2>/dev/null || true`, the script silently stages nothing, finds nothing to commit, and exits with "No changes to back up."
+- **Impact:** No git-based backup history created on Linode server (cron job does nothing)
+- **Fix:** Removed double quotes from all pathspec arguments so shell expands globs
+
+### ISSUE-18: Autosave 409 conflict creates infinite retry loop — FIXED
+
+- **Severity:** MODERATE
+- **Location:** `server/views/localization-editor.html:1465-1478`
+- **Bug:** Autosave's 409 handler showed warning in status bar but didn't clear `edPendingChanges` or stop `edAutoSaveTimer`. Timer fires again in 60s, gets 409 again, indefinitely.
+- **Contrast:** Manual save (line 1879-1886) correctly handles 409 by prompting reload
+- **Fix:** Stop autosave timer on 409 and prompt user to reload (matching manual save behavior)
+
+### ISSUE-19: Missing `requireRole` on 2 endpoints — FIXED
+
+- **Severity:** LOW
+- **Location:** `server/routes/segment-editor.js:514,537-539`
+- **Bug:** `GET /terminology/lookup` and `GET /:book/:chapter/:moduleId/stats` had `requireAuth` but not `requireRole(ROLES.CONTRIBUTOR)`, inconsistent with all other routes
+- **Fix:** Added `requireRole(ROLES.CONTRIBUTOR)` to both endpoints
+
+### ISSUE-20: `console.log` in error path — FIXED
+
+- **Severity:** LOW
+- **Location:** `server/views/status.html:1906`
+- **Bug:** Error handler used `console.log` instead of `console.error`
+- **Fix:** Changed to `console.error`
+
+### Verified as Clean
+
+| Area | Verdict |
+|------|---------|
+| All 14 prior fixes (9 commits) | Correctly address original issues, no regressions |
+| XSS prevention (XML escaping) | Solid protect-escape-restore pattern with 10 tests |
+| Auth hardening (a2e01c6) | Correctly uses `findByGithubId()` |
+| DB query patterns | All use prepared statements |
+| Event listener cleanup | All timers cleared on navigation |
+| BroadcastChannel fallback | try/catch with `if (channel)` guard |
+| Autosave + retry queue dedup | `addToQueue` deduplicates by key |
+| SQLite WAL mode | Enabled in all 8 service files |
 
 ---
 
