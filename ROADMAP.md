@@ -24,7 +24,7 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  Web Interface (server/)                                        │
-│  - Express server with SQLite session management                │
+│  - Express 5 server with SQLite session management              │
 │  - Workflow wizard with step-by-step guidance                   │
 │  - Issue dashboard with auto-fix + classification               │
 │  - Image tracking with OneDrive integration                     │
@@ -348,6 +348,7 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-02 | Module-level faithful publication | Faithful HTML grows per-module as reviews complete; no bulk initialization needed; reader falls back to mt-preview |
 | 2026-02 | 8-stage pipeline model | extraction → mtReady → mtOutput → linguisticReview → tmCreated → injection → rendering → publication; binary complete/not-started; auto-advance on pipeline actions |
 | 2026-02 | Remove unused PM features | meetings, deadlines, assignments, reports, decisions — 14 files (~4,700 lines) deleted; team uses Google Docs/GitHub Issues instead |
+| 2026-03 | Tech stack upgrade | Express 4→5, better-sqlite3 11→12, globals 15→17, minimatch ReDoS fix; all 188 tests pass |
 
 ---
 

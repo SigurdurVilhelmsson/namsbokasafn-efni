@@ -27,37 +27,37 @@ router.get('/feedback', (req, res) => sendView(res, 'feedback.html'));
 
 // ─── Legacy redirects ────────────────────────────────────────────
 
-router.get('/my-work', (req, res) => res.redirect('/'));
+router.get('/my-work', (req, res) => res.redirect(301, '/'));
 
 router.get('/segment-editor', (req, res) => {
   const qs = new URLSearchParams(req.query).toString();
-  res.redirect('/editor' + (qs ? `?${qs}` : ''));
+  res.redirect(301, '/editor' + (qs ? `?${qs}` : ''));
 });
 
-router.get('/status', (req, res) => res.redirect('/progress'));
-router.get('/review-queue', (req, res) => res.redirect('/reviews'));
+router.get('/status', (req, res) => res.redirect(301, '/progress'));
+router.get('/review-queue', (req, res) => res.redirect(301, '/reviews'));
 
-router.get('/localization-editor', (req, res) => res.redirect('/localization'));
-router.get('/localization-review', (req, res) => res.redirect('/localization'));
+router.get('/localization-editor', (req, res) => res.redirect(301, '/localization'));
+router.get('/localization-review', (req, res) => res.redirect(301, '/localization'));
 
-router.get('/books', (req, res) => res.redirect('/library'));
-router.get('/books/:bookId', (req, res) => res.redirect(`/library?book=${req.params.bookId}`));
+router.get('/books', (req, res) => res.redirect(301, '/library'));
+router.get('/books/:bookId', (req, res) => res.redirect(301, `/library?book=${req.params.bookId}`));
 router.get('/chapter', (req, res) => {
   const qs = new URLSearchParams(req.query).toString();
-  res.redirect('/library' + (qs ? `?${qs}` : ''));
+  res.redirect(301, '/library' + (qs ? `?${qs}` : ''));
 });
-router.get('/images', (req, res) => res.redirect('/library'));
+router.get('/images', (req, res) => res.redirect(301, '/library'));
 
-router.get('/admin/users', (req, res) => res.redirect('/admin?tab=users'));
-router.get('/admin/books', (req, res) => res.redirect('/admin?tab=books'));
-router.get('/admin/feedback', (req, res) => res.redirect('/admin?tab=feedback'));
-router.get('/analytics', (req, res) => res.redirect('/admin?tab=analytics'));
+router.get('/admin/users', (req, res) => res.redirect(301, '/admin?tab=users'));
+router.get('/admin/books', (req, res) => res.redirect(301, '/admin?tab=books'));
+router.get('/admin/feedback', (req, res) => res.redirect(301, '/admin?tab=feedback'));
+router.get('/analytics', (req, res) => res.redirect(301, '/admin?tab=analytics'));
 
-router.get('/workflow', (req, res) => res.redirect('/'));
-router.get('/dashboard', (req, res) => res.redirect('/'));
-router.get('/pipeline', (req, res) => res.redirect('/progress'));
-router.get('/issues', (req, res) => res.redirect('/'));
-router.get('/for-teachers', (req, res) => res.redirect('/'));
+router.get('/workflow', (req, res) => res.redirect(301, '/'));
+router.get('/dashboard', (req, res) => res.redirect(301, '/'));
+router.get('/pipeline', (req, res) => res.redirect(301, '/progress'));
+router.get('/issues', (req, res) => res.redirect(301, '/'));
+router.get('/for-teachers', (req, res) => res.redirect(301, '/'));
 
 // ─── 404 catch-all (must be last) ────────────────────────────────
 

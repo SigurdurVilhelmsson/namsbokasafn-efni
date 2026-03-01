@@ -74,7 +74,7 @@ router.get('/login', (req, res) => {
 
   // Redirect to GitHub
   const authUrl = auth.getAuthUrl(state);
-  res.redirect(authUrl);
+  res.redirect(302, authUrl);
 });
 
 /**
@@ -148,7 +148,7 @@ router.get('/callback', async (req, res) => {
     }
 
     // For browser requests, redirect
-    res.redirect(redirectUrl);
+    res.redirect(302, redirectUrl);
   } catch (err) {
     console.error('Authentication error:', err);
     res.status(401).json({

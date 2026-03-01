@@ -452,7 +452,7 @@ router.get('/jobs/:id/download', requireAuth, getClient, async (req, res) => {
     }
 
     // Redirect to Matecat's download URL
-    res.redirect(downloadUrl);
+    res.redirect(302, downloadUrl);
   } catch (err) {
     console.error('Matecat download error:', err);
     res.status(err.statusCode || 500).json({

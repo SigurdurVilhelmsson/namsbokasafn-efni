@@ -25,7 +25,7 @@
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.1",
     "eslint-config-prettier": "^10.1.8",
-    "globals": "^15.15.0",
+    "globals": "^17.4.0",
     "husky": "^9.1.0",
     "lint-staged": "^16.2.7",
     "prettier": "^3.4.0",
@@ -71,7 +71,7 @@
     "mj-context-menu": {
       "rimraf": {
         "glob": {
-          "minimatch": ">=10.2.1"
+          "minimatch": ">=10.2.3"
         }
       }
     }

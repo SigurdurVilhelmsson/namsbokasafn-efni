@@ -33,9 +33,8 @@
 This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
-- Server authentication needs security review
 - Documentation may be ahead of or behind actual implementation in places
-- No automated test suite yet
+- Test suite: 138 Vitest unit tests + 50 Playwright E2E tests
 
 ## Purpose
 
@@ -56,10 +55,11 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 
 ## Tech Stack
 
-- **Runtime:** Node.js
+- **Runtime:** Node.js 24 LTS
 - **Pipeline tools:** Custom CLI scripts in `tools/`
-- **Server:** Express-based workflow interface in `server/`
+- **Server:** Express 5 workflow interface in `server/`, better-sqlite3 12, Helmet, JWT auth
 - **Content format:** CNXML → Markdown (intermediate) → HTML
+- **Testing:** Vitest (unit), Playwright (E2E)
 - **Dependencies:** See package.json
 
 ## Directory Structure
