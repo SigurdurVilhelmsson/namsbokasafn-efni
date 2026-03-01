@@ -1903,7 +1903,7 @@
         }
 
       } catch (err) {
-        console.log('Could not load disputed terms:', err);
+        console.error('Could not load disputed terms:', err);
         container.innerHTML = '<p class="text-muted" style="padding:var(--spacing-sm)">Gat ekki hlaðið hugtökum</p>';
       }
     }

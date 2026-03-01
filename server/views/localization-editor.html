@@ -1463,11 +1463,16 @@
         edUpdateSaveStatusBar();
       } catch (err) {
         if (err.status === 409) {
-          // Conflict — show warning in status bar but keep changes
+          // Conflict — stop autosave and prompt user to reload (matches manual save behavior)
+          if (edAutoSaveTimer) { clearInterval(edAutoSaveTimer); edAutoSaveTimer = null; }
           if (bar) {
             bar.classList.remove('saving');
             bar.classList.add('has-unsaved');
             document.getElementById('save-status-text').textContent = 'Árekstur! Annar notandi breytti skránni.';
+          }
+          if (confirm('Einingin hefur verið breytt af öðrum notanda.\nEndurhlaða til að sjá nýjustu útgáfu?\n\n(Óvistaðar breytingar þínar verða geymdar sem drög.)')) {
+            edSaveDraft();
+            edLoadModule(edCurrentModuleId);
           }
         } else {
           // Other error — revert to unsaved count

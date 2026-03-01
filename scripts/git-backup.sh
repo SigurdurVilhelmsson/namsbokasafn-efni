@@ -56,12 +56,12 @@ fi
 
 # Stage content directories under books/
 git add \
-  "books/*/03-faithful-translation/" \
-  "books/*/03-translated/" \
-  "books/*/04-localized-content/" \
-  "books/*/04-localization/" \
-  "books/*/05-publication/" \
-  "books/*/chapters/" \
+  books/*/03-faithful-translation/ \
+  books/*/03-translated/ \
+  books/*/04-localized-content/ \
+  books/*/04-localization/ \
+  books/*/05-publication/ \
+  books/*/chapters/ \
   2>/dev/null || true
 
 # Check if there's anything to commit

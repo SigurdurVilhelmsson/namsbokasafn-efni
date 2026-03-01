@@ -511,7 +511,7 @@ router.get(
  * GET /terminology/lookup
  * Quick term lookup for editor popups (delegates to terminology service).
  */
-router.get('/terminology/lookup', requireAuth, (req, res) => {
+router.get('/terminology/lookup', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
   const { q, bookId } = req.query;
 
   if (!q || q.length < 2) {
@@ -537,6 +537,7 @@ router.get('/terminology/lookup', requireAuth, (req, res) => {
 router.get(
   '/:book/:chapter/:moduleId/stats',
   requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
