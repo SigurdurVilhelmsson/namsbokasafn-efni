@@ -6,6 +6,7 @@
  */
 
 const { VALID_BOOKS } = require('../config');
+const { MAX_CHAPTERS } = require('../constants');
 
 /**
  * Validate :book and :chapter route parameters.
@@ -19,7 +20,7 @@ function validateBookChapter(req, res, next) {
   }
 
   const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 50) {
+  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > MAX_CHAPTERS) {
     return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
   }
 

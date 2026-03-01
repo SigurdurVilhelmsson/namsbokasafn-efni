@@ -25,6 +25,7 @@ const {
   getUniqueSections,
 } = require('../services/splitFileUtils');
 const { VALID_BOOKS } = require('../config');
+const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES } = require('../constants');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -39,18 +40,6 @@ router.param('book', (req, res, next, book) => {
   }
   next();
 });
-
-// 8-step pipeline stages (extract-inject-render workflow)
-const PIPELINE_STAGES = [
-  'extraction',
-  'mtReady',
-  'mtOutput',
-  'linguisticReview',
-  'tmCreated',
-  'injection',
-  'rendering',
-  'publication',
-];
 
 // Status symbols for display
 const STATUS_SYMBOLS = {
@@ -194,9 +183,10 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       // Milestone tracking for pilot (Chapters 1-4)
       let pilotComplete = 0;
       const pilotTotal = 4;
+      const dashPilotBook = VALID_BOOKS[0];
 
-      if (dashboard.chapterMatrix.efnafraedi) {
-        const pilotChapters = dashboard.chapterMatrix.efnafraedi.chapters.slice(0, 4);
+      if (dashPilotBook && dashboard.chapterMatrix[dashPilotBook]) {
+        const pilotChapters = dashboard.chapterMatrix[dashPilotBook].chapters.slice(0, 4);
         pilotComplete = pilotChapters.filter((ch) => ch.progress === 100).length;
       }
 
@@ -610,8 +600,9 @@ router.get('/analytics', requireAuth, async (req, res) => {
 
     analytics.weeklyProgress = weeks;
 
-    // Pilot milestone tracking
+    // Pilot milestone tracking (historical: janúar 2026 milestone has passed)
     const pilotChapters = [1, 2, 3, 4];
+    const pilotBook = req.query.book || VALID_BOOKS[0];
     let pilotSectionsTotal = 0;
     let pilotSectionsComplete = 0;
 
@@ -620,11 +611,11 @@ router.get('/analytics', requireAuth, async (req, res) => {
       const faithfulPath = path.join(
         PROJECT_ROOT,
         'books',
-        'efnafraedi',
+        pilotBook,
         '03-faithful-translation',
         chDir
       );
-      const mtOutputPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '02-mt-output', chDir);
+      const mtOutputPath = path.join(PROJECT_ROOT, 'books', pilotBook, '02-mt-output', chDir);
 
       if (fs.existsSync(mtOutputPath)) {
         try {

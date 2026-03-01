@@ -1327,8 +1327,7 @@
         <div class="matrix-controls">
           <div style="display:flex;align-items:center;gap:var(--spacing-md)">
             <span class="panel-title">Framvinda kafla</span>
-            <select class="form-select form-select-sm" id="book-select" onchange="loadFullMatrix()">
-              <option value="efnafraedi" selected>Efnafræði (Chemistry 2e)</option>
+            <select class="form-select form-select-sm book-select" id="book-select" onchange="loadFullMatrix()">
             </select>
           </div>
           <div style="display:flex;align-items:center;gap:var(--spacing-md)">
@@ -1360,9 +1359,7 @@
         <div class="timeline-controls">
           <span class="panel-title">Tímalína virkni</span>
           <div class="filters">
-            <select class="form-select form-select-sm" id="timeline-book-filter" onchange="loadTimeline()">
-              <option value="">Allar bækur</option>
-              <option value="efnafraedi">Efnafræði</option>
+            <select class="form-select form-select-sm book-select" id="timeline-book-filter" data-allow-all="true" onchange="loadTimeline()">
             </select>
             <select class="form-select form-select-sm" id="timeline-type-filter" onchange="loadTimeline()">
               <option value="">Allar aðgerðir</option>
@@ -1460,6 +1457,7 @@
   </div>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/bookSelector.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script>
@@ -1468,8 +1466,11 @@
     // ============================================================================
 
     const API_BASE = '/api/status';
-    const BOOK = 'efnafraedi';
-    const PILOT_CHAPTERS = [1, 2, 3, 4];
+
+    /** Get the currently selected book from the book-select dropdown. */
+    function getSelectedBook() {
+      return document.getElementById('book-select')?.value || '';
+    }
 
     // 8-stage pipeline configuration
     const PIPELINE_STAGES = [
@@ -1581,7 +1582,7 @@
         const [dashResult, analyticsResult, bookStatus] = await Promise.all([
           fetchJson(API_BASE + '/dashboard'),
           fetchJson(API_BASE + '/analytics'),
-          fetchJson(API_BASE + '/' + BOOK)
+          fetchJson(API_BASE + '/' + getSelectedBook())
         ]);
         dashboardData = dashResult;
         analyticsData = analyticsResult;
@@ -1810,8 +1811,9 @@
 
       // Use whichever data source is available
       let chapterData = [];
-      if (chapterMatrix && chapterMatrix.efnafraedi) {
-        chapterData = chapterMatrix.efnafraedi.chapters || [];
+      var selectedBook = getSelectedBook();
+      if (chapterMatrix && selectedBook && chapterMatrix[selectedBook]) {
+        chapterData = chapterMatrix[selectedBook].chapters || [];
       } else if (chapters) {
         chapterData = chapters;
       }
@@ -2498,7 +2500,7 @@
       content.innerHTML = '<p class="text-muted">Skoða skráarkerfi...</p>';
 
       try {
-        const book = document.getElementById('book-select')?.value || 'efnafraedi';
+        const book = getSelectedBook();
         const data = await fetchJson(API_BASE + '/' + book + '/scan');
 
         if (!data.chapters || data.chapters.length === 0) {
@@ -2544,7 +2546,7 @@
       btn.textContent = 'Samstilli...';
 
       try {
-        const book = document.getElementById('book-select')?.value || 'efnafraedi';
+        const book = getSelectedBook();
         const data = await fetchJson(API_BASE + '/' + book + '/sync', { method: 'POST' });
 
         content.innerHTML =

@@ -290,9 +290,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="book">Bók (valfrjálst)</label>
-                <select id="book" name="book" class="form-select">
-                  <option value="">-- Veldu bók --</option>
-                  <option value="efnafraedi">Efnafræði</option>
+                <select id="book" name="book" class="form-select book-select" data-placeholder="-- Veldu bók --">
                 </select>
               </div>
               <div class="form-group">
@@ -356,6 +354,7 @@
   </main>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/bookSelector.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script>

@@ -22,6 +22,7 @@
 const jwt = require('jsonwebtoken');
 const https = require('https');
 const userService = require('./userService');
+const { ROLES } = require('../constants');
 
 // Enforce JWT_SECRET in all environments
 if (!process.env.JWT_SECRET) {
@@ -43,22 +44,8 @@ const CONFIG = {
     .filter(Boolean),
 };
 
-// Role hierarchy
-const ROLES = {
-  ADMIN: 'admin',
-  HEAD_EDITOR: 'head-editor',
-  EDITOR: 'editor',
-  CONTRIBUTOR: 'contributor',
-  VIEWER: 'viewer',
-};
-
-const ROLE_HIERARCHY = {
-  [ROLES.ADMIN]: 5,
-  [ROLES.HEAD_EDITOR]: 4,
-  [ROLES.EDITOR]: 3,
-  [ROLES.CONTRIBUTOR]: 2,
-  [ROLES.VIEWER]: 1,
-};
+// ROLES imported from constants.js (single source of truth)
+const { ROLE_HIERARCHY } = require('../constants');
 
 /**
  * Check if user has at least the required role

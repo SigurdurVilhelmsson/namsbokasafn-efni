@@ -846,10 +846,7 @@
         <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:var(--spacing-md);align-items:end">
           <div class="form-group">
             <label class="form-label">B&#243;k</label>
-            <select class="form-select" id="cv-book-select">
-              <option value="">Veldu b&#243;k...</option>
-              <option value="efnafraedi">Efnafr&#230;&#240;i</option>
-              <option value="liffraedi">L&#237;ffr&#230;&#240;i</option>
+            <select class="form-select book-select" id="cv-book-select">
             </select>
           </div>
           <div class="form-group">
@@ -962,9 +959,7 @@
         <h2 style="font-family:var(--font-heading);font-size:var(--text-xl);color:var(--text-primary);margin-bottom:var(--spacing-md)">Mynd a&#254;&#253;&#240;ingaeftirlit</h2>
         <div class="form-group" style="max-width:300px">
           <label class="form-label">Veldu b&#243;k</label>
-          <select class="form-select" id="img-book-select" onchange="loadBookImages()">
-            <option value="">Veldu b&#243;k...</option>
-            <option value="efnafraedi">Efnafr&#230;&#240;i (Chemistry 2e)</option>
+          <select class="form-select book-select" id="img-book-select" onchange="loadBookImages()">
           </select>
         </div>
       </div>
@@ -1034,6 +1029,7 @@
   </div>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/bookSelector.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script>

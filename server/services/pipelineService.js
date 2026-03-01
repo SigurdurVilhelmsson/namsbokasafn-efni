@@ -45,7 +45,7 @@ const TRACK_SOURCE_DIR = {
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runInject({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
+function runInject({ book, chapter, moduleId, track = 'faithful', userId }) {
   const sourceDir = TRACK_SOURCE_DIR[track] || '03-faithful-translation';
 
   const args = [
@@ -84,7 +84,7 @@ function runInject({ book = 'efnafraedi', chapter, moduleId, track = 'faithful',
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runRender({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
+function runRender({ book, chapter, moduleId, track = 'faithful', userId }) {
   const args = [
     path.join(TOOLS_DIR, 'cnxml-render.js'),
     '--book',
@@ -121,7 +121,7 @@ function runRender({ book = 'efnafraedi', chapter, moduleId, track = 'faithful',
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runPipeline({ book = 'efnafraedi', chapter, moduleId, track = 'faithful', userId }) {
+function runPipeline({ book, chapter, moduleId, track = 'faithful', userId }) {
   // Guard: reject if too many concurrent jobs
   if (runningJobCount() >= MAX_JOBS) {
     throw new Error(
@@ -335,7 +335,7 @@ function generateJobId() {
  * Advance chapter status.json when pipeline stages complete.
  * Best-effort — errors are logged but don't fail the pipeline.
  *
- * @param {string} book - Book slug (default: 'efnafraedi')
+ * @param {string} book - Book slug (e.g., 'efnafraedi')
  * @param {number} chapter - Chapter number
  * @param {string} stage - Stage name ('injection', 'rendering')
  * @param {object} [extra] - Additional data to merge into the stage entry

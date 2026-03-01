@@ -24,6 +24,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor, requireEditor } = require('../middleware/requireRole');
 const imageTracker = require('../services/imageTracker');
 const { VALID_BOOKS } = require('../config');
+const { MAX_CHAPTERS } = require('../constants');
 const { fetchModule } = require('../../tools/openstax-fetch.cjs');
 
 // Validate :book param on all routes that use it
@@ -46,7 +47,7 @@ const storage = multer.diskStorage({
 
     // Validate chapter is a positive integer
     const chapterNum = parseInt(chapter, 10);
-    if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
+    if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > MAX_CHAPTERS) {
       return cb(new Error(`Invalid chapter: ${chapter}`));
     }
 

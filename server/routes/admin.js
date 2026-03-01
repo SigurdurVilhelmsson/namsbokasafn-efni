@@ -616,7 +616,7 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     }
 
     // Prevent demoting self
-    if (existing.github_username === req.user.username && role && role !== 'admin') {
+    if (existing.github_username === req.user.username && role && role !== ROLES.ADMIN) {
       return res.status(400).json({
         error: 'Invalid operation',
         message: 'You cannot demote yourself',

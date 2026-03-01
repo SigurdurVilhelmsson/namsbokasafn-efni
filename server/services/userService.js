@@ -9,27 +9,9 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const { ROLES, ROLE_HIERARCHY } = require('../constants');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-
-/**
- * Valid roles in hierarchy order
- */
-const ROLES = {
-  ADMIN: 'admin',
-  HEAD_EDITOR: 'head-editor',
-  EDITOR: 'editor',
-  CONTRIBUTOR: 'contributor',
-  VIEWER: 'viewer',
-};
-
-const ROLE_HIERARCHY = {
-  [ROLES.ADMIN]: 5,
-  [ROLES.HEAD_EDITOR]: 4,
-  [ROLES.EDITOR]: 3,
-  [ROLES.CONTRIBUTOR]: 2,
-  [ROLES.VIEWER]: 1,
-};
 
 /**
  * Get database connection

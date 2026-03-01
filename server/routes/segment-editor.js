@@ -40,7 +40,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
 const { VALID_BOOKS } = require('../config');
-const VALID_CATEGORIES = ['terminology', 'accuracy', 'readability', 'style', 'omission'];
+const { PASS1_CATEGORIES: VALID_CATEGORIES } = require('../constants');
 
 // =====================================================================
 // EDITOR ENDPOINTS

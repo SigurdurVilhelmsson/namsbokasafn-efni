@@ -17,7 +17,7 @@ const multer = require('multer');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireAdmin } = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
-const { VALID_BOOKS } = require('../config');
+const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 
 // Configure multer for file uploads
 const uploadDir = path.join(__dirname, '..', '..', 'pipeline-output', 'uploads');
@@ -44,6 +44,17 @@ router.param('bookId', (req, res, next, bookId) => {
     return res.status(400).json({ error: 'Invalid book' });
   }
   next();
+});
+
+/**
+ * GET /api/books/list
+ * Lightweight endpoint returning registered book slugs + labels for dropdown population.
+ * No auth required — book names are not sensitive and this is used on public pages (e.g., feedback).
+ */
+router.get('/list', (req, res) => {
+  res.json({
+    books: VALID_BOOKS.map((slug) => ({ slug, label: BOOK_LABELS[slug] || slug })),
+  });
 });
 
 // Load book data

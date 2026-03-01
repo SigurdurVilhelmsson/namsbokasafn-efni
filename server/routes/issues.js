@@ -93,7 +93,7 @@ router.get('/', requireAuth, (req, res) => {
   }
 
   // Check permissions - editors can see all, contributors only see their own sessions
-  if (req.user.role === 'contributor') {
+  if (req.user.role === ROLES.CONTRIBUTOR) {
     const userSessions = session.listUserSessions(req.user.id).map((s) => s.id);
     issues = issues.filter(
       (i) => i.reportedBy === req.user.id || (i.sessionId && userSessions.includes(i.sessionId))
@@ -393,8 +393,8 @@ router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
   // Check permissions for category
   if (
     issue.category === 'BOARD_REVIEW' &&
-    req.user.role !== 'admin' &&
-    req.user.role !== 'head-editor'
+    req.user.role !== ROLES.ADMIN &&
+    req.user.role !== ROLES.HEAD_EDITOR
   ) {
     return res.status(403).json({
       error: 'Board review issues require head editor or admin',
@@ -637,7 +637,10 @@ function getAvailableActions(issue, user) {
   }
 
   // Board review issues (head editor or admin only)
-  if (issue.category === 'BOARD_REVIEW' && (user.role === 'head-editor' || user.role === 'admin')) {
+  if (
+    issue.category === 'BOARD_REVIEW' &&
+    (user.role === ROLES.HEAD_EDITOR || user.role === ROLES.ADMIN)
+  ) {
     actions.push({
       action: 'accept',
       description: 'Approve for localization',

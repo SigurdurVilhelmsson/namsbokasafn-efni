@@ -22,13 +22,7 @@ const localizationEditService = require('../services/localizationEditService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
-const VALID_CATEGORIES = [
-  'unit-conversion',
-  'cultural-adaptation',
-  'example-replacement',
-  'formatting',
-  'unchanged',
-];
+const { PASS2_CATEGORIES: VALID_CATEGORIES } = require('../constants');
 
 // Per-module write lock to prevent read-modify-write race conditions.
 // Key: "book/chapter/moduleId", Value: Promise chain

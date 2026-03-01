@@ -488,10 +488,7 @@
     <div class="controls-bar">
       <div class="filter-controls">
         <label for="book-filter" class="form-label" style="margin:0">B&#243;k:</label>
-        <select id="book-filter" class="form-select">
-          <option value="">Allar b&#230;kur</option>
-          <option value="efnafraedi">Efnafr&#230;&#240;i</option>
-          <option value="liffraedi">L&#237;ffr&#230;&#240;i</option>
+        <select id="book-filter" class="form-select book-select" data-allow-all="true">
         </select>
       </div>
     </div>
@@ -639,6 +636,7 @@
   </main>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/bookSelector.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
   <script>
@@ -856,7 +854,7 @@
 
     async function loadQueue() {
       var container = document.getElementById('queue-content');
-      var book = document.getElementById('book-filter').value || 'efnafraedi';
+      var book = document.getElementById('book-filter').value;
 
       container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hle\u00F0ur...</span></div>';
 

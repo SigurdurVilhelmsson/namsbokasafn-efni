@@ -20,7 +20,7 @@ const pipeline = require('../services/pipelineService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const { VALID_BOOKS } = require('../config');
-const VALID_TRACKS = ['mt-preview', 'faithful', 'localized'];
+const { VALID_TRACKS, MAX_CHAPTERS } = require('../constants');
 
 // All pipeline operations require HEAD_EDITOR
 router.use(requireAuth, requireRole(ROLES.HEAD_EDITOR));
@@ -37,7 +37,7 @@ function validateParams(req, res) {
   }
 
   const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 50) {
+  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > MAX_CHAPTERS) {
     res.status(400).json({ error: 'Invalid chapter number' });
     return null;
   }
@@ -162,7 +162,7 @@ router.post('/prepare-tm', (req, res) => {
   }
 
   const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 50) {
+  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > MAX_CHAPTERS) {
     return res.status(400).json({ error: 'Invalid chapter number' });
   }
 

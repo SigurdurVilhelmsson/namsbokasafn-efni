@@ -13,6 +13,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const { SIMPLE_STAGES } = require('../constants');
 const openstaxCatalogue = require('./openstaxCatalogue');
 const openstaxFetcher = require('./openstaxFetcher');
 
@@ -815,15 +816,7 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
     const today = new Date().toISOString().split('T')[0];
 
     // Bidirectional sync for simple stages (promote if files exist, demote if missing)
-    const simpleStages = [
-      'extraction',
-      'mtReady',
-      'mtOutput',
-      'linguisticReview',
-      'injection',
-      'rendering',
-    ];
-    for (const stage of simpleStages) {
+    for (const stage of SIMPLE_STAGES) {
       const filesExist = STATUS_RULES[stage](bookSlug, ch);
       const currentlyComplete = statusData.status[stage]?.complete;
 
@@ -1001,8 +994,8 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
     if (fs.existsSync(statusPath)) {
       try {
         statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-      } catch (e) {
-        // Ignore parse errors
+      } catch {
+        /* ignore parse errors */
       }
     }
 

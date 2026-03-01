@@ -23,8 +23,20 @@ const fs = require('fs');
 const archiver = require('archiver');
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireContributor, requireAdmin } = require('../middleware/requireRole');
+const { requireContributor, requireAdmin, ROLES } = require('../middleware/requireRole');
 const { VALID_BOOKS } = require('../config');
+
+/**
+ * Check that the current user owns the session or is admin.
+ * @throws {Error} with status 403 if access denied
+ */
+function requireOwnerOrAdmin(req, sessionData) {
+  if (sessionData.userId !== req.user.id && req.user.role !== ROLES.ADMIN) {
+    const err = new Error('You do not have access to this session');
+    err.status = 403;
+    throw err;
+  }
+}
 const session = require('../services/session');
 const gitService = require('../services/gitService');
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
@@ -423,12 +435,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
   }
 
   // Check access (user owns session or is admin)
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-      message: 'You do not have access to this session',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   // Get upload progress for current step if applicable
   const currentStepData = sessionData.steps[sessionData.currentStep];
@@ -485,11 +492,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   if (!req.file) {
     return res.status(400).json({
@@ -800,11 +803,7 @@ router.get('/:sessionId/download/:artifact', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const file = session.getFile(sessionId, artifact);
 
@@ -838,11 +837,7 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   try {
     // Build descriptive ZIP filename
@@ -950,11 +945,7 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   try {
     const currentStep = sessionData.steps[sessionData.currentStep];
@@ -1075,11 +1066,7 @@ router.post('/:sessionId/cancel', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const cancelled = session.cancelSession(sessionId, reason);
 
@@ -1110,12 +1097,7 @@ router.delete('/:sessionId', requireAuth, (req, res) => {
   }
 
   // Allow owner or admin to delete
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-      message: 'Only the session owner or an admin can delete this session',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const result = session.deleteSession(sessionId);
 
@@ -1152,11 +1134,7 @@ router.get('/:sessionId/errors', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const errorLog = session.getErrorLog(sessionId);
   const recoveryActions = session.getRecoveryActions(sessionId);
@@ -1188,11 +1166,7 @@ router.post('/:sessionId/retry', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const result = session.retryCurrentStep(sessionId);
 
@@ -1238,11 +1212,7 @@ router.post('/:sessionId/rollback', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const result = session.rollbackToPreviousStep(sessionId);
 
@@ -1289,11 +1259,7 @@ router.post('/:sessionId/reset', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   if (!confirm) {
     return res.status(400).json({
@@ -1344,11 +1310,7 @@ router.get('/:sessionId/recovery', requireAuth, (req, res) => {
     });
   }
 
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Access denied',
-    });
-  }
+  requireOwnerOrAdmin(req, sessionData);
 
   const recoveryActions = session.getRecoveryActions(sessionId);
 
