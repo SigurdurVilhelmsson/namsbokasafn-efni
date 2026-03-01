@@ -21,7 +21,11 @@
   // Apply theme to document
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      /* quota exceeded */
+    }
 
     // Update toggle button icons and labels
     const toggleBtns = document.querySelectorAll('.theme-toggle');

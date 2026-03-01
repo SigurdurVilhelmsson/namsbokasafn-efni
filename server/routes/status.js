@@ -526,7 +526,7 @@ router.get('/analytics', requireAuth, async (req, res) => {
         (a, b) => b.totalActions - a.totalActions
       );
     } catch (e) {
-      console.log('Could not calculate team metrics:', e.message);
+      console.error('Could not calculate team metrics:', e.message);
     }
 
     // Per-stage metrics

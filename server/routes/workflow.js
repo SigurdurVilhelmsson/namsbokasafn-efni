@@ -590,7 +590,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           req.file.path
         );
         if (saveResult.success) {
-          console.log(`  Saved MT output to permanent: ${saveResult.destPath}`);
+          console.debug(`  Saved MT output to permanent: ${saveResult.destPath}`);
           // Update database status
           workflowPersistence.updateSectionFromWorkflow(
             bookSlug,
@@ -628,7 +628,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           req.file.path
         );
         if (saveResult.success) {
-          console.log(`  Saved faithful edit to permanent: ${saveResult.destPath}`);
+          console.debug(`  Saved faithful edit to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
             bookSlug,
             sessionData.chapter,
@@ -659,7 +659,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           req.file.path
         );
         if (saveResult.success) {
-          console.log(`  Saved TMX to permanent: ${saveResult.destPath}`);
+          console.debug(`  Saved TMX to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
             bookSlug,
             sessionData.chapter,
@@ -731,7 +731,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           req.file.path
         );
         if (saveResult.success) {
-          console.log(`  Saved localized file to permanent: ${saveResult.destPath}`);
+          console.debug(`  Saved localized file to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
             bookSlug,
             sessionData.chapter,

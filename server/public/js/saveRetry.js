@@ -9,7 +9,7 @@
 const saveRetry = (function () {
   'use strict';
 
-  const STORAGE_KEY = 'save-retry-queue';
+  const STORAGE_KEY = 'saveRetryQueue';
   const MAX_ATTEMPTS = 3;
   const BACKOFF_BASE = 1000; // 1s, 2s, 4s
   const EXPIRY_MS = 60 * 60 * 1000; // 1 hour
@@ -36,7 +36,7 @@ const saveRetry = (function () {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(queue));
     } catch {
-      /* quota exceeded */
+      showToast('Geymsla í vafra er full — endurtilraunir gætu glatast.', 'error');
     }
   }
 

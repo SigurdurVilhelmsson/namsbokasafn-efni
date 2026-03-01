@@ -86,12 +86,12 @@ router.post('/', optionalAuth, async (req, res) => {
     // Send email notification to admins
     try {
       const typeLabel = feedbackService.FEEDBACK_TYPE_LABELS[type];
-      console.log('[Feedback] New feedback submitted:', feedback.id, '-', typeLabel);
+      console.debug('[Feedback] New feedback submitted:', feedback.id, '-', typeLabel);
 
       // Send email + in-app notification
       const notifyResult = await notifications.notifyFeedbackReceived(feedback, typeLabel);
       if (notifyResult.emailSent) {
-        console.log('[Feedback] Email notification sent to admin');
+        console.debug('[Feedback] Email notification sent to admin');
       }
     } catch (notifyErr) {
       console.error('[Feedback] Notification error:', notifyErr);
