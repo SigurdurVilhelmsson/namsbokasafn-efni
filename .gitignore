@@ -76,6 +76,9 @@ CHANGELOG-AUTO.md
 
 # Pipeline test directory (local development)
 books/efnafraedi/pipeline-test/
+
+# Test artifacts (created by test suite)
+books/testbook/
 *:Zone.Identifier
 Chemistry2e-WEB.pdf
 Screenshot*.png

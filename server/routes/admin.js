@@ -930,6 +930,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/008-segment-editing'),
       require('../migrations/009-segment-edit-apply'),
       require('../migrations/010-chapter-assignments'),
+      require('../migrations/011-localization-edits'),
     ];
 
     const results = [];
