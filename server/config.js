@@ -85,13 +85,63 @@ const config = {
 
 /**
  * Valid book identifiers used across route files for parameter validation.
- * Add new books here as they are registered for translation.
+ * Seeded with hardcoded defaults; refreshed from DB on startup via refreshValidBooks().
+ *
+ * IMPORTANT: All route files hold a reference to this same array object.
+ * refreshValidBooks() mutates it in place so every importer sees the update.
  */
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
+
+/**
+ * Human-readable book labels (slug → Icelandic title).
+ * Seeded with hardcoded defaults; refreshed from DB alongside VALID_BOOKS.
+ */
+const BOOK_LABELS = {
+  efnafraedi: 'Efnafræði',
+  liffraedi: 'Líffræði',
+};
+
+/**
+ * Refresh VALID_BOOKS and BOOK_LABELS from the registered_books table.
+ *
+ * Mutates VALID_BOOKS in place so all importers (9 route/middleware files)
+ * see the updated list without any code changes on their side.
+ *
+ * @param {import('better-sqlite3').Database} db - Open database handle
+ */
+function refreshValidBooks(db) {
+  // Hardcoded defaults — always included even if DB is empty
+  const defaults = ['efnafraedi', 'liffraedi'];
+  const defaultLabels = { efnafraedi: 'Efnafræði', liffraedi: 'Líffræði' };
+
+  try {
+    const rows = db
+      .prepare("SELECT slug, title_is FROM registered_books WHERE status = 'active'")
+      .all();
+
+    // Merge DB slugs with hardcoded defaults (Set ensures uniqueness)
+    const allSlugs = [...new Set([...defaults, ...rows.map((r) => r.slug)])];
+
+    // Mutate the exported array in place — all importers see the change
+    VALID_BOOKS.length = 0;
+    VALID_BOOKS.push(...allSlugs);
+
+    // Rebuild BOOK_LABELS
+    Object.keys(BOOK_LABELS).forEach((k) => delete BOOK_LABELS[k]);
+    Object.assign(BOOK_LABELS, defaultLabels);
+    for (const row of rows) {
+      BOOK_LABELS[row.slug] = row.title_is;
+    }
+  } catch {
+    // Table may not exist pre-migration — keep defaults
+  }
+}
 
 module.exports = {
   validateSecrets,
   config,
   REQUIRED_PRODUCTION_SECRETS,
   VALID_BOOKS,
+  BOOK_LABELS,
+  refreshValidBooks,
 };

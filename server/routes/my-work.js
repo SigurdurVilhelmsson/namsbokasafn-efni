@@ -16,6 +16,7 @@ const fs = require('fs');
 const Database = require('better-sqlite3');
 
 const { requireAuth } = require('../middleware/requireAuth');
+const { BOOK_LABELS } = require('../config');
 const activityLog = require('../services/activityLog');
 
 // Database path (same as other services)
@@ -56,12 +57,6 @@ function buildEditorUrl(book, chapter, section, stage) {
   }
   return url;
 }
-
-// Book labels
-const BOOK_LABELS = {
-  efnafraedi: 'Efnafræði',
-  liffraedi: 'Líffræði',
-};
 
 /**
  * Get user's proposed terminology

@@ -14,8 +14,10 @@
 const express = require('express');
 const router = express.Router();
 
+const path = require('path');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
+const { refreshValidBooks } = require('../config');
 const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
@@ -198,6 +200,19 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       fetchFromOpenstax: fetchFromOpenstax === true,
       forceReregister: forceReregister === true,
     });
+
+    // Refresh VALID_BOOKS so the new book is accessible immediately
+    if (result.success) {
+      try {
+        const Database = require('better-sqlite3');
+        const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+        const db = new Database(dbPath, { readonly: true });
+        refreshValidBooks(db);
+        db.close();
+      } catch {
+        // Non-fatal — book will be accessible after next server restart
+      }
+    }
 
     // Assign head editor if specified
     if (headEditorId && result.success && result.book) {

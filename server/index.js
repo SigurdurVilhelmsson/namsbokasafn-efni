@@ -23,7 +23,7 @@
 require('dotenv').config();
 
 // Validate configuration before proceeding
-const { validateSecrets, config } = require('./config');
+const { validateSecrets, config, refreshValidBooks, VALID_BOOKS } = require('./config');
 validateSecrets();
 
 const express = require('express');
@@ -345,6 +345,18 @@ const server = app.listen(PORT, HOST, () => {
   console.log('');
   console.log('Press Ctrl+C to stop');
   console.log('');
+
+  // Refresh VALID_BOOKS from DB so newly registered books are accessible
+  try {
+    const Database = require('better-sqlite3');
+    const dbPath = path.join(__dirname, '..', 'pipeline-output', 'sessions.db');
+    const db = new Database(dbPath, { readonly: true });
+    refreshValidBooks(db);
+    db.close();
+    console.log(`Active books: ${VALID_BOOKS.join(', ')}`);
+  } catch {
+    // DB may not exist yet on first run — defaults are fine
+  }
 });
 
 // Graceful shutdown — let in-flight requests complete before exiting
