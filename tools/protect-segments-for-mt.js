@@ -24,7 +24,7 @@
  * Options:
  *   --output-dir, -o <dir>  Output directory (default: same as input)
  *   --batch <dir>           Process all *-segments.en.md files in directory
- *   --char-limit <n>        Visible character limit (default: 14000)
+ *   --char-limit <n>        Visible character limit (default: 80000)
  *   --dry-run, -n           Show what would be done without writing files
  *   --verbose, -v           Show detailed progress
  *   -h, --help              Show this help message
@@ -34,8 +34,8 @@ import fs from 'fs';
 import path from 'path';
 
 // Character limits
-const DEFAULT_CHAR_LIMIT = 12000; // 8k buffer for tag overhead + safety margin
-const HARD_LIMIT = 20000; // Hard limit for validation
+const DEFAULT_CHAR_LIMIT = 80000; // ~20% buffer for tag overhead (Erlendur 100K limit)
+const HARD_LIMIT = 100000; // Hard limit matching Erlendur's 100K maximum
 
 // Patterns for "invisible" content (not counted toward character limit)
 const INVISIBLE_PATTERNS = [

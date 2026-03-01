@@ -8,11 +8,11 @@ const fs = require('fs');
 const path = require('path');
 const { getSession, saveSession } = require('./sessionCore');
 
-// Erlendur MT character limit (20,000 characters)
-const ERLENDUR_CHAR_LIMIT = 20000;
+// Erlendur MT character limit (100,000 characters since 2026-03 upgrade)
+const ERLENDUR_CHAR_LIMIT = 100000;
 
-// Soft limit to allow some buffer
-const ERLENDUR_SOFT_LIMIT = 18000;
+// Soft limit to allow some buffer (~10%)
+const ERLENDUR_SOFT_LIMIT = 90000;
 
 /**
  * Store file in session
