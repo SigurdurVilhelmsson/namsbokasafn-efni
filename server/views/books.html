@@ -281,6 +281,60 @@
       display: flex;
       gap: var(--spacing-sm);
       align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Pipeline step buttons — ordered left-to-right with arrows between */
+    .pipeline-steps {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .pipeline-secondary {
+      display: flex;
+      gap: var(--spacing-sm);
+      align-items: center;
+    }
+
+    .step-arrow {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      margin-right: 3px;
+    }
+
+    .pipeline-step:not([disabled]):not(.disabled) .step-num {
+      background: var(--accent);
+    }
+
+    .pipeline-step[disabled],
+    .pipeline-step.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .pipeline-step.step-done:not([disabled]) {
+      border-color: var(--success, #4a7c59);
+      color: var(--success, #4a7c59);
+    }
+
+    .pipeline-step.step-done .step-num {
+      background: var(--success, #4a7c59);
     }
 
     /* Stats row within detail */
@@ -799,43 +853,49 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 Opna ritstj&#243;ra
               </a>
-              <!-- Pipeline buttons (head-editor+) -->
-              <button class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-extract" style="display:none" onclick="runExtract()">
-                Draga &#250;t
-              </button>
-              <button class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-protect" style="display:none" onclick="runProtect()">
-                Verja
-              </button>
-              <button class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-unprotect" style="display:none" onclick="runUnprotect()">
-                Afverja
-              </button>
-              <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
-
-              <!-- Publication buttons (head-editor+) -->
-              <div class="btn-group" id="btn-publish-group" style="display:none">
-                <button class="btn btn-sm btn-primary" onclick="publishChapter('faithful')">Birta</button>
-                <button class="btn btn-sm btn-secondary" onclick="publishChapter('mt-preview')" title="Birta v&#233;l&#254;&#253;&#240;ingu">MT</button>
+              <!-- Pipeline steps (head-editor+) — shown in pipeline order, disabled until prerequisites met -->
+              <div class="pipeline-steps" id="pipeline-steps" style="display:none">
+                <button class="btn btn-sm btn-secondary pipeline-step" id="btn-extract" onclick="runExtract()" title="Draga &#250;t EN Markdown &#250;r CNXML">
+                  <span class="step-num">1</span> Draga &#250;t
+                </button>
+                <span class="step-arrow">&#8250;</span>
+                <button class="btn btn-sm btn-secondary pipeline-step" id="btn-protect" disabled onclick="runProtect()" title="Verja st&#230;r&#240;fr&#230;&#240;i og merki fyrir v&#233;l&#254;&#253;&#240;ingu">
+                  <span class="step-num">2</span> Verja
+                </button>
+                <span class="step-arrow">&#8250;</span>
+                <label class="btn btn-sm btn-secondary pipeline-step disabled" id="btn-upload-mt" title="Hla&#240;a upp IS &#254;&#253;&#240;ingum &#237; 02-mt-output">
+                  <input type="file" multiple accept=".md" style="display:none" onchange="uploadMtFiles(this.files)" disabled>
+                  <span class="step-num">3</span> &#8593; IS
+                </label>
+                <span class="step-arrow">&#8250;</span>
+                <div class="btn-group pipeline-step" id="btn-publish-group">
+                  <button class="btn btn-sm btn-primary" disabled onclick="publishChapter('faithful')" title="Birta yfirfarna &#254;&#253;&#240;ingu">
+                    <span class="step-num">4</span> Birta
+                  </button>
+                  <button class="btn btn-sm btn-secondary" disabled onclick="publishChapter('mt-preview')" title="Birta v&#233;l&#254;&#253;&#240;ingu">MT</button>
+                </div>
+                <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
+                <span class="tm-badge" id="publish-badge" style="display:none"></span>
               </div>
-              <span class="tm-badge" id="publish-badge" style="display:none"></span>
 
-              <!-- MT upload (head-editor+) -->
-              <label class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-upload-mt" style="display:none" title="Hla&#240;a upp IS skr&#225;m &#237; 02-mt-output">
-                <input type="file" multiple accept=".md" style="display:none" onchange="uploadMtFiles(this.files)">
-                &#8593; IS
-              </label>
-
-              <button class="btn btn-sm btn-secondary" id="btn-prepare-tm" style="display:none" onclick="prepareTm()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-                Undirb&#250;a TM
-              </button>
-              <span class="tm-badge" id="prepare-tm-badge" style="display:none"></span>
+              <!-- Secondary actions (head-editor+) -->
+              <div class="pipeline-secondary" id="pipeline-secondary" style="display:none">
+                <button class="btn btn-sm btn-secondary" disabled id="btn-unprotect" onclick="runUnprotect()" title="Afverja &#8212; endurgera skref 2">
+                  Afverja
+                </button>
+                <button class="btn btn-sm btn-secondary" disabled id="btn-prepare-tm" onclick="prepareTm()" title="Undirb&#250;a &#254;&#253;&#240;ingarminni (TM) fyrir Matecat">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                  Undirb&#250;a TM
+                </button>
+                <span class="tm-badge" id="prepare-tm-badge" style="display:none"></span>
+              </div>
 
               <!-- Download buttons -->
-              <button class="btn btn-sm btn-secondary" onclick="downloadChapterMarkdown(selectedBook, selectedChapter)">
+              <button class="btn btn-sm btn-secondary" onclick="downloadChapterMarkdown(selectedBook, selectedChapter)" title="S&#230;kja EN Markdown skr&#225;r">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 EN
               </button>
-              <button class="btn btn-sm btn-secondary" id="btn-download-pub" style="display:none" onclick="downloadPublishedHtml(selectedBook, selectedChapter)">
+              <button class="btn btn-sm btn-secondary" id="btn-download-pub" style="display:none" onclick="downloadPublishedHtml(selectedBook, selectedChapter)" title="S&#230;kja birta HTML">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 HTML
               </button>
@@ -1406,16 +1466,12 @@
       // Update links
       document.getElementById('chapter-editor-link').href = '/segment-editor?book=' + slug + '&chapter=' + chapterNum;
 
-      // Reset pipeline/publication buttons (hidden until loadChapterStatus reveals them)
-      document.getElementById('btn-extract').style.display = 'none';
-      document.getElementById('btn-protect').style.display = 'none';
-      document.getElementById('btn-unprotect').style.display = 'none';
-      document.getElementById('btn-upload-mt').style.display = 'none';
-      document.getElementById('btn-publish-group').style.display = 'none';
+      // Reset pipeline buttons to disabled state
+      document.getElementById('pipeline-steps').style.display = 'none';
+      document.getElementById('pipeline-secondary').style.display = 'none';
       document.getElementById('btn-download-pub').style.display = 'none';
       document.getElementById('pipeline-action-badge').style.display = 'none';
       document.getElementById('publish-badge').style.display = 'none';
-      document.getElementById('btn-prepare-tm').style.display = 'none';
       document.getElementById('prepare-tm-badge').style.display = 'none';
       clearInterval(pipelinePollingTimer);
 
@@ -1581,10 +1637,11 @@
       }
     }
 
-    // Chapter status (for TM button and pipeline buttons)
+    // Chapter status (for pipeline button states)
     async function loadChapterStatus(book, chapter) {
       var extraction = {};
       var mtReady = {};
+      var mtOutput = {};
       var linguisticReview = {};
       var tmCreated = {};
       var publication = {};
@@ -1600,22 +1657,10 @@
         }
         extraction = stages.extraction || {};
         mtReady = stages.mtReady || {};
+        mtOutput = stages.mtOutput || {};
         linguisticReview = stages.linguisticReview || {};
         tmCreated = stages.tmCreated || {};
         publication = stages.publication || {};
-
-        var tmBtn = document.getElementById('btn-prepare-tm');
-        var tmBadge = document.getElementById('prepare-tm-badge');
-
-        if (linguisticReview.complete) {
-          tmBtn.style.display = '';
-
-          if (tmCreated.complete) {
-            tmBadge.style.display = '';
-            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
-            tmBadge.className = 'tm-badge completed';
-          }
-        }
       } catch (err) {
         // 404 is expected for new books with no status file yet
         if (!err.message || !err.message.includes('404')) {
@@ -1623,27 +1668,58 @@
         }
       }
 
-      // Pipeline and publication buttons — head-editor+ only
-      // Runs even when status is missing (new book), so "Draga út" is always reachable
+      // Pipeline buttons — head-editor+ only
       var role = window.currentUser && window.currentUser.role;
       var isHeadEditor = role === 'head-editor' || role === 'admin';
 
       if (isHeadEditor) {
-        // Extract button: always available for head-editor
-        document.getElementById('btn-extract').style.display = '';
-        // Protect button: available after extraction
-        if (extraction.complete) {
-          document.getElementById('btn-protect').style.display = '';
+        // Show the pipeline step containers
+        document.getElementById('pipeline-steps').style.display = '';
+        document.getElementById('pipeline-secondary').style.display = '';
+
+        // Helper: enable/disable a button and toggle done styling
+        function setStep(id, enabled, done) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          if (el.tagName === 'LABEL') {
+            // File upload label — toggle class + inner input
+            if (enabled) { el.classList.remove('disabled'); } else { el.classList.add('disabled'); }
+            var input = el.querySelector('input[type="file"]');
+            if (input) input.disabled = !enabled;
+          } else if (el.classList.contains('btn-group')) {
+            // Button group — enable/disable children
+            var btns = el.querySelectorAll('button');
+            for (var i = 0; i < btns.length; i++) { btns[i].disabled = !enabled; }
+          } else {
+            el.disabled = !enabled;
+          }
+          if (done) { el.classList.add('step-done'); } else { el.classList.remove('step-done'); }
         }
-        // Upload MT + Unprotect: available after mtReady
-        if (mtReady.complete) {
-          document.getElementById('btn-upload-mt').style.display = '';
-          document.getElementById('btn-unprotect').style.display = '';
+
+        // Step 1: Extract — always enabled
+        setStep('btn-extract', true, extraction.complete);
+
+        // Step 2: Protect — after extraction
+        setStep('btn-protect', extraction.complete, mtReady.complete);
+
+        // Step 3: Upload IS — after protect
+        setStep('btn-upload-mt', mtReady.complete, mtOutput.complete);
+
+        // Step 4: Publish — after linguistic review (done in editor)
+        setStep('btn-publish-group', linguisticReview.complete, false);
+
+        // Secondary: Unprotect — after protect
+        setStep('btn-unprotect', mtReady.complete, false);
+
+        // Secondary: Prepare TM — after linguistic review
+        setStep('btn-prepare-tm', linguisticReview.complete, tmCreated.complete);
+        if (tmCreated.complete) {
+          var tmBadge = document.getElementById('prepare-tm-badge');
+          tmBadge.style.display = '';
+          tmBadge.textContent = 'TM tilb\u00fai\u00f0';
+          tmBadge.className = 'tm-badge completed';
         }
-        // Publish buttons: available after linguisticReview
-        if (linguisticReview.complete) {
-          document.getElementById('btn-publish-group').style.display = '';
-        }
+
         // Published HTML download: available if any publication track complete
         var pubFaithful = publication.faithful || {};
         var pubMtPreview = publication.mtPreview || {};
