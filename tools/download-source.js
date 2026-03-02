@@ -15,7 +15,7 @@
  *     [--branch main] [--verbose]
  */
 
-import { execSync } from 'child_process';
+import { execSync, execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -222,8 +222,7 @@ function getCommitSha(repo, branch) {
   const token = process.env.GITHUB_BOT_TOKEN;
   const url = `https://api.github.com/repos/${repo}/git/ref/heads/${branch}`;
 
-  const curlArgs = [
-    'curl',
+  const args = [
     '-sf',
     '-H',
     'Accept: application/vnd.github.v3+json',
@@ -231,16 +230,16 @@ function getCommitSha(repo, branch) {
     'User-Agent: namsbokasafn-pipeline',
   ];
   if (token) {
-    curlArgs.push('-H', `Authorization: Bearer ${token}`);
+    args.push('-H', `Authorization: Bearer ${token}`);
   }
-  curlArgs.push(url);
+  args.push(url);
 
   try {
-    const result = execSync(curlArgs.join(' '), { encoding: 'utf8', timeout: 30000 });
+    const result = execFileSync('curl', args, { encoding: 'utf8', timeout: 30000 });
     const data = JSON.parse(result);
     return data.object.sha;
   } catch (err) {
-    if (err.status === 2) {
+    if (err.status === 22) {
       // curl exit code 22 = HTTP error (with -f flag)
       if (!token) {
         throw new Error(
