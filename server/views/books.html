@@ -284,57 +284,25 @@
       flex-wrap: wrap;
     }
 
-    /* Pipeline step buttons — ordered left-to-right with arrows between */
-    .pipeline-steps {
+    /* Pipeline action buttons */
+    .pipeline-actions {
       display: flex;
-      gap: 4px;
+      gap: var(--spacing-sm);
       align-items: center;
+    }
+
+    .pipeline-separator {
+      color: var(--border);
+      font-size: 1.25rem;
+      line-height: 1;
+      padding: 0 2px;
+      user-select: none;
     }
 
     .pipeline-secondary {
       display: flex;
       gap: var(--spacing-sm);
       align-items: center;
-    }
-
-    .step-arrow {
-      color: var(--text-muted);
-      font-size: 16px;
-      line-height: 1;
-      user-select: none;
-    }
-
-    .step-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--text-muted);
-      color: white;
-      font-size: 10px;
-      font-weight: 600;
-      margin-right: 3px;
-    }
-
-    .pipeline-step:not([disabled]):not(.disabled) .step-num {
-      background: var(--accent);
-    }
-
-    .pipeline-step[disabled],
-    .pipeline-step.disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
-
-    .pipeline-step.step-done:not([disabled]) {
-      border-color: var(--success, #4a7c59);
-      color: var(--success, #4a7c59);
-    }
-
-    .pipeline-step.step-done .step-num {
-      background: var(--success, #4a7c59);
     }
 
     /* Stats row within detail */
@@ -853,49 +821,36 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 Opna ritstj&#243;ra
               </a>
-              <!-- Pipeline steps (head-editor+) — shown in pipeline order, disabled until prerequisites met -->
-              <div class="pipeline-steps" id="pipeline-steps" style="display:none">
-                <button class="btn btn-sm btn-secondary pipeline-step" id="btn-extract" onclick="runExtract()" title="Draga &#250;t EN Markdown &#250;r CNXML">
-                  <span class="step-num">1</span> Draga &#250;t
-                </button>
-                <span class="step-arrow">&#8250;</span>
-                <button class="btn btn-sm btn-secondary pipeline-step" id="btn-protect" disabled onclick="runProtect()" title="Verja st&#230;r&#240;fr&#230;&#240;i og merki fyrir v&#233;l&#254;&#253;&#240;ingu">
-                  <span class="step-num">2</span> Verja
-                </button>
-                <span class="step-arrow">&#8250;</span>
-                <label class="btn btn-sm btn-secondary pipeline-step disabled" id="btn-upload-mt" title="Hla&#240;a upp IS &#254;&#253;&#240;ingum &#237; 02-mt-output">
-                  <input type="file" multiple accept=".md" style="display:none" onchange="uploadMtFiles(this.files)" disabled>
-                  <span class="step-num">3</span> &#8593; IS
-                </label>
-                <span class="step-arrow">&#8250;</span>
-                <button class="btn btn-sm btn-secondary pipeline-step" id="btn-publish-mt" disabled onclick="publishChapter('mt-preview')" title="Birta v&#233;l&#254;&#253;&#240;ingu &#8212; eftir a&#240; &#254;&#253;&#240;ingar eru hla&#240;nar upp">
-                  <span class="step-num">4</span> Birta MT
-                </button>
-                <span class="step-arrow" id="arrow-faithful" style="visibility:hidden">&#8250;</span>
-                <button class="btn btn-sm btn-primary pipeline-step" id="btn-publish-faithful" disabled onclick="publishChapter('faithful')" title="Birta yfirfarna &#254;&#253;&#240;ingu &#8212; eftir m&#225;lfarsyfirfer&#240;">
-                  <span class="step-num">5</span> Birta
-                </button>
+              <!-- Pipeline actions (head-editor+) — smart buttons that chain steps automatically -->
+              <div class="pipeline-actions" id="pipeline-actions" style="display:none">
+                <button class="btn btn-sm btn-secondary" id="btn-download-en" onclick="smartDownloadEN()"
+                  title="S&#230;kja EN Markdown &#8212; keyrir &#250;tdr&#225;tt ef &#254;arf">&#8595; S&#230;kja EN</button>
+                <label class="btn btn-sm btn-secondary" id="btn-upload-is"
+                  title="Hla&#240;a upp IS &#254;&#253;&#240;ingum">
+                  <input type="file" multiple accept=".md" style="display:none" onchange="smartUploadIS(this.files)">
+                  &#8593; Hla&#240;a upp IS</label>
+                <span class="pipeline-separator">|</span>
+                <button class="btn btn-sm btn-secondary" id="btn-publish-mt" disabled
+                  onclick="publishChapter('mt-preview')">Birta MT</button>
+                <button class="btn btn-sm btn-primary" id="btn-publish-faithful" disabled
+                  onclick="publishChapter('faithful')" style="display:none">Birta</button>
                 <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
                 <span class="tm-badge" id="publish-badge" style="display:none"></span>
               </div>
 
               <!-- Secondary actions (head-editor+) -->
               <div class="pipeline-secondary" id="pipeline-secondary" style="display:none">
-                <button class="btn btn-sm btn-secondary" disabled id="btn-unprotect" onclick="runUnprotect()" title="Afverja &#8212; endurgera skref 2">
-                  Afverja
-                </button>
-                <button class="btn btn-sm btn-secondary" disabled id="btn-prepare-tm" onclick="prepareTm()" title="Undirb&#250;a &#254;&#253;&#240;ingarminni (TM) fyrir Matecat">
+                <button class="btn btn-sm btn-secondary" disabled id="btn-prepare-tm" onclick="prepareTm()"
+                  title="Undirb&#250;a &#254;&#253;&#240;ingarminni (TM) fyrir Matecat">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-                  Undirb&#250;a TM
+                  Undirb. TM
                 </button>
+                <button class="btn btn-sm btn-secondary" id="btn-reextract" onclick="runExtract()"
+                  title="Endurdraga &#250;t EN Markdown &#250;r CNXML" style="font-size:0.8em">&#8634; Draga &#250;t</button>
                 <span class="tm-badge" id="prepare-tm-badge" style="display:none"></span>
               </div>
 
-              <!-- Download buttons -->
-              <button class="btn btn-sm btn-secondary" onclick="downloadChapterMarkdown(selectedBook, selectedChapter)" title="S&#230;kja EN Markdown skr&#225;r">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                EN
-              </button>
+              <!-- Download published HTML -->
               <button class="btn btn-sm btn-secondary" id="btn-download-pub" style="display:none" onclick="downloadPublishedHtml(selectedBook, selectedChapter)" title="S&#230;kja birta HTML">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 HTML
@@ -1165,6 +1120,7 @@
     var chapterData = null;
     var tmPollingTimer = null;
     var pipelinePollingTimer = null;
+    var currentChapterStatus = {};
     var cvCurrentBook = null;
     var cvCurrentChapter = null;
     var cvTmPollingTimer = null;
@@ -1468,12 +1424,13 @@
       document.getElementById('chapter-editor-link').href = '/segment-editor?book=' + slug + '&chapter=' + chapterNum;
 
       // Reset pipeline buttons to disabled state
-      document.getElementById('pipeline-steps').style.display = 'none';
+      document.getElementById('pipeline-actions').style.display = 'none';
       document.getElementById('pipeline-secondary').style.display = 'none';
       document.getElementById('btn-download-pub').style.display = 'none';
       document.getElementById('pipeline-action-badge').style.display = 'none';
       document.getElementById('publish-badge').style.display = 'none';
       document.getElementById('prepare-tm-badge').style.display = 'none';
+      currentChapterStatus = {};
       clearInterval(pipelinePollingTimer);
 
       // Load all data in parallel
@@ -1669,56 +1626,39 @@
         }
       }
 
+      // Store status for smart buttons
+      currentChapterStatus = {
+        extraction: extraction,
+        mtReady: mtReady,
+        mtOutput: mtOutput,
+        linguisticReview: linguisticReview,
+        tmCreated: tmCreated,
+        publication: publication
+      };
+
       // Pipeline buttons — head-editor+ only
       var role = window.currentUser && window.currentUser.role;
       var isHeadEditor = role === 'head-editor' || role === 'admin';
 
       if (isHeadEditor) {
-        // Show the pipeline step containers
-        document.getElementById('pipeline-steps').style.display = '';
+        // Show the pipeline action containers
+        document.getElementById('pipeline-actions').style.display = '';
         document.getElementById('pipeline-secondary').style.display = '';
 
-        // Helper: enable/disable a button and toggle done styling
-        function setStep(id, enabled, done) {
-          var el = document.getElementById(id);
-          if (!el) return;
-          if (el.tagName === 'LABEL') {
-            // File upload label — toggle class + inner input
-            if (enabled) { el.classList.remove('disabled'); } else { el.classList.add('disabled'); }
-            var input = el.querySelector('input[type="file"]');
-            if (input) input.disabled = !enabled;
-          } else if (el.classList.contains('btn-group')) {
-            // Button group — enable/disable children
-            var btns = el.querySelectorAll('button');
-            for (var i = 0; i < btns.length; i++) { btns[i].disabled = !enabled; }
-          } else {
-            el.disabled = !enabled;
-          }
-          if (done) { el.classList.add('step-done'); } else { el.classList.remove('step-done'); }
+        // Publish MT — enabled after MT output is uploaded
+        document.getElementById('btn-publish-mt').disabled = !mtOutput.complete;
+
+        // Publish faithful — show + enable only when linguistic review is complete
+        var btnFaithful = document.getElementById('btn-publish-faithful');
+        if (linguisticReview.complete) {
+          btnFaithful.style.display = '';
+          btnFaithful.disabled = false;
+        } else {
+          btnFaithful.style.display = 'none';
         }
 
-        // Step 1: Extract — always enabled
-        setStep('btn-extract', true, extraction.complete);
-
-        // Step 2: Protect — after extraction
-        setStep('btn-protect', extraction.complete, mtReady.complete);
-
-        // Step 3: Upload IS — after protect
-        setStep('btn-upload-mt', mtReady.complete, mtOutput.complete);
-
-        // Step 4: Publish MT-preview — after MT output is ready
-        setStep('btn-publish-mt', mtOutput.complete, false);
-
-        // Step 5: Publish faithful — after linguistic review (done in editor)
-        var showFaithful = linguisticReview.complete;
-        setStep('btn-publish-faithful', showFaithful, false);
-        document.getElementById('arrow-faithful').style.visibility = showFaithful ? '' : 'hidden';
-
-        // Secondary: Unprotect — after protect
-        setStep('btn-unprotect', mtReady.complete, false);
-
         // Secondary: Prepare TM — after linguistic review
-        setStep('btn-prepare-tm', linguisticReview.complete, tmCreated.complete);
+        document.getElementById('btn-prepare-tm').disabled = !linguisticReview.complete;
         if (tmCreated.complete) {
           var tmBadge = document.getElementById('prepare-tm-badge');
           tmBadge.style.display = '';
@@ -1796,106 +1736,147 @@
     // ========================================================================
 
     /**
-     * Generic pipeline polling — reused by extract, protect, unprotect, publish.
+     * Promise-based pipeline step runner — POSTs to endpoint, polls for completion.
+     * Returns a promise that resolves when the job completes, rejects on failure.
      */
-    function pollPipelineJob(jobId, btnId, badgeId, completedText) {
-      clearInterval(pipelinePollingTimer);
+    function runPipelineStep(endpoint, badgeText) {
+      var badge = document.getElementById('pipeline-action-badge');
+      badge.style.display = '';
+      badge.textContent = badgeText || '\u00cd gangi...';
+      badge.className = 'tm-badge running';
 
-      pipelinePollingTimer = setInterval(async function() {
+      return new Promise(async function(resolve, reject) {
         try {
-          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
-          var job = result.job;
-          var btn = document.getElementById(btnId);
-          var badge = document.getElementById(badgeId);
-
-          if (job.status === 'completed') {
-            clearInterval(pipelinePollingTimer);
-            badge.textContent = completedText;
-            badge.className = 'tm-badge completed';
-            btn.disabled = false;
-            // Refresh chapter status to update button visibility
-            loadChapterStatus(selectedBook, selectedChapter);
-          } else if (job.status === 'failed') {
-            clearInterval(pipelinePollingTimer);
-            badge.textContent = 'Mist\u00f3kst';
-            badge.className = 'tm-badge failed';
-            btn.disabled = false;
-          } else {
-            badge.textContent = '\u00cd gangi...';
-          }
-        } catch (e) {
-          // Polling error - ignore, will retry
+          var data = await fetchJson('/api/pipeline/' + endpoint, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
+          });
+          var timer = setInterval(async function() {
+            try {
+              var result = await fetchJson('/api/pipeline/jobs/' + data.jobId, { credentials: 'include' });
+              var job = result.job;
+              if (job.status === 'completed') {
+                clearInterval(timer);
+                resolve(job);
+              } else if (job.status === 'failed') {
+                clearInterval(timer);
+                reject(new Error(job.error || 'Skref mist\u00f3kst'));
+              }
+            } catch (e) {
+              // Polling error — ignore, will retry
+            }
+          }, 1500);
+        } catch (err) {
+          badge.textContent = 'Villa';
+          badge.className = 'tm-badge failed';
+          reject(err);
         }
-      }, 1500);
+      });
     }
 
+    /**
+     * Smart download: auto-runs extract + protect if needed, then downloads ZIP.
+     */
+    async function smartDownloadEN() {
+      var btn = document.getElementById('btn-download-en');
+      var badge = document.getElementById('pipeline-action-badge');
+      btn.disabled = true;
+
+      try {
+        var s = currentChapterStatus;
+
+        if (!s.extraction || !s.extraction.complete) {
+          await runPipelineStep('extract', 'Dregur \u00fat...');
+        }
+
+        if (!s.mtReady || !s.mtReady.complete) {
+          await runPipelineStep('protect', 'Verndar...');
+        }
+
+        badge.style.display = 'none';
+        window.location.href = '/api/books/' + selectedBook + '/download?chapter=' + selectedChapter + '&type=en-md';
+        loadChapterStatus(selectedBook, selectedChapter);
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'tm-badge failed';
+      }
+
+      btn.disabled = false;
+    }
+
+    /**
+     * Smart upload: uploads MT files, warns on overwrite, auto-runs unprotect.
+     */
+    async function smartUploadIS(files) {
+      if (!files || files.length === 0) return;
+
+      var s = currentChapterStatus;
+      if (s.mtOutput && s.mtOutput.complete) {
+        if (!confirm('\u00de\u00fd\u00f0ingar eru \u00feegar til. Skrifa yfir?')) {
+          document.querySelector('#btn-upload-is input[type="file"]').value = '';
+          return;
+        }
+      }
+
+      var badge = document.getElementById('pipeline-action-badge');
+      badge.style.display = '';
+      badge.textContent = 'Hle\u00f0ur upp...';
+      badge.className = 'tm-badge running';
+
+      var formData = new FormData();
+      for (var i = 0; i < files.length; i++) {
+        formData.append('files', files[i]);
+      }
+
+      try {
+        var res = await fetch('/api/books/' + selectedBook + '/chapters/' + selectedChapter + '/import-mt', {
+          method: 'POST',
+          credentials: 'include',
+          body: formData
+        });
+        if (!res.ok) {
+          var errData = await res.json();
+          throw new Error(errData.error || 'HTTP ' + res.status);
+        }
+        await res.json();
+
+        // Auto-run unprotect after upload
+        await runPipelineStep('unprotect', 'Afverndar...');
+
+        badge.textContent = 'Tilb\u00fai\u00f0';
+        badge.className = 'tm-badge completed';
+        loadChapterStatus(selectedBook, selectedChapter);
+      } catch (err) {
+        badge.textContent = 'Villa: ' + err.message;
+        badge.className = 'tm-badge failed';
+      }
+
+      // Reset file input so same files can be re-selected
+      document.querySelector('#btn-upload-is input[type="file"]').value = '';
+    }
+
+    /**
+     * Re-extract: for the secondary power-user button.
+     */
     async function runExtract() {
-      var btn = document.getElementById('btn-extract');
-      var badge = document.getElementById('pipeline-action-badge');
+      var btn = document.getElementById('btn-reextract');
       btn.disabled = true;
-      badge.style.display = '';
-      badge.textContent = '\u00cd gangi...';
-      badge.className = 'tm-badge running';
 
       try {
-        var data = await fetchJson('/api/pipeline/extract', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
-        });
-        pollPipelineJob(data.jobId, 'btn-extract', 'pipeline-action-badge', '\u00datdr\u00e1ttur loki\u00f0');
+        await runPipelineStep('extract', 'Dregur \u00fat...');
+        var badge = document.getElementById('pipeline-action-badge');
+        badge.textContent = '\u00datdr\u00e1ttur loki\u00f0';
+        badge.className = 'tm-badge completed';
+        loadChapterStatus(selectedBook, selectedChapter);
       } catch (err) {
+        var badge = document.getElementById('pipeline-action-badge');
         badge.textContent = 'Villa';
         badge.className = 'tm-badge failed';
-        btn.disabled = false;
       }
-    }
 
-    async function runProtect() {
-      var btn = document.getElementById('btn-protect');
-      var badge = document.getElementById('pipeline-action-badge');
-      btn.disabled = true;
-      badge.style.display = '';
-      badge.textContent = '\u00cd gangi...';
-      badge.className = 'tm-badge running';
-
-      try {
-        var data = await fetchJson('/api/pipeline/protect', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
-        });
-        pollPipelineJob(data.jobId, 'btn-protect', 'pipeline-action-badge', 'Verndun loki\u00f0');
-      } catch (err) {
-        badge.textContent = 'Villa';
-        badge.className = 'tm-badge failed';
-        btn.disabled = false;
-      }
-    }
-
-    async function runUnprotect() {
-      var btn = document.getElementById('btn-unprotect');
-      var badge = document.getElementById('pipeline-action-badge');
-      btn.disabled = true;
-      badge.style.display = '';
-      badge.textContent = '\u00cd gangi...';
-      badge.className = 'tm-badge running';
-
-      try {
-        var data = await fetchJson('/api/pipeline/unprotect', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
-        });
-        pollPipelineJob(data.jobId, 'btn-unprotect', 'pipeline-action-badge', 'Afverndun loki\u00f0');
-      } catch (err) {
-        badge.textContent = 'Villa';
-        badge.className = 'tm-badge failed';
-        btn.disabled = false;
-      }
+      btn.disabled = false;
     }
 
     async function publishChapter(track) {
@@ -1942,42 +1923,6 @@
         badge.className = 'tm-badge failed';
         btn.disabled = false;
       }
-    }
-
-    async function uploadMtFiles(files) {
-      if (!files || files.length === 0) return;
-
-      var badge = document.getElementById('pipeline-action-badge');
-      badge.style.display = '';
-      badge.textContent = 'Hle\u00f0 upp...';
-      badge.className = 'tm-badge running';
-
-      var formData = new FormData();
-      for (var i = 0; i < files.length; i++) {
-        formData.append('files', files[i]);
-      }
-
-      try {
-        var res = await fetch('/api/books/' + selectedBook + '/chapters/' + selectedChapter + '/import-mt', {
-          method: 'POST',
-          credentials: 'include',
-          body: formData
-        });
-        if (!res.ok) {
-          var errData = await res.json();
-          throw new Error(errData.error || 'HTTP ' + res.status);
-        }
-        var data = await res.json();
-        badge.textContent = data.imported + ' skr\u00e1r hlad\u00f0ar upp';
-        badge.className = 'tm-badge completed';
-        loadChapterStatus(selectedBook, selectedChapter);
-      } catch (err) {
-        badge.textContent = 'Villa: ' + err.message;
-        badge.className = 'tm-badge failed';
-      }
-
-      // Reset file input so same files can be re-selected
-      document.querySelector('#btn-upload-mt input[type="file"]').value = '';
     }
 
     function downloadPublishedHtml(book, chapter) {
@@ -2537,10 +2482,6 @@
     // ========================================================================
     // DOWNLOAD FUNCTIONS
     // ========================================================================
-
-    function downloadChapterMarkdown(slug, chapterNum) {
-      window.location.href = '/api/books/' + slug + '/download?chapter=' + chapterNum + '&type=en-md';
-    }
 
     function downloadBookMarkdown(slug) {
       window.location.href = '/api/books/' + slug + '/download?type=en-md';
