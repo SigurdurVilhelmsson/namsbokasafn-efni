@@ -492,6 +492,82 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
   }
 }
 
+// =====================================================================
+// SOURCE FETCHING
+// =====================================================================
+
+/**
+ * Run download-source.js to fetch CNXML source from GitHub.
+ *
+ * @param {Object} params
+ * @param {string} params.catalogueSlug - OpenStax slug (e.g. 'chemistry-2e')
+ * @param {string} params.slug - Book slug in this project (e.g. 'efnafraedi')
+ * @param {string} params.repo - GitHub repo (e.g. 'openstax/osbooks-chemistry-bundle')
+ * @param {string} params.collection - Collection XML filename
+ * @param {string} [params.userId] - User who triggered the run
+ * @returns {Object} { jobId, promise }
+ */
+function runFetchSource({ slug, repo, collection, userId }) {
+  const args = [
+    path.join(TOOLS_DIR, 'download-source.js'),
+    '--repo',
+    repo,
+    '--collection',
+    collection,
+    '--book',
+    slug,
+    '--verbose',
+  ];
+
+  const result = spawnJob({
+    type: 'fetch-source',
+    chapter: null,
+    moduleId: slug,
+    track: null,
+    userId,
+    command: 'node',
+    args,
+  });
+
+  // After completion, read .source-info.json and update DB
+  result.promise.then(() => {
+    const job = jobs.get(result.jobId);
+    if (job && job.status === 'completed') {
+      updateSourceTracking(slug);
+    }
+  });
+
+  return result;
+}
+
+/**
+ * Update registered_books with source tracking info from .source-info.json.
+ * Best-effort — errors are logged but don't fail the job.
+ *
+ * @param {string} slug - Book slug
+ */
+function updateSourceTracking(slug) {
+  try {
+    const infoPath = path.join(BOOKS_DIR, slug, '01-source', '.source-info.json');
+    if (!fs.existsSync(infoPath)) return;
+
+    const info = JSON.parse(fs.readFileSync(infoPath, 'utf8'));
+    const Database = require('better-sqlite3');
+    const dbPath = path.join(PROJECT_ROOT, 'pipeline-output', 'sessions.db');
+    const db = new Database(dbPath);
+
+    db.prepare(
+      `UPDATE registered_books
+       SET source_commit_hash = ?, source_fetched_at = ?, source_repo = ?
+       WHERE slug = ?`
+    ).run(info.commitHash, info.fetchedAt, info.repo, slug);
+
+    db.close();
+  } catch (err) {
+    console.error(`updateSourceTracking failed for ${slug}:`, err.message);
+  }
+}
+
 // Periodically clean up old jobs (every 30 minutes)
 const cleanupInterval = setInterval(() => cleanupJobs(), 1800000);
 cleanupInterval.unref();
@@ -640,6 +716,7 @@ module.exports = {
   runRender,
   runPipeline,
   runPrepareTm,
+  runFetchSource,
   getJob,
   listJobs,
   hasRunningJob,

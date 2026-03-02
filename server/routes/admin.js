@@ -22,6 +22,7 @@ const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
+const pipeline = require('../services/pipelineService');
 const https = require('https');
 
 // ============================================================================
@@ -227,6 +228,29 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       }
     }
 
+    // Auto-trigger source fetch from GitHub if requested
+    if (fetchFromOpenstax === true && result.success) {
+      try {
+        const catalogueEntry = openstaxCatalogue.getCatalogueEntry(catalogueSlug);
+        if (catalogueEntry && catalogueEntry.repoUrl) {
+          const repo = new URL(catalogueEntry.repoUrl).pathname.slice(1);
+          const collection = `${catalogueSlug}.collection.xml`;
+
+          const fetchResult = pipeline.runFetchSource({
+            catalogueSlug,
+            slug,
+            repo,
+            collection,
+            userId: req.user.id,
+          });
+          result.fetchJobId = fetchResult.jobId;
+        }
+      } catch (fetchErr) {
+        console.error('Auto-fetch source failed to start:', fetchErr);
+        result.fetchError = fetchErr.message;
+      }
+    }
+
     res.json(result);
   } catch (err) {
     console.error('Register book error:', err);
@@ -257,6 +281,55 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       error: 'Failed to register book',
       message: err.message,
     });
+  }
+});
+
+/**
+ * POST /api/admin/books/:slug/fetch-source
+ * Retry or manually trigger source fetch from GitHub
+ */
+router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res) => {
+  try {
+    const { slug } = req.params;
+    const book = bookRegistration.getRegisteredBook(slug);
+
+    if (!book) {
+      return res
+        .status(404)
+        .json({ error: 'Book not found', message: `No book registered with slug '${slug}'` });
+    }
+
+    // Prevent duplicate fetches
+    const existing = pipeline.hasRunningJob(null, 'fetch-source');
+    if (existing) {
+      return res.status(409).json({
+        error: 'Already running',
+        message: 'A source fetch job is already running',
+        jobId: existing.id,
+      });
+    }
+
+    if (!book.repoUrl) {
+      return res
+        .status(400)
+        .json({ error: 'No repo URL', message: 'Book has no GitHub repo URL configured' });
+    }
+
+    const repo = new URL(book.repoUrl).pathname.slice(1);
+    const collection = `${book.catalogueSlug}.collection.xml`;
+
+    const fetchResult = pipeline.runFetchSource({
+      catalogueSlug: book.catalogueSlug,
+      slug,
+      repo,
+      collection,
+      userId: req.user.id,
+    });
+
+    res.json({ success: true, jobId: fetchResult.jobId });
+  } catch (err) {
+    console.error('Fetch source error:', err);
+    res.status(500).json({ error: 'Failed to start source fetch', message: err.message });
   }
 });
 
@@ -928,6 +1001,8 @@ router.get('/migrate', requireAuth, requireAdmin(), (req, res) => {
       '010-chapter-assignments',
       '011-localization-edits',
       '012-chapter-assignments',
+      '013-catalogue-subject',
+      '014-source-tracking',
     ],
   });
 });
@@ -952,6 +1027,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/011-localization-edits'),
       require('../migrations/012-chapter-assignments'),
       require('../migrations/013-catalogue-subject'),
+      require('../migrations/014-source-tracking'),
     ];
 
     const results = [];

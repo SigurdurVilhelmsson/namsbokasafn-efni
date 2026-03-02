@@ -375,7 +375,9 @@ function listCatalogue() {
         r.id as registered_id,
         r.slug as registered_slug,
         r.title_is,
-        r.status as registration_status
+        r.status as registration_status,
+        r.source_fetched_at,
+        r.source_commit_hash
       FROM openstax_catalogue c
       LEFT JOIN registered_books r ON r.catalogue_id = c.id
       ORDER BY
@@ -410,6 +412,8 @@ function listCatalogue() {
       registeredSlug: b.registered_slug,
       titleIs: b.title_is,
       registrationStatus: b.registration_status,
+      sourceFetchedAt: b.source_fetched_at || null,
+      sourceCommitHash: b.source_commit_hash || null,
     }));
   } catch (err) {
     db.close();
@@ -436,7 +440,9 @@ function getCatalogueEntry(slug) {
         r.id as registered_id,
         r.slug as registered_slug,
         r.title_is,
-        r.status as registration_status
+        r.status as registration_status,
+        r.source_fetched_at,
+        r.source_commit_hash
       FROM openstax_catalogue c
       LEFT JOIN registered_books r ON r.catalogue_id = c.id
       WHERE c.slug = ?
@@ -463,6 +469,8 @@ function getCatalogueEntry(slug) {
       registeredSlug: book.registered_slug,
       titleIs: book.title_is,
       registrationStatus: book.registration_status,
+      sourceFetchedAt: book.source_fetched_at || null,
+      sourceCommitHash: book.source_commit_hash || null,
     };
   } catch (err) {
     db.close();

@@ -111,6 +111,25 @@
     .book-card .meta { font-size: 0.75rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem; }
     .book-card .actions { display: flex; gap: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
 
+    /* Toast notifications */
+    .admin-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; padding: 0.75rem 1.25rem; border-radius: var(--radius-md); font-size: var(--text-sm); color: #fff; z-index: 10000; opacity: 0; transform: translateY(1rem); transition: opacity 0.3s, transform 0.3s; max-width: 400px; }
+    .admin-toast.show { opacity: 1; transform: translateY(0); }
+    .admin-toast.success { background: #16a34a; }
+    .admin-toast.error { background: #dc2626; }
+    .admin-toast.info { background: #2563eb; }
+
+    /* Fetch progress banner */
+    .fetch-progress { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; z-index: 9999; min-width: 320px; max-width: 420px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .fetch-progress-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .fetch-progress-header .spinner { width: 1rem; height: 1rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; flex-shrink: 0; }
+    .fetch-progress-title { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); }
+    .fetch-progress-detail { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fetch-progress.completed { border-color: #16a34a; }
+    .fetch-progress.completed .fetch-progress-title { color: #16a34a; }
+    .fetch-progress.failed { border-color: #dc2626; }
+    .fetch-progress.failed .fetch-progress-title { color: #dc2626; }
+    .fetch-progress .actions { margin-top: 0.5rem; }
+
     /* ========================================
        FEEDBACK TAB
        ======================================== */
@@ -605,7 +624,17 @@
       }
     }
 
-    function showToast(msg, type) { alert(msg); }
+    function showToast(msg, type) {
+      var el = document.createElement('div');
+      el.className = 'admin-toast ' + (type || 'info');
+      el.textContent = msg;
+      document.body.appendChild(el);
+      requestAnimationFrame(function() { el.classList.add('show'); });
+      setTimeout(function() {
+        el.classList.remove('show');
+        setTimeout(function() { el.remove(); }, 300);
+      }, 4000);
+    }
 
     /* ==================================================================
        USERS TAB
@@ -880,9 +909,10 @@
       else if (booksCurrentFilter === 'unregistered') books = books.filter(function(b){return !b.registered;});
       if (books.length === 0) { grid.innerHTML = '<div class="empty-state"><p>Engar b\u00e6kur fundust</p></div>'; return; }
       grid.innerHTML = books.map(function(book) {
-        var reg = book.registration || {};
         var isReg = book.registered;
-        return '<div class="book-card' + (isReg ? ' registered' : '') + '"><div class="book-card-header"><div><h3>' + escapeHtml(book.title) + '</h3>' + (isReg && reg.titleIs ? '<div class="subtitle">' + escapeHtml(reg.titleIs) + '</div>' : '') + '</div>' + (isReg ? '<span class="badge badge-success">Skr\u00e1\u00f0</span>' : '<span class="badge badge-muted">\u00d3skr\u00e1\u00f0</span>') + '</div>' + (book.description ? '<p class="description">' + escapeHtml(book.description.substring(0,150)) + (book.description.length>150?'...':'') + '</p>' : '') + '<div class="meta"><span>' + escapeHtml(book.slug) + '</span>' + (book.chapterCount ? '<span>' + book.chapterCount + ' kaflar</span>' : '') + '</div><div class="actions">' + (isReg ? '<a href="/library?book=' + escapeHtml(reg.slug||book.slug) + '" class="btn btn-sm btn-secondary">Sko\u00f0a</a><button class="btn btn-sm btn-secondary" onclick="booksGenerateData(\'' + escapeHtml(book.slug) + '\')" title="Endurgera">&#8635;</button>' : '<button class="btn btn-sm btn-primary" onclick="booksOpenRegisterModal(\'' + escapeHtml(book.slug) + '\',\'' + escapeHtml(book.title.replace(/'/g,"\\'")) + '\')">Skr\u00e1</button>') + (book.repoUrl ? '<a href="' + escapeHtml(book.repoUrl) + '" target="_blank" class="btn btn-sm btn-secondary">\u2197</a>' : '') + '</div></div>';
+        var regSlug = book.registeredSlug || book.slug;
+        var fetchBtn = (isReg && !book.sourceFetchedAt && book.repoUrl) ? '<button class="btn btn-sm btn-secondary" onclick="retryFetchSource(\'' + escapeHtml(regSlug) + '\')" title="S\u00e6kja CNXML upprunaskr\u00e1r">\u2b07 S\u00e6kja</button>' : '';
+        return '<div class="book-card' + (isReg ? ' registered' : '') + '"><div class="book-card-header"><div><h3>' + escapeHtml(book.title) + '</h3>' + (isReg && book.titleIs ? '<div class="subtitle">' + escapeHtml(book.titleIs) + '</div>' : '') + '</div>' + (isReg ? '<span class="badge badge-success">Skr\u00e1\u00f0</span>' : '<span class="badge badge-muted">\u00d3skr\u00e1\u00f0</span>') + '</div>' + (book.description ? '<p class="description">' + escapeHtml(book.description.substring(0,150)) + (book.description.length>150?'...':'') + '</p>' : '') + '<div class="meta"><span>' + escapeHtml(book.slug) + '</span>' + (book.chapterCount ? '<span>' + book.chapterCount + ' kaflar</span>' : '') + (book.sourceFetchedAt ? '<span title="Commit: ' + escapeHtml(book.sourceCommitHash || '') + '">\u2713 Upprunaskr\u00e1r</span>' : '') + '</div><div class="actions">' + (isReg ? '<a href="/library?book=' + escapeHtml(regSlug) + '" class="btn btn-sm btn-secondary">Sko\u00f0a</a><button class="btn btn-sm btn-secondary" onclick="booksGenerateData(\'' + escapeHtml(book.slug) + '\')" title="Endurgera">&#8635;</button>' + fetchBtn : '<button class="btn btn-sm btn-primary" onclick="booksOpenRegisterModal(\'' + escapeHtml(book.slug) + '\',\'' + escapeHtml(book.title.replace(/'/g,"\\'")) + '\')">Skr\u00e1</button>') + (book.repoUrl ? '<a href="' + escapeHtml(book.repoUrl) + '" target="_blank" class="btn btn-sm btn-secondary">\u2197</a>' : '') + '</div></div>';
       }).join('');
     }
 
@@ -923,7 +953,16 @@
       btn.disabled = true; btn.textContent = 'Skr\u00e1ir...';
       try {
         var result = await fetchJson('/api/admin/books/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
-        if (result.success) { showToast('B\u00f3k skr\u00e1\u00f0!','success'); booksCloseRegisterModal(); booksLoadCatalogue(); }
+        if (result.success) {
+          booksCloseRegisterModal();
+          booksLoadCatalogue();
+          if (result.fetchJobId) {
+            showToast('B\u00f3k skr\u00e1\u00f0! S\u00e6ki upprunaskr\u00e1r...','success');
+            showFetchProgress(result.fetchJobId, data.slug);
+          } else {
+            showToast('B\u00f3k skr\u00e1\u00f0!','success');
+          }
+        }
         else { showToast('Villa: ' + (result.message||result.error),'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
       finally { btn.disabled = false; btn.textContent = 'Skr\u00e1 b\u00f3k'; }
@@ -972,6 +1011,79 @@
         if (data.success) { showToast(data.skipped ? 'Kaflaskipan \u00feegar til sta\u00f0ar' : 'Kaflaskipan endurger\u00f0! Kaflar: ' + data.chapters,'success'); }
         else { showToast('Villa: ' + (data.message||data.error),'error'); }
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
+    };
+
+    /* ==================================================================
+       FETCH PROGRESS
+       ================================================================== */
+    var fetchProgressTimer = null;
+
+    function showFetchProgress(jobId, bookSlug) {
+      // Remove any existing progress banner
+      var existing = document.getElementById('fetch-progress-banner');
+      if (existing) existing.remove();
+      if (fetchProgressTimer) clearInterval(fetchProgressTimer);
+
+      var el = document.createElement('div');
+      el.id = 'fetch-progress-banner';
+      el.className = 'fetch-progress';
+      el.innerHTML = '<div class="fetch-progress-header"><div class="spinner"></div><span class="fetch-progress-title">S\u00e6ki CNXML upprunaskr\u00e1r fyrir ' + escapeHtml(bookSlug) + '...</span></div><div class="fetch-progress-detail">Byrja...</div>';
+      document.body.appendChild(el);
+
+      fetchProgressTimer = setInterval(async function() {
+        try {
+          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
+          var job = result.job;
+          var detail = el.querySelector('.fetch-progress-detail');
+          var title = el.querySelector('.fetch-progress-title');
+          var header = el.querySelector('.fetch-progress-header');
+
+          if (job.status === 'completed') {
+            clearInterval(fetchProgressTimer);
+            fetchProgressTimer = null;
+            el.className = 'fetch-progress completed';
+            header.innerHTML = '<span class="fetch-progress-title">\u2713 Upprunaskr\u00e1r s\u00f3ttar!</span>';
+            detail.textContent = job.output && job.output.length > 0 ? job.output[job.output.length - 1].substring(0, 80) : 'Loki\u00f0';
+            booksLoadCatalogue();
+            setTimeout(function() { el.remove(); }, 4000);
+          } else if (job.status === 'failed') {
+            clearInterval(fetchProgressTimer);
+            fetchProgressTimer = null;
+            el.className = 'fetch-progress failed';
+            header.innerHTML = '<span class="fetch-progress-title">\u2717 Villa vi\u00f0 s\u00f3kn</span>';
+            detail.textContent = job.error || 'Unknown error';
+            el.innerHTML += '<div class="actions"><button class="btn btn-sm btn-primary" onclick="retryFetchSource(\'' + escapeHtml(bookSlug) + '\')">Reyna aftur</button> <button class="btn btn-sm btn-secondary" onclick="this.closest(\'.fetch-progress\').remove()">Loka</button></div>';
+          } else {
+            // Still running — show latest output line
+            if (job.output && job.output.length > 0) {
+              var lastLine = job.output[job.output.length - 1];
+              detail.textContent = lastLine.substring(0, 80);
+            }
+          }
+        } catch (e) {
+          // Polling error — ignore, will retry
+        }
+      }, 2000);
+    }
+
+    window.retryFetchSource = async function(slug) {
+      var existing = document.getElementById('fetch-progress-banner');
+      if (existing) existing.remove();
+      if (fetchProgressTimer) { clearInterval(fetchProgressTimer); fetchProgressTimer = null; }
+
+      try {
+        var result = await fetchJson('/api/admin/books/' + encodeURIComponent(slug) + '/fetch-source', { method: 'POST' });
+        if (result.success) {
+          showFetchProgress(result.jobId, slug);
+        } else if (result.jobId) {
+          showToast('\u00deegar \u00ed gangi', 'info');
+          showFetchProgress(result.jobId, slug);
+        } else {
+          showToast('Villa: ' + (result.message || result.error), 'error');
+        }
+      } catch (e) {
+        showToast('Villa: ' + e.message, 'error');
+      }
     };
 
     /* ==================================================================
