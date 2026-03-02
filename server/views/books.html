@@ -1583,18 +1583,21 @@
 
     // Chapter status (for TM button and pipeline buttons)
     async function loadChapterStatus(book, chapter) {
+      var extraction = {};
+      var mtReady = {};
+      var linguisticReview = {};
+      var tmCreated = {};
+      var publication = {};
+
       try {
         var data = await fetchJson('/api/status/' + book + '/' + chapter);
 
         var stages = data.stages || {};
-        var extraction = stages.extraction || {};
-        var mtReady = stages.mtReady || {};
-        var mtOutput = stages.mtOutput || {};
-        var linguisticReview = stages.linguisticReview || {};
-        var tmCreated = stages.tmCreated || {};
-        var injection = stages.injection || {};
-        var rendering = stages.rendering || {};
-        var publication = stages.publication || {};
+        extraction = stages.extraction || {};
+        mtReady = stages.mtReady || {};
+        linguisticReview = stages.linguisticReview || {};
+        tmCreated = stages.tmCreated || {};
+        publication = stages.publication || {};
 
         var tmBtn = document.getElementById('btn-prepare-tm');
         var tmBadge = document.getElementById('prepare-tm-badge');
@@ -1608,37 +1611,41 @@
             tmBadge.className = 'tm-badge completed';
           }
         }
-
-        // Pipeline and publication buttons — head-editor+ only
-        var role = window.currentUser && window.currentUser.role;
-        var isHeadEditor = role === 'head-editor' || role === 'admin';
-
-        if (isHeadEditor) {
-          // Extract button: always available for head-editor
-          document.getElementById('btn-extract').style.display = '';
-          // Protect button: available after extraction
-          if (extraction.complete) {
-            document.getElementById('btn-protect').style.display = '';
-          }
-          // Upload MT + Unprotect: available after mtReady
-          if (mtReady.complete) {
-            document.getElementById('btn-upload-mt').style.display = '';
-            document.getElementById('btn-unprotect').style.display = '';
-          }
-          // Publish buttons: available after linguisticReview
-          if (linguisticReview.complete) {
-            document.getElementById('btn-publish-group').style.display = '';
-          }
-          // Published HTML download: available if any publication track complete
-          var pubFaithful = publication.faithful || {};
-          var pubMtPreview = publication.mtPreview || {};
-          var pubLocalized = publication.localized || {};
-          if (pubFaithful.complete || pubMtPreview.complete || pubLocalized.complete) {
-            document.getElementById('btn-download-pub').style.display = '';
-          }
-        }
       } catch (err) {
-        console.error('Error loading chapter status:', err);
+        // 404 is expected for new books with no status file yet
+        if (!err.message || !err.message.includes('404')) {
+          console.error('Error loading chapter status:', err);
+        }
+      }
+
+      // Pipeline and publication buttons — head-editor+ only
+      // Runs even when status is missing (new book), so "Draga út" is always reachable
+      var role = window.currentUser && window.currentUser.role;
+      var isHeadEditor = role === 'head-editor' || role === 'admin';
+
+      if (isHeadEditor) {
+        // Extract button: always available for head-editor
+        document.getElementById('btn-extract').style.display = '';
+        // Protect button: available after extraction
+        if (extraction.complete) {
+          document.getElementById('btn-protect').style.display = '';
+        }
+        // Upload MT + Unprotect: available after mtReady
+        if (mtReady.complete) {
+          document.getElementById('btn-upload-mt').style.display = '';
+          document.getElementById('btn-unprotect').style.display = '';
+        }
+        // Publish buttons: available after linguisticReview
+        if (linguisticReview.complete) {
+          document.getElementById('btn-publish-group').style.display = '';
+        }
+        // Published HTML download: available if any publication track complete
+        var pubFaithful = publication.faithful || {};
+        var pubMtPreview = publication.mtPreview || {};
+        var pubLocalized = publication.localized || {};
+        if (pubFaithful.complete || pubMtPreview.complete || pubLocalized.complete) {
+          document.getElementById('btn-download-pub').style.display = '';
+        }
       }
     }
 
