@@ -834,6 +834,8 @@
                   onclick="publishChapter('mt-preview')">Birta MT</button>
                 <button class="btn btn-sm btn-primary" id="btn-publish-faithful" disabled
                   onclick="publishChapter('faithful')" style="display:none">Birta</button>
+                <button class="btn btn-sm btn-primary" id="btn-publish-localized" disabled
+                  onclick="publishChapter('localized')" style="display:none">Birta staðf.</button>
                 <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
                 <span class="tm-badge" id="publish-badge" style="display:none"></span>
               </div>
@@ -1657,6 +1659,16 @@
           btnFaithful.style.display = 'none';
         }
 
+        // Publish localized — show after faithful is published
+        var btnLocalized = document.getElementById('btn-publish-localized');
+        var pubFaithfulDone = (publication.faithful || {}).complete;
+        if (pubFaithfulDone) {
+          btnLocalized.style.display = '';
+          btnLocalized.disabled = false;
+        } else {
+          btnLocalized.style.display = 'none';
+        }
+
         // Secondary: Prepare TM — after linguistic review
         document.getElementById('btn-prepare-tm').disabled = !linguisticReview.complete;
         if (tmCreated.complete) {
@@ -1883,7 +1895,9 @@
       var badge = document.getElementById('publish-badge');
       var btn = track === 'mt-preview'
         ? document.getElementById('btn-publish-mt')
-        : document.getElementById('btn-publish-faithful');
+        : track === 'localized'
+          ? document.getElementById('btn-publish-localized')
+          : document.getElementById('btn-publish-faithful');
       btn.disabled = true;
       badge.style.display = '';
       badge.textContent = '\u00cd gangi...';

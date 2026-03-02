@@ -25,8 +25,8 @@
  *   --module <id>      Specific module ID (default: all in chapter)
  *   --lang <code>      Language code for translated segments (default: is)
  *   --source-dir <dir> Directory containing translated segments, relative to
- *                      books/efnafraedi/ (default: 02-machine-translated)
- *                      Use 02-machine-translated for MT preview,
+ *                      books/efnafraedi/ (default: 02-mt-output)
+ *                      Use 02-mt-output for MT preview,
  *                      03-faithful-translation for reviewed translations,
  *                      04-localized-content for localized
  *   --track <name>     Publication track: mt-preview, faithful, localized
@@ -126,7 +126,7 @@ Options:
   --module <id>        Specific module ID (default: all in chapter)
   --lang <code>        Language code (default: is)
   --source-dir <dir>   Segments directory relative to books/efnafraedi/
-                       (default: 02-machine-translated)
+                       (default: 02-mt-output)
   --track <name>       Publication track: mt-preview, faithful, localized
                        (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
@@ -1604,7 +1604,7 @@ async function main() {
     process.exit(1);
   }
 
-  const sourceDir = args.sourceDir || '02-machine-translated';
+  const sourceDir = args.sourceDir || '02-mt-output';
   const track = args.track || trackFromSourceDir(sourceDir);
 
   try {

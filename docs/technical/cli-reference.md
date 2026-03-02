@@ -13,7 +13,7 @@ Command-line tools for the Extract-Inject-Render translation pipeline.
 |------|---------|---------------|
 | `cnxml-extract.js` | Extract segments from CNXML | Step 1a |
 | `protect-segments-for-mt.js` | Protect markers, split for MT | Step 1b |
-| `restore-segments-from-mt.js` | Restore markers in MT output | Post-MT |
+| `unprotect-segments.js` | Restore markers + merge MT output | Post-MT |
 | `cnxml-inject.js` | Inject translations into CNXML | Step 5a |
 | `cnxml-render.js` | Render CNXML to semantic HTML | Step 5b |
 | `prepare-for-align.js` | Prepare files for Matecat Align | Step 4 |
@@ -77,12 +77,12 @@ node tools/protect-segments-for-mt.js --chapter <num> [options]
 
 ---
 
-## restore-segments-from-mt.js
+## unprotect-segments.js
 
-Restores protected markers and links in MT output. Joins split files back together.
+Restores protected markers and links in MT output. Merges split files and produces ready-to-use segment files. Supersedes the archived `restore-segments-from-mt.js`.
 
 ```bash
-node tools/restore-segments-from-mt.js --chapter <num> [options]
+node tools/unprotect-segments.js --chapter <num> [options]
 ```
 
 | Option | Description |
@@ -94,7 +94,7 @@ node tools/restore-segments-from-mt.js --chapter <num> [options]
 - Restores `{{SEG:xxx}}` back to `<!-- SEG:xxx -->`
 - Restores links from sidecar JSON
 - Joins split files (a, b, c) into single segment file
-- Injects equations and other placeholders
+- Merges output into `02-mt-output/`
 
 ---
 
@@ -111,7 +111,7 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 | `--chapter <num>` | Chapter number |
 | `--module <id>` | Specific module ID (default: all in chapter) |
 | `--lang <code>` | Language code (default: `is`) |
-| `--source-dir <dir>` | Segments directory relative to `books/efnafraedi/` (default: `02-for-mt`) |
+| `--source-dir <dir>` | Segments directory relative to `books/efnafraedi/` (default: `02-mt-output`) |
 | `--output-dir <dir>` | Output directory (default: `03-translated/chNN/`) |
 | `--verbose` | Show detailed progress |
 
@@ -267,7 +267,17 @@ npm run validate
 
 ## Archived Tools
 
-42 deprecated tools from the old markdown pipeline are in `tools/_archived/`. These include the old `pipeline-runner.js`, `cnxml-to-md.js`, `chapter-assembler.js`, XLIFF tools, and DOCX conversion tools.
+**`tools/archived/`** — Recently archived tools from the CNXML pipeline:
+
+| Tool | Reason Archived |
+|------|----------------|
+| `restore-segments-from-mt.js` | Superseded by `unprotect-segments.js` |
+| `join-mt-output.js` | Joined `02-mt-output/` → `02-machine-translated/`; pipeline uses `02-mt-output` directly now |
+| `init-faithful-review.js` | Bootstrapped `03-faithful-translation/`; modern workflow uses `applyApprovedEdits()` |
+| `compare-markers.js` | Debugging utility for `02-machine-translated/` (unused directory) |
+| `migrate-status-schema.js` | One-time migration; already run, no longer needed |
+
+**`tools/_archived/`** — 42 deprecated tools from the old markdown pipeline (`pipeline-runner.js`, `cnxml-to-md.js`, `chapter-assembler.js`, XLIFF tools, DOCX conversion tools).
 
 ---
 

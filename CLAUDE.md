@@ -72,7 +72,6 @@ books/{book}/
 ├── 02-structure/       # Document structure from extraction
 │   └── ch{NN}/         #   m{NNNNN}-structure.json, -equations.json
 ├── 02-mt-output/       # 🔒 READ ONLY - Raw IS segments from MT
-├── 02-machine-translated/ # Merged MT segments (ready for injection)
 ├── 03-faithful-translation/ # ✏️ Reviewed IS segments (per-module, written by applyApprovedEdits)
 ├── 03-translated/      # Translated CNXML from injection
 │   └── {track}/ch{NN}/ #   m{NNNNN}.cnxml (track = mt-preview, faithful, localized)
@@ -80,7 +79,8 @@ books/{book}/
 ├── 04-localized-content/ # ✏️ Pass 2 output (localized version)
 ├── 05-publication/     # ✏️ Web-ready HTML
 │   ├── mt-preview/     #    MT versions for immediate use
-│   └── faithful/       #    Human-reviewed versions
+│   ├── faithful/       #    Human-reviewed versions
+│   └── localized/      #    Localized (adapted) versions
 ├── for-align/          # Staging for Matecat Align
 ├── tm/                 # 🔒 READ ONLY - TMX from Matecat Align
 ├── glossary/           # Terminology files
