@@ -638,6 +638,37 @@
       text-transform: uppercase;
     }
 
+    .catalogue-subject-header th {
+      background: var(--bg-subtle);
+      font-weight: 600;
+      padding: 0.5rem var(--spacing-sm);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border);
+      text-transform: none;
+    }
+
+    .catalogue-filters {
+      display: flex;
+      gap: var(--spacing-xs);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .catalogue-filter-btn {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      cursor: pointer;
+      border-radius: var(--radius-md);
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .catalogue-filter-btn:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .catalogue-filter-btn.active { color: var(--accent); border-color: var(--accent); font-weight: 600; }
+
     .form-help {
       display: block;
       font-size: var(--text-xs);
@@ -2254,12 +2285,26 @@
           return;
         }
 
-        listEl.innerHTML =
-          '<table class="catalogue-table"><thead><tr>' +
-            '<th>B\u00f3k</th><th>Kaflar</th><th>Sta\u00f0a</th><th></th>' +
-          '</tr></thead><tbody>' +
-          data.books.map(function(book) {
-            return '<tr>' +
+        var subjectOrder = data.subjectOrder || [];
+        var subjectLabels = data.subjectLabels || {};
+
+        // Group books by subject
+        var groups = {};
+        data.books.forEach(function(book) {
+          var subj = book.subject || 'other';
+          if (!groups[subj]) groups[subj] = [];
+          groups[subj].push(book);
+        });
+
+        // Build table rows grouped by subject
+        var tbodyHtml = '';
+        subjectOrder.forEach(function(subj) {
+          var books = groups[subj];
+          if (!books || books.length === 0) return;
+          tbodyHtml += '<tr class="catalogue-subject-header" data-subject="' + subj + '">' +
+            '<th colspan="4">' + escapeHtml(subjectLabels[subj] || subj) + '</th></tr>';
+          books.forEach(function(book) {
+            tbodyHtml += '<tr class="catalogue-book-row" data-registered="' + (book.registered ? '1' : '0') + '" data-subject="' + subj + '">' +
               '<td>' +
                 '<strong>' + escapeHtml(book.title) + '</strong>' +
                 '<div style="font-size:var(--text-xs);color:var(--text-muted)">' + escapeHtml(book.description || '').substring(0, 60) + '...</div>' +
@@ -2278,12 +2323,75 @@
                 ) +
               '</td>' +
             '</tr>';
-          }).join('') +
-          '</tbody></table>';
+          });
+        });
+
+        // Handle any books with subjects not in subjectOrder
+        Object.keys(groups).forEach(function(subj) {
+          if (subjectOrder.indexOf(subj) === -1) {
+            var books = groups[subj];
+            tbodyHtml += '<tr class="catalogue-subject-header" data-subject="' + subj + '">' +
+              '<th colspan="4">' + escapeHtml(subjectLabels[subj] || subj) + '</th></tr>';
+            books.forEach(function(book) {
+              tbodyHtml += '<tr class="catalogue-book-row" data-registered="' + (book.registered ? '1' : '0') + '" data-subject="' + subj + '">' +
+                '<td><strong>' + escapeHtml(book.title) + '</strong></td>' +
+                '<td>' + book.chapterCount + ' kaflar</td>' +
+                '<td><span class="section-status-badge badge-muted">Ekki skr\u00e1\u00f0</span></td>' +
+                '<td></td></tr>';
+            });
+          }
+        });
+
+        listEl.innerHTML =
+          '<div class="catalogue-filters">' +
+            '<button class="catalogue-filter-btn active" data-filter="all">Allar</button>' +
+            '<button class="catalogue-filter-btn" data-filter="registered">Skr\u00e1\u00f0ar</button>' +
+            '<button class="catalogue-filter-btn" data-filter="unregistered">\u00d3skr\u00e1\u00f0ar</button>' +
+          '</div>' +
+          '<table class="catalogue-table"><thead><tr>' +
+            '<th>B\u00f3k</th><th>Kaflar</th><th>Sta\u00f0a</th><th></th>' +
+          '</tr></thead><tbody>' + tbodyHtml + '</tbody></table>';
+
+        // Filter button handler
+        listEl.querySelectorAll('.catalogue-filter-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            listEl.querySelectorAll('.catalogue-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var filter = btn.getAttribute('data-filter');
+            applyCatalogueFilter(listEl, filter);
+          });
+        });
+
       } catch (err) {
         console.error('Failed to load catalogue:', err);
         listEl.innerHTML = '<p class="text-error">Villa vi\u00f0 a\u00f0 hla\u00f0a skr\u00e1</p>';
       }
+    }
+
+    function applyCatalogueFilter(container, filter) {
+      var rows = container.querySelectorAll('.catalogue-book-row');
+      rows.forEach(function(row) {
+        var isRegistered = row.getAttribute('data-registered') === '1';
+        if (filter === 'all') {
+          row.style.display = '';
+        } else if (filter === 'registered') {
+          row.style.display = isRegistered ? '' : 'none';
+        } else if (filter === 'unregistered') {
+          row.style.display = isRegistered ? 'none' : '';
+        }
+      });
+
+      // Hide subject headers where all rows are hidden
+      var headers = container.querySelectorAll('.catalogue-subject-header');
+      headers.forEach(function(header) {
+        var subj = header.getAttribute('data-subject');
+        var subjRows = container.querySelectorAll('.catalogue-book-row[data-subject="' + subj + '"]');
+        var anyVisible = false;
+        subjRows.forEach(function(r) {
+          if (r.style.display !== 'none') anyVisible = true;
+        });
+        header.style.display = anyVisible ? '' : 'none';
+      });
     }
 
     function hideCatalogueModal() {

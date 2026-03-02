@@ -42,6 +42,8 @@ router.get('/catalogue', requireAuth, requireAdmin(), (req, res) => {
       books,
       total: books.length,
       registered: books.filter((b) => b.registered).length,
+      subjectOrder: openstaxCatalogue.SUBJECT_ORDER,
+      subjectLabels: openstaxCatalogue.SUBJECT_LABELS,
     });
   } catch (err) {
     console.error('List catalogue error:', err);
@@ -949,6 +951,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/010-chapter-assignments'),
       require('../migrations/011-localization-edits'),
       require('../migrations/012-chapter-assignments'),
+      require('../migrations/013-catalogue-subject'),
     ];
 
     const results = [];

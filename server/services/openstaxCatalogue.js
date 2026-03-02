@@ -19,6 +19,17 @@ const fs = require('fs');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
+// Display order and Icelandic labels for subject groups in the catalogue UI.
+const SUBJECT_ORDER = ['chemistry', 'biology', 'physics', 'astronomy', 'mathematics', 'statistics'];
+const SUBJECT_LABELS = {
+  chemistry: 'Efnafræði',
+  biology: 'Líffræði',
+  physics: 'Eðlisfræði',
+  astronomy: 'Stjarnvísindi',
+  mathematics: 'Stærðfræði',
+  statistics: 'Tölfræði',
+};
+
 // Pre-defined catalogue of OpenStax Science and Math books available for translation.
 // Organized by subject area. All repos verified at github.com/openstax/.
 const PREDEFINED_BOOKS = [
@@ -31,6 +42,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-chemistry-bundle',
     chapterCount: 21,
     hasAppendices: true,
+    subject: 'chemistry',
   },
   {
     slug: 'chemistry-atoms-first-2e',
@@ -40,6 +52,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-chemistry-bundle',
     chapterCount: 21,
     hasAppendices: true,
+    subject: 'chemistry',
   },
   {
     slug: 'organic-chemistry',
@@ -49,6 +62,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-organic-chemistry',
     chapterCount: 30,
     hasAppendices: true,
+    subject: 'chemistry',
   },
 
   // ── Biology ────────────────────────────────────────────────────────
@@ -60,6 +74,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-biology-bundle',
     chapterCount: 47,
     hasAppendices: true,
+    subject: 'biology',
   },
   {
     slug: 'biology-ap-courses',
@@ -69,6 +84,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-biology-bundle',
     chapterCount: 47,
     hasAppendices: true,
+    subject: 'biology',
   },
   {
     slug: 'concepts-biology',
@@ -78,6 +94,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-biology-bundle',
     chapterCount: 21,
     hasAppendices: true,
+    subject: 'biology',
   },
   {
     slug: 'anatomy-physiology-2e',
@@ -86,6 +103,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-anatomy-physiology',
     chapterCount: 28,
     hasAppendices: true,
+    subject: 'biology',
   },
   {
     slug: 'microbiology',
@@ -94,6 +112,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-microbiology',
     chapterCount: 26,
     hasAppendices: true,
+    subject: 'biology',
   },
 
   // ── Physics ────────────────────────────────────────────────────────
@@ -105,6 +124,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-physics-bundle',
     chapterCount: 34,
     hasAppendices: true,
+    subject: 'physics',
   },
   {
     slug: 'college-physics-2e',
@@ -114,6 +134,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-physics-bundle',
     chapterCount: 34,
     hasAppendices: true,
+    subject: 'physics',
   },
   {
     slug: 'college-physics-ap-courses-2e',
@@ -122,6 +143,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-physics-bundle',
     chapterCount: 34,
     hasAppendices: true,
+    subject: 'physics',
   },
   {
     slug: 'university-physics-volume-1',
@@ -130,6 +152,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-university-physics-bundle',
     chapterCount: 12,
     hasAppendices: true,
+    subject: 'physics',
   },
   {
     slug: 'university-physics-volume-2',
@@ -138,6 +161,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-university-physics-bundle',
     chapterCount: 16,
     hasAppendices: true,
+    subject: 'physics',
   },
   {
     slug: 'university-physics-volume-3',
@@ -147,6 +171,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-university-physics-bundle',
     chapterCount: 11,
     hasAppendices: true,
+    subject: 'physics',
   },
 
   // ── Astronomy ──────────────────────────────────────────────────────
@@ -158,6 +183,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-astronomy',
     chapterCount: 30,
     hasAppendices: true,
+    subject: 'astronomy',
   },
 
   // ── Algebra & Trigonometry ─────────────────────────────────────────
@@ -169,6 +195,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-algebra-bundle',
     chapterCount: 13,
     hasAppendices: false,
+    subject: 'mathematics',
   },
   {
     slug: 'college-algebra-2e',
@@ -178,6 +205,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-algebra-bundle',
     chapterCount: 9,
     hasAppendices: false,
+    subject: 'mathematics',
   },
   {
     slug: 'college-algebra-corequisite-support-2e',
@@ -186,6 +214,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-algebra-bundle',
     chapterCount: 9,
     hasAppendices: false,
+    subject: 'mathematics',
   },
   {
     slug: 'precalculus-2e',
@@ -194,6 +223,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-college-algebra-bundle',
     chapterCount: 12,
     hasAppendices: false,
+    subject: 'mathematics',
   },
 
   // ── Calculus ───────────────────────────────────────────────────────
@@ -204,6 +234,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-calculus-bundle',
     chapterCount: 6,
     hasAppendices: true,
+    subject: 'mathematics',
   },
   {
     slug: 'calculus-volume-2',
@@ -213,6 +244,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-calculus-bundle',
     chapterCount: 5,
     hasAppendices: true,
+    subject: 'mathematics',
   },
   {
     slug: 'calculus-volume-3',
@@ -222,6 +254,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-calculus-bundle',
     chapterCount: 6,
     hasAppendices: true,
+    subject: 'mathematics',
   },
 
   // ── Pre-Algebra & Elementary Algebra ───────────────────────────────
@@ -233,6 +266,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-prealgebra-bundle',
     chapterCount: 12,
     hasAppendices: false,
+    subject: 'mathematics',
   },
   {
     slug: 'elementary-algebra-2e',
@@ -242,6 +276,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-prealgebra-bundle',
     chapterCount: 12,
     hasAppendices: false,
+    subject: 'mathematics',
   },
   {
     slug: 'intermediate-algebra-2e',
@@ -251,6 +286,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-prealgebra-bundle',
     chapterCount: 12,
     hasAppendices: false,
+    subject: 'mathematics',
   },
 
   // ── Statistics ─────────────────────────────────────────────────────
@@ -262,6 +298,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-introductory-statistics-bundle',
     chapterCount: 13,
     hasAppendices: true,
+    subject: 'statistics',
   },
   {
     slug: 'introductory-business-statistics-2e',
@@ -271,6 +308,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-introductory-statistics-bundle',
     chapterCount: 13,
     hasAppendices: true,
+    subject: 'statistics',
   },
   {
     slug: 'statistics',
@@ -280,6 +318,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-statistics',
     chapterCount: 12,
     hasAppendices: true,
+    subject: 'statistics',
   },
 
   // ── Other Math ─────────────────────────────────────────────────────
@@ -291,6 +330,7 @@ const PREDEFINED_BOOKS = [
     repoUrl: 'https://github.com/openstax/osbooks-contemporary-mathematics',
     chapterCount: 15,
     hasAppendices: false,
+    subject: 'mathematics',
   },
 ];
 
@@ -338,7 +378,17 @@ function listCatalogue() {
         r.status as registration_status
       FROM openstax_catalogue c
       LEFT JOIN registered_books r ON r.catalogue_id = c.id
-      ORDER BY c.title
+      ORDER BY
+        CASE c.subject
+          WHEN 'chemistry' THEN 1
+          WHEN 'biology' THEN 2
+          WHEN 'physics' THEN 3
+          WHEN 'astronomy' THEN 4
+          WHEN 'mathematics' THEN 5
+          WHEN 'statistics' THEN 6
+          ELSE 99
+        END,
+        c.title
     `
       )
       .all();
@@ -353,6 +403,7 @@ function listCatalogue() {
       repoUrl: b.repo_url,
       chapterCount: b.chapter_count,
       hasAppendices: !!b.has_appendices,
+      subject: b.subject,
       lastSynced: b.last_synced,
       createdAt: b.created_at,
       registered: !!b.registered_id,
@@ -405,6 +456,7 @@ function getCatalogueEntry(slug) {
       repoUrl: book.repo_url,
       chapterCount: book.chapter_count,
       hasAppendices: !!book.has_appendices,
+      subject: book.subject,
       lastSynced: book.last_synced,
       createdAt: book.created_at,
       registered: !!book.registered_id,
@@ -431,14 +483,15 @@ function syncCatalogue() {
     ensureTablesExist(db);
 
     const insertStmt = db.prepare(`
-      INSERT INTO openstax_catalogue (slug, title, description, repo_url, chapter_count, has_appendices, last_synced)
-      VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      INSERT INTO openstax_catalogue (slug, title, description, repo_url, chapter_count, has_appendices, subject, last_synced)
+      VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
       ON CONFLICT(slug) DO UPDATE SET
         title = excluded.title,
         description = excluded.description,
         repo_url = excluded.repo_url,
         chapter_count = excluded.chapter_count,
         has_appendices = excluded.has_appendices,
+        subject = excluded.subject,
         last_synced = CURRENT_TIMESTAMP
     `);
 
@@ -458,7 +511,8 @@ function syncCatalogue() {
           book.description,
           book.repoUrl,
           book.chapterCount,
-          book.hasAppendices ? 1 : 0
+          book.hasAppendices ? 1 : 0,
+          book.subject || 'other'
         );
 
         if (existing) {
@@ -574,4 +628,6 @@ module.exports = {
   existsInCatalogue,
   getPredefinedBooks,
   PREDEFINED_BOOKS,
+  SUBJECT_ORDER,
+  SUBJECT_LABELS,
 };
