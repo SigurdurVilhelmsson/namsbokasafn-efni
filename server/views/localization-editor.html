@@ -1968,6 +1968,7 @@
         edAutoSaveTimer = setInterval(edAutoSave, ED_AUTOSAVE_MS);
       } catch (err) {
         if (err.status === 409) {
+          if (edAutoSaveTimer) { clearInterval(edAutoSaveTimer); edAutoSaveTimer = null; }
           globalInd.textContent = '\u00C1rekstrar!';
           globalInd.className = 'save-indicator error';
           if (confirm('Einingin hefur veri\u00F0 breytt af \u00F6\u00F0rum notanda.\nEndurhla\u00F0a til a\u00F0 sj\u00E1 n\u00FDjustu \u00FAtg\u00E1fu?\n\n(\u00D3vista\u00F0ar breytingar \u00FE\u00EDnar ver\u00F0a geymdar sem dr\u00F6g.)')) {

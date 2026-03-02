@@ -117,6 +117,45 @@
     }
   }
 
+  const DRAFT_PREFIXES = ['loc-draft:', 'seg-draft:'];
+  const DRAFT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+  /**
+   * Remove all draft keys older than 7 days across all editors.
+   * Called once on page load to prevent localStorage bloat.
+   */
+  function cleanupStaleDrafts() {
+    const now = Date.now();
+    const toRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      let isDraft = false;
+      for (let p = 0; p < DRAFT_PREFIXES.length; p++) {
+        if (k.startsWith(DRAFT_PREFIXES[p])) {
+          isDraft = true;
+          break;
+        }
+      }
+      if (!isDraft) continue;
+      try {
+        const parsed = JSON.parse(localStorage.getItem(k));
+        if (parsed && parsed.ts && now - parsed.ts > DRAFT_MAX_AGE_MS) {
+          toRemove.push(k);
+        }
+      } catch {
+        // Corrupt entry — remove it
+        toRemove.push(k);
+      }
+    }
+    for (let j = 0; j < toRemove.length; j++) {
+      localStorage.removeItem(toRemove[j]);
+    }
+  }
+
+  // Run cleanup on page load
+  cleanupStaleDrafts();
+
   window.tabGuard = {
     tabId: TAB_ID,
 
@@ -144,5 +183,6 @@
 
     findNewestDraft: findNewestDraft,
     clearDraftsByPrefix: clearDraftsByPrefix,
+    cleanupStaleDrafts: cleanupStaleDrafts,
   };
 })();
