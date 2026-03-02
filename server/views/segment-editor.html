@@ -2114,7 +2114,7 @@
       const timer = setInterval(async () => {
         pollAttempts++;
         try {
-          const job = await fetchJson(`/api/pipeline/status/${jobId}`, {
+          const { job } = await fetchJson(`/api/pipeline/jobs/${jobId}`, {
             credentials: 'include',
           });
           pollAttempts = 0; // Reset on success

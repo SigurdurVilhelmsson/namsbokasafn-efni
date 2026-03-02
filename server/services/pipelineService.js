@@ -8,7 +8,7 @@
  *   inject (segments → translated CNXML) → render (CNXML → HTML)
  *
  * Source directory mapping:
- *   mt-preview track  → source-dir: 02-machine-translated
+ *   mt-preview track  → source-dir: 02-mt-output
  *   faithful track    → source-dir: 03-faithful-translation
  *   localized track   → source-dir: 04-localized-content
  */
@@ -30,10 +30,130 @@ const MAX_JOBS = 5;
 
 // Source directory for each publication track
 const TRACK_SOURCE_DIR = {
-  'mt-preview': '02-machine-translated',
+  'mt-preview': '02-mt-output',
   faithful: '03-faithful-translation',
   localized: '04-localized-content',
 };
+
+/**
+ * Run cnxml-extract for a chapter/module.
+ * Extracts EN segments + structure from CNXML source files.
+ *
+ * @param {Object} params
+ * @param {string} params.book - Book slug
+ * @param {number} params.chapter - Chapter number
+ * @param {string} [params.moduleId] - Specific module (or all in chapter)
+ * @param {string} [params.userId] - User who triggered the run
+ * @returns {Object} { jobId, promise }
+ */
+function runExtract({ book, chapter, moduleId, userId }) {
+  const args = [
+    path.join(TOOLS_DIR, 'cnxml-extract.js'),
+    '--book',
+    book,
+    '--chapter',
+    String(chapter),
+    '--verbose',
+  ];
+
+  if (moduleId) {
+    args.push('--module', moduleId);
+  }
+
+  const result = spawnJob({
+    type: 'extract',
+    chapter,
+    moduleId,
+    track: null,
+    userId,
+    command: 'node',
+    args,
+  });
+
+  // Auto-advance status when extraction completes
+  result.promise.then(() => {
+    const job = jobs.get(result.jobId);
+    if (job && job.status === 'completed') {
+      advanceChapterStatus(book, chapter, 'extraction');
+    }
+  });
+
+  return result;
+}
+
+/**
+ * Run protect-segments-for-mt for a chapter.
+ * Protects EN segments for machine translation (handles placeholders, splits large files).
+ *
+ * @param {Object} params
+ * @param {string} params.book - Book slug
+ * @param {number} params.chapter - Chapter number
+ * @param {string} [params.userId] - User who triggered the run
+ * @returns {Object} { jobId, promise }
+ */
+function runProtect({ book, chapter, userId }) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const batchDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
+
+  if (!fs.existsSync(batchDir)) {
+    throw new Error(`EN segments directory not found: 02-for-mt/ch${chapterStr}`);
+  }
+
+  const args = [path.join(TOOLS_DIR, 'protect-segments-for-mt.js'), '--batch', batchDir];
+
+  const result = spawnJob({
+    type: 'protect',
+    chapter,
+    moduleId: undefined,
+    track: null,
+    userId,
+    command: 'node',
+    args,
+  });
+
+  // Auto-advance status when protection completes
+  result.promise.then(() => {
+    const job = jobs.get(result.jobId);
+    if (job && job.status === 'completed') {
+      advanceChapterStatus(book, chapter, 'mtReady');
+    }
+  });
+
+  return result;
+}
+
+/**
+ * Run unprotect-segments for a chapter.
+ * Removes MT protection markers from translated segments in 02-mt-output.
+ *
+ * @param {Object} params
+ * @param {string} params.book - Book slug
+ * @param {number} params.chapter - Chapter number
+ * @param {string} [params.userId] - User who triggered the run
+ * @returns {Object} { jobId, promise }
+ */
+function runUnprotect({ book, chapter, userId }) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const batchDir = path.join(BOOKS_DIR, book, '02-mt-output', `ch${chapterStr}`);
+
+  if (!fs.existsSync(batchDir)) {
+    throw new Error(`MT output directory not found: 02-mt-output/ch${chapterStr}`);
+  }
+
+  const args = [path.join(TOOLS_DIR, 'unprotect-segments.js'), '--batch', batchDir, '--verbose'];
+
+  const result = spawnJob({
+    type: 'unprotect',
+    chapter,
+    moduleId: undefined,
+    track: null,
+    userId,
+    command: 'node',
+    args,
+  });
+
+  return result;
+}
 
 /**
  * Run cnxml-inject for a chapter/module.
@@ -513,6 +633,9 @@ function runPrepareTm({ book, chapter, userId }) {
 }
 
 module.exports = {
+  runExtract,
+  runProtect,
+  runUnprotect,
   runInject,
   runRender,
   runPipeline,

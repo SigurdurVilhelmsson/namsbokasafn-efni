@@ -270,7 +270,42 @@ router.get('/today', requireAuth, (req, res) => {
         priorityLabel: 'Breytingar óskast',
       }));
 
-    const allTasks = [...changesRequested];
+    // Get active chapter assignments for this user
+    let assignedTasks = [];
+    try {
+      const assignmentDb = getDb();
+      // Check if the table exists before querying
+      const tableExists = assignmentDb
+        .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='chapter_assignments'")
+        .get();
+      if (tableExists) {
+        const assignments = assignmentDb
+          .prepare(
+            `SELECT * FROM chapter_assignments
+             WHERE assigned_to = ? AND status = 'active'
+             ORDER BY due_date ASC NULLS LAST, created_at ASC`
+          )
+          .all(req.user.id);
+
+        assignedTasks = assignments.map((a) => ({
+          id: `assignment-${a.id}`,
+          type: 'assignment',
+          book: a.book,
+          bookLabel: BOOK_LABELS[a.book] || a.book,
+          chapter: a.chapter,
+          stage: a.stage,
+          dueDate: a.due_date,
+          notes: a.notes,
+          assignmentId: a.id,
+          priority: a.due_date && new Date(a.due_date) < new Date() ? 1 : 2,
+          priorityLabel: 'Úthlutað verkefni',
+        }));
+      }
+    } catch (err) {
+      console.error('Failed to load assignments:', err.message);
+    }
+
+    const allTasks = [...changesRequested, ...assignedTasks];
 
     // Current task is the most urgent
     const currentTask = allTasks.length > 0 ? allTasks[0] : null;

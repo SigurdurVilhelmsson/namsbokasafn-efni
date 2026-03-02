@@ -31,7 +31,7 @@ const PUBLICATION_TRACKS = {
 
 // Source directory for each track (maps to pipelineService.TRACK_SOURCE_DIR)
 const TRACK_SOURCE_DIRS = {
-  'mt-preview': '02-machine-translated',
+  'mt-preview': '02-mt-output',
   faithful: '03-faithful-translation',
   localized: '04-localized-content',
 };

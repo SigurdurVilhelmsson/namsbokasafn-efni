@@ -289,46 +289,55 @@ router.get('/:bookId/files/summary', requireAuth, (req, res) => {
  *   - type: Content type to download
  *     - 'en-md': English markdown from 02-for-mt/ (default)
  *     - 'is-md': Icelandic markdown from 02-mt-output/
- *     - 'faithful': Reviewed IS markdown from 03-faithful/
+ *     - 'faithful': Reviewed IS markdown from 03-faithful-translation/
+ *     - 'pub-mt-preview': Published HTML from 05-publication/mt-preview/chapters/
+ *     - 'pub-faithful': Published HTML from 05-publication/faithful/chapters/
+ *     - 'pub-localized': Published HTML from 05-publication/localized/chapters/
  */
 router.get('/:bookId/download', requireAuth, async (req, res) => {
   const { bookId } = req.params;
   const { chapter, type = 'en-md' } = req.query;
 
-  // Determine source directory based on type
-  const typeDirs = {
-    'en-md': '02-for-mt',
-    'is-md': '02-mt-output',
-    faithful: '03-faithful-translation',
+  // Type configuration: directory, file extension, chapter dir format
+  const typeConfig = {
+    'en-md': { dir: '02-for-mt', ext: '.md', chPrefix: 'ch' },
+    'is-md': { dir: '02-mt-output', ext: '.md', chPrefix: 'ch' },
+    faithful: { dir: '03-faithful-translation', ext: '.md', chPrefix: 'ch' },
+    'pub-mt-preview': { dir: '05-publication/mt-preview/chapters', ext: '.html', chPrefix: '' },
+    'pub-faithful': { dir: '05-publication/faithful/chapters', ext: '.html', chPrefix: '' },
+    'pub-localized': { dir: '05-publication/localized/chapters', ext: '.html', chPrefix: '' },
   };
 
-  const sourceType = typeDirs[type];
-  if (!sourceType) {
+  const config = typeConfig[type];
+  if (!config) {
     return res.status(400).json({
       error: 'Invalid type',
-      message: 'Type must be one of: en-md, is-md, faithful',
+      message: `Type must be one of: ${Object.keys(typeConfig).join(', ')}`,
     });
   }
 
   const bookDir = path.join(booksDir, bookId);
-  const sourceDir = path.join(bookDir, sourceType);
+  const sourceDir = path.join(bookDir, config.dir);
 
   if (!fs.existsSync(sourceDir)) {
     return res.status(404).json({
       error: 'Not found',
-      message: `Source directory not found: ${sourceType}`,
+      message: `Source directory not found: ${config.dir}`,
     });
   }
 
   try {
+    // Chapter directory name: "ch01" for markdown types, "01" for publication types
+    const paddedChapter = chapter ? String(chapter).padStart(2, '0') : null;
+    const chapterDirName = paddedChapter ? `${config.chPrefix}${paddedChapter}` : null;
+
     // Build ZIP filename
     let zipName;
     if (chapter) {
-      const chapterDir = 'ch' + String(chapter).padStart(2, '0');
       zipName = `${bookId}-K${chapter}-${type}.zip`;
 
       // Check chapter directory exists
-      const chapterPath = path.join(sourceDir, chapterDir);
+      const chapterPath = path.join(sourceDir, chapterDirName);
       if (!fs.existsSync(chapterPath)) {
         return res.status(404).json({
           error: 'Not found',
@@ -345,14 +354,14 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
     const archive = archiver('zip', { zlib: { level: 9 } });
     archive.pipe(res);
 
-    // Helper function to add .md files from a directory
-    const addMdFilesFromDir = (dirPath, archivePath) => {
+    // Helper function to add files matching the expected extension from a directory
+    const addFilesFromDir = (dirPath, archivePath) => {
       if (!fs.existsSync(dirPath)) return;
       const files = fs.readdirSync(dirPath);
       for (const file of files) {
         const filePath = path.join(dirPath, file);
         const stat = fs.statSync(filePath);
-        if (stat.isFile() && file.endsWith('.md')) {
+        if (stat.isFile() && file.endsWith(config.ext)) {
           archive.file(filePath, { name: path.join(archivePath, file) });
         }
       }
@@ -360,17 +369,17 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     if (chapter) {
       // Download single chapter
-      const chapterDir = 'ch' + String(chapter).padStart(2, '0');
-      const chapterPath = path.join(sourceDir, chapterDir);
-      addMdFilesFromDir(chapterPath, chapterDir);
+      const chapterPath = path.join(sourceDir, chapterDirName);
+      addFilesFromDir(chapterPath, chapterDirName);
     } else {
       // Download all chapters
       const entries = fs.readdirSync(sourceDir);
       for (const entry of entries) {
         const entryPath = path.join(sourceDir, entry);
         const stat = fs.statSync(entryPath);
-        if (stat.isDirectory() && entry.startsWith('ch')) {
-          addMdFilesFromDir(entryPath, entry);
+        // Match both ch-prefixed dirs (ch01) and bare number dirs (01)
+        if (stat.isDirectory() && (entry.startsWith('ch') || /^\d{2}$/.test(entry))) {
+          addFilesFromDir(entryPath, entry);
         }
       }
     }
@@ -482,6 +491,106 @@ router.post(
       } catch (dbErr) {
         console.error('Failed to register imported files:', dbErr);
         // Don't fail the request - files are already stored
+      }
+    }
+
+    res.json({
+      success: true,
+      bookId,
+      chapter: chapterNum,
+      imported: imported.length,
+      errors: errors.length > 0 ? errors : undefined,
+      files: imported.map((f) => ({
+        original: f.originalName,
+        stored: f.storedAs,
+      })),
+    });
+  }
+);
+
+/**
+ * POST /api/books/:bookId/chapters/:chapter/import-mt
+ * Import MT output files for a chapter
+ *
+ * Accepts multiple .md files and stores them in 02-mt-output/ch{NN}/
+ * These are the Icelandic segments returned from the machine translation service.
+ */
+router.post(
+  '/:bookId/chapters/:chapter/import-mt',
+  requireAuth,
+  requireEditor(),
+  upload.array('files', 50),
+  async (req, res) => {
+    const { bookId, chapter } = req.params;
+    const chapterNum = parseInt(chapter, 10);
+    const userId = req.user?.username || 'system';
+
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({
+        error: 'No files uploaded',
+        message: 'Please upload at least one .md file',
+      });
+    }
+
+    const paddedChapter = String(chapterNum).padStart(2, '0');
+    const targetDir = path.join(booksDir, bookId, '02-mt-output', `ch${paddedChapter}`);
+
+    // Ensure target directory exists
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+
+    const imported = [];
+    const errors = [];
+
+    for (const file of req.files) {
+      try {
+        const filename = file.originalname;
+        // Accept IS segment files: m{NNNNN}-segments.is.md or {section}.is.md
+        const validPattern = /^(m\d{5}-segments|[\w-]+)\.is\.md$/;
+
+        if (!validPattern.test(filename)) {
+          errors.push({
+            file: filename,
+            error: 'Invalid filename format. Expected: {moduleId}-segments.is.md or {name}.is.md',
+          });
+          fs.unlinkSync(file.path);
+          continue;
+        }
+
+        const targetPath = path.join(targetDir, filename);
+
+        // Move file to MT output directory
+        fs.renameSync(file.path, targetPath);
+
+        imported.push({
+          originalName: filename,
+          storedAs: filename,
+          path: targetPath,
+        });
+      } catch (err) {
+        errors.push({
+          file: file.originalname,
+          error: err.message,
+        });
+        if (fs.existsSync(file.path)) {
+          fs.unlinkSync(file.path);
+        }
+      }
+    }
+
+    // Register imported files in database (best-effort)
+    if (imported.length > 0) {
+      try {
+        const filesToRegister = imported.map((f) => ({
+          type: 'mt-output',
+          path: f.path,
+          metadata: { importedFrom: f.originalName },
+        }));
+
+        chapterFilesService.registerFiles(bookId, chapterNum, filesToRegister, userId);
+      } catch (dbErr) {
+        console.error('Failed to register MT output files:', dbErr);
       }
     }
 

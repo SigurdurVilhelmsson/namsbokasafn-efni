@@ -436,4 +436,42 @@ router.get(
   }
 );
 
+/**
+ * POST /:book/:chapter/:moduleId/log
+ * Add a manual localization log entry (for the review tab's changelog).
+ */
+router.post(
+  '/:book/:chapter/:moduleId/log',
+  requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    const { original, changedTo, reason, type } = req.body;
+
+    if (!original || !changedTo || !reason) {
+      return res.status(400).json({ error: 'original, changedTo, and reason are required' });
+    }
+
+    try {
+      localizationEditService.logLocalizationEdit({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId: type || 'manual-log',
+        previousContent: original,
+        newContent: changedTo,
+        category: type || 'other',
+        editorId: req.user.id,
+        editorUsername: req.user.username,
+      });
+
+      res.json({ success: true });
+    } catch (err) {
+      console.error('Error adding log entry:', err.message);
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
 module.exports = router;

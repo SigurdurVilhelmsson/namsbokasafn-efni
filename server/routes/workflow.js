@@ -1623,4 +1623,190 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
   }
 });
 
+// ============================================================================
+// CHAPTER ASSIGNMENTS
+// ============================================================================
+
+const Database = require('better-sqlite3');
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+
+function getAssignmentDb() {
+  return new Database(DB_PATH);
+}
+
+/**
+ * POST /api/workflow/assignments
+ * Create a chapter assignment (head-editor+)
+ */
+router.post('/assignments', requireAuth, (req, res) => {
+  if (req.user.role !== ROLES.ADMIN && req.user.role !== 'head-editor') {
+    return res.status(403).json({ error: 'Head-editor or admin required' });
+  }
+
+  const { book, chapter, stage, assignedTo, dueDate, notes } = req.body;
+
+  if (!book || !VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: 'Invalid book' });
+  }
+
+  const chapterNum = parseInt(chapter, 10);
+  if (isNaN(chapterNum) || chapterNum < 1) {
+    return res.status(400).json({ error: 'Invalid chapter' });
+  }
+
+  if (!assignedTo) {
+    return res.status(400).json({ error: 'assignedTo is required' });
+  }
+
+  const db = getAssignmentDb();
+  try {
+    // Check table exists (migration may not have run)
+    try {
+      db.prepare('SELECT 1 FROM chapter_assignments LIMIT 0').run();
+    } catch {
+      db.close();
+      return res.status(503).json({
+        error: 'Assignments table not ready',
+        message: 'Run POST /api/admin/migrate first',
+      });
+    }
+
+    // Resolve assignedTo — could be user ID or username
+    let userId = parseInt(assignedTo, 10);
+    if (isNaN(userId)) {
+      const user = db
+        .prepare('SELECT id FROM users WHERE username = ? OR display_name = ?')
+        .get(assignedTo, assignedTo);
+      if (!user) {
+        db.close();
+        return res.status(400).json({ error: `User not found: ${assignedTo}` });
+      }
+      userId = user.id;
+    }
+
+    const result = db
+      .prepare(
+        `INSERT INTO chapter_assignments (book, chapter, stage, assigned_to, assigned_by, due_date, notes)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`
+      )
+      .run(
+        book,
+        chapterNum,
+        stage || 'linguisticReview',
+        userId,
+        req.user.id,
+        dueDate || null,
+        notes || null
+      );
+
+    db.close();
+
+    res.json({
+      success: true,
+      assignmentId: result.lastInsertRowid,
+      message: 'Verkefni úthlutað',
+    });
+  } catch (err) {
+    db.close();
+    console.error('Assignment error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/workflow/assignments
+ * List chapter assignments, optionally filtered by book or user
+ */
+router.get('/assignments', requireAuth, (req, res) => {
+  const { book, userId, status: filterStatus } = req.query;
+
+  const db = getAssignmentDb();
+  try {
+    try {
+      db.prepare('SELECT 1 FROM chapter_assignments LIMIT 0').run();
+    } catch {
+      db.close();
+      return res.json({ assignments: [] });
+    }
+
+    let query = `
+      SELECT ca.*,
+        u_to.username AS assigned_to_username,
+        u_to.display_name AS assigned_to_name,
+        u_by.username AS assigned_by_username
+      FROM chapter_assignments ca
+      LEFT JOIN users u_to ON u_to.id = ca.assigned_to
+      LEFT JOIN users u_by ON u_by.id = ca.assigned_by
+      WHERE 1=1
+    `;
+    const params = [];
+
+    if (book) {
+      query += ' AND ca.book = ?';
+      params.push(book);
+    }
+    if (userId) {
+      query += ' AND ca.assigned_to = ?';
+      params.push(parseInt(userId, 10));
+    }
+    if (filterStatus) {
+      query += ' AND ca.status = ?';
+      params.push(filterStatus);
+    }
+
+    query += ' ORDER BY ca.created_at DESC LIMIT 100';
+
+    const assignments = db.prepare(query).all(...params);
+    db.close();
+
+    res.json({ assignments });
+  } catch (err) {
+    db.close();
+    console.error('List assignments error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/workflow/assignments/:id/complete
+ * Mark an assignment as completed
+ */
+router.post('/assignments/:id/complete', requireAuth, (req, res) => {
+  const assignmentId = parseInt(req.params.id, 10);
+
+  const db = getAssignmentDb();
+  try {
+    const assignment = db
+      .prepare('SELECT * FROM chapter_assignments WHERE id = ?')
+      .get(assignmentId);
+
+    if (!assignment) {
+      db.close();
+      return res.status(404).json({ error: 'Assignment not found' });
+    }
+
+    // Allow the assigned user, head-editors, or admins to complete
+    if (
+      assignment.assigned_to !== req.user.id &&
+      req.user.role !== ROLES.ADMIN &&
+      req.user.role !== 'head-editor'
+    ) {
+      db.close();
+      return res.status(403).json({ error: 'Not authorized to complete this assignment' });
+    }
+
+    db.prepare(
+      `UPDATE chapter_assignments SET status = 'completed', completed_at = datetime('now') WHERE id = ?`
+    ).run(assignmentId);
+
+    db.close();
+
+    res.json({ success: true, message: 'Verkefni lokið' });
+  } catch (err) {
+    db.close();
+    console.error('Complete assignment error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;

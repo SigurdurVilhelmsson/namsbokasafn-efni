@@ -768,14 +768,45 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 Opna ritstj&#243;ra
               </a>
+              <!-- Pipeline buttons (head-editor+) -->
+              <button class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-extract" style="display:none" onclick="runExtract()">
+                Draga &#250;t
+              </button>
+              <button class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-protect" style="display:none" onclick="runProtect()">
+                Verja
+              </button>
+              <button class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-unprotect" style="display:none" onclick="runUnprotect()">
+                Afverja
+              </button>
+              <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
+
+              <!-- Publication buttons (head-editor+) -->
+              <div class="btn-group" id="btn-publish-group" style="display:none">
+                <button class="btn btn-sm btn-primary" onclick="publishChapter('faithful')">Birta</button>
+                <button class="btn btn-sm btn-secondary" onclick="publishChapter('mt-preview')" title="Birta v&#233;l&#254;&#253;&#240;ingu">MT</button>
+              </div>
+              <span class="tm-badge" id="publish-badge" style="display:none"></span>
+
+              <!-- MT upload (head-editor+) -->
+              <label class="btn btn-sm btn-secondary pipeline-action-btn" id="btn-upload-mt" style="display:none" title="Hla&#240;a upp IS skr&#225;m &#237; 02-mt-output">
+                <input type="file" multiple accept=".md" style="display:none" onchange="uploadMtFiles(this.files)">
+                &#8593; IS
+              </label>
+
               <button class="btn btn-sm btn-secondary" id="btn-prepare-tm" style="display:none" onclick="prepareTm()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                 Undirb&#250;a TM
               </button>
               <span class="tm-badge" id="prepare-tm-badge" style="display:none"></span>
+
+              <!-- Download buttons -->
               <button class="btn btn-sm btn-secondary" onclick="downloadChapterMarkdown(selectedBook, selectedChapter)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 EN
+              </button>
+              <button class="btn btn-sm btn-secondary" id="btn-download-pub" style="display:none" onclick="downloadPublishedHtml(selectedBook, selectedChapter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                HTML
               </button>
             </div>
           </div>
@@ -1041,6 +1072,7 @@
     var selectedChapter = null;
     var chapterData = null;
     var tmPollingTimer = null;
+    var pipelinePollingTimer = null;
     var cvCurrentBook = null;
     var cvCurrentChapter = null;
     var cvTmPollingTimer = null;
@@ -1343,6 +1375,19 @@
       // Update links
       document.getElementById('chapter-editor-link').href = '/segment-editor?book=' + slug + '&chapter=' + chapterNum;
 
+      // Reset pipeline/publication buttons (hidden until loadChapterStatus reveals them)
+      document.getElementById('btn-extract').style.display = 'none';
+      document.getElementById('btn-protect').style.display = 'none';
+      document.getElementById('btn-unprotect').style.display = 'none';
+      document.getElementById('btn-upload-mt').style.display = 'none';
+      document.getElementById('btn-publish-group').style.display = 'none';
+      document.getElementById('btn-download-pub').style.display = 'none';
+      document.getElementById('pipeline-action-badge').style.display = 'none';
+      document.getElementById('publish-badge').style.display = 'none';
+      document.getElementById('btn-prepare-tm').style.display = 'none';
+      document.getElementById('prepare-tm-badge').style.display = 'none';
+      clearInterval(pipelinePollingTimer);
+
       // Load all data in parallel
       await Promise.all([
         loadChapterSections(slug, chapterNum),
@@ -1505,14 +1550,20 @@
       }
     }
 
-    // Chapter status (for TM button)
+    // Chapter status (for TM button and pipeline buttons)
     async function loadChapterStatus(book, chapter) {
       try {
         var data = await fetchJson('/api/status/' + book + '/' + chapter);
 
         var stages = data.stages || {};
+        var extraction = stages.extraction || {};
+        var mtReady = stages.mtReady || {};
+        var mtOutput = stages.mtOutput || {};
         var linguisticReview = stages.linguisticReview || {};
         var tmCreated = stages.tmCreated || {};
+        var injection = stages.injection || {};
+        var rendering = stages.rendering || {};
+        var publication = stages.publication || {};
 
         var tmBtn = document.getElementById('btn-prepare-tm');
         var tmBadge = document.getElementById('prepare-tm-badge');
@@ -1524,6 +1575,35 @@
             tmBadge.style.display = '';
             tmBadge.textContent = 'TM tilb\u00fai\u00f0';
             tmBadge.className = 'tm-badge completed';
+          }
+        }
+
+        // Pipeline and publication buttons — head-editor+ only
+        var role = window.currentUser && window.currentUser.role;
+        var isHeadEditor = role === 'head-editor' || role === 'admin';
+
+        if (isHeadEditor) {
+          // Extract button: always available for head-editor
+          document.getElementById('btn-extract').style.display = '';
+          // Protect button: available after extraction
+          if (extraction.complete) {
+            document.getElementById('btn-protect').style.display = '';
+          }
+          // Upload MT + Unprotect: available after mtReady
+          if (mtReady.complete) {
+            document.getElementById('btn-upload-mt').style.display = '';
+            document.getElementById('btn-unprotect').style.display = '';
+          }
+          // Publish buttons: available after linguisticReview
+          if (linguisticReview.complete) {
+            document.getElementById('btn-publish-group').style.display = '';
+          }
+          // Published HTML download: available if any publication track complete
+          var pubFaithful = publication.faithful || {};
+          var pubMtPreview = publication.mtPreview || {};
+          var pubLocalized = publication.localized || {};
+          if (pubFaithful.complete || pubMtPreview.complete || pubLocalized.complete) {
+            document.getElementById('btn-download-pub').style.display = '';
           }
         }
       } catch (err) {
@@ -1584,6 +1664,199 @@
           // Polling error - ignore, will retry
         }
       }, 1500);
+    }
+
+    // ========================================================================
+    // PIPELINE ACTION FUNCTIONS
+    // ========================================================================
+
+    /**
+     * Generic pipeline polling — reused by extract, protect, unprotect, publish.
+     */
+    function pollPipelineJob(jobId, btnId, badgeId, completedText) {
+      clearInterval(pipelinePollingTimer);
+
+      pipelinePollingTimer = setInterval(async function() {
+        try {
+          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
+          var job = result.job;
+          var btn = document.getElementById(btnId);
+          var badge = document.getElementById(badgeId);
+
+          if (job.status === 'completed') {
+            clearInterval(pipelinePollingTimer);
+            badge.textContent = completedText;
+            badge.className = 'tm-badge completed';
+            btn.disabled = false;
+            // Refresh chapter status to update button visibility
+            loadChapterStatus(selectedBook, selectedChapter);
+          } else if (job.status === 'failed') {
+            clearInterval(pipelinePollingTimer);
+            badge.textContent = 'Mist\u00f3kst';
+            badge.className = 'tm-badge failed';
+            btn.disabled = false;
+          } else {
+            badge.textContent = '\u00cd gangi...';
+          }
+        } catch (e) {
+          // Polling error - ignore, will retry
+        }
+      }, 1500);
+    }
+
+    async function runExtract() {
+      var btn = document.getElementById('btn-extract');
+      var badge = document.getElementById('pipeline-action-badge');
+      btn.disabled = true;
+      badge.style.display = '';
+      badge.textContent = '\u00cd gangi...';
+      badge.className = 'tm-badge running';
+
+      try {
+        var data = await fetchJson('/api/pipeline/extract', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
+        });
+        pollPipelineJob(data.jobId, 'btn-extract', 'pipeline-action-badge', '\u00datdr\u00e1ttur loki\u00f0');
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'tm-badge failed';
+        btn.disabled = false;
+      }
+    }
+
+    async function runProtect() {
+      var btn = document.getElementById('btn-protect');
+      var badge = document.getElementById('pipeline-action-badge');
+      btn.disabled = true;
+      badge.style.display = '';
+      badge.textContent = '\u00cd gangi...';
+      badge.className = 'tm-badge running';
+
+      try {
+        var data = await fetchJson('/api/pipeline/protect', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
+        });
+        pollPipelineJob(data.jobId, 'btn-protect', 'pipeline-action-badge', 'Verndun loki\u00f0');
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'tm-badge failed';
+        btn.disabled = false;
+      }
+    }
+
+    async function runUnprotect() {
+      var btn = document.getElementById('btn-unprotect');
+      var badge = document.getElementById('pipeline-action-badge');
+      btn.disabled = true;
+      badge.style.display = '';
+      badge.textContent = '\u00cd gangi...';
+      badge.className = 'tm-badge running';
+
+      try {
+        var data = await fetchJson('/api/pipeline/unprotect', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
+        });
+        pollPipelineJob(data.jobId, 'btn-unprotect', 'pipeline-action-badge', 'Afverndun loki\u00f0');
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'tm-badge failed';
+        btn.disabled = false;
+      }
+    }
+
+    async function publishChapter(track) {
+      var badge = document.getElementById('publish-badge');
+      var btnGroup = document.getElementById('btn-publish-group');
+      var buttons = btnGroup.querySelectorAll('button');
+      buttons.forEach(function(b) { b.disabled = true; });
+      badge.style.display = '';
+      badge.textContent = '\u00cd gangi...';
+      badge.className = 'tm-badge running';
+
+      try {
+        var data = await fetchJson('/api/publication/' + selectedBook + '/' + selectedChapter + '/' + track, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        // Use first button in group for polling re-enable
+        clearInterval(pipelinePollingTimer);
+        pipelinePollingTimer = setInterval(async function() {
+          try {
+            var result = await fetchJson('/api/pipeline/jobs/' + data.jobId, { credentials: 'include' });
+            var job = result.job;
+            if (job.status === 'completed') {
+              clearInterval(pipelinePollingTimer);
+              badge.textContent = 'Birt';
+              badge.className = 'tm-badge completed';
+              buttons.forEach(function(b) { b.disabled = false; });
+              loadChapterStatus(selectedBook, selectedChapter);
+            } else if (job.status === 'failed') {
+              clearInterval(pipelinePollingTimer);
+              badge.textContent = 'Mist\u00f3kst';
+              badge.className = 'tm-badge failed';
+              buttons.forEach(function(b) { b.disabled = false; });
+            } else {
+              badge.textContent = '\u00cd gangi...';
+            }
+          } catch (e) {
+            // Polling error - ignore
+          }
+        }, 1500);
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'tm-badge failed';
+        buttons.forEach(function(b) { b.disabled = false; });
+      }
+    }
+
+    async function uploadMtFiles(files) {
+      if (!files || files.length === 0) return;
+
+      var badge = document.getElementById('pipeline-action-badge');
+      badge.style.display = '';
+      badge.textContent = 'Hle\u00f0 upp...';
+      badge.className = 'tm-badge running';
+
+      var formData = new FormData();
+      for (var i = 0; i < files.length; i++) {
+        formData.append('files', files[i]);
+      }
+
+      try {
+        var res = await fetch('/api/books/' + selectedBook + '/chapters/' + selectedChapter + '/import-mt', {
+          method: 'POST',
+          credentials: 'include',
+          body: formData
+        });
+        if (!res.ok) {
+          var errData = await res.json();
+          throw new Error(errData.error || 'HTTP ' + res.status);
+        }
+        var data = await res.json();
+        badge.textContent = data.imported + ' skr\u00e1r hlad\u00f0ar upp';
+        badge.className = 'tm-badge completed';
+        loadChapterStatus(selectedBook, selectedChapter);
+      } catch (err) {
+        badge.textContent = 'Villa: ' + err.message;
+        badge.className = 'tm-badge failed';
+      }
+
+      // Reset file input so same files can be re-selected
+      document.querySelector('#btn-upload-mt input[type="file"]').value = '';
+    }
+
+    function downloadPublishedHtml(book, chapter) {
+      window.location.href = '/api/books/' + book + '/download?chapter=' + chapter + '&type=pub-faithful';
     }
 
     // ========================================================================

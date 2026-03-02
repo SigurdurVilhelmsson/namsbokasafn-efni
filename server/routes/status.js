@@ -18,7 +18,7 @@ const fs = require('fs');
 const path = require('path');
 const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireAdmin } = require('../middleware/requireRole');
+const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
 const {
   extractBaseSectionId,
   sectionHasAnyFile,
@@ -653,6 +653,176 @@ router.get('/analytics', requireAuth, async (req, res) => {
     console.error('Analytics error:', err);
     res.status(500).json({
       error: 'Failed to generate analytics',
+      message: err.message,
+    });
+  }
+});
+
+// ============================================================================
+// MEETING AGENDA (must be before /:book to avoid route conflicts)
+// ============================================================================
+
+/**
+ * GET /api/status/meeting-agenda
+ * Generate a meeting agenda from pipeline status data.
+ * Aggregates attention items, pending reviews, and progress across all books.
+ *
+ * Returns:
+ *   { meetingDate, summary: { highPriorityCount, mediumPriorityCount },
+ *     sections: [{ priority, icon, title, count, items }] }
+ */
+router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const sections = [];
+
+    // ── HIGH PRIORITY: items needing immediate attention ──
+    const highItems = [];
+
+    // Check for pending reviews
+    try {
+      const reviewsPath = path.join(__dirname, '..', 'data', 'reviews.json');
+      if (fs.existsSync(reviewsPath)) {
+        const reviews = JSON.parse(fs.readFileSync(reviewsPath, 'utf-8'));
+        const pending = reviews.filter((r) => r.status === 'pending');
+        for (const review of pending) {
+          const daysPending = review.submittedAt
+            ? Math.floor((Date.now() - new Date(review.submittedAt).getTime()) / 86400000)
+            : 0;
+          highItems.push({
+            section: review.section,
+            book: review.book,
+            chapter: review.chapter,
+            daysPending,
+            description: `Yfirferð í bið: ${review.section}`,
+          });
+        }
+      }
+    } catch {
+      /* no reviews file */
+    }
+
+    // Check for blocked issues
+    try {
+      const issuesPath = path.join(__dirname, '..', 'data', 'issues.json');
+      if (fs.existsSync(issuesPath)) {
+        const issues = JSON.parse(fs.readFileSync(issuesPath, 'utf-8'));
+        const blocked = issues.filter((i) => i.category === 'BLOCKED' && i.status === 'pending');
+        for (const issue of blocked) {
+          highItems.push({
+            description: issue.description,
+            book: issue.book,
+            chapter: issue.chapter,
+          });
+        }
+      }
+    } catch {
+      /* no issues file */
+    }
+
+    if (highItems.length > 0) {
+      sections.push({
+        priority: 'high',
+        icon: '🔴',
+        title: 'Mikilvæg atriði',
+        count: highItems.length,
+        items: highItems,
+      });
+    }
+
+    // ── MEDIUM PRIORITY: unassigned work + chapters needing next step ──
+    const mediumItems = [];
+
+    for (const book of VALID_BOOKS) {
+      const chaptersPath = path.join(PROJECT_ROOT, 'books', book, 'chapters');
+      if (!fs.existsSync(chaptersPath)) continue;
+
+      const chapterDirs = fs
+        .readdirSync(chaptersPath)
+        .filter((d) => d.startsWith('ch'))
+        .sort();
+
+      for (const chDir of chapterDirs) {
+        const statusPath = path.join(chaptersPath, chDir, 'status.json');
+        if (!fs.existsSync(statusPath)) continue;
+
+        try {
+          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+          const formatted = formatChapterStatus(statusData);
+
+          // Find chapters that are in-progress but not fully complete
+          if (formatted.progress > 0 && formatted.progress < 100 && formatted.nextStage) {
+            const chapterNum = parseInt(chDir.replace('ch', ''), 10);
+            mediumItems.push({
+              section: `K${chapterNum}`,
+              book,
+              chapter: chapterNum,
+              description: `Næsta skref: ${formatted.nextStage} (${formatted.progress}% lokið)`,
+            });
+          }
+        } catch {
+          /* skip */
+        }
+      }
+    }
+
+    if (mediumItems.length > 0) {
+      sections.push({
+        priority: 'medium',
+        icon: '🟡',
+        title: 'Kaflar í vinnslu',
+        count: mediumItems.length,
+        items: mediumItems,
+      });
+    }
+
+    // ── LOW PRIORITY: recent activity + velocity ──
+    const lowItems = [];
+
+    try {
+      const weekAgo = new Date();
+      weekAgo.setDate(weekAgo.getDate() - 7);
+
+      const recentActivity = activityLog.search({ limit: 10 });
+      const recentUsers = new Map();
+
+      for (const activity of recentActivity.activities) {
+        const activityDate = new Date(activity.createdAt);
+        if (activityDate >= weekAgo) {
+          const name = activity.username || activity.userId || 'Óþekktur';
+          recentUsers.set(name, (recentUsers.get(name) || 0) + 1);
+        }
+      }
+
+      for (const [username, totalActions] of recentUsers) {
+        lowItems.push({ username, totalActions });
+      }
+    } catch {
+      /* skip */
+    }
+
+    if (lowItems.length > 0) {
+      sections.push({
+        priority: 'low',
+        icon: '🟢',
+        title: 'Virkni síðustu 7 daga',
+        count: lowItems.length,
+        items: lowItems,
+      });
+    }
+
+    res.json({
+      meetingDate: today,
+      summary: {
+        highPriorityCount: highItems.length,
+        mediumPriorityCount: mediumItems.length,
+      },
+      sections,
+    });
+  } catch (err) {
+    console.error('Meeting agenda error:', err);
+    res.status(500).json({
+      error: 'Failed to generate meeting agenda',
       message: err.message,
     });
   }

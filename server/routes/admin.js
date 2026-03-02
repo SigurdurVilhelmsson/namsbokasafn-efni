@@ -924,6 +924,8 @@ router.get('/migrate', requireAuth, requireAdmin(), (req, res) => {
       '008-segment-editing',
       '009-segment-edit-apply',
       '010-chapter-assignments',
+      '011-localization-edits',
+      '012-chapter-assignments',
     ],
   });
 });
@@ -946,6 +948,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/009-segment-edit-apply'),
       require('../migrations/010-chapter-assignments'),
       require('../migrations/011-localization-edits'),
+      require('../migrations/012-chapter-assignments'),
     ];
 
     const results = [];

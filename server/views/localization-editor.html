@@ -2280,6 +2280,9 @@
       await rvLoadSectionById(parseInt(sectionId, 10));
     }
 
+    // Track the current section's metadata for module-based API calls
+    var rvCurrentSectionMeta = null;
+
     async function rvLoadSectionById(sectionId) {
       rvCurrentSectionId = sectionId;
 
@@ -2293,17 +2296,40 @@
       document.getElementById('rv-review-interface').style.display = 'block';
 
       try {
-        var sectionData = await fetchJson('/api/localization/' + sectionId);
+        // Step 1: Get section metadata (book, chapter, moduleId) from sections API
+        var section = await fetchJson('/api/sections/' + sectionId);
+
+        rvCurrentSectionMeta = {
+          bookSlug: section.bookSlug,
+          chapterNum: section.chapterNum,
+          moduleId: section.moduleId,
+          sectionNum: section.sectionNum,
+          titleEn: section.titleEn,
+          status: section.status,
+        };
 
         document.getElementById('rv-section-title').textContent =
-          sectionData.section.sectionNum + ' - ' + (sectionData.section.titleEn || 'Hluti');
-        document.getElementById('rv-section-status').textContent = rvFormatStatus(sectionData.section.status);
+          section.sectionNum + ' - ' + (section.titleEn || 'Hluti');
+        document.getElementById('rv-section-status').textContent = rvFormatStatus(section.status);
 
-        await rvLoadPanelContent(sectionData.section);
+        // Step 2: Load content via localization-editor API (module-based)
+        await rvLoadPanelContent(rvCurrentSectionMeta);
         await rvLoadSuggestions();
 
-        if (sectionData.log && sectionData.log.entries) {
-          rvRenderLogEntries(sectionData.log.entries);
+        // Step 3: Load edit history via localization-editor history endpoint
+        if (rvCurrentSectionMeta.moduleId) {
+          try {
+            var historyData = await fetchJson(
+              '/api/localization-editor/' + rvCurrentSectionMeta.bookSlug +
+              '/' + rvCurrentSectionMeta.chapterNum +
+              '/' + rvCurrentSectionMeta.moduleId + '/history'
+            );
+            if (historyData.history && historyData.history.length > 0) {
+              rvRenderLogEntries(historyData.history);
+            }
+          } catch (histErr) {
+            console.warn('Could not load history:', histErr.message);
+          }
         }
       } catch (err) {
         console.error('Failed to load section:', err);
@@ -2311,14 +2337,24 @@
       }
     }
 
-    async function rvLoadPanelContent(section) {
+    async function rvLoadPanelContent(sectionMeta) {
       var faithfulEl = document.getElementById('rv-faithful-content');
 
       try {
-        var data = await fetchJson('/api/editor/' + section.bookSlug + '/' + section.chapterNum + '/' + section.sectionNum);
+        // Use the localization-editor endpoint to load EN + faithful IS + localized IS
+        var data = await fetchJson(
+          '/api/localization-editor/' + sectionMeta.bookSlug +
+          '/' + sectionMeta.chapterNum +
+          '/' + sectionMeta.moduleId
+        );
 
-        if (data.content && data.content.is) {
-          faithfulEl.innerHTML = rvFormatMarkdownPreview(data.content.is);
+        if (data.segments && data.segments.length > 0) {
+          // Build a preview from the faithful IS segments
+          var faithfulHtml = data.segments.map(function(seg) {
+            var text = seg.faithful || seg.mt || '';
+            return '<p>' + escapeHtml(text) + '</p>';
+          }).join('');
+          faithfulEl.innerHTML = faithfulHtml || '<p class="placeholder-text">Tr\u00FA \u00FE\u00FD\u00F0ing ekki tilt\u00E6k.</p>';
         } else {
           faithfulEl.innerHTML = '<p class="placeholder-text">Tr\u00FA \u00FE\u00FD\u00F0ing ekki tilt\u00E6k.</p>';
         }
@@ -2567,10 +2603,7 @@
 
         if (data.success) {
           alert(data.entriesCreated + ' f\u00E6rslur b\u00E6ttar vi\u00F0 skr\u00E1');
-          var sectionData = await fetchJson('/api/localization/' + rvCurrentSectionId);
-          if (sectionData.log && sectionData.log.entries) {
-            rvRenderLogEntries(sectionData.log.entries);
-          }
+          await rvReloadHistory();
         }
       } catch (err) {
         alert('Villa: ' + err.message);
@@ -2604,6 +2637,22 @@
       }).join('');
     }
 
+    async function rvReloadHistory() {
+      if (!rvCurrentSectionMeta || !rvCurrentSectionMeta.moduleId) return;
+      try {
+        var historyData = await fetchJson(
+          '/api/localization-editor/' + rvCurrentSectionMeta.bookSlug +
+          '/' + rvCurrentSectionMeta.chapterNum +
+          '/' + rvCurrentSectionMeta.moduleId + '/history'
+        );
+        if (historyData.history) {
+          rvRenderLogEntries(historyData.history);
+        }
+      } catch (err) {
+        console.warn('Could not reload history:', err.message);
+      }
+    }
+
     function rvAddManualLogEntry() {
       document.getElementById('log-type').value = 'other';
       document.getElementById('log-original').value = '';
@@ -2628,7 +2677,15 @@
       }
 
       try {
-        var data = await fetchJson('/api/localization/' + rvCurrentSectionId + '/log/add', {
+        if (!rvCurrentSectionMeta || !rvCurrentSectionMeta.moduleId) {
+          alert('Villa: vantar module\u00CDD');
+          return;
+        }
+        var logUrl = '/api/localization-editor/' + rvCurrentSectionMeta.bookSlug +
+          '/' + rvCurrentSectionMeta.chapterNum +
+          '/' + rvCurrentSectionMeta.moduleId + '/log';
+
+        var data = await fetchJson(logUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(entry)
@@ -2636,10 +2693,7 @@
 
         if (data.success) {
           closeModal('log-modal');
-          var sectionData = await fetchJson('/api/localization/' + rvCurrentSectionId);
-          if (sectionData.log && sectionData.log.entries) {
-            rvRenderLogEntries(sectionData.log.entries);
-          }
+          await rvReloadHistory();
         } else {
           alert('Villa: ' + data.message);
         }
