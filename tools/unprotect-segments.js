@@ -33,7 +33,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const BOOK_DIR = 'books/efnafraedi';
+const BOOK_DIR = 'books/efnafraedi-2e';
 
 function parseArgs(args) {
   const result = {
@@ -90,7 +90,7 @@ Examples:
   node tools/unprotect-segments.js --chapter 9 --verbose
 
   # Process specific directory
-  node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch12/
+  node tools/unprotect-segments.js --batch books/efnafraedi-2e/02-mt-output/ch12/
 
   # Keep split files after processing
   node tools/unprotect-segments.js --chapter 5 --keep-splits

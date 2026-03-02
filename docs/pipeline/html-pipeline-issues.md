@@ -24,7 +24,7 @@ Changed `cnxml-render.js` to use absolute paths:
 ```javascript
 const normalizedSrc = src.replace(
   /^\.\.\/\.\.\/media\//,
-  `/content/efnafraedi/chapters/${chapterStr}/images/media/`
+  `/content/efnafraedi-2e/chapters/${chapterStr}/images/media/`
 );
 ```
 
@@ -133,7 +133,7 @@ In-body exercises render correctly (`<div class="exercise"><div class="problem">
 **HTML output:**
 ```html
 <div id="fs-id..." class="eoc-exercise has-answer-link" data-exercise-number="1">
-  <a class="exercise-number-link" href="/efnafraedi/svarlykill/3#fs-id...">1.</a>
+  <a class="exercise-number-link" href="/efnafraedi-2e/svarlykill/3#fs-id...">1.</a>
   <div class="problem"><p>Question...</p></div>
 </div>
 ```

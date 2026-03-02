@@ -27,10 +27,10 @@
  * }
  *
  * Usage:
- *   node tools/generate-index.js --book efnafraedi
- *   node tools/generate-index.js --book efnafraedi --chapters 9,12,13
- *   node tools/generate-index.js --book efnafraedi --track mt-preview
- *   node tools/generate-index.js --book efnafraedi --toc ../namsbokasafn-vefur/static/content/efnafraedi/toc.json
+ *   node tools/generate-index.js --book efnafraedi-2e
+ *   node tools/generate-index.js --book efnafraedi-2e --chapters 9,12,13
+ *   node tools/generate-index.js --book efnafraedi-2e --track mt-preview
+ *   node tools/generate-index.js --book efnafraedi-2e --toc ../namsbokasafn-vefur/static/content/efnafraedi/toc.json
  */
 
 import fs from 'fs';
@@ -103,10 +103,10 @@ Options:
 
 Examples:
   # Generate index for all chapters
-  node tools/generate-index.js --book efnafraedi --track mt-preview
+  node tools/generate-index.js --book efnafraedi-2e --track mt-preview
 
   # Generate for specific chapters with toc
-  node tools/generate-index.js --book efnafraedi --chapters 1,2,3 --toc ../namsbokasafn-vefur/static/content/efnafraedi/toc.json
+  node tools/generate-index.js --book efnafraedi-2e --chapters 1,2,3 --toc ../namsbokasafn-vefur/static/content/efnafraedi/toc.json
 `);
 }
 

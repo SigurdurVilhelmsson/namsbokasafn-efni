@@ -25,7 +25,7 @@
  *   --module <id>      Specific module ID (default: all in chapter)
  *   --lang <code>      Language code for translated segments (default: is)
  *   --source-dir <dir> Directory containing translated segments, relative to
- *                      books/efnafraedi/ (default: 02-mt-output)
+ *                      books/efnafraedi-2e/ (default: 02-mt-output)
  *                      Use 02-mt-output for MT preview,
  *                      03-faithful-translation for reviewed translations,
  *                      04-localized-content for localized
@@ -42,7 +42,7 @@ import path from 'path';
 // CONFIGURATION
 // =====================================================================
 
-let BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
 
 // =====================================================================
 // HELPER FUNCTIONS
@@ -79,7 +79,7 @@ function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
-    book: 'efnafraedi',
+    book: 'efnafraedi-2e',
     lang: 'is',
     sourceDir: null,
     track: null,
@@ -125,7 +125,7 @@ Options:
   --chapter <num|appendices>  Chapter number or "appendices"
   --module <id>        Specific module ID (default: all in chapter)
   --lang <code>        Language code (default: is)
-  --source-dir <dir>   Segments directory relative to books/efnafraedi/
+  --source-dir <dir>   Segments directory relative to books/efnafraedi-2e/
                        (default: 02-mt-output)
   --track <name>       Publication track: mt-preview, faithful, localized
                        (auto-detected from --source-dir if not specified)

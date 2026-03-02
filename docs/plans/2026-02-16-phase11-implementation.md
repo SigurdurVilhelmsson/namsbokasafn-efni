@@ -17,7 +17,7 @@
 **Files:**
 - Create: `tools/migrate-status-schema.js`
 
-This script reads all `books/efnafraedi/chapters/*/status.json` files and migrates them to the 8-stage schema. It's idempotent — safe to run multiple times.
+This script reads all `books/efnafraedi-2e/chapters/*/status.json` files and migrates them to the 8-stage schema. It's idempotent — safe to run multiple times.
 
 **Step 1: Write the migration script**
 
@@ -36,7 +36,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BOOKS_DIR = path.join(__dirname, '..', 'books');
-const BOOK = 'efnafraedi';
+const BOOK = 'efnafraedi-2e';
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
@@ -196,7 +196,7 @@ Expected: All status.json files rewritten with canonical names.
 
 **Step 4: Verify a migrated file**
 
-Read `books/efnafraedi/chapters/ch01/status.json` and confirm:
+Read `books/efnafraedi-2e/chapters/ch01/status.json` and confirm:
 - `extraction` exists (was `source`)
 - `linguisticReview` exists (was `editorialPass1`)
 - `tmCreated` exists (was `matecat`)
@@ -207,7 +207,7 @@ Read `books/efnafraedi/chapters/ch01/status.json` and confirm:
 **Step 5: Commit**
 
 ```bash
-git add tools/migrate-status-schema.js books/efnafraedi/chapters/
+git add tools/migrate-status-schema.js books/efnafraedi-2e/chapters/
 git commit -m "feat(phase11): migrate status.json files to 8-stage schema"
 ```
 
@@ -289,7 +289,7 @@ At `status.js:961-1016`:
     actions.push({
       stage: 'mtReady',
       action: 'Protect segments for MT',
-      command: 'node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/chNN/',
+      command: 'node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/chNN/',
     });
   }
   ```
@@ -337,7 +337,7 @@ At `status.js:854-864`, add `mtReady`:
 **Step 6: Test the routes**
 
 Run: `node -e "require('./server/routes/status');"` (quick syntax check)
-If the server can start: `node server/index.js` and test `GET /api/status/efnafraedi` — verify 8 stages per chapter, no errors.
+If the server can start: `node server/index.js` and test `GET /api/status/efnafraedi-2e` — verify 8 stages per chapter, no errors.
 
 **Step 7: Commit**
 
@@ -474,14 +474,14 @@ git commit -m "feat(phase11): auto-advance linguisticReview on applyApprovedEdit
 
 **Step 1: Run filesystem sync on a chapter**
 
-Test: `curl -X POST http://localhost:3000/api/status/efnafraedi/sync` (or start server and test)
-Alternatively, quick check: `node -e "const br = require('./server/services/bookRegistration'); console.log(JSON.stringify(br.scanStatusDryRun('efnafraedi', '01'), null, 2))"`
+Test: `curl -X POST http://localhost:3000/api/status/efnafraedi-2e/sync` (or start server and test)
+Alternatively, quick check: `node -e "const br = require('./server/services/bookRegistration'); console.log(JSON.stringify(br.scanStatusDryRun('efnafraedi-2e', '01'), null, 2))"`
 
 Verify: Output uses canonical stage names only.
 
 **Step 2: Verify ch01 status.json has correct shape**
 
-Read `books/efnafraedi/chapters/ch01/status.json`:
+Read `books/efnafraedi-2e/chapters/ch01/status.json`:
 - 8 stages present: extraction, mtReady, mtOutput, linguisticReview, tmCreated, injection, rendering, publication
 - No legacy names
 - publication has mtPreview, faithful, localized sub-tracks
@@ -519,7 +519,7 @@ Also update the Stages section to list all 8:
 **Step 5: Commit**
 
 ```bash
-git add CLAUDE.md ROADMAP.md books/efnafraedi/chapters/
+git add CLAUDE.md ROADMAP.md books/efnafraedi-2e/chapters/
 git commit -m "docs: update documentation for Phase 11 completion"
 ```
 
@@ -534,6 +534,6 @@ git commit -m "docs: update documentation for Phase 11 completion"
 | `server/routes/status.js` | MODIFY | 8 stages, remove STAGE_MAPPING, fix formatChapterStatus |
 | `server/services/bookRegistration.js` | MODIFY | Canonical names in sync, module-based detection |
 | `server/services/segmentEditorService.js` | MODIFY | Auto-advance linguisticReview |
-| `books/efnafraedi/chapters/*/status.json` | MIGRATE | ~22 files, canonical names |
+| `books/efnafraedi-2e/chapters/*/status.json` | MIGRATE | ~22 files, canonical names |
 | `CLAUDE.md` | MODIFY | 8-stage pipeline table |
 | `ROADMAP.md` | MODIFY | Phase 11 complete |

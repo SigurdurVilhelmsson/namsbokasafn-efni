@@ -53,13 +53,13 @@ extraction → mtReady → mtOutput → linguisticReview → tmCreated → injec
 npm run update-status <book> <chapter> <stage> <status> [options]
 
 # Examples
-npm run update-status efnafraedi 3 linguisticReview complete
-npm run update-status efnafraedi 3 rendering in-progress
-npm run update-status efnafraedi 3 publication complete --version "v1.0"
+npm run update-status efnafraedi-2e 3 linguisticReview complete
+npm run update-status efnafraedi-2e 3 rendering in-progress
+npm run update-status efnafraedi-2e 3 publication complete --version "v1.0"
 
 # Validate
 npm run validate
-npm run validate efnafraedi
+npm run validate efnafraedi-2e
 ```
 
 ## Status File Locations

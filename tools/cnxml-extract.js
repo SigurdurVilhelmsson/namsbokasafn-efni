@@ -43,7 +43,7 @@ import { getChapterModules } from './lib/chapter-modules.js';
 // CONFIGURATION
 // =====================================================================
 
-let BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
 
 // =====================================================================
 // ARGUMENT PARSING
@@ -54,7 +54,7 @@ function parseArgs(args) {
     input: null,
     chapter: null,
     module: null,
-    book: 'efnafraedi',
+    book: 'efnafraedi-2e',
     outputDir: null,
     verbose: false,
     help: false,
@@ -103,7 +103,7 @@ Output Files:
 
 Examples:
   node tools/cnxml-extract.js --chapter 5
-  node tools/cnxml-extract.js --input books/efnafraedi/01-source/ch05/m68724.cnxml
+  node tools/cnxml-extract.js --input books/efnafraedi-2e/01-source/ch05/m68724.cnxml
 `);
 }
 

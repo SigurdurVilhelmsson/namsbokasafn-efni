@@ -214,7 +214,7 @@ Status options:
 ## Full Terminology List
 
 The complete, searchable terminology list is maintained in:
-- `books/efnafraedi/glossary/terminology-en-is.csv`
+- `books/efnafraedi-2e/glossary/terminology-en-is.csv`
 - `books/liffraedi/glossary/terminology-en-is.csv`
 
 These CSV files are the authoritative source for approved terminology.

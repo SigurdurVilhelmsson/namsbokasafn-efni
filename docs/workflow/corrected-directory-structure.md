@@ -17,7 +17,7 @@ This document describes the corrected directory structure and workflow after fix
 ## Corrected Directory Structure
 
 ```
-books/efnafraedi/
+books/efnafraedi-2e/
 ├── 01-source/              # 🔒 READ ONLY - OpenStax CNXML originals
 │   └── media/              # Source images
 │
@@ -71,8 +71,8 @@ books/efnafraedi/
 ### Phase 1: Extract & MT
 ```bash
 # 1. Extract CNXML to segments for MT
-node tools/cnxml-extract.js --input books/efnafraedi/01-source/ch12/ \
-                            --output books/efnafraedi/02-for-mt/ch12
+node tools/cnxml-extract.js --input books/efnafraedi-2e/01-source/ch12/ \
+                            --output books/efnafraedi-2e/02-for-mt/ch12
 
 # 2. Protect segments for MT (tag protection)
 node tools/protect-segments-for-mt.js --chapter 12
@@ -102,8 +102,8 @@ node tools/markdown-to-html.js --chapter 12 --track mt-preview
 #    - Improve grammar and style
 
 # 8. When chapter review is complete, copy to 03-faithful-translation/
-cp -r books/efnafraedi/02-machine-translated/ch12/ \
-      books/efnafraedi/03-faithful-translation/ch12/
+cp -r books/efnafraedi-2e/02-machine-translated/ch12/ \
+      books/efnafraedi-2e/03-faithful-translation/ch12/
 ```
 
 ### Phase 4: Publish Faithful Version

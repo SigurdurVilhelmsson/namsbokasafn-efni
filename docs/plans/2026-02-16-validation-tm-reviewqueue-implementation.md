@@ -102,7 +102,7 @@ Add to module.exports: `validateBeforePublish`.
 ```bash
 node -e "
   const pub = require('./server/services/publicationService');
-  pub.validateBeforePublish('efnafraedi', 1, 'mt-preview').then(r => console.log(JSON.stringify(r, null, 2))).catch(e => console.error(e));
+  pub.validateBeforePublish('efnafraedi-2e', 1, 'mt-preview').then(r => console.log(JSON.stringify(r, null, 2))).catch(e => console.error(e));
 "
 ```
 
@@ -479,7 +479,7 @@ Start the server and confirm the endpoint responds:
 ```bash
 curl -X POST http://localhost:3000/api/pipeline/prepare-tm \
   -H "Content-Type: application/json" \
-  -d '{"book":"efnafraedi","chapter":1}'
+  -d '{"book":"efnafraedi-2e","chapter":1}'
 ```
 
 Expected: 401 (auth required) or the job response if authenticated.
@@ -548,7 +548,7 @@ Add `getReviewQueue` to module.exports.
 ```bash
 node -e "
   const se = require('./server/services/segmentEditorService');
-  console.log(se.getReviewQueue('efnafraedi'));
+  console.log(se.getReviewQueue('efnafraedi-2e'));
 "
 ```
 
@@ -609,7 +609,7 @@ router.get('/review-queue', requireAuth, (req, res) => {
 **Step 2: Verify**
 
 ```bash
-curl http://localhost:3000/api/segment-editor/review-queue?book=efnafraedi
+curl http://localhost:3000/api/segment-editor/review-queue?book=efnafraedi-2e
 ```
 
 Expected: `{ "reviews": [...] }` (requires auth in practice).
@@ -647,7 +647,7 @@ router.get('/review-queue', (req, res) => {
 Follow the pattern from existing views (segment-editor.html, reviews.html). The page should have:
 
 - Header with nav links (matching existing nav pattern)
-- Book selector dropdown (default: efnafraedi)
+- Book selector dropdown (default: efnafraedi-2e)
 - Table with columns: Kafli | Eining | Ritstjóri | Sent | Breytingar | SLA | Aðgerð
 - Each row color-coded by SLA status (green/yellow/red)
 - "Yfirfara" (Review) link → opens segment editor for that module review

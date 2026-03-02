@@ -54,7 +54,7 @@ npm run dev        # Start with watch mode (auto-restart)
 ```
 namsbokasafn-efni/
 ├── books/           # Translation content by book
-│   └── efnafraedi/  # Chemistry translations
+│   └── efnafraedi-2e/  # Chemistry 2e translations
 ├── docs/            # Documentation
 ├── lib/             # Shared JavaScript library
 ├── scripts/         # Utility scripts

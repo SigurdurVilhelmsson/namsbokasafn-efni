@@ -17,10 +17,10 @@
 import fs from 'fs';
 import path from 'path';
 
-let BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
 
 function parseArgs(args) {
-  const result = { chapter: null, book: 'efnafraedi', verbose: false };
+  const result = { chapter: null, book: 'efnafraedi-2e', verbose: false };
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i]);
     else if (args[i] === '--book' && args[i + 1]) result.book = args[++i];

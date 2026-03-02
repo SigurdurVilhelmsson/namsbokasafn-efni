@@ -111,7 +111,7 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 | `--chapter <num>` | Chapter number |
 | `--module <id>` | Specific module ID (default: all in chapter) |
 | `--lang <code>` | Language code (default: `is`) |
-| `--source-dir <dir>` | Segments directory relative to `books/efnafraedi/` (default: `02-mt-output`) |
+| `--source-dir <dir>` | Segments directory relative to `books/efnafraedi-2e/` (default: `02-mt-output`) |
 | `--output-dir <dir>` | Output directory (default: `03-translated/chNN/`) |
 | `--verbose` | Show detailed progress |
 

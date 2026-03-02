@@ -11,7 +11,7 @@ import {
 
 const ROOT = join(import.meta.dirname, '..', '..');
 const TOOLS = join(ROOT, 'tools');
-const BOOKS = join(ROOT, 'books', 'efnafraedi');
+const BOOKS = join(ROOT, 'books', 'efnafraedi-2e');
 
 function run(cmd) {
   return execSync(cmd, { cwd: ROOT, encoding: 'utf8', timeout: 60_000 });
@@ -195,7 +195,7 @@ describe('pipeline regression tests', () => {
 
       // Images should use absolute paths, not relative ../../media/
       expect(html).not.toMatch(/src="\.\.\/\.\.\/media\//);
-      expect(html).toMatch(/src="\/content\/efnafraedi\/chapters\/03\/images\/media\//);
+      expect(html).toMatch(/src="\/content\/efnafraedi-2e\/chapters\/03\/images\/media\//);
     });
   });
 

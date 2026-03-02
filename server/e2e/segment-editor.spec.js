@@ -29,10 +29,10 @@ test.describe('Segment editor', () => {
     await page.goto('/editor');
     await page.waitForLoadState('networkidle');
 
-    // Select "efnafraedi" book
+    // Select "efnafraedi-2e" book
     const bookSelect = page.locator('#book-select');
     if (await bookSelect.isVisible()) {
-      await bookSelect.selectOption('efnafraedi');
+      await bookSelect.selectOption('efnafraedi-2e');
 
       // Wait for chapter dropdown to populate
       const chapterSelect = page.locator('#chapter-select');
@@ -51,7 +51,7 @@ test.describe('Segment editor', () => {
 
     const bookSelect = page.locator('#book-select');
     if (await bookSelect.isVisible()) {
-      await bookSelect.selectOption('efnafraedi');
+      await bookSelect.selectOption('efnafraedi-2e');
 
       const chapterSelect = page.locator('#chapter-select');
       await expect(chapterSelect).toBeVisible({ timeout: 5000 });

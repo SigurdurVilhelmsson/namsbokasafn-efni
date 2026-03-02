@@ -95,7 +95,7 @@ New standalone page at `/review-queue`:
 1. Add `getReviewQueue(book)` to `segmentEditorService.js`
    - JOINs `module_reviews` with `segment_edits` counts grouped by module
    - Returns: `{ id, book, chapter, moduleId, editor, submittedAt, counts: { pending, approved, rejected, discuss } }`
-2. Add `GET /api/segment-editor/review-queue?book=efnafraedi` endpoint
+2. Add `GET /api/segment-editor/review-queue?book=efnafraedi-2e` endpoint
 3. New HTML page at `/review-queue` with:
    - Table: Chapter | Module | Editor | Submitted | Edits (pending/approved/rejected/discuss) | Action
    - Default sort: oldest first (most urgent)

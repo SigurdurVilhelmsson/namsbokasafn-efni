@@ -10,7 +10,7 @@ Each chapter has a `status.json` file in `books/<book>/chapters/ch##/` that trac
 
 ```
 books/
-└── efnafraedi/
+└── efnafraedi-2e/
     └── chapters/
         ├── ch01/
         │   └── status.json
@@ -257,14 +257,14 @@ The full JSON Schema is at: `schemas/chapter-status.schema.json`
 
 1. Copy the template:
    ```bash
-   cp templates/chapter-status.json books/efnafraedi/chapters/ch22/status.json
+   cp templates/chapter-status.json books/efnafraedi-2e/chapters/ch22/status.json
    ```
 
 2. Edit the new file with chapter details
 
 3. Validate:
    ```bash
-   npm run validate efnafraedi
+   npm run validate efnafraedi-2e
    ```
 
 ---

@@ -200,8 +200,8 @@ Enki:          03-faithful-translation/ → convert to CNXML → PDF
 **Scenario 2: Enki for All Outputs (Medium effort)**
 ```
 Our workflow:  CNXML → MD → MT → IS MD → review
-New step:      IS MD → IS CNXML (osbooks-efnafraedi-bundle)
-Enki:          osbooks-efnafraedi-bundle → PDF + web + EPUB
+New step:      IS MD → IS CNXML (osbooks-efnafraedi-2e-bundle)
+Enki:          osbooks-efnafraedi-2e-bundle → PDF + web + EPUB
 ```
 
 ---
@@ -245,13 +245,13 @@ npm install
 npm run build
 
 # Validate all books
-./poet validate /path/to/books/efnafraedi/01-source
+./poet validate /path/to/books/efnafraedi-2e/01-source
 
 # Find broken links
-./poet links /path/to/books/efnafraedi/01-source
+./poet links /path/to/books/efnafraedi-2e/01-source
 
 # Find orphaned files
-./poet orphans /path/to/books/efnafraedi/01-source
+./poet orphans /path/to/books/efnafraedi-2e/01-source
 ```
 
 ### Integration Points

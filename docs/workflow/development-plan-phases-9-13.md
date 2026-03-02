@@ -27,7 +27,7 @@ The segment editor records edits in SQLite (`segment_edits` table) and the head 
 
 This is the single highest-priority item.
 
-### Content State (efnafraedi)
+### Content State (efnafraedi-2e)
 
 | Directory | Chapters | Notes |
 |-----------|----------|-------|

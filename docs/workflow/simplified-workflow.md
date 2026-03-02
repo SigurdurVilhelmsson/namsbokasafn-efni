@@ -100,7 +100,7 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 node tools/cnxml-extract.js --chapter 5
 
 # Or a single module
-node tools/cnxml-extract.js --input books/efnafraedi/01-source/ch05/m68724.cnxml
+node tools/cnxml-extract.js --input books/efnafraedi-2e/01-source/ch05/m68724.cnxml
 ```
 
 **Output:**
@@ -115,10 +115,10 @@ node tools/cnxml-extract.js --input books/efnafraedi/01-source/ch05/m68724.cnxml
 **Process:**
 ```bash
 # Process all segment files in a chapter directory
-node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
+node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05/
 
 # Or a single file
-node tools/protect-segments-for-mt.js books/efnafraedi/02-for-mt/ch05/m68724-segments.en.md
+node tools/protect-segments-for-mt.js books/efnafraedi-2e/02-for-mt/ch05/m68724-segments.en.md
 ```
 
 **What it does:**
@@ -163,7 +163,7 @@ node tools/protect-segments-for-mt.js books/efnafraedi/02-for-mt/ch05/m68724-seg
 node tools/unprotect-segments.js --chapter 5 --verbose
 
 # Or process specific directory
-node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
+node tools/unprotect-segments.js --batch books/efnafraedi-2e/02-mt-output/ch05/
 ```
 
 **What it does:**
@@ -247,16 +247,16 @@ Then edit the segment files directly:
 ```bash
 # From single file pair
 node tools/prepare-for-align.js \
-  --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi/03-faithful-translation/ch05/5-1.is.md \
-  --output-dir books/efnafraedi/for-align/ch05
+  --en books/efnafraedi-2e/02-for-mt/ch05/5-1.en.md \
+  --is books/efnafraedi-2e/03-faithful-translation/ch05/5-1.is.md \
+  --output-dir books/efnafraedi-2e/for-align/ch05
 
 # From directories with split parts
 node tools/prepare-for-align.js \
-  --en-dir books/efnafraedi/02-for-mt/ch05/ \
-  --is-dir books/efnafraedi/03-faithful-translation/ch05/ \
+  --en-dir books/efnafraedi-2e/02-for-mt/ch05/ \
+  --is-dir books/efnafraedi-2e/03-faithful-translation/ch05/ \
   --section 5-1 \
-  --output-dir books/efnafraedi/for-align/ch05
+  --output-dir books/efnafraedi-2e/for-align/ch05
 ```
 
 **Output:** Clean markdown files ready for Matecat Align:
@@ -340,19 +340,19 @@ The publication system has **three tracks** that replace each other as the trans
 
 ```bash
 # Check publication status
-curl http://localhost:3000/api/publication/efnafraedi/5/status
+curl http://localhost:3000/api/publication/efnafraedi-2e/5/status
 
 # Check readiness for each track
-curl http://localhost:3000/api/publication/efnafraedi/5/readiness
+curl http://localhost:3000/api/publication/efnafraedi-2e/5/readiness
 
 # Publish MT preview (requires HEAD_EDITOR auth)
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
+curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/mt-preview
 
 # Publish faithful translation (requires HEAD_EDITOR auth)
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
+curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/faithful
 
 # Publish localized content (requires HEAD_EDITOR auth)
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/localized
+curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/localized
 ```
 
 #### Option C: Via CLI Tools
@@ -387,7 +387,7 @@ This banner is removed when faithful translation is published.
 ## Directory Structure
 
 ```
-books/efnafraedi/
+books/efnafraedi-2e/
 ├── 01-source/              # 🔒 READ ONLY - OpenStax CNXML originals
 │   └── ch05/
 │       └── m68724.cnxml
@@ -512,12 +512,12 @@ This is documented separately in [pass2-localization.md](../editorial/pass2-loca
 node tools/cnxml-extract.js --chapter 5
 
 # Step 1b: Protect tags and split for Erlendur MT
-node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
+node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05/
 
 # Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
 
 # Step 2→3: Restore protected segments in MT output
-node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
+node tools/unprotect-segments.js --batch books/efnafraedi-2e/02-mt-output/ch05/
 
 # Step 3 Option A: Review via segment editor at /segment-editor (recommended)
 # Step 3 Option B: Manual editing — first initialize, then edit files
@@ -525,9 +525,9 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 
 # Step 4: Prepare for Matecat Align
 node tools/prepare-for-align.js \
-  --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi/03-faithful-translation/ch05/5-1.is.md \
-  --output-dir books/efnafraedi/for-align/ch05
+  --en books/efnafraedi-2e/02-for-mt/ch05/5-1.en.md \
+  --is books/efnafraedi-2e/03-faithful-translation/ch05/5-1.is.md \
+  --output-dir books/efnafraedi-2e/for-align/ch05
 # Then upload to Matecat Align (manual)
 
 # Step 5a: Inject translations into CNXML
@@ -536,13 +536,13 @@ node tools/cnxml-inject.js --chapter 5
 # Step 5b: Render to HTML and publish
 node tools/cnxml-render.js --chapter 5 --track faithful
 # or via API:
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
+curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/faithful
 
 # MT preview (uses MT output directly, before review):
 node tools/cnxml-inject.js --chapter 5
 node tools/cnxml-render.js --chapter 5 --track mt-preview
 # or via API:
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
+curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/mt-preview
 ```
 
 ## API Endpoints

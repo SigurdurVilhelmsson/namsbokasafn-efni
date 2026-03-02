@@ -137,7 +137,7 @@ Files in `02-for-mt/` that currently exceed 20k should be re-processed:
 
 ```bash
 # Find oversized files (24 found as of 2026-02-08)
-find books/efnafraedi/02-for-mt/ -name "*.en.md" -type f -exec sh -c '
+find books/efnafraedi-2e/02-for-mt/ -name "*.en.md" -type f -exec sh -c '
   for file; do
     size=$(wc -c < "$file")
     if [ "$size" -gt 20000 ]; then
@@ -147,7 +147,7 @@ find books/efnafraedi/02-for-mt/ -name "*.en.md" -type f -exec sh -c '
 ' sh {} +
 
 # Re-process with new tool
-node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch01/ --verbose
+node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch01/ --verbose
 ```
 
 ### Exception: Appendix G

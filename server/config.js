@@ -90,15 +90,14 @@ const config = {
  * IMPORTANT: All route files hold a reference to this same array object.
  * refreshValidBooks() mutates it in place so every importer sees the update.
  */
-const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
+const VALID_BOOKS = ['efnafraedi-2e'];
 
 /**
  * Human-readable book labels (slug → Icelandic title).
  * Seeded with hardcoded defaults; refreshed from DB alongside VALID_BOOKS.
  */
 const BOOK_LABELS = {
-  efnafraedi: 'Efnafræði',
-  liffraedi: 'Líffræði',
+  'efnafraedi-2e': 'Efnafræði',
 };
 
 /**
@@ -111,8 +110,8 @@ const BOOK_LABELS = {
  */
 function refreshValidBooks(db) {
   // Hardcoded defaults — always included even if DB is empty
-  const defaults = ['efnafraedi', 'liffraedi'];
-  const defaultLabels = { efnafraedi: 'Efnafræði', liffraedi: 'Líffræði' };
+  const defaults = ['efnafraedi-2e'];
+  const defaultLabels = { 'efnafraedi-2e': 'Efnafræði' };
 
   try {
     const rows = db

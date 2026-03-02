@@ -17,7 +17,7 @@ MT Output → Machine Translated → MT Preview (students can use)
 ## Directory Structure
 
 ```
-books/efnafraedi/
+books/efnafraedi-2e/
 ├── 01-source/              # 🔒 READ ONLY - OpenStax CNXML originals
 │   └── chNN/               #   Original CNXML modules + media
 │
@@ -60,7 +60,7 @@ books/efnafraedi/
 
 ```bash
 # 1a. Extract CNXML to segments
-node tools/cnxml-extract.js --input books/efnafraedi/01-source/chNN
+node tools/cnxml-extract.js --input books/efnafraedi-2e/01-source/chNN
 
 # 1b. Protect segments for MT
 node tools/protect-segments-for-mt.js --chapter NN

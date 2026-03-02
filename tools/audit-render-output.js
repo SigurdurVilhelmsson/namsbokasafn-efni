@@ -30,13 +30,14 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
-let BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
+let BOOK_SLUG = 'efnafraedi-2e';
 
 function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
-    book: 'efnafraedi',
+    book: 'efnafraedi-2e',
     track: 'mt-preview',
     verbose: false,
     json: false,
@@ -231,7 +232,7 @@ function checkImageExistence(html, chapter, track) {
     // For absolute paths like /content/efnafraedi/chapters/05/images/media/...
     // Check relative to 05-publication directory
     if (src.startsWith('/content/')) {
-      const relativeSrc = src.replace(/^\/content\/efnafraedi\/chapters\/\d+\//, '');
+      const relativeSrc = src.replace(new RegExp(`^/content/${BOOK_SLUG}/chapters/\\d+/`), '');
       const imgPath = path.join(pubDir, relativeSrc);
       if (!fs.existsSync(imgPath)) {
         // Also check source media directory as fallback
@@ -458,6 +459,7 @@ function findModules(chapter, moduleId) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   BOOKS_DIR = `books/${args.book}`;
+  BOOK_SLUG = args.book;
 
   if (args.help) {
     printHelp();

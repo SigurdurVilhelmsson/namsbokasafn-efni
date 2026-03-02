@@ -168,23 +168,23 @@ When a section exceeds 18,000 characters, it's automatically split for machine t
 
 ```bash
 # Get chapter status
-curl /api/status/efnafraedi/1
+curl /api/status/efnafraedi-2e/1
 
 # Get review queue
-curl /api/segment-editor/review-queue?book=efnafraedi
+curl /api/segment-editor/review-queue?book=efnafraedi-2e
 
 # Get chapter issues
-curl /api/issues?book=efnafraedi&chapter=1&status=pending
+curl /api/issues?book=efnafraedi-2e&chapter=1&status=pending
 
 # Run inject + render pipeline
 curl -X POST /api/pipeline/run \
   -H "Content-Type: application/json" \
-  -d '{"book":"efnafraedi","chapter":1,"track":"faithful"}'
+  -d '{"book":"efnafraedi-2e","chapter":1,"track":"faithful"}'
 
 # Prepare TM files for a chapter
 curl -X POST /api/pipeline/prepare-tm \
   -H "Content-Type: application/json" \
-  -d '{"book":"efnafraedi","chapter":1}'
+  -d '{"book":"efnafraedi-2e","chapter":1}'
 
 # Check pipeline job status
 curl /api/pipeline/jobs/{jobId}

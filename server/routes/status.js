@@ -1033,7 +1033,7 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
       chapterDir,
       ...formatChapterStatus(statusData),
       files: filesData,
-      actions: suggestNextActions(statusData),
+      actions: suggestNextActions(statusData, book),
     });
   } catch (err) {
     res.status(500).json({
@@ -1331,7 +1331,7 @@ function calculateSummary(chapters) {
  * Suggest next actions based on current status.
  * Uses canonical stage names from the 8-step pipeline.
  */
-function suggestNextActions(statusData) {
+function suggestNextActions(statusData, book) {
   const rawStatus = statusData.status || {};
   const actions = [];
 
@@ -1348,7 +1348,7 @@ function suggestNextActions(statusData) {
     actions.push({
       stage: 'mtReady',
       action: 'Protect segments for MT',
-      command: 'node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/chNN/',
+      command: `node tools/protect-segments-for-mt.js --batch books/${book}/02-for-mt/chNN/`,
     });
   } else if (!isComplete('mtOutput')) {
     actions.push({

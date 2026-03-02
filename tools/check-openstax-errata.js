@@ -42,7 +42,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PROJECT_ROOT = path.join(__dirname, '..');
-let BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi');
+let BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi-2e');
 let ERRATA_DIR = path.join(BOOKS_DIR, 'errata');
 const LOG_PATH = path.join(ERRATA_DIR, 'errata-log.json');
 

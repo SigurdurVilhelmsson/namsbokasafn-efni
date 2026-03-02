@@ -788,7 +788,7 @@ const VALIDATORS = {
 
           // Check in publication directory (for absolute /content/... paths)
           if (src.startsWith('/content/')) {
-            const relativeSrc = src.replace(/^\/content\/efnafraedi\/chapters\/\d+\//, '');
+            const relativeSrc = src.replace(new RegExp(`^/content/${book}/chapters/\\d+/`), '');
             const imgPath = path.join(pubDir, relativeSrc);
             if (!fs.existsSync(imgPath)) {
               // Fallback: check source media directory

@@ -9,7 +9,7 @@ const { loginAs } = require('./helpers/auth');
  * login → navigate → edit → save → retry on failure → draft recovery → cleanup
  */
 
-const BOOK = 'efnafraedi';
+const BOOK = 'efnafraedi-2e';
 const CHAPTER = '1';
 const SMOKE_PREFIX = 'SMOKE-TEST-';
 

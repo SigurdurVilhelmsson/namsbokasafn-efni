@@ -9,7 +9,7 @@ Register source file $ARGUMENTS for tracking.
 
 ## Parse Argument
 
-Format: "efnafraedi ch03/section-3.1.docx" or full path
+Format: "efnafraedi-2e ch03/section-3.1.docx" or full path
 
 ## Pre-flight Checks
 

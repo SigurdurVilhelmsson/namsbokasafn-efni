@@ -839,7 +839,7 @@ CRITICAL: Port ALL JavaScript from the existing file. The segment editor has the
 
 **Step 3: Test**
 
-Navigate to `/segment-editor?book=efnafraedi&chapter=ch01&module=m68667`:
+Navigate to `/segment-editor?book=efnafraedi-2e&chapter=ch01&module=m68667`:
 - Module header shows with stats
 - Segment table loads and renders
 - Click an IS cell → edit mode activates

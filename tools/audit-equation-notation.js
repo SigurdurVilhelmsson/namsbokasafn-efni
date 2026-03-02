@@ -34,14 +34,14 @@ import {
   verifyLocalization,
 } from './lib/mathml-to-latex.js';
 
-let BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
 
 // ============================================================================
 // Argument parsing
 // ============================================================================
 
 function parseArgs(args) {
-  const result = { chapter: null, book: 'efnafraedi', verbose: false, fixCheck: false };
+  const result = { chapter: null, book: 'efnafraedi-2e', verbose: false, fixCheck: false };
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i]);
     else if (args[i] === '--book' && args[i + 1]) result.book = args[++i];

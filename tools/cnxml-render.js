@@ -113,8 +113,8 @@ function translateTitle(title) {
 // CONFIGURATION
 // =====================================================================
 
-let BOOKS_DIR = 'books/efnafraedi';
-let BOOK_SLUG = 'efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
+let BOOK_SLUG = 'efnafraedi-2e';
 
 // =====================================================================
 // HELPER FUNCTIONS
@@ -185,7 +185,7 @@ function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
-    book: 'efnafraedi',
+    book: 'efnafraedi-2e',
     track: 'mt-preview',
     lang: 'is',
     verbose: false,

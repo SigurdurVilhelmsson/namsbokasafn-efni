@@ -126,7 +126,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('saveSegmentEdit creates a new edit with correct fields', () => {
     const result = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -142,7 +142,7 @@ describe('segmentEditorService — DB lifecycle', () => {
     expect(result.updated).toBe(false);
 
     const edit = service.getEditById(result.id);
-    expect(edit.book).toBe('efnafraedi');
+    expect(edit.book).toBe('efnafraedi-2e');
     expect(edit.module_id).toBe('m00001');
     expect(edit.segment_id).toBe('m00001:para:fs-id001');
     expect(edit.original_content).toBe('Original text');
@@ -154,7 +154,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('saveSegmentEdit updates existing pending edit by same editor (dedup)', () => {
     const first = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -165,7 +165,7 @@ describe('segmentEditorService — DB lifecycle', () => {
     });
 
     const second = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -184,7 +184,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('saveSegmentEdit creates separate edit for different editor on same segment', () => {
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -195,7 +195,7 @@ describe('segmentEditorService — DB lifecycle', () => {
     });
 
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -205,7 +205,7 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor2',
     });
 
-    const edits = service.getSegmentEdits('efnafraedi', 'm00001', 'm00001:para:fs-id001');
+    const edits = service.getSegmentEdits('efnafraedi-2e', 'm00001', 'm00001:para:fs-id001');
     expect(edits).toHaveLength(2);
     const contents = edits.map((e) => e.edited_content).sort();
     expect(contents).toEqual(['Editor 1 version', 'Editor 2 version']);
@@ -215,7 +215,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('approveEdit changes status to approved and records reviewer', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -235,7 +235,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('approveEdit rejects self-approval (editor_id === reviewer_id)', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -252,7 +252,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('rejectEdit changes status to rejected', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -269,7 +269,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('approveEdit throws on non-pending edit (no double-approve)', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -285,7 +285,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('deleteSegmentEdit removes pending edit', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -304,7 +304,7 @@ describe('segmentEditorService — DB lifecycle', () => {
     // Bug: SQLite may store editor_id as "99999" (text) but JWT provides 99999 (number).
     // Strict comparison (!==) fails across types.
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -323,7 +323,7 @@ describe('segmentEditorService — DB lifecycle', () => {
   it('deleteSegmentEdit works when editor_id stored as string, deleted with number', () => {
     // Simulate the real-world case: save with string, delete with number
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -341,7 +341,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('deleteSegmentEdit still rejects wrong editor (different value, not just type)', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -356,7 +356,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('deleteSegmentEdit rejects deletion of approved edit', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -374,7 +374,7 @@ describe('segmentEditorService — DB lifecycle', () => {
 
   it('getModuleEdits returns all edits for a module', () => {
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -384,7 +384,7 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor1',
     });
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id002',
@@ -394,13 +394,13 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor1',
     });
 
-    const edits = service.getModuleEdits('efnafraedi', 'm00001');
+    const edits = service.getModuleEdits('efnafraedi-2e', 'm00001');
     expect(edits).toHaveLength(2);
   });
 
   it('getModuleEdits with status filter returns only matching', () => {
     const { id } = service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -412,7 +412,7 @@ describe('segmentEditorService — DB lifecycle', () => {
     service.approveEdit(id, 'reviewer-1', 'reviewer1');
 
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id002',
@@ -422,17 +422,17 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor1',
     });
 
-    const approved = service.getModuleEdits('efnafraedi', 'm00001', 'approved');
+    const approved = service.getModuleEdits('efnafraedi-2e', 'm00001', 'approved');
     expect(approved).toHaveLength(1);
     expect(approved[0].id).toBe(id);
 
-    const pending = service.getModuleEdits('efnafraedi', 'm00001', 'pending');
+    const pending = service.getModuleEdits('efnafraedi-2e', 'm00001', 'pending');
     expect(pending).toHaveLength(1);
   });
 
   it('getSegmentEdits returns edits for specific segment', () => {
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id001',
@@ -442,7 +442,7 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor1',
     });
     service.saveSegmentEdit({
-      book: 'efnafraedi',
+      book: 'efnafraedi-2e',
       chapter: 1,
       moduleId: 'm00001',
       segmentId: 'm00001:para:fs-id002',
@@ -452,7 +452,7 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor1',
     });
 
-    const edits = service.getSegmentEdits('efnafraedi', 'm00001', 'm00001:para:fs-id001');
+    const edits = service.getSegmentEdits('efnafraedi-2e', 'm00001', 'm00001:para:fs-id001');
     expect(edits).toHaveLength(1);
     expect(edits[0].edited_content).toBe('Edit A');
   });

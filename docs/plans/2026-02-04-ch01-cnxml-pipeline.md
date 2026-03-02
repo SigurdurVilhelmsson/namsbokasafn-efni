@@ -50,7 +50,7 @@ The extract stage produces structure + EN segments. Two protection stages prepar
 **Status:** Complete (commit `f4f01dc`)
 
 ```bash
-node tools/pipeline-runner.js --mode extract-inject --chapter 1 --book efnafraedi --stage extract --verbose
+node tools/pipeline-runner.js --mode extract-inject --chapter 1 --book efnafraedi-2e--stage extract --verbose
 ```
 
 Output: 7 structure files + 5 equations files in `02-structure/ch01/`, 7 EN segment files in `02-for-mt/ch01/`. sectionOrder verified correct (m68690=5, m68683=6).
@@ -68,7 +68,7 @@ Output: 7 structure files + 5 equations files in `02-structure/ch01/`, 7 EN segm
 **Step 1: Protect tables/frontmatter**
 
 ```bash
-node tools/protect-for-mt.js --batch books/efnafraedi/02-for-mt/ch01/ --verbose
+node tools/protect-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch01/ --verbose
 ```
 
 Extracts tables to `*-protected.json` sidecars, replaces with `[[TABLE:N]]` placeholders. Protects directive names as `[[DIRECTIVE:name]]`. Generates `*-strings.en.md` for translatable table/figure text.
@@ -78,7 +78,7 @@ For segment files from `cnxml-extract.js`, this step typically finds nothing to 
 **Step 2: Protect segment markers + split by visible chars**
 
 ```bash
-node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch01/ --verbose
+node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch01/ --verbose
 ```
 
 This is the critical step. It does three things:
@@ -113,7 +113,7 @@ Output: 11 upload files + 6 links.json sidecars.
 **Process:**
 1. Upload each `.en.md` file to [malstadur.is](https://malstadur.is)
 2. Download Icelandic translations
-3. Save with matching filenames but `.is.md` extension in `books/efnafraedi/02-for-mt/ch01/`:
+3. Save with matching filenames but `.is.md` extension in `books/efnafraedi-2e/02-for-mt/ch01/`:
    - `m68663-segments.is.md`, `m68664-segments.is.md`, etc.
    - For split modules: `m68667-segments.is.md` + `m68667-segments(b).is.md`, etc.
 4. **Do NOT rename or merge files** — the restore step handles merging
@@ -126,7 +126,7 @@ Output: 11 upload files + 6 links.json sidecars.
 **Commit MT output:**
 
 ```bash
-git add books/efnafraedi/02-for-mt/ch01/*-segments.is.md books/efnafraedi/02-for-mt/ch01/*-segments\(b\).is.md
+git add books/efnafraedi-2e/02-for-mt/ch01/*-segments.is.md books/efnafraedi-2e/02-for-mt/ch01/*-segments\(b\).is.md
 git commit -m "feat(content): add ch01 Icelandic MT output from malstadur.is"
 ```
 
@@ -139,7 +139,7 @@ git commit -m "feat(content): add ch01 Icelandic MT output from malstadur.is"
 **Why:** MT output has escaped markers (`\{\{SEG:...\}\}`) and placeholder links. This step unescapes them and restores links from sidecar JSON.
 
 ```bash
-node tools/restore-segments-from-mt.js --batch books/efnafraedi/02-for-mt/ch01/ --verbose
+node tools/restore-segments-from-mt.js --batch books/efnafraedi-2e/02-for-mt/ch01/ --verbose
 ```
 
 **What it does:**
@@ -151,25 +151,25 @@ node tools/restore-segments-from-mt.js --batch books/efnafraedi/02-for-mt/ch01/ 
 **Verify:** Check that restored `.is.md` files have `<!-- SEG:... -->` markers (not `{{SEG:...}}`).
 
 ```bash
-head -5 books/efnafraedi/02-for-mt/ch01/m68664-segments.is.md
+head -5 books/efnafraedi-2e/02-for-mt/ch01/m68664-segments.is.md
 # Should show: <!-- SEG:m68664:title:auto-1 -->
 ```
 
 **Commit:**
 
 ```bash
-git add books/efnafraedi/02-for-mt/ch01/*-segments.is.md
+git add books/efnafraedi-2e/02-for-mt/ch01/*-segments.is.md
 git commit -m "feat(content): restore ch01 segment markers and links from MT output"
 ```
 
 ### Task 5: Run inject stage
 
 **Files:**
-- Input: `books/efnafraedi/02-for-mt/ch01/*-segments.is.md` + `02-structure/ch01/`
-- Output: `books/efnafraedi/03-translated/ch01/` (7 translated CNXML files)
+- Input: `books/efnafraedi-2e/02-for-mt/ch01/*-segments.is.md` + `02-structure/ch01/`
+- Output: `books/efnafraedi-2e/03-translated/ch01/` (7 translated CNXML files)
 
 ```bash
-node tools/pipeline-runner.js --mode extract-inject --chapter 1 --book efnafraedi --stage inject --verbose
+node tools/pipeline-runner.js --mode extract-inject --chapter 1 --book efnafraedi-2e--stage inject --verbose
 ```
 
 Expected: Creates `03-translated/ch01/` with 7 `.cnxml` files.
@@ -177,7 +177,7 @@ Expected: Creates `03-translated/ch01/` with 7 `.cnxml` files.
 **Verify Icelandic title:**
 
 ```bash
-grep '<title>' books/efnafraedi/03-translated/ch01/m68663.cnxml
+grep '<title>' books/efnafraedi-2e/03-translated/ch01/m68663.cnxml
 ```
 
 Expected: Icelandic title rather than "Introduction".
@@ -185,15 +185,15 @@ Expected: Icelandic title rather than "Introduction".
 **Commit:**
 
 ```bash
-git add books/efnafraedi/03-translated/ch01/
+git add books/efnafraedi-2e/03-translated/ch01/
 git commit -m "feat(content): inject ch01 Icelandic translations into CNXML"
 ```
 
 ### Task 6: Run render stage
 
 **Files:**
-- Input: `books/efnafraedi/03-translated/ch01/` (7 CNXML files)
-- Output: `books/efnafraedi/05-publication/mt-preview/chapters/01/` (7 HTML files)
+- Input: `books/efnafraedi-2e/03-translated/ch01/` (7 CNXML files)
+- Output: `books/efnafraedi-2e/05-publication/mt-preview/chapters/01/` (7 HTML files)
 
 ```bash
 node tools/cnxml-render.js --chapter 1 --verbose
@@ -206,18 +206,18 @@ Expected: `1-0-introduction.html`, `1-1-*.html` through `1-6-*.html`.
 **Commit:**
 
 ```bash
-git add books/efnafraedi/05-publication/mt-preview/chapters/01/
+git add books/efnafraedi-2e/05-publication/mt-preview/chapters/01/
 git commit -m "feat(content): render ch01 translated CNXML to HTML"
 ```
 
 ### Task 7: Run resources stage
 
 **Files:**
-- Input: `books/efnafraedi/03-translated/ch01/` + `01-source/ch01/`
+- Input: `books/efnafraedi-2e/03-translated/ch01/` + `01-source/ch01/`
 - Output: `05-publication/mt-preview/chapters/01/` (summary, glossary, exercises, equations, answer key HTML)
 
 ```bash
-node tools/cnxml-extract-chapter-resources.js --book efnafraedi --chapter 1 --verbose
+node tools/cnxml-extract-chapter-resources.js --book efnafraedi-2e--chapter 1 --verbose
 ```
 
 Expected: `1-summary.html`, `1-key-terms.html`, `1-key-equations.html`, `1-exercises.html`, `1-answer-key.html`.
@@ -225,7 +225,7 @@ Expected: `1-summary.html`, `1-key-terms.html`, `1-key-equations.html`, `1-exerc
 **Commit:**
 
 ```bash
-git add books/efnafraedi/05-publication/mt-preview/chapters/01/
+git add books/efnafraedi-2e/05-publication/mt-preview/chapters/01/
 git commit -m "feat(content): extract ch01 resources (glossary, exercises, summary)"
 ```
 
@@ -240,7 +240,7 @@ node ../namsbokasafn-vefur/scripts/sync-content.js --source ../namsbokasafn-efni
 ```
 
 **Verify in browser:**
-- Navigate to `http://localhost:5173/efnafraedi/kafli/01/1-1`
+- Navigate to `http://localhost:5173/efnafraedi-2e/kafli/01/1-1`
 - Check: page loads, Icelandic title, sidebar shows all 6 sections + intro, equations render, figures display
 - Visit each section: `/1-0`, `/1-1`, `/1-2`, `/1-3`, `/1-4`, `/1-5`, `/1-6`
 
@@ -309,4 +309,4 @@ CNXML Source (01-source/ch01/*.cnxml)
 
 - **Blocking dependency:** Phase 3 cannot start until MT output (Phase 2, manual) is complete.
 - **Chapter 1 is larger than ch05:** 7 modules vs 4, ~240KB CNXML. 1,110 segments, 150 equations.
-- **cnxml-render.js hardcodes `'efnafraedi'`:** Fine for now since that's the only book.
+- **cnxml-render.js hardcodes `'efnafraedi-2e'`:** Fine for now since that's the only book.

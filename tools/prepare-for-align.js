@@ -55,14 +55,14 @@ to create clean EN/IS markdown pairs for Matecat Align TM creation.
 Usage:
   # Process single file pair
   node tools/prepare-for-align.js \\
-    --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \\
-    --is books/efnafraedi/03-faithful-translation/ch05/5-1.is.md \\
+    --en books/efnafraedi-2e/02-for-mt/ch05/5-1.en.md \\
+    --is books/efnafraedi-2e/03-faithful-translation/ch05/5-1.is.md \\
     --output-dir ./for-align/
 
   # Process from directories (combines split parts)
   node tools/prepare-for-align.js \\
-    --en-dir books/efnafraedi/02-for-mt/ch05/ \\
-    --is-dir books/efnafraedi/02-mt-output/ch05/ \\
+    --en-dir books/efnafraedi-2e/02-for-mt/ch05/ \\
+    --is-dir books/efnafraedi-2e/02-mt-output/ch05/ \\
     --section 5-1 \\
     --output-dir ./for-align/
 

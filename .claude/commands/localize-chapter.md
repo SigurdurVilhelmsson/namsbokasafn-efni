@@ -9,7 +9,7 @@ Identify localization opportunities in chapter $ARGUMENTS.
 
 ## Pre-flight Checks
 
-1. Parse argument (e.g., "efnafraedi 3")
+1. Parse argument (e.g., "efnafraedi-2e 3")
 2. Format as ch{NN}
 3. Verify faithful translation exists: `books/{book}/03-faithful-translation/docx/ch{NN}/`
 4. If not found, STOP: "Pass 1 must be completed first"

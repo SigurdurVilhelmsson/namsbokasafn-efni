@@ -230,7 +230,7 @@ The core editing tool. Desktop-optimized wide layout.
 
 **URL:** `/library`
 
-- Book cards (currently just efnafraedi)
+- Book cards (currently just efnafraedi-2e)
 - Click book → chapter list with status overview
 - Click chapter → module files, images, status detail
 - Image tracking folded into chapter detail view

@@ -126,7 +126,7 @@ node tools/cnxml-extract.js --chapter 5
 **Tool:** `protect-segments-for-mt.js`
 
 ```bash
-node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
+node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05/
 ```
 
 **Input:** `02-for-mt/ch05/m68724-segments.en.md`
@@ -170,7 +170,7 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
 **Tool:** `restore-segments-from-mt.js`
 
 ```bash
-node tools/restore-segments-from-mt.js --batch books/efnafraedi/02-mt-output/ch05/ --merge
+node tools/restore-segments-from-mt.js --batch books/efnafraedi-2e/02-mt-output/ch05/ --merge
 ```
 
 **Input:**
@@ -273,9 +273,9 @@ Same inject-render process as mt-preview, but reads from `03-faithful-translatio
 
 ```bash
 node tools/prepare-for-align.js \
-  --en books/efnafraedi/02-for-mt/ch05/m68724-segments.en.md \
-  --is books/efnafraedi/03-faithful-translation/ch05/m68724-segments.is.md \
-  --output-dir books/efnafraedi/for-align/ch05
+  --en books/efnafraedi-2e/02-for-mt/ch05/m68724-segments.en.md \
+  --is books/efnafraedi-2e/03-faithful-translation/ch05/m68724-segments.is.md \
+  --output-dir books/efnafraedi-2e/for-align/ch05
 ```
 
 **Produces:** Clean markdown pairs in `for-align/` — stripped of frontmatter, normalized whitespace.
@@ -322,7 +322,7 @@ Same inject-render process. Reads from `04-localized-content/`, writes to `05-pu
 ## Directory Structure
 
 ```
-books/efnafraedi/
+books/efnafraedi-2e/
 ├── 01-source/               # 🔒 READ ONLY — OpenStax CNXML originals
 │   └── ch{NN}/
 │       └── m{NNNNN}.cnxml

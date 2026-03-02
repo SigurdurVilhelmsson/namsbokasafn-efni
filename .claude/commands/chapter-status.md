@@ -9,7 +9,7 @@ Show status for $ARGUMENTS.
 
 ## Parse Argument
 
-Format: "efnafraedi 3" or just "3" (defaults to efnafraedi)
+Format: "efnafraedi-2e 3" or just "3" (defaults to efnafraedi-2e)
 
 ## Process
 

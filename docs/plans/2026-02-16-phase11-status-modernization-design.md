@@ -89,7 +89,7 @@ Update `scanAndUpdateStatus()`:
 | `server/routes/status.js` | Update `PIPELINE_STAGES`, remove `STAGE_MAPPING`, update sync paths |
 | `server/services/pipelineService.js` | Align stage names in `advanceChapterStatus()` |
 | `server/services/segmentEditorService.js` | Add status update after `applyApprovedEdits()` |
-| `books/efnafraedi/chapters/ch*/status.json` | Migrate via script (~15 files) |
+| `books/efnafraedi-2e/chapters/ch*/status.json` | Migrate via script (~15 files) |
 | New: `tools/migrate-status-schema.js` | One-time migration script |
 
 **Not changed:** publication routes, segment editor UI, CLI tools.

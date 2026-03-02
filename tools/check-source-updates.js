@@ -35,7 +35,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PROJECT_ROOT = path.join(__dirname, '..');
-let BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi');
+let BOOKS_DIR = path.join(PROJECT_ROOT, 'books', 'efnafraedi-2e');
 let SOURCE_DIR = path.join(BOOKS_DIR, '01-source');
 let STRUCTURE_DIR = path.join(BOOKS_DIR, '02-structure');
 let LOG_DIR = path.join(BOOKS_DIR, 'source-updates');

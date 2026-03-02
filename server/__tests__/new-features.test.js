@@ -20,7 +20,7 @@ describe('runPrepareTm', () => {
 
   it('throws on missing faithful translation directory', () => {
     // ch01 has 02-for-mt but no 03-faithful-translation/ch01
-    expect(() => runPrepareTm({ book: 'efnafraedi', chapter: 1 })).toThrow(
+    expect(() => runPrepareTm({ book: 'efnafraedi-2e', chapter: 1 })).toThrow(
       'Faithful translation directory not found'
     );
   });
@@ -61,7 +61,7 @@ describe('validateBeforePublish', () => {
   });
 
   it('returns a promise', () => {
-    const result = validateBeforePublish('efnafraedi', 1, 'faithful');
+    const result = validateBeforePublish('efnafraedi-2e', 1, 'faithful');
     expect(result).toBeInstanceOf(Promise);
     // Don't await — the child process may or may not succeed in test env
     result.catch(() => {}); // suppress unhandled rejection
@@ -69,7 +69,7 @@ describe('validateBeforePublish', () => {
 
   it('resolves with expected shape for valid chapter', async () => {
     try {
-      const result = await validateBeforePublish('efnafraedi', 1, 'faithful');
+      const result = await validateBeforePublish('efnafraedi-2e', 1, 'faithful');
       expect(result).toHaveProperty('valid');
       expect(typeof result.valid).toBe('boolean');
       expect(result).toHaveProperty('errors');

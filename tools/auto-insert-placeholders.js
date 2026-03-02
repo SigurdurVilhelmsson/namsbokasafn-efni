@@ -13,12 +13,12 @@
 import fs from 'fs';
 import path from 'path';
 
-let BOOKS_DIR = 'books/efnafraedi';
+let BOOKS_DIR = 'books/efnafraedi-2e';
 
 function parseArgs(args) {
   const result = {
     chapter: null,
-    book: 'efnafraedi',
+    book: 'efnafraedi-2e',
     dryRun: false,
     help: false,
   };
