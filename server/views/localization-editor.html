@@ -1506,7 +1506,9 @@
           ts: Date.now(),
           changes: edPendingChanges
         }));
-      } catch (e) { /* quota exceeded — ignore */ }
+      } catch (e) {
+        if (typeof saveRetry !== 'undefined') saveRetry.showToast('Geymsla í vafra er full — drög gætu glatast.', 'error');
+      }
     }
 
     function edClearDraft() {
@@ -2033,6 +2035,8 @@
     // ----------------------------------------------------------------
 
     window.addEventListener('beforeunload', function (e) {
+      if (edAutoSaveTimer) { clearInterval(edAutoSaveTimer); edAutoSaveTimer = null; }
+      if (edDraftTimer) { clearInterval(edDraftTimer); edDraftTimer = null; }
       if (Object.keys(edPendingChanges).length > 0) {
         edSaveDraft(); // last-chance save to localStorage
         e.preventDefault();

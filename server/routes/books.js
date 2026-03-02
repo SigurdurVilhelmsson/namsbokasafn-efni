@@ -15,7 +15,7 @@ const archiver = require('archiver');
 const multer = require('multer');
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireEditor, requireAdmin } = require('../middleware/requireRole');
+const { requireEditor, requireAdmin, requireBookAccess } = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
 const { advanceChapterStatus } = require('../services/pipelineService');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
@@ -42,7 +42,7 @@ const upload = multer({
 // Validate :bookId param on all routes that use it
 router.param('bookId', (req, res, next, bookId) => {
   if (!VALID_BOOKS.includes(bookId)) {
-    return res.status(400).json({ error: 'Invalid book' });
+    return res.status(400).json({ error: 'Ógild bók' });
   }
   next();
 });
@@ -128,7 +128,7 @@ router.get('/:bookId', requireAuth, (req, res) => {
   const book = loadBookData(bookId);
 
   if (!book) {
-    return res.status(404).json({ error: 'Book not found' });
+    return res.status(404).json({ error: 'Bók fannst ekki' });
   }
 
   res.json(book);
@@ -144,7 +144,7 @@ router.get('/:bookId/chapters/:chapter', requireAuth, (req, res) => {
   const book = loadBookData(bookId);
 
   if (!book) {
-    return res.status(404).json({ error: 'Book not found' });
+    return res.status(404).json({ error: 'Bók fannst ekki' });
   }
 
   const chapterData = book.chapters.find((c) => c.chapter === parseInt(chapter, 10));
@@ -402,28 +402,38 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
  * Count faithful translation files for a chapter.
  * Used by the client to show enhanced warnings before MT upload.
  */
-router.get('/:bookId/chapters/:chapter/faithful-count', requireAuth, (req, res) => {
-  const { bookId, chapter } = req.params;
-  const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
-    return res.status(400).json({ error: 'Invalid chapter number' });
-  }
-  const paddedChapter = String(chapterNum).padStart(2, '0');
-  const faithfulDir = path.join(booksDir, bookId, '03-faithful-translation', `ch${paddedChapter}`);
+router.get(
+  '/:bookId/chapters/:chapter/faithful-count',
+  requireAuth,
+  requireBookAccess(),
+  (req, res) => {
+    const { bookId, chapter } = req.params;
+    const chapterNum = parseInt(chapter, 10);
+    if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
+      return res.status(400).json({ error: 'Ógilt kaflanúmer' });
+    }
+    const paddedChapter = String(chapterNum).padStart(2, '0');
+    const faithfulDir = path.join(
+      booksDir,
+      bookId,
+      '03-faithful-translation',
+      `ch${paddedChapter}`
+    );
 
-  let count = 0;
-  const modules = [];
-  if (fs.existsSync(faithfulDir)) {
-    for (const f of fs.readdirSync(faithfulDir)) {
-      if (f.endsWith('-segments.is.md')) {
-        modules.push(f.replace('-segments.is.md', ''));
-        count++;
+    let count = 0;
+    const modules = [];
+    if (fs.existsSync(faithfulDir)) {
+      for (const f of fs.readdirSync(faithfulDir)) {
+        if (f.endsWith('-segments.is.md')) {
+          modules.push(f.replace('-segments.is.md', ''));
+          count++;
+        }
       }
     }
-  }
 
-  res.json({ count, modules });
-});
+    res.json({ count, modules });
+  }
+);
 
 /**
  * POST /api/books/:bookId/chapters/:chapter/import

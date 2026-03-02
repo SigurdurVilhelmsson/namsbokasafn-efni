@@ -26,6 +26,18 @@ require('dotenv').config();
 const { validateSecrets, config, refreshValidBooks, VALID_BOOKS } = require('./config');
 validateSecrets();
 
+// Auto-run pending database migrations before starting the server
+const { runAllMigrations } = require('./services/migrationRunner');
+const migrationResult = runAllMigrations();
+if (migrationResult.applied > 0) {
+  console.log(
+    `Migrations: ${migrationResult.applied} applied, ${migrationResult.skipped} already up-to-date`
+  );
+}
+if (migrationResult.errors.length > 0) {
+  console.error('Migration errors:', migrationResult.errors);
+}
+
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');

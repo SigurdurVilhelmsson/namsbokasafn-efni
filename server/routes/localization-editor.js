@@ -58,7 +58,7 @@ const { VALID_BOOKS } = require('../config');
 router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
   const { book } = req.params;
   if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({ error: `Invalid book: ${book}` });
+    return res.status(400).json({ error: `Ógild bók: ${book}` });
   }
   try {
     const chapters = segmentParser.listChapters(book);

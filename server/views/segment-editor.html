@@ -1165,7 +1165,9 @@
       }
       try {
         localStorage.setItem(draftKey(), JSON.stringify({ ts: Date.now(), drafts }));
-      } catch (e) { /* quota exceeded */ }
+      } catch (e) {
+        if (typeof saveRetry !== 'undefined') saveRetry.showToast('Geymsla í vafra er full — drög gætu glatast.', 'error');
+      }
     }
 
     function clearDraft() {

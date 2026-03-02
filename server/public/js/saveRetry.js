@@ -298,5 +298,6 @@ const saveRetry = (function () {
     processQueue: processQueue,
     pending: pending,
     isRetryable: isRetryable,
+    showToast: showToast,
   };
 })();

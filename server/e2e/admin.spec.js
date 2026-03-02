@@ -68,6 +68,13 @@ test.describe('Admin panel', () => {
       expect(errors).toEqual([]);
     }
   });
+
+  test('catalogue API returns 200 (verifies migration 014)', async ({ page }) => {
+    const response = await page.request.get('/api/admin/catalogue');
+    expect(response.status()).toBe(200);
+    const data = await response.json();
+    expect(Array.isArray(data.books)).toBe(true);
+  });
 });
 
 // ─── Role-based visibility ────────────────────────────────────
