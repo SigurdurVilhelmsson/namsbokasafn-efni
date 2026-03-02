@@ -17,6 +17,7 @@ const multer = require('multer');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireAdmin } = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
+const { advanceChapterStatus } = require('../services/pipelineService');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 
 // Configure multer for file uploads
@@ -592,6 +593,9 @@ router.post(
       } catch (dbErr) {
         console.error('Failed to register MT output files:', dbErr);
       }
+
+      // Advance pipeline status — MT output is now available
+      advanceChapterStatus(bookId, chapterNum, 'mtOutput');
     }
 
     res.json({

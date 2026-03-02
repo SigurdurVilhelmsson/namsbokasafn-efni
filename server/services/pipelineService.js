@@ -152,6 +152,14 @@ function runUnprotect({ book, chapter, userId }) {
     args,
   });
 
+  // Auto-advance status when unprotect completes
+  result.promise.then(() => {
+    const job = jobs.get(result.jobId);
+    if (job && job.status === 'completed') {
+      advanceChapterStatus(book, chapter, 'mtOutput');
+    }
+  });
+
   return result;
 }
 

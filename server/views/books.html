@@ -868,12 +868,13 @@
                   <span class="step-num">3</span> &#8593; IS
                 </label>
                 <span class="step-arrow">&#8250;</span>
-                <div class="btn-group pipeline-step" id="btn-publish-group">
-                  <button class="btn btn-sm btn-primary" disabled onclick="publishChapter('faithful')" title="Birta yfirfarna &#254;&#253;&#240;ingu">
-                    <span class="step-num">4</span> Birta
-                  </button>
-                  <button class="btn btn-sm btn-secondary" disabled onclick="publishChapter('mt-preview')" title="Birta v&#233;l&#254;&#253;&#240;ingu">MT</button>
-                </div>
+                <button class="btn btn-sm btn-secondary pipeline-step" id="btn-publish-mt" disabled onclick="publishChapter('mt-preview')" title="Birta v&#233;l&#254;&#253;&#240;ingu &#8212; eftir a&#240; &#254;&#253;&#240;ingar eru hla&#240;nar upp">
+                  <span class="step-num">4</span> Birta MT
+                </button>
+                <span class="step-arrow" id="arrow-faithful" style="visibility:hidden">&#8250;</span>
+                <button class="btn btn-sm btn-primary pipeline-step" id="btn-publish-faithful" disabled onclick="publishChapter('faithful')" title="Birta yfirfarna &#254;&#253;&#240;ingu &#8212; eftir m&#225;lfarsyfirfer&#240;">
+                  <span class="step-num">5</span> Birta
+                </button>
                 <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
                 <span class="tm-badge" id="publish-badge" style="display:none"></span>
               </div>
@@ -1705,8 +1706,13 @@
         // Step 3: Upload IS — after protect
         setStep('btn-upload-mt', mtReady.complete, mtOutput.complete);
 
-        // Step 4: Publish — after linguistic review (done in editor)
-        setStep('btn-publish-group', linguisticReview.complete, false);
+        // Step 4: Publish MT-preview — after MT output is ready
+        setStep('btn-publish-mt', mtOutput.complete, false);
+
+        // Step 5: Publish faithful — after linguistic review (done in editor)
+        var showFaithful = linguisticReview.complete;
+        setStep('btn-publish-faithful', showFaithful, false);
+        document.getElementById('arrow-faithful').style.visibility = showFaithful ? '' : 'hidden';
 
         // Secondary: Unprotect — after protect
         setStep('btn-unprotect', mtReady.complete, false);
@@ -1894,9 +1900,10 @@
 
     async function publishChapter(track) {
       var badge = document.getElementById('publish-badge');
-      var btnGroup = document.getElementById('btn-publish-group');
-      var buttons = btnGroup.querySelectorAll('button');
-      buttons.forEach(function(b) { b.disabled = true; });
+      var btn = track === 'mt-preview'
+        ? document.getElementById('btn-publish-mt')
+        : document.getElementById('btn-publish-faithful');
+      btn.disabled = true;
       badge.style.display = '';
       badge.textContent = '\u00cd gangi...';
       badge.className = 'tm-badge running';
@@ -1907,7 +1914,6 @@
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' }
         });
-        // Use first button in group for polling re-enable
         clearInterval(pipelinePollingTimer);
         pipelinePollingTimer = setInterval(async function() {
           try {
@@ -1917,13 +1923,13 @@
               clearInterval(pipelinePollingTimer);
               badge.textContent = 'Birt';
               badge.className = 'tm-badge completed';
-              buttons.forEach(function(b) { b.disabled = false; });
+              btn.disabled = false;
               loadChapterStatus(selectedBook, selectedChapter);
             } else if (job.status === 'failed') {
               clearInterval(pipelinePollingTimer);
               badge.textContent = 'Mist\u00f3kst';
               badge.className = 'tm-badge failed';
-              buttons.forEach(function(b) { b.disabled = false; });
+              btn.disabled = false;
             } else {
               badge.textContent = '\u00cd gangi...';
             }
@@ -1934,7 +1940,7 @@
       } catch (err) {
         badge.textContent = 'Villa';
         badge.className = 'tm-badge failed';
-        buttons.forEach(function(b) { b.disabled = false; });
+        btn.disabled = false;
       }
     }
 
