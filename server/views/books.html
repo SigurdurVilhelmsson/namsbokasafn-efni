@@ -1592,7 +1592,12 @@
       try {
         var data = await fetchJson('/api/status/' + book + '/' + chapter);
 
-        var stages = data.stages || {};
+        // API returns stages as an array of {stage, complete, ...} — convert to object keyed by name
+        var stagesArr = data.stages || [];
+        var stages = {};
+        for (var i = 0; i < stagesArr.length; i++) {
+          stages[stagesArr[i].stage] = stagesArr[i];
+        }
         extraction = stages.extraction || {};
         mtReady = stages.mtReady || {};
         linguisticReview = stages.linguisticReview || {};

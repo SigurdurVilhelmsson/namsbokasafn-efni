@@ -1253,7 +1253,7 @@ function formatChapterStatus(statusData) {
       isComplete = stageData.complete === true;
     }
     const status = isComplete ? 'complete' : 'not-started';
-    return {
+    const entry = {
       stage,
       status,
       symbol: STATUS_SYMBOLS[status] || STATUS_SYMBOLS['not-started'],
@@ -1262,6 +1262,13 @@ function formatChapterStatus(statusData) {
       editor: stageData.editor || null,
       notes: stageData.notes || null,
     };
+    // Preserve publication sub-tracks so the client can check individual tracks
+    if (stage === 'publication') {
+      entry.mtPreview = stageData.mtPreview || {};
+      entry.faithful = stageData.faithful || {};
+      entry.localized = stageData.localized || {};
+    }
+    return entry;
   });
 
   // Calculate next stage
