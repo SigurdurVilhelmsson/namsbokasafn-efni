@@ -1820,13 +1820,38 @@
 
     /**
      * Smart upload: uploads MT files, warns on overwrite, auto-runs unprotect.
+     * Enhanced: checks for faithful translations and shows a more informative
+     * warning when reviewed work exists.
      */
     async function smartUploadIS(files) {
       if (!files || files.length === 0) return;
 
       var s = currentChapterStatus;
       if (s.mtOutput && s.mtOutput.complete) {
-        if (!confirm('\u00de\u00fd\u00f0ingar eru \u00feegar til. Skrifa yfir?')) {
+        // Check for faithful translations (enhanced warning)
+        var faithfulCount = 0;
+        try {
+          var faithfulData = await fetchJson(
+            '/api/books/' + selectedBook + '/chapters/' + selectedChapter + '/faithful-count',
+            { credentials: 'include' }
+          );
+          faithfulCount = faithfulData.count || 0;
+        } catch (e) {
+          // Non-critical — proceed with basic warning
+        }
+
+        var msg;
+        if (faithfulCount > 0) {
+          msg = '\u00de\u00fd\u00f0ingar eru \u00feegar til.\n\n';
+          msg += 'Yfirfar\u00f0ar \u00fe\u00fd\u00f0ingar eru til fyrir ' + faithfulCount + ' einingar.\n';
+          msg += 'N\u00fdtt MT-\u00fattak mun ekki skrifa yfir \u00fe\u00e6r, en ritstj\u00f3rinn\n';
+          msg += 'mun s\u00fdna n\u00fdtt MT sem grunn fyrir \u00f3yfirfar\u00f0ar einingar.\n\n';
+          msg += 'Viltu halda \u00e1fram?';
+        } else {
+          msg = '\u00de\u00fd\u00f0ingar eru \u00feegar til. Skrifa yfir?';
+        }
+
+        if (!confirm(msg)) {
           document.querySelector('#btn-upload-is input[type="file"]').value = '';
           return;
         }
@@ -1871,19 +1896,109 @@
 
     /**
      * Re-extract: for the secondary power-user button.
+     * Checks for downstream work (faithful translations, approved edits) before
+     * proceeding, and shows a confirmation dialog if any would be invalidated.
      */
     async function runExtract() {
       var btn = document.getElementById('btn-reextract');
       btn.disabled = true;
+      var badge = document.getElementById('pipeline-action-badge');
 
       try {
-        await runPipelineStep('extract', 'Dregur \u00fat...');
-        var badge = document.getElementById('pipeline-action-badge');
+        // Step 1: Attempt extraction (may require confirmation)
+        var body = { book: selectedBook, chapter: selectedChapter };
+        var res = await fetch('/api/pipeline/extract', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        // Handle confirmation-required response
+        if (res.status === 409) {
+          var errData = await res.json();
+          if (errData.requiresConfirmation) {
+            var impact = errData.impact;
+            var msg = 'Endur\u00fatdr\u00e1ttur mun skrifa yfir n\u00faverandi EN-hluta.\n\n';
+            if (impact.extractedModules > 0) {
+              msg += ' \u2022 ' + impact.extractedModules + ' einingar \u00feegar \u00fatdregnar\n';
+            }
+            if (impact.faithfulModules > 0) {
+              msg += ' \u2022 ' + impact.faithfulModules + ' einingar me\u00f0 yfirfarna \u00fe\u00fd\u00f0ingu\n';
+            }
+            if (impact.localizedModules > 0) {
+              msg += ' \u2022 ' + impact.localizedModules + ' einingar me\u00f0 sta\u00f0f\u00e6ringu\n';
+            }
+            if (impact.approvedEdits > 0) {
+              msg += ' \u2022 ' + impact.approvedEdits + ' sam\u00feykktar breytingar \u00ed gagnagrunni\n';
+            }
+            msg += '\nViltu halda \u00e1fram?';
+
+            if (!confirm(msg)) {
+              btn.disabled = false;
+              return;
+            }
+
+            // User confirmed — re-send with confirmed flag
+            body.confirmed = true;
+            res = await fetch('/api/pipeline/extract', {
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            });
+
+            if (!res.ok) {
+              var errData2 = await res.json().catch(function() { return {}; });
+              throw new Error(errData2.error || 'Villa');
+            }
+          } else {
+            // Not a confirmation request (e.g., job already running)
+            throw new Error(errData.error || 'Villa');
+          }
+        }
+
+        if (!res.ok) {
+          var errBody = await res.json().catch(function() { return {}; });
+          throw new Error(errBody.error || 'HTTP ' + res.status);
+        }
+
+        // Step 2: Extraction started — poll for completion
+        var data = await res.json();
+        badge.style.display = '';
+        badge.textContent = 'Dregur \u00fat...';
+        badge.className = 'tm-badge running';
+
+        await new Promise(function(resolve, reject) {
+          var pollCount = 0;
+          var maxPolls = 200; // 200 × 1.5s = 5 minutes
+          var timer = setInterval(async function() {
+            if (++pollCount > maxPolls) {
+              clearInterval(timer);
+              reject(new Error('Timar\u00fan — \u00fatdr\u00e1ttur tók of langan t\u00edma'));
+              return;
+            }
+            try {
+              var result = await fetchJson('/api/pipeline/jobs/' + data.jobId, { credentials: 'include' });
+              var job = result.job;
+              if (job.status === 'completed') {
+                clearInterval(timer);
+                resolve(job);
+              } else if (job.status === 'failed') {
+                clearInterval(timer);
+                reject(new Error(job.error || '\u00datdr\u00e1ttur mist\u00f3kst'));
+              }
+            } catch (e) {
+              // Polling error — ignore, will retry
+            }
+          }, 1500);
+        });
+
         badge.textContent = '\u00datdr\u00e1ttur loki\u00f0';
         badge.className = 'tm-badge completed';
         loadChapterStatus(selectedBook, selectedChapter);
       } catch (err) {
-        var badge = document.getElementById('pipeline-action-badge');
+        badge.style.display = '';
         badge.textContent = 'Villa';
         badge.className = 'tm-badge failed';
       }

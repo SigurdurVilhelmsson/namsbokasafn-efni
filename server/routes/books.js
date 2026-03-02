@@ -398,6 +398,34 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 });
 
 /**
+ * GET /api/books/:bookId/chapters/:chapter/faithful-count
+ * Count faithful translation files for a chapter.
+ * Used by the client to show enhanced warnings before MT upload.
+ */
+router.get('/:bookId/chapters/:chapter/faithful-count', requireAuth, (req, res) => {
+  const { bookId, chapter } = req.params;
+  const chapterNum = parseInt(chapter, 10);
+  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
+    return res.status(400).json({ error: 'Invalid chapter number' });
+  }
+  const paddedChapter = String(chapterNum).padStart(2, '0');
+  const faithfulDir = path.join(booksDir, bookId, '03-faithful-translation', `ch${paddedChapter}`);
+
+  let count = 0;
+  const modules = [];
+  if (fs.existsSync(faithfulDir)) {
+    for (const f of fs.readdirSync(faithfulDir)) {
+      if (f.endsWith('-segments.is.md')) {
+        modules.push(f.replace('-segments.is.md', ''));
+        count++;
+      }
+    }
+  }
+
+  res.json({ count, modules });
+});
+
+/**
  * POST /api/books/:bookId/chapters/:chapter/import
  * Import markdown files for a chapter
  *

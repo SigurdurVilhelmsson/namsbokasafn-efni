@@ -1066,17 +1066,60 @@
       }, 2000);
     }
 
-    window.retryFetchSource = async function(slug) {
+    window.retryFetchSource = async function(slug, confirmed) {
       var existing = document.getElementById('fetch-progress-banner');
       if (existing) existing.remove();
       if (fetchProgressTimer) { clearInterval(fetchProgressTimer); fetchProgressTimer = null; }
 
       try {
-        var result = await fetchJson('/api/admin/books/' + encodeURIComponent(slug) + '/fetch-source', { method: 'POST' });
+        var body = confirmed ? { confirmed: true } : {};
+        var res = await fetch('/api/admin/books/' + encodeURIComponent(slug) + '/fetch-source', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        // Handle confirmation-required response
+        if (res.status === 409) {
+          var errData = await res.json();
+          if (errData.requiresConfirmation) {
+            var impact = errData.impact;
+            var msg = 'Uppf\u00e6rsla fr\u00e1 OpenStax mun skrifa yfir CNXML \u00ed 01-source/.\n\n';
+            msg += 'Eftirfarandi vinna g\u00e6ti or\u00f0i\u00f0 \u00farelt:\n';
+            if (impact.totalExtracted > 0) {
+              msg += ' \u2022 ' + impact.totalExtracted + ' einingar \u00fatdregnar\n';
+            }
+            if (impact.totalFaithful > 0) {
+              msg += ' \u2022 ' + impact.totalFaithful + ' einingar me\u00f0 yfirfarna \u00fe\u00fd\u00f0ingu\n';
+            }
+            if (impact.totalLocalized > 0) {
+              msg += ' \u2022 ' + impact.totalLocalized + ' einingar me\u00f0 sta\u00f0f\u00e6ringu\n';
+            }
+            msg += '\n\u00de\u00fd\u00f0ingar fyrir breyttar einingar \u00fearf a\u00f0 yfirfara.\nViltu halda \u00e1fram?';
+
+            if (confirm(msg)) {
+              return retryFetchSource(slug, true);
+            }
+            return;
+          }
+          // Other 409 (e.g., already running)
+          if (errData.jobId) {
+            showToast('\u00deegar \u00ed gangi', 'info');
+            showFetchProgress(errData.jobId, slug);
+            return;
+          }
+          showToast('Villa: ' + (errData.message || errData.error), 'error');
+          return;
+        }
+
+        if (!res.ok) {
+          var errBody = await res.json().catch(function() { return {}; });
+          throw new Error(errBody.message || errBody.error || 'HTTP ' + res.status);
+        }
+
+        var result = await res.json();
         if (result.success) {
-          showFetchProgress(result.jobId, slug);
-        } else if (result.jobId) {
-          showToast('\u00deegar \u00ed gangi', 'info');
           showFetchProgress(result.jobId, slug);
         } else {
           showToast('Villa: ' + (result.message || result.error), 'error');

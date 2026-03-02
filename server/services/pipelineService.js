@@ -74,7 +74,8 @@ function runExtract({ book, chapter, moduleId, userId }) {
   result.promise.then(() => {
     const job = jobs.get(result.jobId);
     if (job && job.status === 'completed') {
-      advanceChapterStatus(book, chapter, 'extraction');
+      const sourceHash = computeSourceHash(book, chapter);
+      advanceChapterStatus(book, chapter, 'extraction', sourceHash ? { sourceHash } : {});
     }
   });
 
@@ -456,6 +457,184 @@ function generateJobId() {
 }
 
 // =====================================================================
+// OVERWRITE PREVENTION — IMPACT CHECKS
+// =====================================================================
+
+/**
+ * Check downstream impact before re-extraction.
+ * Scans the filesystem for manifests, faithful translations, and localized
+ * content that would be invalidated by re-extracting a chapter.
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @returns {Object} Impact report with module counts and IDs
+ */
+function checkExtractionImpact(book, chapter) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir = `ch${chapterStr}`;
+
+  // Check existing manifests (extraction has run before)
+  const structDir = path.join(BOOKS_DIR, book, '02-structure', chapterDir);
+  const moduleIds = [];
+  if (fs.existsSync(structDir)) {
+    for (const f of fs.readdirSync(structDir)) {
+      if (f.endsWith('-manifest.json')) {
+        moduleIds.push(f.replace('-manifest.json', ''));
+      }
+    }
+  }
+
+  // Check faithful translation files
+  const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful-translation', chapterDir);
+  const faithfulModuleIds = [];
+  if (fs.existsSync(faithfulDir)) {
+    for (const f of fs.readdirSync(faithfulDir)) {
+      if (f.endsWith('-segments.is.md')) {
+        faithfulModuleIds.push(f.replace('-segments.is.md', ''));
+      }
+    }
+  }
+
+  // Check localized content files
+  const localizedDir = path.join(BOOKS_DIR, book, '04-localized-content', chapterDir);
+  const localizedModuleIds = [];
+  if (fs.existsSync(localizedDir)) {
+    for (const f of fs.readdirSync(localizedDir)) {
+      if (f.endsWith('-segments.is.md')) {
+        localizedModuleIds.push(f.replace('-segments.is.md', ''));
+      }
+    }
+  }
+
+  return {
+    extractedModules: moduleIds.length,
+    faithfulModules: faithfulModuleIds.length,
+    localizedModules: localizedModuleIds.length,
+    moduleIds,
+    faithfulModuleIds,
+    localizedModuleIds,
+    hasDownstreamWork: faithfulModuleIds.length > 0 || localizedModuleIds.length > 0,
+  };
+}
+
+/**
+ * Count approved edits in the database for the given book and module IDs.
+ * Best-effort — returns 0 if the DB or table doesn't exist.
+ *
+ * @param {string} book - Book slug
+ * @param {string[]} moduleIds - Module IDs to check
+ * @returns {number} Count of approved edits
+ */
+function countApprovedEdits(book, moduleIds) {
+  if (!moduleIds || moduleIds.length === 0) return 0;
+
+  try {
+    const Database = require('better-sqlite3');
+    const dbPath = path.join(PROJECT_ROOT, 'pipeline-output', 'sessions.db');
+    const db = new Database(dbPath, { readonly: true });
+    const placeholders = moduleIds.map(() => '?').join(',');
+    const row = db
+      .prepare(
+        `SELECT COUNT(*) as count FROM segment_edits
+         WHERE book = ? AND module_id IN (${placeholders}) AND status = 'approved'`
+      )
+      .get(book, ...moduleIds);
+    db.close();
+    return row ? row.count : 0;
+  } catch {
+    // segment_edits table may not exist yet, or DB not available
+    return 0;
+  }
+}
+
+/**
+ * Compute a composite source hash for a chapter from its module manifests.
+ * Used to record which source version was active when extraction ran.
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @returns {string|null} 16-character hex hash, or null if no manifests found
+ */
+function computeSourceHash(book, chapter) {
+  try {
+    const chapterStr = String(chapter).padStart(2, '0');
+    const structDir = path.join(BOOKS_DIR, book, '02-structure', `ch${chapterStr}`);
+    if (!fs.existsSync(structDir)) return null;
+
+    const manifestFiles = fs.readdirSync(structDir).filter((f) => f.endsWith('-manifest.json'));
+    const hashes = [];
+
+    for (const f of manifestFiles) {
+      const data = JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf8'));
+      if (data.sourceHash) hashes.push(data.sourceHash);
+    }
+
+    if (hashes.length === 0) return null;
+
+    // Sort for deterministic output regardless of filesystem order
+    return crypto
+      .createHash('sha256')
+      .update(hashes.sort().join(','))
+      .digest('hex')
+      .substring(0, 16);
+  } catch (err) {
+    console.error('computeSourceHash failed:', err.message);
+    return null;
+  }
+}
+
+/**
+ * Check downstream work across an entire book (for source import guard).
+ * Scans all chapters for extracted modules, faithful translations, and
+ * localized content that could be invalidated by a source update.
+ *
+ * @param {string} book - Book slug
+ * @returns {Object} Aggregate impact report across all chapters
+ */
+function checkBookDownstreamWork(book) {
+  const bookDir = path.join(BOOKS_DIR, book);
+  let totalExtracted = 0;
+  let totalFaithful = 0;
+  let totalLocalized = 0;
+  const chaptersWithWork = [];
+
+  const structBaseDir = path.join(bookDir, '02-structure');
+  if (!fs.existsSync(structBaseDir)) {
+    return {
+      totalExtracted: 0,
+      totalFaithful: 0,
+      totalLocalized: 0,
+      chaptersWithWork: [],
+      hasDownstreamWork: false,
+    };
+  }
+
+  const chapterDirs = fs.readdirSync(structBaseDir).filter((d) => d.startsWith('ch'));
+
+  for (const chDir of chapterDirs) {
+    const chapterNum = parseInt(chDir.replace('ch', ''), 10);
+    if (isNaN(chapterNum)) continue;
+
+    const impact = checkExtractionImpact(book, chapterNum);
+    totalExtracted += impact.extractedModules;
+    totalFaithful += impact.faithfulModules;
+    totalLocalized += impact.localizedModules;
+
+    if (impact.hasDownstreamWork) {
+      chaptersWithWork.push({ chapter: chapterNum, ...impact });
+    }
+  }
+
+  return {
+    totalExtracted,
+    totalFaithful,
+    totalLocalized,
+    chaptersWithWork,
+    hasDownstreamWork: totalFaithful > 0 || totalLocalized > 0,
+  };
+}
+
+// =====================================================================
 // AUTO-ADVANCE STATUS
 // =====================================================================
 
@@ -730,5 +909,9 @@ module.exports = {
   hasRunningJob,
   cleanupJobs,
   advanceChapterStatus,
+  checkExtractionImpact,
+  checkBookDownstreamWork,
+  countApprovedEdits,
+  computeSourceHash,
   TRACK_SOURCE_DIR,
 };

@@ -286,7 +286,11 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
 
 /**
  * POST /api/admin/books/:slug/fetch-source
- * Retry or manually trigger source fetch from GitHub
+ * Retry or manually trigger source fetch from GitHub.
+ *
+ * If downstream work exists (extracted modules, faithful translations, localized
+ * content), returns 409 with an impact report. The client must re-send with
+ * { confirmed: true } to proceed.
  */
 router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res) => {
   try {
@@ -313,6 +317,18 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
       return res
         .status(400)
         .json({ error: 'No repo URL', message: 'Book has no GitHub repo URL configured' });
+    }
+
+    // Pre-check: warn about downstream work that could be invalidated
+    if (!req.body.confirmed) {
+      const impact = pipeline.checkBookDownstreamWork(slug);
+
+      if (impact.hasDownstreamWork) {
+        return res.status(409).json({
+          requiresConfirmation: true,
+          impact,
+        });
+      }
     }
 
     const repo = new URL(book.repoUrl).pathname.slice(1);

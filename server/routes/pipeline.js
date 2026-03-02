@@ -63,6 +63,10 @@ function validateParams(req, res) {
  * POST /extract
  * Run cnxml-extract for a chapter or specific module.
  * Extracts EN segments and structure from CNXML source files.
+ *
+ * If downstream work exists (faithful translations, localized content, or
+ * approved edits), returns 409 with an impact report. The client must
+ * re-send with { confirmed: true } to proceed.
  */
 router.post('/extract', (req, res) => {
   const params = validateParams(req, res);
@@ -74,6 +78,26 @@ router.post('/extract', (req, res) => {
       error: 'An extract job is already running for this chapter',
       jobId: running.id,
     });
+  }
+
+  // Pre-check: warn about downstream work that would be invalidated
+  if (!req.body.confirmed) {
+    const impact = pipeline.checkExtractionImpact(params.book, params.chapter);
+
+    if (impact.hasDownstreamWork || impact.extractedModules > 0) {
+      const approvedEdits = pipeline.countApprovedEdits(params.book, impact.moduleIds);
+
+      // Only require confirmation if there's real work at risk
+      if (impact.hasDownstreamWork || approvedEdits > 0) {
+        return res.status(409).json({
+          requiresConfirmation: true,
+          impact: {
+            ...impact,
+            approvedEdits,
+          },
+        });
+      }
+    }
   }
 
   try {
