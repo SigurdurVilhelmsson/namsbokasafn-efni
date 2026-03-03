@@ -156,6 +156,8 @@ describe('catalogue database operations', () => {
           WHEN 'astronomy' THEN 4
           WHEN 'mathematics' THEN 5
           WHEN 'statistics' THEN 6
+          WHEN 'computer-science' THEN 7
+          WHEN 'college-success' THEN 8
           ELSE 99
         END,
         c.title
@@ -165,14 +167,23 @@ describe('catalogue database operations', () => {
 
     expect(books.length).toBe(PREDEFINED_BOOKS.length);
 
-    // First books should be chemistry, last should be statistics
+    // First books should be chemistry, last should be college-success
     expect(books[0].subject).toBe('chemistry');
-    expect(books[books.length - 1].subject).toBe('statistics');
+    expect(books[books.length - 1].subject).toBe('college-success');
 
     // Within each subject group, titles should be alphabetically sorted
     let prevSubjectOrder = 0;
     let prevTitle = '';
-    const subjectToOrder = { chemistry: 1, biology: 2, physics: 3, astronomy: 4, mathematics: 5, statistics: 6 };
+    const subjectToOrder = {
+      chemistry: 1,
+      biology: 2,
+      physics: 3,
+      astronomy: 4,
+      mathematics: 5,
+      statistics: 6,
+      'computer-science': 7,
+      'college-success': 8,
+    };
 
     books.forEach((book) => {
       const currentOrder = subjectToOrder[book.subject] || 99;
@@ -190,7 +201,9 @@ describe('catalogue database operations', () => {
 
   it('subject index exists on openstax_catalogue', () => {
     const idx = db
-      .prepare("SELECT name FROM sqlite_master WHERE type='index' AND name='idx_openstax_catalogue_subject'")
+      .prepare(
+        "SELECT name FROM sqlite_master WHERE type='index' AND name='idx_openstax_catalogue_subject'"
+      )
       .get();
     expect(idx).toBeDefined();
   });

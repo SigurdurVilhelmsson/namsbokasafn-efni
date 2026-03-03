@@ -143,6 +143,30 @@ const BOOK_REPOS = {
     repo: 'openstax/osbooks-contemporary-mathematics',
     collection: 'contemporary-mathematics.collection.xml',
   },
+
+  // ── Computer Science ──────────────────────────────────────────────
+  'workplace-software-skills': {
+    repo: 'openstax/osbooks-workplace-software-skills',
+    collection: 'workplace-software-skills.collection.xml',
+  },
+  'introduction-python-programming': {
+    repo: 'openstax/osbooks-introduction-python-programming',
+    collection: 'introduction-python-programming.collection.xml',
+  },
+
+  // ── College Success ───────────────────────────────────────────────
+  'college-success': {
+    repo: 'openstax/osbooks-college-success-bundle',
+    collection: 'college-success.collection.xml',
+  },
+  'college-success-concise': {
+    repo: 'openstax/osbooks-college-success-bundle',
+    collection: 'college-success-concise.collection.xml',
+  },
+  'preparing-for-college-success': {
+    repo: 'openstax/osbooks-college-success-bundle',
+    collection: 'preparing-for-college-success.collection.xml',
+  },
 };
 
 /**

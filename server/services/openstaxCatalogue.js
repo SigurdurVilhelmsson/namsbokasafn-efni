@@ -20,7 +20,16 @@ const fs = require('fs');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 // Display order and Icelandic labels for subject groups in the catalogue UI.
-const SUBJECT_ORDER = ['chemistry', 'biology', 'physics', 'astronomy', 'mathematics', 'statistics'];
+const SUBJECT_ORDER = [
+  'chemistry',
+  'biology',
+  'physics',
+  'astronomy',
+  'mathematics',
+  'statistics',
+  'computer-science',
+  'college-success',
+];
 const SUBJECT_LABELS = {
   chemistry: 'Efnafræði',
   biology: 'Líffræði',
@@ -28,6 +37,8 @@ const SUBJECT_LABELS = {
   astronomy: 'Stjarnvísindi',
   mathematics: 'Stærðfræði',
   statistics: 'Tölfræði',
+  'computer-science': 'Tölvunarfræði',
+  'college-success': 'Námsaðstoð',
 };
 
 // Pre-defined catalogue of OpenStax Science and Math books available for translation.
@@ -332,6 +343,59 @@ const PREDEFINED_BOOKS = [
     hasAppendices: false,
     subject: 'mathematics',
   },
+
+  // ── Computer Science ─────────────────────────────────────────
+  {
+    slug: 'workplace-software-skills',
+    title: 'Workplace Software and Skills',
+    description:
+      'Practical computer skills covering productivity software, data management, and workplace technology.',
+    repoUrl: 'https://github.com/openstax/osbooks-workplace-software-skills',
+    chapterCount: 16,
+    hasAppendices: false,
+    subject: 'computer-science',
+  },
+  {
+    slug: 'introduction-python-programming',
+    title: 'Introduction to Python Programming',
+    description:
+      'Fundamentals of Python programming including variables, control structures, functions, and data structures.',
+    repoUrl: 'https://github.com/openstax/osbooks-introduction-python-programming',
+    chapterCount: 15,
+    hasAppendices: false,
+    subject: 'computer-science',
+  },
+
+  // ── College Success ──────────────────────────────────────────
+  {
+    slug: 'college-success',
+    title: 'College Success',
+    description:
+      'Study skills, time management, critical thinking, and strategies for academic success.',
+    repoUrl: 'https://github.com/openstax/osbooks-college-success-bundle',
+    chapterCount: 11,
+    hasAppendices: false,
+    subject: 'college-success',
+  },
+  {
+    slug: 'college-success-concise',
+    title: 'College Success Concise',
+    description: 'Essential college success strategies in a streamlined format.',
+    repoUrl: 'https://github.com/openstax/osbooks-college-success-bundle',
+    chapterCount: 11,
+    hasAppendices: false,
+    subject: 'college-success',
+  },
+  {
+    slug: 'preparing-for-college-success',
+    title: 'Preparing for College Success',
+    description:
+      'Pre-college preparation covering academic readiness, goal setting, and transitioning to higher education.',
+    repoUrl: 'https://github.com/openstax/osbooks-college-success-bundle',
+    chapterCount: 8,
+    hasAppendices: false,
+    subject: 'college-success',
+  },
 ];
 
 /**
@@ -388,6 +452,8 @@ function listCatalogue() {
           WHEN 'astronomy' THEN 4
           WHEN 'mathematics' THEN 5
           WHEN 'statistics' THEN 6
+          WHEN 'computer-science' THEN 7
+          WHEN 'college-success' THEN 8
           ELSE 99
         END,
         c.title
