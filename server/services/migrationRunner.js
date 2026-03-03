@@ -40,6 +40,7 @@ function runAllMigrations() {
     require('../migrations/012-chapter-assignments'),
     require('../migrations/013-catalogue-subject'),
     require('../migrations/014-source-tracking'),
+    require('../migrations/015-rename-book-slugs'),
   ];
 
   let applied = 0;

@@ -97,7 +97,7 @@ const VALID_BOOKS = ['efnafraedi-2e'];
  * Seeded with hardcoded defaults; refreshed from DB alongside VALID_BOOKS.
  */
 const BOOK_LABELS = {
-  'efnafraedi-2e': 'Efnafræði',
+  'efnafraedi-2e': 'Efnafræði 2e',
 };
 
 /**
@@ -111,7 +111,7 @@ const BOOK_LABELS = {
 function refreshValidBooks(db) {
   // Hardcoded defaults — always included even if DB is empty
   const defaults = ['efnafraedi-2e'];
-  const defaultLabels = { 'efnafraedi-2e': 'Efnafræði' };
+  const defaultLabels = { 'efnafraedi-2e': 'Efnafræði 2e' };
 
   try {
     const rows = db

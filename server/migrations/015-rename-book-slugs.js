@@ -17,6 +17,11 @@ module.exports = {
         `UPDATE registered_books SET slug = 'efnafraedi-2e' WHERE slug = 'efnafraedi'`
       ).run();
 
+      // Update display title to include edition suffix
+      db.prepare(
+        `UPDATE registered_books SET title_is = 'Efnafræði 2e' WHERE slug = 'efnafraedi-2e' AND title_is = 'Efnafræði'`
+      ).run();
+
       // Tables with column named "book"
       for (const table of [
         'segment_edits',
