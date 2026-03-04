@@ -92,7 +92,7 @@ function checkTrackReadiness(bookSlug, chapterNum, track) {
 }
 
 /**
- * Check MT preview readiness (02-machine-translated has IS segment files).
+ * Check MT preview readiness (02-mt-output has IS segment files).
  */
 function checkMtPreviewReadiness(bookSlug, chapterNum) {
   return checkTrackReadiness(bookSlug, chapterNum, 'mt-preview');
