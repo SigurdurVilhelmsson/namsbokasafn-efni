@@ -1187,6 +1187,14 @@
       var chapterParam = params.get('chapter');
       var viewParam = params.get('view');
 
+      // Redirect legacy book slugs
+      var SLUG_REDIRECTS = { efnafraedi: 'efnafraedi-2e' };
+      if (bookParam && SLUG_REDIRECTS[bookParam]) {
+        bookParam = SLUG_REDIRECTS[bookParam];
+        params.set('book', bookParam);
+        history.replaceState(null, '', '/library?' + params.toString());
+      }
+
       if (viewParam === 'chapter' && bookParam && chapterParam) {
         switchView('chapter');
         document.getElementById('cv-book-select').value = bookParam;
@@ -1292,15 +1300,18 @@
         }
 
         booksEl.innerHTML = '<div class="book-grid">' + data.books.map(function(book) {
+          var pct = book.pipelineProgress && book.pipelineProgress.total > 0
+            ? Math.round((book.pipelineProgress.faithful / book.pipelineProgress.total) * 100)
+            : book.progress;
           return '<div class="book-card" onclick="loadBookDetail(\'' + book.slug + '\')">' +
             '<div class="book-card-title">' + escapeHtml(book.titleIs) + '</div>' +
             '<div class="book-card-subtitle">' + escapeHtml(book.titleEn) + '</div>' +
             '<div class="book-card-stats">' +
               '<span>' + book.chapters + ' kaflar</span>' +
-              '<span>' + book.progress + '% loki\u00f0</span>' +
+              '<span>' + pct + '% loki\u00f0</span>' +
             '</div>' +
             '<div class="book-card-progress">' +
-              '<div class="book-card-progress-fill" style="width:' + book.progress + '%"></div>' +
+              '<div class="book-card-progress-fill" style="width:' + pct + '%"></div>' +
             '</div>' +
           '</div>';
         }).join('') + '</div>';
@@ -1348,9 +1359,10 @@
 
         chaptersEl.innerHTML = book.chapters.map(function(ch) {
           var total = ch.progress.total;
-          var completed = (ch.progress.published || 0) + (ch.progress.reviewApproved || 0);
+          var dbCompleted = (ch.progress.published || 0) + (ch.progress.reviewApproved || 0);
+          var completed = Math.max(dbCompleted, ch.hasFaithful || 0);
           var inProgress = (ch.progress.inReview || 0) + (ch.progress.inMT || 0) + (ch.progress.inLocalization || 0);
-          var notStarted = ch.progress.notStarted || 0;
+          var notStarted = Math.max(0, total - completed - inProgress);
           var pctComplete = total > 0 ? Math.round((completed / total) * 100) : 0;
           var pctInProgress = total > 0 ? Math.round((inProgress / total) * 100) : 0;
 
@@ -2090,6 +2102,21 @@
           history.pushState(null, '', '/books?view=chapter&book=' + book + '&chapter=' + chapter);
         }
       });
+
+      // Auto-select if only 1 book: hide book dropdown, auto-load chapters
+      var bookSelect = document.getElementById('cv-book-select');
+      var realOptions = Array.from(bookSelect.options).filter(function(o) { return o.value; });
+      if (realOptions.length === 1) {
+        bookSelect.value = realOptions[0].value;
+        // Hide the book form-group
+        var bookFormGroup = bookSelect.closest('.form-group');
+        if (bookFormGroup) bookFormGroup.style.display = 'none';
+        // Adjust grid: chapter selector gets full width
+        var selectorGrid = bookFormGroup.parentElement;
+        if (selectorGrid) selectorGrid.style.gridTemplateColumns = '1fr auto';
+        // Auto-load chapters
+        cvLoadChapters(realOptions[0].value);
+      }
     }
 
     async function cvLoadChapters(book) {

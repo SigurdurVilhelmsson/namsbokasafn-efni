@@ -41,7 +41,12 @@ router.get('/localization-editor', (req, res) => res.redirect(301, '/localizatio
 router.get('/localization-review', (req, res) => res.redirect(301, '/localization'));
 
 router.get('/books', (req, res) => res.redirect(301, '/library'));
-router.get('/books/:bookId', (req, res) => res.redirect(301, `/library?book=${req.params.bookId}`));
+
+const SLUG_REDIRECTS = { efnafraedi: 'efnafraedi-2e' };
+router.get('/books/:bookId', (req, res) => {
+  const slug = SLUG_REDIRECTS[req.params.bookId] || req.params.bookId;
+  res.redirect(301, `/library?book=${slug}`);
+});
 router.get('/chapter', (req, res) => {
   const qs = new URLSearchParams(req.query).toString();
   res.redirect(301, '/library' + (qs ? `?${qs}` : ''));

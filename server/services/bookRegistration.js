@@ -377,28 +377,91 @@ function getRegisteredBook(slug) {
       registeredBy: book.registered_by,
       registeredAt: book.registered_at,
       status: book.status,
-      chapters: chapters.map((c) => ({
-        id: c.id,
-        chapterNum: c.chapter_num,
-        titleEn: c.title_en,
-        titleIs: c.title_is,
-        sectionCount: c.section_count,
-        status: c.status,
-        progress: {
-          total: c.total_sections,
-          notStarted: c.not_started,
-          inMT: c.in_mt,
-          inReview: c.in_review,
-          reviewApproved: c.review_approved,
-          inLocalization: c.in_localization,
-          published: c.published,
-        },
-      })),
+      chapters: chapters.map((c) => {
+        // Count faithful-translation files on disk for this chapter
+        const chDir = `ch${String(c.chapter_num).padStart(2, '0')}`;
+        const faithfulDir = path.join(BOOKS_DIR, book.slug, '03-faithful-translation', chDir);
+        let hasFaithful = 0;
+        try {
+          if (fs.existsSync(faithfulDir)) {
+            hasFaithful = fs
+              .readdirSync(faithfulDir)
+              .filter((f) => f.match(/^m\d+-segments\.is\.md$/)).length;
+          }
+        } catch {
+          /* ignore */
+        }
+
+        return {
+          id: c.id,
+          chapterNum: c.chapter_num,
+          titleEn: c.title_en,
+          titleIs: c.title_is,
+          sectionCount: c.section_count,
+          status: c.status,
+          hasFaithful,
+          progress: {
+            total: c.total_sections,
+            notStarted: c.not_started,
+            inMT: c.in_mt,
+            inReview: c.in_review,
+            reviewApproved: c.review_approved,
+            inLocalization: c.in_localization,
+            published: c.published,
+          },
+        };
+      }),
     };
   } catch (err) {
     db.close();
     throw err;
   }
+}
+
+/**
+ * Count modules that have a faithful-translation file on disk.
+ *
+ * Loads book structure from the matching data file in server/data/
+ * and checks for the presence of faithful-translation segment files.
+ *
+ * @param {string} bookSlug - Icelandic slug (e.g., 'efnafraedi-2e')
+ * @param {string} catalogueSlug - OpenStax catalogue slug (e.g., 'chemistry-2e')
+ * @returns {{ faithful: number, total: number }}
+ */
+function countFaithfulModules(bookSlug, catalogueSlug) {
+  const dataFilePath = path.join(DATA_DIR, `${catalogueSlug}.json`);
+  if (!fs.existsSync(dataFilePath)) {
+    return { faithful: 0, total: 0 };
+  }
+
+  let bookData;
+  try {
+    bookData = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
+  } catch {
+    return { faithful: 0, total: 0 };
+  }
+
+  let total = 0;
+  let faithful = 0;
+
+  for (const chapter of bookData.chapters || []) {
+    const chDir = `ch${String(chapter.chapter).padStart(2, '0')}`;
+    for (const mod of chapter.modules || []) {
+      total++;
+      const faithfulPath = path.join(
+        BOOKS_DIR,
+        bookSlug,
+        '03-faithful-translation',
+        chDir,
+        `${mod.id}-segments.is.md`
+      );
+      if (fs.existsSync(faithfulPath)) {
+        faithful++;
+      }
+    }
+  }
+
+  return { faithful, total };
 }
 
 /**
@@ -444,6 +507,7 @@ function listRegisteredBooks() {
       publishedSections: b.published_sections,
       progress:
         b.total_sections > 0 ? Math.round((b.published_sections / b.total_sections) * 100) : 0,
+      pipelineProgress: countFaithfulModules(b.slug, b.catalogue_slug),
     }));
   } catch (err) {
     db.close();
@@ -1086,4 +1150,5 @@ module.exports = {
   createBookDirectories,
   scanAndUpdateStatus,
   scanStatusDryRun,
+  countFaithfulModules,
 };
