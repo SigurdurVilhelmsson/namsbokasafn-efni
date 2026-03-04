@@ -1623,6 +1623,10 @@
 
       } catch (err) {
         console.error('Failed to load dashboard:', err);
+        // Replace spinners with error state so users aren't stuck
+        document.querySelectorAll('.loading-state').forEach(function(el) {
+          el.innerHTML = '<span style="color:var(--text-muted)">Gat ekki hlaðið gögnum</span>';
+        });
       }
     }
 
@@ -2579,7 +2583,13 @@
     // INITIALIZATION
     // ============================================================================
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Ensure book dropdown is populated before loading dashboard data
+      // (bookSelector.js auto-inits on DOMContentLoaded but the fetch is async,
+      // so getSelectedBook() would return '' without this await)
+      if (window.bookSelector) {
+        await window.bookSelector.init();
+      }
       loadDashboard();
       loadDisputedTerms();
 

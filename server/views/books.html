@@ -1300,9 +1300,12 @@
         }
 
         booksEl.innerHTML = '<div class="book-grid">' + data.books.map(function(book) {
-          var pct = book.pipelineProgress && book.pipelineProgress.total > 0
-            ? Math.round((book.pipelineProgress.faithful / book.pipelineProgress.total) * 100)
-            : book.progress;
+          // Prefer filesystem-based statusProgress (reads status.json) over DB-based progress
+          var pct = book.statusProgress && book.statusProgress.pct > 0
+            ? book.statusProgress.pct
+            : (book.pipelineProgress && book.pipelineProgress.total > 0
+              ? Math.round((book.pipelineProgress.faithful / book.pipelineProgress.total) * 100)
+              : book.progress);
           return '<div class="book-card" onclick="loadBookDetail(\'' + book.slug + '\')">' +
             '<div class="book-card-title">' + escapeHtml(book.titleIs) + '</div>' +
             '<div class="book-card-subtitle">' + escapeHtml(book.titleEn) + '</div>' +
@@ -1366,8 +1369,15 @@
           var pctComplete = total > 0 ? Math.round((completed / total) * 100) : 0;
           var pctInProgress = total > 0 ? Math.round((inProgress / total) * 100) : 0;
 
-          var badgeClass = pctComplete === 100 ? 'complete' : (completed + inProgress > 0 ? 'in-progress' : 'not-started');
-          var badgeText = pctComplete === 100 ? 'Kl\u00e1rt' : (completed + inProgress > 0 ? '\u00cd vinnslu' : 'Ekki byrja\u00f0');
+          // When DB shows zero progress, fall back to filesystem-based pipeline progress
+          var pp = ch.pipelineProgress;
+          var usePipeline = (completed + inProgress === 0) && pp && pp.pct > 0;
+          if (usePipeline) {
+            pctComplete = pp.pct;
+          }
+
+          var badgeClass = pctComplete === 100 ? 'complete' : (pctComplete > 0 || completed + inProgress > 0 ? 'in-progress' : 'not-started');
+          var badgeText = pctComplete === 100 ? 'Kl\u00e1rt' : (pctComplete > 0 || completed + inProgress > 0 ? '\u00cd vinnslu' : 'Ekki byrja\u00f0');
 
           var legendHtml = '';
           if (completed > 0) legendHtml += '<span><span class="legend-dot complete-dot"></span>' + completed + ' loki\u00f0</span>';

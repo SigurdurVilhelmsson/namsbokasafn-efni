@@ -392,6 +392,16 @@ function getRegisteredBook(slug) {
           /* ignore */
         }
 
+        // Read pipeline progress from status.json (filesystem truth)
+        let pipelineProgress = { completed: 0, total: 7, pct: 0 };
+        const statusPath = path.join(BOOKS_DIR, book.slug, 'chapters', chDir, 'status.json');
+        try {
+          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+          pipelineProgress = computeChapterPipelineProgress(statusData.status);
+        } catch {
+          /* no status.json or parse error */
+        }
+
         return {
           id: c.id,
           chapterNum: c.chapter_num,
@@ -400,6 +410,7 @@ function getRegisteredBook(slug) {
           sectionCount: c.section_count,
           status: c.status,
           hasFaithful,
+          pipelineProgress,
           progress: {
             total: c.total_sections,
             notStarted: c.not_started,
@@ -416,6 +427,83 @@ function getRegisteredBook(slug) {
     db.close();
     throw err;
   }
+}
+
+/**
+ * Compute pipeline progress from a single chapter's status object.
+ *
+ * Counts completed stages out of 7 progress-relevant stages
+ * (excludes extraction — that's a prerequisite, not progress):
+ *   mtReady, mtOutput, linguisticReview, tmCreated, injection, rendering, publication
+ *
+ * Publication counts as 1 if any sub-track (mtPreview/faithful/localized) is complete.
+ *
+ * @param {object} statusObj - The `status` field from a chapter's status.json
+ * @returns {{ completed: number, total: number, pct: number }}
+ */
+function computeChapterPipelineProgress(statusObj) {
+  const total = 7;
+  if (!statusObj) return { completed: 0, total, pct: 0 };
+
+  const stages = ['mtReady', 'mtOutput', 'linguisticReview', 'tmCreated', 'injection', 'rendering'];
+  let completed = 0;
+  for (const stage of stages) {
+    if (statusObj[stage]?.complete) completed++;
+  }
+
+  // Publication: any sub-track published counts as the publication stage being reached
+  const pub = statusObj.publication;
+  if (pub && (pub.mtPreview?.complete || pub.faithful?.complete || pub.localized?.complete)) {
+    completed++;
+  }
+
+  return { completed, total, pct: Math.round((completed / total) * 100) };
+}
+
+/**
+ * Compute overall pipeline progress for a book by reading all chapter status.json files.
+ *
+ * @param {string} bookSlug - e.g., 'efnafraedi-2e'
+ * @returns {{ completed: number, total: number, pct: number, chapters: number }}
+ */
+function computeStatusJsonProgress(bookSlug) {
+  const chaptersPath = path.join(BOOKS_DIR, bookSlug, 'chapters');
+  if (!fs.existsSync(chaptersPath)) {
+    return { completed: 0, total: 0, pct: 0, chapters: 0 };
+  }
+
+  let chapterDirs;
+  try {
+    chapterDirs = fs
+      .readdirSync(chaptersPath)
+      .filter((d) => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
+      .sort();
+  } catch {
+    return { completed: 0, total: 0, pct: 0, chapters: 0 };
+  }
+
+  let totalCompleted = 0;
+  let totalStages = 0;
+
+  for (const chDir of chapterDirs) {
+    const statusPath = path.join(chaptersPath, chDir, 'status.json');
+    try {
+      const data = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+      const progress = computeChapterPipelineProgress(data.status);
+      totalCompleted += progress.completed;
+      totalStages += progress.total;
+    } catch {
+      // Skip chapters without valid status.json
+      totalStages += 7;
+    }
+  }
+
+  return {
+    completed: totalCompleted,
+    total: totalStages,
+    pct: totalStages > 0 ? Math.round((totalCompleted / totalStages) * 100) : 0,
+    chapters: chapterDirs.length,
+  };
 }
 
 /**
@@ -508,6 +596,7 @@ function listRegisteredBooks() {
       progress:
         b.total_sections > 0 ? Math.round((b.published_sections / b.total_sections) * 100) : 0,
       pipelineProgress: countFaithfulModules(b.slug, b.catalogue_slug),
+      statusProgress: computeStatusJsonProgress(b.slug),
     }));
   } catch (err) {
     db.close();
