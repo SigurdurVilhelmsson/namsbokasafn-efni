@@ -2385,18 +2385,36 @@
       const module = params.get('module');
       if (!book || !chapter) return;
 
-      // Set book select and trigger chapter population
+      // Helper: poll until a condition is true (max 5s)
+      function waitFor(conditionFn, interval = 100, timeout = 5000) {
+        return new Promise((resolve, reject) => {
+          const start = Date.now();
+          (function check() {
+            if (conditionFn()) return resolve();
+            if (Date.now() - start > timeout) return reject(new Error('waitFor timeout'));
+            setTimeout(check, interval);
+          })();
+        });
+      }
+
+      // 1. Wait for bookSelector.js to populate the dropdown with our book
+      if (window.bookSelector) {
+        await window.bookSelector.init();
+      }
+      await waitFor(() => bookSelect.querySelector('option[value="' + book + '"]'));
+
+      // 2. Set book and trigger chapter loading
       bookSelect.value = book;
       bookSelect.dispatchEvent(new Event('change'));
 
-      // Set chapter select and trigger module list load
-      await new Promise(r => setTimeout(r, 50));
+      // 3. Wait for chapter options to appear
+      await waitFor(() => chapterSelect.querySelector('option[value="' + chapter + '"]'));
       chapterSelect.value = chapter;
       chapterSelect.dispatchEvent(new Event('change'));
 
-      // If module specified, wait for module list then load it
+      // 4. If module specified, wait for module cards then load it
       if (module) {
-        await new Promise(r => setTimeout(r, 300));
+        await waitFor(() => document.querySelector('.module-card'));
         loadModule(module);
       }
     })();

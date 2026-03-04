@@ -98,6 +98,9 @@ const HOST = config.host;
 // Initialize Express app
 const app = express();
 
+// Trust first proxy (nginx) — required for express-rate-limit and req.ip behind reverse proxy
+app.set('trust proxy', 1);
+
 // Security middleware - must come before other middleware
 // Helmet sets various HTTP headers for security
 app.use(
