@@ -135,7 +135,10 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
+      // Skip segment files — they use <!-- SEG:... --> format, not YAML frontmatter
+      const files = fs
+        .readdirSync(sourceDir)
+        .filter((f) => f.endsWith('.md') && !f.match(/^m\d+-segments\./));
 
       for (const file of files) {
         const filePath = path.join(sourceDir, file);
