@@ -76,8 +76,8 @@ const TRACKS = {
 const VALIDATORS = {
   'files-exist': {
     severity: SEVERITY.ERROR,
-    description: 'Required markdown files are present',
-    check: async ({ book, chapter: _chapter, track, chapterDir, statusData }) => {
+    description: 'Required IS segment files are present',
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -91,32 +91,17 @@ const VALIDATORS = {
         return issues;
       }
 
-      // Get expected sections from status.json
-      const sections = statusData?.sections || [];
+      // Source directories contain module-based segment files (m68663-segments.is.md),
+      // not section-based files. Match the pattern used by publicationService.checkTrackReadiness().
+      const segmentFiles = fs
+        .readdirSync(sourceDir)
+        .filter((f) => f.match(/^m\d+-segments\.is\.md$/));
 
-      for (const section of sections) {
-        // Convert section ID (e.g., "1.1") to filename (e.g., "1-1.is.md")
-        const sectionId = section.id;
-        let expectedFilename;
-
-        if (sectionId === 'intro' || sectionId === '0' || sectionId.endsWith('.0')) {
-          expectedFilename = 'intro.is.md';
-        } else {
-          expectedFilename = `${sectionId.replace('.', '-')}.is.md`;
-        }
-
-        const filePath = path.join(sourceDir, expectedFilename);
-        if (!fs.existsSync(filePath)) {
-          // Also check without .is suffix (some files may use just .md)
-          const altFilename = expectedFilename.replace('.is.md', '.md');
-          const altPath = path.join(sourceDir, altFilename);
-          if (!fs.existsSync(altPath)) {
-            issues.push({
-              file: expectedFilename,
-              message: `Section ${sectionId} "${section.titleIs || section.titleEn}" file not found`,
-            });
-          }
-        }
+      if (segmentFiles.length === 0) {
+        issues.push({
+          file: chapterDir,
+          message: `No IS segment files (m*-segments.is.md) found in ${trackConfig.sourceDir}/${chapterDir}`,
+        });
       }
 
       return issues;

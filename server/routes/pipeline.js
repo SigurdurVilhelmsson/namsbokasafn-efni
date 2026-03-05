@@ -203,7 +203,20 @@ router.post('/inject', (req, res) => {
     });
   }
 
+  // Prerequisite: extraction must have run before inject
+  if (!req.body.confirmed) {
+    const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
+    if (!stageStatus.extraction?.complete) {
+      return res.status(409).json({
+        requiresConfirmation: true,
+        warning:
+          'Extraction has not been run for this chapter. Inject may fail without extracted segments.',
+      });
+    }
+  }
+
   const { jobId } = pipeline.runInject({
+    book: params.book,
     chapter: params.chapter,
     moduleId: params.moduleId,
     track: params.track,
@@ -233,7 +246,20 @@ router.post('/render', (req, res) => {
     });
   }
 
+  // Prerequisite: injection must have run before render
+  if (!req.body.confirmed) {
+    const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
+    if (!stageStatus.injection?.complete) {
+      return res.status(409).json({
+        requiresConfirmation: true,
+        warning:
+          'Injection has not been run for this chapter. Render requires translated CNXML from inject.',
+      });
+    }
+  }
+
   const { jobId } = pipeline.runRender({
+    book: params.book,
     chapter: params.chapter,
     moduleId: params.moduleId,
     track: params.track,
@@ -261,6 +287,18 @@ router.post('/run', (req, res) => {
       error: 'A pipeline job is already running for this chapter',
       jobId: running.id,
     });
+  }
+
+  // Prerequisite: extraction must have run before full pipeline
+  if (!req.body.confirmed) {
+    const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
+    if (!stageStatus.extraction?.complete) {
+      return res.status(409).json({
+        requiresConfirmation: true,
+        warning:
+          'Extraction has not been run for this chapter. The pipeline requires extracted segments.',
+      });
+    }
   }
 
   const { jobId } = pipeline.runPipeline({

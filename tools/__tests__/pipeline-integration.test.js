@@ -24,7 +24,7 @@ function run(cmd) {
 describe('cnxml-inject', () => {
   it('should inject a single module (m68663, ch01 introduction)', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68663 --source-dir 02-machine-translated`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68663 --source-dir 02-mt-output`
     );
 
     // The tool writes to 03-translated/{track}/ — check the standard location
@@ -67,7 +67,7 @@ describe('cnxml-inject', () => {
 
   it('should inject a full chapter', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-machine-translated --allow-incomplete`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-mt-output --allow-incomplete`
     );
 
     const outputPath = join(BOOKS, '03-translated', 'mt-preview', 'ch01');
@@ -326,7 +326,7 @@ describe('inject → render round-trip', () => {
   it('should produce HTML from source segments via inject then render', () => {
     // Inject chapter 1 introduction
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68663 --source-dir 02-machine-translated`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68663 --source-dir 02-mt-output`
     );
 
     const injectedCnxml = join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68663.cnxml');
@@ -541,7 +541,7 @@ describe('annotateInlineTerms', () => {
 describe('English term annotation integration', () => {
   it('should produce annotated terms in CNXML output', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-machine-translated`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output`
     );
 
     const cnxml = readFileSync(
@@ -557,7 +557,7 @@ describe('English term annotation integration', () => {
 
   it('should NOT produce annotations with --no-annotate-en', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-machine-translated --no-annotate-en`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output --no-annotate-en`
     );
 
     const cnxml = readFileSync(
@@ -571,7 +571,7 @@ describe('English term annotation integration', () => {
 
   it('should annotate glossary terms with EN originals', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-machine-translated`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output`
     );
 
     const cnxml = readFileSync(
@@ -659,7 +659,7 @@ describe('newline and space tag preservation', () => {
 
   it('should produce <newline/> in translated CNXML (m68674, ch01)', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68674 --source-dir 02-machine-translated`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68674 --source-dir 02-mt-output --allow-incomplete`
     );
     const cnxml = readFileSync(
       join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68674.cnxml'),

@@ -635,6 +635,30 @@ function checkBookDownstreamWork(book) {
 }
 
 // =====================================================================
+// STAGE STATUS QUERY
+// =====================================================================
+
+/**
+ * Read the status.json for a chapter and return the status object.
+ * Used by pipeline routes to check prerequisites before running stages.
+ *
+ * @param {string} book - Book slug
+ * @param {number|string} chapter - Chapter number or 'appendices'
+ * @returns {Object} The status object (stage → { complete, date, ... }), or empty object
+ */
+function getStageStatus(book, chapter) {
+  const chapterDir =
+    chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+  const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
+  try {
+    const data = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
+    return data.status || {};
+  } catch {
+    return {};
+  }
+}
+
+// =====================================================================
 // AUTO-ADVANCE STATUS
 // =====================================================================
 
@@ -909,6 +933,7 @@ module.exports = {
   hasRunningJob,
   cleanupJobs,
   advanceChapterStatus,
+  getStageStatus,
   checkExtractionImpact,
   checkBookDownstreamWork,
   countApprovedEdits,
