@@ -66,9 +66,7 @@ describe('cnxml-inject', () => {
   });
 
   it('should inject a full chapter', () => {
-    run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-mt-output --allow-incomplete`
-    );
+    run(`node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-mt-output`);
 
     const outputPath = join(BOOKS, '03-translated', 'mt-preview', 'ch01');
     const modules = ['m68663', 'm68664', 'm68667', 'm68670', 'm68674', 'm68683', 'm68690'];
@@ -659,7 +657,7 @@ describe('newline and space tag preservation', () => {
 
   it('should produce <newline/> in translated CNXML (m68674, ch01)', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68674 --source-dir 02-mt-output --allow-incomplete`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68674 --source-dir 02-mt-output`
     );
     const cnxml = readFileSync(
       join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68674.cnxml'),

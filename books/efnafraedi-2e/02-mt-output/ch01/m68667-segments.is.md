@@ -349,7 +349,7 @@ fjórðungur frumefnanna finnst einnig á frjálsu formi.
 
 <!-- SEG:m68667:entry:auto-97 --> öll önnur
 
-<!-- SEG:m68667:entry:auto-98 -->
+<!-- SEG:m68667:entry:auto-98 --> -
 
 <!-- SEG:m68667:entry:auto-99 --> 0.47
 
