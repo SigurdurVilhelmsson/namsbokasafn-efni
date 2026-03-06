@@ -35,6 +35,29 @@ function normalizeWraps(text) {
 }
 
 /**
+ * Unescape MT-introduced backslash escapes in segment content.
+ * The malstadur.is MT service escapes markdown-like brackets:
+ *   \[\[MATH:4\]\] → [[MATH:4]]
+ *   \_\_term\_\_   → __term__
+ *   \*bold\*       → *bold*
+ *
+ * The injection pipeline (cnxml-inject.js:452-457) already handles this
+ * for published HTML, but the segment editor shows raw file content.
+ * Unescaping here ensures editors see clean markers.
+ *
+ * @param {string} text - Raw segment content
+ * @returns {string} Content with MT escapes removed
+ */
+function unescapeMtMarkers(text) {
+  if (!text) return text;
+  return text
+    .replace(/\\\[/g, '[')
+    .replace(/\\\]/g, ']')
+    .replace(/\\\*/g, '*')
+    .replace(/\\_/g, '_');
+}
+
+/**
  * Normalize term markers in IS content based on EN source.
  * MT engines (e.g. malstadur.is) convert __term__ to **term**.
  * This detects excess ** in IS (compared to EN) and converts them back to __.
@@ -200,8 +223,10 @@ function loadModuleForEditing(book, chapter, moduleId) {
   }
 
   // Build lookup of IS segments by segmentId
+  // Unescape MT artifacts so editors see clean markers
   const isLookup = {};
   for (const seg of isSegments) {
+    seg.content = unescapeMtMarkers(seg.content);
     isLookup[seg.segmentId] = seg;
   }
 
@@ -494,6 +519,7 @@ function _setTestBooksDir(dir) {
 
 module.exports = {
   normalizeWraps,
+  unescapeMtMarkers,
   normalizeTermMarkers,
   parseSegments,
   assembleSegments,

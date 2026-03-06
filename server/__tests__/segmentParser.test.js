@@ -10,6 +10,7 @@ const {
   parseSegments,
   assembleSegments,
   normalizeTermMarkers,
+  unescapeMtMarkers,
 } = require('../services/segmentParser');
 
 describe('parseSegments', () => {
@@ -139,6 +140,41 @@ The formula [[MATH:1]] shows that [[MATH:2]] is valid.`;
     expect(segments).toHaveLength(1);
     expect(segments[0].content).toContain('[[MATH:1]]');
     expect(segments[0].content).toContain('[[MATH:2]]');
+  });
+});
+
+describe('unescapeMtMarkers', () => {
+  it('unescapes MATH placeholder brackets', () => {
+    expect(unescapeMtMarkers('\\[\\[MATH:1\\]\\]')).toBe('[[MATH:1]]');
+  });
+
+  it('unescapes multiple placeholders in one string', () => {
+    expect(
+      unescapeMtMarkers('Formúlan \\[\\[MATH:1\\]\\] sýnir að \\[\\[MATH:2\\]\\] gildir.')
+    ).toBe('Formúlan [[MATH:1]] sýnir að [[MATH:2]] gildir.');
+  });
+
+  it('unescapes term markers', () => {
+    expect(unescapeMtMarkers('\\_\\_hugtak\\_\\_')).toBe('__hugtak__');
+  });
+
+  it('unescapes bold/italic markers', () => {
+    expect(unescapeMtMarkers('\\*feitletrað\\*')).toBe('*feitletrað*');
+  });
+
+  it('passes clean text through unchanged', () => {
+    expect(unescapeMtMarkers('[[MATH:1]] and __term__')).toBe('[[MATH:1]] and __term__');
+  });
+
+  it('returns null/undefined as-is', () => {
+    expect(unescapeMtMarkers(null)).toBe(null);
+    expect(unescapeMtMarkers(undefined)).toBe(undefined);
+    expect(unescapeMtMarkers('')).toBe('');
+  });
+
+  it('unescapes BR and MEDIA placeholders', () => {
+    expect(unescapeMtMarkers('\\[\\[BR\\]\\]')).toBe('[[BR]]');
+    expect(unescapeMtMarkers('\\[\\[MEDIA:3\\]\\]')).toBe('[[MEDIA:3]]');
   });
 });
 
