@@ -45,8 +45,8 @@ eins og með tölur, þegar einingu er deilt með sams konar einingu (í
 þessu tilfelli, m/m), er niðurstaðan „1“ — eða, eins og almennt er
 orðað, einingarnar „styttast út“.</para>
 <para id="fs-idp44099792">Þessir útreikningar eru dæmi um
-fjölhæfa stærðfræðilega nálgun sem kallast <term>einingagreining (e. dimensional analysis)</term> (eða
-<term>þáttamerkingaraðferðin (e. factor-label method)</term>). Einingagreining byggir á þessari forsendu:
+fjölhæfa stærðfræðilega nálgun sem kallast <term id="term-00001">einingagreining (e. dimensional analysis)</term> (eða
+<term id="term-00002">þáttamerkingaraðferðin (e. factor-label method)</term>). Einingagreining byggir á þessari forsendu:
 <emphasis effect="italics">einingar stærða verða að lúta sömu stærðfræðilegu aðgerðum og
 tilheyrandi tölur þeirra</emphasis>. Þessa aðferð má beita á útreikninga, allt frá
 einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem
@@ -56,7 +56,7 @@ fela í sér nokkrar mismunandi stærðir.</para>
 einingagreining</title>
 <para id="fs-idm273312256">Hlutfall tveggja jafngildra stærða
 sem gefnar eru upp með mismunandi mælieiningum má nota sem
-<term>umreikningsstuðul fyrir einingar (e. unit conversion factor)</term>. Til dæmis eru lengdirnar 2,54 cm
+<term id="term-00003">umreikningsstuðul fyrir einingar (e. unit conversion factor)</term>. Til dæmis eru lengdirnar 2,54 cm
 og 1 tommur jafngildar (samkvæmt skilgreiningu) og því má leiða út
 umreikningsstuðul fyrir einingar úr hlutfallinu,</para>
 <equation id="fs-idm256748160" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.54 cm</m:mtext></m:mrow><m:mrow><m:mtext>1 in.</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mtext>(2.54 cm</m:mtext><m:mo>=</m:mo><m:mtext>1 in.) or 2.54</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mrow><m:mtext>in.</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -86,7 +86,7 @@ umreikningsstuðlar eru gefnir í <link target-id="fs-idm222237232"/>.</para>
 <row valign="top">
 <entry align="left">1 tommur = 2,54 cm (nákvæmlega)</entry>
 <entry align="left">1 qt = 0,94635 L</entry>
-<entry align="left">1 lb = 453,59 g<footnote>Strangt til
+<entry align="left">1 lb = 453,59 g<footnote id="foot-00001">Strangt til
 tekið eru únsa og pund einingar fyrir þyngd, <emphasis effect="italics">W</emphasis> (kraftur sem jafngildir
 margfeldi massa og þyngdarhröðunar, <emphasis effect="italics">W</emphasis> = <emphasis effect="italics">mg</emphasis>). Umreikningssamböndin í
 þessari töflu eru almennt notuð til að jafna massa og þyngd með því að
@@ -223,7 +223,7 @@ gallonið, hver var eldsneytiskostnaðurinn fyrir þessa ferð?</para>
 <section id="fs-idm206910464">
 <title>Umreikningur á
 hitastigseiningum</title>
-<para id="fs-idm262720192">Við notum orðið <term>hitastig (e. temperature)</term> til að
+<para id="fs-idm262720192">Við notum orðið <term id="term-00004">hitastig (e. temperature)</term> til að
 vísa til þess hversu heitt eða kalt efni er. Ein leið til að mæla
 breytingu á hitastigi er að nýta sér þá staðreynd að flest efni þenjast
 út þegar hitastig þeirra hækkar og dragast saman þegar hitastig þeirra
@@ -235,7 +235,7 @@ við valin viðmiðunarhitastig: Tvö af þeim algengustu eru frostmark og
 suðumark vatns við tiltekinn loftþrýsting. Á Celsíuskvarðanum er 0 °C
 skilgreint sem frostmark vatns og 100 °C sem suðumark vatns. Bilinu
 milli þessara tveggja hitastiga er skipt í 100 jöfn bil sem við köllum
-gráður. Á <term>Fahrenheit</term>-kvarðanum er frostmark vatns skilgreint sem 32
+gráður. Á <term id="term-00005">Fahrenheit</term>-kvarðanum er frostmark vatns skilgreint sem 32
 °F og suðumarkið sem 212 °F. Bilinu milli þessara tveggja punkta á
 Fahrenheit-hitamæli er skipt í 180 jafna hluta (gráður).</para>
 <para id="fs-idm288396336">Skilgreining Celsíus- og
@@ -493,7 +493,7 @@ af aspiríni, hversu mörg grömm af aspiríni innihalda þær?</para>
 <problem id="fs-idm207700000">
 <para id="fs-idm103945312">Notaðu staðalform
 (veldisvísanotkun) til að tákna eftirfarandi stærðir með
-SI-grunneiningum í <link target-id="fs-idm81346144"/>:</para><para id="fs-idm287857616">(a) 0,13 g</para>
+SI-grunneiningum í <link document="m68674" target-id="fs-idm81346144"/>:</para><para id="fs-idm287857616">(a) 0,13 g</para>
 <para id="fs-idm210449872">(b) 232 Gg</para>
 <para id="fs-idm275388528">(c) 5,23 pm</para>
 <para id="fs-idm84936752">(d) 86,3 mg</para>

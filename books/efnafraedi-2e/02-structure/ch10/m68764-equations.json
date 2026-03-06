@@ -1,0 +1,24 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.2em\"/><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>r</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{h=\\, \\frac{{2T\\, \\text{cos}\\, θ}}{{rρg}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.2em\"/><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>r</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{h=\\, \\frac{{2T\\, \\text{cos}\\, θ}}{{rρg}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idm228846576": {
+    "mathml": "<m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.2em\"/><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>r</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{h=\\, \\frac{{2T\\, \\text{cos}\\, θ}}{{rρg}}}",
+    "isBlock": true
+  },
+  "fs-idm60135360": {
+    "mathml": "<m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.07199</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>kg/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.000125</m:mn><m:mspace width=\"0.2em\"/><m:mtext>m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1000</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>kg/m</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>9.8</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.12</m:mn><m:mspace width=\"0.2em\"/><m:mtext>m</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mtext>12 cm</m:mtext></m:mrow></m:math>",
+    "latex": "{h=\\, \\frac{{2{({0.07199\\, {{\\text{kg/s}}}^{2}})}}}{{{({0.000125\\, \\text{m}})}{({1000\\, {{\\text{kg/m}}}^{3}})}{({9.8\\, {{\\text{m/s}}}^{2}})}}}\\, =0.12\\, \\text{m}=\\, \\text{12 cm}}",
+    "isBlock": true
+  }
+}

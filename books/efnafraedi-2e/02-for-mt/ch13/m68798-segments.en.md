@@ -482,7 +482,7 @@ Chemistry End of Chapter Exercises
 Explain why there may be an infinite number of values for the reaction quotient of a reaction at a given temperature but there can be only one value for the equilibrium constant at that temperature.
 
 <!-- SEG:m68798:problem:fs-idp125938384 -->
-Explain why an equilibrium between Br~2~(*l*) and Br~2~(*g*) would not be established if the container were not a closed vessel shown in [#CNX_Chem_13_01_bromine].
+Explain why an equilibrium between Br~2~(*l*) and Br~2~(*g*) would not be established if the container were not a closed vessel shown in [m68797#CNX_Chem_13_01_bromine].
 
 <!-- SEG:m68798:solution:fs-idp742448 -->
 Equilibrium cannot be established between the liquid and the gas phase if the top is removed from the bottle because the system is not closed; one of the components of the equilibrium, the Br~2~ vapor, would escape from the bottle until all liquid disappeared. Thus, more liquid would evaporate than can condense back from the gas phase to the liquid phase.

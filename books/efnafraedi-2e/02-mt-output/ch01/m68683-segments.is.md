@@ -609,7 +609,7 @@ af aspiríni, hversu mörg grömm af aspiríni innihalda þær?
 
 <!-- SEG:m68683:problem:fs-idm103945312 --> Notaðu staðalform
 (veldisvísanotkun) til að tákna eftirfarandi stærðir með
-SI-grunneiningum í [#fs-idm81346144]:
+SI-grunneiningum í [m68674#fs-idm81346144]:
 
 
 <!-- SEG:m68683:problem:fs-idm287857616 --> (a) 0,13 g

@@ -1,0 +1,102 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{2}^{-}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>N</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{N}}}_{3}^{-}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{2}^{\\text{−}}:}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>N</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{N}}}_{3}^{\\text{−}}:}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>N</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{N}}}_{3}^{\\text{−}},}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{2}^{-}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>N</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{N}}}_{3}^{-}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{3}+{\\text{H}}_{3}{\\text{O}}^{+}\\, \\longrightarrow \\, {{\\text{NH}}}_{4}^{+}+{\\text{H}}_{2}\\text{O}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>2NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:msub><m:mrow><m:mtext>[H</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>N</m:mtext><m:mo>−</m:mo><m:mtext>Ag</m:mtext><m:mo>−</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{2NH}}}_{3}+{{\\text{Ag}}}^{+}\\, \\longrightarrow \\, {{{{\\text{[H}}}_{3}\\text{N}-\\text{Ag}-{{\\text{NH}}}_{3}]}}^{+}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{-}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{3}^{-}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{-}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{+}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{\\text{−}}:}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{\\text{+}}:}"
+  },
+  "fs-idm42181536": {
+    "mathml": "<m:math><m:mrow><m:mtext>3Cu</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>8HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>2NO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>3Cu</m:mtext><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>4H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{3Cu}(s)+{{\\text{8HNO}}}_{3}(aq)\\, \\longrightarrow \\, \\text{2NO}(g)+\\text{3Cu}{({\\text{NO}}3)}2(aq)+{{\\text{4H}}}_{2}\\text{O}(l)}",
+    "isBlock": true
+  },
+  "fs-idp190363104": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>2NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⇌</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"5em\"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>6.86</m:mn></m:mrow></m:math>",
+    "latex": "{{{\\text{2NO}}}_{2}(g)\\, ⇌\\, {\\text{N}}_{2}{\\text{O}}_{4}(g)\\, {K}_{P}=6.86}",
+    "isBlock": true
+  },
+  "fs-idp77732832": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>4HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>4HPO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>2N</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{P}}_{4}{\\text{O}}_{{10}}(s)+{{\\text{4HNO}}}_{3}(l)\\, \\longrightarrow \\, {{\\text{4HPO}}}_{3}(s)+{{\\text{2N}}}_{2}{\\text{O}}_{5}(s)}",
+    "isBlock": true
+  },
+  "fs-idp46021216": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>2HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}{\\text{O}}_{5}(s)+{\\text{H}}_{2}\\text{O}(l)\\, \\longrightarrow \\, {{\\text{2HNO}}}_{3}(aq)}",
+    "isBlock": true
+  },
+  "fs-idp89011632": {
+    "mathml": "<m:math><m:mrow><m:mtext>oxidizing agent:</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mtext>P</m:mtext><m:mrow><m:mn>4</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>6NO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3N</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{oxidizing agent:}\\, {\\text{P}}_{{4}}(s)+\\text{6NO}(g)\\, \\longrightarrow \\, {\\text{P}}_{4}{\\text{O}}_{6}(s)+{{\\text{3N}}}_{2}(g)}",
+    "isBlock": true
+  },
+  "fs-idp62382032": {
+    "mathml": "<m:math><m:mrow><m:mtext>reducing agent:</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mtext>Cl</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>2NO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>2ClNO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{reducing agent:}\\, {\\text{Cl}}_{{2}}(g)+\\text{2NO}(g)\\, \\longrightarrow \\, \\text{2ClNO}(g)}",
+    "isBlock": true
+  },
+  "fs-idp458544": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>CO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>NO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}(g)+\\text{CO}(g)\\, \\longrightarrow \\, \\text{NO}(g)+{{\\text{CO}}}_{2}(g)}",
+    "isBlock": true
+  },
+  "fs-idp151564224": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>2HCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>NO</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}(g)+\\text{2HCl}(aq)\\, \\longrightarrow \\, \\text{NO}(g)+{{\\text{Cl}}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)}",
+    "isBlock": true
+  }
+}

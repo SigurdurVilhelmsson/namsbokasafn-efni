@@ -1,0 +1,24 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{CO}}}_{2}^{\\text{−}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>OSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{OSO}}}_{3}^{\\text{−}},}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{SO}}}_{3}^{\\text{−}}}"
+  },
+  "fs-idm23374592": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>aq</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>aq</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Fe</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{Fe}}}^{{\\text{3+}}}(aq)+3{{\\text{Cl}}}^{\\text{−}}(aq)+6{\\text{H}}_{2}\\text{O}{(l)}\\, \\longrightarrow \\, \\text{Fe}{{{({\\text{OH}})}}}_{3}({s)}+{\\text{H}}_{3}{\\text{O}}^{\\text{+}}({aq})+3{{\\text{Cl}}}^{\\text{−}}({aq)}.}",
+    "isBlock": true
+  },
+  "fs-idp53295104": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Au</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Au</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{Au}}}^{{\\text{3+}}}+3{\\text{e}}^{\\text{−}}\\, \\longrightarrow \\, \\text{Au}}",
+    "isBlock": true
+  }
+}

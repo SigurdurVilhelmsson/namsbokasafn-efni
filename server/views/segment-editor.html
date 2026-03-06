@@ -1646,6 +1646,7 @@
                 <button type="button" class="tb-bold" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','**','**')" title="Feitletrað (Ctrl+B)"><b>B</b></button>
                 <button type="button" class="tb-italic" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','*','*')" title="Skáletrað (Ctrl+I)"><i>I</i></button>
                 <button type="button" class="tb-term" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','__','__')" title="Hugtak (Ctrl+T)">T</button>
+                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','++','++')"><u>U</u></button>
                 <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','~','~')" title="Niðurskrift">x<sub>2</sub></button>
                 <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','^','^')" title="Uppskrift">x<sup>2</sup></button>
               </div>
@@ -1752,11 +1753,19 @@
         }
       }
 
-      // Hard block: [text](#anchor) links in original IS but removed
-      const origLinks = (originalIs || '').match(/\[[^\]]+\]\(#[^)]+\)/g) || [];
+      // Hard block: [text](#anchor) or [text](doc#target) links in original IS but removed
+      const origLinks = (originalIs || '').match(/\[[^\]]+\]\([^)]+\)/g) || [];
       for (const link of origLinks) {
         if (!editedIs.includes(link)) {
           blocked.push(`Hlekkur ${link} var fjarlægður.`);
+        }
+      }
+
+      // Hard block: [doc#target] self-closing document refs in EN but missing from edited IS
+      const enDocRefs = (enText || '').match(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g) || [];
+      for (const ref of enDocRefs) {
+        if (!editedIs.includes(ref)) {
+          blocked.push(`Skjaltilvísun ${ref} vantar — hún er í enskum texta og má ekki fjarlægja.`);
         }
       }
 
@@ -1764,6 +1773,7 @@
       const pairs = [
         { marker: '**', name: 'feitletrað (**)', re: /\*\*/g },
         { marker: '__', name: 'hugtak (__)', re: /__/g },
+        { marker: '++', name: 'undirstrikað (++)', re: /\+\+/g },
       ];
       for (const { name, re } of pairs) {
         const count = (editedIs.match(re) || []).length;
@@ -1987,8 +1997,16 @@
       // 3. [#CNX_...] cross-references (before general bracket matching)
       html = html.replace(/\[#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Tilvísun: $1">&#128247;</span>');
 
-      // 4. [text](#anchor) document links
-      html = html.replace(/\[([^\]]+)\]\(#([^)]+)\)/g, '<span class="link-chip" title="Hlekkur: #$2">$1 &#128279;</span>');
+      // 3b. [doc#target] self-closing document cross-references
+      html = html.replace(/\[([A-Za-z0-9_.-]+)#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Skjal: $1, tilvísun: $2">&#128247;</span>');
+
+      // 4. [text](#anchor) and [text](doc#target) links
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(m, text, url) {
+        if (url.charAt(0) === '#') {
+          return '<span class="link-chip" title="Hlekkur: ' + url + '">' + text + ' &#128279;</span>';
+        }
+        return '<span class="link-chip" title="Skjalhlekkur: ' + url + '">' + text + ' &#128279;</span>';
+      });
 
       // 5. **bold** (before italic to avoid * conflicts)
       html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -2004,6 +2022,9 @@
 
       // 9. ^superscript^
       html = html.replace(/\^(.+?)\^/g, '<sup>$1</sup>');
+
+      // 10. ++underline++
+      html = html.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
 
       return html;
     }

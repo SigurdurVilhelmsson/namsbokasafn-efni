@@ -1,0 +1,85 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{3}^{\\text{−}},}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NH</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{NH}}_{4}^{\\text{+}},}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{3}^{\\text{−}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{3}^{\\text{−}},}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{3}^{\\text{−}}.}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>C</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>H</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{−}}}{\\text{C}}\\text{−}\\overset{{δ\\text{+}}}{\\text{H}}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>S</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>H</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{−}}}{\\text{S}}\\text{−}\\overset{{δ\\text{+}}}{\\text{H}}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>C</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>N</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{+}}}{\\text{C}}\\text{−}\\overset{{δ\\text{−}}}{\\text{N}}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>N</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>H</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{−}}}{\\text{N}}\\text{−}\\overset{{δ\\text{+}}}{\\text{H}}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>C</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>O</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{+}}}{\\text{C}}\\text{−}\\overset{{δ\\text{−}}}{\\text{O}}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>O</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>H</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{−}}}{\\text{O}}\\text{−}\\overset{{δ\\text{+}}}{\\text{H}}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mtext>C</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>H</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{−}}}{\\text{C}}\\text{−}\\overset{{δ\\text{+}}}{\\text{H}}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>C</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{+}}}{{\\text{Si}}}\\text{−}\\overset{{δ\\text{−}}}{\\text{C}}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mover><m:mrow><m:mtext>Si</m:mtext></m:mrow><m:mrow><m:mi>δ</m:mi><m:mtext>+</m:mtext></m:mrow></m:mover><m:mtext>−</m:mtext><m:mover><m:mtext>O</m:mtext><m:mrow><m:mi>δ</m:mi><m:mtext>−</m:mtext></m:mrow></m:mover></m:mrow></m:math>",
+    "latex": "{\\overset{{δ\\text{+}}}{{\\text{Si}}}\\text{−}\\overset{{δ\\text{−}}}{\\text{O}}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2−}}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{3}^{\\text{−}}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>BH</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{BH}}_{4}^{\\text{−}}}"
+  },
+  "fs-idp80127584": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mtext>H</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>436</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}(g)\\, \\longrightarrow \\, 2\\text{H}(g)\\, \\text{Δ}H=436\\, \\text{kJ}}",
+    "isBlock": true
+  },
+  "fs-idp43869440": {
+    "mathml": "<m:math><m:mrow><m:mtext>2H</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−436</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{2H}(g)\\, \\longrightarrow \\, {\\text{H}}_{\\text{2}}(g)\\, \\text{Δ}H=−436\\, \\text{kJ}}",
+    "isBlock": true
+  },
+  "fs-idm2241360": {
+    "mathml": "<m:math><m:mrow><m:mtext>Cl</m:mtext><m:mo>+</m:mo><m:mtext>Cl</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Cl}+\\text{Cl}\\, \\longrightarrow \\, {{\\text{Cl}}}_{2}}",
+    "isBlock": true
+  }
+}

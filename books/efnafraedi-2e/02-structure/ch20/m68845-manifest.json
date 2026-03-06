@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "moduleId": "m68845",
+  "extractedAt": "2026-03-06T13:09:40.082Z",
+  "sourceHash": "b500961225b00ff0",
+  "segmentCount": 8,
+  "segmentIds": [
+    "m68845:title:auto-1",
+    "m68845:abstract-item:abstract-item-1",
+    "m68845:abstract-item:abstract-item-2",
+    "m68845:abstract-item:abstract-item-3",
+    "m68845:abstract-item:abstract-item-4",
+    "m68845:caption:CNX_Chem_20_00_OrgCompnd-caption",
+    "m68845:para:fs-idm40968368",
+    "m68845:para:fs-idm91844560"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 2,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_20_00_OrgCompnd"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "moduleId": "m68820",
+  "extractedAt": "2026-03-06T13:09:39.913Z",
+  "sourceHash": "538ac742677c4077",
+  "segmentCount": 10,
+  "segmentIds": [
+    "m68820:title:auto-1",
+    "m68820:abstract-item:abstract-item-1",
+    "m68820:abstract-item:abstract-item-2",
+    "m68820:abstract-item:abstract-item-3",
+    "m68820:abstract-item:abstract-item-4",
+    "m68820:abstract-item:abstract-item-5",
+    "m68820:abstract-item:abstract-item-6",
+    "m68820:abstract-item:abstract-item-7",
+    "m68820:caption:CNX_Chem_17_00_EVCharging-caption",
+    "m68820:para:fs-idm9057728"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_17_00_EVCharging"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

@@ -1,0 +1,2585 @@
+{
+  "moduleId": "m68741",
+  "title": {
+    "segmentId": "m68741:title:auto-1",
+    "text": "Strengths of Ionic and Covalent Bonds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d9a2a6fa-520e-4317-a0c5-56da7bece584",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the energetics of covalent and ionic bond formation and breakage",
+        "Use the Born-Haber cycle to compute lattice energies for ionic compounds",
+        "Use average covalent bond energies to estimate enthalpies of reaction"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp176876736",
+      "segmentId": "m68741:para:fs-idp176876736"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp66065152",
+      "class": null,
+      "title": {
+        "segmentId": "m68741:title:fs-idp66065152-title",
+        "text": "Bond Strength: Covalent Bonds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm12470240",
+          "segmentId": "m68741:para:fs-idm12470240"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp84340368",
+          "segmentId": "m68741:para:fs-idp84340368"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm36464112",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm12974112",
+          "segmentId": "m68741:para:fs-idm12974112"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp119487888",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp244347920",
+          "segmentId": "m68741:para:fs-idp244347920"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp286503296",
+          "class": "scaled-down",
+          "alt": "A reaction is shown with Lewis structures. The first structure shows a carbon atom single bonded to four hydrogen atoms with the symbol, “( g )” written next to it. A right-facing arrow points to the letter “C” and the symbol “( g ),” which is followed by a plus sign. Next is the number 4, the letter “H” and the symbol, “( g ).” To the right of this equation is another equation: capital delta H superscript degree symbol equals 1660 k J.",
+          "src": "../../media/CNX_Chem_07_05_CH4bond_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp85707472",
+          "segmentId": "m68741:para:fs-idp85707472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26225392",
+          "segmentId": "m68741:para:fs-idp26225392"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp13638832",
+          "summary": "This table has six columns and twenty-four rows. The first row is a header row that labels the columns: “Bond,” “Bond Energy,” “Bond,” “Bond Energy,” “Bond,” and, “Bond Energy.” Under the first “Bond” column are the values: H bond to H with a single bond; H bonds to C with a single bond; H bonds to N with a single bond; H bonds to O with a single bond; H bonds to F with a single bond; H bonds to S i with a single bond; H bonds to P with a single bond; H bonds to S with a single bond; H bonds to C l with a single bond; H bonds to B r with a single bond; H bonds to I with a single bond; C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; C bonds to O with a triple bond; C bonds to F with a single bond; C bonds to S i with a single bond; and C bonds to P with a single bond. Under the first “Bond Energy” column are the values: 436; 415; 390; 464; 569; 395; 320; 340; 432; 370; 295; 345; 611; 837; 290; 615; 891; 350; 741; 1080; 439; 360; and 265. Under the second “Bond” column are the values: C bonds to S with a single bond; C bonds to C l with a single bond; C bonds to B r with a single bond; C bonds to I with a single bond; N bonds to N with a single bond; N bonds to N with a double bond; N bonds to N with a triple bond; N bonds to O with a single bond; N bonds to F with a single bond; N bonds to P with a single bond; N bonds to C l with a single bond; N bonds to B r with a single bond; O bonds to O with a single bond; O bonds to O with a double bond; O bonds to F with a single bond; O bonds to S i with a single bond; O bonds to P with a single bond; O bonds to C l with a single bond; O bonds to I with a single bond; F bonds to F with a single bond; F bonds to S i with a single bond; F bonds to P with a single bond; and F bonds to S with a single bond. Under the second “Bond Energy” column are the values: 260; 330; 275; 240; 160; 418; 946; 200; 270; 210; 200; 245; 140; 498; 160; 370; 350; 205; 200; 160; 540; 489; and 285. Under the third “Bond” column are the values: F bonds to C l with a single bond; F bonds to B r with a single bond; S i bonds to S i with a single bond; S i bonds to P with a single bond; S i bonds to S with a single bond; S i bonds to C l with a single bond; S i bonds to B r with a single bond; S i bonds to I with a single bond; P bonds to P with a single bond; P bonds to S with a single bond; P bonds to C l with a single bond; P bonds to B r with a single bond; P bonds to I with a single bond; S bonds to S with a single bond; S bonds to C l with a single bond; S bonds to B r with a single bond; C l bonds to C l with a single bond; C l bonds to B r with a single bond; C l bonds to I with a single bond; B r bonds to B r with a single bond; B r bonds to I with a single bond; I bonds to I with a single bond; and the last cell in the column is empty. Under the third “Bond Energy” column are the values: 255; 235; 230; 215; 225; 359; 290; 215; 215; 230; 330; 270; 215; 215; 250; 215; 243; 220; 210; 190; 180; 150; and the last cell in the column is empty.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-14",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c6",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-15",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-16",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-17",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-18",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-19",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-20",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-21",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-22",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-23",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-24",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-25",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-26",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-28",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-30",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-31",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-32",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-33",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-34",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-35",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-36",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-37",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-38",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-39",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-40",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-41",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-43",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-44",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-45",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-46",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-47",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-99",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68741:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-142",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-143",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-145",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-146",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-147",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-148",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-149",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-150",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-151",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-152",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-153",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-154",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-155",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-156",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {}
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm44464336",
+          "class": "top-titled",
+          "summary": "This table has three columns and ten rows. The first row is a header row that labels the columns: “Bond,” “Bond Length in angstroms,” and, “Bond Energy in k J / mol.” Under the column “Bond” are the values: C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; and C bonds to O with a triple bond. Under the column “Bond Length in angstroms” are the values: 1.54; 1.34; 1.20; 1.43; 1.38; 1.16; 1.43; 1.23; and 1.13. Under the column “Bond Energy in k J / mol” are the values: 345; 611; 837; 290; 615; 891; 350; 741; and 1080.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-157",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-158",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-159",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-160",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-161",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-162",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-163",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-164",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-165",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-166",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-167",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-168",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-169",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-170",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-171",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-172",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-173",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-174",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-175",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-176",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-177",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-178",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-179",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-180",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-181",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-182",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-183",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-184",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-185",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-186",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-187",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp29959728",
+          "segmentId": "m68741:para:fs-idp29959728"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp234028832",
+          "segmentId": "m68741:para:fs-idp234028832"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm40243760",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp118053616",
+          "segmentId": "m68741:para:fs-idp118053616"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp17129504",
+          "segmentId": "m68741:para:fs-idp17129504"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp51383312",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp77710320",
+          "segmentId": "m68741:para:fs-idp77710320"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp56299152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp201091440",
+          "segmentId": "m68741:para:fs-idp201091440"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp14860448",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp29639024",
+          "segmentId": "m68741:para:fs-idp29639024"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm33428592",
+          "title": {
+            "segmentId": "m68741:example-title:fs-idm33428592-title",
+            "text": "Using Bond Energies to Calculate Approximate Enthalpy Changes"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp71590928",
+              "segmentId": "m68741:para:fs-idp71590928"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp41458304",
+              "segmentId": "m68741:para:fs-idp41458304",
+              "title": {
+                "segmentId": "m68741:para-title:fs-idp41458304-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp202067232",
+              "segmentId": "m68741:para:fs-idp202067232"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp53734416",
+              "segmentId": "m68741:para:fs-idp53734416"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp126256512",
+              "segmentId": "m68741:para:fs-idp126256512"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp56832128",
+              "segmentId": "m68741:para:fs-idp56832128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp36454672",
+              "segmentId": "m68741:para:fs-idp36454672",
+              "title": {
+                "segmentId": "m68741:para-title:fs-idp36454672-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27645248",
+              "segmentId": "m68741:para:fs-idp27645248"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp24314032",
+              "segmentId": "m68741:para:fs-idp24314032"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp93467344"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp76020096"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm103164880"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp158903840"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp88406224",
+              "title": {
+                "segmentId": "m68741:note-title:fs-idp88406224-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp24314032",
+                  "segmentId": "m68741:para:fs-idp24314032"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm34679504",
+      "class": null,
+      "title": {
+        "segmentId": "m68741:title:fs-idm34679504-title",
+        "text": "Ionic Bond Strength and Lattice Energy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm57606496",
+          "segmentId": "m68741:para:fs-idm57606496"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp69066736",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm45000976",
+          "segmentId": "m68741:para:fs-idm45000976"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp17453088",
+          "segmentId": "m68741:para:fs-idp17453088"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm6917696",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp14812032",
+          "segmentId": "m68741:para:fs-idp14812032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp119064064",
+          "segmentId": "m68741:para:fs-idp119064064"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp16649648",
+          "title": {
+            "segmentId": "m68741:example-title:fs-idp16649648-title",
+            "text": "Lattice Energy Comparisons"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm39273856",
+              "segmentId": "m68741:para:fs-idm39273856"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3251216",
+              "segmentId": "m68741:para:fs-idm3251216",
+              "title": {
+                "segmentId": "m68741:para-title:fs-idm3251216-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp49595360",
+              "segmentId": "m68741:para:fs-idp49595360",
+              "title": {
+                "segmentId": "m68741:para-title:fs-idp49595360-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp821600",
+              "segmentId": "m68741:para:fs-idp821600"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp176836208",
+              "title": {
+                "segmentId": "m68741:note-title:fs-idp176836208-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp821600",
+                  "segmentId": "m68741:para:fs-idp821600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp112167568",
+      "class": null,
+      "title": {
+        "segmentId": "m68741:title:fs-idp112167568-title",
+        "text": "The Born-Haber Cycle"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp51725632",
+          "segmentId": "m68741:para:fs-idp51725632"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp77725760",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68741:item:fs-idp77725760-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68741:item:fs-idp77725760-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68741:item:fs-idp77725760-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68741:item:fs-idp77725760-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m68741:item:fs-idp77725760-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m68741:item:fs-idp77725760-item-6"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm6705632",
+          "segmentId": "m68741:para:fs-idm6705632"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_05_BornHaber",
+          "caption": {
+            "segmentId": "m68741:caption:CNX_Chem_07_05_BornHaber-caption"
+          },
+          "media": {
+            "id": "fs-idp9559440",
+            "alt": "A diagram is shown. An upward facing arrow is drawn to the far left of the chart and is labeled “H increasing.” A horizontal line is drawn at the bottom of the chart. A downward-facing, vertical arrow to the left side of this line is labeled, “Overall change.” Beside this arrow is another label, “capital delta H subscript f, equals negative 553.5 k J per mol, ( Enthalpy of formation ).” Three horizontal lines, one above the other, and all above the bottom line, are labeled, from bottom to top, as: “C s ( s ), plus sign, one half F subscript 2, ( g ),” “C s ( g ), plus sign, one half F subscript 2, ( g ),” and “C s, superscript positive sign, ( g ), plus sign, one half F subscript 2, ( g ).” Each of these lines is connected by an upward-facing vertical arrow. Each arrow is labeled, “capital delta H subscript 1, equals 76.5 k J per mol, ( Enthalpy of sublimation ),” “capital delta H subscript 2, equals 375.7 k J per mol, ( ionization energy ),” and “capital delta H subscript 3 equals 79.4 k J / mol ( one half dissociation energy ).” Another horizontal line is drawn in the center top portion of the diagram and is labeled “C s, superscript positive sign, ( g ), plus sign, F, ( g ).” There is one more horizontal line drawn to the right of the overall diagram and located halfway down the image. An arrow connects the top line to this line and is labeled, “capital delta H equals negative 328.2 k J / mol ( electron affinity ).” The line is labeled, “C s superscript positive sign ( g ) plus F superscript negative sign ( g ).” The arrow connecting this line to the bottom line is labeled, “negative capital delta H subscript lattice equals negative 756.9 k J / mol.” The arrow points to a label on the bottom line which reads, “C s F ( s ).”",
+            "src": "../../media/CNX_Chem_07_05_BornHaber.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53345328",
+          "segmentId": "m68741:para:fs-idp53345328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm23453808",
+          "segmentId": "m68741:para:fs-idm23453808"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm33829552",
+          "class": "column-header",
+          "summary": "This table has two columns and six rows. The first row is labeled, “Enthalpy of sublimation of C s ( s )” and the enthalpy reaction is C s ( s ) yields C s ( g ). Beside this equation is capital delta H which equals capital delta H subscript s superscript degree symbol which also equals 76.5 k J. The second row is labeled, “One-half of the bond energy of C l subscript 2.” The equation for this is one half C l subscript 2 ( g ) yields C l ( g ). Beside this equation is capital delta H equals one half D which also equals 122 k J. The third row is labeled, “Ionization Energy of N a ( g ).” The equation for the ionization energy of N a ( g ) is N a ( g ) yields N a superscript positive sign ( g ) plus lower case e superscript negative sign. Beside this equation is capital delta H equals I E which also equals 496 k J. The fourth row is labeled, “Negative of the electron affinity of C l.” The equation for this is C l ( g ) plus lowercase e superscript negative sign yields C l superscript negative sign ( g ). Beside this equation is capital delta H equals negative E A which also equals negative 368 k J. The fifth row is labeled “Negative of the lattice energy of N a C l ( s ).” The equation for this is N a superscript positive sign ( g ) plus C l superscript negative sign ( g ) yields N a C l ( s ). Beside this equation is capital delta H equals negative capital delta H subscript lattice which also equals unknown. The sixth and final row is labeled, “Enthalpy of formation of N a C l ( s ), add steps 1 - 5.” The equation for this is capital delta H equals capital delta H subscript f superscript degree symbol which also equals capital delta H subscript s superscript degree symbol plus one-half D plus I E plus negative E A plus negative capital delta H subscript lattice. Underneath that equation, is another which is N a ( s ) plus one-half C l subscript 2 ( g ) yields N a C l ( s ) which equals negative 411 k J.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-236",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-237",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-238",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-239",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-240",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-241",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-242",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-243",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-244",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-245",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-246",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-247",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-248",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-249",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-250",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-251",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-252",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-253",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28364752",
+          "segmentId": "m68741:para:fs-idp28364752"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp37818096",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm78151632",
+          "segmentId": "m68741:para:fs-idm78151632"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10039728",
+          "segmentId": "m68741:para:fs-idm10039728"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp234492208",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68741:title:fs-idp234492208-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm21693280",
+          "segmentId": "m68741:para:fs-idm21693280"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm37663600",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68741:title:fs-idm37663600-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-260",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-261",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-262",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-263",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp75946800",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68741:title:fs-idp75946800-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp18527664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp75695024",
+                "segmentId": "m68741:problem:fs-idp75695024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp174181168",
+                "segmentId": "m68741:problem:fs-idp174181168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp191457408",
+                "segmentId": "m68741:problem:fs-idp191457408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37995600",
+                "segmentId": "m68741:problem:fs-idm37995600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19512320",
+                "segmentId": "m68741:problem:fs-idp19512320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2333776",
+                "segmentId": "m68741:problem:fs-idm2333776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp120232048",
+                "segmentId": "m68741:problem:fs-idp120232048"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16780032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm20426752",
+                "segmentId": "m68741:problem:fs-idm20426752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp13624240",
+                "segmentId": "m68741:problem:fs-idp13624240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm48592992",
+                "segmentId": "m68741:problem:fs-idm48592992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm27033728",
+                "segmentId": "m68741:problem:fs-idm27033728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5136112",
+                "segmentId": "m68741:solution:fs-idm5136112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp57429280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp240397744",
+                "segmentId": "m68741:problem:fs-idp240397744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp188770912",
+                "segmentId": "m68741:problem:fs-idp188770912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp123909120",
+                "segmentId": "m68741:problem:fs-idp123909120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp30139536",
+                "segmentId": "m68741:problem:fs-idp30139536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp28520976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp220216256",
+                "segmentId": "m68741:problem:fs-idp220216256"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm52245504",
+                "segmentId": "m68741:solution:fs-idm52245504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20766256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm22015856",
+                "segmentId": "m68741:problem:fs-idm22015856"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19159472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16480976",
+                "segmentId": "m68741:problem:fs-idp16480976"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm85832672",
+                "segmentId": "m68741:solution:fs-idm85832672"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp65498352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23041312",
+                "segmentId": "m68741:problem:fs-idp23041312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19660960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16871296",
+                "segmentId": "m68741:problem:fs-idp16871296"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm223998784",
+                "segmentId": "m68741:solution:fs-idm223998784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2894352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp88452992",
+                "segmentId": "m68741:problem:fs-idp88452992"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm22310960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16666592",
+                "segmentId": "m68741:problem:fs-idp16666592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46735152",
+                "segmentId": "m68741:solution:fs-idp46735152"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp57420000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78457664",
+                "segmentId": "m68741:problem:fs-idp78457664"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp12625232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15947888",
+                "segmentId": "m68741:problem:fs-idp15947888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm3330960",
+                "segmentId": "m68741:problem:fs-idm3330960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp235052400",
+                "segmentId": "m68741:problem:fs-idp235052400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp15127728",
+                "segmentId": "m68741:problem:fs-idp15127728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm33928080",
+                "segmentId": "m68741:problem:fs-idm33928080"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp77726880",
+                "segmentId": "m68741:solution:fs-idp77726880"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm30060832",
+          "class": "unnumbered",
+          "summary": "This table has three columns and three rows. The first row is a header row that labels the columns: “Element,” “First Ionization Energy in k J / mol,” and “Second Ionization Energy in k J / mol.” Under the column “Element” are the letters: K and C a. Under the column “First Ionization Energy in k J / mol” are the values: 419 and 590. Under the column “Second Ionization Energy in k J / mol” are the values: 3050 and 1140.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-299",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-300",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-301",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-302",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-303",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-304",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-305",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-306",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-307",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp46666496",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp794240",
+                "segmentId": "m68741:problem:fs-idp794240"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp236067168",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp236067680",
+                "segmentId": "m68741:problem:fs-idp236067680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp211527872",
+                "segmentId": "m68741:problem:fs-idp211527872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp90299856",
+                "segmentId": "m68741:problem:fs-idp90299856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp90300240",
+                "segmentId": "m68741:problem:fs-idp90300240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp174354464",
+                "segmentId": "m68741:problem:fs-idp174354464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp174354848",
+                "segmentId": "m68741:problem:fs-idp174354848"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38686016",
+                "segmentId": "m68741:solution:fs-idm38686016"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39061296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm39060784",
+                "segmentId": "m68741:problem:fs-idm39060784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48865984",
+                "segmentId": "m68741:problem:fs-idp48865984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm52945984",
+                "segmentId": "m68741:problem:fs-idm52945984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37748736",
+                "segmentId": "m68741:problem:fs-idm37748736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37748352",
+                "segmentId": "m68741:problem:fs-idm37748352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm38878512",
+                "segmentId": "m68741:problem:fs-idm38878512"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp55219680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10681552",
+                "segmentId": "m68741:problem:fs-idp10681552"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27862512",
+                "segmentId": "m68741:solution:fs-idm27862512"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm27862256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23005520",
+                "segmentId": "m68741:problem:fs-idp23005520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm42318048",
+                "segmentId": "m68741:problem:fs-idm42318048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14229536",
+                "segmentId": "m68741:problem:fs-idp14229536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14229920",
+                "segmentId": "m68741:problem:fs-idp14229920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm39601280",
+                "segmentId": "m68741:problem:fs-idm39601280"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp29388832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp19286784",
+                "segmentId": "m68741:problem:fs-idp19286784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1147008",
+                "segmentId": "m68741:problem:fs-idp1147008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp26686336",
+                "segmentId": "m68741:problem:fs-idp26686336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp81635552",
+                "segmentId": "m68741:problem:fs-idp81635552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp55153232",
+                "segmentId": "m68741:problem:fs-idp55153232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp55110752",
+                "segmentId": "m68741:problem:fs-idp55110752"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm42840272",
+                "segmentId": "m68741:solution:fs-idm42840272"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51586816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51587328",
+                "segmentId": "m68741:problem:fs-idp51587328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm8325008",
+                "segmentId": "m68741:problem:fs-idm8325008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm8324624",
+                "segmentId": "m68741:problem:fs-idm8324624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2086432",
+                "segmentId": "m68741:problem:fs-idm2086432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2086048",
+                "segmentId": "m68741:problem:fs-idm2086048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp185408896",
+                "segmentId": "m68741:problem:fs-idp185408896"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56209472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16978800",
+                "segmentId": "m68741:problem:fs-idp16978800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16979312",
+                "segmentId": "m68741:problem:fs-idp16979312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp58281056",
+                "segmentId": "m68741:problem:fs-idp58281056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48854512",
+                "segmentId": "m68741:problem:fs-idp48854512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp123580176",
+                "segmentId": "m68741:problem:fs-idp123580176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp110456432",
+                "segmentId": "m68741:problem:fs-idp110456432"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33170288",
+                "segmentId": "m68741:solution:fs-idm33170288"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp15208208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15208720",
+                "segmentId": "m68741:problem:fs-idp15208720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18704480",
+                "segmentId": "m68741:problem:fs-idp18704480"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68741:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68741:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68741:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68741:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp10319376",
+        "termSegmentId": "m68741:glossary-term:fs-idp10319376-term",
+        "definitionSegmentId": "m68741:glossary-def:fs-idp10319376-def"
+      },
+      {
+        "id": "fs-idp39711472",
+        "termSegmentId": "m68741:glossary-term:fs-idp39711472-term",
+        "definitionSegmentId": "m68741:glossary-def:fs-idp39711472-def"
+      },
+      {
+        "id": "fs-idp29295648",
+        "termSegmentId": "m68741:glossary-term:fs-idp29295648-term",
+        "definitionSegmentId": "m68741:glossary-def:fs-idp29295648-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp57448112",
+      "class": null,
+      "alt": "A Lewis structure is shown. A carbon atom that is single bonded to three hydrogen atoms is bonded to a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms. The second carbon atom is single bonded to a third carbon atom that is triple bonded to a fourth carbon atom and single bonded to a fifth carbon atom. The fifth carbon atom is single bonded to a hydrogen atom and double bonded to a sixth carbon atom that is single bonded to two hydrogen atoms.",
+      "src": "../../media/CNX_Chem_07_05_C6H8ans_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,91 @@
+{
+  "moduleId": "m68828",
+  "title": {
+    "segmentId": "m68828:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "aa4dab2c-4908-4a31-bc42-1af345c323c6",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Periodicity",
+        "Occurrence and Preparation of the Representative Metals",
+        "Structure and General Properties of the Metalloids",
+        "Structure and General Properties of the Nonmetals",
+        "Occurrence, Preparation, and Compounds of Hydrogen",
+        "Occurrence, Preparation, and Properties of Carbonates",
+        "Occurrence, Preparation, and Properties of Nitrogen",
+        "Occurrence, Preparation, and Properties of Phosphorus",
+        "Occurrence, Preparation, and Compounds of Oxygen",
+        "Occurrence, Preparation, and Properties of Sulfur",
+        "Occurrence, Preparation, and Properties of Halogens",
+        "Occurrence, Preparation, and Properties of the Noble Gases"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_00_SilWafer",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68828:caption:CNX_Chem_18_00_SilWafer-caption"
+      },
+      "media": {
+        "id": "fs-idm340240",
+        "alt": "Three photos are shown. The first shows a scientific lab full of equipment in which two people in protective suits are working. The second image shows a man holding a round, reflective disc held inside of a protective, clear container. The third image shows a round disc covered in metallic chips which is behind a protective covering.",
+        "src": "../../media/CNX_Chem_18_00_SilWafer.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp11367904",
+      "segmentId": "m68828:para:fs-idp11367904"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-6"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-7"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-8"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-9"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-10"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-11"
+      },
+      {
+        "segmentId": "m68828:abstract-item:abstract-item-12"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

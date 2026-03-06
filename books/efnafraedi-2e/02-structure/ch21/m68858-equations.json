@@ -1,0 +1,75 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>1 decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{1 decay}}}{\\text{s}},}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>3.7</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>11</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{3.7\\, \\times \\, {{10}}^{{11}}\\, \\text{decay}}}{\\text{s}},}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idp224481296": {
+    "mathml": "<m:math><m:mrow><m:mtext>number of rems</m:mtext><m:mo>=</m:mo><m:mtext>RBE</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>number of rads</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{number of rems}=\\text{RBE}\\, \\times \\, \\text{number of rads}}",
+    "isBlock": true
+  },
+  "fs-idp18555456": {
+    "mathml": "<m:math><m:mrow><m:mtext>Activity</m:mtext><m:mo>=</m:mo><m:mi>λ</m:mi><m:mi>N</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mrow><m:mtext>5.26 y</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>5.00 g</m:mtext><m:mo>=</m:mo><m:mn>0.659</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mtext>g</m:mtext><m:mtext>y</m:mtext></m:mfrac><m:mspace width=\"0.4em\"/><m:mtext>of Co−60 that decay</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Activity}=λN=\\, {({\\frac{{\\text{ln 2}}}{{{t}_{{1\\text{/}2}}}}})}N=\\, {({\\frac{{\\text{ln 2}}}{{\\text{5.26 y}}}})}\\, \\times \\, \\text{5.00 g}=0.659\\, \\frac{\\text{g}}{\\text{y}}\\, \\text{of Co−60 that decay}}",
+    "isBlock": true
+  },
+  "fs-idp12096528": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mn>0.659</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mtext>g</m:mtext><m:mtext>y</m:mtext></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 y</m:mtext></m:mrow><m:mrow><m:mtext>365 d</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.3em\"/><m:mfrac><m:mrow><m:mtext>1 d</m:mtext></m:mrow><m:mrow><m:mtext>24 h</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 h</m:mtext></m:mrow><m:mrow><m:mtext>3600 s</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol</m:mtext></m:mrow><m:mrow><m:mtext>59.9 g</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>6.02</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>atoms</m:mtext></m:mrow><m:mrow><m:mtext>1 mol</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 decay</m:mtext></m:mrow><m:mrow><m:mtext>1 atom</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mtext>\t</m:mtext><m:mtext>\t</m:mtext><m:mo>=</m:mo><m:mn>2.10</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>14</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} 0.659\\, \\frac{\\text{g}}{\\text{y}}\\, \\times \\, \\frac{{\\text{1 y}}}{{\\text{365 d}}}\\, \\times \\, \\frac{{\\text{1 d}}}{{\\text{24 h}}}\\, \\times \\, \\frac{{\\text{1 h}}}{{\\text{3600 s}}}\\, \\times \\, \\frac{{\\text{1 mol}}}{{\\text{59.9 g}}}\\, \\times \\, \\frac{{6.02\\, \\times \\, {{10}}^{{23}}\\, \\text{atoms}}}{{\\text{1 mol}}}\\, \\times \\, \\frac{{\\text{1 decay}}}{{\\text{1 atom}}} \\\\ \\text\\text=2.10\\, \\times \\, {10}^{{14}}\\, \\frac{{\\text{decay}}}{\\text{s}} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idp27507232": {
+    "mathml": "<m:math><m:mrow><m:mn>2.10</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>14</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>1 Bq</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>2.10</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>14</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Bq</m:mtext></m:mrow></m:math>",
+    "latex": "{2.10\\, \\times \\, {{10}}^{{14}}\\, \\frac{{\\text{decay}}}{\\text{s}}\\, \\times \\, {({\\frac{{\\text{1 Bq}}}{{1\\, {\\text{decay}}\\text{s}}}})}\\, =2.10\\, \\times \\, {{10}}^{{14}}\\, \\text{Bq}}",
+    "isBlock": true
+  },
+  "fs-idp6096224": {
+    "mathml": "<m:math><m:mrow><m:mn>2.10</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>14</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac><m:mspace width=\"0.3em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>1 Ci</m:mtext></m:mrow><m:mrow><m:mfrac><m:mrow><m:mn>3.7</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>11</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>decay</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>5.7</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Ci</m:mtext></m:mrow></m:math>",
+    "latex": "{2.10\\, \\times \\, {{10}}^{{14}}\\, \\frac{{\\text{decay}}}{\\text{s}}\\, \\times \\, {({\\frac{{\\text{1 Ci}}}{{{3.7\\, \\times \\, {10}^{11}\\, \\text{decay}}\\text{s}}}})}\\, =5.7\\, \\times \\, {{10}}^{2}\\, \\text{Ci}}",
+    "isBlock": true
+  }
+}

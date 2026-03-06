@@ -1,0 +1,27 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>50,000</m:mn></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{{50,000}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>XeO</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>4−</m:mn></m:mrow></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{XeO}}}_{6}^{{4−}},}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>XeF</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{XeF}}}_{3}^{+}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>XeO</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>4−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{XeO}}}_{6}^{{4−}}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mtext>Xe</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>3F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width=\"0.4em\"/><m:mtext>Δ</m:mtext><m:mspace width=\"0.4em\"/></m:mrow></m:mover><m:mspace width=\"0.2em\"/><m:msub><m:mtext>XeF</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>XeF</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>3H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>6HF</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>Xe</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} \\text{Xe}(g)+{\\text{3F}}_{2}(g)\\, \\overset{{\\, \\text{Δ}\\,}}{\\rightarrow}\\, {\\text{XeF}}_{6}(s) \\\\ {\\text{XeF}}_{6}(s)+{\\text{3H}}_{2}(g)\\, \\longrightarrow \\, \\text{6HF}(g)+\\text{Xe}(g) \\end{aligned}"
+  },
+  "fs-idp163241808": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>XeF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>XeO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>6HF</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{XeF}}}_{6}(s)+{{\\text{3H}}}_{2}\\text{O}(l)\\, \\longrightarrow \\, {{\\text{XeO}}}_{3}(aq)+\\text{6HF}(aq)}",
+    "isBlock": true
+  }
+}

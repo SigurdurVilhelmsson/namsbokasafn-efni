@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "moduleId": "m68826",
+  "extractedAt": "2026-03-06T13:10:42.079Z",
+  "sourceHash": "f2ecab9e371167c9",
+  "segmentCount": 45,
+  "segmentIds": [
+    "m68826:title:auto-1",
+    "m68826:abstract:auto-2",
+    "m68826:abstract-item:abstract-item-1",
+    "m68826:abstract-item:abstract-item-2",
+    "m68826:para:fs-idm166398976",
+    "m68826:note-title:fs-idp45256160-title",
+    "m68826:para:fs-idp5636784",
+    "m68826:para:fs-idp86988528",
+    "m68826:para:fs-idm141572624",
+    "m68826:caption:CNX_Chem_17_06_Statue-caption",
+    "m68826:para:fs-idp12347424",
+    "m68826:para:fs-idp87448896",
+    "m68826:para:fs-idm55785904",
+    "m68826:caption:CNX_Chem_17_06_Rust-caption",
+    "m68826:para:fs-idm124143584",
+    "m68826:para:fs-idm43841616",
+    "m68826:para:fs-idp11604000",
+    "m68826:para:fs-idm71940736",
+    "m68826:caption:CNX_Chem_17_06_Protect-caption",
+    "m68826:title:fs-idm148527888-title",
+    "m68826:para:fs-idp43911248",
+    "m68826:title:fs-idp84837104-title",
+    "m68826:problem:fs-idm159094112",
+    "m68826:problem:fs-idm106993264",
+    "m68826:problem:fs-idm92240832",
+    "m68826:problem:fs-idm152200272",
+    "m68826:problem:fs-idm44327920",
+    "m68826:problem:fs-idm139683152",
+    "m68826:solution:fs-idm8394032",
+    "m68826:problem:fs-idm128295744",
+    "m68826:problem:fs-idm105694080",
+    "m68826:solution:fs-idm138515808",
+    "m68826:problem:fs-idp1980032",
+    "m68826:problem:fs-idp71069984",
+    "m68826:solution:fs-idm142282624",
+    "m68826:glossary-term:fs-idp84325552-term",
+    "m68826:glossary-def:fs-idp84325552-def",
+    "m68826:glossary-term:fs-idm126591232-term",
+    "m68826:glossary-def:fs-idm126591232-def",
+    "m68826:glossary-term:fs-idm145050816-term",
+    "m68826:glossary-def:fs-idm145050816-def",
+    "m68826:glossary-term:fs-idm153016624-term",
+    "m68826:glossary-def:fs-idm153016624-def",
+    "m68826:glossary-term:fs-idm218315856-term",
+    "m68826:glossary-def:fs-idm218315856-def"
+  ],
+  "equationCount": 9,
+  "equationIds": [
+    "math-1",
+    "math-2",
+    "fs-idm46037952",
+    "fs-idp47810016",
+    "fs-idm114745024",
+    "fs-idm80958384",
+    "fs-idm42442288",
+    "fs-idp93947408",
+    "fs-idp84776000"
+  ],
+  "elementCounts": {
+    "para": 25,
+    "section": 2,
+    "figure": 3,
+    "table": 0,
+    "example": 0,
+    "exercise": 6,
+    "note": 1,
+    "equation": 2,
+    "list": 0,
+    "media": 0,
+    "glossary": 5
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_17_06_Statue",
+      "CNX_Chem_17_06_Rust",
+      "CNX_Chem_17_06_Protect"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "fs-idp66944528",
+      "fs-idm150150768",
+      "fs-idm127027504",
+      "fs-idp47040832",
+      "fs-idp44419248",
+      "fs-idm80636048"
+    ],
+    "note": [
+      "fs-idp45256160"
+    ],
+    "equation": [
+      "fs-idp93947408",
+      "fs-idp84776000"
+    ],
+    "section": [
+      "fs-idm148527888",
+      "fs-idp84837104"
+    ]
+  }
+}

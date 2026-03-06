@@ -1,0 +1,1001 @@
+{
+  "moduleId": "m68813",
+  "title": {
+    "segmentId": "m68813:title:auto-1",
+    "text": "Lewis Acids and Bases"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7ef9f54c-741b-4311-bbde-d1024521b771",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the Lewis model of acid-base chemistry",
+        "Write equations for the formation of adducts and complex ions",
+        "Perform equilibrium calculations involving formation constants"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp51077712",
+      "segmentId": "m68813:para:fs-idp51077712"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp107912128",
+      "segmentId": "m68813:para:fs-idp107912128"
+    },
+    {
+      "type": "media",
+      "id": "fs-idm2583104",
+      "class": "scaled-down",
+      "alt": "This figure shows two reactions represented with Lewis structures. The first shows an O atom bonded to two H atoms. The O atom has two lone pairs of electrons. There is a plus sign and then an H atom with a superscript positive sign followed by a right-facing arrow. The next Lewis structure is in brackets and shows an O atom bonded to three H atoms. There is one lone pair of electrons on the O atom. Outside of the brackets is a superscript positive sign. The second reaction shows an N atom bonded to three H atoms. The N atom has one lone pair of electrons. There is a plus sign and then an H superscript positive sign. After the H superscript positive sign is a right-facing arrow. The next Lewis structure is in brackets. It shows an N atom bonded to four H atoms. There is a superscript positive sign outside the brackets.",
+      "src": "../../media/CNX_Chem_15_03_hydronium_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp133241888",
+      "segmentId": "m68813:para:fs-idp133241888"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm91313680",
+      "segmentId": "m68813:para:fs-idm91313680"
+    },
+    {
+      "type": "media",
+      "id": "fs-idp160186064",
+      "class": "scaled-down",
+      "alt": "This figure illustrates a chemical reaction using structural formulas. On the left, an F atom is surrounded by four electron dot pairs and has a superscript negative symbol. This structure is labeled below as “Lewis base.” Following a plus sign is another structure which has a B atom at the center and three F atoms single bonded above, right, and below. Each F atom has three pairs of electron dots. This structure is labeled below as “Lewis acid.” Following a right pointing arrow is a structure in brackets that has a central B atom to which 4 F atoms are connected with single bonds above, below, to the left, and to the right. Each F atom in this structure has three pairs of electron dots. Outside the brackets is a superscript negative symbol. This structure is labeled below as “Acid-base adduct.”",
+      "src": "../../media/CNX_Chem_15_02_BF3-LA_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp34388288",
+      "segmentId": "m68813:para:fs-idp34388288"
+    },
+    {
+      "type": "media",
+      "id": "fs-idp134365040",
+      "class": "scaled-down",
+      "alt": "This figure illustrates a chemical reaction using structural formulas. On the left side, a 2 preceeds an N atom which has H atoms single bonded above, to the left, and below. A single electron dot pair is on the right side of the N atom. This structure is labeled below as “Lewis base.” Following a plus sign is an A g atom which has a superscript plus symbol. Following a right pointing arrow is a structure in brackets that has a central A g atom to which N atoms are connected with single bonds to the left and to the right. Each of these N atoms has H atoms bonded above, below, and to the outside of the structure. Outside the brackets is a superscript plus symbol. This structure is labeled below as “Acid-base adduct.”",
+      "src": "../../media/CNX_Chem_15_02_NH3-LBase_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm82519616",
+      "segmentId": "m68813:para:fs-idm82519616"
+    },
+    {
+      "type": "media",
+      "id": "fs-idm21887312",
+      "class": "scaled-down",
+      "alt": "This figure illustrates a chemical reaction using structural formulas. On the left, an O atom is surrounded by four electron dot pairs and has a superscript 2 negative. This structure is labeled below as “Lewis base.” Following a plus sign is another structure which has an S atom at the center. O atoms are single bonded above and below. These O atoms have three electron dot pairs each. To the right of the S atom is a double bonded O atom which has two pairs of electron dots. This structure is labeled below as “Lewis acid.” Following a right pointing arrow is a structure in brackets that has a central S atom to which 4 O atoms are connected with single bonds above, below, to the left, and to the right. Each of the O atoms has three pairs of electron dots. Outside the brackets is a superscript 2 negative. This structure is labeled below as “Acid-base adduct.”",
+      "src": "../../media/CNX_Chem_15_02_NonmetalOx_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm48299344",
+      "segmentId": "m68813:para:fs-idm48299344"
+    },
+    {
+      "type": "media",
+      "id": "fs-idp125718384",
+      "class": null,
+      "alt": "Two chemical reactions in two rows using structural formulas. First row, to the left, in brackets is a structure with a central A g atom to which N atoms are connected with single bonds to the left and right. Each N atom has H atoms bonded above, below, and to the outside. Outside the brackets is a superscript plus symbol. This structure is labeled “Acid-base adduct.” Following a plus sign is a 2 and another structure in brackets that shows a C atom triple bonded to an N atom. The C atom has an unshared electron pair on its left side and the N atom has an unshared pair on its right side. Outside the brackets to the right is a superscript negative symbol. This structure is labeled “Base.” Following a right pointing arrow is a structure in brackets with a central A g atom to which 4 FC atoms are connected with single bonds to the left and right. At each of the two ends, N atoms are triple bonded to the C atoms. The N atoms each have an unshared electron pair at the end of the structure. Outside the brackets is a superscript negative symbol. This structure is labeled “New adduct.” Following a plus sign is an N atom with H atoms single bonded above, to the left, and below. A single electron dot pair is on the left side of the N atom. This structure is labeled “New base.” In the second row, on the left side in brackets is a structure with a central C atom. O atoms, each with three unshared electron pairs, are single bonded above and below and a third O atom, with two unshared electron pairs, is double bonded to the right. Outside the brackets is a superscript 2 negative. This structure is labeled “Acid-base adduct.” Following a plus sign is another structure with an S atom at the center. O atoms are single bonded above and below. These O atoms have three electron dot pairs each. To the right of the S atom is a double bonded O atom which has two pairs of electron dots. This structure is labeled “Acid.” Following a right pointing arrow is a structure in brackets with a central S atom to which 4 O atoms are connected with single bonds above, below, left, and right. Each of the O atoms has three pairs of electron dots. Outside the brackets is a superscript 2 negative. This structure is labeled “New adduct.” Following a plus sign is a structure with a central C atom that has two O atoms, each with two unshared electron pairs, double bonded to the left and right.",
+      "src": "../../media/CNX_Chem_15_02_Displace_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm28146992",
+      "segmentId": "m68813:para:fs-idm28146992"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm50768752",
+      "segmentId": "m68813:para:fs-idm50768752"
+    },
+    {
+      "type": "media",
+      "id": "fs-idm22905296",
+      "class": null,
+      "alt": "A Cu atom is bonded to two C atoms. Each of these C atoms is triple bonded to an N atom. Each N atom has two dots on the side of it.",
+      "src": "../../media/CNX_Chem_15_02_CuCN2-_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm21686128",
+      "segmentId": "m68813:para:fs-idm21686128"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm51220672",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp27469600",
+      "segmentId": "m68813:para:fs-idp27469600"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm86529488",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm80631152",
+      "segmentId": "m68813:para:fs-idm80631152"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp9510016",
+      "segmentId": "m68813:para:fs-idp9510016"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm70908128",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp127318800",
+      "segmentId": "m68813:para:fs-idp127318800"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm30882864",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp22810368",
+      "segmentId": "m68813:para:fs-idp22810368"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp57055872",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm16226016",
+      "segmentId": "m68813:para:fs-idm16226016"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm26618656",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm68296832",
+      "segmentId": "m68813:para:fs-idm68296832"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm87668752",
+      "title": {
+        "segmentId": "m68813:example-title:fs-idm87668752-title",
+        "text": "Dissociation of a Complex Ion"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm7205936",
+          "segmentId": "m68813:para:fs-idm7205936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm75540624",
+          "segmentId": "m68813:para:fs-idm75540624",
+          "title": {
+            "segmentId": "m68813:para-title:fs-idm75540624-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp9002560",
+          "segmentId": "m68813:para:fs-idp9002560"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm192455888",
+          "segmentId": "m68813:para:fs-idm192455888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm16239152",
+          "segmentId": "m68813:para:fs-idm16239152"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp135771888",
+          "segmentId": "m68813:para:fs-idp135771888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm88908448",
+          "segmentId": "m68813:para:fs-idm88908448"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp125455664",
+          "segmentId": "m68813:para:fs-idp125455664",
+          "title": {
+            "segmentId": "m68813:para-title:fs-idp125455664-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm70030480",
+          "segmentId": "m68813:para:fs-idm70030480"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp2484016"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp40680272"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp73621072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm73139120"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm46937952"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp47227680"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm85370448"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp15145408"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp119941104",
+          "title": {
+            "segmentId": "m68813:note-title:fs-idp119941104-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm70030480",
+              "segmentId": "m68813:para:fs-idm70030480"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp45945376",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68813:title:fs-idp45945376-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm14023472",
+          "segmentId": "m68813:para:fs-idm14023472"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp110000448",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68813:title:fs-idp110000448-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm212489824",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm188551216",
+                "segmentId": "m68813:problem:fs-idm188551216"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp46388832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2808944",
+                "segmentId": "m68813:problem:fs-idm2808944"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm85421440",
+                "segmentId": "m68813:solution:fs-idm85421440"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm65484352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm68167024",
+                "segmentId": "m68813:problem:fs-idm68167024"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm55438304",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm6072880",
+                "segmentId": "m68813:problem:fs-idm6072880"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm73920192",
+                "segmentId": "m68813:solution:fs-idm73920192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm98555648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21823296",
+                "segmentId": "m68813:problem:fs-idm21823296"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm72577424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10055184",
+                "segmentId": "m68813:problem:fs-idp10055184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm68646192",
+                "segmentId": "m68813:problem:fs-idm68646192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp111955968",
+                "segmentId": "m68813:problem:fs-idp111955968"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp112133280",
+                "segmentId": "m68813:solution:fs-idp112133280"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm50986272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm71133504",
+                "segmentId": "m68813:problem:fs-idm71133504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18623376",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm101068320",
+                "segmentId": "m68813:problem:fs-idm101068320"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm262777264",
+                "segmentId": "m68813:solution:fs-idm262777264"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm19606400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57024384",
+                "segmentId": "m68813:problem:fs-idp57024384"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm47233344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm73182032",
+                "segmentId": "m68813:problem:fs-idm73182032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm47971424",
+                "segmentId": "m68813:solution:fs-idm47971424"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18044656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm58110448",
+                "segmentId": "m68813:problem:fs-idm58110448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm73346208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm70882624",
+                "segmentId": "m68813:problem:fs-idm70882624"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm73037856",
+                "segmentId": "m68813:solution:fs-idm73037856"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm65404096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm24986176",
+                "segmentId": "m68813:problem:fs-idm24986176"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm77437136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm48772160",
+                "segmentId": "m68813:problem:fs-idm48772160"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15978880",
+                "segmentId": "m68813:solution:fs-idp15978880"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp28555376",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2622992",
+                "segmentId": "m68813:problem:fs-idm2622992"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm105219776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp24853424",
+                "segmentId": "m68813:problem:fs-idp24853424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84825872",
+                "segmentId": "m68813:problem:fs-idm84825872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm45435856",
+                "segmentId": "m68813:problem:fs-idm45435856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp131461312",
+                "segmentId": "m68813:problem:fs-idp131461312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm81484240",
+                "segmentId": "m68813:problem:fs-idm81484240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm46864416",
+                "segmentId": "m68813:problem:fs-idm46864416"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm48324368",
+                "segmentId": "m68813:solution:fs-idm48324368"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56004352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm77542368",
+                "segmentId": "m68813:problem:fs-idm77542368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm91791744",
+                "segmentId": "m68813:problem:fs-idm91791744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp119951776",
+                "segmentId": "m68813:problem:fs-idp119951776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm80113600",
+                "segmentId": "m68813:problem:fs-idm80113600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp24904336",
+                "segmentId": "m68813:problem:fs-idp24904336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm90012656",
+                "segmentId": "m68813:problem:fs-idm90012656"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26968080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm28745184",
+                "segmentId": "m68813:problem:fs-idm28745184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp107921152",
+                "segmentId": "m68813:problem:fs-idp107921152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137635328",
+                "segmentId": "m68813:problem:fs-idp137635328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp119859776",
+                "segmentId": "m68813:problem:fs-idp119859776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm45460912",
+                "segmentId": "m68813:problem:fs-idm45460912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45427936",
+                "segmentId": "m68813:solution:fs-idm45427936"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26835744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2667904",
+                "segmentId": "m68813:problem:fs-idm2667904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm44455728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm82529888",
+                "segmentId": "m68813:problem:fs-idm82529888"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27819104",
+                "segmentId": "m68813:solution:fs-idp27819104"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm23888576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm72627008",
+                "segmentId": "m68813:problem:fs-idm72627008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm47551360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp137786688",
+                "segmentId": "m68813:problem:fs-idp137786688"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm87511744",
+                "segmentId": "m68813:solution:fs-idm87511744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp127234208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm89680496",
+                "segmentId": "m68813:problem:fs-idm89680496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137523328",
+                "segmentId": "m68813:problem:fs-idp137523328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp125358752",
+                "segmentId": "m68813:problem:fs-idp125358752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm16601024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1806144",
+                "segmentId": "m68813:problem:fs-idm1806144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp9486544",
+                "segmentId": "m68813:problem:fs-idp9486544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp9486928",
+                "segmentId": "m68813:problem:fs-idp9486928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm86424864",
+                "segmentId": "m68813:problem:fs-idm86424864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm18232784",
+                "segmentId": "m68813:solution:fs-idm18232784"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68813:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68813:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68813:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68813:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm90510160",
+        "termSegmentId": "m68813:glossary-term:fs-idm90510160-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idm90510160-def"
+      },
+      {
+        "id": "fs-idp1460096",
+        "termSegmentId": "m68813:glossary-term:fs-idp1460096-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idp1460096-def"
+      },
+      {
+        "id": "fs-idm25500528",
+        "termSegmentId": "m68813:glossary-term:fs-idm25500528-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idm25500528-def"
+      },
+      {
+        "id": "fs-idp120133664",
+        "termSegmentId": "m68813:glossary-term:fs-idp120133664-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idp120133664-def"
+      },
+      {
+        "id": "fs-idp11302544",
+        "termSegmentId": "m68813:glossary-term:fs-idp11302544-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idp11302544-def"
+      },
+      {
+        "id": "fs-idm26641568",
+        "termSegmentId": "m68813:glossary-term:fs-idm26641568-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idm26641568-def"
+      },
+      {
+        "id": "fs-idm465112896",
+        "termSegmentId": "m68813:glossary-term:fs-idm465112896-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idm465112896-def"
+      },
+      {
+        "id": "fs-idp29842512",
+        "termSegmentId": "m68813:glossary-term:fs-idp29842512-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idp29842512-def"
+      },
+      {
+        "id": "fs-idm101700576",
+        "termSegmentId": "m68813:glossary-term:fs-idm101700576-term",
+        "definitionSegmentId": "m68813:glossary-def:fs-idm101700576-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm100408784",
+      "class": null,
+      "alt": "This table has two main columns and three rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ) and Equilibrium ( M ). The second column has the header, “[ C d ( C N ) subscript 4 to the second power superscript negative sign ] [ C N superscript negative sign ] [ C d to the second power superscript positive sign ].” Under the second column is a subgroup of two rows and three columns. The first column contains the following: 0.250 and 0.250 minus x. The second column contains the following: 0 and 4 x. The third column contains the following: 0 and x.",
+      "src": "../../media/CNX_Chem_15_02_ICETable3_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp8394208",
+      "class": null,
+      "alt": "This figure shows a chemical reaction modeled with structural formulas. On the left side is a structure with a central C atom. O atoms, each with two unshared electron pairs, are double bonded to the left and right sides of the C atom. Following a plus sign is another structure in brackets which has an O atom with three unshared electron dot pairs single bonded to an H atom on the right. Outside the brackets is superscript negative sign. Following a right pointing arrow is a structure in brackets that has a central C atom to which 3 O atoms are bonded. Above and slightly to the right, one of the O atoms is connected with a double bond. This O atom has two unshared electron pairs. The second O atom is single bonded below and slightly to the right. This O atom has three unshared electron pairs. The third O atom is bonded to the left of the C atom. This O atom has two unshared electron pairs and an H atom single bonded to its left. Outside the brackets to the right is a superscript negative symbol.",
+      "src": "../../media/CNX_Chem_15_02_Answer18a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idm88262064",
+      "class": null,
+      "alt": "This figure shows a chemical reaction modeled with structural formulas. On the left side is a structure that has a central B atom to which 3 O atoms are bonded. The O atoms above and below slightly right of the B atom each have an H atom single bonded to the right. The third O atom is single bonded to the left side of the B atom. This O atom has an H atom single bonded to its left side. All O atoms in this structure have two unshared electron pairs. Following a plus sign is another structure which has an O atom single bonded to an H atom on its right. The O atom has three unshared electron pairs. The structure appears in brackets with a superscript negative sign. Following a right pointing arrow is a structure in brackets has a central B atom to which 4 O atoms are bonded. The O atoms above, below, and right of the B atom each hav an H atom single bonded to the right. The third O atom is single bonded to the left side of the B atom. This O atom has an H atom single bonded to its left side. All O atoms in this structure have two unshared electron pairs. Outside the brackets to the right is a superscript negative symbol.",
+      "src": "../../media/CNX_Chem_15_02_Answer18b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp130807344",
+      "class": null,
+      "alt": "This figure illustrates a chemical reaction using structural formulas. On the left, two I atoms, each with 3 unshared electron pairs, are joined with a single bond. Following a plus sign is another structure which has an I atom with four pairs of electron dots and a superscript negative sign. Following a right pointing arrow is a structure in brackets that has three I atoms connected in a line with single bonds. The two end I atoms have three unshared electron dot pairs and the I atom at the center has two unshared electron pairs. Outside the brackets is a superscript negative sign.",
+      "src": "../../media/CNX_Chem_15_02_Answer18c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm24823408",
+      "class": null,
+      "alt": "This figure illustrates a chemical reaction using structural formulas. On the left, an A l atom is positioned at the center of a structure and three Cl atoms are single bonded above, left, and below. Each C l atom has three pairs of electron dots. Following a plus sign is another structure which has an F atom is surrounded by four electron dot pairs and a superscript negative symbol. Following a right pointing arrow is a structure in brackets that has a central A l atom to which 4 C l atoms are connected with single bonds above, below, to the left, and to the right. Each C l atom in this structure has three pairs of electron dots. Outside the brackets is a superscript negative symbol.",
+      "src": "../../media/CNX_Chem_15_02_Answer18d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idm53758640",
+      "class": null,
+      "alt": "This figure illustrates a chemical reaction using structural formulas. On the left is a structure which has an S atom at the center. O atoms are single bonded above and below. These O atoms have three electron dot pairs each. To the right of the S atom is a double bonded O atom which has two pairs of electron dots. Following a plus sign is an O atom which is surrounded by four electron dot pairs and has a superscript 2 negative. Following a right pointing arrow is a structure in brackets that has a central S atom to which 4 O atoms are connected with single bonds above, below, to the left, and to the right. Each of the O atoms has three pairs of electron dots. Outside the brackets is a superscript 2 negative.",
+      "src": "../../media/CNX_Chem_15_02_Answer18e_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idm45893936",
+      "class": null,
+      "alt": "This figure represents a chemical reaction in two rows. The top row shows the reaction using chemical formulas. The second row uses structural formulas to represent the reaction. The first row contains the equation H C l ( g ) plus P H subscript 3 ( g ) right pointing arrow left bracket P H subscript 4 right bracket superscript plus plus left bracket C l with 4 pairs of electron dots right bracket superscript negative sign. The second row begins on the left with H left bracket C l with four unshared electron pairs right bracket plus a structure in brackets with a central P atom with H atoms single bonded at the left, above, and to the right. A single unshared electron pair is on the central P atom. Outside the brackets to the right is a superscript plus sign. Following a right pointing arrow is a structure in brackets with a central P atom with H atoms single bonded at the left, above, below, and to the right. Outside the brackets is a superscript plus sign. This structure is followed by a plus and a C l atom in brackets with four unshared electron pairs and a superscript negative sign.",
+      "src": "../../media/CNX_Chem_15_02_Answer24a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idm2136944",
+      "class": null,
+      "alt": "This figure represents a chemical reaction using structural formulas. A structure is shown in brackets on the left which is composed of a central O atom with one unshared electron pair and three single bonded H atoms to the left, right, and above the atom. Outside the brackets to the right is a superscript plus sign. Following a plus sign, is another structure in brackets composed of a central C atom with one unshared electron pair and three single bonded H atoms to the left, right, and above the atom. Outside the brackets to the right is a superscript negative sign. Following a right pointing arrow is a structure with a central C atom with H atoms single bonded above, below, left and right. Following a plus sign is a structure with a central O atom with two unshared electron pairs and two H atoms connected with single bonds.",
+      "src": "../../media/CNX_Chem_15_02_Answer24b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:9]]",
+      "id": "fs-idp64857056",
+      "class": null,
+      "alt": "This figure represents a chemical reaction using structural formulas. On the left, C a superscript 2 plus is just left of bracket O with four unshared electron pairs right bracket superscript 2 negative plus a structure with a central S atom to which two O atoms are single bonded at the left and right, and a single O atom is double bonded above. The two single bonded O atoms each have three unshared electron pairs and the double bonded O atom has two unshared electron pairs. Following a right pointing arrow is C a superscript 2 plus just left of a structure in brackets with a central S atom which has 4 O atoms single bonded at the left, above, below, and to the right. Each of the O atoms has three unshared electron pairs. Outside the brackets to the right is a superscript two negative.",
+      "src": "../../media/CNX_Chem_15_02_Answer24c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:10]]",
+      "id": "fs-idp57321968",
+      "class": null,
+      "alt": "This figure represents a chemical reaction using structural formulas. A structure is shown in brackets on the left which is composed of a central N atom with four single bonded H atoms to the left, right, above, and below the atom. Outside the brackets to the right is a superscript plus sign. Following a plus sign, is another structure in brackets composed of a C atom with three single bonded H atoms above, below, and to the left. A second C atom is single bonded to the right. This C atom has H atoms single bonded above and below. To the right of the second C atom, an O atom is single bonded. This O atom has three unshared electron pairs. Outside the brackets to the right is a subperscript negative. Following a right pointing arrow is a structure composed of a C atom with three single bonded H atoms above, below, and to the left. A second C atom is single bonded to the right. This C atom has H atoms single bonded above and below. To the right of the second C atom, an O atom is single bonded. This O atom has two unshared electron pairs and an H atom single bonded to its right.",
+      "src": "../../media/CNX_Chem_15_02_Answer24d_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

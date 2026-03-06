@@ -748,4 +748,125 @@ describe('reverseInlineMarkup XML escaping', () => {
     expect(result).toContain('&lt;img');
     expect(result).not.toContain('<img');
   });
+
+  // --- Layer 2: Underline emphasis ---
+
+  it('should convert ++text++ to emphasis effect="underline"', () => {
+    const result = reverseInlineMarkup('a ++lead pipe++ is heavy', {});
+    expect(result).toBe('a <emphasis effect="underline">lead pipe</emphasis> is heavy');
+  });
+
+  it('should handle ++underline++ alongside **bold** and *italic*', () => {
+    const result = reverseInlineMarkup('**bold** and ++underlined++ and *italic*', {});
+    expect(result).toContain('<emphasis effect="underline">underlined</emphasis>');
+    expect(result).toContain('<emphasis effect="bold">bold</emphasis>');
+    expect(result).toContain('<emphasis effect="italics">italic</emphasis>');
+  });
+
+  // --- Layer 1: Document links ---
+
+  it('should convert self-closing document refs [doc#target]', () => {
+    const result = reverseInlineMarkup('see [m68674#fs-id123]', {});
+    expect(result).toBe('see <link document="m68674" target-id="fs-id123"/>');
+  });
+
+  it('should convert document links with text [text](doc#target)', () => {
+    const result = reverseInlineMarkup('[Table 1.2](m68674#fs-id123)', {});
+    expect(result).toBe('<link document="m68674" target-id="fs-id123">Table 1.2</link>');
+  });
+
+  it('should still convert internal refs [#target]', () => {
+    const result = reverseInlineMarkup('see [#CNX_Chem_01]', {});
+    expect(result).toBe('see <link target-id="CNX_Chem_01"/>');
+  });
+
+  // --- Layer 3: Inline attributes restoration ---
+
+  it('should restore term class="no-emphasis" from inlineAttrs', () => {
+    const attrs = {
+      terms: [{ class: 'no-emphasis', id: 'term-00001' }, null],
+    };
+    const result = reverseInlineMarkup('__Thomson__ og __rafeindir__', {}, [], [], attrs);
+    expect(result).toContain('<term class="no-emphasis" id="term-00001">Thomson</term>');
+    expect(result).toContain('<term>rafeindir</term>');
+  });
+
+  it('should restore footnote id from inlineAttrs', () => {
+    const attrs = {
+      footnotes: [{ id: 'footnote-00001' }],
+    };
+    const result = reverseInlineMarkup('text [footnote: some note]', {}, [], [], attrs);
+    expect(result).toContain('<footnote id="footnote-00001">some note</footnote>');
+  });
+
+  it('should degrade gracefully when inlineAttrs is null', () => {
+    const result = reverseInlineMarkup('__term__ [footnote: note]', {}, [], [], null);
+    expect(result).toContain('<term>term</term>');
+    expect(result).toContain('<footnote>note</footnote>');
+  });
+
+  it('should handle more terms than attrs entries (extra terms get no attrs)', () => {
+    const attrs = {
+      terms: [{ class: 'no-emphasis' }],
+    };
+    const result = reverseInlineMarkup('__A__ and __B__ and __C__', {}, [], [], attrs);
+    expect(result).toContain('<term class="no-emphasis">A</term>');
+    expect(result).toContain('<term>B</term>');
+    expect(result).toContain('<term>C</term>');
+  });
+});
+
+// =====================================================================
+// Inline attributes extraction integration test
+// =====================================================================
+
+describe('inline-attrs extraction', () => {
+  it('should produce inline-attrs.json for m68687 with class="no-emphasis"', () => {
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 2 --module m68687`);
+    const attrsPath = join(BOOKS, '02-structure', 'ch02', 'm68687-inline-attrs.json');
+    expect(existsSync(attrsPath)).toBe(true);
+
+    const attrs = JSON.parse(readFileSync(attrsPath, 'utf8'));
+    // m68687 has multiple no-emphasis terms
+    const segIds = Object.keys(attrs);
+    expect(segIds.length).toBeGreaterThan(0);
+
+    // At least one segment should have class="no-emphasis"
+    const hasNoEmphasis = segIds.some((id) =>
+      attrs[id].terms?.some((t) => t && t.class === 'no-emphasis')
+    );
+    expect(hasNoEmphasis).toBe(true);
+  });
+
+  it('should preserve class="no-emphasis" through extract+inject round-trip', () => {
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 2 --module m68687`);
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 2 --module m68687 --source-dir 02-mt-output`
+    );
+    const cnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch02', 'm68687.cnxml'),
+      'utf8'
+    );
+    expect(cnxml).toContain('class="no-emphasis"');
+  });
+
+  it('should extract document links in [doc#target] format', () => {
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 1 --module m68683`);
+    const segments = readFileSync(
+      join(BOOKS, '02-for-mt', 'ch01', 'm68683-segments.en.md'),
+      'utf8'
+    );
+    // m68683 has a self-closing link with document="m68674"
+    expect(segments).toContain('m68674#');
+  });
+
+  it('should extract ++underline++ markers', () => {
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 1 --module m68664`);
+    const segments = readFileSync(
+      join(BOOKS, '02-for-mt', 'ch01', 'm68664-segments.en.md'),
+      'utf8'
+    );
+    // m68664 has emphasis effect="underline" elements
+    expect(segments).toContain('++');
+  });
 });

@@ -1,0 +1,1008 @@
+{
+  "moduleId": "m68769",
+  "title": {
+    "segmentId": "m68769:title:auto-1",
+    "text": "Phase Diagrams"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "23152758-9f27-4c49-91a6-0f989a5d8d7b",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the construction and use of a typical phase diagram",
+        "Use phase diagrams to identify stable phases at given temperatures and pressures, and to describe phase transitions resulting from changes in these properties",
+        "Describe the supercritical fluid phase of matter"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm105011872",
+      "segmentId": "m68769:para:fs-idm105011872"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_04_PhaseDi",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68769:caption:CNX_Chem_10_04_PhaseDi-caption"
+      },
+      "media": {
+        "id": "fs-idm57234192",
+        "alt": "A graph is shown where the x-axis is labeled “Temperature” and the y-axis is labeled “Pressure.” A line extends from the lower left bottom of the graph sharply upward to a point that is a third across the x-axis. A second line begins at the lower third of the first line at a point labeled “triple point” and extends to the upper right corner of the graph where it is labeled “critical point.” The two lines bisect the graph area to create three sections, labeled “solid” near the top left, “liquid” in the top middle and “gas” near the bottom right. A pair of horizontal arrows, one left-facing and labeled “deposition” and one right-facing and labeled” sublimation,” are drawn on top of the bottom section of the first line. A second pair of horizontal arrows, one left-facing and labeled “freezing” and one right-facing and labeled “melting”, are drawn on top of the upper section of the first line. A third pair of horizontal arrows, one left-facing and labeled “condensation” and one right-facing and labeled ”vaporization,” are drawn on top of the middle section of the second line.",
+        "src": "../../media/CNX_Chem_10_04_PhaseDi.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm53315104",
+      "segmentId": "m68769:para:fs-idm53315104"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_04_H2OPhasDi2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68769:caption:CNX_Chem_10_04_H2OPhasDi2-caption"
+      },
+      "media": {
+        "id": "fs-idp24684528",
+        "alt": "A graph is shown where the x-axis is labeled “Temperature in degrees Celsius” and the y-axis is labeled “Pressure ( k P a ).” A line extends from the origin of the graph which is labeled “A” sharply upward to a point in the bottom third of the diagram labeled “B” where it branches into a line that slants slightly backward until it hits the highest point on the y-axis labeled “D” and a second line that extends to the upper right corner of the graph labeled “C”. C is labeled “Critical point, with a dotted line extending downward to the x-axis labeled 374 degrees Celsius, and another dotted line extending to the y-axis labeled 22,089 k P a. The two lines bisect the graph area to create three sections, labeled “Ice (solid)” near the middle left, “Water (liquid)” in the top middle and “Water vapor (gas)” near the bottom middle. Point B is labeled “Triple point” and has a dotted line extending downward to the x-axis labeled 0.01, and another dotted line extending to the y-axis labeled 0.6. Halfway between points B and C a dotted line extends from the originally discussed line downward to the point 100 degrees Celsius on the x-axis, and another dotted line extends to the y-axis at 101 k P a. Another dotted line extends from this dotted line downward at 0 degrees Celsius.",
+        "src": "../../media/CNX_Chem_10_04_H2OPhasDi2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm201945904",
+      "segmentId": "m68769:para:fs-idm201945904"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm129813280",
+      "segmentId": "m68769:para:fs-idm129813280"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm23251664",
+      "segmentId": "m68769:para:fs-idm23251664"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_04_FreezeDry",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68769:caption:CNX_Chem_10_04_FreezeDry-caption"
+      },
+      "media": {
+        "id": "fs-idm142599808",
+        "alt": "A photograph shows a package with a rocket being launched on the front and a block of pink, white and brown striped solid in a wrapper next to it.",
+        "src": "../../media/CNX_Chem_10_04_FreezeDry.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm92413200",
+      "segmentId": "m68769:para:fs-idm92413200"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_04_IceMelt",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68769:caption:CNX_Chem_10_04_IceMelt-caption"
+      },
+      "media": {
+        "id": "fs-idp19576624",
+        "alt": "A photograph shows an aerial view of a land mass. The white mass of a glacier is shown near the top left quadrant of the photo and leads to two branching blue rivers. The open land is shown in brown.",
+        "src": "../../media/CNX_Chem_10_04_IceMelt.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm105744432",
+      "segmentId": "m68769:para:fs-idm105744432"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm211145632",
+      "title": {
+        "segmentId": "m68769:example-title:fs-idm211145632-title",
+        "text": "Determining the State of Water"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm84608528",
+          "segmentId": "m68769:para:fs-idm84608528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm168463184",
+          "segmentId": "m68769:para:fs-idm168463184"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm57178832",
+          "segmentId": "m68769:para:fs-idm57178832"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183935200",
+          "segmentId": "m68769:para:fs-idm183935200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm82705648",
+          "segmentId": "m68769:para:fs-idm82705648"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30582544",
+          "segmentId": "m68769:para:fs-idp30582544"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm113072192",
+          "segmentId": "m68769:para:fs-idm113072192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm114532848",
+          "segmentId": "m68769:para:fs-idm114532848",
+          "title": {
+            "segmentId": "m68769:para-title:fs-idm114532848-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm37551344",
+          "segmentId": "m68769:para:fs-idm37551344",
+          "title": {
+            "segmentId": "m68769:para-title:fs-idm37551344-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm153965536",
+          "segmentId": "m68769:para:fs-idm153965536"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm222446944",
+          "title": {
+            "segmentId": "m68769:note-title:fs-idm222446944-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm153965536",
+              "segmentId": "m68769:para:fs-idm153965536"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm71881152",
+      "segmentId": "m68769:para:fs-idm71881152"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_04_CO2phasdi",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68769:caption:CNX_Chem_10_04_CO2phasdi-caption"
+      },
+      "media": {
+        "id": "fs-idm185557312",
+        "alt": "A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of negative 100 to 100 in increments of 25 and the y-axis is labeled “Pressure ( k P a )” and has values of 10 to 1,000,000. A line extends from the lower left bottom of the graph upward to a point around“27, 9000,” where it ends. The space under this curve is labeled “Gas.” A second line extends in a curve from point around “-55, 500” to “27, 1,000,000.” The area to the left of this line and above the first line is labeled “Solid” while the area to the right is labeled “Liquid.” A section on the graph under the second line and past the point “28” on the x-axis is labeled “S C F.”",
+        "src": "../../media/CNX_Chem_10_04_CO2PhasDi.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idm81431296",
+      "title": {
+        "segmentId": "m68769:example-title:fs-idm81431296-title",
+        "text": "Determining the State of Carbon Dioxide"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm184169664",
+          "segmentId": "m68769:para:fs-idm184169664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52543376",
+          "segmentId": "m68769:para:fs-idm52543376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm152653552",
+          "segmentId": "m68769:para:fs-idm152653552"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm133410832",
+          "segmentId": "m68769:para:fs-idm133410832"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm19013760",
+          "segmentId": "m68769:para:fs-idm19013760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm202256048",
+          "segmentId": "m68769:para:fs-idm202256048"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm25749152",
+          "segmentId": "m68769:para:fs-idm25749152"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm215910416",
+          "segmentId": "m68769:para:fs-idm215910416",
+          "title": {
+            "segmentId": "m68769:para-title:fs-idm215910416-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm66941424",
+          "segmentId": "m68769:para:fs-idm66941424",
+          "title": {
+            "segmentId": "m68769:para-title:fs-idm66941424-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm56827360",
+          "segmentId": "m68769:para:fs-idm56827360"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm110315760",
+          "segmentId": "m68769:para:fs-idm110315760"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm25675280",
+          "title": {
+            "segmentId": "m68769:note-title:fs-idm25675280-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm56827360",
+              "segmentId": "m68769:para:fs-idm56827360"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm110315760",
+              "segmentId": "m68769:para:fs-idm110315760"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp26089360",
+      "class": null,
+      "title": {
+        "segmentId": "m68769:title:fs-idp26089360-title",
+        "text": "Supercritical Fluids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm114606944",
+          "segmentId": "m68769:para:fs-idm114606944"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm180459824",
+          "class": "unnumbered",
+          "summary": "This table contains eight rows and three columns. The first row is a header row, and it labels each column: “Substance,” “Critical Temperature ( K ),” and “Critical Pressure ( a t m ).” Under the “Substance” column are the following: hydrogen, nitrogen, oxygen, carbon dioxide, ammonia, sulfur dioxide, and water. Under the “Critical Temperature ( K )” column are the following: 33.2, 126.0, 154.3, 304.2, 405.5, 430.3, and 647.1. Under the “Critical Pressure ( a t m )” column are the following: 12.8, 33.5, 49.7, 73.0, 111.5, 77.7, and 217.7.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_04_CritFluid",
+          "caption": {
+            "segmentId": "m68769:caption:CNX_Chem_10_04_CritFluid-caption"
+          },
+          "media": {
+            "id": "fs-idm115619344",
+            "alt": "Four photographs are shown where each shows a circular container with a green and red float in each. In the left diagram, the container is half filled with a colorless liquid and the floats sit on the surface of the liquid. In the second photo, the green float is near the top and the red float lies near the bottom of the container. In the third photo, the fluid is darker and the green float sits halfway up the container while the red is sitting at the bottom. In the right photo, the liquid is colorless again and the two floats sit on the surface.",
+            "src": "../../media/CNX_Chem_10_04_CritFluid.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm96917712",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm81770576",
+              "segmentId": "m68769:para:fs-idm81770576"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp19605424",
+          "segmentId": "m68769:para:fs-idp19605424"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm51838704",
+          "title": {
+            "segmentId": "m68769:example-title:fs-idm51838704-title",
+            "text": "The Critical Temperature of Carbon Dioxide"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm134827136",
+              "segmentId": "m68769:para:fs-idm134827136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm194167232",
+              "segmentId": "m68769:para:fs-idm194167232",
+              "title": {
+                "segmentId": "m68769:para-title:fs-idm194167232-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp29978288",
+              "segmentId": "m68769:para:fs-idp29978288",
+              "title": {
+                "segmentId": "m68769:para-title:fs-idp29978288-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm96591504",
+              "segmentId": "m68769:para:fs-idm96591504"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm199828080",
+              "title": {
+                "segmentId": "m68769:note-title:fs-idm199828080-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm96591504",
+                  "segmentId": "m68769:para:fs-idm96591504"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp20092656",
+          "class": "chemistry everyday-life",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp19473808",
+              "segmentId": "m68769:para:fs-idp19473808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27102688",
+              "segmentId": "m68769:para:fs-idp27102688"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm60471152",
+              "segmentId": "m68769:para:fs-idm60471152"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_04_SupCritCof",
+          "caption": {
+            "segmentId": "m68769:caption:CNX_Chem_10_04_SupCritCof-caption"
+          },
+          "media": {
+            "id": "fs-idm140720928",
+            "alt": "Two images are shown and labeled “a” and “b.” Image a shows a molecule composed of a five member ring composed of two blue spheres and three black spheres. One of the blue spheres is bonded to a black sphere bonded to three white spheres and one of the black spheres is bonded to a white sphere. The other two black spheres are double bonded together and make up one side of a six-membered ring that is also composed of two more black spheres and two blue spheres, both of which are bonded to a black sphere bonded to three white spheres. The black spheres are each double bonded to red spheres. Image b shows a diagram of two vertical tubes that lie next to one another. The left-hand tube is labeled “Extraction vessel.” A small tube labeled “Soaked beans” leads into the top of the tube and a label at the bottom of the tube reads “Decaffeinated beans.” The right tube is labeled “Absorption vessel.” A tube near the top of this tube is labeled “Water” and another tube leads from the right tube to the left. This tube is labeled with a left-facing arrow and the phrase “supercritical carbon dioxide.” There is a tube leading away from the bottom which is labeled, “Caffeine and water.” There is another tube that leads from the extraction vessel to the absorption vessel which is labeled, “supercritical C O subscript 2 plus caffeine.”",
+            "src": "../../media/CNX_Chem_10_04_SupCritCof.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm39505456",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68769:title:fs-idm39505456-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm183316720",
+          "segmentId": "m68769:para:fs-idm183316720"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm278580384",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68769:title:fs-idm278580384-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm158754672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm39432752",
+                "segmentId": "m68769:problem:fs-idm39432752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm134552448",
+                "segmentId": "m68769:problem:fs-idm134552448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm163033728",
+                "segmentId": "m68769:problem:fs-idm163033728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm172957072",
+                "segmentId": "m68769:problem:fs-idm172957072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm231411984",
+                "segmentId": "m68769:problem:fs-idm231411984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm66774336",
+                "segmentId": "m68769:problem:fs-idm66774336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm185057600",
+                "segmentId": "m68769:problem:fs-idm185057600"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm163161056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84701392",
+                "segmentId": "m68769:problem:fs-idm84701392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm187242192",
+                "segmentId": "m68769:solution:fs-idm187242192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm134300544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm132659600",
+                "segmentId": "m68769:problem:fs-idm132659600"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm79316176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45352704",
+                "segmentId": "m68769:problem:fs-idm45352704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp25830864",
+                "segmentId": "m68769:problem:fs-idp25830864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm157071424",
+                "segmentId": "m68769:problem:fs-idm157071424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm132072448",
+                "segmentId": "m68769:problem:fs-idm132072448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4587376",
+                "segmentId": "m68769:problem:fs-idp4587376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm130055632",
+                "segmentId": "m68769:problem:fs-idm130055632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19689536",
+                "segmentId": "m68769:problem:fs-idp19689536"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm300012672",
+                "segmentId": "m68769:solution:fs-idm300012672"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm31738208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm134708944",
+                "segmentId": "m68769:problem:fs-idm134708944"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm184592816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm132186736",
+                "segmentId": "m68769:problem:fs-idm132186736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm137306816",
+                "segmentId": "m68769:solution:fs-idm137306816"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm180256816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm243757936",
+                "segmentId": "m68769:problem:fs-idm243757936"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp24718944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26455568",
+                "segmentId": "m68769:problem:fs-idp26455568"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31793728",
+                "segmentId": "m68769:solution:fs-idm31793728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm97492688",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm58313408",
+                "segmentId": "m68769:problem:fs-idm58313408"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm135170880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm59313520",
+                "segmentId": "m68769:problem:fs-idm59313520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm196192784",
+                "segmentId": "m68769:problem:fs-idm196192784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm229105216",
+                "segmentId": "m68769:problem:fs-idm229105216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm195445328",
+                "segmentId": "m68769:problem:fs-idm195445328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm202684832",
+                "segmentId": "m68769:problem:fs-idm202684832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm96211488",
+                "segmentId": "m68769:problem:fs-idm96211488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm61578832",
+                "segmentId": "m68769:problem:fs-idm61578832"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm88428112",
+                "segmentId": "m68769:solution:fs-idm88428112"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68769:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68769:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68769:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68769:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm66977664",
+        "termSegmentId": "m68769:glossary-term:fs-idm66977664-term",
+        "definitionSegmentId": "m68769:glossary-def:fs-idm66977664-def"
+      },
+      {
+        "id": "fs-idm186055200",
+        "termSegmentId": "m68769:glossary-term:fs-idm186055200-term",
+        "definitionSegmentId": "m68769:glossary-def:fs-idm186055200-def"
+      },
+      {
+        "id": "fs-idm208980304",
+        "termSegmentId": "m68769:glossary-term:fs-idm208980304-term",
+        "definitionSegmentId": "m68769:glossary-def:fs-idm208980304-def"
+      },
+      {
+        "id": "fs-idm153679600",
+        "termSegmentId": "m68769:glossary-term:fs-idm153679600-term",
+        "definitionSegmentId": "m68769:glossary-def:fs-idm153679600-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm183173568",
+      "class": null,
+      "alt": "An x-axis is labeled at the left as “Full” and at the right as “Empty.” A y-axis is labeled at the top as “P.” Beneath the x-axis is the label “Amount released.” A horizontal line that then slopes downward is drawn about halfway up the vertical line and labeled on the left as “65 a t m.” About two-thirds of the way across the x-axis, it slopes downward in a straight line to meet the “empty” label on the bottom right of the axis.",
+      "src": "../../media/CNX_Chem_10_04_Ex06answer_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm121487888",
+      "class": null,
+      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The two quadrants to the right are labeled, “Water ( liquid )” and “Water vapor ( gas ).”",
+      "src": "../../media/CNX_Chem_10_04_Exercise10a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idm69191024",
+      "class": "scaled-down-30",
+      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The quadrant to the left is labeled, “Graphite.”",
+      "src": "../../media/CNX_Chem_10_04_Exercise10b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idm81439280",
+      "class": "scaled-down-30",
+      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The top quadrant is labeled, “Diamond.”",
+      "src": "../../media/CNX_Chem_10_04_Exercise10c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm209382816",
+      "class": null,
+      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The four quadrants are labeled, “Diamond” at the top, “Graphite”, to the left, “water ( liquid )” to the top right, and “water vapor ( gas ),” to the bottom right. There is a red circle where the liquid, gas, and graphite lines intersect.",
+      "src": "../../media/CNX_Chem_10_04_Exercise10d_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "moduleId": "m68816",
+  "extractedAt": "2026-03-06T13:09:39.734Z",
+  "sourceHash": "098684e9fae60894",
+  "segmentCount": 55,
+  "segmentIds": [
+    "m68816:title:auto-1",
+    "m68816:abstract:auto-2",
+    "m68816:abstract-item:abstract-item-1",
+    "m68816:abstract-item:abstract-item-2",
+    "m68816:para:fs-idp116177632",
+    "m68816:para:fs-idp3956976",
+    "m68816:caption:CNX_Chem_16_01_decayrates-caption",
+    "m68816:para:fs-idm7164864",
+    "m68816:para:fs-idp124196272",
+    "m68816:caption:CNX_Chem_16_01_carbon-caption",
+    "m68816:title:fs-idp11303728-title",
+    "m68816:para:fs-idp148339312",
+    "m68816:para:fs-idm42330576",
+    "m68816:para:fs-idm47467840",
+    "m68816:caption:CNX_Chem_16_02_Gas-caption",
+    "m68816:para:fs-idp202853936",
+    "m68816:para:fs-idp120750768",
+    "m68816:caption:CNX_Chem_16_02_Temperature-caption",
+    "m68816:para:fs-idp55398608",
+    "m68816:example-title:fs-idp106049744-title",
+    "m68816:para:fs-idp152996288",
+    "m68816:para:fs-idm25379552",
+    "m68816:para:fs-idm37056304",
+    "m68816:para:fs-idp198218368",
+    "m68816:para-title:fs-idm3905664-title",
+    "m68816:para:fs-idm48323968",
+    "m68816:para:fs-idm4737472",
+    "m68816:para:fs-idp54655312",
+    "m68816:para-title:fs-idp118266672-title",
+    "m68816:para:fs-idp118266672",
+    "m68816:para:fs-idm37784928",
+    "m68816:note-title:fs-idp37406832-title",
+    "m68816:para:fs-idm37784928",
+    "m68816:caption:CNX_Chem_16_02_Process-caption",
+    "m68816:title:fs-idp205751344-title",
+    "m68816:para:fs-idp119937936",
+    "m68816:title:fs-idp129007792-title",
+    "m68816:problem:fs-idp44432768",
+    "m68816:solution:fs-idp3338160",
+    "m68816:problem:fs-idp4177920",
+    "m68816:problem:fs-idm38492096",
+    "m68816:problem:fs-idp120550832",
+    "m68816:problem:fs-idm37736192",
+    "m68816:problem:fs-idm48959584",
+    "m68816:problem:fs-idp38555600",
+    "m68816:problem:fs-idp119506064",
+    "m68816:problem:fs-idp122965168",
+    "m68816:solution:fs-idm42437472",
+    "m68816:problem:fs-idm2629152",
+    "m68816:problem:fs-idp143371728",
+    "m68816:solution:fs-idp65039344",
+    "m68816:glossary-term:fs-idp119850016-term",
+    "m68816:glossary-def:fs-idp119850016-def",
+    "m68816:glossary-term:fs-idm57405936-term",
+    "m68816:glossary-def:fs-idm57405936-def"
+  ],
+  "equationCount": 4,
+  "equationIds": [
+    "fs-idm44290000",
+    "fs-idm38278672",
+    "fs-idp27062144",
+    "fs-idp36377040"
+  ],
+  "elementCounts": {
+    "para": 36,
+    "section": 3,
+    "figure": 5,
+    "table": 0,
+    "example": 1,
+    "exercise": 5,
+    "note": 1,
+    "equation": 4,
+    "list": 0,
+    "media": 0,
+    "glossary": 2
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_16_01_decayrates",
+      "CNX_Chem_16_01_carbon",
+      "CNX_Chem_16_02_Gas",
+      "CNX_Chem_16_02_Temperature",
+      "CNX_Chem_16_02_Process"
+    ],
+    "table": [],
+    "example": [
+      "fs-idp106049744"
+    ],
+    "exercise": [
+      "fs-idp114103472",
+      "fs-idp120021296",
+      "fs-idp1018800",
+      "fs-idp158359616",
+      "fs-idm103719792"
+    ],
+    "note": [
+      "fs-idp37406832"
+    ],
+    "equation": [
+      "fs-idm44290000",
+      "fs-idm38278672",
+      "fs-idp27062144",
+      "fs-idp36377040"
+    ],
+    "section": [
+      "fs-idp11303728",
+      "fs-idp205751344",
+      "fs-idp129007792"
+    ]
+  }
+}

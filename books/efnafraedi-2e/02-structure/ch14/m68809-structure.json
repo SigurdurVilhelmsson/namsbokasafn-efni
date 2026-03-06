@@ -1,0 +1,1185 @@
+{
+  "moduleId": "m68809",
+  "title": {
+    "segmentId": "m68809:title:auto-1",
+    "text": "Acid-Base Titrations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "617eab8e-758e-4510-be4c-8d9252cf4632",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Interpret titration curves for strong and weak acid-base systems",
+        "Compute sample pH at important stages of a titration",
+        "Explain the function of acid-base indicators"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm43847120",
+      "segmentId": "m68809:para:fs-idm43847120"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm84795552",
+      "class": null,
+      "title": {
+        "segmentId": "m68809:title:fs-idm84795552-title",
+        "text": "Titration Curves"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp135875056",
+          "segmentId": "m68809:para:fs-idp135875056"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm49336656",
+          "title": {
+            "segmentId": "m68809:example-title:fs-idm49336656-title",
+            "text": "Calculating pH for Titration Solutions: Strong Acid/Strong Base"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp245005248",
+              "segmentId": "m68809:para:fs-idp245005248"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp67154976",
+              "segmentId": "m68809:para:fs-idp67154976"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm80154320",
+              "segmentId": "m68809:para:fs-idm80154320"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm39390080",
+              "segmentId": "m68809:para:fs-idm39390080"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp81988928",
+              "segmentId": "m68809:para:fs-idp81988928"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp22584832",
+              "segmentId": "m68809:para:fs-idp22584832",
+              "title": {
+                "segmentId": "m68809:para-title:fs-idp22584832-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm214456576",
+              "segmentId": "m68809:para:fs-idm214456576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm197032080",
+              "segmentId": "m68809:para:fs-idm197032080"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm173154048",
+              "segmentId": "m68809:para:fs-idm173154048"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm41259968",
+              "segmentId": "m68809:para:fs-idm41259968"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm15929056",
+              "segmentId": "m68809:para:fs-idm15929056",
+              "title": {
+                "segmentId": "m68809:para-title:fs-idm15929056-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm89702512",
+              "segmentId": "m68809:para:fs-idm89702512"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm213177360"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp80308976"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp66422816"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm15386080"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm44981872",
+              "title": {
+                "segmentId": "m68809:note-title:fs-idm44981872-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm89702512",
+                  "segmentId": "m68809:para:fs-idm89702512"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm99459616",
+          "title": {
+            "segmentId": "m68809:example-title:fs-idm99459616-title",
+            "text": "Titration of a Weak Acid with a Strong Base"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp114806608",
+              "segmentId": "m68809:para:fs-idp114806608"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm41606112",
+              "segmentId": "m68809:para:fs-idm41606112"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm192768656",
+              "segmentId": "m68809:para:fs-idm192768656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm178030592",
+              "segmentId": "m68809:para:fs-idm178030592"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm214305872",
+              "segmentId": "m68809:para:fs-idm214305872"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm223741312",
+              "segmentId": "m68809:para:fs-idm223741312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp3678224",
+              "segmentId": "m68809:para:fs-idp3678224",
+              "title": {
+                "segmentId": "m68809:para-title:fs-idp3678224-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp30610784",
+              "segmentId": "m68809:para:fs-idp30610784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm935760",
+              "segmentId": "m68809:para:fs-idm935760"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2004176",
+              "segmentId": "m68809:para:fs-idm2004176"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp58734736",
+              "segmentId": "m68809:para:fs-idp58734736"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm40620912",
+              "segmentId": "m68809:para:fs-idm40620912"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm15954576",
+              "segmentId": "m68809:para:fs-idm15954576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm42058672",
+              "segmentId": "m68809:para:fs-idm42058672"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp85997072",
+              "segmentId": "m68809:para:fs-idp85997072"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm41682336",
+              "segmentId": "m68809:para:fs-idm41682336",
+              "title": {
+                "segmentId": "m68809:para-title:fs-idm41682336-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm37877472",
+              "segmentId": "m68809:para:fs-idm37877472"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp77362464"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm76922320"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm33154592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp77139280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp75313664"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm58971824"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp1478112"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm54099632"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp121571008"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp163867552"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm52967552"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm21431696"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp68668928",
+              "title": {
+                "segmentId": "m68809:note-title:fs-idp68668928-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm37877472",
+                  "segmentId": "m68809:para:fs-idm37877472"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm198420960",
+          "segmentId": "m68809:para:fs-idm198420960"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm201863856",
+          "segmentId": "m68809:para:fs-idm201863856"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm444217232",
+          "segmentId": "m68809:para:fs-idm444217232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183388016",
+          "segmentId": "m68809:para:fs-idm183388016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183509856",
+          "segmentId": "m68809:para:fs-idm183509856"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm87178400",
+          "class": "top-titled",
+          "summary": "This table has four columns and twenty rows. The first row is a header row, and it labels each column, “Volume of 0.100 M N a O H Added ( m L ),” “Moles of N a O H Added,” “p H Values 0.100 M H C l footnote one,” “p H Values 0.100 M C H subscript 3 C O subscript 2 H footnote 2.” Under the “Volume of 0.100 M N a O H Added ( m L )” column are the following values: 0.0, 5.0, 10.0, 15.0, 20.0, 22.0, 24.0, 24.5, 24.9, 25.0, 25.1, 25.5, 26.0, 28.0, 30.0, 35.0, 40.0, 45.0, and 50.0. Under the “Moles of N a O H Added” column are the following values: 0.0, 0.00050, 0.00100, 0.00150, 0.00200, 0.00220, 0.00240, 0.00245, 0.00249, 0.00250, 0.00251, 0.00255, 0.00260, 0.00280, 0.00300, 0.00350, 0.00400, 0.00450, and 0.00500. Under the “p H Values 0.100 M H C l footnote one” column are the following values: 1.00, 1.18, 1.37, 1.60, 1.95, 2.20, 2.69, 3.00, 3.70, 7.00, 10.30, 11.00, 11.29, 11.75, 11.96, 12.22, 12.36, 12.46, and 12.52. Foot note one reads, “Titration of 25.00 m L of 0.100 M H C l ( 0.00250 mol of H C I ) with 0.100 M N a O H.” Under the “p H Values 0.100 M C H subscript 3 C O subscript 2 H footnote 2” column are the following values: 2.87, 4.14, 4.57, 4.92, 5.35, 5.61, 6.13, 6.44, 7.17, 8.72, 10.30, 11.00, 11.29, 11.75, 11.96, 12.22, 12.36, 12.46, and 12.52. Footnote two reads, “Titration of 25.00 m L of 0.100 M C H subscript 3 C O subscript 2 H ( 0.00250 mol of C H subscript 3C O subscript 2 H) with 0.100 M N a O H.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-53",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c4",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68809:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68809:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_14_07_titration",
+          "caption": {
+            "segmentId": "m68809:caption:CNX_Chem_14_07_titration-caption"
+          },
+          "media": {
+            "id": "fs-idp134166880",
+            "alt": "Two graphs are shown. The first graph on the left is titled “Titration of Weak Acid.” The horizontal axis is labeled “Volume of 0.100 M N a O H added (m L).” Markings and vertical gridlines are provided every 5 units from 0 to 50. The vertical axis is labeled “p H” and is marked every 1 unis beginning at 0 extending to 14. A red curve is drawn on the graph which increases steadily from the point (0, 3) up to about (20, 5.5) after which the graph has a vertical section from (25, 7) up to (25, 11). The graph then levels off to a value of about 12.5 from about 40 m L up to 50 m L. The midpoint of the vertical segment of the curve is labeled “Equivalence point p H, 8.72.” The second graph on the right is titled “Titration of Strong Acid.” The horizontal axis is labeled “Volume of 0.100 M N a O H added (m L).” Markings and vertical gridlines are provided every 5 units from 0 to 50. The vertical axis is labeled “p H” and is marked every 1 units beginning at 0 extending to 14. A red curve is drawn on the graph which increases gradually from the point (0, 1) up to about (22.5, 2.2) after which the graph has a vertical section from (25, 4) up to nearly (25, 11). The graph then levels off to a value of about 12.4 from about 40 m L up to 50 m L. The midpoint of the vertical segment of the curve is labeled “Equivalence point p H, 7.00.”",
+            "src": "../../media/CNX_Chem_14_07_titration.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp22610576",
+      "class": null,
+      "title": {
+        "segmentId": "m68809:title:fs-idp22610576-title",
+        "text": "Acid-Base Indicators"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm39085312",
+          "segmentId": "m68809:para:fs-idm39085312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm28417392",
+          "segmentId": "m68809:para:fs-idm28417392"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp80468176",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm87967824",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm68547888",
+          "segmentId": "m68809:para:fs-idm68547888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp64938256",
+          "segmentId": "m68809:para:fs-idp64938256"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp80076272",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm188576256",
+          "segmentId": "m68809:para:fs-idm188576256"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm92451888",
+          "segmentId": "m68809:para:fs-idm92451888"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_14_07_indicators",
+          "caption": {
+            "segmentId": "m68809:caption:CNX_Chem_14_07_indicators-caption"
+          },
+          "media": {
+            "id": "fs-idp112102048",
+            "alt": "This figure provides a graphical representation of indicators and color ranges. A horizontal axis is labeled “p H.” This axis begins at zero and increases by ones up to 13. The left side of the graphic provides a column with the names of indicators. To the right of each indicator name is either one or two colored bars that are shaded according to the indicator color at various p H ranges. From the top, the first row is labeled “Crystal violet.” The associated colored bar is yellow at its left end at a p H of 0 and changes to green and blue moving right to its endpoint at a p H of 1.8. The second row is labeled “Cresol red.” The associated colored bar is red at its left end at a p H of 1 and changes to orange and yellow moving right to its endpoint at a p H of just over 2. A second bar to its right is yellow at a p H of around 7 and proceeds through orange to red at a p H of about 9. The third row is labeled “Thymol blue.” The associated colored bar is red at its left end at a p H of nearly 1.2 and changes to orange and red moving right to its endpoint at a p H of 2.8. A second bar begins in yellow at a p H of 8 and proceeds through green and blue to its end at a p H of around 9.1. The fourth row is labeled “Erythrosin B.” The associated colored bar is red from a p H of 2.2 to its endpoint at a p H of 3.6. The fifth row is labeled “2 comma 4 dash Dinitrophenol.” The associated colored bar is white at its left end at a p H of 2.6 and changes to yellow at its endpoint at a p H of 4. The sixth row is labeled “Bromophenol blue.” The associated colored bar is yellow at its left end at a p H of 3 and changes to green and blue moving right to its endpoint at a p H of 4.5. The seventh row is labeled “Methyl orange.” The associated colored bar is red-orange at its left end at a p H of 4.2 and changes to yellow moving right to its endpoint at a p H of 6.3. The eighth row is labeled “Bromocresol green.” The associated colored bar is yellow at its left end at a p H of 3.8 and changes to green and blue moving right to its endpoint at a p H of 5.4. The ninth row is labeled “Methyl red.” The associated colored bar is orange at its left end at a p H of 4.2 and changes to yellow moving right to its endpoint at a p H of 6.3. The tenth row is labeled “Eriochrome * Black T.” The associated colored bar is red at its left end at a p H of 5 and changes to purple and blue moving right to its endpoint at a p H of 6.5. The eleventh row is labeled “Bromocresol purple.” The associated colored bar is yellow at its left end at a p H of 5.2 and changes to purple moving right to its endpoint at a p H of 6.8. The twelfth row is labeled “Alizarin.” The first associated colored bar is yellow-orange at its left end at a p H of 5.7 and changes to red moving right to its endpoint at a p H of 7.2. A second bar begins in red at a p H of 11 and changes to purple, then dark blue at its right end at a p H of 12.4. The thirteenth row is labeled “Bromothymol blue.” The associated colored bar is yellow at its left end at a p H of 6 and changes to green and blue moving right to its endpoint at a p H of 7.6. The fourteenth row is labeled “Phenol red.” The associated colored bar is yellow-orange at its left end at a p H of 6.8 and changes to orange and red moving right to its endpoint at a p H of 8.2. The fifteenth row is labeled “m dash Nitrophenol.” The associated colored bar is white at its left end at a p H of 6.8 and changes to yellow moving right to its endpoint at a p H of 8.6. The sixteenth row is labeled “o dash Cresolphthalein.” The associated colored bar is white at its left end at a p H of 8.3 and changes to red moving right to its endpoint at a p H of 9.8. The seventeenth row is labeled “Phenolphthalein.” The associated colored bar is white at its left end at a p H of 8 and changes to pink moving right to its endpoint at a p H of 10. The eighteenth row is labeled “Thymolphthalein.” The associated colored bar is light blue at its left end at a p H of 9.3 and changes to a deep, dark blue moving right to its endpoint at a p H of 10.5. The nineteenth row is labeled “Alizarin yellow R.” The associated colored bar is yellow-orange at its left end at a p H of 10 and changes to red moving right to its endpoint at a p H of 12.",
+            "src": "../../media/CNX_Chem_14_07_indicators.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_14_07_titration2",
+          "caption": {
+            "segmentId": "m68809:caption:CNX_Chem_14_07_titration2-caption"
+          },
+          "media": {
+            "id": "fs-idm5594336",
+            "alt": "A graph is shown which is titled “Titration of Weak Acid.” The horizontal axis is labeled “Volume of 0.100 M N a O H added (m L)” and begins at 0 with markings every 5 units up to 50. The vertical axis is labeled “p H” and begins at 0 and increases by single units up to 14. A red curve is drawn on the graph. The curve begins at (0, 3) and passes through the points (5, 4.1), (10, 4.7), (15, 5), (20, 5.5), and (22.5, 6), after which it rapidly increases, forming a vertical section centered at the point (25, 8.7). The rapid increase of the curve then levels off and the curve passes through the points (30, 12), (35, 12.4), (40, 12.5), (45, 12.6), and (50, 12.6). A brown rectangle extends horizontally across the graph covering the p H of 3 to 4.2 range. To the right, this rectangle is labeled “Methyl orange p H range.” A blue rectangle extends horizontally across the graph covering the p H of 4.6 to 8 range. To the right, this rectangle is labeled “Litmus p H range.” A purple rectangle extends horizontally across the graph covering the p H of 8.4 to 10 range. To the right, this rectangle is labeled “Phenolphthalein p H range.” The midpoint of the vertical segment of the curve is labeled “Equivalence point p H, 8.72.”",
+            "src": "../../media/CNX_Chem_14_07_titration2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm188916592",
+          "segmentId": "m68809:para:fs-idm188916592"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm224614176",
+          "segmentId": "m68809:para:fs-idm224614176"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp81138704",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68809:title:fs-idp81138704-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp77329840",
+          "segmentId": "m68809:para:fs-idp77329840"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp63641264",
+      "class": "exercises",
+      "title": null,
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm5595328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp67232528",
+                "segmentId": "m68809:problem:fs-idp67232528"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm66845488",
+                "segmentId": "m68809:solution:fs-idm66845488"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm81056688",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp73771216",
+                "segmentId": "m68809:problem:fs-idp73771216"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp255636208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp255636720",
+                "segmentId": "m68809:problem:fs-idp255636720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164478416",
+                "segmentId": "m68809:problem:fs-idp164478416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164478800",
+                "segmentId": "m68809:problem:fs-idp164478800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164479184",
+                "segmentId": "m68809:problem:fs-idp164479184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164479568",
+                "segmentId": "m68809:problem:fs-idp164479568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp177607408",
+                "segmentId": "m68809:problem:fs-idp177607408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp177608176",
+                "segmentId": "m68809:solution:fs-idp177608176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp105330480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp105330992",
+                "segmentId": "m68809:problem:fs-idp105330992"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68809:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68809:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68809:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68809:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp67176144",
+        "termSegmentId": "m68809:glossary-term:fs-idp67176144-term",
+        "definitionSegmentId": "m68809:glossary-def:fs-idp67176144-def"
+      },
+      {
+        "id": "fs-idp67177296",
+        "termSegmentId": "m68809:glossary-term:fs-idp67177296-term",
+        "definitionSegmentId": "m68809:glossary-def:fs-idp67177296-def"
+      },
+      {
+        "id": "fs-idp67179744",
+        "termSegmentId": "m68809:glossary-term:fs-idp67179744-term",
+        "definitionSegmentId": "m68809:glossary-def:fs-idp67179744-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

@@ -1,0 +1,68 @@
+{
+  "moduleId": "m68776",
+  "title": {
+    "segmentId": "m68776:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "f0d28fa7-9058-4391-917a-e6fa0fba640a",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "The Dissolution Process",
+        "Electrolytes",
+        "Solubility",
+        "Colligative Properties",
+        "Colloids"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_11_00_coralreef",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68776:caption:CNX_Chem_11_00_coralreef-caption"
+      },
+      "media": {
+        "id": "fs-idm147856368",
+        "alt": "This figure shows an underwater photo of a colorful coral reef.",
+        "src": "../../media/CNX_Chem_11_00_coralreef.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm54033200",
+      "segmentId": "m68776:para:fs-idm54033200"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm145040960",
+      "segmentId": "m68776:para:fs-idm145040960"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68776:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68776:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68776:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68776:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68776:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

@@ -1,0 +1,1518 @@
+{
+  "moduleId": "m68770",
+  "title": {
+    "segmentId": "m68770:title:auto-1",
+    "text": "The Solid State of Matter"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "eb0edc08-a7a0-4b1f-89d5-b7f5721ff192",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define and describe the bonding and properties of ionic, molecular, metallic, and covalent network crystalline solids",
+        "Describe the main types of crystalline solids: ionic solids, metallic solids, covalent network solids, and molecular solids",
+        "Explain the ways in which crystal defects can occur in a solid"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm142034528",
+      "segmentId": "m68770:para:fs-idm142034528"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_05_TypesSol",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68770:caption:CNX_Chem_10_05_TypesSol-caption"
+      },
+      "media": {
+        "id": "fs-idp38645936",
+        "alt": "Two images are shown and labeled, from left to right, “Crystalline” and “Amorphous.” The crystalline diagram shows many circles drawn in rows and stacked together tightly. The amorphous diagram shows many circles spread slightly apart and in no organized pattern.",
+        "src": "../../media/CNX_Chem_10_05_TypesSol.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm43294048",
+      "segmentId": "m68770:para:fs-idm43294048"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_05_BoronOxide",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68770:caption:CNX_Chem_10_05_BoronOxide-caption"
+      },
+      "media": {
+        "id": "fs-idp143208400",
+        "alt": "Two sets of molecules are shown. The first set of molecules contains five identical, hexagonal rings composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere. The second set of molecules shows four rings with twelve sides each that are joined together. Each ring is composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere.",
+        "src": "../../media/CNX_Chem_10_05_BoronOxide.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp94426432",
+      "segmentId": "m68770:para:fs-idp94426432"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp89902960",
+      "class": null,
+      "title": {
+        "segmentId": "m68770:title:fs-idp89902960-title",
+        "text": "Ionic Solids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp61138560",
+          "segmentId": "m68770:para:fs-idp61138560"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_IonicSolid",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_IonicSolid-caption"
+          },
+          "media": {
+            "id": "fs-idp147302624",
+            "alt": "This figure shows large purple spheres bonded to smaller green spheres in an alternating pattern. The spheres are arranged in a cube.",
+            "src": "../../media/CNX_Chem_10_05_IonicSolid.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp29672304",
+      "class": null,
+      "title": {
+        "segmentId": "m68770:title:fs-idp29672304-title",
+        "text": "Metallic Solids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp89753840",
+          "segmentId": "m68770:para:fs-idp89753840"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_Metallic",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_Metallic-caption"
+          },
+          "media": {
+            "id": "fs-idp25271680",
+            "alt": "This figure shows large brown spheres arranged in a cube.",
+            "src": "../../media/CNX_Chem_10_05_Metallic.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm43717504",
+      "class": null,
+      "title": {
+        "segmentId": "m68770:title:fs-idm43717504-title",
+        "text": "Covalent Network Solid"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm59353248",
+          "segmentId": "m68770:para:fs-idm59353248"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_NtwrkSolid",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_NtwrkSolid-caption"
+          },
+          "media": {
+            "id": "fs-idm63258736",
+            "alt": "Four pairs of images are shown. In the first pair, a square box containing a black atom bonded to four other black atoms is shown above a structure composed of many black atoms, each bonded to four other black atoms, where one of the upper atoms is labeled “carbon” and the whole structure is labeled “diamond.” In the second pair, a square box containing a white atom bonded to four red atoms is shown above a structure composed of many white atoms, each bonded to four red atoms, where one of the red atoms is labeled “oxygen” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon dioxide.” In the third pair, a square box containing a blue atom bonded to four white atoms is shown above a structure composed of many blue atoms, each bonded to four white atoms, where one of the blue atoms is labeled “carbon” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon carbide.” In the fourth pair, a square box containing six black atoms bonded into a ring is shown above a structure composed of many rings, arranged into sheets layered one atop the other, where one of the black atoms is labeled “carbon.” The whole structure is labeled “graphite.”",
+            "src": "../../media/CNX_Chem_10_05_NtwrkSolid.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm12346784",
+      "class": null,
+      "title": {
+        "segmentId": "m68770:title:fs-idm12346784-title",
+        "text": "Molecular Solid"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm41841264",
+          "segmentId": "m68770:para:fs-idm41841264"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_MolSolids",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_MolSolids-caption"
+          },
+          "media": {
+            "id": "fs-idp152449872",
+            "alt": "Two images are shown and labeled “carbon dioxide” and “iodine.” The carbon dioxide structure is composed of molecules, each made up of one gray and two red atoms, stacked together into a cube. The image of iodine shows pairs of purple atoms arranged near one another, but not touching.",
+            "src": "../../media/CNX_Chem_10_05_MolSolids.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm126346448",
+      "class": null,
+      "title": {
+        "segmentId": "m68770:title:fs-idm126346448-title",
+        "text": "Properties of Solids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp69161920",
+          "segmentId": "m68770:para:fs-idp69161920"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp121853232",
+          "class": "top-titled",
+          "summary": "This table has five rows and five columns. The first row is a header row, and it labels each column: “Type of Solid,” “Type of Particles,” “Type of Attractions,” “Properties,” and “Examples.” Under the “Type of Solid” column are the following: ionic, metallic, covalent network, and molecular. Under the “Type of Particles” column are the following: ions, atoms of electropositive elements, atoms of electronegative elements, and molecules ( or atoms ). Under the “Type of Attractions” column are the following: ionic bonds, metallic bonds, covalent bonds, I M F s. Under the “Properties column” are the following: hard, brittle, conducts electricity as a liquid but not as a solid, high to very high melting points; shiny, malleable, ductile, conducts heat and electricity well, variable hardness and melting temperature; very hard, not conductive, very high melting points; variable hardness, variable brittleness, not conductive, low melting points. Under the “Examples” column are the following: N a C l, A l subscript 2 O subscript 3; C u, F e, T I, P b, U; C (diamond), S I O subscript 2, S i C; H subscript 2 O, C O subscript 2, I subscript 2, C subscript 12 H subscript 22 O subscript 11.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-25",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c5",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-26",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-28",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-30",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-31",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-32",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-33",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-34",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-35",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-36",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-37",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-38",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-39",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-40",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-41",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-43",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-44",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-45",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-46",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-47",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp29074784",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68770:note-title:fs-idp29074784-title",
+            "text": "Graphene: Material of the Future"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm75890720",
+              "segmentId": "m68770:para:fs-idm75890720"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp141658128",
+              "segmentId": "m68770:para:fs-idp141658128"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_Carbon",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_Carbon-caption"
+          },
+          "media": {
+            "id": "fs-idp76108928",
+            "alt": "Three pairs of images are shown, each composed of a photo and a diagram. In the first pair, the photo shows a close-up view of a colorless, multi-faceted crystal and the diagram shows many gray spheres bonded together in a net-like structure. The caption below this pair reads “diamond.” In the second pair, the photo shows a rough textured, dark gray solid while the image shows four horizontal sheets, composed of interlocking black spheres, lying atop one another. This pair has a caption that reads “graphite.” The third pair shows a photo of twelve black hexagons on a yellow background where two of the hexagons are encircled by a gray border and a caption of “1.4 times 10, superscript negative 10, m, Distance between center of atoms” and an image of many black hexagons evenly arranged on a yellow background. The caption below this pair of images reads “Graphite surface.”",
+            "src": "../../media/CNX_Chem_10_05_Carbon.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_Graphene",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_Graphene-caption"
+          },
+          "media": {
+            "id": "fs-idp125807232",
+            "alt": "Four images are shown. In the upper image, labeled “Graphene sheet,” a box is drawn around a sheet of interconnected hexagonal rings. In the lower left image, a sphere is composed of hexagonal rings linked together and is labeled “Buckyball.” In the lower middle image, a tube is shown that is composed of many hexagonal rings joined together and is labeled “Nanotube.” In the lower right image, four horizontal sheets composed of joined, hexagonal rings is shown and labeled “Stacked sheets.”",
+            "src": "../../media/CNX_Chem_10_05_Graphene.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm64089200",
+      "class": null,
+      "title": {
+        "segmentId": "m68770:title:fs-idm64089200-title",
+        "text": "Crystal Defects"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm62566768",
+          "segmentId": "m68770:para:fs-idm62566768"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_05_CrystDfcts",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68770:caption:CNX_Chem_10_05_CrystDfcts-caption"
+          },
+          "media": {
+            "id": "fs-idp137961072",
+            "alt": "A diagram is shown in which one hundred and forty four spheres are arranged in a twelve by twelve square. A gap in the square is labeled “Vacancy” while one sphere that is a different color from all the rest is labeled “Interstitial impurity.” The top right corner of the square is disturbed and has a larger sphere inserted that is labeled “Substitution impurity atom.”",
+            "src": "../../media/CNX_Chem_10_05_CrystDfcts.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp41417328",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68770:title:fs-idp41417328-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp156889184",
+          "segmentId": "m68770:para:fs-idp156889184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm10815344",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68770:title:fs-idm10815344-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp61090560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41745840",
+                "segmentId": "m68770:problem:fs-idp41745840"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm10952384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27916784",
+                "segmentId": "m68770:problem:fs-idp27916784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp121435344",
+                "segmentId": "m68770:problem:fs-idp121435344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp141177968",
+                "segmentId": "m68770:problem:fs-idp141177968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm20552832",
+                "segmentId": "m68770:problem:fs-idm20552832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm65714160",
+                "segmentId": "m68770:problem:fs-idm65714160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp33654208",
+                "segmentId": "m68770:problem:fs-idp33654208"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm122833776",
+                "segmentId": "m68770:solution:fs-idm122833776"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp95742064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp139486336",
+                "segmentId": "m68770:problem:fs-idp139486336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp151758928",
+                "segmentId": "m68770:problem:fs-idp151758928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm67931264",
+                "segmentId": "m68770:problem:fs-idm67931264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37852016",
+                "segmentId": "m68770:problem:fs-idm37852016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60983504",
+                "segmentId": "m68770:problem:fs-idp60983504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm39069808",
+                "segmentId": "m68770:problem:fs-idm39069808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp91522240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp75942032",
+                "segmentId": "m68770:problem:fs-idp75942032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74685056",
+                "segmentId": "m68770:solution:fs-idm74685056"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm41685552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm40698816",
+                "segmentId": "m68770:problem:fs-idm40698816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm74815568",
+                "segmentId": "m68770:problem:fs-idm74815568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp22967904",
+                "segmentId": "m68770:problem:fs-idp22967904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16397792",
+                "segmentId": "m68770:problem:fs-idp16397792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm104303120",
+                "segmentId": "m68770:problem:fs-idm104303120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2801856",
+                "segmentId": "m68770:problem:fs-idm2801856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm82184496",
+                "segmentId": "m68770:problem:fs-idm82184496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm20239552",
+                "segmentId": "m68770:problem:fs-idm20239552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp144741184",
+                "segmentId": "m68770:problem:fs-idp144741184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm73664720",
+                "segmentId": "m68770:problem:fs-idm73664720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp150351456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56158384",
+                "segmentId": "m68770:problem:fs-idm56158384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp76027056",
+                "segmentId": "m68770:problem:fs-idp76027056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp148583904",
+                "segmentId": "m68770:problem:fs-idp148583904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38742432",
+                "segmentId": "m68770:problem:fs-idp38742432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp141096640",
+                "segmentId": "m68770:problem:fs-idp141096640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp54719776",
+                "segmentId": "m68770:problem:fs-idp54719776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp39812928",
+                "segmentId": "m68770:problem:fs-idp39812928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60374400",
+                "segmentId": "m68770:problem:fs-idp60374400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm128937696",
+                "segmentId": "m68770:problem:fs-idm128937696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm64156272",
+                "segmentId": "m68770:problem:fs-idm64156272"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp151661632",
+                "segmentId": "m68770:solution:fs-idp151661632"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm128882560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69181888",
+                "segmentId": "m68770:problem:fs-idp69181888"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm7525216",
+          "class": "unnumbered",
+          "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39063008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm77899792",
+                "segmentId": "m68770:problem:fs-idm77899792"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45120288",
+                "segmentId": "m68770:solution:fs-idm45120288"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp139392608",
+          "class": "unnumbered",
+          "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm126229856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp141786208",
+                "segmentId": "m68770:problem:fs-idp141786208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57155520",
+                "segmentId": "m68770:problem:fs-idm57155520"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp33413008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm12905728",
+                "segmentId": "m68770:problem:fs-idm12905728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp126078592",
+                "segmentId": "m68770:problem:fs-idp126078592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm108613504",
+                "segmentId": "m68770:problem:fs-idm108613504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm61807376",
+                "segmentId": "m68770:problem:fs-idm61807376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm65086880",
+                "segmentId": "m68770:problem:fs-idm65086880"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm61682352",
+                "segmentId": "m68770:solution:fs-idm61682352"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp12717008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm128907040",
+                "segmentId": "m68770:problem:fs-idm128907040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm88036208",
+                "segmentId": "m68770:problem:fs-idm88036208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm133001760",
+                "segmentId": "m68770:problem:fs-idm133001760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142545632",
+                "segmentId": "m68770:problem:fs-idm142545632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp133832976",
+                "segmentId": "m68770:problem:fs-idp133832976"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68770:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68770:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68770:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68770:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm63193280",
+        "termSegmentId": "m68770:glossary-term:fs-idm63193280-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idm63193280-def"
+      },
+      {
+        "id": "fs-idp42521392",
+        "termSegmentId": "m68770:glossary-term:fs-idp42521392-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idp42521392-def"
+      },
+      {
+        "id": "fs-idp141680624",
+        "termSegmentId": "m68770:glossary-term:fs-idp141680624-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idp141680624-def"
+      },
+      {
+        "id": "fs-idm134621184",
+        "termSegmentId": "m68770:glossary-term:fs-idm134621184-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idm134621184-def"
+      },
+      {
+        "id": "fs-idm37301360",
+        "termSegmentId": "m68770:glossary-term:fs-idm37301360-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idm37301360-def"
+      },
+      {
+        "id": "fs-idm21108640",
+        "termSegmentId": "m68770:glossary-term:fs-idm21108640-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idm21108640-def"
+      },
+      {
+        "id": "fs-idp66006736",
+        "termSegmentId": "m68770:glossary-term:fs-idp66006736-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idp66006736-def"
+      },
+      {
+        "id": "fs-idm37032656",
+        "termSegmentId": "m68770:glossary-term:fs-idm37032656-term",
+        "definitionSegmentId": "m68770:glossary-def:fs-idm37032656-def"
+      }
+    ]
+  },
+  "inlineTables": [
+    {
+      "tableId": "fs-idm7525216",
+      "structure": {
+        "type": "table",
+        "id": "fs-idm7525216",
+        "class": "unnumbered",
+        "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.",
+        "rows": [
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-171",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-172",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-173",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-174",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-175",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-176",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-177",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-178",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-179",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-180",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-181",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-182",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-183",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-184",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-185",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-186",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-187",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-188",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-189",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-190",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tableId": "fs-idp139392608",
+      "structure": {
+        "type": "table",
+        "id": "fs-idp139392608",
+        "class": "unnumbered",
+        "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.",
+        "rows": [
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-191",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-192",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-193",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-194",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-195",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-196",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-197",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-198",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-199",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-200",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-201",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-202",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-203",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-204",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-205",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-206",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-207",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-208",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-209",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-210",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "sectionOrder": null
+}

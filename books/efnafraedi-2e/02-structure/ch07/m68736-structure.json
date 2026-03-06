@@ -1,0 +1,67 @@
+{
+  "moduleId": "m68736",
+  "title": {
+    "segmentId": "m68736:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "b86288d5-f029-45ac-a301-2320aa86cb5b",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Ionic Bonding",
+        "Covalent Bonding",
+        "Lewis Symbols and Structures",
+        "Formal Charges and Resonance",
+        "Strengths of Ionic and Covalent Bonds",
+        "Molecular Structure and Polarity"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_07_00_Bucky",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68736:caption:CNX_Chem_07_00_Bucky-caption"
+      },
+      "media": {
+        "id": "fs-idm242192",
+        "alt": "Three figures are shown. The left figure is a many-sides spherical ball composed of hexagonal rings which have carbon atoms at each corner. The center picture shows a soccer ball. The right picture shown as water tower with sides shaped like hexagonal rings.",
+        "src": "../../media/CNX_Chem_07_00_Bucky.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp26683312",
+      "segmentId": "m68736:para:fs-idp26683312"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68736:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68736:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68736:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68736:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68736:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68736:abstract-item:abstract-item-6"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

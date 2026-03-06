@@ -1,0 +1,51 @@
+{
+  "m68726:para:fs-idm52788928": {
+    "terms": [
+      {
+        "id": "term-00001"
+      },
+      {
+        "id": "term-00002"
+      },
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m68726:para:fs-idm64462704": {
+    "terms": [
+      {
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m68726:para:fs-idm75111136": {
+    "terms": [
+      {
+        "id": "term-00005"
+      }
+    ]
+  },
+  "m68726:para:fs-idm30236928": {
+    "footnotes": [
+      {
+        "id": "fs-idm55601792"
+      }
+    ]
+  },
+  "m68726:para:eip-514": {
+    "terms": [
+      {
+        "id": "term-00006"
+      }
+    ]
+  },
+  "m68726:para:fs-idm53626320": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00007"
+      }
+    ]
+  }
+}

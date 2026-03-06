@@ -1,0 +1,335 @@
+{
+  "moduleId": "m68838",
+  "title": {
+    "segmentId": "m68838:title:auto-1",
+    "text": "Occurrence, Preparation, and Properties of Sulfur"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "03b0d669-3f4e-450d-a7be-1108051b9f47",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the properties, preparation, and uses of sulfur"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm222212272",
+      "segmentId": "m68838:para:fs-idm222212272"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_10_Volcano",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68838:caption:CNX_Chem_18_10_Volcano-caption"
+      },
+      "media": {
+        "id": "fs-idm247704592",
+        "alt": "A lake is shown surrounded by rocky, mountainous peaks. A white vapor rises from the ground near the lake.",
+        "src": "../../media/CNX_Chem_18_10_Volcano.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm89076784",
+      "segmentId": "m68838:para:fs-idm89076784"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_10_FrachMine",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68838:caption:CNX_Chem_18_10_FrachMine-caption"
+      },
+      "media": {
+        "id": "fs-idm119715872",
+        "alt": "A diagram is shown in which a vertical tube is embedded on the lower end into a multilayered solid. The upper layer is labeled, “Soil,” and the lower layer is labeled, “Solid sulfur deposit.” A thin tube, beginning at the top of the diagram, leads into the vertical tube to the bottom and is labeled, “Compressed air.” Left-facing and then down-facing arrows are drawn on this inner tube. These arrows then turn upward at the bottom of the tube and are drawn upward to indicate the flow of, “Liquid sulfur,” from the bottom of the diagram to the top outside the inner tube. These arrows lead to a chamber at the top right of the diagram with arrows facing to the left labeled, “Sulfur, water and air.” A horizontal tube in the center right of the diagram leads to the outer tube and arrows drawn downward lead back to the bottom of the diagram. This tube is labeled, “Superheated water.”",
+        "src": "../../media/CNX_Chem_18_10_FrachMine.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm172180032",
+      "segmentId": "m68838:para:fs-idm172180032"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm200790848",
+      "segmentId": "m68838:para:fs-idm200790848"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm29857024",
+      "segmentId": "m68838:para:fs-idm29857024"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm170183712",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm262010832",
+      "segmentId": "m68838:para:fs-idm262010832"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm120146304",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68838:title:fs-idm120146304-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm179520336",
+          "segmentId": "m68838:para:fs-idm179520336"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm130394160",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68838:title:fs-idm130394160-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm5069504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm96440544",
+                "segmentId": "m68838:problem:fs-idm96440544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm213191488",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197715424",
+                "segmentId": "m68838:problem:fs-idm197715424"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm189281632",
+                "segmentId": "m68838:solution:fs-idm189281632"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm200394080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm104880432",
+                "segmentId": "m68838:problem:fs-idm104880432"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm129605056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm247134512",
+                "segmentId": "m68838:problem:fs-idm247134512"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm187322528",
+                "segmentId": "m68838:solution:fs-idm187322528"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm130857952",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm216526752",
+                "segmentId": "m68838:problem:fs-idm216526752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm135267520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm132402992",
+                "segmentId": "m68838:problem:fs-idm132402992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197382000",
+                "segmentId": "m68838:solution:fs-idm197382000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17880736",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm81251856",
+                "segmentId": "m68838:problem:fs-idm81251856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm130691520",
+                "segmentId": "m68838:problem:fs-idm130691520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41676336",
+                "segmentId": "m68838:problem:fs-idp41676336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm197872928",
+                "segmentId": "m68838:problem:fs-idm197872928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm35659040",
+                "segmentId": "m68838:problem:fs-idm35659040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm48725648",
+                "segmentId": "m68838:problem:fs-idm48725648"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm104555280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm83901840",
+                "segmentId": "m68838:problem:fs-idm83901840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm140481840",
+                "segmentId": "m68838:solution:fs-idm140481840"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm217260912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm206945136",
+                "segmentId": "m68838:problem:fs-idm206945136"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm172430496",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm163724208",
+                "segmentId": "m68838:problem:fs-idm163724208"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43029600",
+                "segmentId": "m68838:solution:fs-idm43029600"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68838:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68838:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm172534880",
+        "termSegmentId": "m68838:glossary-term:fs-idm172534880-term",
+        "definitionSegmentId": "m68838:glossary-def:fs-idm172534880-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

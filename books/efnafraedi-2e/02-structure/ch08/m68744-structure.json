@@ -1,0 +1,927 @@
+{
+  "moduleId": "m68744",
+  "title": {
+    "segmentId": "m68744:title:auto-1",
+    "text": "Valence Bond Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2b690768-dca5-4bbd-9780-22bc32852476",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the formation of covalent bonds in terms of atomic orbital overlap",
+        "Define and give examples of σ and π bonds"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp42936208",
+      "segmentId": "m68744:para:fs-idp42936208"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp41602432",
+      "segmentId": "m68744:para:fs-idp41602432"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp56452464",
+      "segmentId": "m68744:para:fs-idp56452464"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp45162384",
+      "segmentId": "m68744:para:fs-idp45162384"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_01_Morse",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68744:caption:CNX_Chem_08_01_Morse-caption"
+      },
+      "media": {
+        "id": "fs-idp39719248",
+        "alt": "A pair of diagrams are shown and labeled “a” and “b”. Diagram a shows three consecutive images. The first image depicts two separated blurry circles, each labeled with a positive sign and the term “H atom.” The phrase written under them reads, “Sufficiently far apart to have no interaction.” The second image shows the same two circles, but this time they are much closer together and are labeled, “Atoms begin to interact as they move closer together.” The third image shows the two circles overlapping, labeled, “H subscript 2,” and, “Optimum distance to achieve lowest overall energy of system.” Diagram b shows a graph on which the y-axis is labeled “Energy ( J ),” and the x-axis is labeled, “Internuclear distance ( p m ).” The midpoint of the y-axis is labeled as zero. The curve on the graph begins at zero p m and high on the y-axis. The graph slopes downward steeply to a point far below the zero joule line on the y-axis and the lowest point reads “0.74 p m” and “H bonded to H bond length.” It is also labeled “ negative 7.24 times 10 superscript negative 19 J.” The graph then rises again to zero J. The graph is accompanied by the same images from diagram a; the first image correlates to the point in the graph where it crosses the zero point on the y-axis, the third image where the graph is lowest.",
+        "src": "../../media/CNX_Chem_08_01_Morse-3a8e.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm5865744",
+      "segmentId": "m68744:para:fs-idm5865744"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp43355056",
+      "class": "top-titled",
+      "summary": "A table is shown that contains six columns and eleven rows. The header row reads “Bond,” “Length ( p m ),” “Energy ( k J / mol ),” “Bond,” “Length ( p m ),” and “Energy ( k J / mol ).” The first column contains the symbols: “H bond H,” “H bond C,” “H bond N,” “H bond O,” “C bond C,” “C double bond C,” “C triple bond C,” “C bond N,” “C double bond N,” and “C triple bond N.” The second column contains the numbers “74,” “106.8,” “101.5,” “97.5,” “150.6,” “133.5,” “120.8,” “142.1,” “130.0,” and “116.1.” The third column contains the numbers: “436,” “413,” “391,” “467,” “347,” “614,” “839,” “305,” “615,” and “891.” The fourth column contains the symbols: “C bond O,” “C double bond O,” “C triple bond O,” “H bond C l,” “H bond B r,” “H bond I,” “O bond O,” “O double bond O,” “F bond F,” and “C l bond C l.” The fifth column contains the numbers “140.1,” “119.7,” “113.7,” “127.5,” “141.4,” “160.9,” “148,” “120.8,” “141.2,” and “198.8.” The sixth column contains the numbers “358,” “745,” “1072,” “431,” “366,” “298,” “146,” “498,” “159,” and “243.”",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-11",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c6",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-12",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-13",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-36",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-37",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-39",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-40",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-41",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-42",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-43",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-44",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-45",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-46",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-47",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-48",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-49",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-50",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-51",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-52",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-53",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-54",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-55",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-56",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-57",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-58",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-59",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-60",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-61",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-62",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-63",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-64",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-65",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-66",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-67",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-68",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-69",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-70",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-71",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68744:entry:auto-72",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-73",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-74",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-75",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-76",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68744:entry:auto-77",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10626416",
+      "segmentId": "m68744:para:fs-idm10626416"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_01_overlap",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68744:caption:CNX_Chem_08_01_overlap-caption"
+      },
+      "media": {
+        "id": "fs-idp75347888",
+        "alt": "Two diagrams are shown. Diagram a contains two molecules whose p orbitals, which are depicted as two balloon-shaped structures that meet together to form a peanut shape, are laid end over end, creating an area of overlap. In diagram b, the same two molecules are shown, but this time, they are laid out in a way so as to form a near-ninety degree angle. In this diagram, the ends of two of these peanut-shaped orbitals do not overlap nearly as much.",
+        "src": "../../media/CNX_Chem_08_01_overlap.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp40817312",
+      "segmentId": "m68744:para:fs-idp40817312"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_01_sigma",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68744:caption:CNX_Chem_08_01_sigma-caption"
+      },
+      "media": {
+        "id": "fs-idp92578528",
+        "alt": "Three diagrams are shown and labeled “a,” “b,” and “c.” Diagram a shows two spherical orbitals lying side by side and overlapping. Diagram b shows one spherical and one peanut-shaped orbital lying near one another so that the spherical orbital overlaps with one end of the peanut-shaped orbital. Diagram c shows two peanut-shaped orbitals lying end to end so that one end of each orbital overlaps the other.",
+        "src": "../../media/CNX_Chem_08_01_sigma.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp92007424",
+      "segmentId": "m68744:para:fs-idp92007424"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_01_pi",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68744:caption:CNX_Chem_08_01_pi-caption"
+      },
+      "media": {
+        "id": "fs-idp213482864",
+        "alt": "Two peanut-shaped orbitals are shown, lying vertically and parallel with one another. They overlap one another along the top and bottom of the orbital.",
+        "src": "../../media/CNX_Chem_08_01_pi.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp46373312",
+      "segmentId": "m68744:para:fs-idp46373312"
+    },
+    {
+      "type": "media",
+      "id": "fs-idp200689696",
+      "class": "scaled-down",
+      "alt": "A diagram contains three Lewis structures. The left most structure shows an H atom bonded to a C l atom by a single bond. The C l atom has three lone pairs of electrons. The phrase “One sigma bond No pi bonds” is written below the drawing. The center structure shows two O atoms bonded by a double bond. The O atoms each have two lone pairs of electrons. The phrase “One sigma bond One pi bond” is written below the drawing. The right most structure shows two N atoms bonded by a triple bond. Each N atom has a lone pairs of electrons. The phrase “One sigma bond Two pi bonds” is written below the drawing.",
+      "src": "../../media/CNX_Chem_08_01_bondtype_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp228190304",
+      "segmentId": "m68744:para:fs-idp228190304"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp85049088",
+      "title": {
+        "segmentId": "m68744:example-title:fs-idp85049088-title",
+        "text": "Counting σ and π Bonds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm26209776",
+          "segmentId": "m68744:para:fs-idm26209776"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm57104384",
+          "segmentId": "m68744:para:fs-idm57104384"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm9825456",
+          "segmentId": "m68744:para:fs-idm9825456",
+          "title": {
+            "segmentId": "m68744:para-title:fs-idm9825456-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp46378096",
+          "segmentId": "m68744:para:fs-idp46378096",
+          "title": {
+            "segmentId": "m68744:para-title:fs-idp46378096-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp138827456",
+          "segmentId": "m68744:para:fs-idp138827456"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp7133408",
+          "segmentId": "m68744:para:fs-idp7133408"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp145728832",
+          "segmentId": "m68744:para:fs-idp145728832"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp204958944",
+          "segmentId": "m68744:para:fs-idp204958944"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp42592272",
+          "title": {
+            "segmentId": "m68744:note-title:fs-idp42592272-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp204958944",
+              "segmentId": "m68744:para:fs-idp204958944"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp111264480",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68744:title:fs-idp111264480-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp52352272",
+          "segmentId": "m68744:para:fs-idp52352272"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp52122896",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68744:title:fs-idp52122896-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp92773152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78431584",
+                "segmentId": "m68744:problem:fs-idp78431584"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp274311280",
+                "segmentId": "m68744:solution:fs-idp274311280"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp204835968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp227808144",
+                "segmentId": "m68744:problem:fs-idp227808144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51886016",
+                "segmentId": "m68744:problem:fs-idp51886016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp111417136",
+                "segmentId": "m68744:problem:fs-idp111417136"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm21893728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52335344",
+                "segmentId": "m68744:problem:fs-idp52335344"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm6551584",
+                "segmentId": "m68744:solution:fs-idm6551584"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp92050208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp93350272",
+                "segmentId": "m68744:problem:fs-idp93350272"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp84623072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp162827936",
+                "segmentId": "m68744:problem:fs-idp162827936"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp227973568",
+                "segmentId": "m68744:solution:fs-idp227973568"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp78672368",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp19340608",
+                "segmentId": "m68744:problem:fs-idp19340608"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp108425904",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43811376",
+                "segmentId": "m68744:problem:fs-idp43811376"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp200708192",
+                "segmentId": "m68744:solution:fs-idp200708192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp42077552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1603952",
+                "segmentId": "m68744:problem:fs-idm1603952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp120788224",
+                "segmentId": "m68744:problem:fs-idp120788224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137369488",
+                "segmentId": "m68744:problem:fs-idp137369488"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68744:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68744:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68744:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp42480608",
+        "termSegmentId": "m68744:glossary-term:fs-idp42480608-term",
+        "definitionSegmentId": "m68744:glossary-def:fs-idp42480608-def"
+      },
+      {
+        "id": "fs-idp123920528",
+        "termSegmentId": "m68744:glossary-term:fs-idp123920528-term",
+        "definitionSegmentId": "m68744:glossary-def:fs-idp123920528-def"
+      },
+      {
+        "id": "fs-idp94790208",
+        "termSegmentId": "m68744:glossary-term:fs-idp94790208-term",
+        "definitionSegmentId": "m68744:glossary-def:fs-idp94790208-def"
+      },
+      {
+        "id": "fs-idp36919168",
+        "termSegmentId": "m68744:glossary-term:fs-idp36919168-term",
+        "definitionSegmentId": "m68744:glossary-def:fs-idp36919168-def"
+      },
+      {
+        "id": "fs-idp81645184",
+        "termSegmentId": "m68744:glossary-term:fs-idp81645184-term",
+        "definitionSegmentId": "m68744:glossary-def:fs-idp81645184-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp98308768",
+      "class": "scaled-down",
+      "alt": "This figure shows a molecule composed of four carbon atoms. There is a double bond between carbons one and two and three and four, while a single bond holds carbon two and three together. Carbons one and four are also bonded to two hydrogens with a single bond while carbons two and three are each bonded to one hydrogen each by a single bond.",
+      "src": "../../media/CNX_Chem_08_01_C4H6_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp41750256",
+      "class": null,
+      "alt": "This figure shows the orbitals of two atoms being added together as they form bonds. The two atoms are shown separately on the right, each having two peanut-shaped orbitals lying perpendicularly to one another. A right-facing arrow shows that the two have moved closer together and now the upper and lower portions of the vertical peanut-shaped orbitals are shown as merging together above and below the plane of the molecule while the horizontal peanut-shaped orbitals are overlapping between the two nuclei.",
+      "src": "../../media/CNX_Chem_08_01_O2bonds_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp50252080",
+      "class": "scaled-down",
+      "alt": "Two nitrogen atoms are shown both in a Lewis structure and as a diagram. The Lewis structure depicts the two nitrogen atoms bonded by a triple bond. The diagram shows two nitrogen atoms and their three peanut-shaped p-orbitals. One of the orbitals lies horizontally and overlaps between the two nuclei. It is labeled, “sigma bond.” The other two lie vertically and in the z-plane of the page. They overlap above and below and into and out of the page in relation to the nuclei. They are each labeled, “pi bond.”",
+      "src": "../../media/CNX_Chem_08_01_N2LewStru_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

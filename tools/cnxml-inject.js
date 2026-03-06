@@ -440,7 +440,13 @@ function buildMediaElement(media) {
  * @param {Array} inlineTables - Inline table structures
  * @returns {string} CNXML-compatible text
  */
-function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = []) {
+function reverseInlineMarkup(
+  text,
+  equations,
+  inlineMedia = [],
+  inlineTables = [],
+  inlineAttrs = null
+) {
   let result = text;
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
@@ -497,6 +503,7 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
   });
 
   // Convert emphasis markers back to CNXML
+  result = result.replace(/\+\+(.+?)\+\+/g, '<emphasis effect="underline">$1</emphasis>');
   result = result.replace(/\*\*([^*]+)\*\*/g, '<emphasis effect="bold">$1</emphasis>');
   result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
 
@@ -517,6 +524,10 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
       .replace(/~([^~]{1,15})~/g, '<sub>$1</sub>');
     return `<term>${restored}</term>`;
   });
+
+  // Convert self-closing document cross-references (e.g., [m68674#fs-idm81346144])
+  // Must come before generic [#...] to avoid partial match
+  result = result.replace(/\[([^\]#]+)#([^\]]+)\]/g, '<link document="$1" target-id="$2"/>');
 
   // Convert self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
   result = result.replace(/\[#([^\]]+)\]/g, '<link target-id="$1"/>');
@@ -551,6 +562,38 @@ function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = [
     / \[(?:footnote|neðanmálsgrein): ([\s\S]+?)\](?=\s|$|[.,;:])/g,
     '<footnote>$1</footnote>'
   );
+
+  // Restore inline attributes from sidecar metadata (term class, footnote id, etc.)
+  if (inlineAttrs) {
+    // Restore term attributes by occurrence index
+    if (inlineAttrs.terms) {
+      let termIndex = 0;
+      result = result.replace(/<term>/g, () => {
+        const attrs = inlineAttrs.terms[termIndex] || null;
+        termIndex++;
+        if (attrs) {
+          const parts = ['<term'];
+          if (attrs.class) parts.push(` class="${attrs.class}"`);
+          if (attrs.id) parts.push(` id="${attrs.id}"`);
+          parts.push('>');
+          return parts.join('');
+        }
+        return '<term>';
+      });
+    }
+    // Restore footnote attributes by occurrence index
+    if (inlineAttrs.footnotes) {
+      let footnoteIndex = 0;
+      result = result.replace(/<footnote>/g, () => {
+        const attrs = inlineAttrs.footnotes[footnoteIndex] || null;
+        footnoteIndex++;
+        if (attrs && attrs.id) {
+          return `<footnote id="${attrs.id}">`;
+        }
+        return '<footnote>';
+      });
+    }
+  }
 
   // Safely escape XML entities: protect known-good CNXML tags with placeholders,
   // escape ALL remaining < and &, then restore the placeholders.
@@ -613,7 +656,7 @@ function collectFigureCaptions(elements, map) {
   }
 }
 
-function buildCnxml(structure, segments, equations, originalCnxml, options = {}) {
+function buildCnxml(structure, segments, equations, originalCnxml, options = {}, inlineAttrs = {}) {
   const verbose = options.verbose || false;
 
   // Injection tracking
@@ -643,7 +686,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
       text,
       equations,
       structure.inlineMedia || [],
-      structure.inlineTables || []
+      structure.inlineTables || [],
+      inlineAttrs[segmentId] || null
     );
   };
 
@@ -1547,6 +1591,17 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   const eqPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-equations.json`);
   const equations = fs.existsSync(eqPath) ? JSON.parse(fs.readFileSync(eqPath, 'utf-8')) : {};
 
+  // Load inline attributes (term class, footnote id, etc.)
+  const inlineAttrsPath = path.join(
+    BOOKS_DIR,
+    '02-structure',
+    chapterDir,
+    `${moduleId}-inline-attrs.json`
+  );
+  const inlineAttrs = fs.existsSync(inlineAttrsPath)
+    ? JSON.parse(fs.readFileSync(inlineAttrsPath, 'utf-8'))
+    : {};
+
   // Load EN segments (for term marker restoration)
   const enSegPath = path.join(BOOKS_DIR, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`);
   const enSegments = fs.existsSync(enSegPath)
@@ -1560,7 +1615,7 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   }
   const originalCnxml = fs.readFileSync(originalPath, 'utf-8');
 
-  return { structure, segments, equations, originalCnxml, enSegments };
+  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs };
 }
 
 /**
@@ -1615,12 +1670,8 @@ async function main() {
         console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
       }
 
-      const { structure, segments, equations, originalCnxml, enSegments } = loadModuleInputs(
-        args.chapter,
-        moduleId,
-        args.lang,
-        sourceDir
-      );
+      const { structure, segments, equations, originalCnxml, enSegments, inlineAttrs } =
+        loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir);
 
       // Restore __term__ markers that MT converted to **bold**
       const { restoredCount } = restoreTermMarkers(segments, enSegments);
@@ -1642,11 +1693,18 @@ async function main() {
         }
       }
 
-      const result = buildCnxml(structure, segments, equations, originalCnxml, {
-        verbose: args.verbose,
-        enSegments,
-        annotateEn: args.annotateEn,
-      });
+      const result = buildCnxml(
+        structure,
+        segments,
+        equations,
+        originalCnxml,
+        {
+          verbose: args.verbose,
+          enSegments,
+          annotateEn: args.annotateEn,
+        },
+        inlineAttrs
+      );
 
       if (!result.report.complete && !args.allowIncomplete) {
         console.error(`${moduleId}: SKIPPED — incomplete injection`);

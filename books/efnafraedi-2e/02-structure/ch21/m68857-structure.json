@@ -1,0 +1,305 @@
+{
+  "moduleId": "m68857",
+  "title": {
+    "segmentId": "m68857:title:auto-1",
+    "text": "Uses of Radioisotopes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "15be4435-4470-4cb9-b6ce-fdb871aba9f1",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "List common applications of radioactive isotopes"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp54341648",
+      "segmentId": "m68857:para:fs-idp54341648"
+    },
+    {
+      "type": "para",
+      "id": "eip-608",
+      "segmentId": "m68857:para:eip-608"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp247341312",
+      "segmentId": "m68857:para:fs-idp247341312"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_05_Thallium",
+      "caption": {
+        "segmentId": "m68857:caption:CNX_Chem_21_05_Thallium-caption"
+      },
+      "media": {
+        "id": "fs-idp42838624",
+        "alt": "A photo is shown of two men, one walking on a treadmill with various wires connected to his torso region, and the other collecting blood pressure data from the first man.",
+        "src": "../../media/CNX_Chem_21_05_Thallium.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp117263328",
+      "segmentId": "m68857:para:fs-idp117263328"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_05_Tc-99",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68857:caption:CNX_Chem_21_05_Tc-99-caption"
+      },
+      "media": {
+        "id": "fs-idp19157312",
+        "alt": "A photograph and a microscopic image are shown and labeled “a” and “b.” Photo a shows a person’s hand holding a graduated cylinder that contains a clear, colorless liquid and tilting the cylinder to pour it into a vertical, cylindrical glass tube. The tube has many separate glass components and is held in place by a test tube clamp. Image b shows a multitude of tiny, red dots on a black background. The dots are collected in four regions and dispersed elsewhere.",
+        "src": "../../media/CNX_Chem_21_05_Tc-99.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp240963344",
+      "segmentId": "m68857:para:fs-idp240963344"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_05_RadTherapy",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68857:caption:CNX_Chem_21_05_RadTherapy-caption"
+      },
+      "media": {
+        "id": "fs-idp151344384",
+        "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a woman lying on a horizontal table with is being inserted into a dome-shaped machine. Diagram b shows a closer view of the woman’s head and upper torso in the machine. A series of beams, labeled “Gamma rays,” are shown to exit from slits in the edges of the machine, labeled “Radioactive cobalt,” and to penetrate her head, which is labeled “Target.”",
+        "src": "../../media/CNX_Chem_21_05_RadTherapy.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp202530192",
+      "segmentId": "m68857:para:fs-idp202530192"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp40314416",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp130664688",
+      "segmentId": "m68857:para:fs-idp130664688"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_05_Co60Decay",
+      "caption": {
+        "segmentId": "m68857:caption:CNX_Chem_21_05_Co60Decay-caption"
+      },
+      "media": {
+        "id": "fs-idp82360800",
+        "alt": "A chart shows a horizontal line in the upper left corner labeled “superscript 60 subscript 27 C o” and “5.272 a” with two arrows facing right and downward leading from it. These arrows are labeled “1.48 M e v beta 0.12 percent sign” and “0.31 M e v beta 99.88 percent sign.” The upper of the two arrows points to a horizontal line and the lower arrow points to a second horizontal line. A downward facing arrow lies in between these two horizontal lines and is labeled “1.1732 M e V gamma.” A fourth horizontal line lies at the bottom of the diagram below the second and third lines. A downward facing arrow lies in between it and the third horizontal line. It is labeled “1.3325 M e V gamma.” Below the last horizontal line is the label “superscript 60 subscript 28 N i.”",
+        "src": "../../media/CNX_Chem_21_05_Co60Decay.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp115972800",
+      "segmentId": "m68857:para:fs-idp115972800"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm4363456",
+      "segmentId": "m68857:para:fs-idm4363456"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp161500800",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp103955008",
+      "segmentId": "m68857:para:fs-idp103955008"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp7560688",
+      "segmentId": "m68857:para:fs-idp7560688"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_05_UsesOfRad",
+      "caption": {
+        "segmentId": "m68857:caption:CNX_Chem_21_05_UsesOfRad-caption"
+      },
+      "media": {
+        "id": "fs-idp105478400",
+        "alt": "Two photographs are shown and labeled “a” and “b.” Photo a shows a man looking at a lighted image on the wall. Photo b shows strawberries on a conveyor belt dropping into a series of collection chambers.",
+        "src": "../../media/CNX_Chem_21_05_UsesOfRad.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp105479248",
+      "segmentId": "m68857:para:fs-idp105479248"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_05_SmokeAlarm",
+      "caption": {
+        "segmentId": "m68857:caption:CNX_Chem_21_05_SmokeAlarm-caption"
+      },
+      "media": {
+        "id": "fs-idp22507536",
+        "alt": "A photograph and a diagram are shown. The photograph shows the interior of a smoke detector. A circular piece of plastic in the lower section of the detector is labeled “Alarm” while a metal disk in the top left of the photo is labeled “Ionization chamber.” A battery is on the top right of the detector. The diagram shows an expanded view of the ionization chamber. Inside of the cylindrical casing are two horizontal, circular plates labeled “Metal plates”; the top is labeled with a positive sign and the bottom with a negative sign. Wires are shown connected to the plates and the terminals of a battery on the exterior of the chamber. A disk in the bottom of the chamber is labeled “Americium source” and four arrows, labeled “Alpha particles,” face vertically from this disk, through a hole in the negative plate, and into the upper space of the chamber. Two molecules, with positive signs, made up of two blue spheres and two molecules, with positive signs, made up of two red spheres are in this space, as well as two yellow spheres labeled with negative signs and arrows facing downward. Eleven white dots surround two of the molecules on the right of the image and are labeled “smoke particles. Above the left side of the image is the phrase “No smoke, charged particles complete the circuit” while a phrase above the right side of the image states “Smoke uncharges the particles, circuit is broken, alarm is triggered.”",
+        "src": "../../media/CNX_Chem_21_05_SmokeAlarm.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idp11200000",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68857:title:fs-idp11200000-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp17699024",
+          "segmentId": "m68857:para:fs-idp17699024"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp96492688",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68857:title:fs-idp96492688-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp257856896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp224609904",
+                "segmentId": "m68857:problem:fs-idp224609904"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26794976",
+                "segmentId": "m68857:solution:fs-idp26794976"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp183594912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3550720",
+                "segmentId": "m68857:problem:fs-idp3550720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp88874912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp146873664",
+                "segmentId": "m68857:problem:fs-idp146873664"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp150733248",
+                "segmentId": "m68857:problem:fs-idp150733248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp215490544",
+                "segmentId": "m68857:problem:fs-idp215490544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp200685328",
+                "segmentId": "m68857:solution:fs-idp200685328"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68857:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68857:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp80557904",
+        "termSegmentId": "m68857:glossary-term:fs-idp80557904-term",
+        "definitionSegmentId": "m68857:glossary-def:fs-idp80557904-def"
+      },
+      {
+        "id": "fs-idp44456896",
+        "termSegmentId": "m68857:glossary-term:fs-idp44456896-term",
+        "definitionSegmentId": "m68857:glossary-def:fs-idp44456896-def"
+      },
+      {
+        "id": "fs-idp166135008",
+        "termSegmentId": "m68857:glossary-term:fs-idp166135008-term",
+        "definitionSegmentId": "m68857:glossary-def:fs-idp166135008-def"
+      },
+      {
+        "id": "fs-idp18406528",
+        "termSegmentId": "m68857:glossary-term:fs-idp18406528-term",
+        "definitionSegmentId": "m68857:glossary-def:fs-idp18406528-def"
+      },
+      {
+        "id": "fs-idp81777184",
+        "termSegmentId": "m68857:glossary-term:fs-idp81777184-term",
+        "definitionSegmentId": "m68857:glossary-def:fs-idp81777184-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

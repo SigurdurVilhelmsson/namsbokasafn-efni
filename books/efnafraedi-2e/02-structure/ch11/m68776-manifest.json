@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "moduleId": "m68776",
+  "extractedAt": "2026-03-06T13:09:38.625Z",
+  "sourceHash": "bd1c443cbc1e1457",
+  "segmentCount": 9,
+  "segmentIds": [
+    "m68776:title:auto-1",
+    "m68776:abstract-item:abstract-item-1",
+    "m68776:abstract-item:abstract-item-2",
+    "m68776:abstract-item:abstract-item-3",
+    "m68776:abstract-item:abstract-item-4",
+    "m68776:abstract-item:abstract-item-5",
+    "m68776:caption:CNX_Chem_11_00_coralreef-caption",
+    "m68776:para:fs-idm54033200",
+    "m68776:para:fs-idm145040960"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 2,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_11_00_coralreef"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "moduleId": "m68841",
+  "extractedAt": "2026-03-06T13:09:39.941Z",
+  "sourceHash": "d72d61003acbc54c",
+  "segmentCount": 8,
+  "segmentIds": [
+    "m68841:title:auto-1",
+    "m68841:abstract-item:abstract-item-1",
+    "m68841:abstract-item:abstract-item-2",
+    "m68841:abstract-item:abstract-item-3",
+    "m68841:caption:CNX_Chem_19_00_CuOre-caption",
+    "m68841:para:fs-idm115162288",
+    "m68841:para:fs-idm19578416",
+    "m68841:para:fs-idm99828800"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 3,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_19_00_CuOre"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

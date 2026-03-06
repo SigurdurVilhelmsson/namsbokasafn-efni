@@ -1,0 +1,34 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>Al:</m:mtext><m:mspace width=\"2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{Al:}\\, ({{\\text{Al}}}^{{2+}}\\, \\longrightarrow \\, {{\\text{Al}}}^{{3+}}+{\\text{e}}^{\\text{−}})}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mtext>E</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>E</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{E}}^{\\text{+}}(g)+{\\text{e}}^{\\text{−}}\\, \\longrightarrow \\, \\text{E}(g)}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>E</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>E</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{E}(g)\\, \\longrightarrow \\, {\\text{E}}^{\\text{+}}(g)+{\\text{e}}^{-}}"
+  },
+  "fs-idm124657104": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>Z</m:mi><m:mrow><m:mtext>eff</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mi>Z</m:mi><m:mo>−</m:mo><m:mi>s</m:mi><m:mi>h</m:mi><m:mi>i</m:mi><m:mi>e</m:mi><m:mi>l</m:mi><m:mi>d</m:mi><m:mi>i</m:mi><m:mi>n</m:mi><m:mi>g</m:mi></m:mrow></m:math>",
+    "latex": "{{Z}_{{\\text{eff}}}=Z-shielding}",
+    "isBlock": true
+  },
+  "fs-idm119836992": {
+    "mathml": "<m:math><m:mrow><m:mtext>X</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>X</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>e</m:mtext></m:mrow><m:mo>−</m:mo></m:msup><m:mspace width=\"2em\"/><m:msub><m:mrow><m:mtext>IE</m:mtext></m:mrow><m:mn>1</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{X}(g)\\, \\longrightarrow \\, {\\text{X}}^{\\text{+}}(g)+{{\\text{e}}}^{-}\\, {{\\text{IE}}}_{1}}",
+    "isBlock": true
+  },
+  "fs-idp4728832": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mtext>X</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>X</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width=\"2em\"/><m:msub><m:mrow><m:mtext>IE</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{X}}^{\\text{+}}(g)\\, \\longrightarrow \\, {\\text{X}}^{{2+}}(g)+{\\text{e}}^{-}\\, {{\\text{IE}}}_{2}}",
+    "isBlock": true
+  },
+  "fs-idm30321680": {
+    "mathml": "<m:math><m:mrow><m:mtext>X</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>X</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"2em\"/><m:msub><m:mrow><m:mtext>EA</m:mtext></m:mrow><m:mn>1</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{X}(g)+{\\text{e}}^{-}\\, \\longrightarrow \\, {\\text{X}}^{\\text{−}}(g)\\, {{\\text{EA}}}_{1}}",
+    "isBlock": true
+  }
+}

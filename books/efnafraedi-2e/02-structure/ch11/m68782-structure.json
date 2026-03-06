@@ -1,0 +1,831 @@
+{
+  "moduleId": "m68782",
+  "title": {
+    "segmentId": "m68782:title:auto-1",
+    "text": "Solubility"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "92f7d520-699c-4ac6-8fc7-8f99c4aaee33",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the effects of temperature and pressure on solubility",
+        "State Henry’s law and use it in calculations involving the solubility of a gas in a liquid",
+        "Explain the degrees of solubility possible for liquid-liquid solutions"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp45815680",
+      "segmentId": "m68782:para:fs-idp45815680"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp110015984",
+      "segmentId": "m68782:para:fs-idp110015984"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp30743824",
+      "segmentId": "m68782:para:fs-idp30743824"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp37372608",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp75533376",
+          "segmentId": "m68782:para:fs-idp75533376"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp69648624",
+      "segmentId": "m68782:para:fs-idp69648624"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp38905248",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp34793776",
+          "segmentId": "m68782:para:fs-idp34793776"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp106949904",
+      "class": null,
+      "title": {
+        "segmentId": "m68782:title:fs-idp106949904-title",
+        "text": "Solutions of Gases in Liquids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp65103440",
+          "segmentId": "m68782:para:fs-idp65103440"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp39461568",
+          "segmentId": "m68782:para:fs-idp39461568"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_gasdissolv",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_gasdissolv-caption"
+          },
+          "media": {
+            "id": "fs-idp17757392",
+            "alt": "This graph shows solubilities of methane, oxygen, carbon monoxide, nitrogen, and helium in 10 superscript negative 3 mol L superscript negative 1 at temperatures ranging from 0 to 30 degrees Celsius. Solubilities as indicated on the graph in decreasing order are methane, oxygen, carbon monoxide, nitrogen, and helium. At ten degrees, solubilities in 10 superscript negative 3mol L superscript negative 1 are approximately as follows; methane 1.9, oxygen 1.8, carbon monoxide 1.2, nitrogen 0.7, and helium 0.4. At twenty degrees, solubilities in 10 superscript negative 3 mol L superscript negative 1 are approximately as follows; methane 1.2, oxygen 1.1, carbon monoxide 0.9, nitrogen 0.5, and helium 0.35.",
+            "src": "../../media/CNX_Chem_11_03_gasdissolv.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp14325648",
+          "segmentId": "m68782:para:fs-idp14325648"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_O2dissolv",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_O2dissolv-caption"
+          },
+          "media": {
+            "id": "fs-idp18668432",
+            "alt": "Two photos are shown. The first shows the top portion of a transparent colorless glass of a clear colorless liquid with small bubbles near the interface of the liquid with the container. The second photo shows a portion of a partially frozen body of water with dead fish appearing on in the water and on an icy surface.",
+            "src": "../../media/CNX_Chem_11_03_O2dissolv.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30867024",
+          "segmentId": "m68782:para:fs-idp30867024"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_beverage",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_beverage-caption"
+          },
+          "media": {
+            "id": "fs-idp66125536",
+            "alt": "A dark brown liquid is shown in a clear, colorless container. A thick layer of beige bubbles appear at the surface of the liquid. In the liquid, thirteen small clusters of single black spheres with two red spheres attached to the left and right are shown. Red spheres represent oxygen atoms and black represent carbon atoms. Seven white arrows point upward in the container from these clusters to the bubble layer at the top of the liquid.",
+            "src": "../../media/CNX_Chem_11_03_beverage.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp86085408",
+          "segmentId": "m68782:para:fs-idp86085408"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm57709472",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp72770704",
+          "segmentId": "m68782:para:fs-idp72770704"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp3359488",
+          "title": {
+            "segmentId": "m68782:example-title:fs-idp3359488-title",
+            "text": "Application of Henry’s Law"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm1765696",
+              "segmentId": "m68782:para:fs-idm1765696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69198064",
+              "segmentId": "m68782:para:fs-idp69198064",
+              "title": {
+                "segmentId": "m68782:para-title:fs-idp69198064-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69566528",
+              "segmentId": "m68782:para:fs-idp69566528"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp14065136",
+              "segmentId": "m68782:para:fs-idp14065136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp911728",
+              "segmentId": "m68782:para:fs-idp911728",
+              "title": {
+                "segmentId": "m68782:para-title:fs-idp911728-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp7203840",
+              "segmentId": "m68782:para:fs-idp7203840"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm48683328"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp38123664"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm23741504",
+              "title": {
+                "segmentId": "m68782:note-title:fs-idm23741504-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp7203840",
+                  "segmentId": "m68782:para:fs-idp7203840"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm260338832",
+          "title": {
+            "segmentId": "m68782:example-title:fs-idm260338832-title",
+            "text": "Thermal Pollution and Oxygen Solubility"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm246086304",
+              "segmentId": "m68782:para:fs-idm246086304"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm252501088",
+              "segmentId": "m68782:para:fs-idm252501088",
+              "title": {
+                "segmentId": "m68782:para-title:fs-idm252501088-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm246607712",
+              "segmentId": "m68782:para:fs-idm246607712"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm243822832",
+              "segmentId": "m68782:para:fs-idm243822832"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm330843216",
+              "segmentId": "m68782:para:fs-idm330843216"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm251562192",
+              "segmentId": "m68782:para:fs-idm251562192",
+              "title": {
+                "segmentId": "m68782:para-title:fs-idm251562192-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm245998528",
+              "segmentId": "m68782:para:fs-idm245998528"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm262307104"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm270799504"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm269049024"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm252531248",
+              "title": {
+                "segmentId": "m68782:note-title:fs-idm252531248-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm245998528",
+                  "segmentId": "m68782:para:fs-idm245998528"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp99321632",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68782:note-title:fs-idp99321632-title",
+            "text": "Decompression Sickness or “The Bends”"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp40268320",
+              "segmentId": "m68782:para:fs-idp40268320"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm1466432",
+              "segmentId": "m68782:para:fs-idm1466432"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_recompress",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_recompress-caption"
+          },
+          "media": {
+            "id": "fs-idm21151808",
+            "alt": "Two photos are shown. The first shows two people seated in a steel chamber on benches that run length of the chamber on each side. The chamber has a couple of small circular windows and an open hatch-type door. One of the two people is giving a thumbs up gesture. The second image provides a view through a small, circular window. Inside the two people can be seen with masks over their mouths and noses. The people appear to be reading.",
+            "src": "../../media/CNX_Chem_11_03_recompress.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm18427536",
+          "segmentId": "m68782:para:fs-idm18427536"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp36245120",
+          "class": "scaled-down",
+          "alt": "This reaction diagram shows three H atoms bonded to an N atom above, below, and two the left of the N. A single pair of dots is present on the right side of the N. This is followed by a plus, then two H atoms bonded to an O atom to the left and below the O. Two pairs of dots are present on the O, one above and the other to the right of the O. A double arrow, with a top arrow pointing right and a bottom arrow pointing left follows. To the right of the double arrow, four H atoms are shown bonded to a central N atom. These 5 atoms are enclosed in brackets with a superscript plus outside. A plus follows, then an O atom linked by a bond to an H atom on its right. The O atom has pairs of dots above, to the left, and below the atom. The linked O and H are enclosed in brackets with superscript minus outside.",
+          "src": "../../media/CNX_Chem_11_02_ammonia1_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm48937408",
+          "segmentId": "m68782:para:fs-idm48937408"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_LakeNyos",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_LakeNyos-caption"
+          },
+          "media": {
+            "id": "fs-idp108534848",
+            "alt": "Two photos are shown. The first is an aerial view of a lake surrounded by green hills. The second shows a large body of water with a fountain sending liquid up into the air several yards or meters above the surface of the water.",
+            "src": "../../media/CNX_Chem_11_03_LakeNyos.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp64799168",
+      "class": null,
+      "title": {
+        "segmentId": "m68782:title:fs-idp64799168-title",
+        "text": "Solutions of Liquids in Liquids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm22997312",
+          "segmentId": "m68782:para:fs-idm22997312"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_antifreeze",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_antifreeze-caption"
+          },
+          "media": {
+            "id": "fs-idp105848592",
+            "alt": "This is a photo of a 1 gallon yellow plastic jug of Preston 50/50 Prediluted Antifreeze/Coolant.",
+            "src": "../../media/CNX_Chem_11_03_antifreeze.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp48405280",
+          "segmentId": "m68782:para:fs-idp48405280"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp37300448",
+          "segmentId": "m68782:para:fs-idp37300448"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_oilwater2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_oilwater2-caption"
+          },
+          "media": {
+            "id": "fs-idp48883952",
+            "alt": "This is a photo of a clear, colorless martini glass containing a golden colored liquid layer resting on top of a clear, colorless liquid.",
+            "src": "../../media/CNX_Chem_11_03_oilwater2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp49738352",
+          "segmentId": "m68782:para:fs-idp49738352"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_bromine",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_bromine-caption"
+          },
+          "media": {
+            "id": "fs-idp40449744",
+            "alt": "This figure shows three test tubes. The first test tube holds a dark orange-brown substance. The second test tube holds a clear substance. The amount of substance in both test tubes is the same. The third test tube holds a dark orange-brown substance on the bottom with a lighter orange substance on top. The amount of substance in the third test tube is almost double of the first two.",
+            "src": "../../media/CNX_Chem_11_03_bromine.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp38976176",
+      "class": null,
+      "title": {
+        "segmentId": "m68782:title:fs-idp38976176-title",
+        "text": "Solutions of Solids in Liquids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp49095104",
+          "segmentId": "m68782:para:fs-idp49095104"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_solubility",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_solubility-caption"
+          },
+          "media": {
+            "id": "fs-idp19558160",
+            "alt": "This shows a graph of the solubility of sugar C subscript 12 H subscript 22 O subscript 11, K N O subscript 3, N a N O subscript 3, N a B r, K B r, N a subscript 2 S O subscript 4, K C l, and C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 in g solute per 100 g H subscript 2 O at temperatures ranging from 0 degrees Celsius to 100 degrees Celsius. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 100 degrees Celsius, sugar C subscript 12 H subscript 22 O subscript 11 has exceeded the upper limit of solubility indicated on the graph, 240 for K N O subscript 3, 178 for N a N O subscript 3, 123 for N a B r, 105 for K B r, 52 for N a subscript 2 S O subscript 4, 58 for K C l, and the graph for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 stops at about 92 degrees Celsius where the solubility is nearly zero. The graph for N a subscript 2 S O subscript 4 is shown in red. All others substances are shown in blue. The solubility of this substance increases until about 30 degrees Celsius and declines beyond that point with increasing temperature.",
+            "src": "../../media/CNX_Chem_11_03_solubility.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp72000144",
+          "segmentId": "m68782:para:fs-idp72000144"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_03_handwarmer",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68782:caption:CNX_Chem_11_03_handwarmer-caption"
+          },
+          "media": {
+            "id": "fs-idm20585264",
+            "alt": "Three photos of hand warmers are shown side by side with an arrow pointing from the first photo to the second, and another arrow pointing from the second photo to the third. The first packet contains a clear colorless liquid and a small metal disc can be seen. In the second packet, the disc can’t be seen and a dispersion of white liquid is beginning. In the third packet, all of the liquid is white.",
+            "src": "../../media/CNX_Chem_11_03_handwarmer.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp72233568",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp19123632",
+              "segmentId": "m68782:para:fs-idp19123632"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp9146256",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68782:title:fs-idp9146256-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp47489632",
+          "segmentId": "m68782:para:fs-idp47489632"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp44827264",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68782:title:fs-idp44827264-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68782:entry:auto-69",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm30288080",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68782:title:fs-idm30288080-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp15462384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp72058416",
+                "segmentId": "m68782:problem:fs-idp72058416"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18282480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm71283280",
+                "segmentId": "m68782:problem:fs-idm71283280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp61469504",
+                "segmentId": "m68782:solution:fs-idp61469504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm29975600",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp35536128",
+                "segmentId": "m68782:problem:fs-idp35536128"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50664544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp86652032",
+                "segmentId": "m68782:problem:fs-idp86652032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43618784",
+                "segmentId": "m68782:solution:fs-idp43618784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm7358128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp76799712",
+                "segmentId": "m68782:problem:fs-idp76799712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp37987136",
+                "segmentId": "m68782:problem:fs-idp37987136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75725552",
+                "segmentId": "m68782:problem:fs-idp75725552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp100790624",
+                "segmentId": "m68782:problem:fs-idp100790624"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp47233328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp64913664",
+                "segmentId": "m68782:problem:fs-idp64913664"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp34230848",
+                "segmentId": "m68782:solution:fs-idp34230848"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp36424272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43686960",
+                "segmentId": "m68782:problem:fs-idp43686960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48419760",
+                "segmentId": "m68782:problem:fs-idp48419760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp64805104",
+                "segmentId": "m68782:problem:fs-idp64805104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75878336",
+                "segmentId": "m68782:problem:fs-idp75878336"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp43619984",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm15918912",
+                "segmentId": "m68782:problem:fs-idm15918912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm53295744",
+                "segmentId": "m68782:solution:fs-idm53295744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm19146000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp102425184",
+                "segmentId": "m68782:problem:fs-idp102425184"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm32553568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm20619264",
+                "segmentId": "m68782:problem:fs-idm20619264"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp48226368",
+                "segmentId": "m68782:solution:fs-idp48226368"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68782:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68782:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68782:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68782:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp6753792",
+        "termSegmentId": "m68782:glossary-term:fs-idp6753792-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idp6753792-def"
+      },
+      {
+        "id": "fs-idp30466624",
+        "termSegmentId": "m68782:glossary-term:fs-idp30466624-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idp30466624-def"
+      },
+      {
+        "id": "fs-idp83966400",
+        "termSegmentId": "m68782:glossary-term:fs-idp83966400-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idp83966400-def"
+      },
+      {
+        "id": "fs-idp7162656",
+        "termSegmentId": "m68782:glossary-term:fs-idp7162656-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idp7162656-def"
+      },
+      {
+        "id": "fs-idp18522912",
+        "termSegmentId": "m68782:glossary-term:fs-idp18522912-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idp18522912-def"
+      },
+      {
+        "id": "fs-idm7148400",
+        "termSegmentId": "m68782:glossary-term:fs-idm7148400-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idm7148400-def"
+      },
+      {
+        "id": "fs-idp69776",
+        "termSegmentId": "m68782:glossary-term:fs-idp69776-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idp69776-def"
+      },
+      {
+        "id": "fs-idm39109968",
+        "termSegmentId": "m68782:glossary-term:fs-idm39109968-term",
+        "definitionSegmentId": "m68782:glossary-def:fs-idm39109968-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

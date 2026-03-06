@@ -1,0 +1,64 @@
+{
+  "moduleId": "m68845",
+  "title": {
+    "segmentId": "m68845:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "a846bf55-732b-4e0b-b959-570ea8cf13e4",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Hydrocarbons",
+        "Alcohols and Ethers",
+        "Aldehydes, Ketones, Carboxylic Acids, and Esters",
+        "Amines and Amides"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_20_00_OrgCompnd",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68845:caption:CNX_Chem_20_00_OrgCompnd-caption"
+      },
+      "media": {
+        "id": "fs-idp66277952",
+        "alt": "This figure includes four photographs. The first is of an orange and black butterfly on a large leaf. The second shows a seam on a worn pair of blue jeans. The third image is of a red plastic drinking cup. The last image shows the blue flames of a lit burner on a gas stove.",
+        "src": "../../media/CNX_Chem_20_00_OrgCompnd.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm40968368",
+      "segmentId": "m68845:para:fs-idm40968368"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm91844560",
+      "segmentId": "m68845:para:fs-idm91844560"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68845:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68845:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68845:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68845:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

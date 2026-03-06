@@ -1885,8 +1885,22 @@
         }
       }
 
+      // Block: [doc#target] self-closing document refs in EN but missing
+      var enDocRefs = (enText || '').match(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g) || [];
+      for (var k = 0; k < enDocRefs.length; k++) {
+        if (editedIs.indexOf(enDocRefs[k]) === -1) {
+          blocked.push('Skjaltilvísun ' + enDocRefs[k] + ' vantar.');
+        }
+      }
+
       if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
         warnings.push('Bútur var tæmdur — var það viljandi?');
+      }
+
+      // Warning: unmatched ++ pairs
+      var ppCount = (editedIs.match(/\+\+/g) || []).length;
+      if (ppCount % 2 !== 0) {
+        warnings.push('Ójafn fjöldi ++ merkja (' + ppCount + ') — vantar lokun á undirstrikun?');
       }
 
       return {
@@ -2168,12 +2182,19 @@
       html = html.replace(/\[\[MATH:(\d+)\]\]/g, '<span class="math-placeholder">[[MATH:$1]]</span>');
       html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
       html = html.replace(/\[#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Tilv\u00EDsun: $1">&#128247;</span>');
-      html = html.replace(/\[([^\]]+)\]\(#([^)]+)\)/g, '<span class="link-chip" title="Hlekkur: #$2">$1 &#128279;</span>');
+      html = html.replace(/\[([A-Za-z0-9_.-]+)#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Skjal: $1, tilv\u00EDsun: $2">&#128247;</span>');
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(m, text, url) {
+        if (url.charAt(0) === '#') {
+          return '<span class="link-chip" title="Hlekkur: ' + url + '">' + text + ' &#128279;</span>';
+        }
+        return '<span class="link-chip" title="Skjalhlekkur: ' + url + '">' + text + ' &#128279;</span>';
+      });
       html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
       html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
       html = html.replace(/__(.+?)__/g, '<span class="preview-term">$1</span>');
       html = html.replace(/(?<!~)~(?!~)(.+?)(?<!~)~(?!~)/g, '<sub>$1</sub>');
       html = html.replace(/\^(.+?)\^/g, '<sup>$1</sup>');
+      html = html.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
       return html;
     }
 

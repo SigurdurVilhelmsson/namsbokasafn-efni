@@ -156,7 +156,7 @@ vermibreytingin (Δ*H*) fyrir ferlið jöfn.
 Bunsen brennara er jafn vermibreytingu metanbrunans sem á sér stað, þar
 sem hann gerist við nánast stöðugan þrýsting andrúmsloftsins. Á hinn
 bóginn er varminn sem myndast við hvarf mælt í sprengihitamæli
-([#CNX_Chem_05_02_BombCalor]) ekki jafn Δ*H* vegna þess að lokaða málmílátið með föstu
+([m68726#CNX_Chem_05_02_BombCalor]) ekki jafn Δ*H* vegna þess að lokaða málmílátið með föstu
 rúmmáli kemur í veg fyrir að þrýstingurinn haldist stöðugur (hann getur
 aukist eða minnkað ef hvarfið skilar auknu eða minnkuðu magni af
 gasefnum). Efnafræðingar framkvæma venjulega tilraunir við venjulegar
@@ -1062,7 +1062,7 @@ kafla
 
 
 <!-- SEG:m68727:problem:fs-idp167492528 --> Útskýrðu hvernig varminn sem
-mældur er í [#fs-idm19242032] er frábrugðinn vermibreytingunni fyrir útvermið
+mældur er í [m68726#fs-idm19242032] er frábrugðinn vermibreytingunni fyrir útvermið
 efnahvarf sem lýst er með eftirfarandi jöfnu:[[MATH:75]]
 
 
@@ -1072,13 +1072,13 @@ dæminu myndast af 0,0500 mólum af HCl og 0,0500 mólum af NaOH.
 
 
 <!-- SEG:m68727:problem:fs-idm121017200 --> Notaðu gögnin í hlutanum „Prófaðu
-þekkingu þína“ í [#fs-idm19242032] til að reikna Δ*H* í kJ/mól af
+þekkingu þína“ í [m68726#fs-idm19242032] til að reikna Δ*H* í kJ/mól af
 AgNO~3~(*aq*) fyrir efnahvarfið: [[MATH:76]]
 
 
 <!-- SEG:m68727:problem:fs-idp146868384 --> Reiknaðu lausnarvermi (Δ*H* fyrir
 upplausnina) á mól af NH~4~NO~3~ við aðstæðurnar sem lýst er í
-[#fs-idp325184].
+[m68726#fs-idp325184].
 
 
 <!-- SEG:m68727:solution:fs-idp140720784 --> 25 kJ mól^−1^
@@ -1091,14 +1091,14 @@ varma sem efnahvarfið gleypir sem þú reiknaðir út í fyrri
 
 
 <!-- SEG:m68727:problem:fs-idp107667792 --> Reiknaðu lausnarvermi (Δ*H* fyrir
-upplausnina) á mól af CaCl~2~ (sjá [#fs-idm68277040]).
+upplausnina) á mól af CaCl~2~ (sjá [m68726#fs-idm68277040]).
 
 
 <!-- SEG:m68727:solution:fs-idp107669568 --> 81 kJ mól^−1^
 
 
 <!-- SEG:m68727:problem:fs-idp103276592 --> Þrátt fyrir að gasið sem notað er
-í oxýasetýlen-suðuloga ([#CNX_Chem_05_01_OxyacTorch]) sé í raun hreint asetýlen, er
+í oxýasetýlen-suðuloga ([m68724#CNX_Chem_05_01_OxyacTorch]) sé í raun hreint asetýlen, er
 varminn sem myndast við bruna eins móls af asetýleni í slíkum loga
 líklega ekki jafn brunavermi asetýlens sem skráð er í [#fs-idp98710048].
 Íhugaðu aðstæðurnar sem skráð gögn eiga við og komdu með útskýringu.

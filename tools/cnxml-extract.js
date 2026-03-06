@@ -127,10 +127,19 @@ function generateSegmentId(moduleId, type, elementId, counter) {
 }
 
 /**
+ * Side-channel for inline attribute collection.
+ * Populated by extractInlineText() on each call with { terms: [...], footnotes: [...] }.
+ * Read by callers after extractInlineText() returns to associate attrs with segment IDs.
+ * Only contains entries when the segment has non-default attributes.
+ */
+let lastInlineAttrs = null;
+
+/**
  * Extract inline text from element content, handling nested elements.
  * Replaces MathML with [[MATH:n]] placeholders.
  * Replaces inline media with [[MEDIA:n]] placeholders.
  * Replaces embedded tables with [[TABLE:id]] placeholders.
+ * Also populates lastInlineAttrs with term/footnote attribute data.
  * @param {string} content - Element content
  * @param {Map} mathMap - Map to store extracted math
  * @param {Object} counters - Counter object with 'math', 'media' properties
@@ -146,6 +155,10 @@ function extractInlineText(
   inlineTablesMap = null
 ) {
   let text = content;
+
+  // Initialize inline attribute collectors for this call
+  const collectedTermAttrs = [];
+  const collectedFootnoteAttrs = [];
 
   // Replace MathML with placeholders
   const mathPattern = /<m:math[^>]*>[\s\S]*?<\/m:math>/g;
@@ -206,18 +219,51 @@ function extractInlineText(
     (match, effect, inner) => {
       if (effect === 'italics') return `*${inner}*`;
       if (effect === 'bold') return `**${inner}**`;
+      if (effect === 'underline') return `++${inner}++`;
       return inner;
     }
   );
 
   // Handle terms - inner markup is already markdown at this point
-  text = text.replace(/<term[^>]*>([\s\S]*?)<\/term>/g, (match, inner) => {
+  // Collect attributes (class, id) for sidecar metadata
+  text = text.replace(/<term([^>]*)>([\s\S]*?)<\/term>/g, (match, attrs, inner) => {
+    const parsedAttrs = parseAttributes(attrs);
+    const termAttrs = {};
+    if (parsedAttrs.class) termAttrs.class = parsedAttrs.class;
+    if (parsedAttrs.id) termAttrs.id = parsedAttrs.id;
+    if (Object.keys(termAttrs).length > 0) {
+      collectedTermAttrs.push(termAttrs);
+    } else {
+      collectedTermAttrs.push(null);
+    }
     return `__${stripTags(inner).trim()}__`;
   });
 
   // Handle links - preserve URL context
   text = text.replace(/<link[^>]*url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
     return `[${stripTags(inner)}](${url})`;
+  });
+
+  // Handle document links (must come before generic target-id to avoid being consumed)
+  // Match links containing both document= and target-id= in any attribute order
+  // Self-closing document links first
+  text = text.replace(/<link\s([^>]*)\/>/g, (match, attrs) => {
+    const parsedAttrs = parseAttributes(attrs);
+    if (parsedAttrs.document && parsedAttrs['target-id']) {
+      return `[${parsedAttrs.document}#${parsedAttrs['target-id']}]`;
+    }
+    return match; // Not a document link — leave for later regexes
+  });
+  // Document links with content
+  text = text.replace(/<link\s([^>]*)>([\s\S]*?)<\/link>/g, (match, attrs, inner) => {
+    const parsedAttrs = parseAttributes(attrs);
+    if (parsedAttrs.document && parsedAttrs['target-id']) {
+      const linkText = stripTags(inner).trim();
+      return linkText
+        ? `[${linkText}](${parsedAttrs.document}#${parsedAttrs['target-id']})`
+        : `[${parsedAttrs.document}#${parsedAttrs['target-id']}]`;
+    }
+    return match; // Not a document link — leave for later regexes
   });
 
   // Handle self-closing cross-references (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
@@ -234,17 +280,15 @@ function extractInlineText(
     }
   );
 
-  // Handle document links
-  text = text.replace(
-    /<link[^>]*document="([^"]*)"[^>]*target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
-    (match, doc, targetId, inner) => {
-      const linkText = stripTags(inner).trim();
-      return linkText ? `[${linkText}](${doc}#${targetId})` : `[${doc}#${targetId}]`;
-    }
-  );
-
   // Handle footnotes - extract as inline
-  text = text.replace(/<footnote[^>]*>([\s\S]*?)<\/footnote>/g, (match, inner) => {
+  // Collect attributes (id) for sidecar metadata
+  text = text.replace(/<footnote([^>]*)>([\s\S]*?)<\/footnote>/g, (match, attrs, inner) => {
+    const parsedAttrs = parseAttributes(attrs);
+    if (parsedAttrs.id) {
+      collectedFootnoteAttrs.push({ id: parsedAttrs.id });
+    } else {
+      collectedFootnoteAttrs.push(null);
+    }
     return ` [footnote: ${stripTags(inner).trim()}]`;
   });
 
@@ -253,6 +297,17 @@ function extractInlineText(
 
   // Normalize whitespace
   text = text.replace(/\s+/g, ' ').trim();
+
+  // Populate side-channel with collected inline attributes (sparse — only non-null entries)
+  const hasTermAttrs = collectedTermAttrs.some((a) => a !== null);
+  const hasFootnoteAttrs = collectedFootnoteAttrs.some((a) => a !== null);
+  if (hasTermAttrs || hasFootnoteAttrs) {
+    lastInlineAttrs = {};
+    if (hasTermAttrs) lastInlineAttrs.terms = collectedTermAttrs;
+    if (hasFootnoteAttrs) lastInlineAttrs.footnotes = collectedFootnoteAttrs;
+  } else {
+    lastInlineAttrs = null;
+  }
 
   return text;
 }
@@ -282,6 +337,7 @@ function extractSegments(cnxml, options = {}) {
   const mathMap = new Map();
   const inlineMediaMap = new Map();
   const inlineTablesMap = new Map();
+  const inlineAttrsMap = {}; // segmentId → { terms: [...], footnotes: [...] }
 
   // Helper to add a segment
   function addSegment(type, text, elementId = null, extra = {}) {
@@ -296,6 +352,12 @@ function extractSegments(cnxml, options = {}) {
       text: text.trim(),
       ...extra,
     });
+
+    // Capture inline attributes from the most recent extractInlineText() call
+    if (lastInlineAttrs) {
+      inlineAttrsMap[segmentId] = lastInlineAttrs;
+      lastInlineAttrs = null;
+    }
 
     return segmentId;
   }
@@ -467,7 +529,7 @@ function extractSegments(cnxml, options = {}) {
     );
   }
 
-  return { segments, structure, equations };
+  return { segments, structure, equations, inlineAttrs: inlineAttrsMap };
 }
 
 /**
@@ -1433,6 +1495,12 @@ function writeOutput(result, chapter, moduleId, sourceContent) {
   if (Object.keys(result.equations).length > 0) {
     const equationsPath = path.join(structDir, `${moduleId}-equations.json`);
     fs.writeFileSync(equationsPath, JSON.stringify(result.equations, null, 2), 'utf-8');
+  }
+
+  // Write inline attributes JSON (term class, footnote id, etc.)
+  if (result.inlineAttrs && Object.keys(result.inlineAttrs).length > 0) {
+    const inlineAttrsPath = path.join(structDir, `${moduleId}-inline-attrs.json`);
+    fs.writeFileSync(inlineAttrsPath, JSON.stringify(result.inlineAttrs, null, 2), 'utf-8');
   }
 
   // Write extraction manifest

@@ -437,7 +437,7 @@ massa og rúmmáls:
 stöfum, samkvæmt reglunni um margföldun og deilingu)
 
 
-<!-- SEG:m68690:para:fs-idm243666944 --> Samkvæmt [#fs-idm45639696] er eðlismassi
+<!-- SEG:m68690:para:fs-idm243666944 --> Samkvæmt [m68674#fs-idm45639696] er eðlismassi
 járns 7,9 g/cm^3^, mjög nálægt eðlismassa steypustyrktarjárns, sem
 styður þá staðreynd að steypustyrktarjárn er að mestu leyti járn.
 
@@ -460,7 +460,7 @@ eðlismassa þessa efnis.
 
 <!-- SEG:m68690:para:fs-idm287839728 --> (a) 19 g/cm^3^; (b) Það er líklega
 gull; útlitið passar við gull og eðlismassinn er mjög nálægt þeim
-eðlismassa sem gefinn er fyrir gull í [#fs-idm45639696].
+eðlismassa sem gefinn er fyrir gull í [m68674#fs-idm45639696].
 
 
 <!-- SEG:m68690:note-title:fs-idm113054800-title --> Svar:

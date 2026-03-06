@@ -1,0 +1,1103 @@
+{
+  "moduleId": "m68745",
+  "title": {
+    "segmentId": "m68745:title:auto-1",
+    "text": "Hybrid Atomic Orbitals"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5b3f5309-5e19-417e-8753-5d01b5f26ad4",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the concept of atomic orbital hybridization",
+        "Determine the hybrid orbitals associated with various molecular geometries"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp15190992",
+      "segmentId": "m68745:para:fs-idp15190992"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_02_H2Ovb",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68745:caption:CNX_Chem_08_02_H2Ovb-caption"
+      },
+      "media": {
+        "id": "fs-idm125701968",
+        "alt": "Two peanut-shaped orbitals lie perpendicular to one another. They overlap with spherical orbitals to the left and top of the diagram.",
+        "src": "../../media/CNX_Chem_08_02_H2Ovb.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm11485424",
+      "segmentId": "m68745:para:fs-idm11485424"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_02_H2Otet",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68745:caption:CNX_Chem_08_02_H2Otet-caption"
+      },
+      "media": {
+        "id": "fs-idp165066496",
+        "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two peanut-shaped orbitals lying in a tetrahedral arrangement around the letter “O.” Diagram b shows the same two orbitals, but they now overlap to the top and to the left with two spherical orbitals, each labeled “H.” A pair of electrons occupies each lobe of the peanut-shaped orbitals.",
+        "src": "../../media/CNX_Chem_08_02_H2Otet.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm27133328",
+      "segmentId": "m68745:para:fs-idm27133328"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm26101008",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68745:item:fs-idm26101008-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68745:item:fs-idm26101008-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68745:item:fs-idm26101008-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m68745:item:fs-idm26101008-item-4"
+        },
+        {
+          "id": null,
+          "segmentId": "m68745:item:fs-idm26101008-item-5"
+        },
+        {
+          "id": null,
+          "segmentId": "m68745:item:fs-idm26101008-item-6"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm25599520",
+      "segmentId": "m68745:para:fs-idm25599520"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp3790928",
+      "class": null,
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp208078752",
+          "segmentId": "m68745:para:fs-idp208078752"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_spGeom",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_spGeom-caption"
+          },
+          "media": {
+            "id": "fs-idm63468032",
+            "alt": "A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a linear arrangement,” are shown. The first diagram shows a blue spherical orbital and a red, peanut-shaped orbital, each placed on an X, Y, Z axis system. The second diagram shows the same two orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies along the x-axis in the drawing. The third diagram shows the same two orbitals, but their smaller lobes now overlap along the x-axis while their larger lobes are located at and labeled as “180 degrees” from one another.",
+            "src": "../../media/CNX_Chem_08_02_spGeom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm48014688",
+          "segmentId": "m68745:para:fs-idm48014688"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_spDiag",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_spDiag-caption"
+          },
+          "media": {
+            "id": "fs-idp197645472",
+            "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in an isolated B e atom.” The right side of the diagram shows two short, horizontal lines placed halfway up the space and each labeled, “s p.” An upward-facing half arrow is drawn vertically on each line. Above these lines are two other short, horizontal lines, each labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in the s p hybridized B e in B e C l subscript 2.”",
+            "src": "../../media/CNX_Chem_08_02_spDiag.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp39983216",
+          "segmentId": "m68745:para:fs-idp39983216"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp175314000",
+          "segmentId": "m68745:para:fs-idp175314000"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp180218736",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp2353136",
+              "segmentId": "m68745:para:fs-idp2353136"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp10041360",
+      "class": null,
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp31553584",
+          "segmentId": "m68745:para:fs-idp31553584"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp2Geom",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp2Geom-caption"
+          },
+          "media": {
+            "id": "fs-idm10342640",
+            "alt": "This shows a series of three diagrams with one on the left connected to one on the right by a right-facing arrow that is labeled, “Hybridization.” Below the one on the right is a downward-facing arrow labeled, “Gives a trigonal planar arrangement,” connecting to the last diagram. The first diagram shows a blue spherical orbital labeled “S” and then two red and blue, peanut-shaped orbitals, each placed on an X, Y, Z axis system, labeled “P subscript x” and “P subscript y.” The two red and blue orbitals are located on the x and z axes, respectively. The second diagram shows the three orbitals again on an X, Y, Z axis system, but they are yellow and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same three orbitals, but their smaller lobes now overlap while their larger lobes are located at and labeled as “120 degrees” from one another.",
+            "src": "../../media/CNX_Chem_08_02_sp2Geom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp50954864",
+          "segmentId": "m68745:para:fs-idp50954864"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp2Conv",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp2Conv-caption"
+          },
+          "media": {
+            "id": "fs-idp175210624",
+            "alt": "Three balloon-like orbitals are shown, and connect together near their narrower ends in one plane. The angle between a pair of lobes is labeled, “120 degrees.”",
+            "src": "../../media/CNX_Chem_08_02_sp2Conv.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13130576",
+          "segmentId": "m68745:para:fs-idp13130576"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_BH3",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_BH3-caption"
+          },
+          "media": {
+            "id": "fs-idm5465792",
+            "alt": "A boron atom is shown connected to three hydrogen atoms, which are arranged around it like a pyramid. The angle from one line connecting the boron atom to a hydrogen atom to another line connecting the boron atom to a hydrogen atom is labeled, “120 degrees.”",
+            "src": "../../media/CNX_Chem_08_02_BH3.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_BH3Diag",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_BH3Diag-caption"
+          },
+          "media": {
+            "id": "fs-idp19295472",
+            "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of these lines is the phrase, “Orbitals in an isolated B atom.” One of the lines has a vertical, up-facing arrow drawn on it. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized B atom in B H subscript 3.”",
+            "src": "../../media/CNX_Chem_08_02_BH3Diag.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53853968",
+          "segmentId": "m68745:para:fs-idp53853968"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp2Ex",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp2Ex-caption"
+          },
+          "media": {
+            "id": "fs-idp5254576",
+            "alt": "Three Lewis structures are shown. The left-hand structure shows a chlorine atom surrounded by three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The middle structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to an oxygen atom that has two lone pairs of electrons. The right-hand structure shows two carbon atoms, double bonded to one another and each single bonded to two hydrogen atoms.",
+            "src": "../../media/CNX_Chem_08_02_sp2Ex.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm76169824",
+      "class": null,
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp165799040",
+          "segmentId": "m68745:para:fs-idp165799040"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp3Geom",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp3Geom-caption"
+          },
+          "media": {
+            "id": "fs-idm125953968",
+            "alt": "A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a tetrahedral arrangement,” are shown. The first diagram shows a blue spherical orbital and three red, peanut-shaped orbitals, each placed on an x, y, z axis system. The three red orbitals are located on the x , y and z axes, respectively. The second diagram shows the same four orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same four orbitals, but their smaller lobes now overlap to form a tetrahedral structure.",
+            "src": "../../media/CNX_Chem_08_02_sp3Geom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm6466416",
+          "segmentId": "m68745:para:fs-idm6466416"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp3Diag",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp3Diag-caption"
+          },
+          "media": {
+            "id": "fs-idp413184",
+            "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Two of the lines have a vertical, up-facing arrow drawn on them. Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” The right side of the diagram shows four short, horizontal lines placed halfway up the space and each labeled, “s p superscript 3.” An upward-facing half arrow is drawn vertically on each line. Above these lines is the phrase, “Orbitals in the s p superscript 3 hybridized C atom in C H subscript 4.”",
+            "src": "../../media/CNX_Chem_08_02_sp3Diag.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp214759888",
+          "segmentId": "m68745:para:fs-idp214759888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp55772464",
+          "segmentId": "m68745:para:fs-idp55772464"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_ethane",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_ethane-caption"
+          },
+          "media": {
+            "id": "fs-idp175091264",
+            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two carbon atoms, each surrounded by their four s p subscript three hybridized orbitals in a three dimensional arrangement. Each of the orbitals is shown overlapping with a spherical hydrogen atom. Diagram b shows the same general arrangement, but the hydrogen atoms are just represented by an, “H” and their spherical orbitals are not shown.",
+            "src": "../../media/CNX_Chem_08_02_ethane.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm7245936",
+          "segmentId": "m68745:para:fs-idm7245936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp158687664",
+          "segmentId": "m68745:para:fs-idp158687664"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm100176160",
+      "class": null,
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp62922832",
+          "segmentId": "m68745:para:fs-idp62922832"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp213231264",
+          "segmentId": "m68745:para:fs-idp213231264"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp3d_img",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp3d_img-caption"
+          },
+          "media": {
+            "id": "fs-idp31211936",
+            "alt": "Three Lewis structures are shown along with designations of molecular shape. The left image shows a sulfur atom singly bonded to four fluorine atoms. The sulfur atom has one lone pair of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page. The second structure shows one chlorine atom singly bonded to three fluorine atoms. The chlorine has two lone pairs of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other is shown horizontally. The right structure shows a chlorine atom singly bonded to four fluorine atoms. The chlorine atom has one lone pair of electrons and a superscript plus sign, while each fluorine has three lone pairs of electrons. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page.",
+            "src": "../../media/CNX_Chem_08_02_sp3d_img.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_sp3d",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_sp3d-caption"
+          },
+          "media": {
+            "id": "fs-idp112861328",
+            "alt": "Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in a trigonal bipyramidal arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d.”",
+            "src": "../../media/CNX_Chem_08_02_sp3d.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm28471216",
+          "segmentId": "m68745:para:fs-idm28471216"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_SF6",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_SF6-caption"
+          },
+          "media": {
+            "id": "fs-idp175928896",
+            "alt": "Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in an octahedral arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d superscript two.”",
+            "src": "../../media/CNX_Chem_08_02_SF6.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm70341472",
+      "class": null,
+      "title": {
+        "segmentId": "m68745:title:fs-idm70341472-title",
+        "text": "Assignment of Hybrid Orbitals to Central Atoms"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp63424176",
+          "segmentId": "m68745:para:fs-idp63424176"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp49645888",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68745:item:fs-idp49645888-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68745:item:fs-idp49645888-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68745:item:fs-idp49645888-item-3"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_02_HybrdOrbit",
+          "caption": {
+            "segmentId": "m68745:caption:CNX_Chem_08_02_HybrdOrbit-caption"
+          },
+          "media": {
+            "id": "fs-idp61147088",
+            "alt": "A table is shown that is composed of five columns and six rows. The header row contains the phrases, “Regions of electron density,” “Arrangement,” (which has two columns below it), and “Hybridization,” (which has two columns below it). The first column contains the numbers “2,” “3,” “4,” “5,” and “6.” The second column contains images of a line, a triangle, a three sided pyramid, a trigonal bipyramid, and an eight-faced ocatahedron. The third column contains the terms, “Linear,” “Trigonal planar,” “Tetrahedral,” “Trigonal bipyramidal,” and “Octahedral.” The fourth column contains the terms “s p,” “s p superscript 2,” “s p superscript 3,” “s p superscript 3 d,” and “s p superscript 3 d superscript 2.” The last column contains drawings of the molecules beginning with a peanut-shaped structure marked with an angle of “180 degrees.” The second structure is made up of three equal-sized, rounded structures connected at one point with an angle of “120 degrees,” while the third structure is a three-dimensional arrangement of four equal-sized, rounded structures labeled as “109.5 degrees.” The fourth structure is made up of five equal-sized, rounded structures connected at “120 and 90 degrees,” while the fifth structure has six equal-sized, rounded structures connected at “90 degrees.”",
+            "src": "../../media/CNX_Chem_08_02_HybrdOrbit.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp61891472",
+          "segmentId": "m68745:para:fs-idp61891472"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp72255632",
+          "class": null,
+          "alt": "Three Lewis structures are shown. The left structure shows an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The middle structure is made up of a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. The right structure is made up of a tellurium atom with two lone pairs of electrons single bonded to two hydrogen atoms. From left to right, the bond angles of each molecule decrease.",
+          "src": "../../media/CNX_Chem_08_02_hybrid_img.jpg"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp175627360",
+          "title": {
+            "segmentId": "m68745:example-title:fs-idp175627360-title",
+            "text": "Assigning Hybridization"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm109759824",
+              "segmentId": "m68745:para:fs-idm109759824"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp150033040",
+              "segmentId": "m68745:para:fs-idp150033040",
+              "title": {
+                "segmentId": "m68745:para-title:fs-idp150033040-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10091104",
+              "segmentId": "m68745:para:fs-idm10091104",
+              "title": {
+                "segmentId": "m68745:para-title:fs-idm10091104-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm65914448",
+              "segmentId": "m68745:para:fs-idm65914448"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm8762288",
+              "title": {
+                "segmentId": "m68745:note-title:fs-idm8762288-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm65914448",
+                  "segmentId": "m68745:para:fs-idm65914448"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm15564528",
+          "title": {
+            "segmentId": "m68745:example-title:fs-idm15564528-title",
+            "text": "Assigning Hybridization"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm176016512",
+              "segmentId": "m68745:para:fs-idm176016512"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm1735632",
+              "segmentId": "m68745:para:fs-idm1735632",
+              "title": {
+                "segmentId": "m68745:para-title:fs-idm1735632-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp22488768",
+              "segmentId": "m68745:para:fs-idp22488768"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp25312384",
+              "segmentId": "m68745:para:fs-idp25312384",
+              "title": {
+                "segmentId": "m68745:para-title:fs-idp25312384-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp180575168",
+              "segmentId": "m68745:para:fs-idp180575168"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp92570160",
+              "title": {
+                "segmentId": "m68745:note-title:fs-idp92570160-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp180575168",
+                  "segmentId": "m68745:para:fs-idp180575168"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm69243360",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68745:title:fs-idm69243360-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm25402912",
+          "segmentId": "m68745:para:fs-idm25402912"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp58929664",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68745:title:fs-idp58929664-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm77916144",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp18305632",
+                "segmentId": "m68745:problem:fs-idp18305632"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23920752",
+                "segmentId": "m68745:solution:fs-idp23920752"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp3076096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp161545456",
+                "segmentId": "m68745:problem:fs-idp161545456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm99955904",
+                "segmentId": "m68745:problem:fs-idm99955904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp100279488",
+                "segmentId": "m68745:problem:fs-idp100279488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm11761440",
+                "segmentId": "m68745:problem:fs-idm11761440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm14469120",
+                "segmentId": "m68745:problem:fs-idm14469120"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp97605024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm13942544",
+                "segmentId": "m68745:problem:fs-idm13942544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp44512224",
+                "segmentId": "m68745:solution:fs-idp44512224"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25144752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29219232",
+                "segmentId": "m68745:problem:fs-idp29219232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm50812144",
+                "segmentId": "m68745:problem:fs-idm50812144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp141971872",
+                "segmentId": "m68745:problem:fs-idp141971872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm88013888",
+                "segmentId": "m68745:problem:fs-idm88013888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm64223984",
+                "segmentId": "m68745:problem:fs-idm64223984"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp86297648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp580400",
+                "segmentId": "m68745:problem:fs-idp580400"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm14765376",
+                "segmentId": "m68745:solution:fs-idm14765376"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp180352816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38892720",
+                "segmentId": "m68745:problem:fs-idm38892720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm9916608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31878144",
+                "segmentId": "m68745:problem:fs-idp31878144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm97336528",
+                "segmentId": "m68745:problem:fs-idm97336528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp573360",
+                "segmentId": "m68745:problem:fs-idp573360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm36381616",
+                "segmentId": "m68745:problem:fs-idm36381616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm59299376",
+                "segmentId": "m68745:problem:fs-idm59299376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm27566560",
+                "segmentId": "m68745:problem:fs-idm27566560"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp38901616",
+                "segmentId": "m68745:solution:fs-idp38901616"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2424288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp2405168",
+                "segmentId": "m68745:problem:fs-idp2405168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16899312",
+                "segmentId": "m68745:problem:fs-idm16899312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63955312",
+                "segmentId": "m68745:problem:fs-idm63955312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60582576",
+                "segmentId": "m68745:problem:fs-idp60582576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm77947008",
+                "segmentId": "m68745:problem:fs-idm77947008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp96568912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm125977952",
+                "segmentId": "m68745:problem:fs-idm125977952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1080832",
+                "segmentId": "m68745:problem:fs-idm1080832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp206649712",
+                "segmentId": "m68745:problem:fs-idp206649712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp97235632",
+                "segmentId": "m68745:problem:fs-idp97235632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm28660320",
+                "segmentId": "m68745:problem:fs-idm28660320"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp53996864",
+                "segmentId": "m68745:solution:fs-idp53996864"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm10995632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm182436448",
+                "segmentId": "m68745:problem:fs-idm182436448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm80626448",
+                "segmentId": "m68745:problem:fs-idm80626448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm45896464",
+                "segmentId": "m68745:problem:fs-idm45896464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm68830752",
+                "segmentId": "m68745:problem:fs-idm68830752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm32929264",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25434064",
+                "segmentId": "m68745:problem:fs-idp25434064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp10208368",
+                "segmentId": "m68745:problem:fs-idp10208368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp158515072",
+                "segmentId": "m68745:problem:fs-idp158515072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7498160",
+                "segmentId": "m68745:problem:fs-idm7498160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm49707984",
+                "segmentId": "m68745:problem:fs-idm49707984"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp50482432",
+                "segmentId": "m68745:solution:fs-idp50482432"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71570128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm63316720",
+                "segmentId": "m68745:problem:fs-idm63316720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp29495632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm32562944",
+                "segmentId": "m68745:problem:fs-idm32562944"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31702720",
+                "segmentId": "m68745:solution:fs-idm31702720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp15207648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp197831120",
+                "segmentId": "m68745:problem:fs-idp197831120"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68745:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68745:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68745:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp102362976",
+        "termSegmentId": "m68745:glossary-term:fs-idp102362976-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idp102362976-def"
+      },
+      {
+        "id": "fs-idm29433408",
+        "termSegmentId": "m68745:glossary-term:fs-idm29433408-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idm29433408-def"
+      },
+      {
+        "id": "fs-idm71427776",
+        "termSegmentId": "m68745:glossary-term:fs-idm71427776-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idm71427776-def"
+      },
+      {
+        "id": "fs-idm48701168",
+        "termSegmentId": "m68745:glossary-term:fs-idm48701168-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idm48701168-def"
+      },
+      {
+        "id": "fs-idp88964992",
+        "termSegmentId": "m68745:glossary-term:fs-idp88964992-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idp88964992-def"
+      },
+      {
+        "id": "fs-idm16838896",
+        "termSegmentId": "m68745:glossary-term:fs-idm16838896-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idm16838896-def"
+      },
+      {
+        "id": "fs-idm47317072",
+        "termSegmentId": "m68745:glossary-term:fs-idm47317072-term",
+        "definitionSegmentId": "m68745:glossary-def:fs-idm47317072-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm6721680",
+      "class": null,
+      "alt": "A Lewis structure is shown in which eight sulfur atoms, each with two lone pairs of eletrons, are single bonded together into an eight-sided ring.",
+      "src": "../../media/CNX_Chem_08_02_SulfManuf1_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm5731280",
+      "class": null,
+      "alt": "Two Lewis structure are shown, connected by a double-ended arrow. The left structure shows a sulfur atom with one lone pair of electrons double bonded to an oxygen atom with two lone pairs of electrons on the left and single bonded to an oxygen atom with three lone pairs of electrons on the right. The right structure shows the same molecule, except that the double bonded oxygen is on the right side of the sulfur and the single bonded oxygen is to the left of the sulfur.",
+      "src": "../../media/CNX_Chem_08_02_SulfManuf2_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp100080400",
+      "class": null,
+      "alt": "A Lewis structure of a sulfur atom singly bonded to two oxygen atoms, each with three lone pairs of electrons, and double bonded to a third oxygen atom with two lone pairs of electrons is shown.",
+      "src": "../../media/CNX_Chem_08_02_SulfManuf3_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp25214960",
+      "class": null,
+      "alt": "A Lewis structure is shown in which a sulfur atom is single bonded to four oxygen atoms. Two of the oxygen atoms have three lone pairs of electrons while the other two each have two lone pairs of electrons and are each singly bonded to a hydrogen atom.",
+      "src": "../../media/CNX_Chem_08_02_SulfManuf4_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idp19199872",
+      "class": null,
+      "alt": "A Lewis structure is shown in which a xenon atom that has three lone pairs of electrons is single bonded to two fluorine atoms, each of which has three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_08_02_xefluoride_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idm62815664",
+      "class": null,
+      "alt": "Two Lewis structure are shown, the left of which depicts three phosphorus atoms single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle. Each sulfur atom in this structure has two lone pairs of electrons while each phosphorus has one lone pair. The second Lewis structure shows a chlorate atom single bonded to two oxygen atoms, each of which has three lone pairs of electrons, and double bonded to an oxygen atom, which has two lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_08_02_phsphorus2_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

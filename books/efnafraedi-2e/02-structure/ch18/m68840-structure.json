@@ -1,0 +1,350 @@
+{
+  "moduleId": "m68840",
+  "title": {
+    "segmentId": "m68840:title:auto-1",
+    "text": "Occurrence, Preparation, and Properties of the Noble Gases"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "06383b4a-d41b-4bfe-b776-b4431f8c446a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the properties, preparation, and uses of the noble gases"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm47164624",
+      "segmentId": "m68840:para:fs-idm47164624"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm76574784",
+      "segmentId": "m68840:para:fs-idm76574784"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm66671520",
+      "segmentId": "m68840:para:fs-idm66671520"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp93284368",
+      "segmentId": "m68840:para:fs-idp93284368"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm74477856",
+      "segmentId": "m68840:para:fs-idm74477856"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm9267040",
+      "segmentId": "m68840:para:fs-idm9267040"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm73264864",
+      "segmentId": "m68840:para:fs-idm73264864"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm17485520",
+      "segmentId": "m68840:para:fs-idm17485520"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm82366128",
+      "segmentId": "m68840:para:fs-idm82366128"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp93560064",
+      "segmentId": "m68840:para:fs-idp93560064"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp163241808",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm5757248",
+      "segmentId": "m68840:para:fs-idm5757248"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm96517872",
+      "segmentId": "m68840:para:fs-idm96517872"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm146709616",
+      "segmentId": "m68840:para:fs-idm146709616"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm27001296",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68840:title:fs-idm27001296-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm143634816",
+          "segmentId": "m68840:para:fs-idm143634816"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp109754128",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68840:title:fs-idp109754128-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm83460880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55706368",
+                "segmentId": "m68840:problem:fs-idp55706368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp145778640",
+                "segmentId": "m68840:problem:fs-idp145778640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34156544",
+                "segmentId": "m68840:problem:fs-idp34156544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm94340928",
+                "segmentId": "m68840:problem:fs-idm94340928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm79499872",
+                "segmentId": "m68840:problem:fs-idm79499872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp89549968",
+                "segmentId": "m68840:problem:fs-idp89549968"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp28786176",
+                "segmentId": "m68840:solution:fs-idp28786176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm74693408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84355280",
+                "segmentId": "m68840:problem:fs-idm84355280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm99900208",
+                "segmentId": "m68840:problem:fs-idm99900208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm103352560",
+                "segmentId": "m68840:problem:fs-idm103352560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp98613488",
+                "segmentId": "m68840:problem:fs-idp98613488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10369072",
+                "segmentId": "m68840:problem:fs-idm10369072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm42030720",
+                "segmentId": "m68840:problem:fs-idm42030720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp149698576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm131730608",
+                "segmentId": "m68840:problem:fs-idm131730608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm17110080",
+                "segmentId": "m68840:problem:fs-idm17110080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp91641760",
+                "segmentId": "m68840:problem:fs-idp91641760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm69545200",
+                "segmentId": "m68840:problem:fs-idm69545200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp139669008",
+                "segmentId": "m68840:problem:fs-idp139669008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp139915840",
+                "segmentId": "m68840:problem:fs-idp139915840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm140034976",
+                "segmentId": "m68840:solution:fs-idm140034976"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm133419136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp4820112",
+                "segmentId": "m68840:problem:fs-idp4820112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm249901232",
+                "segmentId": "m68840:problem:fs-idm249901232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp147303824",
+                "segmentId": "m68840:problem:fs-idp147303824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm48224912",
+                "segmentId": "m68840:problem:fs-idm48224912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm9508288",
+                "segmentId": "m68840:problem:fs-idm9508288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm112449376",
+                "segmentId": "m68840:problem:fs-idm112449376"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm124175648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27212064",
+                "segmentId": "m68840:problem:fs-idm27212064"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29245728",
+                "segmentId": "m68840:solution:fs-idp29245728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm4544048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm120825520",
+                "segmentId": "m68840:problem:fs-idm120825520"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68840:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68840:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm39818672",
+        "termSegmentId": "m68840:glossary-term:fs-idm39818672-term",
+        "definitionSegmentId": "m68840:glossary-def:fs-idm39818672-def"
+      },
+      {
+        "id": "fs-idm15345952",
+        "termSegmentId": "m68840:glossary-term:fs-idm15345952-term",
+        "definitionSegmentId": "m68840:glossary-def:fs-idm15345952-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

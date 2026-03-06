@@ -1,0 +1,1219 @@
+{
+  "moduleId": "m68856",
+  "title": {
+    "segmentId": "m68856:title:auto-1",
+    "text": "Transmutation and Nuclear Energy"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "642a0e3e-a83d-4a0f-8898-feba31e555bd",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the synthesis of transuranium nuclides",
+        "Explain nuclear fission and fusion processes",
+        "Relate the concepts of critical mass and nuclear chain reactions",
+        "Summarize basic requirements for nuclear fission and fusion reactors"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm164645616",
+      "segmentId": "m68856:para:fs-idm164645616"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm14799328",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm14799328-title",
+        "text": "Synthesis of Nuclides"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp8018320",
+          "segmentId": "m68856:para:fs-idp8018320"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm234904096",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm149290720",
+          "segmentId": "m68856:para:fs-idm149290720"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm208566640",
+          "segmentId": "m68856:para:fs-idm208566640"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp15502880",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68856:note-title:fs-idp15502880-title",
+            "text": "CERN Particle Accelerator"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp30135024",
+              "segmentId": "m68856:para:fs-idp30135024"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm84503424",
+              "segmentId": "m68856:para:fs-idm84503424"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_CERN",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_CERN-caption"
+          },
+          "media": {
+            "id": "fs-idm173874464",
+            "alt": "Two photos are shown and labeled “a” and “b.” Photo a shows an aerial view of the Large Hadron Collider. Photo b shows a tunnel of concrete with rails on the ground and tubes and wires running along the wall. Two people walk along the tunnel.",
+            "src": "../../media/CNX_Chem_21_04_CERN.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm101445472",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm212810400",
+              "segmentId": "m68856:para:fs-idm212810400"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm59797120",
+              "segmentId": "m68856:para:fs-idm59797120"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm137219600",
+          "segmentId": "m68856:para:fs-idm137219600"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm171538896",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm319341104",
+          "segmentId": "m68856:para:fs-idm319341104"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm797056",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm188198128",
+          "segmentId": "m68856:para:fs-idm188198128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm202710144",
+          "segmentId": "m68856:para:fs-idm202710144"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm110032080",
+          "segmentId": "m68856:para:fs-idm110032080"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm128006320",
+          "class": "top-titled",
+          "summary": "This table has four columns and ten rows. The first row is a header row and it labels each column: “Name,” “Symbol,” “Atomic Number,” and “Reaction.” Under the “Name” column are the following: americium, curium, californium, einsteinium, mendelevium, nobelium, rutherfordium, seaborgium, and meitnerium. Under the “Symbol” column are the following: A m, C m, C f, E s, M d, N o, R f, S g, and M t. Under the “Atomic Number” column are the following: 95; 96; 98; 99; 101; 102; 104; 106; and 107. Under the “Reaction column are the following reactions: superscript 239 stacked over subscript 94 P u plus superscript 1 stacked over subscript 0 n yields superscript 240 stacked over subscript 95 A m plus superscript 0 stacked over negative 1 e; superscript 239 stacked over subscript 94 P u plus superscript 4 stacked over subscript 2 H e yields superscript 242 stacked over subscript 96 C m plus superscript 1 stacked over subscript 0 n; superscript 242 stacked over subscript 96 C m plus superscript 4 stacked over subscript 2 H e yields superscript 243 stacked over subscript 97 B k plus 2 superscript 1 stacked over subscript 0 n; superscript 238 stacked over subscript 92 U plus 15 superscript 1 stacked over subscript 0 n yields superscript 253 stacked over subscript 99 E s plus 7 superscript 0 stacked over negative 1 e; superscript 253 stacked over subscript 99 E s plus superscript 4 stacked over subscript 2 H e yields superscript 256 stacked over subscript 101 M d plus superscript 1 stacked over subscript 0 n; superscript 246 stacked over subscript 96 C m plus superscript 12 stacked over subscript 6 C yields superscript 257 stacked over subscript 104 R f plus 4 superscript 1 stacked over subscript 0 n; superscript 206 stacked over subscript 82 P b plus superscript 54 stacked over subscript 24 C r yields superscript 257 stacked over subscript 106 S g plus 3 superscript 1 stacked over subscript 0 n; in the same row as the previous equation: superscript 249 stacked over subscript 98 C f plus superscript 18 stacked over subscript 8 O yields superscript 263 stacked over subscript 106 S g plus 4 superscript 1 stacked over subscript 0 n; and superscript 209 stacked over subscript 83 B i plus superscript 58 stacked over subscript 26 F e yields superscript 266 stacked over subscript 109 M t plus superscript 1 stacked over subscript 0 n.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-23",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c4",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-24",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-25",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-26",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-28",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-30",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-31",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-32",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-33",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-34",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-35",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-36",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-37",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-38",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-39",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-40",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-41",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-43",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-44",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-45",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-46",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-47",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68856:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm178123200",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm178123200-title",
+        "text": "Nuclear Fission"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm211205296",
+          "class": null,
+          "title": {
+            "segmentId": "m68856:title:fs-idm211205296-title",
+            "text": "Fission Reactors"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm211204656",
+              "segmentId": "m68856:para:fs-idm211204656"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_21_04_NuclearPwr",
+              "caption": {
+                "segmentId": "m68856:caption:CNX_Chem_21_04_NuclearPwr-caption"
+              },
+              "media": {
+                "id": "fs-idm35246480",
+                "alt": "A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment.",
+                "src": "../../media/CNX_Chem_21_04_NuclearPwr.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm313917616",
+          "segmentId": "m68856:para:fs-idm313917616"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_Fission1",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_Fission1-caption"
+          },
+          "media": {
+            "id": "fs-idm247309120",
+            "alt": "A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a vertical dumbbell shaped collection of the same white and green spheres labeled “superscript, 236, subscript 92, U, Unstable nucleus.” Two right-facing arrows lead from the top and bottom of this structure to two new spheres that are also composed of green and white spheres and are slightly smaller than the others. The top sphere is labeled “superscript, 92, subscript 36, K r” while the lower one is labeled “superscript, 141, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “3, superscript, 1, subscript 0, n.” A balanced nuclear equation is written below the diagram and says “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.”",
+            "src": "../../media/CNX_Chem_21_04_Fission1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm70978352",
+          "segmentId": "m68856:para:fs-idm70978352"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_Fission2",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_Fission2-caption"
+          },
+          "media": {
+            "id": "fs-idm215700944",
+            "alt": "Five nuclear equations and a graph are shown. The first equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript, 144, subscript 54, X e, plus sign, 2, superscript, 1, subscript 0, n.” The second equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript, 146, subscript 57, L a, plus sign, 3, superscript, 1, subscript 0, n.” The third equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 97, subscript 37, R b, plus sign, superscript, 137, subscript 55, C s, plus sign, 3, superscript, 1, subscript 0, n.” The fourth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 137, subscript 52, T e, plus sign, superscript, 97, subscript 40, Z r, plus sign, 2, superscript, 1, subscript 0, n.” The fifth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.” A graph is also shown where the y-axis is labeled “Fission yield, open parenthesis, percent sign, close parenthesis” and has values of 0 to 9 in increments of 1 while the x-axis is labeled “Mass number” and has values of 60 to 180 in increments of 20. The graph begins near point “65, 0” and rises rapidly to near “92, 6.6,” then drops just as rapidly to “107, 0” and remains there to point “127, 0.” The graph then rises again to near “132, 8,” then goes up and down a bit before falling to a point “153, 0,” and going horizontal.",
+            "src": "../../media/CNX_Chem_21_04_Fission2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm209540560",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm227794880",
+              "segmentId": "m68856:para:fs-idm227794880"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm199179680",
+          "segmentId": "m68856:para:fs-idm199179680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm187374960",
+          "segmentId": "m68856:para:fs-idm187374960"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_ChnReact1",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_ChnReact1-caption"
+          },
+          "media": {
+            "id": "fs-idm32833520",
+            "alt": "A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. The upper of these two images is labeled “superscript, 93, subscript 36, K r” while the lower of the two is labeled “superscript, 142, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “ superscript, 1, subscript 0, n.”  An equation below this portion of the diagram reads ““superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 140, subscript 56, B a, plus sign, superscript 90, subscript 36, K r, plus sign, 3, superscript 1, subscript 0, n.”  A right-facing arrow leads from each of these white spheres to three larger spheres, each composed of many smaller green and white spheres and labeled, from top to bottom as “a, superscript,235, subscript 92, U,” “b, superscript,235, subscript 92, U” and “c, superscript,235, subscript 92, U.” Each of these spheres is followed by a right-facing arrow which points to a pair of smaller spheres composed of the same green and white spheres with starburst patterns in between each pair labeled “Energy.” The spheres of the top pair are labeled, from top to bottom, “superscript, 96, subscript 37, R b” and “superscript, 137, subscript 55, C s.” The spheres of the middle pair are labeled, from top to bottom, “superscript, 90, subscript 38, S r” and “superscript, 144, subscript 54, X e.” The spheres of the bottom pair are labeled, from top to bottom, “superscript, 87, subscript 35, B r” and “superscript, 146, subscript 57, L a.” Each pair of spheres is followed by three right-facing arrows leading to three white spheres labeled “superscript, 1, subscript 0, n.”  Below the diagram are three nuclear equations. Equation a reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 96, subscript 37, R b, plus sign, superscript 137, subscript 55, C s, plus sign, 3, superscript 1, subscript 0, n.” Equation b reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript144, subscript 54, X e, plus sign, 2, superscript 1, subscript 0, n.” Equation c reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript 146, subscript 57, L a, plus sign, 3, superscript 1, subscript 0, n”",
+            "src": "../../media/CNX_Chem_21_04_ChnReact1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm210900592",
+          "segmentId": "m68856:para:fs-idm210900592"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_CritMass",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_CritMass-caption"
+          },
+          "media": {
+            "id": "fs-idm205094672",
+            "alt": "The images are shown and labeled “a,” “b” and “c.” Image a, labeled “Sub-critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seven small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image b, labeled “Critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seventeen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image c, labeled “Critical mass from neutron deflection,” shows a blue circle background, lying in a larger purple circle, with a white sphere near the outer, top, left edge of the purple circle. A downward, right-facing arrow indicates that the white sphere enters both of the circles. Thirteen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the blue circle, and a couple outside of the purple circle, in seemingly random directions.",
+            "src": "../../media/CNX_Chem_21_04_CritMass.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm26833280",
+          "segmentId": "m68856:para:fs-idm26833280"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_FissnBomb",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_FissnBomb-caption"
+          },
+          "media": {
+            "id": "fs-idm218899984",
+            "alt": "Two diagrams are shown, each to the left of a photo, and labeled “a” and “b.” Diagram a shows the outer casing of a bomb that has a long, tubular shape with a squared-off tail. Components in the shell show a tube with a white disk labeled “Detonator” on the left, an orange disk with a bright yellow starburst drawn around it labeled “Conventional explosive” in the middle and a right-facing arrow leading to a blue disk in the nose of the bomb labeled “uranium 235.” A small blue cone next to the orange disk is shares the label of “uranium 235.” A black and white photo next to this diagram shows a far-off shot of a rising cloud over a landscape. Diagram b shows the outer casing of a bomb that has a short, rounded shape with a squared-off tail. Components in the shell show a large orange circle labeled “Conventional explosive” with a series of black dots around its edge, labeled “Detonators,” and a yellow starburst behind it. White arrows face from the outer edge of the orange circle to a blue circle in the center with a yellow core. The blue circle is labeled “plutonium 239” while the yellow core is labeled “beryllium, dash, polonium initiator.” A black and white photo next to this diagram shows a far-off shot of a giant rising cloud over a landscape.",
+            "src": "../../media/CNX_Chem_21_04_FissnBomb.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm141510160",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm141510160-title",
+        "text": "Nuclear Fuels"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm201280112",
+          "segmentId": "m68856:para:fs-idm201280112"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm198579952",
+          "segmentId": "m68856:para:fs-idm198579952"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm46698944",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm46698944-title",
+        "text": "Nuclear Moderators"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm227090448",
+          "segmentId": "m68856:para:fs-idm227090448"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm82082624",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm82082624-title",
+        "text": "Reactor Coolants"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm17481184",
+          "segmentId": "m68856:para:fs-idm17481184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm24992032",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm24992032-title",
+        "text": "Control Rods"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm24991392",
+          "segmentId": "m68856:para:fs-idm24991392"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp23083712",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm103571680",
+          "segmentId": "m68856:para:fs-idm103571680"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_ControlRod",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_ControlRod-caption"
+          },
+          "media": {
+            "id": "fs-idm201459040",
+            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cut-away view of a vertical tube with a flat, horizontal plate near the bottom that connects to a series of vertical pipes lined up next to one another and labeled “Fuel rods.” A second horizontal plate labeled “Grid” lies at the top of the pipes and a second set of thinner, vertical pipes, labeled “Control rods,” leads from this plate to the top of the container. The walls of the container are labeled “Steel pressure vessel.” A blue, right-facing arrow leads from an entry point in the left side of the container and is followed by a second, down-facing blue arrow and a curved, right-facing arrow that trace along the outer, bottom edge of the container. A blue and red arrow follows these and faces up the right side of the container to an exit near the right face where a red, right-facing arrow leads out. Diagram b is a cut-away image of a vertical, rectangular, three dimensional set of vertical pipes. The pipes are labeled “Fuel rods” and are inserted into an upper and lower horizontal plate labeled “Grid.” Four thin rods extend above the pipes and are labeled “Control rods.",
+            "src": "../../media/CNX_Chem_21_04_ControlRod.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm70291520",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm70291520-title",
+        "text": "Shield and Containment System"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm145034464",
+          "segmentId": "m68856:para:fs-idm145034464"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm145807312",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68856:item:fs-idm145807312-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68856:item:fs-idm145807312-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68856:item:fs-idm145807312-item-3"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp10678448",
+          "segmentId": "m68856:para:fs-idp10678448"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm198746496",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm232050864",
+              "segmentId": "m68856:para:fs-idm232050864"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm153414256",
+          "segmentId": "m68856:para:fs-idm153414256"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm111616544",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68856:note-title:fs-idm111616544-title",
+            "text": "Nuclear Accidents"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm111615776",
+              "segmentId": "m68856:para:fs-idm111615776"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm111615392",
+              "segmentId": "m68856:para:fs-idm111615392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm226605200",
+              "segmentId": "m68856:para:fs-idm226605200"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm70819920",
+              "segmentId": "m68856:para:fs-idm70819920"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm203575296",
+              "segmentId": "m68856:para:fs-idm203575296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm188013392",
+              "segmentId": "m68856:para:fs-idm188013392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm28149168",
+              "segmentId": "m68856:para:fs-idm28149168"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_3MileIslnd",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_3MileIslnd-caption"
+          },
+          "media": {
+            "id": "fs-idm210185648",
+            "alt": "Two photos, labeled “a” and “b” are shown. Photo a is an aerial view of a nuclear power plant. Photo b shows a small group of men walking through a room filled with electronics.",
+            "src": "../../media/CNX_Chem_21_04_3MileIslnd.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_Fukushima",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_Fukushima-caption"
+          },
+          "media": {
+            "id": "fs-idm109901200",
+            "alt": "A photo and a map, labeled “a” and “b,” respectively, are shown. Photo a shows a man in a body-covering safety suit working near a series of blue, plastic coated containers. Map b shows a section of land with the ocean on each side. Near the upper right side of the land is a small red dot, labeled “greater than, 12.5, m R backslash, h r,” that is surrounded by a zone of orange that extends in the upper left direction labeled “2.17, dash, 12.5, m R backslash, h r.” The orange is surrounded by an outline of yellow labeled “1.19, dash, 2.17, m R backslash, h r” and a wider outline of green labeled “0.25, dash, 1.19, m R backslash, h r.” A large area of light blue, labeled “0.03, dash, 0.25, m R backslash, h r” surrounds the green area and extends to the lower middle of the map. A large section of the lower middle and left of the land is covered by dark blue, labeled “less than 0.03, m R backslash, h r.”",
+            "src": "../../media/CNX_Chem_21_04_Fukushima.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp45909184",
+          "segmentId": "m68856:para:fs-idp45909184"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm28146592",
+          "segmentId": "m68856:para:fs-idm28146592"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm28145520",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm189788352",
+              "segmentId": "m68856:para:fs-idm189788352"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm26275296",
+      "class": null,
+      "title": {
+        "segmentId": "m68856:title:fs-idm26275296-title",
+        "text": "Nuclear Fusion and Fusion Reactors"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm69471456",
+          "segmentId": "m68856:para:fs-idm69471456"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm273862304",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm178516816",
+          "segmentId": "m68856:para:fs-idm178516816"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm244318448",
+          "segmentId": "m68856:para:fs-idm244318448"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm154271120",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp29836288",
+          "segmentId": "m68856:para:fs-idp29836288"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm168712784",
+          "segmentId": "m68856:para:fs-idm168712784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm26188048",
+          "segmentId": "m68856:para:fs-idm26188048"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_04_Fusion",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68856:caption:CNX_Chem_21_04_Fusion-caption"
+          },
+          "media": {
+            "id": "fs-idm26185504",
+            "alt": "Two photos are shown and labeled “a” and “b.” Photo a shows a model of the ITER reactor made up of colorful components. Photo b shows a close-up view of the end of a long, mechanical arm made up of many metal components.",
+            "src": "../../media/CNX_Chem_21_04_Fusion.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm189160608",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68856:title:fs-idm189160608-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm172997504",
+          "segmentId": "m68856:para:fs-idm172997504"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm66855808",
+          "segmentId": "m68856:para:fs-idm66855808"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm234493952",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68856:title:fs-idm234493952-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm122155008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm179134416",
+                "segmentId": "m68856:problem:fs-idm179134416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm202190128",
+                "segmentId": "m68856:problem:fs-idm202190128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32448240",
+                "segmentId": "m68856:problem:fs-idm32448240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84813904",
+                "segmentId": "m68856:problem:fs-idm84813904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm30976288",
+                "segmentId": "m68856:problem:fs-idm30976288"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm67594464",
+                "segmentId": "m68856:solution:fs-idm67594464"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm227188304",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm78153856",
+                "segmentId": "m68856:problem:fs-idm78153856"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39373072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm65683024",
+                "segmentId": "m68856:problem:fs-idm65683024"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm133404128",
+                "segmentId": "m68856:solution:fs-idm133404128"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm153436832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm189138560",
+                "segmentId": "m68856:problem:fs-idm189138560"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm213403024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp116280736",
+                "segmentId": "m68856:problem:fs-idp116280736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm228732384",
+                "segmentId": "m68856:solution:fs-idm228732384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm209547408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43150496",
+                "segmentId": "m68856:problem:fs-idm43150496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm210381584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm210381072",
+                "segmentId": "m68856:problem:fs-idm210381072"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm210380176",
+                "segmentId": "m68856:solution:fs-idm210380176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm210379536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm210379024",
+                "segmentId": "m68856:problem:fs-idm210379024"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68856:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68856:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68856:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68856:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68856:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm128080144",
+        "termSegmentId": "m68856:glossary-term:fs-idm128080144-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm128080144-def"
+      },
+      {
+        "id": "fs-idm220735792",
+        "termSegmentId": "m68856:glossary-term:fs-idm220735792-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm220735792-def"
+      },
+      {
+        "id": "fs-idm206270992",
+        "termSegmentId": "m68856:glossary-term:fs-idm206270992-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm206270992-def"
+      },
+      {
+        "id": "fs-idm1727408",
+        "termSegmentId": "m68856:glossary-term:fs-idm1727408-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm1727408-def"
+      },
+      {
+        "id": "fs-idm208194016",
+        "termSegmentId": "m68856:glossary-term:fs-idm208194016-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm208194016-def"
+      },
+      {
+        "id": "fs-idm195851664",
+        "termSegmentId": "m68856:glossary-term:fs-idm195851664-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm195851664-def"
+      },
+      {
+        "id": "fs-idm135521664",
+        "termSegmentId": "m68856:glossary-term:fs-idm135521664-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm135521664-def"
+      },
+      {
+        "id": "fs-idp7149200",
+        "termSegmentId": "m68856:glossary-term:fs-idp7149200-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idp7149200-def"
+      },
+      {
+        "id": "fs-idm227895952",
+        "termSegmentId": "m68856:glossary-term:fs-idm227895952-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm227895952-def"
+      },
+      {
+        "id": "fs-idm204101584",
+        "termSegmentId": "m68856:glossary-term:fs-idm204101584-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm204101584-def"
+      },
+      {
+        "id": "fs-idm39349824",
+        "termSegmentId": "m68856:glossary-term:fs-idm39349824-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm39349824-def"
+      },
+      {
+        "id": "fs-idm74066144",
+        "termSegmentId": "m68856:glossary-term:fs-idm74066144-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm74066144-def"
+      },
+      {
+        "id": "fs-idm66620880",
+        "termSegmentId": "m68856:glossary-term:fs-idm66620880-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm66620880-def"
+      },
+      {
+        "id": "fs-idm187262736",
+        "termSegmentId": "m68856:glossary-term:fs-idm187262736-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm187262736-def"
+      },
+      {
+        "id": "fs-idm151497488",
+        "termSegmentId": "m68856:glossary-term:fs-idm151497488-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm151497488-def"
+      },
+      {
+        "id": "fs-idm27779984",
+        "termSegmentId": "m68856:glossary-term:fs-idm27779984-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm27779984-def"
+      },
+      {
+        "id": "fs-idm223971840",
+        "termSegmentId": "m68856:glossary-term:fs-idm223971840-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm223971840-def"
+      },
+      {
+        "id": "fs-idm188168144",
+        "termSegmentId": "m68856:glossary-term:fs-idm188168144-term",
+        "definitionSegmentId": "m68856:glossary-def:fs-idm188168144-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

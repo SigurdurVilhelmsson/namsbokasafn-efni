@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "moduleId": "m68810",
+  "extractedAt": "2026-03-06T13:09:39.518Z",
+  "sourceHash": "b9ff24c17d727b64",
+  "segmentCount": 6,
+  "segmentIds": [
+    "m68810:title:auto-1",
+    "m68810:abstract-item:abstract-item-1",
+    "m68810:abstract-item:abstract-item-2",
+    "m68810:abstract-item:abstract-item-3",
+    "m68810:caption:CNX_Chem_15_00_Fluorite-caption",
+    "m68810:para:fs-idm92459840"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_15_00_Fluorite"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

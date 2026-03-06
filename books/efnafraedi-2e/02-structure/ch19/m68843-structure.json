@@ -1,0 +1,1948 @@
+{
+  "moduleId": "m68843",
+  "title": {
+    "segmentId": "m68843:title:auto-1",
+    "text": "Coordination Chemistry of Transition Metals"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "21374116-b20b-4092-8a9d-0a89dfc7920e",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "List the defining traits of coordination compounds",
+        "Describe the structures of complexes containing monodentate and polydentate ligands",
+        "Use standard nomenclature rules to name coordination compounds",
+        "Explain and provide examples of geometric and optical isomerism",
+        "Identify several natural and technological occurrences of coordination compounds"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp120146608",
+      "segmentId": "m68843:para:fs-idp120146608"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_Colors",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_Colors-caption"
+      },
+      "media": {
+        "id": "fs-idp7404384",
+        "alt": "This figure shows six containers. Each is filled with a different color liquid. The first appears to be clear; the second appears to be purple; the third appears to be red; the fourth appears to be teal; the fifth appears to be blue; and the sixth also appears to be clear.",
+        "src": "../../media/CNX_Chem_19_02_Colors.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp92015616",
+      "segmentId": "m68843:para:fs-idp92015616"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_BondType",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_BondType-caption"
+      },
+      "media": {
+        "id": "fs-idp231200048",
+        "alt": "Three electron dot models are shown. To the left, a central C atom is shown with H atoms bonded above, below, to the left, and to the right. Between the C atom and each H atom are two electron dots, one red, and one black, next to each other in pairs between the atoms. The second structure to the right shows N superscript plus sign followed by a C l atom in brackets. This C l atom has pairs of electron dots above, below, left, and right of the element symbol. A single electron dot on the left side of the symbol is shown in red. All others are black. Outside the brackets to the right, a negative sign appears as a superscript. The third structure on the far right has a central S c atom. This atom is surrounded by six pairs of evenly-spaced electron dots. These pairs of dots are positioned between the S c atom and each of the O atoms from six H subscript 2 O molecules. This entire structure is within brackets to the right of which is the superscript 3 plus.",
+        "src": "../../media/CNX_Chem_19_02_BondType.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp151225552",
+      "segmentId": "m68843:para:fs-idp151225552"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_CN",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_CN-caption"
+      },
+      "media": {
+        "id": "fs-idp225513984",
+        "alt": "Three structures are shown. In a, a central A g atom has N atoms bonded to the left and right as indicated by line segments. Three H atoms are similarly bonded to each N atom extending out and up, out to the side, and out and below each N atom. The structure is enclosed in brackets with a superscript plus sign to the right of the brackets. In b, a C u atom is at the center of the structure. Line segments indicate bonds to two C l atoms, one above and the other below and to the left of the central atom. To the right, a dashed wedge, narrow toward the C u atom and widening toward a C l atom, is shown at the right side of the central C u atom. A solid wedge is similarly directed toward a C l atom below and slightly right of the central C u atom. This structure is enclosed in brackets with a superscript 2 negative sign present to the right of the brackets. In c, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is a superscript 2 plus sign.",
+        "src": "../../media/CNX_Chem_19_02_CN.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp37282080",
+      "segmentId": "m68843:para:fs-idp37282080"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_en",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_en-caption"
+      },
+      "media": {
+        "id": "fs-idp39737888",
+        "alt": "Two structures are shown. In a, H subscript 2 N appears at the left end of the structure. A short line segment extends up and to the right from the N atom to a C atom in a C H subscript 2 group. A short line segment extends down and to the right to another C atom in a C H subscript 2 group. A final short line segment extends from this C H subscript 2 group up and to the right to the N atom of an N H subscript 2 group. Each N atom in the structure has a pair of electron dots at its top. In b, a central C o atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming 3 rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript 3 plus sign.",
+        "src": "../../media/CNX_Chem_19_02_en.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp32736688",
+      "segmentId": "m68843:para:fs-idp32736688"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_heme",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_heme-caption"
+      },
+      "media": {
+        "id": "fs-idp57882256",
+        "alt": "A structure is shown for the single ligand heme. At the center of this structure is an F e atom. From this atom, four single bonds extend up and to the right and left and below and to the right and left to four N atoms which are shown in red. Each N atom is a component of a 5 member ring with four C atoms. Each of these rings has a double bond between the C atoms that are not bonded to the N atom. The C atoms that are bonded to N atoms are connected to C atoms that serve as links between the 5-member rings. The bond to the C atom clockwise from the 5-member ring in each case is a double bond. The bond to the C atom counterclockwise from the 5-member ring in each case is a single bond. To the left of the structure, two of the C atoms in the 5-member rings that are not bonded to N are bonded to C H subscript 3 groups. The other carbons in these rings that are not bonded to N atoms are bonded to groups above and below. Above is a C H group double bonded to a C H subscript 2 group. Below is a C H subscript 2 group bonded to another C H subscript 2 group, which is bonded to a C O subscript 2 H group. At the right side of the structure, the C atoms in the 5-member rings that are not bonded to N atoms are bonded to additional structures. The C atom at to the right in the 5-member ring at the upper right is bonded to a C H group which is in turn double bonded to a C H subscript 2 group. Similarly, the right most C atom from the 5-member ring in the lower right is bonded to a C H subscript 3 group. The C atom from the 5-member ring not bonded to an N atom in the upper right region of the structure is bonded to a C H subscript 3 group above. Similarly, the C atom on the 5-member ring not bonded to an N atom in the lower right region of the structure is bonded to a C H subscript 2 group that is bonded to another C H subscript 2 group, which is bonded to a C O subscript 2 H group below.",
+        "src": "../../media/CNX_Chem_19_02_heme.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp106041024",
+      "segmentId": "m68843:para:fs-idp106041024"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_Gly",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_Gly-caption"
+      },
+      "media": {
+        "id": "fs-idp157070928",
+        "alt": "A structure is shown. At the center of this structure is an P t atom. From this atom, two single bonds extend up and to the right and below and to the left to two O atoms which are shown in red. Similarly, two bonds extend up and to the left and down and to the right to N atoms in N H subscript 2 groups. The N atoms in these groups are in red. The N atoms are bonded to C H subscript 2 groups, which in turn are bonded to C atoms. These C atoms have doubly bonded O atoms bonded and oriented toward the outside of the structure. They are also singly bonded to the O atoms in the structure forming two rings connected by the central P t atom.",
+        "src": "../../media/CNX_Chem_19_02_Gly.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idp9182928",
+      "class": null,
+      "title": {
+        "segmentId": "m68843:title:fs-idp9182928-title",
+        "text": "The Naming of Complexes"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-idp7606384",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68843:item:fs-idp7606384-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68843:item:fs-idp7606384-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68843:item:fs-idp7606384-item-3"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp51192128",
+          "segmentId": "m68843:para:fs-idp51192128"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp115554880",
+          "class": "top-titled",
+          "summary": "This table has two columns and 11 rows. The first row is a header and it labels each column, “Anionic Ligand,” and “Name.” Under “Anionic Ligand” are the following: F superscript negative sign, C l superscript negative sign, B r superscript negative sign, I superscript negative sign, C N superscript negative sign, N O subscript 3 superscript negative sign, O H superscript negative sign, O to the second power superscript negative sign, C subscript 2 O subscript 4 to the second power superscript negative sign, C O subscript 2 to the second power superscript negative sign. Under the “Name” are the following: fluoro, chloror, bromo, iodo, cyano, nitrato, hydroxo, oxo, oxalate, carbonato.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-54",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c2",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp261455600",
+          "segmentId": "m68843:para:fs-idp261455600"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp99540896",
+          "class": "top-titled",
+          "summary": "This table has two columns and five rows. In the first column are the following: [ C o ( N H subscript 3 ) subscript 6 ] C l subscript 3, [ P t ( N H subscript 3 ) subscript 4 C l subscript 2 ] to the second power superscript positive sign, [ A g ( N H subscript 3 ) subscript 2 ] superscript positive sign, [ C r ( H subscript 2 O ) subscript 4 C l subscript 2 ] C l, [ C o ( H subscript 2 N C H subscript 2 C H subscript 2 N H subscript 2 ) subscript 3 ] subscript 2 ( S O subscript 4 ) subscript 3. In the second column are the following: Hexaamminecobalt ( I I I ) chloride, Tetraamminedichloroplatinum ( I V ) ion, Diamminesilve ( I ) ion, Tetraaquadichlorochromium ( I I I ) chloride, Tris ( ethylenediamine ) cobalt ( I I I ) sulfate.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-78",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c2",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp97436016",
+          "class": "top-titled",
+          "summary": "This table has two columns and two rows. In the first row are the following: [ P t ( N H subscript 3 ) subscript 2 C l subscript 4 ], [ N i ( H subscript 2 N C H subscript 2 C H subscript 2 N H subscript 2 ) subscript 2 C l subscript 2 ]. In the second column are the following: Diamminetetrachloroplatiumn ( I V ), Dichlorobis ( ethylenediamine ) nickel ( I I ).",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-89",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c2",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp240256816",
+          "class": "top-titled",
+          "summary": "This table has two columns and two rows. In the first column is the following: [ P t C l subscript 6 ] to the second power superscript negative sign, N a subscript 2 [ S n C l subscript 6 ]. The second column are the following Hexachloroplatinate ( I V ) ion, Sodium hexachlorostannate ( I V ).",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-94",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c2",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp19588672",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp115410176",
+              "segmentId": "m68843:para:fs-idp115410176"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp246755792",
+          "title": {
+            "segmentId": "m68843:example-title:fs-idp246755792-title",
+            "text": "Coordination Numbers and Oxidation States"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp311893584",
+              "segmentId": "m68843:para:fs-idp311893584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp150844896",
+              "segmentId": "m68843:para:fs-idp150844896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp67156976",
+              "segmentId": "m68843:para:fs-idp67156976"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp76361984",
+              "segmentId": "m68843:para:fs-idp76361984"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp11270272",
+              "segmentId": "m68843:para:fs-idp11270272",
+              "title": {
+                "segmentId": "m68843:para-title:fs-idp11270272-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp19652080",
+              "segmentId": "m68843:para:fs-idp19652080",
+              "title": {
+                "segmentId": "m68843:para-title:fs-idp19652080-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp49529584",
+              "segmentId": "m68843:para:fs-idp49529584"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp64014688",
+              "title": {
+                "segmentId": "m68843:note-title:fs-idp64014688-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp49529584",
+                  "segmentId": "m68843:para:fs-idp49529584"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp225700912",
+      "class": null,
+      "title": {
+        "segmentId": "m68843:title:fs-idp225700912-title",
+        "text": "The Structures of Complexes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp38320320",
+          "segmentId": "m68843:para:fs-idp38320320"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_structures",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_structures-caption"
+          },
+          "media": {
+            "id": "fs-idp159515584",
+            "alt": "This figure contains three diagrams in black and white. The first is labeled, “Pentagonal Bipyramid.” It has 10 isosceles triangle faces, five at the top, joined at a vertex, making a point projecting upward at the top of the figure, and five below, joined at a vertex, making a point projecting downward, at the base of the figure. The second is labeled, “Square Antiprism.” It has flat upper and lower square surfaces and sides made up of 8 equilateral triangles. The sides alternate in orientation between pointing up and pointing down. The third diagram is labeled, “Dodecahedron.” It has twelve isosceles triangle faces.",
+            "src": "../../media/CNX_Chem_19_02_structures.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp162520608",
+          "class": "top-titled",
+          "summary": "This table has three columns and 12 rows. The first row is a header row, and it labels each column, “Coordination Number,” “Molecular Geometry,” and “Example.” In the “Coordination Number” column are the following: 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9 and above. Under the “Molecular Geometry” column are the following: linear, trigonal planar, tetrahedral ( d superscript 0 or d superscript 10 ) and low oxidation states for M, square planar ( d superscript 8 ), trigonal bipyramidal, octahedral, pentagonal bipyramid, square antiprism, dodecahedron, and more complicated structures. Under the “Example” column are the following: [ A g ( N H subscript 3 ) subscript 2 ] superscript positive sign, [ C u ( C N ) subscript 3 ] superscript two negative sign, [ N I ( C O ) subscript 4], [ N i C l subscript 4 ] superscript two negative sign, [ C o C l subscript 5 ] superscript two negative sign, [ V O ( C N ) subscript 4 ] superscript two negative sign, [ C o C l subscript 6 ] superscript three negative sign, [ Z r F subscript 7 ] superscript three negative sign, [ R e F subscript 8 ] superscript two negative sign, [ M o ( C N ) subscript 8] superscript four negative sign, [ R e H subscript 9 ] superscript two negative sign.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-115",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-142",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-143",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-145",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-146",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-147",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-148",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68843:entry:auto-149",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-150",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68843:entry:auto-151",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp57061536",
+          "segmentId": "m68843:para:fs-idp57061536"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_oct",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_oct-caption"
+          },
+          "media": {
+            "id": "fs-idp127345808",
+            "alt": "Three structures are shown. In a, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 plus. Following this to the right appears 2 C l superscript negative sign. In b, a central C r atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 plus. Following to the right is 3 N O subscript 3 superscript negative sign. In c, 2 K superscript plus is followed by a structure in brackets. Inside the brackets is a central P t atom. From the P t atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to C l atoms. Similarly, solid wedges below to both the right and left indicate bonds to two more C l atoms. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 negative sign.",
+            "src": "../../media/CNX_Chem_19_02_oct.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp217009760",
+          "segmentId": "m68843:para:fs-idp217009760"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_4geom",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_4geom-caption"
+          },
+          "media": {
+            "id": "fs-idp42483712",
+            "alt": "Two structures are shown. In a, inside of brackets, a central Z n atom is bonded to 4 C atoms in a tetrahedral spatial arrangement. Short line segments are used to represent a bond extending above and down and to the left of the Z n atom. A dashed wedge with the vertex at the Z n atom and wide end at the C atom is used to represent a bond down and to the right of the Z n atom. The final bond is indicated by a similar solid wedge again directed down and only slightly right of the center beneath the Z n atom. Four groups of three parallel short line segments are shown indicating triple bonds extending from each C atom opposite the bond with Z n to an associated N atom. Outside the brackets a superscript of 2 negative is shown. In b, at the center of this structure is a P t atom. From this atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to the N atom of an N H subscript 3 group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a C l atom.",
+            "src": "../../media/CNX_Chem_19_02_4geom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp85285584",
+      "class": null,
+      "title": {
+        "segmentId": "m68843:title:fs-idp85285584-title",
+        "text": "Isomerism in Complexes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp68367824",
+          "segmentId": "m68843:para:fs-idp68367824"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_cistrans",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_cistrans-caption"
+          },
+          "media": {
+            "id": "fs-idp151577024",
+            "alt": "Two structures are shown. The first is labeled, “Violet, cis form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below the structure. Above and to both the right and left, dashed wedges with their vertex at the C o atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to a C l atom on the right and the O atom of an H subscript 2 O group on the left. This structure is enclosed in brackets. Outside the brackets to the right is the superscript plus sign. The second is labeled, “Green, trans form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is also enclosed in brackets with a superscript plus sign outside the brackets to the right.",
+            "src": "../../media/CNX_Chem_19_02_cistrans.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm258352",
+          "segmentId": "m68843:para:fs-idm258352"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp279300448",
+          "title": {
+            "segmentId": "m68843:example-title:fs-idp279300448-title",
+            "text": "Geometric Isomers"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp162672064",
+              "segmentId": "m68843:para:fs-idp162672064"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp123193616",
+              "segmentId": "m68843:para:fs-idp123193616",
+              "title": {
+                "segmentId": "m68843:para-title:fs-idp123193616-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp290676064",
+              "segmentId": "m68843:para:fs-idp290676064",
+              "title": {
+                "segmentId": "m68843:para-title:fs-idp290676064-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-idm14256976",
+              "title": {
+                "segmentId": "m68843:note-title:fs-idm14256976-title",
+                "text": "Answer:"
+              },
+              "content": []
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_transplatin",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_transplatin-caption"
+          },
+          "media": {
+            "id": "fs-idp19204944",
+            "alt": "A structure is shown with a central P t atom. From this atom, a dashed wedge with its vertex at the P t extends up and to the left toward the C l atom, indicating a bond, and widening as it moves out. Another dashed wedge with its vertex at the P t extends up and to the right toward the N H 3 atom, indicating a bond, and widening as it moves out. Similarly, a solid wedge below and to the left indicates a bond with an H 3 N atom and another solid wedge below and to the right indicates a bond with a C l atom.",
+            "src": "../../media/CNX_Chem_19_02_transplatin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp18845840",
+          "segmentId": "m68843:para:fs-idp18845840"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_enant",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_enant-caption"
+          },
+          "media": {
+            "id": "fs-idp148990176",
+            "alt": "Two structures are shown with a vertical dashed line segment between them. The structure left of this line segment has a central M representing a metal atom. To this atom, six N H subscript 2 groups are attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central M atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This structure has the overall appearance of a flower with three petals, two of which are equidistant from the dashed line. A mirror image of this structure appears on the right side of the dashed line, again with two of the “petals” equidistant from the dashed line to its left.",
+            "src": "../../media/CNX_Chem_19_02_enant.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30489296",
+          "segmentId": "m68843:para:fs-idp30489296"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_02_Coen2Cl2",
+          "caption": {
+            "segmentId": "m68843:caption:CNX_Chem_19_02_Coen2Cl2-caption"
+          },
+          "media": {
+            "id": "fs-idm2902000",
+            "alt": "This figure includes three structures. The first two are labeled “cis form (optical isomers).” These structures are followed by a vertical dashed line segment to the right of which appears a third structure that is labeled “trans form.” The first structure includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper left of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript plus. The second structure, which appears to the be mirror image of the first structure, includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper right of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript plus sign. The third, trans structure includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and bottom of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript plus sign. This final structure has rings of atoms on opposite sides of the structure.",
+            "src": "../../media/CNX_Chem_19_02_Coen2Cl2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp79204432",
+          "segmentId": "m68843:para:fs-idp79204432"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp58946640",
+          "segmentId": "m68843:para:fs-idp58946640"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp33494848",
+      "class": null,
+      "title": {
+        "segmentId": "m68843:title:fs-idp33494848-title",
+        "text": "Coordination Complexes in Nature and Technology"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp217075840",
+          "segmentId": "m68843:para:fs-idp217075840"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_ChlorBlue",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption"
+      },
+      "media": {
+        "id": "fs-idp167959792",
+        "alt": "Structural formulas are shown for two complex molecules. The first has a central M g atom, to which N atoms are bonded above, below, left, and right. Each N atom is a component of a 5 member ring with four C atoms. Each of these rings has a double bond between the C atoms that are not bonded to the N atom. The C atoms that are bonded to N atoms are connected to C atoms that serve as links between the 5-member rings. The bond to the C atom clockwise from the 5-member ring in each case is a double bond. The bond to the C atom counterclockwise from the 5-member ring in each case is a single bond. To the left of the structure, two of the C atoms in the 5-member rings that are not bonded to N atoms are bonded to C H subscript 3 groups. The other carbons in these rings that are not bonded to N atoms are bonded to groups above and below. A variety of groups are attached outside this interconnected system of rings, including four C H subscript 3 groups, a C H subscript 2 C H subscript 2, C O O C subscript 20, H subscript 39 group, a C H C H subscript 2 group with a double bond between the C atoms, additional branching to form a five-member carbon ring to which an O atom is double bonded and a C O O C H subscript 3 group is attached. The second structure has a central C u atom to which four N atoms that participate in 5-member rings with C atoms are bonded. Unlike the first molecule, these 5-member rings are joined by N atoms between them, with a double bond on the counter clockwise side and a single bond on the clockwise side of each of the four N atoms that link the rings. On the side of each 5-member ring opposite its N atom, four additional carbon atoms are bonded, forming 6-member carbon rings with alternating double bonds. The double bonds are not present on the bonds that are shared with the 5-member rings.",
+        "src": "../../media/CNX_Chem_19_02_ChlorBlue.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idp34790896",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68843:note-title:fs-idp34790896-title",
+        "text": "Transition Metal Catalysts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp55376000",
+          "segmentId": "m68843:para:fs-idp55376000"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_Cat",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_Cat-caption"
+      },
+      "media": {
+        "id": "fs-idp96122704",
+        "alt": "This figure includes three photographs. In a, a photo shows store shelving filled with a variety of brands of laundry detergent. In b, a photo shows a can of yellow paint being stirred. In c, a bag of fertilizer is shown.",
+        "src": "../../media/CNX_Chem_19_02_Cat.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idp5832384",
+      "class": "chemistry chemist-portrait",
+      "title": {
+        "segmentId": "m68843:note-title:fs-idp5832384-title",
+        "text": "Deanna D’Alessandro"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp93768928",
+          "segmentId": "m68843:para:fs-idp93768928"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp31297136",
+          "segmentId": "m68843:para:fs-idp31297136"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp125612336",
+          "segmentId": "m68843:para:fs-idp125612336"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_CatConvert",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_CatConvert-caption"
+      },
+      "media": {
+        "id": "fs-idp17428880",
+        "alt": "An image is shown of a catalytic converter. At the upper left, a blue arrow pointing into a pipe that enters a larger, widened chamber is labeled, “Dirty emissions.” A small black arrow that points to the lower right is positioned along the upper left side of the widened region. This arrow is labeled, “Additional oxygen from air pump.” The image shows the converter with the upper surface removed, exposing a red-brown interior. The portion of the converter closes to the dirty emissions inlet shows small, spherical components in an interior layer. This layer is labeled, “Three-way reduction catalyst.” The middle region shows closely packed small brown rods that are aligned parallel to the dirty emissions inlet pipe. The final nearly quarter of the interior of the catalytic converter again shows a layer of closely packed small, red-brown circles. Two large light grey arrows extend from this layer to the open region at the lower right of the image to the label, “Clean emissions.” ",
+        "src": "../../media/CNX_Chem_19_02_CatConvert.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_chmprofile",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_chmprofile-caption"
+      },
+      "media": {
+        "id": "fs-idp274883520",
+        "alt": "This is a photo of doctor Deanna D’Alessandro.",
+        "src": "../../media/CNX_Chem_19_02_chmprofile.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp54814592",
+      "segmentId": "m68843:para:fs-idp54814592"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp36165472",
+      "segmentId": "m68843:para:fs-idp36165472"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_heme2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_heme2-caption"
+      },
+      "media": {
+        "id": "fs-idp69296",
+        "alt": "A colorful model of a hemoglobin structure is shown. The molecule has four distinct quadrants that are filled with spiral, ribbon-like regions. The upper right quadrant is lavender, lower right is gold, lower left is light blue, and upper left is green. In each of these regions, clusters of approximately 25 red dots in nearly linear arrangements are present near the center.",
+        "src": "../../media/CNX_Chem_19_02_heme2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp85288896",
+      "segmentId": "m68843:para:fs-idp85288896"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_EDTA",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_EDTA-caption"
+      },
+      "media": {
+        "id": "fs-idp39831312",
+        "alt": "This structure shows a metal atom, represented by M in red. Single bonds extending from the M are also shown in red. Bonds are indicated with O atoms by line segments extending above and below. Dashed wedges extend up and to the left to an N atom and up and to the right to an O atom, and solid wedges extend below and to the left to an N atom and below and to the right to an O atom. The O atoms bonded to the M atom each have a negative sign associated with them and they are each bonded to a C atom which is in turn double bonded to an O atom and single bonded to a C atom in a C H subscript 2 group. This last C atom in each case is single bonded to one of the N atoms, resulting in two five-member rings of which the M atom is a part. To the left of each N atom, are single bonds to the C in C H subscript 2 groups, which in turn are connected with a single bond, forming another five-member ring with the two N atoms and the M atom. Extending up and to the left of the upper N atom is a bond to the C atom of another C H subscript 2 group. This group is in turn bonded to a C atom which is double bonded to an O atom and single bonded to the O atom that is bonded to the M atom at the top of the structure, again forming a five-member ring. The same bonding structure repeats at the bottom of the structure extending from the N atom bonded at the lower left of the M atom. All single bonded O atoms in this structure have negative charges associated with them.",
+        "src": "../../media/CNX_Chem_19_02_EDTA.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp158915696",
+      "segmentId": "m68843:para:fs-idp158915696"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_BalEnt",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_BalEnt-caption"
+      },
+      "media": {
+        "id": "fs-idp10272368",
+        "alt": "This figure includes two structures. In a, a five member ring is shown with an S atom at the top with additional atoms single bonded in the following order clockwise around the pentagonal ring; M atom, S atom, C atom of a C H subscript 2 group, followed by a C atom of a C H group. The final C atom is bonded to the original S atom completing the ring. The C in the C H group is at the upper left of the structure. This C has a C H subscript 2 group bonded above to which an O H group is bonded to the right. In b, a complex structure is shown. It has an open central region and multiple ring structures. A single F e atom is included, appearing to be bonded to six O atoms. Fifteen total O atoms are bonded into the structure along with three N atoms and multiple C atoms and H atoms. Nine O atoms are single bonded and are incorporated into rings and six are double bonded, extending outward from ring structures. ",
+        "src": "../../media/CNX_Chem_19_02_BalEnt.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idp8695360",
+      "title": {
+        "segmentId": "m68843:example-title:fs-idp8695360-title",
+        "text": "Chelation Therapy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp2238224",
+          "segmentId": "m68843:para:fs-idp2238224"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp35716832",
+          "segmentId": "m68843:para:fs-idp35716832",
+          "title": {
+            "segmentId": "m68843:para-title:fs-idp35716832-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp59621280",
+          "segmentId": "m68843:para:fs-idp59621280",
+          "title": {
+            "segmentId": "m68843:para-title:fs-idp59621280-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13836096",
+          "segmentId": "m68843:para:fs-idp13836096"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp9554032",
+          "title": {
+            "segmentId": "m68843:note-title:fs-idp9554032-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp13836096",
+              "segmentId": "m68843:para:fs-idp13836096"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_02_DMSA",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68843:caption:CNX_Chem_19_02_DMSA-caption"
+      },
+      "media": {
+        "id": "fs-idp97148096",
+        "alt": "A structure is shown that has an H atom on the far left which is single bonded to an O atom to its right. This atom is bonded to a C atom just below and to the right. This C atom has a double bonded O atom below and is bonded to the C atom of a C H group. Above this C atom, a solid wedge extends upward to the S atom of an S H group. A bond extends from this last C atom to another C atom of a second C H group below and to the right. A dashed wedge extends from this C atom to the S of an S H group below. A single bond extends up and to the right of the C atom to another C atom. This last C atom has a double bonded O atom above. A single bond extends to a second O atom below and to the right. To the right of this O atom, an H atom is connected with a single bond. All S and O atoms in the structure are shown with two unshared pairs of electron dots.",
+        "src": "../../media/CNX_Chem_19_02_DMSA.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp58173136",
+      "segmentId": "m68843:para:fs-idp58173136"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp128300928",
+      "segmentId": "m68843:para:fs-idp128300928"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp136064256",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68843:title:fs-idp136064256-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm3937184",
+          "segmentId": "m68843:para:fs-idm3937184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp99118624",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68843:title:fs-idp99118624-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp178303616",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp137517056",
+                "segmentId": "m68843:problem:fs-idp137517056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1254176",
+                "segmentId": "m68843:problem:fs-idp1254176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm202688",
+                "segmentId": "m68843:problem:fs-idm202688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38349728",
+                "segmentId": "m68843:problem:fs-idp38349728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp104868400",
+                "segmentId": "m68843:problem:fs-idp104868400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp95037984",
+                "segmentId": "m68843:problem:fs-idp95037984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp58691568",
+                "segmentId": "m68843:problem:fs-idp58691568"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp151424672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1506880",
+                "segmentId": "m68843:problem:fs-idp1506880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2144192",
+                "segmentId": "m68843:problem:fs-idm2144192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp49932096",
+                "segmentId": "m68843:problem:fs-idp49932096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp188441376",
+                "segmentId": "m68843:problem:fs-idp188441376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp37713168",
+                "segmentId": "m68843:problem:fs-idp37713168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp91072960",
+                "segmentId": "m68843:problem:fs-idp91072960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp64176720",
+                "segmentId": "m68843:problem:fs-idp64176720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp59722176",
+                "segmentId": "m68843:problem:fs-idp59722176"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp288666720",
+                "segmentId": "m68843:solution:fs-idp288666720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp104842000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp244069600",
+                "segmentId": "m68843:problem:fs-idp244069600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp66182016",
+                "segmentId": "m68843:problem:fs-idp66182016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38453456",
+                "segmentId": "m68843:problem:fs-idp38453456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp72201152",
+                "segmentId": "m68843:problem:fs-idp72201152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88473488",
+                "segmentId": "m68843:problem:fs-idp88473488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp74765776",
+                "segmentId": "m68843:problem:fs-idp74765776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp53542624",
+                "segmentId": "m68843:problem:fs-idp53542624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75347168",
+                "segmentId": "m68843:problem:fs-idp75347168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp20243712",
+                "segmentId": "m68843:problem:fs-idp20243712"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp5586896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp83328608",
+                "segmentId": "m68843:problem:fs-idp83328608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp243193648",
+                "segmentId": "m68843:problem:fs-idp243193648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp58068512",
+                "segmentId": "m68843:problem:fs-idp58068512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp226786864",
+                "segmentId": "m68843:problem:fs-idp226786864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm14282624",
+                "segmentId": "m68843:problem:fs-idm14282624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp68312320",
+                "segmentId": "m68843:problem:fs-idp68312320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1778016",
+                "segmentId": "m68843:problem:fs-idm1778016"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp93813424",
+                "segmentId": "m68843:solution:fs-idp93813424"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp55630960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm62688336",
+                "segmentId": "m68843:problem:fs-idm62688336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp278094160",
+                "segmentId": "m68843:problem:fs-idp278094160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm3473200",
+                "segmentId": "m68843:problem:fs-idm3473200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp240653552",
+                "segmentId": "m68843:problem:fs-idp240653552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp217660976",
+                "segmentId": "m68843:problem:fs-idp217660976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp129128096",
+                "segmentId": "m68843:problem:fs-idp129128096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp39161552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp174791264",
+                "segmentId": "m68843:problem:fs-idp174791264"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56287648",
+                "segmentId": "m68843:solution:fs-idp56287648"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp39687552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57091024",
+                "segmentId": "m68843:problem:fs-idp57091024"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp74861776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp108752272",
+                "segmentId": "m68843:problem:fs-idp108752272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36945120",
+                "segmentId": "m68843:problem:fs-idp36945120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp95290608",
+                "segmentId": "m68843:problem:fs-idp95290608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp82903136",
+                "segmentId": "m68843:problem:fs-idp82903136"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp117271104",
+                "segmentId": "m68843:solution:fs-idp117271104"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp128328592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7428240",
+                "segmentId": "m68843:problem:fs-idp7428240"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp128328048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp9775424",
+                "segmentId": "m68843:problem:fs-idp9775424"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm35199712",
+                "segmentId": "m68843:solution:fs-idm35199712"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68843:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68843:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68843:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68843:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68843:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68843:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp65460624",
+        "termSegmentId": "m68843:glossary-term:fs-idp65460624-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp65460624-def"
+      },
+      {
+        "id": "fs-idp53705200",
+        "termSegmentId": "m68843:glossary-term:fs-idp53705200-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp53705200-def"
+      },
+      {
+        "id": "fs-idp64634960",
+        "termSegmentId": "m68843:glossary-term:fs-idp64634960-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp64634960-def"
+      },
+      {
+        "id": "fs-idp51669120",
+        "termSegmentId": "m68843:glossary-term:fs-idp51669120-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp51669120-def"
+      },
+      {
+        "id": "fs-idp15506400",
+        "termSegmentId": "m68843:glossary-term:fs-idp15506400-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp15506400-def"
+      },
+      {
+        "id": "fs-idp246761680",
+        "termSegmentId": "m68843:glossary-term:fs-idp246761680-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp246761680-def"
+      },
+      {
+        "id": "fs-idp55828544",
+        "termSegmentId": "m68843:glossary-term:fs-idp55828544-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp55828544-def"
+      },
+      {
+        "id": "fs-idp56324672",
+        "termSegmentId": "m68843:glossary-term:fs-idp56324672-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp56324672-def"
+      },
+      {
+        "id": "fs-idp275481408",
+        "termSegmentId": "m68843:glossary-term:fs-idp275481408-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp275481408-def"
+      },
+      {
+        "id": "fs-idp165361216",
+        "termSegmentId": "m68843:glossary-term:fs-idp165361216-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp165361216-def"
+      },
+      {
+        "id": "fs-idp279277792",
+        "termSegmentId": "m68843:glossary-term:fs-idp279277792-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp279277792-def"
+      },
+      {
+        "id": "fs-idp63930000",
+        "termSegmentId": "m68843:glossary-term:fs-idp63930000-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp63930000-def"
+      },
+      {
+        "id": "fs-idp8060128",
+        "termSegmentId": "m68843:glossary-term:fs-idp8060128-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp8060128-def"
+      },
+      {
+        "id": "fs-idp216879616",
+        "termSegmentId": "m68843:glossary-term:fs-idp216879616-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp216879616-def"
+      },
+      {
+        "id": "fs-idp158869120",
+        "termSegmentId": "m68843:glossary-term:fs-idp158869120-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp158869120-def"
+      },
+      {
+        "id": "fs-idp75431424",
+        "termSegmentId": "m68843:glossary-term:fs-idp75431424-term",
+        "definitionSegmentId": "m68843:glossary-def:fs-idp75431424-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp9574672",
+      "class": null,
+      "alt": "Two structures are shown. At the center of each is a P t atom. The structure on the left is labeled, “cis.” From this atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to a second B r atom. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to the O atom of an H subscript 2 O group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a second O atom of an H subscript 2 O group. The structure on the right is labeled, “trans.” From the central P t atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the O atom of an H subscript 2 O group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to the O atom of a second H subscript 2 O group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a second B r atom.;",
+      "src": "../../media/CNX_Chem_19_02_Answer4a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp90764336",
+      "class": null,
+      "alt": "Three structures are shown. At the center of each is a P t atom. From this atom in the first structure on the left, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to p y. The middle structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to p y. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a to a C l atom. The third structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to p y. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a B r atom.;",
+      "src": "../../media/CNX_Chem_19_02_Answer4b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp126313472",
+      "class": null,
+      "alt": "Inside of brackets, a central Z n atom is bonded to a C l atom and three N atoms in N H subscript 3 groups in a tetrahedral spatial arrangement. Short line segments are used to represent a bond extending above to the C l atom and down and to the left to the N of the N H subscript 3 group from the Z n atom. A dashed wedge with the vertex at the Z n atom and wide end at the N atom of an N H subscript 3 group is used to represent a bond down and to the right of the Z n atom. The final bond is indicated by a similar solid wedge again directed down and only slightly right of center beneath the Z n atom to the N of an N H subscript 3 group. Outside the brackets a superscript plus sign is shown.;",
+      "src": "../../media/CNX_Chem_19_02_Answer4c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp168038944",
+      "class": null,
+      "alt": "This structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to the N atom of an N H subscript 3 group. Similarly, two single bonds represented by solid wedges extend from vertices at the P t atom down and to the right and down and to the left to the N atoms of N H subscript 3 groups. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. This structure is enclosed in brackets with superscript plus sign appearing to the right of the brackets.;",
+      "src": "../../media/CNX_Chem_19_02_Answer4d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idp48279792",
+      "class": null,
+      "alt": "Two structures are shown. The first is labeled, “trans.” Below this label inside brackets is a central N i atom. From the N i atom, line segments indicate bonds to C l atoms above and below. Above and to both the right and left, dashed wedges with their vertex at the N i atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is enclosed in brackets. The second structure is labeled, “cis.” Inside brackets is a central N i atom. From the N i atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, a solid wedge below to the right indicates a bond with a C l atom and a solid wedge to the lower left indicates a bond to the O atoms of an H subscript 2 O group. This structure is also enclosed in brackets.;",
+      "src": "../../media/CNX_Chem_19_02_Answer4e_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idm29297584",
+      "class": null,
+      "alt": "This figure includes three structures. The first structure includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper left of the structure. The remaining four bonds extend from the central C o atom to O atoms. The O atoms are each connected to C atoms which are each connected with double bonds to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript 3 negative sign. The second structure, which appears to the be mirror image of the first structure, includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper right of the structure. The remaining four bonds extend from the central C o atom to O atoms. The O atoms are each connected to C atoms which are each connected with double bonds to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 negative sign. The third structure includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and bottom of the structure. The remaining four bonds extend from the central C o atom to the O atoms. The O atoms are each connected to C atoms which are in turn each double bonded to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets, to the right, is a superscript 3 negative sign. This final structure has rings of atoms on opposite sides of the structure.",
+      "src": "../../media/CNX_Chem_19_02_Answer4f_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idp225955008",
+      "class": null,
+      "alt": "This figure shows eight structures, each inside brackets in three rows. The first row contains three structures, the second row contains three structures, and the third row contains two structures. These structures are described in increasing order moving left to right and top to bottom in the figure. Each includes a central C o atom with line segments indicating bonds above and below the central atom. Above and to both the left and right, dashed wedges with vertices at the C o atom widening as they move out from the atom indicates single bonds. Similarly, solid wedges below and to both the left and right indicate single bonds. Outside each structure in brackets, to the right, an element or group is identified in brackets as a superscript. In the first structure, the C atom of a C N group is bonded to the C o atom. All 5 remaining bonds are with C l atoms. C N appears in brackets as a superscript outside the structure. In the second structure, the N atom of a C N group is bonded to the C o atom. All 5 remaining bonds are with C l atoms. C N appears in brackets as a superscript outside the structure. In the third structure, the C atom of two C N groups are bonded to the C o atom at the top and bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the fourth structure, the C atom of a C N groups is bonded to the C o atom at the top and the N atom of a C N group which is bonded at the bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the fifth structure, the N atom of two C N groups are bonded to the C o atom at the top and bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the sixth structure, the C atom of two C N groups are bonded to the C o atom at the top and upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the seventh structure, the C atom of a C N group is bonded to the C o atom at the top of the structure and the N atom of a C N group is bonded at the upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the eighth structure, the N atom of two C N groups are bonded to the C o atom at the top and upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure.",
+      "src": "../../media/CNX_Chem_19_02_ex10ans_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

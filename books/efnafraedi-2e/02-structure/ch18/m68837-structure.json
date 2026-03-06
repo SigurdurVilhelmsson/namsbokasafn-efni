@@ -1,0 +1,1812 @@
+{
+  "moduleId": "m68837",
+  "title": {
+    "segmentId": "m68837:title:auto-1",
+    "text": "Occurrence, Preparation, and Compounds of Oxygen"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a8895b18-d450-4bf2-a847-ccfab75780ec",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the properties, preparation, and compounds of oxygen",
+        "Describe the preparation, properties, and uses of some representative metal oxides, peroxides, and hydroxides"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp152721184",
+      "segmentId": "m68837:para:fs-idp152721184"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp65251648",
+      "segmentId": "m68837:para:fs-idp65251648"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm27751680",
+      "segmentId": "m68837:para:fs-idm27751680"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp51527296",
+      "segmentId": "m68837:para:fs-idp51527296"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp11224512",
+      "segmentId": "m68837:para:fs-idp11224512"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp113966704",
+      "segmentId": "m68837:para:fs-idp113966704"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp21114016",
+      "segmentId": "m68837:para:fs-idp21114016"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm4087072",
+      "segmentId": "m68837:para:fs-idm4087072"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm5414704",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp139331168",
+      "segmentId": "m68837:para:fs-idp139331168"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm13883760",
+      "segmentId": "m68837:para:fs-idm13883760"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_09_Ozone",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68837:caption:CNX_Chem_18_09_Ozone-caption"
+      },
+      "media": {
+        "id": "fs-idp48097808",
+        "alt": "A space filling model shows three atoms labeled, “O,” bonded to one another in a triangular shape. Two Lewis structures connected by a double ended arrow are shown as well. In the left image, an oxygen atom with one lone pair of electrons is double bonded to another oxygen with two lone pairs of electrons to the left and single bonded to an oxygen with three lone pairs of electrons to the right. The right image is a mirror image of the left.",
+        "src": "../../media/CNX_Chem_18_09_Ozone.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm29856000",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp152283536",
+      "segmentId": "m68837:para:fs-idp152283536"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp113935824",
+      "segmentId": "m68837:para:fs-idp113935824"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm331232",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp7852816",
+      "segmentId": "m68837:para:fs-idp7852816"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp147670496",
+      "segmentId": "m68837:para:fs-idp147670496"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp24501056",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idp24501056-title",
+        "text": "Reactions"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp17442128",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idp17442128-title",
+            "text": "Reaction with Elements"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm69360784",
+              "segmentId": "m68837:para:fs-idm69360784"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm16038160",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm195184",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp158351392",
+              "segmentId": "m68837:para:fs-idp158351392"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp16810848",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idp16810848-title",
+            "text": "Reaction with Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp29605072",
+              "segmentId": "m68837:para:fs-idp29605072"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm110681664",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10089904",
+              "segmentId": "m68837:para:fs-idm10089904"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp69945600",
+          "segmentId": "m68837:para:fs-idp69945600"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp21363488",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idp21363488-title",
+        "text": "Oxides, Peroxides, and Hydroxides"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm30222976",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idm30222976-title",
+            "text": "Oxides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm7884928",
+              "segmentId": "m68837:para:fs-idm7884928"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp24326336",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm24808352",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp15533664",
+              "segmentId": "m68837:para:fs-idp15533664"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm18457920",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm148946640",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp19845744",
+              "segmentId": "m68837:para:fs-idp19845744"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm27686864",
+              "segmentId": "m68837:para:fs-idm27686864"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp88647200",
+              "segmentId": "m68837:para:fs-idp88647200"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp12764208",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp12136512",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp15873744",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm71724768",
+              "segmentId": "m68837:para:fs-idm71724768"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp13441040",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm28075840",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp107723728",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp12102384",
+              "segmentId": "m68837:para:fs-idp12102384"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_Limelight",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_Limelight-caption"
+              },
+              "media": {
+                "id": "fs-idp99950736",
+                "alt": "A diagram shows two tubes labeled, “Oxygen,” and, “Hydrogen,” that lead to a lit burner. The burner is aimed at a solid block labeled, “Calcium oxide,” which rests on a laboratory apparatus.",
+                "src": "../../media/CNX_Chem_18_09_Limelight.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm68622384",
+              "segmentId": "m68837:para:fs-idm68622384"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp58226016",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp49770160",
+              "segmentId": "m68837:para:fs-idp49770160"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm70437760",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp440288",
+              "segmentId": "m68837:para:fs-idp440288"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp148730400",
+              "segmentId": "m68837:para:fs-idp148730400"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm78432624",
+              "segmentId": "m68837:para:fs-idm78432624"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_Sunblock",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_Sunblock-caption"
+              },
+              "media": {
+                "id": "fs-idp37228448",
+                "alt": "A photograph shows a person’s hand as he or she applies a white cream to his or her leg.",
+                "src": "../../media/CNX_Chem_18_09_Sunblock.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm58982368",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idm58982368-title",
+            "text": "Peroxides and Superoxides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp65527104",
+              "segmentId": "m68837:para:fs-idp65527104"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm61291184",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp26142368",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm153783712",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp38768608",
+              "segmentId": "m68837:para:fs-idp38768608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp79297024",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp37808960",
+              "segmentId": "m68837:para:fs-idp37808960"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp933600",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp94950736",
+              "segmentId": "m68837:para:fs-idp94950736"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm27693280",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idm27693280-title",
+            "text": "Hydroxides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm49602000",
+              "segmentId": "m68837:para:fs-idm49602000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm36144688",
+              "segmentId": "m68837:para:fs-idm36144688"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm8076080",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp19462688",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp83430112",
+              "segmentId": "m68837:para:fs-idp83430112"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm5459728",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm48678144",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm48473616",
+              "segmentId": "m68837:para:fs-idm48473616"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm50382768",
+              "segmentId": "m68837:para:fs-idm50382768"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp58240864",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp190200880",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp25212112",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp83761344",
+              "segmentId": "m68837:para:fs-idp83761344"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_ZnHydroxid",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_ZnHydroxid-caption"
+              },
+              "media": {
+                "id": "fs-idm5652064",
+                "alt": "This figure has two photos. The first photo shows a bottle labeled NaOH and a test tube containing a liquid. A white substance appears to be in the liquid. The second photo is set up similarly, but the test tube now contains only a clear liquid.",
+                "src": "../../media/CNX_Chem_18_09_ZnHydroxid.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp107250736",
+              "segmentId": "m68837:para:fs-idp107250736"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp17934448",
+              "segmentId": "m68837:para:fs-idp17934448"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm33972064",
+              "segmentId": "m68837:para:fs-idm33972064"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_CaOH2",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_CaOH2-caption"
+              },
+              "media": {
+                "id": "fs-idm29289888",
+                "alt": "A photograph shows a bottle tipped on its side with the words, “Antacid Tablets,” written on the front. An array of colorful, solid disks spill out of the mouth of the bottle.",
+                "src": "../../media/CNX_Chem_18_09_CaOH2.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-idp2234912",
+              "class": "chemistry everyday-life",
+              "title": {
+                "segmentId": "m68837:note-title:fs-idp2234912-title",
+                "text": "The Chlor-Alkali Process"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp34680416",
+                  "segmentId": "m68837:para:fs-idp34680416"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp37058176",
+                  "segmentId": "m68837:para:fs-idp37058176"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm85311152",
+                  "segmentId": "m68837:para:fs-idm85311152"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm56502208",
+                  "segmentId": "m68837:para:fs-idm56502208"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp94807728",
+          "segmentId": "m68837:para:fs-idp94807728"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp162832832",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idp162832832-title",
+        "text": "Nonmetal Oxygen Compounds"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm13348784",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idm13348784-title",
+            "text": "Sulfur Oxygen Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm62637712",
+              "segmentId": "m68837:para:fs-idm62637712"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_Sulfrdiox",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_Sulfrdiox-caption"
+              },
+              "media": {
+                "id": "fs-idp19907360",
+                "alt": "A ball-and-stick model shows a yellow atom labeled, “S,” bonded on either side to a red atom labeled, “O.” A pair of Lewis structures are shown connected by a double-headed arrow. The left Lewis structure shows a sulfur atom with one lone pair of electrons double bonded on the left to an oxygen atom with two lone pairs of electrons and single bonded on the right to an oxygen atom with three lone pairs of electrons. The right Lewis structure is a mirror image of the structure on the left.",
+                "src": "../../media/CNX_Chem_18_09_Sulfrdiox.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm30601216",
+              "segmentId": "m68837:para:fs-idm30601216"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm51154080",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp54699968",
+              "segmentId": "m68837:para:fs-idp54699968"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_Sulfrtriox",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_Sulfrtriox-caption"
+              },
+              "media": {
+                "id": "fs-idp55786576",
+                "alt": "A ball-and-stick model shows a yellow atom labeled, “S,” bonded to three red atoms labeled, “O.” Three Lewis structures are shown connected by double-headed arrows. The left Lewis structure shows a sulfur atom single bonded on the lower left and right to oxygen atoms with three lone pairs of electrons each. The sulfur atom is also double bonded above to an oxygen atom with two lone pairs of electrons. The middle and right Lewis structures are the same as the left, but show the double bonded oxygen in the lower left and lower right positions, respectively.",
+                "src": "../../media/CNX_Chem_18_09_Sulfrtriox.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm30148720",
+              "segmentId": "m68837:para:fs-idm30148720"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp152271648",
+          "class": null,
+          "title": {
+            "segmentId": "m68837:title:fs-idp152271648-title",
+            "text": "Halogen Oxygen Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm65795712",
+              "segmentId": "m68837:para:fs-idm65795712"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp159291200",
+              "segmentId": "m68837:para:fs-idp159291200"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_09_Cl2OClO2",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68837:caption:CNX_Chem_18_09_Cl2OClO2-caption"
+              },
+              "media": {
+                "id": "fs-idm47776480",
+                "alt": "Two space filling models are shown and labeled, “a,” and “b.” Model a shows a red atom labeled, “O,” bonded to two green atoms labeled, “C l,” in a v-shape. Model b shows a green atom labeled, “C l,” bonded to two red atoms labeled, “O,” in a v-shape.",
+                "src": "../../media/CNX_Chem_18_09_Cl2OClO2.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm14503248",
+          "segmentId": "m68837:para:fs-idm14503248"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm32501488",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idm32501488-title",
+        "text": "Nonmetal Oxyacids and Their Salts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm58060176",
+          "segmentId": "m68837:para:fs-idm58060176"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp206112720",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idp206112720-title",
+        "text": "Nitrogen Oxyacids and Salts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm61348288",
+          "segmentId": "m68837:para:fs-idm61348288"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_HNO3",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_HNO3-caption"
+          },
+          "media": {
+            "id": "fs-idp86575744",
+            "alt": "A space filling model shows a blue atom labeled, “N,” bonded on three sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.” A pair of Lewis structures is shown connected by a double-headed arrow. The left Lewis structure shows an oxygen atom with two lone pairs of electrons single bonded on the left to a hydrogen atom and on the right to a nitrogen atom. The nitrogen atom is in turn single bonded to an oxygen atom with three lone pairs of electrons in an upward position and double bonded to an oxygen atom with two lone pairs of electrons in a downward position. The right Lewis structure is the same as the left, but the double bonded oxygen is in the upward position and the single bonded oxygen is in the lower position in relation to the nitrogen atom.",
+            "src": "../../media/CNX_Chem_18_09_HNO3.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp180830096",
+          "segmentId": "m68837:para:fs-idp180830096"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm8101328",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16395920",
+          "segmentId": "m68837:para:fs-idp16395920"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp173455504",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm57450528",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp69861200",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp27580736",
+          "segmentId": "m68837:para:fs-idp27580736"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm10263440",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm385968",
+          "segmentId": "m68837:para:fs-idm385968"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp47264016",
+          "segmentId": "m68837:para:fs-idp47264016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm58177632",
+          "segmentId": "m68837:para:fs-idm58177632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm10582432",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp21108576",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm7528336",
+          "segmentId": "m68837:para:fs-idm7528336"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp6819296",
+          "class": "unnumbered"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm69402496",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp621936",
+              "segmentId": "m68837:para:fs-idp621936"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm29734944",
+          "segmentId": "m68837:para:fs-idm29734944"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp61633936",
+          "segmentId": "m68837:para:fs-idp61633936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm58939888",
+          "segmentId": "m68837:para:fs-idm58939888"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm363344",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm29214096",
+          "segmentId": "m68837:para:fs-idm29214096"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_NitrosAcid",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_NitrosAcid-caption"
+          },
+          "media": {
+            "id": "fs-idm53671040",
+            "alt": "A space filling model shows a blue atom labeled, “N,” bonded on two sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.”",
+            "src": "../../media/CNX_Chem_18_09_NitrosAcid.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp79466448",
+          "segmentId": "m68837:para:fs-idp79466448"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp21205840",
+          "segmentId": "m68837:para:fs-idp21205840"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp21560544",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idp21560544-title",
+        "text": "Phosphorus Oxyacids and Salts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp99137072",
+          "segmentId": "m68837:para:fs-idp99137072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm47466240",
+          "segmentId": "m68837:para:fs-idm47466240"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm61386384",
+          "class": "unnumbered"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_Phosphate",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_Phosphate-caption"
+          },
+          "media": {
+            "id": "fs-idp207514928",
+            "alt": "A space filling model shows an orange atom labeled, “P,” bonded on four sides to red atoms labeled, “O.” Three of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to four oxygen atoms, three of which have two lone pairs of electrons, and one of which has three lone pairs of electrons. The oxygen atoms with two lone pairs of electrons are single bonded to hydrogen atoms.",
+            "src": "../../media/CNX_Chem_18_09_Phosphate.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm60228576",
+          "segmentId": "m68837:para:fs-idm60228576"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp83768768",
+          "segmentId": "m68837:para:fs-idp83768768"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm27854784",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp57027376",
+          "segmentId": "m68837:para:fs-idp57027376"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm13378544",
+          "class": "unnumbered"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_PhosphAcid",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_PhosphAcid-caption"
+          },
+          "media": {
+            "id": "fs-idp206877648",
+            "alt": "A space filling model shows an orange atom labeled, “P,” bonded on three sides to red atoms labeled, “O,” and on the other side to a white atom labeled, “H.” Two of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to a hydrogen atom and three oxygen atoms, two of which have two lone pairs of electrons and single bonds to hydrogen atoms, and one of which has three lone pairs of electrons.",
+            "src": "../../media/CNX_Chem_18_09_PhosphAcid.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm58353808",
+          "segmentId": "m68837:para:fs-idm58353808"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm28426352",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idm28426352-title",
+        "text": "Sulfur Oxyacids and Salts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm1538016",
+          "segmentId": "m68837:para:fs-idm1538016"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_SulfrAcid",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_SulfrAcid-caption"
+          },
+          "media": {
+            "id": "fs-idm10377520",
+            "alt": "A space filling model shows a yellow atom labeled, “S,” bonded on four sides to red atoms labeled, “O.” Two of the red atoms are bonded to white atoms labeled, “H.”",
+            "src": "../../media/CNX_Chem_18_09_SulfrAcid.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp65301664",
+          "segmentId": "m68837:para:fs-idp65301664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm32710656",
+          "segmentId": "m68837:para:fs-idm32710656"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8078544",
+          "segmentId": "m68837:para:fs-idm8078544"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp20480",
+          "segmentId": "m68837:para:fs-idp20480"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp48096528",
+          "segmentId": "m68837:para:fs-idp48096528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm4279232",
+          "segmentId": "m68837:para:fs-idm4279232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp145310240",
+          "segmentId": "m68837:para:fs-idp145310240"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm1418928",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp206115680",
+          "segmentId": "m68837:para:fs-idp206115680"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp51262832",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp83891616",
+          "segmentId": "m68837:para:fs-idp83891616"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp90916704",
+      "class": null,
+      "title": {
+        "segmentId": "m68837:title:fs-idp90916704-title",
+        "text": "Halogen Oxyacids and Their Salts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm47315952",
+          "segmentId": "m68837:para:fs-idm47315952"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp152462192",
+          "class": "top-titled",
+          "summary": "This table has five columns and six rows. The first row is a header row, and it labels each column: “Name,” “Fluorine,” “Chlorine,” “Bromine,” and “Iodine.” Under the “Name” column are the following: hypohalous, halous, halic, perhalic, and paraperhalic. Under the “Fluorine” column is H O F and the rest of the rows are empty. Under the “Chlorine” column are: H O C l ( 7.5 ); H C l O subscript 2 ( 2.0 ); H C l O subscript 3; H C l O subscript 4; and the final row is empty. Under the “Bromine” column are: H O B r ( 8.7 ); a blank row; H B r O subscript 3; H B r O subscript 4; and another blank row. Under the “Iodine” column are: H O I ( 11 ); a blank row; H I O subscript 3 ( 0.8 ); H I O subscript 4 ( 1.6 ); and H subscript 5 I O subscript 6 ( 1.6 ).",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-123",
+                  "attributes": {
+                    "align": "center",
+                    "namest": "c1",
+                    "nameend": "c5"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-142",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-143",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-145",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm58677424",
+          "segmentId": "m68837:para:fs-idm58677424"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp5253424",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp21282672",
+          "segmentId": "m68837:para:fs-idp21282672"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm12187664",
+          "segmentId": "m68837:para:fs-idm12187664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52966960",
+          "segmentId": "m68837:para:fs-idm52966960"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm10558896",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53552928",
+          "segmentId": "m68837:para:fs-idp53552928"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm149934000",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm9228176",
+          "segmentId": "m68837:para:fs-idm9228176"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp64067136",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm3702800",
+          "segmentId": "m68837:para:fs-idm3702800"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_ChloritIon",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_ChloritIon-caption"
+          },
+          "media": {
+            "id": "fs-idm33972736",
+            "alt": "Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with two orbitals occupied by lone pairs of electrons. The chlorine atom is single bonded to two oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to two red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with two lone pairs of electrons surrounded by two oxygen atoms on either side, each with four lone pairs of electrons.",
+            "src": "../../media/CNX_Chem_18_09_ChloritIon.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp60019552",
+          "segmentId": "m68837:para:fs-idp60019552"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm57986912",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm69933232",
+          "segmentId": "m68837:para:fs-idm69933232"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_ClO3Ion",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_ClO3Ion-caption"
+          },
+          "media": {
+            "id": "fs-idp90696608",
+            "alt": "Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with one orbital occupied by a lone pair of electrons. The chlorine atom is single bonded to three oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to three red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with a lone pair of electrons surrounded by three oxygen atoms, each with four lone pairs of electrons.",
+            "src": "../../media/CNX_Chem_18_09_ClO3Ion.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm25050720",
+          "segmentId": "m68837:para:fs-idm25050720"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp58168432",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp39285584",
+          "segmentId": "m68837:para:fs-idp39285584"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_09_PerchloIon",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68837:caption:CNX_Chem_18_09_PerchloIon-caption"
+          },
+          "media": {
+            "id": "fs-idm61257968",
+            "alt": "Two models of molecules are shown, both with a superscript negative sign. The left molecule shows a space-filling model with a green atom labeled, “C l,” bonded to four red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom surrounded by four oxygen atoms, each with four lone pairs of electrons. The Lewis structure is surrounded by brackets, and the superscript negative sign appears outside the brackets.",
+            "src": "../../media/CNX_Chem_18_09_PerchloIon.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp110410496",
+          "segmentId": "m68837:para:fs-idp110410496"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp182796160",
+          "segmentId": "m68837:para:fs-idp182796160"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp158287200",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68837:title:fs-idp158287200-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp21127344",
+          "segmentId": "m68837:para:fs-idp21127344"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm28376624",
+          "segmentId": "m68837:para:fs-idm28376624"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm14417664",
+          "segmentId": "m68837:para:fs-idm14417664"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp91787280",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68837:title:fs-idp91787280-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp58245760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp209794048",
+                "segmentId": "m68837:problem:fs-idp209794048"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp83196560",
+                "segmentId": "m68837:solution:fs-idp83196560"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp152584704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp17846160",
+                "segmentId": "m68837:problem:fs-idp17846160"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp175610544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp94885744",
+                "segmentId": "m68837:problem:fs-idp94885744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm59899328",
+                "segmentId": "m68837:problem:fs-idm59899328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp42555456",
+                "segmentId": "m68837:problem:fs-idp42555456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7532576",
+                "segmentId": "m68837:problem:fs-idm7532576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm59566080",
+                "segmentId": "m68837:problem:fs-idm59566080"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp259452176",
+                "segmentId": "m68837:solution:fs-idp259452176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm11343008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp36790160",
+                "segmentId": "m68837:problem:fs-idp36790160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp223600240",
+                "segmentId": "m68837:problem:fs-idp223600240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp61077712",
+                "segmentId": "m68837:problem:fs-idp61077712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm14502784",
+                "segmentId": "m68837:problem:fs-idm14502784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp99009104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56934320",
+                "segmentId": "m68837:problem:fs-idm56934320"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55729344",
+                "segmentId": "m68837:solution:fs-idp55729344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm41302384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26675200",
+                "segmentId": "m68837:problem:fs-idp26675200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm49557184",
+                "segmentId": "m68837:problem:fs-idm49557184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp152655584",
+                "segmentId": "m68837:problem:fs-idp152655584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp228310656",
+                "segmentId": "m68837:problem:fs-idp228310656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp178175536",
+                "segmentId": "m68837:problem:fs-idp178175536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm57353488",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp158282896",
+                "segmentId": "m68837:problem:fs-idp158282896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34078304",
+                "segmentId": "m68837:problem:fs-idm34078304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1006736",
+                "segmentId": "m68837:problem:fs-idp1006736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp117074560",
+                "segmentId": "m68837:problem:fs-idp117074560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm4135888",
+                "segmentId": "m68837:problem:fs-idm4135888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp117208864",
+                "segmentId": "m68837:problem:fs-idp117208864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16229280",
+                "segmentId": "m68837:solution:fs-idp16229280"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm95780080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm62046832",
+                "segmentId": "m68837:problem:fs-idm62046832"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp61089040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31330912",
+                "segmentId": "m68837:problem:fs-idm31330912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37760112",
+                "segmentId": "m68837:solution:fs-idp37760112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm53754112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp89474640",
+                "segmentId": "m68837:problem:fs-idp89474640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp107774560",
+                "segmentId": "m68837:problem:fs-idp107774560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp785168",
+                "segmentId": "m68837:problem:fs-idp785168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm25063280",
+                "segmentId": "m68837:problem:fs-idm25063280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp98611072",
+                "segmentId": "m68837:problem:fs-idp98611072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp22741184",
+                "segmentId": "m68837:problem:fs-idp22741184"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp59653392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15388544",
+                "segmentId": "m68837:problem:fs-idp15388544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27606144",
+                "segmentId": "m68837:solution:fs-idm27606144"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68837:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68837:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68837:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm62001152",
+        "termSegmentId": "m68837:glossary-term:fs-idm62001152-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm62001152-def"
+      },
+      {
+        "id": "fs-idm5139056",
+        "termSegmentId": "m68837:glossary-term:fs-idm5139056-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm5139056-def"
+      },
+      {
+        "id": "fs-idm172459680",
+        "termSegmentId": "m68837:glossary-term:fs-idm172459680-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm172459680-def"
+      },
+      {
+        "id": "fs-idm9967920",
+        "termSegmentId": "m68837:glossary-term:fs-idm9967920-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm9967920-def"
+      },
+      {
+        "id": "fs-idm30899088",
+        "termSegmentId": "m68837:glossary-term:fs-idm30899088-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm30899088-def"
+      },
+      {
+        "id": "fs-idp53118608",
+        "termSegmentId": "m68837:glossary-term:fs-idp53118608-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp53118608-def"
+      },
+      {
+        "id": "fs-idm29287616",
+        "termSegmentId": "m68837:glossary-term:fs-idm29287616-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm29287616-def"
+      },
+      {
+        "id": "fs-idp211809712",
+        "termSegmentId": "m68837:glossary-term:fs-idp211809712-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp211809712-def"
+      },
+      {
+        "id": "fs-idp51209936",
+        "termSegmentId": "m68837:glossary-term:fs-idp51209936-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp51209936-def"
+      },
+      {
+        "id": "fs-idp16504016",
+        "termSegmentId": "m68837:glossary-term:fs-idp16504016-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp16504016-def"
+      },
+      {
+        "id": "fs-idp54272512",
+        "termSegmentId": "m68837:glossary-term:fs-idp54272512-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp54272512-def"
+      },
+      {
+        "id": "fs-idp28656816",
+        "termSegmentId": "m68837:glossary-term:fs-idp28656816-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp28656816-def"
+      },
+      {
+        "id": "fs-idm7360848",
+        "termSegmentId": "m68837:glossary-term:fs-idm7360848-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idm7360848-def"
+      },
+      {
+        "id": "fs-idp57744816",
+        "termSegmentId": "m68837:glossary-term:fs-idp57744816-term",
+        "definitionSegmentId": "m68837:glossary-def:fs-idp57744816-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

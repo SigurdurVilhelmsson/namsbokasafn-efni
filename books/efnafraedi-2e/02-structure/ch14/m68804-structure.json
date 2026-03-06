@@ -1,0 +1,946 @@
+{
+  "moduleId": "m68804",
+  "title": {
+    "segmentId": "m68804:title:auto-1",
+    "text": "pH and pOH"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9b866cac-4fb8-4db9-a92c-2cb4cabeefd0",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the characterization of aqueous solutions as acidic, basic, or neutral",
+        "Express hydronium and hydroxide ion concentrations on the pH and pOH scales",
+        "Perform calculations relating pH and pOH"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp11137424",
+      "segmentId": "m68804:para:fs-idp11137424"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm21650320",
+      "segmentId": "m68804:para:fs-idm21650320"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp27819744",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm40569744",
+      "segmentId": "m68804:para:fs-idm40569744"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm104306928",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm112635600",
+      "segmentId": "m68804:para:fs-idm112635600"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm34387328",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp55544688",
+      "segmentId": "m68804:para:fs-idp55544688"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp66748048",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp67153952",
+      "segmentId": "m68804:para:fs-idp67153952"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp102994080",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm97029664",
+      "segmentId": "m68804:para:fs-idm97029664"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp158230176",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp50288944",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm65790448",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp11266224",
+      "segmentId": "m68804:para:fs-idp11266224"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm26101984",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm103103632",
+      "segmentId": "m68804:para:fs-idm103103632"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp111835440",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm65159184",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp108462720",
+      "segmentId": "m68804:para:fs-idp108462720"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm84564368",
+      "segmentId": "m68804:para:fs-idm84564368"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm62771680",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm102114704",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm67617872",
+      "segmentId": "m68804:para:fs-idm67617872"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp56820128",
+      "class": "top-titled",
+      "summary": "This table has three columns and four rows. The first row is a header row, and it labels each column: “Classification,” “Relative ion concentrations,” and “p H at 25 degrees C.” Under the “Classification” column are the following: “acidic,” “neutral,” and “basic.” Under the “Relative ion concentrations” column are the following, “[ H subscript 2 O superscript plus sign ] is greater than [ O H superscript negative sign],” “[ H subscript 2 O superscript plus sign ] equals [ O H superscript negative sign ],” and, “[ H subscript 2 O superscript plus sign ] is less than [ O H superscript negative sing ].” Under the “p H at 25 degrees C” column are the following: “p H is less than 7,” “p H equals 7,” and “p H is greater than 7.”",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68804:entry:auto-18",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c3",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68804:entry:auto-19",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-20",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-21",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68804:entry:auto-22",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-23",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-24",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68804:entry:auto-25",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-26",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-27",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68804:entry:auto-28",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-29",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68804:entry:auto-30",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp96882128",
+      "segmentId": "m68804:para:fs-idp96882128"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_14_02_phscale",
+      "caption": {
+        "segmentId": "m68804:caption:CNX_Chem_14_02_phscale-caption"
+      },
+      "media": {
+        "id": "fs-idm15160336",
+        "alt": "A table is provided with 5 columns. The first column is labeled “left bracket H subscript 3 O superscript plus right bracket (M).” Powers of ten are listed in the column beginning at 10 superscript 1, including 10 superscript 0 or 1, 10 superscript negative 1, decreasing by single powers of 10 to 10 superscript negative 15. The second column is labeled “left bracket O H superscript negative right bracket (M).” Powers of ten are listed in the column beginning at 10 superscript negative 15, increasing by single powers of 10 to including 10 superscript 0 or 1, and 10 superscript 1. The third column is labeled “p H.” Values listed in this column are integers beginning at negative 1, increasing by ones up to 14. The fourth column is labeled “p O H.” Values in this column are integers beginning at 15, decreasing by ones up to negative 1. The fifth column is labeled “Sample Solution.” A vertical line at the left of the column has tick marks corresponding to each p H level in the table. Substances are listed next to this line segment with line segments connecting them to the line to show approximate p H and p O H values. 1 M H C l is listed at a p H of 0. Gastric juices are listed at a p H of about 1.5. Lime juice is listed at a p H of about 2, followed by 1 M C H subscript 3 C O subscript 2 H, followed by stomach acid at a p H value of nearly 3. Wine is listed around 3.5. Coffee is listed just past 5. Pure water is listed at a p H of 7. Pure blood is just beyond 7. Milk of Magnesia is listed just past a p H of 10.5. Household ammonia is listed just before a pH of 12. 1 M N a O H is listed at a p H of 0. To the right of this labeled arrow is an arrow that points up and down through the height of the column. A beige strip passes through the table and to this double headed arrow at p H 7. To the left of the double headed arrow in this beige strip is the label “neutral.” A narrow beige strip runs through the arrow. Just above and below this region, the arrow is purple. It gradually turns to a bright red as it extends upward. At the top of the arrow, near the head of the arrow is the label “acidic.” Similarly, the lower region changes color from purple to blue moving to the bottom of the column. The head at this end of the arrow is labeled “basic.”",
+        "src": "../../media/CNX_Chem_14_02_phscale.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idp62701056",
+      "title": {
+        "segmentId": "m68804:example-title:fs-idp62701056-title",
+        "text": "Solution"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp97421056",
+          "segmentId": "m68804:para:fs-idp97421056"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm103954896",
+          "segmentId": "m68804:para:fs-idm103954896"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp57469360",
+          "segmentId": "m68804:para:fs-idp57469360",
+          "title": {
+            "segmentId": "m68804:para-title:fs-idp57469360-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm106049328",
+          "segmentId": "m68804:para:fs-idm106049328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm99369680",
+          "segmentId": "m68804:para:fs-idm99369680"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm98702480"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm79624528"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm7356256"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm45568144"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm61631152",
+          "title": {
+            "segmentId": "m68804:note-title:fs-idm61631152-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm99369680",
+              "segmentId": "m68804:para:fs-idm99369680"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idp57695872",
+      "title": {
+        "segmentId": "m68804:example-title:fs-idp57695872-title",
+        "text": "Calculation of Hydronium Ion Concentration from pH"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm102910496",
+          "segmentId": "m68804:para:fs-idm102910496"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp11945040",
+          "segmentId": "m68804:para:fs-idp11945040",
+          "title": {
+            "segmentId": "m68804:para-title:fs-idp11945040-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp487584",
+          "segmentId": "m68804:para:fs-idp487584",
+          "title": {
+            "segmentId": "m68804:para-title:fs-idp487584-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm9452560",
+          "segmentId": "m68804:para:fs-idm9452560"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm108531776"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm49363536"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp46442128"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm58086272"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp89672320",
+          "title": {
+            "segmentId": "m68804:note-title:fs-idp89672320-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm9452560",
+              "segmentId": "m68804:para:fs-idm9452560"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idp48828576",
+      "class": "chemistry sciences-interconnect",
+      "title": {
+        "segmentId": "m68804:note-title:fs-idp48828576-title",
+        "text": "Environmental Science"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm116727232",
+          "segmentId": "m68804:para:fs-idm116727232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13883280",
+          "segmentId": "m68804:para:fs-idp13883280"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp93018416",
+          "segmentId": "m68804:para:fs-idp93018416"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm22038432",
+          "segmentId": "m68804:para:fs-idm22038432"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm22123696",
+          "segmentId": "m68804:para:fs-idm22123696"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_14_02_AcidRain",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68804:caption:CNX_Chem_14_02_AcidRain-caption"
+      },
+      "media": {
+        "id": "fs-idp11790976",
+        "alt": "Two photos are shown. Photograph a on the left shows the upper portion of trees against a bright blue sky. The tops of several trees at the center of the photograph have bare branches and appear to be dead. Image b shows a statue of a man that appears to from the revolutionary war era in either marble or limestone.",
+        "src": "../../media/CNX_Chem_14_02_AcidRain.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idm90070400",
+      "title": {
+        "segmentId": "m68804:example-title:fs-idm90070400-title",
+        "text": "Calculation of pOH"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp57499040",
+          "segmentId": "m68804:para:fs-idp57499040"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm55606544",
+          "segmentId": "m68804:para:fs-idm55606544",
+          "title": {
+            "segmentId": "m68804:para-title:fs-idm55606544-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm11584304",
+          "segmentId": "m68804:para:fs-idm11584304"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm147912592",
+          "segmentId": "m68804:para:fs-idm147912592",
+          "title": {
+            "segmentId": "m68804:para-title:fs-idm147912592-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm165995920",
+          "segmentId": "m68804:para:fs-idm165995920"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp97197664"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp138082848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm77730624"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm71245120"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm58824960",
+          "title": {
+            "segmentId": "m68804:note-title:fs-idm58824960-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm165995920",
+              "segmentId": "m68804:para:fs-idm165995920"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm165634608",
+      "segmentId": "m68804:para:fs-idm165634608"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_14_02_pHMeter",
+      "caption": {
+        "segmentId": "m68804:caption:CNX_Chem_14_02_pHMeter-caption"
+      },
+      "media": {
+        "id": "fs-idp134372032",
+        "alt": "This figure contains two images. The first, image a, is of an analytical digital p H meter on a laboratory counter. The second, image b, is of a portable hand held digital p H meter.",
+        "src": "../../media/CNX_Chem_14_02_pHMeter.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp57700960",
+      "segmentId": "m68804:para:fs-idp57700960"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_14_02_indicator",
+      "caption": {
+        "segmentId": "m68804:caption:CNX_Chem_14_02_indicator-caption"
+      },
+      "media": {
+        "id": "fs-idp11928656",
+        "alt": "This figure contains two images. The first shows a variety of colors of solutions in labeled beakers. A red solution in a beaker is labeled “0.10 M H C l.” An orange solution is labeled “0.10 M C H subscript 3 C O O H.” A yellow-orange solution is labeled “0.1 M N H subscript 4 C l.” A yellow solution is labeled “deionized water.” A second solution beaker is labeled “0.10 M K C l.” A green solution is labeled “0.10 M aniline.” A blue solution is labeled “0.10 M N H subscript 4 C l (a q).” A final beaker containing a dark blue solution is labeled “0.10 M N a O H.” Image b shows pHydrion paper that is used for measuring pH in the range of p H from 1 to 12. The color scale for identifying p H based on color is shown along with several of the test strips used to evaluate p H.",
+        "src": "../../media/CNX_Chem_14_02_indicator.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm51820592",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68804:title:fs-idm51820592-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp58752272",
+          "segmentId": "m68804:para:fs-idp58752272"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp66998992",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68804:title:fs-idp66998992-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68804:entry:auto-75",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68804:entry:auto-76",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68804:entry:auto-77",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68804:entry:auto-78",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68804:entry:auto-79",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm61137872",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68804:title:fs-idm61137872-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp63054032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm105009936",
+                "segmentId": "m68804:problem:fs-idm105009936"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm57658080",
+                "segmentId": "m68804:solution:fs-idm57658080"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm59232064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm103446336",
+                "segmentId": "m68804:problem:fs-idm103446336"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp62460480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm58452160",
+                "segmentId": "m68804:problem:fs-idm58452160"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm6526512",
+                "segmentId": "m68804:solution:fs-idm6526512"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp100037936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm193547792",
+                "segmentId": "m68804:problem:fs-idm193547792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm62343936",
+                "segmentId": "m68804:problem:fs-idm62343936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm110199712",
+                "segmentId": "m68804:problem:fs-idm110199712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm139511424",
+                "segmentId": "m68804:problem:fs-idm139511424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm85222640",
+                "segmentId": "m68804:problem:fs-idm85222640"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm78388032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm103266944",
+                "segmentId": "m68804:problem:fs-idm103266944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm85929872",
+                "segmentId": "m68804:problem:fs-idm85929872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm105046336",
+                "segmentId": "m68804:problem:fs-idm105046336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm71623520",
+                "segmentId": "m68804:problem:fs-idm71623520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm90266032",
+                "segmentId": "m68804:problem:fs-idm90266032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp96688048",
+                "segmentId": "m68804:solution:fs-idp96688048"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm113520992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57446720",
+                "segmentId": "m68804:problem:fs-idp57446720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp61935360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm68044912",
+                "segmentId": "m68804:problem:fs-idm68044912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm86400944",
+                "segmentId": "m68804:solution:fs-idm86400944"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm93267520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp137408320",
+                "segmentId": "m68804:problem:fs-idp137408320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp268784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm117014192",
+                "segmentId": "m68804:problem:fs-idm117014192"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp135394192",
+                "segmentId": "m68804:solution:fs-idp135394192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm60999568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10174528",
+                "segmentId": "m68804:problem:fs-idp10174528"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm209904880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm121774336",
+                "segmentId": "m68804:problem:fs-idm121774336"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm81860944",
+                "segmentId": "m68804:solution:fs-idm81860944"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68804:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68804:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68804:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68804:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm64563696",
+        "termSegmentId": "m68804:glossary-term:fs-idm64563696-term",
+        "definitionSegmentId": "m68804:glossary-def:fs-idm64563696-def"
+      },
+      {
+        "id": "fs-idm111671584",
+        "termSegmentId": "m68804:glossary-term:fs-idm111671584-term",
+        "definitionSegmentId": "m68804:glossary-def:fs-idm111671584-def"
+      },
+      {
+        "id": "fs-idp143891408",
+        "termSegmentId": "m68804:glossary-term:fs-idp143891408-term",
+        "definitionSegmentId": "m68804:glossary-def:fs-idp143891408-def"
+      },
+      {
+        "id": "fs-idm103907536",
+        "termSegmentId": "m68804:glossary-term:fs-idm103907536-term",
+        "definitionSegmentId": "m68804:glossary-def:fs-idm103907536-def"
+      },
+      {
+        "id": "fs-idp46966768",
+        "termSegmentId": "m68804:glossary-term:fs-idp46966768-term",
+        "definitionSegmentId": "m68804:glossary-def:fs-idp46966768-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

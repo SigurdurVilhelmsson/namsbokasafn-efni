@@ -1,0 +1,1209 @@
+{
+  "moduleId": "m68735",
+  "title": {
+    "segmentId": "m68735:title:auto-1",
+    "text": "Periodic Variations in Element Properties"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c9c8f370-dce6-4fb9-ae62-f36f87a900f0",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe and explain the observed trends in atomic size, ionization energy, and electron affinity of the elements"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm133801872",
+      "segmentId": "m68735:para:fs-idm133801872"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm139046976",
+      "segmentId": "m68735:para:fs-idm139046976"
+    },
+    {
+      "type": "note",
+      "id": "fs-idm65430592",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp8713040",
+          "segmentId": "m68735:para:fs-idp8713040"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm46575248",
+      "class": null,
+      "title": {
+        "segmentId": "m68735:title:fs-idm46575248-title",
+        "text": "Variation in Covalent Radius"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm81399712",
+          "segmentId": "m68735:para:fs-idm81399712"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp28766560",
+          "class": "top-titled",
+          "summary": "This table has three columns and six rows. The first row is a header row, and it labels each column: “Atom,” “Covalent Radius, picometers,” and “Nuclear Charge.” Under the “Atom” column are the following: F, C l, B r, I, and A t. Under the “Covalent Radius, picometers” column are the following: 64, 99, 114, 133, and 148. Under the “Nuclear Charge” column are the following: positive 9, positive 17, positive 35, positive 53, and positive 85.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-9",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-10",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-11",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-12",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-13",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-14",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-15",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-16",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-17",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-18",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-19",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-20",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-21",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-22",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-23",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-24",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-25",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-26",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-27",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_05_CovalradiT",
+          "caption": {
+            "segmentId": "m68735:caption:CNX_Chem_06_05_CovalradiT-caption"
+          },
+          "media": {
+            "id": "fs-idm144132800",
+            "alt": "This figure has two parts: a and b. In figure a, four diatomic molecules are shown to illustrate the method of determining the atomic radius of an atom. The first model, in light green, is used to find the F atom radius. Two spheres are pushed very tightly together. The distance between the centers of the two atoms is indicated above the diagram with a double-headed arrow labeled “128 picometers (pm).” The end points of this arrow connect to line segments that extend to the atomic radii below. Beneath the molecule is the label, “F radius equals 128 pm divided by 2 equals 64 pm.” The next three models are similarly used to show the atomic radii of additional atoms. The second diatomic molecule is in a darker shade of green. The distance between the radii is 198 pm. Beneath the molecule is the label, “Cl radius equals 198 pm divided by 2 equals 99 pm.” The third diatomic molecule is in red. The distance between the radii is 228 pm. Beneath the molecule is the label, “Br radius equals 228 pm divided by 2 equals 114 pm.” The fourth diatomic molecule is in purple. The distance between the radii is 266 pm. Beneath the molecule is the label, “I radius equals 266 pm divided by 2 equals 133 pm.” In figure b, a periodic table layout is used to compare relative sizes of atoms, using green spheres. No spheres are provided for the noble or inert gas—group 18 elements. General trends noted are increasing circle size moving from top to bottom in a group, with a general tendency toward increasing atomic radii toward the lower left corner of the periodic table.",
+            "src": "../../media/CNX_Chem_06_05_CovalradiT.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_05_Radiigraph",
+          "caption": {
+            "segmentId": "m68735:caption:CNX_Chem_06_05_Radiigraph-caption"
+          },
+          "media": {
+            "id": "fs-idm164235920",
+            "alt": "This graph entitled, “Atomic Radii,” is labeled, “Atomic Number,” on the horizontal axis and, “Radius (p m),” on the vertical axis. Markings are provided every 10 units up to 60 on the horizontal axis beginning at zero. Vertical lines extend from the horizontal axis upward at each of these markings. The vertical axis begins at 0 and increases by 50’s up to 300. Horizontal lines are drawn across the graph at multiples of 50. A black jagged line connects the radii values for elements with atomic numbers 1 through 60 on the graph. Peaks are evident at the locations of the alkali metals: L i, N a, K, R b, and C s, at which points on the graph purple dots are placed and elements are labeled in purple. Similarly, minima exist at the locations of noble or inert gases: H e, N e, A r, K r, X e, and R n, at which points blue dots are placed and element symbols are provided in blue. The locations of period 4 and period 5 transition elements are provided with green dots. These points are clustered together in two locations on the graph which are circled in red and labeled accordingly. The green dots for the transition elements along with the line that connects them form a U shape on the graph within each of the red circles drawn. The atomic radii for the alkali metals in picometers are: L i 167, N a 190, K 243, R b 265, and C s 298. The atomic radii of the noble or inert gases included in the graph in picometers are: H e 31, N e 38, A r 71, K r 88, and X e 108.",
+            "src": "../../media/CNX_Chem_06_05_Radiigraph.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm121307184",
+          "segmentId": "m68735:para:fs-idm121307184"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm124657104",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm139062592",
+          "segmentId": "m68735:para:fs-idm139062592"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm117962416",
+          "segmentId": "m68735:para:fs-idm117962416"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm167417008",
+          "title": {
+            "segmentId": "m68735:example-title:fs-idm167417008-title",
+            "text": "Sorting Atomic Radii"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp96283344",
+              "segmentId": "m68735:para:fs-idp96283344"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm170368896",
+              "segmentId": "m68735:para:fs-idm170368896",
+              "title": {
+                "segmentId": "m68735:para-title:fs-idm170368896-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm138739760",
+              "segmentId": "m68735:para:fs-idm138739760",
+              "title": {
+                "segmentId": "m68735:para-title:fs-idm138739760-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm176919040",
+              "segmentId": "m68735:para:fs-idm176919040"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm123362928",
+              "title": {
+                "segmentId": "m68735:note-title:fs-idm123362928-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm176919040",
+                  "segmentId": "m68735:para:fs-idm176919040"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm56440528",
+      "class": null,
+      "title": {
+        "segmentId": "m68735:title:fs-idm56440528-title",
+        "text": "Variation in Ionic Radii"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm83408752",
+          "segmentId": "m68735:para:fs-idm83408752"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_05_Ionradii",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68735:caption:CNX_Chem_06_05_Ionradii-caption"
+          },
+          "media": {
+            "id": "fs-idm119556048",
+            "alt": "The figure includes spheres in green to represent the relative sizes of A l and S atoms. The relatively large A l sphere in the upper left is labeled 118. The significantly smaller S sphere in the upper right is labeled 104. Beneath each of these spheres is a red sphere. The red sphere in the lower left is very small in comparison to the other spheres and is labeled, “A l superscript 3 plus 68.” The red sphere in the lower right is significantly larger than the other spheres and is labeled, “S superscript 2 negative 170. “",
+            "src": "../../media/CNX_Chem_06_05_Ionradii.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm65452096",
+          "segmentId": "m68735:para:fs-idm65452096"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm145149808",
+          "segmentId": "m68735:para:fs-idm145149808"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm1670816",
+          "segmentId": "m68735:para:fs-idm1670816"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm122150768",
+      "class": null,
+      "title": {
+        "segmentId": "m68735:title:fs-idm122150768-title",
+        "text": "Variation in Ionization Energies"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm65502944",
+          "segmentId": "m68735:para:fs-idm65502944"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm119836992",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm139914704",
+          "segmentId": "m68735:para:fs-idm139914704"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp4728832",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp85408992",
+          "segmentId": "m68735:para:fs-idp85408992"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm79820288",
+          "segmentId": "m68735:para:fs-idm79820288"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_05_Firstiongr",
+          "caption": {
+            "segmentId": "m68735:caption:CNX_Chem_06_05_Firstiongr-caption"
+          },
+          "media": {
+            "id": "fs-idm130209312",
+            "alt": "This figure includes a graph labeled, “Atomic Number,” on the horizontal axis and, “Ionization Energy (k J divided by mol),” on the vertical axis. Markings are provided on the horizontal axis at 10, 18, 36, 54, and 86. Vertical lines extend from the horizontal axis upward at each of these values. The vertical axis begins at 0 and increases by 500’s up to 2500. Horizontal lines are drawn across the graph at multiples of 500. A red jagged line connects the ionization energies for elements with atomic numbers 1 through 86 on the graph. Peaks are evident at the locations of the noble or inert gases: H e, N e, A r, K r, X e, and R n. Similarly, minima exist at the locations of the alkali metals: L i, N a, K, R b, and C s. Elements labeled on the graph and their associated ionization energies are as follows: H 1310, H e 2370, L i 520, B e 900, B 800, C 1090, N 1400, O 1310, F 1680, N e 2080, N a 490, M g 730, P 1060, A r 1520, K 420, Z n 910, A s 960, B r 1140, K r 1350, R b 400, C d 870, X e 1170, T l 590, and R n 1030.",
+            "src": "../../media/CNX_Chem_06_05_Firstiongr.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_05_Firstionen",
+          "caption": {
+            "segmentId": "m68735:caption:CNX_Chem_06_05_Firstionen-caption"
+          },
+          "media": {
+            "id": "fs-idp85824640",
+            "alt": "The figure includes a periodic table with the title, “First Ionization Energies of Some Elements (k J per mol).” The table identifies the row or period number at the left in purple, and group or column numbers in blue above each column. First ionization energies listed top to bottom for group 1 are: H 1310, L i 520, N a 490, K 420, R b 400, C s 380, and three dots are placed in the box for F r. In group 2 the values are: B e 900, M g 730, C a 590, S r 550, and B a 500. In group 3 the values are: S c 630, Y 620, and L a 540. In group 4, the values are: T i 660, Z r 660, H f 700. In group 5, the values are: V 650, N b 670, and T a 760. In group 6, the values are: C r 660, M o 680, and W 770. In group 7, the values are: M n 710, T c 700, and R e 760. In group 8, the values are: F e 760, R u 720, and O s 840. In group 9, the values are: C o 760, R h 720, and I r 890. In group 10, the values are: N i 730, P d 800, and P t 870. In group 11, the values are: C u 740, A g 730, and A u 890. In group 12, the values are: Z n 910, C d 870, and H g 1000. In group 13, the values are: B 800, A l 580, G a 580, I n 560, and T l 590. In group 14, the values are: C 1090, S i 780, G e 780, S n 700, and P b 710. In group 15, the values are: N 1400, P 1060, A s 960, S b 830, and B i 800. In group 16, the values are: O 1310, S 1000, S e 950, T e 870, and P o 810. In group 17, the values are: F 1680, C l 1250, B r 1140, I 1010, and A t has three dots. In group 18, the values listed are: B e 2370, N e 2080, A r 1520, K r 1350, X e 1170, and R n 1030.",
+            "src": "../../media/CNX_Chem_06_05_Firstionen.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm146806928",
+          "segmentId": "m68735:para:fs-idm146806928"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_05_Oxygen122_img",
+          "class": "scaled-down",
+          "alt": "This figure includes the element symbol O followed by the electron configuration 1 s superscript 2 2 s superscript 2 2 p superscript 4. An orbital diagram follows, which consists of two individual squares, labeled as, “1 s,” and, “2 s,” below followed by a grouping of three connected squares which are labeled, “2 p.” All boxes are oriented in a row. The two individual squares and the first square in the row of connected squares contain a pair of half arrows. One half arrow in each pair points up, and one points down. The downward pointing arrow in the first square in the row of connected squares is red. The remaining two squares each contain single upward pointing half arrows.",
+          "src": "../../media/CNX_Chem_06_05_Oxygen122_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10621984",
+          "segmentId": "m68735:para:fs-idm10621984"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp3693744",
+          "class": "top-titled",
+          "summary": "This table has eight columns and seven rows. The first row is a header row, and it labels each column: “Element,” “I E subscript 1,” “I E subscript 2,” “I E subscript 3,” “I E subscript 4,” “I E subscript 5,” “I E subscript 6,” and “I E subscript 7.” Under the “Element” column are: K, C a, S c, G a, G e, and A s. Under the “I E subscript 1” column are the values: 418.8, 589.8, 633.1, 578.8, 762.2, and 944.5. Under the “I E subscript 2” column are the following values: 3051.8, 1145.4, 1235.0, 1979.4, 1537.5, and 1793.6. The value 3051.8 appears in red. Under the column “I E subscript 3” column are the values: 4419.6, 4912.4, 2388.7, 2964.6, 3302.1, and 2735.5. Under the “I E subscript 4” column are the values: 5876.9, 6490.6, 7090.6, 6180, 4410.6, and 4836.8. Under the “I E subscript 5” column are the values: 7975.5, 8153.0, 8842.9, 8298.7, 9021.4, and 6042.9. Under the “I E subscript 6” column are the values: 9590.6, 10495.7, 10679.0, 10873.9, not available, and 12311.5. Under the “I E subscript 7” column are the values: 11343, 12272.9, 13315.0, 13594.8, not available, and not available.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-57",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c8",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-58",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-59",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-60",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-61",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-62",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-63",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-64",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-65",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-66",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-67",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-68",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-69",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-70",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-71",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-72",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-73",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-74",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-75",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-76",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-77",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-78",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-79",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-80",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-81",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-82",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-83",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-84",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-85",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-86",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-87",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-88",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-89",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-90",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-91",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-92",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-93",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-94",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-95",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-96",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-97",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-98",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-99",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-100",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-101",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-102",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-103",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-104",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-105",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68735:entry:auto-106",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-107",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-108",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-109",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-110",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-111",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-112",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m68735:entry:auto-113",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm65177120",
+          "title": {
+            "segmentId": "m68735:example-title:fs-idm65177120-title",
+            "text": "Ranking Ionization Energies"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm98864816",
+              "segmentId": "m68735:para:fs-idm98864816"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp9426864",
+              "segmentId": "m68735:para:fs-idp9426864",
+              "title": {
+                "segmentId": "m68735:para-title:fs-idp9426864-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm57911728",
+              "segmentId": "m68735:para:fs-idm57911728",
+              "title": {
+                "segmentId": "m68735:para-title:fs-idm57911728-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm69877488",
+              "segmentId": "m68735:para:fs-idm69877488"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm148104624",
+              "title": {
+                "segmentId": "m68735:note-title:fs-idm148104624-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm69877488",
+                  "segmentId": "m68735:para:fs-idm69877488"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm632640",
+      "class": null,
+      "title": {
+        "segmentId": "m68735:title:fs-idm632640-title",
+        "text": "Variation in Electron Affinities"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm62970128",
+          "segmentId": "m68735:para:fs-idm62970128"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm30321680",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm33809440",
+          "segmentId": "m68735:para:fs-idm33809440"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8026512",
+          "segmentId": "m68735:para:fs-idp8026512"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp68162064",
+          "segmentId": "m68735:para:fs-idp68162064"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_05_Elaffin",
+          "caption": {
+            "segmentId": "m68735:caption:CNX_Chem_06_05_Elaffin-caption"
+          },
+          "media": {
+            "id": "fs-idm80294800",
+            "alt": "The figure includes a periodic table with the title, “Electron Affinity Values for Selected Elements (k J per mol).” The table identifies the row or period number at the left in purple, and group or column numbers in blue above each column. Electron affinity values for representative elements are indicated with values marked with asterisks identifying calculated values. The electron affinity values for group 1 (column 1) elements are provided with the element symbols in the table as follows: H negative 72, L i negative 60, N a negative 53, K negative 48, R b negative 46, and C s negative 45. In group 2, the values are: B e positive 240 asterisk, M g positive 230 asterisk, C a positive 150 asterisk, S r positive 160 asterisk, and B a positive 50 asterisk. In group 13, the values are: B negative 23, A l negative 44, G a negative 40 asterisk, I n negative 40 asterisk, and T l negative 50. In group 14, the values are: C negative 123, S i negative 120, G e negative 115, S n negative 121, and P b negative 101. In group 15 the values are: N 0, P negative 74, A s negative 7, S b negative 101, and B i negative 101. In group 16, the values are: O negative 141, S negative 20, S e negative 195, T e negative 190, and P o negative 170. In group 17, the values are: F negative 322, C l negative 348, B r negative 324, I negative 295, and A t negative 270 asterisk. In group 18, the values are: H e positive 20 asterisk, N e negative 30, A r positive 35 asterisk, K r positive 40 asterisk, X e positive 40 asterisk, and R n positive 40 asterisk.",
+            "src": "../../media/CNX_Chem_06_05_Elaffin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm144469568",
+          "segmentId": "m68735:para:fs-idm144469568"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp4924224",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68735:title:fs-idp4924224-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm92804752",
+          "segmentId": "m68735:para:fs-idm92804752"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm85407248",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68735:title:fs-idm85407248-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp42367872",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp87713840",
+                "segmentId": "m68735:problem:fs-idp87713840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm46047824",
+                "segmentId": "m68735:solution:fs-idm46047824"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp30124176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm155052000",
+                "segmentId": "m68735:problem:fs-idm155052000"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm155159840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm13478336",
+                "segmentId": "m68735:problem:fs-idm13478336"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm137764592",
+                "segmentId": "m68735:solution:fs-idm137764592"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm54929680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm340912",
+                "segmentId": "m68735:problem:fs-idm340912"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm155125392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm156789200",
+                "segmentId": "m68735:problem:fs-idm156789200"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm151309888",
+                "segmentId": "m68735:solution:fs-idm151309888"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm147454816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10255376",
+                "segmentId": "m68735:problem:fs-idm10255376"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm150214960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm132427728",
+                "segmentId": "m68735:problem:fs-idm132427728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11200592",
+                "segmentId": "m68735:solution:fs-idm11200592"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm121823200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm119024400",
+                "segmentId": "m68735:problem:fs-idm119024400"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm74793552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm190433936",
+                "segmentId": "m68735:problem:fs-idm190433936"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm144863024",
+                "segmentId": "m68735:solution:fs-idm144863024"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm116086704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp107277632",
+                "segmentId": "m68735:problem:fs-idp107277632"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm107831680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm108600608",
+                "segmentId": "m68735:problem:fs-idm108600608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm166668720",
+                "segmentId": "m68735:solution:fs-idm166668720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm44955136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm131827120",
+                "segmentId": "m68735:problem:fs-idm131827120"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm119922592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp2854256",
+                "segmentId": "m68735:problem:fs-idp2854256"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56398192",
+                "segmentId": "m68735:solution:fs-idm56398192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm176990768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp44391696",
+                "segmentId": "m68735:problem:fs-idp44391696"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm64525920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm46185392",
+                "segmentId": "m68735:problem:fs-idm46185392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp96768",
+                "segmentId": "m68735:solution:fs-idp96768"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2181648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp121484432",
+                "segmentId": "m68735:problem:fs-idp121484432"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm68979552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm164099648",
+                "segmentId": "m68735:problem:fs-idm164099648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm70370352",
+                "segmentId": "m68735:solution:fs-idm70370352"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm108984736",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp100098560",
+                "segmentId": "m68735:problem:fs-idp100098560"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm177180640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm155036256",
+                "segmentId": "m68735:problem:fs-idm155036256"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm146296448",
+                "segmentId": "m68735:solution:fs-idm146296448"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp177066416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm69403904",
+                "segmentId": "m68735:problem:fs-idm69403904"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68735:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68735:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm57959600",
+        "termSegmentId": "m68735:glossary-term:fs-idm57959600-term",
+        "definitionSegmentId": "m68735:glossary-def:fs-idm57959600-def"
+      },
+      {
+        "id": "fs-idm98337504",
+        "termSegmentId": "m68735:glossary-term:fs-idm98337504-term",
+        "definitionSegmentId": "m68735:glossary-def:fs-idm98337504-def"
+      },
+      {
+        "id": "fs-idm161962320",
+        "termSegmentId": "m68735:glossary-term:fs-idm161962320-term",
+        "definitionSegmentId": "m68735:glossary-def:fs-idm161962320-def"
+      },
+      {
+        "id": "fs-idm107820416",
+        "termSegmentId": "m68735:glossary-term:fs-idm107820416-term",
+        "definitionSegmentId": "m68735:glossary-def:fs-idm107820416-def"
+      },
+      {
+        "id": "fs-idp94243488",
+        "termSegmentId": "m68735:glossary-term:fs-idp94243488-term",
+        "definitionSegmentId": "m68735:glossary-def:fs-idp94243488-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

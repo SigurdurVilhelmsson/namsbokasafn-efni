@@ -1,0 +1,38 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>H−C≡C−H</m:mtext><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{H−C≡C−H},}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}≡\\text{C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}≡\\text{C}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mn>2−</m:mn></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{CO}}_{3}^{2−},}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}=\\text{C}={{\\text{CH}}}_{2},}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>ClOF</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{ClOF}}_{2}^{\\text{+}}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mtext>PO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mn>3−</m:mn></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{({\\text{PO}}_{4}^{3−})}"
+  }
+}

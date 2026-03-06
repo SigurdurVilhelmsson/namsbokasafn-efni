@@ -1,0 +1,1884 @@
+{
+  "moduleId": "m68733",
+  "title": {
+    "segmentId": "m68733:title:auto-1",
+    "text": "Development of Quantum Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "11dd0544-b543-4912-aeac-4879dd964ec0",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Extend the concept of wave–particle duality that was observed in electromagnetic radiation to matter as well",
+        "Understand the general idea of the quantum mechanical description of electrons in an atom, and that it uses the notion of three-dimensional wave functions, or orbitals, that define the distribution of probability to find an electron in a particular part of space",
+        "List and describe traits of the four quantum numbers that form the basis for completely specifying the state of an electron in an atom"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm176608480",
+      "segmentId": "m68733:para:fs-idm176608480"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm145314080",
+      "class": null,
+      "title": {
+        "segmentId": "m68733:title:fs-idm145314080-title",
+        "text": "Behavior in the Microscopic World"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm12558432",
+          "segmentId": "m68733:para:fs-idm12558432"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm159209888",
+          "segmentId": "m68733:para:fs-idm159209888"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_waterw",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_waterw-caption"
+          },
+          "media": {
+            "id": "fs-idm91841872",
+            "alt": "A photograph is shown of ripples in water. The ripples display an interference pattern with each other.",
+            "src": "../../media/CNX_Chem_06_03_waterw.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm161134656",
+          "segmentId": "m68733:para:fs-idm161134656"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm151523216",
+          "segmentId": "m68733:para:fs-idm151523216"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp110855072",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm234395904",
+          "segmentId": "m68733:para:fs-idm234395904"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_elecw",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_elecw-caption"
+          },
+          "media": {
+            "id": "fs-idm68754864",
+            "alt": "This figure includes a circle formed from a dashed line. A sinusoidal wave pattern indicated with a solid red line is wrapped around the circle, centered about the edge of the circle. Line segments extend outward from the circle extending through 2 wave crests along the circle. A double ended arrow is drawn between these segments and is labeled, “wavelength, lambda.” A dashed double headed arrow is drawn from the center to the edge of the circle and is labeled, “radius r.”",
+            "src": "../../media/CNX_Chem_06_03_elecw.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp34135808",
+          "segmentId": "m68733:para:fs-idp34135808"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm78157712",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm114335872",
+          "segmentId": "m68733:para:fs-idm114335872"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_Electrnin",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_Electrnin-caption"
+          },
+          "media": {
+            "id": "fs-idm29319408",
+            "alt": "This figure has two parts. Part a shows a diagram of an electron source emitting waves that pass through two narrow slits in a barrier. A wave interference pattern results on the opposite side of the barrier that result in evenly spaced, relatively wide horizontal grey lines on a black surface. The black surface is placed at a distance beyond the barrier. Part b shows an electron source at the far left. Two gold arrows point toward two narrow horizontal slits in a barrier. Around these arrows are many small golden dots. On the right side of the barrier, the gold dots are more widely dispersed. A black surface a distance beyond the barrier shows evenly, yet widely dispersed gold dots. An arrow is present below this black surface and is labeled, “Time.” A second black surface is shown to the right that has many more golden dots that appear to be organizing into a pattern of evenly spaced horizontal line segments. A third black surface is shown even further to the right in which many more gold dots are shown in a very clearly established, evenly spaced pattern of horizontal line segments.",
+            "src": "../../media/CNX_Chem_06_03_Electrnin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm22236656",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp43121536",
+              "segmentId": "m68733:para:fs-idp43121536"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm90452432",
+          "title": {
+            "segmentId": "m68733:example-title:fs-idm90452432-title",
+            "text": "Calculating the Wavelength of a Particle"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm9842576",
+              "segmentId": "m68733:para:fs-idm9842576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm75342400",
+              "segmentId": "m68733:para:fs-idm75342400",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm75342400-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm20925440",
+              "segmentId": "m68733:para:fs-idm20925440"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm66230464",
+              "segmentId": "m68733:para:fs-idm66230464",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm66230464-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp68691712",
+              "segmentId": "m68733:para:fs-idp68691712"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm108992816",
+              "segmentId": "m68733:para:fs-idm108992816"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm6762624"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm25057728"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp27867504",
+              "title": {
+                "segmentId": "m68733:note-title:fs-idp27867504-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp68691712",
+                  "segmentId": "m68733:para:fs-idp68691712"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm108992816",
+                  "segmentId": "m68733:para:fs-idm108992816"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp75634352",
+          "segmentId": "m68733:para:fs-idp75634352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm168356880",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm168918512",
+          "segmentId": "m68733:para:fs-idm168918512"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm14343584",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp15835984",
+          "segmentId": "m68733:para:fs-idp15835984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm139875104",
+          "segmentId": "m68733:para:fs-idm139875104"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp75105920",
+          "segmentId": "m68733:para:fs-idp75105920"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp86836032",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm179040464",
+              "segmentId": "m68733:para:fs-idm179040464"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm2526400",
+      "class": null,
+      "title": {
+        "segmentId": "m68733:title:fs-idm2526400-title",
+        "text": "The Quantum–Mechanical Model of an Atom"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm146032560",
+          "segmentId": "m68733:para:fs-idm146032560"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm195751440",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm1012848",
+          "segmentId": "m68733:para:fs-idm1012848"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm134389936",
+          "segmentId": "m68733:para:fs-idm134389936"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm148452752",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp90020512",
+              "segmentId": "m68733:para:fs-idp90020512"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp27284864",
+      "class": null,
+      "title": {
+        "segmentId": "m68733:title:fs-idp27284864-title",
+        "text": "Understanding Quantum Theory of Electrons in Atoms"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm167395376",
+          "segmentId": "m68733:para:fs-idm167395376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm119067296",
+          "segmentId": "m68733:para:fs-idm119067296"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm171695728",
+          "segmentId": "m68733:para:fs-idm171695728"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_Qnumbers",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_Qnumbers-caption"
+          },
+          "media": {
+            "id": "fs-idp33771488",
+            "alt": "This figure contains a central green sphere labeled “nucleus.” There is a plus sign in the middle of the sphere. This sphere is encircled by 3 concentric, evenly spaced rings. The first and closest to the center is labeled, “n equals 1.” The second ring is labeled, “n equals 2,” and the third ring is labeled, “n equals 3.” An arrow is drawn from the edge of the central sphere to the right extending out of the concentric rings. It is labeled, “increasing energy.”",
+            "src": "../../media/CNX_Chem_06_03_Qnumbers.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166868080",
+          "segmentId": "m68733:para:fs-idm166868080"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm7360128",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm187603312",
+          "segmentId": "m68733:para:fs-idm187603312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm12861216",
+          "segmentId": "m68733:para:fs-idm12861216"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm174719856",
+          "segmentId": "m68733:para:fs-idm174719856"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm13232848",
+          "segmentId": "m68733:para:fs-idm13232848"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm184616288",
+          "segmentId": "m68733:para:fs-idm184616288"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_sOrbit",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_sOrbit-caption"
+          },
+          "media": {
+            "id": "fs-idm165672208",
+            "alt": "This figure provides images and graphs to illustrate the probability of finding an electron in 1 s, 2 s, and 3 s orbitals as a function of the distance from the nucleus. The 1 s orbital is shown as a sphere with a chunk missing. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a maximum height and rapidly declines. The label, “1 s” appears below the graph. The 2 s orbital is shown as a red sphere with a blue middle. A chunk is missing from the sphere. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a significantly higher absolute maximum height, and then rapidly declines. The label “2s” appears below it. The 3 s orbital is a blue sphere with a red sphere and another blue sphere at its core. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a second relative maximum height, a significantly higher absolute maximum, and then declines more gradually than illustrated in the previous 2 graphs. The label, “3 s,” appears below the graph.",
+            "src": "../../media/CNX_Chem_06_03_sorbit.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183763120",
+          "segmentId": "m68733:para:fs-idm183763120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm158802176",
+          "segmentId": "m68733:para:fs-idm158802176"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_Oshapes",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_Oshapes-caption"
+          },
+          "media": {
+            "id": "fs-idm313200",
+            "alt": "This diagram illustrates the shapes and quantities of all s, p, d, and f orbitals. The s sublevel is composed of a single spherical orbital. The p sublevel is composed of 3 dumbbell shaped orbitals oriented along the x, y, and z axes. The five d sublevels and seven f sublevels are considerably more complex.",
+            "src": "../../media/CNX_Chem_06_03_Oshapes.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm130253136",
+          "segmentId": "m68733:para:fs-idm130253136"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_subshells",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_subshells-caption"
+          },
+          "media": {
+            "id": "fs-idm149251120",
+            "alt": "This diagram shown has an upward pointing arrow at the left which is labeled “E.” To the right of this arrow near the bottom of the image is a single line which is labeled, “1 s.” Above and just to the right is another black line that is labeled, “2 s.” Slightly up and to the right is a grouping of three black lines labeled, “2 p.” Above and to the right is a single black line labeled, “3 s.” Slightly up and to the right is a grouping of three black lines that are labeled, “3 p.” Just above and to the right is a grouping of 5 black lines labeled, “3 d.” Slightly below and to the right is a single black line which is labeled, “4 s.” Just above and to the right, at a level slightly higher than the previous black lines, is a grouping of three black lines all labeled, “4 p.”",
+            "src": "../../media/CNX_Chem_06_03_subshells.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm83747248",
+          "segmentId": "m68733:para:fs-idm83747248"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp135680192",
+          "segmentId": "m68733:para:fs-idp135680192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm136117120",
+          "segmentId": "m68733:para:fs-idm136117120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm82083456",
+          "segmentId": "m68733:para:fs-idm82083456"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_03_spin",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68733:caption:CNX_Chem_06_03_spin-caption"
+          },
+          "media": {
+            "id": "fs-idm7831072",
+            "alt": "This diagram has an upward pointing arrow at the left which is labeled, “B subscript 0.” To the right, two spheres are shown. The first has a gray square at the top labeled, “N,” and a second gray square at the bottom labeled, “S.” A curved arrow is pointing right across the surface of the sphere and a gray arrow points upward through the center of the sphere. This sphere is labeled, “Spin plus one-half, spin-up.” The sphere just to the right has a gray square above it labeled, “S,” and a gray square below it labeled, “N.” This sphere has a curved arrow on its surface that is directed to the left and a gray arrow through the center of the sphere that points downward. This sphere is labeled, “Spin negative one-half spin-down.”",
+            "src": "../../media/CNX_Chem_06_03_spin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm91739088",
+          "segmentId": "m68733:para:fs-idm91739088"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm162650560",
+      "class": null,
+      "title": {
+        "segmentId": "m68733:title:fs-idm162650560-title",
+        "text": "The Pauli Exclusion Principle"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm225354640",
+          "segmentId": "m68733:para:fs-idm225354640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm86324032",
+          "segmentId": "m68733:para:fs-idm86324032"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm21167392",
+          "summary": "This table has four columns and five rows. The first row is a header row, and it labels each column: “Name,” “Symbol,” “Allowed values,” and “Physical meaning.” Under the “name” column are the following phrases: “Principle quantum number,” “Angular moment or azimuthal quantum number,” “Magnetic quantum number,” and “Spin quantum number.” Under the “symbol” column are the following: “n,” “l,” “m subscript l,” and “m subscript s.” Under the “allowed values” column are the following: “1, 2, 3, 4, ….,” “0 is less than or equal to l which is less than or equal to n minus 1,” “negative l is less than or equal to m subscript l which is less than or equal to l,” and “one half, negative sign.” Under the “physical meaning” column are the following: “Shell, the general region for the value of energy for an electron on the orbital,” “Subshell, the shape of the orbital,” “Orientation of the orbital,” “Direction of the intrinsic quantum ‘spinning’ of the electron.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-68",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c4",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm127242304",
+          "title": {
+            "segmentId": "m68733:example-title:fs-idm127242304-title",
+            "text": "Working with Shells and Subshells"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm213000384",
+              "segmentId": "m68733:para:fs-idm213000384"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm132218624",
+              "segmentId": "m68733:para:fs-idm132218624",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm132218624-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm25316128",
+              "segmentId": "m68733:para:fs-idm25316128",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm25316128-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm161138128",
+              "segmentId": "m68733:para:fs-idm161138128"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm161649072",
+              "title": {
+                "segmentId": "m68733:note-title:fs-idm161649072-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm161138128",
+                  "segmentId": "m68733:para:fs-idm161138128"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm169030688",
+          "title": {
+            "segmentId": "m68733:example-title:fs-idm169030688-title",
+            "text": "Maximum Number of Electrons"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm68824256",
+              "segmentId": "m68733:para:fs-idm68824256"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm174701168",
+              "segmentId": "m68733:para:fs-idm174701168",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm174701168-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146693328",
+              "segmentId": "m68733:para:fs-idm146693328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm145553968",
+              "segmentId": "m68733:para:fs-idm145553968"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm106652512",
+              "segmentId": "m68733:para:fs-idm106652512"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm13201440",
+              "segmentId": "m68733:para:fs-idm13201440",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm13201440-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm135023952",
+              "segmentId": "m68733:para:fs-idm135023952"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm204408304"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm166820736",
+              "title": {
+                "segmentId": "m68733:note-title:fs-idm166820736-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm135023952",
+                  "segmentId": "m68733:para:fs-idm135023952"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm161581600",
+          "title": {
+            "segmentId": "m68733:example-title:fs-idm161581600-title",
+            "text": "Working with Quantum Numbers"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm88167648",
+              "segmentId": "m68733:para:fs-idm88167648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm65557984",
+              "segmentId": "m68733:para:fs-idm65557984",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm65557984-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm278629648",
+              "segmentId": "m68733:para:fs-idm278629648",
+              "title": {
+                "segmentId": "m68733:para-title:fs-idm278629648-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm129700624",
+              "segmentId": "m68733:para:fs-idm129700624"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm186359744",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68733:item:fs-idm186359744-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68733:item:fs-idm186359744-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68733:item:fs-idm186359744-item-3"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idm55454448",
+              "title": {
+                "segmentId": "m68733:note-title:fs-idm55454448-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm129700624",
+                  "segmentId": "m68733:para:fs-idm129700624"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm179835952",
+          "class": "unnumbered",
+          "summary": "This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” two blank cells, and “5 d.” Under the “n” column is a blank cell, 4, 7, and another blank cell. Under the “l” column is a blank cell, 1, and two more blank cells. Under the “m subscript l degeneracy” column are two blank cells, 7, and then one more blank cell. Under the “number radial nodes” column are two blank cells, 3, and then one more blank cell.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm91407168",
+          "class": "unnumbered",
+          "summary": "This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” “4 p,” “7 f,” and “5 d.” Under the “n” column are: 4, 4, 7, and 5. Under the “l” column are: 3, 1, 3, and 2. Under the “m subscript l degeneracy” column are: 7, 3, 7, and 5. Under the “number radial nodes” column are: 0, 2, 3, and 2.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-142",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-143",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-145",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-146",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-147",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-148",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-149",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-150",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-151",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-152",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-153",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-154",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-155",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-156",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-157",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-158",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm55472464",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68733:title:fs-idm55472464-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm175984864",
+          "segmentId": "m68733:para:fs-idm175984864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm163127152",
+          "segmentId": "m68733:para:fs-idm163127152"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm162744496",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68733:title:fs-idm162744496-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp68295120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56354048",
+                "segmentId": "m68733:problem:fs-idm56354048"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm153742384",
+                "segmentId": "m68733:solution:fs-idm153742384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm185773696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm76135056",
+                "segmentId": "m68733:problem:fs-idm76135056"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm127368704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21185232",
+                "segmentId": "m68733:problem:fs-idm21185232"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm141689136",
+                "segmentId": "m68733:solution:fs-idm141689136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16534928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9901216",
+                "segmentId": "m68733:problem:fs-idm9901216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm109883392",
+                "segmentId": "m68733:problem:fs-idm109883392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm132276800",
+                "segmentId": "m68733:problem:fs-idm132276800"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm226431552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm214520128",
+                "segmentId": "m68733:problem:fs-idm214520128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56428624",
+                "segmentId": "m68733:problem:fs-idp56428624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm187643104",
+                "segmentId": "m68733:problem:fs-idm187643104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22374672",
+                "segmentId": "m68733:problem:fs-idm22374672"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21799104",
+                "segmentId": "m68733:solution:fs-idm21799104"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm65709728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp34462880",
+                "segmentId": "m68733:problem:fs-idp34462880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm5890656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm109115616",
+                "segmentId": "m68733:problem:fs-idm109115616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm151987104",
+                "segmentId": "m68733:problem:fs-idm151987104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm161053968",
+                "segmentId": "m68733:problem:fs-idm161053968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57606112",
+                "segmentId": "m68733:problem:fs-idm57606112"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21203088",
+                "segmentId": "m68733:solution:fs-idm21203088"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm109521552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm119068896",
+                "segmentId": "m68733:problem:fs-idm119068896"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm153995968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm94929024",
+                "segmentId": "m68733:problem:fs-idm94929024"
+              }
+            ]
+          },
+          "solution": {
+            "content": []
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm109481472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp70405328",
+                "segmentId": "m68733:problem:fs-idp70405328"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm139949520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm139601840",
+                "segmentId": "m68733:problem:fs-idm139601840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm9922432",
+                "segmentId": "m68733:problem:fs-idm9922432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm66251616",
+                "segmentId": "m68733:problem:fs-idm66251616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm95832304",
+                "segmentId": "m68733:problem:fs-idm95832304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm165503392",
+                "segmentId": "m68733:problem:fs-idm165503392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63155984",
+                "segmentId": "m68733:problem:fs-idm63155984"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm90450992",
+                "segmentId": "m68733:solution:fs-idm90450992"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm165892704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1974272",
+                "segmentId": "m68733:problem:fs-idp1974272"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm130545344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm159667904",
+                "segmentId": "m68733:problem:fs-idm159667904"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm128894672",
+                "segmentId": "m68733:solution:fs-idm128894672"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm68696640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm167401120",
+                "segmentId": "m68733:problem:fs-idm167401120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41728",
+                "segmentId": "m68733:problem:fs-idp41728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm177928192",
+                "segmentId": "m68733:problem:fs-idm177928192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm133326496",
+                "segmentId": "m68733:problem:fs-idm133326496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm140528512",
+                "segmentId": "m68733:problem:fs-idm140528512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm152486448",
+                "segmentId": "m68733:problem:fs-idm152486448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm24126560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm133893888",
+                "segmentId": "m68733:problem:fs-idm133893888"
+              }
+            ]
+          },
+          "solution": {
+            "content": []
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm2123072",
+          "class": "unnumbered",
+          "summary": "This table has four columns and seven rows. The first row is a header row, and it labels each column: “n,” “l,” “m subscript l,” and “s.” Under the “n” column are the following numbers: 4, 4, 4, 4, 4, and 4. Under the “l” column are the following numbers: 0, 0, 1, 1, 1, and 1. Under the “m subscript l” column are the following numbers: 0, 0, negative 1, 0, positive 1, and negative 1. Under the “s” column are the following numbers: positive one half, negative one half, positive one half, positive one half, positive one half, and negative one half.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-202",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-203",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-204",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-205",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-206",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-207",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-208",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-209",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-210",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-211",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-212",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-213",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-214",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-215",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-216",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-217",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-218",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-219",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-220",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-221",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-222",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-223",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-224",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-225",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-226",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-227",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-228",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-229",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68733:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68733:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68733:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68733:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm176142304",
+        "termSegmentId": "m68733:glossary-term:fs-idm176142304-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm176142304-def"
+      },
+      {
+        "id": "fs-idm147438368",
+        "termSegmentId": "m68733:glossary-term:fs-idm147438368-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm147438368-def"
+      },
+      {
+        "id": "fs-idp12032",
+        "termSegmentId": "m68733:glossary-term:fs-idp12032-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idp12032-def"
+      },
+      {
+        "id": "fs-idm442273488",
+        "termSegmentId": "m68733:glossary-term:fs-idm442273488-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm442273488-def"
+      },
+      {
+        "id": "fs-idm56391008",
+        "termSegmentId": "m68733:glossary-term:fs-idm56391008-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm56391008-def"
+      },
+      {
+        "id": "fs-idm124229040",
+        "termSegmentId": "m68733:glossary-term:fs-idm124229040-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm124229040-def"
+      },
+      {
+        "id": "fs-idm7039408",
+        "termSegmentId": "m68733:glossary-term:fs-idm7039408-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm7039408-def"
+      },
+      {
+        "id": "fs-idm166903488",
+        "termSegmentId": "m68733:glossary-term:fs-idm166903488-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm166903488-def"
+      },
+      {
+        "id": "fs-idm147658080",
+        "termSegmentId": "m68733:glossary-term:fs-idm147658080-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm147658080-def"
+      },
+      {
+        "id": "fs-idm120400016",
+        "termSegmentId": "m68733:glossary-term:fs-idm120400016-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm120400016-def"
+      },
+      {
+        "id": "fs-idm140352128",
+        "termSegmentId": "m68733:glossary-term:fs-idm140352128-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm140352128-def"
+      },
+      {
+        "id": "fs-idm160875424",
+        "termSegmentId": "m68733:glossary-term:fs-idm160875424-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm160875424-def"
+      },
+      {
+        "id": "fs-idm144189680",
+        "termSegmentId": "m68733:glossary-term:fs-idm144189680-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm144189680-def"
+      },
+      {
+        "id": "fs-idm174396336",
+        "termSegmentId": "m68733:glossary-term:fs-idm174396336-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm174396336-def"
+      },
+      {
+        "id": "fs-idm137493808",
+        "termSegmentId": "m68733:glossary-term:fs-idm137493808-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm137493808-def"
+      },
+      {
+        "id": "fs-idm148470816",
+        "termSegmentId": "m68733:glossary-term:fs-idm148470816-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm148470816-def"
+      },
+      {
+        "id": "fs-idm163956768",
+        "termSegmentId": "m68733:glossary-term:fs-idm163956768-term",
+        "definitionSegmentId": "m68733:glossary-def:fs-idm163956768-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

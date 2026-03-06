@@ -230,7 +230,7 @@ málmjónarinnar er tilgreind með rómverskri tölu í sviga á eftir nafni
 málmsins. Hleðsla málmjónarinnar er ákvörðuð út frá formúlu
 efnasambandsins og hleðslu anjónarinnar. Skoðum til dæmis tvíundar
 jónaefni járns og klórs. Járn hefur yfirleitt hleðsluna 2+ eða 3+ (sjá
-[#CNX_Chem_02_06_IonCharges]) og formúlur samsvarandi efnasambanda eru FeCl~2~ og FeCl~3~.
+[m68696#CNX_Chem_02_06_IonCharges]) og formúlur samsvarandi efnasambanda eru FeCl~2~ og FeCl~3~.
 Einfaldasta nafnið, „járnklóríð“, væri í þessu tilfelli tvírætt þar sem
 það gerir ekki greinarmun á þessum tveimur efnasamböndum. Í slíkum
 tilfellum er hleðsla málmjónarinnar sett inn sem rómversk tölu í sviga

@@ -1,0 +1,67 @@
+{
+  "moduleId": "m68760",
+  "title": {
+    "segmentId": "m68760:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "d8f61820-f7cc-479e-8e83-a1c7ac0f2a26",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Intermolecular Forces",
+        "Properties of Liquids",
+        "Phase Transitions",
+        "Phase Diagrams",
+        "The Solid State of Matter",
+        "Lattice Structures in Crystalline Solids"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_00_Punch",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68760:caption:CNX_Chem_10_00_Punch-caption"
+      },
+      "media": {
+        "id": "fs-idp34998992",
+        "alt": "This figure shows pieces of a white substance which appear to be sublimating. To the right of these pieces are three graduated cylinders. Each cylinder holds a different color liquid, and above the liquid, the cylinders are filled with a fog-like substance. This fog-like substance swirls out of the top and around the outside of the cylinders.",
+        "src": "../../media/CNX_Chem_10_00_Punch.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp5508192",
+      "segmentId": "m68760:para:fs-idp5508192"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68760:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68760:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68760:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68760:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68760:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68760:abstract-item:abstract-item-6"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

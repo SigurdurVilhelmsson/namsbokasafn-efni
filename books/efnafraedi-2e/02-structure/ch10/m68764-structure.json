@@ -1,0 +1,1151 @@
+{
+  "moduleId": "m68764",
+  "title": {
+    "segmentId": "m68764:title:auto-1",
+    "text": "Properties of Liquids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "846e6c50-e81e-4658-b938-857b5169e73c",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Distinguish between adhesive and cohesive forces",
+        "Define viscosity, surface tension, and capillary rise",
+        "Describe the roles of intermolecular attractive forces in each of these properties/phenomena"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm130666608",
+      "segmentId": "m68764:para:fs-idm130666608"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_Viscosity",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_Viscosity-caption"
+      },
+      "media": {
+        "id": "fs-idm87904672",
+        "alt": "Two photographs are shown and labeled “a” and “b.” Photo a shows a jar of honey with a dipper drizzling it onto a biscuit. More biscuits are shown in a basket in the background. Photo b shows the engine of a car and a person adding motor oil to the engine.",
+        "src": "../../media/CNX_Chem_10_02_Viscosity.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm133174592",
+      "segmentId": "m68764:para:fs-idm133174592"
+    },
+    {
+      "type": "table",
+      "id": "fs-idm123780960",
+      "class": "top-titled",
+      "summary": "This table has three columns and eight rows. The first row is a header row, and it labels each column, “Substance,” “Formula,” and “Viscosity ( m P a dot s ).” Under the “Substance” column are the following: water, mercury, ethanol, octane, ethylene glycol, honey, and motor oil. Under the “Formula” column are the following: H subscript 2 O; H g; C subscript 2 H subscript 5 O H; C subscript 8 H subscript 18; C H subscript 2 ( O H ) C H subscript 2 ( O H ); variable; and variable. Under the “Viscosity ( m P a dot s )” column are the following: 0.890, 1.526, 1.074, 0.508, 16.1, approximately 2000 to 10000, and approximately 50 to 500.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-9",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c3",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-10",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-11",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-12",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-13",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-14",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-15",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-16",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-17",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-18",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-19",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-20",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-21",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-22",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-23",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-24",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-25",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-26",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-27",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-28",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-29",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-30",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-31",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-32",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-33",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm45103712",
+      "segmentId": "m68764:para:fs-idm45103712"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_Droplet",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_Droplet-caption"
+      },
+      "media": {
+        "id": "fs-idm162957840",
+        "alt": "A photo of a spider’s web with droplets of water attached to it is shown. Two images are shown the right of the photo and arrows lead from the photo to the images. The upper image shows twenty eight blue spheres stacked one atop the other in the bottom of a circular background. Five arrows are drawn pointing to the sides and downward from the sphere in the top middle of the drawing. The lower image shows another circular background of the same size as the first, but this time the blue spheres fill the image and are packed closely together. A sphere in the middle has six arrows pointing in all directions away from it.",
+        "src": "../../media/CNX_Chem_10_02_Droplet.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm78773504",
+      "segmentId": "m68764:para:fs-idm78773504"
+    },
+    {
+      "type": "table",
+      "id": "fs-idm139826368",
+      "class": "top-titled",
+      "summary": "This table has three columns and six rows. The first row is a header row, and it labels each column: “Substance,” “Formula,” and “Surface tension ( m N / m ).” Under the “Substance” column are the following: water, mercury, ethanol, octane, ethylene glycol. Under the “Formula” column are the following: H subscript 2 O; H g; C subscript 2 H subscript 5 O H; C subscript 8 H subscript 18; C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Surface tension ( m N / m )” column are the following: 71.99, 458.48, 21.97, 21.14, 47.99.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-37",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c3",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-38",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-39",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-40",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-41",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-42",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-43",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-44",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-45",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-46",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-47",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-48",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-49",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-50",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-51",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-52",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68764:entry:auto-53",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-54",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68764:entry:auto-55",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_Strider",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_Strider-caption"
+      },
+      "media": {
+        "id": "fs-idm60357712",
+        "alt": "A photo and a diagram as shown and a right-facing arrow leads from the photo to the image. The photo shows an insect standing on the surface of a sample of water. The image shows a square background that is two thirds covered in blue spheres that are closely packet together. A brown line starts at the upper left corner of the background and rests on top of the first row of spheres. The sphere directly under this low point of the line has four arrows drawn on it that face to both sides and downward. A sphere in the bottom center of the image has six arrows drawn on it that all face outward in different directions.",
+        "src": "../../media/CNX_Chem_10_02_Strider.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "eip-424",
+      "segmentId": "m68764:para:eip-424"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm245342800",
+      "segmentId": "m68764:para:fs-idm245342800"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_Meniscus",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_Meniscus-caption"
+      },
+      "media": {
+        "id": "fs-idm172871296",
+        "alt": "This figure shows two test tubes. The test tube on the left contains mercury with a meniscus that rounds up. The test tube on the right contains water with a meniscus that rounds down.",
+        "src": "../../media/CNX_Chem_10_02_Meniscus.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp26089824",
+      "segmentId": "m68764:para:fs-idp26089824"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_Wicking",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_Wicking-caption"
+      },
+      "media": {
+        "id": "fs-idp30571392",
+        "alt": "A photo and a diagram are shown. In the photo, a paper towel is dipped into a bowl full of a red liquid sitting on a countertop. The red liquid is traveling up the lower part of the paper towel, and this section of the photo has a square drawn around it. A right-facing arrow leads from this square to the image. The image is square and has a background of two types of molecules, mixed together. The first type of molecule is composed of two bonded black spheres, one of which is single bonded to three white spheres and one of which is single bonded to two white spheres and a red sphere that is itself bonded to a white sphere. The other type of molecule is composed of six black spheres bonded together in a row and bonded to other red and white spheres. Six upward-facing arrows are drawn on top of this background. They have positive signs on their lower ends and negative signs on their heads. Four upward-facing arrows are drawn with their signs reversed.",
+        "src": "../../media/CNX_Chem_10_02_Wicking.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm57496496",
+      "segmentId": "m68764:para:fs-idm57496496"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm84525088",
+      "segmentId": "m68764:para:fs-idm84525088"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_CapRise",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_CapRise-caption"
+      },
+      "media": {
+        "id": "fs-idm60323520",
+        "alt": "An image of two beakers and a tube is shown. The first beaker, drawn on the left and labeled “Water,” is drawn half-full of a blue liquid. Two open-ended capillary tubes are placed vertically in the beaker and inserted into the liquid. The liquid is shown higher in the tubes than in the beaker and is labeled “Capillary attraction.” The second beaker, drawn in the middle and labeled “Mercury,” is drawn half-full of a gray liquid. Two open-ended capillary tubes are placed vertically in the beaker and inserted into the liquid. The liquid is shown lower in the tubes than in the beaker and is labeled “Capillary repulsion.” Lines point to the vertical tubes and label them “Capillary tubes.” A separate drawing of one of the vertical tubes from the first beaker is shown on the right. A right-facing arrow leads from the liquid in the tube to a square call-out box that shows a close-up view of the liquid’s surface. The distance across the tube is labeled “2 r” in this image.",
+        "src": "../../media/CNX_Chem_10_02_CapRise.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm45302000",
+      "segmentId": "m68764:para:fs-idm45302000"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm228846576",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm202037120",
+      "segmentId": "m68764:para:fs-idm202037120"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp7578512",
+      "title": {
+        "segmentId": "m68764:example-title:fs-idp7578512-title",
+        "text": "Capillary Rise"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm96381152",
+          "segmentId": "m68764:para:fs-idm96381152"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm132283168",
+          "segmentId": "m68764:para:fs-idm132283168"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm215629536",
+          "segmentId": "m68764:para:fs-idm215629536",
+          "title": {
+            "segmentId": "m68764:para-title:fs-idm215629536-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm131978784",
+          "segmentId": "m68764:para:fs-idm131978784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp19907056",
+          "segmentId": "m68764:para:fs-idp19907056",
+          "title": {
+            "segmentId": "m68764:para-title:fs-idp19907056-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166392576",
+          "segmentId": "m68764:para:fs-idm166392576"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm60135360"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm209726944",
+          "title": {
+            "segmentId": "m68764:note-title:fs-idm209726944-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm166392576",
+              "segmentId": "m68764:para:fs-idm166392576"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idm192709088",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68764:note-title:fs-idm192709088-title",
+        "text": "Biomedical Applications of Capillary Action"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm184385920",
+          "segmentId": "m68764:para:fs-idm184385920"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_02_BloodDraw",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68764:caption:CNX_Chem_10_02_BloodDraw-caption"
+      },
+      "media": {
+        "id": "fs-idm141860432",
+        "alt": "A photograph shows a person’s hand being held by a person wearing medical gloves. A thin glass tube is pressed against the persons finger and blood is moving up the tube.",
+        "src": "../../media/CNX_Chem_10_02_BloodDraw.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm72910144",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68764:title:fs-idm72910144-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm161069280",
+          "segmentId": "m68764:para:fs-idm161069280"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm31673664",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68764:title:fs-idm31673664-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68764:entry:auto-84",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm81325184",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68764:title:fs-idm81325184-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm178529488",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197064800",
+                "segmentId": "m68764:problem:fs-idm197064800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm141902368",
+                "segmentId": "m68764:problem:fs-idm141902368"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm82765632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm164104512",
+                "segmentId": "m68764:problem:fs-idm164104512"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm152759136",
+                "segmentId": "m68764:solution:fs-idm152759136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_02_Needlefloa",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68764:caption:CNX_Chem_10_02_Needlefloa-caption"
+          },
+          "media": {
+            "id": "fs-idm208311120",
+            "alt": "A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water.",
+            "src": "../../media/CNX_Chem_10_02_Needlefloa_img.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm187023264",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45257152",
+                "segmentId": "m68764:problem:fs-idm45257152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm59094592",
+                "segmentId": "m68764:problem:fs-idm59094592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm133108016",
+                "segmentId": "m68764:problem:fs-idm133108016"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm183311984",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31046720",
+                "segmentId": "m68764:problem:fs-idp31046720"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm80358384",
+                "segmentId": "m68764:solution:fs-idm80358384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm91274448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84555824",
+                "segmentId": "m68764:problem:fs-idm84555824"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm92213792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm57322944",
+                "segmentId": "m68764:problem:fs-idm57322944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm133407872",
+                "segmentId": "m68764:problem:fs-idm133407872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm47328896",
+                "segmentId": "m68764:problem:fs-idm47328896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm52338928",
+                "segmentId": "m68764:solution:fs-idm52338928"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm84550336",
+          "class": "unnumbered",
+          "summary": "This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68764:entry:auto-101",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-102",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-103",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68764:entry:auto-104",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-105",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-106",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68764:entry:auto-107",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-108",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-109",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68764:entry:auto-110",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-111",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-112",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68764:entry:auto-113",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-114",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68764:entry:auto-115",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26872272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm237890176",
+                "segmentId": "m68764:problem:fs-idm237890176"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm169275296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm189246496",
+                "segmentId": "m68764:problem:fs-idm189246496"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm115532848",
+                "segmentId": "m68764:solution:fs-idm115532848"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68764:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68764:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68764:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68764:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm87859280",
+        "termSegmentId": "m68764:glossary-term:fs-idm87859280-term",
+        "definitionSegmentId": "m68764:glossary-def:fs-idm87859280-def"
+      },
+      {
+        "id": "fs-idm184465568",
+        "termSegmentId": "m68764:glossary-term:fs-idm184465568-term",
+        "definitionSegmentId": "m68764:glossary-def:fs-idm184465568-def"
+      },
+      {
+        "id": "fs-idm114308784",
+        "termSegmentId": "m68764:glossary-term:fs-idm114308784-term",
+        "definitionSegmentId": "m68764:glossary-def:fs-idm114308784-def"
+      },
+      {
+        "id": "fs-idm79392464",
+        "termSegmentId": "m68764:glossary-term:fs-idm79392464-term",
+        "definitionSegmentId": "m68764:glossary-def:fs-idm79392464-def"
+      },
+      {
+        "id": "fs-idm129199712",
+        "termSegmentId": "m68764:glossary-term:fs-idm129199712-term",
+        "definitionSegmentId": "m68764:glossary-def:fs-idm129199712-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm208311120",
+      "class": null,
+      "alt": "A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water.",
+      "src": "../../media/CNX_Chem_10_02_Needlefloa_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm61393264",
+      "class": null,
+      "alt": "This table has four columns and five rows. The first row is a header row, and it labels each column: “Compound,” “Molecule,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a dot s ).” Under the “compound” column are the following: diethyl ether C subscript 2 H subscript 5 O C subscript 2 H subscript 5; acetone C subscript 2 H subscript 5 O C subscript 2 H subscript 5; ethanol C subscript 2 H subscript 5 O H; ethylene glycol C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Molecule” column are ball-and-stick representations of each compound. The first shows two grey spheres bonded together. The first grey sphere is also bonded to three white spheres. The second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to another grey sphere. The grey sphere is bonded to two white spheres and another grey sphere. The last grey sphere is bonded to three white spheres. The second shows three grey spheres bonded tighter. The two grey spheres on the end are each bonded to three white spheres. The grey sphere in the middle is bonded to one red sphere. The third shows two grey spheres bonded together. The first grey sphere is bonded to three white spheres and the second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to a white sphere. The fourth shows two grey spheres bonded together. Each grey sphere is bonded to two white spheres and a red sphere. Each red sphere is also bonded to one white sphere. Under the “Surface Tension ( m N / m )” column are the following: 17, 23, 22 and 48. Under the “Viscosity ( m P a dot s )” column are the following: 0.22, 0.31, 1.07, and 16.1.",
+      "src": "../../media/CNX_Chem_10_02_Question4_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "inlineTables": [
+    {
+      "tableId": "fs-idm84550336",
+      "structure": {
+        "type": "table",
+        "id": "fs-idm84550336",
+        "class": "unnumbered",
+        "summary": "This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.",
+        "rows": [
+          {
+            "cells": [
+              {
+                "segmentId": "m68764:entry:auto-129",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-130",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-131",
+                "attributes": {
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68764:entry:auto-132",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-133",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-134",
+                "attributes": {
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68764:entry:auto-135",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-136",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-137",
+                "attributes": {
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68764:entry:auto-138",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-139",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-140",
+                "attributes": {
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68764:entry:auto-141",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-142",
+                "attributes": {
+                  "align": "center"
+                }
+              },
+              {
+                "segmentId": "m68764:entry:auto-143",
+                "attributes": {
+                  "align": "center"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "sectionOrder": null
+}

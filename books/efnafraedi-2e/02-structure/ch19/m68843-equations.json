@@ -1,0 +1,34 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>Co</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>en</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{{[{\\text{Co}{{{({\\text{en}})}}}_{3}}]}}}^{{3+}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CO}}}_{2}^{\\text{−}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{3}^{-}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}{\\text{O}}_{4}^{{2−}}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{CO}}}_{3}^{{2−}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}{\\text{O}}_{4}^{{2−}}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mo>−</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{-{\\text{O}}_{2}{{\\text{CCO}}}_{2}^{\\text{−}})}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{CO}}}_{3}^{{2−}}}"
+  }
+}

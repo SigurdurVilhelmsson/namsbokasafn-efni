@@ -1,0 +1,55 @@
+{
+  "moduleId": "m68810",
+  "title": {
+    "segmentId": "m68810:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "8d42ec0e-c529-4663-ac18-2f41a286c668",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Precipitation and Dissolution",
+        "Lewis Acids and Bases",
+        "Multiple Equilibria"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_15_00_Fluorite",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68810:caption:CNX_Chem_15_00_Fluorite-caption"
+      },
+      "media": {
+        "id": "fs-idm215823840",
+        "alt": "An image is shown of a cluster of clear crystals, showing primarily cubic and some octahedral shapes. A large cubic crystal at the center of the photograph has a deep emerald green center with deep purple corners and a small royal blue region just right of center. A smaller cubic crystal to its left shows purple corners and edges with royal blue coloration toward the center. Similar coloration is seen in other crystals in the structure, though most of the smaller crystals are clear and colorless.",
+        "src": "../../media/CNX_Chem_15_00_Fluorite.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm92459840",
+      "segmentId": "m68810:para:fs-idm92459840"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68810:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68810:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68810:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

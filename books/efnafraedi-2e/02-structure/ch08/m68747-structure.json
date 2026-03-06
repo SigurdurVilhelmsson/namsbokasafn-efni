@@ -1,0 +1,1692 @@
+{
+  "moduleId": "m68747",
+  "title": {
+    "segmentId": "m68747:title:auto-1",
+    "text": "Molecular Orbital Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "4f90d5f4-c612-4a78-9240-635035f8433e",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Outline the basic quantum-mechanical approach to deriving molecular orbitals from atomic orbitals",
+        "Describe traits of bonding and antibonding molecular orbitals",
+        "Calculate bond orders based on molecular electron configurations",
+        "Write molecular electron configurations for first- and second-row diatomic molecules",
+        "Relate these electron configurations to the molecules’ stabilities and magnetic properties"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm108621792",
+      "segmentId": "m68747:para:fs-idm108621792"
+    },
+    {
+      "type": "media",
+      "id": "fs-idm39755904",
+      "class": null,
+      "alt": "A Lewis structure is shown. It is made up of two oxygen atoms, each with two lone pairs of electrons, bonded together with a double bond.",
+      "src": "../../media/CNX_Chem_08_04_O2_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm179265392",
+      "segmentId": "m68747:para:fs-idm179265392"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm140344208",
+      "segmentId": "m68747:para:fs-idm140344208"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_Gouy",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_Gouy-caption"
+      },
+      "media": {
+        "id": "fs-idm166075136",
+        "alt": "A diagram depicts a stand supporting two objects that are held in balance by a horizontal bar. On the right, the bar supports a dish that is holding two weights. On the left there is a line attached to a test tube labeled, “Sample tube.” The test tube has been lowered into the space labeled, “Magnetic field,” between two structures labeled, “Electromagnets.”",
+        "src": "../../media/CNX_Chem_08_04_Gouy.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm167869376",
+      "segmentId": "m68747:para:fs-idm167869376"
+    },
+    {
+      "type": "note",
+      "id": "fs-idm103101376",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm182773888",
+          "segmentId": "m68747:para:fs-idm182773888"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm112096224",
+      "segmentId": "m68747:para:fs-idm112096224"
+    },
+    {
+      "type": "table",
+      "id": "fs-idm162808816",
+      "class": "top-titled",
+      "summary": "A table is shown that is composed of two columns and six rows. The header row reads, “Valence Bond Theory,” and, “Molecular Orbital Theory.” The first column contains the phrases: “considers bonds as localized between one pair of atoms,” “creates bonds from overlap of atomic orbitals ( s, p, d…) and hybrid orbitals ( s p , s p superscript 2, s p superscript 3 … ) ,” “forms sigma or pi bonds,” “predicts molecular shape based on the number of regions of electron density,” and, “needs multiple structures are needed to describe resonance.” The second column reads, “considers electrons delocalized throughout the entire molecule,” “combines atomic orbitals to form molecular orbitals ( sigma, sigma superscript asterik, pi, pi superscript asterisk ),” “creates bonding and antibonding interactions based on which orbitals are filled,” “predicts the arrangement of electrons in molecules.”",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-15",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c2",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68747:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68747:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68747:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68747:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68747:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68747:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm11457392",
+      "segmentId": "m68747:para:fs-idm11457392"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm112433808",
+      "segmentId": "m68747:para:fs-idm112433808"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm141141248",
+      "segmentId": "m68747:para:fs-idm141141248"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_waveadd",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_waveadd-caption"
+      },
+      "media": {
+        "id": "fs-idm181597760",
+        "alt": "A pair of diagrams are shown and labeled, “a” and “b.” Diagram a shows two identical waves with two crests and two troughs. They are drawn one above the other with a plus sign in between and an equal sign to the right. To the right of the equal sign is a much taller wave with a same number of troughs and crests. Diagram b shows two waves with two crests and two troughs, but they are mirror images of one another rotated over a horizontal axis. They are drawn one above the other with a plus sign in between and an equal sign to the right. To the right of the equal sign is a flat line.",
+        "src": "../../media/CNX_Chem_08_04_waveadd.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm153714976",
+      "segmentId": "m68747:para:fs-idm153714976"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_ssigma",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_ssigma-caption"
+      },
+      "media": {
+        "id": "fs-idm78961584",
+        "alt": "A diagram is shown that depicts a vertical upward-facing arrow that lies to the left of all the other portions of the diagram and is labeled, “E.” To the immediate right of the midpoint of the arrow are two circles each labeled with a positive sign, the letter S, and the phrase, “Atomic orbitals.” These are followed by a right-facing horizontal arrow that points to the same two circles labeled with plus signs, but they are now touching and are labeled, “Combine atomic orbitals.” Two right-facing arrows lead to the last portion of the diagram, one facing upward and one facing downward. The upper arrow is labeled, “Subtract,” and points to two oblong ovals labeled with plus signs, and the phrase, “Antibonding orbitals sigma subscript s superscript asterisk.” The lower arrow is labeled, “Add,” and points to an elongated oval with two plus signs that is labeled, “Bonding orbital sigma subscript s.” The heading over the last section of the diagram are the words, “Molecular orbitals.”",
+        "src": "../../media/CNX_Chem_08_04_ssigma.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm101998112",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm201921312",
+          "segmentId": "m68747:para:fs-idm201921312"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm148257600",
+      "segmentId": "m68747:para:fs-idm148257600"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_pMOsigma",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_pMOsigma-caption"
+      },
+      "media": {
+        "id": "fs-idm189517056",
+        "alt": "Two horizontal rows of diagrams are shown. The upper diagram shows two equally-sized peanut-shaped orbitals with a plus sign in between them connected to a merged orbital diagram by a right facing arrow. The merged diagram has a much larger oval at the center and much smaller ovular orbitals on the edge. It is labeled, “sigma subscript p x.” The lower diagram shows two equally-sized peanut-shaped orbitals with a plus sign in between them connected to a split orbital diagram by a right facing arrow. The split diagram has a much larger oval at the outer ends and much smaller ovular orbitals on the inner edges. It is labeled, “sigma subscript p x superscript asterisk”.",
+        "src": "../../media/CNX_Chem_08_04_pMOsigma.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm175046592",
+      "segmentId": "m68747:para:fs-idm175046592"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_pMOpi",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_pMOpi-caption"
+      },
+      "media": {
+        "id": "fs-idm151833152",
+        "alt": "Two horizontal rows of diagrams are shown. The upper and lower diagrams both begin with two vertical peanut-shaped orbitals with a plus sign in between followed by a right-facing arrow. The upper diagram shows the same vertical peanut orbitals bending slightly away from one another and separated by a dotted line. It is labeled, “pi subscript p superscript asterisk.” The lower diagram shows the horizontal overlap of the two orbitals and is labeled, “pi subscript p.”",
+        "src": "../../media/CNX_Chem_08_04_pMOpi.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm130124992",
+      "segmentId": "m68747:para:fs-idm130124992"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm91199824",
+      "title": {
+        "segmentId": "m68747:example-title:fs-idm91199824-title",
+        "text": "Molecular Orbitals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp38389696",
+          "segmentId": "m68747:para:fs-idp38389696"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp85051376",
+          "segmentId": "m68747:para:fs-idp85051376",
+          "title": {
+            "segmentId": "m68747:para-title:fs-idp85051376-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp7458640",
+          "segmentId": "m68747:para:fs-idp7458640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm98679312",
+          "segmentId": "m68747:para:fs-idm98679312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm173173712",
+          "segmentId": "m68747:para:fs-idm173173712",
+          "title": {
+            "segmentId": "m68747:para-title:fs-idm173173712-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm99049568",
+          "segmentId": "m68747:para:fs-idm99049568"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm210552112",
+          "title": {
+            "segmentId": "m68747:note-title:fs-idm210552112-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm99049568",
+              "segmentId": "m68747:para:fs-idm99049568"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idm43986688",
+      "class": "chemistry chemist-portrait",
+      "title": {
+        "segmentId": "m68747:note-title:fs-idm43986688-title",
+        "text": "Walter Kohn: Nobel Laureate"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm150138816",
+          "segmentId": "m68747:para:fs-idm150138816"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm51386912",
+          "segmentId": "m68747:para:fs-idm51386912"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_Kohn",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_Kohn-caption"
+      },
+      "media": {
+        "id": "fs-idm136311776",
+        "alt": "A photograph of Walter Kohn is shown.",
+        "src": "../../media/CNX_Chem_08_04_Kohn.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm152886256",
+      "class": "chemistry sciences-interconnect",
+      "title": {
+        "segmentId": "m68747:note-title:fs-idm152886256-title",
+        "text": "Computational Chemistry in Drug Design"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp11259136",
+          "segmentId": "m68747:para:fs-idp11259136"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_04_HIVProteas",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68747:caption:CNX_Chem_08_04_HIVProteas-caption"
+      },
+      "media": {
+        "id": "fs-idm42063808",
+        "alt": "A diagram of a molecule is shown. The image shows a tangle of ribbon-like, intertwined, pink and green curling lines with a complex ball and stick model in the center.",
+        "src": "../../media/CNX_Chem_08_04_HIVProteas.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm108525232",
+      "class": null,
+      "title": {
+        "segmentId": "m68747:title:fs-idm108525232-title",
+        "text": "Molecular Orbital Energy Diagrams"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm109157200",
+          "segmentId": "m68747:para:fs-idm109157200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm63353616",
+          "segmentId": "m68747:para:fs-idm63353616"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_04_FillMo",
+          "caption": {
+            "segmentId": "m68747:caption:CNX_Chem_08_04_FillMo-caption"
+          },
+          "media": {
+            "id": "fs-idm17917232",
+            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 2 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “2 s.” The line on the left has two vertical half arrows drawn on it, one facing up and one facing down while the line of the right has one half arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but further up from the first. It is labeled, “sigma subscript 2 s superscript asterisk.” This horizontal line has one upward-facing vertical half-arrow drawn on it. The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center is header reads “Molecular orbitals”.",
+            "src": "../../media/CNX_Chem_08_04_FillMo.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm72263472",
+      "class": null,
+      "title": {
+        "segmentId": "m68747:title:fs-idm72263472-title",
+        "text": "Bond Order"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp47682464",
+          "segmentId": "m68747:para:fs-idp47682464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm84042704",
+          "segmentId": "m68747:para:fs-idm84042704"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm72448704",
+          "segmentId": "m68747:para:fs-idm72448704"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp20436816",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8964432",
+          "segmentId": "m68747:para:fs-idm8964432"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm174688448",
+      "class": null,
+      "title": {
+        "segmentId": "m68747:title:fs-idm174688448-title",
+        "text": "Bonding in Diatomic Molecules"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm131917488",
+          "class": null,
+          "title": {
+            "segmentId": "m68747:title:fs-idm131917488-title",
+            "text": "The Diatomic Molecules of the Second Period"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp84255584",
+              "segmentId": "m68747:para:fs-idp84255584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm159509520",
+              "segmentId": "m68747:para:fs-idm159509520"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm130710736",
+              "segmentId": "m68747:para:fs-idm130710736"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_08_04_X2MOs",
+              "caption": {
+                "segmentId": "m68747:caption:CNX_Chem_08_04_X2MOs-caption"
+              },
+              "media": {
+                "id": "fs-idm110589568",
+                "alt": "A graph is shown in which the y-axis is labeled, “E,” and appears as a vertical, upward-facing arrow. Across the top, the graph reads, “L i subscript 2,” “B e subscript 2,” “B subscript 2,” “C subscript 2,” “N subscript 2,” “O subscript 2,” “F subscript 2,” and “Ne subscript 2.” Directly below each of these element terms is a single pink line, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled, “sigma subscript 2 p x superscript asterisk”. Directly below each of these lines is a set of two pink lines, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. It is consistently lower than the first line. This line is labeled, “pi subscript 2 p y superscript asterisk,” and, “pi subscript 2 p z superscript asterisk.” Directly below each of these double lines is a single pink line, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. It has a distinctive drop at the label, “O subscript 2.” This line is labeled, “sigma subscript 2 p x.” Directly below each of these lines is a set of two pink lines, and all lines are connected to one another by a dashed line to create an overall line that decreases very slightly in height as it moves from left to right across the graph. It is consistently lower than the third line until it reaches the point labeled, “O subscript 2.” This line is labeled, “pi subscript 2 p y,” and, “pi subscript 2 p z.” Directly below each of these lines is a single blue line, and all lines are connected to one another by a dashed line to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled, “sigma subscript 2 s superscript asterisk.” Finally, directly below each of these lines is a single blue line, and all lines are connected to one another by a dashed line to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled. “sigma subscript 2 s.”",
+                "src": "../../media/CNX_Chem_08_04_X2MOs-bb74.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm170513216",
+              "segmentId": "m68747:para:fs-idm170513216"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_08_04_spmix",
+              "caption": {
+                "segmentId": "m68747:caption:CNX_Chem_08_04_spmix-caption"
+              },
+              "media": {
+                "id": "fs-idm173324128",
+                "alt": "A diagram is shown. At the bottom left of the diagram is a horizontal line that is connected to the right and left by upward-facing, dotted lines to two more horizontal lines. Those two lines are connected by upward-facing dotted lines to another line in the center of the diagram but farther up from the first. Each of the bottom two central lines has a vertical downward-facing arrow. Above this structure is a horizontal line that is connected to the right and left by upward-facing, dotted lines to two sets of three horizontal lines and those two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but further up from the first. In between the horizontal lines of this structure are two pairs of horizontal lines that are above the first line but below the second and connected by dotted lines to the side horizontal lines. The bottom and top central lines each have an upward-facing vertical arrow. These two structures are redrawn on the right side of the diagram, but this time, the central lines of the bottom structure are moved downward in relation to the side lines. The upper portion of the structure has its central lines shifted upward in relation to the side lines. This structure also shows the bottom line appearing above the set of two lines.",
+                "src": "../../media/CNX_Chem_08_04_spmix-78e6.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm134586720",
+              "segmentId": "m68747:para:fs-idm134586720"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm113653568",
+              "segmentId": "m68747:para:fs-idm113653568"
+            },
+            {
+              "type": "table",
+              "id": "fs-idp20943328",
+              "class": "top-titled",
+              "summary": "A table is shown that has three columns and nine rows. The header row reads: “Molecule,” “Electron Configuration,” and, “Bond Order.” The first column contains the symbols “L i subscript 2,” “B e subscript 2 ( unstable ),” “B e subscript 2,” “C subscript 2,” “N subscript 2,” “O subscript 2,” “F subscript 2,” and, “Ne subscript 2 ( unstable ).” The second column contains the symbols “( sigma subscript 2 s ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( sigma subscript 2 p x ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 4,” and “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 4 ( sigma superscript asterisk subscript 2 p x ) superscript 2.” The third column contains the numbers: “1,” “0,” “1,” “2,” “3,” “2,” “1,” “0.”",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-76",
+                      "attributes": {
+                        "namest": "c1",
+                        "nameend": "c3",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-77",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-78",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-79",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-80",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-81",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-82",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-83",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-84",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-85",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-86",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-87",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-88",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-89",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-90",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-91",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-92",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-93",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-94",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-95",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-96",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-97",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-98",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-99",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-100",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68747:entry:auto-101",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-102",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68747:entry:auto-103",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "fs-idm113916160",
+              "segmentId": "m68747:para:fs-idm113916160"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm151745104",
+              "segmentId": "m68747:para:fs-idm151745104"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp89531968",
+              "class": "chemistry sciences-interconnect",
+              "title": {
+                "segmentId": "m68747:note-title:fs-idp89531968-title",
+                "text": "Band Theory"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm82290832",
+                  "segmentId": "m68747:para:fs-idm82290832"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm4324976",
+                  "segmentId": "m68747:para:fs-idm4324976"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp22163776",
+                  "segmentId": "m68747:para:fs-idp22163776"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm16313536",
+                  "segmentId": "m68747:para:fs-idm16313536"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_08_04_Band",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68747:caption:CNX_Chem_08_04_Band-caption"
+              },
+              "media": {
+                "id": "fs-idp263742416",
+                "alt": "This figure shows three diagrams. The first is labeled, “Insulator,” and it consists of two boxes. The “conduction” box is above and the “valence” box is below. A large gap marked by 4 dashed lines contains a double-headed arrow. One head pointing towards the “conduction box” and the other towards the “valence” box. The arrow is labeled, “Band gap.” The second diagram is similar to the first, but the band gap is about half as large. This diagram is labeled, “Semiconductor.” The third diagram is similar to the other two, but the band gap is about a fifth that of the “Semiconductor” diagram. This diagram is labeled, “Conductor.”",
+                "src": "../../media/CNX_Chem_08_04_Band.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "example",
+              "id": "fs-idm85103616",
+              "title": {
+                "segmentId": "m68747:example-title:fs-idm85103616-title",
+                "text": "Molecular Orbital Diagrams, Bond Order, and Number of Unpaired Electrons"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp23720752",
+                  "segmentId": "m68747:para:fs-idp23720752"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm92673360",
+                  "segmentId": "m68747:para:fs-idm92673360",
+                  "title": {
+                    "segmentId": "m68747:para-title:fs-idm92673360-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp49533696",
+                  "segmentId": "m68747:para:fs-idp49533696"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm102792656",
+                  "segmentId": "m68747:para:fs-idm102792656"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm78530944",
+                  "segmentId": "m68747:para:fs-idm78530944",
+                  "title": {
+                    "segmentId": "m68747:para-title:fs-idm78530944-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm171143328",
+                  "segmentId": "m68747:para:fs-idm171143328"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm75364784"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm165020816",
+                  "title": {
+                    "segmentId": "m68747:note-title:fs-idm165020816-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm171143328",
+                      "segmentId": "m68747:para:fs-idm171143328"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_08_04_O2MO",
+              "caption": {
+                "segmentId": "m68747:caption:CNX_Chem_08_04_O2MO-caption"
+              },
+              "media": {
+                "id": "fs-idm156437120",
+                "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 2 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “2 s,” and with two vertical half arrows drawn on them, one facing up and one facing down. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first and labeled, “sigma subscript 2 s superscript asterisk.” This horizontal line has two vertical half-arrow drawn on it, one facing up and one facing down. Moving further up the center of the diagram is a horizontal line labeled, “sigma subscript 2 p subscript x,” which lies below two horizontal lines, lying side-by-side, and labeled “pi subscript 2 p subscript y,” and “pi subscript 2 p subscript z.” Both the bottom and top lines are connected to the right and left by upward-facing, dotted lines to three more horizontal lines, each labeled, “2 p,” on either side. These sets of lines each hold three upward-facing and one downward-facing half-arrow. They are connected by upward-facing dotted lines to another single line and then pair of double lines in the center of the diagram, but farther up from the lower lines. They are labeled, “sigma subscript 2 p subscript x superscript asterisk,” “pi subscript 2 p subscript y superscript asterisk,” and “pi subscript 2 p subscript z superscript asterisk,” respectively. The lower of these two central, horizontal lines each contain one upward-facing half-arrow. The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.”",
+                "src": "../../media/CNX_Chem_08_04_O2MO-912b.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "example",
+              "id": "fs-idm114393376",
+              "title": {
+                "segmentId": "m68747:example-title:fs-idm114393376-title",
+                "text": "Ion Predictions with MO Diagrams"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp178692512",
+                  "segmentId": "m68747:para:fs-idp178692512"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm77202544",
+                  "segmentId": "m68747:para:fs-idm77202544",
+                  "title": {
+                    "segmentId": "m68747:para-title:fs-idm77202544-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm105620480",
+                  "segmentId": "m68747:para:fs-idm105620480",
+                  "title": {
+                    "segmentId": "m68747:para-title:fs-idm105620480-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm171067584",
+                  "segmentId": "m68747:para:fs-idm171067584"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm41078336",
+                  "title": {
+                    "segmentId": "m68747:note-title:fs-idm41078336-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm171067584",
+                      "segmentId": "m68747:para:fs-idm171067584"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idm62347072",
+              "class": "chemistry link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm82029920",
+                  "segmentId": "m68747:para:fs-idm82029920"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm182437472",
+          "segmentId": "m68747:para:fs-idm182437472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm108439328",
+          "segmentId": "m68747:para:fs-idm108439328"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_04_H2MO",
+          "caption": {
+            "segmentId": "m68747:caption:CNX_Chem_08_04_H2MO-caption"
+          },
+          "media": {
+            "id": "fs-idm45698032",
+            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled “H” while the center is labeled “H subscript 2.”",
+            "src": "../../media/CNX_Chem_08_04_H2MO-a7a1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm43412080",
+          "segmentId": "m68747:para:fs-idm43412080"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm61635600",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm130556608",
+          "segmentId": "m68747:para:fs-idm130556608"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm142555728",
+          "segmentId": "m68747:para:fs-idm142555728"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp1555152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166378064",
+          "segmentId": "m68747:para:fs-idm166378064"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_04_He2MO",
+          "caption": {
+            "segmentId": "m68747:caption:CNX_Chem_08_04_He2MO-caption"
+          },
+          "media": {
+            "id": "fs-idm8319568",
+            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up and one facing down drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” This line has one upward-facing and one downward-facing vertical arrow drawn on it. The left and right sides of the diagram have headers that read, “Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled, “H e,” while the center is labeled, “H e subscript 2.”",
+            "src": "../../media/CNX_Chem_08_04_He2MO-cf1f.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp114974944",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68747:title:fs-idp114974944-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm157944352",
+          "segmentId": "m68747:para:fs-idm157944352"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm113162704",
+          "segmentId": "m68747:para:fs-idm113162704"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm136319184",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68747:title:fs-idm136319184-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68747:entry:auto-146",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm158963280",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68747:title:fs-idm158963280-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp105434592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm52005904",
+                "segmentId": "m68747:problem:fs-idm52005904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm165679168",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm131857600",
+                "segmentId": "m68747:problem:fs-idm131857600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm52133904",
+                "segmentId": "m68747:problem:fs-idm52133904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142106032",
+                "segmentId": "m68747:problem:fs-idm142106032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm72819696",
+                "segmentId": "m68747:problem:fs-idm72819696"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm101918992",
+                "segmentId": "m68747:solution:fs-idm101918992"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm138595920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm140245904",
+                "segmentId": "m68747:problem:fs-idm140245904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm177595920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5146672",
+                "segmentId": "m68747:problem:fs-idm5146672"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm110476336",
+                "segmentId": "m68747:solution:fs-idm110476336"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm41078784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm104850864",
+                "segmentId": "m68747:problem:fs-idm104850864"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm100278000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84729040",
+                "segmentId": "m68747:problem:fs-idm84729040"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50841888",
+                "segmentId": "m68747:solution:fs-idm50841888"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm131971232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm250808016",
+                "segmentId": "m68747:problem:fs-idm250808016"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm63124960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm141640192",
+                "segmentId": "m68747:problem:fs-idm141640192"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm175049680",
+                "segmentId": "m68747:solution:fs-idm175049680"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm179535904",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm79850784",
+                "segmentId": "m68747:problem:fs-idm79850784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp106074208",
+                "segmentId": "m68747:problem:fs-idp106074208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm112507120",
+                "segmentId": "m68747:problem:fs-idm112507120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm149132992",
+                "segmentId": "m68747:problem:fs-idm149132992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm174761040",
+                "segmentId": "m68747:problem:fs-idm174761040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm153035568",
+                "segmentId": "m68747:problem:fs-idm153035568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm87711488",
+                "segmentId": "m68747:problem:fs-idm87711488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp95311296",
+                "segmentId": "m68747:problem:fs-idp95311296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm79961856",
+                "segmentId": "m68747:problem:fs-idm79961856"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm111217280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm73750816",
+                "segmentId": "m68747:problem:fs-idm73750816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm46580704",
+                "segmentId": "m68747:problem:fs-idm46580704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm95276832",
+                "segmentId": "m68747:problem:fs-idm95276832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm162831088",
+                "segmentId": "m68747:problem:fs-idm162831088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm52692016",
+                "segmentId": "m68747:problem:fs-idm52692016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60009712",
+                "segmentId": "m68747:problem:fs-idp60009712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7180048",
+                "segmentId": "m68747:solution:fs-idp7180048"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm63366704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm136087312",
+                "segmentId": "m68747:problem:fs-idm136087312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm135320832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm148431744",
+                "segmentId": "m68747:problem:fs-idm148431744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm62835952",
+                "segmentId": "m68747:problem:fs-idm62835952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm73473328",
+                "segmentId": "m68747:problem:fs-idm73473328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm103580560",
+                "segmentId": "m68747:problem:fs-idm103580560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm62582320",
+                "segmentId": "m68747:problem:fs-idm62582320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm42182864",
+                "segmentId": "m68747:problem:fs-idm42182864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm142531552",
+                "segmentId": "m68747:solution:fs-idm142531552"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp45731680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm70863072",
+                "segmentId": "m68747:problem:fs-idm70863072"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm76747104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm111685776",
+                "segmentId": "m68747:problem:fs-idm111685776"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm149192752",
+                "segmentId": "m68747:solution:fs-idm149192752"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm16460880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm110121168",
+                "segmentId": "m68747:problem:fs-idm110121168"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm16458944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm153039552",
+                "segmentId": "m68747:problem:fs-idm153039552"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm46527040",
+                "segmentId": "m68747:solution:fs-idm46527040"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm76713856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52729808",
+                "segmentId": "m68747:problem:fs-idp52729808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm133690944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm113788912",
+                "segmentId": "m68747:problem:fs-idm113788912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm119081680",
+                "segmentId": "m68747:solution:fs-idm119081680"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm79754896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm166052672",
+                "segmentId": "m68747:problem:fs-idm166052672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm180545744",
+                "segmentId": "m68747:problem:fs-idm180545744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm62053584",
+                "segmentId": "m68747:problem:fs-idm62053584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm141104496",
+                "segmentId": "m68747:problem:fs-idm141104496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp59489840",
+                "segmentId": "m68747:problem:fs-idp59489840"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68747:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68747:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68747:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68747:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68747:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68747:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm143725728",
+        "termSegmentId": "m68747:glossary-term:fs-idm143725728-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm143725728-def"
+      },
+      {
+        "id": "fs-idm57102096",
+        "termSegmentId": "m68747:glossary-term:fs-idm57102096-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm57102096-def"
+      },
+      {
+        "id": "fs-idm133686144",
+        "termSegmentId": "m68747:glossary-term:fs-idm133686144-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm133686144-def"
+      },
+      {
+        "id": "fs-idm167738656",
+        "termSegmentId": "m68747:glossary-term:fs-idm167738656-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm167738656-def"
+      },
+      {
+        "id": "fs-idm83103936",
+        "termSegmentId": "m68747:glossary-term:fs-idm83103936-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm83103936-def"
+      },
+      {
+        "id": "fs-idm165896720",
+        "termSegmentId": "m68747:glossary-term:fs-idm165896720-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm165896720-def"
+      },
+      {
+        "id": "fs-idm41528352",
+        "termSegmentId": "m68747:glossary-term:fs-idm41528352-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm41528352-def"
+      },
+      {
+        "id": "fs-idm131261760",
+        "termSegmentId": "m68747:glossary-term:fs-idm131261760-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm131261760-def"
+      },
+      {
+        "id": "fs-idm132723600",
+        "termSegmentId": "m68747:glossary-term:fs-idm132723600-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm132723600-def"
+      },
+      {
+        "id": "fs-idm249965088",
+        "termSegmentId": "m68747:glossary-term:fs-idm249965088-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm249965088-def"
+      },
+      {
+        "id": "fs-idm100788960",
+        "termSegmentId": "m68747:glossary-term:fs-idm100788960-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm100788960-def"
+      },
+      {
+        "id": "fs-idm100344544",
+        "termSegmentId": "m68747:glossary-term:fs-idm100344544-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm100344544-def"
+      },
+      {
+        "id": "fs-idm18620192",
+        "termSegmentId": "m68747:glossary-term:fs-idm18620192-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm18620192-def"
+      },
+      {
+        "id": "fs-idm41960016",
+        "termSegmentId": "m68747:glossary-term:fs-idm41960016-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm41960016-def"
+      },
+      {
+        "id": "fs-idm169269152",
+        "termSegmentId": "m68747:glossary-term:fs-idm169269152-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idm169269152-def"
+      },
+      {
+        "id": "fs-idp5821920",
+        "termSegmentId": "m68747:glossary-term:fs-idp5821920-term",
+        "definitionSegmentId": "m68747:glossary-def:fs-idp5821920-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

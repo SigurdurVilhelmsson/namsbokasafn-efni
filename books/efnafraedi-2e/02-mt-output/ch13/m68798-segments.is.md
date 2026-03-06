@@ -636,7 +636,7 @@ hitastig en aðeins eitt gildi fyrir jafnvægisfastann við það hitastig.
 
 <!-- SEG:m68798:problem:fs-idp125938384 --> Útskýrðu hvers vegna jafnvægi
 milli Br~2~(*l*) og Br~2~(*g*) myndi ekki nást ef ílátið væri ekki lokað
-ílát eins og sýnt er í [#CNX_Chem_13_01_bromine].
+ílát eins og sýnt er í [m68797#CNX_Chem_13_01_bromine].
 
 
 <!-- SEG:m68798:solution:fs-idp742448 --> Ekki er hægt að koma á jafnvægi

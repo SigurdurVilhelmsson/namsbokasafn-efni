@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "moduleId": "m68802",
+  "extractedAt": "2026-03-06T13:09:39.235Z",
+  "sourceHash": "740c7d660beec4e5",
+  "segmentCount": 10,
+  "segmentIds": [
+    "m68802:title:auto-1",
+    "m68802:abstract-item:abstract-item-1",
+    "m68802:abstract-item:abstract-item-2",
+    "m68802:abstract-item:abstract-item-3",
+    "m68802:abstract-item:abstract-item-4",
+    "m68802:abstract-item:abstract-item-5",
+    "m68802:abstract-item:abstract-item-6",
+    "m68802:abstract-item:abstract-item-7",
+    "m68802:caption:CNX_Chem_14_00_Sinkhole-caption",
+    "m68802:para:fs-idp162964256"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_14_00_Sinkhole"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

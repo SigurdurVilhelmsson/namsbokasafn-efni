@@ -1,0 +1,27 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{{m}_{s}=+\\frac{1}{2}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{{m}_{s}=+\\frac{1}{2}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{m}_{s}=-\\frac{1}{2}.}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mo>+</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{+\\, \\frac{1}{2}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{m}_{s}=+\\frac{1}{2}.}"
+  },
+  "fs-idp20565040": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr><m:mtd><m:mtext>Li:</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>[</m:mo> <m:mrow><m:mtext>He</m:mtext></m:mrow> <m:mo>]</m:mo></m:mrow><m:mn>2</m:mn><m:msup><m:mi>s</m:mi><m:mn>1</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Na:</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>[</m:mo> <m:mrow><m:mtext>Ne</m:mtext></m:mrow> <m:mo>]</m:mo></m:mrow><m:mn>3</m:mn><m:msup><m:mi>s</m:mi><m:mn>1</m:mn></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} \\text{Li:}\\, {[ {\\text{He}} ]}2{s}^{1} \\\\ \\text{Na:}\\, {[ {\\text{Ne}} ]}3{s}^{1} \\end{aligned}",
+    "isBlock": true
+  }
+}

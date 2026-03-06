@@ -1,0 +1,75 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>CH</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}\\text{C}≡\\text{CH}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}≡\\text{C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>CH</m:mtext><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{({{\\text{CH}}3})}}2{{\\text{CHCH}}}_{2}\\text{CH}={{\\text{CH}}}_{2}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>CH</m:mtext><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}\\text{CH}={{\\text{CHCH}}}_{3}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>CH</m:mtext></m:mrow></m:math>",
+    "latex": "{{{({{\\text{CH}}3})}}3{{\\text{CCH}}}_{2}\\text{C}≡\\text{CH}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH</m:mtext><m:mo>=</m:mo><m:mtext>CHCl.</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}\\text{CH}=\\text{CHCl.}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mn>3</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{3{\\text{C}}_{2}{\\text{H}}_{2}\\, \\longrightarrow \\, {\\text{C}}_{6}{\\text{H}}_{6}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mtext>CH</m:mtext><m:mo>≡</m:mo><m:msub><m:mrow><m:mtext>CCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>CHI</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CI</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{CH}≡{{\\text{CCH}}}_{2}{{\\text{CH}}}_{3}+2{\\text{I}}_{2}\\, \\longrightarrow \\, {{\\text{CHI}}}_{2}{{\\text{CI}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{3}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:mn>8</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>5</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>6H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{3}+8{\\text{O}}_{2}\\, \\longrightarrow \\, 5{{\\text{CO}}}_{2}+{{\\text{6H}}}_{2}\\text{O}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>C</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{C}}}_{2}^{{2−}}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}{\\text{H}}_{6}\\, \\longrightarrow \\, {\\text{C}}_{2}{\\text{H}}_{4}+{\\text{H}}_{2}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idp37745984": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mtext>g</m:mtext><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{4}(g)+2{\\text{O}}_{2}(g)\\, \\longrightarrow \\, {{\\text{CO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}{(\\text{g})}}",
+    "isBlock": true
+  }
+}

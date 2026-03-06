@@ -1,0 +1,624 @@
+{
+  "moduleId": "m68835",
+  "title": {
+    "segmentId": "m68835:title:auto-1",
+    "text": "Occurrence, Preparation, and Properties of Nitrogen"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "fa6592b5-4723-4955-816d-2a0d46641b8c",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the properties, preparation, and uses of nitrogen"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp100617568",
+      "segmentId": "m68835:para:fs-idp100617568"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp20917824",
+      "segmentId": "m68835:para:fs-idp20917824"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp90361632",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68835:note-title:fs-idp90361632-title",
+        "text": "Nitrogen Fixation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm122679488",
+          "segmentId": "m68835:para:fs-idm122679488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm16624624",
+          "segmentId": "m68835:para:fs-idm16624624"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_Nitrogen",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_Nitrogen-caption"
+      },
+      "media": {
+        "id": "fs-idp145097616",
+        "alt": "A flow chart is shown. A cow, grass, and a tree are shown in the center of the diagram. Downward-facing arrows lead from them to the phrase, “Decomposers ( aerobic and anaerobic bacteria and fungi ).” A downward-facing arrow leads to a space-filing model with one blue atom bonded to four white atoms. The model is labeled, “Ammonium ( N H subscript 4 ).” A right-facing arrow leads from this molecule to another molecule that is composed of a blue atom bonded to two red atoms. The model is labeled, “Nitrites ( N O subscript 2 superscript negative sign ).” Below this arrow is a picture of a circle with two rod-shaped structures. It is labeled, “Nitrifying bacteria.” Above the nitrites label is an upward-facing arrow leading to a blue atom single-bonded to three red atoms. The model is labeled, “Nitrates ( N O subscript 3 superscript negative sign ).” Next to this arrow is a picture of a circle with two rod-shaped structures labeled, “Nitrifying bacteria.” The nitrates label has a double-headed, upward-facing arrow that leads to two pictures: one of the roots of the tree which is labeled, “Assimilation,” and one leading to a picture of a circle with four oval-shaped structures labeled, “Denitrifying bacteria.” A left-facing arrow leads from this bacteria to a molecule made up of two atoms triple-bonded together and labeled, “Atmospheric nitrogen ( N subscript 2 ).” This molecule is connected to a downward-facing, double-headed arrow that leads to an image showing yellow filaments on a black background and a picture of a circle with four rod-shaped structures labeled, “Nitrogen-fixing soil bacteria.” An arrow leads from a picture of a plant’s roots to the yellow filaments and then to a photo of a circle with four oval-shaped structures labeled, “Nitrogen-fixing bacteria in root nodules.”",
+        "src": "../../media/CNX_Chem_18_07_Nitrogen.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp193317744",
+      "segmentId": "m68835:para:fs-idp193317744"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp19296512",
+      "segmentId": "m68835:para:fs-idp19296512"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp79367584",
+      "segmentId": "m68835:para:fs-idp79367584"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_molecreso",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_molecreso-caption"
+      },
+      "media": {
+        "id": "fs-idp214051744",
+        "alt": "A space-filling model of a molecule shows two blue atoms labeled 'N' bonded to one another and to one red atom labeled 'O'. Two Lewis structures are also shown and connected by a double-headed arrow. The left image shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen atom. The second nitrogen atom is double-bonded to an oxygen atom that has two lone pairs of electrons. The right image shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen atom. The second nitrogen atom is single bonded to an oxygen atom that has three lone pairs of electrons.",
+        "src": "../../media/CNX_Chem_18_07_molecreso.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp180929296",
+      "segmentId": "m68835:para:fs-idp180929296"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm42181536",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp194327280",
+      "segmentId": "m68835:para:fs-idp194327280"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp52451792",
+      "segmentId": "m68835:para:fs-idp52451792"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_N2O2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_N2O2-caption"
+      },
+      "media": {
+        "id": "fs-idp29719568",
+        "alt": "Two Lewis structures are shown and connected by a double-headed arrow. The left image shows a number two next to a nitrogen atom with a lone electron and a lone pair of electrons. The nitrogen atom is double-bonded to an oxygen atom with two lone pairs of electrons. The right image shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another. Each is also double bonded to an oxygen atom with two lone pairs of electrons.",
+        "src": "../../media/CNX_Chem_18_07_N2O2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp124712112",
+      "segmentId": "m68835:para:fs-idp124712112"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_molecreso2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_molecreso2-caption"
+      },
+      "media": {
+        "id": "fs-idm41926784",
+        "alt": "A space-filling model of a molecule shows two blue atoms labeled, “N,” bonded to one another and to three red atoms labeled, “O.” Two Lewis structures are also shown and connected by a double-headed arrow. The left image shows two nitrogen atoms that are single bonded to one another. The left nitrogen is double bonded to an oxygen atom that has two lone pairs of electrons. The right nitrogen has one lone pair of electrons and is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen with three lone pairs of electrons. The right image shows two nitrogen atoms that are single bonded to one another. The left nitrogen is double bonded to an oxygen atom that has two lone pairs of electrons. The right nitrogen has one lone pair of electrons and is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen atom with three lone pairs of electrons.",
+        "src": "../../media/CNX_Chem_18_07_molecreso2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp82359632",
+      "segmentId": "m68835:para:fs-idp82359632"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_CuHNO32NO2",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_CuHNO32NO2-caption"
+      },
+      "media": {
+        "id": "fs-idp62797312",
+        "alt": "Three photos are shown and connected by right-facing arrows. The left image shows a test tube in a clamp that holds a colorless solution and a wire held above it. The middle image shows a test tube in a clamp that holds a wire submerged in a pale green liquid and emitting a light brown gas. The right image shows a test tube in a clamp that holds a wire submerged in a dark green liquid and emitting a brown gas.",
+        "src": "../../media/CNX_Chem_18_07_CuHNO32NO2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp23039360",
+      "segmentId": "m68835:para:fs-idp23039360"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_N2O4",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_N2O4-caption"
+      },
+      "media": {
+        "id": "fs-idm34469632",
+        "alt": "Two space-filling models and two Lewis structures are shown. The left space-filling model shows a blue atom labeled, “N,” bonded to two red atoms labeled, “O,” while the right space-filling model shows two blue atoms labeled, “N,” each bonded to two red atoms labeled, “O.” The left Lewis structure shows a nitrogen atom with one lone electron single bonded to an oxygen atom with three lone pairs of electrons. The nitrogen atom is also double bonded to an oxygen atom with two lone pairs of electrons. The right structure, which is connected by a double-headed arrow to the first, is a diagram showing a similar Lewis structure, but the position of the double bond and the number of electron pairs on the oxygen atoms have switched.",
+        "src": "../../media/CNX_Chem_18_07_N2O4.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp190363104",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp120707200",
+      "segmentId": "m68835:para:fs-idp120707200"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_07_N2O5",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68835:caption:CNX_Chem_18_07_N2O5-caption"
+      },
+      "media": {
+        "id": "fs-idp90043792",
+        "alt": "A space-filling model and a Lewis structure are shown. The space-filling model shows two blue atoms labeled, “N,” each bonded to two red atoms labeled, “O,” with another red atom labeled, “O,” in between them. The Lewis structure shows a nitrogen atom single bonded to an oxygen atom with three lone pairs of electrons in a downward position and double bonded to an oxygen atom with two lone pairs of electrons in an upward position. This nitrogen is single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to another nitrogen atom which is single bonded to another oxygen atom with three lone pairs of electrons in an upward position. The second nitrogen atom is also double bonded to an oxygen atom with two lone pairs of electrons in a downward position.",
+        "src": "../../media/CNX_Chem_18_07_N2O5.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp77732832",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp30681184",
+      "segmentId": "m68835:para:fs-idp30681184"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp68612624",
+      "segmentId": "m68835:para:fs-idp68612624"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp46021216",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp245790208",
+      "segmentId": "m68835:para:fs-idp245790208"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp89011632",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp62382032",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp32170576",
+      "segmentId": "m68835:para:fs-idp32170576"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp458544",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp151564224",
+      "class": "unnumbered"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp114244272",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68835:title:fs-idp114244272-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp67053552",
+          "segmentId": "m68835:para:fs-idp67053552"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp52331728",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68835:title:fs-idp52331728-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp29787040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp87897568",
+                "segmentId": "m68835:problem:fs-idp87897568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34544192",
+                "segmentId": "m68835:problem:fs-idm34544192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp83218288",
+                "segmentId": "m68835:problem:fs-idp83218288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp91492368",
+                "segmentId": "m68835:problem:fs-idp91492368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp213621152",
+                "segmentId": "m68835:problem:fs-idp213621152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16201152",
+                "segmentId": "m68835:problem:fs-idp16201152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29849664",
+                "segmentId": "m68835:solution:fs-idp29849664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm31681344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27850272",
+                "segmentId": "m68835:problem:fs-idm27850272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm49565568",
+                "segmentId": "m68835:problem:fs-idm49565568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp28704896",
+                "segmentId": "m68835:problem:fs-idp28704896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp52177392",
+                "segmentId": "m68835:problem:fs-idp52177392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88571680",
+                "segmentId": "m68835:problem:fs-idp88571680"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14942656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23217968",
+                "segmentId": "m68835:problem:fs-idp23217968"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp95893216",
+                "segmentId": "m68835:solution:fs-idp95893216"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp2884576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp122339584",
+                "segmentId": "m68835:problem:fs-idp122339584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208419200",
+                "segmentId": "m68835:problem:fs-idp208419200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm122957024",
+                "segmentId": "m68835:problem:fs-idm122957024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp59467904",
+                "segmentId": "m68835:problem:fs-idp59467904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm31311152",
+                "segmentId": "m68835:problem:fs-idm31311152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp343503680",
+                "segmentId": "m68835:problem:fs-idp343503680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5304144",
+                "segmentId": "m68835:problem:fs-idm5304144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp248979136",
+                "segmentId": "m68835:problem:fs-idp248979136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp13179472",
+                "segmentId": "m68835:problem:fs-idp13179472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp194583584",
+                "segmentId": "m68835:problem:fs-idp194583584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp57609536",
+                "segmentId": "m68835:problem:fs-idp57609536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp9296992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp50791824",
+                "segmentId": "m68835:problem:fs-idp50791824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp28476992",
+                "segmentId": "m68835:problem:fs-idp28476992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp126098992",
+                "segmentId": "m68835:problem:fs-idp126098992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm30858912",
+                "segmentId": "m68835:problem:fs-idm30858912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51761680",
+                "segmentId": "m68835:solution:fs-idp51761680"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp114788336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm886624",
+                "segmentId": "m68835:problem:fs-idm886624"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm46455776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69216848",
+                "segmentId": "m68835:problem:fs-idp69216848"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp203262192",
+                "segmentId": "m68835:solution:fs-idp203262192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp88710064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp20666880",
+                "segmentId": "m68835:problem:fs-idp20666880"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68835:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68835:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp203631920",
+        "termSegmentId": "m68835:glossary-term:fs-idp203631920-term",
+        "definitionSegmentId": "m68835:glossary-def:fs-idp203631920-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp208966864",
+      "class": null,
+      "alt": "This Lewis structure shows a nitrogen atom with three lone pairs of electrons single bonded to a hydrogen atom. The structure is surrounded by brackets. Outside and superscript to the brackets is a two negative sign.",
+      "src": "../../media/CNX_Chem_18_07_Exercise1a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp125060640",
+      "class": null,
+      "alt": "This Lewis structure shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two fluorine atoms. Each fluorine atom has three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_18_07_Exercise1b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp38448752",
+      "class": null,
+      "alt": "This Lewis structure shows a nitrogen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The structure is surrounded by brackets. Outside and superscript to the brackets is a negative sign.",
+      "src": "../../media/CNX_Chem_18_07_Exercise1c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp88863712",
+      "class": null,
+      "alt": "This Lewis structure shows a nitrogen atom, with one lone pair of electrons, single bonded to three fluorine atoms. Each fluorine atom has three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_18_07_Exercise1d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idp128360176",
+      "class": null,
+      "alt": "Three Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen which is single bonded to a third nitrogen. The third nitrogen has three lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The middle structure shows a nitrogen atom with three lone pair of electrons single bonded to a second nitrogen which is triple bonded to a third nitrogen. The third nitrogen which has one lone pair of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen which is double bonded to a third nitrogen. The third nitrogen atom has two lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign.",
+      "src": "../../media/CNX_Chem_18_07_Exercise1e_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idp121558896",
+      "class": null,
+      "alt": "Two Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a single electron double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pairs of electrons. The right structure is a mirror image of the left structure.",
+      "src": "../../media/CNX_Chem_18_07_Exercise5a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idp21294016",
+      "class": null,
+      "alt": "Two Lewis structures are shown and connected by double-headed arrows in between. Each structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The left structure shows a nitrogen atom with a lone pair of electrons double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pair of electrons. The right structure is a mirror image of the left structure.",
+      "src": "../../media/CNX_Chem_18_07_Exercise5b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idp20652368",
+      "class": null,
+      "alt": "This Lewis structure shows a nitrogen atom double bonded on both sides to an oxygen atom which has two lone pairs of electrons each. The structure is surrounded by brackets and outside and superscript to the brackets is a negative sign.",
+      "src": "../../media/CNX_Chem_18_07_Exercise5c_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

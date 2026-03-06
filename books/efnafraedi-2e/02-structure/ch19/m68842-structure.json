@@ -1,0 +1,1865 @@
+{
+  "moduleId": "m68842",
+  "title": {
+    "segmentId": "m68842:title:auto-1",
+    "text": "Occurrence, Preparation, and Properties of Transition Metals and Their Compounds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f34d3f79-2f26-4b2f-be4c-ac5866935553"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm272953936",
+      "segmentId": "m68842:para:fs-idm272953936"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_01_PeriodicEConfig",
+      "caption": {
+        "segmentId": "m68842:caption:CNX_Chem_19_01_PeriodicEConfig-caption"
+      },
+      "media": {
+        "id": "fs-idm272821040",
+        "alt": "The Periodic Table of Elements is shown. The 18 columns are labeled “Group” and the 7 rows are labeled “Period.” Below the table to the right is a box labeled “Color Code” with different colors for metals, metalloids, and nonmetals, as well as solids, liquids, and gases. To the left of this box is an enlarged picture of the upper-left most box on the table. The number 1 is in its upper-left hand corner and is labeled “Atomic number.” The letter “H” is in the middle in red indicating that it is a gas. It is labeled “Symbol.” Below that is the number 1.008 which is labeled “Atomic Mass.” Below that is the word hydrogen which is labeled “name.” The color of the box indicates that it is a nonmetal. Each element will be described in this order: atomic number; name; symbol; whether it is a metal, metalloid, or nonmetal; whether it is a solid, liquid, or gas; and atomic mass. Beginning at the top left of the table, or period 1, group 1, is a box containing “1; hydrogen; H; nonmetal; gas; and 1.008.” There is only one other element box in period 1, group 18, which contains “2; helium; H e; nonmetal; gas; and 4.003.” Period 2, group 1 contains “3; lithium; L i; metal; solid; and 6.94” Group 2 contains “4; beryllium; B e; metal; solid; and 9.012.” Groups 3 through 12 are skipped and group 13 contains “5; boron; B; metalloid; solid; 10.81.” Group 14 contains “6; carbon; C; nonmetal; solid; and 12.01.” Group 15 contains “7; nitrogen; N; nonmetal; gas; and 14.01.” Group 16 contains “8; oxygen; O; nonmetal; gas; and 16.00.” Group 17 contains “9; fluorine; F; nonmetal; gas; and 19.00.” Group 18 contains “10; neon; N e; nonmetal; gas; and 20.18.” Period 3, group 1 contains “11; sodium; N a; metal; solid; and 22.99.” Group 2 contains “12; magnesium; M g; metal; solid; and 24.31.” Groups 3 through 12 are skipped again in period 3 and group 13 contains “13; aluminum; A l; metal; solid; and 26.98.” Group 14 contains “14; silicon; S i; metalloid; solid; and 28.09.” Group 15 contains “15; phosphorous; P; nonmetal; solid; and 30.97.” Group 16 contains “16; sulfur; S; nonmetal; solid; and 32.06.” Group 17 contains “17; chlorine; C l; nonmetal; gas; and 35.45.” Group 18 contains “18; argon; A r; nonmetal; gas; and 39.95.” Period 4, group 1 contains “19; potassium; K; metal; solid; and 39.10.” Group 2 contains “20; calcium; C a; metal; solid; and 40.08.” Group 3 contains “21; scandium; S c; metal; solid; and 44.96.” Group 4 contains “22; titanium; T i; metal; solid; and 47.87.” Group 5 contains “23; vanadium; V; metal; solid; and 50.94.” Group 6 contains “24; chromium; C r; metal; solid; and 52.00.” Group 7 contains “25; manganese; M n; metal; solid; and 54.94.” Group 8 contains “26; iron; F e; metal; solid; and 55.85.” Group 9 contains “27; cobalt; C o; metal; solid; and 58.93.” Group 10 contains “28; nickel; N i; metal; solid; and 58.69.” Group 11 contains “29; copper; C u; metal; solid; and 63.55.” Group 12 contains “30; zinc; Z n; metal; solid; and 65.38.” Group 13 contains “31; gallium; G a; metal; solid; and 69.72.” Group 14 contains “32; germanium; G e; metalloid; solid; and 72.63.” Group 15 contains “33; arsenic; A s; metalloid; solid; and 74.92.” Group 16 contains “34; selenium; S e; nonmetal; solid; and 78.97.” Group 17 contains “35; bromine; B r; nonmetal; liquid; and 79.90.” Group 18 contains “36; krypton; K r; nonmetal; gas; and 83.80.” Period 5, group 1 contains “37; rubidium; R b; metal; solid; and 85.47.” Group 2 contains “38; strontium; S r; metal; solid; and 87.62.” Group 3 contains “39; yttrium; Y; metal; solid; and 88.91.” Group 4 contains “40; zirconium; Z r; metal; solid; and 91.22.” Group 5 contains “41; niobium; N b; metal; solid; and 92.91.” Group 6 contains “42; molybdenum; M o; metal; solid; and 95.95.” Group 7 contains “43; technetium; T c; metal; solid; and 97.” Group 8 contains “44; ruthenium; R u; metal; solid; and 101.1.” Group 9 contains “45; rhodium; R h; metal; solid; and 102.9.” Group 10 contains “46; palladium; P d; metal; solid; and 106.4.” Group 11 contains “47; silver; A g; metal; solid; and 107.9.” Group 12 contains “48; cadmium; C d; metal; solid; and 112.4.” Group 13 contains “49; indium; I n; metal; solid; and 114.8.” Group 14 contains “50; tin; S n; metal; solid; and 118.7.” Group 15 contains “51; antimony; S b; metalloid; solid; and 121.8.” Group 16 contains “52; tellurium; T e; metalloid; solid; and 127.6.” Group 17 contains “53; iodine; I; nonmetal; solid; and 126.9.” Group 18 contains “54; xenon; X e; nonmetal; gas; and 131.3.” Period 6, group 1 contains “55; cesium; C s; metal; solid; and 132.9.” Group 2 contains “56; barium; B a; metal; solid; and 137.3.” Group 3 breaks the pattern. The box has a large arrow pointing to a row of elements below the table with atomic numbers ranging from 57-71. In sequential order by atomic number, the first box in this row contains “57; lanthanum; L a; metal; solid; and 138.9.” To its right, the next is “58; cerium; C e; metal; solid; and 140.1.” Next is “59; praseodymium; P r; metal; solid; and 140.9.” Next is “60; neodymium; N d; metal; solid; and 144.2.” Next is “61; promethium; P m; metal; solid; and 145.” Next is “62; samarium; S m; metal; solid; and 150.4.” Next is “63; europium; E u; metal; solid; and 152.0.” Next is “64; gadolinium; G d; metal; solid; and 157.3.” Next is “65; terbium; T b; metal; solid; and 158.9.” Next is “66; dysprosium; D y; metal; solid; and 162.5.” Next is “67; holmium; H o; metal; solid; and 164.9.” Next is “68; erbium; E r; metal; solid; and 167.3.” Next is “69; thulium; T m; metal; solid; and 168.9.” Next is “70; ytterbium; Y b; metal; solid; and 173.1.” The last in this special row is “71; lutetium; L u; metal; solid; and 175.0.” Continuing in period 6, group 4 contains “72; hafnium; H f; metal; solid; and 178.5.” Group 5 contains “73; tantalum; T a; metal; solid; and 180.9.” Group 6 contains “74; tungsten; W; metal; solid; and 183.8.” Group 7 contains “75; rhenium; R e; metal; solid; and 186.2.” Group 8 contains “76; osmium; O s; metal; solid; and 190.2.” Group 9 contains “77; iridium; I r; metal; solid; and 192.2.” Group 10 contains “78; platinum; P t; metal; solid; and 195.1.” Group 11 contains “79; gold; A u; metal; solid; and 197.0.” Group 12 contains “80; mercury; H g; metal; liquid; and 200.6.” Group 13 contains “81; thallium; T l; metal; solid; and 204.4.” Group 14 contains “82; lead; P b; metal; solid; and 207.2.” Group 15 contains “83; bismuth; B i; metal; solid; and 209.0.” Group 16 contains “84; polonium; P o; metal; solid; and 209.” Group 17 contains “85; astatine; A t; metalloid; solid; and 210.” Group 18 contains “86; radon; R n; nonmetal; gas; and 222.” Period 7, group 1 contains “87; francium; F r; metal; solid; and 223.” Group 2 contains “88; radium; R a; metal; solid; and 226.” Group 3 breaks the pattern much like what occurs in period 6. A large arrow points from the box in period 7, group 3 to a special row containing the elements with atomic numbers ranging from 89-103, just below the row which contains atomic numbers 57-71. In sequential order by atomic number, the first box in this row contains “89; actinium; A c; metal; solid; and 227.” To its right, the next is “90; thorium; T h; metal; solid; and 232.0.” Next is “91; protactinium; P a; metal; solid; and 231.0.” Next is “92; uranium; U; metal; solid; and 238.0.” Next is “93; neptunium; N p; metal; solid; and N p.” Next is “94; plutonium; P u; metal; solid; and 244.” Next is “95; americium; A m; metal; solid; and 243.” Next is “96; curium; C m; metal; solid; and 247.” Next is “97; berkelium; B k; metal; solid; and 247.” Next is “98; californium; C f; metal; solid; and 251.” Next is “99; einsteinium; E s; metal; solid; and 252.” Next is “100; fermium; F m; metal; solid; and 257.” Next is “101; mendelevium; M d; metal; solid; and 258.” Next is “102; nobelium; N o; metal; solid; and 259.” The last in this special row is “103; lawrencium; L r; metal; solid; and 262.” Continuing in period 7, group 4 contains “104; rutherfordium; R f; metal; solid; and 267.” Group 5 contains “105; dubnium; D b; metal; solid; and 270.” Group 6 contains “106; seaborgium; S g; metal; solid; and 271.” Group 7 contains “107; bohrium; B h; metal; solid; and 270.” Group 8 contains “108; hassium; H s; metal; solid; and 277.” Group 9 contains “109; meitnerium; M t; not indicated; solid; and 276.” Group 10 contains “110; darmstadtium; D s; not indicated; solid; and 281.” Group 11 contains “111; roentgenium; R g; not indicated; solid; and 282.” Group 12 contains “112; copernicium; C n; metal; liquid; and 285.” Group 13 contains “113; ununtrium; U u t; not indicated; solid; and 285.” Group 14 contains “114; flerovium; F l; not indicated; solid; and 289.” Group 15 contains “115; ununpentium; U u p; not indicated; solid; and 288.” Group 16 contains “116; livermorium; L v; not indicated; solid; and 293.” Group 17 contains “117; ununseptium; U u s; not indicated; solid; and 294.” Group 18 contains “118; ununoctium; U u o; not indicated; solid; and 294.”",
+        "src": "../../media/CNX_Chem_19_01_PeriodicEConfig.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm165890960",
+      "segmentId": "m68842:para:fs-idm165890960"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm9696240",
+      "segmentId": "m68842:para:fs-idm9696240"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm42300304",
+      "title": {
+        "segmentId": "m68842:example-title:fs-idm42300304-title",
+        "text": "Valence Electrons in Transition Metals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm206811504",
+          "segmentId": "m68842:para:fs-idm206811504"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm126105600",
+          "segmentId": "m68842:para:fs-idm126105600"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166611760",
+          "segmentId": "m68842:para:fs-idm166611760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp134314480",
+          "segmentId": "m68842:para:fs-idp134314480"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm335899488",
+          "segmentId": "m68842:para:fs-idm335899488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm159850848",
+          "segmentId": "m68842:para:fs-idm159850848"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm286727872",
+          "segmentId": "m68842:para:fs-idm286727872"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm265250272",
+          "segmentId": "m68842:para:fs-idm265250272",
+          "title": {
+            "segmentId": "m68842:para-title:fs-idm265250272-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm126025504",
+          "segmentId": "m68842:para:fs-idm126025504"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm150343488",
+          "segmentId": "m68842:para:fs-idm150343488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm248047376",
+          "segmentId": "m68842:para:fs-idm248047376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm195995744",
+          "segmentId": "m68842:para:fs-idm195995744"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm225430016",
+          "segmentId": "m68842:para:fs-idm225430016",
+          "title": {
+            "segmentId": "m68842:para-title:fs-idm225430016-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm273089696",
+          "segmentId": "m68842:para:fs-idm273089696"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp75585328",
+          "title": {
+            "segmentId": "m68842:note-title:fs-idp75585328-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm273089696",
+              "segmentId": "m68842:para:fs-idm273089696"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idm229057952",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68842:note-title:fs-idm229057952-title",
+        "text": "Uses of Lanthanides in Devices"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm24167088",
+          "segmentId": "m68842:para:fs-idm24167088"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm256905072",
+          "segmentId": "m68842:para:fs-idm256905072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm272757680",
+          "segmentId": "m68842:para:fs-idm272757680"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_01_Lanthanoid",
+      "caption": {
+        "segmentId": "m68842:caption:CNX_Chem_19_01_Lanthanoid-caption"
+      },
+      "media": {
+        "id": "fs-idm66260560",
+        "alt": "This figure contains two images. Figure a shows a background with approximately half of the background to the upper right covered by a dark blue quarter circle. The remainder of the background is red. On top of this surface are 15 vertical columns of light blue dots, which are evenly spaced with gaps between them approximately equal to the width of the columns. In figure b, a computer hard drive is shown. It consists of a thin black plastic rectangular frame on which a thin disk with a metallic appearance is placed. A curved grey shape lies outside of this disk in the rectangular frame and is circled in red. This curved shape has a thin, pointed extension that reaches to the surface of the metallic disk.",
+        "src": "../../media/CNX_Chem_19_01_Lanthanoid.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm102288080",
+      "segmentId": "m68842:para:fs-idm102288080"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm66147136",
+      "class": null,
+      "title": {
+        "segmentId": "m68842:title:fs-idm66147136-title",
+        "text": "Properties of the Transition Elements"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm265281664",
+          "segmentId": "m68842:para:fs-idm265281664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm124317440",
+          "segmentId": "m68842:para:fs-idm124317440"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm66167072",
+          "segmentId": "m68842:para:fs-idm66167072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm273645328",
+          "segmentId": "m68842:para:fs-idm273645328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm34798016",
+          "segmentId": "m68842:para:fs-idm34798016"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_01_Oxistatra",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68842:caption:CNX_Chem_19_01_Oxistatra-caption"
+          },
+          "media": {
+            "id": "fs-idm178431040",
+            "alt": "A table is shown with 10 columns and 8 rows. The first row is the header, which shows element symbols with atomic numbers as superscripts to the upper left of the element symbols. The following element symbols and numbers are shown in this manner; S c 21, T i 22, V 23, C r 24, M n 25, F e 26, C o 27, N i 28, C u 29, and Z n 30. The second row shows the value 1 plus under C u. The third row shows the value 2 plus under V, C r, M n, F e, C o, N i, C u, and Z n. The fourth row shows the value 3 plus under S c, T i, V, C r, M n, F e, C o, N i, and C u. The fifth row shows the value 4 plus under T I, V, C r, and M n. The sixth row shows the value 5 plus only under V. The seventh row shows the value 6 plus under C r, M n, and F e. The eighth row shows the value 7 plus under Mn.",
+            "src": "../../media/CNX_Chem_19_01_Oxistatra.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm168637008",
+          "segmentId": "m68842:para:fs-idm168637008"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm217974912",
+          "segmentId": "m68842:para:fs-idm217974912"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm126999824",
+          "title": {
+            "segmentId": "m68842:example-title:fs-idm126999824-title",
+            "text": "Activity of the Transition Metals"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm43231280",
+              "segmentId": "m68842:para:fs-idm43231280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm124155920",
+              "segmentId": "m68842:para:fs-idm124155920",
+              "title": {
+                "segmentId": "m68842:para-title:fs-idm124155920-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm158628640",
+              "segmentId": "m68842:para:fs-idm158628640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm193921504",
+              "segmentId": "m68842:para:fs-idm193921504",
+              "title": {
+                "segmentId": "m68842:para-title:fs-idm193921504-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm178358032",
+              "segmentId": "m68842:para:fs-idm178358032"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm230046608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm297189520"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm9523344"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm123798544",
+              "title": {
+                "segmentId": "m68842:note-title:fs-idm123798544-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm178358032",
+                  "segmentId": "m68842:para:fs-idm178358032"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm197634688",
+      "class": null,
+      "title": {
+        "segmentId": "m68842:title:fs-idm197634688-title",
+        "text": "Preparation of the Transition Elements"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm265294720",
+          "segmentId": "m68842:para:fs-idm265294720"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_01_CuFeAu",
+          "caption": {
+            "segmentId": "m68842:caption:CNX_Chem_19_01_CuFeAu-caption"
+          },
+          "media": {
+            "id": "fs-idm192179024",
+            "alt": "Three images are provided. In a, a smooth chunk of a copper-colored metal with an uneven surface is shown. In b, a dull gold chunk of a metal is shown. This chunk has a rough surface to which smaller chunks appear to be attached. In c, a rust colored chunk of a solid material with a dull surface is shown.",
+            "src": "../../media/CNX_Chem_19_01_CuFeAu.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm229647584",
+          "segmentId": "m68842:para:fs-idm229647584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm221083280",
+          "segmentId": "m68842:para:fs-idm221083280"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm203669440",
+          "segmentId": "m68842:para:fs-idm203669440"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm273763504",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68842:item:fs-idm273763504-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68842:item:fs-idm273763504-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68842:item:fs-idm273763504-item-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm109932496",
+      "class": null,
+      "title": {
+        "segmentId": "m68842:title:fs-idm109932496-title",
+        "text": "Isolation of Iron"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm124659712",
+          "segmentId": "m68842:para:fs-idm124659712"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm281682464",
+          "segmentId": "m68842:para:fs-idm281682464"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_01_BlastFurn",
+          "caption": {
+            "segmentId": "m68842:caption:CNX_Chem_19_01_BlastFurn-caption"
+          },
+          "media": {
+            "id": "fs-idm163227936",
+            "alt": "A diagram of a blast furnace is shown. The furnace has a cylindrical shape that is oriented vertically. A pipe at the lower left side of the figure is shaded yellow and is labeled “Slag.” It connects to an interior chamber. Situated at a level just below this piping on the right side of the figure is another pipe that is shaded orange. It opens at the lower right side of the figure. The orange-shaded substance at the bottom of the chamber that matches the contents of the pipe to its right is labeled “Molten iron.” The pipe has an arrow exiting to the right pointing to the label “Outlet.” Just above the slag and molten iron regions is narrower tubing on both the left and right sides of the chamber which lead slightly up and out from the central chamber to small oval shapes. These shapes are labeled, “Preheated air.” The region just above the points of entry of these two pipes or tubes into the chamber is a white region in which small rust-colored chunks of material appear suspended. This region tapers slightly to the bottom of the furnace. The region above has an orange background in which small rust-colored chunks are similarly suspended. This region fills nearly half of the interior of the furnace. Above this region is a grey shaded region. At the very top of the furnace, black line segments indicate directed openings through which small rust-colored chunks of material appear to be entering the furnace from the top. This material is labeled, “Roasted ore, coke, limestone.” Exiting the grey shaded interior region to the right is a pipe. An arrow points right exiting the pipe pointing to the label “C O, C O subscript 2, N subscript 2.” At the right side of the figure, furnace heights are labeled in order of increasing height between the outlet pipes, followed by temperatures and associated chemical reactions. Just above the pipe labeled, “Outlet,” no chemical equation appears right of, “5 f t, 1510 degrees C.” To the right of, “15 f t, 1300 degrees C,” is the equation, “C plus O subscript 2 right pointing arrow C O subscript 2.” To the right of, “25 f t, 1125 degrees C,” are the two equations, “C a O plus S i O subscript 2 right pointing arrow C a S i O subscript 3” and “C plus C O subscript 2 right pointing arrow 2 C O.” To the right of, “35 f t, 945 degrees C,” are the two equations, “C a C O subscript 3 right pointing arrow C a O plus C O subscript 2,” and, “C plus C O subscript 2 right pointing arrow 2 C O.” To the right of, “45 f t, 865 degrees C,” is the equation, “C plus C O subscript 2 right pointing arrow 2 C O.” To the right of, “55 f t, 525 degrees C,” is the equation “F e O plus C O right pointing arrow F e plus C O subscript 2.” To the right of, “65 f t, 410 degrees C,” is the equation, “F e subscript 3 O subscript 4 plus C O right pointing arrow 3 F e O plus C O subscript 2.” To the right of “75 f t, 230 degrees C,” is the equation, “3 F e subscript 2 O subscript 3 plus C O right pointing arrow 2 F e subscript 3 O subscript 4 plus C O subscript 2.”",
+            "src": "../../media/CNX_Chem_19_01_BlastFurn.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10649664",
+          "segmentId": "m68842:para:fs-idm10649664"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm159728576",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm133582016",
+          "segmentId": "m68842:para:fs-idm133582016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm63036992",
+          "segmentId": "m68842:para:fs-idm63036992"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm232228400",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm228002320",
+          "segmentId": "m68842:para:fs-idm228002320"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_01_Steel",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68842:caption:CNX_Chem_19_01_Steel-caption"
+          },
+          "media": {
+            "id": "fs-idm120335456",
+            "alt": "This figure shows a photo of molten iron. A bright yellow-orange glow appears just left of center in the figure. Smoke appears to be rising toward the top center of the figure. Just below and to the right, sparks appear to be falling.",
+            "src": "../../media/CNX_Chem_19_01_Steel.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm133853008",
+          "segmentId": "m68842:para:fs-idm133853008"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm115036912",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm245581632",
+              "segmentId": "m68842:para:fs-idm245581632"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm227366704",
+      "class": null,
+      "title": {
+        "segmentId": "m68842:title:fs-idm227366704-title",
+        "text": "Isolation of Copper"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm9895472",
+          "segmentId": "m68842:para:fs-idm9895472"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm217591888",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm249732784",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm271030272",
+          "segmentId": "m68842:para:fs-idm271030272"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm805984",
+          "segmentId": "m68842:para:fs-idm805984"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm224435904",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm237195056",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm220043616",
+          "segmentId": "m68842:para:fs-idm220043616"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_01_BlisterCu",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68842:caption:CNX_Chem_19_01_BlisterCu-caption"
+          },
+          "media": {
+            "id": "fs-idm126130592",
+            "alt": "This figure shows a large, dull, black, lumpy mass with small, metallic flecks displayed on a clear, colorless rectangular solid base.",
+            "src": "../../media/CNX_Chem_19_01_BlisterCu.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm218490304",
+      "class": null,
+      "title": {
+        "segmentId": "m68842:title:fs-idm218490304-title",
+        "text": "Isolation of Silver"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm220441776",
+          "segmentId": "m68842:para:fs-idm220441776"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm207858592",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm276857696",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm266812048",
+          "class": "unnumbered"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_19_01_Ag",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68842:caption:CNX_Chem_19_01_Ag-caption"
+          },
+          "media": {
+            "id": "fs-idm52979024",
+            "alt": "This figure contains two images. The first is of a small clump of bronze-colored metal with a very rough, irregular surface. The second shows a layer-like region of silver metal embedded in rock.",
+            "src": "../../media/CNX_Chem_19_01_Ag.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm186150352",
+          "segmentId": "m68842:para:fs-idm186150352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm216675536",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm273943792",
+          "title": {
+            "segmentId": "m68842:example-title:fs-idm273943792-title",
+            "text": "Refining Redox"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp4527376",
+              "segmentId": "m68842:para:fs-idp4527376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm132205648",
+              "segmentId": "m68842:para:fs-idm132205648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm244443632",
+              "segmentId": "m68842:para:fs-idm244443632",
+              "title": {
+                "segmentId": "m68842:para-title:fs-idm244443632-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm133949088",
+              "segmentId": "m68842:para:fs-idm133949088",
+              "title": {
+                "segmentId": "m68842:para-title:fs-idm133949088-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm192451744",
+              "segmentId": "m68842:para:fs-idm192451744"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm198792208"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp7425280"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm225052960",
+              "title": {
+                "segmentId": "m68842:note-title:fs-idm225052960-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm192451744",
+                  "segmentId": "m68842:para:fs-idm192451744"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp28687008",
+      "class": null,
+      "title": {
+        "segmentId": "m68842:title:fs-idp28687008-title",
+        "text": "Transition Metal Compounds"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp3170192",
+          "class": null,
+          "title": {
+            "segmentId": "m68842:title:fs-idp3170192-title",
+            "text": "Halides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm280878848",
+              "segmentId": "m68842:para:fs-idm280878848"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm146842880",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm101653392",
+              "segmentId": "m68842:para:fs-idm101653392"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm190441440",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm231487104",
+              "segmentId": "m68842:para:fs-idm231487104"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm285008384",
+              "segmentId": "m68842:para:fs-idm285008384"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm343757904",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm230653200",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm297623344",
+              "segmentId": "m68842:para:fs-idm297623344"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm62957440",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm56007728",
+              "segmentId": "m68842:para:fs-idm56007728"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm120512480",
+              "segmentId": "m68842:para:fs-idm120512480"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm229384560",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm168536016",
+              "class": "unnumbered"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm156274032",
+          "class": null,
+          "title": {
+            "segmentId": "m68842:title:fs-idm156274032-title",
+            "text": "Oxides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm37820064",
+              "segmentId": "m68842:para:fs-idm37820064"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm266677536",
+              "segmentId": "m68842:para:fs-idm266677536"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm63480000",
+              "segmentId": "m68842:para:fs-idm63480000"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm344397968",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm234164688",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10688720",
+              "segmentId": "m68842:para:fs-idm10688720"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm286848656",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm192719296",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm245147888",
+              "segmentId": "m68842:para:fs-idm245147888"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm256766560",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm147109136",
+              "segmentId": "m68842:para:fs-idm147109136"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm56508336",
+          "class": null,
+          "title": {
+            "segmentId": "m68842:title:fs-idm56508336-title",
+            "text": "Hydroxides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm157337968",
+              "segmentId": "m68842:para:fs-idm157337968"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm264103792",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm283327776",
+              "segmentId": "m68842:para:fs-idm283327776"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm277586128",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm220730624",
+              "segmentId": "m68842:para:fs-idm220730624"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm220730240",
+          "class": null,
+          "title": {
+            "segmentId": "m68842:title:fs-idm220730240-title",
+            "text": "Carbonates"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm274774064",
+              "segmentId": "m68842:para:fs-idm274774064"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm274773808",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm240591984",
+              "segmentId": "m68842:para:fs-idm240591984"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm184059552",
+          "class": null,
+          "title": {
+            "segmentId": "m68842:title:fs-idm184059552-title",
+            "text": "Other Salts"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm114523632",
+              "segmentId": "m68842:para:fs-idm114523632"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm149455392",
+              "segmentId": "m68842:para:fs-idm149455392"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm121737472",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10380608",
+              "segmentId": "m68842:para:fs-idm10380608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm275566736",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm227415440",
+              "segmentId": "m68842:para:fs-idm227415440"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm197930688",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm177573840",
+              "segmentId": "m68842:para:fs-idm177573840"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm216720288",
+              "class": "chemistry sciences-interconnect",
+              "title": {
+                "segmentId": "m68842:note-title:fs-idm216720288-title",
+                "text": "High Temperature Superconductors"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm158151328",
+                  "segmentId": "m68842:para:fs-idm158151328"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm108337904",
+                  "segmentId": "m68842:para:fs-idm108337904"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm164474192",
+                  "segmentId": "m68842:para:fs-idm164474192"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm179555344",
+                  "segmentId": "m68842:para:fs-idm179555344"
+                },
+                {
+                  "type": "para",
+                  "id": "eip-125",
+                  "segmentId": "m68842:para:eip-125"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm125315648",
+                  "segmentId": "m68842:para:fs-idm125315648"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm295056864",
+                  "segmentId": "m68842:para:fs-idm295056864"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_19_01_ResTemp",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68842:caption:CNX_Chem_19_01_ResTemp-caption"
+              },
+              "media": {
+                "id": "fs-idm70129552",
+                "alt": "A graph is shown. “Temperature (K)” appears on the horizontal axis, with axis labels present at 0, 100, 200, and 300. The vertical axis is labeled, “Resistance.” This axis begins at 0 and no additional markings are given. The upper end of this axis is terminated with an arrow head pointing upward unlike the horizontal axis. From the origin, a red line segment extends right to a point just left of 100 K. From this point, the plot continues with a vertical red line segment about five sixths of the way to the top of the graph. From the top of this line segment, another red line segment extends up and nearly to the top of the graph to the right.",
+                "src": "../../media/CNX_Chem_19_01_ResTemp.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_19_01_Maglevtrai",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68842:caption:CNX_Chem_19_01_Maglevtrai-caption"
+              },
+              "media": {
+                "id": "fs-idm58938992",
+                "alt": "A photo is shown of a white levitation train on its tracks. A building appears to the right in the background.",
+                "src": "../../media/CNX_Chem_19_01_Maglevtrai.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-idm272672208",
+              "class": "chemistry link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm220495392",
+                  "segmentId": "m68842:para:fs-idm220495392"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm56411488",
+          "segmentId": "m68842:para:fs-idm56411488"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm173161328",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68842:title:fs-idm173161328-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm125495728",
+          "segmentId": "m68842:para:fs-idm125495728"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm228509360",
+          "segmentId": "m68842:para:fs-idm228509360"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm796896",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68842:title:fs-idm796896-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm283590960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm34794608",
+                "segmentId": "m68842:problem:fs-idm34794608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm121730544",
+                "segmentId": "m68842:problem:fs-idm121730544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm195569904",
+                "segmentId": "m68842:problem:fs-idm195569904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm195569520",
+                "segmentId": "m68842:problem:fs-idm195569520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm17997952",
+                "segmentId": "m68842:problem:fs-idm17997952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm295964112",
+                "segmentId": "m68842:problem:fs-idm295964112"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm134241552",
+                "segmentId": "m68842:solution:fs-idm134241552"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm194766704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm199963328",
+                "segmentId": "m68842:problem:fs-idm199963328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm275599344",
+                "segmentId": "m68842:problem:fs-idm275599344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm113813312",
+                "segmentId": "m68842:problem:fs-idm113813312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm219125536",
+                "segmentId": "m68842:problem:fs-idm219125536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm273820304",
+                "segmentId": "m68842:problem:fs-idm273820304"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm288603744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm224263936",
+                "segmentId": "m68842:problem:fs-idm224263936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37854496",
+                "segmentId": "m68842:problem:fs-idm37854496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37854112",
+                "segmentId": "m68842:problem:fs-idm37854112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm273806480",
+                "segmentId": "m68842:problem:fs-idm273806480"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm238997040",
+                "segmentId": "m68842:solution:fs-idm238997040"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm115085520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm214633312",
+                "segmentId": "m68842:problem:fs-idm214633312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm224206832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm253555184",
+                "segmentId": "m68842:problem:fs-idm253555184"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm151604000",
+                "segmentId": "m68842:solution:fs-idm151604000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm218727072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm192414544",
+                "segmentId": "m68842:problem:fs-idm192414544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm121393200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm55665376",
+                "segmentId": "m68842:problem:fs-idm55665376"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm192881040",
+                "segmentId": "m68842:solution:fs-idm192881040"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm111525632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm111525120",
+                "segmentId": "m68842:problem:fs-idm111525120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm181482720",
+                "segmentId": "m68842:problem:fs-idm181482720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm177626768",
+                "segmentId": "m68842:problem:fs-idm177626768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm167100272",
+                "segmentId": "m68842:problem:fs-idm167100272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm120400784",
+                "segmentId": "m68842:problem:fs-idm120400784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm4976416",
+                "segmentId": "m68842:problem:fs-idm4976416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp128824368",
+                "segmentId": "m68842:problem:fs-idp128824368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm224820832",
+                "segmentId": "m68842:problem:fs-idm224820832"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm18229840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm263612624",
+                "segmentId": "m68842:problem:fs-idm263612624"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37964960",
+                "segmentId": "m68842:solution:fs-idm37964960"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm217295232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm115242544",
+                "segmentId": "m68842:problem:fs-idm115242544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm275915200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm203507616",
+                "segmentId": "m68842:problem:fs-idm203507616"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm225681664",
+                "segmentId": "m68842:solution:fs-idm225681664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm283106000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm244521712",
+                "segmentId": "m68842:problem:fs-idm244521712"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm246626224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm194248816",
+                "segmentId": "m68842:problem:fs-idm194248816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm194248432",
+                "segmentId": "m68842:problem:fs-idm194248432"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm272971024",
+                "segmentId": "m68842:solution:fs-idm272971024"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm34793824",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm34793312",
+                "segmentId": "m68842:problem:fs-idm34793312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm124442480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm174367920",
+                "segmentId": "m68842:problem:fs-idm174367920"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm203540224",
+                "segmentId": "m68842:solution:fs-idm203540224"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm227700608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm227700096",
+                "segmentId": "m68842:problem:fs-idm227700096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm216034624",
+                "segmentId": "m68842:problem:fs-idm216034624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm110192576",
+                "segmentId": "m68842:problem:fs-idm110192576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm273850816",
+                "segmentId": "m68842:problem:fs-idm273850816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm161387504",
+                "segmentId": "m68842:problem:fs-idm161387504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37112080",
+                "segmentId": "m68842:problem:fs-idm37112080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm264916352",
+                "segmentId": "m68842:problem:fs-idm264916352"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp5436400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5436912",
+                "segmentId": "m68842:problem:fs-idp5436912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm223098880",
+                "segmentId": "m68842:problem:fs-idm223098880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm195290000",
+                "segmentId": "m68842:problem:fs-idm195290000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm133562320",
+                "segmentId": "m68842:problem:fs-idm133562320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm154480352",
+                "segmentId": "m68842:problem:fs-idm154480352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm200488368",
+                "segmentId": "m68842:problem:fs-idm200488368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm218886368",
+                "segmentId": "m68842:problem:fs-idm218886368"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7655120",
+                "segmentId": "m68842:solution:fs-idp7655120"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm271102160",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38015008",
+                "segmentId": "m68842:problem:fs-idm38015008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm278997936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm278997424",
+                "segmentId": "m68842:problem:fs-idm278997424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm115177312",
+                "segmentId": "m68842:problem:fs-idm115177312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm217652304",
+                "segmentId": "m68842:problem:fs-idm217652304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm207844576",
+                "segmentId": "m68842:problem:fs-idm207844576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm265782768",
+                "segmentId": "m68842:problem:fs-idm265782768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm229278448",
+                "segmentId": "m68842:problem:fs-idm229278448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm229277680",
+                "segmentId": "m68842:problem:fs-idm229277680"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm59045296",
+                "segmentId": "m68842:solution:fs-idm59045296"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm343897984",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm98523040",
+                "segmentId": "m68842:problem:fs-idm98523040"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm232830240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm232829728",
+                "segmentId": "m68842:problem:fs-idm232829728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm11472656",
+                "segmentId": "m68842:problem:fs-idm11472656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm11472272",
+                "segmentId": "m68842:problem:fs-idm11472272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm108346464",
+                "segmentId": "m68842:problem:fs-idm108346464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm264117104",
+                "segmentId": "m68842:problem:fs-idm264117104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm150264128",
+                "segmentId": "m68842:problem:fs-idm150264128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm272186960",
+                "segmentId": "m68842:problem:fs-idm272186960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm194491520",
+                "segmentId": "m68842:problem:fs-idm194491520"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm283250304",
+                "segmentId": "m68842:solution:fs-idm283250304"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm34789712",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37125264",
+                "segmentId": "m68842:problem:fs-idm37125264"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm186859104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197702688",
+                "segmentId": "m68842:problem:fs-idm197702688"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm155672608",
+                "segmentId": "m68842:solution:fs-idm155672608"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm229701392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm52408656",
+                "segmentId": "m68842:problem:fs-idm52408656"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm159717696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm159717184",
+                "segmentId": "m68842:problem:fs-idm159717184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm24105184",
+                "segmentId": "m68842:problem:fs-idm24105184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm24104160",
+                "segmentId": "m68842:problem:fs-idm24104160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm232968848",
+                "segmentId": "m68842:problem:fs-idm232968848"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm174491040",
+                "segmentId": "m68842:problem:fs-idm174491040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm174490400",
+                "segmentId": "m68842:problem:fs-idm174490400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm204797824",
+                "segmentId": "m68842:problem:fs-idm204797824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm204796800",
+                "segmentId": "m68842:problem:fs-idm204796800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm43111472",
+                "segmentId": "m68842:problem:fs-idm43111472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm197614896",
+                "segmentId": "m68842:problem:fs-idm197614896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197613744",
+                "segmentId": "m68842:solution:fs-idm197613744"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm98560816",
+        "termSegmentId": "m68842:glossary-term:fs-idm98560816-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm98560816-def"
+      },
+      {
+        "id": "fs-idm163589328",
+        "termSegmentId": "m68842:glossary-term:fs-idm163589328-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm163589328-def"
+      },
+      {
+        "id": "fs-idm163588304",
+        "termSegmentId": "m68842:glossary-term:fs-idm163588304-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm163588304-def"
+      },
+      {
+        "id": "fs-idm214063344",
+        "termSegmentId": "m68842:glossary-term:fs-idm214063344-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm214063344-def"
+      },
+      {
+        "id": "fs-idm186870544",
+        "termSegmentId": "m68842:glossary-term:fs-idm186870544-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm186870544-def"
+      },
+      {
+        "id": "fs-idm52768832",
+        "termSegmentId": "m68842:glossary-term:fs-idm52768832-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm52768832-def"
+      },
+      {
+        "id": "fs-idm281484512",
+        "termSegmentId": "m68842:glossary-term:fs-idm281484512-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm281484512-def"
+      },
+      {
+        "id": "fs-idm108395328",
+        "termSegmentId": "m68842:glossary-term:fs-idm108395328-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm108395328-def"
+      },
+      {
+        "id": "fs-idm194011232",
+        "termSegmentId": "m68842:glossary-term:fs-idm194011232-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm194011232-def"
+      },
+      {
+        "id": "fs-idm42041824",
+        "termSegmentId": "m68842:glossary-term:fs-idm42041824-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm42041824-def"
+      },
+      {
+        "id": "fs-idm163687904",
+        "termSegmentId": "m68842:glossary-term:fs-idm163687904-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm163687904-def"
+      },
+      {
+        "id": "fs-idm246107488",
+        "termSegmentId": "m68842:glossary-term:fs-idm246107488-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm246107488-def"
+      },
+      {
+        "id": "fs-idm24132624",
+        "termSegmentId": "m68842:glossary-term:fs-idm24132624-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm24132624-def"
+      },
+      {
+        "id": "fs-idm24131568",
+        "termSegmentId": "m68842:glossary-term:fs-idm24131568-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm24131568-def"
+      },
+      {
+        "id": "fs-idm42835168",
+        "termSegmentId": "m68842:glossary-term:fs-idm42835168-term",
+        "definitionSegmentId": "m68842:glossary-def:fs-idm42835168-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

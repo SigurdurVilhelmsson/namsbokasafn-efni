@@ -284,7 +284,7 @@ The density is the mass-to-volume ratio:
 (rounded to two significant figures, per the rule for multiplication and division)
 
 <!-- SEG:m68690:para:fs-idm243666944 -->
-From [#fs-idm45639696], the density of iron is 7.9 g/cm^3^, very close to that of rebar, which lends some support to the fact that rebar is mostly iron.
+From [m68674#fs-idm45639696], the density of iron is 7.9 g/cm^3^, very close to that of rebar, which lends some support to the fact that rebar is mostly iron.
 
 <!-- SEG:m68690:para-title:fs-idm259990592-title -->
 Check Your Learning
@@ -299,13 +299,13 @@ An irregularly shaped piece of a shiny yellowish material is weighed and then su
 (b) Do you have any reasonable guesses as to the identity of this material? Explain your reasoning.
 
 <!-- SEG:m68690:para:fs-idm287839728 -->
-(a) 19 g/cm^3^; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [#fs-idm45639696].
+(a) 19 g/cm^3^; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [m68674#fs-idm45639696].
 
 <!-- SEG:m68690:note-title:fs-idm113054800-title -->
 Answer:
 
 <!-- SEG:m68690:para:fs-idm287839728 -->
-(a) 19 g/cm^3^; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [#fs-idm45639696].
+(a) 19 g/cm^3^; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [m68674#fs-idm45639696].
 
 <!-- SEG:m68690:title:fs-idp33954960-title -->
 Accuracy and Precision

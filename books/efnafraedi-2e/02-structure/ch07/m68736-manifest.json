@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "moduleId": "m68736",
+  "extractedAt": "2026-03-06T13:09:38.000Z",
+  "sourceHash": "0f7b847e9f54d4df",
+  "segmentCount": 9,
+  "segmentIds": [
+    "m68736:title:auto-1",
+    "m68736:abstract-item:abstract-item-1",
+    "m68736:abstract-item:abstract-item-2",
+    "m68736:abstract-item:abstract-item-3",
+    "m68736:abstract-item:abstract-item-4",
+    "m68736:abstract-item:abstract-item-5",
+    "m68736:abstract-item:abstract-item-6",
+    "m68736:caption:CNX_Chem_07_00_Bucky-caption",
+    "m68736:para:fs-idp26683312"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_07_00_Bucky"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

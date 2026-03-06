@@ -1,0 +1,661 @@
+{
+  "moduleId": "m68832",
+  "title": {
+    "segmentId": "m68832:title:auto-1",
+    "text": "Structure and General Properties of the Nonmetals"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0d29d8b1-83b0-49c3-961f-7f622017873e",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe structure and properties of nonmetals"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp46142864",
+      "segmentId": "m68832:para:fs-idp46142864"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp1055440",
+      "segmentId": "m68832:para:fs-idp1055440"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp14527328",
+      "segmentId": "m68832:para:fs-idp14527328"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm155738224",
+      "segmentId": "m68832:para:fs-idm155738224"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_04_OxStNonmts",
+      "caption": {
+        "segmentId": "m68832:caption:CNX_Chem_18_04_OxStNonmts-caption"
+      },
+      "media": {
+        "id": "fs-idp165773088",
+        "alt": "Six columns of information are shown. The first column has three pieces of data: “H,” “1 positive sign,” and “1 negative sign.” The second column has four pieces of data: “C,” “4 positive sign,” the word, “To,” and, “4 negative sign.” The third column has eight pieces of data: “N,” “5 positive sign,” the word, “To,” “3 negative sign,” “P, A s,” “5 positive sign,” “3 positive sign,” and “3 negative sign.” The fourth column has seven pieces of data: “O,” “1 negative sign,” “2 negative sign,” “S, S e,” “6 positive sign,” “4 positive sign,” and “2 negative sign.” The fifth column has eight pieces of data: “F,” “1 negative sign,” “C l, B r, I,” “7 positive sign,” “5 positive sign,” “3 positive sign,” “1 positive sign,” and “1 negative sign.” The sixth column has five pieces of data: “X e,” “8 positive sign,” “6 positive sign,” “4 positive sign,” and “2 positive sign.”",
+        "src": "../../media/CNX_Chem_18_04_OxStNonmts.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm146473008",
+      "segmentId": "m68832:para:fs-idm146473008"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm105671392",
+      "segmentId": "m68832:para:fs-idm105671392"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm175306688",
+      "segmentId": "m68832:para:fs-idm175306688"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm145782848",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm145782848-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm145782848-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm145782848-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm145782848-item-4"
+        },
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm145782848-item-5"
+        }
+      ]
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm105130112",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm148994256",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm67787760",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm172599328",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm186857456",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm159525136",
+      "segmentId": "m68832:para:fs-idm159525136"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm120122192",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm120122192-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm120122192-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68832:item:fs-idm120122192-item-3"
+        }
+      ]
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm109648992",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm129468080",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm166000096",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm217428112",
+      "segmentId": "m68832:para:fs-idm217428112"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm108618080",
+      "class": null,
+      "title": {
+        "segmentId": "m68832:title:fs-idm108618080-title",
+        "text": "Structures of the Nonmetals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm97847936",
+          "segmentId": "m68832:para:fs-idm97847936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm97451120",
+          "segmentId": "m68832:para:fs-idm97451120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm108747680",
+          "segmentId": "m68832:para:fs-idm108747680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm106007328",
+          "segmentId": "m68832:para:fs-idm106007328"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm57470288",
+      "class": null,
+      "title": {
+        "segmentId": "m68832:title:fs-idm57470288-title",
+        "text": "Carbon"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm74407552",
+          "segmentId": "m68832:para:fs-idm74407552"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm64573232",
+          "segmentId": "m68832:para:fs-idm64573232"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_04_Carbonform",
+          "caption": {
+            "segmentId": "m68832:caption:CNX_Chem_18_04_Carbonform-caption"
+          },
+          "media": {
+            "id": "fs-idm142208784",
+            "alt": "Two photos and two images are shown and labeled, “a,” “b,” “c,” and “d.” Photo a is of a diamond held by tweezers. Photo b shows a black columnar solid. Image c shows layered sheets of interconnected hexagonal rings. Image d shows sheets of hexagonal rings.",
+            "src": "../../media/CNX_Chem_18_04_Carbonform.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm157413808",
+          "segmentId": "m68832:para:fs-idm157413808"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_04_unhyporbC",
+          "caption": {
+            "segmentId": "m68832:caption:CNX_Chem_18_04_unhyporbC-caption"
+          },
+          "media": {
+            "id": "fs-idm54505824",
+            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows two connected hexagonal rings, with figure-eight-shaped orbitals located at each point of the ring and in a perpendicular position. Image b shows a pair of diagrams, each of which has a series of connected hexagonal rings made up of carbon atoms that are connected by alternating single and double bonds. These two diagrams are connected by a double-headed arrow.",
+            "src": "../../media/CNX_Chem_18_04_unhyporbC.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp56198176",
+          "segmentId": "m68832:para:fs-idp56198176"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm106154768",
+          "segmentId": "m68832:para:fs-idm106154768"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm135394992",
+          "segmentId": "m68832:para:fs-idm135394992"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_04_Buckyball",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68832:caption:CNX_Chem_18_04_Buckyball-caption"
+          },
+          "media": {
+            "id": "fs-idm51418352",
+            "alt": "A spherical structure is made up of hexagonal rings, each of which is made up of atoms bonded together with alternating single and double bonds.",
+            "src": "../../media/CNX_Chem_18_04_Buckyball.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm138324592",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68832:note-title:fs-idm138324592-title",
+            "text": "Nanotubes and Graphene"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm41398960",
+              "segmentId": "m68832:para:fs-idm41398960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm143379488",
+              "segmentId": "m68832:para:fs-idm143379488"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm162489136",
+              "segmentId": "m68832:para:fs-idm162489136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm221903792",
+              "segmentId": "m68832:para:fs-idm221903792"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm231566608",
+              "segmentId": "m68832:para:fs-idm231566608"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm217457872",
+              "segmentId": "m68832:para:fs-idm217457872"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm97062944",
+              "segmentId": "m68832:para:fs-idm97062944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp36666976",
+              "segmentId": "m68832:para:fs-idp36666976"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_04_Nanotube",
+          "caption": {
+            "segmentId": "m68832:caption:CNX_Chem_18_04_Nanotube-caption"
+          },
+          "media": {
+            "id": "fs-idp35290448",
+            "alt": "Two images are shown and labeled “a” and “b.” Image a shows a long sheet of interconnected hexagonal rings. Image b shows the same interconnected hexagonal rings forming a curled sheet to make a long tube.",
+            "src": "../../media/CNX_Chem_18_04_Nanotube.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm157346064",
+      "class": null,
+      "title": {
+        "segmentId": "m68832:title:fs-idm157346064-title",
+        "text": "Phosphorus"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm188499280",
+          "segmentId": "m68832:para:fs-idm188499280"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm197336480",
+          "segmentId": "m68832:para:fs-idm197336480"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_04_Phosphorus",
+          "caption": {
+            "segmentId": "m68832:caption:CNX_Chem_18_04_Phosphorus-caption"
+          },
+          "media": {
+            "id": "fs-idm121503472",
+            "alt": "Two photos and two diagrams are shown and labeled “a,” “b,” “c,” and “d.” Photo a shows a test tube that contains a solid yellow compound. Diagram b shows a four-sided pyramid shape that has an atom at each corner. Photo c shows a dark black powder in a watch glass. Diagram d shows two four-sided pyramid shapes that have an atom at each corner and are connected together by a single bond.",
+            "src": "../../media/CNX_Chem_18_04_Phosphorus.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28980160",
+          "segmentId": "m68832:para:fs-idp28980160"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm209718960",
+      "class": null,
+      "title": {
+        "segmentId": "m68832:title:fs-idm209718960-title",
+        "text": "Sulfur"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm76786544",
+          "segmentId": "m68832:para:fs-idm76786544"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm187719200",
+          "segmentId": "m68832:para:fs-idm187719200"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_04_Sulfrchain",
+          "caption": {
+            "segmentId": "m68832:caption:CNX_Chem_18_04_Sulfrchain-caption"
+          },
+          "media": {
+            "id": "fs-idp5064384",
+            "alt": "Four diagrams are shown and labeled “a,” “b,” “c,” and “d.” Diagram a shows four ring structures that are each made up of eight single bonded atoms. Diagram b shows four chains of eight atoms. Diagram c shows three chains of atoms, one composed by nine atoms, one by twelve atoms and one by eleven atoms. Diagram d shows the same three chains, but this time they are much closer together and slightly intertwined.",
+            "src": "../../media/CNX_Chem_18_04_Sulfrchain.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm163997136",
+          "segmentId": "m68832:para:fs-idm163997136"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm133348256",
+          "segmentId": "m68832:para:fs-idm133348256"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm1928176",
+          "segmentId": "m68832:para:fs-idm1928176"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm158014192",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68832:title:fs-idm158014192-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm131147120",
+          "segmentId": "m68832:para:fs-idm131147120"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm161057120",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68832:title:fs-idm161057120-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp44423136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm198906624",
+                "segmentId": "m68832:problem:fs-idm198906624"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm146332464",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm143031824",
+                "segmentId": "m68832:problem:fs-idm143031824"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm306366400",
+                "segmentId": "m68832:solution:fs-idm306366400"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm173324096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm167691808",
+                "segmentId": "m68832:problem:fs-idm167691808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm162905152",
+                "segmentId": "m68832:problem:fs-idm162905152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm151351920",
+                "segmentId": "m68832:problem:fs-idm151351920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm122509952",
+                "segmentId": "m68832:problem:fs-idm122509952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm189999616",
+                "segmentId": "m68832:problem:fs-idm189999616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm220501008",
+                "segmentId": "m68832:problem:fs-idm220501008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm105553408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm156854288",
+                "segmentId": "m68832:problem:fs-idm156854288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm36461536",
+                "segmentId": "m68832:problem:fs-idm36461536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm209594512",
+                "segmentId": "m68832:problem:fs-idm209594512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46348672",
+                "segmentId": "m68832:problem:fs-idp46348672"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm140843712",
+                "segmentId": "m68832:solution:fs-idm140843712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm207037584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm6028016",
+                "segmentId": "m68832:problem:fs-idm6028016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5893328",
+                "segmentId": "m68832:problem:fs-idm5893328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm164021648",
+                "segmentId": "m68832:problem:fs-idm164021648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142344320",
+                "segmentId": "m68832:problem:fs-idm142344320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm129789632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp4661344",
+                "segmentId": "m68832:problem:fs-idp4661344"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm102662400",
+                "segmentId": "m68832:solution:fs-idm102662400"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14134080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9206816",
+                "segmentId": "m68832:problem:fs-idm9206816"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68832:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68832:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm223944896",
+        "termSegmentId": "m68832:glossary-term:fs-idm223944896-term",
+        "definitionSegmentId": "m68832:glossary-def:fs-idm223944896-def"
+      },
+      {
+        "id": "fs-idm60186560",
+        "termSegmentId": "m68832:glossary-term:fs-idm60186560-term",
+        "definitionSegmentId": "m68832:glossary-def:fs-idm60186560-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

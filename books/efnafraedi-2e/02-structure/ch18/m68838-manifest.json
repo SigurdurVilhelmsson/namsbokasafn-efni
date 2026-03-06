@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "moduleId": "m68838",
+  "extractedAt": "2026-03-06T13:09:39.853Z",
+  "sourceHash": "9eee45db0d4a7968",
+  "segmentCount": 36,
+  "segmentIds": [
+    "m68838:title:auto-1",
+    "m68838:abstract:auto-2",
+    "m68838:abstract-item:abstract-item-1",
+    "m68838:para:fs-idm222212272",
+    "m68838:caption:CNX_Chem_18_10_Volcano-caption",
+    "m68838:para:fs-idm89076784",
+    "m68838:caption:CNX_Chem_18_10_FrachMine-caption",
+    "m68838:para:fs-idm172180032",
+    "m68838:para:fs-idm200790848",
+    "m68838:para:fs-idm29857024",
+    "m68838:para:fs-idm262010832",
+    "m68838:title:fs-idm120146304-title",
+    "m68838:para:fs-idm179520336",
+    "m68838:title:fs-idm130394160-title",
+    "m68838:problem:fs-idm96440544",
+    "m68838:problem:fs-idm197715424",
+    "m68838:solution:fs-idm189281632",
+    "m68838:problem:fs-idm104880432",
+    "m68838:problem:fs-idm247134512",
+    "m68838:solution:fs-idm187322528",
+    "m68838:problem:fs-idm216526752",
+    "m68838:problem:fs-idm132402992",
+    "m68838:solution:fs-idm197382000",
+    "m68838:problem:fs-idm81251856",
+    "m68838:problem:fs-idm130691520",
+    "m68838:problem:fs-idp41676336",
+    "m68838:problem:fs-idm197872928",
+    "m68838:problem:fs-idm35659040",
+    "m68838:problem:fs-idm48725648",
+    "m68838:problem:fs-idm83901840",
+    "m68838:solution:fs-idm140481840",
+    "m68838:problem:fs-idm206945136",
+    "m68838:problem:fs-idm163724208",
+    "m68838:solution:fs-idm43029600",
+    "m68838:glossary-term:fs-idm172534880-term",
+    "m68838:glossary-def:fs-idm172534880-def"
+  ],
+  "equationCount": 4,
+  "equationIds": [
+    "math-1",
+    "math-2",
+    "math-3",
+    "fs-idm170183712"
+  ],
+  "elementCounts": {
+    "para": 27,
+    "section": 2,
+    "figure": 2,
+    "table": 0,
+    "example": 0,
+    "exercise": 10,
+    "note": 0,
+    "equation": 1,
+    "list": 0,
+    "media": 0,
+    "glossary": 1
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_18_10_Volcano",
+      "CNX_Chem_18_10_FrachMine"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "fs-idm5069504",
+      "fs-idm213191488",
+      "fs-idm200394080",
+      "fs-idm129605056",
+      "fs-idm130857952",
+      "fs-idm135267520",
+      "fs-idp17880736",
+      "fs-idm104555280",
+      "fs-idm217260912",
+      "fs-idm172430496"
+    ],
+    "note": [],
+    "equation": [
+      "fs-idm170183712"
+    ],
+    "section": [
+      "fs-idm120146304",
+      "fs-idm130394160"
+    ]
+  }
+}

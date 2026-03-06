@@ -1,0 +1,234 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{E=\\, \\frac{{hc}}{λ}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>R</m:mi><m:mi>∞</m:mi></m:msub></m:mrow></m:math>",
+    "latex": "{{R}_{∞}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{E=\\, \\frac{{hc}}{λ}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>h</m:mi><m:mi>ν</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{E=hν=\\, \\frac{{hc}}{λ},}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msub><m:mi>R</m:mi><m:mi>∞</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\, \\frac{1}{λ}\\, ={R}_{∞}{({\\, \\frac{1}{{{n}_{1}^{2}}}\\, -\\, \\frac{1}{{{n}_{2}^{2}}}\\,})}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-32": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-33": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-34": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-35": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-36": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-37": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-38": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-39": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-41": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-42": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-43": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-44": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-45": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-46": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-47": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-48": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idm38083408": {
+    "mathml": "<m:math><m:mrow><m:mi>c</m:mi><m:mo>=</m:mo><m:mn>2.998</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>8</m:mn></m:msup><m:msup><m:mrow><m:mtext>ms</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mi>λ</m:mi><m:mi>ν</m:mi></m:mrow></m:math>",
+    "latex": "{c=2.998\\, \\times \\, {10}^{8}{{\\text{ms}}}^{{−1}}=λν}",
+    "isBlock": true
+  },
+  "fs-idp41492256": {
+    "mathml": "<m:math><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>c</m:mi><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{ν=\\, \\frac{c}{λ}}",
+    "isBlock": true
+  },
+  "fs-idm52369072": {
+    "mathml": "<m:math><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2.998</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>8</m:mn></m:msup><m:menclose notation=\"horizontalstrike\"><m:mtext>m</m:mtext></m:menclose><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>589</m:mn><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>nm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>nm</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:menclose notation=\"horizontalstrike\"><m:mtext>m</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>5.09</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>14</m:mn></m:mrow></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{ν={({\\, \\frac{{2.998\\, \\times \\, {{10}}^{8}\\sout{\\text{m}}{\\text{s}}^{{−1}}}}{{589\\sout{{\\text{nm}}}}}\\,})}{({\\, \\frac{{1\\, \\times \\, {{10}}^{9}\\sout{{\\text{nm}}}}}{{1\\sout{\\text{m}}}}\\,})}=5.09\\, \\times \\, {{10}}^{{14}}{\\text{s}}^{{−1}}}",
+    "isBlock": true
+  },
+  "fs-idp123243520": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>h</m:mi><m:mi>ν</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>3</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mo>. . .</m:mo></m:mrow></m:math>",
+    "latex": "{E=nhν,\\, n=1,\\, 2,\\, 3,\\, . . .}",
+    "isBlock": true
+  },
+  "fs-idp120103424": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{E=\\, \\frac{{hc}}{λ}}",
+    "isBlock": true
+  },
+  "fs-idp70349504": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>6.626</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−34</m:mn></m:mrow></m:msup><m:mtext>J</m:mtext><m:menclose notation=\"horizontalstrike\"><m:mtext>s</m:mtext></m:menclose><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>2.998</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>8</m:mn></m:msup><m:mtext>m</m:mtext><m:msup><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mtext>s</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>640</m:mn><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>nm</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>m</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>nm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>3.10</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−19</m:mn></m:mrow></m:msup><m:mtext>J</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} E=\\, \\frac{{(6.626\\, \\times \\, {10}^{{−34}}\\text{J}\\sout{\\text{s}})(2.998\\, \\times \\, {10}^{8}\\text{m}{{\\sout{\\text{s}}}}^{{−1}})}}{{{({640\\sout{{\\text{nm}}}})}{({\\, {1\\, \\text{m}}{{{10}}^{9}\\sout{{\\text{nm}}}}}\\,})}}\\, \\\\ E=3.10\\, \\times \\, {10}^{{−19}}\\text{J} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idm48677936": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>4</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>3</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>4</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>5</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn></m:mrow></m:math>",
+    "latex": "{\\, \\frac{1}{λ}\\, =k{({\\, \\frac{1}{4}\\, -\\, \\frac{1}{{{n}^{2}}}\\,})},\\, n=3,\\, 4,\\, 5,\\, 6}",
+    "isBlock": true
+  },
+  "fs-idm82909840": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msub><m:mi>R</m:mi><m:mi>∞</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\, \\frac{1}{λ}\\, ={R}_{∞}{({\\, \\frac{1}{{{n}_{1}^{2}}}\\, -\\, \\frac{1}{{{n}_{2}^{2}}}\\,})}}",
+    "isBlock": true
+  }
+}

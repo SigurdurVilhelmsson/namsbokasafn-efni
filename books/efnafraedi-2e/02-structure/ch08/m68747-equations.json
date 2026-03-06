@@ -1,0 +1,307 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mi>s</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{σ}}_{s}^{*}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mi>s</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{σ}}_{s}^{*}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{σ}}_{{px}}^{*}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mi>p</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{σ}}_{{p}}^{*}.}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{py}}^{*}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{pz}}^{*}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{py}}^{*}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{pz}}^{*}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{σ}}_{{px}}^{*},}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{py}}^{*},}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{pz}}^{*}.}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>3</m:mn><m:mi>p</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{{\\text{π}}_{{3p}}^{*}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{Be}}_{2}^{\\text{+}})}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{1s}}})}}}^{2}{{{({{\\text{σ}}_{{1s}}^{*}})}}}^{2}{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{1}.}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{Be}}_{2}^{\\text{+}},}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{2}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}{{{({{\\text{σ}}_{{2px}}})}}}^{2}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{σ}}_{{2px}}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}{{{({{\\text{π}}_{{2py}}^{*},\\, {\\text{π}}_{{2pz}}^{*}})}}}^{2}}"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{σ}}_{{2px}}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}{{{({{\\text{π}}_{{2py}}^{*},\\, {\\text{π}}_{{2pz}}^{*}})}}}^{4}}"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{σ}}_{{2px}}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}{{{({{\\text{π}}_{{2py}}^{*},\\, {\\text{π}}_{{2pz}}^{*}})}}}^{4}{{{({{\\text{σ}}_{{2px}}^{*}})}}}^{2}}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{({{\\text{π}}_{{2py}}^{*},\\, {\\text{π}}_{{2pz}}^{*}})}}"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}^{\\text{2−}}.}"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mtext>2</m:mtext><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{({\\text{σ}}_{{2s}})}}^{2}{{({\\text{σ}}_{{\\text{2}s}}^{*})}}^{2}{{({\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}})}}^{4}.}"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}^{\\text{2−}}}"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mtext>2</m:mtext><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{({\\text{σ}}_{{2s}})}}^{2}{{({\\text{σ}}_{{\\text{2}s}}^{*})}}^{2}{{({\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}})}}^{4}{{({\\text{σ}}_{{2px}})}}^{2}.}"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Be}}_{2}^{\\text{2−}}}"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{1s}}})}}}^{2}.}"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{1s}}})}}}^{2}{{{({{\\text{σ}}_{{1s}}^{*}})}}}^{2}}"
+  },
+  "math-32": {
+    "mathml": "<m:math><m:mrow><m:mtext>bond order</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of bonding electron</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>−</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of antibonding electrons</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{bond order}=\\, \\frac{{{({\\text{number of bonding electron}})}-{({\\text{number of antibonding electrons}})}}}{2}}"
+  },
+  "math-33": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{σ}}_{{2px}}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}{{({{\\text{π}}_{{2py}}^{*},\\, {\\text{π}}_{{2pz}}^{*}})}}^{3}}"
+  },
+  "math-34": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Na}}_{2}^{\\text{2+}}}"
+  },
+  "math-35": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Mg</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Mg}}_{2}^{\\text{2+}}}"
+  },
+  "math-36": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Al</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Al}}_{2}^{\\text{2+}}}"
+  },
+  "math-37": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Si</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Si}}_{2}^{\\text{2+}}}"
+  },
+  "math-38": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{P}}_{2}^{\\text{2+}}}"
+  },
+  "math-39": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{S}}_{2}^{\\text{2+}}}"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{2+}}}"
+  },
+  "math-41": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Ar</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Ar}}_{2}^{\\text{2+}}}"
+  },
+  "math-42": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}^{\\text{+}},}"
+  },
+  "math-43": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}^{\\text{−}}}"
+  },
+  "math-44": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2+}},}"
+  },
+  "math-45": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2−}}}"
+  },
+  "math-46": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{Be}}_{2}^{\\text{+}},}"
+  },
+  "math-47": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{+}},}"
+  },
+  "math-48": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{−}}}"
+  },
+  "math-49": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}^{\\text{+}},}"
+  },
+  "math-50": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}^{\\text{−}}}"
+  },
+  "math-51": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}^{\\text{+}}}"
+  },
+  "math-52": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}^{\\text{−}}}"
+  },
+  "math-53": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2+}}}"
+  },
+  "math-54": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2−}}}"
+  },
+  "math-55": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2+}};}"
+  },
+  "math-56": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Be}}_{2}^{\\text{+}}}"
+  },
+  "math-57": {
+    "mathml": "<m:math><m:msub><m:mtext>Li</m:mtext><m:mn>2</m:mn></m:msub></m:math>",
+    "latex": "{\\text{Li}}_{2}"
+  },
+  "math-58": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{+}}}"
+  },
+  "math-59": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{−}}}"
+  },
+  "math-60": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{+}};}"
+  },
+  "math-61": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}^{\\text{+}}}"
+  },
+  "math-62": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}^{\\text{−}}}"
+  },
+  "math-63": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}^{\\text{2+}}}"
+  },
+  "math-64": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>4+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{4+}},}"
+  },
+  "math-65": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}^{\\text{2+}}.}"
+  },
+  "math-66": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{B}}_{2}^{\\text{+}}}"
+  },
+  "math-67": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{F}}_{2}^{\\text{+}}}"
+  },
+  "math-68": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2+}}}"
+  },
+  "math-69": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}^{\\text{+}}}"
+  },
+  "math-70": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{2}^{\\text{−}}}"
+  },
+  "fs-idp20436816": {
+    "mathml": "<m:math><m:mrow><m:mtext>bond order</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of bonding electrons</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of antibonding electrons</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{bond order}=\\, \\frac{{{({\\text{number of bonding electrons}})}\\, -\\, {({\\text{number of antibonding electrons}})}}}{2}}",
+    "isBlock": true
+  },
+  "fs-idm61635600": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>bond order in H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mo>−</m:mo><m:mn>0</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>",
+    "latex": "{{{\\text{bond order in H}}}_{2}=\\, \\frac{{{({2-0})}}}{2}\\, =1}",
+    "isBlock": true
+  },
+  "fs-idp1555152": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>bond order in He</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mo>−</m:mo><m:mn>2</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>",
+    "latex": "{{{\\text{bond order in He}}}_{2}=\\, \\frac{{{({2-2})}}}{2}\\, =0}",
+    "isBlock": true
+  },
+  "fs-idm75364784": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>8</m:mn><m:mo>−</m:mo><m:mn>4</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}=\\, \\frac{{{({8-4})}}}{2}\\, =2}",
+    "isBlock": true
+  },
+  "fs-idp23954224": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({{\\text{σ}}_{{2s}}})}}}^{2}{{{({{\\text{σ}}_{{2s}}^{*}})}}}^{2}{{{({{\\text{σ}}_{{2px}}})}}}^{2}{{{({{\\text{π}}_{{2py}},\\, {\\text{π}}_{{2pz}}})}}}^{4}{{({{\\text{π}}_{{2py}}^{*},\\, {\\text{π}}_{{2pz}}^{*}})}}^{3}}",
+    "isBlock": true
+  }
+}
