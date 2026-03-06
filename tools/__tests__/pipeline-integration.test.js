@@ -814,6 +814,33 @@ describe('reverseInlineMarkup XML escaping', () => {
     expect(result).toContain('<term>B</term>');
     expect(result).toContain('<term>C</term>');
   });
+
+  // --- Space count preservation ---
+
+  it('should restore [[SPACE:N]] with count attribute', () => {
+    const result = reverseInlineMarkup('text[[SPACE:3]]more', {});
+    expect(result).toBe('text<space count="3"/>more');
+  });
+
+  it('should restore bare [[SPACE]] without count attribute', () => {
+    const result = reverseInlineMarkup('text[[SPACE]]more', {});
+    expect(result).toBe('text<space/>more');
+  });
+
+  // --- Class-only emphasis ---
+
+  it('should convert {=text=} to emphasis with class from sidecar', () => {
+    const attrs = {
+      emphases: [{ class: 'emphasis-one' }],
+    };
+    const result = reverseInlineMarkup('{=H=}F', {}, [], [], attrs);
+    expect(result).toBe('<emphasis class="emphasis-one">H</emphasis>F');
+  });
+
+  it('should convert {=text=} to bare emphasis without sidecar', () => {
+    const result = reverseInlineMarkup('{=H=}F', {});
+    expect(result).toBe('<emphasis>H</emphasis>F');
+  });
 });
 
 // =====================================================================
@@ -868,5 +895,28 @@ describe('inline-attrs extraction', () => {
     );
     // m68664 has emphasis effect="underline" elements
     expect(segments).toContain('++');
+  });
+
+  it('should extract {=emphasis=} markers for class-only emphasis', () => {
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter appendices --module m68866`);
+    const segments = readFileSync(
+      join(BOOKS, '02-for-mt', 'appendices', 'm68866-segments.en.md'),
+      'utf8'
+    );
+    // m68866 has <emphasis class="emphasis-one"> elements (ionizable H atoms)
+    expect(segments).toContain('{=');
+    expect(segments).toContain('=}');
+  });
+
+  it('should preserve emphasis class="emphasis-one" through extract+inject round-trip', () => {
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter appendices --module m68866`);
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter appendices --module m68866 --source-dir 02-for-mt --lang en`
+    );
+    const cnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'appendices', 'm68866.cnxml'),
+      'utf8'
+    );
+    expect(cnxml).toContain('class="emphasis-one"');
   });
 });

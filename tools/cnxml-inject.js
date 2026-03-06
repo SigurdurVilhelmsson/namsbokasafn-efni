@@ -458,7 +458,9 @@ function reverseInlineMarkup(
 
   // Restore newline and space placeholders to CNXML
   result = result.replace(/\[\[BR\]\]/g, '<newline/>');
-  result = result.replace(/\[\[SPACE\]\]/g, '<space/>');
+  result = result.replace(/\[\[SPACE(?::(\d+))?\]\]/g, (match, count) => {
+    return count && parseInt(count, 10) > 1 ? `<space count="${count}"/>` : '<space/>';
+  });
 
   // Restore math placeholders
   result = result.replace(/\[\[MATH:(\d+)\]\]/g, (match, num) => {
@@ -506,6 +508,23 @@ function reverseInlineMarkup(
   result = result.replace(/\+\+(.+?)\+\+/g, '<emphasis effect="underline">$1</emphasis>');
   result = result.replace(/\*\*([^*]+)\*\*/g, '<emphasis effect="bold">$1</emphasis>');
   result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
+
+  // Convert class-only emphasis markers {=text=} back to CNXML
+  // Restore class from sidecar by occurrence index
+  if (inlineAttrs && inlineAttrs.emphases) {
+    let emphasisIndex = 0;
+    result = result.replace(/\{=(.+?)=\}/g, (match, inner) => {
+      const attrs = inlineAttrs.emphases[emphasisIndex] || null;
+      emphasisIndex++;
+      if (attrs && attrs.class) {
+        return `<emphasis class="${attrs.class}">${inner}</emphasis>`;
+      }
+      return `<emphasis>${inner}</emphasis>`;
+    });
+  } else {
+    // No sidecar — convert to plain emphasis
+    result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
+  }
 
   // Convert term markers back to CNXML (simplified - without IDs)
   // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers

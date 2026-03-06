@@ -159,6 +159,7 @@ function extractInlineText(
   // Initialize inline attribute collectors for this call
   const collectedTermAttrs = [];
   const collectedFootnoteAttrs = [];
+  const collectedEmphasisAttrs = [];
 
   // Replace MathML with placeholders
   const mathPattern = /<m:math[^>]*>[\s\S]*?<\/m:math>/g;
@@ -207,13 +208,18 @@ function extractInlineText(
 
   // Convert <newline/> and <space/> to placeholders before stripTags()
   text = text.replace(/<newline\s*\/>/g, '[[BR]]');
-  text = text.replace(/<space[^>]*\/>/g, '[[SPACE]]');
+  text = text.replace(/<space([^>]*)\/>/g, (match, attrs) => {
+    const parsedAttrs = parseAttributes(attrs);
+    const count = parsedAttrs.count ? parseInt(parsedAttrs.count, 10) : 1;
+    return count > 1 ? `[[SPACE:${count}]]` : '[[SPACE]]';
+  });
 
   // Convert leaf-level inline markup to markdown FIRST, before processing
   // outer tags like <term>, <link>, <footnote>. This prevents stripTags()
   // from discarding nested inline markup (e.g., <sup> inside <term>).
   text = text.replace(/<sub>([^<]*)<\/sub>/g, '~$1~');
   text = text.replace(/<sup>([^<]*)<\/sup>/g, '^$1^');
+  // Handle emphasis with effect= attribute (italics, bold, underline)
   text = text.replace(
     /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
     (match, effect, inner) => {
@@ -223,6 +229,17 @@ function extractInlineText(
       return inner;
     }
   );
+  // Handle emphasis with class= but no effect= (e.g., <emphasis class="emphasis-one">)
+  // Uses {{text}} marker and stores class in sidecar for restoration
+  text = text.replace(/<emphasis([^>]*)>([\s\S]*?)<\/emphasis>/g, (match, attrs, inner) => {
+    const parsedAttrs = parseAttributes(attrs);
+    if (parsedAttrs.class) {
+      collectedEmphasisAttrs.push({ class: parsedAttrs.class });
+      return `{=${inner}=}`;
+    }
+    // No class, no effect — just return inner text
+    return inner;
+  });
 
   // Handle terms - inner markup is already markdown at this point
   // Collect attributes (class, id) for sidecar metadata
@@ -301,10 +318,12 @@ function extractInlineText(
   // Populate side-channel with collected inline attributes (sparse — only non-null entries)
   const hasTermAttrs = collectedTermAttrs.some((a) => a !== null);
   const hasFootnoteAttrs = collectedFootnoteAttrs.some((a) => a !== null);
-  if (hasTermAttrs || hasFootnoteAttrs) {
+  const hasEmphasisAttrs = collectedEmphasisAttrs.length > 0;
+  if (hasTermAttrs || hasFootnoteAttrs || hasEmphasisAttrs) {
     lastInlineAttrs = {};
     if (hasTermAttrs) lastInlineAttrs.terms = collectedTermAttrs;
     if (hasFootnoteAttrs) lastInlineAttrs.footnotes = collectedFootnoteAttrs;
+    if (hasEmphasisAttrs) lastInlineAttrs.emphases = collectedEmphasisAttrs;
   } else {
     lastInlineAttrs = null;
   }

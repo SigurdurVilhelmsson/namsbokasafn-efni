@@ -1893,14 +1893,52 @@
         }
       }
 
-      if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
-        warnings.push('Bútur var tæmdur — var það viljandi?');
+      // Block: [text](#anchor) or [text](doc#target) links in original IS but removed
+      var origLinks = (originalIs || '').match(/\[[^\]]+\]\([^)]+\)/g) || [];
+      for (var l = 0; l < origLinks.length; l++) {
+        if (editedIs.indexOf(origLinks[l]) === -1) {
+          blocked.push('Hlekkur ' + origLinks[l] + ' var fjarl\u00E6g\u00F0ur.');
+        }
       }
 
-      // Warning: unmatched ++ pairs
+      // Block: [[MEDIA:N]] in EN but missing from edited IS
+      var enMedia = (enText || '').match(/\[\[MEDIA:\d+\]\]/g) || [];
+      for (var n = 0; n < enMedia.length; n++) {
+        if (editedIs.indexOf(enMedia[n]) === -1) {
+          blocked.push('Myndarmerki ' + enMedia[n] + ' vantar.');
+        }
+      }
+
+      // Block: [[SPACE]] / [[SPACE:N]] in original IS but removed
+      var origSpaces = (originalIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
+      var editSpaces = (editedIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
+      if (origSpaces.length > editSpaces.length) {
+        blocked.push('[[SPACE]] bil var fjarl\u00E6gt (' + origSpaces.length + ' \u2192 ' + editSpaces.length + ').');
+      }
+
+      if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
+        warnings.push('B\u00FAtur var t\u00E6mdur \u2014 var \u00FEa\u00F0 viljandi?');
+      }
+
+      // Warning: unmatched formatting pairs
       var ppCount = (editedIs.match(/\+\+/g) || []).length;
       if (ppCount % 2 !== 0) {
-        warnings.push('Ójafn fjöldi ++ merkja (' + ppCount + ') — vantar lokun á undirstrikun?');
+        warnings.push('\u00D3jafn fj\u00F6ldi ++ merkja (' + ppCount + ') \u2014 vantar lokun \u00E1 undirstrikun?');
+      }
+      var boldCount = (editedIs.match(/\*\*/g) || []).length;
+      if (boldCount % 2 !== 0) {
+        warnings.push('\u00D3jafn fj\u00F6ldi ** merkja (' + boldCount + ') \u2014 vantar lokun?');
+      }
+      var termCount = (editedIs.match(/__/g) || []).length;
+      if (termCount % 2 !== 0) {
+        warnings.push('\u00D3jafn fj\u00F6ldi __ merkja (' + termCount + ') \u2014 vantar lokun?');
+      }
+
+      // Asymmetric pair: {= must match =}
+      var openEmph = (editedIs.match(/\{=/g) || []).length;
+      var closeEmph = (editedIs.match(/=\}/g) || []).length;
+      if (openEmph !== closeEmph) {
+        warnings.push('\u00D3jafn fj\u00F6ldi \u00E1herslumerkja: ' + openEmph + '\u00D7 {= en ' + closeEmph + '\u00D7 =} \u2014 vantar lokun?');
       }
 
       return {
@@ -2180,6 +2218,8 @@
       if (!text) return '';
       var html = escapeHtml(text);
       html = html.replace(/\[\[MATH:(\d+)\]\]/g, '<span class="math-placeholder">[[MATH:$1]]</span>');
+      html = html.replace(/\[\[MEDIA:(\d+)\]\]/g, '<span class="math-placeholder" title="Mynd/mi\u00F0ill">[[MEDIA:$1]]</span>');
+      html = html.replace(/\[\[SPACE(?::(\d+))?\]\]/g, '<span class="preview-br" title="Bil">\u00B7</span>');
       html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
       html = html.replace(/\[#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Tilv\u00EDsun: $1">&#128247;</span>');
       html = html.replace(/\[([A-Za-z0-9_.-]+)#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Skjal: $1, tilv\u00EDsun: $2">&#128247;</span>');
@@ -2195,6 +2235,8 @@
       html = html.replace(/(?<!~)~(?!~)(.+?)(?<!~)~(?!~)/g, '<sub>$1</sub>');
       html = html.replace(/\^(.+?)\^/g, '<sup>$1</sup>');
       html = html.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
+      html = html.replace(/\{=(.+?)=\}/g, '<span style="color:#d32f2f;font-weight:bold">$1</span>');
+      html = html.replace(/\[(?:footnote|ne\u00F0anm\u00E1lsgrein): (.+?)\]/g, '<span class="xref-chip" title="Ne\u00F0anm\u00E1lsgrein">\u2020$1</span>');
       return html;
     }
 

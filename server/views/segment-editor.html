@@ -1769,6 +1769,21 @@
         }
       }
 
+      // Hard block: [[MEDIA:N]] in EN but missing from edited IS
+      const enMedia = (enText || '').match(/\[\[MEDIA:\d+\]\]/g) || [];
+      for (const m of enMedia) {
+        if (!editedIs.includes(m)) {
+          blocked.push(`Myndarmerki ${m} vantar — það er í enskum texta og má ekki fjarlægja.`);
+        }
+      }
+
+      // Hard block: [[SPACE]] / [[SPACE:N]] in original IS but removed
+      const origSpaces = (originalIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
+      const editSpaces = (editedIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
+      if (origSpaces.length > editSpaces.length) {
+        blocked.push(`[[SPACE]] bil var fjarlægt (${origSpaces.length} → ${editSpaces.length}).`);
+      }
+
       // Warning: unmatched formatting pairs (odd count)
       const pairs = [
         { marker: '**', name: 'feitletrað (**)', re: /\*\*/g },
@@ -1780,6 +1795,13 @@
         if (count % 2 !== 0) {
           warnings.push(`Ójafn fjöldi ${name} merkja (${count}) — vantar lokun?`);
         }
+      }
+
+      // Asymmetric pair: {= must match =}
+      const openEmph = (editedIs.match(/\{=/g) || []).length;
+      const closeEmph = (editedIs.match(/=\}/g) || []).length;
+      if (openEmph !== closeEmph) {
+        warnings.push(`Ójafn fjöldi áherslumerkja: ${openEmph}× {= en ${closeEmph}× =} — vantar lokun?`);
       }
 
       // Warning: unmatched ~ for subscript (but ignore ~~ which could be strikethrough)
@@ -1991,6 +2013,12 @@
       // 1. [[MATH:N]] placeholders
       html = html.replace(/\[\[MATH:(\d+)\]\]/g, '<span class="math-placeholder">[[MATH:$1]]</span>');
 
+      // 1b. [[MEDIA:N]] placeholders
+      html = html.replace(/\[\[MEDIA:(\d+)\]\]/g, '<span class="math-placeholder" title="Mynd/miðill">[[MEDIA:$1]]</span>');
+
+      // 1c. [[SPACE]] / [[SPACE:N]] placeholders
+      html = html.replace(/\[\[SPACE(?::(\d+))?\]\]/g, '<span class="preview-br" title="Bil">·</span>');
+
       // 2. [[BR]] line breaks
       html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
 
@@ -2025,6 +2053,12 @@
 
       // 10. ++underline++
       html = html.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
+
+      // 11. {=emphasis=} (class-only emphasis, e.g., emphasis-one for ionizable H)
+      html = html.replace(/\{=(.+?)=\}/g, '<span style="color:#d32f2f;font-weight:bold">$1</span>');
+
+      // 12. [footnote: text] / [neðanmálsgrein: text]
+      html = html.replace(/\[(?:footnote|neðanmálsgrein): (.+?)\]/g, '<span class="xref-chip" title="Neðanmálsgrein">†$1</span>');
 
       return html;
     }
