@@ -598,6 +598,92 @@
       color: var(--info);
     }
 
+    /* --- Markdown preview rendering --- */
+    .preview-term {
+      border-bottom: 2px solid var(--accent);
+      font-weight: 600;
+    }
+
+    .preview-br {
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+      user-select: none;
+    }
+
+    .xref-chip {
+      display: inline;
+      padding: 0.1rem 0.35rem;
+      background: var(--warning-subtle);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      color: var(--warning);
+      cursor: help;
+    }
+
+    .link-chip {
+      color: var(--info);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* --- Preview panel (live preview above textarea) --- */
+    .preview-panel {
+      display: none;
+      padding: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      min-height: 2em;
+      color: var(--text-primary);
+    }
+
+    .edit-panel.active .preview-panel {
+      display: block;
+    }
+
+    .preview-panel:empty::before {
+      content: 'Forskoðun...';
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* --- Formatting toolbar --- */
+    .format-toolbar {
+      display: flex;
+      gap: 2px;
+      margin-bottom: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
+    .format-toolbar button {
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      font-size: var(--text-sm);
+      cursor: pointer;
+      line-height: 1.4;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .format-toolbar button:hover {
+      background: var(--bg-surface);
+      border-color: var(--accent);
+    }
+
+    .format-toolbar button:active {
+      background: var(--accent-subtle);
+    }
+
+    .format-toolbar .tb-bold { font-weight: 700; }
+    .format-toolbar .tb-italic { font-style: italic; }
+    .format-toolbar .tb-term { border-bottom: 2px solid var(--accent); }
+
     /* --- Term highlighting --- */
     .term-highlight {
       background: var(--success-subtle);
@@ -1467,7 +1553,7 @@
       const editableText = hasActiveEdit ? latestEdit.edited_content : seg.is;
 
       let enHtml = highlightMath(escapeHtml(seg.en));
-      const isHtml = highlightMath(escapeHtml(displayIs));
+      const isHtml = renderMarkdownPreview(displayIs);
 
       // Show word-level inline diff when an active edit changes the text
       let originalHint = '';
@@ -1555,6 +1641,14 @@
             ${originalHint}
             ${termIssuesHtml}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
+              <div class="preview-panel" id="preview-${cssId(seg.segmentId)}"></div>
+              <div class="format-toolbar">
+                <button type="button" class="tb-bold" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','**','**')" title="Feitletrað (Ctrl+B)"><b>B</b></button>
+                <button type="button" class="tb-italic" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','*','*')" title="Skáletrað (Ctrl+I)"><i>I</i></button>
+                <button type="button" class="tb-term" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','__','__')" title="Hugtak (Ctrl+T)">T</button>
+                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','~','~')" title="Niðurskrift">x<sub>2</sub></button>
+                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','^','^')" title="Uppskrift">x<sup>2</sup></button>
+              </div>
               <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(editableText)}</textarea>
               <div class="edit-controls">
                 <select id="cat-${cssId(seg.segmentId)}" title="Veldu flokk breytingar">
@@ -1591,6 +1685,20 @@
         if (textarea) {
           textarea._segmentId = segmentId;
           textarea.focus();
+
+          // Live preview: render initial content and update on input
+          const previewEl = document.getElementById('preview-' + cssId(segmentId));
+          if (previewEl) {
+            previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+            let previewTimer = null;
+            textarea.addEventListener('input', function onPreview() {
+              clearTimeout(previewTimer);
+              previewTimer = setTimeout(() => {
+                previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+              }, 150);
+            });
+          }
+
           textarea.addEventListener('input', function onInput() {
             dirtyEdits.add(segmentId);
             // Update per-segment indicator
@@ -1613,6 +1721,80 @@
       updateSaveStatusBar();
     }
 
+    /**
+     * Validate a segment edit before saving.
+     * Returns { blocked: string[]|null, warnings: string[]|null }
+     */
+    function validateSegmentEdit(enText, originalIs, editedIs) {
+      const blocked = [];
+      const warnings = [];
+
+      // Hard block: [[MATH:N]] in EN but missing from edited IS
+      const enMath = (enText || '').match(/\[\[MATH:\d+\]\]/g) || [];
+      for (const m of enMath) {
+        if (!editedIs.includes(m)) {
+          blocked.push(`Stærðfræðimerki ${m} vantar — það er í enskum texta og má ekki fjarlægja.`);
+        }
+      }
+
+      // Hard block: [[BR]] removed (present in original IS but not edited)
+      const origBR = (originalIs || '').match(/\[\[BR\]\]/g) || [];
+      const editBR = (editedIs || '').match(/\[\[BR\]\]/g) || [];
+      if (origBR.length > editBR.length) {
+        blocked.push(`[[BR]] línuskil voru fjarlægð (${origBR.length} → ${editBR.length}).`);
+      }
+
+      // Hard block: [#CNX_...] cross-references in EN but missing from edited IS
+      const enXrefs = (enText || '').match(/\[#[A-Za-z0-9_.-]+\]/g) || [];
+      for (const xref of enXrefs) {
+        if (!editedIs.includes(xref)) {
+          blocked.push(`Tilvísun ${xref} vantar — hún er í enskum texta og má ekki fjarlægja.`);
+        }
+      }
+
+      // Hard block: [text](#anchor) links in original IS but removed
+      const origLinks = (originalIs || '').match(/\[[^\]]+\]\(#[^)]+\)/g) || [];
+      for (const link of origLinks) {
+        if (!editedIs.includes(link)) {
+          blocked.push(`Hlekkur ${link} var fjarlægður.`);
+        }
+      }
+
+      // Warning: unmatched formatting pairs (odd count)
+      const pairs = [
+        { marker: '**', name: 'feitletrað (**)', re: /\*\*/g },
+        { marker: '__', name: 'hugtak (__)', re: /__/g },
+      ];
+      for (const { name, re } of pairs) {
+        const count = (editedIs.match(re) || []).length;
+        if (count % 2 !== 0) {
+          warnings.push(`Ójafn fjöldi ${name} merkja (${count}) — vantar lokun?`);
+        }
+      }
+
+      // Warning: unmatched ~ for subscript (but ignore ~~ which could be strikethrough)
+      const tildeCount = (editedIs.match(/(?<![~])~(?!~)/g) || []).length;
+      if (tildeCount % 2 !== 0) {
+        warnings.push(`Ójafn fjöldi ~ merkja (${tildeCount}) — vantar lokun á niðurskrift?`);
+      }
+
+      // Warning: unmatched ^ for superscript
+      const caretCount = (editedIs.match(/\^/g) || []).length;
+      if (caretCount % 2 !== 0) {
+        warnings.push(`Ójafn fjöldi ^ merkja (${caretCount}) — vantar lokun á uppskrift?`);
+      }
+
+      // Warning: segment cleared when original had content
+      if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
+        warnings.push('Bútur var tæmdur — var það viljandi?');
+      }
+
+      return {
+        blocked: blocked.length > 0 ? blocked : null,
+        warnings: warnings.length > 0 ? warnings : null,
+      };
+    }
+
     async function saveEdit(segmentId) {
       const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
       if (!seg) return;
@@ -1626,6 +1808,18 @@
       if (editedContent === seg.is && !category && !editorNote) {
         closeEditPanel(segmentId);
         return; // No change from original and no annotation
+      }
+
+      // Validate before saving
+      const validation = validateSegmentEdit(seg.en, seg.is, editedContent);
+      if (validation.blocked) {
+        alert('Ekki hægt að vista:\n\n' + validation.blocked.join('\n'));
+        return;
+      }
+      if (validation.warnings) {
+        if (!confirm('Athugið:\n\n' + validation.warnings.join('\n') + '\n\nViltu halda áfram?')) {
+          return;
+        }
       }
 
       const saveUrl = `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`;
@@ -1773,6 +1967,45 @@
         /\[\[MATH:(\d+)\]\]/g,
         '<span class="math-placeholder">[[MATH:$1]]</span>'
       );
+    }
+
+    /**
+     * Render markdown preview from raw segment text.
+     * Converts formatting markers to styled HTML for display.
+     * Order matters: most specific patterns first, then general.
+     */
+    function renderMarkdownPreview(text) {
+      if (!text) return '';
+      let html = escapeHtml(text);
+
+      // 1. [[MATH:N]] placeholders
+      html = html.replace(/\[\[MATH:(\d+)\]\]/g, '<span class="math-placeholder">[[MATH:$1]]</span>');
+
+      // 2. [[BR]] line breaks
+      html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
+
+      // 3. [#CNX_...] cross-references (before general bracket matching)
+      html = html.replace(/\[#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Tilvísun: $1">&#128247;</span>');
+
+      // 4. [text](#anchor) document links
+      html = html.replace(/\[([^\]]+)\]\(#([^)]+)\)/g, '<span class="link-chip" title="Hlekkur: #$2">$1 &#128279;</span>');
+
+      // 5. **bold** (before italic to avoid * conflicts)
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+      // 6. *italic* (must not match inside **)
+      html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+
+      // 7. __term__
+      html = html.replace(/__(.+?)__/g, '<span class="preview-term">$1</span>');
+
+      // 8. ~subscript~ (not ~~)
+      html = html.replace(/(?<!~)~(?!~)(.+?)(?<!~)~(?!~)/g, '<sub>$1</sub>');
+
+      // 9. ^superscript^
+      html = html.replace(/\^(.+?)\^/g, '<sup>$1</sup>');
+
+      return html;
     }
 
     function cssId(segmentId) {
@@ -2309,11 +2542,28 @@
     });
 
     function insertTermFromLookup(icelandicTerm) {
-      // Copy to clipboard for easy pasting
+      // If an edit panel textarea is focused, insert term wrapped in __...__
+      const activeTA = document.activeElement;
+      if (activeTA && activeTA.tagName === 'TEXTAREA' && activeTA.id?.startsWith('textarea-')) {
+        const start = activeTA.selectionStart;
+        const end = activeTA.selectionEnd;
+        const text = activeTA.value;
+        const insertion = '__' + icelandicTerm + '__';
+        activeTA.value = text.slice(0, start) + insertion + text.slice(end);
+        activeTA.selectionStart = activeTA.selectionEnd = start + insertion.length;
+        activeTA.dispatchEvent(new Event('input', { bubbles: true }));
+        termLookupInput.value = '';
+        termLookupResults.classList.remove('active');
+        termLookupInput.placeholder = 'Sett inn!';
+        setTimeout(() => { termLookupInput.placeholder = 'Fletta upp hugtaki...'; }, 1500);
+        activeTA.focus();
+        return;
+      }
+
+      // Fallback: copy to clipboard
       navigator.clipboard.writeText(icelandicTerm).then(() => {
         termLookupInput.value = '';
         termLookupResults.classList.remove('active');
-        // Brief visual feedback
         termLookupInput.placeholder = 'Afritað!';
         setTimeout(() => {
           termLookupInput.placeholder = 'Fletta upp hugtaki...';
@@ -2321,6 +2571,42 @@
       }).catch(() => {
         termLookupResults.classList.remove('active');
       });
+    }
+
+    // ================================================================
+    // FORMATTING TOOLBAR
+    // ================================================================
+
+    /**
+     * Wrap the current selection in a textarea with prefix/suffix markers.
+     * If no selection, inserts both markers and places cursor between them.
+     * Fires an input event so live preview and dirty tracking update.
+     */
+    function wrapSelection(textareaId, prefix, suffix) {
+      const ta = document.getElementById(textareaId);
+      if (!ta) return;
+      ta.focus();
+
+      const start = ta.selectionStart;
+      const end = ta.selectionEnd;
+      const text = ta.value;
+      const selected = text.slice(start, end);
+
+      const before = text.slice(0, start);
+      const after = text.slice(end);
+
+      ta.value = before + prefix + selected + suffix + after;
+
+      // Place cursor: after selected text if there was a selection, between markers if not
+      if (selected) {
+        ta.selectionStart = start + prefix.length;
+        ta.selectionEnd = end + prefix.length;
+      } else {
+        ta.selectionStart = ta.selectionEnd = start + prefix.length;
+      }
+
+      // Trigger input event for live preview and dirty tracking
+      ta.dispatchEvent(new Event('input', { bubbles: true }));
     }
 
     // ================================================================
@@ -2353,6 +2639,14 @@
             if (saveBtn) saveBtn.click();
           }
         }
+      }
+
+      // Formatting shortcuts inside textareas
+      if ((e.ctrlKey || e.metaKey) && document.activeElement?.tagName === 'TEXTAREA' && document.activeElement.id?.startsWith('textarea-')) {
+        const taId = document.activeElement.id;
+        if (e.key === 'b') { e.preventDefault(); wrapSelection(taId, '**', '**'); }
+        else if (e.key === 'i') { e.preventDefault(); wrapSelection(taId, '*', '*'); }
+        else if (e.key === 't') { e.preventDefault(); wrapSelection(taId, '__', '__'); }
       }
     });
 

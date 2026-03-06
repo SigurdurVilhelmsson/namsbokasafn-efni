@@ -465,6 +465,34 @@
       color: var(--accent);
     }
 
+    /* --- Markdown preview rendering --- */
+    .preview-term {
+      border-bottom: 2px solid var(--accent);
+      font-weight: 600;
+    }
+
+    .preview-br {
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+      user-select: none;
+    }
+
+    .xref-chip {
+      display: inline;
+      padding: 0.1rem 0.35rem;
+      background: var(--warning-subtle);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      color: var(--warning);
+      cursor: help;
+    }
+
+    .link-chip {
+      color: var(--info);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
     .editor-filter-bar {
       display: flex;
       gap: 0.75rem;
@@ -1738,7 +1766,7 @@
       else if (seg.hasLocalized) rowClass += ' saved';
 
       var enHtml = edHighlightMath(escapeHtml(seg.en));
-      var faithfulHtml = edHighlightMath(escapeHtml(seg.faithful));
+      var faithfulHtml = edRenderMarkdownPreview(seg.faithful);
 
       var currentContent = pending
         ? pending.content
@@ -1830,12 +1858,65 @@
     // SAVE ACTIONS
     // ----------------------------------------------------------------
 
+    /**
+     * Validate a segment edit before saving (localization editor).
+     */
+    function edValidateSegmentEdit(enText, originalIs, editedIs) {
+      var blocked = [];
+      var warnings = [];
+
+      var enMath = (enText || '').match(/\[\[MATH:\d+\]\]/g) || [];
+      for (var i = 0; i < enMath.length; i++) {
+        if (editedIs.indexOf(enMath[i]) === -1) {
+          blocked.push('Stærðfræðimerki ' + enMath[i] + ' vantar.');
+        }
+      }
+
+      var origBR = (originalIs || '').match(/\[\[BR\]\]/g) || [];
+      var editBR = (editedIs || '').match(/\[\[BR\]\]/g) || [];
+      if (origBR.length > editBR.length) {
+        blocked.push('[[BR]] línuskil voru fjarlægð.');
+      }
+
+      var enXrefs = (enText || '').match(/\[#[A-Za-z0-9_.-]+\]/g) || [];
+      for (var j = 0; j < enXrefs.length; j++) {
+        if (editedIs.indexOf(enXrefs[j]) === -1) {
+          blocked.push('Tilvísun ' + enXrefs[j] + ' vantar.');
+        }
+      }
+
+      if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
+        warnings.push('Bútur var tæmdur — var það viljandi?');
+      }
+
+      return {
+        blocked: blocked.length > 0 ? blocked : null,
+        warnings: warnings.length > 0 ? warnings : null,
+      };
+    }
+
     async function edSaveSingleSegment(segmentId) {
       var ta = document.getElementById('ta-' + edCssId(segmentId));
       var ind = document.getElementById('ind-' + edCssId(segmentId));
       if (!ta) return;
 
       var content = ta.value;
+
+      // Validate before saving
+      var seg = edModuleData.segments.find(function (s) { return s.segmentId === segmentId; });
+      if (seg) {
+        var validation = edValidateSegmentEdit(seg.en, seg.faithful, content);
+        if (validation.blocked) {
+          alert('Ekki hægt að vista:\n\n' + validation.blocked.join('\n'));
+          return;
+        }
+        if (validation.warnings) {
+          if (!confirm('Athugið:\n\n' + validation.warnings.join('\n') + '\n\nViltu halda áfram?')) {
+            return;
+          }
+        }
+      }
+
       ind.textContent = 'Vistar...';
       ind.className = 'save-indicator saving';
 
@@ -1904,6 +1985,23 @@
       var keys = Object.keys(edPendingChanges);
       if (keys.length === 0) {
         alert('Engar \u00F3vista\u00F0ar breytingar.');
+        return;
+      }
+
+      // Validate all pending segments before bulk save
+      var allBlocked = [];
+      for (var k = 0; k < keys.length; k++) {
+        var segId = keys[k];
+        var seg = edModuleData.segments.find(function (s) { return s.segmentId === segId; });
+        if (seg) {
+          var v = edValidateSegmentEdit(seg.en, seg.faithful, edPendingChanges[segId].content);
+          if (v.blocked) {
+            allBlocked.push(segId + ': ' + v.blocked.join(', '));
+          }
+        }
+      }
+      if (allBlocked.length > 0) {
+        alert('Ekki hægt að vista — vandamál í eftirfarandi bútum:\n\n' + allBlocked.join('\n'));
         return;
       }
 
@@ -2059,6 +2157,24 @@
         /\[\[MATH:(\d+)\]\]/g,
         '<span class="math-placeholder">[[MATH:$1]]</span>'
       );
+    }
+
+    /**
+     * Render markdown preview from raw segment text (localization editor).
+     */
+    function edRenderMarkdownPreview(text) {
+      if (!text) return '';
+      var html = escapeHtml(text);
+      html = html.replace(/\[\[MATH:(\d+)\]\]/g, '<span class="math-placeholder">[[MATH:$1]]</span>');
+      html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
+      html = html.replace(/\[#([A-Za-z0-9_.-]+)\]/g, '<span class="xref-chip" title="Tilv\u00EDsun: $1">&#128247;</span>');
+      html = html.replace(/\[([^\]]+)\]\(#([^)]+)\)/g, '<span class="link-chip" title="Hlekkur: #$2">$1 &#128279;</span>');
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+      html = html.replace(/__(.+?)__/g, '<span class="preview-term">$1</span>');
+      html = html.replace(/(?<!~)~(?!~)(.+?)(?<!~)~(?!~)/g, '<sub>$1</sub>');
+      html = html.replace(/\^(.+?)\^/g, '<sup>$1</sup>');
+      return html;
     }
 
     function edCssId(segmentId) {
