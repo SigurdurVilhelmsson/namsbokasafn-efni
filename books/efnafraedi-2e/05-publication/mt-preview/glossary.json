@@ -97,6 +97,12 @@
       "english": "atomic mass"
     },
     {
+      "term": "Atwater-kerfið",
+      "definition": "kerfi til að áætla orkuinnihald matvæla út frá magni próteina, fitu og kolvetna",
+      "chapter": 5,
+      "english": "Atwater system"
+    },
+    {
       "term": "Auðleystur",
       "definition": "með tiltölulega mikinn leysni; leysist upp að tiltölulega miklu leyti",
       "chapter": 4,
@@ -129,7 +135,8 @@
     {
       "term": "bar",
       "definition": "(bar eða b) þrýstingseining; 1 bar = 100.000 Pa",
-      "chapter": 9
+      "chapter": 9,
+      "english": "bar"
     },
     {
       "term": "basi",
@@ -486,7 +493,11 @@
       "term": "hraðajafna",
       "definition": "stærðfræðileg framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða þrýstingi hvarfefnis eða myndefnis á tímaeiningu",
       "chapter": 12,
-      "english": "rate expression"
+      "english": "rate expression",
+      "alternateEnglish": [
+        "rate law",
+        "rate equation"
+      ]
     },
     {
       "term": "hraðatakmarkandi skref",
@@ -594,7 +605,10 @@
       "term": "jafnvægisfasti (K)",
       "definition": "gildi hvarfstuðuls fyrir kerfi í jafnvægi; má gefa upp með styrk (Kc) eða hlutþrýstingi (Kp)",
       "chapter": 13,
-      "english": "equilibrium constant (k)"
+      "english": "equilibrium constant (k)",
+      "alternateEnglish": [
+        "equilibrium constant, k"
+      ]
     },
     {
       "term": "jarðalkalímálmur",
@@ -648,13 +662,22 @@
       "term": "kalóría (cal)",
       "definition": "eining fyrir varma eða aðra orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni um 1 gráðu á Celsíus; 1 cal er skilgreint sem 4,184 J",
       "chapter": 5,
-      "english": "calorie (cal)"
+      "english": "calorie (cal)",
+      "alternateEnglish": [
+        "calories (cal)"
+      ]
     },
     {
       "term": "katjón",
       "definition": "jákvætt hlaðið atóm eða sameind (inniheldur færri rafeindir en róteindir)",
       "chapter": 2,
       "english": "cation"
+    },
+    {
+      "term": "katóðugeisli",
+      "definition": "geisli sem fellur frá katóðu í katóðugeislalampa; samanstendur af rafeindum",
+      "chapter": 2,
+      "english": "cathode ray"
     },
     {
       "term": "kelvin (K)",
@@ -716,6 +739,12 @@
       "english": "lanthanide"
     },
     {
+      "term": "lausn",
+      "definition": "einsleit blanda tveggja eða fleiri efna",
+      "chapter": 1,
+      "english": "solution"
+    },
+    {
       "term": "lengd",
       "definition": "mælikvarði á eina vídd hlutar",
       "chapter": 1,
@@ -738,6 +767,12 @@
       "definition": "efni sem bætt er við sýnið í títrunargreiningu til að gera sjónræna greiningu á jafngildispunkti mögulega",
       "chapter": 4,
       "english": "indicator"
+    },
+    {
+      "term": "lífeldsneyti",
+      "definition": "eldsneyti sem er framleitt úr lífrænum efnum, svo sem plöntuolíu, dýrafitu, eða úrgangsefnum",
+      "chapter": 5,
+      "english": "biofuel"
     },
     {
       "term": "lítri (L)",
@@ -800,6 +835,12 @@
       "english": "charles’s law"
     },
     {
+      "term": "lögmál Gay-Lussacs",
+      "definition": "á við um fast magn gass við fast rúmmál: þrýstingur gass er í beinu hlutfalli við hita þess á Kelvin-skalanum",
+      "chapter": 9,
+      "english": "Gay-Lussac's law"
+    },
+    {
       "term": "lögmál Hess",
       "definition": "ef hægt er að tákna ferli sem summu nokkurra skrefa er vermibreyting ferlisins jöfn summu vermibreytinga skrefanna",
       "chapter": 5,
@@ -857,7 +898,10 @@
       "term": "markverðir stafir",
       "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
       "chapter": 1,
-      "english": "significant figures"
+      "english": "significant figures",
+      "alternateEnglish": [
+        "significant digits"
+      ]
     },
     {
       "term": "massa-rúmmálsprósenta",
@@ -1079,7 +1123,10 @@
       "term": "Oxunartala",
       "definition": "(einnig, oxunarástand) hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni",
       "chapter": 4,
-      "english": "oxidation number"
+      "english": "oxidation number",
+      "alternateEnglish": [
+        "oxidation state"
+      ]
     },
     {
       "term": "óvissa",
@@ -1189,6 +1236,12 @@
       "english": "cubic centimeter (cm3 or cc)"
     },
     {
+      "term": "röð (í lotukerfinu)",
+      "definition": "lárétt röð frumefna í lotukerfinu",
+      "chapter": 2,
+      "english": "series"
+    },
+    {
       "term": "Salt",
       "definition": "jónaefni sem getur myndast við efnahvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
       "chapter": 4
@@ -1216,6 +1269,12 @@
       "definition": "Efnajafna þar sem öll hvarfefni og myndefni eru sýnd sem hlutlaus efni",
       "chapter": 4,
       "english": "molecular equation"
+    },
+    {
+      "term": "sameindamassi",
+      "definition": "massi í atómmassaeiningum (amu) af einni sameind efnis; jafnt summu atómmassa atómanna í sameindinni",
+      "chapter": 2,
+      "english": "molecular mass"
     },
     {
       "term": "sameindatala",
@@ -1287,7 +1346,10 @@
       "term": "staðalaðstæður hitastigs og þrýstings (STP)",
       "definition": "273,15 K (0 °C) og 1 atm (101,325 kPa)",
       "chapter": 9,
-      "english": "standard conditions of temperature and pressure (stp)"
+      "english": "standard conditions of temperature and pressure (stp)",
+      "alternateEnglish": [
+        "standard temperature and pressure (stp)"
+      ]
     },
     {
       "term": "staðalástand",
@@ -1341,7 +1403,10 @@
       "term": "Stillt jafna",
       "definition": "Efnajafna með jöfnum fjölda atóma fyrir hvert frumefni í hvarfefninu og myndefninu",
       "chapter": 4,
-      "english": "balanced equation"
+      "english": "balanced equation",
+      "alternateEnglish": [
+        "balanced"
+      ]
     },
     {
       "term": "stórsætt svið",
@@ -1598,7 +1663,10 @@
       "term": "virkjaður flóki",
       "definition": "(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf",
       "chapter": 12,
-      "english": "activated complex"
+      "english": "activated complex",
+      "alternateEnglish": [
+        "transition state"
+      ]
     },
     {
       "term": "virkjunarorka (Ea)",
@@ -1610,7 +1678,10 @@
       "term": "víddagreining",
       "definition": "(einnig þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir",
       "chapter": 1,
-      "english": "dimensional analysis"
+      "english": "dimensional analysis",
+      "alternateEnglish": [
+        "factor-label method"
+      ]
     },
     {
       "term": "vísindaleg aðferð",
