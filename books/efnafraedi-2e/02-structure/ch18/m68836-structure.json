@@ -1,0 +1,611 @@
+{
+  "moduleId": "m68836",
+  "title": {
+    "segmentId": "m68836:title:auto-1",
+    "text": "Occurrence, Preparation, and Properties of Phosphorus"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "4121db69-abc4-44ab-b659-373f244a35bc",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the properties, preparation, and uses of phosphorus"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp52194704",
+      "segmentId": "m68836:para:fs-idp52194704"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp51821104",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp5816832",
+      "segmentId": "m68836:para:fs-idp5816832"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_18_08_P4S3",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68836:caption:CNX_Chem_18_08_P4S3-caption"
+      },
+      "media": {
+        "id": "fs-idm5144976",
+        "alt": "A ball-and-stick model is shown. Three orange atoms labeled “P” are single bonded together in a triangle shape. Each “P” is single bonded to yellow atoms labeled “S,” which are each single bonded to one other orange atom labeled “P.”",
+        "src": "../../media/CNX_Chem_18_08_P4S3.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm31898272",
+      "class": null,
+      "title": {
+        "segmentId": "m68836:title:fs-idm31898272-title",
+        "text": "Phosphorus Oxygen Compounds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp85748768",
+          "segmentId": "m68836:para:fs-idp85748768"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_08_P4O6P4O10",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68836:caption:CNX_Chem_18_08_P4O6P4O10-caption"
+          },
+          "media": {
+            "id": "fs-idp57250912",
+            "alt": "Two ball-and-stick models are shown. In the left model, three orange atoms labeled, “P,” are single bonded to red atoms labeled, “O,” in an alternating, six-sided ring structure. Each of the orange atoms are also single bonded to another red atom, which are in turn single bonded to a single orange atom. The right model shows three orange atoms labeled, “P,” single bonded to red atoms labeled, “O,” in an alternating, six-sided ring structure. Each of the orange atoms are also single bonded to two more red atoms, one in an upward position and one facing the outside of the molecule. The upward red atoms are single bonded to a single orange atom which is single bonded to a final red atom.",
+            "src": "../../media/CNX_Chem_18_08_P4O6P4O10.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm7162480",
+          "segmentId": "m68836:para:fs-idm7162480"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp704592",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm64278832",
+          "segmentId": "m68836:para:fs-idm64278832"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm11573280",
+      "class": null,
+      "title": {
+        "segmentId": "m68836:title:fs-idm11573280-title",
+        "text": "Phosphorus Halogen Compounds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp70568512",
+          "segmentId": "m68836:para:fs-idp70568512"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp182518880",
+          "segmentId": "m68836:para:fs-idp182518880"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_08_PCl3PCl5",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68836:caption:CNX_Chem_18_08_PCl3PCl5-caption"
+          },
+          "media": {
+            "id": "fs-idp189314192",
+            "alt": "Two ball-and-stick models are shown. In the left model, an orange atom labeled, “P,” is single bonded to three green atoms labeled, “C l.” The right model shows an orange atom labeled, “P,” single bonded to five green atoms labeled, “C l.”",
+            "src": "../../media/CNX_Chem_18_08_PCl3PCl5.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp21181152",
+          "segmentId": "m68836:para:fs-idp21181152"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm44217280",
+          "segmentId": "m68836:para:fs-idm44217280"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp183301136",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68836:title:fs-idp183301136-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp219295376",
+          "segmentId": "m68836:para:fs-idp219295376"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp185176672",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68836:title:fs-idp185176672-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp52847792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm63439584",
+                "segmentId": "m68836:problem:fs-idm63439584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp210380672",
+                "segmentId": "m68836:problem:fs-idp210380672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp153159872",
+                "segmentId": "m68836:problem:fs-idp153159872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm27147360",
+                "segmentId": "m68836:problem:fs-idm27147360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm44280352",
+                "segmentId": "m68836:problem:fs-idm44280352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp332959120",
+                "segmentId": "m68836:problem:fs-idp332959120"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm28792464",
+                "segmentId": "m68836:solution:fs-idm28792464"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp101864208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp227455632",
+                "segmentId": "m68836:problem:fs-idp227455632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp157002384",
+                "segmentId": "m68836:problem:fs-idp157002384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp149580544",
+                "segmentId": "m68836:problem:fs-idp149580544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp222519424",
+                "segmentId": "m68836:problem:fs-idp222519424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp28824176",
+                "segmentId": "m68836:problem:fs-idp28824176"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2951584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp93162752",
+                "segmentId": "m68836:problem:fs-idp93162752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp111486400",
+                "segmentId": "m68836:problem:fs-idp111486400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp104794544",
+                "segmentId": "m68836:problem:fs-idp104794544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp54180608",
+                "segmentId": "m68836:problem:fs-idp54180608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp167891792",
+                "segmentId": "m68836:problem:fs-idp167891792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp187537152",
+                "segmentId": "m68836:problem:fs-idp187537152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp9601440",
+                "segmentId": "m68836:problem:fs-idp9601440"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp112136256",
+                "segmentId": "m68836:solution:fs-idp112136256"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm43491296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm66070064",
+                "segmentId": "m68836:problem:fs-idm66070064"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp54197664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp219284192",
+                "segmentId": "m68836:problem:fs-idp219284192"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25603936",
+                "segmentId": "m68836:solution:fs-idp25603936"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm123772752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57482752",
+                "segmentId": "m68836:problem:fs-idp57482752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp32430320",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp2366736",
+                "segmentId": "m68836:problem:fs-idp2366736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45323824",
+                "segmentId": "m68836:solution:fs-idm45323824"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp208490096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp59081184",
+                "segmentId": "m68836:problem:fs-idp59081184"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm54656592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69434528",
+                "segmentId": "m68836:problem:fs-idp69434528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp201777712",
+                "segmentId": "m68836:problem:fs-idp201777712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm8400224",
+                "segmentId": "m68836:problem:fs-idm8400224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp11683376",
+                "segmentId": "m68836:problem:fs-idp11683376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63931648",
+                "segmentId": "m68836:problem:fs-idm63931648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp12097488",
+                "segmentId": "m68836:solution:fs-idp12097488"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm55936272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27849968",
+                "segmentId": "m68836:problem:fs-idp27849968"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp5265904",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp219241728",
+                "segmentId": "m68836:problem:fs-idp219241728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp97854512",
+                "segmentId": "m68836:problem:fs-idp97854512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63479760",
+                "segmentId": "m68836:problem:fs-idm63479760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm869408",
+                "segmentId": "m68836:problem:fs-idm869408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp20195696",
+                "segmentId": "m68836:problem:fs-idp20195696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp24284416",
+                "segmentId": "m68836:problem:fs-idp24284416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208579360",
+                "segmentId": "m68836:problem:fs-idp208579360"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp9609632",
+                "segmentId": "m68836:solution:fs-idp9609632"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp126473504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46924640",
+                "segmentId": "m68836:problem:fs-idp46924640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm28349936",
+                "segmentId": "m68836:problem:fs-idm28349936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm64288464",
+                "segmentId": "m68836:problem:fs-idm64288464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40764960",
+                "segmentId": "m68836:problem:fs-idp40764960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1024",
+                "segmentId": "m68836:problem:fs-idp1024"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68836:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68836:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm55213168",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom with a lone pair of electrons single bonded to three hydrogen atoms.",
+      "src": "../../media/CNX_Chem_18_08_Exercise1a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm1170240",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscript positive sign outside the brackets.",
+      "src": "../../media/CNX_Chem_18_08_Exercise1b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp56334352",
+      "class": null,
+      "alt": "This Lewis structure shows two phosphorus atoms, each with a lone pair of electrons, single bonded to one another. Each phosphorus atom is also single bonded to two hydrogen atoms.",
+      "src": "../../media/CNX_Chem_18_08_Exercise1c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idm66638800",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to four oxygen atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript 3 negative sign outside the brackets.",
+      "src": "../../media/CNX_Chem_18_08_Exercise1d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm5269184",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to five fluorine atoms, each with three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_18_08_Exercise1e_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idp215036560",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to four fluorine atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript positive sign outside the brackets. The label, “Tetrahedral,” is written under the structure. ",
+      "src": "../../media/CNX_Chem_18_08_Exercise8a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idp42036672",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to five fluorine atoms, each with three lone pairs of electrons. The label, “Trigonal bipyramidal,” is written under the structure.",
+      "src": "../../media/CNX_Chem_18_08_Exercise8b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idp41412448",
+      "class": null,
+      "alt": "A Lewis structure shows a phosphorus atom single bonded to six fluorine atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript negative sign outside the brackets. The label, “Octahedral,” is written under the structure.",
+      "src": "../../media/CNX_Chem_18_08_Exercise8c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:9]]",
+      "id": "fs-idm23148096",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to three fluorine atoms, each with three lone pairs of electrons. The phosphorus atom is also double bonded to an oxygen atom with two lone pairs of electrons. The label, “Tetrahedral,” is written under the structure.",
+      "src": "../../media/CNX_Chem_18_08_Exercise8d_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

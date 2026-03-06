@@ -1,0 +1,830 @@
+{
+  "moduleId": "m68817",
+  "title": {
+    "segmentId": "m68817:title:auto-1",
+    "text": "Entropy"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e027dead-a283-48fa-bf2c-f6e7ad70b3ec",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define entropy",
+        "Explain the relationship between entropy and the number of microstates",
+        "Predict the sign of the entropy change for chemical and physical processes"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm1359840",
+      "segmentId": "m68817:para:fs-idm1359840"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_16_03_Carnot",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68817:caption:CNX_Chem_16_03_Carnot-caption"
+      },
+      "media": {
+        "id": "fs-idm106556080",
+        "alt": " A portrait of Rudolf Clasius is shown.",
+        "src": "../../media/CNX_Chem_16_03_Carnot.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm194920048",
+      "segmentId": "m68817:para:fs-idm194920048"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm146915824",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm100781680",
+      "segmentId": "m68817:para:fs-idm100781680"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp19898544",
+      "class": null,
+      "title": {
+        "segmentId": "m68817:title:fs-idp19898544-title",
+        "text": "Entropy and Microstates"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp173054032",
+          "segmentId": "m68817:para:fs-idp173054032"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp33531488",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm109445936",
+          "segmentId": "m68817:para:fs-idm109445936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm172030064",
+          "segmentId": "m68817:para:fs-idm172030064"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm76606496",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm69202464",
+          "segmentId": "m68817:para:fs-idm69202464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm119038640",
+          "segmentId": "m68817:para:fs-idm119038640"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_16_02_Microstates",
+          "caption": {
+            "segmentId": "m68817:caption:CNX_Chem_16_02_Microstates-caption"
+          },
+          "media": {
+            "id": "fs-idm219643568",
+            "alt": "Five rows of diagrams that look like dominoes are shown and labeled a, b, c, d, and e. Row a has one “domino” that has four dots on the left side, red, green, blue and yellow in a clockwise pattern from the top left, and no dots on the right. Row b has four “dominos,” each with three dots on the left and one dot on the right. The first shows a “domino” with green, yellow and blue on the left and red on the right. The second “domino” has yellow, blue and red on the left and green on the right. The third “domino” has red, green and yellow on the left and blue on the right while the fourth has red, green and blue on the left and yellow on the right. Row c has six “dominos”, each with two dots on either side. The first has a red and green on the left and a blue and yellow on the right. The second has a red and blue on the left and a green and yellow on the right while the third has a yellow and red on the left and a green and blue on the right. The fourth has a green and blue on the left and a red and yellow on the right. The fifth has a green and yellow on the left and a red and blue on the right. The sixth has a blue and yellow on the left and a green and red on the right. Row d has four “dominos,” each with one dot on the left and three on the right. The first “domino” has red on the left and a blue, green and yellow on the right. The second has a green on the left and a red, yellow and blue on the right. The third has a blue on the left and a red, green and yellow on the right. The fourth has a yellow on the left and a red, green and blue on the right. Row e has 1 “domino” with no dots on the left and four dots on the right that are red, green, blue and yellow.",
+            "src": "../../media/CNX_Chem_16_02_Microstates.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm104062656",
+          "segmentId": "m68817:para:fs-idm104062656"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm150227312",
+          "segmentId": "m68817:para:fs-idm150227312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm249639376",
+          "segmentId": "m68817:para:fs-idm249639376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm158412992",
+          "segmentId": "m68817:para:fs-idm158412992"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm167918400",
+          "segmentId": "m68817:para:fs-idm167918400"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_16_03_Energy",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68817:caption:CNX_Chem_16_03_Energy-caption"
+          },
+          "media": {
+            "id": "fs-idm215022256",
+            "alt": "Three rows labeled a, b, and c are shown and each contains rectangles with two sides where the left side is labeled, “A,” and “B,” and the right is labeled, “C,” and “D.” Row a has three rectangles where the first has a dot above and below the letter A, the second has a dot above the A and B, and the third which has a dot above and below the letter B. Row b has four rectangles; the first has a dot above A and C, the second has a dot above A and D, the third has a dot above B and C and the fourth has a dot above B and D. Row c has three rectangles; the first has a dot above and below the letter C, the second has a dot above C and D and the third has a dot above and below the letter D.",
+            "src": "../../media/CNX_Chem_16_03_Energy.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm141128112",
+          "title": {
+            "segmentId": "m68817:example-title:fs-idm141128112-title",
+            "text": "Solution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm120145792",
+              "segmentId": "m68817:para:fs-idm120145792"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm97076112",
+              "segmentId": "m68817:para:fs-idm97076112"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm190514064",
+              "segmentId": "m68817:para:fs-idm190514064"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm208064656",
+              "segmentId": "m68817:para:fs-idm208064656",
+              "title": {
+                "segmentId": "m68817:para-title:fs-idm208064656-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm145487536",
+              "segmentId": "m68817:para:fs-idm145487536"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm221426432"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp48055552",
+              "title": {
+                "segmentId": "m68817:note-title:fs-idp48055552-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm145487536",
+                  "segmentId": "m68817:para:fs-idm145487536"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp49499248",
+      "class": null,
+      "title": {
+        "segmentId": "m68817:title:fs-idp49499248-title",
+        "text": "Solution"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm169703584",
+          "segmentId": "m68817:para:fs-idm169703584"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_16_03_Entropies",
+          "caption": {
+            "segmentId": "m68817:caption:CNX_Chem_16_03_Entropies-caption"
+          },
+          "media": {
+            "id": "fs-idm187243744",
+            "alt": "Three stoppered flasks are shown with right and left-facing arrows in between each; the first is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0,” while the second is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0.” A long, right-facing arrow is drawn above all the flasks and labeled, “Increasing entropy.” The left flask contains twenty-seven particles arranged in a cube in the bottom of the flask and is labeled, “Crystalline solid,” below. The middle flask contains twenty-seven particles dispersed randomly in the bottom of the flask and is labeled, “Liquid,” below. The right flask contains twenty-seven particles dispersed inside of the flask and moving rapidly and is labeled, “Gas,” below.",
+            "src": "../../media/CNX_Chem_16_03_Entropies.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm123213200",
+          "segmentId": "m68817:para:fs-idm123213200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp32863824",
+          "segmentId": "m68817:para:fs-idp32863824"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_16_02_EntGraph",
+          "caption": {
+            "segmentId": "m68817:caption:CNX_Chem_16_02_EntGraph-caption"
+          },
+          "media": {
+            "id": "fs-idm190770944",
+            "alt": "Two graphs are shown. The y-axis of the left graph is labeled, “Fraction of molecules,” while the x-axis is labeled, “Velocity, v ( m / s ),” and has values of 0 through 1,500 along the axis with increments of 500. Four lines are plotted on this graph. The first, labeled, “100 K,” peaks around 200 m / s while the second, labeled, “200 K,” peaks near 300 m / s and is slightly lower on the y-axis than the first. The third line, labeled, “500 K,” peaks around 550 m / s and is lower than the first two on the y-axis. The fourth line, labeled, “1000 K,” peaks around 750 m / s and is the lowest of the four on the y-axis. Each line get increasingly broad. The second graph has a y-axis labeled, “Entropy, S,” with an upward-facing arrow and an x-axis labeled, “Temperature ( K ),” and a right-facing arrow. The graph has three equally spaced columns in the background, labeled, “Solid,” “Liquid,” and, “Gas,” from left to right. A line extends slightly upward through the first column in a slight upward direction, then goes straight up in the transition between the first two columns. In then progresses in a slight upward direction through the second column, then goes up dramatically between the second and third columns, then continues in a slight upward direction once more. The first vertical region of this line is labeled, “Melting,” and the second is labeled, “Boiling.”",
+            "src": "../../media/CNX_Chem_16_02_EntGraph.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm189737360",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm305735232",
+              "segmentId": "m68817:para:fs-idm305735232"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm135226880",
+          "segmentId": "m68817:para:fs-idm135226880"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm96833856",
+          "segmentId": "m68817:para:fs-idm96833856"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm224301776",
+          "segmentId": "m68817:para:fs-idm224301776"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm151499136",
+          "title": {
+            "segmentId": "m68817:example-title:fs-idm151499136-title",
+            "text": "Check Your Learning"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp52796224",
+              "segmentId": "m68817:para:fs-idp52796224"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm216333072",
+              "segmentId": "m68817:para:fs-idm216333072"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm120870816",
+              "segmentId": "m68817:para:fs-idm120870816"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm126368960",
+              "segmentId": "m68817:para:fs-idm126368960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146695616",
+              "segmentId": "m68817:para:fs-idm146695616"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm200549408",
+              "segmentId": "m68817:para:fs-idm200549408"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm136327104",
+              "segmentId": "m68817:para:fs-idm136327104"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm137858960",
+              "segmentId": "m68817:para:fs-idm137858960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm119107312",
+              "segmentId": "m68817:para:fs-idm119107312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10344720",
+              "segmentId": "m68817:para:fs-idm10344720"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm40731056",
+              "segmentId": "m68817:para:fs-idm40731056"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp86372496",
+              "segmentId": "m68817:para:fs-idp86372496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm69138640",
+              "segmentId": "m68817:para:fs-idm69138640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm47554640",
+              "segmentId": "m68817:para:fs-idm47554640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm140480768",
+              "segmentId": "m68817:para:fs-idm140480768"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm8656368",
+              "title": {
+                "segmentId": "m68817:note-title:fs-idm8656368-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm140480768",
+                  "segmentId": "m68817:para:fs-idm140480768"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm166431584",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68817:title:fs-idm166431584-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm12417328",
+          "segmentId": "m68817:para:fs-idm12417328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm1916912",
+          "segmentId": "m68817:para:fs-idm1916912"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm145716272",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68817:title:fs-idm145716272-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68817:entry:auto-64",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68817:entry:auto-65",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68817:entry:auto-66",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm93579488",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68817:title:fs-idm93579488-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp46279440",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm68890768",
+                "segmentId": "m68817:problem:fs-idm68890768"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm145774432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm174300432",
+                "segmentId": "m68817:problem:fs-idm174300432"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50785744",
+                "segmentId": "m68817:solution:fs-idm50785744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm56843152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm224401216",
+                "segmentId": "m68817:problem:fs-idm224401216"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm72753056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp160153456",
+                "segmentId": "m68817:problem:fs-idp160153456"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56607328",
+                "segmentId": "m68817:solution:fs-idm56607328"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm215906096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm156781200",
+                "segmentId": "m68817:problem:fs-idm156781200"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm18362192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm36866176",
+                "segmentId": "m68817:problem:fs-idm36866176"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp149676672",
+                "segmentId": "m68817:solution:fs-idp149676672"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm199093136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm213530176",
+                "segmentId": "m68817:problem:fs-idm213530176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp44137920",
+                "segmentId": "m68817:problem:fs-idp44137920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142133824",
+                "segmentId": "m68817:problem:fs-idm142133824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm163064272",
+                "segmentId": "m68817:problem:fs-idm163064272"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm215000480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm186954224",
+                "segmentId": "m68817:problem:fs-idm186954224"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm213636080",
+                "segmentId": "m68817:solution:fs-idm213636080"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm12232336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51261056",
+                "segmentId": "m68817:problem:fs-idm51261056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp161887648",
+                "segmentId": "m68817:problem:fs-idp161887648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm49084704",
+                "segmentId": "m68817:problem:fs-idm49084704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm55094160",
+                "segmentId": "m68817:problem:fs-idm55094160"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm136809856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm100556464",
+                "segmentId": "m68817:problem:fs-idm100556464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm134468944",
+                "segmentId": "m68817:problem:fs-idm134468944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp5877872",
+                "segmentId": "m68817:problem:fs-idp5877872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm120697520",
+                "segmentId": "m68817:problem:fs-idm120697520"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm99883024",
+                "segmentId": "m68817:solution:fs-idm99883024"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm216212480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47257056",
+                "segmentId": "m68817:problem:fs-idp47257056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm96430336",
+                "segmentId": "m68817:problem:fs-idm96430336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp62448",
+                "segmentId": "m68817:problem:fs-idp62448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm161394496",
+                "segmentId": "m68817:problem:fs-idm161394496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm203140096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm100068288",
+                "segmentId": "m68817:problem:fs-idm100068288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm56208096",
+                "segmentId": "m68817:problem:fs-idm56208096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp39785184",
+                "segmentId": "m68817:problem:fs-idp39785184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm136698544",
+                "segmentId": "m68817:problem:fs-idm136698544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm194079920",
+                "segmentId": "m68817:solution:fs-idm194079920"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm213645360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm161095360",
+                "segmentId": "m68817:problem:fs-idm161095360"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19392560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm71912080",
+                "segmentId": "m68817:problem:fs-idm71912080"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4241680",
+                "segmentId": "m68817:solution:fs-idm4241680"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68817:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68817:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68817:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68817:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm225836896",
+        "termSegmentId": "m68817:glossary-term:fs-idm225836896-term",
+        "definitionSegmentId": "m68817:glossary-def:fs-idm225836896-def"
+      },
+      {
+        "id": "fs-idm228328464",
+        "termSegmentId": "m68817:glossary-term:fs-idm228328464-term",
+        "definitionSegmentId": "m68817:glossary-def:fs-idm228328464-def"
+      },
+      {
+        "id": "fs-idp48318480",
+        "termSegmentId": "m68817:glossary-term:fs-idp48318480-term",
+        "definitionSegmentId": "m68817:glossary-def:fs-idp48318480-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

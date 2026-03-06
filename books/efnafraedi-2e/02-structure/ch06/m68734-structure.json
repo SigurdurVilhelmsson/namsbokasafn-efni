@@ -1,0 +1,1246 @@
+{
+  "moduleId": "m68734",
+  "title": {
+    "segmentId": "m68734:title:auto-1",
+    "text": "Electronic Structure of Atoms (Electron Configurations)"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "627e5a5b-94a9-4069-b2a0-7a446ea165cf",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Derive the predicted ground-state electron configurations of atoms",
+        "Identify and explain exceptions to predicted electron configurations for atoms and ions",
+        "Relate electron configurations to element classifications in the periodic table"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp32474800",
+      "segmentId": "m68734:para:fs-idp32474800"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp61895104",
+      "class": null,
+      "title": {
+        "segmentId": "m68734:title:fs-idp61895104-title",
+        "text": "Orbital Energies and Atomic Structure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp165763952",
+          "segmentId": "m68734:para:fs-idp165763952"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_04_eLeveldiag",
+          "caption": {
+            "segmentId": "m68734:caption:CNX_Chem_06_04_eLeveldiag-caption"
+          },
+          "media": {
+            "id": "fs-idp15990608",
+            "alt": "A table entitled, “Subshell electron capacity,” is shown. Along the left side of the table, an upward pointing arrow labeled, “E,” is drawn. The table includes three columns. The first column is narrow and is labeled, “2.” The second is slightly wider and is labeled, “6.” The third is slightly wider yet and is labeled, “10.” The fourth is the widest and is labeled, “14.” The first column begins at the very bottom with a horizontal line segment labeled “1 s.” Evenly spaced line segments continue up to 7 s near the top of the column. In the second column, a horizontal dashed line segment labeled, “2 p,” appears at a level between the 2 s and 3 s levels. Similarly 3 p appears at a level between 3 s and 4 s, 4 p appears just below 5 s, 5 p appears just below 6 s, and 6 p appears just below 7 s. In the third column, a dashed line labeled, “3 d,” appears just below the level of 4 p. Similarly, 4 d appears just below 5 p and 5 d appears just below 6 p. Six d however appears above the levels of both 6 p and 7 s. The far right column entries begin with a dashed line labeled, “4 f,” positioned at a level just below 5 d. Similarly, a second dashed line segment appears just below the level of 6 d, which is labeled, “5 f.”",
+            "src": "../../media/CNX_Chem_06_04_eLeveldiag.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp20536752",
+          "segmentId": "m68734:para:fs-idp20536752"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp45944160",
+          "segmentId": "m68734:para:fs-idp45944160"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp16888336",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp16888336-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp16888336-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp16888336-item-3"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp148323904",
+          "segmentId": "m68734:para:fs-idp148323904"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_04_Econfig",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68734:caption:CNX_Chem_06_04_Econfig-caption"
+          },
+          "media": {
+            "id": "fs-idp160912656",
+            "alt": "A light blue hemisphere is labeled H. At a location about midway between the center and outer edge of the hemisphere, a small yellow-orange sphere is shown that is labeled with a negative sign. To the right of this diagram is the electron configuration 1 s superscript 1. The superscript is shown in a small yellow-orange circle. This superscript is labeled, “Number of electrons in subshell,” and the s is labeled, “Subshell.”",
+            "src": "../../media/CNX_Chem_06_04_Econfig.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp52797152",
+      "class": null,
+      "title": {
+        "segmentId": "m68734:title:fs-idp52797152-title",
+        "text": "The Aufbau Principle"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp6137968",
+          "segmentId": "m68734:para:fs-idp6137968"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_04_Efillorder",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68734:caption:CNX_Chem_06_04_Efillorder-caption"
+          },
+          "media": {
+            "id": "fs-idp114572608",
+            "alt": "This figure includes a chart used to order the filling of electrons into atoms. At the top is a blue circle labeled “1 s.” In a row beneath this circle are 6 additional blue circles labeled “2 s” through “7 s.” A column to the right begins just right of 2 s and contains pink circles labeled 2 p through 7 p. A column to the right begins just right of 3 p and contains yellow circles labeled 3 d through 6 d. No circles are placed to the right of the 7 s and 7 p circles. A final column on the right begins right of 4 d. It includes grey circles labeled, “4 f” and, “5 f.” No circles are placed right of 6 d. Through these circles, arrows are included in the figure pointing down and to the left. The first arrow begins in the upper right and passes through 1 s. The second arrow begins just below and passes through 2 s. The third arrow passes through 2 p and 3 s. The fourth arrow passes through 3 p and 4 s. This pattern of parallel arrows pointing downward to the left continues through all circles completing the pattern 1 s 2 s 2 p 3 s 3 p 4 s 3 d 4 p 5 s 4 d 5 p 6 s 4 f 5 d 6 p 7 s 5 f 6 d 7 p.",
+            "src": "../../media/CNX_Chem_06_04_Efillorder.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_04_Econtable",
+          "caption": {
+            "segmentId": "m68734:caption:CNX_Chem_06_04_Econtable-caption"
+          },
+          "media": {
+            "id": "fs-idp160965360",
+            "alt": "In this figure, a periodic table is shown that is entitled, “Electron Configuration Table.” Beneath the table, a square for the element hydrogen is shown enlarged to provide detail. The element symbol, H, is placed in the upper left corner. In the upper right is the number of electrons, 1. The lower central portion of the element square contains the subshell, 1s. Helium and elements in groups 1 and 2 are shaded blue. In this region, the rows are labeled 1s through 7s moving down the table. Groups 3 through 12 are shaded orange, and the rows are labeled 3d through 6d moving down the table. Groups 13 through 18, except helium, are shaded pink and are labeled 2p through 6p moving down the table.",
+            "src": "../../media/CNX_Chem_06_04_Econtable.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp96036896",
+          "segmentId": "m68734:para:fs-idp96036896"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_Hydrog1_img",
+          "class": null,
+          "alt": "In this figure, the element symbol H is followed by the electron configuration is 1 s superscript 1. An orbital diagram is provided that consists of a single square. The square is labeled below as, “1 s.” It contains a single upward pointing half arrow.",
+          "src": "../../media/CNX_Chem_06_04_Hydrog1_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp241397616",
+          "segmentId": "m68734:para:fs-idp241397616"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_Helium1_img",
+          "class": null,
+          "alt": "In this figure, the element symbol H e is followed by the electron configuration, “1 s superscript 2.” An orbital diagram is provided that consists of a single square. The square is labeled below as “1 s.” It contains a pair of half arrows: one pointing up and the other down.",
+          "src": "../../media/CNX_Chem_06_04_Helium1_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp9284128",
+          "segmentId": "m68734:para:fs-idp9284128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp29682592",
+          "segmentId": "m68734:para:fs-idp29682592"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_Lithium12_img",
+          "class": null,
+          "alt": "In this figure, the element symbol L i is followed by the electron configuration, “1 s superscript 2 2 s superscript 1.” An orbital diagram is provided that consists of two individual squares. The first square is labeled below as, “1 s.” The second square is similarly labeled, “2 s.” The first square contains a pair of half arrows: one pointing up and the other down. The second square contains a single upward pointing arrow.",
+          "src": "../../media/CNX_Chem_06_04_Lithium12_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp10466880",
+          "segmentId": "m68734:para:fs-idp10466880"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_Beryll12_img",
+          "class": null,
+          "alt": "In this figure, the element symbol B e is followed by the electron configuration, “1 s superscript 2 2 s superscript 2.” An orbital diagram is provided that consists of two individual squares. The first square is labeled below as, “1 s.” The second square is similarly labeled, “2 s.” Both squares contain a pair of half arrows: one pointing up and the other down.",
+          "src": "../../media/CNX_Chem_06_04_Beryll12_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp164718432",
+          "segmentId": "m68734:para:fs-idp164718432"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_Boron122_img",
+          "class": null,
+          "alt": "In this figure, the element symbol B is followed by the electron configuration, “1 s superscript 2 2 s superscript 2 2 p superscript 1.” The orbital diagram consists of two individual squares followed by 3 connected squares in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected contain a pair of half arrows: one pointing up and the other down. The first square in the group of 3 contains a single upward pointing arrow.",
+          "src": "../../media/CNX_Chem_06_04_Boron122_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp35410400",
+          "segmentId": "m68734:para:fs-idp35410400"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_Carbon122_img",
+          "class": null,
+          "alt": "In this figure, the element symbol C is followed by the electron configuration, “1 s superscript 2 2 s superscript 2 2 p superscript 2.” The orbital diagram consists of two individual squares followed by 3 connected squares in a single row. The first blue square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected to each other contain a pair of half arrows: one pointing up and the other down. The first two squares in the group of 3 each contain a single upward pointing arrow.",
+          "src": "../../media/CNX_Chem_06_04_Carbon122_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp243804816",
+          "segmentId": "m68734:para:fs-idp243804816"
+        },
+        {
+          "type": "media",
+          "id": "CNX_Chem_06_04_NOFNe_img",
+          "class": null,
+          "alt": "This figure includes electron configurations and orbital diagrams for four elements, N, O, F, and N e. Each diagram consists of two individual squares followed by 3 connected squares in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected to each other contain a pair of half arrows: one pointing up and the other down. For the element N, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 3. Each of the squares in the group of 3 contains a single upward pointing arrow for this element. For the element O, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 4. The first square in the group of 3 contains a pair of arrows and the last two squares contain single upward pointing arrows. For the element F, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 5. The first two squares in the group of 3 each contain a pair of arrows and the last square contains a single upward pointing arrow. For the element N e, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 6. The squares in the group of 3 each contains a pair of arrows.",
+          "src": "../../media/CNX_Chem_06_04_NOFNe_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm31105888",
+          "segmentId": "m68734:para:fs-idm31105888"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_04_Valence",
+          "caption": {
+            "segmentId": "m68734:caption:CNX_Chem_06_04_Valence-caption"
+          },
+          "media": {
+            "id": "fs-idp108836512",
+            "alt": "This figure includes the element symbol N a, followed by the electron configuration for the element. The first part of the electron configuration, 1 s superscript 2 2 s superscript 2 2 p superscript 6, is shaded in purple and is labeled, “core electrons.” The last portion, 3 s superscript 1, is shaded orange and is labeled, “valence electron.” To the right of this configuration is the word “Abbreviation” followed by [ N e ] 3 s superscript 1.",
+            "src": "../../media/CNX_Chem_06_04_Valence.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28826352",
+          "segmentId": "m68734:para:fs-idp28826352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp20565040",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp156268816",
+          "segmentId": "m68734:para:fs-idp156268816"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp52824064",
+          "segmentId": "m68734:para:fs-idp52824064"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_06_04_Ptableconf",
+          "caption": {
+            "segmentId": "m68734:caption:CNX_Chem_06_04_Ptableconf-caption"
+          },
+          "media": {
+            "id": "fs-idp104721920",
+            "alt": "A periodic table, entitled, “Electron Configuration Table” is shown. The table includes the outer electron configuration information, atomic numbers, and element symbols for all elements. A square for the element hydrogen is pulled out beneath the table to provide detail. The blue shaded square includes the atomic number in the upper left corner, which is 1; the element symbol, H, in the upper right corner; and the outer electron configuration in the lower, central portion of the square. For H, this is 1s superscript 1.",
+            "src": "../../media/CNX_Chem_06_04_Ptableconf.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8891728",
+          "segmentId": "m68734:para:fs-idm8891728"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp7806208",
+          "segmentId": "m68734:para:fs-idp7806208"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp25345424",
+          "title": {
+            "segmentId": "m68734:example-title:fs-idp25345424-title",
+            "text": "Quantum Numbers and Electron Configurations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm59921552",
+              "segmentId": "m68734:para:fs-idm59921552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp80391584",
+              "segmentId": "m68734:para:fs-idp80391584",
+              "title": {
+                "segmentId": "m68734:para-title:fs-idp80391584-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm6887808",
+              "segmentId": "m68734:para:fs-idm6887808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp40041152",
+              "segmentId": "m68734:para:fs-idp40041152",
+              "title": {
+                "segmentId": "m68734:para-title:fs-idp40041152-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp255668160",
+              "segmentId": "m68734:para:fs-idp255668160"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp13258240",
+              "segmentId": "m68734:para:fs-idp13258240"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp62872432",
+              "segmentId": "m68734:para:fs-idp62872432"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp131140752",
+              "title": {
+                "segmentId": "m68734:note-title:fs-idp131140752-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp62872432",
+                  "segmentId": "m68734:para:fs-idp62872432"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp95342976",
+          "segmentId": "m68734:para:fs-idp95342976"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp38113648",
+          "segmentId": "m68734:para:fs-idp38113648"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp262041824",
+      "class": null,
+      "title": {
+        "segmentId": "m68734:title:fs-idp262041824-title",
+        "text": "Electron Configurations and the Periodic Table"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp3828352",
+          "segmentId": "m68734:para:fs-idp3828352"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp77726784",
+          "segmentId": "m68734:para:fs-idp77726784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp150491632",
+          "segmentId": "m68734:para:fs-idp150491632"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp170969264",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp170969264-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp170969264-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp170969264-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68734:item:fs-idp170969264-item-4"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm11513792",
+          "segmentId": "m68734:para:fs-idm11513792"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp32346944",
+      "class": null,
+      "title": {
+        "segmentId": "m68734:title:fs-idp32346944-title",
+        "text": "Electron Configurations of Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp229254240",
+          "segmentId": "m68734:para:fs-idp229254240"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp31411280",
+          "title": {
+            "segmentId": "m68734:example-title:fs-idp31411280-title",
+            "text": "Predicting Electron Configurations of Ions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp163270880",
+              "segmentId": "m68734:para:fs-idp163270880"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp13273872",
+              "segmentId": "m68734:para:fs-idp13273872"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm84066320",
+              "segmentId": "m68734:para:fs-idm84066320"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp4960832",
+              "segmentId": "m68734:para:fs-idp4960832"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp246784064",
+              "segmentId": "m68734:para:fs-idp246784064"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp128177424",
+              "segmentId": "m68734:para:fs-idp128177424"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp66116416",
+              "segmentId": "m68734:para:fs-idp66116416",
+              "title": {
+                "segmentId": "m68734:para-title:fs-idp66116416-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp165067840",
+              "segmentId": "m68734:para:fs-idp165067840"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp106203776",
+              "segmentId": "m68734:para:fs-idp106203776"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp12929312",
+              "segmentId": "m68734:para:fs-idp12929312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp103470240",
+              "segmentId": "m68734:para:fs-idp103470240"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp159739376",
+              "segmentId": "m68734:para:fs-idp159739376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp229539136",
+              "segmentId": "m68734:para:fs-idp229539136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp203409520",
+              "segmentId": "m68734:para:fs-idp203409520"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp34533056",
+              "segmentId": "m68734:para:fs-idp34533056",
+              "title": {
+                "segmentId": "m68734:para-title:fs-idp34533056-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp24075168",
+              "segmentId": "m68734:para:fs-idp24075168"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp215805632",
+              "title": {
+                "segmentId": "m68734:note-title:fs-idp215805632-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp24075168",
+                  "segmentId": "m68734:para:fs-idp24075168"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp19121552",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68734:title:fs-idp19121552-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp164262336",
+          "segmentId": "m68734:para:fs-idp164262336"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp170978096",
+          "segmentId": "m68734:para:fs-idp170978096"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp6359712",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68734:title:fs-idp6359712-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp203800544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp165788464",
+                "segmentId": "m68734:problem:fs-idp165788464"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp32862336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp247217392",
+                "segmentId": "m68734:problem:fs-idp247217392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp160788800",
+                "segmentId": "m68734:solution:fs-idp160788800"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp28734432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm41439904",
+                "segmentId": "m68734:problem:fs-idm41439904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5976064",
+                "segmentId": "m68734:problem:fs-idm5976064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164353056",
+                "segmentId": "m68734:problem:fs-idp164353056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp199844496",
+                "segmentId": "m68734:problem:fs-idp199844496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84688480",
+                "segmentId": "m68734:problem:fs-idp84688480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm13854544",
+                "segmentId": "m68734:problem:fs-idm13854544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp165789584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp171397696",
+                "segmentId": "m68734:problem:fs-idp171397696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7894080",
+                "segmentId": "m68734:problem:fs-idm7894080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp45368160",
+                "segmentId": "m68734:problem:fs-idp45368160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164492944",
+                "segmentId": "m68734:problem:fs-idp164492944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp117010688",
+                "segmentId": "m68734:problem:fs-idp117010688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp116521696",
+                "segmentId": "m68734:problem:fs-idp116521696"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp142734304",
+                "segmentId": "m68734:solution:fs-idp142734304"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44567104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp104673360",
+                "segmentId": "m68734:problem:fs-idp104673360"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp108900240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp114895920",
+                "segmentId": "m68734:problem:fs-idp114895920"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp44502912",
+                "segmentId": "m68734:solution:fs-idp44502912"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm11516304",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41617648",
+                "segmentId": "m68734:problem:fs-idp41617648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm36543184",
+                "segmentId": "m68734:problem:fs-idm36543184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp78898480",
+                "segmentId": "m68734:problem:fs-idp78898480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34680672",
+                "segmentId": "m68734:problem:fs-idp34680672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp253440976",
+                "segmentId": "m68734:problem:fs-idp253440976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp3086848",
+                "segmentId": "m68734:problem:fs-idp3086848"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp45725024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62383344",
+                "segmentId": "m68734:problem:fs-idp62383344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp43548048",
+                "segmentId": "m68734:problem:fs-idp43548048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7367888",
+                "segmentId": "m68734:problem:fs-idp7367888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp229641984",
+                "segmentId": "m68734:problem:fs-idp229641984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm937920",
+                "segmentId": "m68734:problem:fs-idm937920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp162143664",
+                "segmentId": "m68734:problem:fs-idp162143664"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8042528",
+                "segmentId": "m68734:solution:fs-idp8042528"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp22673408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43362176",
+                "segmentId": "m68734:problem:fs-idp43362176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp96684752",
+                "segmentId": "m68734:problem:fs-idp96684752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp247247040",
+                "segmentId": "m68734:problem:fs-idp247247040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6961760",
+                "segmentId": "m68734:problem:fs-idp6961760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm15928448",
+                "segmentId": "m68734:problem:fs-idm15928448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm3888624",
+                "segmentId": "m68734:problem:fs-idm3888624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm20409168",
+                "segmentId": "m68734:problem:fs-idm20409168"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp203400832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp77448256",
+                "segmentId": "m68734:problem:fs-idp77448256"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp121509792",
+                "segmentId": "m68734:solution:fs-idp121509792"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20553216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp24939264",
+                "segmentId": "m68734:problem:fs-idp24939264"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26092016",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5124864",
+                "segmentId": "m68734:problem:fs-idm5124864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23574064",
+                "segmentId": "m68734:solution:fs-idp23574064"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp42173648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp202295808",
+                "segmentId": "m68734:problem:fs-idp202295808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp162194832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9880640",
+                "segmentId": "m68734:problem:fs-idm9880640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36721120",
+                "segmentId": "m68734:problem:fs-idp36721120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp80333216",
+                "segmentId": "m68734:problem:fs-idp80333216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7412592",
+                "segmentId": "m68734:problem:fs-idp7412592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp149707504",
+                "segmentId": "m68734:problem:fs-idp149707504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp82994240",
+                "segmentId": "m68734:problem:fs-idp82994240"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm40971904",
+                "segmentId": "m68734:solution:fs-idm40971904"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm7500224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm6463248",
+                "segmentId": "m68734:problem:fs-idm6463248"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp3240128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37368480",
+                "segmentId": "m68734:problem:fs-idp37368480"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp45652512",
+                "segmentId": "m68734:solution:fs-idp45652512"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50820528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7807504",
+                "segmentId": "m68734:problem:fs-idp7807504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp32131696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp247812992",
+                "segmentId": "m68734:problem:fs-idp247812992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp131047056",
+                "segmentId": "m68734:solution:fs-idp131047056"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm62612928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp150185184",
+                "segmentId": "m68734:problem:fs-idp150185184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm14144720",
+                "segmentId": "m68734:problem:fs-idm14144720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp44810192",
+                "segmentId": "m68734:problem:fs-idp44810192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18143568",
+                "segmentId": "m68734:problem:fs-idp18143568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88136656",
+                "segmentId": "m68734:problem:fs-idp88136656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36771008",
+                "segmentId": "m68734:problem:fs-idp36771008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp81167248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6389712",
+                "segmentId": "m68734:problem:fs-idp6389712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp45742624",
+                "segmentId": "m68734:solution:fs-idp45742624"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm9054704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp80513232",
+                "segmentId": "m68734:problem:fs-idp80513232"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68734:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68734:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68734:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68734:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp150242960",
+        "termSegmentId": "m68734:glossary-term:fs-idp150242960-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp150242960-def"
+      },
+      {
+        "id": "fs-idp7870592",
+        "termSegmentId": "m68734:glossary-term:fs-idp7870592-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp7870592-def"
+      },
+      {
+        "id": "fs-idp161527712",
+        "termSegmentId": "m68734:glossary-term:fs-idp161527712-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp161527712-def"
+      },
+      {
+        "id": "fs-idp3194736",
+        "termSegmentId": "m68734:glossary-term:fs-idp3194736-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp3194736-def"
+      },
+      {
+        "id": "fs-idp15489472",
+        "termSegmentId": "m68734:glossary-term:fs-idp15489472-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp15489472-def"
+      },
+      {
+        "id": "fs-idp159361136",
+        "termSegmentId": "m68734:glossary-term:fs-idp159361136-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp159361136-def"
+      },
+      {
+        "id": "fs-idp52735024",
+        "termSegmentId": "m68734:glossary-term:fs-idp52735024-term",
+        "definitionSegmentId": "m68734:glossary-def:fs-idp52735024-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "CNX_Chem_06_04_OrbDiaSh2a_img",
+      "class": "scaled-down-30",
+      "alt": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “2 s.” The connected squares are labeled below as, “2 p.” The first square has a pair of half arrows: one pointing up, and the other down. Each of the remaining squares contains a single upward pointing arrow.",
+      "src": "../../media/CNX_Chem_06_04_OrbDiaSh2a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "CNX_Chem_06_04_OrbDiaSh2b_img",
+      "class": "scaled-down-30",
+      "alt": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “2 s.” The connected squares are labeled below as, “2 p.” The first square has a pair of half arrows: one pointing up and the other down. The first two squares in the row of connected squares contain a single upward pointing arrow. The third square is empty.",
+      "src": "../../media/CNX_Chem_06_04_OrbDiaSh2b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "CNX_Chem_06_04_OrbDiaSh2c_img",
+      "class": "scaled-down-30",
+      "alt": "This figure includes a square followed by 5 squares all connected in a single row. The first square is labeled below as, “4 s.” The connected squares are labeled below as, “3 d.” The first square and the left-most square in the row of connected squares each has a pair of half arrows: one pointing up and the other down. Each of the remaining squares contains a single upward pointing arrow.",
+      "src": "../../media/CNX_Chem_06_04_OrbDiaSh2c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "CNX_Chem_06_04_OrbDiaSh2d_img",
+      "class": "scaled-down-30",
+      "alt": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “5 s superscript 2.” The connected squares are labeled below as, “5 p. superscript 4.” The first square and the left-most square in the row of connect squares each has a pair of half arrows: one pointing up and the other down. Each of the remaining squares contains a single upward pointing arrow.",
+      "src": "../../media/CNX_Chem_06_04_OrbDiaSh2d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "CNX_Chem_06_04_OrbDiaSh2e_img",
+      "class": "scaled-down-30",
+      "alt": "This figure includes a square followed by 5 squares all connected in a single row. The first square is labeled below as, “5 s.” The connected squares are labeled below as, “4 d superscript 5.” Each of the squares contains a single upward pointing arrow.",
+      "src": "../../media/CNX_Chem_06_04_OrbDiaSh2e_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

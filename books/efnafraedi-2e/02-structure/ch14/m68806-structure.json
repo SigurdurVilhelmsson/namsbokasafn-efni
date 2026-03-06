@@ -1,0 +1,751 @@
+{
+  "moduleId": "m68806",
+  "title": {
+    "segmentId": "m68806:title:auto-1",
+    "text": "Hydrolysis of Salts"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "df527820-3877-419d-97a3-62386ce24df9",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Predict whether a salt solution will be acidic, basic, or neutral",
+        "Calculate the concentrations of the various species in a salt solution",
+        "Describe the acid ionization of hydrated metal ions"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-idp37481072",
+      "class": null,
+      "title": {
+        "segmentId": "m68806:title:fs-idp37481072-title",
+        "text": "Salts with Acidic Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm649972064",
+          "segmentId": "m68806:para:fs-idm649972064"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm209439760",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm240546096",
+          "segmentId": "m68806:para:fs-idm240546096"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm137491888a",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm238452464",
+          "segmentId": "m68806:para:fs-idm238452464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm249820848",
+          "segmentId": "m68806:para:fs-idm249820848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm248062064",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm656133776",
+          "segmentId": "m68806:para:fs-idm656133776"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm212824304",
+          "segmentId": "m68806:para:fs-idm212824304"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp38392128",
+          "title": {
+            "segmentId": "m68806:example-title:fs-idp38392128-title",
+            "text": "Calculating the pH of an Acidic Salt Solution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm172853552",
+              "segmentId": "m68806:para:fs-idm172853552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm45558496",
+              "segmentId": "m68806:para:fs-idm45558496",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm45558496-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm169484640",
+              "segmentId": "m68806:para:fs-idm169484640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm175121360",
+              "segmentId": "m68806:para:fs-idm175121360"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm252541328",
+              "segmentId": "m68806:para:fs-idm252541328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm228289760",
+              "segmentId": "m68806:para:fs-idm228289760"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm156700000",
+              "segmentId": "m68806:para:fs-idm156700000",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm156700000-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp43419152",
+              "segmentId": "m68806:para:fs-idp43419152"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm149245808"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm169067840"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm248611472"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm204343104"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm247349056"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm54595904",
+              "title": {
+                "segmentId": "m68806:note-title:fs-idm54595904-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp43419152",
+                  "segmentId": "m68806:para:fs-idp43419152"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm135179984",
+      "class": null,
+      "title": {
+        "segmentId": "m68806:title:fs-idm135179984-title",
+        "text": "Salts with Basic Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm119438896",
+          "segmentId": "m68806:para:fs-idm119438896"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm243373152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm237096048",
+          "segmentId": "m68806:para:fs-idm237096048"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm248142864",
+          "segmentId": "m68806:para:fs-idm248142864"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm641525520",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm249385760",
+          "segmentId": "m68806:para:fs-idm249385760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm248895632",
+          "segmentId": "m68806:para:fs-idm248895632"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp37320880",
+          "title": {
+            "segmentId": "m68806:example-title:fs-idp37320880-title",
+            "text": "Equilibrium in a Solution of a Salt of a Weak Acid and a Strong Base"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm168517392",
+              "segmentId": "m68806:para:fs-idm168517392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2736464",
+              "segmentId": "m68806:para:fs-idm2736464",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm2736464-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm121126768",
+              "segmentId": "m68806:para:fs-idm121126768"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm45670544",
+              "segmentId": "m68806:para:fs-idm45670544"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm54917312",
+              "segmentId": "m68806:para:fs-idm54917312",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm54917312-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm7663712",
+              "segmentId": "m68806:para:fs-idm7663712"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm148031584"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm62642320"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm218140928"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp923936"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm95967568",
+              "title": {
+                "segmentId": "m68806:note-title:fs-idm95967568-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm7663712",
+                  "segmentId": "m68806:para:fs-idm7663712"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm81229520",
+      "class": null,
+      "title": {
+        "segmentId": "m68806:title:fs-idm81229520-title",
+        "text": "Salts with Acidic and Basic Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp31152",
+          "segmentId": "m68806:para:fs-idp31152"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm161229856",
+          "title": {
+            "segmentId": "m68806:example-title:fs-idm161229856-title",
+            "text": "Determining the Acidic or Basic Nature of Salts"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm219032992",
+              "segmentId": "m68806:para:fs-idm219032992"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm55604816",
+              "segmentId": "m68806:para:fs-idm55604816"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp65280880",
+              "segmentId": "m68806:para:fs-idp65280880"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm82359664",
+              "segmentId": "m68806:para:fs-idm82359664"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm18348400",
+              "segmentId": "m68806:para:fs-idm18348400"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm117618912",
+              "segmentId": "m68806:para:fs-idm117618912",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm117618912-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm56643648",
+              "segmentId": "m68806:para:fs-idm56643648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm168102384",
+              "segmentId": "m68806:para:fs-idm168102384"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm98756192",
+              "segmentId": "m68806:para:fs-idm98756192"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp9214400",
+              "segmentId": "m68806:para:fs-idp9214400"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp53880096",
+              "segmentId": "m68806:para:fs-idp53880096"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp10452272",
+              "segmentId": "m68806:para:fs-idp10452272"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm140849264",
+              "segmentId": "m68806:para:fs-idm140849264",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm140849264-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm15098896",
+              "segmentId": "m68806:para:fs-idm15098896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm75225328",
+              "segmentId": "m68806:para:fs-idm75225328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm290933120",
+              "segmentId": "m68806:para:fs-idm290933120"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm223869584",
+              "segmentId": "m68806:para:fs-idm223869584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm5299888",
+              "segmentId": "m68806:para:fs-idm5299888"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm42020240",
+              "title": {
+                "segmentId": "m68806:note-title:fs-idm42020240-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm5299888",
+                  "segmentId": "m68806:para:fs-idm5299888"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm108915120",
+      "class": null,
+      "title": {
+        "segmentId": "m68806:title:fs-idm108915120-title",
+        "text": "The Ionization of Hydrated Metal Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm252144288",
+          "segmentId": "m68806:para:fs-idm252144288"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm253215984",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm252419632",
+          "segmentId": "m68806:para:fs-idm252419632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm117678832",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm251913856",
+          "segmentId": "m68806:para:fs-idm251913856"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm108244016",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm137552288",
+          "segmentId": "m68806:para:fs-idm137552288"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm46178496",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm2413712",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp12750352",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8711664",
+          "segmentId": "m68806:para:fs-idp8711664"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_14_04_hydronium",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68806:caption:CNX_Chem_14_04_hydronium-caption"
+          },
+          "media": {
+            "id": "fs-idp82299440",
+            "alt": "A reaction is shown using ball and stick models. On the left, inside brackets with a superscript of 3 plus outside to the right is structure labeled “[ A l ( H subscript 2 O ) subscript 6 ] superscript 3 plus.” Inside the brackets is s central grey atom to which 6 red atoms are bonded in an arrangement that distributes them evenly about the central grey atom. Each red atom has two smaller white atoms attached in a forked or bent arrangement. Outside the brackets to the right is a space-filling model that includes a red central sphere with two smaller white spheres attached in a bent arrangement. Beneath this structure is the label “H subscript 2 O.” A double sided arrow follows. Another set of brackets follows to the right of the arrows which have a superscript of two plus outside to the right. The structure inside the brackets is similar to that on the left, except a white atom is removed from the structure. The label below is also changed to “[ A l ( H subscript 2 O ) subscript 5 O H ] superscript 2 plus.” To the right of this structure and outside the brackets is a space filling model with a central red sphere to which 3 smaller white spheres are attached. This structure is labeled “H subscript 3 O superscript plus.”",
+            "src": "../../media/CNX_Chem_14_04_hydronium.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm167123728",
+          "segmentId": "m68806:para:fs-idm167123728"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp56836016",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm116986352",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm166964496",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm171178400",
+          "title": {
+            "segmentId": "m68806:example-title:fs-idm171178400-title",
+            "text": "Solution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm122608832",
+              "segmentId": "m68806:para:fs-idm122608832"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp112354272",
+              "segmentId": "m68806:para:fs-idp112354272"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm175924752",
+              "segmentId": "m68806:para:fs-idm175924752",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idm175924752-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp86512272",
+              "segmentId": "m68806:para:fs-idp86512272"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm224297104"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm98439712"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm167107760"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp4666608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm156052944"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm161964736"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm38454832",
+              "title": {
+                "segmentId": "m68806:note-title:fs-idm38454832-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp86512272",
+                  "segmentId": "m68806:para:fs-idp86512272"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm180137840",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68806:title:fs-idm180137840-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp3314288",
+          "segmentId": "m68806:para:fs-idp3314288"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm46050816",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68806:title:fs-idm46050816-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm95651552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm280233072",
+                "segmentId": "m68806:problem:fs-idm280233072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142584336",
+                "segmentId": "m68806:problem:fs-idm142584336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm136682096",
+                "segmentId": "m68806:problem:fs-idm136682096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp68276672",
+                "segmentId": "m68806:problem:fs-idp68276672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm121100032",
+                "segmentId": "m68806:problem:fs-idm121100032"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm161278480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm245309936",
+                "segmentId": "m68806:problem:fs-idm245309936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm118859616",
+                "segmentId": "m68806:problem:fs-idm118859616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm120181856",
+                "segmentId": "m68806:problem:fs-idm120181856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm127849104",
+                "segmentId": "m68806:problem:fs-idm127849104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10166912",
+                "segmentId": "m68806:problem:fs-idm10166912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10437840",
+                "segmentId": "m68806:solution:fs-idm10437840"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm1823584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp30279488",
+                "segmentId": "m68806:problem:fs-idp30279488"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68806:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68806:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68806:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68806:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm136267808",
+      "class": null,
+      "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “A l ( H subscript 2 O ) subscript 6 superscript 3 positive sign plus H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus A l ( H subscript 2 O ) subscript 5 ( O H ) superscript 2 positive sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x.",
+      "src": "../../media/CNX_Chem_14_04_ICETable13_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

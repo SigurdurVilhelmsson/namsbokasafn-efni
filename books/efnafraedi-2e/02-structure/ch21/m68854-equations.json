@@ -1,0 +1,551 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>8</m:mn></m:mrow><m:mn>18</m:mn></m:msubsup><m:mtext>O</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>p</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>9</m:mn></m:mrow><m:mn>18</m:mn></m:msubsup><m:mtext>F</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext>\n\n<m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{( _{{\\, 8}}^{18}\\text{O} + _{{1}}^{1}\\text{p} \\, \\longrightarrow \\, _{{\\, 9}}^{18}\\text{F} + _{{0}}^{1}\\text{n} )}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>28</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Ni</m:mtext>\n\n<m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{_{{28}}^{60}\\text{Ni} .}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\, \\frac{{{N}_{t}}}{{{N}_{0}}}.}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{27}}^{60}\\text{Co}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext>\n\n<m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 86}}^{222}\\text{Rn} ,}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>83</m:mn></m:mrow><m:mn>209</m:mn></m:msubsup><m:mtext>Bi</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 83}}^{209}\\text{Bi}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Ra</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 94}}^{239}\\text{Ra}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 86}}^{222}\\text{Rn}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>,</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C} \\text{,}}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>13</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>,</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{13}\\text{C} \\text{,}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} .}"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} {\\text{O}}_{2}}"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C} {\\text{O}}_{2}}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{O}}"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C} \\text{O}}"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{O}}"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} _{{\\, 6}}^{14}\\text{C} {\\text{O}}_{2}}"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C} {\\text{O}}_{2}}"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-32": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-33": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C}}"
+  },
+  "math-34": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-35": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-36": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-37": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-38": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C} {\\text{O}}_{2})}"
+  },
+  "math-39": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C}}"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-41": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{12}\\text{C} {\\text{O}}_{2}}"
+  },
+  "math-42": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-43": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-44": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-45": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-46": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-47": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-48": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-49": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-50": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-51": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow></m:math>",
+    "latex": "{{t}_{{1\\text{/}2}}\\, =\\, \\frac{{\\text{ln 2}}}{λ}\\, =\\, \\frac{{0.693}}{λ}\\,}"
+  },
+  "math-52": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>p</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n<m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{0}}^{1}\\text{n} \\, \\longrightarrow \\, _{{1}}^{1}\\text{p} + _{+1}^{{\\, 0}}\\text{e} ;}"
+  },
+  "math-53": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>p</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n<m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{1}}^{1}\\text{p} \\, \\longrightarrow \\, _{{0}}^{1}\\text{n} + _{+1}^{{\\, 0}}\\text{e} ;}"
+  },
+  "math-54": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>p</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>p</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{1}}^{1}\\text{p} +{_{-1}^{{\\, 0}}\\text{e}}\\, \\longrightarrow \\, _{{0}}^{1}\\text{p}}"
+  },
+  "math-55": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>29</m:mn></m:mrow><m:mrow><m:mn>24</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow></m:math>",
+    "latex": "{\\, \\frac{{29}}{{24}}\\,}"
+  },
+  "math-56": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>26</m:mn></m:mrow><m:mrow><m:mn>25</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow></m:math>",
+    "latex": "{\\, \\frac{{26}}{{25}}\\,}"
+  },
+  "math-57": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>33</m:mn></m:mrow><m:mrow><m:mn>26</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow></m:math>",
+    "latex": "{\\, \\frac{{33}}{{26}}\\,}"
+  },
+  "math-58": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>24</m:mn></m:mrow><m:mn>53</m:mn></m:msubsup><m:mtext>Cr</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{24}}^{53}\\text{Cr}}"
+  },
+  "math-59": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>26</m:mn></m:mrow><m:mn>59</m:mn></m:msubsup><m:mtext>Fe</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{26}}^{59}\\text{Fe}}"
+  },
+  "math-60": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>15</m:mn></m:mrow><m:mn>34</m:mn></m:msubsup><m:mtext>P</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{15}}^{34}\\text{P}}"
+  },
+  "math-61": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{239}\\text{U}}"
+  },
+  "math-62": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>20</m:mn></m:mrow><m:mn>38</m:mn></m:msubsup><m:mtext>Ca</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{20}}^{38}\\text{Ca}}"
+  },
+  "math-63": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>3</m:mn></m:msubsup><m:mtext>H</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{1}}^{3}\\text{H}}"
+  },
+  "math-64": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>245</m:mn></m:msubsup><m:mtext>Pu</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 94}}^{245}\\text{Pu}}"
+  },
+  "math-65": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>15</m:mn></m:mrow><m:mn>28</m:mn></m:msubsup><m:mtext>P</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{15}}^{28}\\text{P}}"
+  },
+  "math-66": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>235</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{235}\\text{U}}"
+  },
+  "math-67": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>20</m:mn></m:mrow><m:mn>37</m:mn></m:msubsup><m:mtext>Ca</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{20}}^{37}\\text{Ca}}"
+  },
+  "math-68": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>3</m:mn></m:mrow><m:mn>9</m:mn></m:msubsup><m:mtext>L</m:mtext>\n\n<m:mtext>i</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{3}}^{9}\\text{L} \\text{i}}"
+  },
+  "math-69": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>96</m:mn></m:mrow><m:mn>245</m:mn></m:msubsup><m:mtext>Cm</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 96}}^{245}\\text{Cm}}"
+  },
+  "math-70": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>6</m:mn></m:msubsup><m:mtext>H</m:mtext>\n\n<m:mtext>e</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{2}}^{6}\\text{H} \\text{e}}"
+  },
+  "math-71": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>30</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Zn</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{30}}^{60}\\text{Zn}}"
+  },
+  "math-72": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>91</m:mn></m:mrow><m:mn>235</m:mn></m:msubsup><m:mtext>Pa</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 91}}^{235}\\text{Pa}}"
+  },
+  "math-73": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Np</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 94}}^{241}\\text{Np}}"
+  },
+  "math-74": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 84}}^{218}\\text{Po}}"
+  },
+  "math-75": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n<m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{238}\\text{U} ,}"
+  },
+  "math-76": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>Th</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n<m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{238}\\text{U} \\, \\longrightarrow \\, _{{\\, 90}}^{234}\\text{Th} + _{{2}}^{4}\\text{He} ;}"
+  },
+  "math-77": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>Th</m:mtext>\n\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>91</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>Pa</m:mtext>\n\n\n<m:mo>+</m:mo><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n\n</m:mrow><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 90}}^{234}\\text{Th} \\, \\longrightarrow \\, _{{\\, 91}}^{234}\\text{Pa} +{_{-1}^{{\\, 0}}\\text{e}};}"
+  },
+  "math-78": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>91</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>Pa</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 91}}^{234}\\text{Pa} \\, \\longrightarrow \\, _{{\\, 92}}^{234}\\text{U} +{_{-1}^{{\\, 0}}\\text{e}};}"
+  },
+  "math-79": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>230</m:mn></m:msubsup><m:mtext>Th</m:mtext>\n\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{234}\\text{U} \\, \\longrightarrow \\, _{{\\, 90}}^{230}\\text{Th} + _{{2}}^{4}\\text{He}}"
+  },
+  "math-80": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>230</m:mn></m:msubsup><m:mtext>Th</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext>\n\n<m:mo>+</m:mo>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 90}}^{230}\\text{Th} \\, \\longrightarrow \\, _{{\\, 88}}^{226}\\text{Ra} + _{{2}}^{4}\\text{He}}"
+  },
+  "math-81": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n<m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 88}}^{226}\\text{Ra} \\, \\longrightarrow \\, _{{\\, 86}}^{222}\\text{Rn} + _{{2}}^{4}\\text{He} ;}"
+  },
+  "math-82": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 86}}^{222}\\text{Rn} \\, \\longrightarrow \\, _{{\\, 84}}^{218}\\text{Po} + _{{2}}^{4}\\text{He}}"
+  },
+  "math-83": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>208</m:mn></m:msubsup><m:mtext>Pb</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 82}}^{208}\\text{Pb}}"
+  },
+  "math-84": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>228</m:mn></m:msubsup><m:mtext>T</m:mtext>\n\n<m:mtext>h,</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{\\, 90}}^{228}\\text{T} \\text{h,}}"
+  },
+  "math-85": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-86": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>102</m:mn></m:mrow><m:mn>254</m:mn></m:msubsup><m:mtext>No</m:mtext>\n\n<m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{_{{102}}^{254}\\text{No} ,}"
+  },
+  "math-87": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>102</m:mn></m:mrow><m:mn>254</m:mn></m:msubsup><m:mtext>No</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{102}}^{254}\\text{No}}"
+  },
+  "math-88": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>0.04</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.973</m:mn></m:mrow></m:math>",
+    "latex": "{{{{({\\, \\frac{1}{2}\\,})}}}^{{0.04}}\\, =\\, 0.973}"
+  },
+  "math-89": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 88}}^{226}\\text{Ra}}"
+  },
+  "math-90": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 86}}^{222}\\text{Rn}}"
+  },
+  "math-91": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-92": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>38</m:mn></m:mrow><m:mn>90</m:mn></m:msubsup><m:mtext>Sr</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{38}}^{90}\\text{Sr}}"
+  },
+  "math-93": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>43</m:mn></m:mrow><m:mn>99</m:mn></m:msubsup><m:mtext>Tc</m:mtext>\n\n<m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{_{{43}}^{99}\\text{Tc} .}"
+  },
+  "math-94": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-95": {
+    "mathml": "<m:math><m:mrow>\n\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>38</m:mn></m:mrow><m:mn>87</m:mn></m:msubsup><m:mtext>Sr</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{38}}^{87}\\text{Sr}}"
+  },
+  "math-96": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{238}\\text{U}}"
+  },
+  "math-97": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Pb</m:mtext>\n\n<m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 82}}^{206}\\text{Pb} .}"
+  },
+  "math-98": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{238}\\text{U}}"
+  },
+  "math-99": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-100": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-101": {
+    "mathml": "<m:math>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>4</m:mn></m:mrow><m:mn>7</m:mn></m:msubsup><m:mtext>Be</m:mtext>\n\n</m:math>",
+    "latex": "_{{4}}^{7}\\text{Be}"
+  },
+  "math-102": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>3</m:mn></m:mrow><m:mn>7</m:mn></m:msubsup><m:mtext>L</m:mtext>\n\n<m:mtext>i</m:mtext></m:mrow></m:math>",
+    "latex": "{_{{3}}^{7}\\text{L} \\text{i}}"
+  },
+  "math-103": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>5</m:mn></m:mrow><m:mn>8</m:mn></m:msubsup><m:mtext>B</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{5}}^{8}\\text{B}}"
+  },
+  "math-104": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>4</m:mn></m:mrow><m:mn>8</m:mn></m:msubsup><m:mtext>Be</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{4}}^{8}\\text{Be}}"
+  },
+  "math-105": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-106": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-107": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>83</m:mn></m:mrow><m:mn>212</m:mn></m:msubsup><m:mtext>Bi</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>212</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 83}}^{212}\\text{Bi} \\, \\longrightarrow \\, _{{\\, 84}}^{212}\\text{Po} +{_{-1}^{{\\, 0}}\\text{e}};}"
+  },
+  "math-108": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>5</m:mn></m:mrow><m:mn>8</m:mn></m:msubsup><m:mtext>B</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>4</m:mn></m:mrow><m:mn>8</m:mn></m:msubsup><m:mtext>B</m:mtext>\n\n<m:mtext>e</m:mtext><m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{5}}^{8}\\text{B} \\, \\longrightarrow \\, _{{4}}^{8}\\text{B} \\text{e}+{_{-1}^{{\\, 0}}\\text{e}};}"
+  },
+  "math-109": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>N</m:mtext>\n\n</m:mrow><m:mtext>p</m:mtext><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 92}}^{238}\\text{U} + _{{0}}^{1}\\text{n} \\, \\longrightarrow \\, _{{\\, 93}}^{239}\\text{Np} +{_{-1}^{{\\, 0}}\\text{N}}\\text{p},}"
+  },
+  "math-110": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mo>;</m:mo></m:mrow></m:math>",
+    "latex": "{_{{\\, 93}}^{239}\\text{Np} \\, \\longrightarrow \\, _{{\\, 94}}^{239}\\text{Pu} +{_{-1}^{{\\, 0}}\\text{e}};}"
+  },
+  "math-111": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>38</m:mn></m:mrow><m:mn>90</m:mn></m:msubsup><m:mtext>Sr</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>39</m:mn></m:mrow><m:mn>90</m:mn></m:msubsup><m:mtext>Y</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow></m:mrow></m:math>",
+    "latex": "{_{{38}}^{90}\\text{Sr} \\, \\longrightarrow \\, _{{39}}^{90}\\text{Y} +{_{-1}^{{\\, 0}}\\text{e}}}"
+  },
+  "fs-idp134926448": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Pb</m:mtext>\n\n<m:mspace width=\"3em\"/><m:mtext>or</m:mtext><m:mspace width=\"3em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>α</m:mtext>\n\n</m:mrow><m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Pb</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 84}}^{210}\\text{Po} \\, \\longrightarrow \\, _{{2}}^{4}\\text{He} + _{{\\, 82}}^{206}\\text{Pb} \\, \\text{or}\\, _{{\\, 84}}^{210}\\text{Po} \\, \\longrightarrow \\, {_{{2}}^{4}\\text{α}}+ _{{\\, 82}}^{206}\\text{Pb}}",
+    "isBlock": true
+  },
+  "fs-idm19827888": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>53</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>I</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>54</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>Xe</m:mtext>\n\n<m:mspace width=\"3em\"/><m:mtext>or</m:mtext><m:mspace width=\"3em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>53</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>I</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>β</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>54</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>Xe</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 53}}^{131}\\text{I} \\, \\longrightarrow \\, {_{-1}^{{\\, 0}}\\text{e}}+ _{{\\, 54}}^{131}\\text{Xe} \\, \\text{or}\\, _{{\\, 53}}^{131}\\text{I} \\, \\longrightarrow \\, _{-1}^{{\\, 0}}\\text{β} + _{{\\, 54}}^{131}\\text{Xe}}",
+    "isBlock": true
+  },
+  "fs-idp5264576": {
+    "mathml": "<m:math><m:mrow><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co*</m:mtext>\n\n</m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>0</m:mn></m:msubsup><m:mtext>γ</m:mtext>\n\n</m:mrow><m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>27</m:mn></m:mrow><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{{_{{27}}^{60}\\text{Co*}}\\, \\longrightarrow \\, {_{{0}}^{0}\\text{γ}}+ _{{27}}^{60}\\text{Co}}",
+    "isBlock": true
+  },
+  "fs-idm9404976": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>8</m:mn></m:mrow><m:mn>15</m:mn></m:msubsup><m:mtext>O</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>7</m:mn></m:mrow><m:mn>15</m:mn></m:msubsup><m:mtext>N</m:mtext>\n\n<m:mspace width=\"3em\"/><m:mtext>or</m:mtext><m:mspace width=\"3em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>8</m:mn></m:mrow><m:mn>15</m:mn></m:msubsup><m:mtext>O</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>β</m:mtext>\n\n</m:mrow><m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>7</m:mn></m:mrow><m:mn>15</m:mn></m:msubsup><m:mtext>N</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 8}}^{15}\\text{O} \\, \\longrightarrow \\, {_{+1}^{{\\, 0}}\\text{e}}+ _{{\\, 7}}^{15}\\text{N} \\, \\text{or}\\, _{{\\, 8}}^{15}\\text{O} \\, \\longrightarrow \\, {_{+1}^{{\\, 0}}\\text{β}}+ _{{\\, 7}}^{15}\\text{N}}",
+    "isBlock": true
+  },
+  "fs-idm22074816": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>19</m:mn></m:mrow><m:mn>40</m:mn></m:msubsup><m:mtext>K</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>18</m:mn></m:mrow><m:mn>40</m:mn></m:msubsup><m:mtext>Ar</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{19}}^{40}\\text{K} +{_{-1}^{{\\, 0}}\\text{e}}\\, \\longrightarrow \\, _{{18}}^{40}\\text{Ar}}",
+    "isBlock": true
+  },
+  "fs-idp219598000": {
+    "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"3em\"/><m:mtext>or</m:mtext><m:mspace width=\"3em\"/><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow></m:math>",
+    "latex": "{λ=\\, \\frac{{\\text{ln 2}}}{{{t}_{{1\\text{/}2}}}}\\, =\\, \\frac{{0.693}}{{{t}_{{1\\text{/}2}}}}\\, \\text{or}\\, {t}_{{1\\text{/}2}}=\\, \\frac{{\\text{ln 2}}}{λ}\\, =\\, \\frac{{0.693}}{λ}\\,}",
+    "isBlock": true
+  },
+  "fs-idm4205984": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mo>−</m:mo><m:mi>λ</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mspace width=\"3em\"/><m:mtext>or</m:mtext><m:mspace width=\"3em\"/><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{N}_{t}={N}_{0}{e}^{{-λt}}\\, \\text{or}\\, t=-\\frac{1}{λ}\\, \\text{ln}\\, {({\\frac{{{N}_{t}}}{{{N}_{0}}}\\,})}}",
+    "isBlock": true
+  },
+  "fs-idp17616736": {
+    "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:mn>5.27</m:mn><m:mspace width=\"0.2em\"/><m:mtext>y</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.132</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mtext>y</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{λ=\\, \\frac{{\\text{ln 2}}}{{{t}_{{1\\text{/}2}}}}\\, =\\, \\frac{{0.693}}{{5.27\\, \\text{y}}}\\, =0.132\\, {\\text{y}}^{{−1}}}",
+    "isBlock": true
+  },
+  "fs-idp16374688": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>−</m:mo><m:mi>λ</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>−</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.132</m:mn><m:mtext>/y</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>15</m:mn><m:mo>×</m:mo><m:mtext>y</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0.138</m:mn></m:mrow></m:math>",
+    "latex": "{\\, \\frac{{{N}_{t}}}{{{N}_{0}}}\\, ={e}^{{-λt}}={e}^{{-{({0.132\\text{/y}})}{({15\\times \\text{y}})}}}=0.138}",
+    "isBlock": true
+  },
+  "fs-idm21044912": {
+    "mathml": "<m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>0.132</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>y</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>0.0200</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>29.6</m:mn><m:mspace width=\"0.2em\"/><m:mtext>y</m:mtext></m:mrow></m:math>",
+    "latex": "{t=-\\frac{1}{λ}\\, \\text{ln}\\, {({\\frac{{{N}_{t}}}{{{N}_{0}}}\\,})}\\, =\\, -\\frac{1}{{0.132\\, {{\\text{y}}}^{{−1}}}}\\, \\text{ln}\\, {({\\frac{{0.0200\\, \\times \\, {N}_{0}}}{{{N}_{0}}}\\,})}\\, =29.6\\, \\text{y}}",
+    "isBlock": true
+  },
+  "fs-idp25204496": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>7</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>N</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>H</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 7}}^{14}\\text{N} + _{{0}}^{1}\\text{n} \\, \\longrightarrow \\, _{{\\, 6}}^{14}\\text{C} + _{{1}}^{1}\\text{H}}",
+    "isBlock": true
+  },
+  "fs-idp78792240": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>7</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>N</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow></m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\, \\longrightarrow \\, _{{\\, 7}}^{14}\\text{N} +{_{-1}^{{\\, 0}}\\text{e}}}",
+    "isBlock": true
+  },
+  "fs-idm27840624": {
+    "mathml": "<m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>Rate</m:mtext></m:mrow><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>Rate</m:mtext></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{t=-\\frac{1}{λ}\\, \\text{ln}\\, {({\\frac{{{N}_{t}}}{{{N}_{0}}}\\,})}\\, \\longrightarrow \\, t=-\\frac{1}{λ}\\, \\text{ln}\\, {({\\frac{{{{\\text{Rate}}}_{t}}}{{{{\\text{Rate}}}_{0}}}\\,})}}",
+    "isBlock": true
+  },
+  "fs-idm36556768": {
+    "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:mtext>5730 y</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.21</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>y</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{λ=\\, \\frac{{\\text{ln 2}}}{{{t}_{{1\\text{/}2}}}}\\, =\\, \\frac{{0.693}}{{\\text{5730 y}}}\\, =\\, 1.21\\, \\times \\, {{10}}^{{−4}}\\, {\\text{y}}^{{−1}}}",
+    "isBlock": true
+  },
+  "fs-idm20370432": {
+    "mathml": "<m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>Rate</m:mtext></m:mrow><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>Rate</m:mtext></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>1.21</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>y</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>10.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>dis/min/g C</m:mtext></m:mrow><m:mrow><m:mn>13.6</m:mn><m:mspace width=\"0.2em\"/><m:mtext>dis/min/g C</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mtext>1910 y</m:mtext></m:mrow></m:math>",
+    "latex": "{t=-\\frac{1}{λ}\\, \\text{ln}\\, {({\\, \\frac{{{{\\text{Rate}}}_{t}}}{{{{\\text{Rate}}}_{0}}}\\,})}\\, =\\, -\\frac{1}{{1.21\\, \\times \\, {{10}}^{{−4}}\\, {\\text{y}}^{{−1}}}}\\, \\text{ln}\\, {({\\, \\frac{{10.8\\, \\text{dis/min/g C}}}{{13.6\\, \\text{dis/min/g C}}}\\,})}\\, =\\, \\text{1910 y}}",
+    "isBlock": true
+  },
+  "fs-idp167610144": {
+    "mathml": "<m:math><m:mrow><m:mn>9.58</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g U</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol U</m:mtext></m:mrow><m:mrow><m:mn>238</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g U</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>4.03</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol U</m:mtext></m:mrow></m:math>",
+    "latex": "{9.58\\, \\times \\, {{10}}^{{−5}}\\, \\sout{{\\text{g U}}}\\, \\times \\, {({\\, \\frac{{\\text{1 mol U}}}{{238\\, \\sout{{\\text{g U}}}}}\\,})}\\, =\\, 4.03\\, \\times \\, {{10}}^{{−7}}\\, \\text{mol U}}",
+    "isBlock": true
+  },
+  "fs-idp25663280": {
+    "mathml": "<m:math><m:mrow><m:mn>2.51</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g Pb</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mol Pb</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>206</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g Pb</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol U</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mol Pb</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.22</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol U</m:mtext></m:mrow></m:math>",
+    "latex": "{2.51\\, \\times \\, {{10}}^{{−5}}\\, \\sout{{\\text{g Pb}}}\\, \\times \\, {({\\, \\frac{{1\\, \\sout{{\\text{mol Pb}}}}}{{206\\, \\sout{{\\text{g Pb}}}}}\\,})}\\, \\times \\, {({\\, \\frac{{\\text{1 mol U}}}{{1\\, \\sout{{\\text{mol Pb}}}}}\\,})}\\, =\\, 1.22\\, \\times \\, {{10}}^{{−7}}\\, \\text{mol U}}",
+    "isBlock": true
+  },
+  "fs-idp51369808": {
+    "mathml": "<m:math><m:mrow><m:mn>4.03</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mo>+</m:mo><m:mn>1.22</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>5.25</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol U</m:mtext></m:mrow></m:math>",
+    "latex": "{4.03\\, \\times \\, {{10}}^{{−7}}\\, \\text{mol}+1.22\\, \\times \\, {{10}}^{{−7}}\\, \\text{mol}\\, =\\, 5.25\\, \\times \\, {{10}}^{{−7}}\\, \\text{mol U}}",
+    "isBlock": true
+  },
+  "fs-idm43256560": {
+    "mathml": "<m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{t=\\, -\\frac{1}{λ}\\, \\text{ln}\\, {({\\, \\frac{{{N}_{t}}}{{{N}_{0}}}\\,})}}",
+    "isBlock": true
+  },
+  "fs-idp138305008": {
+    "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ln 2</m:mtext></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:mn>4.5</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>y</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.54</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>y</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{λ\\, =\\, \\frac{{\\text{ln 2}}}{{{t}_{{1\\text{/}2}}}}\\, =\\, \\frac{{0.693}}{{4.5\\, \\times \\, {{10}}^{9}\\, \\text{y}}}\\, =\\, 1.54\\, \\times \\, {{10}}^{{−10}}\\, {\\text{y}}^{{−1}}}",
+    "isBlock": true
+  },
+  "fs-idp171891856": {
+    "mathml": "<m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>1.54</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>y</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>4.03</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mol U</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>5.25</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mol U</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.7</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>y</m:mtext></m:mrow></m:math>",
+    "latex": "{t=\\, -\\frac{1}{{1.54\\, \\times \\, {{10}}^{{−10}}\\, {\\text{y}}^{{−1}}}}\\, \\text{ln}\\, {({\\frac{{4.03\\, \\times \\, {{10}}^{{−7}}\\, \\sout{{\\text{mol U}}}}}{{5.25\\, \\times \\, {{10}}^{{−7}}\\, \\sout{{\\text{mol U}}}}}\\,})}\\, =\\, 1.7\\, \\times \\, {{10}}^{9}\\, \\text{y}}",
+    "isBlock": true
+  }
+}

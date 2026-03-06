@@ -1,0 +1,898 @@
+{
+  "moduleId": "m68833",
+  "title": {
+    "segmentId": "m68833:title:auto-1",
+    "text": "Occurrence, Preparation, and Compounds of Hydrogen"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "04b97d13-490d-4732-8eb9-221fe8062387",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the properties, preparation, and compounds of hydrogen"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp110031408",
+      "segmentId": "m68833:para:fs-idp110031408"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp106673632",
+      "segmentId": "m68833:para:fs-idp106673632"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp264237088",
+      "class": null,
+      "title": {
+        "segmentId": "m68833:title:fs-idp264237088-title",
+        "text": "Preparation of Hydrogen"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp230327104",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp230327104-title",
+            "text": "From Steam and Carbon or Hydrocarbons"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp53034112",
+              "segmentId": "m68833:para:fs-idp53034112"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp1326032",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp58801168",
+              "segmentId": "m68833:para:fs-idp58801168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp148628304",
+              "segmentId": "m68833:para:fs-idp148628304"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp113879504",
+              "class": "unnumbered"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp2111024",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp2111024-title",
+            "text": "Electrolysis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp79258016",
+              "segmentId": "m68833:para:fs-idp79258016"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp657856",
+              "class": "unnumbered"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_05_Electrolys",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68833:caption:CNX_Chem_18_05_Electrolys-caption"
+              },
+              "media": {
+                "id": "fs-idp1458704",
+                "alt": "A diagram shows a beaker that contains a liquid, a battery submerged in the liquid, and two test tubes. The battery has the positive and negative terminals labeled. The liquid is connected by a right-facing arrow to an image of two molecules made up of one red atom and two white atoms. It is labeled, “Water,” and, “2 H subscript 2 O ( l ).” The left test tube above the negative sign is connected by a right-facing arrow to an image of two pairs of white atoms. The image is labeled, “Hydrogen,” and, “2 H subscript 2 ( g ).” The right test tube above the positive sign is connected by a right-facing arrow to an image of a pair of red atoms. The image is labeled, “Oxygen,” and, “O subscript 2 ( g ).”",
+                "src": "../../media/CNX_Chem_18_05_Electrolys.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp598736",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp598736-title",
+            "text": "Reaction of Metals with Acids"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp119542896",
+              "segmentId": "m68833:para:fs-idp119542896"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp175105296",
+              "class": "unnumbered"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_05_IronHCl",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68833:caption:CNX_Chem_18_05_IronHCl-caption"
+              },
+              "media": {
+                "id": "fs-idp110348256",
+                "alt": "A photo shows a beaker that contains a clear, colorless liquid. It is labeled, “H C l ( a q ).” Beside the beaker is a watch glass with a dropper above it. The dropper is releasing liquid into a fizzing liquid. The fizzing liquid is releasing a white gas.",
+                "src": "../../media/CNX_Chem_18_05_IronHCl.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp141812592",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp141812592-title",
+            "text": "Reaction of Ionic Metal Hydrides with Water"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp172230192",
+              "segmentId": "m68833:para:fs-idp172230192"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp54848928",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp115381648",
+              "segmentId": "m68833:para:fs-idp115381648"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp109982400",
+          "segmentId": "m68833:para:fs-idp109982400"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp76696176",
+      "class": null,
+      "title": {
+        "segmentId": "m68833:title:fs-idp76696176-title",
+        "text": "Reactions"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp115312768",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp115312768-title",
+            "text": "Reactions with Elements"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp90253696",
+              "segmentId": "m68833:para:fs-idp90253696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp263935152",
+              "segmentId": "m68833:para:fs-idp263935152"
+            },
+            {
+              "type": "table",
+              "id": "fs-idp87200896",
+              "class": "top-titled",
+              "summary": "This table has two columns and seven rows. The first row is a header row and it labels each column, “General Equation” and “Comments.” Under the “General Equation” column are the following equations: M H or M H subscript 2 yields M O H or M ( O H ) subscript 2 plus H subscript 2; H subscript 2 plus C yields ( no reaction ); 2 H subscript 2 plus N subscript 2 yields 2 N H subscript 3; 2 H subscript 2 plus O subscript 2 yields 2 H subscript 2 O; H subscript 2 plus S yields H subscript 2 S; and H subscript 2 plus X subscript 2 yields 2 H X. Under the “Comments” column are the following: “ionic hydrides with group 1 and C a, S r, and B a,” nothing, “requires high pressure and temperature; low yield,” “exothermic and potentially explosive,” “requires heating; low yield,” and “X equals F, C l, B r, and I; explosive with F subscript 2; low yield with I subscript 2.”",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-25",
+                      "attributes": {
+                        "align": "center",
+                        "namest": "c1",
+                        "nameend": "c2"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-26",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-27",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-28",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-29",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-30",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-31",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-32",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-33",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-34",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-35",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-36",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-37",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-38",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp55019952",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp55019952-title",
+            "text": "Reaction with Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp28188832",
+              "segmentId": "m68833:para:fs-idp28188832"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp40577264",
+              "segmentId": "m68833:para:fs-idp40577264"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm23647200",
+              "class": "unnumbered"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp99527488",
+          "segmentId": "m68833:para:fs-idp99527488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp151776640",
+          "segmentId": "m68833:para:fs-idp151776640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp268499792",
+          "segmentId": "m68833:para:fs-idp268499792"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_05_LiqHliqO",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68833:caption:CNX_Chem_18_05_LiqHliqO-caption"
+          },
+          "media": {
+            "id": "fs-idp117124896",
+            "alt": "A rocket is shown taking off.",
+            "src": "../../media/CNX_Chem_18_05_LiqHliqO.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30011296",
+          "segmentId": "m68833:para:fs-idp30011296"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp82925088",
+      "class": null,
+      "title": {
+        "segmentId": "m68833:title:fs-idp82925088-title",
+        "text": "Hydrogen Compounds"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp82420336",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp82420336-title",
+            "text": "Nitrogen Hydrogen Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp63169696",
+              "segmentId": "m68833:para:fs-idp63169696"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp262858864",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp141680832",
+              "segmentId": "m68833:para:fs-idp141680832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp47424384",
+              "class": "unnumbered"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_05_Ammonia",
+              "caption": {
+                "segmentId": "m68833:caption:CNX_Chem_18_05_Ammonia-caption"
+              },
+              "media": {
+                "id": "fs-idp100427680",
+                "alt": "A ball-and-stick model shows a nitrogen atom single bonded to three hydrogen atoms. There is a lone pair of electron dots that appears above the nitrogen atom.",
+                "src": "../../media/CNX_Chem_18_05_Ammonia.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp99199120",
+              "segmentId": "m68833:para:fs-idp99199120"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp139212576",
+              "segmentId": "m68833:para:fs-idp139212576"
+            },
+            {
+              "type": "list",
+              "id": "fs-idp73406480",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68833:item:fs-idp73406480-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68833:item:fs-idp73406480-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68833:item:fs-idp73406480-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68833:item:fs-idp73406480-item-4"
+                }
+              ]
+            },
+            {
+              "type": "media",
+              "id": "fs-idp81139952",
+              "class": "scaled-down",
+              "alt": "Three Lewis structures are pictured and labeled, “a,” “b,” and “c.” Structure a shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. The structure is labeled “ammonia.” Structure b shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and a chlorine atom with three lone pairs of electrons. The structure is labeled “chloramine.” Structure c shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two hydrogen atoms. The structure is labeled “hydrazine.”",
+              "src": "../../media/CNX_Chem_18_05_AmmonDeriv_img.jpg"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp58524336",
+              "segmentId": "m68833:para:fs-idp58524336"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp41318208",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp263055968",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp124001328",
+              "segmentId": "m68833:para:fs-idp124001328"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp56755808",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp119078176",
+              "segmentId": "m68833:para:fs-idp119078176"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp45157536",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm9753616",
+              "segmentId": "m68833:para:fs-idm9753616"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp151509952",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp151509952-title",
+            "text": "Phosphorus Hydrogen Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp52708560",
+              "segmentId": "m68833:para:fs-idp52708560"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp82403904",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp87583584",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp265270448",
+              "segmentId": "m68833:para:fs-idp265270448"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp173455968",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idp173455968-title",
+            "text": "Sulfur Hydrogen Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp30136192",
+              "segmentId": "m68833:para:fs-idp30136192"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2233792",
+              "segmentId": "m68833:para:fs-idm2233792"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp48541664",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp23012800",
+              "segmentId": "m68833:para:fs-idp23012800"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp113836608",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp242896784",
+              "segmentId": "m68833:para:fs-idp242896784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp41845872",
+              "segmentId": "m68833:para:fs-idp41845872"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp75809984",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp112175104",
+              "class": "unnumbered"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm8364256",
+          "class": null,
+          "title": {
+            "segmentId": "m68833:title:fs-idm8364256-title",
+            "text": "Halogen Hydrogen Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp30119280",
+              "segmentId": "m68833:para:fs-idp30119280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp45585904",
+              "segmentId": "m68833:para:fs-idp45585904"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp39542256",
+              "segmentId": "m68833:para:fs-idp39542256"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp370564368",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp158621184",
+              "segmentId": "m68833:para:fs-idp158621184"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp56913984",
+              "segmentId": "m68833:para:fs-idp56913984"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp89935840",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp577024",
+              "segmentId": "m68833:para:fs-idp577024"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp77718272",
+              "segmentId": "m68833:para:fs-idp77718272"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm10360992",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp263818368",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp210524272",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp47526048",
+              "segmentId": "m68833:para:fs-idp47526048"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp21683264",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm14922592",
+              "segmentId": "m68833:para:fs-idm14922592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp19149584",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp74426272",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp126469840",
+              "segmentId": "m68833:para:fs-idp126469840"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm89281360",
+              "segmentId": "m68833:para:fs-idm89281360"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp152109872",
+              "segmentId": "m68833:para:fs-idp152109872"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp126496304",
+          "segmentId": "m68833:para:fs-idp126496304"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm8593536",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68833:title:fs-idm8593536-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp117802464",
+          "segmentId": "m68833:para:fs-idp117802464"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp276731328",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68833:title:fs-idp276731328-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm24100896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp108021504",
+                "segmentId": "m68833:problem:fs-idp108021504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp214029248",
+                "segmentId": "m68833:solution:fs-idp214029248"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp75856256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp231122608",
+                "segmentId": "m68833:problem:fs-idp231122608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12512512",
+                "segmentId": "m68833:problem:fs-idm12512512"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp235517504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16296352",
+                "segmentId": "m68833:problem:fs-idp16296352"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp156976528",
+                "segmentId": "m68833:solution:fs-idp156976528"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp249418928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1591344",
+                "segmentId": "m68833:problem:fs-idm1591344"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp52465648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp280994432",
+                "segmentId": "m68833:problem:fs-idp280994432"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp94913264",
+                "segmentId": "m68833:solution:fs-idp94913264"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68833:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68833:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp50608080",
+        "termSegmentId": "m68833:glossary-term:fs-idp50608080-term",
+        "definitionSegmentId": "m68833:glossary-def:fs-idp50608080-def"
+      },
+      {
+        "id": "fs-idp111298912",
+        "termSegmentId": "m68833:glossary-term:fs-idp111298912-term",
+        "definitionSegmentId": "m68833:glossary-def:fs-idp111298912-def"
+      },
+      {
+        "id": "fs-idm8608880",
+        "termSegmentId": "m68833:glossary-term:fs-idm8608880-term",
+        "definitionSegmentId": "m68833:glossary-def:fs-idm8608880-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

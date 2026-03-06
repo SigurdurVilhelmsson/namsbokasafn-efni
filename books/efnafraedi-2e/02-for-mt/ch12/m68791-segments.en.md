@@ -83,13 +83,13 @@ A plot of ln[*A*]*t* versus *t* for a first-order reaction is a straight line wi
 Graphical Determination of Reaction Order and Rate Constant
 
 <!-- SEG:m68791:para:fs-idm76041456 -->
-Show that the data in [#CNX_Chem_12_01_KDataH2O2] can be represented by a first-order rate law by graphing ln[H~2~O~2~] versus time. Determine the rate constant for the decomposition of H~2~O~2~ from these data.
+Show that the data in [m68786#CNX_Chem_12_01_KDataH2O2] can be represented by a first-order rate law by graphing ln[H~2~O~2~] versus time. Determine the rate constant for the decomposition of H~2~O~2~ from these data.
 
 <!-- SEG:m68791:para-title:fs-idm136711920-title -->
 Solution
 
 <!-- SEG:m68791:para:fs-idm136711920 -->
-The data from [#CNX_Chem_12_01_KDataH2O2] are tabulated below, and a plot of ln[H~2~O~2~] is shown in [#CNX_Chem_12_04_FrstOKin].
+The data from [m68786#CNX_Chem_12_01_KDataH2O2] are tabulated below, and a plot of ln[H~2~O~2~] is shown in [#CNX_Chem_12_04_FrstOKin].
 
 <!-- SEG:m68791:para:fs-idm88773168 -->
 The plot of ln[H~2~O~2~] versus time is linear, indicating that the reaction may be described by a first-order rate law.
@@ -674,7 +674,7 @@ Answer:
 18 min
 
 <!-- SEG:m68791:para:fs-idm99562880 -->
-The __half-life of a reaction (*t*~1/2~)__ is the time required for one-half of a given amount of reactant to be consumed. In each succeeding half-life, half of the remaining concentration of the reactant is consumed. Using the decomposition of hydrogen peroxide ([#CNX_Chem_12_01_KDataH2O2]) as an example, we find that during the first half-life (from 0.00 hours to 6.00 hours), the concentration of H~2~O~2~ decreases from 1.000 *M* to 0.500 *M*. During the second half-life (from 6.00 hours to 12.00 hours), it decreases from 0.500 *M* to 0.250 *M*; during the third half-life, it decreases from 0.250 *M* to 0.125 *M*. The concentration of H~2~O~2~ decreases by half during each successive period of 6.00 hours. The decomposition of hydrogen peroxide is a first-order reaction, and, as can be shown, the half-life of a first-order reaction is independent of the concentration of the reactant. However, half-lives of reactions with other orders depend on the concentrations of the reactants.
+The __half-life of a reaction (*t*~1/2~)__ is the time required for one-half of a given amount of reactant to be consumed. In each succeeding half-life, half of the remaining concentration of the reactant is consumed. Using the decomposition of hydrogen peroxide ([m68786#CNX_Chem_12_01_KDataH2O2]) as an example, we find that during the first half-life (from 0.00 hours to 6.00 hours), the concentration of H~2~O~2~ decreases from 1.000 *M* to 0.500 *M*. During the second half-life (from 6.00 hours to 12.00 hours), it decreases from 0.500 *M* to 0.250 *M*; during the third half-life, it decreases from 0.250 *M* to 0.125 *M*. The concentration of H~2~O~2~ decreases by half during each successive period of 6.00 hours. The decomposition of hydrogen peroxide is a first-order reaction, and, as can be shown, the half-life of a first-order reaction is independent of the concentration of the reactant. However, half-lives of reactions with other orders depend on the concentrations of the reactants.
 
 <!-- SEG:m68791:title:fs-idm63099680-title -->
 Key Concepts and Summary

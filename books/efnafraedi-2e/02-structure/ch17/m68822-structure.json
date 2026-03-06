@@ -1,0 +1,572 @@
+{
+  "moduleId": "m68822",
+  "title": {
+    "segmentId": "m68822:title:auto-1",
+    "text": "Galvanic Cells"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0c42f90c-4ac9-4e47-aab3-9beca85e4687",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the function of a galvanic cell and its components",
+        "Use cell notation to symbolize the composition and construction of galvanic cells"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm180176640",
+      "segmentId": "m68822:para:fs-idm180176640"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_17_02_CuAg",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68822:caption:CNX_Chem_17_02_CuAg-caption"
+      },
+      "media": {
+        "id": "fs-idp67517312",
+        "alt": "This figure includes three photographs. In the first, a test tube containing a clear, colorless liquid is shown with a loosely coiled copper wire outside the test tube to its right. In the second, the wire has been submerged in the clear colorless liquid in the test tube and the surface of the wire is darkened. In the third, the liquid in the test tube is bright blue-green, the wire in the solution appears dark near the top, and a gray “fuzzy” material is present at the bottom of the test tube on the lower portion of the copper coil, giving a murky appearance to the liquid near the bottom of the test tube.",
+        "src": "../../media/CNX_Chem_17_02_CuAg.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm216506080",
+      "segmentId": "m68822:para:fs-idm216506080"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm479533072",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm201862608",
+      "segmentId": "m68822:para:fs-idm201862608"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm196674112",
+      "segmentId": "m68822:para:fs-idm196674112"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_17_02_Galvanicel",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68822:caption:CNX_Chem_17_02_Galvanicel-caption"
+      },
+      "media": {
+        "id": "fs-idp20459472",
+        "alt": "This figure contains a diagram of an electrochemical cell. Two beakers are shown. Each is just over half full. The beaker on the left contains a blue solution and is labeled below as “1 M solution of copper (II) nitrate ( C u ( N O subscript 3 ) subscript 2 ).” The beaker on the right contains a colorless solution and is labeled below as “1 M solution of silver nitrate ( A g N O subscript 3 ).” A glass tube in the shape of an inverted U connects the two beakers at the center of the diagram. The tube contents are colorless. The ends of the tubes are beneath the surface of the solutions in the beakers and a small gray plug is present at each end of the tube. The plug in the left beaker is labeled “Porous plug.” At the center of the diagram, the tube is labeled “Salt bridge ( N a N O subscript 3 ). Each beaker shows a metal strip partially submerged in the liquid. The beaker on the left has an orange-brown strip that is labeled “C u anode negative” at the top. The beaker on the right has a silver strip that is labeled “A g cathode positive” at the top. A wire extends from the top of each of these strips to a rectangle indicating “external circuit” that is labeled “flow of electrons” with an arrow pointing to the right following. A curved arrow extends from the C u strip into the surrounding solution. The tip of this arrow is labeled “C u superscript 2 plus.” A curved arrow extends from the salt bridge into the beaker on the left into the blue solution. The tip of this arrow is labeled “N O subscript 3 superscript negative.” A curved arrow extends from the solution in the beaker on the right to the A g strip. The base of this arrow is labeled “A g superscript plus.” A curved arrow extends from the colorless solution to salt bridge in the beaker on the right. The base of this arrow is labeled “N O subscript 3 superscript negative.” Just right of the salt bridge in the colorless solution is the label “N a superscript plus.” Just above this region of the tube appears the label “Flow of cations.” Just left of the salt bridge in the blue solution is the label “N O subscript 3 superscript negative.” Just above this region of the tube appears the label “Flow of anions.”",
+        "src": "../../media/CNX_Chem_17_02_Galvanicel.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm191852240",
+      "class": null,
+      "title": {
+        "segmentId": "m68822:title:fs-idm191852240-title",
+        "text": "Cell Notation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm213246704",
+          "segmentId": "m68822:para:fs-idm213246704"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm66905104",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68822:item:fs-idm66905104-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68822:item:fs-idm66905104-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68822:item:fs-idm66905104-item-3"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm178198704",
+          "segmentId": "m68822:para:fs-idm178198704"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm224675200",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183571200",
+          "segmentId": "m68822:para:fs-idm183571200"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm198448336",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm215655008",
+          "segmentId": "m68822:para:fs-idm215655008"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm198262288",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm214418000",
+          "segmentId": "m68822:para:fs-idm214418000"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_17_02_Oxidareduc",
+          "caption": {
+            "segmentId": "m68822:caption:CNX_Chem_17_02_Oxidareduc-caption"
+          },
+          "media": {
+            "id": "fs-idm141095104",
+            "alt": "This figure contains a diagram of an electrochemical cell. Two beakers are shown. Each is just over half full. The beaker on the left contains a colorless solution. The beaker on the right also contains a colorless solution. A glass tube in the shape of an inverted U connects the two beakers at the center of the diagram. The tube contents are colorless. The ends of the tubes are beneath the surface of the solutions in the beakers and a small gray plug is present at each end of the tube. At the center of the diagram, the tube is labeled “Salt bridge.” Each beaker shows a metal coils submerged in the liquid. The beaker on the left has a thin, gray, coiled strip that is labeled “M g anode.” The beaker on the right has a black wire that is oriented horizontally and coiled up in a spring-like appearance that is labeled “P t cathode.” Below the coil is the label “F e superscript 3 plus” with a curved right arrowing pointing from that to the label “F e superscript 2 plus.” A wire extends across the top of the diagram that connects the ends of the M g strip and P t cathode just above the opening of each beaker. At the center of the wire above the two beakers is a rectangle labeled “external circuit.” Above the rectangle is the label “flow of electrons” followed by a right pointing arrow. An arrow points down and to the right from the label “N a superscript plus” at the upper right region of the salt bride. An arrow points down and to the left from the label “C l superscript negative” at the upper left region of the salt bride. Below the graylug at the left end of the salt bridge in the surrounding solution in the left beaker is the label “C l superscript negative.” Below the coil on this side is a right arrow and the label “M g superscript 2 plus.” The label “0.1 M M g C l subscript 2” appears beneath the left beaker. The label “0.2 M F e C l subscript 3 and 0.3 M F e C l subscript 2.” appears beneath the right beaker.",
+            "src": "../../media/CNX_Chem_17_02_Oxidareduc.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm168909584",
+          "title": {
+            "segmentId": "m68822:example-title:fs-idm168909584-title",
+            "text": "Writing Galvanic Cell Schematics"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm148208960",
+              "segmentId": "m68822:para:fs-idm148208960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp124889088",
+              "segmentId": "m68822:para:fs-idp124889088",
+              "title": {
+                "segmentId": "m68822:para-title:fs-idp124889088-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm191652416",
+              "segmentId": "m68822:para:fs-idm191652416"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm206725184",
+              "segmentId": "m68822:para:fs-idm206725184"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm480712000",
+              "segmentId": "m68822:para:fs-idm480712000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm199393680",
+              "segmentId": "m68822:para:fs-idm199393680",
+              "title": {
+                "segmentId": "m68822:para-title:fs-idm199393680-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm479605136",
+              "segmentId": "m68822:para:fs-idm479605136"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm184234832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm177989472"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm479522256"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm183688400"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm477306416"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp13471872",
+              "title": {
+                "segmentId": "m68822:note-title:fs-idp13471872-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm479605136",
+                  "segmentId": "m68822:para:fs-idm479605136"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm89705136",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68822:title:fs-idm89705136-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm71248464",
+          "segmentId": "m68822:para:fs-idm71248464"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm190362800",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68822:title:fs-idm190362800-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm154595184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197378480",
+                "segmentId": "m68822:problem:fs-idm197378480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm24906208",
+                "segmentId": "m68822:problem:fs-idm24906208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75621536",
+                "segmentId": "m68822:problem:fs-idp75621536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm176488192",
+                "segmentId": "m68822:problem:fs-idm176488192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142396576",
+                "segmentId": "m68822:problem:fs-idm142396576"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm16016448",
+                "segmentId": "m68822:solution:fs-idm16016448"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm104280704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm185500736",
+                "segmentId": "m68822:problem:fs-idm185500736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm81327808",
+                "segmentId": "m68822:problem:fs-idm81327808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm165284256",
+                "segmentId": "m68822:problem:fs-idm165284256"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm144742192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm122995248",
+                "segmentId": "m68822:problem:fs-idm122995248"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200999280",
+                "segmentId": "m68822:solution:fs-idm200999280"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm218235136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm62083904",
+                "segmentId": "m68822:problem:fs-idm62083904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm185883904",
+                "segmentId": "m68822:problem:fs-idm185883904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm179647152",
+                "segmentId": "m68822:problem:fs-idm179647152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp85582496",
+                "segmentId": "m68822:problem:fs-idp85582496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm24871072",
+                "segmentId": "m68822:problem:fs-idm24871072"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm20230112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm145982096",
+                "segmentId": "m68822:problem:fs-idm145982096"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm157915712",
+                "segmentId": "m68822:solution:fs-idm157915712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19248144",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm97771920",
+                "segmentId": "m68822:problem:fs-idm97771920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm88906080",
+                "segmentId": "m68822:problem:fs-idm88906080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm95770176",
+                "segmentId": "m68822:problem:fs-idm95770176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm104480000",
+                "segmentId": "m68822:problem:fs-idm104480000"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm117307760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm102325056",
+                "segmentId": "m68822:problem:fs-idm102325056"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm201827808",
+                "segmentId": "m68822:solution:fs-idm201827808"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm144354208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp2699936",
+                "segmentId": "m68822:problem:fs-idp2699936"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44043568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm144840016",
+                "segmentId": "m68822:problem:fs-idm144840016"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm70692736",
+                "segmentId": "m68822:solution:fs-idm70692736"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm33124048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7124096",
+                "segmentId": "m68822:problem:fs-idp7124096"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68822:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68822:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68822:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp13398640",
+        "termSegmentId": "m68822:glossary-term:fs-idp13398640-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idp13398640-def"
+      },
+      {
+        "id": "fs-idp4652784",
+        "termSegmentId": "m68822:glossary-term:fs-idp4652784-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idp4652784-def"
+      },
+      {
+        "id": "fs-idm120688224",
+        "termSegmentId": "m68822:glossary-term:fs-idm120688224-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idm120688224-def"
+      },
+      {
+        "id": "fs-idm139905600",
+        "termSegmentId": "m68822:glossary-term:fs-idm139905600-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idm139905600-def"
+      },
+      {
+        "id": "fs-idm153779040",
+        "termSegmentId": "m68822:glossary-term:fs-idm153779040-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idm153779040-def"
+      },
+      {
+        "id": "fs-idm159189392",
+        "termSegmentId": "m68822:glossary-term:fs-idm159189392-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idm159189392-def"
+      },
+      {
+        "id": "fs-idm19899136",
+        "termSegmentId": "m68822:glossary-term:fs-idm19899136-term",
+        "definitionSegmentId": "m68822:glossary-def:fs-idm19899136-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

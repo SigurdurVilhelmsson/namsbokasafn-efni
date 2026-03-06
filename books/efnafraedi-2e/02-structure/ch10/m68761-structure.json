@@ -1,0 +1,1374 @@
+{
+  "moduleId": "m68761",
+  "title": {
+    "segmentId": "m68761:title:auto-1",
+    "text": "Intermolecular Forces"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3bd0cfe0-4bfc-4a11-978a-eeacf9dc5c0b",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the types of intermolecular forces possible between atoms or molecules in condensed phases (dispersion forces, dipole-dipole attractions, and hydrogen bonding)",
+        "Identify the types of intermolecular forces experienced by specific molecules based on their structures",
+        "Explain the relation between the intermolecular forces present within a substance and the temperatures associated with changes in its physical state"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp55691520",
+      "segmentId": "m68761:para:fs-idp55691520"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp57413920",
+      "segmentId": "m68761:para:fs-idp57413920"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm45003248",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": "bullet",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68761:item:fs-idm45003248-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68761:item:fs-idm45003248-item-2"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm53508384",
+      "segmentId": "m68761:para:fs-idm53508384"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_01_KMTPhases1",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68761:caption:CNX_Chem_10_01_KMTPhases1-caption"
+      },
+      "media": {
+        "id": "fs-idp1251008",
+        "alt": "Three sealed flasks are labeled, “Crystalline solid,” “Liquid,” and “Gas,” from left to right. The first flask holds a cube composed of small spheres sitting on the bottom while the second flask shows a lot of small spheres in the bottom that are spaced a small distance apart from one another and have lines around them to indicate motion. The third flask shows a few spheres spread far from one another with larger lines to indicate motion. There is a right-facing arrow that spans the top of all three flasks. The arrow is labeled, “Increasing K E ( temperature ).” There is a left-facing arrow that spans the bottom of all three flasks. The arrow is labeled, “Increasing I M F.”",
+        "src": "../../media/CNX_Chem_10_01_KMTPhases1.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm190830512",
+      "segmentId": "m68761:para:fs-idm190830512"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_01_WaterPhase",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68761:caption:CNX_Chem_10_01_WaterPhase-caption"
+      },
+      "media": {
+        "id": "fs-idp51997104",
+        "alt": "Image a shows a brown colored beverage in a glass with condensation on the outside. Image b shows a body of water with fog hovering above the surface of the water.",
+        "src": "../../media/CNX_Chem_10_01_WaterPhase.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm59044480",
+      "segmentId": "m68761:para:fs-idm59044480"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_10_01_ButanePhase",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68761:caption:CNX_Chem_10_01_ButanePhase-caption"
+      },
+      "media": {
+        "id": "fs-idp136258192",
+        "alt": "A butane lighter is shown.",
+        "src": "../../media/CNX_Chem_10_01_ButanePhase.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm68544288",
+      "segmentId": "m68761:para:fs-idm68544288"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp144602800",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp70176880",
+          "segmentId": "m68761:para:fs-idp70176880"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp48705360",
+      "class": null,
+      "title": {
+        "segmentId": "m68761:title:fs-idp48705360-title",
+        "text": "Forces between Molecules"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp15601504",
+          "segmentId": "m68761:para:fs-idp15601504"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_IntravInter",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_IntravInter-caption"
+          },
+          "media": {
+            "id": "fs-idm297424",
+            "alt": "An image is shown in which two molecules composed of a green sphere labeled “C l” connected on the right to a white sphere labeled “H” are near one another with a dotted line labeled “Intermolecular force ( weak )” drawn between them. A line connects the two spheres in each molecule and the line is labeled “Intramolecular force ( strong ).”",
+            "src": "../../media/CNX_Chem_10_01_IntravInter.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm68677744",
+          "segmentId": "m68761:para:fs-idm68677744"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm146733840",
+      "class": null,
+      "title": {
+        "segmentId": "m68761:title:fs-idm146733840-title",
+        "text": "Dispersion Forces"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp26129792",
+          "segmentId": "m68761:para:fs-idp26129792"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_DispForces",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_DispForces-caption"
+          },
+          "media": {
+            "id": "fs-idp52348576",
+            "alt": "Two pairs of molecules are shown where each molecule has one larger blue side labeled “delta sign, negative sign” and a smaller red side labeled “delta sign, positive sign.” Toward the middle of the both molecules, but still on each distinct side, is a black dot. Between the two images is a dotted line labeled, “Attractive force.” In the first image, the red and blue sides are labeled, “Unequal distribution of electrons.” Below both images are brackets. The brackets are labeled, “Temporary dipoles.”",
+            "src": "../../media/CNX_Chem_10_01_DispForces.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm80968928",
+          "segmentId": "m68761:para:fs-idm80968928"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp55860464",
+          "class": "top-titled",
+          "summary": "This table has six rows and five columns. The first row is a header row and it labels each column: “Halogen,” “Molar Mass,” “Atomic Radius,” “Melting Point,” and “Boiling Point.” Under the “Halogen” column are the following: Fluorine, F subscript 2; Chlorine, C l subscript 2; bromine, B r subscript 2; iodine, I subscript 2; astatine, A t subscript 2. Under the “Molar Mass” column are the following: 38 g / mol; 71 g / mol; 160 g / mol; 254 g / mol; 420 g / mol. Under the “Atomic Radius” column are the following: 72 p m; 99 p m; 114 p m; 133 p m; 150 p m. Under the “Melting Point” column are the following: 53 K; 172 K; 266 K; 387 K; and 575 K. Under the “Boiling Point” column are the following: 85 K; 238 K; 332 K; 457 K; and 610 K.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-26",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c5",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-27",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-28",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-29",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-30",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-31",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-32",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-33",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-34",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-35",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-36",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-37",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-38",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-39",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-40",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-41",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-42",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-43",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-44",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-45",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-46",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-47",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-48",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-49",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-50",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-51",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68761:entry:auto-52",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-53",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-54",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-55",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68761:entry:auto-56",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm135149056",
+          "segmentId": "m68761:para:fs-idm135149056"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm100317728",
+          "title": {
+            "segmentId": "m68761:example-title:fs-idm100317728-title",
+            "text": "London Forces and Their Effects"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp26427152",
+              "segmentId": "m68761:para:fs-idp26427152"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm106734480",
+              "segmentId": "m68761:para:fs-idm106734480",
+              "title": {
+                "segmentId": "m68761:para-title:fs-idm106734480-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp136003920",
+              "segmentId": "m68761:para:fs-idp136003920"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp128687200",
+              "segmentId": "m68761:para:fs-idp128687200",
+              "title": {
+                "segmentId": "m68761:para-title:fs-idp128687200-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm93042944",
+              "segmentId": "m68761:para:fs-idm93042944"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm119929280",
+              "title": {
+                "segmentId": "m68761:note-title:fs-idm119929280-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm93042944",
+                  "segmentId": "m68761:para:fs-idm93042944"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm93742928",
+          "segmentId": "m68761:para:fs-idm93742928"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_PentIso",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_PentIso-caption"
+          },
+          "media": {
+            "id": "fs-idm29590512",
+            "alt": "Three images of molecules are shown. The first shows a cluster of large, gray spheres each bonded together and to several smaller, white spheres. There is a gray, jagged line and then the mirror image of the first cluster of spheres is shown. Above these two clusters is the label, “Small contact area, weakest attraction,” and below is the label, “neopentane boiling point: 9.5 degrees C.” The second shows a chain of three gray spheres bonded by the middle sphere to a fourth gray sphere. Each gray sphere is bonded to several smaller, white spheres. There is a jagged, gray line and then the mirror image of the first chain appears. Above these two chains is the label, “Less surface area, less attraction,” and below is the label, “isopentane boiling point: 27 degrees C.” The third image shows a chain of five gray spheres bonded together and to several smaller, white spheres. There is a jagged gray line and then the mirror image of the first chain appears. Above these chains is the label, “Large contact area, strong attraction,” and below is the label, “n-pentane boiling point 36 degrees C.”",
+            "src": "../../media/CNX_Chem_10_01_PentIso.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp29280240",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68761:note-title:fs-idp29280240-title",
+            "text": "Geckos and Intermolecular Forces"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm15049248",
+              "segmentId": "m68761:para:fs-idm15049248"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp29466368",
+              "segmentId": "m68761:para:fs-idp29466368"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm74321904",
+              "segmentId": "m68761:para:fs-idm74321904"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_Geckos",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_Geckos-caption"
+          },
+          "media": {
+            "id": "fs-idp79180464",
+            "alt": "Three figures are shown. The first is a photo of the bottom of a gecko’s foot. The second is bigger version which shows the setae. The third is a bigger version of the setae and shows the spatulae.",
+            "src": "../../media/CNX_Chem_10_01_Geckos.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp133005728",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm71587872",
+              "segmentId": "m68761:para:fs-idm71587872"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp3278832",
+      "class": null,
+      "title": {
+        "segmentId": "m68761:title:fs-idp3278832-title",
+        "text": "Dipole-Dipole Attractions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm25328160",
+          "segmentId": "m68761:para:fs-idm25328160"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_DipDip",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_DipDip-caption"
+          },
+          "media": {
+            "id": "fs-idp12575856",
+            "alt": "Two pairs of molecules are shown where each molecule has one larger blue side labeled “delta sign, negative sign” and a smaller red side labeled “delta sign, positive sign. In the first pair, the red sides of the two molecules both face to the left and the blue side to the right. A horizontal dotted line lies in between the two. In the second pair, the molecules face up and down, with the red and blue ends aligning. A horizontal dotted line lies between the red and blue ends facing upward and another lies between the red and blue ends facing downward.",
+            "src": "../../media/CNX_Chem_10_01_DipDip.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp108426992",
+          "segmentId": "m68761:para:fs-idp108426992"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm116129040",
+          "title": {
+            "segmentId": "m68761:example-title:fs-idm116129040-title",
+            "text": "Dipole-Dipole Forces and Their Effects"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm21276784",
+              "segmentId": "m68761:para:fs-idm21276784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm69572480",
+              "segmentId": "m68761:para:fs-idm69572480",
+              "title": {
+                "segmentId": "m68761:para-title:fs-idm69572480-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp56618608",
+              "segmentId": "m68761:para:fs-idp56618608",
+              "title": {
+                "segmentId": "m68761:para-title:fs-idp56618608-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp57843568",
+              "segmentId": "m68761:para:fs-idp57843568"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm21037552",
+              "title": {
+                "segmentId": "m68761:note-title:fs-idm21037552-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp57843568",
+                  "segmentId": "m68761:para:fs-idp57843568"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp42198272",
+      "class": null,
+      "title": {
+        "segmentId": "m68761:title:fs-idp42198272-title",
+        "text": "Hydrogen Bonding"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp18167328",
+          "segmentId": "m68761:para:fs-idp18167328"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_HBonding",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_HBonding-caption"
+          },
+          "media": {
+            "id": "fs-idp29073168",
+            "alt": "Five water molecules are shown near one another, but not touching. A dotted line lies between many of the hydrogen atoms on one molecule and the oxygen atom on another molecule.",
+            "src": "../../media/CNX_Chem_10_01_HBonding.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp128658848",
+          "segmentId": "m68761:para:fs-idp128658848"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp20088928",
+          "segmentId": "m68761:para:fs-idp20088928"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_HydrideBP1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_HydrideBP1-caption"
+          },
+          "media": {
+            "id": "fs-idm21286928",
+            "alt": "A line graph is shown where the y-axis is labeled “Boiling point (, degree sign, C )” and has values of “ negative 150” to “150” from bottom to top in increments of 50. The x-axis is labeled “Period” and has values of “0” to “5” in increments of 1. Three lines are shown on the graph and are labeled in the legend. The red line is labeled as “halogen family,” the blue is “oxygen family” and the green is “nitrogen family.” The first point on the red line is labeled “question mark” and is at point “2, negative 120”. The second point on the line is labeled “H C l” and is at point “3, negative 80” while the third point on the line is labeled “H B r” and is at point “4, negative 60”. The fourth point on the line is labeled “H I” and is at point “5, negative 40.” The first point on the green line is labeled “question mark” and is at point “2, negative 125.” The second point on the line is labeled “P H, subscript 3” and is at point “3, negative 80” while the third point on the line is labeled “A s H, subscript 3” and is at point “4, negative 55.” The fourth point on the line is labeled “S b H, subscript 3” and is at point “5, negative 10.” The first point on the blue line is labeled “question mark” and is at point “2, negative 80.” The second point on the line is labeled “H, subscript 2, S” and is at point “3, negative 55” while the third point on the line is labeled “H, subscript 2, S e” and is at point “4, negative 45.” The fourth point on the line is labeled “H, subscript 2, T e” and is at point “5, negative 3.”",
+            "src": "../../media/CNX_Chem_10_01_HydrideBP1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26510624",
+          "segmentId": "m68761:para:fs-idp26510624"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_HydrideBP2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_HydrideBP2-caption"
+          },
+          "media": {
+            "id": "fs-idp79204320",
+            "alt": "A line graph is shown where the y-axis is labeled “Boiling point, ( degree sign, C )” and has values of “negative 150” to “150” from bottom to top in increments of 50. The x-axis is labeled “Period” and has values of “0” to “5” in increments of 1. Three lines are shown on the graph and are labeled in the legend. The red line is labeled as “halogen family,” the blue is “oxygen family” and the green is “nitrogen family.” The first point on the red line is labeled “H F” and is at point “2, 25.” The second point on the line is labeled “H C l” and is at point “3, negative 80” while the third point on the line is labeled “H B r” and is at point “4, negative 60.” The fourth point on the line is labeled “H I” and is at point “5, negative 40.” The first point on the green line is labeled “N H, subscript 3” and is at point “2, negative 40.” The second point on the line is labeled “P H, subscript 3” and is at point “3, negative 80” while the third point on the line is labeled “A s H, subscript 3” and is at point “4, negative 55.” The fourth point on the line is labeled “S b H, subscript 3” and is at point “5, negative 10.” The first point on the blue line is labeled “H, subscript 2, O” and is at point “2, 100.” The second point on the line is labeled “H, subscript 2, S” and is at point “3, negative 55” while the third point on the line is labeled “H, subscript 2, S e” and is at point “4, negative 45.” The fourth point on the line is labeled “H, subscript 2, T e” and is at point “5, negative 3.”",
+            "src": "../../media/CNX_Chem_10_01_HydrideBP2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm118983568",
+          "title": {
+            "segmentId": "m68761:example-title:fs-idm118983568-title",
+            "text": "Effect of Hydrogen Bonding on Boiling Points"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp138845584",
+              "segmentId": "m68761:para:fs-idp138845584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm50766656",
+              "segmentId": "m68761:para:fs-idm50766656",
+              "title": {
+                "segmentId": "m68761:para-title:fs-idm50766656-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm47706096",
+              "segmentId": "m68761:para:fs-idm47706096",
+              "title": {
+                "segmentId": "m68761:para-title:fs-idm47706096-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm91556848",
+              "segmentId": "m68761:para:fs-idm91556848"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm67186592",
+              "title": {
+                "segmentId": "m68761:note-title:fs-idm67186592-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm91556848",
+                  "segmentId": "m68761:para:fs-idm91556848"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm44601856",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68761:note-title:fs-idm44601856-title",
+            "text": "Hydrogen Bonding and DNA"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm79852624",
+              "segmentId": "m68761:para:fs-idm79852624"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp113560512",
+              "segmentId": "m68761:para:fs-idp113560512"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp108968272",
+              "segmentId": "m68761:para:fs-idp108968272"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_DNA",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_DNA-caption"
+          },
+          "media": {
+            "id": "fs-idm97606608",
+            "alt": "Two images are shown. The first lies on the left side of the page and shows a helical structure like a twisted ladder where the rungs of the ladder, labeled “Base pair” are red, yellow, green and blue paired bars. The red and yellow bars, which are always paired together, are labeled in the legend, which is titled “Nitrogenous bases” as “adenine” and “thymine,” respectively. The blue and green bars, which are always paired together, are labeled in the legend as “guanine” and “cytosine,” respectively. At the top of the helical structure, the left-hand side rail, or “Sugar, dash, phosphate backbone,” is labeled as “3, prime” while the right is labeled as “5, prime.” These labels are reversed at the bottom of the helix. To the right of the page is a large Lewis structure. The top left corner of this structure, labeled “5, prime,” shows a phosphorus atom single bonded to three oxygen atoms, one of which has a superscripted negative charge, and double bonded to a fourth oxygen atom. One of the single bonded oxygen atoms is single bonded to the left corner of a five-membered ring with an oxygen atom at its top point and which is single bonded to an oxygen atom on the bottom left. This oxygen atom is single bonded to a phosphorus atom that is single bonded to two other hydrogen atoms and double bonded to a fourth oxygen atom. The lower left of these oxygen atoms is single bonded to another oxygen atom that is single bonded to a five-membered ring with an oxygen in the upper bonding site. The bottom left of this ring has a hydroxyl group attached to it while the upper right carbon is single bonded to a nitrogen atom that is part of a five-membered ring bonded to a six-membered ring. Both of these rings have points of unsaturation and nitrogen atoms bonded into their structures. On the right side of the six-membered ring are two single bonded amine groups and a double bonded oxygen. Three separate dotted lines extend from these sites to corresponding sites on a second six-membered ring. This ring has points of unsaturation and a nitrogen atom in the bottom right bonding position that is single bonded to a five-membered ring on the right side of the image. This ring is single bonded to a carbon that is single bonded to an oxygen that is single bonded to a phosphorus. The phosphorus is single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. This group is labeled “5, prime.” The five-membered ring is also bonded on the top side to an oxygen that is bonded to a phosphorus single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. The upper left oxygen of this group is single bonded to a carbon that is single bonded to a five-membered ring with an oxygen in the bottom bonding position. This ring has a hydroxyl group on its upper right side that is labeled “3, prime” and is bonded on the left side to a nitrogen that is a member of a five-membered ring. This ring is bonded to a six-membered ring and both have points of unsaturation. This ring has a nitrogen on the left side, as well as an amine group, that have two dotted lines leading from them to an oxygen and amine group on a six membered ring. These dotted lines are labeled “Hydrogen bonds.” The six membered ring also has a double bonded oxygen on its lower side and a nitrogen atom on its left side that is single bonded to a five-membered ring. This ring connects to the two phosphate groups mentioned at the start of this to form a large circle. The name “guanine” is written below the lower left side of this image while the name “cytosine” is written on the lower right. The name “thymine” is written above the right side of the image and “adenine” is written on the top right. Three sections are indicated below the images where the left is labeled “Sugar, dash, phosphate backbone,” the middle is labeled “Bases” and the right is labeled “Sugar, dash, phosphate backbone.”",
+            "src": "../../media/CNX_Chem_10_01_DNA.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_01_DNA2",
+          "caption": {
+            "segmentId": "m68761:caption:CNX_Chem_10_01_DNA2-caption"
+          },
+          "media": {
+            "id": "fs-idm64449536",
+            "alt": "A large Lewis structure is shown. The top left corner of this structure, labeled “5, prime,” shows a phosphorus atom single bonded to three oxygen atoms, one of which has a superscripted negative charge, and double bonded to a fourth oxygen atom. One of the single bonded oxygen atoms is single bonded to the left corner of a five-membered ring with an oxygen atom at its top point and which is single bonded to an oxygen atom on the bottom left. This oxygen atom is single bonded to a phosphorus atom that is single bonded to two other hydrogen atoms and double bonded to a fourth oxygen atom. The lower left of these oxygen atoms is single bonded to another oxygen atom that is single bonded to a five-membered ring with an oxygen in the upper bonding site. The bottom left of this ring has a hydroxyl group attached to it while the upper right carbon is single bonded to a nitrogen atom that is part of a five-membered ring bonded to a six-membered ring. Both of these rings have points of unsaturation and nitrogen atoms bonded into their structures. On the right side of the six-membered ring are two single bonded amine groups and a double bonded oxygen. Three separate dotted lines extend from these sites to corresponding sites on a second six-membered ring. This ring has points of unsaturation and a nitrogen atom in the bottom right bonding position that is single bonded to a five-membered ring on the right side of the image. This ring is single bonded to a carbon that is single bonded to an oxygen that is single bonded to a phosphorus. The phosphorus is single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. This group is labeled “5, prime.” The five-membered ring is also bonded on the top side to an oxygen that is bonded to a phosphorus single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. The upper left oxygen of this group is single bonded to a carbon that is single bonded to a five-membered ring with an oxygen in the bottom bonding position. This ring has a hydroxyl group on its upper right side that is labeled “3, prime” and is bonded on the left side to a nitrogen that is a member of a five-membered ring. This ring is bonded to a six-membered ring and both have points of unsaturation. This ring has a nitrogen on the left side, as well as an amine group, that have two dotted lines leading from them to an oxygen and amine group on a six membered ring. These dotted lines are labeled “Hydrogen bonds.” The six membered ring also has a double bonded oxygen on its lower side and a nitrogen atom on its left side that is single bonded to a five-membered ring. This ring connects to the two phosphate groups mentioned at the start of this to form a large circle. The name “guanine” is written below the lower left side of this image while the name “cytosine” is written on the lower right. The name “thymine” is written above the right side of the image and “adenine” is written on the top right. Three sections are indicated below the images where the left is labeled “Sugar, dash, phosphate backbone,” the middle is labeled “Bases” and the right is labeled “Sugar, dash, phosphate backbone.”",
+            "src": "../../media/CNX_Chem_10_01_DNA2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm78986320",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68761:title:fs-idm78986320-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp42400528",
+          "segmentId": "m68761:para:fs-idp42400528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp113514832",
+          "segmentId": "m68761:para:fs-idp113514832"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp29893056",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68761:title:fs-idp29893056-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp113763312",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51965232",
+                "segmentId": "m68761:problem:fs-idm51965232"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp139010576",
+                "segmentId": "m68761:solution:fs-idp139010576"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56789136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57923840",
+                "segmentId": "m68761:problem:fs-idp57923840"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm25346224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm23990224",
+                "segmentId": "m68761:problem:fs-idm23990224"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm7102688",
+                "segmentId": "m68761:solution:fs-idm7102688"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp137732064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31602624",
+                "segmentId": "m68761:problem:fs-idp31602624"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm121006064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm81119408",
+                "segmentId": "m68761:problem:fs-idm81119408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29862000",
+                "segmentId": "m68761:solution:fs-idp29862000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm78391360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43475520",
+                "segmentId": "m68761:problem:fs-idm43475520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp109107952",
+                "segmentId": "m68761:problem:fs-idp109107952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm85993136",
+                "segmentId": "m68761:problem:fs-idm85993136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm21107584",
+                "segmentId": "m68761:problem:fs-idm21107584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm20127408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25029376",
+                "segmentId": "m68761:problem:fs-idm25029376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm100134528",
+                "segmentId": "m68761:problem:fs-idm100134528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm21005296",
+                "segmentId": "m68761:problem:fs-idm21005296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63702416",
+                "segmentId": "m68761:problem:fs-idp63702416"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp21304816",
+                "segmentId": "m68761:solution:fs-idp21304816"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm102175568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp49852720",
+                "segmentId": "m68761:problem:fs-idp49852720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44839120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm22512640",
+                "segmentId": "m68761:problem:fs-idm22512640"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25298384",
+                "segmentId": "m68761:solution:fs-idm25298384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm75414800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51988048",
+                "segmentId": "m68761:problem:fs-idp51988048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp121594368",
+                "segmentId": "m68761:problem:fs-idp121594368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm66649536",
+                "segmentId": "m68761:problem:fs-idm66649536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm50276560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26157888",
+                "segmentId": "m68761:problem:fs-idp26157888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm20036768",
+                "segmentId": "m68761:problem:fs-idm20036768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48439216",
+                "segmentId": "m68761:problem:fs-idp48439216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp120551472",
+                "segmentId": "m68761:problem:fs-idp120551472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp129330880",
+                "segmentId": "m68761:problem:fs-idp129330880"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37393520",
+                "segmentId": "m68761:solution:fs-idm37393520"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp70845808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm79746160",
+                "segmentId": "m68761:problem:fs-idm79746160"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19547744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp109056416",
+                "segmentId": "m68761:problem:fs-idp109056416"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp4184176",
+                "segmentId": "m68761:solution:fs-idp4184176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp59807680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp35994128",
+                "segmentId": "m68761:problem:fs-idp35994128"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp12526608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp127159520",
+                "segmentId": "m68761:problem:fs-idp127159520"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51916288",
+                "segmentId": "m68761:solution:fs-idm51916288"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp11327328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57555904",
+                "segmentId": "m68761:problem:fs-idp57555904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm54846080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm54619600",
+                "segmentId": "m68761:problem:fs-idm54619600"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm97717504",
+                "segmentId": "m68761:solution:fs-idm97717504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm24391648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp136021104",
+                "segmentId": "m68761:problem:fs-idp136021104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm44711088",
+                "segmentId": "m68761:problem:fs-idm44711088"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp57460448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50037824",
+                "segmentId": "m68761:problem:fs-idm50037824"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp49715040",
+                "segmentId": "m68761:solution:fs-idp49715040"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp83473328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1692320",
+                "segmentId": "m68761:problem:fs-idp1692320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18248944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm20889568",
+                "segmentId": "m68761:problem:fs-idm20889568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp135291680",
+                "segmentId": "m68761:problem:fs-idp135291680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm50855840",
+                "segmentId": "m68761:problem:fs-idm50855840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37174096",
+                "segmentId": "m68761:problem:fs-idm37174096"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm63875504",
+                "segmentId": "m68761:solution:fs-idm63875504"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68761:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68761:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68761:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68761:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp127496336",
+        "termSegmentId": "m68761:glossary-term:fs-idp127496336-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idp127496336-def"
+      },
+      {
+        "id": "fs-idm16566240",
+        "termSegmentId": "m68761:glossary-term:fs-idm16566240-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idm16566240-def"
+      },
+      {
+        "id": "fs-idp18243872",
+        "termSegmentId": "m68761:glossary-term:fs-idp18243872-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idp18243872-def"
+      },
+      {
+        "id": "fs-idm31438528",
+        "termSegmentId": "m68761:glossary-term:fs-idm31438528-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idm31438528-def"
+      },
+      {
+        "id": "fs-idp127211536",
+        "termSegmentId": "m68761:glossary-term:fs-idp127211536-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idp127211536-def"
+      },
+      {
+        "id": "fs-idm66585952",
+        "termSegmentId": "m68761:glossary-term:fs-idm66585952-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idm66585952-def"
+      },
+      {
+        "id": "fs-idp128571888",
+        "termSegmentId": "m68761:glossary-term:fs-idp128571888-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idp128571888-def"
+      },
+      {
+        "id": "fs-idm134093104",
+        "termSegmentId": "m68761:glossary-term:fs-idm134093104-term",
+        "definitionSegmentId": "m68761:glossary-def:fs-idm134093104-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

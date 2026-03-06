@@ -989,7 +989,7 @@ oxunar-afoxunarhvarfa eru þekktir, þar á meðal **brunahvörf** þar sem
 afoxarinn (einnig kallaður *eldsneyti*) og oxarinn (oft, en ekki
 endilega, sameindasúrefni) hvarfast kröftuglega og framleiða umtalsvert
 magn af hita, og oft ljós, í formi loga. Eldflaugaeldsneytishvörf með
-föstu efni, eins og það sem sýnt er í [#CNX_Chem_04_00_Rocket], eru brunaferli.
+föstu efni, eins og það sem sýnt er í [m68730#CNX_Chem_04_00_Rocket], eru brunaferli.
 Dæmigert drifefnishvarf þar sem fast ál er oxað af ammóníumperklórati er
 táknað með þessari jöfnu:
 

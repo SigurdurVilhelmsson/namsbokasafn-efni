@@ -68,7 +68,7 @@ where *q~p~* is the heat of reaction under conditions of constant pressure.
 And so, if a chemical or physical process is carried out at constant pressure with the only work done caused by expansion or contraction, then the heat flow (*q~p~*) and enthalpy change (Δ*H*) for the process are equal.
 
 <!-- SEG:m68727:para:fs-idm22504976 -->
-The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter ([#CNX_Chem_05_02_BombCalor]) is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.
+The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter ([m68726#CNX_Chem_05_02_BombCalor]) is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.
 
 <!-- SEG:m68727:para:fs-idp25166224 -->
 The following conventions apply when using Δ*H*:
@@ -671,16 +671,16 @@ Key Equations
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68727:problem:fs-idp167492528 -->
-Explain how the heat measured in [#fs-idm19242032] differs from the enthalpy change for the exothermic reaction described by the following equation:[[BR]][[MATH:75]]
+Explain how the heat measured in [m68726#fs-idm19242032] differs from the enthalpy change for the exothermic reaction described by the following equation:[[BR]][[MATH:75]]
 
 <!-- SEG:m68727:solution:fs-idp167503872 -->
 The enthalpy change of the indicated reaction is for exactly 1 mol HCL and 1 mol NaOH; the heat in the example is produced by 0.0500 mol HCl and 0.0500 mol NaOH.
 
 <!-- SEG:m68727:problem:fs-idm121017200 -->
-Using the data in the check your learning section of [#fs-idm19242032], calculate Δ*H* in kJ/mol of AgNO~3~(*aq*) for the reaction: [[MATH:76]]
+Using the data in the check your learning section of [m68726#fs-idm19242032], calculate Δ*H* in kJ/mol of AgNO~3~(*aq*) for the reaction: [[MATH:76]]
 
 <!-- SEG:m68727:problem:fs-idp146868384 -->
-Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~NO~3~ under the conditions described in [#fs-idp325184].
+Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~NO~3~ under the conditions described in [m68726#fs-idp325184].
 
 <!-- SEG:m68727:solution:fs-idp140720784 -->
 25 kJ mol^−1^
@@ -689,13 +689,13 @@ Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~
 Calculate Δ*H* for the reaction described by the equation. (*Hint*: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[BR]][[MATH:77]]
 
 <!-- SEG:m68727:problem:fs-idp107667792 -->
-Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of CaCl~2~ (refer to [#fs-idm68277040]).
+Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of CaCl~2~ (refer to [m68726#fs-idm68277040]).
 
 <!-- SEG:m68727:solution:fs-idp107669568 -->
 81 kJ mol^−1^
 
 <!-- SEG:m68727:problem:fs-idp103276592 -->
-Although the gas used in an oxyacetylene torch ([#CNX_Chem_05_01_OxyacTorch]) is essentially pure acetylene, the heat produced by combustion of one mole of acetylene in such a torch is likely not equal to the enthalpy of combustion of acetylene listed in [#fs-idp98710048]. Considering the conditions for which the tabulated data are reported, suggest an explanation.
+Although the gas used in an oxyacetylene torch ([m68724#CNX_Chem_05_01_OxyacTorch]) is essentially pure acetylene, the heat produced by combustion of one mole of acetylene in such a torch is likely not equal to the enthalpy of combustion of acetylene listed in [#fs-idp98710048]. Considering the conditions for which the tabulated data are reported, suggest an explanation.
 
 <!-- SEG:m68727:problem:fs-idp103281472 -->
 How much heat is produced by burning 4.00 moles of acetylene under standard state conditions?

@@ -1,0 +1,2256 @@
+{
+  "moduleId": "m68742",
+  "title": {
+    "segmentId": "m68742:title:auto-1",
+    "text": "Molecular Structure and Polarity"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ff774d31-ee45-4f0d-a362-fdd00c5f17da",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Predict the structures of small molecules using valence shell electron pair repulsion (VSEPR) theory",
+        "Explain the concepts of polar covalent bonds and molecular polarity",
+        "Assess the polarity of a molecule based on its bonding and structure"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp51102864",
+      "segmentId": "m68742:para:fs-idp51102864"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_07_06_CH2O",
+      "caption": {
+        "segmentId": "m68742:caption:CNX_Chem_07_06_CH2O-caption"
+      },
+      "media": {
+        "id": "fs-idp55258784",
+        "alt": "A pair of images are shown. The left image shows a carbon atom with three atoms bonded in a triangular arrangement around it. There are two hydrogen atoms bonded on the left side of the carbon and the angle between them is labeled, “118 degrees” and, “Bond angle.” The carbon is also double bonded to an oxygen atom. The double bond is shaded and there is a bracket which labels the bond, “Bond length ( angstrom ), ( center to center ),” and, “1.21 angstrom.” The right image shows a ball-and-stick model of the same elements. The hydrogen atoms are white, the carbon atom is black, and the oxygen atom is red.",
+        "src": "../../media/CNX_Chem_07_06_CH2O.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idp391168",
+      "class": null,
+      "title": {
+        "segmentId": "m68742:title:fs-idp391168-title",
+        "text": "VSEPR Theory"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm5284928",
+          "class": null,
+          "title": {
+            "segmentId": "m68742:title:fs-idm5284928-title",
+            "text": "Electron-pair Geometry versus Molecular Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp238100128",
+              "segmentId": "m68742:para:fs-idp238100128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm334496",
+              "segmentId": "m68742:para:fs-idm334496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp48943296",
+              "segmentId": "m68742:para:fs-idp48943296"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_CH4",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_CH4-caption"
+              },
+              "media": {
+                "id": "fs-idp102024640",
+                "alt": "A Lewis structure shows a carbon atom single bonded to four hydrogen atoms. This structure uses wedges and dashes to give it a three dimensional appearance.",
+                "src": "../../media/CNX_Chem_07_06_CH4.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_NH3",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_NH3-caption"
+              },
+              "media": {
+                "id": "fs-idp50682928",
+                "alt": "Three images are shown and labeled, “a,” “b,” and “c.” Image a shows a nitrogen atom single bonded to three hydrogen atoms. There are four oval-shaped orbs that surround each hydrogen and one facing away from the rest of the molecule. These orbs are located in a tetrahedral arrangement. Image b shows a ball-and-stick model of the nitrogen single bonded to the three hydrogen atoms. Image c is the same as image a, but there are four curved, double headed arrows that circle the molecule and are labeled, “106.8 degrees.”",
+                "src": "../../media/CNX_Chem_07_06_NH3.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp38238416",
+              "segmentId": "m68742:para:fs-idp38238416"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm222312400",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp7623536",
+              "segmentId": "m68742:para:fs-idp7623536"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm99105600",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp215771104",
+              "segmentId": "m68742:para:fs-idp215771104"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp125916256",
+              "segmentId": "m68742:para:fs-idp125916256"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_molgeom",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_molgeom-caption"
+              },
+              "media": {
+                "id": "fs-idp63301888",
+                "alt": "A table is shown that is comprised of six rows and six columns. The header row reads: “Number of Electron Regions,” “Electron region geometries; 0 lone pair,” “1 lone pair,” “2 lone pairs,” “3 lone pairs,” and “4 lone pairs.” The first column contains the numbers 2, 3, 4, 5, and 6. The first space in the second column contains a structure in which the letter E is single bonded to the letter X on each side. The angle of the bonds is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The second space in the second column contains a structure in which the letter E is single bonded to the letter X on three sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “120 degrees.” The structure is labeled, “Trigonal planar.” The third space in the second column contains a structure in which the letter E is single bonded to the letter X four times. The angle between the bonds is labeled with a curved, double headed arrow and the value, “109 degrees.” The structure is labeled, “Tetrahedral.” The fourth space in the second column contains a structure in which the letter E is single bonded to the letter X on five sides. The angle between the bonds is labeled with a curved, double headed arrow and the values “90 and 120 degrees.” The structure is labeled, “Trigonal bipyramid.” The fifth space in the second column contains a structure in which the letter E is single bonded to the letter X on six sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “90 degrees.” The structure is labeled, “Octahedral.” The first space in the third column is empty while the second contains a structure in which the letter E is single bonded to the letter X on each side and has a lone pair of electrons. The angle between the bonds is labeled with a curved, double headed arrow and the value, “less than 120 degrees.” The structure is labeled, “Bent or angular.” The third space in the third column contains a structure in which the letter E is single bonded to the letter X three times and to a lone pair of electrons. It is labeled with a curved, double headed arrow and the value, “less than 109 degrees.” The structure is labeled, “Trigonal pyramid.” The fourth space in the third column contains a structure in which the letter E is single bonded to the letter X on four sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the values, “less than 90 and less than 120 degrees.” The structure is labeled, “Sawhorse or seesaw.” The fifth space in the third column contains a structure in which the letter E is single bonded to the letter X on five sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “Square pyramidal.” The first and second spaces in the fourth column are empty while the third contains a structure in which the letter E is single bonded to the letter X on each side and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than less than 109 degrees.” The structure is labeled, “Bent or angular.” The fourth space in the fourth column contains a structure in which the letter E is single bonded to the letter X three times and to two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The fifth space in the fourth column contains a structure in which the letter E is single bonded to the letter X on four sides and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “90 degrees.” The structure is labeled, “Square planar.” The first, second and third spaces in the fifth column are empty while the fourth contains a structure in which the letter E is single bonded to the letter X on each side and has three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The fifth space in the fifth column contains a structure in which the letter E is single bonded to the letter X three times and to three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The first, second, third, and fourth spaces in the sixth column are empty while the fifth contains a structure in which the letter E is single bonded to the letter X on each side and has four lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “180 degrees.” The structure is labeled, “Linear.” All the structures use wedges and dashes to give them three dimensional appearances.",
+                "src": "../../media/CNX_Chem_07_06_molgeom.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp3259504",
+              "segmentId": "m68742:para:fs-idp3259504"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm50931488",
+              "segmentId": "m68742:para:fs-idm50931488"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_Axeq",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_Axeq-caption"
+              },
+              "media": {
+                "id": "fs-idp53854176",
+                "alt": "Four sets of images are shown and labeled, “a,” “b,” “c,” and “d.” Each image is separated by a dashed vertical line. Image a shows a six-faced, bi-pyramidal structure where the central vertical axis is labeled, “Axial,” and the horizontal plane is labeled, “Equatorial.” Image b shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms on the upper and lower ends, and one fluorine in the left horizontal position. Image c shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center and three fluorine atoms in each horizontal position. Image d shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms in the horizontal positions, and one in the axial bottom position.",
+                "src": "../../media/CNX_Chem_07_06_Axeq.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp56476752",
+              "segmentId": "m68742:para:fs-idp56476752"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm759712",
+          "class": null,
+          "title": {
+            "segmentId": "m68742:title:fs-idm759712-title",
+            "text": "Predicting Electron Pair Geometry and Molecular Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp147829184",
+              "segmentId": "m68742:para:fs-idp147829184"
+            },
+            {
+              "type": "list",
+              "id": "fs-idp267826096",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68742:item:fs-idp267826096-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68742:item:fs-idp267826096-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68742:item:fs-idp267826096-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68742:item:fs-idp267826096-item-4"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "fs-idp53389712",
+              "segmentId": "m68742:para:fs-idp53389712"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm2891376",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idm2891376-title",
+                "text": "Solution"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp238154208",
+                  "segmentId": "m68742:para:fs-idp238154208"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp55144288",
+                  "segmentId": "m68742:para:fs-idp55144288"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm8091088",
+                  "segmentId": "m68742:para:fs-idm8091088"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp64872464",
+                  "segmentId": "m68742:para:fs-idp64872464"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp56144384",
+                  "segmentId": "m68742:para:fs-idp56144384"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp280648672",
+                  "segmentId": "m68742:para:fs-idp280648672"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp34925552",
+                  "segmentId": "m68742:para:fs-idp34925552"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp211059664",
+                  "segmentId": "m68742:para:fs-idp211059664"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp67131872",
+                  "segmentId": "m68742:para:fs-idp67131872",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp67131872-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp55819408",
+                  "segmentId": "m68742:para:fs-idp55819408"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp125452800",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idp125452800-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp55819408",
+                      "segmentId": "m68742:para:fs-idp55819408"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_BCl3mol",
+              "caption": null,
+              "media": {
+                "id": "fs-idp108737552",
+                "alt": "A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which is oriented in the same flat plane. This figure uses dashes and wedges to give it a three-dimensional appearance.",
+                "src": "../../media/CNX_Chem_07_06_BCl3mol.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "example",
+              "id": "fs-idp17356704",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idp17356704-title",
+                "text": "Predicting Electron-pair Geometry and Molecular Structure: Ammonium"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp83628624",
+                  "segmentId": "m68742:para:fs-idp83628624"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp86467024",
+                  "segmentId": "m68742:para:fs-idp86467024",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp86467024-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm9973280",
+                  "segmentId": "m68742:para:fs-idm9973280"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp94577296",
+                  "segmentId": "m68742:para:fs-idp94577296",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp94577296-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp18533456",
+                  "segmentId": "m68742:para:fs-idp18533456"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp57227744",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idp57227744-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp18533456",
+                      "segmentId": "m68742:para:fs-idp18533456"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_NH4mol",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_NH4mol-caption"
+              },
+              "media": {
+                "id": "fs-idp51778960",
+                "alt": "A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign. This figure uses dashes and wedges to displays its three planes in a tetrahedral shape.",
+                "src": "../../media/CNX_Chem_07_06_NH4mol.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm16091952",
+              "segmentId": "m68742:para:fs-idm16091952"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm16663792",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idm16663792-title",
+                "text": "Predicting Electron-pair Geometry and Molecular Structure: Lone Pairs on the Central Atom"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm10296544",
+                  "segmentId": "m68742:para:fs-idm10296544"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp10258608",
+                  "segmentId": "m68742:para:fs-idp10258608",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp10258608-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp35029328",
+                  "segmentId": "m68742:para:fs-idp35029328"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp51567744",
+                  "segmentId": "m68742:para:fs-idp51567744",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp51567744-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp103296688",
+                  "segmentId": "m68742:para:fs-idp103296688"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp47211728",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idp47211728-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp103296688",
+                      "segmentId": "m68742:para:fs-idp103296688"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_H2Omol",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_H2Omol-caption"
+              },
+              "media": {
+                "id": "fs-idp67053904",
+                "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows an oxygen atom in the center of a four-sided pyramid shape. Diagram b shows the same image as diagram a, but this time there are hydrogen atoms located at two corners of the pyramid shape.",
+                "src": "../../media/CNX_Chem_07_06_H2Omol.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "example",
+              "id": "fs-idp82124112",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idp82124112-title",
+                "text": "Solution"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp54014736",
+                  "segmentId": "m68742:para:fs-idp54014736"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp95643040",
+                  "segmentId": "m68742:para:fs-idp95643040"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp72937360",
+                  "segmentId": "m68742:para:fs-idp72937360"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp24574032",
+                  "segmentId": "m68742:para:fs-idp24574032",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp24574032-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp90752208",
+                  "segmentId": "m68742:para:fs-idp90752208"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp54082656",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idp54082656-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp90752208",
+                      "segmentId": "m68742:para:fs-idp90752208"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_SF4mol",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_SF4mol-caption"
+              },
+              "media": {
+                "id": "fs-idp116937376",
+                "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a sulfur atom in the center of a six-sided bi-pyramidal shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at four corners of the pyramid shape and they are connected to the sulfur atom by single lines.",
+                "src": "../../media/CNX_Chem_07_06_SF4mol.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "example",
+              "id": "fs-idp47136656",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idp47136656-title",
+                "text": "Solution"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp125690208",
+                  "segmentId": "m68742:para:fs-idp125690208"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm15898032",
+                  "segmentId": "m68742:para:fs-idm15898032"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp60591280",
+                  "segmentId": "m68742:para:fs-idp60591280"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp225615216",
+                  "segmentId": "m68742:para:fs-idp225615216",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp225615216-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp81639856",
+                  "segmentId": "m68742:para:fs-idp81639856"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm25808",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idm25808-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp81639856",
+                      "segmentId": "m68742:para:fs-idp81639856"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_XeF4mol",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_XeF4mol-caption"
+              },
+              "media": {
+                "id": "fs-idp88527200",
+                "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a xenon atom in the center of an eight-sided octahedral shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at the four corners of the shape in the horizontal plane. They are connected to the xenon by single lines.",
+                "src": "../../media/CNX_Chem_07_06_XEF4mol.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp54051968",
+          "class": null,
+          "title": {
+            "segmentId": "m68742:title:fs-idp54051968-title",
+            "text": "Molecular Structure for Multicenter Molecules"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp78438784",
+              "segmentId": "m68742:para:fs-idp78438784"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp116942080",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idp116942080-title",
+                "text": "Predicting Structure in Multicenter Molecules"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp73376736",
+                  "segmentId": "m68742:para:fs-idp73376736"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm8994208",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idm8994208-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp15590912",
+                  "segmentId": "m68742:para:fs-idp15590912"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp86037232",
+                  "segmentId": "m68742:para:fs-idp86037232"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp7781728",
+                  "segmentId": "m68742:para:fs-idp7781728",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp7781728-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp66198816",
+                  "segmentId": "m68742:para:fs-idp66198816"
+                },
+                {
+                  "type": "list",
+                  "id": "fs-idp8766640",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp8766640-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp8766640-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp8766640-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp8766640-item-4"
+                    }
+                  ]
+                },
+                {
+                  "type": "list",
+                  "id": "fs-idp18275136",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp18275136-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp18275136-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp18275136-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68742:item:fs-idp18275136-item-4"
+                    }
+                  ]
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm44767872",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idm44767872-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp66198816",
+                      "segmentId": "m68742:para:fs-idp66198816"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idp90797184",
+              "class": "chemistry link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp159959216",
+                  "segmentId": "m68742:para:fs-idp159959216"
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "id": "fs-idp54012352",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idp54012352-title",
+                "text": "Molecular Simulation"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp52927344",
+                  "segmentId": "m68742:para:fs-idp52927344"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp224051488",
+                  "segmentId": "m68742:para:fs-idp224051488"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp88631840",
+                  "segmentId": "m68742:para:fs-idp88631840"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp93177200",
+                  "segmentId": "m68742:para:fs-idp93177200",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp93177200-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp50724128",
+                  "segmentId": "m68742:para:fs-idp50724128",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp50724128-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp73534304",
+                  "segmentId": "m68742:para:fs-idp73534304"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp102593872"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp52028320",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idp52028320-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp73534304",
+                      "segmentId": "m68742:para:fs-idp73534304"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp36050992",
+          "segmentId": "m68742:para:fs-idp36050992"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp46353584",
+          "segmentId": "m68742:para:fs-idp46353584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp122770240",
+          "segmentId": "m68742:para:fs-idp122770240"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_BeF2",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_BeF2-caption"
+          },
+          "media": {
+            "id": "fs-idp229524848",
+            "alt": "A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”",
+            "src": "../../media/CNX_Chem_07_06_BeF2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp87297072",
+          "segmentId": "m68742:para:fs-idp87297072"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_Egeom",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_Egeom-caption"
+          },
+          "media": {
+            "id": "fs-idp73717728",
+            "alt": "A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”",
+            "src": "../../media/CNX_Chem_07_06_Egeom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp149289584",
+      "class": null,
+      "title": {
+        "segmentId": "m68742:title:fs-idp149289584-title",
+        "text": "Molecular Polarity and Dipole Moment"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp83627232",
+          "class": null,
+          "title": {
+            "segmentId": "m68742:title:fs-idp83627232-title",
+            "text": "Properties of Polar Molecules"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp272047168",
+              "segmentId": "m68742:para:fs-idp272047168"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_06_Dipolfield",
+              "caption": {
+                "segmentId": "m68742:caption:CNX_Chem_07_06_Dipolfield-caption"
+              },
+              "media": {
+                "id": "fs-idp19283840",
+                "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two vertical, gray electrodes. There are five molecules in between. The molecules are separate from one another and are composed of a hydrogen atom bonded to a fluorine atom. The fluorine atom is labeled with a dipole symbol and a superscripted negative sign while the hydrogen atom is labeled with a dipole symbol and a superscripted positive sign. The molecules are randomly oriented in the space. The right diagram also shows two vertical gray electrodes, the left labeled as negative and the right labeled as positive. The space between is yellow. The same molecules are present, but this time they are all facing horizontally, with the hydrogen-end of each molecule facing toward the negative electrode.",
+                "src": "../../media/CNX_Chem_07_06_Dipolfield.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-idp56552448",
+              "class": "chemistry link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp103820464",
+                  "segmentId": "m68742:para:fs-idp103820464"
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "id": "fs-idm708128",
+              "title": {
+                "segmentId": "m68742:example-title:fs-idm708128-title",
+                "text": "Polarity Simulations"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp55551344",
+                  "segmentId": "m68742:para:fs-idp55551344"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp55109824",
+                  "segmentId": "m68742:para:fs-idp55109824"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp21212352",
+                  "segmentId": "m68742:para:fs-idp21212352"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp83795840",
+                  "segmentId": "m68742:para:fs-idp83795840"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp60999152",
+                  "segmentId": "m68742:para:fs-idp60999152",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp60999152-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp33577488",
+                  "segmentId": "m68742:para:fs-idp33577488"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp55689408",
+                  "segmentId": "m68742:para:fs-idp55689408",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp55689408-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp280660528",
+                  "segmentId": "m68742:para:fs-idp280660528"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp670160",
+                  "title": {
+                    "segmentId": "m68742:note-title:fs-idp670160-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp280660528",
+                      "segmentId": "m68742:para:fs-idp280660528"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30351200",
+          "segmentId": "m68742:para:fs-idp30351200"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp16382464",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp33849296",
+          "segmentId": "m68742:para:fs-idp33849296"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_BondVector",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_BondVector-caption"
+          },
+          "media": {
+            "id": "fs-idp53563840",
+            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”",
+            "src": "../../media/CNX_Chem_07_06_BondVector.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp52773168",
+          "segmentId": "m68742:para:fs-idp52773168"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10056464",
+          "segmentId": "m68742:para:fs-idm10056464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp218363312",
+          "segmentId": "m68742:para:fs-idp218363312"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_CO2H2Odip",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_CO2H2Odip-caption"
+          },
+          "media": {
+            "id": "fs-idp102085104",
+            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”",
+            "src": "../../media/CNX_Chem_07_06_CO2H2Odip.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp54246320",
+          "segmentId": "m68742:para:fs-idp54246320"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp52090304",
+          "class": "scaled-down",
+          "alt": "An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”",
+          "src": "../../media/CNX_Chem_07_06_OSC_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp225382864",
+          "segmentId": "m68742:para:fs-idp225382864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp66532464",
+          "segmentId": "m68742:para:fs-idp66532464"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm3023712",
+          "class": "scaled-down",
+          "alt": "An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance.",
+          "src": "../../media/CNX_Chem_07_06_CHCl3_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp214036816",
+          "segmentId": "m68742:para:fs-idp214036816"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp35612832",
+          "class": "scaled-down",
+          "alt": "Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign.",
+          "src": "../../media/CNX_Chem_07_06_SH2NH3_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp51111376",
+          "segmentId": "m68742:para:fs-idp51111376"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp94928768",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68742:item:fs-idp94928768-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68742:item:fs-idp94928768-item-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp238464336",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68742:title:fs-idp238464336-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp12666320",
+          "segmentId": "m68742:para:fs-idp12666320"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp125299408",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68742:title:fs-idp125299408-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp14744000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp159838848",
+                "segmentId": "m68742:problem:fs-idp159838848"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56108944",
+                "segmentId": "m68742:solution:fs-idp56108944"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp281408272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm7215344",
+                "segmentId": "m68742:problem:fs-idm7215344"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2043120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp49887536",
+                "segmentId": "m68742:problem:fs-idp49887536"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp63935008",
+                "segmentId": "m68742:solution:fs-idp63935008"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp134531056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57263952",
+                "segmentId": "m68742:problem:fs-idp57263952"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp170194320",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37335120",
+                "segmentId": "m68742:problem:fs-idp37335120"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp102492096",
+                "segmentId": "m68742:solution:fs-idp102492096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm5235936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62443808",
+                "segmentId": "m68742:problem:fs-idp62443808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp57252544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40736832",
+                "segmentId": "m68742:problem:fs-idp40736832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp35520768",
+                "segmentId": "m68742:problem:fs-idp35520768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp238944112",
+                "segmentId": "m68742:problem:fs-idp238944112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp213898976",
+                "segmentId": "m68742:problem:fs-idp213898976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40771056",
+                "segmentId": "m68742:problem:fs-idp40771056"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57801216",
+                "segmentId": "m68742:solution:fs-idp57801216"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm179024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp54448032",
+                "segmentId": "m68742:problem:fs-idp54448032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51210016",
+                "segmentId": "m68742:problem:fs-idp51210016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp121685056",
+                "segmentId": "m68742:problem:fs-idp121685056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5935968",
+                "segmentId": "m68742:problem:fs-idm5935968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16517536",
+                "segmentId": "m68742:problem:fs-idp16517536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6163344",
+                "segmentId": "m68742:problem:fs-idp6163344"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp67177072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp124058640",
+                "segmentId": "m68742:problem:fs-idp124058640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp5812400",
+                "segmentId": "m68742:problem:fs-idp5812400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp243542528",
+                "segmentId": "m68742:problem:fs-idp243542528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17458144",
+                "segmentId": "m68742:problem:fs-idp17458144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp125667168",
+                "segmentId": "m68742:problem:fs-idp125667168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84300160",
+                "segmentId": "m68742:problem:fs-idm84300160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp53810496",
+                "segmentId": "m68742:problem:fs-idp53810496"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29612832",
+                "segmentId": "m68742:solution:fs-idp29612832"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm5404912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp218150896",
+                "segmentId": "m68742:problem:fs-idp218150896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp102358528",
+                "segmentId": "m68742:problem:fs-idp102358528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12592304",
+                "segmentId": "m68742:problem:fs-idm12592304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36456848",
+                "segmentId": "m68742:problem:fs-idp36456848"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2007648",
+                "segmentId": "m68742:problem:fs-idm2007648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp86896256",
+                "segmentId": "m68742:problem:fs-idp86896256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp3710000",
+                "segmentId": "m68742:problem:fs-idp3710000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp93814864",
+                "segmentId": "m68742:problem:fs-idp93814864"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp123628080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55745136",
+                "segmentId": "m68742:problem:fs-idp55745136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm436144",
+                "segmentId": "m68742:problem:fs-idm436144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48356992",
+                "segmentId": "m68742:problem:fs-idp48356992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp12929104",
+                "segmentId": "m68742:problem:fs-idp12929104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56511792",
+                "segmentId": "m68742:problem:fs-idp56511792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51595808",
+                "segmentId": "m68742:problem:fs-idp51595808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp53734816",
+                "segmentId": "m68742:problem:fs-idp53734816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp156204096",
+                "segmentId": "m68742:problem:fs-idp156204096"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27861968",
+                "segmentId": "m68742:solution:fs-idm27861968"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp23296480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp54048880",
+                "segmentId": "m68742:problem:fs-idp54048880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5290576",
+                "segmentId": "m68742:problem:fs-idm5290576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp64231008",
+                "segmentId": "m68742:problem:fs-idp64231008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp3722176",
+                "segmentId": "m68742:problem:fs-idp3722176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp134228160",
+                "segmentId": "m68742:problem:fs-idp134228160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp61402064",
+                "segmentId": "m68742:problem:fs-idp61402064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp239186240",
+                "segmentId": "m68742:problem:fs-idp239186240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp91952720",
+                "segmentId": "m68742:problem:fs-idp91952720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp87226080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55226560",
+                "segmentId": "m68742:problem:fs-idp55226560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp126895904",
+                "segmentId": "m68742:problem:fs-idp126895904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp53542704",
+                "segmentId": "m68742:problem:fs-idp53542704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4015872",
+                "segmentId": "m68742:problem:fs-idp4015872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp97706816",
+                "segmentId": "m68742:problem:fs-idp97706816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp165680608",
+                "segmentId": "m68742:problem:fs-idp165680608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp273207072",
+                "segmentId": "m68742:problem:fs-idp273207072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm15992272",
+                "segmentId": "m68742:problem:fs-idm15992272"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp118872384",
+                "segmentId": "m68742:solution:fs-idp118872384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp24689744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp63414272",
+                "segmentId": "m68742:problem:fs-idp63414272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56929024",
+                "segmentId": "m68742:problem:fs-idp56929024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp277459024",
+                "segmentId": "m68742:problem:fs-idp277459024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp87186688",
+                "segmentId": "m68742:problem:fs-idp87186688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp9124128",
+                "segmentId": "m68742:problem:fs-idp9124128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5861184",
+                "segmentId": "m68742:problem:fs-idm5861184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp57675856",
+                "segmentId": "m68742:problem:fs-idp57675856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp87443872",
+                "segmentId": "m68742:problem:fs-idp87443872"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp60611664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4173120",
+                "segmentId": "m68742:problem:fs-idm4173120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63011456",
+                "segmentId": "m68742:problem:fs-idm63011456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp62630464",
+                "segmentId": "m68742:problem:fs-idp62630464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2101312",
+                "segmentId": "m68742:problem:fs-idm2101312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp149413888",
+                "segmentId": "m68742:problem:fs-idp149413888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34105056",
+                "segmentId": "m68742:problem:fs-idp34105056"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp86019136",
+                "segmentId": "m68742:solution:fs-idp86019136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm62749296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52399328",
+                "segmentId": "m68742:problem:fs-idp52399328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18907856",
+                "segmentId": "m68742:problem:fs-idp18907856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp103453536",
+                "segmentId": "m68742:problem:fs-idp103453536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56309664",
+                "segmentId": "m68742:problem:fs-idp56309664"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18592496",
+                "segmentId": "m68742:problem:fs-idp18592496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp92336480",
+                "segmentId": "m68742:problem:fs-idp92336480"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp32930976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp92386128",
+                "segmentId": "m68742:problem:fs-idp92386128"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp60075728",
+                "segmentId": "m68742:solution:fs-idp60075728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp90274464",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp70387584",
+                "segmentId": "m68742:problem:fs-idp70387584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp164286384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp66689280",
+                "segmentId": "m68742:problem:fs-idp66689280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126748304",
+                "segmentId": "m68742:solution:fs-idp126748304"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp95408832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp58329184",
+                "segmentId": "m68742:problem:fs-idp58329184"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16503888",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp119317296",
+                "segmentId": "m68742:problem:fs-idp119317296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88439632",
+                "segmentId": "m68742:problem:fs-idp88439632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp82125392",
+                "segmentId": "m68742:problem:fs-idp82125392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp83702064",
+                "segmentId": "m68742:problem:fs-idp83702064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65337408",
+                "segmentId": "m68742:problem:fs-idp65337408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp52188688",
+                "segmentId": "m68742:problem:fs-idp52188688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60784320",
+                "segmentId": "m68742:problem:fs-idp60784320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp95341616",
+                "segmentId": "m68742:problem:fs-idp95341616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp124220336",
+                "segmentId": "m68742:problem:fs-idp124220336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp92064960",
+                "segmentId": "m68742:problem:fs-idp92064960"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp164162368",
+                "segmentId": "m68742:solution:fs-idp164162368"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp120029040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10303440",
+                "segmentId": "m68742:problem:fs-idp10303440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp83673168",
+                "segmentId": "m68742:problem:fs-idp83673168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12721344",
+                "segmentId": "m68742:problem:fs-idm12721344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm634736",
+                "segmentId": "m68742:problem:fs-idm634736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp52514704",
+                "segmentId": "m68742:problem:fs-idp52514704"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp149682416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp38088848",
+                "segmentId": "m68742:problem:fs-idp38088848"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4023008",
+                "segmentId": "m68742:solution:fs-idm4023008"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp126465632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm81567024",
+                "segmentId": "m68742:problem:fs-idm81567024"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp122940912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56538896",
+                "segmentId": "m68742:problem:fs-idp56538896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7387296",
+                "segmentId": "m68742:problem:fs-idp7387296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp134617040",
+                "segmentId": "m68742:problem:fs-idp134617040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp86658096",
+                "segmentId": "m68742:problem:fs-idp86658096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88863520",
+                "segmentId": "m68742:problem:fs-idp88863520"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp61624784",
+                "segmentId": "m68742:solution:fs-idp61624784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2150336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp81563600",
+                "segmentId": "m68742:problem:fs-idp81563600"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp73458400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp214455904",
+                "segmentId": "m68742:problem:fs-idp214455904"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp130145648",
+                "segmentId": "m68742:solution:fs-idp130145648"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp67065360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp63767408",
+                "segmentId": "m68742:problem:fs-idp63767408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp112678528",
+                "segmentId": "m68742:problem:fs-idp112678528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34175728",
+                "segmentId": "m68742:problem:fs-idp34175728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34176112",
+                "segmentId": "m68742:problem:fs-idp34176112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp115732448",
+                "segmentId": "m68742:problem:fs-idp115732448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56829344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp67165664",
+                "segmentId": "m68742:problem:fs-idp67165664"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp102821904",
+                "segmentId": "m68742:problem:fs-idp102821904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp81480992",
+                "segmentId": "m68742:problem:fs-idp81480992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp213909024",
+                "segmentId": "m68742:problem:fs-idp213909024"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51557664",
+                "segmentId": "m68742:solution:fs-idp51557664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp46580240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp250860400",
+                "segmentId": "m68742:problem:fs-idp250860400"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17379424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25136064",
+                "segmentId": "m68742:problem:fs-idp25136064"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62144768",
+                "segmentId": "m68742:solution:fs-idp62144768"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp37961056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5201232",
+                "segmentId": "m68742:problem:fs-idm5201232"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68742:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68742:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68742:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68742:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp280671424",
+        "termSegmentId": "m68742:glossary-term:fs-idp280671424-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp280671424-def"
+      },
+      {
+        "id": "fs-idp51366688",
+        "termSegmentId": "m68742:glossary-term:fs-idp51366688-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp51366688-def"
+      },
+      {
+        "id": "fs-idp64874768",
+        "termSegmentId": "m68742:glossary-term:fs-idp64874768-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp64874768-def"
+      },
+      {
+        "id": "fs-idp60998304",
+        "termSegmentId": "m68742:glossary-term:fs-idp60998304-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp60998304-def"
+      },
+      {
+        "id": "fs-idp12081312",
+        "termSegmentId": "m68742:glossary-term:fs-idp12081312-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp12081312-def"
+      },
+      {
+        "id": "fs-idp86864304",
+        "termSegmentId": "m68742:glossary-term:fs-idp86864304-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp86864304-def"
+      },
+      {
+        "id": "fs-idp113684160",
+        "termSegmentId": "m68742:glossary-term:fs-idp113684160-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp113684160-def"
+      },
+      {
+        "id": "fs-idp35872064",
+        "termSegmentId": "m68742:glossary-term:fs-idp35872064-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp35872064-def"
+      },
+      {
+        "id": "fs-idp108813632",
+        "termSegmentId": "m68742:glossary-term:fs-idp108813632-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp108813632-def"
+      },
+      {
+        "id": "fs-idp80913744",
+        "termSegmentId": "m68742:glossary-term:fs-idp80913744-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp80913744-def"
+      },
+      {
+        "id": "fs-idp57075984",
+        "termSegmentId": "m68742:glossary-term:fs-idp57075984-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp57075984-def"
+      },
+      {
+        "id": "fs-idp51917808",
+        "termSegmentId": "m68742:glossary-term:fs-idp51917808-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp51917808-def"
+      },
+      {
+        "id": "fs-idp124673792",
+        "termSegmentId": "m68742:glossary-term:fs-idp124673792-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp124673792-def"
+      },
+      {
+        "id": "fs-idp36467056",
+        "termSegmentId": "m68742:glossary-term:fs-idp36467056-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp36467056-def"
+      },
+      {
+        "id": "fs-idp27828880",
+        "termSegmentId": "m68742:glossary-term:fs-idp27828880-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp27828880-def"
+      },
+      {
+        "id": "fs-idp103056288",
+        "termSegmentId": "m68742:glossary-term:fs-idp103056288-term",
+        "definitionSegmentId": "m68742:glossary-def:fs-idp103056288-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp35110688",
+      "class": null,
+      "alt": "Three Lewis diagrams are shown. The first diagram shows the letter A single bonded to the left and right to the letter B. An example, “C O subscript 2,” and the term, “linear,” are written beside this diagram. The second diagram shows the letter A with two lone pairs of electrons, single bonded to the left and lower right to the letter B. An example, “H subscript 2 O,” and the term, “bent with an approximately 109 degree angle,” are written beside this diagram. The third diagram shows the letter A with one lone electron pair, single bonded to the left and lower right to the letter B. An example, “S O subscript 2,” and the term, “bent with an approximately 120 degree angle,” are written beside this diagram.",
+      "src": "../../media/CNX_Chem_07_06_Ques23ans_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp25564320",
+      "class": null,
+      "alt": "The figure shows three Lewis structures that are each surrounded by brackets and have a superscripted 2 negative sign. They are written with a double-headed arrow in between each diagram. The first of this trio has a carbon atom single bonded to two sulfur atoms, each of which has thee lone pairs of electrons, and double bonded to a third sulfur atom with two lone pairs of electrons. The second and third diagrams have the same atoms present, but each time the double bond moves between a different carbon and sulfur pair. The lone electron pairs also shift to correspond with the bond changes.",
+      "src": "../../media/CNX_Chem_07_06_CS3a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp164171792",
+      "class": null,
+      "alt": "The Lewis structure shows a carbon atom double bonded to two sulfur atoms, each of which has two lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_07_06_CS3b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp24461984",
+      "class": null,
+      "alt": "This diagram shows a carbon with one lone electron pair triple bonded to a sulfur with one lone electron pair.",
+      "src": "../../media/CNX_Chem_07_06_CS3c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idp93503152",
+      "class": null,
+      "alt": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to a hydrogen atom and double bonded to a third carbon atom which is single bonded to two hydrogen atoms.",
+      "src": "../../media/CNX_Chem_07_06_Ques28ans_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "moduleId": "m68815",
+  "extractedAt": "2026-03-06T13:09:39.720Z",
+  "sourceHash": "d5fbb928b7cffc75",
+  "segmentCount": 7,
+  "segmentIds": [
+    "m68815:title:auto-1",
+    "m68815:abstract-item:abstract-item-1",
+    "m68815:abstract-item:abstract-item-2",
+    "m68815:abstract-item:abstract-item-3",
+    "m68815:abstract-item:abstract-item-4",
+    "m68815:caption:CNX_Chem_16_00_Geyser-caption",
+    "m68815:para:fs-idp234888272"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_16_00_Geyser"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

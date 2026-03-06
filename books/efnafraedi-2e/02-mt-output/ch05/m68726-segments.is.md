@@ -123,7 +123,7 @@ efna með mismunandi hitastig
 (stálstöng sem notuð er til að styrkja steypu) er sleppt í 425 ml af
 vatni með hitastigið 24,0 °C. Lokahitastig vatnsins mældist 42,7 °C.
 Reiknaðu upphafshitastig steypustyrktarjárnsins. Gerðu ráð fyrir að
-eðlisvarmi stáls sé um það bil sá sami og fyrir járn ([#fs-idm68801008]) og að
+eðlisvarmi stáls sé um það bil sá sami og fyrir járn ([m68724#fs-idm68801008]) og að
 allur varmaflutningur eigi sér stað milli steypustyrktarjárnsins og
 vatnsins (engin varmaskipti verða við umhverfið).
 
@@ -226,7 +226,7 @@ sökkt í sjóðandi vatn var upphafshitastig hans 100,0 °C; og fyrir vatn,
 
 
 <!-- SEG:m68726:para:fs-idm61018208 --> Þegar þetta er borið saman við gildin
-í [#fs-idm68801008] er eðlisvarmi tilraunarinnar okkar næstur gildinu fyrir
+í [m68724#fs-idm68801008] er eðlisvarmi tilraunarinnar okkar næstur gildinu fyrir
 kopar (0,39 J/g °C), þannig að við ályktum að málmurinn sé kopar.
 
 

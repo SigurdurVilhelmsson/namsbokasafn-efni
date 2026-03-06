@@ -1,0 +1,675 @@
+{
+  "moduleId": "m68821",
+  "title": {
+    "segmentId": "m68821:title:auto-1",
+    "text": "Review of Redox Chemistry"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "254840ff-5389-46ad-a965-7cf28005829a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe defining traits of redox chemistry",
+        "Identify the oxidant and reductant of a redox reaction",
+        "Balance chemical equations for redox reactions using the half-reaction method"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm204695200",
+      "segmentId": "m68821:para:fs-idm204695200"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm243597504",
+      "class": null,
+      "title": {
+        "segmentId": "m68821:title:fs-idm243597504-title",
+        "text": "Oxidation Numbers"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm244057120",
+          "segmentId": "m68821:para:fs-idm244057120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm215450704",
+          "segmentId": "m68821:para:fs-idm215450704"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm656277488",
+          "segmentId": "m68821:para:fs-idm656277488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm254531968",
+          "segmentId": "m68821:para:fs-idm254531968"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm198314832",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm241856016",
+      "class": null,
+      "title": {
+        "segmentId": "m68821:title:fs-idm241856016-title",
+        "text": "Balancing Redox Equations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm648419616",
+          "segmentId": "m68821:para:fs-idm648419616"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm242275456",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm247937312",
+          "segmentId": "m68821:para:fs-idm247937312"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm248020368",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm237889808",
+          "segmentId": "m68821:para:fs-idm237889808"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm195795872",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m68821:item:fs-idm195795872-item-8"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm237087184",
+          "segmentId": "m68821:para:fs-idm237087184"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm248400096",
+          "title": {
+            "segmentId": "m68821:example-title:fs-idm248400096-title",
+            "text": "Balancing Equations for Redox Reactions in Acidic Solutions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm226590800",
+              "segmentId": "m68821:para:fs-idm226590800"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm213358176",
+              "segmentId": "m68821:para:fs-idm213358176",
+              "title": {
+                "segmentId": "m68821:para-title:fs-idm213358176-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm242229424",
+              "segmentId": "m68821:para:fs-idm242229424"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm242172592",
+              "segmentId": "m68821:para:fs-idm242172592",
+              "title": {
+                "segmentId": "m68821:para-title:fs-idm242172592-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm250893824",
+              "segmentId": "m68821:para:fs-idm250893824"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm648692784",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-6"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-7"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm648692784-item-8"
+                }
+              ]
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm243535968"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm642627152",
+              "title": {
+                "segmentId": "m68821:note-title:fs-idm642627152-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm250893824",
+                  "segmentId": "m68821:para:fs-idm250893824"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm246102992",
+          "title": {
+            "segmentId": "m68821:example-title:fs-idm246102992-title",
+            "text": "Balancing Equations for Redox Reactions in Basic Solutions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm251487248",
+              "segmentId": "m68821:para:fs-idm251487248"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm226600816",
+              "segmentId": "m68821:para:fs-idm226600816",
+              "title": {
+                "segmentId": "m68821:para-title:fs-idm226600816-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm251970912",
+              "segmentId": "m68821:para:fs-idm251970912",
+              "title": {
+                "segmentId": "m68821:para-title:fs-idm251970912-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm252040912",
+              "segmentId": "m68821:para:fs-idm252040912"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm237208384",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-6"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-7"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68821:item:fs-idm237208384-item-8"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idm252213568",
+              "title": {
+                "segmentId": "m68821:note-title:fs-idm252213568-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm252040912",
+                  "segmentId": "m68821:para:fs-idm252040912"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp210820912",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68821:title:fs-idp210820912-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp204073392",
+          "segmentId": "m68821:para:fs-idp204073392"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp48847296",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68821:title:fs-idp48847296-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp27088224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp110261008",
+                "segmentId": "m68821:problem:fs-idp110261008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp112003248",
+                "segmentId": "m68821:problem:fs-idp112003248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23289952",
+                "segmentId": "m68821:problem:fs-idp23289952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp105415712",
+                "segmentId": "m68821:problem:fs-idp105415712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp97092064",
+                "segmentId": "m68821:problem:fs-idp97092064"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp213605984",
+                "segmentId": "m68821:solution:fs-idp213605984"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp124081968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69480816",
+                "segmentId": "m68821:problem:fs-idp69480816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp274240608",
+                "segmentId": "m68821:problem:fs-idp274240608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56067616",
+                "segmentId": "m68821:problem:fs-idp56067616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm9876672",
+                "segmentId": "m68821:problem:fs-idm9876672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38335808",
+                "segmentId": "m68821:problem:fs-idp38335808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp6773632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp195522144",
+                "segmentId": "m68821:problem:fs-idp195522144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm78239696",
+                "segmentId": "m68821:problem:fs-idm78239696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp21453344",
+                "segmentId": "m68821:problem:fs-idp21453344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp153686480",
+                "segmentId": "m68821:problem:fs-idp153686480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88630560",
+                "segmentId": "m68821:problem:fs-idp88630560"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp381084496",
+                "segmentId": "m68821:solution:fs-idp381084496"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25311568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14444240",
+                "segmentId": "m68821:problem:fs-idp14444240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp231380992",
+                "segmentId": "m68821:problem:fs-idp231380992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84943424",
+                "segmentId": "m68821:problem:fs-idp84943424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp221563504",
+                "segmentId": "m68821:problem:fs-idp221563504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp35560976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp33762592",
+                "segmentId": "m68821:problem:fs-idp33762592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp68650128",
+                "segmentId": "m68821:solution:fs-idp68650128"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp171005680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp175985136",
+                "segmentId": "m68821:problem:fs-idp175985136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp2351504",
+                "segmentId": "m68821:problem:fs-idp2351504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp59703248",
+                "segmentId": "m68821:problem:fs-idp59703248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp243635296",
+                "segmentId": "m68821:problem:fs-idp243635296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp246809696",
+                "segmentId": "m68821:problem:fs-idp246809696"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp52202560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp256342592",
+                "segmentId": "m68821:problem:fs-idp256342592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp101562272",
+                "segmentId": "m68821:solution:fs-idp101562272"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp176626064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp155904912",
+                "segmentId": "m68821:problem:fs-idp155904912"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm101720816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm55354096",
+                "segmentId": "m68821:problem:fs-idm55354096"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp88267712",
+                "segmentId": "m68821:solution:fs-idp88267712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp22326976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp269088912",
+                "segmentId": "m68821:problem:fs-idp269088912"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68821:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68821:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68821:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68821:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp85536816",
+        "termSegmentId": "m68821:glossary-term:fs-idp85536816-term",
+        "definitionSegmentId": "m68821:glossary-def:fs-idp85536816-def"
+      },
+      {
+        "id": "fs-idp62148528",
+        "termSegmentId": "m68821:glossary-term:fs-idp62148528-term",
+        "definitionSegmentId": "m68821:glossary-def:fs-idp62148528-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

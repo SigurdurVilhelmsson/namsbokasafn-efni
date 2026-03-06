@@ -1,0 +1,1846 @@
+{
+  "moduleId": "m68773",
+  "title": {
+    "segmentId": "m68773:title:auto-1",
+    "text": "Lattice Structures in Crystalline Solids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a8b4c42a-9ddf-4669-9143-2c4feec1dbff",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the arrangement of atoms and ions in crystalline structures",
+        "Compute ionic radii using unit cell dimensions",
+        "Explain the use of X-ray diffraction measurements in determining crystalline structures"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp100544560",
+      "segmentId": "m68773:para:fs-idp100544560"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp80429552",
+      "class": null,
+      "title": {
+        "segmentId": "m68773:title:fs-idp80429552-title",
+        "text": "The Structures of Metals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp31452144",
+          "segmentId": "m68773:para:fs-idp31452144"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp31505600",
+      "class": null,
+      "title": {
+        "segmentId": "m68773:title:fs-idp31505600-title",
+        "text": "Unit Cells of Metals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm2181616",
+          "segmentId": "m68773:para:fs-idm2181616"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_UnitCell1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_UnitCell1-caption"
+          },
+          "media": {
+            "id": "fs-idp111181360",
+            "alt": "A diagram of two images is shown. In the first image, a cube with a sphere at each corner is shown. The cube is labeled “Unit cell” and the spheres at the corners are labeled “Lattice points.” The second image shows the same cube, but this time it is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.",
+            "src": "../../media/CNX_Chem_10_06_UnitCell1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp68860560",
+          "segmentId": "m68773:para:fs-idp68860560"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_SimpleCub1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_SimpleCub1-caption"
+          },
+          "media": {
+            "id": "fs-idp75647456",
+            "alt": "A diagram of three images is shown. In the first image, a cube with a sphere at each corner is shown. The spheres at the corners are circled. The second image shows the same cube, but this time the spheres at the corners are larger and shaded in. In the third image, the cube is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.",
+            "src": "../../media/CNX_Chem_10_06_SimpleCub1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm2044016",
+          "segmentId": "m68773:para:fs-idm2044016"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_SimpleCub2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_SimpleCub2-caption"
+          },
+          "media": {
+            "id": "fs-idp759920",
+            "alt": "A diagram of two images is shown. In the first image, eight stacked cubes that make up one large cube are shown. Three lines that run from top to bottom, front to back and sided to side in the middle of the structure are shaded darker than the rest of the lines. The second image shows the same set of cubes, but this time spheres at the end of each line are numbered; the horizontal line that goes left to right is labeled with a “2” and a “5,” the vertical line is labeled with a “1” and a “6” and the line that goes horizontally front to back is labeled with a “3” and a “4.”",
+            "src": "../../media/CNX_Chem_10_06_SimpleCub2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm15054992",
+          "segmentId": "m68773:para:fs-idm15054992"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_SimpleCub3",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_SimpleCub3-caption"
+          },
+          "media": {
+            "id": "fs-idm54718224",
+            "alt": "A diagram of two images is shown. In the first image, eight spheres are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The dots are labeled “Lattice points” while a label under the image reads “Simple cubic lattice cell.” The second image shows the portion of each sphere that lie inside the cube. The corners of the cube are shown with small circles labeled “Lattice points” and the phrase “8 corners” is written below the image.",
+            "src": "../../media/CNX_Chem_10_06_SimpleCub3.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm39353008",
+          "title": {
+            "segmentId": "m68773:example-title:fs-idm39353008-title",
+            "text": "Calculation of Atomic Radius and Density for Metals, Part 1"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp168483760",
+              "segmentId": "m68773:para:fs-idp168483760"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp31912208",
+              "segmentId": "m68773:para:fs-idp31912208"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27972848",
+              "segmentId": "m68773:para:fs-idp27972848"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm50199232",
+              "segmentId": "m68773:para:fs-idm50199232",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idm50199232-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69327632",
+              "segmentId": "m68773:para:fs-idp69327632"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp25499616",
+              "segmentId": "m68773:para:fs-idp25499616"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp79700432",
+              "segmentId": "m68773:para:fs-idp79700432"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm23492592",
+              "segmentId": "m68773:para:fs-idm23492592"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp24905488",
+              "segmentId": "m68773:para:fs-idp24905488"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp39660704",
+              "segmentId": "m68773:para:fs-idp39660704"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp83271488",
+              "segmentId": "m68773:para:fs-idp83271488",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp83271488-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp76470512",
+              "segmentId": "m68773:para:fs-idp76470512"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm6438944"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp81487792"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp113302880",
+              "title": {
+                "segmentId": "m68773:note-title:fs-idp113302880-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp76470512",
+                  "segmentId": "m68773:para:fs-idp76470512"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp589840",
+          "segmentId": "m68773:para:fs-idp589840"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_CubUntCll",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_CubUntCll-caption"
+          },
+          "media": {
+            "id": "fs-idp131181888",
+            "alt": "Three pairs of images are shown. The first three images are in a row and are labeled “Lattice point locations” while the second three images are in a row labeled “Cubic unit cells.” The first image in the top row shows a cube with black dots at each corner while the first image in the second row is composed of eight spheres that are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The name under this image reads “Simple cubic.” The second image in the top row shows a cube with black dots at each corner and a red dot in the center while the second image in the second row is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape. The name under this image reads “Body-centered cubic.” The third image in the top row shows a cube with black dots at each corner and red dots in the center of each face while the third image in the second row is composed of eight spheres that are stacked together to form a cube with six more spheres located in the center of each face of the cube. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic.”",
+            "src": "../../media/CNX_Chem_10_06_CubUntCll.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp78313376",
+          "segmentId": "m68773:para:fs-idp78313376"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_BdyCntrdCb",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_BdyCntrdCb-caption"
+          },
+          "media": {
+            "id": "fs-idp131155392",
+            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center while the second image is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape.  The name under this image reads “Body-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.",
+            "src": "../../media/CNX_Chem_10_06_BdyCntrdCb.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm23808480",
+          "segmentId": "m68773:para:fs-idm23808480"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30613264",
+          "segmentId": "m68773:para:fs-idp30613264"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_FcCntrdCbc",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_FcCntrdCbc-caption"
+          },
+          "media": {
+            "id": "fs-idp64550784",
+            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and red dots in the center of each face of the cube while the second image is composed of eight spheres that are stacked together to form a cube with six more spheres, one located on each face of the structure. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.",
+            "src": "../../media/CNX_Chem_10_06_FcCntrdCbc.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp4268832",
+          "segmentId": "m68773:para:fs-idp4268832"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_CbcCltPckd",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_CbcCltPckd-caption"
+          },
+          "media": {
+            "id": "fs-idp31732224",
+            "alt": "Three images are shown. In the first image, a side view shows a layer of blue spheres, labeled “C” stacked on top of, and sitting in between the gaps in a second layer that is composed of green spheres, labeled “B,” which are sitting atop a purple layer of spheres labeled “A.” A label below this image reads “Side view.” The second image shows a top view of the same layers of spheres, where the top layer is “C,” the second layer is “B” and the lowest layer is “C.” This image is labeled “Top view” and written under this is the phrase “Cubic closest packed structure.” The third image shows an upper view of the side of a cube composed of two sets of the repeating layers shown in the other images. The layers are arranged “C, B, A, C, B, A, C” and the phrase written under this image reads “Rotated view.”",
+            "src": "../../media/CNX_Chem_10_06_CbcCltPckd.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp178963488",
+          "segmentId": "m68773:para:fs-idp178963488"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_ClstPckng2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_ClstPckng2-caption"
+          },
+          "media": {
+            "id": "fs-idp9696",
+            "alt": "Two images are shown. The first image, labeled “Hexagonal closest packed,” shows seven green spheres arranged in a circular sheet lying atop another sheet that is the same except the spheres are purple. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating green and purple layers of spheres lie below the first pair. The second image shows seven blue spheres, labeled “Layer C,” arranged in a circular sheet laying atop another sheet, labeled “Layer B” that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating purple and then blue layers of spheres lie below the first pair. The purple layer is labeled “Layer A” and the phrase written below this image reads “Cubic closest packed.”",
+            "src": "../../media/CNX_Chem_10_06_ClstPckng2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp79703472",
+          "title": {
+            "segmentId": "m68773:example-title:fs-idp79703472-title",
+            "text": "Calculation of Atomic Radius and Density for Metals, Part 2"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp29827472",
+              "segmentId": "m68773:para:fs-idp29827472"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm25444464",
+              "segmentId": "m68773:para:fs-idm25444464"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm42411680",
+              "segmentId": "m68773:para:fs-idm42411680"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm41533968",
+              "segmentId": "m68773:para:fs-idm41533968",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idm41533968-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp82336960",
+              "segmentId": "m68773:para:fs-idp82336960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp36481888",
+              "segmentId": "m68773:para:fs-idp36481888"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp129403904",
+              "segmentId": "m68773:para:fs-idp129403904"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp191844336",
+              "segmentId": "m68773:para:fs-idp191844336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp178468672",
+              "segmentId": "m68773:para:fs-idp178468672"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp37113296",
+              "segmentId": "m68773:para:fs-idp37113296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp4016128",
+              "segmentId": "m68773:para:fs-idp4016128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27984704",
+              "segmentId": "m68773:para:fs-idp27984704",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp27984704-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp63739072",
+              "segmentId": "m68773:para:fs-idp63739072"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp100438656",
+              "segmentId": "m68773:para:fs-idp100438656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm27761408",
+              "segmentId": "m68773:para:fs-idm27761408"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp26872608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp94173200"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm35315152"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp137915824",
+              "title": {
+                "segmentId": "m68773:note-title:fs-idp137915824-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm27761408",
+                  "segmentId": "m68773:para:fs-idm27761408"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26628704",
+          "segmentId": "m68773:para:fs-idp26628704"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_GenUnitCll",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_GenUnitCll-caption"
+          },
+          "media": {
+            "id": "fs-idm117541936",
+            "alt": "A cube is shown where each corner has a black dot drawn on it. A circle in the bottom of the cube is composed of three double-ended arrows. The left top of this circle is labeled “alpha,” the top right is labeled “beta” and the bottom is labeled “gamma.” The bottom left corner of the cube is labeled “a” while the bottom of the back face is labeled “b” and the top, back, left corner is labeled “c.”",
+            "src": "../../media/CNX_Chem_10_06_GenUnitCll.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm92224",
+          "segmentId": "m68773:para:fs-idm92224"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_CrystalSys",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_CrystalSys-caption"
+          },
+          "media": {
+            "id": "fs-idp25979984",
+            "alt": "A table is composed of two columns and eight rows. The header row reads “System / Axes / Angles” and “Unit Cells .” The first column reads “Cubic, a equals b equals c, alpha equals beta equals gamma equals 90 degrees,” “Tetragonal, a equals b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Orthorhombic, a does not equal b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Monoclinic, a does not equal b does not equal c, alpha equals gamma equals 90 degrees, beta does not equal 90 degrees,” “Triclinic, a does not equal b does not equal c, alpha does not equal beta does not equal gamma does not equal 90 degrees,” “Hexagonal, a equals b does not equal c, alpha equals beta equals 90 degrees, gamma equals 120 degrees,” “Rhombohedral, a equals b equals c, alpha equals beta equals gamma does not equal 90 degrees.” The second column is composed of diagrams. The first set of diagrams in the first cell show a cube with spheres at each corner labeled “Simple,” a cube with spheres in each corner and on each face labeled “Face-centered” and a cube with spheres in each corner and one in the center labeled “Body-centered.” The second set of diagrams in the second cell show a vertical rectangle with spheres at each corner labeled “Simple” and a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered.” The third set of diagrams in the third cell show a vertical rectangle with spheres at each corner labeled “Simple,” a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered,” a vertical rectangle with spheres in each corner and one on the top and bottom faces labeled “Base-centered,” and a vertical rectangle with spheres in each corner and one on each face labeled “Face-centered.” The fourth set of diagrams in the fourth cell show a vertical rectangle with spheres at each corner that is slanted to one side labeled “Simple” and a vertical rectangle with spheres in each corner that is slanted to one side and has two spheres in the center is labeled “Body-centered.” The fifth diagrams in the fifth cell show a cube that is slanted with spheres at each corner while the sixth diagram in the sixth cell shows a pair of hexagonal rings that are connected together to form a six-sided shape with spheres at each corner. The seventh diagram in the seventh cell shows a rectangle that is slanted with spheres at each corner.",
+            "src": "../../media/CNX_Chem_10_06_CrystalSys.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp29462288",
+      "class": null,
+      "title": {
+        "segmentId": "m68773:title:fs-idp29462288-title",
+        "text": "The Structures of Ionic Crystals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp123644576",
+          "segmentId": "m68773:para:fs-idp123644576"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp192354256",
+          "segmentId": "m68773:para:fs-idp192354256"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp1330336",
+          "segmentId": "m68773:para:fs-idp1330336"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_TetOctHole",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_TetOctHole-caption"
+          },
+          "media": {
+            "id": "fs-idp26945552",
+            "alt": "An image shows a top-view of a layer of blue spheres arranged in a sheet lying atop another sheet that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. A third sheet composed of purple spheres lies at the bottom. The spaces created between the spheres in each layer are labeled “Octahedral holes” and “Tetrahedral holes.”",
+            "src": "../../media/CNX_Chem_10_06_TetOctHole.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp44872240",
+          "segmentId": "m68773:para:fs-idp44872240"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_IntIonst",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_IntIonst-caption"
+          },
+          "media": {
+            "id": "fs-idp191262336",
+            "alt": "A diagram of three images is shown. In the first image, eight stacked cubes, with purple spheres at each corner, that make up one large cube are shown. The bottom left cube is different. It has green spheres at each corner and has four orange and six light purple spheres located on the faces of the cube. Labels below this structure read “Tetrahedral hole” and “Cation radius is about 22.5 to 41.4 percent of the anion radius. In the second image, eight stacked cubes, with alternating orange and green spheres at each corner, make up one large cube that is shown. The bottom left cube has darker lines that connect the spheres together. Labels below this structure read “Octahedral hole” and “Cation radius is about 41.4 to 73.2 percent of the anion radius. In the third image, eight stacked cubes, with purple spheres at each corner and light purple spheres on their interior faces, make up one large cube that is shown. Labels below this structure read “Cubic hole” and “Cation radius is about 73.2 to 100 percent of the anion radius.”",
+            "src": "../../media/CNX_Chem_10_06_IntIonst.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp78541312",
+          "segmentId": "m68773:para:fs-idp78541312"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm32665648",
+          "title": {
+            "segmentId": "m68773:example-title:fs-idm32665648-title",
+            "text": "Occupancy of Tetrahedral Holes"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp35089808",
+              "segmentId": "m68773:para:fs-idp35089808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1180272",
+              "segmentId": "m68773:para:fs-idp1180272",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp1180272-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp135414368",
+              "segmentId": "m68773:para:fs-idp135414368",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp135414368-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm22840560",
+              "segmentId": "m68773:para:fs-idm22840560"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm14652080",
+              "title": {
+                "segmentId": "m68773:note-title:fs-idm14652080-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm22840560",
+                  "segmentId": "m68773:para:fs-idm22840560"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp29314000",
+          "segmentId": "m68773:para:fs-idp29314000"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp118444096",
+          "title": {
+            "segmentId": "m68773:example-title:fs-idp118444096-title",
+            "text": "Stoichiometry of Ionic Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm48293552",
+              "segmentId": "m68773:para:fs-idm48293552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm46506768",
+              "segmentId": "m68773:para:fs-idm46506768",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idm46506768-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp8140096",
+              "segmentId": "m68773:para:fs-idp8140096",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp8140096-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp30972928",
+              "segmentId": "m68773:para:fs-idp30972928"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp78151552",
+              "title": {
+                "segmentId": "m68773:note-title:fs-idp78151552-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp30972928",
+                  "segmentId": "m68773:para:fs-idp30972928"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm13402192",
+          "segmentId": "m68773:para:fs-idm13402192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm23769904",
+          "segmentId": "m68773:para:fs-idm23769904"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp5178368",
+      "class": null,
+      "title": {
+        "segmentId": "m68773:title:fs-idp5178368-title",
+        "text": "Unit Cells of Ionic Compounds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp68737616",
+          "segmentId": "m68773:para:fs-idp68737616"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm42504800",
+          "segmentId": "m68773:para:fs-idm42504800"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_07_CsClStrctr",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_07_CsClStrctr-caption"
+          },
+          "media": {
+            "id": "fs-idm89247392",
+            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one smaller sphere in the center. The name under this image reads “simple cubic structure.” The third image shows five horizontal layers of purple spheres with layers of smaller green spheres in between.",
+            "src": "../../media/CNX_Chem_10_07_CsClStrctr.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm48376560",
+          "segmentId": "m68773:para:fs-idm48376560"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp36716000",
+          "segmentId": "m68773:para:fs-idp36716000"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_07_NaClStrctr",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_07_NaClStrctr-caption"
+          },
+          "media": {
+            "id": "fs-idm94066176",
+            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one much larger sphere in the center. The name under this image reads “Body-centered simple cubic structure.” The third image shows seven horizontal layers of alternating purple and green spheres that are slightly offset with one another and form a large cube.",
+            "src": "../../media/CNX_Chem_10_07_NaClStrctr.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm15393568",
+          "segmentId": "m68773:para:fs-idm15393568"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_ZnSStrctr",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_ZnSStrctr-caption"
+          },
+          "media": {
+            "id": "fs-idp113309184",
+            "alt": "Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that form the corners of a cube with six other spheres located in the face of the cube. The spheres are connected to one another by lines. The name under this image reads “Z n S, face-centered unit cell.”",
+            "src": "../../media/CNX_Chem_10_06_ZnSStrctr.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm41755200",
+          "segmentId": "m68773:para:fs-idm41755200"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_07_CaF2Strctr",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_07_CaF2Strctr-caption"
+          },
+          "media": {
+            "id": "fs-idp104119168",
+            "alt": "Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight small green spheres that form the corners of a cube with six other small green spheres located in the faces of the cube. Eight larger green spheres are spaced inside the cube and all of the spheres are connect to one another by lines. The name under this image reads “C a F, subscript 2, face-centered unit cell.”",
+            "src": "../../media/CNX_Chem_10_07_CaF2Strctr.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp39715296",
+      "class": null,
+      "title": {
+        "segmentId": "m68773:title:fs-idp39715296-title",
+        "text": "Calculation of Ionic Radii"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp122188096",
+          "segmentId": "m68773:para:fs-idp122188096"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp160437296",
+          "title": {
+            "segmentId": "m68773:example-title:fs-idp160437296-title",
+            "text": "Calculation of Ionic Radii"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp187605664",
+              "segmentId": "m68773:para:fs-idp187605664"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp78068752",
+              "segmentId": "m68773:para:fs-idp78068752"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp75732016",
+              "segmentId": "m68773:para:fs-idp75732016",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp75732016-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp129708496",
+              "segmentId": "m68773:para:fs-idp129708496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp4732816",
+              "segmentId": "m68773:para:fs-idp4732816"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp179486080",
+              "segmentId": "m68773:para:fs-idp179486080"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm39172320",
+              "segmentId": "m68773:para:fs-idm39172320",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idm39172320-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm6422368",
+              "segmentId": "m68773:para:fs-idm6422368"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm1060368"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp113603824"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm21982336"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp173458848",
+              "title": {
+                "segmentId": "m68773:note-title:fs-idp173458848-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm6422368",
+                  "segmentId": "m68773:para:fs-idm6422368"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm38255968",
+          "segmentId": "m68773:para:fs-idm38255968"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp109859728",
+      "class": null,
+      "title": {
+        "segmentId": "m68773:title:fs-idp109859728-title",
+        "text": "X-Ray Crystallography"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp81646992",
+          "segmentId": "m68773:para:fs-idp81646992"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp191124480",
+          "segmentId": "m68773:para:fs-idp191124480"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_ConDec",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_ConDec-caption"
+          },
+          "media": {
+            "id": "fs-idp39628848",
+            "alt": "A pair of images is shown that has four sections. In the first section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves align with one another. The phrase below this reads “Constructive interference.” A right facing arrow leads from the first section to the second, which shows one larger sinusoidal curve that has higher and lower peaks and troughs. A section from the top of one curve to the top of the next curve is labeled “lambda” and the phrase below this reads “Maxima and minima reinforce.” In the second section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves do not align with one another. The phrase below this reads “Destructive interference.” A right facing arrow leads from the first section to the second, which shows one flat line. The phrase below this reads “Maxima and minima cancel.”",
+            "src": "../../media/CNX_Chem_10_06_ConDec.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp19420096",
+          "segmentId": "m68773:para:fs-idp19420096"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm77205344",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp173470256",
+          "segmentId": "m68773:para:fs-idp173470256"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_XRyDiff1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_XRyDiff1-caption"
+          },
+          "media": {
+            "id": "fs-idm39196256",
+            "alt": "Two similar figures are shown. The first figure, labeled “Constructive Interference,” shows two horizontal rows of seven black dots with a line passing through them. The fourth dots of each row have a vertical line connecting them. The distance between these rows is labeled “d.” A beam labeled “Incident beam” descends at an angle labeled “theta” until it hits the line connecting the fourth dots, after which a diffracted beam ascends at the same angle “theta.” A dotted line is drawn across the diffracted beam. The second figure, labeled “Destructive interference,” is very similar, except that the angles “theta” are far more acute, making the slopes of the beams more shallow.",
+            "src": "../../media/CNX_Chem_10_06_XRyDiff1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp27762640",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp26359616",
+              "segmentId": "m68773:para:fs-idp26359616"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp184548576",
+          "segmentId": "m68773:para:fs-idp184548576"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_07_XRyDiff2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_07_XRyDiff2-caption"
+          },
+          "media": {
+            "id": "fs-idp8694464",
+            "alt": "A diagram, labeled “a” shows a cube on the left with a channel bored into its right side labeled “X dash ray source.” A beam is leaving from this channel and traveling in a horizontal line toward an oval-shaped, short tube, labeled “Collimator to focus beam” and “X dash ray diffraction,” where it passes through a cube labeled “Crystalline material” and scatters onto a vertical sheet labeled “Imaging surface.” A second diagram, labeled “b,” shows a square sheet with a large dot in the center labeled “X dash ray beam,” that is surrounded by smaller dots arranged in rings and labeled “Diffracted X dash rays.”",
+            "src": "../../media/CNX_Chem_10_07_XRyDiff2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp19350688",
+          "title": {
+            "segmentId": "m68773:example-title:fs-idp19350688-title",
+            "text": "Using the Bragg Equation"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm68901456",
+              "segmentId": "m68773:para:fs-idm68901456"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm14041952",
+              "segmentId": "m68773:para:fs-idm14041952",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idm14041952-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp26891808",
+              "segmentId": "m68773:para:fs-idp26891808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp83773936",
+              "segmentId": "m68773:para:fs-idp83773936",
+              "title": {
+                "segmentId": "m68773:para-title:fs-idp83773936-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69715072",
+              "segmentId": "m68773:para:fs-idp69715072"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp31154560",
+              "title": {
+                "segmentId": "m68773:note-title:fs-idp31154560-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp69715072",
+                  "segmentId": "m68773:para:fs-idp69715072"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp2037904",
+          "class": "chemistry chemist-portrait",
+          "title": {
+            "segmentId": "m68773:note-title:fs-idp2037904-title",
+            "text": "X-ray Crystallographer Rosalind Franklin"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp1774112",
+              "segmentId": "m68773:para:fs-idp1774112"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_06_RFranklin",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68773:caption:CNX_Chem_10_06_RFranklin-caption"
+          },
+          "media": {
+            "id": "fs-idp53384576",
+            "alt": "An image shows a circular illustration with rings of dots that are blurred together.",
+            "src": "../../media/CNX_Chem_10_06_RFranklin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp26936448",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68773:title:fs-idp26936448-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp129498528",
+          "segmentId": "m68773:para:fs-idp129498528"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp29862416",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68773:title:fs-idp29862416-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68773:entry:auto-152",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp81672976",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68773:title:fs-idp81672976-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp28635312",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp129727632",
+                "segmentId": "m68773:problem:fs-idp129727632"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3953760",
+                "segmentId": "m68773:solution:fs-idp3953760"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp129665808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp53667248",
+                "segmentId": "m68773:problem:fs-idp53667248"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp83460192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26769504",
+                "segmentId": "m68773:problem:fs-idp26769504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp81841696",
+                "segmentId": "m68773:solution:fs-idp81841696"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26737392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm12826720",
+                "segmentId": "m68773:problem:fs-idm12826720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp101733424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm39315232",
+                "segmentId": "m68773:problem:fs-idm39315232"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29502000",
+                "segmentId": "m68773:solution:fs-idp29502000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm14554640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp131174592",
+                "segmentId": "m68773:problem:fs-idp131174592"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp53261968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31136736",
+                "segmentId": "m68773:problem:fs-idp31136736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp81385152",
+                "segmentId": "m68773:problem:fs-idp81385152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp123432224",
+                "segmentId": "m68773:problem:fs-idp123432224"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27663520",
+                "segmentId": "m68773:solution:fs-idm27663520"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp53519632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51988096",
+                "segmentId": "m68773:problem:fs-idp51988096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp45151232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm36404192",
+                "segmentId": "m68773:problem:fs-idm36404192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp29513328",
+                "segmentId": "m68773:problem:fs-idp29513328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm40747632",
+                "segmentId": "m68773:problem:fs-idm40747632"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp71746416",
+                "segmentId": "m68773:solution:fs-idp71746416"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm25352864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm39163760",
+                "segmentId": "m68773:problem:fs-idm39163760"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm95309216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp182731968",
+                "segmentId": "m68773:problem:fs-idp182731968"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm17016160",
+                "segmentId": "m68773:solution:fs-idm17016160"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp21112320",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2208224",
+                "segmentId": "m68773:problem:fs-idm2208224"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp171132368",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp122151152",
+                "segmentId": "m68773:problem:fs-idp122151152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm14571344",
+                "segmentId": "m68773:solution:fs-idm14571344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51480864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp72022784",
+                "segmentId": "m68773:problem:fs-idp72022784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp161152672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp63697616",
+                "segmentId": "m68773:problem:fs-idp63697616"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp179182976",
+                "segmentId": "m68773:solution:fs-idp179182976"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp78371824",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp83426304",
+                "segmentId": "m68773:problem:fs-idp83426304"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp122808832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm18156720",
+                "segmentId": "m68773:problem:fs-idm18156720"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56072368",
+                "segmentId": "m68773:solution:fs-idp56072368"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp80534576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp82484416",
+                "segmentId": "m68773:problem:fs-idp82484416"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp72582816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp129569040",
+                "segmentId": "m68773:problem:fs-idp129569040"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25475168",
+                "segmentId": "m68773:solution:fs-idm25475168"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp81080000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8709376",
+                "segmentId": "m68773:problem:fs-idp8709376"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp80497568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp109499216",
+                "segmentId": "m68773:problem:fs-idp109499216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp168557184",
+                "segmentId": "m68773:solution:fs-idp168557184"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp68651232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62730896",
+                "segmentId": "m68773:problem:fs-idp62730896"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp62207184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56178512",
+                "segmentId": "m68773:problem:fs-idp56178512"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp104149760",
+                "segmentId": "m68773:solution:fs-idp104149760"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp8185568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78579456",
+                "segmentId": "m68773:problem:fs-idp78579456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp182758880",
+                "segmentId": "m68773:problem:fs-idp182758880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp29502496",
+                "segmentId": "m68773:problem:fs-idp29502496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp178999856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2190992",
+                "segmentId": "m68773:problem:fs-idm2190992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp103838048",
+                "segmentId": "m68773:solution:fs-idp103838048"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp64501504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm6458944",
+                "segmentId": "m68773:problem:fs-idm6458944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp173090624",
+                "segmentId": "m68773:problem:fs-idp173090624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp69359568",
+                "segmentId": "m68773:problem:fs-idp69359568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp29573472",
+                "segmentId": "m68773:problem:fs-idp29573472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp191611584",
+                "segmentId": "m68773:problem:fs-idp191611584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp68785344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp173591264",
+                "segmentId": "m68773:problem:fs-idp173591264"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm32975984",
+                "segmentId": "m68773:solution:fs-idm32975984"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm23848128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp191523072",
+                "segmentId": "m68773:problem:fs-idp191523072"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp184563440",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp80463840",
+                "segmentId": "m68773:problem:fs-idp80463840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp76618960",
+                "segmentId": "m68773:solution:fs-idp76618960"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp31363760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp173611808",
+                "segmentId": "m68773:problem:fs-idp173611808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20057536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33749072",
+                "segmentId": "m68773:problem:fs-idm33749072"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp191525264",
+                "segmentId": "m68773:solution:fs-idp191525264"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68773:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68773:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68773:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68773:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp190835184",
+        "termSegmentId": "m68773:glossary-term:fs-idp190835184-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp190835184-def"
+      },
+      {
+        "id": "fs-idp178458288",
+        "termSegmentId": "m68773:glossary-term:fs-idp178458288-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp178458288-def"
+      },
+      {
+        "id": "fs-idp168577936",
+        "termSegmentId": "m68773:glossary-term:fs-idp168577936-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp168577936-def"
+      },
+      {
+        "id": "fs-idp29496752",
+        "termSegmentId": "m68773:glossary-term:fs-idp29496752-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp29496752-def"
+      },
+      {
+        "id": "fs-idp56136784",
+        "termSegmentId": "m68773:glossary-term:fs-idp56136784-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp56136784-def"
+      },
+      {
+        "id": "fs-idp160423360",
+        "termSegmentId": "m68773:glossary-term:fs-idp160423360-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp160423360-def"
+      },
+      {
+        "id": "fs-idp20057136",
+        "termSegmentId": "m68773:glossary-term:fs-idp20057136-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp20057136-def"
+      },
+      {
+        "id": "fs-idp82357824",
+        "termSegmentId": "m68773:glossary-term:fs-idp82357824-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp82357824-def"
+      },
+      {
+        "id": "fs-idp81517488",
+        "termSegmentId": "m68773:glossary-term:fs-idp81517488-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp81517488-def"
+      },
+      {
+        "id": "fs-idp33871280",
+        "termSegmentId": "m68773:glossary-term:fs-idp33871280-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp33871280-def"
+      },
+      {
+        "id": "fs-idp75734960",
+        "termSegmentId": "m68773:glossary-term:fs-idp75734960-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp75734960-def"
+      },
+      {
+        "id": "fs-idm28944640",
+        "termSegmentId": "m68773:glossary-term:fs-idm28944640-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idm28944640-def"
+      },
+      {
+        "id": "fs-idp179472016",
+        "termSegmentId": "m68773:glossary-term:fs-idp179472016-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp179472016-def"
+      },
+      {
+        "id": "fs-idm47773456",
+        "termSegmentId": "m68773:glossary-term:fs-idm47773456-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idm47773456-def"
+      },
+      {
+        "id": "fs-idm12811536",
+        "termSegmentId": "m68773:glossary-term:fs-idm12811536-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idm12811536-def"
+      },
+      {
+        "id": "fs-idm116347536",
+        "termSegmentId": "m68773:glossary-term:fs-idm116347536-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idm116347536-def"
+      },
+      {
+        "id": "fs-idp173597120",
+        "termSegmentId": "m68773:glossary-term:fs-idp173597120-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idp173597120-def"
+      },
+      {
+        "id": "fs-idm40748576",
+        "termSegmentId": "m68773:glossary-term:fs-idm40748576-term",
+        "definitionSegmentId": "m68773:glossary-def:fs-idm40748576-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm35041920",
+      "class": "scaled-down",
+      "alt": "An image of a cube is shown. A one-eighth section of a sphere is shown inside each corner of the cube and a full sphere is shown in the middle of the cube. A line stretched across the front face of the cube from the top left corner to the bottom right corner is labeled “4 r.” The left and bottom sides of the cube are labeled “a.”",
+      "src": "../../media/CNX_Chem_10_06_Ex100602_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

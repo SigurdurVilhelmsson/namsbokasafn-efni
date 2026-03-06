@@ -1,0 +1,996 @@
+{
+  "moduleId": "m68839",
+  "title": {
+    "segmentId": "m68839:title:auto-1",
+    "text": "Occurrence, Preparation, and Properties of Halogens"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8868d0bc-22c9-4dff-abcd-28ed4c40aae2",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the preparation, properties, and uses of halogens",
+        "Describe the properties, preparation, and uses of halogen compounds"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp88544400",
+      "segmentId": "m68839:para:fs-idp88544400"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm138184896",
+      "class": null,
+      "title": {
+        "segmentId": "m68839:title:fs-idm138184896-title",
+        "text": "Occurrence and Preparation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm11606784",
+          "segmentId": "m68839:para:fs-idm11606784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp21138960",
+          "segmentId": "m68839:para:fs-idp21138960"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm125605584",
+          "segmentId": "m68839:para:fs-idm125605584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm16552608",
+          "segmentId": "m68839:para:fs-idm16552608"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp985520",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30169840",
+          "segmentId": "m68839:para:fs-idp30169840"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm43776",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm62537296",
+          "segmentId": "m68839:para:fs-idm62537296"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp93873520",
+          "segmentId": "m68839:para:fs-idp93873520"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp148704",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm131647904",
+      "class": null,
+      "title": {
+        "segmentId": "m68839:title:fs-idm131647904-title",
+        "text": "Properties of the Halogens"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm48830656",
+          "segmentId": "m68839:para:fs-idm48830656"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_11_Gases",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68839:caption:CNX_Chem_18_11_Gases-caption"
+          },
+          "media": {
+            "id": "fs-idm254641200",
+            "alt": "Three sealed glass vials are shown. The left vial contains a pale yellow gas and a colorless liquid, the middle contains an orange gas and solid, and the right contains a purple gas and solid.",
+            "src": "../../media/CNX_Chem_18_11_Gases.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30544480",
+          "segmentId": "m68839:para:fs-idp30544480"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm83258560",
+          "segmentId": "m68839:para:fs-idm83258560"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp3652848",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm71841200",
+          "segmentId": "m68839:para:fs-idm71841200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm119894736",
+          "segmentId": "m68839:para:fs-idm119894736"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm27649840",
+          "segmentId": "m68839:para:fs-idm27649840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp102709104",
+          "segmentId": "m68839:para:fs-idp102709104"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp324416",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp93944416",
+          "segmentId": "m68839:para:fs-idp93944416"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp9758032",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm72954880",
+          "segmentId": "m68839:para:fs-idm72954880"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp3718640",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp74013808",
+          "segmentId": "m68839:para:fs-idp74013808"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp135635584",
+          "segmentId": "m68839:para:fs-idp135635584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm71712560",
+          "segmentId": "m68839:para:fs-idm71712560"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm13792496",
+          "segmentId": "m68839:para:fs-idm13792496"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp115160752",
+      "class": null,
+      "title": {
+        "segmentId": "m68839:title:fs-idp115160752-title",
+        "text": "Halides of the Representative Metals"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp13779456",
+          "segmentId": "m68839:para:fs-idp13779456"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp78956208",
+          "segmentId": "m68839:para:fs-idp78956208"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm99323744",
+          "segmentId": "m68839:para:fs-idm99323744"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp3643552",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp10322128",
+          "class": "unnumbered"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp18915520",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm131537424",
+              "segmentId": "m68839:para:fs-idm131537424"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm67915760",
+          "segmentId": "m68839:para:fs-idm67915760"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp10257376",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp111280",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm69190672",
+          "segmentId": "m68839:para:fs-idm69190672"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp10302192",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp79545648",
+          "segmentId": "m68839:para:fs-idp79545648"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp374880",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp509264",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm72711872",
+          "segmentId": "m68839:para:fs-idm72711872"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp10600384",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp8139904",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm12706304",
+          "segmentId": "m68839:para:fs-idm12706304"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_11_PercipHgI2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68839:caption:CNX_Chem_18_11_PercipHgI2-caption"
+          },
+          "media": {
+            "id": "fs-idm36383744",
+            "alt": "This figure shows three bottles and one bowl. All the bottles have lids. The first bottle is filled with a clear liquid. The second bottle is filled with a similarly clear liquid, but only about three-quarters of the way. The third bottle contains a red or pink liquid. The bowl contains a red or pink solid.",
+            "src": "../../media/CNX_Chem_18_11_PercipHgI2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm16247664",
+          "segmentId": "m68839:para:fs-idm16247664"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_11_SaltMine",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68839:caption:CNX_Chem_18_11_SaltMine-caption"
+          },
+          "media": {
+            "id": "fs-idm53776832",
+            "alt": "A photograph of a mine shaft is shown.",
+            "src": "../../media/CNX_Chem_18_11_SaltMine.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm71704144",
+      "class": null,
+      "title": {
+        "segmentId": "m68839:title:fs-idm71704144-title",
+        "text": "Interhalogens"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm123500464",
+          "segmentId": "m68839:para:fs-idm123500464"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_11_IF3IF5IF7",
+          "caption": {
+            "segmentId": "m68839:caption:CNX_Chem_18_11_IF3IF5IF7-caption"
+          },
+          "media": {
+            "id": "fs-idm69260048",
+            "alt": "Three ball-and-stick models are shown. The left structure, labeled, “I F subscript 3,” shows a purple atom labeled, “I,” bonded to three green atoms labeled, “F,” and with two lone pairs of electrons. The middle structure, labeled, “I F subscript 5,” shows a purple atom labeled, “I,” bonded to five green atoms labeled, “F,” and with one lone pair of electrons. The right image, labeled, “I F subscript 7,” shows a purple atom labeled, “I,” bonded to seven green atoms labeled, “F.”",
+            "src": "../../media/CNX_Chem_18_11_IF3IF5IF7.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm127930720",
+          "segmentId": "m68839:para:fs-idm127930720"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm19980944",
+          "segmentId": "m68839:para:fs-idm19980944"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm73111648",
+          "class": "top-titled",
+          "summary": "This table has four columns and seven rows. The first row is a header row, and it labels each column, “Y X,” “Y X subscript 3,” “Y X subscript 5,” “Y X subscript 7.” Under the “Y X” column are the following: C l F ( g ); B r F ( g ); B r C l ( g ); I F ( s ); I C l ( l ); I B r ( s ). Under the “Y X subscript 3” column are the following: C l F subscript 3 ( g ); B r F subscript 3 ( l ); a blank row; I F subscript 3 ( s ); I C l subscript 3 ( s ); and another blank row. Under the column “Y X subscript 5,” are the following: C l F subscript 5 ( g ); B r F subscript 5 ( l ); a blank row; I F subscript 5 ( l ); and two blank rows. Under the column “Y X subscript 7,” are three blank rows; I F subscript 7 ( g ); and two blank rows.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-47",
+                  "attributes": {
+                    "align": "center",
+                    "namest": "c1",
+                    "nameend": "c4"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm72031536",
+      "class": null,
+      "title": {
+        "segmentId": "m68839:title:fs-idm72031536-title",
+        "text": "Applications"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm83294896",
+          "segmentId": "m68839:para:fs-idm83294896"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm85520736",
+          "segmentId": "m68839:para:fs-idm85520736"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8160688",
+          "segmentId": "m68839:para:fs-idm8160688"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13468160",
+          "segmentId": "m68839:para:fs-idp13468160"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm132315280",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68839:title:fs-idm132315280-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm74920176",
+          "segmentId": "m68839:para:fs-idm74920176"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm60976288",
+          "segmentId": "m68839:para:fs-idm60976288"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm102561472",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68839:title:fs-idm102561472-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp137679248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm68520768",
+                "segmentId": "m68839:problem:fs-idm68520768"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm31814768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm79106512",
+                "segmentId": "m68839:problem:fs-idm79106512"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm32524784",
+                "segmentId": "m68839:solution:fs-idm32524784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp270945872",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm57042912",
+                "segmentId": "m68839:problem:fs-idm57042912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm180358240",
+                "segmentId": "m68839:problem:fs-idm180358240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32532304",
+                "segmentId": "m68839:problem:fs-idm32532304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm68463232",
+                "segmentId": "m68839:problem:fs-idm68463232"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm10171552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm131944960",
+                "segmentId": "m68839:problem:fs-idm131944960"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp140097424",
+                "segmentId": "m68839:solution:fs-idp140097424"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp86909200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm111948416",
+                "segmentId": "m68839:problem:fs-idm111948416"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm48157456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm46829600",
+                "segmentId": "m68839:problem:fs-idm46829600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp148345328",
+                "segmentId": "m68839:problem:fs-idp148345328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm75312560",
+                "segmentId": "m68839:problem:fs-idm75312560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp13664624",
+                "segmentId": "m68839:problem:fs-idp13664624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm44543392",
+                "segmentId": "m68839:problem:fs-idm44543392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm21806016",
+                "segmentId": "m68839:problem:fs-idm21806016"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm12332240",
+                "segmentId": "m68839:solution:fs-idm12332240"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp153262192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm97321248",
+                "segmentId": "m68839:problem:fs-idm97321248"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm70668928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm12062256",
+                "segmentId": "m68839:problem:fs-idm12062256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm74191232",
+                "segmentId": "m68839:problem:fs-idm74191232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm98077568",
+                "segmentId": "m68839:problem:fs-idm98077568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88311472",
+                "segmentId": "m68839:problem:fs-idp88311472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm40719824",
+                "segmentId": "m68839:problem:fs-idm40719824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm71958048",
+                "segmentId": "m68839:problem:fs-idm71958048"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11953184",
+                "segmentId": "m68839:solution:fs-idm11953184"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25457408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11618432",
+                "segmentId": "m68839:problem:fs-idm11618432"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm108582784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp21714080",
+                "segmentId": "m68839:problem:fs-idp21714080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm15093632",
+                "segmentId": "m68839:problem:fs-idm15093632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm117748240",
+                "segmentId": "m68839:problem:fs-idm117748240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm81323104",
+                "segmentId": "m68839:problem:fs-idm81323104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm101245584",
+                "segmentId": "m68839:problem:fs-idm101245584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm70985632",
+                "segmentId": "m68839:problem:fs-idm70985632"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm73092960",
+                "segmentId": "m68839:solution:fs-idm73092960"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm15587536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm88900800",
+                "segmentId": "m68839:problem:fs-idm88900800"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68839:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68839:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68839:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp93902688",
+      "class": null,
+      "alt": "This Lewis structure shows an iodine atom with one lone pair of electrons single bonded to five fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Square pyramidal.”",
+      "src": "../../media/CNX_Chem_18_11_Exercise4a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm152355840",
+      "class": null,
+      "alt": "This Lewis structure shows an iodine atom with three lone pairs of electrons single bonded to two iodine atoms, each of which has three lone pairs of electrons. The image is surrounded by brackets. A superscript negative sign appears outside the brackets. The image is labeled, “Linear.”",
+      "src": "../../media/CNX_Chem_18_11_Exercise4b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idm68548960",
+      "class": null,
+      "alt": "This Lewis structure shows a phosphorus atom single bonded to five chlorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Trigonal bipyramidal.”",
+      "src": "../../media/CNX_Chem_18_11_Exercise4c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idm88994048",
+      "class": null,
+      "alt": "This Lewis structure shows a selenium atom with one lone pair of electrons single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The image is labeled “Seesaw.”",
+      "src": "../../media/CNX_Chem_18_11_Exercise4d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm97424240",
+      "class": null,
+      "alt": "This Lewis structure shows a chlorine atom with two lone pairs of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “T-shaped.”",
+      "src": "../../media/CNX_Chem_18_11_Exercise4e_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

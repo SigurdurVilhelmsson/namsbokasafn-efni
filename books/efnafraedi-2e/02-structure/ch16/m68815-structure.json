@@ -1,0 +1,59 @@
+{
+  "moduleId": "m68815",
+  "title": {
+    "segmentId": "m68815:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "87dd32cb-8083-4283-9eb6-c6da06348095",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Spontaneity",
+        "Entropy",
+        "The Second and Third Laws of Thermodynamics",
+        "Free Energy"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_16_00_Geyser",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68815:caption:CNX_Chem_16_00_Geyser-caption"
+      },
+      "media": {
+        "id": "fs-idp257130400",
+        "alt": "A photograph shows an aerial view of buildings, trees and a large area clear of vegetation, above which rises a plume of steam.",
+        "src": "../../media/CNX_Chem_16_00_Geyser.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp234888272",
+      "segmentId": "m68815:para:fs-idp234888272"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68815:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68815:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68815:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68815:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

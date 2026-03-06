@@ -249,7 +249,7 @@ að forðast rugling við aðrar rithætti er aðeins fyrsti stafur táknsins
 hástafur. Til dæmis er Co táknið fyrir frumefnið kóbalt, en CO er táknið
 fyrir efnasambandið kolmónoxíð, sem inniheldur atóm frumefnanna kolefnis
 (C) og súrefnis (O). Öll þekkt frumefni og tákn þeirra eru í lotukerfinu
-í [#CNX_Chem_02_05_PerTable1] (einnig að finna í [viðauka A](#fs-idm379479808)).
+í [m68695#CNX_Chem_02_05_PerTable1] (einnig að finna í [viðauka A](#fs-idm379479808)).
 
 
 <!-- SEG:m68692:entry:auto-54 --> Nokkur algeng frumefni og tákn þeirra

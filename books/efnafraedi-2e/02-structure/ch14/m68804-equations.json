@@ -1,0 +1,275 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mtext>−log(</m:mtext><m:mn>1.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{=\\text{−log(}1.2\\, \\times \\, {{10}}^{{−3}})}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>−2.92</m:mn></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>2.92</m:mn></m:mrow></m:math>",
+    "latex": "{=\\text{−}{({−2.92})}=2.92}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.3</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=7.3}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>−7.3</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=−7.3}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7.3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.4em\"/><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>antilog of −7.3</m:mtext></m:mrow></m:math>",
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}={{10}}^{{−7.3}}\\, \\text{or}\\, {[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=\\text{antilog of −7.3}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>5</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mi>M</m:mi></m:mrow></m:math>",
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=5\\, \\times \\, {{10}}^{{−8}}\\, M}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mo stretchy=\"false\">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}[{\\text{H}}_{3}{\\text{O}}^{\\text{+}}]}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-32": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idp27819744": {
+    "mathml": "<m:math><m:mrow><m:mtext>pX</m:mtext><m:mo>=</m:mo><m:mtext>−log X</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{pX}=\\text{−log X}}",
+    "isBlock": true
+  },
+  "fs-idm104306928": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}}",
+    "isBlock": true
+  },
+  "fs-idm34387328": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−pH</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}={{10}}^{{\\text{−pH}}}}",
+    "isBlock": true
+  },
+  "fs-idp66748048": {
+    "mathml": "<m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{pOH}=\\text{−log}{[{{{\\text{OH}}}^{\\text{−}}}]}}",
+    "isBlock": true
+  },
+  "fs-idp102994080": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−pOH</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{[{{{\\text{OH}}}^{\\text{−}}}]}={{10}}^{{\\text{−pOH}}}}",
+    "isBlock": true
+  },
+  "fs-idp158230176": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub><m:mo>=</m:mo><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{K}_{\\text{w}}={[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}{[{{{\\text{OH}}}^{\\text{−}}}]}}",
+    "isBlock": true
+  },
+  "fs-idp50288944": {
+    "mathml": "<m:math><m:mrow><m:mtext>−log</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{−log}\\, {K}_{\\text{w}}=\\text{−log}{({{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}{[{{{\\text{OH}}}^{\\text{−}}}]}})}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}+\\text{−log}{[{{{\\text{OH}}}^{\\text{−}}}]}}",
+    "isBlock": true
+  },
+  "fs-idm65790448": {
+    "mathml": "<m:math><m:mrow><m:mtext>p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>pH</m:mtext><m:mo>+</m:mo><m:mtext>pOH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{p}{K}_{\\text{w}}=\\text{pH}+\\text{pOH}}",
+    "isBlock": true
+  },
+  "fs-idm26101984": {
+    "mathml": "<m:math><m:mrow><m:mn>14.00</m:mn><m:mo>=</m:mo><m:mtext>pH</m:mtext><m:mo>+</m:mo><m:mtext>pOH</m:mtext></m:mrow></m:math>",
+    "latex": "{14.00=\\text{pH}+\\text{pOH}}",
+    "isBlock": true
+  },
+  "fs-idp111835440": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>1.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>1</m:mn><m:msup><m:mn>0</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.00</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=\\text{−log}{({1.0\\, \\times \\, 1{0}^{{−7}}})}=7.00}",
+    "isBlock": true
+  },
+  "fs-idm65159184": {
+    "mathml": "<m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>1.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>1</m:mn><m:msup><m:mn>0</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.00</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pOH}=\\text{−log}{[{{{\\text{OH}}}^{\\text{−}}}]}=\\text{−log}{({1.0\\, \\times \\, 1{0}^{{−7}}})}=7.00}",
+    "isBlock": true
+  },
+  "fs-idm62771680": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>4.9</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>6.31</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=\\text{−log}{({4.9\\, \\times \\, {{10}}^{{−7}}})}=6.31}",
+    "isBlock": true
+  },
+  "fs-idm102114704": {
+    "mathml": "<m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>4.9</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>6.31</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pOH}=\\text{−log}{[{{{\\text{OH}}}^{\\text{−}}}]}=\\text{−log}{({4.9\\, \\times \\, {10}^{{−7}}})}=6.31}",
+    "isBlock": true
+  },
+  "fs-idm98702480": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}}",
+    "isBlock": true
+  },
+  "fs-idm79624528": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mtext>−log(</m:mtext><m:mn>1.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{=\\text{−log(}1.2\\, \\times \\, {{10}}^{{−3}})}",
+    "isBlock": true
+  },
+  "fs-idm7356256": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>−2.92</m:mn></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>2.92</m:mn></m:mrow></m:math>",
+    "latex": "{=\\text{−}{({−2.92})}=2.92}",
+    "isBlock": true
+  },
+  "fs-idm45568144": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⇌</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{CO}}}_{2}(aq)+{\\text{H}}_{2}\\text{O(}l)\\, ⇌\\, {\\text{H}}_{2}{{\\text{CO}}}_{3}(aq)}",
+    "isBlock": true
+  },
+  "fs-idm108531776": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.3</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=7.3}",
+    "isBlock": true
+  },
+  "fs-idm49363536": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>−7.3</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=−7.3}",
+    "isBlock": true
+  },
+  "fs-idp46442128": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7.3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.4em\"/><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>antilog of −7.3</m:mtext></m:mrow></m:math>",
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}={{10}}^{{−7.3}}\\, \\text{or}\\, {[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=\\text{antilog of −7.3}}",
+    "isBlock": true
+  },
+  "fs-idm58086272": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>5</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mi>M</m:mi></m:mrow></m:math>",
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=5\\, \\times \\, {{10}}^{{−8}}\\, M}",
+    "isBlock": true
+  },
+  "fs-idp66992000": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{O}(l)+{{\\text{CO}}}_{2}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}{{\\text{CO}}}_{3}(aq)}",
+    "isBlock": true
+  },
+  "fs-idm103550896": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⇌</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}{{\\text{CO}}}_{3}(aq)\\, ⇌\\, {\\text{H}}^{\\text{+}}(aq)+{{\\text{HCO}}}_{3}^{\\text{−}}(aq)}",
+    "isBlock": true
+  },
+  "fs-idp39536896": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{O}(l)+{{\\text{SO}}}_{3}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}{{\\text{SO}}}_{4}(aq)}",
+    "isBlock": true
+  },
+  "fs-idp62631392": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}{{\\text{SO}}}_{4}(aq)\\, \\longrightarrow \\, {\\text{H}}^{\\text{+}}(aq)+{{\\text{HSO}}}_{4}^{\\text{−}}(aq)}",
+    "isBlock": true
+  },
+  "fs-idp97197664": {
+    "mathml": "<m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mspace width=\"0.2em\"/><m:mn>0.0125</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pOH}=\\text{−log}{[{{{\\text{OH}}}^{\\text{−}}}]}=\\text{−log}\\, 0.0125}",
+    "isBlock": true
+  },
+  "fs-idp138082848": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mrow><m:mtext>−</m:mtext><m:mo>(</m:mo><m:mrow><m:mo>−</m:mo><m:mn>1.903</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1.903</m:mn></m:mrow></m:math>",
+    "latex": "{={\\text{−}({-1.903})}=1.903}",
+    "isBlock": true
+  },
+  "fs-idm77730624": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>+</m:mo><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pH}+\\text{pOH}=14.00}",
+    "isBlock": true
+  },
+  "fs-idm71245120": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mn>1.903</m:mn><m:mo>=</m:mo><m:mn>12.10</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{pH}=14.00-\\text{pOH}=14.00-1.903=12.10}",
+    "isBlock": true
+  }
+}

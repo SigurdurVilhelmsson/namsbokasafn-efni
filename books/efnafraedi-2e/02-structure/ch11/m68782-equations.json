@@ -1,0 +1,64 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{{C}_{\\text{g}}=k{P}_{\\text{g}}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "fs-idm57709472": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{{C}_{\\text{g}}=k{P}_{\\text{g}}}",
+    "isBlock": true
+  },
+  "fs-idm48683328": {
+    "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1.38</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>101.3</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kPa</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mn>1.36</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>kPa</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} {C}_{\\text{g}} & = & k{P}_{\\text{g}} \\\\ k & = & \\, \\frac{{{C}_{\\text{g}}}}{{{P}_{\\text{g}}}} \\\\ = & \\, \\frac{{1.38\\, \\times \\, {{10}}^{{−3}}\\, \\text{mol}\\, {\\text{L}}^{{−1}}}}{{101.3\\, \\text{kPa}}} \\\\ = & 1.36\\, \\times \\, {10}^{{−5}}\\, \\text{mol}\\, {\\text{L}}^{{−1}}\\, {\\text{kPa}}^{{−1}} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idp38123664": {
+    "mathml": "<m:math><m:mtable><m:mtr><m:mtd/><m:mtd columnalign=\"right\"><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd/><m:mtd/><m:mtd columnalign=\"left\"><m:mn>1.36</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>kPa</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>20.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kPa</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mn>2.82</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} {C}_{\\text{g}} & = & k{P}_{\\text{g}} \\\\ 1.36\\, \\times \\, {10}^{{−5}}\\, \\text{mol}\\, {\\text{L}}^{{−1}}\\, {\\text{kPa}}^{{−1}}\\, \\times \\, 20.7\\, \\text{kPa} \\\\ = & 2.82\\, \\times \\, {10}^{{−4}}\\, \\text{mol}\\, {\\text{L}}^{{−1}} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idm262307104": {
+    "mathml": "<m:math><m:mrow><m:mi>k</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol/L/1.00 atm</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol/L atm </m:mtext></m:mrow></m:math>",
+    "latex": "{k\\, =\\, \\frac{{{C}_{\\text{g}}}}{{{P}_{\\text{g}}}}\\, =\\, 1.2\\, \\times \\, {10}^{{−3}}\\, \\text{mol/L/1.00 atm}\\, =\\, 1.2\\, \\times \\, {10}^{{−3}}\\, \\text{mol/L atm}}",
+    "isBlock": true
+  },
+  "fs-idm270799504": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mi>g</m:mi></m:msub><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mi>k</m:mi><m:mi>P</m:mi></m:mrow><m:mrow><m:mi>g</m:mi></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>1.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol/L atm</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>0.17</m:mn><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/>\n<m:mn>2.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol/L</m:mtext></m:mrow></m:math>",
+    "latex": "{{C}_{g}\\, =\\, {{kP}}_{{g}}\\, =\\, (1.2\\, \\times \\, {10}^{{−3}}\\, \\text{mol/L atm})\\, (0.17\\, \\text{atm})\\, =\\, 2.0\\, \\times \\, {10}^{{−4}}\\, \\text{mol/L}}",
+    "isBlock": true
+  },
+  "fs-idm269049024": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>2.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol/L</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>32.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g/1 mol</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>1000</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mg/g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/>\n<m:mn>6.4</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mg/L</m:mtext><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{(2.0\\, \\times \\, {10}^{{−4}}\\, \\text{mol/L})\\, (32.0\\, \\text{g/1 mol})\\, (1000\\, \\text{mg/g})\\, =\\, 6.4\\, \\text{mg/L}.}",
+    "isBlock": true
+  }
+}

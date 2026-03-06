@@ -1,0 +1,65 @@
+{
+  "moduleId": "m68841",
+  "title": {
+    "segmentId": "m68841:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "ab46f6de-1fc7-46c5-93e2-7b8fc2159976",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Occurrence, Preparation, and Properties of Transition Metals and their Compounds",
+        "Coordination Chemistry of Transition Metals",
+        "Spectroscopic and Magnetic Properties of Coordination Compounds"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_19_00_CuOre",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68841:caption:CNX_Chem_19_00_CuOre-caption"
+      },
+      "media": {
+        "id": "fs-idm106313312",
+        "alt": "This figure contains three photos. The first is of a jade green mineral chunk with a darkened regions and a matte surface. The second is of a crystalline mineral chunk composed primarily of bright royal blue shiny crystals and some lighter blue crystalline regions. The third is of long red crystals.",
+        "src": "../../media/CNX_Chem_19_00_CuOre.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm115162288",
+      "segmentId": "m68841:para:fs-idm115162288"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm19578416",
+      "segmentId": "m68841:para:fs-idm19578416"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm99828800",
+      "segmentId": "m68841:para:fs-idm99828800"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68841:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68841:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68841:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

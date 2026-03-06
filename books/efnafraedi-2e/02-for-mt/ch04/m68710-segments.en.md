@@ -572,10 +572,10 @@ Check Your Learning
 Assign oxidation states to the elements whose atoms are underlined in each of the following compounds or ions:
 
 <!-- SEG:m68710:para:fs-idp34225952 -->
-(a) KNO~3~
+(a) K++N++O~3~
 
 <!-- SEG:m68710:para:fs-idp31054592 -->
-(b) AlH~3~
+(b) ++Al++H~3~
 
 <!-- SEG:m68710:para:fs-idm64889152 -->
 (c) [[MATH:43]]
@@ -599,7 +599,7 @@ Using the oxidation number concept, an all-inclusive definition of redox reactio
 Returning to the reactions used to introduce this topic, they may now both be identified as redox processes. In the reaction between sodium and chlorine to yield sodium chloride, sodium is oxidized (its oxidation number increases from 0 in Na to +1 in NaCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl~2~ to −1 in NaCl). In the reaction between molecular hydrogen and chlorine, hydrogen is oxidized (its oxidation number increases from 0 in H~2~ to +1 in HCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl~2~ to −1 in HCl).
 
 <!-- SEG:m68710:para:fs-idp112552240 -->
-Several subclasses of redox reactions are recognized, including __combustion reactions__ in which the reductant (also called a *fuel*) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [#CNX_Chem_04_00_Rocket] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
+Several subclasses of redox reactions are recognized, including __combustion reactions__ in which the reductant (also called a *fuel*) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [m68730#CNX_Chem_04_00_Rocket] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
 
 <!-- SEG:m68710:para:fs-idm5712736 -->
 Watch a brief [video](http://openstax.org/l/16hybridrocket) showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA. The first engines firing at[[BR]]3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.

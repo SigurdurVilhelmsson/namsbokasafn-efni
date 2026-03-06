@@ -1,0 +1,42 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{g}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>l</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{l}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{g}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>l</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{l}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>l</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{l}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>l</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{l}\\, \\longrightarrow \\, \\text{g}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{g}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>l</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{l}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>l</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{l}\\, \\longrightarrow \\, \\text{g}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{s}\\, \\longrightarrow \\, \\text{g}}"
+  }
+}

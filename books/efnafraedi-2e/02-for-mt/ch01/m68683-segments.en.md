@@ -419,7 +419,7 @@ Many medical laboratory tests are run using 5.0 μL blood serum. What is this vo
 If an aspirin tablet contains 325 mg aspirin, how many grams of aspirin does it contain?
 
 <!-- SEG:m68683:problem:fs-idm103945312 -->
-Use scientific (exponential) notation to express the following quantities in terms of the SI base units in [#fs-idm81346144]:
+Use scientific (exponential) notation to express the following quantities in terms of the SI base units in [m68674#fs-idm81346144]:
 
 <!-- SEG:m68683:problem:fs-idm287857616 -->
 (a) 0.13 g

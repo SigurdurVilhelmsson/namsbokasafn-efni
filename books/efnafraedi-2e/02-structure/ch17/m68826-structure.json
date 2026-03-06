@@ -1,0 +1,336 @@
+{
+  "moduleId": "m68826",
+  "title": {
+    "segmentId": "m68826:title:auto-1",
+    "text": "Corrosion"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "60dc4797-103d-4ebd-949a-5f51bffefec6",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define corrosion",
+        "List some of the methods used to prevent or slow corrosion"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm166398976",
+      "segmentId": "m68826:para:fs-idm166398976"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp45256160",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68826:note-title:fs-idp45256160-title",
+        "text": "Statue of Liberty: Changing Colors"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp5636784",
+          "segmentId": "m68826:para:fs-idp5636784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp86988528",
+          "segmentId": "m68826:para:fs-idp86988528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm141572624",
+          "segmentId": "m68826:para:fs-idm141572624"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_17_06_Statue",
+      "caption": {
+        "segmentId": "m68826:caption:CNX_Chem_17_06_Statue-caption"
+      },
+      "media": {
+        "id": "fs-idp102574544",
+        "alt": "This figure contains two photos of the Statue of Liberty. Photo a appears to be an antique photo which shows the original brown color of the copper covered statue. Photo b shows the blue-green appearance of the statue today. In both photos, the statue is shown atop a building, with a body of water in the background.",
+        "src": "../../media/CNX_Chem_17_06_Statue.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp12347424",
+      "segmentId": "m68826:para:fs-idp12347424"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp93947408",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp87448896",
+      "segmentId": "m68826:para:fs-idp87448896"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp84776000",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm55785904",
+      "segmentId": "m68826:para:fs-idm55785904"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_17_06_Rust",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68826:caption:CNX_Chem_17_06_Rust-caption"
+      },
+      "media": {
+        "id": "fs-idm172126992",
+        "alt": "A grey rectangle, labeled “iron,” is shown with thin purple layers, labeled “Paint layer,” at its upper and lower surfaces. A gap in the upper purple layer at the upper left of the diagram is labeled “Cathodic site.” A blue droplet labeled “water” is positioned on top of the gap. A curved arrow extends from a space above the droplet to the surface of the grey region and into the water droplet. The base of the arrow is labeled “O subscript 2” and the tip of the arrow is labeled “H subscript 2 O.” A gap to the right and on the bottom side of the grey region shows that some of the grey region is gone from the region beneath the purple layer. A water droplet covers this gap and extends into the open space in the grey rectangle. The label “F e superscript 2 positive” is at the center of the droplet. A curved arrow points from the edge of the grey area below to the label. A second curved arrow extends from the F e superscript 2 positive arrow to a rust brown chunk on the lower surface of the purple layer at the edge of the water droplet. A curved arrow extends from O subscript 2 outside the droplet into the droplet to the rust brown chunk. The grey region at the lower right portion of the diagram is labeled “Anodic site.” An arrow extends from the anodic site toward the cathodic site, which is labeled “e superscript negative.”",
+        "src": "../../media/CNX_Chem_17_06_Rust.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm124143584",
+      "segmentId": "m68826:para:fs-idm124143584"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm43841616",
+      "segmentId": "m68826:para:fs-idm43841616"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp11604000",
+      "segmentId": "m68826:para:fs-idp11604000"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm71940736",
+      "segmentId": "m68826:para:fs-idm71940736"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_17_06_Protect",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68826:caption:CNX_Chem_17_06_Protect-caption"
+      },
+      "media": {
+        "id": "fs-idm127994416",
+        "alt": "A diagram is shown of an underground storage tank system. Underground is a metal tank-like structure, labeled “Sacrificial anode” which is vertically oriented. M g is on the tank, followed by a right arrow, followed by M g superscript 2 plus. A black line extends upward from the center of the tank, but stays underground. A horizontal black line segment continues right underground. 2 e superscript minus is followed by an arrow that points right below the line segment. A vertical black line segment leads downward to a horizontal grey tank which is labeled “Object to be protected (cathode).” 2 e subscript minus is on the tank with an arrow pointing from it to the ground below the tank. Below that arrow is “2 H superscript plus plus O subscript 2 arrow 2 H subscript 2 O.”",
+        "src": "../../media/CNX_Chem_17_06_Protect.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm148527888",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68826:title:fs-idm148527888-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp43911248",
+          "segmentId": "m68826:para:fs-idp43911248"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp84837104",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68826:title:fs-idp84837104-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp66944528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm159094112",
+                "segmentId": "m68826:problem:fs-idm159094112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm106993264",
+                "segmentId": "m68826:problem:fs-idm106993264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm92240832",
+                "segmentId": "m68826:problem:fs-idm92240832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm152200272",
+                "segmentId": "m68826:problem:fs-idm152200272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm44327920",
+                "segmentId": "m68826:problem:fs-idm44327920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm150150768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm139683152",
+                "segmentId": "m68826:problem:fs-idm139683152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8394032",
+                "segmentId": "m68826:solution:fs-idm8394032"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm127027504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm128295744",
+                "segmentId": "m68826:problem:fs-idm128295744"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp47040832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm105694080",
+                "segmentId": "m68826:problem:fs-idm105694080"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm138515808",
+                "segmentId": "m68826:solution:fs-idm138515808"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44419248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1980032",
+                "segmentId": "m68826:problem:fs-idp1980032"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm80636048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp71069984",
+                "segmentId": "m68826:problem:fs-idp71069984"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm142282624",
+                "segmentId": "m68826:solution:fs-idm142282624"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68826:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68826:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68826:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp84325552",
+        "termSegmentId": "m68826:glossary-term:fs-idp84325552-term",
+        "definitionSegmentId": "m68826:glossary-def:fs-idp84325552-def"
+      },
+      {
+        "id": "fs-idm126591232",
+        "termSegmentId": "m68826:glossary-term:fs-idm126591232-term",
+        "definitionSegmentId": "m68826:glossary-def:fs-idm126591232-def"
+      },
+      {
+        "id": "fs-idm145050816",
+        "termSegmentId": "m68826:glossary-term:fs-idm145050816-term",
+        "definitionSegmentId": "m68826:glossary-def:fs-idm145050816-def"
+      },
+      {
+        "id": "fs-idm153016624",
+        "termSegmentId": "m68826:glossary-term:fs-idm153016624-term",
+        "definitionSegmentId": "m68826:glossary-def:fs-idm153016624-def"
+      },
+      {
+        "id": "fs-idm218315856",
+        "termSegmentId": "m68826:glossary-term:fs-idm218315856-term",
+        "definitionSegmentId": "m68826:glossary-def:fs-idm218315856-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

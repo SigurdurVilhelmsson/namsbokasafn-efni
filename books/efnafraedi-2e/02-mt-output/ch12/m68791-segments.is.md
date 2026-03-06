@@ -125,7 +125,7 @@ með tilliti til *A*.
 stigi efnahvarfs og hraðafasta
 
 
-<!-- SEG:m68791:para:fs-idm76041456 --> Sýndu að gögnin í [#CNX_Chem_12_01_KDataH2O2] geti
+<!-- SEG:m68791:para:fs-idm76041456 --> Sýndu að gögnin í [m68786#CNX_Chem_12_01_KDataH2O2] geti
 verið táknuð með fyrsta stigs hraðajöfnu með því að teikna graf af
 ln\[H~2~O~2~\] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot
 H~2~O~2~ út frá þessum gögnum.
@@ -134,7 +134,7 @@ H~2~O~2~ út frá þessum gögnum.
 <!-- SEG:m68791:para-title:fs-idm136711920-title --> Lausn
 
 
-<!-- SEG:m68791:para:fs-idm136711920 --> Gögnin úr [#CNX_Chem_12_01_KDataH2O2] eru sett fram í
+<!-- SEG:m68791:para:fs-idm136711920 --> Gögnin úr [m68786#CNX_Chem_12_01_KDataH2O2] eru sett fram í
 töflu hér að neðan og graf af ln\[H~2~O~2~\] er sýnt í [#CNX_Chem_12_04_FrstOKin].
 
 
@@ -843,7 +843,7 @@ varmasundrun ammoníaks á volframi (sjá [#fs-idm339943456])?
 (*t*~1/2~)** er sá tími sem það tekur helming af gefnu magni hvarfefnis
 að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur
 af þeim styrk hvarfefnisins sem eftir er. Ef við notum sundrun
-vetnisperoxíðs ([#CNX_Chem_12_01_KDataH2O2]) sem dæmi, sjáum við að á fyrsta
+vetnisperoxíðs ([m68786#CNX_Chem_12_01_KDataH2O2]) sem dæmi, sjáum við að á fyrsta
 helmingunartímanum (frá 0,00 klukkustundum til 6,00 klukkustunda)
 minnkar styrkur H~2~O~2~ úr 1,000 *M* í 0,500 *M*. Á öðrum
 helmingunartímanum (frá 6,00 klukkustundum til 12,00 klukkustunda)

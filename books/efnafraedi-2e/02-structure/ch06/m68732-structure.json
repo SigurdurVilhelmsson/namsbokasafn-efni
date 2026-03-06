@@ -1,0 +1,722 @@
+{
+  "moduleId": "m68732",
+  "title": {
+    "segmentId": "m68732:title:auto-1",
+    "text": "The Bohr Model"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7af45a79-c893-4289-9ecb-13be48b76983",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the Bohr model of the hydrogen atom",
+        "Use the Rydberg equation to calculate energies of light emitted or absorbed by hydrogen atoms"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp245260368",
+      "segmentId": "m68732:para:fs-idp245260368"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp150495696",
+      "segmentId": "m68732:para:fs-idp150495696"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp16889056",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp36624368",
+      "segmentId": "m68732:para:fs-idp36624368"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp5268000",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp27649904",
+      "segmentId": "m68732:para:fs-idp27649904"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp32100960",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp83979872",
+      "segmentId": "m68732:para:fs-idp83979872"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp54922944",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp154507488",
+      "segmentId": "m68732:para:fs-idp154507488"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm70061856",
+      "segmentId": "m68732:para:fs-idm70061856"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_06_02_Hlevels",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68732:caption:CNX_Chem_06_02_Hlevels-caption"
+      },
+      "media": {
+        "id": "fs-idp29515312",
+        "alt": "The figure includes a diagram representing the relative energy levels of the quantum numbers of the hydrogen atom. An upward pointing arrow at the left of the diagram is labeled, “E.” A grey shaded vertically-oriented rectangle is placed just right of the arrow. The rectangle height matches the arrow length. Colored horizontal line segments are placed inside the rectangle and labels are placed to the right of the box and arranged in a column with the heading, “Energy, n.” At the very base of the rectangle, a purple horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 2.18 times 10 superscript negative 18 J, 1.” At a level approximately three-quarters of the distance to the top of the rectangle, a blue horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 5.45 times 10 superscript negative 19 J, 2.” At a level approximately seven-eighths the distance from the base of the rectangle, a green horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 2.42 times 10 superscript negative 19 J, 3.” Just a short distance above this segment, an orange horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 1.36 times 10 superscript negative 19 J, 4.” Just above this segment, a red horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 8.72 times 10 superscript negative 20 J, 5.” Just a short distance above this segment, a brown horizontal line segment is drawn. A black line segment extends to the right to the label, “0.00 J, infinity.”",
+        "src": "../../media/CNX_Chem_06_02_Hlevels.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_06_02_BohrArrows",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68732:caption:CNX_Chem_06_02_BohrArrows-caption"
+      },
+      "media": {
+        "id": "fs-idp153188464",
+        "alt": "The figure includes a diagram representing the relative energy levels of the quantum numbers of the hydrogen atom. An upward pointing arrow at the left of the diagram is labeled, “E.” A grey shaded vertically oriented rectangle is placed just right of the arrow. The rectangle height matches the arrow length. Colored, horizontal line segments are placed inside the rectangle and labels are placed to the right of the box, arranged in a column with the heading, “Energy, n.” At the very base of the rectangle, a purple horizontal line segment is drawn. A black line extends to the right to the label, “1.” At a level approximately three-quarters of the distance to the top of the rectangle, a blue horizontal line segment is drawn. A black line extends to the right to the label, “2.” At a level approximately seven-eighths the distance from the base of the rectangle, a green horizontal line segment is drawn. A black line extends to the right to the label, “3.” Just a short distance above this segment, an orange horizontal line segment is drawn. A black line segment extends to the right to the label, “4.” Just above this segment, a red horizontal line segment is drawn. A black line extends to the right to the label, “5.” Just a short distance above this segment, a brown horizontal line segment is drawn. A black line extends to the right to the label, “infinity.” Arrows are drawn to depict energies of photons absorbed, as shown by upward pointing arrows on the left, or released as shown by downward pointing arrows on the right side of the diagram between the colored line segments. The label, “Electron moves to higher energy as light is absorbed,” is placed beneath the upward pointing arrows. Similarly, the label, “Electron moves to lower energy as light is emitted,” appears beneath the downward pointing arrows. Moving left to right across the diagram, arrows extend from one colored line segment to the next in the following order: purple to blue, purple to green, purple to orange, purple to red, purple to brown, blue to green, blue to orange, and blue to red. The arrows originating from the same colored segment are grouped together by close placement of the arrows. Similarly, the downward arrows follow in this sequence; brown to purple, red to purple, orange to purple, green to purple, blue to purple, red to blue, orange to blue, and green to blue. Arrows are again grouped by close placement according to the color at which the arrows end.",
+        "src": "../../media/CNX_Chem_06_02_BohrArrows.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp56080096",
+      "segmentId": "m68732:para:fs-idp56080096"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp15289616",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp4750336",
+      "segmentId": "m68732:para:fs-idp4750336"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp28555616",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp4874752",
+      "segmentId": "m68732:para:fs-idp4874752"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp200125968",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp245170224",
+      "segmentId": "m68732:para:fs-idp245170224"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp247735616",
+      "title": {
+        "segmentId": "m68732:example-title:fs-idp247735616-title",
+        "text": "Calculating the Energy of an Electron in a Bohr Orbit"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp89066240",
+          "segmentId": "m68732:para:fs-idp89066240"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp40593920",
+          "segmentId": "m68732:para:fs-idp40593920",
+          "title": {
+            "segmentId": "m68732:para-title:fs-idp40593920-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp4204032",
+          "segmentId": "m68732:para:fs-idp4204032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16142080",
+          "segmentId": "m68732:para:fs-idp16142080",
+          "title": {
+            "segmentId": "m68732:para-title:fs-idp16142080-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp107506336",
+          "segmentId": "m68732:para:fs-idp107506336"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp20573264"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp199624080"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp230904800",
+          "title": {
+            "segmentId": "m68732:note-title:fs-idp230904800-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp107506336",
+              "segmentId": "m68732:para:fs-idp107506336"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idp30549440",
+      "title": {
+        "segmentId": "m68732:example-title:fs-idp30549440-title",
+        "text": "Calculating the Energy and Wavelength of Electron Transitions in a One–electron (Bohr) System"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp19229392",
+          "segmentId": "m68732:para:fs-idp19229392"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp19670528",
+          "segmentId": "m68732:para:fs-idp19670528",
+          "title": {
+            "segmentId": "m68732:para-title:fs-idp19670528-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp160141472",
+          "segmentId": "m68732:para:fs-idp160141472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp193645760",
+          "segmentId": "m68732:para:fs-idp193645760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp93343568",
+          "segmentId": "m68732:para:fs-idp93343568",
+          "title": {
+            "segmentId": "m68732:para-title:fs-idp93343568-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165556464",
+          "segmentId": "m68732:para:fs-idp165556464"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp12132608"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp66123152"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp116600672"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp32209616"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp78342240"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp78060624"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp162376768",
+          "title": {
+            "segmentId": "m68732:note-title:fs-idp162376768-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp165556464",
+              "segmentId": "m68732:para:fs-idp165556464"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp45577312",
+      "segmentId": "m68732:para:fs-idp45577312"
+    },
+    {
+      "type": "list",
+      "id": "fs-idp161748720",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": "bullet",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68732:item:fs-idp161748720-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68732:item:fs-idp161748720-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68732:item:fs-idp161748720-item-3"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp152059472",
+      "segmentId": "m68732:para:fs-idp152059472"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp4059248",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68732:title:fs-idp4059248-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp119487440",
+          "segmentId": "m68732:para:fs-idp119487440"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp212850576",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68732:title:fs-idp212850576-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68732:entry:auto-47",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68732:entry:auto-48",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68732:entry:auto-49",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp53264832",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68732:title:fs-idp53264832-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp230795648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp163164256",
+                "segmentId": "m68732:problem:fs-idp163164256"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp105537776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp93301392",
+                "segmentId": "m68732:problem:fs-idp93301392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp53480224",
+                "segmentId": "m68732:solution:fs-idp53480224"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp5349488",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp44264704",
+                "segmentId": "m68732:problem:fs-idp44264704"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp21050416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp214119760",
+                "segmentId": "m68732:problem:fs-idp214119760"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp33145504",
+                "segmentId": "m68732:solution:fs-idp33145504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp205846816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp104480288",
+                "segmentId": "m68732:problem:fs-idp104480288"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp171106816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp9798640",
+                "segmentId": "m68732:problem:fs-idp9798640"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11581952",
+                "segmentId": "m68732:solution:fs-idm11581952"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm55982592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp45751328",
+                "segmentId": "m68732:problem:fs-idp45751328"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44268800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46960368",
+                "segmentId": "m68732:problem:fs-idp46960368"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16502336",
+                "segmentId": "m68732:solution:fs-idp16502336"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp48379808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp77326272",
+                "segmentId": "m68732:problem:fs-idp77326272"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm7154736",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp38515680",
+                "segmentId": "m68732:problem:fs-idp38515680"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29654288",
+                "segmentId": "m68732:solution:fs-idp29654288"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40494944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9017840",
+                "segmentId": "m68732:problem:fs-idm9017840"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp90797744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp166753856",
+                "segmentId": "m68732:problem:fs-idp166753856"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp254314096",
+                "segmentId": "m68732:solution:fs-idp254314096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp165455056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm890384",
+                "segmentId": "m68732:problem:fs-idm890384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp447984",
+                "segmentId": "m68732:problem:fs-idp447984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm61725056",
+                "segmentId": "m68732:problem:fs-idm61725056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40605856",
+                "segmentId": "m68732:problem:fs-idp40605856"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp24507936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp9802800",
+                "segmentId": "m68732:problem:fs-idp9802800"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43436080",
+                "segmentId": "m68732:solution:fs-idp43436080"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp97637648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm40536912",
+                "segmentId": "m68732:problem:fs-idm40536912"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68732:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68732:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68732:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm13416416",
+        "termSegmentId": "m68732:glossary-term:fs-idm13416416-term",
+        "definitionSegmentId": "m68732:glossary-def:fs-idm13416416-def"
+      },
+      {
+        "id": "fs-idp157417744",
+        "termSegmentId": "m68732:glossary-term:fs-idp157417744-term",
+        "definitionSegmentId": "m68732:glossary-def:fs-idp157417744-def"
+      },
+      {
+        "id": "fs-idp97866656",
+        "termSegmentId": "m68732:glossary-term:fs-idp97866656-term",
+        "definitionSegmentId": "m68732:glossary-def:fs-idp97866656-def"
+      },
+      {
+        "id": "fs-idp170832400",
+        "termSegmentId": "m68732:glossary-term:fs-idp170832400-term",
+        "definitionSegmentId": "m68732:glossary-def:fs-idp170832400-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-exercise",
+      "class": null,
+      "alt": "An image is shown with 5 rows. Across the top and bottom of the image is a scale that begins at 4000 angstroms at the left and extends to 740 angstroms at the far right. The top row is a continuous band of the visible spectrum, showing the colors from violet at the far left through indigo, blue, green, yellow, orange, and red at the far right. The second row, labeled, “N a,” shows the emission spectrum for the element sodium, which includes two narrow vertical bands in the blue range, two narrow bands in the yellow-green range, two narrow bands in the yellow range, and one narrow band in the orange range. The third row, labeled, “H,” shows the emission spectrum for hydrogen. This spectrum shows single bands in the violet, indigo, blue, and orange regions. The fourth row, labeled, “C a,” shows the emission spectrum for calcium. This spectrum shows bands in the following colors and frequencies; one violet, five indigo, one blue, two green, two yellow-green, one yellow, two yellow-orange, one orange, and one red. The fifth row, labeled, “H g,” shows the emission spectrum for mercury. This spectrum shows bands in the following colors and frequencies; two violet, one indigo, two blue, one green, two yellow, two orange, and one orange-red. It is important to note that each of the color bands for the emission spectra of the elements matches to a specific wavelength of light. Extending a vertical line from the bands to the scale above or below the diagram will match the band to a specific measurement on the scale.",
+      "src": "../../media/CNX_Chem_06_01_2spectra.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

@@ -50,7 +50,7 @@ In a simple calorimetry process, (a) heat, *q*, is transferred from the hot meta
 Heat Transfer between Substances at Different Temperatures
 
 <!-- SEG:m68726:para:fs-idm94530896 -->
-A 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron ([#fs-idm68801008]), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
+A 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron ([m68724#fs-idm68801008]), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
 
 <!-- SEG:m68726:para-title:fs-idp13157184-title -->
 Solution
@@ -125,7 +125,7 @@ Noting that since the metal was submerged in boiling water, its initial temperat
 Solving this:
 
 <!-- SEG:m68726:para:fs-idm61018208 -->
-Comparing this with values in [#fs-idm68801008], our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
+Comparing this with values in [m68724#fs-idm68801008], our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
 
 <!-- SEG:m68726:para-title:fs-idm42342688-title -->
 Check Your Learning

@@ -1,0 +1,1808 @@
+{
+  "moduleId": "m68854",
+  "title": {
+    "segmentId": "m68854:title:auto-1",
+    "text": "Radioactive Decay"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3952d555-bfd0-4527-94d4-17af3703ea9e",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Recognize common modes of radioactive decay",
+        "Identify common particles and energies involved in nuclear decay reactions",
+        "Write and balance nuclear decay equations",
+        "Calculate kinetic parameters for decay processes, including half-life",
+        "Describe common radiometric dating techniques"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp102942608",
+      "segmentId": "m68854:para:fs-idp102942608"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp202642016",
+      "segmentId": "m68854:para:fs-idp202642016"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_03_Reaction1",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68854:caption:CNX_Chem_21_03_Reaction1-caption"
+      },
+      "media": {
+        "id": "fs-idp2414480",
+        "alt": "A diagram shows two spheres composed of many smaller white and green spheres connected by a right-facing arrow with another, down-facing arrow coming off of it. The left sphere, labeled “Parent nucleus uranium dash 238” has two white and two green spheres that are near one another and are outlined in red. These two green and two white spheres are shown near the tip of the down-facing arrow and labeled “alpha particle.” The right sphere, labeled “Daughter nucleus radon dash 234,” looks the same as the left, but has a space for four smaller spheres outlined with a red dotted line.",
+        "src": "../../media/CNX_Chem_21_03_Reaction1.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm3582256",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp131961680",
+          "segmentId": "m68854:para:fs-idp131961680"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp242071680",
+      "class": null,
+      "title": {
+        "segmentId": "m68854:title:fs-idp242071680-title",
+        "text": "Types of Radioactive Decay"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp130339440",
+          "segmentId": "m68854:para:fs-idp130339440"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_03_Radiation",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68854:caption:CNX_Chem_21_03_Radiation-caption"
+          },
+          "media": {
+            "id": "fs-idp137790304",
+            "alt": "A diagram is shown. A gray box on the left side of the diagram labeled “Lead block” has a chamber hollowed out in the center in which a sample labeled “Radioactive substance” is placed. A blue beam is coming from the sample, out of the block, and passing through two horizontally placed plates that are labeled “Electrically charged plates.” The top plate is labeled with a positive sign while the bottom plate is labeled with a negative sign. The beam is shown to break into three beams as it passes in between the plates; in order from top to bottom, they are red, labeled “beta rays,” purple labeled “gamma rays” and green labeled “alpha rays.” The beams are shown to hit a vertical plate labeled “Photographic plate” on the far right side of the diagram.",
+            "src": "../../media/CNX_Chem_21_03_Radiation.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm41800032",
+          "segmentId": "m68854:para:fs-idm41800032"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp134926448",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp202270256",
+          "segmentId": "m68854:para:fs-idp202270256"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm2875904",
+          "segmentId": "m68854:para:fs-idm2875904"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm19827888",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp100287120",
+          "segmentId": "m68854:para:fs-idp100287120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8043424",
+          "segmentId": "m68854:para:fs-idp8043424"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp5264576",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp50313008",
+          "segmentId": "m68854:para:fs-idp50313008"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp18009856",
+          "segmentId": "m68854:para:fs-idp18009856"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm9404976",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp125268336",
+          "segmentId": "m68854:para:fs-idp125268336"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp123320528",
+          "segmentId": "m68854:para:fs-idp123320528"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm22074816",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm42894208",
+          "segmentId": "m68854:para:fs-idm42894208"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp132245344",
+          "segmentId": "m68854:para:fs-idp132245344"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_03_RadioDecay",
+          "caption": {
+            "segmentId": "m68854:caption:CNX_Chem_21_03_RadioDecay-caption"
+          },
+          "media": {
+            "id": "fs-idp47033488",
+            "alt": "This table has four columns and six rows. The first row is a header row and it labels each column: “Type,” “Nuclear equation,” “Representation,” and “Change in mass / atomic numbers.” Under the “Type” column are the following: “Alpha decay,” “Beta decay,” “Gamma decay,” “Positron emission,” and “Electron capture.” Under the “Nuclear equation” column are several equations. Each begins with superscript A stacked over subscript Z X. There is a large gap of space and then the following equations: “superscript 4 stacked over subscript 2 He plus superscript A minus 4 stacked over subscript Z minus 2 Y,” “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Z plus 1 Y,” “superscript 0 stacked over subscript 0 lowercase gamma plus superscript A stacked over subscript Z Y,” “superscript 0 stacked over subscript positive 1 e plus superscript A stacked over subscript Y minus 1 Y,” and “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Y minus 1 Y.” Under the “Representation” column are the five diagrams. The first shows a cluster of green and white spheres. A section of the cluster containing two white and two green spheres is outlined. There is a right-facing arrow pointing to a similar cluster as previously described, but the outlined section is missing. From the arrow another arrow branches off and points downward. The small cluster to two white spheres and two green spheres appear at the end of the arrow. The next diagram shows the same cluster of white and green spheres. One white sphere is outlined. There is a right-facing arrow to a similar cluster, but the white sphere is missing. Another arrow branches off the main arrow and a red sphere with a negative sign appears at the end. The next diagram shows the same cluster of white and green spheres. The whole sphere is outlined and labeled, “excited nuclear state.” There is a right-facing arrow that points to the same cluster. No spheres are missing. Off the main arrow is another arrow which points to a purple squiggle arrow which in turn points to a lowercase gamma. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Another arrow branches off the main arrow and a red sphere with a positive sign appears at the end. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Two other arrows branch off the main arrow. The first shows a gold sphere with a negative sign joining with the right-facing arrow. The secon points to a blue squiggle arrow labeled, “X-ray.” Under the “Change in mass / atomic numbers” column are the following: “A: decrease by 4, Z: decrease by 2,” “A: unchanged, Z: increased by 1,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: decrease by 1,” and “A: unchanged, Z: decrease by 1.”",
+            "src": "../../media/CNX_Chem_21_03_RadioDecay-e619.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp54313680",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68854:note-title:fs-idp54313680-title",
+            "text": "PET Scan"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp214075136",
+              "segmentId": "m68854:para:fs-idp214075136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp13254880",
+              "segmentId": "m68854:para:fs-idp13254880"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_03_PETScan",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68854:caption:CNX_Chem_21_03_PETScan-caption"
+          },
+          "media": {
+            "id": "fs-idp142995312",
+            "alt": "Three pictures are shown and labeled “a,” “b” and “c.” Picture a shows a machine with a round opening connected to an examination table. Picture b is a medical scan of the top of a person’s head and shows large patches of yellow and red and smaller patches of blue, green and purple highlighting. Picture c also shows a medical scan of the top of a person’s head, but this image is mostly colored in blue and purple with very small patches of red and yellow.",
+            "src": "../../media/CNX_Chem_21_03_PETScan.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp89067520",
+      "class": null,
+      "title": {
+        "segmentId": "m68854:title:fs-idp89067520-title",
+        "text": "Radioactive Decay Series"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp54304864",
+          "segmentId": "m68854:para:fs-idp54304864"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_03_DecayS",
+          "caption": {
+            "segmentId": "m68854:caption:CNX_Chem_21_03_DecayS-caption"
+          },
+          "media": {
+            "id": "fs-idm36645216",
+            "alt": "A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 122 to 148 in increments of 2. The y-axis is labeled “Atomic number” and has values of 80 to 92 in increments of 1. Two types of arrows are used in this graph to connect the points. Green arrows are labeled as “alpha decay” while red arrows are labeled “beta decay.” Beginning at the point “92, 146” that is labeled “superscript 238, U,” a green arrow connects this point to the second point “90, 144” which is labeled “superscript 234, T h.” A red arrow connect this to the third point “91, 143” which is labeled “superscript 234, P a” which is connected to the fourth point “92, 142” by a red arrow and which is labeled “superscript 234, U.” A green arrow leads to the next point, “90, 140” which is labeled “superscript 230, T h” and is connected by a green arrow to the sixth point, “88, 138” which is labeled “superscript 226, R a” that is in turn connected by a green arrow to the seventh point “86, 136” which is labeled “superscript 222, Ra.” The eighth point, at “84, 134” is labeled “superscript 218, P o” and has green arrows leading to it and away from it to the ninth point “82, 132” which is labeled “superscript 214, Pb” which is connected by a red arrow to the tenth point, “83, 131” which is labeled “superscript 214, B i.” A red arrow leads to the eleventh point “84, 130” which is labeled “superscript 214, P o” and a green arrow leads to the twelvth point “82, 128” which is labeled “superscript 210, P b.” A red arrow leads to the thirteenth point “83, 127” which is labeled “superscript 210, B i” and a red arrow leads to the fourteenth point “84, 126” which is labeled “superscript 210, P o.” The final point is labeled “82, 124” and “superscript 206, P b.”",
+            "src": "../../media/CNX_Chem_21_03_DecayS.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp38328768",
+      "class": null,
+      "title": {
+        "segmentId": "m68854:title:fs-idp38328768-title",
+        "text": "Radioactive Half-Lives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp135905344",
+          "segmentId": "m68854:para:fs-idp135905344"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm89252176",
+          "segmentId": "m68854:para:fs-idm89252176"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_03_HalfLife",
+          "caption": {
+            "segmentId": "m68854:caption:CNX_Chem_21_03_HalfLife-caption"
+          },
+          "media": {
+            "id": "fs-idm8344304",
+            "alt": "A graph, titled “C o dash 60 Decay,” is shown where the x-axis is labeled “C o dash 60 remaining, open parenthesis, percent sign, close parenthesis” and has values of 0 to 100 in increments of 25. The y-axis is labeled “Number of half dash lives” and has values of 0 to 5 in increments of 1. The first point, at “0, 100” has a circle filled with tiny dots drawn near it labeled “10 g.” The second point, at “1, 50” has a smaller circle filled with tiny dots drawn near it labeled “5 g.” The third point, at “2, 25” has a small circle filled with tiny dots drawn near it labeled “2.5 g.” The fourth point, at “3, 12.5” has a very small circle filled with tiny dots drawn near it labeled “1.25 g.” The last point, at “4, 6.35” has a tiny circle filled with tiny dots drawn near it labeled.”625 g.”",
+            "src": "../../media/CNX_Chem_21_03_HalfLife.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm84262544",
+          "segmentId": "m68854:para:fs-idm84262544"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16246080",
+          "segmentId": "m68854:para:fs-idp16246080"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm22877072",
+          "segmentId": "m68854:para:fs-idm22877072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp219598000",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp20089360",
+          "segmentId": "m68854:para:fs-idp20089360"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm4205984",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp61393104",
+          "segmentId": "m68854:para:fs-idp61393104"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp79391408",
+          "title": {
+            "segmentId": "m68854:example-title:fs-idp79391408-title",
+            "text": "Rates of Radioactive Decay"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm1797296",
+              "segmentId": "m68854:para:fs-idm1797296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp30533728",
+              "segmentId": "m68854:para:fs-idp30533728"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp132429920",
+              "segmentId": "m68854:para:fs-idp132429920"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp176097216",
+              "segmentId": "m68854:para:fs-idp176097216"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm68606544",
+              "segmentId": "m68854:para:fs-idm68606544",
+              "title": {
+                "segmentId": "m68854:para-title:fs-idm68606544-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp141655056",
+              "segmentId": "m68854:para:fs-idp141655056"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm19598048",
+              "segmentId": "m68854:para:fs-idm19598048"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp82234704",
+              "segmentId": "m68854:para:fs-idp82234704"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp7893440",
+              "segmentId": "m68854:para:fs-idp7893440",
+              "title": {
+                "segmentId": "m68854:para-title:fs-idp7893440-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp89371328",
+              "segmentId": "m68854:para:fs-idp89371328"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp17616736"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp16374688"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm21044912"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp123030208",
+              "title": {
+                "segmentId": "m68854:note-title:fs-idp123030208-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp89371328",
+                  "segmentId": "m68854:para:fs-idp89371328"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp76857680",
+          "segmentId": "m68854:para:fs-idp76857680"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp14399952",
+          "class": "top-titled",
+          "summary": "This table has four columns and six rows. The first row is a header row, and it labels each column: “Type,” “Decay Mode,” “Half-life,” and “Uses.” Under the “Type” column are the following: “F - 18,” “C o - 60,” “T c - 99 m,” “I – 131,” and “T l - 201.” Under the “Decay Mode” column are the following: “lowercase beta superscript positive sign decay,” “lowercase beta decay, lowercase gamma decay,” “lowercase gamma decay,” “lowercase beta decay,” and “electron capture.” Under the “Half-life” column are the following: 110. Minutes, 5.27 years, 8.01 hours, 8.02 days, and 73 hours. Under the “Uses” column are the following: PET scans; concern treatment; scans of brain, lung heart bone, etc.; thyroid scans and treatment; heart and arteries scans and cardiac stress tests.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-59",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c4",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp25396560",
+      "class": null,
+      "title": {
+        "segmentId": "m68854:title:fs-idp25396560-title",
+        "text": "Radiometric Dating"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm78225712",
+          "class": null,
+          "title": {
+            "segmentId": "m68854:title:fs-idm78225712-title",
+            "text": "Radioactive Dating Using Carbon-14"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm42065648",
+              "segmentId": "m68854:para:fs-idm42065648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp34827216",
+              "segmentId": "m68854:para:fs-idp34827216"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp25204496",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp25818480",
+              "segmentId": "m68854:para:fs-idp25818480"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp78792240",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm11295264",
+              "segmentId": "m68854:para:fs-idm11295264"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_21_03_CarbonDate",
+              "caption": {
+                "segmentId": "m68854:caption:CNX_Chem_21_03_CarbonDate-caption"
+              },
+              "media": {
+                "id": "fs-idp78510352",
+                "alt": "A diagram shows a cow standing on the ground next to a tree. In the upper left of the diagram, where the sky is represented, a single white sphere is shown and is connected by a downward-facing arrow to a larger sphere composed of green and white spheres that is labeled “superscript 14, subscript 7, N.” This structure is connected to three other structures by a right-facing arrow. Each of the three it points to are composed of green and white spheres and all have arrows pointing from them to the ground. The first of these is labeled “Trace, superscript 14, subscript 6, C,” the second is labeled “1 percent, superscript 13, subscript 6, C” and the last is labeled “99 percent, superscript 12, subscript 6, C.” Two downward-facing arrows that merge into one arrow lead from the cow and tree to the ground and are labeled “organism dies” and “superscript 14, subscript 6, C, decay begins.” A right-facing arrow labeled on top as “Decay” and on bottom as “Time” leads from this to a label of “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio decreased.” Near the top of the tree is a downward facing arrow with the label “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio is constant in living organisms” that leads to the last of the lower statements.",
+                "src": "../../media/CNX_Chem_21_03_CarbonDate.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm5880176",
+              "segmentId": "m68854:para:fs-idm5880176"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm68267632",
+              "class": "chemistry link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp134905456",
+                  "segmentId": "m68854:para:fs-idp134905456"
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "id": "fs-idm12472048",
+              "title": {
+                "segmentId": "m68854:example-title:fs-idm12472048-title",
+                "text": "Radiocarbon Dating"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm43395808",
+                  "segmentId": "m68854:para:fs-idm43395808"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp4802464",
+                  "segmentId": "m68854:para:fs-idp4802464",
+                  "title": {
+                    "segmentId": "m68854:para-title:fs-idp4802464-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp12237584",
+                  "segmentId": "m68854:para:fs-idp12237584"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm9913056",
+                  "segmentId": "m68854:para:fs-idm9913056"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp40647344",
+                  "segmentId": "m68854:para:fs-idp40647344"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp18759328",
+                  "segmentId": "m68854:para:fs-idp18759328"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp79158784",
+                  "segmentId": "m68854:para:fs-idp79158784",
+                  "title": {
+                    "segmentId": "m68854:para-title:fs-idp79158784-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp7472544",
+                  "segmentId": "m68854:para:fs-idp7472544"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm27840624"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm36556768"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm20370432"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp861216",
+                  "title": {
+                    "segmentId": "m68854:note-title:fs-idp861216-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idp7472544",
+                      "segmentId": "m68854:para:fs-idp7472544"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_21_03_DSScrolls",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68854:caption:CNX_Chem_21_03_DSScrolls-caption"
+              },
+              "media": {
+                "id": "fs-idm64119536",
+                "alt": "A photograph of six pages of ragged-edged paper covered in writing are shown.",
+                "src": "../../media/CNX_Chem_21_03_DSScrolls.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp143543968",
+              "segmentId": "m68854:para:fs-idp143543968"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp103641152",
+          "class": null,
+          "title": {
+            "segmentId": "m68854:title:fs-idp103641152-title",
+            "text": "Radioactive Dating Using Nuclides Other than Carbon-14"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp55701552",
+              "segmentId": "m68854:para:fs-idp55701552"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp133528864",
+              "title": {
+                "segmentId": "m68854:example-title:fs-idp133528864-title",
+                "text": "Radioactive Dating of Rocks"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm84298880",
+                  "segmentId": "m68854:para:fs-idm84298880"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp15526736",
+                  "segmentId": "m68854:para:fs-idp15526736",
+                  "title": {
+                    "segmentId": "m68854:para-title:fs-idp15526736-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp16405632",
+                  "segmentId": "m68854:para:fs-idp16405632"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp25854368",
+                  "segmentId": "m68854:para:fs-idp25854368"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp142687024",
+                  "segmentId": "m68854:para:fs-idp142687024"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm1352480",
+                  "segmentId": "m68854:para:fs-idm1352480"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp188052736",
+                  "segmentId": "m68854:para:fs-idp188052736"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp178175456",
+                  "segmentId": "m68854:para:fs-idp178175456"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp46289376",
+                  "segmentId": "m68854:para:fs-idp46289376"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp8533088",
+                  "segmentId": "m68854:para:fs-idp8533088"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp219511184",
+                  "segmentId": "m68854:para:fs-idp219511184",
+                  "title": {
+                    "segmentId": "m68854:para-title:fs-idp219511184-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm14245664",
+                  "segmentId": "m68854:para:fs-idm14245664"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp167610144"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp25663280"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp51369808"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm43256560"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp138305008"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp171891856"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp66566112",
+                  "title": {
+                    "segmentId": "m68854:note-title:fs-idp66566112-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm14245664",
+                      "segmentId": "m68854:para:fs-idm14245664"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm40273488",
+          "segmentId": "m68854:para:fs-idm40273488"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm64039712",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68854:title:fs-idm64039712-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp119462816",
+          "segmentId": "m68854:para:fs-idp119462816"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm2719024",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68854:title:fs-idm2719024-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-131",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-132",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp25531728",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68854:title:fs-idp25531728-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp13838752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10223552",
+                "segmentId": "m68854:problem:fs-idm10223552"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33283872",
+                "segmentId": "m68854:solution:fs-idm33283872"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp81671360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2773856",
+                "segmentId": "m68854:problem:fs-idm2773856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137675104",
+                "segmentId": "m68854:problem:fs-idp137675104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36662256",
+                "segmentId": "m68854:problem:fs-idp36662256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp5160032",
+                "segmentId": "m68854:problem:fs-idp5160032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp138318864",
+                "segmentId": "m68854:problem:fs-idp138318864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp30872480",
+                "segmentId": "m68854:problem:fs-idp30872480"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50277600",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp143657184",
+                "segmentId": "m68854:problem:fs-idp143657184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm43346352",
+                "segmentId": "m68854:problem:fs-idm43346352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp177484800",
+                "segmentId": "m68854:problem:fs-idp177484800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp122950864",
+                "segmentId": "m68854:problem:fs-idp122950864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27170272",
+                "segmentId": "m68854:solution:fs-idm27170272"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39924368",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp190856048",
+                "segmentId": "m68854:problem:fs-idp190856048"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp102836704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26162912",
+                "segmentId": "m68854:problem:fs-idp26162912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp123519008",
+                "segmentId": "m68854:solution:fs-idp123519008"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp1698768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp142495840",
+                "segmentId": "m68854:problem:fs-idp142495840"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16009760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp201795280",
+                "segmentId": "m68854:problem:fs-idp201795280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34995296",
+                "segmentId": "m68854:problem:fs-idp34995296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp134866720",
+                "segmentId": "m68854:problem:fs-idp134866720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1557216",
+                "segmentId": "m68854:problem:fs-idp1557216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8619408",
+                "segmentId": "m68854:solution:fs-idm8619408"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm82641568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp76332848",
+                "segmentId": "m68854:problem:fs-idp76332848"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp138950912",
+                "segmentId": "m68854:problem:fs-idp138950912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp143538880",
+                "segmentId": "m68854:problem:fs-idp143538880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp134068000",
+                "segmentId": "m68854:problem:fs-idp134068000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137322448",
+                "segmentId": "m68854:problem:fs-idp137322448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp179430752",
+                "segmentId": "m68854:problem:fs-idp179430752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp54341232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5650336",
+                "segmentId": "m68854:problem:fs-idm5650336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp92587472",
+                "segmentId": "m68854:problem:fs-idp92587472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm20106176",
+                "segmentId": "m68854:problem:fs-idm20106176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22275216",
+                "segmentId": "m68854:problem:fs-idm22275216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137311888",
+                "segmentId": "m68854:problem:fs-idp137311888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137045664",
+                "segmentId": "m68854:problem:fs-idp137045664"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31409728",
+                "segmentId": "m68854:solution:fs-idm31409728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp53072816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10180544",
+                "segmentId": "m68854:problem:fs-idp10180544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm24027360",
+                "segmentId": "m68854:problem:fs-idm24027360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7080592",
+                "segmentId": "m68854:problem:fs-idp7080592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm35115440",
+                "segmentId": "m68854:problem:fs-idm35115440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm75261408",
+                "segmentId": "m68854:problem:fs-idm75261408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17960336",
+                "segmentId": "m68854:problem:fs-idp17960336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7359744",
+                "segmentId": "m68854:problem:fs-idp7359744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm31917904",
+                "segmentId": "m68854:problem:fs-idm31917904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp48794032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp176277168",
+                "segmentId": "m68854:problem:fs-idp176277168"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp187827136",
+                "segmentId": "m68854:solution:fs-idp187827136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14930000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25125904",
+                "segmentId": "m68854:problem:fs-idp25125904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp87827184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43525136",
+                "segmentId": "m68854:problem:fs-idm43525136"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25513776",
+                "segmentId": "m68854:solution:fs-idp25513776"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm20282880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37225376",
+                "segmentId": "m68854:problem:fs-idm37225376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp172348128",
+                "segmentId": "m68854:problem:fs-idp172348128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm38933040",
+                "segmentId": "m68854:problem:fs-idm38933040"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18159360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm3633744",
+                "segmentId": "m68854:problem:fs-idm3633744"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp213478640",
+                "segmentId": "m68854:solution:fs-idp213478640"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp160912384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33356592",
+                "segmentId": "m68854:problem:fs-idm33356592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp143445632",
+                "segmentId": "m68854:problem:fs-idp143445632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp78376656",
+                "segmentId": "m68854:problem:fs-idp78376656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp211861968",
+                "segmentId": "m68854:problem:fs-idp211861968"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp120962800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43874912",
+                "segmentId": "m68854:problem:fs-idm43874912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp2575712",
+                "segmentId": "m68854:solution:fs-idp2575712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp22881184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126089680",
+                "segmentId": "m68854:problem:fs-idp126089680"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20502256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp219506992",
+                "segmentId": "m68854:problem:fs-idp219506992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp35524320",
+                "segmentId": "m68854:solution:fs-idp35524320"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp75965808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp53369552",
+                "segmentId": "m68854:problem:fs-idp53369552"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp60953824",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp125426976",
+                "segmentId": "m68854:problem:fs-idp125426976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22718704",
+                "segmentId": "m68854:problem:fs-idm22718704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75993408",
+                "segmentId": "m68854:problem:fs-idp75993408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp58704368",
+                "segmentId": "m68854:solution:fs-idp58704368"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm70032656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp133778576",
+                "segmentId": "m68854:problem:fs-idp133778576"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp226288768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp165416288",
+                "segmentId": "m68854:problem:fs-idp165416288"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp172871712",
+                "segmentId": "m68854:solution:fs-idp172871712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp172415648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp217024288",
+                "segmentId": "m68854:problem:fs-idp217024288"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp168859936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp71110896",
+                "segmentId": "m68854:problem:fs-idp71110896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp103673504",
+                "segmentId": "m68854:solution:fs-idp103673504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50360016",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp131958896",
+                "segmentId": "m68854:problem:fs-idp131958896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp31169120",
+                "segmentId": "m68854:problem:fs-idp31169120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp179184448",
+                "segmentId": "m68854:problem:fs-idp179184448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp92569456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm28111776",
+                "segmentId": "m68854:problem:fs-idm28111776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm52915712",
+                "segmentId": "m68854:problem:fs-idm52915712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp90956192",
+                "segmentId": "m68854:problem:fs-idp90956192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18279664",
+                "segmentId": "m68854:problem:fs-idp18279664"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp138334608",
+                "segmentId": "m68854:problem:fs-idp138334608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp82217344",
+                "segmentId": "m68854:solution:fs-idp82217344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm23721392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm29139968",
+                "segmentId": "m68854:problem:fs-idm29139968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp133484688",
+                "segmentId": "m68854:problem:fs-idp133484688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp136801104",
+                "segmentId": "m68854:problem:fs-idp136801104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp77337360",
+                "segmentId": "m68854:problem:fs-idp77337360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm29267360",
+                "segmentId": "m68854:problem:fs-idm29267360"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68854:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68854:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68854:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68854:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68854:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68854:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm27965808",
+        "termSegmentId": "m68854:glossary-term:fs-idm27965808-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idm27965808-def"
+      },
+      {
+        "id": "fs-idp69613952",
+        "termSegmentId": "m68854:glossary-term:fs-idp69613952-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp69613952-def"
+      },
+      {
+        "id": "fs-idp69591216",
+        "termSegmentId": "m68854:glossary-term:fs-idp69591216-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp69591216-def"
+      },
+      {
+        "id": "fs-idm684928",
+        "termSegmentId": "m68854:glossary-term:fs-idm684928-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idm684928-def"
+      },
+      {
+        "id": "fs-idm27366640",
+        "termSegmentId": "m68854:glossary-term:fs-idm27366640-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idm27366640-def"
+      },
+      {
+        "id": "fs-idp172569488",
+        "termSegmentId": "m68854:glossary-term:fs-idp172569488-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp172569488-def"
+      },
+      {
+        "id": "fs-idp55578096",
+        "termSegmentId": "m68854:glossary-term:fs-idp55578096-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp55578096-def"
+      },
+      {
+        "id": "fs-idm24356480",
+        "termSegmentId": "m68854:glossary-term:fs-idm24356480-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idm24356480-def"
+      },
+      {
+        "id": "fs-idp79161920",
+        "termSegmentId": "m68854:glossary-term:fs-idp79161920-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp79161920-def"
+      },
+      {
+        "id": "fs-idp172690976",
+        "termSegmentId": "m68854:glossary-term:fs-idp172690976-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp172690976-def"
+      },
+      {
+        "id": "fs-idp10803760",
+        "termSegmentId": "m68854:glossary-term:fs-idp10803760-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp10803760-def"
+      },
+      {
+        "id": "fs-idp171940160",
+        "termSegmentId": "m68854:glossary-term:fs-idp171940160-term",
+        "definitionSegmentId": "m68854:glossary-def:fs-idp171940160-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

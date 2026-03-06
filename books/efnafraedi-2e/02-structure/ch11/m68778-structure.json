@@ -1,0 +1,710 @@
+{
+  "moduleId": "m68778",
+  "title": {
+    "segmentId": "m68778:title:auto-1",
+    "text": "The Dissolution Process"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c6004026-5f7c-4474-81ca-2b52ef029d8b",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the basic properties of solutions and how they form",
+        "Predict whether a given mixture will yield a solution based on molecular properties of its components",
+        "Explain why some solutions either produce or absorb heat when they form"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp27309280",
+      "segmentId": "m68778:para:fs-idp27309280"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp4046912",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm1696368",
+      "segmentId": "m68778:para:fs-idm1696368"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm75208096",
+      "segmentId": "m68778:para:fs-idm75208096"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_11_01_K2Cr2O7_1",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68778:caption:CNX_Chem_11_01_K2Cr2O7_1-caption"
+      },
+      "media": {
+        "id": "fs-idm31373696",
+        "alt": "The first photo shows a small mound of an orange crystalline solid. There is a right-facing arrow. The second photo shows a translucent, colorless liquid in a clear container. There is a right-facing arrow. The third photo shows a translucent orange liquid in a clear, covered container.",
+        "src": "../../media/CNX_Chem_11_01_K2Cr2O7_1.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm25804880",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm32498064",
+      "segmentId": "m68778:para:fs-idm32498064"
+    },
+    {
+      "type": "note",
+      "id": "fs-idm80955760",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm40076400",
+          "segmentId": "m68778:para:fs-idm40076400"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm72001728",
+      "segmentId": "m68778:para:fs-idm72001728"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp13681744",
+      "class": "top-titled",
+      "summary": "The table provides solutes and solvents for a variety of solutions. In air, the solute is O subscript 2 g and the solvent is N subscript 2 g. In soft drinks, the solute is C O subscript 2 g and the solvent is H subscript 2 O l. In hydrogen in palladium, H subscript 2 g is the solute and P d s is the solvent. In rubbing alcohol, H subscript 2 O l is the solute and C subscript 3 H subscript 8 O l or 2 – propanol is the solvent. In saltwater, N a C l s is the solute and H subscript 2 O l is the solvent. In brass, Z n s is the solute and C u s is the solvent.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-13",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c3",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68778:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm100903680",
+      "segmentId": "m68778:para:fs-idm100903680"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm73911888",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": "bullet",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68778:item:fs-idm73911888-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68778:item:fs-idm73911888-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68778:item:fs-idm73911888-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m68778:item:fs-idm73911888-item-4"
+        },
+        {
+          "id": null,
+          "segmentId": "m68778:item:fs-idm73911888-item-5"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp65888",
+      "class": null,
+      "title": {
+        "segmentId": "m68778:title:fs-idp65888-title",
+        "text": "The Formation of Solutions"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm71104864",
+          "class": "summary",
+          "title": {
+            "segmentId": "m68778:title:fs-idm71104864-title",
+            "text": "Key Concepts and Summary"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm78884832",
+              "segmentId": "m68778:para:fs-idm78884832"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm34912672",
+          "class": "exercises",
+          "title": {
+            "segmentId": "m68778:title:fs-idm34912672-title",
+            "text": "Chemistry End of Chapter Exercises"
+          },
+          "content": [
+            {
+              "type": "exercise",
+              "id": "fs-idm71361392",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm53906736",
+                    "segmentId": "m68778:problem:fs-idm53906736"
+                  }
+                ]
+              },
+              "solution": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm30909248",
+                    "segmentId": "m68778:solution:fs-idm30909248"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm105740080",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm52012368",
+                    "segmentId": "m68778:problem:fs-idm52012368"
+                  }
+                ]
+              },
+              "solution": null
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm84066432",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm25522416",
+                    "segmentId": "m68778:problem:fs-idm25522416"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm75633264",
+                    "segmentId": "m68778:problem:fs-idm75633264"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm41516112",
+                    "segmentId": "m68778:problem:fs-idm41516112"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm80982688",
+                    "segmentId": "m68778:problem:fs-idm80982688"
+                  }
+                ]
+              },
+              "solution": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm55862704",
+                    "segmentId": "m68778:solution:fs-idm55862704"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm33766240",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm96684496",
+                    "segmentId": "m68778:problem:fs-idm96684496"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm82255936",
+                    "segmentId": "m68778:problem:fs-idm82255936"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idp3899904",
+                    "segmentId": "m68778:problem:fs-idp3899904"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idp4106416",
+                    "segmentId": "m68778:problem:fs-idp4106416"
+                  }
+                ]
+              },
+              "solution": null
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm6481344",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm51192336",
+                    "segmentId": "m68778:problem:fs-idm51192336"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm96983392",
+                    "segmentId": "m68778:problem:fs-idm96983392"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm57903504",
+                    "segmentId": "m68778:problem:fs-idm57903504"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm24779824",
+                    "segmentId": "m68778:problem:fs-idm24779824"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm58115840",
+                    "segmentId": "m68778:problem:fs-idm58115840"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm98708672",
+                    "segmentId": "m68778:problem:fs-idm98708672"
+                  }
+                ]
+              },
+              "solution": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm73055536",
+                    "segmentId": "m68778:solution:fs-idm73055536"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm118513216",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm3077840",
+                    "segmentId": "m68778:problem:fs-idm3077840"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm72378352",
+                    "segmentId": "m68778:problem:fs-idm72378352"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm39465280",
+                    "segmentId": "m68778:problem:fs-idm39465280"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm10471328",
+                    "segmentId": "m68778:problem:fs-idm10471328"
+                  }
+                ]
+              },
+              "solution": null
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm95777520",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm75932528",
+                    "segmentId": "m68778:problem:fs-idm75932528"
+                  }
+                ]
+              },
+              "solution": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idp542224",
+                    "segmentId": "m68778:solution:fs-idp542224"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "exercise",
+              "id": "fs-idm30601328",
+              "problem": {
+                "content": [
+                  {
+                    "type": "para",
+                    "id": "fs-idm95752816",
+                    "segmentId": "m68778:problem:fs-idm95752816"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm57599376",
+                    "segmentId": "m68778:problem:fs-idm57599376"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm1141216",
+                    "segmentId": "m68778:problem:fs-idm1141216"
+                  },
+                  {
+                    "type": "para",
+                    "id": "fs-idm10434256",
+                    "segmentId": "m68778:problem:fs-idm10434256"
+                  }
+                ]
+              },
+              "solution": null
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm54470368",
+          "segmentId": "m68778:para:fs-idm54470368"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm93605392",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68778:item:fs-idm93605392-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68778:item:fs-idm93605392-item-2"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm32719984",
+          "segmentId": "m68778:para:fs-idm32719984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm23823840",
+          "segmentId": "m68778:para:fs-idm23823840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm90097568",
+          "segmentId": "m68778:para:fs-idm90097568"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_01_HeArsol",
+          "caption": {
+            "segmentId": "m68778:caption:CNX_Chem_11_01_HeArsol-caption"
+          },
+          "media": {
+            "id": "fs-idm50751088",
+            "alt": "Two figures are shown. The first contains two spherical containers joined by a closed stopcock. The container to the left is labeled H e. It holds about thirty evenly dispersed, small, light blue spheres. The container on the right is labeled A r and contains about thirty slightly larger blue-green spheres. The second, similar figure has an open stopcock between the two spherical containers. The light blue and green spheres are evenly dispersed and present in both containers.",
+            "src": "../../media/CNX_Chem_11_01_HeArsol.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm67575520",
+          "segmentId": "m68778:para:fs-idm67575520"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm24702144",
+          "segmentId": "m68778:para:fs-idm24702144"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_01_solusolv",
+          "caption": {
+            "segmentId": "m68778:caption:CNX_Chem_11_01_solusolv-caption"
+          },
+          "media": {
+            "id": "fs-idm145554960",
+            "alt": "The top, central region of the figure shows solute particles as seven blue spheres and solvent particles as 16 red spheres in separate, labeled boxes. The particles in these boxes are touching. An arrow labeled “Step 1” points left of the solute box, and shows the blue spheres no longer touching in another box labeled “expanded solute.” An arrow labeled “Step 2” points right from the solvent box and shows the red spheres no longer touching in another box labeled “expanded solvent.” Arrows proceed from the bottom of the expanded solute and expanded solvent boxes and join at the bottom of the figure where a step 3 label is shown. The joined arrows point to a box just above in which the red and blue spheres are mixed together and touching. The solute and solvent boxes are joined by another arrow labeled “direct formation of solution” which points downward at the center of the figure. This arrow also points to the box containing mixed red and blue spheres near the bottom of the figure.",
+            "src": "../../media/CNX_Chem_11_01_solusolv.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm96486640",
+          "segmentId": "m68778:para:fs-idm96486640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm37742128",
+          "segmentId": "m68778:para:fs-idm37742128"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_01_Icepack",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68778:caption:CNX_Chem_11_01_Icepack-caption"
+          },
+          "media": {
+            "id": "fs-idm26849248",
+            "alt": "This figure shows a single use instant cold pack with labels indicating an inner bag of water surrounded by white particulate ammonium nitrate.",
+            "src": "../../media/CNX_Chem_11_01_Icepack.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm57797360",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm36370704",
+              "segmentId": "m68778:para:fs-idm36370704"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68778:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68778:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68778:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68778:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm104294208",
+        "termSegmentId": "m68778:glossary-term:fs-idm104294208-term",
+        "definitionSegmentId": "m68778:glossary-def:fs-idm104294208-def"
+      },
+      {
+        "id": "fs-idm54772688",
+        "termSegmentId": "m68778:glossary-term:fs-idm54772688-term",
+        "definitionSegmentId": "m68778:glossary-def:fs-idm54772688-def"
+      },
+      {
+        "id": "fs-idm91470352",
+        "termSegmentId": "m68778:glossary-term:fs-idm91470352-term",
+        "definitionSegmentId": "m68778:glossary-def:fs-idm91470352-def"
+      },
+      {
+        "id": "fs-idm55870880",
+        "termSegmentId": "m68778:glossary-term:fs-idm55870880-term",
+        "definitionSegmentId": "m68778:glossary-def:fs-idm55870880-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

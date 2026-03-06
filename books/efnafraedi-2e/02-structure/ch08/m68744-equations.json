@@ -1,0 +1,47 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{O}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}≡\\text{O}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{C}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}≡\\text{C}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{O}=\\text{O}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{N}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}≡\\text{N}}"
+  },
+  "fs-idm27099520": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">⇌</m:mo><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"2em\"/><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>rxn</m:mtext></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>−184.7 kJ/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}(g)+{{\\text{Cl}}}_{2}(g)⇌2\\text{HCl}(g)\\, \\text{Δ}{H}_{{\\text{rxn}}}^{^{\\circ}}=\\text{−184.7 kJ/mol}}",
+    "isBlock": true
+  }
+}

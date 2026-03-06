@@ -1,0 +1,1085 @@
+{
+  "moduleId": "m68831",
+  "title": {
+    "segmentId": "m68831:title:auto-1",
+    "text": "Structure and General Properties of the Metalloids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "204b5ad5-26eb-46d5-8e6c-3c224a904235",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the general preparation, properties, and uses of the metalloids",
+        "Describe the preparation, properties, and compounds of boron and silicon"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp17717312",
+      "segmentId": "m68831:para:fs-idp17717312"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp189496896",
+      "segmentId": "m68831:para:fs-idp189496896"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp63064256",
+      "segmentId": "m68831:para:fs-idp63064256"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp125396304",
+      "segmentId": "m68831:para:fs-idp125396304"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp421952",
+      "segmentId": "m68831:para:fs-idp421952"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp249805056",
+      "class": null,
+      "title": {
+        "segmentId": "m68831:title:fs-idp249805056-title",
+        "text": "Structures of the Metalloids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm34751888",
+          "segmentId": "m68831:para:fs-idm34751888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp235228864",
+          "segmentId": "m68831:para:fs-idp235228864"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp121376784",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm35582272",
+              "segmentId": "m68831:para:fs-idm35582272"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_03_Structures",
+          "caption": {
+            "segmentId": "m68831:caption:CNX_Chem_18_03_Structures-caption"
+          },
+          "media": {
+            "id": "fs-idm27167568",
+            "alt": "Four images are shown and are labeled “a,” “b,” “c,” and “d.” Images a and b show atoms that are single bonded together arranged in a zigzag pattern in layers. Image c shows atoms that are single bonded together into hexagons that form sheets. These sheets are shown layered one above the other. Image d shows atoms that are single bonded together in twisting chains.",
+            "src": "../../media/CNX_Chem_18_03_Structures.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp12608576",
+          "segmentId": "m68831:para:fs-idp12608576"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_03_BIcosahed",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68831:caption:CNX_Chem_18_03_BIcosahed-caption"
+          },
+          "media": {
+            "id": "fs-idp340430608",
+            "alt": "An image shows a group of atoms, each labeled, “B,” connected together with single bonds into a symmetrical, twenty-sided shape.",
+            "src": "../../media/CNX_Chem_18_03_BIcosahed.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp125392768",
+          "segmentId": "m68831:para:fs-idp125392768"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm27196048",
+      "class": null,
+      "title": {
+        "segmentId": "m68831:title:fs-idm27196048-title",
+        "text": "Occurrence, Preparation, and Compounds of Boron and Silicon"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp39834912",
+          "class": null,
+          "title": {
+            "segmentId": "m68831:title:fs-idp39834912-title",
+            "text": "Boron and Silicon Halides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp29251536",
+              "segmentId": "m68831:para:fs-idp29251536"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp20855552",
+              "segmentId": "m68831:para:fs-idp20855552"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp99815200",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp67676992",
+              "segmentId": "m68831:para:fs-idp67676992"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp73493616",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm52704",
+              "segmentId": "m68831:para:fs-idm52704"
+            },
+            {
+              "type": "media",
+              "id": "fs-idp60354928",
+              "class": null,
+              "alt": "Two Lewis structures are drawn and connected by a right-facing arrow. The left structure shows a boron atom surrounded by four fluorine atoms, each with four lone pairs of electrons. The left fluorine atom has a positive and negative symbol drawn next to it. The second image is the same as the first except the positive and negative signs are missing and the entire structure is surrounded by brackets. There is a negative sign outside and superscript to the brackets.",
+              "src": "../../media/CNX_Chem_18_03_BLewisAcid_img.jpg"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp124888224",
+              "segmentId": "m68831:para:fs-idp124888224"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp144955120",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp138257392",
+              "segmentId": "m68831:para:fs-idp138257392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp15153872",
+              "segmentId": "m68831:para:fs-idp15153872"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp26130592",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1989488",
+              "segmentId": "m68831:para:fs-idp1989488"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm18263392",
+              "segmentId": "m68831:para:fs-idm18263392"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp46544496",
+          "class": null,
+          "title": {
+            "segmentId": "m68831:title:fs-idp46544496-title",
+            "text": "Boron and Silicon Oxides and Derivatives"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp51369216",
+              "segmentId": "m68831:para:fs-idp51369216"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp275317776",
+              "class": "unnumbered"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_02_Glass",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68831:caption:CNX_Chem_18_02_Glass-caption"
+              },
+              "media": {
+                "id": "fs-idp236200768",
+                "alt": "A photo of beakers, flasks, and graduated cylinders is shown. Each piece of glassware holds a different color liquid.",
+                "src": "../../media/CNX_Chem_18_02_Glass.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp122478912",
+              "segmentId": "m68831:para:fs-idp122478912"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp28519200",
+              "class": "unnumbered"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_02_Boricacid_img",
+              "caption": {
+                "segmentId": "m68831:caption:CNX_Chem_18_02_Boricacid_img-caption"
+              },
+              "media": {
+                "id": "fs-idp80715904",
+                "alt": "A Lewis structure shows a boron atom single bonded to three oxygen atoms, each of which is single bonded to a hydrogen atom. The oxygen atoms are arranged at equal angles around the boron atom and each angle is labeled,“120 degrees.”",
+                "src": "../../media/CNX_Chem_18_02_Boricacid_img.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm19131184",
+              "segmentId": "m68831:para:fs-idm19131184"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp204424928",
+              "segmentId": "m68831:para:fs-idp204424928"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_03_BorateAnio",
+              "caption": {
+                "segmentId": "m68831:caption:CNX_Chem_18_03_BorateAnio-caption"
+              },
+              "media": {
+                "id": "fs-idp89373536",
+                "alt": "Three Lewis structures are shown and labeled, “a,” “b,” and “c.” Structure a shows a boron atom single bonded to two oxygen atoms. One oxygen atom has a negative charge, and the other is single bonded to a second boron atom. This boron atom is single bonded to oxygen atoms, just like the first, to create a repeating chain of these units. The first two boron atoms and their attached oxygen atoms are surrounded by a dotted-line box and labeled, “B subscript 2 O subscript 4 superscript 2 negative sign unit.” Structure b shows two hexagonal ring structures, attached together in the center by a boron atom. Each ring is made up of alternating boron and oxygen atoms, with four hydroxyl groups located at the outer upper and lower corners of the whole structure. Brackets and a superscripted negative sign surround the structure. Structure c shows an eight-sided ring structure made up of alternating boron and oxygen atoms. Each boron atom is attached to a hydroxyl group and an oxygen atom is single bonded to the first and third boron atoms. This oxygen atom is located in the center of the ring. The whole structure is surrounded by brackets and has a superscripted 2 negative sign.",
+                "src": "../../media/CNX_Chem_18_03_BorateAnio.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp209528992",
+              "segmentId": "m68831:para:fs-idp209528992"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp71398624",
+              "segmentId": "m68831:para:fs-idp71398624"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_03_CO2vsSiO2",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68831:caption:CNX_Chem_18_03_CO2vsSiO2-caption"
+              },
+              "media": {
+                "id": "fs-idp119649632",
+                "alt": "Two images and two photos are shown and labeled, “a,” and “b.” Image a shows a ball-and-stick model of a carbon atom single bonded to two oxygen atoms. The ball-and-stick model is labeled, “C O subscript 2.” Above this model is a photo of dry ice in a mason jar of a clear liquid. The dry ice is sublimating. The photo is labeled, “dry ice.” Image b shows four connected ring structures made up of alternating silicon and oxygen atoms that are single bonded to one another. The model is labeled, “S i O subscript 2.” Above the model is a photo labeled, “quartz.” It shows a solid crystal.",
+                "src": "../../media/CNX_Chem_18_03_CO2vsSiO2.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm309152",
+              "segmentId": "m68831:para:fs-idm309152"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp13738608",
+              "segmentId": "m68831:para:fs-idp13738608"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp23643168",
+              "segmentId": "m68831:para:fs-idp23643168"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp70329680",
+          "segmentId": "m68831:para:fs-idp70329680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp96845840",
+          "segmentId": "m68831:para:fs-idp96845840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120612224",
+          "segmentId": "m68831:para:fs-idp120612224"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp30766032",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp204527824",
+          "segmentId": "m68831:para:fs-idp204527824"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm91488",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp112457184",
+          "segmentId": "m68831:para:fs-idp112457184"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp27647072",
+          "segmentId": "m68831:para:fs-idp27647072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm50570016",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm43188096",
+          "segmentId": "m68831:para:fs-idm43188096"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_03_SiPurif",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68831:caption:CNX_Chem_18_03_SiPurif-caption"
+          },
+          "media": {
+            "id": "fs-idp87854400",
+            "alt": "A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube.",
+            "src": "../../media/CNX_Chem_18_03_SiPurif.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm29187152",
+          "segmentId": "m68831:para:fs-idm29187152"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm38894288",
+          "segmentId": "m68831:para:fs-idm38894288"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp306866064",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp112356272",
+          "segmentId": "m68831:para:fs-idp112356272"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120941520",
+          "segmentId": "m68831:para:fs-idp120941520"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp219248048",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28729488",
+          "segmentId": "m68831:para:fs-idp28729488"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp128607136",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68831:title:fs-idp128607136-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp222483968",
+          "segmentId": "m68831:para:fs-idp222483968"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp29962656",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68831:title:fs-idp29962656-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp16930624",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3211696",
+                "segmentId": "m68831:problem:fs-idp3211696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp194546480",
+                "segmentId": "m68831:problem:fs-idp194546480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp242773360",
+                "segmentId": "m68831:problem:fs-idp242773360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34368576",
+                "segmentId": "m68831:problem:fs-idm34368576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp210169744",
+                "segmentId": "m68831:problem:fs-idp210169744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208832688",
+                "segmentId": "m68831:problem:fs-idp208832688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16344560",
+                "segmentId": "m68831:problem:fs-idm16344560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp2132912",
+                "segmentId": "m68831:problem:fs-idp2132912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp87997536",
+                "segmentId": "m68831:problem:fs-idp87997536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp96125920",
+                "segmentId": "m68831:problem:fs-idp96125920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp187127952",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp187106320",
+                "segmentId": "m68831:problem:fs-idp187106320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16376768",
+                "segmentId": "m68831:problem:fs-idp16376768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp78441920",
+                "segmentId": "m68831:problem:fs-idp78441920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp135377104",
+                "segmentId": "m68831:problem:fs-idp135377104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm26374944",
+                "segmentId": "m68831:problem:fs-idm26374944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp5993104",
+                "segmentId": "m68831:problem:fs-idp5993104"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm26929120",
+                "segmentId": "m68831:solution:fs-idm26929120"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp53586384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp194645376",
+                "segmentId": "m68831:problem:fs-idp194645376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp119620096",
+                "segmentId": "m68831:problem:fs-idp119620096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm60477568",
+                "segmentId": "m68831:problem:fs-idm60477568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp121068640",
+                "segmentId": "m68831:problem:fs-idp121068640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm116416256",
+                "segmentId": "m68831:problem:fs-idm116416256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm30852912",
+                "segmentId": "m68831:problem:fs-idm30852912"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm42816224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp30962384",
+                "segmentId": "m68831:problem:fs-idp30962384"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp58106064",
+                "segmentId": "m68831:solution:fs-idp58106064"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20024944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm97259088",
+                "segmentId": "m68831:problem:fs-idm97259088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208683456",
+                "segmentId": "m68831:problem:fs-idp208683456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60130832",
+                "segmentId": "m68831:problem:fs-idp60130832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp226254192",
+                "segmentId": "m68831:problem:fs-idp226254192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp43127200",
+                "segmentId": "m68831:problem:fs-idp43127200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84969040",
+                "segmentId": "m68831:problem:fs-idp84969040"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50725056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp67558496",
+                "segmentId": "m68831:problem:fs-idp67558496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp69779632",
+                "segmentId": "m68831:problem:fs-idp69779632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp25416864",
+                "segmentId": "m68831:problem:fs-idp25416864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp49172912",
+                "segmentId": "m68831:problem:fs-idp49172912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16365616",
+                "segmentId": "m68831:problem:fs-idm16365616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp183591056",
+                "segmentId": "m68831:problem:fs-idp183591056"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69392464",
+                "segmentId": "m68831:solution:fs-idp69392464"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp46618224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp57647952",
+                "segmentId": "m68831:problem:fs-idp57647952"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51747488",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp48764576",
+                "segmentId": "m68831:problem:fs-idp48764576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm17550416",
+                "segmentId": "m68831:problem:fs-idm17550416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208975968",
+                "segmentId": "m68831:problem:fs-idp208975968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16332608",
+                "segmentId": "m68831:problem:fs-idm16332608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp90524096",
+                "segmentId": "m68831:problem:fs-idp90524096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm26941744",
+                "segmentId": "m68831:problem:fs-idm26941744"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp203974784",
+                "segmentId": "m68831:solution:fs-idp203974784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26638608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp30605024",
+                "segmentId": "m68831:problem:fs-idp30605024"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp54395392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29293456",
+                "segmentId": "m68831:problem:fs-idp29293456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm27836992",
+                "segmentId": "m68831:problem:fs-idm27836992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19010304",
+                "segmentId": "m68831:problem:fs-idp19010304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp2483680",
+                "segmentId": "m68831:problem:fs-idp2483680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp499584",
+                "segmentId": "m68831:problem:fs-idp499584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14901040",
+                "segmentId": "m68831:problem:fs-idp14901040"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp210135392",
+                "segmentId": "m68831:solution:fs-idp210135392"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm40238272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm97571584",
+                "segmentId": "m68831:problem:fs-idm97571584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm48654448",
+                "segmentId": "m68831:problem:fs-idm48654448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34339104",
+                "segmentId": "m68831:problem:fs-idm34339104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19358848",
+                "segmentId": "m68831:problem:fs-idp19358848"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp27801680",
+                "segmentId": "m68831:problem:fs-idp27801680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84345808",
+                "segmentId": "m68831:problem:fs-idp84345808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp194759200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm62850640",
+                "segmentId": "m68831:problem:fs-idm62850640"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp90428208",
+                "segmentId": "m68831:solution:fs-idp90428208"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm26980560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp92504224",
+                "segmentId": "m68831:problem:fs-idp92504224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp13777136",
+                "segmentId": "m68831:problem:fs-idp13777136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp176669248",
+                "segmentId": "m68831:problem:fs-idp176669248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp120538992",
+                "segmentId": "m68831:problem:fs-idp120538992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm11164048",
+                "segmentId": "m68831:problem:fs-idm11164048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp114681504",
+                "segmentId": "m68831:problem:fs-idp114681504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50984592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23402592",
+                "segmentId": "m68831:problem:fs-idp23402592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp203481632",
+                "segmentId": "m68831:problem:fs-idp203481632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm38966592",
+                "segmentId": "m68831:problem:fs-idm38966592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm15187984",
+                "segmentId": "m68831:problem:fs-idm15187984"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp258684208",
+                "segmentId": "m68831:solution:fs-idp258684208"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp421376",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52675584",
+                "segmentId": "m68831:problem:fs-idp52675584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm48610704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10763856",
+                "segmentId": "m68831:problem:fs-idm10763856"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp142206176",
+                "segmentId": "m68831:solution:fs-idp142206176"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68831:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68831:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68831:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp50657904",
+        "termSegmentId": "m68831:glossary-term:fs-idp50657904-term",
+        "definitionSegmentId": "m68831:glossary-def:fs-idp50657904-def"
+      },
+      {
+        "id": "fs-idp42336592",
+        "termSegmentId": "m68831:glossary-term:fs-idp42336592-term",
+        "definitionSegmentId": "m68831:glossary-def:fs-idp42336592-def"
+      },
+      {
+        "id": "fs-idp20554272",
+        "termSegmentId": "m68831:glossary-term:fs-idp20554272-term",
+        "definitionSegmentId": "m68831:glossary-def:fs-idp20554272-def"
+      },
+      {
+        "id": "fs-idp17081184",
+        "termSegmentId": "m68831:glossary-term:fs-idp17081184-term",
+        "definitionSegmentId": "m68831:glossary-def:fs-idp17081184-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm25603392",
+      "class": null,
+      "alt": "This Lewis structure is composed of a boron atom single bonded to a phosphorus atom. Each of these atoms is single bonded to three hydrogen atoms.",
+      "src": "../../media/CNX_Chem_18_03_Exercise2a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp28628720",
+      "class": null,
+      "alt": "This Lewis structure is composed of a boron atom single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The structure is surrounded by brackets, and a negative sign appears as a superscript outside the brackets.",
+      "src": "../../media/CNX_Chem_18_03_Exercise2b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp121981728",
+      "class": null,
+      "alt": "This Lewis structure is composed of a boron atom single bonded to three bromine atoms, each of which has three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_18_03_Exercise2c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idm25910080",
+      "class": null,
+      "alt": "This Lewis structure is composed of a boron atom that is single bonded to three carbon atoms, each of which is single bonded to three hydrogen atoms.",
+      "src": "../../media/CNX_Chem_18_03_Exercise2d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idp252097136",
+      "class": null,
+      "alt": "This Lewis structure is composed of a boron atom that is single bonded to three oxygen atoms, each of which has two lone pairs of electrons. Each oxygen atom is single bonded to a hydrogen atom.",
+      "src": "../../media/CNX_Chem_18_03_Exercise2e_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "moduleId": "m68850",
+  "extractedAt": "2026-03-06T13:09:40.205Z",
+  "sourceHash": "150a49e946127312",
+  "segmentCount": 10,
+  "segmentIds": [
+    "m68850:title:auto-1",
+    "m68850:abstract-item:abstract-item-1",
+    "m68850:abstract-item:abstract-item-2",
+    "m68850:abstract-item:abstract-item-3",
+    "m68850:abstract-item:abstract-item-4",
+    "m68850:abstract-item:abstract-item-5",
+    "m68850:abstract-item:abstract-item-6",
+    "m68850:caption:CNX_Chem_21_00_NuclearMed-caption",
+    "m68850:para:fs-idp145142544",
+    "m68850:para:fs-idp209834320"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 2,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_21_00_NuclearMed"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

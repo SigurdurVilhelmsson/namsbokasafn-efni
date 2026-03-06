@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "moduleId": "m68828",
+  "extractedAt": "2026-03-06T13:09:39.712Z",
+  "sourceHash": "620ede56cdd07af2",
+  "segmentCount": 15,
+  "segmentIds": [
+    "m68828:title:auto-1",
+    "m68828:abstract-item:abstract-item-1",
+    "m68828:abstract-item:abstract-item-2",
+    "m68828:abstract-item:abstract-item-3",
+    "m68828:abstract-item:abstract-item-4",
+    "m68828:abstract-item:abstract-item-5",
+    "m68828:abstract-item:abstract-item-6",
+    "m68828:abstract-item:abstract-item-7",
+    "m68828:abstract-item:abstract-item-8",
+    "m68828:abstract-item:abstract-item-9",
+    "m68828:abstract-item:abstract-item-10",
+    "m68828:abstract-item:abstract-item-11",
+    "m68828:abstract-item:abstract-item-12",
+    "m68828:caption:CNX_Chem_18_00_SilWafer-caption",
+    "m68828:para:fs-idp11367904"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_18_00_SilWafer"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "moduleId": "m68746",
+  "title": {
+    "segmentId": "m68746:title:auto-1",
+    "text": "Multiple Bonds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "51189d7f-2047-4987-aa94-7b8edd91e13d",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe multiple covalent bonding in terms of atomic orbital overlap",
+        "Relate the concept of resonance to π-bonding and electron delocalization"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp109649680",
+      "segmentId": "m68746:para:fs-idp109649680"
+    },
+    {
+      "type": "media",
+      "id": "fs-idp35800208",
+      "class": "scaled-down",
+      "alt": "A Lewis structure is shown in which two carbon atoms are bonded together by a double bond. Each carbon atom is bonded to two hydrogen atoms by a single bond.",
+      "src": "../../media/CNX_Chem_08_03_C4H4Lewis_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp40201472",
+      "segmentId": "m68746:para:fs-idp40201472"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_03_sp3config",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68746:caption:CNX_Chem_08_03_sp3config-caption"
+      },
+      "media": {
+        "id": "fs-idp21744512",
+        "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” Two of the lines have vertical, up-facing arrows drawn on them. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized C atom in C subscript 2 H subscript 4.”",
+        "src": "../../media/CNX_Chem_08_03_sp3config.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_03_C2H4orbit",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68746:caption:CNX_Chem_08_03_C2H4orbit-caption"
+      },
+      "media": {
+        "id": "fs-idp201403520",
+        "alt": "Two diagrams are shown labeled, “a” and “b.” Diagram a shows two carbon atoms with three purple balloon-like orbitals arranged in a plane around them and two red balloon-like orbitals arranged vertically and perpendicularly to the plane. There is an overlap of two of the purple orbitals in between the two carbon atoms, and the other four purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from four hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below the plane of the molecule to form two areas labeled, “One pi bond.”",
+        "src": "../../media/CNX_Chem_08_03_C2H4orbit.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp52367024",
+      "segmentId": "m68746:para:fs-idp52367024"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp40636368",
+      "segmentId": "m68746:para:fs-idp40636368"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_03_spC",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68746:caption:CNX_Chem_08_03_spC-caption"
+      },
+      "media": {
+        "id": "fs-idp46978352",
+        "alt": "A diagram of a carbon atom with two balloon-like purple orbitals labeled, “sp” arranged in a linear fashion around it is shown. Four red balloon-like orbitals are aligned in pairs in the y and z axes around the carbon and are labeled, “unhybridized p orbital,” and, “Second unhybridized p orbital.”",
+        "src": "../../media/CNX_Chem_08_03_spC.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_03_C2H2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68746:caption:CNX_Chem_08_03_C2H2-caption"
+      },
+      "media": {
+        "id": "fs-idp112665792",
+        "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows two carbon atoms with two purple balloon-like orbitals arranged in a plane around each of them, and four red balloon-like orbitals arranged along the y and z axes perpendicular to the plane of the molecule. There is an overlap of two of the purple orbitals in between the two carbon atoms. The other two purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from two hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below and to the front and back of the plane of the molecule to form two areas labeled, “One pi bond,” and, “Second pi bond,” each respectively.",
+        "src": "../../media/CNX_Chem_08_03_C2H2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp135325968",
+      "segmentId": "m68746:para:fs-idp135325968"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp155207440",
+      "segmentId": "m68746:para:fs-idp155207440"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_03_C6H6",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption"
+      },
+      "media": {
+        "id": "fs-idp4433648",
+        "alt": "A diagram is shown that is made up of two Lewis structures connected by a double ended arrow. The left image shows six carbon atoms bonded together with alternating double and single bonds to form a six-sided ring. Each carbon is also bonded to a hydrogen atom by a single bond. The right image shows the same structure, but the double and single bonds in between the carbon atoms have changed positions.",
+        "src": "../../media/CNX_Chem_08_03_C6H6.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idp109093216",
+      "title": {
+        "segmentId": "m68746:example-title:fs-idp109093216-title",
+        "text": "Assignment of Hybridization Involving Resonance"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm123905056",
+          "segmentId": "m68746:para:fs-idm123905056"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm9390272",
+          "segmentId": "m68746:para:fs-idm9390272",
+          "title": {
+            "segmentId": "m68746:para-title:fs-idm9390272-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp103363168",
+          "segmentId": "m68746:para:fs-idp103363168"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp41312960",
+          "segmentId": "m68746:para:fs-idp41312960",
+          "title": {
+            "segmentId": "m68746:para-title:fs-idp41312960-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp224648848",
+          "segmentId": "m68746:para:fs-idp224648848"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm1257648",
+          "title": {
+            "segmentId": "m68746:note-title:fs-idm1257648-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp224648848",
+              "segmentId": "m68746:para:fs-idp224648848"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp38327968",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68746:title:fs-idp38327968-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp78398192",
+          "segmentId": "m68746:para:fs-idp78398192"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp19779216",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68746:title:fs-idp19779216-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp80061792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46472192",
+                "segmentId": "m68746:problem:fs-idp46472192"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp112782976",
+                "segmentId": "m68746:solution:fs-idp112782976"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp200563984",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp44411520",
+                "segmentId": "m68746:problem:fs-idp44411520"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp37364832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp48359904",
+                "segmentId": "m68746:problem:fs-idp48359904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75120144",
+                "segmentId": "m68746:problem:fs-idp75120144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp146009072",
+                "segmentId": "m68746:problem:fs-idp146009072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp146093984",
+                "segmentId": "m68746:problem:fs-idp146093984"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp100065568",
+                "segmentId": "m68746:solution:fs-idp100065568"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm1022320",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm15581520",
+                "segmentId": "m68746:problem:fs-idm15581520"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm15473712",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp36864432",
+                "segmentId": "m68746:problem:fs-idp36864432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp105038896",
+                "segmentId": "m68746:problem:fs-idp105038896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp67673424",
+                "segmentId": "m68746:problem:fs-idp67673424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp113106080",
+                "segmentId": "m68746:problem:fs-idp113106080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23214784",
+                "segmentId": "m68746:problem:fs-idp23214784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10107008",
+                "segmentId": "m68746:problem:fs-idm10107008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75157792",
+                "segmentId": "m68746:problem:fs-idp75157792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp225274016",
+                "segmentId": "m68746:problem:fs-idp225274016"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37493536",
+                "segmentId": "m68746:solution:fs-idp37493536"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm16504096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp48603152",
+                "segmentId": "m68746:problem:fs-idp48603152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp224611632",
+                "segmentId": "m68746:problem:fs-idp224611632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp78666752",
+                "segmentId": "m68746:problem:fs-idp78666752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp257337360",
+                "segmentId": "m68746:problem:fs-idp257337360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp89217728",
+                "segmentId": "m68746:problem:fs-idp89217728"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp118104208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37679152",
+                "segmentId": "m68746:problem:fs-idp37679152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm9243232",
+                "segmentId": "m68746:problem:fs-idm9243232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7121456",
+                "segmentId": "m68746:problem:fs-idm7121456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46475424",
+                "segmentId": "m68746:problem:fs-idp46475424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp24218096",
+                "segmentId": "m68746:problem:fs-idp24218096"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp257551776",
+                "segmentId": "m68746:solution:fs-idp257551776"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp140570640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78053152",
+                "segmentId": "m68746:problem:fs-idp78053152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208621408",
+                "segmentId": "m68746:problem:fs-idp208621408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp81536672",
+                "segmentId": "m68746:problem:fs-idp81536672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40676640",
+                "segmentId": "m68746:problem:fs-idp40676640"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp47770992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp228409648",
+                "segmentId": "m68746:problem:fs-idp228409648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp72644016",
+                "segmentId": "m68746:solution:fs-idp72644016"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68746:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68746:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68746:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp73575216",
+      "class": null,
+      "alt": "A Lewis structure is shown in which a carbon atom is attached by single bonds to three hydrogen atoms. It is also attached by a single bond to a carbon atom that is triple bonded to a nitrogen atom with one lone electron pair. Below the structure is a right facing arrow with its head near the nitrogen and its tail, which looks like a plus sign, located near the carbon atoms. The arrow is labeled, “dipole moment.”",
+      "src": "../../media/CNX_Chem_08_03_Acetonitri_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

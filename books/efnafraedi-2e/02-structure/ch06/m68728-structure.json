@@ -1,0 +1,63 @@
+{
+  "moduleId": "m68728",
+  "title": {
+    "segmentId": "m68728:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "fc7f7fc6-4d9f-4956-a5a7-3092ac72182e",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Electromagnetic Energy",
+        "The Bohr Model",
+        "Development of Quantum Theory",
+        "Electronic Structure of Atoms (Electron Configurations)",
+        "Periodic Variations in Element Properties"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_06_00_CrabNeb",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68728:caption:CNX_Chem_06_00_CrabNeb-caption"
+      },
+      "media": {
+        "id": "fs-idp86676592",
+        "alt": "A photo is shown of the Crab Nebula.",
+        "src": "../../media/CNX_Chem_06_00_CrabNeb.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm12460464",
+      "segmentId": "m68728:para:fs-idm12460464"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68728:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68728:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68728:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68728:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68728:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

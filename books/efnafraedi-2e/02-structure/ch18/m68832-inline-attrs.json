@@ -1,0 +1,40 @@
+{
+  "m68832:item:fs-idm120122192-item-1": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m68832:item:fs-idm120122192-item-2": {
+    "terms": [
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m68832:para:fs-idm135394992": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00003"
+      },
+      {
+        "class": "no-emphasis",
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m68832:para:fs-idm143379488": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00005"
+      },
+      {
+        "class": "no-emphasis",
+        "id": "term-00006"
+      }
+    ]
+  }
+}

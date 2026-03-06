@@ -1,0 +1,1518 @@
+{
+  "moduleId": "m68768",
+  "title": {
+    "segmentId": "m68768:title:auto-1",
+    "text": "Phase Transitions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3f0fa9fb-278f-4fae-9a77-661bbd8c466a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define phase transitions and phase transition temperatures",
+        "Explain the relation between phase transition temperatures and intermolecular attractive forces",
+        "Describe the processes represented by typical heating and cooling curves, and compute heat flows and enthalpy changes accompanying these processes"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp10874160",
+      "segmentId": "m68768:para:fs-idp10874160"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm35636464",
+      "class": null,
+      "title": {
+        "segmentId": "m68768:title:fs-idm35636464-title",
+        "text": "Vaporization and Condensation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm100542016",
+          "segmentId": "m68768:para:fs-idm100542016"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_VapPress1",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_VapPress1-caption"
+          },
+          "media": {
+            "id": "fs-idm103231072",
+            "alt": "Three images are shown and labeled “a,” “b,” and “c.” Each image shows a round bulb connected on the right to a tube that is horizontal, then is bent vertically, curves, and then is vertical again to make a u-shape. A valve is located in the horizontal portion of the tube. Image a depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid. The phrase, “Molecules escape surface and form vapor” is written below the bulb, and a gray liquid in the u-shaped portion of the tube is shown at equal heights on the right and left sides. Image b depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. A gray liquid in the u-shaped portion of the tube is shown slightly higher on the right side than on the left side. Image c depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. There are more molecules present in c than in b. The phrase “Equilibrium reached, vapor pressure determined,” is written below the bulb and a gray liquid in the u-shaped portion of the tube is shown higher on the right side. A horizontal line is drawn level with each of these liquid levels and the distance between the lines is labeled with a double-headed arrow. This section is labeled with the phrase, “Vapor pressure.”",
+            "src": "../../media/CNX_Chem_10_03_VapPress1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm63266864",
+          "segmentId": "m68768:para:fs-idm63266864"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm12389904",
+          "title": {
+            "segmentId": "m68768:example-title:fs-idm12389904-title",
+            "text": "Explaining Vapor Pressure in Terms of IMFs"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm149114816",
+              "segmentId": "m68768:para:fs-idm149114816"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm12378064",
+              "segmentId": "m68768:para:fs-idm12378064",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm12378064-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm224164560",
+              "segmentId": "m68768:para:fs-idm224164560",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm224164560-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm44101792",
+              "segmentId": "m68768:para:fs-idm44101792"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm91362784",
+              "title": {
+                "segmentId": "m68768:note-title:fs-idm91362784-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm44101792",
+                  "segmentId": "m68768:para:fs-idm44101792"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm60218336",
+          "class": "column-header unnumbered",
+          "summary": "This table has two rows and five columns. The first column is a header column, and it labels each row: “Compound,” and “Vapor Pressure at 25 degrees C.” To the right of the “Compound” column are the following: methanol, C H subscript 3 O H; ethanol, C subscript 2 H subscript 5 O H; propanol C subscript 3 H subscript 7 O H; and butanol C subscript 4 H subscript 9 O H. To the right of the “Vapor Pressure at 25 degrees C” column are the following: 11.9 k P a, 5.95 k P a, 2.67 k P a, and 0.56 k P a.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68768:entry:auto-20",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-21",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-22",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-23",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-24",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68768:entry:auto-25",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-26",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-28",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm73489328",
+          "segmentId": "m68768:para:fs-idm73489328"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_VapPress3",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_VapPress3-caption"
+          },
+          "media": {
+            "id": "fs-idm211797072",
+            "alt": "A graph is shown where the y-axis is labeled “Number of molecules” and the x-axis is labeled “Kinetic Energy.” Two lines are graphed and a vertical dotted line, labeled “Minimum K E needed to escape,” is drawn halfway across the x-axis. The first line move sharply upward and has a high peak near the left side of the x-axis. It drops just as steeply and ends about 60 percent of the way across the x-axis. This line is labeled “Low T.” A second line, labeled “High T,” begins at the same point as the first, but does not go to such a high point, is wider, and ends slightly further to the right on the x-axis.",
+            "src": "../../media/CNX_Chem_10_03_VapPress3.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm153006576",
+      "class": null,
+      "title": {
+        "segmentId": "m68768:title:fs-idm153006576-title",
+        "text": "Boiling Points"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm70709936",
+          "segmentId": "m68768:para:fs-idm70709936"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_VapPress2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_VapPress2-caption"
+          },
+          "media": {
+            "id": "fs-idm188874672",
+            "alt": "A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of 200 to 1000 in increments of 200 and the y-axis is labeled “Pressure ( k P a )” and has values of 20 to 120 in increments of 20. A horizontal dotted line extends across the graph at point 780 on the y-axis while three vertical dotted lines extend from points 35, 78, and 100 to meet the horizontal dotted line. Four lines are graphed. The first line, labeled “ethyl ether,” begins at the point “0 , 200” and extends in a slight curve to point “45, 1000” while the second line, labeled “ethanol”, extends from point “0, 20” to point “88, 1000” in a more extreme curve. The third line, labeled “water,” begins at the point “0, 0” and extends in a curve to point “108, 1000” while the fourth line, labeled “ethylene glycol,” extends from point “80, 0” to point “140, 100” in a very shallow curve.",
+            "src": "../../media/CNX_Chem_10_03_VapPress2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm272706256",
+          "title": {
+            "segmentId": "m68768:example-title:fs-idm272706256-title",
+            "text": "A Boiling Point at Reduced Pressure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm208677136",
+              "segmentId": "m68768:para:fs-idm208677136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10799984",
+              "segmentId": "m68768:para:fs-idm10799984",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm10799984-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm153672912",
+              "segmentId": "m68768:para:fs-idm153672912",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm153672912-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm95497088",
+              "segmentId": "m68768:para:fs-idm95497088"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm212817424",
+              "title": {
+                "segmentId": "m68768:note-title:fs-idm212817424-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm95497088",
+                  "segmentId": "m68768:para:fs-idm95497088"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm287754592",
+          "segmentId": "m68768:para:fs-idm287754592"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm100818032",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm95462576",
+          "segmentId": "m68768:para:fs-idm95462576"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm13139376",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm13032112",
+          "segmentId": "m68768:para:fs-idm13032112"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm220001056",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm51875808",
+          "segmentId": "m68768:para:fs-idm51875808"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm142013200",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm72918608",
+          "segmentId": "m68768:para:fs-idm72918608"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm218464864",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm96861632",
+          "title": {
+            "segmentId": "m68768:example-title:fs-idm96861632-title",
+            "text": "Estimating Enthalpy of Vaporization"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm305163312",
+              "segmentId": "m68768:para:fs-idm305163312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm195543920",
+              "segmentId": "m68768:para:fs-idm195543920",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm195543920-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm95291536",
+              "segmentId": "m68768:para:fs-idm95291536"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm201782400",
+              "segmentId": "m68768:para:fs-idm201782400"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm101600256",
+              "segmentId": "m68768:para:fs-idm101600256",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm101600256-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146844672",
+              "segmentId": "m68768:para:fs-idm146844672"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp17288896"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm44175456"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp12869536",
+              "title": {
+                "segmentId": "m68768:note-title:fs-idp12869536-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm146844672",
+                  "segmentId": "m68768:para:fs-idm146844672"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm143693744",
+          "title": {
+            "segmentId": "m68768:example-title:fs-idm143693744-title",
+            "text": "Estimating Temperature (or Vapor Pressure)"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm467728",
+              "segmentId": "m68768:para:fs-idm467728"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm220027984",
+              "segmentId": "m68768:para:fs-idm220027984",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm220027984-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm198425552",
+              "segmentId": "m68768:para:fs-idm198425552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm164810384",
+              "segmentId": "m68768:para:fs-idm164810384",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm164810384-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm215055184",
+              "segmentId": "m68768:para:fs-idm215055184"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm92115136"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm103279184"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm209654080",
+              "title": {
+                "segmentId": "m68768:note-title:fs-idm209654080-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm215055184",
+                  "segmentId": "m68768:para:fs-idm215055184"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm196961088",
+      "class": null,
+      "title": {
+        "segmentId": "m68768:title:fs-idm196961088-title",
+        "text": "Enthalpy of Vaporization"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm238047040",
+          "segmentId": "m68768:para:fs-idm238047040"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp7928688",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm149636464",
+          "segmentId": "m68768:para:fs-idm149636464"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm190668720",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm57843872",
+          "title": {
+            "segmentId": "m68768:example-title:fs-idm57843872-title",
+            "text": "Using Enthalpy of Vaporization"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm70086528",
+              "segmentId": "m68768:para:fs-idm70086528"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146648608",
+              "segmentId": "m68768:para:fs-idm146648608",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm146648608-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm104953776",
+              "segmentId": "m68768:para:fs-idm104953776"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm119901584",
+              "segmentId": "m68768:para:fs-idm119901584",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm119901584-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm13083920",
+              "segmentId": "m68768:para:fs-idm13083920"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm38095424"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm64022976",
+              "title": {
+                "segmentId": "m68768:note-title:fs-idm64022976-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm13083920",
+                  "segmentId": "m68768:para:fs-idm13083920"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_Evap",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_Evap-caption"
+          },
+          "media": {
+            "id": "fs-idm183436304",
+            "alt": "A person’s shoulder and neck are shown and their skin is covered in beads of liquid.",
+            "src": "../../media/CNX_Chem_10_03_Evap.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm167698656",
+      "class": null,
+      "title": {
+        "segmentId": "m68768:title:fs-idm167698656-title",
+        "text": "Melting and Freezing"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp14081632",
+          "segmentId": "m68768:para:fs-idp14081632"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_MeltingIce",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_MeltingIce-caption"
+          },
+          "media": {
+            "id": "fs-idm137978064",
+            "alt": "This figure shows four photos each labeled, “a,” “b,” “c,” and, “d.” Each photo shows a beaker with ice and a digital thermometer. The first photo shows ice cubes in the beaker, and the thermometer reads negative 12.0 degrees C. The second photo shows slightly melted ice, and the thermometer reads 0.0 degrees C. The third photo shows more water than ice in the beaker. The thermometer reads 0.0 degrees C. The fourth photo shows the ice completely melted, and the thermometer reads 22.2 degrees C.",
+            "src": "../../media/CNX_Chem_10_03_MeltingIce.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp12376064",
+          "segmentId": "m68768:para:fs-idp12376064"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm90105504",
+          "segmentId": "m68768:para:fs-idm90105504"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm133861568",
+          "segmentId": "m68768:para:fs-idm133861568"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm185471776",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm119984512",
+          "segmentId": "m68768:para:fs-idm119984512"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm145529840",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm97104816",
+      "class": null,
+      "title": {
+        "segmentId": "m68768:title:fs-idm97104816-title",
+        "text": "Sublimation and Deposition"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm191153504",
+          "segmentId": "m68768:para:fs-idm191153504"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_Sublimtn",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_Sublimtn-caption"
+          },
+          "media": {
+            "id": "fs-idm195457584",
+            "alt": "This figure shows a test tube. In the bottom is a dark substance which breaks up into a purple gas at the top.",
+            "src": "../../media/CNX_Chem_10_03_Sublimtn.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm208982384",
+          "segmentId": "m68768:para:fs-idm208982384"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm92174656",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm110822080",
+          "segmentId": "m68768:para:fs-idm110822080"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp16237312",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm69412784",
+          "segmentId": "m68768:para:fs-idm69412784"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm81561872",
+          "class": "unnumbered"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_PhaseChng",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_PhaseChng-caption"
+          },
+          "media": {
+            "id": "fs-idm63916320",
+            "alt": "A diagram is shown with a vertical line drawn on the left side and labeled “Energy” and three horizontal lines drawn near the bottom, lower third and top of the diagram. These three lines are labeled, from bottom to top, “Solid,” “Liquid” and “Gas.” Near the middle of the diagram, a vertical, upward-facing arrow is drawn from the solid line to the gas line and labeled “Sublimation, delta sign, H, subscript sub.” To the right of this arrow is a second vertical, upward-facing arrow that is drawn from the solid line to the liquid line and labeled “Fusion, delta sign, H, subscript fus.” Above the second arrow is a third arrow drawn from the liquid line to the gas line and labeled, “Vaporization, delta sign, H, subscript vap.”",
+            "src": "../../media/CNX_Chem_10_03_PhaseChng.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm93930720",
+      "class": null,
+      "title": {
+        "segmentId": "m68768:title:fs-idm93930720-title",
+        "text": "Heating and Cooling Curves"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp17603264",
+          "segmentId": "m68768:para:fs-idp17603264"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm100720480",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm73087600",
+          "segmentId": "m68768:para:fs-idm73087600"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm178482560",
+          "segmentId": "m68768:para:fs-idm178482560"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_10_03_HeatCurve",
+          "caption": {
+            "segmentId": "m68768:caption:CNX_Chem_10_03_HeatCurve-caption"
+          },
+          "media": {
+            "id": "fs-idm120231984",
+            "alt": "A graph is shown where the x-axis is labeled “Amount of heat added” and the y-axis is labeled “Temperature ( degree sign C )” and has values of negative 10 to 100 in increments of 20. A right-facing horizontal arrow extends from point “0, 0” to the right side of the graph. A line graph begins at the lower left of the graph and moves to point “0” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( s ).” The line then flattens and travels horizontally for a small distance. This segment is labeled “Solid begins to melt” on its left side and “All solid melted” on its right side. The line then goes steeply upward in a linear fashion until it hits point “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O,( l ).” The line then flattens and travels horizontally for a moderate distance. This segment is labeled “Liquid begins to boil” on its left side and “All liquid evaporated” on its right side. The line then rises to a point above “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( g ).”",
+            "src": "../../media/CNX_Chem_10_03_HeatCurve.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm143749376",
+          "title": {
+            "segmentId": "m68768:example-title:fs-idm143749376-title",
+            "text": "Total Heat Needed to Change Temperature and Phase for a Substance"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm171202608",
+              "segmentId": "m68768:para:fs-idm171202608"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm136425392",
+              "segmentId": "m68768:para:fs-idm136425392",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm136425392-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp5662336",
+              "segmentId": "m68768:para:fs-idp5662336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm193222960",
+              "segmentId": "m68768:para:fs-idm193222960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm91013680",
+              "segmentId": "m68768:para:fs-idm91013680"
+            },
+            {
+              "type": "para",
+              "id": "para-00002",
+              "segmentId": "m68768:para:para-00002"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm144427968",
+              "segmentId": "m68768:para:fs-idm144427968",
+              "title": {
+                "segmentId": "m68768:para-title:fs-idm144427968-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm101204704",
+              "segmentId": "m68768:para:fs-idm101204704"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm226216704",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68768:item:fs-idm226216704-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68768:item:fs-idm226216704-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68768:item:fs-idm226216704-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68768:item:fs-idm226216704-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68768:item:fs-idm226216704-item-5"
+                }
+              ]
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm72881520"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm213205104"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm153490352"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm100519184",
+              "title": {
+                "segmentId": "m68768:note-title:fs-idm100519184-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm101204704",
+                  "segmentId": "m68768:para:fs-idm101204704"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm147145776",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68768:title:fs-idm147145776-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm196349008",
+          "segmentId": "m68768:para:fs-idm196349008"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp14058304",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68768:title:fs-idp14058304-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68768:entry:auto-124",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68768:entry:auto-125",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68768:entry:auto-126",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": null,
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm73098240",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68768:title:fs-idm73098240-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm118197344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38100432",
+                "segmentId": "m68768:problem:fs-idm38100432"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm202797040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm207345552",
+                "segmentId": "m68768:problem:fs-idm207345552"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm13052032",
+                "segmentId": "m68768:solution:fs-idm13052032"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm7901664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm93844912",
+                "segmentId": "m68768:problem:fs-idm93844912"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm90085344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm178070384",
+                "segmentId": "m68768:problem:fs-idm178070384"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5494480",
+                "segmentId": "m68768:solution:fs-idp5494480"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm202728384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm103810320",
+                "segmentId": "m68768:problem:fs-idm103810320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm63569328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm144746736",
+                "segmentId": "m68768:problem:fs-idm144746736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm73474720",
+                "segmentId": "m68768:solution:fs-idm73474720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm134146112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm268523920",
+                "segmentId": "m68768:problem:fs-idm268523920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm218809584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm191159888",
+                "segmentId": "m68768:problem:fs-idm191159888"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38059232",
+                "segmentId": "m68768:solution:fs-idm38059232"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm91183360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm76700432",
+                "segmentId": "m68768:problem:fs-idm76700432"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm4937568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm205987696",
+                "segmentId": "m68768:problem:fs-idm205987696"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm185423072",
+                "segmentId": "m68768:solution:fs-idm185423072"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm12425360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197038448",
+                "segmentId": "m68768:problem:fs-idm197038448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm69160048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm127448592",
+                "segmentId": "m68768:problem:fs-idm127448592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43978256",
+                "segmentId": "m68768:solution:fs-idm43978256"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm100561472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm91131584",
+                "segmentId": "m68768:problem:fs-idm91131584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm215245584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm211403984",
+                "segmentId": "m68768:problem:fs-idm211403984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm118100432",
+                "segmentId": "m68768:problem:fs-idm118100432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm121941456",
+                "segmentId": "m68768:problem:fs-idm121941456"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51358288",
+                "segmentId": "m68768:solution:fs-idm51358288"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm165702432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm65859968",
+                "segmentId": "m68768:problem:fs-idm65859968"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm224362720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm101751728",
+                "segmentId": "m68768:problem:fs-idm101751728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm144647184",
+                "segmentId": "m68768:solution:fs-idm144647184"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm201825184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm63235472",
+                "segmentId": "m68768:problem:fs-idm63235472"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm43844288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm198895584",
+                "segmentId": "m68768:problem:fs-idm198895584"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm195420176",
+                "segmentId": "m68768:solution:fs-idm195420176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp7110192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm103276128",
+                "segmentId": "m68768:problem:fs-idm103276128"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp7150208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm201999328",
+                "segmentId": "m68768:problem:fs-idm201999328"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm111270048",
+                "segmentId": "m68768:solution:fs-idm111270048"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm190677696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm145626784",
+                "segmentId": "m68768:problem:fs-idm145626784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm201863968",
+                "segmentId": "m68768:problem:fs-idm201863968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm101844896",
+                "segmentId": "m68768:problem:fs-idm101844896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm150811552",
+                "segmentId": "m68768:problem:fs-idm150811552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm197242352",
+                "segmentId": "m68768:problem:fs-idm197242352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm167196528",
+                "segmentId": "m68768:problem:fs-idm167196528"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm69576896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm46311104",
+                "segmentId": "m68768:problem:fs-idm46311104"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm91893600",
+                "segmentId": "m68768:solution:fs-idm91893600"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm4941728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm44076832",
+                "segmentId": "m68768:problem:fs-idm44076832"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm136735584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm202068832",
+                "segmentId": "m68768:problem:fs-idm202068832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57921664",
+                "segmentId": "m68768:problem:fs-idm57921664"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14023840",
+                "segmentId": "m68768:problem:fs-idp14023840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm166606448",
+                "segmentId": "m68768:solution:fs-idm166606448"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68768:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68768:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68768:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68768:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm193814624",
+        "termSegmentId": "m68768:glossary-term:fs-idm193814624-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm193814624-def"
+      },
+      {
+        "id": "fs-idp13200944",
+        "termSegmentId": "m68768:glossary-term:fs-idp13200944-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idp13200944-def"
+      },
+      {
+        "id": "fs-idm193371200",
+        "termSegmentId": "m68768:glossary-term:fs-idm193371200-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm193371200-def"
+      },
+      {
+        "id": "fs-idm7778192",
+        "termSegmentId": "m68768:glossary-term:fs-idm7778192-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm7778192-def"
+      },
+      {
+        "id": "fs-idm101715056",
+        "termSegmentId": "m68768:glossary-term:fs-idm101715056-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm101715056-def"
+      },
+      {
+        "id": "fs-idm144682752",
+        "termSegmentId": "m68768:glossary-term:fs-idm144682752-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm144682752-def"
+      },
+      {
+        "id": "fs-idp5444368",
+        "termSegmentId": "m68768:glossary-term:fs-idp5444368-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idp5444368-def"
+      },
+      {
+        "id": "fs-idm69563216",
+        "termSegmentId": "m68768:glossary-term:fs-idm69563216-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm69563216-def"
+      },
+      {
+        "id": "fs-idm143011312",
+        "termSegmentId": "m68768:glossary-term:fs-idm143011312-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm143011312-def"
+      },
+      {
+        "id": "fs-idm205028976",
+        "termSegmentId": "m68768:glossary-term:fs-idm205028976-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm205028976-def"
+      },
+      {
+        "id": "fs-idm146567360",
+        "termSegmentId": "m68768:glossary-term:fs-idm146567360-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm146567360-def"
+      },
+      {
+        "id": "fs-idm195421616",
+        "termSegmentId": "m68768:glossary-term:fs-idm195421616-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm195421616-def"
+      },
+      {
+        "id": "fs-idm93994416",
+        "termSegmentId": "m68768:glossary-term:fs-idm93994416-term",
+        "definitionSegmentId": "m68768:glossary-def:fs-idm93994416-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

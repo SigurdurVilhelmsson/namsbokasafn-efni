@@ -1,0 +1,20 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{C}{\\text{r}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}.}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>N</m:mtext><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{N}{\\text{O}}_{3}^{\\text{−}}}"
+  },
+  "fs-idp4046912": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{{12}}{\\text{H}}_{{22}}{\\text{O}}_{{11}}(s)\\, \\longrightarrow \\, {\\text{C}}_{{12}}{\\text{H}}_{{22}}{\\text{O}}_{{11}}(aq)}",
+    "isBlock": true
+  },
+  "fs-idm25804880": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mtext>K</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{K}}_{2}\\text{C}{\\text{r}}_{2}{\\text{O}}_{7}(s)\\, \\longrightarrow \\, 2{\\text{K}}^{\\text{+}}({aq)}+\\text{C}{\\text{r}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}(aq)}",
+    "isBlock": true
+  }
+}

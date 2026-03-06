@@ -1,0 +1,23 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>Hg</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{Hg}}_{2}^{\\text{2+}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{SO}}_{4}^{\\text{2−}}}"
+  },
+  "fs-idm29135648": {
+    "mathml": "<m:math><m:mrow><m:mtext>NaCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>–</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>769</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{NaCl}(s)\\, \\longrightarrow \\, {{\\text{Na}}}^{\\text{+}}(g)+{{\\text{Cl}}}^{\\text{–}}(g)\\, \\text{Δ}H=769\\, \\text{kJ}}",
+    "isBlock": true
+  }
+}

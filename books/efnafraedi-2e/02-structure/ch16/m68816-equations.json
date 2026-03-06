@@ -1,0 +1,22 @@
+{
+  "fs-idm44290000": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mtext>diamond</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>C</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mtext>graphite</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{C}(s,\\, \\text{diamond})\\, \\longrightarrow \\, \\text{C}(s,\\, \\text{graphite})}",
+    "isBlock": true
+  },
+  "fs-idm38278672": {
+    "mathml": "<m:math><m:mrow><m:mi>w</m:mi><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mi>P</m:mi><m:mtext>Δ</m:mtext><m:mi>V</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mspace width=\"5em\"/><m:mo stretchy=\"false\">(</m:mo><m:mi>P</m:mi><m:mo>=</m:mo><m:mtext>0 in a vacuum</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{w=\\text{−}P\\text{Δ}V=0\\, (P=\\text{0 in a vacuum})}",
+    "isBlock": true
+  },
+  "fs-idp27062144": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>U</m:mi><m:mo>=</m:mo><m:mi>q</m:mi><m:mo>+</m:mo><m:mi>w</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mn>0</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{Δ}U=q+w=0+0=0}",
+    "isBlock": true
+  },
+  "fs-idp36377040": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mtext>X</m:mtext></m:msub><m:mo>&lt;</m:mo><m:mn>0</m:mn><m:mspace width=\"2em\"/><m:mtext>and</m:mtext><m:mspace width=\"2em\"/><m:msub><m:mi>q</m:mi><m:mtext>Y</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mtext>X</m:mtext></m:msub><m:mo>></m:mo><m:mn>0</m:mn></m:mrow></m:math>",
+    "latex": "{{q}_{\\text{X}}&lt;0\\, \\text{and}\\, {q}_{\\text{Y}}=\\text{−}{q}_{\\text{X}}>0}",
+    "isBlock": true
+  }
+}

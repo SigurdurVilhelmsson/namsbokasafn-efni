@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>HF</m:mtext><m:mtext>⋯</m:mtext><m:mtext>HF</m:mtext><m:mo stretchy=\"false\">).</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{HF}\\text{⋯}\\text{HF}).}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>N</m:mtext><m:mo>−</m:mo><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{N}-\\text{H}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{C}=\\text{O}.}"
+  }
+}

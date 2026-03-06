@@ -1,0 +1,429 @@
+{
+  "moduleId": "m68807",
+  "title": {
+    "segmentId": "m68807:title:auto-1",
+    "text": "Polyprotic Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6ef9fbf2-7ff5-430d-9847-cbcc21045286",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Extend previously introduced equilibrium concepts to acids and bases that may donate or accept more than one proton"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp98649872",
+      "segmentId": "m68807:para:fs-idp98649872"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp136743504",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp136804288",
+      "segmentId": "m68807:para:fs-idp136804288"
+    },
+    {
+      "type": "media",
+      "id": "fs-idm11559264",
+      "class": null,
+      "alt": "This image contains two equilibrium reactions. The first shows a C atom bonded to three H atoms and another C atom. The second C atom is double bonded to an O atom and also forms a single bond to another O atom. The second O atom is bonded to an H atom. There is a plus sign and then the molecular formula H subscript 2 O. An equilibrium arrow follows the H subscript 2 O. To the right of the arrow is H subscript 3 O superscript positive sign. There is a plus sign. The final structure shows a C atom bonded the three H atoms and another C atom. This second C atom is double bonded to an O atom and single bonded to another O atom. The entire structure is in brackets and a superscript negative sign appears outside the brackets. The second reaction shows C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ).",
+      "src": "../../media/CNX_Chem_14_05_acetic_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp199141696",
+      "segmentId": "m68807:para:fs-idp199141696"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp13686896",
+      "segmentId": "m68807:para:fs-idp13686896"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm64885744",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp137460528",
+      "segmentId": "m68807:para:fs-idp137460528"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm41501456",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp84456096",
+      "segmentId": "m68807:para:fs-idp84456096"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm146392784",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm74401760",
+      "segmentId": "m68807:para:fs-idm74401760"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm68059056",
+      "segmentId": "m68807:para:fs-idm68059056"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp1592608",
+      "title": {
+        "segmentId": "m68807:example-title:fs-idp1592608-title",
+        "text": "Ionization of a Diprotic Acid"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp100346864",
+          "segmentId": "m68807:para:fs-idp100346864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm27159024",
+          "segmentId": "m68807:para:fs-idm27159024",
+          "title": {
+            "segmentId": "m68807:para-title:fs-idm27159024-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm165541424",
+          "segmentId": "m68807:para:fs-idm165541424"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm162694608",
+          "segmentId": "m68807:para:fs-idm162694608"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167647504",
+          "segmentId": "m68807:para:fs-idp167647504"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp3314688",
+          "segmentId": "m68807:para:fs-idp3314688",
+          "title": {
+            "segmentId": "m68807:para-title:fs-idp3314688-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm69876496",
+          "segmentId": "m68807:para:fs-idm69876496"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp126184336"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp136502080"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm22716864"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm26667456"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm73884976"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm57413264"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp20713136"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp103313952"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm27760608"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm37931200"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp170235264"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp22220080"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm58434032",
+          "title": {
+            "segmentId": "m68807:note-title:fs-idm58434032-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm69876496",
+              "segmentId": "m68807:para:fs-idm69876496"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm49318672",
+      "segmentId": "m68807:para:fs-idm49318672"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm72609920",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp15743456",
+      "segmentId": "m68807:para:fs-idp15743456"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp108834896",
+      "segmentId": "m68807:para:fs-idp108834896"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm225165120",
+      "segmentId": "m68807:para:fs-idm225165120"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm224892848",
+      "class": "unnumbered"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm40783936",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68807:title:fs-idm40783936-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm21286928",
+          "segmentId": "m68807:para:fs-idm21286928"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm45487824",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68807:title:fs-idm45487824-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp94973072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm49321712",
+                "segmentId": "m68807:problem:fs-idm49321712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm77925872",
+                "segmentId": "m68807:solution:fs-idm77925872"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp108710816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm54573072",
+                "segmentId": "m68807:problem:fs-idm54573072"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm125378656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm17589920",
+                "segmentId": "m68807:problem:fs-idm17589920"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126090960",
+                "segmentId": "m68807:solution:fs-idp126090960"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp33679104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm71902576",
+                "segmentId": "m68807:problem:fs-idm71902576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57292128",
+                "segmentId": "m68807:problem:fs-idm57292128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm9714880",
+                "segmentId": "m68807:problem:fs-idm9714880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp153083664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51100224",
+                "segmentId": "m68807:problem:fs-idp51100224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm18295328",
+                "segmentId": "m68807:problem:fs-idm18295328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp102730016",
+                "segmentId": "m68807:problem:fs-idp102730016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp3251712",
+                "segmentId": "m68807:problem:fs-idp3251712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp19287888",
+                "segmentId": "m68807:solution:fs-idp19287888"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68807:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68807:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp88439392",
+        "termSegmentId": "m68807:glossary-term:fs-idp88439392-term",
+        "definitionSegmentId": "m68807:glossary-def:fs-idp88439392-def"
+      },
+      {
+        "id": "fs-idm124847888",
+        "termSegmentId": "m68807:glossary-term:fs-idm124847888-term",
+        "definitionSegmentId": "m68807:glossary-def:fs-idm124847888-def"
+      },
+      {
+        "id": "fs-idp98784944",
+        "termSegmentId": "m68807:glossary-term:fs-idp98784944-term",
+        "definitionSegmentId": "m68807:glossary-def:fs-idp98784944-def"
+      },
+      {
+        "id": "fs-idm63142976",
+        "termSegmentId": "m68807:glossary-term:fs-idm63142976-term",
+        "definitionSegmentId": "m68807:glossary-def:fs-idm63142976-def"
+      },
+      {
+        "id": "fs-idm25629392",
+        "termSegmentId": "m68807:glossary-term:fs-idm25629392-term",
+        "definitionSegmentId": "m68807:glossary-def:fs-idm25629392-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm37059488",
+      "class": null,
+      "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “H subscript 2 C O subscript 3 plus sign H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus sign H C O subscript 3 superscript negative sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.033, negative sign x, 0.033 minus sign x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x.",
+      "src": "../../media/CNX_Chem_14_05_ICETable1_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

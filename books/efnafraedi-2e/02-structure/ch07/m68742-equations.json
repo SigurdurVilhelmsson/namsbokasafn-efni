@@ -1,0 +1,146 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{CO}}}_{3}^{{\\text{2−}}},}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{4}^{\\text{+}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{4}^{\\text{+}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{4}^{+}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{4}^{\\text{+}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{4}^{+}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}^{+}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>IF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{IF}}}_{6}^{+}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{SiF}}}_{5}^{\\text{−}}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{ClO}}}_{2}^{\\text{−}}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>TeCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{TeCl}}}_{4}^{{\\text{2−}}}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>PH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{PH}}}_{2}^{\\text{−}}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{PCl}}}_{4}^{\\text{−}}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>SnCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{SnCl}}}_{3}^{\\text{+}}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>BrCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{BrCl}}}_{4}^{\\text{−}}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>ClOF</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{ClOF}}}_{2}^{+}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{2}^{\\text{−}}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>SiO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>4−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{SiO}}_{4}^{\\text{4−}}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>ClO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{ClO}}_{2}^{\\text{−}}}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>TeCl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{TeCl}}_{4}^{\\text{2−}}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>PH</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{PH}}_{2}^{\\text{−}}}"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>ClO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{ClO}}_{2}^{\\text{−}},}"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>PH</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{PH}}_{2}^{\\text{−}}}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>PCl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{PCl}}_{4}^{\\text{−}}}"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>SnCl</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{SnCl}}_{3}^{\\text{−}}}"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>BrCl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{BrCl}}_{4}^{\\text{−}}}"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{2}^{\\text{−}}}"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>SO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{SO}}_{3}^{\\text{2−}}}"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>CS</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{CS}}_{3}^{\\text{2−}}}"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>CS</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{CS}}_{3}^{\\text{2−}}}"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>CS</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{CS}}_{3}^{\\text{2−}}}"
+  },
+  "fs-idm222312400": {
+    "mathml": "<m:math><m:mrow><m:mtext>lone pair-lone pair</m:mtext><m:mo>></m:mo><m:mtext>lone pair-bonding pair</m:mtext><m:mo>></m:mo><m:mtext>bonding pair-bonding pair</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{lone pair-lone pair}>\\text{lone pair-bonding pair}>\\text{bonding pair-bonding pair}}",
+    "isBlock": true
+  },
+  "fs-idm99105600": {
+    "mathml": "<m:math><m:mrow><m:mtext>lone pair</m:mtext><m:mo>></m:mo><m:mtext>triple bond</m:mtext><m:mo>></m:mo><m:mtext>double bond</m:mtext><m:mo>></m:mo><m:mtext>single bond</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{lone pair}>\\text{triple bond}>\\text{double bond}>\\text{single bond}}",
+    "isBlock": true
+  },
+  "fs-idp102593872": {
+    "mathml": "<m:math><m:mrow><m:mtext>H–C</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{H–C}≡\\text{N}}",
+    "isBlock": true
+  },
+  "fs-idp16382464": {
+    "mathml": "<m:math><m:mrow><m:mi fontstyle=\"italic\">μ</m:mi><m:mo>=</m:mo><m:mtext>Qr</m:mtext></m:mrow></m:math>",
+    "latex": "{μ=\\text{Qr}}",
+    "isBlock": true
+  }
+}

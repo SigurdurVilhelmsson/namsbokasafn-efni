@@ -128,31 +128,31 @@ Identify each of the following statements as being most similar to a hypothesis,
 Identify each of the underlined items as a part of either the macroscopic domain, the microscopic domain, or the symbolic domain of chemistry. For any in the symbolic domain, indicate whether they are symbols for a macroscopic or a microscopic feature.
 
 <!-- SEG:m68664:problem:fs-idp94102864 -->
-(a) The mass of a lead pipe is 14 lb.
+(a) The mass of a ++lead pipe++ is 14 lb.
 
 <!-- SEG:m68664:problem:fs-idp77253536 -->
-(b) The mass of a certain chlorine atom is 35 amu.
+(b) The mass of a certain ++chlorine atom++ is 35 amu.
 
 <!-- SEG:m68664:problem:fs-idp71129152 -->
-(c) A bottle with a label that reads Al contains aluminum metal.
+(c) A bottle with a label that reads ++Al++ contains aluminum metal.
 
 <!-- SEG:m68664:problem:fs-idp71050048 -->
-(d) Al is the symbol for an aluminum atom.
+(d) ++Al++ is the symbol for an aluminum atom.
 
 <!-- SEG:m68664:problem:fs-idp54908512 -->
 Identify each of the underlined items as a part of either the macroscopic domain, the microscopic domain, or the symbolic domain of chemistry. For those in the symbolic domain, indicate whether they are symbols for a macroscopic or a microscopic feature.
 
 <!-- SEG:m68664:problem:fs-idp19466944 -->
-(a) A certain molecule contains one H atom and one Cl atom.
+(a) A certain molecule contains one ++H++ atom and one Cl atom.
 
 <!-- SEG:m68664:problem:fs-idp55370768 -->
-(b) Copper wire has a density of about 8 g/cm^3^.
+(b) ++Copper wire++ has a density of about 8 g/cm^3^.
 
 <!-- SEG:m68664:problem:fs-idp68623088 -->
-(c) The bottle contains 15 grams of Ni powder.
+(c) The bottle contains 15 grams of ++Ni powder++.
 
 <!-- SEG:m68664:problem:fs-idp23452688 -->
-(d) A sulfur molecule is composed of eight sulfur atoms.
+(d) A ++sulfur molecule++ is composed of eight sulfur atoms.
 
 <!-- SEG:m68664:solution:fs-idm56463840 -->
 (a) symbolic, microscopic; (b) macroscopic; (c) symbolic, macroscopic; (d) microscopic

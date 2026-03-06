@@ -1,0 +1,72 @@
+{
+  "moduleId": "m68850",
+  "title": {
+    "segmentId": "m68850:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "242a0400-57dd-4b92-a971-19ed2c94b9c6",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Nuclear Structure and Stability",
+        "Nuclear Equations",
+        "Radioactive Decay",
+        "Transmutation and Nuclear Energy",
+        "Uses of Radioisotopes",
+        "Biological Effects of Radiation"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_00_NuclearMed",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68850:caption:CNX_Chem_21_00_NuclearMed-caption"
+      },
+      "media": {
+        "id": "fs-idm8172160",
+        "alt": "An image shows four sets of medical pictures. The first is the torso and arms of a human skeleton with purple shading in the muscular regions. The second is a set of four images; the top left, labeled “Smoker,” shows an oval-shaped image that is blue on the outside rim, green as you move inward, and bright red near the center while the top right, labeled “Non-Smoker,” shows an oval-shaped image that is shaded bright green over most of the image and bright red near the center. The lower left image of the four, labeled “Alcoholic,” shows an oval-shaped image that is almost entirely blue with two small yellow-rimmed, red dots near the upper middle section while the lower right image, labeled “Normal,” looks very similar to the lower left, but the red regions are slightly larger. The final image show two scans of a human torso that is turned to face to the side. The left scan has three bright yellow-white areas; one in the throat, one in the chest and one in the head. The right scan is the same as the left except the bright regions are dim and the internal organs are more clearly defined.",
+        "src": "../../media/CNX_Chem_21_00_NuclearMed.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp145142544",
+      "segmentId": "m68850:para:fs-idp145142544"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp209834320",
+      "segmentId": "m68850:para:fs-idp209834320"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68850:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68850:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68850:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68850:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68850:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68850:abstract-item:abstract-item-6"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

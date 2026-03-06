@@ -1,0 +1,1156 @@
+{
+  "moduleId": "m68858",
+  "title": {
+    "segmentId": "m68858:title:auto-1",
+    "text": "Biological Effects of Radiation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f2f866c2-bcfb-434a-b3f4-918cbd2c61de",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the biological impact of ionizing radiation",
+        "Define units for measuring radiation exposure",
+        "Explain the operation of common tools for detecting radioactivity",
+        "List common sources of radiation exposure in the US"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp155340368",
+      "segmentId": "m68858:para:fs-idp155340368"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_21_06_Damage1",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68858:caption:CNX_Chem_21_06_Damage1-caption"
+      },
+      "media": {
+        "id": "fs-idp82597824",
+        "alt": "A diagram is shown which has a white sphere followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres. The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. A starburst pattern lies between these two spheres and has three right-facing arrows leading from it to two white spheres and a circle full of ten smaller, peach-colored circles with purple dots in their centers. An arrow leads downward from this circle to a box that contains a helical shape with a starburst near its top left side and is labeled “D N A damage.” A right-facing arrow leads from this circle to a second circle, with nine smaller, peach-colored circles with purple dots in their centers and one fully purple small circle labeled “Cancer cell.” A right-facing arrow leads to a final circle, this time full of the purple cells, that is labeled “Tumor.”",
+        "src": "../../media/CNX_Chem_21_06_Damage1.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idp26219680",
+      "class": null,
+      "title": {
+        "segmentId": "m68858:title:fs-idp26219680-title",
+        "text": "Ionizing and Nonionizing Radiation"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp37875536",
+          "class": null,
+          "title": {
+            "segmentId": "m68858:title:fs-idp37875536-title",
+            "text": "Biological Effects of Exposure to Radiation"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp207785984",
+              "segmentId": "m68858:para:fs-idp207785984"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp39143744",
+              "segmentId": "m68858:para:fs-idp39143744"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_21_06_Penetrate",
+              "caption": {
+                "segmentId": "m68858:caption:CNX_Chem_21_06_Penetrate-caption"
+              },
+              "media": {
+                "id": "fs-idp234671216",
+                "alt": "A diagram shows four particles in a vertical column on the left, followed by an upright sheet of paper, a person’s hand, an upright sheet of metal, a glass of water, a thick block of concrete and an upright, thick piece of lead. The top particle listed is made up of two white spheres and two green spheres that are labeled with positive signs and is labeled “Alpha.” A right-facing arrow leads from this to the paper. The second particle is a red sphere labeled “Beta” and is followed by a right-facing arrow that passes through the paper and stops at the hand. The third particle is a white sphere labeled “Neutron” and is followed by a right-facing arrow that passes through the paper, hand and metal but is stopped at the glass of water. The fourth particle is shown by a squiggly arrow and it passes through all of the substances but stops at the lead. Terms at the bottom read, from left to right, “Paper,” “Metal,” “Water,” “Concrete” and “Lead.”",
+                "src": "../../media/CNX_Chem_21_06_Penetrate.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-idp53706816",
+              "class": "chemistry everyday-life",
+              "title": {
+                "segmentId": "m68858:note-title:fs-idp53706816-title",
+                "text": "Radon Exposure"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp5928944",
+                  "segmentId": "m68858:para:fs-idp5928944"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp38435248",
+                  "segmentId": "m68858:para:fs-idp38435248"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_21_06_RadonExpos",
+              "caption": {
+                "segmentId": "m68858:caption:CNX_Chem_21_06_RadonExpos-caption"
+              },
+              "media": {
+                "id": "fs-idp54692192",
+                "alt": "A cut-away image of the side of a house and four layers of the ground it rests on is shown, as well as a second cut-away image of a person’s head and chest cavity. The house is shown with a restroom on the second floor and a basement with a water heater as the first floor. Green arrows lead from the lowest ground layer, labeled “radon in ground water,” from the third ground layer, labeled “Bedrock” and “Fractured bedrock,” from the second layer, labeled “radon in well water,” and from the top layer, labeled “radon in soil to the inside of the basement area. In the smaller image of the torso, a green arrow is shown to enter the person’s nasal passage and travel to the lungs. This is labeled “Inhalation of radon decay products.” A small coiled, helical structure next to the torso is labeled “alpha particle” on one section where it has a starburst pattern and “Radiation damage to D N A” on another segment.",
+                "src": "../../media/CNX_Chem_21_06_RadonExpos.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26867440",
+          "segmentId": "m68858:para:fs-idp26867440"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_IonRadSpec",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_IonRadSpec-caption"
+          },
+          "media": {
+            "id": "fs-idp63337488",
+            "alt": "A diagram has two vertical sections. The upper section has two right-facing, horizontal arrows labeled “Increasing energy, E” and “Increasing frequency, rho symbol,” respectively. A left-facing, horizontal arrow lies below the first two and is labeled “Increasing wavelength, lambda symbol.” Beginning on the left side of the diagram, a horizontal, sinusoidal line begins and moves across the diagram to the far right, becoming increasingly more compact. The lower section of the diagram has a double ended, horizontal arrow along its top, with the left end drawn in red and labeled “Non-ionizing” and the right end drawn in green and labeled “Ionizing.” Below this is a set of terms, read from left to right as “Broadcast and wireless radio,” “Microwave,” “Terahertz,” “Infrared,” “Visible light,” “Ultraviolet,” “X dash ray,” and “Gamma.” Four columns lie below this row of terms. The first contains the phrases “Non-thermal” and “Induces low currents” while the second reads “Thermal” and “Induces high currents, Heating.” The third contains the phrases “Optical” and “Excites electrons, Photo, dash, chemical effects” while the fourth reads “Broken bonds” and “Damages D N A.” A series of terms lie below these columns are read, from left to right, “Static field,” “Power line,” “A M radio,” “F M radio,” “Microwave oven,” “Heat lamp,” “Tanning booth” and “Medical x, dash rays.”",
+            "src": "../../media/CNX_Chem_21_06_IonRadSpec.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146155504",
+          "segmentId": "m68858:para:fs-idp146155504"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp161523696",
+          "class": null,
+          "alt": "This image shows a reaction. It starts with H subscript 2 O plus radiation. There is a right-facing arrow which points to H subscript 2 O superscript positive sign plus H subscript 2 O. From the arrow, there is another arrow that curves upward and points to an e superscript negative sign. After the second H subscript 2 O there is another right-facing arrow which points to H subscript 3 O superscript positive sign plus O H superscript negative sign.",
+          "src": "../../media/CNX_Chem_21_06_Hydroxyrad_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp73842464",
+          "segmentId": "m68858:para:fs-idp73842464"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Damage2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Damage2-caption"
+          },
+          "media": {
+            "id": "fs-idp22664256",
+            "alt": "Two pairs of images are shown and labeled “a” and “b.” In the first pair, a helical structure on the left with a starburst on it middle right side is connected by a right-facing arrow to a sphere composed of smaller green and white spheres. A squiggly arrow points toward the sphere from the upper left and a downward-facing arrow leads away from the sphere to a small circle with a negative sign. In the second pair of images, a squiggly arrow lead to a water molecule while a downward-facing arrow leads away from it to a small circle with a negative charge written on it. A helical shape with a starburst on it middle right side is drawn to the far right and an upward-facing arrow leads to it from the following equation “H, subscript 2, O, plus sign, radiation, yield arrow, H, subscript 2, O, superscript plus sign, plus sign, e, superscript negative sign, down-facing arrow, H, subscript 2, O, superscript plus sign, plus sign, H, subscript 2, O, right-facing arrow, H, subscript 3, O, superscript plus sign, plus sign, O H, superscript negative sign. Below this equation is the phrase “Indirect effect.”",
+            "src": "../../media/CNX_Chem_21_06_Damage2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp25724032",
+      "class": null,
+      "title": {
+        "segmentId": "m68858:title:fs-idp25724032-title",
+        "text": "Measuring Radiation Exposure"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp31180688",
+          "class": null,
+          "title": {
+            "segmentId": "m68858:title:fs-idp31180688-title",
+            "text": "Units of Radiation Measurement"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp36142832",
+              "segmentId": "m68858:para:fs-idp36142832"
+            },
+            {
+              "type": "table",
+              "id": "fs-idp3417984",
+              "class": "top-titled",
+              "summary": "This table contains four columns and four rows. The first row is a header row, and it labels each column: “Measurement Purpose,” “Unit,” “Quantity Measure,” and “Description.” Under the “Measurement Purpose” column are the following: activity of source, absorbed dose, and biologically effective dose. Under the “Unit” column are the following: bequerel ( b q) and curie ( c i ); gray ( g y ) and radiation absorbed dose ( rad ); sievert (s v) and roentgen equivalent for humans ( rem ). Under the “Quantity Measured” column are the following: radioactive decays or emissions; energy absorbed per k g of tissue; tissue damage. Under the “Description” column are the following: amount of sample that undergoes 1 decay / second and amount of sample that undergoes 3.7 times ten superscript 10 decays / second; 1 g y equals 1 J / k g tissue and 1 rad equals 0.01 J / k g tissue; S v equals R B E times G y and Rem equals R B E times rad.",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-26",
+                      "attributes": {
+                        "namest": "c1",
+                        "nameend": "c4",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-27",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-28",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-29",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-30",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-31",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-32",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-33",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-34",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-35",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-36",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-37",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-38",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-39",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-40",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-41",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-42",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-43",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-44",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-45",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-46",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-47",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-48",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "id": "fs-idp8743280",
+              "title": {
+                "segmentId": "m68858:example-title:fs-idp8743280-title",
+                "text": "Amount of Radiation"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp77063152",
+                  "segmentId": "m68858:para:fs-idp77063152"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp145838784",
+                  "segmentId": "m68858:para:fs-idp145838784"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp3193824",
+                  "segmentId": "m68858:para:fs-idp3193824"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp226903120",
+                  "segmentId": "m68858:para:fs-idp226903120",
+                  "title": {
+                    "segmentId": "m68858:para-title:fs-idp226903120-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm5761440",
+                  "segmentId": "m68858:para:fs-idm5761440"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm27725120",
+                  "segmentId": "m68858:para:fs-idm27725120"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm4470064",
+                  "segmentId": "m68858:para:fs-idm4470064"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp15286032",
+                  "segmentId": "m68858:para:fs-idp15286032",
+                  "title": {
+                    "segmentId": "m68858:para-title:fs-idp15286032-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm82342624",
+                  "segmentId": "m68858:para:fs-idm82342624"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp18555456"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp12096528"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp27507232"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp6096224"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp14889200",
+                  "title": {
+                    "segmentId": "m68858:note-title:fs-idp14889200-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm82342624",
+                      "segmentId": "m68858:para:fs-idm82342624"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm3484976",
+          "segmentId": "m68858:para:fs-idm3484976"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Monitors",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Monitors-caption"
+          },
+          "media": {
+            "id": "fs-idp202105696",
+            "alt": "Three photographs are shown and labeled “a,” “b” and “c.” Photo a shows a Geiger counter sitting on a table. It is made up of a metal box with a read-out screen and a wire leading away from the box connected to a sensor wand. Photograph b shows a collection of tall and short vertical tubes arranged in a grouping while photograph c shows a person’s hand holding a small machine with a digital readout while standing on the edge of a roadway.",
+            "src": "../../media/CNX_Chem_21_06_Monitors.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp31333632",
+          "segmentId": "m68858:para:fs-idp31333632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp224481296",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp192182752",
+          "segmentId": "m68858:para:fs-idp192182752"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Exposure1",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Exposure1-caption"
+          },
+          "media": {
+            "id": "fs-idp239786256",
+            "alt": "Two images are shown. The first, labeled “Rate of radioactive decay measured in becquerels or curies,” shows a red sphere with ten red squiggly arrows facing away from it in a 360 degree circle. The second image shows the head and torso of a woman wearing medical scrubs with a badge on her chest. The caption to the badge reads “Film badge or dosimeter measures tissue damage exposure in rems or sieverts” while a phrase under this image states “Absorbed dose measured in grays or rads.”",
+            "src": "../../media/CNX_Chem_21_06_Exposure1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp41763040",
+      "class": null,
+      "title": {
+        "segmentId": "m68858:title:fs-idp41763040-title",
+        "text": "Effects of Long-term Radiation Exposure on the Human Body"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp3766208",
+          "segmentId": "m68858:para:fs-idp3766208"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Exposure2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Exposure2-caption"
+          },
+          "media": {
+            "id": "fs-idp12331776",
+            "alt": "A bar graph titled “Radiation Doses and Regulatory Limits, open parenthesis, in Millirems, close parenthesis” is shown. The y-axis is labeled “Doses in Millirems” and has values from 0 to 5000 with a break between 1000 and 5000 to indicate a different scale to the top of the graph. The y-axis is labeled corresponding to each bar. The first bar, measured to 5000 on the y-axis, is drawn in red and is labeled “Annual Nuclear Worker Doses Limit, open parenthesis, N R C, close parenthesis.” The second bar, measured to 1000 on the y-axis, is drawn in blue and is labeled “Whole Body C T” while the third bar, measured to 620 on the y-axis, is drawn in blue and is labeled “Average U period S period Annual Dose.” The fourth bar, measured to 310 on the y-axis, is drawn in blue and is labeled “U period S period Natural Background Dose” while the fifth bar, measured to 100 on the y-axis and drawn in red reads “Annual Public Dose Limit, open parenthesis, N R C, close parenthesis.” The sixth bar, measured to 40 on the y-axis, is drawn in blue and is labeled “From Your Body” while the seventh bar, measured to 30 on the y-axis and drawn in blue reads “Cosmic rays.” The eighth bar, measured to 4 on the y-axis, is drawn in blue and is labeled “Safe Drinking Water Limit, open parenthesis, E P A, close parenthesis” while the ninth bar, measured to 2.5 on the y-axis and drawn in red reads “Trans Atlantic Flight.” A legend on the graph shows that red means “Dose Limit From N R C dash licensed activity” while blue means “Radiation Doses.”",
+            "src": "../../media/CNX_Chem_21_06_Exposure2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp111220720",
+          "segmentId": "m68858:para:fs-idp111220720"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp167827232",
+          "class": "top-titled",
+          "summary": "This table contains three columns and fifteen rows. The first row is a header row, and it labels each column: “Exposure ( rem ),” “Health Effect,” and “Time to Onset ( without treatment ).” Under the “Exposure ( rem )” column are the following: 5 – 10, 50, 55, 70, 75, 90, 100, 400, 1000, two blank cells, 2000, and two more blank cells. Under the “Health Effect” column are the following: changes in blood chemistry, nausea, fatigue, vomiting, hair loss, diarrhea, hemorrhage, possible death, destruction of intestinal lining, internal bleeding, death, damage to central nervous system, loss of consciousness, and death. Under the “Time to Onset ( without treatment” column are the following: a blank cell, hours, two blank cells, 2 – 3 weeks, two blank cells, within 2 months, two blank cells, 1 – 2 weeks, one blank cell, minutes, and hours to days.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-72",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-100",
+                  "attributes": {
+                    "valign": "middle",
+                    "align": "left",
+                    "morerows": "2"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-107",
+                  "attributes": {
+                    "valign": "middle",
+                    "align": "left",
+                    "morerows": "3"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16746704",
+          "segmentId": "m68858:para:fs-idp16746704"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp59107200",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68858:title:fs-idp59107200-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp16660192",
+          "segmentId": "m68858:para:fs-idp16660192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp249407216",
+          "segmentId": "m68858:para:fs-idp249407216"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp6038480",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68858:title:fs-idp6038480-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-119",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-120",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp110761408",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68858:title:fs-idp110761408-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp29076672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126320176",
+                "segmentId": "m68858:problem:fs-idp126320176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp74160800",
+                "segmentId": "m68858:problem:fs-idp74160800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48563216",
+                "segmentId": "m68858:problem:fs-idp48563216"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14911920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4246992",
+                "segmentId": "m68858:problem:fs-idm4246992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp58420992",
+                "segmentId": "m68858:solution:fs-idp58420992"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16044272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2835312",
+                "segmentId": "m68858:problem:fs-idm2835312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14100336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26788448",
+                "segmentId": "m68858:problem:fs-idp26788448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp161129568",
+                "segmentId": "m68858:problem:fs-idp161129568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp211118640",
+                "segmentId": "m68858:problem:fs-idp211118640"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm19699520",
+                "segmentId": "m68858:solution:fs-idm19699520"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp224139168",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp100946448",
+                "segmentId": "m68858:problem:fs-idp100946448"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68858:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68858:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68858:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68858:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68858:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp13479088",
+        "termSegmentId": "m68858:glossary-term:fs-idp13479088-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp13479088-def"
+      },
+      {
+        "id": "fs-idp40157072",
+        "termSegmentId": "m68858:glossary-term:fs-idp40157072-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp40157072-def"
+      },
+      {
+        "id": "fs-idp77369424",
+        "termSegmentId": "m68858:glossary-term:fs-idp77369424-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp77369424-def"
+      },
+      {
+        "id": "fs-idp165471824",
+        "termSegmentId": "m68858:glossary-term:fs-idp165471824-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp165471824-def"
+      },
+      {
+        "id": "fs-idp72050384",
+        "termSegmentId": "m68858:glossary-term:fs-idp72050384-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp72050384-def"
+      },
+      {
+        "id": "fs-idp48690544",
+        "termSegmentId": "m68858:glossary-term:fs-idp48690544-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp48690544-def"
+      },
+      {
+        "id": "fs-idp8726208",
+        "termSegmentId": "m68858:glossary-term:fs-idp8726208-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp8726208-def"
+      },
+      {
+        "id": "fs-idp38524656",
+        "termSegmentId": "m68858:glossary-term:fs-idp38524656-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp38524656-def"
+      },
+      {
+        "id": "fs-idp82617008",
+        "termSegmentId": "m68858:glossary-term:fs-idp82617008-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp82617008-def"
+      },
+      {
+        "id": "fs-idp165863168",
+        "termSegmentId": "m68858:glossary-term:fs-idp165863168-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp165863168-def"
+      },
+      {
+        "id": "fs-idp225092016",
+        "termSegmentId": "m68858:glossary-term:fs-idp225092016-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp225092016-def"
+      },
+      {
+        "id": "fs-idp18328912",
+        "termSegmentId": "m68858:glossary-term:fs-idp18328912-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp18328912-def"
+      },
+      {
+        "id": "fs-idp13997168",
+        "termSegmentId": "m68858:glossary-term:fs-idp13997168-term",
+        "definitionSegmentId": "m68858:glossary-def:fs-idp13997168-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

@@ -1,0 +1,79 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>ICl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{ICl}}_{4}^{\\text{−}}.}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({\\text{NO}}_{2}^{\\text{−}})}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{\\text{−}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{\\text{−}}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{\\text{−}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{CO}}_{3}^{\\text{2−}},}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>formal charge</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext># valence shell electrons (free atom)</m:mtext><m:mspace width=\"0.1em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mtext># lone pair electrons</m:mtext><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.3em\"/><m:mtext># bonding electrons</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{formal charge}\\, =\\text{# valence shell electrons (free atom)}\\, -\\, \\text{# lone pair electrons}\\, -\\, \\frac{1}{2}\\, \\text{# bonding electrons}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{3}^{\\text{−}}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{CO}}}_{3}^{\\text{2−}}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>HCO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{HCO}}_{3}^{\\text{−}}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:msup><m:mrow/><m:mtext>–</m:mtext></m:msup><m:mtext>.</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{\\text{2}}^{\\text{–}}\\text{.}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{SO}}_{4}^{\\text{2−}}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{\\text{2−}}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>BF</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{BF}}_{4}^{\\text{−}}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>SnCl</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{SnCl}}_{3}^{\\text{−}}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>PO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>3−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{PO}}_{4}^{\\text{3−}}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{2}^{\\text{−}}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{NO}}_{3}^{\\text{−}}}"
+  },
+  "fs-idp90018832": {
+    "mathml": "<m:math><m:mrow><m:mtext>formal charge</m:mtext><m:mo>=</m:mo><m:mtext># valence shell electrons (free atom)</m:mtext><m:mo>−</m:mo><m:mtext># lone pair electrons</m:mtext><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext># bonding electrons</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{formal charge}=\\text{# valence shell electrons (free atom)}-\\text{# lone pair electrons}\\, -\\, \\frac{1}{2}\\, \\text{# bonding electrons}}",
+    "isBlock": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "m68852:para:fs-idp10810528": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m68852:para:fs-idm5999248": {
+    "terms": [
+      {
+        "id": "term-00002"
+      },
+      {
+        "id": "term-00003"
+      },
+      {
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m68852:para:fs-idp183438528": {
+    "terms": [
+      {
+        "id": "term-00005"
+      },
+      {
+        "id": "term-00006"
+      }
+    ]
+  },
+  "m68852:item:fs-idp95347744-item-1": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00007"
+      }
+    ]
+  },
+  "m68852:item:fs-idp95347744-item-2": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00008"
+      }
+    ]
+  },
+  "m68852:item:fs-idp95347744-item-3": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00009"
+      }
+    ]
+  },
+  "m68852:item:fs-idp95347744-item-4": {
+    "terms": [
+      {
+        "class": "no-emphasis",
+        "id": "term-00010"
+      },
+      {
+        "class": "no-emphasis",
+        "id": "term-00011"
+      }
+    ]
+  }
+}

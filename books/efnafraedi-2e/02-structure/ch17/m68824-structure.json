@@ -1,0 +1,823 @@
+{
+  "moduleId": "m68824",
+  "title": {
+    "segmentId": "m68824:title:auto-1",
+    "text": "Potential, Free Energy, and Equilibrium"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8027ad43-75a9-47d8-8ee6-da2125ceb96f",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the relations between potential, free energy change, and equilibrium constants",
+        "Perform calculations involving the relations between cell potentials, free energy changes, and equilibrium",
+        "Use the Nernst equation to determine cell potentials under nonstandard conditions"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm222137520",
+      "segmentId": "m68824:para:fs-idm222137520"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm248064976",
+      "class": null,
+      "title": {
+        "segmentId": "m68824:title:fs-idm248064976-title",
+        "text": "E° and ΔG°"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm215301376",
+          "segmentId": "m68824:para:fs-idm215301376"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm215765968",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm233319952",
+          "segmentId": "m68824:para:fs-idm233319952"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm655964560",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm648263408",
+          "segmentId": "m68824:para:fs-idm648263408"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm218866032",
+      "class": null,
+      "title": {
+        "segmentId": "m68824:title:fs-idm218866032-title",
+        "text": "E° and K"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm242158160",
+          "segmentId": "m68824:para:fs-idm242158160"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm205421792",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm242471888",
+          "segmentId": "m68824:para:fs-idm242471888"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_17_04_Relation",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68824:caption:CNX_Chem_17_04_Relation-caption"
+          },
+          "media": {
+            "id": "fs-idp78132768",
+            "alt": "A diagram is shown that involves three double headed arrows positioned in the shape of an equilateral triangle. The vertices are labeled in red. The top vertex is labeled “K.“ The vertex at the lower left is labeled “delta G superscript degree symbol.” The vertex at the lower right is labeled “E superscript degree symbol subscript cell.” The right side of the triangle is labeled “E superscript degree symbol subscript cell equals ( R T divided by n  F ) l n K.” The lower side of the triangle is labeled “delta G superscript degree symbol equals negative n F E superscript degree symbol subscript cell.” The left side of the triangle is labeled “delta G superscript degree symbol equals negative R T l n K.”",
+            "src": "../../media/CNX_Chem_17_04_Relation.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm241340256",
+          "summary": "No Summary",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-15",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-16",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-17",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-18",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-19",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-20",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-21",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-22",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-23",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-24",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-25",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-26",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-27",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-28",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-29",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp16667568",
+          "title": {
+            "segmentId": "m68824:example-title:fs-idp16667568-title",
+            "text": "Equilibrium Constants, Standard Cell Potentials, and Standard Free Energy Changes"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp58864784",
+              "segmentId": "m68824:para:fs-idp58864784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp148405856",
+              "segmentId": "m68824:para:fs-idp148405856",
+              "title": {
+                "segmentId": "m68824:para-title:fs-idp148405856-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp199399072",
+              "segmentId": "m68824:para:fs-idp199399072"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp101330240",
+              "segmentId": "m68824:para:fs-idp101330240"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm8503104",
+              "segmentId": "m68824:para:fs-idm8503104"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp110872768",
+              "segmentId": "m68824:para:fs-idp110872768",
+              "title": {
+                "segmentId": "m68824:para-title:fs-idp110872768-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp101579952",
+              "segmentId": "m68824:para:fs-idp101579952"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm89214592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm7297840"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp2572928"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp126961280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp7040368"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp195905712",
+              "title": {
+                "segmentId": "m68824:note-title:fs-idp195905712-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp101579952",
+                  "segmentId": "m68824:para:fs-idp101579952"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm251393488",
+      "class": null,
+      "title": {
+        "segmentId": "m68824:title:fs-idm251393488-title",
+        "text": "Potentials at Nonstandard Conditions:  The Nernst Equation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp76396192",
+          "segmentId": "m68824:para:fs-idp76396192"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp76596960",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm983728",
+          "segmentId": "m68824:para:fs-idm983728"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp17520176",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm642366960",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp24059424",
+          "segmentId": "m68824:para:fs-idp24059424"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp195072512",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm240817536",
+          "title": {
+            "segmentId": "m68824:example-title:fs-idm240817536-title",
+            "text": "Predicting Redox Spontaneity Under Nonstandard Conditions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp23262432",
+              "segmentId": "m68824:para:fs-idp23262432"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp102277360",
+              "segmentId": "m68824:para:fs-idp102277360",
+              "title": {
+                "segmentId": "m68824:para-title:fs-idp102277360-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm15620288",
+              "segmentId": "m68824:para:fs-idm15620288"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp160381408",
+              "segmentId": "m68824:para:fs-idp160381408"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp72968608",
+              "segmentId": "m68824:para:fs-idp72968608",
+              "title": {
+                "segmentId": "m68824:para-title:fs-idp72968608-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp34686320",
+              "segmentId": "m68824:para:fs-idp34686320"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm365472"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp61630144"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp99119696"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp18135232"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp84594464",
+              "title": {
+                "segmentId": "m68824:note-title:fs-idp84594464-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp34686320",
+                  "segmentId": "m68824:para:fs-idp34686320"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp264674608",
+          "segmentId": "m68824:para:fs-idp264674608"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp211103648",
+          "title": {
+            "segmentId": "m68824:example-title:fs-idp211103648-title",
+            "text": "Concentration Cells"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp40117744",
+              "segmentId": "m68824:para:fs-idp40117744"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp142711536",
+              "segmentId": "m68824:para:fs-idp142711536",
+              "title": {
+                "segmentId": "m68824:para-title:fs-idp142711536-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp2148576",
+              "segmentId": "m68824:para:fs-idp2148576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp47526144",
+              "segmentId": "m68824:para:fs-idp47526144"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm11024080",
+              "segmentId": "m68824:para:fs-idm11024080",
+              "title": {
+                "segmentId": "m68824:para-title:fs-idm11024080-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp18466656",
+              "segmentId": "m68824:para:fs-idp18466656"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp85858736"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp5275888"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp235695968"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm1444240",
+              "title": {
+                "segmentId": "m68824:note-title:fs-idm1444240-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp18466656",
+                  "segmentId": "m68824:para:fs-idp18466656"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp160224496",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68824:title:fs-idp160224496-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp58835888",
+          "segmentId": "m68824:para:fs-idp58835888"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp39495232",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68824:title:fs-idp39495232-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-72",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-73",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-74",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-75",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-76",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-77",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-78",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp39758576",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68824:title:fs-idp39758576-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp144244864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp166722736",
+                "segmentId": "m68824:problem:fs-idp166722736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp27403664",
+                "segmentId": "m68824:problem:fs-idp27403664"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48341536",
+                "segmentId": "m68824:problem:fs-idp48341536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp156919504",
+                "segmentId": "m68824:problem:fs-idp156919504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3297200",
+                "segmentId": "m68824:solution:fs-idp3297200"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp27704096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp99097696",
+                "segmentId": "m68824:problem:fs-idp99097696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp142126752",
+                "segmentId": "m68824:problem:fs-idp142126752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp33577056",
+                "segmentId": "m68824:problem:fs-idp33577056"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm3860960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31670624",
+                "segmentId": "m68824:problem:fs-idp31670624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp152289968",
+                "segmentId": "m68824:problem:fs-idp152289968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp15504336",
+                "segmentId": "m68824:problem:fs-idp15504336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12040176",
+                "segmentId": "m68824:problem:fs-idm12040176"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp157478848",
+                "segmentId": "m68824:solution:fs-idp157478848"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp126191568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40790336",
+                "segmentId": "m68824:problem:fs-idp40790336"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17461440",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40928800",
+                "segmentId": "m68824:problem:fs-idp40928800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp113204688",
+                "segmentId": "m68824:problem:fs-idp113204688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp27568672",
+                "segmentId": "m68824:problem:fs-idp27568672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp183824608",
+                "segmentId": "m68824:problem:fs-idp183824608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp182499600",
+                "segmentId": "m68824:problem:fs-idp182499600"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp161071024",
+                "segmentId": "m68824:solution:fs-idp161071024"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68824:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68824:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68824:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68824:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp94537696",
+        "termSegmentId": "m68824:glossary-term:fs-idp94537696-term",
+        "definitionSegmentId": "m68824:glossary-def:fs-idp94537696-def"
+      },
+      {
+        "id": "fs-idp41925664",
+        "termSegmentId": "m68824:glossary-term:fs-idp41925664-term",
+        "definitionSegmentId": "m68824:glossary-def:fs-idp41925664-def"
+      },
+      {
+        "id": "fs-idp211566960",
+        "termSegmentId": "m68824:glossary-term:fs-idp211566960-term",
+        "definitionSegmentId": "m68824:glossary-def:fs-idp211566960-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

@@ -1,0 +1,143 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mn>8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>",
+    "latex": "{8\\, \\times \\, \\frac{1}{8}\\, =1}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mi>r</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>l</m:mi><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>336 pm</m:mtext></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>168 pm</m:mtext><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{r\\, =\\, \\frac{l}{2}\\, =\\, \\frac{{\\text{336 pm}}}{2}\\, =\\text{168 pm}.}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{density}\\, =\\, \\frac{{\\text{mass}}}{{\\text{volume}}}.}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>Po</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>3.471</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>3.79</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>9.16 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{Po}=\\, \\frac{{3.471\\, \\times \\, {{10}}^{−22}\\, \\text{g}}}{{3.79\\, \\times \\, {{10}}^{−23}\\, {{\\text{cm}}}^{3}}}\\, ={{\\text{9.16 g/cm}}}^{3}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>1 Ni atom</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol Ni</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Ni atoms</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>58.693</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Ni</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>9.746</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{1 Ni atom}\\, \\times \\, \\frac{{\\text{1 mol Ni}}}{{6.022\\, \\times \\, {{10}}^{{23}}\\, \\text{Ni atoms}}}\\, \\times \\, \\frac{{58.693\\, \\text{g}}}{{\\text{1 mol Ni}}}\\, =9.746\\, \\times \\, {{10}}^{−23}\\, \\text{g}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>l</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.524</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−8</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>4.376</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{V={l}^{3}={{({3.524\\, \\times \\, {10}−8\\, \\text{cm}})}}3=4.376\\, \\times \\, {{10}}^{−23}\\, {{\\text{cm}}}^{3}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>9.746</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>4.376</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>2.23 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{=\\, \\frac{{9.746\\, \\times \\, {{10}}^{−23}\\, \\text{g}}}{{4.376\\, \\times \\, {{10}}^{−23}\\, {{\\text{cm}}}^{3}}}\\, ={{\\text{2.23 g/cm}}}^{3}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>1 Ni atom</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol Ni</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Ni atoms</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>58.693</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Ni</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>9.746</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{1 Ni atom}\\, \\times \\, \\frac{{\\text{1 mol Ni}}}{{6.022\\, \\times \\, {{10}}^{{23}}\\, \\text{Ni atoms}}}\\, \\times \\, \\frac{{58.693\\, \\text{g}}}{{\\text{1 mol Ni}}}\\, =9.746\\, \\times \\, {{10}}^{−23}\\, \\text{g}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>l</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.524</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−8</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>4.376</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{V={l}^{3}={{({3.524\\, \\times \\, {10}−8\\, \\text{cm}})}}3=4.376\\, \\times \\, {{10}}^{−23}\\, {{\\text{cm}}}^{3}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>9.746</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>4.376</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>2.23 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{=\\, \\frac{{9.746\\, \\times \\, {{10}}^{−23}\\, \\text{g}}}{{4.376\\, \\times \\, {{10}}^{−23}\\, {{\\text{cm}}}^{3}}}\\, ={{\\text{2.23 g/cm}}}^{3}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1</m:mn></m:mrow></m:math>",
+    "latex": "{(8\\, \\times \\, \\frac{1}{8}\\, =\\, 1}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>",
+    "latex": "{(8\\, \\times \\, \\frac{1}{8}\\, =1}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math>",
+    "latex": "{(6\\, \\times \\, \\frac{1}{2}\\, =3}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mi>r</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mn>16</m:mn></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>197.6 pm for a Ca radius</m:mtext><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{r\\, =\\, \\sqrt{{\\frac{{{{{({558.8\\, \\text{pm}})}}}^{2}+{{{({558.8\\, \\text{pm}})}}}^{2}}}{{16}}}}\\, =\\text{197.6 pm for a Ca radius}.}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{density}\\, =\\, \\frac{{\\text{mass}}}{{\\text{volume}}}.}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>",
+    "latex": "{(8\\, \\times \\, \\frac{1}{8}\\, =1}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:mn>6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math>",
+    "latex": "{6\\, \\times \\, \\frac{1}{2}\\, =3}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mtext>Ca</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2.662</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>1.745</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>1.53 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{Ca}\\, =\\, \\frac{{2.662\\, \\times \\, {{10}}^{−22}\\, \\text{g}}}{{1.745\\, \\times \\, {{10}}^{−22}\\, {{\\text{cm}}}^{3}}}\\, ={{\\text{1.53 g/cm}}}^{3}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{1}{2}\\, \\times \\, 2,}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>2</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{2}{3}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>/</m:mtext><m:mn>3</m:mn></m:mrow></m:msub><m:mtext>O</m:mtext><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{Al}}}_{{2\\text{/}3}}\\text{O}.}"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow><m:mi>d</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>λ</m:mi></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.2em\"/><m:mi>θ</m:mi></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.1315</m:mn><m:mspace width=\"0.2em\"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>25.25</m:mn><m:mtext>°</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>0.154 nm</m:mtext></m:mrow></m:math>",
+    "latex": "{d\\, =\\, \\frac{{nλ}}{{2\\, \\text{sin}\\, θ}}\\, =\\, \\frac{{1{({0.1315\\, \\text{nm}})}}}{{2\\, \\text{sin}\\, {({25.25\\text{°}})}}}\\, =\\text{0.154 nm}}"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mrow><m:mi>n</m:mi><m:mi>λ</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>d</m:mi><m:mspace width=\"0.2em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.2em\"/><m:mi>θ</m:mi></m:mrow></m:math>",
+    "latex": "{nλ=2d\\, \\text{sin}\\, θ}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idm6438944": {
+    "mathml": "<m:math><m:mrow><m:mtext>1 Po unit cell</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 Po atom</m:mtext></m:mrow><m:mrow><m:mtext>1 Po unit cell</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol Po</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Po atoms</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>208.998</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Po</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>3.47</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{1 Po unit cell}\\, \\times \\, \\frac{{\\text{1 Po atom}}}{{\\text{1 Po unit cell}}}\\, \\times \\, \\frac{{\\text{1 mol Po}}}{{6.022\\, \\times \\, {{10}}^{{23}}\\, \\text{Po atoms}}}\\, \\times \\, \\frac{{208.998\\, \\text{g}}}{{\\text{1 mol Po}}}\\, =3.47\\, \\times \\, {{10}}^{−22}\\, \\text{g}}",
+    "isBlock": true
+  },
+  "fs-idp81487792": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>l</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>336</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−10</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>3.79</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{V={l}^{3}={{({336\\, \\times \\, {10}−10\\, \\text{cm}})}}3=3.79\\, \\times \\, {{10}}^{−23}\\, {{\\text{cm}}}^{3}}",
+    "isBlock": true
+  },
+  "fs-idp26872608": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>d</m:mi><m:mn>2</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>4</m:mn><m:mi>r</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{a}^{2}+{a}^{2}={d}^{2}\\, \\longrightarrow \\, {{{({558.8\\, \\text{pm}})}}}^{2}+{{{({558.8\\, \\text{pm}})}}}^{2}={{{({4r})}}}^{2}}",
+    "isBlock": true
+  },
+  "fs-idp94173200": {
+    "mathml": "<m:math><m:mrow><m:mtext>1 Ca unit cell</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>4 Ca atoms</m:mtext></m:mrow><m:mrow><m:mtext>1 Ca unit cell</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 mol Ca</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Ca atoms</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>40.078</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Ca</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>2.662</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{1 Ca unit cell}\\, \\times \\, \\frac{{\\text{4 Ca atoms}}}{{\\text{1 Ca unit cell}}}\\, \\times \\, \\frac{{\\text{1 mol Ca}}}{{6.022\\, \\times \\, {{10}}^{{23}}\\, \\text{Ca atoms}}}\\, \\times \\, \\frac{{40.078\\, \\text{g}}}{{\\text{1 mol Ca}}}\\, =2.662\\, \\times \\, {{10}}^{−22}\\, \\text{g}}",
+    "isBlock": true
+  },
+  "fs-idm35315152": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>a</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−10</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>1.745</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{V={a}^{3}={{({558.8\\, \\times \\, {10}−10\\, \\text{cm}})}}3=1.745\\, \\times \\, {{10}}^{−22}\\, {{\\text{cm}}}^{3}}",
+    "isBlock": true
+  },
+  "fs-idm1060368": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>d</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{a}^{2}+{a}^{2}={d}^{2}}",
+    "isBlock": true
+  },
+  "fs-idp113603824": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width=\"0.2em\"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width=\"0.2em\"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>4</m:mn><m:mi>r</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>16</m:mn><m:msup><m:mi>r</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({0.514\\, \\text{nm}})}}}^{2}+{{{({0.514\\, \\text{nm}})}}}^{2}={{{({4r})}}}^{2}=16{r}^{2}}",
+    "isBlock": true
+  },
+  "fs-idm21982336": {
+    "mathml": "<m:math><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width=\"0.2em\"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width=\"0.2em\"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mn>16</m:mn></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>0.182 nm</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>1.82 Å</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>for a Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mspace width=\"0.2em\"/><m:mtext>radius</m:mtext><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{r=\\, \\sqrt{{\\frac{{{{{({0.514\\, \\text{nm}})}}}^{2}+{{{({0.514\\, \\text{nm}})}}}^{2}}}{{16}}}}\\, =\\text{0.182 nm}\\, (\\text{1.82 Å})\\, {{\\text{for a Cl}}}^{\\text{−}}\\, \\text{radius}.}",
+    "isBlock": true
+  },
+  "fs-idm77205344": {
+    "mathml": "<m:math><m:mrow><m:mi>n</m:mi><m:mi>λ</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>d</m:mi><m:mspace width=\"0.2em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.2em\"/><m:mi>θ</m:mi></m:mrow></m:math>",
+    "latex": "{nλ=2d\\, \\text{sin}\\, θ}",
+    "isBlock": true
+  }
+}

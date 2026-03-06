@@ -68,7 +68,7 @@ Chemistry End of Chapter Exercises
 Classify the six underlined properties in the following paragraph as chemical or physical:
 
 <!-- SEG:m68670:problem:fs-idp67379424 -->
-Fluorine is a pale yellow gas that reacts with most substances. The free element melts at −220 °C and boils at −188 °C. Finely divided metals burn in fluorine with a bright flame. Nineteen grams of fluorine will react with 1.0 gram of hydrogen.
+Fluorine is a pale yellow ++gas++ that ++reacts with most substances++. The free element ++melts at −220 °C++ and ++boils at −188 °C++. Finely divided ++metals burn in fluorine++ with a bright flame. ++Nineteen grams of fluorine will react with 1.0 gram of hydrogen++.
 
 <!-- SEG:m68670:problem:fs-idp241388320 -->
 Classify each of the following changes as physical or chemical:

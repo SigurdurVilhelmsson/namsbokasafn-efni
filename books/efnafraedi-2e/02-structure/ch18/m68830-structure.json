@@ -1,0 +1,619 @@
+{
+  "moduleId": "m68830",
+  "title": {
+    "segmentId": "m68830:title:auto-1",
+    "text": "Occurrence and Preparation of the Representative Metals"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "bc580803-a608-4004-95be-e5c48156136c",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Identify natural sources of representative metals",
+        "Describe electrolytic and chemical reduction processes used to prepare these elements from natural sources"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp111515632",
+      "segmentId": "m68830:para:fs-idp111515632"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp233041184",
+      "segmentId": "m68830:para:fs-idp233041184"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp232284896",
+      "class": null,
+      "title": {
+        "segmentId": "m68830:title:fs-idp232284896-title",
+        "text": "Electrolysis"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp25974496",
+          "class": null,
+          "title": {
+            "segmentId": "m68830:title:fs-idp25974496-title",
+            "text": "The Preparation of Sodium"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp77704912",
+              "segmentId": "m68830:para:fs-idp77704912"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp60529744",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp72558800",
+              "segmentId": "m68830:para:fs-idp72558800"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp1741488",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp289844720",
+              "segmentId": "m68830:para:fs-idp289844720"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_02_DownsCell",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68830:caption:CNX_Chem_18_02_DownsCell-caption"
+              },
+              "media": {
+                "id": "fs-idp98736208",
+                "alt": "A diagram is shown. At the center of the diagram is a T-shaped structure labeled, “Anode ( positive sign ),” that is on a mesh-like background labeled, “Iron screen.” The anode is connected to a box labeled, “Voltage source,” by a line, and the voltage source is connected to one of two L-shaped structures that surround the anode. They are labeled, “Cathode ( negative sign ).” Above the cathode on the right side of the diagram is a tube connected to a collection chamber labeled, “N a metal,” that has a lower outlet labeled, “N a outlet.” Surrounding all of these components is a blue background labeled, “Molten N a C l,” and a series of tubes that form a square outside the diagram. They have an opening in the upper right corner labeled, “Inlet for N a C l.” At the top of the diagram is a large tube with an upward-facing arrow drawn on it. The tube turns right, has a right-facing arrow on it, and is labeled, “C l subscript 2 outlet.”",
+                "src": "../../media/CNX_Chem_18_02_DownsCell.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp58959792",
+          "class": null,
+          "title": {
+            "segmentId": "m68830:title:fs-idp58959792-title",
+            "text": "The Preparation of Aluminum"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp122485616",
+              "segmentId": "m68830:para:fs-idp122485616"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp233465360",
+              "segmentId": "m68830:para:fs-idp233465360"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp372582096",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp157686224",
+              "segmentId": "m68830:para:fs-idp157686224"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp149385664",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp46332064",
+              "segmentId": "m68830:para:fs-idp46332064"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_18_02_HallHerCell",
+              "caption": {
+                "segmentId": "m68830:caption:CNX_Chem_18_02_HallHerCell-caption"
+              },
+              "media": {
+                "id": "fs-idp293911136",
+                "alt": "A diagram is shown. At the center of the diagram are two black squares, each labeled, “Carbon anode ( positive sign ),” and connected by forked tubes to a horizontal tube labeled with a positive sign. The carbon anodes are submerged in a green liquid labeled, “A l subscript 2 O subscript 3 dissolved in molten N a subscript 3 A l F subscript 6.” It is held in place by a three-sided, double layered container which is labeled, “Steel sheet,” on the outer layer and, “Ceramic,” on the inner layer. The carbon anodes are surrounded by bubbles labeled, “Bubbles of O subscript 2, C O, and C O subscript 2.” Below the green liquids lies a silver layer labeled, “Molten aluminum,” and a black layer labeled, “Carbon cathode ( negative sign ).” Above the diagram is an outlet tube labeled with an upward-facing arrow and the words, “H F and particulates exhaust to filter plant.”",
+                "src": "../../media/CNX_Chem_18_02_HallHerCell.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp296516320",
+          "class": null,
+          "title": {
+            "segmentId": "m68830:title:fs-idp296516320-title",
+            "text": "The Preparation of Magnesium"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp141293808",
+              "segmentId": "m68830:para:fs-idp141293808"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp29891440",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp264736752",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp82789984",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp217984240",
+              "segmentId": "m68830:para:fs-idp217984240"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp79571184",
+          "segmentId": "m68830:para:fs-idp79571184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp154016304",
+      "class": null,
+      "title": {
+        "segmentId": "m68830:title:fs-idp154016304-title",
+        "text": "Chemical Reduction"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp81243920",
+          "class": null,
+          "title": {
+            "segmentId": "m68830:title:fs-idp81243920-title",
+            "text": "The Preparation of Magnesium"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp232802512",
+              "segmentId": "m68830:para:fs-idp232802512"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp128104224",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp34921904",
+              "segmentId": "m68830:para:fs-idp34921904"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp49793088",
+          "class": null,
+          "title": {
+            "segmentId": "m68830:title:fs-idp49793088-title",
+            "text": "The Preparation of Zinc"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp81517344",
+              "segmentId": "m68830:para:fs-idp81517344"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp28884832",
+              "class": "unnumbered"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp120800288",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp141725568",
+              "segmentId": "m68830:para:fs-idp141725568"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp100139536",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp80292352",
+              "segmentId": "m68830:para:fs-idp80292352"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp266392272",
+          "class": null,
+          "title": {
+            "segmentId": "m68830:title:fs-idp266392272-title",
+            "text": "The Preparation of Tin"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm7467360",
+              "segmentId": "m68830:para:fs-idm7467360"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp55068128",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp117978352",
+              "segmentId": "m68830:para:fs-idp117978352"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp79584928",
+          "segmentId": "m68830:para:fs-idp79584928"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp109004816",
+          "segmentId": "m68830:para:fs-idp109004816"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp155164000",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68830:title:fs-idp155164000-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp270452384",
+          "segmentId": "m68830:para:fs-idp270452384"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp107853456",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68830:title:fs-idp107853456-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp79750944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3792624",
+                "segmentId": "m68830:problem:fs-idp3792624"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp75130000",
+                "segmentId": "m68830:solution:fs-idp75130000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp199448112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp49676080",
+                "segmentId": "m68830:problem:fs-idp49676080"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp265303360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp111274816",
+                "segmentId": "m68830:problem:fs-idp111274816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp260935168",
+                "segmentId": "m68830:solution:fs-idp260935168"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp119437920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp114115856",
+                "segmentId": "m68830:problem:fs-idp114115856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm20452416",
+                "segmentId": "m68830:problem:fs-idm20452416"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp84582880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp81306256",
+                "segmentId": "m68830:problem:fs-idp81306256"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp160366976",
+                "segmentId": "m68830:solution:fs-idp160366976"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56785888",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8600064",
+                "segmentId": "m68830:problem:fs-idm8600064"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm19716784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp265941728",
+                "segmentId": "m68830:problem:fs-idp265941728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11831200",
+                "segmentId": "m68830:solution:fs-idm11831200"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp236482640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29506928",
+                "segmentId": "m68830:problem:fs-idp29506928"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp72169040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47541392",
+                "segmentId": "m68830:problem:fs-idp47541392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15402272",
+                "segmentId": "m68830:solution:fs-idp15402272"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp198987536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp223677712",
+                "segmentId": "m68830:problem:fs-idp223677712"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp139236992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp82805216",
+                "segmentId": "m68830:problem:fs-idp82805216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp97149296",
+                "segmentId": "m68830:solution:fs-idp97149296"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp237555664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp216115200",
+                "segmentId": "m68830:problem:fs-idp216115200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp154659056",
+                "segmentId": "m68830:problem:fs-idp154659056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22608880",
+                "segmentId": "m68830:problem:fs-idm22608880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp116461520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp97252544",
+                "segmentId": "m68830:problem:fs-idp97252544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp120863008",
+                "segmentId": "m68830:solution:fs-idp120863008"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68830:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68830:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68830:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp238031216",
+        "termSegmentId": "m68830:glossary-term:fs-idp238031216-term",
+        "definitionSegmentId": "m68830:glossary-def:fs-idp238031216-def"
+      },
+      {
+        "id": "fs-idp11434288",
+        "termSegmentId": "m68830:glossary-term:fs-idp11434288-term",
+        "definitionSegmentId": "m68830:glossary-def:fs-idp11434288-def"
+      },
+      {
+        "id": "fs-idp167269072",
+        "termSegmentId": "m68830:glossary-term:fs-idp167269072-term",
+        "definitionSegmentId": "m68830:glossary-def:fs-idp167269072-def"
+      },
+      {
+        "id": "fs-idp121441888",
+        "termSegmentId": "m68830:glossary-term:fs-idp121441888-term",
+        "definitionSegmentId": "m68830:glossary-def:fs-idp121441888-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

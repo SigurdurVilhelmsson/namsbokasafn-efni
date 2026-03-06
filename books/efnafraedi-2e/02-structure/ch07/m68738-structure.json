@@ -1,0 +1,1160 @@
+{
+  "moduleId": "m68738",
+  "title": {
+    "segmentId": "m68738:title:auto-1",
+    "text": "Covalent Bonding"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1e445aa2-713a-496d-8052-c6008a85677c",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the formation of covalent bonds",
+        "Define electronegativity and assess the polarity of covalent bonds"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp18344448",
+      "segmentId": "m68738:para:fs-idp18344448"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm46739904",
+      "segmentId": "m68738:para:fs-idm46739904"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm52120656",
+      "class": null,
+      "title": {
+        "segmentId": "m68738:title:fs-idm52120656-title",
+        "text": "Formation of Covalent Bonds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp19293424",
+          "segmentId": "m68738:para:fs-idp19293424"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_02_Morse",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68738:caption:CNX_Chem_07_02_Morse-caption"
+          },
+          "media": {
+            "id": "fs-idp205967824",
+            "alt": "A graph is shown with the x-axis labeled, “Internuclear distance ( p m )” while the y-axis is labeled, “Energy ( J ).” One value, “0,” is labeled midway up the y-axis and two values: “0” at the far left and “0.74” to the left, are labeled on the x-axis. The point “74” is labeled, “H bond H distance.” A line is graphed that begins near the top of the y-axis and to the far left on the x-axis and drops steeply to a point labeled, “negative 7.24 times 10 superscript negative 19 J” on the y-axis and 74 on the x-axis. This low point on the graph corresponds to a drawing of two spheres that overlap considerably. The line then rises to zero on the y-axis and levels out. The point where it almost reaches zero corresponds to two spheres that overlap slightly. The line at zero on the y-axis corresponds to two spheres that are far from one another.",
+            "src": "../../media/CNX_Chem_07_02_Morse.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm53665712",
+          "segmentId": "m68738:para:fs-idm53665712"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp80127584",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm100273632",
+          "segmentId": "m68738:para:fs-idm100273632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp43869440",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp191792320",
+      "class": null,
+      "title": {
+        "segmentId": "m68738:title:fs-idp191792320-title",
+        "text": "Pure vs. Polar Covalent Bonds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp9596128",
+          "segmentId": "m68738:para:fs-idp9596128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp173661472",
+          "segmentId": "m68738:para:fs-idp173661472"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm2241360",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp15241984",
+          "segmentId": "m68738:para:fs-idp15241984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26845616",
+          "segmentId": "m68738:para:fs-idp26845616"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp24320096",
+          "segmentId": "m68738:para:fs-idp24320096"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_02_HClBond",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68738:caption:CNX_Chem_07_02_HClBond-caption"
+          },
+          "media": {
+            "id": "fs-idp17725376",
+            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a small sphere labeled, “H” and a larger sphere labeled, “C l” that overlap slightly. Both spheres have a small dot in the center. Diagram b shows an H bonded to a C l with a single bond. A dipole and a positive sign are written above the H and a dipole and negative sign are written above the C l. An arrow points toward the C l with a plus sign on the end furthest from the arrow’s head near the H.",
+            "src": "../../media/CNX_Chem_07_02_HClBond.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp14008096",
+      "class": null,
+      "title": {
+        "segmentId": "m68738:title:fs-idp14008096-title",
+        "text": "Electronegativity"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm115216",
+          "class": null,
+          "title": {
+            "segmentId": "m68738:title:fs-idm115216-title",
+            "text": "Electronegativity versus Electron Affinity"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp19127744",
+              "segmentId": "m68738:para:fs-idp19127744"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm39789712",
+              "class": "chemistry chemist-portrait",
+              "title": {
+                "segmentId": "m68738:note-title:fs-idm39789712-title",
+                "text": "Linus Pauling"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp175623792",
+                  "segmentId": "m68738:para:fs-idp175623792"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp80917280",
+                  "segmentId": "m68738:para:fs-idp80917280"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_02_Pauling",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68738:caption:CNX_Chem_07_02_Pauling-caption"
+              },
+              "media": {
+                "id": "fs-idp80404176",
+                "alt": "A photograph of Linus Pauling is shown.",
+                "src": "../../media/CNX_Chem_07_02_Pauling.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp9576080",
+          "class": null,
+          "title": {
+            "segmentId": "m68738:title:fs-idp9576080-title",
+            "text": "Electronegativity and Bond Type"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp186399536",
+              "segmentId": "m68738:para:fs-idp186399536"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_07_02_DeltaEN",
+              "caption": {
+                "segmentId": "m68738:caption:CNX_Chem_07_02_DeltaEN-caption"
+              },
+              "media": {
+                "id": "fs-idm74573296",
+                "alt": "Two flow charts and table are shown. The first flow chart is labeled, “Electronegativity difference between bonding atoms.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Zero,” “Intermediate,” and “Large,” respectively. The second flow chart is labeled, “Bond type.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Pure covalent,” “Polar covalent,” and “Ionic,” respectively. A double ended arrow is written vertically to the right of the flow charts and labeled, “Covalent character decreases; ionic character increases.” The table is made up of two columns and four rows. The header line is labeled “Bond type” and “Electronegativity difference.” The left column contains the phrases “Pure covalent,” “Polar covalent,” and “Ionic,” while the right column contains the values “less than 0.4,” “between 0.4 and 1.8,” and “greater than 1.8.”",
+                "src": "../../media/CNX_Chem_07_02_DeltaEN.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm32214656",
+              "segmentId": "m68738:para:fs-idm32214656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm28373728",
+              "segmentId": "m68738:para:fs-idm28373728"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm38253568",
+              "segmentId": "m68738:para:fs-idm38253568"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm8119280",
+              "title": {
+                "segmentId": "m68738:example-title:fs-idm8119280-title",
+                "text": "Electronegativity and Bond Polarity"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp117774608",
+                  "segmentId": "m68738:para:fs-idp117774608"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm8126928",
+                  "segmentId": "m68738:para:fs-idm8126928"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm21713856",
+                  "segmentId": "m68738:para:fs-idm21713856",
+                  "title": {
+                    "segmentId": "m68738:para-title:fs-idm21713856-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp64846816",
+                  "segmentId": "m68738:para:fs-idp64846816",
+                  "title": {
+                    "segmentId": "m68738:para-title:fs-idp64846816-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp56083008",
+                  "title": {
+                    "segmentId": "m68738:note-title:fs-idp56083008-title",
+                    "text": "Answer:"
+                  },
+                  "content": []
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "id": "fs-idm2614240",
+              "class": "top-titled",
+              "summary": "This table has three columns and seven rows. The first row is a header row and it labels each column. The first column header is, “Bond,” the second is, “capital delta E N,” and the third is, “Polarity.” Under the “Bond” column are the following: C bonds to H with a single bond; S bonds to H with a single bond; C bonds to N with a single bond; N bonds to H with a single bond; C bonds to O with a single bond; and O bonds to H with a single bond. Under the “capital delta E N” columna are the values: 0.4; 0.4; 0.5; 0.9; 1.0; and 1.4. Under the “Polarity” column are the follwoing: C bonds to H with a single bond, there is a lowercase delta negative sign above the C and a lowercase delta positive sign over H; S bonds to H with a single bond, there is a lowercase delta negative sign over the S and a lowercase delta positive sign over the H; C bonds to N with a single bond, there is a lowercase delta positive sign over the C and a lowercase delta negative sign over the N; N bonds to H with a single bond, there is a lowercase delta negative sign over the N and a lowercase delta positive sign over the H; C bonds to O with a single bond, there is a lowercase delta positive sign over C and a lowercase delta negative sign over the O; and O bonds to H with a single bond, there is a lowercase delta negative sign over the O and a lowercase delta positive sign over the H.",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-40",
+                      "attributes": {
+                        "namest": "c1",
+                        "nameend": "c3",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-41",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-42",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-43",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-44",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-45",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-46",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-47",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-48",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-49",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-50",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-51",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-52",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-53",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-54",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-55",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-56",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-57",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-58",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-59",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-60",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-61",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "id": "fs-idm25109184",
+              "class": "unnumbered",
+              "summary": "This table has three columns and five rows. The first row is a header row and it labels each column. The first column header is, “Bond,” the second column header is, “Electronegativity Difference,” and the third column header is, “Polarity.” Under the column “Bond” are the following: C bonds to C with a single bond; C bonds to H with a single bond; S i bonds to C with a single bond; and S i bonds to O with a single bond. Under the column “Electronegativity Difference” are the values: 0.0; 0.4; 0.7; and 1.7. Under the column “Polarity” are the following: nonpolar, C bonds to H with a single bond, there is a lowercase delta negative sign over C and a lowercase delta positive sign over H; S i bonds to C with a single bond, there is a lowercase delta positive sign over S i and a lowercase delta negative sign over C; and S i bonds to O with a single bond, there is a lowercase delta positive sign over S i and a lowercase delta negative sign over O.",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-62",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-63",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-64",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-65",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-66",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-67",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-68",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-69",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-70",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-71",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-72",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-73",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-74",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-75",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-76",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm42504736",
+          "segmentId": "m68738:para:fs-idm42504736"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm49461456",
+          "segmentId": "m68738:para:fs-idm49461456"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_02_ENTable",
+          "caption": {
+            "segmentId": "m68738:caption:CNX_Chem_07_02_ENTable-caption"
+          },
+          "media": {
+            "id": "fs-idp15011408",
+            "alt": "Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.",
+            "src": "../../media/CNX_Chem_07_02_ENTable.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm4705056",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68738:title:fs-idm4705056-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp86079584",
+          "segmentId": "m68738:para:fs-idp86079584"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp134316112",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68738:title:fs-idp134316112-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp49074848",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2824400",
+                "segmentId": "m68738:problem:fs-idm2824400"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21247904",
+                "segmentId": "m68738:solution:fs-idm21247904"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm13014880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp93923328",
+                "segmentId": "m68738:problem:fs-idp93923328"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp119456432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10626064",
+                "segmentId": "m68738:problem:fs-idm10626064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp137731248",
+                "segmentId": "m68738:problem:fs-idp137731248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp34043968",
+                "segmentId": "m68738:problem:fs-idp34043968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp145928416",
+                "segmentId": "m68738:problem:fs-idp145928416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp62117984",
+                "segmentId": "m68738:problem:fs-idp62117984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp15975072",
+                "segmentId": "m68738:problem:fs-idp15975072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp135856480",
+                "segmentId": "m68738:problem:fs-idp135856480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp70623968",
+                "segmentId": "m68738:problem:fs-idp70623968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp162650528",
+                "segmentId": "m68738:problem:fs-idp162650528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm25413152",
+                "segmentId": "m68738:problem:fs-idm25413152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp57507392",
+                "segmentId": "m68738:problem:fs-idp57507392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp58466608",
+                "segmentId": "m68738:problem:fs-idp58466608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm92647632",
+                "segmentId": "m68738:solution:fs-idm92647632"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18335616",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm24945328",
+                "segmentId": "m68738:problem:fs-idm24945328"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm121789856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp191889824",
+                "segmentId": "m68738:problem:fs-idp191889824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12153568",
+                "segmentId": "m68738:problem:fs-idm12153568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp91653072",
+                "segmentId": "m68738:problem:fs-idp91653072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6938432",
+                "segmentId": "m68738:problem:fs-idp6938432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp74508640",
+                "segmentId": "m68738:problem:fs-idp74508640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp165919328",
+                "segmentId": "m68738:problem:fs-idp165919328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp44669424",
+                "segmentId": "m68738:problem:fs-idp44669424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65630688",
+                "segmentId": "m68738:problem:fs-idp65630688"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10691120",
+                "segmentId": "m68738:solution:fs-idm10691120"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp43172032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4843136",
+                "segmentId": "m68738:problem:fs-idm4843136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm54141760",
+                "segmentId": "m68738:problem:fs-idm54141760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65897056",
+                "segmentId": "m68738:problem:fs-idp65897056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65832208",
+                "segmentId": "m68738:problem:fs-idp65832208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp170735744",
+                "segmentId": "m68738:problem:fs-idp170735744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm51982672",
+                "segmentId": "m68738:problem:fs-idm51982672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp225578400",
+                "segmentId": "m68738:problem:fs-idp225578400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp105804256",
+                "segmentId": "m68738:problem:fs-idp105804256"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm28148800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27652976",
+                "segmentId": "m68738:problem:fs-idp27652976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63429168",
+                "segmentId": "m68738:problem:fs-idp63429168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19767520",
+                "segmentId": "m68738:problem:fs-idp19767520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp256954784",
+                "segmentId": "m68738:problem:fs-idp256954784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp288482688",
+                "segmentId": "m68738:problem:fs-idp288482688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp249303488",
+                "segmentId": "m68738:problem:fs-idp249303488"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm60378112",
+                "segmentId": "m68738:solution:fs-idm60378112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp49532528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33320240",
+                "segmentId": "m68738:problem:fs-idm33320240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp291050752",
+                "segmentId": "m68738:problem:fs-idp291050752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10196928",
+                "segmentId": "m68738:problem:fs-idm10196928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp92022624",
+                "segmentId": "m68738:problem:fs-idp92022624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48302032",
+                "segmentId": "m68738:problem:fs-idp48302032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp251836720",
+                "segmentId": "m68738:problem:fs-idp251836720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp31566784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp65374912",
+                "segmentId": "m68738:problem:fs-idp65374912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm121823728",
+                "segmentId": "m68738:solution:fs-idm121823728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp9464672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp36762400",
+                "segmentId": "m68738:problem:fs-idp36762400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10175808",
+                "segmentId": "m68738:problem:fs-idm10175808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp66031184",
+                "segmentId": "m68738:problem:fs-idp66031184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp291761760",
+                "segmentId": "m68738:problem:fs-idp291761760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp167633952",
+                "segmentId": "m68738:problem:fs-idp167633952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp176038448",
+                "segmentId": "m68738:problem:fs-idp176038448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp173506592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm79569728",
+                "segmentId": "m68738:problem:fs-idm79569728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp20525952",
+                "segmentId": "m68738:problem:fs-idp20525952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84064688",
+                "segmentId": "m68738:problem:fs-idp84064688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp64282448",
+                "segmentId": "m68738:problem:fs-idp64282448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65680032",
+                "segmentId": "m68738:problem:fs-idp65680032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp183486032",
+                "segmentId": "m68738:problem:fs-idp183486032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp254054736",
+                "segmentId": "m68738:problem:fs-idp254054736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp58442352",
+                "segmentId": "m68738:problem:fs-idp58442352"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm3310160",
+                "segmentId": "m68738:solution:fs-idm3310160"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51035456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43931056",
+                "segmentId": "m68738:problem:fs-idp43931056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp64798368",
+                "segmentId": "m68738:problem:fs-idp64798368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp73172304",
+                "segmentId": "m68738:problem:fs-idp73172304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp88939568",
+                "segmentId": "m68738:problem:fs-idp88939568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4309200",
+                "segmentId": "m68738:problem:fs-idp4309200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp253740944",
+                "segmentId": "m68738:problem:fs-idp253740944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp128497056",
+                "segmentId": "m68738:problem:fs-idp128497056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46941312",
+                "segmentId": "m68738:problem:fs-idp46941312"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68738:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68738:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68738:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm4648560",
+        "termSegmentId": "m68738:glossary-term:fs-idm4648560-term",
+        "definitionSegmentId": "m68738:glossary-def:fs-idm4648560-def"
+      },
+      {
+        "id": "fs-idm100141920",
+        "termSegmentId": "m68738:glossary-term:fs-idm100141920-term",
+        "definitionSegmentId": "m68738:glossary-def:fs-idm100141920-def"
+      },
+      {
+        "id": "fs-idp28641840",
+        "termSegmentId": "m68738:glossary-term:fs-idp28641840-term",
+        "definitionSegmentId": "m68738:glossary-def:fs-idp28641840-def"
+      },
+      {
+        "id": "fs-idp45896864",
+        "termSegmentId": "m68738:glossary-term:fs-idp45896864-term",
+        "definitionSegmentId": "m68738:glossary-def:fs-idp45896864-def"
+      },
+      {
+        "id": "fs-idm47184144",
+        "termSegmentId": "m68738:glossary-term:fs-idm47184144-term",
+        "definitionSegmentId": "m68738:glossary-def:fs-idm47184144-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

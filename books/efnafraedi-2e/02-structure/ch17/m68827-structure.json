@@ -1,0 +1,651 @@
+{
+  "moduleId": "m68827",
+  "title": {
+    "segmentId": "m68827:title:auto-1",
+    "text": "Electrolysis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f7da8e5d-7d8b-4d26-88dd-fe48dbc498ab",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the process of electrolysis",
+        "Compare the operation of electrolytic cells with that of galvanic cells",
+        "Perform stoichiometric calculations for electrolytic processes"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm133590080",
+      "segmentId": "m68827:para:fs-idm133590080"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp7089472",
+      "class": null,
+      "title": {
+        "segmentId": "m68827:title:fs-idp7089472-title",
+        "text": "The Electrolysis of Molten Sodium Chloride"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm157333328",
+          "segmentId": "m68827:para:fs-idm157333328"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm155730240",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm174200080",
+          "segmentId": "m68827:para:fs-idm174200080"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_17_07_NaCl",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68827:caption:CNX_Chem_17_07_NaCl-caption"
+          },
+          "media": {
+            "id": "fs-idm121873696",
+            "alt": "This diagram shows a tank containing a light blue liquid, labeled “Molten N a C l.” A vertical dark grey divider with small, evenly distributed dark dots, labeled “Porous screen” is located at the center of the tank dividing it into two halves. Dark grey bars are positioned at the center of each of the halves of the tank. The bar on the left, which is labeled “Anode” has green bubbles originating from it. The bar on the right which is labeled “Cathode” has light grey bubbles originating from it. An arrow points left from the center of the tank toward the anode, which is labeled “C l superscript negative.” An arrow points right from the center of the tank toward the cathode, which is labeled “N a superscript plus.” A line extends from the tops of the anode and cathode to a rectangle centrally placed above the tank which is labeled “Voltage source.” An arrow extends upward above the anode to the left of the line which is labeled “e superscript negative.” A plus symbol is located to the left of the voltage source and a negative sign it located to its right. An arrow points downward along the line segment leading to the cathode. This arrow is labeled “e superscript negative.” The left side of below the diagram is the label “2 C l superscript negative right pointing arrow C l subscript 2 ( g ) plus 2 e superscript negative.” At the right, below the diagram is the label “2 N a superscript plus plus 2 e superscript negative right pointing arrow 2 N a ( l ).”",
+            "src": "../../media/CNX_Chem_17_07_NaCl.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm118223680",
+      "class": null,
+      "title": {
+        "segmentId": "m68827:title:fs-idm118223680-title",
+        "text": "The Electrolysis of Water"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm178403632",
+          "segmentId": "m68827:para:fs-idm178403632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm33413904",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp152393360",
+          "segmentId": "m68827:para:fs-idp152393360"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_17_07_Water",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68827:caption:CNX_Chem_17_07_Water-caption"
+          },
+          "media": {
+            "id": "fs-idm328048",
+            "alt": "This figure shows an apparatus used for electrolysis. A central chamber with an open top has a vertical column extending below that is nearly full of a clear, colorless liquid, which is labeled “H subscript 2 O plus H subscript 2 S O subscript 4.” A horizontal tube in the apparatus connects the central region to vertical columns to the left and right, each of which has a valve or stopcock at the top and a stoppered bottom. On the left, the stopper at the bottom has a small brown square connected just above it in the liquid. The square is labeled “Anode plus.” A black wire extends from the stopper at the left to a rectangle which is labeled “Voltage source” on to the stopper at the right. The left side of the rectangle is labeled with a plus symbol and the right side is labeled with a negative sign. The stopper on the right also has a brown square connected to it which is in the liquid in the apparatus. This square is labeled “Cathode negative.” The level of the solution on the left arm or tube of the apparatus is significantly higher than the level of the right arm. Bubbles are present near the surface of the liquid on each side of the apparatus, with the bubbles labeled as “O subscript 2 ( g )” on the left and “H subscript 2 ( g )” on the right.",
+            "src": "../../media/CNX_Chem_17_07_Water.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm95712768",
+      "class": null,
+      "title": {
+        "segmentId": "m68827:title:fs-idm95712768-title",
+        "text": "The Electrolysis of Aqueous Sodium Chloride"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm37835104",
+          "segmentId": "m68827:para:fs-idm37835104"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm165376416",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm172416352",
+          "segmentId": "m68827:para:fs-idm172416352"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30637792",
+          "segmentId": "m68827:para:fs-idp30637792"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm37951824",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm194552416",
+          "segmentId": "m68827:para:fs-idm194552416"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm146681264",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm37680480",
+          "segmentId": "m68827:para:fs-idm37680480"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm153943488",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68827:note-title:fs-idm153943488-title",
+            "text": "Electroplating"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm182126896",
+              "segmentId": "m68827:para:fs-idm182126896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm52313424",
+              "segmentId": "m68827:para:fs-idm52313424"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm104543584",
+              "segmentId": "m68827:para:fs-idm104543584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm28358112",
+              "segmentId": "m68827:para:fs-idm28358112"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_17_07_Electroplate",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68827:caption:CNX_Chem_17_07_Electroplate-caption"
+          },
+          "media": {
+            "id": "fs-idp6902432",
+            "alt": "This figure contains a diagram of an electrochemical cell. One beakers is shown that is just over half full. The beaker contains a clear, colorless solution that is labeled “A g N O subscript 3 ( a q ).” A silver strip is mostly submerged in the liquid on the left. This strip is labeled “Silver (anode).” The top of the strip is labeled with a red plus symbol. An arrow points right from the surface of the metal strip into the solution to the label “A g superscript plus” to the right. A spoon is similarly suspended in the solution and is labeled “Spoon (cathode).” It is labeled with a black negative sign on the tip of the spoon’s handle above the surface of the liquid. An arrow extends from the label “A g superscript plus” to the spoon on the right. A wire extends from the top of the spoon and the strip to a rectangle labeled “Voltage source.” An arrow points upward from silver strip which is labeled “e superscript negative.” Similarly, an arrow points down at the right to the surface of the spoon which is also labeled “e superscript negative.” A plus sign is shown just outside the voltage source to the left and a negative is shown to its right.",
+            "src": "../../media/CNX_Chem_17_07_Electroplate.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm135232752",
+      "class": null,
+      "title": {
+        "segmentId": "m68827:title:fs-idm135232752-title",
+        "text": "Quantitative Aspects of Electrolysis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp48850016",
+          "segmentId": "m68827:para:fs-idp48850016"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm199736560",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm90272368",
+          "segmentId": "m68827:para:fs-idm90272368"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm357954672",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm90332432",
+          "segmentId": "m68827:para:fs-idm90332432"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm389355760",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm371971168",
+          "segmentId": "m68827:para:fs-idm371971168"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm34493360",
+          "title": {
+            "segmentId": "m68827:example-title:fs-idm34493360-title",
+            "text": "Converting Current to Moles of Electrons"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm194716208",
+              "segmentId": "m68827:para:fs-idm194716208"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm117750304",
+              "segmentId": "m68827:para:fs-idm117750304",
+              "title": {
+                "segmentId": "m68827:para-title:fs-idm117750304-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm196164496",
+              "segmentId": "m68827:para:fs-idm196164496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm34245792",
+              "segmentId": "m68827:para:fs-idm34245792"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm156206976",
+              "segmentId": "m68827:para:fs-idm156206976",
+              "title": {
+                "segmentId": "m68827:para-title:fs-idm156206976-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp74418928",
+              "segmentId": "m68827:para:fs-idp74418928"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm184726272"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm34803168"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm119439696"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm28202384",
+              "title": {
+                "segmentId": "m68827:note-title:fs-idm28202384-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp74418928",
+                  "segmentId": "m68827:para:fs-idp74418928"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm33432704",
+          "title": {
+            "segmentId": "m68827:example-title:fs-idm33432704-title",
+            "text": "Time Required for Deposition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm180222336",
+              "segmentId": "m68827:para:fs-idm180222336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp14564880",
+              "segmentId": "m68827:para:fs-idp14564880",
+              "title": {
+                "segmentId": "m68827:para-title:fs-idp14564880-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm171372560",
+              "segmentId": "m68827:para:fs-idm171372560"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2746496",
+              "segmentId": "m68827:para:fs-idm2746496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm154329376",
+              "segmentId": "m68827:para:fs-idm154329376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm135932032",
+              "segmentId": "m68827:para:fs-idm135932032",
+              "title": {
+                "segmentId": "m68827:para-title:fs-idm135932032-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm188224944",
+              "segmentId": "m68827:para:fs-idm188224944"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm83716288"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm145248288"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm156161824"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm168712592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm194820160"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm206575840",
+              "title": {
+                "segmentId": "m68827:note-title:fs-idm206575840-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm188224944",
+                  "segmentId": "m68827:para:fs-idm188224944"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp28955808",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68827:title:fs-idp28955808-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm118987184",
+          "segmentId": "m68827:para:fs-idm118987184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm102923952",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68827:title:fs-idm102923952-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68827:entry:auto-58",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm194007232",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68827:title:fs-idm194007232-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm330221280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm323733792",
+                "segmentId": "m68827:problem:fs-idm323733792"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm324128112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm493503856",
+                "segmentId": "m68827:problem:fs-idm493503856"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm27929184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm170371856",
+                "segmentId": "m68827:problem:fs-idm170371856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm162740160",
+                "segmentId": "m68827:problem:fs-idm162740160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm204421520",
+                "segmentId": "m68827:problem:fs-idm204421520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34882096",
+                "segmentId": "m68827:problem:fs-idm34882096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm201979680",
+                "segmentId": "m68827:problem:fs-idm201979680"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp30833248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7133216",
+                "segmentId": "m68827:problem:fs-idp7133216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37838288",
+                "segmentId": "m68827:solution:fs-idm37838288"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp30601424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm189918864",
+                "segmentId": "m68827:problem:fs-idm189918864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp31244400",
+                "segmentId": "m68827:problem:fs-idp31244400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm176428816",
+                "segmentId": "m68827:problem:fs-idm176428816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41476976",
+                "segmentId": "m68827:problem:fs-idp41476976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp78634096",
+                "segmentId": "m68827:problem:fs-idp78634096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm171259104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm176692368",
+                "segmentId": "m68827:problem:fs-idm176692368"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm212860688",
+                "segmentId": "m68827:solution:fs-idm212860688"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm13758224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm92543968",
+                "segmentId": "m68827:problem:fs-idm92543968"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68827:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68827:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68827:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68827:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm213056464",
+        "termSegmentId": "m68827:glossary-term:fs-idm213056464-term",
+        "definitionSegmentId": "m68827:glossary-def:fs-idm213056464-def"
+      },
+      {
+        "id": "fs-idm117181824",
+        "termSegmentId": "m68827:glossary-term:fs-idm117181824-term",
+        "definitionSegmentId": "m68827:glossary-def:fs-idm117181824-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

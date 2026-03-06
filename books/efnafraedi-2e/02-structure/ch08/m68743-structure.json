@@ -1,0 +1,71 @@
+{
+  "moduleId": "m68743",
+  "title": {
+    "segmentId": "m68743:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "cb3e22a8-dfda-4ded-ab42-823c0ff96e1d",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Valence Bond Theory",
+        "Hybrid Atomic Orbitals",
+        "Multiple Bonds",
+        "Molecular Orbital Theory"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_08_00_LiqO2",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68743:caption:CNX_Chem_08_00_LiqO2-caption"
+      },
+      "media": {
+        "id": "fs-idp76967904",
+        "alt": "A pitcher is shown pouring liquid oxygen through the gap between two magnets, where it has formed a solid disk. A call out box near the stream of liquid oxygen shows an image of six pairs of spheres, spread apart from one another. Another call out box near the solid disk shows ten pairs of spheres much closer together.",
+        "src": "../../media/CNX_Chem_08_00_LiqO2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp262340496",
+      "segmentId": "m68743:para:fs-idp262340496"
+    },
+    {
+      "type": "media",
+      "id": "fs-idp82346208",
+      "class": "scaled-down",
+      "alt": "Two Lewis diagrams are shown. The diagram on the left shows two nitrogen atoms, represented by the letter N connected by three lines and with a lone pair of electrons on each end of the structure. The diagram on the right shows two oxygen atoms, depicted by the letter O, connected by two lines. Two pairs of electrons surround each oxygen to the top and ends of the structure.",
+      "src": "../../media/CNX_Chem_08_00_N2O2Lewis_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm1216176",
+      "segmentId": "m68743:para:fs-idm1216176"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68743:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68743:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68743:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68743:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

@@ -1,0 +1,177 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>R</m:mi><m:mi>∞</m:mi></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{R}_{∞}=\\, \\frac{k}{{hc}}.}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>R</m:mi><m:mi>∞</m:mi></m:msub><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{{R}_{∞},}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/></m:math>",
+    "latex": "\\, \\times \\,"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>a</m:mtext><m:mn>0</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{a}}_{0}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mi>n</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mi>∞</m:mi></m:mrow></m:math>",
+    "latex": "{n\\, \\longrightarrow \\, ∞}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mi>r</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mi>∞</m:mi></m:mrow></m:math>",
+    "latex": "{r\\, \\longrightarrow \\, ∞}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/></m:math>",
+    "latex": "\\, \\times \\,"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mtext>=</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{E\\text{=}\\, \\frac{{hc}}{λ}.}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>E</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mrow><m:mi>k</m:mi><m:msup><m:mi>Z</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>3</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mo>…</m:mo></m:mrow></m:math>",
+    "latex": "{{E}_{n}=-\\frac{{k{Z}^{2}}}{{{n}^{2}}}\\, ,\\, n=1,\\, 2,\\, 3,\\, \\ldots}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mi>Z</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E=k{Z}^{2}{({\\, \\frac{1}{{{n}_{1}^{2}}}\\, -\\, \\frac{1}{{{n}_{2}^{2}}}\\,})}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mi>Z</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{r=\\, \\frac{{{n}^{2}}}{Z}\\, {a}_{0}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:mn>2.856</m:mn><m:mspace width=\"0.2em\"/><m:mtext>eV</m:mtext></m:mrow></m:math>",
+    "latex": "{2.856\\, \\text{eV}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/></m:math>",
+    "latex": "\\, \\times \\,"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/></m:math>",
+    "latex": "\\, \\times \\,"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idp16889056": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">∣</m:mo><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi></m:mrow><m:mo stretchy=\"false\">∣</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo stretchy=\"false\">∣</m:mo><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>−</m:mo><m:msub><m:mi>E</m:mi><m:mtext>i</m:mtext></m:msub></m:mrow><m:mo stretchy=\"false\">∣</m:mo></m:mrow><m:mo>=</m:mo><m:mi>h</m:mi><m:mi>ν</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{{∣{\\text{Δ}E}∣}={∣{{E}_{\\text{f}}-{E}_{\\text{i}}}∣}=hν=\\, \\frac{{hc}}{λ}}",
+    "isBlock": true
+  },
+  "fs-idp5268000": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>E</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mfrac><m:mi>k</m:mi><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mn>3</m:mn><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mo>…</m:mo></m:mrow></m:math>",
+    "latex": "{{E}_{n}=\\text{−}\\frac{k}{{{n}^{2}}}\\, ,\\, n=1,\\, 2,\\, 3,\\, \\ldots}",
+    "isBlock": true
+  },
+  "fs-idp32100960": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E=k{({\\, \\frac{1}{{{n}_{1}^{2}}}\\, -\\, \\frac{1}{{{n}_{2}^{2}}}\\,})}=\\, \\frac{{hc}}{λ}}",
+    "isBlock": true
+  },
+  "fs-idp54922944": {
+    "mathml": "<m:math><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\, \\frac{1}{λ}\\, =\\, \\frac{k}{{hc}}\\, {({\\, \\frac{1}{{{n}_{1}^{2}}}\\, -\\, \\frac{1}{{{n}_{2}^{2}}}\\,})}}",
+    "isBlock": true
+  },
+  "fs-idp15289616": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>E</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mfrac><m:mrow><m:mi>k</m:mi><m:msup><m:mi>Z</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{{E}_{n}=\\text{−}\\frac{{k{Z}^{2}}}{{{n}^{2}}}}",
+    "isBlock": true
+  },
+  "fs-idp28555616": {
+    "mathml": "<m:math><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mi>Z</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{r=\\, \\frac{{{n}^{2}}}{Z}\\, {a}_{0}}",
+    "isBlock": true
+  },
+  "fs-idp200125968": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mi>n</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mi>∞</m:mi></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>E</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mspace width=\"0.2em\"/><m:mo>+</m:mo><m:mspace width=\"0.2em\"/><m:mi>k</m:mi><m:mo>=</m:mo><m:mi>k</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E={E}_{{n\\, \\longrightarrow \\, ∞}}-{E}_{1}=0\\, +\\, k=k}",
+    "isBlock": true
+  },
+  "fs-idp20573264": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mi>k</m:mi><m:msup><m:mi>Z</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{E=\\, \\frac{{-k{Z}^{2}}}{{{n}^{2}}}}",
+    "isBlock": true
+  },
+  "fs-idp199624080": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>2.179</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>1</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>3</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>−2.421</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−19</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext></m:mrow></m:math>",
+    "latex": "{E=\\, \\frac{{-(2.179\\, \\times \\, {{10}}^{{−18}}\\, \\text{J})\\, \\times \\, {{(1)}}^{2}}}{{{{(3)}}^{2}}}\\, =−2.421\\, \\times \\, {10}^{{−19}}\\, \\text{J}}",
+    "isBlock": true
+  },
+  "fs-idp12132608": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mn>1</m:mn></m:msub><m:mo>−</m:mo><m:msub><m:mi>E</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>2.179</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E={E}_{1}-{E}_{2}=2.179\\, \\times \\, {{10}}^{{−18}}{({\\, \\frac{1}{{{n}_{1}^{2}}}\\, -\\, \\frac{1}{{{n}_{2}^{2}}}\\,})}}",
+    "isBlock": true
+  },
+  "fs-idp66123152": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>2.179</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mn>4</m:mn><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mn>6</m:mn><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E=2.179\\, \\times \\, {{10}}^{{−18}}{({\\, \\frac{1}{{{4}^{2}}}\\, -\\, \\frac{1}{{{6}^{2}}}\\,})}\\, \\text{J}}",
+    "isBlock": true
+  },
+  "fs-idp116600672": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>2.179</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>16</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>36</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E=2.179\\, \\times \\, {10}^{{−18}}{({\\, \\frac{1}{{16}}\\, -\\, \\frac{1}{{36}}\\,})}\\, \\text{J}}",
+    "isBlock": true
+  },
+  "fs-idp32209616": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>7.566</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−20</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}E=7.566\\, \\times \\, {10}^{{−20}}\\, \\text{J}}",
+    "isBlock": true
+  },
+  "fs-idp78342240": {
+    "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>E</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{λ=\\, \\frac{{hc}}{E}}",
+    "isBlock": true
+  },
+  "fs-idp78060624": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>6.626</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−34</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>J</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>s</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.3em\"/><m:mfrac><m:mrow><m:mn>2.998</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>8</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>m</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mtext>s</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>7.566</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−20</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>J</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>2.626</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>m</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} ={({6.626\\, \\times \\, {{10}}^{{−34}}\\, \\sout{\\text{J}}\\, \\sout{\\text{s}}})}\\, \\times \\, \\frac{{2.998\\, \\times \\, {{10}}^{8}\\, \\text{m}\\, {{\\sout{\\text{s}}}}^{{−1}}}}{{7.566\\, \\times \\, {{10}}^{{−20}}\\, \\sout{\\text{J}}}}\\, \\\\ =2.626\\, \\times \\, {10}^{{−6}}\\, \\text{m} \\end{aligned}",
+    "isBlock": true
+  }
+}

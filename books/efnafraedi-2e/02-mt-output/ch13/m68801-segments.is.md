@@ -108,7 +108,7 @@ hvert eftirfarandi efnahvarfa:
 reiknaður út frá jafnvægisstyrk (eða jafnvægisþrýstingi) hvarfefna og
 myndefna þess. Ef þessi styrkur er þekktur felst útreikningurinn
 einfaldlega í því að setja hann inn í K-segðina, eins og sýnt var í
-[#fs-idp54423808]. Næst er tekið aðeins flóknara dæmi þar sem
+[m68798#fs-idp54423808]. Næst er tekið aðeins flóknara dæmi þar sem
 hlutfallaefnafræði hvarfsins er notuð til að finna jafnvægisstyrk út frá
 uppgefnum upplýsingum. Grunnaðferðin við þennan útreikning er gagnleg
 fyrir margar tegundir jafnvægisútreikninga og byggir á notkun hugtaka

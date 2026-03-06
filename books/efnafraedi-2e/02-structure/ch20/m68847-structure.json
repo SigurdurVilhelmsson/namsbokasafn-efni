@@ -1,0 +1,739 @@
+{
+  "moduleId": "m68847",
+  "title": {
+    "segmentId": "m68847:title:auto-1",
+    "text": "Alcohols and Ethers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8a5a66ca-b690-4656-8bf4-ce10c3d6786e",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the structure and properties of alcohols",
+        "Describe the structure and properties of ethers",
+        "Name and draw structures for alcohols and ethers"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm483680",
+      "segmentId": "m68847:para:fs-idm483680"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm30613248",
+      "class": null,
+      "title": {
+        "segmentId": "m68847:title:fs-idm30613248-title",
+        "text": "Alcohols"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm10005664",
+          "class": null,
+          "title": {
+            "segmentId": "m68847:title:fs-idm10005664-title",
+            "text": "Naming Alcohols"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm24572576",
+              "segmentId": "m68847:para:fs-idm24572576"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm9024448",
+              "title": {
+                "segmentId": "m68847:example-title:fs-idm9024448-title",
+                "text": "Naming Alcohols"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp1577984",
+                  "segmentId": "m68847:para:fs-idp1577984"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp3540976",
+                  "segmentId": "m68847:para:fs-idp3540976",
+                  "title": {
+                    "segmentId": "m68847:para-title:fs-idp3540976-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm65417856",
+                  "segmentId": "m68847:para:fs-idm65417856",
+                  "title": {
+                    "segmentId": "m68847:para-title:fs-idm65417856-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm57460576",
+                  "segmentId": "m68847:para:fs-idm57460576"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp7240688",
+                  "title": {
+                    "segmentId": "m68847:note-title:fs-idp7240688-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm57460576",
+                      "segmentId": "m68847:para:fs-idm57460576"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm66465552",
+          "segmentId": "m68847:para:fs-idm66465552"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm33604032",
+          "segmentId": "m68847:para:fs-idm33604032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm13274688",
+          "segmentId": "m68847:para:fs-idm13274688"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm70402400",
+          "class": "scaled-down",
+          "alt": "This figure shows the reaction of glucose to produce ethanol and C O subscript 2. The reaction shows C subscript 6 H subscript 12 O subscript 6 ( a q ) arrow labeled “yeast” 2 C subscript 2 H subscript 5 O H (a q) plus 2 C O subscript 2 ( g ). The O H in ethanol is shown in red.",
+          "src": "../../media/CNX_Chem_20_02_ferment_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8648512",
+          "segmentId": "m68847:para:fs-idm8648512"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm82378032",
+          "class": "scaled-down",
+          "alt": "This reaction shows two carbons connected by a double bond, each with two bonded H atoms plus H O H arrow labeled “H subscript 3 O superscript plus” followed by two carbon atoms connected with a single bond with 5 bonded H atoms and an O H group shown in red at the right end of the molecule. The O of this group is shown with 2 pairs of electron dots.",
+          "src": "../../media/CNX_Chem_20_02_ethanol_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8269216",
+          "segmentId": "m68847:para:fs-idp8269216"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm42427552",
+          "class": "scaled-down",
+          "alt": "Structural formulas for 1 comma 2 dash ethanediol and 1 comma 2 comma 3 dash propanetriol are shown. The first structure has a two C atom hydrocarbon chain with an O H group attached to each carbon. The O H groups are shown in red an each O atom has two sets of electron dots. Each C atom also has two H atoms bonded to it. The second structure shows a three C atom hydrocarbon chain with an O H group bonded to each carbon. The O H groups are shown in red, and each O atom has two sets of electron dots. The first C atom has two H atoms bonded to it. The second C atom has one H atom bonded to it. The third C atom has two H atoms bonded to it.",
+          "src": "../../media/CNX_Chem_20_02_polyols_img.jpg"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm24652464",
+      "class": null,
+      "title": {
+        "segmentId": "m68847:title:fs-idm24652464-title",
+        "text": "Ethers"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp6654240",
+          "segmentId": "m68847:para:fs-idp6654240"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm6486336",
+          "class": "scaled-down",
+          "alt": "A molecular structure is shown with a red C H subscript 3 group bonded up and to the right to a red O atom. The O atom is bonded down and to the right to a C H subscript 2 group. The C H subscript 2 group is bonded up and to the right to a C H subscript 3 group.",
+          "src": "../../media/CNX_Chem_20_02_NameEthers_img.jpg"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm48177328",
+          "title": {
+            "segmentId": "m68847:example-title:fs-idm48177328-title",
+            "text": "Naming Ethers"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm86150048",
+              "segmentId": "m68847:para:fs-idm86150048"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm451728",
+              "segmentId": "m68847:para:fs-idm451728",
+              "title": {
+                "segmentId": "m68847:para-title:fs-idm451728-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1988576",
+              "segmentId": "m68847:para:fs-idp1988576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm81417584",
+              "segmentId": "m68847:para:fs-idm81417584",
+              "title": {
+                "segmentId": "m68847:para-title:fs-idm81417584-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm60219664",
+              "segmentId": "m68847:para:fs-idm60219664"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm80466656",
+              "title": {
+                "segmentId": "m68847:note-title:fs-idm80466656-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm60219664",
+                  "segmentId": "m68847:para:fs-idm60219664"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp12818416",
+          "segmentId": "m68847:para:fs-idp12818416"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm69030208",
+          "class": null,
+          "alt": "This figure shows a reaction. The first molecule, which is labeled, “ethanol,” is a two C atom chain. The first C atom is bonded to three H atoms and a second C atom. The second C atom is bonded to a red O atom with two sets of electron dots. The O atom has a red bond to a red H atom. There is a plus sign. The next molecule, which is labeled, “ethanol,” is a red H atom with a red bond to a red O atom with two pairs of electron dots. The O atom is bonded to a C atom which is bonded to two H atoms and a second C atom. The second C atom is bonded to three H atoms. There is a green dotted box around the red H atom in the first molecule, the plus sign, and the red H and O atoms in the second molecule. To the right o the second molecule there is an arrow labeled H subscript 2 S O subscript 4 above and Greek capital delta below. The arrow is labeled, “sulfuric acid.” The resulting molecules are a C atom bonded with three H atoms and a second C atom. The second C atom is bonded to two H atoms and a red O atom. The red O atom has two sets of electron dots. The O atom is bonded to a third C atom which is bonded to two H atoms and a fourth C atom. The fourth C atom is bonded to three H atoms. This molecule is labeled, “diethyl ether.” There is a plus sign and a red H O H.",
+          "src": "../../media/CNX_Chem_20_02_ether_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6657008",
+          "segmentId": "m68847:para:fs-idp6657008"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm85442272",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp6043376",
+              "segmentId": "m68847:para:fs-idp6043376"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp6839408",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68847:note-title:fs-idp6839408-title",
+            "text": "Carbohydrates and Diabetes"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm73541184",
+              "segmentId": "m68847:para:fs-idm73541184"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm33645104",
+              "segmentId": "m68847:para:fs-idm33645104"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm20354000",
+              "segmentId": "m68847:para:fs-idm20354000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm13367296",
+              "segmentId": "m68847:para:fs-idm13367296"
+            },
+            {
+              "type": "para",
+              "id": "eip-109",
+              "segmentId": "m68847:para:eip-109"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_20_02_Sugars",
+          "caption": {
+            "segmentId": "m68847:caption:CNX_Chem_20_02_Sugars-caption"
+          },
+          "media": {
+            "id": "fs-idm37156032",
+            "alt": "This figure shows structural and ball-and-stick models for the common sugars fructose and lactose. Carbon atoms are illustrated in black, oxygen atoms are red, and hydrogen atoms are white in the ball-and-stick models.",
+            "src": "../../media/CNX_Chem_20_02_sugars.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_20_02_Diabetes",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68847:caption:CNX_Chem_20_02_Diabetes-caption"
+          },
+          "media": {
+            "id": "fs-idm77047728",
+            "alt": "This is a diagram of a hand with a blood droplet on an index finger and a nearby sharp pointed pen-like object. The finger is next shown touching a white and green test strip with arrows pointing to the green region where the bloody finger touches the strip. An arrow points to a small rectangular device in which the green end of the strip is inserted. An L C D display provides a reading.",
+            "src": "../../media/CNX_Chem_20_02_diabetes.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm82374704",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68847:title:fs-idm82374704-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm8778416",
+          "segmentId": "m68847:para:fs-idm8778416"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm77059568",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68847:title:fs-idm77059568-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm36106080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14186816",
+                "segmentId": "m68847:problem:fs-idp14186816"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm20515632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm59813504",
+                "segmentId": "m68847:problem:fs-idm59813504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm81589984",
+                "segmentId": "m68847:problem:fs-idm81589984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm401696",
+                "segmentId": "m68847:problem:fs-idm401696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm31515088",
+                "segmentId": "m68847:problem:fs-idm31515088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm19798128",
+                "segmentId": "m68847:problem:fs-idm19798128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1600928",
+                "segmentId": "m68847:problem:fs-idp1600928"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3456944",
+                "segmentId": "m68847:solution:fs-idp3456944"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm8644288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm32066720",
+                "segmentId": "m68847:problem:fs-idm32066720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm77966000",
+                "segmentId": "m68847:problem:fs-idm77966000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm77997408",
+                "segmentId": "m68847:problem:fs-idm77997408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm36612192",
+                "segmentId": "m68847:problem:fs-idm36612192"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm78442848",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6931456",
+                "segmentId": "m68847:problem:fs-idp6931456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7086576",
+                "segmentId": "m68847:problem:fs-idp7086576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm26630464",
+                "segmentId": "m68847:problem:fs-idm26630464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm9894032",
+                "segmentId": "m68847:problem:fs-idm9894032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm30650800",
+                "segmentId": "m68847:solution:fs-idm30650800"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm35115392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1050336",
+                "segmentId": "m68847:problem:fs-idp1050336"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39860656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25531216",
+                "segmentId": "m68847:problem:fs-idm25531216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm19769120",
+                "segmentId": "m68847:solution:fs-idm19769120"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm78429600",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38003552",
+                "segmentId": "m68847:problem:fs-idm38003552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32978304",
+                "segmentId": "m68847:problem:fs-idm32978304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm31514320",
+                "segmentId": "m68847:problem:fs-idm31514320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm19011104",
+                "segmentId": "m68847:problem:fs-idm19011104"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp115280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm34523872",
+                "segmentId": "m68847:problem:fs-idm34523872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm60182096",
+                "segmentId": "m68847:problem:fs-idm60182096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm78487600",
+                "segmentId": "m68847:problem:fs-idm78487600"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm80638832",
+                "segmentId": "m68847:solution:fs-idm80638832"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp5902704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7151904",
+                "segmentId": "m68847:problem:fs-idp7151904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1943536",
+                "segmentId": "m68847:problem:fs-idp1943536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm33653552",
+                "segmentId": "m68847:problem:fs-idm33653552"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm1615328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1851824",
+                "segmentId": "m68847:problem:fs-idp1851824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm74034592",
+                "segmentId": "m68847:problem:fs-idm74034592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm6448336",
+                "segmentId": "m68847:problem:fs-idm6448336"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm17423680",
+                "segmentId": "m68847:solution:fs-idm17423680"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68847:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68847:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68847:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68847:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm17880560",
+        "termSegmentId": "m68847:glossary-term:fs-idm17880560-term",
+        "definitionSegmentId": "m68847:glossary-def:fs-idm17880560-def"
+      },
+      {
+        "id": "fs-idm24389904",
+        "termSegmentId": "m68847:glossary-term:fs-idm24389904-term",
+        "definitionSegmentId": "m68847:glossary-def:fs-idm24389904-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp91536",
+      "class": "scaled-down-30",
+      "alt": "This shows a C H subscript 3 group bonded to a C H group. The C atom in the C H group is bonded above to an O H group. The C in the C H group is also bonded below to a C H subscript 2 group. The C H subscript 2 group is bonded below to a C H subscript 3 group.",
+      "src": "../../media/CNX_Chem_20_02_Exercise3a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm130287920",
+      "class": "scaled-down-30",
+      "alt": "This shows a C H subscript 3 group bonded to a C atom. The C atom is bonded to an O H group and an I atom. It is also bonded to a second C atom. This second C atom is bonded above and below to a C H subscript 3 group. The second C atom is bonded to a C H subscript 2 group with is bonded to a C H subscript 3 group.",
+      "src": "../../media/CNX_Chem_20_02_Exercise3b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idm152630560",
+      "class": "scaled-down",
+      "alt": "This shows a C H subscript 3 group bonded to a C H group. The C atom in the C H group is bonded to an O H group. The C H group is bonded to a C atom. The C atom is bonded below to a C l atom and above to a C H subscript 2 group. The C atom in the C H subscript 2 group is also bonded to a C H subscript 3 group. The C atom is also bonded to a C H subscript 2 group to the right. This C H subscript 2 group is bonded to another C H subscript 2 group. Below this second C H subscript 2 group a C H subscript 3 group is bonded.",
+      "src": "../../media/CNX_Chem_20_02_Exercise3c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp10202464",
+      "class": "scaled-down",
+      "alt": "This shows a C H subscript 3 group bonded to a C H subscript 2 group. This C H subscript 2 group is bonded to an O atom which is also bonded to a C H subscript 2 group. This C H subscript 2 group is bonded to a C H subscript 2 group. This C H subscript 2 group is bonded to a C H subscript 2 group. This C H subscript 2 group is bonded to a C H subscritp 3 group. All bonds are in a straight line.",
+      "src": "../../media/CNX_Chem_20_02_Exercise4a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm109423504",
+      "class": "scaled-down",
+      "alt": "This shows a C H subscript 3 group bonded to a C H subscript 2 group. This C H subscript 2 group is bonded to an O atom. This O atom is bonded to a C H subscript 2 group which is also bonded to another C H subscript 2 group. This C H subscript 2 group is bonded to a C H subscript 3 group. All bonds are in a straight line.",
+      "src": "../../media/CNX_Chem_20_02_Exercise4b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idm21271920",
+      "class": "scaled-down",
+      "alt": "This figure shows a C H subscript 3 group bonded to an O atom. This O atom is bonded to a C H subscript 2 group which is also bonded to another C H subscript 2 group. This C H subscript 2 group is bonded to a C H subscript 3 group. All bonds are in a straight line.",
+      "src": "../../media/CNX_Chem_20_02_Exercise4c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idm81493456",
+      "class": null,
+      "alt": "A reaction is shown. The first molecule is a C atom bonded to another C atom. The first C atom (from left to right) is bonded to two C H subscript 3 groups. The second C atom is bonded to two H atoms. There is a plus sign. The next molecule shows an H atom bonded to an O atom bonded to a C H subscript 3 group. There is an arrow pointing right. This molecule shows a C atom bonded to three C H subscript 3 groups. The C atom is also bonded to an O atom which is also bonded to a C H subscript 3 group.",
+      "src": "../../media/CNX_Chem_20_02_MTBE_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idm28932304",
+      "class": null,
+      "alt": "A reaction is shown. The first molecule shows a C atom bonded with three H atoms. The first C atom is bonded to another C atom. The second C atom is bonded to an H atom and also forms a double bond with a third C atom. The third C atom is bonded to one H atom and fourth C atom. The fourth C atom is bonded to three H atoms. There is a plus sign. The second molecule shows an O atom with two sets of electron dots bonded to two H atoms. There is an arrow pointing right which is labeled, “acid.” The new molecule is a C atom bonded to three H atoms and a second C atom. The second C atom is bonded to two H atoms and a third C atom. The third C atom is bonded to an H atom and an O atom with two sets of electron dots. The O atom is bonded to an H atom. The third C atom is bonded to a fourth C atom which is bonded to three H atoms.",
+      "src": "../../media/CNX_Chem_20_04_react2a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:9]]",
+      "id": "fs-idm18952384",
+      "class": null,
+      "alt": "A reaction is shown. The first molecule shows a C atom which is bonded to three H atoms and a second C atom. The second C atom is bonded to an O atom as well. The O atom has two sets of electron dots and is bonded to an H atom. There is an arrow that points to the right. The next molecule shows two C atoms forming a double bond between them. Each C atom is bonded to two H atoms. There is a plus sign. The next molecule shows an O atom with two sets of electron dots bonded to two H atoms.",
+      "src": "../../media/CNX_Chem_20_04_react2e_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

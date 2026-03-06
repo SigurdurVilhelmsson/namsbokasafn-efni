@@ -1,0 +1,1205 @@
+{
+  "moduleId": "m68740",
+  "title": {
+    "segmentId": "m68740:title:auto-1",
+    "text": "Formal Charges and Resonance"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "bdd8ac14-71e8-4a87-9cc7-361f0a3157c2",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Compute formal charges for atoms in any Lewis structure",
+        "Use formal charges to identify the most reasonable Lewis structure for a given molecule",
+        "Explain the concept of resonance and draw Lewis structures representing resonance forms for a given molecule"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm49375088",
+      "segmentId": "m68740:para:fs-idm49375088"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp11710128",
+      "class": null,
+      "title": {
+        "segmentId": "m68740:title:fs-idp11710128-title",
+        "text": "Calculating Formal Charge"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm16217792",
+          "segmentId": "m68740:para:fs-idm16217792"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp126842624",
+          "segmentId": "m68740:para:fs-idp126842624"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp90018832",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp88204016",
+          "segmentId": "m68740:para:fs-idp88204016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp15200480",
+          "segmentId": "m68740:para:fs-idp15200480"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm21031296",
+          "title": {
+            "segmentId": "m68740:example-title:fs-idm21031296-title",
+            "text": "Calculating Formal Charge from Lewis Structures"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp63607984",
+              "segmentId": "m68740:para:fs-idp63607984"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp251046608",
+              "title": {
+                "segmentId": "m68740:para-title:fs-idp251046608-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp65521520",
+              "segmentId": "m68740:para:fs-idp65521520",
+              "title": {
+                "segmentId": "m68740:para-title:fs-idp65521520-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm87344256",
+              "segmentId": "m68740:para:fs-idm87344256"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm30182496",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68740:item:fs-idm30182496-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68740:item:fs-idm30182496-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68740:item:fs-idm30182496-item-3"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idm19244912",
+              "title": {
+                "segmentId": "m68740:note-title:fs-idm19244912-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm87344256",
+                  "segmentId": "m68740:para:fs-idm87344256"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp59620704",
+          "title": {
+            "segmentId": "m68740:example-title:fs-idp59620704-title",
+            "text": "Calculating Formal Charge from Lewis Structures"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp26752688",
+              "segmentId": "m68740:para:fs-idp26752688"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp34669824",
+              "title": {
+                "segmentId": "m68740:para-title:fs-idp34669824-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp245106544",
+              "segmentId": "m68740:para:fs-idp245106544",
+              "title": {
+                "segmentId": "m68740:para-title:fs-idp245106544-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm22650544",
+              "segmentId": "m68740:para:fs-idm22650544"
+            },
+            {
+              "type": "list",
+              "id": "fs-idp8784496",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68740:item:fs-idp8784496-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68740:item:fs-idp8784496-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68740:item:fs-idp8784496-item-3"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idp11154656",
+              "title": {
+                "segmentId": "m68740:note-title:fs-idp11154656-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm22650544",
+                  "segmentId": "m68740:para:fs-idm22650544"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp27335568",
+      "class": null,
+      "title": {
+        "segmentId": "m68740:title:fs-idp27335568-title",
+        "text": "Using Formal Charge to Predict Molecular Structure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp93581584",
+          "segmentId": "m68740:para:fs-idp93581584"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp69636800",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68740:item:fs-idp69636800-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68740:item:fs-idp69636800-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68740:item:fs-idp69636800-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68740:item:fs-idp69636800-item-4"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp52450560",
+          "segmentId": "m68740:para:fs-idp52450560"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp21768928",
+          "class": "scaled-down",
+          "alt": "Three Lewis structures are shown. The left and right structures show a carbon atom double bonded to two oxygen atoms, each of which has two lone pairs of electrons. The center structure shows a carbon atom that is triple bonded to an oxygen atom with one lone pair of electrons and single bonded to an oxygen atom with three lone pairs of electrons. The third structure shows an oxygen atom double bonded to another oxygen atom with to lone pairs of electrons. The first oxygen atom is also double bonded to a carbon atom with two lone pairs of electrons.",
+          "src": "../../media/CNX_Chem_07_04_CO2pos_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp58268848",
+          "segmentId": "m68740:para:fs-idp58268848"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp198975168",
+          "segmentId": "m68740:para:fs-idp198975168"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm21731296",
+          "class": null,
+          "alt": "Two rows of structures and numbers are shown. The top row is labeled, “Structure” and depicts three Lewis structures and the bottom row is labeled, “Formal charge.” The left structure shows a carbon atom double bonded to a nitrogen atom with two lone electron pairs on one side and double bonded to a sulfur atom with two lone electron pairs on the other. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative one, zero, and zero. The middle structure shows a carbon atom with two lone pairs of electrons double bonded to a nitrogen atom that is double bonded to a sulfur atom with two lone electron pairs. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative two, positive one, and zero. The right structure shows a carbon atom with two lone electron pairs double bonded to a sulfur atom that is double bonded to a nitrogen atom with two lone electron pairs. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative two, positive two, and one.",
+          "src": "../../media/CNX_Chem_07_04_Thiocyan_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp142093872",
+          "segmentId": "m68740:para:fs-idp142093872"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp56478288",
+          "title": {
+            "segmentId": "m68740:example-title:fs-idp56478288-title",
+            "text": "Using Formal Charge to Determine Molecular Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm17761552",
+              "segmentId": "m68740:para:fs-idm17761552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp200124576",
+              "segmentId": "m68740:para:fs-idp200124576",
+              "title": {
+                "segmentId": "m68740:para-title:fs-idp200124576-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp52242480",
+              "segmentId": "m68740:para:fs-idp52242480"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp29868224",
+              "segmentId": "m68740:para:fs-idp29868224"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp67397856",
+              "segmentId": "m68740:para:fs-idp67397856",
+              "title": {
+                "segmentId": "m68740:para-title:fs-idp67397856-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm26159840",
+              "segmentId": "m68740:para:fs-idm26159840"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp94183792",
+              "title": {
+                "segmentId": "m68740:note-title:fs-idp94183792-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm26159840",
+                  "segmentId": "m68740:para:fs-idm26159840"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp26392016",
+      "class": null,
+      "title": {
+        "segmentId": "m68740:title:fs-idp26392016-title",
+        "text": "Resonance"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp81027344",
+          "segmentId": "m68740:para:fs-idp81027344"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp25860608",
+          "class": "scaled-down",
+          "alt": "Two Lewis structures are shown. The left structure shows an oxygen atom with three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons that is double bonded to an oxygen with two lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign.",
+          "src": "../../media/CNX_Chem_07_04_NO2res_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm7645504",
+          "segmentId": "m68740:para:fs-idm7645504"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp203952864",
+          "segmentId": "m68740:para:fs-idp203952864"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp40211808",
+          "class": "scaled-down",
+          "alt": "Two Lewis structures are shown with a double sided arrow between them. The left structure shows an oxygen atom with three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons that is double bonded to an oxygen with two lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign.",
+          "src": "../../media/CNX_Chem_07_04_NO2resarr_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm12853328",
+          "segmentId": "m68740:para:fs-idm12853328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp245720144",
+          "segmentId": "m68740:para:fs-idp245720144"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm34742304",
+          "class": "scaled-down",
+          "alt": "Three Lewis structures are shown with double headed arrows in between. Each structure is surrounded by brackets, and each has a superscripted two negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to two of these oxygen atoms, each of which has three lone pairs of electrons, and double bonded to the third, which has two lone pairs of electrons. The double bond is located between the lower left oxygen atom and the carbon atom. The central and right structures are the same as the first, but the position of the double bonded oxygen has moved to the lower right oxygen in the central structure and to the top oxygen in the right structure.",
+          "src": "../../media/CNX_Chem_07_04_CO3res_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6151664",
+          "segmentId": "m68740:para:fs-idp6151664"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp77544496",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp64654736",
+              "segmentId": "m68740:para:fs-idp64654736"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm30786384",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68740:title:fs-idm30786384-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp91470432",
+          "segmentId": "m68740:para:fs-idp91470432"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp77377632",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68740:title:fs-idp77377632-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68740:entry:auto-66",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp27655616",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68740:title:fs-idp27655616-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm30094208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31598368",
+                "segmentId": "m68740:problem:fs-idm31598368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23454288",
+                "segmentId": "m68740:problem:fs-idp23454288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp37794160",
+                "segmentId": "m68740:problem:fs-idp37794160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp213179184",
+                "segmentId": "m68740:problem:fs-idp213179184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp77939504",
+                "segmentId": "m68740:problem:fs-idp77939504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63312576",
+                "segmentId": "m68740:problem:fs-idp63312576"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp11428640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm26550544",
+                "segmentId": "m68740:problem:fs-idm26550544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12563008",
+                "segmentId": "m68740:problem:fs-idm12563008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34089184",
+                "segmentId": "m68740:problem:fs-idm34089184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp28289264",
+                "segmentId": "m68740:problem:fs-idp28289264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4938192",
+                "segmentId": "m68740:problem:fs-idp4938192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp27230032",
+                "segmentId": "m68740:problem:fs-idp27230032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp22600016",
+                "segmentId": "m68740:solution:fs-idp22600016"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp106918432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21450320",
+                "segmentId": "m68740:problem:fs-idm21450320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm29150896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52476592",
+                "segmentId": "m68740:problem:fs-idp52476592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm77390448",
+                "segmentId": "m68740:solution:fs-idm77390448"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp216023872",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp100357024",
+                "segmentId": "m68740:problem:fs-idp100357024"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp30217376",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25604816",
+                "segmentId": "m68740:problem:fs-idm25604816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp9268576",
+                "segmentId": "m68740:problem:fs-idp9268576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm17614608",
+                "segmentId": "m68740:problem:fs-idm17614608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp32184800",
+                "segmentId": "m68740:solution:fs-idp32184800"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp29752720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm15185536",
+                "segmentId": "m68740:problem:fs-idm15185536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp23408944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp134601472",
+                "segmentId": "m68740:problem:fs-idp134601472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36610048",
+                "segmentId": "m68740:problem:fs-idp36610048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp223116352",
+                "segmentId": "m68740:problem:fs-idp223116352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16885392",
+                "segmentId": "m68740:problem:fs-idm16885392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32027408",
+                "segmentId": "m68740:problem:fs-idm32027408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21325744",
+                "segmentId": "m68740:solution:fs-idm21325744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm33617232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5193952",
+                "segmentId": "m68740:problem:fs-idp5193952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp87268656",
+                "segmentId": "m68740:problem:fs-idp87268656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp28450944",
+                "segmentId": "m68740:problem:fs-idp28450944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp109041968",
+                "segmentId": "m68740:problem:fs-idp109041968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp47951984",
+                "segmentId": "m68740:problem:fs-idp47951984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp91448368",
+                "segmentId": "m68740:problem:fs-idp91448368"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25221456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp137795936",
+                "segmentId": "m68740:problem:fs-idp137795936"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm369848352",
+                "segmentId": "m68740:solution:fs-idm369848352"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp138240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm242192",
+                "segmentId": "m68740:problem:fs-idm242192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp61606880",
+                "segmentId": "m68740:problem:fs-idp61606880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp8204656",
+                "segmentId": "m68740:problem:fs-idp8204656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp135234752",
+                "segmentId": "m68740:problem:fs-idp135234752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp93361152",
+                "segmentId": "m68740:problem:fs-idp93361152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56044224",
+                "segmentId": "m68740:problem:fs-idp56044224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp250816336",
+                "segmentId": "m68740:problem:fs-idp250816336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32764688",
+                "segmentId": "m68740:problem:fs-idm32764688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm30255888",
+                "segmentId": "m68740:problem:fs-idm30255888"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp137881216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56625152",
+                "segmentId": "m68740:problem:fs-idp56625152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp131483136",
+                "segmentId": "m68740:problem:fs-idp131483136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp134896400",
+                "segmentId": "m68740:problem:fs-idp134896400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp213461280",
+                "segmentId": "m68740:problem:fs-idp213461280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63534048",
+                "segmentId": "m68740:problem:fs-idm63534048"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp124490112",
+                "segmentId": "m68740:solution:fs-idp124490112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp109056096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp132239136",
+                "segmentId": "m68740:problem:fs-idp132239136"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp7647248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47991712",
+                "segmentId": "m68740:problem:fs-idp47991712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm333542560",
+                "segmentId": "m68740:solution:fs-idm333542560"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp77526928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm19951696",
+                "segmentId": "m68740:problem:fs-idm19951696"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp27867056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp28728528",
+                "segmentId": "m68740:problem:fs-idp28728528"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6445072",
+                "segmentId": "m68740:solution:fs-idp6445072"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp123681728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33460160",
+                "segmentId": "m68740:problem:fs-idm33460160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp36471920",
+                "segmentId": "m68740:problem:fs-idp36471920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63619952",
+                "segmentId": "m68740:problem:fs-idp63619952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60493712",
+                "segmentId": "m68740:problem:fs-idp60493712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm19744736",
+                "segmentId": "m68740:problem:fs-idm19744736"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26472064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp104648272",
+                "segmentId": "m68740:problem:fs-idp104648272"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp35441312",
+                "segmentId": "m68740:solution:fs-idp35441312"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp123779760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp60472592",
+                "segmentId": "m68740:problem:fs-idp60472592"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm30783968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp101954928",
+                "segmentId": "m68740:problem:fs-idp101954928"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm118650128",
+                "segmentId": "m68740:solution:fs-idm118650128"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68740:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68740:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68740:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68740:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp10384768",
+        "termSegmentId": "m68740:glossary-term:fs-idp10384768-term",
+        "definitionSegmentId": "m68740:glossary-def:fs-idp10384768-def"
+      },
+      {
+        "id": "fs-idp31379776",
+        "termSegmentId": "m68740:glossary-term:fs-idp31379776-term",
+        "definitionSegmentId": "m68740:glossary-def:fs-idp31379776-def"
+      },
+      {
+        "id": "fs-idp213363824",
+        "termSegmentId": "m68740:glossary-term:fs-idp213363824-term",
+        "definitionSegmentId": "m68740:glossary-def:fs-idp213363824-def"
+      },
+      {
+        "id": "fs-idp9239856",
+        "termSegmentId": "m68740:glossary-term:fs-idp9239856-term",
+        "definitionSegmentId": "m68740:glossary-def:fs-idp9239856-def"
+      },
+      {
+        "id": "fs-idp8038096",
+        "termSegmentId": "m68740:glossary-term:fs-idp8038096-term",
+        "definitionSegmentId": "m68740:glossary-def:fs-idp8038096-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm8015440",
+      "class": "scaled-down",
+      "alt": "A Lewis structure is shown. An iodine atom with two lone pairs of electrons is single bonded to four chlorine atoms, each of which has three lone pairs of electrons. Brackets surround the structure and there is a superscripted negative sign.",
+      "src": "../../media/CNX_Chem_07_04_ICL4_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm34880288",
+      "class": "scaled-down",
+      "alt": "A Lewis structure is shown. A bromine atom with two lone pairs of electrons is single bonded to three chlorine atoms, each of which has three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_07_04_BRCL3_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idp76917152",
+      "class": null,
+      "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure shows a sulfur atom with a lone pair of electrons single bonded to the left to an oxygen atom with three lone pairs of electrons. The sulfur atom is also double bonded on the right to an oxygen atom with two lone pairs of electrons. The right structure depicts the same atoms, but this time the double bond is between the left oxygen and the sulfur atom. The lone pairs of electrons have also shifted to account for the change of bond types. The sulfur atom in the right structures, also has a third electron dot below it.",
+      "src": "../../media/CNX_Chem_07_04_Ques2ansa_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idp21708272",
+      "class": null,
+      "alt": "Three Lewis structures are shown, with double-headed arrows in between, each surrounded by brackets and a superscripted two negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to two of these oxygen atoms, each of which has three lone pairs of electrons, and double bonded to the third, which has two lone pairs of electrons. The double bond is located between the bottom oxygen and the carbon. The central and right structures are the same as the first, but the position of the double bonded oxygen has moved to the left oxygen in the right structure while the central structure only has single bonds. The lone pairs of electrons change to correspond with the bonds as well.",
+      "src": "../../media/CNX_Chem_07_04_Ques2ansb_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm57805984",
+      "class": null,
+      "alt": "Two Lewis structures are shown, with a double-headed arrow in between, each surrounded by brackets and a superscripted negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to one of these oxygen atoms, which has three lone pairs of electrons, and double bonded to the other two, which have two lone pairs of electrons. One of the double bonded oxygen atoms also has a single bond to a hydrogen atom. The right structure is the same as the first, but there is only one double bonded oxygen. The oxygen with the single bonded hydrogen now has a single bond to the carbon atom. The lone pairs of electrons have also changed to correspond with the bonds.",
+      "src": "../../media/CNX_Chem_07_04_Ques2ansc_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idp98647232",
+      "class": null,
+      "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure depicts a hexagonal ring composed of five carbon atoms, each single bonded to a hydrogen atom, and one nitrogen atom that has a lone pair of electrons. The ring has alternating single and double bonds. The right structure is the same as the first, but each double bond has rotated to a new position.",
+      "src": "../../media/CNX_Chem_07_04_Ques2ansd_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idp255926848",
+      "class": null,
+      "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and double bonded to a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets and a superscripted negative sign. The right structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets and a superscripted negative sign.",
+      "src": "../../media/CNX_Chem_07_04_Ques2anse_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idp4932640",
+      "class": null,
+      "alt": "A pair of Lewis structures are shown with a double-headed arrow in between the pair. The left structure of the first pair shows a nitrogen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. It is also double bonded to an oxygen with two lone pairs of electrons. The right image of this pair depicts the mirror image of the left. Both images are surrounded by brackets and a superscripted negative sign. They are labeled, “For N O subscript two superscript negative sign.”",
+      "src": "../../media/CNX_Chem_07_04_Ques11ans_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:9]]",
+      "id": "fs-idm35689072",
+      "class": null,
+      "alt": "This structure shows a carbon atom double bonded to two oxygen atoms, each of which has two lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_07_04_Ques13ansb_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:10]]",
+      "id": "fs-idp52448512",
+      "class": null,
+      "alt": "The right structure of this pair shows a carbon atom with one lone pair of electrons triple bonded to an oxygen with one lone pair of electrons.",
+      "src": "../../media/CNX_Chem_07_04_Ques13ansc_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:11]]",
+      "id": "fs-idp9590704",
+      "class": null,
+      "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure shows an oxygen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. It is also double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read, “( 0 ), ( positive 1 ), ( negative 1 ).” The phrase, “Formal charge,” and a right-facing arrow lie to the left of this structure. The right structure appears as a mirror image of the left and the symbols and numbers below this structure read, “( negative 1 ), ( positive 1 ), ( 0 ).”",
+      "src": "../../media/CNX_Chem_07_04_Exercis12a_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:12]]",
+      "id": "fs-idm13086640",
+      "class": null,
+      "alt": "Two Lewis structures are shown, with a double-headed arrow in between. The left structure shows a sulfur atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. The sulfur atom also double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read, “( negative 1 ), ( positive 1 ), ( 0 ).” The right structure appears as a mirror image of the left and the symbols and numbers below this structure read, “( 0 ), ( positive 1 ), ( negative 1 ).”",
+      "src": "../../media/CNX_Chem_07_04_Exercis12b_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:13]]",
+      "id": "fs-idm26418288",
+      "class": null,
+      "alt": "[Two Lewis structures are shown, with brackets surrounding each with a superscripted negative sign and a double ended arrow in between. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read “open parenthesis, 0, close parenthesis, open parenthesis, 0, close parenthesis, open parenthesis, negative 1, close parenthesis. The right structure appears as a mirror image of the left and the symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis, open parenthesis, 0, close parenthesis, open parenthesis, 0, close parenthesis.]",
+      "src": "../../media/CNX_Chem_07_04_Exercis12c_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:14]]",
+      "id": "fs-idp61775696",
+      "class": null,
+      "alt": "[Three Lewis structures are shown, with brackets surrounding each with a superscripted negative sign and a double ended arrow in between. The left structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The single bonded oxygen atoms are labeled, from the top of the structure and going clockwise, “open parenthesis, negative 1, close parenthesis, open parenthesis, positive 1, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, 0, close parenthesis, open parenthesis, negative 1, close parenthesis. The middle structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons, one of which is labeled “open parenthesis, positive 1, close parenthesis” and double bonded to an oxygen atom with two lone pairs of electrons labeled “open parenthesis, 0, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis, open parenthesis, negative 1, close parenthesis. The right structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. One of the single bonded oxygen atoms is labeled, “open parenthesis, negative 1, close parenthesis while the double bonded oxygen is labeled, “open parenthesis, positive 1, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis” and “open parenthesis, 0, close parenthesis”.]",
+      "src": "../../media/CNX_Chem_07_04_Exercis12d_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:15]]",
+      "id": "fs-idp26230352",
+      "class": null,
+      "alt": "A Lewis structure shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and an oxygen atom which has two lone pairs of electrons. The oxygen atom is single bonded to a hydrogen atom.",
+      "src": "../../media/CNX_Chem_07_04_OHamine_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:16]]",
+      "id": "fs-idp98852848",
+      "class": null,
+      "alt": "A Lewis structure shows a nitrogen atom with one lone pair of electrons single bonded to three fluorine atoms, each with three lone pairs of electrons.",
+      "src": "../../media/CNX_Chem_07_04_NF3_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:17]]",
+      "id": "fs-idp5472672",
+      "class": null,
+      "alt": "A Lewis structure shows a hydrogen atom single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a sulfur atom. The sulfur atom is double bonded to two oxygen atoms, each of which have three lone pairs of electrons, and single bonded to an oxygen atom with two lone pairs of electrons. This oxygen atom is single bonded to a hydrogen atom.",
+      "src": "../../media/CNX_Chem_07_04_H2SO4.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}
