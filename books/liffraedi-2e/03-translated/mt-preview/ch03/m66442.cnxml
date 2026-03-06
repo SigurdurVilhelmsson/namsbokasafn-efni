@@ -1,0 +1,221 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Prótein</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m66442</md:content-id>
+  <md:title>Proteins</md:title>
+  <md:abstract><para id="para-00001">Eftir þennan kafla átt þú að geta eftirfarandi:</para><list id="list-00001"><item>Lýst starfsemi próteina í frumum og vefjum</item><item>Fjallað  um samhengið á milli amínósýra og próteina</item><item>Útskýrt í hvaða fjóra flokka, próteinlögun er flokkuð</item><item>Lýst því hvernig lögun próteina tengist virkni þeirra</item></list></md:abstract>
+  <md:uuid>211c8917-4044-4b0e-980c-0a84a86a48b0</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-id1266915">Prótein eru það lífræna efni sem mest er af í lífverum og hafa breytilegustu starfsemi allra stórsameinda.  Hlutverk þeirra geta verið allt frá því að vera byggingareiningar, stjórnprótein, samdráttarefni eða varnaraefni.  Þau taka þátt í flutning, geymslu eða virka sem himnur.  Einnig geta þau verið eitruð eða ensím.  Hver fruma í lífveru getur innihaldið þúsundir próteina, hvert með sérhæfða einstaka starfsemi.  Lögun þeirra, sem og hlutverk, er mjög breytilegt.  Þau eru samt öll fjölliður myndaðar úr amínósýrum sem raðað er upp í langa keðju.</para>
+<section id="fs-id846709">
+<title>Gerðir og hlutverk próteina</title>
+<para id="fs-id2862975">Ensím, sem frumur mynda, eru prótein sem hvata áfram lífefnafræðilega ferla (t.d. meltingu) og eru alla jafna flókin og/eða samsett prótein.  Hvert ensím er sérhæft fyrir það hvarfefni (það efni sem bundist getur ensíminu) sem það á samskipti við.  Ensím geta hjálpað til við niðurbrot, endurröðun eða nýmyndun efna.  Við köllum ensím sem brjóta niður efni, katabólísk ensím.  Þau sem byggja flóknari efni úr einföldum efnum, kallast anabólísk og þau ensím sem hafa áhrif á hvarfhraða efna eru katalísk ensím.  ATH öll ensím auka hraða efnaskipta og eru því efnahvatar.  Dæmi um ensím er munnvatns-amílasi sem brýtur niður hvarfefni sitt, amýlósa (sterkja) niður í maltósa með afvötnunarhvarfi.</para>
+<para id="fs-id2781285">Hormón eru boðefni sem alla jafna eru smá prótein eða sterar, sem seytt er af útkirtlum sem stjórna sérhæfðum lífeðlisfræðilegum ferlum eins og vexti, þroska, efnaskiptum og æxlun.  Sem dæmi þá er insúlín, prótein hormón sem hjálpar til við stjórnun blóðsykursstyrk. Tafla 3.1 telur upp helstu prótein og hlutverk þeirra</para>
+<table id="tab-ch03-04-01" summary="" class="top-titled">
+<tgroup cols="1">
+<colspec colnum="1" colname="col1"/>
+<colspec colnum="2" colname="col2"/>
+<colspec colnum="3" colname="col3"/>
+<thead>
+<row>
+<entry namest="col1" nameend="col3" align="left">Gerð</entry>
+</row>
+<row>
+<entry>Dæmi</entry><entry>Hlutverk</entry><entry>Meltingarensím</entry>
+</row>
+</thead>
+<tbody>
+<row><entry>Amýlasi, lípasi, pepsín, trypsín</entry><entry>Hjálpa til við niðurbrot næringarefna niður í stakar einliður</entry><entry>Flutningur</entry></row>
+<row><entry>Hemóglóbín, albúmín</entry><entry>Flytja efni í blóði og vessa um líkaman</entry><entry>Form/bygging</entry></row>
+<row><entry>Aktín, túbúlín, keratín</entry><entry>Mynda frymis grindina, hár og neglur</entry><entry>Hormón</entry></row>
+<row><entry>Isnúlín, þýroxín</entry><entry>Stjórna starfsemi líkamans</entry><entry>Varnir</entry></row>
+<row><entry>Immúnóglóbúlín</entry><entry>Verja líkaman fyrir utanaðkomandi sýklum</entry><entry>Samdráttur</entry></row>
+<row><entry>Aktín, mýósín</entry><entry>Taka þátt í vöðvasamdrætti</entry><entry>Geymsla</entry></row>
+<row><entry>Eggjahvíta (albumin), belgjurta geymsluprótein</entry><entry>Veita vaxandi fóstrum næringu</entry><entry>Amínósýrur</entry></row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-id2051317">Amínósýrur eru einliðurnar sem mynda prótein.  Allar amínósýrur hafa sömu grunnbyggingu með aukahóp sem gerir þær sérstakar.  Grunn uppsetning þeirra er kolefnisatóm í miðju sameindarinnar (alfa kolefni (α)) sem tengt er amínó-hóp (NH2), karboxýl-hóp (COOH) og vetnisatómi (sjá mynd 3.22).  Hver amínósýra hefur einnig hliðarkeðju sem er hópur atóma sem tengjast við alfa-kolefnið og kallast „R-hópur“. Hver af þeim 20 amínósýrum sem mynda prótein eru með ólíkan R-hóp (sjá mynd 3.23).</para>
+</section>
+<section id="fs-id1802099">
+<title>Sjónræn tenging</title>
+<para id="fs-id1344438">Hvaða flokkur amínósýra heldur þú að þú gætir fundið á yfirborði próteins sem væri uppleysanlegt og hvaða amínósýrur væru líklega inn í því?  Hvaða gerð amínósýra gætir þú reiknað með að finna í próteini sem væri hluti af frumuhimnu (fosfólípíðsamloku)</para>
+<figure id="fig-ch03_04_01"><media id="fs-id1694813" alt="The molecular structure of an amino acid is given. An amino acid has an alpha carbon to which an amino group, a carboxyl group, a hydrogen, and a side chain are attached. The side chain varies for different amino acids, and is designated as the R - group.">
+<image mime-type="image/png" src="../../media/Figure_03_04_01.png" width="340"/>
+</media>
+
+<caption>. Grunn bygging amínósýru</caption></figure>
+<para id="fs-id2941991">Þegar búið er að tengja saman tvær amínósýrur, kallast þær peptíð.  Eftir því sem fleiri amínósýrur bætast við, kallast efnasambandið, fjölpeptíð og eftir að amínósýrurnar eru orðnar 50 eða fleiri, kallast það prótein.  Í heilkjarna frumum láta sér ekki nægja að raða saman löngum keðjum af amínósýrum til að mynda prótein sín.  Mörg prótein þeirra undirgangast miklar breytingar þar sem stundum eru langir bútar klipptir úr og settir saman.  Einnig er ýmsum efnum bætt við þau til að auka á virkni og sérhæfingu þeirra (rætt síðar).</para>
+<note id="fs-id2098380" class="visual-connection">
+<para id="fs-id2051550">Smelltu á þennan hlekk til að fá upp gagnvirka síðu um próteinmyndun</para>
+<para id="fs-id1468946">Þróunarlegt mikilvægi Sýtókróm c</para>
+</note>
+<figure id="fig-ch03_04_02"><media id="fs-id1645231" alt="The molecular structures of the twenty amino acids commonly found in proteins are given. These are divided into five categories: nonpolar aliphatic, polar uncharged, positively charged, negatively charged, and aromatic. Nonpolar aliphatic amino acids include glycine, alanine, valine, leucine, methionine, isoleucine, and proline. Polar uncharged amino acids include serine, threonine, cysteine, asparagine, and glutamine. Positively charged amino acids include lysine, arginine, and histidine. Negatively charged amino acids include aspartate and glutamate. Aromatic amino acids include phenylalanine, tyrosine, and tryptophan.  For example, in the amino acid glycine, the R group is a single hydrogen; but in alanine the R group is upper C upper H subscript 3 baseline.">
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_02-fd30.jpg" width="500"/>
+</media>
+
+<caption>.  Kaboxýlhópur amínósýru gengur í efnasamband við amínóhóp þeirrar sem kemur inn.  OH hópurinn á karboxýlhópnum gengur í efnasamband við annað vetnið (H) í amínóhópnum og vatn (H2O) myndast</caption></figure>
+<para id="fs-id1953709">Vísindamenn hafa komist að því að sýtókróm c í mönnum, inniheldur 104 amínósýrur.  Fyrir hverja sýtókróm c sameind frá ólíkum lífverum sem raðgreindar hafa verið, eru 37 amínósýrur sem koma alltaf fyrir á sama stað.  Það bendir til að þær hafi allar einn sameiginlegan forföður.  Þegar amínósýrurröð cýtókróm c er borið saman milli manna og simpansa, finnst enginn munur.  Þegar við berum saman menn og Rhesus apa, er munurinn aðeins ein amínósýra.   Ef við berum saman menn og gersvepp þá finnum við breytingar á 44 stöðum</para>
+<para id="fs-id1506615">Lögun próteina</para>
+<para id="fs-id2235262">Eins og komið hefur fram eru prótein viðkvæm fyrir breytingum í umhverfi sínu.  Það helgast af því að þrívíddarlögun (3-D) þeirra ræður öllu um virkni þeirra.  Breyting á hitastigi og/eða sýrustigi hefur áhrif á þessa lögun.  Til að skilja þetta betur þarft þú að þekkja þau fjögur stig próteinlögunar sem prótein fara í gegnum áður en þau fá verða virk.  Þessi stig kallast fyrstastigs- , annars stigs- , þriðja stigs- og fjórða stigs lögun.</para>
+<figure id="fig-ch03_04_03"><media id="fs-id2626112" alt="The formation of a peptide bond between two amino acids is shown. When the peptide bond forms, the carbon from the carbonyl group becomes attached to the nitrogen from the amino group. The upper O upper H from the carboxyl group and an upper H from the amino group form a molecule of water.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_03.jpg" width="320"/>
+</media>
+
+<caption>Fyrsta stigs lögun</caption></figure>
+<para id="fs-id1415197">Fyrsta stigs lögun próteina er bara röð þeirra amínósýra sem notaðar eru til að mynda próteinið.  Gott dæmi um þetta er hormónið insúlín, en það er myndað úr tveimur fjölpeptíðkeðjum, A og B, sem festar eru saman með brennisteinsbrú (smá mynd 3.25). N- enda amínósýra fjölpeptíðs A er Glýsín en C- enda amínósýran er Aspargín (sjá mynd 3.25).  Amínósýruröð A og B keðjunnar er einstök fyrir insúlín, ekkert annað prótein í þér hefur þessa amínósýruröð.</para>
+<note id="fs-id1281011" class="interactive">
+<para id="fs-id2115867">Genin okkar skrá fyrir því í hvaða röð amínósýrur eru settar saman til að mynda prótein.  Lítil breyting í röð núkleótíða gens getur leitt til þess að vitlaus amínósýra er sett inn í fjölpeptíðkeðjuna, sem leiðir til breytinga  á uppbygginu hennar og virkni.  Dæmi um slíka breytingu er sjúkdómurinn sigðukorna blóðleysi.  Í sigðukorna blóðleysi er einni amínósýru skipt út í  β keðja hemóglóbínsins (smá hluti próteinsins sjá mynd 3.26), sem breytir uppbyggingu og virkni sameindarinnar.  Í þessum sjúkdómi, hefur amínósýran valín verið sett inn í stað glútamíns í β keðjunni.  Það sem er merkilegast við þetta er að hemóglóbín er myndað úr tveimur alfa keðjum og tveimur β keðjum sem báðar eru um 150 amínósýrur að lengd.  Sameindin er því mynduð úr 600 amínósýrum.  Byggingarlegur munur á milli eðlilegs hemóglóbíns og sigðukornar sameindar -sem hefur töluverð áhrif á lífslíkur – er bara ein amínósýra, sem kemur til vegna breytinga á einu núkleótíði (punktbreyting) af þeim  1800 sem mynda genið.</para>
+</note>
+<note id="fs-id1432930" class="evolution"><title>Annars stigs lögun</title>
+<para id="fs-id2270232">Annars stigs lögun próteina ræðst af staðbundum breytingum sem verða á peptíðkeðjunni.  Algengustu breytingarnar eru alfa gormar (α-helix) og beta plötur (β-pleated sheet).  Bæði þessi form myndast vegna vetnistengja sem myndast milli súrefnisatóma í karbonýlhóp einnar amínósýru við aðra amínósýru sem er í fjögurra amínósýru fjarlægð frá henni í keðjunni (sjá mynd 3.28).  Röð og fjöldi alfa gorma og beta platna í peptíðkeðju hefur mikil áhrif á þriðja stigs lögun próteinsins</para>
+<para id="fs-id2216741">Þriðja stigs lögun</para>
+</note>
+</section>
+<section id="fs-id1676049">
+<title>Þrívíðarlögun fjölpeptíðkeðjunnar er það sem kallast þriðja stigs lögun (sjá mynd 3.27).  Þessi lögun er að hluta efnafræðileg samverkun í fjölpeptíðkeðjunni.  Aðalega eru það hliðarkeðjur amínósýranna sem ráð flókinn þrívíðarlögun.  Amínósýrur með sömu hleðslu ýta hvor annarri frá sér og þær sem hafa ólíka hleðslur, dragast að hvor annarri.  Einnig leita amínósýrur með vatnsfælnar hliðarkeðjur inn á við og að öðrum vatnsfælnum hliðarkeðjum, meðan vatnssæknu hliðarkeðjurnar leita út í átt að vatninu sem er í umhverfi þeirra.  Vísindamenn leggja mikla vinnu í að finna út hvernig fjölpeptíðin mynda sína lögun.  Hægt er að spila tölvuleik ( https://fold.it/ ) þar sem leikmaður reynir að finna út hvernig peptíðkeðjan fellur saman. Leikurinn byrjar á að sýna þér hvernig nokkur þekkt prótein falla sama en eftir því sem líður á leikinn færð þú peptíðkeðjur sem eru nú þegar óþekktar.  Þessi leikur hefur nú þegar leyst gátur sem áður voru óleystar um lögun próteina.  Nú nýlega notaði google ofurtölvu sína til að leysa ráðgátur um þriðja stigs lögun próteina og eru miklar vonir bundnar við þá tækni til að þróa betri lyf.</title>
+<section id="fs-id1423194">
+<title>Fjórðastigslögun</title>
+<para id="fs-id1277293">í frumum okkar mynda sum prótein svo kölluð fjölpeptíð, þar sem jafnvel margar peptíðkeðjur eru tengdar saman.  Þessar fjölpeptíðkeðjur mynda fjórðastigslögun próteinsins.</para>
+<figure id="fig-ch03_04_04"><media id="fs-id1778097" alt="The amino acid sequences for the A chain and B chain of bovine insulin are shown. The A chain is 21 amino acids in length, and the B chain is 30 amino acids in length. One disulfide, or S S bond, connects two cysteine residues in the A chain. Two other disulfide linkages connect the A chain to the B chain.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_04.jpg" width="450"/>
+</media>
+
+<caption>Fjölbreytileg tengsl milli efna ræður þriðjastigslögun próteinsins.  Þar með talið vatnsfælin og vatnssækin tengsl, jónatengi, vetnistengi og brennisteinsbrýr</caption></figure>
+<para id="fs-id1352111">Eðlissvipting og pökkun próteina</para>
+<figure id="fig-ch03_04_05"><media id="fs-id1671790" alt="Several representations of hemoglobin proteins are shown under normal and sickle cell conditions. In primary structure, the sixth amino acid is replaced by valine. In secondary and tertiary structures, the sickle cell is revealed by a misshapen molecule. As a result, in function, normal hemoglobins do not associate with each other, and each can carry oxygen. But in sickle cell conditions, the proteins aggregate into a fiber and oxygen carrying capacity is reduced.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_05-3127.jpg" width="350"/>
+</media>
+
+<caption>Hvert prótein hefur sína eigin einstöku amínósýruröð sem með samverkan hliðarkeðja sinna, gefa próteininu sína einstöku lögun.  Ef próteinið verður fyrir breytingum á hitastigi, og/eða sýrustigi, eða kemst í snertingu eiturefni eins og þungmálma, getur það haft áhrif á hvernig próteinið pakkast þannig að það breytir um lögun.  Þá er sagt að próteinið hafi eðlissvipst. Oft getur eðlissvipting gengið til baka, ef aðstæður í umhverfi breytast en oft er eðlissviptingin varanleg.  Skýrt dæmi um eðlissviptingu próteina er þegar þú steikir egg á pönnu.  Þegar hitinn hækkar, breytir albúmið (megin prótein í eggjahvítu) um lögun og fellur út sem hvít klessa.  Hvert og eitt prótein er aðlagað að ákveðnu hita og sýrustigi.  Sem dæmi  eru prótein í maga okkar sem virka best við pH 1,5-2,5.  Einnig eru til örverur sem lifa í 98°C heitum hverum og er það þá kjörhitastig fyrir prótein þeirra.</caption></figure>
+<para id="fs-id1465861">Á síðari árum hafa vísindamenn svo uppgötvað hjálparprótein sem hjálpa nýmynduðum próteinum að taka á sig rétta, endanlega lögun.  Einnig koma þau inn á svæði sem hafa orðið fyrir breytingu á umhverfi til að hjálpa mikilvægum próteinum að halda lögun sinni.  Mikið finnst af þessu hjálparpróteinum í brunasárum og ef fólk fær háan hita.</para>
+<figure id="fig-ch03_04_06"><media id="fs-id1235886" alt="This electron micrograph shows red blood cells from a patient with sickle cell anemia. Most of the cells have a normal, disk shape, but about one in five has a sickle shape. A normal blood cell is eight microns across.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_06.jpg" width="320"/>
+</media>
+<caption>Til að átta sig betur á hvernig prótein eru upp byggð er ágætt að skoða þessa tölvugerðu mynd sem kallast „Biomolecules: The Proteins“</caption>
+</figure>
+</section>
+<section id="fs-id1442926">
+<title>LÆRDÓMSHLEKKUR</title>
+<figure id="fig-ch03_04_07"><media id="fs-id2990796" alt="The illustration shows an alpha helix protein structure, which coils like a spring, and a beta-pleated sheet structure, which forms flat sheets stacked together. In an alpha-helix, hydrogen bonding occurs between the carbonyl group of one amino acid and the amino group of the amino acid that occurs four residues later. In a beta-pleated sheet, hydrogen bonding occurs between two different lengths of peptide that are antiparallel to one another.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_07-ffb1.jpg" width="400"/>
+</media>
+
+<caption>The <emphasis effect="italics">α</emphasis>-helix and <emphasis effect="italics">β</emphasis>-pleated sheet are secondary protein structures formed when hydrogen bonds form between the carbonyl oxygen and the
+amino hydrogen in the peptide backbone. Certain amino acids have a propensity to form an α-helix while others favor β-pleated sheet formation. Black =
+carbon, White = hydrogen, Blue = nitrogen, and Red = oxygen. Credit: Rao, A., Ryan, K. Fletcher, S. and Tag, A. Department of Biology, Texas A&amp;M
+University.</caption></figure>
+</section>
+<section id="fs-id1998990">
+<title>Tertiary Structure</title>
+<figure id="fig-ch03_04_08"><media id="fs-id2336596" alt="This illustration shows a polypeptide backbone folded into a three-dimensional structure. Chemical interactions between amino acid side chains maintain its shape. These include an ionic bond between an amino group and a carboxyl group, hydrophobic interactions between two hydrophobic side chains, a hydrogen bond between a hydroxyl group and a carbonyl group, and a disulfide linkage.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_08.jpg" width="500"/>
+</media>
+<caption>A variety of chemical interactions determine the proteins' tertiary structure. These include hydrophobic interactions, ionic bonding, hydrogen bonding, and disulfide linkages.</caption>
+</figure>
+</section>
+<section id="fs-id1836952">
+<title>Quaternary Structure</title>
+<figure id="fig-ch03_04_09"><media id="fs-id2054513" alt="Shown are the four levels of protein structure. The primary structure is the amino acid sequence. Secondary structure is a regular folding pattern due to hydrogen bonding. Tertiary structure is the three-dimensional folding pattern of the protein due to interactions between amino acid side chains. Quaternary structure is the interaction of two or more polypeptide chains.">
+<image mime-type="image/jpg" src="../../media/Figure_03_04_09-fda7.jpg" width="450"/>
+</media>
+
+<caption>Observe the four levels of protein structure in these illustrations. Credit: Rao, A. Ryan, K. and Tag, A. Department of Biology, Texas
+A&amp;M University.</caption></figure>
+</section>
+</section>
+<section id="fs-id1429764">
+<title>Denaturation and Protein Folding</title>
+<note id="fs-id2862911" class="interactive">
+<para id="fs-id1957585">For an additional perspective on proteins, view <link window="new" url="https://openstax.org/l/proteins">this animation</link> called “Biomolecules: The Proteins.”</para>
+</note>
+</section>
+<section id="fs-id1428624" class="summary">
+<title>Section Summary</title>
+</section>
+<section id="fs-id1831067" class="visual-exercise">
+<title>Visual Connection Questions</title>
+<exercise id="fs-id2762947"><problem id="fs-id1452875">
+<para id="fs-id1876403"><link target-id="fig-ch03_04_02"/> Which categories of amino acid would you expect to find on the surface of a soluble protein, and which would you expect to find in the interior? What distribution of amino acids would you expect to find in a protein embedded in a lipid bilayer?</para>
+</problem>
+<solution id="fs-id1791038">
+<label/>
+<para id="fs-id1787760"><link target-id="fig-ch03_04_02"/> Polar and charged amino acid residues (the remainder after peptide bond formation) are more likely to be found on the surface of soluble proteins where they can interact with water, and nonpolar (e.g., amino acid side chains) are more likely to be found in the interior where they are sequestered from water. In membrane proteins, nonpolar and hydrophobic amino acid side chains associate with the hydrophobic tails of phospholipids, while polar and charged amino acid side chains interact with the polar head groups or with the aqueous solution. However, there are exceptions. Sometimes, positively and negatively charged amino acid side chains interact with one another in the interior of a protein, and polar or charged amino acid side chains that interact with a ligand can be found in the ligand binding pocket.</para>
+</solution>
+</exercise>
+</section>
+<section id="fs-id1235723" class="multiple-choice">
+<title>Review Questions</title>
+<exercise id="fs-id2385460">
+<problem id="fs-id1972642">
+<para id="fs-id2279879">The monomers that make up proteins are called ________.</para>
+<list id="fs-id2571408" list-type="enumerated" number-style="lower-alpha">
+<item>nucleotides</item>
+<item>disaccharides</item>
+<item>amino acids</item>
+<item>chaperones</item>
+</list>
+</problem>
+<solution id="fs-id1951079">
+<label/>
+<para id="fs-id1354131">C</para>
+</solution>
+</exercise>
+<exercise id="fs-id1837286">
+<problem id="fs-id1712352">
+<para id="fs-id1443260">The <emphasis effect="italics">α</emphasis>-helix and the <emphasis effect="italics">β</emphasis>-pleated sheet are part of which protein structure?</para>
+<list id="fs-id1318146" list-type="enumerated" number-style="lower-alpha">
+<item>primary</item>
+<item>secondary</item>
+<item>tertiary</item>
+<item>quaternary</item>
+</list>
+</problem>
+<solution id="fs-id1447624">
+<label/>
+<para id="fs-id1911096">B</para>
+</solution>
+</exercise>
+<exercise id="fs-idm71000707">
+<problem id="fs-idp81418434"><para id="fs-idm74380419">Mad cow disease is an infectious disease where one misfolded protein causes all other copies of the protein to begin misfolding. This is an example of a disease impacting ____ structure.</para><list id="fs-idm67922758" list-type="enumerated" number-style="lower-alpha">
+<item>primary</item>
+<item>secondary</item>
+<item>tertiary</item>
+<item>quaternary</item>
+</list>
+</problem>
+<solution id="fs-idm40512362"><label/>
+<para id="fs-idm200102067">C</para>
+</solution>
+</exercise>
+</section>
+<section id="fs-id1793964" class="critical-thinking">
+<title>Critical Thinking Questions</title>
+<exercise id="fs-id2689439">
+<problem id="fs-id2689119">
+<para id="fs-id1292460">Explain what happens if even one amino acid is substituted for another in a polypeptide chain. Provide a specific example.</para></problem>
+<solution id="fs-id2155334"><label/>
+<para id="fs-id2248523">A change in gene sequence can lead to a different amino acid being added to a polypeptide chain instead of the normal one. This causes a change in protein structure and function. For example, in sickle cell anemia, the hemoglobin <emphasis effect="italics">β</emphasis> chain has a single amino acid substitution—the amino acid glutamic acid in position six is substituted by valine. Because of this change, hemoglobin molecules form aggregates, and the disc-shaped red blood cells assume a crescent shape, which results in serious health problems.</para>
+</solution>
+</exercise>
+<exercise id="fs-id1720837">
+<problem id="fs-id1405440">
+<para id="fs-id2590152">Describe the differences in the four protein structures.</para></problem>
+<solution id="fs-id1482664"><label/>
+<para id="fs-id2339778">The sequence and number of amino acids in a polypeptide chain is its primary structure. The local folding of the polypeptide in some regions is the secondary structure of the protein. The three-dimensional structure of a polypeptide is known as its tertiary structure, created in part by chemical interactions such as hydrogen bonds between polar side chains, van der Waals interactions, disulfide linkages, and hydrophobic interactions. Some proteins are formed from multiple polypeptides, also known as subunits, and the interaction of these subunits forms the quaternary structure.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm71000706">
+<problem id="fs-idp81418433"><para id="fs-idm74380418">Aquaporins are proteins embedded in the plasma membrane that allow water molecules to move between the extracellular matrix and the intracellular space. Based on its function and location, describe the key features of the protein’s shape and the chemical characteristics of its amino acids.</para>
+</problem>
+<solution id="fs-idm40512361"><label/>
+<para id="fs-idm200102066">The protein must form a channel in the plasma membrane that allows water into the cell since water cannot cross the plasma membrane by itself. Since aquaporins are embedded in the plasma membrane and connect with both the intracellular and extracellular spaces, it must be amphipathic like the plasma membrane. The top and bottom of the protein must contain charged or polar amino acids (hydrophilic) to interact with the aqueous environments. The exterior transmembrane region must contain non-polar amino acids (hydrophobic) that can interact with the phospholipid tails. However, the inside of this channel must contain hydrophilic amino acids since they will interact with the traveling water molecules.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+</glossary>
+</document>

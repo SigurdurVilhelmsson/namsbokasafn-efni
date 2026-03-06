@@ -1,0 +1,656 @@
+{
+  "moduleId": "m66440",
+  "title": {
+    "segmentId": "m66440:title:auto-1",
+    "text": "Carbohydrates"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a4a9af98-26dd-4c80-b267-6309ecfc0bae",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Discuss the role of carbohydrates in cells and in the extracellular materials of animals and plants",
+        "Explain carbohydrate classifications",
+        "List common monosaccharides, disaccharides, and polysaccharides"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id1364671",
+      "segmentId": "m66440:para:fs-id1364671"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1812122",
+      "class": null,
+      "title": {
+        "segmentId": "m66440:title:fs-id1812122-title",
+        "text": "Molecular Structures"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1462931",
+          "class": null,
+          "title": {
+            "segmentId": "m66440:title:fs-id1462931-title",
+            "text": "Monosaccharides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2177131",
+              "segmentId": "m66440:para:fs-id2177131"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_01",
+              "class": "span-all",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_01-caption"
+              },
+              "media": {
+                "id": "fs-id1266915",
+                "alt": "The molecular structures of glyceraldehyde, an aldose, and dihydroxyacetone, a ketose, are shown. Both sugars have a three-carbon backbone. Glyceraldehyde has a carbonyl group (c double bonded to O) at one end of the carbon chain with hydroxyl (OH) groups attached to the other carbons. Dihydroxyacetone has a carbonyl group in the middle of the chain and alcohol groups at each end. The molecular structures of linear forms of ribose, a pentose, and glucose, a hexose, are also shown. Both ribose and glucose are aldoses with a carbonyl group at the end of chain,and hydroxyl groups attached to the other carbons.",
+                "src": "../../media/Figure_03_02_01-40f7.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1083099",
+              "segmentId": "m66440:para:fs-id1083099"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1778752",
+              "segmentId": "m66440:para:fs-id1778752"
+            },
+            {
+              "type": "note",
+              "id": "fs-id1385935",
+              "class": "visual-connection",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id2000117",
+                  "segmentId": "m66440:para:fs-id2000117"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id2762822",
+                  "segmentId": "m66440:para:fs-id2762822"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_02",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_02-caption"
+              },
+              "media": {
+                "id": "fs-id1319192",
+                "alt": "The molecular structures of the linear forms of glucose, galactose, and fructose are shown. Glucose and galactose are both aldoses with a carbonyl group (carbon double-bonded to oxygen) at one end of the molecule. A hydroxyl (OH) group is attached to each of the other residues. In glucose, the hydroxyl group attached to the third carbon is on the left side of the molecular structure and all other hydroxyl groups are on the right. In galactose, the hydroxyl groups attached to the third and fourth carbons are on the left, and the hydroxyl groups attached to the second, fifth and sixth carbon are on the right. Fructose is a ketose with C doubled bonded to O at the second carbon. All other carbons have hydroxyl groups associated with them. The hydroxyl group associated with the third carbon is on the left, and all the other hydroxyl groups are on the right.",
+                "src": "../../media/Figure_03_02_02.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id2009364",
+              "segmentId": "m66440:para:fs-id2009364"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1465546",
+              "segmentId": "m66440:para:fs-id1465546"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_03",
+              "class": "span-all",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_03-caption"
+              },
+              "media": {
+                "id": "fs-id2020604",
+                "alt": "The conversion of glucose between linear and ring forms is shown. The glucose ring has five carbons and an oxygen. In alpha glucose, the first hydroxyl group is locked in a down position, and in beta glucose, the ring is locked in an up position. Structures for ring forms of ribose and fructose are also shown. Both sugars have a ring with four carbons and an oxygen.",
+                "src": "../../media/Figure_03_02_03.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id2016502",
+          "class": null,
+          "title": {
+            "segmentId": "m66440:title:fs-id2016502-title",
+            "text": "Disaccharides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1958211",
+              "segmentId": "m66440:para:fs-id1958211"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_04",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_04-caption"
+              },
+              "media": {
+                "id": "fs-id2890621",
+                "alt": "The formation of sucrose from glucose and fructose is shown. In sucrose, the number one carbon of the glucose ring is connected to the number two carbon of fructose via an oxygen.",
+                "src": "../../media/Figure_03_02_04.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1720997",
+              "segmentId": "m66440:para:fs-id1720997"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_05",
+              "class": "span-all",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_05-caption"
+              },
+              "media": {
+                "id": "fs-id1462227",
+                "alt": "The chemical structures of maltose, lactose, and sucrose are shown. Both maltose and lactose are made from two glucose monomers joined together in ring form. In maltose, the oxygen in the glycosidic bond points downward. In lactose, the oxygen in the glycosidic bond points upward. Sucrose is made from glucose and fructose monomers. The oxygen in the glycosidic bond points downward.",
+                "src": "../../media/Figure_03_02_05.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id2051550",
+          "class": null,
+          "title": {
+            "segmentId": "m66440:title:fs-id2051550-title",
+            "text": "Polysaccharides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2164545",
+              "segmentId": "m66440:para:fs-id2164545"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1712546",
+              "segmentId": "m66440:para:fs-id1712546"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1707972",
+              "segmentId": "m66440:para:fs-id1707972"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_06",
+              "class": "span-all",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_06-caption"
+              },
+              "media": {
+                "id": "fs-id2582195",
+                "alt": "The chemical structures of amylose and amylopectin are shown. Amylose consists of unbranched chains of glucose subunits, and amylopectin consists of branched chains of glucose subunits.",
+                "src": "../../media/Figure_03_02_06.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1477384",
+              "segmentId": "m66440:para:fs-id1477384"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2491319",
+              "segmentId": "m66440:para:fs-id2491319"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_07",
+              "class": "span-all",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_07-caption"
+              },
+              "media": {
+                "id": "fs-id1405882",
+                "alt": "Three different magnifications of cellulose are shown. The microfibril is shown as a string-like tube. Further magnification shows that the microfibril is made up of chains of glucose molecules. Further magnification shows the structure of the glucose and that they are linked by hydrogen bonds.",
+                "src": "../../media/Figure_03_02_07-cc7d.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1808424",
+              "segmentId": "m66440:para:fs-id1808424"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2076089",
+              "segmentId": "m66440:para:fs-id2076089"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_02_08",
+              "caption": {
+                "segmentId": "m66440:caption:fig-ch03_02_08-caption"
+              },
+              "media": {
+                "id": "fs-id2229089",
+                "alt": "A photograph shows a bee in flight, getting nectar from a flower.",
+                "src": "../../media/Figure_03_02_08.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-id2689115",
+              "class": "career",
+              "title": {
+                "segmentId": "m66440:note-title:fs-id2689115-title",
+                "text": "Registered Dietitian"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id3032648",
+                  "segmentId": "m66440:para:fs-id3032648"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1396080",
+                  "segmentId": "m66440:para:fs-id1396080"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1262009",
+          "segmentId": "m66440:para:fs-id1262009"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2584042",
+      "class": null,
+      "title": {
+        "segmentId": "m66440:title:fs-id2584042-title",
+        "text": "Benefits of Carbohydrates"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2642520",
+          "segmentId": "m66440:para:fs-id2642520"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1760576",
+          "segmentId": "m66440:para:fs-id1760576"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1685167",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1470797",
+              "segmentId": "m66440:para:fs-id1470797"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2642295",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66440:title:fs-id2642295-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id3032521",
+          "segmentId": "m66440:para:fs-id3032521"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2854165",
+      "class": "visual-exercise",
+      "title": {
+        "segmentId": "m66440:title:fs-id2854165-title",
+        "text": "Visual Connection Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2750519",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1700158",
+                "segmentId": "m66440:problem:fs-id1700158"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2643010",
+                "segmentId": "m66440:solution:fs-id2643010"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2862763",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66440:title:fs-id2862763-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2310536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2008744",
+                "segmentId": "m66440:problem:fs-id2008744"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1703103",
+                "segmentId": "m66440:solution:fs-id1703103"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1352111",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1699648",
+                "segmentId": "m66440:problem:fs-id1699648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2348312",
+                "segmentId": "m66440:solution:fs-id2348312"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1730970",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2054430",
+                "segmentId": "m66440:problem:fs-id2054430"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2024549",
+                "segmentId": "m66440:solution:fs-id2024549"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1478280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2024704",
+                "segmentId": "m66440:problem:fs-id2024704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1511823",
+                "segmentId": "m66440:solution:fs-id1511823"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000702",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380414",
+                "segmentId": "m66440:problem:fs-idm74380414"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102062",
+                "segmentId": "m66440:solution:fs-idm200102062"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1635254",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66440:title:fs-id1635254-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1421074",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1462948",
+                "segmentId": "m66440:problem:fs-id1462948"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2491136",
+                "segmentId": "m66440:solution:fs-id2491136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2164078",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1396854",
+                "segmentId": "m66440:problem:fs-id1396854"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2951825",
+                "segmentId": "m66440:solution:fs-id2951825"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000701",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380413",
+                "segmentId": "m66440:problem:fs-idm74380413"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102060",
+                "segmentId": "m66440:solution:fs-idm200102060"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm200102061",
+                "segmentId": "m66440:solution:fs-idm200102061"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66440:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66440:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66440:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m66440:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id2348307",
+        "termSegmentId": "m66440:glossary-term:fs-id2348307-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id2348307-def"
+      },
+      {
+        "id": "fs-id2144933",
+        "termSegmentId": "m66440:glossary-term:fs-id2144933-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id2144933-def"
+      },
+      {
+        "id": "fs-id1778091",
+        "termSegmentId": "m66440:glossary-term:fs-id1778091-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id1778091-def"
+      },
+      {
+        "id": "fs-id1805432",
+        "termSegmentId": "m66440:glossary-term:fs-id1805432-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id1805432-def"
+      },
+      {
+        "id": "fs-id2581968",
+        "termSegmentId": "m66440:glossary-term:fs-id2581968-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id2581968-def"
+      },
+      {
+        "id": "fs-id1286063",
+        "termSegmentId": "m66440:glossary-term:fs-id1286063-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id1286063-def"
+      },
+      {
+        "id": "fs-id2155001",
+        "termSegmentId": "m66440:glossary-term:fs-id2155001-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id2155001-def"
+      },
+      {
+        "id": "fs-id2171791",
+        "termSegmentId": "m66440:glossary-term:fs-id2171791-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id2171791-def"
+      },
+      {
+        "id": "fs-id1386450",
+        "termSegmentId": "m66440:glossary-term:fs-id1386450-term",
+        "definitionSegmentId": "m66440:glossary-def:fs-id1386450-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-id1319192",
+      "class": null,
+      "alt": "The molecular structures of the linear forms of glucose, galactose, and fructose are shown. Glucose and galactose are both aldoses with a carbonyl group (carbon double-bonded to oxygen) at one end of the molecule. A hydroxyl (OH) group is attached to each of the other residues. In glucose, the hydroxyl group attached to the third carbon is on the left side of the molecular structure and all other hydroxyl groups are on the right. In galactose, the hydroxyl groups attached to the third and fourth carbons are on the left, and the hydroxyl groups attached to the second, fifth and sixth carbon are on the right. Fructose is a ketose with C doubled bonded to O at the second carbon. All other carbons have hydroxyl groups associated with them. The hydroxyl group associated with the third carbon is on the left, and all the other hydroxyl groups are on the right.",
+      "src": "../../media/Figure_03_02_02.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "sectionOrder": null
+}

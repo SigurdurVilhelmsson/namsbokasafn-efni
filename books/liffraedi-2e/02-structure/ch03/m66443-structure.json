@@ -1,0 +1,618 @@
+{
+  "moduleId": "m66443",
+  "title": {
+    "segmentId": "m66443:title:auto-1",
+    "text": "Nucleic Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "10601b75-87ce-40d7-9e5b-fe1bdbd0e13f",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Describe nucleic acids' structure and define the two types of nucleic acids",
+        "Explain DNA's structure and role",
+        "Explain RNA's structure and roles"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id1876142",
+      "segmentId": "m66443:para:fs-id1876142"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1802488",
+      "class": null,
+      "title": {
+        "segmentId": "m66443:title:fs-id1802488-title",
+        "text": "DNA and RNA"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2862975",
+          "segmentId": "m66443:para:fs-id2862975"
+        },
+        {
+          "type": "para",
+          "id": "fs-id811873",
+          "segmentId": "m66443:para:fs-id811873"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1998871",
+          "segmentId": "m66443:para:fs-id1998871"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2904548",
+          "segmentId": "m66443:para:fs-id2904548"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_05_01",
+          "caption": {
+            "segmentId": "m66443:caption:fig-ch03_05_01-caption"
+          },
+          "media": {
+            "id": "fs-id1477162",
+            "alt": "The molecular structure of a nucleotide is shown. The core of the nucleotide is a pentose whose carbon residues are numbered one prime through five prime. The base is attached to the one prime carbon, and the phosphate is attached to the five prime carbon. Two kinds of pentose are found in nucleotides: ribose and deoxyribose. Deoxyribose has an H instead of O H at the two prime position. Five kinds of base are found in nucleotides. Two of these, adenine and guanine, are purine bases with two rings fused together. The other three, cytosine, thymine and uracil, have one six-membered ring.",
+            "src": "../../media/Figure_03_05_01-d787.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1582478",
+          "segmentId": "m66443:para:fs-id1582478"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1354194",
+          "segmentId": "m66443:para:fs-id1354194"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1445473",
+          "segmentId": "m66443:para:fs-id1445473"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1511912",
+      "class": null,
+      "title": {
+        "segmentId": "m66443:title:fs-id1511912-title",
+        "text": "DNA Double-Helix Structure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2188236",
+          "segmentId": "m66443:para:fs-id2188236"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_05_02",
+          "caption": {
+            "segmentId": "m66443:caption:fig-ch03_05_02-caption"
+          },
+          "media": {
+            "id": "fs-id1368373",
+            "alt": "The molecular structure of D N A is shown. D N A consists of two antiparallel strands twisted in a double helix. The phosphate backbone is on the outside, and the nitrogenous bases face one another on the inside.  The bases appear as strands between the phosphate backbone of the double helix.",
+            "src": "../../media/Figure_03_05_02-fbf5.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1769796",
+          "segmentId": "m66443:para:fs-id1769796"
+        },
+        {
+          "type": "note",
+          "id": "fs-id2321240",
+          "class": "visual-connection",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2098380",
+              "segmentId": "m66443:para:fs-id2098380"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1457824",
+              "segmentId": "m66443:para:fs-id1457824"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_05_03",
+          "caption": {
+            "segmentId": "m66443:caption:fig-ch03_05_03-caption"
+          },
+          "media": {
+            "id": "fs-id1707961",
+            "alt": "Hydrogen bonding between thymine and adenine and between guanine and cytosine is shown. Thymine forms two hydrogen bonds with adenine, and guanine forms three hydrogen bonds with cytosine. The phosphate backbones of each strand are on the outside and run in opposite directions.",
+            "src": "../../media/Figure_03_05_03-4351.png",
+            "mimeType": "image/png"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1780679",
+      "class": null,
+      "title": {
+        "segmentId": "m66443:title:fs-id1780679-title",
+        "text": "RNA"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2229626",
+          "segmentId": "m66443:para:fs-id2229626"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2626112",
+          "segmentId": "m66443:para:fs-id2626112"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_05_04",
+          "caption": {
+            "segmentId": "m66443:caption:fig-ch03_05_04-caption"
+          },
+          "media": {
+            "id": "fs-id2074750",
+            "alt": "An illustration of a ribosome is shown. m R N A sits between the large and small subunits. t R N A molecules bind the ribosome and add amino acids to the growing peptide chain.",
+            "src": "../../media/Figure_03_05_04.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1813318",
+          "segmentId": "m66443:para:fs-id1813318"
+        },
+        {
+          "type": "table",
+          "id": "tab-ch03-05-01",
+          "class": "top-titled",
+          "summary": "",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-28",
+                  "attributes": {
+                    "namest": "col1",
+                    "nameend": "col3",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-29",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-30",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-31",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-32",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-33",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-34",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-35",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-36",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-37",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-38",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-39",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-40",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-41",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-42",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-43",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-44",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-45",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66443:entry:auto-46",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-47",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66443:entry:auto-48",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1569149",
+          "segmentId": "m66443:para:fs-id1569149"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1438288",
+          "segmentId": "m66443:para:fs-id1438288"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1883122",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2144933",
+              "segmentId": "m66443:para:fs-id2144933"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1786911",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66443:title:fs-id1786911-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2072549",
+          "segmentId": "m66443:para:fs-id2072549"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1341798",
+      "class": "visual-exercise",
+      "title": {
+        "segmentId": "m66443:title:fs-id1341798-title",
+        "text": "Visual Connection Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1258652",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1378818",
+                "segmentId": "m66443:problem:fs-id1378818"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2121470",
+                "segmentId": "m66443:solution:fs-id2121470"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1998990",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66443:title:fs-id1998990-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2024549",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2016612",
+                "segmentId": "m66443:problem:fs-id2016612"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2904690",
+                "segmentId": "m66443:solution:fs-id2904690"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2081310",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1797963",
+                "segmentId": "m66443:problem:fs-id1797963"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1631447",
+                "segmentId": "m66443:solution:fs-id1631447"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000707",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380419",
+                "segmentId": "m66443:problem:fs-idm74380419"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102067",
+                "segmentId": "m66443:solution:fs-idm200102067"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1998848",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66443:title:fs-id1998848-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1787868",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1293730",
+                "segmentId": "m66443:problem:fs-id1293730"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2581968",
+                "segmentId": "m66443:solution:fs-id2581968"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1596510",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1454994",
+                "segmentId": "m66443:problem:fs-id1454994"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1966470",
+                "segmentId": "m66443:solution:fs-id1966470"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66443:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66443:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66443:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m66443:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id2138705",
+        "termSegmentId": "m66443:glossary-term:fs-id2138705-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id2138705-def"
+      },
+      {
+        "id": "fs-id2570918",
+        "termSegmentId": "m66443:glossary-term:fs-id2570918-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id2570918-def"
+      },
+      {
+        "id": "fs-id2491136",
+        "termSegmentId": "m66443:glossary-term:fs-id2491136-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id2491136-def"
+      },
+      {
+        "id": "fs-id2229589",
+        "termSegmentId": "m66443:glossary-term:fs-id2229589-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id2229589-def"
+      },
+      {
+        "id": "fs-id2075294",
+        "termSegmentId": "m66443:glossary-term:fs-id2075294-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id2075294-def"
+      },
+      {
+        "id": "fs-id1676095",
+        "termSegmentId": "m66443:glossary-term:fs-id1676095-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1676095-def"
+      },
+      {
+        "id": "fs-id2590657",
+        "termSegmentId": "m66443:glossary-term:fs-id2590657-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id2590657-def"
+      },
+      {
+        "id": "fs-id1396854",
+        "termSegmentId": "m66443:glossary-term:fs-id1396854-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1396854-def"
+      },
+      {
+        "id": "fs-id1983258",
+        "termSegmentId": "m66443:glossary-term:fs-id1983258-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1983258-def"
+      },
+      {
+        "id": "fs-id1827129",
+        "termSegmentId": "m66443:glossary-term:fs-id1827129-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1827129-def"
+      },
+      {
+        "id": "fs-id1479001",
+        "termSegmentId": "m66443:glossary-term:fs-id1479001-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1479001-def"
+      },
+      {
+        "id": "fs-id1982881",
+        "termSegmentId": "m66443:glossary-term:fs-id1982881-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1982881-def"
+      },
+      {
+        "id": "fs-id1445625",
+        "termSegmentId": "m66443:glossary-term:fs-id1445625-term",
+        "definitionSegmentId": "m66443:glossary-def:fs-id1445625-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-id1707961",
+      "class": null,
+      "alt": "Hydrogen bonding between thymine and adenine and between guanine and cytosine is shown. Thymine forms two hydrogen bonds with adenine, and guanine forms three hydrogen bonds with cytosine. The phosphate backbones of each strand are on the outside and run in opposite directions.",
+      "src": "../../media/Figure_03_05_03-4351.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "sectionOrder": null
+}

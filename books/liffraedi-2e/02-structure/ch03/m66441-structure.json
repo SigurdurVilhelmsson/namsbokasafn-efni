@@ -1,0 +1,600 @@
+{
+  "moduleId": "m66441",
+  "title": {
+    "segmentId": "m66441:title:auto-1",
+    "text": "Lipids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "950a56b9-0188-4845-a108-a982ead0b168",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Describe the four major types of lipids",
+        "Explain the role of fats in storing energy",
+        "Differentiate between saturated and unsaturated fatty acids",
+        "Describe phospholipids and their role in cells",
+        "Define the basic structure of a steroid and some steroid functions",
+        "Explain how cholesterol helps maintain the plasma membrane's fluid nature"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id1318871",
+      "segmentId": "m66441:para:fs-id1318871"
+    },
+    {
+      "type": "figure",
+      "id": "fig-ch03_03_01",
+      "caption": {
+        "segmentId": "m66441:caption:fig-ch03_03_01-caption"
+      },
+      "media": {
+        "id": "fs-id1712156",
+        "alt": "Photo shows a river otter swimming.  The river otter has thick fur that is smooth and wet.",
+        "src": "../../media/Figure_03_03_01.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-id1438706",
+      "class": null,
+      "title": {
+        "segmentId": "m66441:title:fs-id1438706-title",
+        "text": "Fats and Oils"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1596337",
+          "class": null,
+          "title": {
+            "segmentId": "m66441:title:fs-id1596337-title",
+            "text": "Trans Fats"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1236538",
+              "segmentId": "m66441:para:fs-id1236538"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1447736",
+              "segmentId": "m66441:para:fs-id1447736"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id2890621",
+          "class": null,
+          "title": {
+            "segmentId": "m66441:title:fs-id2890621-title",
+            "text": "Omega Fatty Acids"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1958165",
+              "segmentId": "m66441:para:fs-id1958165"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_03_06",
+              "caption": {
+                "segmentId": "m66441:caption:fig-ch03_03_06-caption"
+              },
+              "media": {
+                "id": "fs-id2927265",
+                "alt": "The molecular structures of alpha-linolenic acid, an omega-3 fatty acid is shown. Alpha-linolenic acid has three double bonds located eight, eleven, and fourteen residues from the acetyl group. It has a hooked shape.",
+                "src": "../../media/Figure_03_03_07-cb9e.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1768637",
+              "segmentId": "m66441:para:fs-id1768637"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1966110",
+              "segmentId": "m66441:para:fs-id1966110"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1671785",
+          "segmentId": "m66441:para:fs-id1671785"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_02",
+          "class": "span-all",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_02-caption"
+          },
+          "media": {
+            "id": "fs-id2569082",
+            "alt": "The structures of glycerol, a fatty acid, and a triacylglycerol are shown. Glycerol is a chain of three carbons, with a hydroxyl (upper O upper H) group attached to each carbon. A fatty acid has an acetyl (upper C upper O upper O upper H) group attached to a long carbon chain. In triacylglycerol, a fatty acid is attached to each of glycerols three hydroxyl groups via the carboxyl group. A water molecule is lost in the reaction so the structure of the linkage is C dash O dash C, with an oxygen double bonded to the second carbon.",
+            "src": "../../media/Figure_03_03_02-f094.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1483230",
+          "segmentId": "m66441:para:fs-id1483230"
+        },
+        {
+          "type": "para",
+          "id": "fs-id891930",
+          "segmentId": "m66441:para:fs-id891930"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_03",
+          "class": "span-all",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_03-caption"
+          },
+          "media": {
+            "id": "fs-id1235407",
+            "alt": "The structure of stearic acid is shown. This fatty acid has a hydrocarbon chain seventeen residues long attached to an acetyl group. All bonds between the carbons are single bonds.",
+            "src": "../../media/Figure_03_03_03-9520.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id2169828",
+          "segmentId": "m66441:para:fs-id2169828"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_04",
+          "class": "span-all",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_04-caption"
+          },
+          "media": {
+            "id": "fs-id1807206",
+            "alt": "The structure of oleic acid is shown. This fatty acid has a hydrocarbon chain seventeen residues long attached to an acetyl group. The bond between carbon eight and carbon nine is a double bond.",
+            "src": "../../media/Figure_03_03_04-a3a2.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1797773",
+          "segmentId": "m66441:para:fs-id1797773"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1066559",
+          "segmentId": "m66441:para:fs-id1066559"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_05",
+          "class": "span-all",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_05-caption"
+          },
+          "media": {
+            "id": "fs-id1415018",
+            "alt": "A comparison of saturated and unsaturated fatty acids is shown. Stearic acid, a saturated fatty acid, has a hydrocarbon chain seventeen residues long attached to an acetyl group. Oleic acid also has a seventeen-residue hydrocarbon chain, but a double bond exists between the eighth and ninth carbon in the chain. In cis oleic acid, the hydrogens are on the same side of the double bond.  In the cis oleic acid, the 2 hydrogens on the same side cause the chain to bend. In trans oleic acid, they are on opposite sides.",
+            "src": "../../media/Figure_03_03_05-ff6c.jpg",
+            "mimeType": "image/jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1970730",
+      "class": null,
+      "title": {
+        "segmentId": "m66441:title:fs-id1970730-title",
+        "text": "Waxes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1384512",
+          "segmentId": "m66441:para:fs-id1384512"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_07",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_07-caption"
+          },
+          "media": {
+            "id": "fs-id1778422",
+            "alt": "The photo shows leaves on a plant; the leaves appear thick, shiny, and waxy.",
+            "src": "../../media/Figure_03_03_11.jpg",
+            "mimeType": "image/jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2013346",
+      "class": null,
+      "title": {
+        "segmentId": "m66441:title:fs-id2013346-title",
+        "text": "Phospholipids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2682552",
+          "segmentId": "m66441:para:fs-id2682552"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_08",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_08-caption"
+          },
+          "media": {
+            "id": "fs-id1442842",
+            "alt": "The molecular structure of a phospholipid is shown. It consists of two fatty acids attached to the first and second carbons in glycerol, and a phosphate group attached to the third position. In the illustration one of the fatty acids is saturated and straight, and the second is unsaturated and bent. Both are below the glycerol molecule. The phosphate group may be further modified by addition of another molecule to one of its oxygens indicated by upper-case R. Two molecules may modify the phosphate group, choline and serine. The glycerol and phosphate group make up the hydrophilic head of the molecule, while the fatty acids attached below make up the hydrophobic tails.",
+            "src": "../../media/Figure_03_03_08.png",
+            "mimeType": "image/png"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1953709",
+          "segmentId": "m66441:para:fs-id1953709"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_09",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_09-caption"
+          },
+          "media": {
+            "id": "fs-id1437221",
+            "alt": "An illustration of a phospholipids bilayer is shown. The phospholipids bilayer consists of two layers of phospholipids. The hydrophobic tails of the phospholipids face one another while the hydrophilic head groups face outward.",
+            "src": "../../media/Figure_03_03_09-0814.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1506249",
+          "segmentId": "m66441:para:fs-id1506249"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1704779",
+          "segmentId": "m66441:para:fs-id1704779"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1831602",
+      "class": null,
+      "title": {
+        "segmentId": "m66441:title:fs-id1831602-title",
+        "text": "Steroids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1780762",
+          "segmentId": "m66441:para:fs-id1780762"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_03_10",
+          "caption": {
+            "segmentId": "m66441:caption:fig-ch03_03_10-caption"
+          },
+          "media": {
+            "id": "fs-id1685167",
+            "alt": "The structures of cholesterol and cortisol are shown. Each of these molecules is composed of three six-carbon rings fused to a five-carbon ring. Cholesterol has a branched hydrocarbon attached to the five-carbon ring, and a hydroxyl group attached to the terminal six-carbon ring. Cortisol has a two-carbon chain modified with a double-bonded oxygen, a hydroxyl group attached to the five-carbon ring, and an oxygen double-bonded to the terminal six-carbon ring.",
+            "src": "../../media/Figure_03_03_10-a6ce.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1473085",
+          "segmentId": "m66441:para:fs-id1473085"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1462641",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id3053447",
+              "segmentId": "m66441:para:fs-id3053447"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2010424",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66441:title:fs-id2010424-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2344871",
+          "segmentId": "m66441:para:fs-id2344871"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1695581",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66441:title:fs-id1695581-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1292143",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2474268",
+                "segmentId": "m66441:problem:fs-id2474268"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1439092",
+                "segmentId": "m66441:solution:fs-id1439092"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1407667",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2321958",
+                "segmentId": "m66441:problem:fs-id2321958"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id3032648",
+                "segmentId": "m66441:solution:fs-id3032648"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380416",
+                "segmentId": "m66441:problem:fs-idm74380416"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102064",
+                "segmentId": "m66441:solution:fs-idm200102064"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id3022406",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66441:title:fs-id3022406-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1595664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2024549",
+                "segmentId": "m66441:problem:fs-id2024549"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1426972",
+                "segmentId": "m66441:solution:fs-id1426972"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1787868",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id3025306",
+                "segmentId": "m66441:problem:fs-id3025306"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2138712",
+                "segmentId": "m66441:solution:fs-id2138712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000703",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380415",
+                "segmentId": "m66441:problem:fs-idm74380415"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102063",
+                "segmentId": "m66441:solution:fs-idm200102063"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000705",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380417",
+                "segmentId": "m66441:problem:fs-idm74380417"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102065",
+                "segmentId": "m66441:solution:fs-idm200102065"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66441:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66441:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66441:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m66441:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m66441:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m66441:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m66441:abstract-item:abstract-item-6"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id1512004",
+        "termSegmentId": "m66441:glossary-term:fs-id1512004-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id1512004-def"
+      },
+      {
+        "id": "fs-id2164292",
+        "termSegmentId": "m66441:glossary-term:fs-id2164292-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2164292-def"
+      },
+      {
+        "id": "fs-id2626332",
+        "termSegmentId": "m66441:glossary-term:fs-id2626332-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2626332-def"
+      },
+      {
+        "id": "fs-id2200773",
+        "termSegmentId": "m66441:glossary-term:fs-id2200773-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2200773-def"
+      },
+      {
+        "id": "fs-id2581968",
+        "termSegmentId": "m66441:glossary-term:fs-id2581968-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2581968-def"
+      },
+      {
+        "id": "fs-id2197534",
+        "termSegmentId": "m66441:glossary-term:fs-id2197534-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2197534-def"
+      },
+      {
+        "id": "fs-id2954506",
+        "termSegmentId": "m66441:glossary-term:fs-id2954506-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2954506-def"
+      },
+      {
+        "id": "fs-id2308951",
+        "termSegmentId": "m66441:glossary-term:fs-id2308951-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id2308951-def"
+      },
+      {
+        "id": "fs-id1429764",
+        "termSegmentId": "m66441:glossary-term:fs-id1429764-term",
+        "definitionSegmentId": "m66441:glossary-def:fs-id1429764-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

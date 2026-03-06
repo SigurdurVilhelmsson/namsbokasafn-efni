@@ -1,0 +1,206 @@
+[
+  {
+    "docxImage": "image1.jpg",
+    "figureId": "fig-ch03_00_01",
+    "outputName": "Figure_03_00_01_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image10.jpg",
+    "figureId": "fig-ch03_01_01",
+    "outputName": "Figure_03_01_01_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image11.jpeg",
+    "figureId": "fig-ch03_01_02",
+    "outputName": "Figure_03_01_02_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image12.jpeg",
+    "figureId": "fig-ch03_02_01",
+    "outputName": "Figure_03_02_01_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image13.jpg",
+    "figureId": "fig-ch03_02_02",
+    "outputName": "Figure_03_02_02_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image14.jpg",
+    "figureId": "fig-ch03_02_03",
+    "outputName": "Figure_03_02_03_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image15.jpg",
+    "figureId": "fig-ch03_02_04",
+    "outputName": "Figure_03_02_04_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image16.jpg",
+    "figureId": "fig-ch03_02_05",
+    "outputName": "Figure_03_02_05_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image17.jpeg",
+    "figureId": "fig-ch03_02_06",
+    "outputName": "Figure_03_02_06_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image18.jpeg",
+    "figureId": "fig-ch03_02_07",
+    "outputName": "Figure_03_02_07_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image19.jpg",
+    "figureId": "fig-ch03_02_08",
+    "outputName": "Figure_03_02_08_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image2.emf",
+    "figureId": "fig-ch03_03_01",
+    "outputName": "Figure_03_03_01_is.emf",
+    "extension": ".emf"
+  },
+  {
+    "docxImage": "image20.jpg",
+    "figureId": "fig-ch03_03_06",
+    "outputName": "Figure_03_03_06_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image21.jpg",
+    "figureId": "fig-ch03_03_02",
+    "outputName": "Figure_03_03_02_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image22.jpg",
+    "figureId": "fig-ch03_03_03",
+    "outputName": "Figure_03_03_03_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image23.jpg",
+    "figureId": "fig-ch03_03_04",
+    "outputName": "Figure_03_03_04_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image24.jpeg",
+    "figureId": "fig-ch03_03_05",
+    "outputName": "Figure_03_03_05_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image25.jpg",
+    "figureId": "fig-ch03_03_07",
+    "outputName": "Figure_03_03_07_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image26.jpeg",
+    "figureId": "fig-ch03_03_08",
+    "outputName": "Figure_03_03_08_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image27.jpg",
+    "figureId": "fig-ch03_03_09",
+    "outputName": "Figure_03_03_09_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image28.jpeg",
+    "figureId": "fig-ch03_03_10",
+    "outputName": "Figure_03_03_10_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image29.jpg",
+    "figureId": "fig-ch03_04_01",
+    "outputName": "Figure_03_04_01_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image3.emf",
+    "figureId": "fig-ch03_04_02",
+    "outputName": "Figure_03_04_02_is.emf",
+    "extension": ".emf"
+  },
+  {
+    "docxImage": "image30.jpeg",
+    "figureId": "fig-ch03_04_03",
+    "outputName": "Figure_03_04_03_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image31.jpg",
+    "figureId": "fig-ch03_04_04",
+    "outputName": "Figure_03_04_04_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image32.jpeg",
+    "figureId": "fig-ch03_04_05",
+    "outputName": "Figure_03_04_05_is.jpeg",
+    "extension": ".jpeg"
+  },
+  {
+    "docxImage": "image33.png",
+    "figureId": "fig-ch03_04_06",
+    "outputName": "Figure_03_04_06_is.png",
+    "extension": ".png"
+  },
+  {
+    "docxImage": "image34.jpg",
+    "figureId": "fig-ch03_04_07",
+    "outputName": "Figure_03_04_07_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image4.jpg",
+    "figureId": "fig-ch03_04_08",
+    "outputName": "Figure_03_04_08_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image5.jpg",
+    "figureId": "fig-ch03_04_09",
+    "outputName": "Figure_03_04_09_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image6.jpg",
+    "figureId": "fig-ch03_05_01",
+    "outputName": "Figure_03_05_01_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image7.jpg",
+    "figureId": "fig-ch03_05_02",
+    "outputName": "Figure_03_05_02_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image8.jpg",
+    "figureId": "fig-ch03_05_03",
+    "outputName": "Figure_03_05_03_is.jpg",
+    "extension": ".jpg"
+  },
+  {
+    "docxImage": "image9.jpeg",
+    "figureId": "fig-ch03_05_04",
+    "outputName": "Figure_03_05_04_is.jpeg",
+    "extension": ".jpeg"
+  }
+]

@@ -1,0 +1,863 @@
+{
+  "moduleId": "m66442",
+  "title": {
+    "segmentId": "m66442:title:auto-1",
+    "text": "Proteins"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "211c8917-4044-4b0e-980c-0a84a86a48b0",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Describe the functions proteins perform in the cell and in tissues",
+        "Discuss the relationship between amino acids and proteins",
+        "Explain the four levels of protein organization",
+        "Describe the ways in which protein shape and function are linked"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id1266915",
+      "segmentId": "m66442:para:fs-id1266915"
+    },
+    {
+      "type": "section",
+      "id": "fs-id846709",
+      "class": null,
+      "title": {
+        "segmentId": "m66442:title:fs-id846709-title",
+        "text": "Types and Functions of Proteins"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2862975",
+          "segmentId": "m66442:para:fs-id2862975"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2781285",
+          "segmentId": "m66442:para:fs-id2781285"
+        },
+        {
+          "type": "table",
+          "id": "tab-ch03-04-01",
+          "class": "top-titled",
+          "summary": "",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-11",
+                  "attributes": {
+                    "namest": "col1",
+                    "nameend": "col3",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-12",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-13",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-14",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-15",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-16",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-17",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-18",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-19",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-20",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-21",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-22",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-23",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-24",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-25",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-26",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-27",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-28",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-29",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-30",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-31",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-32",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66442:entry:auto-33",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-34",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66442:entry:auto-35",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id2051317",
+          "segmentId": "m66442:para:fs-id2051317"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1802099",
+      "class": null,
+      "title": {
+        "segmentId": "m66442:title:fs-id1802099-title",
+        "text": "Amino Acids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1344438",
+          "segmentId": "m66442:para:fs-id1344438"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_04_01",
+          "caption": {
+            "segmentId": "m66442:caption:fig-ch03_04_01-caption"
+          },
+          "media": {
+            "id": "fs-id1694813",
+            "alt": "The molecular structure of an amino acid is given. An amino acid has an alpha carbon to which an amino group, a carboxyl group, a hydrogen, and a side chain are attached. The side chain varies for different amino acids, and is designated as the R - group.",
+            "src": "../../media/Figure_03_04_01.png",
+            "mimeType": "image/png"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id2941991",
+          "segmentId": "m66442:para:fs-id2941991"
+        },
+        {
+          "type": "note",
+          "id": "fs-id2098380",
+          "class": "visual-connection",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2051550",
+              "segmentId": "m66442:para:fs-id2051550"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1468946",
+              "segmentId": "m66442:para:fs-id1468946"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_04_02",
+          "caption": {
+            "segmentId": "m66442:caption:fig-ch03_04_02-caption"
+          },
+          "media": {
+            "id": "fs-id1645231",
+            "alt": "The molecular structures of the twenty amino acids commonly found in proteins are given. These are divided into five categories: nonpolar aliphatic, polar uncharged, positively charged, negatively charged, and aromatic. Nonpolar aliphatic amino acids include glycine, alanine, valine, leucine, methionine, isoleucine, and proline. Polar uncharged amino acids include serine, threonine, cysteine, asparagine, and glutamine. Positively charged amino acids include lysine, arginine, and histidine. Negatively charged amino acids include aspartate and glutamate. Aromatic amino acids include phenylalanine, tyrosine, and tryptophan.  For example, in the amino acid glycine, the R group is a single hydrogen; but in alanine the R group is upper C upper H subscript 3 baseline.",
+            "src": "../../media/Figure_03_04_02-fd30.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1953709",
+          "segmentId": "m66442:para:fs-id1953709"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1506615",
+          "segmentId": "m66442:para:fs-id1506615"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2235262",
+          "segmentId": "m66442:para:fs-id2235262"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_04_03",
+          "caption": {
+            "segmentId": "m66442:caption:fig-ch03_04_03-caption"
+          },
+          "media": {
+            "id": "fs-id2626112",
+            "alt": "The formation of a peptide bond between two amino acids is shown. When the peptide bond forms, the carbon from the carbonyl group becomes attached to the nitrogen from the amino group. The upper O upper H from the carboxyl group and an upper H from the amino group form a molecule of water.",
+            "src": "../../media/Figure_03_04_03.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1415197",
+          "segmentId": "m66442:para:fs-id1415197"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1281011",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2115867",
+              "segmentId": "m66442:para:fs-id2115867"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id1432930",
+          "class": "evolution",
+          "title": {
+            "segmentId": "m66442:note-title:fs-id1432930-title",
+            "text": "The Evolutionary Significance of Cytochrome c"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2270232",
+              "segmentId": "m66442:para:fs-id2270232"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2216741",
+              "segmentId": "m66442:para:fs-id2216741"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1676049",
+      "class": null,
+      "title": {
+        "segmentId": "m66442:title:fs-id1676049-title",
+        "text": "Protein Structure"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1423194",
+          "class": null,
+          "title": {
+            "segmentId": "m66442:title:fs-id1423194-title",
+            "text": "Primary Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1277293",
+              "segmentId": "m66442:para:fs-id1277293"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_04_04",
+              "caption": {
+                "segmentId": "m66442:caption:fig-ch03_04_04-caption"
+              },
+              "media": {
+                "id": "fs-id1778097",
+                "alt": "The amino acid sequences for the A chain and B chain of bovine insulin are shown. The A chain is 21 amino acids in length, and the B chain is 30 amino acids in length. One disulfide, or S S bond, connects two cysteine residues in the A chain. Two other disulfide linkages connect the A chain to the B chain.",
+                "src": "../../media/Figure_03_04_04.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1352111",
+              "segmentId": "m66442:para:fs-id1352111"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_04_05",
+              "caption": {
+                "segmentId": "m66442:caption:fig-ch03_04_05-caption"
+              },
+              "media": {
+                "id": "fs-id1671790",
+                "alt": "Several representations of hemoglobin proteins are shown under normal and sickle cell conditions. In primary structure, the sixth amino acid is replaced by valine. In secondary and tertiary structures, the sickle cell is revealed by a misshapen molecule. As a result, in function, normal hemoglobins do not associate with each other, and each can carry oxygen. But in sickle cell conditions, the proteins aggregate into a fiber and oxygen carrying capacity is reduced.",
+                "src": "../../media/Figure_03_04_05-3127.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1465861",
+              "segmentId": "m66442:para:fs-id1465861"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_04_06",
+              "caption": {
+                "segmentId": "m66442:caption:fig-ch03_04_06-caption"
+              },
+              "media": {
+                "id": "fs-id1235886",
+                "alt": "This electron micrograph shows red blood cells from a patient with sickle cell anemia. Most of the cells have a normal, disk shape, but about one in five has a sickle shape. A normal blood cell is eight microns across.",
+                "src": "../../media/Figure_03_04_06.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1442926",
+          "class": null,
+          "title": {
+            "segmentId": "m66442:title:fs-id1442926-title",
+            "text": "Secondary Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2154549",
+              "segmentId": "m66442:para:fs-id2154549"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_04_07",
+              "caption": {
+                "segmentId": "m66442:caption:fig-ch03_04_07-caption"
+              },
+              "media": {
+                "id": "fs-id2990796",
+                "alt": "The illustration shows an alpha helix protein structure, which coils like a spring, and a beta-pleated sheet structure, which forms flat sheets stacked together. In an alpha-helix, hydrogen bonding occurs between the carbonyl group of one amino acid and the amino group of the amino acid that occurs four residues later. In a beta-pleated sheet, hydrogen bonding occurs between two different lengths of peptide that are antiparallel to one another.",
+                "src": "../../media/Figure_03_04_07-ffb1.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id2626332",
+              "segmentId": "m66442:para:fs-id2626332"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1998990",
+          "class": null,
+          "title": {
+            "segmentId": "m66442:title:fs-id1998990-title",
+            "text": "Tertiary Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1785802",
+              "segmentId": "m66442:para:fs-id1785802"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_04_08",
+              "caption": {
+                "segmentId": "m66442:caption:fig-ch03_04_08-caption"
+              },
+              "media": {
+                "id": "fs-id2336596",
+                "alt": "This illustration shows a polypeptide backbone folded into a three-dimensional structure. Chemical interactions between amino acid side chains maintain its shape. These include an ionic bond between an amino group and a carboxyl group, hydrophobic interactions between two hydrophobic side chains, a hydrogen bond between a hydroxyl group and a carbonyl group, and a disulfide linkage.",
+                "src": "../../media/Figure_03_04_08.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id2075112",
+              "segmentId": "m66442:para:fs-id2075112"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1836952",
+          "class": null,
+          "title": {
+            "segmentId": "m66442:title:fs-id1836952-title",
+            "text": "Quaternary Structure"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2229589",
+              "segmentId": "m66442:para:fs-id2229589"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1560822",
+              "segmentId": "m66442:para:fs-id1560822"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_04_09",
+              "caption": {
+                "segmentId": "m66442:caption:fig-ch03_04_09-caption"
+              },
+              "media": {
+                "id": "fs-id2054513",
+                "alt": "Shown are the four levels of protein structure. The primary structure is the amino acid sequence. Secondary structure is a regular folding pattern due to hydrogen bonding. Tertiary structure is the three-dimensional folding pattern of the protein due to interactions between amino acid side chains. Quaternary structure is the interaction of two or more polypeptide chains.",
+                "src": "../../media/Figure_03_04_09-fda7.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id2198400",
+          "segmentId": "m66442:para:fs-id2198400"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1429764",
+      "class": null,
+      "title": {
+        "segmentId": "m66442:title:fs-id1429764-title",
+        "text": "Denaturation and Protein Folding"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2216009",
+          "segmentId": "m66442:para:fs-id2216009"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1958698",
+          "segmentId": "m66442:para:fs-id1958698"
+        },
+        {
+          "type": "note",
+          "id": "fs-id2862911",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1957585",
+              "segmentId": "m66442:para:fs-id1957585"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1428624",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66442:title:fs-id1428624-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2335363",
+          "segmentId": "m66442:para:fs-id2335363"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2199492",
+          "segmentId": "m66442:para:fs-id2199492"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1831067",
+      "class": "visual-exercise",
+      "title": {
+        "segmentId": "m66442:title:fs-id1831067-title",
+        "text": "Visual Connection Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2762947",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1876403",
+                "segmentId": "m66442:problem:fs-id1876403"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1787760",
+                "segmentId": "m66442:solution:fs-id1787760"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1235723",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66442:title:fs-id1235723-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2385460",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2279879",
+                "segmentId": "m66442:problem:fs-id2279879"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1354131",
+                "segmentId": "m66442:solution:fs-id1354131"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1837286",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1443260",
+                "segmentId": "m66442:problem:fs-id1443260"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1911096",
+                "segmentId": "m66442:solution:fs-id1911096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000707",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380419",
+                "segmentId": "m66442:problem:fs-idm74380419"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102067",
+                "segmentId": "m66442:solution:fs-idm200102067"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1793964",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66442:title:fs-id1793964-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2689439",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1292460",
+                "segmentId": "m66442:problem:fs-id1292460"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2248523",
+                "segmentId": "m66442:solution:fs-id2248523"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1720837",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2590152",
+                "segmentId": "m66442:problem:fs-id2590152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2339778",
+                "segmentId": "m66442:solution:fs-id2339778"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000706",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380418",
+                "segmentId": "m66442:problem:fs-idm74380418"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102066",
+                "segmentId": "m66442:solution:fs-idm200102066"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66442:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66442:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66442:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m66442:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m66442:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id1465106",
+        "termSegmentId": "m66442:glossary-term:fs-id1465106-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id1465106-def"
+      },
+      {
+        "id": "fs-id1434153",
+        "termSegmentId": "m66442:glossary-term:fs-id1434153-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id1434153-def"
+      },
+      {
+        "id": "fs-id3010327",
+        "termSegmentId": "m66442:glossary-term:fs-id3010327-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id3010327-def"
+      },
+      {
+        "id": "fs-id2317789",
+        "termSegmentId": "m66442:glossary-term:fs-id2317789-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id2317789-def"
+      },
+      {
+        "id": "fs-id2862923",
+        "termSegmentId": "m66442:glossary-term:fs-id2862923-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id2862923-def"
+      },
+      {
+        "id": "fs-id2681803",
+        "termSegmentId": "m66442:glossary-term:fs-id2681803-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id2681803-def"
+      },
+      {
+        "id": "fs-id988625",
+        "termSegmentId": "m66442:glossary-term:fs-id988625-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id988625-def"
+      },
+      {
+        "id": "fs-id1552657",
+        "termSegmentId": "m66442:glossary-term:fs-id1552657-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id1552657-def"
+      },
+      {
+        "id": "fs-id1474143",
+        "termSegmentId": "m66442:glossary-term:fs-id1474143-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id1474143-def"
+      },
+      {
+        "id": "fs-id2334362",
+        "termSegmentId": "m66442:glossary-term:fs-id2334362-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id2334362-def"
+      },
+      {
+        "id": "fs-id2024278",
+        "termSegmentId": "m66442:glossary-term:fs-id2024278-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id2024278-def"
+      },
+      {
+        "id": "fs-id782653",
+        "termSegmentId": "m66442:glossary-term:fs-id782653-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id782653-def"
+      },
+      {
+        "id": "fs-id2025552",
+        "termSegmentId": "m66442:glossary-term:fs-id2025552-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id2025552-def"
+      },
+      {
+        "id": "fs-id1300064",
+        "termSegmentId": "m66442:glossary-term:fs-id1300064-term",
+        "definitionSegmentId": "m66442:glossary-def:fs-id1300064-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-id1645231",
+      "class": null,
+      "alt": "The molecular structures of the twenty amino acids commonly found in proteins are given. These are divided into five categories: nonpolar aliphatic, polar uncharged, positively charged, negatively charged, and aromatic. Nonpolar aliphatic amino acids include glycine, alanine, valine, leucine, methionine, isoleucine, and proline. Polar uncharged amino acids include serine, threonine, cysteine, asparagine, and glutamine. Positively charged amino acids include lysine, arginine, and histidine. Negatively charged amino acids include aspartate and glutamate. Aromatic amino acids include phenylalanine, tyrosine, and tryptophan.  For example, in the amino acid glycine, the R group is a single hydrogen; but in alanine the R group is upper C upper H subscript 3 baseline.",
+      "src": "../../media/Figure_03_04_02-fd30.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

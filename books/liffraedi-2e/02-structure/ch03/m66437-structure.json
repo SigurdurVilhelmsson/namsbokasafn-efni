@@ -1,0 +1,33 @@
+{
+  "moduleId": "m66437",
+  "title": {
+    "segmentId": "m66437:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "5d980d41-8d3a-46ca-94b1-86444c438e2d"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-ch03_00_01",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m66437:caption:fig-ch03_00_01-caption"
+      },
+      "media": {
+        "id": "fs-id2026629",
+        "alt": "Photo shows a variety of cheeses, fruits, and breads served on a tray.",
+        "src": "../../media/Figure_03_00_01-d483.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-id1770003",
+      "segmentId": "m66437:para:fs-id1770003"
+    }
+  ],
+  "sectionOrder": null
+}

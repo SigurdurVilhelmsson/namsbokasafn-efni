@@ -1,0 +1,337 @@
+{
+  "moduleId": "m66438",
+  "title": {
+    "segmentId": "m66438:title:auto-1",
+    "text": "Synthesis of Biological Macromolecules"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "4acfa729-2ba0-4675-ac7d-1f3e8c0434f2",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Understand macromolecule synthesis",
+        "Explain dehydration (or condensation) and hydrolysis reactions"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id1724224",
+      "segmentId": "m66438:para:fs-id1724224"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1266915",
+      "class": null,
+      "title": {
+        "segmentId": "m66438:title:fs-id1266915-title",
+        "text": "Dehydration Synthesis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1384510",
+          "segmentId": "m66438:para:fs-id1384510"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_01_01",
+          "class": "span-all",
+          "caption": {
+            "segmentId": "m66438:caption:fig-ch03_01_01-caption"
+          },
+          "media": {
+            "id": "fs-id1477384",
+            "alt": "Shown is the reaction of two glucose monomers to form maltose. When maltose is formed, a water molecule is released. The components of the linkage are upper case O upper case H from one glucose molecule combining with one upper case H from the second glucose molecule.",
+            "src": "../../media/Figure_03_01_01.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1730720",
+          "segmentId": "m66438:para:fs-id1730720"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1808810",
+      "class": null,
+      "title": {
+        "segmentId": "m66438:title:fs-id1808810-title",
+        "text": "Hydrolysis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1431430",
+          "segmentId": "m66438:para:fs-id1431430"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch03_01_02",
+          "class": "span-all",
+          "caption": {
+            "segmentId": "m66438:caption:fig-ch03_01_02-caption"
+          },
+          "media": {
+            "id": "fs-id1405882",
+            "alt": "Shown is the breakdown of maltose to form two glucose monomers. Water is a reactant. The water molecule, upper case H subscript 2 baseline upper case O, breaks apart, with upper O upper H obtained by one of the glucose molecules, and upper H obtained by the second glucose molecule.",
+            "src": "../../media/Figure_03_01_02.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id2016502",
+          "segmentId": "m66438:para:fs-id2016502"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1425951",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1443321",
+              "segmentId": "m66438:para:fs-id1443321"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id891930",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66438:title:fs-id891930-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2334482",
+          "segmentId": "m66438:para:fs-id2334482"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1484046",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66438:title:fs-id1484046-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1313020",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id886306",
+                "segmentId": "m66438:problem:fs-id886306"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1352597",
+                "segmentId": "m66438:solution:fs-id1352597"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1342364",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2229443",
+                "segmentId": "m66438:problem:fs-id2229443"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1570679",
+                "segmentId": "m66438:solution:fs-id1570679"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000699",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380410",
+                "segmentId": "m66438:problem:fs-idm74380410"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34780410",
+                "segmentId": "m66438:problem:fs-idm34780410"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34780411",
+                "segmentId": "m66438:problem:fs-idm34780411"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102058",
+                "segmentId": "m66438:solution:fs-idm200102058"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2024298",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66438:title:fs-id2024298-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1462931",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1635297",
+                "segmentId": "m66438:problem:fs-id1635297"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2008744",
+                "segmentId": "m66438:solution:fs-id2008744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2590218",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1462641",
+                "segmentId": "m66438:problem:fs-id1462641"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1799174",
+                "segmentId": "m66438:solution:fs-id1799174"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000700",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380411",
+                "segmentId": "m66438:problem:fs-idm74380411"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm74380412",
+                "segmentId": "m66438:problem:fs-idm74380412"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102059",
+                "segmentId": "m66438:solution:fs-idm200102059"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66438:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66438:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66438:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id1415749",
+        "termSegmentId": "m66438:glossary-term:fs-id1415749-term",
+        "definitionSegmentId": "m66438:glossary-def:fs-id1415749-def"
+      },
+      {
+        "id": "fs-id1447611",
+        "termSegmentId": "m66438:glossary-term:fs-id1447611-term",
+        "definitionSegmentId": "m66438:glossary-def:fs-id1447611-def"
+      },
+      {
+        "id": "fs-id1708547",
+        "termSegmentId": "m66438:glossary-term:fs-id1708547-term",
+        "definitionSegmentId": "m66438:glossary-def:fs-id1708547-def"
+      },
+      {
+        "id": "fs-id1797970",
+        "termSegmentId": "m66438:glossary-term:fs-id1797970-term",
+        "definitionSegmentId": "m66438:glossary-def:fs-id1797970-def"
+      },
+      {
+        "id": "fs-id2079181",
+        "termSegmentId": "m66438:glossary-term:fs-id2079181-term",
+        "definitionSegmentId": "m66438:glossary-def:fs-id2079181-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

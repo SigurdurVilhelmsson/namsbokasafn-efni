@@ -1,0 +1,79 @@
+{
+  "chapter": 3,
+  "titleEn": "Biological Macromolecules",
+  "titleIs": "Lífrænar stórsameindur",
+  "sections": [
+    {
+      "id": "3.1",
+      "titleEn": "Synthesis of Biological Macromolecules",
+      "titleIs": null
+    },
+    {
+      "id": "3.2",
+      "titleEn": "Carbohydrates",
+      "titleIs": null
+    },
+    {
+      "id": "3.3",
+      "titleEn": "Lipids",
+      "titleIs": null
+    },
+    {
+      "id": "3.4",
+      "titleEn": "Proteins",
+      "titleIs": null
+    },
+    {
+      "id": "3.5",
+      "titleEn": "Nucleic Acids",
+      "titleIs": null
+    }
+  ],
+  "status": {
+    "extraction": {
+      "complete": true,
+      "date": "2026-03-06",
+      "notes": "Extracted from CNXML — 429 segments across 6 modules"
+    },
+    "mtReady": {
+      "complete": true,
+      "date": "2026-03-06",
+      "notes": "N/A — human translation imported from docx"
+    },
+    "mtOutput": {
+      "complete": true,
+      "date": "2026-03-06",
+      "notes": "Imported from docx: 205/429 segments matched (88% body coverage), 195 skipped (exercises/glossary)"
+    },
+    "linguisticReview": {
+      "complete": false
+    },
+    "tmCreated": {
+      "complete": false
+    },
+    "injection": {
+      "complete": false
+    },
+    "rendering": {
+      "complete": false
+    },
+    "publication": {
+      "mtPreview": {
+        "complete": false
+      },
+      "faithful": {
+        "complete": false
+      },
+      "localized": {
+        "complete": false
+      }
+    }
+  },
+  "images": {
+    "total": 34,
+    "translated": 34,
+    "status": "imported",
+    "notes": "34 images extracted from docx (2 EMF files need conversion to PNG)"
+  },
+  "notes": "Human translation imported from Word document. Body content well-covered; exercises and glossary need MT."
+}
