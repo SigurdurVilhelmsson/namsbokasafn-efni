@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Framvinduferill - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <style>
+    /* ==========================================================================
+       CHAPTER PIPELINE PAGE — page-specific styles
+       Uses CSS variables from common.css (Basalt & Vellum design system)
+       ========================================================================== */
+
+    /* ========================================
+       BREADCRUMB
+       ======================================== */
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .breadcrumb a:hover { color: var(--accent-hover); }
+    .breadcrumb-sep { color: var(--text-muted); }
+    .breadcrumb-current { color: var(--text-primary); font-weight: 500; }
+
+    /* ========================================
+       LOCK BANNER
+       ======================================== */
+
+    .lock-banner {
+      display: none;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-lg);
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+
+    .lock-banner.visible { display: flex; }
+
+    .lock-banner.lock-other {
+      background: color-mix(in srgb, var(--warning) 15%, var(--bg-base));
+      border: 1px solid var(--warning);
+      color: var(--text-primary);
+    }
+
+    .lock-banner.lock-self {
+      background: color-mix(in srgb, var(--success) 15%, var(--bg-base));
+      border: 1px solid var(--success);
+      color: var(--text-primary);
+    }
+
+    /* ========================================
+       LOADING & ERROR
+       ======================================== */
+
+    .loading-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-2xl);
+      color: var(--text-muted);
+      font-size: var(--text-base);
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-container {
+      display: none;
+      padding: var(--spacing-lg);
+      background: color-mix(in srgb, var(--error) 10%, var(--bg-base));
+      border: 1px solid var(--error);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: var(--text-sm);
+    }
+
+    .error-container.visible { display: block; }
+
+    /* ========================================
+       STEP INDICATOR
+       ======================================== */
+
+    .pipeline-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: var(--spacing-2xl);
+      padding: var(--spacing-lg) 0;
+      overflow-x: auto;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+    .step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle.complete {
+      background: var(--success);
+      color: #fff;
+      border: 2px solid var(--success);
+    }
+
+    .step-circle.current {
+      background: var(--info);
+      color: #fff;
+      border: 2px solid var(--info);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--info) 25%, transparent);
+    }
+
+    .step-circle.future {
+      background: var(--bg-base);
+      color: var(--text-muted);
+      border: 2px solid var(--border);
+    }
+
+    .step-label {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      margin-top: var(--spacing-xs);
+      text-align: center;
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      min-width: 20px;
+      margin-bottom: 22px; /* offset to align with circle center */
+    }
+
+    .step-line.complete-line {
+      background: var(--success);
+    }
+
+    .step-line.incomplete-line {
+      background: var(--border);
+    }
+
+    /* ========================================
+       ACTION AREA
+       ======================================== */
+
+    .action-area {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .action-area .btn {
+      font-size: var(--text-base);
+      padding: var(--spacing-sm) var(--spacing-xl);
+    }
+
+    .published-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: color-mix(in srgb, var(--success) 15%, var(--bg-base));
+      border: 1px solid var(--success);
+      border-radius: var(--radius-md);
+      color: var(--success);
+      font-weight: 600;
+      font-size: var(--text-base);
+    }
+
+    .revert-link {
+      display: inline-block;
+      margin-top: var(--spacing-sm);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-decoration: underline;
+      transition: color var(--transition-fast);
+    }
+
+    .revert-link:hover { color: var(--text-secondary); }
+
+    /* ========================================
+       PUBLICATION SUB-TRACKS
+       ======================================== */
+
+    .pub-tracks {
+      display: none;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      flex-wrap: wrap;
+    }
+
+    .pub-tracks.visible { display: flex; }
+
+    .pub-track-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .pub-track-item input[type="checkbox"] {
+      pointer-events: none;
+      accent-color: var(--success);
+    }
+
+    /* ========================================
+       HISTORY ACCORDION
+       ======================================== */
+
+    .history-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .history-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--spacing-md) var(--spacing-lg);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      transition: background var(--transition-fast);
+    }
+
+    .history-toggle:hover { background: var(--bg-hover); }
+
+    .history-toggle-arrow {
+      transition: transform var(--transition-fast);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .history-section.open .history-toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    .history-body {
+      display: none;
+      padding: 0 var(--spacing-lg) var(--spacing-lg);
+    }
+
+    .history-section.open .history-body {
+      display: block;
+    }
+
+    .history-entry {
+      padding: var(--spacing-xs) 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .history-entry:last-child { border-bottom: none; }
+
+    .history-empty {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ========================================
+       CONFIRM DIALOG (modal overlay)
+       ======================================== */
+
+    .dialog-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog-overlay.visible {
+      display: flex;
+    }
+
+    .dialog-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .dialog-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .dialog-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.5;
+    }
+
+    .dialog-note {
+      width: 100%;
+      padding: var(--spacing-sm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      background: var(--bg-base);
+      color: var(--text-primary);
+      resize: vertical;
+      min-height: 60px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .dialog-note:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--spacing-sm);
+    }
+
+    .dialog-hint {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+  </style>
+</head>
+<body>
+  <main class="page-content" id="main-content" data-page="pipeline" data-title="Framvinduferill">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" id="breadcrumb">
+      <a href="/library">Bókasafn</a>
+      <span class="breadcrumb-sep">/</span>
+      <span id="breadcrumb-book"></span>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current" id="breadcrumb-chapter"></span>
+    </nav>
+
+    <!-- Lock Banner -->
+    <div class="lock-banner" id="lock-banner"></div>
+
+    <!-- Loading -->
+    <div class="loading-container" id="loading">
+      <div class="spinner"></div>
+      <span>Sæki stöðu...</span>
+    </div>
+
+    <!-- Error -->
+    <div class="error-container" id="error"></div>
+
+    <!-- Main content (hidden until loaded) -->
+    <div id="pipeline-content" style="display:none;">
+
+      <!-- Step Indicator -->
+      <div class="pipeline-steps" id="pipeline-steps"></div>
+
+      <!-- Action Area -->
+      <div class="action-area" id="action-area"></div>
+
+      <!-- Publication Sub-tracks -->
+      <div class="pub-tracks" id="pub-tracks">
+        <label class="pub-track-item">
+          <input type="checkbox" id="pub-mt" disabled>
+          MT-drög birt
+        </label>
+        <label class="pub-track-item">
+          <input type="checkbox" id="pub-faithful" disabled>
+          Traust þýðing birt
+        </label>
+        <label class="pub-track-item">
+          <input type="checkbox" id="pub-localized" disabled>
+          Staðfærð útgáfa birt
+        </label>
+      </div>
+
+      <!-- History Accordion -->
+      <div class="history-section" id="history-section">
+        <button class="history-toggle" onclick="toggleHistory()">
+          <span>Ferill</span>
+          <span class="history-toggle-arrow">&#9660;</span>
+        </button>
+        <div class="history-body" id="history-body"></div>
+      </div>
+    </div>
+
+    <!-- Advance Confirm Dialog -->
+    <div class="dialog-overlay" id="advance-dialog">
+      <div class="dialog-box">
+        <div class="dialog-title" id="advance-dialog-title">Staðfesta</div>
+        <div class="dialog-text" id="advance-dialog-text"></div>
+        <textarea class="dialog-note" id="advance-note" placeholder="Athugasemd — valkvætt"></textarea>
+        <div class="dialog-actions">
+          <button class="btn btn-secondary btn-sm" onclick="closeDialog('advance-dialog')">Hætta við</button>
+          <button class="btn btn-primary btn-sm" id="advance-confirm-btn" onclick="confirmAdvance()">Staðfesta</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Revert Confirm Dialog -->
+    <div class="dialog-overlay" id="revert-dialog">
+      <div class="dialog-box">
+        <div class="dialog-title">Fara eitt stig til baka</div>
+        <div class="dialog-text">Ertu viss um að þú viljir fara til baka? Athugasemd er nauðsynleg (að minnsta kosti 10 stafir).</div>
+        <textarea class="dialog-note" id="revert-note" placeholder="Athugasemd — nauðsynleg (10+ stafir)"></textarea>
+        <div class="dialog-hint">Lágmark 10 stafir.</div>
+        <div class="dialog-actions">
+          <button class="btn btn-secondary btn-sm" onclick="closeDialog('revert-dialog')">Hætta við</button>
+          <button class="btn btn-primary btn-sm" id="revert-confirm-btn" disabled onclick="confirmRevert()">Staðfesta</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/js/layout.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/htmlUtils.js"></script>
+  <script>
+    // ========================================================================
+    // CHAPTER PIPELINE VIEW
+    // ========================================================================
+
+    var STAGES = [
+      'extraction', 'mtReady', 'mtOutput', 'linguisticReview',
+      'tmCreated', 'injection', 'rendering', 'publication'
+    ];
+
+    var STAGE_NAMES = {
+      extraction:       'Útdráttur úr CNXML',
+      mtReady:          'Tilbúið til vélþýðingar',
+      mtOutput:         'Vélþýðing móttekin',
+      linguisticReview: 'Málfræðilegar leiðréttingar',
+      tmCreated:        'Þýðingarminnið búið til',
+      injection:        'Þýðing sett inn í CNXML',
+      rendering:        'HTML myndað',
+      publication:      'Birt á vef'
+    };
+
+    var STAGE_TOOLTIPS = {
+      extraction:       'Enska efnið dregið út úr CNXML skrám og skipt í þýðanleg bútar.',
+      mtReady:          'Bútar merktir og varðir fyrir vélþýðingarvél.',
+      mtOutput:         'Vélþýðing móttekin úr malstadur.is og keyrð í gegn.',
+      linguisticReview: 'Ritstjóri fer yfir þýðingu, leiðréttir villur og fínpússar.',
+      tmCreated:        'Þýðingaminni (EN↔IS) búið til úr yfirfarnri þýðingu.',
+      injection:        'Yfirfarin þýðing sett til baka inn í CNXML skjalaformið.',
+      rendering:        'CNXML breytt í HTML til birtingar á vefnum.',
+      publication:      'Lokaskref — efni birt á namsbokasafn.is.'
+    };
+
+    var ACTION_LABELS = {
+      extraction:       'Senda í vélþýðingu',
+      mtReady:          'Merkja sem sent',
+      mtOutput:         'Hefja málfræðilegar leiðréttingar',
+      linguisticReview: 'Leiðréttingar lokið — búa til þýðingarminnið',
+      tmCreated:        'Setja þýðingu inn í CNXML',
+      injection:        'Mynda HTML',
+      rendering:        'Birta á vef'
+    };
+
+    // Parse bookSlug and chapterNum from URL: /pipeline/:bookSlug/:chapterNum
+    var pathParts = window.location.pathname.split('/').filter(Boolean);
+    var bookSlug = pathParts[1] || '';
+    var chapterNum = pathParts[2] || '';
+    var apiBase = '/api/pipeline-status/' + encodeURIComponent(bookSlug) + '/' + encodeURIComponent(chapterNum);
+    var pipelineData = null;
+    var isLocked = false;
+
+    // ========================================
+    // INIT
+    // ========================================
+
+    document.addEventListener('userLoaded', function() {
+      // Set breadcrumb
+      document.getElementById('breadcrumb-book').textContent = bookSlug;
+      document.getElementById('breadcrumb-chapter').textContent = 'Kafli ' + chapterNum;
+
+      loadPipeline();
+    });
+
+    async function loadPipeline() {
+      var loading = document.getElementById('loading');
+      var errorEl = document.getElementById('error');
+      var content = document.getElementById('pipeline-content');
+
+      loading.style.display = 'flex';
+      errorEl.classList.remove('visible');
+      content.style.display = 'none';
+
+      try {
+        pipelineData = await fetchJson(apiBase, { credentials: 'include' });
+        loading.style.display = 'none';
+        content.style.display = 'block';
+        renderAll();
+      } catch (err) {
+        loading.style.display = 'none';
+        errorEl.textContent = err.message || 'Ekki tókst að sækja stöðu.';
+        errorEl.classList.add('visible');
+      }
+    }
+
+    // ========================================
+    // RENDER
+    // ========================================
+
+    function renderAll() {
+      renderLockBanner();
+      renderSteps();
+      renderAction();
+      renderPubTracks();
+      renderHistory();
+    }
+
+    function renderLockBanner() {
+      var banner = document.getElementById('lock-banner');
+      var lock = pipelineData.lock;
+      var user = window.currentUser;
+
+      if (!lock) {
+        banner.classList.remove('visible', 'lock-other', 'lock-self');
+        isLocked = false;
+        return;
+      }
+
+      banner.classList.add('visible');
+
+      if (user && lock.lockedBy === user.username) {
+        banner.className = 'lock-banner visible lock-self';
+        banner.textContent = '\uD83D\uDD12 Þú ert með þennan kafla opinn.';
+        isLocked = false; // own lock doesn't block actions
+      } else {
+        banner.className = 'lock-banner visible lock-other';
+        banner.textContent = '\u26A0 ' + escapeHtml(lock.lockedBy) + ' er að vinna í þessum kafla.';
+        isLocked = true;
+      }
+    }
+
+    function renderSteps() {
+      var container = document.getElementById('pipeline-steps');
+      container.innerHTML = '';
+
+      var currentStage = pipelineData.currentStage;
+      var stages = pipelineData.stages || {};
+      var currentIdx = STAGES.indexOf(currentStage);
+
+      for (var i = 0; i < STAGES.length; i++) {
+        var stage = STAGES[i];
+        var stageStatus = stages[stage];
+
+        // Determine state
+        var state;
+        if (stageStatus === 'complete') {
+          state = 'complete';
+        } else if (stage === currentStage) {
+          state = 'current';
+        } else {
+          state = 'future';
+        }
+
+        // Add connecting line before circle (except first)
+        if (i > 0) {
+          var line = document.createElement('div');
+          line.className = 'step-line ' + (i <= currentIdx && stages[STAGES[i - 1]] === 'complete' ? 'complete-line' : 'incomplete-line');
+          container.appendChild(line);
+        }
+
+        // Step item
+        var item = document.createElement('div');
+        item.className = 'step-item';
+
+        var circle = document.createElement('div');
+        circle.className = 'step-circle ' + state;
+        circle.title = STAGE_TOOLTIPS[stage];
+
+        if (state === 'complete') {
+          circle.innerHTML = '&#10003;'; // checkmark
+        } else {
+          circle.textContent = String(i + 1);
+        }
+
+        var label = document.createElement('div');
+        label.className = 'step-label';
+        label.textContent = STAGE_NAMES[stage];
+
+        item.appendChild(circle);
+        item.appendChild(label);
+        container.appendChild(item);
+      }
+    }
+
+    function renderAction() {
+      var area = document.getElementById('action-area');
+      area.innerHTML = '';
+
+      var currentStage = pipelineData.currentStage;
+
+      if (isLocked) {
+        // No actions while locked by someone else
+        return;
+      }
+
+      if (currentStage === 'publication' && pipelineData.stages && pipelineData.stages.publication === 'complete') {
+        // All done — show badge
+        var badge = document.createElement('span');
+        badge.className = 'published-badge';
+        badge.innerHTML = 'Birt &#10003;';
+        area.appendChild(badge);
+      } else if (ACTION_LABELS[currentStage]) {
+        // Show action button
+        var btn = document.createElement('button');
+        btn.className = 'btn btn-primary';
+        btn.textContent = ACTION_LABELS[currentStage];
+        btn.onclick = function() { openAdvanceDialog(); };
+        area.appendChild(btn);
+      }
+
+      // Admin revert link
+      var user = window.currentUser;
+      if (user && user.role === 'admin') {
+        var revert = document.createElement('button');
+        revert.className = 'revert-link admin-only visible';
+        revert.textContent = '\u21A9 Fara eitt stig til baka';
+        revert.onclick = function() { openRevertDialog(); };
+        area.appendChild(revert);
+      }
+    }
+
+    function renderPubTracks() {
+      var container = document.getElementById('pub-tracks');
+      var pub = pipelineData.publication;
+
+      if (pipelineData.currentStage !== 'publication') {
+        container.classList.remove('visible');
+        return;
+      }
+
+      container.classList.add('visible');
+
+      if (pub) {
+        document.getElementById('pub-mt').checked = (pub.mtPreview === 'complete');
+        document.getElementById('pub-faithful').checked = (pub.faithful === 'complete');
+        document.getElementById('pub-localized').checked = (pub.localized === 'complete');
+      }
+    }
+
+    function renderHistory() {
+      var body = document.getElementById('history-body');
+      var history = pipelineData.history || [];
+
+      if (history.length === 0) {
+        body.innerHTML = '<div class="history-empty">Enginn ferill skráður.</div>';
+        return;
+      }
+
+      // Show last 10, newest first
+      var items = history.slice(0, 10);
+      var html = '';
+
+      for (var i = 0; i < items.length; i++) {
+        var entry = items[i];
+        var date = formatDate(entry.timestamp);
+        var who = escapeHtml(entry.completedBy || entry.user || '—');
+        var stage = STAGE_NAMES[entry.stage] || escapeHtml(entry.stage || '');
+        var note = entry.notes ? ' "' + escapeHtml(entry.notes) + '"' : '';
+        var status = entry.status || '';
+
+        var text = date + ' ' + who + ' — ' + stage;
+        if (status) {
+          text += ' (' + escapeHtml(status) + ')';
+        }
+        text += note;
+
+        html += '<div class="history-entry">' + text + '</div>';
+      }
+
+      body.innerHTML = html;
+    }
+
+    // ========================================
+    // HISTORY TOGGLE
+    // ========================================
+
+    function toggleHistory() {
+      var section = document.getElementById('history-section');
+      section.classList.toggle('open');
+    }
+
+    // ========================================
+    // DIALOGS
+    // ========================================
+
+    function openAdvanceDialog() {
+      var stage = pipelineData.currentStage;
+      var label = ACTION_LABELS[stage] || 'Halda áfram';
+      document.getElementById('advance-dialog-title').textContent = 'Staðfesta: ' + label;
+      document.getElementById('advance-dialog-text').textContent =
+        'Þetta merkir stigið "' + (STAGE_NAMES[stage] || stage) + '" sem lokið og færir kaflann á næsta stig.';
+      document.getElementById('advance-note').value = '';
+      document.getElementById('advance-dialog').classList.add('visible');
+    }
+
+    function openRevertDialog() {
+      document.getElementById('revert-note').value = '';
+      document.getElementById('revert-confirm-btn').disabled = true;
+      document.getElementById('revert-dialog').classList.add('visible');
+    }
+
+    function closeDialog(id) {
+      document.getElementById(id).classList.remove('visible');
+    }
+
+    function checkRevertNote() {
+      var note = document.getElementById('revert-note').value.trim();
+      document.getElementById('revert-confirm-btn').disabled = (note.length < 10);
+    }
+
+    // Wire up the revert note input event (oninput in HTML uses oninput attribute)
+    document.getElementById('revert-note').addEventListener('input', checkRevertNote);
+
+    async function confirmAdvance() {
+      var note = document.getElementById('advance-note').value.trim();
+      var btn = document.getElementById('advance-confirm-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sendi...';
+
+      try {
+        await fetchJson(apiBase + '/advance', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ note: note || undefined })
+        });
+        closeDialog('advance-dialog');
+        await loadPipeline();
+      } catch (err) {
+        alert(err.message || 'Villa kom upp.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Staðfesta';
+      }
+    }
+
+    async function confirmRevert() {
+      var note = document.getElementById('revert-note').value.trim();
+      if (note.length < 10) return;
+
+      var btn = document.getElementById('revert-confirm-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sendi...';
+
+      try {
+        await fetchJson(apiBase + '/revert', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ note: note })
+        });
+        closeDialog('revert-dialog');
+        await loadPipeline();
+      } catch (err) {
+        alert(err.message || 'Villa kom upp.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Staðfesta';
+      }
+    }
+
+    // Close dialogs on overlay click
+    document.querySelectorAll('.dialog-overlay').forEach(function(overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          overlay.classList.remove('visible');
+        }
+      });
+    });
+
+    // ========================================
+    // HELPERS
+    // ========================================
+
+    function formatDate(ts) {
+      if (!ts) return '—';
+      try {
+        var d = new Date(ts);
+        return d.toLocaleDateString('is-IS', { day: 'numeric', month: 'short', year: 'numeric' }) +
+          ' ' + d.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
+      } catch (e) {
+        return ts;
+      }
+    }
+  </script>
+</body>
+</html>
