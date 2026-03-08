@@ -38,6 +38,7 @@ import {
 } from './lib/cnxml-parser.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
+import { safeWrite } from './lib/safeWrite.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -1504,28 +1505,28 @@ function writeOutput(result, chapter, moduleId, sourceContent) {
 
   // Write segments markdown
   const segmentsPath = path.join(mtDir, `${moduleId}-segments.en.md`);
-  fs.writeFileSync(segmentsPath, formatSegmentsMarkdown(result.segments), 'utf-8');
+  safeWrite(segmentsPath, formatSegmentsMarkdown(result.segments));
 
   // Write structure JSON
   const structurePath = path.join(structDir, `${moduleId}-structure.json`);
-  fs.writeFileSync(structurePath, JSON.stringify(result.structure, null, 2), 'utf-8');
+  safeWrite(structurePath, JSON.stringify(result.structure, null, 2));
 
   // Write equations JSON
   if (Object.keys(result.equations).length > 0) {
     const equationsPath = path.join(structDir, `${moduleId}-equations.json`);
-    fs.writeFileSync(equationsPath, JSON.stringify(result.equations, null, 2), 'utf-8');
+    safeWrite(equationsPath, JSON.stringify(result.equations, null, 2));
   }
 
   // Write inline attributes JSON (term class, footnote id, etc.)
   if (result.inlineAttrs && Object.keys(result.inlineAttrs).length > 0) {
     const inlineAttrsPath = path.join(structDir, `${moduleId}-inline-attrs.json`);
-    fs.writeFileSync(inlineAttrsPath, JSON.stringify(result.inlineAttrs, null, 2), 'utf-8');
+    safeWrite(inlineAttrsPath, JSON.stringify(result.inlineAttrs, null, 2));
   }
 
   // Write extraction manifest
   const manifest = buildManifest(result, sourceContent);
   const manifestPath = path.join(structDir, `${moduleId}-manifest.json`);
-  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
+  safeWrite(manifestPath, JSON.stringify(manifest, null, 2));
 
   return { segmentsPath, structurePath, manifestPath };
 }

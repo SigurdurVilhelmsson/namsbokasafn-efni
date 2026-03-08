@@ -46,6 +46,7 @@ import {
   localizeMathMLText,
 } from './lib/mathml-to-latex.js';
 import { buildModuleSections } from './lib/module-sections.js';
+import { safeWrite } from './lib/safeWrite.js';
 
 // =====================================================================
 // NOTE TYPE LABELS
@@ -1663,7 +1664,7 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
   const outputDir = ensureOutputDir(chapter, track);
   const filename = getOutputFilename(moduleId, chapter, moduleSections);
   const outputPath = path.join(outputDir, filename);
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
   return outputPath;
 }
 
@@ -1840,7 +1841,7 @@ function writeEndOfChapterSection(chapter, section, track, html) {
   const filename = `${chapter}-${section.slug}.html`;
   const outputPath = path.join(outputDir, filename);
 
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
 
   return outputPath;
 }
@@ -1965,7 +1966,7 @@ function writeKeyEquations(chapter, track, html) {
   const filename = `${chapter}-key-equations.html`;
   const outputPath = path.join(outputDir, filename);
 
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
 
   return outputPath;
 }
@@ -2061,7 +2062,7 @@ function writeCompiledGlossary(chapter, track, html) {
   const filename = `${chapter}-key-terms.html`;
   const outputPath = path.join(outputDir, filename);
 
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
 
   return outputPath;
 }
@@ -2197,7 +2198,7 @@ function writeCompiledSummary(chapter, track, html) {
   const filename = `${chapter}-summary.html`;
   const outputPath = path.join(outputDir, filename);
 
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
 
   return outputPath;
 }
@@ -2342,7 +2343,7 @@ function writeCompiledExercises(chapter, track, html) {
   const filename = `${chapter}-exercises.html`;
   const outputPath = path.join(outputDir, filename);
 
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
 
   return outputPath;
 }
@@ -2502,7 +2503,7 @@ function writeAnswerKey(chapter, track, html) {
   const filename = `${chapter}-answer-key.html`;
   const outputPath = path.join(outputDir, filename);
 
-  fs.writeFileSync(outputPath, html, 'utf-8');
+  safeWrite(outputPath, html);
 
   return outputPath;
 }
@@ -2636,37 +2637,40 @@ async function main() {
       );
     }
 
-    for (const moduleId of modules) {
-      if (args.verbose) {
-        console.error(`Rendering: ${moduleId}`);
-      }
+    const writtenFiles = []; // Track files written in this render pass for cleanup on failure
 
-      const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
-      const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
+    try {
+      for (const moduleId of modules) {
+        if (args.verbose) {
+          console.error(`Rendering: ${moduleId}`);
+        }
 
-      const renderResult = renderCnxmlToHtml(cnxml, {
-        verbose: args.verbose,
-        lang: args.lang,
-        chapter: args.chapter,
-        moduleId,
-        moduleSections,
-        chapterFigureNumbers,
-        chapterTableNumbers,
-        chapterEquationNumbers,
-        chapterExampleNumbers,
-        chapterExerciseNumbers,
-        chapterSectionTitles,
-        equationTextDictionary,
-      });
-      let html = renderResult.html;
-      const pageData = renderResult.pageData;
+        const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
+        const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
-      // Special handling for Periodic Table appendix (m68859)
-      // Replace static image with link to interactive periodic table
-      if (moduleId === 'm68859') {
-        const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
-        if (mainContentMatch) {
-          const newMainContent = `<main>
+        const renderResult = renderCnxmlToHtml(cnxml, {
+          verbose: args.verbose,
+          lang: args.lang,
+          chapter: args.chapter,
+          moduleId,
+          moduleSections,
+          chapterFigureNumbers,
+          chapterTableNumbers,
+          chapterEquationNumbers,
+          chapterExampleNumbers,
+          chapterExerciseNumbers,
+          chapterSectionTitles,
+          equationTextDictionary,
+        });
+        let html = renderResult.html;
+        const pageData = renderResult.pageData;
+
+        // Special handling for Periodic Table appendix (m68859)
+        // Replace static image with link to interactive periodic table
+        if (moduleId === 'm68859') {
+          const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
+          if (mainContentMatch) {
+            const newMainContent = `<main>
 <div style="text-align: center; padding: 2rem;">
   <h2>Gagnavirkt lotukerfi frumefna</h2>
   <p style="font-size: 1.1rem; margin: 1.5rem 0;">
@@ -2680,66 +2684,172 @@ async function main() {
   </p>
 </div>
 </main>`;
-          html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
-        }
-      }
-
-      // Validate output is non-empty
-      if (!html || html.trim().length < 100) {
-        console.error(
-          `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
-        );
-      }
-
-      const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
-
-      console.log(`${moduleId}: Rendered to HTML`);
-      console.log(`  → ${outputPath}`);
-
-      // Report equation render stats from pageData context
-      // Extract render stats from the context that was used
-      const renderStats = pageData._renderStats;
-      if (renderStats && renderStats.equations > 0) {
-        if (renderStats.failures.length > 0) {
-          console.error(
-            `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
-          );
-          for (const f of renderStats.failures.slice(0, 3)) {
-            console.error(
-              `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
-            );
+            html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
           }
-        } else if (args.verbose) {
-          console.log(`  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`);
+        }
+
+        // Validate output is non-empty
+        if (!html || html.trim().length < 100) {
+          console.error(
+            `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
+          );
+        }
+
+        const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
+        writtenFiles.push(outputPath);
+
+        console.log(`${moduleId}: Rendered to HTML`);
+        console.log(`  → ${outputPath}`);
+
+        // Report equation render stats from pageData context
+        // Extract render stats from the context that was used
+        const renderStats = pageData._renderStats;
+        if (renderStats && renderStats.equations > 0) {
+          if (renderStats.failures.length > 0) {
+            console.error(
+              `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
+            );
+            for (const f of renderStats.failures.slice(0, 3)) {
+              console.error(
+                `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
+              );
+            }
+          } else if (args.verbose) {
+            console.log(`  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`);
+          }
         }
       }
-    }
 
-    // Extract and render end-of-chapter sections from the last module
-    if (modules.length > 0) {
-      const lastModuleId = modules[modules.length - 1];
-      const lastModulePath = translatedCnxmlPath(args.track, chapterDir, lastModuleId);
-      const lastModuleCnxml = fs.readFileSync(lastModulePath, 'utf-8');
+      // Extract and render end-of-chapter sections from the last module
+      if (modules.length > 0) {
+        const lastModuleId = modules[modules.length - 1];
+        const lastModulePath = translatedCnxmlPath(args.track, chapterDir, lastModuleId);
+        const lastModuleCnxml = fs.readFileSync(lastModulePath, 'utf-8');
 
-      const endOfChapterSections = extractEndOfChapterSections(lastModuleCnxml);
+        const endOfChapterSections = extractEndOfChapterSections(lastModuleCnxml);
 
-      if (endOfChapterSections.length > 0 && args.verbose) {
-        console.log(`\nFound ${endOfChapterSections.length} end-of-chapter section(s)`);
+        if (endOfChapterSections.length > 0 && args.verbose) {
+          console.log(`\nFound ${endOfChapterSections.length} end-of-chapter section(s)`);
+        }
+
+        for (const section of endOfChapterSections) {
+          if (section.class === 'glossary') continue; // compiled from all modules below
+          if (args.verbose) {
+            console.log(`Rendering: ${section.titleIs} (${section.slug})`);
+          }
+
+          const html = renderEndOfChapterSection(section, {
+            renderCnxmlToHtml,
+            options: {
+              verbose: args.verbose,
+              lang: args.lang,
+              chapter: args.chapter,
+              moduleId: `${chapterStr}-${section.slug}`,
+              moduleSections,
+              chapterFigureNumbers,
+              chapterTableNumbers,
+              chapterExampleNumbers,
+              chapterExerciseNumbers,
+              chapterSectionTitles,
+              equationTextDictionary,
+            },
+          });
+
+          const outputPath = writeEndOfChapterSection(args.chapter, section, args.track, html);
+          writtenFiles.push(outputPath);
+
+          console.log(`${section.titleIs}: Rendered to HTML`);
+          console.log(`  → ${outputPath}`);
+        }
       }
 
-      for (const section of endOfChapterSections) {
-        if (section.class === 'glossary') continue; // compiled from all modules below
+      // Extract and render compiled glossary from all modules
+      if (args.verbose) {
+        console.log('\nExtracting glossary definitions...');
+      }
+
+      const chapterGlossary = extractChapterGlossary(args.chapter, allModules, args.track);
+
+      if (chapterGlossary.length > 0) {
         if (args.verbose) {
-          console.log(`Rendering: ${section.titleIs} (${section.slug})`);
+          console.log(
+            `Found ${chapterGlossary.length} definition(s) across ${allModules.length} module(s)`
+          );
         }
 
-        const html = renderEndOfChapterSection(section, {
+        const glossaryContext = {
+          chapter: args.chapter,
+          figures: {},
+          tables: {},
+          examples: {},
+          terms: {},
+          footnotes: [],
+          equationTextDictionary,
+        };
+
+        const glossaryContentHtml = renderCompiledGlossary(
+          args.chapter,
+          chapterGlossary,
+          glossaryContext
+        );
+
+        // Build terms map for pageData
+        const termsMap = {};
+        for (const def of chapterGlossary) {
+          termsMap[def.term] = stripTags(def.meaningContent).trim();
+        }
+
+        const fullGlossaryHtml = buildHtmlDocument({
+          title: 'Lykilhugtök',
+          lang: args.lang,
+          content: glossaryContentHtml,
+          pageData: {
+            moduleId: `${chapterStr}-key-terms`,
+            chapter: args.chapter,
+            section: `${args.chapter}.0`,
+            title: 'Lykilhugtök',
+            equations: [],
+            terms: termsMap,
+          },
+          sectionNumber: `${args.chapter}.0`,
+          isIntro: true,
+        });
+
+        const glossaryPath = writeCompiledGlossary(args.chapter, args.track, fullGlossaryHtml);
+        writtenFiles.push(glossaryPath);
+
+        console.log(`Lykilhugtök: Rendered ${chapterGlossary.length} definitions to HTML`);
+        console.log(`  → ${glossaryPath}`);
+      } else if (args.verbose) {
+        console.log('No glossary definitions found in this chapter');
+      }
+
+      // Extract and render compiled summary (matching chapters 1-5 format)
+      if (args.verbose) {
+        console.log('\nExtracting section summaries...');
+      }
+
+      const summariesByModule = extractSectionSummaries(
+        args.chapter,
+        allModules,
+        moduleSections,
+        args.track
+      );
+
+      if (summariesByModule.length > 0) {
+        const totalSummaries = summariesByModule.length;
+
+        if (args.verbose) {
+          console.log(`Found ${totalSummaries} section summary/summaries`);
+        }
+
+        const compiledSummaryHtml = renderCompiledSummary(args.chapter, summariesByModule, {
           renderCnxmlToHtml,
           options: {
             verbose: args.verbose,
             lang: args.lang,
             chapter: args.chapter,
-            moduleId: `${chapterStr}-${section.slug}`,
+            moduleId: `${chapterStr}-summary`,
             moduleSections,
             chapterFigureNumbers,
             chapterTableNumbers,
@@ -2750,248 +2860,169 @@ async function main() {
           },
         });
 
-        const outputPath = writeEndOfChapterSection(args.chapter, section, args.track, html);
+        const summaryPath = writeCompiledSummary(args.chapter, args.track, compiledSummaryHtml);
+        writtenFiles.push(summaryPath);
 
-        console.log(`${section.titleIs}: Rendered to HTML`);
-        console.log(`  → ${outputPath}`);
+        console.log('Samantekt: Rendered compiled summary to HTML');
+        console.log(`  → ${summaryPath}`);
+      } else if (args.verbose) {
+        console.log('No section summaries found in this chapter');
       }
-    }
 
-    // Extract and render compiled glossary from all modules
-    if (args.verbose) {
-      console.log('\nExtracting glossary definitions...');
-    }
-
-    const chapterGlossary = extractChapterGlossary(args.chapter, allModules, args.track);
-
-    if (chapterGlossary.length > 0) {
+      // Extract and render answer key from all modules
       if (args.verbose) {
-        console.log(
-          `Found ${chapterGlossary.length} definition(s) across ${allModules.length} module(s)`
-        );
+        console.log('\nExtracting answer key...');
       }
 
-      const glossaryContext = {
-        chapter: args.chapter,
-        figures: {},
-        tables: {},
-        examples: {},
-        terms: {},
-        footnotes: [],
-        equationTextDictionary,
-      };
-
-      const glossaryContentHtml = renderCompiledGlossary(
+      const answersByModule = extractAnswerKey(
         args.chapter,
-        chapterGlossary,
-        glossaryContext
+        allModules,
+        moduleSections,
+        args.track
       );
 
-      // Build terms map for pageData
-      const termsMap = {};
-      for (const def of chapterGlossary) {
-        termsMap[def.term] = stripTags(def.meaningContent).trim();
-      }
+      if (answersByModule.length > 0) {
+        const totalAnswers = answersByModule.reduce((sum, m) => sum + m.answers.length, 0);
 
-      const fullGlossaryHtml = buildHtmlDocument({
-        title: 'Lykilhugtök',
-        lang: args.lang,
-        content: glossaryContentHtml,
-        pageData: {
-          moduleId: `${chapterStr}-key-terms`,
-          chapter: args.chapter,
-          section: `${args.chapter}.0`,
-          title: 'Lykilhugtök',
-          equations: [],
-          terms: termsMap,
-        },
-        sectionNumber: `${args.chapter}.0`,
-        isIntro: true,
-      });
-
-      const glossaryPath = writeCompiledGlossary(args.chapter, args.track, fullGlossaryHtml);
-
-      console.log(`Lykilhugtök: Rendered ${chapterGlossary.length} definitions to HTML`);
-      console.log(`  → ${glossaryPath}`);
-    } else if (args.verbose) {
-      console.log('No glossary definitions found in this chapter');
-    }
-
-    // Extract and render compiled summary (matching chapters 1-5 format)
-    if (args.verbose) {
-      console.log('\nExtracting section summaries...');
-    }
-
-    const summariesByModule = extractSectionSummaries(
-      args.chapter,
-      allModules,
-      moduleSections,
-      args.track
-    );
-
-    if (summariesByModule.length > 0) {
-      const totalSummaries = summariesByModule.length;
-
-      if (args.verbose) {
-        console.log(`Found ${totalSummaries} section summary/summaries`);
-      }
-
-      const compiledSummaryHtml = renderCompiledSummary(args.chapter, summariesByModule, {
-        renderCnxmlToHtml,
-        options: {
-          verbose: args.verbose,
-          lang: args.lang,
-          chapter: args.chapter,
-          moduleId: `${chapterStr}-summary`,
-          moduleSections,
-          chapterFigureNumbers,
-          chapterTableNumbers,
-          chapterExampleNumbers,
-          chapterExerciseNumbers,
-          chapterSectionTitles,
-          equationTextDictionary,
-        },
-      });
-
-      const summaryPath = writeCompiledSummary(args.chapter, args.track, compiledSummaryHtml);
-
-      console.log('Samantekt: Rendered compiled summary to HTML');
-      console.log(`  → ${summaryPath}`);
-    } else if (args.verbose) {
-      console.log('No section summaries found in this chapter');
-    }
-
-    // Extract and render answer key from all modules
-    if (args.verbose) {
-      console.log('\nExtracting answer key...');
-    }
-
-    const answersByModule = extractAnswerKey(args.chapter, allModules, moduleSections, args.track);
-
-    if (answersByModule.length > 0) {
-      const totalAnswers = answersByModule.reduce((sum, m) => sum + m.answers.length, 0);
-
-      if (args.verbose) {
-        console.log(`Found ${totalAnswers} answer(s) across ${answersByModule.length} section(s)`);
-      }
-
-      const answerKeyHtml = renderAnswerKey(args.chapter, answersByModule, {
-        renderCnxmlToHtml,
-        options: {
-          verbose: args.verbose,
-          lang: args.lang,
-          chapter: args.chapter,
-          moduleId: `${chapterStr}-answer-key`,
-          moduleSections,
-          chapterFigureNumbers,
-          chapterTableNumbers,
-          chapterExampleNumbers,
-          chapterExerciseNumbers,
-          chapterSectionTitles,
-          equationTextDictionary,
-        },
-      });
-
-      const answerKeyPath = writeAnswerKey(args.chapter, args.track, answerKeyHtml);
-
-      console.log('Svör við æfingum: Rendered to HTML');
-      console.log(`  → ${answerKeyPath}`);
-    } else if (args.verbose) {
-      console.log('No answers found in this chapter');
-    }
-
-    // Extract and render compiled exercises from all modules
-    if (args.verbose) {
-      console.log('\nExtracting section exercises...');
-    }
-
-    const exercisesByModule = extractSectionExercises(
-      args.chapter,
-      allModules,
-      moduleSections,
-      args.track
-    );
-
-    if (exercisesByModule.length > 0) {
-      if (args.verbose) {
-        console.log(`Found ${exercisesByModule.length} section(s) with exercises`);
-      }
-
-      const compiledExercisesHtml = renderCompiledExercises(
-        args.chapter,
-        exercisesByModule,
-        chapterExerciseNumbers,
-        {
-          verbose: args.verbose,
-          lang: args.lang,
-          chapter: args.chapter,
-          moduleId: `${chapterStr}-exercises`,
-          moduleSections,
-          chapterFigureNumbers,
-          chapterTableNumbers,
-          chapterEquationNumbers,
-          chapterExampleNumbers,
-          chapterExerciseNumbers,
-          chapterSectionTitles,
-          equationTextDictionary,
+        if (args.verbose) {
+          console.log(
+            `Found ${totalAnswers} answer(s) across ${answersByModule.length} section(s)`
+          );
         }
-      );
 
-      const compiledExercisesPath = writeCompiledExercises(
-        args.chapter,
-        args.track,
-        compiledExercisesHtml
-      );
+        const answerKeyHtml = renderAnswerKey(args.chapter, answersByModule, {
+          renderCnxmlToHtml,
+          options: {
+            verbose: args.verbose,
+            lang: args.lang,
+            chapter: args.chapter,
+            moduleId: `${chapterStr}-answer-key`,
+            moduleSections,
+            chapterFigureNumbers,
+            chapterTableNumbers,
+            chapterExampleNumbers,
+            chapterExerciseNumbers,
+            chapterSectionTitles,
+            equationTextDictionary,
+          },
+        });
 
-      console.log('Æfingar í lok kafla: Rendered compiled exercises to HTML');
-      console.log(`  → ${compiledExercisesPath}`);
-    } else if (args.verbose) {
-      console.log('No section exercises found in this chapter');
-    }
+        const answerKeyPath = writeAnswerKey(args.chapter, args.track, answerKeyHtml);
+        writtenFiles.push(answerKeyPath);
 
-    // Extract and render key equations from all modules (dynamic generation)
-    if (args.verbose) {
-      console.log('\nExtracting key equations...');
-    }
-
-    const keyEquations = extractKeyEquations(args.chapter, allModules, args.track);
-
-    if (keyEquations.length > 0) {
-      if (args.verbose) {
-        console.log(
-          `Found ${keyEquations.length} equation(s) across ${allModules.length} module(s)`
-        );
+        console.log('Svör við æfingum: Rendered to HTML');
+        console.log(`  → ${answerKeyPath}`);
+      } else if (args.verbose) {
+        console.log('No answers found in this chapter');
       }
 
-      const keyEquationsHtml = renderKeyEquations(
+      // Extract and render compiled exercises from all modules
+      if (args.verbose) {
+        console.log('\nExtracting section exercises...');
+      }
+
+      const exercisesByModule = extractSectionExercises(
         args.chapter,
-        keyEquations,
-        equationTextDictionary
+        allModules,
+        moduleSections,
+        args.track
       );
 
-      // Wrap in full HTML document
-      const fullHtml = buildHtmlDocument({
-        title: 'Lykiljöfnur',
-        lang: args.lang,
-        content: keyEquationsHtml,
-        pageData: {
-          moduleId: `${chapterStr}-key-equations`,
-          chapter: args.chapter,
-          section: `${args.chapter}.0`,
+      if (exercisesByModule.length > 0) {
+        if (args.verbose) {
+          console.log(`Found ${exercisesByModule.length} section(s) with exercises`);
+        }
+
+        const compiledExercisesHtml = renderCompiledExercises(
+          args.chapter,
+          exercisesByModule,
+          chapterExerciseNumbers,
+          {
+            verbose: args.verbose,
+            lang: args.lang,
+            chapter: args.chapter,
+            moduleId: `${chapterStr}-exercises`,
+            moduleSections,
+            chapterFigureNumbers,
+            chapterTableNumbers,
+            chapterEquationNumbers,
+            chapterExampleNumbers,
+            chapterExerciseNumbers,
+            chapterSectionTitles,
+            equationTextDictionary,
+          }
+        );
+
+        const compiledExercisesPath = writeCompiledExercises(
+          args.chapter,
+          args.track,
+          compiledExercisesHtml
+        );
+        writtenFiles.push(compiledExercisesPath);
+
+        console.log('Æfingar í lok kafla: Rendered compiled exercises to HTML');
+        console.log(`  → ${compiledExercisesPath}`);
+      } else if (args.verbose) {
+        console.log('No section exercises found in this chapter');
+      }
+
+      // Extract and render key equations from all modules (dynamic generation)
+      if (args.verbose) {
+        console.log('\nExtracting key equations...');
+      }
+
+      const keyEquations = extractKeyEquations(args.chapter, allModules, args.track);
+
+      if (keyEquations.length > 0) {
+        if (args.verbose) {
+          console.log(
+            `Found ${keyEquations.length} equation(s) across ${allModules.length} module(s)`
+          );
+        }
+
+        const keyEquationsHtml = renderKeyEquations(
+          args.chapter,
+          keyEquations,
+          equationTextDictionary
+        );
+
+        // Wrap in full HTML document
+        const fullHtml = buildHtmlDocument({
           title: 'Lykiljöfnur',
-          equations: [],
-          terms: {},
-        },
-        sectionNumber: `${args.chapter}.0`,
-        isIntro: true,
-      });
+          lang: args.lang,
+          content: keyEquationsHtml,
+          pageData: {
+            moduleId: `${chapterStr}-key-equations`,
+            chapter: args.chapter,
+            section: `${args.chapter}.0`,
+            title: 'Lykiljöfnur',
+            equations: [],
+            terms: {},
+          },
+          sectionNumber: `${args.chapter}.0`,
+          isIntro: true,
+        });
 
-      const keyEquationsPath = writeKeyEquations(args.chapter, args.track, fullHtml);
+        const keyEquationsPath = writeKeyEquations(args.chapter, args.track, fullHtml);
+        writtenFiles.push(keyEquationsPath);
 
-      console.log('Lykiljöfnur: Rendered key equations to HTML');
-      console.log(`  → ${keyEquationsPath}`);
-    } else if (args.verbose) {
-      console.log('No numbered equations found in this chapter');
+        console.log('Lykiljöfnur: Rendered key equations to HTML');
+        console.log(`  → ${keyEquationsPath}`);
+      } else if (args.verbose) {
+        console.log('No numbered equations found in this chapter');
+      }
+    } catch (renderErr) {
+      // Clean up partial files from this render pass
+      for (const f of writtenFiles) {
+        try {
+          if (fs.existsSync(f)) fs.unlinkSync(f);
+        } catch {
+          /* best-effort cleanup */
+        }
+      }
+      throw new Error(
+        `Render failed: ${renderErr.message} — ${writtenFiles.length} partial file(s) cleaned up. Previous versions are intact (backups created by safeWrite).`
+      );
     }
 
     // Copy referenced images from source media to publication directory

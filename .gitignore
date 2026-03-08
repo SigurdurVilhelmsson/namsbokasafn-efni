@@ -11,11 +11,13 @@ Thumbs.db
 
 # Temporary files
 *.tmp
+*.tmp.*
 *.temp
 
 # Backup files
 *.bak
 *.backup
+*.backup.*
 *~
 
 # Word temporary files
