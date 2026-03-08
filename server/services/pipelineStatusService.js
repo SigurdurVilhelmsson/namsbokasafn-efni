@@ -185,7 +185,7 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
            status = excluded.status,
            completed_at = excluded.completed_at,
            completed_by = excluded.completed_by,
-           notes = excluded.notes`
+           notes = COALESCE(excluded.notes, chapter_pipeline_status.notes)`
       ).run(bookSlug, chapterNum, stage, status, completedAt, completedBy, note || null);
 
       return { stage, status };
@@ -387,21 +387,51 @@ function syncStatusJsonCache(bookSlug, chapterNum) {
     }
 
     // Get current DB state
-    const state = getChapterStage(bookSlug, chapterNum);
+    const { stages, publication } = getChapterStage(bookSlug, chapterNum);
 
-    // Rebuild status object
-    const newStatus = {
-      ...preserved,
-      ...state.stages,
-      publication: state.publication,
-    };
+    // Rebuild the status object in the format status.json expects:
+    // { stage: { complete: bool, date?, notes? } }
+    const statusObj = {};
+    const existingStatus = existing.status || {};
+
+    for (const stage of BASE_STAGES) {
+      const dbStatus = stages[stage];
+      const prev = existingStatus[stage] || {};
+      statusObj[stage] = {
+        complete: dbStatus === 'complete',
+        ...(dbStatus === 'complete' && prev.date ? { date: prev.date } : {}),
+        ...(dbStatus === 'complete' && !prev.date
+          ? { date: new Date().toISOString().split('T')[0] }
+          : {}),
+        ...(prev.notes ? { notes: prev.notes } : {}),
+      };
+    }
+
+    // Publication sub-tracks
+    const existingPub = existingStatus.publication || {};
+    statusObj.publication = {};
+    for (const track of PUBLICATION_TRACKS) {
+      const dbStatus = publication[track];
+      const prev = existingPub[track] || {};
+      statusObj.publication[track] = {
+        complete: dbStatus === 'complete',
+        ...(dbStatus === 'complete' && prev.date ? { date: prev.date } : {}),
+        ...(dbStatus === 'complete' && !prev.date
+          ? { date: new Date().toISOString().split('T')[0] }
+          : {}),
+        ...(prev.notes ? { notes: prev.notes } : {}),
+      };
+    }
+
+    // Merge preserved fields with rebuilt status
+    const output = { ...preserved, status: statusObj };
 
     // Write back
     const dir = path.dirname(statusPath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    fs.writeFileSync(statusPath, JSON.stringify(newStatus, null, 2) + '\n', 'utf8');
+    fs.writeFileSync(statusPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
   } catch (err) {
     console.error(
       `syncStatusJsonCache error for ${bookSlug} ${chapterDir(chapterNum)}:`,
