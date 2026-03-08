@@ -1,0 +1,26 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Essential Ideas</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m00002</md:content-id>
+  <md:title>Essential Ideas</md:title>
+  <md:abstract/>
+  <md:uuid>00000000-0000-0000-0000-000000000002</md:uuid>
+</metadata>
+
+<content>
+<section id="sec-01">
+<title>Atoms and Molecules</title>
+<para id="para-10">An atom is the smallest unit of an element.</para>
+<para id="para-11">A molecule consists of two or more atoms joined by <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mrow><m:mi>σ</m:mi></m:mrow></m:math> bonds.</para>
+</section>
+
+<section id="sec-02">
+<title>Chemical Formulas</title>
+<para id="para-20">The formula for water is H<sub>2</sub>O.</para>
+<note id="note-01" class="link-to-learning">
+<para id="para-note">Visit this site to learn more.</para>
+</note>
+</section>
+</content>
+</document>

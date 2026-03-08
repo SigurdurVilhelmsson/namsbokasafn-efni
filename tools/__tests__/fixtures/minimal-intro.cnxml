@@ -1,0 +1,26 @@
+<document xmlns="http://cnx.rice.edu/cnxml" class="introduction">
+
+<title>Introduction</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m00001</md:content-id>
+  <md:title>Introduction</md:title>
+  <md:abstract><list id="list-00001">
+<item>First Topic</item>
+<item>Second Topic</item>
+</list></md:abstract>
+  <md:uuid>00000000-0000-0000-0000-000000000001</md:uuid>
+</metadata>
+
+<content>
+
+<figure id="fig-splash" class="splash">
+<media id="media-splash" alt="A test image.">
+<image mime-type="image/jpeg" src="../../media/test.jpg"/>
+</media>
+<caption>A test caption for the splash figure.</caption>
+</figure>
+
+<para id="para-01">This is the first paragraph of the introduction.</para>
+<para id="para-02">This paragraph has <term id="term-01">chemistry</term> as a key term.</para>
+   </content>
+</document>

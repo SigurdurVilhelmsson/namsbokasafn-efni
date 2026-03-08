@@ -38,6 +38,7 @@
 import fs from 'fs';
 import path from 'path';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
+import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -76,37 +77,20 @@ function trackFromSourceDir(sourceDir) {
   return 'mt-preview';
 }
 
-function parseArgs(args) {
-  const result = {
-    chapter: null,
-    module: null,
-    book: 'efnafraedi-2e',
-    lang: 'is',
-    sourceDir: null,
-    track: null,
-    verbose: false,
-    allowIncomplete: false,
-    annotateEn: true,
-    help: false,
-  };
-
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-    if (arg === '-h' || arg === '--help') result.help = true;
-    else if (arg === '--verbose') result.verbose = true;
-    else if (arg === '--allow-incomplete') result.allowIncomplete = true;
-    else if (arg === '--no-annotate-en') result.annotateEn = false;
-    else if (arg === '--chapter' && args[i + 1]) {
-      const chapterArg = args[++i];
-      // Accept either numeric chapter or "appendices"
-      result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
-    } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
-    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
-    else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
-    else if (arg === '--source-dir' && args[i + 1]) result.sourceDir = args[++i];
-    else if (arg === '--track' && args[i + 1]) result.track = args[++i];
-  }
-
+function parseCliArgs(args) {
+  const result = parseArgs(args, [
+    BOOK_OPTION,
+    CHAPTER_OPTION,
+    MODULE_OPTION,
+    { name: 'lang', flags: ['--lang'], type: 'string', default: 'is' },
+    { name: 'sourceDir', flags: ['--source-dir'], type: 'string', default: null },
+    { name: 'track', flags: ['--track'], type: 'string', default: null },
+    { name: 'allowIncomplete', flags: ['--allow-incomplete'], type: 'boolean', default: false },
+    { name: 'noAnnotateEn', flags: ['--no-annotate-en'], type: 'boolean', default: false },
+  ]);
+  // Invert --no-annotate-en to annotateEn
+  result.annotateEn = !result.noAnnotateEn;
+  delete result.noAnnotateEn;
   return result;
 }
 
@@ -1666,7 +1650,7 @@ function writeOutput(chapter, moduleId, cnxml, track) {
 // =====================================================================
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2));
+  const args = parseCliArgs(process.argv.slice(2));
   BOOKS_DIR = `books/${args.book}`;
 
   if (args.help) {

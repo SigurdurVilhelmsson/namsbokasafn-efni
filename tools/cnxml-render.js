@@ -33,6 +33,7 @@ import {
   parseAttributes,
   stripTags,
 } from './lib/cnxml-parser.js';
+import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import {
   escapeAttr,
   escapeHtml,
@@ -182,32 +183,14 @@ function loadEquationTextDictionary(book) {
 // ARGUMENT PARSING
 // =====================================================================
 
-function parseArgs(args) {
-  const result = {
-    chapter: null,
-    module: null,
-    book: 'efnafraedi-2e',
-    track: 'mt-preview',
-    lang: 'is',
-    verbose: false,
-    help: false,
-  };
-
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-    if (arg === '-h' || arg === '--help') result.help = true;
-    else if (arg === '--verbose') result.verbose = true;
-    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
-    else if (arg === '--chapter' && args[i + 1]) {
-      const chapterArg = args[++i];
-      // Accept either numeric chapter or "appendices"
-      result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
-    } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
-    else if (arg === '--track' && args[i + 1]) result.track = args[++i];
-    else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
-  }
-
-  return result;
+function parseCliArgs(args) {
+  return parseArgs(args, [
+    BOOK_OPTION,
+    CHAPTER_OPTION,
+    MODULE_OPTION,
+    { name: 'track', flags: ['--track'], type: 'string', default: 'mt-preview' },
+    { name: 'lang', flags: ['--lang'], type: 'string', default: 'is' },
+  ]);
 }
 
 function printHelp() {
@@ -2516,7 +2499,7 @@ function writeAnswerKey(chapter, track, html) {
 }
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2));
+  const args = parseCliArgs(process.argv.slice(2));
   BOOK_SLUG = args.book;
   BOOKS_DIR = `books/${args.book}`;
 
@@ -3043,4 +3026,17 @@ async function main() {
   }
 }
 
-main();
+// Only run main when executed directly (not imported for testing)
+import { fileURLToPath } from 'url';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
+
+export {
+  getNoteTypeLabel,
+  translateTitle,
+  formatChapterDir,
+  calculateColspan,
+  renderPara,
+  renderCnxmlToHtml,
+};

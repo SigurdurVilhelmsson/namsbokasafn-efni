@@ -32,6 +32,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { parseArgs } from './lib/parseArgs.js';
 
 // Character limits
 const DEFAULT_CHAR_LIMIT = 80000; // ~20% buffer for tag overhead (Erlendur 100K limit)
@@ -50,28 +51,17 @@ const INVISIBLE_PATTERNS = [
   /\[\[SPACE\]\]/g, // Space placeholders
 ];
 
-function parseArgs(args) {
-  const result = {
-    input: null,
-    outputDir: null,
-    batch: null,
-    charLimit: DEFAULT_CHAR_LIMIT,
-    verbose: false,
-    dryRun: false,
-    help: false,
-  };
-
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-    if (arg === '-h' || arg === '--help') result.help = true;
-    else if (arg === '--verbose' || arg === '-v') result.verbose = true;
-    else if (arg === '--dry-run' || arg === '-n') result.dryRun = true;
-    else if ((arg === '--output-dir' || arg === '-o') && args[i + 1]) result.outputDir = args[++i];
-    else if (arg === '--batch' && args[i + 1]) result.batch = args[++i];
-    else if (arg === '--char-limit' && args[i + 1]) result.charLimit = parseInt(args[++i], 10);
-    else if (!arg.startsWith('-') && !result.input) result.input = arg;
-  }
-  return result;
+function parseCliArgs(args) {
+  return parseArgs(
+    args,
+    [
+      { name: 'outputDir', flags: ['--output-dir', '-o'], type: 'string', default: null },
+      { name: 'batch', flags: ['--batch'], type: 'string', default: null },
+      { name: 'charLimit', flags: ['--char-limit'], type: 'number', default: DEFAULT_CHAR_LIMIT },
+      { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
+    ],
+    { positional: { name: 'input' } }
+  );
 }
 
 function printHelp() {
@@ -297,107 +287,127 @@ function processFile(inputPath, outputDir, options) {
     return null;
   }
 
-  const content = fs.readFileSync(inputPath, 'utf8');
-  const basename = path.basename(inputPath);
+  try {
+    const content = fs.readFileSync(inputPath, 'utf8');
+    const basename = path.basename(inputPath);
 
-  if (verbose) {
-    console.log(`\nProcessing: ${basename}`);
-    console.log(`  Total characters: ${content.length}`);
-  }
+    if (verbose) {
+      console.log(`\nProcessing: ${basename}`);
+      console.log(`  Total characters: ${content.length}`);
+    }
 
-  // Step 1: Convert segment tags
-  let protectedContent = convertSegmentTags(content);
+    // Step 1: Convert segment tags
+    let protectedContent = convertSegmentTags(content);
 
-  // Step 2: Protect markdown links
-  const { content: linkProtectedContent, links } = protectLinks(protectedContent);
-  protectedContent = linkProtectedContent;
-  const linkCount = Object.keys(links).length;
+    // Step 2: Protect markdown links
+    const { content: linkProtectedContent, links } = protectLinks(protectedContent);
+    protectedContent = linkProtectedContent;
+    const linkCount = Object.keys(links).length;
 
-  // Step 2b: Protect term markers
-  protectedContent = protectTerms(protectedContent);
+    // Step 2b: Protect term markers
+    protectedContent = protectTerms(protectedContent);
 
-  if (verbose && linkCount > 0) {
-    console.log(`  Links protected: ${linkCount}`);
-  }
+    if (verbose && linkCount > 0) {
+      console.log(`  Links protected: ${linkCount}`);
+    }
 
-  const visibleCount = getVisibleCharCount(protectedContent);
+    const visibleCount = getVisibleCharCount(protectedContent);
 
-  if (verbose) {
-    console.log(`  Visible characters: ${visibleCount}`);
-  }
+    if (verbose) {
+      console.log(`  Visible characters: ${visibleCount}`);
+    }
 
-  // Step 3: Split if needed
-  const parts = splitByVisibleChars(protectedContent, charLimit, verbose);
+    // Step 3: Split if needed
+    const parts = splitByVisibleChars(protectedContent, charLimit, verbose);
 
-  if (verbose) {
-    console.log(`  Parts: ${parts.length}`);
+    if (verbose) {
+      console.log(`  Parts: ${parts.length}`);
+      for (let i = 0; i < parts.length; i++) {
+        const partVisible = getVisibleCharCount(parts[i]);
+        const partTotal = parts[i].length;
+        const overhead = partTotal - partVisible;
+        const pctUsed = ((partTotal / HARD_LIMIT) * 100).toFixed(1);
+
+        let status = '✓';
+        if (partTotal > HARD_LIMIT * 0.9) status = '⚠️'; // Within 10% of limit
+        if (partTotal > HARD_LIMIT) status = '❌';
+
+        console.log(
+          `    Part ${String.fromCharCode(97 + i)}: ${partVisible} visible, ${partTotal} total (${overhead} overhead, ${pctUsed}% of limit) ${status}`
+        );
+      }
+    }
+
+    // Step 4: Determine output paths
+    const effectiveOutputDir = outputDir || path.dirname(inputPath);
+    const baseOutputPath = path.join(effectiveOutputDir, basename);
+
+    const outputFiles = [];
+
     for (let i = 0; i < parts.length; i++) {
-      const partVisible = getVisibleCharCount(parts[i]);
-      const partTotal = parts[i].length;
-      const overhead = partTotal - partVisible;
-      const pctUsed = ((partTotal / HARD_LIMIT) * 100).toFixed(1);
-
-      let status = '✓';
-      if (partTotal > HARD_LIMIT * 0.9) status = '⚠️'; // Within 10% of limit
-      if (partTotal > HARD_LIMIT) status = '❌';
-
-      console.log(
-        `    Part ${String.fromCharCode(97 + i)}: ${partVisible} visible, ${partTotal} total (${overhead} overhead, ${pctUsed}% of limit) ${status}`
-      );
-    }
-  }
-
-  // Step 4: Determine output paths
-  const effectiveOutputDir = outputDir || path.dirname(inputPath);
-  const baseOutputPath = path.join(effectiveOutputDir, basename);
-
-  const outputFiles = [];
-
-  for (let i = 0; i < parts.length; i++) {
-    const outputPath = getPartFilename(baseOutputPath, i, parts.length);
-    outputFiles.push({
-      path: outputPath,
-      content: parts[i],
-      visibleChars: getVisibleCharCount(parts[i]),
-      totalChars: parts[i].length,
-    });
-  }
-
-  // Step 5: Write files (unless dry run)
-  if (!dryRun) {
-    if (!fs.existsSync(effectiveOutputDir)) {
-      fs.mkdirSync(effectiveOutputDir, { recursive: true });
+      const outputPath = getPartFilename(baseOutputPath, i, parts.length);
+      outputFiles.push({
+        path: outputPath,
+        content: parts[i],
+        visibleChars: getVisibleCharCount(parts[i]),
+        totalChars: parts[i].length,
+      });
     }
 
-    for (const file of outputFiles) {
-      fs.writeFileSync(file.path, file.content, 'utf8');
-      if (verbose) {
-        console.log(`  Wrote: ${path.basename(file.path)}`);
+    // Step 5: Write files (unless dry run)
+    if (!dryRun) {
+      if (!fs.existsSync(effectiveOutputDir)) {
+        fs.mkdirSync(effectiveOutputDir, { recursive: true });
+      }
+
+      const writtenFiles = [];
+      try {
+        for (const file of outputFiles) {
+          fs.writeFileSync(file.path, file.content, 'utf8');
+          writtenFiles.push(file.path);
+          if (verbose) {
+            console.log(`  Wrote: ${path.basename(file.path)}`);
+          }
+        }
+
+        // Write links JSON if any links were protected
+        if (linkCount > 0) {
+          const linksBasename = basename.replace(/\.en\.md$/, '-links.json');
+          const linksPath = path.join(effectiveOutputDir, linksBasename);
+          fs.writeFileSync(linksPath, JSON.stringify(links, null, 2), 'utf8');
+          writtenFiles.push(linksPath);
+          if (verbose) {
+            console.log(`  Wrote: ${linksBasename}`);
+          }
+        }
+      } catch (writeErr) {
+        // Clean up partial writes on failure
+        for (const written of writtenFiles) {
+          try {
+            fs.unlinkSync(written);
+          } catch {
+            /* ignore cleanup errors */
+          }
+        }
+        throw writeErr;
+      }
+    } else {
+      console.log(`  [dry-run] Would write ${outputFiles.length} file(s):`);
+      for (const file of outputFiles) {
+        console.log(`    - ${path.basename(file.path)} (${file.visibleChars} visible chars)`);
       }
     }
 
-    // Write links JSON if any links were protected
-    if (linkCount > 0) {
-      const linksBasename = basename.replace(/\.en\.md$/, '-links.json');
-      const linksPath = path.join(effectiveOutputDir, linksBasename);
-      fs.writeFileSync(linksPath, JSON.stringify(links, null, 2), 'utf8');
-      if (verbose) {
-        console.log(`  Wrote: ${linksBasename}`);
-      }
-    }
-  } else {
-    console.log(`  [dry-run] Would write ${outputFiles.length} file(s):`);
-    for (const file of outputFiles) {
-      console.log(`    - ${path.basename(file.path)} (${file.visibleChars} visible chars)`);
-    }
+    return {
+      input: inputPath,
+      outputs: outputFiles,
+      segmentTagsConverted: (content.match(/<!--\s*SEG:/g) || []).length,
+      linksProtected: linkCount,
+    };
+  } catch (err) {
+    console.error(`Error processing ${path.basename(inputPath)}: ${err.message}`);
+    return null;
   }
-
-  return {
-    input: inputPath,
-    outputs: outputFiles,
-    segmentTagsConverted: (content.match(/<!--\s*SEG:/g) || []).length,
-    linksProtected: linkCount,
-  };
 }
 
 /**
@@ -416,7 +426,7 @@ function findSegmentFiles(directory) {
 }
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2));
+  const args = parseCliArgs(process.argv.slice(2));
 
   if (args.help) {
     printHelp();
@@ -429,6 +439,12 @@ async function main() {
     process.exit(1);
   }
 
+  // Validate charLimit
+  if (!Number.isFinite(args.charLimit) || args.charLimit <= 0) {
+    console.error(`Error: --char-limit must be a positive number (got: ${args.charLimit})`);
+    process.exit(1);
+  }
+
   const options = {
     charLimit: args.charLimit,
     verbose: args.verbose,
@@ -437,6 +453,10 @@ async function main() {
 
   let files;
   if (args.batch) {
+    if (!fs.existsSync(args.batch)) {
+      console.error(`Error: Batch directory not found: ${args.batch}`);
+      process.exit(1);
+    }
     files = findSegmentFiles(args.batch);
     if (files.length === 0) {
       console.error(`No *-segments.en.md files found in: ${args.batch}`);
@@ -448,10 +468,13 @@ async function main() {
   }
 
   const results = [];
+  const failed = [];
   for (const file of files) {
     const result = processFile(file, args.outputDir, options);
     if (result) {
       results.push(result);
+    } else {
+      failed.push(file);
     }
   }
 
@@ -469,12 +492,27 @@ async function main() {
   const totalLinksProtected = results.reduce((sum, r) => sum + r.linksProtected, 0);
   console.log(`  Links protected: ${totalLinksProtected}`);
 
+  if (failed.length > 0) {
+    console.log(`  Failed: ${failed.length}`);
+    for (const f of failed) {
+      console.log(`    - ${path.basename(f)}`);
+    }
+  }
+
   if (args.dryRun) {
     console.log('\n  [dry-run] No files were written');
   }
+
+  if (failed.length > 0) {
+    process.exit(1);
+  }
 }
 
-main().catch((err) => {
-  console.error('Error:', err.message);
-  process.exit(1);
-});
+// Only run main when executed directly (not imported for testing)
+import { fileURLToPath } from 'url';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error('Error:', err.message);
+    process.exit(1);
+  });
+}
