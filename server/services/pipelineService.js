@@ -76,6 +76,8 @@ function runExtract({ book, chapter, moduleId, userId }) {
     if (job && job.status === 'completed') {
       const sourceHash = computeSourceHash(book, chapter);
       advanceChapterStatus(book, chapter, 'extraction', sourceHash ? { sourceHash } : {});
+      // Reset mtReady — extraction overwrites protected files in 02-for-mt/
+      resetChapterStage(book, chapter, 'mtReady');
     }
   });
 
@@ -700,6 +702,32 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
     fs.writeFileSync(statusPath, JSON.stringify(status, null, 2), 'utf8');
   } catch (err) {
     console.error(`Auto-advance status failed for ch${chapter} ${stage}:`, err.message);
+  }
+}
+
+/**
+ * Reset a chapter stage in status.json (delete the stage entry).
+ * Used when an upstream stage re-runs and invalidates downstream state.
+ *
+ * @param {string} book - Book slug
+ * @param {number|string} chapter - Chapter number or 'appendices'
+ * @param {string} stage - Stage name to reset (e.g., 'mtReady')
+ */
+function resetChapterStage(book, chapter, stage) {
+  try {
+    const chapterDir =
+      chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+    const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
+
+    if (!fs.existsSync(statusPath)) return;
+
+    const status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
+    if (status.status && status.status[stage]) {
+      delete status.status[stage];
+      fs.writeFileSync(statusPath, JSON.stringify(status, null, 2), 'utf8');
+    }
+  } catch (err) {
+    console.error(`Reset stage failed for ch${chapter} ${stage}:`, err.message);
   }
 }
 

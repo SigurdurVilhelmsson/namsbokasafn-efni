@@ -1829,10 +1829,34 @@
           await runPipelineStep('protect', 'Verndar...');
         }
 
+        // Use fetch to detect server-side protection errors (409)
         badge.style.display = 'none';
-        window.location.href = '/api/books/' + selectedBook + '/download?chapter=' + selectedChapter + '&type=en-md';
+        var downloadUrl = '/api/books/' + selectedBook + '/download?chapter=' + selectedChapter + '&type=en-md';
+        var resp = await fetch(downloadUrl, { credentials: 'include' });
+        if (resp.status === 409) {
+          var errData = await resp.json();
+          badge.style.display = '';
+          badge.textContent = 'Ekki verndað';
+          badge.className = 'tm-badge failed';
+          alert(errData.message || 'Skrár eru ekki verndaðar. Keyrðu verndarskref aftur.');
+        } else if (!resp.ok) {
+          throw new Error('HTTP ' + resp.status);
+        } else {
+          // Trigger download from the fetched blob
+          var blob = await resp.blob();
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          var disposition = resp.headers.get('Content-Disposition') || '';
+          var match = disposition.match(/filename="?([^"]+)"?/);
+          a.download = match ? match[1] : 'download.zip';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(a.href);
+        }
         loadChapterStatus(selectedBook, selectedChapter);
       } catch (err) {
+        badge.style.display = '';
         badge.textContent = 'Villa';
         badge.className = 'tm-badge failed';
       }
@@ -1899,7 +1923,18 @@
           var errData = await res.json();
           throw new Error(errData.error || 'HTTP ' + res.status);
         }
-        await res.json();
+        var uploadResult = await res.json();
+
+        // Check for missing segment markers
+        if (uploadResult.markerWarning) {
+          badge.textContent = 'Vi\u00f0v\u00f6run';
+          badge.className = 'tm-badge failed';
+          alert('\u26a0 ' + uploadResult.markerWarning.message +
+            '\n\nGakktu \u00far skugga um a\u00f0 hlutamerki (SEG tags) s\u00e9u til sta\u00f0ar \u00ed \u00fe\u00fdddum skr\u00e1m.');
+          // Reset file input but don't auto-run unprotect on marker-less files
+          document.querySelector('#btn-upload-is input[type="file"]').value = '';
+          return;
+        }
 
         // Auto-run unprotect after upload
         await runPipelineStep('unprotect', 'Afverndar...');
@@ -2650,6 +2685,11 @@
     // ========================================================================
 
     function downloadBookMarkdown(slug) {
+      if (!confirm('Þetta sækir EN markdown án þess að keyra verndarskref.\n\n' +
+        'Notaðu "↓ Sækja EN" hnappinn í kaflayfirlit til að tryggja rétta verndun.\n\n' +
+        'Halda áfram?')) {
+        return;
+      }
       window.location.href = '/api/books/' + slug + '/download?type=en-md';
     }
 

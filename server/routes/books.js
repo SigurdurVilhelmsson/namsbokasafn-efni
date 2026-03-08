@@ -39,6 +39,32 @@ const upload = multer({
   },
 });
 
+/**
+ * Find the first .md file in a directory (or its first subdirectory).
+ * Used for spot-checking file content before download.
+ */
+function findFirstMdFile(dirPath, ext) {
+  if (!fs.existsSync(dirPath)) return null;
+  const entries = fs.readdirSync(dirPath);
+  // Check files in this directory first
+  for (const entry of entries) {
+    const fullPath = path.join(dirPath, entry);
+    if (fs.statSync(fullPath).isFile() && entry.endsWith(ext)) return fullPath;
+  }
+  // Check first subdirectory
+  for (const entry of entries) {
+    const fullPath = path.join(dirPath, entry);
+    if (fs.statSync(fullPath).isDirectory()) {
+      const sub = fs.readdirSync(fullPath);
+      for (const f of sub) {
+        const fPath = path.join(fullPath, f);
+        if (fs.statSync(fPath).isFile() && f.endsWith(ext)) return fPath;
+      }
+    }
+  }
+  return null;
+}
+
 // Validate :bookId param on all routes that use it
 router.param('bookId', (req, res, next, bookId) => {
   if (!VALID_BOOKS.includes(bookId)) {
@@ -349,6 +375,25 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       zipName = `${bookId}-${type}.zip`;
     }
 
+    // For EN markdown downloads, verify files are protected for MT
+    if (type === 'en-md') {
+      const checkDir = chapter
+        ? path.join(sourceDir, chapterDirName)
+        : sourceDir;
+      const sampleFile = findFirstMdFile(checkDir, config.ext);
+      if (sampleFile) {
+        const sample = fs.readFileSync(sampleFile, 'utf-8').slice(0, 2000);
+        const hasUnprotected = /<!--\s*SEG:/.test(sample);
+        const hasProtected = /\{\{SEG:/.test(sample);
+        if (hasUnprotected && !hasProtected) {
+          return res.status(409).json({
+            error: 'Skrár eru ekki verndaðar',
+            message: 'EN-skrár eru ekki verndaðar fyrir vélþýðingu. Keyrðu "Vernda" skrefið aftur.',
+          });
+        }
+      }
+    }
+
     res.setHeader('Content-Type', 'application/zip');
     res.setHeader('Content-Disposition', `attachment; filename="${zipName}"`);
 
@@ -602,10 +647,15 @@ router.post(
         // Move file to MT output directory
         fs.renameSync(file.path, targetPath);
 
+        // Check for segment markers
+        const content = fs.readFileSync(targetPath, 'utf-8');
+        const hasMarkers = /(?:<!--\s*SEG:|\{\{SEG:)/.test(content);
+
         imported.push({
           originalName: filename,
           storedAs: filename,
           path: targetPath,
+          hasMarkers,
         });
       } catch (err) {
         errors.push({
@@ -636,12 +686,27 @@ router.post(
       advanceChapterStatus(bookId, chapterNum, 'mtOutput');
     }
 
+    const noMarkerCount = imported.filter((f) => !f.hasMarkers).length;
+
     res.json({
       success: true,
       bookId,
       chapter: chapterNum,
       imported: imported.length,
       errors: errors.length > 0 ? errors : undefined,
+      markerWarning:
+        noMarkerCount > 0
+          ? {
+              count: noMarkerCount,
+              total: imported.length,
+              message:
+                'Hlutamerki vantar í ' +
+                noMarkerCount +
+                ' af ' +
+                imported.length +
+                ' skrám — þýðingar munu ekki birtast í ritstjóranum.',
+            }
+          : undefined,
       files: imported.map((f) => ({
         original: f.originalName,
         stored: f.storedAs,
