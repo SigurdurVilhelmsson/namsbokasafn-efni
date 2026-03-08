@@ -377,9 +377,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     // For EN markdown downloads, verify files are protected for MT
     if (type === 'en-md') {
-      const checkDir = chapter
-        ? path.join(sourceDir, chapterDirName)
-        : sourceDir;
+      const checkDir = chapter ? path.join(sourceDir, chapterDirName) : sourceDir;
       const sampleFile = findFirstMdFile(checkDir, config.ext);
       if (sampleFile) {
         const sample = fs.readFileSync(sampleFile, 'utf-8').slice(0, 2000);
@@ -388,7 +386,8 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
         if (hasUnprotected && !hasProtected) {
           return res.status(409).json({
             error: 'Skrár eru ekki verndaðar',
-            message: 'EN-skrár eru ekki verndaðar fyrir vélþýðingu. Keyrðu "Vernda" skrefið aftur.',
+            message:
+              'EN-skrár eru ekki verndaðar fyrir vélþýðingu. Verndarskref verður keyrt sjálfkrafa.',
           });
         }
       }

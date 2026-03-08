@@ -1834,26 +1834,27 @@
         var downloadUrl = '/api/books/' + selectedBook + '/download?chapter=' + selectedChapter + '&type=en-md';
         var resp = await fetch(downloadUrl, { credentials: 'include' });
         if (resp.status === 409) {
-          var errData = await resp.json();
+          // Auto-recover: run protect step and retry download
           badge.style.display = '';
-          badge.textContent = 'Ekki verndað';
-          badge.className = 'tm-badge failed';
-          alert(errData.message || 'Skrár eru ekki verndaðar. Keyrðu verndarskref aftur.');
-        } else if (!resp.ok) {
-          throw new Error('HTTP ' + resp.status);
-        } else {
-          // Trigger download from the fetched blob
-          var blob = await resp.blob();
-          var a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          var disposition = resp.headers.get('Content-Disposition') || '';
-          var match = disposition.match(/filename="?([^"]+)"?/);
-          a.download = match ? match[1] : 'download.zip';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          URL.revokeObjectURL(a.href);
+          badge.textContent = 'Verndar...';
+          badge.className = 'tm-badge running';
+          await runPipelineStep('protect', 'Verndar...');
+          resp = await fetch(downloadUrl, { credentials: 'include' });
         }
+        if (!resp.ok) {
+          throw new Error('HTTP ' + resp.status);
+        }
+        // Trigger download from the fetched blob
+        var blob = await resp.blob();
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        var disposition = resp.headers.get('Content-Disposition') || '';
+        var match = disposition.match(/filename="?([^"]+)"?/);
+        a.download = match ? match[1] : 'download.zip';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(a.href);
         loadChapterStatus(selectedBook, selectedChapter);
       } catch (err) {
         badge.style.display = '';
