@@ -530,13 +530,19 @@
     // INIT
     // ========================================
 
-    document.addEventListener('userLoaded', function() {
+    function init() {
       // Set breadcrumb
       document.getElementById('breadcrumb-book').textContent = bookSlug;
-      document.getElementById('breadcrumb-chapter').textContent = 'Kafli ' + chapterNum;
-
+      document.getElementById('breadcrumb-chapter').textContent =
+        chapterNum === '-1' ? 'Viðaukar' : 'Kafli ' + chapterNum;
       loadPipeline();
-    });
+    }
+
+    // layout.js dispatches userLoaded on window
+    window.addEventListener('userLoaded', init);
+
+    // Fallback if userLoaded already fired
+    if (window.currentUser) { init(); }
 
     async function loadPipeline() {
       var loading = document.getElementById('loading');
@@ -603,18 +609,23 @@
       var stages = pipelineData.stages || {};
       var currentIdx = STAGES.indexOf(currentStage);
 
+      var pub = pipelineData.publication || {};
+      var allPubDone = pub.mtPreview === 'complete' && pub.faithful === 'complete' && pub.localized === 'complete';
+
       for (var i = 0; i < STAGES.length; i++) {
         var stage = STAGES[i];
-        var stageStatus = stages[stage];
 
-        // Determine state
+        // Determine state — publication stage uses sub-tracks, not stages object
         var state;
-        if (stageStatus === 'complete') {
-          state = 'complete';
-        } else if (stage === currentStage) {
-          state = 'current';
+        if (stage === 'publication') {
+          if (allPubDone) state = 'complete';
+          else if (currentStage === 'publication') state = 'current';
+          else state = 'future';
         } else {
-          state = 'future';
+          var stageStatus = stages[stage];
+          if (stageStatus === 'complete') state = 'complete';
+          else if (stage === currentStage) state = 'current';
+          else state = 'future';
         }
 
         // Add connecting line before circle (except first)
@@ -659,7 +670,10 @@
         return;
       }
 
-      if (currentStage === 'publication' && pipelineData.stages && pipelineData.stages.publication === 'complete') {
+      var pub = pipelineData.publication || {};
+      var allPubDone = pub.mtPreview === 'complete' && pub.faithful === 'complete' && pub.localized === 'complete';
+
+      if (currentStage === 'publication' && allPubDone) {
         // All done — show badge
         var badge = document.createElement('span');
         badge.className = 'published-badge';
