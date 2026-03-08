@@ -24,6 +24,7 @@ router.get('/localization', (req, res) => sendView(res, 'localization-editor.htm
 router.get('/library', (req, res) => sendView(res, 'books.html'));
 router.get('/admin', (req, res) => sendView(res, 'admin.html'));
 router.get('/feedback', (req, res) => sendView(res, 'feedback.html'));
+router.get('/pipeline/:bookSlug/:chapterNum', (req, res) => sendView(res, 'chapter-pipeline.html'));
 
 // ─── Legacy redirects ────────────────────────────────────────────
 

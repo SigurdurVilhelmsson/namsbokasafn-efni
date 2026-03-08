@@ -87,6 +87,7 @@ const analyticsRoutes = require('./routes/analytics');
 const segmentEditorRoutes = require('./routes/segment-editor');
 const pipelineRoutes = require('./routes/pipeline');
 const localizationEditorRoutes = require('./routes/localization-editor');
+const pipelineStatusRoutes = require('./routes/pipeline-status');
 
 // Load version from package.json
 const serverVersion = require('./package.json').version;
@@ -268,6 +269,9 @@ app.use('/api/analytics', analyticsRoutes);
 app.use('/api/segment-editor', segmentEditorRoutes);
 app.use('/api/pipeline', pipelineRoutes);
 app.use('/api/localization-editor', localizationEditorRoutes);
+
+// Pipeline Status API Routes
+app.use('/api/pipeline-status', pipelineStatusRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
