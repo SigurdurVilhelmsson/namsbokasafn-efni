@@ -42,6 +42,7 @@ function runAllMigrations() {
     require('../migrations/014-source-tracking'),
     require('../migrations/015-rename-book-slugs'),
     require('../migrations/016-cleanup-book-slugs'),
+    require('../migrations/017-pipeline-status'),
   ];
 
   let applied = 0;
