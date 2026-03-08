@@ -196,6 +196,23 @@
     .chapter-card-badge.in-progress { background: var(--warning-subtle); color: var(--warning); }
     .chapter-card-badge.not-started { background: var(--bg-elevated); color: var(--text-muted); }
 
+    .pipeline-link {
+      text-decoration: none;
+    }
+
+    .stage-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .stage-pill.complete { background: color-mix(in srgb, var(--success) 20%, transparent); color: var(--success); }
+    .stage-pill.in-progress { background: color-mix(in srgb, var(--info, #5a8fa8) 20%, transparent); color: var(--info, #5a8fa8); }
+    .stage-pill.not-started { background: color-mix(in srgb, var(--text-muted) 15%, transparent); color: var(--text-muted); }
+
     .chapter-card-title {
       font-size: var(--text-base);
       color: var(--text-primary);
@@ -1387,7 +1404,9 @@
           return '<div class="chapter-card" onclick="loadChapterDetailFromBooks(\'' + slug + '\', ' + ch.chapterNum + ')">' +
             '<div class="chapter-card-header">' +
               '<span class="chapter-card-num">K. ' + ch.chapterNum + '</span>' +
-              '<span class="chapter-card-badge ' + badgeClass + '">' + badgeText + '</span>' +
+              '<a href="/pipeline/' + slug + '/' + ch.chapterNum + '" class="pipeline-link" onclick="event.stopPropagation()" title="Framvinduferill">' +
+                '<span class="stage-pill ' + badgeClass + '">' + badgeText + '</span>' +
+              '</a>' +
             '</div>' +
             '<div class="chapter-card-title">' + escapeHtml(ch.titleIs || ch.titleEn) + '</div>' +
             '<div class="chapter-card-stats">' + total + ' einingar</div>' +
