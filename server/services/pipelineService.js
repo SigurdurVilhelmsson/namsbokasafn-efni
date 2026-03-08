@@ -17,6 +17,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
+const pipelineStatus = require('./pipelineStatusService');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const TOOLS_DIR = path.join(PROJECT_ROOT, 'tools');
@@ -649,12 +650,20 @@ function checkBookDownstreamWork(book) {
  * @returns {Object} The status object (stage → { complete, date, ... }), or empty object
  */
 function getStageStatus(book, chapter) {
-  const chapterDir =
-    chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
-  const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
   try {
-    const data = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
-    return data.status || {};
+    const chapterNum = chapter === 'appendices' ? -1 : Number(chapter);
+    const { stages, publication } = pipelineStatus.getChapterStage(book, chapterNum);
+
+    // Convert to the shape callers expect: { stage: { complete: bool, ... } }
+    const result = {};
+    for (const [stage, status] of Object.entries(stages)) {
+      result[stage] = { complete: status === 'complete' };
+    }
+    result.publication = {};
+    for (const [track, status] of Object.entries(publication)) {
+      result.publication[track] = { complete: status === 'complete' };
+    }
+    return result;
   } catch {
     return {};
   }
@@ -675,31 +684,13 @@ function getStageStatus(book, chapter) {
  */
 function advanceChapterStatus(book, chapter, stage, extra = {}) {
   try {
-    const chapterDir =
-      chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
-    const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
+    const chapterNum = chapter === 'appendices' ? -1 : Number(chapter);
+    const notes =
+      extra.notes ||
+      (extra.track ? `track: ${extra.track}` : null) ||
+      (extra.sourceHash ? `sourceHash: ${extra.sourceHash}` : null);
 
-    let status = {};
-    if (fs.existsSync(statusPath)) {
-      status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
-    }
-
-    if (!status.status) {
-      status.status = {};
-    }
-
-    status.status[stage] = {
-      complete: true,
-      date: new Date().toISOString().split('T')[0],
-      ...extra,
-    };
-
-    const statusDir = path.dirname(statusPath);
-    if (!fs.existsSync(statusDir)) {
-      fs.mkdirSync(statusDir, { recursive: true });
-    }
-
-    fs.writeFileSync(statusPath, JSON.stringify(status, null, 2), 'utf8');
+    pipelineStatus.transitionStage(book, chapterNum, stage, 'complete', null, notes);
   } catch (err) {
     console.error(`Auto-advance status failed for ch${chapter} ${stage}:`, err.message);
   }
@@ -715,17 +706,8 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
  */
 function resetChapterStage(book, chapter, stage) {
   try {
-    const chapterDir =
-      chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
-    const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
-
-    if (!fs.existsSync(statusPath)) return;
-
-    const status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
-    if (status.status && status.status[stage]) {
-      delete status.status[stage];
-      fs.writeFileSync(statusPath, JSON.stringify(status, null, 2), 'utf8');
-    }
+    const chapterNum = chapter === 'appendices' ? -1 : Number(chapter);
+    pipelineStatus.transitionStage(book, chapterNum, stage, 'not_started');
   } catch (err) {
     console.error(`Reset stage failed for ch${chapter} ${stage}:`, err.message);
   }
