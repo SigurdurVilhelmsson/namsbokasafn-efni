@@ -127,7 +127,8 @@ export function buildModuleSections(book, chapter) {
   const segments = new Map();
   const segDirs = [
     segDir, // 02-for-mt (chapters 1-5)
-    path.join(REPO_ROOT, 'books', book, '03-faithful-translation', chapterDir), // new chapters 9, 12, 13
+    path.join(REPO_ROOT, 'books', book, '03-faithful-translation', chapterDir),
+    path.join(REPO_ROOT, 'books', book, '02-mt-output', chapterDir),
   ];
 
   for (const dir of segDirs) {
