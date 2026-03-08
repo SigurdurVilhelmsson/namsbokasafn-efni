@@ -142,10 +142,16 @@ node tools/protect-segments-for-mt.js books/efnafraedi-2e/02-for-mt/ch05/m68724-
 
 **Goal:** Get initial Icelandic translation via malstadur.is.
 
-**Process:**
-1. Go to [malstadur.is](https://malstadur.is)
-2. Upload the English markdown file(s) from `02-for-mt/`
-3. Download the translated Icelandic output
+There are two methods — file upload/download (preferred) or copy/paste (fallback). Both are described in the comprehensive guide: **[MT Process Guide](mt-process.md)**. An Icelandic step-by-step guide for editors is at **[Leiðbeiningar um vélþýðingu](../guides/mt-guide-for-editors.md)**.
+
+**Quick version (file upload/download via pipeline UI):**
+
+1. In the pipeline UI, click **"↓ Sækja EN"** for the chapter — this auto-runs protect and downloads a ZIP with `{{SEG:...}}` markers
+2. Upload the `.en.md` files to [malstadur.is](https://malstadur.is)
+3. Download the translated `.is.md` files
+4. In the pipeline UI, click **"↑ Hlaða upp IS"** and select the translated files — this auto-runs unprotect
+
+**Important:** The "↓ Sækja EN" button auto-runs the protect step. If you re-extract a chapter, the protection status is reset and will re-run automatically on the next download. The server will reject downloads of unprotected files with a warning.
 
 **Save to:** `02-mt-output/ch05/` (using same filenames as input)
 
