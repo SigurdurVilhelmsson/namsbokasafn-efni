@@ -38,7 +38,7 @@ import {
 } from './lib/cnxml-parser.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
-import { safeWrite } from './lib/safeWrite.js';
+import { safeWrite, logBackup } from './lib/safeWrite.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -1502,31 +1502,37 @@ function writeOutput(result, chapter, moduleId, sourceContent) {
     chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
   const mtDir = path.join(BOOKS_DIR, '02-for-mt', chapterDir);
   const structDir = path.join(BOOKS_DIR, '02-structure', chapterDir);
+  const bookSlug = path.basename(BOOKS_DIR);
 
   // Write segments markdown
   const segmentsPath = path.join(mtDir, `${moduleId}-segments.en.md`);
-  safeWrite(segmentsPath, formatSegmentsMarkdown(result.segments));
+  const segBackup = safeWrite(segmentsPath, formatSegmentsMarkdown(result.segments));
+  if (segBackup) logBackup(bookSlug, chapter, 'extract', segmentsPath, segBackup);
 
   // Write structure JSON
   const structurePath = path.join(structDir, `${moduleId}-structure.json`);
-  safeWrite(structurePath, JSON.stringify(result.structure, null, 2));
+  const structBackup = safeWrite(structurePath, JSON.stringify(result.structure, null, 2));
+  if (structBackup) logBackup(bookSlug, chapter, 'extract', structurePath, structBackup);
 
   // Write equations JSON
   if (Object.keys(result.equations).length > 0) {
     const equationsPath = path.join(structDir, `${moduleId}-equations.json`);
-    safeWrite(equationsPath, JSON.stringify(result.equations, null, 2));
+    const eqBackup = safeWrite(equationsPath, JSON.stringify(result.equations, null, 2));
+    if (eqBackup) logBackup(bookSlug, chapter, 'extract', equationsPath, eqBackup);
   }
 
   // Write inline attributes JSON (term class, footnote id, etc.)
   if (result.inlineAttrs && Object.keys(result.inlineAttrs).length > 0) {
     const inlineAttrsPath = path.join(structDir, `${moduleId}-inline-attrs.json`);
-    safeWrite(inlineAttrsPath, JSON.stringify(result.inlineAttrs, null, 2));
+    const attrBackup = safeWrite(inlineAttrsPath, JSON.stringify(result.inlineAttrs, null, 2));
+    if (attrBackup) logBackup(bookSlug, chapter, 'extract', inlineAttrsPath, attrBackup);
   }
 
   // Write extraction manifest
   const manifest = buildManifest(result, sourceContent);
   const manifestPath = path.join(structDir, `${moduleId}-manifest.json`);
-  safeWrite(manifestPath, JSON.stringify(manifest, null, 2));
+  const manBackup = safeWrite(manifestPath, JSON.stringify(manifest, null, 2));
+  if (manBackup) logBackup(bookSlug, chapter, 'extract', manifestPath, manBackup);
 
   return { segmentsPath, structurePath, manifestPath };
 }

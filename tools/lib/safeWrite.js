@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { createRequire } from 'node:module';
 
 /**
  * Write a file with atomic rename and automatic backup.
@@ -35,4 +36,55 @@ export function safeWrite(filePath, content) {
   fs.renameSync(tmpPath, filePath);
 
   return backupPath;
+}
+
+// Lazy-loaded DB connection for audit logging
+let _logDb = null;
+
+function getLogDb() {
+  if (_logDb) return _logDb;
+  try {
+    const dbPath = path.resolve('pipeline-output', 'sessions.db');
+    if (!fs.existsSync(dbPath)) return null;
+
+    const serverDir = path.resolve('server');
+    const require = createRequire(path.join(serverDir, 'index.js'));
+    const Database = require('better-sqlite3');
+    _logDb = new Database(dbPath);
+    return _logDb;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Log a backup event to chapter_generation_log.
+ * Best-effort — errors are logged but never thrown.
+ *
+ * @param {string} bookSlug  - e.g. 'efnafraedi-2e'
+ * @param {number|string} chapterNum - Chapter number or 'appendices'
+ * @param {string} action   - e.g. 'extract', 'inject', 'render'
+ * @param {string} filePath  - The file that was overwritten
+ * @param {string} backupPath - The backup file path
+ */
+export function logBackup(bookSlug, chapterNum, action, filePath, backupPath) {
+  try {
+    const db = getLogDb();
+    if (!db) return;
+
+    const chNum = chapterNum === 'appendices' ? -1 : Number(chapterNum);
+    db.prepare(
+      `INSERT INTO chapter_generation_log (book_slug, chapter_num, action, user_id, username, details)
+       VALUES (?, ?, ?, ?, ?, ?)`
+    ).run(
+      bookSlug,
+      chNum,
+      `backup:${action}`,
+      'system',
+      'system',
+      JSON.stringify({ file: filePath, backup: backupPath })
+    );
+  } catch (err) {
+    console.error(`Warning: failed to log backup: ${err.message}`);
+  }
 }

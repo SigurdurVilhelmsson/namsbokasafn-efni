@@ -46,7 +46,7 @@ import {
   localizeMathMLText,
 } from './lib/mathml-to-latex.js';
 import { buildModuleSections } from './lib/module-sections.js';
-import { safeWrite } from './lib/safeWrite.js';
+import { safeWrite, logBackup } from './lib/safeWrite.js';
 
 // =====================================================================
 // NOTE TYPE LABELS
@@ -1664,7 +1664,8 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
   const outputDir = ensureOutputDir(chapter, track);
   const filename = getOutputFilename(moduleId, chapter, moduleSections);
   const outputPath = path.join(outputDir, filename);
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
   return outputPath;
 }
 
@@ -1841,7 +1842,8 @@ function writeEndOfChapterSection(chapter, section, track, html) {
   const filename = `${chapter}-${section.slug}.html`;
   const outputPath = path.join(outputDir, filename);
 
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
 }
@@ -1966,7 +1968,8 @@ function writeKeyEquations(chapter, track, html) {
   const filename = `${chapter}-key-equations.html`;
   const outputPath = path.join(outputDir, filename);
 
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
 }
@@ -2062,7 +2065,8 @@ function writeCompiledGlossary(chapter, track, html) {
   const filename = `${chapter}-key-terms.html`;
   const outputPath = path.join(outputDir, filename);
 
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
 }
@@ -2198,7 +2202,8 @@ function writeCompiledSummary(chapter, track, html) {
   const filename = `${chapter}-summary.html`;
   const outputPath = path.join(outputDir, filename);
 
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
 }
@@ -2343,7 +2348,8 @@ function writeCompiledExercises(chapter, track, html) {
   const filename = `${chapter}-exercises.html`;
   const outputPath = path.join(outputDir, filename);
 
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
 }
@@ -2503,7 +2509,8 @@ function writeAnswerKey(chapter, track, html) {
   const filename = `${chapter}-answer-key.html`;
   const outputPath = path.join(outputDir, filename);
 
-  safeWrite(outputPath, html);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
 }

@@ -37,7 +37,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { safeWrite } from './lib/safeWrite.js';
+import { safeWrite, logBackup } from './lib/safeWrite.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -1656,7 +1656,8 @@ function ensureOutputDir(chapter, track) {
 function writeOutput(chapter, moduleId, cnxml, track) {
   const outputDir = ensureOutputDir(chapter, track);
   const outputPath = path.join(outputDir, `${moduleId}.cnxml`);
-  safeWrite(outputPath, cnxml);
+  const backup = safeWrite(outputPath, cnxml);
+  if (backup) logBackup(path.basename(BOOKS_DIR), chapter, 'inject', outputPath, backup);
   return outputPath;
 }
 
