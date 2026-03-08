@@ -43,6 +43,7 @@ function runAllMigrations() {
     require('../migrations/015-rename-book-slugs'),
     require('../migrations/016-cleanup-book-slugs'),
     require('../migrations/017-pipeline-status'),
+    require('../migrations/018-chapter-locks'),
   ];
 
   let applied = 0;
