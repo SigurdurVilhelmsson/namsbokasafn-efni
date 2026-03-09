@@ -2339,6 +2339,118 @@ function extractSectionExercises(chapter, modules, moduleSections, track) {
 }
 
 /**
+ * Check if exercise types in a book use separate slugs (separate files per type)
+ * vs a single shared slug (combined file).
+ *
+ * @param {object} exercisesByType - Object keyed by exercise class
+ * @returns {boolean} true if types should be rendered as separate files
+ */
+function exerciseTypesHaveSeparateSlugs(exercisesByType) {
+  const slugs = new Set();
+  for (const exerciseClass of Object.keys(exercisesByType)) {
+    const cfg = BOOK_CONFIG?.endOfChapterSections?.[exerciseClass];
+    if (cfg?.slug) slugs.add(cfg.slug);
+  }
+  return slugs.size > 1;
+}
+
+/**
+ * Render a single exercise type as a standalone page.
+ * Used when exercise types have separate slugs (e.g., microbiology).
+ *
+ * @param {number} chapter - Chapter number
+ * @param {string} exerciseClass - Exercise class name (e.g., 'multiple-choice')
+ * @param {Array} exercisesForType - Array of module exercises for this type
+ * @param {Map} chapterExerciseNumbers - Exercise numbering map
+ * @param {object} context - Render context
+ * @returns {string} Full HTML document for this exercise type
+ */
+function renderSingleTypeExercises(
+  chapter,
+  exerciseClass,
+  exercisesForType,
+  chapterExerciseNumbers,
+  context
+) {
+  const typeConfig = BOOK_CONFIG?.endOfChapterSections?.[exerciseClass];
+  const typeTitle = typeConfig?.titleIs || generateFallbackLabel(exerciseClass);
+  const slug = typeConfig?.slug || exerciseClass;
+
+  const lines = [];
+  lines.push('<!DOCTYPE html>');
+  lines.push('<html lang="is">');
+  lines.push('<head>');
+  lines.push('  <meta charset="UTF-8">');
+  lines.push('  <meta name="viewport" content="width=device-width, initial-scale=1.0">');
+  lines.push(`  <title>Kafli ${chapter} - ${typeTitle}</title>`);
+  lines.push('  <link rel="stylesheet" href="/styles/content.css">');
+  lines.push('</head>');
+  lines.push('<body>');
+  lines.push(
+    `  <article class="chapter-resource exercises" data-exercise-type="${exerciseClass}">`
+  );
+  lines.push('    <header>');
+  lines.push(`      <h1>${typeTitle}</h1>`);
+  lines.push('    </header>');
+  lines.push('    <main>');
+
+  for (const exercises of exercisesForType) {
+    const { html } = renderCnxmlToHtml(
+      `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${exercises.exercisesContent}</content></document>`,
+      {
+        verbose: false,
+        lang: 'is',
+        chapter,
+        moduleId: exercises.moduleId,
+        chapterExerciseNumbers,
+        excludeSections: false,
+        includeSolutions: false,
+        ...context,
+      }
+    );
+
+    const sectionMatch = html.match(/<section[\s\S]*?<\/section>/);
+    if (sectionMatch) {
+      let sectionHtml = sectionMatch[0];
+
+      // Remove the original section title
+      sectionHtml = sectionHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/, '');
+
+      // Replace the section class and add module info
+      const classRegex = new RegExp(`<section([^>]*)class="${exerciseClass}"([^>]*)>`);
+      sectionHtml = sectionHtml.replace(
+        classRegex,
+        `<section class="exercises-section" id="exercises-${exercises.moduleId}" data-section="${exercises.sectionNumber}">`
+      );
+
+      // Add section title as h2 (top-level heading under the page h1)
+      const titleHtml = `      <h2>${exercises.sectionNumber} ${exercises.sectionTitle}</h2>\n`;
+      sectionHtml = sectionHtml.replace(/<section([^>]*)>/, `$&\n${titleHtml}`);
+
+      lines.push(sectionHtml);
+    }
+  }
+
+  lines.push('    </main>');
+  lines.push('  </article>');
+  lines.push('');
+  lines.push('  <script type="application/json" id="page-data">');
+  lines.push(`{
+  "moduleId": "${chapter}-${slug}",
+  "chapter": ${chapter},
+  "section": "${chapter}.0",
+  "title": "${typeTitle}",
+  "equations": [],
+  "terms": {}
+}
+  </script>`);
+  lines.push('</body>');
+  lines.push('</html>');
+
+  return lines.join('\n');
+}
+
+/**
  * Render compiled exercises HTML.
  * Supports both single-type (Chemistry: 'exercises') and multi-type
  * (Biology/Microbiology: 'multiple-choice', 'critical-thinking', etc.).
@@ -2449,8 +2561,12 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
 
 /**
  * Write compiled exercises HTML to file.
+ * @param {number} chapter - Chapter number
+ * @param {string} track - Track name ('faithful' or 'mt-preview')
+ * @param {string} html - HTML content
+ * @param {string} [slug='exercises'] - Filename slug (e.g., 'exercises', 'multiple-choice')
  */
-function writeCompiledExercises(chapter, track, html) {
+function writeCompiledExercises(chapter, track, html, slug = 'exercises') {
   const chapterStr = formatChapterOutput(chapter);
   const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
   const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
@@ -2460,7 +2576,7 @@ function writeCompiledExercises(chapter, track, html) {
   }
 
   // Use single-digit naming for consistency with ch1-5
-  const filename = `${chapter}-exercises.html`;
+  const filename = `${chapter}-${slug}.html`;
   const outputPath = path.join(outputDir, filename);
 
   const backup = safeWrite(outputPath, html);
@@ -3024,7 +3140,7 @@ async function main() {
             lang: args.lang,
             chapter: args.chapter,
             moduleId: `${chapterStr}-answer-key`,
-            moduleSections,
+            moduleSections: {}, // Empty: prevent chapter outline insertion in answer key
             chapterFigureNumbers,
             chapterTableNumbers,
             chapterExampleNumbers,
@@ -3070,37 +3186,65 @@ async function main() {
           }
         }
 
-        const compiledExercisesHtml = renderCompiledExercises(
-          args.chapter,
-          exercisesByType,
+        const renderContext = {
+          verbose: args.verbose,
+          lang: args.lang,
+          chapter: args.chapter,
+          moduleSections,
+          chapterFigureNumbers,
+          chapterTableNumbers,
+          chapterEquationNumbers,
+          chapterExampleNumbers,
           chapterExerciseNumbers,
-          {
-            verbose: args.verbose,
-            lang: args.lang,
-            chapter: args.chapter,
-            moduleId: `${chapterStr}-exercises`,
-            moduleSections,
-            chapterFigureNumbers,
-            chapterTableNumbers,
-            chapterEquationNumbers,
-            chapterExampleNumbers,
-            chapterExerciseNumbers,
-            chapterSectionTitles,
-            equationTextDictionary,
+          chapterSectionTitles,
+          equationTextDictionary,
+        };
+
+        if (exerciseTypesHaveSeparateSlugs(exercisesByType)) {
+          // Separate file per exercise type (e.g., microbiology)
+          for (const [exerciseClass, exercisesForType] of Object.entries(exercisesByType)) {
+            if (exercisesForType.length === 0) continue;
+
+            const typeConfig = BOOK_CONFIG?.endOfChapterSections?.[exerciseClass];
+            const slug = typeConfig?.slug || exerciseClass;
+
+            const typeHtml = renderSingleTypeExercises(
+              args.chapter,
+              exerciseClass,
+              exercisesForType,
+              chapterExerciseNumbers,
+              { ...renderContext, moduleId: `${chapterStr}-${slug}` }
+            );
+
+            const typePath = writeCompiledExercises(args.chapter, args.track, typeHtml, slug);
+            writtenFiles.push(typePath);
+            console.log(`  → ${typePath}`);
           }
-        );
 
-        const compiledExercisesPath = writeCompiledExercises(
-          args.chapter,
-          args.track,
-          compiledExercisesHtml
-        );
-        writtenFiles.push(compiledExercisesPath);
+          console.log(
+            `Æfingar í lok kafla: Rendered ${totalExerciseSections} exercise section(s) to ${writtenFiles.length} file(s)`
+          );
+        } else {
+          // Combined file (e.g., chemistry, biology)
+          const compiledExercisesHtml = renderCompiledExercises(
+            args.chapter,
+            exercisesByType,
+            chapterExerciseNumbers,
+            { ...renderContext, moduleId: `${chapterStr}-exercises` }
+          );
 
-        console.log(
-          `Æfingar í lok kafla: Rendered ${totalExerciseSections} exercise section(s) to HTML`
-        );
-        console.log(`  → ${compiledExercisesPath}`);
+          const compiledExercisesPath = writeCompiledExercises(
+            args.chapter,
+            args.track,
+            compiledExercisesHtml
+          );
+          writtenFiles.push(compiledExercisesPath);
+
+          console.log(
+            `Æfingar í lok kafla: Rendered ${totalExerciseSections} exercise section(s) to HTML`
+          );
+          console.log(`  → ${compiledExercisesPath}`);
+        }
       } else if (args.verbose) {
         console.log('No section exercises found in this chapter');
       }
