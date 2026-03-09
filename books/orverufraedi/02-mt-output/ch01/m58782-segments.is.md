@@ -321,8 +321,8 @@ staðlað heimildarrit til að greina bakteríur?
 <!-- SEG:m58782:title:fs-id1171360608062-title --> Fylltu í eyðurnar
 
 <!-- SEG:m58782:problem:fs-id1171360186862 --> Í tvínafnakerfinu inniheldur
-fræðiheiti lífveru __*__{{TERM}}* hennar og
-{{/TERM}}__*__*\_\_.
+fræðiheiti lífveru __*____* hennar og
+____*__*__.
 
 <!-- SEG:m58782:solution:fs-id1172100527126 --> ættkvísl, tegund
 

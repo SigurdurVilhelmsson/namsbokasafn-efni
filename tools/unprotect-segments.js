@@ -33,10 +33,11 @@
 import fs from 'fs';
 import path from 'path';
 
-const BOOK_DIR = 'books/efnafraedi-2e';
+let BOOK_DIR = 'books/efnafraedi-2e';
 
 function parseArgs(args) {
   const result = {
+    book: 'efnafraedi-2e',
     chapter: null,
     batch: null,
     sourceDir: '02-mt-output',
@@ -51,11 +52,14 @@ function parseArgs(args) {
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose' || arg === '-v') result.verbose = true;
     else if (arg === '--keep-splits') result.keepSplits = true;
+    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = args[++i];
     else if (arg === '--batch' && args[i + 1]) result.batch = args[++i];
     else if (arg === '--source-dir' && args[i + 1]) result.sourceDir = args[++i];
     else if (arg === '--output-dir' && args[i + 1]) result.outputDir = args[++i];
   }
+
+  BOOK_DIR = `books/${result.book}`;
   return result;
 }
 
@@ -168,8 +172,16 @@ function unprotectTags(content) {
   let result = content;
 
   // Restore term markers before generic tag conversions
-  // {{TERM}}text{{/TERM}} → __text__
-  result = result.replace(/\{\{TERM\}\}(.+?)\{\{\/TERM\}\}/g, '__$1__');
+  // {{TERM}}text{{/TERM}} → __text__ (multiline support)
+  result = result.replace(/\{\{TERM\}\}([\s\S]+?)\{\{\/TERM\}\}/g, '__$1__');
+
+  // Clean up orphan {{TERM}} / {{/TERM}} markers that the MT engine split
+  result = result.replace(/\{\{TERM\}\}/g, '');
+  result = result.replace(/\{\{\/TERM\}\}/g, '');
+
+  // Fix backslash-escaped underscores from MT (\_\_ → __)
+  // MT engines often escape markdown underscores with backslashes
+  result = result.replace(/\\_/g, '_');
 
   // Convert {{SEG:...}} → <!-- SEG:... -->
   result = result.replace(/\{\{SEG:([^}]+)\}\}/g, '<!-- SEG:$1 -->');

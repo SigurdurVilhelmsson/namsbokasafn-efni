@@ -511,24 +511,24 @@ undirgrein örverufræði?
 
 <!-- SEG:m58783:title:fs-id1171360222234-title --> Fylltu í eyðurnar
 
-<!-- SEG:m58783:problem:fs-id1171358968772 --> __*__*\_\_ er
+<!-- SEG:m58783:problem:fs-id1171358968772 --> __*__*__ er
 sjúkdómsvaldandi örvera.
 
 <!-- SEG:m58783:solution:fs-id1172099575555 --> sýkill
 
 <!-- SEG:m58783:problem:fs-id1171360086331 --> Fjölfruma sníkjuormar sem
 örverufræðingar rannsaka eru kallaðir
-__*____*__\_.
+__*____*___.
 
 <!-- SEG:m58783:solution:fs-id1166168466153 --> þráðormar
 
 <!-- SEG:m58783:problem:fs-id1171360196066 --> Rannsóknir á veirum kallast
-__*____*__\_.
+__*____*___.
 
 <!-- SEG:m58783:solution:fs-id1172102072086 --> veirufræði
 
 <!-- SEG:m58783:problem:fs-id1171359176525 --> Frumur dreifkjarna lífvera
-skortir __\___\_\_.
+skortir _______.
 
 <!-- SEG:m58783:solution:fs-id1166168160032 --> kjarna
 

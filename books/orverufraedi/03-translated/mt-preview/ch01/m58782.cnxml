@@ -403,8 +403,8 @@ staðlað heimildarrit til að greina bakteríur?</para>
 <exercise id="fs-id1171360225534">
 <problem id="fs-id1171360121703">
 <para id="fs-id1171360186862">Í tvínafnakerfinu inniheldur
-fræðiheiti lífveru <term><emphasis effect="italics"></term>{{TERM}}</emphasis> hennar og
-{{/TERM}}<term><emphasis effect="italics"></term></emphasis>\_\_.</para>
+fræðiheiti lífveru <term><emphasis effect="italics"></term><term></emphasis> hennar og
+</term><term><emphasis effect="italics"></term></emphasis>__.</para>
 </problem>
 <solution id="fs-id1172100922195">
 <para id="fs-id1172100527126">ættkvísl, tegund</para>

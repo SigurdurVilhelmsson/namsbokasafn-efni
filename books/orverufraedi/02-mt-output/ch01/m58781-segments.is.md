@@ -279,8 +279,8 @@ framlag Leeuwenhoeks til smásjárfræðinnar nánar í Hvernig við sjáum hinn
 ósýnilega heim.)
 
 <!-- SEG:m58781:para:fs-id1171360229272 --> Næstum 200 árum eftir að van
-Leeuwenhoek sá örverur í fyrsta sinn leiddi „{{TERM}}gullöld
-örverufræðinnar{{/TERM}}“ af sér fjölda nýrra uppgötvana á árunum 1857
+Leeuwenhoek sá örverur í fyrsta sinn leiddi „__gullöld
+örverufræðinnar__“ af sér fjölda nýrra uppgötvana á árunum 1857
 til 1914. Tveir frægir örverufræðingar, Louis __Pasteur__
 og Robert __Koch__, voru sérstaklega virkir í að auka
 skilning okkar á hinum óséða heimi örvera ([#OSC_Microbio_01_01_PastKoch]). Pasteur,
@@ -379,18 +379,18 @@ sjást?
 <!-- SEG:m58781:title:fs-id1171360541824-title --> Fylltu í eyðurnar
 
 <!-- SEG:m58781:problem:fs-id1171358973154 --> Þúkídídes er þekktur sem faðir
-__*____*____\___.
+__*____*_______.
 
 <!-- SEG:m58781:solution:fs-id1171359180948 --> vísindalegrar sagnfræði
 
 <!-- SEG:m58781:problem:fs-id1171358997456 --> Rannsakendur telja að
-Ísmaðurinn Ötzi gæti hafa verið sýktur af __\___ sjúkdómi.
+Ísmaðurinn Ötzi gæti hafa verið sýktur af _____ sjúkdómi.
 
 <!-- SEG:m58781:solution:fs-id1172099415767 --> Lyme
 
 <!-- SEG:m58781:problem:fs-id1171360085566 --> Ferlið þar sem örverur breyta
 þrúgusafa í vín kallast
-__*____*____\___.
+__*____*_______.
 
 <!-- SEG:m58781:solution:fs-id1171360191960 --> gerjun
 

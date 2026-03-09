@@ -313,6 +313,20 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     _renderStats: context.renderStats || { equations: 0, success: 0, failures: [] },
   };
 
+  // Build chapter outline for intro pages
+  const isIntro = sectionInfo.section === '0' || doc.documentClass === 'introduction';
+  let chapterOutline = null;
+  if (isIntro && moduleSections) {
+    chapterOutline = Object.entries(moduleSections)
+      .filter(([, info]) => info.section !== '0') // Exclude intro itself
+      .sort((a, b) => Number(a[1].section) - Number(b[1].section))
+      .map(([, info]) => ({
+        section: `${chapter}.${info.section}`,
+        title: info.titleIs || info.titleEn,
+        slug: info.slug,
+      }));
+  }
+
   // Build HTML document
   const html = buildHtmlDocument({
     title,
@@ -320,9 +334,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     content: contentHtml,
     pageData,
     sectionNumber,
-    isIntro: sectionInfo.section === '0' || doc.documentClass === 'introduction',
+    isIntro,
     abstract: doc.metadata.abstract,
     context, // Pass context for footnotes rendering
+    chapterOutline,
   });
 
   return { html, pageData };
@@ -332,7 +347,17 @@ function renderCnxmlToHtml(cnxml, options = {}) {
  * Build complete HTML document.
  */
 function buildHtmlDocument(options) {
-  const { title, lang, content, pageData, sectionNumber, isIntro, abstract, context } = options;
+  const {
+    title,
+    lang,
+    content,
+    pageData,
+    sectionNumber,
+    isIntro,
+    abstract,
+    context,
+    chapterOutline,
+  } = options;
 
   const lines = [];
 
@@ -372,9 +397,45 @@ function buildHtmlDocument(options) {
 
   lines.push('    </header>');
 
-  // Main content
+  // Main content — for intro pages, insert chapter outline after splash figure
   lines.push('    <main>');
-  lines.push(content);
+  if (isIntro && chapterOutline && chapterOutline.length > 0) {
+    // Insert chapter outline after the first </figure> (the splash image)
+    const figureEndIdx = content.indexOf('</figure>');
+    if (figureEndIdx !== -1) {
+      const insertPos = figureEndIdx + '</figure>'.length;
+      const beforeOutline = content.slice(0, insertPos);
+      const afterOutline = content.slice(insertPos);
+
+      lines.push(beforeOutline);
+      lines.push('      <nav class="chapter-outline">');
+      lines.push('        <h2>Yfirlit kafla</h2>');
+      lines.push('        <ul>');
+      for (const item of chapterOutline) {
+        lines.push(
+          `          <li><a href="${item.section.replace('.', '-')}-${item.slug}">${item.section} ${escapeHtml(item.title)}</a></li>`
+        );
+      }
+      lines.push('        </ul>');
+      lines.push('      </nav>');
+      lines.push(afterOutline);
+    } else {
+      // No splash figure found — put outline before all content
+      lines.push('      <nav class="chapter-outline">');
+      lines.push('        <h2>Yfirlit kafla</h2>');
+      lines.push('        <ul>');
+      for (const item of chapterOutline) {
+        lines.push(
+          `          <li><a href="${item.section.replace('.', '-')}-${item.slug}">${item.section} ${escapeHtml(item.title)}</a></li>`
+        );
+      }
+      lines.push('        </ul>');
+      lines.push('      </nav>');
+      lines.push(content);
+    }
+  } else {
+    lines.push(content);
+  }
   lines.push('    </main>');
 
   // Footnotes section (if any)
@@ -994,6 +1055,15 @@ function renderNote(note, context) {
     elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
   }
 
+  // Extract lists (e.g., bullet lists in check-your-understanding, toolbox notes)
+  const lists = extractNestedElements(contentWithoutTitle, 'list');
+  for (const list of lists) {
+    const pos = list.id
+      ? contentWithoutTitle.indexOf(`id="${list.id}"`)
+      : contentWithoutTitle.indexOf('<list');
+    elementsWithPositions.push({ type: 'list', item: list, position: pos !== -1 ? pos : 0 });
+  }
+
   // Sort by position to preserve document order
   elementsWithPositions.sort((a, b) => a.position - b.position);
 
@@ -1003,6 +1073,8 @@ function renderNote(note, context) {
       lines.push(`  ${renderPara(elem.item, context)}`);
     } else if (elem.type === 'figure') {
       lines.push(`  ${renderFigure(elem.item, context)}`);
+    } else if (elem.type === 'list') {
+      lines.push(`  ${renderList(elem.item, context)}`);
     }
   }
 
