@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: 138 Vitest unit tests + 50 Playwright E2E tests
+- Test suite: 182 Vitest unit tests + 44 Playwright E2E tests
 
 ## Purpose
 
@@ -129,6 +129,11 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 
 | Command | Purpose |
 |---------|---------|
+| `npm test` | Run all Vitest unit tests |
+| `npm run validate` | Validate chapter status files |
+| `node tools/cnxml-extract.js <book> <chapter>` | Extract EN segments from CNXML |
+| `node tools/cnxml-inject.js <book> <chapter>` | Inject translations into CNXML |
+| `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
 | `/pipeline-status` | Overview of all chapters |
 | `/chapter-status <book> <ch>` | Specific chapter progress |
 | `/review-chapter <book> <ch>` | Pass 1 linguistic review |
@@ -208,9 +213,4 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
 
-**Phase 13 Status:** COMPLETE (2026-02-16) — Dead code removed, 22 pipeline integration tests added.
-**Phase 12 Status:** COMPLETE (2026-02-16) — All 8 pipeline issues verified as resolved on live site.
-**Phase 11 Status:** COMPLETE (2026-02-16) — 8-stage schema migration, canonical stage names, auto-advance hooks.
-**Phase 10 Status:** COMPLETE (2026-02-16) — Publication service migrated; faithful track grows per-module.
-**Phase 9 Status:** COMPLETE (2026-02-16) — `applyApprovedEdits()` writes reviewed segments per-module.
-**Phase 8 Status:** COMPLETE (2026-02-05) — Editor rebuild for CNXML→HTML pipeline delivered.
+**Phases 8-13:** All COMPLETE (2026-02-05 through 2026-02-16). See [ROADMAP.md](ROADMAP.md) for details.
