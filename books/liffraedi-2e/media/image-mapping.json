@@ -68,8 +68,8 @@
   {
     "docxImage": "image2.emf",
     "figureId": "fig-ch03_03_01",
-    "outputName": "Figure_03_03_01_is.emf",
-    "extension": ".emf"
+    "outputName": "Figure_03_03_01_is.png",
+    "extension": ".png"
   },
   {
     "docxImage": "image20.jpg",
@@ -134,8 +134,8 @@
   {
     "docxImage": "image3.emf",
     "figureId": "fig-ch03_04_02",
-    "outputName": "Figure_03_04_02_is.emf",
-    "extension": ".emf"
+    "outputName": "Figure_03_04_02_is.png",
+    "extension": ".png"
   },
   {
     "docxImage": "image30.jpeg",
