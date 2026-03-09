@@ -1,0 +1,38 @@
+{
+  "status": {
+    "extraction": {
+      "complete": true,
+      "date": "2026-03-09"
+    },
+    "mtReady": {
+      "complete": true,
+      "date": "2026-03-09"
+    },
+    "mtOutput": {
+      "complete": false
+    },
+    "linguisticReview": {
+      "complete": false
+    },
+    "tmCreated": {
+      "complete": false
+    },
+    "injection": {
+      "complete": false
+    },
+    "rendering": {
+      "complete": false
+    },
+    "publication": {
+      "mtPreview": {
+        "complete": false
+      },
+      "faithful": {
+        "complete": false
+      },
+      "localized": {
+        "complete": false
+      }
+    }
+  }
+}

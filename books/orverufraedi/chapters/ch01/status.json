@@ -1,0 +1,35 @@
+{
+  "status": {
+    "extraction": {
+      "complete": true,
+      "date": "2026-03-07",
+      "sourceHash": "b6410aa5e0f7244c"
+    },
+    "mtReady": {
+      "complete": true,
+      "date": "2026-03-08"
+    },
+    "mtOutput": {
+      "complete": true,
+      "date": "2026-03-08"
+    },
+    "injection": {
+      "complete": true,
+      "date": "2026-03-08",
+      "track": "mt-preview"
+    },
+    "rendering": {
+      "complete": true,
+      "date": "2026-03-08",
+      "track": "mt-preview"
+    },
+    "publication": {
+      "mtPreview": {
+        "complete": true,
+        "date": "2026-03-08",
+        "pipeline": "html",
+        "moduleCount": 4
+      }
+    }
+  }
+}
