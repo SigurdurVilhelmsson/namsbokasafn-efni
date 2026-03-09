@@ -370,6 +370,50 @@ function annotateInlineTerms(isSegments, enSegments) {
 }
 
 /**
+ * Load image mapping from a book's media directory.
+ * Maps figureId → translated image info for swapping original images
+ * with translated variants (e.g., from docx-import).
+ * @param {string} bookDir - Book directory (e.g., 'books/liffraedi-2e')
+ * @returns {Map<string, {outputName: string, extension: string}>} Map from figureId to image info
+ */
+function loadImageMapping(bookDir) {
+  const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+  const map = new Map();
+  try {
+    const data = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
+    for (const entry of data) {
+      if (entry.figureId && entry.outputName) {
+        map.set(entry.figureId, entry);
+      }
+    }
+  } catch {
+    // No mapping file — nothing to swap
+  }
+  return map;
+}
+
+/**
+ * Swap an image src path with a translated variant if one exists in the mapping.
+ * Preserves the relative directory prefix (e.g., '../../media/').
+ * @param {string} src - Original image src (e.g., '../../media/Figure_03_03_01.jpg')
+ * @param {string} figureId - Figure element ID (e.g., 'fig-ch03_03_01')
+ * @param {Map} imageMapping - Map from figureId to translated image info
+ * @returns {{src: string, mimeType: string|null}} Swapped src and optional mime type
+ */
+function resolveTranslatedImage(src, figureId, imageMapping) {
+  if (!imageMapping || !figureId || !imageMapping.has(figureId)) {
+    return { src, mimeType: null };
+  }
+  const entry = imageMapping.get(figureId);
+  // Preserve directory prefix from original src
+  const lastSlash = src.lastIndexOf('/');
+  const prefix = lastSlash >= 0 ? src.substring(0, lastSlash + 1) : '';
+  const newSrc = prefix + entry.outputName;
+  const mimeType = inferMimeType(entry.outputName);
+  return { src: newSrc, mimeType };
+}
+
+/**
  * Infer MIME type from file extension.
  * @param {string} src - Image source filename
  * @returns {string} MIME type
@@ -763,6 +807,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     figuresHandledInNotes,
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
+    imageMapping: options.imageMapping || new Map(),
   };
 
   for (const element of structure.content) {
@@ -991,6 +1036,27 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
     if (match) {
       let figureCnxml = match[0];
 
+      // Swap image src with translated variant if available
+      const imageMapping = ctx && ctx.imageMapping;
+      if (imageMapping && imageMapping.has(element.id)) {
+        figureCnxml = figureCnxml.replace(
+          /<image([^>]*)\ssrc="([^"]*)"([^>]*)\/>/,
+          (imgMatch, before, origSrc, after) => {
+            const { src: newSrc, mimeType } = resolveTranslatedImage(
+              origSrc,
+              element.id,
+              imageMapping
+            );
+            // Also update mime-type if it changed
+            let updated = `<image${before} src="${newSrc}"${after}/>`;
+            if (mimeType) {
+              updated = updated.replace(/mime-type="[^"]*"/, `mime-type="${mimeType}"`);
+            }
+            return updated;
+          }
+        );
+      }
+
       // Replace caption if we have a translation
       if (element.caption && element.caption.segmentId) {
         const captionText = getSeg(element.caption.segmentId);
@@ -1019,8 +1085,14 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
     const alt = element.media.alt ? ` alt="${escapeXml(element.media.alt)}"` : '';
     lines.push(`<media${mediaId}${alt}>`);
     if (element.media.src) {
-      const mimeType = element.media.mimeType || 'image/jpeg';
-      lines.push(`<image mime-type="${mimeType}" src="${element.media.src}"/>`);
+      const imageMapping = ctx && ctx.imageMapping;
+      const { src: imageSrc, mimeType: resolvedMime } = resolveTranslatedImage(
+        element.media.src,
+        element.id,
+        imageMapping
+      );
+      const mimeType = resolvedMime || element.media.mimeType || 'image/jpeg';
+      lines.push(`<image mime-type="${mimeType}" src="${imageSrc}"/>`);
     }
     lines.push('</media>');
   }
@@ -1667,6 +1739,12 @@ async function main() {
   const sourceDir = args.sourceDir || '02-mt-output';
   const track = args.track || trackFromSourceDir(sourceDir);
 
+  // Load translated image mapping (from docx-import) if available
+  const imageMapping = loadImageMapping(BOOKS_DIR);
+  if (imageMapping.size > 0 && args.verbose) {
+    console.error(`Loaded image mapping: ${imageMapping.size} translated image(s)`);
+  }
+
   try {
     const modules = findChapterModules(args.chapter, args.module);
 
@@ -1707,6 +1785,7 @@ async function main() {
           verbose: args.verbose,
           enSegments,
           annotateEn: args.annotateEn,
+          imageMapping,
         },
         inlineAttrs
       );

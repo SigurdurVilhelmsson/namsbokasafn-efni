@@ -43,7 +43,7 @@
 <title>Sjónræn tenging</title>
 <para id="fs-id1344438">Hvaða flokkur amínósýra heldur þú að þú gætir fundið á yfirborði próteins sem væri uppleysanlegt og hvaða amínósýrur væru líklega inn í því?  Hvaða gerð amínósýra gætir þú reiknað með að finna í próteini sem væri hluti af frumuhimnu (fosfólípíðsamloku)</para>
 <figure id="fig-ch03_04_01"><media id="fs-id1694813" alt="The molecular structure of an amino acid is given. An amino acid has an alpha carbon to which an amino group, a carboxyl group, a hydrogen, and a side chain are attached. The side chain varies for different amino acids, and is designated as the R - group.">
-<image mime-type="image/png" src="../../media/Figure_03_04_01.png" width="340"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_01_is.jpg" width="340"/>
 </media>
 
 <caption>. Grunn bygging amínósýru</caption></figure>
@@ -53,7 +53,7 @@
 <para id="fs-id1468946">Þróunarlegt mikilvægi Sýtókróm c</para>
 </note>
 <figure id="fig-ch03_04_02"><media id="fs-id1645231" alt="The molecular structures of the twenty amino acids commonly found in proteins are given. These are divided into five categories: nonpolar aliphatic, polar uncharged, positively charged, negatively charged, and aromatic. Nonpolar aliphatic amino acids include glycine, alanine, valine, leucine, methionine, isoleucine, and proline. Polar uncharged amino acids include serine, threonine, cysteine, asparagine, and glutamine. Positively charged amino acids include lysine, arginine, and histidine. Negatively charged amino acids include aspartate and glutamate. Aromatic amino acids include phenylalanine, tyrosine, and tryptophan.  For example, in the amino acid glycine, the R group is a single hydrogen; but in alanine the R group is upper C upper H subscript 3 baseline.">
-<image mime-type="image/jpeg" src="../../media/Figure_03_04_02-fd30.jpg" width="500"/>
+<image mime-type="image/png" src="../../media/Figure_03_04_02_is.png" width="500"/>
 </media>
 
 <caption>.  Kaboxýlhópur amínósýru gengur í efnasamband við amínóhóp þeirrar sem kemur inn.  OH hópurinn á karboxýlhópnum gengur í efnasamband við annað vetnið (H) í amínóhópnum og vatn (H2O) myndast</caption></figure>
@@ -61,7 +61,7 @@
 <para id="fs-id1506615">Lögun próteina</para>
 <para id="fs-id2235262">Eins og komið hefur fram eru prótein viðkvæm fyrir breytingum í umhverfi sínu.  Það helgast af því að þrívíddarlögun (3-D) þeirra ræður öllu um virkni þeirra.  Breyting á hitastigi og/eða sýrustigi hefur áhrif á þessa lögun.  Til að skilja þetta betur þarft þú að þekkja þau fjögur stig próteinlögunar sem prótein fara í gegnum áður en þau fá verða virk.  Þessi stig kallast fyrstastigs- , annars stigs- , þriðja stigs- og fjórða stigs lögun.</para>
 <figure id="fig-ch03_04_03"><media id="fs-id2626112" alt="The formation of a peptide bond between two amino acids is shown. When the peptide bond forms, the carbon from the carbonyl group becomes attached to the nitrogen from the amino group. The upper O upper H from the carboxyl group and an upper H from the amino group form a molecule of water.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_03.jpg" width="320"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_03_is.jpeg" width="320"/>
 </media>
 
 <caption>Fyrsta stigs lögun</caption></figure>
@@ -80,19 +80,19 @@
 <title>Fjórðastigslögun</title>
 <para id="fs-id1277293">í frumum okkar mynda sum prótein svo kölluð fjölpeptíð, þar sem jafnvel margar peptíðkeðjur eru tengdar saman.  Þessar fjölpeptíðkeðjur mynda fjórðastigslögun próteinsins.</para>
 <figure id="fig-ch03_04_04"><media id="fs-id1778097" alt="The amino acid sequences for the A chain and B chain of bovine insulin are shown. The A chain is 21 amino acids in length, and the B chain is 30 amino acids in length. One disulfide, or S S bond, connects two cysteine residues in the A chain. Two other disulfide linkages connect the A chain to the B chain.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_04.jpg" width="450"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_04_is.jpg" width="450"/>
 </media>
 
 <caption>Fjölbreytileg tengsl milli efna ræður þriðjastigslögun próteinsins.  Þar með talið vatnsfælin og vatnssækin tengsl, jónatengi, vetnistengi og brennisteinsbrýr</caption></figure>
 <para id="fs-id1352111">Eðlissvipting og pökkun próteina</para>
 <figure id="fig-ch03_04_05"><media id="fs-id1671790" alt="Several representations of hemoglobin proteins are shown under normal and sickle cell conditions. In primary structure, the sixth amino acid is replaced by valine. In secondary and tertiary structures, the sickle cell is revealed by a misshapen molecule. As a result, in function, normal hemoglobins do not associate with each other, and each can carry oxygen. But in sickle cell conditions, the proteins aggregate into a fiber and oxygen carrying capacity is reduced.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_05-3127.jpg" width="350"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_05_is.jpeg" width="350"/>
 </media>
 
 <caption>Hvert prótein hefur sína eigin einstöku amínósýruröð sem með samverkan hliðarkeðja sinna, gefa próteininu sína einstöku lögun.  Ef próteinið verður fyrir breytingum á hitastigi, og/eða sýrustigi, eða kemst í snertingu eiturefni eins og þungmálma, getur það haft áhrif á hvernig próteinið pakkast þannig að það breytir um lögun.  Þá er sagt að próteinið hafi eðlissvipst. Oft getur eðlissvipting gengið til baka, ef aðstæður í umhverfi breytast en oft er eðlissviptingin varanleg.  Skýrt dæmi um eðlissviptingu próteina er þegar þú steikir egg á pönnu.  Þegar hitinn hækkar, breytir albúmið (megin prótein í eggjahvítu) um lögun og fellur út sem hvít klessa.  Hvert og eitt prótein er aðlagað að ákveðnu hita og sýrustigi.  Sem dæmi  eru prótein í maga okkar sem virka best við pH 1,5-2,5.  Einnig eru til örverur sem lifa í 98°C heitum hverum og er það þá kjörhitastig fyrir prótein þeirra.</caption></figure>
 <para id="fs-id1465861">Á síðari árum hafa vísindamenn svo uppgötvað hjálparprótein sem hjálpa nýmynduðum próteinum að taka á sig rétta, endanlega lögun.  Einnig koma þau inn á svæði sem hafa orðið fyrir breytingu á umhverfi til að hjálpa mikilvægum próteinum að halda lögun sinni.  Mikið finnst af þessu hjálparpróteinum í brunasárum og ef fólk fær háan hita.</para>
 <figure id="fig-ch03_04_06"><media id="fs-id1235886" alt="This electron micrograph shows red blood cells from a patient with sickle cell anemia. Most of the cells have a normal, disk shape, but about one in five has a sickle shape. A normal blood cell is eight microns across.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_06.jpg" width="320"/>
+<image mime-type="image/png" src="../../media/Figure_03_04_06_is.png" width="320"/>
 </media>
 <caption>Til að átta sig betur á hvernig prótein eru upp byggð er ágætt að skoða þessa tölvugerðu mynd sem kallast „Biomolecules: The Proteins“</caption>
 </figure>
@@ -100,7 +100,7 @@
 <section id="fs-id1442926">
 <title>LÆRDÓMSHLEKKUR</title>
 <figure id="fig-ch03_04_07"><media id="fs-id2990796" alt="The illustration shows an alpha helix protein structure, which coils like a spring, and a beta-pleated sheet structure, which forms flat sheets stacked together. In an alpha-helix, hydrogen bonding occurs between the carbonyl group of one amino acid and the amino group of the amino acid that occurs four residues later. In a beta-pleated sheet, hydrogen bonding occurs between two different lengths of peptide that are antiparallel to one another.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_07-ffb1.jpg" width="400"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_07_is.jpg" width="400"/>
 </media>
 
 <caption>The <emphasis effect="italics">α</emphasis>-helix and <emphasis effect="italics">β</emphasis>-pleated sheet are secondary protein structures formed when hydrogen bonds form between the carbonyl oxygen and the
@@ -111,7 +111,7 @@ University.</caption></figure>
 <section id="fs-id1998990">
 <title>Tertiary Structure</title>
 <figure id="fig-ch03_04_08"><media id="fs-id2336596" alt="This illustration shows a polypeptide backbone folded into a three-dimensional structure. Chemical interactions between amino acid side chains maintain its shape. These include an ionic bond between an amino group and a carboxyl group, hydrophobic interactions between two hydrophobic side chains, a hydrogen bond between a hydroxyl group and a carbonyl group, and a disulfide linkage.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_08.jpg" width="500"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_08_is.jpg" width="500"/>
 </media>
 <caption>A variety of chemical interactions determine the proteins' tertiary structure. These include hydrophobic interactions, ionic bonding, hydrogen bonding, and disulfide linkages.</caption>
 </figure>
@@ -119,7 +119,7 @@ University.</caption></figure>
 <section id="fs-id1836952">
 <title>Quaternary Structure</title>
 <figure id="fig-ch03_04_09"><media id="fs-id2054513" alt="Shown are the four levels of protein structure. The primary structure is the amino acid sequence. Secondary structure is a regular folding pattern due to hydrogen bonding. Tertiary structure is the three-dimensional folding pattern of the protein due to interactions between amino acid side chains. Quaternary structure is the interaction of two or more polypeptide chains.">
-<image mime-type="image/jpg" src="../../media/Figure_03_04_09-fda7.jpg" width="450"/>
+<image mime-type="image/jpeg" src="../../media/Figure_03_04_09_is.jpg" width="450"/>
 </media>
 
 <caption>Observe the four levels of protein structure in these illustrations. Credit: Rao, A. Ryan, K. and Tag, A. Department of Biology, Texas
