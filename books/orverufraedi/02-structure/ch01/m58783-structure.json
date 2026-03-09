@@ -1,0 +1,996 @@
+{
+  "moduleId": "m58783",
+  "title": {
+    "segmentId": "m58783:title:auto-1",
+    "text": "Types of Microorganisms"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "78e67f03-ac9e-4a80-96fa-d9a51338a2f2"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1171360528008",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360528008-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58783:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1171360520117",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360520117-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360520117-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360520117-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360520117-item-4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171360197623",
+      "segmentId": "m58783:para:fs-id1171360197623"
+    },
+    {
+      "type": "figure",
+      "id": "OSC_Microbio_01_03_sizes",
+      "caption": {
+        "segmentId": "m58783:caption:OSC_Microbio_01_03_sizes-caption"
+      },
+      "media": {
+        "id": "fs-id1171360611407",
+        "alt": "A bar along the bottom indicates size of various objects. At the far right is a from egg at approximately 1 mm. To the left are a human egg and a pollen grain at approximately 0.1 mm. Next are a standard plant and animal cell which range from 10 – 100 µm. Next is a red blood cell at just under 10 µm. Next are a mitochondrion and bacterial cell at approximately 1 µm. Next is a smallpox virus at approximately 500 nm. Next is a flu virus at approximately 100 nm. Next is a polio virus at approximately 50 nm. Next are proteins which range from 5-10 nm. Next are lipids which range from 2-5 nm. Next is C60 (fullerene molecule) which is approximately 1 nm. Finally, atoms are approximately 0.1 nm. Light microscopes can be used to view items larger than 100 nm (the size of a flu virus). Electron microscopes are useful for materials from 1.5 nm (larger than an atom) to 1 µm (the size of many bacteria).",
+        "src": "../../media/OSC_Microbio_01_03_sizes.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "table",
+      "id": "fs-id1171359070853",
+      "class": "span-all",
+      "summary": "This table is titled Units of Length Commonly Used in Microbiology. It has three columns and seven rows. The first row is a header and has the labels: Metric Unit, Meaning of Prefix, and Metric Equivalent. The next row is for the metric unit meter (m) with has a dash in the “meaning of prefix” column. The metric equivalent shows 1 m = 10 superscript 0 m. The next row is for the metric unit decimeter (dm); the prefix deci means 1/10; the metric equivalent is: 1 dm = 0.1 m = 10 superscript -1 m. The next row is for the metric unit centimeter (cm); the prefix centi means 1/100; the metric equivalent is: 1 cm = 0.01 m = 10 superscript -2 m. The next row is for the metric unit millimeter (mm); the prefix milli means 1/1000; the metric equivalent is: 1 mm = 0.001 m = 10 superscript -3 m. The next row is for the metric unit micrometer (µm); the prefix micro means 1/1,000,000; the metric equivalent is: 1 µm = 0.000001 m = 10 superscript -6 m. The last row is for the metric unit nanometer (nm); the prefix nano means 1/1,000,000,000; the metric equivalent is: 1 nm = 0.000000001 m = 10 superscript -9 m.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-4",
+              "attributes": {
+                "align": "center",
+                "namest": "c1",
+                "nameend": "c3"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-5",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-6",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-7",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-8",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-9",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-10",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-11",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-12",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-13",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m58783:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m58783:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171360345056",
+      "segmentId": "m58783:para:fs-id1171360345056"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171359177206",
+      "segmentId": "m58783:para:fs-id1171359177206"
+    },
+    {
+      "type": "note",
+      "id": "fs-id1171360194724",
+      "class": "microbiology link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171359092242",
+          "segmentId": "m58783:para:fs-id1171359092242"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360217277",
+      "class": null,
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360217277-title",
+        "text": "Prokaryotic Microorganisms"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171358938267",
+          "segmentId": "m58783:para:fs-id1171358938267"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360444448",
+          "segmentId": "m58783:para:fs-id1171360444448"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_03_bacteria",
+          "caption": {
+            "segmentId": "m58783:caption:OSC_Microbio_01_03_bacteria-caption"
+          },
+          "media": {
+            "id": "fs-id1171360096175",
+            "alt": "Each shape designation includes a drawing and a micrograph. Coccus is a spherical shape. Bacillus is a rod shape. Vibrio is the shape of a comma. Coccobacillus is an elongated oval. Spirillum is a rigid spiral. Spirochete is a flexible spiral.",
+            "src": "../../media/OSC_Microbio_01_03_bacteria.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360210742",
+          "segmentId": "m58783:para:fs-id1171360210742"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360194334",
+          "segmentId": "m58783:para:fs-id1171360194334"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_03_archaea",
+          "caption": {
+            "segmentId": "m58783:caption:OSC_Microbio_01_03_archaea-caption"
+          },
+          "media": {
+            "id": "fs-id1171360066214",
+            "alt": "A photograph of a pool of water that changes in color from orange on the edges to blue in the center.",
+            "src": "../../media/OSC_Microbio_01_03_archaea.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171359175069",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360565126",
+      "class": null,
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360565126-title",
+        "text": "Eukaryotic Microorganisms"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1171359027514",
+          "class": null,
+          "title": {
+            "segmentId": "m58783:title:fs-id1171359027514-title",
+            "text": "Protists"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360232747",
+              "segmentId": "m58783:para:fs-id1171360232747"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171359011343",
+              "segmentId": "m58783:para:fs-id1171359011343"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_03_algae",
+              "caption": {
+                "segmentId": "m58783:caption:OSC_Microbio_01_03_algae-caption"
+              },
+              "media": {
+                "id": "fs-id1171360290899",
+                "alt": "A light micrograph with a black background and glowing cells. The cells have many different shapes ranging from circular to stacks of rectangles to almond shaped. A scale bar indicates how much space 100 microns takes up in this figure.",
+                "src": "../../media/OSC_Microbio_01_03_algae.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171359051325",
+              "segmentId": "m58783:para:fs-id1171359051325"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_03_giardia",
+              "caption": {
+                "segmentId": "m58783:caption:OSC_Microbio_01_03_giardia-caption"
+              },
+              "media": {
+                "id": "fs-id1171360245960",
+                "alt": "An SEM micrograph showing a triangular cell with three long, thin projections; one from the end and two from the middle of the cell. The cell is approximately 3 x 8 µm in size.",
+                "src": "../../media/OSC_Microbio_01_03_giardia.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1171360077484",
+          "class": null,
+          "title": {
+            "segmentId": "m58783:title:fs-id1171360077484-title",
+            "text": "Fungi"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171359043555",
+              "segmentId": "m58783:para:fs-id1171359043555"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360065495",
+              "segmentId": "m58783:para:fs-id1171360065495"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_03_yeast",
+              "caption": {
+                "segmentId": "m58783:caption:OSC_Microbio_01_03_yeast-caption"
+              },
+              "media": {
+                "id": "fs-id1171360176187",
+                "alt": "A light micrograph with a clear background and blue cells. A long row of cells forms a central strand. Attached to this are clusters of many spherical cells. Each cell is approximately 5 µm in size and contains a nucleus.",
+                "src": "../../media/OSC_Microbio_01_03_yeast.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360345678",
+              "segmentId": "m58783:para:fs-id1171360345678"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_03_mold",
+              "caption": {
+                "segmentId": "m58783:caption:OSC_Microbio_01_03_mold-caption"
+              },
+              "media": {
+                "id": "fs-id1171359042505",
+                "alt": "A photograph of a box of moldy oranges.",
+                "src": "../../media/OSC_Microbio_01_03_mold.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171360210324",
+              "class": "microbiology check-your-understanding",
+              "title": null,
+              "content": []
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360246272",
+          "segmentId": "m58783:para:fs-id1171360246272"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360222749",
+      "class": null,
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360222749-title",
+        "text": "Helminths"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171358993574",
+          "segmentId": "m58783:para:fs-id1171358993574"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_03_worms",
+          "caption": {
+            "segmentId": "m58783:caption:OSC_Microbio_01_03_worms-caption"
+          },
+          "media": {
+            "id": "fs-id1171360401785",
+            "alt": "Figure a is a photograph of a long, flat, white worm folded back and forth on a black background. Figure b shows a lesion on a patient. A worm is being pulled out of the lesion and being wrapped around a matchstick",
+            "src": "../../media/OSC_Microbio_01_03_worms.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171359088591",
+      "class": null,
+      "title": {
+        "segmentId": "m58783:title:fs-id1171359088591-title",
+        "text": "Viruses"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360156604",
+          "segmentId": "m58783:para:fs-id1171360156604"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360087053",
+          "segmentId": "m58783:para:fs-id1171360087053"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_03_virus",
+          "caption": {
+            "segmentId": "m58783:caption:OSC_Microbio_01_03_virus-caption"
+          },
+          "media": {
+            "id": "fs-id1171360370559",
+            "alt": "Figure A is a TEM micrograph showing large circles with many small projections protruding outwards from the edge of the circles. A scale bar shows how large 50 nanometers is relative to this micrograph. Figure B is a TEM micrograph showing long red strands forming a knot-like structure.",
+            "src": "../../media/OSC_Microbio_01_03_virus.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171360481357",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360384608",
+      "class": null,
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360384608-title",
+        "text": "Microbiology as a Field of Study"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360227018",
+          "segmentId": "m58783:para:fs-id1171360227018"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171359172344",
+          "segmentId": "m58783:para:fs-id1171359172344"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_03_atwork",
+          "caption": {
+            "segmentId": "m58783:caption:OSC_Microbio_01_03_atwork-caption"
+          },
+          "media": {
+            "id": "fs-id1171360439856",
+            "alt": "(a) A person in a field measuring an egg. (b) A person prepares an assay with a centerfuge. ",
+            "src": "../../media/OSC_Microbio_01_03_atwork.png",
+            "mimeType": "image/png"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171360084353",
+          "class": "microbiology eye-on-ethics",
+          "title": {
+            "segmentId": "m58783:note-title:fs-id1171360084353-title",
+            "text": "Bioethics in Microbiology"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360216644",
+              "segmentId": "m58783:para:fs-id1171360216644"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171359056517",
+              "segmentId": "m58783:para:fs-id1171359056517"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360420373",
+              "segmentId": "m58783:para:fs-id1171360420373"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171360265556",
+          "class": "microbiology clinical-focus",
+          "title": {
+            "segmentId": "m58783:note-title:fs-id1171360265556-title",
+            "text": "Resolution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360608173",
+              "segmentId": "m58783:para:fs-id1171360608173"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171358950012",
+              "segmentId": "m58783:para:fs-id1171358950012"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360353195",
+              "segmentId": "m58783:para:fs-id1171360353195"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360064120",
+              "segmentId": "m58783:para:fs-id1171360064120"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360196459",
+              "segmentId": "m58783:para:fs-id1171360196459"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360213918",
+      "class": "summary",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1171360261336",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m58783:item:fs-id1171360261336-item-10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360298510",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360298510-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360143106",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359160472",
+                "segmentId": "m58783:problem:fs-id1171359160472"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099611851",
+                "segmentId": "m58783:solution:fs-id1172099611851"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360369592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360338504",
+                "segmentId": "m58783:problem:fs-id1171360338504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360445878",
+                "segmentId": "m58783:solution:fs-id1171360445878"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360401236",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360230788",
+                "segmentId": "m58783:problem:fs-id1171360230788"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101716342",
+                "segmentId": "m58783:solution:fs-id1172101716342"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360258301",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360611559",
+                "segmentId": "m58783:problem:fs-id1171360611559"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360198668",
+                "segmentId": "m58783:solution:fs-id1171360198668"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360528335",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359092197",
+                "segmentId": "m58783:problem:fs-id1171359092197"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102066577",
+                "segmentId": "m58783:solution:fs-id1172102066577"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360222234",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360222234-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171359011116",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171358968772",
+                "segmentId": "m58783:problem:fs-id1171358968772"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099575555",
+                "segmentId": "m58783:solution:fs-id1172099575555"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360137019",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360086331",
+                "segmentId": "m58783:problem:fs-id1171360086331"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1166168466153",
+                "segmentId": "m58783:solution:fs-id1166168466153"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360529910",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360196066",
+                "segmentId": "m58783:problem:fs-id1171360196066"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102072086",
+                "segmentId": "m58783:solution:fs-id1172102072086"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360265509",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359176525",
+                "segmentId": "m58783:problem:fs-id1171359176525"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1166168160032",
+                "segmentId": "m58783:solution:fs-id1166168160032"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171359070975",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58783:title:fs-id1171359070975-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360202786",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360185054",
+                "segmentId": "m58783:problem:fs-id1171360185054"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360061770",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359077435",
+                "segmentId": "m58783:problem:fs-id1171359077435"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360234778",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360569260",
+                "segmentId": "m58783:problem:fs-id1171360569260"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360403956",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m58783:title:fs-id1171360403956-title",
+        "text": "Critical Thinking"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360161140",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360231286",
+                "segmentId": "m58783:problem:fs-id1171360231286"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360151637",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360243113",
+                "segmentId": "m58783:problem:fs-id1171360243113"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

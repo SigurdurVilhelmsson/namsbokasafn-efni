@@ -1,0 +1,627 @@
+{
+  "moduleId": "m58781",
+  "title": {
+    "segmentId": "m58781:title:auto-1",
+    "text": "What Our Ancestors Knew"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e94a060c-89e3-4331-8859-cf21fbcd373f"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1171360203262",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360203262-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58781:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1171360573696",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171360573696-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171360573696-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171360573696-item-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-id1171360313936",
+      "class": "microbiology clinical-focus",
+      "title": {
+        "segmentId": "m58781:note-title:fs-id1171360313936-title",
+        "text": "Part 1"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360608266",
+          "segmentId": "m58781:para:fs-id1171360608266"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360138018",
+          "segmentId": "m58781:para:fs-id1171360138018"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360212679",
+          "segmentId": "m58781:para:fs-id1171360212679"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360140749",
+          "segmentId": "m58781:para:fs-id1171360140749"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360529329",
+          "segmentId": "m58781:para:fs-id1171360529329"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "OSC_Microbio_01_01_lumbar",
+      "caption": {
+        "segmentId": "m58781:caption:OSC_Microbio_01_01_lumbar-caption"
+      },
+      "media": {
+        "id": "fs-id1171360229958",
+        "alt": "Figure a is a drawing of a person lying on their side with their back showing. An overlay drawing shows the location of the spine with an arrow pointing to between two vertebrae in the lower back. Figure b is a photograph of a covered test tube containing a clear liquid",
+        "src": "../../media/OSC_Microbio_01_01_lumbar.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171360197623",
+      "segmentId": "m58781:para:fs-id1171360197623"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171360112990",
+      "segmentId": "m58781:para:fs-id1171360112990"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360245918",
+      "class": null,
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360245918-title",
+        "text": "Fermented Foods and Beverages"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360483785",
+          "segmentId": "m58781:para:fs-id1171360483785"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360180307",
+          "segmentId": "m58781:para:fs-id1171360180307"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_01_ferment",
+          "caption": {
+            "segmentId": "m58781:caption:OSC_Microbio_01_01_ferment-caption"
+          },
+          "media": {
+            "id": "fs-id1171359127422",
+            "alt": "The figure on the left shows oval cells with smaller oval cells budding from the larger cells. An arrow points to a mason jar containing a creamy textured thick liquid. Another arrow points to a loaf of bread.",
+            "src": "../../media/OSC_Microbio_01_01_ferment.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360202567",
+      "class": null,
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360202567-title",
+        "text": "The Iceman and Evidence of Early Treatments"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360292428",
+          "segmentId": "m58781:para:fs-id1171360292428"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171359011758",
+      "class": null,
+      "title": {
+        "segmentId": "m58781:title:fs-id1171359011758-title",
+        "text": "Early Notions of Disease, Contagion, and Containment"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360190302",
+          "segmentId": "m58781:para:fs-id1171360190302"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171358971691",
+          "segmentId": "m58781:para:fs-id1171358971691"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_01_cloaca",
+          "caption": {
+            "segmentId": "m58781:caption:OSC_Microbio_01_01_cloaca-caption"
+          },
+          "media": {
+            "id": "fs-id1171360590813",
+            "alt": "Figure a is a map of a city containing a stadium, forum, and other structures. Running through the center of the city is a red line. Figure b is a photograph of a corner of a room. There is a trough between the walls and the floor. This trough is covered with stone benches that have large holes (as for a toilet) in the bench. The holes span the top and front of the bench. There are six holes visible in the bench that runs along one side of the image and two more in the bench along the other side. The image does not show the entire room so there are likely more available spots in this room.",
+            "src": "../../media/OSC_Microbio_01_01_cloaca.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360234644",
+          "segmentId": "m58781:para:fs-id1171360234644"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360324786",
+          "segmentId": "m58781:para:fs-id1171360324786"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360545639",
+          "segmentId": "m58781:para:fs-id1171360545639"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360346267",
+          "segmentId": "m58781:para:fs-id1171360346267"
+        },
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m58781:para:para-00001"
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m58781:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_01_ancients",
+          "caption": {
+            "segmentId": "m58781:caption:OSC_Microbio_01_01_ancients-caption"
+          },
+          "media": {
+            "id": "fs-id1171360389601",
+            "alt": "Figure a is a drawing of a bust of Hippocrates. Figure b is a photo of a sculpture of Thucydides’s head. Figure c is a photo of a sculpture of Marcus Terentius Varro.",
+            "src": "../../media/OSC_Microbio_01_01_ancients.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171359127426",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360199260",
+      "class": null,
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360199260-title",
+        "text": "The Birth of Microbiology"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1171360183425",
+          "segmentId": "m58781:para:fs-id1171360183425"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360229272",
+          "segmentId": "m58781:para:fs-id1171360229272"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_01_PastKoch",
+          "caption": {
+            "segmentId": "m58781:caption:OSC_Microbio_01_01_PastKoch-caption"
+          },
+          "media": {
+            "id": "fs-id1171359181940",
+            "alt": "Figure a is a drawing of Louis Pasteur in his lab. Figure b is a photograph of Robert Koch.",
+            "src": "../../media/OSC_Microbio_01_01_PastKoch.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360119106",
+          "segmentId": "m58781:para:fs-id1171360119106"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171359082752",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        },
+        {
+          "type": "note",
+          "id": "fs-id1171359059127",
+          "class": "microbiology micro-connection",
+          "title": {
+            "segmentId": "m58781:note-title:fs-id1171359059127-title",
+            "text": "Microbiology Toolbox"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360222691",
+              "segmentId": "m58781:para:fs-id1171360222691"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_01_Petri",
+          "caption": {
+            "segmentId": "m58781:caption:OSC_Microbio_01_01_Petri-caption"
+          },
+          "media": {
+            "id": "fs-id1171360238069",
+            "alt": "Figure a is a photograph of a round disk streaked with lines. The thickest lines go back and forth along an area spanning one fifth of the plate. The next fifth of the plate also has thick lines. The next fifth of the plate has thinner lines that are made of tiny dots. The final fifth of the pate only has large dots. Figure b shows a hand holding a metal rod that is the diameter of a pretzel stick; projecting from tis is a thick wire that is formed into a loop at the end.",
+            "src": "../../media/OSC_Microbio_01_01_Petri.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360250262",
+      "class": "summary",
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360250262-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1171358978250",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171358978250-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171358978250-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171358978250-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171358978250-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171358978250-item-5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360210324",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360210324-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360295368",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359077257",
+                "segmentId": "m58781:problem:fs-id1171359077257"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360402045",
+                "segmentId": "m58781:solution:fs-id1171360402045"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360229175",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359160446",
+                "segmentId": "m58781:problem:fs-id1171359160446"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102029356",
+                "segmentId": "m58781:solution:fs-id1172102029356"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171359008696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360230361",
+                "segmentId": "m58781:problem:fs-id1171360230361"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360203622",
+                "segmentId": "m58781:solution:fs-id1171360203622"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171359210036",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360225534",
+                "segmentId": "m58781:problem:fs-id1171360225534"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101692260",
+                "segmentId": "m58781:solution:fs-id1172101692260"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360541824",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360541824-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360211126",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171358973154",
+                "segmentId": "m58781:problem:fs-id1171358973154"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359180948",
+                "segmentId": "m58781:solution:fs-id1171359180948"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360385165",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171358997456",
+                "segmentId": "m58781:problem:fs-id1171358997456"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099415767",
+                "segmentId": "m58781:solution:fs-id1172099415767"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360219802",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360085566",
+                "segmentId": "m58781:problem:fs-id1171360085566"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360191960",
+                "segmentId": "m58781:solution:fs-id1171360191960"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360204099",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58781:title:fs-id1171360204099-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360483684",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360255805",
+                "segmentId": "m58781:problem:fs-id1171360255805"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171359056517",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360598992",
+                "segmentId": "m58781:problem:fs-id1171360598992"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171359003691",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360213918",
+                "segmentId": "m58781:problem:fs-id1171360213918"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171359175320",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m58781:title:fs-id1171359175320-title",
+        "text": "Critical Thinking"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360198320",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360219914",
+                "segmentId": "m58781:problem:fs-id1171360219914"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360270326",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171358995422",
+                "segmentId": "m58781:problem:fs-id1171358995422"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

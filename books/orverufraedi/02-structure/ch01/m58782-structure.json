@@ -1,0 +1,685 @@
+{
+  "moduleId": "m58782",
+  "title": {
+    "segmentId": "m58782:title:auto-1",
+    "text": "A Systematic Approach"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d32c4114-9822-4ca0-8aee-033d39da217c"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1171359018648",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58782:title:fs-id1171359018648-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58782:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1171360169554",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360169554-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360169554-item-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171359092729",
+      "segmentId": "m58782:para:fs-id1171359092729"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171359070856",
+      "class": null,
+      "title": {
+        "segmentId": "m58782:title:fs-id1171359070856-title",
+        "text": "The Science of Taxonomy"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1171358953517",
+          "class": null,
+          "title": {
+            "segmentId": "m58782:title:fs-id1171358953517-title",
+            "text": "Evolving Trees of Life (Phylogenies)"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360368874",
+              "segmentId": "m58782:para:fs-id1171360368874"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360604206",
+              "segmentId": "m58782:para:fs-id1171360604206"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_02_Haeckel",
+              "caption": {
+                "segmentId": "m58782:caption:OSC_Microbio_01_02_Haeckel-caption"
+              },
+              "media": {
+                "id": "fs-id1171360136883",
+                "alt": "A drawing of a tree. The base of the tree reads: Radix Monera. This branches into three branches labeled Plantae, Protista, and Animalia. Each of these branches branch further; each new branch Is labeled in small text and clusters of branches are identified. For example, clusters of branches in the protista include: Diatomase, flagellate, protoplasta, and spongae.",
+                "src": "../../media/OSC_Microbio_01_02_Haeckel.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171359044741",
+              "segmentId": "m58782:para:fs-id1171359044741"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360121355",
+              "segmentId": "m58782:para:fs-id1171360121355"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_02_TreesTIME",
+              "caption": {
+                "segmentId": "m58782:caption:OSC_Microbio_01_02_TreesTIME-caption"
+              },
+              "media": {
+                "id": "fs-id1171360190302",
+                "alt": "This timeline begins with Carolus Linnaeus who developed a new way to categorize plants and animals in 1758. The image above Linnaeus shows a forked line with one branch labeled plants and the other labeled animals. In 1866, Ernst Haeckel wrote General Morphology of Organisms, proposing four kingdoms. The image above Haeckel shows a central line with Monera branching off the bottom, protists branching off next, then plants and finally animals. In 1969 Robert Whittaker proposed adding a fifth kingdom – fungi – to the tree of life. The image above Whittaker is the same as the one above Haeckel but includes an additional branch labeled fungi between plants and animals.",
+                "src": "../../media/OSC_Microbio_01_02_TreesTIME.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171360064729",
+              "class": "microbiology check-your-understanding",
+              "title": null,
+              "content": []
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171360143675",
+              "class": "microbiology clinical-focus",
+              "title": {
+                "segmentId": "m58782:note-title:fs-id1171360143675-title",
+                "text": "Part 2"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1171360140171",
+                  "segmentId": "m58782:para:fs-id1171360140171"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1171360446018",
+                  "segmentId": "m58782:para:fs-id1171360446018"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1171360197320",
+                  "segmentId": "m58782:para:fs-id1171360197320"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1171360061757",
+          "class": null,
+          "title": {
+            "segmentId": "m58782:title:fs-id1171360061757-title",
+            "text": "The Role of Genetics in Modern Taxonomy"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360437698",
+              "segmentId": "m58782:para:fs-id1171360437698"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360545720",
+              "segmentId": "m58782:para:fs-id1171360545720"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_01_02_Woese",
+              "caption": {
+                "segmentId": "m58782:caption:OSC_Microbio_01_02_Woese-caption"
+              },
+              "media": {
+                "id": "fs-id1171360389436",
+                "alt": "The phylogenetic Tree of Life. A drawing of branching lines. The central line at the bottom branches into two main branches. On the left branch is the bacterial group. The branch to the right subdivides to the Archaea and Eukarya groups. Additional branches on the Eukarya group from bottom to top are: Diplomonads, Microsporidia, Trichomonads, Flagellates, Entamoebae, Smile molds, Ciliates, Plants, Fungi and Animals (which has a star labeled “you are here). Brances along the Archaea group from bottom to top are: Pyrodicticu, Thermoproteus, T. celer, Methanococcus, Methanobacterium, Methanosarcina, and Halophiles. Branches in the Bacterial group from bottom to top are: Aquifex, Thermotoga, Green filamentous bacteria, Bacteroides Cytophaga, Gram positives, Planctomyces, Cyanobacteria, Proteobacteria, and Spirocheres.",
+                "src": "../../media/OSC_Microbio_01_02_Woese.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360219115",
+              "segmentId": "m58782:para:fs-id1171360219115"
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171360236294",
+              "class": "microbiology check-your-understanding",
+              "title": null,
+              "content": []
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1171360058084",
+          "class": null,
+          "title": {
+            "segmentId": "m58782:title:fs-id1171360058084-title",
+            "text": "Naming Microbes"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171358972969",
+              "segmentId": "m58782:para:fs-id1171358972969"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171358982476",
+              "segmentId": "m58782:para:fs-id1171358982476"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1171360589985",
+              "segmentId": "m58782:para:fs-id1171360589985"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1171360404117",
+          "class": null,
+          "title": {
+            "segmentId": "m58782:title:fs-id1171360404117-title",
+            "text": "Bergey’s Manuals"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1171360346467",
+              "segmentId": "m58782:para:fs-id1171360346467"
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171359199455",
+              "class": "microbiology check-your-understanding",
+              "title": null,
+              "content": []
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171359020558",
+              "class": "microbiology micro-connection",
+              "title": {
+                "segmentId": "m58782:note-title:fs-id1171359020558-title",
+                "text": "Same Name, Different Strain"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1171360611198",
+                  "segmentId": "m58782:para:fs-id1171360611198"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1171360613244",
+                  "segmentId": "m58782:para:fs-id1171360613244"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1171360266354",
+                  "segmentId": "m58782:para:fs-id1171360266354"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-id1171360278154",
+              "class": "microbiology link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1171360338844",
+                  "segmentId": "m58782:para:fs-id1171360338844"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171359041036",
+          "segmentId": "m58782:para:fs-id1171359041036"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_01_02_Linnaeus",
+          "caption": {
+            "segmentId": "m58782:caption:OSC_Microbio_01_02_Linnaeus-caption"
+          },
+          "media": {
+            "id": "fs-id1171359021000",
+            "alt": "A painting of Carolus Linnaeus holding a flower.",
+            "src": "../../media/OSC_Microbio_01_02_Linnaeus.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1171360122119",
+          "segmentId": "m58782:para:fs-id1171360122119"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360215893",
+      "class": "summary",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1171360065495",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m58782:item:fs-id1171360065495-item-8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360247027",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58782:title:fs-id1171360247027-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360344461",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359079175",
+                "segmentId": "m58782:problem:fs-id1171359079175"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360129010",
+                "segmentId": "m58782:solution:fs-id1171360129010"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360530144",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360369648",
+                "segmentId": "m58782:problem:fs-id1171360369648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098391252",
+                "segmentId": "m58782:solution:fs-id1172098391252"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360274356",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360207131",
+                "segmentId": "m58782:problem:fs-id1171360207131"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360530170",
+                "segmentId": "m58782:solution:fs-id1171360530170"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360367608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360497365",
+                "segmentId": "m58782:problem:fs-id1171360497365"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100496994",
+                "segmentId": "m58782:solution:fs-id1172100496994"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360353040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360215231",
+                "segmentId": "m58782:problem:fs-id1171360215231"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360122207",
+                "segmentId": "m58782:solution:fs-id1171360122207"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360608062",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58782:title:fs-id1171360608062-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360225534",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360186862",
+                "segmentId": "m58782:problem:fs-id1171360186862"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100527126",
+                "segmentId": "m58782:solution:fs-id1172100527126"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360233291",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359127221",
+                "segmentId": "m58782:problem:fs-id1171359127221"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171359109936",
+                "segmentId": "m58782:solution:fs-id1171359109936"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171359056517",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360280926",
+                "segmentId": "m58782:problem:fs-id1171360280926"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100618834",
+                "segmentId": "m58782:solution:fs-id1172100618834"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360209140",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360275092",
+                "segmentId": "m58782:problem:fs-id1171360275092"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360420373",
+                "segmentId": "m58782:solution:fs-id1171360420373"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360221404",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58782:title:fs-id1171360221404-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360226474",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360424953",
+                "segmentId": "m58782:problem:fs-id1171360424953"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360563959",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360191594",
+                "segmentId": "m58782:problem:fs-id1171360191594"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171359085770",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360445878",
+                "segmentId": "m58782:problem:fs-id1171360445878"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360187080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360143106",
+                "segmentId": "m58782:problem:fs-id1171360143106"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1171360439856",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m58782:title:fs-id1171360439856-title",
+        "text": "Critical Thinking"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1171360345718",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360251805",
+                "segmentId": "m58782:problem:fs-id1171360251805"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1171360295712",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1171360170363",
+                "segmentId": "m58782:problem:fs-id1171360170363"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,43 @@
+{
+  "moduleId": "m58780",
+  "title": {
+    "segmentId": "m58780:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "ac5ce2a2-d687-4df7-babd-5fad42346b2a"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "OSC_Microbio_01_00_splash",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m58780:caption:OSC_Microbio_01_00_splash-caption"
+      },
+      "media": {
+        "id": "fs-id1167793631693",
+        "alt": "A photograph of a person in a protective coverall and gloves who is holding an oil covered sea turtle. The person looks sad and disgusted.",
+        "src": "../../media/OSC_Microbio_01_00_splash.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171361176696",
+      "segmentId": "m58780:para:fs-id1171361176696"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171361692941",
+      "segmentId": "m58780:para:fs-id1171361692941"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1171361652761",
+      "segmentId": "m58780:para:fs-id1171361652761"
+    }
+  ],
+  "sectionOrder": null
+}
