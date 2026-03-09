@@ -48,31 +48,24 @@ import {
 } from './lib/mathml-to-latex.js';
 import { buildModuleSections } from './lib/module-sections.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
+import {
+  getBookRenderConfig,
+  generateFallbackLabel,
+  getExerciseSectionClasses,
+} from './lib/book-rendering-config.js';
 
 // =====================================================================
-// NOTE TYPE LABELS
+// NOTE TYPE LABELS (loaded from book config)
 // =====================================================================
 
-/**
- * Map note class names to display labels.
- * These appear as headers above the note content.
- * Icelandic translations for use in translated content.
- */
-const NOTE_TYPE_LABELS = {
-  'chemistry everyday-life': 'Efnafræði í daglegu lífi',
-  'everyday-life': 'Efnafræði í daglegu lífi',
-  'link-to-learning': 'Tengill til náms',
-  'sciences-interconnect': 'Hvernig vísindagreinar tengjast',
-  'chemist-portrait': 'Efnafræðingur í brennidepli',
-  'chem-connections': 'Tengsl við efnafræði',
-  'green-chemistry': 'Græn efnafræði',
-  'safety-hazard': 'Öryggisviðvörun',
-  'lab-equipment': 'Tilraunabúnaður',
-  default: null, // No type label for default notes
-};
+// These are populated by loadBookConfig() in main()
+let NOTE_TYPE_LABELS = {};
+let TITLE_TRANSLATIONS = {};
+let BOOK_CONFIG = null;
 
 /**
  * Get the display label for a note type.
+ * Uses the book-specific config with fallback label generation.
  * @param {string} noteClass - The note's class attribute
  * @returns {string|null} The display label or null
  */
@@ -82,29 +75,19 @@ function getNoteTypeLabel(noteClass) {
   if (NOTE_TYPE_LABELS[noteClass]) {
     return NOTE_TYPE_LABELS[noteClass];
   }
-  // Try partial match (for compound classes)
+  // Try partial match (for compound classes like "microbiology clinical-focus")
   for (const [key, label] of Object.entries(NOTE_TYPE_LABELS)) {
-    if (noteClass.includes(key)) {
+    if (key !== 'default' && noteClass.includes(key)) {
       return label;
     }
   }
+  // Generate a readable fallback label for unknown note types
+  // (e.g., 'clinical-focus' → 'Clinical Focus')
+  if (NOTE_TYPE_LABELS.default === null) {
+    return generateFallbackLabel(noteClass);
+  }
   return null;
 }
-
-/**
- * Translate note/paragraph titles that remain in English after MT.
- * Maps known English titles to Icelandic equivalents.
- */
-const TITLE_TRANSLATIONS = {
-  'Answer:': 'Svar:',
-  Answer: 'Svar',
-  Solution: 'Lausn',
-  'Check Your Learning': 'Prófaðu þekkingu þína',
-  'CHECK YOUR LEARNING': 'Prófaðu þekkingu þína',
-  'Solution: Using the Equation': 'Lausn: Notkun jöfnunnar',
-  'Solution: Supporting Why the General Equation Is Valid':
-    'Lausn: Rökstuðningur fyrir almennri jöfnu',
-};
 
 function translateTitle(title) {
   const trimmed = title.trim();
@@ -427,7 +410,10 @@ function renderContent(content, context, _verbose) {
   const lines = [];
 
   // Sections to exclude from main content (they have their own pages)
-  const EXCLUDED_SECTION_CLASSES = ['summary', 'key-equations', 'exercises'];
+  // Loaded from book config — varies by book (e.g., Biology uses multiple-choice, critical-thinking)
+  const EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
+    ? BOOK_CONFIG.excludedSectionClasses
+    : ['summary', 'key-equations', 'exercises'];
 
   // Extract sections
   const sections = extractNestedElements(content, 'section');
@@ -1677,10 +1663,40 @@ function copyChapterImages(chapter, track, _verbose) {
     fs.mkdirSync(targetMediaDir, { recursive: true });
   }
 
-  // Copy all images matching this chapter's pattern (CNX_Chem_NN_*)
-  // Appendix images use CNX_Chem_00_ prefix in OpenStax naming convention
-  const chapterPrefix = chapter === 'appendices' ? 'CNX_Chem_00_' : `CNX_Chem_${chapterStr}_`;
-  const sourceFiles = fs.readdirSync(sourceMediaDir).filter((f) => f.startsWith(chapterPrefix));
+  // Build list of image prefixes to match for this chapter.
+  // Uses book config for prefix patterns (Chemistry: CNX_Chem_NN_,
+  // Microbiology: OSC_Microbio_NN_ + Figure_NN_, Biology: Figure_NN_)
+  const prefixes = [];
+
+  if (BOOK_CONFIG) {
+    if (chapter === 'appendices' && BOOK_CONFIG.appendixImagePrefix) {
+      prefixes.push(BOOK_CONFIG.appendixImagePrefix);
+    } else {
+      // Try single prefix
+      const singlePrefix = BOOK_CONFIG.imagePrefix?.(chapterStr);
+      if (singlePrefix) {
+        prefixes.push(singlePrefix);
+      }
+      // Try multiple prefixes (for books with varied naming)
+      const multiPrefixes = BOOK_CONFIG.imagePrefixes?.(chapterStr);
+      if (multiPrefixes) {
+        prefixes.push(...multiPrefixes);
+      }
+    }
+  }
+
+  // Fallback: if no prefixes configured, try common OpenStax patterns
+  if (prefixes.length === 0) {
+    prefixes.push(
+      `CNX_Chem_${chapterStr}_`,
+      `Figure_${chapterStr}_`,
+      `OSC_Microbio_${chapterStr}_`
+    );
+  }
+
+  const sourceFiles = fs
+    .readdirSync(sourceMediaDir)
+    .filter((f) => prefixes.some((prefix) => f.startsWith(prefix)));
 
   let copied = 0;
   for (const file of sourceFiles) {
@@ -1702,30 +1718,27 @@ function copyChapterImages(chapter, track, _verbose) {
 // =====================================================================
 
 /**
- * Map special section classes to Icelandic titles and URL slugs.
+ * Get end-of-chapter section definitions from book config.
+ * Filters out exercise types (they are handled by the compiled exercise extractor).
+ * Returns only non-exercise end-of-chapter sections for standalone page rendering.
  */
-const END_OF_CHAPTER_SECTIONS = {
-  summary: {
-    titleIs: 'Samantekt',
-    titleEn: 'Key Concepts and Summary',
-    slug: 'summary',
-  },
-  'key-equations': {
-    titleIs: 'Lykiljöfnur',
-    titleEn: 'Key Equations',
-    slug: 'key-equations',
-  },
-  exercises: {
-    titleIs: 'Dæmi í lok kafla',
-    titleEn: 'Chemistry End of Chapter Exercises',
-    slug: 'exercises',
-  },
-  glossary: {
-    titleIs: 'Lykilhugtök',
-    titleEn: 'Key Terms',
-    slug: 'key-terms',
-  },
-};
+function getEndOfChapterSections() {
+  if (!BOOK_CONFIG) {
+    // Fallback for testing without config loaded
+    return {
+      summary: { titleIs: 'Samantekt', titleEn: 'Key Concepts and Summary', slug: 'summary' },
+      glossary: { titleIs: 'Lykilhugtök', titleEn: 'Key Terms', slug: 'key-terms' },
+    };
+  }
+  // Return only non-exercise sections (exercises are compiled separately)
+  const result = {};
+  for (const [cls, cfg] of Object.entries(BOOK_CONFIG.endOfChapterSections)) {
+    if (!cfg.exerciseType) {
+      result[cls] = cfg;
+    }
+  }
+  return result;
+}
 
 /**
  * Extract end-of-chapter sections from CNXML.
@@ -1733,8 +1746,9 @@ const END_OF_CHAPTER_SECTIONS = {
  */
 function extractEndOfChapterSections(cnxml) {
   const sections = [];
+  const endOfChapterSections = getEndOfChapterSections();
 
-  for (const [sectionClass, config] of Object.entries(END_OF_CHAPTER_SECTIONS)) {
+  for (const [sectionClass, config] of Object.entries(endOfChapterSections)) {
     // Special handling for glossary - look for <glossary> element instead of <section class="glossary">
     if (sectionClass === 'glossary') {
       const glossaryPattern = /<glossary>([\s\S]*?)<\/glossary>/g;
@@ -2197,50 +2211,74 @@ function writeCompiledSummary(chapter, track, html) {
 
 /**
  * Extract exercise sections from all modules in a chapter.
- * Returns array of { moduleId, sectionNumber, sectionTitle, exercisesContent }
+ * Supports multiple exercise types per book (Chemistry has 'exercises',
+ * Biology has 'multiple-choice'/'critical-thinking'/'visual-exercise',
+ * Microbiology has 6 different types).
+ *
+ * Returns object keyed by exercise class:
+ * {
+ *   'multiple-choice': [{ moduleId, sectionNumber, sectionTitle, exercisesContent }, ...],
+ *   'critical-thinking': [{ moduleId, sectionNumber, sectionTitle, exercisesContent }, ...],
+ * }
  */
 function extractSectionExercises(chapter, modules, moduleSections, track) {
   const chapterDir = formatChapterDir(chapter);
-  const exercisesByModule = [];
+
+  // Determine which exercise section classes to look for
+  const exerciseClasses = BOOK_CONFIG ? getExerciseSectionClasses(BOOK_SLUG) : [];
+  // Fallback: always include 'exercises' for Chemistry-style books
+  if (exerciseClasses.length === 0) {
+    exerciseClasses.push('exercises');
+  }
+
+  const exercisesByType = {};
+  for (const cls of exerciseClasses) {
+    exercisesByType[cls] = [];
+  }
 
   for (const moduleId of modules) {
     const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
-
-    if (!fs.existsSync(modulePath)) {
-      continue;
-    }
+    if (!fs.existsSync(modulePath)) continue;
 
     const cnxml = fs.readFileSync(modulePath, 'utf-8');
+    const sectionInfo = moduleSections[moduleId];
+    if (!sectionInfo || sectionInfo.section === '0') continue;
 
-    // Extract exercises section
-    const exercisesPattern = /<section\s+[^>]*class="exercises"[^>]*>([\s\S]*?)<\/section>/g;
-    let exercisesMatch;
-
-    while ((exercisesMatch = exercisesPattern.exec(cnxml)) !== null) {
-      const exercisesContent = exercisesMatch[0]; // Full section tag
-
-      // Only include if this module has section info (not intro modules)
-      const sectionInfo = moduleSections[moduleId];
-      if (sectionInfo && sectionInfo.section !== '0') {
-        exercisesByModule.push({
+    for (const exerciseClass of exerciseClasses) {
+      const pattern = new RegExp(
+        `<section\\s+[^>]*class="${exerciseClass}"[^>]*>[\\s\\S]*?<\\/section>`,
+        'g'
+      );
+      let match;
+      while ((match = pattern.exec(cnxml)) !== null) {
+        exercisesByType[exerciseClass].push({
           moduleId,
           sectionNumber: `${chapter}.${sectionInfo.section}`,
           sectionTitle: sectionInfo.titleIs || sectionInfo.titleEn || '',
-          exercisesContent,
+          exercisesContent: match[0],
+          exerciseClass,
         });
-        break; // Only take the first exercises section from each module
+        break; // Only take the first match per module per type
       }
     }
   }
 
-  return exercisesByModule;
+  return exercisesByType;
 }
 
 /**
- * Render compiled exercises HTML (matching chapters 1-5 format).
- * Takes exercises from all sections and compiles them into one page.
+ * Render compiled exercises HTML.
+ * Supports both single-type (Chemistry: 'exercises') and multi-type
+ * (Biology/Microbiology: 'multiple-choice', 'critical-thinking', etc.).
+ *
+ * For multi-type books, each exercise type gets its own subsection with heading.
+ *
+ * @param {number} chapter - Chapter number
+ * @param {object} exercisesByType - Object keyed by exercise class, each an array of module exercises
+ * @param {Map} chapterExerciseNumbers - Exercise numbering map
+ * @param {object} context - Render context
  */
-function renderCompiledExercises(chapter, exercisesByModule, chapterExerciseNumbers, context) {
+function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumbers, context) {
   const lines = [];
 
   lines.push('<!DOCTYPE html>');
@@ -2258,41 +2296,63 @@ function renderCompiledExercises(chapter, exercisesByModule, chapterExerciseNumb
   lines.push('    </header>');
   lines.push('    <main>');
 
-  for (const exercises of exercisesByModule) {
-    // Render the exercises section content
-    const { html } = renderCnxmlToHtml(
-      `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${exercises.exercisesContent}</content></document>`,
-      {
-        verbose: false,
-        lang: 'is',
-        chapter,
-        moduleId: exercises.moduleId,
-        chapterExerciseNumbers,
-        excludeSections: false, // Don't exclude exercises section when rendering standalone
-        includeSolutions: false, // Don't render solutions on exercises page (only on answer key)
-        ...context,
-      }
-    );
+  // Get ordered list of exercise types that have content
+  const exerciseTypes = Object.entries(exercisesByType).filter(
+    ([, exercises]) => exercises.length > 0
+  );
+  const hasMultipleTypes = exerciseTypes.length > 1;
 
-    // Extract just the section content (remove wrapper HTML)
-    const sectionMatch = html.match(/<section[\s\S]*?<\/section>/);
-    if (sectionMatch) {
-      let sectionHtml = sectionMatch[0];
+  for (const [exerciseClass, exercisesForType] of exerciseTypes) {
+    // Add type heading for multi-type books
+    if (hasMultipleTypes) {
+      const typeConfig = BOOK_CONFIG?.endOfChapterSections?.[exerciseClass];
+      const typeTitle = typeConfig?.titleIs || generateFallbackLabel(exerciseClass);
+      lines.push(`    <section class="exercise-type-group" data-exercise-type="${exerciseClass}">`);
+      lines.push(`      <h2 class="exercise-type-heading">${typeTitle}</h2>`);
+    }
 
-      // Remove the original section title (we'll add our own with section number)
-      sectionHtml = sectionHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/, '');
-
-      // Replace the section class and add module info
-      sectionHtml = sectionHtml.replace(
-        /<section([^>]*)class="exercises"([^>]*)>/,
-        `<section class="exercises-section" id="exercises-${exercises.moduleId}" data-section="${exercises.sectionNumber}">`
+    for (const exercises of exercisesForType) {
+      // Render the exercises section content
+      const { html } = renderCnxmlToHtml(
+        `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${exercises.exercisesContent}</content></document>`,
+        {
+          verbose: false,
+          lang: 'is',
+          chapter,
+          moduleId: exercises.moduleId,
+          chapterExerciseNumbers,
+          excludeSections: false,
+          includeSolutions: false,
+          ...context,
+        }
       );
 
-      // Add section title as h2 (after opening section tag)
-      const titleHtml = `      <h2>${exercises.sectionNumber} ${exercises.sectionTitle}</h2>\n`;
-      sectionHtml = sectionHtml.replace(/<section([^>]*)>/, `$&\n${titleHtml}`);
+      // Extract just the section content (remove wrapper HTML)
+      const sectionMatch = html.match(/<section[\s\S]*?<\/section>/);
+      if (sectionMatch) {
+        let sectionHtml = sectionMatch[0];
 
-      lines.push(sectionHtml);
+        // Remove the original section title (we'll add our own with section number)
+        sectionHtml = sectionHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/, '');
+
+        // Replace the section class and add module info
+        const classRegex = new RegExp(`<section([^>]*)class="${exerciseClass}"([^>]*)>`);
+        sectionHtml = sectionHtml.replace(
+          classRegex,
+          `<section class="exercises-section" id="exercises-${exercises.moduleId}" data-section="${exercises.sectionNumber}">`
+        );
+
+        // For single-type books, add section title as h3; for multi-type, use h3 under the type h2
+        const headingTag = hasMultipleTypes ? 'h3' : 'h2';
+        const titleHtml = `      <${headingTag}>${exercises.sectionNumber} ${exercises.sectionTitle}</${headingTag}>\n`;
+        sectionHtml = sectionHtml.replace(/<section([^>]*)>/, `$&\n${titleHtml}`);
+
+        lines.push(sectionHtml);
+      }
+    }
+
+    if (hasMultipleTypes) {
+      lines.push('    </section>');
     }
   }
 
@@ -2503,6 +2563,11 @@ async function main() {
   BOOK_SLUG = args.book;
   BOOKS_DIR = `books/${args.book}`;
 
+  // Load book-specific rendering config
+  BOOK_CONFIG = getBookRenderConfig(BOOK_SLUG);
+  NOTE_TYPE_LABELS = BOOK_CONFIG.noteTypeLabels;
+  TITLE_TRANSLATIONS = BOOK_CONFIG.titleTranslations;
+
   if (args.help) {
     printHelp();
     process.exit(0);
@@ -2655,9 +2720,9 @@ async function main() {
         let html = renderResult.html;
         const pageData = renderResult.pageData;
 
-        // Special handling for Periodic Table appendix (m68859)
+        // Special handling for Periodic Table appendix
         // Replace static image with link to interactive periodic table
-        if (moduleId === 'm68859') {
+        if (BOOK_CONFIG?.specialModules?.[moduleId] === 'periodic-table') {
           const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
           if (mainContentMatch) {
             const newMainContent = `<main>
@@ -2911,21 +2976,31 @@ async function main() {
         console.log('\nExtracting section exercises...');
       }
 
-      const exercisesByModule = extractSectionExercises(
+      const exercisesByType = extractSectionExercises(
         args.chapter,
         allModules,
         moduleSections,
         args.track
       );
 
-      if (exercisesByModule.length > 0) {
+      // Check if any exercise type has content
+      const totalExerciseSections = Object.values(exercisesByType).reduce(
+        (sum, arr) => sum + arr.length,
+        0
+      );
+
+      if (totalExerciseSections > 0) {
         if (args.verbose) {
-          console.log(`Found ${exercisesByModule.length} section(s) with exercises`);
+          for (const [type, exercises] of Object.entries(exercisesByType)) {
+            if (exercises.length > 0) {
+              console.log(`  ${type}: ${exercises.length} section(s)`);
+            }
+          }
         }
 
         const compiledExercisesHtml = renderCompiledExercises(
           args.chapter,
-          exercisesByModule,
+          exercisesByType,
           chapterExerciseNumbers,
           {
             verbose: args.verbose,
@@ -2950,7 +3025,9 @@ async function main() {
         );
         writtenFiles.push(compiledExercisesPath);
 
-        console.log('Æfingar í lok kafla: Rendered compiled exercises to HTML');
+        console.log(
+          `Æfingar í lok kafla: Rendered ${totalExerciseSections} exercise section(s) to HTML`
+        );
         console.log(`  → ${compiledExercisesPath}`);
       } else if (args.verbose) {
         console.log('No section exercises found in this chapter');
@@ -3032,6 +3109,16 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }
 
+/**
+ * Load book config for testing purposes.
+ * Call this before using getNoteTypeLabel() or other config-dependent functions.
+ */
+function _loadBookConfigForTest(bookSlug) {
+  BOOK_CONFIG = getBookRenderConfig(bookSlug);
+  NOTE_TYPE_LABELS = BOOK_CONFIG.noteTypeLabels;
+  TITLE_TRANSLATIONS = BOOK_CONFIG.titleTranslations;
+}
+
 export {
   getNoteTypeLabel,
   translateTitle,
@@ -3039,4 +3126,5 @@ export {
   calculateColspan,
   renderPara,
   renderCnxmlToHtml,
+  _loadBookConfigForTest,
 };

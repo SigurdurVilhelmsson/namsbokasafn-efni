@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import {
@@ -8,9 +8,20 @@ import {
   calculateColspan,
   renderPara,
   renderCnxmlToHtml,
+  _loadBookConfigForTest,
 } from '../cnxml-render.js';
+import {
+  getBookRenderConfig,
+  generateFallbackLabel,
+  getExerciseSectionClasses,
+} from '../lib/book-rendering-config.js';
 
 const FIXTURES = join(import.meta.dirname, 'fixtures');
+
+// Load Chemistry config by default (matches original hardcoded behavior)
+beforeAll(() => {
+  _loadBookConfigForTest('efnafraedi-2e');
+});
 
 // ─── getNoteTypeLabel ─────────────────────────────────────────────
 
@@ -20,7 +31,7 @@ describe('getNoteTypeLabel', () => {
     expect(getNoteTypeLabel(undefined)).toBe(null);
   });
 
-  it('returns exact match for known note types', () => {
+  it('returns exact match for known note types (Chemistry)', () => {
     expect(getNoteTypeLabel('link-to-learning')).toBe('Tengill til náms');
     expect(getNoteTypeLabel('sciences-interconnect')).toBe('Hvernig vísindagreinar tengjast');
     expect(getNoteTypeLabel('safety-hazard')).toBe('Öryggisviðvörun');
@@ -31,8 +42,25 @@ describe('getNoteTypeLabel', () => {
     expect(getNoteTypeLabel('chemistry everyday-life')).toBe('Efnafræði í daglegu lífi');
   });
 
-  it('returns null for unknown note types', () => {
-    expect(getNoteTypeLabel('completely-unknown-type')).toBe(null);
+  it('returns fallback label for unknown note types', () => {
+    // Now generates readable labels instead of null
+    expect(getNoteTypeLabel('completely-unknown-type')).toBe('Completely Unknown Type');
+  });
+
+  it('returns correct labels for Microbiology note types', () => {
+    _loadBookConfigForTest('orverufraedi');
+    expect(getNoteTypeLabel('microbiology check-your-understanding')).toBe('Prófaðu skilning þinn');
+    expect(getNoteTypeLabel('microbiology clinical-focus')).toBe('Klínísk sjónarmið');
+    expect(getNoteTypeLabel('microbiology disease-profile')).toBe('Sjúkdómslýsing');
+    _loadBookConfigForTest('efnafraedi-2e'); // Restore
+  });
+
+  it('returns correct labels for Biology note types', () => {
+    _loadBookConfigForTest('liffraedi-2e');
+    expect(getNoteTypeLabel('visual-connection')).toBe('Sjónræn tenging');
+    expect(getNoteTypeLabel('evolution')).toBe('Þróun');
+    expect(getNoteTypeLabel('career')).toBe('Starfsferill');
+    _loadBookConfigForTest('efnafraedi-2e'); // Restore
   });
 });
 
@@ -227,5 +255,91 @@ describe('renderCnxmlToHtml', () => {
       chapter: 1,
     });
     expect(result.html).toContain('data-module-id="m00001"');
+  });
+});
+
+// ─── Book Rendering Config ──────────────────────────────────────
+
+describe('getBookRenderConfig', () => {
+  it('returns Chemistry config for efnafraedi-2e', () => {
+    const config = getBookRenderConfig('efnafraedi-2e');
+    expect(config.noteTypeLabels['safety-hazard']).toBe('Öryggisviðvörun');
+    expect(config.excludedSectionClasses).toContain('key-equations');
+    expect(config.specialModules.m68859).toBe('periodic-table');
+  });
+
+  it('returns Biology config for liffraedi-2e', () => {
+    const config = getBookRenderConfig('liffraedi-2e');
+    expect(config.noteTypeLabels['visual-connection']).toBe('Sjónræn tenging');
+    expect(config.excludedSectionClasses).toContain('multiple-choice');
+    expect(config.excludedSectionClasses).toContain('critical-thinking');
+    expect(config.excludedSectionClasses).not.toContain('exercises');
+  });
+
+  it('returns Microbiology config for orverufraedi', () => {
+    const config = getBookRenderConfig('orverufraedi');
+    expect(config.noteTypeLabels['microbiology check-your-understanding']).toBe(
+      'Prófaðu skilning þinn'
+    );
+    expect(config.excludedSectionClasses).toContain('fill-in-the-blank');
+    expect(config.excludedSectionClasses).toContain('true-false');
+    expect(config.excludedSectionClasses).toContain('matching');
+  });
+
+  it('returns fallback config for unknown books', () => {
+    const config = getBookRenderConfig('unknown-book');
+    expect(config.noteTypeLabels['link-to-learning']).toBe('Tengill til náms');
+    expect(config.excludedSectionClasses).toContain('summary');
+  });
+
+  it('Chemistry config does not have periodic-table for non-Chemistry modules', () => {
+    const bioConfig = getBookRenderConfig('liffraedi-2e');
+    expect(bioConfig.specialModules.m68859).toBeUndefined();
+    const microConfig = getBookRenderConfig('orverufraedi');
+    expect(microConfig.specialModules.m68859).toBeUndefined();
+  });
+});
+
+describe('generateFallbackLabel', () => {
+  it('converts hyphenated class to title case', () => {
+    expect(generateFallbackLabel('clinical-focus')).toBe('Clinical Focus');
+    expect(generateFallbackLabel('check-your-understanding')).toBe('Check Your Understanding');
+  });
+
+  it('strips book prefix from compound class names', () => {
+    expect(generateFallbackLabel('microbiology clinical-focus')).toBe('Clinical Focus');
+    expect(generateFallbackLabel('chemistry everyday-life')).toBe('Everyday Life');
+  });
+
+  it('returns empty string for null/undefined', () => {
+    expect(generateFallbackLabel(null)).toBe('');
+    expect(generateFallbackLabel(undefined)).toBe('');
+  });
+});
+
+describe('getExerciseSectionClasses', () => {
+  it('returns exercises for Chemistry', () => {
+    const classes = getExerciseSectionClasses('efnafraedi-2e');
+    expect(classes).toContain('exercises');
+    expect(classes).not.toContain('multiple-choice');
+  });
+
+  it('returns multiple exercise types for Biology', () => {
+    const classes = getExerciseSectionClasses('liffraedi-2e');
+    expect(classes).toContain('multiple-choice');
+    expect(classes).toContain('critical-thinking');
+    expect(classes).toContain('visual-exercise');
+    expect(classes).not.toContain('exercises');
+  });
+
+  it('returns 6 exercise types for Microbiology', () => {
+    const classes = getExerciseSectionClasses('orverufraedi');
+    expect(classes).toContain('multiple-choice');
+    expect(classes).toContain('fill-in-the-blank');
+    expect(classes).toContain('short-answer');
+    expect(classes).toContain('critical-thinking');
+    expect(classes).toContain('true-false');
+    expect(classes).toContain('matching');
+    expect(classes).toHaveLength(6);
   });
 });

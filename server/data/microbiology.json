@@ -1,0 +1,1110 @@
+{
+  "book": "microbiology",
+  "slug": "orverufraedi",
+  "title": "Microbiology",
+  "titleIs": "Örverufræði",
+  "repo": "openstax/osbooks-microbiology",
+  "preface": "m63247",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "An Invisible World",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58780",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58781",
+          "section": "1.1",
+          "title": "What Our Ancestors Knew",
+          "titleIs": null
+        },
+        {
+          "id": "m58782",
+          "section": "1.2",
+          "title": "A Systematic Approach",
+          "titleIs": null
+        },
+        {
+          "id": "m58783",
+          "section": "1.3",
+          "title": "Types of Microorganisms",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "How We See the Invisible World",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58784",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58785",
+          "section": "2.1",
+          "title": "The Properties of Light",
+          "titleIs": null
+        },
+        {
+          "id": "m58786",
+          "section": "2.2",
+          "title": "Peering Into the Invisible World",
+          "titleIs": null
+        },
+        {
+          "id": "m58787",
+          "section": "2.3",
+          "title": "Instruments of Microscopy",
+          "titleIs": null
+        },
+        {
+          "id": "m58788",
+          "section": "2.4",
+          "title": "Staining Microscopic Specimens",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "The Cell",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58789",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58790",
+          "section": "3.1",
+          "title": "Spontaneous Generation",
+          "titleIs": null
+        },
+        {
+          "id": "m58791",
+          "section": "3.2",
+          "title": "Foundations of Modern Cell Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m58792",
+          "section": "3.3",
+          "title": "Unique Characteristics of Prokaryotic Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m58793",
+          "section": "3.4",
+          "title": "Unique Characteristics of Eukaryotic Cells",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Prokaryotic Diversity",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58794",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58795",
+          "section": "4.1",
+          "title": "Prokaryote Habitats, Relationships, and Microbiomes",
+          "titleIs": null
+        },
+        {
+          "id": "m58796",
+          "section": "4.2",
+          "title": "Proteobacteria",
+          "titleIs": null
+        },
+        {
+          "id": "m58797",
+          "section": "4.3",
+          "title": "Nonproteobacteria Gram-Negative Bacteria and Phototrophic Bacteria",
+          "titleIs": null
+        },
+        {
+          "id": "m58798",
+          "section": "4.4",
+          "title": "Gram-Positive Bacteria",
+          "titleIs": null
+        },
+        {
+          "id": "m58799",
+          "section": "4.5",
+          "title": "Deeply Branching Bacteria",
+          "titleIs": null
+        },
+        {
+          "id": "m58800",
+          "section": "4.6",
+          "title": "Archaea",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "The Eukaryotes of Microbiology",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58801",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58802",
+          "section": "5.1",
+          "title": "Unicellular Eukaryotic Parasites",
+          "titleIs": null
+        },
+        {
+          "id": "m58803",
+          "section": "5.2",
+          "title": "Parasitic Helminths",
+          "titleIs": null
+        },
+        {
+          "id": "m58804",
+          "section": "5.3",
+          "title": "Fungi",
+          "titleIs": null
+        },
+        {
+          "id": "m58805",
+          "section": "5.4",
+          "title": "Algae",
+          "titleIs": null
+        },
+        {
+          "id": "m58806",
+          "section": "5.5",
+          "title": "Lichens",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "Acellular Pathogens",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58807",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58808",
+          "section": "6.1",
+          "title": "Viruses",
+          "titleIs": null
+        },
+        {
+          "id": "m58809",
+          "section": "6.2",
+          "title": "The Viral Life Cycle",
+          "titleIs": null
+        },
+        {
+          "id": "m58810",
+          "section": "6.3",
+          "title": "Isolation, Culture, and Identification of Viruses",
+          "titleIs": null
+        },
+        {
+          "id": "m58811",
+          "section": "6.4",
+          "title": "Viroids, Virusoids, and Prions",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Microbial Biochemistry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58812",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58813",
+          "section": "7.1",
+          "title": "Organic Molecules",
+          "titleIs": null
+        },
+        {
+          "id": "m58814",
+          "section": "7.2",
+          "title": "Carbohydrates",
+          "titleIs": null
+        },
+        {
+          "id": "m58815",
+          "section": "7.3",
+          "title": "Lipids",
+          "titleIs": null
+        },
+        {
+          "id": "m58816",
+          "section": "7.4",
+          "title": "Proteins",
+          "titleIs": null
+        },
+        {
+          "id": "m58817",
+          "section": "7.5",
+          "title": "Using Biochemistry to Identify Microorganisms",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Microbial Metabolism",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58818",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58819",
+          "section": "8.1",
+          "title": "Energy, Matter, and Enzymes",
+          "titleIs": null
+        },
+        {
+          "id": "m58820",
+          "section": "8.2",
+          "title": "Catabolism of Carbohydrates",
+          "titleIs": null
+        },
+        {
+          "id": "m58821",
+          "section": "8.3",
+          "title": "Cellular Respiration",
+          "titleIs": null
+        },
+        {
+          "id": "m58822",
+          "section": "8.4",
+          "title": "Fermentation",
+          "titleIs": null
+        },
+        {
+          "id": "m58823",
+          "section": "8.5",
+          "title": "Catabolism of Lipids and Proteins",
+          "titleIs": null
+        },
+        {
+          "id": "m58824",
+          "section": "8.6",
+          "title": "Photosynthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m58825",
+          "section": "8.7",
+          "title": "Biogeochemical Cycles",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Microbial Growth",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58827",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58828",
+          "section": "9.1",
+          "title": "How Microbes Grow",
+          "titleIs": null
+        },
+        {
+          "id": "m58829",
+          "section": "9.2",
+          "title": "Oxygen Requirements for Microbial Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m58830",
+          "section": "9.3",
+          "title": "The Effects of pH on Microbial Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m58831",
+          "section": "9.4",
+          "title": "Temperature and Microbial Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m58832",
+          "section": "9.5",
+          "title": "Other Environmental Conditions that Affect Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m58833",
+          "section": "9.6",
+          "title": "Media Used for Bacterial Growth",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Biochemistry of the Genome",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58834",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58835",
+          "section": "10.1",
+          "title": "Using Microbiology to Discover the Secrets of Life",
+          "titleIs": null
+        },
+        {
+          "id": "m58836",
+          "section": "10.2",
+          "title": "Structure and Function of DNA",
+          "titleIs": null
+        },
+        {
+          "id": "m58837",
+          "section": "10.3",
+          "title": "Structure and Function of RNA",
+          "titleIs": null
+        },
+        {
+          "id": "m58838",
+          "section": "10.4",
+          "title": "Structure and Function of Cellular Genomes",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Mechanisms of Microbial Genetics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58839",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58840",
+          "section": "11.1",
+          "title": "The Functions of Genetic Material",
+          "titleIs": null
+        },
+        {
+          "id": "m58841",
+          "section": "11.2",
+          "title": "DNA Replication",
+          "titleIs": null
+        },
+        {
+          "id": "m58842",
+          "section": "11.3",
+          "title": "RNA Transcription",
+          "titleIs": null
+        },
+        {
+          "id": "m58843",
+          "section": "11.4",
+          "title": "Protein Synthesis (Translation)",
+          "titleIs": null
+        },
+        {
+          "id": "m58844",
+          "section": "11.5",
+          "title": "Mutations",
+          "titleIs": null
+        },
+        {
+          "id": "m58845",
+          "section": "11.6",
+          "title": "How Asexual Prokaryotes Achieve Genetic Diversity",
+          "titleIs": null
+        },
+        {
+          "id": "m58846",
+          "section": "11.7",
+          "title": "Gene Regulation: Operon Theory",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Modern Applications of Microbial Genetics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58847",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58848",
+          "section": "12.1",
+          "title": "Microbes and the Tools of Genetic Engineering",
+          "titleIs": null
+        },
+        {
+          "id": "m58849",
+          "section": "12.2",
+          "title": "Visualizing and Characterizing DNA, RNA, and Protein",
+          "titleIs": null
+        },
+        {
+          "id": "m58850",
+          "section": "12.3",
+          "title": "Whole Genome Methods and Pharmaceutical Applications of Genetic Engineering",
+          "titleIs": null
+        },
+        {
+          "id": "m58851",
+          "section": "12.4",
+          "title": "Gene Therapy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Control of Microbial Growth",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58852",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58853",
+          "section": "13.1",
+          "title": "Controlling Microbial Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m58854",
+          "section": "13.2",
+          "title": "Using Physical Methods to Control Microorganisms",
+          "titleIs": null
+        },
+        {
+          "id": "m58855",
+          "section": "13.3",
+          "title": "Using Chemicals to Control Microorganisms",
+          "titleIs": null
+        },
+        {
+          "id": "m58856",
+          "section": "13.4",
+          "title": "Testing the Effectiveness of Antiseptics and Disinfectants",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "Antimicrobial Drugs",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58857",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58858",
+          "section": "14.1",
+          "title": "History of Chemotherapy and Antimicrobial Discovery",
+          "titleIs": null
+        },
+        {
+          "id": "m58859",
+          "section": "14.2",
+          "title": "Fundamentals of Antimicrobial Chemotherapy",
+          "titleIs": null
+        },
+        {
+          "id": "m58860",
+          "section": "14.3",
+          "title": "Mechanisms of Antibacterial Drugs",
+          "titleIs": null
+        },
+        {
+          "id": "m58861",
+          "section": "14.4",
+          "title": "Mechanisms of Other Antimicrobial Drugs",
+          "titleIs": null
+        },
+        {
+          "id": "m58862",
+          "section": "14.5",
+          "title": "Drug Resistance",
+          "titleIs": null
+        },
+        {
+          "id": "m58864",
+          "section": "14.6",
+          "title": "Testing the Effectiveness of Antimicrobials",
+          "titleIs": null
+        },
+        {
+          "id": "m63248",
+          "section": "14.7",
+          "title": "Current Strategies for Antimicrobial Discovery",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Microbial Mechanisms of Pathogenicity",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58865",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58866",
+          "section": "15.1",
+          "title": "Characteristics of Infectious Disease",
+          "titleIs": null
+        },
+        {
+          "id": "m58867",
+          "section": "15.2",
+          "title": "How Pathogens Cause Disease",
+          "titleIs": null
+        },
+        {
+          "id": "m58868",
+          "section": "15.3",
+          "title": "Virulence Factors of Bacterial and Viral Pathogens",
+          "titleIs": null
+        },
+        {
+          "id": "m58869",
+          "section": "15.4",
+          "title": "Virulence Factors of Eukaryotic Pathogens",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Disease and Epidemiology",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58870",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58871",
+          "section": "16.1",
+          "title": "The Language of Epidemiologists",
+          "titleIs": null
+        },
+        {
+          "id": "m58872",
+          "section": "16.2",
+          "title": "Tracking Infectious Diseases",
+          "titleIs": null
+        },
+        {
+          "id": "m58873",
+          "section": "16.3",
+          "title": "Modes of Disease Transmission",
+          "titleIs": null
+        },
+        {
+          "id": "m58874",
+          "section": "16.4",
+          "title": "Global Public Health",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Innate Nonspecific Host Defenses",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58876",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58877",
+          "section": "17.1",
+          "title": "Physical Defenses",
+          "titleIs": null
+        },
+        {
+          "id": "m58878",
+          "section": "17.2",
+          "title": "Chemical Defenses",
+          "titleIs": null
+        },
+        {
+          "id": "m58879",
+          "section": "17.3",
+          "title": "Cellular Defenses",
+          "titleIs": null
+        },
+        {
+          "id": "m58880",
+          "section": "17.4",
+          "title": "Pathogen Recognition and Phagocytosis",
+          "titleIs": null
+        },
+        {
+          "id": "m58881",
+          "section": "17.5",
+          "title": "Inflammation and Fever",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Adaptive Specific Host Defenses",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58883",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58884",
+          "section": "18.1",
+          "title": "Overview of Specific Adaptive Immunity",
+          "titleIs": null
+        },
+        {
+          "id": "m58885",
+          "section": "18.2",
+          "title": "Major Histocompatibility Complexes and Antigen-Presenting Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m58886",
+          "section": "18.3",
+          "title": "T Lymphocytes and Cellular Immunity",
+          "titleIs": null
+        },
+        {
+          "id": "m58887",
+          "section": "18.4",
+          "title": "B Lymphocytes and Humoral Immunity",
+          "titleIs": null
+        },
+        {
+          "id": "m58888",
+          "section": "18.5",
+          "title": "Vaccines",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "Diseases of the Immune System",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58891",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58892",
+          "section": "19.1",
+          "title": "Hypersensitivities",
+          "titleIs": null
+        },
+        {
+          "id": "m58893",
+          "section": "19.2",
+          "title": "Autoimmune Disorders",
+          "titleIs": null
+        },
+        {
+          "id": "m58894",
+          "section": "19.3",
+          "title": "Organ Transplantation and Rejection",
+          "titleIs": null
+        },
+        {
+          "id": "m58895",
+          "section": "19.4",
+          "title": "Immunodeficiency",
+          "titleIs": null
+        },
+        {
+          "id": "m58896",
+          "section": "19.5",
+          "title": "Cancer Immunobiology and Immunotherapy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Laboratory Analysis of the Immune Response",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58899",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58900",
+          "section": "20.1",
+          "title": "Polyclonal and Monoclonal Antibody Production",
+          "titleIs": null
+        },
+        {
+          "id": "m58901",
+          "section": "20.2",
+          "title": "Detecting Antigen-Antibody Complexes",
+          "titleIs": null
+        },
+        {
+          "id": "m58902",
+          "section": "20.3",
+          "title": "Agglutination Assays",
+          "titleIs": null
+        },
+        {
+          "id": "m58903",
+          "section": "20.4",
+          "title": "EIAs and ELISAs",
+          "titleIs": null
+        },
+        {
+          "id": "m58904",
+          "section": "20.5",
+          "title": "Fluorescent Antibody Techniques",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Skin and Eye Infections",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58905",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58906",
+          "section": "21.1",
+          "title": "Anatomy and Normal Microbiota of the Skin and Eyes",
+          "titleIs": null
+        },
+        {
+          "id": "m58907",
+          "section": "21.2",
+          "title": "Bacterial Infections of the Skin and Eyes",
+          "titleIs": null
+        },
+        {
+          "id": "m58908",
+          "section": "21.3",
+          "title": "Viral Infections of the Skin and Eyes",
+          "titleIs": null
+        },
+        {
+          "id": "m58909",
+          "section": "21.4",
+          "title": "Mycoses of the Skin",
+          "titleIs": null
+        },
+        {
+          "id": "m58910",
+          "section": "21.5",
+          "title": "Protozoan and Helminthic Infections of the Skin and Eyes",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "Respiratory System Infections",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58911",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58912",
+          "section": "22.1",
+          "title": "Anatomy and Normal Microbiota of the Respiratory Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58913",
+          "section": "22.2",
+          "title": "Bacterial Infections of the Respiratory Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58914",
+          "section": "22.3",
+          "title": "Viral Infections of the Respiratory Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58915",
+          "section": "22.4",
+          "title": "Respiratory Mycoses",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "Urogenital System Infections",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58916",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58917",
+          "section": "23.1",
+          "title": "Anatomy and Normal Microbiota of the Urogenital Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58918",
+          "section": "23.2",
+          "title": "Bacterial Infections of the Urinary System",
+          "titleIs": null
+        },
+        {
+          "id": "m58919",
+          "section": "23.3",
+          "title": "Bacterial Infections of the Reproductive System",
+          "titleIs": null
+        },
+        {
+          "id": "m58920",
+          "section": "23.4",
+          "title": "Viral Infections of the Reproductive System",
+          "titleIs": null
+        },
+        {
+          "id": "m58921",
+          "section": "23.5",
+          "title": "Fungal Infections of the Reproductive System",
+          "titleIs": null
+        },
+        {
+          "id": "m58922",
+          "section": "23.6",
+          "title": "Protozoan Infections of the Urogenital System",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "Digestive System Infections",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58923",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58924",
+          "section": "24.1",
+          "title": "Anatomy and Normal Microbiota of the Digestive System",
+          "titleIs": null
+        },
+        {
+          "id": "m58925",
+          "section": "24.2",
+          "title": "Microbial Diseases of the Mouth and Oral Cavity",
+          "titleIs": null
+        },
+        {
+          "id": "m58930",
+          "section": "24.3",
+          "title": "Viral Infections of the Gastrointestinal Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58931",
+          "section": "24.4",
+          "title": "Protozoan Infections of the Gastrointestinal Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58932",
+          "section": "24.5",
+          "title": "Helminthic Infections of the Gastrointestinal Tract",
+          "titleIs": null
+        },
+        {
+          "id": "m58933",
+          "section": "24.6",
+          "title": "Bacterial Infections of the Gastrointestinal Tract",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "Circulatory and Lymphatic System Infections",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58934",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58936",
+          "section": "25.1",
+          "title": "Bacterial Infections of the Circulatory and Lymphatic Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m58937",
+          "section": "25.2",
+          "title": "Viral Infections of the Circulatory and Lymphatic Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m58938",
+          "section": "25.3",
+          "title": "Parasitic Infections of the Circulatory and Lymphatic Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m58945",
+          "section": "25.4",
+          "title": "Anatomy of the Circulatory and Lymphatic Systems",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "Nervous System Infections",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m58939",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m58940",
+          "section": "26.1",
+          "title": "Anatomy of the Nervous System",
+          "titleIs": null
+        },
+        {
+          "id": "m58941",
+          "section": "26.2",
+          "title": "Bacterial Diseases of the Nervous System",
+          "titleIs": null
+        },
+        {
+          "id": "m58942",
+          "section": "26.3",
+          "title": "Acellular Diseases of the Nervous System",
+          "titleIs": null
+        },
+        {
+          "id": "m58943",
+          "section": "26.4",
+          "title": "Fungal and Parasitic Diseases of the Nervous System",
+          "titleIs": null
+        }
+      ]
+    }
+  ]
+}
