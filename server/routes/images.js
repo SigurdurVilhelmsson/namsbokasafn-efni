@@ -74,6 +74,65 @@ const storage = multer.diskStorage({
   },
 });
 
+// File magic number signatures for image validation
+const FILE_SIGNATURES = {
+  'image/png': [Buffer.from([0x89, 0x50, 0x4e, 0x47])], // PNG header
+  'image/jpeg': [Buffer.from([0xff, 0xd8, 0xff])], // JPEG header
+};
+
+/**
+ * Sanitize SVG content by removing potentially dangerous elements.
+ * Strips script tags, event handlers, and external references.
+ */
+function sanitizeSvg(filePath) {
+  let content = fs.readFileSync(filePath, 'utf-8');
+
+  // Remove script elements
+  content = content.replace(/<script[\s\S]*?<\/script>/gi, '');
+  content = content.replace(/<script[^>]*\/>/gi, '');
+
+  // Remove event handler attributes (onclick, onload, onerror, etc.)
+  content = content.replace(/\s+on\w+\s*=\s*"[^"]*"/gi, '');
+  content = content.replace(/\s+on\w+\s*=\s*'[^']*'/gi, '');
+
+  // Remove javascript: URLs
+  content = content.replace(/href\s*=\s*"javascript:[^"]*"/gi, 'href=""');
+  content = content.replace(/href\s*=\s*'javascript:[^']*'/gi, "href=''");
+
+  // Remove data: URLs in href/src (can embed scripts)
+  content = content.replace(/href\s*=\s*"data:[^"]*"/gi, 'href=""');
+
+  // Remove foreignObject elements (can embed HTML with scripts)
+  content = content.replace(/<foreignObject[\s\S]*?<\/foreignObject>/gi, '');
+
+  fs.writeFileSync(filePath, content, 'utf-8');
+}
+
+/**
+ * Validate uploaded file matches its claimed MIME type using magic numbers.
+ * SVG files are validated by checking for XML/SVG content and sanitized.
+ */
+function validateUploadedFile(filePath, mimetype) {
+  if (mimetype === 'image/svg+xml') {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    if (!content.includes('<svg') && !content.includes('<SVG')) {
+      return false;
+    }
+    sanitizeSvg(filePath);
+    return true;
+  }
+
+  const signatures = FILE_SIGNATURES[mimetype];
+  if (!signatures) return false;
+
+  const fd = fs.openSync(filePath, 'r');
+  const buffer = Buffer.alloc(4);
+  fs.readSync(fd, buffer, 0, 4, 0);
+  fs.closeSync(fd);
+
+  return signatures.some((sig) => buffer.subarray(0, sig.length).equals(sig));
+}
+
 const upload = multer({
   storage,
   limits: { fileSize: 500 * 1024 }, // 500KB limit per image
@@ -243,6 +302,15 @@ router.post(
     if (!req.file) {
       return res.status(400).json({
         error: 'No image uploaded',
+      });
+    }
+
+    // Validate file content matches claimed MIME type
+    if (!validateUploadedFile(req.file.path, req.file.mimetype)) {
+      fs.unlinkSync(req.file.path);
+      return res.status(400).json({
+        error: 'Invalid file',
+        message: 'File content does not match its claimed type',
       });
     }
 
