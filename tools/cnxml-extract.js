@@ -1548,6 +1548,13 @@ async function main() {
     let chapter;
 
     if (args.input) {
+      // Validate input path is within the project directory
+      const resolvedInput = path.resolve(args.input);
+      const projectRoot = path.resolve(path.join(BOOKS_DIR, '..', '..'));
+      if (!resolvedInput.startsWith(projectRoot + path.sep) && resolvedInput !== projectRoot) {
+        console.error(`Error: --input path must be within the project directory`);
+        process.exit(1);
+      }
       files = [args.input];
       // Try to extract chapter from path
       const chapterMatch = args.input.match(/ch(\d+)/);

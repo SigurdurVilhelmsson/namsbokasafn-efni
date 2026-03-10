@@ -15,7 +15,7 @@
  *     [--branch main] [--verbose]
  */
 
-import { execSync, execFileSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -28,6 +28,11 @@ const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 // ---------------------------------------------------------------------------
 // CLI argument parsing
 // ---------------------------------------------------------------------------
+
+// Validation patterns for CLI inputs
+const REPO_PATTERN = /^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/;
+const BRANCH_PATTERN = /^[a-zA-Z0-9_./\-]+$/;
+const BOOK_SLUG_PATTERN = /^[a-zA-Z0-9_-]+$/;
 
 function parseArgs(argv) {
   const args = { branch: 'main', verbose: false };
@@ -56,6 +61,23 @@ function parseArgs(argv) {
     );
     process.exit(1);
   }
+
+  // Validate inputs to prevent injection
+  if (!REPO_PATTERN.test(args.repo)) {
+    console.error(
+      'Error: --repo must be in OWNER/REPO format (alphanumeric, hyphens, dots, underscores)'
+    );
+    process.exit(1);
+  }
+  if (!BRANCH_PATTERN.test(args.branch)) {
+    console.error('Error: --branch contains invalid characters');
+    process.exit(1);
+  }
+  if (!BOOK_SLUG_PATTERN.test(args.book)) {
+    console.error('Error: --book must be alphanumeric with hyphens/underscores');
+    process.exit(1);
+  }
+
   return args;
 }
 
@@ -264,27 +286,36 @@ function downloadAndExtract(repo, branch, tmpDir) {
 
   fs.mkdirSync(tmpDir, { recursive: true });
 
-  // Build curl command — streams to tar, handles redirects
-  const curlParts = [
-    'curl',
+  // Download tarball with curl (using execFileSync to avoid shell injection)
+  const tarballPath = path.join(tmpDir, 'repo.tar.gz');
+  const curlArgs = [
     '-sL',
+    '-f',
+    '-o',
+    tarballPath,
     '-H',
-    '"Accept: application/vnd.github.v3+json"',
+    'Accept: application/vnd.github.v3+json',
     '-H',
-    '"User-Agent: namsbokasafn-pipeline"',
+    'User-Agent: namsbokasafn-pipeline',
   ];
   if (token) {
-    curlParts.push('-H', `"Authorization: Bearer ${token}"`);
+    curlArgs.push('-H', `Authorization: Bearer ${token}`);
   }
-  curlParts.push(`"${url}"`);
+  curlArgs.push(url);
 
-  const cmd = `${curlParts.join(' ')} | tar xzf - -C "${tmpDir}"`;
-
-  execSync(cmd, {
-    shell: '/bin/bash',
+  execFileSync('curl', curlArgs, {
     timeout: 600000, // 10 minutes for large repos
     stdio: ['pipe', 'pipe', 'pipe'],
   });
+
+  // Extract tarball (separate step, also using execFileSync)
+  execFileSync('tar', ['xzf', tarballPath, '-C', tmpDir], {
+    timeout: 120000,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
+
+  // Clean up tarball
+  fs.unlinkSync(tarballPath);
 
   // Find the extracted directory (GitHub names it {owner}-{repo}-{shortsha})
   const entries = fs.readdirSync(tmpDir);

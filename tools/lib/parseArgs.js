@@ -9,6 +9,11 @@
  * const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION]);
  */
 
+// ─── Validation patterns ─────────────────────────────────────────────
+
+/** Valid book slug: alphanumeric, hyphens, underscores (no path separators) */
+const BOOK_SLUG_PATTERN = /^[a-zA-Z0-9][a-zA-Z0-9_-]*$/;
+
 // ─── Preset option constants ──────────────────────────────────────────
 
 export const BOOK_OPTION = {
@@ -16,6 +21,13 @@ export const BOOK_OPTION = {
   flags: ['--book'],
   type: 'string',
   default: 'efnafraedi-2e',
+  parse: (val) => {
+    if (!BOOK_SLUG_PATTERN.test(val)) {
+      console.error('Error: --book must be alphanumeric with hyphens/underscores');
+      process.exit(1);
+    }
+    return val;
+  },
 };
 
 export const CHAPTER_OPTION = {

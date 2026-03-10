@@ -123,16 +123,18 @@ app.use(
 );
 
 // Rate limiting - general limiter for all routes
-// Authenticated users are exempted (already tracked by session/JWT)
+// Authenticated users get a higher limit but are still rate-limited
 const generalLimiter = rateLimit({
   windowMs: config.rateLimit.windowMs,
-  max: config.rateLimit.maxRequests,
+  max: (req) => {
+    // Authenticated users get 5x the limit, but are still rate-limited
+    if (req.cookies && req.cookies.auth_token) {
+      return config.rateLimit.maxRequests * 5;
+    }
+    return config.rateLimit.maxRequests;
+  },
   standardHeaders: true,
   legacyHeaders: false,
-  skip: (req) => {
-    // Skip rate limiting for authenticated users (they have a valid JWT cookie)
-    return Boolean(req.cookies && req.cookies.auth_token);
-  },
   message: {
     error: 'Too many requests',
     message: 'Please try again later',
@@ -329,12 +331,12 @@ app.use((err, req, res, _next) => {
     });
   }
 
-  const isProduction = process.env.NODE_ENV === 'production';
-  res.status(err.status || 500).json({
-    error: err.name || 'Internal Server Error',
-    message: isProduction
-      ? 'An unexpected error occurred'
-      : err.message || 'An unexpected error occurred',
+  const statusCode = err.status || 500;
+  // Only expose error details for client errors (4xx), never for server errors (5xx)
+  const isClientError = statusCode >= 400 && statusCode < 500;
+  res.status(statusCode).json({
+    error: isClientError ? err.name || 'Error' : 'Internal Server Error',
+    message: isClientError ? err.message || 'An error occurred' : 'An unexpected error occurred',
   });
 });
 

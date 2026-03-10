@@ -6,6 +6,11 @@
  * following the pattern established in cnxml-to-md.js
  */
 
+/** Escape special regex characters in a string */
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 /**
  * Parse a CNXML document and return a structured representation.
  * @param {string} cnxml - Raw CNXML content
@@ -72,11 +77,12 @@ export function extractMetadata(cnxml) {
 
   // Helper to extract element content (handles md: prefix or unprefixed)
   const extractElement = (name) => {
+    const safeName = escapeRegExp(name);
     const prefixedMatch = metadataContent.match(
-      new RegExp('<md:' + name + '[^>]*>([^<]*)<\\/md:' + name + '>')
+      new RegExp('<md:' + safeName + '[^>]*>([^<]*)<\\/md:' + safeName + '>')
     );
     const unprefixedMatch = metadataContent.match(
-      new RegExp('<' + name + '[^>]*>([^<]*)<\\/' + name + '>')
+      new RegExp('<' + safeName + '[^>]*>([^<]*)<\\/' + safeName + '>')
     );
     return prefixedMatch
       ? prefixedMatch[1].trim()
@@ -87,11 +93,13 @@ export function extractMetadata(cnxml) {
 
   // Helper to extract attribute from element
   const extractAttribute = (name, attr) => {
+    const safeName = escapeRegExp(name);
+    const safeAttr = escapeRegExp(attr);
     const prefixedMatch = metadataContent.match(
-      new RegExp('<md:' + name + '[^>]*' + attr + '="([^"]*)"')
+      new RegExp('<md:' + safeName + '[^>]*' + safeAttr + '="([^"]*)"')
     );
     const unprefixedMatch = metadataContent.match(
-      new RegExp('<' + name + '[^>]*' + attr + '="([^"]*)"')
+      new RegExp('<' + safeName + '[^>]*' + safeAttr + '="([^"]*)"')
     );
     return prefixedMatch ? prefixedMatch[1] : unprefixedMatch ? unprefixedMatch[1] : null;
   };
@@ -178,7 +186,8 @@ export function stripTags(str) {
 export function extractElements(content, tagName) {
   const elements = [];
   // Match self-closing or paired elements
-  const pattern = new RegExp(`<${tagName}([^>]*)(?:\\/>|>([\\s\\S]*?)<\\/${tagName}>)`, 'g');
+  const safeTag = escapeRegExp(tagName);
+  const pattern = new RegExp(`<${safeTag}([^>]*)(?:\\/>|>([\\s\\S]*?)<\\/${safeTag}>)`, 'g');
 
   let match;
   while ((match = pattern.exec(content)) !== null) {
@@ -218,7 +227,8 @@ export function parseAttributes(attrString) {
  */
 export function extractNestedElements(content, tagName) {
   const elements = [];
-  const openTag = new RegExp(`<${tagName}(\\s[^>]*)?>`, 'g');
+  const safeTag = escapeRegExp(tagName);
+  const openTag = new RegExp(`<${safeTag}(\\s[^>]*)?>`, 'g');
   const closeTag = `</${tagName}>`;
 
   let match;
