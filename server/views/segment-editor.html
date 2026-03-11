@@ -2507,11 +2507,41 @@
         ? '<span class="edit-status approved">Samþykkt</span>'
         : '<span class="edit-status pending">Tillaga</span>';
 
+      // Build alternatives HTML if available
+      let altsHtml = '';
+      if (termInfo.alternatives && termInfo.alternatives.length > 0) {
+        const altItems = termInfo.alternatives.map(a => {
+          const altTerm = typeof a === 'string' ? a : a.term;
+          const altNote = (typeof a === 'object' && a.note) ? ` (${escapeHtml(a.note)})` : '';
+          return `<span style="color: var(--text-secondary);">${escapeHtml(altTerm)}${altNote}</span>`;
+        }).join(', ');
+        altsHtml = `
+          <div class="term-popup-row" style="font-size: var(--text-xs);">
+            <span class="term-popup-label">Einnig:</span>
+            <span>${altItems}</span>
+          </div>`;
+      }
+
+      // Build definition HTML if available
+      let defHtml = '';
+      if (termInfo.definitionIs) {
+        defHtml = `
+          <div class="term-popup-row" style="font-size: var(--text-xs); margin-top: 0.25rem;">
+            <span style="color: var(--text-muted); font-style: italic;">${escapeHtml(termInfo.definitionIs)}</span>
+          </div>`;
+      } else if (termInfo.definitionEn) {
+        defHtml = `
+          <div class="term-popup-row" style="font-size: var(--text-xs); margin-top: 0.25rem;">
+            <span style="color: var(--text-muted); font-style: italic;">${escapeHtml(termInfo.definitionEn)}</span>
+          </div>`;
+      }
+
       document.getElementById('term-popup-body').innerHTML = `
         <div class="term-popup-row">
           <span class="term-popup-label">Íslenska:</span>
           <span class="term-popup-value">${escapeHtml(termInfo.icelandic)}</span>
         </div>
+        ${altsHtml}
         <div class="term-popup-row">
           <span class="term-popup-label">Flokkur:</span>
           <span>${termInfo.category || '—'}</span>
@@ -2520,6 +2550,7 @@
           <span class="term-popup-label">Staða:</span>
           ${statusBadge}
         </div>
+        ${defHtml}
         <div style="margin-top: 0.5rem; padding-top: 0.4rem; border-top: 1px solid var(--border);">
           <a href="/terminology" target="_blank" style="font-size: var(--text-xs); color: var(--accent);">
             Opna í orðasafni &#8594;
@@ -2576,13 +2607,16 @@
           if (!data.terms || data.terms.length === 0) {
             termLookupResults.innerHTML = '<div class="term-lookup-item" style="color: var(--text-muted);">Ekkert fannst</div>';
           } else {
-            termLookupResults.innerHTML = data.terms.map(t => `
+            termLookupResults.innerHTML = data.terms.map(t => {
+              const alts = (t.alternatives || []).map(a => typeof a === 'string' ? a : a.term).filter(Boolean);
+              const altsText = alts.length > 0 ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${alts.map(a => escapeHtml(a)).join(', ')})</span>` : '';
+              return `
               <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(t.icelandic)}')">
                 <span class="term-lookup-en">${escapeHtml(t.english)}</span>
                 &#8594; <span class="term-lookup-is">${escapeHtml(t.icelandic)}</span>
-                ${t.status === 'approved' ? ' &#10003;' : ''}
-              </div>
-            `).join('');
+                ${t.status === 'approved' ? ' &#10003;' : ''}${altsText}
+              </div>`;
+            }).join('');
           }
           termLookupResults.classList.add('active');
         } catch {

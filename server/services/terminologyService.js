@@ -52,10 +52,14 @@ const TERM_CATEGORIES = [
 const TERM_SOURCES = [
   'idordabankinn',
   'chemistry-association',
+  'chemistry-society-csv',
+  'openstax-mt',
+  'openstax-glossary',
   'chapter-glossary',
   'manual',
   'imported-csv',
   'imported-excel',
+  'merge-glossary',
 ];
 
 /**
@@ -263,7 +267,19 @@ function getTerm(id) {
  * @returns {object} Created term
  */
 function createTerm(data, userId, username) {
-  const { english, icelandic, alternatives, category, notes, source, sourceChapter, bookId } = data;
+  const {
+    english,
+    icelandic,
+    alternatives,
+    category,
+    notes,
+    source,
+    sourceChapter,
+    bookId,
+    definitionEn,
+    definitionIs,
+    pos,
+  } = data;
 
   if (!english || !icelandic) {
     throw new Error('English and Icelandic terms are required');
@@ -299,8 +315,8 @@ function createTerm(data, userId, username) {
       .prepare(
         `
       INSERT INTO terminology_terms
-        (english, icelandic, alternatives, category, notes, source, source_chapter, book_id, status, proposed_by, proposed_by_name)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'proposed', ?, ?)
+        (english, icelandic, alternatives, category, notes, source, source_chapter, book_id, status, definition_en, definition_is, pos, proposed_by, proposed_by_name)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'proposed', ?, ?, ?, ?, ?)
     `
       )
       .run(
@@ -312,6 +328,9 @@ function createTerm(data, userId, username) {
         source || 'manual',
         sourceChapter,
         bookId,
+        definitionEn || null,
+        definitionIs || null,
+        pos || null,
         userId,
         username
       );
@@ -348,6 +367,9 @@ function updateTerm(id, updates) {
       'notes',
       'source',
       'source_chapter',
+      'definition_en',
+      'definition_is',
+      'pos',
     ];
     const setClauses = [];
     const params = [];
@@ -992,6 +1014,9 @@ function formatTerm(term) {
     notes: term.notes,
     source: term.source,
     sourceChapter: term.source_chapter,
+    definitionEn: term.definition_en || null,
+    definitionIs: term.definition_is || null,
+    pos: term.pos || null,
     status: term.status,
     proposedBy: term.proposed_by,
     proposedByName: term.proposed_by_name,
@@ -1106,24 +1131,22 @@ function findTermsInSegments(segments, bookId = null) {
 
             if (!isFound) {
               // Check if any alternative is used instead
+              // Alternatives can be either plain strings or objects with { term, note, source }
               let alternativeUsed = null;
               for (const alt of term.alternatives) {
-                const altRegex = new RegExp(`\\b${escapeRegex(alt)}\\b`, 'gi');
+                const altTerm = typeof alt === 'string' ? alt : alt.term;
+                if (!altTerm) continue;
+                const altRegex = new RegExp(`\\b${escapeRegex(altTerm)}\\b`, 'gi');
                 if (altRegex.test(seg.isContent)) {
-                  alternativeUsed = alt;
+                  alternativeUsed = altTerm;
                   break;
                 }
               }
 
               if (alternativeUsed) {
-                issues.push({
-                  type: 'inconsistent',
-                  termId: term.id,
-                  english: term.english,
-                  expected: term.icelandic,
-                  found: alternativeUsed,
-                  message: `„${term.english}" → „${term.icelandic}" (ekki „${alternativeUsed}")`,
-                });
+                // An accepted alternative was used — not a real inconsistency
+                // Only flag if the alternative is not from a trusted source
+                // For now, accept all listed alternatives as valid
               } else {
                 issues.push({
                   type: 'missing',
@@ -1145,7 +1168,7 @@ function findTermsInSegments(segments, bookId = null) {
   } catch (err) {
     try {
       db.close();
-    } catch (_e) {
+    } catch {
       /* ignore */
     }
     throw err;

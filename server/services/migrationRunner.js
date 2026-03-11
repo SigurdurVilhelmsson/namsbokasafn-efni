@@ -44,6 +44,8 @@ function runAllMigrations() {
     require('../migrations/016-cleanup-book-slugs'),
     require('../migrations/017-pipeline-status'),
     require('../migrations/018-chapter-locks'),
+    require('../migrations/019-register-new-books'),
+    require('../migrations/020-glossary-definitions'),
   ];
 
   let applied = 0;

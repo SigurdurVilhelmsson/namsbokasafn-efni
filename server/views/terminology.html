@@ -569,6 +569,10 @@
 
       <div class="filter-bar">
         <div class="filter-item">
+          <label for="filter-book">B&#243;k:</label>
+          <select id="filter-book" class="book-select" data-allow-all="true" onchange="searchTerms(); loadStats(); updateFilterBadge();"></select>
+        </div>
+        <div class="filter-item">
           <label for="filter-category">Flokkur:</label>
           <select id="filter-category" onchange="searchTerms(); updateFilterBadge();">
             <option value="">Allir flokkar</option>
@@ -614,6 +618,10 @@
         <div class="stat-number color-error" id="stat-disputed">-</div>
         <div class="stat-label">Til umr&#230;&#240;u</div>
       </div>
+      <div class="stat-box">
+        <div class="stat-number" style="color: var(--error);" id="stat-needs-review">-</div>
+        <div class="stat-label">&#222;arf yfirfer&#240;</div>
+      </div>
     </div>
 
     <!-- Review Queue Alert -->
@@ -626,10 +634,16 @@
     <!-- Terms List -->
     <div class="terms-header">
       <h2 id="results-title">Or&#240;asafn</h2>
-      <button class="btn btn-sm btn-secondary" onclick="showImportModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Flytja inn
-      </button>
+      <div style="display: flex; gap: 0.5rem;">
+        <button class="btn btn-sm btn-secondary" onclick="exportGlossary('csv')" title="S&#230;kja sem CSV">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          Flytja &#250;t
+        </button>
+        <button class="btn btn-sm btn-secondary" onclick="showImportModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Flytja inn
+        </button>
+      </div>
     </div>
 
     <div class="terms-list" id="terms-list">
@@ -724,6 +738,18 @@
           <div class="detail-field">
             <label>Sta&#240;a:</label>
             <span id="detail-status"></span>
+          </div>
+          <div class="detail-field">
+            <label>Or&#240;flokkur:</label>
+            <span id="detail-pos"></span>
+          </div>
+          <div class="detail-field detail-full" id="detail-def-en-row">
+            <label>Skilgreining (EN):</label>
+            <span id="detail-definition-en" style="font-style: italic; color: var(--text-secondary);"></span>
+          </div>
+          <div class="detail-field detail-full" id="detail-def-is-row">
+            <label>Skilgreining (IS):</label>
+            <span id="detail-definition-is"></span>
           </div>
           <div class="detail-field detail-full">
             <label>Athugasemdir:</label>
@@ -906,13 +932,16 @@
     }
 
     async function loadStats() {
-      const stats = await fetchJson('/api/terminology/stats');
+      const bookSlug = document.getElementById('filter-book')?.value || '';
+      const statsUrl = bookSlug ? '/api/terminology/stats?bookSlug=' + encodeURIComponent(bookSlug) : '/api/terminology/stats';
+      const stats = await fetchJson(statsUrl);
 
       var byStatus = stats.byStatus || {};
       document.getElementById('stat-total').textContent = stats.total || 0;
       document.getElementById('stat-approved').textContent = byStatus.approved || 0;
       document.getElementById('stat-proposed').textContent = byStatus.proposed || 0;
-      document.getElementById('stat-disputed').textContent = (byStatus.disputed || 0) + (byStatus.needsReview || 0);
+      document.getElementById('stat-disputed').textContent = byStatus.disputed || 0;
+      document.getElementById('stat-needs-review').textContent = byStatus.needsReview || 0;
     }
 
     async function checkReviewQueue() {
@@ -932,6 +961,7 @@
       const query = document.getElementById('search-input').value;
       const category = document.getElementById('filter-category').value;
       const status = document.getElementById('filter-status').value;
+      const bookSlug = document.getElementById('filter-book')?.value || '';
 
       const params = new URLSearchParams({
         limit: pageSize,
@@ -941,6 +971,7 @@
       if (query) params.set('q', query);
       if (category) params.set('category', category);
       if (status) params.set('status', status);
+      if (bookSlug) params.set('bookSlug', bookSlug);
 
       const tbody = document.getElementById('terms-body');
       tbody.innerHTML = '<div class="terms-state">Hle\u00F0ur...</div>';
@@ -1050,10 +1081,20 @@
       document.getElementById('detail-title').textContent = term.english;
       document.getElementById('detail-english').textContent = term.english;
       document.getElementById('detail-icelandic').textContent = term.icelandic;
-      document.getElementById('detail-alternatives').textContent = term.alternatives?.join(', ') || '-';
+      document.getElementById('detail-alternatives').textContent =
+        term.alternatives?.map(a => typeof a === 'string' ? a : a.term).join(', ') || '-';
       document.getElementById('detail-category').textContent = formatCategory(term.category);
       document.getElementById('detail-source').textContent = formatSource(term.source);
+      document.getElementById('detail-pos').textContent = term.pos || '-';
       document.getElementById('detail-notes').textContent = term.notes || '-';
+
+      // Definitions
+      const defEnRow = document.getElementById('detail-def-en-row');
+      const defIsRow = document.getElementById('detail-def-is-row');
+      document.getElementById('detail-definition-en').textContent = term.definitionEn || '-';
+      document.getElementById('detail-definition-is').textContent = term.definitionIs || '-';
+      defEnRow.style.display = term.definitionEn ? '' : 'none';
+      defIsRow.style.display = term.definitionIs ? '' : 'none';
 
       const statusEl = document.getElementById('detail-status');
       statusEl.innerHTML = '<span class="status-badge status-' + term.status + '">' + formatStatus(term.status) + '</span>';
@@ -1420,10 +1461,14 @@
       const names = {
         'idordabankinn': '\u00CD\u00F0or\u00F0abankinn',
         'chemistry-association': 'Efnaf\u00E9lagi\u00F0',
+        'chemistry-society-csv': 'Efnafr\u00E6\u00F0if\u00E9lag \u00CDS',
+        'openstax-mt': 'OpenStax MT',
+        'openstax-glossary': 'OpenStax or\u00F0asafn',
         'chapter-glossary': 'Kaflaor\u00F0asafn',
         'manual': 'Handvirkt',
         'imported-csv': 'CSV innflutningur',
-        'imported-excel': 'Excel innflutningur'
+        'imported-excel': 'Excel innflutningur',
+        'merge-glossary': 'Sameina\u00F0 or\u00F0asafn'
       };
       return names[src] || src;
     }
@@ -1446,6 +1491,31 @@
         hour: '2-digit',
         minute: '2-digit'
       });
+    }
+
+    // ─── Export ────────────────────────────────────────────────────
+
+    async function exportGlossary(format) {
+      const bookSlug = document.getElementById('filter-book')?.value || '';
+      if (!bookSlug) {
+        alert('Veldu b\u00F3k til a\u00F0 flytja \u00FAt.');
+        return;
+      }
+
+      const url = '/api/terminology/export?bookSlug=' + encodeURIComponent(bookSlug) + '&format=' + format;
+      try {
+        const res = await fetch(url, { credentials: 'include' });
+        if (!res.ok) throw new Error('Villa vi\u00F0 \u00FAtflutning');
+
+        const blob = await res.blob();
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'glossary-export.' + format;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
     }
 
     // ─── Boot ─────────────────────────────────────────────────────

@@ -20,6 +20,35 @@ const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
 const activityLog = require('../services/activityLog');
 
+/**
+ * Resolve a bookSlug query param to a numeric book ID.
+ * Accepts either a numeric bookId or a string bookSlug.
+ * Returns the numeric ID or undefined if not specified.
+ */
+function resolveBookId(query) {
+  const { bookId, bookSlug } = query;
+  if (bookId) return parseInt(bookId, 10);
+  if (!bookSlug) return undefined;
+
+  // Look up slug in registered_books
+  const Database = require('better-sqlite3');
+  const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+  if (!require('fs').existsSync(dbPath)) return undefined;
+  const db = new Database(dbPath);
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    db.close();
+    return book ? book.id : undefined;
+  } catch {
+    try {
+      db.close();
+    } catch {
+      /* ignore */
+    }
+    return undefined;
+  }
+}
+
 // Configure multer for file uploads
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -52,11 +81,11 @@ const upload = multer({
  *   offset: Pagination offset
  */
 router.get('/', requireAuth, (req, res) => {
-  const { q, bookId, category, status, limit, offset } = req.query;
+  const { q, category, status, limit, offset } = req.query;
 
   try {
     const result = terminology.searchTerms(q, {
-      bookId: bookId ? parseInt(bookId, 10) : undefined,
+      bookId: resolveBookId(req.query),
       category,
       status,
       limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
@@ -105,10 +134,8 @@ router.get('/lookup', requireAuth, (req, res) => {
  * Get terminology statistics
  */
 router.get('/stats', requireAuth, (req, res) => {
-  const { bookId } = req.query;
-
   try {
-    const stats = terminology.getStats(bookId ? parseInt(bookId, 10) : null);
+    const stats = terminology.getStats(resolveBookId(req.query) || null);
     res.json(stats);
   } catch (err) {
     console.error('Stats error:', err);
@@ -636,6 +663,92 @@ router.post(
     }
   }
 );
+
+// ============================================================================
+// EXPORT
+// ============================================================================
+
+/**
+ * GET /api/terminology/export
+ * Export the full glossary as JSON or CSV
+ *
+ * Query params:
+ *   bookId: Book ID (required)
+ *   format: 'json' or 'csv' (default: json)
+ */
+router.get('/export', requireAuth, (req, res) => {
+  const { format = 'json' } = req.query;
+
+  const bookId = resolveBookId(req.query);
+  if (!bookId) {
+    return res.status(400).json({ error: 'bookId or bookSlug is required' });
+  }
+
+  try {
+    const result = terminology.searchTerms('', {
+      bookId,
+      limit: 10000,
+      offset: 0,
+    });
+
+    const terms = result.terms;
+
+    if (format === 'csv') {
+      const header =
+        'english,icelandic,pos,definition_en,definition_is,status,source,alternatives,category,chapter,notes';
+      const lines = [header];
+
+      for (const term of terms) {
+        const alts = (term.alternatives || [])
+          .map((a) => (typeof a === 'string' ? a : a.term))
+          .join('; ');
+        lines.push(
+          [
+            csvEscapeField(term.english),
+            csvEscapeField(term.icelandic),
+            csvEscapeField(term.pos || ''),
+            csvEscapeField(term.definitionEn || ''),
+            csvEscapeField(term.definitionIs || ''),
+            term.status,
+            term.source,
+            csvEscapeField(alts),
+            term.category,
+            term.sourceChapter || '',
+            csvEscapeField(term.notes || ''),
+          ].join(',')
+        );
+      }
+
+      const csv = lines.join('\n') + '\n';
+      res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+      res.setHeader('Content-Disposition', 'attachment; filename="glossary-export.csv"');
+      return res.send(csv);
+    }
+
+    // JSON format (default)
+    res.json({
+      generated: new Date().toISOString(),
+      stats: {
+        total: terms.length,
+        approved: terms.filter((t) => t.status === 'approved').length,
+        proposed: terms.filter((t) => t.status === 'proposed').length,
+        needs_review: terms.filter((t) => t.status === 'needs_review').length,
+      },
+      terms,
+    });
+  } catch (err) {
+    console.error('Export error:', err);
+    res.status(500).json({ error: 'Failed to export glossary', message: err.message });
+  }
+});
+
+function csvEscapeField(str) {
+  if (!str) return '';
+  if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+    return '"' + str.replace(/"/g, '""') + '"';
+  }
+  return str;
+}
 
 // ============================================================================
 // CONSISTENCY CHECK
