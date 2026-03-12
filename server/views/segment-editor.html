@@ -121,6 +121,16 @@
       color: var(--success);
     }
 
+    .module-badge.localized {
+      background: var(--warning-subtle, #fef3c7);
+      color: var(--warning, #b45309);
+    }
+
+    .module-section {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
     /* --- Module header bar --- */
     .module-header {
       display: flex;
@@ -345,6 +355,14 @@
     .segment-type-badge.caption {
       background: var(--warning-subtle);
       color: var(--warning);
+    }
+
+    .other-editor-badge {
+      display: inline-block;
+      margin-left: 0.25rem;
+      font-size: var(--text-xs);
+      color: var(--warning, #b45309);
+      cursor: help;
     }
 
     /* --- Segment content --- */
@@ -1195,6 +1213,7 @@
     let currentBook = '';
     let currentChapter = 0;
     let currentModuleId = '';
+    let _loadingModuleId = null; // re-entrancy guard for loadModule()
     let moduleData = null;
     let termData = null; // Per-segment term matches and issues
     let userRole = 'viewer';
@@ -1204,6 +1223,15 @@
     let draftTimer = null;
     let lastServerSaveTime = null;
     const recentlySaved = new Set(); // Track recently saved segment IDs for indicators
+    let lastFocusedTextarea = null; // Track last-focused edit textarea for term insertion
+
+    // Track textarea focus so term lookup can insert at the right place
+    // (clicking a lookup result moves focus away from the textarea)
+    document.addEventListener('focusin', (e) => {
+      if (e.target.tagName === 'TEXTAREA' && e.target.id?.startsWith('textarea-')) {
+        lastFocusedTextarea = e.target;
+      }
+    });
 
     // ================================================================
     // SAVE STATUS BAR
@@ -1328,7 +1356,7 @@
     bookSelect.addEventListener('change', async () => {
       currentBook = bookSelect.value;
       chapterSelect.disabled = !currentBook;
-      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      chapterSelect.innerHTML = '<option value="">Hleður kafla...</option>';
       document.getElementById('modules-list').style.display = 'none';
 
       if (currentBook) {
@@ -1336,13 +1364,22 @@
           const data = await fetchJson(`${API_BASE}/${currentBook}/chapters`, { credentials: 'include' });
           for (const ch of data.chapters) {
             const opt = document.createElement('option');
-            opt.value = ch;
-            opt.textContent = `Kafli ${ch}`;
+            // ch is now an object { chapter, title, titleIs } from the enriched API
+            const num = ch.chapter ?? ch;
+            const label = ch.titleIs || ch.title;
+            opt.value = num;
+            opt.textContent = num === -1 ? (label || 'Viðaukar') : (label ? `Kafli ${num} — ${label}` : `Kafli ${num}`);
             chapterSelect.appendChild(opt);
           }
         } catch (err) {
           console.error('Failed to load chapters:', err);
         }
+        // Restore placeholder if no chapters loaded (fetch failed or empty)
+        if (chapterSelect.options.length <= 1) {
+          chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+        }
+      } else {
+        chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
       }
     });
 
@@ -1366,16 +1403,21 @@
 
         container.innerHTML = data.modules
           .map(
-            (m) => `
-            <div class="module-card" onclick="loadModule('${m.moduleId}')" title="Smelltu til að opna">
-              <strong>${m.moduleId}</strong>
+            (m) => {
+              const displayTitle = m.titleIs || m.title || m.moduleId;
+              const sectionLabel = m.section ? `<span class="module-section">${escapeHtml(m.section)}</span> ` : '';
+              return `
+            <div class="module-card" onclick="loadModule('${m.moduleId}')" title="${escapeHtml(m.moduleId)} — Smelltu til að opna">
+              <strong>${sectionLabel}${escapeHtml(displayTitle)}</strong>
               <div class="module-badges">
                 ${m.hasEnSource ? '<span class="module-badge en">EN</span>' : ''}
                 ${m.hasMtOutput ? '<span class="module-badge mt">MT</span>' : ''}
                 ${m.hasFaithful ? '<span class="module-badge faithful">Ritstýrt</span>' : ''}
+                ${m.hasLocalized ? '<span class="module-badge localized">Staðfært</span>' : ''}
               </div>
             </div>
-          `
+          `;
+            }
           )
           .join('');
       } catch (err) {
@@ -1386,8 +1428,17 @@
     // ================================================================
     // LOAD MODULE
     // ================================================================
-    async function loadModule(moduleId) {
+    async function loadModule(moduleId, { force = false } = {}) {
+      if (!force && _loadingModuleId === moduleId) return; // already loading this module
+      _loadingModuleId = moduleId;
       currentModuleId = moduleId;
+
+      // Show loading spinner immediately to prevent double-clicks
+      const modulesContainer = document.getElementById('modules-container');
+      if (modulesContainer) {
+        modulesContainer.innerHTML =
+          '<div class="loading-state"><span class="spinner"></span><span>Hleður einingu...</span></div>';
+      }
 
       try {
         moduleData = await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
@@ -1413,7 +1464,12 @@
         // Load term data in background (non-blocking)
         loadTermData(moduleId);
       } catch (err) {
+        // Restore module list on error so users can retry
+        document.getElementById('module-selector').style.display = 'block';
+        chapterSelect.dispatchEvent(new Event('change'));
         alert('Villa við að hlaða einingu: ' + err.message);
+      } finally {
+        _loadingModuleId = null;
       }
     }
 
@@ -1503,6 +1559,21 @@
     }
 
     function renderSegments() {
+      // O1: Close open edit panels before re-rendering to prevent losing typed text
+      const openPanels = document.querySelectorAll('.edit-panel.active');
+      if (openPanels.length > 0 && dirtyEdits.size > 0) {
+        if (!confirm('Opin klippispjöld verða lokuð. Viltu halda áfram?')) return;
+      }
+      openPanels.forEach(panel => {
+        panel.classList.remove('active');
+        const row = panel.closest('tr');
+        if (row) row.classList.remove('editing');
+      });
+      dirtyEdits.clear();
+      // O4: Clear stale DOM reference
+      lastFocusedTextarea = null;
+      updateSaveStatusBar();
+
       const tbody = document.getElementById('segments-body');
       const filterType = document.getElementById('filter-type').value;
       const filterCat = document.getElementById('filter-category').value;
@@ -1628,10 +1699,17 @@
       // Pre-select the category in the dropdown if re-editing
       const selectedCat = latestEdit?.category || '';
 
+      // Cross-editor conflict indicator
+      const hasOtherEdits = (moduleData.otherPendingSegments || []).includes(seg.segmentId);
+      const conflictHtml = hasOtherEdits
+        ? '<span class="other-editor-badge" title="Annar ritstjóri hefur breytt þessum búti">&#9998;</span>'
+        : '';
+
       return `
         <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
           <td class="col-type">
             <span class="segment-type-badge ${seg.segmentType}">${seg.segmentType}</span>
+            ${conflictHtml}
           </td>
           <td class="col-en">
             <div class="segment-content">${enHtml || '<em class="text-muted">Engin enska</em>'}</div>
@@ -1706,7 +1784,7 @@
             const ind = document.getElementById('seg-ind-' + cssId(segmentId));
             if (ind) { ind.textContent = 'Breytt'; ind.className = 'seg-save-ind dirty'; }
             updateSaveStatusBar();
-          }, { once: true });
+          });
         }
       }
     }
@@ -1828,6 +1906,8 @@
     }
 
     async function saveEdit(segmentId) {
+      // O3: Guard against null moduleData if user navigated away mid-save
+      if (!moduleData?.segments) return;
       const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
       if (!seg) return;
 
@@ -1885,8 +1965,8 @@
         setTimeout(() => { recentlySaved.delete(segmentId); }, 4000);
         saveDraft(); // update draft (or clear if empty)
         updateSaveStatusBar();
-        // Reload module to refresh edits
-        await loadModule(currentModuleId);
+        // Reload module to refresh edits (O2: force bypass re-entrancy guard)
+        await loadModule(currentModuleId, { force: true });
       } catch (err) {
         // Revert per-segment indicator on error
         if (savingInd) { savingInd.textContent = 'Breytt'; savingInd.className = 'seg-save-ind dirty'; }
@@ -1938,12 +2018,12 @@
     // ================================================================
     document.getElementById('btn-submit').addEventListener('click', async () => {
       const stats = moduleData.stats || {};
-      if (!stats.total_edits || stats.total_edits === 0) {
+      if (!stats.pending || stats.pending === 0) {
         alert('Engar breytingar til að senda.');
         return;
       }
 
-      if (!confirm(`Senda ${stats.total_edits} breytingar til yfirlestrar?`)) return;
+      if (!confirm(`Senda ${stats.pending} breytingar til yfirlestrar?`)) return;
 
       try {
         await fetchJson(
@@ -1955,7 +2035,12 @@
           }
         );
 
-        alert('Sent til yfirlestrar!');
+        // Show success toast with link to reviews page
+        const toast = document.createElement('div');
+        toast.className = 'toast toast-success';
+        toast.innerHTML = 'Sent til yfirlestrar! <a href="/reviews" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">Skoða yfirlestur →</a>';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 6000);
         await loadModule(currentModuleId);
       } catch (err) {
         alert('Villa: ' + err.message);
@@ -2482,6 +2567,7 @@
     // ================================================================
 
     function showTermPopup(termId, element) {
+      closeTermPopup(); // remove any existing popup and outside-click listener
       const popup = document.getElementById('term-popup');
 
       // Find term info from termData
@@ -2631,21 +2717,21 @@
     });
 
     function insertTermFromLookup(icelandicTerm) {
-      // If an edit panel textarea is focused, insert term wrapped in __...__
-      const activeTA = document.activeElement;
-      if (activeTA && activeTA.tagName === 'TEXTAREA' && activeTA.id?.startsWith('textarea-')) {
-        const start = activeTA.selectionStart;
-        const end = activeTA.selectionEnd;
-        const text = activeTA.value;
+      // Insert into the last-focused edit textarea (clicking lookup moves focus away)
+      const ta = lastFocusedTextarea;
+      if (ta && ta.id?.startsWith('textarea-') && document.body.contains(ta)) {
+        const start = ta.selectionStart;
+        const end = ta.selectionEnd;
+        const text = ta.value;
         const insertion = '__' + icelandicTerm + '__';
-        activeTA.value = text.slice(0, start) + insertion + text.slice(end);
-        activeTA.selectionStart = activeTA.selectionEnd = start + insertion.length;
-        activeTA.dispatchEvent(new Event('input', { bubbles: true }));
+        ta.value = text.slice(0, start) + insertion + text.slice(end);
+        ta.selectionStart = ta.selectionEnd = start + insertion.length;
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
         termLookupInput.value = '';
         termLookupResults.classList.remove('active');
         termLookupInput.placeholder = 'Sett inn!';
         setTimeout(() => { termLookupInput.placeholder = 'Fletta upp hugtaki...'; }, 1500);
-        activeTA.focus();
+        ta.focus();
         return;
       }
 
@@ -2702,17 +2788,27 @@
     // KEYBOARD SHORTCUTS
     // ================================================================
     document.addEventListener('keydown', (e) => {
-      // Escape to close active edit panel
+      // Escape to close active edit panel (with unsaved-edit guard)
       if (e.key === 'Escape') {
+        // O5: Close term lookup results if visible
+        const termResults = document.getElementById('term-lookup-results');
+        if (termResults && termResults.classList.contains('active')) {
+          termResults.classList.remove('active');
+          return;
+        }
         const activePanel = document.querySelector('.edit-panel.active');
         if (activePanel) {
+          const textarea = activePanel.querySelector('textarea');
+          const segId = textarea?._segmentId;
+          // If there are unsaved changes, confirm before discarding
+          if (segId && dirtyEdits.has(segId)) {
+            if (!confirm('Þú átt óvistaðar breytingar. Viltu henda þeim?')) return;
+          }
           activePanel.classList.remove('active');
           const row = activePanel.closest('tr');
           if (row) row.classList.remove('editing');
-          // Clear dirty state — find the segmentId from the textarea data
-          const textarea = activePanel.querySelector('textarea');
-          if (textarea && textarea._segmentId) {
-            dirtyEdits.delete(textarea._segmentId);
+          if (segId) {
+            dirtyEdits.delete(segId);
             updateSaveStatusBar();
           }
         }
@@ -2758,10 +2854,13 @@
     // ================================================================
     // INIT
     // ================================================================
-    checkAuth();
 
     // Auto-load from URL params: ?book=...&chapter=...&module=...
+    // checkAuth() MUST resolve before any module loads, so role-gated
+    // panels (pipeline, apply) see the real role, not the default 'viewer'.
     (async function autoLoadFromParams() {
+      await checkAuth();
+
       const params = new URLSearchParams(window.location.search);
       const book = params.get('book');
       const chapter = params.get('chapter');

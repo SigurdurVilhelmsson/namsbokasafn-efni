@@ -1592,21 +1592,30 @@
     edBookSelect.addEventListener('change', async function () {
       edCurrentBook = edBookSelect.value;
       edChapterSelect.disabled = !edCurrentBook;
-      edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      edChapterSelect.innerHTML = '<option value="">Hle\u00F0ur kafla...</option>';
       document.getElementById('modules-list').style.display = 'none';
 
       if (edCurrentBook) {
         try {
           var data = await fetchJson(ED_API_BASE + '/' + edCurrentBook + '/chapters', { credentials: 'include' });
           for (var j = 0; j < data.chapters.length; j++) {
+            var ch = data.chapters[j];
+            var num = ch.chapter != null ? ch.chapter : ch;
+            var label = ch.titleIs || ch.title;
             var opt = document.createElement('option');
-            opt.value = data.chapters[j];
-            opt.textContent = 'Kafli ' + data.chapters[j];
+            opt.value = num;
+            opt.textContent = num === -1 ? (label || 'Viðaukar') : (label ? 'Kafli ' + num + ' — ' + label : 'Kafli ' + num);
             edChapterSelect.appendChild(opt);
           }
         } catch (err) {
           console.error('Failed to load chapters:', err);
         }
+        // Restore placeholder if no chapters loaded
+        if (edChapterSelect.options.length <= 1) {
+          edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+        }
+      } else {
+        edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
       }
     });
 
@@ -1636,7 +1645,8 @@
                 ? ' onclick="edLoadModule(\'' + m.moduleId + '\')" title="Smelltu til a\u00F0 sta\u00F0f\u00E6ra"'
                 : ' title="\u00DEarf Pass 1 fyrst"') +
               '>' +
-              '<strong>' + escapeHtml(m.moduleId) + '</strong>' +
+              '<strong>' + escapeHtml(m.titleIs || m.title || m.moduleId) + '</strong>' +
+              (m.title ? '<span style="font-size:var(--text-sm);color:var(--text-secondary);margin-left:0.5rem">' + escapeHtml(m.moduleId) + (m.section ? ' §' + escapeHtml(m.section) : '') + '</span>' : '') +
               '<div style="display:flex;gap:0.5rem">' +
                 (m.hasFaithful ? '<span class="status-badge status-approved">Pass 1</span>' : '<span class="status-badge status-pending">Vantar Pass 1</span>') +
                 (m.hasLocalized ? '<span class="status-badge status-approved">Sta\u00F0f\u00E6rt</span>' : '') +
@@ -1656,6 +1666,12 @@
     async function edLoadModule(moduleId) {
       edCurrentModuleId = moduleId;
       edPendingChanges = {};
+
+      // Show loading spinner while fetching module data
+      var container = document.getElementById('modules-container');
+      if (container) {
+        container.innerHTML = '<div class="placeholder-text"><span class="spinner"></span><span>Hle\u00F0ur einingu...</span></div>';
+      }
 
       try {
         edModuleData = await fetchJson(ED_API_BASE + '/' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId, {
@@ -2198,6 +2214,19 @@
     // Save drafts on auth expiry (before 401 redirect)
     window.addEventListener('auth-expired', function () {
       if (Object.keys(edPendingChanges).length > 0) edSaveDraft();
+    });
+
+    // ----------------------------------------------------------------
+    // KEYBOARD SHORTCUTS
+    // ----------------------------------------------------------------
+    document.addEventListener('keydown', function (e) {
+      // Escape key: go back to module list (with unsaved-changes guard)
+      if (e.key === 'Escape' && edModuleData) {
+        if (Object.keys(edPendingChanges).length > 0) {
+          if (!confirm('\u00DE\u00FA \u00E1tt \u00F3vista\u00F0ar breytingar. Viltu yfirgefa?')) return;
+        }
+        document.getElementById('btn-back').click();
+      }
     });
 
     // ----------------------------------------------------------------
@@ -2964,15 +2993,18 @@
     // ================================================================
 
     async function initPage() {
-      // Auth comes from layout.js via window.currentUser / userLoaded event.
-      // If user is already loaded, grab it; otherwise wait.
-      if (window.currentUser) {
-        onUserReady(window.currentUser);
-      } else {
-        window.addEventListener('userLoaded', function (e) {
-          onUserReady(e.detail);
-        });
-      }
+      // Wait for auth before any data loading (prevents race on deep-link URLs)
+      await new Promise(function (resolve) {
+        if (window.currentUser) {
+          onUserReady(window.currentUser);
+          resolve();
+        } else {
+          window.addEventListener('userLoaded', function (e) {
+            onUserReady(e.detail);
+            resolve();
+          });
+        }
+      });
 
       // Initialize review view selectors and event listeners
       await rvLoadBooks();

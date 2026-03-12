@@ -46,6 +46,7 @@ function acquireModuleLock(key) {
 }
 
 const { VALID_BOOKS } = require('../config');
+const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
 
 // =====================================================================
 // MODULE LISTING
@@ -61,7 +62,8 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req,
     return res.status(400).json({ error: `Ógild bók: ${book}` });
   }
   try {
-    const chapters = segmentParser.listChapters(book);
+    const chapterNums = segmentParser.listChapters(book);
+    const chapters = enrichChapters(book, chapterNums);
     res.json({ book, chapters });
   } catch (err) {
     console.error('Error listing chapters:', err.message);
@@ -81,6 +83,7 @@ router.get(
   (req, res) => {
     try {
       const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
+      enrichModules(req.params.book, modules);
       res.json({
         book: req.params.book,
         chapter: req.chapterNum,

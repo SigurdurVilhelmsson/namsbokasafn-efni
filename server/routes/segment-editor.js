@@ -36,6 +36,9 @@ const router = express.Router();
 
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
+
+// ─── Book data lookup (slug → chapter/module metadata) ───────────────
+const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
@@ -56,7 +59,8 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req,
     return res.status(400).json({ error: `Invalid book: ${book}` });
   }
   try {
-    const chapters = segmentParser.listChapters(book);
+    const chapterNums = segmentParser.listChapters(book);
+    const chapters = enrichChapters(book, chapterNums);
     res.json({ book, chapters });
   } catch (err) {
     console.error('Error listing chapters:', err.message);
@@ -76,6 +80,7 @@ router.get(
   (req, res) => {
     try {
       const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
+      enrichModules(req.params.book, modules);
       res.json({
         book: req.params.book,
         chapter: req.chapterNum,
@@ -121,10 +126,18 @@ router.get(
       // Get stats
       const stats = segmentEditor.getModuleStats(req.params.book, req.params.moduleId);
 
+      // Identify segments with pending edits from OTHER editors (cross-editor awareness)
+      const currentUserId = req.user?.id;
+      const otherEdits = segmentEditor
+        .getModuleEdits(req.params.book, req.params.moduleId, 'pending')
+        .filter((e) => String(e.editor_id) !== String(currentUserId));
+      const otherPendingSegments = [...new Set(otherEdits.map((e) => e.segment_id))];
+
       res.json({
         ...data,
         edits: editsBySegment,
         stats,
+        otherPendingSegments,
       });
     } catch (err) {
       console.error('Error loading module:', err.message);

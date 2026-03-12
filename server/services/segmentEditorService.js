@@ -300,11 +300,11 @@ function submitModuleForReview(params) {
       edited_segments)
      VALUES (?, ?, ?, ?, ?, ?)`
     )
-    .run(book, chapter, moduleId, submittedBy, submittedByUsername, editCounts.total_edits);
+    .run(book, chapter, moduleId, submittedBy, submittedByUsername, editCounts.pending_edits);
 
   return {
     id: result.lastInsertRowid,
-    editedSegments: editCounts.total_edits,
+    editedSegments: editCounts.pending_edits,
   };
 }
 
@@ -356,7 +356,7 @@ function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
   const review = conn.prepare(`SELECT * FROM module_reviews WHERE id = ?`).get(reviewId);
   if (!review) throw new Error('Review not found');
 
-  // Count segment edit statuses
+  // Count segment edit statuses for this review cycle only
   const counts = conn
     .prepare(
       `SELECT
@@ -366,9 +366,9 @@ function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
        COUNT(CASE WHEN status = 'discuss' THEN 1 END) as discuss
      FROM segment_edits
-     WHERE book = ? AND module_id = ?`
+     WHERE book = ? AND module_id = ? AND created_at >= ?`
     )
-    .get(review.book, review.module_id);
+    .get(review.book, review.module_id, review.submitted_at);
 
   const allReviewed = counts.pending === 0 && counts.discuss === 0;
   const newStatus = allReviewed ? 'approved' : 'changes_requested';
@@ -485,7 +485,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
     }
 
     // Check if faithful file actually exists — if not, allow re-application
-    const chDir = chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+    const chDir = segmentParser.chapterDir(chapter);
     const faithfulPath = path.join(
       BOOKS_DIR,
       book,
@@ -625,7 +625,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
 
   // Auto-advance status (best-effort, outside transaction)
   try {
-    const chDir = chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+    const chDir = segmentParser.chapterDir(chapter);
     const mtOutputDir = path.join(BOOKS_DIR, book, '02-mt-output', chDir);
     const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful-translation', chDir);
 
@@ -729,7 +729,9 @@ function getReviewQueue(book) {
       COUNT(CASE WHEN se.status = 'rejected' THEN 1 END) as rejected_edits,
       COUNT(CASE WHEN se.status = 'discuss' THEN 1 END) as discuss_edits
     FROM module_reviews mr
-    LEFT JOIN segment_edits se ON mr.book = se.book AND mr.module_id = se.module_id
+    LEFT JOIN segment_edits se
+      ON mr.book = se.book AND mr.module_id = se.module_id
+      AND se.created_at >= mr.submitted_at
     WHERE mr.status IN ('pending', 'in_review')`;
 
   const params = [];

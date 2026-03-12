@@ -164,6 +164,17 @@ function assembleSegments(segments) {
 }
 
 /**
+ * Convert a chapter number to its directory name.
+ * Chapter -1 is the appendices directory; all others are chNN.
+ *
+ * @param {number} chapter - Chapter number (-1 for appendices)
+ * @returns {string} Directory name (e.g. 'ch01', 'appendices')
+ */
+function chapterDir(chapter) {
+  return chapter === -1 ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+}
+
+/**
  * Build file paths for a module's segment files.
  *
  * @param {string} book - Book slug (e.g., 'efnafraedi')
@@ -172,23 +183,17 @@ function assembleSegments(segments) {
  * @returns {object} Paths to segment files
  */
 function getModulePaths(book, chapter, moduleId) {
-  const chapterStr = String(chapter).padStart(2, '0');
   const bookDir = path.join(BOOKS_DIR, book);
-  const chapterDir = `ch${chapterStr}`;
+  const chDir = chapterDir(chapter);
 
   return {
-    enSource: path.join(bookDir, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`),
-    mtOutput: path.join(bookDir, '02-mt-output', chapterDir, `${moduleId}-segments.is.md`),
-    faithful: path.join(
-      bookDir,
-      '03-faithful-translation',
-      chapterDir,
-      `${moduleId}-segments.is.md`
-    ),
-    localized: path.join(bookDir, '04-localized-content', chapterDir, `${moduleId}-segments.is.md`),
-    structure: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-structure.json`),
-    equations: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-equations.json`),
-    manifest: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-manifest.json`),
+    enSource: path.join(bookDir, '02-for-mt', chDir, `${moduleId}-segments.en.md`),
+    mtOutput: path.join(bookDir, '02-mt-output', chDir, `${moduleId}-segments.is.md`),
+    faithful: path.join(bookDir, '03-faithful-translation', chDir, `${moduleId}-segments.is.md`),
+    localized: path.join(bookDir, '04-localized-content', chDir, `${moduleId}-segments.is.md`),
+    structure: path.join(bookDir, '02-structure', chDir, `${moduleId}-structure.json`),
+    equations: path.join(bookDir, '02-structure', chDir, `${moduleId}-equations.json`),
+    manifest: path.join(bookDir, '02-structure', chDir, `${moduleId}-manifest.json`),
   };
 }
 
@@ -480,19 +485,24 @@ function listChapters(book) {
   if (!fs.existsSync(mtDir)) {
     return [];
   }
-  return fs
+  const chapters = fs
     .readdirSync(mtDir)
     .filter((d) => /^ch\d+$/.test(d))
     .map((d) => parseInt(d.replace('ch', ''), 10))
     .sort((a, b) => a - b);
+  // O6: Include appendices as chapter -1 if directory exists
+  if (fs.existsSync(path.join(mtDir, 'appendices'))) {
+    chapters.push(-1);
+  }
+  return chapters;
 }
 
 function listChapterModules(book, chapter) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const enDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
-  const mtDir = path.join(BOOKS_DIR, book, '02-mt-output', `ch${chapterStr}`);
-  const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${chapterStr}`);
-  const localizedDir = path.join(BOOKS_DIR, book, '04-localized-content', `ch${chapterStr}`);
+  const chDir = chapterDir(chapter);
+  const enDir = path.join(BOOKS_DIR, book, '02-for-mt', chDir);
+  const mtDir = path.join(BOOKS_DIR, book, '02-mt-output', chDir);
+  const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful-translation', chDir);
+  const localizedDir = path.join(BOOKS_DIR, book, '04-localized-content', chDir);
 
   if (!fs.existsSync(enDir)) {
     return [];
@@ -529,6 +539,7 @@ module.exports = {
   loadModuleForLocalization,
   saveLocalizedSegments,
   getLocalizedMtime,
+  chapterDir,
   listChapters,
   listChapterModules,
   SEG_MARKER_REGEX,
