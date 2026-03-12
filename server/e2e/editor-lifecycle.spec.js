@@ -34,8 +34,9 @@ async function navigateToFirstModule(page) {
   const firstCard = page.locator('.module-card').first();
   await expect(firstCard).toBeVisible({ timeout: 10000 });
 
-  // Extract module ID from the card text
-  const moduleId = await firstCard.locator('strong').textContent();
+  // Extract module ID from the card's title attribute (format: "mNNNNN — Smelltu til að opna")
+  const cardTitle = await firstCard.getAttribute('title');
+  const moduleId = cardTitle.split(' ')[0]; // e.g. "m68663"
 
   // Click to load the module
   await firstCard.click();

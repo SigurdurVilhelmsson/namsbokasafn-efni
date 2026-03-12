@@ -99,16 +99,19 @@
       select.value = books[0].slug;
     }
 
-    // Save selection on change
-    select.addEventListener('change', function () {
-      try {
-        if (select.value) {
-          localStorage.setItem(STORAGE_KEY, select.value);
+    // Save selection on change (guard against duplicate listeners on re-init)
+    if (!select.dataset.listenerBound) {
+      select.dataset.listenerBound = 'true';
+      select.addEventListener('change', function () {
+        try {
+          if (select.value) {
+            localStorage.setItem(STORAGE_KEY, select.value);
+          }
+        } catch {
+          /* localStorage unavailable */
         }
-      } catch {
-        /* localStorage unavailable */
-      }
-    });
+      });
+    }
   }
 
   /**
