@@ -1805,6 +1805,15 @@
         panel.classList.remove('active');
         const row = document.getElementById('row-' + cssId(segmentId));
         if (row) row.classList.remove('editing');
+        // Restore original text when cancelling (discard unsaved edits)
+        const textarea = document.getElementById('textarea-' + cssId(segmentId));
+        if (textarea && moduleData) {
+          const seg = moduleData.segments.find(s => s.segmentId === segmentId);
+          if (seg) {
+            const latestEdit = moduleData.edits[segmentId]?.[0];
+            textarea.value = latestEdit ? latestEdit.edited_content : seg.is;
+          }
+        }
       }
       dirtyEdits.delete(segmentId);
       updateSaveStatusBar();

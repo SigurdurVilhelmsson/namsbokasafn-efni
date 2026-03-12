@@ -88,6 +88,7 @@
 
     // Restore selection: prefer current value > stored > first book
     const preferred = currentValue || stored;
+    let selectedValue = '';
     if (
       preferred &&
       books.some(function (b) {
@@ -95,8 +96,15 @@
       })
     ) {
       select.value = preferred;
+      selectedValue = preferred;
     } else if (!allowAll && books.length > 0) {
       select.value = books[0].slug;
+      selectedValue = books[0].slug;
+    }
+
+    // Fire change event if a book was auto-selected so dependent dropdowns populate
+    if (selectedValue) {
+      select.dispatchEvent(new Event('change'));
     }
 
     // Save selection on change (guard against duplicate listeners on re-init)

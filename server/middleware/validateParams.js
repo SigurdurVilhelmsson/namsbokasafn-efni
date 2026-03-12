@@ -19,8 +19,8 @@ function validateBookChapter(req, res, next) {
     return res.status(400).json({ error: `Invalid book: ${book}` });
   }
 
-  // Allow 'appendices' as a special chapter value (stored as chapter_num=-1)
-  if (chapter === 'appendices') {
+  // Allow 'appendices' or '-1' as special chapter values (stored as chapter_num=-1)
+  if (chapter === 'appendices' || chapter === '-1') {
     req.chapterNum = -1;
     return next();
   }

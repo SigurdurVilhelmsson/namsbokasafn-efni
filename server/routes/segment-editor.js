@@ -46,6 +46,72 @@ const { VALID_BOOKS } = require('../config');
 const { PASS1_CATEGORIES: VALID_CATEGORIES } = require('../constants');
 
 // =====================================================================
+// NON-PARAMETERIZED ROUTES (must come before /:book/:chapter)
+// =====================================================================
+
+/**
+ * GET /terminology/lookup
+ * Quick term lookup for editor popups (delegates to terminology service).
+ */
+router.get('/terminology/lookup', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+  const { q, bookId } = req.query;
+
+  if (!q || q.length < 2) {
+    return res.json({ terms: [] });
+  }
+
+  try {
+    const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
+    res.json({ terms });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /reviews/:reviewId
+ * Get a module review with all segment edits.
+ */
+router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  try {
+    const data = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
+
+    // Also load the module segments for context
+    let moduleData = null;
+    try {
+      moduleData = segmentParser.loadModuleForEditing(
+        data.review.book,
+        data.review.chapter,
+        data.review.module_id
+      );
+    } catch (e) {
+      // Module data is supplementary, don't fail the request
+      console.error('Could not load module data for review:', e.message);
+    }
+
+    res.json({
+      ...data,
+      module: moduleData,
+    });
+  } catch (err) {
+    res.status(err.message === 'Review not found' ? 404 : 500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /edit/:editId/comments
+ * Get discussion thread for a segment edit.
+ */
+router.get('/edit/:editId/comments', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+  try {
+    const comments = segmentEditor.getDiscussion(parseInt(req.params.editId, 10));
+    res.json({ comments });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// =====================================================================
 // EDITOR ENDPOINTS
 // =====================================================================
 
@@ -295,36 +361,6 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
 });
 
 /**
- * GET /reviews/:reviewId
- * Get a module review with all segment edits.
- */
-router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  try {
-    const data = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
-
-    // Also load the module segments for context
-    let moduleData = null;
-    try {
-      moduleData = segmentParser.loadModuleForEditing(
-        data.review.book,
-        data.review.chapter,
-        data.review.module_id
-      );
-    } catch (e) {
-      // Module data is supplementary, don't fail the request
-      console.error('Could not load module data for review:', e.message);
-    }
-
-    res.json({
-      ...data,
-      module: moduleData,
-    });
-  } catch (err) {
-    res.status(err.message === 'Review not found' ? 404 : 500).json({ error: err.message });
-  }
-});
-
-/**
  * POST /edit/:editId/approve
  * Approve a segment edit.
  */
@@ -460,19 +496,6 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.CONTRIBUTOR)
   }
 });
 
-/**
- * GET /edit/:editId/comments
- * Get discussion thread for a segment edit.
- */
-router.get('/edit/:editId/comments', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
-  try {
-    const comments = segmentEditor.getDiscussion(parseInt(req.params.editId, 10));
-    res.json({ comments });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
 // =====================================================================
 // TERMINOLOGY INTEGRATION
 // =====================================================================
@@ -519,25 +542,6 @@ router.get(
     }
   }
 );
-
-/**
- * GET /terminology/lookup
- * Quick term lookup for editor popups (delegates to terminology service).
- */
-router.get('/terminology/lookup', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
-  const { q, bookId } = req.query;
-
-  if (!q || q.length < 2) {
-    return res.json({ terms: [] });
-  }
-
-  try {
-    const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
-    res.json({ terms });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
 // =====================================================================
 // STATISTICS
