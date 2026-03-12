@@ -1427,6 +1427,7 @@
 
     async function edAutoSave() {
       if (edSaveInFlight) return;
+      if (!edModuleData) return; // P5: guard against null after navigating away
       var keys = Object.keys(edPendingChanges);
       if (keys.length === 0) return;
 
@@ -1707,7 +1708,7 @@
       document.getElementById('module-title').textContent =
         edModuleData.moduleId + ' \u2014 ' + edModuleData.title;
       document.getElementById('module-meta').textContent =
-        'Kafli ' + edModuleData.chapter + ' \u00B7 ' + edModuleData.segmentCount + ' b\u00FAtar \u00B7 ' +
+        (edModuleData.chapter === -1 ? 'Vi\u00F0aukar' : 'Kafli ' + edModuleData.chapter) + ' \u00B7 ' + edModuleData.segmentCount + ' b\u00FAtar \u00B7 ' +
         edModuleData.faithfulCount + ' \u00FE\u00FDddar (Pass 1) \u00B7 ' +
         edModuleData.localizedCount + ' sta\u00F0f\u00E6r\u00F0ar';
 

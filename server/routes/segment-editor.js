@@ -184,7 +184,7 @@ router.post(
         editedContent,
         category,
         editorNote,
-        editorId: req.user.id,
+        editorId: String(req.user.id),
         editorUsername: req.user.username,
       });
 
@@ -500,8 +500,8 @@ router.get(
       // Build segment list for term matching
       const segments = data.segments.map((seg) => ({
         segmentId: seg.segmentId,
-        enContent: seg.enContent || '',
-        isContent: seg.isContent || '',
+        enContent: seg.en || '',
+        isContent: seg.is || '',
       }));
 
       // Get book ID from registered_books (if available)

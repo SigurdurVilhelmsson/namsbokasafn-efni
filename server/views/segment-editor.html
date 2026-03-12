@@ -1509,7 +1509,7 @@
       const metaEl = document.getElementById('module-meta');
       const missing = moduleData.segmentCount - moduleData.translatedCount;
       let metaText =
-        `Kafli ${moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
+        `${moduleData.chapter === -1 ? 'Viðaukar' : 'Kafli ' + moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
         `${moduleData.translatedCount} þýddar · Heimild: ${sourceLabel}`;
       if (missing > 0) {
         metaText += ` · ${missing} óþýdd(ar)`;
@@ -1765,26 +1765,36 @@
           textarea._segmentId = segmentId;
           textarea.focus();
 
-          // Live preview: render initial content and update on input
-          const previewEl = document.getElementById('preview-' + cssId(segmentId));
-          if (previewEl) {
-            previewEl.innerHTML = renderMarkdownPreview(textarea.value);
-            let previewTimer = null;
-            textarea.addEventListener('input', function onPreview() {
-              clearTimeout(previewTimer);
-              previewTimer = setTimeout(() => {
-                previewEl.innerHTML = renderMarkdownPreview(textarea.value);
-              }, 150);
+          // P1: Skip listener attachment if already bound (prevents accumulation on open/close/open)
+          if (!textarea._listenersAttached) {
+            textarea._listenersAttached = true;
+
+            // Live preview: render initial content and update on input
+            const previewEl = document.getElementById('preview-' + cssId(segmentId));
+            if (previewEl) {
+              let previewTimer = null;
+              textarea.addEventListener('input', function onPreview() {
+                clearTimeout(previewTimer);
+                previewTimer = setTimeout(() => {
+                  previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+                }, 150);
+              });
+            }
+
+            textarea.addEventListener('input', function onInput() {
+              dirtyEdits.add(segmentId);
+              // Update per-segment indicator
+              const ind = document.getElementById('seg-ind-' + cssId(segmentId));
+              if (ind) { ind.textContent = 'Breytt'; ind.className = 'seg-save-ind dirty'; }
+              updateSaveStatusBar();
             });
           }
 
-          textarea.addEventListener('input', function onInput() {
-            dirtyEdits.add(segmentId);
-            // Update per-segment indicator
-            const ind = document.getElementById('seg-ind-' + cssId(segmentId));
-            if (ind) { ind.textContent = 'Breytt'; ind.className = 'seg-save-ind dirty'; }
-            updateSaveStatusBar();
-          });
+          // Always render initial preview when opening
+          const previewEl = document.getElementById('preview-' + cssId(segmentId));
+          if (previewEl) {
+            previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+          }
         }
       }
     }
@@ -2711,9 +2721,14 @@
       }, 300);
     });
 
+    let termBlurTimeout = null;
     termLookupInput.addEventListener('blur', () => {
       // Delay to allow click on results
-      setTimeout(() => termLookupResults.classList.remove('active'), 200);
+      clearTimeout(termBlurTimeout);
+      termBlurTimeout = setTimeout(() => termLookupResults.classList.remove('active'), 200);
+    });
+    termLookupInput.addEventListener('focusin', () => {
+      clearTimeout(termBlurTimeout);
     });
 
     function insertTermFromLookup(icelandicTerm) {

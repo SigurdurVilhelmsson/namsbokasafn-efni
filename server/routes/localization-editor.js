@@ -465,7 +465,7 @@ router.post(
         previousContent: original,
         newContent: changedTo,
         category: type || 'other',
-        editorId: req.user.id,
+        editorId: String(req.user.id),
         editorUsername: req.user.username,
       });
 
