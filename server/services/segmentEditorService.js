@@ -58,6 +58,16 @@ function saveSegmentEdit(params) {
     )
     .get(book, moduleId, segmentId, editorId);
 
+  // If edited content matches the original, treat as "withdraw edit"
+  if (editedContent === originalContent) {
+    if (existing) {
+      conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
+      return { id: existing.id, updated: true, reverted: true };
+    }
+    // No edit to withdraw — nothing to do
+    return { id: null, updated: false, reverted: true };
+  }
+
   if (existing) {
     // Update existing edit
     conn

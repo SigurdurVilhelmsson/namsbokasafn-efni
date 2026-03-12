@@ -1934,11 +1934,12 @@
       const category = document.getElementById('cat-' + cssId(segmentId)).value;
       const editorNote = document.getElementById('note-' + cssId(segmentId)).value;
 
-      // Compare against the file text (seg.is), not any existing edit
-      // Even if content matches the original, a category tag is meaningful
-      if (editedContent === seg.is && !category && !editorNote) {
+      // If content matches original and no annotation, check if there's an existing edit to withdraw
+      const existingEdits = moduleData.edits[segmentId] || [];
+      const hasPendingEdit = existingEdits.some(e => e.status === 'pending');
+      if (editedContent === seg.is && !category && !editorNote && !hasPendingEdit) {
         closeEditPanel(segmentId);
-        return; // No change from original and no annotation
+        return; // No change from original, no annotation, no edit to withdraw
       }
 
       // Validate before saving
