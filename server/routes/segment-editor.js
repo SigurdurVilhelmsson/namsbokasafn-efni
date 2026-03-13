@@ -263,7 +263,7 @@ router.post(
           book: req.params.book,
           chapter: String(req.chapterNum),
           section: req.params.moduleId,
-          description: `${req.user.username} saved edit on ${req.params.moduleId}:${segmentId}`,
+          description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
         });
       } catch {
         /* fire-and-forget */
@@ -395,7 +395,7 @@ router.post('/edit/:editId/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR)
         book: edit.book,
         chapter: edit.chapter,
         section: edit.module_id,
-        description: `${req.user.username} approved edit on ${edit.module_id}:${edit.segment_id}`,
+        description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
       });
     } catch {
       /* fire-and-forget */
@@ -426,7 +426,7 @@ router.post('/edit/:editId/reject', requireAuth, requireRole(ROLES.HEAD_EDITOR),
         book: edit.book,
         chapter: edit.chapter,
         section: edit.module_id,
-        description: `${req.user.username} rejected edit on ${edit.module_id}:${edit.segment_id}`,
+        description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
       });
     } catch {
       /* fire-and-forget */
@@ -457,7 +457,7 @@ router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR)
         book: edit.book,
         chapter: edit.chapter,
         section: edit.module_id,
-        description: `${req.user.username} marked ${edit.module_id}:${edit.segment_id} for discussion`,
+        description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
       });
     } catch {
       /* fire-and-forget */
@@ -674,7 +674,7 @@ router.post(
           book: req.params.book,
           chapter: String(req.chapterNum),
           section: req.params.moduleId,
-          description: `${req.user.username} applied ${result.appliedCount} edits to ${req.params.moduleId}`,
+          description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
         });
       } catch {
         /* fire-and-forget */
@@ -739,7 +739,7 @@ router.post(
           book: req.params.book,
           chapter: String(req.chapterNum),
           section: req.params.moduleId,
-          description: `${req.user.username} applied ${applyResult.appliedCount} edits to ${req.params.moduleId} and started pipeline`,
+          description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
         });
       } catch {
         /* fire-and-forget */

@@ -67,6 +67,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         pendingReviews: 0,
         blockedIssues: 0,
         unassignedWork: 0,
+        overdueCount: 0,
         items: [],
       },
       teamActivity: [],

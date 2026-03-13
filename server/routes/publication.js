@@ -147,7 +147,7 @@ router.post(
           username: req.user.name || req.user.login,
           book: bookSlug,
           chapter: String(chapter),
-          description: `Started MT preview publication for ${bookSlug} chapter ${chapter}`,
+          description: `MT forskoðun hafin fyrir ${bookSlug} kafla ${chapter}`,
           metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
         });
       } catch (logErr) {
@@ -205,7 +205,7 @@ router.post(
           username: req.user.name || req.user.login,
           book: bookSlug,
           chapter: String(chapter),
-          description: `Started faithful publication for ${bookSlug} chapter ${chapter}`,
+          description: `Ritstýrð útgáfa hafin fyrir ${bookSlug} kafla ${chapter}`,
           metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
         });
       } catch (logErr) {
@@ -265,7 +265,7 @@ router.post(
           username: req.user.name || req.user.login,
           book: bookSlug,
           chapter: String(chapter),
-          description: `Started localized publication for ${bookSlug} chapter ${chapter}`,
+          description: `Staðfærð útgáfa hafin fyrir ${bookSlug} kafla ${chapter}`,
           metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
         });
       } catch (logErr) {

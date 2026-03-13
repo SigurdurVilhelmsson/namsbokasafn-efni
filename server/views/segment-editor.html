@@ -1092,7 +1092,7 @@
 
       <!-- Pipeline Panel (HEAD_EDITOR only) -->
       <div class="pipeline-panel" id="pipeline-panel" style="display: none;">
-        <h4 title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef">Ferill (inject &#8594; render)</h4>
+        <h4 title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef">Ferill (innsetja &#8594; birta)</h4>
         <div class="pipeline-controls">
           <label>Rás:</label>
           <select id="pipeline-track">
@@ -1100,14 +1100,14 @@
             <option value="mt-preview">MT forskoðun</option>
             <option value="localized">Staðfærð (localized)</option>
           </select>
-          <button class="btn btn-secondary btn-sm" id="btn-inject" title="Keyra inject">
-            Inject
+          <button class="btn btn-secondary btn-sm" id="btn-inject" title="Setja þýðingar inn í CNXML">
+            Innsetja
           </button>
-          <button class="btn btn-secondary btn-sm" id="btn-render" title="Keyra render">
-            Render
+          <button class="btn btn-secondary btn-sm" id="btn-render" title="Breyta CNXML í HTML">
+            Birta
           </button>
-          <button class="btn btn-primary btn-sm" id="btn-pipeline" title="Keyra inject + render">
-            Inject + Render
+          <button class="btn btn-primary btn-sm" id="btn-pipeline" title="Setja inn og birta">
+            Innsetja + Birta
           </button>
           <span class="pipeline-status-badge" id="pipeline-badge" style="display: none;"></span>
         </div>
@@ -1122,8 +1122,8 @@
           <button class="btn btn-apply" id="btn-apply" disabled title="Vista samþykktar breytingar í 03-faithful-translation/ skrár">
             Vista í skrár
           </button>
-          <button class="btn btn-apply" id="btn-apply-render" disabled title="Vista í skrár og keyra inject + render" style="background: var(--accent);">
-            Vista + Render
+          <button class="btn btn-apply" id="btn-apply-render" disabled title="Vista í skrár og birta á vef" style="background: var(--accent);">
+            Vista + Birta
           </button>
           <span class="pipeline-status-badge" id="apply-badge" style="display: none;"></span>
         </div>
@@ -2057,10 +2057,10 @@
 
         // Show success toast with link to reviews page
         const toast = document.createElement('div');
-        toast.className = 'toast toast-success';
+        toast.className = 'toast toast-success show';
         toast.innerHTML = 'Sent til yfirlestrar! <a href="/editor" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">Skoða yfirlestur →</a>';
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 6000);
+        setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 6000);
         await loadModule(currentModuleId);
       } catch (err) {
         alert('Villa: ' + err.message);
@@ -2088,6 +2088,9 @@
       if (topbarTitle) {
         topbarTitle.textContent = 'Ritstjóri';
       }
+
+      // Reload module list (otherwise the spinner from loadModule persists)
+      chapterSelect.dispatchEvent(new Event('change'));
     });
 
     // ================================================================

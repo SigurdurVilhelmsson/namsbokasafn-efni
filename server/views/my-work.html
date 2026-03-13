@@ -1634,15 +1634,15 @@
       var statsEl = document.getElementById('attention-stats');
       var itemsEl = document.getElementById('attention-items');
 
-      var totalIssues = attention.overdueCount + attention.blockedIssues +
-                       attention.unassignedWork + attention.pendingReviews;
+      var totalIssues = (attention.overdueCount || 0) + (attention.blockedIssues || 0) +
+                       (attention.unassignedWork || 0) + (attention.pendingReviews || 0);
 
       panel.className = totalIssues > 0 ? 'attention-panel has-issues' : 'attention-panel all-clear';
 
       statsEl.innerHTML =
         '<div class="attention-stat">' +
-          '<div class="attention-stat-value ' + (attention.overdueCount > 0 ? 'danger' : 'zero') + '">' +
-            attention.overdueCount +
+          '<div class="attention-stat-value ' + ((attention.overdueCount || 0) > 0 ? 'danger' : 'zero') + '">' +
+            (attention.overdueCount || 0) +
           '</div>' +
           '<div class="attention-stat-label">Tímafrestur</div>' +
         '</div>' +
