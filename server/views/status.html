@@ -2447,7 +2447,8 @@
         content.innerHTML = html;
 
       } catch (err) {
-        content.innerHTML = '<p class="text-error text-center">Villa við að hlaða dagskrá: ' + err.message + '</p>';
+        content.innerHTML = '<p class="text-error text-center"></p>';
+        content.querySelector('p').textContent = 'Villa við að hlaða dagskrá: ' + err.message;
       }
     }
 
@@ -2535,7 +2536,8 @@
           '<tbody>' + changes.join('') + '</tbody></table>';
         footer.style.display = 'flex';
       } catch (err) {
-        content.innerHTML = '<p style="color:var(--error)">Villa: ' + err.message + '</p>';
+        content.innerHTML = '<p style="color:var(--error)"></p>';
+        content.querySelector('p').textContent = 'Villa: ' + err.message;
       }
     }
 
@@ -2564,7 +2566,8 @@
           loadDashboard();
         }, 500);
       } catch (err) {
-        content.innerHTML = '<p style="color:var(--error)">Villa: ' + err.message + '</p>';
+        content.innerHTML = '<p style="color:var(--error)"></p>';
+        content.querySelector('p').textContent = 'Villa: ' + err.message;
       } finally {
         btn.disabled = false;
         btn.textContent = 'Staðfesta samstillingu';

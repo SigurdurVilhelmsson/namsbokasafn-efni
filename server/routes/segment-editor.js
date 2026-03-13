@@ -385,7 +385,7 @@ router.post('/edit/:editId/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR)
       parseInt(req.params.editId, 10),
       req.user.id,
       req.user.username,
-      req.body.note
+      req.body?.note
     );
     try {
       activityLog.log({
@@ -416,7 +416,7 @@ router.post('/edit/:editId/reject', requireAuth, requireRole(ROLES.HEAD_EDITOR),
       parseInt(req.params.editId, 10),
       req.user.id,
       req.user.username,
-      req.body.note
+      req.body?.note
     );
     try {
       activityLog.log({
@@ -447,7 +447,7 @@ router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR)
       parseInt(req.params.editId, 10),
       req.user.id,
       req.user.username,
-      req.body.note
+      req.body?.note
     );
     try {
       activityLog.log({
@@ -510,9 +510,10 @@ router.post(
             review.review.module_id
           );
         } catch (applyErr) {
-          // Auto-apply is best-effort; don't fail the review completion
+          // Auto-apply is best-effort; don't fail the review completion.
+          // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
           console.error('Auto-apply after review failed:', applyErr.message);
-          applied = { error: applyErr.message };
+          applied = { error: applyErr.message, retryable: true };
         }
       }
 

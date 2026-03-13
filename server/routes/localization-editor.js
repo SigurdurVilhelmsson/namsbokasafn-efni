@@ -296,11 +296,13 @@ router.post(
         }
       }
 
-      // Build lookup from request
+      // Build lookups from request
       const editLookup = {};
+      const categoryLookup = {};
       for (const seg of segments) {
         if (seg.segmentId && seg.content !== undefined && seg.content !== null) {
           editLookup[seg.segmentId] = seg.content;
+          if (seg.category) categoryLookup[seg.segmentId] = seg.category;
         }
       }
 
@@ -335,7 +337,7 @@ router.post(
               segmentId: seg.segmentId,
               previousContent,
               newContent,
-              category: null,
+              category: categoryLookup[seg.segmentId] || null,
               editorId: String(req.user.id),
               editorUsername: req.user.username,
             });
@@ -456,6 +458,15 @@ router.post(
       return res.status(400).json({ error: 'original, changedTo, and reason are required' });
     }
 
+    const VALID_LOC_CATEGORIES = [
+      'unit-conversion',
+      'cultural-adaptation',
+      'example-replacement',
+      'formatting',
+      'unchanged',
+    ];
+    const category = VALID_LOC_CATEGORIES.includes(type) ? type : null;
+
     try {
       localizationEditService.logLocalizationEdit({
         book: req.params.book,
@@ -464,7 +475,7 @@ router.post(
         segmentId: type || 'manual-log',
         previousContent: original,
         newContent: changedTo,
-        category: type || 'other',
+        category,
         editorId: String(req.user.id),
         editorUsername: req.user.username,
       });
