@@ -757,6 +757,45 @@ function getReviewQueue(book) {
   return conn.prepare(query).all(...params);
 }
 
+// =====================================================================
+// GLOBAL STATISTICS (for dashboard)
+// =====================================================================
+
+/**
+ * Get aggregate edit statistics across all books/modules.
+ */
+function getGlobalEditStats() {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT
+        COUNT(CASE WHEN status = 'pending' THEN 1 END) as total_pending,
+        COUNT(CASE WHEN status = 'approved' THEN 1 END) as total_approved,
+        COUNT(CASE WHEN status = 'rejected' THEN 1 END) as total_rejected,
+        COUNT(CASE WHEN status = 'discuss' THEN 1 END) as total_discuss,
+        COUNT(CASE WHEN status = 'approved' AND applied_at IS NOT NULL THEN 1 END) as total_applied,
+        COUNT(DISTINCT module_id) as modules_with_edits,
+        COUNT(DISTINCT editor_id) as active_editors,
+        COUNT(*) as total_edits
+      FROM segment_edits`
+    )
+    .get();
+}
+
+/**
+ * Get edits marked for discussion (for attention panel).
+ */
+function getDiscussEdits(limit = 10) {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT book, chapter, module_id, segment_id, editor_username, editor_note
+      FROM segment_edits WHERE status = 'discuss'
+      ORDER BY created_at DESC LIMIT ?`
+    )
+    .all(Math.min(limit, 200));
+}
+
 /** @internal Test-only: inject an in-memory DB instance */
 function _setTestDb(testDb) {
   db = testDb;
@@ -792,6 +831,8 @@ module.exports = {
   getDiscussion,
   // Statistics
   getModuleStats,
+  getGlobalEditStats,
+  getDiscussEdits,
   // Review queue
   getReviewQueue,
   // Test helpers

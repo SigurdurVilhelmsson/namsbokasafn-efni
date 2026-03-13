@@ -674,3 +674,309 @@ describe('applyApprovedEdits — integration', () => {
     expect(seg1.content).toBe('Yfirfarið efnisgrein.');
   });
 });
+
+// =====================================================================
+// Review Queue and Edge Cases
+// =====================================================================
+
+describe('Review queue and edge cases', () => {
+  let db;
+  let tmpDir;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+
+    // Create temp directory structured as a mini book (needed for applyApprovedEdits in test 7)
+    tmpDir = mkdtempSync(join(tmpdir(), 'review-test-'));
+    const booksDir = join(tmpDir, 'books');
+    const bookDir = join(booksDir, 'testbook');
+
+    // EN source segments
+    const enDir = join(bookDir, '02-for-mt', 'ch01');
+    mkdirSync(enDir, { recursive: true });
+    writeFileSync(
+      join(enDir, 'm00001-segments.en.md'),
+      [
+        '<!-- SEG:m00001:para:fs-id001 -->',
+        'This is paragraph one.',
+        '',
+        '<!-- SEG:m00001:para:fs-id002 -->',
+        'This is paragraph two.',
+      ].join('\n'),
+      'utf-8'
+    );
+
+    // MT output segments (IS base text)
+    const mtDir = join(bookDir, '02-mt-output', 'ch01');
+    mkdirSync(mtDir, { recursive: true });
+    writeFileSync(
+      join(mtDir, 'm00001-segments.is.md'),
+      [
+        '<!-- SEG:m00001:para:fs-id001 -->',
+        'Þetta er fyrsta efnisgrein.',
+        '',
+        '<!-- SEG:m00001:para:fs-id002 -->',
+        'Þetta er önnur efnisgrein.',
+      ].join('\n'),
+      'utf-8'
+    );
+
+    service._setTestBooksDir(booksDir);
+    segmentParser._setTestBooksDir(booksDir);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+    service._setTestBooksDir(join(originalBooksDir));
+    segmentParser._setTestBooksDir(originalBooksDir);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_edits');
+    db.exec('DELETE FROM module_reviews');
+    // Clean up faithful files if they exist
+    try {
+      const { unlinkSync, readdirSync } = require('fs');
+      const dir = join(tmpDir, 'books', 'testbook', '03-faithful-translation', 'ch01');
+      if (existsSync(dir)) {
+        for (const f of readdirSync(dir)) {
+          unlinkSync(join(dir, f));
+        }
+      }
+    } catch {
+      // Directory may not exist yet
+    }
+  });
+
+  it('getReviewQueue returns pending reviews with edit counts', () => {
+    // Create two edits and submit for review
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti 1',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id002',
+      originalContent: 'Original 2',
+      editedContent: 'Breytt texti 2',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+
+    // Approve one of the edits
+    const edits = service.getModuleEdits('testbook', 'm00001', 'pending');
+    service.approveEdit(edits[0].id, 'reviewer-1', 'reviewer1');
+
+    const queue = service.getReviewQueue('testbook');
+    expect(queue).toHaveLength(1);
+
+    const item = queue[0];
+    expect(item.book).toBe('testbook');
+    expect(item.module_id).toBe('m00001');
+    expect(item.pending_edits).toBe(1);
+    expect(item.approved_edits).toBe(1);
+    expect(item.submitted_at).toBeTruthy();
+  });
+
+  it('completeModuleReview — all approved → status=approved', () => {
+    // Save one edit
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    // Submit for review
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+
+    // Approve the edit
+    service.approveEdit(editId, 'reviewer-1', 'reviewer1');
+
+    // Complete the review
+    const result = service.completeModuleReview(reviewId, 'reviewer-1', 'reviewer1', 'All good');
+    expect(result.status).toBe('approved');
+    expect(result.allReviewed).toBe(true);
+  });
+
+  it('completeModuleReview — some pending → status=changes_requested', () => {
+    // Save two edits
+    const { id: editId1 } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original 1',
+      editedContent: 'Breytt texti 1',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id002',
+      originalContent: 'Original 2',
+      editedContent: 'Breytt texti 2',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    // Submit for review
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+
+    // Approve only the first edit — second remains pending
+    service.approveEdit(editId1, 'reviewer-1', 'reviewer1');
+
+    // Complete the review
+    const result = service.completeModuleReview(reviewId, 'reviewer-1', 'reviewer1', 'Needs work');
+    expect(result.status).toBe('changes_requested');
+    expect(result.allReviewed).toBe(false);
+  });
+
+  it('completeModuleReview — discuss edits → status=changes_requested', () => {
+    // Save one edit
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    // Submit for review
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+
+    // Mark the edit for discussion
+    service.markForDiscussion(editId, 'reviewer-1', 'reviewer1', 'Need to discuss this');
+
+    // Complete the review
+    const result = service.completeModuleReview(
+      reviewId,
+      'reviewer-1',
+      'reviewer1',
+      'Has discuss items'
+    );
+    expect(result.status).toBe('changes_requested');
+    expect(result.allReviewed).toBe(false);
+  });
+
+  it('submitModuleForReview — already pending → throws', () => {
+    // Save an edit and submit for review
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+
+    // Try to submit again — should throw
+    expect(() =>
+      service.submitModuleForReview({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        submittedBy: 'user-1',
+        submittedByUsername: 'editor1',
+      })
+    ).toThrow('already has a pending review');
+  });
+
+  it('unapproveEdit — not approved → throws', () => {
+    // Create a pending edit (not approved)
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    // Try to unapprove a pending edit — should throw
+    expect(() => service.unapproveEdit(editId)).toThrow('not approved');
+  });
+
+  it('unapproveEdit — already applied → throws', () => {
+    // Create edit, approve it, apply it to files
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Yfirfarið efnisgrein.',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    service.approveEdit(editId, 'reviewer-1', 'reviewer1');
+
+    // Apply approved edits — writes to disk and sets applied_at
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // Verify the edit is now applied
+    const edit = service.getEditById(editId);
+    expect(edit.applied_at).toBeTruthy();
+
+    // Try to unapprove an already-applied edit — should throw
+    expect(() => service.unapproveEdit(editId)).toThrow('already been applied');
+  });
+});

@@ -203,7 +203,7 @@ function loadSectionContent(book, chapter, section) {
         chapter: statusData.chapter,
       };
     }
-  } catch (err) {
+  } catch {
     // Ignore metadata errors
   }
 

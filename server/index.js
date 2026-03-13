@@ -61,7 +61,6 @@ const booksRoutes = require('./routes/books');
 const { requireAuth } = require('./middleware/requireAuth');
 
 // Import Phase 3 routes
-const reviewsRoutes = require('./routes/reviews');
 const notificationsRoutes = require('./routes/notifications');
 const activityRoutes = require('./routes/activity');
 
@@ -243,7 +242,6 @@ app.use('/api/sync', syncRoutes);
 app.use('/api/images', imagesRoutes);
 
 // Phase 3 API Routes
-app.use('/api/reviews', reviewsRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use('/api/activity', activityRoutes);
 
@@ -362,7 +360,7 @@ const server = app.listen(PORT, HOST, () => {
   console.log('  /segment-editor   Segment-level linguistic editor');
   console.log('  /localization-editor  Segment-level localization (Pass 2)');
   console.log('  /pipeline         Pipeline flow dashboard');
-  console.log('  /reviews          Review dashboard');
+  console.log('  /editor           Segment editor + review queue');
   console.log('');
   console.log('Press Ctrl+C to stop');
   console.log('');

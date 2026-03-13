@@ -36,6 +36,7 @@ const router = express.Router();
 
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
+const activityLog = require('../services/activityLog');
 
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
 const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
@@ -254,6 +255,20 @@ router.post(
         editorUsername: req.user.username,
       });
 
+      try {
+        activityLog.log({
+          type: 'segment_edit_saved',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} saved edit on ${req.params.moduleId}:${segmentId}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+
       res.json({
         success: true,
         editId: result.id,
@@ -372,6 +387,19 @@ router.post('/edit/:editId/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR)
       req.user.username,
       req.body.note
     );
+    try {
+      activityLog.log({
+        type: 'segment_edit_approved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} approved edit on ${edit.module_id}:${edit.segment_id}`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
     res.json({ success: true, edit });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -390,6 +418,19 @@ router.post('/edit/:editId/reject', requireAuth, requireRole(ROLES.HEAD_EDITOR),
       req.user.username,
       req.body.note
     );
+    try {
+      activityLog.log({
+        type: 'segment_edit_rejected',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} rejected edit on ${edit.module_id}:${edit.segment_id}`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
     res.json({ success: true, edit });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -408,6 +449,19 @@ router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR)
       req.user.username,
       req.body.note
     );
+    try {
+      activityLog.log({
+        type: 'segment_edit_discuss',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} marked ${edit.module_id}:${edit.segment_id} for discussion`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
     res.json({ success: true, edit });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -442,7 +496,7 @@ router.post(
         parseInt(req.params.reviewId, 10),
         req.user.id,
         req.user.username,
-        req.body.notes
+        req.body?.notes
       );
 
       // Auto-apply when review is fully approved
@@ -611,6 +665,20 @@ router.post(
         req.params.moduleId
       );
 
+      try {
+        activityLog.log({
+          type: 'segment_edits_applied',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} applied ${result.appliedCount} edits to ${req.params.moduleId}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+
       res.json({
         success: true,
         ...result,
@@ -661,6 +729,20 @@ router.post(
         track: 'faithful',
         userId: req.user.id,
       });
+
+      try {
+        activityLog.log({
+          type: 'segment_edits_applied',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} applied ${applyResult.appliedCount} edits to ${req.params.moduleId} and started pipeline`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
 
       res.json({
         success: true,

@@ -17,6 +17,7 @@ const path = require('path');
 const fs = require('fs');
 const { spawn } = require('child_process');
 const pipelineService = require('./pipelineService');
+const pipelineStatusService = require('./pipelineStatusService');
 const segmentParser = require('./segmentParser');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -229,19 +230,33 @@ async function publishChapter(bookSlug, chapterNum, track, userId) {
     userId,
   });
 
-  // When pipeline completes, update chapter status.json
+  // When pipeline completes, update pipeline status via DB (authoritative)
   promise.then(() => {
     const job = pipelineService.getJob(jobId);
     if (job && job.status === 'completed') {
       const trackKey = track === 'mt-preview' ? 'mtPreview' : track;
-      updateChapterStatus(bookSlug, chapterNum, 'publication', {
-        [trackKey]: {
-          complete: true,
-          date: new Date().toISOString().split('T')[0],
-          pipeline: 'html',
-          moduleCount: readiness.moduleCount,
-        },
-      });
+      const pubStage = `publication.${trackKey}`;
+      try {
+        pipelineStatusService.transitionStage(
+          bookSlug,
+          chapterNum,
+          pubStage,
+          'complete',
+          `system:publish-${track}`,
+          `Published ${track} track (${readiness.moduleCount} modules)`
+        );
+      } catch (err) {
+        // Fall back to direct status.json write if DB transition fails
+        console.error(`Pipeline status transition failed for ${pubStage}:`, err.message);
+        updateChapterStatus(bookSlug, chapterNum, 'publication', {
+          [trackKey]: {
+            complete: true,
+            date: new Date().toISOString().split('T')[0],
+            pipeline: 'html',
+            moduleCount: readiness.moduleCount,
+          },
+        });
+      }
     }
   });
 

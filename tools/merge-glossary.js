@@ -641,7 +641,7 @@ async function main() {
   // ── Source 1: Chemistry Society CSV ──
   // Only auto-detect the society CSV for chemistry books; other books must specify --csv
   const societyCsvPath =
-    args.csv || (bookSlug.startsWith('efnafraedi') ? 'Efnafræði_en_is.csv' : null);
+    args.csv || (bookSlug.startsWith('efnafraedi-2e') ? 'Efnafræði_en_is.csv' : null);
   const societyTerms = loadSocietyCSV(societyCsvPath);
   console.log(
     `Source 1 — Chemistry Society CSV: ${societyTerms.size} terms${societyCsvPath ? '' : ' (no CSV specified)'}`

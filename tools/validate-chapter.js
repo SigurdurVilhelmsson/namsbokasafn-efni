@@ -483,8 +483,8 @@ const VALIDATORS = {
       // Map track to status field
       const trackStatusMap = {
         'mt-preview': status.mtOutput?.complete || status.publication?.mtPreview?.complete,
-        faithful: status.editorialPass1?.complete,
-        localized: status.editorialPass2?.complete,
+        faithful: status.linguisticReview?.complete,
+        localized: status.rendering?.complete || status.publication?.localized?.complete,
       };
 
       const shouldHaveContent = trackStatusMap[track];

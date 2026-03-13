@@ -1173,10 +1173,13 @@
 
     // Stage label translations (from dashboard)
     const STAGE_LABELS = {
-      'enMarkdown': 'EN Markdown',
+      'extraction': 'Útdráttur',
+      'mtReady': 'VÞ tilbúið',
       'mtOutput': 'Vélþýðing',
-      'linguisticReview': 'Yfirferð 1',
+      'linguisticReview': 'Yfirferð',
       'tmCreated': 'Þýðingaminni',
+      'injection': 'Inndráttur',
+      'rendering': 'Myndbreyting',
       'publication': 'Útgáfa'
     };
 
@@ -1498,7 +1501,7 @@
 
       // Render lists
       renderSubmissions(detailedData.pendingSubmissions);
-      renderChangesRequested(detailedData.recentReviews.filter(function(r) { return r.status === 'changes_requested'; }));
+      renderChangesRequested(detailedData.recentReviews.filter(function(r) { return r.status === 'rejected' || r.status === 'discuss'; }));
       renderTerms(detailedData.proposedTerms);
       renderEditorActivity(detailedData.recentActivity);
     }
@@ -1875,7 +1878,7 @@
           window.location.href = '/issues?category=BLOCKED';
           break;
         case 'review':
-          window.location.href = '/reviews';
+          window.location.href = '/editor';
           break;
         default:
           window.location.href = '/progress';

@@ -95,13 +95,9 @@ test.describe('Authenticated pages (admin)', () => {
     expect(errors).toEqual([]);
   });
 
-  test('reviews page loads without errors', async ({ page }) => {
-    const errors = [];
-    page.on('pageerror', (err) => errors.push(err.message));
-
+  test('reviews redirects to editor', async ({ page }) => {
     await page.goto('/reviews');
-    await expect(page.locator('.app-layout')).toBeVisible();
-    expect(errors).toEqual([]);
+    await expect(page).toHaveURL(/\/editor/);
   });
 
   test('localization page loads without errors', async ({ page }) => {

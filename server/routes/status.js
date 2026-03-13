@@ -17,6 +17,7 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const activityLog = require('../services/activityLog');
+const segmentEditorService = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
 const {
@@ -164,16 +165,16 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       const weekAgo = new Date();
       weekAgo.setDate(weekAgo.getDate() - 7);
 
-      // Count completed sections in last 7 days
-      const recentCompletions = activityLog.search({
-        type: 'review_approved',
-        limit: 100,
-      });
-
-      const completedThisWeek = recentCompletions.activities.filter((a) => {
-        const activityDate = new Date(a.createdAt);
-        return activityDate >= weekAgo;
-      }).length;
+      // Count completed actions in last 7 days (includes segment editor activity)
+      const velocityTypes = ['review_approved', 'segment_edit_approved', 'segment_edits_applied'];
+      let completedThisWeek = 0;
+      for (const vType of velocityTypes) {
+        const result = activityLog.search({ type: vType, limit: 200 });
+        completedThisWeek += result.activities.filter((a) => {
+          const activityDate = new Date(a.createdAt);
+          return activityDate >= weekAgo;
+        }).length;
+      }
 
       dashboard.metrics.velocity = {
         sectionsPerWeek: completedThisWeek,
@@ -202,49 +203,48 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       console.error('Failed to calculate metrics:', err);
     }
 
-    // Get pending reviews count
+    // Get pending module reviews from DB
     try {
-      const reviewsPath = path.join(__dirname, '..', 'data', 'reviews.json');
-      if (fs.existsSync(reviewsPath)) {
-        const reviews = JSON.parse(fs.readFileSync(reviewsPath, 'utf-8'));
-        const pending = reviews.filter((r) => r.status === 'pending');
-        dashboard.needsAttention.pendingReviews = pending.length;
+      const pendingReviews = segmentEditorService.getPendingModuleReviews();
+      dashboard.needsAttention.pendingReviews = pendingReviews.length;
 
-        for (const review of pending.slice(0, 5)) {
-          dashboard.needsAttention.items.push({
-            type: 'review',
-            book: review.book,
-            chapter: review.chapter,
-            section: review.section,
-            submittedBy: review.submittedBy,
-            message: `Yfirferð í bið: ${review.section}`,
-          });
-        }
+      for (const review of pendingReviews.slice(0, 5)) {
+        dashboard.needsAttention.items.push({
+          type: 'review',
+          book: review.book,
+          chapter: review.chapter,
+          section: review.module_id,
+          submittedBy: review.submitted_by_username,
+          message: `Yfirferð í bið: ${review.module_id}`,
+        });
       }
-    } catch {
-      // Reviews file may not exist
+    } catch (err) {
+      console.error('Failed to get pending reviews:', err.message);
     }
 
-    // Get blocked issues count
+    // Get edits marked for discussion (replaces blocked issues)
     try {
-      const issuesPath = path.join(__dirname, '..', 'data', 'issues.json');
-      if (fs.existsSync(issuesPath)) {
-        const issues = JSON.parse(fs.readFileSync(issuesPath, 'utf-8'));
-        const blocked = issues.filter((i) => i.category === 'BLOCKED' && i.status === 'pending');
-        dashboard.needsAttention.blockedIssues = blocked.length;
+      const discussEdits = segmentEditorService.getDiscussEdits(10);
+      dashboard.needsAttention.blockedIssues = discussEdits.length;
 
-        for (const issue of blocked.slice(0, 5)) {
-          dashboard.needsAttention.items.push({
-            type: 'blocked',
-            description: issue.description,
-            book: issue.book,
-            chapter: issue.chapter,
-            message: `Lokað á: ${issue.description}`,
-          });
-        }
+      for (const edit of discussEdits.slice(0, 5)) {
+        dashboard.needsAttention.items.push({
+          type: 'blocked',
+          description: edit.editor_note || `${edit.segment_id} til umræðu`,
+          book: edit.book,
+          chapter: edit.chapter,
+          message: `Til umræðu: ${edit.module_id}:${edit.segment_id}`,
+        });
       }
-    } catch {
-      // Issues file may not exist
+    } catch (err) {
+      console.error('Failed to get discuss edits:', err.message);
+    }
+
+    // Add global segment edit statistics
+    try {
+      dashboard.segmentEditStats = segmentEditorService.getGlobalEditStats();
+    } catch (err) {
+      console.error('Failed to get segment edit stats:', err.message);
     }
 
     res.json(dashboard);
@@ -349,19 +349,24 @@ router.get('/analytics', requireAuth, async (req, res) => {
       { name: 'last30days', days: 30, label: 'Síðustu 30 dagar' },
     ];
 
+    const analyticsVelocityTypes = [
+      'review_approved',
+      'segment_edit_approved',
+      'segment_edits_applied',
+    ];
+
     for (const period of periods) {
       const startDate = new Date();
       startDate.setDate(startDate.getDate() - period.days);
 
-      const result = activityLog.search({
-        type: 'review_approved',
-        limit: 500,
-      });
-
-      const completedInPeriod = result.activities.filter((a) => {
-        const activityDate = new Date(a.createdAt);
-        return activityDate >= startDate;
-      }).length;
+      let completedInPeriod = 0;
+      for (const vType of analyticsVelocityTypes) {
+        const result = activityLog.search({ type: vType, limit: 500 });
+        completedInPeriod += result.activities.filter((a) => {
+          const activityDate = new Date(a.createdAt);
+          return activityDate >= startDate;
+        }).length;
+      }
 
       const avgPerDay = (completedInPeriod / period.days).toFixed(2);
 
@@ -496,12 +501,22 @@ router.get('/analytics', requireAuth, async (req, res) => {
 
         userStats[user].totalActions++;
 
-        if (activity.type === 'review_approved' || activity.type === 'approve_review') {
+        if (
+          activity.type === 'review_approved' ||
+          activity.type === 'approve_review' ||
+          activity.type === 'segment_edit_approved'
+        ) {
           userStats[user].approvals++;
-        } else if (activity.type === 'review_submitted' || activity.type === 'submit_review') {
+        } else if (
+          activity.type === 'review_submitted' ||
+          activity.type === 'submit_review' ||
+          activity.type === 'segment_edit_saved'
+        ) {
           userStats[user].submissions++;
         } else if (activity.type === 'draft_saved') {
           userStats[user].drafts++;
+        } else if (activity.type === 'segment_edits_applied') {
+          userStats[user].approvals++;
         }
 
         if (
@@ -679,45 +694,37 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
     // ── HIGH PRIORITY: items needing immediate attention ──
     const highItems = [];
 
-    // Check for pending reviews
+    // Check for pending module reviews (from DB)
     try {
-      const reviewsPath = path.join(__dirname, '..', 'data', 'reviews.json');
-      if (fs.existsSync(reviewsPath)) {
-        const reviews = JSON.parse(fs.readFileSync(reviewsPath, 'utf-8'));
-        const pending = reviews.filter((r) => r.status === 'pending');
-        for (const review of pending) {
-          const daysPending = review.submittedAt
-            ? Math.floor((Date.now() - new Date(review.submittedAt).getTime()) / 86400000)
-            : 0;
-          highItems.push({
-            section: review.section,
-            book: review.book,
-            chapter: review.chapter,
-            daysPending,
-            description: `Yfirferð í bið: ${review.section}`,
-          });
-        }
+      const pendingReviews = segmentEditorService.getPendingModuleReviews();
+      for (const review of pendingReviews) {
+        const daysPending = review.submitted_at
+          ? Math.floor((Date.now() - new Date(review.submitted_at).getTime()) / 86400000)
+          : 0;
+        highItems.push({
+          section: review.module_id,
+          book: review.book,
+          chapter: review.chapter,
+          daysPending,
+          description: `Yfirferð í bið: ${review.module_id}`,
+        });
       }
-    } catch {
-      /* no reviews file */
+    } catch (err) {
+      console.error('Failed to get pending reviews for agenda:', err.message);
     }
 
-    // Check for blocked issues
+    // Check for edits marked for discussion (from DB)
     try {
-      const issuesPath = path.join(__dirname, '..', 'data', 'issues.json');
-      if (fs.existsSync(issuesPath)) {
-        const issues = JSON.parse(fs.readFileSync(issuesPath, 'utf-8'));
-        const blocked = issues.filter((i) => i.category === 'BLOCKED' && i.status === 'pending');
-        for (const issue of blocked) {
-          highItems.push({
-            description: issue.description,
-            book: issue.book,
-            chapter: issue.chapter,
-          });
-        }
+      const discussEdits = segmentEditorService.getDiscussEdits(20);
+      for (const edit of discussEdits) {
+        highItems.push({
+          description: edit.editor_note || `${edit.module_id}:${edit.segment_id} til umræðu`,
+          book: edit.book,
+          chapter: edit.chapter,
+        });
       }
-    } catch {
-      /* no issues file */
+    } catch (err) {
+      console.error('Failed to get discuss edits for agenda:', err.message);
     }
 
     if (highItems.length > 0) {
@@ -1429,6 +1436,11 @@ function getActivityIcon(type) {
     file_uploaded: '📁',
     upload: '📤',
     assign_reviewer: '👤',
+    segment_edit_saved: '✏️',
+    segment_edit_approved: '✅',
+    segment_edit_rejected: '❌',
+    segment_edit_discuss: '💬',
+    segment_edits_applied: '📥',
     assign_localizer: '🌍',
     status_change: '🔀',
     submit_review: '📋',
@@ -1468,6 +1480,11 @@ function formatActivityType(type) {
     file_uploaded: 'Skrá hlaðið upp',
     upload: 'Upphleðsla',
     assign_reviewer: 'Ritstjóri úthlutaður',
+    segment_edit_saved: 'Breyting vistuð',
+    segment_edit_approved: 'Breyting samþykkt',
+    segment_edit_rejected: 'Breyting hafnað',
+    segment_edit_discuss: 'Til umræðu',
+    segment_edits_applied: 'Breytingar yfirfærðar',
     assign_localizer: 'Staðfærandi úthlutaður',
     status_change: 'Staða breytt',
     submit_review: 'Yfirferð send',

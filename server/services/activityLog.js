@@ -31,7 +31,14 @@ const ACTIVITY_TYPES = {
   WORKFLOW_STARTED: 'workflow_started',
   WORKFLOW_COMPLETED: 'workflow_completed',
   FILE_UPLOADED: 'file_uploaded',
-  WORKFLOW_GIT_COMMIT: 'workflow_git_commit'
+  WORKFLOW_GIT_COMMIT: 'workflow_git_commit',
+
+  // Segment editor actions
+  SEGMENT_EDIT_SAVED: 'segment_edit_saved',
+  SEGMENT_EDIT_APPROVED: 'segment_edit_approved',
+  SEGMENT_EDIT_REJECTED: 'segment_edit_rejected',
+  SEGMENT_EDIT_DISCUSS: 'segment_edit_discuss',
+  SEGMENT_EDITS_APPLIED: 'segment_edits_applied',
 };
 
 // Initialize database tables
@@ -118,7 +125,7 @@ const statements = {
     WHERE (book = ? OR ? IS NULL)
       AND (type = ? OR ? IS NULL)
       AND (user_id = ? OR ? IS NULL)
-  `)
+  `),
 };
 
 /**
@@ -133,7 +140,7 @@ function log(options) {
     chapter = null,
     section = null,
     description,
-    metadata = {}
+    metadata = {},
   } = options;
 
   const result = statements.insert.run(
@@ -157,7 +164,7 @@ function log(options) {
     section,
     description,
     metadata,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 }
 
@@ -197,33 +204,26 @@ function getBySection(book, chapter, section, limit = 50) {
  * Search activity with filters
  */
 function search(options = {}) {
-  const {
-    book = null,
-    type = null,
-    userId = null,
-    limit = 50,
-    offset = 0
-  } = options;
+  const { book = null, type = null, userId = null, limit = 50, offset = 0 } = options;
 
   const rows = statements.search.all(
-    book, book,
-    type, type,
-    userId, userId,
+    book,
+    book,
+    type,
+    type,
+    userId,
+    userId,
     Math.min(limit, 200),
     offset
   );
 
-  const countResult = statements.count.get(
-    book, book,
-    type, type,
-    userId, userId
-  );
+  const countResult = statements.count.get(book, book, type, type, userId, userId);
 
   return {
     activities: rows.map(parseRow),
     total: countResult.count,
     limit,
-    offset
+    offset,
   };
 }
 
@@ -241,106 +241,8 @@ function parseRow(row) {
     section: row.section,
     description: row.description,
     metadata: row.metadata ? JSON.parse(row.metadata) : {},
-    createdAt: row.created_at
+    createdAt: row.created_at,
   };
-}
-
-// Convenience logging functions
-
-/**
- * Log a draft saved event
- */
-function logDraftSaved(user, book, chapter, section, historyId) {
-  return log({
-    type: ACTIVITY_TYPES.DRAFT_SAVED,
-    userId: user.id,
-    username: user.username,
-    book,
-    chapter,
-    section,
-    description: `${user.username} saved a draft of ${book}/${chapter}/${section}`,
-    metadata: { historyId }
-  });
-}
-
-/**
- * Log a review submitted event
- */
-function logReviewSubmitted(user, book, chapter, section, reviewId) {
-  return log({
-    type: ACTIVITY_TYPES.REVIEW_SUBMITTED,
-    userId: user.id,
-    username: user.username,
-    book,
-    chapter,
-    section,
-    description: `${user.username} submitted ${book}/${chapter}/${section} for review`,
-    metadata: { reviewId }
-  });
-}
-
-/**
- * Log a version restored event
- */
-function logVersionRestored(user, book, chapter, section, historyId) {
-  return log({
-    type: ACTIVITY_TYPES.VERSION_RESTORED,
-    userId: user.id,
-    username: user.username,
-    book,
-    chapter,
-    section,
-    description: `${user.username} restored version ${historyId} of ${book}/${chapter}/${section}`,
-    metadata: { historyId }
-  });
-}
-
-/**
- * Log a review approved event
- */
-function logReviewApproved(reviewer, submitter, book, chapter, section, reviewId, commitSha) {
-  return log({
-    type: ACTIVITY_TYPES.REVIEW_APPROVED,
-    userId: reviewer.id,
-    username: reviewer.username,
-    book,
-    chapter,
-    section,
-    description: `${reviewer.username} approved ${submitter}'s review of ${book}/${chapter}/${section}`,
-    metadata: { reviewId, submitter, commitSha }
-  });
-}
-
-/**
- * Log a changes requested event
- */
-function logChangesRequested(reviewer, submitter, book, chapter, section, reviewId, notes) {
-  return log({
-    type: ACTIVITY_TYPES.CHANGES_REQUESTED,
-    userId: reviewer.id,
-    username: reviewer.username,
-    book,
-    chapter,
-    section,
-    description: `${reviewer.username} requested changes on ${submitter}'s review of ${book}/${chapter}/${section}`,
-    metadata: { reviewId, submitter, notes }
-  });
-}
-
-/**
- * Log a commit created event
- */
-function logCommitCreated(user, book, chapter, section, commitSha) {
-  return log({
-    type: ACTIVITY_TYPES.COMMIT_CREATED,
-    userId: user.id,
-    username: user.username,
-    book,
-    chapter,
-    section,
-    description: `Commit ${commitSha.substring(0, 7)} created for ${book}/${chapter}/${section}`,
-    metadata: { commitSha }
-  });
 }
 
 module.exports = {
@@ -351,11 +253,4 @@ module.exports = {
   getByBook,
   getBySection,
   search,
-  // Convenience functions
-  logDraftSaved,
-  logReviewSubmitted,
-  logVersionRestored,
-  logReviewApproved,
-  logChangesRequested,
-  logCommitCreated
 };

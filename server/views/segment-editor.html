@@ -2058,7 +2058,7 @@
         // Show success toast with link to reviews page
         const toast = document.createElement('div');
         toast.className = 'toast toast-success';
-        toast.innerHTML = 'Sent til yfirlestrar! <a href="/reviews" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">Skoða yfirlestur →</a>';
+        toast.innerHTML = 'Sent til yfirlestrar! <a href="/editor" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">Skoða yfirlestur →</a>';
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 6000);
         await loadModule(currentModuleId);

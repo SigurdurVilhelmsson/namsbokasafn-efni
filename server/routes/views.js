@@ -19,7 +19,7 @@ router.get('/login', (req, res) => sendView(res, 'login.html'));
 router.get('/editor', (req, res) => sendView(res, 'segment-editor.html'));
 router.get('/progress', (req, res) => sendView(res, 'status.html'));
 router.get('/terminology', (req, res) => sendView(res, 'terminology.html'));
-router.get('/reviews', (req, res) => sendView(res, 'reviews.html'));
+router.get('/reviews', (req, res) => res.redirect(301, '/editor'));
 router.get('/localization', (req, res) => sendView(res, 'localization-editor.html'));
 router.get('/library', (req, res) => sendView(res, 'books.html'));
 router.get('/admin', (req, res) => sendView(res, 'admin.html'));
@@ -36,7 +36,7 @@ router.get('/segment-editor', (req, res) => {
 });
 
 router.get('/status', (req, res) => res.redirect(301, '/progress'));
-router.get('/review-queue', (req, res) => res.redirect(301, '/reviews'));
+router.get('/review-queue', (req, res) => res.redirect(301, '/editor'));
 
 router.get('/localization-editor', (req, res) => res.redirect(301, '/localization'));
 router.get('/localization-review', (req, res) => res.redirect(301, '/localization'));

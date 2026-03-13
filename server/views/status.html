@@ -1127,7 +1127,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-card-value" id="stat-sections-done">--</div>
-          <div class="stat-card-label">Kaflar yfirfarnir</div>
+          <div class="stat-card-label">Einingar í vinnslu</div>
         </div>
         <div class="stat-card">
           <div class="stat-card-value" id="stat-velocity">--</div>
@@ -1413,9 +1413,10 @@
         <div class="form-group">
           <label class="form-label">Stig</label>
           <select class="form-select" id="assign-stage">
-            <option value="linguisticReview">Yfirferð 1 (tungumál)</option>
+            <option value="linguisticReview">Yfirferð (tungumál)</option>
             <option value="tmCreated">TM uppfærsla</option>
-            <option value="editorialPass2">Yfirferð 2 (staðfæring)</option>
+            <option value="injection">Inndráttur</option>
+            <option value="rendering">Myndbreyting</option>
             <option value="publication">Útgáfa</option>
           </select>
         </div>
@@ -1485,27 +1486,20 @@
     ];
 
     // Simplified 5-stage display for matrix (matching API response)
-    const DISPLAY_STAGES = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
+    const DISPLAY_STAGES = ['extraction', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
 
     const STAGE_LABELS = {
-      'source': 'Uppspretta',
-      'enMarkdown': 'EN MD',
       'extraction': 'Utt.',
       'mtReady': 'VÞ-t.',
       'mtOutput': 'VÞ',
-      'matecat': 'Matecat',
       'linguisticReview': 'Yfirl.',
-      'editorialPass1': 'Yfirl.',
-      'tmUpdated': 'TM',
       'tmCreated': 'TM',
       'injection': 'Innd.',
       'rendering': 'Mynb.',
-      'editorialPass2': 'Yfirl. 2',
       'publication': 'Útg.'
     };
 
     const STAGE_FULL_LABELS = {
-      'enMarkdown': 'Enska Markdown',
       'extraction': 'Útdráttur',
       'mtReady': 'VÞ tilbúið',
       'mtOutput': 'Vélþýðing',
@@ -1651,10 +1645,9 @@
     function updateSummaryStats(analytics, chapters) {
       // Total progress percentage
       const progressEl = document.getElementById('stat-total-progress');
-      if (analytics?.stageMetrics) {
-        const pubStage = analytics.stageMetrics.find(s => s.stage === 'publication');
-        const pubPercent = pubStage ? pubStage.percentComplete : 0;
-        progressEl.textContent = Math.round(pubPercent) + '%';
+      if (analytics?.stageMetrics && analytics.stageMetrics.length > 0) {
+        const totalPercent = analytics.stageMetrics.reduce((sum, s) => sum + s.percentComplete, 0);
+        progressEl.textContent = Math.round(totalPercent / analytics.stageMetrics.length) + '%';
       } else {
         const totalStages = chapters.length * DISPLAY_STAGES.length;
         const completedStages = chapters.reduce((sum, ch) => {
@@ -1663,15 +1656,19 @@
         progressEl.textContent = totalStages > 0 ? Math.round((completedStages / totalStages) * 100) + '%' : '0%';
       }
 
-      // Sections completed (Pass 1 done)
+      // Modules with edits (from segment edit stats)
       const sectionsEl = document.getElementById('stat-sections-done');
-      const pass1Done = chapters.filter(ch => {
-        if (Array.isArray(ch.stages)) {
-          return ch.stages.find(s => (s.stage || s.key) === 'linguisticReview')?.status === 'complete';
-        }
-        return false;
-      }).length;
-      sectionsEl.textContent = pass1Done;
+      if (dashboardData?.segmentEditStats?.modules_with_edits > 0) {
+        sectionsEl.textContent = dashboardData.segmentEditStats.modules_with_edits;
+      } else {
+        const pass1Done = chapters.filter(ch => {
+          if (Array.isArray(ch.stages)) {
+            return ch.stages.find(s => (s.stage || s.key) === 'linguisticReview')?.status === 'complete';
+          }
+          return false;
+        }).length;
+        sectionsEl.textContent = pass1Done;
+      }
 
       // Velocity
       const velocityEl = document.getElementById('stat-velocity');
@@ -1713,7 +1710,7 @@
 
         if (item.type === 'review') {
           icon = '&#9998;';  // pencil
-          actionUrl = '/reviews';
+          actionUrl = '/editor';
         } else if (item.type === 'blocked') {
           icon = '&#128683;'; // no entry
           actionUrl = '/issues';
@@ -2001,7 +1998,6 @@
 
       const container = document.getElementById('stage-metrics');
       const stageLabels = {
-        'enMarkdown': 'EN Markdown',
         'extraction': 'Útdráttur',
         'mtReady': 'VÞ tilbúið',
         'mtOutput': 'Vélþýðing',

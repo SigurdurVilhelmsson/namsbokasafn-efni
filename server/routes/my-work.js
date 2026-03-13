@@ -40,8 +40,6 @@ function getDb() {
 // Stage to editor pass mapping
 const STAGE_TO_PASS = {
   linguisticReview: 'pass1',
-  editorialPass1: 'pass1',
-  editorialPass2: 'pass2',
 };
 
 /**
@@ -94,31 +92,23 @@ function getUserProposedTerms(username) {
 }
 
 /**
- * Get user's submissions awaiting review
+ * Get user's pending segment edits (awaiting review)
  */
 function getUserPendingSubmissions(username) {
   try {
     const database = getDb();
 
-    // Check if pending_reviews table exists
     const tableExists = database
-      .prepare(
-        `
-      SELECT name FROM sqlite_master WHERE type='table' AND name='pending_reviews'
-    `
-      )
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='segment_edits'")
       .get();
-
-    if (!tableExists) {
-      return [];
-    }
+    if (!tableExists) return [];
 
     const stmt = database.prepare(`
-      SELECT pr.*, eh.content
-      FROM pending_reviews pr
-      JOIN edit_history eh ON pr.edit_history_id = eh.id
-      WHERE pr.submitted_by_username = ? AND pr.status = 'pending'
-      ORDER BY pr.submitted_at DESC
+      SELECT id, book, chapter, module_id as section, segment_id, status, created_at as submitted_at
+      FROM segment_edits
+      WHERE editor_username = ? AND status = 'pending'
+      ORDER BY created_at DESC
+      LIMIT 50
     `);
     return stmt.all(username);
   } catch (err) {
@@ -128,34 +118,27 @@ function getUserPendingSubmissions(username) {
 }
 
 /**
- * Get user's recently reviewed submissions (approved or changes requested)
+ * Get user's recently reviewed segment edits (approved, rejected, or discuss)
  */
 function getUserRecentReviews(username, limit = 10) {
   try {
     const database = getDb();
 
-    // Check if pending_reviews table exists
     const tableExists = database
-      .prepare(
-        `
-      SELECT name FROM sqlite_master WHERE type='table' AND name='pending_reviews'
-    `
-      )
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='segment_edits'")
       .get();
-
-    if (!tableExists) {
-      return [];
-    }
+    if (!tableExists) return [];
 
     const stmt = database.prepare(`
-      SELECT pr.*, eh.content
-      FROM pending_reviews pr
-      JOIN edit_history eh ON pr.edit_history_id = eh.id
-      WHERE pr.submitted_by_username = ? AND pr.status IN ('approved', 'changes_requested')
-      ORDER BY pr.reviewed_at DESC
+      SELECT id, book, chapter, module_id as section, segment_id, status,
+             reviewer_username as reviewed_by_username, reviewer_note as review_notes,
+             reviewed_at
+      FROM segment_edits
+      WHERE editor_username = ? AND status IN ('approved', 'rejected', 'discuss')
+      ORDER BY reviewed_at DESC
       LIMIT ?
     `);
-    return stmt.all(username, limit);
+    return stmt.all(username, Math.min(limit, 200));
   } catch (err) {
     console.error('Error getting user recent reviews:', err);
     return [];
@@ -228,8 +211,9 @@ router.get('/', requireAuth, async (req, res) => {
       recentActivity,
       summary: {
         pendingSubmissionsCount: formattedSubmissions.length,
-        changesRequestedCount: formattedReviews.filter((r) => r.status === 'changes_requested')
-          .length,
+        changesRequestedCount: formattedReviews.filter(
+          (r) => r.status === 'rejected' || r.status === 'discuss'
+        ).length,
         proposedTermsCount: formattedTerms.length,
       },
     });
@@ -251,10 +235,10 @@ router.get('/today', requireAuth, (req, res) => {
   try {
     const username = req.user.username;
 
-    // Get changes requested (highest priority)
+    // Get rejected/discuss edits (highest priority — need editor attention)
     const recentReviews = getUserRecentReviews(username, 20);
     const changesRequested = recentReviews
-      .filter((r) => r.status === 'changes_requested')
+      .filter((r) => r.status === 'rejected' || r.status === 'discuss')
       .map((r) => ({
         id: r.id,
         type: 'changes_requested',
@@ -368,7 +352,9 @@ router.get('/summary', requireAuth, (req, res) => {
 
     res.json({
       pendingSubmissions: pendingSubmissions.length,
-      changesRequested: recentReviews.filter((r) => r.status === 'changes_requested').length,
+      changesRequested: recentReviews.filter(
+        (r) => r.status === 'rejected' || r.status === 'discuss'
+      ).length,
       proposedTerms: proposedTerms.length,
       total: pendingSubmissions.length + proposedTerms.length,
     });

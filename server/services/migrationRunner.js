@@ -46,6 +46,7 @@ function runAllMigrations() {
     require('../migrations/018-chapter-locks'),
     require('../migrations/019-register-new-books'),
     require('../migrations/020-glossary-definitions'),
+    require('../migrations/021-drop-dead-tables'),
   ];
 
   let applied = 0;

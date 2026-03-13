@@ -11,14 +11,28 @@ const JWT_SECRET = 'test-secret-for-e2e-not-production';
 const JWT_ISSUER = 'namsbokasafn-pipeline';
 
 /**
+ * Default user IDs per role — distinct IDs are essential because
+ * approveEdit() blocks self-approval (editor_id == reviewerId).
+ */
+const DEFAULT_USER_IDS = {
+  admin: 99999,
+  'head-editor': 99998,
+  editor: 99997,
+  contributor: 99996,
+  viewer: 99995,
+};
+
+/**
  * Create a JWT token for a test user with the given role.
  * @param {'admin'|'head-editor'|'editor'|'contributor'|'viewer'} role
+ * @param {number} [userId] - Override the default user ID for this role
  * @returns {string} Signed JWT
  */
-function getTestToken(role = 'admin') {
+function getTestToken(role = 'admin', userId) {
+  const sub = userId ?? DEFAULT_USER_IDS[role] ?? 99999;
   return jwt.sign(
     {
-      sub: 99999,
+      sub,
       username: `test-${role}`,
       name: `Test ${role.charAt(0).toUpperCase() + role.slice(1)}`,
       avatar: '',
@@ -35,9 +49,10 @@ function getTestToken(role = 'admin') {
  * navigations are authenticated.
  * @param {import('@playwright/test').Page} page
  * @param {'admin'|'head-editor'|'editor'|'contributor'|'viewer'} role
+ * @param {number} [userId] - Override the default user ID for this role
  */
-async function loginAs(page, role = 'admin') {
-  const token = getTestToken(role);
+async function loginAs(page, role = 'admin', userId) {
+  const token = getTestToken(role, userId);
   await page.context().addCookies([
     {
       name: 'auth_token',
@@ -49,4 +64,4 @@ async function loginAs(page, role = 'admin') {
   ]);
 }
 
-module.exports = { getTestToken, loginAs };
+module.exports = { getTestToken, loginAs, DEFAULT_USER_IDS };

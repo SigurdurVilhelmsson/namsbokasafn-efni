@@ -13,9 +13,7 @@ const path = require('path');
 const dataDir = path.join(__dirname, '..', 'data');
 const cache = {};
 
-for (const file of fs
-  .readdirSync(dataDir)
-  .filter((f) => f.endsWith('.json') && f !== 'decisions.json')) {
+for (const file of fs.readdirSync(dataDir).filter((f) => f.endsWith('.json'))) {
   try {
     const data = JSON.parse(fs.readFileSync(path.join(dataDir, file), 'utf8'));
     if (data.slug) {
