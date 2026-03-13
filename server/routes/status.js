@@ -26,10 +26,55 @@ const {
   getUniqueSections,
 } = require('../services/splitFileUtils');
 const { VALID_BOOKS } = require('../config');
-const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES } = require('../constants');
+const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES, PUBLICATION_TRACKS } = require('../constants');
+const pipelineStatusService = require('../services/pipelineStatusService');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
+
+/**
+ * Read chapter status from the authoritative DB source via pipelineStatusService.
+ * Returns data in the same shape as status.json: { status: { stage: { complete: bool } } }
+ * so that formatChapterStatus() and suggestNextActions() work unchanged.
+ *
+ * Falls back to status.json on DB error (e.g. table not yet created).
+ */
+function getStatusDataFromDb(bookSlug, chapterNum) {
+  try {
+    const { stages, publication } = pipelineStatusService.getChapterStage(bookSlug, chapterNum);
+
+    const statusObj = {};
+    for (const stage of PIPELINE_STAGES) {
+      if (stage === 'publication') continue;
+      statusObj[stage] = { complete: stages[stage] === 'complete' };
+    }
+
+    statusObj.publication = {};
+    for (const track of PUBLICATION_TRACKS) {
+      statusObj.publication[track] = { complete: publication[track] === 'complete' };
+    }
+
+    // Read status.json for non-pipeline metadata (title, sections, etc.)
+    const chDir = chapterNum === -1 ? 'appendices' : `ch${String(chapterNum).padStart(2, '0')}`;
+    const statusPath = path.join(PROJECT_ROOT, 'books', bookSlug, 'chapters', chDir, 'status.json');
+    let metadata = {};
+    try {
+      metadata = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+    } catch {
+      // No status.json — that's fine, we have DB data
+    }
+
+    return {
+      title: metadata.title || metadata.titleIs || metadata.titleEn || null,
+      status: statusObj,
+    };
+  } catch {
+    // Fallback: read status.json directly if DB is unavailable
+    const chDir = chapterNum === -1 ? 'appendices' : `ch${String(chapterNum).padStart(2, '0')}`;
+    const statusPath = path.join(PROJECT_ROOT, 'books', bookSlug, 'chapters', chDir, 'status.json');
+    return JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+  }
+}
 
 // Validate :book param on all routes that use it
 router.param('book', (req, res, next, book) => {
@@ -102,7 +147,6 @@ router.get('/dashboard', requireAuth, async (req, res) => {
 
       for (const chapterDir of chapterDirs) {
         const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
-        const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
 
         const chapterData = {
           chapter: chapterNum,
@@ -111,33 +155,31 @@ router.get('/dashboard', requireAuth, async (req, res) => {
           assignment: null,
         };
 
-        if (fs.existsSync(statusPath)) {
-          try {
-            const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-            const formatted = formatChapterStatus(statusData);
-            chapterData.title = statusData.title;
-            chapterData.progress = formatted.progress;
-            chapterData.nextStage = formatted.nextStage;
+        try {
+          const statusData = getStatusDataFromDb(book, chapterNum);
+          const formatted = formatChapterStatus(statusData);
+          chapterData.title = statusData.title;
+          chapterData.progress = formatted.progress;
+          chapterData.nextStage = formatted.nextStage;
 
-            // Build stage map for matrix
-            for (const stage of formatted.stages) {
-              chapterData.stages[stage.stage] = stage.status;
-            }
-
-            // Check for unassigned in-progress work
-            if (formatted.nextStage && !chapterData.assignment) {
-              dashboard.needsAttention.unassignedWork++;
-              dashboard.needsAttention.items.push({
-                type: 'unassigned',
-                book,
-                chapter: chapterNum,
-                stage: formatted.nextStage,
-                message: `Kafli ${chapterNum} í vinnslu án úthlutunar`,
-              });
-            }
-          } catch (err) {
-            chapterData.error = err.message;
+          // Build stage map for matrix
+          for (const stage of formatted.stages) {
+            chapterData.stages[stage.stage] = stage.status;
           }
+
+          // Check for unassigned in-progress work
+          if (formatted.nextStage && !chapterData.assignment) {
+            dashboard.needsAttention.unassignedWork++;
+            dashboard.needsAttention.items.push({
+              type: 'unassigned',
+              book,
+              chapter: chapterNum,
+              stage: formatted.nextStage,
+              message: `Kafli ${chapterNum} í vinnslu án úthlutunar`,
+            });
+          }
+        } catch (err) {
+          chapterData.error = err.message;
         }
 
         dashboard.chapterMatrix[book].chapters.push(chapterData);
@@ -548,11 +590,10 @@ router.get('/analytics', requireAuth, async (req, res) => {
       const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
 
       for (const chapterDir of chapterDirs) {
-        const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
-        if (!fs.existsSync(statusPath)) continue;
+        const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
 
         try {
-          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+          const statusData = getStatusDataFromDb(book, chapterNum);
           const status = statusData.status || {};
 
           for (const stage of PIPELINE_STAGES) {
@@ -751,16 +792,14 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         .sort();
 
       for (const chDir of chapterDirs) {
-        const statusPath = path.join(chaptersPath, chDir, 'status.json');
-        if (!fs.existsSync(statusPath)) continue;
+        const chapterNum = parseInt(chDir.replace('ch', ''), 10);
 
         try {
-          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+          const statusData = getStatusDataFromDb(book, chapterNum);
           const formatted = formatChapterStatus(statusData);
 
           // Find chapters that are in-progress but not fully complete
           if (formatted.progress > 0 && formatted.progress < 100 && formatted.nextStage) {
-            const chapterNum = parseInt(chDir.replace('ch', ''), 10);
             mediumItems.push({
               section: `K${chapterNum}`,
               book,
@@ -871,24 +910,22 @@ router.get('/:book', requireAuth, (req, res) => {
 
     const chapters = [];
 
-    for (const chapterDir of chapterDirs) {
-      const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
+    for (const chDir of chapterDirs) {
+      const chapterNum = parseInt(chDir.replace('ch', ''), 10);
 
-      if (fs.existsSync(statusPath)) {
-        try {
-          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-          chapters.push({
-            chapter: parseInt(chapterDir.replace('ch', ''), 10),
-            chapterDir,
-            ...formatChapterStatus(statusData),
-          });
-        } catch (err) {
-          chapters.push({
-            chapter: parseInt(chapterDir.replace('ch', ''), 10),
-            chapterDir,
-            error: `Failed to parse status: ${err.message}`,
-          });
-        }
+      try {
+        const statusData = getStatusDataFromDb(book, chapterNum);
+        chapters.push({
+          chapter: chapterNum,
+          chapterDir: chDir,
+          ...formatChapterStatus(statusData),
+        });
+      } catch (err) {
+        chapters.push({
+          chapter: chapterNum,
+          chapterDir: chDir,
+          error: `Failed to get status: ${err.message}`,
+        });
       }
     }
 
@@ -937,32 +974,30 @@ router.get('/:book/summary', requireAuth, (req, res) => {
       stageCounts[stage] = { complete: 0, inProgress: 0, pending: 0, notStarted: 0 };
     });
 
-    for (const chapterDir of chapterDirs) {
-      const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
+    for (const chDir of chapterDirs) {
+      const chapterNum = parseInt(chDir.replace('ch', ''), 10);
 
-      if (fs.existsSync(statusPath)) {
-        try {
-          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-          const status = statusData.status || {};
+      try {
+        const statusData = getStatusDataFromDb(book, chapterNum);
+        const status = statusData.status || {};
 
-          for (const stage of PIPELINE_STAGES) {
-            const stageData = status[stage] || {};
-            let isComplete;
-            if (stage === 'publication') {
-              isComplete =
-                stageData.mtPreview?.complete === true &&
-                stageData.faithful?.complete === true &&
-                stageData.localized?.complete === true;
-            } else {
-              isComplete = stageData.complete === true;
-            }
-
-            if (isComplete) stageCounts[stage].complete++;
-            else stageCounts[stage].notStarted++;
+        for (const stage of PIPELINE_STAGES) {
+          const stageData = status[stage] || {};
+          let isComplete;
+          if (stage === 'publication') {
+            isComplete =
+              stageData.mtPreview?.complete === true &&
+              stageData.faithful?.complete === true &&
+              stageData.localized?.complete === true;
+          } else {
+            isComplete = stageData.complete === true;
           }
-        } catch {
-          // Skip invalid status files
+
+          if (isComplete) stageCounts[stage].complete++;
+          else stageCounts[stage].notStarted++;
         }
+      } catch {
+        // Skip chapters with no status data
       }
     }
 
@@ -1006,26 +1041,19 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
 
   try {
     const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
-    const statusPath = path.join(
-      PROJECT_ROOT,
-      'books',
-      book,
-      'chapters',
-      chapterDir,
-      'status.json'
-    );
-    const filesPath = path.join(PROJECT_ROOT, 'books', book, 'chapters', chapterDir, 'files.json');
 
-    if (!fs.existsSync(statusPath)) {
+    let statusData;
+    try {
+      statusData = getStatusDataFromDb(book, chapterNum);
+    } catch {
       return res.status(404).json({
         error: 'Status not found',
-        message: `No status file found for ${book} chapter ${chapterNum}`,
+        message: `No status data found for ${book} chapter ${chapterNum}`,
       });
     }
 
-    const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-
     // Include files data if available
+    const filesPath = path.join(PROJECT_ROOT, 'books', book, 'chapters', chapterDir, 'files.json');
     let filesData = null;
     if (fs.existsSync(filesPath)) {
       try {
