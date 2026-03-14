@@ -3,13 +3,20 @@
   "titleEn": "Electronic Structure and Periodic Properties of Elements",
   "titleIs": null,
   "sections": [],
+  "images": {
+    "total": null,
+    "translated": 0,
+    "status": "not-started"
+  },
+  "notes": "Not started",
   "status": {
     "extraction": {
       "complete": true,
       "date": "2026-01-12"
     },
     "mtReady": {
-      "complete": false
+      "complete": true,
+      "date": "2026-03-14"
     },
     "mtOutput": {
       "complete": false
@@ -37,11 +44,5 @@
         "complete": false
       }
     }
-  },
-  "images": {
-    "total": null,
-    "translated": 0,
-    "status": "not-started"
-  },
-  "notes": "Not started"
+  }
 }

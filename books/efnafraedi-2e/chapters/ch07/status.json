@@ -3,6 +3,12 @@
   "titleEn": "Chemical Bonding and Molecular Geometry",
   "titleIs": null,
   "sections": [],
+  "images": {
+    "total": null,
+    "translated": 0,
+    "status": "not-started"
+  },
+  "notes": "Only specific subchapters needed (TBD by teacher). Target: February 2026.",
   "status": {
     "extraction": {
       "complete": true,
@@ -10,18 +16,17 @@
       "notes": "Only specific subchapters TBD by teacher"
     },
     "mtReady": {
-      "complete": false
+      "complete": true,
+      "date": "2026-03-14"
     },
     "mtOutput": {
-      "complete": true,
-      "date": "2024-11-01"
+      "complete": false
     },
     "linguisticReview": {
       "complete": false
     },
     "tmCreated": {
-      "complete": false,
-      "targetDate": "2025-02"
+      "complete": false
     },
     "injection": {
       "complete": false
@@ -40,11 +45,5 @@
         "complete": false
       }
     }
-  },
-  "images": {
-    "total": null,
-    "translated": 0,
-    "status": "not-started"
-  },
-  "notes": "Only specific subchapters needed (TBD by teacher). Target: February 2026."
+  }
 }
