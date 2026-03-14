@@ -942,8 +942,9 @@ These are integration tests that call the route endpoints via the service layer.
 
 ```javascript
 import { describe, it, expect, beforeEach } from 'vitest';
-import Database from 'better-sqlite3';
-// Import the activityLog service and set up test DB
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const Database = require('better-sqlite3');
 // Pattern: create in-memory DB, run migrations, inject via _setTestDb()
 // Then call the service functions and verify activity_log table entries
 
@@ -1187,8 +1188,10 @@ These are unit tests that call service functions directly using `_setTestDb()` f
 
 ```javascript
 import { describe, it, expect, beforeEach } from 'vitest';
-import Database from 'better-sqlite3';
-import { segmentEditorService } from '../services/segmentEditorService.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const Database = require('better-sqlite3');
+const segmentEditorService = require('../services/segmentEditorService');
 
 describe('error handling', () => {
   let db;
