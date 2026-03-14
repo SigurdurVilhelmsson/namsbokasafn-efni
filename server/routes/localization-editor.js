@@ -19,6 +19,7 @@ const router = express.Router();
 
 const segmentParser = require('../services/segmentParser');
 const localizationEditService = require('../services/localizationEditService');
+const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
@@ -241,6 +242,19 @@ router.post(
         savedPath,
         lastModified: newMtime,
       });
+      try {
+        activityLog.log({
+          type: 'localization_edit_saved',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} breytti ${segmentId} í ${req.params.moduleId}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
     } catch (err) {
       console.error('Error saving localized segment:', err.message);
       res.status(500).json({ error: err.message });
@@ -375,6 +389,19 @@ router.post(
         savedPath,
         lastModified: newMtime,
       });
+      try {
+        activityLog.log({
+          type: 'localization_edits_saved',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} vistaði ${Object.keys(editLookup).length} hluta í ${req.params.moduleId}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
     } catch (err) {
       console.error('Error saving localized segments:', err.message);
       res.status(500).json({ error: err.message });

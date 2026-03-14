@@ -287,8 +287,24 @@ router.post(
  */
 router.delete('/edit/:editId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
   try {
-    segmentEditor.deleteSegmentEdit(parseInt(req.params.editId, 10), req.user.id);
+    const editId = parseInt(req.params.editId, 10);
+    // Read edit before deletion for logging
+    const edit = segmentEditor.getEditById(editId);
+    segmentEditor.deleteSegmentEdit(editId, req.user.id);
     res.json({ success: true });
+    try {
+      activityLog.log({
+        type: 'segment_edit_deleted',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit?.book || '',
+        chapter: String(edit?.chapter || ''),
+        section: edit?.module_id || '',
+        description: `${req.user.username} eyddi breytingu á ${edit?.segment_id || editId}`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
   } catch (err) {
     res.status(err.message === 'Not your edit' ? 403 : 400).json({ error: err.message });
   }
@@ -319,6 +335,19 @@ router.post(
         reviewId: result.id,
         editedSegments: result.editedSegments,
       });
+      try {
+        activityLog.log({
+          type: 'module_submitted_for_review',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
     } catch (err) {
       const status = err.message.includes('already has') ? 409 : 500;
       res.status(status).json({ error: err.message });
@@ -476,6 +505,19 @@ router.post('/edit/:editId/unapprove', requireAuth, requireRole(ROLES.HEAD_EDITO
   try {
     const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
     res.json({ success: true, edit });
+    try {
+      activityLog.log({
+        type: 'segment_edit_unapproved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book || '',
+        chapter: String(edit.chapter || ''),
+        section: edit.module_id || '',
+        description: `${req.user.username} afturkallaði samþykki á ${edit.segment_id}`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -518,6 +560,19 @@ router.post(
       }
 
       res.json({ success: true, ...result, applied });
+      try {
+        activityLog.log({
+          type: 'review_completed',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: result.book || '',
+          chapter: String(result.chapter || ''),
+          section: result.module_id || '',
+          description: `${req.user.username} lauk yfirferð á ${result.module_id || req.params.reviewId}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
     } catch (err) {
       res.status(400).json({ error: err.message });
     }
@@ -546,6 +601,20 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.CONTRIBUTOR)
       comment
     );
     res.json({ success: true, commentId: result.id });
+    try {
+      const edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
+      activityLog.log({
+        type: 'segment_edit_comment',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit?.book || '',
+        chapter: String(edit?.chapter || ''),
+        section: edit?.module_id || '',
+        description: `${req.user.username} bætti við athugasemd á ${edit?.segment_id || req.params.editId}`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
