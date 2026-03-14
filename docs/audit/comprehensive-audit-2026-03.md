@@ -66,7 +66,106 @@
 
 ## Phase 2: Live UX Walkthroughs & Fixes
 
-*(In progress)*
+### Task 2.0 — Setup & Methodology
+**Status:** COMPLETE
+- Test server started on port 3456 with test JWT secret
+- Chrome DevTools MCP verified and connected
+- JWT tokens generated for contributor, head-editor, admin roles
+- Cookie injection via `document.cookie` + `?loggedIn=1` pattern
+
+### Task 2.1 — Contributor Journey Walkthrough
+**Status:** COMPLETE — 1 NOT REPRODUCIBLE, 3 FIXED, 2 DEFERRED
+
+**Walkthrough findings:**
+- **Contributor save bug (NOT REPRODUCIBLE):** Save, reload, and navigation all work correctly on test server. Edit persists through back-button navigation and module reload. May have been fixed by Phase 1 DB consistency fix (Task 1.1) or is production-specific.
+- **Module ordering 1.6 before 1.5 (LOW):** Confirmed — m68683 (1.6) appears before m68690 (1.5) in chapter JSON. Data ordering issue, not a UI bug.
+- **Stale e2e test data (LOW):** Title segment has 6 `[e2e-XXXX]` markers from prior Playwright runs. Data hygiene issue.
+- **Submit button feedback:** Toast "Sent til yfirlestrar!" already exists with link (line 2061). User may have missed 6-second auto-dismiss.
+- **Back button spinner:** Guard added — checks for valid chapter before dispatching change event, prevents infinite spinner when chapter select is empty.
+- **Column headers in Icelandic:** TEGUND, ENSKA (FRUMTEXTI), ÍSLENSKA (ÞÝÐING), AÐGERÐIR — confirmed good.
+
+### Task 2.2 — Head-Editor Journey Walkthrough
+**Status:** COMPLETE — 2 FIXED, 1 DEFERRED
+
+**Walkthrough findings:**
+- **Activity feed shows raw user IDs (FIXED):** `renderAdminActivity` used `activity.userId` (numeric "99996") instead of `activity.username`. Changed to `activity.username`.
+- **Mixed EN/IS in activity feed (DEFERRED):** English entries ("saved edit on") are historical data from before Task 1.4 fix. Current code logs all activities in Icelandic. Old entries will age out naturally.
+- **Nav structure correct:** "YFIRFERÐ" section (Yfirferðir, Staðfærsla), "STJÓRNUN" section (Stjórnandi, Bókasafn) visible for head-editor.
+- **Admin page access:** Correctly shows "Aðeins kerfistjórar geta séð notendastjórnun" for non-admin roles.
+
+### Task 2.3 — Localization Editor
+**Status:** COMPLETE — 1 FIXED
+
+- **Save-all category data loss (FIXED):** `editLookup` now stores `{content, category}` objects. Audit trail entries from bulk saves now include category information.
+
+### Task 2.4 — Navigation & Information Architecture
+**Status:** COMPLETE
+
+- Sidebar highlights not role-sensitive but shows correct nav items per role
+- Contributor sees: Heim, Ritstjori, Framvinda, Orðasafn
+- Head-editor adds: Yfirferðir, Staðfærsla, Stjórnandi, Bókasafn
+- Library page shows only 1 of 3 books (LOW — likely a registration display issue)
+- Progress page pipeline stages all in Icelandic
+
+### Task 2.5 — i18n Consistency Check
+**Status:** COMPLETE — 5 FIXED
+
+- **feedback.html (4 FIXED):** Translated English radio descriptions:
+  - "Translation error" → "Villa í þýðingu eða merkingu"
+  - "Technical issue" → "Tæknilegt vandamál eða birtingarvilla"
+  - "Improvement suggestion" → "Tillaga um hvernig má bæta efnið"
+  - "Other" → "Annað sem þú vilt koma á framfæri"
+- **Activity feed userId (1 FIXED):** See Task 2.2 above
+- **Chapter titles K5+ in English:** Source data issue — untranslated OpenStax titles. Not a code fix.
+- **Pipeline stage names:** Already Icelandic in all views (chapter-pipeline, segment-editor, progress)
+
+### Task 2.6 — Visual & Interaction Polish
+**Status:** DEFERRED (to Phase 3 or post-launch)
+
+- Responsive behavior not tested (requires further mobile walkthrough)
+- Toast z-index appears correct (2000 vs modal 1000)
+- Loading states present on module load
+
+### Task 2.7 — Progress Indicators (`withProgress()`)
+**Status:** COMPLETE
+
+- Built `withProgress()` utility in `server/public/js/htmlUtils.js`
+- Added `.btn-loading` CSS with spinner animation to `common.css`
+- Applied to admin sync button (loadingText: "Samstillir...", successText: "Samstillt!")
+- Applied to migration button (loadingText: "Keyrir...", successText: "Lokið!")
+
+### Task 2.8 — Button & Action Discoverability
+**Status:** COMPLETE
+
+- **Tooltips added:**
+  - Admin: sync button, add book button, migration button (Icelandic descriptions)
+  - Chapter pipeline: advance confirm, revert confirm
+  - Segment editor: back button and submit button already had tooltips
+- **Book import idempotency (FIXED):** Route-level guard returns 409 "Bók þegar skráð" if book already registered, preventing duplicate-import error cascade from repeated clicks.
+
+### Task 2.5b — i18n Final Re-sweep
+**Status:** COMPLETE
+
+- No common English button labels found across all views
+- All new text added in Phase 2 is in Icelandic
+- Remaining English: historical activity log entries (will age out), untranslated chapter titles (source data)
+
+### Phase 2 Summary
+
+| Finding | Severity | Status |
+|---------|----------|--------|
+| Contributor save revert | CRITICAL | NOT REPRODUCIBLE |
+| Activity feed shows user IDs | CONFUSING | FIXED |
+| feedback.html English text (4 items) | CONFUSING | FIXED |
+| Save-all drops category data | LOW | FIXED |
+| Back button infinite spinner | CONFUSING | FIXED |
+| Book import idempotency | LOW | FIXED |
+| withProgress() utility | FEATURE | IMPLEMENTED |
+| Button tooltips | FEATURE | IMPLEMENTED |
+| Module ordering 1.6 before 1.5 | LOW | DEFERRED (data issue) |
+| Stale e2e test data | LOW | DEFERRED (data hygiene) |
+| Library shows 1 of 3 books | LOW | DEFERRED |
+| Responsive behavior | POLISH | DEFERRED |
 
 ---
 

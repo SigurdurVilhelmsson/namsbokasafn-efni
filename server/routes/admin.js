@@ -194,6 +194,17 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
     });
   }
 
+  // Idempotency guard: prevent duplicate registration from repeated clicks
+  if (!forceReregister) {
+    const existing = bookRegistration.getRegisteredBook(slug);
+    if (existing) {
+      return res.status(409).json({
+        error: 'Bók þegar skráð',
+        message: `Bókin '${titleIs}' (${slug}) er þegar skráð í kerfið.`,
+      });
+    }
+  }
+
   try {
     const result = await bookRegistration.registerBook({
       catalogueSlug,

@@ -2121,6 +2121,25 @@ a:focus-visible,
   to { transform: rotate(360deg); }
 }
 
+/* --- Button Loading State --- */
+.btn-loading {
+  opacity: 0.7;
+  cursor: wait;
+  position: relative;
+}
+.btn-loading::after {
+  content: '';
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.5em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
 /* --- Expandable Section --- */
 .expandable {
   overflow: hidden;

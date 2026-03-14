@@ -59,6 +59,51 @@ async function fetchJson(url, options) {
  * - The request is to /api/auth/me (which uses optionalAuth, returns 200)
  * - A redirect is already in progress
  */
+/**
+ * Wrap an async button action with progress feedback.
+ * Disables button, shows spinner, re-enables on completion.
+ * @param {HTMLButtonElement} btn - The button that triggered the action
+ * @param {Function} asyncFn - Async function to execute
+ * @param {Object} [opts] - Options
+ * @param {string} [opts.loadingText] - Text while loading (default: 'Í vinnslu...')
+ * @param {string} [opts.successText] - Text on success (optional, reverts to original)
+ * @param {number} [opts.successDuration] - Ms to show success text (default: 1500)
+ */
+// eslint-disable-next-line no-unused-vars
+function withProgress(btn, asyncFn, opts) {
+  opts = opts || {};
+  const originalText = btn.textContent;
+  const originalDisabled = btn.disabled;
+  const loadingText = opts.loadingText || 'Í vinnslu...';
+
+  btn.disabled = true;
+  btn.textContent = loadingText;
+  btn.classList.add('btn-loading');
+
+  return Promise.resolve(asyncFn())
+    .then(function (result) {
+      if (opts.successText) {
+        btn.textContent = opts.successText;
+        setTimeout(function () {
+          btn.textContent = originalText;
+          btn.disabled = originalDisabled;
+          btn.classList.remove('btn-loading');
+        }, opts.successDuration || 1500);
+      } else {
+        btn.textContent = originalText;
+        btn.disabled = originalDisabled;
+        btn.classList.remove('btn-loading');
+      }
+      return result;
+    })
+    .catch(function (err) {
+      btn.textContent = originalText;
+      btn.disabled = originalDisabled;
+      btn.classList.remove('btn-loading');
+      throw err;
+    });
+}
+
 (function installAuthInterceptor() {
   const _originalFetch = window.fetch;
   let _redirecting = false;

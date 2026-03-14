@@ -312,11 +312,9 @@ router.post(
 
       // Build lookups from request
       const editLookup = {};
-      const categoryLookup = {};
       for (const seg of segments) {
         if (seg.segmentId && seg.content !== undefined && seg.content !== null) {
-          editLookup[seg.segmentId] = seg.content;
-          if (seg.category) categoryLookup[seg.segmentId] = seg.category;
+          editLookup[seg.segmentId] = { content: seg.content, category: seg.category };
         }
       }
 
@@ -331,7 +329,7 @@ router.post(
         segmentId: seg.segmentId,
         content:
           editLookup[seg.segmentId] !== undefined
-            ? editLookup[seg.segmentId]
+            ? editLookup[seg.segmentId].content
             : seg.hasLocalized
               ? seg.localized
               : seg.faithful,
@@ -342,7 +340,7 @@ router.post(
       for (const seg of data.segments) {
         if (editLookup[seg.segmentId] !== undefined) {
           const previousContent = seg.hasLocalized ? seg.localized : seg.faithful;
-          const newContent = editLookup[seg.segmentId];
+          const newContent = editLookup[seg.segmentId].content;
           if (previousContent !== newContent) {
             auditEdits.push({
               book: req.params.book,
@@ -351,7 +349,7 @@ router.post(
               segmentId: seg.segmentId,
               previousContent,
               newContent,
-              category: categoryLookup[seg.segmentId] || null,
+              category: editLookup[seg.segmentId]?.category || null,
               editorId: String(req.user.id),
               editorUsername: req.user.username,
             });

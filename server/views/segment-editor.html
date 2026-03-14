@@ -2090,7 +2090,13 @@
       }
 
       // Reload module list (otherwise the spinner from loadModule persists)
-      chapterSelect.dispatchEvent(new Event('change'));
+      // Guard: if no chapter selected, show clean state instead of infinite spinner
+      if (chapterSelect.value && parseInt(chapterSelect.value, 10)) {
+        chapterSelect.dispatchEvent(new Event('change'));
+      } else {
+        const container = document.getElementById('modules-container');
+        if (container) container.innerHTML = '';
+      }
     });
 
     // ================================================================

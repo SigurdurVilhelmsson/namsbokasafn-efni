@@ -264,7 +264,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);margin-bottom:0.75rem"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
             <h3>Gagnagrunnur ekki tilb&#250;inn</h3>
             <p class="text-muted">Keyra &#254;arf flutning (migration) til a&#240; virkja notendastj&#243;rnun.</p>
-            <button class="btn btn-primary" style="margin-top:1rem" onclick="usersRunMigration()">Keyra flutning</button>
+            <button class="btn btn-primary" style="margin-top:1rem" id="btn-run-migration" onclick="usersRunMigration()" title="Keyrir gagnagrunnsflutninga sem bíða. Þetta uppfærir gagnagrunninn.">Keyra flutning</button>
           </div>
         </div>
         <div id="users-content" style="display:none">
@@ -311,8 +311,8 @@
             <button class="books-subtab" data-filter="unregistered">&#211;skr&#225;&#240;ar</button>
           </div>
           <div style="display:flex;gap:0.5rem">
-            <button class="btn btn-secondary" id="books-sync-btn" onclick="booksSyncCatalogue()">Samstilla</button>
-            <button class="btn btn-primary" onclick="booksShowAddModal()">B&#230;ta vi&#240; b&#243;k</button>
+            <button class="btn btn-secondary" id="books-sync-btn" onclick="booksSyncCatalogue()" title="Samstillir bókalista við OpenStax vefsafni. Skráir nýjar bækur en breytir ekki þeim sem þegar eru skráðar.">Samstilla</button>
+            <button class="btn btn-primary" onclick="booksShowAddModal()" title="Skrá nýja bók handvirkt í kerfið">B&#230;ta vi&#240; b&#243;k</button>
           </div>
         </div>
         <div class="book-grid" id="books-grid">
@@ -862,10 +862,13 @@
     };
 
     window.usersRunMigration = async function() {
+      var btn = document.getElementById('btn-run-migration');
       try {
-        var data = await fetchJson('/api/admin/migrate', { method:'POST' });
-        if (data.success) { showToast('Flutningur t\u00f3kst','success'); document.getElementById('users-migration').style.display = 'none'; usersLoadUsers(); }
-        else { showToast(data.message || 'Flutningur mist\u00f3kst','error'); }
+        await withProgress(btn, async function() {
+          var data = await fetchJson('/api/admin/migrate', { method:'POST' });
+          if (data.success) { showToast('Flutningur t\u00f3kst','success'); document.getElementById('users-migration').style.display = 'none'; usersLoadUsers(); }
+          else { showToast(data.message || 'Flutningur mist\u00f3kst','error'); }
+        }, { loadingText: 'Keyrir...', successText: 'Lokið!' });
       } catch(e) { showToast(e.message || 'Villa vi\u00f0 flutning','error'); }
     };
 
@@ -918,13 +921,13 @@
 
     window.booksSyncCatalogue = async function() {
       var btn = document.getElementById('books-sync-btn');
-      btn.disabled = true; btn.textContent = 'Samstillir...';
       try {
-        var data = await fetchJson('/api/admin/catalogue/sync', { method:'POST' });
-        if (data.success) { showToast('Samstilling loki\u00f0: ' + data.message,'success'); booksLoadCatalogue(); }
-        else { showToast('Villa: ' + (data.message||data.error),'error'); }
+        await withProgress(btn, async function() {
+          var data = await fetchJson('/api/admin/catalogue/sync', { method:'POST' });
+          if (data.success) { showToast('Samstilling loki\u00f0: ' + data.message,'success'); booksLoadCatalogue(); }
+          else { showToast('Villa: ' + (data.message||data.error),'error'); }
+        }, { loadingText: 'Samstillir...', successText: 'Samstillt!' });
       } catch(e) { showToast('Villa: ' + e.message,'error'); }
-      finally { btn.disabled = false; btn.textContent = 'Samstilla'; }
     };
 
     window.booksOpenRegisterModal = async function(slug, title) {

@@ -452,7 +452,7 @@
         <textarea class="dialog-note" id="advance-note" placeholder="Athugasemd — valkvætt"></textarea>
         <div class="dialog-actions">
           <button class="btn btn-secondary btn-sm" onclick="closeDialog('advance-dialog')">Hætta við</button>
-          <button class="btn btn-primary btn-sm" id="advance-confirm-btn" onclick="confirmAdvance()">Staðfesta</button>
+          <button class="btn btn-primary btn-sm" id="advance-confirm-btn" onclick="confirmAdvance()" title="Staðfesta og færa kafla á næsta stig í ferlinu">Staðfesta</button>
         </div>
       </div>
     </div>
@@ -466,7 +466,7 @@
         <div class="dialog-hint">Lágmark 10 stafir.</div>
         <div class="dialog-actions">
           <button class="btn btn-secondary btn-sm" onclick="closeDialog('revert-dialog')">Hætta við</button>
-          <button class="btn btn-primary btn-sm" id="revert-confirm-btn" disabled onclick="confirmRevert()">Staðfesta</button>
+          <button class="btn btn-primary btn-sm" id="revert-confirm-btn" disabled onclick="confirmRevert()" title="Færa kafla til baka á fyrra stig. Þetta eyðir ekki gögnum.">Staðfesta</button>
         </div>
       </div>
     </div>
