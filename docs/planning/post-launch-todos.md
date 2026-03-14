@@ -6,14 +6,9 @@ Architectural improvements deferred from the March 2026 comprehensive audit. The
 
 ---
 
-## Priority 1: Extract Inline JS from View Files
+## ~~Priority 1: Extract Inline JS from View Files~~ DONE (2026-03-14)
 
-**Problem:** View files are 2,000-3,000 lines each (`segment-editor.html`: 2,933 lines, `localization-editor.html`: 3,031 lines) with mixed HTML, CSS, and JavaScript. Every UI fix requires editing massive files with risk of side effects.
-
-**Solution:** Extract the inline `<script>` blocks into separate `.js` files alongside existing shared modules in `public/js/` (e.g., `segment-editor-app.js`, `localization-editor-app.js`). No framework needed, no build step — just mechanical extraction.
-
-**Effort:** ~1 day
-**Trigger:** If UI bugs keep appearing due to editing large files, prioritize this.
+Completed in commits `3ea608c` (segment-editor) and `b75ed4b` (localization-editor). Extracted ~1,727 and ~1,685 lines of inline JS into `server/public/js/segment-editor.js` and `server/public/js/localization-editor.js`. HTML files reduced from ~2,939→1,211 and ~3,036→1,350 lines respectively. All 352 Vitest + 93 E2E tests pass.
 
 ---
 
