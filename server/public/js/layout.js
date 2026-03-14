@@ -60,7 +60,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2 2h11"></path></svg>
         <span>Yfirferðir</span>
       </a>
-      <a href="/localization" class="nav-link" data-paths="/localization,/localization-editor">
+      <a href="/localization" class="nav-link" id="nav-localization" data-paths="/localization,/localization-editor" style="display:none">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
         <span>Staðfærsla</span>
       </a>
@@ -384,6 +384,12 @@
     }
     if (adminSection) {
       adminSection.style.display = showAdmin ? '' : 'none';
+    }
+
+    // Localization editor — admin-only until Pass 2 workflow is verified
+    const navLocalization = document.getElementById('nav-localization');
+    if (navLocalization) {
+      navLocalization.style.display = showAdmin ? '' : 'none';
     }
 
     // Page content elements with .admin-only / .reviewer-only classes.
