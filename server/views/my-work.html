@@ -1566,8 +1566,8 @@
     function renderTerms(terms) {
       var container = document.getElementById('terms-list');
 
-      if (terms.length === 0) {
-        container.innerHTML = '<div class="empty-state"><p>Engar orðatillögur í bið</p></div>';
+      if (!terms || terms.length === 0) {
+        container.innerHTML = '<div class="empty-state"><p style="color:var(--text-muted)">Orðatillögur eru ekki enn í boði.</p></div>';
         return;
       }
 

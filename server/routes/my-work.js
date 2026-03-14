@@ -57,38 +57,14 @@ function buildEditorUrl(book, chapter, section, stage) {
 }
 
 /**
- * Get user's proposed terminology
+ * Get user's proposed terminology.
+ *
+ * NOTE: The terminology proposals feature is not yet implemented.
+ * The actual table is 'terminology_terms' (migration 004) with a different
+ * schema than this function expected. Returns empty until the feature is built.
  */
-function getUserProposedTerms(username) {
-  try {
-    const database = getDb();
-
-    // Check if terminology table exists
-    const tableExists = database
-      .prepare(
-        `
-      SELECT name FROM sqlite_master WHERE type='table' AND name='terminology'
-    `
-      )
-      .get();
-
-    if (!tableExists) {
-      return [];
-    }
-
-    const stmt = database.prepare(`
-      SELECT t.*,
-             (SELECT COUNT(*) FROM terminology_discussions td WHERE td.term_id = t.id) as discussion_count
-      FROM terminology t
-      WHERE t.proposed_by_name = ? AND t.status IN ('proposed', 'needs_review')
-      ORDER BY t.created_at DESC
-      LIMIT 20
-    `);
-    return stmt.all(username);
-  } catch (err) {
-    console.error('Error getting user terms:', err);
-    return [];
-  }
+function getUserProposedTerms() {
+  return [];
 }
 
 /**
