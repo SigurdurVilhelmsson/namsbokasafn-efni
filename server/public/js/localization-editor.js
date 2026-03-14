@@ -65,14 +65,13 @@ function edUpdateSaveStatusBar() {
   bar.classList.remove('has-unsaved', 'all-saved', 'saving');
   if (count > 0) {
     bar.classList.add('has-unsaved');
-    document.getElementById('save-status-text').textContent =
-      count === 1 ? '1 óvistuð breyting' : count + ' óvistaðar breytingar';
+    document.getElementById('save-status-text').textContent = UI.save.unsaved(count);
   } else {
     bar.classList.add('all-saved');
-    document.getElementById('save-status-text').textContent = 'Allar breytingar vistaðar';
+    document.getElementById('save-status-text').textContent = UI.save.allSaved;
   }
   document.getElementById('save-status-time').textContent = edLastServerSaveTime
-    ? 'Síðast vistað: ' +
+    ? UI.save.lastSaved +
       new Date(edLastServerSaveTime).toLocaleTimeString('is-IS', {
         hour: '2-digit',
         minute: '2-digit',
@@ -95,7 +94,7 @@ async function edAutoSave() {
   if (bar) {
     bar.classList.remove('has-unsaved', 'all-saved');
     bar.classList.add('saving');
-    document.getElementById('save-status-text').textContent = 'Sjálfvirk vistun...';
+    document.getElementById('save-status-text').textContent = UI.save.autoSaving;
   }
 
   var segments = keys.map(function (segmentId) {
@@ -145,7 +144,7 @@ async function edAutoSave() {
       // Update per-segment indicator
       var ind = document.getElementById('ind-' + edCssId(segmentId));
       if (ind) {
-        ind.textContent = 'Vistað';
+        ind.textContent = UI.save.saved;
         ind.className = 'save-indicator saved';
       }
       var ta = document.getElementById('ta-' + edCssId(segmentId));
@@ -173,14 +172,9 @@ async function edAutoSave() {
       if (bar) {
         bar.classList.remove('saving');
         bar.classList.add('has-unsaved');
-        document.getElementById('save-status-text').textContent =
-          'Árekstur! Annar notandi breytti skránni.';
+        document.getElementById('save-status-text').textContent = UI.save.conflict;
       }
-      if (
-        confirm(
-          'Einingin hefur verið breytt af öðrum notanda.\nEndurhlaða til að sjá nýjustu útgáfu?\n\n(Óvistaðar breytingar þínar verða geymdar sem drög.)'
-        )
-      ) {
+      if (confirm(UI.confirm.conflictReload)) {
         edSaveDraft();
         edLoadModule(edCurrentModuleId);
       }
@@ -230,8 +224,7 @@ function edSaveDraft() {
       })
     );
   } catch (e) {
-    if (typeof saveRetry !== 'undefined')
-      saveRetry.showToast('Geymsla í vafra er full — drög gætu glatast.', 'error');
+    if (typeof saveRetry !== 'undefined') saveRetry.showToast(UI.common.localStorageFull, 'error');
   }
 }
 
@@ -258,7 +251,7 @@ function edRestoreDraft() {
     }
     var count = Object.keys(draft.changes).length;
     if (count === 0) return;
-    if (!confirm('Fundust ' + count + ' óvistaðar drög frá síðustu lotu. Endurheimta?')) {
+    if (!confirm(UI.confirm.draftRecovery(count))) {
       tabGuard.clearDraftsByPrefix(edDraftPrefix());
       return;
     }
@@ -288,7 +281,7 @@ const edChapterSelect = document.getElementById('ed-chapter-select');
 edBookSelect.addEventListener('change', async function () {
   edCurrentBook = edBookSelect.value;
   edChapterSelect.disabled = !edCurrentBook;
-  edChapterSelect.innerHTML = '<option value="">Hle\u00F0ur kafla...</option>';
+  edChapterSelect.innerHTML = '<option value="">' + UI.common.loadingChapter + '</option>';
   document.getElementById('modules-list').style.display = 'none';
 
   if (edCurrentBook) {
@@ -315,10 +308,10 @@ edBookSelect.addEventListener('change', async function () {
     }
     // Restore placeholder if no chapters loaded
     if (edChapterSelect.options.length <= 1) {
-      edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      edChapterSelect.innerHTML = '<option value="">' + UI.common.selectChapter + '</option>';
     }
   } else {
-    edChapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+    edChapterSelect.innerHTML = '<option value="">' + UI.common.selectChapter + '</option>';
   }
 });
 
@@ -328,7 +321,9 @@ edChapterSelect.addEventListener('change', async function () {
 
   var container = document.getElementById('modules-container');
   container.innerHTML =
-    '<div class="placeholder-text"><span class="spinner"></span><span>Hle\u00F0ur...</span></div>';
+    '<div class="placeholder-text"><span class="spinner"></span><span>' +
+    UI.common.loading +
+    '</span></div>';
   document.getElementById('modules-list').style.display = 'block';
 
   try {
@@ -337,7 +332,7 @@ edChapterSelect.addEventListener('change', async function () {
     });
 
     if (!data.modules || data.modules.length === 0) {
-      container.innerHTML = '<p class="placeholder-text">Engar einingar fundust.</p>';
+      container.innerHTML = '<p class="placeholder-text">' + UI.common.noModulesFound + '</p>';
       return;
     }
 
@@ -393,7 +388,9 @@ async function edLoadModule(moduleId) {
   var container = document.getElementById('modules-container');
   if (container) {
     container.innerHTML =
-      '<div class="placeholder-text"><span class="spinner"></span><span>Hle\u00F0ur einingu...</span></div>';
+      '<div class="placeholder-text"><span class="spinner"></span><span>' +
+      UI.common.loadingModule +
+      '</span></div>';
   }
 
   try {
@@ -421,7 +418,7 @@ async function edLoadModule(moduleId) {
     document.getElementById('save-status-bar').style.display = 'flex';
     edUpdateSaveStatusBar();
   } catch (err) {
-    alert('Villa vi\u00F0 a\u00F0 hla\u00F0a einingu: ' + err.message);
+    alert(UI.common.errorLoading + err.message);
   }
 }
 
@@ -682,20 +679,20 @@ function edValidateSegmentEdit(enText, originalIs, editedIs) {
   var enMath = (enText || '').match(/\[\[MATH:\d+\]\]/g) || [];
   for (var i = 0; i < enMath.length; i++) {
     if (editedIs.indexOf(enMath[i]) === -1) {
-      blocked.push('Stærðfræðimerki ' + enMath[i] + ' vantar.');
+      blocked.push(UI.validation.mathMissingShort(enMath[i]));
     }
   }
 
   var origBR = (originalIs || '').match(/\[\[BR\]\]/g) || [];
   var editBR = (editedIs || '').match(/\[\[BR\]\]/g) || [];
   if (origBR.length > editBR.length) {
-    blocked.push('[[BR]] línuskil voru fjarlægð.');
+    blocked.push(UI.validation.brRemovedShort);
   }
 
   var enXrefs = (enText || '').match(/\[#[A-Za-z0-9_.-]+\]/g) || [];
   for (var j = 0; j < enXrefs.length; j++) {
     if (editedIs.indexOf(enXrefs[j]) === -1) {
-      blocked.push('Tilvísun ' + enXrefs[j] + ' vantar.');
+      blocked.push(UI.validation.xrefMissingShort(enXrefs[j]));
     }
   }
 
@@ -703,7 +700,7 @@ function edValidateSegmentEdit(enText, originalIs, editedIs) {
   var enDocRefs = (enText || '').match(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g) || [];
   for (var k = 0; k < enDocRefs.length; k++) {
     if (editedIs.indexOf(enDocRefs[k]) === -1) {
-      blocked.push('Skjaltilvísun ' + enDocRefs[k] + ' vantar.');
+      blocked.push(UI.validation.docRefMissingShort(enDocRefs[k]));
     }
   }
 
@@ -711,7 +708,7 @@ function edValidateSegmentEdit(enText, originalIs, editedIs) {
   var origLinks = (originalIs || '').match(/\[[^\]]+\]\([^)]+\)/g) || [];
   for (var l = 0; l < origLinks.length; l++) {
     if (editedIs.indexOf(origLinks[l]) === -1) {
-      blocked.push('Hlekkur ' + origLinks[l] + ' var fjarl\u00E6g\u00F0ur.');
+      blocked.push(UI.validation.linkRemoved(origLinks[l]));
     }
   }
 
@@ -719,7 +716,7 @@ function edValidateSegmentEdit(enText, originalIs, editedIs) {
   var enMedia = (enText || '').match(/\[\[MEDIA:\d+\]\]/g) || [];
   for (var n = 0; n < enMedia.length; n++) {
     if (editedIs.indexOf(enMedia[n]) === -1) {
-      blocked.push('Myndarmerki ' + enMedia[n] + ' vantar.');
+      blocked.push(UI.validation.mediaMissingShort(enMedia[n]));
     }
   }
 
@@ -727,46 +724,32 @@ function edValidateSegmentEdit(enText, originalIs, editedIs) {
   var origSpaces = (originalIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
   var editSpaces = (editedIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
   if (origSpaces.length > editSpaces.length) {
-    blocked.push(
-      '[[SPACE]] bil var fjarl\u00E6gt (' +
-        origSpaces.length +
-        ' \u2192 ' +
-        editSpaces.length +
-        ').'
-    );
+    blocked.push(UI.validation.spaceRemoved(origSpaces.length, editSpaces.length));
   }
 
   if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
-    warnings.push('B\u00FAtur var t\u00E6mdur \u2014 var \u00FEa\u00F0 viljandi?');
+    warnings.push(UI.validation.segmentCleared);
   }
 
   // Warning: unmatched formatting pairs
   var ppCount = (editedIs.match(/\+\+/g) || []).length;
   if (ppCount % 2 !== 0) {
-    warnings.push(
-      '\u00D3jafn fj\u00F6ldi ++ merkja (' + ppCount + ') \u2014 vantar lokun \u00E1 undirstrikun?'
-    );
+    warnings.push(UI.validation.unmatchedPair(UI.validation.pairNames.underline, ppCount));
   }
   var boldCount = (editedIs.match(/\*\*/g) || []).length;
   if (boldCount % 2 !== 0) {
-    warnings.push('\u00D3jafn fj\u00F6ldi ** merkja (' + boldCount + ') \u2014 vantar lokun?');
+    warnings.push(UI.validation.unmatchedPair(UI.validation.pairNames.bold, boldCount));
   }
   var termCount = (editedIs.match(/__/g) || []).length;
   if (termCount % 2 !== 0) {
-    warnings.push('\u00D3jafn fj\u00F6ldi __ merkja (' + termCount + ') \u2014 vantar lokun?');
+    warnings.push(UI.validation.unmatchedPair(UI.validation.pairNames.term, termCount));
   }
 
   // Asymmetric pair: {= must match =}
   var openEmph = (editedIs.match(/\{=/g) || []).length;
   var closeEmph = (editedIs.match(/=\}/g) || []).length;
   if (openEmph !== closeEmph) {
-    warnings.push(
-      '\u00D3jafn fj\u00F6ldi \u00E1herslumerkja: ' +
-        openEmph +
-        '\u00D7 {= en ' +
-        closeEmph +
-        '\u00D7 =} \u2014 vantar lokun?'
-    );
+    warnings.push(UI.validation.unmatchedEmphasis(openEmph, closeEmph));
   }
 
   return {
@@ -789,17 +772,23 @@ async function edSaveSingleSegment(segmentId) {
   if (seg) {
     var validation = edValidateSegmentEdit(seg.en, seg.faithful, content);
     if (validation.blocked) {
-      alert('Ekki hægt að vista:\n\n' + validation.blocked.join('\n'));
+      alert(UI.confirm.validationBlocked + validation.blocked.join('\n'));
       return;
     }
     if (validation.warnings) {
-      if (!confirm('Athugið:\n\n' + validation.warnings.join('\n') + '\n\nViltu halda áfram?')) {
+      if (
+        !confirm(
+          UI.confirm.validationWarnings +
+            validation.warnings.join('\n') +
+            UI.confirm.validationContinue
+        )
+      ) {
         return;
       }
     }
   }
 
-  ind.textContent = 'Vistar...';
+  ind.textContent = UI.save.saving;
   ind.className = 'save-indicator saving';
 
   var saveUrl =
@@ -839,7 +828,7 @@ async function edSaveSingleSegment(segmentId) {
     var row = document.getElementById('row-' + edCssId(segmentId));
     if (row) row.className = 'segment-row saved';
 
-    ind.textContent = 'Vista\u00F0';
+    ind.textContent = UI.save.saved;
     ind.className = 'save-indicator saved';
 
     edModuleData.localizedCount = edModuleData.segments.filter(function (s) {
@@ -851,7 +840,7 @@ async function edSaveSingleSegment(segmentId) {
     edUpdateSaveStatusBar();
   } catch (err) {
     if (err.status === 409) {
-      ind.textContent = '\u00C1rekstrar!';
+      ind.textContent = UI.save.conflict;
       ind.className = 'save-indicator error';
       if (
         confirm(
@@ -863,10 +852,10 @@ async function edSaveSingleSegment(segmentId) {
       }
       return;
     }
-    ind.textContent = 'Villa!';
+    ind.textContent = UI.save.errorIndicator;
     ind.className = 'save-indicator error';
     if (!saveRetry.isRetryable(err)) {
-      alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
+      alert(UI.common.errorSaving + err.message);
     }
   }
 }
@@ -875,7 +864,7 @@ async function edSaveAllSegments() {
   if (edSaveInFlight) return;
   var keys = Object.keys(edPendingChanges);
   if (keys.length === 0) {
-    alert('Engar \u00F3vista\u00F0ar breytingar.');
+    alert(UI.alert.noUnsavedChanges);
     return;
   }
 
@@ -894,7 +883,7 @@ async function edSaveAllSegments() {
     }
   }
   if (allBlocked.length > 0) {
-    alert('Ekki hægt að vista — vandamál í eftirfarandi bútum:\n\n' + allBlocked.join('\n'));
+    alert(UI.confirm.bulkValidationBlocked + allBlocked.join('\n'));
     return;
   }
 
@@ -903,7 +892,7 @@ async function edSaveAllSegments() {
   saveAllBtn.disabled = true;
   saveAllBtn.classList.add('btn-loading');
   var globalInd = document.getElementById('global-save-indicator');
-  globalInd.textContent = 'Vistar ' + keys.length + ' b\u00FAta...';
+  globalInd.textContent = UI.localization.savingBulk(keys.length);
   globalInd.className = 'save-indicator saving';
 
   var segments = keys.map(function (segmentId) {
@@ -959,7 +948,7 @@ async function edSaveAllSegments() {
       return s.hasLocalized;
     }).length;
 
-    globalInd.textContent = result.savedSegments + ' b\u00FAtar vista\u00F0ar';
+    globalInd.textContent = UI.localization.savedBulk(result.savedSegments);
     globalInd.className = 'save-indicator saved';
     setTimeout(function () {
       globalInd.textContent = '';
@@ -980,7 +969,7 @@ async function edSaveAllSegments() {
         clearInterval(edAutoSaveTimer);
         edAutoSaveTimer = null;
       }
-      globalInd.textContent = '\u00C1rekstrar!';
+      globalInd.textContent = UI.save.conflict;
       globalInd.className = 'save-indicator error';
       if (
         confirm(
@@ -992,10 +981,10 @@ async function edSaveAllSegments() {
       }
       return;
     }
-    globalInd.textContent = 'Villa!';
+    globalInd.textContent = UI.save.errorIndicator;
     globalInd.className = 'save-indicator error';
     if (!saveRetry.isRetryable(err)) {
-      alert('Villa vi\u00F0 a\u00F0 vista: ' + err.message);
+      alert(UI.common.errorSaving + err.message);
     }
   } finally {
     edSaveInFlight = false;
@@ -1023,7 +1012,7 @@ function edCopyFaithful(segmentId) {
 
 document.getElementById('btn-back').addEventListener('click', function () {
   if (Object.keys(edPendingChanges).length > 0) {
-    if (!confirm('\u00DE\u00FA \u00E1tt \u00F3vista\u00F0ar breytingar. Viltu yfirgefa?')) return;
+    if (!confirm(UI.confirm.leaveUnsaved)) return;
   }
   edClearDraft();
   if (edDraftTimer) clearInterval(edDraftTimer);
@@ -1082,7 +1071,7 @@ document.addEventListener('keydown', function (e) {
   // Escape key: go back to module list (with unsaved-changes guard)
   if (e.key === 'Escape' && edModuleData) {
     if (Object.keys(edPendingChanges).length > 0) {
-      if (!confirm('\u00DE\u00FA \u00E1tt \u00F3vista\u00F0ar breytingar. Viltu yfirgefa?')) return;
+      if (!confirm(UI.confirm.leaveUnsaved)) return;
     }
     document.getElementById('btn-back').click();
   }
@@ -1178,7 +1167,9 @@ async function edShowHistory(segmentId, btn) {
   var popover = document.createElement('div');
   popover.className = 'history-popover';
   popover.innerHTML =
-    '<div class="history-popover-header"><span>Breytingasaga</span></div>' +
+    '<div class="history-popover-header"><span>' +
+    UI.history.title +
+    '</span></div>' +
     '<div style="text-align:center;padding:var(--spacing-sm);color:var(--text-muted)"><span class="spinner"></span> Hle\u00F0ur...</div>';
   container.appendChild(popover);
   edOpenPopover = popover;
@@ -1202,7 +1193,9 @@ async function edShowHistory(segmentId, btn) {
       popover.innerHTML =
         '<div class="history-popover-header"><span>Breytingasaga</span>' +
         '<button class="btn-close" onclick="edClosePopover()" style="font-size:1rem">&times;</button></div>' +
-        '<div style="text-align:center;padding:var(--spacing-sm);color:var(--text-muted)">Engin saga.</div>';
+        '<div style="text-align:center;padding:var(--spacing-sm);color:var(--text-muted)">' +
+        UI.history.empty +
+        '</div>';
       return;
     }
 
@@ -1349,14 +1342,14 @@ async function rvLoadBooks() {
 
 async function rvLoadChapters(bookSlug) {
   var select = document.getElementById('rv-chapter-select');
-  select.innerHTML = '<option value="">Hle\u00F0ur...</option>';
+  select.innerHTML = '<option value="">' + UI.common.loading + '</option>';
   select.disabled = true;
   rvResetSelectors(['rv-section-select']);
 
   try {
     var data = await fetchJson('/api/books/' + bookSlug);
 
-    select.innerHTML = '<option value="">Veldu kafla...</option>';
+    select.innerHTML = '<option value="">' + UI.common.selectChapter + '</option>';
     data.chapters.forEach(function (ch) {
       select.innerHTML +=
         '<option value="' +
@@ -1369,19 +1362,19 @@ async function rvLoadChapters(bookSlug) {
     });
     select.disabled = false;
   } catch (err) {
-    select.innerHTML = '<option value="">Villa</option>';
+    select.innerHTML = '<option value="">' + UI.common.error + '</option>';
   }
 }
 
 async function rvLoadSections(bookSlug, chapterNum) {
   var select = document.getElementById('rv-section-select');
-  select.innerHTML = '<option value="">Hle\u00F0ur...</option>';
+  select.innerHTML = '<option value="">' + UI.common.loading + '</option>';
   select.disabled = true;
 
   try {
     var data = await fetchJson('/api/sections/' + bookSlug + '/' + chapterNum);
 
-    select.innerHTML = '<option value="">Veldu hluta...</option>';
+    select.innerHTML = '<option value="">' + UI.common.selectOption + '...</option>';
     data.sections.forEach(function (sec) {
       var status =
         sec.status === 'localization_in_progress'
@@ -1394,14 +1387,14 @@ async function rvLoadSections(bookSlug, chapterNum) {
     });
     select.disabled = false;
   } catch (err) {
-    select.innerHTML = '<option value="">Villa</option>';
+    select.innerHTML = '<option value="">' + UI.common.error + '</option>';
   }
 }
 
 function rvResetSelectors(ids) {
   ids.forEach(function (id) {
     var el = document.getElementById(id);
-    el.innerHTML = '<option value="">Veldu...</option>';
+    el.innerHTML = '<option value="">' + UI.common.selectOption + '</option>';
     el.disabled = true;
   });
   document.getElementById('rv-load-btn').disabled = true;
@@ -1474,7 +1467,7 @@ async function rvLoadSectionById(sectionId) {
     }
   } catch (err) {
     console.error('Failed to load section:', err);
-    alert('Villa vi\u00F0 a\u00F0 hla\u00F0a hluta: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1556,8 +1549,7 @@ function rvRenderSuggestions() {
         });
 
   if (filtered.length === 0) {
-    list.innerHTML =
-      '<p class="placeholder-text">Engar till\u00F6gur \u00ED \u00FEessum flokki.</p>';
+    list.innerHTML = '<p class="placeholder-text">' + UI.alert.noPendingSuggestions + '</p>';
     return;
   }
 
@@ -1655,17 +1647,17 @@ async function rvScanForSuggestions() {
   var btn = event.target.closest('button');
   btn.disabled = true;
   var originalHtml = btn.innerHTML;
-  btn.innerHTML = '<span class="spinner"></span> Skannar...';
+  btn.innerHTML = '<span class="spinner"></span> ' + UI.localization.scanning;
 
   try {
     var data = await fetchJson('/api/suggestions/scan/' + rvCurrentSectionId, { method: 'POST' });
 
     if (data.success) {
       await rvLoadSuggestions();
-      alert('Skanna\u00F0! ' + data.suggestionsCount + ' till\u00F6gur fundust.');
+      alert(UI.alert.scanned(data.suggestionsCount));
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   } finally {
     btn.disabled = false;
     btn.innerHTML = originalHtml;
@@ -1680,7 +1672,7 @@ async function rvAcceptSuggestion(id) {
       await rvLoadSuggestions();
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1692,7 +1684,7 @@ async function rvRejectSuggestion(id) {
       await rvLoadSuggestions();
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1714,7 +1706,7 @@ async function rvSaveModifiedSuggestion() {
   var modifiedText = document.getElementById('edit-modified').value.trim();
 
   if (!modifiedText) {
-    alert('Breyting er nau\u00F0synleg');
+    alert(UI.alert.modificationRequired);
     return;
   }
 
@@ -1730,7 +1722,7 @@ async function rvSaveModifiedSuggestion() {
       await rvLoadSuggestions();
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1744,11 +1736,11 @@ async function rvAcceptAllPending() {
     });
 
   if (pendingIds.length === 0) {
-    alert('Engar till\u00F6gur \u00ED bi\u00F0');
+    alert(UI.alert.noPendingSuggestions);
     return;
   }
 
-  if (!confirm('Sam\u00FEykkja ' + pendingIds.length + ' till\u00F6gur?')) return;
+  if (!confirm(UI.confirm.acceptSuggestions(pendingIds.length))) return;
 
   try {
     var data = await fetchJson('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
@@ -1761,7 +1753,7 @@ async function rvAcceptAllPending() {
       await rvLoadSuggestions();
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1775,11 +1767,11 @@ async function rvRejectAllPending() {
     });
 
   if (pendingIds.length === 0) {
-    alert('Engar till\u00F6gur \u00ED bi\u00F0');
+    alert(UI.alert.noPendingSuggestions);
     return;
   }
 
-  if (!confirm('Hafna ' + pendingIds.length + ' till\u00F6gum?')) return;
+  if (!confirm(UI.confirm.rejectSuggestions(pendingIds.length))) return;
 
   try {
     var data = await fetchJson('/api/suggestions/' + rvCurrentSectionId + '/bulk', {
@@ -1792,7 +1784,7 @@ async function rvRejectAllPending() {
       await rvLoadSuggestions();
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1802,7 +1794,7 @@ async function rvSyncToLog() {
   });
 
   if (accepted.length === 0) {
-    alert('Engar sam\u00FEykktar till\u00F6gur til a\u00F0 samstilla');
+    alert(UI.alert.noAcceptedSuggestions);
     return;
   }
 
@@ -1812,11 +1804,11 @@ async function rvSyncToLog() {
     });
 
     if (data.success) {
-      alert(data.entriesCreated + ' f\u00E6rslur b\u00E6ttar vi\u00F0 skr\u00E1');
+      alert(UI.alert.syncedEntries(data.entriesCreated));
       await rvReloadHistory();
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1830,7 +1822,7 @@ function rvRenderLogEntries(entries) {
     '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 
   if (!entries || entries.length === 0) {
-    list.innerHTML = '<p class="placeholder-text">Engar f\u00E6rslur \u00ED skr\u00E1.</p>';
+    list.innerHTML = '<p class="placeholder-text">' + UI.history.noEntries + '</p>';
     return;
   }
 
@@ -1901,13 +1893,13 @@ async function rvSaveLogEntry() {
   };
 
   if (!entry.original || !entry.changedTo || !entry.reason) {
-    alert('Upprunalegt, breytt \u00ED, og \u00E1st\u00E6\u00F0a eru nau\u00F0synleg');
+    alert(UI.alert.modificationRequired);
     return;
   }
 
   try {
     if (!rvCurrentSectionMeta || !rvCurrentSectionMeta.moduleId) {
-      alert('Villa: vantar module\u00CDD');
+      alert(UI.alert.missingModuleId);
       return;
     }
     var logUrl =
@@ -1929,10 +1921,10 @@ async function rvSaveLogEntry() {
       closeModal('log-modal');
       await rvReloadHistory();
     } else {
-      alert('Villa: ' + data.message);
+      alert(UI.common.errorPrefix + data.message);
     }
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -1956,46 +1948,19 @@ function rvShowSelector() {
 // ----------------------------------------------------------------
 
 function rvFormatStatus(status) {
-  var names = {
-    faithful_approved: 'Tilb\u00FAi\u00F0 fyrir sta\u00F0f\u00E6ringu',
-    localization_in_progress: '\u00CD vinnslu',
-    localization_submitted: 'Sent til sam\u00FEykktar',
-    localization_approved: 'Sam\u00FEykkt',
-  };
-  return names[status] || status;
+  return UI.reviewStatus[status] || status;
 }
 
 function rvFormatType(type) {
-  var names = {
-    unit_conversion: 'Einingar',
-    cultural_reference: 'Menning',
-    currency: 'Gjaldmi\u00F0ill',
-    agency_reference: 'Stofnanir',
-    regional_example: 'D\u00E6mi',
-    other: 'Anna\u00F0',
-  };
-  return names[type] || type;
+  return UI.suggestionType[type] || type;
 }
 
 function rvFormatSuggestionStatus(status) {
-  var names = {
-    accepted: 'Sam\u00FEykkt',
-    rejected: 'Hafna\u00F0',
-    modified: 'Breytt og sam\u00FEykkt',
-  };
-  return names[status] || status;
+  return UI.suggestionStatus[status] || status;
 }
 
 function rvFormatLogType(type) {
-  var names = {
-    unit_conversion: 'Einingarumreikn.',
-    cultural_adaptation: 'Menningarlegt',
-    added_context: 'Sk\u00FDringar',
-    removed_content: 'Fjarl\u00E6gt',
-    terminology: 'Or\u00F0',
-    other: 'Anna\u00F0',
-  };
-  return names[type] || type;
+  return UI.logType[type] || type;
 }
 
 function rvFormatMarkdownPreview(md) {

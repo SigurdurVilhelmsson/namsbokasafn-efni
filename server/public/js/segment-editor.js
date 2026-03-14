@@ -38,14 +38,13 @@ function updateSaveStatusBar() {
   bar.classList.remove('has-unsaved', 'all-saved', 'saving');
   if (count > 0) {
     bar.classList.add('has-unsaved');
-    document.getElementById('save-status-text').textContent =
-      count === 1 ? '1 óvistuð breyting' : count + ' óvistaðar breytingar';
+    document.getElementById('save-status-text').textContent = UI.save.unsaved(count);
   } else {
     bar.classList.add('all-saved');
-    document.getElementById('save-status-text').textContent = 'Allar breytingar vistaðar';
+    document.getElementById('save-status-text').textContent = UI.save.allSaved;
   }
   document.getElementById('save-status-time').textContent = lastServerSaveTime
-    ? 'Síðast vistað: ' +
+    ? UI.save.lastSaved +
       new Date(lastServerSaveTime).toLocaleTimeString('is-IS', {
         hour: '2-digit',
         minute: '2-digit',
@@ -80,8 +79,7 @@ function saveDraft() {
   try {
     localStorage.setItem(draftKey(), JSON.stringify({ ts: Date.now(), drafts }));
   } catch (e) {
-    if (typeof saveRetry !== 'undefined')
-      saveRetry.showToast('Geymsla í vafra er full — drög gætu glatast.', 'error');
+    if (typeof saveRetry !== 'undefined') saveRetry.showToast(UI.common.localStorageFull, 'error');
   }
 }
 
@@ -105,7 +103,7 @@ function restoreDraft() {
     }
     const ids = Object.keys(draft.drafts);
     if (ids.length === 0) return;
-    if (!confirm('Fundust ' + ids.length + ' óvistuð drög frá síðustu lotu. Endurheimta?')) {
+    if (!confirm(UI.confirm.draftRecovery(ids.length))) {
       tabGuard.clearDraftsByPrefix(draftPrefix());
       return;
     }
@@ -159,7 +157,7 @@ const chapterSelect = document.getElementById('chapter-select');
 bookSelect.addEventListener('change', async () => {
   currentBook = bookSelect.value;
   chapterSelect.disabled = !currentBook;
-  chapterSelect.innerHTML = '<option value="">Hleður kafla...</option>';
+  chapterSelect.innerHTML = '<option value="">' + UI.common.loadingChapter + '</option>';
   document.getElementById('modules-list').style.display = 'none';
 
   if (currentBook) {
@@ -182,10 +180,10 @@ bookSelect.addEventListener('change', async () => {
     }
     // Restore placeholder if no chapters loaded (fetch failed or empty)
     if (chapterSelect.options.length <= 1) {
-      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      chapterSelect.innerHTML = '<option value="">' + UI.common.selectChapter + '</option>';
     }
   } else {
-    chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+    chapterSelect.innerHTML = '<option value="">' + UI.common.selectChapter + '</option>';
   }
 });
 
@@ -195,7 +193,9 @@ chapterSelect.addEventListener('change', async () => {
 
   const container = document.getElementById('modules-container');
   container.innerHTML =
-    '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
+    '<div class="loading-state"><span class="spinner"></span><span>' +
+    UI.common.loading +
+    '</span></div>';
   document.getElementById('modules-list').style.display = 'block';
 
   try {
@@ -204,7 +204,7 @@ chapterSelect.addEventListener('change', async () => {
     });
 
     if (!data.modules || data.modules.length === 0) {
-      container.innerHTML = '<p class="text-muted">Engar einingar fundust.</p>';
+      container.innerHTML = '<p class="text-muted">' + UI.common.noModulesFound + '</p>';
       return;
     }
 
@@ -244,7 +244,9 @@ async function loadModule(moduleId, { force = false } = {}) {
   const modulesContainer = document.getElementById('modules-container');
   if (modulesContainer) {
     modulesContainer.innerHTML =
-      '<div class="loading-state"><span class="spinner"></span><span>Hleður einingu...</span></div>';
+      '<div class="loading-state"><span class="spinner"></span><span>' +
+      UI.common.loadingModule +
+      '</span></div>';
   }
 
   try {
@@ -274,7 +276,7 @@ async function loadModule(moduleId, { force = false } = {}) {
     // Restore module list on error so users can retry
     document.getElementById('module-selector').style.display = 'block';
     chapterSelect.dispatchEvent(new Event('change'));
-    alert('Villa við að hlaða einingu: ' + err.message);
+    alert(UI.common.errorLoading + err.message);
   } finally {
     _loadingModuleId = null;
   }
@@ -306,11 +308,7 @@ async function loadTermData(moduleId) {
 function renderModule() {
   document.getElementById('module-title').textContent =
     `${moduleData.moduleId} — ${moduleData.title}`;
-  const sourceLabels = {
-    'mt-output': 'MT — vélþýðing',
-    faithful: 'Ritstýrt — yfirfarin þýðing',
-    localized: 'Staðfærð — aðlöguð að íslensku samhengi',
-  };
+  const sourceLabels = UI.sourceLabels;
   const sourceLabel = sourceLabels[moduleData.isSource] || moduleData.isSource || 'engin';
   const metaEl = document.getElementById('module-meta');
   const missing = moduleData.segmentCount - moduleData.translatedCount;
@@ -327,13 +325,12 @@ function renderModule() {
           `<span style="color: var(--warning); font-weight: 600;">${missing} óþýdd(ar)</span>`
         )
       : metaText;
-  metaEl.title =
-    'MT = óyfirfarin vélþýðing · Yfirlesið = mannlegri yfirferð lokið · Staðfærð = aðlöguð að Íslandi';
+  metaEl.title = UI.tooltips.sourceTypes;
 
   // Update topbar breadcrumb
   const topbarTitle = document.getElementById('topbar-title');
   if (topbarTitle) {
-    topbarTitle.textContent = `Ritstjóri — ${moduleData.moduleId}`;
+    topbarTitle.textContent = UI.segmentEditor.titleModule(moduleData.moduleId);
   }
 
   renderStats();
@@ -377,7 +374,7 @@ function renderSegments() {
   // O1: Close open edit panels before re-rendering to prevent losing typed text
   const openPanels = document.querySelectorAll('.edit-panel.active');
   if (openPanels.length > 0 && dirtyEdits.size > 0) {
-    if (!confirm('Opin klippispjöld verða lokuð. Viltu halda áfram?')) return;
+    if (!confirm(UI.confirm.closePanels)) return;
   }
   openPanels.forEach((panel) => {
     panel.classList.remove('active');
@@ -539,7 +536,7 @@ function renderSegmentRow(seg) {
   // Cross-editor conflict indicator
   const hasOtherEdits = (moduleData.otherPendingSegments || []).includes(seg.segmentId);
   const conflictHtml = hasOtherEdits
-    ? '<span class="other-editor-badge" title="Annar ritstjóri hefur breytt þessum búti">&#9998;</span>'
+    ? '<span class="other-editor-badge" title="' + UI.tooltips.otherEditor + '">&#9998;</span>'
     : '';
 
   return `
@@ -549,7 +546,7 @@ function renderSegmentRow(seg) {
             ${conflictHtml}
           </td>
           <td class="col-en">
-            <div class="segment-content">${enHtml || '<em class="text-muted">Engin enska</em>'}</div>
+            <div class="segment-content">${enHtml || '<em class="text-muted">' + UI.segmentEditor.noEnglish + '</em>'}</div>
           </td>
           <td class="col-is">
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
@@ -623,7 +620,7 @@ function openEditPanel(segmentId) {
           // Update per-segment indicator
           const ind = document.getElementById('seg-ind-' + cssId(segmentId));
           if (ind) {
-            ind.textContent = 'Breytt';
+            ind.textContent = UI.save.changed;
             ind.className = 'seg-save-ind dirty';
           }
           updateSaveStatusBar();
@@ -671,7 +668,7 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const enMath = (enText || '').match(/\[\[MATH:\d+\]\]/g) || [];
   for (const m of enMath) {
     if (!editedIs.includes(m)) {
-      blocked.push(`Stærðfræðimerki ${m} vantar — það er í enskum texta og má ekki fjarlægja.`);
+      blocked.push(UI.validation.mathMissing(m));
     }
   }
 
@@ -679,14 +676,14 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const origBR = (originalIs || '').match(/\[\[BR\]\]/g) || [];
   const editBR = (editedIs || '').match(/\[\[BR\]\]/g) || [];
   if (origBR.length > editBR.length) {
-    blocked.push(`[[BR]] línuskil voru fjarlægð (${origBR.length} → ${editBR.length}).`);
+    blocked.push(UI.validation.brRemoved(origBR.length, editBR.length));
   }
 
   // Hard block: [#CNX_...] cross-references in EN but missing from edited IS
   const enXrefs = (enText || '').match(/\[#[A-Za-z0-9_.-]+\]/g) || [];
   for (const xref of enXrefs) {
     if (!editedIs.includes(xref)) {
-      blocked.push(`Tilvísun ${xref} vantar — hún er í enskum texta og má ekki fjarlægja.`);
+      blocked.push(UI.validation.xrefMissing(xref));
     }
   }
 
@@ -694,7 +691,7 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const origLinks = (originalIs || '').match(/\[[^\]]+\]\([^)]+\)/g) || [];
   for (const link of origLinks) {
     if (!editedIs.includes(link)) {
-      blocked.push(`Hlekkur ${link} var fjarlægður.`);
+      blocked.push(UI.validation.linkRemoved(link));
     }
   }
 
@@ -702,7 +699,7 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const enDocRefs = (enText || '').match(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g) || [];
   for (const ref of enDocRefs) {
     if (!editedIs.includes(ref)) {
-      blocked.push(`Skjaltilvísun ${ref} vantar — hún er í enskum texta og má ekki fjarlægja.`);
+      blocked.push(UI.validation.docRefMissing(ref));
     }
   }
 
@@ -710,7 +707,7 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const enMedia = (enText || '').match(/\[\[MEDIA:\d+\]\]/g) || [];
   for (const m of enMedia) {
     if (!editedIs.includes(m)) {
-      blocked.push(`Myndarmerki ${m} vantar — það er í enskum texta og má ekki fjarlægja.`);
+      blocked.push(UI.validation.mediaMissing(m));
     }
   }
 
@@ -718,19 +715,19 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const origSpaces = (originalIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
   const editSpaces = (editedIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
   if (origSpaces.length > editSpaces.length) {
-    blocked.push(`[[SPACE]] bil var fjarlægt (${origSpaces.length} → ${editSpaces.length}).`);
+    blocked.push(UI.validation.spaceRemoved(origSpaces.length, editSpaces.length));
   }
 
   // Warning: unmatched formatting pairs (odd count)
   const pairs = [
-    { marker: '**', name: 'feitletrað (**)', re: /\*\*/g },
-    { marker: '__', name: 'hugtak (__)', re: /__/g },
-    { marker: '++', name: 'undirstrikað (++)', re: /\+\+/g },
+    { marker: '**', name: UI.validation.pairNames.bold, re: /\*\*/g },
+    { marker: '__', name: UI.validation.pairNames.term, re: /__/g },
+    { marker: '++', name: UI.validation.pairNames.underline, re: /\+\+/g },
   ];
   for (const { name, re } of pairs) {
     const count = (editedIs.match(re) || []).length;
     if (count % 2 !== 0) {
-      warnings.push(`Ójafn fjöldi ${name} merkja (${count}) — vantar lokun?`);
+      warnings.push(UI.validation.unmatchedPair(name, count));
     }
   }
 
@@ -738,26 +735,24 @@ function validateSegmentEdit(enText, originalIs, editedIs) {
   const openEmph = (editedIs.match(/\{=/g) || []).length;
   const closeEmph = (editedIs.match(/=\}/g) || []).length;
   if (openEmph !== closeEmph) {
-    warnings.push(
-      `Ójafn fjöldi áherslumerkja: ${openEmph}× {= en ${closeEmph}× =} — vantar lokun?`
-    );
+    warnings.push(UI.validation.unmatchedEmphasis(openEmph, closeEmph));
   }
 
   // Warning: unmatched ~ for subscript (but ignore ~~ which could be strikethrough)
   const tildeCount = (editedIs.match(/(?<![~])~(?!~)/g) || []).length;
   if (tildeCount % 2 !== 0) {
-    warnings.push(`Ójafn fjöldi ~ merkja (${tildeCount}) — vantar lokun á niðurskrift?`);
+    warnings.push(UI.validation.unmatchedSubscript(tildeCount));
   }
 
   // Warning: unmatched ^ for superscript
   const caretCount = (editedIs.match(/\^/g) || []).length;
   if (caretCount % 2 !== 0) {
-    warnings.push(`Ójafn fjöldi ^ merkja (${caretCount}) — vantar lokun á uppskrift?`);
+    warnings.push(UI.validation.unmatchedSuperscript(caretCount));
   }
 
   // Warning: segment cleared when original had content
   if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
-    warnings.push('Bútur var tæmdur — var það viljandi?');
+    warnings.push(UI.validation.segmentCleared);
   }
 
   return {
@@ -787,11 +782,17 @@ async function saveEdit(segmentId) {
   // Validate before saving
   const validation = validateSegmentEdit(seg.en, seg.is, editedContent);
   if (validation.blocked) {
-    alert('Ekki hægt að vista:\n\n' + validation.blocked.join('\n'));
+    alert(UI.confirm.validationBlocked + validation.blocked.join('\n'));
     return;
   }
   if (validation.warnings) {
-    if (!confirm('Athugið:\n\n' + validation.warnings.join('\n') + '\n\nViltu halda áfram?')) {
+    if (
+      !confirm(
+        UI.confirm.validationWarnings +
+          validation.warnings.join('\n') +
+          UI.confirm.validationContinue
+      )
+    ) {
       return;
     }
   }
@@ -813,7 +814,7 @@ async function saveEdit(segmentId) {
   // Update per-segment indicator to "saving"
   const savingInd = document.getElementById('seg-ind-' + cssId(segmentId));
   if (savingInd) {
-    savingInd.textContent = 'Vistar...';
+    savingInd.textContent = UI.save.saving;
     savingInd.className = 'seg-save-ind saving';
   }
 
@@ -837,11 +838,11 @@ async function saveEdit(segmentId) {
   } catch (err) {
     // Revert per-segment indicator on error
     if (savingInd) {
-      savingInd.textContent = 'Breytt';
+      savingInd.textContent = UI.save.changed;
       savingInd.className = 'seg-save-ind dirty';
     }
     if (!saveRetry.isRetryable(err)) {
-      alert('Villa við að vista: ' + err.message);
+      alert(UI.common.errorSaving + err.message);
     }
   }
 }
@@ -864,12 +865,12 @@ async function reviewEdit(editId, action) {
 
     await loadModule(currentModuleId);
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
 async function unapproveEdit(editId) {
-  if (!confirm('Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".')) return;
+  if (!confirm(UI.confirm.unapprove)) return;
 
   try {
     await fetchJson(`${API_BASE}/edit/${editId}/unapprove`, {
@@ -880,7 +881,7 @@ async function unapproveEdit(editId) {
 
     await loadModule(currentModuleId);
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 }
 
@@ -890,11 +891,11 @@ async function unapproveEdit(editId) {
 document.getElementById('btn-submit').addEventListener('click', async () => {
   const stats = moduleData.stats || {};
   if (!stats.pending || stats.pending === 0) {
-    alert('Engar breytingar til að senda.');
+    alert(UI.alert.noChanges);
     return;
   }
 
-  if (!confirm(`Senda ${stats.pending} breytingar til yfirlestrar?`)) return;
+  if (!confirm(UI.confirm.submitForReview(stats.pending))) return;
 
   try {
     await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/submit`, {
@@ -907,7 +908,10 @@ document.getElementById('btn-submit').addEventListener('click', async () => {
     const toast = document.createElement('div');
     toast.className = 'toast toast-success show';
     toast.innerHTML =
-      'Sent til yfirlestrar! <a href="/editor" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">Skoða yfirlestur →</a>';
+      UI.segmentEditor.sentForReview +
+      ' <a href="/editor" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">' +
+      UI.segmentEditor.viewReview +
+      '</a>';
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.classList.remove('show');
@@ -915,7 +919,7 @@ document.getElementById('btn-submit').addEventListener('click', async () => {
     }, 6000);
     await loadModule(currentModuleId);
   } catch (err) {
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
   }
 });
 
@@ -938,7 +942,7 @@ document.getElementById('btn-back').addEventListener('click', () => {
   // Reset topbar title
   const topbarTitle = document.getElementById('topbar-title');
   if (topbarTitle) {
-    topbarTitle.textContent = 'Ritstjóri';
+    topbarTitle.textContent = UI.segmentEditor.title;
   }
 
   // Reload module list (otherwise the spinner from loadModule persists)
@@ -1127,24 +1131,11 @@ function renderInlineDiff(oldText, newText) {
 }
 
 function statusLabel(status) {
-  const labels = {
-    pending: 'Bíður',
-    approved: 'Samþykkt',
-    rejected: 'Hafnað',
-    discuss: 'Umræða',
-  };
-  return labels[status] || status;
+  return UI.editStatus[status] || status;
 }
 
 function categoryLabel(cat) {
-  const labels = {
-    terminology: 'Hugtök',
-    accuracy: 'Nákvæmni',
-    readability: 'Læsileiki',
-    style: 'Stíll',
-    omission: 'Úrfelling',
-  };
-  return labels[cat] || cat;
+  return UI.editCategory[cat] || cat;
 }
 
 // ================================================================
@@ -1178,10 +1169,10 @@ async function runPipelineAction(action) {
 
   // Disable buttons while running
   setPipelineButtonsDisabled(true);
-  badge.textContent = 'Í gangi...';
+  badge.textContent = UI.pipeline.running;
   badge.className = 'pipeline-status-badge running';
   badge.style.display = 'inline-block';
-  output.textContent = `Starting ${action}...\n`;
+  output.textContent = UI.pipeline.starting(action);
   output.classList.add('active');
 
   try {
@@ -1200,7 +1191,7 @@ async function runPipelineAction(action) {
     // Start polling for job status
     pollJobStatus(data.jobId);
   } catch (err) {
-    badge.textContent = 'Villa';
+    badge.textContent = UI.common.error;
     badge.className = 'pipeline-status-badge failed';
     output.textContent += `Error: ${err.message}\n`;
     setPipelineButtonsDisabled(false);
@@ -1229,26 +1220,25 @@ function pollJobStatus(jobId) {
 
       if (job.status === 'completed') {
         clearInterval(pipelinePollingTimer);
-        badge.textContent = 'Lokið';
+        badge.textContent = UI.pipeline.completed;
         badge.className = 'pipeline-status-badge completed';
         setPipelineButtonsDisabled(false);
       } else if (job.status === 'failed') {
         clearInterval(pipelinePollingTimer);
-        badge.textContent = 'Mistókst';
+        badge.textContent = UI.pipeline.failed;
         badge.className = 'pipeline-status-badge failed';
         output.textContent += `\nError: ${job.error || 'Unknown error'}`;
         setPipelineButtonsDisabled(false);
       } else {
-        badge.textContent = job.phase ? `Í gangi (${job.phase})...` : 'Í gangi...';
+        badge.textContent = job.phase ? UI.pipeline.runningPhase(job.phase) : UI.pipeline.running;
       }
     } catch {
       if (pollAttempts >= MAX_POLL_ATTEMPTS) {
         clearInterval(pipelinePollingTimer);
         const badge = document.getElementById('pipeline-badge');
-        badge.textContent = 'Tenging rofnaði';
+        badge.textContent = UI.pipeline.connectionLost;
         badge.className = 'pipeline-status-badge failed';
-        document.getElementById('pipeline-output').textContent +=
-          '\nGat ekki náð sambandi við þjón.';
+        document.getElementById('pipeline-output').textContent += UI.pipeline.connectionLostDetail;
         setPipelineButtonsDisabled(false);
       }
     }
@@ -1288,7 +1278,7 @@ async function loadApplyStatus() {
   const btnApplyRender = document.getElementById('btn-apply-render');
   const badge = document.getElementById('apply-badge');
 
-  statusEl.textContent = 'Hleður...';
+  statusEl.textContent = UI.apply.loading;
   btnApply.disabled = true;
   btnApplyRender.disabled = true;
   badge.style.display = 'none';
@@ -1302,16 +1292,16 @@ async function loadApplyStatus() {
     const { unapplied_count, applied_count, total_approved } = data;
 
     if (unapplied_count > 0) {
-      statusEl.textContent = `${unapplied_count} samþykktar breytingar til að vista`;
+      statusEl.textContent = UI.apply.unapplied(unapplied_count);
       btnApply.disabled = false;
       btnApplyRender.disabled = false;
     } else if (total_approved > 0) {
-      statusEl.textContent = `Allar ${total_approved} samþykktar breytingar vistaðar`;
+      statusEl.textContent = UI.apply.allApplied(total_approved);
     } else {
-      statusEl.textContent = 'Engar samþykktar breytingar';
+      statusEl.textContent = UI.apply.noApproved;
     }
   } catch (err) {
-    statusEl.textContent = 'Villa við að sækja stöðu';
+    statusEl.textContent = UI.apply.errorLoading;
     console.error('Apply status error:', err);
   }
 }
@@ -1324,7 +1314,7 @@ async function applyEdits() {
   btnApply.disabled = true;
   btnApplyRender.disabled = true;
   badge.style.display = 'inline-block';
-  badge.textContent = 'Vista...';
+  badge.textContent = UI.apply.saving;
   badge.className = 'pipeline-status-badge running';
 
   try {
@@ -1332,14 +1322,14 @@ async function applyEdits() {
       `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply`,
       { method: 'POST', credentials: 'include' }
     );
-    badge.textContent = `Vistað (${data.appliedCount} breytingar)`;
+    badge.textContent = UI.apply.saved(data.appliedCount);
     badge.className = 'pipeline-status-badge success';
     // Refresh status
     loadApplyStatus();
   } catch (err) {
-    badge.textContent = 'Mistókst';
+    badge.textContent = UI.pipeline.failed;
     badge.className = 'pipeline-status-badge failed';
-    alert('Villa við að vista: ' + err.message);
+    alert(UI.common.errorSaving + err.message);
     btnApply.disabled = false;
     btnApplyRender.disabled = false;
   }
@@ -1353,7 +1343,7 @@ async function applyAndRender() {
   btnApply.disabled = true;
   btnApplyRender.disabled = true;
   badge.style.display = 'inline-block';
-  badge.textContent = 'Vista + Render...';
+  badge.textContent = UI.apply.saveAndRender;
   badge.className = 'pipeline-status-badge running';
 
   try {
@@ -1362,20 +1352,20 @@ async function applyAndRender() {
       { method: 'POST', credentials: 'include' }
     );
 
-    badge.textContent = `Vistað (${data.applied.appliedCount}), render í gangi...`;
+    badge.textContent = UI.apply.saveAndRenderProgress(data.applied.appliedCount);
 
     // Poll the pipeline job
     if (data.jobId) {
       pollApplyRenderJob(data.jobId);
     } else {
-      badge.textContent = 'Vistað, en render startaði ekki';
+      badge.textContent = UI.apply.saveNoRender;
       badge.className = 'pipeline-status-badge success';
       loadApplyStatus();
     }
   } catch (err) {
-    badge.textContent = 'Mistókst';
+    badge.textContent = UI.pipeline.failed;
     badge.className = 'pipeline-status-badge failed';
-    alert('Villa: ' + err.message);
+    alert(UI.common.errorPrefix + err.message);
     btnApply.disabled = false;
     btnApplyRender.disabled = false;
   }
@@ -1396,22 +1386,22 @@ function pollApplyRenderJob(jobId) {
 
       if (job.status === 'completed') {
         clearInterval(timer);
-        badge.textContent = 'Vistað + Render lokið!';
+        badge.textContent = UI.apply.saveAndRenderDone;
         badge.className = 'pipeline-status-badge success';
         loadApplyStatus();
       } else if (job.status === 'failed') {
         clearInterval(timer);
-        badge.textContent = 'Render mistókst';
+        badge.textContent = UI.apply.renderFailed;
         badge.className = 'pipeline-status-badge failed';
         document.getElementById('btn-apply').disabled = false;
         document.getElementById('btn-apply-render').disabled = false;
       } else {
-        badge.textContent = job.phase ? `Render (${job.phase})...` : 'Render í gangi...';
+        badge.textContent = job.phase ? UI.apply.renderPhase(job.phase) : UI.apply.renderRunning;
       }
     } catch {
       if (pollAttempts >= MAX_POLL_ATTEMPTS) {
         clearInterval(timer);
-        badge.textContent = 'Tenging rofnaði';
+        badge.textContent = UI.pipeline.connectionLost;
         badge.className = 'pipeline-status-badge failed';
         document.getElementById('btn-apply').disabled = false;
         document.getElementById('btn-apply-render').disabled = false;
@@ -1538,7 +1528,7 @@ function showTermPopup(termId, element) {
         ${defHtml}
         <div style="margin-top: 0.5rem; padding-top: 0.4rem; border-top: 1px solid var(--border);">
           <a href="/terminology" target="_blank" style="font-size: var(--text-xs); color: var(--accent);">
-            Opna í orðasafni &#8594;
+            ' + UI.termLookup.openGlossary + '
           </a>
         </div>
       `;
@@ -1590,7 +1580,9 @@ termLookupInput.addEventListener('input', () => {
 
       if (!data.terms || data.terms.length === 0) {
         termLookupResults.innerHTML =
-          '<div class="term-lookup-item" style="color: var(--text-muted);">Ekkert fannst</div>';
+          '<div class="term-lookup-item" style="color: var(--text-muted);">' +
+          UI.termLookup.noResults +
+          '</div>';
       } else {
         termLookupResults.innerHTML = data.terms
           .map((t) => {
@@ -1640,9 +1632,9 @@ function insertTermFromLookup(icelandicTerm) {
     ta.dispatchEvent(new Event('input', { bubbles: true }));
     termLookupInput.value = '';
     termLookupResults.classList.remove('active');
-    termLookupInput.placeholder = 'Sett inn!';
+    termLookupInput.placeholder = UI.termLookup.inserted;
     setTimeout(() => {
-      termLookupInput.placeholder = 'Fletta upp hugtaki...';
+      termLookupInput.placeholder = UI.termLookup.placeholder;
     }, 1500);
     ta.focus();
     return;
@@ -1654,9 +1646,9 @@ function insertTermFromLookup(icelandicTerm) {
     .then(() => {
       termLookupInput.value = '';
       termLookupResults.classList.remove('active');
-      termLookupInput.placeholder = 'Afritað!';
+      termLookupInput.placeholder = UI.termLookup.copied;
       setTimeout(() => {
-        termLookupInput.placeholder = 'Fletta upp hugtaki...';
+        termLookupInput.placeholder = UI.termLookup.placeholder;
       }, 1500);
     })
     .catch(() => {
@@ -1718,7 +1710,7 @@ document.addEventListener('keydown', (e) => {
       const segId = textarea?._segmentId;
       // If there are unsaved changes, confirm before discarding
       if (segId && dirtyEdits.has(segId)) {
-        if (!confirm('Þú átt óvistaðar breytingar. Viltu henda þeim?')) return;
+        if (!confirm(UI.confirm.discardChanges)) return;
       }
       activePanel.classList.remove('active');
       const row = activePanel.closest('tr');
