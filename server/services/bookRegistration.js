@@ -16,6 +16,7 @@ const fs = require('fs');
 const { SIMPLE_STAGES } = require('../constants');
 const openstaxCatalogue = require('./openstaxCatalogue');
 const openstaxFetcher = require('./openstaxFetcher');
+const pipelineStatusService = require('./pipelineStatusService');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -392,14 +393,21 @@ function getRegisteredBook(slug) {
           /* ignore */
         }
 
-        // Read pipeline progress from status.json (filesystem truth)
+        // Read pipeline progress from DB (authoritative source)
         let pipelineProgress = { completed: 0, total: 7, pct: 0 };
-        const statusPath = path.join(BOOKS_DIR, book.slug, 'chapters', chDir, 'status.json');
         try {
-          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-          pipelineProgress = computeChapterPipelineProgress(statusData.status);
-        } catch {
-          /* no status.json or parse error */
+          const dbStatus = pipelineStatusService.getChapterStage(book.slug, c.chapter_num);
+          if (dbStatus) {
+            pipelineProgress = computeChapterPipelineProgressFromDb(dbStatus);
+          }
+        } catch (err) {
+          console.warn(
+            '[bookRegistration] DB read failed for',
+            book.slug,
+            'chapter',
+            c.chapter_num,
+            err.message
+          );
         }
 
         return {
@@ -430,7 +438,7 @@ function getRegisteredBook(slug) {
 }
 
 /**
- * Compute pipeline progress from a single chapter's status object.
+ * Compute pipeline progress from pipelineStatusService.getChapterStage() output.
  *
  * Counts completed stages out of 7 progress-relevant stages
  * (excludes extraction — that's a prerequisite, not progress):
@@ -438,22 +446,32 @@ function getRegisteredBook(slug) {
  *
  * Publication counts as 1 if any sub-track (mtPreview/faithful/localized) is complete.
  *
- * @param {object} statusObj - The `status` field from a chapter's status.json
+ * @param {{ stages: object, publication: object }} dbStatus - From pipelineStatusService.getChapterStage()
  * @returns {{ completed: number, total: number, pct: number }}
  */
-function computeChapterPipelineProgress(statusObj) {
+function computeChapterPipelineProgressFromDb(dbStatus) {
   const total = 7;
-  if (!statusObj) return { completed: 0, total, pct: 0 };
+  if (!dbStatus || !dbStatus.stages) return { completed: 0, total, pct: 0 };
 
-  const stages = ['mtReady', 'mtOutput', 'linguisticReview', 'tmCreated', 'injection', 'rendering'];
+  const stageNames = [
+    'mtReady',
+    'mtOutput',
+    'linguisticReview',
+    'tmCreated',
+    'injection',
+    'rendering',
+  ];
   let completed = 0;
-  for (const stage of stages) {
-    if (statusObj[stage]?.complete) completed++;
+  for (const stage of stageNames) {
+    if (dbStatus.stages[stage] === 'complete') completed++;
   }
 
   // Publication: any sub-track published counts as the publication stage being reached
-  const pub = statusObj.publication;
-  if (pub && (pub.mtPreview?.complete || pub.faithful?.complete || pub.localized?.complete)) {
+  const pub = dbStatus.publication;
+  if (
+    pub &&
+    (pub.mtPreview === 'complete' || pub.faithful === 'complete' || pub.localized === 'complete')
+  ) {
     completed++;
   }
 
@@ -461,39 +479,28 @@ function computeChapterPipelineProgress(statusObj) {
 }
 
 /**
- * Compute overall pipeline progress for a book by reading all chapter status.json files.
+ * Compute overall pipeline progress for a book by reading from the DB.
  *
  * @param {string} bookSlug - e.g., 'efnafraedi-2e'
+ * @param {number[]} chapterNums - Array of chapter numbers for this book
  * @returns {{ completed: number, total: number, pct: number, chapters: number }}
  */
-function computeStatusJsonProgress(bookSlug) {
-  const chaptersPath = path.join(BOOKS_DIR, bookSlug, 'chapters');
-  if (!fs.existsSync(chaptersPath)) {
-    return { completed: 0, total: 0, pct: 0, chapters: 0 };
-  }
-
-  let chapterDirs;
-  try {
-    chapterDirs = fs
-      .readdirSync(chaptersPath)
-      .filter((d) => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
-      .sort();
-  } catch {
+function computeBookPipelineProgress(bookSlug, chapterNums) {
+  if (!chapterNums || chapterNums.length === 0) {
     return { completed: 0, total: 0, pct: 0, chapters: 0 };
   }
 
   let totalCompleted = 0;
   let totalStages = 0;
 
-  for (const chDir of chapterDirs) {
-    const statusPath = path.join(chaptersPath, chDir, 'status.json');
+  for (const chapterNum of chapterNums) {
     try {
-      const data = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-      const progress = computeChapterPipelineProgress(data.status);
+      const dbStatus = pipelineStatusService.getChapterStage(bookSlug, chapterNum);
+      const progress = computeChapterPipelineProgressFromDb(dbStatus);
       totalCompleted += progress.completed;
       totalStages += progress.total;
     } catch {
-      // Skip chapters without valid status.json
+      // DB read failed for this chapter — count as 0/7
       totalStages += 7;
     }
   }
@@ -502,7 +509,7 @@ function computeStatusJsonProgress(bookSlug) {
     completed: totalCompleted,
     total: totalStages,
     pct: totalStages > 0 ? Math.round((totalCompleted / totalStages) * 100) : 0,
-    chapters: chapterDirs.length,
+    chapters: chapterNums.length,
   };
 }
 
@@ -582,22 +589,35 @@ function listRegisteredBooks() {
 
     db.close();
 
-    return books.map((b) => ({
-      id: b.id,
-      slug: b.slug,
-      catalogueSlug: b.catalogue_slug,
-      titleIs: b.title_is,
-      titleEn: b.title_en,
-      registeredAt: b.registered_at,
-      status: b.status,
-      chapters: b.chapters,
-      totalSections: b.total_sections,
-      publishedSections: b.published_sections,
-      progress:
-        b.total_sections > 0 ? Math.round((b.published_sections / b.total_sections) * 100) : 0,
-      pipelineProgress: countFaithfulModules(b.slug, b.catalogue_slug),
-      statusProgress: computeStatusJsonProgress(b.slug),
-    }));
+    return books.map((b) => {
+      // Get chapter numbers for this book (for DB-based progress)
+      let chapterNums = [];
+      try {
+        chapterNums = db
+          .prepare('SELECT chapter_num FROM book_chapters WHERE book_id = ? ORDER BY chapter_num')
+          .all(b.id)
+          .map((r) => r.chapter_num);
+      } catch {
+        /* fall through with empty array */
+      }
+
+      return {
+        id: b.id,
+        slug: b.slug,
+        catalogueSlug: b.catalogue_slug,
+        titleIs: b.title_is,
+        titleEn: b.title_en,
+        registeredAt: b.registered_at,
+        status: b.status,
+        chapters: b.chapters,
+        totalSections: b.total_sections,
+        publishedSections: b.published_sections,
+        progress:
+          b.total_sections > 0 ? Math.round((b.published_sections / b.total_sections) * 100) : 0,
+        pipelineProgress: countFaithfulModules(b.slug, b.catalogue_slug),
+        statusProgress: computeBookPipelineProgress(b.slug, chapterNums),
+      };
+    });
   } catch (err) {
     db.close();
     throw err;
