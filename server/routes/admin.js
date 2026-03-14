@@ -1130,4 +1130,59 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
   }
 });
 
+// ============================================================================
+// PIPELINE CONSISTENCY VALIDATION
+// ============================================================================
+
+/**
+ * GET /api/admin/validate-pipeline
+ * Validate pipeline status consistency across all books.
+ * Checks that DB stage statuses match actual file existence.
+ *
+ * Query params:
+ *   ?book=efnafraedi-2e  — validate single book (optional)
+ */
+router.get('/validate-pipeline', requireAuth, requireAdmin(), (req, res) => {
+  try {
+    // Dynamic import since the validator is an ES module
+    const validatorPath = path.resolve(__dirname, '../../tools/validate-pipeline-consistency.js');
+
+    // Use the pipeline status service for DB stage data
+    const pipelineStatus = require('../services/pipelineStatusService');
+
+    function getStageData(bookSlug, chapterNum) {
+      try {
+        const data = pipelineStatus.getChapterStage(bookSlug, chapterNum);
+        if (!data || !data.stages) return null;
+        // Flatten stages to simple status values
+        const flat = {};
+        for (const [stage, info] of Object.entries(data.stages)) {
+          flat[stage] = typeof info === 'string' ? info : info.status || 'not_started';
+        }
+        return flat;
+      } catch {
+        return null;
+      }
+    }
+
+    // Use dynamic import for ES module
+    import(validatorPath)
+      .then(({ validateBook, validateAll }) => {
+        const targetBook = req.query.book;
+        const reports = targetBook
+          ? [validateBook(targetBook, getStageData)]
+          : validateAll(getStageData);
+
+        res.json({ reports });
+      })
+      .catch((err) => {
+        console.error('Pipeline validation error:', err);
+        res.status(500).json({ error: 'Validation failed', message: err.message });
+      });
+  } catch (err) {
+    console.error('Pipeline validation error:', err);
+    res.status(500).json({ error: 'Validation failed', message: err.message });
+  }
+});
+
 module.exports = router;

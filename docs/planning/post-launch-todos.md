@@ -60,14 +60,15 @@ Already implemented in prior work:
 
 ---
 
-## Priority 6: Pipeline Status Consistency Validation
+## ~~Priority 6: Pipeline Status Consistency Validation~~ DONE (2026-03-14)
 
-**Problem:** A chapter's `linguisticReview` stage could theoretically be marked "complete" while individual modules still have pending edits. The `applyApprovedEdits()` auto-advance handles the happy path, but edge cases (manual DB edits, failed applies) could create inconsistencies.
+Completed: `tools/validate-pipeline-consistency.js` — CLI tool + importable library. Checks:
+- linguisticReview marked complete but faithful files missing (error)
+- Faithful files without MT output (orphan warning)
+- All faithful files present but stage not marked complete (info)
+- Rendering marked complete but no HTML files (error)
 
-**Solution:** Add a periodic validation function that checks all chapters: verify that `linguisticReview.complete` is only true when ALL modules in the chapter have faithful translation files. Run as a scheduled job or admin tool.
-
-**Effort:** ~0.5 days
-**Trigger:** If progress dashboard shows incorrect completion states.
+Admin API: `GET /api/admin/validate-pipeline[?book=slug]`. 7 unit tests.
 
 ---
 
