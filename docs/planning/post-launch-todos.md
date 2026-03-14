@@ -12,28 +12,21 @@ Completed in commits `3ea608c` (segment-editor) and `b75ed4b` (localization-edit
 
 ---
 
-## Priority 2: UI String Constants File
+## ~~Priority 2: UI String Constants File~~ DONE (2026-03-14)
 
-**Problem:** All user-facing text is hardcoded Icelandic throughout 11 view files. Fixing i18n issues requires grepping across all files. Activity log descriptions are hardcoded in route handlers. No way to see all UI strings in one place.
-
-**Solution:** Create `server/ui-strings.js` with all user-facing text organized by page/context. View files reference constants instead of inline strings. Activity log descriptions use the same constants.
-
-**Effort:** ~2 days (mostly mechanical extraction)
-**Trigger:** If i18n issues keep recurring after the audit's i18n sweep.
+Completed in commit `ef92ebf`. Created `server/public/js/ui-strings.js` with ~300 lines of organized constants (save status, dialogs, validation, pipeline, labels, term lookup, history). Replaced ~105 hardcoded strings across both editor JS files. ~30 lower-priority HTML template strings remain for future extraction.
 
 ---
 
-## Priority 3: Offline Resilience & Draft Visibility
+## ~~Priority 3: Offline Resilience & Draft Visibility~~ ALREADY DONE
 
-**Problem:** Drafts are in `localStorage` (browser-specific, clearable). No way to work offline and sync later. If the server restarts during a save, the retry queue handles it, but the user experience is unclear.
-
-**Solution:**
-- Add a visible "last saved" timestamp in the editor
-- Add a more prominent draft indicator (e.g., "Drög vistuð staðbundið" with timestamp)
-- Consider IndexedDB for more reliable local storage (if localStorage proves fragile)
-
-**Effort:** ~1 day
-**Trigger:** If editors report lost work or confusion about save state.
+Already implemented in prior work:
+- **"Last saved" timestamp** — save-status-bar shows "Síðast vistað: HH:MM"
+- **Draft persistence** — localStorage with tabGuard, 5s auto-save, cross-tab detection
+- **Draft recovery** — prompts on reload to restore unsaved drafts
+- **Server autosave** — localization editor auto-saves every 60s
+- **Retry queue** — saveRetry.js handles network failures with exponential backoff
+- **IndexedDB** — not needed at current scale (~5 editors)
 
 ---
 
