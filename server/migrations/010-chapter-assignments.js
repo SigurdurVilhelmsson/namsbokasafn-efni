@@ -1,6 +1,9 @@
 /**
  * Migration 010: Add chapter assignments for per-chapter access control
  *
+ * Creates user_chapter_assignments — controls WHO CAN ACCESS which chapters (permission/RBAC).
+ * Not to be confused with migration 012 (chapter_assignments) which tracks work task assignments.
+ *
  * Allows admins to assign specific chapters to contributors/editors.
  * Backward compat: if a user has NO chapter assignments for a book,
  * they can access all chapters in that book.
