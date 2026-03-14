@@ -47,9 +47,9 @@ Fix known open issues + systematic sweep for new ones. Run full test suite after
 
 ### 1.2 — L1: my-work.js Terminology Table
 
-**Problem:** `my-work.js` queries a `terminology` table that doesn't exist (should be the actual table name from the schema). Defensive guard prevents crash but "My pending terminology proposals" always shows empty.
+**Problem:** `my-work.js` queries a `terminology` table that doesn't exist. Defensive guard prevents crash but "My pending terminology proposals" always shows empty.
 
-**Fix:** Find the correct table name, fix the query, verify it returns real data.
+**Fix:** First, check whether `terminologyService.js` and any migration actually create the relevant table. If the table exists under a different name, fix the query. If the terminology feature was never fully built (no migration creates the table), disable the section gracefully with a "coming soon" placeholder rather than silently showing empty results.
 
 ### 1.3 — PUBLICATION_TRACKS DRY Cleanup
 
@@ -75,17 +75,19 @@ Fix known open issues + systematic sweep for new ones. Run full test suite after
 
 **Problem:** Migrations 010 and 012 both named "chapter-assignments". Harmless but confusing.
 
-**Fix:** Document in a comment in 012 that it's the real one, or consolidate if safe.
+**Fix:** Add a comment to migration 012 explaining it supersedes 010. Do not delete or modify either migration's SQL — migrations are append-only and already applied in production.
 
 ### 1.7 — Systematic Sweep
 
-Walk all 24 route files and 36 services looking for:
+Walk all route files and services looking for:
 - References to old table names or dropped tables
 - Hardcoded book slugs (should use params)
 - Missing error handling on async operations
 - `console.log` that should be `console.error` (or removed)
 - Any `innerHTML` without `escapeHtml()`
 - Stale references from the file→DB migration
+
+**Exit criteria:** Document findings in the audit report as they're found. Mark sweep complete when all files have been reviewed, even if some findings are deferred to backlog.
 
 **Order within Phase 1:** 1.1 first (deepest architectural change), then 1.2–1.4 in any order, then 1.5–1.7 last (verification passes against already-fixed code).
 
@@ -268,7 +270,7 @@ Write tests to lock in all Phase 1 and Phase 2 fixes, and fill existing coverage
 
 | Category | Current | Added | New Total |
 |----------|---------|-------|-----------|
-| Vitest unit | 308 | ~25-30 | ~335 |
+| Vitest unit | ~308 (verify before starting) | ~25-30 | ~335 |
 | Playwright E2E | 51 | ~15-20 | ~70 |
 | **Total** | **359** | **~40-50** | **~405** |
 
@@ -286,7 +288,13 @@ Write tests to lock in all Phase 1 and Phase 2 fixes, and fill existing coverage
 2. **2.2–2.3** — role-specific journeys
 3. **2.4–2.6** — cross-cutting concerns
 4. **2.7–2.8** — systemic fixes applied across all pages (after per-role walkthroughs identify all buttons/operations)
-5. **2.5 (i18n) re-sweep last** — final pass after all UI text changes
+5. **2.5b (i18n final re-sweep)** — second pass after all UI text changes, to catch any new English introduced by other fixes
+
+### Execution Conventions
+
+- **Server startup for Phase 2:** Start with `node server/app.js` on default port with the production database, so UX walkthroughs use real content
+- **Commit strategy:** One commit per numbered fix (1.1, 1.2, etc.) for clean bisectability. Phase 2 UX fixes may be grouped by page if they're small.
+- **Test baseline:** Confirm current test count with `npm test` before starting Phase 3
 
 ### Risk Mitigation
 
