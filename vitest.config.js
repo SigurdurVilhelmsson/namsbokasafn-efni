@@ -11,6 +11,7 @@ export default defineConfig({
       '**/archived/**',
       '**/dist/**',
       '**/books/**',
+      '**/.worktrees/**',
     ],
     coverage: {
       provider: 'v8',

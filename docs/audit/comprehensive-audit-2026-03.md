@@ -171,7 +171,57 @@
 
 ## Phase 3: Test Gap Closure
 
-*(Not started)*
+### Task 3.1 — Verify Test Baseline
+**Status:** COMPLETE
+- Baseline: 309 Vitest + 80 Playwright E2E = 389 total
+- Fixed pre-existing `new-features.test.js` failure (ch1→ch5 for faithful dir check)
+- Added `.worktrees/**` exclusion to `vitest.config.js`
+
+### Task 3.2 — Activity Logging Tests
+**Status:** COMPLETE
+- New file: `server/__tests__/activityLogging.test.js`
+- Tests: `log()` function signature, `ACTIVITY_TYPES` exports, `search()` API contract
+- Tests: `getRecent`, `getByUser`, `getByBook` are exported functions
+
+### Task 3.3 — Phase 2 UX Fix Tests (E2E)
+**Status:** COMPLETE
+- New file: `server/e2e/ux-phase2.spec.js` — 6 tests
+- Tests: admin button tooltips (2), feedback i18n, activity feed username, book register 409, M5 revert regression
+
+### Task 3.4 — Contributor E2E Workflow
+**Status:** COMPLETE
+- New file: `server/e2e/contributor-workflow.spec.js` — 4 serial tests
+- Tests: save edit → submit for review → head-editor approves → contributor sees approved status
+
+### Task 3.5 — Error Handling Tests
+**Status:** COMPLETE
+- New file: `server/__tests__/errorHandling.test.js`
+- Tests: empty content save, edit withdrawal (matching original), re-save updates existing edit
+- Uses `_setTestDb()` pattern with in-memory better-sqlite3
+
+### Task 3.6 — Security Payload Tests
+**Status:** COMPLETE
+- New file: `server/__tests__/securityPayloads.test.js`
+- Tests: XSS escaping (`<script>`, `onerror=`, `">`), null/undefined handling
+- Tests: SQL injection payload verbatim storage, segmentEditorService exports verification
+
+### Task 3.7 — M5 Revert Bug Regression
+**Status:** COMPLETE
+- Included in `ux-phase2.spec.js` — saves via API, reloads module, verifies edit persists
+
+### Task 3.9 — Final Test Count
+**Status:** COMPLETE
+
+| Suite | Before | After | Delta |
+|-------|--------|-------|-------|
+| Vitest unit | 309 | 352 | +43 |
+| Playwright E2E | 80 | 93 | +13 |
+| **Total** | **389** | **445** | **+56** |
+
+Pre-existing failures (not from this audit):
+- Vitest: `new-features.test.js` faithful dir test (FIXED — ch1→ch5)
+- E2E: `review-cycle.spec.js:120` complete-review auto-apply (intermittent)
+- E2E: `editor-lifecycle.spec.js:252` draft auto-save (flaky locator timing)
 
 ---
 

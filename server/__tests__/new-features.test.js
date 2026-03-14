@@ -19,8 +19,8 @@ describe('runPrepareTm', () => {
   });
 
   it('throws on missing faithful translation directory', () => {
-    // ch01 has 02-for-mt but no 03-faithful-translation/ch01
-    expect(() => runPrepareTm({ book: 'efnafraedi-2e', chapter: 1 })).toThrow(
+    // ch05 has 02-for-mt but no 03-faithful-translation/ch05
+    expect(() => runPrepareTm({ book: 'efnafraedi-2e', chapter: 5 })).toThrow(
       'Faithful translation directory not found'
     );
   });
