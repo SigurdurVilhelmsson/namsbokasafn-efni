@@ -2075,6 +2075,9 @@
       }
 
       edSaveInFlight = true;
+      var saveAllBtn = document.getElementById('btn-save-all');
+      saveAllBtn.disabled = true;
+      saveAllBtn.classList.add('btn-loading');
       var globalInd = document.getElementById('global-save-indicator');
       globalInd.textContent = 'Vistar ' + keys.length + ' b\u00FAta...';
       globalInd.className = 'save-indicator saving';
@@ -2151,6 +2154,8 @@
         }
       } finally {
         edSaveInFlight = false;
+        saveAllBtn.disabled = false;
+        saveAllBtn.classList.remove('btn-loading');
       }
     }
 

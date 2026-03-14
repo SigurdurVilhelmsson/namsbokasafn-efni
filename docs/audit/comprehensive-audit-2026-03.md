@@ -120,11 +120,11 @@
 - **Pipeline stage names:** Already Icelandic in all views (chapter-pipeline, segment-editor, progress)
 
 ### Task 2.6 — Visual & Interaction Polish
-**Status:** DEFERRED (to Phase 3 or post-launch)
+**Status:** COMPLETE
 
-- Responsive behavior not tested (requires further mobile walkthrough)
-- Toast z-index appears correct (2000 vs modal 1000)
-- Loading states present on module load
+- **Responsive (375x812 iPhone):** Sidebar hides with hamburger toggle, selects fit viewport, no horizontal scroll on home/editor/progress pages. Scrollable containers (attention-list, activity-feed) work. Tabs fit. 1 slightly small button out of 10 (POLISH).
+- **Toast z-index:** Correct (2000 vs modal 1000)
+- **Loading states:** Present on module load (spinner + "Hleður einingu...")
 
 ### Task 2.7 — Progress Indicators (`withProgress()`)
 **Status:** COMPLETE
@@ -165,7 +165,7 @@
 | Module ordering 1.6 before 1.5 | LOW | DEFERRED (data issue) |
 | Stale e2e test data | LOW | DEFERRED (data hygiene) |
 | Library shows 1 of 3 books | LOW | DEFERRED |
-| Responsive behavior | POLISH | DEFERRED |
+| Responsive behavior (375px) | POLISH | TESTED — no blocking issues |
 
 ---
 

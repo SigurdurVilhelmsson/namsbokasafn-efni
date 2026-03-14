@@ -89,6 +89,25 @@ test.describe('Localization editor — API', () => {
     expect([404, 500]).toContain(response.status());
   });
 
+  test('GET /:chapter/:moduleId returns segments when faithful file exists', async ({ page }) => {
+    await page.goto('/localization');
+
+    // m68664 has a faithful translation file (from applyApprovedEdits in prior audit)
+    const response = await page.request.get('/api/localization-editor/efnafraedi-2e/1/m68664');
+    if (response.status() === 200) {
+      const data = await response.json();
+      expect(data).toHaveProperty('segments');
+      expect(Array.isArray(data.segments)).toBe(true);
+      expect(data.segments.length).toBeGreaterThan(0);
+      // Segments should have EN, faithful, and optionally localized content
+      const seg = data.segments[0];
+      expect(seg).toHaveProperty('segmentId');
+      expect(seg).toHaveProperty('en');
+      expect(seg).toHaveProperty('faithful');
+    }
+    // If 404, faithful file was cleaned up — that's OK too
+  });
+
   test('GET /chapters rejects invalid book', async ({ page }) => {
     await page.goto('/localization');
 

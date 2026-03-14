@@ -794,23 +794,20 @@
     async function confirmAdvance() {
       var note = document.getElementById('advance-note').value.trim();
       var btn = document.getElementById('advance-confirm-btn');
-      btn.disabled = true;
-      btn.textContent = 'Sendi...';
 
       try {
-        await fetchJson(apiBase + '/advance', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
-          body: JSON.stringify({ note: note || undefined })
-        });
-        closeDialog('advance-dialog');
-        await loadPipeline();
+        await withProgress(btn, async function() {
+          await fetchJson(apiBase + '/advance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ note: note || undefined })
+          });
+          closeDialog('advance-dialog');
+          await loadPipeline();
+        }, { loadingText: 'Sendi...', successText: 'Lokið!' });
       } catch (err) {
         alert(err.message || 'Villa kom upp.');
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Staðfesta';
       }
     }
 
@@ -819,23 +816,20 @@
       if (note.length < 10) return;
 
       var btn = document.getElementById('revert-confirm-btn');
-      btn.disabled = true;
-      btn.textContent = 'Sendi...';
 
       try {
-        await fetchJson(apiBase + '/revert', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
-          body: JSON.stringify({ note: note })
-        });
-        closeDialog('revert-dialog');
-        await loadPipeline();
+        await withProgress(btn, async function() {
+          await fetchJson(apiBase + '/revert', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ note: note })
+          });
+          closeDialog('revert-dialog');
+          await loadPipeline();
+        }, { loadingText: 'Sendi...', successText: 'Lokið!' });
       } catch (err) {
         alert(err.message || 'Villa kom upp.');
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Staðfesta';
       }
     }
 
