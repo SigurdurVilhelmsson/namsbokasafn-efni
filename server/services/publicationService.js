@@ -23,12 +23,7 @@ const segmentParser = require('./segmentParser');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const TOOLS_DIR = path.join(__dirname, '..', '..', 'tools');
 
-// Publication tracks
-const PUBLICATION_TRACKS = {
-  MT_PREVIEW: 'mt-preview',
-  FAITHFUL: 'faithful',
-  LOCALIZED: 'localized',
-};
+const { PUBLICATION_TRACK_DIRS } = require('../constants');
 
 // Source directory for each track (maps to pipelineService.TRACK_SOURCE_DIR)
 const TRACK_SOURCE_DIRS = {
@@ -437,7 +432,7 @@ function updateChapterStatus(bookSlug, chapterNum, stage, data) {
 }
 
 module.exports = {
-  PUBLICATION_TRACKS,
+  PUBLICATION_TRACK_DIRS,
   checkMtPreviewReadiness,
   checkFaithfulReadiness,
   checkLocalizedReadiness,

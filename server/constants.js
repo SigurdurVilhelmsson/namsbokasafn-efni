@@ -55,8 +55,15 @@ const SIMPLE_STAGES = PIPELINE_STAGES.filter((s) => s.syncType === 'simple').map
 /** Valid translation tracks for inject/render pipeline. */
 const VALID_TRACKS = ['mt-preview', 'faithful', 'localized'];
 
-/** Publication sub-tracks (within the 'publication' stage). */
+/** Publication sub-tracks (within the 'publication' stage). camelCase keys match DB storage. */
 const PUBLICATION_TRACKS = ['mtPreview', 'faithful', 'localized'];
+
+/** Maps publication track names to filesystem directory names (kebab-case). */
+const PUBLICATION_TRACK_DIRS = {
+  mtPreview: 'mt-preview',
+  faithful: 'faithful',
+  localized: 'localized',
+};
 
 // ─── Edit Categories ─────────────────────────────────────────────────
 
@@ -101,6 +108,7 @@ module.exports = {
   // Tracks
   VALID_TRACKS,
   PUBLICATION_TRACKS,
+  PUBLICATION_TRACK_DIRS,
 
   // Edit categories
   PASS1_CATEGORIES,

@@ -25,7 +25,7 @@ const STAGE_ORDER = [
   'publication',
 ];
 
-const PUBLICATION_TRACKS = ['mtPreview', 'faithful', 'localized'];
+const { PUBLICATION_TRACKS } = require('../constants');
 
 const VALID_STATUSES = ['not_started', 'in_progress', 'complete'];
 

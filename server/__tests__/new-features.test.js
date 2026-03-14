@@ -84,14 +84,19 @@ describe('validateBeforePublish', () => {
 
 // ----- publicationService: track constants -----
 
-describe('publicationService tracks', () => {
-  const { PUBLICATION_TRACKS } = require('../services/publicationService');
+describe('publication track constants (from constants.js)', () => {
+  const { PUBLICATION_TRACKS, PUBLICATION_TRACK_DIRS } = require('../constants');
 
-  it('defines three publication tracks as an object', () => {
+  it('defines three publication tracks as an array', () => {
     expect(PUBLICATION_TRACKS).toBeDefined();
-    expect(typeof PUBLICATION_TRACKS).toBe('object');
-    expect(PUBLICATION_TRACKS.MT_PREVIEW).toBe('mt-preview');
-    expect(PUBLICATION_TRACKS.FAITHFUL).toBe('faithful');
-    expect(PUBLICATION_TRACKS.LOCALIZED).toBe('localized');
+    expect(Array.isArray(PUBLICATION_TRACKS)).toBe(true);
+    expect(PUBLICATION_TRACKS).toEqual(['mtPreview', 'faithful', 'localized']);
+  });
+
+  it('maps track names to filesystem directory names', () => {
+    expect(PUBLICATION_TRACK_DIRS).toBeDefined();
+    expect(PUBLICATION_TRACK_DIRS.mtPreview).toBe('mt-preview');
+    expect(PUBLICATION_TRACK_DIRS.faithful).toBe('faithful');
+    expect(PUBLICATION_TRACK_DIRS.localized).toBe('localized');
   });
 });
