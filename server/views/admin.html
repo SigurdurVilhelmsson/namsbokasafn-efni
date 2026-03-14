@@ -1184,7 +1184,7 @@
         document.getElementById('fb-prev-btn').disabled = fbCurrentOffset === 0;
         document.getElementById('fb-next-btn').disabled = fbCurrentOffset + data.items.length >= data.total;
         document.getElementById('fb-page-info').textContent = (fbCurrentOffset+1) + '-' + (fbCurrentOffset+data.items.length) + ' af ' + data.total;
-      } catch(e) { listEl.innerHTML = '<div class="empty-state"><p>Villa: ' + e.message + '</p></div>'; }
+      } catch(e) { listEl.innerHTML = '<div class="empty-state"><p>Villa: ' + escapeHtml(e.message) + '</p></div>'; }
     }
 
     function fbGetStatusClass(s) { return {open:'open',in_progress:'progress',resolved:'success',wont_fix:'muted'}[s]||'muted'; }

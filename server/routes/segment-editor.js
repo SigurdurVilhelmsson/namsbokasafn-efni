@@ -634,6 +634,7 @@ const terminology = require('../services/terminologyService');
 router.get(
   '/:book/:chapter/:moduleId/terms',
   requireAuth,
+  requireRole(ROLES.CONTRIBUTOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
