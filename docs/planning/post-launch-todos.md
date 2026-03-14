@@ -30,17 +30,13 @@ Already implemented in prior work:
 
 ---
 
-## Priority 4: Cross-Repo CSS Contract Test
+## ~~Priority 4: Cross-Repo CSS Contract Test~~ DONE (2026-03-14)
 
-**Problem:** `namsbokasafn-efni` (content pipeline) and `namsbokasafn-vefur` (public website) share a CSS contract — rendered HTML relies on `/static/styles/content.css` from the vefur repo. Changes to class names or structure in either repo can break rendering.
-
-**Solution:** A post-render smoke test that loads generated HTML with the actual CSS file and checks for:
-- All expected CSS classes have matching rules
-- No broken layouts (missing grid/flex parents)
-- Images and math render at correct sizes
-
-**Effort:** ~1 day
-**Trigger:** If a CSS change in one repo breaks rendering in the other.
+Completed in commit `4684c55`. Test: `tools/__tests__/css-contract.test.js` — 3 tests validating:
+- All rendered HTML classes have matching CSS rules (9 known gaps documented)
+- Dead CSS selectors (28 for future content, informational only)
+- CSS parse validity (balanced braces, no empty rules)
+Auto-skips if vefur repo not available.
 
 ---
 
