@@ -406,10 +406,9 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label class="form-label">GitHub notandanafn</label>
-          <input type="text" class="form-input" id="add-github-username" placeholder="t.d. octocat" oninput="usersPreviewGitHub()">
+          <label class="form-label">Netfang</label>
+          <input type="email" class="form-input" id="add-user-email" placeholder="t.d. nafn@skoli.is" oninput="usersPreviewEmail()">
         </div>
-        <div id="github-preview" style="display:none"></div>
         <div class="form-group">
           <label class="form-label">Hlutverk</label>
           <select class="form-select" id="add-role">
@@ -687,7 +686,7 @@
       var search = document.getElementById('users-search').value.toLowerCase();
       var roleFilter = document.getElementById('users-role-filter').value;
       var filtered = usersData.filter(function(u) {
-        var ms = !search || u.displayName.toLowerCase().indexOf(search) !== -1 || u.githubUsername.toLowerCase().indexOf(search) !== -1;
+        var ms = !search || u.displayName.toLowerCase().indexOf(search) !== -1 || (u.email||'').toLowerCase().indexOf(search) !== -1 || (u.providerUsername||'').toLowerCase().indexOf(search) !== -1;
         var mr = !roleFilter || u.role === roleFilter;
         return ms && mr;
       });
@@ -697,7 +696,7 @@
       empty.style.display = 'none';
       tbody.innerHTML = filtered.map(function(u) {
         return '<tr onclick="usersEditUser(' + u.id + ')">' +
-          '<td><div class="user-info-cell"><img src="' + escapeHtml(u.avatarUrl || '') + '" alt="" class="user-avatar" onerror="this.style.display=\'none\'"><div><div class="user-name">' + escapeHtml(u.displayName) + '</div><div class="user-username">@' + escapeHtml(u.githubUsername) + '</div></div></div></td>' +
+          '<td><div class="user-info-cell"><div class="user-avatar" style="width:36px;height:36px;border-radius:50%;background:var(--bg-surface);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-muted)">' + escapeHtml((u.displayName||'?').charAt(0).toUpperCase()) + '</div><div><div class="user-name">' + escapeHtml(u.displayName) + '</div><div class="user-username">' + escapeHtml(u.email || u.providerUsername || '') + '</div></div></div></td>' +
           '<td><span class="role-badge role-' + u.role + '">' + (roleNames[u.role] || u.role) + '</span></td>' +
           '<td>' + (u.bookAccess ? u.bookAccess.length : 0) + '</td>' +
           '<td><span class="status-dot ' + (u.isActive ? 'active' : 'inactive') + '">' + (u.isActive ? 'Virkur' : '\u00d3virkur') + '</span></td>' +
@@ -710,40 +709,25 @@
     function usersFormatDate(s) { if (!s) return ''; return new Date(s).toLocaleDateString('is-IS'); }
 
     window.usersShowAddModal = function() {
-      document.getElementById('add-github-username').value = '';
+      document.getElementById('add-user-email').value = '';
       document.getElementById('add-role').value = 'viewer';
-      document.getElementById('github-preview').style.display = 'none';
       document.getElementById('add-user-btn').disabled = true;
       document.getElementById('add-user-modal').style.display = 'flex';
     };
     window.usersHideAddModal = function() { document.getElementById('add-user-modal').style.display = 'none'; };
 
-    window.usersPreviewGitHub = function() {
-      var username = document.getElementById('add-github-username').value.trim();
-      var preview = document.getElementById('github-preview');
+    window.usersPreviewEmail = function() {
+      var email = document.getElementById('add-user-email').value.trim();
       var addBtn = document.getElementById('add-user-btn');
-      if (!username) { preview.style.display = 'none'; addBtn.disabled = true; return; }
-      clearTimeout(previewTimeout);
-      previewTimeout = setTimeout(async function() {
-        try {
-          var user = await fetchJson('https://api.github.com/users/' + username);
-          preview.innerHTML = '<div class="github-preview"><img src="' + escapeHtml(user.avatar_url || '') + '" alt=""><div><h4 style="margin:0;font-size:1rem">' + escapeHtml(user.name || user.login) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.875rem">@' + escapeHtml(user.login) + '</p></div></div>';
-          preview.style.display = 'block';
-          preview.dataset.user = JSON.stringify(user);
-          addBtn.disabled = false;
-        } catch(e) {
-          preview.innerHTML = '<p class="text-error">Notandi fannst ekki \u00e1 GitHub</p>';
-          preview.style.display = 'block';
-          addBtn.disabled = true;
-        }
-      }, 500);
+      // Enable button if email looks valid
+      addBtn.disabled = !email || !email.includes('@');
     };
 
     window.usersAddUser = async function() {
-      var username = document.getElementById('add-github-username').value.trim();
+      var email = document.getElementById('add-user-email').value.trim();
       var role = document.getElementById('add-role').value;
       try {
-        await fetchJson('/api/admin/users', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({githubUsername:username,role:role}) });
+        await fetchJson('/api/admin/users', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email:email,role:role}) });
         usersHideAddModal(); usersLoadUsers(); showToast('Notandi b\u00e6tt vi\u00f0','success');
       } catch(e) { showToast(e.message || 'Villa vi\u00f0 a\u00f0 b\u00e6ta vi\u00f0 notanda','error'); }
     };
@@ -754,7 +738,7 @@
       currentEditUser = user;
       var body = document.getElementById('edit-panel-body');
       body.innerHTML =
-        '<div class="user-detail-header"><img src="' + escapeHtml(user.avatarUrl||'') + '" alt="" style="width:56px;height:56px;border-radius:50%"><div><h4 style="margin:0">' + escapeHtml(user.displayName) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted)">@' + escapeHtml(user.githubUsername) + '</p></div></div>' +
+        '<div class="user-detail-header"><div style="width:56px;height:56px;border-radius:50%;background:var(--bg-surface);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--text-muted)">' + escapeHtml((user.displayName||'?').charAt(0).toUpperCase()) + '</div><div><h4 style="margin:0">' + escapeHtml(user.displayName) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted)">' + escapeHtml(user.email || user.providerUsername || '') + '</p></div></div>' +
         '<div class="form-group"><label class="form-label">Nafn</label><input type="text" class="form-input" id="edit-display-name" value="' + escapeHtml(user.displayName) + '"></div>' +
         '<div class="form-group"><label class="form-label">Hlutverk</label><select class="form-select" id="edit-role"><option value="viewer"' + (user.role==='viewer'?' selected':'') + '>Lesandi</option><option value="contributor"' + (user.role==='contributor'?' selected':'') + '>\u00de\u00fd\u00f0andi</option><option value="editor"' + (user.role==='editor'?' selected':'') + '>Ritstj\u00f3ri</option><option value="head-editor"' + (user.role==='head-editor'?' selected':'') + '>A\u00f0alritstj\u00f3ri</option><option value="admin"' + (user.role==='admin'?' selected':'') + '>Kerfisstj\u00f3ri</option></select></div>' +
         '<div class="form-group"><label class="form-label">Sta\u00f0a</label><select class="form-select" id="edit-active"><option value="true"' + (user.isActive?' selected':'') + '>Virkur</option><option value="false"' + (!user.isActive?' selected':'') + '>\u00d3virkur</option></select></div>' +
@@ -940,7 +924,7 @@
         var data = await fetchJson('/api/admin/users');
         var sel = document.getElementById('reg-head-editor');
         sel.innerHTML = '<option value="">Velja s\u00ed\u00f0ar...</option>';
-        if (data.users) data.users.filter(function(u){return ['admin','head-editor','editor'].indexOf(u.role)!==-1 && u.isActive;}).forEach(function(u){ var opt = document.createElement('option'); opt.value = u.id; opt.textContent = (u.displayName||u.githubUsername) + ' (' + u.role + ')'; sel.appendChild(opt); });
+        if (data.users) data.users.filter(function(u){return ['admin','head-editor','editor'].indexOf(u.role)!==-1 && u.isActive;}).forEach(function(u){ var opt = document.createElement('option'); opt.value = u.id; opt.textContent = (u.displayName||u.email||u.providerUsername) + ' (' + u.role + ')'; sel.appendChild(opt); });
       } catch(e) { showToast('Villa við að sækja ritstjóralista','error'); }
       document.getElementById('register-book-modal').style.display = 'flex';
     };
