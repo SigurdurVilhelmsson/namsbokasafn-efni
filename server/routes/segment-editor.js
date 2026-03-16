@@ -54,7 +54,7 @@ const { PASS1_CATEGORIES: VALID_CATEGORIES } = require('../constants');
  * GET /terminology/lookup
  * Quick term lookup for editor popups (delegates to terminology service).
  */
-router.get('/terminology/lookup', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/terminology/lookup', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { q, bookId } = req.query;
 
   if (!q || q.length < 2) {
@@ -103,7 +103,7 @@ router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, r
  * GET /edit/:editId/comments
  * Get discussion thread for a segment edit.
  */
-router.get('/edit/:editId/comments', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/edit/:editId/comments', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
     const comments = segmentEditor.getDiscussion(parseInt(req.params.editId, 10));
     res.json({ comments });
@@ -120,7 +120,7 @@ router.get('/edit/:editId/comments', requireAuth, requireRole(ROLES.CONTRIBUTOR)
  * GET /:book/chapters
  * List available chapters for a book (scans 02-for-mt directory).
  */
-router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/:book/chapters', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { book } = req.params;
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({ error: `Invalid book: ${book}` });
@@ -142,7 +142,7 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req,
 router.get(
   '/:book/:chapter',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   (req, res) => {
     try {
@@ -167,7 +167,7 @@ router.get(
 router.get(
   '/:book/:chapter/:moduleId',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -285,7 +285,7 @@ router.post(
  * DELETE /edit/:editId
  * Delete a pending segment edit.
  */
-router.delete('/edit/:editId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
     const editId = parseInt(req.params.editId, 10);
     // Read edit before deletion for logging
@@ -376,7 +376,7 @@ router.get('/reviews', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
  * GET /review-queue
  * Cross-chapter review queue with edit counts and SLA indicators.
  */
-router.get('/review-queue', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
     const { book } = req.query;
     const reviews = segmentEditor.getReviewQueue(book || undefined);
@@ -587,7 +587,7 @@ router.post(
  * POST /edit/:editId/comment
  * Add a comment to a segment edit discussion.
  */
-router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { comment } = req.body;
   if (!comment) {
     return res.status(400).json({ error: 'comment is required' });
@@ -634,7 +634,7 @@ const terminology = require('../services/terminologyService');
 router.get(
   '/:book/:chapter/:moduleId/terms',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -679,7 +679,7 @@ router.get(
 router.get(
   '/:book/:chapter/:moduleId/stats',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {

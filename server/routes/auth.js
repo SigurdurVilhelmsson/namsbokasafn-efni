@@ -211,7 +211,7 @@ router.get('/roles', (req, res) => {
       { name: 'admin', description: 'Full system access, org owners' },
       { name: 'head-editor', description: 'Manage assigned books, approve content' },
       { name: 'editor', description: 'Review and approve content' },
-      { name: 'contributor', description: 'Upload translations, report issues' },
+
       { name: 'viewer', description: 'View status, download published content' },
     ],
     note: 'Roles are assigned by administrators in the admin panel',

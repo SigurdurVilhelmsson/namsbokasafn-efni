@@ -3,10 +3,10 @@ const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
 
 /**
- * Contributor workflow E2E tests.
+ * Editor workflow E2E tests.
  *
  * Tests the full lifecycle of a segment edit:
- *   contributor saves edit → submits for review → head-editor approves → contributor sees approval
+ *   editor saves edit → submits for review → head-editor approves → editor sees approval
  *
  * Uses unique user IDs (88001, 88002) to avoid conflicts with other test suites.
  * Uses a unique segment ID per run to avoid UNIQUE constraint violations from
@@ -18,19 +18,19 @@ const CHAPTER = '1';
 const MODULE = 'm68664';
 const API = `/api/segment-editor/${BOOK}/${CHAPTER}/${MODULE}`;
 
-const CONTRIBUTOR_ID = 88001;
+const EDITOR_ID = 88001;
 const HEAD_EDITOR_ID = 88002;
 
 // Unique per run so approving won't collide with a leftover approved row
 const RUN_ID = Date.now();
 const SEGMENT_ID = `${MODULE}:para:e2e-wf-${RUN_ID}`;
-const uniqueText = `E2E-contrib-workflow-${RUN_ID}`;
+const uniqueText = `E2E-editor-workflow-${RUN_ID}`;
 
-test.describe.serial('Contributor workflow', () => {
+test.describe.serial('Editor workflow', () => {
   let editId;
 
-  test('contributor saves a segment edit', async ({ page }) => {
-    await loginAs(page, 'contributor', CONTRIBUTOR_ID);
+  test('editor saves a segment edit', async ({ page }) => {
+    await loginAs(page, 'editor', EDITOR_ID);
     await page.goto('/editor');
 
     const res = await page.request.post(`${API}/edit`, {
@@ -48,8 +48,8 @@ test.describe.serial('Contributor workflow', () => {
     editId = body.editId;
   });
 
-  test('contributor submits module for review', async ({ page }) => {
-    await loginAs(page, 'contributor', CONTRIBUTOR_ID);
+  test('editor submits module for review', async ({ page }) => {
+    await loginAs(page, 'editor', EDITOR_ID);
     await page.goto('/editor');
 
     const res = await page.request.post(`${API}/submit`);
@@ -90,8 +90,8 @@ test.describe.serial('Contributor workflow', () => {
     expect(approveBody.edit.status).toBe('approved');
   });
 
-  test('contributor sees approved status', async ({ page }) => {
-    await loginAs(page, 'contributor', CONTRIBUTOR_ID);
+  test('editor sees approved status', async ({ page }) => {
+    await loginAs(page, 'editor', EDITOR_ID);
     await page.goto('/editor');
 
     const res = await page.request.get(API);

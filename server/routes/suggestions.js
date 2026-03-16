@@ -24,7 +24,7 @@ const activityLog = require('../services/activityLog');
  * POST /api/suggestions/scan/:sectionId
  * Scan a section for localization suggestions
  */
-router.post('/scan/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/scan/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { sectionId } = req.params;
 
   try {
@@ -107,7 +107,7 @@ router.get('/patterns', requireAuth, (req, res) => {
  * Query params:
  *   status: Filter by status (pending, accepted, rejected, modified)
  */
-router.get('/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { sectionId } = req.params;
   const { status } = req.query;
 
@@ -133,7 +133,7 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res
  * GET /api/suggestions/:sectionId/stats
  * Get suggestion statistics for a section
  */
-router.get('/:sectionId/stats', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/:sectionId/stats', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { sectionId } = req.params;
 
   try {
@@ -156,7 +156,7 @@ router.get('/:sectionId/stats', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
  * POST /api/suggestions/:id/accept
  * Accept a suggestion as-is
  */
-router.post('/:id/accept', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:id/accept', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
@@ -192,7 +192,7 @@ router.post('/:id/accept', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
  * POST /api/suggestions/:id/reject
  * Reject a suggestion
  */
-router.post('/:id/reject', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:id/reject', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
@@ -231,7 +231,7 @@ router.post('/:id/reject', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
  * Body:
  *   modifiedText: The modified suggestion text
  */
-router.post('/:id/modify', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:id/modify', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
   const { modifiedText } = req.body;
 
@@ -285,7 +285,7 @@ router.post('/:id/modify', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, re
  *   ids: Array of suggestion IDs
  *   action: 'accept' or 'reject'
  */
-router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { sectionId } = req.params;
   const { ids, action } = req.body;
 
@@ -338,7 +338,7 @@ router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.CONTRIBUTOR), (re
  * POST /api/suggestions/:sectionId/sync-log
  * Sync accepted suggestions to localization log
  */
-router.post('/:sectionId/sync-log', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:sectionId/sync-log', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { sectionId } = req.params;
 
   try {

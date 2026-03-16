@@ -91,7 +91,6 @@
         <option value="">Stjórnandi (raunhlutverk)</option>
         <option value="head-editor">Aðalritstjóri</option>
         <option value="editor">Ritstjóri</option>
-        <option value="contributor">Þátttakandi</option>
         <option value="viewer">Áhorfandi</option>
       </select>
     </div>

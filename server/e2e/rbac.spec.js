@@ -13,26 +13,26 @@ const { loginAs } = require('./helpers/auth');
 // ─── Segment editor RBAC ─────────────────────────────────────
 
 test.describe('Segment editor RBAC', () => {
-  test('approve edit requires HEAD_EDITOR — contributor gets 403', async ({ page }) => {
-    await loginAs(page, 'contributor');
+  test('approve edit requires HEAD_EDITOR — editor gets 403', async ({ page }) => {
+    await loginAs(page, 'editor');
     const resp = await page.request.post('/api/segment-editor/edit/999999/approve');
     expect(resp.status()).toBe(403);
   });
 
-  test('reject edit requires HEAD_EDITOR — contributor gets 403', async ({ page }) => {
-    await loginAs(page, 'contributor');
+  test('reject edit requires HEAD_EDITOR — editor gets 403', async ({ page }) => {
+    await loginAs(page, 'editor');
     const resp = await page.request.post('/api/segment-editor/edit/999999/reject');
     expect(resp.status()).toBe(403);
   });
 
-  test('discuss edit requires HEAD_EDITOR — contributor gets 403', async ({ page }) => {
-    await loginAs(page, 'contributor');
+  test('discuss edit requires HEAD_EDITOR — editor gets 403', async ({ page }) => {
+    await loginAs(page, 'editor');
     const resp = await page.request.post('/api/segment-editor/edit/999999/discuss');
     expect(resp.status()).toBe(403);
   });
 
-  test('unapprove edit requires HEAD_EDITOR — contributor gets 403', async ({ page }) => {
-    await loginAs(page, 'contributor');
+  test('unapprove edit requires HEAD_EDITOR — editor gets 403', async ({ page }) => {
+    await loginAs(page, 'editor');
     const resp = await page.request.post('/api/segment-editor/edit/999999/unapprove');
     expect(resp.status()).toBe(403);
   });
@@ -49,13 +49,13 @@ test.describe('Segment editor RBAC', () => {
     expect(resp.status()).toBe(403);
   });
 
-  test('list reviews requires EDITOR — contributor gets 403', async ({ page }) => {
-    await loginAs(page, 'contributor');
+  test('list reviews requires EDITOR — viewer gets 403', async ({ page }) => {
+    await loginAs(page, 'viewer');
     const resp = await page.request.get('/api/segment-editor/reviews');
     expect(resp.status()).toBe(403);
   });
 
-  test('delete edit requires CONTRIBUTOR — viewer gets 403', async ({ page }) => {
+  test('delete edit requires EDITOR — viewer gets 403', async ({ page }) => {
     await loginAs(page, 'viewer');
     const resp = await page.request.delete('/api/segment-editor/edit/999999');
     expect(resp.status()).toBe(403);
@@ -68,7 +68,7 @@ test.describe('Admin RBAC', () => {
   test('update user requires ADMIN — head-editor gets 403', async ({ page }) => {
     await loginAs(page, 'head-editor');
     const resp = await page.request.put('/api/admin/users/1', {
-      data: { role: 'contributor' },
+      data: { role: 'editor' },
     });
     expect(resp.status()).toBe(403);
   });

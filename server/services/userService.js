@@ -360,7 +360,7 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
   const db = getDb();
   try {
     // Validate role
-    const validBookRoles = [ROLES.HEAD_EDITOR, ROLES.EDITOR, ROLES.CONTRIBUTOR];
+    const validBookRoles = [ROLES.HEAD_EDITOR, ROLES.EDITOR];
     if (!validBookRoles.includes(roleForBook)) {
       throw new Error(
         `Invalid book role: ${roleForBook}. Must be one of: ${validBookRoles.join(', ')}`

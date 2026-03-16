@@ -11,15 +11,13 @@ const ROLES = {
   ADMIN: 'admin',
   HEAD_EDITOR: 'head-editor',
   EDITOR: 'editor',
-  CONTRIBUTOR: 'contributor',
   VIEWER: 'viewer',
 };
 
 const ROLE_HIERARCHY = {
-  [ROLES.ADMIN]: 5,
-  [ROLES.HEAD_EDITOR]: 4,
-  [ROLES.EDITOR]: 3,
-  [ROLES.CONTRIBUTOR]: 2,
+  [ROLES.ADMIN]: 4,
+  [ROLES.HEAD_EDITOR]: 3,
+  [ROLES.EDITOR]: 2,
   [ROLES.VIEWER]: 1,
 };
 

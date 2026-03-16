@@ -57,7 +57,7 @@ const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
  * GET /:book/chapters
  * List available chapters for a book (scans 02-for-mt directory).
  */
-router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/:book/chapters', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { book } = req.params;
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({ error: `Ógild bók: ${book}` });
@@ -79,7 +79,7 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req,
 router.get(
   '/:book/:chapter',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   (req, res) => {
     try {
@@ -108,7 +108,7 @@ router.get(
 router.get(
   '/:book/:chapter/:moduleId',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -420,7 +420,7 @@ router.post(
 router.get(
   '/:book/:chapter/:moduleId/history',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -446,7 +446,7 @@ router.get(
 router.get(
   '/:book/:chapter/:moduleId/:segmentId/history',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -473,7 +473,7 @@ router.get(
 router.post(
   '/:book/:chapter/:moduleId/log',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
   (req, res) => {

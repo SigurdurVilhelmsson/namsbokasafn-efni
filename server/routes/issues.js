@@ -92,8 +92,8 @@ router.get('/', requireAuth, (req, res) => {
     issues = issues.filter((i) => i.status === status);
   }
 
-  // Check permissions - editors can see all, contributors only see their own sessions
-  if (req.user.role === ROLES.CONTRIBUTOR) {
+  // Viewers can only see their own issues; editors+ see all
+  if (req.user.role === ROLES.VIEWER) {
     const userSessions = session.listUserSessions(req.user.id).map((s) => s.id);
     issues = issues.filter(
       (i) => i.reportedBy === req.user.id || (i.sessionId && userSessions.includes(i.sessionId))
@@ -552,7 +552,7 @@ router.post('/auto-fix', requireAuth, requireEditor(), async (req, res) => {
 
 /**
  * POST /api/issues/report
- * Report a new issue (for contributors)
+ * Report a new issue (for editors)
  *
  * Body:
  *   - book: Book identifier

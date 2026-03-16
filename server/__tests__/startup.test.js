@@ -67,16 +67,16 @@ describe('Server startup smoke tests', () => {
   });
 
   describe('migration file inventory', () => {
-    it('all 21 migration files exist on disk', () => {
+    it('all 23 migration files exist on disk', () => {
       const migrationsDir = join(serverDir, 'migrations');
       const files = readdirSync(migrationsDir)
         .filter((f) => f.endsWith('.js'))
         .sort();
 
-      expect(files.length).toBe(22);
+      expect(files.length).toBe(23);
 
-      // Verify sequential numbering 001-021
-      for (let i = 1; i <= 22; i++) {
+      // Verify sequential numbering 001-023
+      for (let i = 1; i <= 23; i++) {
         const prefix = String(i).padStart(3, '0');
         const match = files.find((f) => f.startsWith(prefix));
         expect(match).toBeTruthy();

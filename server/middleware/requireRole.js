@@ -81,15 +81,6 @@ function requireHeadEditor() {
 }
 
 /**
- * Require contributor or higher for a specific book
- *
- * Contributors can work on any book, but this checks minimum access level.
- */
-function requireContributor() {
-  return requireRole(ROLES.CONTRIBUTOR);
-}
-
-/**
  * Require editor or higher
  */
 function requireEditor() {
@@ -109,11 +100,11 @@ function requireAdmin() {
  * Checks (in order):
  * 1. Admin → always pass
  * 2. Head-editor for the book → always pass
- * 3. Contributor/editor → check chapter assignments (if any exist for that book)
+ * 3. Editor → check chapter assignments (if any exist for that book)
  * 4. No access → 403
  *
  * Extracts book from req.params.book and chapter from req.params.chapter or req.chapterNum.
- * Requires at minimum CONTRIBUTOR role.
+ * Requires at minimum EDITOR role.
  */
 function requireBookAccess() {
   return (req, res, next) => {
@@ -124,11 +115,11 @@ function requireBookAccess() {
       });
     }
 
-    // Must be at least contributor
-    if (!hasRole(req.user.role, ROLES.CONTRIBUTOR)) {
+    // Must be at least editor
+    if (!hasRole(req.user.role, ROLES.EDITOR)) {
       return res.status(403).json({
         error: 'Insufficient permissions',
-        message: 'This action requires contributor role or higher',
+        message: 'This action requires editor role or higher',
         yourRole: req.user.role,
       });
     }
@@ -169,7 +160,6 @@ function requireBookAccess() {
 module.exports = {
   requireRole,
   requireHeadEditor,
-  requireContributor,
   requireEditor,
   requireAdmin,
   requireBookAccess,

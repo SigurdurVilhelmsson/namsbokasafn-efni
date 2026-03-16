@@ -18,13 +18,12 @@ const DEFAULT_USER_IDS = {
   admin: 99999,
   'head-editor': 99998,
   editor: 99997,
-  contributor: 99996,
   viewer: 99995,
 };
 
 /**
  * Create a JWT token for a test user with the given role.
- * @param {'admin'|'head-editor'|'editor'|'contributor'|'viewer'} role
+ * @param {'admin'|'head-editor'|'editor'|'viewer'} role
  * @param {number} [userId] - Override the default user ID for this role
  * @returns {string} Signed JWT
  */
@@ -48,7 +47,7 @@ function getTestToken(role = 'admin', userId) {
  * Inject an auth cookie into the browser context so subsequent
  * navigations are authenticated.
  * @param {import('@playwright/test').Page} page
- * @param {'admin'|'head-editor'|'editor'|'contributor'|'viewer'} role
+ * @param {'admin'|'head-editor'|'editor'|'viewer'} role
  * @param {number} [userId] - Override the default user ID for this role
  */
 async function loginAs(page, role = 'admin', userId) {

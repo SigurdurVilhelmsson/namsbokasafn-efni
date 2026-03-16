@@ -23,7 +23,7 @@ const fs = require('fs');
 const archiver = require('archiver');
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireContributor, requireAdmin, ROLES } = require('../middleware/requireRole');
+const { requireEditor, requireAdmin, ROLES } = require('../middleware/requireRole');
 const { VALID_BOOKS } = require('../config');
 
 /**
@@ -116,7 +116,7 @@ const upload = multer({
  *   - chapter: Chapter number
  *   - modules: Array of module IDs to process (auto-populated from chapter selection)
  */
-router.post('/start', requireAuth, requireContributor(), async (req, res) => {
+router.post('/start', requireAuth, requireEditor(), async (req, res) => {
   const { book, chapter, modules } = req.body;
 
   if (!book || !chapter) {
@@ -313,7 +313,7 @@ router.get('/check/:book/:chapter', requireAuth, (req, res) => {
  *   - modules: Array of module IDs to process
  *   - resumeFromStep: Step index to resume from (optional, auto-detected if not provided)
  */
-router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
+router.post('/resume', requireAuth, requireEditor(), async (req, res) => {
   const { book, chapter, modules, resumeFromStep } = req.body;
 
   if (!book || !chapter) {
@@ -1635,6 +1635,35 @@ function getAssignmentDb() {
 }
 
 /**
+ * GET /api/workflow/assignable-users
+ * List active users who can be assigned work (editor+).
+ * Returns minimal data for populating an assignment dropdown.
+ */
+router.get('/assignable-users', requireAuth, (req, res) => {
+  if (req.user.role !== ROLES.ADMIN && req.user.role !== 'head-editor') {
+    return res.status(403).json({ error: 'Head-editor or admin required' });
+  }
+
+  const db = getAssignmentDb();
+  try {
+    const users = db
+      .prepare(
+        `SELECT id, display_name, provider_username, email, role
+         FROM users
+         WHERE is_active = 1 AND role != 'viewer'
+         ORDER BY display_name`
+      )
+      .all();
+    db.close();
+    res.json({ users });
+  } catch {
+    db.close();
+    // Table may not exist yet
+    res.json({ users: [] });
+  }
+});
+
+/**
  * POST /api/workflow/assignments
  * Create a chapter assignment (head-editor+)
  */
@@ -1671,12 +1700,14 @@ router.post('/assignments', requireAuth, (req, res) => {
       });
     }
 
-    // Resolve assignedTo — could be user ID or username
+    // Resolve assignedTo — could be user ID, email, or display name
     let userId = parseInt(assignedTo, 10);
     if (isNaN(userId)) {
       const user = db
-        .prepare('SELECT id FROM users WHERE username = ? OR display_name = ?')
-        .get(assignedTo, assignedTo);
+        .prepare(
+          'SELECT id FROM users WHERE provider_username = ? OR email = ? OR display_name = ?'
+        )
+        .get(assignedTo, assignedTo, assignedTo);
       if (!user) {
         db.close();
         return res.status(400).json({ error: `User not found: ${assignedTo}` });
@@ -1731,9 +1762,9 @@ router.get('/assignments', requireAuth, (req, res) => {
 
     let query = `
       SELECT ca.*,
-        u_to.username AS assigned_to_username,
+        u_to.provider_username AS assigned_to_username,
         u_to.display_name AS assigned_to_name,
-        u_by.username AS assigned_by_username
+        u_by.provider_username AS assigned_by_username
       FROM chapter_assignments ca
       LEFT JOIN users u_to ON u_to.id = ca.assigned_to
       LEFT JOIN users u_by ON u_by.id = ca.assigned_by

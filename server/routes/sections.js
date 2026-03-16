@@ -118,7 +118,7 @@ function loadSection(req, res, next) {
  * GET /api/sections/:sectionId
  * Get detailed section information
  */
-router.get('/:sectionId', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { sectionId } = req.params;
 
   try {
@@ -558,7 +558,7 @@ router.post(
 router.post(
   '/:sectionId/submit-review',
   requireAuth,
-  requireRole(ROLES.CONTRIBUTOR),
+  requireRole(ROLES.EDITOR),
   loadSection,
   async (req, res) => {
     const section = req.sectionData;

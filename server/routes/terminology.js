@@ -226,7 +226,7 @@ router.get('/:id', requireAuth, (req, res) => {
  *   sourceChapter: Chapter number if from glossary
  *   bookId: Book ID (null for global term)
  */
-router.post('/', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { english, icelandic, alternatives, category, notes, source, sourceChapter, bookId } =
     req.body;
 
@@ -373,7 +373,7 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
  *   comment: Reason for dispute (required)
  *   proposedTranslation: Alternative suggestion (optional)
  */
-router.post('/:id/dispute', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:id/dispute', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
   const { comment, proposedTranslation } = req.body;
 
@@ -423,7 +423,7 @@ router.post('/:id/dispute', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, r
  *   comment: Comment text (required)
  *   proposedTranslation: Alternative suggestion (optional)
  */
-router.post('/:id/discuss', requireAuth, requireRole(ROLES.CONTRIBUTOR), (req, res) => {
+router.post('/:id/discuss', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
   const { comment, proposedTranslation } = req.body;
 

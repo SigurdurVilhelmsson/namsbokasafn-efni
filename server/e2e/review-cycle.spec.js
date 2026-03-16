@@ -6,7 +6,7 @@ const { loginAs } = require('./helpers/auth');
  * Full Pass 1 review cycle E2E test.
  *
  * Exercises the complete workflow:
- *   contributor saves edit → submits for review →
+ *   editor saves edit → submits for review →
  *   head-editor sees it in queue → approves → completes review →
  *   edits are auto-applied → content is updated
  *

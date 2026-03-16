@@ -661,7 +661,7 @@ function parseNotificationRow(row) {
  *
  * @param {number} userId - User ID
  * @param {string} bookSlug - Book slug
- * @param {string} role - Assigned role (head-editor, editor, contributor)
+ * @param {string} role - Assigned role (head-editor, editor)
  * @param {string} assignedByUsername - Username of who assigned the access
  */
 async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUsername) {
@@ -671,7 +671,6 @@ async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUserna
   const roleLabels = {
     'head-editor': 'aðalritstjóri',
     editor: 'ritstjóri',
-    contributor: 'þýðandi',
     viewer: 'lesandi',
   };
 

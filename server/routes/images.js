@@ -21,7 +21,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireContributor, requireEditor } = require('../middleware/requireRole');
+const { requireEditor } = require('../middleware/requireRole');
 const imageTracker = require('../services/imageTracker');
 const { VALID_BOOKS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
@@ -251,7 +251,7 @@ router.get('/:book/:chapter/:id', requireAuth, (req, res) => {
  *   - status: Image status (pending, in-progress, translated, approved, not-needed)
  *   - notes: Optional notes
  */
-router.post('/:book/:chapter/:id/status', requireAuth, requireContributor(), (req, res) => {
+router.post('/:book/:chapter/:id/status', requireAuth, requireEditor(), (req, res) => {
   const { book, chapter, id } = req.params;
   const { status, notes } = req.body;
 
@@ -288,7 +288,7 @@ router.post('/:book/:chapter/:id/status', requireAuth, requireContributor(), (re
 router.post(
   '/:book/:chapter/:id/upload',
   requireAuth,
-  requireContributor(),
+  requireEditor(),
   (req, res, next) => {
     if (!/^[a-zA-Z0-9_-]+$/.test(req.params.id)) {
       return res.status(400).json({ error: 'Invalid image ID' });

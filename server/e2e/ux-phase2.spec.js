@@ -32,7 +32,7 @@ test.describe('Phase 2 UX fixes', () => {
   });
 
   test('feedback radio descriptions are in Icelandic', async ({ page }) => {
-    await loginAs(page, 'contributor');
+    await loginAs(page, 'editor');
     await page.goto('/feedback');
     const radioDescs = page.locator('.radio-desc');
     const count = await radioDescs.count();
@@ -87,8 +87,8 @@ test.describe('Phase 2 UX fixes', () => {
 test.describe('M5 revert bug regression', () => {
   test('saved edit persists after API reload', async ({ page }) => {
     const uniqueText = `persist-test-${Date.now()}`;
-    const contributorId = 88010;
-    await loginAs(page, 'contributor', contributorId);
+    const editorId = 88010;
+    await loginAs(page, 'editor', editorId);
 
     // Save via API
     const saveRes = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/edit', {

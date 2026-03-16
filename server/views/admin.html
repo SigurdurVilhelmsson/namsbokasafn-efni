@@ -45,7 +45,7 @@
     .role-admin { background: rgba(220,38,38,0.12); color: #ef4444; }
     .role-head-editor { background: rgba(200,121,65,0.15); color: var(--accent); }
     .role-editor { background: rgba(59,130,246,0.12); color: #60a5fa; }
-    .role-contributor { background: rgba(34,197,94,0.12); color: #4ade80; }
+    
     .role-viewer { background: var(--bg-surface); color: var(--text-muted); }
 
     .status-dot { display: inline-flex; align-items: center; gap: 0.35rem; font-size: var(--text-sm); }
@@ -278,8 +278,7 @@
               <option value="admin">Kerfistj&#243;ri</option>
               <option value="head-editor">A&#240;alritstj&#243;ri</option>
               <option value="editor">Ritstj&#243;ri</option>
-              <option value="contributor">&#222;&#253;&#240;andi</option>
-              <option value="viewer">Lesandi</option>
+                            <option value="viewer">Lesandi</option>
             </select>
             <button class="btn btn-primary" onclick="usersShowAddModal()">B&#230;ta vi&#240;</button>
           </div>
@@ -413,8 +412,7 @@
           <label class="form-label">Hlutverk</label>
           <select class="form-select" id="add-role">
             <option value="viewer">Lesandi</option>
-            <option value="contributor">&#222;&#253;&#240;andi</option>
-            <option value="editor">Ritstj&#243;ri</option>
+                        <option value="editor">Ritstj&#243;ri</option>
             <option value="head-editor">A&#240;alritstj&#243;ri</option>
             <option value="admin">Kerfistj&#243;ri</option>
           </select>
@@ -642,7 +640,7 @@
     var currentEditUser = null;
     var userBooks = [];
     var previewTimeout = null;
-    var roleNames = { 'admin':'Kerfisstj\u00f3ri', 'head-editor':'A\u00f0alritstj\u00f3ri', 'editor':'Ritstj\u00f3ri', 'contributor':'\u00de\u00fd\u00f0andi', 'viewer':'Lesandi' };
+    var roleNames = { 'admin':'Kerfisstj\u00f3ri', 'head-editor':'A\u00f0alritstj\u00f3ri', 'editor':'Ritstj\u00f3ri', 'viewer':'Lesandi' };
 
     function usersInit(user) {
       if (ADMIN_ONLY_ROLES.indexOf(user.role) !== -1) {
@@ -740,10 +738,10 @@
       body.innerHTML =
         '<div class="user-detail-header"><div style="width:56px;height:56px;border-radius:50%;background:var(--bg-surface);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--text-muted)">' + escapeHtml((user.displayName||'?').charAt(0).toUpperCase()) + '</div><div><h4 style="margin:0">' + escapeHtml(user.displayName) + '</h4><p style="margin:0.25rem 0 0;color:var(--text-muted)">' + escapeHtml(user.email || user.providerUsername || '') + '</p></div></div>' +
         '<div class="form-group"><label class="form-label">Nafn</label><input type="text" class="form-input" id="edit-display-name" value="' + escapeHtml(user.displayName) + '"></div>' +
-        '<div class="form-group"><label class="form-label">Hlutverk</label><select class="form-select" id="edit-role"><option value="viewer"' + (user.role==='viewer'?' selected':'') + '>Lesandi</option><option value="contributor"' + (user.role==='contributor'?' selected':'') + '>\u00de\u00fd\u00f0andi</option><option value="editor"' + (user.role==='editor'?' selected':'') + '>Ritstj\u00f3ri</option><option value="head-editor"' + (user.role==='head-editor'?' selected':'') + '>A\u00f0alritstj\u00f3ri</option><option value="admin"' + (user.role==='admin'?' selected':'') + '>Kerfisstj\u00f3ri</option></select></div>' +
+        '<div class="form-group"><label class="form-label">Hlutverk</label><select class="form-select" id="edit-role"><option value="viewer"' + (user.role==='viewer'?' selected':'') + '>Lesandi</option><option value="editor"' + (user.role==='editor'?' selected':'') + '>Ritstj\u00f3ri</option><option value="head-editor"' + (user.role==='head-editor'?' selected':'') + '>A\u00f0alritstj\u00f3ri</option><option value="admin"' + (user.role==='admin'?' selected':'') + '>Kerfisstj\u00f3ri</option></select></div>' +
         '<div class="form-group"><label class="form-label">Sta\u00f0a</label><select class="form-select" id="edit-active"><option value="true"' + (user.isActive?' selected':'') + '>Virkur</option><option value="false"' + (!user.isActive?' selected':'') + '>\u00d3virkur</option></select></div>' +
         '<div class="form-group"><label class="form-label">B\u00f3kaheimildir</label><div id="book-access-list">' + usersRenderBookAccess(user) + '</div><button class="btn btn-sm btn-secondary" style="margin-top:0.5rem" onclick="usersShowAddBookAccess()">B\u00e6ta vi\u00f0 b\u00f3k</button></div>' +
-        '<div class="form-group" id="add-book-access-form" style="display:none"><div style="display:flex;gap:0.5rem"><select class="form-select" id="new-book-slug"><option value="">Veldu b\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><select class="form-select" id="new-book-role"><option value="contributor">\u00de\u00fd\u00f0andi</option><option value="editor">Ritstj\u00f3ri</option><option value="head-editor">A\u00f0alritstj\u00f3ri</option></select></div><button class="btn btn-sm btn-primary" style="margin-top:0.5rem" onclick="usersAddBookAccess()">B\u00e6ta vi\u00f0</button></div>' +
+        '<div class="form-group" id="add-book-access-form" style="display:none"><div style="display:flex;gap:0.5rem"><select class="form-select" id="new-book-slug"><option value="">Veldu b\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><select class="form-select" id="new-book-role"><option value="editor">Ritstj\u00f3ri</option><option value="head-editor">A\u00f0alritstj\u00f3ri</option></select></div><button class="btn btn-sm btn-primary" style="margin-top:0.5rem" onclick="usersAddBookAccess()">B\u00e6ta vi\u00f0</button></div>' +
         '<div class="form-group"><label class="form-label">Kaflaverkefni</label><p style="font-size:0.8rem;color:var(--text-muted);font-style:italic">Ef engir kaflar eru \u00fathluta\u00f0ir hefur notandi a\u00f0gang a\u00f0 \u00f6llum k\u00f6flum.</p><div id="chapter-assignments"><div style="text-align:center;color:var(--text-muted)">Hle\u00f0ur...</div></div>' +
         '<div class="add-chapter-row"><select class="form-select" id="assign-book"><option value="">B\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><input type="number" id="assign-chapter" min="1" max="30" placeholder="Kafli nr." style="width:80px"><button class="btn btn-sm btn-secondary" onclick="usersAssignChapter()">\u00dathluta</button></div></div>';
       document.getElementById('edit-backdrop').classList.add('open');

@@ -599,7 +599,7 @@ router.get('/users/roles', requireAuth, requireAdmin(), (req, res) => {
         level: 4,
       },
       { id: 'editor', name: 'Ritstjóri', description: 'Review and approve translations', level: 3 },
-      { id: 'contributor', name: 'Þýðandi', description: 'Contribute translations', level: 2 },
+
       { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 },
     ],
   });
@@ -804,7 +804,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
  *
  * Body:
  *   - bookSlug: Book slug (required)
- *   - role: Role for this book (head-editor, editor, contributor)
+ *   - role: Role for this book (head-editor, editor)
  */
 router.post('/users/:id/books', requireAuth, requireAdmin(), (req, res) => {
   const userId = parseInt(req.params.id, 10);

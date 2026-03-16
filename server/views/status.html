@@ -1422,7 +1422,9 @@
         </div>
         <div class="form-group">
           <label class="form-label">Úthluta til</label>
-          <input type="text" id="assign-to" class="form-input" placeholder="Notandanafn">
+          <select class="form-select" id="assign-to">
+            <option value="">Hleður notendum...</option>
+          </select>
         </div>
         <div class="form-group">
           <label class="form-label">Skiladagur (valfrjálst)</label>
@@ -2326,6 +2328,8 @@
     // ASSIGNMENTS
     // ============================================================================
 
+    var assignUsersLoaded = false;
+
     function openAssignmentModal(book, chapter, stage) {
       selectedAssignment = { book: book, chapter: chapter };
       document.getElementById('assign-chapter-display').value = book + ' - Kafli ' + chapter;
@@ -2333,6 +2337,32 @@
         document.getElementById('assign-stage').value = stage;
       }
       document.getElementById('assignment-modal').style.display = 'flex';
+      loadAssignableUsers();
+    }
+
+    async function loadAssignableUsers() {
+      if (assignUsersLoaded) return;
+      var select = document.getElementById('assign-to');
+      try {
+        var res = await fetch('/api/workflow/assignable-users');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var data = await res.json();
+        var users = (data.users || []).filter(function(u) {
+          return u.is_active && u.role !== 'viewer';
+        });
+        select.innerHTML = '<option value="">Veldu notanda...</option>';
+        users.forEach(function(u) {
+          var label = u.display_name || u.provider_username || u.email || ('ID ' + u.id);
+          var opt = document.createElement('option');
+          opt.value = String(u.id);
+          opt.textContent = label;
+          select.appendChild(opt);
+        });
+        assignUsersLoaded = true;
+      } catch (err) {
+        select.innerHTML = '<option value="">Villa við að hlaða notendum</option>';
+        console.error('Failed to load users for assignment:', err);
+      }
     }
 
     function closeAssignmentModal() {
