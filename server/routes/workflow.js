@@ -22,9 +22,16 @@ const path = require('path');
 const fs = require('fs');
 const archiver = require('archiver');
 
+const Database = require('better-sqlite3');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireAdmin, ROLES } = require('../middleware/requireRole');
 const { VALID_BOOKS } = require('../config');
+
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+
+function getAssignmentDb() {
+  return new Database(DB_PATH);
+}
 
 /**
  * Check that the current user owns the session or is admin.
@@ -416,6 +423,93 @@ router.post('/resume', requireAuth, requireEditor(), async (req, res) => {
       error: 'Failed to resume workflow',
       message: err.message,
     });
+  }
+});
+
+// ============================================================================
+// CHAPTER ASSIGNMENT QUERIES
+// NOTE: Must be defined before /:sessionId to avoid path parameter capture
+// ============================================================================
+
+/**
+ * GET /api/workflow/assignable-users
+ * List active users who can be assigned work (editor+).
+ * Returns minimal data for populating an assignment dropdown.
+ */
+router.get('/assignable-users', requireAuth, (req, res) => {
+  if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
+    return res.status(403).json({ error: 'Head-editor or admin required' });
+  }
+
+  try {
+    const userService = require('../services/userService');
+    const { users } = userService.listUsers({ isActive: true, limit: 200 });
+    const assignable = users
+      .filter((u) => u.role !== 'viewer')
+      .map((u) => ({
+        id: u.id,
+        displayName: u.display_name,
+        providerUsername: u.provider_username,
+        email: u.email,
+        role: u.role,
+      }));
+    res.json({ users: assignable });
+  } catch (err) {
+    console.error('assignable-users error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/workflow/assignments
+ * List chapter assignments, optionally filtered by book or user
+ */
+router.get('/assignments', requireAuth, (req, res) => {
+  const { book, userId, status: filterStatus } = req.query;
+
+  const db = getAssignmentDb();
+  try {
+    try {
+      db.prepare('SELECT 1 FROM chapter_assignments LIMIT 0').run();
+    } catch {
+      db.close();
+      return res.json({ assignments: [] });
+    }
+
+    let query = `
+      SELECT ca.*,
+        u_to.provider_username AS assigned_to_username,
+        u_to.display_name AS assigned_to_name,
+        u_by.provider_username AS assigned_by_username
+      FROM chapter_assignments ca
+      LEFT JOIN users u_to ON u_to.id = ca.assigned_to
+      LEFT JOIN users u_by ON u_by.id = ca.assigned_by
+      WHERE 1=1
+    `;
+    const params = [];
+
+    if (book) {
+      query += ' AND ca.book = ?';
+      params.push(book);
+    }
+    if (userId) {
+      query += ' AND ca.assigned_to = ?';
+      params.push(parseInt(userId, 10));
+    }
+    if (filterStatus) {
+      query += ' AND ca.status = ?';
+      params.push(filterStatus);
+    }
+
+    query += ' ORDER BY ca.created_at DESC';
+
+    const assignments = db.prepare(query).all(...params);
+    db.close();
+    res.json({ assignments });
+  } catch (err) {
+    db.close();
+    console.error('List assignments error:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -1624,44 +1718,8 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
 });
 
 // ============================================================================
-// CHAPTER ASSIGNMENTS
+// CHAPTER ASSIGNMENT MUTATIONS
 // ============================================================================
-
-const Database = require('better-sqlite3');
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-
-function getAssignmentDb() {
-  return new Database(DB_PATH);
-}
-
-/**
- * GET /api/workflow/assignable-users
- * List active users who can be assigned work (editor+).
- * Returns minimal data for populating an assignment dropdown.
- */
-router.get('/assignable-users', requireAuth, (req, res) => {
-  if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
-    return res.status(403).json({ error: 'Head-editor or admin required' });
-  }
-
-  try {
-    const userService = require('../services/userService');
-    const { users } = userService.listUsers({ isActive: true, limit: 200 });
-    const assignable = users
-      .filter((u) => u.role !== 'viewer')
-      .map((u) => ({
-        id: u.id,
-        displayName: u.display_name,
-        providerUsername: u.provider_username,
-        email: u.email,
-        role: u.role,
-      }));
-    res.json({ users: assignable });
-  } catch (err) {
-    console.error('assignable-users error:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
 
 /**
  * POST /api/workflow/assignments
@@ -1740,60 +1798,6 @@ router.post('/assignments', requireAuth, (req, res) => {
   } catch (err) {
     db.close();
     console.error('Assignment error:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
-
-/**
- * GET /api/workflow/assignments
- * List chapter assignments, optionally filtered by book or user
- */
-router.get('/assignments', requireAuth, (req, res) => {
-  const { book, userId, status: filterStatus } = req.query;
-
-  const db = getAssignmentDb();
-  try {
-    try {
-      db.prepare('SELECT 1 FROM chapter_assignments LIMIT 0').run();
-    } catch {
-      db.close();
-      return res.json({ assignments: [] });
-    }
-
-    let query = `
-      SELECT ca.*,
-        u_to.provider_username AS assigned_to_username,
-        u_to.display_name AS assigned_to_name,
-        u_by.provider_username AS assigned_by_username
-      FROM chapter_assignments ca
-      LEFT JOIN users u_to ON u_to.id = ca.assigned_to
-      LEFT JOIN users u_by ON u_by.id = ca.assigned_by
-      WHERE 1=1
-    `;
-    const params = [];
-
-    if (book) {
-      query += ' AND ca.book = ?';
-      params.push(book);
-    }
-    if (userId) {
-      query += ' AND ca.assigned_to = ?';
-      params.push(parseInt(userId, 10));
-    }
-    if (filterStatus) {
-      query += ' AND ca.status = ?';
-      params.push(filterStatus);
-    }
-
-    query += ' ORDER BY ca.created_at DESC LIMIT 100';
-
-    const assignments = db.prepare(query).all(...params);
-    db.close();
-
-    res.json({ assignments });
-  } catch (err) {
-    db.close();
-    console.error('List assignments error:', err);
     res.status(500).json({ error: err.message });
   }
 });
