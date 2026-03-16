@@ -1229,10 +1229,9 @@
 
         // Update greeting
         const hour = new Date().getHours();
-        let greeting = 'Góðan daginn';
-        if (hour < 6) greeting = 'Góða nótt';
-        else if (hour < 12) greeting = 'Góðan morgun';
-        else if (hour < 18) greeting = 'Góðan daginn';
+        let greeting = 'Góðan dag';
+        if (hour < 6) greeting = 'Njóttu næturbröltsins';
+        else if (hour < 18) greeting = 'Góðan dag';
         else greeting = 'Gott kvöld';
 
         const displayName = todayData.user ? todayData.user.name : (user ? user.name : '');
