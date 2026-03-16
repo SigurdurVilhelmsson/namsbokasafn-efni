@@ -2,8 +2,8 @@
  * User Management Service
  *
  * Handles user CRUD operations and in-app role management.
- * Users are authenticated via GitHub OAuth but roles are managed
- * in the local database rather than via GitHub teams.
+ * Users are authenticated via Microsoft Entra ID (Azure AD) but roles
+ * are managed in the local database.
  */
 
 const Database = require('better-sqlite3');
@@ -40,20 +40,14 @@ function isUserTableReady() {
 }
 
 /**
- * Find user by GitHub ID
+ * Find user by provider ID (Microsoft Entra object ID)
  */
-function findByGithubId(githubId) {
+function findByProviderId(providerId) {
   if (!isUserTableReady()) return null;
 
   const db = getDb();
   try {
-    const user = db
-      .prepare(
-        `
-      SELECT * FROM users WHERE github_id = ?
-    `
-      )
-      .get(String(githubId));
+    const user = db.prepare('SELECT * FROM users WHERE provider_id = ?').get(String(providerId));
 
     if (user) {
       user.bookAccess = getBookAccess(db, user.id);
@@ -66,7 +60,7 @@ function findByGithubId(githubId) {
 }
 
 /**
- * Find user by GitHub username
+ * Find user by username (provider_username column)
  */
 function findByUsername(username) {
   if (!isUserTableReady()) return null;
@@ -74,11 +68,7 @@ function findByUsername(username) {
   const db = getDb();
   try {
     const user = db
-      .prepare(
-        `
-      SELECT * FROM users WHERE github_username = ?
-    `
-      )
+      .prepare('SELECT * FROM users WHERE provider_username = ?')
       .get(username.toLowerCase());
 
     if (user) {
@@ -86,6 +76,44 @@ function findByUsername(username) {
     }
 
     return user;
+  } finally {
+    db.close();
+  }
+}
+
+/**
+ * Find user by email address
+ */
+function findByEmail(email) {
+  if (!isUserTableReady()) return null;
+
+  const db = getDb();
+  try {
+    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email.toLowerCase());
+
+    if (user) {
+      user.bookAccess = getBookAccess(db, user.id);
+    }
+
+    return user;
+  } finally {
+    db.close();
+  }
+}
+
+/**
+ * Update provider info (used when matching by email on first Microsoft login)
+ */
+function updateProviderInfo(userId, providerId, email) {
+  if (!isUserTableReady()) return;
+
+  const db = getDb();
+  try {
+    db.prepare('UPDATE users SET provider_id = ?, email = ? WHERE id = ?').run(
+      String(providerId),
+      email.toLowerCase(),
+      userId
+    );
   } finally {
     db.close();
   }
@@ -201,8 +229,8 @@ function createUser(userData, createdBy = null) {
   const db = getDb();
   try {
     const {
-      githubId,
-      githubUsername,
+      providerId,
+      providerUsername,
       displayName,
       avatarUrl,
       email,
@@ -217,14 +245,14 @@ function createUser(userData, createdBy = null) {
     const result = db
       .prepare(
         `
-      INSERT INTO users (github_id, github_username, display_name, avatar_url, email, role, created_by)
+      INSERT INTO users (provider_id, provider_username, display_name, avatar_url, email, role, created_by)
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `
       )
       .run(
-        String(githubId),
-        githubUsername.toLowerCase(),
-        displayName || githubUsername,
+        providerId ? String(providerId) : null,
+        providerUsername.toLowerCase(),
+        displayName || providerUsername,
         avatarUrl || '',
         email || '',
         role,
@@ -247,7 +275,16 @@ function updateUser(id, updates, _updatedBy = null) {
 
   const db = getDb();
   try {
-    const allowedFields = ['display_name', 'avatar_url', 'email', 'role', 'is_active'];
+    const allowedFields = [
+      'display_name',
+      'avatar_url',
+      'email',
+      'role',
+      'is_active',
+      'school',
+      'subject',
+      'bio',
+    ];
     const setClause = [];
     const params = [];
 
@@ -397,42 +434,41 @@ function updateLastLogin(id) {
 }
 
 /**
- * Create or update user from GitHub OAuth
- * If user exists, update their info and return. If not, create with viewer role.
+ * Create or update user from OAuth provider (Microsoft Entra ID)
+ * If user exists (by provider_id or email), update their info and return.
+ * If not, create with viewer role.
  */
-function upsertFromGitHub(githubUser, options = {}) {
+function upsertFromProvider(providerUser, options = {}) {
   if (!isUserTableReady()) return null;
+
+  const email = (providerUser.mail || providerUser.userPrincipalName || '').toLowerCase();
+  const displayName = providerUser.displayName || email;
 
   const db = getDb();
   try {
-    const existing = db
-      .prepare(
-        `
-      SELECT * FROM users WHERE github_id = ?
-    `
-      )
-      .get(String(githubUser.id));
+    // Find by provider_id first, then by email
+    let existing = db
+      .prepare('SELECT * FROM users WHERE provider_id = ?')
+      .get(String(providerUser.id));
+
+    if (!existing && email) {
+      existing = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+    }
 
     if (existing) {
       // Update info but not role
       db.prepare(
         `
         UPDATE users
-        SET display_name = ?, avatar_url = ?, email = ?, last_login_at = CURRENT_TIMESTAMP
+        SET display_name = ?, provider_id = ?, email = ?, last_login_at = CURRENT_TIMESTAMP
         WHERE id = ?
       `
-      ).run(
-        githubUser.name || githubUser.login,
-        githubUser.avatar_url,
-        githubUser.email || '',
-        existing.id
-      );
+      ).run(displayName, String(providerUser.id), email, existing.id);
 
       return findById(existing.id);
     }
 
     // Create new user
-    // If autoCreate is false, don't create (pending approval mode)
     if (options.autoCreate === false) {
       return null;
     }
@@ -441,18 +477,11 @@ function upsertFromGitHub(githubUser, options = {}) {
     const result = db
       .prepare(
         `
-      INSERT INTO users (github_id, github_username, display_name, avatar_url, email, role, last_login_at)
-      VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      INSERT INTO users (provider_id, provider_username, display_name, email, role, last_login_at)
+      VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
     `
       )
-      .run(
-        String(githubUser.id),
-        githubUser.login.toLowerCase(),
-        githubUser.name || githubUser.login,
-        githubUser.avatar_url,
-        githubUser.email || '',
-        defaultRole
-      );
+      .run(String(providerUser.id), email, displayName, email, defaultRole);
 
     return findById(result.lastInsertRowid);
   } finally {
@@ -613,8 +642,9 @@ function getAllChapterAssignments(userId) {
 
 module.exports = {
   // Query
-  findByGithubId,
+  findByProviderId,
   findByUsername,
+  findByEmail,
   findById,
   listUsers,
   isUserTableReady,
@@ -622,6 +652,7 @@ module.exports = {
   // CRUD
   createUser,
   updateUser,
+  updateProviderInfo,
   deactivateUser,
   reactivateUser,
   deleteUser,
@@ -638,7 +669,7 @@ module.exports = {
   getAllChapterAssignments,
 
   // Auth integration
-  upsertFromGitHub,
+  upsertFromProvider,
   updateLastLogin,
 
   // Role helpers

@@ -10,7 +10,12 @@
  * Required environment variables for production
  * The server will refuse to start if these are not set when NODE_ENV=production
  */
-const REQUIRED_PRODUCTION_SECRETS = ['JWT_SECRET', 'GITHUB_CLIENT_ID', 'GITHUB_CLIENT_SECRET'];
+const REQUIRED_PRODUCTION_SECRETS = [
+  'JWT_SECRET',
+  'MS_CLIENT_ID',
+  'MS_CLIENT_SECRET',
+  'MS_TENANT_ID',
+];
 
 /**
  * Validate that all required secrets are set

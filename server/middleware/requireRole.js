@@ -148,8 +148,8 @@ function requireBookAccess() {
     const chapter = req.chapterNum || req.params.chapter;
 
     if (chapter) {
-      // Look up the DB user ID from the GitHub ID in the JWT
-      const dbUser = userService.findByGithubId(req.user.id);
+      // Look up the DB user ID from the provider ID in the JWT
+      const dbUser = userService.findByProviderId(req.user.id);
       if (dbUser) {
         const allowed = userService.hasChapterAccess(dbUser.id, book, chapter);
         if (!allowed) {

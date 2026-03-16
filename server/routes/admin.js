@@ -23,7 +23,7 @@ const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const pipeline = require('../services/pipelineService');
-const https = require('https');
+// https import removed — no longer needed (GitHub user lookup removed)
 
 // ============================================================================
 // CATALOGUE MANAGEMENT
@@ -632,50 +632,41 @@ router.get('/users/:id', requireAuth, requireAdmin(), (req, res) => {
 
 /**
  * POST /api/admin/users
- * Add a new user by GitHub username
+ * Add a new user by email address
  *
  * Body:
- *   - githubUsername: GitHub username (required)
+ *   - email: User email (required)
  *   - role: Initial role (default: viewer)
  */
-router.post('/users', requireAuth, requireAdmin(), async (req, res) => {
-  const { githubUsername, role = 'viewer' } = req.body;
+router.post('/users', requireAuth, requireAdmin(), (req, res) => {
+  const { email, role = 'viewer' } = req.body;
 
-  if (!githubUsername) {
+  if (!email || !email.includes('@')) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'githubUsername is required',
+      message: 'A valid email address is required',
     });
   }
 
   try {
-    // Check if user already exists
-    const existing = userService.findByUsername(githubUsername);
+    // Check if user already exists (by email or username)
+    const existing = userService.findByEmail(email) || userService.findByUsername(email);
     if (existing) {
       return res.status(409).json({
         error: 'Already exists',
-        message: `User ${githubUsername} is already registered`,
+        message: `User ${email} is already registered`,
         user: formatUser(existing),
       });
     }
 
-    // Fetch user info from GitHub
-    const githubUser = await fetchGitHubUser(githubUsername);
-    if (!githubUser) {
-      return res.status(404).json({
-        error: 'GitHub user not found',
-        message: `Could not find GitHub user: ${githubUsername}`,
-      });
-    }
-
-    // Create user
+    // Create user stub — provider_id will be filled on first Microsoft login
     const user = userService.createUser(
       {
-        githubId: githubUser.id,
-        githubUsername: githubUser.login,
-        displayName: githubUser.name || githubUser.login,
-        avatarUrl: githubUser.avatar_url,
-        email: githubUser.email,
+        providerId: null,
+        providerUsername: email.toLowerCase(),
+        displayName: email.split('@')[0],
+        avatarUrl: '',
+        email: email.toLowerCase(),
         role,
       },
       req.user.username
@@ -683,7 +674,7 @@ router.post('/users', requireAuth, requireAdmin(), async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: `User ${githubUsername} added successfully`,
+      message: `User ${email} added successfully`,
       user: formatUser(user),
     });
   } catch (err) {
@@ -718,7 +709,7 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     }
 
     // Prevent demoting self
-    if (existing.github_username === req.user.username && role && role !== ROLES.ADMIN) {
+    if (existing.provider_username === req.user.username && role && role !== ROLES.ADMIN) {
       return res.status(400).json({
         error: 'Invalid operation',
         message: 'You cannot demote yourself',
@@ -775,7 +766,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     }
 
     // Prevent deleting self
-    if (existing.github_username === req.user.username) {
+    if (existing.provider_username === req.user.username) {
       return res.status(400).json({
         error: 'Invalid operation',
         message: 'You cannot delete yourself',
@@ -950,57 +941,22 @@ function formatUser(user) {
 
   return {
     id: user.id,
-    githubId: user.github_id,
-    githubUsername: user.github_username,
+    providerId: user.provider_id,
+    providerUsername: user.provider_username,
     displayName: user.display_name,
     avatarUrl: user.avatar_url,
     email: user.email,
     role: user.role,
     isActive: !!user.is_active,
+    school: user.school,
+    subject: user.subject,
+    bio: user.bio,
     bookAccess: user.bookAccess || [],
     createdAt: user.created_at,
     updatedAt: user.updated_at,
     lastLoginAt: user.last_login_at,
     createdBy: user.created_by,
   };
-}
-
-/**
- * Helper: Fetch GitHub user info by username
- */
-function fetchGitHubUser(username) {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname: 'api.github.com',
-      path: `/users/${encodeURIComponent(username)}`,
-      method: 'GET',
-      headers: {
-        Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'namsbokasafn-pipeline',
-      },
-    };
-
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => (data += chunk));
-      res.on('end', () => {
-        if (res.statusCode === 404) {
-          resolve(null);
-        } else if (res.statusCode >= 400) {
-          reject(new Error(`GitHub API error: ${res.statusCode}`));
-        } else {
-          try {
-            resolve(JSON.parse(data));
-          } catch {
-            reject(new Error('Failed to parse GitHub response'));
-          }
-        }
-      });
-    });
-
-    req.on('error', reject);
-    req.end();
-  });
 }
 
 // ============================================================================

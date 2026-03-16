@@ -1,22 +1,20 @@
 /**
  * Authentication Service
  *
- * Handles GitHub OAuth authentication and JWT session management.
+ * Handles Microsoft Entra ID (Azure AD) OAuth authentication and JWT session management.
  *
  * Flow:
- * 1. User clicks "Login with GitHub"
- * 2. Redirect to GitHub authorization
- * 3. User approves, GitHub redirects back with code
+ * 1. User clicks "Login with Microsoft"
+ * 2. Redirect to Microsoft Entra authorization
+ * 3. User approves, Microsoft redirects back with code
  * 4. Server exchanges code for access token
- * 5. Server checks GitHub org/team membership for role
+ * 5. Server fetches user profile via Microsoft Graph
  * 6. JWT issued for session (stored in httpOnly cookie)
  *
  * Role Mapping:
- * - GitHub org member → Viewer
- * - Team `contributors` → Contributor
- * - Team `editors` → Editor
- * - Team `book-{id}-head` → Head Editor for that book
- * - Org owner → Admin
+ * - ADMIN_USERS env var → Admin (matched by email)
+ * - Database role → whatever the admin assigned
+ * - Auto-created users → Viewer
  */
 
 const jwt = require('jsonwebtoken');
@@ -31,16 +29,19 @@ if (!process.env.JWT_SECRET) {
 
 // Configuration from environment (internal only - not exported)
 const CONFIG = {
-  githubClientId: process.env.GITHUB_CLIENT_ID,
-  githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
-  githubOrg: process.env.GITHUB_ORG || 'namsbokasafn',
+  msClientId: process.env.MS_CLIENT_ID,
+  msClientSecret: process.env.MS_CLIENT_SECRET,
+  msTenantId: process.env.MS_TENANT_ID || 'common',
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiry: process.env.JWT_EXPIRY || '24h',
-  callbackUrl: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/api/auth/callback',
-  // Comma-separated list of GitHub usernames with admin access (useful for org owners)
+  callbackUrl:
+    process.env.MS_CALLBACK_URL ||
+    process.env.CALLBACK_URL ||
+    'http://localhost:3000/api/auth/callback',
+  // Comma-separated list of Microsoft emails with admin access
   adminUsers: (process.env.ADMIN_USERS || '')
     .split(',')
-    .map((u) => u.trim())
+    .map((u) => u.trim().toLowerCase())
     .filter(Boolean),
 };
 
@@ -55,16 +56,18 @@ function hasRole(userRole, requiredRole) {
 }
 
 /**
- * Generate GitHub OAuth authorization URL
+ * Generate Microsoft Entra authorization URL
  */
 function getAuthUrl(state) {
   const params = new URLSearchParams({
-    client_id: CONFIG.githubClientId,
+    client_id: CONFIG.msClientId,
     redirect_uri: CONFIG.callbackUrl,
-    scope: 'read:user read:org',
+    response_type: 'code',
+    scope: 'openid profile email User.Read',
     state,
+    response_mode: 'query',
   });
-  return `https://github.com/login/oauth/authorize?${params}`;
+  return `https://login.microsoftonline.com/${CONFIG.msTenantId}/oauth2/v2.0/authorize?${params}`;
 }
 
 /**
@@ -72,19 +75,21 @@ function getAuthUrl(state) {
  */
 async function exchangeCodeForToken(code) {
   return new Promise((resolve, reject) => {
-    const postData = JSON.stringify({
-      client_id: CONFIG.githubClientId,
-      client_secret: CONFIG.githubClientSecret,
+    const postData = new URLSearchParams({
+      client_id: CONFIG.msClientId,
+      client_secret: CONFIG.msClientSecret,
       code,
-    });
+      redirect_uri: CONFIG.callbackUrl,
+      grant_type: 'authorization_code',
+      scope: 'openid profile email User.Read',
+    }).toString();
 
     const options = {
-      hostname: 'github.com',
-      path: '/login/oauth/access_token',
+      hostname: 'login.microsoftonline.com',
+      path: `/${CONFIG.msTenantId}/oauth2/v2.0/token`,
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': Buffer.byteLength(postData),
       },
     };
@@ -101,7 +106,7 @@ async function exchangeCodeForToken(code) {
             resolve(json.access_token);
           }
         } catch {
-          reject(new Error('Failed to parse GitHub response'));
+          reject(new Error('Failed to parse Microsoft token response'));
         }
       });
     });
@@ -113,67 +118,57 @@ async function exchangeCodeForToken(code) {
 }
 
 /**
- * Get GitHub user info
+ * Get Microsoft user info via Microsoft Graph API
  */
-async function getGitHubUser(accessToken) {
-  return githubApiRequest('/user', accessToken);
-}
+async function getMicrosoftUser(accessToken) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'graph.microsoft.com',
+      path: '/v1.0/me',
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/json',
+      },
+    };
 
-/**
- * Check if user is member of the organization
- */
-async function checkOrgMembership(accessToken, username) {
-  try {
-    await githubApiRequest(
-      `/orgs/${encodeURIComponent(CONFIG.githubOrg)}/members/${encodeURIComponent(username)}`,
-      accessToken
-    );
-    return true;
-  } catch {
-    return false;
-  }
-}
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', (chunk) => (data += chunk));
+      res.on('end', () => {
+        if (res.statusCode >= 400) {
+          try {
+            const json = JSON.parse(data);
+            reject(new Error(json.error?.message || `Microsoft Graph error: ${res.statusCode}`));
+          } catch {
+            reject(new Error(`Microsoft Graph error: ${res.statusCode}`));
+          }
+        } else {
+          try {
+            resolve(JSON.parse(data));
+          } catch {
+            reject(new Error('Failed to parse Microsoft Graph response'));
+          }
+        }
+      });
+    });
 
-/**
- * Get user's teams in the organization
- */
-async function getUserTeams(accessToken) {
-  try {
-    const teams = await githubApiRequest(`/user/teams`, accessToken);
-    // Filter to only teams in our org
-    return teams
-      .filter((team) => team.organization?.login === CONFIG.githubOrg)
-      .map((team) => team.slug);
-  } catch {
-    return [];
-  }
-}
-
-/**
- * Check if user is org owner
- */
-async function isOrgOwner(accessToken, username) {
-  try {
-    const membership = await githubApiRequest(
-      `/orgs/${encodeURIComponent(CONFIG.githubOrg)}/memberships/${encodeURIComponent(username)}`,
-      accessToken
-    );
-    return membership.role === 'admin';
-  } catch {
-    return false;
-  }
+    req.on('error', reject);
+    req.end();
+  });
 }
 
 /**
  * Determine user role based on in-app user database
- * Falls back to GitHub teams if user not in database (legacy mode)
  */
-async function determineUserRole(accessToken, username, githubUser = null) {
-  // Check explicit admin list first (for org owners, useful when API check fails)
-  if (CONFIG.adminUsers.includes(username)) {
-    // Still upsert into DB so admin appears in users table
-    if (githubUser && userService.isUserTableReady()) {
-      const dbUser = userService.upsertFromGitHub(githubUser, {
+function determineUserRole(msUser) {
+  const email = (msUser.mail || msUser.userPrincipalName || '').toLowerCase();
+
+  // Check explicit admin list first (matched by email)
+  if (email && CONFIG.adminUsers.includes(email)) {
+    // Upsert into DB so admin appears in users table
+    if (userService.isUserTableReady()) {
+      const dbUser = userService.upsertFromProvider(msUser, {
         autoCreate: true,
         defaultRole: ROLES.ADMIN,
       });
@@ -185,18 +180,23 @@ async function determineUserRole(accessToken, username, githubUser = null) {
     return { role: ROLES.ADMIN, books: [], source: 'admin-list' };
   }
 
-  // Check in-app user database first (new system)
+  // Check in-app user database
   if (userService.isUserTableReady()) {
-    // Try to find existing user or create from GitHub
-    let dbUser = userService.findByUsername(username);
+    // Try to find existing user by provider ID or email
+    let dbUser = userService.findByProviderId(msUser.id);
+    if (!dbUser && email) {
+      dbUser = userService.findByEmail(email);
+      // If found by email, update their provider_id for future lookups
+      if (dbUser) {
+        userService.updateProviderInfo(dbUser.id, msUser.id, email);
+      }
+    }
 
     if (dbUser) {
-      // Check if user is active
       if (!dbUser.is_active) {
-        return null; // User deactivated, no access
+        return null; // User deactivated
       }
 
-      // Get head editor books from book_access table
       const headEditorBooks = userService.getHeadEditorBooks(dbUser);
 
       return {
@@ -207,10 +207,9 @@ async function determineUserRole(accessToken, username, githubUser = null) {
       };
     }
 
-    // User not in database - either auto-create or deny based on config
-    if (githubUser && process.env.AUTO_CREATE_USERS !== 'false') {
-      // Auto-create with viewer role
-      dbUser = userService.upsertFromGitHub(githubUser, { autoCreate: true });
+    // User not in database — auto-create or deny
+    if (process.env.AUTO_CREATE_USERS !== 'false') {
+      dbUser = userService.upsertFromProvider(msUser, { autoCreate: true });
       if (dbUser) {
         return {
           role: dbUser.role,
@@ -227,88 +226,8 @@ async function determineUserRole(accessToken, username, githubUser = null) {
     }
   }
 
-  // Fall back to GitHub org/teams (legacy mode)
-  // Check if org member first
-  const isMember = await checkOrgMembership(accessToken, username);
-  if (!isMember) {
-    return null; // Not a member, no access
-  }
-
-  // Check if org owner (admin)
-  if (await isOrgOwner(accessToken, username)) {
-    return { role: ROLES.ADMIN, books: [], source: 'github-owner' };
-  }
-
-  // Get teams
-  const teams = await getUserTeams(accessToken);
-
-  // Check for head editor teams (book-{id}-head)
-  const headEditorBooks = teams
-    .filter((t) => t.startsWith('book-') && t.endsWith('-head'))
-    .map((t) => t.replace('book-', '').replace('-head', ''));
-
-  if (headEditorBooks.length > 0) {
-    return { role: ROLES.HEAD_EDITOR, books: headEditorBooks, source: 'github-team' };
-  }
-
-  // Check for editors team
-  if (teams.includes('editors')) {
-    return { role: ROLES.EDITOR, books: [], source: 'github-team' };
-  }
-
-  // Check for contributors team
-  if (teams.includes('contributors')) {
-    return { role: ROLES.CONTRIBUTOR, books: [], source: 'github-team' };
-  }
-
-  // Default: viewer (org member)
-  return { role: ROLES.VIEWER, books: [], source: 'github-member' };
-}
-
-/**
- * GitHub API request helper
- */
-function githubApiRequest(path, accessToken) {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname: 'api.github.com',
-      path,
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'namsbokasafn-pipeline',
-      },
-    };
-
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => (data += chunk));
-      res.on('end', () => {
-        if (res.statusCode === 404) {
-          reject(new Error('Not found'));
-        } else if (res.statusCode === 204) {
-          resolve(null); // No content (e.g., membership check success)
-        } else if (res.statusCode >= 400) {
-          try {
-            const json = JSON.parse(data);
-            reject(new Error(json.message || `HTTP ${res.statusCode}`));
-          } catch {
-            reject(new Error(`HTTP ${res.statusCode}`));
-          }
-        } else {
-          try {
-            resolve(JSON.parse(data));
-          } catch {
-            resolve(data);
-          }
-        }
-      });
-    });
-
-    req.on('error', reject);
-    req.end();
-  });
+  // No database available — deny by default (no legacy fallback like GitHub org/teams)
+  return null;
 }
 
 /**
@@ -350,11 +269,11 @@ async function authenticate(code) {
   // Exchange code for access token
   const accessToken = await exchangeCodeForToken(code);
 
-  // Get user info
-  const githubUser = await getGitHubUser(accessToken);
+  // Get user info from Microsoft Graph
+  const msUser = await getMicrosoftUser(accessToken);
 
-  // Determine role (pass GitHub user for potential auto-creation)
-  const roleInfo = await determineUserRole(accessToken, githubUser.login, githubUser);
+  // Determine role
+  const roleInfo = determineUserRole(msUser);
 
   if (!roleInfo) {
     throw new Error('User is not authorized. Contact an administrator to request access.');
@@ -366,17 +285,17 @@ async function authenticate(code) {
   }
 
   // Create user object
+  const email = msUser.mail || msUser.userPrincipalName || '';
   const user = {
-    id: githubUser.id,
-    username: githubUser.login,
-    name: githubUser.name || githubUser.login,
-    email: githubUser.email,
-    avatar: githubUser.avatar_url,
+    id: msUser.id,
+    username: email,
+    name: msUser.displayName || email,
+    email,
+    avatar: null, // Microsoft Graph photo requires separate binary fetch — not worth it for 5 users
     role: roleInfo.role,
     books: roleInfo.books,
-    roleSource: roleInfo.source, // Track where role came from
-    dbUserId: roleInfo.dbUserId, // Database user ID if applicable
-    githubAccessToken: accessToken, // Store for API calls
+    roleSource: roleInfo.source,
+    dbUserId: roleInfo.dbUserId,
   };
 
   // Create JWT
@@ -389,7 +308,7 @@ async function authenticate(code) {
  * Check if authentication is properly configured
  */
 function isConfigured() {
-  return !!(CONFIG.githubClientId && CONFIG.githubClientSecret);
+  return !!(CONFIG.msClientId && CONFIG.msClientSecret && CONFIG.msTenantId);
 }
 
 /**
@@ -398,9 +317,10 @@ function isConfigured() {
 function getConfigStatus() {
   return {
     configured: isConfigured(),
-    hasClientId: !!CONFIG.githubClientId,
-    hasClientSecret: !!CONFIG.githubClientSecret,
-    org: CONFIG.githubOrg,
+    provider: 'microsoft',
+    hasClientId: !!CONFIG.msClientId,
+    hasClientSecret: !!CONFIG.msClientSecret,
+    hasTenantId: !!CONFIG.msTenantId,
     callbackUrl: CONFIG.callbackUrl,
   };
 }

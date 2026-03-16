@@ -1,11 +1,11 @@
 /**
  * Authentication Routes
  *
- * Handles GitHub OAuth flow and session management.
+ * Handles Microsoft OAuth flow and session management.
  *
  * Endpoints:
- *   GET  /api/auth/login          Redirect to GitHub authorization
- *   GET  /api/auth/callback       Handle GitHub OAuth callback
+ *   GET  /api/auth/login          Redirect to Microsoft authorization
+ *   GET  /api/auth/callback       Handle Microsoft OAuth callback
  *   GET  /api/auth/me             Get current user info
  *   POST /api/auth/logout         Clear authentication
  *   GET  /api/auth/status         Check auth configuration status
@@ -46,7 +46,7 @@ router.get('/status', (req, res) => {
 
 /**
  * GET /api/auth/login
- * Redirect to GitHub authorization
+ * Redirect to Microsoft authorization
  *
  * Query params:
  *   - redirect: URL to redirect to after login (default: /)
@@ -56,7 +56,7 @@ router.get('/login', (req, res) => {
     return res.status(503).json({
       error: 'Authentication not configured',
       message:
-        'GitHub OAuth credentials are not set. Set GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET environment variables.',
+        'Microsoft OAuth credentials are not set. Set MS_CLIENT_ID, MS_CLIENT_SECRET, and MS_TENANT_ID environment variables.',
     });
   }
 
@@ -72,26 +72,26 @@ router.get('/login', (req, res) => {
         : '/',
   });
 
-  // Redirect to GitHub
+  // Redirect to Microsoft
   const authUrl = auth.getAuthUrl(state);
   res.redirect(302, authUrl);
 });
 
 /**
  * GET /api/auth/callback
- * Handle GitHub OAuth callback
+ * Handle Microsoft OAuth callback
  *
  * Query params:
- *   - code: Authorization code from GitHub
+ *   - code: Authorization code from Microsoft
  *   - state: State token for CSRF verification
  */
 router.get('/callback', async (req, res) => {
   const { code, state, error, error_description } = req.query;
 
-  // Handle GitHub error
+  // Handle Microsoft error
   if (error) {
     return res.status(400).json({
-      error: 'GitHub authorization failed',
+      error: 'Microsoft authorization failed',
       message: error_description || error,
     });
   }
@@ -110,7 +110,7 @@ router.get('/callback', async (req, res) => {
   if (!code) {
     return res.status(400).json({
       error: 'Missing authorization code',
-      message: 'No authorization code received from GitHub',
+      message: 'No authorization code received from Microsoft',
     });
   }
 
@@ -214,7 +214,7 @@ router.get('/roles', (req, res) => {
       { name: 'contributor', description: 'Upload translations, report issues' },
       { name: 'viewer', description: 'View status, download published content' },
     ],
-    note: 'Roles are determined by GitHub organization and team membership',
+    note: 'Roles are assigned by administrators in the admin panel',
   });
 });
 

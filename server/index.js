@@ -112,8 +112,8 @@ app.use(
         scriptSrcAttr: ["'self'", "'unsafe-inline'"],
         styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:', 'https://avatars.githubusercontent.com'],
-        connectSrc: ["'self'", 'https://api.github.com'],
+        imgSrc: ["'self'", 'data:'],
+        connectSrc: ["'self'"],
       },
     },
     // Allow cross-origin requests for API

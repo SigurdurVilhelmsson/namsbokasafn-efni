@@ -47,6 +47,7 @@ function runAllMigrations() {
     require('../migrations/019-register-new-books'),
     require('../migrations/020-glossary-definitions'),
     require('../migrations/021-drop-dead-tables'),
+    require('../migrations/022-provider-auth'),
   ];
 
   let applied = 0;
