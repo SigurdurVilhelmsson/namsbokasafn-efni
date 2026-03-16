@@ -2,7 +2,7 @@
 
 **Status:** Work in progress - localization
 **Format:** Segment files (`.is.md`)
-**Source:** Copied from `03-faithful-translation/`
+**Source:** Initialized from `03-faithful-translation/` by the localization editor
 **Editable:** Yes (working directory)
 
 ## Purpose
@@ -11,7 +11,7 @@ Working directory for adapting faithful translations to Icelandic context. This 
 
 ## Localization Tasks
 
-- Convert units (Fahrenheit → Celsius, miles → km, etc.)
+- Convert units (Fahrenheit -> Celsius, miles -> km, etc.)
 - Adapt examples to Icelandic context
 - Replace cultural references
 - Update geographic references
@@ -19,25 +19,22 @@ Working directory for adapting faithful translations to Icelandic context. This 
 
 ## Workflow
 
-### Initialize localization on a chapter:
-```bash
-# Copy faithful translation to localization directory
-cp -r 03-faithful-translation/chNN 04-localization/
-```
+### Initialize and edit via the localization editor:
 
-### Edit via server interface:
-- Server provides localization-specific editing UI
-- Focus on cultural adaptation, not linguistic correction
-- Changes are saved back to this directory
+The localization editor at `/localization` handles initialization automatically:
+- Loads faithful segments from `03-faithful-translation/`
+- Provides a 3-column editing interface (EN | faithful IS | localized IS)
+- Saves working edits to this directory
+- All edits are logged to the `localization_edits` DB table for audit trail
 
 ### Complete localization:
-```bash
-# Move completed chapter to localized-content
-mv 04-localization/chNN 04-localized-content/
 
-# Render to localized track
-node tools/cnxml-inject.js --chapter NN --source-dir 04-localized-content
-node tools/cnxml-render.js --chapter NN --track localized
+When all segments in a chapter are reviewed, the finalized content is promoted to `04-localized-content/`.
+
+```bash
+# Render to localized publication track
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --track localized
+node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --track localized
 ```
 
 ## Contents
@@ -46,6 +43,4 @@ node tools/cnxml-render.js --chapter NN --track localized
 
 ## Status Tracking
 
-Track localization progress in `chapters/chNN/status.json`:
-- Stage: `localization`
-- Status: `in-progress`
+Pipeline progress is tracked in the `chapter_pipeline_status` DB table (migration 017). View status at `/progress` or `/pipeline/efnafraedi-2e/NN`.

@@ -69,14 +69,14 @@ End-of-chapter pages are compiled from tagged sections across all modules in the
 
 ```bash
 # MT preview for a chapter
-node tools/cnxml-inject.js --chapter 1
-node tools/cnxml-render.js --chapter 1 --track mt-preview
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --track mt-preview
 
 # Faithful for a single reviewed module
-node tools/cnxml-inject.js --chapter 1 --module m68663
-node tools/cnxml-render.js --chapter 1 --module m68663 --track faithful
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module m68663
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --module m68663 --track faithful
 
 # Appendices
-node tools/cnxml-inject.js --chapter appendices
-node tools/cnxml-render.js --chapter appendices --track mt-preview
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter appendices
+node tools/cnxml-render.js --book efnafraedi-2e --chapter appendices --track mt-preview
 ```

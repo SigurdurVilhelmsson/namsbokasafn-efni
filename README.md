@@ -1,6 +1,6 @@
 # Námsbókasafn - Translation Pipeline
 
-A translation workflow and content pipeline for producing Icelandic translations of [OpenStax](https://openstax.org/) educational textbooks. Includes CLI tools for the Extract-Inject-Render pipeline, a web-based editorial workflow server with GitHub OAuth, and the translated content itself. The translations are published at [namsbokasafn.is](https://namsbokasafn.is) via the sister repository [namsbokasafn-vefur](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur).
+A translation workflow and content pipeline for producing Icelandic translations of [OpenStax](https://openstax.org/) educational textbooks. Includes CLI tools for the Extract-Inject-Render pipeline, a web-based editorial workflow server with Microsoft Entra ID authentication, and the translated content itself. The translations are published at [namsbokasafn.is](https://namsbokasafn.is) via the sister repository [namsbokasafn-vefur](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur).
 
 ## About
 
@@ -16,25 +16,27 @@ All content is released under CC BY 4.0. The tooling is MIT-licensed. If you're 
 
 ### Books
 
-| Book | Source | Status | Published |
-|------|--------|--------|-----------|
-| **Efnafraedi** (Chemistry 2e) | [OpenStax](https://openstax.org/details/books/chemistry-2e) | In progress | [namsbokasafn.is](https://namsbokasafn.is) |
-| **Liffraedi** (Biology 2e) | [OpenStax](https://openstax.org/details/books/biology-2e) | Planned | — |
+| Book | Slug | Source | Status | Published |
+|------|------|--------|--------|-----------|
+| **Efnafraedi** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) | In progress | [namsbokasafn.is](https://namsbokasafn.is) |
+| **Liffraedi** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) | Proof-of-concept (Ch3 imported) | — |
+| **Orverufraedi** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) | Registered | — |
 
 ## Demo / Live Version
 
 **[https://namsbokasafn.is](https://namsbokasafn.is)** — the published translations are read through the [namsbokasafn-vefur](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur) reader.
 
-**[https://ritstjorn.namsbokasafn.is](https://ritstjorn.namsbokasafn.is)** — the editorial workflow server (requires GitHub OAuth login).
+**[https://ritstjorn.namsbokasafn.is](https://ritstjorn.namsbokasafn.is)** — the editorial workflow server (requires Microsoft login).
 
 ## Tech Stack
 
 - **Runtime:** Node.js >= 20 (`.nvmrc` specifies 20)
 - **Pipeline tools:** Custom CLI scripts in `tools/` (ES modules)
-- **Server:** Express 4 (CommonJS), better-sqlite3, GitHub OAuth (JWT), Helmet, rate limiting
+- **Server:** Express 5.1 (CommonJS), better-sqlite3 12.6, Helmet 8, express-rate-limit 8
+- **Auth:** Microsoft Entra ID (Azure AD), JWT sessions
 - **Content format:** CNXML (OpenStax source) → extracted segments → translated → injected → rendered to HTML
-- **Math:** MathJax 4 for equation rendering in HTML output
-- **Testing:** Vitest (root), ESLint + Prettier, Husky pre-commit hooks
+- **Math:** MathJax 4 (@mathjax/src 4.1) with New Computer Modern font
+- **Testing:** Vitest 4 (424 unit tests), Playwright (96 E2E tests), ESLint 10, Prettier, Husky
 - **CI:** GitHub Actions (lint, test, validate, security, docs-check)
 
 ## Prerequisites
@@ -43,7 +45,7 @@ All content is released under CC BY 4.0. The tooling is MIT-licensed. If you're 
 - npm
 
 For the workflow server in production:
-- GitHub OAuth app credentials ([create one here](https://github.com/settings/developers))
+- Microsoft Entra ID app registration ([Azure Portal](https://portal.azure.com/))
 - SMTP server (optional, for email notifications)
 
 ## Setup
@@ -77,8 +79,10 @@ Edit `.env`:
 | `PORT` | No | Server port (default: `3000`) |
 | `HOST` | No | Bind address (default: `localhost`) |
 | `BASE_URL` | No | Public URL for email links (default: `http://localhost:3000`) |
-| `GITHUB_CLIENT_ID` | **Production** | GitHub OAuth app client ID |
-| `GITHUB_CLIENT_SECRET` | **Production** | GitHub OAuth app client secret |
+| `MICROSOFT_CLIENT_ID` | **Production** | Microsoft Entra ID app client ID |
+| `MICROSOFT_CLIENT_SECRET` | **Production** | Microsoft Entra ID app client secret |
+| `MICROSOFT_TENANT_ID` | **Production** | Azure AD tenant ID |
+| `MICROSOFT_REDIRECT_URI` | **Production** | OAuth redirect URI (e.g. `https://ritstjorn.namsbokasafn.is/api/auth/callback`) |
 | `JWT_SECRET` | **Production** | Session token secret (>= 32 chars) |
 | `ADMIN_EMAIL` | No | Email address for feedback notifications |
 | `SMTP_HOST` | No | SMTP server for email notifications |
@@ -86,8 +90,6 @@ Edit `.env`:
 | `SMTP_USER` / `SMTP_PASS` | No | SMTP credentials |
 | `MATECAT_API_KEY` | No | Matecat API key for TM creation |
 | `OPENSTAX_ARCHIVE_URL` | No | OpenStax archive URL (has default) |
-
-In development, the server runs without GitHub OAuth — authentication is bypassed locally.
 
 ### 4. Run the workflow server
 
@@ -97,16 +99,16 @@ npm run server:dev    # Development with watch mode
 npm run server        # Production mode
 ```
 
-Open [http://localhost:3000/workflow](http://localhost:3000/workflow)
+Open [http://localhost:3000](http://localhost:3000)
 
 ### 5. Run CLI tools
 
 The pipeline tools are run directly:
 
 ```bash
-node tools/cnxml-extract.js --book efnafraedi --chapter 01
-node tools/cnxml-inject.js --book efnafraedi --chapter 01 --track faithful
-node tools/cnxml-render.js --book efnafraedi --chapter 01 --track faithful
+node tools/cnxml-extract.js --book efnafraedi-2e --chapter 01
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 01 --track faithful
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 01 --track faithful
 ```
 
 See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for full usage.
@@ -143,20 +145,19 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 
 The workflow server runs on a Linode Ubuntu instance.
 
-- **Server path:** on the Linode server (deployed via git pull)
+- **Server path:** deployed via git pull
 - **Service:** `ritstjorn.service` (systemd)
 - **Port:** 3000
 - **Domain:** `ritstjorn.namsbokasafn.is`
 - **Nginx:** Reverse proxy to port 3000
 - **SSL:** Let's Encrypt via certbot
-- **Database:** SQLite (`pipeline-output/sessions.db`, auto-created on first run)
-- **Auth:** GitHub OAuth with role-based access (admin, head editor, editor, contributor, viewer)
+- **Database:** SQLite (`pipeline-output/sessions.db`, auto-migrated on startup via 22 migrations)
+- **Auth:** Microsoft Entra ID with role-based access (admin, head editor, editor, contributor, viewer)
 
 ### Deploy / update
 
 ```bash
-ssh siggi@kvenno.app
-cd /path/to/namsbokasafn-efni
+cd namsbokasafn-efni
 git pull
 cd server && npm install
 sudo systemctl restart ritstjorn
@@ -164,43 +165,51 @@ sudo systemctl restart ritstjorn
 
 See [docs/deployment/linode-deployment-checklist.md](docs/deployment/linode-deployment-checklist.md) for the full deployment guide.
 
-### Workflow server routes
+### Web interface routes
 
 | URL | Description |
 |-----|-------------|
-| `/workflow` | Step-by-step workflow wizard |
-| `/issues` | Issue review dashboard |
-| `/images` | Image translation tracker |
-| `/status` | Pipeline status overview |
-| `/login` | GitHub OAuth login |
+| `/` | My Work (translator dashboard) |
+| `/editor` | Segment editor (Pass 1: linguistic review) |
+| `/localization` | Localization editor (Pass 2) |
+| `/progress` | Pipeline status overview |
+| `/terminology` | Terminology database |
+| `/library` | Book catalog |
+| `/admin` | Admin panel (users, books, feedback, analytics) |
+| `/feedback` | Public feedback form |
+| `/profile` | User profile |
+| `/login` | Microsoft login |
+| `/pipeline/:book/:chapter` | Chapter pipeline detail |
 
 ## Project Structure
 
 ```
 namsbokasafn-efni/
-├── books/efnafraedi/              # Chemistry book content
-│   ├── 01-source/                 # OpenStax CNXML (READ ONLY)
-│   ├── 02-for-mt/                 # EN segments for machine translation
-│   ├── 02-structure/              # Document structure (JSON)
-│   ├── 02-mt-output/              # Raw MT output (READ ONLY)
-│   ├── 03-faithful-translation/   # Human-reviewed IS segments
-│   ├── 03-translated/             # Translated CNXML (from inject)
-│   ├── 04-localized-content/      # Localized version (pass 2)
-│   ├── 05-publication/            # Final HTML output
-│   │   ├── mt-preview/            #   MT versions (immediate use)
-│   │   └── faithful/              #   Human-reviewed versions
-│   ├── tm/                        # Translation memory (TMX)
-│   └── glossary/                  # Terminology files
-├── tools/                         # CLI pipeline tools (7 active)
-├── server/                        # Express workflow server
-│   ├── routes/                    #   API routes (24 groups)
-│   ├── services/                  #   Business logic
-│   ├── middleware/                #   Auth, rate limiting
-│   ├── views/                     #   HTML pages
-│   └── migrations/                #   SQLite migrations
-├── scripts/                       # Status updates, validation, doc generation
-├── schemas/                       # JSON Schema definitions
-└── docs/                          # Comprehensive documentation
+├── books/efnafraedi-2e/          # Chemistry 2e content
+│   ├── 01-source/                # OpenStax CNXML (READ ONLY)
+│   ├── 02-for-mt/                # EN segments for machine translation
+│   ├── 02-structure/             # Document structure (JSON)
+│   ├── 02-mt-output/             # Raw MT output (READ ONLY)
+│   ├── 03-faithful-translation/  # Human-reviewed IS segments
+│   ├── 03-translated/            # Translated CNXML (from inject)
+│   ├── 04-localized-content/     # Localized version (pass 2)
+│   ├── 05-publication/           # Final HTML output
+│   │   ├── mt-preview/           #   MT versions (immediate use)
+│   │   ├── faithful/             #   Human-reviewed versions
+│   │   └── localized/            #   Localized versions
+│   ├── tm/                       # Translation memory (TMX)
+│   └── glossary/                 # Terminology files
+├── books/liffraedi-2e/           # Biology 2e (proof-of-concept)
+├── tools/                        # CLI pipeline tools (20 active)
+├── server/                       # Express workflow server
+│   ├── routes/                   #   API routes (25 groups)
+│   ├── services/                 #   Business logic (36 services)
+│   ├── middleware/                #   Auth, roles, validation (3)
+│   ├── views/                    #   HTML pages (12)
+│   └── migrations/               #   SQLite migrations (22)
+├── scripts/                      # Status updates, validation, doc generation
+├── schemas/                      # JSON Schema definitions
+└── docs/                         # Comprehensive documentation
 ```
 
 ### File permissions
@@ -216,9 +225,10 @@ namsbokasafn-efni/
 ### Run tests
 
 ```bash
-npm test                  # Vitest unit tests
+npm test                  # Vitest unit tests (424 tests)
 npm run test:watch        # Watch mode
 npm run test:coverage     # With coverage report
+cd server && npm run test:e2e   # Playwright E2E tests (96 tests)
 ```
 
 ### Code quality
@@ -233,7 +243,7 @@ npm run docs:check        # Verify generated docs are up-to-date
 ### Pipeline status
 
 ```bash
-npm run update-status efnafraedi 01 linguisticReview complete
+npm run update-status efnafraedi-2e 01 linguisticReview complete
 npm run validate          # Validate all status files
 ```
 
@@ -250,7 +260,6 @@ node scripts/generate-toc.js
 ### Check server logs (production)
 
 ```bash
-ssh siggi@kvenno.app
 sudo journalctl -u ritstjorn -f
 ```
 
@@ -302,7 +311,7 @@ License: CC BY 4.0
 
 ## Status
 
-Actively maintained. Pipeline phases 8–13 complete (as of February 2026). The Extract-Inject-Render pipeline is operational with 49 automated integration tests. New chapters are processed as editorial review progresses.
+Actively maintained. Pipeline phases 8-13 complete (February 2026). Microsoft Entra ID authentication migration complete (March 2026). Multi-book support operational with per-book rendering configuration. The Extract-Inject-Render pipeline is verified with 424 unit tests and 96 E2E tests. New chapters are processed as editorial review progresses.
 
 ## Related Projects
 

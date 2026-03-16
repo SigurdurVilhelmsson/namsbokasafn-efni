@@ -1,8 +1,8 @@
 # Translation Pipeline Server
 
-Web-based automation server for the OpenStax translation pipeline. Provides a guided workflow interface, issue tracking, image management, and GitHub-based content sync.
+Web-based editorial server for the OpenStax translation pipeline. Provides a segment editor for linguistic review (Pass 1), a localization editor (Pass 2), pipeline status tracking, terminology management, user administration, and analytics.
 
-> **📚 For complete API reference:** See [`docs/_generated/routes.md`](../docs/_generated/routes.md) which documents all 200+ endpoints across 28 route groups. This README provides setup instructions and a high-level feature overview.
+> **For complete API reference:** See [`docs/_generated/routes.md`](../docs/_generated/routes.md) which documents all endpoints across 25 route groups. This README provides setup instructions and a high-level overview.
 
 ## Quick Start
 
@@ -10,7 +10,7 @@ Web-based automation server for the OpenStax translation pipeline. Provides a gu
 cd server
 npm install
 cp .env.example .env
-# Edit .env with your GitHub OAuth credentials
+# Edit .env with your Microsoft Entra ID credentials
 npm start
 ```
 
@@ -18,101 +18,74 @@ Server runs at http://localhost:3000
 
 ## Features
 
-### Phase 1: Processing API
-- **CNXML Processing**: Convert OpenStax CNXML to Markdown and XLIFF
-- **Module Fetching**: Fetch modules directly from OpenStax GitHub
-- **Status Tracking**: Query pipeline status for books and chapters
-- **Matecat Integration**: Create translation projects via Matecat API
-
-### Phase 2: Workflow Management
-- **GitHub OAuth**: Authenticate users via GitHub with role-based access
-- **Guided Workflows**: Step-by-step wizard for translation pipeline
-- **Issue Classification**: Automatic categorization of translation issues
-- **Image Tracking**: Track translation status of figures with text
-- **PR-Based Sync**: Create pull requests to sync approved content
+- **Segment editor** — Side-by-side EN/IS segment editor with autosave, conflict detection, and cross-tab guards. Supports both MT output review and manual editing.
+- **Localization editor** — Pass 2 editor for adapting faithful translations: unit conversions, Icelandic context, extended exercises. Full audit trail of changes.
+- **Pipeline management** — Track chapter progress through 8 pipeline stages (extraction through publication). Unified status in SQLite with JSON cache sync.
+- **Terminology database** — Searchable EN-IS terminology with dispute resolution workflow and glossary generation.
+- **Multi-book support** — Per-book rendering configuration, access control, and module mapping. Chemistry, Biology, and Microbiology registered.
+- **Admin panel** — User management, book access grants, feedback review, analytics dashboard.
+- **Role-based access** — Five roles (admin, head editor, editor, contributor, viewer) with middleware enforcement.
+- **Microsoft Entra ID** — OAuth 2.0 authentication via Azure AD with JWT sessions.
+- **Publication tracks** — Three-track output (mt-preview, faithful, localized) with independent publication status.
 
 ## Web Interface
 
 | URL | Description |
 |-----|-------------|
-| `/workflow` | Multi-step workflow wizard |
-| `/issues` | Issue review dashboard |
-| `/images` | Image translation tracker |
-| `/status` | Pipeline status overview |
-| `/login` | GitHub authentication |
+| `/` | My Work (translator dashboard) |
+| `/editor` | Segment editor (Pass 1: linguistic review) |
+| `/localization` | Localization editor (Pass 2) |
+| `/progress` | Pipeline status overview |
+| `/terminology` | Terminology database |
+| `/library` | Book catalog |
+| `/admin` | Admin panel (users, books, feedback, analytics) |
+| `/feedback` | Public feedback form |
+| `/profile` | User profile |
+| `/login` | Microsoft login |
+| `/pipeline/:book/:chapter` | Chapter pipeline detail |
 
-## API Endpoints
+## Route Groups (25)
 
-### Phase 1 - Processing
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Health check |
-| `/api/modules` | GET | List available OpenStax modules |
-| `/api/modules/:moduleId` | GET | Get module details |
-| `/api/process/cnxml` | POST | Process CNXML file through pipeline |
-| `/api/process/module/:moduleId` | POST | Process module by ID |
-| `/api/status/:book` | GET | Get pipeline status for book |
-| `/api/status/:book/:chapter` | GET | Get chapter status |
-| `/api/matecat/projects` | POST | Create Matecat project |
-
-### Phase 2 - Authentication
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/auth/login` | GET | Initiate GitHub OAuth flow |
-| `/api/auth/callback` | GET | OAuth callback handler |
-| `/api/auth/me` | GET | Get current user info |
-| `/api/auth/logout` | POST | Clear authentication |
-
-### Phase 2 - Workflow
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/workflow/start` | POST | Start new workflow session |
-| `/api/workflow/sessions` | GET | List active sessions |
-| `/api/workflow/:sessionId` | GET | Get session status |
-| `/api/workflow/:sessionId/upload/:step` | POST | Upload file for step |
-| `/api/workflow/:sessionId/advance` | POST | Advance to next step |
-
-### Phase 2 - Issues
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/issues` | GET | List pending issues |
-| `/api/issues/stats` | GET | Issue statistics |
-| `/api/issues/:id/resolve` | POST | Resolve single issue |
-| `/api/issues/batch-resolve` | POST | Batch resolve issues |
-| `/api/issues/auto-fix` | POST | Apply automatic fixes |
-
-### Phase 2 - Content Sync
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/sync/prepare` | POST | Validate files for sync |
-| `/api/sync/create-pr` | POST | Create GitHub pull request |
-| `/api/sync/status/:prNumber` | GET | Check PR status |
-
-### Phase 2 - Images
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/images/:book` | GET | Book image overview |
-| `/api/images/:book/:chapter` | GET | Chapter image details |
-| `/api/images/:book/:chapter/:id/upload` | POST | Upload translated image |
+| Route | Description |
+|-------|-------------|
+| `activity` | Activity logging and history |
+| `admin` | User management, migrations, system admin |
+| `analytics` | Usage statistics and dashboards |
+| `auth` | Microsoft Entra ID OAuth flow, JWT sessions |
+| `books` | Book registration and access control |
+| `feedback` | Public feedback submission and review |
+| `images` | Image translation tracking |
+| `issues` | Translation issue tracking and classification |
+| `localization-editor` | Pass 2 localization editing API |
+| `matecat` | Matecat TM project integration |
+| `modules` | OpenStax module metadata |
+| `my-work` | Per-user task dashboard |
+| `notifications` | Email and in-app notifications |
+| `pipeline` | Chapter pipeline detail pages |
+| `pipeline-status` | Stage transitions and status queries |
+| `profile` | User profile management |
+| `publication` | HTML publication and track management |
+| `sections` | Section-level status tracking |
+| `segment-editor` | Pass 1 segment editing API |
+| `status` | Pipeline overview pages |
+| `suggestions` | Translation suggestions |
+| `sync` | Content sync to reader repository |
+| `terminology` | Terminology CRUD and dispute resolution |
+| `views` | HTML page serving |
+| `workflow` | Legacy workflow (redirects to current routes) |
 
 ## Configuration
 
 Copy `.env.example` to `.env` and configure:
 
-### Required
+### Required (production)
 
 ```env
-# GitHub OAuth (create app at https://github.com/settings/developers)
-GITHUB_CLIENT_ID=your_client_id
-GITHUB_CLIENT_SECRET=your_client_secret
-GITHUB_CALLBACK_URL=http://localhost:3000/api/auth/callback
-GITHUB_ORG=namsbokasafn
+# Microsoft Entra ID (register app at https://portal.azure.com/)
+MICROSOFT_CLIENT_ID=your_client_id
+MICROSOFT_CLIENT_SECRET=your_client_secret
+MICROSOFT_TENANT_ID=your_tenant_id
+MICROSOFT_REDIRECT_URI=https://ritstjorn.namsbokasafn.is/api/auth/callback
 
 # JWT for sessions
 JWT_SECRET=change-this-to-a-secure-random-string
@@ -124,116 +97,118 @@ JWT_SECRET=change-this-to-a-secure-random-string
 # Server
 PORT=3000
 HOST=localhost
-NODE_ENV=development
+BASE_URL=http://localhost:3000
 
-# GitHub repository for PR sync
-GITHUB_REPO_OWNER=namsbokasafn
-GITHUB_REPO_NAME=namsbokasafn-efni
-GITHUB_BASE_BRANCH=main
+# Email notifications
+ADMIN_EMAIL=admin@example.com
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=user
+SMTP_PASS=pass
 
 # Matecat API
 MATECAT_API_KEY=your_api_key
-
-# OneDrive/SharePoint for image source links
-ONEDRIVE_BASE_URL=onedrive://Namsbokasafn
 ```
 
 ## Architecture
 
 ```
 server/
-├── index.js              # Express entry point
-├── routes/
-│   ├── auth.js           # GitHub OAuth endpoints
-│   ├── workflow.js       # Workflow session management
-│   ├── issues.js         # Issue tracking
-│   ├── sync.js           # GitHub PR creation
-│   ├── images.js         # Image translation tracking
+├── index.js              # Express 5 entry point, auto-migration
+├── routes/               # 25 route files
+│   ├── auth.js           # Microsoft Entra ID OAuth
+│   ├── segment-editor.js # Pass 1 editing API
+│   ├── localization-editor.js # Pass 2 editing API
+│   ├── admin.js          # User/book/system admin
+│   ├── pipeline-status.js # Stage transitions
+│   ├── terminology.js    # Term CRUD + disputes
 │   ├── views.js          # HTML page serving
-│   ├── process.js        # CNXML processing (Phase 1)
-│   ├── modules.js        # OpenStax module fetching (Phase 1)
-│   ├── status.js         # Pipeline status (Phase 1)
-│   └── matecat.js        # Matecat integration (Phase 1)
-├── services/
-│   ├── auth.js           # JWT + GitHub OAuth logic
-│   ├── session.js        # Workflow session persistence
-│   ├── issueClassifier.js # Issue categorization
-│   ├── github.js         # GitHub API client
-│   ├── imageTracker.js   # Image status tracking
-│   └── matecat.js        # Matecat API client
+│   └── ...               # 18 more route files
+├── services/             # 36 service modules
+│   ├── segmentEditorService.js   # Segment CRUD, approved edits
+│   ├── segmentParser.js          # Segment file I/O
+│   ├── pipelineStatusService.js  # Unified pipeline status
+│   ├── localizationEditService.js # Localization audit trail
+│   ├── terminologyService.js     # Term management
+│   ├── userService.js            # User/role management
+│   ├── auth.js                   # JWT + Microsoft OAuth
+│   ├── migrationRunner.js        # Auto-run DB migrations
+│   └── ...                       # 28 more service files
 ├── middleware/
 │   ├── requireAuth.js    # JWT validation
-│   └── requireRole.js    # Role-based access control
-└── views/
-    ├── login.html        # GitHub login page
-    ├── workflow.html     # Workflow wizard
-    ├── issues.html       # Issue dashboard
-    ├── images.html       # Image tracker
-    └── status.html       # Status overview
+│   ├── requireRole.js    # Role-based access control
+│   └── validateParams.js # Request parameter validation
+├── views/                # 12 HTML pages
+│   ├── segment-editor.html
+│   ├── localization-editor.html
+│   ├── admin.html
+│   ├── status.html
+│   ├── terminology.html
+│   └── ...               # 7 more view files
+├── migrations/           # 22 SQLite migrations (001-022)
+├── public/               # Static assets (JS, CSS)
+├── e2e/                  # Playwright E2E tests (96 tests)
+└── data/                 # Book module mappings (JSON)
 ```
 
 ## Role-Based Access
 
-Roles are determined by GitHub organization/team membership:
+Roles are managed in the local SQLite database:
 
-| Role | Access | GitHub Mapping |
-|------|--------|----------------|
-| Admin | Full access | Organization owners |
-| Head Editor | Manage specific book | `book-{id}-head` team |
-| Editor | Review content, resolve issues | `editors` team |
-| Contributor | Upload translations | `contributors` team |
-| Viewer | Read-only access | Organization members |
-
-## Issue Classification
-
-Issues detected during processing are automatically categorized:
-
-| Category | Examples | Action |
-|----------|----------|--------|
-| `AUTO_FIX` | Whitespace, trailing spaces | Applied automatically |
-| `EDITOR_CONFIRM` | Terminology suggestions | Editor reviews |
-| `BOARD_REVIEW` | New terminology, policy | Editorial board decides |
-| `BLOCKED` | Copyright concerns | Manual escalation |
-
-## Workflow Steps
-
-The guided workflow includes 6 steps:
-
-1. **Source**: Select book/chapter or upload CNXML
-2. **MT Upload**: Upload machine translation output
-3. **Matecat Create**: Generate XLIFF for Matecat project
-4. **Matecat Review**: Upload reviewed XLIFF from Matecat
-5. **Issue Review**: Review and resolve flagged issues
-6. **Finalize**: Generate final outputs and sync
+| Role | Access |
+|------|--------|
+| Admin | Full access, user management, migrations |
+| Head Editor | Manage assigned books, approve edits |
+| Editor | Review content, resolve issues, edit segments |
+| Contributor | Submit translations, suggest terminology |
+| Viewer | Read-only access |
 
 ## Dependencies
 
+Key production dependencies (see `package.json` for full list):
+
 ```json
 {
-  "express": "^4.18.2",
-  "cors": "^2.8.5",
-  "cookie-parser": "^1.4.6",
+  "express": "^5.1.0",
+  "better-sqlite3": "^12.6.2",
+  "helmet": "^8.0.0",
+  "express-rate-limit": "^8.2.1",
   "jsonwebtoken": "^9.0.2",
-  "multer": "^1.4.5-lts.1",
-  "archiver": "^6.0.1",
-  "uuid": "^9.0.1",
-  "dotenv": "^16.3.1"
+  "nodemailer": "^8.0.0",
+  "multer": "^2.0.0",
+  "cookie-parser": "^1.4.6",
+  "dotenv": "^17.2.3",
+  "archiver": "^7.0.1",
+  "uuid": "^13.0.0"
 }
 ```
+
+Dev dependencies: `@playwright/test` for E2E testing.
 
 ## Development
 
 ```bash
-# Start with auto-reload (Node 18+)
+# Start with auto-reload (Node 20+)
 npm run dev
 
 # Run on custom port
 PORT=8080 npm start
+
+# Run E2E tests
+npm run test:e2e
+
+# Run E2E tests with browser visible
+npm run test:e2e:headed
 ```
+
+## Database
+
+SQLite database at `pipeline-output/sessions.db` (auto-created on first run). Migrations run automatically on server startup via `migrationRunner.js`. Current schema has 22 migrations covering users, sessions, edits, terminology, pipeline status, localization audit trail, and Microsoft auth.
 
 ## Related Documentation
 
 - [Workflow Guide](../docs/workflow/simplified-workflow.md) - 5-step translation pipeline
 - [Editorial Guide (Pass 1)](../docs/editorial/pass1-linguistic.md) - Linguistic review instructions
 - [Editorial Guide (Pass 2)](../docs/editorial/pass2-localization.md) - Localization instructions
+- [Architecture](../docs/technical/architecture.md) - System architecture overview
 - [CLAUDE.md](../CLAUDE.md) - Claude Code project instructions
