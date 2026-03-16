@@ -197,6 +197,15 @@ function determineUserRole(msUser) {
         return null; // User deactivated
       }
 
+      // Refresh display name and provider info from Microsoft profile on each login
+      const freshName = msUser.displayName || email;
+      if (freshName && freshName !== dbUser.display_name) {
+        userService.updateUser(dbUser.id, { displayName: freshName });
+      }
+      if (String(msUser.id) !== dbUser.provider_id) {
+        userService.updateProviderInfo(dbUser.id, msUser.id, email);
+      }
+
       const headEditorBooks = userService.getHeadEditorBooks(dbUser);
 
       return {
