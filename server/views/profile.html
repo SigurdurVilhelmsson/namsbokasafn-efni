@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prófíll - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <style>
+    .profile-container {
+      max-width: 600px;
+    }
+
+    .profile-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .profile-card-header {
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+
+    .profile-card-header h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .profile-card-body {
+      padding: var(--spacing-lg);
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 0.2em 0.6em;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      background: var(--accent-subtle);
+      color: var(--accent);
+      text-transform: capitalize;
+    }
+
+    .profile-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+      padding-top: var(--spacing-md);
+      border-top: 1px solid var(--border);
+    }
+
+    .profile-meta {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-top: var(--spacing-lg);
+    }
+
+    .profile-loading {
+      text-align: center;
+      padding: var(--spacing-2xl);
+      color: var(--text-muted);
+    }
+
+    .form-hint {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page-content" data-page="profile" data-title="Prófílinn minn">
+    <div class="profile-container">
+      <div id="profile-loading" class="profile-loading">Hleð prófíl...</div>
+
+      <div id="profile-form-wrapper" style="display:none">
+        <div class="profile-card">
+          <div class="profile-card-header">
+            <h2>Prófílupplýsingar</h2>
+          </div>
+          <div class="profile-card-body">
+            <div class="form-group">
+              <label class="form-label" for="profile-name">Fullt nafn</label>
+              <input type="text" id="profile-name" class="form-input" maxlength="200">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="profile-email">Netfang</label>
+              <input type="email" id="profile-email" class="form-input" readonly>
+              <div class="form-hint">Netfang kemur frá Microsoft innskráningu og er ekki breytanlegt.</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="profile-school">Skóli</label>
+                <input type="text" id="profile-school" class="form-input" placeholder="t.d. Menntaskólinn í Reykjavík" maxlength="200">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profile-subject">Kennslugrein</label>
+                <input type="text" id="profile-subject" class="form-input" placeholder="t.d. Efnafræði" maxlength="200">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="profile-bio">Um mig</label>
+              <textarea id="profile-bio" class="form-textarea" rows="3" placeholder="Stutt lýsing (valfrjálst)" maxlength="1000"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Hlutverk</label>
+              <div><span class="role-badge" id="profile-role"></span></div>
+            </div>
+
+            <div class="profile-actions">
+              <button type="button" id="profile-save-btn" class="btn btn-primary">Vista breytingar</button>
+            </div>
+
+            <div class="profile-meta" id="profile-meta"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </main>
+
+  <script src="/js/layout.js"></script>
+  <script src="/js/theme.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const ROLE_LABELS = {
+        admin: 'Stjórnandi',
+        'head-editor': 'Aðalritstjóri',
+        editor: 'Ritstjóri',
+        contributor: 'Þátttakandi',
+        viewer: 'Áhorfandi',
+      };
+
+      const els = {
+        loading: document.getElementById('profile-loading'),
+        wrapper: document.getElementById('profile-form-wrapper'),
+        name: document.getElementById('profile-name'),
+        email: document.getElementById('profile-email'),
+        school: document.getElementById('profile-school'),
+        subject: document.getElementById('profile-subject'),
+        bio: document.getElementById('profile-bio'),
+        role: document.getElementById('profile-role'),
+        saveBtn: document.getElementById('profile-save-btn'),
+        meta: document.getElementById('profile-meta'),
+        toast: document.getElementById('toast'),
+      };
+
+      function showToast(message, type) {
+        els.toast.textContent = message;
+        els.toast.className = 'toast' + (type ? ' toast-' + type : '');
+        els.toast.classList.add('show');
+        setTimeout(function () {
+          els.toast.classList.remove('show');
+        }, 3000);
+      }
+
+      async function loadProfile() {
+        try {
+          const res = await fetch('/api/profile');
+          if (!res.ok) {
+            if (res.status === 401) {
+              window.location.href = '/login';
+              return;
+            }
+            throw new Error('HTTP ' + res.status);
+          }
+
+          const data = await res.json();
+
+          els.name.value = data.displayName || '';
+          els.email.value = data.email || '';
+          els.school.value = data.school || '';
+          els.subject.value = data.subject || '';
+          els.bio.value = data.bio || '';
+          els.role.textContent = ROLE_LABELS[data.role] || data.role;
+
+          if (data.lastLoginAt) {
+            const d = new Date(data.lastLoginAt);
+            els.meta.textContent = 'Síðasta innskráning: ' + d.toLocaleDateString('is-IS') + ' ' + d.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
+          }
+
+          els.loading.style.display = 'none';
+          els.wrapper.style.display = '';
+        } catch (err) {
+          els.loading.textContent = 'Villa við að hlaða prófíl.';
+          console.error('Failed to load profile:', err);
+        }
+      }
+
+      els.saveBtn.addEventListener('click', async function () {
+        els.saveBtn.disabled = true;
+        els.saveBtn.textContent = 'Vista...';
+
+        try {
+          const res = await fetch('/api/profile', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              displayName: els.name.value.trim(),
+              school: els.school.value.trim(),
+              subject: els.subject.value.trim(),
+              bio: els.bio.value.trim(),
+            }),
+          });
+
+          if (!res.ok) {
+            const err = await res.json().catch(function () { return {}; });
+            throw new Error(err.message || 'HTTP ' + res.status);
+          }
+
+          showToast('Prófíll vistaður', 'success');
+
+          // Clear auth cache so sidebar picks up updated name
+          try { sessionStorage.removeItem('authCache'); } catch (e) { /* ok */ }
+        } catch (err) {
+          showToast('Villa: ' + err.message, 'error');
+          console.error('Failed to save profile:', err);
+        } finally {
+          els.saveBtn.disabled = false;
+          els.saveBtn.textContent = 'Vista breytingar';
+        }
+      });
+
+      // Wait for layout auth to resolve, then load full profile
+      window.addEventListener('userLoaded', function () {
+        loadProfile();
+      });
+
+      // If layout already fired (cached auth), load immediately
+      if (window.currentUser) {
+        loadProfile();
+      }
+    })();
+  </script>
+</body>
+</html>

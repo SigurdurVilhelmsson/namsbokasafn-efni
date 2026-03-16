@@ -81,6 +81,10 @@
   </nav>
 
   <div class="sidebar-footer">
+    <a href="/profile" class="nav-link" id="nav-profile" data-paths="/profile" style="display:none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <span>Prófíll</span>
+    </a>
     <div class="role-preview-wrapper" id="role-preview-wrapper" style="display:none">
       <label for="role-preview-select" class="role-preview-label">Skoða sem:</label>
       <select id="role-preview-select" class="role-preview-select">
@@ -384,6 +388,12 @@
     }
     if (adminSection) {
       adminSection.style.display = showAdmin ? '' : 'none';
+    }
+
+    // Profile link — visible to any authenticated user
+    const navProfile = document.getElementById('nav-profile');
+    if (navProfile) {
+      navProfile.style.display = effectiveRole ? '' : 'none';
     }
 
     // Localization editor — admin-only until Pass 2 workflow is verified

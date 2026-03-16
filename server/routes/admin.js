@@ -697,7 +697,7 @@ router.post('/users', requireAuth, requireAdmin(), (req, res) => {
  */
 router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
   const userId = parseInt(req.params.id, 10);
-  const { role, isActive, displayName } = req.body;
+  const { role, isActive, displayName, school, subject, bio } = req.body;
 
   try {
     const existing = userService.findById(userId);
@@ -727,7 +727,10 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     const updates = {};
     if (role !== undefined) updates.role = role;
     if (isActive !== undefined) updates.isActive = isActive;
-    if (displayName !== undefined) updates.displayName = displayName;
+    if (displayName !== undefined) updates.displayName = String(displayName).trim().slice(0, 200);
+    if (school !== undefined) updates.school = String(school).trim().slice(0, 200);
+    if (subject !== undefined) updates.subject = String(subject).trim().slice(0, 200);
+    if (bio !== undefined) updates.bio = String(bio).trim().slice(0, 1000);
 
     const user = userService.updateUser(userId, updates, req.user.username);
 

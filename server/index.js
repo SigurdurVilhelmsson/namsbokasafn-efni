@@ -88,6 +88,9 @@ const pipelineRoutes = require('./routes/pipeline');
 const localizationEditorRoutes = require('./routes/localization-editor');
 const pipelineStatusRoutes = require('./routes/pipeline-status');
 
+// Import Profile routes
+const profileRoutes = require('./routes/profile');
+
 // Load version from package.json
 const serverVersion = require('./package.json').version;
 
@@ -272,6 +275,9 @@ app.use('/api/localization-editor', localizationEditorRoutes);
 
 // Pipeline Status API Routes
 app.use('/api/pipeline-status', pipelineStatusRoutes);
+
+// Profile API Routes
+app.use('/api/profile', profileRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

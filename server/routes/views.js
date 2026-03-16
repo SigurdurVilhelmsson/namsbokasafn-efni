@@ -23,6 +23,7 @@ router.get('/reviews', (req, res) => res.redirect(301, '/editor'));
 router.get('/localization', (req, res) => sendView(res, 'localization-editor.html'));
 router.get('/library', (req, res) => sendView(res, 'books.html'));
 router.get('/admin', (req, res) => sendView(res, 'admin.html'));
+router.get('/profile', (req, res) => sendView(res, 'profile.html'));
 router.get('/feedback', (req, res) => sendView(res, 'feedback.html'));
 router.get('/pipeline/:bookSlug/:chapterNum', (req, res) => sendView(res, 'chapter-pipeline.html'));
 
