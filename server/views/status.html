@@ -2344,15 +2344,11 @@
       if (assignUsersLoaded) return;
       var select = document.getElementById('assign-to');
       try {
-        var res = await fetch('/api/workflow/assignable-users');
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        var data = await res.json();
-        var users = (data.users || []).filter(function(u) {
-          return u.is_active && u.role !== 'viewer';
-        });
+        var data = await fetchJson('/api/workflow/assignable-users');
+        var users = data.users || [];
         select.innerHTML = '<option value="">Veldu notanda...</option>';
         users.forEach(function(u) {
-          var label = u.display_name || u.provider_username || u.email || ('ID ' + u.id);
+          var label = u.displayName || u.providerUsername || u.email || ('ID ' + u.id);
           var opt = document.createElement('option');
           opt.value = String(u.id);
           opt.textContent = label;
@@ -2360,7 +2356,7 @@
         });
         assignUsersLoaded = true;
       } catch (err) {
-        select.innerHTML = '<option value="">Villa við að hlaða notendum</option>';
+        select.innerHTML = '<option value="">Villa: ' + (err.message || 'Óþekkt villa') + '</option>';
         console.error('Failed to load users for assignment:', err);
       }
     }

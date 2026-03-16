@@ -1640,26 +1640,26 @@ function getAssignmentDb() {
  * Returns minimal data for populating an assignment dropdown.
  */
 router.get('/assignable-users', requireAuth, (req, res) => {
-  if (req.user.role !== ROLES.ADMIN && req.user.role !== 'head-editor') {
+  if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
     return res.status(403).json({ error: 'Head-editor or admin required' });
   }
 
-  const db = getAssignmentDb();
   try {
-    const users = db
-      .prepare(
-        `SELECT id, display_name, provider_username, email, role
-         FROM users
-         WHERE is_active = 1 AND role != 'viewer'
-         ORDER BY display_name`
-      )
-      .all();
-    db.close();
-    res.json({ users });
-  } catch {
-    db.close();
-    // Table may not exist yet
-    res.json({ users: [] });
+    const userService = require('../services/userService');
+    const { users } = userService.listUsers({ isActive: true, limit: 200 });
+    const assignable = users
+      .filter((u) => u.role !== 'viewer')
+      .map((u) => ({
+        id: u.id,
+        displayName: u.display_name,
+        providerUsername: u.provider_username,
+        email: u.email,
+        role: u.role,
+      }));
+    res.json({ users: assignable });
+  } catch (err) {
+    console.error('assignable-users error:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 
