@@ -246,12 +246,11 @@ router.post('/', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
 
     // Log activity
     activityLog.log({
+      type: 'create_term',
       userId: req.user.id,
       username: req.user.username,
-      action: 'create_term',
-      entityType: 'terminology',
-      entityId: term.id,
-      details: { english, icelandic, category },
+      description: `Created term: ${english} → ${icelandic}`,
+      metadata: { entityId: term.id, category },
     });
 
     res.status(201).json({
@@ -278,12 +277,11 @@ router.put('/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
     const term = terminology.updateTerm(parseInt(id, 10), req.body);
 
     activityLog.log({
+      type: 'update_term',
       userId: req.user.id,
       username: req.user.username,
-      action: 'update_term',
-      entityType: 'terminology',
-      entityId: term.id,
-      details: { english: term.english, updates: Object.keys(req.body) },
+      description: `Updated term: ${term.english}`,
+      metadata: { entityId: term.id, updates: Object.keys(req.body) },
     });
 
     res.json({
@@ -311,11 +309,10 @@ router.delete('/:id', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
 
     if (result.success) {
       activityLog.log({
+        type: 'delete_term',
         userId: req.user.id,
         username: req.user.username,
-        action: 'delete_term',
-        entityType: 'terminology',
-        entityId: parseInt(id, 10),
+        description: `Deleted term ID ${id}`,
       });
     }
 
@@ -344,12 +341,11 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
     const term = terminology.approveTerm(parseInt(id, 10), req.user.id, req.user.name);
 
     activityLog.log({
+      type: 'approve_term',
       userId: req.user.id,
       username: req.user.username,
-      action: 'approve_term',
-      entityType: 'terminology',
-      entityId: term.id,
-      details: { english: term.english, icelandic: term.icelandic },
+      description: `Approved term: ${term.english} → ${term.icelandic}`,
+      metadata: { entityId: term.id },
     });
 
     res.json({
@@ -394,12 +390,11 @@ router.post('/:id/dispute', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
     );
 
     activityLog.log({
+      type: 'dispute_term',
       userId: req.user.id,
       username: req.user.username,
-      action: 'dispute_term',
-      entityType: 'terminology',
-      entityId: term.id,
-      details: { english: term.english, comment },
+      description: `Disputed term: ${term.english} — ${comment}`,
+      metadata: { entityId: term.id },
     });
 
     res.json({
@@ -497,11 +492,11 @@ router.post(
       fs.unlinkSync(tempPath);
 
       activityLog.log({
+        type: 'import_terminology_csv',
         userId: req.user.id,
         username: req.user.username,
-        action: 'import_terminology_csv',
-        entityType: 'terminology',
-        details: result,
+        description: `Imported ${result.added} terms from CSV`,
+        metadata: result,
       });
 
       res.json(result);
@@ -546,11 +541,11 @@ router.post(
       );
 
       activityLog.log({
+        type: 'import_terminology_excel',
         userId: req.user.id,
         username: req.user.username,
-        action: 'import_terminology_excel',
-        entityType: 'terminology',
-        details: result,
+        description: `Imported ${result.added} terms from Excel`,
+        metadata: result,
       });
 
       res.json(result);
@@ -590,11 +585,11 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
     );
 
     activityLog.log({
+      type: 'import_terminology_keyterms',
       userId: req.user.id,
       username: req.user.username,
-      action: 'import_terminology_keyterms',
-      entityType: 'terminology',
-      details: { bookSlug, chapterNum, ...result },
+      description: `Imported ${result.added} key terms from ${bookSlug}`,
+      metadata: { bookSlug, chapterNum, ...result },
     });
 
     res.json(result);
@@ -648,11 +643,11 @@ router.post(
       });
 
       activityLog.log({
+        type: 'import_terminology_glossary',
         userId: req.user.id,
         username: req.user.username,
-        action: 'import_terminology_glossary',
-        entityType: 'terminology',
-        details: { bookSlug, ...result },
+        description: `Imported ${result.added} terms from ${bookSlug} glossary`,
+        metadata: { bookSlug, ...result },
       });
 
       res.json(result);
