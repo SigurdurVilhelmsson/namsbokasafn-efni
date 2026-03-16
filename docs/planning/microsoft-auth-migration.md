@@ -98,7 +98,7 @@ All work happens on a feature branch. GitHub login continues working on `main`.
 - [ ] Request: "Register a web application in Microsoft Entra ID (Azure AD) for our translation platform"
 - [ ] Provide them with this information:
   - **App name:** Námsbókasafn (or whatever you prefer)
-  - **Redirect URI:** `https://namsbokasafn.is/api/auth/callback`
+  - **Redirect URI:** `https://ritstjorn.namsbokasafn.is/api/auth/callback`
   - **Redirect URI type:** Web
   - **Required API permissions:** `openid`, `profile`, `email`, `User.Read` (Microsoft Graph, delegated)
   - **Supported account types:** "Accounts in this organizational directory only" (single tenant)
@@ -123,7 +123,7 @@ All work happens on a feature branch. GitHub login continues working on `main`.
 > Getur þú búið til „App registration" í Azure AD/Entra ID fyrir okkur?
 >
 > - **Nafn:** Námsbókasafn
-> - **Redirect URI:** `https://namsbokasafn.is/api/auth/callback` (tegund: Web)
+> - **Redirect URI:** `https://ritstjorn.namsbokasafn.is/api/auth/callback` (tegund: Web)
 > - **API permissions:** openid, profile, email, User.Read (Microsoft Graph, delegated)
 > - **Account types:** Accounts in this organizational directory only
 >
@@ -180,7 +180,7 @@ ADMIN_USERS=siggi@school.is
 
 ### C4. Verify login flow
 
-- [ ] Open `https://namsbokasafn.is/login` in browser
+- [ ] Open `https://ritstjorn.namsbokasafn.is/login` in browser
 - [ ] Confirm Microsoft login button appears (not GitHub)
 - [ ] Click "Skrá inn með Microsoft"
 - [ ] Authenticate with your school Microsoft account
