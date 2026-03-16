@@ -952,10 +952,13 @@
               <option value="">Veldu kafla...</option>
             </select>
           </div>
-          <button class="btn btn-primary" id="cv-load-btn" disabled>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-            Hla&#240;a kafla
-          </button>
+          <div class="form-group">
+            <label class="form-label">&nbsp;</label>
+            <button class="btn btn-primary" id="cv-load-btn" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+              Hla&#240;a kafla
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2168,19 +2171,18 @@
         }
       });
 
-      // Auto-select if only 1 book: hide book dropdown, auto-load chapters
+      // Auto-load chapters if a book is already selected (e.g. by bookSelector.js auto-init)
       var bookSelect = document.getElementById('cv-book-select');
-      var realOptions = Array.from(bookSelect.options).filter(function(o) { return o.value; });
-      if (realOptions.length === 1) {
-        bookSelect.value = realOptions[0].value;
-        // Hide the book form-group
-        var bookFormGroup = bookSelect.closest('.form-group');
-        if (bookFormGroup) bookFormGroup.style.display = 'none';
-        // Adjust grid: chapter selector gets full width
-        var selectorGrid = bookFormGroup.parentElement;
-        if (selectorGrid) selectorGrid.style.gridTemplateColumns = '1fr auto';
-        // Auto-load chapters
-        cvLoadChapters(realOptions[0].value);
+      if (bookSelect.value) {
+        var realOptions = Array.from(bookSelect.options).filter(function(o) { return o.value; });
+        if (realOptions.length === 1) {
+          // Only 1 book: hide book dropdown, adjust grid
+          var bookFormGroup = bookSelect.closest('.form-group');
+          if (bookFormGroup) bookFormGroup.style.display = 'none';
+          var selectorGrid = bookFormGroup.parentElement;
+          if (selectorGrid) selectorGrid.style.gridTemplateColumns = '1fr auto';
+        }
+        cvLoadChapters(bookSelect.value);
       }
     }
 

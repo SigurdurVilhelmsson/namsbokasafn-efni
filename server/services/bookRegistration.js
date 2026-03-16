@@ -587,9 +587,7 @@ function listRegisteredBooks() {
       )
       .all();
 
-    db.close();
-
-    return books.map((b) => {
+    const result = books.map((b) => {
       // Get chapter numbers for this book (for DB-based progress)
       let chapterNums = [];
       try {
@@ -618,6 +616,9 @@ function listRegisteredBooks() {
         statusProgress: computeBookPipelineProgress(b.slug, chapterNums),
       };
     });
+
+    db.close();
+    return result;
   } catch (err) {
     db.close();
     throw err;
