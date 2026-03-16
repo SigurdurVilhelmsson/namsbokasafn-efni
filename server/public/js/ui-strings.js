@@ -47,7 +47,7 @@ const UI = {
     },
     discardChanges: 'Þú átt óvistaðar breytingar. Viltu henda þeim?',
     leaveUnsaved: 'Þú átt óvistaðar breytingar. Viltu yfirgefa?',
-    closePanels: 'Opin klippispjöld verða lokuð. Viltu halda áfram?',
+    closePanels: 'Opnum klippispjöldum verður lokað. Viltu halda áfram?',
     unapprove: 'Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".',
     submitForReview: function (count) {
       return 'Senda ' + count + ' breytingar til yfirlestrar?';
@@ -59,7 +59,7 @@ const UI = {
       return 'Hafna ' + count + ' tillögum?';
     },
     conflictReload:
-      'Einingin hefur verið breytt af öðrum notanda.\n' +
+      'Einingu hefur verið breytt af öðrum notanda.\n' +
       'Endurhlaða til að sjá nýjustu útgáfu?\n\n' +
       '(Óvistaðar breytingar þínar verða geymdar sem drög.)',
     validationBlocked: 'Ekki hægt að vista:\n\n',
@@ -199,7 +199,7 @@ const UI = {
 
   // ── Log type labels ─────────────────────────────────────────
   logType: {
-    unit_conversion: 'Einingarumreikn.',
+    unit_conversion: 'Einingaumreikn.',
     cultural_adaptation: 'Menningarlegt',
     added_context: 'Skýringar',
     removed_content: 'Fjarlægt',
@@ -221,10 +221,10 @@ const UI = {
   // ── Validation messages ─────────────────────────────────────
   validation: {
     mathMissing: function (marker) {
-      return 'Stærðfræðimerki ' + marker + ' vantar — það er í enskum texta og má ekki fjarlægja.';
+      return 'Stærðfræðimerkið ' + marker + ' vantar — það er í enskum texta og má ekki fjarlægja.';
     },
     mathMissingShort: function (marker) {
-      return 'Stærðfræðimerki ' + marker + ' vantar.';
+      return 'Stærðfræðimerkið ' + marker + ' vantar.';
     },
     brRemoved: function (from, to) {
       return '[[BR]] línuskil voru fjarlægð (' + from + ' → ' + to + ').';
@@ -240,10 +240,10 @@ const UI = {
       return 'Hlekkur ' + link + ' var fjarlægður.';
     },
     docRefMissing: function (ref) {
-      return 'Skjaltilvísun ' + ref + ' vantar — hún er í enskum texta og má ekki fjarlægja.';
+      return 'Skjalatilvísun ' + ref + ' vantar — hún er í enskum texta og má ekki fjarlægja.';
     },
     docRefMissingShort: function (ref) {
-      return 'Skjaltilvísun ' + ref + ' vantar.';
+      return 'Skjalatilvísun ' + ref + ' vantar.';
     },
     mediaMissing: function (marker) {
       return 'Myndarmerki ' + marker + ' vantar — það er í enskum texta og má ekki fjarlægja.';
@@ -277,8 +277,8 @@ const UI = {
 
   // ── Module badges ───────────────────────────────────────────
   badges: {
-    pass1Done: 'Pass 1',
-    pass1Missing: 'Vantar Pass 1',
+    pass1Done: 'Yfirlestur 1',
+    pass1Missing: 'Vantar yfirlestur 1',
     localized: 'Staðfært',
   },
 
@@ -286,7 +286,7 @@ const UI = {
   tooltips: {
     sourceTypes:
       'MT = óyfirfarin vélþýðing · Yfirlesið = mannlegri yfirferð lokið · Staðfærð = aðlöguð að Íslandi',
-    otherEditor: 'Annar ritstjóri hefur breytt þessum búti',
+    otherEditor: 'Annar ritstjóri hefur breytt þessum bút',
   },
 
   // ── Term lookup ─────────────────────────────────────────────
