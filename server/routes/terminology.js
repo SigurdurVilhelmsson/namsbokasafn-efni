@@ -480,7 +480,8 @@ router.post(
       });
     }
 
-    const { bookId, overwrite } = req.query;
+    const { overwrite } = req.query;
+    const bookId = resolveBookId(req.query);
 
     try {
       // Write buffer to temp file
@@ -488,7 +489,7 @@ router.post(
       fs.writeFileSync(tempPath, req.file.buffer);
 
       const result = terminology.importFromCSV(tempPath, req.user.id, req.user.name, {
-        bookId: bookId ? parseInt(bookId, 10) : null,
+        bookId: bookId || null,
         overwrite: overwrite === 'true',
       });
 
@@ -530,7 +531,8 @@ router.post(
       });
     }
 
-    const { bookId, sheetName } = req.query;
+    const { sheetName } = req.query;
+    const bookId = resolveBookId(req.query);
 
     try {
       const result = await terminology.importFromExcel(
@@ -538,7 +540,7 @@ router.post(
         req.user.id,
         req.user.name,
         {
-          bookId: bookId ? parseInt(bookId, 10) : null,
+          bookId: bookId || null,
           sheetName,
         }
       );

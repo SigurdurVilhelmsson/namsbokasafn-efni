@@ -417,7 +417,8 @@
       transition: all var(--transition-fast);
     }
 
-    .import-card:hover {
+    .import-card:hover,
+    .import-card.active {
       border-color: var(--accent);
       background: var(--accent-subtle);
     }
@@ -1341,12 +1342,26 @@
       uploadType = 'csv';
       document.getElementById('import-file').accept = '.csv';
       document.getElementById('file-upload-section').style.display = 'block';
+      // Reset file input when switching type
+      document.getElementById('import-file').value = '';
+      document.getElementById('selected-file-name').textContent = '';
+      document.getElementById('upload-btn').disabled = true;
+      // Highlight active card
+      document.querySelectorAll('.import-card').forEach(function(c) { c.classList.remove('active'); });
+      document.querySelectorAll('.import-card')[1].classList.add('active');
     }
 
     function showExcelUpload() {
       uploadType = 'excel';
       document.getElementById('import-file').accept = '.xlsx,.xls';
       document.getElementById('file-upload-section').style.display = 'block';
+      // Reset file input when switching type
+      document.getElementById('import-file').value = '';
+      document.getElementById('selected-file-name').textContent = '';
+      document.getElementById('upload-btn').disabled = true;
+      // Highlight active card
+      document.querySelectorAll('.import-card').forEach(function(c) { c.classList.remove('active'); });
+      document.querySelectorAll('.import-card')[2].classList.add('active');
     }
 
     // File upload drag-and-drop + file input
@@ -1387,11 +1402,15 @@
       const fileInput = document.getElementById('import-file');
       if (!fileInput.files.length) return;
 
+      const bookSlug = getImportBook();
+      if (!bookSlug) { alert('Veldu b\u00F3k fyrst'); return; }
+
       const formData = new FormData();
       formData.append('file', fileInput.files[0]);
 
       try {
-        const endpoint = uploadType === 'csv' ? '/api/terminology/import/csv' : '/api/terminology/import/excel';
+        const base = uploadType === 'csv' ? '/api/terminology/import/csv' : '/api/terminology/import/excel';
+        const endpoint = base + '?bookSlug=' + encodeURIComponent(bookSlug);
         const data = await fetchJson(endpoint, {
           method: 'POST',
           body: formData
