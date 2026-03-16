@@ -1758,7 +1758,7 @@ router.post('/assignments', requireAuth, (req, res) => {
       });
     }
 
-    // Resolve assignedTo — could be user ID, email, or display name
+    // Resolve assignedTo — could be DB user ID, email, or display name
     let userId = parseInt(assignedTo, 10);
     if (isNaN(userId)) {
       const user = db
@@ -1773,6 +1773,15 @@ router.post('/assignments', requireAuth, (req, res) => {
       userId = user.id;
     }
 
+    // Resolve the assigning user's DB ID from their provider ID (JWT sub)
+    const assigner = db
+      .prepare('SELECT id FROM users WHERE provider_id = ?')
+      .get(String(req.user.id));
+    if (!assigner) {
+      db.close();
+      return res.status(400).json({ error: 'Could not resolve your user account' });
+    }
+
     const result = db
       .prepare(
         `INSERT INTO chapter_assignments (book, chapter, stage, assigned_to, assigned_by, due_date, notes)
@@ -1783,7 +1792,7 @@ router.post('/assignments', requireAuth, (req, res) => {
         chapterNum,
         stage || 'linguisticReview',
         userId,
-        req.user.id,
+        assigner.id,
         dueDate || null,
         notes || null
       );
@@ -1821,10 +1830,14 @@ router.post('/assignments/:id/complete', requireAuth, (req, res) => {
     }
 
     // Allow the assigned user, head-editors, or admins to complete
+    const completer = db
+      .prepare('SELECT id FROM users WHERE provider_id = ?')
+      .get(String(req.user.id));
+    const completerId = completer ? completer.id : null;
     if (
-      assignment.assigned_to !== req.user.id &&
+      assignment.assigned_to !== completerId &&
       req.user.role !== ROLES.ADMIN &&
-      req.user.role !== 'head-editor'
+      req.user.role !== ROLES.HEAD_EDITOR
     ) {
       db.close();
       return res.status(403).json({ error: 'Not authorized to complete this assignment' });
