@@ -2,8 +2,12 @@
  * Migration 025: Bulk approve Efnafræðifélag Íslands terms
  *
  * ~580 chemistry terms were imported from the Chemistry Society of Iceland
- * via CSV with source='chemistry-society-csv' and status='proposed'.
- * These come from an authoritative source and should be approved.
+ * via CSV. The import function hardcodes source='imported-csv', so we first
+ * re-tag those terms as 'chemistry-society-csv' for proper attribution,
+ * then approve them all.
+ *
+ * Identification: book_id = 'efnafraedi-2e' AND source = 'imported-csv'
+ * (no other CSV imports exist for this book).
  *
  * Finds the admin user to attribute approval to. Falls back to a
  * system placeholder if no admin exists (e.g. local dev).
@@ -13,7 +17,22 @@ module.exports = {
   id: '025-approve-efnafelag-terms',
 
   up(db) {
-    // Check how many terms need approval
+    // Step 1: Re-tag imported-csv terms for efnafraedi-2e as chemistry-society-csv
+    const retagged = db
+      .prepare(
+        `UPDATE terminology_terms
+         SET source = 'chemistry-society-csv'
+         WHERE book_id = 'efnafraedi-2e' AND source = 'imported-csv'`
+      )
+      .run();
+
+    if (retagged.changes > 0) {
+      console.log(
+        `Migration 025: Re-tagged ${retagged.changes} terms from imported-csv → chemistry-society-csv`
+      );
+    }
+
+    // Step 2: Approve all chemistry-society-csv terms that aren't already approved
     const pending = db
       .prepare(
         "SELECT COUNT(*) as count FROM terminology_terms WHERE source = 'chemistry-society-csv' AND status != 'approved'"
