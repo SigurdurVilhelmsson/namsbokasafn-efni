@@ -251,6 +251,13 @@
       white-space: nowrap;
     }
 
+    .placeholder-badge {
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 400;
+      font-size: var(--text-sm);
+    }
+
     .term-category {
       font-size: var(--text-sm);
       color: var(--text-secondary);
@@ -587,6 +594,7 @@
             <option value="proposed">&#205; bi&#240;</option>
             <option value="disputed">Til umr&#230;&#240;u</option>
             <option value="needs_review">&#222;arf yfirfer&#240;</option>
+            <option value="placeholder">Vantar &#254;&#253;&#240;ingu</option>
           </select>
         </div>
         <div class="filter-item">
@@ -819,6 +827,11 @@
             <h4>Excel skr&#225;</h4>
             <p>Flytja inn fr&#225; Efnaf&#233;laginu (Excel sni&#240;)</p>
           </div>
+          <div class="import-card" onclick="showGlossaryUpload()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            <h4>Or&#240;asafn (glossary)</h4>
+            <p>Flytja inn me&#240; skilgreiningum og sta&#240;genglum</p>
+          </div>
           <div class="import-card" onclick="importKeyTerms()">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
             <h4>Lykilor&#240; &#250;r k&#246;flum</h4>
@@ -993,7 +1006,7 @@
         tbody.innerHTML = data.terms.map(term => `
           <div class="term-card" tabindex="0" role="button" onclick="showTermDetail(${term.id})" onkeydown="if(event.key==='Enter')showTermDetail(${term.id})">
             <span class="term-en">${escapeHtml(term.english)}</span>
-            <span class="term-is">${escapeHtml(term.icelandic)}</span>
+            <span class="term-is">${term.icelandic ? escapeHtml(term.icelandic) : '<em class="placeholder-badge">Vantar \u00FE\u00FD\u00F0ingu</em>'}</span>
             <span class="term-category">${formatCategory(term.category)}</span>
             <span class="term-status"><span class="status-badge status-${term.status}">${formatStatus(term.status)}</span></span>
             <span class="term-source">${formatSource(term.source)}</span>
@@ -1081,7 +1094,14 @@
 
       document.getElementById('detail-title').textContent = term.english;
       document.getElementById('detail-english').textContent = term.english;
-      document.getElementById('detail-icelandic').textContent = term.icelandic;
+      const detailIs = document.getElementById('detail-icelandic');
+      if (term.icelandic) {
+        detailIs.textContent = term.icelandic;
+        detailIs.className = '';
+      } else {
+        detailIs.textContent = 'Vantar \u00FE\u00FD\u00F0ingu';
+        detailIs.className = 'placeholder-badge';
+      }
       document.getElementById('detail-alternatives').textContent =
         term.alternatives?.map(a => typeof a === 'string' ? a : a.term).join(', ') || '-';
       document.getElementById('detail-category').textContent = formatCategory(term.category);
@@ -1094,8 +1114,8 @@
       const defIsRow = document.getElementById('detail-def-is-row');
       document.getElementById('detail-definition-en').textContent = term.definitionEn || '-';
       document.getElementById('detail-definition-is').textContent = term.definitionIs || '-';
-      defEnRow.style.display = term.definitionEn ? '' : 'none';
-      defIsRow.style.display = term.definitionIs ? '' : 'none';
+      defEnRow.style.display = '';
+      defIsRow.style.display = '';
 
       const statusEl = document.getElementById('detail-status');
       statusEl.innerHTML = '<span class="status-badge status-' + term.status + '">' + formatStatus(term.status) + '</span>';
@@ -1178,8 +1198,8 @@
       const source = document.getElementById('term-source').value;
       const notes = document.getElementById('term-notes').value.trim();
 
-      if (!english || !icelandic) {
-        alert('Enska og \u00EDslenska eru nau\u00F0synleg');
+      if (!english) {
+        alert('Enska er nau\u00F0synleg');
         return;
       }
 
@@ -1338,6 +1358,17 @@
 
     let uploadType = 'csv';
 
+    function showGlossaryUpload() {
+      uploadType = 'glossary';
+      document.getElementById('import-file').accept = '.csv';
+      document.getElementById('file-upload-section').style.display = 'block';
+      document.getElementById('import-file').value = '';
+      document.getElementById('selected-file-name').textContent = '';
+      document.getElementById('upload-btn').disabled = true;
+      document.querySelectorAll('.import-card').forEach(function(c) { c.classList.remove('active'); });
+      document.querySelectorAll('.import-card')[3].classList.add('active');
+    }
+
     function showCsvUpload() {
       uploadType = 'csv';
       document.getElementById('import-file').accept = '.csv';
@@ -1409,7 +1440,8 @@
       formData.append('file', fileInput.files[0]);
 
       try {
-        const base = uploadType === 'csv' ? '/api/terminology/import/csv' : '/api/terminology/import/excel';
+        const bases = { csv: '/api/terminology/import/csv', excel: '/api/terminology/import/excel', glossary: '/api/terminology/import/glossary' };
+        const base = bases[uploadType] || bases.csv;
         const endpoint = base + '?bookSlug=' + encodeURIComponent(bookSlug);
         const data = await fetchJson(endpoint, {
           method: 'POST',
@@ -1430,6 +1462,7 @@
             <h4>Innflutningur loki\u00F0!</h4>
             <p>B\u00E6tt vi\u00F0: ${data.added}</p>
             <p>Uppf\u00E6rt: ${data.updated || 0}</p>
+            ${data.enriched ? '<p>Au\u00F0ga\u00F0 me\u00F0 skilgreiningum: ' + data.enriched + '</p>' : ''}
             <p>Sleppt: ${data.skipped}</p>
           </div>
         `;

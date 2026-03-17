@@ -138,7 +138,9 @@ function searchTerms(query = '', options = {}) {
     }
 
     // Status filter
-    if (status) {
+    if (status === 'placeholder') {
+      sql += ` AND t.icelandic IS NULL`;
+    } else if (status) {
       sql += ` AND t.status = ?`;
       params.push(status);
     }
@@ -294,8 +296,8 @@ function createTerm(data, userId, username) {
     pos,
   } = data;
 
-  if (!english || !icelandic) {
-    throw new Error('English and Icelandic terms are required');
+  if (!english) {
+    throw new Error('English term is required');
   }
 
   if (category && !TERM_CATEGORIES.includes(category)) {
@@ -904,6 +906,139 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
 }
 
 /**
+ * Import glossary terms with definition merging and placeholder support.
+ *
+ * Algorithm:
+ * - Existing approved terms: enrich with definitions (COALESCE), never change icelandic/status
+ * - Existing non-approved terms: update definitions and icelandic if provided
+ * - New terms with icelandic: insert as 'needs_review'
+ * - New terms without icelandic: insert as 'proposed' (placeholder)
+ *
+ * @param {Array<{english, icelandic, category, notes, definition_en, definition_is}>} terms
+ * @param {string} userId - Importing user ID
+ * @param {string} username - Importing user name
+ * @param {object} options - Import options
+ * @param {number} options.bookId - Book ID
+ * @param {string} options.source - Source tag (default: 'openstax-glossary')
+ * @returns {{ added: number, updated: number, enriched: number, skipped: number, errors: string[] }}
+ */
+function importGlossaryTerms(terms, userId, username, options = {}) {
+  const { bookId = null, source = 'openstax-glossary' } = options;
+
+  if (source && !TERM_SOURCES.includes(source)) {
+    throw new Error(`Invalid source: ${source}`);
+  }
+
+  const db = getDb();
+  let added = 0;
+  let updated = 0;
+  let enriched = 0;
+  let skipped = 0;
+  const errors = [];
+
+  try {
+    const checkStmt = db.prepare(`
+      SELECT id, status, icelandic, definition_en, definition_is
+      FROM terminology_terms
+      WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
+    `);
+
+    const enrichStmt = db.prepare(`
+      UPDATE terminology_terms
+      SET definition_en = COALESCE(definition_en, ?),
+          definition_is = COALESCE(definition_is, ?),
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `);
+
+    const updateStmt = db.prepare(`
+      UPDATE terminology_terms
+      SET definition_en = COALESCE(definition_en, ?),
+          definition_is = COALESCE(definition_is, ?),
+          icelandic = CASE WHEN ? IS NOT NULL AND ? != '' THEN ? ELSE icelandic END,
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `);
+
+    const insertStmt = db.prepare(`
+      INSERT INTO terminology_terms
+        (english, icelandic, category, notes, source, book_id, status,
+         definition_en, definition_is, proposed_by, proposed_by_name)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    const importAll = db.transaction(() => {
+      for (const term of terms) {
+        const english = (term.english || '').trim();
+        if (!english) {
+          skipped++;
+          continue;
+        }
+
+        const icelandic = (term.icelandic || '').trim() || null;
+        const category = term.category || 'other';
+        const notes = term.notes || null;
+        const defEn = term.definition_en || null;
+        const defIs = term.definition_is || null;
+
+        try {
+          const existing = checkStmt.get(english, bookId, bookId);
+
+          if (existing) {
+            if (existing.status === 'approved') {
+              // Enrich with definitions only — don't touch icelandic/status
+              enrichStmt.run(defEn, defIs, existing.id);
+              enriched++;
+            } else {
+              // Update definitions + icelandic if provided
+              updateStmt.run(defEn, defIs, icelandic, icelandic, icelandic, existing.id);
+              updated++;
+            }
+          } else {
+            // New term
+            const status = icelandic ? 'needs_review' : 'proposed';
+            insertStmt.run(
+              english,
+              icelandic,
+              category,
+              notes,
+              source,
+              bookId,
+              status,
+              defEn,
+              defIs,
+              userId,
+              username
+            );
+            added++;
+          }
+        } catch (err) {
+          errors.push(`${english}: ${err.message}`);
+        }
+      }
+    });
+
+    importAll();
+
+    // Log import
+    db.prepare(
+      `
+      INSERT INTO terminology_imports
+        (source_name, file_name, imported_by, imported_by_name, terms_added, terms_updated, terms_skipped)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `
+    ).run(source, 'glossary-import', userId, username, added, updated + enriched, skipped);
+
+    closeDb(db);
+
+    return { success: true, added, updated, enriched, skipped, errors, total: terms.length };
+  } catch (err) {
+    closeDb(db);
+    throw err;
+  }
+}
+
+/**
  * Get terminology statistics
  *
  * @param {number} bookId - Optional book filter
@@ -1210,6 +1345,7 @@ module.exports = {
   importFromCSV,
   importFromExcel,
   importFromKeyTerms,
+  importGlossaryTerms,
   getStats,
   deleteTerm,
   findTermsInSegments,

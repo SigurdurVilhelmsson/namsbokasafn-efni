@@ -31,7 +31,7 @@ function createTestDb() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       book_id INTEGER,
       english TEXT NOT NULL,
-      icelandic TEXT NOT NULL,
+      icelandic TEXT,
       alternatives TEXT,
       category TEXT,
       notes TEXT,
@@ -260,13 +260,13 @@ describe('createTerm()', () => {
   it('throws on missing English', () => {
     expect(() => {
       terminologyService.createTerm({ icelandic: 'sameind' }, 'user1', 'Test User');
-    }).toThrow('English and Icelandic terms are required');
+    }).toThrow('English term is required');
   });
 
-  it('throws on missing Icelandic', () => {
-    expect(() => {
-      terminologyService.createTerm({ english: 'molecule' }, 'user1', 'Test User');
-    }).toThrow('English and Icelandic terms are required');
+  it('allows creating term without Icelandic (placeholder)', () => {
+    const term = terminologyService.createTerm({ english: 'molecule' }, 'user1', 'Test User');
+    expect(term.english).toBe('molecule');
+    expect(term.icelandic).toBeNull();
   });
 
   it('throws on duplicate English term (same book_id)', () => {

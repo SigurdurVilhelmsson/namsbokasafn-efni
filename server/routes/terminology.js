@@ -597,6 +597,75 @@ router.post(
 );
 
 /**
+ * POST /api/terminology/import/glossary
+ * Import glossary terms with definition merging and placeholder support.
+ * Enriches existing approved terms with definitions without changing their status.
+ * Imports terms without icelandic as placeholders (status: proposed).
+ *
+ * Query params:
+ *   bookSlug: Book slug (required)
+ */
+router.post(
+  '/import/glossary',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  upload.single('file'),
+  (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const bookId = resolveBookId(req.query);
+    if (!bookId) {
+      return res.status(400).json({ error: 'bookSlug is required' });
+    }
+
+    let csvParse;
+    try {
+      csvParse = require('csv-parse/sync').parse;
+    } catch {
+      return res.status(500).json({ error: 'csv-parse package not installed' });
+    }
+
+    try {
+      const content = req.file.buffer.toString('utf8');
+      const records = csvParse(content, {
+        columns: true,
+        skip_empty_lines: true,
+        trim: true,
+      });
+
+      const terms = records.map((r) => ({
+        english: r.english || r.English || r.en,
+        icelandic: r.icelandic || r.Icelandic || r.is || '',
+        category: r.category || r.Category || 'other',
+        notes: r.notes || r.Notes || null,
+        definition_en: r.definition_en || r.Definition_EN || null,
+        definition_is: r.definition_is || r.Definition_IS || null,
+      }));
+
+      const result = terminology.importGlossaryTerms(terms, req.user.id, req.user.name, {
+        bookId,
+        source: 'openstax-glossary',
+      });
+
+      activityLog.log({
+        type: 'import_terminology_glossary',
+        userId: req.user.id,
+        username: req.user.username,
+        description: `Glossary import: ${result.added} added, ${result.enriched} enriched, ${result.updated} updated`,
+        metadata: result,
+      });
+
+      res.json(result);
+    } catch (err) {
+      console.error('Glossary import error:', err);
+      res.status(500).json({ error: 'Failed to import glossary', message: err.message });
+    }
+  }
+);
+
+/**
  * POST /api/terminology/import/excel
  * Import terms from Excel file (Chemistry Association format)
  */

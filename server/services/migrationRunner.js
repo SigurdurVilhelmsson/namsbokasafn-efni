@@ -51,6 +51,7 @@ function runAllMigrations() {
     require('../migrations/023-merge-contributor-role'),
     require('../migrations/024-fix-discussions-fk'),
     require('../migrations/025-approve-efnafelag-terms'),
+    require('../migrations/026-nullable-icelandic'),
   ];
 
   let applied = 0;
