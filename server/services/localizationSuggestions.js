@@ -322,7 +322,7 @@ function getDb() {
 
 function closeDb(db) {
   if (db && db !== _testDb) {
-    closeDb(db);
+    db.close();
   }
 }
 
