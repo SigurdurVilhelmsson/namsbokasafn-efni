@@ -2,10 +2,14 @@
 /**
  * Diagnostic + fix script for scrambled terminology_terms table.
  *
- * Run: node tools/fix-scrambled-terms.js
+ * Run: node tools/fix-scrambled-terms.cjs
  *
  * The buggy migration 026 used INSERT INTO ... SELECT * with mismatched
  * column order, scrambling all data. This script detects and fixes it.
+ *
+ * Handles mixed tables: rows scrambled by migration 026 (english contains
+ * numeric book_id) and rows inserted correctly afterward (english contains
+ * actual term text).
  */
 
 const path = require('path');
@@ -37,7 +41,7 @@ if (!tableInfo) {
 
 // 2. Check column order
 const cols = db.prepare('PRAGMA table_info(terminology_terms)').all();
-console.log('\nColumn order:');
+console.log('Column order:');
 cols.forEach((c) =>
   console.log(`  ${c.cid}: ${c.name} (${c.type}${c.notnull ? ' NOT NULL' : ''})`)
 );
@@ -55,7 +59,7 @@ const recoveredExists = db
   .get();
 if (recoveredExists) {
   console.log(
-    '\nWARNING: terminology_terms_recovered table exists (leftover from failed migration)'
+    'WARNING: terminology_terms_recovered table exists (leftover from failed migration)'
   );
 }
 
@@ -72,27 +76,25 @@ sample.forEach((row) => {
 const total = db.prepare('SELECT COUNT(*) as c FROM terminology_terms').get();
 console.log(`\nTotal terms: ${total.c}`);
 
+// Detect scrambled vs correct rows
+// Scrambled rows: english contains old book_id (pure digits like "1", "4")
+// Correct rows: english contains actual terms (has letters)
+const scrambledCount = db
+  .prepare(
+    "SELECT COUNT(*) as c FROM terminology_terms WHERE english GLOB '[0-9]*' AND english NOT GLOB '*[a-zA-Z]*'"
+  )
+  .get();
+const correctCount = db
+  .prepare(
+    "SELECT COUNT(*) as c FROM terminology_terms WHERE NOT (english GLOB '[0-9]*' AND english NOT GLOB '*[a-zA-Z]*')"
+  )
+  .get();
+
+console.log(`\nScrambled rows (numeric english): ${scrambledCount.c}`);
+console.log(`Correct rows (text english): ${correctCount.c}`);
+
 if (!isScrambled) {
   console.log('\nTable is NOT scrambled. No fix needed.');
-
-  // Check if alternatives column has non-JSON values (the actual error)
-  const badAlt = db
-    .prepare(
-      "SELECT COUNT(*) as c FROM terminology_terms WHERE alternatives IS NOT NULL AND alternatives NOT LIKE '[%' AND alternatives NOT LIKE '{%'"
-    )
-    .get();
-  if (badAlt.c > 0) {
-    console.log(`\nWARNING: ${badAlt.c} rows have non-JSON alternatives values`);
-    const examples = db
-      .prepare(
-        "SELECT id, english, alternatives FROM terminology_terms WHERE alternatives IS NOT NULL AND alternatives NOT LIKE '[%' AND alternatives NOT LIKE '{%' LIMIT 5"
-      )
-      .all();
-    examples.forEach((r) =>
-      console.log(`  id=${r.id} english="${r.english}" alternatives="${r.alternatives}"`)
-    );
-  }
-
   db.close();
   process.exit(0);
 }
@@ -133,8 +135,11 @@ db.exec(`
 
 console.log('Created recovery table');
 
-// Reverse the column mapping
-const inserted = db
+// Step 1: Insert SCRAMBLED rows with reverse column mapping
+// These have numeric english (old book_id) — apply the reverse mapping
+const isNumeric = "english GLOB '[0-9]*' AND english NOT GLOB '*[a-zA-Z]*'";
+
+const insertScrambled = db
   .prepare(
     `
   INSERT INTO terminology_terms_recovered (
@@ -166,24 +171,50 @@ const inserted = db
     created_at,
     updated_at
   FROM terminology_terms
+  WHERE ${isNumeric}
 `
   )
   .run();
 
-console.log(`Inserted ${inserted.changes} rows into recovery table`);
+console.log(`Recovered ${insertScrambled.changes} scrambled rows`);
+
+// Step 2: Insert CORRECT rows as-is (inserted after buggy migration)
+// These have real english terms — copy without remapping
+const insertCorrect = db
+  .prepare(
+    `
+  INSERT INTO terminology_terms_recovered (
+    id, book_id, english, icelandic, alternatives, category,
+    notes, source, source_chapter, status,
+    proposed_by, proposed_by_name, approved_by, approved_by_name, approved_at,
+    definition_en, definition_is, pos,
+    created_at, updated_at
+  )
+  SELECT
+    id, book_id, english, icelandic, alternatives, category,
+    notes, source, source_chapter, status,
+    proposed_by, proposed_by_name, approved_by, approved_by_name, approved_at,
+    definition_en, definition_is, pos,
+    created_at, updated_at
+  FROM terminology_terms
+  WHERE NOT (${isNumeric})
+`
+  )
+  .run();
+
+console.log(`Copied ${insertCorrect.changes} correct rows as-is`);
 
 // Verify
-const check = db
-  .prepare(
-    `SELECT COUNT(*) as c FROM terminology_terms_recovered
-     WHERE typeof(english) = 'text' AND LENGTH(english) > 0`
-  )
+const recoveredTotal = db
+  .prepare('SELECT COUNT(*) as c FROM terminology_terms_recovered')
   .get();
 
-console.log(`Verification: ${check.c} rows with valid english values (expected: ${total.c})`);
+console.log(
+  `\nTotal recovered: ${recoveredTotal.c} (expected: ${total.c})`
+);
 
-if (check.c !== total.c) {
-  console.log('ERROR: Recovery verification failed! Aborting.');
+if (recoveredTotal.c !== total.c) {
+  console.log('ERROR: Row count mismatch! Aborting.');
   db.exec('DROP TABLE terminology_terms_recovered');
   db.close();
   process.exit(1);
