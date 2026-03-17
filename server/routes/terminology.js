@@ -182,6 +182,92 @@ router.get('/categories', requireAuth, (req, res) => {
   });
 });
 
+// ============================================================================
+// EXPORT (must be before /:id to avoid route shadowing)
+// ============================================================================
+
+/**
+ * GET /api/terminology/export
+ * Export the full glossary as JSON or CSV
+ *
+ * Query params:
+ *   bookId: Book ID (required)
+ *   format: 'json' or 'csv' (default: json)
+ */
+router.get('/export', requireAuth, (req, res) => {
+  const { format = 'json' } = req.query;
+
+  const bookId = resolveBookId(req.query);
+  if (!bookId) {
+    return res.status(400).json({ error: 'bookId or bookSlug is required' });
+  }
+
+  try {
+    const result = terminology.searchTerms('', {
+      bookId,
+      limit: 10000,
+      offset: 0,
+    });
+
+    const terms = result.terms;
+
+    if (format === 'csv') {
+      const header =
+        'english,icelandic,pos,definition_en,definition_is,status,source,alternatives,category,chapter,notes';
+      const lines = [header];
+
+      for (const term of terms) {
+        const alts = (term.alternatives || [])
+          .map((a) => (typeof a === 'string' ? a : a.term))
+          .join('; ');
+        lines.push(
+          [
+            csvEscapeField(term.english),
+            csvEscapeField(term.icelandic),
+            csvEscapeField(term.pos || ''),
+            csvEscapeField(term.definitionEn || ''),
+            csvEscapeField(term.definitionIs || ''),
+            term.status,
+            term.source,
+            csvEscapeField(alts),
+            term.category,
+            term.sourceChapter || '',
+            csvEscapeField(term.notes || ''),
+          ].join(',')
+        );
+      }
+
+      const csv = lines.join('\n') + '\n';
+      res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+      res.setHeader('Content-Disposition', 'attachment; filename="glossary-export.csv"');
+      return res.send(csv);
+    }
+
+    // JSON format (default)
+    res.json({
+      generated: new Date().toISOString(),
+      stats: {
+        total: terms.length,
+        approved: terms.filter((t) => t.status === 'approved').length,
+        proposed: terms.filter((t) => t.status === 'proposed').length,
+        needs_review: terms.filter((t) => t.status === 'needs_review').length,
+      },
+      terms,
+    });
+  } catch (err) {
+    console.error('Export error:', err);
+    res.status(500).json({ error: 'Failed to export glossary', message: err.message });
+  }
+});
+
+function csvEscapeField(str) {
+  if (!str) return '';
+  if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+    return '"' + str.replace(/"/g, '""') + '"';
+  }
+  return str;
+}
+
 /**
  * GET /api/terminology/:id
  * Get a single term with discussions
@@ -662,92 +748,6 @@ router.post(
 );
 
 // ============================================================================
-// EXPORT
-// ============================================================================
-
-/**
- * GET /api/terminology/export
- * Export the full glossary as JSON or CSV
- *
- * Query params:
- *   bookId: Book ID (required)
- *   format: 'json' or 'csv' (default: json)
- */
-router.get('/export', requireAuth, (req, res) => {
-  const { format = 'json' } = req.query;
-
-  const bookId = resolveBookId(req.query);
-  if (!bookId) {
-    return res.status(400).json({ error: 'bookId or bookSlug is required' });
-  }
-
-  try {
-    const result = terminology.searchTerms('', {
-      bookId,
-      limit: 10000,
-      offset: 0,
-    });
-
-    const terms = result.terms;
-
-    if (format === 'csv') {
-      const header =
-        'english,icelandic,pos,definition_en,definition_is,status,source,alternatives,category,chapter,notes';
-      const lines = [header];
-
-      for (const term of terms) {
-        const alts = (term.alternatives || [])
-          .map((a) => (typeof a === 'string' ? a : a.term))
-          .join('; ');
-        lines.push(
-          [
-            csvEscapeField(term.english),
-            csvEscapeField(term.icelandic),
-            csvEscapeField(term.pos || ''),
-            csvEscapeField(term.definitionEn || ''),
-            csvEscapeField(term.definitionIs || ''),
-            term.status,
-            term.source,
-            csvEscapeField(alts),
-            term.category,
-            term.sourceChapter || '',
-            csvEscapeField(term.notes || ''),
-          ].join(',')
-        );
-      }
-
-      const csv = lines.join('\n') + '\n';
-      res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-      res.setHeader('Content-Disposition', 'attachment; filename="glossary-export.csv"');
-      return res.send(csv);
-    }
-
-    // JSON format (default)
-    res.json({
-      generated: new Date().toISOString(),
-      stats: {
-        total: terms.length,
-        approved: terms.filter((t) => t.status === 'approved').length,
-        proposed: terms.filter((t) => t.status === 'proposed').length,
-        needs_review: terms.filter((t) => t.status === 'needs_review').length,
-      },
-      terms,
-    });
-  } catch (err) {
-    console.error('Export error:', err);
-    res.status(500).json({ error: 'Failed to export glossary', message: err.message });
-  }
-});
-
-function csvEscapeField(str) {
-  if (!str) return '';
-  if (str.includes(',') || str.includes('"') || str.includes('\n')) {
-    return '"' + str.replace(/"/g, '""') + '"';
-  }
-  return str;
-}
-
-// ============================================================================
 // CONSISTENCY CHECK
 // ============================================================================
 
@@ -779,15 +779,15 @@ router.post('/check-consistency', requireAuth, (req, res) => {
     });
 
     const issues = [];
-    const termMap = new Map(); // en_term -> is_term (approved)
+    const termMap = new Map(); // english -> icelandic (approved)
 
     // Build map of approved translations
     for (const term of termsResult.terms) {
-      if (term.en_term && term.is_term) {
-        const enLower = term.en_term.toLowerCase();
+      if (term.english && term.icelandic) {
+        const enLower = term.english.toLowerCase();
         if (!termMap.has(enLower)) {
           termMap.set(enLower, {
-            approved: term.is_term,
+            approved: term.icelandic,
             category: term.category,
             id: term.id,
           });
@@ -813,9 +813,11 @@ router.post('/check-consistency', requireAuth, (req, res) => {
             const alternatives = termsResult.terms
               .filter(
                 (t) =>
-                  t.en_term && t.en_term.toLowerCase() === enTerm && t.is_term !== termInfo.approved
+                  t.english &&
+                  t.english.toLowerCase() === enTerm &&
+                  t.icelandic !== termInfo.approved
               )
-              .map((t) => t.is_term);
+              .map((t) => t.icelandic);
 
             // Check if any alternative is used
             let alternativeUsed = null;

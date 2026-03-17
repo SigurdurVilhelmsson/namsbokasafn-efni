@@ -48,6 +48,8 @@ function runAllMigrations() {
     require('../migrations/020-glossary-definitions'),
     require('../migrations/021-drop-dead-tables'),
     require('../migrations/022-provider-auth'),
+    require('../migrations/023-merge-contributor-role'),
+    require('../migrations/024-fix-discussions-fk'),
   ];
 
   let applied = 0;
