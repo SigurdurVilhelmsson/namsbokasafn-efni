@@ -52,6 +52,7 @@ function runAllMigrations() {
     require('../migrations/024-fix-discussions-fk'),
     require('../migrations/025-approve-efnafelag-terms'),
     require('../migrations/026-nullable-icelandic'),
+    require('../migrations/027-recover-scrambled-terms'),
   ];
 
   let applied = 0;
