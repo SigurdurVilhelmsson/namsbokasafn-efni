@@ -1,34 +1,14 @@
 /**
- * Migration 027: Recover terminology_terms scrambled by migration 026
+ * Migration 027: Recover terminology_terms scrambled by buggy migration 026
  *
- * Migration 026 used INSERT INTO ... SELECT * with mismatched column order,
- * causing all column values to shift. This migration detects the scrambled
- * state and rebuilds the table with correct column mapping.
+ * The original migration 026 used INSERT INTO ... SELECT * with mismatched
+ * column order, causing all column values to shift positions.
  *
- * Detection: In the scrambled DB, the 'english' column contains old book_id
- * values (integers), not term strings. We check if english values are numeric.
+ * Detection: Uses PRAGMA table_info to check if the second column (cid=1)
+ * is 'english' (scrambled) vs 'book_id' (correct).
  *
- * Recovery mapping (scrambled column → correct column):
- *   id             → id            (was correct)
- *   english        → book_id       (english held old book_id)
- *   icelandic      → english       (icelandic held old english)
- *   alternatives   → icelandic     (alternatives held old icelandic)
- *   category       → alternatives  (category held old alternatives)
- *   notes          → category      (notes held old category)
- *   source         → notes         (source held old notes)
- *   source_chapter → source        (source_chapter held old source)
- *   book_id        → source_chapter (book_id held old source_chapter)
- *   status         → status        (was correct)
- *   definition_en  → proposed_by
- *   definition_is  → proposed_by_name
- *   pos            → approved_by
- *   proposed_by    → approved_by_name
- *   proposed_by_name → approved_at
- *   approved_by    → definition_en
- *   approved_by_name → definition_is
- *   approved_at    → pos
- *   created_at     → created_at    (was correct)
- *   updated_at     → updated_at    (was correct)
+ * Recovery: Reads from the scrambled column positions and writes to the
+ * correct columns in a new table, then swaps.
  */
 
 module.exports = {
@@ -36,30 +16,29 @@ module.exports = {
 
   up(db) {
     const tableInfo = db
-      .prepare("SELECT sql FROM sqlite_master WHERE type='table' AND name='terminology_terms'")
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='terminology_terms'")
       .get();
 
     if (!tableInfo) {
       return;
     }
 
-    // Detect scrambled state: if english column contains numeric values,
-    // the data was scrambled by the buggy migration 026
-    const probe = db
-      .prepare(
-        `SELECT COUNT(*) as c FROM terminology_terms
-         WHERE CAST(english AS INTEGER) > 0 AND CAST(english AS INTEGER) = english`
-      )
-      .get();
+    // Detect scrambled state by checking column order.
+    // Correct order: id(0), book_id(1), english(2), ...
+    // Scrambled order: id(0), english(1), icelandic(2), ...
+    const cols = db.prepare('PRAGMA table_info(terminology_terms)').all();
+    const col1 = cols.find((c) => c.cid === 1);
 
-    if (!probe || probe.c === 0) {
-      console.log('Migration 027: terminology_terms not scrambled, skipping');
+    if (!col1 || col1.name !== 'english') {
+      console.log('Migration 027: terminology_terms column order is correct, skipping');
       return;
     }
 
-    console.log(`Migration 027: Detected ${probe.c} scrambled rows, recovering...`);
+    console.log('Migration 027: Detected scrambled column order, recovering...');
 
-    // Rebuild with correct column order and unscrambled data
+    // Clean up any leftover table from a previous failed run
+    db.exec('DROP TABLE IF EXISTS terminology_terms_recovered');
+
     db.exec(`
       CREATE TABLE terminology_terms_recovered (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -87,8 +66,26 @@ module.exports = {
       );
     `);
 
-    // Reverse the column mapping: read from scrambled column, write to correct column
-    db.exec(`
+    // Reverse the column mapping:
+    //   Current column → actually contains old column's data
+    //   english        → book_id
+    //   icelandic      → english
+    //   alternatives   → icelandic
+    //   category       → alternatives
+    //   notes          → category
+    //   source         → notes
+    //   source_chapter → source
+    //   book_id        → source_chapter
+    //   definition_en  → proposed_by
+    //   definition_is  → proposed_by_name
+    //   pos            → approved_by
+    //   proposed_by    → approved_by_name
+    //   proposed_by_name → approved_at
+    //   approved_by    → definition_en
+    //   approved_by_name → definition_is
+    //   approved_at    → pos
+    db.prepare(
+      `
       INSERT INTO terminology_terms_recovered (
         id, book_id, english, icelandic, alternatives, category,
         notes, source, source_chapter, status,
@@ -117,8 +114,27 @@ module.exports = {
         approved_at,
         created_at,
         updated_at
-      FROM terminology_terms;
+      FROM terminology_terms
+    `
+    ).run();
 
+    // Verify recovery before dropping old table
+    const check = db
+      .prepare(
+        `SELECT COUNT(*) as c FROM terminology_terms_recovered
+         WHERE typeof(english) = 'text' AND LENGTH(english) > 0`
+      )
+      .get();
+
+    const total = db.prepare('SELECT COUNT(*) as c FROM terminology_terms').get();
+
+    if (check.c !== total.c) {
+      // Recovery didn't preserve all rows — abort
+      db.exec('DROP TABLE terminology_terms_recovered');
+      throw new Error(`Recovery verification failed: ${check.c} valid rows vs ${total.c} total`);
+    }
+
+    db.exec(`
       DROP TABLE terminology_terms;
 
       ALTER TABLE terminology_terms_recovered RENAME TO terminology_terms;
@@ -139,21 +155,7 @@ module.exports = {
         ON terminology_terms(category);
     `);
 
-    // Verify recovery
-    const check = db
-      .prepare(
-        `SELECT COUNT(*) as c FROM terminology_terms
-         WHERE CAST(english AS INTEGER) > 0 AND CAST(english AS INTEGER) = english`
-      )
-      .get();
-
-    if (check.c > 0) {
-      throw new Error(
-        `Recovery verification failed: ${check.c} rows still have numeric english values`
-      );
-    }
-
-    const total = db.prepare('SELECT COUNT(*) as c FROM terminology_terms').get();
-    console.log(`Migration 027: Recovered ${total.c} terms successfully`);
+    const recovered = db.prepare('SELECT COUNT(*) as c FROM terminology_terms').get();
+    console.log(`Migration 027: Recovered ${recovered.c} terms successfully`);
   },
 };
