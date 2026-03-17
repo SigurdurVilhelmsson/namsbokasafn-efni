@@ -17,6 +17,12 @@ const fs = require('fs');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 
+let _testDb = null;
+
+function _setTestDb(db) {
+  _testDb = db;
+}
+
 // Suggestion types
 const SUGGESTION_TYPES = [
   'unit_conversion',
@@ -24,7 +30,7 @@ const SUGGESTION_TYPES = [
   'currency',
   'agency_reference',
   'regional_example',
-  'other'
+  'other',
 ];
 
 // Suggestion statuses
@@ -37,13 +43,13 @@ const LOCALIZATION_PATTERNS = {
     type: 'unit_conversion',
     regex: /(\d+(?:\.\d+)?)\s*°?\s*F(?:ahrenheit)?\b/gi,
     convert: (match, value) => {
-      const celsius = ((parseFloat(value) - 32) * 5 / 9).toFixed(1);
+      const celsius = (((parseFloat(value) - 32) * 5) / 9).toFixed(1);
       return {
         original: match,
         suggested: `${celsius} °C`,
-        context: `Temperature conversion: ${value}°F = ${celsius}°C`
+        context: `Temperature conversion: ${value}°F = ${celsius}°C`,
       };
-    }
+    },
   },
 
   // Weight conversions
@@ -55,9 +61,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${kg} kg`,
-        context: `Weight conversion: ${value} pounds = ${kg} kg`
+        context: `Weight conversion: ${value} pounds = ${kg} kg`,
       };
-    }
+    },
   },
 
   'ounces-to-grams': {
@@ -68,9 +74,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${grams} g`,
-        context: `Weight conversion: ${value} oz = ${grams} g`
+        context: `Weight conversion: ${value} oz = ${grams} g`,
       };
-    }
+    },
   },
 
   // Distance conversions
@@ -82,9 +88,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${km} km`,
-        context: `Distance conversion: ${value} miles = ${km} km`
+        context: `Distance conversion: ${value} miles = ${km} km`,
       };
-    }
+    },
   },
 
   'feet-to-meters': {
@@ -95,9 +101,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${meters} m`,
-        context: `Distance conversion: ${value} feet = ${meters} m`
+        context: `Distance conversion: ${value} feet = ${meters} m`,
       };
-    }
+    },
   },
 
   'inches-to-cm': {
@@ -108,9 +114,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${cm} cm`,
-        context: `Distance conversion: ${value} inches = ${cm} cm`
+        context: `Distance conversion: ${value} inches = ${cm} cm`,
       };
-    }
+    },
   },
 
   // Volume conversions
@@ -122,9 +128,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${liters} L`,
-        context: `Volume conversion: ${value} gallons = ${liters} L`
+        context: `Volume conversion: ${value} gallons = ${liters} L`,
       };
-    }
+    },
   },
 
   'quarts-to-liters': {
@@ -135,9 +141,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${liters} L`,
-        context: `Volume conversion: ${value} quarts = ${liters} L`
+        context: `Volume conversion: ${value} quarts = ${liters} L`,
       };
-    }
+    },
   },
 
   'pints-to-ml': {
@@ -148,9 +154,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${ml} mL`,
-        context: `Volume conversion: ${value} pints = ${ml} mL`
+        context: `Volume conversion: ${value} pints = ${ml} mL`,
       };
-    }
+    },
   },
 
   'cups-to-ml': {
@@ -161,9 +167,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${ml} mL`,
-        context: `Volume conversion: ${value} cups = ${ml} mL`
+        context: `Volume conversion: ${value} cups = ${ml} mL`,
       };
-    }
+    },
   },
 
   // Area conversions
@@ -175,9 +181,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${sqm} m²`,
-        context: `Area conversion: ${value} sq ft = ${sqm} m²`
+        context: `Area conversion: ${value} sq ft = ${sqm} m²`,
       };
-    }
+    },
   },
 
   'acres-to-hectares': {
@@ -188,9 +194,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${hectares} ha`,
-        context: `Area conversion: ${value} acres = ${hectares} hectares`
+        context: `Area conversion: ${value} acres = ${hectares} hectares`,
       };
-    }
+    },
   },
 
   // Pressure conversions
@@ -203,9 +209,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${pa} Pa (${bar} bar)`,
-        context: `Pressure conversion: ${value} psi = ${pa} Pa = ${bar} bar`
+        context: `Pressure conversion: ${value} psi = ${pa} Pa = ${bar} bar`,
       };
-    }
+    },
   },
 
   // Force conversions (pounds-force to Newtons)
@@ -217,9 +223,9 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${newtons} N`,
-        context: `Force conversion: ${value} lbf = ${newtons} N`
+        context: `Force conversion: ${value} lbf = ${newtons} N`,
       };
-    }
+    },
   },
 
   // Text formatting
@@ -229,8 +235,8 @@ const LOCALIZATION_PATTERNS = {
     convert: (match, content) => ({
       original: match,
       suggested: `„${content}"`,
-      context: 'Icelandic quotation marks: Use „text" instead of "text"'
-    })
+      context: 'Icelandic quotation marks: Use „text" instead of "text"',
+    }),
   },
 
   // US agencies
@@ -240,8 +246,8 @@ const LOCALIZATION_PATTERNS = {
     convert: (match) => ({
       original: match,
       suggested: 'Lyfjastofnun',
-      context: 'US FDA equivalent in Iceland: Lyfjastofnun (Icelandic Medicines Agency)'
-    })
+      context: 'US FDA equivalent in Iceland: Lyfjastofnun (Icelandic Medicines Agency)',
+    }),
   },
 
   'us-epa': {
@@ -250,8 +256,8 @@ const LOCALIZATION_PATTERNS = {
     convert: (match) => ({
       original: match,
       suggested: 'Umhverfisstofnun',
-      context: 'US EPA equivalent in Iceland: Umhverfisstofnun (Environment Agency of Iceland)'
-    })
+      context: 'US EPA equivalent in Iceland: Umhverfisstofnun (Environment Agency of Iceland)',
+    }),
   },
 
   'us-usda': {
@@ -260,8 +266,9 @@ const LOCALIZATION_PATTERNS = {
     convert: (match) => ({
       original: match,
       suggested: 'Matvælastofnun',
-      context: 'US USDA equivalent in Iceland: Matvælastofnun (Icelandic Food and Veterinary Authority)'
-    })
+      context:
+        'US USDA equivalent in Iceland: Matvælastofnun (Icelandic Food and Veterinary Authority)',
+    }),
   },
 
   'us-cdc': {
@@ -270,8 +277,8 @@ const LOCALIZATION_PATTERNS = {
     convert: (match) => ({
       original: match,
       suggested: 'Landlæknir',
-      context: 'US CDC equivalent in Iceland: Embætti landlæknis (Directorate of Health)'
-    })
+      context: 'US CDC equivalent in Iceland: Embætti landlæknis (Directorate of Health)',
+    }),
   },
 
   'us-nih': {
@@ -280,8 +287,8 @@ const LOCALIZATION_PATTERNS = {
     convert: (match) => ({
       original: match,
       suggested: 'Heilbrigðisvísindastofnun',
-      context: 'US NIH - consider Icelandic context or keep as international reference'
-    })
+      context: 'US NIH - consider Icelandic context or keep as international reference',
+    }),
   },
 
   // Currency
@@ -295,21 +302,28 @@ const LOCALIZATION_PATTERNS = {
       return {
         original: match,
         suggested: `${isk.toLocaleString('is-IS')} kr.`,
-        context: `Currency: Consider removing specific amounts or using ISK. $${value} ≈ ${isk.toLocaleString('is-IS')} kr.`
+        context: `Currency: Consider removing specific amounts or using ISK. $${value} ≈ ${isk.toLocaleString('is-IS')} kr.`,
       };
-    }
-  }
+    },
+  },
 };
 
 /**
  * Initialize database connection
  */
 function getDb() {
+  if (_testDb) return _testDb;
   const dbDir = path.dirname(DB_PATH);
   if (!fs.existsSync(dbDir)) {
     fs.mkdirSync(dbDir, { recursive: true });
   }
   return new Database(DB_PATH);
+}
+
+function closeDb(db) {
+  if (db && db !== _testDb) {
+    closeDb(db);
+  }
 }
 
 /**
@@ -340,7 +354,7 @@ function detectSuggestions(content) {
         suggestedText: result.suggested,
         context: result.context,
         lineNumber: getLineNumber(content, match.index),
-        position: match.index
+        position: match.index,
       });
     }
   }
@@ -362,12 +376,16 @@ function scanSection(sectionId) {
 
   try {
     // Get section info
-    const section = db.prepare(`
+    const section = db
+      .prepare(
+        `
       SELECT bs.*, rb.slug as book_slug
       FROM book_sections bs
       JOIN registered_books rb ON bs.book_id = rb.id
       WHERE bs.id = ?
-    `).get(sectionId);
+    `
+      )
+      .get(sectionId);
 
     if (!section) {
       throw new Error('Section not found');
@@ -379,12 +397,12 @@ function scanSection(sectionId) {
       : null;
 
     if (!contentPath || !fs.existsSync(contentPath)) {
-      db.close();
+      closeDb(db);
       return {
         success: true,
         sectionId,
         suggestions: [],
-        message: 'No content to scan'
+        message: 'No content to scan',
       };
     }
 
@@ -392,10 +410,12 @@ function scanSection(sectionId) {
     const detectedSuggestions = detectSuggestions(content);
 
     // Clear existing pending suggestions for this section
-    db.prepare(`
+    db.prepare(
+      `
       DELETE FROM localization_suggestions
       WHERE section_id = ? AND status = 'pending'
-    `).run(sectionId);
+    `
+    ).run(sectionId);
 
     // Insert new suggestions
     const insertStmt = db.prepare(`
@@ -416,16 +436,16 @@ function scanSection(sectionId) {
       );
     }
 
-    db.close();
+    closeDb(db);
 
     return {
       success: true,
       sectionId,
       suggestionsCount: detectedSuggestions.length,
-      suggestions: detectedSuggestions
+      suggestions: detectedSuggestions,
     };
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -440,14 +460,18 @@ function scanBook(bookSlug) {
   const db = getDb();
 
   try {
-    const sections = db.prepare(`
+    const sections = db
+      .prepare(
+        `
       SELECT bs.id
       FROM book_sections bs
       JOIN registered_books rb ON bs.book_id = rb.id
       WHERE rb.slug = ? AND bs.faithful_path IS NOT NULL
-    `).all(bookSlug);
+    `
+      )
+      .all(bookSlug);
 
-    db.close();
+    closeDb(db);
 
     let totalSuggestions = 0;
     const results = [];
@@ -458,12 +482,12 @@ function scanBook(bookSlug) {
         totalSuggestions += result.suggestionsCount || 0;
         results.push({
           sectionId: section.id,
-          suggestionsCount: result.suggestionsCount || 0
+          suggestionsCount: result.suggestionsCount || 0,
         });
       } catch (err) {
         results.push({
           sectionId: section.id,
-          error: err.message
+          error: err.message,
         });
       }
     }
@@ -473,10 +497,10 @@ function scanBook(bookSlug) {
       bookSlug,
       sectionsScanned: sections.length,
       totalSuggestions,
-      results
+      results,
     };
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -506,11 +530,11 @@ function getSuggestions(sectionId, status = null) {
     sql += ` ORDER BY line_number, id`;
 
     const suggestions = db.prepare(sql).all(...params);
-    db.close();
+    closeDb(db);
 
     return suggestions.map(formatSuggestion);
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -526,10 +550,10 @@ function getSuggestion(id) {
 
   try {
     const suggestion = db.prepare('SELECT * FROM localization_suggestions WHERE id = ?').get(id);
-    db.close();
+    closeDb(db);
     return suggestion ? formatSuggestion(suggestion) : null;
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -546,18 +570,20 @@ function acceptSuggestion(id, userId, username) {
   const db = getDb();
 
   try {
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE localization_suggestions
       SET status = 'accepted', reviewed_by = ?, reviewed_by_name = ?, reviewed_at = CURRENT_TIMESTAMP
       WHERE id = ?
-    `).run(userId, username, id);
+    `
+    ).run(userId, username, id);
 
     const suggestion = db.prepare('SELECT * FROM localization_suggestions WHERE id = ?').get(id);
-    db.close();
+    closeDb(db);
 
     return formatSuggestion(suggestion);
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -574,18 +600,20 @@ function rejectSuggestion(id, userId, username) {
   const db = getDb();
 
   try {
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE localization_suggestions
       SET status = 'rejected', reviewed_by = ?, reviewed_by_name = ?, reviewed_at = CURRENT_TIMESTAMP
       WHERE id = ?
-    `).run(userId, username, id);
+    `
+    ).run(userId, username, id);
 
     const suggestion = db.prepare('SELECT * FROM localization_suggestions WHERE id = ?').get(id);
-    db.close();
+    closeDb(db);
 
     return formatSuggestion(suggestion);
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -603,7 +631,8 @@ function modifySuggestion(id, modifiedText, userId, username) {
   const db = getDb();
 
   try {
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE localization_suggestions
       SET status = 'modified',
           reviewer_modified_text = ?,
@@ -611,14 +640,15 @@ function modifySuggestion(id, modifiedText, userId, username) {
           reviewed_by_name = ?,
           reviewed_at = CURRENT_TIMESTAMP
       WHERE id = ?
-    `).run(modifiedText, userId, username, id);
+    `
+    ).run(modifiedText, userId, username, id);
 
     const suggestion = db.prepare('SELECT * FROM localization_suggestions WHERE id = ?').get(id);
-    db.close();
+    closeDb(db);
 
     return formatSuggestion(suggestion);
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -642,21 +672,23 @@ function bulkUpdateSuggestions(ids, action, userId, username) {
 
   try {
     const placeholders = ids.map(() => '?').join(',');
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE localization_suggestions
       SET status = ?, reviewed_by = ?, reviewed_by_name = ?, reviewed_at = CURRENT_TIMESTAMP
       WHERE id IN (${placeholders}) AND status = 'pending'
-    `).run(status, userId, username, ...ids);
+    `
+    ).run(status, userId, username, ...ids);
 
-    db.close();
+    closeDb(db);
 
     return {
       success: true,
       action,
-      count: ids.length
+      count: ids.length,
     };
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -674,18 +706,22 @@ function syncToLocalizationLog(sectionId, localizer) {
 
   try {
     // Get accepted/modified suggestions
-    const suggestions = db.prepare(`
+    const suggestions = db
+      .prepare(
+        `
       SELECT * FROM localization_suggestions
       WHERE section_id = ? AND status IN ('accepted', 'modified')
-    `).all(sectionId);
+    `
+      )
+      .all(sectionId);
 
-    db.close();
+    closeDb(db);
 
     if (suggestions.length === 0) {
       return {
         success: true,
         entriesCreated: 0,
-        message: 'No accepted suggestions to sync'
+        message: 'No accepted suggestions to sync',
       };
     }
 
@@ -701,7 +737,7 @@ function syncToLocalizationLog(sectionId, localizer) {
           original: suggestion.original_text,
           changedTo,
           reason: suggestion.context || `Auto-detected ${suggestion.suggestion_type}`,
-          location: `Line ${suggestion.line_number}`
+          location: `Line ${suggestion.line_number}`,
         },
         localizer
       );
@@ -711,10 +747,10 @@ function syncToLocalizationLog(sectionId, localizer) {
 
     return {
       success: true,
-      entriesCreated
+      entriesCreated,
     };
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -729,7 +765,9 @@ function getSuggestionStats(sectionId) {
   const db = getDb();
 
   try {
-    const stats = db.prepare(`
+    const stats = db
+      .prepare(
+        `
       SELECT
         COUNT(*) as total,
         SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) as pending,
@@ -738,16 +776,22 @@ function getSuggestionStats(sectionId) {
         SUM(CASE WHEN status = 'modified' THEN 1 ELSE 0 END) as modified
       FROM localization_suggestions
       WHERE section_id = ?
-    `).get(sectionId);
+    `
+      )
+      .get(sectionId);
 
-    const byType = db.prepare(`
+    const byType = db
+      .prepare(
+        `
       SELECT suggestion_type, COUNT(*) as count
       FROM localization_suggestions
       WHERE section_id = ?
       GROUP BY suggestion_type
-    `).all(sectionId);
+    `
+      )
+      .all(sectionId);
 
-    db.close();
+    closeDb(db);
 
     return {
       total: stats?.total || 0,
@@ -755,15 +799,15 @@ function getSuggestionStats(sectionId) {
         pending: stats?.pending || 0,
         accepted: stats?.accepted || 0,
         rejected: stats?.rejected || 0,
-        modified: stats?.modified || 0
+        modified: stats?.modified || 0,
       },
       byType: byType.reduce((acc, row) => {
         acc[row.suggestion_type] = row.count;
         return acc;
-      }, {})
+      }, {}),
     };
   } catch (err) {
-    db.close();
+    closeDb(db);
     throw err;
   }
 }
@@ -785,7 +829,7 @@ function formatSuggestion(row) {
     reviewedBy: row.reviewed_by,
     reviewedByName: row.reviewed_by_name,
     reviewedAt: row.reviewed_at,
-    createdAt: row.created_at
+    createdAt: row.created_at,
   };
 }
 
@@ -801,12 +845,12 @@ function getLineNumber(content, position) {
 
 function mapSuggestionTypeToLogType(suggestionType) {
   const mapping = {
-    'unit_conversion': 'unit_conversion',
-    'cultural_reference': 'cultural_adaptation',
-    'currency': 'cultural_adaptation',
-    'agency_reference': 'cultural_adaptation',
-    'regional_example': 'cultural_adaptation',
-    'other': 'other'
+    unit_conversion: 'unit_conversion',
+    cultural_reference: 'cultural_adaptation',
+    currency: 'cultural_adaptation',
+    agency_reference: 'cultural_adaptation',
+    regional_example: 'cultural_adaptation',
+    other: 'other',
   };
   return mapping[suggestionType] || 'other';
 }
@@ -825,5 +869,6 @@ module.exports = {
   getSuggestionStats,
   SUGGESTION_TYPES,
   SUGGESTION_STATUSES,
-  LOCALIZATION_PATTERNS
+  LOCALIZATION_PATTERNS,
+  _setTestDb,
 };

@@ -29,14 +29,14 @@ const FEEDBACK_TYPES = {
   TRANSLATION_ERROR: 'translation_error',
   TECHNICAL_ISSUE: 'technical_issue',
   IMPROVEMENT: 'improvement',
-  OTHER: 'other'
+  OTHER: 'other',
 };
 
 const FEEDBACK_TYPE_LABELS = {
   [FEEDBACK_TYPES.TRANSLATION_ERROR]: 'Villa í þýðingu',
   [FEEDBACK_TYPES.TECHNICAL_ISSUE]: 'Tæknilegt vandamál',
   [FEEDBACK_TYPES.IMPROVEMENT]: 'Tillaga að bætingu',
-  [FEEDBACK_TYPES.OTHER]: 'Annað'
+  [FEEDBACK_TYPES.OTHER]: 'Annað',
 };
 
 // Feedback statuses
@@ -44,14 +44,14 @@ const FEEDBACK_STATUSES = {
   OPEN: 'open',
   IN_PROGRESS: 'in_progress',
   RESOLVED: 'resolved',
-  WONT_FIX: 'wont_fix'
+  WONT_FIX: 'wont_fix',
 };
 
 const FEEDBACK_STATUS_LABELS = {
   [FEEDBACK_STATUSES.OPEN]: 'Opið',
   [FEEDBACK_STATUSES.IN_PROGRESS]: 'Í vinnslu',
   [FEEDBACK_STATUSES.RESOLVED]: 'Leyst',
-  [FEEDBACK_STATUSES.WONT_FIX]: 'Verður ekki lagað'
+  [FEEDBACK_STATUSES.WONT_FIX]: 'Verður ekki lagað',
 };
 
 // Priority levels
@@ -59,14 +59,14 @@ const PRIORITIES = {
   LOW: 'low',
   NORMAL: 'normal',
   HIGH: 'high',
-  CRITICAL: 'critical'
+  CRITICAL: 'critical',
 };
 
 const PRIORITY_LABELS = {
   [PRIORITIES.LOW]: 'Lág',
   [PRIORITIES.NORMAL]: 'Venjuleg',
   [PRIORITIES.HIGH]: 'Há',
-  [PRIORITIES.CRITICAL]: 'Mjög há'
+  [PRIORITIES.CRITICAL]: 'Mjög há',
 };
 
 // Initialize database tables
@@ -123,90 +123,134 @@ function initDb() {
   return db;
 }
 
-const db = initDb();
+let db = initDb();
 
-// Prepared statements
-const statements = {
-  insert: db.prepare(`
-    INSERT INTO feedback (type, book, chapter, section, message, user_email, user_name, priority)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `),
-  getById: db.prepare(`
-    SELECT * FROM feedback WHERE id = ?
-  `),
-  search: db.prepare(`
-    SELECT * FROM feedback
-    WHERE (status = ? OR ? IS NULL)
-      AND (type = ? OR ? IS NULL)
-      AND (book = ? OR ? IS NULL)
-      AND (priority = ? OR ? IS NULL)
-    ORDER BY
-      CASE priority
-        WHEN 'critical' THEN 1
-        WHEN 'high' THEN 2
-        WHEN 'normal' THEN 3
-        WHEN 'low' THEN 4
-        ELSE 5
-      END,
-      created_at DESC
-    LIMIT ? OFFSET ?
-  `),
-  count: db.prepare(`
-    SELECT COUNT(*) as count FROM feedback
-    WHERE (status = ? OR ? IS NULL)
-      AND (type = ? OR ? IS NULL)
-      AND (book = ? OR ? IS NULL)
-      AND (priority = ? OR ? IS NULL)
-  `),
-  countByStatus: db.prepare(`
-    SELECT status, COUNT(*) as count FROM feedback GROUP BY status
-  `),
-  countByType: db.prepare(`
-    SELECT type, COUNT(*) as count FROM feedback GROUP BY type
-  `),
-  updateStatus: db.prepare(`
-    UPDATE feedback SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
-  `),
-  resolve: db.prepare(`
-    UPDATE feedback
-    SET status = 'resolved',
-        resolved_by = ?,
-        resolved_by_name = ?,
-        resolution_notes = ?,
-        resolved_at = CURRENT_TIMESTAMP,
-        updated_at = CURRENT_TIMESTAMP
-    WHERE id = ?
-  `),
-  setPriority: db.prepare(`
-    UPDATE feedback SET priority = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
-  `),
-  assignTo: db.prepare(`
-    UPDATE feedback SET assigned_to = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
-  `),
-  insertResponse: db.prepare(`
-    INSERT INTO feedback_responses (feedback_id, responder_id, responder_name, message, is_internal)
-    VALUES (?, ?, ?, ?, ?)
-  `),
-  getResponses: db.prepare(`
-    SELECT * FROM feedback_responses WHERE feedback_id = ? ORDER BY created_at ASC
-  `),
-  getRecent: db.prepare(`
-    SELECT * FROM feedback ORDER BY created_at DESC LIMIT ?
-  `),
-  getOpen: db.prepare(`
-    SELECT * FROM feedback WHERE status IN ('open', 'in_progress')
-    ORDER BY
-      CASE priority
-        WHEN 'critical' THEN 1
-        WHEN 'high' THEN 2
-        WHEN 'normal' THEN 3
-        WHEN 'low' THEN 4
-        ELSE 5
-      END,
-      created_at DESC
-    LIMIT ?
-  `)
-};
+function initStatements(database) {
+  return {
+    insert: database.prepare(`
+      INSERT INTO feedback (type, book, chapter, section, message, user_email, user_name, priority)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `),
+    getById: database.prepare(`
+      SELECT * FROM feedback WHERE id = ?
+    `),
+    search: database.prepare(`
+      SELECT * FROM feedback
+      WHERE (status = ? OR ? IS NULL)
+        AND (type = ? OR ? IS NULL)
+        AND (book = ? OR ? IS NULL)
+        AND (priority = ? OR ? IS NULL)
+      ORDER BY
+        CASE priority
+          WHEN 'critical' THEN 1
+          WHEN 'high' THEN 2
+          WHEN 'normal' THEN 3
+          WHEN 'low' THEN 4
+          ELSE 5
+        END,
+        created_at DESC
+      LIMIT ? OFFSET ?
+    `),
+    count: database.prepare(`
+      SELECT COUNT(*) as count FROM feedback
+      WHERE (status = ? OR ? IS NULL)
+        AND (type = ? OR ? IS NULL)
+        AND (book = ? OR ? IS NULL)
+        AND (priority = ? OR ? IS NULL)
+    `),
+    countByStatus: database.prepare(`
+      SELECT status, COUNT(*) as count FROM feedback GROUP BY status
+    `),
+    countByType: database.prepare(`
+      SELECT type, COUNT(*) as count FROM feedback GROUP BY type
+    `),
+    updateStatus: database.prepare(`
+      UPDATE feedback SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
+    `),
+    resolve: database.prepare(`
+      UPDATE feedback
+      SET status = 'resolved',
+          resolved_by = ?,
+          resolved_by_name = ?,
+          resolution_notes = ?,
+          resolved_at = CURRENT_TIMESTAMP,
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `),
+    setPriority: database.prepare(`
+      UPDATE feedback SET priority = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
+    `),
+    assignTo: database.prepare(`
+      UPDATE feedback SET assigned_to = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
+    `),
+    insertResponse: database.prepare(`
+      INSERT INTO feedback_responses (feedback_id, responder_id, responder_name, message, is_internal)
+      VALUES (?, ?, ?, ?, ?)
+    `),
+    getResponses: database.prepare(`
+      SELECT * FROM feedback_responses WHERE feedback_id = ? ORDER BY created_at ASC
+    `),
+    getRecent: database.prepare(`
+      SELECT * FROM feedback ORDER BY created_at DESC LIMIT ?
+    `),
+    getOpen: database.prepare(`
+      SELECT * FROM feedback WHERE status IN ('open', 'in_progress')
+      ORDER BY
+        CASE priority
+          WHEN 'critical' THEN 1
+          WHEN 'high' THEN 2
+          WHEN 'normal' THEN 3
+          WHEN 'low' THEN 4
+          ELSE 5
+        END,
+        created_at DESC
+      LIMIT ?
+    `),
+  };
+}
+
+let statements = initStatements(db);
+
+/**
+ * Inject a test database (for unit tests)
+ */
+function _setTestDb(testDb) {
+  if (testDb) {
+    testDb.exec(`
+      CREATE TABLE IF NOT EXISTS feedback (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        type TEXT NOT NULL,
+        book TEXT,
+        chapter TEXT,
+        section TEXT,
+        message TEXT NOT NULL,
+        user_email TEXT,
+        user_name TEXT,
+        status TEXT DEFAULT 'open',
+        priority TEXT DEFAULT 'normal',
+        assigned_to TEXT,
+        resolved_by TEXT,
+        resolved_by_name TEXT,
+        resolution_notes TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        resolved_at DATETIME
+      );
+      CREATE TABLE IF NOT EXISTS feedback_responses (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        feedback_id INTEGER NOT NULL,
+        responder_id TEXT NOT NULL,
+        responder_name TEXT NOT NULL,
+        message TEXT NOT NULL,
+        is_internal BOOLEAN DEFAULT 0,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (feedback_id) REFERENCES feedback(id) ON DELETE CASCADE
+      );
+    `);
+    db = testDb;
+    statements = initStatements(db);
+  }
+}
 
 /**
  * Submit new feedback (public endpoint)
@@ -220,7 +264,7 @@ function submitFeedback(options) {
     message,
     userEmail = null,
     userName = null,
-    priority = PRIORITIES.NORMAL
+    priority = PRIORITIES.NORMAL,
   } = options;
 
   // Validate type
@@ -255,7 +299,7 @@ function submitFeedback(options) {
     userName,
     status: FEEDBACK_STATUSES.OPEN,
     priority,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 }
 
@@ -281,30 +325,38 @@ function searchFeedback(options = {}) {
     book = null,
     priority = null,
     limit = 50,
-    offset = 0
+    offset = 0,
   } = options;
 
   const rows = statements.search.all(
-    status, status,
-    type, type,
-    book, book,
-    priority, priority,
+    status,
+    status,
+    type,
+    type,
+    book,
+    book,
+    priority,
+    priority,
     Math.min(limit, 200),
     offset
   );
 
   const countResult = statements.count.get(
-    status, status,
-    type, type,
-    book, book,
-    priority, priority
+    status,
+    status,
+    type,
+    type,
+    book,
+    book,
+    priority,
+    priority
   );
 
   return {
     items: rows.map(parseRow),
     total: countResult.count,
     limit,
-    offset
+    offset,
   };
 }
 
@@ -341,8 +393,8 @@ function getStats() {
       return acc;
     }, {}),
     total: byStatus.reduce((sum, row) => sum + row.count, 0),
-    open: byStatus.find(r => r.status === 'open')?.count || 0,
-    inProgress: byStatus.find(r => r.status === 'in_progress')?.count || 0
+    open: byStatus.find((r) => r.status === 'open')?.count || 0,
+    inProgress: byStatus.find((r) => r.status === 'in_progress')?.count || 0,
   };
 }
 
@@ -425,7 +477,7 @@ function addResponse(feedbackId, responderId, responderName, message, isInternal
     responderName,
     message: message.trim(),
     isInternal,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 }
 
@@ -461,7 +513,7 @@ function parseRow(row) {
     resolutionNotes: row.resolution_notes,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
-    resolvedAt: row.resolved_at
+    resolvedAt: row.resolved_at,
   };
 }
 
@@ -476,7 +528,7 @@ function parseResponseRow(row) {
     responderName: row.responder_name,
     message: row.message,
     isInternal: row.is_internal === 1,
-    createdAt: row.created_at
+    createdAt: row.created_at,
   };
 }
 
@@ -500,5 +552,7 @@ module.exports = {
   setPriority,
   assignFeedback,
   addResponse,
-  getResponses
+  getResponses,
+  // Test helpers
+  _setTestDb,
 };

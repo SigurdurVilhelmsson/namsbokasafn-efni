@@ -13,15 +13,31 @@ const { ROLES, ROLE_HIERARCHY } = require('../constants');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
+let _testDb = null;
+
+function _setTestDb(db) {
+  _testDb = db;
+}
+
 /**
  * Get database connection
  */
 function getDb() {
+  if (_testDb) return _testDb;
   const dbDir = path.dirname(DB_PATH);
   if (!fs.existsSync(dbDir)) {
     fs.mkdirSync(dbDir, { recursive: true });
   }
   return new Database(DB_PATH);
+}
+
+/**
+ * Close database connection (skips closing if using test DB)
+ */
+function closeDb(db) {
+  if (db && db !== _testDb) {
+    closeDb(db);
+  }
 }
 
 /**
@@ -35,7 +51,7 @@ function isUserTableReady() {
       .get();
     return !!result;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -55,7 +71,7 @@ function findByProviderId(providerId) {
 
     return user;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -77,7 +93,7 @@ function findByUsername(username) {
 
     return user;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -97,7 +113,7 @@ function findByEmail(email) {
 
     return user;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -115,7 +131,7 @@ function updateProviderInfo(userId, providerId, email) {
       userId
     );
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -141,7 +157,7 @@ function findById(id) {
 
     return user;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -214,7 +230,7 @@ function listUsers(options = {}) {
 
     return { users, total };
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -261,7 +277,7 @@ function createUser(userData, createdBy = null) {
 
     return findById(result.lastInsertRowid);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -296,7 +312,12 @@ function updateUser(id, updates, _updatedBy = null) {
           throw new Error(`Invalid role: ${value}`);
         }
         setClause.push(`${snakeKey} = ?`);
-        params.push(value);
+        // SQLite can't bind booleans — coerce is_active to integer
+        if (snakeKey === 'is_active' && typeof value === 'boolean') {
+          params.push(value ? 1 : 0);
+        } else {
+          params.push(value);
+        }
       }
     }
 
@@ -313,7 +334,7 @@ function updateUser(id, updates, _updatedBy = null) {
 
     return findById(id);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -345,7 +366,7 @@ function deleteUser(id) {
     db.prepare('DELETE FROM users WHERE id = ?').run(id);
     return true;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -389,7 +410,7 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
 
     return findById(userId);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -411,7 +432,7 @@ function removeBookAccess(userId, bookSlug) {
 
     return findById(userId);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -429,7 +450,7 @@ function updateLastLogin(id) {
     `
     ).run(id);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -485,7 +506,7 @@ function upsertFromProvider(providerUser, options = {}) {
 
     return findById(result.lastInsertRowid);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -555,7 +576,7 @@ function hasChapterAccess(userId, bookSlug, chapter) {
     if (err.message && err.message.includes('no such table')) return true;
     throw err;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -576,7 +597,7 @@ function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
     `
     ).run(userId, bookSlug, parseInt(chapter, 10), assignedBy);
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -594,7 +615,7 @@ function removeChapterAssignment(userId, bookSlug, chapter) {
       'DELETE FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? AND chapter = ?'
     ).run(userId, bookSlug, parseInt(chapter, 10));
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -615,7 +636,7 @@ function getChapterAssignments(userId, bookSlug) {
     if (err.message && err.message.includes('no such table')) return [];
     throw err;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -636,7 +657,7 @@ function getAllChapterAssignments(userId) {
     if (err.message && err.message.includes('no such table')) return [];
     throw err;
   } finally {
-    db.close();
+    closeDb(db);
   }
 }
 
@@ -677,4 +698,7 @@ module.exports = {
   getHeadEditorBooks,
   ROLES,
   ROLE_HIERARCHY,
+
+  // Test helpers
+  _setTestDb,
 };
