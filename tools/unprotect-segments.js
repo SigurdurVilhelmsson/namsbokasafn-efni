@@ -67,6 +67,10 @@ function printHelp() {
   console.log(`
 unprotect-segments.js - Prepare MT output for injection
 
+NOTE: This tool is only needed for the malstadur.is WEB UI workflow.
+If using the Málstaður API (api-translate.js), no unprotection is needed —
+the API output is ready for injection directly.
+
 Reverses the protection applied by protect-segments-for-mt.js:
 - Auto-copies -links.json files from 02-for-mt/ (when processing 02-mt-output/)
 - Merges split files (a), (b), (c) back together
