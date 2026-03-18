@@ -514,11 +514,17 @@ function reverseInlineMarkup(
     return count && parseInt(count, 10) > 1 ? `<space count="${count}"/>` : '<space/>';
   });
 
-  // Restore math placeholders
+  // Restore math placeholders (with equation wrappers if present)
   result = result.replace(/\[\[MATH:(\d+)\]\]/g, (match, num) => {
     const mathId = `math-${num}`;
     if (equations[mathId]) {
-      return equations[mathId].mathml;
+      const eq = equations[mathId];
+      // Wrap in <equation> if the original had one (equationId stored during extraction)
+      if (eq.equationId) {
+        const classAttr = eq.equationClass ? ` class="${eq.equationClass}"` : '';
+        return `<equation id="${eq.equationId}"${classAttr}>${eq.mathml}</equation>`;
+      }
+      return eq.mathml;
     }
     console.error(
       `  Warning: Unresolved math placeholder ${match} (no ${mathId} in equations.json)`
@@ -600,16 +606,22 @@ function reverseInlineMarkup(
   // Must come before generic [#...] to avoid partial match
   result = result.replace(/\[([^\]#]+)#([^\]]+)\]/g, '<link document="$1" target-id="$2"/>');
 
+  // Convert self-closing document links without target-id (e.g., [doc:m68860])
+  result = result.replace(/\[doc:([^\]]+)\]/g, '<link document="$1"/>');
+
   // Convert self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
   result = result.replace(/\[#([^\]]+)\]/g, '<link target-id="$1"/>');
 
   // Convert links with text back to CNXML
   result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
-    if (url.startsWith('#')) {
+    if (url.startsWith('doc:')) {
+      // Cross-document link without target-id (e.g., doc:m68860)
+      return `<link document="${url.substring(4)}">${linkText}</link>`;
+    } else if (url.startsWith('#')) {
       // Internal reference
       return `<link target-id="${url.substring(1)}">${linkText}</link>`;
     } else if (url.includes('#')) {
-      // Cross-document reference
+      // Cross-document reference with target
       const [doc, target] = url.split('#');
       return `<link document="${doc}" target-id="${target}">${linkText}</link>`;
     } else {
@@ -671,7 +683,7 @@ function reverseInlineMarkup(
   // This prevents user-typed HTML (e.g. <script>, <div>) from passing through unescaped.
   const cnxmlTags = [];
   result = result.replace(
-    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|m:math|m:[a-z]+)([\s>\/])/g,
+    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|equation|m:math|m:[a-z]+)([\s>\/])/g,
     (match) => {
       cnxmlTags.push(match);
       return `\x00CNXML:${cnxmlTags.length - 1}\x00`;

@@ -26,10 +26,15 @@ let BOOKS_DIR = 'books/efnafraedi-2e';
 
 /**
  * Count opening tags by element name in CNXML content.
+ * Excludes content inside MathML blocks (which are opaque and should
+ * be compared separately, not as individual tags).
  */
 function countTags(cnxml) {
+  // Strip MathML blocks before counting — they are preserved as-is
+  // and contain m:math, m:mrow, m:mo etc. that inflate counts
+  const withoutMath = cnxml.replace(/<m:math[\s\S]*?<\/m:math>/g, '<m:math/>');
   const counts = new Map();
-  const matches = cnxml.matchAll(/<([a-zA-Z][a-zA-Z0-9:]*?)[\s>/]/g);
+  const matches = withoutMath.matchAll(/<([a-zA-Z][a-zA-Z0-9:]*?)[\s>/]/g);
   for (const m of matches) {
     const tag = m[1];
     counts.set(tag, (counts.get(tag) || 0) + 1);
