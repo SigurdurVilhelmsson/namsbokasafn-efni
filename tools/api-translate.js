@@ -199,6 +199,7 @@ function parseCliArgs(argv) {
     { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
     { name: 'rateDelay', flags: ['--rate-delay'], type: 'number', default: 500 },
+    { name: 'updateStatus', flags: ['--update-status'], type: 'boolean', default: false },
   ]);
 }
 
@@ -226,6 +227,7 @@ Options:
   --dry-run, -n       Show what would be translated + cost estimate
   --no-glossary       Don't send glossary terms with requests
   --rate-delay <ms>   Delay between API calls (default: 500)
+  --update-status     Mark mtOutput stage as complete in pipeline DB
   -v, --verbose       Detailed progress output
   -h, --help          Show this help
 
@@ -303,6 +305,46 @@ async function translateModule(client, inputPath, outputPath, glossary) {
   }
 
   return { chars: input.length, usage: result.usage };
+}
+
+// ─── Pipeline Status ────────────────────────────────────────────────
+
+/**
+ * Update pipeline status for translated chapters.
+ * Uses the server's pipelineStatusService directly (standalone, no server needed).
+ * Fails silently — status updates should never block translation.
+ */
+async function updatePipelineStatus(bookSlug, chapters) {
+  try {
+    const { createRequire } = await import('module');
+    const require = createRequire(import.meta.url);
+
+    let pipelineStatus;
+    try {
+      pipelineStatus = require('../server/services/pipelineStatusService.js');
+    } catch {
+      console.warn('  Warning: Could not load pipeline status service (server not set up?)');
+      return;
+    }
+
+    for (const chapterDir of chapters) {
+      const chapterNum = chapterDir === 'appendices' ? -1 : parseInt(chapterDir.slice(2), 10);
+      try {
+        pipelineStatus.transitionStage(
+          bookSlug,
+          chapterNum,
+          'mtOutput',
+          'complete',
+          'api-translate'
+        );
+        console.log(`  ${chapterDir}: mtOutput → complete`);
+      } catch (err) {
+        console.warn(`  ${chapterDir}: status update failed — ${err.message}`);
+      }
+    }
+  } catch (err) {
+    console.warn(`  Warning: Pipeline status update skipped — ${err.message}`);
+  }
 }
 
 // ─── Main ───────────────────────────────────────────────────────────
@@ -458,6 +500,15 @@ async function main() {
     for (const err of results.errors) {
       console.log(`  ${err.chapter}/${err.module}: ${err.error}`);
     }
+  }
+
+  // Update pipeline status if requested
+  if (args.updateStatus && results.translated > 0) {
+    console.log('\nUpdating pipeline status...');
+    const translatedChapters = [
+      ...new Set(workList.filter((m) => !m.skip).map((m) => m.chapterDir)),
+    ];
+    await updatePipelineStatus(args.book, translatedChapters);
   }
 
   if (results.failed > 0) process.exit(1);
