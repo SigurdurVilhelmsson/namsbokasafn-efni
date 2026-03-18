@@ -110,9 +110,9 @@ CNXML → Extract → EN Segments → MT → Initialize → Review → Inject �
 | Step | What | Tool/Service | Output |
 |------|------|--------------|--------|
 | 1a | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` |
-| 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments |
-| 2a | Machine translation | malstadur.is | `02-mt-output/` |
-| 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection |
+| 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments (legacy — not needed with API) |
+| 2a | Machine translation | `api-translate.js` or malstadur.is web UI | `02-mt-output/` |
+| 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection (legacy — not needed with API) |
 | 3a | Linguistic review | Segment editor (web) or manual editing | `03-faithful-translation/` ★ |
 | 3b | Apply approved edits | `applyApprovedEdits()` (per-module) | `03-faithful-translation/` |
 | 4 | TM creation | `prepare-for-align.js` + Matecat Align | `tm/` ★ |
@@ -134,6 +134,8 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 | `node tools/cnxml-extract.js <book> <chapter>` | Extract EN segments from CNXML |
 | `node tools/cnxml-inject.js <book> <chapter>` | Inject translations into CNXML |
 | `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
+| `node tools/api-translate.js --book <book> --chapter <ch>` | Translate segments via Málstaður API |
+| `node tools/api-translate.js --book <book> --dry-run` | Show translation plan + cost estimate |
 | `/pipeline-status` | Overview of all chapters |
 | `/chapter-status <book> <ch>` | Specific chapter progress |
 | `/review-chapter <book> <ch>` | Pass 1 linguistic review |
@@ -205,6 +207,8 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 | [docs/editorial/terminology.md](docs/editorial/terminology.md) | Terminology standards |
 | [docs/technical/architecture.md](docs/technical/architecture.md) | System architecture |
 | [docs/pipeline/html-pipeline-issues.md](docs/pipeline/html-pipeline-issues.md) | cnxml-render bug tracking |
+| [docs/pipeline/cnxml-fidelity-gaps.md](docs/pipeline/cnxml-fidelity-gaps.md) | CNXML round-trip fidelity for OpenStax remerge |
+| [test-results/api-marker-survival.md](test-results/api-marker-survival.md) | Málstaður API marker survival test results |
 | [ROADMAP.md](ROADMAP.md) | Development status |
 
 ## Current Priority
