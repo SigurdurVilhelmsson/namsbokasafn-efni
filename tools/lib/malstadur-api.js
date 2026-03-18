@@ -294,9 +294,10 @@ function createClient(options = {}) {
 
       if (opts.onPoll) opts.onPoll(task);
 
-      if (task.status === 'completed' || task.text) {
+      if (task.status === 'completed' || task.result?.text) {
         usage.record(task.usage);
-        return task;
+        // Normalize: async returns text in task.result.text, sync returns it in task.text
+        return { text: task.result?.text || task.text, usage: task.usage };
       }
 
       if (task.status === 'failed' || task.status === 'error') {
