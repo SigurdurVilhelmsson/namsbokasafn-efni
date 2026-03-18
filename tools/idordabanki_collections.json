@@ -1,0 +1,27 @@
+{
+  "efnafraedi": {
+    "label": "Efnafræði (Chemistry)",
+    "collections": [
+      { "ordabok": "EFNAFR", "label": "Efnafræðiorðasafn" }
+    ]
+  },
+  "liffraedi": {
+    "label": "Líffræði (Biology)",
+    "collections": [
+      { "ordabok": "LIFORD", "label": "Líffræðiorðasafn (10,000+ terms, ES cap applies)" },
+      { "ordabok": "LIFORD2", "label": "Líffræðiorðasafn 2 (þroskunarfræði o.fl.)" }
+    ]
+  },
+  "edlisfraedi": {
+    "label": "Eðlisfræði (Physics)",
+    "collections": [
+      { "ordabok": "EDLISFR", "label": "Eðlisfræðiorðasafn" }
+    ]
+  },
+  "staerdfraedi": {
+    "label": "Stærðfræði (Mathematics)",
+    "collections": [
+      { "ordabok": "STAERDFRAEDI", "label": "Stærðfræðiorðasafn (8,600 terms)" }
+    ]
+  }
+}
