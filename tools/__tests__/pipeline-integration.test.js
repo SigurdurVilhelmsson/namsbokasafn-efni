@@ -93,6 +93,26 @@ describe('cnxml-inject', () => {
     // md:title should match the document title
     expect(mdTitleMatch[1]).toBe(documentTitleMatch[1]);
   });
+
+  it('should not produce more terms than the source has', () => {
+    // m68664 had +56 term overproduction before fix
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output`
+    );
+
+    const sourceCnxml = readFileSync(join(BOOKS, '01-source', 'ch01', 'm68664.cnxml'), 'utf8');
+    const translatedCnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68664.cnxml'),
+      'utf8'
+    );
+
+    const sourceTermCount = (sourceCnxml.match(/<term[\s>]/g) || []).length;
+    const translatedTermCount = (translatedCnxml.match(/<term[\s>]/g) || []).length;
+
+    // Translated should have approximately same term count as source
+    expect(translatedTermCount).toBeLessThanOrEqual(sourceTermCount + 1);
+    expect(translatedTermCount).toBeGreaterThanOrEqual(sourceTermCount - 1);
+  });
 });
 
 // =====================================================================

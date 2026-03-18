@@ -184,16 +184,22 @@ function parseSegments(content) {
  */
 function restoreTermMarkers(isSegments, enSegments) {
   let restoredCount = 0;
+  let strippedCount = 0;
 
   // Regex to find inline markers in order: __term__ or **bold**
   // Uses lazy .+? for bold to handle content with single * inside (e.g., **work (*w*)**)
   const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*)/g;
-  // In IS segments, all markers are **text** (MT converted __ to **)
-  const isMarkerPattern = /\*\*(.+?)\*\*/g;
+  // In IS segments from the old web UI, all markers are **text** (MT converted __ to **)
+  const isStarPattern = /\*\*(.+?)\*\*/g;
+  // In IS segments from the API, terms stay as __text__ (API preserves them)
+  const isUnderscorePattern = /__([^_]+)__/g;
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
     if (!enText) continue;
+
+    // Count EN term markers (__text__)
+    const enTermCount = (enText.match(/__[^_]+__/g) || []).length;
 
     // Parse EN markers to determine the type sequence
     const enTypes = [];
@@ -201,35 +207,52 @@ function restoreTermMarkers(isSegments, enSegments) {
     enMarkerPattern.lastIndex = 0;
     while ((enMatch = enMarkerPattern.exec(enText)) !== null) {
       if (enMatch[2] !== undefined) {
-        // __text__ match — this is a term
         enTypes.push('term');
       } else {
-        // **text** match — this is bold
         enTypes.push('bold');
       }
     }
 
-    // Skip if no terms in EN (nothing to restore)
-    if (!enTypes.some((t) => t === 'term')) continue;
+    // Check if IS has __text__ markers (API pipeline) or **text** markers (web UI pipeline)
+    const isTermCount = (isText.match(/__[^_]+__/g) || []).length;
+    const isStarCount = (isText.match(/\*\*(.+?)\*\*/g) || []).length;
 
-    // Replace IS **text** markers positionally based on EN types
-    let markerIndex = 0;
-    const restored = isText.replace(isMarkerPattern, (match, inner) => {
-      const type = markerIndex < enTypes.length ? enTypes[markerIndex] : 'bold';
-      markerIndex++;
-      if (type === 'term') {
-        restoredCount++;
-        return `__${inner}__`;
+    if (isTermCount > 0 && isTermCount > enTermCount) {
+      // API pipeline: IS has __text__ markers, some added by the API's glossary.
+      // Keep only the first N that match the EN count, strip the rest to plain text.
+      let termIndex = 0;
+      const restored = isText.replace(isUnderscorePattern, (match, inner) => {
+        termIndex++;
+        if (termIndex <= enTermCount) {
+          return match; // Keep this term marker
+        }
+        strippedCount++;
+        return inner; // Strip marker, keep text
+      });
+      if (restored !== isText) {
+        isSegments.set(segId, restored);
       }
-      return match; // Keep as **bold**
-    });
-
-    if (restored !== isText) {
-      isSegments.set(segId, restored);
+    } else if (isTermCount === 0 && isStarCount > 0 && enTypes.some((t) => t === 'term')) {
+      // Web UI pipeline: IS has **text** (MT converted __ to **).
+      // Restore terms based on EN positional order.
+      let markerIndex = 0;
+      const restored = isText.replace(isStarPattern, (match, inner) => {
+        const type = markerIndex < enTypes.length ? enTypes[markerIndex] : 'bold';
+        markerIndex++;
+        if (type === 'term') {
+          restoredCount++;
+          return `__${inner}__`;
+        }
+        return match;
+      });
+      if (restored !== isText) {
+        isSegments.set(segId, restored);
+      }
     }
+    // If IS term count matches EN exactly, or no terms in EN — leave as-is
   }
 
-  return { segments: isSegments, restoredCount };
+  return { segments: isSegments, restoredCount, strippedCount };
 }
 
 /**
@@ -491,11 +514,17 @@ function reverseInlineMarkup(
     return count && parseInt(count, 10) > 1 ? `<space count="${count}"/>` : '<space/>';
   });
 
-  // Restore math placeholders
+  // Restore math placeholders (with equation wrappers if present)
   result = result.replace(/\[\[MATH:(\d+)\]\]/g, (match, num) => {
     const mathId = `math-${num}`;
     if (equations[mathId]) {
-      return equations[mathId].mathml;
+      const eq = equations[mathId];
+      // Wrap in <equation> if the original had one (equationId stored during extraction)
+      if (eq.equationId) {
+        const classAttr = eq.equationClass ? ` class="${eq.equationClass}"` : '';
+        return `<equation id="${eq.equationId}"${classAttr}>${eq.mathml}</equation>`;
+      }
+      return eq.mathml;
     }
     console.error(
       `  Warning: Unresolved math placeholder ${match} (no ${mathId} in equations.json)`
@@ -577,16 +606,22 @@ function reverseInlineMarkup(
   // Must come before generic [#...] to avoid partial match
   result = result.replace(/\[([^\]#]+)#([^\]]+)\]/g, '<link document="$1" target-id="$2"/>');
 
+  // Convert self-closing document links without target-id (e.g., [doc:m68860])
+  result = result.replace(/\[doc:([^\]]+)\]/g, '<link document="$1"/>');
+
   // Convert self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
   result = result.replace(/\[#([^\]]+)\]/g, '<link target-id="$1"/>');
 
   // Convert links with text back to CNXML
   result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
-    if (url.startsWith('#')) {
+    if (url.startsWith('doc:')) {
+      // Cross-document link without target-id (e.g., doc:m68860)
+      return `<link document="${url.substring(4)}">${linkText}</link>`;
+    } else if (url.startsWith('#')) {
       // Internal reference
       return `<link target-id="${url.substring(1)}">${linkText}</link>`;
     } else if (url.includes('#')) {
-      // Cross-document reference
+      // Cross-document reference with target
       const [doc, target] = url.split('#');
       return `<link document="${doc}" target-id="${target}">${linkText}</link>`;
     } else {
@@ -648,7 +683,7 @@ function reverseInlineMarkup(
   // This prevents user-typed HTML (e.g. <script>, <div>) from passing through unescaped.
   const cnxmlTags = [];
   result = result.replace(
-    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|m:math|m:[a-z]+)([\s>\/])/g,
+    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|equation|m:math|m:[a-z]+)([\s>\/])/g,
     (match) => {
       cnxmlTags.push(match);
       return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
@@ -1765,10 +1800,14 @@ async function main() {
       const { structure, segments, equations, originalCnxml, enSegments, inlineAttrs } =
         loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir);
 
-      // Restore __term__ markers that MT converted to **bold**
-      const { restoredCount } = restoreTermMarkers(segments, enSegments);
+      // Restore __term__ markers that MT converted to **bold** (web UI pipeline)
+      // or strip extra __term__ markers added by API glossary (API pipeline)
+      const { restoredCount, strippedCount } = restoreTermMarkers(segments, enSegments);
       if (args.verbose && restoredCount > 0) {
         console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
+      }
+      if (strippedCount > 0) {
+        console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
       }
 
       // Restore [[BR]] placeholders from EN source into IS segments

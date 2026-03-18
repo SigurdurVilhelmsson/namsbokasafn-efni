@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   normalizeUnicode,
+  repairSegTags,
   loadEnvFile,
   discoverModules,
   validateMarkers,
@@ -235,5 +236,37 @@ describe('skip-existing logic', () => {
 
     fs.rmSync(inputDir, { recursive: true });
     fs.rmSync(outputDir, { recursive: true });
+  });
+});
+
+// ─── SEG Tag Repair ─────────────────────────────────────────────────
+
+describe('repairSegTags', () => {
+  it('fixes hyphenated module IDs in SEG tags', () => {
+    const input = '<!-- SEG:m68683:para:1 --> Hello\n\n<!-- SEG:m68683:para:2 --> World';
+    const output = '<!-- SEG:m6-8683:para:1 --> Hæ\n\n<!-- SEG:m68683:para:2 --> Heimur';
+    expect(repairSegTags(input, output)).toBe(
+      '<!-- SEG:m68683:para:1 --> Hæ\n\n<!-- SEG:m68683:para:2 --> Heimur'
+    );
+  });
+
+  it('leaves correct SEG tags unchanged', () => {
+    const input = '<!-- SEG:m68664:title:auto-1 --> Hello';
+    const output = '<!-- SEG:m68664:title:auto-1 --> Hæ';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
+
+  it('handles multiple corrupted tags', () => {
+    const input = '<!-- SEG:m68683:a:1 -->\n<!-- SEG:m68683:b:2 -->';
+    const output = '<!-- SEG:m6-8683:a:1 -->\n<!-- SEG:m-68683:b:2 -->';
+    const result = repairSegTags(input, output);
+    expect(result).toContain('<!-- SEG:m68683:a:1 -->');
+    expect(result).toContain('<!-- SEG:m68683:b:2 -->');
+  });
+
+  it('does not modify tags that cannot be matched', () => {
+    const input = '<!-- SEG:m68664:para:1 --> Hello';
+    const output = '<!-- SEG:m99999:para:1 --> Hæ';
+    expect(repairSegTags(input, output)).toBe(output);
   });
 });

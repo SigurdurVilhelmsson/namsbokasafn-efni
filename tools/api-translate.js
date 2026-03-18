@@ -97,6 +97,36 @@ export function normalizeUnicode(text) {
   return result;
 }
 
+// ─── SEG Tag Repair ─────────────────────────────────────────────────
+
+/**
+ * Repair SEG tags corrupted by the MT API.
+ * The API occasionally inserts hyphens in numeric module IDs
+ * (e.g., m68683 → m6-8683).
+ */
+export function repairSegTags(input, output) {
+  // Build set of valid SEG tag IDs from input
+  const inputTags = new Set();
+  for (const match of input.matchAll(/<!-- SEG:(\S+?) -->/g)) {
+    inputTags.add(match[1]);
+  }
+
+  return output.replace(/<!-- SEG:(\S+?) -->/g, (fullMatch, tagId) => {
+    if (inputTags.has(tagId)) return fullMatch;
+
+    // Try fixing by removing hyphens from the module ID portion (e.g., m6-8683 → m68683)
+    const cleaned = tagId.replace(/^(m)([0-9-]+?)(:.*)$/, (_, prefix, digits, rest) => {
+      return `${prefix}${digits.replace(/-/g, '')}${rest}`;
+    });
+
+    if (inputTags.has(cleaned)) {
+      return `<!-- SEG:${cleaned} -->`;
+    }
+
+    return fullMatch;
+  });
+}
+
 // ─── .env Loading ───────────────────────────────────────────────────
 
 /**
@@ -278,6 +308,7 @@ async function translateModule(client, inputPath, outputPath, glossary) {
 
   // Post-process: normalize Unicode sub/superscripts
   output = normalizeUnicode(output);
+  output = repairSegTags(input, output);
 
   // Validate marker count
   if (!validateMarkers(input, output)) {

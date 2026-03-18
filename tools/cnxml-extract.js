@@ -150,6 +150,24 @@ function extractInlineText(
   const collectedEmphasisAttrs = [];
 
   // Replace MathML with placeholders
+  // First handle <equation> wrappers around <m:math> — preserve wrapper metadata in mathMap
+  text = text.replace(/<equation\s+([^>]*)>([\s\S]*?)<\/equation>/g, (match, attrs, inner) => {
+    const mathMatch = inner.match(/<m:math[^>]*>[\s\S]*?<\/m:math>/);
+    if (mathMatch) {
+      counters.math++;
+      const placeholder = `[[MATH:${counters.math}]]`;
+      const parsedAttrs = parseAttributes(attrs);
+      mathMap.set(placeholder, mathMatch[0]);
+      // Store equation wrapper metadata for later restoration
+      mathMap.set(`${placeholder}:equation`, {
+        id: parsedAttrs.id || null,
+        class: parsedAttrs.class || null,
+      });
+      return placeholder;
+    }
+    return match;
+  });
+  // Then handle remaining standalone <m:math> (not wrapped in <equation>)
   const mathPattern = /<m:math[^>]*>[\s\S]*?<\/m:math>/g;
   text = text.replace(mathPattern, (match) => {
     counters.math++;
@@ -225,8 +243,8 @@ function extractInlineText(
       collectedEmphasisAttrs.push({ class: parsedAttrs.class });
       return `{=${inner}=}`;
     }
-    // No class, no effect — just return inner text
-    return inner;
+    // No class, no effect — default to italic (common in CNXML for bare emphasis)
+    return `*${inner}*`;
   });
 
   // Handle terms - inner markup is already markdown at this point
@@ -267,6 +285,13 @@ function extractInlineText(
       return linkText
         ? `[${linkText}](${parsedAttrs.document}#${parsedAttrs['target-id']})`
         : `[${parsedAttrs.document}#${parsedAttrs['target-id']}]`;
+    }
+    // Document link without target-id (links to entire module)
+    if (parsedAttrs.document && !parsedAttrs['target-id']) {
+      const linkText = stripTags(inner).trim();
+      return linkText
+        ? `[${linkText}](doc:${parsedAttrs.document})`
+        : `[doc:${parsedAttrs.document}]`;
     }
     return match; // Not a document link — leave for later regexes
   });
@@ -449,7 +474,11 @@ function extractSegments(cnxml, options = {}) {
     const glossaryStructure = { type: 'glossary', items: [] };
     for (const term of glossaryTerms) {
       const termSegId = addSegment('glossary-term', term.term, `${term.id}-term`);
-      const defSegId = addSegment('glossary-def', term.meaning, `${term.id}-def`);
+      // Process meaning through extractInlineText to preserve emphasis, links, etc.
+      const meaningText = term.rawMeaning
+        ? extractInlineText(term.rawMeaning, mathMap, counters)
+        : term.meaning;
+      const defSegId = addSegment('glossary-def', meaningText, `${term.id}-def`);
       glossaryStructure.items.push({
         id: term.id,
         termSegmentId: termSegId,
@@ -460,13 +489,15 @@ function extractSegments(cnxml, options = {}) {
   }
 
   // Convert math placeholders to equations
-  for (const [placeholder, mathml] of mathMap) {
-    const match = placeholder.match(/\[\[MATH:(\d+)\]\]/);
-    if (match) {
+  for (const [placeholder, value] of mathMap) {
+    const match = placeholder.match(/\[\[MATH:(\d+)\]\]$/);
+    if (match && typeof value === 'string') {
       const mathId = `math-${match[1]}`;
+      const eqMeta = mathMap.get(`${placeholder}:equation`);
       equations[mathId] = {
-        mathml,
-        latex: convertMathMLToLatex(mathml),
+        mathml: value,
+        latex: convertMathMLToLatex(value),
+        ...(eqMeta && { equationId: eqMeta.id, equationClass: eqMeta.class }),
       };
     }
   }

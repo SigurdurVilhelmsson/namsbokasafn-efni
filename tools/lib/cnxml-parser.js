@@ -335,6 +335,7 @@ export function extractGlossary(cnxml) {
       term: term,
       rawTerm: rawTerm, // Preserve original with markup for rendering
       meaning: stripTags(match[3]).trim(),
+      rawMeaning: match[3].trim(), // Preserve markup for inline text extraction
     });
   }
 
