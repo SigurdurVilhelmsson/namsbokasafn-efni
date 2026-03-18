@@ -1,127 +1,113 @@
-# Design Spec: CNXML Inline Markup Fidelity Fixes
+# Design Spec: CNXML Fidelity Fixes for API Translation Pipeline
 
 **Date:** 2026-03-18
+**Updated:** 2026-03-18 (corrected with API pipeline empirical data)
 **Status:** Approved
-**Depends on:** Merged API integration (commit `462bffd`)
-**Reference:** `docs/pipeline/cnxml-fidelity-gaps.md` (empirical data)
+**Reference:** `docs/pipeline/cnxml-fidelity-gaps.md`
 
 ## Purpose
 
-Fix 27 missing inline elements found in chapter 1's source-vs-translated CNXML comparison. Build a validation tool for ongoing fidelity regression detection.
+Fix structural discrepancies between source CNXML and translated CNXML produced by the **API translation pipeline** (extract → api-translate.js → inject). Build a validation tool for ongoing fidelity regression detection.
 
-## Context
+## Context: Old vs API Pipeline Results
 
-Empirical comparison of 7 ch01 modules found these structural discrepancies between source CNXML (`01-source/`) and translated CNXML (`03-translated/mt-preview/`):
+Initial testing used the old manual pipeline output (protect → web UI → unprotect). Re-testing with the API pipeline revealed **fundamentally different issues**:
 
-| Gap | Element | Lost | Modules Affected |
-|-----|---------|------|-----------------|
-| A | `<emphasis>` | 15 | m68664 (-9), m68670 (-5), m68674 (-1) |
-| B | `<link document="...">` (no target-id) | 2 | m68674 (-1), m68690 (-1) |
-| C | `<sup>` | 4 | m68674 |
-| D | `<equation>` wrapper | 3 | m68667 (-1), m68683 (-2) |
-| E | `<newline/>` + `<term>` | 3 | m68667, m68670, m68683 |
+| Issue | Old Pipeline | API Pipeline | Change |
+|-------|-------------|-------------|--------|
+| `<emphasis>` lost | -15 | **-3** | 5x better — protect/unprotect was causing most losses |
+| `<term>` | -1 | **+56** | New — massive overproduction in m68664 |
+| `<sup>` | -4 | **+2** | Reversed — now overproducing |
+| `<equation>` wrapper | -3 | -3 | Same |
+| `<link>` (cross-doc) | -2 | -2 | Same |
+| `<newline/>` | -2 | 0 | Fixed by API (markers survive intact) |
+| `<definition>` / `<meaning>` | 0 | -2 | New — from SEG tag corruption |
+| m68670 | 6 issues | **PERFECT** | Fixed by API |
+| **Total** | 27 | ~68 | Different problems, dominated by term overproduction |
+
+**Key insight:** The API preserves markers much better than the web UI. But this exposes a latent bug in `reverseInlineMarkup()` — it can't reliably distinguish `__term__` from `**bold**` in the API output, causing massive term overproduction.
+
+## Gaps (API Pipeline)
+
+### Gap A: Term Overproduction (+56 in m68664) — HIGHEST PRIORITY
+
+**What:** m68664 has 16 `<term>` elements in source but 72 in translated output.
+
+**Root cause hypothesis:** The extraction converts `<term>text</term>` → `__text__` and `<emphasis effect="bold">text</emphasis>` → `**text**`. In the old pipeline, protect converted `__term__` → `{{TERM}}text{{/TERM}}`, preserving the distinction. The API sends raw segments where both `__` and `**` survive. But the MT engine may convert `**bold**` to `__bold__` (or vice versa), and `reverseInlineMarkup()` then treats all `__text__` as terms.
+
+**Investigation:** Compare EN source segments with IS API output for m68664 — find all `__` and `**` markers and trace which ones the API changed.
+
+**Fix location:** `tools/cnxml-inject.js` reverseInlineMarkup() — the term/bold disambiguation logic.
+
+### Gap B: SEG Tag Corruption (m68683)
+
+**What:** API translated `<!-- SEG:m68683:glossary-def:fs-idm327357936-def -->` as `<!-- SEG:m6-8683:glossary-def:fs-idm327357936-def -->`, inserting a hyphen in the module ID. This causes 1 missing segment at injection, losing a `<definition>` and `<meaning>` element.
+
+**Root cause:** The MT engine treats the numeric module ID as a number and adds a thousands separator or hyphen. This is content-dependent — only some SEG tags are affected.
+
+**Fix options:**
+1. Post-processing in `api-translate.js`: normalize SEG tags after translation (regex-fix corrupted IDs by comparing against the input's SEG tags)
+2. Pre-processing: add the module ID to a protected pattern list
+
+**Recommended:** Post-processing — scan output for `<!-- SEG:` tags and validate each against the input's tags. Fix corrupted IDs by finding the closest match.
+
+### Gap C: Emphasis Loss (-3 across m68664 and m68674)
+
+**What:** 3 `<emphasis>` elements lost. Much smaller than the old pipeline's 15.
+
+**Investigation:** Find the specific 3 cases and determine if they are extraction, MT, or injection issues.
+
+### Gap D: Equation Wrappers (-3 in m68667 and m68683)
+
+**What:** `<equation>` wrapper elements around `<m:math>` blocks not reconstructed. Same issue in both pipelines.
+
+**Investigation:** Check whether structure.json stores equation metadata. If not, extraction needs to store it.
+
+### Gap E: Cross-Document Links (-2 in m68674 and m68690)
+
+**What:** `<link document="m68860">Appendix B</link>` (no target-id) becomes plain text. Same issue in both pipelines.
+
+**Fix:** Add extraction support for `<link document="...">` without target-id.
+
+### Gap F: Superscript Overproduction (+2 in m68674)
+
+**What:** 2 extra `<sup>` elements appear in translated output. The API or injection is creating superscripts where the source doesn't have them.
+
+**Investigation:** Find the 2 extra superscripts and determine source.
 
 ## Approach
 
 Combined investigate+fix per gap. For each:
-1. Forensic analysis: trace the specific failing element through extract → segments → MT → inject
-2. Identify root cause (extraction bug, MT damage, injection regex miss)
+1. Forensic analysis: trace the specific failing element through extract → segments → API MT → inject
+2. Identify root cause
 3. Write targeted fix + regression test
 4. Verify with the validation tool
 
-## Components
+## Task Order (revised for API pipeline)
 
-### 1. Validation Tool (`tools/cnxml-fidelity-check.js`)
-
-CLI tool that compares XML tag structure between source and translated CNXML.
-
-```bash
-# Check a single module
-node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1 --module m68674
-
-# Check entire chapter
-node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1
-
-# Check entire book
-node tools/cnxml-fidelity-check.js --book efnafraedi-2e
-```
-
-**Output:** Per-module report of element count differences:
-```
-m68664: 1 discrepancy
-  emphasis: 17 → 8 (-9)
-m68674: 3 discrepancies
-  emphasis: 6 → 5 (-1)
-  link: 16 → 15 (-1)
-  sup: 79 → 75 (-4)
-...
-Summary: 27 discrepancies across 6/7 modules
-```
-
-**Implementation:** Count opening tags by element name in both files, report differences. Exclude `md:content-id` and other non-structural metadata tags. Uses `BOOK_OPTION`, `CHAPTER_OPTION`, `MODULE_OPTION` from `parseArgs.js`.
-
-Exit code 0 if no discrepancies, 1 if any found.
-
-### 2. Fix B: Cross-Document Links Without target-id
-
-**Root cause:** `cnxml-extract.js` line ~263 requires both `document` AND `target-id` attributes. `<link document="m68860">Appendix B</link>` (no target-id) falls through and becomes plain text.
-
-**Fix in extraction:** Add a case for `<link document="...">text</link>` without target-id. Extract as `[text](doc:m68860)` — a new link format using the `doc:` prefix to distinguish from URLs.
-
-**Fix in injection:** In `reverseInlineMarkup()`, add reverse conversion: `[text](doc:m68860)` → `<link document="m68860">text</link>`. Also handle self-closing: `[doc:m68860]` → `<link document="m68860"/>`.
-
-**Impact:** Requires re-extraction of affected modules to get the new link format into segment files. Existing MT output for those segments would need re-translation or manual patching.
-
-### 3. Fix D: `<equation>` Wrapper Elements
-
-**Root cause (to investigate):** The MathML content is preserved via `[[MATH:N]]` → equations.json → restored inline. But standalone `<equation id="..." class="...">` elements that wrap `<m:math>` blocks may not be reconstructed. The injection may insert the MathML inline without the wrapping `<equation>` tag.
-
-**Fix:** Investigate whether structure.json stores equation wrapper metadata. If yes, injection should reconstruct the wrapper. If not, extraction needs to store it.
-
-### 4. Fix C: `<sup>` Round-Trip (4 lost in m68674)
-
-**Root cause (to investigate):** The extraction converts `<sup>N</sup>` → `^N^`. Injection uses regex with lookbehind/lookahead to reverse. Failures likely occur when `^` is adjacent to `[[MATH:N]]` placeholders, `<!-- SEG -->` tags, or other markup.
-
-**Fix:** Identify the 4 specific superscripts that fail, find the common pattern, adjust the regex.
-
-### 5. Fix A: `<emphasis>` Round-Trip (15 lost across 3 modules)
-
-**Root cause (to investigate):** The largest issue. Extraction converts `<emphasis effect="italics">` → `*text*` and `<emphasis effect="bold">` → `**text**`. Injection reverses with regex. Likely failure modes:
-- MT output changes `*` marker positions or removes them
-- Emphasis adjacent to or containing other inline markup (links, terms, sub/superscripts)
-- Multiple emphasis markers without separating text
-- Markdown ambiguity (e.g., `*` inside a URL or math context)
-
-**Fix:** Investigate all 15 cases. Categorize by failure mode. Fix the regex patterns or add special-case handling.
-
-### 6. Fix E: `<newline/>` and `<term>` (3 lost)
-
-**Root cause (to investigate):** Likely MT-caused damage — the API translates `[[BR]]` markers or `__term__` underscores. May be partially mitigable with better post-processing.
-
-**Fix:** Investigate whether these are extraction/injection bugs or MT artifacts. If MT artifacts, document as known limitations.
-
-## Testing Strategy
-
-- Each fix adds regression tests in `tools/__tests__/pipeline-integration.test.js`
-- The validation tool itself gets unit tests in `tools/__tests__/cnxml-fidelity-check.test.js`
-- Final success: `node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1` reports 0 discrepancies
+1. **Build validation tool** — establishes baseline measurement
+2. **Fix A: Term overproduction** — highest priority, 56 extra terms
+3. **Fix B: SEG tag corruption** — post-process API output to fix damaged IDs
+4. **Fix E: Cross-doc links** — focused extraction/injection change
+5. **Fix D: Equation wrappers** — structural investigation
+6. **Fix C: Emphasis loss** — 3 remaining cases
+7. **Fix F: Superscript overproduction** — 2 extra sups
+8. **Final validation run**
 
 ## Files
 
 | File | Action | Purpose |
 |------|--------|---------|
 | `tools/cnxml-fidelity-check.js` | Create | Validation tool |
-| `tools/__tests__/cnxml-fidelity-check.test.js` | Create | Validation tool tests |
-| `tools/cnxml-extract.js` | Modify | Fix B (cross-doc links) |
-| `tools/cnxml-inject.js` | Modify | Fixes A, B, C, D (inline markup) |
-| `tools/__tests__/pipeline-integration.test.js` | Modify | Regression tests for each fix |
+| `tools/api-translate.js` | Modify | Fix B (SEG tag post-processing) |
+| `tools/cnxml-extract.js` | Modify | Fix E (cross-doc links) |
+| `tools/cnxml-inject.js` | Modify | Fixes A, C, D, E, F (inline markup) |
+| `tools/__tests__/pipeline-integration.test.js` | Modify | Regression tests |
 
-## Task Order
+## Success Criteria
 
-1. Build validation tool (establishes baseline measurement)
-2. Fix B: cross-doc links (easy, focused)
-3. Fix D: equation wrappers (structural, investigation needed)
-4. Fix C: `<sup>` round-trip (4 cases, regex)
-5. Fix A: `<emphasis>` round-trip (15 cases, regex — largest)
-6. Fix E: `<newline/>` + `<term>` (investigation, may be MT-caused)
-7. Final validation run
+`node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1` reports 0 discrepancies against source CNXML.
+
+## Server-Side Glossaries (Related Enhancement)
+
+The Málstaður API supports server-side glossaries associated with the account. Two chemistry glossaries are already configured (618 terms each). Using server-side glossaries instead of inline glossaries eliminates the 35KB payload overhead per request. This is a separate enhancement to `api-translate.js` but should be done before batch translation.

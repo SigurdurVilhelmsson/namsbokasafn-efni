@@ -1,16 +1,29 @@
 # CNXML Round-Trip Fidelity: What Survives and What Doesn't
 
 **Date:** 2026-03-18
-**Updated:** 2026-03-18 (empirical verification added)
+**Updated:** 2026-03-18 (corrected with API pipeline data — old pipeline data was misleading)
 **Context:** Evaluating whether the Extract→Translate→Inject pipeline can produce CNXML suitable for merging back with the OpenStax publishing platform.
 
 ## Summary
 
-The pipeline preserves **most** CNXML structure with high fidelity. The extraction stores structural metadata in sidecar files (`-structure.json`, `-equations.json`, `-inline-attrs.json`), and injection rebuilds CNXML from these plus translated segments. Structural elements like sections, tables, figures, exercises, glossary, and MathML all round-trip correctly.
+The pipeline preserves **most** CNXML structure with high fidelity. Structural elements like sections, tables, figures, exercises, glossary, and MathML all round-trip correctly.
 
-However, **empirical testing of chapter 1 (7 modules)** revealed **27 missing inline elements** across 6 of 7 modules. The main issues are in emphasis (15 lost), superscript (4 lost), and equation wrappers (3 lost). These are inline markup round-trip failures in the `reverseInlineMarkup()` regex system.
+**IMPORTANT: Old manual pipeline vs API pipeline produce different results.** Initial testing used old manual MT output (protect → web UI → unprotect), which showed 27 missing elements. Re-testing with the API pipeline (api-translate.js, no protection) revealed **different issues** — fewer emphasis losses but a new term overproduction bug.
 
-**Verdict:** The pipeline handles structural/block-level CNXML well. The remaining gaps are concentrated in inline markup edge cases and are fixable. A dedicated fidelity pass is needed before the output can be used for OpenStax remerge.
+### API Pipeline Results (ch01, 7 modules)
+
+| Issue | Count | Modules |
+|-------|-------|---------|
+| `<term>` overproduction | **+56** | m68664 (16→72) |
+| `<emphasis>` lost | -3 | m68664 (-1), m68674 (-2) |
+| `<equation>` wrapper lost | -3 | m68667 (-1), m68683 (-2) |
+| `<link>` lost (cross-doc) | -2 | m68674 (-1), m68690 (-1) |
+| `<sup>` overproduction | +2 | m68674 |
+| SEG tag corruption | -2 | m68683 (m68683→m6-8683, losing 1 definition + 1 meaning) |
+| `<term>` overproduction | +1 | m68674 |
+| **Perfect modules** | — | m68663, m68670 |
+
+**Verdict:** The API pipeline is better for emphasis preservation (3 lost vs 15) but has a critical term/bold disambiguation bug. Block-level structure is sound. A dedicated fidelity pass is needed before batch translation.
 
 ---
 
