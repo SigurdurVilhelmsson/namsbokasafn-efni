@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   normalizeUnicode,
   repairSegTags,
+  filterGlossaryForText,
   loadEnvFile,
   discoverModules,
   validateMarkers,
@@ -268,5 +269,53 @@ describe('repairSegTags', () => {
     const input = '<!-- SEG:m68664:para:1 --> Hello';
     const output = '<!-- SEG:m99999:para:1 --> Hæ';
     expect(repairSegTags(input, output)).toBe(output);
+  });
+});
+
+// ─── Glossary Filtering ─────────────────────────────────────────────
+
+describe('filterGlossaryForText', () => {
+  const fullGlossary = {
+    domain: 'chemistry',
+    sourceLanguage: 'en',
+    targetLanguage: 'is',
+    terms: [
+      { sourceWord: 'molecule', targetWord: 'sameind' },
+      { sourceWord: 'atom', targetWord: 'atóm' },
+      { sourceWord: 'acid', targetWord: 'sýra' },
+      { sourceWord: 'electronegativity', targetWord: 'rafneikvæðni' },
+      { sourceWord: 'stoichiometry', targetWord: 'hlutfallaefnafræði' },
+    ],
+  };
+
+  it('keeps only terms found in the text', () => {
+    const text = 'The molecule bonds with an acid to form a compound.';
+    const filtered = filterGlossaryForText(fullGlossary, text);
+    expect(filtered.terms).toHaveLength(2);
+    expect(filtered.terms.map((t) => t.sourceWord)).toEqual(['molecule', 'acid']);
+  });
+
+  it('matches case-insensitively', () => {
+    const text = 'ELECTRONEGATIVITY increases across a period.';
+    const filtered = filterGlossaryForText(fullGlossary, text);
+    expect(filtered.terms).toHaveLength(1);
+    expect(filtered.terms[0].sourceWord).toBe('electronegativity');
+  });
+
+  it('returns null when no terms match', () => {
+    const text = 'The weather is nice today.';
+    expect(filterGlossaryForText(fullGlossary, text)).toBeNull();
+  });
+
+  it('returns null for null glossary', () => {
+    expect(filterGlossaryForText(null, 'some text')).toBeNull();
+  });
+
+  it('preserves glossary metadata', () => {
+    const text = 'An atom has a nucleus.';
+    const filtered = filterGlossaryForText(fullGlossary, text);
+    expect(filtered.domain).toBe('chemistry');
+    expect(filtered.sourceLanguage).toBe('en');
+    expect(filtered.targetLanguage).toBe('is');
   });
 });

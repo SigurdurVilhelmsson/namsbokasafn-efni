@@ -290,34 +290,65 @@ function discoverChapters(bookDir) {
     });
 }
 
+// ─── Glossary Filtering ─────────────────────────────────────────────
+
+/**
+ * Filter glossary to only include terms that appear in the source text.
+ * Reduces payload from ~35KB (617 terms) to typically 2-5KB.
+ */
+export function filterGlossaryForText(glossary, text) {
+  if (!glossary) return null;
+  const lowerText = text.toLowerCase();
+  const filtered = glossary.terms.filter((t) => lowerText.includes(t.sourceWord.toLowerCase()));
+  if (filtered.length === 0) return null;
+  return { ...glossary, terms: filtered };
+}
+
 // ─── Translation ────────────────────────────────────────────────────
 
 /**
  * Translate a single module file via the API.
+ * Filters glossary to terms in source text. Retries without glossary on truncation.
  */
-async function translateModule(client, inputPath, outputPath, glossary) {
+async function translateModule(client, inputPath, outputPath, glossary, verbose) {
   const input = fs.readFileSync(inputPath, 'utf8');
 
+  // Filter glossary to terms appearing in this module's text
+  const filteredGlossary = filterGlossaryForText(glossary, input);
+
   const translateOpts = { targetLanguage: 'is' };
-  if (glossary) {
-    translateOpts.glossaries = [glossary];
+  if (filteredGlossary) {
+    translateOpts.glossaries = [filteredGlossary];
   }
 
-  const result = await client.translateAuto(input, translateOpts);
+  let result = await client.translateAuto(input, translateOpts);
   let output = result.text;
 
-  // Post-process: normalize Unicode sub/superscripts
+  // Post-process
   output = normalizeUnicode(output);
   output = repairSegTags(input, output);
 
-  // Validate marker count
+  // Validate marker count — retry without glossary if truncated
   if (!validateMarkers(input, output)) {
-    const inputCount = (input.match(/<!-- SEG:/g) || []).length;
-    const outputCount = (output.match(/<!-- SEG:/g) || []).length;
-    throw new Error(
-      `Segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
-        `API may have truncated the response.`
-    );
+    if (filteredGlossary) {
+      if (verbose) {
+        console.error(
+          `\n    Truncated with glossary (${filteredGlossary.terms.length} terms), retrying without...`
+        );
+      }
+      result = await client.translateAuto(input, { targetLanguage: 'is' });
+      output = normalizeUnicode(result.text);
+      output = repairSegTags(input, output);
+    }
+
+    if (!validateMarkers(input, output)) {
+      const inputCount = (input.match(/<!-- SEG:/g) || []).length;
+      const outputCount = (output.match(/<!-- SEG:/g) || []).length;
+      throw new Error(
+        `Segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
+          `API may have truncated the response.`
+      );
+    }
   }
 
   // Write output
@@ -505,7 +536,13 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars } = await translateModule(client, mod.path, mod.outputPath, glossary);
+      const { chars } = await translateModule(
+        client,
+        mod.path,
+        mod.outputPath,
+        glossary,
+        args.verbose
+      );
       console.log(`✅ (${chars.toLocaleString()} chars)`);
       results.translated++;
     } catch (err) {
