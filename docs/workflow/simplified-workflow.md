@@ -14,32 +14,17 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  Step 1a: CNXML → EN Markdown                               │
+│  Step 1: CNXML → EN Markdown                                │
 │  Tool: cnxml-extract.js                                     │
 │  Output: m68724-segments.en.md (with [[MATH:N]] placeholders│
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  Step 1b: Protect & Split for MT                            │
-│  Tool: protect-segments-for-mt.js                           │
-│  Converts <!-- SEG:... --> → {{SEG:...}}, protects links    │
-│  Splits by visible char count (12K) if needed               │
-│  Output: MT-ready .en.md files + -links.json sidecars       │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────┐
 │  Step 2: Machine Translation                                │
-│  User: Upload to malstadur.is (Erlendur)                    │
-│  Output: m68724-segments.is.md (MT output with {{SEG:...}}) │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Step 2b: Unprotect & Merge MT Output                       │
-│  Tool: unprotect-segments.js                                │
-│  Auto-copies -links.json from 02-for-mt/ if needed          │
-│  Merges split files, converts {{SEG:...}} → <!-- SEG:... -->│
-│  Restores links from -links.json                            │
-│  Output: Ready for review or injection                      │
+│  Tool: api-translate.js (automated via Málstaður API)       │
+│  Sends whole files directly — all markers preserved intact  │
+│  Includes 617 approved glossary terms per request           │
+│  Output: m68724-segments.is.md in 02-mt-output/             │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -108,85 +93,40 @@ node tools/cnxml-extract.js --input books/efnafraedi-2e/01-source/ch05/m68724.cn
 - `02-structure/ch05/m68724-structure.json` - Document structure for reconstruction
 - `02-structure/ch05/m68724-equations.json` - MathML equations keyed by placeholder ID
 
-### Step 1b: Protect & Split for Erlendur MT
-
-**Goal:** Make segment files safe for Erlendur MT, which strips HTML comments and markdown link URLs.
-
-**Process:**
-```bash
-# Process all segment files in a chapter directory
-node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05/
-
-# Or a single file
-node tools/protect-segments-for-mt.js books/efnafraedi-2e/02-for-mt/ch05/m68724-segments.en.md
-```
-
-**What it does:**
-1. Converts `<!-- SEG:... -->` → `{{SEG:...}}` (HTML comments are stripped by Erlendur; curly brackets survive)
-2. Protects links: `[text](url)` → `{{LINK:N}}text{{/LINK}}` (Erlendur strips URLs from markdown links)
-3. Protects cross-refs: `[#ref-id]` → `{{XREF:N}}`
-4. Splits at paragraph boundaries if visible character count exceeds 12K
-5. Validates no part exceeds 20K total characters (hard limit)
-6. Writes `-links.json` sidecar with protected URLs
-
-**Output:**
-- `02-for-mt/ch05/m68724-segments.en.md` - Protected first part (or whole file if no split needed)
-- `02-for-mt/ch05/m68724-segments(b).en.md` - Second part (if split)
-- `02-for-mt/ch05/m68724-segments-links.json` - Protected link URLs
-
-**Important:** The visible character limit (12K) counts only translatable text, excluding `{{SEG:...}}`, `[[MATH:N]]`, and `{{LINK:N}}` tags. The total file size (including tags) must not exceed 20K for MT service compatibility.
-
----
-
 ### Step 2: Machine Translation
 
-**Goal:** Get initial Icelandic translation via malstadur.is.
+**Goal:** Get initial Icelandic translation via the Málstaður API.
 
-There are two methods — file upload/download (preferred) or copy/paste (fallback). Both are described in the comprehensive guide: **[MT Process Guide](mt-process.md)**. An Icelandic step-by-step guide for editors is at **[Leiðbeiningar um vélþýðingu](../guides/mt-guide-for-editors.md)**.
+#### Method A: Automated via API (Recommended)
 
-**Quick version (file upload/download via pipeline UI):**
-
-1. In the pipeline UI, click **"↓ Sækja EN"** for the chapter — this auto-runs protect and downloads a ZIP with `{{SEG:...}}` markers
-2. Upload the `.en.md` files to [malstadur.is](https://malstadur.is)
-3. Download the translated `.is.md` files
-4. In the pipeline UI, click **"↑ Hlaða upp IS"** and select the translated files — this auto-runs unprotect
-
-**Important:** The "↓ Sækja EN" button auto-runs the protect step. If you re-extract a chapter, the protection status is reset and will re-run automatically on the next download. The server will reject downloads of unprotected files with a warning.
-
-**Save to:** `02-mt-output/ch05/` (using same filenames as input)
-
-**Note:** MT output will have protected tags (`{{SEG:...}}`) and may be split into multiple files. These need to be unprotected before injection.
-
----
-
-### Step 2b: Unprotect & Merge MT Output
-
-**Goal:** Prepare MT output for injection by reversing the protection applied in Step 1b.
-
-**Process:**
 ```bash
-# Process entire chapter
-node tools/unprotect-segments.js --chapter 5 --verbose
+# Translate all modules in a chapter
+node tools/api-translate.js --book efnafraedi-2e --chapter 5
 
-# Or process specific directory
-node tools/unprotect-segments.js --batch books/efnafraedi-2e/02-mt-output/ch05/
+# Preview what will be translated and estimated cost
+node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
+
+# Translate a single module
+node tools/api-translate.js --book efnafraedi-2e --chapter 5 --module m68724
+
+# Translate an entire book
+node tools/api-translate.js --book efnafraedi-2e
 ```
 
-**What it does:**
-0. **Auto-copies** `-links.json` files from `02-for-mt/` if missing (when processing `02-mt-output/`)
-1. Detects and merges split files: `(a)`, `(b)`, `(c)` → single file
-2. Converts `{{SEG:...}}` → `<!-- SEG:... -->`
-3. Restores links from `-links.json`: `{{LINK:N}}text{{/LINK}}` → `[text](url)`
-4. Restores cross-refs: `{{XREF:N}}` → `[#ref-id]`
-5. Deletes split files (unless `--keep-splits` specified)
+**Requirements:** `MALSTADUR_API_KEY` set in `.env` or environment.
 
-**Output:**
-- Merged, unprotected files in `02-mt-output/` (overwrites in place)
-- Files now ready for injection with `cnxml-inject.js`
+**Features:**
+- Sends whole `.en.md` files directly (no protection/splitting needed — API preserves all markers)
+- Sends approved glossary terms with each request for terminology enforcement
+- Skips modules that already have output (resumable — use `--force` to re-translate)
+- Reports character count and cost estimate
+- Normalizes Unicode subscripts/superscripts in API output
 
-**Important:** This step is REQUIRED before injection. The `cnxml-inject.js` tool expects complete files with `<!-- SEG:... -->` tags.
+**Output:** `02-mt-output/ch05/m68724-segments.is.md` — ready for injection directly.
 
-**Note:** The script automatically ensures `-links.json` files are present by copying them from the corresponding `02-for-mt/` directory. This prevents the common error where cross-references and external links fail to render because the links metadata was missing.
+#### Method B: Manual via malstadur.is Web UI (Legacy)
+
+For situations where the API is unavailable, the web UI method still works but requires additional protect/unprotect steps. See the [Legacy MT Workflow](#legacy-mt-workflow-web-ui) section at the end of this document.
 
 ---
 
@@ -439,17 +379,22 @@ books/efnafraedi-2e/
 ### Active
 | Tool | Purpose | Step |
 |------|---------|------|
-| `cnxml-extract.js` | CNXML → segmented EN markdown + structure JSON | 1a |
-| `protect-segments-for-mt.js` | Protect tags & links, split for Erlendur MT | 1b |
-| `unprotect-segments.js` | Restore tags & links in MT output | 2→3 |
+| `cnxml-extract.js` | CNXML → segmented EN markdown + structure JSON | 1 |
+| `api-translate.js` | Automated MT via Málstaður API (with glossary) | 2 |
 | `prepare-for-align.js` | Clean markdown for Matecat Align | 4 |
 | `cnxml-inject.js` | Inject translations back into CNXML structure | 5a |
 | `cnxml-render.js` | Render translated CNXML to semantic HTML | 5b |
 
+### Legacy (Web UI only)
+| Tool | Purpose | When needed |
+|------|---------|-------------|
+| `protect-segments-for-mt.js` | Protect tags & links, split for web UI upload | Only when using malstadur.is web UI |
+| `unprotect-segments.js` | Restore tags & links in web UI MT output | Only when using malstadur.is web UI |
+
 ### External Services
 | Service | Purpose | Step |
 |---------|---------|------|
-| [malstadur.is](https://malstadur.is) | Icelandic MT | 2 |
+| [Málstaður API](https://api.malstadur.is) | Icelandic MT (via `api-translate.js`) | 2 |
 | [Matecat Align](https://matecat.com/align/) | TM creation | 4 |
 
 ### Deprecated
@@ -514,16 +459,13 @@ This is documented separately in [pass2-localization.md](../editorial/pass2-loca
 ## Quick Reference
 
 ```bash
-# Step 1a: Extract EN segments from CNXML
+# Step 1: Extract EN segments from CNXML
 node tools/cnxml-extract.js --chapter 5
 
-# Step 1b: Protect tags and split for Erlendur MT
-node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05/
-
-# Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
-
-# Step 2→3: Restore protected segments in MT output
-node tools/unprotect-segments.js --batch books/efnafraedi-2e/02-mt-output/ch05/
+# Step 2: Machine translate via API (automated)
+node tools/api-translate.js --book efnafraedi-2e --chapter 5
+# Or dry-run first to see cost estimate:
+node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 
 # Step 3 Option A: Review via segment editor at /segment-editor (recommended)
 # Step 3 Option B: Manual editing — first initialize, then edit files
@@ -550,6 +492,41 @@ node tools/cnxml-render.js --chapter 5 --track mt-preview
 # or via API:
 curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/mt-preview
 ```
+
+## Legacy MT Workflow (Web UI)
+
+> These steps are only needed when using the malstadur.is **web UI** instead of `api-translate.js`. The API method (Step 2 above) does not require protection or unprotection.
+
+### Step 1b (Legacy): Protect & Split for Web UI
+
+**Goal:** Make segment files safe for the malstadur.is web UI, which strips HTML comments and markdown link URLs.
+
+```bash
+node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05/
+```
+
+**What it does:**
+1. Converts `<!-- SEG:... -->` → `{{SEG:...}}` (web UI strips HTML comments)
+2. Protects links: `[text](url)` → `{{LINK:N}}text{{/LINK}}` (web UI strips URLs)
+3. Splits at paragraph boundaries if visible character count exceeds 12K
+4. Writes `-links.json` sidecar with protected URLs
+
+### Step 2 (Legacy): Upload to malstadur.is
+
+1. In the pipeline UI, click **"↓ Sækja EN"** to download protected files
+2. Upload to [malstadur.is](https://malstadur.is)
+3. Download translated `.is.md` files
+4. In the pipeline UI, click **"↑ Hlaða upp IS"** to upload and auto-unprotect
+
+### Step 2b (Legacy): Unprotect & Merge
+
+```bash
+node tools/unprotect-segments.js --chapter 5 --verbose
+```
+
+**What it does:** Merges split files, converts `{{SEG:...}}` → `<!-- SEG:... -->`, restores links from `-links.json`.
+
+---
 
 ## API Endpoints
 

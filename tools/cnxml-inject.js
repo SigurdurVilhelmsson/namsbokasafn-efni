@@ -791,6 +791,15 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       }
     }
 
+    // Replace md:title with translated document title
+    const translatedTitle = getSeg(structure.title?.segmentId) || structure.title?.text;
+    if (translatedTitle) {
+      translatedMetadata = translatedMetadata.replace(
+        /<md:title>[^<]*<\/md:title>/,
+        `<md:title>${translatedTitle}</md:title>`
+      );
+    }
+
     lines.push(translatedMetadata);
   }
 

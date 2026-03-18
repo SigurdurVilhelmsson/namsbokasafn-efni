@@ -76,6 +76,23 @@ describe('cnxml-inject', () => {
       expect(existsSync(file), `Missing: ${mod}.cnxml`).toBe(true);
     }
   });
+
+  it('should translate md:title in metadata', () => {
+    // m68664 has md:title "Chemistry in Context" in original
+    const translatedCnxml = readFileSync(
+      join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68664.cnxml'),
+      'utf8'
+    );
+    const documentTitleMatch = translatedCnxml.match(/<title>([^<]+)<\/title>/);
+    const mdTitleMatch = translatedCnxml.match(/<md:title>([^<]+)<\/md:title>/);
+
+    expect(documentTitleMatch).toBeTruthy();
+    expect(mdTitleMatch).toBeTruthy();
+    // md:title should NOT be the English original
+    expect(mdTitleMatch[1]).not.toBe('Chemistry in Context');
+    // md:title should match the document title
+    expect(mdTitleMatch[1]).toBe(documentTitleMatch[1]);
+  });
 });
 
 // =====================================================================

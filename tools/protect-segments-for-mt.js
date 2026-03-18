@@ -68,6 +68,10 @@ function printHelp() {
   console.log(`
 protect-segments-for-mt.js - Protect segment files for Erlendur MT
 
+NOTE: This tool is only needed for the malstadur.is WEB UI workflow.
+If using the Málstaður API (api-translate.js), no protection is needed —
+the API preserves all content markers intact.
+
 Converts segment tags to MT-safe format and splits by visible character count.
 
 What it does:
