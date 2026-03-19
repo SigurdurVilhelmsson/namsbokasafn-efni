@@ -99,7 +99,62 @@ function parseCliArgs(argv) {
     CHAPTER_OPTION,
     MODULE_OPTION,
     { name: 'track', flags: ['--track'], type: 'string', default: 'mt-preview' },
+    { name: 'report', flags: ['--report'], type: 'boolean', default: false },
+    { name: 'annotate', flags: ['--annotate'], type: 'boolean', default: false },
   ]);
+}
+
+/**
+ * Write a fidelity report JSON file for a module.
+ * Stored alongside the translated CNXML for the editor interface to read.
+ */
+function writeReport(transPath, moduleId, chapterDir, diffs) {
+  const reportPath = transPath.replace('.cnxml', '-fidelity.json');
+  const report = {
+    moduleId,
+    chapter: chapterDir,
+    timestamp: new Date().toISOString(),
+    perfect: diffs.length === 0,
+    discrepancies: diffs.map((d) => ({
+      tag: d.tag,
+      source: d.source,
+      translated: d.translated,
+      diff: d.diff,
+      direction: d.diff > 0 ? 'overproduction' : 'loss',
+    })),
+  };
+  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf8');
+  return reportPath;
+}
+
+/**
+ * Add XML comment annotation to the translated CNXML with fidelity warnings.
+ * Inserted after the opening <document> tag so it's visible at the top of the file.
+ */
+function annotateTranslatedCnxml(transPath, moduleId, diffs) {
+  let cnxml = fs.readFileSync(transPath, 'utf8');
+
+  // Remove any existing fidelity annotation
+  cnxml = cnxml.replace(/\n<!-- FIDELITY-WARNING:[\s\S]*?-->\n/g, '');
+
+  if (diffs.length > 0) {
+    const lines = [
+      `<!-- FIDELITY-WARNING: ${moduleId} has ${diffs.length} structural discrepancy(ies)`,
+    ];
+    for (const d of diffs) {
+      const dir = d.diff > 0 ? 'overproduction' : 'loss';
+      lines.push(
+        `  ${d.tag}: source=${d.source} translated=${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff} ${dir})`
+      );
+    }
+    lines.push('  Review needed before publication. Run cnxml-fidelity-check.js for details.');
+    lines.push('-->');
+    const annotation = lines.join('\n');
+
+    // Insert after <document ...>
+    cnxml = cnxml.replace(/(<document[^>]*>)/, `$1\n${annotation}`);
+    fs.writeFileSync(transPath, cnxml, 'utf8');
+  }
 }
 
 function printHelp() {
@@ -119,6 +174,8 @@ Options:
   --chapter <num>     Chapter number (omit for whole book)
   --module <id>       Single module ID (requires --chapter)
   --track <name>      Translation track (default: mt-preview)
+  --report            Write per-module JSON fidelity reports alongside translated CNXML
+  --annotate          Add XML comment warnings to translated CNXML files with discrepancies
   -v, --verbose       Show perfect modules too
   -h, --help          Show this help
 `);
@@ -188,6 +245,16 @@ function main() {
             `  ${d.tag}: ${d.source} → ${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff})`
           );
         }
+      }
+
+      // Write per-module fidelity report if requested
+      if (args.report) {
+        writeReport(transPath, mod.moduleId, chapterDir, diffs);
+      }
+
+      // Annotate translated CNXML with fidelity warnings if requested
+      if (args.annotate) {
+        annotateTranslatedCnxml(transPath, mod.moduleId, diffs);
       }
     }
   }
