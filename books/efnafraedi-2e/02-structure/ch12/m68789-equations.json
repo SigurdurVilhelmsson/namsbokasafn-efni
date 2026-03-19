@@ -1,11 +1,15 @@
 {
   "math-1": {
     "mathml": "<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math>",
-    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{1}{{{[{{\\text{O}}_{3}}]}}}^{1}=k{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}"
+    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{1}{{{[{{\\text{O}}_{3}}]}}}^{1}=k{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}",
+    "equationId": "fs-idm236326672",
+    "equationClass": "unnumbered"
   },
   "math-2": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mi>k</m:mi></m:mtd><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>6.60</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:menclose><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>3.00</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mtext>2</m:mtext><m:mo>.</m:mo><m:mtext>2</m:mtext><m:mn>0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>7</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} k & =\\, \\frac{{\\text{rate}}}{{{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}} \\\\ =\\, \\frac{{6.60\\, \\times \\, {{10}}^{{−5}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}{\\text{s}}^{{-1}}}}{{{({1.00\\, \\times \\, {{10}}^{{−6}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}})}\\, (3.00\\, \\times \\, {{10}}^{{−6}}\\, \\text{mol}\\, {\\text{L}}^{{-1}})}} \\\\ =\\text{2}.\\text{2}0\\, \\times \\, {10}^{7}\\, \\text{L}\\, {\\text{mol}}^{{-1}}{\\text{s}}^{{-1}} \\end{aligned}"
+    "latex": "\\begin{aligned} k & =\\, \\frac{{\\text{rate}}}{{{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}} \\\\ =\\, \\frac{{6.60\\, \\times \\, {{10}}^{{−5}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}{\\text{s}}^{{-1}}}}{{{({1.00\\, \\times \\, {{10}}^{{−6}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}})}\\, (3.00\\, \\times \\, {{10}}^{{−6}}\\, \\text{mol}\\, {\\text{L}}^{{-1}})}} \\\\ =\\text{2}.\\text{2}0\\, \\times \\, {10}^{7}\\, \\text{L}\\, {\\text{mol}}^{{-1}}{\\text{s}}^{{-1}} \\end{aligned}",
+    "equationId": "fs-idm208899344",
+    "equationClass": "unnumbered"
   },
   "math-3": {
     "mathml": "<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CHO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
@@ -17,11 +21,15 @@
   },
   "math-5": {
     "mathml": "<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math>",
-    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{1}{{{[{{\\text{O}}_{3}}]}}}^{1}=k{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}"
+    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{1}{{{[{{\\text{O}}_{3}}]}}}^{1}=k{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}",
+    "equationId": "fs-idm236326672",
+    "equationClass": "unnumbered"
   },
   "math-6": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mi>k</m:mi></m:mtd><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>6.60</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:menclose><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>3.00</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mtext>2</m:mtext><m:mo>.</m:mo><m:mtext>2</m:mtext><m:mn>0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>7</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} k & =\\, \\frac{{\\text{rate}}}{{{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}} \\\\ =\\, \\frac{{6.60\\, \\times \\, {{10}}^{{−5}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}{\\text{s}}^{{-1}}}}{{{({1.00\\, \\times \\, {{10}}^{{−6}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}})}\\, (3.00\\, \\times \\, {{10}}^{{−6}}\\, \\text{mol}\\, {\\text{L}}^{{-1}})}} \\\\ =\\text{2}.\\text{2}0\\, \\times \\, {10}^{7}\\, \\text{L}\\, {\\text{mol}}^{{-1}}{\\text{s}}^{{-1}} \\end{aligned}"
+    "latex": "\\begin{aligned} k & =\\, \\frac{{\\text{rate}}}{{{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}} \\\\ =\\, \\frac{{6.60\\, \\times \\, {{10}}^{{−5}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}{\\text{s}}^{{-1}}}}{{{({1.00\\, \\times \\, {{10}}^{{−6}}\\, \\sout{{{{\\text{mol L}}}^{{−1}}}}})}\\, (3.00\\, \\times \\, {{10}}^{{−6}}\\, \\text{mol}\\, {\\text{L}}^{{-1}})}} \\\\ =\\text{2}.\\text{2}0\\, \\times \\, {10}^{7}\\, \\text{L}\\, {\\text{mol}}^{{-1}}{\\text{s}}^{{-1}} \\end{aligned}",
+    "equationId": "fs-idm208899344",
+    "equationClass": "unnumbered"
   },
   "math-7": {
     "mathml": "<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CHO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
@@ -125,43 +133,63 @@
   },
   "math-32": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mi>x</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mi>y</m:mi></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:mtext>NO</m:mtext><m:mtext>]</m:mtext></m:mrow><m:mi>x</m:mi><m:mi>m</m:mi></m:msubsup><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>]</m:mtext></m:mrow><m:mi>x</m:mi><m:mi>n</m:mi></m:msubsup></m:mrow><m:mrow><m:mi>k</m:mi><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:mtext>NO</m:mtext><m:mtext>]</m:mtext></m:mrow><m:mi>y</m:mi><m:mi>m</m:mi></m:msubsup><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>]</m:mtext></m:mrow><m:mi>y</m:mi><m:mi>n</m:mi></m:msubsup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{{{\\text{rate}}}_{x}}}{{{{\\text{rate}}}_{y}}}\\, =\\, \\frac{{k{{\\text{[}\\text{NO}\\text{]}}}_{x}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{x}^{n}}}{{k{{\\text{[}\\text{NO}\\text{]}}}_{y}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{y}^{n}}}}"
+    "latex": "{\\frac{{{{\\text{rate}}}_{x}}}{{{{\\text{rate}}}_{y}}}\\, =\\, \\frac{{k{{\\text{[}\\text{NO}\\text{]}}}_{x}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{x}^{n}}}{{k{{\\text{[}\\text{NO}\\text{]}}}_{y}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{y}^{n}}}}",
+    "equationId": "fs-idm359376496",
+    "equationClass": "unnumbered"
   },
   "math-33": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 3</m:mtext></m:mrow><m:mrow><m:mtext>rate 1</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>0.00675</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.15</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:msup><m:mrow><m:mtext>(0.10)</m:mtext></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{rate 3}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{k(0.15{{)}}^{m}(0.10{{)}}^{n}}}{{k{{\\text{(0.10)}}}^{m}(0.10{{)}}^{n}}}}"
+    "latex": "{\\frac{{\\text{rate 3}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{k(0.15{{)}}^{m}(0.10{{)}}^{n}}}{{k{{\\text{(0.10)}}}^{m}(0.10{{)}}^{n}}}}",
+    "equationId": "fs-idp81408128",
+    "equationClass": "unnumbered"
   },
   "math-34": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>0.00675</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.15</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{{{(0.15)}}^{m}}}{{{{(0.10)}}^{m}}}}"
+    "latex": "{\\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{{{(0.15)}}^{m}}}{{{{(0.10)}}^{m}}}}",
+    "equationId": "fs-idm185610624",
+    "equationClass": "unnumbered"
   },
   "math-35": {
     "mathml": "<m:math><m:mrow><m:mn>2.25</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup></m:mrow></m:math>",
-    "latex": "{2.25={{{({1.5})}}}^{m}}"
+    "latex": "{2.25={{{({1.5})}}}^{m}}",
+    "equationId": "fs-idm285203088",
+    "equationClass": "unnumbered"
   },
   "math-36": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.25</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>m</m:mi><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mfrac><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.25</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>m</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mn>2</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} \\text{ln}{({2.25})} & = & m\\text{ln}{({1.5})} \\\\ \\frac{{\\text{ln}{({2.25})}}}{{\\text{ln}{({1.5})}}} & = & m \\\\ 2 & = & m \\end{aligned}"
+    "latex": "\\begin{aligned} \\text{ln}{({2.25})} & = & m\\text{ln}{({1.5})} \\\\ \\frac{{\\text{ln}{({2.25})}}}{{\\text{ln}{({1.5})}}} & = & m \\\\ 2 & = & m \\end{aligned}",
+    "equationId": "fs-idm222931920",
+    "equationClass": "unnumbered"
   },
   "math-37": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>2.25</m:mn></m:mrow></m:math>",
-    "latex": "{{{1.5}}^{2}=2.25}"
+    "latex": "{{{1.5}}^{2}=2.25}",
+    "equationId": "fs-idm10561024",
+    "equationClass": "unnumbered"
   },
   "math-38": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 2</m:mtext></m:mrow><m:mrow><m:mtext>rate 1</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>0.00450</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.15</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{rate 2}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00450}}{{0.00300}}\\, =\\, \\frac{{k(0.10{{)}}^{m}(0.15{{)}}^{n}}}{{k(0.10{{)}}^{m}(0.10{{)}}^{n}}}}"
+    "latex": "{\\frac{{\\text{rate 2}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00450}}{{0.00300}}\\, =\\, \\frac{{k(0.10{{)}}^{m}(0.15{{)}}^{n}}}{{k(0.10{{)}}^{m}(0.10{{)}}^{n}}}}",
+    "equationId": "fs-idp69093344",
+    "equationClass": "unnumbered"
   },
   "math-39": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>0.0045</m:mn></m:mrow><m:mrow><m:mn>0.0030</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.15</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{0.0045}}{{0.0030}}\\, =\\, \\frac{{{{{({0.15})}}}^{n}}}{{{{{({0.10})}}}^{n}}}}"
+    "latex": "{\\frac{{0.0045}}{{0.0030}}\\, =\\, \\frac{{{{{({0.15})}}}^{n}}}{{{{{({0.10})}}}^{n}}}}",
+    "equationId": "fs-idp5205776",
+    "equationClass": "unnumbered"
   },
   "math-40": {
     "mathml": "<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math>",
-    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{m}{{{[{{{\\text{Cl}}}_{2}}]}}}^{n}=k{{{[{\\text{NO}}]}}}^{2}{[{{{\\text{Cl}}}_{2}}]}}"
+    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{m}{{{[{{{\\text{Cl}}}_{2}}]}}}^{n}=k{{{[{\\text{NO}}]}}}^{2}{[{{{\\text{Cl}}}_{2}}]}}",
+    "equationId": "fs-idm215496784",
+    "equationClass": "unnumbered"
   },
   "math-41": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mn>0.00300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>k</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>1</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mn>3.0</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} 0.00300\\, \\text{mol}\\, {\\text{L}}^{{-1}}\\, {\\text{s}}^{{−1}} & = & k{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}2{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}1 \\\\ k & = & 3.0\\, {\\text{mol}}^{{−2}}\\, {\\text{L}}^{2}\\, {\\text{s}}^{{−1}} \\end{aligned}"
+    "latex": "\\begin{aligned} 0.00300\\, \\text{mol}\\, {\\text{L}}^{{-1}}\\, {\\text{s}}^{{−1}} & = & k{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}2{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}1 \\\\ k & = & 3.0\\, {\\text{mol}}^{{−2}}\\, {\\text{L}}^{2}\\, {\\text{s}}^{{−1}} \\end{aligned}",
+    "equationId": "fs-idm263345248",
+    "equationClass": "unnumbered"
   },
   "math-42": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 2</m:mtext></m:mrow><m:mrow><m:mtext>rate 3</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>0.00092</m:mn></m:mrow><m:mrow><m:mn>0.00046</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0040</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
@@ -181,47 +209,69 @@
   },
   "math-46": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mi>x</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mi>y</m:mi></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:mtext>NO</m:mtext><m:mtext>]</m:mtext></m:mrow><m:mi>x</m:mi><m:mi>m</m:mi></m:msubsup><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>]</m:mtext></m:mrow><m:mi>x</m:mi><m:mi>n</m:mi></m:msubsup></m:mrow><m:mrow><m:mi>k</m:mi><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:mtext>NO</m:mtext><m:mtext>]</m:mtext></m:mrow><m:mi>y</m:mi><m:mi>m</m:mi></m:msubsup><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>]</m:mtext></m:mrow><m:mi>y</m:mi><m:mi>n</m:mi></m:msubsup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{{{\\text{rate}}}_{x}}}{{{{\\text{rate}}}_{y}}}\\, =\\, \\frac{{k{{\\text{[}\\text{NO}\\text{]}}}_{x}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{x}^{n}}}{{k{{\\text{[}\\text{NO}\\text{]}}}_{y}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{y}^{n}}}}"
+    "latex": "{\\frac{{{{\\text{rate}}}_{x}}}{{{{\\text{rate}}}_{y}}}\\, =\\, \\frac{{k{{\\text{[}\\text{NO}\\text{]}}}_{x}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{x}^{n}}}{{k{{\\text{[}\\text{NO}\\text{]}}}_{y}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{y}^{n}}}}",
+    "equationId": "fs-idm359376496",
+    "equationClass": "unnumbered"
   },
   "math-47": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 3</m:mtext></m:mrow><m:mrow><m:mtext>rate 1</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>0.00675</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.15</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:msup><m:mrow><m:mtext>(0.10)</m:mtext></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{rate 3}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{k(0.15{{)}}^{m}(0.10{{)}}^{n}}}{{k{{\\text{(0.10)}}}^{m}(0.10{{)}}^{n}}}}"
+    "latex": "{\\frac{{\\text{rate 3}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{k(0.15{{)}}^{m}(0.10{{)}}^{n}}}{{k{{\\text{(0.10)}}}^{m}(0.10{{)}}^{n}}}}",
+    "equationId": "fs-idp81408128",
+    "equationClass": "unnumbered"
   },
   "math-48": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>0.00675</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.15</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{{{(0.15)}}^{m}}}{{{{(0.10)}}^{m}}}}"
+    "latex": "{\\frac{{0.00675}}{{0.00300}}\\, =\\, \\frac{{{{(0.15)}}^{m}}}{{{{(0.10)}}^{m}}}}",
+    "equationId": "fs-idm185610624",
+    "equationClass": "unnumbered"
   },
   "math-49": {
     "mathml": "<m:math><m:mrow><m:mn>2.25</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup></m:mrow></m:math>",
-    "latex": "{2.25={{{({1.5})}}}^{m}}"
+    "latex": "{2.25={{{({1.5})}}}^{m}}",
+    "equationId": "fs-idm285203088",
+    "equationClass": "unnumbered"
   },
   "math-50": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.25</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>m</m:mi><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mfrac><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.25</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>m</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mn>2</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} \\text{ln}{({2.25})} & = & m\\text{ln}{({1.5})} \\\\ \\frac{{\\text{ln}{({2.25})}}}{{\\text{ln}{({1.5})}}} & = & m \\\\ 2 & = & m \\end{aligned}"
+    "latex": "\\begin{aligned} \\text{ln}{({2.25})} & = & m\\text{ln}{({1.5})} \\\\ \\frac{{\\text{ln}{({2.25})}}}{{\\text{ln}{({1.5})}}} & = & m \\\\ 2 & = & m \\end{aligned}",
+    "equationId": "fs-idm222931920",
+    "equationClass": "unnumbered"
   },
   "math-51": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>2.25</m:mn></m:mrow></m:math>",
-    "latex": "{{{1.5}}^{2}=2.25}"
+    "latex": "{{{1.5}}^{2}=2.25}",
+    "equationId": "fs-idm10561024",
+    "equationClass": "unnumbered"
   },
   "math-52": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 2</m:mtext></m:mrow><m:mrow><m:mtext>rate 1</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>0.00450</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.15</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{rate 2}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00450}}{{0.00300}}\\, =\\, \\frac{{k(0.10{{)}}^{m}(0.15{{)}}^{n}}}{{k(0.10{{)}}^{m}(0.10{{)}}^{n}}}}"
+    "latex": "{\\frac{{\\text{rate 2}}}{{\\text{rate 1}}}\\, =\\, \\frac{{0.00450}}{{0.00300}}\\, =\\, \\frac{{k(0.10{{)}}^{m}(0.15{{)}}^{n}}}{{k(0.10{{)}}^{m}(0.10{{)}}^{n}}}}",
+    "equationId": "fs-idp69093344",
+    "equationClass": "unnumbered"
   },
   "math-53": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>0.0045</m:mn></m:mrow><m:mrow><m:mn>0.0030</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.15</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{0.0045}}{{0.0030}}\\, =\\, \\frac{{{{{({0.15})}}}^{n}}}{{{{{({0.10})}}}^{n}}}}"
+    "latex": "{\\frac{{0.0045}}{{0.0030}}\\, =\\, \\frac{{{{{({0.15})}}}^{n}}}{{{{{({0.10})}}}^{n}}}}",
+    "equationId": "fs-idp5205776",
+    "equationClass": "unnumbered"
   },
   "math-54": {
     "mathml": "<m:math><m:mrow><m:mn>1.5</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>1.5</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math>",
-    "latex": "{1.5={{(1.5)}}^{n}}"
+    "latex": "{1.5={{(1.5)}}^{n}}",
+    "equationId": "fs-idm97106784",
+    "equationClass": "unnumbered"
   },
   "math-55": {
     "mathml": "<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math>",
-    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{m}{{{[{{{\\text{Cl}}}_{2}}]}}}^{n}=k{{{[{\\text{NO}}]}}}^{2}{[{{{\\text{Cl}}}_{2}}]}}"
+    "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{m}{{{[{{{\\text{Cl}}}_{2}}]}}}^{n}=k{{{[{\\text{NO}}]}}}^{2}{[{{{\\text{Cl}}}_{2}}]}}",
+    "equationId": "fs-idm215496784",
+    "equationClass": "unnumbered"
   },
   "math-56": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mn>0.00300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mi>k</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>1</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mn>3.0</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} 0.00300\\, \\text{mol}\\, {\\text{L}}^{{-1}}\\, {\\text{s}}^{{−1}} & = & k{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}2{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}1 \\\\ k & = & 3.0\\, {\\text{mol}}^{{−2}}\\, {\\text{L}}^{2}\\, {\\text{s}}^{{−1}} \\end{aligned}"
+    "latex": "\\begin{aligned} 0.00300\\, \\text{mol}\\, {\\text{L}}^{{-1}}\\, {\\text{s}}^{{−1}} & = & k{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}2{({0.10\\, \\text{mol}\\, \\text{L}{−1}})}1 \\\\ k & = & 3.0\\, {\\text{mol}}^{{−2}}\\, {\\text{L}}^{2}\\, {\\text{s}}^{{−1}} \\end{aligned}",
+    "equationId": "fs-idm263345248",
+    "equationClass": "unnumbered"
   },
   "math-57": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 2</m:mtext></m:mrow><m:mrow><m:mtext>rate 3</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mn>0.00092</m:mn></m:mrow><m:mrow><m:mn>0.00046</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.1em\"/><m:mo>=</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0040</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",

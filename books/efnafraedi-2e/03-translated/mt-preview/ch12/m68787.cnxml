@@ -2,7 +2,7 @@
 <title>Þættir sem hafa áhrif á hvarfhraða</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68787</md:content-id>
-  <md:title>Factors Affecting Reaction Rates</md:title>
+  <md:title>Þættir sem hafa áhrif á hvarfhraða</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst áhrifum eðlis efna,
 ástands, hitastigs, styrks og hvötunar á hvarfhraða</item></list></md:abstract>
   <md:uuid>7ce1385c-f564-4c79-be86-20dce552bcb6</md:uuid>
@@ -111,7 +111,7 @@ niðurbrot sér stað mjög hægt. Þegar þynntri H<sub>2</sub>O<sub>2</sub>(aq
 sár á sér hvarfið hins vegar stað hratt og lausnin freyðir vegna
 kröftugrar myndunar súrefnisgass. Þessi stórkostlegi munur stafar af
 tilvist efna í óvörðum vefjum sársins sem flýta fyrir niðurbrotsferlinu.
-Efni sem auka hvarfhraða eru kölluð <term>hvatar (e. catalysts)</term>, efni sem fjallað er
+Efni sem auka hvarfhraða eru kölluð <term id="term-00001">hvatar (e. catalysts)</term>, efni sem fjallað er
 nánar um síðar í þessum kafla.</para>
 <note id="fs-idm166887552" class="chemistry link-to-learning">
 <para id="fs-idm89663808">Efnahvörf eiga sér stað þegar

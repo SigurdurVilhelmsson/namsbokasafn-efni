@@ -753,7 +753,7 @@
       "class": null,
       "title": {
         "segmentId": "m68860:title:fs-idm180300896-title",
-        "text": "Plotting Data Pairs"
+        "text": "Two-Dimensional (*x*-*y*) Graphing"
       },
       "content": [
         {
@@ -769,13 +769,11 @@
         {
           "type": "example",
           "id": "fs-idp9271248",
-          "title": null,
+          "title": {
+            "segmentId": "m68860:example-title:fs-idp9271248-title",
+            "text": "Graphing the Dependence of *y* on *x*"
+          },
           "content": [
-            {
-              "type": "para",
-              "id": "fs-idm111716000",
-              "segmentId": "m68860:para:fs-idm111716000"
-            },
             {
               "type": "para",
               "id": "fs-idm176114816",
@@ -879,7 +877,10 @@
         {
           "type": "example",
           "id": "fs-idm173153104",
-          "title": null,
+          "title": {
+            "segmentId": "m68860:example-title:fs-idm173153104-title",
+            "text": "Plotting Data Pairs"
+          },
           "content": [
             {
               "type": "para",
@@ -897,61 +898,61 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68860:entry:auto-107",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68860:entry:auto-108",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68860:entry:auto-109",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68860:entry:auto-110",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68860:entry:auto-111",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68860:entry:auto-112",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68860:entry:auto-113",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68860:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-115",
                   "attributes": {
                     "align": "left"
                   }
@@ -961,13 +962,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68860:entry:auto-115",
+                  "segmentId": "m68860:entry:auto-116",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68860:entry:auto-116",
+                  "segmentId": "m68860:entry:auto-117",
                   "attributes": {
                     "align": "left"
                   }

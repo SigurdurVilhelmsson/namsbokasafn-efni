@@ -2,7 +2,7 @@
 <title>Hreyfi- og sameindakenningin</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68758</md:content-id>
-  <md:title>The Kinetic-Molecular Theory</md:title>
+  <md:title>Hreyfi- og sameindakenningin</md:title>
   <md:abstract><list id="list-00001"><item>Tilgreindu
 grundvallarsetningar hreyfi- og sameindakenningarinnar</item><item>Notaðu grundvallarsetningar
 þessarar kenningar til að útskýra gaslögmálin</item></list></md:abstract>
@@ -17,7 +17,7 @@ lögmála lýsa náið hegðun flestra gasa á stórsæjum skala við þrýsting
 er lægri en um 1 eða 2 atm. Þótt gaslögmálin lýsi samböndum sem hafa
 verið staðfest með mörgum tilraunum, segja þau okkur ekki hvers vegna
 gös fylgja þessum samböndum.</para>
-<para id="fs-idm165041184"><term>Hreyfi- og sameindakenningin (e. kinetic molecular theory)</term>
+<para id="fs-idm165041184"><term id="term-00001">Hreyfi- og sameindakenningin (e. kinetic molecular theory)</term>
 (KMT) er einfalt smásætt líkan sem útskýrir á áhrifaríkan hátt
 gaslögmálin sem lýst er í fyrri einingum þessa kafla. Þessi kenning
 byggir á eftirfarandi fimm grundvallarsetningum sem lýst er hér.
@@ -128,8 +128,8 @@ en 400 m/s, á meðan meðalkvaðratrótarhraðinn, <emphasis effect="italics">u
 <para id="fs-idm178023104">Ef massi er gefinn í kílógrömmum og
 hraði í metrum á sekúndu fást orkugildi í einingunni júl (J = kg m<sup>2</sup>
 s<sup>–2</sup>). Til að fást við mikinn fjölda gassameinda notum við meðaltöl
-fyrir bæði hraða og hreyfiorku. Í KMT er <term>meðalkvaðratrótarhraði (e. root mean square speed)</term>
-eindar, <term><emphasis effect="italics">u</emphasis><sub>rms</sub></term>, skilgreindur sem kvaðratrótin af meðaltali
+fyrir bæði hraða og hreyfiorku. Í KMT er <term id="term-00002">meðalkvaðratrótarhraði (e. root mean square speed)</term>
+eindar, <term id="term-00003"><emphasis effect="italics">u</emphasis><sub>rms</sub></term>, skilgreindur sem kvaðratrótin af meðaltali
 kvaðrata hraðanna þar sem <emphasis effect="italics">n</emphasis> = fjöldi einda:</para>
 <equation id="fs-idp57614544" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent="true"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy="true">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
 <para id="fs-idm140862528">Meðalhreyfiorka fyrir eitt mól af
@@ -147,8 +147,8 @@ að fá samband milli sameindahraða og hitastigs:</para>
 <equation id="fs-idm155100320" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
 <equation id="fs-idp16162192" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
 <example id="fs-idm203397264">
-<para id="fs-idm217669472"><title>Lausn</title>Útreikningur á <emphasis effect="italics">u</emphasis><sub>rms</sub>Reiknið
-meðalkvaðratrótarhraða fyrir nitursameind við 30 °C.</para><para id="fs-idm124389728">Breytið hitastiginu í kelvin:</para>
+<para id="fs-idm217669472"><title>Lausn</title>Útreikningur á <emphasis effect="italics">u</emphasis>rmsReiknið
+meðalkvaðratrótarhraða fyrir nitursameind við 30 °C.</para><para id="fs-idm124389728"><title>Solution</title>Breytið hitastiginu í kelvin:</para>
 <equation id="fs-idm41104608" class="unnumbered"><m:math><m:mrow><m:mn>30</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>+</m:mo><m:mn>273</m:mn><m:mo>=</m:mo><m:mtext>303 K</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm144782000">Ákvarðið mólmassa niturs í
 kílógrömmum:</para><equation id="fs-idm215032176" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mn>28.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose></m:mrow><m:mrow><m:mtext>1 mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 kg</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.028</m:mn><m:mspace width="0.2em"/><m:mtext>kg/mol</m:mtext></m:mrow></m:math></equation>
@@ -237,9 +237,9 @@ dreifing þessa hraða er háð hitastigi gassins og massa sameinda þess.</para
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent="true"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy="true">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></entry>
-</row>
 <row><entry><m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></entry>
+</row>
+<row><entry><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></entry>
 </row>
 <row><entry><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></entry>
 </row>

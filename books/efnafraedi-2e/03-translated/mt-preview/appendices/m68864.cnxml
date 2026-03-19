@@ -2,7 +2,7 @@
 <title>Samsetning algengra sýra og basa</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68864</md:content-id>
-  <md:title>Composition of Commercial Acids and Bases</md:title>
+  <md:title>Samsetning algengra sýra og basa</md:title>
   <md:abstract/>
   <md:uuid>6bf34cfc-a0bd-44e3-b418-27e44b50baf3</md:uuid>
 </metadata>
@@ -19,12 +19,12 @@
 <entry namest="c1" nameend="c4">Samsetning algengra sýra og basa</entry>
 </row>
 <row valign="middle">
-<entry align="left">Sýra eða basi<footnote>Sýrur og basar eru
+<entry align="left">Sýra eða basi<footnote id="fs-idm38171904">Sýrur og basar eru
 fáanlegir í verslunum sem vatnslausnir. Þessi tafla sýnir eiginleika
 (eðlismassa og styrk) algengra sýru- og basalausna. Nafngildi eru gefin
 upp í tilvikum þar sem framleiðandi gefur upp bil fyrir styrk og
 eðlismassa.</footnote></entry>
-<entry align="left">Eðlismassi (g/ml)<footnote>Þessi dálkur
+<entry align="left">Eðlismassi (g/ml)<footnote id="fs-idp90181920">Þessi dálkur
 inniheldur gögn um eðlisþyngd. Í þessari töflu er eðlisþyngd hlutfall
 eðlismassa efnis og eðlismassa hreins vatns við sömu aðstæður.
 Eðlisþyngd er oft tilgreind á umbúðum.</footnote></entry>
@@ -40,7 +40,7 @@ Eðlisþyngd er oft tilgreind á umbúðum.</footnote></entry>
 <entry align="left">17,4</entry>
 </row>
 <row valign="middle">
-<entry align="left">vatnslausn ammoníaks<footnote>Þessi
+<entry align="left">vatnslausn ammoníaks<footnote id="fs-idp11725888">Þessi
 lausn er stundum kölluð „ammóníumhýdroxíð“ þótt það sé ekki
 efnafræðilega rétt heiti.</footnote></entry>
 <entry align="left">0,90</entry>

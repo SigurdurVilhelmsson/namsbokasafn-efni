@@ -308,10 +308,10 @@ And so, the relationship between *K~c~* and *K~P~* is
 where Δ*n* is the difference in the molar amounts of product and reactant gases, in this case:
 
 <!-- SEG:m68798:example-title:fs-idp74619616-title -->
-Solution
+Calculation of *K~P~*
 
 <!-- SEG:m68798:para:fs-idp74619872 -->
-Calculation of *K~P~* Write the equations relating *K~c~* to *K~P~* for each of the following reactions:
+Write the equations relating *K~c~* to *K~P~* for each of the following reactions:
 
 <!-- SEG:m68798:para:fs-idp61114160 -->
 (a) [[MATH:24]]
@@ -327,6 +327,9 @@ Calculation of *K~P~* Write the equations relating *K~c~* to *K~P~* for each of 
 
 <!-- SEG:m68798:para:fs-idp237503488 -->
 What is *K~P~* at this temperature?
+
+<!-- SEG:m68798:para-title:fs-idp22632784-title -->
+Solution
 
 <!-- SEG:m68798:para:fs-idp22632784 -->
 (a) Δ*n* = (2) − (1) = 1[[BR]] *K~P~* = *K~c~* (*RT*)Δ*n* = *K~c~* (*RT*)^1^ = *K~c~* (*RT*)
@@ -457,22 +460,22 @@ A homogeneous equilibrium is an equilibrium in which all components are in the s
 <!-- SEG:m68798:title:fs-idp116522752-title -->
 Key Equations
 
-<!-- SEG:m68798:entry:auto-154 -->
+<!-- SEG:m68798:entry:auto-155 -->
 [[MATH:34]]
 
-<!-- SEG:m68798:entry:auto-155 -->
+<!-- SEG:m68798:entry:auto-156 -->
 [[MATH:35]]
 
-<!-- SEG:m68798:entry:auto-156 -->
+<!-- SEG:m68798:entry:auto-157 -->
 *P* = *MRT*
 
-<!-- SEG:m68798:entry:auto-157 -->
+<!-- SEG:m68798:entry:auto-158 -->
 *K~c~* = *Q~c~* at equilibrium
 
-<!-- SEG:m68798:entry:auto-158 -->
+<!-- SEG:m68798:entry:auto-159 -->
 *K~p~* = *Q~p~* at equilibrium
 
-<!-- SEG:m68798:entry:auto-159 -->
+<!-- SEG:m68798:entry:auto-160 -->
 *K~P~* = *K~c~* (*RT*)Δ*n*
 
 <!-- SEG:m68798:title:fs-idp16341104-title -->
@@ -698,7 +701,7 @@ Convert the values of *K~c~* to values of *K~P~* or the values of *K~P~* to valu
 (d) [[MATH:93]]
 
 <!-- SEG:m68798:problem:fs-idp103369648 -->
-What is the value of the equilibrium constant expression for the change [[MATH:94]] at 30 °C? (See Appendix E.)
+What is the value of the equilibrium constant expression for the change [[MATH:94]] at 30 °C? (See [Appendix E](doc:m68863).)
 
 <!-- SEG:m68798:solution:fs-idp23942912 -->
 [[MATH:95]]
@@ -719,7 +722,7 @@ What is the approximate value of the equilibrium constant *K~P~* for the change 
 equilibrium constant (K)
 
 <!-- SEG:m68798:glossary-def:fs-idp63345136-def -->
-value of the reaction quotient for a system at equilibrium; may be expressed using concentrations (Kc) or partial pressures (Kp)
+value of the reaction quotient for a system at equilibrium; may be expressed using concentrations (*K~c~*) or partial pressures (*K~p~*)
 
 <!-- SEG:m68798:glossary-term:fs-idp102632368-term -->
 heterogeneous equilibria
@@ -743,4 +746,4 @@ when a reversible reaction has attained equilibrium at a given temperature, the 
 reaction quotient (Q)
 
 <!-- SEG:m68798:glossary-def:fs-idp74361936-def -->
-mathematical function describing the relative amounts of reactants and products in a reaction mixture; may be expressed in terms of concentrations (Qc) or pressures (Qp)
+mathematical function describing the relative amounts of reactants and products in a reaction mixture; may be expressed in terms of concentrations (*Q~c~*) or pressures (*Q~p~*)

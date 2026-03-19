@@ -211,7 +211,7 @@
           "id": "fs-idm203397264",
           "title": {
             "segmentId": "m68758:example-title:fs-idm203397264-title",
-            "text": "Solution"
+            "text": "Calculation of *u*~rms~"
           },
           "content": [
             {
@@ -222,7 +222,11 @@
             {
               "type": "para",
               "id": "fs-idm124389728",
-              "segmentId": "m68758:para:fs-idm124389728"
+              "segmentId": "m68758:para:fs-idm124389728",
+              "title": {
+                "segmentId": "m68758:para-title:fs-idm124389728-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -419,14 +423,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68758:entry:auto-52",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68758:entry:auto-53",
                   "attributes": {}
                 }
@@ -436,6 +432,14 @@
               "cells": [
                 {
                   "segmentId": "m68758:entry:auto-54",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68758:entry:auto-55",
                   "attributes": {}
                 }
               ]

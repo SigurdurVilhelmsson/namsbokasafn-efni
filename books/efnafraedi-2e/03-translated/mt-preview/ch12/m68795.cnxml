@@ -2,7 +2,7 @@
 <title>Hvötun</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68795</md:content-id>
-  <md:title>Catalysis</md:title>
+  <md:title>Hvötun</md:title>
   <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla
 geturðu:</para><list id="list-00001"><item>Útskýrt hlutverk hvata með
 tilliti til hvarfganga og stöðuorkurita</item><item>Nefnt dæmi um hvötun í
@@ -72,7 +72,7 @@ kJ.</para>
 </example>
 <section id="fs-idm65053840">
 <title>Einsleitir hvatar</title>
-<para id="fs-idm243256336"><term>Einsleitur hvati (e. homogeneous catalyst)</term> er í sama fasa
+<para id="fs-idm243256336"><term id="term-00001">Einsleitur hvati (e. homogeneous catalyst)</term> er í sama fasa
 og hvarfefnin. Hann víxlverkar við hvarfefni og myndar milliefni, sem
 síðan brotnar niður eða hvarfast við annað hvarfefni í einu eða fleiri
 þrepum til að endurmynda upprunalega hvatann og mynda myndefni.</para>
@@ -101,9 +101,9 @@ hvarfinu.</para>
 <note id="fs-idm195911072" class="chemistry chemist-portrait">
 <title>Mario J. Molina</title>
 <para id="fs-idm149608448">Nóbelsverðlaununum í efnafræði árið
-1995 var deilt á milli Paul J. Crutzen, Mario J. <term>Molina</term> (<link target-id="CNX_Chem_12_07_Molina"/>)
+1995 var deilt á milli Paul J. Crutzen, Mario J. <term class="no-emphasis" id="term-00002">Molina</term> (<link target-id="CNX_Chem_12_07_Molina"/>)
 og F. Sherwood Rowland „fyrir vinnu þeirra í efnafræði andrúmsloftsins,
-sérstaklega varðandi myndun og niðurbrot ósons.“<footnote>„The
+sérstaklega varðandi myndun og niðurbrot ósons.“<footnote id="fs-idm200652832">„The
 Nobel Prize in Chemistry 1995,“ Nobel Prize.org, skoðað 18. febrúar
 2015,
 http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1995/.</footnote>
@@ -184,7 +184,7 @@ blóðkorn og aðrar frumur gegn oxunarskemmdum.</caption></figure></note>
 </section>
 <section id="fs-idm254642320">
 <title>Misleitir hvatar</title>
-<para id="fs-idm31937584"><term>Misleitur hvati (e. heterogeneous catalyst)</term> er hvati sem er í
+<para id="fs-idm31937584"><term id="term-00003">Misleitur hvati (e. heterogeneous catalyst)</term> er hvati sem er í
 öðrum fasa (venjulega föstu efni) en hvarfefnin. Slíkir hvatar virka
 yfirleitt með því að útvega virkt yfirborð þar sem hvarf getur átt sér
 stað. Gas- og vökvafasahvörf sem eru hvötuð af misleitum hvötum eiga sér
@@ -389,16 +389,16 @@ og í hluta (a).</para>
 <problem id="fs-idm126642096">
 <para id="fs-idm279414832">Fyrir hvort eftirfarandi para af
 hvarfritum, tilgreindu hvort parið er með hvata:</para>
-<para id="fs-idm3297152">(a)</para>
-<para id="fs-idm188080944">(b)</para>
+<para id="fs-idm3297152">(a)<newline/><media id="fs-idm228138944" alt="In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy (k J).” The y-axis of the first graph is marked off from 0 to 30 in intervals of 5. The y-axis of the second graph is marked off from 0 to 25 by intervals of 5. In a, a blue curve is shown. It begins with a horizontal region at about 12. The curve then rises sharply near the middle to reach a maximum of about 24 and similarly falls to another horizontal segment at 5. In b, the curve begins and ends similarly, but the maximum reached near the center of the graph is only 20."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise4a_img.jpg"/></media></para>
+<para id="fs-idm188080944">(b)<newline/><media id="fs-idm190586416" alt="In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy.” The y-axes are marked off from 0 to 50 in intervals of 5. In a, a blue curve is shown. It begins with a horizontal region at about 2. The curve then rises sharply near the middle to reach a maximum of about 43 and similarly falls to another horizontal segment at 15. In b, the curve begins and ends similarly, but the maximum reached near the center of the graph is only about 32."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise4b_img.jpg"/></media></para>
 </problem>
 </exercise>
 <exercise id="fs-idm219276192">
 <problem id="fs-idm152746480">
 <para id="fs-idm178760704">Fyrir hvort eftirfarandi para af
 hvarfritum, tilgreindu hvort parið er með hvata:</para>
-<para id="fs-idm338845344">(a)</para>
-<para id="fs-idm210073232">(b)</para>
+<para id="fs-idm338845344">(a)<newline/><media id="fs-idm241665200" alt="In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction” and the y-axes are labeled, “Energy (k J).” The y-axes are marked off from 0 to 50 at intervals of 5. In a, a blue curve is shown. It begins with a horizontal segment at about 2J. The curve then rises sharply near the middle to reach a maximum of about 46, then sharply falls to about 35, again rises to about 38 and falls to another horizontal segment at about 15. In b, the curve begins and ends similarly, but the first peak reaches about 46, drops to about 35, then rises to about 43 before falling to the horizontal region at about 15."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise5a_img.jpg"/></media></para>
+<para id="fs-idm210073232">(b)<newline/><media id="fs-idm274120656" alt="In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy (k J).” The y-axes are marked off from 0 to 50 at intervals of 5. In a, a blue curve is shown. It begins with a horizontal segment at about 34. The curve then rises sharply near the middle to reach a maximum of about 45, then sharply falls to about 25, again rises sharply to about 35 and falls to another horizontal segment at about 15. In b, the curve begins and ends similarly, but the first peak reaches about 40, drops to 25, then rises to 35 before falling to the horizontal region at about 15."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise5b_img.jpg"/></media></para>
 </problem>
 <solution id="fs-idm29928320">
 <para id="fs-idm222281872">Lækkun á orku virkniástandsins
@@ -408,15 +408,15 @@ sýnir áhrif hvata. (a) B; (b) B</para></solution>
 <problem id="fs-idm224432608">
 <para id="fs-idm245642464">Fyrir hvort eftirfarandi
 hvarfrita, áætlaðu virkjunarorku (<emphasis effect="italics">E</emphasis><sub>a</sub>) hvarfsins:</para>
-<para id="fs-idm211017072">(a)</para>
-<para id="fs-idm220847584">(b)</para>
+<para id="fs-idm211017072">(a)<newline/><media id="fs-idm271936272" class="scaled-down" alt="This figure shows a graph. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” The y-axis is marked off from 0 to 40 at intervals of 5. A blue curve is shown. It begins with a horizontal region at 10. The curve then rises sharply near the middle to reach a maximum of 35 and similarly falls to another horizontal segment at 5."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise6a_img.jpg"/></media></para>
+<para id="fs-idm220847584">(b)<newline/><media id="fs-idm239333712" class="scaled-down" alt="This figure shows a graph. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” The y-axis is marked off from 0 to 40 at intervals of 5. A blue curve is shown. It begins with a horizontal region at 10. The curve then rises sharply near the middle to reach a maximum of 20 and similarly falls to another horizontal segment at 5."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise6b_img.jpg"/></media></para>
 </problem>
 </exercise>
 <exercise id="fs-idm218836096">
 <problem id="fs-idm224927248">
 <para id="fs-idm159516400">Fyrir hvort eftirfarandi
 hvarfrita, áætlaðu virkjunarorku (<emphasis effect="italics">E</emphasis><sub>a</sub>) hvarfsins:</para>
-<para id="fs-idm197289104">(a)</para><para id="fs-idm290032736">(b)</para></problem>
+<para id="fs-idm197289104">(a)<newline/><media id="fs-idm235765824" class="scaled-down" alt="In this figure, a graph is shown. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” A blue curve is shown. It begins with a horizontal segment at about 35. The curve then rises sharply near the middle to reach a maximum of about 45, then sharply falls to about 24, again rises to about 30 and falls to another horizontal segment at about 15."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise7a_img.jpg"/></media></para><para id="fs-idm290032736">(b)<newline/><media id="fs-idm266488640" class="scaled-down" alt="In this figure, a graph is shown. The x-axis is labeled, “Extent of reaction,” and the y-axis is labeled, “Energy (k J).” A blue curve is shown. It begins with a horizontal segment at about 35. The curve then rises sharply near the middle to reach a maximum of about 45, then sharply falls to about 40, again rises to about 45 and falls to another horizontal segment at about 20."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Exercise7b_img.jpg"/></media></para></problem>
 <solution id="fs-idm202007568">
 <para id="fs-idm35117840">Orkan sem þarf til að fara frá
 upphafsástandi yfir í virkniástand er (a) 10 kJ; (b) 10 kJ.</para></solution>

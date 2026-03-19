@@ -533,13 +533,13 @@ extensive property of a body of matter that represents the quantity of heat requ
 joule (J)
 
 <!-- SEG:m68724:glossary-def:fs-idp25507984-def -->
-SI unit of energy; amount of energy used when a force of 1 newton moves an object 1 meter, 1 J = 1 kg m2/s2 and 4.184 J = 1 cal
+SI unit of energy; amount of energy used when a force of 1 newton moves an object 1 meter, 1 J = 1 kg m^2^/s^2^ and 4.184 J = 1 cal
 
 <!-- SEG:m68724:glossary-term:fs-idp25509680-term -->
 kinetic energy
 
 <!-- SEG:m68724:glossary-def:fs-idp25509680-def -->
-energy associated with an object's motion, equal to one-half the product of the object's mass and the square of its velocity, 12mv2 (where m = mass and v = velocity)
+energy associated with an object's motion, equal to one-half the product of the object's mass and the square of its velocity, [[MATH:6]] (where *m* = mass and *v* = velocity)
 
 <!-- SEG:m68724:glossary-term:fs-idp25515184-term -->
 potential energy

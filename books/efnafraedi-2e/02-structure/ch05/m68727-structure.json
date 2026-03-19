@@ -969,7 +969,7 @@
           "id": "fs-idp186597312",
           "title": {
             "segmentId": "m68727:example-title:fs-idp186597312-title",
-            "text": "Solution"
+            "text": "Writing Reaction Equations for [[MATH:36]]"
           },
           "content": [
             {
@@ -990,7 +990,11 @@
             {
               "type": "para",
               "id": "fs-idp186604352",
-              "segmentId": "m68727:para:fs-idp186604352"
+              "segmentId": "m68727:para:fs-idp186604352",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp186604352-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1214,7 +1218,7 @@
           "id": "fs-idp185548816",
           "title": {
             "segmentId": "m68727:example-title:fs-idp185548816-title",
-            "text": "Solution"
+            "text": "Stepwise Calculation of [[MATH:48]] Using Hess’s Law"
           },
           "content": [
             {
@@ -1225,7 +1229,11 @@
             {
               "type": "para",
               "id": "fs-idp190748768",
-              "segmentId": "m68727:para:fs-idp190748768"
+              "segmentId": "m68727:para:fs-idp190748768",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp190748768-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1623,7 +1631,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-222",
+                  "segmentId": "m68727:entry:auto-224",
                   "attributes": {}
                 }
               ]
@@ -1631,7 +1639,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-223",
+                  "segmentId": "m68727:entry:auto-225",
                   "attributes": {}
                 }
               ]

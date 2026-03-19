@@ -1130,7 +1130,7 @@ average mass of atoms of an element, expressed in amu
 atomic mass unit (amu)
 
 <!-- SEG:m68692:glossary-def:fs-idm20897872-def -->
-(also, unified atomic mass unit, u, or Dalton, Da) unit of mass equal to 112 of the mass of a 12C atom
+(also, unified atomic mass unit, u, or Dalton, Da) unit of mass equal to [[MATH:48]] of the mass of a ^12^C atom
 
 <!-- SEG:m68692:glossary-term:fs-idp42201168-term -->
 atomic number (Z)
@@ -1160,7 +1160,7 @@ alternative unit equivalent to the atomic mass unit
 fundamental unit of charge
 
 <!-- SEG:m68692:glossary-def:fs-idp226765840-def -->
-(also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 × 10−19 C
+(also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:49]] 10^−19^ C
 
 <!-- SEG:m68692:glossary-term:fs-idp277782656-term -->
 ion

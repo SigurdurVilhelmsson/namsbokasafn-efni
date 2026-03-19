@@ -744,7 +744,7 @@
           "id": "fs-idp74619616",
           "title": {
             "segmentId": "m68798:example-title:fs-idp74619616-title",
-            "text": "Solution"
+            "text": "Calculation of *K~P~*"
           },
           "content": [
             {
@@ -780,7 +780,11 @@
             {
               "type": "para",
               "id": "fs-idp22632784",
-              "segmentId": "m68798:para:fs-idp22632784"
+              "segmentId": "m68798:para:fs-idp22632784",
+              "title": {
+                "segmentId": "m68798:para-title:fs-idp22632784-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1121,14 +1125,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68798:entry:auto-154",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68798:entry:auto-155",
                   "attributes": {}
                 }
@@ -1162,6 +1158,14 @@
               "cells": [
                 {
                   "segmentId": "m68798:entry:auto-159",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68798:entry:auto-160",
                   "attributes": {}
                 }
               ]

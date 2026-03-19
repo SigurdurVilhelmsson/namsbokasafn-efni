@@ -2,7 +2,7 @@
 <title>Hliðrun jafnvægis: Lögmál Le Châteliers</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68799</md:content-id>
-  <md:title>Shifting Equilibria: Le Châtelier’s Principle</md:title>
+  <md:title>Hliðrun jafnvægis: Lögmál Le Châteliers</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst þeim aðferðum sem hægt
 er að nota til að raska jafnvægiskerfi</item><item>Spáð fyrir um viðbrögð
 raskaðs jafnvægis með lögmáli Le Châteliers</item></list></md:abstract>
@@ -16,7 +16,7 @@ jafnvægiskerfi verður fyrir breytingu á aðstæðum sem hefur mismunandi
 áhrif á þessa hvarfhraða (<emphasis effect="italics">röskun</emphasis>), þá eru hraðarnir ekki lengur jafnir
 og kerfið er ekki í jafnvægi. Kerfið mun í kjölfarið gangast undir
 nettóhvarf í átt að meiri hraða (<emphasis effect="italics">hliðrun</emphasis>) sem mun endurheimta
-jafnvægið. Þetta fyrirbæri er tekið saman í <term>lögmáli Le Châteliers (e. le châtelier’s principle)</term>:
+jafnvægið. Þetta fyrirbæri er tekið saman í <term id="term-00001">lögmáli Le Châteliers (e. le châtelier’s principle)</term>:
 <emphasis effect="italics">ef jafnvægiskerfi er raskað mun kerfið gangast undir hliðrun til að
 bregðast við röskuninni sem endurheimtir jafnvægi</emphasis>.</para>
 <para id="fs-idp137820032">Hvarfhraðar verða fyrst og fremst

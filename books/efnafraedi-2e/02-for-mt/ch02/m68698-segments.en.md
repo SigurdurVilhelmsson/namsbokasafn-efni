@@ -998,7 +998,7 @@ What are the IUPAC names of the following compounds?
 binary acid
 
 <!-- SEG:m68698:glossary-def:fs-idp282291040-def -->
-compound that contains hydrogen and one other element, bonded in a way that imparts acidic properties to the compound (ability to release H+ ions when dissolved in water)
+compound that contains hydrogen and one other element, bonded in a way that imparts acidic properties to the compound (ability to release H^+^ ions when dissolved in water)
 
 <!-- SEG:m68698:glossary-term:fs-idp282226176-term -->
 binary compound
@@ -1016,4 +1016,4 @@ system of rules for naming objects of interest
 oxyacid
 
 <!-- SEG:m68698:glossary-def:fs-idp282228224-def -->
-compound that contains hydrogen, oxygen, and one other element, bonded in a way that imparts acidic properties to the compound (ability to release H+ ions when dissolved in water)
+compound that contains hydrogen, oxygen, and one other element, bonded in a way that imparts acidic properties to the compound (ability to release H^+^ ions when dissolved in water)

@@ -266,7 +266,7 @@ The two roots are therefore
 Quadratic equations constructed on physical data always have real roots, and of these real roots, often only those having positive values are of any significance.
 
 <!-- SEG:m68860:title:fs-idm180300896-title -->
-Plotting Data Pairs
+Two-Dimensional (*x*-*y*) Graphing
 
 <!-- SEG:m68860:para:fs-idm67130880 -->
 The relationship between any two properties of a system can be represented graphically by a two-dimensional data plot. Such a graph has two axes: a horizontal one corresponding to the independent variable, or the variable whose value is being controlled (*x*), and a vertical axis corresponding to the dependent variable, or the variable whose value is being observed or measured (*y*).
@@ -274,7 +274,7 @@ The relationship between any two properties of a system can be represented graph
 <!-- SEG:m68860:para:fs-idm78087840 -->
 When the value of *y* is changing as a function of *x* (that is, different values of *x* correspond to different values of *y*), a graph of this change can be plotted or sketched. The graph can be produced by using specific values for (*x*,*y*) data pairs.
 
-<!-- SEG:m68860:para:fs-idm111716000 -->
+<!-- SEG:m68860:example-title:fs-idp9271248-title -->
 Graphing the Dependence of *y* on *x*
 
 <!-- SEG:m68860:para:fs-idm176114816 -->
@@ -313,35 +313,38 @@ This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each
 <!-- SEG:m68860:para:fs-idm164107136 -->
 If the function that describes the dependence of *y* on *x* is known, it may be used to compute x,y data pairs that may subsequently be plotted.
 
+<!-- SEG:m68860:example-title:fs-idm173153104-title -->
+Plotting Data Pairs
+
 <!-- SEG:m68860:para:fs-idm144872640 -->
 If we know that *y* = *x*^2^ + 2, we can produce a table of a few (*x*,*y*) values and then plot the line based on the data shown here.
 
-<!-- SEG:m68860:entry:auto-107 -->
+<!-- SEG:m68860:entry:auto-108 -->
 *x*
 
-<!-- SEG:m68860:entry:auto-108 -->
+<!-- SEG:m68860:entry:auto-109 -->
 *y* = *x*^2^ + 2
 
-<!-- SEG:m68860:entry:auto-109 -->
+<!-- SEG:m68860:entry:auto-110 -->
 1
 
-<!-- SEG:m68860:entry:auto-110 -->
-3
-
 <!-- SEG:m68860:entry:auto-111 -->
-2
+3
 
 <!-- SEG:m68860:entry:auto-112 -->
-6
+2
 
 <!-- SEG:m68860:entry:auto-113 -->
-3
+6
 
 <!-- SEG:m68860:entry:auto-114 -->
-11
+3
 
 <!-- SEG:m68860:entry:auto-115 -->
-4
+11
 
 <!-- SEG:m68860:entry:auto-116 -->
+4
+
+<!-- SEG:m68860:entry:auto-117 -->
 18

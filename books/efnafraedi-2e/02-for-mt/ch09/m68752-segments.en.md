@@ -536,7 +536,7 @@ According to Dalton’s law, the total pressure in the bottle (750 torr) is the 
 Rearranging this equation to solve for the pressure of argon gives:
 
 <!-- SEG:m68752:para:fs-idp144314112 -->
-The pressure of water vapor above a sample of liquid water at 26 °C is 25.2 torr (Appendix E), so:
+The pressure of water vapor above a sample of liquid water at 26 °C is 25.2 torr ([Appendix E](doc:m68863)), so:
 
 <!-- SEG:m68752:para-title:fs-idp98186880-title -->
 Check Your Learning

@@ -1,0 +1,358 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Blendingssvigrúm frumeinda</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68745</md:content-id>
+  <md:title>Blendingssvigrúm frumeinda</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla getur þú:</para><list id="list-00001"><item>Útskýrt hugtakið blendingssvigrúm frumeinda</item><item>Ákvarðað blendingssvigrúm sem tengjast ýmsum sameindalögunum</item></list></md:abstract>
+  <md:uuid>5b3f5309-5e19-417e-8753-5d01b5f26ad4</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp15190992">Að hugsa út frá skörun frumeindasvigrúma er ein leið fyrir okkur til að útskýra hvernig efnatengi myndast í tvíatóma sameindum. Til að skilja hvernig sameindir með fleiri en tvær frumeindir mynda stöðug efnatengi þurfum við hins vegar nákvæmara líkan. Sem dæmi skulum við skoða vatnssameindina, þar sem ein súrefnisfrumeind tengist tveimur vetnisfrumeindum. Súrefni hefur rafeindaskipanina 1<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>4</sup>, með tveimur ópöruðum rafeindum (ein í hvoru tveggja 2<emphasis effect="italics">p</emphasis>-svigrúmanna). Gildistengjakenningin myndi spá því að tvö O–H efnatengi myndist við skörun þessara tveggja 2<emphasis effect="italics">p</emphasis>-svigrúma við 1<emphasis effect="italics">s</emphasis>-svigrúm vetnisfrumeindanna. Ef svo væri, væri tengihornið 90°, eins og sýnt er á <link target-id="CNX_Chem_08_02_H2Ovb"/>, því <emphasis effect="italics">p</emphasis>-svigrúm eru hornrétt hvert á annað. Raunprófanir sýna að tengihornið er 104,5°, ekki 90°. Spá gildistengjakenningarinnar passar ekki við athuganir á vatnssameind í raunveruleikanum; það þarf annað líkan.</para>
+<figure id="CNX_Chem_08_02_H2Ovb" class="scaled-down">
+<media id="fs-idm125701968" alt="Two peanut-shaped orbitals lie perpendicular to one another. They overlap with spherical orbitals to the left and top of the diagram.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_H2Ovb.jpg"/>
+</media>
+<caption>Hugsanleg skörun tveggja af 2<emphasis effect="italics">p</emphasis>-svigrúmum súrefnisfrumeindar (rautt) við 1<emphasis effect="italics">s</emphasis>-svigrúm tveggja vetnisfrumeinda (blátt) myndi gefa 90° tengihorn. Þetta er ekki í samræmi við raunprófanir.<footnote id="fs-idm75980880">Athugið að svigrúm geta stundum verið teiknuð í ílöngu „blöðru“formi frekar en í raunhæfara „þrýstnu“ formi til að auðveldara sé að sjá lögunina fyrir sér.</footnote></caption>
+</figure>
+<para id="fs-idm11485424">Skammtafræðilegir útreikningar gefa til kynna hvers vegna raunveruleg tengihorn í H<sub>2</sub>O eru frábrugðin þeim sem spáð er með skörun 1<emphasis effect="italics">s</emphasis>-svigrúms vetnisfrumeindanna við 2<emphasis effect="italics">p</emphasis>-svigrúm súrefnisfrumeindarinnar. Stærðfræðilega segðin sem kallast bylgjufall, <emphasis effect="italics">Θ</emphasis>, inniheldur upplýsingar um hvert svigrúm og bylgjueiginleika rafeinda í einangraðri frumeind. Þegar frumeindir eru tengdar saman í sameind sameinast bylgjuföllin og mynda nýjar stærðfræðilegar lýsingar sem hafa aðra lögun. Þetta ferli að sameina bylgjuföll fyrir frumeindasvigrúm kallast <term id="term-00001">blendingur (e. hybridization)</term> og er stærðfræðilega framkvæmt með <emphasis effect="italics">línulegri samantekt frumeindasvigrúma</emphasis>, LCAO, (tækni sem við munum hitta aftur síðar). Nýju svigrúmin sem myndast kallast <term id="term-00002">blendingssvigrúm (e. hybrid orbitals)</term>. Gildissvigrúmin í <emphasis effect="italics">einangraðri</emphasis> súrefnisfrumeind eru eitt 2<emphasis effect="italics">s</emphasis>-svigrúm og þrjú 2<emphasis effect="italics">p</emphasis>-svigrúm. Gildissvigrúmin í súrefnisfrumeind í vatnssameind eru öðruvísi; þau samanstanda af fjórum jafngildum blendingssvigrúmum sem vísa nokkurn veginn í átt að hornum ferflötungs (<link target-id="CNX_Chem_08_02_H2Otet"/>). Þar af leiðandi ætti skörun O- og H-svigrúmanna að leiða til ferflötungstengihorns (109,5°). Raunhornið 104,5° er raunprófunargagn sem skammtafræðilegir útreikningar gefa gagnlega skýringu á: Gildistengjakenningin verður að innihalda blendingseiningu til að gefa nákvæmar spár.</para>
+<figure id="CNX_Chem_08_02_H2Otet" class="scaled-down">
+<media id="fs-idp165066496" alt="Two diagrams are shown and labeled “a” and “b.” Diagram a shows two peanut-shaped orbitals lying in a tetrahedral arrangement around the letter “O.” Diagram b shows the same two orbitals, but they now overlap to the top and to the left with two spherical orbitals, each labeled “H.” A pair of electrons occupies each lobe of the peanut-shaped orbitals.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_H2Otet.jpg"/>
+</media>
+<caption>(a) Vatnssameind hefur fjögur svæði með rafeindaþéttleika, þannig að VSEPR-kenningin spáir fyrir um ferflötungsfyrirkomulag blendingssvigrúma. (b) Tvö af blendingssvigrúmunum á súrefni innihalda einmana rafeindapör og hin tvö skarast við 1<emphasis effect="italics">s</emphasis>-svigrúm vetnisfrumeinda til að mynda O–H efnatengin í H<sub>2</sub>O. Þessi lýsing er í betra samræmi við raunbygginguna.</caption>
+</figure>
+<para id="fs-idm27133328">Eftirfarandi hugmyndir eru mikilvægar til að skilja blending:</para>
+<list id="fs-idm26101008" list-type="enumerated" number-style="arabic">
+<item>Blendingssvigrúm eru ekki til í einangruðum frumeindum. Þau myndast aðeins í samgildum tengdum frumeindum.</item>
+<item>Blendingssvigrúm hafa lögun og stefnu sem eru mjög frábrugðin lögun og stefnu frumeindasvigrúma í einangruðum frumeindum.</item>
+<item>Sett af blendingssvigrúmum er myndað með því að sameina frumeindasvigrúm. Fjöldi blendingssvigrúma í setti er jafn fjölda frumeindasvigrúma sem voru sameinuð til að mynda settið.</item>
+<item>Öll svigrúm í setti af blendingssvigrúmum eru jafngild að lögun og orku.</item>
+<item>Tegund blendingssvigrúma sem myndast í tengdri frumeind fer eftir rúmfræði rafeindapara hennar eins og spáð er fyrir um með VSEPR-kenningunni.</item>
+<item>Blendingssvigrúm skarast til að mynda σ-efnatengi. Óblendinguð svigrúm skarast til að mynda π-efnatengi.</item>
+</list>
+<para id="fs-idm25599520">Í eftirfarandi köflum munum við ræða algengar tegundir blendingssvigrúma.</para>
+<section id="fs-idp3790928">
+<title>*sp* Hybridization</title>
+<para id="fs-idp208078752">Berillíumfrumeindin í BeCl<sub>2</sub> sameind í gasfasa er dæmi um miðfrumeind án einmana rafeindapara í línulegri uppröðun þriggja frumeinda. Það eru tvö svæði með gildisrafeindaþéttleika í BeCl<sub>2</sub> sameindinni sem samsvara tveimur samgildu Be–Cl efnatengjunum. Til að rúma þessi tvö rafeindasvið munu tvö af fjórum gildissvigrúmum Be-frumeindarinnar blandast saman og gefa tvö blendingssvigrúm. Þetta blendingarferli felur í sér blöndun gildis-<emphasis effect="italics">s</emphasis>-svigrúmsins við eitt af gildis-<emphasis effect="italics">p</emphasis>-svigrúmunum til að gefa tvö jafngild <term id="term-00003"><emphasis effect="italics">sp</emphasis>-blendingssvigrúm (e. <emphasis effect="italics">sp</emphasis> hybrid orbitals)</term> sem eru stillt upp í línulegri rúmfræði (<link target-id="CNX_Chem_08_02_spGeom"/>). Á þessari mynd virðist settið af <emphasis effect="italics">sp</emphasis>-svigrúmum svipað að lögun og upprunalega <emphasis effect="italics">p</emphasis>-svigrúmið, en það er mikilvægur munur. Fjöldi sameinaðra frumeindasvigrúma er alltaf jafn fjölda myndaðra blendingssvigrúma. <emphasis effect="italics">p</emphasis>-svigrúmið er eitt svigrúm sem getur haldið allt að tveimur rafeindum. <emphasis effect="italics">sp</emphasis>-settið eru tvö jafngild svigrúm sem vísa 180° hvort frá öðru. Rafeindunum tveimur sem upphaflega voru í <emphasis effect="italics">s</emphasis>-svigrúminu er nú dreift á <emphasis effect="italics">sp</emphasis>-svigrúmin tvö, sem eru hálffyllt. Í BeCl<sub>2</sub> í gasfasa munu þessi hálffylltu blendingssvigrúm skarast við svigrúm frá klórfrumeindunum til að mynda tvö eins σ-efnatengi.</para>
+<figure id="CNX_Chem_08_02_spGeom"><media id="fs-idm63468032" alt="A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a linear arrangement,” are shown. The first diagram shows a blue spherical orbital and a red, peanut-shaped orbital, each placed on an X, Y, Z axis system. The second diagram shows the same two orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies along the x-axis in the drawing. The third diagram shows the same two orbitals, but their smaller lobes now overlap along the x-axis while their larger lobes are located at and labeled as “180 degrees” from one another.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_spGeom.jpg"/>
+</media>
+
+<caption>Blöndun eins <emphasis effect="italics">s</emphasis>-svigrúms (blátt) og eins <emphasis effect="italics">p</emphasis>-svigrúms (rautt) sömu frumeindar myndar tvö <emphasis effect="italics">sp</emphasis>-blendingarsvigrúm (gul). Hvert blendingarsvigrúm beinist aðallega í eina átt. Taktu eftir að hvert <emphasis effect="italics">sp</emphasis>-svigrúm inniheldur einn bleðil sem er umtalsvert stærri en hinn. Safnið af tveimur <emphasis effect="italics">sp</emphasis>-svigrúmum er með 180° horn á milli sín, sem er í samræmi við rúmfræði fyrir tvö lén.</caption></figure>
+<para id="fs-idm48014688">Við sýnum rafeindamuninn í einangraðri Be-frumeind og í bundinni Be-frumeind á orkustigsriti svigrúma á <link target-id="CNX_Chem_08_02_spDiag"/>. Þessi rit tákna hvert svigrúm með láréttri línu (sem gefur til kynna orku þess) og hverja rafeind með ör. Orkan eykst eftir því sem ofar dregur á ritinu. Við notum eina ör sem vísar upp til að tákna eina rafeind í svigrúmi og tvær örvar (upp og niður) til að tákna tvær rafeindir með andstæðan spuna.</para>
+<figure id="CNX_Chem_08_02_spDiag">
+<media id="fs-idp197645472" alt="A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in an isolated B e atom.” The right side of the diagram shows two short, horizontal lines placed halfway up the space and each labeled, “s p.” An upward-facing half arrow is drawn vertically on each line. Above these lines are two other short, horizontal lines, each labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in the s p hybridized B e in B e C l subscript 2.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_spDiag.jpg"/>
+</media>
+<caption>Þetta orkustigsrit svigrúma sýnir <emphasis effect="italics">sp</emphasis>-blendingarsvigrúmin á Be í línulegu BeCl<sub>2</sub>-sameindinni. Hvert af tveimur <emphasis effect="italics">sp</emphasis>-blendingarsvigrúmum geymir eina rafeind og er því hálffyllt og tiltækt til tengjamyndunar með skörun við 3<emphasis effect="italics">p</emphasis>-svigrúm Cl.</caption>
+</figure>
+<para id="fs-idp39983216">Þegar frumeindasvigrúm blandast, setjast gildisrafeindirnar í nýmynduðu svigrúmin. Be-frumeindin hafði tvær gildisrafeindir, þannig að hvort <emphasis effect="italics">sp</emphasis>-svigrúmanna fær eina af þessum rafeindum. Hvor þessara rafeinda parar sig við óparaða rafeind á klórfrumeind þegar blendingarsvigrúm og klórsvigrúm skarast við myndun Be–Cl-tengjanna.</para>
+<para id="fs-idp175314000">Sérhver miðjufrumeind sem er umkringd aðeins tveimur svæðum gildisrafeindaþéttleika í sameind mun sýna <emphasis effect="italics">sp</emphasis>-blöndun. Önnur dæmi eru kvikasilfursfrumeindin í línulegu HgCl<sub>2</sub>-sameindinni, sinkfrumeindin í Zn(CH<sub>3</sub>)<sub>2</sub>, sem inniheldur línulega C–Zn–C-röðun, og kolefnisfrumeindirnar í HCCH og CO<sub>2</sub>.</para>
+<note id="fs-idp180218736" class="chemistry link-to-learning">
+<para id="fs-idp2353136">Skoðaðu <link url="http://openstax.org/l/16hybridorbital">vefsíðu</link> University of Wisconsin-Oshkosh til að læra um að sjá blendingarsvigrúm fyrir sér í þrívídd.</para>
+</note>
+</section>
+<section id="fs-idp10041360">
+<title>*sp*^2^ Hybridization</title>
+<para id="fs-idp31553584">Gildissvigrúm miðjufrumeindar sem er umkringd þremur svæðum rafeindaþéttleika samanstanda af setti þriggja <term id="term-00004"><emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingarsvigrúma (e. <emphasis effect="italics">sp</emphasis><sup>2</sup> hybrid orbitals)</term> og eins óblandaðs <emphasis effect="italics">p</emphasis>-svigrúms. Þessi fyrirkomulag stafar af <emphasis effect="italics">sp</emphasis><sup>2</sup>-blöndun, sem er blöndun eins <emphasis effect="italics">s</emphasis>-svigrúms og tveggja <emphasis effect="italics">p</emphasis>-svigrúma til að mynda þrjú eins blendingarsvigrúm sem raðast í þríhyrningslaga flata rúmfræði (<link target-id="CNX_Chem_08_02_sp2Geom"/>).</para>
+<figure id="CNX_Chem_08_02_sp2Geom" class="scaled-down"><media id="fs-idm10342640" alt="This shows a series of three diagrams with one on the left connected to one on the right by a right-facing arrow that is labeled, “Hybridization.” Below the one on the right is a downward-facing arrow labeled, “Gives a trigonal planar arrangement,” connecting to the last diagram. The first diagram shows a blue spherical orbital labeled “S” and then two red and blue, peanut-shaped orbitals, each placed on an X, Y, Z axis system, labeled “P subscript x” and “P subscript y.” The two red and blue orbitals are located on the x and z axes, respectively. The second diagram shows the three orbitals again on an X, Y, Z axis system, but they are yellow and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same three orbitals, but their smaller lobes now overlap while their larger lobes are located at and labeled as “120 degrees” from one another.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp2Geom.jpg"/>
+</media>
+
+<caption>Blöndun eins <emphasis effect="italics">s</emphasis>-svigrúms (blátt) og tveggja <emphasis effect="italics">p</emphasis>-svigrúma (rautt) myndar þrjú jafngild <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingarsvigrúm (gul) sem raðast með 120° horni hvert á annað. Óblandaða <emphasis effect="italics">p</emphasis>-svigrúmið sem eftir er er ekki sýnt hér, en það er staðsett meðfram z-ásnum.</caption></figure>
+<para id="fs-idp50954864">Þrátt fyrir að skammtafræði gefi „þrýstna“ svigrúmsbleðla eins og sýnt er á <link target-id="CNX_Chem_08_02_sp2Geom"/>, eru þessi svigrúm stundum teiknuð þynnri og án minni bleðlanna, eins og á <link target-id="CNX_Chem_08_02_sp2Conv"/>, til að koma í veg fyrir að skyggja á aðra eiginleika tiltekinnar myndar. Við munum nota þessar „þynnri“ framsetningar þegar raunverulega sýnin er of þétt til að auðvelt sé að sjá hana fyrir sér.</para>
+<figure id="CNX_Chem_08_02_sp2Conv" class="scaled-down">
+<media id="fs-idp175210624" alt="Three balloon-like orbitals are shown, and connect together near their narrower ends in one plane. The angle between a pair of lobes is labeled, “120 degrees.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp2Conv.jpg"/>
+</media>
+<caption>Þessi aðra leið til að teikna þríhyrningslaga flötu <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingarsvigrúmin er stundum notuð á þéttari myndum.</caption>
+</figure>
+<para id="fs-idp13130576">Sú bygging sem sést á bóransameindinni, BH<sub>3,</sub> bendir til <emphasis effect="italics">sp</emphasis><sup>2</sup>-blöndunar fyrir bór í þessu efnasambandi. Sameindin er þríhyrningslaga flöt og bórfrumeindin tekur þátt í þremur tengjum við vetnisfrumeindir (<link target-id="CNX_Chem_08_02_BH3"/>). Við getum sýnt samanburð á svigrúmum og rafeindadreifingu í einangraðri bórfrumeind og í bundinni frumeind í BH<sub>3</sub> eins og sýnt er á orkustigsriti svigrúma á <link target-id="CNX_Chem_08_02_BH3Diag"/>. Við endurdreifum þremur gildisrafeindum bórfrumeindarinnar í þrjú <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingarsvigrúm og hver bórrafeind parar sig við vetnisrafeind þegar B–H-tengi myndast.</para>
+<figure id="CNX_Chem_08_02_BH3" class="scaled-down">
+<media id="fs-idm5465792" alt="A boron atom is shown connected to three hydrogen atoms, which are arranged around it like a pyramid. The angle from one line connecting the boron atom to a hydrogen atom to another line connecting the boron atom to a hydrogen atom is labeled, “120 degrees.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_BH3.jpg"/>
+</media>
+<caption>BH<sub>3</sub> er rafeindasnauð sameind með þríhyrningslaga flata byggingu.</caption>
+</figure>
+<figure id="CNX_Chem_08_02_BH3Diag">
+<media id="fs-idp19295472" alt="A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of these lines is the phrase, “Orbitals in an isolated B atom.” One of the lines has a vertical, up-facing arrow drawn on it. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized B atom in B H subscript 3.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_BH3Diag.jpg"/>
+</media>
+<caption>Í einangraðri B-frumeind eru eitt 2<emphasis effect="italics">s</emphasis>- og þrjú 2<emphasis effect="italics">p</emphasis>-gildissvigrúm. Þegar bór er í sameind með þremur svæðum rafeindaþéttleika blandast þrjú svigrúmanna og mynda sett af þremur <emphasis effect="italics">sp</emphasis><sup>2</sup>-svigrúmum og einu óblönduðu 2<emphasis effect="italics">p</emphasis>-svigrúmi. Hvert af þremur hálffylltum blendingarsvigrúmum skarast við svigrúm frá vetnisfrumeind til að mynda þrjú σ-tengi í BH<sub>3</sub>.</caption>
+</figure>
+<para id="fs-idp53853968">Sérhver miðjufrumeind sem er umkringd þremur svæðum rafeindaþéttleika mun sýna <emphasis effect="italics">sp</emphasis><sup>2</sup>-blöndun. Þetta á við um sameindir með rafeindapar á miðjufrumeindinni, eins og ClNO (<link target-id="CNX_Chem_08_02_sp2Ex"/>), eða sameindir með tvö eintengi og eitt tvítengi tengt við miðjufrumeindina, eins og í formaldehýði, CH<sub>2</sub>O, og eteni, H<sub>2</sub>CCH<sub>2</sub>.</para>
+<figure id="CNX_Chem_08_02_sp2Ex" class="scaled-down">
+<media id="fs-idp5254576" alt="Three Lewis structures are shown. The left-hand structure shows a chlorine atom surrounded by three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The middle structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to an oxygen atom that has two lone pairs of electrons. The right-hand structure shows two carbon atoms, double bonded to one another and each single bonded to two hydrogen atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp2Ex.jpg"/>
+</media>
+<caption>Miðjufrumeindin/frumeindirnar í hverri af þeim byggingum sem sýndar eru innihalda þrjú svæði rafeindaþéttleika og eru <emphasis effect="italics">sp</emphasis><sup>2</sup>-blandaðar. Eins og við vitum úr umfjölluninni um VSEPR-kenninguna inniheldur svæði rafeindaþéttleika allar rafeindirnar sem vísa í eina átt. Rafeindapar, ópöruð rafeind, eintengi eða fjöltengi teljast hvert um sig sem eitt svæði rafeindaþéttleika.</caption>
+</figure>
+</section>
+<section id="fs-idm76169824">
+<title>*sp*^3^ Hybridization</title>
+<para id="fs-idp165799040">Girðisvigrúm frumeindar sem er umkringd ferflötungsfyrirkomulagi efnatengjapara og stakra rafeindapara samanstanda af setti fjögurra <term id="term-00005"><emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúma (e. <emphasis effect="italics">sp</emphasis><sup>3</sup> hybrid orbitals)</term>. Blendingssvigrúmin verða til við blöndun eins <emphasis effect="italics">s</emphasis>-svigrúms og allra þriggja <emphasis effect="italics">p</emphasis>-svigrúmanna, sem myndar fjögur eins <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúm (<link target-id="CNX_Chem_08_02_sp3Geom"/>). Hvert þessara blendingssvigrúma vísar í átt að mismunandi horni ferflötungs.</para>
+<figure id="CNX_Chem_08_02_sp3Geom"><media id="fs-idm125953968" alt="A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a tetrahedral arrangement,” are shown. The first diagram shows a blue spherical orbital and three red, peanut-shaped orbitals, each placed on an x, y, z axis system. The three red orbitals are located on the x , y and z axes, respectively. The second diagram shows the same four orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same four orbitals, but their smaller lobes now overlap to form a tetrahedral structure.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp3Geom.jpg"/>
+</media>
+
+<caption>Blendingur eins <emphasis effect="italics">s</emphasis>-svigrúms (blátt) og þriggja <emphasis effect="italics">p</emphasis>-svigrúma (rautt) myndar fjögur jafngild <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúm (gult) sem vísa með 109,5° horni hvert frá öðru.</caption></figure>
+<para id="fs-idm6466416">Metansameind, CH<sub>4</sub>, samanstendur af kolefnisfrumeind sem er umkringd fjórum vetnisfrumeindum á hornum ferflötungs. Kolefnisfrumeindin í metani sýnir <emphasis effect="italics">sp</emphasis><sup>3</sup>-blending. Við sýnum svigrúm og rafeindadreifingu í stakri kolefnisfrumeind og í tengdri frumeind í CH<sub>4</sub> á <link target-id="CNX_Chem_08_02_sp3Diag"/>. Fjórar girðisrafeindir kolefnisfrumeindarinnar dreifast jafnt í blendingssvigrúmin og hver kolefnisrafeind myndar par með vetnisrafeind þegar C–H efnatengin myndast.</para>
+<figure id="CNX_Chem_08_02_sp3Diag">
+<media id="fs-idp413184" alt="A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Two of the lines have a vertical, up-facing arrow drawn on them. Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” The right side of the diagram shows four short, horizontal lines placed halfway up the space and each labeled, “s p superscript 3.” An upward-facing half arrow is drawn vertically on each line. Above these lines is the phrase, “Orbitals in the s p superscript 3 hybridized C atom in C H subscript 4.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp3Diag.jpg"/>
+</media>
+<caption>Fjögur girðisfrumeindasvigrúm úr stakri kolefnisfrumeind blandast öll þegar kolefnið tengist í sameind eins og CH<sub>4</sub> með fjórum rafeindaþéttnisvæðum. Þetta myndar fjögur jafngild <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúm. Skörun hvers blendingssvigrúms við vetnissvigrúm myndar C–H σ-efnatengi.</caption>
+</figure>
+<para id="fs-idp214759888">Í metansameind skarast 1<emphasis effect="italics">s</emphasis>-svigrúm hverrar af fjórum vetnisfrumeindunum við eitt af fjórum <emphasis effect="italics">sp</emphasis>^3*-svigrúmum kolefnisfrumeindarinnar til að mynda sigma (σ) efnatengi. Þetta leiðir til myndunar fjögurra sterkra, jafngildra samgildra efnatengja milli kolefnisfrumeindarinnar og hverrar vetnisfrumeindar til að mynda metansameindina, CH<sub>4</sub>.</para>
+<para id="fs-idp55772464">Bygging etans, C<sub>2</sub>H<sub>6</sub>, er svipuð og metans að því leyti að hvert kolefni í etani hefur fjórar nágrannafrumeindir raðað á horn ferflötungs – þrjár vetnisfrumeindir og eina kolefnisfrumeind (<link target-id="CNX_Chem_08_02_ethane"/>). Hins vegar, í etani, skarast <emphasis effect="italics">sp</emphasis><sup>3</sup>-svigrúm einnar kolefnisfrumeindar enda í enda við <emphasis effect="italics">sp</emphasis><sup>3</sup>-svigrúm annarrar kolefnisfrumeindar til að mynda σ-efnatengi milli kolefnisfrumeindanna tveggja. Hvert af hinum <emphasis effect="italics">sp</emphasis><sup>3</sup>-blendingssvigrúmunum skarast við <emphasis effect="italics">s</emphasis>-svigrúm vetnisfrumeindar til að mynda kolefnis-vetnis σ-efnatengi. Bygging og heildaryfirlit yfir tengisvigrúm etans eru sýnd á <link target-id="CNX_Chem_08_02_ethane"/>. Afstaða CH<sub>3</sub>-hópanna tveggja er ekki föst miðað við hvorn annan. Raunprófanir sýna að snúningur um σ-efnatengi á sér auðveldlega stað.</para>
+<figure id="CNX_Chem_08_02_ethane">
+<media id="fs-idp175091264" alt="Two diagrams are shown and labeled “a” and “b.” Diagram a shows two carbon atoms, each surrounded by their four s p subscript three hybridized orbitals in a three dimensional arrangement. Each of the orbitals is shown overlapping with a spherical hydrogen atom. Diagram b shows the same general arrangement, but the hydrogen atoms are just represented by an, “H” and their spherical orbitals are not shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_ethane.jpg"/>
+</media>
+<caption>(a) Í etansameindinni, C<sub>2</sub>H<sub>6</sub>, hefur hvert kolefni fjögur <emphasis effect="italics">sp</emphasis><sup>3</sup>-svigrúm. (b) Þessi fjögur svigrúm skarast til að mynda sjö σ-efnatengi.</caption>
+</figure>
+<para id="fs-idm7245936"><emphasis effect="italics">sp</emphasis><sup>3</sup>-blendingssvigrúm getur einnig haldið utan um stakt rafeindapar. Til dæmis er niturfrumeindin í ammóníaki umkringd þremur efnatengjapörum og einu staku rafeindapari sem vísa að fjórum hornum ferflötungs. Niturfrumeindin er <emphasis effect="italics">sp</emphasis><sup>3</sup>-blenduð með eitt blendingssvigrúm upptekið af staka rafeindaparinu.</para>
+<para id="fs-idp158687664">Sameindabygging vatns er í samræmi við ferflötungsfyrirkomulag tveggja stakra rafeindapara og tveggja efnatengjapara. Því segjum við að súrefnisfrumeindin sé <emphasis effect="italics">sp</emphasis><sup>3</sup>-blenduð, þar sem tvö af blendingssvigrúmunum eru upptekin af stökum rafeindapörum og tvö af efnatengjapörum. Þar sem stök rafeindapör taka meira pláss en efnatengjapör, hafa byggingar sem innihalda stök rafeindapör efnatengishorn sem eru örlítið skekkt frá kjörstöðu. Fullkomnir ferflötungar hafa 109,5° horn, en hornin sem mælast í ammóníaki (107,3°) og vatni (104,5°) eru örlítið minni. Önnur dæmi um <emphasis effect="italics">sp</emphasis><sup>3</sup>-blending eru CCl<sub>4</sub>, PCl<sub>3</sub> og NCl<sub>3</sub>.</para>
+</section>
+<section id="fs-idm100176160">
+<title>*sp*^3^*d* and *sp*^3^*d*^2^ Hybridization</title>
+<para id="fs-idp62922832">Til að lýsa fimm tengisvigrúmum í þríhyrndu tvípýramídafyrirkomulagi verðum við að nota fimm af girðishvolfsfrumeindasvigrúmunum (<emphasis effect="italics">s</emphasis>-svigrúmið, þrjú <emphasis effect="italics">p</emphasis>-svigrúmin og eitt af <emphasis effect="italics">d</emphasis>-svigrúmunum), sem gefur fimm <term id="term-00006"><emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>-blendingssvigrúm (e. <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> hybrid orbitals)</term>. Með áttflötungsfyrirkomulagi sex blendingssvigrúma verðum við að nota sex girðishvolfsfrumeindasvigrúm (<emphasis effect="italics">s</emphasis>-svigrúmið, þrjú <emphasis effect="italics">p</emphasis>-svigrúmin og tvö af <emphasis effect="italics">d</emphasis>-svigrúmunum í girðishvolfinu), sem gefur sex <term id="term-00007"><emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup>-blendingssvigrúm (e. <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup> hybrid orbitals)</term>. Þessar blendingar eru aðeins mögulegar fyrir frumeindir sem hafa <emphasis effect="italics">d</emphasis>-svigrúm í girðisundirhvolfum sínum (þ.e.a.s. ekki þær sem eru á fyrsta eða öðru lotubili).</para>
+<para id="fs-idp213231264">Í sameind fosfórpentaklóríðs, PCl<sub>5</sub>, eru fimm P–Cl efnatengi (þar af leiðandi fimm pör girðisrafeinda í kringum fosfórfrumeindina) sem vísa í átt að hornum þríhyrnds tvípýramída. Við notum 3<emphasis effect="italics">s</emphasis>-svigrúmið, þrjú 3<emphasis effect="italics">p</emphasis>-svigrúmin og eitt af 3<emphasis effect="italics">d</emphasis>-svigrúmunum til að mynda settið af fimm <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>-blendingssvigrúmum (<link target-id="CNX_Chem_08_02_sp3d"/>) sem taka þátt í P–Cl efnatengjunum. Aðrar frumeindir sem sýna <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>-blending eru brennisteinsfrumeindin í SF<sub>4</sub> og klórfrumeindirnar í ClF<sub>3</sub> og í <m:math><m:mrow><m:msub><m:mtext>ClF</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math> (rafeindir á flúorfrumeindum eru sleppt til skýringar.)</para>
+<figure id="CNX_Chem_08_02_sp3d_img" class="scaled-down">
+<media id="fs-idp31211936" alt="Three Lewis structures are shown along with designations of molecular shape. The left image shows a sulfur atom singly bonded to four fluorine atoms. The sulfur atom has one lone pair of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page. The second structure shows one chlorine atom singly bonded to three fluorine atoms. The chlorine has two lone pairs of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other is shown horizontally. The right structure shows a chlorine atom singly bonded to four fluorine atoms. The chlorine atom has one lone pair of electrons and a superscript plus sign, while each fluorine has three lone pairs of electrons. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp3d_img.jpg"/>
+</media>
+<caption>Efnasamböndin þrjú á myndinni sýna <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>-blending í miðfrumeindinni og þríhyrnt tvípýramídaform. SF<sub>4</sub> og <m:math><m:mrow><m:msub><m:mtext>ClF</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> hafa eitt stakt rafeindapar á miðfrumeindinni og ClF<sub>3</sub> hefur tvö stök rafeindapör sem gefur því T-lögunina sem sýnd er.</caption>
+</figure>
+<figure id="CNX_Chem_08_02_sp3d" class="scaled-down">
+<media id="fs-idp112861328" alt="Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in a trigonal bipyramidal arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sp3d.jpg"/>
+</media>
+<caption>(a) Svæðin fimm með rafeindaþéttleika í kringum fosfór í PCl<sub>5</sub> krefjast fimm <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> blendingssvigrúma. (b) Þessi svigrúm sameinast og mynda þríhyrningslaga tvípýramída þar sem hver stór bleðill blendingssvigrúmsins vísar að hornpunkti. Eins og áður eru einnig litlir bleðlar sem vísa í gagnstæða átt fyrir hvert svigrúm (ekki sýndir til skýringar).</caption>
+</figure>
+<para id="fs-idm28471216">Brennisteinsfrumeindin í brennisteinshexaflúoríði, SF<sub>6</sub>, sýnir <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup> blendingu. Sameind brennisteinshexaflúoríðs hefur sex tengipör rafeinda sem tengja sex flúorfrumeindir við eina brennisteinsfrumeind. Engin stök rafeindapör eru á miðfrumeindinni. Til að tengja sex flúorfrumeindir mynda 3<emphasis effect="italics">s</emphasis>-svigrúmið, þrjú 3<emphasis effect="italics">p</emphasis>-svigrúmin og tvö af 3<emphasis effect="italics">d</emphasis>-svigrúmunum sex jafngild <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>^2<emphasis effect="italics"> blendingssvigrúm, sem hvert um sig vísar í átt að mismunandi horni áttflötungs. Aðrar frumeindir sem sýna </emphasis>sp<emphasis effect="italics"><sup>3</sup></emphasis>d<emphasis effect="italics">^2</emphasis> blendingu eru meðal annars fosfórfrumeindin í <m:math><m:mrow><m:msub><m:mtext>PCl</m:mtext><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> joðfrumeindin í millihalógenunum <m:math><m:mrow><m:msub><m:mtext>IF</m:mtext><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> IF<sub>5</sub>, <m:math><m:mrow><m:msub><m:mtext>ICl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mtext>IF</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> og xenónfrumeindin í XeF<sub>4</sub>.</para>
+<figure id="CNX_Chem_08_02_SF6" class="scaled-down">
+<media id="fs-idp175928896" alt="Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in an octahedral arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d superscript two.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_SF6.jpg"/>
+</media>
+<caption>(a) Brennisteinshexaflúoríð, SF<sub>6</sub>, hefur áttflötungslaga byggingu sem krefst <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>^2<emphasis effect="italics"> blendingar. (b) Sex </emphasis>sp<emphasis effect="italics"><sup>3</sup></emphasis>d<emphasis effect="italics">^2</emphasis> svigrúmin mynda áttflötungslaga byggingu í kringum brennistein. Aftur er minni bleðill hvers svigrúms ekki sýndur til skýringar.</caption></figure>
+</section>
+<section id="fs-idm70341472">
+<title>Úthlutun blendingssvigrúma til miðfrumeinda</title>
+<para id="fs-idp63424176">Blending frumeindar ræðst af fjölda svæða með rafeindaþéttleika sem umlykja hana. Rúmfræðilegar uppraðanir sem einkenna hin ýmsu sett blendingssvigrúma eru sýndar í <link target-id="CNX_Chem_08_02_HybrdOrbit"/>. Þessar uppraðanir eru eins og þær sem gildisrafeindaparafráhrindingarkenningin (VSEPR) spáir fyrir um varðandi rúmfræði rafeindapara. VSEPR-kenningin spáir fyrir um lögun sameinda og kenningin um blendingssvigrúm útskýrir hvernig þessi lögun myndast. Til að finna blendingu miðfrumeindar getum við notað eftirfarandi leiðbeiningar:</para>
+<list id="fs-idp49645888" list-type="enumerated" number-style="arabic">
+<item>Ákvarðið Lewis mynd sameindarinnar.</item>
+<item>Ákvarðið fjölda svæða með rafeindaþéttleika í kringum frumeind með því að nota VSEPR-kenninguna, þar sem eintengi, fjöltengi, stakeindir og stök rafeindapör telja hvert um sig sem eitt svæði.</item>
+<item>Úthlutið því setti blendingssvigrúma úr <link target-id="CNX_Chem_08_02_HybrdOrbit"/> sem samsvarar þessari rúmfræði.</item>
+</list>
+<figure id="CNX_Chem_08_02_HybrdOrbit">
+<media id="fs-idp61147088" alt="A table is shown that is composed of five columns and six rows. The header row contains the phrases, “Regions of electron density,” “Arrangement,” (which has two columns below it), and “Hybridization,” (which has two columns below it). The first column contains the numbers “2,” “3,” “4,” “5,” and “6.” The second column contains images of a line, a triangle, a three sided pyramid, a trigonal bipyramid, and an eight-faced ocatahedron. The third column contains the terms, “Linear,” “Trigonal planar,” “Tetrahedral,” “Trigonal bipyramidal,” and “Octahedral.” The fourth column contains the terms “s p,” “s p superscript 2,” “s p superscript 3,” “s p superscript 3 d,” and “s p superscript 3 d superscript 2.” The last column contains drawings of the molecules beginning with a peanut-shaped structure marked with an angle of “180 degrees.” The second structure is made up of three equal-sized, rounded structures connected at one point with an angle of “120 degrees,” while the third structure is a three-dimensional arrangement of four equal-sized, rounded structures labeled as “109.5 degrees.” The fourth structure is made up of five equal-sized, rounded structures connected at “120 and 90 degrees,” while the fifth structure has six equal-sized, rounded structures connected at “90 degrees.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_HybrdOrbit.jpg"/>
+</media>
+<caption>Lögun setta blendingssvigrúma er í samræmi við rúmfræði rafeindapara. Til dæmis er frumeind sem er umkringd þremur svæðum með rafeindaþéttleika <emphasis effect="italics">sp</emphasis>^2<emphasis effect="italics"> blenduð og þrjú </emphasis>sp<emphasis effect="italics">^2</emphasis> svigrúmin raðast upp á þríhyrningslaga flattan hátt.</caption>
+</figure>
+<para id="fs-idp61891472">Það er mikilvægt að muna að blending var þróuð til að rökstyðja sameindalögun sem sést hefur í tilraunum. Líkanið virkar vel fyrir sameindir sem innihalda litlar miðfrumeindir, þar sem gildisrafeindapörin eru nálægt hvort öðru í rúmi. Hins vegar, fyrir stærri miðfrumeindir, eru gildisrafeindapörin lengra frá kjarnanum og fráhrindingarkraftarnir eru færri. Efnasambönd þeirra sýna byggingu sem er oft ekki í samræmi við VSEPR-kenninguna og blendingssvigrúm eru ekki nauðsynleg til að útskýra gögnin. Til dæmis höfum við rætt H–O–H tengihornið í H<sub>2</sub>O, 104,5°, sem er í betra samræmi við <emphasis effect="italics">sp</emphasis>^3<emphasis effect="italics"> blendingssvigrúm (109,5°) á miðfrumeindinni en við 2</emphasis>p<emphasis effect="italics"> svigrúm (90°). Brennisteinn er í sama flokki og súrefni og H<sub>2</sub>S hefur svipaða Lewis mynd. Hins vegar hefur það mun minna tengihorn (92,1°), sem bendir til mun minni blendingar á brennisteini en súrefni. Ef haldið er áfram niður flokkinn er tellúr jafnvel stærra en brennisteinn og fyrir H<sub>2</sub>Te er mælt tengihorn (90°) í samræmi við skörun 5</emphasis>p* svigrúma, án þess að blendingu sé beitt. Við beitum blendingu þar sem það er nauðsynlegt til að útskýra þá byggingu sem sést.</para>
+<media id="fs-idp72255632" alt="Three Lewis structures are shown. The left structure shows an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The middle structure is made up of a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. The right structure is made up of a tellurium atom with two lone pairs of electrons single bonded to two hydrogen atoms. From left to right, the bond angles of each molecule decrease.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_hybrid_img.jpg"/>
+</media>
+<example id="fs-idp175627360">
+<para id="fs-idm109759824"><title>Úthlutun blendingar</title>Ammóníumsúlfat er mikilvægt sem áburður. Hver er blending brennisteinsfrumeindarinnar í súlfatjóninni, <m:math><m:mrow><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup><m:mo>?</m:mo></m:mrow></m:math></para>
+<para id="fs-idp150033040"><title>Lausn</title>Lewis mynd súlfats sýnir að það eru fjögur svæði með rafeindaþéttleika. Blendingin er <emphasis effect="italics">sp</emphasis><sup>3</sup>.</para>
+<media id="fs-idp193912528" class="scaled-down" alt="A structure is shown in which a sulfur atom is bonded to four oxygen atoms in a tetrahedral arrangement. Two of the oxygen atoms have a negative charge.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_sulfate_img.jpg"/>
+</media>
+<para id="fs-idm10091104"><title>Kannaðu þekkingu þína</title>Hver er blending selenfrumeindarinnar í SeF<sub>4</sub>?</para>
+<media id="fs-idm12651952" class="scaled-down" alt="A Lewis structure is shown in which four fluorine atoms are each attached to one sulfur atom. Two of the attached fluorine atoms are vertically attached up and down, while two are attached into and out of the page to the right. The sulfur also has one lone pair of electrons attached to the left of the structure.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_SF4_img.jpg"/>
+</media>
+<note id="fs-idm8762288">
+<title>Answer:</title>
+<para id="fs-idm65914448">Selenfrumeindin er <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> blenduð.</para>
+</note>
+</example>
+<example id="fs-idm15564528">
+<para id="fs-idm176016512"><title>Úthlutun blendingar</title>Þvagefni, NH<sub>2</sub>C(O)NH<sub>2</sub>, er stundum notað sem uppspretta niturs í áburði. Hver er blending kolefnisfrumeindarinnar í þvagefni?</para><para id="fs-idm1735632"><title>Lausn</title>Lewis mynd þvagefnis er</para>
+<media id="fs-idp175456832" class="scaled-down" alt="A Lewis structure is shown in which a carbon atom is double bonded to an oxygen atom that has two lone pairs of electrons. The carbon atom forms single bonds to two nitrogen atoms. Each nitrogen is single bonded to two hydrogen atoms, and each nitrogen atoms has one lone pair of electrons.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_urea_img.jpg"/>
+</media>
+<para id="fs-idp22488768">Kolefnisfrumeindin er umkringd þremur svæðum með rafeindaþéttleika sem raðast í þríhyrningslaga flata uppsetningu. Blöndunin í þríhyrningslaga flötu rafeindaparsrúmfræðinni er <emphasis effect="italics">sp</emphasis><sup>2</sup> (<link target-id="CNX_Chem_08_02_HybrdOrbit"/>), sem er blöndun kolefnisfrumeindarinnar í þvagefni.</para>
+<para id="fs-idp25312384"><title>Kannaðu þekkingu þína</title>Ediksýra, H<sub>3</sub>CC(O)OH, er sameindin sem gefur ediki lykt sína og súra bragð. Hver er blöndun kolefnisfrumeindanna tveggja í ediksýru?</para>
+<media id="fs-idp25876800" class="scaled-down" alt="A Lewis structure is shown in which a carbon atom is double bonded to an oxygen atom that has two lone pairs of electrons and single bonded to another oxygen atom that is single boned to a hydrogen atom. This second oxygen atom has two lone pairs of electrons. The carbon is also single bonded to a carbon atom that is single bonded to three hydrogen atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_acetic_img.jpg"/>
+</media>
+<note id="fs-idp92570160">
+<title>Answer:</title>
+<para id="fs-idp180575168">H<sub>3</sub><emphasis effect="underline">C</emphasis>, <emphasis effect="italics">sp</emphasis><sup>3</sup>; <emphasis effect="underline">C</emphasis>(O)OH, <emphasis effect="italics">sp</emphasis><sup>2</sup></para>
+</note>
+</example>
+</section>
+<section id="fs-idm69243360" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm25402912">Við getum notað blendingssvigrúm, sem eru stærðfræðilegar samsetningar sumra eða allra girðifrumsvigrúma, til að lýsa rafeindaþéttleikanum í kringum samgilt tengdar frumeindir. Þessi blendingssvigrúm mynda annaðhvort sigma (σ) efnatengi sem beinast að öðrum frumeindum sameindarinnar eða innihalda stök rafeindapör. Við getum ákvarðað gerð blöndunar í kringum miðjufrumeind út frá rúmfræði svæða rafeindaþéttleikans í kringum hana. Tvö slík svæði gefa til kynna <emphasis effect="italics">sp</emphasis> blöndun; þrjú, <emphasis effect="italics">sp</emphasis><sup>2</sup> blöndun; fjögur, <emphasis effect="italics">sp</emphasis><sup>3</sup> blöndun; fimm, <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> blöndun; og sex, <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup> blöndun. Pí (π) efnatengi eru mynduð úr óblönduðum frumeindasvigrúmum (<emphasis effect="italics">p</emphasis> eða <emphasis effect="italics">d</emphasis> svigrúmum).</para>
+</section>
+<section id="fs-idp58929664" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idm77916144">
+<problem id="fs-idm68614768">
+<para id="fs-idp18305632">Hvers vegna er hugtakið blöndun nauðsynlegt í gildistengjakenningunni?</para>
+</problem>
+<solution id="fs-idm55824656">
+<para id="fs-idp23920752">Blöndun er kynnt til sögunnar til að útskýra rúmfræði tengisvigrúma í gildistengjakenningunni.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp3076096">
+<problem id="fs-idm6950528">
+<para id="fs-idp161545456">Gefðu upp lögunina sem lýsir hverju blendingssvigrúmasetti:</para>
+<para id="fs-idm99955904">(a) <emphasis effect="italics">sp</emphasis><sup>2</sup></para>
+<para id="fs-idp100279488">(b) <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis></para>
+<para id="fs-idm11761440">(c) <emphasis effect="italics">sp</emphasis></para>
+<para id="fs-idm14469120">(d) <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup></para>
+</problem>
+</exercise>
+<exercise id="fs-idp97605024">
+<problem id="fs-idp176005264">
+<para id="fs-idm13942544">Útskýrðu hvers vegna kolefnisfrumeind getur ekki myndað fimm efnatengi með <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> blendingssvigrúmum.</para>
+</problem>
+<solution id="fs-idp62176896">
+<para id="fs-idp44512224">Það eru engin <emphasis effect="italics">d</emphasis> svigrúm í girðihvolfi kolefnis.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp25144752">
+<problem id="fs-idm57729872">
+<para id="fs-idp29219232">Hver er blöndun miðjufrumeindarinnar í hverju eftirfarandi?</para>
+<para id="fs-idm50812144">(a) BeH<sub>2</sub></para>
+<para id="fs-idp141971872">(b) SF<sub>6</sub></para>
+<para id="fs-idm88013888">(c) <m:math><m:mrow><m:msub><m:mtext>PO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>3−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm64223984">(d) PCl<sub>5</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp86297648">
+<problem id="fs-idp93155376">
+<para id="fs-idp580400">Sameind með formúluna AB<sub>3</sub> gæti haft eina af fjórum mismunandi lögunum. Gefðu upp lögun og blöndun miðjufrumeindarinnar A fyrir hverja þeirra.</para>
+</problem>
+<solution id="fs-idp51460320">
+<para id="fs-idm14765376">þríhyrningslaga flatt, <emphasis effect="italics">sp</emphasis><sup>2</sup>; þríhyrningslaga pýramídi (eitt stakt rafeindapar á A) <emphasis effect="italics">sp</emphasis><sup>3</sup>; T-laga (tvö stök rafeindapör á A <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis>, eða (þrjú stök rafeindapör á A) <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idp180352816">
+<problem id="fs-idp30127920">
+<para id="fs-idm38892720">Metíónín, CH<sub>3</sub>SCH<sub>2</sub>CH<sub>2</sub>CH(NH<sub>2</sub>)CO<sub>2</sub>H, er amínósýra sem finnst í próteinum. Lewis mynd þessa efnasambands er sýnd hér að neðan. Hver er blöndunargerð hvers kolefnis, súrefnis, niturs og brennisteins?</para><media id="fs-idp20593920" alt="A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and single bonded to a sulfur atom with two lone pairs of electrons. The sulfur atom is attached to a chain of four singly bonded carbon atoms, the first two of which are single bonded to two hydrogen atoms each, and the third of which is single bonded to a hydrogen atom and single bonded to a nitrogen atom which has one lone electron pair. The nitrogen atom is also single bonded to two hydrogen atoms. The fourth andfinal carbon in the chain is double bonded to an oxygen with two lone pairs of electrons and single bonded to an oxygen atom with two lone pairs of electrons. The second oxygen atom is single bonded to a hydrogen atom.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_methionine_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idm9916608">
+<problem id="fs-idp13383344">
+<para id="fs-idp31878144">Brennisteinssýra er framleidd með röð efnahvarfa sem táknuð eru með eftirfarandi jöfnum:<newline/><m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>8</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>8</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math><newline/><m:math><m:mrow><m:mn>2</m:mn><m:mtext>S</m:mtext><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math><newline/><m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm97336528">Teiknaðu Lewis mynd, spáðu fyrir um sameindarúmfræði með VSEPR og ákvarðaðu blöndun brennisteins fyrir eftirfarandi:</para>
+<para id="fs-idp573360">(a) hringlaga S<sub>8</sub> sameind</para>
+<para id="fs-idm36381616">(b) SO<sub>2</sub> sameind</para>
+<para id="fs-idm59299376">(c) SO<sub>3</sub> sameind</para>
+<para id="fs-idm27566560">(d) H<sub>2</sub>SO<sub>4</sub> sameind (vetnisfrumeindirnar eru tengdar súrefnisfrumeindum)</para>
+</problem>
+<solution id="fs-idm71325760">
+<para id="fs-idp38901616">(a) Hver S hefur beygða (109°) rúmfræði, <emphasis effect="italics">sp</emphasis><sup>3</sup><newline/> <media id="fs-idm6721680" alt="A Lewis structure is shown in which eight sulfur atoms, each with two lone pairs of eletrons, are single bonded together into an eight-sided ring."><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_SulfManuf1_img.jpg"/></media><newline/> (b) Beygð (120°), <emphasis effect="italics">sp</emphasis><sup>2</sup><newline/> <media id="fs-idm5731280" alt="Two Lewis structure are shown, connected by a double-ended arrow. The left structure shows a sulfur atom with one lone pair of electrons double bonded to an oxygen atom with two lone pairs of electrons on the left and single bonded to an oxygen atom with three lone pairs of electrons on the right. The right structure shows the same molecule, except that the double bonded oxygen is on the right side of the sulfur and the single bonded oxygen is to the left of the sulfur."><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_SulfManuf2_img.jpg"/></media><newline/> (c) Þríhyrningslaga flatt, <emphasis effect="italics">sp</emphasis><sup>2</sup><newline/> <media id="fs-idp100080400" alt="A Lewis structure of a sulfur atom singly bonded to two oxygen atoms, each with three lone pairs of electrons, and double bonded to a third oxygen atom with two lone pairs of electrons is shown."><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_SulfManuf3_img.jpg"/></media><newline/> (d) Ferflötungur, <emphasis effect="italics">sp</emphasis><sup>3</sup><newline/> <media id="fs-idp25214960" alt="A Lewis structure is shown in which a sulfur atom is single bonded to four oxygen atoms. Two of the oxygen atoms have three lone pairs of electrons while the other two each have two lone pairs of electrons and are each singly bonded to a hydrogen atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_SulfManuf4_img.jpg"/></media></para>
+</solution>
+</exercise>
+<exercise id="fs-idm2424288">
+<problem id="fs-idm31420528">
+<para id="fs-idp2405168">Tvö mikilvæg iðnaðarefni, eten, C<sub>2</sub>H<sub>4</sub>, og própen, C<sub>3</sub>H<sub>6</sub>, eru framleidd með gufu- (eða varma-) sprunguferli:<newline/> <equation id="fs-idm143750304" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation></para>
+<para id="fs-idm16899312">Fyrir hvert af kolefnissamböndunum fjórum, gerðu eftirfarandi:</para>
+<para id="fs-idm63955312">(a) Teiknaðu Lewis mynd.</para>
+<para id="fs-idp60582576">(b) Spáið fyrir um rúmfræði kolefnisfrumeindarinnar.</para>
+<para id="fs-idm77947008">(c) Ákvarðið blendingu hverrar tegundar kolefnisfrumeindar.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp96568912">
+<problem id="fs-idp154473952">
+<para id="fs-idm125977952">Greining á efnasambandi sýnir að það inniheldur 77,55% Xe og 22,45% F miðað við massa.</para>
+<para id="fs-idm1080832">(a) Hver er reynsluformúla þessa efnasambands? <emphasis effect="italics">(Gerið ráð fyrir að þetta sé einnig sameindaformúlan þegar svarað er hinum hlutum þessarar æfingar)</emphasis>.</para>
+<para id="fs-idp206649712">(b) Skrifið Lewis mynd fyrir efnasambandið.</para>
+<para id="fs-idp97235632">(c) Spáið fyrir um lögun sameinda efnasambandsins.</para>
+<para id="fs-idm28660320">(d) Hvaða blending er í samræmi við lögunina sem þið spáðuð fyrir um?</para>
+</problem>
+<solution id="fs-idp151787344">
+<para id="fs-idp53996864">(a) XeF<sub>2</sub><newline/>(b)<newline/><media id="fs-idp19199872" alt="A Lewis structure is shown in which a xenon atom that has three lone pairs of electrons is single bonded to two fluorine atoms, each of which has three lone pairs of electrons."><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_xefluoride_img.jpg"/></media><newline/> (c) línulegur (d) <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idm10995632">
+<problem id="fs-idp1984736">
+<para id="fs-idm182436448">Lítum á saltpéturssýrling, HNO<sub>2</sub> (HONO).</para>
+<para id="fs-idm80626448">(a) Skrifið Lewis mynd.</para>
+<para id="fs-idm45896464">(b) Hver er rúmfræði rafeindapara og sameindarúmfræði innri súrefnis- og niturfrumeindanna í HNO<sub>2</sub> sameindinni?</para>
+<para id="fs-idm68830752">(c) Hver er blendingin á innri súrefnis- og niturfrumeindunum í HNO<sub>2</sub>?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm32929264">
+<problem id="fs-idm38026752">
+<para id="fs-idp25434064">Eldspýtur sem kviknar á hvar sem er innihalda lag af KClO<sub>3</sub> og lag af P<sub>4</sub>S<sub>3</sub>. Varminn sem myndast við núninginn þegar eldspýtunni er strokið veldur því að þessi tvö efnasambönd hvarfast kröftuglega, sem kveikir í viðarstilki eldspýtunnar. KClO<sub>3</sub> inniheldur <m:math><m:mrow><m:msub><m:mtext>ClO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jónina. P<sub>4</sub>S<sub>3</sub> er óvenjuleg sameind með beinagrindarmyndina.</para>
+<media id="fs-idp84375552" alt="A Lewis structure is shown in which three phosphorus atoms are single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_phsphorus1_img.jpg"/>
+</media>
+<para id="fs-idp10208368">(a) Skrifið Lewis myndir fyrir P<sub>4</sub>S<sub>3</sub> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>–</m:mo></m:msup></m:mrow></m:math> jónina.</para>
+<para id="fs-idp158515072">(b) Lýsið rúmfræðinni í kringum P-frumeindirnar, S-frumeindina og Cl-frumeindina í þessum efnum.</para>
+<para id="fs-idm7498160">(c) Úthlutið blendingu á P-frumeindirnar, S-frumeindina og Cl-frumeindina í þessum efnum.</para>
+<para id="fs-idm49707984">(d) Ákvarðið oxunartölur og formlega hleðslu frumeindanna í P<sub>4</sub>S<sub>3</sub> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>–</m:mo></m:msup></m:mrow></m:math> jóninni.</para>
+</problem>
+<solution id="fs-idp161653536">
+<para id="fs-idp50482432">(a)<newline/> <media id="fs-idm62815664" alt="Two Lewis structure are shown, the left of which depicts three phosphorus atoms single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle. Each sulfur atom in this structure has two lone pairs of electrons while each phosphorus has one lone pair. The second Lewis structure shows a chlorate atom single bonded to two oxygen atoms, each of which has three lone pairs of electrons, and double bonded to an oxygen atom, which has two lone pairs of electrons."><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_phsphorus2_img.jpg"/></media><newline/> (b) P-frumeindir, þríhyrningslaga pýramídi; S-frumeindir, bogalaga, með tvö rafeindapör; Cl-frumeindir, þríhyrningslaga pýramídi; (c) Blending í kringum P, S og Cl er í öllum tilvikum <emphasis effect="italics">sp</emphasis><sup>3</sup>; (d) Oxunartölur P +1, S<m:math><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> Cl +5, O –2. Formlegar hleðslur: P 0; S 0; Cl +2: O –1</para>
+</solution>
+</exercise>
+<exercise id="fs-idm71570128">
+<problem id="fs-idp18069328">
+<para id="fs-idm63316720">Auðkennið blendingu hverrar kolefnisfrumeindar í eftirfarandi sameind. (Fyrirkomulag frumeinda er gefið; þið þurfið að ákvarða hversu mörg tengi tengja hvert par frumeinda.)</para>
+<media id="fs-idm54700256" alt="A Lewis structure is shown that is missing all of its bonds. Six carbon atoms form a chain. There are three hydrogen atoms located around the first carbon, two located around the second, one located near the fifth, and two located around the sixth carbon.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_enyne_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idp29495632">
+<problem id="fs-idm9900528">
+<para id="fs-idm32562944">Skrifið Lewis myndir fyrir NF<sub>3</sub> og PF<sub>5</sub>. Á grundvelli blendingssvigrúma, útskýrið þá staðreynd að NF<sub>3</sub>, PF<sub>3</sub> og PF<sub>5</sub> eru stöðugar sameindir, en NF<sub>5</sub> er ekki til.</para>
+</problem>
+<solution id="fs-idm72707904">
+<media id="fs-idm38273232" alt="Two Lewis structures are shown. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The right structure shows a phosphorus atoms single bonded to five fluorine atoms, each of which has three lone pairs of electrons.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_phosnitro_img.jpg"/>
+</media>
+<para id="fs-idm31702720">Fosfór og nitur geta myndað <emphasis effect="italics">sp</emphasis><sup>3</sup> blendinga til að mynda þrjú tengi og halda einu rafeindapari í PF<sub>3</sub> og NF<sub>3</sub>, hvort um sig. Hins vegar hefur nitur engin <emphasis effect="italics">d</emphasis>-girðisvigrúm, svo það getur ekki myndað sett af <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> blendingssvigrúmum til að binda fimm flúorfrumeindir í NF<sub>5</sub>. Fosfór hefur <emphasis effect="italics">d</emphasis>-svigrúm og getur bundið fimm flúorfrumeindir með <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> blendingssvigrúmum í PF<sub>5</sub>.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp15207648">
+<problem id="fs-idm64447440">
+<para id="fs-idp197831120">Auk NF<sub>3</sub> eru tvær aðrar flúorafleiður niturs þekktar: N<sub>2</sub>F<sub>4</sub> og N<sub>2</sub>F<sub>2</sub>. Hvaða lögun spáið þið fyrir um fyrir þessar tvær sameindir? Hver er blendingin fyrir nitrið í hvorri sameind?</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp102362976">
+<term>blendingssvigrúm (e. hybrid orbital)</term>
+<meaning id="fs-idp102362976-meaning">svigrúm sem myndast við samsetningu frumeindasvigrúma á miðfrumeind</meaning>
+</definition>
+<definition id="fs-idm29433408">
+<term>blending (e. hybridization)</term>
+<meaning id="fs-idm29433408-meaning">líkan sem lýsir breytingum á frumeindasvigrúmum frumeindar þegar hún myndar samgilt efnasamband</meaning>
+</definition>
+<definition id="fs-idm71427776">
+<term>sp blendingssvigrúm (e. sp hybrid orbital)</term>
+<meaning id="fs-idm71427776-meaning">eitt af setti tveggja svigrúma með línulegri uppröðun sem myndast við samsetningu eins <emphasis effect="italics">s</emphasis> og eins <emphasis effect="italics">p</emphasis> svigrúms</meaning>
+</definition>
+<definition id="fs-idm48701168">
+<term>sp2 blendingssvigrúm (e. sp2 hybrid orbital)</term>
+<meaning id="fs-idm48701168-meaning">eitt af setti þriggja svigrúma með þríhyrningslaga flatri uppröðun sem myndast við samsetningu eins <emphasis effect="italics">s</emphasis> og tveggja <emphasis effect="italics">p</emphasis> svigrúma</meaning>
+</definition>
+<definition id="fs-idp88964992">
+<term>sp3 blendingssvigrúm (e. sp3 hybrid orbital)</term>
+<meaning id="fs-idp88964992-meaning">eitt af setti fjögurra svigrúma með ferflötungs uppröðun sem myndast við samsetningu eins <emphasis effect="italics">s</emphasis> og þriggja <emphasis effect="italics">p</emphasis> svigrúma</meaning>
+</definition>
+<definition id="fs-idm16838896">
+<term>sp3d blendingssvigrúm (e. sp3d hybrid orbital)</term>
+<meaning id="fs-idm16838896-meaning">eitt af fimm svigrúmum með þríhyrningslaga tvípýramídaskipan sem myndast við samruna eins <emphasis effect="italics">s</emphasis>-, þriggja <emphasis effect="italics">p</emphasis>- og eins <emphasis effect="italics">d</emphasis>-svigrúms</meaning>
+</definition>
+<definition id="fs-idm47317072">
+<term>sp3d2-blendingssvigrúm (e. sp3d2 hybrid orbital)</term>
+<meaning id="fs-idm47317072-meaning">eitt af sex svigrúmum með áttflötungaskipan sem myndast við samruna eins <emphasis effect="italics">s</emphasis>-, þriggja <emphasis effect="italics">p</emphasis>- og tveggja <emphasis effect="italics">d</emphasis>-svigrúma</meaning>
+</definition>
+</glossary>
+</document>

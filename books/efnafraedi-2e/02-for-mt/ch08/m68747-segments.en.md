@@ -692,4 +692,4 @@ antibonding molecular orbital formed by out-of-phase overlap of atomic orbital a
 s-p mixing
 
 <!-- SEG:m68747:glossary-def:fs-idp5821920-def -->
-change that causes σp orbitals to be less stable than πp orbitals due to the mixing of s and p-based molecular orbitals of similar energies.
+change that causes σ*~p~* orbitals to be less stable than π*~p~* orbitals due to the mixing of *s* and *p*-based molecular orbitals of similar energies.

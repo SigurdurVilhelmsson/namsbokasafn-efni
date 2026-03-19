@@ -2,7 +2,7 @@
 <title>Efnajafnvægi</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68797</md:content-id>
-  <md:title>Chemical Equilibria</md:title>
+  <md:title>Efnajafnvægi</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst eðli jafnvægiskerfa</item><item>Útskýrt kvikt eðli
 efnajafnvægis</item></list></md:abstract>
   <md:uuid>50ab1072-cc18-4529-96d7-87efc091087f</md:uuid>
@@ -13,10 +13,10 @@ efnajafnvægis</item></list></md:abstract>
 felur í sér að setja formúlur hvarfefna vinstra megin við hvarför og
 formúlur myndefna hægra megin. Samkvæmt þessari hefð og skilgreiningum á
 „hvarfefni“ og „myndefni“ táknar efnajafna viðkomandi efnahvarf sem
-gengur frá vinstri til hægri. <term>Afturkræf (e. reversible reactions)</term> efnahvörf geta þó gengið í
+gengur frá vinstri til hægri. <term id="term-00001">Afturkræf (e. reversible reactions)</term> efnahvörf geta þó gengið í
 báðar áttir, bæði fram (frá vinstri til hægri) og aftur (frá hægri til
 vinstri). Þegar hvarfhraði fram- og afturhvarfa er jafn, helst styrkur
-hvarfefna og myndefna stöðugur með tímanum og kerfið er í <term>jafnvægi (e. equilibrium)</term>.
+hvarfefna og myndefna stöðugur með tímanum og kerfið er í <term id="term-00002">jafnvægi (e. equilibrium)</term>.
 Hlutfallslegur styrkur hvarfefna og myndefna í jafnvægiskerfum er mjög
 breytilegur; sum kerfi innihalda aðallega myndefni í jafnvægi, sum
 innihalda aðallega hvarfefni og sum innihalda umtalsvert magn af báðum.</para>

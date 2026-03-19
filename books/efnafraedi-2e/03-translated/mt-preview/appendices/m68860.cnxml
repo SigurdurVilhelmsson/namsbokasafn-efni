@@ -2,7 +2,7 @@
 <title>Nauðsynleg stærðfræði</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68860</md:content-id>
-  <md:title>Essential Mathematics</md:title>
+  <md:title>Nauðsynleg stærðfræði</md:title>
   <md:abstract/>
   <md:uuid>75fe9b6d-533d-4833-ba91-a70d2a794b2a</md:uuid>
 </metadata>
@@ -271,7 +271,7 @@ breytunni sem er skoðuð eða mæld (<emphasis effect="italics">y</emphasis>).<
 hægt að teikna eða skissa graf yfir þessa breytingu. Grafið má búa til
 með því að nota ákveðin gildi fyrir (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gagnapör.</para>
 <example id="fs-idp9271248">
-<para id="fs-idm111716000">Að teikna graf yfir háðni <emphasis effect="italics">y</emphasis> af <emphasis effect="italics">x</emphasis></para>
+<para id="fs-idm111716000"><title>Graphing the Dependence of <emphasis effect="italics">y</emphasis> on <emphasis effect="italics">x</emphasis></title></para>
 <!-- table handled separately -->
 <para id="fs-idm176114816">Þessi tafla inniheldur eftirfarandi
 punkta: (1,5), (2,10), (3,7) og (4,14). Hægt er að teikna hvern þessara
@@ -331,25 +331,25 @@ línuna út frá gögnunum sem sýnd eru hér.</para>
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="top">
-<entry align="left"><emphasis effect="italics">x</emphasis></entry>
-<entry align="left"><emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis><sup>2</sup> + 2</entry>
+<entry align="left"><emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis>2 + 2</entry>
+<entry align="left">1</entry>
 </row>
 </thead>
 <tbody>
 <row valign="top">
-<entry align="left">1</entry>
 <entry align="left">3</entry>
-</row>
-<row valign="top">
 <entry align="left">2</entry>
+</row>
+<row valign="top">
 <entry align="left">6</entry>
-</row>
-<row valign="top">
 <entry align="left">3</entry>
-<entry align="left">11</entry>
 </row>
 <row valign="top">
+<entry align="left">11</entry>
 <entry align="left">4</entry>
+</row>
+<row valign="top">
+<entry align="left">18</entry>
 <entry align="left">18</entry>
 </row>
 </tbody>

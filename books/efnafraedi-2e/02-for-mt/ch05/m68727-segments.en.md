@@ -77,10 +77,10 @@ The following conventions apply when using Δ*H*:
 A negative value of an enthalpy change, Δ*H* &lt; 0, indicates an exothermic reaction; a positive value, Δ*H* > 0, indicates an endothermic reaction. If the direction of a chemical equation is reversed, the arithmetic sign of its Δ*H* is changed (a process that is endothermic in one direction is exothermic in the opposite direction).
 
 <!-- SEG:m68727:item:fs-idm49861360-item-2 -->
-Chemists use a thermochemical equation to represent the changes in both matter and energy. In a thermochemical equation, the enthalpy change of a reaction is shown as a Δ*H* value following the equation for the reaction. This Δ*H* value indicates the amount of heat associated with the reaction involving the number of moles of reactants and products *as shown in the chemical equation*. For example, consider this equation: [[MATH:1]] This equation indicates that when 1 mole of hydrogen gas and [[MATH:2]] mole of oxygen gas at some temperature and pressure change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released to the surroundings. If the coefficients of the chemical equation are multiplied by some factor, the enthalpy change must be multiplied by that same factor (Δ*H* is an extensive property): [[MATH:3]]
+Chemists use a thermochemical equation to represent the changes in both matter and energy. In a thermochemical equation, the enthalpy change of a reaction is shown as a Δ*H* value following the equation for the reaction. This Δ*H* value indicates the amount of heat associated with the reaction involving the number of moles of reactants and products *as shown in the chemical equation*. For example, consider this equation: [[MATH:1]] This equation indicates that when 1 mole of hydrogen gas and [[MATH:3]] mole of oxygen gas at some temperature and pressure change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released to the surroundings. If the coefficients of the chemical equation are multiplied by some factor, the enthalpy change must be multiplied by that same factor (Δ*H* is an extensive property): [[MATH:2]]
 
 <!-- SEG:m68727:item:fs-idm49861360-item-3 -->
-The enthalpy change of a reaction depends on the physical states of the reactants and products, so these must be shown. For example, when 1 mole of hydrogen gas and [[MATH:4]] mole of oxygen gas change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released. If gaseous water forms, only 242 kJ of heat are released. [[MATH:5]]
+The enthalpy change of a reaction depends on the physical states of the reactants and products, so these must be shown. For example, when 1 mole of hydrogen gas and [[MATH:5]] mole of oxygen gas change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released. If gaseous water forms, only 242 kJ of heat are released. [[MATH:4]]
 
 <!-- SEG:m68727:para:fs-idm11576944 -->
 A negative value of an enthalpy change, Δ*H* &lt; 0, indicates an exothermic reaction; a positive value, Δ*H* > 0, indicates an endothermic reaction. If the direction of a chemical equation is reversed, the arithmetic sign of its Δ*H* is changed (a process that is endothermic in one direction is exothermic in the opposite direction).
@@ -359,7 +359,7 @@ starting with the reactants at a pressure of 1 atm and 25 °C (with the carbon p
 A reaction equation with [[MATH:27]] mole of N~2~ and 1 mole of O~2~ is correct in this case because the standard enthalpy of formation always refers to 1 mole of product, NO~2~(*g*).
 
 <!-- SEG:m68727:para:fs-idp173432432 -->
-You will find a table of standard enthalpies of formation of many common substances in Appendix G. These values indicate that formation reactions range from highly exothermic (such as −2984 kJ/mol for the formation of P~4~O~10~) to strongly endothermic (such as +226.7 kJ/mol for the formation of acetylene, C~2~H~2~). By definition, the standard enthalpy of formation of an element in its most stable form is equal to zero under standard conditions, which is 1 atm for gases and 1 M for solutions.
+You will find a table of standard enthalpies of formation of many common substances in [Appendix G](doc:m68865). These values indicate that formation reactions range from highly exothermic (such as −2984 kJ/mol for the formation of P~4~O~10~) to strongly endothermic (such as +226.7 kJ/mol for the formation of acetylene, C~2~H~2~). By definition, the standard enthalpy of formation of an element in its most stable form is equal to zero under standard conditions, which is 1 atm for gases and 1 M for solutions.
 
 <!-- SEG:m68727:example-title:fs-idp167759616-title -->
 Evaluating an Enthalpy of Formation
@@ -395,16 +395,19 @@ Answer:
 For the reaction [[MATH:35]]
 
 <!-- SEG:m68727:example-title:fs-idp186597312-title -->
-Solution
+Writing Reaction Equations for [[MATH:36]]
 
 <!-- SEG:m68727:para:fs-idp186597568 -->
-Writing Reaction Equations for [[MATH:36]] Write the heat of formation reaction equations for:
+Write the heat of formation reaction equations for:
 
 <!-- SEG:m68727:para:fs-idp186600640 -->
 (a) C~2~H~5~OH(*l*)
 
 <!-- SEG:m68727:para:fs-idp186602304 -->
 (b) Ca~3~(PO~4~)~2~(*s*)
+
+<!-- SEG:m68727:para-title:fs-idp186604352-title -->
+Solution
 
 <!-- SEG:m68727:para:fs-idp186604352 -->
 Remembering that [[MATH:37]] reaction equations are for forming 1 mole of the compound from its constituent elements under standard conditions, we have:
@@ -494,10 +497,13 @@ In general, if we multiply or divide an equation by a number, then the enthalpy 
 Then, for the “reverse” reaction, the enthalpy change is also “reversed”:
 
 <!-- SEG:m68727:example-title:fs-idp185548816-title -->
-Solution
+Stepwise Calculation of [[MATH:48]] Using Hess’s Law
 
 <!-- SEG:m68727:para:fs-idp185549072 -->
-Stepwise Calculation of [[MATH:48]] Using Hess’s Law Determine the enthalpy of formation, [[MATH:49]] of FeCl~3~(*s*) from the enthalpy changes of the following two-step process that occurs under standard state conditions:
+Determine the enthalpy of formation, [[MATH:49]] of FeCl~3~(*s*) from the enthalpy changes of the following two-step process that occurs under standard state conditions:
+
+<!-- SEG:m68727:para-title:fs-idp190748768-title -->
+Solution
 
 <!-- SEG:m68727:para:fs-idp190748768 -->
 We are trying to find the standard enthalpy of formation of FeCl~3~(*s*), which is equal to Δ*H*° for the reaction:
@@ -617,13 +623,13 @@ What is the standard enthalpy change for the reaction:
 Solution: Using the Equation
 
 <!-- SEG:m68727:para:fs-idp146127120 -->
-Use the special form of Hess’s law given previously, and values from Appendix G:
+Use the special form of Hess’s law given previously, and values from [Appendix G](doc:m68865):
 
 <!-- SEG:m68727:para-title:fs-idp134564208-title -->
 Solution: Supporting Why the General Equation Is Valid
 
 <!-- SEG:m68727:para:fs-idp134564208 -->
-Alternatively, we can write this reaction as the sum of the decompositions of 3NO~2~(*g*) and 1H~2~O(*l*) into their constituent elements, and the formation of 2HNO~3~(*aq*) and 1NO(*g*) from their constituent elements. Writing out these reactions, and noting their relationships to the [[MATH:68]] values for these compounds (from Appendix G ), we have:
+Alternatively, we can write this reaction as the sum of the decompositions of 3NO~2~(*g*) and 1H~2~O(*l*) into their constituent elements, and the formation of 2HNO~3~(*aq*) and 1NO(*g*) from their constituent elements. Writing out these reactions, and noting their relationships to the [[MATH:68]] values for these compounds (from [Appendix G](doc:m68865) ), we have:
 
 <!-- SEG:m68727:para:fs-idp155650064 -->
 Summing these reaction equations gives the reaction we are interested in:
@@ -661,10 +667,10 @@ If a chemical change is carried out at constant pressure and the only work done 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
 Key Equations
 
-<!-- SEG:m68727:entry:auto-222 -->
+<!-- SEG:m68727:entry:auto-224 -->
 [[MATH:73]]
 
-<!-- SEG:m68727:entry:auto-223 -->
+<!-- SEG:m68727:entry:auto-225 -->
 [[MATH:74]]
 
 <!-- SEG:m68727:title:fs-idp167491136-title -->
@@ -785,7 +791,7 @@ For the conversion of graphite to diamond:[[BR]][[MATH:87]]
 Which produces more heat, the combustion of graphite or the combustion of diamond?
 
 <!-- SEG:m68727:problem:fs-idp161090880 -->
-From the molar heats of formation in Appendix G, determine how much heat is required to evaporate one mole of water: [[MATH:88]]
+From the molar heats of formation in [Appendix G](doc:m68865), determine how much heat is required to evaporate one mole of water: [[MATH:88]]
 
 <!-- SEG:m68727:solution:fs-idp157704496 -->
 44.01 kJ/mol
@@ -833,7 +839,7 @@ Calculate the standard molar enthalpy of formation of NO(*g*) from the following
 90.3 kJ/mol
 
 <!-- SEG:m68727:problem:fs-idp149473088 -->
-Using the data in Appendix G, calculate the standard enthalpy change for each of the following reactions:
+Using the data in [Appendix G](doc:m68865), calculate the standard enthalpy change for each of the following reactions:
 
 <!-- SEG:m68727:problem:fs-idp149474336 -->
 (a) [[MATH:104]]
@@ -848,7 +854,7 @@ Using the data in Appendix G, calculate the standard enthalpy change for each of
 (d) [[MATH:107]]
 
 <!-- SEG:m68727:problem:fs-idp126941376 -->
-Using the data in Appendix G, calculate the standard enthalpy change for each of the following reactions:
+Using the data in [Appendix G](doc:m68865), calculate the standard enthalpy change for each of the following reactions:
 
 <!-- SEG:m68727:problem:fs-idp126942624 -->
 (a) [[MATH:108]]
@@ -881,7 +887,7 @@ The following reactions can be used to prepare samples of metals. Determine the 
 (d) [[MATH:115]]
 
 <!-- SEG:m68727:problem:fs-idp184431072 -->
-The decomposition of hydrogen peroxide, H~2~O~2~, has been used to provide thrust in the control jets of various space vehicles. Using the data in Appendix G, determine how much heat is produced by the decomposition of exactly 1 mole of H~2~O~2~ under standard conditions.[[BR]][[MATH:116]]
+The decomposition of hydrogen peroxide, H~2~O~2~, has been used to provide thrust in the control jets of various space vehicles. Using the data in [Appendix G](doc:m68865), determine how much heat is produced by the decomposition of exactly 1 mole of H~2~O~2~ under standard conditions.[[BR]][[MATH:116]]
 
 <!-- SEG:m68727:solution:fs-idm226656768 -->
 −54.04 kJ mol^−1^
@@ -941,7 +947,7 @@ The enthalpy of combustion of hard coal averages −35 kJ/g, that of gasoline, 1
 Ethanol, C~2~H~5~OH, is used as a fuel for motor vehicles, particularly in Brazil.
 
 <!-- SEG:m68727:problem:fs-idp208989120 -->
-(a) Write the balanced equation for the combustion of ethanol to CO~2~(*g*) and H~2~O(*g*), and, using the data in Appendix G, calculate the enthalpy of combustion of 1 mole of ethanol.
+(a) Write the balanced equation for the combustion of ethanol to CO~2~(*g*) and H~2~O(*g*), and, using the data in [Appendix G](doc:m68865), calculate the enthalpy of combustion of 1 mole of ethanol.
 
 <!-- SEG:m68727:problem:fs-idp208992384 -->
 (b) The density of ethanol is 0.7893 g/mL. Calculate the enthalpy of combustion of exactly 1 L of ethanol.
@@ -950,7 +956,7 @@ Ethanol, C~2~H~5~OH, is used as a fuel for motor vehicles, particularly in Brazi
 (c) Assuming that an automobile’s mileage is directly proportional to the heat of combustion of the fuel, calculate how much farther an automobile could be expected to travel on 1 L of gasoline than on 1 L of ethanol. Assume that gasoline has the heat of combustion and the density of n–octane, C~8~H~18~ [[MATH:125]] density = 0.7025 g/mL).
 
 <!-- SEG:m68727:problem:fs-idp181957776 -->
-Among the substances that react with oxygen and that have been considered as potential rocket fuels are diborane [B~2~H~6~, produces B~2~O~3~(*s*) and H~2~O(*g*)], methane [CH~4~, produces CO~2~(*g*) and H~2~O(*g*)], and hydrazine [N~2~H~4~, produces N~2~(*g*) and H~2~O(*g*)]. On the basis of the heat released by 1.00 g of each substance in its reaction with oxygen, which of these compounds offers the best possibility as a rocket fuel? The [[MATH:126]] of B~2~H~6~(*g*), CH~4~(*g*), and N~2~H~4~(*l*) may be found in Appendix G.
+Among the substances that react with oxygen and that have been considered as potential rocket fuels are diborane [B~2~H~6~, produces B~2~O~3~(*s*) and H~2~O(*g*)], methane [CH~4~, produces CO~2~(*g*) and H~2~O(*g*)], and hydrazine [N~2~H~4~, produces N~2~(*g*) and H~2~O(*g*)]. On the basis of the heat released by 1.00 g of each substance in its reaction with oxygen, which of these compounds offers the best possibility as a rocket fuel? The [[MATH:126]] of B~2~H~6~(*g*), CH~4~(*g*), and N~2~H~4~(*l*) may be found in [Appendix G](doc:m68865).
 
 <!-- SEG:m68727:solution:fs-idp7380800 -->
 On the assumption that the best rocket fuel is the one that gives off the most heat, B~2~H~6~ is the prime candidate.
@@ -962,7 +968,7 @@ How much heat is produced when 1.25 g of chromium metal reacts with oxygen gas u
 Ethylene, C~2~H~4~, a byproduct from the fractional distillation of petroleum, is fourth among the 50 chemical compounds produced commercially in the largest quantities. About 80% of synthetic ethanol is manufactured from ethylene by its reaction with water in the presence of a suitable catalyst. [[MATH:127]]
 
 <!-- SEG:m68727:problem:fs-idp124915056 -->
-Using the data in the table in Appendix G, calculate Δ*H*° for the reaction.
+Using the data in the table in [Appendix G](doc:m68865), calculate Δ*H*° for the reaction.
 
 <!-- SEG:m68727:solution:fs-idm135203232 -->
 −88.2 kJ

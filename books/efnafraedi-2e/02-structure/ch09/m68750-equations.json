@@ -55,6 +55,10 @@
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
     "latex": "\\times"
   },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mtext>1 torr</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>760</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{1 torr}=\\, \\frac{1}{{760}}\\, \\text{atm}}"
+  },
   "fs-idm100445488": {
     "mathml": "<m:math><m:mrow><m:mtext>pressure per elephant foot</m:mtext><m:mo>=</m:mo><m:mtext>14,000</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>elephant</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 elephant</m:mtext></m:mrow><m:mrow><m:mtext>4 feet</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 foot</m:mtext></m:mrow><m:mrow><m:mn>250</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>14</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
     "latex": "{\\text{pressure per elephant foot}=\\text{14,000}\\, \\frac{{\\text{lb}}}{{\\text{elephant}}}\\, \\times \\, \\frac{{\\text{1 elephant}}}{{\\text{4 feet}}}\\, \\times \\, \\frac{{\\text{1 foot}}}{{250\\, {{\\text{in}}}^{2}}}\\, =14\\, {{\\text{lb/in}}}^{2}}",

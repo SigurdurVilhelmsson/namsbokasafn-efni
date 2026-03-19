@@ -40,55 +40,97 @@ contain these ions
 <!-- SEG:m68710:entry:auto-14 -->
 exceptions
 
-<!-- SEG:m68710:entry:auto-15 -->
-NH~4~^+^ group I cations: Li^+^ Na^+^ K^+^ Rb^+^ Cs^+^
+<!-- SEG:m68710:entry:nh4 -->
+NH~4~^+^
 
-<!-- SEG:m68710:entry:auto-16 -->
-none
+<!-- SEG:m68710:entry:fs-idm477369440 -->
+group I cations:
 
-<!-- SEG:m68710:entry:auto-17 -->
-Cl^-^ Br^-^ I^-^
+<!-- SEG:m68710:entry:fs-idm188410288 -->
+Li^+^
 
-<!-- SEG:m68710:entry:auto-18 -->
-compounds with Ag^+^, Hg~2~^2+^, and Pb^2+^
+<!-- SEG:m68710:entry:fs-idm213521392 -->
+Na^+^
 
-<!-- SEG:m68710:entry:auto-19 -->
-F^-^
+<!-- SEG:m68710:entry:fs-idm213592784 -->
+K^+^
 
-<!-- SEG:m68710:entry:auto-20 -->
-compounds with group 2 metal cations, Pb^2+^, and Fe^3+^
+<!-- SEG:m68710:entry:fs-idm218344640 -->
+Rb^+^
 
-<!-- SEG:m68710:entry:auto-21 -->
-C~2~H~3~O~2~^-^ HCO~3~^-^ NO~3~^-^ ClO~3~^-^
+<!-- SEG:m68710:entry:fs-idm214019440 -->
+Cs^+^
 
 <!-- SEG:m68710:entry:auto-22 -->
 none
 
-<!-- SEG:m68710:entry:auto-23 -->
-SO~4~^2-^
+<!-- SEG:m68710:entry:fs-idm198177776 -->
+Cl^-^
 
-<!-- SEG:m68710:entry:auto-24 -->
-compounds with Ag^+^, Ba^2+^, Ca^2+^, Hg~2~^2+^, Pb^2+^ and Sr^2+^
+<!-- SEG:m68710:entry:fs-idm188922192 -->
+Br^-^
 
-<!-- SEG:m68710:entry:auto-25 -->
-**Insoluble Ionic Compounds**
+<!-- SEG:m68710:entry:fs-idm191294560 -->
+I^-^
 
 <!-- SEG:m68710:entry:auto-26 -->
-contain these ions
+compounds with Ag^+^, Hg~2~^2+^, and Pb^2+^
 
 <!-- SEG:m68710:entry:auto-27 -->
-exceptions
+F^-^
 
 <!-- SEG:m68710:entry:auto-28 -->
-CO~3~^2-^ CrO~4~^2-^ PO~4~^3-^ S^2-^
+compounds with group 2 metal cations, Pb^2+^, and Fe^3+^
 
-<!-- SEG:m68710:entry:auto-29 -->
+<!-- SEG:m68710:entry:fs-idm214305872 -->
+C~2~H~3~O~2~^-^
+
+<!-- SEG:m68710:entry:fs-idm223572768 -->
+HCO~3~^-^
+
+<!-- SEG:m68710:entry:fs-idm209657024 -->
+NO~3~^-^
+
+<!-- SEG:m68710:entry:fs-idm220731280 -->
+ClO~3~^-^
+
+<!-- SEG:m68710:entry:auto-33 -->
+none
+
+<!-- SEG:m68710:entry:auto-34 -->
+SO~4~^2-^
+
+<!-- SEG:m68710:entry:auto-35 -->
+compounds with Ag^+^, Ba^2+^, Ca^2+^, Hg~2~^2+^, Pb^2+^ and Sr^2+^
+
+<!-- SEG:m68710:entry:auto-36 -->
+**Insoluble Ionic Compounds**
+
+<!-- SEG:m68710:entry:auto-37 -->
+contain these ions
+
+<!-- SEG:m68710:entry:auto-38 -->
+exceptions
+
+<!-- SEG:m68710:entry:fs-idm216078960 -->
+CO~3~^2-^
+
+<!-- SEG:m68710:entry:fs-idm198757552 -->
+CrO~4~^2-^
+
+<!-- SEG:m68710:entry:fs-idm219715648 -->
+PO~4~^3-^
+
+<!-- SEG:m68710:entry:fs-idm173321648 -->
+S^2-^
+
+<!-- SEG:m68710:entry:auto-43 -->
 compounds with group 1 cations and NH~4~^+^
 
-<!-- SEG:m68710:entry:auto-30 -->
+<!-- SEG:m68710:entry:auto-44 -->
 OH^-^
 
-<!-- SEG:m68710:entry:auto-31 -->
+<!-- SEG:m68710:entry:auto-45 -->
 compounds with group 1 cations and Ba^2+^
 
 <!-- SEG:m68710:para:fs-idm63476864 -->
@@ -175,49 +217,49 @@ When dissolved in water under typical conditions, only about 1% of acetic acid m
 <!-- SEG:m68710:caption:CNX_Chem_04_02_Citrus-caption -->
 (a) Fruits such as oranges, lemons, and grapefruit contain the weak acid citric acid. (b) Vinegars contain the weak acid acetic acid. (credit a: modification of work by Scott Bauer; credit b: modification of work by Brücke-Osteuropa/Wikimedia Commons)
 
-<!-- SEG:m68710:entry:auto-60 -->
+<!-- SEG:m68710:entry:auto-74 -->
 Common Strong Acids
 
-<!-- SEG:m68710:entry:auto-61 -->
+<!-- SEG:m68710:entry:auto-75 -->
 Compound Formula
 
-<!-- SEG:m68710:entry:auto-62 -->
+<!-- SEG:m68710:entry:auto-76 -->
 Name in Aqueous Solution
 
-<!-- SEG:m68710:entry:auto-63 -->
+<!-- SEG:m68710:entry:auto-77 -->
 HBr
 
-<!-- SEG:m68710:entry:auto-64 -->
+<!-- SEG:m68710:entry:auto-78 -->
 hydrobromic acid
 
-<!-- SEG:m68710:entry:auto-65 -->
+<!-- SEG:m68710:entry:auto-79 -->
 HCl
 
-<!-- SEG:m68710:entry:auto-66 -->
+<!-- SEG:m68710:entry:auto-80 -->
 hydrochloric acid
 
-<!-- SEG:m68710:entry:auto-67 -->
+<!-- SEG:m68710:entry:auto-81 -->
 HI
 
-<!-- SEG:m68710:entry:auto-68 -->
+<!-- SEG:m68710:entry:auto-82 -->
 hydroiodic acid
 
-<!-- SEG:m68710:entry:auto-69 -->
+<!-- SEG:m68710:entry:auto-83 -->
 HNO~3~
 
-<!-- SEG:m68710:entry:auto-70 -->
+<!-- SEG:m68710:entry:auto-84 -->
 nitric acid
 
-<!-- SEG:m68710:entry:auto-71 -->
+<!-- SEG:m68710:entry:auto-85 -->
 HClO~4~
 
-<!-- SEG:m68710:entry:auto-72 -->
+<!-- SEG:m68710:entry:auto-86 -->
 perchloric acid
 
-<!-- SEG:m68710:entry:auto-73 -->
+<!-- SEG:m68710:entry:auto-87 -->
 H~2~SO~4~
 
-<!-- SEG:m68710:entry:auto-74 -->
+<!-- SEG:m68710:entry:auto-88 -->
 sulfuric acid
 
 <!-- SEG:m68710:para:fs-idp2912576 -->
@@ -389,7 +431,7 @@ Each half-reaction will contain one reactant and one product with one element in
 *Balance charge by adding electrons*. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe^2+^ ion) and 3+ on the right side (1 Fe^3+^ ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.
 
 <!-- SEG:m68710:para:fs-idm52131936 -->
-The chromium half-reaction shows a total charge of (1 [[MATH:12]] 2−) + (14 [[MATH:13]] 1+) = 12+ on the left side [[MATH:14]] ion and 14 H^+^ ions). The total charge on the right side is (2 [[MATH:15]] 3+) = 6 + (2 Cr^3+^ ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:16]] [[MATH:17]]
+The chromium half-reaction shows a total charge of (1 [[MATH:14]] 2−) + (14 [[MATH:15]] 1+) = 12+ on the left side [[MATH:16]] ion and 14 H^+^ ions). The total charge on the right side is (2 [[MATH:17]] 3+) = 6 + (2 Cr^3+^ ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:12]] [[MATH:13]]
 
 <!-- SEG:m68710:para:fs-idp2921088 -->
 *Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction*. To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. [[MATH:18]] [[MATH:19]]
@@ -422,7 +464,7 @@ In basic solution, molecular chlorine, Cl~2~, reacts with hydroxide ions, OH^−
 *Balance hydrogen atoms by adding* H^+^*ions*. The iron half-reaction does not contain H atoms. The chromium half-reaction shows 14 H atoms on the right and none on the left, so 14 hydrogen ions are added to the left side. [[MATH:27]] [[MATH:28]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-5 -->
-*Balance charge by adding electrons*. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe^2+^ ion) and 3+ on the right side (1 Fe^3+^ ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.The chromium half-reaction shows a total charge of (1 [[MATH:29]] 2−) + (14 [[MATH:30]] 1+) = 12+ on the left side [[MATH:31]] ion and 14 H^+^ ions). The total charge on the right side is (2 [[MATH:32]] 3+) = 6 + (2 Cr^3+^ ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:33]] [[MATH:34]]
+*Balance charge by adding electrons*. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe^2+^ ion) and 3+ on the right side (1 Fe^3+^ ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.The chromium half-reaction shows a total charge of (1 [[MATH:31]] 2−) + (14 [[MATH:32]] 1+) = 12+ on the left side [[MATH:33]] ion and 14 H^+^ ions). The total charge on the right side is (2 [[MATH:34]] 3+) = 6 + (2 Cr^3+^ ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:29]] [[MATH:30]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-6 -->
 *Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction*. To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. [[MATH:35]] [[MATH:36]]
@@ -433,55 +475,55 @@ In basic solution, molecular chlorine, Cl~2~, reacts with hydroxide ions, OH^−
 <!-- SEG:m68710:note-title:fs-idm39281984-title -->
 Answer:
 
-<!-- SEG:m68710:entry:auto-146 -->
+<!-- SEG:m68710:entry:auto-160 -->
 Reactants
 
-<!-- SEG:m68710:entry:auto-147 -->
+<!-- SEG:m68710:entry:auto-161 -->
 Products
 
-<!-- SEG:m68710:entry:auto-148 -->
+<!-- SEG:m68710:entry:auto-162 -->
 Fe
 
-<!-- SEG:m68710:entry:auto-149 -->
+<!-- SEG:m68710:entry:auto-163 -->
 6
 
-<!-- SEG:m68710:entry:auto-150 -->
+<!-- SEG:m68710:entry:auto-164 -->
 6
 
-<!-- SEG:m68710:entry:auto-151 -->
+<!-- SEG:m68710:entry:auto-165 -->
 Cr
 
-<!-- SEG:m68710:entry:auto-152 -->
+<!-- SEG:m68710:entry:auto-166 -->
 2
 
-<!-- SEG:m68710:entry:auto-153 -->
+<!-- SEG:m68710:entry:auto-167 -->
 2
 
-<!-- SEG:m68710:entry:auto-154 -->
+<!-- SEG:m68710:entry:auto-168 -->
 O
 
-<!-- SEG:m68710:entry:auto-155 -->
+<!-- SEG:m68710:entry:auto-169 -->
 7
 
-<!-- SEG:m68710:entry:auto-156 -->
+<!-- SEG:m68710:entry:auto-170 -->
 7
 
-<!-- SEG:m68710:entry:auto-157 -->
+<!-- SEG:m68710:entry:auto-171 -->
 H
 
-<!-- SEG:m68710:entry:auto-158 -->
+<!-- SEG:m68710:entry:auto-172 -->
 14
 
-<!-- SEG:m68710:entry:auto-159 -->
+<!-- SEG:m68710:entry:auto-173 -->
 14
 
-<!-- SEG:m68710:entry:auto-160 -->
+<!-- SEG:m68710:entry:auto-174 -->
 charge
 
-<!-- SEG:m68710:entry:auto-161 -->
+<!-- SEG:m68710:entry:auto-175 -->
 24+
 
-<!-- SEG:m68710:entry:auto-162 -->
+<!-- SEG:m68710:entry:auto-176 -->
 24+
 
 <!-- SEG:m68710:para:fs-idp3801440 -->
@@ -1124,7 +1166,7 @@ Balance each of the following equations according to the half-reaction method:
 acid
 
 <!-- SEG:m68710:glossary-def:fs-idm39846352-def -->
-substance that produces H3O+ when dissolved in water
+substance that produces H~3~O^+^ when dissolved in water
 
 <!-- SEG:m68710:glossary-term:fs-idm54009824-term -->
 acid-base reaction
@@ -1136,7 +1178,7 @@ reaction involving the transfer of a hydrogen ion between reactant species
 base
 
 <!-- SEG:m68710:glossary-def:fs-idm54008672-def -->
-substance that produces OH− when dissolved in water
+substance that produces OH^−^ when dissolved in water
 
 <!-- SEG:m68710:glossary-term:fs-idm54007136-term -->
 combustion reaction

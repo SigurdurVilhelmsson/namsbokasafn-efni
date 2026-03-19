@@ -83,10 +83,10 @@ In this equation, *R* is the ideal gas constant, which has a value 8.314 J/mol/K
 Postulates of collision theory are nicely accommodated by the Arrhenius equation. The frequency factor, *A*, reflects how well the reaction conditions favor properly oriented collisions between reactant molecules. An increased probability of effectively oriented collisions results in larger values for *A* and faster reaction rates.
 
 <!-- SEG:m68793:para:fs-idm493145248 -->
-The exponential term, *e^−Ea/RT^*, describes the effect of activation energy on reaction rate. According to kinetic molecular theory (see chapter on gases), the temperature of matter is a measure of the average kinetic energy of its constituent atoms or molecules. The distribution of energies among the molecules composing a sample of matter at any given temperature is described by the plot shown in [#CNX_Chem_12_05_SuccessR](a). Two shaded areas under the curve represent the numbers of molecules possessing adequate energy (*RT*) to overcome the activation barriers (*E~a~*). A lower activation energy results in a greater fraction of adequately energized molecules and a faster reaction.
+The exponential term, *e^−Ea/RT^*, describes the effect of activation energy on reaction rate. According to kinetic molecular theory (see chapter on gases), the temperature of matter is a measure of the average kinetic energy of its constituent atoms or molecules. The distribution of energies among the molecules composing a sample of matter at any given temperature is described by the plot shown in [#CNX_Chem_12_05_SuccessR](*a*). Two shaded areas under the curve represent the numbers of molecules possessing adequate energy (*RT*) to overcome the activation barriers (*E~a~*). A lower activation energy results in a greater fraction of adequately energized molecules and a faster reaction.
 
 <!-- SEG:m68793:para:fs-idm494984112 -->
-The exponential term also describes the effect of temperature on reaction rate. A higher temperature represents a correspondingly greater fraction of molecules possessing sufficient energy (*RT*) to overcome the activation barrier (*E~a~*), as shown in [#CNX_Chem_12_05_SuccessR](b). This yields a greater value for the rate constant and a correspondingly faster reaction rate.
+The exponential term also describes the effect of temperature on reaction rate. A higher temperature represents a correspondingly greater fraction of molecules possessing sufficient energy (*RT*) to overcome the activation barrier (*E~a~*), as shown in [#CNX_Chem_12_05_SuccessR](*b*). This yields a greater value for the rate constant and a correspondingly faster reaction rate.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_SuccessR-caption -->
 Molecular energy distributions showing numbers of molecules with energies exceeding (a) two different activation energies at a given temperature, and (b) a given activation energy at two different temperatures.
@@ -98,10 +98,13 @@ A convenient approach for determining *E*~a~ for a reaction involves the measure
 A plot of ln *k* versus [[MATH:4]] is linear with a slope equal to [[MATH:5]] and a *y*-intercept equal to ln *A*.
 
 <!-- SEG:m68793:example-title:fs-idm160727824-title -->
-Solution
+Determination of *E*~a~
 
 <!-- SEG:m68793:para:fs-idp108035392 -->
-Determination of *E*~a~ The variation of the rate constant with temperature for the decomposition of HI(*g*) to H~2~(*g*) and I~2~(*g*) is given here. What is the activation energy for the reaction?
+The variation of the rate constant with temperature for the decomposition of HI(*g*) to H~2~(*g*) and I~2~(*g*) is given here. What is the activation energy for the reaction?
+
+<!-- SEG:m68793:para-title:fs-idm178775392-title -->
+Solution
 
 <!-- SEG:m68793:para:fs-idm178775392 -->
 Use the provided data to derive values of [[MATH:6]] and ln *k*:
@@ -142,76 +145,76 @@ Answer:
 <!-- SEG:m68793:para:fs-idm147992368 -->
 1.1 [[MATH:10]] 10^5^ J mol^−1^ or 110 kJ mol^−1^
 
-<!-- SEG:m68793:entry:auto-49 -->
+<!-- SEG:m68793:entry:auto-50 -->
 *T* (K)
 
-<!-- SEG:m68793:entry:auto-50 -->
+<!-- SEG:m68793:entry:auto-51 -->
 *k* (L/mol/s)
 
-<!-- SEG:m68793:entry:auto-51 -->
+<!-- SEG:m68793:entry:auto-52 -->
 555
 
-<!-- SEG:m68793:entry:auto-52 -->
+<!-- SEG:m68793:entry:auto-53 -->
 3.52 [[MATH:11]] 10^−7^
 
-<!-- SEG:m68793:entry:auto-53 -->
+<!-- SEG:m68793:entry:auto-54 -->
 575
 
-<!-- SEG:m68793:entry:auto-54 -->
+<!-- SEG:m68793:entry:auto-55 -->
 1.22 [[MATH:12]] 10^−6^
 
-<!-- SEG:m68793:entry:auto-55 -->
+<!-- SEG:m68793:entry:auto-56 -->
 645
 
-<!-- SEG:m68793:entry:auto-56 -->
+<!-- SEG:m68793:entry:auto-57 -->
 8.59 [[MATH:13]] 10^−5^
 
-<!-- SEG:m68793:entry:auto-57 -->
+<!-- SEG:m68793:entry:auto-58 -->
 700
 
-<!-- SEG:m68793:entry:auto-58 -->
+<!-- SEG:m68793:entry:auto-59 -->
 1.16 [[MATH:14]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-59 -->
+<!-- SEG:m68793:entry:auto-60 -->
 781
 
-<!-- SEG:m68793:entry:auto-60 -->
+<!-- SEG:m68793:entry:auto-61 -->
 3.95 [[MATH:15]] 10^−2^
 
-<!-- SEG:m68793:entry:auto-61 -->
+<!-- SEG:m68793:entry:auto-62 -->
 [[MATH:16]]
 
-<!-- SEG:m68793:entry:auto-62 -->
+<!-- SEG:m68793:entry:auto-63 -->
 ln *k*
 
-<!-- SEG:m68793:entry:auto-63 -->
+<!-- SEG:m68793:entry:auto-64 -->
 1.80 [[MATH:17]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-64 -->
+<!-- SEG:m68793:entry:auto-65 -->
 −14.860
 
-<!-- SEG:m68793:entry:auto-65 -->
+<!-- SEG:m68793:entry:auto-66 -->
 1.74 [[MATH:18]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-66 -->
+<!-- SEG:m68793:entry:auto-67 -->
 −13.617
 
-<!-- SEG:m68793:entry:auto-67 -->
+<!-- SEG:m68793:entry:auto-68 -->
 1.55 [[MATH:19]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-68 -->
+<!-- SEG:m68793:entry:auto-69 -->
 −9.362
 
-<!-- SEG:m68793:entry:auto-69 -->
+<!-- SEG:m68793:entry:auto-70 -->
 1.43 [[MATH:20]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-70 -->
+<!-- SEG:m68793:entry:auto-71 -->
 −6.759
 
-<!-- SEG:m68793:entry:auto-71 -->
+<!-- SEG:m68793:entry:auto-72 -->
 1.28 [[MATH:21]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-72 -->
+<!-- SEG:m68793:entry:auto-73 -->
 −3.231
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_ArrhPlot-caption -->
@@ -226,13 +229,13 @@ Chemical reactions typically require collisions between reactant species. These 
 <!-- SEG:m68793:title:fs-idp2946768-title -->
 Key Equations
 
-<!-- SEG:m68793:entry:auto-77 -->
+<!-- SEG:m68793:entry:auto-78 -->
 [[MATH:24]]
 
-<!-- SEG:m68793:entry:auto-78 -->
+<!-- SEG:m68793:entry:auto-79 -->
 [[MATH:25]]
 
-<!-- SEG:m68793:entry:auto-79 -->
+<!-- SEG:m68793:entry:auto-80 -->
 [[MATH:26]]
 
 <!-- SEG:m68793:title:fs-idm193786736-title -->
@@ -319,55 +322,55 @@ What is the value of the activation energy (in kJ/mol) for this reaction?
 <!-- SEG:m68793:solution:fs-idm124657264 -->
 177 kJ/mol
 
-<!-- SEG:m68793:entry:auto-108 -->
+<!-- SEG:m68793:entry:auto-109 -->
 Temperature (K)
 
-<!-- SEG:m68793:entry:auto-109 -->
+<!-- SEG:m68793:entry:auto-110 -->
 *k* (L mol^−1^ s^−1^)
 
-<!-- SEG:m68793:entry:auto-110 -->
+<!-- SEG:m68793:entry:auto-111 -->
 555
 
-<!-- SEG:m68793:entry:auto-111 -->
+<!-- SEG:m68793:entry:auto-112 -->
 6.23 [[MATH:37]] 10^−7^
 
-<!-- SEG:m68793:entry:auto-112 -->
+<!-- SEG:m68793:entry:auto-113 -->
 575
 
-<!-- SEG:m68793:entry:auto-113 -->
+<!-- SEG:m68793:entry:auto-114 -->
 2.42 [[MATH:38]] 10^−6^
 
-<!-- SEG:m68793:entry:auto-114 -->
+<!-- SEG:m68793:entry:auto-115 -->
 645
 
-<!-- SEG:m68793:entry:auto-115 -->
+<!-- SEG:m68793:entry:auto-116 -->
 1.44 [[MATH:39]] 10^−4^
 
-<!-- SEG:m68793:entry:auto-116 -->
+<!-- SEG:m68793:entry:auto-117 -->
 700
 
-<!-- SEG:m68793:entry:auto-117 -->
+<!-- SEG:m68793:entry:auto-118 -->
 2.01 [[MATH:40]] 10^−3^
 
 <!-- SEG:m68793:problem:fs-idm93329056 -->
 The element Co exists in two oxidation states, Co(II) and Co(III), and the ions form many complexes. The rate at which one of the complexes of Co(III) was reduced by Fe(II) in water was measured. Determine the activation energy of the reaction from the following data:[[BR]] [[TABLE:fs-idm163198896]]
 
-<!-- SEG:m68793:entry:auto-119 -->
+<!-- SEG:m68793:entry:auto-120 -->
 *T* (K)
 
-<!-- SEG:m68793:entry:auto-120 -->
+<!-- SEG:m68793:entry:auto-121 -->
 *k* (s^−1^)
 
-<!-- SEG:m68793:entry:auto-121 -->
+<!-- SEG:m68793:entry:auto-122 -->
 293
 
-<!-- SEG:m68793:entry:auto-122 -->
+<!-- SEG:m68793:entry:auto-123 -->
 0.054
 
-<!-- SEG:m68793:entry:auto-123 -->
+<!-- SEG:m68793:entry:auto-124 -->
 298
 
-<!-- SEG:m68793:entry:auto-124 -->
+<!-- SEG:m68793:entry:auto-125 -->
 0.100
 
 <!-- SEG:m68793:problem:fs-idm65384176 -->
@@ -433,50 +436,50 @@ reaction diagram
 <!-- SEG:m68793:glossary-def:fs-idm355773584-def -->
 used in chemical kinetics to illustrate various properties of a reaction
 
-<!-- SEG:m68793:entry:auto-146 -->
+<!-- SEG:m68793:entry:auto-147 -->
 Temperature (K)
 
-<!-- SEG:m68793:entry:auto-147 -->
+<!-- SEG:m68793:entry:auto-148 -->
 *k* (L mol^−1^ s^−1^)
 
-<!-- SEG:m68793:entry:auto-148 -->
+<!-- SEG:m68793:entry:auto-149 -->
 555
 
-<!-- SEG:m68793:entry:auto-149 -->
+<!-- SEG:m68793:entry:auto-150 -->
 6.23 [[MATH:33]] 10^−7^
 
-<!-- SEG:m68793:entry:auto-150 -->
+<!-- SEG:m68793:entry:auto-151 -->
 575
 
-<!-- SEG:m68793:entry:auto-151 -->
+<!-- SEG:m68793:entry:auto-152 -->
 2.42 [[MATH:34]] 10^−6^
 
-<!-- SEG:m68793:entry:auto-152 -->
+<!-- SEG:m68793:entry:auto-153 -->
 645
 
-<!-- SEG:m68793:entry:auto-153 -->
+<!-- SEG:m68793:entry:auto-154 -->
 1.44 [[MATH:35]] 10^−4^
 
-<!-- SEG:m68793:entry:auto-154 -->
+<!-- SEG:m68793:entry:auto-155 -->
 700
 
-<!-- SEG:m68793:entry:auto-155 -->
+<!-- SEG:m68793:entry:auto-156 -->
 2.01 [[MATH:36]] 10^−3^
 
-<!-- SEG:m68793:entry:auto-156 -->
+<!-- SEG:m68793:entry:auto-157 -->
 *T* (K)
 
-<!-- SEG:m68793:entry:auto-157 -->
+<!-- SEG:m68793:entry:auto-158 -->
 *k* (s^−1^)
 
-<!-- SEG:m68793:entry:auto-158 -->
+<!-- SEG:m68793:entry:auto-159 -->
 293
 
-<!-- SEG:m68793:entry:auto-159 -->
+<!-- SEG:m68793:entry:auto-160 -->
 0.054
 
-<!-- SEG:m68793:entry:auto-160 -->
+<!-- SEG:m68793:entry:auto-161 -->
 298
 
-<!-- SEG:m68793:entry:auto-161 -->
+<!-- SEG:m68793:entry:auto-162 -->
 0.100

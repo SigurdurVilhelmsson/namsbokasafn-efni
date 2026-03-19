@@ -518,7 +518,7 @@ device used to measure the pressure of a gas trapped in a container
 pascal (Pa)
 
 <!-- SEG:m68750:glossary-def:fs-idm69533872-def -->
-SI unit of pressure; 1 Pa = 1 N/m2
+SI unit of pressure; 1 Pa = 1 N/m^2^
 
 <!-- SEG:m68750:glossary-term:fs-idm87137504-term -->
 pounds per square inch (psi)
@@ -536,4 +536,4 @@ force exerted per unit area
 torr
 
 <!-- SEG:m68750:glossary-def:fs-idm23965520-def -->
-unit of pressure; 1 torr=1760atm
+unit of pressure; [[MATH:15]]

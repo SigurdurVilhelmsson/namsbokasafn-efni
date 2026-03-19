@@ -221,7 +221,7 @@ Because only the reactant is present initially *Q~c~* = 0 and the reaction will 
 Substituting the equilibrium concentrations into the equilibrium constant equation gives
 
 <!-- SEG:m68801:para:fs-idp249227584 -->
-Appendix B shows an equation of the form *ax*^2^ + *bx* + *c* = 0 can be rearranged to solve for *x*:
+[Appendix B](doc:m68860) shows an equation of the form *ax*^2^ + *bx* + *c* = 0 can be rearranged to solve for *x*:
 
 <!-- SEG:m68801:para:fs-idp129244128 -->
 In this case, *a* = 1, *b* = 0.0211, and *c* = −0.0211. Substituting the appropriate values for *a*, *b*, and *c* yields:
@@ -275,7 +275,7 @@ A 1.00-L flask is filled with 1.00 mole of H~2~ and 2.00 moles of I~2~. The valu
 *Develop an ICE table.* [[MEDIA:1]]
 
 <!-- SEG:m68801:item:fs-idp88175472-item-3 -->
-*Solve for the change and the equilibrium concentrations.* Substituting the equilibrium concentrations into the equilibrium constant equation gives [[MATH:19]] [[MATH:20]] [[MATH:21]] [[MATH:22]] [[MATH:23]] Appendix B shows an equation of the form *ax*^2^ + *bx* + *c* = 0 can be rearranged to solve for *x*: [[MATH:24]] In this case, *a* = 1, *b* = 0.0211, and *c* = −0.0211. Substituting the appropriate values for *a*, *b*, and *c* yields: [[MATH:25]] [[MATH:26]] [[MATH:27]] The two roots of the quadratic are, therefore, [[MATH:28]] and [[MATH:29]] For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so *x* = 0.135 *M*. The equilibrium concentrations are [[MATH:30]] [[MATH:31]] [[MATH:32]]
+*Solve for the change and the equilibrium concentrations.* Substituting the equilibrium concentrations into the equilibrium constant equation gives [[MATH:19]] [[MATH:20]] [[MATH:21]] [[MATH:22]] [[MATH:23]] [Appendix B](doc:m68860) shows an equation of the form *ax*^2^ + *bx* + *c* = 0 can be rearranged to solve for *x*: [[MATH:24]] In this case, *a* = 1, *b* = 0.0211, and *c* = −0.0211. Substituting the appropriate values for *a*, *b*, and *c* yields: [[MATH:25]] [[MATH:26]] [[MATH:27]] The two roots of the quadratic are, therefore, [[MATH:28]] and [[MATH:29]] For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so *x* = 0.135 *M*. The equilibrium concentrations are [[MATH:30]] [[MATH:31]] [[MATH:32]]
 
 <!-- SEG:m68801:item:fs-idp88175472-item-4 -->
 *Confirm the calculated equilibrium concentrations.* Substitution into the expression for *K~c~* (to check the calculation) gives [[MATH:33]] The equilibrium constant calculated from the equilibrium concentrations is equal to the value of *K~c~* given in the problem (when rounded to the proper number of significant figures).

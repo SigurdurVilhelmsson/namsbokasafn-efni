@@ -17,11 +17,15 @@
   },
   "math-5": {
     "mathml": "<m:math><m:mrow><m:mtext>4.00</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 L</m:mtext></m:mrow><m:mrow><m:mtext>1.0567</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>3.78 L</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{4.00}\\, \\sout{{\\text{qt}}}\\, \\times \\, \\frac{{\\text{1 L}}}{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}\\, =\\text{3.78 L}}"
+    "latex": "{\\text{4.00}\\, \\sout{{\\text{qt}}}\\, \\times \\, \\frac{{\\text{1 L}}}{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}\\, =\\text{3.78 L}}",
+    "equationId": "fs-idm279137456",
+    "equationClass": "unnumbered"
   },
   "math-6": {
     "mathml": "<m:math><m:mrow><m:mtext>3.78</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1000 mL</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>3.78</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mL</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{3.78}\\, \\sout{\\text{L}}\\, \\times \\, \\frac{{\\text{1000 mL}}}{{1\\, \\sout{\\text{L}}}}\\, =3.78\\, \\times \\, {{10}}^{3}\\, \\text{mL}}"
+    "latex": "{\\text{3.78}\\, \\sout{\\text{L}}\\, \\times \\, \\frac{{\\text{1000 mL}}}{{1\\, \\sout{\\text{L}}}}\\, =3.78\\, \\times \\, {{10}}^{3}\\, \\text{mL}}",
+    "equationId": "fs-idm289883088",
+    "equationClass": "unnumbered"
   },
   "math-7": {
     "mathml": "<m:math><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mtext>K</m:mtext><m:mrow><m:mtext>°C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",

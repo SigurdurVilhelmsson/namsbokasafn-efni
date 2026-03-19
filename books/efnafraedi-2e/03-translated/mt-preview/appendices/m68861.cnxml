@@ -2,7 +2,7 @@
 <title>Einingar og umreikningsstuðlar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68861</md:content-id>
-  <md:title>Units and Conversion Factors</md:title>
+  <md:title>Einingar og umreikningsstuðlar</md:title>
   <md:abstract/>
   <md:uuid>eeaf98f0-ce83-4e1c-ae20-dd05515645b4</md:uuid>
 </metadata>
@@ -103,7 +103,7 @@ skilgreining)= 0,25 (bandarískt) gallon (nákvæmlega, skilgreining)=
 <row valign="middle">
 <entry valign="middle" align="left">kílógramm (kg)</entry>
 <entry valign="middle" align="left">= 1000 g (nákvæmlega, skilgreining)= 2,205
-lb<footnote>Strangt til tekið eru únsa og pund þyngdareiningar, <emphasis effect="italics">W</emphasis>
+lb<footnote id="foot-00001">Strangt til tekið eru únsa og pund þyngdareiningar, <emphasis effect="italics">W</emphasis>
 (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, <emphasis effect="italics">W</emphasis> = <emphasis effect="italics">mg</emphasis>).
 Umreikningssamböndin í þessari töflu eru almennt notuð til að jafna
 massa og þyngd miðað við nafnvirði fyrir <emphasis effect="italics">g</emphasis> á yfirborði jarðar.</footnote></entry>
@@ -173,7 +173,7 @@ skilgreining)</entry>
 </row>
 <row valign="middle">
 <entry align="left">bresk varmaeining (BTU)</entry>
-<entry align="left">= 1054,804 J<footnote>BTU er orkumagnið
+<entry align="left">= 1054,804 J<footnote id="fs-idp145095088">BTU er orkumagnið
 sem þarf til að hita eitt pund af vatni um eina Fahrenheit-gráðu. Þess
 vegna fer nákvæmt samband BTU við júl og aðrar orkueiningar eftir
 hitastiginu sem BTU er mælt við. 59 °F (15 °C) er algengasta

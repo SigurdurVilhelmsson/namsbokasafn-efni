@@ -2,7 +2,7 @@
 <title>Jafnvægisfastar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68798</md:content-id>
-  <md:title>Equilibrium Constants</md:title>
+  <md:title>Jafnvægisfastar</md:title>
   <md:abstract><para id="para-00001">Þegar þú hefur lokið þessum kafla getur
 þú:</para><list id="list-00001"><item>Leitt út hvarfstuðla úr
 efnajöfnum sem tákna einsleit og misleit efnahvörf</item><item>Reiknað gildi hvarfstuðla
@@ -13,7 +13,7 @@ við eiginleika efnakerfisins</item></list></md:abstract>
 
 <content>
 <para id="fs-idp120703584">Stöðu afturkræfs efnahvarfs er
-þægilega hægt að meta með því að reikna út <term>hvarfstuðul (<emphasis effect="italics">Q</emphasis>) (e. reaction quotient (<emphasis effect="italics">q</emphasis>))</term> þess.
+þægilega hægt að meta með því að reikna út <term id="term-00001">hvarfstuðul (<emphasis effect="italics">Q</emphasis>) (e. reaction quotient (<emphasis effect="italics">q</emphasis>))</term> þess.
 Fyrir afturkræft efnahvarf sem lýst er með</para>
 <equation id="fs-idp5986304" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo>+</m:mo><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp11973152">er hvarfstuðullinn leiddur beint út
@@ -86,12 +86,12 @@ minnka með tímanum, styrkur hvarfefna og nefnari <emphasis effect="italics">Q<
 hvarfstuðullinn minnkar þar af leiðandi þar til hann verður fasti við
 jafnvægi.</para>
 <para id="fs-idm389114784">Fastagildi <emphasis effect="italics">Q</emphasis> sem kerfi sýnir við
-jafnvægi er kallað <term>jafnvægisfasti, <emphasis effect="italics">K (e. equilibrium constant, </emphasis>k<emphasis effect="italics">)</term></emphasis>:</para>
+jafnvægi er kallað <term id="term-00002">jafnvægisfasti, <emphasis effect="italics">K (e. equilibrium constant, </emphasis>k<emphasis effect="italics">)</term></emphasis>:</para>
 <equation id="fs-idp266400656" class="unnumbered"><m:math><m:mrow><m:mi>K</m:mi><m:mo>≡</m:mo><m:mi>Q</m:mi><m:mspace width="0.2em"/><m:mtext>at equilibrium</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm328721280">Samanburður á gagnapunktum í
 <link target-id="CNX_Chem_13_02_quotient"/> sýnir að báðar tilraunaaðstæður leiddu til sama gildis fyrir
 jafnvægisfastann. Þetta er almenn athugun fyrir öll jafnvægiskerfi,
-þekkt sem <term>massavirknilögmálið (e. law of mass action)</term>: Við tiltekið hitastig er hvarfstuðull
+þekkt sem <term id="term-00003">massavirknilögmálið (e. law of mass action)</term>: Við tiltekið hitastig er hvarfstuðull
 kerfis við jafnvægi fasti.</para>
 <example id="fs-idp54423808">
 <para id="fs-idp23994768"><title>Mat á hvarfstuðli</title>Niturtvíoxíð á gasformi myndar
@@ -239,7 +239,7 @@ g af SO<sub>3</sub>(g):</para>
 </table>
 <section id="fs-idp86160096">
 <title>Einsleit jafnvægi</title>
-<para id="fs-idm54871216"><term>Einsleitt jafnvægi (e. homogeneous equilibrium)</term> er jafnvægi
+<para id="fs-idm54871216"><term id="term-00004">Einsleitt jafnvægi (e. homogeneous equilibrium)</term> er jafnvægi
 þar sem öll hvarfefni og myndefni (og allir hvatar, ef við á) eru til
 staðar í sama fasa. Samkvæmt þessari skilgreiningu eiga einsleit
 jafnvægi sér stað í <emphasis effect="italics">lausnum</emphasis>. Þessar lausnir eru oftast annaðhvort í
@@ -288,7 +288,7 @@ myndefnis og hvarfefnis í gasformi, í þessu tilviki:</para>
 <equation id="fs-idp126597184" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>n</m:mi><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>c</m:mi><m:mtext>+</m:mtext><m:mi>d</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mtext>+</m:mtext><m:mi>b</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <example id="fs-idp74619616">
 <para id="fs-idp74619872"><title>Lausn</title>Útreikningur á <emphasis effect="italics">K<sub>P</sub></emphasis> Skrifaðu
-jöfnurnar sem tengja <emphasis effect="italics">K<sub>c</sub></emphasis> við <emphasis effect="italics">K<sub>P</sub></emphasis> fyrir hvert eftirfarandi
+jöfnurnar sem tengja <emphasis effect="italics">K<sub>c</sub></emphasis> við <emphasis effect="italics">KP</emphasis> fyrir hvert eftirfarandi
 efnahvarfa:</para>
 <para id="fs-idp61114160">(a) <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp127890016">(b) <m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
@@ -297,7 +297,7 @@ efnahvarfa:</para>
 eftirfarandi efnahvarf við 900 °C:</para>
 <equation id="fs-idp277886816" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CS</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>S</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp237503488">Hvað er <emphasis effect="italics">K<sub>P</sub></emphasis> við þetta hitastig?</para>
-<para id="fs-idp22632784">(a) Δ<emphasis effect="italics">n</emphasis> = (2) − (1) = 1 <emphasis effect="italics">K<sub>P</sub></emphasis> =
+<para id="fs-idp22632784"><title>Solution</title>(a) Δ<emphasis effect="italics">n</emphasis> = (2) − (1) = 1 <emphasis effect="italics">K<sub>P</sub></emphasis> =
 <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)Δ<emphasis effect="italics">n</emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>1</sup> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)</para>
 <para id="fs-idp15495888">(b) Δ<emphasis effect="italics">n</emphasis> = (2) − (2) = 0 <emphasis effect="italics">K<sub>P</sub></emphasis> =
 <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)Δ<emphasis effect="italics">n</emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>0</sup> = <emphasis effect="italics">K<sub>c</sub></emphasis></para>
@@ -324,7 +324,7 @@ hitastig?</para>
 </section>
 <section id="fs-idp112997072">
 <title>Misleitt jafnvægi</title>
-<para id="fs-idp27217312"><term>Misleitt jafnvægi (e. heterogeneous equilibrium)</term> felur í sér
+<para id="fs-idp27217312"><term id="term-00005">Misleitt jafnvægi (e. heterogeneous equilibrium)</term> felur í sér
 hvarfefni og myndefni í tveimur eða fleiri mismunandi fösum, eins og
 sýnt er í eftirfarandi dæmum:</para>
 <equation id="fs-idp129666976" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mrow><m:mtext>PbCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd columnalign="left"><m:mo stretchy="false">⇌</m:mo></m:mtd><m:mtd columnalign="left"><m:msup><m:mrow><m:mtext>Pb</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd/><m:mtd columnalign="right"><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Pb</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mtd></m:mtr>
@@ -417,17 +417,17 @@ sem efnisþættir eru í tveimur eða fleiri fösum.</para>
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>D</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac><m:mspace width="5em"/><m:mtext>for the reaction</m:mtext><m:mspace width="0.2em"/><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></entry>
-</row>
 <row><entry><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>C</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>x</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>D</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>B</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac><m:mspace width="5em"/><m:mtext>for the reaction</m:mtext><m:mspace width="0.2em"/><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></entry>
 </row>
 <row><entry><emphasis effect="italics">P</emphasis> = <emphasis effect="italics">MRT</emphasis></entry>
 </row>
-<row><entry><emphasis effect="italics">K<sub>c</sub></emphasis> = <emphasis effect="italics">Q<sub>c</sub></emphasis> í jafnvægi</entry>
+<row><entry><emphasis effect="italics">Kc</emphasis> = <emphasis effect="italics">Qc</emphasis> í jafnvægi</entry>
 </row>
 <row><entry><emphasis effect="italics">K<sub>p</sub></emphasis> = <emphasis effect="italics">Q<sub>p</sub></emphasis> í jafnvægi</entry>
 </row>
 <row><entry><emphasis effect="italics">K<sub>P</sub></emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)Δ<emphasis effect="italics">n</emphasis></entry>
+</row>
+<row><entry><emphasis effect="italics">K<sub>P</sub></emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>Δ<emphasis effect="italics">n</emphasis></sup></entry>
 </row>
 </tbody></tgroup></table>
 </section>
@@ -445,7 +445,7 @@ hitastig en aðeins eitt gildi fyrir jafnvægisfastann við það hitastig.</par
 <problem id="fs-idp194492208">
 <para id="fs-idp125938384">Útskýrðu hvers vegna jafnvægi
 milli Br<sub>2</sub>(<emphasis effect="italics">l</emphasis>) og Br<sub>2</sub>(<emphasis effect="italics">g</emphasis>) myndi ekki nást ef ílátið væri ekki lokað
-ílát eins og sýnt er í <link target-id="CNX_Chem_13_01_bromine"/>.</para></problem>
+ílát eins og sýnt er í <link document="m68797" target-id="CNX_Chem_13_01_bromine"/>.</para></problem>
 <solution id="fs-idp271084848">
 <para id="fs-idp742448">Ekki er hægt að koma á jafnvægi
 milli vökva- og gasfasa ef toppurinn er tekinn af flöskunni því kerfið

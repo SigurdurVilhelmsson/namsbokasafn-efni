@@ -101,7 +101,10 @@
       "type": "section",
       "id": "fs-idp3790928",
       "class": null,
-      "title": null,
+      "title": {
+        "segmentId": "m68745:title:fs-idp3790928-title",
+        "text": "*sp* Hybridization"
+      },
       "content": [
         {
           "type": "para",
@@ -168,7 +171,10 @@
       "type": "section",
       "id": "fs-idp10041360",
       "class": null,
-      "title": null,
+      "title": {
+        "segmentId": "m68745:title:fs-idp10041360-title",
+        "text": "*sp*^2^ Hybridization"
+      },
       "content": [
         {
           "type": "para",
@@ -265,7 +271,10 @@
       "type": "section",
       "id": "fs-idm76169824",
       "class": null,
-      "title": null,
+      "title": {
+        "segmentId": "m68745:title:fs-idm76169824-title",
+        "text": "*sp*^3^ Hybridization"
+      },
       "content": [
         {
           "type": "para",
@@ -342,7 +351,10 @@
       "type": "section",
       "id": "fs-idm100176160",
       "class": null,
-      "title": null,
+      "title": {
+        "segmentId": "m68745:title:fs-idm100176160-title",
+        "text": "*sp*^3^*d* and *sp*^3^*d*^2^ Hybridization"
+      },
       "content": [
         {
           "type": "para",

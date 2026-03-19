@@ -17,139 +17,191 @@
   },
   "math-5": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm158485920",
+    "equationClass": "unnumbered"
   },
   "math-6": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, {{\\text{Cr}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, {{\\text{Cr}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm115501120",
+    "equationClass": "unnumbered"
   },
   "math-7": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm214288784",
+    "equationClass": "unnumbered"
   },
   "math-8": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm209224928",
+    "equationClass": "unnumbered"
   },
   "math-9": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd><m:msup><m:mtext>Fe</m:mtext><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>Fe</m:mtext><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mtd></m:mtr><m:mtr/><m:mtr/><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>Cr</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mtext>Cr</m:mtext><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} {\\text{Fe}}^{{\\text{2+}}}\\, \\longrightarrow \\, {\\text{Fe}}^{{\\text{3+}}} \\\\ {\\text{Cr}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{\\text{Cr}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O} \\end{aligned}"
+    "latex": "\\begin{aligned} {\\text{Fe}}^{{\\text{2+}}}\\, \\longrightarrow \\, {\\text{Fe}}^{{\\text{3+}}} \\\\ {\\text{Cr}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{\\text{Cr}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O} \\end{aligned}",
+    "equationId": "fs-idm223648432",
+    "equationClass": "unnumbered"
   },
   "math-10": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm110660208",
+    "equationClass": "unnumbered"
   },
   "math-11": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm113051632",
+    "equationClass": "unnumbered"
   },
   "math-12": {
-    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
-    "latex": "{\\times}"
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}+{\\text{e}}^{-}}",
+    "equationId": "fs-idm225038592",
+    "equationClass": "unnumbered"
   },
   "math-13": {
-    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
-    "latex": "{\\times}"
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}+6{\\text{e}}^{-}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm249297696",
+    "equationClass": "unnumbered"
   },
   "math-14": {
-    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>1 Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{(\\text{1 Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}}"
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
   },
   "math-15": {
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
     "latex": "{\\times}"
   },
   "math-16": {
-    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}+{\\text{e}}^{-}}"
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>1 Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{(\\text{1 Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}}"
   },
   "math-17": {
-    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}+6{\\text{e}}^{-}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
   },
   "math-18": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>6Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{6Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}}"
+    "latex": "{{{\\text{6Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}}",
+    "equationId": "fs-idm65092096",
+    "equationClass": "unnumbered"
   },
   "math-19": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm129012256",
+    "equationClass": "unnumbered"
   },
   "math-20": {
     "mathml": "<m:math><m:mrow><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm208390896",
+    "equationClass": "unnumbered"
   },
   "math-21": {
     "mathml": "<m:math><m:mrow><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm273483584",
+    "equationClass": "unnumbered"
   },
   "math-22": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm158485920",
+    "equationClass": "unnumbered"
   },
   "math-23": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, {{\\text{Cr}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, {{\\text{Cr}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm115501120",
+    "equationClass": "unnumbered"
   },
   "math-24": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm214288784",
+    "equationClass": "unnumbered"
   },
   "math-25": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm209224928",
+    "equationClass": "unnumbered"
   },
   "math-26": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd><m:msup><m:mtext>Fe</m:mtext><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mtext>Fe</m:mtext><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mtd></m:mtr><m:mtr/><m:mtr/><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>Cr</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mtext>Cr</m:mtext><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} {\\text{Fe}}^{{\\text{2+}}}\\, \\longrightarrow \\, {\\text{Fe}}^{{\\text{3+}}} \\\\ {\\text{Cr}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{\\text{Cr}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O} \\end{aligned}"
+    "latex": "\\begin{aligned} {\\text{Fe}}^{{\\text{2+}}}\\, \\longrightarrow \\, {\\text{Fe}}^{{\\text{3+}}} \\\\ {\\text{Cr}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}\\, \\longrightarrow \\, 2{\\text{Cr}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O} \\end{aligned}",
+    "equationId": "fs-idm223648432",
+    "equationClass": "unnumbered"
   },
   "math-27": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}"
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}}",
+    "equationId": "fs-idm110660208",
+    "equationClass": "unnumbered"
   },
   "math-28": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm113051632",
+    "equationClass": "unnumbered"
   },
   "math-29": {
-    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
-    "latex": "{\\times}"
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}+{\\text{e}}^{-}}",
+    "equationId": "fs-idm225038592",
+    "equationClass": "unnumbered"
   },
   "math-30": {
-    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
-    "latex": "{\\times}"
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}+6{\\text{e}}^{-}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm249297696",
+    "equationClass": "unnumbered"
   },
   "math-31": {
-    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>1 Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
-    "latex": "{{{(\\text{1 Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}}"
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
   },
   "math-32": {
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
     "latex": "{\\times}"
   },
   "math-33": {
-    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, {{\\text{Fe}}}^{{\\text{3+}}}+{\\text{e}}^{-}}"
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>1 Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{(\\text{1 Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}}"
   },
   "math-34": {
-    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}+6{\\text{e}}^{-}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
   },
   "math-35": {
     "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mtext>6Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
-    "latex": "{{{\\text{6Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}}"
+    "latex": "{{{\\text{6Fe}}}^{{\\text{2+}}}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}}",
+    "equationId": "fs-idm65092096",
+    "equationClass": "unnumbered"
   },
   "math-36": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm129012256",
+    "equationClass": "unnumbered"
   },
   "math-37": {
     "mathml": "<m:math><m:mrow><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>6</m:mn><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+6{\\text{e}}^{-}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+6{\\text{e}}^{-}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm208390896",
+    "equationClass": "unnumbered"
   },
   "math-38": {
     "mathml": "<m:math><m:mrow><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>14</m:mn><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>6</m:mn><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
-    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}"
+    "latex": "{6{{\\text{Fe}}}^{{\\text{2+}}}+{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{\\text{2−}}}+14{\\text{H}}^{+}\\, \\longrightarrow \\, 6{{\\text{Fe}}}^{{\\text{3+}}}+2{{\\text{Cr}}}^{{\\text{3+}}}+7{\\text{H}}_{2}\\text{O}}",
+    "equationId": "fs-idm273483584",
+    "equationClass": "unnumbered"
   },
   "math-39": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mo>,</m:mo></m:mrow></m:math>",

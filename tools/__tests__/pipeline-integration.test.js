@@ -4,6 +4,8 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import {
   restoreTermMarkers,
+  restoreSupersubMarkers,
+  restoreMediaMarkers,
   restoreNewlines,
   annotateInlineTerms,
   reverseInlineMarkup,
@@ -566,6 +568,136 @@ describe('annotateInlineTerms', () => {
     // No EN terms to match against — IS terms left untouched
     expect(segments.get('seg1')).toBe('Þetta er __mikilvægur__ texti.');
     expect(annotatedCount).toBe(0);
+  });
+});
+
+// =====================================================================
+// restoreSupersubMarkers unit tests
+// =====================================================================
+
+describe('restoreSupersubMarkers', () => {
+  it('should strip excess sup markers when IS has more than EN', () => {
+    const en = new Map([['seg1', 'H~2~O and CO^2^ are molecules.']]);
+    const is = new Map([['seg1', 'H~2~O og CO^2^ eru sameindir^3^.']]);
+
+    const { segments, supStripped } = restoreSupersubMarkers(is, en);
+    expect(segments.get('seg1')).toBe('H~2~O og CO^2^ eru sameindir3.');
+    expect(supStripped).toBe(1);
+  });
+
+  it('should strip excess sub markers when IS has more than EN', () => {
+    const en = new Map([['seg1', 'H~2~O is water.']]);
+    const is = new Map([['seg1', 'H~2~O er vatn~x~.']]);
+
+    const { segments, subStripped } = restoreSupersubMarkers(is, en);
+    expect(segments.get('seg1')).toBe('H~2~O er vatnx.');
+    expect(subStripped).toBe(1);
+  });
+
+  it('should leave markers unchanged when counts match', () => {
+    const en = new Map([['seg1', 'H~2~O and ^14^C are common.']]);
+    const is = new Map([['seg1', 'H~2~O og ^14^C eru algeng.']]);
+
+    const { segments, supStripped, subStripped } = restoreSupersubMarkers(is, en);
+    expect(segments.get('seg1')).toBe('H~2~O og ^14^C eru algeng.');
+    expect(supStripped).toBe(0);
+    expect(subStripped).toBe(0);
+  });
+
+  it('should leave markers unchanged when IS has fewer than EN', () => {
+    const en = new Map([['seg1', 'H~2~O^+^ and OH^−^ ions.']]);
+    const is = new Map([['seg1', 'H~2~O^+^ og OH jónir.']]);
+
+    const { segments, supStripped } = restoreSupersubMarkers(is, en);
+    expect(segments.get('seg1')).toBe('H~2~O^+^ og OH jónir.');
+    expect(supStripped).toBe(0);
+  });
+
+  it('should strip from end when multiple excess markers exist', () => {
+    const en = new Map([['seg1', 'x^2^ is a square.']]);
+    const is = new Map([['seg1', 'x^2^ er ^veldi^^4^.']]);
+
+    const { segments, supStripped } = restoreSupersubMarkers(is, en);
+    // Should keep first 1 (matching EN count) and strip last 2
+    expect(supStripped).toBe(2);
+    // First ^2^ kept, ^veldi^ and ^4^ stripped from end
+    expect(segments.get('seg1')).toBe('x^2^ er veldi4.');
+  });
+
+  it('should process multiple segments independently', () => {
+    const en = new Map([
+      ['seg1', 'H~2~O'],
+      ['seg2', 'CO^2^'],
+    ]);
+    const is = new Map([
+      ['seg1', 'H~2~O~3~'],
+      ['seg2', 'CO^2^^3^'],
+    ]);
+
+    const { supStripped, subStripped } = restoreSupersubMarkers(is, en);
+    expect(is.get('seg1')).toBe('H~2~O3');
+    expect(is.get('seg2')).toBe('CO^2^3');
+    expect(subStripped).toBe(1);
+    expect(supStripped).toBe(1);
+  });
+
+  it('should skip segments not present in EN', () => {
+    const en = new Map();
+    const is = new Map([['seg1', 'x^2^ og y^3^']]);
+
+    const { supStripped } = restoreSupersubMarkers(is, en);
+    expect(is.get('seg1')).toBe('x^2^ og y^3^');
+    expect(supStripped).toBe(0);
+  });
+});
+
+// =====================================================================
+// restoreMediaMarkers unit tests
+// =====================================================================
+
+describe('restoreMediaMarkers', () => {
+  it('should restore [[MEDIA:N]] dropped from end of segment', () => {
+    const en = new Map([['seg1', 'For ideal gas:[[BR]] [[MEDIA:1]]']]);
+    const is = new Map([['seg1', 'Fyrir kjörgas:']]);
+
+    const { restoredCount } = restoreMediaMarkers(is, en);
+    expect(is.get('seg1')).toBe('Fyrir kjörgas:[[BR]][[MEDIA:1]]');
+    expect(restoredCount).toBe(1);
+  });
+
+  it('should restore multiple [[MEDIA:N]] markers', () => {
+    const en = new Map([['seg1', '(a)[[BR]][[MEDIA:1]][[BR]] (b)[[BR]][[MEDIA:2]]']]);
+    const is = new Map([['seg1', '(a) (b)']]);
+
+    const { restoredCount } = restoreMediaMarkers(is, en);
+    expect(is.get('seg1')).toBe('(a) (b)[[BR]][[MEDIA:1]][[BR]][[BR]][[MEDIA:2]]');
+    expect(restoredCount).toBe(2);
+  });
+
+  it('should not modify segments where IS already has all markers', () => {
+    const en = new Map([['seg1', '(a)[[BR]][[MEDIA:1]]']]);
+    const is = new Map([['seg1', '(a)[[BR]][[MEDIA:1]]']]);
+
+    const { restoredCount } = restoreMediaMarkers(is, en);
+    expect(is.get('seg1')).toBe('(a)[[BR]][[MEDIA:1]]');
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should skip segments with no [[MEDIA:N]] in EN', () => {
+    const en = new Map([['seg1', 'Plain text here.']]);
+    const is = new Map([['seg1', 'Venjulegur texti.']]);
+
+    const { restoredCount } = restoreMediaMarkers(is, en);
+    expect(is.get('seg1')).toBe('Venjulegur texti.');
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should skip segments not present in EN', () => {
+    const en = new Map();
+    const is = new Map([['seg1', 'Some text']]);
+
+    const { restoredCount } = restoreMediaMarkers(is, en);
+    expect(restoredCount).toBe(0);
   });
 });
 

@@ -45,7 +45,9 @@
   },
   "math-12": {
     "mathml": "<m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
-    "latex": "{2{\\text{C}}_{3}{\\text{H}}_{8}(g)\\, \\longrightarrow \\, {\\text{C}}_{2}{\\text{H}}_{4}(g)+{\\text{C}}_{3}{\\text{H}}_{6}(g)+{{\\text{CH}}}_{4}(g)+{\\text{H}}_{2}(g)}"
+    "latex": "{2{\\text{C}}_{3}{\\text{H}}_{8}(g)\\, \\longrightarrow \\, {\\text{C}}_{2}{\\text{H}}_{4}(g)+{\\text{C}}_{3}{\\text{H}}_{6}(g)+{{\\text{CH}}}_{4}(g)+{\\text{H}}_{2}(g)}",
+    "equationId": "fs-idm143750304",
+    "equationClass": "unnumbered"
   },
   "math-13": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>ClO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math>",

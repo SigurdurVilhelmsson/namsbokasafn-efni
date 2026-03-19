@@ -2,7 +2,7 @@
 <title>Eiginleikar vatns</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68863</md:content-id>
-  <md:title>Water Properties</md:title>
+  <md:title>Eiginleikar vatns</md:title>
   <md:abstract/>
   <md:uuid>99f9a1dc-5a53-4300-af88-5529ddcd7fd1</md:uuid>
 </metadata>
@@ -223,7 +223,7 @@ hitastig (°C)</entry>
 <row valign="middle">
 <entry align="left">Hitastig</entry>
 <entry align="left">K<sub>w</sub> 10<sup>–14</sup></entry>
-<entry align="left">pK<sub>w</sub><footnote>pK<sub>w</sub> = –log<sub>10</sub>(K<sub>w</sub>)</footnote></entry>
+<entry align="left">pK<sub>w</sub><footnote id="fs-idm106976512">pK<sub>w</sub> = –log<sub>10</sub>(K<sub>w</sub>)</footnote></entry>
 </row>
 </thead>
 <tbody>

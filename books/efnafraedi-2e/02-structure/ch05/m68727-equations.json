@@ -1,23 +1,29 @@
 {
   "math-1": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"2em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mn>−286</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mrow></m:math>",
-    "latex": "{{\\text{H}}_{2}(g)+\\, \\frac{1}{2}{\\text{O}}_{2}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}\\text{O}(l)\\, \\text{Δ}\\text{H}=−286\\, \\text{kJ}}"
+    "latex": "{{\\text{H}}_{2}(g)+\\, \\frac{1}{2}{\\text{O}}_{2}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}\\text{O}(l)\\, \\text{Δ}\\text{H}=−286\\, \\text{kJ}}",
+    "equationId": "fs-idp13211824",
+    "equationClass": "unnumbered"
   },
   "math-2": {
-    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{1}{2}}"
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:mrow><m:mtext>(two-fold increase in amounts)</m:mtext></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−286</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>−572</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>two-fold decrease in amounts</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mn>1</m:mn><m:mn>4</m:mn></m:mfrac><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−286</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>−143</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} {\\text{(two-fold increase in amounts)}} \\\\ 2{\\text{H}}_{2}(g)+{\\text{O}}_{2}(g)\\, \\longrightarrow \\, 2{\\text{H}}_{2}\\text{O}(l)\\, \\text{Δ}\\text{H}=2\\, \\times \\, (−286\\, \\text{kJ})=−572\\, \\text{kJ} \\\\ {({\\text{two-fold decrease in amounts}})} \\\\ \\frac{1}{2}{\\text{H}}_{2}(g)+\\, \\frac{1}{4}{\\text{O}}_{2}(g)\\, \\longrightarrow \\, \\frac{1}{2}{\\text{H}}_{2}\\text{O}(l)\\, \\text{Δ}\\text{H}=\\, \\frac{1}{2}\\, \\times \\, (−286\\, \\text{kJ})=−143\\, \\text{kJ} \\end{aligned}",
+    "equationId": "fs-idm23265328",
+    "equationClass": "unnumbered"
   },
   "math-3": {
-    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:mrow><m:mtext>(two-fold increase in amounts)</m:mtext></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−286</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>−572</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>two-fold decrease in amounts</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mn>1</m:mn><m:mn>4</m:mn></m:mfrac><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−286</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>−143</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} {\\text{(two-fold increase in amounts)}} \\\\ 2{\\text{H}}_{2}(g)+{\\text{O}}_{2}(g)\\, \\longrightarrow \\, 2{\\text{H}}_{2}\\text{O}(l)\\, \\text{Δ}\\text{H}=2\\, \\times \\, (−286\\, \\text{kJ})=−572\\, \\text{kJ} \\\\ {({\\text{two-fold decrease in amounts}})} \\\\ \\frac{1}{2}{\\text{H}}_{2}(g)+\\, \\frac{1}{4}{\\text{O}}_{2}(g)\\, \\longrightarrow \\, \\frac{1}{2}{\\text{H}}_{2}\\text{O}(l)\\, \\text{Δ}\\text{H}=\\, \\frac{1}{2}\\, \\times \\, (−286\\, \\text{kJ})=−143\\, \\text{kJ} \\end{aligned}"
-  },
-  "math-4": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
     "latex": "{\\frac{1}{2}}"
   },
-  "math-5": {
+  "math-4": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mspace width=\"0.1em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.1em\"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mn>−242</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mrow></m:math>",
-    "latex": "{{\\text{H}}_{2}(g)+\\, \\frac{1}{2}\\, {\\text{O}}_{2}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}\\text{O}(g)\\, \\text{Δ}\\text{H}=−242\\, \\text{kJ}}"
+    "latex": "{{\\text{H}}_{2}(g)+\\, \\frac{1}{2}\\, {\\text{O}}_{2}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}\\text{O}(g)\\, \\text{Δ}\\text{H}=−242\\, \\text{kJ}}",
+    "equationId": "fs-idp4587936",
+    "equationClass": "unnumbered"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{2}}"
   },
   "math-6": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
@@ -173,19 +179,27 @@
   },
   "math-44": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mtext>+33.2 kJ</m:mtext></m:mrow></m:math>",
-    "latex": "{\\frac{1}{2}{\\text{N}}_{2}(g)+{\\text{O}}_{2}(g)\\, \\longrightarrow \\, {{\\text{NO}}}_{2}(g)\\, \\text{Δ}\\text{H}=\\text{+33.2 kJ}}"
+    "latex": "{\\frac{1}{2}{\\text{N}}_{2}(g)+{\\text{O}}_{2}(g)\\, \\longrightarrow \\, {{\\text{NO}}}_{2}(g)\\, \\text{Δ}\\text{H}=\\text{+33.2 kJ}}",
+    "equationId": "fs-idp167201504",
+    "equationClass": "unnumbered"
   },
   "math-45": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mtext>+66.4 kJ</m:mtext></m:mrow></m:math>",
-    "latex": "{{\\text{N}}_{2}(g)+2{\\text{O}}_{2}(g)\\, \\longrightarrow \\, 2{{\\text{NO}}}_{2}(g)\\, \\text{Δ}\\text{H}=\\text{+66.4 kJ}}"
+    "latex": "{{\\text{N}}_{2}(g)+2{\\text{O}}_{2}(g)\\, \\longrightarrow \\, 2{{\\text{NO}}}_{2}(g)\\, \\text{Δ}\\text{H}=\\text{+66.4 kJ}}",
+    "equationId": "fs-idp160717072",
+    "equationClass": "unnumbered"
   },
   "math-46": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mn>−184.6</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mrow></m:math>",
-    "latex": "{{\\text{H}}_{2}(g)+{{\\text{Cl}}}_{2}(g)\\, \\longrightarrow \\, 2\\text{HCl}(g)\\, \\text{Δ}\\text{H}=−184.6\\, \\text{kJ}}"
+    "latex": "{{\\text{H}}_{2}(g)+{{\\text{Cl}}}_{2}(g)\\, \\longrightarrow \\, 2\\text{HCl}(g)\\, \\text{Δ}\\text{H}=−184.6\\, \\text{kJ}}",
+    "equationId": "fs-idp146333552",
+    "equationClass": "unnumbered"
   },
   "math-47": {
     "mathml": "<m:math><m:mrow><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"3em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mtext>+184.6 kJ</m:mtext></m:mrow></m:math>",
-    "latex": "{2\\text{HCl}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}(g)+{{\\text{Cl}}}_{2}(g)\\, \\text{Δ}\\text{H}=\\text{+184.6 kJ}}"
+    "latex": "{2\\text{HCl}(g)\\, \\longrightarrow \\, {\\text{H}}_{2}(g)+{{\\text{Cl}}}_{2}(g)\\, \\text{Δ}\\text{H}=\\text{+184.6 kJ}}",
+    "equationId": "fs-idp146345216",
+    "equationClass": "unnumbered"
   },
   "math-48": {
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup></m:mrow></m:math>",

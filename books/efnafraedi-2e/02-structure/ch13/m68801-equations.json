@@ -69,67 +69,99 @@
   },
   "math-18": {
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">⇌</m:mo><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
-    "latex": "{{{\\text{PCl}}}_{5}(g)⇌{{\\text{PCl}}}_{3}(g)+{{\\text{Cl}}}_{2}(g)}"
+    "latex": "{{{\\text{PCl}}}_{5}(g)⇌{{\\text{PCl}}}_{3}(g)+{{\\text{Cl}}}_{2}(g)}",
+    "equationId": "fs-idp154661952",
+    "equationClass": "unnumbered"
   },
   "math-19": {
     "mathml": "<m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.0211</m:mn></m:mrow></m:math>",
-    "latex": "{{K}_{c}=\\, \\frac{{{[{{{\\text{PCl}}}_{3}}]}{[{{{\\text{Cl}}}_{2}}]}}}{{{[{{{\\text{PCl}}}_{5}}]}}}\\, =0.0211}"
+    "latex": "{{K}_{c}=\\, \\frac{{{[{{{\\text{PCl}}}_{3}}]}{[{{{\\text{Cl}}}_{2}}]}}}{{{[{{{\\text{PCl}}}_{5}}]}}}\\, =0.0211}",
+    "equationId": "fs-idp164721504",
+    "equationClass": "unnumbered"
   },
   "math-20": {
     "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>x</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>x</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{=\\, \\frac{{{(x)}{(x)}}}{{{({1.00-x})}}}}"
+    "latex": "{=\\, \\frac{{{(x)}{(x)}}}{{{({1.00-x})}}}}",
+    "equationId": "fs-idp53365296",
+    "equationClass": "unnumbered"
   },
   "math-21": {
     "mathml": "<m:math><m:mrow><m:mn>0.0211</m:mn><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>x</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>x</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{0.0211=\\, \\frac{{{(x)}{(x)}}}{{{({1.00-x})}}}}"
+    "latex": "{0.0211=\\, \\frac{{{(x)}{(x)}}}{{{({1.00-x})}}}}",
+    "equationId": "fs-idp149459776",
+    "equationClass": "unnumbered"
   },
   "math-22": {
     "mathml": "<m:math><m:mrow><m:mn>0.0211</m:mn><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
-    "latex": "{0.0211{({1.00-x})}={x}^{2}}"
+    "latex": "{0.0211{({1.00-x})}={x}^{2}}",
+    "equationId": "fs-idp140218208",
+    "equationClass": "unnumbered"
   },
   "math-23": {
     "mathml": "<m:math><m:mrow><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>0.0211</m:mn><m:mi>x</m:mi><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>",
-    "latex": "{{x}^{2}+0.0211x-0.0211=0}"
+    "latex": "{{x}^{2}+0.0211x-0.0211=0}",
+    "equationId": "fs-idp163277840",
+    "equationClass": "unnumbered"
   },
   "math-24": {
     "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mi>b</m:mi><m:mspace width=\"0.2em\"/><m:mo>±</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{x=\\, \\frac{{-b\\, \\pm \\, \\sqrt{{{b}^{2}-4ac}}}}{{2a}}}"
+    "latex": "{x=\\, \\frac{{-b\\, \\pm \\, \\sqrt{{{b}^{2}-4ac}}}}{{2a}}}",
+    "equationId": "fs-idp334007984",
+    "equationClass": "unnumbered"
   },
   "math-25": {
     "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mspace width=\"0.2em\"/><m:mo>±</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>0.0211</m:mn></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mo stretchy=\"false\">(</m:mo><m:mn>1</m:mn><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>−0.0211</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mo stretchy=\"false\">(</m:mo><m:mn>1</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{x=\\, \\frac{{-0.0211\\, \\pm \\, \\sqrt{{{{{({0.0211})}}}^{2}-4(1)(−0.0211)}}}}{{2(1)}}}"
+    "latex": "{x=\\, \\frac{{-0.0211\\, \\pm \\, \\sqrt{{{{{({0.0211})}}}^{2}-4(1)(−0.0211)}}}}{{2(1)}}}",
+    "equationId": "fs-idp226282512",
+    "equationClass": "unnumbered"
   },
   "math-26": {
     "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mspace width=\"0.2em\"/><m:mo>±</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>4.45</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>+</m:mo><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>8.44</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:msqrt></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
-    "latex": "{=\\, \\frac{{-0.0211\\, \\pm \\, \\sqrt{{{({4.45\\, \\times \\, {{10}}^{{−4}}})}+{({8.44\\, \\times \\, {{10}}^{{−2}}})}}}}}{2}}"
+    "latex": "{=\\, \\frac{{-0.0211\\, \\pm \\, \\sqrt{{{({4.45\\, \\times \\, {{10}}^{{−4}}})}+{({8.44\\, \\times \\, {{10}}^{{−2}}})}}}}}{2}}",
+    "equationId": "fs-idp87874832",
+    "equationClass": "unnumbered"
   },
   "math-27": {
     "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mspace width=\"0.2em\"/><m:mo>±</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.291</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
-    "latex": "{=\\, \\frac{{-0.0211\\, \\pm \\, 0.291}}{2}}"
+    "latex": "{=\\, \\frac{{-0.0211\\, \\pm \\, 0.291}}{2}}",
+    "equationId": "fs-idp272647552",
+    "equationClass": "unnumbered"
   },
   "math-28": {
     "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mo>+</m:mo><m:mn>0.291</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.135</m:mn></m:mrow></m:math>",
-    "latex": "{x=\\, \\frac{{-0.0211+0.291}}{2}\\, =0.135}"
+    "latex": "{x=\\, \\frac{{-0.0211+0.291}}{2}\\, =0.135}",
+    "equationId": "fs-idp157645520",
+    "equationClass": "unnumbered"
   },
   "math-29": {
     "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mo>−</m:mo><m:mn>0.291</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>−0.156</m:mn></m:mrow></m:math>",
-    "latex": "{x=\\, \\frac{{-0.0211-0.291}}{2}\\, =−0.156}"
+    "latex": "{x=\\, \\frac{{-0.0211-0.291}}{2}\\, =−0.156}",
+    "equationId": "fs-idp43934576",
+    "equationClass": "unnumbered"
   },
   "math-30": {
     "mathml": "<m:math><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mn>0.135</m:mn><m:mo>=</m:mo><m:mn>0.87</m:mn><m:mspace width=\"0.2em\"/><m:mi>M</m:mi></m:mrow></m:math>",
-    "latex": "{{[{{{\\text{PCl}}}_{5}}]}\\, =\\, 1.00-0.135=0.87\\, M}"
+    "latex": "{{[{{{\\text{PCl}}}_{5}}]}\\, =\\, 1.00-0.135=0.87\\, M}",
+    "equationId": "fs-idp178654352",
+    "equationClass": "unnumbered"
   },
   "math-31": {
     "mathml": "<m:math><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>0.135</m:mn><m:mspace width=\"0.2em\"/><m:mi>M</m:mi></m:mrow></m:math>",
-    "latex": "{{[{{{\\text{PCl}}}_{3}}]}=x=0.135\\, M}"
+    "latex": "{{[{{{\\text{PCl}}}_{3}}]}=x=0.135\\, M}",
+    "equationId": "fs-idp220490768",
+    "equationClass": "unnumbered"
   },
   "math-32": {
     "mathml": "<m:math><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>0.135</m:mn><m:mspace width=\"0.2em\"/><m:mi>M</m:mi></m:mrow></m:math>",
-    "latex": "{{[{{{\\text{Cl}}}_{2}}]}=x=0.135\\, M}"
+    "latex": "{{[{{{\\text{Cl}}}_{2}}]}=x=0.135\\, M}",
+    "equationId": "fs-idp86894240",
+    "equationClass": "unnumbered"
   },
   "math-33": {
     "mathml": "<m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:mfrac><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>0.135</m:mn></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.135</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mn>0.87</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.021</m:mn></m:mrow></m:math>",
-    "latex": "{{K}_{c}=\\, \\frac{{{[{{{\\text{PCl}}}_{3}}]}{[{{{\\text{Cl}}}_{2}}]}}}{{{[{{{\\text{PCl}}}_{5}}]}}}=\\, \\frac{{{({0.135})}(0.135)}}{{0.87}}\\, =0.021}"
+    "latex": "{{K}_{c}=\\, \\frac{{{[{{{\\text{PCl}}}_{3}}]}{[{{{\\text{Cl}}}_{2}}]}}}{{{[{{{\\text{PCl}}}_{5}}]}}}=\\, \\frac{{{({0.135})}(0.135)}}{{0.87}}\\, =0.021}",
+    "equationId": "fs-idp129485024",
+    "equationClass": "unnumbered"
   },
   "math-34": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",

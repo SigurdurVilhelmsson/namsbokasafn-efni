@@ -127,6 +127,10 @@
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
     "latex": "\\times"
   },
+  "math-33": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
   "fs-idp8892544": {
     "mathml": "<m:math><m:mrow><m:mn>4.7</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol K</m:mtext></m:mrow><m:mrow><m:mn>39.10</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g K</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width=\"0.2em\"/></m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.12</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol K</m:mtext></m:mrow></m:math>",
     "latex": "{4.7\\, \\sout{\\text{g}}\\, \\sout{\\text{K}}\\, {({\\frac{{\\text{mol K}}}{{39.10\\, \\sout{\\text{g K}}}}})\\,}=\\, 0.12\\, \\text{mol K}}",

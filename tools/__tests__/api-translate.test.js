@@ -8,6 +8,7 @@ import {
   validateMarkers,
   bookToDomain,
   loadGlossary,
+  splitAtSegBoundaries,
 } from '../api-translate.js';
 import fs from 'fs';
 import path from 'path';
@@ -317,5 +318,57 @@ describe('filterGlossaryForText', () => {
     expect(filtered.domain).toBe('chemistry');
     expect(filtered.sourceLanguage).toBe('en');
     expect(filtered.targetLanguage).toBe('is');
+  });
+});
+
+// ─── splitAtSegBoundaries ──────────────────────────────────────────
+
+describe('splitAtSegBoundaries', () => {
+  it('returns single chunk when under max size', () => {
+    const input = '<!-- SEG:m1:title:a -->\nTitle\n\n<!-- SEG:m1:para:b -->\nParagraph\n';
+    const chunks = splitAtSegBoundaries(input, 10000);
+    expect(chunks).toHaveLength(1);
+    expect(chunks[0]).toBe(input);
+  });
+
+  it('splits into multiple chunks at SEG boundaries', () => {
+    const seg1 = '<!-- SEG:m1:title:a -->\nTitle text here\n\n';
+    const seg2 = '<!-- SEG:m1:para:b -->\nParagraph one here\n\n';
+    const seg3 = '<!-- SEG:m1:para:c -->\nParagraph two here\n\n';
+    const input = seg1 + seg2 + seg3;
+
+    // Max 60 chars — forces split (each seg is ~40 chars)
+    const chunks = splitAtSegBoundaries(input, 60);
+    expect(chunks.length).toBeGreaterThanOrEqual(2);
+
+    // Verify all segments are preserved
+    const reassembled = chunks.join('');
+    expect(reassembled).toBe(input);
+  });
+
+  it('never splits mid-segment', () => {
+    const seg1 = '<!-- SEG:m1:title:a -->\n' + 'A'.repeat(100) + '\n\n';
+    const seg2 = '<!-- SEG:m1:para:b -->\n' + 'B'.repeat(100) + '\n\n';
+    const input = seg1 + seg2;
+
+    // Max 50 chars — each segment is >100, but can't split within them
+    const chunks = splitAtSegBoundaries(input, 50);
+    expect(chunks).toHaveLength(2);
+    expect(chunks[0]).toContain('SEG:m1:title:a');
+    expect(chunks[1]).toContain('SEG:m1:para:b');
+  });
+
+  it('preserves total segment count after reassembly', () => {
+    const segs = [];
+    for (let i = 0; i < 10; i++) {
+      segs.push(`<!-- SEG:m1:para:seg-${i} -->\nContent ${i}\n\n`);
+    }
+    const input = segs.join('');
+    const chunks = splitAtSegBoundaries(input, 100);
+
+    const reassembled = chunks.join('');
+    const inputCount = (input.match(/<!-- SEG:/g) || []).length;
+    const outputCount = (reassembled.match(/<!-- SEG:/g) || []).length;
+    expect(outputCount).toBe(inputCount);
   });
 });

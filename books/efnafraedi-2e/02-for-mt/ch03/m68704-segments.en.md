@@ -278,13 +278,13 @@ ratio of solute mass to solution volume, expressed as a percentage
 parts per billion (ppb)
 
 <!-- SEG:m68704:glossary-def:fs-idp23298832-def -->
-ratio of solute-to-solution mass multiplied by 109
+ratio of solute-to-solution mass multiplied by 10^9^
 
 <!-- SEG:m68704:glossary-term:fs-idm85251264-term -->
 parts per million (ppm)
 
 <!-- SEG:m68704:glossary-def:fs-idm85251264-def -->
-ratio of solute-to-solution mass multiplied by 106
+ratio of solute-to-solution mass multiplied by 10^6^
 
 <!-- SEG:m68704:glossary-term:fs-idp17597424-term -->
 volume percentage

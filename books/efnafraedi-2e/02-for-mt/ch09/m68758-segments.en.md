@@ -83,10 +83,13 @@ where *M* is the molar mass expressed in units of kg/mol. The KE~avg~ of a mole 
 where *R* is the gas constant and T is the kelvin temperature. When used in this equation, the appropriate form of the gas constant is 8.314 J/mol⋅K (8.314 kg m^2^s^–2^mol^–1^K^–1^). These two separate equations for KE~avg~ may be combined and rearranged to yield a relation between molecular speed and temperature:
 
 <!-- SEG:m68758:example-title:fs-idm203397264-title -->
-Solution
+Calculation of *u*~rms~
 
 <!-- SEG:m68758:para:fs-idm217669472 -->
-Calculation of *u*~rms~Calculate the root-mean-square speed for a nitrogen molecule at 30 °C.
+Calculate the root-mean-square speed for a nitrogen molecule at 30 °C.
+
+<!-- SEG:m68758:para-title:fs-idm124389728-title -->
+Solution
 
 <!-- SEG:m68758:para:fs-idm124389728 -->
 Convert the temperature into Kelvin:
@@ -151,13 +154,13 @@ The kinetic molecular theory is a simple but very effective model that effective
 <!-- SEG:m68758:title:fs-idm188828400-title -->
 Key Equations
 
-<!-- SEG:m68758:entry:auto-52 -->
+<!-- SEG:m68758:entry:auto-53 -->
 [[MATH:1]]
 
-<!-- SEG:m68758:entry:auto-53 -->
+<!-- SEG:m68758:entry:auto-54 -->
 [[MATH:2]]
 
-<!-- SEG:m68758:entry:auto-54 -->
+<!-- SEG:m68758:entry:auto-55 -->
 [[MATH:3]]
 
 <!-- SEG:m68758:title:fs-idm162733696-title -->

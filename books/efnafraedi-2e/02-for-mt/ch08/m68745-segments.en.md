@@ -46,6 +46,9 @@ Hybrid orbitals overlap to form σ bonds. Unhybridized orbitals overlap to form 
 <!-- SEG:m68745:para:fs-idm25599520 -->
 In the following sections, we shall discuss the common types of hybrid orbitals.
 
+<!-- SEG:m68745:title:fs-idp3790928-title -->
+*sp* Hybridization
+
 <!-- SEG:m68745:para:fs-idp208078752 -->
 The beryllium atom in a gaseous BeCl~2~ molecule is an example of a central atom with no lone pairs of electrons in a linear arrangement of three atoms. There are two regions of valence electron density in the BeCl~2~ molecule that correspond to the two covalent Be–Cl bonds. To accommodate these two electron domains, two of the Be atom’s four valence orbitals will mix to yield two hybrid orbitals. This hybridization process involves mixing of the valence *s* orbital with one of the valence *p* orbitals to yield two equivalent __*sp* hybrid orbitals__ that are oriented in a linear geometry ([#CNX_Chem_08_02_spGeom]). In this figure, the set of *sp* orbitals appears similar in shape to the original *p* orbital, but there is an important difference. The number of atomic orbitals combined always equals the number of hybrid orbitals formed. The *p* orbital is one orbital that can hold up to two electrons. The *sp* set is two equivalent orbitals that point 180° from each other. The two electrons that were originally in the *s* orbital are now distributed to the two *sp* orbitals, which are half filled. In gaseous BeCl~2~, these half-filled hybrid orbitals will overlap with orbitals from the chlorine atoms to form two identical σ bonds.
 
@@ -66,6 +69,9 @@ Any central atom surrounded by just two regions of valence electron density in a
 
 <!-- SEG:m68745:para:fs-idp2353136 -->
 Check out the University of Wisconsin-Oshkosh [website](http://openstax.org/l/16hybridorbital) to learn about visualizing hybrid orbitals in three dimensions.
+
+<!-- SEG:m68745:title:fs-idp10041360-title -->
+*sp*^2^ Hybridization
 
 <!-- SEG:m68745:para:fs-idp31553584 -->
 The valence orbitals of a central atom surrounded by three regions of electron density consist of a set of three __*sp*^2^ hybrid orbitals__ and one unhybridized *p* orbital. This arrangement results from *sp*^2^ hybridization, the mixing of one *s* orbital and two *p* orbitals to produce three identical hybrid orbitals oriented in a trigonal planar geometry ([#CNX_Chem_08_02_sp2Geom]).
@@ -94,6 +100,9 @@ Any central atom surrounded by three regions of electron density will exhibit *s
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp2Ex-caption -->
 The central atom(s) in each of the structures shown contain three regions of electron density and are *sp*^2^ hybridized. As we know from the discussion of VSEPR theory, a region of electron density contains all of the electrons that point in one direction. A lone pair, an unpaired electron, a single bond, or a multiple bond would each count as one region of electron density.
 
+<!-- SEG:m68745:title:fs-idm76169824-title -->
+*sp*^3^ Hybridization
+
 <!-- SEG:m68745:para:fs-idp165799040 -->
 The valence orbitals of an atom surrounded by a tetrahedral arrangement of bonding pairs and lone pairs consist of a set of four __*sp*^3^ hybrid orbitals__. The hybrids result from the mixing of one *s* orbital and all three *p* orbitals that produces four identical *sp*^3^ hybrid orbitals ([#CNX_Chem_08_02_sp3Geom]). Each of these hybrid orbitals points toward a different corner of a tetrahedron.
 
@@ -120,6 +129,9 @@ An *sp*^3^ hybrid orbital can also hold a lone pair of electrons. For example, t
 
 <!-- SEG:m68745:para:fs-idp158687664 -->
 The molecular structure of water is consistent with a tetrahedral arrangement of two lone pairs and two bonding pairs of electrons. Thus we say that the oxygen atom is *sp*^3^ hybridized, with two of the hybrid orbitals occupied by lone pairs and two by bonding pairs. Since lone pairs occupy more space than bonding pairs, structures that contain lone pairs have bond angles slightly distorted from the ideal. Perfect tetrahedra have angles of 109.5°, but the observed angles in ammonia (107.3°) and water (104.5°) are slightly smaller. Other examples of *sp*^3^ hybridization include CCl~4~, PCl~3~, and NCl~3~.
+
+<!-- SEG:m68745:title:fs-idm100176160-title -->
+*sp*^3^*d* and *sp*^3^*d*^2^ Hybridization
 
 <!-- SEG:m68745:para:fs-idp62922832 -->
 To describe the five bonding orbitals in a trigonal bipyramidal arrangement, we must use five of the valence shell atomic orbitals (the *s* orbital, the three *p* orbitals, and one of the *d* orbitals), which gives five __*sp*^3^*d* hybrid orbitals__. With an octahedral arrangement of six hybrid orbitals, we must use six valence shell atomic orbitals (the *s* orbital, the three *p* orbitals, and two of the *d* orbitals in its valence shell), which gives six __*sp*^3^*d*^2^ hybrid orbitals__. These hybridizations are only possible for atoms that have *d* orbitals in their valence subshells (that is, not those in the first or second period).
@@ -389,28 +401,28 @@ model that describes the changes in the atomic orbitals of an atom when it forms
 sp hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm71427776-def -->
-one of a set of two orbitals with a linear arrangement that results from combining one s and one p orbital
+one of a set of two orbitals with a linear arrangement that results from combining one *s* and one *p* orbital
 
 <!-- SEG:m68745:glossary-term:fs-idm48701168-term -->
 sp2 hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm48701168-def -->
-one of a set of three orbitals with a trigonal planar arrangement that results from combining one s and two p orbitals
+one of a set of three orbitals with a trigonal planar arrangement that results from combining one *s* and two *p* orbitals
 
 <!-- SEG:m68745:glossary-term:fs-idp88964992-term -->
 sp3 hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idp88964992-def -->
-one of a set of four orbitals with a tetrahedral arrangement that results from combining one s and three p orbitals
+one of a set of four orbitals with a tetrahedral arrangement that results from combining one *s* and three *p* orbitals
 
 <!-- SEG:m68745:glossary-term:fs-idm16838896-term -->
 sp3d hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm16838896-def -->
-one of a set of five orbitals with a trigonal bipyramidal arrangement that results from combining one s, three p, and one d orbital
+one of a set of five orbitals with a trigonal bipyramidal arrangement that results from combining one *s*, three *p*, and one *d* orbital
 
 <!-- SEG:m68745:glossary-term:fs-idm47317072-term -->
 sp3d2 hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm47317072-def -->
-one of a set of six orbitals with an octahedral arrangement that results from combining one s, three p, and two d orbitals
+one of a set of six orbitals with an octahedral arrangement that results from combining one *s*, three *p*, and two *d* orbitals

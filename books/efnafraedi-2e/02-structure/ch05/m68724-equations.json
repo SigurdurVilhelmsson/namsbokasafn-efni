@@ -19,6 +19,10 @@
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
     "latex": "{\\times}"
   },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>m</m:mi><m:msup><m:mi>v</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\frac{1}{2}m{v}^{2}}"
+  },
   "fs-idp12406672": {
     "mathml": "<m:math><m:mrow><m:mi>C</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>q</m:mi><m:mrow><m:mtext>Δ</m:mtext><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
     "latex": "{C=\\, \\frac{q}{{\\text{Δ}T}}}",

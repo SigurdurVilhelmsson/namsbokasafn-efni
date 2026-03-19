@@ -229,7 +229,7 @@
           "id": "fs-idm160727824",
           "title": {
             "segmentId": "m68793:example-title:fs-idm160727824-title",
-            "text": "Solution"
+            "text": "Determination of *E*~a~"
           },
           "content": [
             {
@@ -240,7 +240,11 @@
             {
               "type": "para",
               "id": "fs-idm178775392",
-              "segmentId": "m68793:para:fs-idm178775392"
+              "segmentId": "m68793:para:fs-idm178775392",
+              "title": {
+                "segmentId": "m68793:para-title:fs-idm178775392-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -341,77 +345,77 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-49",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68793:entry:auto-50",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-51",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-52",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-53",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-54",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-55",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-56",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-57",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-59",
                   "attributes": {
                     "align": "left"
                   }
@@ -421,13 +425,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-59",
+                  "segmentId": "m68793:entry:auto-60",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68793:entry:auto-60",
+                  "segmentId": "m68793:entry:auto-61",
                   "attributes": {
                     "align": "left"
                   }
@@ -445,77 +449,77 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-61",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68793:entry:auto-62",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-63",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-64",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-65",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-66",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-67",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-68",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-69",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-71",
                   "attributes": {
                     "align": "left"
                   }
@@ -525,13 +529,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-71",
+                  "segmentId": "m68793:entry:auto-72",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68793:entry:auto-72",
+                  "segmentId": "m68793:entry:auto-73",
                   "attributes": {
                     "align": "left"
                   }
@@ -590,14 +594,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-77",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68793:entry:auto-78",
                   "attributes": {}
                 }
@@ -607,6 +603,14 @@
               "cells": [
                 {
                   "segmentId": "m68793:entry:auto-79",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-80",
                   "attributes": {}
                 }
               ]
@@ -906,61 +910,61 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-108",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68793:entry:auto-109",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-110",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-111",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-112",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-113",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-114",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-116",
                   "attributes": {
                     "align": "left"
                   }
@@ -970,13 +974,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-116",
+                  "segmentId": "m68793:entry:auto-117",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68793:entry:auto-117",
+                  "segmentId": "m68793:entry:auto-118",
                   "attributes": {
                     "align": "left"
                   }
@@ -1008,29 +1012,29 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-119",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68793:entry:auto-120",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68793:entry:auto-121",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68793:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-123",
                   "attributes": {
                     "align": "left"
                   }
@@ -1040,13 +1044,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68793:entry:auto-123",
+                  "segmentId": "m68793:entry:auto-124",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68793:entry:auto-124",
+                  "segmentId": "m68793:entry:auto-125",
                   "attributes": {
                     "align": "left"
                   }
@@ -1199,61 +1203,61 @@
           {
             "cells": [
               {
-                "segmentId": "m68793:entry:auto-146",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
                 "segmentId": "m68793:entry:auto-147",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          },
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68793:entry:auto-148",
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          },
+          {
+            "cells": [
               {
                 "segmentId": "m68793:entry:auto-149",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          },
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68793:entry:auto-150",
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          },
+          {
+            "cells": [
               {
                 "segmentId": "m68793:entry:auto-151",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          },
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68793:entry:auto-152",
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          },
+          {
+            "cells": [
               {
                 "segmentId": "m68793:entry:auto-153",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-154",
                 "attributes": {
                   "align": "left"
                 }
@@ -1263,13 +1267,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68793:entry:auto-154",
+                "segmentId": "m68793:entry:auto-155",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68793:entry:auto-155",
+                "segmentId": "m68793:entry:auto-156",
                 "attributes": {
                   "align": "left"
                 }
@@ -1290,29 +1294,29 @@
           {
             "cells": [
               {
-                "segmentId": "m68793:entry:auto-156",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
                 "segmentId": "m68793:entry:auto-157",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          },
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68793:entry:auto-158",
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          },
+          {
+            "cells": [
               {
                 "segmentId": "m68793:entry:auto-159",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68793:entry:auto-160",
                 "attributes": {
                   "align": "left"
                 }
@@ -1322,13 +1326,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68793:entry:auto-160",
+                "segmentId": "m68793:entry:auto-161",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68793:entry:auto-161",
+                "segmentId": "m68793:entry:auto-162",
                 "attributes": {
                   "align": "left"
                 }

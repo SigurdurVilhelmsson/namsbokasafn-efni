@@ -337,7 +337,7 @@
           "id": "fs-idm24260800",
           "title": {
             "segmentId": "m68786:example-title:fs-idm24260800-title",
-            "text": "Solution"
+            "text": "Reaction Rate Expressions for Decomposition of H~2~O~2~"
           },
           "content": [
             {
@@ -358,7 +358,11 @@
             {
               "type": "para",
               "id": "fs-idm41764016",
-              "segmentId": "m68786:para:fs-idm41764016"
+              "segmentId": "m68786:para:fs-idm41764016",
+              "title": {
+                "segmentId": "m68786:para-title:fs-idm41764016-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -466,7 +470,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68786:entry:auto-60",
+                  "segmentId": "m68786:entry:auto-61",
                   "attributes": {}
                 }
               ]
@@ -580,12 +584,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68786:entry:auto-71",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68786:entry:auto-72",
                   "attributes": {
                     "align": "left"
@@ -614,17 +612,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68786:entry:auto-77",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68786:entry:auto-78",
                   "attributes": {
@@ -651,6 +649,12 @@
                 },
                 {
                   "segmentId": "m68786:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-83",
                   "attributes": {
                     "align": "left"
                   }
@@ -705,12 +709,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68786:entry:auto-88",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68786:entry:auto-89",
                   "attributes": {
                     "align": "left"
@@ -751,17 +749,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68786:entry:auto-96",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68786:entry:auto-97",
                   "attributes": {
@@ -800,6 +798,12 @@
                 },
                 {
                   "segmentId": "m68786:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-104",
                   "attributes": {
                     "align": "left"
                   }

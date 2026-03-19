@@ -20,7 +20,7 @@ Perform basic unit calculations and conversions in the metric and other unit sys
 Measurements provide much of the information that informs the hypotheses, theories, and laws describing the behavior of matter and energy in both the macroscopic and microscopic domains of chemistry. Every measurement provides three kinds of information: the size or magnitude of the measurement (a number); a standard of comparison for the measurement (a unit); and an indication of the uncertainty of the measurement. While the number and unit are explicitly represented when a quantity is written, the uncertainty is an aspect of the measurement result that is more implicitly represented and will be discussed later.
 
 <!-- SEG:m68674:para:fs-idm128012432 -->
-The number in the measurement can be represented in different ways, including decimal form and scientific notation. (Scientific notation is also known as exponential notation; a review of this topic can be found in Appendix B.) For example, the maximum takeoff weight of a Boeing 777-200ER airliner is 298,000 kilograms, which can also be written as 2.98 [[MATH:1]] 10^5^ kg. The mass of the average mosquito is about 0.0000025 kilograms, which can be written as 2.5 [[MATH:2]] 10^−6^ kg.
+The number in the measurement can be represented in different ways, including decimal form and scientific notation. (Scientific notation is also known as exponential notation; a review of this topic can be found in [Appendix B](doc:m68860).) For example, the maximum takeoff weight of a Boeing 777-200ER airliner is 298,000 kilograms, which can also be written as 2.98 [[MATH:1]] 10^5^ kg. The mass of the average mosquito is about 0.0000025 kilograms, which can be written as 2.5 [[MATH:2]] 10^−6^ kg.
 
 <!-- SEG:m68674:para:fs-idp178656 -->
 __Units__, such as liters, pounds, and centimeters, are standards of comparison for measurements. A 2-liter bottle of a soft drink contains a volume of beverage that is twice that of the accepted volume of 1 liter. The meat used to prepare a 0.25-pound hamburger weighs one-fourth as much as the accepted weight of 1 pound. Without units, a number can be meaningless, confusing, or possibly life threatening. Suppose a doctor prescribes phenobarbital to control a patient’s seizures and states a dosage of “100” without specifying units. Not only will this be confusing to the medical professional giving the dose, but the consequences can be dire: 100 mg given three times per day can be effective as an anticonvulsant, but a single dose of 100 g is more than 10 times the lethal amount.
@@ -692,7 +692,7 @@ measure of one dimension of an object
 liter (L)
 
 <!-- SEG:m68674:glossary-def:fs-idm238691152-def -->
-(also, cubic decimeter) unit of volume; 1 L = 1,000 cm3
+(also, cubic decimeter) unit of volume; 1 L = 1,000 cm^3^
 
 <!-- SEG:m68674:glossary-term:fs-idm22681216-term -->
 meter (m)
@@ -704,7 +704,7 @@ standard metric and SI unit of length; 1 m = approximately 1.094 yards
 milliliter (mL)
 
 <!-- SEG:m68674:glossary-def:fs-idp19165184-def -->
-1/1,000 of a liter; equal to 1 cm3
+1/1,000 of a liter; equal to 1 cm^3^
 
 <!-- SEG:m68674:glossary-term:fs-idm310839680-term -->
 second (s)
@@ -716,7 +716,7 @@ SI unit of time
 SI units (International System of Units)
 
 <!-- SEG:m68674:glossary-def:fs-idm23328032-def -->
-standards fixed by international agreement in the International System of Units (Le Système International d’Unités)
+standards fixed by international agreement in the International System of Units (*Le Système International d’Unités*)
 
 <!-- SEG:m68674:glossary-term:fs-idm331555696-term -->
 unit

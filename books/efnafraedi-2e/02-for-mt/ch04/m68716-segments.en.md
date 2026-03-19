@@ -290,7 +290,7 @@ gravimetric technique used to determine the elemental composition of a compound 
 end point
 
 <!-- SEG:m68716:glossary-def:fs-idp276080304-def -->
-measured volume of titrant solution that yields the change in sample solution appearance or other property expected for stoichiometric equivalence (see equivalence point)
+measured volume of titrant solution that yields the change in sample solution appearance or other property expected for stoichiometric equivalence (see *equivalence point*)
 
 <!-- SEG:m68716:glossary-term:fs-idp90910688-term -->
 equivalence point

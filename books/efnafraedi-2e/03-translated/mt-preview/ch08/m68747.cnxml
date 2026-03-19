@@ -1,0 +1,513 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Sameindasvigrúmakenningin</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68747</md:content-id>
+  <md:title>Sameindasvigrúmakenningin</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sameindasvigrúm út frá frumeindasvigrúmum</item><item>Lýst eiginleikum bindandi og andbindandi sameindasvigrúma</item><item>Reiknað tengiraðir út frá rafeindaskipan sameinda</item><item>Skrifað rafeindaskipan fyrir tvíatóma sameindir úr fyrstu og annarri lotu</item><item>Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sameindanna</item></list></md:abstract>
+  <md:uuid>4f90d5f4-c612-4a78-9240-635035f8433e</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm108621792">Fyrir næstum allar samgildar sameindir sem til eru getum við nú teiknað Lewis-byggingu, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sameindar og komist nálægt því að spá fyrir um tengihorn. Hins vegar veldur ein mikilvægasta sameindin sem við þekkjum, súrefnissameindin O<sub>2</sub>, vandamáli varðandi Lewis-byggingu sína. Við myndum skrifa eftirfarandi Lewis-byggingu fyrir O<sub>2</sub>:</para>
+<media id="fs-idm39755904" alt="A Lewis structure is shown. It is made up of two oxygen atoms, each with two lone pairs of electrons, bonded together with a double bond.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_O2_img.jpg"/>
+</media>
+<para id="fs-idm179265392">Þessi rafeindabygging fylgir öllum reglum Lewis-kenningarinnar. Það er O=O tvítengi og hver súrefnisfrumeind hefur átta rafeindir í kringum sig. Þessi mynd er hins vegar í ósamræmi við segulhegðun súrefnis. Eitt og sér er O<sub>2</sub> ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það því saman milli póla segulsins og virðist þyngdarlögmálinu ögra, eins og sýnt er í <link document="m68743" target-id="CNX_Chem_08_00_LiqO2"/>. Slíkur aðdráttur að segulsviði er kallaður <term id="term-00001">meðsegulmagn (e. paramagnetism)</term> og kemur fram í sameindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-bygging O<sub>2</sub> til kynna að allar rafeindir séu paraðar. Hvernig getum við útskýrt þetta misræmi?</para>
+<para id="fs-idm140344208">Segulnæmi mælir kraftinn sem efni verður fyrir í segulsviði. Þegar við berum saman þyngd sýnis við þyngdina sem mæld er í segulsviði (<link target-id="CNX_Chem_08_04_Gouy"/>), virðast meðseglandi sýni sem dragast að seglinum þyngri vegna kraftsins sem segulsviðið beitir. Við getum reiknað fjölda óparaðra rafeinda út frá þyngdaraukningunni.</para>
+<figure id="CNX_Chem_08_04_Gouy" class="scaled-down">
+<media id="fs-idm166075136" alt="A diagram depicts a stand supporting two objects that are held in balance by a horizontal bar. On the right, the bar supports a dish that is holding two weights. On the left there is a line attached to a test tube labeled, “Sample tube.” The test tube has been lowered into the space labeled, “Magnetic field,” between two structures labeled, “Electromagnets.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_Gouy.jpg"/>
+</media>
+<caption><term class="no-emphasis" id="term-00002">Gouy</term>-vog ber saman massa sýnis í segulsviði við massann þegar slökkt er á rafseglinum til að ákvarða fjölda óparaðra rafeinda í sýni.</caption>
+</figure>
+<para id="fs-idm167869376">Tilraunir sýna að hver O<sub>2</sub>-sameind hefur tvær óparaðar rafeindir. Lewis-byggingarlíkanið spáir ekki fyrir um tilvist þessara tveggja ópöruðu rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sameinda lítillega í ójafnvægu segulsviði. Efni þar sem allar rafeindir eru paraðar eru <term id="term-00003">mótseglandi (e. diamagnetic)</term> og hrinda segulsviði veiklega frá sér. Meðseglandi og mótseglandi efni virka ekki sem varanlegir seglar. Aðeins í ytra segulsviði sýna þau aðdrátt eða fráhrindingu.</para>
+<note id="fs-idm103101376" class="chemistry link-to-learning">
+<para id="fs-idm182773888">Horfðu á þetta <link url="http://openstax.org/l/16diamagnetic">stutta myndband</link> til að sjá nokkrar sýnikennslur á meðseglandi og mótseglandi hegðun.</para>
+</note>
+<para id="fs-idm112096224">Sameindasvigrúmakenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til meðsegulmögnunar súrefnissameindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sameindum, svo sem frávik frá áttureglunni og flóknari sameindum (sem er utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-byggingum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sameind og líklegri staðsetningu þessara rafeinda. Ólíkt gildistengjakenningunni, sem notar blendingssvigrúm sem eru bundin við eina ákveðna frumeind, notar MO-kenningin samsetningu frumeindasvigrúma til að mynda sameindasvigrúm sem eru <emphasis effect="italics">dreifð</emphasis> yfir alla sameindina í stað þess að vera staðbundin á einstökum frumeindum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur hálfleiðarar og enn önnur einangrarar. <link target-id="fs-idm162808816"/> tekur saman helstu atriði þessara tveggja tengikenninga sem bæta hvor aðra upp. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sameinda.</para>
+<table id="fs-idm162808816" class="top-titled" summary="A table is shown that is composed of two columns and six rows. The header row reads, “Valence Bond Theory,” and, “Molecular Orbital Theory.” The first column contains the phrases: “considers bonds as localized between one pair of atoms,” “creates bonds from overlap of atomic orbitals ( s, p, d…) and hybrid orbitals ( s p , s p superscript 2, s p superscript 3 … ) ,” “forms sigma or pi bonds,” “predicts molecular shape based on the number of regions of electron density,” and, “needs multiple structures are needed to describe resonance.” The second column reads, “considers electrons delocalized throughout the entire molecule,” “combines atomic orbitals to form molecular orbitals ( sigma, sigma superscript asterik, pi, pi superscript asterisk ),” “creates bonding and antibonding interactions based on which orbitals are filled,” “predicts the arrangement of electrons in molecules.”">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c2" align="center">Samanburður á tengikenningum</entry>
+</row>
+<row valign="middle">
+<entry align="left">Gildistengjakenningin</entry>
+<entry align="left">Sameindasvigrúmakenningin</entry></row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">lítur á tengi sem staðbundin milli eins frumeindapars</entry>
+<entry align="left">lítur á rafeindir sem dreifðar um alla sameindina</entry></row>
+<row valign="middle">
+<entry align="left">býr til tengi úr skörun frumeindasvigrúma (<emphasis effect="italics">s, p, d</emphasis>...) og blendingssvigrúma (<emphasis effect="italics">sp, sp</emphasis><sup>2</sup>, <emphasis effect="italics">sp</emphasis><sup>3</sup>...)</entry>
+<entry align="left">sameinar frumeindasvigrúm til að mynda sameindasvigrúm (σ, σ<emphasis effect="italics">, π, π</emphasis>)</entry></row>
+<row valign="middle">
+<entry align="left">myndar σ- eða π-tengi</entry>
+<entry align="left">býr til bindandi og andbindandi víxlverkanir eftir því hvaða svigrúm eru fyllt</entry></row>
+<row valign="middle">
+<entry align="left">spáir fyrir um lögun sameindar út frá fjölda svæða með rafeindaþéttleika</entry>
+<entry align="left">spáir fyrir um fyrirkomulag rafeinda í sameindum</entry></row>
+<row valign="middle">
+<entry align="left">þarfnast margra bygginga til að lýsa vokmyndum</entry>
+<entry align="left"/></row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm11457392"><term id="term-00004">Sameindasvigrúmakenningin (e. molecular orbital theory)</term> lýsir dreifingu rafeinda í sameindum á svipaðan hátt og dreifingu rafeinda í frumeindum er lýst með frumeindasvigrúmum. Með því að nota skammtafræði er hegðun rafeindar í sameind enn lýst með bylgjufalli, <emphasis effect="italics">Ψ</emphasis>, hliðstætt hegðuninni í frumeind. Rétt eins og rafeindir í kringum stakar frumeindir, eru rafeindir í kringum frumeindir í sameindum takmarkaðar við stök (skömmtuð) orkugildi. Svæðið í rúminu þar sem líklegt er að finna gildisrafeind í sameind er kallað <term id="term-00005">sameindasvigrúm (<emphasis effect="italics">Ψ</emphasis><sup>2</sup>) (e. molecular orbital (<emphasis effect="italics">ψ</emphasis><sup>2</sup>))</term>. Eins og frumeindasvigrúm er sameindasvigrúm fullt þegar það inniheldur tvær rafeindir með gagnstæðan spuna.</para>
+<para id="fs-idm112433808">Við munum skoða sameindasvigrúm í sameindum sem samanstanda af tveimur eins frumeindum (H<sub>2</sub> eða Cl<sub>2</sub>, til dæmis). Slíkar sameindir eru kallaðar <term id="term-00006">samkjarna tvíatóma sameindir (e. homonuclear diatomic molecules)</term>. Í þessum tvíatóma sameindum koma fyrir nokkrar gerðir sameindasvigrúma.</para>
+<para id="fs-idm141141248">Stærðfræðilega ferlið við að sameina frumeindasvigrúm til að mynda sameindasvigrúm er kallað <term id="term-00007">línuleg samsetning frumeindasvigrúma (LCAO) (e. linear combination of atomic orbitals (lcao))</term>. Bylgjufallið lýsir bylgjueiginleikum rafeindar. Sameindasvigrúm eru samsetningar bylgjufalla frumeindasvigrúma. Samsetning bylgna getur leitt til uppbyggjandi víxlverkunar, þar sem toppar mætast, eða eyðandi víxlverkunar, þar sem toppar mæta dölum (<link target-id="CNX_Chem_08_04_waveadd"/>). Í svigrúmum eru bylgjurnar þrívíðar og þær sameinast með bylgjum í fasa sem mynda svæði með meiri líkum á rafeindaþéttleika og bylgjum úr fasa sem mynda nóður, eða svæði án rafeindaþéttleika.</para>
+<figure id="CNX_Chem_08_04_waveadd">
+<media id="fs-idm181597760" alt="A pair of diagrams are shown and labeled, “a” and “b.” Diagram a shows two identical waves with two crests and two troughs. They are drawn one above the other with a plus sign in between and an equal sign to the right. To the right of the equal sign is a much taller wave with a same number of troughs and crests. Diagram b shows two waves with two crests and two troughs, but they are mirror images of one another rotated over a horizontal axis. They are drawn one above the other with a plus sign in between and an equal sign to the right. To the right of the equal sign is a flat line.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_waveadd.jpg"/>
+</media>
+<caption>(a) Þegar bylgjur í fasa sameinast myndar uppbyggjandi víxlverkun bylgju með meiri sveifluvídd. (b) Þegar bylgjur úr fasa sameinast myndar eyðandi víxlverkun bylgju með minni (eða enga) sveifluvídd.</caption>
+</figure>
+<para id="fs-idm153714976">Það eru tvær gerðir sameindasvigrúma sem geta myndast við skörun tveggja atómískra <emphasis effect="italics">s</emphasis>-svigrúma á aðlægum frumeindum. Þessar tvær gerðir eru sýndar á <link target-id="CNX_Chem_08_04_ssigma"/>. Samsetning í fasa myndar lægra orku <term id="term-00008">σ<emphasis effect="italics">s</emphasis> sameindasvigrúm (e. σ<emphasis effect="italics">s</emphasis> molecular orbital)</term> (lesið „sigma-s“) þar sem mestur hluti rafeindaþéttleikans er beint á milli kjarnanna. Álagning úr fasa (sem einnig má hugsa sér sem frádrátt bylgjufallanna) myndar hærra orku <term id="term-00009"><m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mi>s</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> sameindasvigrúm (e. [[math:1]] molecular orbital)</term> (lesið „sigma-s-stjarna“) þar sem nóða er á milli kjarnanna. Stjarnan táknar að svigrúmið er andbindandi svigrúm. Rafeindir í σ<emphasis effect="italics"><sub>s</sub></emphasis>-svigrúmi laðast að báðum kjörnum samtímis og eru stöðugri (hafa lægri orku) en þær væru í einangruðum frumeindum. Með því að bæta rafeindum í þessi svigrúm myndast kraftur sem heldur kjörnunum tveimur saman, svo við köllum þessi svigrúm <term id="term-00010">bindandi svigrúm (e. bonding orbitals)</term>. Rafeindir í <m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mi>s</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> svigrúmum eru staðsettar langt frá svæðinu milli kjarnanna tveggja. Aðdráttarkrafturinn milli kjarnanna og þessara rafeinda togar kjarnana tvo í sundur. Þess vegna eru þessi svigrúm kölluð <term id="term-00011">andbindandi svigrúm (e. antibonding orbitals)</term>. Rafeindir fylla fyrst bindandi svigrúmið með lægri orku áður en þær fylla andbindandi svigrúmið með hærri orku, rétt eins og þær fylla frumeindasvigrúm með lægri orku áður en þær fylla frumeindasvigrúm með hærri orku.</para>
+<figure id="CNX_Chem_08_04_ssigma" class="scaled-down"><media id="fs-idm78961584" alt="A diagram is shown that depicts a vertical upward-facing arrow that lies to the left of all the other portions of the diagram and is labeled, “E.” To the immediate right of the midpoint of the arrow are two circles each labeled with a positive sign, the letter S, and the phrase, “Atomic orbitals.” These are followed by a right-facing horizontal arrow that points to the same two circles labeled with plus signs, but they are now touching and are labeled, “Combine atomic orbitals.” Two right-facing arrows lead to the last portion of the diagram, one facing upward and one facing downward. The upper arrow is labeled, “Subtract,” and points to two oblong ovals labeled with plus signs, and the phrase, “Antibonding orbitals sigma subscript s superscript asterisk.” The lower arrow is labeled, “Add,” and points to an elongated oval with two plus signs that is labeled, “Bonding orbital sigma subscript s.” The heading over the last section of the diagram are the words, “Molecular orbitals.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_ssigma.jpg"/>
+</media>
+
+<caption>Sigma (σ) og sigma-stjörnu (σ<emphasis effect="italics">) sameindasvigrúm myndast við samsetningu tveggja </emphasis>s*-frumeindasvigrúma. Punktarnir (·) gefa til kynna staðsetningu kjarnanna.</caption></figure>
+<note id="fs-idm101998112" class="chemistry link-to-learning">
+<para id="fs-idm201921312">Þú getur horft á <link url="http://openstax.org/l/16molecorbital">hreyfimyndir</link> sem sýna útreiknuð frumeindasvigrúm sameinast og mynda ýmis sameindasvigrúm á vefsíðunni Orbitron.</para>
+</note>
+<para id="fs-idm148257600">Í <emphasis effect="italics">p</emphasis>-svigrúmum gefur bylgjufallið af sér tvo blaðka með gagnstæðum fösum, á svipaðan hátt og tvívíð bylgja hefur bæði hluta fyrir ofan og neðan meðaltal. Við gefum til kynna fasana með því að skyggja svigrúmsblaðkana með mismunandi litum. Þegar svigrúmsblaðkar með sama fasa skarast eykur uppbyggjandi bylgjuvíxlverkun rafeindaþéttleikann. Þegar svæði með gagnstæðum fasa skarast minnkar eyðandi bylgjuvíxlverkun rafeindaþéttleikann og myndar nóður. Þegar <emphasis effect="italics">p</emphasis>-svigrúm skarast enda í enda mynda þau σ og σ<emphasis effect="italics"> svigrúm (<link target-id="CNX_Chem_08_04_pMOsigma"/>). Ef tvær frumeindir eru staðsettar meðfram </emphasis>x<emphasis effect="italics">-ásnum í kartesísku hnitakerfi skarast </emphasis>p<sub>x</sub><emphasis effect="italics">-svigrúmin tvö enda í enda og mynda σ</emphasis><sub>px</sub><emphasis effect="italics"> (bindandi) og <m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> (andbindandi) (lesið „sigma-p-x“ og „sigma-p-x stjarna“). Rétt eins og við skörun </emphasis>s*-svigrúma gefur stjarnan til kynna svigrúmið með nóðu milli kjarnanna, sem er hærra orku, andbindandi svigrúm.</para>
+<figure id="CNX_Chem_08_04_pMOsigma" class="scaled-down">
+<media id="fs-idm189517056" alt="Two horizontal rows of diagrams are shown. The upper diagram shows two equally-sized peanut-shaped orbitals with a plus sign in between them connected to a merged orbital diagram by a right facing arrow. The merged diagram has a much larger oval at the center and much smaller ovular orbitals on the edge. It is labeled, “sigma subscript p x.” The lower diagram shows two equally-sized peanut-shaped orbitals with a plus sign in between them connected to a split orbital diagram by a right facing arrow. The split diagram has a much larger oval at the outer ends and much smaller ovular orbitals on the inner edges. It is labeled, “sigma subscript p x superscript asterisk”.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_pMOsigma.jpg"/>
+</media>
+<caption>Samsetning bylgjufalla tveggja <emphasis effect="italics">p</emphasis>-frumeindasvigrúma meðfram ásnum milli kjarnanna myndar tvö sameindasvigrúm, σ<emphasis effect="italics"><sub>p</sub></emphasis> og <m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mi>p</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>.</m:mo></m:mrow></m:math></caption>
+</figure>
+<para id="fs-idm175046592">Skörun tveggja <emphasis effect="italics">p</emphasis>-svigrúma hlið við hlið gefur af sér <term id="term-00012">pí (π) bindandi sameindasvigrúm (e. pi (π) bonding molecular orbital)</term> og <term id="term-00013">π<emphasis effect="italics"> andbindandi sameindasvigrúm (e. π</emphasis> antibonding molecular orbital)</term>, eins og sýnt er á <link target-id="CNX_Chem_08_04_pMOpi"/>. Í gildisrafeindatengjafræði lýsum við π-tengjum þannig að þau innihaldi nóðuplan sem inniheldur ásinn milli kjarnanna og er hornrétt á blaðka <emphasis effect="italics">p</emphasis>-svigrúmanna, með rafeindaþéttleika beggja vegna nóðunnar. Í sameindasvigrúmafræði lýsum við π-svigrúminu með sama formi og π-tengi er til staðar þegar þetta svigrúm inniheldur rafeindir. Rafeindir í þessu svigrúmi víxlverka við báða kjarna og hjálpa til við að halda frumeindunum tveimur saman, sem gerir það að bindandi svigrúmi. Fyrir samsetningu úr fasa myndast tvö nóðuplön, annað meðfram ásnum milli kjarnanna og hitt hornrétt á milli kjarnanna.</para>
+<figure id="CNX_Chem_08_04_pMOpi" class="scaled-down"><media id="fs-idm151833152" alt="Two horizontal rows of diagrams are shown. The upper and lower diagrams both begin with two vertical peanut-shaped orbitals with a plus sign in between followed by a right-facing arrow. The upper diagram shows the same vertical peanut orbitals bending slightly away from one another and separated by a dotted line. It is labeled, “pi subscript p superscript asterisk.” The lower diagram shows the horizontal overlap of the two orbitals and is labeled, “pi subscript p.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_pMOpi.jpg"/>
+</media>
+
+<caption>Skörun tveggja <emphasis effect="italics">p</emphasis>-svigrúma hlið við hlið leiðir til myndunar tveggja π-sameindasvigrúma. Samsetning svigrúma úr fasa leiðir til andbindandi sameindasvigrúms með tveimur nóðum. Önnur inniheldur ásinn milli kjarnanna og hin er hornrétt á ásinn. Samsetning svigrúma í fasa leiðir til bindandi svigrúms. Það er nóða (blá) sem inniheldur ásinn milli kjarnanna með tveimur blaðkum svigrúmsins staðsettum fyrir ofan og neðan þessa nóðu.</caption></figure>
+<para id="fs-idm130124992">Í sameindasvigrúmum tvíatóma sameinda hefur hver frumeind einnig tvö sett af <emphasis effect="italics">p</emphasis>-svigrúmum sem snúa hlið við hlið (<emphasis effect="italics">p<sub>y</sub></emphasis> og <emphasis effect="italics">p<sub>z</sub></emphasis>), þannig að þessi fjögur frumeindasvigrúm sameinast í pörum til að mynda tvö π-svigrúm og tvö π<emphasis effect="italics">-svigrúm. π</emphasis><sub>py</sub><emphasis effect="italics">- og <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>-svigrúmin snúa hornrétt á π</emphasis><sub>pz</sub><emphasis effect="italics">- og <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>-svigrúmin. Fyrir utan stefnu þeirra eru π</emphasis><sub>py</sub><emphasis effect="italics">- og π</emphasis><sub>pz</sub><emphasis effect="italics">-svigrúmin eins og hafa sömu orku; þau eru <term id="term-00014">úrkynjuð svigrúm (e. degenerate orbitals)</term>. <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>- og <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>-andbindandi svigrúmin eru einnig úrkynjuð og eins fyrir utan stefnu þeirra. Alls myndast sex sameindasvigrúm úr samsetningu sex </emphasis>p<emphasis effect="italics">-frumeindasvigrúma í tveimur frumeindum: σ</emphasis><sub>px</sub><emphasis effect="italics"> og <m:math><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math> π</emphasis><sub>py</sub><emphasis effect="italics"> og <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math> π</emphasis><sub>pz</sub>* og <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>.</m:mo></m:mrow></m:math></para>
+<example id="fs-idm91199824">
+<para id="fs-idp38389696"><title>Sameindasvigrúm</title>Spáðu fyrir um hvaða gerð sameindasvigrúms (ef einhver) myndi myndast við að leggja saman bylgjuföllin þannig að hvert par svigrúma sem sýnt er skarist. Svigrúmin hafa öll svipaða orku.</para>
+<media id="fs-idm110513152" alt="Three diagrams are shown and labeled “a,” “b,” and “c.” Diagram a shows two horizontal peanut-shaped orbitals laying side-by-side. They are labeled, “3 p subscript x and 3 p subscript x.” Diagram b shows one vertical and one horizontal peanut-shaped orbital which are at right angles to one another. They are labeled, “3 p subscript x and 3 p subscript y.” Diagram c shows two vertical peanut-shaped orbitals laying side-by-side and labeled, “3 p subscript y and 3 p subscript y.”">
+<image mime-type="image/jpeg" class="scaled-down" src="../../media/CNX_Chem_08_04_AOtype_img.jpg"/>
+</media>
+<para id="fs-idp85051376"><title>Lausn</title>(a) er samfasa samsetning sem leiðir til σ3<emphasis effect="italics">p</emphasis> svigrúms</para>
+<para id="fs-idp7458640">(b) mun ekki leiða til nýs svigrúms vegna þess að samfasa hlutinn (neðst) og mótífasa hlutinn (efst) núllast út. Aðeins svigrúm með rétta röðun geta sameinast.</para>
+<para id="fs-idm98679312">(c) er mótífasa samsetning sem leiðir til <m:math><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>3</m:mn><m:mi>p</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> svigrúms.</para>
+<para id="fs-idm173173712"><title>Skoðaðu þekkingu þína</title>Merktu sameindasvigrúmið sem sýnt er sem <emphasis effect="italics">σ</emphasis> eða π, bindandi eða andbindandi og gefðu til kynna hvar nóðan er.</para><media id="fs-idm135406128" alt="Two orbitals are shown lying end-to-end. Each has one enlarged and one small side. The small sides are facing one another">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_siganti_img.jpg"/>
+</media>
+<note id="fs-idm210552112">
+<title>Answer:</title>
+<para id="fs-idm99049568">Svigrúmið er staðsett meðfram milli kjarna ásnum, svo það er σ-svigrúm. Það er nóða sem sker milli kjarna ásinn í tvennt, svo það er andbindandi svigrúm.<newline/></para><media id="fs-idm152931472" alt="Two orbitals are shown lying end-to-end. Each has one enlarged and one small side. The small sides are facing one another and are separated by a vertical dotted line.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_salabel_img.jpg"/>
+</media>
+</note>
+</example>
+<note id="fs-idm43986688" class="chemistry chemist-portrait">
+<title>Walter Kohn: Nóbelsverðlaunahafi</title>
+<para id="fs-idm150138816">Walter <term class="no-emphasis" id="term-00015">Kohn</term> (<link target-id="CNX_Chem_08_04_Kohn"/>) er kennilegur eðlisfræðingur sem rannsakar rafeindabyggingu fastra efna. Verk hans sameina lögmál skammtafræðinnar og háþróaða stærðfræðitækni. Þessi tækni, sem kallast þéttnifellafræði, gerir kleift að reikna út eiginleika sameindasvigrúma, þar á meðal lögun þeirra og orku. Kohn og stærðfræðingurinn John Pople hlutu Nóbelsverðlaunin í efnafræði árið 1998 fyrir framlag sitt til skilnings okkar á rafeindabyggingu. Kohn lagði einnig mikið af mörkum til eðlisfræði hálfleiðara.</para>
+<figure id="CNX_Chem_08_04_Kohn" class="scaled-down">
+<media id="fs-idm136311776" alt="A photograph of Walter Kohn is shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_Kohn.jpg"/>
+</media>
+<caption>Walter Kohn þróaði aðferðir til að lýsa sameindasvigrúmum. (heimild: mynd með leyfi Walter Kohn)</caption>
+</figure>
+<para id="fs-idm51386912">Ævisaga Kohns hefur einnig verið merkileg utan sviðs eðlisefnafræðinnar. Hann fæddist í Austurríki og í seinni heimsstyrjöldinni var hann hluti af Kindertransport-áætluninni sem bjargaði 10.000 börnum frá stjórn nasista. Sumarstörf hans fólu í sér að finna gullnámur í Kanada og hjálpa Polaroid að útskýra hvernig skyndifilma þeirra virkaði. Dr. Kohn lést árið 2016, 93 ára að aldri.</para>
+</note>
+<note id="fs-idm152886256" class="chemistry sciences-interconnect">
+<title>Reikniefnafræði í lyfjahönnun</title>
+<para id="fs-idp11259136">Þó að lýsingarnar á tengjum sem lýst er í þessum kafla feli í sér mörg fræðileg hugtök, hafa þær einnig mörg hagnýt, raunveruleg not. Til dæmis er lyfjahönnun mikilvægt svið sem notar skilning okkar á efnatengjum til að þróa lyf. Þetta þverfaglega rannsóknarsvið notar líffræði (skilning á sjúkdómum og hvernig þeir virka) til að bera kennsl á ákveðin skotmörk, svo sem bindistað sem tekur þátt í sjúkdómsferli. Með því að móta byggingu bindistaðarins og hugsanlegra lyfja geta reikniefnafræðingar spáð fyrir um hvaða byggingar geta passað saman og hversu vel þær bindast (sjá <link target-id="CNX_Chem_08_04_HIVProteas"/>). Þúsundir hugsanlegra kandídata er hægt að fækka niður í nokkra af þeim efnilegustu. Þessar kandídatasameindir eru síðan vandlega prófaðar til að ákvarða aukaverkanir, hversu vel þær geta flust um líkamann og aðra þætti. Tugir mikilvægra nýrra lyfja hafa verið uppgötvaðir með hjálp reikniefnafræði og ný rannsóknarverkefni eru í gangi.</para>
+<figure id="CNX_Chem_08_04_HIVProteas" class="scaled-down">
+<media id="fs-idm42063808" alt="A diagram of a molecule is shown. The image shows a tangle of ribbon-like, intertwined, pink and green curling lines with a complex ball and stick model in the center.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_HIVProteas.jpg"/>
+</media>
+<caption>Sameindin sem sýnd er, HIV-1 próteasi, er mikilvægt skotmark fyrir lyfjarannsóknir. Með því að hanna sameindir sem bindast þessu próteini geta vísindamenn hamlað framgangi sjúkdómsins verulega.</caption>
+</figure>
+</note>
+<section id="fs-idm108525232">
+<title>Orkumyndir sameindasvigrúma</title>
+<para id="fs-idm109157200">Hlutfallsleg orkustig frumeinda- og sameindasvigrúma eru venjulega sýnd á <term id="term-00016">orkumynd sameindasvigrúma (e. molecular orbital diagram)</term> (<link target-id="CNX_Chem_08_04_FillMo"/>). Fyrir tvíatóma sameind eru frumeindasvigrúm einnar frumeindar sýnd til vinstri og hinnar frumeindarinnar til hægri. Hver lárétt lína táknar eitt svigrúm sem getur haldið tveimur rafeindum. Sameindasvigrúmin sem myndast við samsetningu frumeindasvigrúmanna eru sýnd í miðjunni. Brotnar línur sýna hvaða frumeindasvigrúm sameinast til að mynda sameindasvigrúmin. Fyrir hvert par frumeindasvigrúma sem sameinast myndast eitt lægra orku (bindandi) sameindasvigrúm og eitt hærra orku (andbindandi) svigrúm. Þannig getum við séð að samsetning sex 2<emphasis effect="italics">p</emphasis> frumeindasvigrúma leiðir til þriggja bindandi svigrúma (eitt σ og tvö π) og þriggja andbindandi svigrúma (eitt σ<emphasis effect="italics"> og tvö π</emphasis>).</para>
+<para id="fs-idm63353616">Við spáum fyrir um dreifingu rafeinda í þessum sameindasvigrúmum með því að fylla svigrúmin á sama hátt og við fyllum frumeindasvigrúm, samkvæmt Aufbau-reglunni. Lægri orkusvigrúm fyllast fyrst, rafeindir dreifast á milli úrkynjaðra svigrúma áður en þær parast og hvert svigrúm getur haldið að hámarki tveimur rafeindum með gagnstæðan spuna (<link target-id="CNX_Chem_08_04_FillMo"/>). Rétt eins og við skrifum rafeindaskipanir fyrir frumeindir, getum við skrifað sameindarrafeindaskipanina með því að skrá svigrúmin með hávísum sem gefa til kynna fjölda rafeinda sem eru til staðar. Til skýrleika setjum við sviga utan um sameindasvigrúm með sömu orku. Í þessu tilfelli er hvert svigrúm á mismunandi orkustigi, þannig að svigar aðskilja hvert svigrúm. Þannig myndum við búast við að tvíatóma sameind eða jón sem inniheldur sjö rafeindir (svo sem <m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> hefði sameindarrafeindaskipanina <m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math> Algengt er að sleppa kjarnarafeindum úr orkumyndum og skipunum sameindasvigrúma og aðeins taka með girðirafeindirnar.</para>
+<figure id="CNX_Chem_08_04_FillMo"><media id="fs-idm17917232" alt="A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 2 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “2 s.” The line on the left has two vertical half arrows drawn on it, one facing up and one facing down while the line of the right has one half arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but further up from the first. It is labeled, “sigma subscript 2 s superscript asterisk.” This horizontal line has one upward-facing vertical half-arrow drawn on it. The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center is header reads “Molecular orbitals”.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_FillMo.jpg"/>
+</media>
+
+<caption>Þetta er orkumynd sameindasvigrúma fyrir eins kjarna tvíatóma sameindina <m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>, sem sýnir aðeins sameindasvigrúm girðihvolfsins. Sameindasvigrúmin eru fyllt á sama hátt og frumeindasvigrúm, með Aufbau-reglunni og Hunds-reglu.</caption></figure>
+</section>
+<section id="fs-idm72263472">
+<title>Tengigráða</title>
+<para id="fs-idp47682464">Fyllt sameindasvigrúmsrit sýnir fjölda rafeinda í bæði bindandi og andbindandi sameindasvigrúmum. Nettóframlag rafeindanna til tengistyrks sameindar er ákvarðað með því að finna <term id="term-00017">tengigráðuna (e. bond order)</term> sem fæst við fyllingu sameindasvigrúmanna með rafeindum.</para>
+<para id="fs-idm84042704">Þegar Lewis myndir eru notaðar til að lýsa dreifingu rafeinda í sameindum skilgreinum við tengigráðu sem fjölda bindandi rafeindapara milli tveggja atóma. Þannig hefur eintengi tengigráðu 1, tvítengi hefur tengigráðu 2 og þrítengi hefur tengigráðu 3. Við skilgreinum tengigráðu öðruvísi þegar við notum lýsingu sameindasvigrúma á dreifingu rafeinda, en útkoman er yfirleitt sú sama. Tækni sameindasvigrúma er nákvæmari og getur höndlað tilfelli þar sem aðferð Lewis mynda bregst, en báðar aðferðirnar lýsa sama fyrirbærinu.</para>
+<para id="fs-idm72448704">Í líkani sameindasvigrúma stuðlar rafeind að bindandi víxlverkun ef hún er í bindandi svigrúmi og hún stuðlar að andbindandi víxlverkun ef hún er í andbindandi svigrúmi. Tengigráðan er reiknuð með því að draga óstöðugleikavaldandi (andbindandi) rafeindir frá stöðugleikavaldandi (bindandi) rafeindum. Þar sem efnatengi samanstendur af tveimur rafeindum deilum við með tveimur til að fá tengigráðuna. Við getum ákvarðað tengigráðu með eftirfarandi jöfnu:</para>
+<equation id="fs-idp20436816" class="unnumbered"><m:math><m:mrow><m:mtext>bond order</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of bonding electrons</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of antibonding electrons</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm8964432">Gráða samgilds tengis er vísbending um styrk þess; efnatengi milli tveggja tiltekinna atóma verður sterkara eftir því sem tengigráðan eykst (<link document="m68744" target-id="fs-idp43355056"/>). Ef dreifing rafeinda í sameindasvigrúmum milli tveggja atóma er þannig að tengigráða efnatengisins sem myndast yrði núll, myndast ekki stöðugt efnatengi. Næst skoðum við nokkur sértæk dæmi um rit sameindasvigrúma og tengigráður.</para>
+</section>
+<section id="fs-idm174688448">
+<title>Efnatengi í tvíatóma sameindum</title>
+<section id="fs-idm131917488">
+<title>Tvíatóma sameindir annarrar lotu</title>
+<para id="fs-idp84255584">Átta mögulegar einsleitar tvíatóma sameindir gætu myndast úr atómum annarrar lotu lotukerfisins: Li<sub>2</sub>, Be<sub>2</sub>, B<sub>2</sub>, C<sub>2</sub>, N<sub>2</sub>, O<sub>2</sub>, F<sub>2</sub> og Ne<sub>2</sub>. Hins vegar getum við spáð því að Be<sub>2</sub> sameindin og Ne<sub>2</sub> sameindin yrðu ekki stöðugar. Við getum séð þetta með því að skoða rafeindaskipanir sameindanna (<link target-id="fs-idp20943328"/>).</para>
+<para id="fs-idm159509520">Við spáum fyrir um rafeindaskipanir gildisrafeinda í sameindasvigrúmum á sama hátt og við spáum fyrir um rafeindaskipanir atóma. Gildisrafeindum er úthlutað í gildisrafeindasvigrúm með lægstu mögulegu orku. Í samræmi við reglu Hunds, þegar tvö eða fleiri úrkynjuð sameindasvigrúm eru til staðar, fyllast þau hvert fyrir sig með einni rafeind áður en pörun rafeinda á sér stað.</para>
+<para id="fs-idm130710736">Eins og við sáum í gildistengjafræðinni eru σ-tengi almennt stöðugri en π-tengi sem myndast úr úrkynjuðum atómsvigrúmum. Á sama hátt, í sameindasvigrúmafræði, eru σ-svigrúm yfirleitt stöðugri en π-svigrúm. Þetta er þó ekki alltaf raunin. Sameindasvigrúm fyrir gildissvigrúm annarrar lotu eru sýnd í <link target-id="CNX_Chem_08_04_X2MOs"/>. Þegar við skoðum Ne<sub>2</sub> sameindasvigrúm sjáum við að röðin er í samræmi við almenna ritið sem sýnt var í fyrri hlutanum. Hins vegar, fyrir atóm með þrjár eða færri rafeindir í <emphasis effect="italics">p</emphasis>-svigrúmum (Li til N) sjáum við annað mynstur, þar sem σ<emphasis effect="italics"><sub>p</sub></emphasis>-svigrúmið er orkuhærra en π<emphasis effect="italics"><sub>p</sub></emphasis>-settið. Fáðu sameindasvigrúmsrit fyrir einsleita tvíatóma jón með því að bæta við eða draga frá rafeindir úr riti fyrir hlutlausu sameindina.</para>
+<figure id="CNX_Chem_08_04_X2MOs">
+<media id="fs-idm110589568" alt="A graph is shown in which the y-axis is labeled, “E,” and appears as a vertical, upward-facing arrow. Across the top, the graph reads, “L i subscript 2,” “B e subscript 2,” “B subscript 2,” “C subscript 2,” “N subscript 2,” “O subscript 2,” “F subscript 2,” and “Ne subscript 2.” Directly below each of these element terms is a single pink line, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled, “sigma subscript 2 p x superscript asterisk”. Directly below each of these lines is a set of two pink lines, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. It is consistently lower than the first line. This line is labeled, “pi subscript 2 p y superscript asterisk,” and, “pi subscript 2 p z superscript asterisk.” Directly below each of these double lines is a single pink line, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. It has a distinctive drop at the label, “O subscript 2.” This line is labeled, “sigma subscript 2 p x.” Directly below each of these lines is a set of two pink lines, and all lines are connected to one another by a dashed line to create an overall line that decreases very slightly in height as it moves from left to right across the graph. It is consistently lower than the third line until it reaches the point labeled, “O subscript 2.” This line is labeled, “pi subscript 2 p y,” and, “pi subscript 2 p z.” Directly below each of these lines is a single blue line, and all lines are connected to one another by a dashed line to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled, “sigma subscript 2 s superscript asterisk.” Finally, directly below each of these lines is a single blue line, and all lines are connected to one another by a dashed line to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled. “sigma subscript 2 s.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_X2MOs-bb74.jpg"/>
+</media>
+<caption>Þetta sýnir rit sameindasvigrúma fyrir hverja einsleita tvíatóma sameind í annarri lotu. Orka svigrúmanna minnkar yfir lotuna eftir því sem virk kjarnhleðsla eykst og atómradíus minnkar. Milli N<sub>2</sub> og O<sub>2</sub> breytist röð svigrúmanna.</caption>
+</figure>
+<para id="fs-idm170513216">Þessi víxlun á röðun svigrúma á sér stað vegna fyrirbæris sem kallast <term id="term-00018">s-p blöndun (e. s-p mixing)</term>. s-p blöndun býr ekki til ný svigrúm; hún hefur aðeins áhrif á orku þeirra sameindasvigrúma sem fyrir eru. σ<sub>s</sub> bylgjufallið sameinast stærðfræðilega við σ<sub>p</sub> bylgjufallið, með þeim afleiðingum að σ<sub>s</sub> svigrúmið verður stöðugra og σ<sub>p</sub> svigrúmið verður óstöðugra (<link target-id="CNX_Chem_08_04_spmix"/>). Á sama hátt gangast andbindandi svigrúmin einnig undir s-p blöndun, þar sem σ~s<emphasis effect="italics">~ verður stöðugra og σ<sub>p</emphasis></sub> verður óstöðugra.</para>
+<figure id="CNX_Chem_08_04_spmix"><media id="fs-idm173324128" alt="A diagram is shown. At the bottom left of the diagram is a horizontal line that is connected to the right and left by upward-facing, dotted lines to two more horizontal lines. Those two lines are connected by upward-facing dotted lines to another line in the center of the diagram but farther up from the first. Each of the bottom two central lines has a vertical downward-facing arrow. Above this structure is a horizontal line that is connected to the right and left by upward-facing, dotted lines to two sets of three horizontal lines and those two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but further up from the first. In between the horizontal lines of this structure are two pairs of horizontal lines that are above the first line but below the second and connected by dotted lines to the side horizontal lines. The bottom and top central lines each have an upward-facing vertical arrow. These two structures are redrawn on the right side of the diagram, but this time, the central lines of the bottom structure are moved downward in relation to the side lines. The upper portion of the structure has its central lines shifted upward in relation to the side lines. This structure also shows the bottom line appearing above the set of two lines.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_spmix-78e6.jpg"/>
+</media>
+
+<caption>Án blöndunar kemur mynstur sameindasvigrúma fram eins og við var að búast, þar sem σ<sub>p</sub> svigrúmið er orkulægra en π<sub>p</sub> svigrúmin. Þegar s-p blöndun á sér stað færast svigrúmin til eins og sýnt er, þar sem σ<sub>p</sub> svigrúmið er orkuhærra en π<sub>p</sub> svigrúmin.</caption></figure>
+<para id="fs-idm134586720">s-p blöndun á sér stað þegar <emphasis effect="italics">s</emphasis>- og <emphasis effect="italics">p</emphasis>-svigrúmin hafa svipaða orku. Orkumunurinn milli 2<emphasis effect="italics">s</emphasis>- og 2<emphasis effect="italics">p</emphasis>-svigrúma í O, F og Ne er meiri en í Li, Be, B, C og N. Vegna þessa sýna O<sub>2</sub>, F<sub>2</sub> og Ne<sub>2</sub> hverfandi s-p blöndun (ekki nægjanlega til að breyta orkuröðuninni) og rit sameindasvigrúma þeirra fylgja venjulegu mynstri, eins og sýnt er í <link target-id="CNX_Chem_08_04_X2MOs"/>. Allar aðrar tvíatóma sameindir í lotu 2 hafa s-p blöndun, sem leiðir til mynsturs þar sem σ<sub>p</sub> svigrúmið hækkar yfir π<sub>p</sub> settið.</para>
+<para id="fs-idm113653568">Með því að nota rit sameindasvigrúma sem sýnd eru í <link target-id="CNX_Chem_08_04_X2MOs"/> getum við bætt við rafeindum og ákvarðað rafeindaskipan sameindar og tengigráðu fyrir hverja tvíatóma sameind. Eins og sýnt er í <link target-id="fs-idp20943328"/> myndu Be<sub>2</sub> og Ne<sub>2</sub> sameindir hafa tengigráðu 0 og þessar sameindir eru ekki til.</para>
+<table id="fs-idp20943328" class="top-titled" summary="A table is shown that has three columns and nine rows. The header row reads: “Molecule,” “Electron Configuration,” and, “Bond Order.” The first column contains the symbols “L i subscript 2,” “B e subscript 2 ( unstable ),” “B e subscript 2,” “C subscript 2,” “N subscript 2,” “O subscript 2,” “F subscript 2,” and, “Ne subscript 2 ( unstable ).” The second column contains the symbols “( sigma subscript 2 s ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( sigma subscript 2 p x ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 4,” and “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 4 ( sigma superscript asterisk subscript 2 p x ) superscript 2.” The third column contains the numbers: “1,” “0,” “1,” “2,” “3,” “2,” “1,” “0.”">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c3" align="center">Rafeindaskipan og tengigráða fyrir sameindasvigrúm í einsleitum tvíatóma sameindum frumefna í lotu tvö</entry>
+</row>
+<row valign="middle">
+<entry align="left">Sameind</entry>
+<entry align="left">Rafeindaskipan</entry>
+<entry align="left">Tengigráða</entry></row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">Li<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">1</entry></row>
+<row valign="middle">
+<entry align="left">Be<sub>2</sub> (óstöðug)</entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">0</entry></row>
+<row valign="middle">
+<entry align="left">B<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">1</entry></row>
+<row valign="middle">
+<entry align="left">C<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">2</entry></row>
+<row valign="middle">
+<entry align="left">N<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">3</entry></row>
+<row valign="middle">
+<entry align="left">O<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">2</entry></row>
+<row valign="middle">
+<entry align="left">F<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">1</entry></row>
+<row valign="middle">
+<entry align="left">Ne<sub>2</sub> (óstöðug)</entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">0</entry></row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm113916160">Samruni tveggja litíumfrumeinda til að mynda litíumsameind, Li<sub>2</sub>, er hliðstæður myndun H<sub>2</sub>, en frumeindasvigrúmin sem koma við sögu eru 2<emphasis effect="italics">s</emphasis>-girðisvigrúmin. Hvor tveggja litíumfrumeinda hefur eina girðiljóseind. Þar af leiðandi höfum við tvær girðiljóseindir tiltækar fyrir σ2<emphasis effect="italics">s</emphasis> bindandi sameindasvigrúmið. Þar sem báðar girðiljóseindirnar væru í bindandi svigrúmi myndum við spá því að Li<sub>2</sub> sameindin væri stöðug. Sameindin er í raun til staðar í umtalsverðum styrk í litíumgufu við hitastig nálægt suðumarki frumefnisins. Allar aðrar sameindir í <link target-id="fs-idp20943328"/> með tengigráðu hærri en núll eru einnig þekktar.</para>
+<para id="fs-idm151745104">O<sub>2</sub> sameindin hefur nægilega margar ljóseindir til að hálffylla <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> þrepið. Við búumst við að ljóseindirnar tvær sem skipa þessi tvö úrkynjuðu svigrúm séu óparaðar og þessi sameindaljóseindaskipan fyrir O<sub>2</sub> er í samræmi við þá staðreynd að súrefnissameindin hefur tvær óparaðar ljóseindir (<link target-id="CNX_Chem_08_04_O2MO"/>). Tilvist tveggja óparaðra ljóseinda hefur reynst erfitt að útskýra með Lewis myndum, en sameindasvigrúmakenningin útskýrir það nokkuð vel. Reyndar eru ópöruðu ljóseindir súrefnissameindarinnar sterkur stuðningur við sameindasvigrúmakenninguna.</para>
+<note id="fs-idp89531968" class="chemistry sciences-interconnect"><label/>
+<title>Borðalíkan</title>
+<para id="fs-idm82290832">Þegar tvö eins frumeindasvigrúm á mismunandi frumeindum sameinast verða til tvö sameindasvigrúm (sjá <link target-id="CNX_Chem_08_04_ssigma"/>). Bindandi svigrúmið er lægra í orku en upprunalegu frumeindasvigrúmin vegna þess að frumeindasvigrúmin eru í fasa í sameindasvigrúminu. Andbindandi svigrúmið er hærra í orku en upprunalegu frumeindasvigrúmin vegna þess að frumeindasvigrúmin eru úr fasa.</para>
+<para id="fs-idm4324976">Í föstu efni gerast svipaðir hlutir, en í mun stærri skala. Mundu að jafnvel í litlu sýni er gríðarlegur fjöldi frumeinda (venjulega > 10<sup>23</sup> frumeindir) og þar af leiðandi gríðarlegur fjöldi frumeindasvigrúma sem geta sameinast í sameindasvigrúm. Þegar <emphasis effect="italics">N</emphasis> girðisfrumeindasvigrúm, öll með sömu orku og hvert með eina (1) ljóseind, eru sameinuð, verða til <emphasis effect="italics">N</emphasis>/2 (fyllt) bindandi svigrúm og <emphasis effect="italics">N</emphasis>/2 (tóm) andbindandi svigrúm. Hvert bindandi svigrúm mun sýna orkulækkun þar sem frumeindasvigrúmin eru <emphasis effect="italics">að mestu</emphasis> í fasa, en hvert bindandi svigrúm verður aðeins öðruvísi og hefur örlítið mismunandi orku. Andbindandi svigrúmin munu sýna orkuaukningu þar sem frumeindasvigrúmin eru <emphasis effect="italics">að mestu</emphasis> úr fasa, en hvert andbindandi svigrúm verður einnig aðeins öðruvísi og hefur örlítið mismunandi orku. Leyfð orkuþrep fyrir öll bindandi svigrúmin eru svo nálægt hvert öðru að þau mynda borða, sem kallast girðiborði. Sömuleiðis eru öll andbindandi svigrúmin mjög nálægt hvert öðru og mynda borða, sem kallast leiðniborði. <link target-id="CNX_Chem_08_04_Band"/> sýnir borðana fyrir þrjá mikilvæga flokka efna: einangrara, hálfleiðara og leiðara.</para>
+<figure id="CNX_Chem_08_04_Band" class="scaled-down"><media id="fs-idp263742416" alt="This figure shows three diagrams. The first is labeled, “Insulator,” and it consists of two boxes. The “conduction” box is above and the “valence” box is below. A large gap marked by 4 dashed lines contains a double-headed arrow. One head pointing towards the “conduction box” and the other towards the “valence” box. The arrow is labeled, “Band gap.” The second diagram is similar to the first, but the band gap is about half as large. This diagram is labeled, “Semiconductor.” The third diagram is similar to the other two, but the band gap is about a fifth that of the “Semiconductor” diagram. This diagram is labeled, “Conductor.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_Band.jpg"/>
+</media>
+
+<caption>Sameindasvigrúm í föstum efnum eru svo þétt saman að þeim er lýst sem böndum. Gildisbandið er lægra í orku og leiðnibandið er hærra í orku. Gerð fasta efnisins ræðst af stærð „bandbilsins“ milli gildis- og leiðnibanda. Aðeins mjög lítið magn af orku þarf til að flytja rafeindir úr gildisbandinu yfir í leiðnibandið í leiðara og því leiða þeir rafmagn vel. Í einangrara er bandbilið stórt, þannig að mjög fáar rafeindir hreyfast og þeir eru lélegir rafmagnsleiðarar. Hálfleiðarar eru mitt á milli: þeir leiða rafmagn betur en einangrarar, en ekki eins vel og leiðarar.</caption></figure><para id="fs-idp22163776">Til að leiða rafmagn verða ljóseindir að færast úr fyllta girðiborðanum yfir í tóma leiðniborðann þar sem þær geta hreyfst um allt fasta efnið. Stærð orkubilsins, eða orkumunurinn milli topps girðiborðans og botns leiðniborðans, ákvarðar hversu auðvelt er að færa ljóseindir milli borðanna. Aðeins lítið magn af orku þarf í leiðara vegna þess að orkubilið er mjög lítið. Þennan litla orkumun er „auðvelt“ að yfirstíga, svo þeir eru góðir rafleiðarar. Í einangrara er orkubilið svo „stórt“ að mjög fáar ljóseindir færast yfir í leiðniborðann; þar af leiðandi eru einangrarar lélegir rafleiðarar. Hálfleiðarar leiða rafmagn þegar „hóflegt“ magn af orku er veitt til að færa ljóseindir úr girðiborðanum og yfir í leiðniborðann. Hálfleiðarar, eins og kísill, finnast í mörgum raftækjum.</para>
+<para id="fs-idm16313536">Hálfleiðarar eru notaðir í tækjum eins og tölvum, snjallsímum og sólarsellum. Sólarsellur framleiða rafmagn þegar ljós veitir orkuna til að færa ljóseindir úr girðiborðanum. Rafmagnið sem myndast má síðan nota til að knýja ljós eða verkfæri, eða það má geyma til síðari nota með því að hlaða rafhlöðu. Í desember 2014 var hægt að breyta allt að 46% af orku sólarljóss í rafmagn með sólarsellum.</para>
+</note>
+<example id="fs-idm85103616">
+<para id="fs-idp23720752"><title>Skýringarmyndir sameindasvigrúma, tengigráða og fjöldi óparaðra rafeinda</title>Teiknaðu skýringarmynd sameindasvigrúma fyrir súrefnissameindina, O<sub>2</sub>. Út frá þessari mynd, reiknaðu tengigráðu fyrir O<sub>2</sub>. Hvernig skýrir þessi mynd meðsegulmagn O<sub>2</sub>?</para>
+<para id="fs-idm92673360"><title>Lausn</title>Við teiknum orkumynd sameindasvigrúma svipaða þeirri sem sýnd er í <link target-id="CNX_Chem_08_04_X2MOs"/>. Hver súrefnisfrumeind leggur til sex rafeindir, þannig að myndin lítur út eins og sýnt er í <link target-id="CNX_Chem_08_04_O2MO"/>.</para>
+<!-- figure handled separately -->
+<para id="fs-idp49533696">Við reiknum tengigráðuna sem</para>
+<equation id="fs-idm75364784" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>8</m:mn><m:mo>−</m:mo><m:mn>4</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math></equation><para id="fs-idm102792656">Meðsegulmagn súrefnis skýrist af tilvist tveggja óparaðra rafeinda í (π2<emphasis effect="italics">py</emphasis>, π2<emphasis effect="italics">pz</emphasis>)* sameindasvigrúmunum.</para>
+<para id="fs-idm78530944"><title>Skoðaðu þekkingu þína</title>Aðalefni loftsins er N<sub>2</sub>. Spáðu fyrir um tengigráðu þess og hvort það sé mótseglandi eða meðseglandi út frá skýringarmynd sameindasvigrúma N<sub>2</sub>.</para>
+<note id="fs-idm165020816">
+<title>Answer:</title>
+<para id="fs-idm171143328">N<sub>2</sub> hefur tengigráðu 3 og er mótseglandi.</para>
+</note>
+</example>
+<figure id="CNX_Chem_08_04_O2MO">
+<media id="fs-idm156437120" alt="A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 2 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “2 s,” and with two vertical half arrows drawn on them, one facing up and one facing down. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first and labeled, “sigma subscript 2 s superscript asterisk.” This horizontal line has two vertical half-arrow drawn on it, one facing up and one facing down. Moving further up the center of the diagram is a horizontal line labeled, “sigma subscript 2 p subscript x,” which lies below two horizontal lines, lying side-by-side, and labeled “pi subscript 2 p subscript y,” and “pi subscript 2 p subscript z.” Both the bottom and top lines are connected to the right and left by upward-facing, dotted lines to three more horizontal lines, each labeled, “2 p,” on either side. These sets of lines each hold three upward-facing and one downward-facing half-arrow. They are connected by upward-facing dotted lines to another single line and then pair of double lines in the center of the diagram, but farther up from the lower lines. They are labeled, “sigma subscript 2 p subscript x superscript asterisk,” “pi subscript 2 p subscript y superscript asterisk,” and “pi subscript 2 p subscript z superscript asterisk,” respectively. The lower of these two central, horizontal lines each contain one upward-facing half-arrow. The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_O2MO-912b.jpg"/>
+</media>
+<caption>Orkumynd sameindasvigrúma fyrir O<sub>2</sub> spáir fyrir um tvær óparaðar rafeindir.</caption>
+</figure>
+<example id="fs-idm114393376">
+<para id="fs-idp178692512"><title>Spár um jónir með skýringarmyndum sameindasvigrúma</title>Gefðu upp rafeindaskipan sameindasvigrúma fyrir gildisrafeindirnar í <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math> Verður þessi jón stöðug?</para>
+<para id="fs-idm77202544"><title>Lausn</title>Þegar við skoðum viðeigandi skýringarmynd sameindasvigrúma sjáum við að π-svigrúmin eru lægri í orku en σ<emphasis effect="italics"><sub>p</sub></emphasis>-svigrúmið. Gildisrafeindaskipan fyrir C<sub>2</sub> er <m:math><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mtext>2</m:mtext><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math> Með því að bæta við tveimur rafeindum til viðbótar til að mynda <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> anjónina fáum við gildisrafeindaskipanina <m:math><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mtext>2</m:mtext><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math> Þar sem þetta hefur sex fleiri tengirafeindir en andtengirafeindir verður tengigráðan 3 og jónin ætti að vera stöðug.</para><para id="fs-idm105620480"><title>Skoðaðu þekkingu þína</title>Hversu margar óparaðar rafeindir væru til staðar á <m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> jón? Væri hún meðseglandi eða mótseglandi?</para>
+<note id="fs-idm41078336">
+<title>Answer:</title>
+<para id="fs-idm171067584">tvær, meðseglandi</para>
+</note>
+</example>
+<note id="fs-idm62347072" class="chemistry link-to-learning">
+<para id="fs-idm82029920">Að búa til skýringarmyndir sameindasvigrúma fyrir sameindir með fleiri en tvær frumeindir byggir á sömu grundvallarhugmyndum og tvíatóma dæmin sem hér eru kynnt. Hins vegar, með fleiri frumeindum, þarf tölvur til að reikna út hvernig frumeindasvigrúmin sameinast. Sjá <link url="http://openstax.org/l/16orbitaldiag">þrívíddar teikningar</link> af sameindasvigrúmum fyrir C<sub>6</sub>H<sub>6</sub>.</para>
+</note>
+</section>
+<para id="fs-idm182437472">Vetnissameind (H<sub>2</sub>) myndast úr tveimur vetnisfrumeindum. Þegar frumeindasvigrúm tveggja frumeinda sameinast, setjast rafeindirnar í sameindasvigrúm með lægstu orku, σ1<emphasis effect="italics">s</emphasis> tengisvigrúmið. Vetnissameind, H<sub>2</sub>, myndast auðveldlega vegna þess að orka H<sub>2</sub> sameindar er lægri en orka tveggja H frumeinda. σ1<emphasis effect="italics">s</emphasis> svigrúmið sem inniheldur báðar rafeindirnar er lægra í orku en hvort tveggja 1<emphasis effect="italics">s</emphasis> frumeindasvigrúmanna.</para>
+<para id="fs-idm108439328">Sameindasvigrúm getur haldið tveimur rafeindum, þannig að báðar rafeindirnar í H<sub>2</sub> sameindinni eru í σ1<emphasis effect="italics">s</emphasis> tengisvigrúminu; rafeindaskipanin er <m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math> Við táknum þessa skipan með orkumynd sameindasvigrúma (<link target-id="CNX_Chem_08_04_H2MO"/>) þar sem ein ör upp á við táknar eina rafeind í svigrúmi og tvær örvar (upp og niður) tákna tvær rafeindir með gagnstæðan spuna.</para>
+<figure id="CNX_Chem_08_04_H2MO">
+<media id="fs-idm45698032" alt="A diagram is shown that has an upward-facing vertical arrow running along the left side labeled “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled “H” while the center is labeled “H subscript 2.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_H2MO-a7a1.jpg"/>
+</media>
+<caption>Orkumynd sameindasvigrúma spáir því að H<sub>2</sub> verði stöðug sameind með lægri orku en aðskildar frumeindir.</caption>
+</figure>
+<para id="fs-idm43412080">Vetnissameind inniheldur tvær tengirafeindir og engar andtengirafeindir svo við höfum</para>
+<equation id="fs-idm61635600" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>bond order in H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mo>−</m:mo><m:mn>0</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math></equation>
+<para id="fs-idm130556608">Vegna þess að tengigráðan fyrir H–H efnatengið er jöfn 1, er efnatengið einfalt efnatengi.</para>
+<para id="fs-idm142555728">Helíumfrumeind hefur tvær rafeindir og eru þær báðar á 1<emphasis effect="italics">s</emphasis> svigrúmi hennar. Tvær helíumfrumeindir sameinast ekki og mynda tvíhelíumsameind, He<sub>2</sub>, með fjórum rafeindum, vegna þess að stöðugleikaáhrif tveggja rafeinda á lægra orkusviði bindandi svigrúmsins myndu vega upp á móti óstöðugleikaáhrifum tveggja rafeinda á hærra orkusviði andbindandi sameindasvigrúmsins. Við myndum skrifa hina ímynduðu rafeindaskipan He<sub>2</sub> sem <m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> eins og á <link target-id="CNX_Chem_08_04_He2MO"/>. Nettóorkubreytingin yrði núll, þannig að það er enginn drifkraftur fyrir helíumfrumeindir til að mynda tvíatóma sameindina. Í raun er helíum til sem stakar frumeindir frekar en sem tvíatóma sameindir. Tengigráðan í ímyndaðri tvíhelíumsameind væri núll.</para>
+<equation id="fs-idp1555152" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>bond order in He</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mo>−</m:mo><m:mn>2</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math></equation>
+<para id="fs-idm166378064">Tengigráða núll gefur til kynna að ekkert efnatengi myndist á milli tveggja frumeinda.</para>
+<figure id="CNX_Chem_08_04_He2MO">
+<media id="fs-idm8319568" alt="A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up and one facing down drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” This line has one upward-facing and one downward-facing vertical arrow drawn on it. The left and right sides of the diagram have headers that read, “Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled, “H e,” while the center is labeled, “H e subscript 2.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_04_He2MO-cf1f.jpg"/>
+</media>
+<caption>Orkumynd sameindasvigrúma spáir því að He<sub>2</sub> verði ekki stöðug sameind, þar sem hún hefur jafnmargar bindandi og andbindandi rafeindir.</caption>
+</figure>
+</section>
+<section id="fs-idp114974944" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm157944352">Sameindasvigrúmakenningin (MO) lýsir hegðun rafeinda í sameind með tilliti til samsetninga bylgjufalla frumeinda. Sameindasvigrúmin sem myndast geta náð yfir allar frumeindir í sameindinni. Bindandi sameindasvigrúm myndast við samsetningu bylgjufalla frumeinda í fasa og rafeindir á þessum svigrúmum stöðga sameind. Andbindandi sameindasvigrúm myndast við samsetningu bylgjufalla frumeinda úr fasa og rafeindir á þessum svigrúmum gera sameind óstöðugri. Sameindasvigrúm sem liggja meðfram ás milli kjarna eru kölluð σ MO. Þau geta myndast úr <emphasis effect="italics">s</emphasis> svigrúmum eða úr <emphasis effect="italics">p</emphasis> svigrúmum sem raðað er saman enda við enda. Sameindasvigrúm sem myndast úr <emphasis effect="italics">p</emphasis> svigrúmum sem raðað er saman hlið við hlið hafa rafeindaþéttleika á gagnstæðum hliðum ássins milli kjarna og eru kölluð π svigrúm.</para>
+<para id="fs-idm113162704">Við getum lýst rafeindabyggingu tvíatóma sameinda með því að beita sameindasvigrúmakenningunni á gildisrafeindir frumeindanna. Rafeindir fylla sameindasvigrúm samkvæmt sömu reglum og gilda um fyllingu frumeindasvigrúma; regla Hunds og Aufbau-reglan segja okkur að svigrúm með lægri orku fyllast fyrst, rafeindir dreifast áður en þær parast og hvert svigrúm getur rúmað að hámarki tvær rafeindir með gagnstæðum spuna. Efni með ópöruðum rafeindum eru meðseglandi og dragast að segulsviði, en þau sem hafa allar rafeindir paraðar eru mótseglandi og hrindast frá segulsviði. Að spá rétt fyrir um segulmagnseiginleika sameinda er kostur sameindasvigrúmakenningarinnar fram yfir Lewis myndir og gildistengjakenninguna.</para>
+</section>
+<section id="fs-idm136319184" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mtext>bond order</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of bonding electron</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>−</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>number of antibonding electrons</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm158963280" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idp105434592">
+<problem id="fs-idm48344784">
+<para id="fs-idm52005904">Teiknaðu dreifingu rafeindaþéttleika í bindandi og andbindandi sameindasvigrúmum sem myndast úr tveimur <emphasis effect="italics">s</emphasis> svigrúmum og úr tveimur <emphasis effect="italics">p</emphasis> svigrúmum.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm165679168">
+<problem id="fs-idm180288784">
+<para id="fs-idm131857600">Hvað er líkt með eftirfarandi og hvað er ólíkt?</para>
+<para id="fs-idm52133904">(a) σ sameindasvigrúm og π sameindasvigrúm</para>
+<para id="fs-idm142106032">(b) <emphasis effect="italics">Θ</emphasis> fyrir frumeindasvigrúm og <emphasis effect="italics">Θ</emphasis> fyrir sameindasvigrúm</para>
+<para id="fs-idm72819696">(c) bindandi svigrúm og andbindandi svigrúm</para>
+</problem>
+<solution id="fs-idm114557728">
+<para id="fs-idm101918992">(a) Líkindi: Bæði eru bindandi svigrúm sem geta innihaldið að hámarki tvær rafeindir. Mismunur: σ svigrúm eru samsetningar frumeindasvigrúma enda við enda, en π svigrúm myndast við skörun svigrúma hlið við hlið. (b) Líkindi: Bæði eru skammtafræðileg fyrirbæri sem tákna líkurnar á að finna rafeindina í kringum frumeindina eða sameindina. Mismunur: <emphasis effect="italics">Θ</emphasis> fyrir frumeindasvigrúm lýsir hegðun aðeins einnar rafeindar í einu miðað við frumeindina. Fyrir sameind táknar <emphasis effect="italics">Θ</emphasis> stærðfræðilega samsetningu frumeindasvigrúma. (c) Líkindi: Bæði eru svigrúm sem geta innihaldið tvær rafeindir. Mismunur: Bindandi svigrúm leiða til þess að tvær eða fleiri frumeindir haldast saman. Andbindandi svigrúm hafa þau áhrif að þau gera öll efnatengi sem hafa myndast óstöðug.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm138595920">
+<problem id="fs-idp52287696">
+<para id="fs-idm140245904">Ef sameindasvigrúm eru búin til með því að sameina fimm frumeindasvigrúm frá frumeind A og fimm frumeindasvigrúm frá frumeind B, hversu mörg sameindasvigrúm munu myndast?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm177595920">
+<problem id="fs-idm141177072">
+<para id="fs-idm5146672">Getur sameind með oddatölu rafeinda nokkurn tíma verið mótseglandi? Útskýrðu hvers vegna eða hvers vegna ekki.</para>
+</problem>
+<solution id="fs-idm182968224">
+<para id="fs-idm110476336">Oddatala rafeinda getur aldrei verið pöruð, óháð fyrirkomulagi sameindasvigrúmanna. Hún verður alltaf meðseglandi.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm41078784">
+<problem id="fs-idm181812016">
+<para id="fs-idm104850864">Getur sameind með sléttri tölu rafeinda nokkurn tíma verið meðseglandi? Útskýrðu hvers vegna eða hvers vegna ekki.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm100278000">
+<problem id="fs-idm130084672">
+<para id="fs-idm84729040">Hvers vegna hafa bindandi sameindasvigrúm lægri orku en upprunalegu frumeindasvigrúmin?</para>
+</problem>
+<solution id="fs-idm161666528">
+<para id="fs-idm50841888">Bindandi svigrúm hafa rafeindaþéttleika í nálægð við fleiri en einn kjarna. Vxlverkunin milli bindandi jákvætt hlaðinna kjarna og neikvætt hlaðinna rafeinda stöðgar kerfið.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm131971232">
+<problem id="fs-idm117393808">
+<para id="fs-idm250808016">Reiknaðu tengigráðu fyrir jón með þessa skipan:<newline/> <equation id="fs-idp23954224" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>s</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>σ</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>y</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mtext>π</m:mtext><m:mrow><m:mn>2</m:mn><m:mi>p</m:mi><m:mi>z</m:mi></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation></para>
+</problem>
+</exercise>
+<exercise id="fs-idm63124960">
+<problem id="fs-idm79228912">
+<para id="fs-idm141640192">Útskýrðu hvers vegna rafeind í bindandi sameindasvigrúmi í H<sub>2</sub> sameindinni hefur lægri orku en rafeind í 1<emphasis effect="italics">s</emphasis> frumeindasvigrúmi hvorrar um sig aðskildu vetnisfrumeindanna.</para>
+</problem>
+<solution id="fs-idm76768560">
+<para id="fs-idm175049680">Pörun tveggja bindandi rafeinda lækkar orku kerfisins miðað við orku óbundnu rafeindanna.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm179535904">
+<problem id="fs-idm70218480">
+<para id="fs-idm79850784">Spáðu fyrir um sameindasvigrúmaskipan gildisrafeinda fyrir eftirfarandi og tilgreindu hvort þær verði stöðugar eða óstöðugar jónir.</para>
+<para id="fs-idp106074208">(a) <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm112507120">(b) <m:math><m:mrow><m:msub><m:mtext>Mg</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm149132992">(c) <m:math><m:mrow><m:msub><m:mtext>Al</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm174761040">(d) <m:math><m:mrow><m:msub><m:mtext>Si</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm153035568">(e) <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm87711488">(f) <m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp95311296">(g) <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm79961856">(h) <m:math><m:mrow><m:msub><m:mtext>Ar</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idm111217280">
+<problem id="fs-idm118609456">
+<para id="fs-idm73750816">Ákvarðaðu tengigráðu hvers efnis í eftirfarandi hópum og ákvarðaðu hvaða efni í hverjum hóp hefur sterkasta efnatengið samkvæmt sameindasvigrúmslíkaninu.</para>
+<para id="fs-idm46580704">(a) H<sub>2</sub>, <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm95276832">(b) O<sub>2</sub>, <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm162831088">(c) Li<sub>2</sub>, <m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> Be<sub>2</sub></para>
+<para id="fs-idm52692016">(d) F<sub>2</sub>, <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp60009712">(e) N<sub>2</sub>, <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp20736048">
+<para id="fs-idp7180048">(a) H<sub>2</sub> tengigráða = 1, <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> tengigráða = 0,5, <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> tengigráða = 0,5, sterkasta efnatengið er H<sub>2</sub>; (b) O<sub>2</sub> tengigráða = 2, <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math> tengigráða = 3; <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> tengigráða = 1, sterkasta efnatengið er <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup><m:mo>;</m:mo></m:mrow></m:math> (c) Li<sub>2</sub> tengigráða = 1, <m:math><m:mrow><m:msub><m:mtext>Be</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> tengigráða = 0,5, Be<sub>2</sub> tengigráða = 0, sterkasta efnatengið er <m:math><m:msub><m:mtext>Li</m:mtext><m:mn>2</m:mn></m:msub></m:math>;(d) F<sub>2</sub> tengigráða = 1, <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> tengigráða = 1,5, <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> tengigráða = 0,5, sterkasta efnatengið er <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>;</m:mo></m:mrow></m:math> (e) N<sub>2</sub> tengigráða = 3, <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> tengigráða = 2,5, <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> tengigráða = 2,5, sterkasta efnatengið er N<sub>2</sub></para></solution>
+</exercise>
+<exercise id="fs-idm63366704">
+<problem id="fs-idm76572112">
+<para id="fs-idm136087312">Úr hvaða sameindasvigrúmi er rafeindin fjarlægð við fyrstu jónun N<sub>2</sub> sameindar?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm135320832">
+<problem id="fs-idm73266160">
+<para id="fs-idm148431744">Berðu saman frumeinda- og sameindasvigrúmsrit til að bera kennsl á það efni í hverju eftirfarandi pari sem hefur hærri fyrstu jónunarorku (fastbundnustu rafeindina) í gasfasa:</para>
+<para id="fs-idm62835952">(a) H og H<sub>2</sub></para>
+<para id="fs-idm73473328">(b) N og N<sub>2</sub></para>
+<para id="fs-idm103580560">(c) O og O<sub>2</sub></para>
+<para id="fs-idm62582320">(d) C og C<sub>2</sub></para>
+<para id="fs-idm42182864">(e) B og B<sub>2</sub></para>
+</problem>
+<solution id="fs-idp95490688">
+<para id="fs-idm142531552">(a) H<sub>2</sub>; (b) N<sub>2</sub>; (c) O; (d) C<sub>2</sub>; (e) B<sub>2</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp45731680">
+<problem id="fs-idm18036464">
+<para id="fs-idm70863072">Hvaða tvíatóma sameindir samkjarna frumeinda í lotu 2 eru taldar vera segulmótækilegar?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm76747104">
+<problem id="fs-idm110539008">
+<para id="fs-idm111685776">Vinur þinn segir þér að 2<emphasis effect="italics">s</emphasis>-svigrúmið fyrir flúor byrji á mun lægri orku en 2<emphasis effect="italics">s</emphasis>-svigrúmið fyrir litíum, þannig að σ2<emphasis effect="italics">s</emphasis>-sameindasvigrúmið sem myndast í F<sub>2</sub> sé stöðugra en í Li<sub>2</sub>. Ertu sammála?</para>
+</problem>
+<solution id="fs-idm18556544">
+<para id="fs-idm149192752">Já, flúor er minni frumeind en Li, þannig að rafeindir í 2<emphasis effect="italics">s</emphasis>-svigrúminu eru nær kjarnanum og stöðugri.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm16460880">
+<problem id="fs-idp495072">
+<para id="fs-idm110121168">Satt eða ósatt: Bór inniheldur 2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>1</sup> girðirafeindir, þannig að aðeins eitt <emphasis effect="italics">p</emphasis>-svigrúm þarf til að mynda sameindasvigrúm.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm16458944">
+<problem id="fs-idp617824">
+<para id="fs-idm153039552">Hver þyrfti hleðslan á F<sub>2</sub> að vera til að mynda jón með tengigráðu 2?</para>
+</problem>
+<solution id="fs-idm61912240">
+<para id="fs-idm46527040">2+</para>
+</solution>
+</exercise>
+<exercise id="fs-idm76713856">
+<problem id="fs-idm105535152">
+<para id="fs-idp52729808">Spáðu fyrir um hvort SS-ritið fyrir S<sub>2</sub> myndi sýna s-p blöndun eða ekki.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm133690944">
+<problem id="fs-idm133690688">
+<para id="fs-idm113788912">Útskýrðu hvers vegna <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math> er frásegulmögnuð, á meðan <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>4+</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> sem hefur sama fjölda girðirafeinda, er segulmótækileg.</para>
+</problem>
+<solution id="fs-idm119081936">
+<para id="fs-idm119081680">N<sub>2</sub> hefur s-p blöndun, þannig að π-svigrúmin eru þau síðustu sem fyllast í <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math> O<sub>2</sub> hefur ekki s-p blöndun, þannig að σ<emphasis effect="italics"><sub>p</sub></emphasis>-svigrúmið fyllist á undan π-svigrúmunum.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm79754896">
+<problem id="fs-idm166052928">
+<para id="fs-idm166052672">Notaðu SS-ritin til að spá fyrir um tengigráðu fyrir sterkara efnatengið í hverju pari:</para>
+<para id="fs-idm180545744">(a) B<sub>2</sub> eða <m:math><m:mrow><m:msub><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm62053584">(b) F<sub>2</sub> eða <m:math><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm141104496">(c) O<sub>2</sub> eða <m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2+</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp59489840">(d) <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> eða <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm143725728">
+<term>andbindandi svigrúm (e. antibonding orbital)</term>
+<meaning id="fs-idm143725728-meaning">sameindasvigrúm staðsett utan svæðisins milli tveggja kjarna; rafeindir í andbindandi svigrúmi gera sameindina óstöðuga</meaning>
+</definition>
+<definition id="fs-idm57102096">
+<term>tengigráða (e. bond order)</term>
+<meaning id="fs-idm57102096-meaning">fjöldi rafeindapara milli tveggja atóma; það má finna út frá fjölda efnatengja í Lewis mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur</meaning>
+</definition>
+<definition id="fs-idm133686144">
+<term>bindandi svigrúm (e. bonding orbital)</term>
+<meaning id="fs-idm133686144-meaning">sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi stöðga sameind</meaning>
+</definition>
+<definition id="fs-idm167738656">
+<term>úrkynjuð svigrúm (e. degenerate orbitals)</term>
+<meaning id="fs-idm167738656-meaning">svigrúm sem hafa sömu orku</meaning>
+</definition>
+<definition id="fs-idm83103936">
+<term>díasegulmagn (e. diamagnetism)</term>
+<meaning id="fs-idm83103936-meaning">fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir</meaning>
+</definition>
+<definition id="fs-idm165896720">
+<term>samkjarna tvíatóma sameind (e. homonuclear diatomic molecule)</term>
+<meaning id="fs-idm165896720-meaning">sameind sem samanstendur af tveimur eins atómum</meaning>
+</definition>
+<definition id="fs-idm41528352">
+<term>línuleg samantekt frumeindasvigrúma (e. linear combination of atomic orbitals)</term>
+<meaning id="fs-idm41528352-meaning">aðferð til að sameina frumeindasvigrúm til að búa til sameindasvigrúm</meaning>
+</definition>
+<definition id="fs-idm131261760">
+<term>sameindasvigrúm (e. molecular orbital)</term>
+<meaning id="fs-idm131261760-meaning">rými þar sem miklar líkur eru á að finna rafeind í sameind</meaning>
+</definition>
+<definition id="fs-idm132723600">
+<term>sameindasvigrúmarit (e. molecular orbital diagram)</term>
+<meaning id="fs-idm132723600-meaning">sjónræn framsetning á afstæðum orkustigum sameindasvigrúma</meaning>
+</definition>
+<definition id="fs-idm249965088">
+<term>sameindasvigrúmakenningin (e. molecular orbital theory)</term>
+<meaning id="fs-idm249965088-meaning">líkan sem lýsir hegðun óstaðbundinna rafeinda um alla sameind með tilliti til samsetningar bylgjufalla frumeinda</meaning>
+</definition>
+<definition id="fs-idm100788960">
+<term>hliðsegulmagn (e. paramagnetism)</term>
+<meaning id="fs-idm100788960-meaning">fyrirbæri þar sem efni er ekki segulmagnað sjálft en laðast að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar</meaning>
+</definition>
+<definition id="fs-idm100344544">
+<term>π-bindandi svigrúm (e. π bonding orbital)</term>
+<meaning id="fs-idm100344544-meaning">sameindasvigrúm sem myndast við hlið við hlið skörun frumeindasvigrúma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum milli kjarnaássins</meaning>
+</definition>
+<definition id="fs-idm18620192">
+<term>π*-bindandi svigrúm (e. π* bonding orbital)</term>
+<meaning id="fs-idm18620192-meaning">andbindandi sameindasvigrúm sem myndast við hlið við hlið skörun frumeindasvigrúma í andfasa, þar sem rafeindaþéttleikinn er beggja vegna milli kjarnaássins og nóða er á milli kjarnanna</meaning>
+</definition>
+<definition id="fs-idm41960016">
+<term>σ-bindandi svigrúm (e. σ bonding orbital)</term>
+<meaning id="fs-idm41960016-meaning">sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram ás efnatengisins</meaning>
+</definition>
+<definition id="fs-idm169269152">
+<term>σ*-bindandi svigrúm (e. σ* bonding orbital)</term>
+<meaning id="fs-idm169269152-meaning">andbindandi sameindasvigrúm sem myndast við skörun frumeindasvigrúma í andfasa meðfram ás efnatengisins, sem myndar nóðu á milli kjarnanna</meaning>
+</definition>
+<definition id="fs-idp5821920">
+<term>s-p blöndun (e. s-p mixing)</term>
+<meaning id="fs-idp5821920-meaning">breyting sem veldur því að σ<emphasis effect="italics"><sub>p</sub></emphasis>-svigrúm verða óstöðugri en π<emphasis effect="italics"><sub>p</sub></emphasis>-svigrúm vegna blöndunar <emphasis effect="italics">s</emphasis>- og <emphasis effect="italics">p</emphasis>-byggðra sameindasvigrúma með svipaða orku.</meaning>
+</definition>
+</glossary>
+</document>

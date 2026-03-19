@@ -1,7 +1,9 @@
 {
   "math-1": {
     "mathml": "<m:math><m:mrow><m:mtext>reaction rate</m:mtext><m:mspace width=\"0.2em\"/><m:mo>∝</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>#</m:mo><m:mspace width=\"0.2em\"/><m:mtext>collisions</m:mtext></m:mrow><m:mrow><m:mtext>time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\text{reaction rate}\\, ∝\\, \\frac{{#\\, \\text{collisions}}}{{\\text{time}}}}"
+    "latex": "{\\text{reaction rate}\\, ∝\\, \\frac{{#\\, \\text{collisions}}}{{\\text{time}}}}",
+    "equationId": "fs-idm98497056",
+    "equationClass": "unnumbered"
   },
   "math-2": {
     "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>.</m:mo></m:mrow></m:math>",

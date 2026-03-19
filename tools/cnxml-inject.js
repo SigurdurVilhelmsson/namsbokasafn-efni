@@ -256,6 +256,91 @@ function restoreTermMarkers(isSegments, enSegments) {
 }
 
 /**
+ * Limit superscript (^text^) and subscript (~text~) markers in IS segments
+ * to match the count found in EN segments.
+ *
+ * The MT API sometimes produces extra sup/sub markers (overproduction).
+ * This function counts markers in EN and IS for each segment, and strips
+ * excess markers from the end of IS when IS has more than EN.
+ *
+ * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
+ * @param {Map<string, string>} enSegments - Original English segments
+ * @returns {{ segments: Map<string, string>, supStripped: number, subStripped: number }}
+ */
+function restoreSupersubMarkers(isSegments, enSegments) {
+  let supStripped = 0;
+  let subStripped = 0;
+
+  // Patterns for sup (^text^) and sub (~text~) — same as in reverseInlineMarkup
+  // Must avoid matching standalone ^ or ~ and match only word-attached markers
+  const supPattern = /\^([^\s^]{1,15})\^/g;
+  const subPattern = /~([^\s~]{1,15})~/g;
+
+  for (const [segId, isText] of isSegments) {
+    const enText = enSegments.get(segId);
+    if (!enText) continue;
+
+    // Count sup markers in EN vs IS
+    const enSupCount = (enText.match(supPattern) || []).length;
+    supPattern.lastIndex = 0;
+    const isSupCount = (isText.match(supPattern) || []).length;
+    supPattern.lastIndex = 0;
+
+    let result = isText;
+
+    if (isSupCount > enSupCount) {
+      // Strip excess sup markers from end (keep first N matching EN count)
+      const target = isSupCount - enSupCount;
+      let stripped = 0;
+      // Replace from the end: collect all matches, strip the last N
+      const matches = [];
+      let m;
+      supPattern.lastIndex = 0;
+      while ((m = supPattern.exec(result)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, inner: m[1] });
+      }
+      // Strip from end
+      for (let i = matches.length - 1; i >= 0 && stripped < target; i--) {
+        const match = matches[i];
+        result = result.substring(0, match.start) + match.inner + result.substring(match.end);
+        stripped++;
+        supStripped++;
+      }
+    }
+
+    // Count sub markers in EN vs IS
+    const enSubCount = (enText.match(subPattern) || []).length;
+    subPattern.lastIndex = 0;
+    const isSubCount = (result.match(subPattern) || []).length;
+    subPattern.lastIndex = 0;
+
+    if (isSubCount > enSubCount) {
+      // Strip excess sub markers from end
+      const target = isSubCount - enSubCount;
+      let stripped = 0;
+      const matches = [];
+      let m;
+      subPattern.lastIndex = 0;
+      while ((m = subPattern.exec(result)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, inner: m[1] });
+      }
+      for (let i = matches.length - 1; i >= 0 && stripped < target; i--) {
+        const match = matches[i];
+        result = result.substring(0, match.start) + match.inner + result.substring(match.end);
+        stripped++;
+        subStripped++;
+      }
+    }
+
+    if (result !== isText) {
+      isSegments.set(segId, result);
+    }
+  }
+
+  return { segments: isSegments, supStripped, subStripped };
+}
+
+/**
  * Restore [[BR]] placeholders in IS segments by matching EN segment positions.
  *
  * For already-processed IS segments that went through MT without [[BR]]:
@@ -322,7 +407,77 @@ function restoreNewlines(isSegments, enSegments) {
 
     if (modified) {
       isSegments.set(segId, result);
+    } else {
+      // Warn about unrestorable newline loss — EN has [[BR]] but IS has none
+      // and no anchor-based restoration was possible. This is an MT API limitation.
+      const enBrCount = (enText.match(/\[\[BR\]\]/g) || []).length;
+      console.error(
+        `  Warning: ${segId} lost ${enBrCount} [[BR]] marker(s) — no anchors found for restoration`
+      );
     }
+  }
+
+  return { segments: isSegments, restoredCount };
+}
+
+/**
+ * Restore [[MEDIA:N]] placeholders that the MT service dropped entirely.
+ *
+ * The web UI MT service strips [[MEDIA:N]] and [[BR]] markers from segments.
+ * This function compares EN and IS segments: if EN has [[MEDIA:N]] but IS has 0,
+ * it appends the missing markers to the IS segment (preserving their order from EN).
+ *
+ * Also restores [[BR]] that precedes [[MEDIA:N]] (common pattern: "text:[[BR]] [[MEDIA:1]]").
+ *
+ * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
+ * @param {Map<string, string>} enSegments - Original English segments
+ * @returns {{ segments: Map<string, string>, restoredCount: number }}
+ */
+function restoreMediaMarkers(isSegments, enSegments) {
+  let restoredCount = 0;
+
+  for (const [segId, isText] of isSegments) {
+    const enText = enSegments.get(segId);
+    if (!enText) continue;
+
+    // Count [[MEDIA:N]] in EN vs IS
+    const enMediaMatches = enText.match(/\[\[MEDIA:\d+\]\]/g) || [];
+    const isMediaCount = (isText.match(/\[\[MEDIA:\d+\]\]/g) || []).length;
+
+    if (enMediaMatches.length === 0 || isMediaCount >= enMediaMatches.length) continue;
+
+    // IS is missing some or all [[MEDIA:N]] markers — restore from EN
+    // Strategy: extract the tail pattern from EN (everything from first [[BR]] or [[MEDIA:]]
+    // near the end) and append it to IS.
+    //
+    // Common patterns in EN:
+    //   "text:[[BR]] [[MEDIA:1]]"
+    //   "(a)[[BR]][[MEDIA:1]][[BR]] (b)[[BR]][[MEDIA:2]]"
+    //   "text:[[BR]] [[MEDIA:1]][[BR]] text"
+    //
+    // For the simple case (all media missing), we extract markers from EN and append.
+
+    if (isMediaCount === 0) {
+      // All media markers lost — extract the marker portion from EN
+      // Find all [[BR]] and [[MEDIA:N]] sequences in EN, preserving order
+      const markerPattern = /(\[\[BR\]\]|\[\[MEDIA:\d+\]\])/g;
+      const markers = [];
+      let m;
+      while ((m = markerPattern.exec(enText)) !== null) {
+        markers.push(m[1]);
+      }
+
+      if (markers.length > 0) {
+        // Append markers to IS text
+        const markerStr = markers.join('');
+        const result = isText.trimEnd();
+        // If EN has a pattern like "text:[[BR]][[MEDIA:1]]", the IS likely ends with "text:"
+        // Just append the markers after the text
+        isSegments.set(segId, result + markerStr);
+        restoredCount += enMediaMatches.length;
+      }
+    }
+    // If IS has some but not all markers, leave it — partial restoration is risky
   }
 
   return { segments: isSegments, restoredCount };
@@ -497,7 +652,8 @@ function reverseInlineMarkup(
   equations,
   inlineMedia = [],
   inlineTables = [],
-  inlineAttrs = null
+  inlineAttrs = null,
+  blockEquationIds = null
 ) {
   let result = text;
 
@@ -519,8 +675,10 @@ function reverseInlineMarkup(
     const mathId = `math-${num}`;
     if (equations[mathId]) {
       const eq = equations[mathId];
-      // Wrap in <equation> if the original had one (equationId stored during extraction)
-      if (eq.equationId) {
+      // Wrap in <equation> if the original had one (equationId stored during extraction),
+      // BUT skip the wrapper if this equation is already handled as a block-level element
+      // by buildEquation() — otherwise we'd produce a duplicate <equation> tag.
+      if (eq.equationId && !(blockEquationIds && blockEquationIds.has(eq.equationId))) {
         const classAttr = eq.equationClass ? ` class="${eq.equationClass}"` : '';
         return `<equation id="${eq.equationId}"${classAttr}>${eq.mathml}</equation>`;
       }
@@ -683,14 +841,14 @@ function reverseInlineMarkup(
   // This prevents user-typed HTML (e.g. <script>, <div>) from passing through unescaped.
   const cnxmlTags = [];
   result = result.replace(
-    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|equation|m:math|m:[a-z]+)([\s>\/])/g,
+    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|equation|media|image|m:math|m:[a-z]+)([\s>\/])/g,
     (match) => {
       cnxmlTags.push(match);
       return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
     }
   );
   // Also protect self-closing tags like <newline/>, <space/>, <link ... />
-  result = result.replace(/<(newline|space|link)\s[^>]*\/>/g, (match) => {
+  result = result.replace(/<(newline|space|link|image)\s[^>]*\/>/g, (match) => {
     cnxmlTags.push(match);
     return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
   });
@@ -739,8 +897,39 @@ function collectFigureCaptions(elements, map) {
   }
 }
 
+/**
+ * Recursively collect equation IDs from block-level elements in the structure tree.
+ * These are equations handled by buildEquation() from the original CNXML — if the
+ * same equationId appears in a [[MATH:N]] placeholder, reverseInlineMarkup() should
+ * NOT wrap it in an <equation> tag (to avoid duplication).
+ *
+ * IMPORTANT: We do NOT recurse into examples or exercises because their equations
+ * are preserved from the original CNXML by buildExample()/buildExercise() — they
+ * are never built separately by buildEquation(). The [[MATH:N]] placeholders inside
+ * example/exercise paragraphs should still produce equation wrappers.
+ */
+function collectBlockEquationIds(elements, idSet) {
+  for (const el of elements) {
+    if (el.type === 'equation' && el.id) {
+      idSet.add(el.id);
+    }
+    // Recurse into sections and notes, but NOT examples/exercises
+    // (their equations are handled by original CNXML extraction, not buildEquation)
+    if (el.type === 'example' || el.type === 'exercise') {
+      continue;
+    }
+    if (el.content) {
+      collectBlockEquationIds(el.content, idSet);
+    }
+  }
+}
+
 function buildCnxml(structure, segments, equations, originalCnxml, options = {}, inlineAttrs = {}) {
   const verbose = options.verbose || false;
+
+  // Collect block-level equation IDs to prevent duplication in reverseInlineMarkup
+  const blockEquationIds = new Set();
+  collectBlockEquationIds(structure.content, blockEquationIds);
 
   // Injection tracking
   const stats = {
@@ -770,7 +959,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       equations,
       structure.inlineMedia || [],
       structure.inlineTables || [],
-      inlineAttrs[segmentId] || null
+      inlineAttrs[segmentId] || null,
+      blockEquationIds
     );
   };
 
@@ -1310,8 +1500,9 @@ function buildExample(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Note: We do NOT strip equations - they should pass through unchanged
-      // Only strip figures and tables that may need special handling
+      // Note: We do NOT strip equations - they should pass through unchanged.
+      // Strip figures (handled by buildFigure) and tables (handled by buildTable
+      // from the structure tree — keeping them here would produce duplicates).
       exampleCnxml = stripNestedElements(exampleCnxml, ['figure', 'table']);
 
       return exampleCnxml;
@@ -1379,7 +1570,9 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Note: We do NOT strip equations - they should pass through unchanged
+      // Note: We do NOT strip equations - they should pass through unchanged.
+      // Strip figures (handled by buildFigure) and tables (handled by buildTable
+      // from the structure tree — keeping them here would produce duplicates).
       exerciseCnxml = stripNestedElements(exerciseCnxml, ['figure', 'table']);
 
       return exerciseCnxml;
@@ -1826,6 +2019,20 @@ async function main() {
         console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
       }
 
+      // Limit sup/sub markers in IS to match EN counts (prevents overproduction)
+      const { supStripped, subStripped } = restoreSupersubMarkers(segments, enSegments);
+      if (supStripped > 0 || subStripped > 0) {
+        console.error(
+          `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
+        );
+      }
+
+      // Restore [[MEDIA:N]] placeholders dropped by web UI MT
+      const { restoredCount: mediaRestoredCount } = restoreMediaMarkers(segments, enSegments);
+      if (mediaRestoredCount > 0) {
+        console.error(`  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`);
+      }
+
       // Restore [[BR]] placeholders from EN source into IS segments
       const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
       if (args.verbose && brRestoredCount > 0) {
@@ -1894,6 +2101,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 
 export {
   restoreTermMarkers,
+  restoreSupersubMarkers,
+  restoreMediaMarkers,
   restoreNewlines,
   annotateInlineTerms,
   parseSegments,

@@ -49,7 +49,9 @@
   },
   "math-13": {
     "mathml": "<m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>Total</m:mi></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>8.41 mol</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.83</m:mn><m:mo>+</m:mo><m:mn>8.41</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.748</m:mn></m:mrow></m:math>",
-    "latex": "{{X}_{{N2}O}=\\, \\frac{{{n}_{{N2}O}}}{{{n}_{{Total}}}}\\, =\\, \\frac{{\\text{8.41 mol}}}{{{({2.83+8.41})}\\, \\text{mol}}}\\, =0.748}"
+    "latex": "{{X}_{{N2}O}=\\, \\frac{{{n}_{{N2}O}}}{{{n}_{{Total}}}}\\, =\\, \\frac{{\\text{8.41 mol}}}{{{({2.83+8.41})}\\, \\text{mol}}}\\, =0.748}",
+    "equationId": "fs-idp202334992",
+    "equationClass": "unnumbered"
   },
   "math-14": {
     "mathml": "<m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>Total</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.748</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>192 kPa</m:mtext><m:mo>=</m:mo><m:mtext>144 kPa</m:mtext></m:mrow></m:math>",

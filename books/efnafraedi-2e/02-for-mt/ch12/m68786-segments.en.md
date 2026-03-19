@@ -128,16 +128,19 @@ Answer:
 [[MATH:6]]
 
 <!-- SEG:m68786:example-title:fs-idm24260800-title -->
-Solution
+Reaction Rate Expressions for Decomposition of H~2~O~2~
 
 <!-- SEG:m68786:para:fs-idm62578304 -->
-Reaction Rate Expressions for Decomposition of H~2~O~2~ The graph in [#CNX_Chem_12_01_RRateIll] shows the rate of the decomposition of H~2~O~2~ over time:
+The graph in [#CNX_Chem_12_01_RRateIll] shows the rate of the decomposition of H~2~O~2~ over time:
 
 <!-- SEG:m68786:para:fs-idm78350032 -->
 Based on these data, the instantaneous rate of decomposition of H~2~O~2~ at *t* = 11.1 h is determined to be[[BR]]3.20 [[MATH:7]] 10^−2^ mol/L/h, that is:
 
 <!-- SEG:m68786:para:fs-idp76303472 -->
 What is the instantaneous rate of production of H~2~O and O~2~?
+
+<!-- SEG:m68786:para-title:fs-idm41764016-title -->
+Solution
 
 <!-- SEG:m68786:para:fs-idm41764016 -->
 The reaction stoichiometry shows that
@@ -175,7 +178,7 @@ The rate of a reaction can be expressed either in terms of the decrease in the a
 <!-- SEG:m68786:title:fs-idp13917664-title -->
 Key Equations
 
-<!-- SEG:m68786:entry:auto-60 -->
+<!-- SEG:m68786:entry:auto-61 -->
 [[MATH:13]]
 
 <!-- SEG:m68786:title:fs-idm87178096-title -->
@@ -208,40 +211,40 @@ A study of the rate of dimerization of C~4~H~6~ gave the data shown in the table
 <!-- SEG:m68786:problem:fs-idp17436544 -->
 (c) Determine the average rate of formation of C~8~H~12~ at 1600 s and the instantaneous rate of formation at 3200 s from the rates found in parts (a) and (b).
 
-<!-- SEG:m68786:entry:auto-71 -->
+<!-- SEG:m68786:entry:auto-72 -->
 Time (s)
 
-<!-- SEG:m68786:entry:auto-72 -->
+<!-- SEG:m68786:entry:auto-73 -->
 0
 
-<!-- SEG:m68786:entry:auto-73 -->
+<!-- SEG:m68786:entry:auto-74 -->
 1600
 
-<!-- SEG:m68786:entry:auto-74 -->
+<!-- SEG:m68786:entry:auto-75 -->
 3200
 
-<!-- SEG:m68786:entry:auto-75 -->
+<!-- SEG:m68786:entry:auto-76 -->
 4800
 
-<!-- SEG:m68786:entry:auto-76 -->
+<!-- SEG:m68786:entry:auto-77 -->
 6200
 
-<!-- SEG:m68786:entry:auto-77 -->
+<!-- SEG:m68786:entry:auto-78 -->
 [C~4~H~6~] (*M*)
 
-<!-- SEG:m68786:entry:auto-78 -->
+<!-- SEG:m68786:entry:auto-79 -->
 1.00 [[MATH:18]] 10^−2^
 
-<!-- SEG:m68786:entry:auto-79 -->
+<!-- SEG:m68786:entry:auto-80 -->
 5.04 [[MATH:19]] 10^−3^
 
-<!-- SEG:m68786:entry:auto-80 -->
+<!-- SEG:m68786:entry:auto-81 -->
 3.37 [[MATH:20]] 10^−3^
 
-<!-- SEG:m68786:entry:auto-81 -->
+<!-- SEG:m68786:entry:auto-82 -->
 2.53 [[MATH:21]] 10^−3^
 
-<!-- SEG:m68786:entry:auto-82 -->
+<!-- SEG:m68786:entry:auto-83 -->
 2.08 [[MATH:22]] 10^−3^
 
 <!-- SEG:m68786:problem:fs-idp79128192 -->
@@ -259,52 +262,52 @@ A study of the rate of the reaction represented as [[MATH:23]] gave the followin
 <!-- SEG:m68786:solution:fs-idm15349328 -->
 (a) average rate, 0 − 10 s = 0.0375 mol L^−1^ s^−1^; average rate, 10 − 20 s = 0.0265 mol L^−1^ s^−1^; (b) instantaneous rate, 15 s = 0.023 mol L^−1^ s^−1^; (c) average rate for B formation = 0.0188 mol L^−1^ s^−1^; instantaneous rate for B formation = 0.012 mol L^−1^ s^−1^
 
-<!-- SEG:m68786:entry:auto-88 -->
+<!-- SEG:m68786:entry:auto-89 -->
 Time (s)
 
-<!-- SEG:m68786:entry:auto-89 -->
+<!-- SEG:m68786:entry:auto-90 -->
 0.0
 
-<!-- SEG:m68786:entry:auto-90 -->
+<!-- SEG:m68786:entry:auto-91 -->
 5.0
 
-<!-- SEG:m68786:entry:auto-91 -->
+<!-- SEG:m68786:entry:auto-92 -->
 10.0
 
-<!-- SEG:m68786:entry:auto-92 -->
+<!-- SEG:m68786:entry:auto-93 -->
 15.0
 
-<!-- SEG:m68786:entry:auto-93 -->
+<!-- SEG:m68786:entry:auto-94 -->
 20.0
 
-<!-- SEG:m68786:entry:auto-94 -->
+<!-- SEG:m68786:entry:auto-95 -->
 25.0
 
-<!-- SEG:m68786:entry:auto-95 -->
+<!-- SEG:m68786:entry:auto-96 -->
 35.0
 
-<!-- SEG:m68786:entry:auto-96 -->
+<!-- SEG:m68786:entry:auto-97 -->
 [*A*] (*M*)
 
-<!-- SEG:m68786:entry:auto-97 -->
+<!-- SEG:m68786:entry:auto-98 -->
 1.00
 
-<!-- SEG:m68786:entry:auto-98 -->
+<!-- SEG:m68786:entry:auto-99 -->
 0.775
 
-<!-- SEG:m68786:entry:auto-99 -->
+<!-- SEG:m68786:entry:auto-100 -->
 0.625
 
-<!-- SEG:m68786:entry:auto-100 -->
+<!-- SEG:m68786:entry:auto-101 -->
 0.465
 
-<!-- SEG:m68786:entry:auto-101 -->
+<!-- SEG:m68786:entry:auto-102 -->
 0.360
 
-<!-- SEG:m68786:entry:auto-102 -->
+<!-- SEG:m68786:entry:auto-103 -->
 0.285
 
-<!-- SEG:m68786:entry:auto-103 -->
+<!-- SEG:m68786:entry:auto-104 -->
 0.230
 
 <!-- SEG:m68786:problem:fs-idm31731440 -->
@@ -323,7 +326,7 @@ rate of a chemical reaction computed as the ratio of a measured change in amount
 initial rate
 
 <!-- SEG:m68786:glossary-def:fs-idp24984224-def -->
-instantaneous rate of a chemical reaction at t = 0 s (immediately after the reaction has begun)
+instantaneous rate of a chemical reaction at *t* = 0 s (immediately after the reaction has begun)
 
 <!-- SEG:m68786:glossary-term:fs-idp70925872-term -->
 instantaneous rate

@@ -3,7 +3,8 @@
 samsætna</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68871</md:content-id>
-  <md:title>Half-Lives for Several Radioactive Isotopes</md:title>
+  <md:title>Helmingunartími nokkurra geislavirkra
+samsætna</md:title>
   <md:abstract/>
   <md:uuid>f4401758-74d6-459b-9c6d-52055945a1d1</md:uuid>
 </metadata>
@@ -24,14 +25,14 @@ samsætna</entry>
 </row>
 <row valign="middle">
 <entry align="left">Samsæta</entry>
-<entry align="left">Helmingunartími<footnote>y = ár, d =
+<entry align="left">Helmingunartími<footnote id="fs-idp94055520">y = ár, d =
 dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
-<entry align="left">Tegund ljómunar<footnote><emphasis effect="italics">E.C.</emphasis> =
+<entry align="left">Tegund ljómunar<footnote id="fs-idp208188688"><emphasis effect="italics">E.C.</emphasis> =
 rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnun</footnote></entry>
 <entry align="left">Samsæta</entry>
-<entry align="left">Helmingunartími<footnote>y = ár, d =
+<entry align="left">Helmingunartími<footnote id="fs-idp6707392">y = ár, d =
 dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
-<entry align="left">Tegund ljómunar<footnote><emphasis effect="italics">E.C.</emphasis> =
+<entry align="left">Tegund ljómunar<footnote id="fs-idp119558320"><emphasis effect="italics">E.C.</emphasis> =
 rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnun</footnote></entry>
 </row>
 </thead>

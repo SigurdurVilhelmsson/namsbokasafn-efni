@@ -2,7 +2,7 @@
 <title>Hvarfgangar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68794</md:content-id>
-  <md:title>Reaction Mechanisms</md:title>
+  <md:title>Hvarfgangar</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Greint á milli
 heildarhvarfa og frumhvarfa (þrepa)</item><item>Greint sameindatölu
 frumhvarfa</item><item>Skrifað stillta efnajöfnu
@@ -15,21 +15,21 @@ fyrir ferli út frá hvarfgangi þess</item><item>Leitt út hraðajöfnu sem er
 <para id="fs-idp19792192">Efnahvörf eiga sér mjög oft stað í
 þrepum, þar sem tvö eða fleiri aðskilin efnahvörf eiga sér stað í röð.
 Stillt jafna sýnir hvað hvarfast og hvað myndast, en hún gefur engar
-upplýsingar um hvernig efnahvarfið á sér í raun stað. <term>Hvarfgangurinn (e. reaction mechanism)</term>
+upplýsingar um hvernig efnahvarfið á sér í raun stað. <term id="term-00001">Hvarfgangurinn (e. reaction mechanism)</term>
 (eða hvarfleiðin) gefur nákvæmar upplýsingar um það skref-fyrir-skref
 ferli sem efnahvarf fylgir.</para>
 <para id="fs-idm10360272">Niðurbrot ósons virðist til dæmis
 fylgja hvarfgangi í tveimur þrepum:</para>
 <equation id="fs-idp10305696" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>O</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm40865648">Hvert þrep í hvarfgangi er
-<term>frumhvarf (e. elementary reaction)</term>. Þessi frumhvörf eiga sér stað nákvæmlega eins og þau eru
+<term id="term-00002">frumhvarf (e. elementary reaction)</term>. Þessi frumhvörf eiga sér stað nákvæmlega eins og þau eru
 sýnd í þrepajöfnunum og summa þeirra verður að vera jöfn stilltri
 efnajöfnu sem táknar heildarhvarfið:</para>
 <equation id="fs-idp143616928" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp205634512">Taktu eftir að súrefnisatómið sem
 myndast í fyrsta þrepi þessa hvarfgangs er notað í öðru þrepi og birtist
 því ekki sem myndefni í heildarhvarfinu. Efni sem myndast í einu þrepi
-og eru notuð í síðara þrepi eru kölluð <term>milliefni (e. intermediates)</term>.</para>
+og eru notuð í síðara þrepi eru kölluð <term id="term-00003">milliefni (e. intermediates)</term>.</para>
 <para id="fs-idp6340064">Þó að heildarjöfnan fyrir niðurbrot
 ósons gefi til kynna að tvær ósonsameindir hvarfist og myndi þrjár
 súrefnissameindir, þá felur hvarfgangurinn <emphasis effect="italics">ekki í sér beinan árekstur
@@ -46,9 +46,9 @@ lýsir hvarfinu</emphasis>. Þetta á ekki við um dæmigerð efnahvörf, þar s
 er hægt að ákvarða hraðajöfnur með áreiðanlegum hætti með tilraunum.</para>
 <section id="fs-idp262348128">
 <title>Einsameinda frumhvörf</title>
-<para id="fs-idp205522704"><term>Sameindatala (e. molecularity)</term> frumhvarfs er
+<para id="fs-idp205522704"><term id="term-00004">Sameindatala (e. molecularity)</term> frumhvarfs er
 fjöldi hvarfefna (atóma, sameinda eða jóna). Til dæmis felur
-<term>einsameinda efnahvarf (e. unimolecular reaction)</term> í sér hvarf <emphasis effect="italics">eins</emphasis> hvarfefnis til að mynda
+<term id="term-00005">einsameinda efnahvarf (e. unimolecular reaction)</term> í sér hvarf <emphasis effect="italics">eins</emphasis> hvarfefnis til að mynda
 eina eða fleiri sameindir af myndefni:</para>
 <equation id="fs-idp34074352" class="unnumbered"><m:math><m:mrow><m:mi>A</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>products</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp13674832">Hraðajafna fyrir einsameinda
@@ -80,7 +80,7 @@ bútadíenhvarfið.</para>
 </section>
 <section id="fs-idp108234736">
 <title>Tvísameinda frumhvörf</title>
-<para id="fs-idp87793216"><term>Tvísameinda efnahvarf (e. bimolecular reaction)</term> felur í sér
+<para id="fs-idp87793216"><term id="term-00006">Tvísameinda efnahvarf (e. bimolecular reaction)</term> felur í sér
 tvö hvarfefni, til dæmis:</para>
 <equation id="fs-idp211065760" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>products</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>and</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:mi>A</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>products</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm80729584">Fyrir fyrstu gerðina, þar sem
@@ -110,7 +110,7 @@ ræddur var fyrr í þessum kafla:</para>
 </section>
 <section id="fs-idp38909440">
 <title>Þrísameinda grunnskref</title>
-<para id="fs-idm9155392">Í <term>þrísameindaefnahvarfi (e. termolecular reaction)</term> verður
+<para id="fs-idm9155392">Í <term id="term-00007">þrísameindaefnahvarfi (e. termolecular reaction)</term> verður
 samtímis árekstur þriggja atóma, sameinda eða jóna. Þrísameinda
 grunnskref eru óalgeng vegna þess að líkurnar á að þrjár eindir rekist
 saman samtímis eru minni en einn þúsundasti af líkunum á að tvær eindir
@@ -128,7 +128,7 @@ hraðajöfnur</title>
 fjölþrepa hvarfgangi er umtalsvert hægara en hin. Þar sem efnahvarf
 getur ekki gengið hraðar en hægasta skrefið mun þetta skref takmarka
 hraðann sem heildarefnahvarfið á sér stað á. Hægasta skrefið er því
-kallað <term>hraðatakmarkandi skref (e. rate-limiting step)</term> efnahvarfsins <link target-id="CNX_Chem_12_06_Cattle"/>.</para>
+kallað <term id="term-00008">hraðatakmarkandi skref (e. rate-limiting step)</term> efnahvarfsins <link target-id="CNX_Chem_12_06_Cattle"/>.</para>
 <figure id="CNX_Chem_12_06_Cattle" class="scaled-down">
 <media id="fs-idp96445120" alt="A photo is shown of cattle passing through a narrow chute into a holding pen. A person directs them through the gate with a long white and red pole.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_06_Cattle.jpg"/>
@@ -312,7 +312,7 @@ hvarfgangurinn fyrir þetta efnahvarf væri: <m:math><m:mtable columnalign="left
 <exercise id="fs-idm20987200">
 <problem id="fs-idp157852080">
 <para id="fs-idp105816432">Gerðar voru tilraunir til að
-rannsaka hraða efnahvarfsins sem þessi jafna táknar.<footnote>Þessi
+rannsaka hraða efnahvarfsins sem þessi jafna táknar.<footnote id="fs-idm12821888">Þessi
 spurning er tekin úr framhaldsprófi í efnafræði og er notuð með leyfi
 Educational Testing Service.</footnote> <m:math><m:mrow><m:mtext>2NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp138927296">Upphafsstyrkur og hvarfhraði eru

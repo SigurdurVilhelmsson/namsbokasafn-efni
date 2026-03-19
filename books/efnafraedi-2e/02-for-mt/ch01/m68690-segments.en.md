@@ -44,7 +44,7 @@ Starting with the first nonzero digit on the left, count this digit and all rema
 Captive zeros result from measurement and are therefore always significant. Leading zeros, however, are never significant—they merely tell us where the decimal point is located.
 
 <!-- SEG:m68690:para:fs-idm262013360 -->
-The leading zeros in this example are not significant. We could use exponential notation (as described in Appendix B) and express the number as 8.32407 [[MATH:1]] 10^−3^; then the number 8.32407 contains all of the significant figures, and 10^−3^ locates the decimal point.
+The leading zeros in this example are not significant. We could use exponential notation (as described in [Appendix B](doc:m68860)) and express the number as 8.32407 [[MATH:1]] 10^−3^; then the number 8.32407 contains all of the significant figures, and 10^−3^ locates the decimal point.
 
 <!-- SEG:m68690:para:fs-idm210460000 -->
 The number of significant figures is uncertain in a number that ends with a zero to the left of the decimal point location. The zeros in the measurement 1,300 grams could be significant or they could simply indicate where the decimal point is located. The ambiguity can be resolved with the use of exponential notation: 1.3 [[MATH:2]] 10^3^ (two significant figures), 1.30 [[MATH:3]] 10^3^ (three significant figures, if the tens place was measured), or 1.300 [[MATH:4]] 10^3^ (four significant figures, if the ones place was also measured). In cases where only the decimal-formatted number is available, it is prudent to assume that all trailing zeros are not significant.

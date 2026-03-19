@@ -824,7 +824,7 @@ Which of the following represents the least number of molecules?
 Avogadro’s number (NA)
 
 <!-- SEG:m68700:glossary-def:fs-idp40901280-def -->
-experimentally determined value of the number of entities comprising 1 mole of substance, equal to 6.022 × 1023 mol−1
+experimentally determined value of the number of entities comprising 1 mole of substance, equal to 6.022 [[MATH:33]] 10^23^ mol^−1^
 
 <!-- SEG:m68700:glossary-term:fs-idp40905984-term -->
 formula mass
@@ -842,4 +842,4 @@ mass in grams of 1 mole of a substance
 mole
 
 <!-- SEG:m68700:glossary-def:fs-idp40908432-def -->
-amount of substance containing the same number of atoms, molecules, ions, or other entities as the number of atoms in exactly 12 grams of 12C
+amount of substance containing the same number of atoms, molecules, ions, or other entities as the number of atoms in exactly 12 grams of ^12^C

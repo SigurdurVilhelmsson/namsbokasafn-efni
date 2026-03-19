@@ -13,7 +13,9 @@
   },
   "math-4": {
     "mathml": "<m:math><m:mrow><m:mtext>glucose</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>ethanol</m:mtext><m:mo>+</m:mo><m:mtext>carbon dioxide</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{glucose}\\, \\longrightarrow \\, \\text{ethanol}+\\text{carbon dioxide}}"
+    "latex": "{\\text{glucose}\\, \\longrightarrow \\, \\text{ethanol}+\\text{carbon dioxide}}",
+    "equationId": "fs-idp17770496",
+    "equationClass": "unnumbered"
   },
   "fs-idp17770496": {
     "mathml": "<m:math><m:mrow><m:mtext>glucose</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>ethanol</m:mtext><m:mo>+</m:mo><m:mtext>carbon dioxide</m:mtext></m:mrow></m:math>",

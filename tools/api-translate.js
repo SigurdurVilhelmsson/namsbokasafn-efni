@@ -111,16 +111,48 @@ export function repairSegTags(input, output) {
     inputTags.add(match[1]);
   }
 
+  // Build a map of suffix → full tag ID for fuzzy matching.
+  // The suffix is everything after the module ID (e.g., ":para:fs-idp123")
+  const suffixMap = new Map();
+  for (const tag of inputTags) {
+    const colonIdx = tag.indexOf(':');
+    if (colonIdx > 0) {
+      const suffix = tag.substring(colonIdx); // e.g., ":para:fs-idp123"
+      suffixMap.set(suffix, tag);
+    }
+  }
+
   return output.replace(/<!-- SEG:(\S+?) -->/g, (fullMatch, tagId) => {
     if (inputTags.has(tagId)) return fullMatch;
 
-    // Try fixing by removing hyphens from the module ID portion (e.g., m6-8683 → m68683)
+    // Strategy 1: Remove hyphens from module ID (e.g., m6-8683 → m68683)
     const cleaned = tagId.replace(/^(m)([0-9-]+?)(:.*)$/, (_, prefix, digits, rest) => {
       return `${prefix}${digits.replace(/-/g, '')}${rest}`;
     });
-
     if (inputTags.has(cleaned)) {
       return `<!-- SEG:${cleaned} -->`;
+    }
+
+    // Strategy 2: Match by suffix — handles character insertion/mutation in module ID
+    // (e.g., m6e68667:para:X → m68667:para:X when :para:X is unique in input)
+    // Only applies when the corrupted module ID shares most digits with the original
+    const colonIdx = tagId.indexOf(':');
+    if (colonIdx > 0) {
+      const suffix = tagId.substring(colonIdx);
+      const match = suffixMap.get(suffix);
+      if (match) {
+        const corruptedMod = tagId.substring(0, colonIdx);
+        const originalMod = match.substring(0, match.indexOf(':'));
+        // Extract digits from both and require ≥80% overlap
+        const corruptedDigits = corruptedMod.replace(/\D/g, '');
+        const originalDigits = originalMod.replace(/\D/g, '');
+        if (
+          originalDigits.length > 0 &&
+          (corruptedDigits.includes(originalDigits) || originalDigits.includes(corruptedDigits))
+        ) {
+          return `<!-- SEG:${match} -->`;
+        }
+      }
     }
 
     return fullMatch;
@@ -304,51 +336,135 @@ export function filterGlossaryForText(glossary, text) {
   return { ...glossary, terms: filtered };
 }
 
+// ─── Chunk Splitting ────────────────────────────────────────────────
+
+/**
+ * Default max chars per chunk. Modules under this size are sent as-is.
+ * Modules over this are split at SEG boundaries.
+ * The API appears to truncate around 33-35KB; we use 25KB to leave room for glossary overhead.
+ */
+const DEFAULT_MAX_CHUNK_CHARS = 25000;
+
+/**
+ * Split segment file at <!-- SEG: --> boundaries into chunks ≤ maxChars.
+ * Each chunk contains one or more complete segments (never splits mid-segment).
+ * @param {string} text - Full segment file content
+ * @param {number} maxChars - Maximum characters per chunk
+ * @returns {string[]} Array of chunks, each a valid segment file fragment
+ */
+export function splitAtSegBoundaries(text, maxChars) {
+  // Split into individual segments (each starting with <!-- SEG: -->)
+  const segPattern = /(?=<!-- SEG:)/g;
+  const parts = text.split(segPattern).filter((p) => p.trim().length > 0);
+
+  if (parts.length === 0) return [text];
+
+  const chunks = [];
+  let current = '';
+
+  for (const part of parts) {
+    if (current.length + part.length > maxChars && current.length > 0) {
+      chunks.push(current);
+      current = part;
+    } else {
+      current += part;
+    }
+  }
+  if (current.length > 0) {
+    chunks.push(current);
+  }
+
+  return chunks;
+}
+
 // ─── Translation ────────────────────────────────────────────────────
 
 /**
- * Translate a single module file via the API.
- * Filters glossary to terms in source text. Retries without glossary on truncation.
+ * Translate a single chunk via the API with glossary and retry logic.
+ * @returns {{ text: string, usage: number }}
  */
-async function translateModule(client, inputPath, outputPath, glossary, verbose) {
-  const input = fs.readFileSync(inputPath, 'utf8');
-
-  // Filter glossary to terms appearing in this module's text
-  const filteredGlossary = filterGlossaryForText(glossary, input);
-
+async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
+  const filteredGlossary = filterGlossaryForText(glossary, chunkText);
   const translateOpts = { targetLanguage: 'is' };
   if (filteredGlossary) {
     translateOpts.glossaries = [filteredGlossary];
   }
 
-  let result = await client.translateAuto(input, translateOpts);
+  let result = await client.translateAuto(chunkText, translateOpts);
   let output = result.text;
 
-  // Post-process
   output = normalizeUnicode(output);
-  output = repairSegTags(input, output);
+  output = repairSegTags(chunkText, output);
 
-  // Validate marker count — retry without glossary if truncated
-  if (!validateMarkers(input, output)) {
+  // Validate — retry without glossary if truncated
+  if (!validateMarkers(chunkText, output)) {
     if (filteredGlossary) {
       if (verbose) {
         console.error(
-          `\n    Truncated with glossary (${filteredGlossary.terms.length} terms), retrying without...`
+          `\n    ${chunkLabel}: truncated with glossary (${filteredGlossary.terms.length} terms), retrying without...`
         );
       }
-      result = await client.translateAuto(input, { targetLanguage: 'is' });
+      result = await client.translateAuto(chunkText, { targetLanguage: 'is' });
       output = normalizeUnicode(result.text);
-      output = repairSegTags(input, output);
+      output = repairSegTags(chunkText, output);
     }
 
-    if (!validateMarkers(input, output)) {
-      const inputCount = (input.match(/<!-- SEG:/g) || []).length;
+    if (!validateMarkers(chunkText, output)) {
+      const inputCount = (chunkText.match(/<!-- SEG:/g) || []).length;
       const outputCount = (output.match(/<!-- SEG:/g) || []).length;
       throw new Error(
-        `Segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
+        `${chunkLabel}: segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
           `API may have truncated the response.`
       );
     }
+  }
+
+  return { text: output, usage: result.usage };
+}
+
+/**
+ * Translate a single module file via the API.
+ * Automatically splits large modules at SEG boundaries to avoid API truncation.
+ * Filters glossary to terms in source text. Retries without glossary on truncation.
+ */
+async function translateModule(client, inputPath, outputPath, glossary, verbose) {
+  const input = fs.readFileSync(inputPath, 'utf8');
+  const moduleId = path.basename(inputPath, '-segments.en.md');
+
+  // Split if too large for a single API call
+  const chunks = splitAtSegBoundaries(input, DEFAULT_MAX_CHUNK_CHARS);
+  const needsSplitting = chunks.length > 1;
+
+  if (needsSplitting && verbose) {
+    console.error(`\n    Splitting into ${chunks.length} chunks (${input.length} chars total)`);
+  }
+
+  let totalUsage = 0;
+  const translatedChunks = [];
+
+  for (let i = 0; i < chunks.length; i++) {
+    const chunkLabel = needsSplitting ? `chunk ${i + 1}/${chunks.length}` : moduleId;
+    if (needsSplitting && verbose) {
+      const segCount = (chunks[i].match(/<!-- SEG:/g) || []).length;
+      console.error(`    ${chunkLabel}: ${chunks[i].length} chars, ${segCount} segments`);
+    }
+
+    const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
+    translatedChunks.push(result.text);
+    totalUsage += result.usage || 0;
+  }
+
+  // Reassemble chunks
+  const output = translatedChunks.join('');
+
+  // Final validation: total segment count must match
+  if (!validateMarkers(input, output)) {
+    const inputCount = (input.match(/<!-- SEG:/g) || []).length;
+    const outputCount = (output.match(/<!-- SEG:/g) || []).length;
+    throw new Error(
+      `Reassembled output has ${outputCount} segments but input has ${inputCount}. ` +
+        `Split/reassemble lost segments.`
+    );
   }
 
   // Write output
@@ -366,7 +482,7 @@ async function translateModule(client, inputPath, outputPath, glossary, verbose)
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  return { chars: input.length, usage: result.usage };
+  return { chars: input.length, usage: totalUsage };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────

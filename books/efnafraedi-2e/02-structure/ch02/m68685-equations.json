@@ -17,15 +17,21 @@
   },
   "math-5": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{1.33 g O}}}{{\\text{1 g C}}}}"
+    "latex": "{\\frac{{\\text{1.33 g O}}}{{\\text{1 g C}}}}",
+    "equationId": "fs-idm27225408",
+    "equationClass": "unnumbered"
   },
   "math-6": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}"
+    "latex": "{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}",
+    "equationId": "fs-idm193212704",
+    "equationClass": "unnumbered"
   },
   "math-7": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
-    "latex": "{{{\\text{1.33 g O}}{\\text{1 g C}}}{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}\\, =\\, \\frac{1}{2}}"
+    "latex": "{{{\\text{1.33 g O}}{\\text{1 g C}}}{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}\\, =\\, \\frac{1}{2}}",
+    "equationId": "fs-idm53123280",
+    "equationClass": "unnumbered"
   },
   "math-8": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",

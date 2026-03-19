@@ -68,7 +68,7 @@ Chemists study and describe the behavior of matter and energy in three different
 *Macro* is a Greek word that means “large.” The __macroscopic domain__ is familiar to us: It is the realm of everyday things that are large enough to be sensed directly by human sight or touch. In daily life, this includes the food you eat and the breeze you feel on your face. The macroscopic domain includes everyday and laboratory chemistry, where we observe and measure physical and chemical properties such as density, solubility, and flammability.
 
 <!-- SEG:m68664:para:fs-idp130311264 -->
-*Micro* comes from Greek and means “small.” The __microscopic domain__ of chemistry is often visited in the imagination. Some aspects of the microscopic domain are visible through standard optical microscopes, for example, many biological cells. More sophisticated instruments are capable of imaging even smaller entities such as molecules and atoms (see [#CNX_Chem_01_01_WaterDom] (b)).
+*Micro* comes from Greek and means “small.” The __microscopic domain__ of chemistry is often visited in the imagination. Some aspects of the microscopic domain are visible through standard optical microscopes, for example, many biological cells. More sophisticated instruments are capable of imaging even smaller entities such as molecules and atoms (see [#CNX_Chem_01_01_WaterDom] (*b*)).
 
 <!-- SEG:m68664:para:fs-idp28442320 -->
 However, most of the subjects in the microscopic domain of chemistry are too small to be seen even with the most advanced microscopes and may only be pictured in the mind. Other components of the microscopic domain include ions and electrons, protons and neutrons, and chemical bonds, each of which is far too small to see.

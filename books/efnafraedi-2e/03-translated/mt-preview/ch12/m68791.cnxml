@@ -2,7 +2,7 @@
 <title>Heildun hraðalögmála</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68791</md:content-id>
-  <md:title>Integrated Rate Laws</md:title>
+  <md:title>Heildun hraðalögmála</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Útskýrt form og virkni
 heildaðs hraðalögmáls</item><item>Framkvæmt útreikninga með
 heildaðri hraðajöfnu fyrir núllta, fyrsta og annars stigs efnahvörf</item><item>Skilgreint helmingunartíma
@@ -15,7 +15,7 @@ frá gögnum um styrk/tíma</item></list></md:abstract>
 <para id="fs-idp89497264">Hraðalögmálin sem fjallað hefur verið
 um hingað til tengja saman hvarfhraða og styrk hvarfefna. Við getum
 einnig ákvarðað annað form hvers hraðalögmáls sem tengir saman styrk
-hvarfefna og tíma. Þau eru kölluð <term>heildun hraðalögmála (e. integrated rate laws)</term>. Við getum
+hvarfefna og tíma. Þau eru kölluð <term id="term-00001">heildun hraðalögmála (e. integrated rate laws)</term>. Við getum
 notað heildað hraðalögmál til að ákvarða magn hvarfefnis eða myndefnis
 sem er til staðar eftir ákveðinn tíma eða til að meta þann tíma sem það
 tekur fyrir efnahvarf að ná ákveðnu marki. Til dæmis er heildað
@@ -84,11 +84,11 @@ skurðpunkt við <emphasis effect="italics">y</emphasis>-ás í ln[<emphasis eff
 með tilliti til <emphasis effect="italics">A</emphasis>.</para>
 <example id="fs-idp35909968">
 <para id="fs-idm76041456"><title>Grafísk ákvörðun á
-stigi efnahvarfs og hraðafasta</title>Sýndu að gögnin í <link target-id="CNX_Chem_12_01_KDataH2O2"/> geti
+stigi efnahvarfs og hraðafasta</title>Sýndu að gögnin í <link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/> geti
 verið táknuð með fyrsta stigs hraðajöfnu með því að teikna graf af
 ln[H<sub>2</sub>O<sub>2</sub>] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot
 H<sub>2</sub>O<sub>2</sub> út frá þessum gögnum.</para>
-<para id="fs-idm136711920"><title>Lausn</title>Gögnin úr <link target-id="CNX_Chem_12_01_KDataH2O2"/> eru sett fram í
+<para id="fs-idm136711920"><title>Lausn</title>Gögnin úr <link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/> eru sett fram í
 töflu hér að neðan og graf af ln[H<sub>2</sub>O<sub>2</sub>] er sýnt í <link target-id="CNX_Chem_12_04_FrstOKin"/>.</para>
 <!-- table handled separately -->
 <!-- figure handled separately -->
@@ -260,10 +260,10 @@ stigi efnahvarfs og hraðafasta</title>Gögnin hér að neðan eru fyrir sama
 efnahvarf og lýst er í <link target-id="fs-idm85213520"/>. Undirbúðu og berðu saman tvö
 viðeigandi gagnagröf til að bera kennsl á hvort efnahvarfið sé
 annaðhvort fyrsta eða annars stigs. Eftir að hafa borið kennsl á stig
-efnahvarfsins skaltu áætla gildi fyrir hraðafastann.</para><para id="fs-idp4978176"><title>Lausn</title>Tími (s) [C<sub>4</sub>H<sub>6</sub>] (<emphasis effect="italics">M</emphasis>) 0 1,00
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−2</sup> 1600 5,04 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> 3200 3,37
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> 4800 2,53 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> 6200 2,08
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></para>
+efnahvarfsins skaltu áætla gildi fyrir hraðafastann.</para><para id="fs-idp4978176"><title>Lausn</title>Tími (s) [C4H6] (<emphasis effect="italics">M</emphasis>) 0 1,00
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10−2 1600 5,04 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10−3 3200 3,37
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10−3 4800 2,53 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10−3 6200 2,08
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10−3</para>
 <para id="fs-idm190212352">Til að greina á milli fyrsta stigs
 efnahvarfs og annars stigs efnahvarfs skaltu undirbúa graf af
 ln[C<sub>4</sub>H<sub>6</sub>]<emphasis effect="italics">t</emphasis> á móti <emphasis effect="italics">t</emphasis> og bera það saman við graf af
@@ -644,7 +644,7 @@ varmasundrun ammoníaks á volframi (sjá <link target-id="fs-idm339943456"/>)?<
 (</emphasis>t<emphasis effect="italics"><sub>1/2</sub>)</emphasis><emphasis effect="italics"> er sá tími sem það tekur helming af gefnu magni hvarfefnis
 að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur
 af þeim styrk hvarfefnisins sem eftir er. Ef við notum sundrun
-vetnisperoxíðs (<link target-id="CNX_Chem_12_01_KDataH2O2"/>) sem dæmi, sjáum við að á fyrsta
+vetnisperoxíðs (<link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/>) sem dæmi, sjáum við að á fyrsta
 helmingunartímanum (frá 0,00 klukkustundum til 6,00 klukkustunda)
 minnkar styrkur H<sub>2</sub>O<sub>2</sub> úr 1,000 </emphasis>M<emphasis effect="italics"> í 0,500 </emphasis>M<emphasis effect="italics">. Á öðrum
 helmingunartímanum (frá 6,00 klukkustundum til 12,00 klukkustunda)
@@ -714,7 +714,7 @@ hætti: <m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m
 <solution id="fs-idp120836816">
 <para id="fs-idp6601344">Með því að teikna graf af
 ln[SO<sub>2</sub>Cl<sub>2</sub>] á móti <emphasis effect="italics">t</emphasis> sést línuleg þróun; þess vegna vitum við að
-þetta er fyrsta stigs efnahvarf: <emphasis effect="italics">k</emphasis> = 2,20 <m:math><m:mo>×</m:mo></m:math> 10<sup>–5</sup> s<sup>−1</sup></para></solution>
+þetta er fyrsta stigs efnahvarf: <emphasis effect="italics">k</emphasis> = 2,20 <m:math><m:mo>×</m:mo></m:math> 10<sup>–5</sup> s<sup>−1</sup><newline/><media id="fs-idm141495696" alt="A graph is shown with the label “Time ( s )” on the x-axis and “l n [ S O subscript 2 C l subscript 2 ] M” on the y-axis. The x-axis begins at 0 and extends to 4.00 times 10 superscript 4 with markings every 1.00 times 10 superscript 4. The y-axis shows markings extending from negative 3.5 to negative 2.5. A decreasing linear trend line is drawn through seven points at the approximate coordinates: (0, negative 2.3), (0.5 times 10 superscript 4, negative 2.4), (1.0 times 10 superscript 4, negative 2.5), (1.5 times 10 superscript 4, negative 2.6), (2.0 times 10 superscript 4, negative 2.9), (2.5 times 10 superscript 4, negative 3.0), and (3.0 times 10 superscript 4, negative 3.2)."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_Exercise02_img.jpg"/></media><newline/></para></solution>
 </exercise>
 <table id="fs-idp120830736" summary="This table contains two columns and eight rows. The first column is labeled, “Time ( s ),” and the second column is labeled, “[ S O subscript 2 C l subscript 2 ] ( M ).” Under the “Time ( s )” column are the numbers: 0; 5.00 times ten to the third power; 1.00 times ten to the fourth power; 1.50 times ten to the fourth power; 2.50 times ten to the fourth power; 3.00 times ten to the fourth power; and 4.00 times ten to the fourth power. Under the “[ S O subscript 2 C l subscript 2 ] ( M )” column are the numbers: 0.100, 0.0896, 0.0802, 0.0719, 0.0577, 0.0517, and 0.0415." class="column-header unnumbered">
 <label/>
@@ -757,16 +757,16 @@ ln[SO<sub>2</sub>Cl<sub>2</sub>] á móti <emphasis effect="italics">t</emphasis
 <para id="fs-idp79344992">Hreint óson brotnar hægt niður í
 súrefni, <m:math><m:mrow><m:msub><m:mrow><m:mtext>2O</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>3O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Notaðu gögnin sem gefin eru í grafískri aðferð
 og ákvarðaðu stig og hraðafasta efnahvarfsins. Tími (klst.) 0 2,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> 7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> 1,00 <m:math><m:mo>×</m:mo></m:math>
-10<sup>4</sup> [O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>) 1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> 4,98 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−6</sup> 2,07 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,66 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> Tími
-(klst.) 1,23 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> 1,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> 1,70
-<m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> [O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>) 1,39 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,22
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,05 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></para>
+<m:math><m:mo>×</m:mo></m:math> 103 7,6 <m:math><m:mo>×</m:mo></m:math> 103 1,00 <m:math><m:mo>×</m:mo></m:math>
+104 [O3] (<emphasis effect="italics">M</emphasis>) 1,00 <m:math><m:mo>×</m:mo></m:math> 10−5 4,98 <m:math><m:mo>×</m:mo></m:math>
+10−6 2,07 <m:math><m:mo>×</m:mo></m:math> 10−6 1,66 <m:math><m:mo>×</m:mo></m:math> 10−6 Tími
+(klst.) 1,23 <m:math><m:mo>×</m:mo></m:math> 104 1,43 <m:math><m:mo>×</m:mo></m:math> 104 1,70
+<m:math><m:mo>×</m:mo></m:math> 104 [O3] (<emphasis effect="italics">M</emphasis>) 1,39 <m:math><m:mo>×</m:mo></m:math> 10−6 1,22
+<m:math><m:mo>×</m:mo></m:math> 10−6 1,05 <m:math><m:mo>×</m:mo></m:math> 10−6</para>
 </problem>
 <solution id="fs-idp122732256">
 <para id="fs-idm228482928">Grafið er nokkuð línulegt,
-þannig að hvarfið er annars stigs. <emphasis effect="italics">k</emphasis> = 50,1 L mól<sup>−1</sup> klst.<sup>−1</sup></para></solution>
+þannig að hvarfið er annars stigs. <emphasis effect="italics">k</emphasis> = 50,1 L mól<sup>−1</sup> klst.<sup>−1</sup><media id="fs-idm95556784" alt="A graph is shown with the label, “t ( h ,)” on the x-axis and, “1 divided by [ O subscript 3 ] M,” on the y-axis. The x-axis shows markings at 0, 2 times 10 superscript 3, 6 times 10 superscript 3, 10 time 10 superscript 3, 14 times 10 superscript 3, and 18 times 10 superscript 3. The y-axis shows markings beginning at 0, increasing by 1 up to and including 9. An increasing linear trend line is drawn through seven points at the coordinates: (0, 1.00), (2.0 times 10 superscript 3, 2.01), (7.6 times 10 superscript 3, 4.83), (1.00 times 10 superscript 4, 6.02), (1.23 times 10 superscript 4 , 6.02), (1.43 times 10 superscript 4, 8.20) and (1.70 times 10 superscript 4, 9.52). A horizontal line segment is drawn through the first point and a vertical line segment is similarly drawn through the last point to make a right triangle on the graph. The horizontal leg of the triangle is labeled “ capital delta t.” The vertical leg is labeled “capital delta 1 divided by [ O subscript 3 ].”"><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_Exercise04_img_new.jpg"/></media><newline/></para></solution>
 </exercise>
 <table id="fs-idp72766816" summary="This table has two columns and eight rows. The first row is a header row, and it labels each column, “Time ( h ),” and, “[ O subscript 3 ] ( M ).” Under the “Time ( h )” column are the numbers: 0; 2.0 times ten to the third power; 7.6 times ten to the third power; 1.00 times ten to the fourth power; 1.23 times ten to the fourth power; 1.43 times ten to the fourth power; 1.70 times ten to the fourth power. Under the “[ O subscript 3 ] ( M )” column are the numbers: 1.00 times ten to the negative 5; 4.98 times ten to the negative 6; 2.07 times ten to the negative 6; 1.66 times ten to the negative 6; 1.39 times ten to the negative 6; 1.22 times ten to the negative 6; and 1.05 times ten to the negative 6." class="column-header unnumbered"><label/>
 <tgroup cols="2">
@@ -934,9 +934,9 @@ og sem felur einnig í sér styrk penisillíns. Ákvarðaðu út frá
 eftirfarandi gögnum: 1,0 L af lausn sem inniheldur 0,15 µg (0,15
 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> g) af penisillínasa, stig efnahvarfsins með
 tilliti til penisillíns og gildi hraðafastans. [Penisillín] (<emphasis effect="italics">M</emphasis>)
-Hraði (mól L<sup>−1</sup> mín.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> 3,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,5 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−10</sup> 4,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></para>
+Hraði (mól L−1 mín.−1) 2,0 <m:math><m:mo>×</m:mo></m:math> 10−6 1,0
+<m:math><m:mo>×</m:mo></m:math> 10−10 3,0 <m:math><m:mo>×</m:mo></m:math> 10−6 1,5 <m:math><m:mo>×</m:mo></m:math>
+10−10 4,0 <m:math><m:mo>×</m:mo></m:math> 10−6 2,0 <m:math><m:mo>×</m:mo></m:math> 10−10</para>
 </problem>
 <solution id="fs-idp69326464">
 <para id="fs-idp69326720">Efnahvarfið er fyrsta stigs. <emphasis effect="italics">k</emphasis>
@@ -983,7 +983,7 @@ klst.)?</para>
 <para id="fs-idm84405120">Það eru tvær sameindir með
 formúluna C<sub>3</sub>H<sub>6</sub>. Própen, <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH</m:mtext><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>,</m:mo></m:mrow></m:math>, er einliða fjölliðunnar
 pólýprópýlen, sem er notað í teppi sem þola bæði inni- og útiveru.
-Sýklóprópan er notað sem svæfingarlyf:</para>
+Sýklóprópan er notað sem svæfingarlyf:<newline/><media id="fs-idm21764176" alt="A structural formula for cyclopropane is shown. Three C H subscript 2 groups are positioned as vertices of an equilateral triangle connected with single bonds represented by line segments."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_Cycloprop_img.jpg"/></media></para>
 <para id="fs-idm21762608">Þegar hringprópan er hitað í 499
 °C gengst það undir umröðun (ísómerast) og myndar própen með hraðafasta
 upp á 5,95 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> s<sup>−1</sup>. Hver er helmingunartími þessa
@@ -1040,13 +1040,13 @@ hvaða ár dó Ríkharður III. konungur? Helmingunartími kolefnis-14 er 5730
 sprengiefni. Í röð vandlega stýrðra tilrauna voru sýni af sprengiefninu
 hituð í 160 °C og niðurbrot þeirra, sem fylgdi fyrsta stigs hvarfhraða,
 rannsakað. Ákvarðið meðalhraðafasta fyrir hverja tilraun með
-eftirfarandi gögnum: Upphafsstyrkur [C<sub>3</sub>H<sub>5</sub>N<sub>3</sub>O<sub>9</sub>] (M) 4,88 3,52
+eftirfarandi gögnum: Upphafsstyrkur [C3H5N3O9] (M) 4,88 3,52
 2,29 1,81 5,33 4,05 2,95 1,72 t (s) 300 300 300 300 180 180 180 180 %
 niðurbrotið 52,0 52,9 53,2 53,9 34,6 35,9 36,0 35,4</para>
 </problem>
 <solution id="fs-idm136873392">
-<para id="fs-idm215408672">[A]<sub>0</sub> (M) k <m:math><m:mo>×</m:mo></m:math>
-10<sup>3</sup> (s<sup>−1</sup>) 4,88 2,45 3,52 2,51 2,29 2,53 1,81 2,58 5,33 2,36 4,05
+<para id="fs-idm215408672">[A]0 (M) k <m:math><m:mo>×</m:mo></m:math>
+103 (s−1) 4,88 2,45 3,52 2,51 2,29 2,53 1,81 2,58 5,33 2,36 4,05
 2,47 2,95 2,48 1,72 2,43</para>
 </solution>
 </exercise>
@@ -1144,7 +1144,7 @@ niðurbrotið 52,0 52,9 53,2 53,9 34,6 35,9 36,0 35,4</para>
 <para id="fs-idm43018368">Undanfarin 10 ár hefur ómettaða
 kolvetnið 1,3-bútadíen <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>CH</m:mtext><m:mo>–</m:mo><m:mtext>CH</m:mtext><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow></m:math> verið í 38. sæti yfir 50
 mikilvægustu iðnaðarefnin. Það er aðallega notað til framleiðslu á
-gervigúmmíi. Hverfa þess er einnig til sem hringbúten:</para>
+gervigúmmíi. Hverfa þess er einnig til sem hringbúten:<newline/><media id="fs-idp18440944" alt="A structural formula for cyclobutene is shown. The figure has two C H subscript 2 groups as the upper two vertices of a square structure. These groups are connected by a single, short line segment. Line segments extend below each of these C H subscript 2 groups to C H groups positioned at the lower two vertices of the square structure. The C H groups are connected with a double line segment indicating a double bond."><image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_ExSolutio2_img.jpg"/></media></para>
 <para id="fs-idp18442736">Samsætuhvörfun sýklóbútens í
 bútadíen er fyrsta stigs og hraðafastinn hefur verið mældur 2,0
 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> s<sup>−1</sup> við 150 °C í 0,53 L flösku. Ákvarðaðu

@@ -125,7 +125,9 @@
   },
   "math-32": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mtext>average mass</m:mtext></m:mtd><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0.9184</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>19.9924 amu</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0047</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>20.9940 amu</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0.0769</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>21.9914 amu</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>18.36</m:mn><m:mo>+</m:mo><m:mn>0.099</m:mn><m:mo>+</m:mo><m:mn>1.69</m:mn><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mtext>amu</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign=\"left\"><m:mo>=</m:mo><m:mtext>20.15 amu</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} \\text{average mass} & =(0.9184\\, \\times \\, \\text{19.9924 amu})+(0.0047\\, \\times \\, \\text{20.9940 amu})+(0.0769\\, \\times \\, \\text{21.9914 amu}) \\\\ =(18.36+0.099+1.69)\\, \\text{amu} \\\\ =\\text{20.15 amu} \\end{aligned}"
+    "latex": "\\begin{aligned} \\text{average mass} & =(0.9184\\, \\times \\, \\text{19.9924 amu})+(0.0047\\, \\times \\, \\text{20.9940 amu})+(0.0769\\, \\times \\, \\text{21.9914 amu}) \\\\ =(18.36+0.099+1.69)\\, \\text{amu} \\\\ =\\text{20.15 amu} \\end{aligned}",
+    "equationId": "fs-idm73306928",
+    "equationClass": "unnumbered"
   },
   "math-33": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>12</m:mn></m:mrow></m:mfrac></m:mrow></m:math>",
@@ -186,6 +188,14 @@
   "math-47": {
     "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>15</m:mn><m:mn>31</m:mn></m:msubsup><m:mtext>P</m:mtext></m:math>",
     "latex": "_{15}^{31}\\text{P}"
+  },
+  "math-48": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>12</m:mn></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{{12}}}"
+  },
+  "math-49": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
   },
   "fs-idp109266704": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mtext>atomic number</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>Z</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mtext>number of protons</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mtext>mass number</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>A</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mtext>number of protons</m:mtext><m:mo>+</m:mo><m:mtext>number of neutrons</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mtext>A</m:mtext><m:mo>−</m:mo><m:mtext>Z</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mtext>number of neutrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
