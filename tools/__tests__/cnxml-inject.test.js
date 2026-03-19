@@ -112,7 +112,7 @@ describe('reverseInlineMarkup equation deduplication', () => {
     expect(result).toContain('<m:math><m:mn>42</m:mn></m:math>');
   });
 
-  it('should NOT wrap in <equation> when equationId is in blockEquationIds', () => {
+  it('should emit nothing when equationId is in blockEquationIds (handled by buildEquation)', () => {
     const equations = {
       'math-1': {
         mathml: '<m:math><m:mn>42</m:mn></m:math>',
@@ -123,7 +123,7 @@ describe('reverseInlineMarkup equation deduplication', () => {
     const blockIds = new Set(['eq-1']);
     const result = reverseInlineMarkup('Result: [[MATH:1]]', equations, [], [], null, blockIds);
     expect(result).not.toContain('<equation');
-    expect(result).toContain('<m:math><m:mn>42</m:mn></m:math>');
+    expect(result).not.toContain('<m:math');
   });
 
   it('should still wrap when equationId is NOT in the block set', () => {

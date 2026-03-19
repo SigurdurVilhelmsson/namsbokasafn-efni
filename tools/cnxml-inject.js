@@ -484,6 +484,110 @@ function restoreMediaMarkers(isSegments, enSegments) {
 }
 
 /**
+ * Restore [[MATH:N]] placeholders that the MT API resolved to plain text.
+ *
+ * The API sometimes "helpfully" replaces simple math placeholders (especially
+ * chemical formulas like NH₄⁺, CO₃²⁻) with their text equivalents instead of
+ * preserving the opaque [[MATH:N]] marker.
+ *
+ * For each segment where EN has more [[MATH:N]] than IS, this function attempts
+ * to re-insert the missing placeholders by matching the EN segment structure.
+ *
+ * Strategy: for segments where IS has FEWER [[MATH:N]] than EN, find the missing
+ * placeholder positions in EN and splice them back into IS at matching positions.
+ * For simple cases (short segments where the API inlined the formula), we replace
+ * the inlined text with the original placeholder.
+ *
+ * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
+ * @param {Map<string, string>} enSegments - Original English segments
+ * @returns {{ segments: Map<string, string>, restoredCount: number }}
+ */
+function restoreMathMarkers(isSegments, enSegments) {
+  let restoredCount = 0;
+
+  for (const [segId, isText] of isSegments) {
+    const enText = enSegments.get(segId);
+    if (!enText) continue;
+
+    const enMathMatches = enText.match(/\[\[MATH:\d+\]\]/g) || [];
+    const isMathMatches = isText.match(/\[\[MATH:\d+\]\]/g) || [];
+
+    if (enMathMatches.length === 0 || isMathMatches.length >= enMathMatches.length) continue;
+
+    // IS is missing some [[MATH:N]] markers.
+    // Build a set of which MATH IDs are present in IS
+    const isMathIds = new Set(isMathMatches);
+
+    // Find missing ones
+    const missingMaths = enMathMatches.filter((m) => !isMathIds.has(m));
+    if (missingMaths.length === 0) continue;
+
+    // Strategy: use the EN segment as a structural template.
+    // Split EN by [[MATH:N]] to get the text fragments between placeholders.
+    // For each missing placeholder, find the preceding text fragment in IS
+    // and insert the placeholder after it.
+    //
+    // This works well for short, structured segments like:
+    //   EN: "(b) [[MATH:39]] [[MATH:40]]"
+    //   IS: "(b) NH~4~^+^, SO~4~^2-^"
+    //
+    // We find "(b) " in both, then know [[MATH:39]] should follow.
+
+    let result = isText;
+    let modified = false;
+
+    // For each missing math, try to find the text that immediately precedes it in EN
+    for (const missing of missingMaths) {
+      const mathIdx = enText.indexOf(missing);
+      if (mathIdx < 0) continue;
+
+      // Get the text fragment before this math in EN (up to 30 chars, or from previous math/start)
+      const beforeInEn = enText.substring(Math.max(0, mathIdx - 30), mathIdx);
+
+      // Find a recognizable anchor: last few non-placeholder chars
+      // Strip other [[MATH:N]]/[[BR]] to get the actual text
+      const anchor = beforeInEn
+        .replace(/\[\[(MATH|BR|MEDIA):[^\]]*\]\]/g, '')
+        .trim()
+        .slice(-15);
+
+      if (anchor.length < 2) continue;
+
+      // Find this anchor in IS and insert the missing math placeholder after it
+      const anchorIdx = result.indexOf(anchor);
+      if (anchorIdx >= 0) {
+        // Find the end of the anchor in IS, skip any text that the API may have
+        // inserted in place of the math (up to next anchor or end of segment)
+        const insertPos = anchorIdx + anchor.length;
+
+        // Look for the next [[MATH:N]] or end of string after this position in IS
+        const nextMathInIs = result.indexOf('[[MATH:', insertPos);
+        const nextAnchorEnd = nextMathInIs >= 0 ? nextMathInIs : result.length;
+
+        // The API's inlined text is between insertPos and nextAnchorEnd
+        // Replace it with the placeholder (keep any separator chars like commas)
+        const inlinedText = result.substring(insertPos, nextAnchorEnd).trim();
+
+        if (inlinedText.length > 0 && inlinedText.length < 40) {
+          // Replace the inlined text with the placeholder
+          const before = result.substring(0, insertPos);
+          const after = result.substring(nextAnchorEnd);
+          result = `${before} ${missing}${after}`;
+          modified = true;
+          restoredCount++;
+        }
+      }
+    }
+
+    if (modified) {
+      isSegments.set(segId, result);
+    }
+  }
+
+  return { segments: isSegments, restoredCount };
+}
+
+/**
  * Annotate inline __term__ markers in IS segments with the English original.
  *
  * For each segment present in both maps, extracts __term__ texts from the EN
@@ -675,10 +779,13 @@ function reverseInlineMarkup(
     const mathId = `math-${num}`;
     if (equations[mathId]) {
       const eq = equations[mathId];
-      // Wrap in <equation> if the original had one (equationId stored during extraction),
-      // BUT skip the wrapper if this equation is already handled as a block-level element
-      // by buildEquation() — otherwise we'd produce a duplicate <equation> tag.
-      if (eq.equationId && !(blockEquationIds && blockEquationIds.has(eq.equationId))) {
+      // Skip entirely if this equation is already handled as a block-level element
+      // by buildEquation() — otherwise we'd produce a duplicate <equation>+<m:math>.
+      if (eq.equationId && blockEquationIds && blockEquationIds.has(eq.equationId)) {
+        return '';
+      }
+      // Wrap in <equation> if the original had one (equationId stored during extraction)
+      if (eq.equationId) {
         const classAttr = eq.equationClass ? ` class="${eq.equationClass}"` : '';
         return `<equation id="${eq.equationId}"${classAttr}>${eq.mathml}</equation>`;
       }
@@ -800,7 +907,7 @@ function reverseInlineMarkup(
   // Convert footnotes back — handle both English marker and MT-translated Icelandic
   // Use lazy [\s\S]+? with lookahead to handle footnotes containing ] (e.g., math placeholders)
   result = result.replace(
-    / \[(?:footnote|neðanmálsgrein): ([\s\S]+?)\](?=\s|$|[.,;:])/g,
+    / \[(?:footnote|neðanmálsgrein): ([\s\S]+?)\](?=\s|$|[.,;:<\[])/g,
     '<footnote>$1</footnote>'
   );
 
@@ -2033,6 +2140,12 @@ async function main() {
         console.error(`  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`);
       }
 
+      // Restore [[MATH:N]] placeholders that the API resolved to plain text
+      const { restoredCount: mathRestoredCount } = restoreMathMarkers(segments, enSegments);
+      if (mathRestoredCount > 0) {
+        console.error(`  Restored ${mathRestoredCount} [[MATH:N]] placeholder(s) from EN source`);
+      }
+
       // Restore [[BR]] placeholders from EN source into IS segments
       const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
       if (args.verbose && brRestoredCount > 0) {
@@ -2103,6 +2216,7 @@ export {
   restoreTermMarkers,
   restoreSupersubMarkers,
   restoreMediaMarkers,
+  restoreMathMarkers,
   restoreNewlines,
   annotateInlineTerms,
   parseSegments,

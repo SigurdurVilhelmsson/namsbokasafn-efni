@@ -6,6 +6,7 @@ import {
   restoreTermMarkers,
   restoreSupersubMarkers,
   restoreMediaMarkers,
+  restoreMathMarkers,
   restoreNewlines,
   annotateInlineTerms,
   reverseInlineMarkup,
@@ -698,6 +699,48 @@ describe('restoreMediaMarkers', () => {
 
     const { restoredCount } = restoreMediaMarkers(is, en);
     expect(restoredCount).toBe(0);
+  });
+});
+
+// =====================================================================
+// restoreMathMarkers unit tests
+// =====================================================================
+
+describe('restoreMathMarkers', () => {
+  it('should restore [[MATH:N]] when API resolved it to plain text', () => {
+    const en = new Map([['seg1', '(b) [[MATH:39]] [[MATH:40]]']]);
+    const is = new Map([['seg1', '(b) NH~4~^+^, SO~4~^2-^']]);
+
+    const { restoredCount } = restoreMathMarkers(is, en);
+    expect(restoredCount).toBeGreaterThan(0);
+    expect(is.get('seg1')).toContain('[[MATH:39]]');
+  });
+
+  it('should not modify segments where all MATH markers are present', () => {
+    const en = new Map([['seg1', 'Result: [[MATH:1]] and [[MATH:2]]']]);
+    const is = new Map([['seg1', 'Niðurstaða: [[MATH:1]] og [[MATH:2]]']]);
+
+    const { restoredCount } = restoreMathMarkers(is, en);
+    expect(restoredCount).toBe(0);
+    expect(is.get('seg1')).toBe('Niðurstaða: [[MATH:1]] og [[MATH:2]]');
+  });
+
+  it('should skip segments with no MATH in EN', () => {
+    const en = new Map([['seg1', 'Plain text.']]);
+    const is = new Map([['seg1', 'Venjulegur texti.']]);
+
+    const { restoredCount } = restoreMathMarkers(is, en);
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should restore single missing MATH with clear anchor', () => {
+    const en = new Map([['seg1', '(d) Na^+^, [[MATH:41]]']]);
+    const is = new Map([['seg1', '(d) Na^+^, HPO~4~^2-^']]);
+
+    const { restoredCount } = restoreMathMarkers(is, en);
+    expect(restoredCount).toBe(1);
+    expect(is.get('seg1')).toContain('[[MATH:41]]');
+    expect(is.get('seg1')).not.toContain('HPO~4~^2-^');
   });
 });
 

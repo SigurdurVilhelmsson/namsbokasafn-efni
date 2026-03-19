@@ -2,13 +2,13 @@
 Jóna- og sameindasambönd
 
 <!-- SEG:m68696:abstract:auto-2 -->
-Þegar þú hefur lokið við þennan kafla getur þú:
+Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68696:abstract-item:abstract-item-1 -->
 Skilgreint jóna- og sameindasambönd (samgild)
 
 <!-- SEG:m68696:abstract-item:abstract-item-2 -->
-Sagt fyrir um gerð efnasambands sem myndast úr frumefnum út frá staðsetningu þeirra í lotukerfinu
+Spáð fyrir um gerð efnasambands sem myndast úr frumefnum út frá staðsetningu þeirra í lotukerfinu
 
 <!-- SEG:m68696:abstract-item:abstract-item-3 -->
 Ákvarðað formúlur fyrir einföld jónasambönd
@@ -17,16 +17,16 @@ Sagt fyrir um gerð efnasambands sem myndast úr frumefnum út frá staðsetning
 Í venjulegum efnahvörfum helst kjarni hverrar frumeindar (og þar með auðkenni frumefnisins) óbreyttur. Hins vegar er hægt að bæta rafeindum við frumeindir með flutningi frá öðrum frumeindum, missa þær með flutningi til annarra frumeinda eða deila þeim með öðrum frumeindum. Flutningur og deiling rafeinda milli frumeinda stjórnar efnafræði frumefnanna. Við myndun sumra efnasambanda fá frumeindir rafeindir eða missa þær og mynda rafmagnaðar agnir sem kallast jónir ([#CNX_Chem_02_06_NaCation]).
 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_NaCation-caption -->
-(a) Natríumfrumeind (Na) hefur jafnmargar róteindir og rafeindir (11) og er óhlaðin. (b) Natríumkatjón (Na^+^) hefur misst eina rafeind, þannig að hún hefur eina róteind (11) umfram rafeindir (10), sem gefur henni jákvæða heildarhleðslu, táknað með háskrifuðu plúsmerki.
+(a) Natríumfrumeind (Na) hefur jafnmargar róteindir og rafeindir (11) og er óhlaðin. (b) Natríumkatjón (Na^+^) hefur misst eina rafeind, þannig að hún hefur einni róteind (11) fleiri en rafeindir (10), sem gefur henni jákvæða heildarhleðslu, táknað með háskrifuðu plúsmerki.
 
 <!-- SEG:m68696:para:fs-idp286908208 -->
-Þú getur notað lotukerfið til að spá fyrir um hvort frumeind muni mynda anjón eða katjón og oft getur þú spáð fyrir um hleðslu jónarinnar sem myndast. Frumeindir margra aðalhópa málma missa nægilega margar rafeindir til að hafa sama fjölda rafeinda og frumeind næsta eðalgass á undan. Til að útskýra þetta, þá missir frumeind alkalímálms (hópur 1) eina rafeind og myndar katjón með 1+ hleðslu; jarðalkalímálmur (hópur 2) missir tvær rafeindir og myndar katjón með 2+ hleðslu, og svo framvegis. Til dæmis missir hlutlaus kalsíumfrumeind, með 20 róteindir og 20 rafeindir, auðveldlega tvær rafeindir. Þetta leiðir til katjónar með 20 róteindir, 18 rafeindir og 2+ hleðslu. Hún hefur sama fjölda rafeinda og frumeindir næsta eðalgass á undan, argons, og er táknuð með Ca^2+^. Heiti málmjónar er það sama og heiti málmfrumeindarinnar sem hún myndast úr, þannig að Ca^2+^ er kölluð kalsíumjón.
+Þú getur notað lotukerfið til að spá fyrir um hvort frumeind muni mynda anjón eða katjón og oft geturðu spáð fyrir um hleðslu jónarinnar sem myndast. Frumeindir margra málma í aðalhópum missa nægilega margar rafeindir til að hafa sama fjölda rafeinda og frumeind næsta eðalgass á undan. Til að útskýra þetta, þá missir frumeind alkalímálms (hópur 1) eina rafeind og myndar katjón með 1+ hleðslu; jarðalkalímálmur (hópur 2) missir tvær rafeindir og myndar katjón með 2+ hleðslu, og svo framvegis. Til dæmis missir hlutlaus kalsíumfrumeind, með 20 róteindir og 20 rafeindir, auðveldlega tvær rafeindir. Þetta leiðir til katjónar með 20 róteindir, 18 rafeindir og 2+ hleðslu. Hún hefur sama fjölda rafeinda og frumeindir næsta eðalgass á undan, argon, og er táknuð með Ca^2+^. Nafn málmjónar er það sama og nafn málmfrumeindarinnar sem hún myndast úr, þannig að Ca^2+^ er kölluð kalsíumjón.
 
 <!-- SEG:m68696:para:fs-idp20416832 -->
-Þegar frumeindir málmleysingja mynda jónir fá þær yfirleitt nægilega margar rafeindir til að hafa sama fjölda rafeinda og frumeind næsta eðalgass í lotukerfinu. Frumeindir í hópi 17 fá eina rafeind og mynda anjónir með 1− hleðslu; frumeindir í hópi 16 fá tvær rafeindir og mynda jónir með 2− hleðslu, og svo framvegis. Til dæmis getur hlutlaus brómfrumeind, með 35 róteindir og 35 rafeindir, fengið eina rafeind til viðbótar og haft þá 36 rafeindir. Þetta leiðir til anjónar með 35 róteindir, 36 rafeindir og 1− hleðslu. Hún hefur sama fjölda rafeinda og frumeindir næsta eðalgass, kryptons, og er táknuð með Br^−^. (Umræða um kenninguna sem styður þá eftirsóttu stöðu rafeindafjölda eðalgasa sem endurspeglast í þessum forspárreglum um jónamyndun er að finna í síðari kafla þessa texta.)
+Þegar frumeindir málmleysingja mynda jónir fá þær yfirleitt nægilega margar rafeindir til að hafa sama fjölda rafeinda og frumeind næsta eðalgass í lotukerfinu. Frumeindir í hópi 17 fá eina rafeind og mynda anjónir með 1− hleðslu; frumeindir í hópi 16 fá tvær rafeindir og mynda jónir með 2− hleðslu, og svo framvegis. Til dæmis getur hlutlaus brómfrumeind, með 35 róteindir og 35 rafeindir, fengið eina rafeind til viðbótar og haft þá 36 rafeindir. Þetta leiðir til anjónar með 35 róteindir, 36 rafeindir og 1− hleðslu. Hún hefur sama fjölda rafeinda og frumeindir næsta eðalgass, krypton, og er táknuð með Br^-^. (Umræða um kenninguna sem styður þá eftirsóttu stöðu sem rafeindafjöldi eðalgasa hefur, sem endurspeglast í þessum forspárreglum um jónamyndun, er að finna í síðari kafla þessa texta.)
 
 <!-- SEG:m68696:para:fs-idp244942144 -->
-Taktu eftir notagildi lotukerfisins við að spá fyrir um líklega jónamyndun og hleðslu ([#CNX_Chem_02_06_IonCharges]). Þegar farið er frá vinstri til hægri í lotukerfinu hafa aðalhópa frumefni tilhneigingu til að mynda katjónir með hleðslu sem er jöfn hópstölunni. Það er að segja, frumefni í hópi 1 mynda 1+ jónir; frumefni í hópi 2 mynda 2+ jónir, og svo framvegis. Þegar farið er frá hægri til vinstri í lotukerfinu mynda frumefni oft anjónir með neikvæða hleðslu sem er jöfn fjölda hópa sem færst er til vinstri frá eðalgösunum. Til dæmis mynda frumefni í hópi 17 (einn hópur til vinstri við eðalgösin) 1− jónir; frumefni í hópi 16 (tveir hópar til vinstri) mynda 2− jónir, og svo framvegis. Þessa þróun má nota sem leiðbeiningu í mörgum tilfellum, en forspárgildi hennar minnkar þegar nær dregur miðju lotukerfisins. Reyndar sýna hliðarmálmar og sumir aðrir málmar oft breytilegar hleðslur sem ekki er hægt að spá fyrir um út frá staðsetningu þeirra í töflunni. Til dæmis getur kopar myndað jónir með 1+ eða 2+ hleðslu og járn getur myndað jónir með 2+ eða 3+ hleðslu.
+Taktu eftir notagildi lotukerfisins við að spá fyrir um líklega jónamyndun og hleðslu ([#CNX_Chem_02_06_IonCharges]). Þegar farið er frá vinstri til hægri í lotukerfinu hafa frumefni í aðalhópum tilhneigingu til að mynda katjónir með hleðslu sem er jöfn hópstölunni. Það er að segja, frumefni í hópi 1 mynda 1+ jónir; frumefni í hópi 2 mynda 2+ jónir, og svo framvegis. Þegar farið er frá hægri til vinstri í lotukerfinu mynda frumefni oft anjónir með neikvæðri hleðslu sem er jöfn fjölda hópa sem færst er til vinstri frá eðalgösunum. Til dæmis mynda frumefni í hópi 17 (einn hópur til vinstri við eðalgösin) 1− jónir; frumefni í hópi 16 (tveir hópar til vinstri) mynda 2− jónir, og svo framvegis. Þessa þróun má nota sem leiðbeiningu í mörgum tilfellum, en forspárgildi hennar minnkar þegar nær dregur miðju lotukerfisins. Reyndar sýna hliðarmálmar og sumir aðrir málmar oft breytilegar hleðslur sem ekki er hægt að spá fyrir um út frá staðsetningu þeirra í töflunni. Til dæmis getur kopar myndað jónir með 1+ eða 2+ hleðslu og járn getur myndað jónir með 2+ eða 3+ hleðslu.
 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_IonCharges-caption -->
 Sum frumefni sýna reglulegt mynstur jónahleðslu þegar þau mynda jónir.
@@ -35,28 +35,28 @@ Sum frumefni sýna reglulegt mynstur jónahleðslu þegar þau mynda jónir.
 Samsetning jóna
 
 <!-- SEG:m68696:para:fs-idp203962032 -->
-Jón sem finnst í sumum efnasamböndum sem notuð eru sem svitalyktareyðar inniheldur 13 róteindir og 10 rafeindir. Hvert er tákn hennar?
+Jón sem finnst í sumum efnasamböndum sem notuð eru í svitalyktareyða inniheldur 13 róteindir og 10 rafeindir. Hvert er tákn hennar?
 
 <!-- SEG:m68696:para-title:fs-idp232924112-title -->
 Lausn
 
 <!-- SEG:m68696:para:fs-idp232924112 -->
-Vegna þess að fjöldi róteinda helst óbreyttur þegar frumeind myndar jón, verður sætistala frumefnisins að vera 13. Með því að vita þetta getum við notað lotukerfið til að bera kennsl á frumefnið sem Al (ál). Al-frumeindin hefur misst þrjár rafeindir og hefur því þremur fleiri jákvæðum hleðslum (13) en hún hefur rafeindir (10). Þetta er álkatjónin, Al^3+^.
+Þar sem fjöldi róteinda helst óbreyttur þegar frumeind myndar jón, hlýtur sætistala frumefnisins að vera 13. Með því að vita það getum við notað lotukerfið til að bera kennsl á frumefnið sem Al (ál). Al-frumeindin hefur misst þrjár rafeindir og hefur því þremur fleiri jákvæðum hleðslum (13) en hún hefur rafeindir (10). Þetta er álkatjónin, Al^3+^.
 
 <!-- SEG:m68696:para-title:fs-idp120794800-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68696:para:fs-idp120794800 -->
-Gefðu upp tákn og heiti fyrir jónina með 34 róteindir og 36 rafeindir.
+Gefðu upp tákn og nafn fyrir jónina með 34 róteindir og 36 rafeindir.
 
 <!-- SEG:m68696:para:fs-idp2161376 -->
-Se^2−^, seleníðjónin
+Se^2-^, seleníðjónin
 
 <!-- SEG:m68696:note-title:fs-idp105511808-title -->
 Svar:
 
 <!-- SEG:m68696:para:fs-idp2161376 -->
-Se^2−^, seleníðjónin
+Se^2-^, seleníðjónin
 
 <!-- SEG:m68696:example-title:fs-idp51588352-title -->
 Myndun jóna
@@ -77,7 +77,7 @@ Staða niturs í lotukerfinu (hópur 15) sýnir að það er málmleysingi. Mál
 Kannaðu þekkingu þína
 
 <!-- SEG:m68696:para:fs-idp96722272 -->
-Ál og kolefni hvarfast og mynda jónaefni. Spáðu fyrir um hvort myndar anjón, hvort myndar katjón og hverjar hleðslur jónanna eru. Skrifaðu tákn fyrir hverja jón og nefndu þær.
+Ál og kolefni hvarfast og mynda jónaefni. Spáðu fyrir um hvort myndar anjón, hvort myndar katjón og hverjar hleðslur hverrar jónar eru. Skrifaðu tákn fyrir hverja jón og nefndu þær.
 
 <!-- SEG:m68696:para:fs-idp194881696 -->
 Al mun mynda katjón með hleðsluna 3+: Al^3+^, áljón. Kolefni mun mynda anjón með hleðsluna 4−: C^4−^, karbíðjón.
@@ -89,7 +89,7 @@ Svar:
 Al mun mynda katjón með hleðsluna 3+: Al^3+^, áljón. Kolefni mun mynda anjón með hleðsluna 4−: C^4−^, karbíðjón.
 
 <!-- SEG:m68696:para:fs-idp9416320 -->
-Jónirnar sem við höfum rætt hingað til eru kallaðar __einfumeindajónir__, það er að segja, þær eru jónir sem myndast úr aðeins einni frumeind. Við finnum líka margar __fjölfrumeinda jónir__. Þessar jónir, sem virka sem aðgreindar einingar, eru rafhleðslusameindir (hópur tengdra frumeinda með heildarhleðslu). Sumar af mikilvægari fjölfrumeinda jónunum eru taldar upp í [#fs-idp278664880]. __Oxýanjónir__ eru fjölfrumeinda jónir sem innihalda eina eða fleiri súrefnisfrumeindir. Á þessum tímapunkti í efnafræðinámi þínu ættir þú að leggja á minnið nöfn, formúlur og hleðslur algengustu fjölfrumeinda jónanna. Þar sem þú munt nota þær ítrekað muntu fljótlega kannast við þær.
+Jónirnar sem við höfum rætt um hingað til eru kallaðar __einfrumeinda jónir__, það er að segja, þær eru jónir sem myndast úr aðeins einni frumeind. Við finnum líka margar __fjölfrumeinda jónir__. Þessar jónir, sem virka sem aðskildar einingar, eru rafmagnaðar sameindir (hópur tengdra frumeinda með heildarhleðslu). Sumar af mikilvægustu fjölfrumeinda jónunum eru taldar upp í [#fs-idp278664880]. __Oxýanjónir__ eru fjölfrumeinda jónir sem innihalda eina eða fleiri súrefnisfrumeindir. Á þessum tímapunkti í efnafræðinámi þínu ættir þú að leggja á minnið nöfn, formúlur og hleðslur algengustu fjölfrumeinda jónanna. Þar sem þú munt nota þær ítrekað muntu fljótlega kannast við þær.
 
 <!-- SEG:m68696:entry:auto-32 -->
 Algengar fjölfrumeinda jónir
@@ -149,7 +149,7 @@ sýaníð
 CN^−^
 
 <!-- SEG:m68696:entry:auto-51 -->
-vetnissýaníð
+vetnissýaníðsýra
 
 <!-- SEG:m68696:entry:auto-52 -->
 HCN
@@ -161,7 +161,7 @@ asíð
 [[MATH:6]]
 
 <!-- SEG:m68696:entry:auto-55 -->
-vetnisasíð
+vetnisasíðsýra
 
 <!-- SEG:m68696:entry:auto-56 -->
 HN~3~
@@ -191,7 +191,7 @@ nítrat
 [[MATH:9]]
 
 <!-- SEG:m68696:entry:auto-65 -->
-salpéturssýra
+saltpéturssýra
 
 <!-- SEG:m68696:entry:auto-66 -->
 HNO~3~
@@ -203,7 +203,7 @@ nítrít
 [[MATH:10]]
 
 <!-- SEG:m68696:entry:auto-69 -->
-salpéturssýrlingur
+saltpéturssýrlingur
 
 <!-- SEG:m68696:entry:auto-70 -->
 HNO~2~
@@ -263,7 +263,7 @@ vetnisfosfat
 [[MATH:16]]
 
 <!-- SEG:m68696:entry:auto-89 -->
-díhýdrógenfosfat
+tvívetnisfosfat
 
 <!-- SEG:m68696:entry:auto-90 -->
 [[MATH:17]]
@@ -353,16 +353,16 @@ permangansýra
 HMnO~4~
 
 <!-- SEG:m68696:para:fs-idp210658336 -->
-Athugið að það er kerfi til að nefna sumar fjölfrumeinda jónir; *-at* og *-ít* eru viðskeyti sem tákna fjölfrumeinda jónir sem innihalda fleiri eða færri súrefnisfrumeindir. *Per-* (stytting á „hyper“) og *hýpó-* (sem þýðir „undir“) eru forskeyti sem þýða fleiri súrefnisfrumeindir en *-at* og færri súrefnisfrumeindir en *-ít*, í sömu röð. Til dæmis er perklórat [[MATH:24]], klórat er [[MATH:25]], klórít er [[MATH:26]] og hýpóklórít er ClO^−^. Því miður er fjöldi súrefnisfrumeinda sem samsvarar tilteknu viðskeyti eða forskeyti ekki stöðugur; til dæmis er nítrat [[MATH:27]] á meðan súlfat er [[MATH:28]]. Þetta verður tekið fyrir nánar í næsta kafla um nafnakerfi.
+Athugið að það er kerfi til að nafngreina sumar fjölfrumeinda jónir; *-at* og *-ít* eru viðskeyti sem tákna fjölfrumeinda jónir sem innihalda fleiri eða færri súrefnisfrumeindir. *Per-* (stytting á „hyper“) og *hýpó-* (sem þýðir „undir“) eru forskeyti sem þýða fleiri súrefnisfrumeindir en *-at* og færri súrefnisfrumeindir en *-ít*, í sömu röð. Til dæmis er perklórat [[MATH:24]], klórat er [[MATH:25]], klórít er [[MATH:26]] og hýpóklórít er ClO^−^. Því miður er fjöldi súrefnisfrumeinda sem samsvarar tilteknu viðskeyti eða forskeyti ekki samræmdur; til dæmis er nítrat [[MATH:27]] á meðan súlfat er [[MATH:28]]. Þetta verður tekið fyrir í meiri smáatriðum í næsta kafla um nafnakerfi.
 
 <!-- SEG:m68696:para:fs-idm10305952 -->
-Eðli aðdráttarkraftanna sem halda frumeindum eða jónum saman innan efnasambands er grundvöllurinn að flokkun efnatengja. Þegar rafeindir flytjast og jónir myndast verða til __jónatengi__. Jónatengi eru rafstöðukraftar aðdráttar, það er aðdráttarkraftar sem verka á milli hluta með gagnstæða rafhleðslu (í þessu tilfelli katjóna og anjóna). Þegar rafeindum er „deilt“ og sameindir myndast verða til __samgild tengi__. Samgild tengi eru aðdráttarkraftar milli jákvætt hlaðinna kjarna tengdra frumeinda og eins eða fleiri rafeindapara sem eru staðsett á milli frumeindanna. Efnasambönd eru flokkuð sem jónaefni eða sameindaefni (samgild) á grundvelli þeirra efnatengja sem eru til staðar í þeim.
+Eðli aðdráttarkraftanna sem halda frumeindum eða jónum saman innan efnasambands er grundvöllurinn að flokkun efnatengja. Þegar rafeindir flytjast og jónir myndast, verða til __jónatengi__. Jónatengi eru rafstöðukraftar aðdráttar, það er að segja aðdráttarkraftar sem verka á milli hluta með gagnstæða rafhleðslu (í þessu tilfelli, katjóna og anjóna). Þegar rafeindum er „deilt“ og sameindir myndast, verða til __samgild tengi__. Samgild tengi eru aðdráttarkraftar milli jákvætt hlaðinna kjarna tengdra frumeinda og eins eða fleiri rafeindapara sem eru staðsett á milli frumeindanna. Efnasambönd eru flokkuð sem jónaefni eða sameindaefni (samgild) á grundvelli þeirra efnatengja sem eru til staðar í þeim.
 
 <!-- SEG:m68696:para:fs-idp196719024 -->
 Horfðu á þetta [myndband](http://openstax.org/l/16moltensalt) til að sjá efnablöndu af söltum bráðna og leiða rafmagn.
 
 <!-- SEG:m68696:para:fs-idp91827520 -->
-Í hverju jónaefni er heildarfjöldi jákvæðra hleðslna katjónanna jafn heildarfjölda neikvæðra hleðslna anjónanna. Þannig eru jónaefni í heild sinni rafhlutlaus, jafnvel þótt þau innihaldi jákvæðar og neikvæðar jónir. Við getum notað þessa athugun til að hjálpa okkur að skrifa formúlu jónaefnis. Formúla jónaefnis verður að hafa hlutfall jóna þannig að fjöldi jákvæðra og neikvæðra hleðslna sé jafn.
+Í hverju jónaefni er heildarfjöldi jákvæðra hleðsla katjónanna jafn heildarfjölda neikvæðra hleðsla anjónanna. Þannig eru jónaefni í heild sinni rafhlutlaus, jafnvel þótt þau innihaldi jákvæðar og neikvæðar jónir. Við getum notað þessa athugun til að hjálpa okkur að skrifa formúlu jónaefnis. Formúla jónaefnis verður að hafa hlutfall jóna þannig að fjöldi jákvæðra og neikvæðra hleðsla sé jafn.
 
 <!-- SEG:m68696:example-title:fs-idp75448432-title -->
 Að spá fyrir um formúlu jónaefnis
@@ -374,7 +374,7 @@ Eðalsteinninn safír ([#CNX_Chem_02_06_Sapphire]) er að mestu leyti efnasamban
 Lausn
 
 <!-- SEG:m68696:para:fs-idp467312 -->
-Vegna þess að jónaefnið verður að vera rafhlutlaust verður það að hafa sama fjölda jákvæðra og neikvæðra hleðslna. Tvær áljónir, hvor með hleðsluna 3+, myndu gefa okkur sex jákvæðar hleðslur og þrjár oxíðjónir, hvor með hleðsluna 2−, myndu gefa okkur sex neikvæðar hleðslur. Formúlan yrði Al~2~O~3~.
+Þar sem jónaefnið verður að vera rafhlutlaust verður það að hafa sama fjölda jákvæðra og neikvæðra hleðsla. Tvær áljónir, hvor með hleðsluna 3+, myndu gefa okkur sex jákvæðar hleðslur, og þrjár oxíðjónir, hvor með hleðsluna 2−, myndu gefa okkur sex neikvæðar hleðslur. Formúlan yrði Al~2~O~3~.
 
 <!-- SEG:m68696:para-title:fs-idp219965392-title -->
 Kannaðu þekkingu þína
@@ -407,7 +407,7 @@ Lyftiduft inniheldur kalsíumtvívetnisfosfat, jónaefni sem samanstendur af jó
 Lausn
 
 <!-- SEG:m68696:para:fs-idm24805888 -->
-Jákvæðu og neikvæðu hleðslurnar verða að jafnast út og þetta jónaefni verður að vera rafhlutlaust. Þess vegna verðum við að hafa tvær neikvæðar hleðslur til að jafna út 2+ hleðslu kalsíumjónarinnar. Þetta krefst hlutfallsins ein Ca^2+^ jón á móti tveimur [[MATH:32]] jónum. Við táknum þetta með því að setja formúlu tvívetnisfosfatjónarinnar innan sviga og bæta við neðanskriftinni 2. Formúlan er Ca(H~2~PO~4~)~2~.
+Jákvæðu og neikvæðu hleðslurnar verða að jafnast út og þetta jónaefni verður að vera rafhlutlaust. Þess vegna verðum við að hafa tvær neikvæðar hleðslur til að jafna út 2+ hleðslu kalsíumjónarinnar. Þetta krefst hlutfallsins einnar Ca^2+^ jónar á móti tveimur [[MATH:32]] jónum. Við táknum þetta með því að setja formúlu tvívetnisfosfatjónarinnar innan sviga og bæta við neðanskriftinni 2. Formúlan er Ca(H~2~PO~4~)~2~.
 
 <!-- SEG:m68696:para-title:fs-idp187565648-title -->
 Kannaðu þekkingu þína
@@ -425,16 +425,16 @@ Svar:
 Li~2~O~2~
 
 <!-- SEG:m68696:para:fs-idp288769312 -->
-Þar sem jónaefni er ekki samsett úr stökum, aðskildum sameindum, er ekki víst að það sé rétt táknað með *sameindaformúlu*. Þess í stað verða jónaefni að vera táknuð með formúlu sem gefur til kynna *hlutfallslegan fjölda* jóna sem þau innihalda. Fyrir efnasambönd sem innihalda aðeins einfrumeinda jónir (eins og NaCl) og fyrir mörg efnasambönd sem innihalda fjölfrumeinda jónir (eins og CaSO~4~), eru þessar formúlur einfaldlega reynsluformúlurnar sem kynntar voru fyrr í þessum kafla. Hins vegar eru formúlur sumra jónaefna sem innihalda fjölfrumeinda jónir ekki reynsluformúlur. Til dæmis er jónaefnið natríumoxalat samsett úr Na^+^ og [[MATH:34]] jónum í hlutfallinu 2:1 og formúla þess er skrifuð sem Na~2~C~2~O~4~. Neðanskriftirnar í þessari formúlu eru ekki lægstu mögulegu heiltölurnar, þar sem hægt er að deila í hvora um sig með 2 til að fá reynsluformúluna, NaCO~2~. Þetta er hins vegar ekki viðurkennda formúlan fyrir natríumoxalat, þar sem hún táknar ekki nákvæmlega fjölfrumeinda anjón efnasambandsins, [[MATH:35]]
+Þar sem jónaefni er ekki samsett úr stökum, aðskildum sameindum, er ekki víst að það sé rétt táknað með *sameindaformúlu*. Þess í stað verða jónaefni að vera táknuð með formúlu sem gefur til kynna *hlutfallslegan fjölda* jóna sem þau innihalda. Fyrir efnasambönd sem innihalda aðeins einfrumeinda jónir (eins og NaCl) og fyrir mörg efnasambönd sem innihalda fjölfrumeinda jónir (eins og CaSO~4~), eru þessar formúlur einfaldlega reynsluformúlurnar sem kynntar voru fyrr í þessum kafla. Hins vegar eru formúlur sumra jónaefna sem innihalda fjölfrumeinda jónir ekki reynsluformúlur. Til dæmis er jónaefnið natríumoxalat samsett úr Na^+^ og [[MATH:34]] jónum í hlutfallinu 2:1 og formúla þess er skrifuð sem Na~2~C~2~O~4~. Neðanskriftirnar í þessari formúlu eru ekki lægstu mögulegu heiltölur, þar sem hægt er að deila í hverja þeirra með 2 til að fá reynsluformúluna, NaCO~2~. Þetta er þó ekki viðurkennda formúlan fyrir natríumoxalat, þar sem hún táknar ekki nákvæmlega fjölfrumeinda anjón efnasambandsins, [[MATH:35]]
 
 <!-- SEG:m68696:title:fs-idp133128304-title -->
 Jónaefni
 
 <!-- SEG:m68696:para:fs-idp15116752 -->
-Þegar frumefni sem samanstendur af frumeindum sem missa auðveldlega rafeindir (málmur) hvarfast við frumefni sem samanstendur af frumeindum sem taka auðveldlega við rafeindum (málmleysingi), á sér yfirleitt stað flutningur rafeinda sem myndar jónir. Efnasambandið sem myndast við þennan flutning er stöðugt vegna rafstöðukrafta (jónatengja) milli jóna með gagnstæða hleðslu í efnasambandinu. Til dæmis, þegar hver natríumfrumeind í sýni af natríummálmi (hópur 1) gefur frá sér eina rafeind til að mynda natríumkatjón, Na^+^, og hver klórfrumeind í sýni af klórgasi (hópur 17) tekur við einni rafeind til að mynda klóríðanjón, Cl^−^, er efnasambandið sem myndast, NaCl, samsett úr natríumjónum og klóríðjónum í hlutfallinu ein Na^+^ jón fyrir hverja Cl^−^ jón. Á sama hátt getur hver kalsíumfrumeind (hópur 2) gefið frá sér tvær rafeindir og flutt eina til hvorrar tveggja klórfrumeinda til að mynda CaCl~2~, sem er samsett úr Ca^2+^ og Cl^−^ jónum í hlutfallinu ein Ca^2+^ jón á móti tveimur Cl^−^ jónum.
+Þegar frumefni sem samanstendur af frumeindum sem missa auðveldlega rafeindir (málmur) hvarfast við frumefni sem samanstendur af frumeindum sem taka auðveldlega við rafeindum (málmleysingi), á sér yfirleitt stað flutningur rafeinda sem myndar jónir. Efnasambandið sem myndast við þennan flutning er stöðugt vegna rafstöðukrafta (jónatengja) milli jóna með gagnstæða hleðslu sem eru til staðar í efnasambandinu. Til dæmis, þegar hver natríumfrumeind í sýni af natríummálmi (hópur 1) gefur frá sér eina rafeind til að mynda natríumkatjón, Na^+^, og hver klórfrumeind í sýni af klórgasi (hópur 17) tekur við einni rafeind til að mynda klóríðanjón, Cl^−^, er efnasambandið sem myndast, NaCl, samsett úr natríumjónum og klóríðjónum í hlutfallinu ein Na^+^ jón fyrir hverja Cl^−^ jón. Á svipaðan hátt getur hver kalsíumfrumeind (hópur 2) gefið frá sér tvær rafeindir og flutt eina til hvorrar tveggja klórfrumeinda til að mynda CaCl~2~, sem er samsett úr Ca^2+^ og Cl^−^ jónum í hlutfallinu ein Ca^2+^ jón á móti tveimur Cl^−^ jónum.
 
 <!-- SEG:m68696:para:fs-idp21794832 -->
-Efnasamband sem inniheldur jónir og er haldið saman af jónatengjum er kallað __jónaefni__. Lotukerfið getur hjálpað okkur að þekkja mörg þeirra efnasambanda sem eru jónaefni: Þegar málmur er sameinaður einum eða fleiri málmleysingjum er efnasambandið yfirleitt jónaefni. Þessi viðmiðunarregla virkar vel til að spá fyrir um myndun jónaefna fyrir flest þau efnasambönd sem venjulega koma fyrir á byrjunarnámskeiði í efnafræði. Hún er þó ekki alltaf sönn (til dæmis er álklóríð, AlCl~3~, ekki jónaefni).
+Efnasamband sem inniheldur jónir og er haldið saman af jónatengjum er kallað __jónaefni__. Lotukerfið getur hjálpað okkur að þekkja mörg þeirra efnasambanda sem eru jónaefni: Þegar málmur er sameinaður einum eða fleiri málmleysingjum er efnasambandið yfirleitt jónaefni. Þessi viðmiðunarregla virkar vel til að spá fyrir um myndun jónaefna fyrir flest þau efnasambönd sem venjulega koma fyrir á inngangsnámskeiði í efnafræði. Hún er þó ekki alltaf sönn (til dæmis er álklóríð, AlCl~3~, ekki jónaefni).
 
 <!-- SEG:m68696:para:fs-idp56020048 -->
 Oft er hægt að þekkja jónaefni af eiginleikum þeirra. Jónaefni eru föst efni sem bráðna yfirleitt við hátt hitastig og sjóða við enn hærra hitastig. Til dæmis bráðnar natríumklóríð við 801 °C og sýður við 1413 °C. (Til samanburðar bráðnar sameindaefnið vatn við 0 °C og sýður við 100 °C.) Í föstu formi er jónaefni ekki rafleiðandi vegna þess að jónir þess geta ekki flætt („rafmagn“ er flæði hlaðinna agna). Þegar það er bráðið getur það hins vegar leitt rafmagn vegna þess að jónir þess geta hreyfst frjálslega um vökvann ([#CNX_Chem_02_06_NaClMolten]).
@@ -446,19 +446,19 @@ Natríumklóríð bráðnar við 801 °C og leiðir rafmagn þegar það er brá
 Sameindaefni
 
 <!-- SEG:m68696:para:fs-idp264000688 -->
-Mörg efnasambönd innihalda ekki jónir heldur samanstanda eingöngu af stökum, hlutlausum sameindum. Þessi __sameindaefnasambönd__ (samgild efnasambönd) verða til þegar frumeindir deila rafeindum með sér, frekar en að flytja þær (taka við eða gefa frá sér). Samgild tengi eru mikilvægt og umfangsmikið hugtak í efnafræði og verður fjallað um það í smáatriðum í síðari kafla þessarar bókar. Við getum oft greint sameindaefnasambönd á grundvelli eðliseiginleika þeirra. Við venjulegar aðstæður eru sameindaefnasambönd oft til sem gös, vökvar með lágt suðumark og föst efni með lágt bræðslumark, þótt margar mikilvægar undantekningar séu til.
+Mörg efnasambönd innihalda ekki jónir heldur samanstanda eingöngu af stökum, hlutlausum sameindum. Þessi __sameindaefnasambönd__ (samgild efnasambönd) verða til þegar frumeindir deila rafeindum með sér, frekar en að flytja þær (taka við eða gefa frá sér). Samgild tengi eru mikilvægt og umfangsmikið hugtak í efnafræði og verður fjallað um það í smáatriðum í síðari kafla þessarar bókar. Við getum oft greint sameindaefnasambönd á grundvelli eðliseiginleika þeirra. Við venjulegar aðstæður eru sameindaefnasambönd oft til sem lofttegundir, vökvar með lágt suðumark og föst efni með lágt bræðslumark, þótt margar mikilvægar undantekningar séu til.
 
 <!-- SEG:m68696:para:fs-idp207026896 -->
-Á meðan jónaefni myndast yfirleitt þegar málmur og málmleysingi sameinast, myndast samgild efnasambönd yfirleitt við samsetningu málmleysingja. Þannig getur lotukerfið hjálpað okkur að þekkja mörg þeirra efnasambanda sem eru samgild. Þótt við getum notað staðsetningu frumefna efnasambands í lotukerfinu til að spá fyrir um hvort það sé jónaefni eða samgilt á þessum tímapunkti í efnafræðinámi okkar, ættir þú að vera meðvitaður um að þetta er mjög einfölduð nálgun sem tekur ekki tillit til fjölda áhugaverðra undantekninga. Það eru til grá svæði milli jónaefna og sameindaefnasambanda og þú munt læra meira um þau síðar.
+Á meðan jónaefni myndast yfirleitt þegar málmur og málmleysingi sameinast, myndast samgild efnasambönd yfirleitt við samsetningu málmleysingja. Þannig getur lotukerfið hjálpað okkur að þekkja mörg þeirra efnasambanda sem eru samgild. Þótt við getum notað staðsetningu frumefna efnasambands í lotukerfinu til að spá fyrir um hvort það sé jónískt eða samgilt á þessum tímapunkti í námi okkar í efnafræði, ættir þú að vera meðvitaður um að þetta er mjög einfölduð nálgun sem tekur ekki tillit til fjölda áhugaverðra undantekninga. Það eru til grá svæði milli jónaefna og sameindaefnasambanda og þú munt læra meira um þau síðar.
 
 <!-- SEG:m68696:example-title:fs-idp411086368-title -->
 Spáð fyrir um gerð tengja í efnasamböndum
 
 <!-- SEG:m68696:para:fs-idm2822016 -->
-Spáðu fyrir um hvort eftirfarandi efnasambönd séu jónaefni eða sameindaefni:
+Spáðu fyrir um hvort eftirfarandi efnasambönd séu jónísk eða sameindaefni:
 
 <!-- SEG:m68696:para:fs-idp130747360 -->
-(a) KI, efnasambandið sem er notað sem joðgjafi í matarsalti
+(a) KI, efnasambandið sem er notað sem joðgjafi í matarsalt
 
 <!-- SEG:m68696:para:fs-idp286925488 -->
 (b) H~2~O~2~, bleikiefnið og sótthreinsiefnið vetnisperoxíð
@@ -473,22 +473,22 @@ Spáðu fyrir um hvort eftirfarandi efnasambönd séu jónaefni eða sameindaefn
 Lausn
 
 <!-- SEG:m68696:para:fs-idp173975248 -->
-(a) Kalíum (hópur 1) er málmur og joð (hópur 17) er málmleysingi; spáð er að KI sé jónaefni.
+(a) Kalíum (hópur 1) er málmur og joð (hópur 17) er málmleysingi; spáð er fyrir um að KI sé jónaefni.
 
 <!-- SEG:m68696:para:fs-idp13443888 -->
-(b) Vetni (hópur 1) er málmleysingi og súrefni (hópur 16) er málmleysingi; spáð er að H~2~O~2~ sé sameindaefni.
+(b) Vetni (hópur 1) er málmleysingi og súrefni (hópur 16) er málmleysingi; spáð er fyrir um að H~2~O~2~ sé sameindaefni.
 
 <!-- SEG:m68696:para:fs-idp135354672 -->
-(c) Kolefni (hópur 14) er málmleysingi, vetni (hópur 1) er málmleysingi og klór (hópur 17) er málmleysingi; spáð er að CHCl~3~ sé sameindaefni.
+(c) Kolefni (hópur 14) er málmleysingi, vetni (hópur 1) er málmleysingi og klór (hópur 17) er málmleysingi; spáð er fyrir um að CHCl~3~ sé sameindaefni.
 
 <!-- SEG:m68696:para:fs-idp187587072 -->
-(d) Litíum (hópur 1) er málmur og karbónat er fjölfrumeinda jón; spáð er að Li~2~CO~3~ sé jónaefni.
+(d) Litíum (hópur 1) er málmur og karbónat er fjölfrumeinda jón; spáð er fyrir um að Li~2~CO~3~ sé jónaefni.
 
 <!-- SEG:m68696:para-title:fs-idp4808832-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68696:para:fs-idp4808832 -->
-Notaðu lotukerfið til að spá fyrir um hvort eftirfarandi efnasambönd séu jónaefni eða samgild:
+Notaðu lotukerfið til að spá fyrir um hvort eftirfarandi efnasambönd séu jónísk eða samgild:
 
 <!-- SEG:m68696:para:fs-idp288779408 -->
 (a) SO~2~
@@ -512,16 +512,14 @@ Svar:
 (a) sameindaefni; (b) jónaefni; (c) sameindaefni; (d) jónaefni
 
 <!-- SEG:m68696:title:fs-idp184156752-title -->
-Lykilhugtök og samantekt
-
-<!-- SEG:m68696:para:fs-idp122679888 -->
-Málmar (sérstaklega þeir í hópum 1 og 2) hafa tilhneigingu til að missa þann fjölda rafeinda sem myndi skilja þá eftir með sama fjölda rafeinda og í næstu eðalgastegund á undan í lotukerfinu. Þannig myndast jákvætt hlaðin jón. Á sama hátt geta málmleysingjar (sérstaklega þeir í hópum 16 og 17, og í minna mæli þeir í hópi 15) tekið við þeim fjölda rafeinda sem þarf til að gefa frumeindum sama fjölda rafeinda og í næstu eðalgastegund í lotukerfinu. Þannig hafa málmleysingjar tilhneigingu til að mynda neikvæðar jónir. Jákvætt hlaðnar jónir eru kallaðar katjónir og neikvætt hlaðnar jónir eru kallaðar anjónir. Jónir geta verið annaðhvort einfrumeinda (innihalda aðeins eina frumeind) eða fjölfrumeinda (innihalda fleiri en eina frumeind).
+Lykilhugtök og samantekt<!-- SEG:m68696:para:fs-idp122679888 -->
+Málmar (sérstaklega þeir í flokkum 1 og 2) eiga það til að missa þann fjölda rafeinda sem myndi skilja þá eftir með sama fjölda rafeinda og næsta eðalgas á undan í lotukerfinu. Með þessum hætti myndast jákvætt hlaðin jón. Á sama hátt geta málmleysingjar (sérstaklega þeir í flokkum 16 og 17, og í minna mæli þeir í flokki 15) tekið til sín þann fjölda rafeinda sem þarf til að frumeindirnar fái sama fjölda rafeinda og næsta eðalgas á eftir í lotukerfinu. Þannig eiga málmleysingjar það til að mynda neikvæðar jónir. Jákvætt hlaðnar jónir eru kallaðar katjónir og neikvætt hlaðnar jónir eru kallaðar anjónir. Jónir geta verið annaðhvort einfrumeinda (innihalda aðeins eina frumeind) eða fjölfrumeinda (innihalda fleiri en eina frumeind).
 
 <!-- SEG:m68696:para:fs-idp57422256 -->
 Efnasambönd sem innihalda jónir eru kölluð jónaefni. Jónaefni myndast yfirleitt úr málmum og málmleysingjum. Efnasambönd sem innihalda ekki jónir, heldur samanstanda af frumeindum sem eru þétt tengdar saman í sameindum (óhlaðnir hópar frumeinda sem hegða sér sem ein heild), eru kölluð samgild efnasambönd. Samgild efnasambönd myndast yfirleitt úr tveimur málmleysingjum.
 
 <!-- SEG:m68696:title:fs-idp22868752-title -->
-Efnafræði – verkefni í lok kafla
+Efnafræði – Lokaæfingar kafla
 
 <!-- SEG:m68696:problem:fs-idm58721440 -->
 Notaðu lotukerfið til að spá fyrir um hvort eftirfarandi klóríð séu jónaefni eða samgild: KCl, NCl~3~, ICl, MgCl~2~, PCl~5~ og CCl~4~.
@@ -554,10 +552,10 @@ Fyrir hvert eftirfarandi efnasambanda, tilgreindu hvort það sé jónaefni eða
 (f) Na~2~O
 
 <!-- SEG:m68696:solution:fs-idp108175056 -->
-(a) samgilt; (b) jónískt, Ba^2+^, O^2−^; (c) jónískt, [[MATH:36]] [[MATH:37]] (d) jónískt, Sr^2+^, [[MATH:38]] (e) samgilt; (f) jónískt, Na^+^, O^2−^
+(a) samgilt; (b) jónaefni, Ba^2+^, O^2−^; (c) jónaefni, NH~4~^+^, CO~3~^2-^; (d) jónaefni, Sr^2+^, H~2~PO~4~^−^; (e) samgilt; (f) jónaefni, Na^+^, O^2−^
 
 <!-- SEG:m68696:problem:fs-idp133547504 -->
-Fyrir hvert eftirfarandi efnasambanda, tilgreindu hvort það sé jónískt eða samgilt, og ef það er jónískt, skrifaðu táknin fyrir jónirnar sem í hlut eiga:
+Fyrir hvert eftirfarandi efnasambanda, tilgreindu hvort það sé jónaefni eða samgilt, og ef það er jónaefni, skrifaðu táknin fyrir jónirnar sem í hlut eiga:
 
 <!-- SEG:m68696:problem:fs-idm6279264 -->
 (a) KClO~4~
@@ -584,19 +582,19 @@ Fyrir hvert eftirfarandi jónapara, skrifaðu formúlu efnasambandsins sem þau 
 (a) Ca^2+^, S^2−^
 
 <!-- SEG:m68696:problem:fs-idp65603120 -->
-(b) [[MATH:39]] [[MATH:40]]
+(b) NH~4~^+^, SO~4~^2-^
 
 <!-- SEG:m68696:problem:fs-idp433808032 -->
 (c) Al^3+^, Br^−^
 
 <!-- SEG:m68696:problem:fs-idp95434032 -->
-(d) Na^+^, [[MATH:41]]
+(d) Na^+^, HPO~4~^2-^
 
 <!-- SEG:m68696:problem:fs-idp106885728 -->
-(e) Mg^2+^, [[MATH:42]]
+(e) Mg^2+^, PO~4~^3-^
 
 <!-- SEG:m68696:solution:fs-idp411135344 -->
-(a) CaS; (b) (NH~4~)~2~SO~4~; (c) AlBr~3~; (d) Na~2~HPO~4~; (e) Mg~3~ (PO~4~)~2~
+(a) CaS; (b) (NH~4~)~2~SO~4~; (c) AlBr~3~; (d) Na~2~HPO~4~; (e) Mg~3~(PO~4~)~2~
 
 <!-- SEG:m68696:problem:fs-idp56590528 -->
 Fyrir hvert eftirfarandi jónapara, skrifaðu formúlu efnasambandsins sem þau munu mynda:
@@ -605,16 +603,16 @@ Fyrir hvert eftirfarandi jónapara, skrifaðu formúlu efnasambandsins sem þau 
 (a) K^+^, O^2−^
 
 <!-- SEG:m68696:problem:fs-idp236810896 -->
-(b) [[MATH:43]] [[MATH:44]]
+(b) Na^+^, HCO~3~^−^
 
 <!-- SEG:m68696:problem:fs-idp62582192 -->
 (c) Al^3+^, O^2−^
 
 <!-- SEG:m68696:problem:fs-idp19798176 -->
-(d) Na^+^, [[MATH:45]]
+(d) Na^+^, CO~3~^2-^
 
 <!-- SEG:m68696:problem:fs-idp143769280 -->
-(e) Ba^2+^, [[MATH:46]]
+(e) Ba^2+^, PO~4~^3-^
 
 <!-- SEG:m68696:glossary-term:fs-idp97231552-term -->
 samgilt tengi
@@ -626,19 +624,19 @@ aðdráttarkraftur milli kjarna frumeinda sameindar og rafeindapara milli frumei
 samgilt efnasamband
 
 <!-- SEG:m68696:glossary-def:fs-idp184530720-def -->
-(einnig, sameindaefnasamband) samsett úr sameindum sem myndaðar eru af frumeindum tveggja eða fleiri mismunandi frumefna
+(einnig, sameindaefni) samsett úr sameindum sem myndast af frumeindum tveggja eða fleiri mismunandi frumefna
 
 <!-- SEG:m68696:glossary-term:fs-idp160949776-term -->
 jónatengi
 
 <!-- SEG:m68696:glossary-def:fs-idp160949776-def -->
-rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna í jónaefni
+rafstöðukraftar sem toga saman gagnstætt hlaðnar jónir í jónaefni
 
 <!-- SEG:m68696:glossary-term:fs-idp182712496-term -->
 jónaefni
 
 <!-- SEG:m68696:glossary-def:fs-idp182712496-def -->
-efnasamband samsett úr katjónum og anjónum sameinuðum í hlutföllum, sem gefur rafhlutlaust efni
+efnasamband sem samanstendur af katjónum og anjónum í hlutföllum sem gefa rafhlutlaust efni
 
 <!-- SEG:m68696:glossary-term:fs-idp93864192-term -->
 sameindaefnasamband
@@ -650,16 +648,16 @@ sameindaefnasamband
 einfrumeinda jón
 
 <!-- SEG:m68696:glossary-def:fs-idp136404896-def -->
-jón samsett úr einni frumeind
+jón sem samanstendur af einni frumeind
 
 <!-- SEG:m68696:glossary-term:fs-idp484916992-term -->
 oxýanjón
 
 <!-- SEG:m68696:glossary-def:fs-idp484916992-def -->
-fjölfrumeinda anjón samsett úr miðlægri frumeind sem er tengd við súrefnisfrumeindir
+fjölfrumeinda anjón sem samanstendur af miðlægri frumeind sem er tengd við súrefnisfrumeindir
 
 <!-- SEG:m68696:glossary-term:fs-idp93746160-term -->
 fjölfrumeinda jón
 
 <!-- SEG:m68696:glossary-def:fs-idp93746160-def -->
-jón samsett úr fleiri en einni frumeind
+jón sem samanstendur af fleiri en einni frumeind

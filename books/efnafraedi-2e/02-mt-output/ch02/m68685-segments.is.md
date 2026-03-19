@@ -14,10 +14,10 @@ Notað kenningarsetningar atómkenningar Daltons til að útskýra lögmálið u
 Efni er samsett úr afar smáum eindum sem kallast frumeindir. __Frumeind__ er minnsta eining frumefnis sem getur tekið þátt í efnabreytingu.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-2 -->
-__Frumefni__ samanstendur af aðeins einni tegund frumeindar, sem hefur massa sem er einkennandi fyrir frumefnið og er sá sami fyrir allar frumeindir þess frumefnis ([#CNX_Chem_02_01_Dalton1]). Stórsætt sýni af frumefni inniheldur ótrúlega mikinn fjölda frumeinda, sem allar hafa sömu efnaeiginleika.
+__Frumefni__ samanstendur af aðeins einni tegund frumeinda, sem hefur massa sem er einkennandi fyrir frumefnið og er sá sami fyrir allar frumeindir þess frumefnis ([#CNX_Chem_02_01_Dalton1]). Stórsætt sýni af frumefni inniheldur ótrúlega mikinn fjölda frumeinda, sem allar hafa sömu efnaeiginleika.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-3 -->
-Frumeindir eins frumefnis hafa aðra eiginleika en frumeindir allra annarra frumefna.
+Frumeindir eins frumefnis eru ólíkar að eiginleikum frumeindum allra annarra frumefna.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-4 -->
 Efnasamband samanstendur af frumeindum tveggja eða fleiri frumefna sem eru sameinuð í litlu heiltöluhlutfalli. Í tilteknu efnasambandi er fjöldi frumeinda hvers frumefnis alltaf í sama hlutfalli ([#CNX_Chem_02_01_Dalton2]).
@@ -35,16 +35,16 @@ Sýn Aristótelesar á samsetningu efnis var ríkjandi í yfir tvö þúsund ár
 Kopareyrir frá því fyrir 1982 (til vinstri) inniheldur um það bil 3 [[MATH:1]] 10^22^ koparfrumeindir (nokkrir tugir eru sýndir sem brúnar kúlur til hægri), sem hver um sig hefur sömu efnaeiginleika. (heimild: breyting á verki eftir „slgckgc“/Flickr)
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton2-caption -->
-Kopar(II)oxíð, duftkennt, svart efnasamband, verður til við samruna tveggja tegunda frumeinda – kopars (brúnar kúlur) og súrefnis (rauðar kúlur) – í hlutfallinu 1:1. (heimild: breyting á verki eftir „Chemicalinterest“/Wikimedia Commons)
+Kopar(II)oxíð, duftkennt, svart efnasamband, myndast við samruna tveggja tegunda frumeinda – kopars (brúnar kúlur) og súrefnis (rauðar kúlur) – í hlutfallinu 1:1. (heimild: breyting á verki eftir „Chemicalinterest“/Wikimedia Commons)
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton3-caption -->
 Þegar frumefnin kopar (glansandi, rauðbrúnt fast efni, sýnt hér sem brúnar kúlur) og súrefni (tært og litlaust gas, sýnt hér sem rauðar kúlur) hvarfast, endurraðast frumeindir þeirra og mynda efnasamband sem inniheldur kopar og súrefni (duftkennt, svart fast efni). (heimild kopar: breyting á verki eftir http://images-of-elements.com/copper.php)
 
 <!-- SEG:m68685:para:fs-idp64032864 -->
-Atómkenning Daltons gefur smásæja skýringu á mörgum stórsæjum eiginleikum efnis sem þú hefur lært um. Til dæmis, ef frumefni eins og kopar samanstendur af aðeins einni tegund frumeindar, þá er ekki hægt að brjóta það niður í einfaldari efni, það er að segja í efni sem eru samsett úr færri tegundum frumeinda. Og ef frumeindir hvorki verða til né eyðast við efnabreytingu, þá helst heildarmassi efnisins óbreyttur þegar efni breytist úr einni tegund í aðra (lögmálið um varðveislu efnisins).
+Atómkenning Daltons gefur smásæja skýringu á mörgum stórsæjum eiginleikum efnis sem þú hefur lært um. Til dæmis, ef frumefni eins og kopar samanstendur af aðeins einni tegund frumeinda, þá er ekki hægt að brjóta það niður í einfaldari efni, það er að segja í efni sem eru samsett úr færri tegundum frumeinda. Og ef frumeindir hvorki verða til né eyðast við efnabreytingu, þá helst heildarmassi efnisins óbreyttur þegar efni breytist úr einni tegund í aðra (lögmálið um varðveislu efnisins).
 
 <!-- SEG:m68685:example-title:fs-idp23171216-title -->
-Að prófa atómkenningu Daltons
+Prófun á atómkenningu Daltons
 
 <!-- SEG:m68685:para:fs-idm69166560 -->
 Á eftirfarandi teikningu tákna grænu kúlurnar frumeindir ákveðins frumefnis. Fjólubláu kúlurnar tákna frumeindir annars frumefnis. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum atómkenningar Daltons? Ef svo er, hverja?
@@ -128,7 +128,7 @@ C
 Það er rétt að geta þess að þótt öll sýni af tilteknu efnasambandi hafi sama massahlutfall, þá er hið gagnstæða almennt ekki rétt. Það er að segja, sýni sem hafa sama massahlutfall eru ekki endilega sama efnið. Til dæmis eru til mörg önnur efnasambönd en ísóoktan sem hafa einnig massahlutfall kolefnis á móti vetni sem er 5,33:1,00.
 
 <!-- SEG:m68685:para:fs-idp113358288 -->
-Dalton notaði einnig gögn frá Proust, auk niðurstaðna úr eigin tilraunum, til að setja fram annað áhugavert lögmál. __Lögmálið um margföld massahlutföll__ segir að *þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi annars frumefnisins hvarfast við massa hins frumefnisins í hlutfalli lítilla, heilla talna*. Til dæmis geta kopar og klór myndað grænt, kristalkennt fast efni með massahlutfallið 0,558 g af klór á móti 1 g af kopar, auk brúns, kristalkennds fasts efnis með massahlutfallið 1,116 g af klór á móti 1 g af kopar. Þessi hlutföll í sjálfu sér virðast kannski ekki sérstaklega áhugaverð eða upplýsandi; hins vegar, ef við tökum hlutfall þessara hlutfalla, fáum við gagnlega og ef til vill óvænta niðurstöðu: lítið heiltöluhlutfall.
+Dalton notaði einnig gögn frá Proust, auk niðurstaðna úr eigin tilraunum, til að setja fram annað áhugavert lögmál. __Lögmálið um margföld massahlutföll__ segir að *þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi annars frumefnisins hvarfast við massa hins frumefnisins í hlutfalli lítilla, heilla talna*. Til dæmis geta kopar og klór myndað grænt, kristalkennt fastefni með massahlutfallið 0,558 g af klór á móti 1 g af kopar, auk brúns, kristalkennds fastefnis með massahlutfallið 1,116 g af klór á móti 1 g af kopar. Þessi hlutföll í sjálfu sér virðast kannski ekki sérlega áhugaverð eða fræðandi; hins vegar, ef við tökum hlutfall þessara hlutfalla, fáum við gagnlega og hugsanlega óvænta niðurstöðu: hlutfall lítilla, heilla talna.
 
 <!-- SEG:m68685:para:fs-idp35032848 -->
 Þetta 2-á-móti-1 hlutfall þýðir að brúna efnasambandið hefur tvöfalt meira magn af klór á hvert magn af kopar en græna efnasambandið.
@@ -143,7 +143,7 @@ Dalton notaði einnig gögn frá Proust, auk niðurstaðna úr eigin tilraunum, 
 Lögmálin um föst og margföld massahlutföll
 
 <!-- SEG:m68685:para:fs-idp31315072 -->
-Sýni af efnasambandi A (tært, litlaust gas) er greint og reynist innihalda 4,27 g af kolefni og 5,69 g af súrefni. Sýni af efnasambandi B (einnig tært, litlaust gas) er greint og reynist innihalda 5,19 g af kolefni og 13,84 g af súrefni. Eru þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld massahlutföll, eða hvorugt? Hvað segja þessi gögn þér um efnin A og B?
+Sýni af efnasambandi A (glært, litlaust gas) er greint og reynist innihalda 4,27 g af kolefni og 5,69 g af súrefni. Sýni af efnasambandi B (einnig glært, litlaust gas) er greint og reynist innihalda 5,19 g af kolefni og 13,84 g af súrefni. Eru þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld massahlutföll eða hvorugt? Hvað segja þessi gögn þér um efnin A og B?
 
 <!-- SEG:m68685:para-title:fs-idm71104640-title -->
 Lausn
@@ -164,10 +164,10 @@ Hlutfall þessara hlutfalla er:[[BR]] [[MATH:7]]
 Kannaðu þekkingu þína
 
 <!-- SEG:m68685:para:fs-idp13365184 -->
-Sýni af efnasambandi X (tær, litlaus, eldfimur vökvi með áberandi lykt) er greint og reynist innihalda 14,13 g af kolefni og 2,96 g af vetni. Sýni af efnasambandi Y (tær, litlaus, eldfimur vökvi með áberandi lykt sem er örlítið frábrugðin lykt X) er greint og reynist innihalda 19,91 g af kolefni og 3,34 g af vetni. Eru þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld massahlutföll, eða hvorugt? Hvað segja þessi gögn þér um efnin X og Y?
+Sýni af efnasambandi X (glær, litlaus, eldfimur vökvi með áberandi lykt) er greint og reynist innihalda 14,13 g af kolefni og 2,96 g af vetni. Sýni af efnasambandi Y (glær, litlaus, eldfimur vökvi með áberandi lykt sem er örlítið frábrugðin lykt X) er greint og reynist innihalda 19,91 g af kolefni og 3,34 g af vetni. Eru þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld massahlutföll eða hvorugt? Hvað segja þessi gögn þér um efnin X og Y?
 
 <!-- SEG:m68685:para:fs-idp130268400 -->
-Í efnasambandi X er massahlutfall kolefnis á móti vetni [[MATH:8]] Í efnasambandi Y er massahlutfall kolefnis á móti vetni [[MATH:9]] Hlutfall þessara hlutfalla er [[MATH:10]] Þetta litla heiltöluhlutfall styður lögmálið um margföld massahlutföll. Þetta þýðir að X og Y eru mismunandi efnasambönd.
+Í efnasambandi X er massahlutfall kolefnis á móti vetni [[MATH:8]] Í efnasambandi Y er massahlutfall kolefnis á móti vetni [[MATH:9]] Hlutfall þessara hlutfalla er [[MATH:10]] Þetta hlutfall lítilla, heilla talna styður lögmálið um margföld massahlutföll. Þetta þýðir að X og Y eru mismunandi efnasambönd.
 
 <!-- SEG:m68685:note-title:fs-idp90686448-title -->
 Svar:
@@ -179,28 +179,28 @@ Svar:
 Lykilhugtök og samantekt
 
 <!-- SEG:m68685:para:fs-idm8092064 -->
-Forn-Grikkir lögðu til að efni samanstæði af afar litlum eindum sem kallast frumeindir. Dalton setti fram þá kenningu að hvert frumefni hefði sérstaka tegund frumeindar sem væri ólík í eiginleikum frumeindum allra annarra frumefna og að frumeindir mismunandi frumefna gætu sameinast í föstum, litlum heiltöluhlutföllum til að mynda efnasambönd. Sýni af tilteknu efnasambandi hafa öll sömu frumefnahlutföll miðað við massa. Þegar tvö frumefni mynda mismunandi efnasambönd mun tiltekinn massi af öðru frumefninu sameinast massaeiningum hins frumefnisins í litlu heiltöluhlutfalli. Við efnabreytingu verða frumeindir hvorki til né eyðast.
+Forngrikkir lögðu til að efni samanstæði af afar smáum eindum sem kallast frumeindir. Dalton setti fram þá kenningu að hvert frumefni hefði einkennandi gerð frumeindar sem væri ólík í eiginleikum frumeindum allra annarra frumefna og að frumeindir mismunandi frumefna gætu sameinast í föstum, litlum heiltöluhlutföllum til að mynda efnasambönd. Sýni af tilteknu efnasambandi hafa öll sömu frumefnahlutföll miðað við massa. Þegar tvö frumefni mynda mismunandi efnasambönd mun tiltekinn massi af öðru frumefninu sameinast massa hins frumefnisins í litlu heiltöluhlutfalli. Við efnabreytingu verða frumeindir hvorki til né eyðast.
 
 <!-- SEG:m68685:title:fs-idm51563888-title -->
 Efnafræði – Æfingar í lok kafla
 
 <!-- SEG:m68685:problem:fs-idm80213408 -->
-Á eftirfarandi teikningu tákna grænu kúlurnar frumeindir ákveðins frumefnis. Fjólubláu kúlurnar tákna frumeindir annars frumefnis. Ef kúlur mismunandi frumefna snertast eru þær hluti af einni einingu efnasambands. Eftirfarandi efnabreyting, sem táknuð er með þessum kúlum, gæti brotið í bága við eina af hugmyndum atómkenningar Daltons. Hverja? [[BR]]
+Á eftirfarandi teikningu tákna grænu kúlurnar frumeindir ákveðins frumefnis. Fjólubláu kúlurnar tákna frumeindir annars frumefnis. Ef kúlur mismunandi frumefna snertast eru þær hluti af einni einingu efnasambands. Efnabreytingin sem sýnd er með þessum kúlum gæti brotið í bága við eina af hugmyndum atómkenningar Daltons. Hverja þeirra?[[BR]]
 
 <!-- SEG:m68685:solution:fs-idp159650544 -->
 Hvarfefnin samanstanda af einni grænni kúlu og tveimur fjólubláum kúlum. Myndefnin samanstanda af tveimur grænum kúlum og tveimur fjólubláum kúlum. Þetta brýtur í bága við kenningarsetningu Daltons um að frumeindir verði ekki til við efnabreytingu, heldur endurraðist aðeins.
 
 <!-- SEG:m68685:problem:fs-idp88764640 -->
-Hvaða kenningarsetning í kenningu Daltons er í samræmi við eftirfarandi athugun varðandi þyngd hvarfefna og myndefna? Þegar 100 grömm af föstu kalsíumkarbónati eru hituð myndast 44 grömm af koldíoxíði og 56 grömm af kalsíumoxíði.
+Hvaða kenningarsetning í kenningu Daltons er í samræmi við eftirfarandi athugun varðandi massa hvarfefna og myndefna? Þegar 100 grömm af föstu kalsíumkarbónati eru hituð myndast 44 grömm af koldíoxíði og 56 grömm af kalsíumoxíði.
 
 <!-- SEG:m68685:problem:fs-idm69044608 -->
-Tilgreindu hvaða kenningarsetningu í kenningu Daltons er brotið í bága við með eftirfarandi athugunum: 59,95% af einu sýni af títandíoxíði er títan; 60,10% af öðru sýni af títandíoxíði er títan.
+Tilgreindu þá kenningarsetningu í kenningu Daltons sem brotið er í bága við með eftirfarandi athugunum: 59,95% af einu sýni af títandíoxíði er títan; 60,10% af öðru sýni af títandíoxíði er títan.
 
 <!-- SEG:m68685:solution:fs-idp110196432 -->
 Þessi staðhæfing brýtur í bága við fjórðu kenningarsetningu Daltons: Í tilteknu efnasambandi hefur fjöldi frumeinda af hverri gerð (og þar með einnig prósentuhlutfallið) alltaf sama hlutfall.
 
 <!-- SEG:m68685:problem:fs-idp38338048 -->
-Sýni af efnasamböndunum X, Y og Z eru greind og niðurstöðurnar eru sýndar hér.
+Sýni af efnasamböndunum X, Y og Z eru greind og niðurstöðurnar sýndar hér.
 
 <!-- SEG:m68685:problem:fs-idm32094368 -->
 Sýna þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld massahlutföll, hvorugt eða bæði? Hvað segja þessi gögn þér um efnasamböndin X, Y og Z?

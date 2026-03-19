@@ -3,219 +3,83 @@
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68793</md:content-id>
   <md:title>Árekstrakenningin</md:title>
-  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Notað kenningarsetningar
-árekstrakenningarinnar til að útskýra áhrif efnisástands, hitastigs og
-styrks á hvarfhraða</item><item>Skilgreint hugtökin
-virkjunarorka og virkniástand</item><item>Notað Arrheniusarjöfnuna í
-útreikningum sem tengja hraðafasta við hitastig</item></list></md:abstract>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Notað fullyrðingar árekstrakenningarinnar til að útskýra áhrif efnisástands, hitastigs og styrks á hraða efnahvarfa</item><item>Skilgreint hugtökin virkjunarorka og virkniástand</item><item>Notað Arrheniusarjöfnuna í útreikningum sem tengja hraðafasta við hitastig</item></list></md:abstract>
   <md:uuid>c63c9485-0971-4fce-a831-9d1b2ace526a</md:uuid>
 </metadata>
 
 <content>
-<para id="fs-idm107951360">Það ætti ekki að koma okkur á óvart
-að atóm, sameindir eða jónir verða að rekast á áður en þau geta hvarfast
-hvert við annað. Atóm verða að vera nálægt hvort öðru til að mynda
-efnatengi. Þessi einfalda forsenda er grundvöllur að mjög öflugri
-kenningu sem útskýrir margar athuganir varðandi efnahvörf, þar á meðal
-þætti sem hafa áhrif á hvarfhraða.</para>
-<para id="fs-idm148062976"><term id="term-00001">Árekstrakenningin (e. collision theory)</term> byggir á
-eftirfarandi kenningarsetningum:</para>
+<para id="fs-idm107951360">Það ætti ekki að koma á óvart að frumeindir, sameindir eða jónir verða að rekast á áður en þær geta hvarfast hver við aðra. Frumeindir verða að vera nálægt hvor annarri til að mynda efnatengi. Þessi einfalda forsenda er grundvöllur að mjög öflugri kenningu sem útskýrir margar athuganir varðandi efnahvörf, þar á meðal þá þætti sem hafa áhrif á hraða efnahvarfa.</para>
+<para id="fs-idm148062976"><term id="term-00001">Árekstrakenningin (e. collision theory)</term> byggir á eftirfarandi fullyrðingum:</para>
 <list id="fs-idm90348816" list-type="enumerated" number-style="arabic">
-<item>Hraði efnahvarfs er í réttu
-hlutfalli við árekstrartíðni hvarfefna: <m:math><m:mrow><m:mtext>reaction rate</m:mtext><m:mspace width="0.2em"/><m:mo>∝</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>#</m:mo><m:mspace width="0.2em"/><m:mtext>collisions</m:mtext></m:mrow><m:mrow><m:mtext>time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></item>
-<item>Hvarfefnin verða að rekast á í
-stefnu sem leyfir snertingu milli atómanna sem munu tengjast saman í
-myndefninu.</item>
-<item>Áreksturinn verður að eiga sér
-stað með nægilegri orku til að leyfa gagnkvæma íferð gildisrafeindaskála
-hvarfefnanna svo að rafeindirnar geti endurraðast og myndað ný tengi (og
-ný efnasambönd).</item>
+<item>Hraði efnahvarfs er í réttu hlutfalli við árekstrartíðni hvarfefna: </item>
+<item>Hvarfefnin verða að rekast á með þeirri afstöðu að snerting verði milli þeirra frumeinda sem munu tengjast saman í myndefninu.</item>
+<item>Áreksturinn verður að eiga sér stað með nægilegri orku til að leyfa gagnkvæma íferð girðisvigrúma hvarfefnanna svo að rafeindirnar geti endurraðast og myndað ný tengi (og ný efnasambönd).</item>
 </list>
-<para id="fs-idm136564352">Hraði efnahvarfs er í réttu
-hlutfalli við árekstrartíðni hvarfefna:</para>
+<para id="fs-idm136564352">Hraði efnahvarfs er í réttu hlutfalli við árekstrartíðni hvarfefna:</para>
 <equation id="fs-idm98497056" class="unnumbered"><m:math><m:mrow><m:mtext>reaction rate</m:mtext><m:mspace width="0.2em"/><m:mo>∝</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>#</m:mo><m:mspace width="0.2em"/><m:mtext>collisions</m:mtext></m:mrow><m:mrow><m:mtext>time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idm124479808">Hvarfefnin verða að rekast á í
-stefnu sem leyfir snertingu milli atómanna sem munu tengjast saman í
-myndefninu.</para>
-<para id="fs-idm122867808">Áreksturinn verður að eiga sér stað
-með nægilegri orku til að leyfa gagnkvæma íferð gildisrafeindaskála
-hvarfefnanna svo að rafeindirnar geti endurraðast og myndað ný tengi (og
-ný efnasambönd).</para>
-<para id="fs-idm60879872">Við getum séð mikilvægi tveggja
-eðlisfræðilegra þátta sem nefndir eru í kenningarsetningum 2 og 3,
-stefnu og orku árekstra, þegar við skoðum efnahvarf kolmónoxíðs við
-súrefni:</para>
+<para id="fs-idm124479808">Hvarfefnin verða að rekast á með þeirri afstöðu að snerting verði milli þeirra frumeinda sem munu tengjast saman í myndefninu.</para>
+<para id="fs-idm122867808">Áreksturinn verður að eiga sér stað með nægilegri orku til að leyfa gagnkvæma íferð girðisvigrúma hvarfefnanna svo að rafeindirnar geti endurraðast og myndað ný tengi (og ný efnasambönd).</para>
+<para id="fs-idm60879872">Við sjáum mikilvægi þessara tveggja eðlisfræðilegu þátta sem nefndir eru í fullyrðingum 2 og 3, afstöðu og orku árekstra, þegar við skoðum efnahvarf kolmónoxíðs við súrefni:</para>
 <equation id="fs-idm160481344" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>CO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idp29940560">Kolmónoxíð er mengunarefni sem
-myndast við bruna á kolvetniseldsneyti. Til að draga úr þessu
-mengunarefni eru bílar með hvarfakúta sem nota hvata til að framkvæma
-þetta efnahvarf. Það er einnig aukaefnahvarf við bruna byssupúðurs sem
-veldur hlaupglampa í mörgum skotvopnum. Ef kolmónoxíð og súrefni eru til
-staðar í nægilegu magni mun efnahvarfið eiga sér stað við hátt hitastig
-og þrýsting.</para>
-<para id="fs-idm121786272">Fyrsta skrefið í gasfasaefnahvarfi
-milli kolmónoxíðs og súrefnis er árekstur milli sameindanna tveggja:</para>
+<para id="fs-idp29940560">Kolmónoxíð er mengunarefni sem myndast við bruna á kolvetniseldsneyti. Til að draga úr þessu mengunarefni eru bílar með hvarfakúta sem nota hvata til að framkvæma þetta efnahvarf. Það er einnig aukaafurð við bruna byssupúðurs sem veldur hlaupglampa í mörgum skotvopnum. Ef kolmónoxíð og súrefni eru til staðar í nægilegu magni mun efnahvarfið eiga sér stað við hátt hitastig og þrýsting.</para>
+<para id="fs-idm121786272">Fyrsta skrefið í efnahvarfi kolmónoxíðs og súrefnis á gasfasa er árekstur milli sameindanna tveggja:</para>
 <equation id="fs-idm53948736" class="unnumbered"><m:math><m:mrow><m:mtext>CO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idm34761136">Þó að það séu margar mismunandi
-mögulegar stefnur sem sameindirnar tvær geta haft miðað við hvor aðra,
-skulum við skoða þær tvær sem sýndar eru í <link target-id="CNX_Chem_12_05_COandO2"/>. Í fyrra tilvikinu
-rekst súrefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Í
-seinna tilvikinu rekst kolefnishlið kolmónoxíðsameindarinnar á
-súrefnissameindina. Seinna tilvikið er augljóslega líklegra til að leiða
-til myndunar koldíoxíðs, sem hefur miðlægt kolefnisatóm tengt tveimur
-súrefnisatómum <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math>. Þetta er frekar einfalt dæmi um hversu
-mikilvæg stefna árekstursins er til að mynda æskilegt myndefni
-efnahvarfsins.</para>
+<para id="fs-idm34761136">Þótt það séu margar mismunandi mögulegar afstæður sem sameindirnar tvær geta haft hvor miðað við aðra, skulum við skoða þær tvær sem sýndar eru á <link target-id="CNX_Chem_12_05_COandO2"/>. Í fyrra tilvikinu rekst súrefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Í seinna tilvikinu rekst kolefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Seinna tilvikið er augljóslega líklegra til að leiða til myndunar koldíoxíðs, sem hefur miðlæga kolefnisfrumeind tengda tveimur súrefnisfrumeindum <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math>. Þetta er frekar einfalt dæmi um hversu mikilvæg afstaða árekstursins er hvað varðar myndun áætlaðs myndefnis efnahvarfsins.</para>
 <figure id="CNX_Chem_12_05_COandO2" class="scaled-down">
 <media id="fs-idm101946976" alt="A diagram is shown that illustrates two possible collisions between C O and O subscript 2. In the diagram, oxygen atoms are represented as red spheres and carbon atoms are represented as black spheres. The diagram is divided into upper and lower halves by a horizontal dashed line. At the top left, a C O molecule is shown striking an O subscript 2 molecule such that the O atom from the C O molecule is at the point of collision. Surrounding this collision are a mix of molecules of C O, and O subscript 2 of varying sizes. At the top middle region of the figure, two separated O atoms are shown as red spheres with the label, “Oxygen to oxygen,” beneath them. To the upper right, “No reaction” is written. Similarly in the lower left of the diagram, a C O molecule is shown striking an O subscript 2 molecule such that the C atom from the C O molecule is at the point of collision. Surrounding this collision are a mix of molecules of C O, and O subscript 2 of varying sizes. At the lower middle region of the figure, a black sphere and a red spheres are shown with the label, “Carbon to oxygen,” beneath them. To the lower right, “More C O subscript 2 formation” is written and three models of C O subscript 2 composed each of a single central black sphere and two red spheres in a linear arrangement are shown.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_05_COandO2.jpg"/>
 </media>
-<caption>Sýndir eru tveir
-árekstrar sem gætu átt sér stað milli kolmónoxíð- og súrefnissameinda.
-Stefna sameindanna sem rekast á ræður að hluta til hvort efnahvarf milli
-sameindanna tveggja muni eiga sér stað.</caption>
+<caption>Myndin sýnir tvo árekstra sem gætu átt sér stað milli kolmónoxíð- og súrefnissameinda. Afstaða sameindanna sem rekast á ræður að hluta til því hvort efnahvarf eigi sér stað milli þeirra.</caption>
 </figure>
-<para id="fs-idm58992896">Ef áreksturinn á sér stað með réttri
-stefnu er samt engin trygging fyrir því að efnahvarfið haldi áfram og
-myndi koldíoxíð. Auk réttarar stefnu verður áreksturinn einnig að eiga
-sér stað með nægilegri orku til að leiða til myndunar myndefnis. Þegar
-hvarfefni rekast á með bæði réttri stefnu og nægilegri orku, sameinast
-þau og mynda óstöðugt efni sem kallast <term id="term-00002">virkjaður flóki (e. activated complex)</term> eða
-<term id="term-00003">virkniástand (e. transition state)</term>. Þessi efni eru mjög skammlíf og yfirleitt ógreinanleg
-með flestum greiningartækjum. Í sumum tilfellum hafa háþróaðar
-litrófsmælingar verið notaðar til að fylgjast með virkniástöndum.</para>
-<para id="fs-idm207258608">Árekstrakenningin útskýrir hvers
-vegna flestir hvarfhraðar aukast þegar styrkur eykst. Með aukningu á
-styrk hvers hvarfefnis aukast líkurnar á árekstrum milli sameinda vegna
-þess að það eru fleiri sameindir á rúmmálseiningu. Fleiri árekstrar þýða
-meiri hvarfhraða, að því gefnu að orka árekstranna sé nægileg.</para>
+<para id="fs-idm58992896">Jafnvel þótt áreksturinn eigi sér stað með réttri afstöðu er samt engin trygging fyrir því að efnahvarfið haldi áfram og myndi koldíoxíð. Auk réttrar afstöðu verður áreksturinn einnig að eiga sér stað með nægilegri orku til að leiða til myndunar myndefnis. Þegar hvarfefni rekast á með bæði réttri afstöðu og nægilegri orku, sameinast þau og mynda óstöðugt efni sem kallast <term id="term-00002">virkjuð samstæða (e. activated complex)</term> eða <term id="term-00003">virkniástand (e. transition state)</term>. Þessi efni eru mjög skammlíf og yfirleitt ógreinanleg með flestum mælitækjum. Í sumum tilfellum hafa flóknar litrófsmælingar verið notaðar til að greina virkniástand.</para>
+<para id="fs-idm207258608">Árekstrakenningin útskýrir hvers vegna hraði flestra efnahvarfa eykst þegar styrkur eykst. Með auknum styrk hvers hvarfefnis aukast líkurnar á árekstrum milli sameinda vegna þess að það eru fleiri sameindir á rúmmálseiningu. Fleiri árekstrar þýða meiri hvarfhraða, að því gefnu að orka árekstranna sé nægileg.</para>
 <section id="fs-idm122484320">
-<title>Virkjunarorka og
-Arrheniusarjafnan</title>
-<para id="fs-idm102149680">Lágmarksorkan sem er nauðsynleg til
-að mynda myndefni við árekstur milli hvarfefna er kölluð *<emphasis effect="italics">virkjunarorka
-(</emphasis>E<emphasis effect="italics"><sub>a</sub>)</emphasis>*. Hvernig þessi orka er í samanburði við hreyfiorku sem
-áreknar hvarfefnissameindir veita er aðalþátturinn sem hefur áhrif á
-hraða efnahvarfs. Ef virkjunarorkan er mun stærri en meðalhreyfiorka
-sameindanna mun efnahvarfið eiga sér stað hægt þar sem aðeins fáar
-hraðvirkar sameindir munu hafa næga orku til að hvarfast. Ef
-virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór
-hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt
-fyrir sig.</para>
-<para id="fs-idm3588352"><link target-id="CNX_Chem_12_05_RCooDgm"/> sýnir hvernig orka
-efnafræðilegs kerfis breytist þegar það gengst undir efnahvarf sem
-breytir hvarfefnum í myndefni samkvæmt jöfnunni</para>
+<title>Virkjunarorka og Arrheniusarjafnan</title>
+<para id="fs-idm102149680">Lágmarksorkan sem er nauðsynleg til að mynda myndefni við árekstur milli hvarfefna er kölluð <term id="term-00004">virkjunarorka (<emphasis effect="italics">E</emphasis><sub>a</sub>) (e. activation energy (<emphasis effect="italics">e</emphasis><sub>a</sub>))</term>. Hvernig þessi orka er í samanburði við hreyfiorku sem áreknar hvarfefnissameindir búa yfir er aðalþátturinn sem hefur áhrif á hraða efnahvarfs. Ef virkjunarorkan er mun meiri en meðalhreyfiorka sameindanna mun efnahvarfið ganga hægt þar sem aðeins fáar hraðfara sameindir munu hafa næga orku til að hvarfast. Ef virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt.</para>
+<para id="fs-idm3588352"><link target-id="CNX_Chem_12_05_RCooDgm"/> sýnir hvernig orka efnakerfis breytist þegar það gengur í gegnum efnahvarf sem breytir hvarfefnum í myndefni samkvæmt jöfnunni</para>
 <equation id="fs-idm156839952" class="unnumbered"><m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi></m:mrow></m:math></equation>
-<para id="fs-idm92123120">Þessi <term id="term-00005">hvarfrit (e. reaction diagrams)</term> eru mikið notuð í
-efnahraðafræði til að sýna ýmsa eiginleika hvarfsins sem um ræðir. Ef
-litið er á ritið frá vinstri til hægri samanstendur kerfið í upphafi
-aðeins af hvarfefnum, <emphasis effect="italics">A</emphasis> + <emphasis effect="italics">B</emphasis>. Hvarfefnasameindir með nægilega orku
-geta rekist á og myndað orkuríkan virkjaðan flóka eða virkniástand.
-Óstöðuga virkniástandið getur síðan brotnað niður og myndað stöðug
-myndefni, <emphasis effect="italics">C</emphasis> + <emphasis effect="italics">D</emphasis>. Ritið sýnir virkjunarorku hvarfsins, <emphasis effect="italics">E<sub>a</sub></emphasis>, sem
-orkumuninn á milli hvarfefnanna og virkniástandsins. Með því að nota
-tiltekna orku, <emphasis effect="italics">vermið</emphasis> (sjá kafla um varmaefnafræði), er vermibreyting
-hvarfsins, Δ<emphasis effect="italics">H</emphasis>, metin sem orkumunurinn á milli hvarfefnanna og
-myndefnanna. Í þessu tilviki er hvarfið útvermið (Δ<emphasis effect="italics">H</emphasis> \&lt; 0) þar sem það
-leiðir til minnkunar á vermi kerfisins.</para>
+<para id="fs-idm92123120">Þessi <term id="term-00005">hvarfrit (e. reaction diagrams)</term> eru mikið notuð í efnahvarfafræði til að sýna ýmsa eiginleika viðkomandi efnahvarfs. Séð frá vinstri til hægri samanstendur kerfið í upphafi aðeins af hvarfefnum, <emphasis effect="italics">A</emphasis> + <emphasis effect="italics">B</emphasis>. Hvarfefnissameindir með nægilega orku geta rekist á og myndað orkuríka virkjaða samstæðu eða virkniástand. Óstöðuga virkniástandið getur síðan sundrast og myndað stöðug myndefni, <emphasis effect="italics">C</emphasis> + <emphasis effect="italics">D</emphasis>. Ritið sýnir virkjunarorku efnahvarfsins, <emphasis effect="italics">E<sub>a</sub></emphasis>, sem orkumuninn milli hvarfefnanna og virkniástandsins. Með því að nota tiltekna orku, <emphasis effect="italics">vermi</emphasis> (sjá kafla um varmaefnafræði), er vermibreyting efnahvarfsins, Δ<emphasis effect="italics">H</emphasis>, metin sem orkumunurinn milli hvarfefnanna og myndefnanna. Í þessu tilviki er efnahvarfið útvermið (Δ<emphasis effect="italics">H</emphasis> &lt; 0) þar sem það leiðir til minnkunar á vermi kerfisins.</para>
 <figure id="CNX_Chem_12_05_RCooDgm" class="scaled-down"><media id="fs-idp10189104" alt="A graph is shown with the label, “Extent of reaction,” bon the x-axis and the label, “Energy,” on the y-axis. Above the x-axis, a portion of a curve is labeled “A plus B.” From the right end of this region, the concave down curve continues upward to reach a maximum near the height of the y-axis. The peak of this curve is labeled, “Transition state.” A double sided arrow extends from a dashed red horizontal line that originates at the y-axis at a common endpoint with the curve to the peak of the curve. This arrow is labeled “E subscript a.” A second horizontal red dashed line segment is drawn from the right end of the black curve left to the vertical axis at a level significantly lower than the initial “A plus B” labeled end of the curve. The end of the curve that is shared with this segment is labeled, “C plus D.” The curve, which was initially dashed, continues as a solid curve from the maximum to its endpoint at the right side of the diagram. A second double sided arrow is shown. This arrow extends between the two dashed horizontal lines and is labeled, “capital delta H.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_05_RCooDgm.jpg"/>
 </media>
-<caption>Hvarfrit fyrir
-útvermið hvarf <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi><m:mo>.</m:mo></m:mrow></m:math></caption></figure>
-<para id="fs-idm93458160"><term id="term-00006">Arrheniusar-jafnan (e. arrhenius equation)</term> tengir saman
-virkjunarorkuna og hraðafastann, <emphasis effect="italics">k</emphasis>, fyrir mörg efnahvörf:</para>
+<caption>Hvarfrit fyrir útvermið efnahvarf <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi><m:mo>.</m:mo></m:mrow></m:math></caption></figure>
+<para id="fs-idm93458160"><term id="term-00006">Arrhenius-jafnan (e. arrhenius equation)</term> tengir saman virkjunarorkuna og hraðafastann, <emphasis effect="italics">k</emphasis>, fyrir mörg efnahvörf:</para>
 <equation id="fs-idm62676240" class="unnumbered"><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mtext>/</m:mtext><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math></equation>
-<para id="fs-idp69522176">Í þessari jöfnu er <emphasis effect="italics">R</emphasis>
-kjörgasfastinn, sem hefur gildið 8,314 J/mól/K, T er hitastig á
-Kelvin-kvarða, <emphasis effect="italics">E</emphasis><sub>a</sub> er virkjunarorkan í júlum á mól, <emphasis effect="italics">e</emphasis> er fastinn
-2,7183 og <emphasis effect="italics">A</emphasis> er fasti sem kallast <term id="term-00007">tíðniþáttur (e. frequency factor)</term>, sem tengist tíðni
-árekstra og stefnumörkun hvarfefnasameindanna.</para>
-<para id="fs-idm378964576">Ályktanir árekstrakenningarinnar
-falla vel að Arrheniusar-jöfnunni. Tíðniþátturinn, <emphasis effect="italics">A</emphasis>, endurspeglar
-hversu vel hvarfskilyrðin styðja við rétt stefnumiðaða árekstra milli
-hvarfefnasameinda. Aukin líkindi á árangursríkum stefnumiðuðum árekstrum
-leiða til hærri gilda fyrir <emphasis effect="italics">A</emphasis> og meiri hvarfhraða.</para>
-<para id="fs-idm493145248">Veldisvísirinn, <emphasis effect="italics">e<sup>−Ea/RT</sup></emphasis>, lýsir
-áhrifum virkjunarorku á hvarfhraða. Samkvæmt hreyfifræðikenningu
-sameinda (sjá kafla um gös) er hitastig efnis mælikvarði á
-meðalhreyfiorku atóma þess eða sameinda. Dreifingu orku meðal sameinda
-sem mynda efni við tiltekið hitastig er lýst með línuritinu sem sýnt er
-í <link target-id="CNX_Chem_12_05_SuccessR"/>(a). Tvö skyggð svæði undir
-ferlinum tákna fjölda sameinda sem búa yfir nægilegri orku (<emphasis effect="italics">RT</emphasis>) til að
-yfirstíga virkjunarþröskuldana (<emphasis effect="italics">E<sub>a</sub></emphasis>). Lægri virkjunarorka leiðir til
-stærra hlutfalls nægilega orkumikilla sameinda og hraðara hvarfs.</para>
-<para id="fs-idm494984112">Veldisvísirinn lýsir einnig áhrifum
-hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra
-hlutfall sameinda sem búa yfir nægilegri orku (<emphasis effect="italics">RT</emphasis>) til að yfirstíga
-virkjunarþröskuldinn (<emphasis effect="italics">E<sub>a</sub></emphasis>), eins og sýnt er í
-<link target-id="CNX_Chem_12_05_SuccessR"/>(b). Þetta gefur hærra gildi
-fyrir hraðafastann og samsvarandi meiri hvarfhraða.</para>
+<para id="fs-idp69522176">Í þessari jöfnu er <emphasis effect="italics">R</emphasis> kjörgasfastinn, sem hefur gildið 8,314 J/mól/K, T er hitastig á Kelvin-kvarða, <emphasis effect="italics">E</emphasis><sub>a</sub> er virkjunarorkan í júlum á mól, <emphasis effect="italics">e</emphasis> er fastinn 2,7183 og <emphasis effect="italics">A</emphasis> er fasti sem kallast <term id="term-00007">tíðniþáttur (e. frequency factor)</term> og tengist tíðni árekstra og stefnumörkun hvarfefnasameindanna.</para>
+<para id="fs-idm378964576">Postulöt árekstrakenningarinnar falla vel að Arrhenius-jöfnunni. Tíðniþátturinn, <emphasis effect="italics">A</emphasis>, endurspeglar hversu vel hvarfskilyrðin styðja við rétt stillta árekstra milli hvarfefnasameinda. Aukin líkindi á árangursríkum árekstrum leiða til hærri gilda fyrir <emphasis effect="italics">A</emphasis> og hraðari efnahvarfa.</para>
+<para id="fs-idm493145248">Veldisvísisliðurinn, <emphasis effect="italics">e<sup>−Ea/RT</sup></emphasis>, lýsir áhrifum virkjunarorku á hvarfhraða. Samkvæmt hreyfifræðikenningu sameinda (sjá kafla um gös) er hitastig efnis mælikvarði á meðalhreyfiorku frumeinda eða sameinda þess. Orkuskiptingin milli sameinda sem mynda efni við tiltekið hitastig er lýst með línuritinu sem sýnt er á <link target-id="CNX_Chem_12_05_SuccessR"/>(<emphasis effect="italics">a</emphasis>). Tvö skyggð svæði undir ferlinum tákna fjölda sameinda sem búa yfir nægilegri orku (<emphasis effect="italics">RT</emphasis>) til að yfirstíga virkjunarþröskuldinn (<emphasis effect="italics">E<sub>a</sub></emphasis>). Lægri virkjunarorka leiðir til stærra hlutfalls nægilega orkuríkra sameinda og hraðara efnahvarfs.</para>
+<para id="fs-idm494984112">Veldisvísisliðurinn lýsir einnig áhrifum hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra hlutfall sameinda sem búa yfir nægilegri orku (<emphasis effect="italics">RT</emphasis>) til að yfirstíga virkjunarþröskuldinn (<emphasis effect="italics">E<sub>a</sub></emphasis>), eins og sýnt er á <link target-id="CNX_Chem_12_05_SuccessR"/>(<emphasis effect="italics">b</emphasis>). Þetta gefur hærra gildi fyrir hraðafastann og samsvarandi hraðari hvarfhraða.</para>
 <figure id="CNX_Chem_12_05_SuccessR" class="scaled-down">
 <media id="fs-idm214984320" alt="Two graphs are shown each with an x-axis label of “Kinetic energy” and a y-axis label of “Fraction of molecules.” Each contains a positively skewed curve indicated in red that begins at the origin and approaches the x-axis at the right side of the graph. In a, a small area under the far right end of the curve is shaded orange. An arrow points down from above the curve to the left end of this region where the shading begins. This arrow is labeled, “Higher activation energy, E subscript a.” In b, the same red curve appears, and a second curve is drawn in black. It is also positively skewed, but reaches a lower maximum value and takes on a broadened appearance as compared to the curve in red. In this graph, the red curve is labeled, “T subscript 1” and the black curve is labeled, “T subscript 2.” In the open space at the upper right on the graph is the label, “T subscript 1 less than T subscript 2.” As with the first graph, the region under the curves at the far right is shaded orange and a downward arrow labeled “E subscript a” points to the left end of this shaded region.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_05_SuccessR.jpg"/>
 </media>
-<caption>Orku-dreifing
-sameinda sem sýnir fjölda sameinda með orku sem er hærri en (a) tvær
-mismunandi virkjunarorkur við tiltekið hitastig og (b) tiltekin
-virkjunarorka við tvö mismunandi hitastig.</caption>
+<caption>Orkudreifing sameinda sem sýnir fjölda sameinda með orku sem er hærri en (a) tvær mismunandi virkjunarorkur við tiltekið hitastig og (b) tiltekin virkjunarorka við tvö mismunandi hitastig.</caption>
 </figure>
-<para id="fs-idm217118448">Þægileg aðferð til að ákvarða <emphasis effect="italics">E</emphasis><sub>a</sub>
-fyrir hvarf felur í sér mælingu á <emphasis effect="italics">k</emphasis> við tvö eða fleiri mismunandi
-hitastig og notkun á annarri útgáfu af Arrheniusar-jöfnunni sem tekur á
-sig form línulegrar jöfnu</para>
+<para id="fs-idm217118448">Hentug aðferð til að ákvarða <emphasis effect="italics">E</emphasis><sub>a</sub> fyrir efnahvarf felur í sér mælingu á <emphasis effect="italics">k</emphasis> við tvö eða fleiri mismunandi hitastig og notkun á annarri útgáfu af Arrhenius-jöfnunni sem tekur á sig form línulegrar jöfnu</para>
 <equation id="fs-idm197895136" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>A</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>y</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>m</m:mi><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>b</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation>
-<para id="fs-idm161357136">Línurit af ln <emphasis effect="italics">k</emphasis> á móti
-<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> er línulegt með halla sem er jafn <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow></m:math> og
-<emphasis effect="italics">y</emphasis>-skurðpunkt sem er jafn ln <emphasis effect="italics">A</emphasis>.</para>
+<para id="fs-idm161357136">Línurit af ln <emphasis effect="italics">k</emphasis> á móti <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> er línulegt með halla sem er jafn <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow></m:math> og <emphasis effect="italics">y</emphasis>-skurðpunkt sem er jafn ln <emphasis effect="italics">A</emphasis>.</para>
 <example id="fs-idm160727824">
-<para id="fs-idp108035392"><title>Lausn</title>Ákvörðun á <emphasis effect="italics">E</emphasis><sub>a</sub> Breyting
-hraðafastans með hitastigi fyrir niðurbrot HI(<emphasis effect="italics">g</emphasis>) í H<sub>2</sub>(<emphasis effect="italics">g</emphasis>) og
-I2(<emphasis effect="italics">g</emphasis>) er gefin hér. Hver er virkjunarorka hvarfsins?</para>
+<para id="fs-idp108035392"><title>Ákvörðun á <emphasis effect="italics">E</emphasis><sub>a</sub></title>Breytileiki hraðafastans með hitastigi fyrir niðurbrot HI(<emphasis effect="italics">g</emphasis>) í H<sub>2</sub>(<emphasis effect="italics">g</emphasis>) og I<sub>2</sub>(<emphasis effect="italics">g</emphasis>) er gefinn hér. Hver er virkjunarorka efnahvarfsins?</para>
 <equation class="unnumbered" id="fs-idm205868496"><m:math><m:mrow><m:mtext>2HI(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <!-- table handled separately -->
-<para id="fs-idm178775392"><title>Solution</title>Notaðu uppgefin gögn til að leiða út
-gildi fyrir <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> og ln <emphasis effect="italics">k</emphasis>:</para>
+<para id="fs-idm178775392"><title>Lausn</title>Notaðu uppgefin gögn til að finna gildi fyrir <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> og ln <emphasis effect="italics">k</emphasis>:</para>
 <!-- table handled separately -->
-<para id="fs-idm197951232"><link target-id="CNX_Chem_12_05_ArrhPlot"/> er línurit af ln <emphasis effect="italics">k</emphasis> á
-móti <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Í reynd væri jafna línunnar (halli og
-<emphasis effect="italics">y</emphasis>-skurðpunktur) sem passar best við þessa punkta á línuritinu leidd út
-með tölfræðilegu ferli sem kallast aðhvarfsgreining. Þetta er gagnlegt
-fyrir flest tilraunagögn þar sem fullkomin samsvörun hvers gagnapunkts
-við línuna er sjaldgæf. Fyrir gögnin hér er samsvörunin næstum fullkomin
-og hægt er að meta hallann með því að nota hvaða tvö af uppgefnu
-gagnapörunum sem er. Með því að nota fyrsta og síðasta gagnapunktinn er
-hægt að meta hallann.</para>
+<para id="fs-idm197951232"><link target-id="CNX_Chem_12_05_ArrhPlot"/> er línurit af ln <emphasis effect="italics">k</emphasis> á móti <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>. Í reynd væri jafna línunnar (halli og <emphasis effect="italics">y</emphasis>-skurðpunktur) sem passar best við þessi punktagögn fengin með tölfræðilegu ferli sem kallast aðhvarfsgreining. Þetta er gagnlegt fyrir flest tilraunagögn þar sem fullkomin samsvörun hvers gagnapunkts við línuna er sjaldgæf. Fyrir gögnin hér er samsvörunin næstum fullkomin og hægt er að áætla hallann með því að nota hvaða tvö gagnapör sem er. Með því að nota fyrsta og síðasta gagnapunktinn er hægt að áætla hallann.</para>
 <!-- figure handled separately -->
 <equation class="unnumbered" id="fs-idm185373632"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>Slope</m:mtext></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo stretchy="false">(</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>−14.860</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>−3.231</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.80</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.28</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>−11.629</m:mn></m:mrow><m:mrow><m:mn>0.52</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mn>–2.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mo>−</m:mo><m:mfrac><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mtd></m:mtr>
-<m:mtr><m:mtd columnalign="right"><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>−slope</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−2.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>K</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>8.314 J mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd/><m:mtd columnalign="left"><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>5</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mn>180</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mn>−1</m:mn></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm158222928">Önnur nálgun: Hraðvirkari nálgun
-felur í sér að leiða út virkjunarorku úr mælingum á hraðafasta við
-aðeins tvö hitastig. Í þessari nálgun er Arrheniusarjöfnunni umraðað í
-hentugt tveggja punkta form:</para>
+<m:mtr><m:mtd columnalign="right"><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>−slope</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−2.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>K</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>8.314 J mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd/><m:mtd columnalign="left"><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>5</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mn>180</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mn>−1</m:mn></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm158222928">Önnur aðferð: Hraðvirkari aðferð felur í sér að finna virkjunarorku út frá mælingum á hraðafasta við aðeins tvö hitastig. Í þessari aðferð er Arrhenius-jöfnunni endurraðað í hentugt tveggja punkta form:</para>
 <equation class="unnumbered" id="fs-idm43403824"><m:math><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>k</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>k</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
-<para id="fs-idm47402880">Með því að umraða þessari jöfnu til
-að einangra virkjunarorku fæst:</para>
+<para id="fs-idm47402880">Með því að endurraða þessari jöfnu til að einangra virkjunarorkuna fæst:</para>
 <equation class="unnumbered" id="fs-idm153647280"><m:math><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mi>R</m:mi><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>k</m:mi><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>k</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
-<para id="fs-idm208269280">Hægt er að setja hvaða tvö gagnapör
-sem er inn í þessa jöfnu – til dæmis fyrstu og síðustu færslurnar úr
-ofangreindri gagnatöflu:</para>
+<para id="fs-idm208269280">Hægt er að setja hvaða tvö gagnapör sem er inn í þessa jöfnu – til dæmis fyrstu og síðustu færslurnar úr gagnatöflunni hér að ofan:</para>
 <equation class="unnumbered" id="fs-idm152804224"><m:math><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>−8.314</m:mn><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>−3.231</m:mn><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−14.860</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>1.28</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mn>1.80</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
-<para id="fs-idm101188896">og niðurstaðan er <emphasis effect="italics">E</emphasis><sub>a</sub> = 1,8
-<m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> J mól<sup>−1</sup> eða 180 kJ mól<sup>−1</sup></para>
-<para id="fs-idm65968064">Þessi nálgun gefur sömu niðurstöðu og
-nákvæmari grafíska nálgunin sem notuð var hér að ofan, eins og við var
-að búast. Í reynd gefur grafíska nálgunin yfirleitt áreiðanlegri
-niðurstöður þegar unnið er með raunveruleg tilraunagögn.</para>
-<para id="fs-idm90823520"><title>Spurningar úr kaflanum</title>Hraðafasti fyrir niðurbrotshraða
-N<sub>2</sub>O<sub>5</sub> í NO og O<sub>2</sub> í gasfasa er 1,66 L/mól/s við 650 K og 7,39
-L/mól/s við 700 K:</para>
+<para id="fs-idm101188896">og niðurstaðan er <emphasis effect="italics">E</emphasis><sub>a</sub> = 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> J mól<sup>−1</sup> eða 180 kJ mól<sup>−1</sup></para>
+<para id="fs-idm65968064">Þessi aðferð gefur sömu niðurstöðu og nákvæmari grafíska aðferðin sem notuð var hér að ofan, eins og við var að búast. Í reynd gefur grafíska aðferðin yfirleitt áreiðanlegri niðurstöður þegar unnið er með raunveruleg tilraunagögn.</para>
+<para id="fs-idm90823520"><title>Kannaðu þekkingu þína</title>Hraðafastinn fyrir niðurbrot N<sub>2</sub>O<sub>5</sub> í NO og O<sub>2</sub> í gasfasa er 1,66 L/mól/s við 650 K og 7,39 L/mól/s við 700 K:</para>
 <equation class="unnumbered" id="fs-idm184015216"><m:math><m:mrow><m:msub><m:mrow><m:mtext>2N</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idm93319152">Að því gefnu að hraðafræði þessa
-hvarfs sé í samræmi við Arrheniusarjöfnuna, reiknaðu virkjunarorku fyrir
-þetta niðurbrot.</para>
+<para id="fs-idm93319152">Miðað við að hraðafræði þessa efnahvarfs sé í samræmi við Arrhenius-jöfnuna, reiknaðu virkjunarorkuna fyrir þetta niðurbrot.</para>
 <note id="fs-idp70913968"><title>Answer:</title>
-<para id="fs-idm147992368">1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> J mól<sup>−1</sup>
-eða 110 kJ mól<sup>−1</sup></para>
+<para id="fs-idm147992368">1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> J mól<sup>−1</sup> eða 110 kJ mól<sup>−1</sup></para>
 </note>
 </example>
 <table id="fs-idm125968016" summary="This table has two columns and six rows. The first column is labeled, “T ( K ),” and the second is labeled, “k ( L / mol / s ).” Under the first column are the numbers: 555, 575, 645, 700, and 781. Under the second column are the numbers: 3.52 times ten to the negative 7; 1.22 times ten to the negative 6; 8.59 times ten to the negative 5; 1.16 times ten to the negative 3; and 3.95 times ten to the negative 2." class="unnumbered">
@@ -225,30 +89,30 @@ eða 110 kJ mól<sup>−1</sup></para>
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
+<entry align="left"><emphasis effect="italics">T</emphasis> (K)</entry>
 <entry align="left"><emphasis effect="italics">k</emphasis> (L/mól/s)</entry>
-<entry align="left">555</entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">3,52 <m:math><m:mo>×</m:mo></m:math> 10−7</entry>
+<entry align="left">555</entry>
+<entry align="left">3,52 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup></entry>
+</row>
+<row valign="middle">
 <entry align="left">575</entry>
+<entry align="left">1,22 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">1,22 <m:math><m:mo>×</m:mo></m:math> 10−6</entry>
 <entry align="left">645</entry>
+<entry align="left">8,59 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">8,59 <m:math><m:mo>×</m:mo></m:math> 10−5</entry>
 <entry align="left">700</entry>
+<entry align="left">1,16 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">1,16 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
 <entry align="left">781</entry>
-</row>
-<row valign="middle">
-<entry align="left">3,95 <m:math><m:mo>×</m:mo></m:math> 10−2</entry>
-<entry align="left"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mtext>T</m:mtext></m:mfrac><m:mspace width="0.4em"/><m:mo stretchy="false">(</m:mo><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+<entry align="left">3,95 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -260,30 +124,30 @@ eða 110 kJ mól<sup>−1</sup></para>
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
+<entry align="left"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mtext>T</m:mtext></m:mfrac><m:mspace width="0.4em"/><m:mo stretchy="false">(</m:mo><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left">ln <emphasis effect="italics">k</emphasis></entry>
-<entry align="left">1,80 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
+<entry align="left">1,80 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 <entry align="left">−14,860</entry>
-<entry align="left">1,74 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
 </row>
 <row valign="middle">
+<entry align="left">1,74 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 <entry align="left">−13,617</entry>
-<entry align="left">1,55 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
 </row>
 <row valign="middle">
+<entry align="left">1,55 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 <entry align="left">−9,362</entry>
-<entry align="left">1,43 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
 </row>
 <row valign="middle">
+<entry align="left">1,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 <entry align="left">−6,759</entry>
-<entry align="left">1,28 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
 </row>
 <row valign="middle">
+<entry align="left">1,28 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 <entry align="left">−3,231</entry>
-<entry align="left">−3.231</entry>
 </row>
 </tbody>
 </tgroup>
@@ -292,120 +156,83 @@ eða 110 kJ mól<sup>−1</sup></para>
 <media id="fs-idp9885216" alt="A graph is shown with the label “1 divided by T ( K superscript negative 1 )” on the x-axis and “l n k” on the y-axis. The horizontal axis has markings at 1.4 times 10 superscript negative 3, 1.6 times 10 superscript negative 3, and 1.8 times 10 superscript negative 3. The y-axis shows markings at intervals of 2 from negative 14 through negative 2. A decreasing linear trend line is drawn through five points at the coordinates: (1.28 times 10 superscript negative 3, negative 3.231), (1.43 times 10 superscript negative 3, negative 6.759), (1.55 times 10 superscript negative 3, negative 9.362), (1.74 times 10 superscript negative 3, negative 13.617), and (1.80 times 10 superscript negative 3, negative 14.860). A vertical dashed line is drawn from a point just left of the data point nearest the y-axis. Similarly, a horizontal dashed line is draw from a point just above the data point closest to the x-axis. These dashed lines intersect to form a right triangle with a vertical leg label of “capital delta l n k” and a horizontal leg label of “capital delta 1 divided by T.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_05_ArrhPlot.jpg"/>
 </media>
-<caption>Þetta línurit
-sýnir línulegt samband milli ln <emphasis effect="italics">k</emphasis> og <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> fyrir hvarfið
-<m:math><m:mrow><m:mtext>2HI</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math> samkvæmt Arrheniusarjöfnunni.</caption>
+<caption>Þetta línurit sýnir línulegt samband milli ln <emphasis effect="italics">k</emphasis> og <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> fyrir efnahvarfið <m:math><m:mrow><m:mtext>2HI</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math> samkvæmt Arrheniusarjöfnunni.</caption>
 </figure>
 </section>
 <section id="fs-idm92128240" class="summary">
 <title>Lykilhugtök og samantekt</title>
-<para id="fs-idm197754848">Efnahvörf krefjast yfirleitt
-árekstra milli hvarfefna. Þessir árekstrar hvarfefna verða að hafa rétta
-stefnu og nægilega orku til að myndefni geti myndast. Árekstrakenningin
-gefur einfalda en áhrifaríka skýringu á áhrifum margra tilraunabreytna á
-hvarfhraða. Arrheniusarjafnan lýsir sambandi milli hraðafasta
-efnahvarfs, virkjunarorku, hitastigs og háðni á stefnu árekstra.</para>
+<para id="fs-idm197754848">Efnahvörf krefjast yfirleitt árekstra milli hvarfefna. Þessir árekstrar hvarfefna verða að hafa rétta stefnumörkun og nægilega orku til að myndefni geti myndast. Árekstrakenningin gefur einfalda en áhrifaríka skýringu á áhrifum margra tilraunabreytna á hvarfhraða. Arrheniusarjöfnan lýsir sambandi milli hraðafasta efnahvarfs, virkjunarorku, hitastigs og háðni á stefnumörkun árekstra.</para>
 </section>
 <section id="fs-idp2946768" class="key-equations">
 <title>Lykiljöfnur</title>
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry><m:math><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>k</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>A</m:mi></m:mrow></m:math></entry>
+<row><entry><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mtext>/</m:mtext><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math></entry>
 </row>
-<row><entry><m:math><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>k</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>k</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
+<row><entry><m:math><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>k</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>A</m:mi></m:mrow></m:math></entry>
 </row>
 <row><entry><m:math><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>k</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>k</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
 </row>
 </tbody></tgroup></table>
 </section>
 <section id="fs-idm193786736" class="exercises">
-<title>Efnafræði – Æfingar í lok
-kafla</title>
+<title>Efnafræði – Verkefni í lok kafla</title>
 <exercise id="fs-idp801808">
 <problem id="fs-idm111422448">
-<para id="fs-idm138313152">Efnahvörf eiga sér stað þegar
-hvarfefni rekast á. Hvaða tveir þættir geta komið í veg fyrir að
-árekstur leiði til efnahvarfs?</para>
+<para id="fs-idm138313152">Efnahvörf eiga sér stað þegar hvarfefni rekast á. Hvaða tveir þættir geta komið í veg fyrir að árekstur leiði til efnahvarfs?</para>
 </problem>
 <solution id="fs-idm141111568">
-<para id="fs-idm120309360">Hvarfefnin hreyfast annaðhvort
-of hægt til að hafa næga hreyfiorku til að komast yfir virkjunarorku
-hvarfsins, eða stefna sameindanna þegar þær rekast á getur komið í veg
-fyrir að hvarfið eigi sér stað.</para>
+<para id="fs-idm120309360">Hvarfefnin hreyfast annaðhvort of hægt til að hafa næga hreyfiorku til að fara yfir virkjunarorku efnahvarfsins, eða stefnumörkun sameindanna þegar þær rekast á getur komið í veg fyrir að efnahvarfið eigi sér stað.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm147445136">
 <problem id="fs-idm196665952">
-<para id="fs-idm80456160">Þegar sérhver árekstur milli
-hvarfefna leiðir til efnahvarfs, hvað ræður þá hraðanum sem hvarfið á
-sér stað á?</para>
+<para id="fs-idm80456160">Þegar hver árekstur milli hvarfefna leiðir til efnahvarfs, hvað ræður þá hraðanum sem efnahvarfið á sér stað á?</para>
 </problem>
 </exercise>
 <exercise id="fs-idm141471856">
 <problem id="fs-idm117247392">
-<para id="fs-idm166625232">Hvað er virkjunarorka efnahvarfs
-og hvernig tengist þessi orka virkjaða flóka hvarfsins?</para>
+<para id="fs-idm166625232">Hvað er virkjunarorka efnahvarfs og hvernig tengist þessi orka virkjaða flóka efnahvarfsins?</para>
 </problem>
 <solution id="fs-idm59730304">
-<para id="fs-idm218647200">Virkjunarorka er lágmarksorka
-sem þarf til að mynda virkjaðan flóka í efnahvarfi. Hún er yfirleitt
-gefin upp sem orkan sem þarf til að mynda eitt mól af virkjuðum flóka.</para>
+<para id="fs-idm218647200">Virkjunarorkan er lágmarksorka sem þarf til að mynda virkjaða flókann í efnahvarfi. Hún er venjulega gefin upp sem orkan sem þarf til að mynda eitt mól af virkjaða flókanum.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm190953584">
 <problem id="fs-idm226629184">
-<para id="fs-idm157823696">Gerðu grein fyrir sambandinu
-milli hvarfhraða og virkjunarorku efnahvarfs.</para>
+<para id="fs-idm157823696">Gerðu grein fyrir sambandinu milli hraða efnahvarfs og virkjunarorku þess.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm162997840">
 <problem id="fs-idm111355312">
-<para id="fs-idm200002080">Lýstu því hvernig hægt er að nota
-grafískar aðferðir til að ákvarða virkjunarorku efnahvarfs út frá röð
-gagna sem innihalda hvarfhraða við mismunandi hitastig.</para>
+<para id="fs-idm200002080">Lýstu því hvernig hægt er að nota grafískar aðferðir til að ákvarða virkjunarorku efnahvarfs út frá röð gagna sem innihalda hvarfhraða við mismunandi hitastig.</para>
 </problem>
 <solution id="fs-idm197529248">
-<para id="fs-idp8882000">Eftir að <emphasis effect="italics">k</emphasis> hefur verið fundið
-við nokkur mismunandi hitastig gefur graf af ln <emphasis effect="italics">k</emphasis> á móti
-<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> beina línu með hallatöluna <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow></m:math> sem hægt er
-að nota til að ákvarða <emphasis effect="italics">E</emphasis><sub>a</sub>.</para></solution>
+<para id="fs-idp8882000">Eftir að <emphasis effect="italics">k</emphasis> hefur verið fundið við nokkur mismunandi hitastig gefur línurit af ln <emphasis effect="italics">k</emphasis> á móti <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> beina línu með hallatöluna <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow></m:math> sem hægt er að nota til að ákvarða <emphasis effect="italics">E</emphasis><sub>a</sub>.</para></solution>
 </exercise>
 <exercise id="fs-idm122581792">
 <problem id="fs-idm96856672">
-<para id="fs-idp66405264">Hvernig hefur hækkun hitastigs
-áhrif á hvarfhraða? Útskýrðu þessi áhrif með hliðsjón af
-árekstrakenningunni um hvarfhraða.</para>
+<para id="fs-idp66405264">Hvernig hefur hækkun hitastigs áhrif á hvarfhraða? Útskýrðu þessi áhrif með tilliti til árekstrakenningarinnar um hvarfhraða.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm166001648">
 <problem id="fs-idm112163216">
-<para id="fs-idm148748368">Hraði ákveðins efnahvarfs
-tvöfaldast fyrir hverjar 10 °C sem hitastigið hækkar.</para>
-<para id="fs-idm89923680">(a) Hversu miklu hraðar gengur
-efnahvarfið fyrir sig við 45 °C en við 25 °C?</para>
-<para id="fs-idp8809520">(b) Hversu miklu hraðar gengur
-efnahvarfið fyrir sig við 95 °C en við 25 °C?</para>
+<para id="fs-idm148748368">Hraði ákveðins efnahvarfs tvöfaldast fyrir hverja 10 °C hækkun á hitastigi.</para>
+<para id="fs-idm89923680">(a) Hversu miklu hraðar gengur efnahvarfið við 45 °C en við 25 °C?</para>
+<para id="fs-idp8809520">(b) Hversu miklu hraðar gengur efnahvarfið við 95 °C en við 25 °C?</para>
 </problem>
 <solution id="fs-idm124864272">
-<para id="fs-idm162680736">(a) 4 sinnum hraðar (b) 128
-sinnum hraðar</para>
+<para id="fs-idm162680736">(a) 4 sinnum hraðar (b) 128 sinnum hraðar</para>
 </solution>
 </exercise>
 <exercise id="fs-idm67340288">
 <problem id="fs-idm132914128">
-<para id="fs-idm128098912">Í tilraun brotnaði 90% af sýni af
-NaClO<sub>3</sub> niður á 48 mínútum. Hversu langan tíma hefði þetta niðurbrot
-tekið ef sýnið hefði verið hitað upp í 20 °C hærra hitastig?
-(Vísbending: Gerðu ráð fyrir að hraðinn tvöfaldist fyrir hverjar 10 °C
-sem hitastigið hækkar.)</para></problem>
+<para id="fs-idm128098912">Í tilraun brotnaði sýni af NaClO<sub>3</sub> niður um 90% á 48 mínútum. Hversu langan tíma hefði þetta niðurbrot tekið ef sýnið hefði verið hitað um 20 °C meira? (Vísbending: Gerðu ráð fyrir að hraðinn tvöfaldist fyrir hverja 10 °C hækkun á hitastigi.)</para></problem>
 </exercise>
 <exercise id="fs-idm128511072">
 <problem id="fs-idm146373568">
-<para id="fs-idm217872032">Hraðafastinn við 325 °C fyrir
-niðurbrotsefnahvarfið <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mn>2</m:mn><m:mtext>C</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math> er 6,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup>
-s<sup>−1</sup> og virkjunarorkan er 261 kJ á mól af C<sub>4</sub>H<sub>8</sub>. Ákvarðaðu
-tíðnistuðul efnahvarfsins.</para>
+<para id="fs-idm217872032">Hraðafastinn við 325 °C fyrir niðurbrotsefnahvarfið <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mn>2</m:mn><m:mtext>C</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math> er 6,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup> s<sup>−1</sup> og virkjunarorkan er 261 kJ á mól af C<sub>4</sub>H<sub>8</sub>. Ákvarðaðu tíðnistuðulinn fyrir efnahvarfið.</para>
 </problem>
 <solution id="fs-idm207232976">
 <para id="fs-idm183272112"><m:math><m:mrow><m:mn>3.9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>15</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
@@ -413,51 +240,29 @@ tíðnistuðul efnahvarfsins.</para>
 </exercise>
 <exercise id="fs-idm129065792">
 <problem id="fs-idm151360688">
-<para id="fs-idm149341008">Hraðafastinn fyrir niðurbrot
-asetaldehýðs, CH<sub>3</sub>CHO, í metan, CH<sub>4</sub>, og kolmónoxíð, CO, í gasfasa er
-1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> L mól<sup>−1</sup> s<sup>−1</sup> við 703 K og 4,95 L mól<sup>−1</sup>
-s<sup>−1</sup> við 865 K. Ákvarðaðu virkjunarorkuna fyrir þetta niðurbrot.</para>
+<para id="fs-idm149341008">Hraðafastinn fyrir niðurbrot asetaldehýðs, CH<sub>3</sub>CHO, í metan, CH<sub>4</sub>, og kolmónoxíð, CO, í gasfasa er 1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> L mól<sup>−1</sup> s<sup>−1</sup> við 703 K og 4,95 L mól<sup>−1</sup> s<sup>−1</sup> við 865 K. Ákvarðaðu virkjunarorkuna fyrir þetta niðurbrot.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm131383728">
 <problem id="fs-idp9104560">
-<para id="fs-idp9104816">Hækkað gildi ensímsins alkalísks
-fosfatasa (ALP) í sermi manna er vísbending um hugsanlegan lifrar- eða
-beinasjúkdóm. Styrkur ALP í sermi er svo lágur að það er mjög erfitt að
-mæla hann beint. Hins vegar hvetur ALP fjölda efnahvarfa og hægt er að
-ákvarða hlutfallslegan styrk þess með því að mæla hraða eins þessara
-efnahvarfa við stýrðar aðstæður. Eitt slíkt efnahvarf er umbreyting
-p-nítrófenýlfosfats (PNPP) í p-nítrófenoxíðjón (PNP) og fosfatjón.
-Stjórnun hitastigs meðan á prófinu stendur er mjög mikilvæg;
-hvarfhraðinn eykst 1,47 sinnum ef hitastigið breytist úr 30 °C í 37 °C.
-Hver er virkjunarorkan fyrir ALP-hvataða umbreytingu PNPP í PNP og
-fosfat?</para></problem>
+<para id="fs-idp9104816">Hækkað magn ensímsins alkalísks fosfatasa (ALP) í blóðvatni er vísbending um hugsanlegan lifrar- eða beinasjúkdóm. Magn ALP í blóðvatni er svo lágt að það er mjög erfitt að mæla það beint. Hins vegar hvetur ALP fjölda efnahvarfa og hægt er að ákvarða hlutfallslegan styrk þess með því að mæla hraða eins þessara efnahvarfa við stýrðar aðstæður. Eitt slíkt efnahvarf er umbreyting p-nítrófenýlfosfats (PNPP) í p-nítrófenoxíðjón (PNP) og fosfatjón. Stjórnun hitastigs meðan á prófinu stendur er mjög mikilvæg; hraði efnahvarfsins eykst 1,47 sinnum ef hitastigið breytist úr 30 °C í 37 °C. Hver er virkjunarorkan fyrir ALP-hvataða umbreytingu PNPP í PNP og fosfat?</para></problem>
 <solution id="fs-idm91586224">
 <para id="fs-idm91585968">43,0 kJ/mól</para>
 </solution>
 </exercise>
 <exercise id="fs-idm3600240">
 <problem id="fs-idm167826112">
-<para id="fs-idm167825856">Samkvæmt árekstrakenningunni,
-hverju af eftirfarandi er hraði efnahvarfs í réttu hlutfalli við?</para>
-<para id="fs-idm59720032">(a) breytingu á frjálsri orku á
-sekúndu</para>
-<para id="fs-idm54796736">(b) breytingu á hitastigi á
-sekúndu</para>
+<para id="fs-idm167825856">Samkvæmt árekstrakenningunni, hverju af eftirfarandi er hraði efnahvarfs í réttu hlutfalli við?</para>
+<para id="fs-idm59720032">(a) breytingunni á frjálsri orku á sekúndu</para>
+<para id="fs-idm54796736">(b) breytingunni á hitastigi á sekúndu</para>
 <para id="fs-idm154039232">(c) fjölda árekstra á sekúndu</para>
 <para id="fs-idm154038848">(d) fjölda myndefnissameinda</para>
 </problem>
 </exercise>
 <exercise id="fs-idm58458096">
 <problem id="fs-idm93524944">
-<para id="fs-idm93524688">Vetnisjoðíð, HI, brotnar niður í
-gasfasa og myndar vetni, H<sub>2</sub>, og joð, I<sub>2</sub>. Gildi hraðafastans, <emphasis effect="italics">k</emphasis>,
-fyrir efnahvarfið var mælt við nokkur mismunandi hitastig og gögnin eru
-sýnd hér: Hitastig (K) <emphasis effect="italics">k</emphasis> (L mól−1 s−1) 555 6,23 <m:math><m:mo>×</m:mo></m:math>
-10−7 575 2,42 <m:math><m:mo>×</m:mo></m:math> 10−6 645 1,44 <m:math><m:mo>×</m:mo></m:math> 10−4
-700 2,01 <m:math><m:mo>×</m:mo></m:math> 10−3</para>
-<para id="fs-idm134024464">Hvert er gildi virkjunarorkunnar
-(í kJ/mól) fyrir þetta hvarf?</para>
+<para id="fs-idm93524688">Vetnisjoðíð, HI, brotnar niður í gasfasa og myndar vetni, H<sub>2</sub>, og joð, I<sub>2</sub>. Gildi hraðafastans, <emphasis effect="italics">k</emphasis>, fyrir efnahvarfið var mælt við nokkur mismunandi hitastig og gögnin eru sýnd hér:<newline/> [[TABLE:fs-idm124800496]]</para>
+<para id="fs-idm134024464">Hvert er gildi virkjunarorkunnar (í kJ/mól) fyrir þetta efnahvarf?</para>
 </problem>
 <solution id="fs-idp826800">
 <para id="fs-idm124657264">177 kJ/mól</para>
@@ -470,37 +275,33 @@ sýnd hér: Hitastig (K) <emphasis effect="italics">k</emphasis> (L mól−1 s�
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
-<entry align="left"><emphasis effect="italics">k</emphasis> (L mól−1 s−1)</entry>
-<entry align="left">555</entry>
+<entry align="left">Hitastig (K)</entry>
+<entry align="left"><emphasis effect="italics">k</emphasis> (L mól<sup>−1</sup> s<sup>−1</sup>)</entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">6,23 <m:math><m:mo>×</m:mo></m:math> 10−7</entry>
+<entry align="left">555</entry>
+<entry align="left">6,23 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup></entry>
+</row>
+<row valign="middle">
 <entry align="left">575</entry>
+<entry align="left">2,42 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">2,42 <m:math><m:mo>×</m:mo></m:math> 10−6</entry>
 <entry align="left">645</entry>
+<entry align="left">1,44 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">1,44 <m:math><m:mo>×</m:mo></m:math> 10−4</entry>
 <entry align="left">700</entry>
-</row>
-<row valign="middle">
-<entry align="left">2,01 <m:math><m:mo>×</m:mo></m:math> 10−3</entry>
-<entry align="left">2.01 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">2,01 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 <exercise id="fs-idm166518032">
 <problem id="fs-idm166517776">
-<para id="fs-idm93329056">Frumefnið Co er til á tveimur
-oxunarstigum, Co(II) og Co(III), og jónirnar mynda marga flóka. Hraðinn
-sem einn af flókum Co(III) var afoxuð af Fe(II) í vatni var mældur.
-Ákvarðaðu virkjunarorku hvarfsins út frá eftirfarandi gögnum: <emphasis effect="italics">T</emphasis> (K)
-<emphasis effect="italics">k</emphasis> (s−1) 293 0,054 298 0,100</para>
+<para id="fs-idm93329056">Frumefnið Co er til í tveimur oxunarástöndum, Co(II) og Co(III), og jónirnar mynda margar þ komplexa. Hraðinn sem einn af komplexum Co(III) var afoxuð af Fe(II) í vatni var mældur. Ákvarðaðu virkjunarorku efnahvarfsins út frá eftirfarandi gögnum:<newline/> [[TABLE:fs-idm163198896]]</para>
 </problem>
 </exercise>
 <table id="fs-idm163198896" summary="This table contains two columns and three rows. The first row is a header row, and it labels each column, “T ( K )” and “k ( s superscript negative 1 ).” Under the first column are the numbers 293 and 298. Under the second column are the numbers 0.054 and 0.100." class="unnumbered">
@@ -510,82 +311,44 @@ sem einn af flókum Co(III) var afoxuð af Fe(II) í vatni var mældur.
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
-<entry align="left"><emphasis effect="italics">k</emphasis> (s−1)</entry>
-<entry align="left">293</entry>
+<entry align="left"><emphasis effect="italics">T</emphasis> (K)</entry>
+<entry align="left"><emphasis effect="italics">k</emphasis> (s<sup>−1</sup>)</entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
+<entry align="left">293</entry>
 <entry align="left">0,054</entry>
-<entry align="left">298</entry>
 </row>
 <row valign="middle">
+<entry align="left">298</entry>
 <entry align="left">0,100</entry>
-<entry align="left">0.100</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 <exercise id="fs-idm167771040">
 <problem id="fs-idm167770784">
-<para id="fs-idm65384176">Vatnsrof sykursins súkrósa í
-sykrurnar glúkósa og frúktósa, <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub></m:mrow></m:math></para>
-<para id="fs-idm106774224">fylgir hraðajöfnu af fyrsta stigi
-fyrir hvarf súkrósa: hraði = <emphasis effect="italics">k</emphasis>[C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>] (Myndefni hvarfsins,
-glúkósi og frúktósi, hafa sömu sameindaformúlu en eru ólík að því leyti
-hvernig atómunum er raðað í sameindunum.)</para>
-<para id="fs-idm1605904">(a) Í hlutlausri lausn er <emphasis effect="italics">k</emphasis> = 2,1
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup> s<sup>−1</sup> við 27 °C og 8,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup>
-s<sup>−1</sup> við 37 °C. Ákvarðaðu virkjunarorkuna, tíðniþáttinn og hraðafastann
-fyrir þessa jöfnu við 47 °C (að því gefnu að hraðafræðin sé í samræmi
-við Arrhenius-jöfnuna við þetta hitastig).</para>
-<para id="fs-idm94994288">(b) Þegar lausn af súkrósa með
-upphafsstyrk 0,150 <emphasis effect="italics">M</emphasis> nær jafnvægi er styrkur súkrósa 1,65
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>. Hversu langan tíma tekur það lausnina að ná
-jafnvægi við 27 °C án hvata? Vegna þess hve styrkur súkrósa við jafnvægi
-er lágur skal gera ráð fyrir að hvarfið sé óafturkræft.</para>
-<para id="fs-idm124435200">(c) Hvers vegna einfaldar það
-útreikninginn í lið (b) að gera ráð fyrir að hvarfið sé óafturkræft?</para>
+<para id="fs-idm65384176">Vatnsrof sykursins súkrósa í sykrurnar glúkósa og frúktósa,<newline/> <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub></m:mrow></m:math></para>
+<para id="fs-idm106774224">fylgir fyrsta stigs hraðajöfnu fyrir hvarf súkrósa: hraði = <emphasis effect="italics">k</emphasis>[C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>] (Myndefni efnahvarfsins, glúkósi og frúktósi, hafa sömu sameindaformúlu en eru ólík í fyrirkomulagi atóma í sameindum sínum.)</para>
+<para id="fs-idm1605904">(a) Í hlutlausri lausn er <emphasis effect="italics">k</emphasis> = 2,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup> s<sup>−1</sup> við 27 °C og 8,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup> s<sup>−1</sup> við 37 °C. Ákvarðaðu virkjunarorkuna, tíðniþáttinn og hraðafastann fyrir þessa jöfnu við 47 °C (að því gefnu að hraðafræðin sé í samræmi við Arrhenius-jöfnuna við þetta hitastig).</para>
+<para id="fs-idm94994288">(b) Þegar lausn af súkrósa með upphafsstyrk 0,150 <emphasis effect="italics">M</emphasis> nær jafnvægi er styrkur súkrósa 1,65 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>. Hversu langan tíma tekur það lausnina að ná jafnvægi við 27 °C án hvata? Vegna þess að styrkur súkrósa við jafnvægi er svo lágur skal gera ráð fyrir að efnahvarfið sé óafturkræft.</para>
+<para id="fs-idm124435200">(c) Hvers vegna einfaldar það útreikninginn í hluta (b) að gera ráð fyrir að efnahvarfið sé óafturkræft?</para>
 </problem>
 <solution id="fs-idm112508016">
-<para id="fs-idm112507760"><emphasis effect="italics">E</emphasis><sub>a</sub> = 108 kJ; <emphasis effect="italics">A</emphasis> = 2,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> s<sup>−1</sup>; <emphasis effect="italics">k</emphasis> = 3,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> s<sup>−1</sup>;
-(b) 1,81 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> klst. eða 7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup>
-dagar; (c) Að gera ráð fyrir að hvarfið sé óafturkræft einfaldar
-útreikninginn vegna þess að við þurfum ekki að taka tillit til
-hvarfefnis sem hefur breyst í myndefni og snýr aftur í upprunalegt
-ástand.</para></solution>
+<para id="fs-idm112507760"><emphasis effect="italics">E</emphasis><sub>a</sub> = 108 kJ; <emphasis effect="italics">A</emphasis> = 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> s<sup>−1</sup>; <emphasis effect="italics">k</emphasis> = 3,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> s<sup>−1</sup>; (b) 1,81 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> klst. eða 7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> dagar; (c) Að gera ráð fyrir að efnahvarfið sé óafturkræft einfaldar útreikninginn vegna þess að við þurfum ekki að taka tillit til hvarfefnis sem, eftir að hafa breyst í myndefni, snýr aftur í upprunalegt ástand.</para></solution>
 </exercise>
 <exercise id="fs-idp179196768">
 <problem id="fs-idm100372752">
-<para id="fs-idm100372496">Notaðu <link url="http://openstax.org/l/16PHETreaction">PhET Reactions &amp;
-Rates gagnvirku hermunina</link> til að herma eftir kerfi. Í flipanum
-„Single collision“ í hermunarforritinu skaltu virkja „Energy view“ með
-því að smella á „+“ táknið. Veldu fyrsta <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math> hvarfið (A er
-gult, B er fjólublátt og C er dökkblátt). Notaðu sjálfgefna valkostinn
-„straight shot“ og reyndu að skjóta <emphasis effect="italics">A</emphasis> atóminu af stað með mismikilli
-orku. Hvað breytist þegar heildarorkulínan við upphaf er fyrir neðan
-virkniástand stöðuorkulínunnar? Hvers vegna? Hvað gerist þegar hún er
-fyrir ofan virkniástandið? Hvers vegna?</para>
+<para id="fs-idm100372496">Notaðu <link url="http://openstax.org/l/16PHETreaction">gagnvirku PhET-hermunina Reactions &amp; Rates</link> til að herma eftir kerfi. Í flipanum „Single collision“ í hermunarforritinu skaltu virkja „Energy view“ með því að smella á „+“ táknið. Veldu fyrsta <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math> efnahvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu sjálfgefna valkostinn „straight shot“ og reyndu að skjóta <emphasis effect="italics">A</emphasis> frumeindinni af stað með mismikilli orku. Hvað breytist þegar heildarorkulínan við upphaf er fyrir neðan virkniástand stöðuorkulínunnar? Hvers vegna? Hvað gerist þegar hún er fyrir ofan virkniástandið? Hvers vegna?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp11390128">
 <problem id="fs-idp11390384">
-<para id="fs-idp46127280">Notaðu <link url="http://openstax.org/l/16PHETreaction">gagnvirku
-hermunina Hvörf og hraði frá PhET</link> til að herma eftir kerfi. Í
-flipanum „Single collision“ í hermunarforritinu skaltu virkja „Energy
-view“ með því að smella á „+“ táknið. Veldu fyrsta <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math>
-hvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu
-valkostinn „angled shot“ og reyndu að skjóta <emphasis effect="italics">A</emphasis> atóminu með mismunandi
-hornum, en með meiri heildarorku en virkniástandið. Hvað gerist þegar
-<emphasis effect="italics">A</emphasis> atómið rekst á <emphasis effect="italics">BC</emphasis> sameindina úr mismunandi áttum? Hvers vegna?</para>
+<para id="fs-idp46127280">Notaðu <link url="http://openstax.org/l/16PHETreaction">gagnvirku PhET-hermunina Reactions &amp; Rates</link> til að herma eftir kerfi. Í flipanum „Single collision“ í hermunarforritinu skaltu virkja „Energy view“ með því að smella á „+“ táknið. Veldu fyrsta <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math> efnahvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu valkostinn „angled shot“ og reyndu að skjóta <emphasis effect="italics">A</emphasis> frumeindinni af stað með mismunandi hornum, en með meiri heildarorku en virkniástandið. Hvað gerist þegar <emphasis effect="italics">A</emphasis> frumeindin rekst á <emphasis effect="italics">BC</emphasis> sameindina úr mismunandi áttum? Hvers vegna?</para>
 </problem>
 <solution id="fs-idm206557376">
-<para id="fs-idm206557120"><emphasis effect="italics">A</emphasis> atómið hefur næga orku til
-að hvarfast við <emphasis effect="italics">BC</emphasis>; hins vegar benda mismunandi horn sem það skoppar
-af <emphasis effect="italics">BC</emphasis> án þess að hvarfast til þess að stefna sameindarinnar er
-mikilvægur hluti af hraðafræði hvarfsins og ákvarðar hvort hvarf muni
-eiga sér stað.</para>
+<para id="fs-idm206557120"><emphasis effect="italics">A</emphasis> frumeindin hefur næga orku til að hvarfast við <emphasis effect="italics">BC</emphasis>; hins vegar benda mismunandi horn sem hún skoppar af <emphasis effect="italics">BC</emphasis> undan án þess að hvarfast til þess að stefnumörkun sameindarinnar er mikilvægur þáttur í efnahraðafræði og ákvarðar hvort efnahvarf muni eiga sér stað.</para>
 </solution>
 </exercise>
 </section>
@@ -593,35 +356,27 @@ eiga sér stað.</para>
 <glossary>
 <definition id="fs-idm89472432">
 <term>virkjaður flóki (e. activated complex)</term>
-<meaning id="fs-idm89472432-meaning">(einnig, virkniástand)
-óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf</meaning>
+<meaning id="fs-idm89472432-meaning">(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf</meaning>
 </definition>
 <definition id="fs-idm162201904">
 <term>virkjunarorka (Ea) (e. activation energy (ea))</term>
-<meaning id="fs-idm162201904-meaning">lágmarksorka sem er
-nauðsynleg til að hvarf geti átt sér stað</meaning>
+<meaning id="fs-idm162201904-meaning">lágmarksorka sem er nauðsynleg til þess að efnahvarf geti átt sér stað</meaning>
 </definition>
 <definition id="fs-idm187159584">
 <term>Arrheniusar-jafna (e. arrhenius equation)</term>
-<meaning id="fs-idm187159584-meaning">stærðfræðilegt samband
-milli hraðafasta, virkjunarorku og hitastigs hvarfs</meaning>
+<meaning id="fs-idm187159584-meaning">stærðfræðilegt samband milli hraðafasta efnahvarfs, virkjunarorku og hitastigs</meaning>
 </definition>
 <definition id="fs-idm101548864">
 <term>árekstrakenningin (e. collision theory)</term>
-<meaning id="fs-idm101548864-meaning">líkan sem leggur áherslu
-á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um
-hraðafræði hvarfa</meaning>
+<meaning id="fs-idm101548864-meaning">líkan sem leggur áherslu á orku og stefnumörkun sameindaárekstra til að útskýra og spá fyrir um efnahraðafræði</meaning>
 </definition>
 <definition id="fs-idm206488448">
 <term>tíðnistuðull (A) (e. frequency factor (a))</term>
-<meaning id="fs-idm206488448-meaning">jöfnunarfasti í
-Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem
-hafa stefnu sem getur leitt til myndunar myndefnis</meaning>
+<meaning id="fs-idm206488448-meaning">hlutfallsfasti í Arrheniusarjöfnunni, tengdur hlutfallslegum fjölda árekstra sem hafa þá stefnumörkun sem getur leitt til myndunar myndefnis</meaning>
 </definition>
 <definition id="fs-idm355773584">
-<term>hvarfrit (e. reaction diagram)</term>
-<meaning id="fs-idm355773584-meaning">notað í efnahraðafræði
-til að sýna ýmsa eiginleika hvarfs</meaning>
+<term>efnahvarfsrit (e. reaction diagram)</term>
+<meaning id="fs-idm355773584-meaning">notað í efnahvarfafræði til að sýna ýmsa eiginleika efnahvarfs</meaning>
 </definition>
 </glossary>
 </document>
