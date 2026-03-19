@@ -1179,9 +1179,25 @@ function buildTable(element, getSeg, originalCnxml) {
             let cellIdx = 0;
             rowContent = rowContent.replace(
               /<entry([^>]*)>([\s\S]*?)<\/entry>/g,
-              (entryMatch, entryAttrs, _entryContent) => {
-                if (row.cells && row.cells[cellIdx] && row.cells[cellIdx].segmentId) {
-                  const cellText = getSeg(row.cells[cellIdx].segmentId);
+              (entryMatch, entryAttrs, entryContent) => {
+                const cell = row.cells && row.cells[cellIdx];
+                if (cell && cell.paras) {
+                  // Multi-para cell: replace each <para> content individually
+                  let newContent = entryContent;
+                  for (const paraInfo of cell.paras) {
+                    const paraText = getSeg(paraInfo.segmentId);
+                    if (paraText && paraInfo.paraId) {
+                      // Replace para content by matching its ID
+                      const paraPattern = new RegExp(
+                        `(<para\\s+id="${paraInfo.paraId}"[^>]*>)[\\s\\S]*?(</para>)`
+                      );
+                      newContent = newContent.replace(paraPattern, `$1${paraText}$2`);
+                    }
+                  }
+                  cellIdx++;
+                  return `<entry${entryAttrs}>${newContent}</entry>`;
+                } else if (cell && cell.segmentId) {
+                  const cellText = getSeg(cell.segmentId);
                   if (cellText) {
                     cellIdx++;
                     return `<entry${entryAttrs}>${cellText}</entry>`;

@@ -1,0 +1,37 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Ionic Compounds</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m00004</md:content-id>
+  <md:title>Ionic Compounds</md:title>
+  <md:abstract/>
+  <md:uuid>00000000-0000-0000-0000-000000000004</md:uuid>
+</metadata>
+
+<content>
+<section id="sec-01">
+<title>Common Ions</title>
+<table id="tbl-01" summary="Common cations">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row><entry>Ion</entry><entry>Examples</entry></row>
+</thead>
+<tbody>
+<row>
+<entry id="e-simple">NH<sub>4</sub><sup>+</sup></entry>
+<entry id="e-multi"><para id="p-li">Li<sup>+</sup></para>
+<para id="p-na">Na<sup>+</sup></para>
+<para id="p-k">K<sup>+</sup></para></entry>
+</row>
+<row>
+<entry id="e-plain">chloride</entry>
+<entry id="e-single-para"><para id="p-cl">Cl<sup>−</sup></para></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</content>
+</document>

@@ -591,15 +591,16 @@ function processSection(
     content: [],
   };
 
-  // Extract section title
-  const titleMatch = section.content.match(/<title>([^<]+)<\/title>/);
+  // Extract section title (allow inline markup like <emphasis>, <sup> inside titles)
+  const titleMatch = section.content.match(/<title>([\s\S]*?)<\/title>/);
   if (titleMatch) {
-    const titleId = addSegment('title', titleMatch[1], section.id ? `${section.id}-title` : null);
-    sectionStructure.title = { segmentId: titleId, text: titleMatch[1] };
+    const titleText = extractInlineText(titleMatch[1], mathMap, counters);
+    const titleId = addSegment('title', titleText, section.id ? `${section.id}-title` : null);
+    sectionStructure.title = { segmentId: titleId, text: titleText };
   }
 
   // Remove title from content for further processing
-  const contentWithoutTitle = section.content.replace(/<title>[^<]*<\/title>/, '');
+  const contentWithoutTitle = section.content.replace(/<title>[\s\S]*?<\/title>/, '');
 
   // Process nested sections first
   const nestedSections = extractNestedElements(contentWithoutTitle, 'section');
@@ -815,13 +816,13 @@ function processTopLevelContent(
     switch (item.type) {
       case 'para': {
         // Check if para has a title (e.g., "Check Your Learning", "Solution")
-        const titleMatch = item.content.match(/^\s*<title>([^<]+)<\/title>/);
+        const titleMatch = item.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
         let paraTitle = null;
         let contentWithoutTitle = item.content;
 
         if (titleMatch) {
           // Extract and store the para title separately
-          const titleText = titleMatch[1].trim();
+          const titleText = extractInlineText(titleMatch[1], mathMap, counters).trim();
           const titleSegId = addSegment(
             'para-title',
             titleText,
@@ -829,7 +830,7 @@ function processTopLevelContent(
           );
           paraTitle = { segmentId: titleSegId, text: titleText };
           // Remove title from content before extracting text
-          contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+          contentWithoutTitle = item.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
         }
 
         const text = extractInlineText(
@@ -1002,15 +1003,34 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
     const rowStructure = { cells: [] };
     const entries = extractElements(row.content, 'entry');
     for (const entry of entries) {
-      const text = extractInlineText(entry.content, mathMap, counters);
-      if (text) {
-        const cellId = addSegment('entry', text, entry.id);
+      // Check for multi-para cells (entries containing multiple <para> elements)
+      const cellParas = extractElements(entry.content, 'para');
+      if (cellParas.length > 1) {
+        // Multi-para cell: extract each para as a separate segment
+        const parasArray = [];
+        for (const para of cellParas) {
+          const text = extractInlineText(para.content, mathMap, counters);
+          if (text) {
+            const segId = addSegment('entry', text, para.id);
+            parasArray.push({ segmentId: segId, paraId: para.id });
+          }
+        }
         rowStructure.cells.push({
-          segmentId: cellId,
+          paras: parasArray,
           attributes: entry.attributes,
         });
       } else {
-        rowStructure.cells.push({ segmentId: null, attributes: entry.attributes });
+        // Single-content cell: original behavior
+        const text = extractInlineText(entry.content, mathMap, counters);
+        if (text) {
+          const cellId = addSegment('entry', text, entry.id);
+          rowStructure.cells.push({
+            segmentId: cellId,
+            attributes: entry.attributes,
+          });
+        } else {
+          rowStructure.cells.push({ segmentId: null, attributes: entry.attributes });
+        }
       }
     }
     tableStructure.rows.push(rowStructure);
@@ -1050,29 +1070,31 @@ function processExample(
   // Use regex that allows whitespace between para tag and title
   let exampleTitleFound = false;
   for (const para of paras) {
-    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     if (titleMatch && !exampleTitleFound) {
       // This is the example's main title (e.g., "Measuring Heat")
+      const titleText = extractInlineText(titleMatch[1], mathMap, counters);
       const titleId = addSegment(
         'example-title',
-        titleMatch[1],
+        titleText,
         example.id ? `${example.id}-title` : null
       );
-      exampleStructure.title = { segmentId: titleId, text: titleMatch[1] };
+      exampleStructure.title = { segmentId: titleId, text: titleText };
       exampleTitleFound = true;
     }
   }
 
   // Fallback: look for standalone title element
   if (!exampleTitleFound) {
-    const standaloneTitle = example.content.match(/<title>([^<]+)<\/title>/);
+    const standaloneTitle = example.content.match(/<title>([\s\S]*?)<\/title>/);
     if (standaloneTitle) {
+      const titleText = extractInlineText(standaloneTitle[1], mathMap, counters);
       const titleId = addSegment(
         'example-title',
-        standaloneTitle[1],
+        titleText,
         example.id ? `${example.id}-title` : null
       );
-      exampleStructure.title = { segmentId: titleId, text: standaloneTitle[1] };
+      exampleStructure.title = { segmentId: titleId, text: titleText };
     }
   }
 
@@ -1081,22 +1103,22 @@ function processExample(
   // Other para titles (like "Check Your Learning") should be preserved
   let firstParaWithTitleProcessed = false;
   for (const para of paras) {
-    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     let paraTitle = null;
     let contentWithoutTitle = para.content;
 
     if (titleMatch) {
       if (!firstParaWithTitleProcessed && exampleTitleFound) {
         // This is the first para whose title was used as the example title - strip it
-        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        contentWithoutTitle = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
         firstParaWithTitleProcessed = true;
       } else {
         // This is a different para with its own title (e.g., "Check Your Learning")
         // Preserve this title in the structure
-        const titleText = titleMatch[1].trim();
+        const titleText = extractInlineText(titleMatch[1], mathMap, counters).trim();
         const titleSegId = addSegment('para-title', titleText, para.id ? `${para.id}-title` : null);
         paraTitle = { segmentId: titleSegId, text: titleText };
-        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        contentWithoutTitle = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
       }
     }
 
@@ -1251,11 +1273,12 @@ function processNote(
     content: [],
   };
 
-  // Extract title
-  const titleMatch = note.content.match(/<title>([^<]+)<\/title>/);
+  // Extract title (allow inline markup like <emphasis>, <sup> inside titles)
+  const titleMatch = note.content.match(/<title>([\s\S]*?)<\/title>/);
   if (titleMatch) {
-    const titleId = addSegment('note-title', titleMatch[1], note.id ? `${note.id}-title` : null);
-    noteStructure.title = { segmentId: titleId, text: titleMatch[1] };
+    const titleText = extractInlineText(titleMatch[1], mathMap, counters);
+    const titleId = addSegment('note-title', titleText, note.id ? `${note.id}-title` : null);
+    noteStructure.title = { segmentId: titleId, text: titleText };
   }
 
   // Process paragraphs in note

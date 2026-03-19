@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Hybrid Atomic Orbitals</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m00003</md:content-id>
+  <md:title>Hybrid Atomic Orbitals</md:title>
+  <md:abstract/>
+  <md:uuid>00000000-0000-0000-0000-000000000003</md:uuid>
+</metadata>
+
+<content>
+<section id="sec-plain">
+<title>Plain Title</title>
+<para id="para-01">First paragraph.</para>
+</section>
+
+<section id="sec-inline">
+<title><emphasis effect="italics">sp</emphasis><sup>2</sup> Hybridization</title>
+<para id="para-02">The carbon atom uses sp2 hybrid orbitals.</para>
+</section>
+
+<section id="sec-complex">
+<title><emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis> and <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup> Hybridization</title>
+<para id="para-03">These hybrid orbitals are used by atoms with expanded octets.</para>
+</section>
+</content>
+</document>
