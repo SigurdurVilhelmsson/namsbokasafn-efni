@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: 182 Vitest unit tests + 44 Playwright E2E tests
+- Test suite: 714 Vitest unit tests + 96 Playwright E2E tests
 
 ## Purpose
 
@@ -213,7 +213,7 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Operational use** — Phases 8-13 complete. Pipeline verified with 49 automated tests.
+**Full-book MT-preview published** — All 148 modules (21 chapters + appendices) translated and rendered to HTML. 101/148 modules have PERFECT structural fidelity. Error manifest: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with 714 Vitest + 96 Playwright tests.
 
 See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
 
