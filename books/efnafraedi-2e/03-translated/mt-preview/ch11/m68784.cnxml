@@ -1,0 +1,316 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Svif</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68784</md:content-id>
+  <md:title>Svif</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst samsetningu og eiginleikum svifdreifa</item><item>Talið upp og útskýrt nokkur tæknileg not svifa</item></list></md:abstract>
+  <md:uuid>3165251d-5ef8-4e94-8d53-6c48a9aa3cd3</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm25079776">Þegar þú varst barn gætirðu hafa búið til grugglausnir eins og blöndur af leðju og vatni, hveiti og vatni eða grugglausn af föstum litarefnum í vatni, þekkt sem temperamálning. Þessar <term id="term-00001">grugglausnir (e. suspensions)</term> eru misleitar efnablöndur sem samanstanda af tiltölulega stórum eindum sem eru sýnilegar (eða sem sjást með stækkunargleri). Þær eru skýjaðar og svifeindirnar falla til botns eftir blöndun. Á hinn bóginn er lausn einsleit efnablanda þar sem ekkert botnfall verður og uppleystu efnin eru sameindir eða jónir. Lausnir sýna allt aðra hegðun en grugglausnir. Lausn getur verið lituð en hún er gegnsæ, sameindirnar eða jónirnar eru ósýnilegar og þær falla ekki til botns við geymslu. Annar flokkur efnablandna sem kallast <term id="term-00002">svif (e. colloids)</term> (eða <term id="term-00003">svifdreifur (e. colloidal dispersions)</term>) sýnir eiginleika sem eru mitt á milli eiginleika grugglausna og lausna (<link target-id="CNX_Chem_11_05_Colloid"/>). Eindirnar í svifi eru stærri en flestar einfaldar sameindir; hins vegar eru svifeindir nógu litlar til að þær falli ekki til botns við geymslu.</para>
+<figure id="CNX_Chem_11_05_Colloid"><media id="fs-idm111369104" alt="This figure contains three photos and corresponding particle diagrams. In a, a photo of an aquarium containing fish is shown. The particle diagram beneath it shows 90 tiny red spheres. In b, a photo is shown of milk being poured into a cup. The corresponding particle diagram shows about 25 medium sized red spheres.In c, a photo is shown of two pairs of sandal clad feet in mud. The particle diagram below shows 10 fairly large red spheres.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_Colloid.jpg"/>
+</media>
+
+<caption>(a) Lausn er einsleit efnablanda sem virðist tær, eins og saltvatnið í þessu fiskabúri. (b) Í svifi, eins og mjólk, eru eindirnar mun stærri en haldast dreifðar og falla ekki til botns. (c) Grugglausn, eins og leðja, er misleit efnablanda af svifeindum sem virðist skýjuð og þar sem eindirnar geta fallið til botns. (mynd a: breyting á verki eftir Adam Wimsatt; mynd b: breyting á verki eftir Melissa Wiese; mynd c: breyting á verki eftir Peter Burgess)</caption></figure>
+<para id="fs-idm77182288">Eindirnar í svifi eru nógu stórar til að dreifa ljósi, fyrirbæri sem kallast <term id="term-00004">Tyndall-hrif (e. tyndall effect)</term>. Þetta getur gert svifblöndur skýjaðar eða ógegnsæjar, eins og sést á ljóskeilunum á <link target-id="CNX_Chem_11_05_srchlight"/>. Ský eru svifblöndur. Þau samanstanda af vatnsdropum sem eru mun stærri en sameindir, en eru nógu litlir til að falla ekki til botns.</para>
+<figure id="CNX_Chem_11_05_srchlight" class="scaled-down">
+<media id="fs-idp37353296" alt="This is a photo of searchlight beams in the night sky of a city scene.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_srchlight.jpg"/>
+</media>
+<caption>Leiðir ljóskeila verða sýnilegar þegar ljós dreifist af eindum á stærð við svifeindir í loftinu (þoka, reykur o.s.frv.). (mynd: „Bahman“/Wikimedia Commons)</caption>
+</figure>
+<para id="fs-idm165583920">Hugtakið „svif“ (e. colloid) – úr grísku orðunum <emphasis effect="italics">kolla</emphasis>, sem þýðir „lím“, og <emphasis effect="italics">eidos</emphasis>, sem þýðir „líkt“ – var fyrst notað árið 1861 af Thomas Graham til að flokka efnablöndur eins og sterkju í vatni og gelatín. Margar svifeindir eru þyrpingar hundraða eða þúsunda sameinda, en aðrar (eins og prótein og fjölliðusameindir) samanstanda af einni gríðarstórri sameind. Prótein- og tilbúnar fjölliðusameindir sem mynda svif geta haft mólmassa sem spannar frá nokkrum þúsundum upp í margar milljónir atómmassaeininga.</para>
+<para id="fs-idm31787584">Á sama hátt og íhlutir lausnar eru skilgreindir sem „uppleyst efni“ og „leysir“ eru íhlutir svifs einnig flokkaðir eftir hlutfallslegu magni þeirra. Sá eindafasi sem venjulega er til staðar í tiltölulega litlu magni er kallaður <term id="term-00005">dreififasi (e. dispersed phase)</term> og efnið eða lausnin sem eindirnar dreifast um er kölluð <term id="term-00006">dreifimiðill (e. dispersion medium)</term>. Svif geta falið í sér nánast hvaða samsetningu eðlisástands sem er (gas í vökva, vökvi í föstu efni, fast efni í gasi o.s.frv.), eins og dæmin um svifkerfi í <link target-id="fs-idm28163488"/> sýna.</para>
+<table id="fs-idm28163488" class="top-titled" summary="This table provides examples of colloids. Examples of a solid dispersed in a gas are smoke and dust. Common examples of a solid dispersed in a liquid, also known as a sol, include starch in water, some inks, paints, and milk of magnesia. Examples of a solid dispersed in a solid include some colored gems and some alloys. Examples of a liquid dispersed in a gas, also called an aerosol, include clouds, fogs, mists, and sprays. Examples of a liquid dispersed in a liquid, also called emulsions, include milk, mayonnaise, and butter. Examples of a liquid that is dispersed in a solid, also called gels, include jellies, gels, pearl, and opal which is H subscript 2 O in S i O subscript 2. Examples of a gas dispersed in a liquid, also called a foam, include foams, whipped cream, and beaten egg whites. Examples of gas dispersed in solid include pumice and floating soaps.">
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c4" align="center">Dæmi um svifkerfi</entry>
+</row>
+<row valign="middle">
+<entry align="left">Dreififasi</entry>
+<entry align="left">Dreifimiðill</entry>
+<entry align="left">Algeng dæmi</entry>
+<entry align="left">Nafn</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">fast efni</entry>
+<entry align="left">gas</entry>
+<entry align="left">reykur, ryk</entry>
+<entry align="left">—</entry>
+</row>
+<row valign="middle">
+<entry align="left">fast efni</entry>
+<entry align="left">vökvi</entry>
+<entry align="left">sterkja í vatni, sum blek, málning, magnesíummjólk</entry>
+<entry align="left">sól</entry>
+</row>
+<row valign="middle">
+<entry align="left">fast efni</entry>
+<entry align="left">fast efni</entry>
+<entry align="left">sumir litaðir gimsteinar, sumar málmblöndur</entry>
+<entry align="left">—</entry>
+</row>
+<row valign="middle">
+<entry align="left">vökvi</entry>
+<entry align="left">gas</entry>
+<entry align="left">ský, þoka, mistur, úðar</entry>
+<entry align="left">úðasvif</entry>
+</row>
+<row valign="middle">
+<entry align="left">vökvi</entry>
+<entry align="left">vökvi</entry>
+<entry align="left">mjólk, majónes, smjör</entry>
+<entry align="left">fleyti</entry>
+</row>
+<row valign="middle">
+<entry align="left">vökvi</entry>
+<entry align="left">fast efni</entry>
+<entry align="left">hlaup, gel, perla, ópall (H<sub>2</sub>O í SiO<sub>2</sub>)</entry>
+<entry align="left">gel</entry>
+</row>
+<row valign="middle">
+<entry align="left">gas</entry>
+<entry align="left">vökvi</entry>
+<entry align="left">froða, þeyttur rjómi, þeyttar eggjahvítur</entry>
+<entry align="left">froða</entry>
+</row>
+<row valign="middle">
+<entry align="left">gas</entry>
+<entry align="left">fast efni</entry>
+<entry align="left">vikur, fljótandi sápur</entry>
+<entry align="left">—</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<section id="fs-idm190422560">
+<title>Framleiðsla svifkerfa</title>
+<para id="fs-idm145904336">Kvoðulausnir eru búnar til með því að framleiða eindir af kvoðustærð og dreifa þessum eindum um dreifimiðil. Eindir af kvoðustærð eru myndaðar með tveimur aðferðum:</para>
+<list id="fs-idp50702640" list-type="enumerated" number-style="arabic">
+<item>Dreifingaraðferðir: stærri eindir eru brotnar niður. Til dæmis eru litarefni í málningu framleidd með því að dreifa stórum eindum með því að mala þær í sérstökum myllum.</item>
+<item>Þéttingaraðferðir: vöxtur úr smærri einingum, svo sem sameindum eða jónum. Til dæmis myndast ský þegar vatnssameindir þéttast og mynda mjög litla dropa.</item>
+</list>
+<para id="fs-idm84168496">Nokkur föst efni dreifast sjálfkrafa og mynda kvoðukerfi þegar þau komast í snertingu við vatn. Matarlím, lím, sterkja og þurrkað mjólkurduft hegða sér á þennan hátt. Eindirnar eru þegar af kvoðustærð; vatnið einfaldlega dreifir þeim. Mjólkurduftseindir af kvoðustærð eru framleiddar með því að þurrka mjólkurúða. Sumir úðarar framleiða kvoðudreifingar á vökva í lofti.</para>
+<para id="fs-idm188463104">Hægt er að búa til <term id="term-00007">fleyti (e. emulsion)</term> með því að hrista saman eða blanda tveimur óblandanlegum vökvum. Þetta brýtur annan vökvann niður í dropa af kvoðustærð, sem síðan dreifast um hinn vökvann. Olíuleka í hafi getur verið erfitt að hreinsa, meðal annars vegna þess að ölduhreyfing getur valdið því að olían og vatnið mynda fleyti. Í mörgum fleytum hefur dreifði fasinn þó tilhneigingu til að renna saman, mynda stóra dropa og skiljast að. Þess vegna eru fleyti yfirleitt stöðguð með <term id="term-00008">fleytiefni (e. emulsifying agent)</term>, efni sem hindrar samruna dreifða vökvans. Til dæmis mun smá sápa stöðga fleyti af steinolíu í vatni. Mjólk er fleyti af smjörfitu í vatni, þar sem próteinið kasein þjónar sem fleytiefni. Majónes er fleyti af olíu í ediki, þar sem efnisþættir eggjarauðu eru fleytiefnin.</para>
+<para id="fs-idp11304112">Þéttingaraðferðir mynda kvoðueindir með þyrpingu sameinda eða jóna. Ef eindirnar vaxa út fyrir kvoðustærðarsviðið myndast dropar eða botnfall og ekkert kvoðukerfi verður til. Ský myndast þegar vatnssameindir þyrpast saman og mynda eindir af kvoðustærð. Ef þessar vatnseindir renna saman og mynda nægilega stóra vatnsdropa af fljótandi vatni eða kristalla af föstu vatni, falla þær af himni sem rigning, slydda eða snjór. Margar þéttingaraðferðir fela í sér efnahvörf. Rauða sviflausn af járn(III)hýdroxíði má búa til með því að blanda þéttri lausn af járn(III)klóríði við heitt vatn:</para>
+<equation id="fs-idm23374592" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Fe</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm188457456">Kvoðulausn af gulli (gullsól) verður til við afoxun á mjög þunnri lausn af gull(III)klóríði með afoxunarefni eins og formaldehýði, tin(II)klóríði eða járn(II)súlfati:</para>
+<equation id="fs-idp53295104" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mtext>Au</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Au</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm87795520">Sumar gullkvoðulausnir sem búnar voru til árið 1857 eru enn óskemmdar (eindirnar hafa ekki runnið saman og fallið til botns), sem sýnir langtíma stöðugleika margra kvoðulausna.</para>
+</section>
+<section id="fs-idm88225824">
+<title>Sápur og hreinsiefni</title>
+<para id="fs-idm156517664">Frumkvöðlar bjuggu til sápu með því að sjóða fitu með sterkri basískri lausn sem var búin til með því að skola kalíumkarbónat, K<sub>2</sub>CO<sub>3</sub>, úr viðarösku með heitu vatni. Dýrafita inniheldur pólýestera af fitusýrum (langkeðju karboxýlsýrur). Þegar dýrafita er meðhöndluð með basa eins og kalíumkarbónati eða natríumhýdroxíði, myndast glýseról og sölt fitusýra eins og palmitínsýru, óleínsýru og sterínsýru. Sölt fitusýra eru kölluð <emphasis effect="italics">sápur</emphasis>. Natríumsalt sterínsýru, natríumsterat, hefur formúluna C<sub>17</sub>H<sub>35</sub>CO<sub>2</sub>Na og inniheldur óhlaðna, óskautaða kolvetniskeðju, C<sub>17</sub>H<sub>35</sub>— eininguna, og jónískan karboxýlathóp, —<m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> eininguna (<link target-id="CNX_Chem_11_05_soap"/>).</para>
+<figure id="CNX_Chem_11_05_soap">
+<media id="fs-idm247178464" alt="This figure shows a structural formula for soap known as sodium stearate. A hydrocarbon chain composed of 18 carbon atoms and 35 hydrogen atoms is shown with an ionic end with 2 oxygen atoms and a negative charge. A positively charged N a superscript plus is also shown at the ionic end.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_soap.jpg"/>
+</media>
+<caption>Sápur innihalda óskautaðan kolvetnisenda (blár) og jónískan enda (rauður). Jóníski endinn er karboxýlathópur. Lengd kolvetnisendans getur verið breytileg eftir sápum.</caption>
+</figure>
+<para id="fs-idm189696128"><emphasis effect="italics">Hreinsiefni</emphasis> (sápustaðgenglar) innihalda einnig óskautaðar kolvetniskeðjur, svo sem C<sub>12</sub>H<sub>25</sub>—, og jónískan hóp, svo sem súlfat—<m:math><m:mrow><m:msub><m:mrow><m:mtext>OSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> eða súlfónat—<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> (<link target-id="CNX_Chem_11_05_detrg"/>). Sápur mynda torleyst kalsíum- og magnesíumsambönd í hörðu vatni; hreinsiefni mynda vatnsleysanlegar afurðir—sem er afgerandi kostur fyrir hreinsiefni.</para>
+<figure id="CNX_Chem_11_05_detrg">
+<media id="fs-idp40635280" alt="This figure shows a structural formula for a detergent known as sodium lauryl sulfate. A hydrocarbon chain composed of 12 carbon atoms and 25 hydrogen atoms is shown with an ionic end involving a negatively charged sulfur and four oxygen atoms at the ionic end of the chain. A positively charged N a superscript plus is also shown at the ionic end.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_detrg.jpg"/>
+</media>
+<caption>Hreinsiefni innihalda óskautaðan kolvetnisenda (blár) og jónískan enda (rauður). Jóníski endinn getur verið annaðhvort súlfat eða súlfónat. Lengd kolvetnisendans getur verið breytileg eftir hreinsiefnum.</caption>
+</figure>
+<para id="fs-idm191110112">Hreinsivirkni sápa og hreinsiefna má útskýra með byggingu sameindanna sem um ræðir. Kolvetnisendinn (óskautaði) á sápu- eða hreinsiefnissameind leysist upp í, eða laðast að, óskautuðum efnum eins og olíu, feiti eða óhreinindaeindum. Jóníski endinn laðast að vatni (skautað), eins og sýnt er á <link target-id="CNX_Chem_11_05_emulsoil"/>. Fyrir vikið raða sápu- eða hreinsiefnissameindirnar sér á skilin milli óhreinindaeindanna og vatnsins þannig að þær virka sem eins konar brú milli tveggja ólíkra tegunda efna, óskautaðra og skautaðra. Sameindir sem þessar eru kallaðar <term id="term-00009">tvígæfar (e. amphiphilic)</term> þar sem þær hafa bæði vatnsfælinn („vatnshræddan“) hluta og vatnssækinn („vatnselskandi“) hluta. Afleiðingin er sú að óhreinindaeindir verða að sviflausn sem kvoðueindir og skolast auðveldlega burt.</para>
+<figure id="CNX_Chem_11_05_emulsoil" class="scaled-down">
+<media id="fs-idm119986752" alt="This figure shows a drop of oil in which approximately thirty hydrocarbon tails are oriented toward the center of the drop with ionic ends indicated as tiny red spheres on the surface of the oil drop. Solvated cations are indicated as purple spheres surrounded by clusters of H subscript 2 subscript O molecules shown as tiny clusters of red central oxygen spheres with two white hydrogen spheres attached.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_emulsoil.jpg"/>
+</media>
+<caption>Þessi skýringarmynd af þverskurði af fleyttum olíudropa í vatni sýnir hvernig sápa eða hreinsiefni virkar sem fleytiefni.</caption>
+</figure>
+<note id="fs-idm107755280" class="chemistry everyday-life">
+<title>Olíulekinn frá Deepwater Horizon</title>
+<para id="fs-idm167088304">Þegar olíuborpallurinn Deepwater Horizon sprakk þann 20. apríl 2010 í Mexíkóflóa nálægt Mississippi hófst stærsti olíuleki í sjó í sögu olíuiðnaðarins. Á þeim 87 dögum sem liðu frá sprengingunni er talið að 4,9 milljónir tunna (210 milljónir gallona) af olíu hafi lekið úr rofnum borholunni 5000 fetum undir yfirborði sjávar. Þann 19. september 2010 var loksins lýst yfir að búið væri að loka holunni.</para><para id="fs-idm140606352">Hráolía er óblandanleg vatni og eðlisléttari, þannig að olían sem lak flaut upp á yfirborð vatnsins. Fljótandi lensur, olíusöfnunarskip og stýrðir brunar voru notaðir til að fjarlægja olíu af yfirborði vatnsins í tilraun til að vernda strendur og votlendi meðfram flóaströndinni. Auk þess að fjarlægja olíuna var einnig reynt að draga úr umhverfisáhrifum hennar með því að gera hana „leysanlega“ (í víðum skilningi þess orðs) og leyfa henni þannig að þynnast út í vonandi minna skaðlegum styrk í hinu gríðarlega rúmmáli sjávar. Í þessari aðferð voru notaðar 1,84 milljónir gallona af olíudreifiefninu Corexit 9527, sem að mestu var sprautað neðansjávar á lekastaðnum, en litlu magni var úðað ofan á lekann. Corexit 9527 inniheldur 2-bútoxýetanól (C<sub>6</sub>H<sub>14</sub>O<sub>2</sub>), tvígæfa sameind þar sem skautaðir og óskautaðir endar eru gagnlegir til að dreifa olíu í litla dropa, auka yfirborðsflatarmál olíunnar og gera hana aðgengilegri fyrir sjávarbakteríur til meltingar (<link target-id="CNX_Chem_11_05_oilspill"/>). Þótt þessi aðferð komi í veg fyrir margar af þeim tafarleysu hættum sem olía í magni stafar af fyrir vistkerfi sjávar og strandsvæða, felur hún í sér möguleika á langtímaáhrifum vegna innleiðingar flókinna og hugsanlega eitraðra íhluta jarðolíu í fæðukeðju hafsins. Fjöldi stofnana tekur þátt í að fylgjast með víðtækum áhrifum þessa olíuleka, þar á meðal National Oceanic and Atmospheric Administration (sjá þessa <link url="http://openstax.org/l/16gulfspill">vefsíðu</link> fyrir frekari upplýsingar).</para>
+<figure id="CNX_Chem_11_05_oilspill">
+<media id="fs-idm61187488" alt="In figure a, a satellite image is shown with an inset pointing out the Gulf Coast of the southern United States. In figure b, a photo of a plane is shown spraying over water contaminated with oil. In figure c, a molecule composed of 6 black carbon atoms, 2 red oxygen atoms, and 14 white hydrogen atoms is shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_oilspill.jpg"/>
+</media>
+<caption>(a) Þessi gervihnattamynd frá NASA sýnir olíubrákina frá Deepwater Horizon-lekanum. (b) Flugvél frá bandaríska flughernum úðar Corexit, dreifiefni. (c) Sameindabygging 2-bútoxýetanóls er sýnd. (mynd a: breytt útgáfa af verki eftir „NASA, FT2, demis.nl“/Wikimedia Commons; mynd b: breytt útgáfa af verki eftir „NASA/MODIS Rapid Response Team“/Wikimedia Commons)</caption>
+</figure>
+</note>
+</section>
+<section id="fs-idm151327648">
+<title>Rafmagnseiginleikar svifeinda</title>
+<para id="fs-idm237216720">Dreifðar svifeindir eru oft rafmagnaðar. Svifeind af járn(III)hýdroxíði inniheldur til dæmis ekki nægilega margar hýdroxíðjónir til að vega nákvæmlega upp á móti jákvæðu hleðslunum á járn(III)jónunum. Þannig ber hver einstök svifeind jákvæða hleðslu og svifdreifan samanstendur af hlöðnum svifeindum og nokkrum lausum hýdroxíðjónum, sem halda dreifunni rafhlutlausri. Flest svif málmhýdroxíða hafa jákvæða hleðslu, en flestir málmar og málmsúlfíð mynda neikvætt hlaðnar dreifur. Allar svifeindir í einu kerfi hafa hleðslur með sama formerki. Þetta hjálpar til við að halda þeim dreifðum því eindir með samkynja hleðslur hrinda hvor annarri frá sér.</para>
+<para id="fs-idm89695104">Hægt er að nýta hlaðið eðli sumra svifeinda til að fjarlægja þær úr ýmsum efnablöndum. Til dæmis eru eindirnar sem mynda reyk oft svifdreifðar og rafmagnaðar. Frederick Cottrell, bandarískur efnafræðingur, þróaði ferli til að fjarlægja þessar eindir. Hlöðnu eindirnar dragast að sterkt hlöðnum rafskautum, þar sem þær eru hlutleystar og falla út sem ryk (<link target-id="CNX_Chem_11_05_Cottrellp"/>). Þetta er ein af mikilvægustu aðferðunum sem notaðar eru til að hreinsa reyk frá ýmsum iðnaðarferlum. Ferlið er einnig mikilvægt við endurheimt verðmætra myndefna úr reyk og reykrifi frá bræðsluofnum, ofnum og brennsluofnum. Einnig eru til svipaðar rafstöðusíur fyrir heimili til að bæta loftgæði innandyra.</para>
+<note id="fs-idm42784320" class="chemistry chemist-portrait"><title>Frederick Gardner Cottrell</title><figure id="CNX_Chem_11_05_FredCottre" class="scaled-down">
+<media id="fs-idm149015440" alt="This is a photo of Frederick Cottrell.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_FredCottre.jpg"/>
+</media>
+<caption>(a) Frederick Cottrell þróaði (b) rafstöðusíuna, tæki sem hannað var til að draga úr loftmengun með því að fjarlægja svifeindir úr lofti. (mynd b: breytt útgáfa af verki eftir „SpLot“/Wikimedia Commons)</caption>
+</figure>
+<para id="fs-idm168546112">Frederick <term class="no-emphasis" id="term-00010">Cottrell</term> fæddist í Oakland í Kaliforníu árið 1877, gleypti í sig kennslubækur eins og þær væru skáldsögur og útskrifaðist úr menntaskóla 16 ára gamall. Hann hóf síðan nám við Kaliforníuháskóla (UC) í Berkeley og lauk BS-gráðu á þremur árum. Hann sparaði peninga af 1200 dollara árslaunum sínum sem efnafræðikennari við Oakland High School til að fjármagna efnafræðinám sitt í Berlín hjá Nóbelsverðlaunahafanum Jacobus Henricus van't Hoff og í Leipzig hjá Wilhelm Ostwald, öðrum Nóbelsverðlaunahafa. Eftir að hafa hlotið doktorsgráðu í eðlisefnafræði sneri hann aftur til Bandaríkjanna til að kenna við UC Berkeley. Hann var einnig ráðgjafi hjá DuPont Company, þar sem hann þróaði rafstöðusíuna, tæki sem hannað var til að draga úr loftmengun með því að fjarlægja svifeindir úr lofti. Cottrell notaði ágóðann af uppfinningu sinni til að fjármagna rannsóknarfyrirtæki sem ekki var rekið í hagnaðarskyni til að fjármagna vísindarannsóknir.</para>
+</note>
+<figure id="CNX_Chem_11_05_Cottrellp" class="scaled-down">
+<media id="fs-idm32480224" alt="This figure shows a diagram of a Cottrell precipitator. An arrow pointing into a cylindrical chamber shows the path of soot laden smoke. In the presence of high DC voltage and both point and plate electrodes, soot particles are removed at the bottom of the chamber and soot free air exits the top. A photo shows the honeycomb electrodes of a modern electrostatic precipitator.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_Cottrellp.jpg"/>
+</media>
+<caption>Í Cottrell-síu dragast jákvætt og neikvætt hlaðnar eindir að sterkt hlöðnum rafskautum, þar sem þær eru hlutleystar og falla út sem ryk.</caption>
+</figure>
+</section>
+<section id="fs-idm165962688">
+<title>Gel</title>
+<para id="fs-idm133384464">Gelatínbúðingar, eins og Jell-O, eru tegund af svifi (<link target-id="CNX_Chem_11_05_Gel"/>). Gelatín stífnar við kælingu vegna þess að heit vatnsblanda gelatíns storknar þegar hún kólnar og myndar afar seigfljótandi massa sem kallast <term id="term-00011">gel</term>. Gel er svifdreifa vökvafasa um fastan fasa. Svo virðist sem trefjar dreifimiðilsins myndi flókið þrívítt net þar sem millirýmin fyllast af vökvamiðlinum eða þunnri lausn dreifimiðilsins.</para>
+<figure id="CNX_Chem_11_05_Gel">
+<media id="fs-idm200257152" alt="In this figure, a large molecular model of gelatin is shown with black carbon atoms, red oxygen atoms, white hydrogen atoms, and blue nitrogen atoms. A photo is shown of gelatin dessert cut into colorful rectangles.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_05_Gel.jpg"/>
+</media>
+<caption>Gelatínbúðingar eru svif þar sem vatnslausn sætuefna og bragðefna er dreift um miðil af föstum próteinum. (mynd: breytt útgáfa af verki eftir Steven Depolo)</caption>
+</figure>
+<para id="fs-idm105104">Pektín, kolvetni úr ávaxtasöfum, er hleypiefni sem er mikilvægt við sultugerð. Kísilgel, svifdreifing vökvaðs kísildíoxíðs, myndast þegar þunnri saltsýru er bætt við þunna lausn af natríumsílíkati. Canned Heat er eldfimt gel sem er búið til með því að blanda saman alkóhóli og mettaðri vatnslausn af kalsíumasetati.</para>
+</section>
+<section id="fs-idm184888480" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm109704048">Svif eru efnablöndur þar sem einu eða fleiri efnum er dreift sem tiltölulega stórum eindum fasts efnis eða vökvadropum um fast efni, vökva eða gas. Eindir svifs haldast dreifðar og falla ekki til botns vegna þyngdaraflsins og þær eru oft rafmagnaðar. Svif eru útbreidd í náttúrunni og koma við sögu í mörgum tæknilegum notum.</para>
+</section>
+<section id="fs-idm198925920" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idm110325696">
+<problem id="fs-idm109638512">
+<para id="fs-idm156555296">Greindu dreifða fasann og dreifimiðilinn í hverju eftirfarandi svifkerfa: sterkjudreifing, reykur, þoka, perla, þeyttur rjómi, fljótandi sápa, hlaup, mjólk og rúbín.</para>
+</problem>
+<solution id="fs-idm151278752">
+<!-- table handled separately -->
+</solution>
+</exercise>
+<table id="fs-idm34982368" class="unnumbered" summary="This table provides the dispersed phase and medium for a variety of colloidal systems. In starch dispersion, the dispersed phase is starch and the dispersion medium is water. In smoke, the dispersed phase is solid particles and the dispersion medium is air. In fog, the dispersed phase is water and the dispersion medium is air. In pearl, the dispersed phase is water and the dispersion medium is calcium carbonate, C a C O subscript 3. In whipped cream, the dispersed phase is air and the dispersion medium is cream. In floating soap, the dispersed phase is air and the dispersion medium is soap. In jelly, the dispersed phase is fruit juice and the dispersion medium is pectin gel. In milk, the dispersed phase is butterfat and the dispersion medium is water. In ruby, the dispersed phase is chromium three oxide C r subscript 2 O subscript 3, and the dispersion medium is aluminum oxide A l subscript 2 O subscript 3.">
+<label/>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="middle">
+<entry align="left">Svifkerfi</entry>
+<entry align="left">Dreifður fasi</entry>
+<entry align="left">Dreifimiðill</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">sterkjudreifing</entry>
+<entry align="left">sterkja</entry>
+<entry align="left">vatn</entry>
+</row>
+<row valign="middle">
+<entry align="left">reykur</entry>
+<entry align="left">eindir fasts efnis</entry>
+<entry align="left">loft</entry>
+</row>
+<row valign="middle">
+<entry align="left">þoka</entry>
+<entry align="left">vatn</entry>
+<entry align="left">loft</entry>
+</row>
+<row valign="middle">
+<entry align="left">perla</entry>
+<entry align="left">vatn</entry>
+<entry align="left">kalsíumkarbónat (CaCO<sub>3</sub>)</entry>
+</row>
+<row valign="middle">
+<entry align="left">þeyttur rjómi</entry>
+<entry align="left">loft</entry>
+<entry align="left">rjómi</entry>
+</row>
+<row valign="middle">
+<entry align="left">fljótandi sápa</entry>
+<entry align="left">loft</entry>
+<entry align="left">sápa</entry>
+</row>
+<row valign="middle">
+<entry align="left">hlaup</entry>
+<entry align="left">ávaxtasafi</entry>
+<entry align="left">pektíngel</entry>
+</row>
+<row valign="middle">
+<entry align="left">mjólk</entry>
+<entry align="left">mjólkurfita</entry>
+<entry align="left">vatn</entry>
+</row>
+<row valign="middle">
+<entry align="left">rúbín</entry>
+<entry align="left">króm(III)oxíð (Cr<sub>2</sub>O<sub>3</sub>)</entry>
+<entry align="left">álúmínoxíð (Al<sub>2</sub>O<sub>3</sub>)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<exercise id="fs-idm115359200">
+<problem id="fs-idm87324448">
+<para id="fs-idm118190336">Greindu á milli dreifingaraðferða og þéttingaraðferða til að undirbúa svifkerfi.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm42853312">
+<problem id="fs-idm150542112">
+<para id="fs-idm23750416">Hvernig eru svif ólík lausnum með tilliti til stærðar dreifðra einda og einsleitni?</para>
+</problem>
+<solution id="fs-idm166542736">
+<para id="fs-idm95482864">Svifdreifingar samanstanda af eindum sem eru mun stærri en uppleystu efnin í dæmigerðum lausnum. Svifeindir eru annaðhvort mjög stórar sameindir eða þyrpingar smærri efna sem eru venjulega nógu stórar til að dreifa ljósi. Svif eru einsleit á stórsæjum (sjónrænum) skala, en lausnir eru einsleitar á smásæjum (sameinda) skala.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm26172416">
+<problem id="fs-idm94601296">
+<para id="fs-idm151000608">Útskýrðu hreinsivirkni sápu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm167047216">
+<problem id="fs-idm196933440">
+<para id="fs-idm24208320">Hvernig er hægt að sýna fram á að svifeindir séu rafmagnaðar?</para>
+</problem>
+<solution id="fs-idm147842064">
+<para id="fs-idm96918992">Ef þær eru settar í rafker munu dreifðar eindir færast í átt að raftroðinu sem ber gagnstæða hleðslu við þeirra eigin hleðslu. Við þetta raftroð verða hlaðnu eindirnar hlutlausar og storkna sem botnfall.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm237171488">
+<term>tvígæfur (e. amphiphilic)</term>
+<meaning id="fs-idm237171488-meaning">sameindir sem hafa bæði vatnsfælinn (óskautaðan) og vatnssækinn (skautaðan) hluta</meaning>
+</definition>
+<definition id="fs-idm164804608">
+<term>svif (e. colloid)</term>
+<meaning id="fs-idm164804608-meaning">(einnig, svifdreifing) efnablanda þar sem tiltölulega stórum eindum fasts efnis eða vökva er dreift jafnt um gas, vökva eða fast efni</meaning>
+</definition>
+<definition id="fs-idm203045728">
+<term>dreifimiðill (e. dispersion medium)</term>
+<meaning id="fs-idm203045728-meaning">fast efni, vökvi eða gas þar sem svifeindum er dreift</meaning>
+</definition>
+<definition id="fs-idm117651760">
+<term>dreifður fasi (e. dispersed phase)</term>
+<meaning id="fs-idm117651760-meaning">efni sem er til staðar sem tiltölulega stórar eindir fasts efnis eða vökva í svifi</meaning>
+</definition>
+<definition id="fs-idp52912">
+<term>fleytiefni (e. emulsifying agent)</term>
+<meaning id="fs-idp52912-meaning">tvígæft efni sem notað er til að stöðga eindir sumra fleyta</meaning>
+</definition>
+<definition id="fs-idm96998512">
+<term>fleyti (e. emulsion)</term>
+<meaning id="fs-idm96998512-meaning">svif myndað úr óblandanlegum vökvum</meaning>
+</definition>
+<definition id="fs-idm167483808">
+<term>gel</term>
+<meaning id="fs-idm167483808-meaning">svifdreifing vökva í föstu efni</meaning>
+</definition>
+<definition id="fs-idm380612256">
+<term>lausn (e. suspension)</term>
+<meaning id="fs-idm380612256-meaning">misleit efnablanda þar sem tiltölulega stórir efnisþættir eru tímabundið dreifðir en falla til botns með tímanum</meaning>
+</definition>
+<definition id="fs-idm171842784">
+<term>Tyndall-hrif (e. tyndall effect)</term>
+<meaning id="fs-idm171842784-meaning">dreifing sýnilegs ljóss með svifdreifingu</meaning>
+</definition>
+</glossary>
+</document>

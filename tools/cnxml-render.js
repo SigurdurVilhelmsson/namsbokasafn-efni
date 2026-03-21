@@ -1999,10 +1999,26 @@ function renderKeyEquations(chapter, equations, equationTextDictionary) {
 
       // Check if this is MathML (starts with <m:math>) or inline HTML/CNXML
       if (eq.mathml.trim().startsWith('<m:math')) {
-        // Process MathML: localize numbers and text, then render to SVG
-        let localizedMathml = localizeNumbersInMathML(eq.mathml);
-        localizedMathml = localizeMathMLText(localizedMathml, equationTextDictionary);
-        renderedMath = renderMathML(localizedMathml, true);
+        // Entry may contain multiple <m:math> blocks (e.g., equation + units).
+        // Render each separately since MathJax requires a single root element.
+        const mathBlocks = eq.mathml.match(/<m:math[\s\S]*?<\/m:math>/g) || [];
+        const parts = [];
+        let remaining = eq.mathml;
+        for (const block of mathBlocks) {
+          const idx = remaining.indexOf(block);
+          if (idx > 0) {
+            const textBefore = remaining.substring(0, idx).trim();
+            if (textBefore) parts.push(processInlineContent(textBefore, context));
+          }
+          let localizedBlock = localizeNumbersInMathML(block);
+          localizedBlock = localizeMathMLText(localizedBlock, equationTextDictionary);
+          parts.push(renderMathML(localizedBlock, true));
+          remaining = remaining.substring(idx + block.length);
+        }
+        if (remaining.trim()) {
+          parts.push(processInlineContent(remaining.trim(), context));
+        }
+        renderedMath = parts.join(' ');
       } else {
         // Process inline CNXML content (e.g., <emphasis>, <sub>, <sup>)
         renderedMath = processInlineContent(eq.mathml, context);

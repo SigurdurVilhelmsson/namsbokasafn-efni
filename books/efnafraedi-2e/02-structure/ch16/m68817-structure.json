@@ -152,13 +152,21 @@
           "id": "fs-idm141128112",
           "title": {
             "segmentId": "m68817:example-title:fs-idm141128112-title",
-            "text": "Solution"
+            "text": "Determination of Δ{{i}}S{{/i}}"
           },
           "content": [
             {
               "type": "para",
               "id": "fs-idm120145792",
               "segmentId": "m68817:para:fs-idm120145792"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm211323008",
+              "title": {
+                "segmentId": "m68817:para-title:fs-idm211323008-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -213,7 +221,7 @@
       "class": null,
       "title": {
         "segmentId": "m68817:title:fs-idp49499248-title",
-        "text": "Solution"
+        "text": "Predicting the Sign of Δ{{i}}S{{/i}}"
       },
       "content": [
         {
@@ -290,7 +298,7 @@
           "id": "fs-idm151499136",
           "title": {
             "segmentId": "m68817:example-title:fs-idm151499136-title",
-            "text": "Check Your Learning"
+            "text": "Predicting the Sign of ∆{{i}}S{{/i}}"
           },
           "content": [
             {
@@ -321,7 +329,11 @@
             {
               "type": "para",
               "id": "fs-idm200549408",
-              "segmentId": "m68817:para:fs-idm200549408"
+              "segmentId": "m68817:para:fs-idm200549408",
+              "title": {
+                "segmentId": "m68817:para-title:fs-idm200549408-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -341,7 +353,11 @@
             {
               "type": "para",
               "id": "fs-idm10344720",
-              "segmentId": "m68817:para:fs-idm10344720"
+              "segmentId": "m68817:para:fs-idm10344720",
+              "title": {
+                "segmentId": "m68817:para-title:fs-idm10344720-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -426,7 +442,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68817:entry:auto-64",
+                  "segmentId": "m68817:entry:auto-67",
                   "attributes": {}
                 }
               ]
@@ -434,7 +450,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68817:entry:auto-65",
+                  "segmentId": "m68817:entry:auto-68",
                   "attributes": {}
                 }
               ]
@@ -442,7 +458,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68817:entry:auto-66",
+                  "segmentId": "m68817:entry:auto-69",
                   "attributes": {}
                 }
               ]

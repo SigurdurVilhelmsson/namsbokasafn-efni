@@ -17,7 +17,7 @@ Use the Arrhenius equation in calculations relating rate constants to temperatur
 We should not be surprised that atoms, molecules, or ions must collide before they can react with each other. Atoms must be close together to form chemical bonds. This simple premise is the basis for a very powerful theory that explains many observations regarding chemical kinetics, including factors affecting reaction rates.
 
 <!-- SEG:m68793:para:fs-idm148062976 -->
-__Collision theory__ is based on the following postulates:
+{{term}}Collision theory{{/term}} is based on the following postulates:
 
 <!-- SEG:m68793:item:fs-idm90348816-item-1 -->
 The rate of a reaction is proportional to the rate of reactant collisions: [[MATH:1]]
@@ -53,7 +53,7 @@ Although there are many different possible orientations the two molecules can ha
 Illustrated are two collisions that might take place between carbon monoxide and oxygen molecules. The orientation of the colliding molecules partially determines whether a reaction between the two molecules will occur.
 
 <!-- SEG:m68793:para:fs-idm58992896 -->
-If the collision does take place with the correct orientation, there is still no guarantee that the reaction will proceed to form carbon dioxide. In addition to a proper orientation, the collision must also occur with sufficient energy to result in product formation. When reactant species collide with both proper orientation and adequate energy, they combine to form an unstable species called an __activated complex__ or a __transition state__. These species are very short lived and usually undetectable by most analytical instruments. In some cases, sophisticated spectral measurements have been used to observe transition states.
+If the collision does take place with the correct orientation, there is still no guarantee that the reaction will proceed to form carbon dioxide. In addition to a proper orientation, the collision must also occur with sufficient energy to result in product formation. When reactant species collide with both proper orientation and adequate energy, they combine to form an unstable species called an {{term}}activated complex{{/term}} or a {{term}}transition state{{/term}}. These species are very short lived and usually undetectable by most analytical instruments. In some cases, sophisticated spectral measurements have been used to observe transition states.
 
 <!-- SEG:m68793:para:fs-idm207258608 -->
 Collision theory explains why most reaction rates increase as concentrations increase. With an increase in the concentration of any reacting substance, the chances for collisions between molecules are increased because there are more molecules per unit of volume. More collisions mean a faster reaction rate, assuming the energy of the collisions is adequate.
@@ -62,55 +62,55 @@ Collision theory explains why most reaction rates increase as concentrations inc
 Activation Energy and the Arrhenius Equation
 
 <!-- SEG:m68793:para:fs-idm102149680 -->
-The minimum energy necessary to form a product during a collision between reactants is called the __activation energy (*E*~a~)__. How this energy compares to the kinetic energy provided by colliding reactant molecules is a primary factor affecting the rate of a chemical reaction. If the activation energy is much larger than the average kinetic energy of the molecules, the reaction will occur slowly since only a few fast-moving molecules will have enough energy to react. If the activation energy is much smaller than the average kinetic energy of the molecules, a large fraction of molecules will be adequately energetic and the reaction will proceed rapidly.
+The minimum energy necessary to form a product during a collision between reactants is called the {{term}}activation energy ({{i}}E{{/i}}[[sub:a]]){{/term}}. How this energy compares to the kinetic energy provided by colliding reactant molecules is a primary factor affecting the rate of a chemical reaction. If the activation energy is much larger than the average kinetic energy of the molecules, the reaction will occur slowly since only a few fast-moving molecules will have enough energy to react. If the activation energy is much smaller than the average kinetic energy of the molecules, a large fraction of molecules will be adequately energetic and the reaction will proceed rapidly.
 
 <!-- SEG:m68793:para:fs-idm3588352 -->
 [#CNX_Chem_12_05_RCooDgm] shows how the energy of a chemical system changes as it undergoes a reaction converting reactants to products according to the equation
 
 <!-- SEG:m68793:para:fs-idm92123120 -->
-These __reaction diagrams__ are widely used in chemical kinetics to illustrate various properties of the reaction of interest. Viewing the diagram from left to right, the system initially comprises reactants only, *A* + *B*. Reactant molecules with sufficient energy can collide to form a high-energy activated complex or transition state. The unstable transition state can then subsequently decay to yield stable products, *C* + *D*. The diagram depicts the reaction's activation energy, *E~a~*, as the energy difference between the reactants and the transition state. Using a specific energy, the *enthalpy* (see chapter on thermochemistry), the enthalpy change of the reaction, Δ*H*, is estimated as the energy difference between the reactants and products. In this case, the reaction is exothermic (Δ*H* &lt; 0) since it yields a decrease in system enthalpy.
+These {{term}}reaction diagrams{{/term}} are widely used in chemical kinetics to illustrate various properties of the reaction of interest. Viewing the diagram from left to right, the system initially comprises reactants only, {{i}}A{{/i}} + {{i}}B{{/i}}. Reactant molecules with sufficient energy can collide to form a high-energy activated complex or transition state. The unstable transition state can then subsequently decay to yield stable products, {{i}}C{{/i}} + {{i}}D{{/i}}. The diagram depicts the reaction's activation energy, {{i}}E[[sub:a]]{{/i}}, as the energy difference between the reactants and the transition state. Using a specific energy, the {{i}}enthalpy{{/i}} (see chapter on thermochemistry), the enthalpy change of the reaction, Δ{{i}}H{{/i}}, is estimated as the energy difference between the reactants and products. In this case, the reaction is exothermic (Δ{{i}}H{{/i}} &lt; 0) since it yields a decrease in system enthalpy.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_RCooDgm-caption -->
 Reaction diagram for the exothermic reaction [[MATH:3]]
 
 <!-- SEG:m68793:para:fs-idm93458160 -->
-The __Arrhenius equation__ relates the activation energy and the rate constant, *k*, for many chemical reactions:
+The {{term}}Arrhenius equation{{/term}} relates the activation energy and the rate constant, {{i}}k{{/i}}, for many chemical reactions:
 
 <!-- SEG:m68793:para:fs-idp69522176 -->
-In this equation, *R* is the ideal gas constant, which has a value 8.314 J/mol/K, T is temperature on the Kelvin scale, *E*~a~ is the activation energy in joules per mole, *e* is the constant 2.7183, and *A* is a constant called the __frequency factor__, which is related to the frequency of collisions and the orientation of the reacting molecules.
+In this equation, {{i}}R{{/i}} is the ideal gas constant, which has a value 8.314 J/mol/K, T is temperature on the Kelvin scale, {{i}}E{{/i}}[[sub:a]] is the activation energy in joules per mole, {{i}}e{{/i}} is the constant 2.7183, and {{i}}A{{/i}} is a constant called the {{term}}frequency factor{{/term}}, which is related to the frequency of collisions and the orientation of the reacting molecules.
 
 <!-- SEG:m68793:para:fs-idm378964576 -->
-Postulates of collision theory are nicely accommodated by the Arrhenius equation. The frequency factor, *A*, reflects how well the reaction conditions favor properly oriented collisions between reactant molecules. An increased probability of effectively oriented collisions results in larger values for *A* and faster reaction rates.
+Postulates of collision theory are nicely accommodated by the Arrhenius equation. The frequency factor, {{i}}A{{/i}}, reflects how well the reaction conditions favor properly oriented collisions between reactant molecules. An increased probability of effectively oriented collisions results in larger values for {{i}}A{{/i}} and faster reaction rates.
 
 <!-- SEG:m68793:para:fs-idm493145248 -->
-The exponential term, *e^−Ea/RT^*, describes the effect of activation energy on reaction rate. According to kinetic molecular theory (see chapter on gases), the temperature of matter is a measure of the average kinetic energy of its constituent atoms or molecules. The distribution of energies among the molecules composing a sample of matter at any given temperature is described by the plot shown in [#CNX_Chem_12_05_SuccessR](*a*). Two shaded areas under the curve represent the numbers of molecules possessing adequate energy (*RT*) to overcome the activation barriers (*E~a~*). A lower activation energy results in a greater fraction of adequately energized molecules and a faster reaction.
+The exponential term, {{i}}e[[sup:−Ea/RT]]{{/i}}, describes the effect of activation energy on reaction rate. According to kinetic molecular theory (see chapter on gases), the temperature of matter is a measure of the average kinetic energy of its constituent atoms or molecules. The distribution of energies among the molecules composing a sample of matter at any given temperature is described by the plot shown in [#CNX_Chem_12_05_SuccessR]({{i}}a{{/i}}). Two shaded areas under the curve represent the numbers of molecules possessing adequate energy ({{i}}RT{{/i}}) to overcome the activation barriers ({{i}}E[[sub:a]]{{/i}}). A lower activation energy results in a greater fraction of adequately energized molecules and a faster reaction.
 
 <!-- SEG:m68793:para:fs-idm494984112 -->
-The exponential term also describes the effect of temperature on reaction rate. A higher temperature represents a correspondingly greater fraction of molecules possessing sufficient energy (*RT*) to overcome the activation barrier (*E~a~*), as shown in [#CNX_Chem_12_05_SuccessR](*b*). This yields a greater value for the rate constant and a correspondingly faster reaction rate.
+The exponential term also describes the effect of temperature on reaction rate. A higher temperature represents a correspondingly greater fraction of molecules possessing sufficient energy ({{i}}RT{{/i}}) to overcome the activation barrier ({{i}}E[[sub:a]]{{/i}}), as shown in [#CNX_Chem_12_05_SuccessR]({{i}}b{{/i}}). This yields a greater value for the rate constant and a correspondingly faster reaction rate.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_SuccessR-caption -->
 Molecular energy distributions showing numbers of molecules with energies exceeding (a) two different activation energies at a given temperature, and (b) a given activation energy at two different temperatures.
 
 <!-- SEG:m68793:para:fs-idm217118448 -->
-A convenient approach for determining *E*~a~ for a reaction involves the measurement of *k* at two or more different temperatures and using an alternate version of the Arrhenius equation that takes the form of a linear equation
+A convenient approach for determining {{i}}E{{/i}}[[sub:a]] for a reaction involves the measurement of {{i}}k{{/i}} at two or more different temperatures and using an alternate version of the Arrhenius equation that takes the form of a linear equation
 
 <!-- SEG:m68793:para:fs-idm161357136 -->
-A plot of ln *k* versus [[MATH:4]] is linear with a slope equal to [[MATH:5]] and a *y*-intercept equal to ln *A*.
+A plot of ln {{i}}k{{/i}} versus [[MATH:4]] is linear with a slope equal to [[MATH:5]] and a {{i}}y{{/i}}-intercept equal to ln {{i}}A{{/i}}.
 
 <!-- SEG:m68793:example-title:fs-idm160727824-title -->
-Determination of *E*~a~
+Determination of {{i}}E{{/i}}[[sub:a]]
 
 <!-- SEG:m68793:para:fs-idp108035392 -->
-The variation of the rate constant with temperature for the decomposition of HI(*g*) to H~2~(*g*) and I~2~(*g*) is given here. What is the activation energy for the reaction?
+The variation of the rate constant with temperature for the decomposition of HI({{i}}g{{/i}}) to H[[sub:2]]({{i}}g{{/i}}) and I[[sub:2]]({{i}}g{{/i}}) is given here. What is the activation energy for the reaction?
 
 <!-- SEG:m68793:para-title:fs-idm178775392-title -->
 Solution
 
 <!-- SEG:m68793:para:fs-idm178775392 -->
-Use the provided data to derive values of [[MATH:6]] and ln *k*:
+Use the provided data to derive values of [[MATH:6]] and ln {{i}}k{{/i}}:
 
 <!-- SEG:m68793:para:fs-idm197951232 -->
-[#CNX_Chem_12_05_ArrhPlot] is a graph of ln *k* versus [[MATH:7]] In practice, the equation of the line (slope and *y*-intercept) that best fits these plotted data points would be derived using a statistical process called regression. This is helpful for most experimental data because a perfect fit of each data point with the line is rarely encountered. For the data here, the fit is nearly perfect and the slope may be estimated using any two of the provided data pairs. Using the first and last data points permits estimation of the slope.
+[#CNX_Chem_12_05_ArrhPlot] is a graph of ln {{i}}k{{/i}} versus [[MATH:7]] In practice, the equation of the line (slope and {{i}}y{{/i}}-intercept) that best fits these plotted data points would be derived using a statistical process called regression. This is helpful for most experimental data because a perfect fit of each data point with the line is rarely encountered. For the data here, the fit is nearly perfect and the slope may be estimated using any two of the provided data pairs. Using the first and last data points permits estimation of the slope.
 
 <!-- SEG:m68793:para:fs-idm158222928 -->
 Alternative approach: A more expedient approach involves deriving activation energy from measurements of the rate constant at just two temperatures. In this approach, the Arrhenius equation is rearranged to a convenient two-point form:
@@ -122,7 +122,7 @@ Rearranging this equation to isolate activation energy yields:
 Any two data pairs may be substituted into this equation—for example, the first and last entries from the above data table:
 
 <!-- SEG:m68793:para:fs-idm101188896 -->
-and the result is *E*~a~ = 1.8 [[MATH:8]] 10^5^ J mol^−1^ or 180 kJ mol^−1^
+and the result is {{i}}E{{/i}}[[sub:a]] = 1.8 [[MATH:8]] 10[[sup:5]] J mol[[sup:−1]] or 180 kJ mol[[sup:−1]]
 
 <!-- SEG:m68793:para:fs-idm65968064 -->
 This approach yields the same result as the more rigorous graphical approach used above, as expected. In practice, the graphical approach typically provides more reliable results when working with actual experimental data.
@@ -131,94 +131,94 @@ This approach yields the same result as the more rigorous graphical approach use
 Check Your Learning
 
 <!-- SEG:m68793:para:fs-idm90823520 -->
-The rate constant for the rate of decomposition of N~2~O~5~ to NO and O~2~ in the gas phase is 1.66 L/mol/s at 650 K and 7.39 L/mol/s at 700 K:
+The rate constant for the rate of decomposition of N[[sub:2]]O[[sub:5]] to NO and O[[sub:2]] in the gas phase is 1.66 L/mol/s at 650 K and 7.39 L/mol/s at 700 K:
 
 <!-- SEG:m68793:para:fs-idm93319152 -->
 Assuming the kinetics of this reaction are consistent with the Arrhenius equation, calculate the activation energy for this decomposition.
 
 <!-- SEG:m68793:para:fs-idm147992368 -->
-1.1 [[MATH:9]] 10^5^ J mol^−1^ or 110 kJ mol^−1^
+1.1 [[MATH:9]] 10[[sup:5]] J mol[[sup:−1]] or 110 kJ mol[[sup:−1]]
 
 <!-- SEG:m68793:note-title:fs-idp70913968-title -->
 Answer:
 
 <!-- SEG:m68793:para:fs-idm147992368 -->
-1.1 [[MATH:10]] 10^5^ J mol^−1^ or 110 kJ mol^−1^
+1.1 [[MATH:10]] 10[[sup:5]] J mol[[sup:−1]] or 110 kJ mol[[sup:−1]]
 
 <!-- SEG:m68793:entry:auto-50 -->
-*T* (K)
+{{i}}T{{/i}} (K)
 
 <!-- SEG:m68793:entry:auto-51 -->
-*k* (L/mol/s)
+{{i}}k{{/i}} (L/mol/s)
 
 <!-- SEG:m68793:entry:auto-52 -->
 555
 
 <!-- SEG:m68793:entry:auto-53 -->
-3.52 [[MATH:11]] 10^−7^
+3.52 [[MATH:11]] 10[[sup:−7]]
 
 <!-- SEG:m68793:entry:auto-54 -->
 575
 
 <!-- SEG:m68793:entry:auto-55 -->
-1.22 [[MATH:12]] 10^−6^
+1.22 [[MATH:12]] 10[[sup:−6]]
 
 <!-- SEG:m68793:entry:auto-56 -->
 645
 
 <!-- SEG:m68793:entry:auto-57 -->
-8.59 [[MATH:13]] 10^−5^
+8.59 [[MATH:13]] 10[[sup:−5]]
 
 <!-- SEG:m68793:entry:auto-58 -->
 700
 
 <!-- SEG:m68793:entry:auto-59 -->
-1.16 [[MATH:14]] 10^−3^
+1.16 [[MATH:14]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-60 -->
 781
 
 <!-- SEG:m68793:entry:auto-61 -->
-3.95 [[MATH:15]] 10^−2^
+3.95 [[MATH:15]] 10[[sup:−2]]
 
 <!-- SEG:m68793:entry:auto-62 -->
 [[MATH:16]]
 
 <!-- SEG:m68793:entry:auto-63 -->
-ln *k*
+ln {{i}}k{{/i}}
 
 <!-- SEG:m68793:entry:auto-64 -->
-1.80 [[MATH:17]] 10^−3^
+1.80 [[MATH:17]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-65 -->
 −14.860
 
 <!-- SEG:m68793:entry:auto-66 -->
-1.74 [[MATH:18]] 10^−3^
+1.74 [[MATH:18]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-67 -->
 −13.617
 
 <!-- SEG:m68793:entry:auto-68 -->
-1.55 [[MATH:19]] 10^−3^
+1.55 [[MATH:19]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-69 -->
 −9.362
 
 <!-- SEG:m68793:entry:auto-70 -->
-1.43 [[MATH:20]] 10^−3^
+1.43 [[MATH:20]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-71 -->
 −6.759
 
 <!-- SEG:m68793:entry:auto-72 -->
-1.28 [[MATH:21]] 10^−3^
+1.28 [[MATH:21]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-73 -->
 −3.231
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_ArrhPlot-caption -->
-This graph shows the linear relationship between ln *k* and [[MATH:22]] for the reaction [[MATH:23]] according to the Arrhenius equation.
+This graph shows the linear relationship between ln {{i}}k{{/i}} and [[MATH:22]] for the reaction [[MATH:23]] according to the Arrhenius equation.
 
 <!-- SEG:m68793:title:fs-idm92128240-title -->
 Key Concepts and Summary
@@ -263,7 +263,7 @@ Account for the relationship between the rate of a reaction and its activation e
 Describe how graphical methods can be used to determine the activation energy of a reaction from a series of data that includes the rate of reaction at varying temperatures.
 
 <!-- SEG:m68793:solution:fs-idp8882000 -->
-After finding *k* at several different temperatures, a plot of ln *k* versus [[MATH:27]] gives a straight line with the slope [[MATH:28]] from which *E*~a~ may be determined.
+After finding {{i}}k{{/i}} at several different temperatures, a plot of ln {{i}}k{{/i}} versus [[MATH:27]] gives a straight line with the slope [[MATH:28]] from which {{i}}E{{/i}}[[sub:a]] may be determined.
 
 <!-- SEG:m68793:problem:fs-idp66405264 -->
 How does an increase in temperature affect rate of reaction? Explain this effect in terms of the collision theory of the reaction rate.
@@ -281,16 +281,16 @@ The rate of a certain reaction doubles for every 10 °C rise in temperature.
 (a) 4-times faster (b) 128-times faster
 
 <!-- SEG:m68793:problem:fs-idm128098912 -->
-In an experiment, a sample of NaClO~3~ was 90% decomposed in 48 min. Approximately how long would this decomposition have taken if the sample had been heated 20 °C higher? (Hint: Assume the rate doubles for each 10 °C rise in temperature.)
+In an experiment, a sample of NaClO[[sub:3]] was 90% decomposed in 48 min. Approximately how long would this decomposition have taken if the sample had been heated 20 °C higher? (Hint: Assume the rate doubles for each 10 °C rise in temperature.)
 
 <!-- SEG:m68793:problem:fs-idm217872032 -->
-The rate constant at 325 °C for the decomposition reaction [[MATH:29]] is 6.1 [[MATH:30]] 10^−8^ s^−1^, and the activation energy is 261 kJ per mole of C~4~H~8~. Determine the frequency factor for the reaction.
+The rate constant at 325 °C for the decomposition reaction [[MATH:29]] is 6.1 [[MATH:30]] 10[[sup:−8]] s[[sup:−1]], and the activation energy is 261 kJ per mole of C[[sub:4]]H[[sub:8]]. Determine the frequency factor for the reaction.
 
 <!-- SEG:m68793:solution:fs-idm183272112 -->
 [[MATH:31]]
 
 <!-- SEG:m68793:problem:fs-idm149341008 -->
-The rate constant for the decomposition of acetaldehyde, CH~3~CHO, to methane, CH~4~, and carbon monoxide, CO, in the gas phase is 1.1 [[MATH:32]] 10^−2^ L mol^−1^ s^−1^ at 703 K and 4.95 L mol^−1^ s^−1^ at 865 K. Determine the activation energy for this decomposition.
+The rate constant for the decomposition of acetaldehyde, CH[[sub:3]]CHO, to methane, CH[[sub:4]], and carbon monoxide, CO, in the gas phase is 1.1 [[MATH:32]] 10[[sup:−2]] L mol[[sup:−1]] s[[sup:−1]] at 703 K and 4.95 L mol[[sup:−1]] s[[sup:−1]] at 865 K. Determine the activation energy for this decomposition.
 
 <!-- SEG:m68793:problem:fs-idp9104816 -->
 An elevated level of the enzyme alkaline phosphatase (ALP) in human serum is an indication of possible liver or bone disorder. The level of serum ALP is so low that it is very difficult to measure directly. However, ALP catalyzes a number of reactions, and its relative concentration can be determined by measuring the rate of one of these reactions under controlled conditions. One such reaction is the conversion of p-nitrophenyl phosphate (PNPP) to p-nitrophenoxide ion (PNP) and phosphate ion. Control of temperature during the test is very important; the rate of the reaction increases 1.47 times if the temperature changes from 30 °C to 37 °C. What is the activation energy for the ALP–catalyzed conversion of PNPP to PNP and phosphate?
@@ -314,7 +314,7 @@ In terms of collision theory, to which of the following is the rate of a chemica
 (d) the number of product molecules
 
 <!-- SEG:m68793:problem:fs-idm93524688 -->
-Hydrogen iodide, HI, decomposes in the gas phase to produce hydrogen, H~2~, and iodine, I~2~. The value of the rate constant, *k*, for the reaction was measured at several different temperatures and the data are shown here:[[BR]] [[TABLE:fs-idm124800496]]
+Hydrogen iodide, HI, decomposes in the gas phase to produce hydrogen, H[[sub:2]], and iodine, I[[sub:2]]. The value of the rate constant, {{i}}k{{/i}}, for the reaction was measured at several different temperatures and the data are shown here:[[BR]] [[TABLE:fs-idm124800496]]
 
 <!-- SEG:m68793:problem:fs-idm134024464 -->
 What is the value of the activation energy (in kJ/mol) for this reaction?
@@ -326,40 +326,40 @@ What is the value of the activation energy (in kJ/mol) for this reaction?
 Temperature (K)
 
 <!-- SEG:m68793:entry:auto-110 -->
-*k* (L mol^−1^ s^−1^)
+{{i}}k{{/i}} (L mol[[sup:−1]] s[[sup:−1]])
 
 <!-- SEG:m68793:entry:auto-111 -->
 555
 
 <!-- SEG:m68793:entry:auto-112 -->
-6.23 [[MATH:37]] 10^−7^
+6.23 [[MATH:37]] 10[[sup:−7]]
 
 <!-- SEG:m68793:entry:auto-113 -->
 575
 
 <!-- SEG:m68793:entry:auto-114 -->
-2.42 [[MATH:38]] 10^−6^
+2.42 [[MATH:38]] 10[[sup:−6]]
 
 <!-- SEG:m68793:entry:auto-115 -->
 645
 
 <!-- SEG:m68793:entry:auto-116 -->
-1.44 [[MATH:39]] 10^−4^
+1.44 [[MATH:39]] 10[[sup:−4]]
 
 <!-- SEG:m68793:entry:auto-117 -->
 700
 
 <!-- SEG:m68793:entry:auto-118 -->
-2.01 [[MATH:40]] 10^−3^
+2.01 [[MATH:40]] 10[[sup:−3]]
 
 <!-- SEG:m68793:problem:fs-idm93329056 -->
 The element Co exists in two oxidation states, Co(II) and Co(III), and the ions form many complexes. The rate at which one of the complexes of Co(III) was reduced by Fe(II) in water was measured. Determine the activation energy of the reaction from the following data:[[BR]] [[TABLE:fs-idm163198896]]
 
 <!-- SEG:m68793:entry:auto-120 -->
-*T* (K)
+{{i}}T{{/i}} (K)
 
 <!-- SEG:m68793:entry:auto-121 -->
-*k* (s^−1^)
+{{i}}k{{/i}} (s[[sup:−1]])
 
 <!-- SEG:m68793:entry:auto-122 -->
 293
@@ -377,28 +377,28 @@ The element Co exists in two oxidation states, Co(II) and Co(III), and the ions 
 The hydrolysis of the sugar sucrose to the sugars glucose and fructose,[[BR]] [[MATH:41]]
 
 <!-- SEG:m68793:problem:fs-idm106774224 -->
-follows a first-order rate law for the disappearance of sucrose: rate = *k*[C~12~H~22~O~11~] (The products of the reaction, glucose and fructose, have the same molecular formulas but differ in the arrangement of the atoms in their molecules.)
+follows a first-order rate law for the disappearance of sucrose: rate = {{i}}k{{/i}}[C[[sub:12]]H[[sub:22]]O[[sub:11]]] (The products of the reaction, glucose and fructose, have the same molecular formulas but differ in the arrangement of the atoms in their molecules.)
 
 <!-- SEG:m68793:problem:fs-idm1605904 -->
-(a) In neutral solution, *k* = 2.1 [[MATH:42]] 10^−11^ s^−1^ at 27 °C and 8.5 [[MATH:43]] 10^−11^ s^−1^ at 37 °C. Determine the activation energy, the frequency factor, and the rate constant for this equation at 47 °C (assuming the kinetics remain consistent with the Arrhenius equation at this temperature).
+(a) In neutral solution, {{i}}k{{/i}} = 2.1 [[MATH:42]] 10[[sup:−11]] s[[sup:−1]] at 27 °C and 8.5 [[MATH:43]] 10[[sup:−11]] s[[sup:−1]] at 37 °C. Determine the activation energy, the frequency factor, and the rate constant for this equation at 47 °C (assuming the kinetics remain consistent with the Arrhenius equation at this temperature).
 
 <!-- SEG:m68793:problem:fs-idm94994288 -->
-(b) When a solution of sucrose with an initial concentration of 0.150 *M* reaches equilibrium, the concentration of sucrose is 1.65 [[MATH:44]] 10^−7^ *M*. How long will it take the solution to reach equilibrium at 27 °C in the absence of a catalyst? Because the concentration of sucrose at equilibrium is so low, assume that the reaction is irreversible.
+(b) When a solution of sucrose with an initial concentration of 0.150 {{i}}M{{/i}} reaches equilibrium, the concentration of sucrose is 1.65 [[MATH:44]] 10[[sup:−7]] {{i}}M{{/i}}. How long will it take the solution to reach equilibrium at 27 °C in the absence of a catalyst? Because the concentration of sucrose at equilibrium is so low, assume that the reaction is irreversible.
 
 <!-- SEG:m68793:problem:fs-idm124435200 -->
 (c) Why does assuming that the reaction is irreversible simplify the calculation in part (b)?
 
 <!-- SEG:m68793:solution:fs-idm112507760 -->
-*E*~a~ = 108 kJ; *A* = 2.0 [[MATH:45]] 10^8^ s^−1^; *k* = 3.2 [[MATH:46]] 10^−10^ s^−1^; (b) 1.81 [[MATH:47]] 10^8^ h or 7.6 [[MATH:48]] 10^6^ day; (c) Assuming that the reaction is irreversible simplifies the calculation because we do not have to account for any reactant that, having been converted to product, returns to the original state.
+{{i}}E{{/i}}[[sub:a]] = 108 kJ; {{i}}A{{/i}} = 2.0 [[MATH:45]] 10[[sup:8]] s[[sup:−1]]; {{i}}k{{/i}} = 3.2 [[MATH:46]] 10[[sup:−10]] s[[sup:−1]]; (b) 1.81 [[MATH:47]] 10[[sup:8]] h or 7.6 [[MATH:48]] 10[[sup:6]] day; (c) Assuming that the reaction is irreversible simplifies the calculation because we do not have to account for any reactant that, having been converted to product, returns to the original state.
 
 <!-- SEG:m68793:problem:fs-idm100372496 -->
-Use the [PhET Reactions &amp; Rates interactive simulation](http://openstax.org/l/16PHETreaction) to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:49]] reaction (A is yellow, B is purple, and C is navy blue). Using the “straight shot” default option, try launching the *A* atom with varying amounts of energy. What changes when the Total Energy line at launch is below the transition state of the Potential Energy line? Why? What happens when it is above the transition state? Why?
+Use the [PhET Reactions &amp; Rates interactive simulation](http://openstax.org/l/16PHETreaction) to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:49]] reaction (A is yellow, B is purple, and C is navy blue). Using the “straight shot” default option, try launching the {{i}}A{{/i}} atom with varying amounts of energy. What changes when the Total Energy line at launch is below the transition state of the Potential Energy line? Why? What happens when it is above the transition state? Why?
 
 <!-- SEG:m68793:problem:fs-idp46127280 -->
-Use the [PhET Reactions &amp; Rates interactive simulation](http://openstax.org/l/16PHETreaction) to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:50]] reaction (A is yellow, B is purple, and C is navy blue). Using the “angled shot” option, try launching the *A* atom with varying angles, but with more Total energy than the transition state. What happens when the *A* atom hits the *BC* molecule from different directions? Why?
+Use the [PhET Reactions &amp; Rates interactive simulation](http://openstax.org/l/16PHETreaction) to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:50]] reaction (A is yellow, B is purple, and C is navy blue). Using the “angled shot” option, try launching the {{i}}A{{/i}} atom with varying angles, but with more Total energy than the transition state. What happens when the {{i}}A{{/i}} atom hits the {{i}}BC{{/i}} molecule from different directions? Why?
 
 <!-- SEG:m68793:solution:fs-idm206557120 -->
-The *A* atom has enough energy to react with *BC*; however, the different angles at which it bounces off of *BC* without reacting indicate that the orientation of the molecule is an important part of the reaction kinetics and determines whether a reaction will occur.
+The {{i}}A{{/i}} atom has enough energy to react with {{i}}BC{{/i}}; however, the different angles at which it bounces off of {{i}}BC{{/i}} without reacting indicate that the orientation of the molecule is an important part of the reaction kinetics and determines whether a reaction will occur.
 
 <!-- SEG:m68793:glossary-term:fs-idm89472432-term -->
 activated complex
@@ -440,37 +440,37 @@ used in chemical kinetics to illustrate various properties of a reaction
 Temperature (K)
 
 <!-- SEG:m68793:entry:auto-148 -->
-*k* (L mol^−1^ s^−1^)
+{{i}}k{{/i}} (L mol[[sup:−1]] s[[sup:−1]])
 
 <!-- SEG:m68793:entry:auto-149 -->
 555
 
 <!-- SEG:m68793:entry:auto-150 -->
-6.23 [[MATH:33]] 10^−7^
+6.23 [[MATH:33]] 10[[sup:−7]]
 
 <!-- SEG:m68793:entry:auto-151 -->
 575
 
 <!-- SEG:m68793:entry:auto-152 -->
-2.42 [[MATH:34]] 10^−6^
+2.42 [[MATH:34]] 10[[sup:−6]]
 
 <!-- SEG:m68793:entry:auto-153 -->
 645
 
 <!-- SEG:m68793:entry:auto-154 -->
-1.44 [[MATH:35]] 10^−4^
+1.44 [[MATH:35]] 10[[sup:−4]]
 
 <!-- SEG:m68793:entry:auto-155 -->
 700
 
 <!-- SEG:m68793:entry:auto-156 -->
-2.01 [[MATH:36]] 10^−3^
+2.01 [[MATH:36]] 10[[sup:−3]]
 
 <!-- SEG:m68793:entry:auto-157 -->
-*T* (K)
+{{i}}T{{/i}} (K)
 
 <!-- SEG:m68793:entry:auto-158 -->
-*k* (s^−1^)
+{{i}}k{{/i}} (s[[sup:−1]])
 
 <!-- SEG:m68793:entry:auto-159 -->
 293

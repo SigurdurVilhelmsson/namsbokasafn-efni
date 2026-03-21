@@ -17,28 +17,28 @@ Write a balanced chemical equation for a process given its reaction mechanism
 Derive the rate law consistent with a given reaction mechanism
 
 <!-- SEG:m68794:para:fs-idp19792192 -->
-Chemical reactions very often occur in a step-wise fashion, involving two or more distinct reactions taking place in sequence. A balanced equation indicates what is reacting and what is produced, but it reveals no details about how the reaction actually takes place. The __reaction mechanism__ (or reaction path) provides details regarding the precise, step-by-step process by which a reaction occurs.
+Chemical reactions very often occur in a step-wise fashion, involving two or more distinct reactions taking place in sequence. A balanced equation indicates what is reacting and what is produced, but it reveals no details about how the reaction actually takes place. The {{term}}reaction mechanism{{/term}} (or reaction path) provides details regarding the precise, step-by-step process by which a reaction occurs.
 
 <!-- SEG:m68794:para:fs-idm10360272 -->
 The decomposition of ozone, for example, appears to follow a mechanism with two steps:
 
 <!-- SEG:m68794:para:fs-idm40865648 -->
-Each of the steps in a reaction mechanism is an __elementary reaction__. These elementary reactions occur precisely as represented in the step equations, and they must sum to yield the balanced chemical equation representing the overall reaction:
+Each of the steps in a reaction mechanism is an {{term}}elementary reaction{{/term}}. These elementary reactions occur precisely as represented in the step equations, and they must sum to yield the balanced chemical equation representing the overall reaction:
 
 <!-- SEG:m68794:para:fs-idp205634512 -->
-Notice that the oxygen atom produced in the first step of this mechanism is consumed in the second step and therefore does not appear as a product in the overall reaction. Species that are produced in one step and consumed in a subsequent step are called __intermediates__.
+Notice that the oxygen atom produced in the first step of this mechanism is consumed in the second step and therefore does not appear as a product in the overall reaction. Species that are produced in one step and consumed in a subsequent step are called {{term}}intermediates{{/term}}.
 
 <!-- SEG:m68794:para:fs-idp6340064 -->
-While the overall reaction equation for the decomposition of ozone indicates that two molecules of ozone react to give three molecules of oxygen, the mechanism of the reaction *does not involve the direct collision and reaction of two ozone molecules*. Instead, one O~3~ decomposes to yield O~2~ and an oxygen atom, and a second O~3~ molecule subsequently reacts with the oxygen atom to yield two additional O~2~ molecules.
+While the overall reaction equation for the decomposition of ozone indicates that two molecules of ozone react to give three molecules of oxygen, the mechanism of the reaction {{i}}does not involve the direct collision and reaction of two ozone molecules{{/i}}. Instead, one O[[sub:3]] decomposes to yield O[[sub:2]] and an oxygen atom, and a second O[[sub:3]] molecule subsequently reacts with the oxygen atom to yield two additional O[[sub:2]] molecules.
 
 <!-- SEG:m68794:para:fs-idm500275472 -->
-Unlike balanced equations representing an overall reaction, the equations for elementary reactions are explicit representations of the chemical change taking place. The reactant(s) in an elementary reaction’s equation undergo only the bond-breaking and/or making events depicted to yield the product(s). For this reason, *the rate law for an elementary reaction may be derived directly from the balanced chemical equation describing the reaction*. This is not the case for typical chemical reactions, for which rate laws may be reliably determined only via experimentation.
+Unlike balanced equations representing an overall reaction, the equations for elementary reactions are explicit representations of the chemical change taking place. The reactant(s) in an elementary reaction’s equation undergo only the bond-breaking and/or making events depicted to yield the product(s). For this reason, {{i}}the rate law for an elementary reaction may be derived directly from the balanced chemical equation describing the reaction{{/i}}. This is not the case for typical chemical reactions, for which rate laws may be reliably determined only via experimentation.
 
 <!-- SEG:m68794:title:fs-idp262348128-title -->
 Unimolecular Elementary Reactions
 
 <!-- SEG:m68794:para:fs-idp205522704 -->
-The __molecularity__ of an elementary reaction is the number of reactant entities (atoms, molecules, or ions). For example, a __unimolecular reaction__ involves the reaction of a *single* reactant entities to produce one or more molecules of product:
+The {{term}}molecularity{{/term}} of an elementary reaction is the number of reactant entities (atoms, molecules, or ions). For example, a {{term}}unimolecular reaction{{/term}} involves the reaction of a {{i}}single{{/i}} reactant entities to produce one or more molecules of product:
 
 <!-- SEG:m68794:para:fs-idp13674832 -->
 The rate law for a unimolecular reaction is first order:
@@ -47,7 +47,7 @@ The rate law for a unimolecular reaction is first order:
 A unimolecular reaction may be one of several elementary reactions in a complex mechanism. For example, the reaction:
 
 <!-- SEG:m68794:para:fs-idp196763520 -->
-illustrates a unimolecular elementary reaction that occurs as one part of a two-step reaction mechanism as described above. However, some unimolecular reactions may be the only step of a single-step reaction mechanism. (In other words, an “overall” reaction may also be an elementary reaction in some cases.) For example, the gas-phase decomposition of cyclobutane, C~4~H~8~, to ethylene, C~2~H~4~, is represented by the following chemical equation:
+illustrates a unimolecular elementary reaction that occurs as one part of a two-step reaction mechanism as described above. However, some unimolecular reactions may be the only step of a single-step reaction mechanism. (In other words, an “overall” reaction may also be an elementary reaction in some cases.) For example, the gas-phase decomposition of cyclobutane, C[[sub:4]]H[[sub:8]], to ethylene, C[[sub:2]]H[[sub:4]], is represented by the following chemical equation:
 
 <!-- SEG:m68794:para:fs-idp100963616 -->
 This equation represents the overall reaction observed, and it might also represent a legitimate unimolecular elementary reaction. The rate law predicted from this equation, assuming it is an elementary reaction, turns out to be the same as the rate law derived experimentally for the overall reaction, namely, one showing first-order behavior:
@@ -59,13 +59,13 @@ This agreement between observed and predicted rate laws is interpreted to mean t
 Bimolecular Elementary Reactions
 
 <!-- SEG:m68794:para:fs-idp87793216 -->
-A __bimolecular reaction__ involves two reactant entities, for example:
+A {{term}}bimolecular reaction{{/term}} involves two reactant entities, for example:
 
 <!-- SEG:m68794:para:fs-idm80729584 -->
-For the first type, in which the two reactant molecules are different, the rate law is first-order in *A* and first order in *B* (second-order overall):
+For the first type, in which the two reactant molecules are different, the rate law is first-order in {{i}}A{{/i}} and first order in {{i}}B{{/i}} (second-order overall):
 
 <!-- SEG:m68794:para:fs-idp220120832 -->
-For the second type, in which two identical molecules collide and react, the rate law is second order in *A*:
+For the second type, in which two identical molecules collide and react, the rate law is second order in {{i}}A{{/i}}:
 
 <!-- SEG:m68794:para:fs-idp43609744 -->
 Some chemical reactions occur by mechanisms that consist of a single bimolecular elementary reaction. One example is the reaction of nitrogen dioxide with carbon monoxide:
@@ -74,7 +74,7 @@ Some chemical reactions occur by mechanisms that consist of a single bimolecular
 (see [#CNX_Chem_12_06_BimoElRe])
 
 <!-- SEG:m68794:caption:CNX_Chem_12_06_BimoElRe-caption -->
-The probable mechanism for the reaction between NO~2~ and CO to yield NO and CO~2~.
+The probable mechanism for the reaction between NO[[sub:2]] and CO to yield NO and CO[[sub:2]].
 
 <!-- SEG:m68794:para:fs-idp38432416 -->
 Bimolecular elementary reactions may also be involved as steps in a multistep reaction mechanism. The reaction of atomic oxygen with ozone is the second step of the two-step ozone decomposition mechanism discussed earlier in this section:
@@ -83,7 +83,7 @@ Bimolecular elementary reactions may also be involved as steps in a multistep re
 Termolecular Elementary Reactions
 
 <!-- SEG:m68794:para:fs-idm9155392 -->
-An elementary __termolecular reaction__ involves the simultaneous collision of three atoms, molecules, or ions. Termolecular elementary reactions are uncommon because the probability of three particles colliding simultaneously is less than one one-thousandth of the probability of two particles colliding. There are, however, a few established termolecular elementary reactions. The reaction of nitric oxide with oxygen appears to involve termolecular steps:
+An elementary {{term}}termolecular reaction{{/term}} involves the simultaneous collision of three atoms, molecules, or ions. Termolecular elementary reactions are uncommon because the probability of three particles colliding simultaneously is less than one one-thousandth of the probability of two particles colliding. There are, however, a few established termolecular elementary reactions. The reaction of nitric oxide with oxygen appears to involve termolecular steps:
 
 <!-- SEG:m68794:para:fs-idp136937056 -->
 Likewise, the reaction of nitric oxide with chlorine appears to involve termolecular steps:
@@ -92,34 +92,34 @@ Likewise, the reaction of nitric oxide with chlorine appears to involve termolec
 Relating Reaction Mechanisms to Rate Laws
 
 <!-- SEG:m68794:para:fs-idp253615520 -->
-It’s often the case that one step in a multistep reaction mechanism is significantly slower than the others. Because a reaction cannot proceed faster than its slowest step, this step will limit the rate at which the overall reaction occurs. The slowest step is therefore called the __rate-limiting step__ (or rate-determining step) of the reaction [#CNX_Chem_12_06_Cattle].
+It’s often the case that one step in a multistep reaction mechanism is significantly slower than the others. Because a reaction cannot proceed faster than its slowest step, this step will limit the rate at which the overall reaction occurs. The slowest step is therefore called the {{term}}rate-limiting step{{/term}} (or rate-determining step) of the reaction [#CNX_Chem_12_06_Cattle].
 
 <!-- SEG:m68794:caption:CNX_Chem_12_06_Cattle-caption -->
 A cattle chute is a nonchemical example of a rate-determining step. Cattle can only be moved from one holding pen to another as quickly as one animal can make its way through the chute. (credit: Loren Kerns)
 
 <!-- SEG:m68794:para:fs-idp41680064 -->
-As described earlier, rate laws may be derived directly from the chemical equations for elementary reactions. This is not the case, however, for ordinary chemical reactions. The balanced equations most often encountered represent the overall change for some chemical system, and very often this is the result of some multistep reaction mechanisms. In every case, the rate law must be determined from experimental data and the reaction mechanism subsequently deduced from the rate law (and sometimes from other data). The reaction of NO~2~ and CO provides an illustrative example:
+As described earlier, rate laws may be derived directly from the chemical equations for elementary reactions. This is not the case, however, for ordinary chemical reactions. The balanced equations most often encountered represent the overall change for some chemical system, and very often this is the result of some multistep reaction mechanisms. In every case, the rate law must be determined from experimental data and the reaction mechanism subsequently deduced from the rate law (and sometimes from other data). The reaction of NO[[sub:2]] and CO provides an illustrative example:
 
 <!-- SEG:m68794:para:fs-idp18907792 -->
 For temperatures above 225 °C, the rate law has been found to be:
 
 <!-- SEG:m68794:para:fs-idp43466688 -->
-The reaction is first order with respect to NO~2~ and first-order with respect to CO. This is consistent with a single-step bimolecular mechanism and it is *possible* that this is the mechanism for this reaction at high temperatures.
+The reaction is first order with respect to NO[[sub:2]] and first-order with respect to CO. This is consistent with a single-step bimolecular mechanism and it is {{i}}possible{{/i}} that this is the mechanism for this reaction at high temperatures.
 
 <!-- SEG:m68794:para:fs-idp232335904 -->
-At temperatures below 225 °C*,* the reaction is described by a rate law that is second order with respect to NO~2~:
+At temperatures below 225 °C{{i}},{{/i}} the reaction is described by a rate law that is second order with respect to NO[[sub:2]]:
 
 <!-- SEG:m68794:para:fs-idp70725520 -->
 This rate law is not consistent with the single-step mechanism, but is consistent with the following two-step mechanism:
 
 <!-- SEG:m68794:para:fs-idp107509104 -->
-The rate-determining (slower) step gives a rate law showing second-order dependence on the NO~2~ concentration, and the sum of the two equations gives the net overall reaction.
+The rate-determining (slower) step gives a rate law showing second-order dependence on the NO[[sub:2]] concentration, and the sum of the two equations gives the net overall reaction.
 
 <!-- SEG:m68794:para:fs-idp37457664 -->
 In general, when the rate-determining (slower) step is the first step in a mechanism, the rate law for the overall reaction is the same as the rate law for this step. However, when the rate-determining step is preceded by a step involving a rapidly reversible reaction the rate law for the overall reaction may be more difficult to derive.
 
 <!-- SEG:m68794:para:fs-idp17102832 -->
-As discussed in several chapters of this text, a reversible reaction is at *equilibrium* when the rates of the forward and reverse processes are equal. Consider the reversible elementary reaction in which NO dimerizes to yield an intermediate species N~2~O~2~. When this reaction is at equilibrium:
+As discussed in several chapters of this text, a reversible reaction is at {{i}}equilibrium{{/i}} when the rates of the forward and reverse processes are equal. Consider the reversible elementary reaction in which NO dimerizes to yield an intermediate species N[[sub:2]]O[[sub:2]]. When this reaction is at equilibrium:
 
 <!-- SEG:m68794:para:fs-idm76069968 -->
 This expression may be rearranged to express the concentration of the intermediate in terms of the reactant NO:
@@ -146,7 +146,7 @@ The equation for the overall reaction is obtained by adding the two elementary r
 To derive a rate law from this mechanism, first write rates laws for each of the two steps.
 
 <!-- SEG:m68794:para:fs-idm328804768 -->
-Step 2 is the rate-determining step, and so the rate law for the overall reaction should be the same as for this step. However, the step 2 rate law, as written, contains an intermediate species concentration, [NOCl~2~]. To remedy this, use the first step’s rate laws to derive an expression for the intermediate concentration in terms of the reactant concentrations.
+Step 2 is the rate-determining step, and so the rate law for the overall reaction should be the same as for this step. However, the step 2 rate law, as written, contains an intermediate species concentration, [NOCl[[sub:2]]]. To remedy this, use the first step’s rate laws to derive an expression for the intermediate concentration in terms of the reactant concentrations.
 
 <!-- SEG:m68794:para:fs-idm328530432 -->
 Assuming step 1 is at equilibrium:
@@ -185,10 +185,10 @@ Chemistry End of Chapter Exercises
 Why are elementary reactions involving three or more reactants very uncommon?
 
 <!-- SEG:m68794:problem:fs-idp253834368 -->
-In general, can we predict the effect of doubling the concentration of *A* on the rate of the overall reaction [[MATH:3]]? Can we predict the effect if the reaction is known to be an elementary reaction?
+In general, can we predict the effect of doubling the concentration of {{i}}A{{/i}} on the rate of the overall reaction [[MATH:3]]? Can we predict the effect if the reaction is known to be an elementary reaction?
 
 <!-- SEG:m68794:solution:fs-idp153239360 -->
-No. In general, for the overall reaction, we cannot predict the effect of changing the concentration without knowing the rate law. Yes. If the reaction is an elementary reaction, then doubling the concentration of *A* doubles the rate.
+No. In general, for the overall reaction, we cannot predict the effect of changing the concentration without knowing the rate law. Yes. If the reaction is an elementary reaction, then doubling the concentration of {{i}}A{{/i}} doubles the rate.
 
 <!-- SEG:m68794:problem:fs-idp192842416 -->
 Define these terms:
@@ -209,7 +209,7 @@ Define these terms:
 What is the rate law for the elementary termolecular reaction [[MATH:4]] For [[MATH:5]]
 
 <!-- SEG:m68794:solution:fs-idp74514816 -->
-Rate = *k*[*A*][*B*]^2^; Rate = *k*[*A*]^3^
+Rate = {{i}}k{{/i}}[{{i}}A{{/i}}][{{i}}B{{/i}}][[sup:2]]; Rate = {{i}}k{{/i}}[{{i}}A{{/i}}][[sup:3]]
 
 <!-- SEG:m68794:problem:fs-idp46432976 -->
 Given the following reactions and the corresponding rate laws, in which of the reactions might the elementary reaction and the overall reaction be the same?
@@ -248,16 +248,16 @@ Write the rate law for each of the following elementary reactions:
 (e) [[MATH:15]]
 
 <!-- SEG:m68794:solution:fs-idm1295248 -->
-(a) Rate~1~ = *k*[O~3~]; (b) Rate~2~ = *k*[O~3~][Cl]; (c) Rate~3~ = *k*[ClO][O]; (d) Rate~2~ = *k*[O~3~][NO]; (e) Rate~3~ = *k*[NO~2~][O]
+(a) Rate[[sub:1]] = {{i}}k{{/i}}[O[[sub:3]]]; (b) Rate[[sub:2]] = {{i}}k{{/i}}[O[[sub:3]]][Cl]; (c) Rate[[sub:3]] = {{i}}k{{/i}}[ClO][O]; (d) Rate[[sub:2]] = {{i}}k{{/i}}[O[[sub:3]]][NO]; (e) Rate[[sub:3]] = {{i}}k{{/i}}[NO[[sub:2]]][O]
 
 <!-- SEG:m68794:problem:fs-idm34461424 -->
-Nitrogen monoxide, NO, reacts with hydrogen, H~2~, according to the following equation:[[BR]] [[MATH:16]]
+Nitrogen monoxide, NO, reacts with hydrogen, H[[sub:2]], according to the following equation:[[BR]] [[MATH:16]]
 
 <!-- SEG:m68794:problem:fs-idp105142944 -->
 What would the rate law be if the mechanism for this reaction were:[[BR]] [[MATH:17]]
 
 <!-- SEG:m68794:problem:fs-idp105816432 -->
-Experiments were conducted to study the rate of the reaction represented by this equation. [footnote: This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.][[BR]] [[MATH:18]]
+Experiments were conducted to study the rate of the reaction represented by this equation. {{fn}}This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.{{/fn}}[[BR]] [[MATH:18]]
 
 <!-- SEG:m68794:problem:fs-idp138927296 -->
 Initial concentrations and rates of reaction are given here.
@@ -266,16 +266,16 @@ Initial concentrations and rates of reaction are given here.
 Consider the following questions:
 
 <!-- SEG:m68794:problem:fs-idp65094304 -->
-(a) Determine the order for each of the reactants, NO and H~2~, from the data given and show your reasoning.
+(a) Determine the order for each of the reactants, NO and H[[sub:2]], from the data given and show your reasoning.
 
 <!-- SEG:m68794:problem:fs-idp59515264 -->
 (b) Write the overall rate law for the reaction.
 
 <!-- SEG:m68794:problem:fs-idp219904240 -->
-(c) Calculate the value of the rate constant, *k*, for the reaction. Include units.
+(c) Calculate the value of the rate constant, {{i}}k{{/i}}, for the reaction. Include units.
 
 <!-- SEG:m68794:problem:fs-idp37050608 -->
-(d) For experiment 2, calculate the concentration of NO remaining when exactly one-half of the original amount of H~2~ had been consumed.
+(d) For experiment 2, calculate the concentration of NO remaining when exactly one-half of the original amount of H[[sub:2]] had been consumed.
 
 <!-- SEG:m68794:problem:fs-idp79345216 -->
 (e) The following sequence of elementary steps is a proposed mechanism for the reaction.
@@ -293,19 +293,19 @@ Step 3: [[MATH:21]]
 Based on the data presented, which of these is the rate determining step? Show that the mechanism is consistent with the observed rate law for the reaction and the overall stoichiometry of the reaction.
 
 <!-- SEG:m68794:solution:fs-idp77008528 -->
-(a) Doubling [H~2~] doubles the rate. [H~2~] must enter the rate law to the first power. Doubling [NO] increases the rate by a factor of 4. [NO] must enter the rate law to the second power. (b) Rate = *k* [NO]^2^[H~2~]; (c) *k* = 5.0 [[MATH:22]] 10^3^ mol^2^ L^−2^ min^−1^; (d) 0.0050 mol/L; (e) Step II is the rate-determining step. If step I gives N~2~O~2~ in adequate amount, steps 1 and 2 combine to give [[MATH:23]] This reaction corresponds to the observed rate law. Combine steps 1 and 2 with step 3, which occurs by supposition in a rapid fashion, to give the appropriate stoichiometry.
+(a) Doubling [H[[sub:2]]] doubles the rate. [H[[sub:2]]] must enter the rate law to the first power. Doubling [NO] increases the rate by a factor of 4. [NO] must enter the rate law to the second power. (b) Rate = {{i}}k{{/i}} [NO][[sup:2]][H[[sub:2]]]; (c) {{i}}k{{/i}} = 5.0 [[MATH:22]] 10[[sup:3]] mol[[sup:2]] L[[sup:−2]] min[[sup:−1]]; (d) 0.0050 mol/L; (e) Step II is the rate-determining step. If step I gives N[[sub:2]]O[[sub:2]] in adequate amount, steps 1 and 2 combine to give [[MATH:23]] This reaction corresponds to the observed rate law. Combine steps 1 and 2 with step 3, which occurs by supposition in a rapid fashion, to give the appropriate stoichiometry.
 
 <!-- SEG:m68794:entry:auto-100 -->
 Experiment
 
 <!-- SEG:m68794:entry:auto-101 -->
-Initial Concentration [NO] (mol L^−1^)
+Initial Concentration [NO] (mol L[[sup:−1]])
 
 <!-- SEG:m68794:entry:auto-102 -->
-Initial Concentration, [H~2~] (mol L^−1^)
+Initial Concentration, [H[[sub:2]]] (mol L[[sup:−1]])
 
 <!-- SEG:m68794:entry:auto-103 -->
-Initial Rate of Formation of N~2~ (mol L^−1^ min^−1^)
+Initial Rate of Formation of N[[sub:2]] (mol L[[sup:−1]] min[[sup:−1]])
 
 <!-- SEG:m68794:entry:auto-104 -->
 1
@@ -317,7 +317,7 @@ Initial Rate of Formation of N~2~ (mol L^−1^ min^−1^)
 0.0010
 
 <!-- SEG:m68794:entry:auto-107 -->
-1.8 [[MATH:24]] 10^−4^
+1.8 [[MATH:24]] 10[[sup:−4]]
 
 <!-- SEG:m68794:entry:auto-108 -->
 2
@@ -329,7 +329,7 @@ Initial Rate of Formation of N~2~ (mol L^−1^ min^−1^)
 0.0020
 
 <!-- SEG:m68794:entry:auto-111 -->
-3.6 [[MATH:25]] 10^−4^
+3.6 [[MATH:25]] 10[[sup:−4]]
 
 <!-- SEG:m68794:entry:auto-112 -->
 3
@@ -341,7 +341,7 @@ Initial Rate of Formation of N~2~ (mol L^−1^ min^−1^)
 0.0060
 
 <!-- SEG:m68794:entry:auto-115 -->
-0.30 [[MATH:26]] 10^−4^
+0.30 [[MATH:26]] 10[[sup:−4]]
 
 <!-- SEG:m68794:entry:auto-116 -->
 4
@@ -353,10 +353,10 @@ Initial Rate of Formation of N~2~ (mol L^−1^ min^−1^)
 0.0060
 
 <!-- SEG:m68794:entry:auto-119 -->
-1.2 [[MATH:27]] 10^−4^
+1.2 [[MATH:27]] 10[[sup:−4]]
 
 <!-- SEG:m68794:problem:fs-idp244877904 -->
-The reaction of CO with Cl~2~ gives phosgene (COCl~2~), a poisonous gas used as a chemical weapon during World War I. Use the mechanism shown here to complete the following exercises:[[BR]] [[MATH:28]] (fast, k~1~ represents the forward rate constant, *k*~−1~ the reverse rate constant)[[BR]] [[MATH:29]] (slow, *k*~2~ the rate constant)[[BR]] [[MATH:30]] (fast, *k*~3~ the rate constant)
+The reaction of CO with Cl[[sub:2]] gives phosgene (COCl[[sub:2]]), a poisonous gas used as a chemical weapon during World War I. Use the mechanism shown here to complete the following exercises:[[BR]] [[MATH:28]] (fast, k[[sub:1]] represents the forward rate constant, {{i}}k{{/i}}[[sub:−1]] the reverse rate constant)[[BR]] [[MATH:29]] (slow, {{i}}k{{/i}}[[sub:2]] the rate constant)[[BR]] [[MATH:30]] (fast, {{i}}k{{/i}}[[sub:3]] the rate constant)
 
 <!-- SEG:m68794:problem:fs-idp38932624 -->
 (a) Write the overall reaction.

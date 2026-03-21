@@ -33,15 +33,21 @@
   },
   "math-9": {
     "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mrow></m:math>",
-    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}}"
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}}",
+    "equationId": "fs-idm98702480",
+    "equationClass": "unnumbered"
   },
   "math-10": {
     "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mtext>−log(</m:mtext><m:mn>1.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
-    "latex": "{=\\text{−log(}1.2\\, \\times \\, {{10}}^{{−3}})}"
+    "latex": "{=\\text{−log(}1.2\\, \\times \\, {{10}}^{{−3}})}",
+    "equationId": "fs-idm79624528",
+    "equationClass": "unnumbered"
   },
   "math-11": {
     "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>−2.92</m:mn></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>2.92</m:mn></m:mrow></m:math>",
-    "latex": "{=\\text{−}{({−2.92})}=2.92}"
+    "latex": "{=\\text{−}{({−2.92})}=2.92}",
+    "equationId": "fs-idm7356256",
+    "equationClass": "unnumbered"
   },
   "math-12": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
@@ -49,19 +55,27 @@
   },
   "math-13": {
     "mathml": "<m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.3</m:mn></m:mrow></m:math>",
-    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=7.3}"
+    "latex": "{\\text{pH}=\\text{−log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=7.3}",
+    "equationId": "fs-idm108531776",
+    "equationClass": "unnumbered"
   },
   "math-14": {
     "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>−7.3</m:mn></m:mrow></m:math>",
-    "latex": "{\\text{log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=−7.3}"
+    "latex": "{\\text{log}{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=−7.3}",
+    "equationId": "fs-idm49363536",
+    "equationClass": "unnumbered"
   },
   "math-15": {
     "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7.3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.4em\"/><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>antilog of −7.3</m:mtext></m:mrow></m:math>",
-    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}={{10}}^{{−7.3}}\\, \\text{or}\\, {[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=\\text{antilog of −7.3}}"
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}={{10}}^{{−7.3}}\\, \\text{or}\\, {[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=\\text{antilog of −7.3}}",
+    "equationId": "fs-idp46442128",
+    "equationClass": "unnumbered"
   },
   "math-16": {
     "mathml": "<m:math><m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>5</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mi>M</m:mi></m:mrow></m:math>",
-    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=5\\, \\times \\, {{10}}^{{−8}}\\, M}"
+    "latex": "{{[{{\\text{H}}_{3}{\\text{O}}^{\\text{+}}}]}=5\\, \\times \\, {{10}}^{{−8}}\\, M}",
+    "equationId": "fs-idm58086272",
+    "equationClass": "unnumbered"
   },
   "math-17": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",

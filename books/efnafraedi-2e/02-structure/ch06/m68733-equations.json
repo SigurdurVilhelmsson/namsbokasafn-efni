@@ -151,6 +151,14 @@
     "mathml": "<m:math><m:mrow><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
     "latex": "{-\\, \\frac{1}{2}}"
   },
+  "math-39": {
+    "mathml": "<m:math><m:mrow><m:mo>+</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{+\\, \\frac{1}{2}}"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:mrow><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{-\\, \\frac{1}{2}}"
+  },
   "fs-idp110855072": {
     "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>h</m:mi><m:mrow><m:mi>m</m:mi><m:mi>v</m:mi></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>h</m:mi><m:mi>p</m:mi></m:mfrac></m:mrow></m:math>",
     "latex": "{λ=\\, \\frac{h}{{mv}}\\, =\\, \\frac{h}{p}}",

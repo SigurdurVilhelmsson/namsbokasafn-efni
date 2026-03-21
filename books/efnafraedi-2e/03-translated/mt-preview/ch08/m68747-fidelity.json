@@ -1,0 +1,29 @@
+{
+  "moduleId": "m68747",
+  "chapter": "ch08",
+  "timestamp": "2026-03-20T12:08:07.000Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 80,
+      "translated": 85,
+      "diff": 5,
+      "direction": "overproduction"
+    },
+    {
+      "tag": "sub",
+      "source": 130,
+      "translated": 131,
+      "diff": 1,
+      "direction": "overproduction"
+    },
+    {
+      "tag": "sup",
+      "source": 6,
+      "translated": 7,
+      "diff": 1,
+      "direction": "overproduction"
+    }
+  ]
+}

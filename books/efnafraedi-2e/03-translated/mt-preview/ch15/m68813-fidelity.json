@@ -1,0 +1,29 @@
+{
+  "moduleId": "m68813",
+  "chapter": "ch15",
+  "timestamp": "2026-03-20T12:08:07.084Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 40,
+      "translated": 41,
+      "diff": 1,
+      "direction": "overproduction"
+    },
+    {
+      "tag": "sub",
+      "source": 62,
+      "translated": 64,
+      "diff": 2,
+      "direction": "overproduction"
+    },
+    {
+      "tag": "term",
+      "source": 18,
+      "translated": 19,
+      "diff": 1,
+      "direction": "overproduction"
+    }
+  ]
+}

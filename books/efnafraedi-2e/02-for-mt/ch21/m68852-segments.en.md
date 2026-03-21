@@ -11,19 +11,19 @@ Identify common particles and energies involved in nuclear reactions
 Write and balance nuclear equations
 
 <!-- SEG:m68852:para:fs-idp10810528 -->
-Changes of nuclei that result in changes in their atomic numbers, mass numbers, or energy states are __nuclear reactions__. To describe a nuclear reaction, we use an equation that identifies the nuclides involved in the reaction, their mass numbers and atomic numbers, and the other particles involved in the reaction.
+Changes of nuclei that result in changes in their atomic numbers, mass numbers, or energy states are {{term}}nuclear reactions{{/term}}. To describe a nuclear reaction, we use an equation that identifies the nuclides involved in the reaction, their mass numbers and atomic numbers, and the other particles involved in the reaction.
 
 <!-- SEG:m68852:title:fs-idp49661760-title -->
 Types of Particles in Nuclear Reactions
 
 <!-- SEG:m68852:para:fs-idm5999248 -->
-Many entities can be involved in nuclear reactions. The most common are protons, neutrons, alpha particles, beta particles, positrons, and gamma rays, as shown in [#CNX_Chem_21_02_Nuclearrxs]. Protons [[MATH:1]] also represented by the symbol [[MATH:2]] and neutrons [[MATH:3]] are the constituents of atomic nuclei, and have been described previously. __Alpha particles__ [[MATH:4]] also represented by the symbol [[MATH:5]] are high-energy helium nuclei. __Beta particles__ [[MATH:6]] also represented by the symbol [[MATH:7]] are high-energy electrons, and gamma rays are photons of very high-energy electromagnetic radiation. __Positrons__ [[MATH:8]] also represented by the symbol [[MATH:9]] are positively charged electrons (“anti-electrons”). The subscripts and superscripts are necessary for balancing nuclear equations, but are usually optional in other circumstances. For example, an alpha particle is a helium nucleus (He) with a charge of +2 and a mass number of 4, so it is symbolized [[MATH:10]] This works because, in general, the ion charge is not important in the balancing of nuclear equations.
+Many entities can be involved in nuclear reactions. The most common are protons, neutrons, alpha particles, beta particles, positrons, and gamma rays, as shown in [#CNX_Chem_21_02_Nuclearrxs]. Protons [[MATH:1]] also represented by the symbol [[MATH:2]] and neutrons [[MATH:3]] are the constituents of atomic nuclei, and have been described previously. {{term}}Alpha particles{{/term}} [[MATH:4]] also represented by the symbol [[MATH:5]] are high-energy helium nuclei. {{term}}Beta particles{{/term}} [[MATH:6]] also represented by the symbol [[MATH:7]] are high-energy electrons, and gamma rays are photons of very high-energy electromagnetic radiation. {{term}}Positrons{{/term}} [[MATH:8]] also represented by the symbol [[MATH:9]] are positively charged electrons (“anti-electrons”). The subscripts and superscripts are necessary for balancing nuclear equations, but are usually optional in other circumstances. For example, an alpha particle is a helium nucleus (He) with a charge of +2 and a mass number of 4, so it is symbolized [[MATH:10]] This works because, in general, the ion charge is not important in the balancing of nuclear equations.
 
 <!-- SEG:m68852:caption:CNX_Chem_21_02_Nuclearrxs-caption -->
 Although many species are encountered in nuclear reactions, this table summarizes the names, symbols, representations, and descriptions of the most common of these.
 
 <!-- SEG:m68852:para:fs-idp183438528 -->
-Note that positrons are exactly like electrons, except they have the opposite charge. They are the most common example of __antimatter__, particles with the same mass but the opposite state of another property (for example, charge) than ordinary matter. When antimatter encounters ordinary matter, both are annihilated and their mass is converted into energy in the form of __gamma rays (γ)__—and other much smaller subnuclear particles, which are beyond the scope of this chapter—according to the mass-energy equivalence equation *E* = *mc*^2^, seen in the preceding section. For example, when a positron and an electron collide, both are annihilated and two gamma ray photons are created:
+Note that positrons are exactly like electrons, except they have the opposite charge. They are the most common example of {{term}}antimatter{{/term}}, particles with the same mass but the opposite state of another property (for example, charge) than ordinary matter. When antimatter encounters ordinary matter, both are annihilated and their mass is converted into energy in the form of {{term}}gamma rays (γ){{/term}}—and other much smaller subnuclear particles, which are beyond the scope of this chapter—according to the mass-energy equivalence equation {{i}}E{{/i}} = {{i}}mc{{/i}}[[sup:2]], seen in the preceding section. For example, when a positron and an electron collide, both are annihilated and two gamma ray photons are created:
 
 <!-- SEG:m68852:para:fs-idp95362336 -->
 As seen in the chapter discussing light and electromagnetic radiation, gamma rays compose short wavelength, high-energy electromagnetic radiation and are (much) more energetic than better-known X-rays that can behave as particles in the wave-particle duality sense. Gamma rays are a type of high energy electromagnetic radiation produced when a nucleus undergoes a transition from a higher to a lower energy state, similar to how a photon is produced by an electronic transition from a higher to a lower energy level. Due to the much larger energy differences between nuclear energy shells, gamma rays emanating from a nucleus have energies that are typically millions of times larger than electromagnetic radiation emanating from electronic transitions.
@@ -83,16 +83,16 @@ Answer:
 Following are the equations of several nuclear reactions that have important roles in the history of nuclear chemistry:
 
 <!-- SEG:m68852:item:fs-idp95347744-item-1 -->
-The first naturally occurring unstable element that was isolated, polonium, was discovered by the Polish scientist Marie __Curie__ and her husband Pierre in 1898. It decays, emitting α particles:[[BR]] [[MATH:20]]
+The first naturally occurring unstable element that was isolated, polonium, was discovered by the Polish scientist Marie {{term}}Curie{{/term}} and her husband Pierre in 1898. It decays, emitting α particles:[[BR]] [[MATH:20]]
 
 <!-- SEG:m68852:item:fs-idp95347744-item-2 -->
-The first nuclide to be prepared by artificial means was an isotope of oxygen, ^17^O. It was made by Ernest __Rutherford__ in 1919 by bombarding nitrogen atoms with α particles:[[BR]] [[MATH:21]]
+The first nuclide to be prepared by artificial means was an isotope of oxygen, [[sup:17]]O. It was made by Ernest {{term}}Rutherford{{/term}} in 1919 by bombarding nitrogen atoms with α particles:[[BR]] [[MATH:21]]
 
 <!-- SEG:m68852:item:fs-idp95347744-item-3 -->
-James __Chadwick__ discovered the neutron in 1932, as a previously unknown neutral particle produced along with ^12^C by the nuclear reaction between ^9^Be and ^4^He:[[BR]] [[MATH:22]]
+James {{term}}Chadwick{{/term}} discovered the neutron in 1932, as a previously unknown neutral particle produced along with [[sup:12]]C by the nuclear reaction between [[sup:9]]Be and [[sup:4]]He:[[BR]] [[MATH:22]]
 
 <!-- SEG:m68852:item:fs-idp95347744-item-4 -->
-The first element to be prepared that does not occur naturally on the earth, technetium, was created by bombardment of molybdenum by deuterons (heavy hydrogen, [[MATH:23]], by Emilio __Segre__ and Carlo __Perrier__ in 1937:[[BR]] [[MATH:24]]
+The first element to be prepared that does not occur naturally on the earth, technetium, was created by bombardment of molybdenum by deuterons (heavy hydrogen, [[MATH:24]], by Emilio {{term}}Segre{{/term}} and Carlo {{term}}Perrier{{/term}} in 1937:[[BR]] [[MATH:23]]
 
 <!-- SEG:m68852:item:fs-idp95347744-item-5 -->
 The first controlled nuclear chain reaction was carried out in a reactor at the University of Chicago in 1942. One of the many reactions involved was:[[BR]] [[MATH:25]]
@@ -176,22 +176,22 @@ Complete each of the following equations:
 Write a balanced equation for each of the following nuclear reactions:
 
 <!-- SEG:m68852:problem:fs-idp160023024 -->
-(a) the production of ^17^O from ^14^N by α particle bombardment
+(a) the production of [[sup:17]]O from [[sup:14]]N by α particle bombardment
 
 <!-- SEG:m68852:problem:fs-idp167819312 -->
-(b) the production of ^14^C from ^14^N by neutron bombardment
+(b) the production of [[sup:14]]C from [[sup:14]]N by neutron bombardment
 
 <!-- SEG:m68852:problem:fs-idp163053056 -->
-(c) the production of ^233^Th from ^232^Th by neutron bombardment
+(c) the production of [[sup:233]]Th from [[sup:232]]Th by neutron bombardment
 
 <!-- SEG:m68852:problem:fs-idp25746336 -->
-(d) the production of ^239^U from ^238^U by [[MATH:38]] bombardment
+(d) the production of [[sup:239]]U from [[sup:238]]U by [[MATH:38]] bombardment
 
 <!-- SEG:m68852:solution:fs-idp233165328 -->
 (a) [[MATH:39]] (b) [[MATH:40]] (c) [[MATH:41]] (d) [[MATH:42]]
 
 <!-- SEG:m68852:problem:fs-idp250174032 -->
-Technetium-99 is prepared from ^98^Mo. Molybdenum-98 combines with a neutron to give molybdenum-99, an unstable isotope that emits a β particle to yield an excited form of technetium-99, represented as ^99^Tc^*^. This excited nucleus relaxes to the ground state, represented as ^99^Tc, by emitting a γ ray. The ground state of ^99^Tc then emits a β particle. Write the equations for each of these nuclear reactions.
+Technetium-99 is prepared from [[sup:98]]Mo. Molybdenum-98 combines with a neutron to give molybdenum-99, an unstable isotope that emits a β particle to yield an excited form of technetium-99, represented as [[sup:99]]Tc[[sup:*]]. This excited nucleus relaxes to the ground state, represented as [[sup:99]]Tc, by emitting a γ ray. The ground state of [[sup:99]]Tc then emits a β particle. Write the equations for each of these nuclear reactions.
 
 <!-- SEG:m68852:problem:fs-idp201595904 -->
 The mass of the atom [[MATH:43]] is 18.99840 amu.
@@ -206,13 +206,13 @@ The mass of the atom [[MATH:43]] is 18.99840 amu.
 (a) 148.8 MeV per atom; (b) 7.808 MeV/nucleon
 
 <!-- SEG:m68852:problem:fs-idp91057312 -->
-For the reaction [[MATH:44]] if 100.0 g of carbon reacts, what volume of nitrogen gas (N~2~) is produced at 273K and 1 atm?
+For the reaction [[MATH:44]] if 100.0 g of carbon reacts, what volume of nitrogen gas (N[[sub:2]]) is produced at 273K and 1 atm?
 
 <!-- SEG:m68852:glossary-term:fs-idm57603984-term -->
 alpha particle
 
 <!-- SEG:m68852:glossary-def:fs-idm57603984-def -->
-(α or 24He or 24α) high-energy helium nucleus; a helium atom that has lost two electrons and contains two protons and two neutrons
+{{b}}(α{{/b}} or [[MATH:45]] or [[MATH:46]] high-energy helium nucleus; a helium atom that has lost two electrons and contains two protons and two neutrons
 
 <!-- SEG:m68852:glossary-term:fs-idm54113552-term -->
 antimatter
@@ -224,13 +224,13 @@ particles with the same mass but opposite properties (such as charge) of ordinar
 beta particle
 
 <!-- SEG:m68852:glossary-def:fs-idp335278976-def -->
-(β or −10e or −10β) high-energy electron
+[[MATH:47]] or [[MATH:48]] or [[MATH:49]] high-energy electron
 
 <!-- SEG:m68852:glossary-term:fs-idm12021616-term -->
 gamma ray
 
 <!-- SEG:m68852:glossary-def:fs-idm12021616-def -->
-(γ or 00γ) short wavelength, high-energy electromagnetic radiation that exhibits wave-particle duality
+{{b}}(γ{{/b}} or [[MATH:50]] short wavelength, high-energy electromagnetic radiation that exhibits wave-particle duality
 
 <!-- SEG:m68852:glossary-term:fs-idm45950256-term -->
 nuclear reaction

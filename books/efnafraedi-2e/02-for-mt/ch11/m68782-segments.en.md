@@ -17,16 +17,16 @@ Explain the degrees of solubility possible for liquid-liquid solutions
 Imagine adding a small amount of sugar to a glass of water, stirring until all the sugar has dissolved, and then adding a bit more. You can repeat this process until the sugar concentration of the solution reaches its natural limit, a limit determined primarily by the relative strengths of the solute-solute, solute-solvent, and solvent-solvent attractive forces discussed in the previous two modules of this chapter. You can be certain that you have reached this limit because, no matter how long you stir the solution, undissolved sugar remains. The concentration of sugar in the solution at this point is known as its solubility.
 
 <!-- SEG:m68782:para:fs-idp110015984 -->
-The __solubility__ of a solute in a particular solvent is the maximum concentration that may be achieved under given conditions when the dissolution process is *at equilibrium*.
+The {{term}}solubility{{/term}} of a solute in a particular solvent is the maximum concentration that may be achieved under given conditions when the dissolution process is {{i}}at equilibrium{{/i}}.
 
 <!-- SEG:m68782:para:fs-idp30743824 -->
-When a solute’s concentration is equal to its solubility, the solution is said to be __saturated__ with that solute. If the solute’s concentration is less than its solubility, the solution is said to be __unsaturated__. A solution that contains a relatively low concentration of solute is called dilute, and one with a relatively high concentration is called concentrated.
+When a solute’s concentration is equal to its solubility, the solution is said to be {{term}}saturated{{/term}} with that solute. If the solute’s concentration is less than its solubility, the solution is said to be {{term}}unsaturated{{/term}}. A solution that contains a relatively low concentration of solute is called dilute, and one with a relatively high concentration is called concentrated.
 
 <!-- SEG:m68782:para:fs-idp75533376 -->
 Use this [interactive simulation](http://openstax.org/l/16Phetsoluble) to prepare various saturated solutions.
 
 <!-- SEG:m68782:para:fs-idp69648624 -->
-Solutions may be prepared in which a solute concentration *exceeds* its solubility. Such solutions are said to be __supersaturated__, and they are interesting examples of *nonequilibrium* states (a detailed treatment of this important concept is provided in the text chapters on equilibrium). For example, the carbonated beverage in an open container that has not yet “gone flat” is supersaturated with carbon dioxide gas; given time, the CO~2~ concentration will decrease until it reaches its solubility.
+Solutions may be prepared in which a solute concentration {{i}}exceeds{{/i}} its solubility. Such solutions are said to be {{term}}supersaturated{{/term}}, and they are interesting examples of {{i}}nonequilibrium{{/i}} states (a detailed treatment of this important concept is provided in the text chapters on equilibrium). For example, the carbonated beverage in an open container that has not yet “gone flat” is supersaturated with carbon dioxide gas; given time, the CO[[sub:2]] concentration will decrease until it reaches its solubility.
 
 <!-- SEG:m68782:para:fs-idp34793776 -->
 Watch this [impressive video](http://openstax.org/l/16NaAcetate) showing the precipitation of sodium acetate from a supersaturated solution.
@@ -35,7 +35,7 @@ Watch this [impressive video](http://openstax.org/l/16NaAcetate) showing the pre
 Solutions of Gases in Liquids
 
 <!-- SEG:m68782:para:fs-idp65103440 -->
-As for any solution, the solubility of a gas in a liquid is affected by the intermolecular attractive forces between solute and solvent species. Unlike solid and liquid solutes, however, there is no solute-solute intermolecular attraction to overcome when a gaseous solute dissolves in a liquid solvent (see [m68778#CNX_Chem_11_01_solusolv]) since the atoms or molecules comprising a gas are far separated and experience negligible interactions. Consequently, solute-solvent interactions are the sole energetic factor affecting solubility. For example, the water solubility of oxygen is approximately three times greater than that of helium (there are greater dispersion forces between water and the larger oxygen molecules) but 100 times less than the solubility of chloroform, CHCl~3~ (polar chloroform molecules experience dipole–dipole attraction to polar water molecules). Likewise note the solubility of oxygen in hexane, C~6~H~14~, is approximately 20 times greater than it is in water because greater dispersion forces exist between oxygen and the larger hexane molecules.
+As for any solution, the solubility of a gas in a liquid is affected by the intermolecular attractive forces between solute and solvent species. Unlike solid and liquid solutes, however, there is no solute-solute intermolecular attraction to overcome when a gaseous solute dissolves in a liquid solvent (see [m68778#CNX_Chem_11_01_solusolv]) since the atoms or molecules comprising a gas are far separated and experience negligible interactions. Consequently, solute-solvent interactions are the sole energetic factor affecting solubility. For example, the water solubility of oxygen is approximately three times greater than that of helium (there are greater dispersion forces between water and the larger oxygen molecules) but 100 times less than the solubility of chloroform, CHCl[[sub:3]] (polar chloroform molecules experience dipole–dipole attraction to polar water molecules). Likewise note the solubility of oxygen in hexane, C[[sub:6]]H[[sub:14]], is approximately 20 times greater than it is in water because greater dispersion forces exist between oxygen and the larger hexane molecules.
 
 <!-- SEG:m68782:para:fs-idp39461568 -->
 Temperature is another factor affecting solubility, with gas solubility typically decreasing as temperature increases ([#CNX_Chem_11_03_gasdissolv]). This inverse relation between temperature and dissolved gas concentration is responsible for one of the major impacts of thermal pollution in natural waters.
@@ -50,31 +50,31 @@ When the temperature of a river, lake, or stream is raised, the solubility of ox
 (a) The small bubbles of air in this glass of chilled water formed when the water warmed to room temperature and the solubility of its dissolved air decreased. (b) The decreased solubility of oxygen in natural waters subjected to thermal pollution can result in large-scale fish kills. (credit a: modification of work by Liz West; credit b: modification of work by U.S. Fish and Wildlife Service)
 
 <!-- SEG:m68782:para:fs-idp30867024 -->
-The solubility of a gaseous solute is also affected by the partial pressure of solute in the gas to which the solution is exposed. Gas solubility increases as the pressure of the gas increases. Carbonated beverages provide a nice illustration of this relationship. The carbonation process involves exposing the beverage to a relatively high pressure of carbon dioxide gas and then sealing the beverage container, thus saturating the beverage with CO~2~ at this pressure. When the beverage container is opened, a familiar hiss is heard as the carbon dioxide gas pressure is released, and some of the dissolved carbon dioxide is typically seen leaving solution in the form of small bubbles ([#CNX_Chem_11_03_beverage]). At this point, the beverage is *supersaturated* with carbon dioxide and, with time, the dissolved carbon dioxide concentration will decrease to its equilibrium value and the beverage will become “flat.”
+The solubility of a gaseous solute is also affected by the partial pressure of solute in the gas to which the solution is exposed. Gas solubility increases as the pressure of the gas increases. Carbonated beverages provide a nice illustration of this relationship. The carbonation process involves exposing the beverage to a relatively high pressure of carbon dioxide gas and then sealing the beverage container, thus saturating the beverage with CO[[sub:2]] at this pressure. When the beverage container is opened, a familiar hiss is heard as the carbon dioxide gas pressure is released, and some of the dissolved carbon dioxide is typically seen leaving solution in the form of small bubbles ([#CNX_Chem_11_03_beverage]). At this point, the beverage is {{i}}supersaturated{{/i}} with carbon dioxide and, with time, the dissolved carbon dioxide concentration will decrease to its equilibrium value and the beverage will become “flat.”
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_beverage-caption -->
-Opening the bottle of carbonated beverage reduces the pressure of the *gaseous* carbon dioxide above the beverage. The solubility of CO~2~ is thus lowered, and some *dissolved* carbon dioxide may be seen leaving the solution as small gas bubbles. (credit: modification of work by Derrick Coetzee)
+Opening the bottle of carbonated beverage reduces the pressure of the {{i}}gaseous{{/i}} carbon dioxide above the beverage. The solubility of CO[[sub:2]] is thus lowered, and some {{i}}dissolved{{/i}} carbon dioxide may be seen leaving the solution as small gas bubbles. (credit: modification of work by Derrick Coetzee)
 
 <!-- SEG:m68782:para:fs-idp86085408 -->
-For many gaseous solutes, the relation between solubility, *C*~g~, and partial pressure, *P*~g~, is a proportional one:
+For many gaseous solutes, the relation between solubility, {{i}}C{{/i}}[[sub:g]], and partial pressure, {{i}}P{{/i}}[[sub:g]], is a proportional one:
 
 <!-- SEG:m68782:para:fs-idp72770704 -->
-where *k* is a proportionality constant that depends on the identity of the gaseous solute, the identity of the solvent, and the solution temperature. This is a mathematical statement of __Henry’s law__: *The quantity of an ideal gas that dissolves in a definite volume of liquid is directly proportional to the pressure of the gas.*
+where {{i}}k{{/i}} is a proportionality constant that depends on the identity of the gaseous solute, the identity of the solvent, and the solution temperature. This is a mathematical statement of {{term}}Henry’s law{{/term}}: {{i}}The quantity of an ideal gas that dissolves in a definite volume of liquid is directly proportional to the pressure of the gas.{{/i}}
 
 <!-- SEG:m68782:example-title:fs-idp3359488-title -->
 Application of Henry’s Law
 
 <!-- SEG:m68782:para:fs-idm1765696 -->
-At 20 °C, the concentration of dissolved oxygen in water exposed to gaseous oxygen at a partial pressure of 101.3 kPa is 1.38 [[MATH:1]] 10^−3^ mol L^−1^. Use Henry’s law to determine the solubility of oxygen when its partial pressure is 20.7 kPa, the approximate pressure of oxygen in earth’s atmosphere.
+At 20 °C, the concentration of dissolved oxygen in water exposed to gaseous oxygen at a partial pressure of 101.3 kPa is 1.38 [[MATH:1]] 10[[sup:−3]] mol L[[sup:−1]]. Use Henry’s law to determine the solubility of oxygen when its partial pressure is 20.7 kPa, the approximate pressure of oxygen in earth’s atmosphere.
 
 <!-- SEG:m68782:para-title:fs-idp69198064-title -->
 Solution
 
 <!-- SEG:m68782:para:fs-idp69198064 -->
-According to Henry’s law, for an ideal solution the solubility, *C*~g~, of a gas (1.38 [[MATH:2]] 10^−3^ mol L^−1^, in this case) is directly proportional to the pressure, *P*~g~, of the undissolved gas above the solution (101.3 kPa in this case). Because both *C*~g~ and *P*~g~ are known, this relation can be rearranged and used to solve for *k*.
+According to Henry’s law, for an ideal solution the solubility, {{i}}C{{/i}}[[sub:g]], of a gas (1.38 [[MATH:2]] 10[[sup:−3]] mol L[[sup:−1]], in this case) is directly proportional to the pressure, {{i}}P{{/i}}[[sub:g]], of the undissolved gas above the solution (101.3 kPa in this case). Because both {{i}}C{{/i}}[[sub:g]] and {{i}}P{{/i}}[[sub:g]] are known, this relation can be rearranged and used to solve for {{i}}k{{/i}}.
 
 <!-- SEG:m68782:para:fs-idp69566528 -->
-Now, use *k* to find the solubility at the lower pressure.
+Now, use {{i}}k{{/i}} to find the solubility at the lower pressure.
 
 <!-- SEG:m68782:para:fs-idp14065136 -->
 Note that various units may be used to express the quantities involved in these sorts of computations. Any combination of units that yield to the constraints of dimensional analysis are acceptable.
@@ -83,16 +83,16 @@ Note that various units may be used to express the quantities involved in these 
 Check Your Learning
 
 <!-- SEG:m68782:para:fs-idp911728 -->
-Exposing a 100.0 mL sample of water at 0 °C to an atmosphere containing a gaseous solute at 152 torr resulted in the dissolution of 1.45 [[MATH:3]] 10^−3^ g of the solute. Use Henry’s law to determine the solubility of this gaseous solute when its pressure is 760 torr.
+Exposing a 100.0 mL sample of water at 0 °C to an atmosphere containing a gaseous solute at 152 torr resulted in the dissolution of 1.45 [[MATH:3]] 10[[sup:−3]] g of the solute. Use Henry’s law to determine the solubility of this gaseous solute when its pressure is 760 torr.
 
 <!-- SEG:m68782:para:fs-idp7203840 -->
-7.25 [[MATH:4]] 10^−3^ in 100.0 mL or 0.0725 g/L
+7.25 [[MATH:4]] 10[[sup:−3]] in 100.0 mL or 0.0725 g/L
 
 <!-- SEG:m68782:note-title:fs-idm23741504-title -->
 Answer:
 
 <!-- SEG:m68782:para:fs-idp7203840 -->
-7.25 [[MATH:5]] 10^−3^ in 100.0 mL or 0.0725 g/L
+7.25 [[MATH:5]] 10[[sup:−3]] in 100.0 mL or 0.0725 g/L
 
 <!-- SEG:m68782:example-title:fs-idm260338832-title -->
 Thermal Pollution and Oxygen Solubility
@@ -107,7 +107,7 @@ Solution
 First, estimate the Henry’s law constant for oxygen in water at the specified temperature of 30.0 °C ([#CNX_Chem_11_03_gasdissolv] indicates the solubility at this temperature is approximately ~1.2 mol/L).
 
 <!-- SEG:m68782:para:fs-idm246607712 -->
-Then, use this *k* value to compute the oxygen solubility at the specified oxygen partial pressure, 0.17 atm.
+Then, use this {{i}}k{{/i}} value to compute the oxygen solubility at the specified oxygen partial pressure, 0.17 atm.
 
 <!-- SEG:m68782:para:fs-idm243822832 -->
 Finally, convert this dissolved oxygen concentration from mol/L to mg/L.
@@ -143,19 +143,19 @@ As the diver ascends to the surface of the water, the ambient pressure decreases
 (a) US Navy divers undergo training in a recompression chamber. (b) Divers receive hyperbaric oxygen therapy.
 
 <!-- SEG:m68782:para:fs-idm18427536 -->
-Deviations from __Henry’s law__ are observed when a chemical reaction takes place between the gaseous solute and the solvent. Thus, for example, the solubility of ammonia in water increases more rapidly with increasing pressure than predicted by the law because ammonia, being a base, reacts to some extent with water to form ammonium ions and hydroxide ions.
+Deviations from {{term}}Henry’s law{{/term}} are observed when a chemical reaction takes place between the gaseous solute and the solvent. Thus, for example, the solubility of ammonia in water increases more rapidly with increasing pressure than predicted by the law because ammonia, being a base, reacts to some extent with water to form ammonium ions and hydroxide ions.
 
 <!-- SEG:m68782:para:fs-idm48937408 -->
-Gases can form supersaturated solutions. If a solution of a gas in a liquid is prepared either at low temperature or under pressure (or both), then as the solution warms or as the gas pressure is reduced, the solution may become supersaturated. In 1986, more than 1700 people in Cameroon were killed when a cloud of gas, almost certainly carbon dioxide, bubbled from Lake Nyos ([#CNX_Chem_11_03_LakeNyos]), a deep lake in a volcanic crater. The water at the bottom of Lake Nyos is saturated with carbon dioxide by volcanic activity beneath the lake. It is believed that the lake underwent a turnover due to gradual heating from below the lake, and the warmer, less-dense water saturated with carbon dioxide reached the surface. Consequently, tremendous quantities of dissolved CO~2~ were released, and the colorless gas, which is denser than air, flowed down the valley below the lake and suffocated humans and animals living in the valley.
+Gases can form supersaturated solutions. If a solution of a gas in a liquid is prepared either at low temperature or under pressure (or both), then as the solution warms or as the gas pressure is reduced, the solution may become supersaturated. In 1986, more than 1700 people in Cameroon were killed when a cloud of gas, almost certainly carbon dioxide, bubbled from Lake Nyos ([#CNX_Chem_11_03_LakeNyos]), a deep lake in a volcanic crater. The water at the bottom of Lake Nyos is saturated with carbon dioxide by volcanic activity beneath the lake. It is believed that the lake underwent a turnover due to gradual heating from below the lake, and the warmer, less-dense water saturated with carbon dioxide reached the surface. Consequently, tremendous quantities of dissolved CO[[sub:2]] were released, and the colorless gas, which is denser than air, flowed down the valley below the lake and suffocated humans and animals living in the valley.
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_LakeNyos-caption -->
-(a) It is believed that the 1986 disaster that killed more than 1700 people near Lake Nyos in Cameroon resulted when a large volume of carbon dioxide gas was released from the lake. (b) A CO~2~ vent has since been installed to help outgas the lake in a slow, controlled fashion and prevent a similar catastrophe from happening in the future. (credit a: modification of work by Jack Lockwood; credit b: modification of work by Bill Evans)
+(a) It is believed that the 1986 disaster that killed more than 1700 people near Lake Nyos in Cameroon resulted when a large volume of carbon dioxide gas was released from the lake. (b) A CO[[sub:2]] vent has since been installed to help outgas the lake in a slow, controlled fashion and prevent a similar catastrophe from happening in the future. (credit a: modification of work by Jack Lockwood; credit b: modification of work by Bill Evans)
 
 <!-- SEG:m68782:title:fs-idp64799168-title -->
 Solutions of Liquids in Liquids
 
 <!-- SEG:m68782:para:fs-idm22997312 -->
-Some liquids may be mixed in any proportions to yield solutions; in other words, they have infinite mutual solubility and are said to be __miscible__. Ethanol, sulfuric acid, and ethylene glycol (popular for use as antifreeze, pictured in [#CNX_Chem_11_03_antifreeze]) are examples of liquids that are completely miscible with water. Two-cycle motor oil is miscible with gasoline, mixtures of which are used as lubricating fuels for various types of outdoor power equipment (chainsaws, leaf blowers, and so on).
+Some liquids may be mixed in any proportions to yield solutions; in other words, they have infinite mutual solubility and are said to be {{term}}miscible{{/term}}. Ethanol, sulfuric acid, and ethylene glycol (popular for use as antifreeze, pictured in [#CNX_Chem_11_03_antifreeze]) are examples of liquids that are completely miscible with water. Two-cycle motor oil is miscible with gasoline, mixtures of which are used as lubricating fuels for various types of outdoor power equipment (chainsaws, leaf blowers, and so on).
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_antifreeze-caption -->
 Water and antifreeze are miscible; mixtures of the two are homogeneous in all proportions. (credit: “dno1967”/Wikimedia commons)
@@ -164,13 +164,13 @@ Water and antifreeze are miscible; mixtures of the two are homogeneous in all pr
 Miscible liquids are typically those with very similar polarities. Consider, for example, liquids that are polar or capable of hydrogen bonding. For such liquids, the dipole-dipole attractions (or hydrogen bonding) of the solute molecules with the solvent molecules are at least as strong as those between molecules in the pure solute or in the pure solvent. Hence, the two kinds of molecules mix easily. Likewise, nonpolar liquids are miscible with each other because there is no appreciable difference in the strengths of solute-solute, solvent-solvent, and solute-solvent intermolecular attractions. The solubility of polar molecules in polar solvents and of nonpolar molecules in nonpolar solvents is, again, an illustration of the chemical axiom “like dissolves like.”
 
 <!-- SEG:m68782:para:fs-idp37300448 -->
-Two liquids that do not mix to an appreciable extent are called __immiscible__. Separate layers are formed when immiscible liquids are poured into the same container. Gasoline, oil ([#CNX_Chem_11_03_oilwater2]), benzene, carbon tetrachloride, some paints, and many other nonpolar liquids are immiscible with water. Relatively weak attractive forces between the polar water molecules and the nonpolar liquid molecules are not adequate to overcome much stronger hydrogen bonding between water molecules. The distinction between immiscibility and miscibility is really one of extent, so that miscible liquids are of infinite mutual solubility, while liquids said to be immiscible are of very low (though not zero) mutual solubility.
+Two liquids that do not mix to an appreciable extent are called {{term}}immiscible{{/term}}. Separate layers are formed when immiscible liquids are poured into the same container. Gasoline, oil ([#CNX_Chem_11_03_oilwater2]), benzene, carbon tetrachloride, some paints, and many other nonpolar liquids are immiscible with water. Relatively weak attractive forces between the polar water molecules and the nonpolar liquid molecules are not adequate to overcome much stronger hydrogen bonding between water molecules. The distinction between immiscibility and miscibility is really one of extent, so that miscible liquids are of infinite mutual solubility, while liquids said to be immiscible are of very low (though not zero) mutual solubility.
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_oilwater2-caption -->
 Water and oil are immiscible. Mixtures of these two substances will form two separate layers with the less dense oil floating on top of the water. (credit: “Yortw”/Flickr)
 
 <!-- SEG:m68782:para:fs-idp49738352 -->
-Two liquids, such as bromine and water, that are of *moderate* mutual solubility are said to be __partially miscible__. Two partially miscible liquids usually form two layers when mixed. In the case of the bromine and water mixture, the upper layer is water, saturated with bromine, and the lower layer is bromine saturated with water. Since bromine is nonpolar, and, thus, not very soluble in water, the water layer is only slightly discolored by the bright orange bromine dissolved in it. Since the solubility of water in bromine is very low, there is no noticeable effect on the dark color of the bromine layer ([#CNX_Chem_11_03_bromine]).
+Two liquids, such as bromine and water, that are of {{i}}moderate{{/i}} mutual solubility are said to be {{term}}partially miscible{{/term}}. Two partially miscible liquids usually form two layers when mixed. In the case of the bromine and water mixture, the upper layer is water, saturated with bromine, and the lower layer is bromine saturated with water. Since bromine is nonpolar, and, thus, not very soluble in water, the water layer is only slightly discolored by the bright orange bromine dissolved in it. Since the solubility of water in bromine is very low, there is no noticeable effect on the dark color of the bromine layer ([#CNX_Chem_11_03_bromine]).
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_bromine-caption -->
 Bromine (the deep orange liquid on the left) and water (the clear liquid in the middle) are partially miscible. The top layer in the mixture on the right is a saturated solution of bromine in water; the bottom layer is a saturated solution of water in bromine. (credit: Paul Flowers)
@@ -209,7 +209,7 @@ Key Equations
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68782:problem:fs-idp72058416 -->
-Suppose you are presented with a clear solution of sodium thiosulfate, Na~2~S~2~O~3~. How could you determine whether the solution is unsaturated, saturated, or supersaturated?
+Suppose you are presented with a clear solution of sodium thiosulfate, Na[[sub:2]]S[[sub:2]]O[[sub:3]]. How could you determine whether the solution is unsaturated, saturated, or supersaturated?
 
 <!-- SEG:m68782:problem:fs-idm71283280 -->
 Supersaturated solutions of most solids in water are prepared by cooling saturated solutions. Supersaturated solutions of most gases in water are prepared by heating saturated solutions. Explain the reasons for the difference in the two procedures.
@@ -218,7 +218,7 @@ Supersaturated solutions of most solids in water are prepared by cooling saturat
 The solubility of solids usually decreases upon cooling a solution, while the solubility of gases usually decreases upon heating.
 
 <!-- SEG:m68782:problem:fs-idp35536128 -->
-Suggest an explanation for the observations that ethanol, C~2~H~5~OH, is completely miscible with water and that ethanethiol, C~2~H~5~SH, is soluble only to the extent of 1.5 g per 100 mL of water.
+Suggest an explanation for the observations that ethanol, C[[sub:2]]H[[sub:5]]OH, is completely miscible with water and that ethanethiol, C[[sub:2]]H[[sub:5]]SH, is soluble only to the extent of 1.5 g per 100 mL of water.
 
 <!-- SEG:m68782:problem:fs-idp86652032 -->
 Calculate the percent by mass of KBr in a saturated solution of KBr in water at 10 °C. See [#CNX_Chem_11_03_solubility] for useful data, and report the computed percentage to one significant digit.
@@ -230,16 +230,16 @@ Calculate the percent by mass of KBr in a saturated solution of KBr in water at 
 Which of the following gases is expected to be most soluble in water? Explain your reasoning.
 
 <!-- SEG:m68782:problem:fs-idp37987136 -->
-(a) CH~4~
+(a) CH[[sub:4]]
 
 <!-- SEG:m68782:problem:fs-idp75725552 -->
-(b) CCl~4~
+(b) CCl[[sub:4]]
 
 <!-- SEG:m68782:problem:fs-idp100790624 -->
-(c) CHCl~3~
+(c) CHCl[[sub:3]]
 
 <!-- SEG:m68782:problem:fs-idp64913664 -->
-At 0 °C and 1.00 atm, as much as 0.70 g of O~2~ can dissolve in 1 L of water. At 0 °C and 4.00 atm, how many grams of O~2~ dissolve in 1 L of water?
+At 0 °C and 1.00 atm, as much as 0.70 g of O[[sub:2]] can dissolve in 1 L of water. At 0 °C and 4.00 atm, how many grams of O[[sub:2]] dissolve in 1 L of water?
 
 <!-- SEG:m68782:solution:fs-idp34230848 -->
 2.8 g
@@ -248,25 +248,25 @@ At 0 °C and 1.00 atm, as much as 0.70 g of O~2~ can dissolve in 1 L of water. A
 Refer to [#CNX_Chem_11_03_beverage].
 
 <!-- SEG:m68782:problem:fs-idp48419760 -->
-(a) How did the concentration of dissolved CO~2~ in the beverage change when the bottle was opened?
+(a) How did the concentration of dissolved CO[[sub:2]] in the beverage change when the bottle was opened?
 
 <!-- SEG:m68782:problem:fs-idp64805104 -->
 (b) What caused this change?
 
 <!-- SEG:m68782:problem:fs-idp75878336 -->
-(c) Is the beverage unsaturated, saturated, or supersaturated with CO~2~?
+(c) Is the beverage unsaturated, saturated, or supersaturated with CO[[sub:2]]?
 
 <!-- SEG:m68782:problem:fs-idm15918912 -->
-The Henry’s law constant for CO~2~ is 3.4 [[MATH:7]] 10^−2^ *M*/atm at 25 °C. Assuming ideal solution behavior, what pressure of carbon dioxide is needed to maintain a CO~2~ concentration of 0.10 *M* in a can of lemon-lime soda?
+The Henry’s law constant for CO[[sub:2]] is 3.4 [[MATH:7]] 10[[sup:−2]] {{i}}M{{/i}}/atm at 25 °C. Assuming ideal solution behavior, what pressure of carbon dioxide is needed to maintain a CO[[sub:2]] concentration of 0.10 {{i}}M{{/i}} in a can of lemon-lime soda?
 
 <!-- SEG:m68782:solution:fs-idm53295744 -->
 2.9 atm
 
 <!-- SEG:m68782:problem:fs-idp102425184 -->
-The Henry’s law constant for O~2~ is 1.3 [[MATH:8]] 10^−3^ *M*/atm at 25 °C. Assuming ideal solution behavior, what mass of oxygen would be dissolved in a 40-L aquarium at 25 °C, assuming an atmospheric pressure of 1.00 atm, and that the partial pressure of O~2~ is 0.21 atm?
+The Henry’s law constant for O[[sub:2]] is 1.3 [[MATH:8]] 10[[sup:−3]] {{i}}M{{/i}}/atm at 25 °C. Assuming ideal solution behavior, what mass of oxygen would be dissolved in a 40-L aquarium at 25 °C, assuming an atmospheric pressure of 1.00 atm, and that the partial pressure of O[[sub:2]] is 0.21 atm?
 
 <!-- SEG:m68782:problem:fs-idm20619264 -->
-Assuming ideal solution behavior, how many liters of HCl gas, measured at 30.0 °C and 745 torr, are required to prepare 1.25 L of a 3.20-*M* solution of hydrochloric acid?
+Assuming ideal solution behavior, how many liters of HCl gas, measured at 30.0 °C and 745 torr, are required to prepare 1.25 L of a 3.20-{{i}}M{{/i}} solution of hydrochloric acid?
 
 <!-- SEG:m68782:solution:fs-idp48226368 -->
 102 L HCl

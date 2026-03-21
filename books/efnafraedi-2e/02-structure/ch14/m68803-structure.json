@@ -187,7 +187,7 @@
       "id": "fs-idm136168496",
       "title": {
         "segmentId": "m68803:example-title:fs-idm136168496-title",
-        "text": "Solution"
+        "text": "The Inverse Relation between [H[[sub:3]]O[[sup:+]]] and [OH[[sup:−]]]"
       },
       "content": [
         {
@@ -198,7 +198,11 @@
         {
           "type": "para",
           "id": "fs-idm86437536",
-          "segmentId": "m68803:para:fs-idm86437536"
+          "segmentId": "m68803:para:fs-idm86437536",
+          "title": {
+            "segmentId": "m68803:para-title:fs-idm86437536-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -390,7 +394,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68803:entry:auto-58",
+                  "segmentId": "m68803:entry:auto-59",
                   "attributes": {}
                 }
               ]

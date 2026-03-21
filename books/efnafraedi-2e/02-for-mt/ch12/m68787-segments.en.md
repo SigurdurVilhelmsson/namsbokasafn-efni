@@ -23,7 +23,7 @@ The Physical States of the Reactants
 A chemical reaction between two or more substances requires intimate contact between the reactants. When reactants are in different physical states, or phases (solid, liquid, gaseous, dissolved), the reaction takes place only at the interface between the phases. Consider the heterogeneous reaction between a solid phase and either a liquid or gaseous phase. Compared with the reaction rate for large solid particles, the rate for smaller particles will be greater because the surface area in contact with the other reactant phase is greater. For example, large pieces of iron react more slowly with acids than they do with finely divided iron powder ([#CNX_Chem_12_02_AcidDissol]). Large pieces of wood smolder, smaller pieces burn rapidly, and saw dust burns explosively.
 
 <!-- SEG:m68787:caption:CNX_Chem_12_02_AcidDissol-caption -->
-(a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe(*s*) + HCl(*aq*) [[MATH:1]] 2FeCl~2~(*aq*) + 3H~2~(*g*). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.
+(a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe({{i}}s{{/i}}) + HCl({{i}}aq{{/i}}) [[MATH:1]] 2FeCl[[sub:2]]({{i}}aq{{/i}}) + 3H[[sub:2]]({{i}}g{{/i}}). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.
 
 <!-- SEG:m68787:para:fs-idm33181984 -->
 Watch [this video](http://openstax.org/l/16cesium) to see the reaction of cesium with water in slow motion and a discussion of how the state of reactants and particle size affect reaction rates.
@@ -38,7 +38,7 @@ Chemical reactions typically occur faster at higher temperatures. Food can spoil
 Concentrations of the Reactants
 
 <!-- SEG:m68787:para:fs-idm31855392 -->
-The rates of many reactions depend on the concentrations of the reactants. Rates usually increase when the concentration of one or more of the reactants increases. For example, calcium carbonate (CaCO~3~) deteriorates as a result of its reaction with the pollutant sulfur dioxide. The rate of this reaction depends on the amount of sulfur dioxide in the air ([#CNX_Chem_12_02_NYSStatue]). An acidic oxide, sulfur dioxide combines with water vapor in the air to produce sulfurous acid in the following reaction:
+The rates of many reactions depend on the concentrations of the reactants. Rates usually increase when the concentration of one or more of the reactants increases. For example, calcium carbonate (CaCO[[sub:3]]) deteriorates as a result of its reaction with the pollutant sulfur dioxide. The rate of this reaction depends on the amount of sulfur dioxide in the air ([#CNX_Chem_12_02_NYSStatue]). An acidic oxide, sulfur dioxide combines with water vapor in the air to produce sulfurous acid in the following reaction:
 
 <!-- SEG:m68787:para:fs-idp125234816 -->
 Calcium carbonate reacts with sulfurous acid as follows:
@@ -56,10 +56,10 @@ Phosphorus burns rapidly in air, but it will burn even more rapidly if the conce
 The Presence of a Catalyst
 
 <!-- SEG:m68787:para:fs-idm99481872 -->
-Relatively dilute aqueous solutions of hydrogen peroxide, H~2~O~2~, are commonly used as topical antiseptics. Hydrogen peroxide decomposes to yield water and oxygen gas according to the equation:
+Relatively dilute aqueous solutions of hydrogen peroxide, H[[sub:2]]O[[sub:2]], are commonly used as topical antiseptics. Hydrogen peroxide decomposes to yield water and oxygen gas according to the equation:
 
 <!-- SEG:m68787:para:fs-idm237313312 -->
-Under typical conditions, this decomposition occurs very slowly. When dilute H~2~O~2~(aq) is poured onto an open wound, however, the reaction occurs rapidly and the solution foams because of the vigorous production of oxygen gas. This dramatic difference is caused by the presence of substances within the wound’s exposed tissues that accelerate the decomposition process. Substances that function to increase the rate of a reaction are called __catalysts__, a topic treated in greater detail later in this chapter.
+Under typical conditions, this decomposition occurs very slowly. When dilute H[[sub:2]]O[[sub:2]](aq) is poured onto an open wound, however, the reaction occurs rapidly and the solution foams because of the vigorous production of oxygen gas. This dramatic difference is caused by the presence of substances within the wound’s exposed tissues that accelerate the decomposition process. Substances that function to increase the rate of a reaction are called {{term}}catalysts{{/term}}, a topic treated in greater detail later in this chapter.
 
 <!-- SEG:m68787:para:fs-idm89663808 -->
 Chemical reactions occur when molecules collide with each other and undergo a chemical transformation. Before physically performing a reaction in a laboratory, scientists can use molecular modeling simulations to predict how the parameters discussed earlier will influence the rate of a reaction. Use the [PhET Reactions &amp; Rates interactive](http://openstax.org/l/16PHETreaction) to explore how temperature, concentration, and the nature of the reactants affect reaction rates.
@@ -107,7 +107,7 @@ In the [PhET Reactions &amp; Rates](http://openstax.org/l/16PHETreaction) intera
 (b) Click “Pause” and then “Reset All,” and then enter 15 molecules of A and 10 molecules of BC once again. Select “Show Bonds” under Options. This time, increase the initial temperature until, on the graph, the total average energy line is completely above the potential energy curve. Describe what happens to the reaction.
 
 <!-- SEG:m68787:solution:fs-idm111616960 -->
-(a) very slow; (b) As the temperature is increased, the reaction proceeds at a faster rate. The amount of reactants decreases, and the amount of products increases. After a while, there is a roughly equal amount of *BC*, *AB*, and *C* in the mixture and a slight excess of *A*.
+(a) very slow; (b) As the temperature is increased, the reaction proceeds at a faster rate. The amount of reactants decreases, and the amount of products increases. After a while, there is a roughly equal amount of {{i}}BC{{/i}}, {{i}}AB{{/i}}, and {{i}}C{{/i}} in the mixture and a slight excess of {{i}}A{{/i}}.
 
 <!-- SEG:m68787:glossary-term:fs-idp102379584-term -->
 catalyst

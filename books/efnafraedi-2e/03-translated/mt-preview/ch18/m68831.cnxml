@@ -1,0 +1,302 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Uppbygging og almennir eiginleikar hálfmálma</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68831</md:content-id>
+  <md:title>Uppbygging og almennir eiginleikar hálfmálma</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst almennri framleiðslu, eiginleikum og notkun hálfmálma</item><item>Lýst framleiðslu, eiginleikum og efnasamböndum bórs og kísils</item></list></md:abstract>
+  <md:uuid>204b5ad5-26eb-46d5-8e6c-3c224a904235</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp17717312">Sex frumefni, sem kallast hálfmálmar, aðskilja málma frá málmleysingjum í lotukerfinu. Hálfmálmarnir eru bór, kísill, german, arsen, antímon og tellúr. Þessi frumefni hafa málmkennt útlit, en þau leiða ekki rafmagn jafn vel og málmar og eru því hálfleiðarar. Þau eru hálfleiðarar vegna þess að rafeindir þeirra eru fastar bundnar við kjarna sína en rafeindir málmleiðara. Efnafræðileg hegðun þeirra er mitt á milli hegðunar málma og málmleysingja. Til dæmis mynda hreinir hálfmálmar samgilda kristalla eins og málmleysingjar, en líkt og málmar mynda þeir yfirleitt ekki eineinda anjónir. Þessi millistigshegðun stafar að hluta til af millistigs rafneikvæðni þeirra. Í þessum kafla munum við fjalla stuttlega um efnafræðilega hegðun hálfmálma og skoða tvö þessara frumefna – bór og kísil – nánar.</para>
+<para id="fs-idp189496896">Hálfmálmurinn bór sýnir marga líkindi við nágranna sinn kolefni og skánágranna sinn kísil. Öll þrjú frumefnin mynda samgild efnasambönd. Bór hefur þó einn áberandi mun að því leyti að ytri rafeindaskipan þess, 2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>1</sup>, gefur því eina gildisrafeind færri en það hefur gildissvigrúm. Þrátt fyrir að bór sýni oxunartöluna +3 í flestum stöðugum efnasamböndum sínum, veitir þessi rafeindaskortur bór getu til að mynda aðrar, stundum brotakenndar, oxunartölur, sem koma til dæmis fyrir í bórhýdríðum.</para>
+<para id="fs-idp63064256">Kísill hefur gildishvolfs rafeindaskipanina 3<emphasis effect="italics">s</emphasis><sup>2</sup>3<emphasis effect="italics">p</emphasis><sup>2</sup> og myndar oftast ferflötungsformgerðir þar sem hann er <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingsmyndaður með formlega oxunartöluna +4. Helsti munurinn á efnafræði kolefnis og kísils stafar af hlutfallslegum styrk kolefnis-kolefnis tengisins, getu kolefnis til að mynda stöðug tengi við sjálft sig og tilvist tómra 3<emphasis effect="italics">d</emphasis> gildishvolfs svigrúma í kísli. Tóm <emphasis effect="italics">d</emphasis> svigrúm kísils og tómt <emphasis effect="italics">p</emphasis> svigrúm bórs gera ferflötungs kísilefnasamböndum og þríhyrningslaga flötum bórefnasamböndum kleift að virka sem Lewis-sýrur. Kolefni hefur aftur á móti engin tiltæk gildishvolfs svigrúm; ferflötungs kolefnissambönd geta ekki virkað sem Lewis-sýrur. German er mjög líkt kísli í efnafræðilegri hegðun sinni.</para>
+<para id="fs-idp125396304">Arsen og antímon mynda yfirleitt efnasambönd þar sem oxunartalan +3 eða +5 kemur fram; þó getur arsen myndað arseníð með oxunartöluna –3. Þessi frumefni falla aðeins lítillega á í þurru lofti en oxast auðveldlega við upphitun. Antímon hvarfast auðveldlega við hlutfallslegt magn af flúori, klór, brómi eða joði og myndar þríhalíð eða, með umframmagni af flúori eða klór, myndar það pentahalíðin SbF<sub>5</sub> og SbCl<sub>5</sub>. Það myndar antímon(III)súlfíð, Sb<sub>2</sub>S<sub>3</sub>, eða antímon(V)súlfíð, Sb<sub>2</sub>S<sub>5</sub>, þegar það er hitað með brennisteini, allt eftir hlutfallaefnafræðinni. Eins og við var að búast er málmkenndur eiginleiki frumefnisins meiri en arsens, sem er beint fyrir ofan það í hópi 15.</para>
+<para id="fs-idp421952">Tellúr binst beint við flest frumefni. Stöðugustu tellúrsamböndin eru tellúríð – sölt af Te<sup>2−</sup> mynduð með virkum málmum og lantaníðum – og efnasambönd með súrefni, flúori og klór, þar sem tellúr sýnir venjulega oxunartöluna +2 eða +4. Þrátt fyrir að tellúr(VI) efnasambönd séu þekkt (til dæmis TeF<sub>6</sub>), er áberandi mótstaða gegn oxun upp í þessa hámarks oxunartölu hópsins.</para>
+<section id="fs-idp249805056">
+<title>Formgerðir hálfmálma</title>
+<para id="fs-idm34751888">Samgild tengi eru lykillinn að kristalformgerðum hálfmálma. Að þessu leyti líkjast þessi frumefni málmleysingjum í hegðun sinni.</para>
+<para id="fs-idp235228864">Hreinn kísill, german, arsen, antímon og tellúr eru gljáandi, málmkennd föst efni. Kísill og german kristallast með demantsformgerð. Hver frumeind innan kristalsins hefur samgild tengi við fjórar nágrannafrumeindir á hornum reglulegs ferflötungs. Einkristallar kísils og germans eru risastórar, þrívíðar sameindir. Til eru nokkrar fjölmyndir af arseni þar sem sú stöðugasta er lagskipt og inniheldur bárótt lög af arsenfrumeindum. Hver arsenfrumeind myndar samgild tengi við þrjár aðrar frumeindir innan lagsins. Kristalformgerð antímons er svipuð og arsens, en báðar eru sýndar í <link target-id="CNX_Chem_18_03_Structures"/>. Formgerðir arsens og antímons eru svipaðar formgerð grafíts, sem fjallað er um síðar í þessum kafla. Tellúr myndar kristalla sem innihalda óendanlegar spíral keðjur af tellúrfrumeindum. Hver frumeind í keðjunni tengist tveimur öðrum frumeindum.</para>
+<note id="fs-idp121376784" class="chemistry link-to-learning">
+<para id="fs-idm35582272">Kannaðu <link url="http://openstax.org/l/16crystal">kúbíska demants</link> kristalformgerð.</para>
+</note>
+<figure id="CNX_Chem_18_03_Structures">
+<media id="fs-idm27167568" alt="Four images are shown and are labeled “a,” “b,” “c,” and “d.” Images a and b show atoms that are single bonded together arranged in a zigzag pattern in layers. Image c shows atoms that are single bonded together into hexagons that form sheets. These sheets are shown layered one above the other. Image d shows atoms that are single bonded together in twisting chains.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_Structures.jpg"/>
+</media>
+<caption>(a) Arsen og (b) antímon hafa lagskipta formgerð svipaða og (c) grafít, nema hvað lögin eru bárótt frekar en flöt. (d) Hreint tellúr myndar spíralkeðjur.</caption>
+</figure>
+<para id="fs-idp12608576">Hreint kristallað bór er gegnsætt. Kristallarnir samanstanda af tuttuguflötungum, eins og sýnt er í <link target-id="CNX_Chem_18_03_BIcosahed"/>, með bórfrumeind á hverju horni. Í algengustu mynd bórs pakkast tuttuguflötungarnir saman á svipaðan hátt og kúbísk þéttpökkun kúlna. Öll bór-bór tengi innan hvers tuttuguflötungs eru eins og eru um það bil 176 pm að lengd. Í mismunandi myndum bórs eru mismunandi fyrirkomulag og tengingar milli tuttuguflötunganna.</para>
+<figure id="CNX_Chem_18_03_BIcosahed" class="scaled-down">
+<media id="fs-idp340430608" alt="An image shows a group of atoms, each labeled, “B,” connected together with single bonds into a symmetrical, twenty-sided shape.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_BIcosahed.jpg"/>
+</media>
+<caption>Tuttuguflötungur er samhverft, fast form með 20 flötum, sem hver um sig er jafnhliða þríhyrningur. Fletirnir mætast í 12 hornum.</caption>
+</figure>
+<para id="fs-idp125392768">Nafnið kísill er dregið af latneska orðinu yfir tinnu, <emphasis effect="italics">silex</emphasis>. Hálfmálmurinn kísill myndar auðveldlega efnasambönd sem innihalda Si-O-Si efnatengi, sem eru afar mikilvæg í heimi steinefna. Þessi tengigeta er í andstöðu við málmleysingjann kolefni, en hæfni þess til að mynda kolefnis-kolefnis efnatengi gefur því forgang í heimi plantna og dýra.</para>
+</section>
+<section id="fs-idm27196048">
+<title>Tilvist, framleiðsla og efnasambönd bórs og kísils</title>
+<section id="fs-idp39834912">
+<title>Bór- og kísilhalíð</title>
+<para id="fs-idp29251536">Bórtríhalíð—BF<sub>3</sub>, BCl<sub>3</sub>, BBr<sub>3</sub> og BI<sub>3</sub>—er hægt að framleiða með beinu efnahvarfi frumefnanna. Þessar óskautuðu sameindir innihalda bór með <emphasis effect="italics">sp</emphasis><sup>2</sup>-tvinnblöndun og þríhyrningslaga flata sameindabyggingu. Flúoríð- og klóríðsamböndin eru litlausar lofttegundir, brómíðið er vökvi og joðíðið er hvítt kristalkennt fast efni.</para>
+<para id="fs-idp20855552">Að undanskildu bórtríflúoríði vatnsrofnast bórtríhalíð auðveldlega í vatni og mynda bórsýru og samsvarandi halógenvetnissýru. Bórtríklóríð hvarfast samkvæmt jöfnunni:</para>
+<equation id="fs-idp99815200" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>BCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>B</m:mtext><m:msub><m:mrow><m:mtext>(OH)</m:mtext></m:mrow><m:mrow><m:mn>3</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>3HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp67676992">Bórtríflúoríð hvarfast við flúorvetnissýru og myndar lausn af flúorbórsýru, HBF<sub>4</sub>:</para>
+<equation id="fs-idp73493616" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>BF</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HF</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>BF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm52704">Í þessu efnahvarfi virkar BF<sub>3</sub> sameindin sem Lewis-sýra (rafeindaparþegi) og þiggur rafeindapar frá flúoríðjón:</para>
+<media id="fs-idp60354928" alt="Two Lewis structures are drawn and connected by a right-facing arrow. The left structure shows a boron atom surrounded by four fluorine atoms, each with four lone pairs of electrons. The left fluorine atom has a positive and negative symbol drawn next to it. The second image is the same as the first except the positive and negative signs are missing and the entire structure is surrounded by brackets. There is a negative sign outside and superscript to the brackets.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_BLewisAcid_img.jpg"/>
+</media>
+<para id="fs-idp124888224">Öll tetrahalíð kísils, SiX<sub>4</sub>, hafa verið framleidd. Hægt er að framleiða kísiltetraklóríð með beinni klórun við hækkað hitastig eða með því að hita kísildíoxíð með klór og kolefni:</para>
+<equation id="fs-idp144955120" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2C</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>2Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.4em"/><m:mtext>Δ</m:mtext><m:mspace width="0.4em"/></m:mrow></m:mover><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>SiCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp138257392">Kísiltetraklóríð er samgild ferflötungssameind, sem er óskautaður, litlaus vökvi með lágt suðumark (57 °C).</para>
+<para id="fs-idp15153872">Hægt er að framleiða kísiltetraflúoríð með efnahvarfi kísildíoxíðs og flúorvetnissýru:</para>
+<equation id="fs-idp26130592" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>4HF</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mtext>°</m:mtext><m:mo>=</m:mo><m:mtext>−191.2 kJ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp1989488">Flúorvetnissýra er eina algenga sýran sem hvarfast við kísildíoxíð eða síliköt. Þetta efnahvarf á sér stað vegna þess að kísil-flúor efnatengið er eina efnatengið sem kísill myndar sem er sterkara en kísil-súrefnis efnatengið. Af þessari ástæðu er hægt að geyma allar algengar sýrur, aðrar en flúorvetnissýru, í glerílátum.</para>
+<para id="fs-idm18263392">Að undanskildu kísiltetraflúoríði eru kísilhalíð afar viðkvæm fyrir vatni. Við snertingu við vatn hvarfast SiCl<sub>4</sub> hratt við hýdroxíðhópa og kemur í stað allra fjögurra klórfrumeindanna til að mynda óstöðuga ortókísilsýru, Si(OH)<sub>4</sub> eða H<sub>4</sub>SiO<sub>4</sub>, sem brotnar hægt niður í SiO<sub>2</sub>.</para>
+</section>
+<section id="fs-idp46544496">
+<title>Bór- og kísiloxíð og afleiður þeirra</title>
+<para id="fs-idp51369216">Bór brennur við 700 °C í súrefni og myndar bóroxíð, B<sub>2</sub>O<sub>3</sub>. Bóroxíð er nauðsynlegt til framleiðslu á hitaþolnu bórsílíkatgleri, eins og því sem sýnt er á <link target-id="CNX_Chem_18_02_Glass"/> og ákveðnum sjónglerjum. Bóroxíð leysist upp í heitu vatni og myndar bórsýru, B(OH)<sub>3</sub>:</para>
+<equation id="fs-idp275317776" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2B</m:mtext><m:msub><m:mrow><m:mtext>(OH)</m:mtext></m:mrow><m:mrow><m:mn>3</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<figure id="CNX_Chem_18_02_Glass" class="scaled-down">
+<media id="fs-idp236200768" alt="A photo of beakers, flasks, and graduated cylinders is shown. Each piece of glassware holds a different color liquid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_02_Glass.jpg"/>
+</media>
+<caption>Rannsóknarstofuglös, eins og Pyrex og Kimax, eru gerð úr bórsílíkatgleri vegna þess að þau brotna ekki við hitun. Bóröt í glerinu hjálpa til við að miðla áhrifum varmaþenslu og samdráttar. Þetta dregur úr líkum á varmaáfalli, sem veldur því að sílíkatgler springur við hraða hitun eða kólnun. (Heimild: „Tweenk“/Wikimedia Commons)</caption>
+</figure>
+<para id="fs-idp122478912">Bórfrumeindin í B(OH)<sub>3</sub> er <emphasis effect="italics">sp</emphasis><sup>2</sup>-tvinnblönduð og er í miðju jafnhliða þríhyrnings með súrefnisfrumeindir á hornunum. Í föstu B(OH)<sub>3</sub> halda vetnistengi þessum þríhyrningslaga einingum saman. Bórsýra, sýnd á <link target-id="CNX_Chem_18_02_Boricacid_img"/>, er mjög veik sýra sem virkar ekki sem róteindagjafi heldur sem Lewis-sýra, sem þiggur óbundið rafeindapar frá Lewis-basanum OH<sup>−</sup>:</para>
+<equation id="fs-idp28519200" class="unnumbered"><m:math><m:mrow><m:mtext>B</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mtext>B</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>5.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
+<figure id="CNX_Chem_18_02_Boricacid_img">
+<media id="fs-idp80715904" alt="A Lewis structure shows a boron atom single bonded to three oxygen atoms, each of which is single bonded to a hydrogen atom. The oxygen atoms are arranged at equal angles around the boron atom and each angle is labeled,“120 degrees.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_02_Boricacid_img.jpg"/>
+</media>
+<caption>Bórsýra hefur flata byggingu með þremur –OH hópum sem dreifast jafnt í 120° hornum hver frá öðrum.</caption>
+</figure>
+<para id="fs-idm19131184">Þegar bórsýra er hituð í 100 °C klofna vatnssameindir út á milli aðlægra –OH hópa og mynda metabórsýru, HBO<sub>2</sub>. Við um 150 °C myndast fleiri B-O-B tengi sem tengja BO<sub>3</sub> hópana saman með sameiginlegum súrefnisfrumeindum og mynda tetrabórsýru, H<sub>2</sub>B<sub>4</sub>O<sub>7</sub>. Fullkomið vatnstap, við enn hærra hitastig, leiðir til myndunar bóroxíðs.</para>
+<para id="fs-idp204424928"><term id="term-00002">Bóröt (e. borates)</term> eru sölt af oxósýrum bórs. Bóröt myndast við efnahvörf basa við oxósýru eða við sambræðslu bórsýru eða bóroxíðs við málmoxíð eða hýdroxíð. Bóratanjónir spanna allt frá einföldu þríhyrningslaga flötu <m:math><m:mrow><m:msub><m:mrow><m:mtext>BO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup></m:mrow></m:math> jóninni yfir í flóknar tegundir sem innihalda keðjur og hringi af þrí- og fjórtengdum bórfrumeindum. Bygging anjónanna sem finnast í CaB<sub>2</sub>O<sub>4</sub>, K[B<sub>5</sub>O<sub>6</sub>(OH)<sub>4</sub>]⋅2H<sub>2</sub>O (oft skrifað KB<sub>5</sub>O<sub>8</sub>⋅4H<sub>2</sub>O) og Na<sub>2</sub>[B<sub>4</sub>O<sub>5</sub>(OH)<sub>4</sub>]⋅8H<sub>2</sub>O (oft skrifað Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub>⋅10H<sub>2</sub>O) er sýnd á <link target-id="CNX_Chem_18_03_BorateAnio"/>. Mikilvægasta bóratið í viðskiptum er bórax, Na<sub>2</sub>[B<sub>4</sub>O<sub>5</sub>(OH)<sub>4</sub>]⋅8H<sub>2</sub>O, sem er mikilvægur hluti sumra þvottaefna. Mest af framboði bórax kemur beint úr þurrum vötnum, eins og Searles Lake í Kaliforníu, eða er unnið úr kerníti, Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub>⋅4H<sub>2</sub>O.</para>
+<figure id="CNX_Chem_18_03_BorateAnio">
+<media id="fs-idp89373536" alt="Three Lewis structures are shown and labeled, “a,” “b,” and “c.” Structure a shows a boron atom single bonded to two oxygen atoms. One oxygen atom has a negative charge, and the other is single bonded to a second boron atom. This boron atom is single bonded to oxygen atoms, just like the first, to create a repeating chain of these units. The first two boron atoms and their attached oxygen atoms are surrounded by a dotted-line box and labeled, “B subscript 2 O subscript 4 superscript 2 negative sign unit.” Structure b shows two hexagonal ring structures, attached together in the center by a boron atom. Each ring is made up of alternating boron and oxygen atoms, with four hydroxyl groups located at the outer upper and lower corners of the whole structure. Brackets and a superscripted negative sign surround the structure. Structure c shows an eight-sided ring structure made up of alternating boron and oxygen atoms. Each boron atom is attached to a hydroxyl group and an oxygen atom is single bonded to the first and third boron atoms. This oxygen atom is located in the center of the ring. The whole structure is surrounded by brackets and has a superscripted 2 negative sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_BorateAnio.jpg"/>
+</media>
+<caption>Bóratanjónirnar eru (a) CaB<sub>2</sub>O<sub>4</sub>, (b) KB<sub>5</sub>O<sub>8</sub>⋅4H<sub>2</sub>O og (c) Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub>⋅10H<sub>2</sub>O. Anjónin í CaB<sub>2</sub>O<sub>4</sub> er „óendanleg“ keðja.</caption>
+</figure>
+<para id="fs-idp209528992">Kísildíoxíð, kísill, kemur fyrir bæði í kristölluðu og formlausu formi. Venjulega kristallaða form kísildíoxíðs er kvars, hart, stökkt, glært, litlaust fast efni. Það er nytsamlegt á margan hátt – fyrir byggingarskreytingar, hálfeðalsteina og tíðnistýringu í útvarpssendum. Kísill tekur á sig mörg kristölluð form, eða <term id="term-00003">fjölbrigði (e. polymorphs)</term>, í náttúrunni. Snefilmagn af Fe<sup>3+</sup> í kvarsi gefur ametýsti einkennandi fjólubláan lit. Hugtakið <emphasis effect="italics">kvars</emphasis> er einnig notað um hluti eins og rör og linsur sem eru framleiddar úr formlausum kísli. Ópall er náttúrulegt form af formlausum kísli.</para>
+<para id="fs-idp71398624">Munurinn á byggingu og eðliseiginleikum kísildíoxíðs og koldíoxíðs er áhugaverður, eins og sýnt er á <link target-id="CNX_Chem_18_03_CO2vsSiO2"/>. Fast koldíoxíð (þurrís) inniheldur stakar CO<sub>2</sub> sameindir þar sem hvort tveggja súrefnisfrumeindanna er tengt kolefnisfrumeindinni með tvítengjum. Mjög veikir millisameindakraftar halda sameindunum saman í kristallinum. Rokgjarni þurrís endurspeglar þessa veiku krafta milli sameinda. Aftur á móti er kísildíoxíð samgilt netfast efni. Í kísildíoxíði tengist hver kísilfrumeind fjórum súrefnisfrumeindum með eintengjum sem vísa í átt að hornum reglulegs ferflötungs og SiO<sub>4</sub> ferflötungar deila súrefnisfrumeindum. Þessi fyrirkomulag gefur þrívítt, samfellt kísil-súrefnisnet. Kvarskristall er stórsameind kísildíoxíðs. Munurinn á þessum tveimur efnasamböndum er hæfni frumefna í hópi 14 til að mynda sterk π-tengi. Frumefni í annarri lotu, eins og kolefni, mynda mjög sterk π-tengi, sem er ástæðan fyrir því að koldíoxíð myndar litlar sameindir með sterkum tvítengjum. Frumefni neðar en í annarri lotu, eins og kísill, mynda ekki π-tengi jafn auðveldlega og frumefni í annarri lotu, og þegar þau myndast eru π-tengin veikari en þau sem mynduð eru af frumefnum í annarri lotu. Af þessari ástæðu inniheldur kísildíoxíð ekki π-tengi heldur aðeins σ-tengi.</para>
+<figure id="CNX_Chem_18_03_CO2vsSiO2" class="scaled-down">
+<media id="fs-idp119649632" alt="Two images and two photos are shown and labeled, “a,” and “b.” Image a shows a ball-and-stick model of a carbon atom single bonded to two oxygen atoms. The ball-and-stick model is labeled, “C O subscript 2.” Above this model is a photo of dry ice in a mason jar of a clear liquid. The dry ice is sublimating. The photo is labeled, “dry ice.” Image b shows four connected ring structures made up of alternating silicon and oxygen atoms that are single bonded to one another. The model is labeled, “S i O subscript 2.” Above the model is a photo labeled, “quartz.” It shows a solid crystal.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_CO2vsSiO2.jpg"/>
+</media>
+<caption>Vegna þess að kolefni hefur tilhneigingu til að mynda tví- og þrítengi en kísill ekki, er (a) koldíoxíð stök sameind með tveimur C=O tvítengjum og (b) kísildíoxíð er óendanlegt net súrefnisfrumeinda sem brúa á milli kísilfrumeinda þar sem hver kísilfrumeind hefur fjögur Si-O eintengi. (mynd a: breyting á verki eftir Erica Gerdes; mynd b: breyting á verki eftir Didier Descouens)</caption>
+</figure>
+<para id="fs-idm309152">Við 1600 °C bráðnar kvars og myndar seigfljótandi vökva. Þegar vökvinn kólnar kristallast hann ekki auðveldlega heldur ofurkólnar yfirleitt og myndar gler, einnig kallað kísill. SiO<sub>4</sub> ferflötungarnir í glerkenndum kísli hafa tilviljanakennt fyrirkomulag sem er einkennandi fyrir ofurkælda vökva og glerið hefur nokkra mjög gagnlega eiginleika. Kísill er mjög gegnsær fyrir bæði sýnilegu og útfjólubláu ljósi. Af þessari ástæðu er hann mikilvægur í framleiðslu lampa sem gefa frá sér geislun ríka af útfjólubláu ljósi og í ákveðnum sjóntækjum sem vinna með útfjólubláu ljósi. Þenslustuðull kísilgler er mjög lágur; því valda hraðar hitastigsbreytingar því ekki að það brotnar. CorningWare og önnur keramíkeldunaráhöld innihalda formlausan kísil.</para>
+<para id="fs-idp13738608"><term id="term-00004">Silíköt (e. silicates)</term> eru sölt sem innihalda anjónir samsettar úr kísli og súrefni. Í næstum öllum silíkötum koma <emphasis effect="italics">sp</emphasis><sup>3</sup>-blendingsmyndaðar kísilfrumeindir fyrir í miðjum ferflötunga með súrefni á hornunum. Það er breytileiki í hlutfalli kísils og súrefnis sem verður vegna þess að kísil-súrefnis ferflötungar geta verið til sem stakar, sjálfstæðar einingar eða deilt súrefnisfrumeindum á hornum á ýmsa vegu. Að auki veldur tilvist margs konar katjóna miklum fjölda silíkatsteinda.</para>
+<para id="fs-idp23643168">Mörg keramíkefni eru samsett úr silíkötum. Með því að bæta við litlu magni af öðrum efnasamböndum er hægt að breyta eðliseiginleikum silíkatefnanna til að framleiða keramík með gagnlegum eiginleikum.</para>
+</section>
+<para id="fs-idp70329680">Bór er minna en 0,001% af massa jarðskorpunnar. Í náttúrunni finnst það aðeins í efnasamböndum með súrefni. Bór er víða að finna á eldfjallasvæðum sem bórsýra, B(OH)<sub>3</sub>, og á þurrum vatnasvæðum, þar á meðal á eyðimerkursvæðum Kaliforníu, sem bórat og sölt bórsýra, svo sem bórax, Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub>⋅10H<sub>2</sub>O.</para>
+<para id="fs-idp96845840">Bór sem frumefni er efnafræðilega óvirkt við stofuhita og hvarfast aðeins við flúor og súrefni og myndar þá bórtríflúoríð, BF<sub>3</sub>, og bóroxíð, B<sub>2</sub>O<sub>3</sub>. Við hærra hitastig hvarfast bór við alla málmleysingja, nema tellúr og eðallofttegundir, og við næstum alla málma; það oxast í B<sub>2</sub>O<sub>3</sub> þegar það er hitað með þéttri saltpéturssýru eða brennisteinssýru. Bór hvarfast ekki við sýrur sem ekki eru oxandi. Mörg bórsambönd hvarfast auðveldlega við vatn og mynda bórsýru, B(OH)<sub>3</sub> (stundum skrifað sem H<sub>3</sub>BO<sub>3</sub>).</para>
+<para id="fs-idp120612224">Afoxun bóroxíðs með magnesíumdufti myndar bór (95–98,5% hreint) sem brúnt, formlaust duft:</para>
+<equation id="fs-idp30766032" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>3Mg</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2B</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>3MgO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp204527824"><term id="term-00001">Formlaust (e. amorphous)</term> efni er efni sem virðist vera fast efni, en hefur ekki langdræga skipan eins og raunverulegt fast efni. Meðhöndlun með saltsýru fjarlægir magnesíumoxíðið. Frekari hreinsun á bórinu hefst með því að breyta óhreina bórinu í bórtríklóríð. Næsta skref er að hita efnablöndu af bórtríklóríði og vetni:</para>
+<equation id="fs-idm91488" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>2BCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.5em"/><m:mn>1500</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mspace width="0.5em"/></m:mrow></m:mover><m:mspace width="0.2em"/><m:mtext>2B</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>6HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mtext>°</m:mtext><m:mo>=</m:mo><m:mtext>253.7 kJ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp112457184">Kísill er næstum fjórðungur af massa jarðskorpunnar – næstalgengastur á eftir súrefni. Jarðskorpan er næstum eingöngu samsett úr steinefnum þar sem kísilfrumeindir eru í miðju kísil-súrefnis fjórflötungs, sem tengjast á ýmsa vegu og mynda meðal annars keðjur, lög og þrívíðar grindur. Þessi steinefni eru megnið af flestum algengum bergtegundum, jarðvegi og leir. Auk þess innihalda efni eins og múrsteinar, keramík og gler kísilsambönd.</para>
+<para id="fs-idp27647072">Mögulegt er að framleiða kísil með háhitaafoxun kísildíoxíðs með sterkum afoxunarefnum, svo sem kolefni og magnesíum:</para>
+<equation id="fs-idm50570016" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>SiO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2C</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.4em"/><m:mtext>Δ</m:mtext><m:mspace width="0.4em"/></m:mrow></m:mover><m:mspace width="0.2em"/><m:mtext>Si</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>SiO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2Mg</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.4em"/><m:mtext>Δ</m:mtext><m:mspace width="0.4em"/></m:mrow></m:mover><m:mspace width="0.2em"/><m:mtext>Si</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2MgO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm43188096">Sérlega hreinn kísill er nauðsynlegur til framleiðslu á rafeindabúnaði úr hálfleiðurum. Þetta ferli hefst með því að breyta óhreinum kísli í kísiltetrahalíð, eða sílan (SiH<sub>4</sub>), og síðan niðurbroti við hátt hitastig. Svæðishreinsun, sýnd á <link target-id="CNX_Chem_18_03_SiPurif"/>, lýkur hreinsuninni. Í þessari aðferð er kísilstöng hituð á öðrum endanum með hitagjafa sem myndar þunnan þverskurð af bráðnum kísli. Með því að lækka stöngina hægt í gegnum hitagjafann færist bráðna svæðið frá einum enda stangarinnar til annars. Þegar þetta þunna, bráðna svæði færist, leysast óhreinindi í kísilnum upp í fljótandi kísilnum og færast með bráðna svæðinu. Að lokum færast óhreinindin að öðrum enda stangarinnar, sem síðan er skorinn af.</para>
+<figure id="CNX_Chem_18_03_SiPurif" class="scaled-down">
+<media id="fs-idp87854400" alt="A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_SiPurif.jpg"/>
+</media>
+<caption>Svæðishreinsunarbúnaður notaður til að hreinsa kísil.</caption>
+</figure>
+<para id="fs-idm29187152">Þessi mjög hreinsaði kísill, sem inniheldur ekki meira en einn hluta óhreininda á móti milljón hlutum kísils, er mikilvægasta frumefnið í tölvuiðnaðinum. Hreinn kísill er nauðsynlegur í rafeindabúnaði úr hálfleiðurum eins og smárum, tölvukubbum og sólarsellum.</para>
+<para id="fs-idm38894288">Líkt og sumir málmar verður yfirborðsvörn kísils vegna myndunar á mjög þunnri oxíðfilmu (aðallega kísildíoxíð, SiO<sub>2</sub>). Kísildíoxíð er auðleyst í heitum vatnslausnum basa; því eyðileggja sterkir basar yfirborðsvörnina. Fjarlæging yfirborðsvarnarlagsins gerir basanum kleift að leysa upp kísilinn og mynda vetnisgas og sílikatanjónir. Til dæmis:</para>
+<equation id="fs-idp306866064" class="unnumbered"><m:math><m:mrow><m:mtext>Si</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>4OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>4−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp112356272">Kísill hvarfast við halógena við hátt hitastig og myndar rokgjörn tetrahalíð, svo sem SiF<sub>4</sub>.</para>
+<para id="fs-idp120941520">Ólíkt kolefni myndar kísill ekki auðveldlega tvítengi eða þrítengi. Kísilsambönd með almennu formúlunni SiX<sub>4</sub>, þar sem X er mjög rafneikvæður hópur, geta virkað sem Lewis-sýrur til að mynda sex-hnita kísil. Til dæmis hvarfast kísiltetraflúoríð, SiF<sub>4</sub>, við natríumflúoríð og gefur Na<sub>2</sub>[SiF<sub>6</sub>], sem inniheldur áttflötungs <m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo> <m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub></m:mrow> <m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math> jónina þar sem kísill er <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup> blendingsbúinn:</para>
+<equation id="fs-idp219248048" class="unnumbered"><m:math><m:mrow><m:mtext>2NaF</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp28729488">Antimon hvarfast auðveldlega við hlutfallslegt magn af flúor, klór, bróm eða joði og gefur tríhalíð eða, með umframmagni af flúor eða klór, myndar pentahalíðin SbF<sub>5</sub> og SbCl<sub>5</sub>. Það myndar antimon(III)súlfíð, Sb<sub>2</sub>S<sub>3</sub>, eða antimon(V)súlfíð þegar það er hitað með brennisteini, allt eftir hlutfallaefnafræðinni. Eins og við var að búast er málmkenndara eðli frumefnisins meira en arsens, sem er beint fyrir ofan það í hópi 15.</para>
+</section>
+<section id="fs-idp128607136" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp222483968">Frumefnin bór, kísill, german, arsen, antimon og tellúr aðskilja málma frá málmleysingjum í lotukerfinu. Þessi frumefni, sem kallast hálfmálmar eða stundum hálf-málmar, sýna eiginleika sem eru einkennandi fyrir bæði málma og málmleysingja. Bygging þessara frumefna er á margan hátt svipuð og hjá málmleysingjum, en frumefnin eru rafmagns hálfleiðarar.</para>
+</section>
+<section id="fs-idp29962656" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idp16930624">
+<problem id="fs-idp65412560">
+<para id="fs-idp3211696">Gefðu upp blendingu hálfmálmsins og sameindabyggingu fyrir hvert eftirfarandi efnasambanda eða jóna. Þú gætir viljað rifja upp kaflana um efnatengi og framhaldsefni um samgild tengi til að sjá viðeigandi dæmi.</para>
+<para id="fs-idp194546480">(a) GeH<sub>4</sub></para>
+<para id="fs-idp242773360">(b) SbF<sub>3</sub></para>
+<para id="fs-idm34368576">(c) Te(OH)<sub>6</sub></para>
+<para id="fs-idp210169744">(d) H<sub>2</sub>Te</para>
+<para id="fs-idp208832688">(e) GeF<sub>2</sub></para>
+<para id="fs-idm16344560">(f) TeCl<sub>4</sub></para>
+<para id="fs-idp2132912">(g) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp87997536">(h) SbCl<sub>5</sub></para>
+<para id="fs-idp96125920">(i) TeF<sub>6</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp187127952">
+<problem id="fs-idp28147888">
+<para id="fs-idp187106320">Skrifaðu Lewis-byggingu fyrir hverja eftirfarandi sameinda eða jóna. Þú gætir viljað rifja upp kaflann um efnatengi.</para>
+<para id="fs-idp16376768">(a) H<sub>3</sub>BPH<sub>3</sub></para>
+<para id="fs-idp78441920">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></para>
+<para id="fs-idp135377104">(c) BBr<sub>3</sub></para>
+<para id="fs-idm26374944">(d) B(CH<sub>3</sub>)<sub>3</sub></para>
+<para id="fs-idp5993104">(e) B(OH)<sub>3</sub></para>
+</problem>
+<solution id="fs-idm737712">
+<para id="fs-idm26929120">(a) H<sub>3</sub>BPH<sub>3</sub>:<newline/> <media id="fs-idm25603392" alt="This Lewis structure is composed of a boron atom single bonded to a phosphorus atom. Each of these atoms is single bonded to three hydrogen atoms."><image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_Exercise2a_img.jpg"/></media><newline/> (b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math><newline/> <media id="fs-idp28628720" alt="This Lewis structure is composed of a boron atom single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The structure is surrounded by brackets, and a negative sign appears as a superscript outside the brackets."><image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_Exercise2b_img.jpg"/></media><newline/> (c) BBr<sub>3</sub>:<newline/> <media id="fs-idp121981728" alt="This Lewis structure is composed of a boron atom single bonded to three bromine atoms, each of which has three lone pairs of electrons."><image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_Exercise2c_img.jpg"/></media><newline/> (d) B(CH<sub>3</sub>)<sub>3</sub>:<newline/> <media id="fs-idm25910080" alt="This Lewis structure is composed of a boron atom that is single bonded to three carbon atoms, each of which is single bonded to three hydrogen atoms."><image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_Exercise2d_img.jpg"/></media><newline/> (e) B(OH)<sub>3</sub>:<newline/> <media id="fs-idp252097136" alt="This Lewis structure is composed of a boron atom that is single bonded to three oxygen atoms, each of which has two lone pairs of electrons. Each oxygen atom is single bonded to a hydrogen atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_18_03_Exercise2e_img.jpg"/></media></para></solution>
+</exercise>
+<exercise id="fs-idp53586384">
+<problem id="fs-idp121062560">
+<para id="fs-idp194645376">Lýstu blendingssvigrúmum bórs og sameindabyggingunni í kringum bór í hverju eftirfarandi:</para>
+<para id="fs-idp119620096">(a) H<sub>3</sub>BPH<sub>3</sub></para>
+<para id="fs-idm60477568">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BF</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></para>
+<para id="fs-idp121068640">(c) BBr<sub>3</sub></para>
+<para id="fs-idm116416256">(d) B(CH<sub>3</sub>)<sub>3</sub></para>
+<para id="fs-idm30852912">(e) B(OH)<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idm42816224">
+<problem id="fs-idp86819424">
+<para id="fs-idp30962384">Notaðu aðeins lotukerfið til að skrifa fulla rafeindaskipan fyrir kísil, þar með talin öll tóm svigrúm í gildishvolfinu. Þú gætir viljað rifja upp kaflann um rafeindabyggingu.</para>
+</problem>
+<solution id="fs-idp55549312">
+<para id="fs-idp58106064">1<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>6</sup>3<emphasis effect="italics">s</emphasis><sup>2</sup>3<emphasis effect="italics">p</emphasis><sup>2</sup>3<emphasis effect="italics">d</emphasis><sup>0</sup>.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp20024944">
+<problem id="fs-idp213844176">
+<para id="fs-idm97259088">Skrifaðu Lewis-byggingu fyrir hverja af eftirfarandi sameindum og jónum:</para>
+<para id="fs-idp208683456">(a) (CH<sub>3</sub>)<sub>3</sub>SiH</para>
+<para id="fs-idp60130832">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>4−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp226254192">(c) Si<sub>2</sub>H<sub>6</sub></para>
+<para id="fs-idp43127200">(d) Si(OH)<sub>4</sub></para>
+<para id="fs-idp84969040">(e) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp50725056">
+<problem id="fs-idp82123984">
+<para id="fs-idp67558496">Lýstu blendingssvigrúmum kísils og sameindabyggingu eftirfarandi sameinda og jóna:</para>
+<para id="fs-idp69779632">(a) (CH<sub>3</sub>)<sub>3</sub>SiH</para>
+<para id="fs-idp25416864">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>4−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp49172912">(c) Si<sub>2</sub>H<sub>6</sub></para>
+<para id="fs-idm16365616">(d) Si(OH)<sub>4</sub></para>
+<para id="fs-idp183591056">(e) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp25496864">
+<para id="fs-idp69392464">(a) (CH<sub>3</sub>)<sub>3</sub>SiH: <emphasis effect="italics">sp</emphasis><sup>3</sup> efnatengi umhverfis Si; byggingin er ferflötungur; (b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>4−</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math> <emphasis effect="italics">sp</emphasis><sup>3</sup> efnatengi umhverfis Si; byggingin er ferflötungur; (c) Si<sub>2</sub>H<sub>6</sub>: <emphasis effect="italics">sp</emphasis><sup>3</sup> efnatengi umhverfis hvort Si; byggingin er línuleg meðfram Si-Si efnatenginu; (d) Si(OH)<sub>4</sub>: <emphasis effect="italics">sp</emphasis><sup>3</sup> efnatengi umhverfis Si; byggingin er ferflötungur; (e) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup><m:mo>:</m:mo></m:mrow></m:math> <emphasis effect="italics">sp</emphasis><sup>3</sup><emphasis effect="italics">d</emphasis><sup>2</sup> efnatengi umhverfis Si; byggingin er áttflötungur</para>
+</solution>
+</exercise>
+<exercise id="fs-idp46618224">
+<problem id="fs-idm2945376">
+<para id="fs-idp57647952">Lýstu blendingssvigrúmum og efnatengjum kísilfrumeindar í hreinu kísilfrumefni.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp51747488">
+<problem id="fs-idm27096784">
+<para id="fs-idp48764576">Flokkaðu hverja af eftirfarandi sameindum sem skautaða eða óskautaða. Þú gætir viljað rifja upp kaflann um efnatengi.</para>
+<para id="fs-idm17550416">(a) SiH<sub>4</sub></para>
+<para id="fs-idp208975968">(b) Si<sub>2</sub>H<sub>6</sub></para>
+<para id="fs-idm16332608">(c) SiCl<sub>3</sub>H</para>
+<para id="fs-idp90524096">(d) SiF<sub>4</sub></para>
+<para id="fs-idm26941744">(e) SiCl<sub>2</sub>F<sub>2</sub></para>
+</problem>
+<solution id="fs-idp110299456">
+<para id="fs-idp203974784">(a) óskautaður; (b) óskautaður; (c) skautaður; (d) óskautaður; (e) skautaður</para>
+</solution>
+</exercise>
+<exercise id="fs-idp26638608">
+<problem id="fs-idp208831632">
+<para id="fs-idp30605024">Kísill hvarfast við brennistein við hátt hitastig. Ef 0,0923 g af kísli hvarfast við brennistein og myndar 0,3030 g af kísilsúlfíði, ákvarðaðu þá reynsluformúlu kísilsúlfíðs.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp54395392">
+<problem id="fs-idp138684896">
+<para id="fs-idp29293456">Nefndu hvert af eftirfarandi efnasamböndum:</para>
+<para id="fs-idm27836992">(a) TeO<sub>2</sub></para>
+<para id="fs-idp19010304">(b) Sb<sub>2</sub>S<sub>3</sub></para>
+<para id="fs-idp2483680">(c) GeF<sub>4</sub></para>
+<para id="fs-idp499584">(d) SiH<sub>4</sub></para>
+<para id="fs-idp14901040">(e) GeH<sub>4</sub></para>
+</problem>
+<solution id="fs-idm49957488">
+<para id="fs-idp210135392">(a) tellúrdíoxíð eða tellúr(IV)oxíð; (b) antímon(III)súlfíð; (c) german(IV)flúoríð; (d) silan eða kísil(IV)hýdríð; (e) german(IV)hýdríð</para>
+</solution>
+</exercise>
+<exercise id="fs-idm40238272">
+<problem id="fs-idp137987408">
+<para id="fs-idm97571584">Skrifaðu stillta efnahvarfsjöfnu fyrir efnahvarf bórs sem frumefnis við hvert af eftirfarandi (flest þessara efnahvarfa krefjast hás hitastigs):</para>
+<para id="fs-idm48654448">(a) F<sub>2</sub></para>
+<para id="fs-idm34339104">(b) O<sub>2</sub></para>
+<para id="fs-idp19358848">(c) S</para>
+<para id="fs-idp27801680">(d) Se</para>
+<para id="fs-idp84345808">(e) Br<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp194759200">
+<problem id="fs-idm36663888">
+<para id="fs-idm62850640">Af hverju er bór takmarkað við hámarks girðitölu fjögur í efnasamböndum sínum?</para>
+</problem>
+<solution id="fs-idm17675584">
+<para id="fs-idp90428208">Bór hefur aðeins <emphasis effect="italics">s</emphasis>- og <emphasis effect="italics">p</emphasis>-svigrúm tiltæk, sem geta rúmað að hámarki fjögur rafeindapör. Ólíkt kísli eru engin <emphasis effect="italics">d</emphasis>-svigrúm tiltæk í bór.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm26980560">
+<problem id="fs-idp138331408">
+<para id="fs-idp92504224">Skrifaðu formúlu fyrir hvert af eftirfarandi efnasamböndum:</para>
+<para id="fs-idp13777136">(a) kísildíoxíð</para>
+<para id="fs-idp176669248">(b) kísiltetrajóðíð</para>
+<para id="fs-idp120538992">(c) silan</para>
+<para id="fs-idm11164048">(d) kísilkarbíð</para>
+<para id="fs-idp114681504">(e) magnesíumsilíð</para>
+</problem>
+</exercise>
+<exercise id="fs-idp50984592">
+<problem id="fs-idp189120768">
+<para id="fs-idp23402592">Ákvarðaðu staðalvermibreytingu og staðalbreytingu á frjálsri orku fyrir hvert af eftirfarandi efnahvörfum út frá gögnunum í <link document="m68865">viðauka G</link>:</para>
+<para id="fs-idp203481632">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BF</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>B</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>3HF</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm38966592">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>B</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>3HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm15187984">(c) <m:math><m:mrow><m:msub><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>6H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2B</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>6H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idm22185504">
+<para id="fs-idp258684208">(a) Δ<emphasis effect="italics">H</emphasis> b0 = 87 kJ; Δ<emphasis effect="italics">G</emphasis> b0 = 44 kJ; (b) Δ<emphasis effect="italics">H</emphasis> b0 = −109,9 kJ; Δ<emphasis effect="italics">G b0</emphasis> = −154,7 kJ; (c) Δ<emphasis effect="italics">H</emphasis> b0 = −510 kJ; Δ<emphasis effect="italics">G</emphasis> b0 = −601,5 kJ</para>
+</solution>
+</exercise>
+<exercise id="fs-idp421376">
+<problem id="fs-idm9258256">
+<para id="fs-idp52675584">Kísilhýdríð, sem var útbúið með efnahvarfi Mg<sub>2</sub>Si við sýru, myndaði þrýsting upp á 306 torr við 26  b0C í glerkúlu með rúmmáli 57,0 ml. Ef massi hýdríðsins var 0,0861 g, hver er þá sameindamassi þess? Hver er sameindaformúla hýdríðsins?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm48610704">
+<problem id="fs-idp18976640">
+<para id="fs-idm10763856">Ímyndaðu þér að þú hafir fundið demant sem er alveg umlukinn sílikatbergi. Hvernig myndir þú losa demantinn með efnafræðilegum aðferðum án þess að skemma hann?</para>
+</problem>
+<solution id="fs-idp92148192">
+<para id="fs-idp142206176">Veik lausn af flúorsýru myndi leysa upp sílikatið en ekki skemma demantinn.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp50657904">
+<term>formlaust efni (e. amorphous)</term>
+<meaning id="fs-idp50657904-meaning">fast efni, eins og gler, sem hefur ekki reglulega endurtekinn hluta í þrívíðri byggingu sinni; fast efni en ekki kristall</meaning>
+</definition>
+<definition id="fs-idp42336592">
+<term>bórat (e. borate)</term>
+<meaning id="fs-idp42336592-meaning">efnasamband sem inniheldur bór-súrefnis efnatengi, yfirleitt með klösum eða keðjum sem hluta af efnafræðilegri byggingu</meaning>
+</definition>
+<definition id="fs-idp20554272">
+<term>fjölbrigði (e. polymorph)</term>
+<meaning id="fs-idp20554272-meaning">breytileiki í kristalbyggingu sem leiðir til mismunandi eðliseiginleika fyrir efnasambandið sem myndast</meaning>
+</definition>
+<definition id="fs-idp17081184">
+<term>sílikat (e. silicate)</term>
+<meaning id="fs-idp17081184-meaning">efnasamband sem inniheldur kísil-súrefnis efnatengi, þar sem sílikatferflötungar eru tengdir í hringi, lög eða þrívíð net, allt eftir því hvaða önnur frumefni koma að myndun efnasambandanna</meaning>
+</definition>
+</glossary>
+</document>

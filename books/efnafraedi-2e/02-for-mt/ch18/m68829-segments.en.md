@@ -14,19 +14,19 @@ Make predictions about the periodicity properties of the representative elements
 We begin this section by examining the behaviors of representative metals in relation to their positions in the periodic table. The primary focus of this section will be the application of periodicity to the representative metals.
 
 <!-- SEG:m68829:para:fs-idp149998640 -->
-It is possible to divide elements into groups according to their electron configurations. The __representative elements__ are elements where the *s* and *p* orbitals are filling. The transition elements are elements where the *d* orbitals (groups 3–11 on the periodic table) are filling, and the inner transition metals are the elements where the *f* orbitals are filling. The *d* orbitals fill with the elements in group 11; therefore, the elements in group 12 qualify as representative elements because the last electron enters an *s* orbital. Metals among the representative elements are the __representative metals__. Metallic character results from an element’s ability to lose its outer valence electrons and results in high thermal and electrical conductivity, among other physical and chemical properties. There are 20 nonradioactive representative metals in groups 1, 2, 3, 12, 13, 14, and 15 of the periodic table (the elements shaded in yellow in [#CNX_Chem_18_01_PeriodicPU3]). The radioactive elements copernicium, flerovium, polonium, and livermorium are also metals but are beyond the scope of this chapter.
+It is possible to divide elements into groups according to their electron configurations. The {{term}}representative elements{{/term}} are elements where the {{i}}s{{/i}} and {{i}}p{{/i}} orbitals are filling. The transition elements are elements where the {{i}}d{{/i}} orbitals (groups 3–11 on the periodic table) are filling, and the inner transition metals are the elements where the {{i}}f{{/i}} orbitals are filling. The {{i}}d{{/i}} orbitals fill with the elements in group 11; therefore, the elements in group 12 qualify as representative elements because the last electron enters an {{i}}s{{/i}} orbital. Metals among the representative elements are the {{term}}representative metals{{/term}}. Metallic character results from an element’s ability to lose its outer valence electrons and results in high thermal and electrical conductivity, among other physical and chemical properties. There are 20 nonradioactive representative metals in groups 1, 2, 3, 12, 13, 14, and 15 of the periodic table (the elements shaded in yellow in [#CNX_Chem_18_01_PeriodicPU3]). The radioactive elements copernicium, flerovium, polonium, and livermorium are also metals but are beyond the scope of this chapter.
 
 <!-- SEG:m68829:para:fs-idp47516784 -->
-In addition to the representative metals, some of the representative elements are metalloids. A __metalloid__ is an element that has properties that are between those of metals and nonmetals; these elements are typically semiconductors.
+In addition to the representative metals, some of the representative elements are metalloids. A {{term}}metalloid{{/term}} is an element that has properties that are between those of metals and nonmetals; these elements are typically semiconductors.
 
 <!-- SEG:m68829:para:fs-idp226047824 -->
-The remaining representative elements are nonmetals. Unlike __metals__, which typically form cations and ionic compounds (containing ionic bonds), nonmetals tend to form anions or molecular compounds. In general, the combination of a metal and a nonmetal produces a salt. A salt is an ionic compound consisting of cations and anions.
+The remaining representative elements are nonmetals. Unlike {{term}}metals{{/term}}, which typically form cations and ionic compounds (containing ionic bonds), nonmetals tend to form anions or molecular compounds. In general, the combination of a metal and a nonmetal produces a salt. A salt is an ionic compound consisting of cations and anions.
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_PeriodicPU3-caption -->
 The location of the representative metals is shown in the periodic table. Nonmetals are shown in green, metalloids in purple, and the transition metals and inner transition metals in blue.
 
 <!-- SEG:m68829:para:fs-idp105201728 -->
-Most of the representative metals do not occur naturally in an uncombined state because they readily react with water and oxygen in the air. However, it is possible to isolate elemental beryllium, magnesium, zinc, cadmium, mercury, aluminum, tin, and lead from their naturally occurring minerals and use them because they react very slowly with air. Part of the reason why these elements react slowly is that these elements react with air to form a protective coating. The formation of this protective coating is __passivation__. The coating is a nonreactive film of oxide or some other compound. Elemental magnesium, aluminum, zinc, and tin are important in the fabrication of many familiar items, including wire, cookware, foil, and many household and personal objects. Although beryllium, cadmium, mercury, and lead are readily available, there are limitations in their use because of their toxicity.
+Most of the representative metals do not occur naturally in an uncombined state because they readily react with water and oxygen in the air. However, it is possible to isolate elemental beryllium, magnesium, zinc, cadmium, mercury, aluminum, tin, and lead from their naturally occurring minerals and use them because they react very slowly with air. Part of the reason why these elements react slowly is that these elements react with air to form a protective coating. The formation of this protective coating is {{term}}passivation{{/term}}. The coating is a nonreactive film of oxide or some other compound. Elemental magnesium, aluminum, zinc, and tin are important in the fabrication of many familiar items, including wire, cookware, foil, and many household and personal objects. Although beryllium, cadmium, mercury, and lead are readily available, there are limitations in their use because of their toxicity.
 
 <!-- SEG:m68829:title:fs-idp227210256-title -->
 Group 1: The Alkali Metals
@@ -35,7 +35,7 @@ Group 1: The Alkali Metals
 The alkali metals lithium, sodium, potassium, rubidium, cesium, and francium constitute group 1 of the periodic table. Although hydrogen is in group 1 (and also in group 17), it is a nonmetal and deserves separate consideration later in this chapter. The name alkali metal is in reference to the fact that these metals and their oxides react with water to form very basic (alkaline) solutions.
 
 <!-- SEG:m68829:para:fs-idp103075664 -->
-The properties of the alkali metals are similar to each other as expected for elements in the same family. The alkali metals have the largest atomic radii and the lowest first ionization energy in their periods. This combination makes it very easy to remove the single electron in the outermost (valence) shell of each. The easy loss of this valence electron means that these metals readily form stable cations with a charge of 1+. Their reactivity increases with increasing atomic number due to the ease of losing the lone valence electron (decreasing ionization energy). Since oxidation is so easy, the reverse, reduction, is difficult, which explains why it is hard to isolate the elements. The solid alkali metals are very soft; lithium, shown in [#CNX_Chem_18_01_LithiumRx], has the lowest density of any metal (0.5 g/cm^3^).
+The properties of the alkali metals are similar to each other as expected for elements in the same family. The alkali metals have the largest atomic radii and the lowest first ionization energy in their periods. This combination makes it very easy to remove the single electron in the outermost (valence) shell of each. The easy loss of this valence electron means that these metals readily form stable cations with a charge of 1+. Their reactivity increases with increasing atomic number due to the ease of losing the lone valence electron (decreasing ionization energy). Since oxidation is so easy, the reverse, reduction, is difficult, which explains why it is hard to isolate the elements. The solid alkali metals are very soft; lithium, shown in [#CNX_Chem_18_01_LithiumRx], has the lowest density of any metal (0.5 g/cm[[sup:3]]).
 
 <!-- SEG:m68829:para:fs-idp66398992 -->
 The alkali metals all react vigorously with water to form hydrogen gas and a basic solution of the metal hydroxide. This means they are easier to oxidize than is hydrogen. As an example, the reaction of lithium with water is:
@@ -65,7 +65,7 @@ This [video](http://openstax.org/l/16alkalih2o) demonstrates the reactions of th
 Group 2: The Alkaline Earth Metals
 
 <!-- SEG:m68829:para:fs-idp45202896 -->
-The __alkaline earth metals__ (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2 of the periodic table. The name alkaline metal comes from the fact that the oxides of the heavier members of the group react with water to form alkaline solutions. The nuclear charge increases when going from group 1 to group 2. Because of this charge increase, the atoms of the alkaline earth metals are smaller and have higher first ionization energies than the alkali metals within the same period. The higher ionization energy makes the alkaline earth metals less reactive than the alkali metals; however, they are still very reactive elements. Their reactivity increases, as expected, with increasing size and decreasing ionization energy. In chemical reactions, these metals readily lose both valence electrons to form compounds in which they exhibit an oxidation state of 2+. Due to their high reactivity, it is common to produce the alkaline earth metals, like the alkali metals, by electrolysis. Even though the ionization energies are low, the two metals with the highest ionization energies (beryllium and magnesium) do form compounds that exhibit some covalent characters. Like the alkali metals, the heavier alkaline earth metals impart color to a flame. As in the case of the alkali metals, this is part of the emission spectrum of these elements. Calcium and strontium produce shades of red, whereas barium produces a green color.
+The {{term}}alkaline earth metals{{/term}} (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2 of the periodic table. The name alkaline metal comes from the fact that the oxides of the heavier members of the group react with water to form alkaline solutions. The nuclear charge increases when going from group 1 to group 2. Because of this charge increase, the atoms of the alkaline earth metals are smaller and have higher first ionization energies than the alkali metals within the same period. The higher ionization energy makes the alkaline earth metals less reactive than the alkali metals; however, they are still very reactive elements. Their reactivity increases, as expected, with increasing size and decreasing ionization energy. In chemical reactions, these metals readily lose both valence electrons to form compounds in which they exhibit an oxidation state of 2+. Due to their high reactivity, it is common to produce the alkaline earth metals, like the alkali metals, by electrolysis. Even though the ionization energies are low, the two metals with the highest ionization energies (beryllium and magnesium) do form compounds that exhibit some covalent characters. Like the alkali metals, the heavier alkaline earth metals impart color to a flame. As in the case of the alkali metals, this is part of the emission spectrum of these elements. Calcium and strontium produce shades of red, whereas barium produces a green color.
 
 <!-- SEG:m68829:para:fs-idp261367120 -->
 Magnesium is a silver-white metal that is malleable and ductile at high temperatures. Passivation decreases the reactivity of magnesium metal. Upon exposure to air, a tightly adhering layer of magnesium oxycarbonate forms on the surface of the metal and inhibits further reaction. (The carbonate comes from the reaction of carbon dioxide in the atmosphere.) Magnesium is the lightest of the widely used structural metals, which is why most magnesium production is for lightweight alloys.
@@ -74,19 +74,19 @@ Magnesium is a silver-white metal that is malleable and ductile at high temperat
 Magnesium (shown in [#CNX_Chem_18_01_CalciWater]), calcium, strontium, and barium react with water and air. At room temperature, barium shows the most vigorous reaction. The products of the reaction with water are hydrogen and the metal hydroxide. The formation of hydrogen gas indicates that the heavier alkaline earth metals are better reducing agents (more easily oxidized) than is hydrogen. As expected, these metals react with both acids and nonmetals to form ionic compounds. Unlike most salts of the alkali metals, many of the common salts of the alkaline earth metals are insoluble in water because of the high lattice energies of these compounds, containing a divalent metal ion.
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_CalciWater-caption -->
-Magnesium metal (left jar) reacts slowly with hot water (center jar) to yield Mg^2+^ and OH^-^ and a basic solution (right jar after adding phenolphthalein indicator). (credit: modification of work by Sahar Atwa)
+Magnesium metal (left jar) reacts slowly with hot water (center jar) to yield Mg[[sup:2+]] and OH[[sup:-]] and a basic solution (right jar after adding phenolphthalein indicator). (credit: modification of work by Sahar Atwa)
 
 <!-- SEG:m68829:para:fs-idp171667088 -->
 The potent reducing power of hot magnesium is useful in preparing some metals from their oxides. Indeed, magnesium’s affinity for oxygen is so great that burning magnesium reacts with carbon dioxide, producing elemental carbon:
 
 <!-- SEG:m68829:para:fs-idp110638672 -->
-For this reason, a CO~2~ fire extinguisher will not extinguish a magnesium fire. Additionally, the brilliant white light emitted by burning magnesium makes it useful in flares and fireworks.
+For this reason, a CO[[sub:2]] fire extinguisher will not extinguish a magnesium fire. Additionally, the brilliant white light emitted by burning magnesium makes it useful in flares and fireworks.
 
 <!-- SEG:m68829:title:fs-idp253727344-title -->
 Group 12
 
 <!-- SEG:m68829:para:fs-idp107097008 -->
-The elements in group 12 are transition elements; however, the last electron added is not a *d* electron, but an *s* electron. Since the last electron added is an *s* electron, these elements qualify as representative metals, or post-transition metals. The group 12 elements behave more like the alkaline earth metals than transition metals. Group 12 contains the four elements zinc, cadmium, mercury, and copernicium. Each of these elements has two electrons in its outer shell (*ns*^2^). When atoms of these metals form cations with a charge of 2+, where the two outer electrons are lost, they have pseudo-noble gas electron configurations. Mercury is sometimes an exception because it also exhibits an oxidation state of 1+ in compounds that contain a diatomic [[MATH:1]] ion. In their elemental forms and in compounds, cadmium and mercury are both toxic.
+The elements in group 12 are transition elements; however, the last electron added is not a {{i}}d{{/i}} electron, but an {{i}}s{{/i}} electron. Since the last electron added is an {{i}}s{{/i}} electron, these elements qualify as representative metals, or post-transition metals. The group 12 elements behave more like the alkaline earth metals than transition metals. Group 12 contains the four elements zinc, cadmium, mercury, and copernicium. Each of these elements has two electrons in its outer shell ({{i}}ns{{/i}}[[sup:2]]). When atoms of these metals form cations with a charge of 2+, where the two outer electrons are lost, they have pseudo-noble gas electron configurations. Mercury is sometimes an exception because it also exhibits an oxidation state of 1+ in compounds that contain a diatomic [[MATH:1]] ion. In their elemental forms and in compounds, cadmium and mercury are both toxic.
 
 <!-- SEG:m68829:para:fs-idm12601472 -->
 Zinc is the most reactive in group 12, and mercury is the least reactive. (This is the reverse of the reactivity trend of the metals of groups 1 and 2, in which reactivity increases down a group. The increase in reactivity with increasing atomic number only occurs for the metals in groups 1 and 2.) The decreasing reactivity is due to the formation of ions with a pseudo-noble gas configuration and to other factors that are beyond the scope of this discussion. The chemical behaviors of zinc and cadmium are quite similar to each other but differ from that of mercury.
@@ -95,10 +95,10 @@ Zinc is the most reactive in group 12, and mercury is the least reactive. (This 
 Zinc and cadmium have lower reduction potentials than hydrogen, and, like the alkali metals and alkaline earth metals, they will produce hydrogen gas when they react with acids. The reaction of zinc with hydrochloric acid, shown in [#CNX_Chem_18_01_ZincHCl], is:
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_ZincHCl-caption -->
-Zinc is an active metal. It dissolves in hydrochloric acid, forming a solution of colorless Zn^2+^ ions, Cl^–^ ions, and hydrogen gas.
+Zinc is an active metal. It dissolves in hydrochloric acid, forming a solution of colorless Zn[[sup:2+]] ions, Cl[[sup:–]] ions, and hydrogen gas.
 
 <!-- SEG:m68829:para:fs-idp103146080 -->
-Zinc is a silvery metal that quickly tarnishes to a blue-gray appearance. This change in color is due to an adherent coating of a basic carbonate, Zn~2~(OH)~2~CO~3~, which passivates the metal to inhibit further corrosion. Dry cell and alkaline batteries contain a zinc anode. Brass (Cu and Zn) and some bronze (Cu, Sn, and sometimes Zn) are important zinc alloys. About half of zinc production serves to protect iron and other metals from corrosion. This protection may take the form of a sacrificial anode (also known as a galvanic anode, which is a means of providing cathodic protection for various metals) or as a thin coating on the protected metal. Galvanized steel is steel with a protective coating of zinc.
+Zinc is a silvery metal that quickly tarnishes to a blue-gray appearance. This change in color is due to an adherent coating of a basic carbonate, Zn[[sub:2]](OH)[[sub:2]]CO[[sub:3]], which passivates the metal to inhibit further corrosion. Dry cell and alkaline batteries contain a zinc anode. Brass (Cu and Zn) and some bronze (Cu, Sn, and sometimes Zn) are important zinc alloys. About half of zinc production serves to protect iron and other metals from corrosion. This protection may take the form of a sacrificial anode (also known as a galvanic anode, which is a means of providing cathodic protection for various metals) or as a thin coating on the protected metal. Galvanized steel is steel with a protective coating of zinc.
 
 <!-- SEG:m68829:note-title:fs-idp19134176-title -->
 Sacrificial Anodes
@@ -107,7 +107,7 @@ Sacrificial Anodes
 A sacrificial anode, or galvanic anode, is a means of providing cathodic protection of various metals. Cathodic protection refers to the prevention of corrosion by converting the corroding metal into a cathode. As a cathode, the metal resists corrosion, which is an oxidation process. Corrosion occurs at the sacrificial anode instead of at the cathode.
 
 <!-- SEG:m68829:para:fs-idm10342160 -->
-The construction of such a system begins with the attachment of a more active metal (more negative reduction potential) to the metal needing protection. Attachment may be direct or via a wire. To complete the circuit, a *salt bridge* is necessary. This salt bridge is often seawater or ground water. Once the circuit is complete, oxidation (corrosion) occurs at the anode and not the cathode.
+The construction of such a system begins with the attachment of a more active metal (more negative reduction potential) to the metal needing protection. Attachment may be direct or via a wire. To complete the circuit, a {{i}}salt bridge{{/i}} is necessary. This salt bridge is often seawater or ground water. Once the circuit is complete, oxidation (corrosion) occurs at the anode and not the cathode.
 
 <!-- SEG:m68829:para:fs-idm7776768 -->
 The commonly used sacrificial anodes are magnesium, aluminum, and zinc. Magnesium has the most negative reduction potential of the three and serves best when the salt bridge is less efficient due to a low electrolyte concentration such as in freshwater. Zinc and aluminum work better in saltwater than does magnesium. Aluminum is lighter than zinc and has a higher capacity; however, an oxide coating may passivate the aluminum. In special cases, other materials are useful. For example, iron will protect copper.
@@ -116,10 +116,10 @@ The commonly used sacrificial anodes are magnesium, aluminum, and zinc. Magnesiu
 Mercury is very different from zinc and cadmium. Mercury is the only metal that is liquid at 25 °C. Many metals dissolve in mercury, forming solutions called amalgams (see the feature on Amalgams), which are alloys of mercury with one or more other metals. Mercury, shown in [#CNX_Chem_18_01_MercuryRx], is a nonreactive element that is more difficult to oxidize than hydrogen. Thus, it does not displace hydrogen from acids; however, it will react with strong oxidizing acids, such as nitric acid:
 
 <!-- SEG:m68829:para:fs-idp39135904 -->
-The clear NO initially formed quickly undergoes further oxidation to the reddish brown NO~2~.
+The clear NO initially formed quickly undergoes further oxidation to the reddish brown NO[[sub:2]].
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_MercuryRx-caption -->
-From left to right: Hg(*l*), Hg + concentrated HCl, Hg + concentrated HNO~3~. (credit: Sahar Atwa)
+From left to right: Hg({{i}}l{{/i}}), Hg + concentrated HCl, Hg + concentrated HNO[[sub:3]]. (credit: Sahar Atwa)
 
 <!-- SEG:m68829:para:fs-idp208862464 -->
 Most mercury compounds decompose when heated. Most mercury compounds contain mercury with a 2+-oxidation state. When there is a large excess of mercury, it is possible to form compounds containing the [[MATH:2]] ion. All mercury compounds are toxic, and it is necessary to exercise great care in their synthesis.
@@ -158,7 +158,7 @@ The products of the reaction of aluminum with a base depend upon the reaction co
 With both acids and bases, the reaction with aluminum generates hydrogen gas.
 
 <!-- SEG:m68829:para:fs-idp79289248 -->
-The group 13 elements have a valence shell electron configuration of *ns*^2^*np*^1^. Aluminum normally uses all of its valence electrons when it reacts, giving compounds in which it has an oxidation state of 3+. Although many of these compounds are covalent, others, such as AlF~3~ and Al~2~(SO~4~)~3~, are ionic. Aqueous solutions of aluminum salts contain the cation [[MATH:3]] abbreviated as Al^3+^(*aq*). Gallium, indium, and thallium also form ionic compounds containing M^3+^ ions. These three elements exhibit not only the expected oxidation state of 3+ from the three valence electrons but also an oxidation state (in this case, 1+) that is two below the expected value. This phenomenon, the inert pair effect, refers to the formation of a stable ion with an oxidation state two lower than expected for the group. The pair of electrons is the valence *s* orbital for those elements. In general, the inert pair effect is important for the lower *p*-block elements. In an aqueous solution, the Tl^+^(*aq*) ion is more stable than is Tl^3+^(*aq*). In general, these metals will react with air and water to form 3+ ions; however, thallium reacts to give thallium(I) derivatives. The metals of group 13 all react directly with nonmetals such as sulfur, phosphorus, and the halogens, forming binary compounds.
+The group 13 elements have a valence shell electron configuration of {{i}}ns{{/i}}[[sup:2]]{{i}}np{{/i}}[[sup:1]]. Aluminum normally uses all of its valence electrons when it reacts, giving compounds in which it has an oxidation state of 3+. Although many of these compounds are covalent, others, such as AlF[[sub:3]] and Al[[sub:2]](SO[[sub:4]])[[sub:3]], are ionic. Aqueous solutions of aluminum salts contain the cation [[MATH:3]] abbreviated as Al[[sup:3+]]({{i}}aq{{/i}}). Gallium, indium, and thallium also form ionic compounds containing M[[sup:3+]] ions. These three elements exhibit not only the expected oxidation state of 3+ from the three valence electrons but also an oxidation state (in this case, 1+) that is two below the expected value. This phenomenon, the inert pair effect, refers to the formation of a stable ion with an oxidation state two lower than expected for the group. The pair of electrons is the valence {{i}}s{{/i}} orbital for those elements. In general, the inert pair effect is important for the lower {{i}}p{{/i}}-block elements. In an aqueous solution, the Tl[[sup:+]]({{i}}aq{{/i}}) ion is more stable than is Tl[[sup:3+]]({{i}}aq{{/i}}). In general, these metals will react with air and water to form 3+ ions; however, thallium reacts to give thallium(I) derivatives. The metals of group 13 all react directly with nonmetals such as sulfur, phosphorus, and the halogens, forming binary compounds.
 
 <!-- SEG:m68829:para:fs-idm9227360 -->
 The metals of group 13 (Al, Ga, In, and Tl) are all reactive. However, passivation occurs as a tough, hard, thin film of the metal oxide forms upon exposure to air. Disruption of this film may counter the passivation, allowing the metal to react. One way to disrupt the film is to expose the passivated metal to mercury. Some of the metal dissolves in the mercury to form an amalgam, which sheds the protective oxide layer to expose the metal to further reaction. The formation of an amalgam allows the metal to react with air and water.
@@ -176,7 +176,7 @@ Aluminum is a very good reducing agent and may replace other reducing agents in 
 Group 14
 
 <!-- SEG:m68829:para:fs-idp48530944 -->
-The metallic members of group 14 are tin, lead, and flerovium. Carbon is a typical nonmetal. The remaining elements of the group, silicon and germanium, are examples of semimetals or metalloids. Tin and lead form the stable divalent cations, Sn^2+^ and Pb^2+^, with oxidation states two below the group oxidation state of 4+. The stability of this oxidation state is a consequence of the inert pair effect. Tin and lead also form covalent compounds with a formal 4+-oxidation state. For example, SnCl~4~ and PbCl~4~ are low-boiling covalent liquids.
+The metallic members of group 14 are tin, lead, and flerovium. Carbon is a typical nonmetal. The remaining elements of the group, silicon and germanium, are examples of semimetals or metalloids. Tin and lead form the stable divalent cations, Sn[[sup:2+]] and Pb[[sup:2+]], with oxidation states two below the group oxidation state of 4+. The stability of this oxidation state is a consequence of the inert pair effect. Tin and lead also form covalent compounds with a formal 4+-oxidation state. For example, SnCl[[sub:4]] and PbCl[[sub:4]] are low-boiling covalent liquids.
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_TinChlorid-caption -->
 (a) Tin(II) chloride is an ionic solid; (b) tin(IV) chloride is a covalent liquid.
@@ -185,7 +185,7 @@ The metallic members of group 14 are tin, lead, and flerovium. Carbon is a typic
 Tin reacts readily with nonmetals and acids to form tin(II) compounds (indicating that it is more easily oxidized than hydrogen) and with nonmetals to form either tin(II) or tin(IV) compounds (shown in [#CNX_Chem_18_01_TinChlorid]), depending on the stoichiometry and reaction conditions. Lead is less reactive. It is only slightly easier to oxidize than hydrogen, and oxidation normally requires a hot concentrated acid.
 
 <!-- SEG:m68829:para:fs-idp33378208 -->
-Many of these elements exist as allotropes. __Allotropes__ are two or more forms of the same element in the same physical state with different chemical and physical properties. There are two common allotropes of tin. These allotropes are grey (brittle) tin and white tin. As with other allotropes, the difference between these forms of tin is in the arrangement of the atoms. White tin is stable above 13.2 °C and is malleable like other metals. At low temperatures, gray tin is the more stable form. Gray tin is brittle and tends to break down to a powder. Consequently, articles made of tin will disintegrate in cold weather, particularly if the cold spell is lengthy. The change progresses slowly from the spot of origin, and the gray tin that is first formed catalyzes further change. In a way, this effect is similar to the spread of an infection in a plant or animal body, leading people to call this process tin disease or tin pest.
+Many of these elements exist as allotropes. {{term}}Allotropes{{/term}} are two or more forms of the same element in the same physical state with different chemical and physical properties. There are two common allotropes of tin. These allotropes are grey (brittle) tin and white tin. As with other allotropes, the difference between these forms of tin is in the arrangement of the atoms. White tin is stable above 13.2 °C and is malleable like other metals. At low temperatures, gray tin is the more stable form. Gray tin is brittle and tends to break down to a powder. Consequently, articles made of tin will disintegrate in cold weather, particularly if the cold spell is lengthy. The change progresses slowly from the spot of origin, and the gray tin that is first formed catalyzes further change. In a way, this effect is similar to the spread of an infection in a plant or animal body, leading people to call this process tin disease or tin pest.
 
 <!-- SEG:m68829:para:fs-idp40395408 -->
 The principal use of tin is in the coating of steel to form tin plate-sheet iron, which constitutes the tin in tin cans. Important tin alloys are bronze (Cu and Sn) and solder (Sn and Pb). Lead is important in the lead storage batteries in automobiles.
@@ -194,13 +194,13 @@ The principal use of tin is in the coating of steel to form tin plate-sheet iron
 Group 15
 
 <!-- SEG:m68829:para:fs-idp16969776 -->
-__Bismuth__, the heaviest member of group 15, is a less reactive metal than the other representative metals. It readily gives up three of its five valence electrons to active nonmetals to form the tri-positive ion, Bi^3+^. It forms compounds with the group oxidation state of 5+ only when treated with strong oxidizing agents. The stability of the 3+-oxidation state is another example of the inert pair effect.
+{{term}}Bismuth{{/term}}, the heaviest member of group 15, is a less reactive metal than the other representative metals. It readily gives up three of its five valence electrons to active nonmetals to form the tri-positive ion, Bi[[sup:3+]]. It forms compounds with the group oxidation state of 5+ only when treated with strong oxidizing agents. The stability of the 3+-oxidation state is another example of the inert pair effect.
 
 <!-- SEG:m68829:title:fs-idp21711600-title -->
 Key Concepts and Summary
 
 <!-- SEG:m68829:para:fs-idp87616528 -->
-This section focuses on the periodicity of the representative elements. These are the elements where the electrons are entering the *s* and *p* orbitals. The representative elements occur in groups 1, 2, and 12–18. These elements are representative metals, metalloids, and nonmetals. The alkali metals (group 1) are very reactive, readily form ions with a charge of 1+ to form ionic compounds that are usually soluble in water, and react vigorously with water to form hydrogen gas and a basic solution of the metal hydroxide. The outermost electrons of the alkaline earth metals (group 2) are more difficult to remove than the outer electron of the alkali metals, leading to the group 2 metals being less reactive than those in group 1. These elements easily form compounds in which the metals exhibit an oxidation state of 2+. Zinc, cadmium, and mercury (group 12) commonly exhibit the group oxidation state of 2+ (although mercury also exhibits an oxidation state of 1+ in compounds that contain [[MATH:4]] Aluminum, gallium, indium, and thallium (group 13) are easier to oxidize than is hydrogen. Aluminum, gallium, and indium occur with an oxidation state 3+ (however, thallium also commonly occurs as the Tl^+^ ion). Tin and lead form stable divalent cations and covalent compounds in which the metals exhibit the 4+-oxidation state.
+This section focuses on the periodicity of the representative elements. These are the elements where the electrons are entering the {{i}}s{{/i}} and {{i}}p{{/i}} orbitals. The representative elements occur in groups 1, 2, and 12–18. These elements are representative metals, metalloids, and nonmetals. The alkali metals (group 1) are very reactive, readily form ions with a charge of 1+ to form ionic compounds that are usually soluble in water, and react vigorously with water to form hydrogen gas and a basic solution of the metal hydroxide. The outermost electrons of the alkaline earth metals (group 2) are more difficult to remove than the outer electron of the alkali metals, leading to the group 2 metals being less reactive than those in group 1. These elements easily form compounds in which the metals exhibit an oxidation state of 2+. Zinc, cadmium, and mercury (group 12) commonly exhibit the group oxidation state of 2+ (although mercury also exhibits an oxidation state of 1+ in compounds that contain [[MATH:4]] Aluminum, gallium, indium, and thallium (group 13) are easier to oxidize than is hydrogen. Aluminum, gallium, and indium occur with an oxidation state 3+ (however, thallium also commonly occurs as the Tl[[sup:+]] ion). Tin and lead form stable divalent cations and covalent compounds in which the metals exhibit the 4+-oxidation state.
 
 <!-- SEG:m68829:title:fs-idp78136496-title -->
 Chemistry End of Chapter Exercises
@@ -209,7 +209,7 @@ Chemistry End of Chapter Exercises
 How do alkali metals differ from alkaline earth metals in atomic structure and general properties?
 
 <!-- SEG:m68829:solution:fs-idp87201536 -->
-The alkali metals all have a single *s* electron in their outermost shell. In contrast, the alkaline earth metals have a completed *s* subshell in their outermost shell. In general, the alkali metals react faster and are more reactive than the corresponding alkaline earth metals in the same period.
+The alkali metals all have a single {{i}}s{{/i}} electron in their outermost shell. In contrast, the alkaline earth metals have a completed {{i}}s{{/i}} subshell in their outermost shell. In general, the alkali metals react faster and are more reactive than the corresponding alkaline earth metals in the same period.
 
 <!-- SEG:m68829:problem:fs-idm16110016 -->
 Why does the reactivity of the alkali metals decrease from cesium to lithium?
@@ -251,25 +251,25 @@ Predict the best choice in each of the following. You may wish to review the cha
 (a) the most metallic of the elements Al, Be, and Ba
 
 <!-- SEG:m68829:problem:fs-idp114943824 -->
-(b) the most covalent of the compounds NaCl, CaCl~2~, and BeCl~2~
+(b) the most covalent of the compounds NaCl, CaCl[[sub:2]], and BeCl[[sub:2]]
 
 <!-- SEG:m68829:problem:fs-idp69496528 -->
 (c) the lowest first ionization energy among the elements Rb, K, and Li
 
 <!-- SEG:m68829:problem:fs-idp270697136 -->
-(d) the smallest among Al, Al^+^, and Al^3+^
+(d) the smallest among Al, Al[[sup:+]], and Al[[sup:3+]]
 
 <!-- SEG:m68829:problem:fs-idp68923408 -->
-(e) the largest among Cs^+^, Ba^2+^, and Xe
+(e) the largest among Cs[[sup:+]], Ba[[sup:2+]], and Xe
 
 <!-- SEG:m68829:problem:fs-idp78283584 -->
 Sodium chloride and strontium chloride are both white solids. How could you distinguish one from the other?
 
 <!-- SEG:m68829:solution:fs-idp198866496 -->
-The possible ways of distinguishing between the two include infrared spectroscopy by comparison of known compounds, a flame test that gives the characteristic yellow color for sodium (strontium has a red flame), or comparison of their solubilities in water. At 20 °C, NaCl dissolves to the extent of [[MATH:8]] compared with [[MATH:9]] for SrCl~2~. Heating to 100 °C provides an easy test, since the solubility of NaCl is [[MATH:10]] but that of SrCl~2~ is [[MATH:11]] Density determination on a solid is sometimes difficult, but there is enough difference (2.165 g/mL NaCl and 3.052 g/mL SrCl~2~) that this method would be viable and perhaps the easiest and least expensive test to perform.
+The possible ways of distinguishing between the two include infrared spectroscopy by comparison of known compounds, a flame test that gives the characteristic yellow color for sodium (strontium has a red flame), or comparison of their solubilities in water. At 20 °C, NaCl dissolves to the extent of [[MATH:8]] compared with [[MATH:9]] for SrCl[[sub:2]]. Heating to 100 °C provides an easy test, since the solubility of NaCl is [[MATH:10]] but that of SrCl[[sub:2]] is [[MATH:11]] Density determination on a solid is sometimes difficult, but there is enough difference (2.165 g/mL NaCl and 3.052 g/mL SrCl[[sub:2]]) that this method would be viable and perhaps the easiest and least expensive test to perform.
 
 <!-- SEG:m68829:problem:fs-idp37142176 -->
-The reaction of quicklime, CaO, with water produces slaked lime, Ca(OH)~2~, which is widely used in the construction industry to make mortar and plaster. The reaction of quicklime and water is highly exothermic:[[BR]] [[MATH:12]]
+The reaction of quicklime, CaO, with water produces slaked lime, Ca(OH)[[sub:2]], which is widely used in the construction industry to make mortar and plaster. The reaction of quicklime and water is highly exothermic:[[BR]] [[MATH:12]]
 
 <!-- SEG:m68829:problem:fs-idm18994624 -->
 (a) What is the enthalpy of reaction per gram of quicklime that reacts?
@@ -299,10 +299,10 @@ Write a balanced equation for the reaction of elemental strontium with each of t
 (a) [[MATH:13]] (b) [[MATH:14]] (c) [[MATH:15]] (d) [[MATH:16]] (e) [[MATH:17]]
 
 <!-- SEG:m68829:problem:fs-idp79035392 -->
-How many moles of ionic species are present in 1.0 L of a solution marked 1.0 *M* mercury(I) nitrate?
+How many moles of ionic species are present in 1.0 L of a solution marked 1.0 {{i}}M{{/i}} mercury(I) nitrate?
 
 <!-- SEG:m68829:problem:fs-idp115497456 -->
-What is the mass of fish, in kilograms, that one would have to consume to obtain a fatal dose of mercury, if the fish contains 30 parts per million of mercury by weight? (Assume that all the mercury from the fish ends up as mercury(II) chloride in the body and that a fatal dose is 0.20 g of HgCl~2~.) How many pounds of fish is this?
+What is the mass of fish, in kilograms, that one would have to consume to obtain a fatal dose of mercury, if the fish contains 30 parts per million of mercury by weight? (Assume that all the mercury from the fish ends up as mercury(II) chloride in the body and that a fatal dose is 0.20 g of HgCl[[sub:2]].) How many pounds of fish is this?
 
 <!-- SEG:m68829:solution:fs-idm21449744 -->
 11 lb
@@ -332,10 +332,10 @@ Yes, tin reacts with hydrochloric acid to produce hydrogen gas.
 What is tin pest, also known as tin disease?
 
 <!-- SEG:m68829:problem:fs-idp50478144 -->
-Compare the nature of the bonds in PbCl~2~ to that of the bonds in PbCl~4~.
+Compare the nature of the bonds in PbCl[[sub:2]] to that of the bonds in PbCl[[sub:4]].
 
 <!-- SEG:m68829:solution:fs-idp65913008 -->
-In PbCl~2~, the bonding is ionic, as indicated by its melting point of 501 °C. In PbCl~4~, the bonding is covalent, as evidenced by it being an unstable liquid at room temperature.
+In PbCl[[sub:2]], the bonding is ionic, as indicated by its melting point of 501 °C. In PbCl[[sub:4]], the bonding is covalent, as evidenced by it being an unstable liquid at room temperature.
 
 <!-- SEG:m68829:problem:fs-idp14648448 -->
 Is the reaction of rubidium with water more or less vigorous than that of sodium? How does the rate of reaction of magnesium compare?
@@ -362,7 +362,7 @@ heaviest member of group 15; a less reactive metal than other representative met
 metal (representative)
 
 <!-- SEG:m68829:glossary-def:fs-idp133033792-def -->
-atoms of the metallic elements of groups 1, 2, 12, 13, 14, 15, and 16, which form ionic compounds by losing electrons from their outer s or p orbitals
+atoms of the metallic elements of groups 1, 2, 12, 13, 14, 15, and 16, which form ionic compounds by losing electrons from their outer {{i}}s{{/i}} or {{i}}p{{/i}} orbitals
 
 <!-- SEG:m68829:glossary-term:fs-idp36212736-term -->
 metalloid
@@ -380,7 +380,7 @@ metals with a protective nonreactive film of oxide or other compound that create
 representative element
 
 <!-- SEG:m68829:glossary-def:fs-idp110103392-def -->
-element where the s and p orbitals are filling
+element where the {{i}}s{{/i}} and {{i}}p{{/i}} orbitals are filling
 
 <!-- SEG:m68829:glossary-term:fs-idm2235360-term -->
 representative metal

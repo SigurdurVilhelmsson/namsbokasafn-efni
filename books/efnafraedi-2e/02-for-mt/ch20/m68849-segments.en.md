@@ -11,7 +11,7 @@ Describe the structure and properties of an amine
 Describe the structure and properties of an amide
 
 <!-- SEG:m68849:para:fs-idp88512176 -->
-__Amines__ are molecules that contain carbon-nitrogen bonds. The nitrogen atom in an amine has a lone pair of electrons and three bonds to other atoms, either carbon or hydrogen. Various nomenclatures are used to derive names for amines, but all involve the class-identifying suffix *–ine* as illustrated here for a few simple examples:
+{{term}}Amines{{/term}} are molecules that contain carbon-nitrogen bonds. The nitrogen atom in an amine has a lone pair of electrons and three bonds to other atoms, either carbon or hydrogen. Various nomenclatures are used to derive names for amines, but all involve the class-identifying suffix {{i}}–ine{{/i}} as illustrated here for a few simple examples:
 
 <!-- SEG:m68849:para:fs-idp59347936 -->
 In some amines, the nitrogen atom replaces a carbon atom in an aromatic hydrocarbon. Pyridine ([#CNX_Chem_20_04_pyridine_img]) is one such heterocyclic amine. A heterocyclic compound contains atoms of two or more different elements in its ring structure.
@@ -50,7 +50,7 @@ The basicity of an amine’s nitrogen atom plays an important role in much of th
 Addictive Alkaloids
 
 <!-- SEG:m68849:para:fs-idp60584304 -->
-Since ancient times, plants have been used for medicinal purposes. One class of substances, called *alkaloids*, found in many of these plants has been isolated and found to contain cyclic molecules with an amine functional group. These amines are bases. They can react with H~3~O^+^ in a dilute acid to form an ammonium salt, and this property is used to extract them from the plant:
+Since ancient times, plants have been used for medicinal purposes. One class of substances, called {{i}}alkaloids{{/i}}, found in many of these plants has been isolated and found to contain cyclic molecules with an amine functional group. These amines are bases. They can react with H[[sub:3]]O[[sup:+]] in a dilute acid to form an ammonium salt, and this property is used to extract them from the plant:
 
 <!-- SEG:m68849:para:fs-idp111005088 -->
 The name alkaloid means “like an alkali.” Thus, an alkaloid reacts with acid. The free compound can be recovered after extraction by reaction with a base:
@@ -65,7 +65,7 @@ In these diagrams, as is common in representing structures of large organic comp
 Poppies can be used in the production of opium, a plant latex that contains morphine from which other opiates, such as heroin, can be synthesized. (credit: Karen Roe)
 
 <!-- SEG:m68849:para:fs-idp60237616 -->
-__Amides__ are molecules that contain nitrogen atoms connected to the carbon atom of a carbonyl group. Like amines, various nomenclature rules may be used to name amides, but all include use of the class-specific suffix *-amide*:
+{{term}}Amides{{/term}} are molecules that contain nitrogen atoms connected to the carbon atom of a carbonyl group. Like amines, various nomenclature rules may be used to name amides, but all include use of the class-specific suffix {{i}}-amide{{/i}}:
 
 <!-- SEG:m68849:para:fs-idp95037440 -->
 Amides can be produced when carboxylic acids react with amines or ammonia in a process called amidation. A water molecule is eliminated from the reaction, and the amide is formed from the remaining pieces of the carboxylic acid and the amine (note the similarity to formation of an ester from a carboxylic acid and an alcohol discussed in the previous section):
@@ -80,7 +80,7 @@ Proteins and Enzymes
 Proteins are large biological molecules made up of long chains of smaller molecules called amino acids. Organisms rely on proteins for a variety of functions—proteins transport molecules across cell membranes, replicate DNA, and catalyze metabolic reactions, to name only a few of their functions. The properties of proteins are functions of the combination of amino acids that compose them and can vary greatly. Interactions between amino acid sequences in the chains of proteins result in the folding of the chain into specific, three-dimensional structures that determine the protein’s activity.
 
 <!-- SEG:m68849:para:fs-idp61284464 -->
-Amino acids are organic molecules that contain an amine functional group (–NH~2~), a carboxylic acid functional group (–COOH), and a side chain (that is specific to each individual amino acid). Most living things build proteins from the same 20 different amino acids. Amino acids connect by the formation of a peptide bond, which is a covalent bond formed between two amino acids when the carboxylic acid group of one amino acid reacts with the amine group of the other amino acid. The formation of the bond results in the production of a molecule of water (in general, reactions that result in the production of water when two other molecules combine are referred to as condensation reactions). The resulting bond—between the carbonyl group carbon atom and the amine nitrogen atom is called a peptide link or peptide bond. Since each of the original amino acids has an unreacted group (one has an unreacted amine and the other an unreacted carboxylic acid), more peptide bonds can form to other amino acids, extending the structure. ([#CNX_Chem_20_04_peptide]) A chain of connected amino acids is called a polypeptide. Proteins contain at least one long polypeptide chain.
+Amino acids are organic molecules that contain an amine functional group (–NH[[sub:2]]), a carboxylic acid functional group (–COOH), and a side chain (that is specific to each individual amino acid). Most living things build proteins from the same 20 different amino acids. Amino acids connect by the formation of a peptide bond, which is a covalent bond formed between two amino acids when the carboxylic acid group of one amino acid reacts with the amine group of the other amino acid. The formation of the bond results in the production of a molecule of water (in general, reactions that result in the production of water when two other molecules combine are referred to as condensation reactions). The resulting bond—between the carbonyl group carbon atom and the amine nitrogen atom is called a peptide link or peptide bond. Since each of the original amino acids has an unreacted group (one has an unreacted amine and the other an unreacted carboxylic acid), more peptide bonds can form to other amino acids, extending the structure. ([#CNX_Chem_20_04_peptide]) A chain of connected amino acids is called a polypeptide. Proteins contain at least one long polypeptide chain.
 
 <!-- SEG:m68849:para:fs-idp22984416 -->
 Enzymes are large biological molecules, mostly composed of proteins, which are responsible for the thousands of metabolic processes that occur in living organisms. Enzymes are highly specific catalysts; they speed up the rates of certain reactions. Enzymes function by lowering the activation energy of the reaction they are catalyzing, which can dramatically increase the rate of the reaction. Most reactions catalyzed by enzymes have rates that are millions of times faster than the noncatalyzed version. Like all catalysts, enzymes are not consumed during the reactions that they catalyze. Enzymes do differ from other catalysts in how specific they are for their substrates (the molecules that an enzyme will convert into a different product). Each enzyme is only capable of speeding up one or a few very specific reactions or types of reactions. Since the function of enzymes is so specific, the lack or malfunctioning of an enzyme can lead to serious health consequences. One disease that is the result of an enzyme malfunction is phenylketonuria. In this disease, the enzyme that catalyzes the first step in the degradation of the amino acid phenylalanine is not functional ([#CNX_Chem_20_04_PhenylH_img]). Untreated, this can lead to an accumulation of phenylalanine, which can lead to intellectual disabilities.
@@ -98,7 +98,7 @@ Kevlar
 Kevlar ([#CNX_Chem_20_04_kevlar1]) is a synthetic polymer made from two monomers 1,4-phenylene-diamine and terephthaloyl chloride (Kevlar is a registered trademark of DuPont). The material was developed by Stephanie Kwolek while she worked to find a replacement for steel in tires. Kwolek's work involved synthesizing polyamides and dissolving them in solvents, then spinning the resulting solution into fibers. One of her solutions proved to be quite different in initial appearance and structure. And once spun, the resulting fibers were particularly strong. From this initial discovery, Kevlar was created. The material has a high tensile strength-to-weight ratio (it is about 5 times stronger than an equal weight of steel), making it useful for many applications from bicycle tires to sails to body armor.
 
 <!-- SEG:m68849:para:fs-idp22615024 -->
-The material owes much of its strength to hydrogen bonds between polymer chains (refer back to the chapter on intermolecular interactions). These bonds form between the carbonyl group oxygen atom (which has a partial negative charge due to oxygen’s electronegativity) on one monomer and the partially positively charged hydrogen atom in the N–H bond of an adjacent monomer in the polymer structure (see dashed line in [#CNX_Chem_20_04_kevpoly]). There is additional strength derived from the interaction between the unhybridized *p* orbitals in the six-membered rings, called aromatic stacking.
+The material owes much of its strength to hydrogen bonds between polymer chains (refer back to the chapter on intermolecular interactions). These bonds form between the carbonyl group oxygen atom (which has a partial negative charge due to oxygen’s electronegativity) on one monomer and the partially positively charged hydrogen atom in the N–H bond of an adjacent monomer in the polymer structure (see dashed line in [#CNX_Chem_20_04_kevpoly]). There is additional strength derived from the interaction between the unhybridized {{i}}p{{/i}} orbitals in the six-membered rings, called aromatic stacking.
 
 <!-- SEG:m68849:para:fs-idp98329008 -->
 Kevlar may be best known as a component of body armor, combat helmets, and face masks. Since the 1980s, the US military has used Kevlar as a component of the PASGT (personal armor system for ground troops) helmet and vest. Kevlar is also used to protect armored fighting vehicles and aircraft carriers. Civilian applications include protective gear for emergency service personnel such as body armor for police officers and heat-resistant clothing for fire fighters. Kevlar based clothing is considerably lighter and thinner than equivalent gear made from other materials ([#CNX_Chem_20_04_kevlar2]). Beyond Kevlar, Stephanie Kwolek was instrumental in the development of Nomex, a fireproof material, and was also involved in the creation of Lycra. She became just the fourth woman inducted into the National Inventors Hall of Fame, and received a number of other awards for her significant contributions to science and society.
@@ -128,22 +128,22 @@ The addition of nitrogen into an organic framework leads to two families of mole
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68849:problem:fs-idp590784 -->
-Write the Lewis structures of both isomers with the formula C~2~H~7~N.
+Write the Lewis structures of both isomers with the formula C[[sub:2]]H[[sub:7]]N.
 
 <!-- SEG:m68849:problem:fs-idp15374976 -->
-What is the molecular structure about the nitrogen atom in trimethyl amine and in the trimethyl ammonium ion, (CH~3~)~3~NH^+^? What is the hybridization of the nitrogen atom in trimethyl amine and in the trimethyl ammonium ion?
+What is the molecular structure about the nitrogen atom in trimethyl amine and in the trimethyl ammonium ion, (CH[[sub:3]])[[sub:3]]NH[[sup:+]]? What is the hybridization of the nitrogen atom in trimethyl amine and in the trimethyl ammonium ion?
 
 <!-- SEG:m68849:solution:fs-idp62477392 -->
-Trimethyl amine: trigonal pyramidal, *sp*^3^; trimethyl ammonium ion: tetrahedral, *sp*^3^
+Trimethyl amine: trigonal pyramidal, {{i}}sp{{/i}}[[sup:3]]; trimethyl ammonium ion: tetrahedral, {{i}}sp{{/i}}[[sup:3]]
 
 <!-- SEG:m68849:problem:fs-idm26371232 -->
-Write the two resonance structures for the pyridinium ion, C~5~H~5~NH^+^.
+Write the two resonance structures for the pyridinium ion, C[[sub:5]]H[[sub:5]]NH[[sup:+]].
 
 <!-- SEG:m68849:problem:fs-idp62426272 -->
-Draw Lewis structures for pyridine and its conjugate acid, the pyridinium ion, C~5~H~5~NH^+^. What are the hybridizations, electron domain geometries, and molecular geometries about the nitrogen atoms in pyridine and in the pyridinium ion?
+Draw Lewis structures for pyridine and its conjugate acid, the pyridinium ion, C[[sub:5]]H[[sub:5]]NH[[sup:+]]. What are the hybridizations, electron domain geometries, and molecular geometries about the nitrogen atoms in pyridine and in the pyridinium ion?
 
 <!-- SEG:m68849:problem:fs-idm26577408 -->
-Write the Lewis structures of all isomers with the formula C~3~H~7~ON that contain an amide linkage.
+Write the Lewis structures of all isomers with the formula C[[sub:3]]H[[sub:7]]ON that contain an amide linkage.
 
 <!-- SEG:m68849:problem:fs-idp70414176 -->
 Write two complete balanced equations for the following reaction, one using condensed formulas and one using Lewis structures.
@@ -164,7 +164,7 @@ Ethylammonium chloride is added to a solution of sodium hydroxide.
 Identify any carbon atoms that change hybridization and the change in hybridization during the reactions in [m68846#fs-idp49893888].
 
 <!-- SEG:m68849:solution:fs-idm24647664 -->
-CH~3~++C++H = ++C++HCH~3~(*sp*^2^) + Cl [[MATH:3]] CH~3~++C++H(Cl)H(Cl)CH~3~(*sp*^3^); 2++C++~6~H~6~(*sp*^2^) + 15O~2~ [[MATH:4]] 12++C++O~2~(*sp*) + 6H~2~O
+CH[[sub:3]]++C++H = ++C++HCH[[sub:3]]({{i}}sp{{/i}}[[sup:2]]) + Cl [[MATH:3]] CH[[sub:3]]++C++H(Cl)H(Cl)CH[[sub:3]]({{i}}sp{{/i}}[[sup:3]]); 2++C++[[sub:6]]H[[sub:6]]({{i}}sp{{/i}}[[sup:2]]) + 15O[[sub:2]] [[MATH:4]] 12++C++O[[sub:2]]({{i}}sp{{/i}}) + 6H[[sub:2]]O
 
 <!-- SEG:m68849:problem:fs-idp95116688 -->
 Identify any carbon atoms that change hybridization and the change in hybridization during the reactions in [m68847#fs-idm1615328].
@@ -173,7 +173,7 @@ Identify any carbon atoms that change hybridization and the change in hybridizat
 Identify any carbon atoms that change hybridization and the change in hybridization during the reactions in [m68848#fs-idp40990752].
 
 <!-- SEG:m68849:solution:fs-idp96096624 -->
-The carbon in CO~3~^2−^, initially at *sp*^2^, changes hybridization to *sp* in CO~2~.
+The carbon in CO[[sub:3]][[sup:2−]], initially at {{i}}sp{{/i}}[[sup:2]], changes hybridization to {{i}}sp{{/i}} in CO[[sub:2]].
 
 <!-- SEG:m68849:glossary-term:fs-idp18741408-term -->
 amine

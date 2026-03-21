@@ -1,0 +1,258 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Leysni</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68782</md:content-id>
+  <md:title>Leysni</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla muntu geta:</para><list id="list-00001"><item>Lýst áhrifum hitastigs og þrýstings á leysni</item><item>Sett fram lögmál Henrys og notað það í útreikningum sem varða leysni lofttegundar í vökva</item><item>Útskýrt mismunandi stig leysni sem eru möguleg fyrir lausnir tveggja vökva</item></list></md:abstract>
+  <md:uuid>92f7d520-699c-4ac6-8fc7-8f99c4aaee33</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp45815680">Ímyndaðu þér að þú setjir smá sykur í vatnsglas, hrærir þar til allur sykurinn er uppleystur og bætir svo við aðeins meiri sykri. Þú getur endurtekið þetta ferli þar til styrkur sykurs í lausninni nær sínum náttúrulegu mörkum, mörkum sem ráðast fyrst og fremst af hlutfallslegum styrk aðdráttarkrafta milli uppleystra efna, milli uppleysts efnis og leysis og milli leysa, eins og fjallað var um í fyrri tveimur einingum þessa kafla. Þú getur verið viss um að þú hafir náð þessum mörkum því óuppleystur sykur verður eftir, sama hversu lengi þú hrærir í lausninni. Styrkur sykurs í lausninni á þessum tímapunkti er þekktur sem leysni hans.</para>
+<para id="fs-idp110015984"><term id="term-00001">Leysni (e. solubility)</term> uppleysts efnis í tilteknum leysi er hámarksstyrkur sem hægt er að ná við gefnar aðstæður þegar upplausnarferlið er <emphasis effect="italics">í jafnvægi</emphasis>.</para>
+<para id="fs-idp30743824">Þegar styrkur uppleysts efnis er jafn leysni þess er sagt að lausnin sé <term id="term-00002">mettuð (e. saturated)</term> af því uppleysta efni. Ef styrkur uppleysta efnisins er minni en leysni þess er sagt að lausnin sé <term id="term-00003">ómettuð (e. unsaturated)</term>. Lausn sem inniheldur tiltölulega lágan styrk af uppleystu efni er kölluð þynnt og lausn með tiltölulega háan styrk er kölluð óþynnt.</para>
+<note id="fs-idp37372608" class="chemistry link-to-learning">
+<para id="fs-idp75533376">Notaðu þessa <link url="http://openstax.org/l/16Phetsoluble">gagnvirku hermun</link> til að útbúa ýmsar mettaðar lausnir.</para>
+</note>
+<para id="fs-idp69648624">Hægt er að útbúa lausnir þar sem styrkur uppleysts efnis <emphasis effect="italics">fer yfir</emphasis> leysni þess. Slíkar lausnir eru sagðar vera <term id="term-00004">yfirmettaðar (e. supersaturated)</term> og þær eru áhugaverð dæmi um <emphasis effect="italics">ójafnvægisástand</emphasis> (ítarleg umfjöllun um þetta mikilvæga hugtak er að finna í textaköflum um jafnvægi). Til dæmis er kolsýrður drykkur í opinni flösku sem er ekki enn orðinn „dauður“ yfirmettaður af koltvísýringi; með tímanum mun styrkur CO<sub>2</sub> minnka þar til hann nær leysni sinni.</para>
+<note id="fs-idp38905248" class="chemistry link-to-learning">
+<para id="fs-idp34793776">Horfðu á þetta <link url="http://openstax.org/l/16NaAcetate">hrifandi myndband</link> sem sýnir botnfall natríumasetats úr yfirmettaðri lausn.</para>
+</note>
+<section id="fs-idp106949904">
+<title>Lausnir lofttegunda í vökvum</title>
+<para id="fs-idp65103440">Eins og með allar lausnir hefur leysni lofttegundar í vökva áhrif á millikrafta milli uppleysts efnis og leysis. Ólíkt föstum og fljótandi uppleystum efnum er hins vegar enginn aðdráttarkraftur milli sameinda uppleysta efnisins sem þarf að yfirstíga þegar loftkenndur uppleystur efni leysist upp í fljótandi leysi (sjá <link document="m68778" target-id="CNX_Chem_11_01_solusolv"/>) þar sem frumeindir eða sameindir sem mynda lofttegund eru langt í sundur og hafa hverfandi víxlverkun. Þar af leiðandi eru víxlverkanir milli uppleysts efnis og leysis eini orkuþátturinn sem hefur áhrif á leysni. Til dæmis er vatnsleysni súrefnis um það bil þrisvar sinnum meiri en helíums (það eru meiri dreifingarkraftar milli vatns og stærri súrefnissameindanna) en 100 sinnum minni en leysni klóróforms, CHCl<sub>3</sub> (skautaðar klóróformsameindir upplifa tvípóla-tvípóla aðdrátt að skautuðum vatnssameindum). Taktu einnig eftir því að leysni súrefnis í hexani, C<sub>6</sub>H<sub>14</sub>, er um það bil 20 sinnum meiri en í vatni vegna þess að meiri dreifingarkraftar eru á milli súrefnis og stærri hexansameindanna.</para>
+<para id="fs-idp39461568">Hitastig er annar þáttur sem hefur áhrif á leysni og leysni lofttegunda minnkar yfirleitt þegar hitastig hækkar (<link target-id="CNX_Chem_11_03_gasdissolv"/>). Þetta öfuga samband milli hitastigs og styrks uppleystrar lofttegundar er ábyrgt fyrir einum af helstu áhrifum hitunarmengunar í náttúrulegum vatnslindum.</para>
+<figure id="CNX_Chem_11_03_gasdissolv" class="scaled-down">
+<media id="fs-idp17757392" alt="This graph shows solubilities of methane, oxygen, carbon monoxide, nitrogen, and helium in 10 superscript negative 3 mol L superscript negative 1 at temperatures ranging from 0 to 30 degrees Celsius. Solubilities as indicated on the graph in decreasing order are methane, oxygen, carbon monoxide, nitrogen, and helium. At ten degrees, solubilities in 10 superscript negative 3mol L superscript negative 1 are approximately as follows; methane 1.9, oxygen 1.8, carbon monoxide 1.2, nitrogen 0.7, and helium 0.4. At twenty degrees, solubilities in 10 superscript negative 3 mol L superscript negative 1 are approximately as follows; methane 1.2, oxygen 1.1, carbon monoxide 0.9, nitrogen 0.5, and helium 0.35.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_gasdissolv.jpg"/>
+</media>
+<caption>Leysni þessara lofttegunda í vatni minnkar eftir því sem hitastigið hækkar. Öll leysni var mæld við stöðugan þrýsting upp á 101,3 kPa (1 atm) af lofttegund yfir lausnunum.</caption>
+</figure>
+<para id="fs-idp14325648">Þegar hitastig ár, vatns eða lækjar hækkar minnkar leysni súrefnis í vatninu. Minnkað magn uppleysts súrefnis getur haft alvarlegar afleiðingar fyrir heilsu vistkerfa vatnsins og í alvarlegum tilfellum getur það leitt til stórfellds fiskidauða (<link target-id="CNX_Chem_11_03_O2dissolv"/>).</para>
+<figure id="CNX_Chem_11_03_O2dissolv">
+<media id="fs-idp18668432" alt="Two photos are shown. The first shows the top portion of a transparent colorless glass of a clear colorless liquid with small bubbles near the interface of the liquid with the container. The second photo shows a portion of a partially frozen body of water with dead fish appearing on in the water and on an icy surface.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_O2dissolv.jpg"/>
+</media>
+<caption>(a) Litlu loftbólurnar í þessu glasi af köldu vatni mynduðust þegar vatnið hitnaði upp í stofuhita og leysni uppleysts lofts í því minnkaði. (b) Minnkuð leysni súrefnis í náttúrulegum vatnslindum sem verða fyrir hitunarmengun getur leitt til stórfellds fiskidauða. (heimild a: breyting á verki eftir Liz West; heimild b: breyting á verki eftir U.S. Fish and Wildlife Service)</caption>
+</figure>
+<para id="fs-idp30867024">Leysni loftkennds uppleysts efnis hefur einnig áhrif á hlutþrýsting uppleysta efnisins í lofttegundinni sem lausnin er útsett fyrir. Leysni lofttegunda eykst eftir því sem þrýstingur lofttegundarinnar eykst. Kolsýrðir drykkir eru gott dæmi um þetta samband. Kolsýringarferlið felur í sér að útsetja drykkinn fyrir tiltölulega háum þrýstingi koltvísýrings og loka síðan ílátinu, sem mettar drykkinn með CO<sub>2</sub> við þennan þrýsting. Þegar ílátið er opnað heyrist kunnuglegt hviss þegar þrýstingur koltvísýringsins losnar og hluti af uppleystum koltvísýringi sést yfirleitt fara úr lausninni í formi lítilla loftbóla (<link target-id="CNX_Chem_11_03_beverage"/>). Á þessum tímapunkti er drykkurinn <emphasis effect="italics">yfirmettaður</emphasis> af koltvísýringi og með tímanum mun styrkur uppleysts koltvísýrings minnka niður í jafnvægisgildi sitt og drykkurinn verður „dauður“.</para>
+<figure id="CNX_Chem_11_03_beverage" class="scaled-down">
+<media id="fs-idp66125536" alt="A dark brown liquid is shown in a clear, colorless container. A thick layer of beige bubbles appear at the surface of the liquid. In the liquid, thirteen small clusters of single black spheres with two red spheres attached to the left and right are shown. Red spheres represent oxygen atoms and black represent carbon atoms. Seven white arrows point upward in the container from these clusters to the bubble layer at the top of the liquid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_beverage.jpg"/>
+</media>
+<caption>Þegar flaska með kolsýrðum drykk er opnuð minnkar þrýstingur <emphasis effect="italics">loftkennds</emphasis> koltvíoxíðs fyrir ofan drykkinn. Leysni CO<sub>2</sub> minnkar því og sjá má hluta af <emphasis effect="italics">uppleystu</emphasis> koltvíoxíði yfirgefa lausnina í formi lítilla loftbóla. (heimild: breytt útgáfa af verki eftir Derrick Coetzee)</caption>
+</figure>
+<para id="fs-idp86085408">Fyrir mörg loftkennd uppleyst efni er sambandið milli leysni, <emphasis effect="italics">C</emphasis><sub>g</sub>, og hlutþrýstings, <emphasis effect="italics">P</emphasis><sub>g</sub>, í beinu hlutfalli:</para>
+<equation id="fs-idm57709472" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp72770704">þar sem <emphasis effect="italics">k</emphasis> er hlutfallfasti sem fer eftir eiginleikum loftkennda uppleysta efnisins, eiginleikum leysisins og hitastigi lausnarinnar. Þetta er stærðfræðileg framsetning á <term id="term-00005">lögmáli Henrys (e. henry’s law)</term>: <emphasis effect="italics">Magn kjörloftegundar sem leysist upp í ákveðnu rúmmáli vökva er í beinu hlutfalli við þrýsting loftegundarinnar.</emphasis></para>
+<example id="fs-idp3359488">
+<para id="fs-idm1765696"><title>Notkun á lögmáli Henrys</title>Við 20 °C er styrkur uppleysts súrefnis í vatni, sem er í snertingu við loftkennt súrefni með hlutþrýstinginn 101,3 kPa, 1,38 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> mól L<sup>−1</sup>. Notaðu lögmál Henrys til að ákvarða leysni súrefnis þegar hlutþrýstingur þess er 20,7 kPa, sem er nálægt þrýstingi súrefnis í lofthjúpi jarðar.</para>
+<para id="fs-idp69198064"><title>Lausn</title>Samkvæmt lögmáli Henrys er leysni, <emphasis effect="italics">C</emphasis><sub>g</sub>, loftegundar (1,38 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> mól L<sup>−1</sup> í þessu tilfelli) í kjörlausn í beinu hlutfalli við þrýsting, <emphasis effect="italics">P</emphasis><sub>g</sub>, óuppleystu loftegundarinnar fyrir ofan lausnina (101,3 kPa í þessu tilfelli). Þar sem bæði <emphasis effect="italics">C</emphasis><sub>g</sub> og <emphasis effect="italics">P</emphasis><sub>g</sub> eru þekkt er hægt að endurraða þessu sambandi og nota það til að leysa fyrir <emphasis effect="italics">k</emphasis>.</para>
+<equation id="fs-idm48683328" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.38</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>101.3</m:mn><m:mspace width="0.2em"/><m:mtext>kPa</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>1.36</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>kPa</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp69566528">Notaðu nú <emphasis effect="italics">k</emphasis> til að finna leysnina við lægri þrýstinginn.</para>
+<equation id="fs-idp38123664" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/><m:mtd columnalign="right"><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd/><m:mtd/><m:mtd columnalign="left"><m:mn>1.36</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>kPa</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>20.7</m:mn><m:mspace width="0.2em"/><m:mtext>kPa</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>2.82</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp14065136">Athugið að nota má ýmsar einingar til að tákna stærðirnar sem koma við sögu í slíkum útreikningum. Allar samsetningar eininga sem uppfylla skilyrði víddagreiningar eru leyfilegar.</para>
+<para id="fs-idp911728"><title>Sannreyndu þekkingu þína</title>Þegar 100,0 ml sýni af vatni við 0 °C var látið komast í snertingu við andrúmsloft sem innihélt loftkennt uppleyst efni við 152 torr leystust upp 1,45 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> g af efninu. Notaðu lögmál Henrys til að ákvarða leysni þessa loftkennda uppleysta efnis þegar þrýstingur þess er 760 torr.</para>
+<note id="fs-idm23741504"><title>Answer:</title>
+<para id="fs-idp7203840">7,25 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> í 100,0 ml eða 0,0725 g/L</para></note>
+</example>
+<example id="fs-idm260338832">
+<para id="fs-idm246086304"><title>Hitamengun og leysni súrefnis</title>Ákveðin tegund ferskvatnssilungs þarfnast styrks uppleysts súrefnis sem nemur 7,5 mg/L. Gæti þessi fiskur þrifist í hitamenguðum fjallalæk (hitastig vatnsins er 30,0 °C, hlutþrýstingur súrefnis í andrúmslofti er 0,17 atm)? Notaðu gögnin í <link target-id="CNX_Chem_11_03_gasdissolv"/> til að meta gildi fyrir lögmálsfasta Henrys við þetta hitastig.</para><para id="fs-idm252501088"><title>Lausn</title>Fyrst skaltu meta lögmálsfasta Henrys fyrir súrefni í vatni við tilgreint hitastig, 30,0 °C (<link target-id="CNX_Chem_11_03_gasdissolv"/> gefur til kynna að leysnin við þetta hitastig sé um það bil ~1,2 mól/L).</para><equation id="fs-idm262307104" class="unnumbered">
+  <m:math><m:mrow><m:mi>k</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol/L/1.00 atm</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol/L atm </m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm246607712">Notaðu síðan þetta <emphasis effect="italics">k</emphasis>-gildi til að reikna út leysni súrefnis við tilgreindan hlutþrýsting súrefnis, 0,17 atm.</para>
+<equation id="fs-idm270799504" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mi>g</m:mi></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mi>k</m:mi><m:mi>P</m:mi></m:mrow><m:mrow><m:mi>g</m:mi></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol/L atm</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>0.17</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/>
+<m:mn>2.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol/L</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm243822832">Að lokum skaltu umreikna þennan styrk uppleysts súrefnis úr mól/L í mg/L.</para>
+<equation id="fs-idm269049024" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>2.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol/L</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>32.0</m:mn><m:mspace width="0.2em"/><m:mtext>g/1 mol</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>mg/g</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/>
+<m:mn>6.4</m:mn><m:mspace width="0.2em"/><m:mtext>mg/L</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm330843216">Þessi styrkur er lægri en lágmarksgildið sem krafist er, 7,5 mg/L, og því myndi þessi silungur líklega ekki þrífast í mengaða læknum.</para>
+<para id="fs-idm251562192"><title>Sannreyndu þekkingu þína</title>Hvers konar styrks uppleysts súrefnis er að vænta í læknum hér að ofan þegar hann nær aftur venjulegu sumarhitastigi, 15 °C?</para>
+<note id="fs-idm252531248"><title>Answer:</title>
+<para id="fs-idm245998528">8,2 mg/L</para></note>
+</example>
+<note id="fs-idp99321632" class="chemistry everyday-life">
+<title>Kafaraveiki eða „the bends“</title>
+<para id="fs-idp40268320">Kafaraveiki (DCS), eða „the bends“, eru áhrif af auknum þrýstingi loftsins sem kafbátakafarar anda að sér þegar þeir synda neðansjávar á talsverðu dýpi. Auk þrýstings frá andrúmsloftinu verða kafarar fyrir viðbótarþrýstingi vegna vatnsins fyrir ofan þá, en hann eykst um u.þ.b. 1 atm fyrir hverja 10 m dýptar. Þess vegna inniheldur loftið sem kafari andar að sér á kafi loftegundir við samsvarandi hærri umhverfisþrýsting og styrkur loftegundanna sem leysast upp í blóði kafarans er í réttu hlutfalli hærri samkvæmt lögmáli Henrys.</para>
+<para id="fs-idm1466432">Þegar kafarinn stígur upp að yfirborði vatnsins minnkar umhverfisþrýstingurinn og uppleystu gösin verða minna leysanleg. Ef uppstigið er of hratt geta gösin sem sleppa úr blóði kafarans myndað loftbólur sem geta valdið ýmsum einkennum, allt frá útbrotum og liðverkjum til lömunar og dauða. Til að forðast köfunarveiki verða kafarar að stíga upp úr djúpi á tiltölulega hægum hraða (10 eða 20 m/mín.) eða gera nokkur þrýstijöfnunarstopp og hvíla í nokkrar mínútur á ákveðnu dýpi meðan á uppstiginu stendur. Þegar þessar fyrirbyggjandi aðgerðir duga ekki er köfurum með köfunarveiki oft veitt súrefnismeðferð í þrýstihylki sem kallast þrýstijöfnunar- (eða endurþrýstings-) klefar (<link target-id="CNX_Chem_11_03_recompress"/>). Vísindamenn rannsaka einnig tengd líkamsviðbrögð og varnir til að þróa betri próf og meðferð við köfunarveiki. Til dæmis hefur Ingrid Eftedal, þrýstingslífeðlisfræðingur sem sérhæfir sig í líkamsviðbrögðum við köfun, sýnt fram á að hvít blóðkorn gangast undir efnafræðilegar og erfðafræðilegar breytingar vegna ástandsins; þetta er hugsanlega hægt að nota til að búa til lífmerkjapróf og aðrar aðferðir til að meðhöndla köfunarveiki.</para><figure id="CNX_Chem_11_03_recompress" class="scaled-down"><media id="fs-idm21151808" alt="Two photos are shown. The first shows two people seated in a steel chamber on benches that run length of the chamber on each side. The chamber has a couple of small circular windows and an open hatch-type door. One of the two people is giving a thumbs up gesture. The second image provides a view through a small, circular window. Inside the two people can be seen with masks over their mouths and noses. The people appear to be reading.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_recompress.jpg"/>
+</media>
+<caption>(a) Kafarar úr bandaríska sjóhernum gangast undir þjálfun í endurþrýstingsklefa. (b) Kafarar fá súrefnismeðferð í þrýstihylki.</caption></figure></note>
+<para id="fs-idm18427536">Frávik frá <term class="no-emphasis" id="term-00006">lögmáli Henrys (e. henry’s law)</term> sjást þegar efnahvarf á sér stað milli uppleysta gasefnisins og leysiefnisins. Þannig eykst til dæmis leysanleiki ammoníaks í vatni hraðar með auknum þrýstingi en lögmálið spáir fyrir um, því ammoníak, sem er basi, hvarfast að einhverju leyti við vatn og myndar ammóníumjónir og hýdroxíðjónir.</para>
+<media id="fs-idp36245120" class="scaled-down" alt="This reaction diagram shows three H atoms bonded to an N atom above, below, and two the left of the N. A single pair of dots is present on the right side of the N. This is followed by a plus, then two H atoms bonded to an O atom to the left and below the O. Two pairs of dots are present on the O, one above and the other to the right of the O. A double arrow, with a top arrow pointing right and a bottom arrow pointing left follows. To the right of the double arrow, four H atoms are shown bonded to a central N atom. These 5 atoms are enclosed in brackets with a superscript plus outside. A plus follows, then an O atom linked by a bond to an H atom on its right. The O atom has pairs of dots above, to the left, and below the atom. The linked O and H are enclosed in brackets with superscript minus outside.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_02_ammonia1_img.jpg"/>
+</media>
+<para id="fs-idm48937408">Gös geta myndað yfirmettaðar lausnir. Ef lausn af gasi í vökva er útbúin annaðhvort við lágt hitastig eða undir þrýstingi (eða hvort tveggja), þá getur lausnin orðið yfirmettuð þegar hún hitnar eða þegar gasþrýstingurinn minnkar. Árið 1986 létust meira en 1700 manns í Kamerún þegar gasský, næstum örugglega koltvísýringur, gaus upp úr Nyos-vatni (<link target-id="CNX_Chem_11_03_LakeNyos"/>), djúpu vatni í eldfjallagíg. Vatnið á botni Nyos-vatns er mettað af koltvísýringi vegna eldvirkni undir vatninu. Talið er að velta hafi orðið í vatninu vegna hægfara upphitunar neðan frá og að hlýrra, eðlisléttara vatn mettað af koltvísýringi hafi náð yfirborðinu. Þar af leiðandi losnaði gríðarlegt magn af uppleystum CO<sub>2</sub> og litlausa gasið, sem er eðlisþyngra en loft, flæddi niður dalinn fyrir neðan vatnið og kæfði menn og dýr sem bjuggu í dalnum.</para>
+<figure id="CNX_Chem_11_03_LakeNyos">
+<media id="fs-idp108534848" alt="Two photos are shown. The first is an aerial view of a lake surrounded by green hills. The second shows a large body of water with a fountain sending liquid up into the air several yards or meters above the surface of the water.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_LakeNyos.jpg"/>
+</media>
+<caption>(a) Talið er að hamfarirnar árið 1986, sem drápu meira en 1700 manns nálægt Nyos-vatni í Kamerún, hafi orðið þegar mikið magn koltvísýringsgass losnaði úr vatninu. (b) Síðan þá hefur verið settur upp CO<sub>2</sub>-útrásarventill til að hjálpa til við að afgasa vatnið á hægan, stýrðan hátt og koma í veg fyrir að svipaðar hamfarir endurtaki sig í framtíðinni. (heimild a: breyting á verki eftir Jack Lockwood; heimild b: breyting á verki eftir Bill Evans)</caption>
+</figure>
+</section>
+<section id="fs-idp64799168">
+<title>Lausnir vökva í vökvum</title>
+<para id="fs-idm22997312">Sumum vökvum má blanda saman í hvaða hlutföllum sem er til að mynda lausnir; með öðrum orðum, þeir hafa óendanlegan gagnkvæman leysanleika og eru sagðir <term id="term-00007">blandanlegir (e. miscible)</term>. Etanól, brennisteinssýra og etýlen glýkól (vinsælt til notkunar sem frostlögur, sýnt á <link target-id="CNX_Chem_11_03_antifreeze"/>) eru dæmi um vökva sem eru fullkomlega blandanlegir við vatn. Tvígengismótorolía er blandanleg við bensín og eru blöndur þeirra notaðar sem smureldsneyti fyrir ýmsar gerðir af útivélum (keðjusagir, laufblásarar o.s.frv.).</para>
+<figure id="CNX_Chem_11_03_antifreeze" class="scaled-down">
+<media id="fs-idp105848592" alt="This is a photo of a 1 gallon yellow plastic jug of Preston 50/50 Prediluted Antifreeze/Coolant.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_antifreeze.jpg"/>
+</media>
+<caption>Vatn og frostlögur eru blandanleg; blöndur þeirra tveggja eru einsleitar í öllum hlutföllum. (heimild: „dno1967“/Wikimedia commons)</caption>
+</figure>
+<para id="fs-idp48405280">Blandanlegir vökvar eru yfirleitt þeir sem hafa mjög svipaða skautun. Lítum til dæmis á vökva sem eru skautaðir eða geta myndað vetnistengi. Fyrir slíka vökva eru tvískauts-tvískauts aðdráttarkraftar (eða vetnistengi) uppleystu sameindanna við leysisameindirnar að minnsta kosti jafn sterkir og þeir sem eru á milli sameinda í hreina uppleysta efninu eða í hreina leysinum. Þess vegna blandast þessar tvær tegundir sameinda auðveldlega saman. Að sama skapi eru óskautaðir vökvar blandanlegir hver við annan vegna þess að enginn verulegur munur er á styrk aðdráttarkrafta milli sameinda uppleysta efnisins, leysisins og milli uppleysta efnisins og leysisins. Leysanleiki skautaðra sameinda í skautuðum leysum og óskautaðra sameinda í óskautuðum leysum er, enn og aftur, dæmi um efnafræðilegu kennisetninguna „líkt leysir líkt“.</para>
+<para id="fs-idp37300448">Tveir vökvar sem blandast ekki að neinu marki eru kallaðir <term id="term-00008">óblandanlegir (e. immiscible)</term>. Aðskilin lög myndast þegar óblandanlegum vökvum er hellt í sama ílát. Bensín, olía (<link target-id="CNX_Chem_11_03_oilwater2"/>), bensen, tetraklórmetan, sumar málningartegundir og margir aðrir óskautaðir vökvar eru óblandanlegir við vatn. Tiltölulega veikir aðdráttarkraftar milli skautuðu vatnssameindanna og óskautuðu vökvasameindanna duga ekki til að yfirstíga mun sterkari vetnistengi milli vatnssameinda. Munurinn á óblandanleika og blandanleika er í raun spurning um umfang, þannig að blandanlegir vökvar hafa óendanlegan gagnkvæman leysanleika, á meðan vökvar sem sagðir eru óblandanlegir hafa mjög lítinn (þó ekki engan) gagnkvæman leysanleika.</para>
+<figure id="CNX_Chem_11_03_oilwater2" class="scaled-down">
+<media id="fs-idp48883952" alt="This is a photo of a clear, colorless martini glass containing a golden colored liquid layer resting on top of a clear, colorless liquid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_oilwater2.jpg"/>
+</media>
+<caption>Vatn og olía eru óblandanleg. Blöndur þessara tveggja efna munu mynda tvö aðskilin lög þar sem eðlisléttari olían flýtur ofan á vatninu. (heimild: „Yortw“/Flickr)</caption>
+</figure>
+<para id="fs-idp49738352">Tveir vökvar, eins og bróm og vatn, sem hafa <emphasis effect="italics">miðlungs</emphasis> gagnkvæma leysni eru sagðir vera <term id="term-00009">takmarkað blandanlegir (e. partially miscible)</term>. Tveir takmarkað blandanlegir vökvar mynda yfirleitt tvö lög þegar þeim er blandað saman. Í tilfelli bróm- og vatnsblöndunnar er efra lagið vatn, mettað af brómi, og neðra lagið er bróm, mettað af vatni. Þar sem bróm er óskautað og þar af leiðandi ekki mjög leysanlegt í vatni, er vatnslagið aðeins örlítið litað af skærappelsínugulu bróminu sem er uppleyst í því. Þar sem leysni vatns í brómi er mjög lítil, hefur það engin merkjanleg áhrif á dökkan lit brómlagsins (<link target-id="CNX_Chem_11_03_bromine"/>).</para>
+<figure id="CNX_Chem_11_03_bromine" class="scaled-down">
+<media id="fs-idp40449744" alt="This figure shows three test tubes. The first test tube holds a dark orange-brown substance. The second test tube holds a clear substance. The amount of substance in both test tubes is the same. The third test tube holds a dark orange-brown substance on the bottom with a lighter orange substance on top. The amount of substance in the third test tube is almost double of the first two.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_bromine.jpg"/>
+</media>
+<caption>Bróm (dökkappelsínuguli vökvinn til vinstri) og vatn (tæri vökvinn í miðjunni) eru takmarkað blandanleg. Efsta lagið í blöndunni til hægri er mettuð lausn af brómi í vatni; neðsta lagið er mettuð lausn af vatni í brómi. (Heimild: Paul Flowers)</caption>
+</figure>
+</section>
+<section id="fs-idp38976176">
+<title>Lausnir fastra efna í vökvum</title>
+<para id="fs-idp49095104">Hitastigsháð leysni fjölda fastra efna í vatni er sýnd með leysniferlunum í <link target-id="CNX_Chem_11_03_solubility"/>. Yfirferð þessara gagna sýnir almenna tilhneigingu til aukinnar leysni með hækkandi hitastigi, þótt undantekningar séu á því, eins og jónaefnið seríumsúlfat sýnir.</para>
+<figure id="CNX_Chem_11_03_solubility" class="scaled-down">
+<media id="fs-idp19558160" alt="This shows a graph of the solubility of sugar C subscript 12 H subscript 22 O subscript 11, K N O subscript 3, N a N O subscript 3, N a B r, K B r, N a subscript 2 S O subscript 4, K C l, and C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 in g solute per 100 g H subscript 2 O at temperatures ranging from 0 degrees Celsius to 100 degrees Celsius. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 100 degrees Celsius, sugar C subscript 12 H subscript 22 O subscript 11 has exceeded the upper limit of solubility indicated on the graph, 240 for K N O subscript 3, 178 for N a N O subscript 3, 123 for N a B r, 105 for K B r, 52 for N a subscript 2 S O subscript 4, 58 for K C l, and the graph for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 stops at about 92 degrees Celsius where the solubility is nearly zero. The graph for N a subscript 2 S O subscript 4 is shown in red. All others substances are shown in blue. The solubility of this substance increases until about 30 degrees Celsius and declines beyond that point with increasing temperature.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_solubility.jpg"/>
+</media>
+<caption>Þetta línurit sýnir hvernig leysni nokkurra fastra efna breytist með hitastigi.</caption>
+</figure>
+<para id="fs-idp72000144">Hægt er að nýta hitastigsháð leysni til að útbúa yfirmettaðar lausnir af ákveðnum efnasamböndum. Lausn getur verið mettuð af efnasambandinu við hækkað hitastig (þar sem uppleysta efnið er leysanlegra) og síðan kæld niður í lægra hitastig án þess að uppleysta efnið falli út. Lausnin sem myndast inniheldur uppleyst efni í styrk sem er hærri en jafnvægisleysni þess við lægra hitastigið (þ.e. hún er yfirmettuð) og er tiltölulega stöðug. Hægt er að koma af stað útfellingu umfram uppleysts efnis með því að bæta við sáðkristal (sjá myndbandið í „Tengill til náms“ fyrr í þessum kafla) eða með því að hrista lausnina vélrænt. Sumir handhitara, eins og sá sem sýndur er á <link target-id="CNX_Chem_11_03_handwarmer"/>, nýta sér þessa hegðun.</para>
+<figure id="CNX_Chem_11_03_handwarmer" class="scaled-down">
+<media id="fs-idm20585264" alt="Three photos of hand warmers are shown side by side with an arrow pointing from the first photo to the second, and another arrow pointing from the second photo to the third. The first packet contains a clear colorless liquid and a small metal disc can be seen. In the second packet, the disc can’t be seen and a dispersion of white liquid is beginning. In the third packet, all of the liquid is white.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_handwarmer.jpg"/>
+</media>
+<caption>Þessi handhitari framleiðir hita þegar natríumasetat í yfirmettaðri lausn fellur út. Útfelling uppleysta efnisins er sett af stað með vélrænni höggbylgju sem myndast þegar „smellt“ er á sveigjanlega málmdiskinn í lausninni. (Heimild: breyting á verki eftir „Velela“/Wikimedia Commons)</caption>
+</figure>
+<note id="fs-idp72233568" class="chemistry link-to-learning">
+<para id="fs-idp19123632">Þetta <link url="http://openstax.org/l/16handwarmer">myndband</link> sýnir kristöllunarferlið sem á sér stað í handhitara.</para>
+</note>
+</section>
+<section id="fs-idp9146256" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp47489632">Að hve miklu leyti eitt efni leysist upp í öðru ræðst af nokkrum þáttum, þar á meðal gerð og hlutfallslegum styrk millimólekúla aðdráttarkrafta sem kunna að vera til staðar milli atóma, jóna eða sameinda efnanna. Þessi tilhneiging til upplausnar er magngreind sem leysni efnis, hámarksstyrkur þess í lausn við jafnvægi við tilgreindar aðstæður. Mettuð lausn inniheldur uppleyst efni í styrk sem jafngildir leysni þess. Yfirmettuð lausn er lausn þar sem styrkur uppleysts efnis fer yfir leysni þess – ójafnvægisástand (óstöðugt) sem mun leiða til útfellingar uppleysts efnis þegar lausnin er raskað á viðeigandi hátt. Blandanlegir vökvar eru leysanlegir í öllum hlutföllum og óblandanlegir vökvar sýna mjög litla gagnkvæma leysni. Leysni fyrir loftkennd uppleyst efni minnkar með hækkandi hitastigi, en leysni flestra, en ekki allra, fastra uppleystra efna eykst með hitastigi. Styrkur loftkennds uppleysts efnis í lausn er í réttu hlutfalli við hlutþrýsting gassins sem lausnin er útsett fyrir, samband sem er þekkt sem lögmál Henrys.</para>
+</section>
+<section id="fs-idp44827264" class="key-equations">
+<title>Lykiljafna</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm30288080" class="exercises">
+<title>Efnafræði - Verkefni í lok kafla</title>
+<exercise id="fs-idp15462384">
+<problem id="fs-idp84013888">
+<para id="fs-idp72058416">Gerðu ráð fyrir að þú fáir tæra lausn af natríumþíósúlfati, Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub>. Hvernig gætirðu ákvarðað hvort lausnin sé ómettuð, mettuð eða yfirmettuð?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp18282480">
+<problem id="fs-idp72426256">
+<para id="fs-idm71283280">Yfirmettaðar lausnir flestra fastra efna í vatni eru útbúnar með því að kæla mettaðar lausnir. Yfirmettaðar lausnir flestra lofttegunda í vatni eru útbúnar með því að hita mettaðar lausnir. Útskýrðu ástæðurnar fyrir muninum á þessum tveimur aðferðum.</para>
+</problem>
+<solution id="fs-idp17063488">
+<para id="fs-idp61469504">Leysni fastra efna minnkar yfirleitt við kælingu lausnar, en leysni lofttegunda minnkar yfirleitt við hitun.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm29975600">
+<problem id="fs-idp37014624">
+<para id="fs-idp35536128">Komdu með skýringu á þeirri athugun að etanól, C<sub>2</sub>H<sub>5</sub>OH, er fullkomlega blandanlegt við vatn og að etanþíól, C<sub>2</sub>H<sub>5</sub>SH, er aðeins leysanlegt að því marki sem nemur 1,5 g á 100 ml af vatni.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp50664544">
+<problem id="fs-idp19644400">
+<para id="fs-idp86652032">Reiknaðu massaprósentu KBr í mettaðri lausn af KBr í vatni við 10 °C. Sjá <link target-id="CNX_Chem_11_03_solubility"/> fyrir gagnleg gögn og gefðu uppreiknaða prósentu með einni markverðri tölu.</para>
+</problem>
+<solution id="fs-idp39077248">
+<para id="fs-idp43618784">40%</para>
+</solution>
+</exercise>
+<exercise id="fs-idm7358128">
+<problem id="fs-idp38951840">
+<para id="fs-idp76799712">Hver af eftirfarandi lofttegundum er væntanlega leysanlegust í vatni? Rökstyddu svar þitt.</para>
+<para id="fs-idp37987136">(a) CH<sub>4</sub></para>
+<para id="fs-idp75725552">(b) CCl<sub>4</sub></para>
+<para id="fs-idp100790624">(c) CHCl<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp47233328">
+<problem id="fs-idp47522688">
+<para id="fs-idp64913664">Við 0 °C og 1,00 atm geta allt að 0,70 g af O<sub>2</sub> leyst upp í 1 L af vatni. Hversu mörg grömm af O<sub>2</sub> leysast upp í 1 L af vatni við 0 °C og 4,00 atm?</para>
+</problem>
+<solution id="fs-idp47242816">
+<para id="fs-idp34230848">2,8 g</para></solution>
+</exercise>
+<exercise id="fs-idp36424272">
+<problem id="fs-idp30479616">
+<para id="fs-idp43686960">Sjá <link target-id="CNX_Chem_11_03_beverage"/>.</para>
+<para id="fs-idp48419760">(a) Hvernig breyttist styrkur uppleysts CO<sub>2</sub> í drykknum þegar flaskan var opnuð?</para>
+<para id="fs-idp64805104">(b) Hvað olli þessari breytingu?</para>
+<para id="fs-idp75878336">(c) Er drykkurinn ómettaður, mettaður eða yfirmettaður af CO<sub>2</sub>?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp43619984">
+<problem id="fs-idp109298576">
+<para id="fs-idm15918912">Lögmálsfasti Henrys fyrir CO<sub>2</sub> er 3,4 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−2</sup> <emphasis effect="italics">M</emphasis>/atm við 25 °C. Að því gefnu að um kjörlausn sé að ræða, hvaða þrýstingur koltvísýrings þarf til að viðhalda 0,10 <emphasis effect="italics">M</emphasis> styrk af CO<sub>2</sub> í dós af sítrónu- og límónugosi?</para>
+</problem>
+<solution id="fs-idp32534352">
+<para id="fs-idm53295744">2,9 atm</para>
+</solution>
+</exercise>
+<exercise id="fs-idm19146000">
+<problem id="fs-idp38207200">
+<para id="fs-idp102425184">Lögmálsfasti Henrys fyrir O<sub>2</sub> er 1,3 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis>/atm við 25 °C. Miðað við hegðun kjörlausnar, hvaða massi súrefnis myndi leysast upp í 40 L fiskabúri við 25 °C, að því gefnu að loftþrýstingur sé 1,00 atm og hlutþrýstingur O<sub>2</sub> sé 0,21 atm?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm32553568">
+<problem id="fs-idp70394000">
+<para id="fs-idm20619264">Miðað við hegðun kjörlausnar, hversu marga lítra af HCl-gasi, mælt við 30,0 °C og 745 torr, þarf til að útbúa 1,25 L af 3,20-<emphasis effect="italics">M</emphasis> lausn af saltsýru?</para>
+</problem>
+<solution id="fs-idm18407824">
+<para id="fs-idp48226368">102 L HCl</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp6753792">
+<term>Lögmál Henrys (e. henry’s law)</term>
+<meaning id="fs-idp6753792-meaning">hlutfallslegt samband milli styrks uppleysts gass í lausn og hlutþrýstings gassins sem er í snertingu við lausnina</meaning>
+</definition>
+<definition id="fs-idp30466624">
+<term>óblandanlegur (e. immiscible)</term>
+<meaning id="fs-idp30466624-meaning">með hverfandi gagnkvæman leysni; á venjulega við um efni í vökvaformi</meaning>
+</definition>
+<definition id="fs-idp83966400">
+<term>blandanlegur (e. miscible)</term>
+<meaning id="fs-idp83966400-meaning">gagnkvæmt leysanlegur í öllum hlutföllum; á venjulega við um efni í vökvaformi</meaning>
+</definition>
+<definition id="fs-idp7162656">
+<term>örlítið blandanlegur (e. partially miscible)</term>
+<meaning id="fs-idp7162656-meaning">með miðlungs gagnkvæman leysni; á venjulega við um efni í vökvaformi</meaning>
+</definition>
+<definition id="fs-idp18522912">
+<term>mettaður (e. saturated)</term>
+<meaning id="fs-idp18522912-meaning">með styrk sem er jafn leysni; inniheldur hámarksstyrk leysis efnis sem mögulegur er við tiltekið hitastig og þrýsting</meaning>
+</definition>
+<definition id="fs-idm7148400">
+<term>leysni (e. solubility)</term>
+<meaning id="fs-idm7148400-meaning">að hve miklu leyti leysið efni getur leyst upp í vatni eða öðrum leysi</meaning>
+</definition>
+<definition id="fs-idp69776">
+<term>yfirmettaður (e. supersaturated)</term>
+<meaning id="fs-idp69776-meaning">með styrk sem fer yfir leysni; ójafnvægisástand</meaning>
+</definition>
+<definition id="fs-idm39109968">
+<term>ómettaður (e. unsaturated)</term>
+<meaning id="fs-idm39109968-meaning">með styrk sem er minni en leysni</meaning>
+</definition>
+</glossary>
+</document>

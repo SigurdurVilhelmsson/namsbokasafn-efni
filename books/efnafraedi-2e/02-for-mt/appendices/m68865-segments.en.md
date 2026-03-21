@@ -8,19 +8,19 @@ Standard Thermodynamic Properties for Selected Substances
 Substance
 
 <!-- SEG:m68865:entry:auto-4 -->
-[[MATH:1]] (kJ mol^–1^)
+[[MATH:1]] (kJ mol[[sup:–1]])
 
 <!-- SEG:m68865:entry:auto-5 -->
-[[MATH:2]] (kJ mol^–1^)
+[[MATH:2]] (kJ mol[[sup:–1]])
 
 <!-- SEG:m68865:entry:auto-6 -->
-[[MATH:3]] (J K^–1^ mol^–1^)
+[[MATH:3]] (J K[[sup:–1]] mol[[sup:–1]])
 
 <!-- SEG:m68865:entry:auto-7 -->
 aluminum
 
 <!-- SEG:m68865:entry:auto-8 -->
-Al(*s*)
+Al({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-9 -->
 0
@@ -32,7 +32,7 @@ Al(*s*)
 28.3
 
 <!-- SEG:m68865:entry:auto-12 -->
-Al(*g*)
+Al({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-13 -->
 324.4
@@ -44,7 +44,7 @@ Al(*g*)
 164.54
 
 <!-- SEG:m68865:entry:auto-16 -->
-Al^3+^(*aq*)
+Al[[sup:3+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-17 -->
 –531
@@ -56,7 +56,7 @@ Al^3+^(*aq*)
 –321.7
 
 <!-- SEG:m68865:entry:auto-20 -->
-Al~2~O~3~(*s*)
+Al[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-21 -->
 –1676
@@ -68,7 +68,7 @@ Al~2~O~3~(*s*)
 50.92
 
 <!-- SEG:m68865:entry:auto-24 -->
-AlF~3~(*s*)
+AlF[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-25 -->
 –1510.4
@@ -80,7 +80,7 @@ AlF~3~(*s*)
 66.5
 
 <!-- SEG:m68865:entry:auto-28 -->
-AlCl~3~(*s*)
+AlCl[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-29 -->
 –704.2
@@ -92,7 +92,7 @@ AlCl~3~(*s*)
 110.67
 
 <!-- SEG:m68865:entry:auto-32 -->
-AlCl~3~·6H~2~O(*s*)
+AlCl[[sub:3]]·6H[[sub:2]]O({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-33 -->
 –2691.57
@@ -104,7 +104,7 @@ AlCl~3~·6H~2~O(*s*)
 376.56
 
 <!-- SEG:m68865:entry:auto-36 -->
-Al~2~S~3~(*s*)
+Al[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-37 -->
 –724.0
@@ -116,7 +116,7 @@ Al~2~S~3~(*s*)
 116.9
 
 <!-- SEG:m68865:entry:auto-40 -->
-Al~2~(SO~4~)~3~(*s*)
+Al[[sub:2]](SO[[sub:4]])[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-41 -->
 –3445.06
@@ -131,7 +131,7 @@ Al~2~(SO~4~)~3~(*s*)
 antimony
 
 <!-- SEG:m68865:entry:auto-45 -->
-Sb(*s*)
+Sb({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-46 -->
 0
@@ -143,7 +143,7 @@ Sb(*s*)
 45.69
 
 <!-- SEG:m68865:entry:auto-49 -->
-Sb(*g*)
+Sb({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-50 -->
 262.34
@@ -155,7 +155,7 @@ Sb(*g*)
 180.16
 
 <!-- SEG:m68865:entry:auto-53 -->
-Sb~4~O~6~(*s*)
+Sb[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-54 -->
 –1440.55
@@ -167,7 +167,7 @@ Sb~4~O~6~(*s*)
 220.92
 
 <!-- SEG:m68865:entry:auto-57 -->
-SbCl~3~(*g*)
+SbCl[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-58 -->
 –313.8
@@ -179,7 +179,7 @@ SbCl~3~(*g*)
 337.80
 
 <!-- SEG:m68865:entry:auto-61 -->
-SbCl~5~(*g*)
+SbCl[[sub:5]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-62 -->
 –394.34
@@ -191,7 +191,7 @@ SbCl~5~(*g*)
 401.94
 
 <!-- SEG:m68865:entry:auto-65 -->
-Sb~2~S~3~(s)
+Sb[[sub:2]]S[[sub:3]](s)
 
 <!-- SEG:m68865:entry:auto-66 -->
 –174.89
@@ -203,7 +203,7 @@ Sb~2~S~3~(s)
 182.00
 
 <!-- SEG:m68865:entry:auto-69 -->
-SbCl~3~(s)
+SbCl[[sub:3]](s)
 
 <!-- SEG:m68865:entry:auto-70 -->
 –382.17
@@ -230,7 +230,7 @@ SbOCl(s)
 arsenic
 
 <!-- SEG:m68865:entry:auto-78 -->
-As(*s*)
+As({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-79 -->
 0
@@ -242,7 +242,7 @@ As(*s*)
 35.1
 
 <!-- SEG:m68865:entry:auto-82 -->
-As(*g*)
+As({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-83 -->
 302.5
@@ -254,7 +254,7 @@ As(*g*)
 174.21
 
 <!-- SEG:m68865:entry:auto-86 -->
-As~4~(*g*)
+As[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-87 -->
 143.9
@@ -266,7 +266,7 @@ As~4~(*g*)
 314
 
 <!-- SEG:m68865:entry:auto-90 -->
-As~4~O~6~(*s*)
+As[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-91 -->
 –1313.94
@@ -278,7 +278,7 @@ As~4~O~6~(*s*)
 214.22
 
 <!-- SEG:m68865:entry:auto-94 -->
-As~2~O~5~(*s*)
+As[[sub:2]]O[[sub:5]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-95 -->
 –924.87
@@ -290,7 +290,7 @@ As~2~O~5~(*s*)
 105.44
 
 <!-- SEG:m68865:entry:auto-98 -->
-AsCl~3~(*g*)
+AsCl[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-99 -->
 –261.50
@@ -302,7 +302,7 @@ AsCl~3~(*g*)
 327.06
 
 <!-- SEG:m68865:entry:auto-102 -->
-As~2~S~3~(*s*)
+As[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-103 -->
 –169.03
@@ -314,7 +314,7 @@ As~2~S~3~(*s*)
 163.59
 
 <!-- SEG:m68865:entry:auto-106 -->
-AsH~3~(*g*)
+AsH[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-107 -->
 66.44
@@ -326,7 +326,7 @@ AsH~3~(*g*)
 222.78
 
 <!-- SEG:m68865:entry:auto-110 -->
-H~3~AsO~4~(*s*)
+H[[sub:3]]AsO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-111 -->
 –906.3
@@ -341,7 +341,7 @@ H~3~AsO~4~(*s*)
 barium
 
 <!-- SEG:m68865:entry:auto-115 -->
-Ba(*s*)
+Ba({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-116 -->
 0
@@ -353,7 +353,7 @@ Ba(*s*)
 62.5
 
 <!-- SEG:m68865:entry:auto-119 -->
-Ba(*g*)
+Ba({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-120 -->
 180
@@ -365,7 +365,7 @@ Ba(*g*)
 170.24
 
 <!-- SEG:m68865:entry:auto-123 -->
-Ba^2+^(*aq*)
+Ba[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-124 -->
 –537.6
@@ -377,7 +377,7 @@ Ba^2+^(*aq*)
 9.6
 
 <!-- SEG:m68865:entry:auto-127 -->
-BaO(*s*)
+BaO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-128 -->
 –548.0
@@ -389,7 +389,7 @@ BaO(*s*)
 72.1
 
 <!-- SEG:m68865:entry:auto-131 -->
-BaCl~2~(*s*)
+BaCl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-132 -->
 –855.0
@@ -401,7 +401,7 @@ BaCl~2~(*s*)
 123.7
 
 <!-- SEG:m68865:entry:auto-135 -->
-BaSO~4~(*s*)
+BaSO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-136 -->
 –1473.2
@@ -416,7 +416,7 @@ BaSO~4~(*s*)
 beryllium
 
 <!-- SEG:m68865:entry:auto-140 -->
-Be(*s*)
+Be({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-141 -->
 0
@@ -428,7 +428,7 @@ Be(*s*)
 9.50
 
 <!-- SEG:m68865:entry:auto-144 -->
-Be(*g*)
+Be({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-145 -->
 324.3
@@ -440,7 +440,7 @@ Be(*g*)
 136.27
 
 <!-- SEG:m68865:entry:auto-148 -->
-BeO(*s*)
+BeO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-149 -->
 –609.4
@@ -455,7 +455,7 @@ BeO(*s*)
 bismuth
 
 <!-- SEG:m68865:entry:auto-153 -->
-Bi(*s*)
+Bi({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-154 -->
 0
@@ -467,7 +467,7 @@ Bi(*s*)
 56.74
 
 <!-- SEG:m68865:entry:auto-157 -->
-Bi(*g*)
+Bi({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-158 -->
 207.1
@@ -479,7 +479,7 @@ Bi(*g*)
 187.00
 
 <!-- SEG:m68865:entry:auto-161 -->
-Bi~2~O~3~(*s*)
+Bi[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-162 -->
 –573.88
@@ -491,7 +491,7 @@ Bi~2~O~3~(*s*)
 151.5
 
 <!-- SEG:m68865:entry:auto-165 -->
-BiCl~3~(*s*)
+BiCl[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-166 -->
 –379.07
@@ -503,7 +503,7 @@ BiCl~3~(*s*)
 176.98
 
 <!-- SEG:m68865:entry:auto-169 -->
-Bi~2~S~3~(*s*)
+Bi[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-170 -->
 –143.1
@@ -518,7 +518,7 @@ Bi~2~S~3~(*s*)
 boron
 
 <!-- SEG:m68865:entry:auto-174 -->
-B(*s*)
+B({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-175 -->
 0
@@ -530,7 +530,7 @@ B(*s*)
 5.86
 
 <!-- SEG:m68865:entry:auto-178 -->
-B(*g*)
+B({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-179 -->
 565.0
@@ -542,7 +542,7 @@ B(*g*)
 153.4
 
 <!-- SEG:m68865:entry:auto-182 -->
-B~2~O~3~(*s*)
+B[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-183 -->
 –1273.5
@@ -554,7 +554,7 @@ B~2~O~3~(*s*)
 53.97
 
 <!-- SEG:m68865:entry:auto-186 -->
-B~2~H~6~(*g*)
+B[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-187 -->
 36.4
@@ -566,7 +566,7 @@ B~2~H~6~(*g*)
 232.1
 
 <!-- SEG:m68865:entry:auto-190 -->
-H~3~BO~3~(*s*)
+H[[sub:3]]BO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-191 -->
 –1094.33
@@ -578,7 +578,7 @@ H~3~BO~3~(*s*)
 88.83
 
 <!-- SEG:m68865:entry:auto-194 -->
-BF~3~(*g*)
+BF[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-195 -->
 –1136.0
@@ -590,7 +590,7 @@ BF~3~(*g*)
 254.4
 
 <!-- SEG:m68865:entry:auto-198 -->
-BCl~3~(*g*)
+BCl[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-199 -->
 –403.8
@@ -602,7 +602,7 @@ BCl~3~(*g*)
 290.1
 
 <!-- SEG:m68865:entry:auto-202 -->
-B~3~N~3~H~6~(*l*)
+B[[sub:3]]N[[sub:3]]H[[sub:6]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-203 -->
 –540.99
@@ -614,7 +614,7 @@ B~3~N~3~H~6~(*l*)
 199.58
 
 <!-- SEG:m68865:entry:auto-206 -->
-HBO~2~(*s*)
+HBO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-207 -->
 –794.25
@@ -629,7 +629,7 @@ HBO~2~(*s*)
 bromine
 
 <!-- SEG:m68865:entry:auto-211 -->
-Br~2~(*l*)
+Br[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-212 -->
 0
@@ -641,7 +641,7 @@ Br~2~(*l*)
 152.23
 
 <!-- SEG:m68865:entry:auto-215 -->
-Br~2~(*g*)
+Br[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-216 -->
 30.91
@@ -653,7 +653,7 @@ Br~2~(*g*)
 245.5
 
 <!-- SEG:m68865:entry:auto-219 -->
-Br(*g*)
+Br({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-220 -->
 111.88
@@ -665,7 +665,7 @@ Br(*g*)
 175.0
 
 <!-- SEG:m68865:entry:auto-223 -->
-Br^–^(*aq*)
+Br[[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-224 -->
 –120.9
@@ -677,7 +677,7 @@ Br^–^(*aq*)
 80.71
 
 <!-- SEG:m68865:entry:auto-227 -->
-BrF~3~(*g*)
+BrF[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-228 -->
 –255.60
@@ -689,7 +689,7 @@ BrF~3~(*g*)
 292.42
 
 <!-- SEG:m68865:entry:auto-231 -->
-HBr(*g*)
+HBr({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-232 -->
 –36.3
@@ -704,7 +704,7 @@ HBr(*g*)
 cadmium
 
 <!-- SEG:m68865:entry:auto-236 -->
-Cd(*s*)
+Cd({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-237 -->
 0
@@ -716,7 +716,7 @@ Cd(*s*)
 51.76
 
 <!-- SEG:m68865:entry:auto-240 -->
-Cd(*g*)
+Cd({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-241 -->
 112.01
@@ -728,7 +728,7 @@ Cd(*g*)
 167.75
 
 <!-- SEG:m68865:entry:auto-244 -->
-Cd^2+^(*aq*)
+Cd[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-245 -->
 –75.90
@@ -740,7 +740,7 @@ Cd^2+^(*aq*)
 –73.2
 
 <!-- SEG:m68865:entry:auto-248 -->
-CdO(*s*)
+CdO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-249 -->
 –258.2
@@ -752,7 +752,7 @@ CdO(*s*)
 54.8
 
 <!-- SEG:m68865:entry:auto-252 -->
-CdCl~2~(*s*)
+CdCl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-253 -->
 –391.5
@@ -764,7 +764,7 @@ CdCl~2~(*s*)
 115.3
 
 <!-- SEG:m68865:entry:auto-256 -->
-CdSO~4~(*s*)
+CdSO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-257 -->
 –933.3
@@ -776,7 +776,7 @@ CdSO~4~(*s*)
 123.0
 
 <!-- SEG:m68865:entry:auto-260 -->
-CdS(*s*)
+CdS({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-261 -->
 –161.9
@@ -791,7 +791,7 @@ CdS(*s*)
 calcium
 
 <!-- SEG:m68865:entry:auto-265 -->
-Ca(*s*)
+Ca({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-266 -->
 0
@@ -803,7 +803,7 @@ Ca(*s*)
 41.6
 
 <!-- SEG:m68865:entry:auto-269 -->
-Ca(*g*)
+Ca({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-270 -->
 178.2
@@ -815,7 +815,7 @@ Ca(*g*)
 154.88
 
 <!-- SEG:m68865:entry:auto-273 -->
-Ca^2+^(*aq*)
+Ca[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-274 -->
 –542.96
@@ -827,7 +827,7 @@ Ca^2+^(*aq*)
 –55.2
 
 <!-- SEG:m68865:entry:auto-277 -->
-CaO(*s*)
+CaO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-278 -->
 –634.9
@@ -839,7 +839,7 @@ CaO(*s*)
 38.1
 
 <!-- SEG:m68865:entry:auto-281 -->
-Ca(OH)~2~(*s*)
+Ca(OH)[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-282 -->
 –985.2
@@ -851,7 +851,7 @@ Ca(OH)~2~(*s*)
 83.4
 
 <!-- SEG:m68865:entry:auto-285 -->
-CaSO~4~(s)
+CaSO[[sub:4]](s)
 
 <!-- SEG:m68865:entry:auto-286 -->
 –1434.5
@@ -863,7 +863,7 @@ CaSO~4~(s)
 106.5
 
 <!-- SEG:m68865:entry:auto-289 -->
-CaSO~4~·2H~2~O(*s*)
+CaSO[[sub:4]]·2H[[sub:2]]O({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-290 -->
 –2022.63
@@ -875,7 +875,7 @@ CaSO~4~·2H~2~O(*s*)
 194.14
 
 <!-- SEG:m68865:entry:auto-293 -->
-CaCO~3~(*s*) (calcite)
+CaCO[[sub:3]]({{i}}s{{/i}}) (calcite)
 
 <!-- SEG:m68865:entry:auto-294 -->
 –1220.0
@@ -887,7 +887,7 @@ CaCO~3~(*s*) (calcite)
 110.0
 
 <!-- SEG:m68865:entry:auto-297 -->
-CaSO~3~·H~2~O(*s*)
+CaSO[[sub:3]]·H[[sub:2]]O({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-298 -->
 –1752.68
@@ -902,7 +902,7 @@ CaSO~3~·H~2~O(*s*)
 carbon
 
 <!-- SEG:m68865:entry:auto-302 -->
-C(*s*) (graphite)
+C({{i}}s{{/i}}) (graphite)
 
 <!-- SEG:m68865:entry:auto-303 -->
 0
@@ -914,7 +914,7 @@ C(*s*) (graphite)
 5.740
 
 <!-- SEG:m68865:entry:auto-306 -->
-C(*s*) (diamond)
+C({{i}}s{{/i}}) (diamond)
 
 <!-- SEG:m68865:entry:auto-307 -->
 1.89
@@ -926,7 +926,7 @@ C(*s*) (diamond)
 2.38
 
 <!-- SEG:m68865:entry:auto-310 -->
-C(*g*)
+C({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-311 -->
 716.681
@@ -938,7 +938,7 @@ C(*g*)
 158.1
 
 <!-- SEG:m68865:entry:auto-314 -->
-CO(*g*)
+CO({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-315 -->
 –110.52
@@ -950,7 +950,7 @@ CO(*g*)
 197.7
 
 <!-- SEG:m68865:entry:auto-318 -->
-CO~2~(*g*)
+CO[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-319 -->
 –393.51
@@ -962,7 +962,7 @@ CO~2~(*g*)
 213.8
 
 <!-- SEG:m68865:entry:auto-322 -->
-CO~3~ ^2–^(*aq*)
+CO[[sub:3]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-323 -->
 –677.1
@@ -974,7 +974,7 @@ CO~3~ ^2–^(*aq*)
 –56.9
 
 <!-- SEG:m68865:entry:auto-326 -->
-CH~4~(*g*)
+CH[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-327 -->
 –74.6
@@ -986,7 +986,7 @@ CH~4~(*g*)
 186.3
 
 <!-- SEG:m68865:entry:auto-330 -->
-CH~3~OH(*l*)
+CH[[sub:3]]OH({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-331 -->
 –239.2
@@ -998,7 +998,7 @@ CH~3~OH(*l*)
 126.8
 
 <!-- SEG:m68865:entry:auto-334 -->
-CH~3~OH(*g*)
+CH[[sub:3]]OH({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-335 -->
 –201.0
@@ -1010,7 +1010,7 @@ CH~3~OH(*g*)
 239.9
 
 <!-- SEG:m68865:entry:auto-338 -->
-CCl~4~(*l*)
+CCl[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-339 -->
 –128.2
@@ -1022,7 +1022,7 @@ CCl~4~(*l*)
 214.4
 
 <!-- SEG:m68865:entry:auto-342 -->
-CCl~4~(*g*)
+CCl[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-343 -->
 –95.7
@@ -1034,7 +1034,7 @@ CCl~4~(*g*)
 309.7
 
 <!-- SEG:m68865:entry:auto-346 -->
-CHCl~3~(*l*)
+CHCl[[sub:3]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-347 -->
 –134.1
@@ -1046,7 +1046,7 @@ CHCl~3~(*l*)
 201.7
 
 <!-- SEG:m68865:entry:auto-350 -->
-CHCl~3~(*g*)
+CHCl[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-351 -->
 –103.14
@@ -1058,7 +1058,7 @@ CHCl~3~(*g*)
 295.71
 
 <!-- SEG:m68865:entry:auto-354 -->
-CS~2~(*l*)
+CS[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-355 -->
 89.70
@@ -1070,7 +1070,7 @@ CS~2~(*l*)
 151.34
 
 <!-- SEG:m68865:entry:auto-358 -->
-CS~2~(*g*)
+CS[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-359 -->
 116.9
@@ -1082,7 +1082,7 @@ CS~2~(*g*)
 238.0
 
 <!-- SEG:m68865:entry:auto-362 -->
-C~2~H~2~(*g*)
+C[[sub:2]]H[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-363 -->
 227.4
@@ -1094,7 +1094,7 @@ C~2~H~2~(*g*)
 200.9
 
 <!-- SEG:m68865:entry:auto-366 -->
-C~2~H~4~(*g*)
+C[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-367 -->
 52.4
@@ -1106,7 +1106,7 @@ C~2~H~4~(*g*)
 219.3
 
 <!-- SEG:m68865:entry:auto-370 -->
-C~2~H~6~(*g*)
+C[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-371 -->
 –84.0
@@ -1118,7 +1118,7 @@ C~2~H~6~(*g*)
 229.2
 
 <!-- SEG:m68865:entry:auto-374 -->
-CH~3~CO~2~H(*l*)
+CH[[sub:3]]CO[[sub:2]]H({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-375 -->
 –484.3
@@ -1130,7 +1130,7 @@ CH~3~CO~2~H(*l*)
 159.8
 
 <!-- SEG:m68865:entry:auto-378 -->
-CH~3~CO~2~H(*g*)
+CH[[sub:3]]CO[[sub:2]]H({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-379 -->
 –434.84
@@ -1142,7 +1142,7 @@ CH~3~CO~2~H(*g*)
 282.50
 
 <!-- SEG:m68865:entry:auto-382 -->
-C~2~H~5~OH(*l*)
+C[[sub:2]]H[[sub:5]]OH({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-383 -->
 –277.6
@@ -1154,7 +1154,7 @@ C~2~H~5~OH(*l*)
 160.7
 
 <!-- SEG:m68865:entry:auto-386 -->
-C~2~H~5~OH(*g*)
+C[[sub:2]]H[[sub:5]]OH({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-387 -->
 –234.8
@@ -1166,7 +1166,7 @@ C~2~H~5~OH(*g*)
 281.6
 
 <!-- SEG:m68865:entry:auto-390 -->
-HCO~3~ ^–^(*aq*)
+HCO[[sub:3]] [[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-391 -->
 –691.11
@@ -1178,7 +1178,7 @@ HCO~3~ ^–^(*aq*)
 95
 
 <!-- SEG:m68865:entry:auto-394 -->
-C~3~H~8~(*g*)
+C[[sub:3]]H[[sub:8]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-395 -->
 –103.8
@@ -1190,7 +1190,7 @@ C~3~H~8~(*g*)
 270.3
 
 <!-- SEG:m68865:entry:auto-398 -->
-C~6~H~6~(*g*)
+C[[sub:6]]H[[sub:6]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-399 -->
 82.927
@@ -1202,7 +1202,7 @@ C~6~H~6~(*g*)
 269.2
 
 <!-- SEG:m68865:entry:auto-402 -->
-C~6~H~6~(*l*)
+C[[sub:6]]H[[sub:6]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-403 -->
 49.1
@@ -1214,7 +1214,7 @@ C~6~H~6~(*l*)
 173.4
 
 <!-- SEG:m68865:entry:auto-406 -->
-CH~2~Cl~2~(*l*)
+CH[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-407 -->
 –124.2
@@ -1226,7 +1226,7 @@ CH~2~Cl~2~(*l*)
 177.8
 
 <!-- SEG:m68865:entry:auto-410 -->
-CH~2~Cl~2~(*g*)
+CH[[sub:2]]Cl[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-411 -->
 –95.4
@@ -1238,7 +1238,7 @@ CH~2~Cl~2~(*g*)
 270.2
 
 <!-- SEG:m68865:entry:auto-414 -->
-CH~3~Cl(*g*)
+CH[[sub:3]]Cl({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-415 -->
 –81.9
@@ -1250,7 +1250,7 @@ CH~3~Cl(*g*)
 234.6
 
 <!-- SEG:m68865:entry:auto-418 -->
-C~2~H~5~Cl(*l*)
+C[[sub:2]]H[[sub:5]]Cl({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-419 -->
 –136.52
@@ -1262,7 +1262,7 @@ C~2~H~5~Cl(*l*)
 190.79
 
 <!-- SEG:m68865:entry:auto-422 -->
-C~2~H~5~Cl(*g*)
+C[[sub:2]]H[[sub:5]]Cl({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-423 -->
 –112.17
@@ -1274,7 +1274,7 @@ C~2~H~5~Cl(*g*)
 276.00
 
 <!-- SEG:m68865:entry:auto-426 -->
-C~2~N~2~(*g*)
+C[[sub:2]]N[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-427 -->
 308.98
@@ -1286,7 +1286,7 @@ C~2~N~2~(*g*)
 241.90
 
 <!-- SEG:m68865:entry:auto-430 -->
-HCN(*l*)
+HCN({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-431 -->
 108.9
@@ -1298,7 +1298,7 @@ HCN(*l*)
 112.8
 
 <!-- SEG:m68865:entry:auto-434 -->
-HCN(*g*)
+HCN({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-435 -->
 135.5
@@ -1313,7 +1313,7 @@ HCN(*g*)
 cesium
 
 <!-- SEG:m68865:entry:auto-439 -->
-Cs^+^(*aq*)
+Cs[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-440 -->
 –248
@@ -1328,7 +1328,7 @@ Cs^+^(*aq*)
 chlorine
 
 <!-- SEG:m68865:entry:auto-444 -->
-Cl~2~(*g*)
+Cl[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-445 -->
 0
@@ -1340,7 +1340,7 @@ Cl~2~(*g*)
 223.1
 
 <!-- SEG:m68865:entry:auto-448 -->
-Cl(*g*)
+Cl({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-449 -->
 121.3
@@ -1352,7 +1352,7 @@ Cl(*g*)
 165.2
 
 <!-- SEG:m68865:entry:auto-452 -->
-Cl^–^(*aq*)
+Cl[[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-453 -->
 –167.2
@@ -1364,7 +1364,7 @@ Cl^–^(*aq*)
 56.5
 
 <!-- SEG:m68865:entry:auto-456 -->
-ClF(*g*)
+ClF({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-457 -->
 –54.48
@@ -1376,7 +1376,7 @@ ClF(*g*)
 217.78
 
 <!-- SEG:m68865:entry:auto-460 -->
-ClF~3~(*g*)
+ClF[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-461 -->
 –158.99
@@ -1388,7 +1388,7 @@ ClF~3~(*g*)
 281.50
 
 <!-- SEG:m68865:entry:auto-464 -->
-Cl~2~O(*g*)
+Cl[[sub:2]]O({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-465 -->
 80.3
@@ -1400,7 +1400,7 @@ Cl~2~O(*g*)
 266.2
 
 <!-- SEG:m68865:entry:auto-468 -->
-Cl~2~O~7~(*l*)
+Cl[[sub:2]]O[[sub:7]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-469 -->
 238.1
@@ -1412,7 +1412,7 @@ Cl~2~O~7~(*l*)
 —
 
 <!-- SEG:m68865:entry:auto-472 -->
-Cl~2~O~7~(*g*)
+Cl[[sub:2]]O[[sub:7]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-473 -->
 272.0
@@ -1424,7 +1424,7 @@ Cl~2~O~7~(*g*)
 —
 
 <!-- SEG:m68865:entry:auto-476 -->
-HCl(*g*)
+HCl({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-477 -->
 –92.307
@@ -1436,7 +1436,7 @@ HCl(*g*)
 186.9
 
 <!-- SEG:m68865:entry:auto-480 -->
-HClO~4~(*l*)
+HClO[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-481 -->
 –40.58
@@ -1451,7 +1451,7 @@ HClO~4~(*l*)
 chromium
 
 <!-- SEG:m68865:entry:auto-485 -->
-Cr(*s*)
+Cr({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-486 -->
 0
@@ -1463,7 +1463,7 @@ Cr(*s*)
 23.77
 
 <!-- SEG:m68865:entry:auto-489 -->
-Cr(*g*)
+Cr({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-490 -->
 396.6
@@ -1475,7 +1475,7 @@ Cr(*g*)
 174.50
 
 <!-- SEG:m68865:entry:auto-493 -->
-CrO~4~ ^2–^(*aq*)
+CrO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-494 -->
 –881.2
@@ -1487,7 +1487,7 @@ CrO~4~ ^2–^(*aq*)
 50.21
 
 <!-- SEG:m68865:entry:auto-497 -->
-Cr~2~O~7~ ^2–^(*aq*)
+Cr[[sub:2]]O[[sub:7]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-498 -->
 –1490.3
@@ -1499,7 +1499,7 @@ Cr~2~O~7~ ^2–^(*aq*)
 261.9
 
 <!-- SEG:m68865:entry:auto-501 -->
-Cr~2~O~3~(*s*)
+Cr[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-502 -->
 –1139.7
@@ -1511,7 +1511,7 @@ Cr~2~O~3~(*s*)
 81.2
 
 <!-- SEG:m68865:entry:auto-505 -->
-CrO~3~(*s*)
+CrO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-506 -->
 –589.5
@@ -1523,7 +1523,7 @@ CrO~3~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-509 -->
-(NH~4~)~2~Cr~2~O~7~(*s*)
+(NH[[sub:4]])[[sub:2]]Cr[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-510 -->
 –1806.7
@@ -1538,7 +1538,7 @@ CrO~3~(*s*)
 cobalt
 
 <!-- SEG:m68865:entry:auto-514 -->
-Co(*s*)
+Co({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-515 -->
 0
@@ -1550,7 +1550,7 @@ Co(*s*)
 30.0
 
 <!-- SEG:m68865:entry:auto-518 -->
-Co^2+^(*aq*)
+Co[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-519 -->
 –67.4
@@ -1562,7 +1562,7 @@ Co^2+^(*aq*)
 –155
 
 <!-- SEG:m68865:entry:auto-522 -->
-Co^3+^(*aq*)
+Co[[sup:3+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-523 -->
 92
@@ -1574,7 +1574,7 @@ Co^3+^(*aq*)
 –305.0
 
 <!-- SEG:m68865:entry:auto-526 -->
-CoO(*s*)
+CoO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-527 -->
 –237.9
@@ -1586,7 +1586,7 @@ CoO(*s*)
 52.97
 
 <!-- SEG:m68865:entry:auto-530 -->
-Co~3~O~4~(*s*)
+Co[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-531 -->
 –910.02
@@ -1598,7 +1598,7 @@ Co~3~O~4~(*s*)
 114.22
 
 <!-- SEG:m68865:entry:auto-534 -->
-Co(NO~3~)~2~(*s*)
+Co(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-535 -->
 –420.5
@@ -1613,7 +1613,7 @@ Co(NO~3~)~2~(*s*)
 copper
 
 <!-- SEG:m68865:entry:auto-539 -->
-Cu(*s*)
+Cu({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-540 -->
 0
@@ -1625,7 +1625,7 @@ Cu(*s*)
 33.15
 
 <!-- SEG:m68865:entry:auto-543 -->
-Cu(*g*)
+Cu({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-544 -->
 338.32
@@ -1637,7 +1637,7 @@ Cu(*g*)
 166.38
 
 <!-- SEG:m68865:entry:auto-547 -->
-Cu^+^(*aq*)
+Cu[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-548 -->
 51.9
@@ -1649,7 +1649,7 @@ Cu^+^(*aq*)
 –26
 
 <!-- SEG:m68865:entry:auto-551 -->
-Cu^2+^(*aq*)
+Cu[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-552 -->
 64.77
@@ -1661,7 +1661,7 @@ Cu^2+^(*aq*)
 –99.6
 
 <!-- SEG:m68865:entry:auto-555 -->
-CuO(*s*)
+CuO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-556 -->
 –157.3
@@ -1673,7 +1673,7 @@ CuO(*s*)
 42.63
 
 <!-- SEG:m68865:entry:auto-559 -->
-Cu~2~O(*s*)
+Cu[[sub:2]]O({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-560 -->
 –168.6
@@ -1685,7 +1685,7 @@ Cu~2~O(*s*)
 93.14
 
 <!-- SEG:m68865:entry:auto-563 -->
-CuS(*s*)
+CuS({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-564 -->
 –53.1
@@ -1697,7 +1697,7 @@ CuS(*s*)
 66.5
 
 <!-- SEG:m68865:entry:auto-567 -->
-Cu~2~S(*s*)
+Cu[[sub:2]]S({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-568 -->
 –79.5
@@ -1709,7 +1709,7 @@ Cu~2~S(*s*)
 120.9
 
 <!-- SEG:m68865:entry:auto-571 -->
-CuSO~4~(*s*)
+CuSO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-572 -->
 –771.36
@@ -1721,7 +1721,7 @@ CuSO~4~(*s*)
 109.2
 
 <!-- SEG:m68865:entry:auto-575 -->
-Cu(NO~3~)~2~(*s*)
+Cu(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-576 -->
 –302.9
@@ -1736,7 +1736,7 @@ Cu(NO~3~)~2~(*s*)
 fluorine
 
 <!-- SEG:m68865:entry:auto-580 -->
-F~2~(*g*)
+F[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-581 -->
 0
@@ -1748,7 +1748,7 @@ F~2~(*g*)
 202.8
 
 <!-- SEG:m68865:entry:auto-584 -->
-F(*g*)
+F({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-585 -->
 79.4
@@ -1760,7 +1760,7 @@ F(*g*)
 158.8
 
 <!-- SEG:m68865:entry:auto-588 -->
-F^–^(*aq*)
+F[[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-589 -->
 –332.6
@@ -1772,7 +1772,7 @@ F^–^(*aq*)
 –13.8
 
 <!-- SEG:m68865:entry:auto-592 -->
-F~2~O(*g*)
+F[[sub:2]]O({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-593 -->
 24.7
@@ -1784,7 +1784,7 @@ F~2~O(*g*)
 247.43
 
 <!-- SEG:m68865:entry:auto-596 -->
-HF(*g*)
+HF({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-597 -->
 –273.3
@@ -1799,7 +1799,7 @@ HF(*g*)
 hydrogen
 
 <!-- SEG:m68865:entry:auto-601 -->
-H~2~(*g*)
+H[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-602 -->
 0
@@ -1811,7 +1811,7 @@ H~2~(*g*)
 130.7
 
 <!-- SEG:m68865:entry:auto-605 -->
-H(*g*)
+H({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-606 -->
 217.97
@@ -1823,7 +1823,7 @@ H(*g*)
 114.7
 
 <!-- SEG:m68865:entry:auto-609 -->
-H^+^(*aq*)
+H[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-610 -->
 0
@@ -1835,7 +1835,7 @@ H^+^(*aq*)
 0
 
 <!-- SEG:m68865:entry:auto-613 -->
-OH^–^(*aq*)
+OH[[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-614 -->
 –230.0
@@ -1847,7 +1847,7 @@ OH^–^(*aq*)
 –10.75
 
 <!-- SEG:m68865:entry:auto-617 -->
-H~3~O^+^(*aq*)
+H[[sub:3]]O[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-618 -->
 –285.8
@@ -1856,7 +1856,7 @@ H~3~O^+^(*aq*)
 69.91
 
 <!-- SEG:m68865:entry:auto-620 -->
-H~2~O(*l*)
+H[[sub:2]]O({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-621 -->
 –285.83
@@ -1868,7 +1868,7 @@ H~2~O(*l*)
 70.0
 
 <!-- SEG:m68865:entry:auto-624 -->
-H~2~O(*g*)
+H[[sub:2]]O({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-625 -->
 –241.82
@@ -1880,7 +1880,7 @@ H~2~O(*g*)
 188.8
 
 <!-- SEG:m68865:entry:auto-628 -->
-H~2~O~2~(*l*)
+H[[sub:2]]O[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-629 -->
 –187.78
@@ -1892,7 +1892,7 @@ H~2~O~2~(*l*)
 109.6
 
 <!-- SEG:m68865:entry:auto-632 -->
-H~2~O~2~(*g*)
+H[[sub:2]]O[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-633 -->
 –136.3
@@ -1904,7 +1904,7 @@ H~2~O~2~(*g*)
 232.7
 
 <!-- SEG:m68865:entry:auto-636 -->
-HF(*g*)
+HF({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-637 -->
 –273.3
@@ -1916,7 +1916,7 @@ HF(*g*)
 173.8
 
 <!-- SEG:m68865:entry:auto-640 -->
-HCl(*g*)
+HCl({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-641 -->
 –92.307
@@ -1928,7 +1928,7 @@ HCl(*g*)
 186.9
 
 <!-- SEG:m68865:entry:auto-644 -->
-HBr(*g*)
+HBr({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-645 -->
 –36.3
@@ -1940,7 +1940,7 @@ HBr(*g*)
 198.7
 
 <!-- SEG:m68865:entry:auto-648 -->
-HI(*g*)
+HI({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-649 -->
 26.48
@@ -1952,7 +1952,7 @@ HI(*g*)
 206.59
 
 <!-- SEG:m68865:entry:auto-652 -->
-H~2~S(*g*)
+H[[sub:2]]S({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-653 -->
 –20.6
@@ -1964,7 +1964,7 @@ H~2~S(*g*)
 205.8
 
 <!-- SEG:m68865:entry:auto-656 -->
-H~2~Se(*g)*
+H[[sub:2]]Se({{i}}g){{/i}}
 
 <!-- SEG:m68865:entry:auto-657 -->
 29.7
@@ -1976,7 +1976,7 @@ H~2~Se(*g)*
 219.0
 
 <!-- SEG:m68865:entry:auto-660 -->
-HNO~3~
+HNO[[sub:3]]
 
 <!-- SEG:m68865:entry:auto-661 -->
 –206.64
@@ -1991,7 +1991,7 @@ HNO~3~
 iodine
 
 <!-- SEG:m68865:entry:auto-665 -->
-I~2~(*s*)
+I[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-666 -->
 0
@@ -2003,7 +2003,7 @@ I~2~(*s*)
 116.14
 
 <!-- SEG:m68865:entry:auto-669 -->
-I~2~(*g*)
+I[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-670 -->
 62.438
@@ -2015,7 +2015,7 @@ I~2~(*g*)
 260.7
 
 <!-- SEG:m68865:entry:auto-673 -->
-I(*g*)
+I({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-674 -->
 106.84
@@ -2027,7 +2027,7 @@ I(*g*)
 180.8
 
 <!-- SEG:m68865:entry:auto-677 -->
-I^–^(*aq*)
+I[[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-678 -->
 –55.19
@@ -2039,7 +2039,7 @@ I^–^(*aq*)
 11.13
 
 <!-- SEG:m68865:entry:auto-681 -->
-IF(*g*)
+IF({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-682 -->
 95.65
@@ -2051,7 +2051,7 @@ IF(*g*)
 236.06
 
 <!-- SEG:m68865:entry:auto-685 -->
-ICl(*g*)
+ICl({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-686 -->
 17.78
@@ -2063,7 +2063,7 @@ ICl(*g*)
 247.44
 
 <!-- SEG:m68865:entry:auto-689 -->
-IBr(*g*)
+IBr({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-690 -->
 40.84
@@ -2075,7 +2075,7 @@ IBr(*g*)
 258.66
 
 <!-- SEG:m68865:entry:auto-693 -->
-IF~7~(*g*)
+IF[[sub:7]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-694 -->
 –943.91
@@ -2087,7 +2087,7 @@ IF~7~(*g*)
 346.44
 
 <!-- SEG:m68865:entry:auto-697 -->
-HI(*g*)
+HI({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-698 -->
 26.48
@@ -2102,7 +2102,7 @@ HI(*g*)
 iron
 
 <!-- SEG:m68865:entry:auto-702 -->
-Fe(*s*)
+Fe({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-703 -->
 0
@@ -2114,7 +2114,7 @@ Fe(*s*)
 27.3
 
 <!-- SEG:m68865:entry:auto-706 -->
-Fe(*g*)
+Fe({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-707 -->
 416.3
@@ -2126,7 +2126,7 @@ Fe(*g*)
 180.5
 
 <!-- SEG:m68865:entry:auto-710 -->
-Fe^2+^(*aq*)
+Fe[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-711 -->
 –89.1
@@ -2138,7 +2138,7 @@ Fe^2+^(*aq*)
 –137.7
 
 <!-- SEG:m68865:entry:auto-714 -->
-Fe^3+^(*aq*)
+Fe[[sup:3+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-715 -->
 –48.5
@@ -2150,7 +2150,7 @@ Fe^3+^(*aq*)
 –315.9
 
 <!-- SEG:m68865:entry:auto-718 -->
-Fe~2~O~3~(*s*)
+Fe[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-719 -->
 –824.2
@@ -2162,7 +2162,7 @@ Fe~2~O~3~(*s*)
 87.40
 
 <!-- SEG:m68865:entry:auto-722 -->
-Fe~3~O~4~(*s*)
+Fe[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-723 -->
 –1118.4
@@ -2174,7 +2174,7 @@ Fe~3~O~4~(*s*)
 146.4
 
 <!-- SEG:m68865:entry:auto-726 -->
-Fe(CO)~5~(*l*)
+Fe(CO)[[sub:5]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-727 -->
 –774.04
@@ -2186,7 +2186,7 @@ Fe(CO)~5~(*l*)
 338.07
 
 <!-- SEG:m68865:entry:auto-730 -->
-Fe(CO)~5~(*g*)
+Fe(CO)[[sub:5]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-731 -->
 –733.87
@@ -2198,7 +2198,7 @@ Fe(CO)~5~(*g*)
 445.18
 
 <!-- SEG:m68865:entry:auto-734 -->
-FeCl~2~(*s*)
+FeCl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-735 -->
 –341.79
@@ -2210,7 +2210,7 @@ FeCl~2~(*s*)
 117.95
 
 <!-- SEG:m68865:entry:auto-738 -->
-FeCl~3~(*s*)
+FeCl[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-739 -->
 –399.49
@@ -2222,7 +2222,7 @@ FeCl~3~(*s*)
 142.3
 
 <!-- SEG:m68865:entry:auto-742 -->
-FeO(*s*)
+FeO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-743 -->
 –272.0
@@ -2234,7 +2234,7 @@ FeO(*s*)
 60.75
 
 <!-- SEG:m68865:entry:auto-746 -->
-Fe(OH)~2~(*s*)
+Fe(OH)[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-747 -->
 –569.0
@@ -2246,7 +2246,7 @@ Fe(OH)~2~(*s*)
 88.
 
 <!-- SEG:m68865:entry:auto-750 -->
-Fe(OH)~3~(*s)*
+Fe(OH)[[sub:3]]({{i}}s){{/i}}
 
 <!-- SEG:m68865:entry:auto-751 -->
 –823.0
@@ -2258,7 +2258,7 @@ Fe(OH)~3~(*s)*
 106.7
 
 <!-- SEG:m68865:entry:auto-754 -->
-FeS(*s*)
+FeS({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-755 -->
 –100.0
@@ -2270,7 +2270,7 @@ FeS(*s*)
 60.29
 
 <!-- SEG:m68865:entry:auto-758 -->
-Fe~3~C(*s*)
+Fe[[sub:3]]C({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-759 -->
 25.10
@@ -2285,7 +2285,7 @@ Fe~3~C(*s*)
 lead
 
 <!-- SEG:m68865:entry:auto-763 -->
-Pb(*s*)
+Pb({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-764 -->
 0
@@ -2297,7 +2297,7 @@ Pb(*s*)
 64.81
 
 <!-- SEG:m68865:entry:auto-767 -->
-Pb(*g*)
+Pb({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-768 -->
 195.2
@@ -2309,7 +2309,7 @@ Pb(*g*)
 175.4
 
 <!-- SEG:m68865:entry:auto-771 -->
-Pb^2+^(*aq*)
+Pb[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-772 -->
 –1.7
@@ -2321,7 +2321,7 @@ Pb^2+^(*aq*)
 10.5
 
 <!-- SEG:m68865:entry:auto-775 -->
-PbO(*s*) (yellow)
+PbO({{i}}s{{/i}}) (yellow)
 
 <!-- SEG:m68865:entry:auto-776 -->
 –217.32
@@ -2333,7 +2333,7 @@ PbO(*s*) (yellow)
 68.70
 
 <!-- SEG:m68865:entry:auto-779 -->
-PbO(*s*) (red)
+PbO({{i}}s{{/i}}) (red)
 
 <!-- SEG:m68865:entry:auto-780 -->
 –218.99
@@ -2345,7 +2345,7 @@ PbO(*s*) (red)
 66.5
 
 <!-- SEG:m68865:entry:auto-783 -->
-Pb(OH)~2~(*s*)
+Pb(OH)[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-784 -->
 –515.9
@@ -2357,7 +2357,7 @@ Pb(OH)~2~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-787 -->
-PbS(*s*)
+PbS({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-788 -->
 –100.4
@@ -2369,7 +2369,7 @@ PbS(*s*)
 91.2
 
 <!-- SEG:m68865:entry:auto-791 -->
-Pb(NO~3~)~2~(*s*)
+Pb(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-792 -->
 –451.9
@@ -2381,7 +2381,7 @@ Pb(NO~3~)~2~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-795 -->
-PbO~2~(*s*)
+PbO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-796 -->
 –277.4
@@ -2393,7 +2393,7 @@ PbO~2~(*s*)
 68.6
 
 <!-- SEG:m68865:entry:auto-799 -->
-PbCl~2~(*s*)
+PbCl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-800 -->
 –359.4
@@ -2408,7 +2408,7 @@ PbCl~2~(*s*)
 lithium
 
 <!-- SEG:m68865:entry:auto-804 -->
-Li(*s*)
+Li({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-805 -->
 0
@@ -2420,7 +2420,7 @@ Li(*s*)
 29.1
 
 <!-- SEG:m68865:entry:auto-808 -->
-Li(*g*)
+Li({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-809 -->
 159.3
@@ -2432,7 +2432,7 @@ Li(*g*)
 138.8
 
 <!-- SEG:m68865:entry:auto-812 -->
-Li^+^(*aq*)
+Li[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-813 -->
 –278.5
@@ -2444,7 +2444,7 @@ Li^+^(*aq*)
 13.4
 
 <!-- SEG:m68865:entry:auto-816 -->
-LiH(*s*)
+LiH({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-817 -->
 –90.5
@@ -2456,7 +2456,7 @@ LiH(*s*)
 20.0
 
 <!-- SEG:m68865:entry:auto-820 -->
-Li(OH)(*s*)
+Li(OH)({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-821 -->
 –487.5
@@ -2468,7 +2468,7 @@ Li(OH)(*s*)
 42.8
 
 <!-- SEG:m68865:entry:auto-824 -->
-LiF(*s*)
+LiF({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-825 -->
 –616.0
@@ -2480,7 +2480,7 @@ LiF(*s*)
 35.7
 
 <!-- SEG:m68865:entry:auto-828 -->
-Li~2~CO~3~(*s*)
+Li[[sub:2]]CO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-829 -->
 –1216.04
@@ -2495,7 +2495,7 @@ Li~2~CO~3~(*s*)
 magnesium
 
 <!-- SEG:m68865:entry:auto-833 -->
-Mg^2+^(*aq*)
+Mg[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-834 -->
 –466.9
@@ -2510,7 +2510,7 @@ Mg^2+^(*aq*)
 manganese
 
 <!-- SEG:m68865:entry:auto-838 -->
-Mn(*s*)
+Mn({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-839 -->
 0
@@ -2522,7 +2522,7 @@ Mn(*s*)
 32.0
 
 <!-- SEG:m68865:entry:auto-842 -->
-Mn(*g*)
+Mn({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-843 -->
 280.7
@@ -2534,7 +2534,7 @@ Mn(*g*)
 173.7
 
 <!-- SEG:m68865:entry:auto-846 -->
-Mn^2+^(*aq*)
+Mn[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-847 -->
 –220.8
@@ -2546,7 +2546,7 @@ Mn^2+^(*aq*)
 –73.6
 
 <!-- SEG:m68865:entry:auto-850 -->
-MnO(*s*)
+MnO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-851 -->
 –385.2
@@ -2558,7 +2558,7 @@ MnO(*s*)
 59.71
 
 <!-- SEG:m68865:entry:auto-854 -->
-MnO~2~(*s*)
+MnO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-855 -->
 –520.03
@@ -2570,7 +2570,7 @@ MnO~2~(*s*)
 53.05
 
 <!-- SEG:m68865:entry:auto-858 -->
-Mn~2~O~3~(*s*)
+Mn[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-859 -->
 –958.97
@@ -2582,7 +2582,7 @@ Mn~2~O~3~(*s*)
 110.46
 
 <!-- SEG:m68865:entry:auto-862 -->
-Mn~3~O~4~(*s*)
+Mn[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-863 -->
 –1378.83
@@ -2594,7 +2594,7 @@ Mn~3~O~4~(*s*)
 155.64
 
 <!-- SEG:m68865:entry:auto-866 -->
-MnO~4~ ^–^(*aq*)
+MnO[[sub:4]] [[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-867 -->
 –541.4
@@ -2606,7 +2606,7 @@ MnO~4~ ^–^(*aq*)
 191.2
 
 <!-- SEG:m68865:entry:auto-870 -->
-MnO~4~ ^2–^(*aq*)
+MnO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-871 -->
 –653.0
@@ -2621,7 +2621,7 @@ MnO~4~ ^2–^(*aq*)
 mercury
 
 <!-- SEG:m68865:entry:auto-875 -->
-Hg(*l*)
+Hg({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-876 -->
 0
@@ -2633,7 +2633,7 @@ Hg(*l*)
 75.9
 
 <!-- SEG:m68865:entry:auto-879 -->
-Hg(*g*)
+Hg({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-880 -->
 61.4
@@ -2645,13 +2645,13 @@ Hg(*g*)
 175.0
 
 <!-- SEG:m68865:entry:auto-883 -->
-Hg^2+^(*aq*)
+Hg[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-884 -->
 164.8
 
 <!-- SEG:m68865:entry:auto-885 -->
-Hg^2+^(*aq*)
+Hg[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-886 -->
 172.4
@@ -2663,7 +2663,7 @@ Hg^2+^(*aq*)
 84.5
 
 <!-- SEG:m68865:entry:auto-889 -->
-HgO(*s*) (red)
+HgO({{i}}s{{/i}}) (red)
 
 <!-- SEG:m68865:entry:auto-890 -->
 –90.83
@@ -2675,7 +2675,7 @@ HgO(*s*) (red)
 70.29
 
 <!-- SEG:m68865:entry:auto-893 -->
-HgO(*s*) (yellow)
+HgO({{i}}s{{/i}}) (yellow)
 
 <!-- SEG:m68865:entry:auto-894 -->
 –90.46
@@ -2687,7 +2687,7 @@ HgO(*s*) (yellow)
 71.13
 
 <!-- SEG:m68865:entry:auto-897 -->
-HgCl~2~(*s*)
+HgCl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-898 -->
 –224.3
@@ -2699,7 +2699,7 @@ HgCl~2~(*s*)
 146.0
 
 <!-- SEG:m68865:entry:auto-901 -->
-Hg~2~Cl~2~(*s*)
+Hg[[sub:2]]Cl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-902 -->
 –265.4
@@ -2711,7 +2711,7 @@ Hg~2~Cl~2~(*s*)
 191.6
 
 <!-- SEG:m68865:entry:auto-905 -->
-HgS(*s*) (red)
+HgS({{i}}s{{/i}}) (red)
 
 <!-- SEG:m68865:entry:auto-906 -->
 –58.16
@@ -2723,7 +2723,7 @@ HgS(*s*) (red)
 82.4
 
 <!-- SEG:m68865:entry:auto-909 -->
-HgS(*s*) (black)
+HgS({{i}}s{{/i}}) (black)
 
 <!-- SEG:m68865:entry:auto-910 -->
 –53.56
@@ -2735,7 +2735,7 @@ HgS(*s*) (black)
 88.28
 
 <!-- SEG:m68865:entry:auto-913 -->
-HgSO~4~(*s)*
+HgSO[[sub:4]]({{i}}s){{/i}}
 
 <!-- SEG:m68865:entry:auto-914 -->
 –707.51
@@ -2750,7 +2750,7 @@ HgSO~4~(*s)*
 nickel
 
 <!-- SEG:m68865:entry:auto-918 -->
-Ni^2+^(*aq*)
+Ni[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-919 -->
 –64.0
@@ -2765,7 +2765,7 @@ Ni^2+^(*aq*)
 nitrogen
 
 <!-- SEG:m68865:entry:auto-923 -->
-N~2~(*g*)
+N[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-924 -->
 0
@@ -2777,7 +2777,7 @@ N~2~(*g*)
 191.6
 
 <!-- SEG:m68865:entry:auto-927 -->
-N(*g*)
+N({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-928 -->
 472.704
@@ -2789,7 +2789,7 @@ N(*g*)
 153.3
 
 <!-- SEG:m68865:entry:auto-931 -->
-NO(*g*)
+NO({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-932 -->
 90.25
@@ -2801,7 +2801,7 @@ NO(*g*)
 210.8
 
 <!-- SEG:m68865:entry:auto-935 -->
-NO~2~(*g*)
+NO[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-936 -->
 33.2
@@ -2813,7 +2813,7 @@ NO~2~(*g*)
 240.1
 
 <!-- SEG:m68865:entry:auto-939 -->
-N~2~O(*g*)
+N[[sub:2]]O({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-940 -->
 81.6
@@ -2825,7 +2825,7 @@ N~2~O(*g*)
 220.0
 
 <!-- SEG:m68865:entry:auto-943 -->
-N~2~O~3~(*g*)
+N[[sub:2]]O[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-944 -->
 83.72
@@ -2837,7 +2837,7 @@ N~2~O~3~(*g*)
 312.17
 
 <!-- SEG:m68865:entry:auto-947 -->
-NO~3~ ^–^(*aq*)
+NO[[sub:3]] [[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-948 -->
 –205.0
@@ -2849,7 +2849,7 @@ NO~3~ ^–^(*aq*)
 146.4
 
 <!-- SEG:m68865:entry:auto-951 -->
-N~2~O~4~(*g*)
+N[[sub:2]]O[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-952 -->
 11.1
@@ -2861,7 +2861,7 @@ N~2~O~4~(*g*)
 304.4
 
 <!-- SEG:m68865:entry:auto-955 -->
-N~2~O~5~(*g*)
+N[[sub:2]]O[[sub:5]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-956 -->
 11.3
@@ -2873,7 +2873,7 @@ N~2~O~5~(*g*)
 355.7
 
 <!-- SEG:m68865:entry:auto-959 -->
-NH~3~(*g*)
+NH[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-960 -->
 –45.9
@@ -2885,7 +2885,7 @@ NH~3~(*g*)
 192.8
 
 <!-- SEG:m68865:entry:auto-963 -->
-NH~4~ ^+^(*aq*)
+NH[[sub:4]] [[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-964 -->
 –132.5
@@ -2897,7 +2897,7 @@ NH~4~ ^+^(*aq*)
 113.4
 
 <!-- SEG:m68865:entry:auto-967 -->
-N~2~H~4~(*l*)
+N[[sub:2]]H[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-968 -->
 50.63
@@ -2909,7 +2909,7 @@ N~2~H~4~(*l*)
 121.21
 
 <!-- SEG:m68865:entry:auto-971 -->
-N~2~H~4~(*g*)
+N[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-972 -->
 95.4
@@ -2921,7 +2921,7 @@ N~2~H~4~(*g*)
 238.5
 
 <!-- SEG:m68865:entry:auto-975 -->
-NH~4~NO~3~(*s*)
+NH[[sub:4]]NO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-976 -->
 –365.56
@@ -2933,7 +2933,7 @@ NH~4~NO~3~(*s*)
 151.08
 
 <!-- SEG:m68865:entry:auto-979 -->
-NH~4~Cl(*s*)
+NH[[sub:4]]Cl({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-980 -->
 –314.43
@@ -2945,7 +2945,7 @@ NH~4~Cl(*s*)
 94.6
 
 <!-- SEG:m68865:entry:auto-983 -->
-NH~4~Br(*s)*
+NH[[sub:4]]Br({{i}}s){{/i}}
 
 <!-- SEG:m68865:entry:auto-984 -->
 –270.8
@@ -2957,7 +2957,7 @@ NH~4~Br(*s)*
 113.0
 
 <!-- SEG:m68865:entry:auto-987 -->
-NH~4~I(*s*)
+NH[[sub:4]]I({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-988 -->
 –201.4
@@ -2969,7 +2969,7 @@ NH~4~I(*s*)
 117.0
 
 <!-- SEG:m68865:entry:auto-991 -->
-NH~4~NO~2~(*s*)
+NH[[sub:4]]NO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-992 -->
 –256.5
@@ -2981,7 +2981,7 @@ NH~4~NO~2~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-995 -->
-HNO~3~(*l*)
+HNO[[sub:3]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-996 -->
 –174.1
@@ -2993,7 +2993,7 @@ HNO~3~(*l*)
 155.6
 
 <!-- SEG:m68865:entry:auto-999 -->
-HNO~3~(*g*)
+HNO[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1000 -->
 –133.9
@@ -3005,7 +3005,7 @@ HNO~3~(*g*)
 266.9
 
 <!-- SEG:m68865:entry:auto-1003 -->
-HNO~3~(*aq*)
+HNO[[sub:3]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1004 -->
 –207.4
@@ -3020,7 +3020,7 @@ HNO~3~(*aq*)
 oxygen
 
 <!-- SEG:m68865:entry:auto-1008 -->
-O~2~(*g*)
+O[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1009 -->
 0
@@ -3032,7 +3032,7 @@ O~2~(*g*)
 205.2
 
 <!-- SEG:m68865:entry:auto-1012 -->
-O(*g*)
+O({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1013 -->
 249.17
@@ -3044,7 +3044,7 @@ O(*g*)
 161.1
 
 <!-- SEG:m68865:entry:auto-1016 -->
-O~3~(*g*)
+O[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1017 -->
 142.7
@@ -3059,7 +3059,7 @@ O~3~(*g*)
 phosphorus
 
 <!-- SEG:m68865:entry:auto-1021 -->
-P~4~(*s*)
+P[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1022 -->
 0
@@ -3071,7 +3071,7 @@ P~4~(*s*)
 164.4
 
 <!-- SEG:m68865:entry:auto-1025 -->
-P~4~(*g*)
+P[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1026 -->
 58.91
@@ -3083,7 +3083,7 @@ P~4~(*g*)
 280.0
 
 <!-- SEG:m68865:entry:auto-1029 -->
-P(*g*)
+P({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1030 -->
 314.64
@@ -3095,7 +3095,7 @@ P(*g*)
 163.19
 
 <!-- SEG:m68865:entry:auto-1033 -->
-PH~3~(*g*)
+PH[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1034 -->
 5.4
@@ -3107,7 +3107,7 @@ PH~3~(*g*)
 210.2
 
 <!-- SEG:m68865:entry:auto-1037 -->
-PCl~3~(*g*)
+PCl[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1038 -->
 –287.0
@@ -3119,7 +3119,7 @@ PCl~3~(*g*)
 311.78
 
 <!-- SEG:m68865:entry:auto-1041 -->
-PCl~5~(*g*)
+PCl[[sub:5]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1042 -->
 –374.9
@@ -3131,7 +3131,7 @@ PCl~5~(*g*)
 364.4
 
 <!-- SEG:m68865:entry:auto-1045 -->
-P~4~O~6~(*s*)
+P[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1046 -->
 –1640.1
@@ -3143,7 +3143,7 @@ P~4~O~6~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-1049 -->
-P~4~O~10~(*s*)
+P[[sub:4]]O[[sub:10]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1050 -->
 –2984.0
@@ -3155,7 +3155,7 @@ P~4~O~10~(*s*)
 228.86
 
 <!-- SEG:m68865:entry:auto-1053 -->
-PO~4~ ^3–^(*aq*)
+PO[[sub:4]] [[sup:3–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1054 -->
 –1277
@@ -3167,7 +3167,7 @@ PO~4~ ^3–^(*aq*)
 –222
 
 <!-- SEG:m68865:entry:auto-1057 -->
-HPO~3~(*s*)
+HPO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1058 -->
 –948.5
@@ -3179,7 +3179,7 @@ HPO~3~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-1061 -->
-HPO~4~ ^2–^(*aq*)
+HPO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1062 -->
 –1292.1
@@ -3191,7 +3191,7 @@ HPO~4~ ^2–^(*aq*)
 –33
 
 <!-- SEG:m68865:entry:auto-1065 -->
-H~2~PO~4~ ^2–^(*aq*)
+H[[sub:2]]PO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1066 -->
 –1296.3
@@ -3203,7 +3203,7 @@ H~2~PO~4~ ^2–^(*aq*)
 90.4
 
 <!-- SEG:m68865:entry:auto-1069 -->
-H~3~PO~2~(*s*)
+H[[sub:3]]PO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1070 -->
 –604.6
@@ -3215,7 +3215,7 @@ H~3~PO~2~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-1073 -->
-H~3~PO~3~(*s*)
+H[[sub:3]]PO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1074 -->
 –964.4
@@ -3227,7 +3227,7 @@ H~3~PO~3~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-1077 -->
-H~3~PO~4~(*s*)
+H[[sub:3]]PO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1078 -->
 –1279.0
@@ -3239,7 +3239,7 @@ H~3~PO~4~(*s*)
 110.50
 
 <!-- SEG:m68865:entry:auto-1081 -->
-H~3~PO~4~*(l*)
+H[[sub:3]]PO[[sub:4]]{{i}}(l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1082 -->
 –1266.9
@@ -3251,7 +3251,7 @@ H~3~PO~4~*(l*)
 110.5
 
 <!-- SEG:m68865:entry:auto-1085 -->
-H~4~P~2~O~7~(*s*)
+H[[sub:4]]P[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1086 -->
 –2241.0
@@ -3263,7 +3263,7 @@ H~4~P~2~O~7~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-1089 -->
-POCl~3~(*l*)
+POCl[[sub:3]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1090 -->
 –597.1
@@ -3275,7 +3275,7 @@ POCl~3~(*l*)
 222.5
 
 <!-- SEG:m68865:entry:auto-1093 -->
-POCl~3~(*g*)
+POCl[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1094 -->
 –558.5
@@ -3290,7 +3290,7 @@ POCl~3~(*g*)
 potassium
 
 <!-- SEG:m68865:entry:auto-1098 -->
-K(*s*)
+K({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1099 -->
 0
@@ -3302,7 +3302,7 @@ K(*s*)
 64.7
 
 <!-- SEG:m68865:entry:auto-1102 -->
-K(*g*)
+K({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1103 -->
 89.0
@@ -3314,7 +3314,7 @@ K(*g*)
 160.3
 
 <!-- SEG:m68865:entry:auto-1106 -->
-K^+^(*aq*)
+K[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1107 -->
 –252.4
@@ -3326,7 +3326,7 @@ K^+^(*aq*)
 102.5
 
 <!-- SEG:m68865:entry:auto-1110 -->
-KF(*s*)
+KF({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1111 -->
 –576.27
@@ -3338,7 +3338,7 @@ KF(*s*)
 66.57
 
 <!-- SEG:m68865:entry:auto-1114 -->
-KCl(*s*)
+KCl({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1115 -->
 –436.5
@@ -3353,7 +3353,7 @@ KCl(*s*)
 rubidium
 
 <!-- SEG:m68865:entry:auto-1119 -->
-Rb^+^(*aq*)
+Rb[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1120 -->
 –246
@@ -3368,7 +3368,7 @@ Rb^+^(*aq*)
 silicon
 
 <!-- SEG:m68865:entry:auto-1124 -->
-Si(*s*)
+Si({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1125 -->
 0
@@ -3380,7 +3380,7 @@ Si(*s*)
 18.8
 
 <!-- SEG:m68865:entry:auto-1128 -->
-Si(*g)*
+Si({{i}}g){{/i}}
 
 <!-- SEG:m68865:entry:auto-1129 -->
 450.0
@@ -3392,7 +3392,7 @@ Si(*g)*
 168.0
 
 <!-- SEG:m68865:entry:auto-1132 -->
-SiO~2~(*s*)
+SiO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1133 -->
 –910.7
@@ -3404,7 +3404,7 @@ SiO~2~(*s*)
 41.5
 
 <!-- SEG:m68865:entry:auto-1136 -->
-SiH~4~(*g*)
+SiH[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1137 -->
 34.3
@@ -3416,7 +3416,7 @@ SiH~4~(*g*)
 204.6
 
 <!-- SEG:m68865:entry:auto-1140 -->
-H~2~SiO~3~(*s*)
+H[[sub:2]]SiO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1141 -->
 –1188.67
@@ -3428,7 +3428,7 @@ H~2~SiO~3~(*s*)
 133.89
 
 <!-- SEG:m68865:entry:auto-1144 -->
-H~4~SiO~4~(*s*)
+H[[sub:4]]SiO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1145 -->
 –1481.14
@@ -3440,7 +3440,7 @@ H~4~SiO~4~(*s*)
 192.46
 
 <!-- SEG:m68865:entry:auto-1148 -->
-SiF~4~(*g*)
+SiF[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1149 -->
 –1615.0
@@ -3452,7 +3452,7 @@ SiF~4~(*g*)
 282.8
 
 <!-- SEG:m68865:entry:auto-1152 -->
-SiCl~4~(*l*)
+SiCl[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1153 -->
 –687.0
@@ -3464,7 +3464,7 @@ SiCl~4~(*l*)
 239.7
 
 <!-- SEG:m68865:entry:auto-1156 -->
-SiCl~4~(*g*)
+SiCl[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1157 -->
 –662.75
@@ -3476,7 +3476,7 @@ SiCl~4~(*g*)
 330.62
 
 <!-- SEG:m68865:entry:auto-1160 -->
-SiC(*s, beta cubic*)
+SiC({{i}}s, beta cubic{{/i}})
 
 <!-- SEG:m68865:entry:auto-1161 -->
 –73.22
@@ -3488,7 +3488,7 @@ SiC(*s, beta cubic*)
 16.61
 
 <!-- SEG:m68865:entry:auto-1164 -->
-SiC(*s, alpha hexagonal*)
+SiC({{i}}s, alpha hexagonal{{/i}})
 
 <!-- SEG:m68865:entry:auto-1165 -->
 –71.55
@@ -3503,7 +3503,7 @@ SiC(*s, alpha hexagonal*)
 silver
 
 <!-- SEG:m68865:entry:auto-1169 -->
-Ag(*s*)
+Ag({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1170 -->
 0
@@ -3515,7 +3515,7 @@ Ag(*s*)
 42.55
 
 <!-- SEG:m68865:entry:auto-1173 -->
-Ag(*g*)
+Ag({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1174 -->
 284.9
@@ -3527,7 +3527,7 @@ Ag(*g*)
 172.89
 
 <!-- SEG:m68865:entry:auto-1177 -->
-Ag^+^(*aq*)
+Ag[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1178 -->
 105.6
@@ -3539,7 +3539,7 @@ Ag^+^(*aq*)
 72.68
 
 <!-- SEG:m68865:entry:auto-1181 -->
-Ag~2~O(*s*)
+Ag[[sub:2]]O({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1182 -->
 –31.05
@@ -3551,7 +3551,7 @@ Ag~2~O(*s*)
 121.3
 
 <!-- SEG:m68865:entry:auto-1185 -->
-AgCl(*s*)
+AgCl({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1186 -->
 –127.0
@@ -3563,7 +3563,7 @@ AgCl(*s*)
 96.3
 
 <!-- SEG:m68865:entry:auto-1189 -->
-Ag~2~S(*s*)
+Ag[[sub:2]]S({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1190 -->
 –32.6
@@ -3578,7 +3578,7 @@ Ag~2~S(*s*)
 sodium
 
 <!-- SEG:m68865:entry:auto-1194 -->
-Na(*s*)
+Na({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1195 -->
 0
@@ -3590,7 +3590,7 @@ Na(*s*)
 51.3
 
 <!-- SEG:m68865:entry:auto-1198 -->
-Na(*g*)
+Na({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1199 -->
 107.5
@@ -3602,7 +3602,7 @@ Na(*g*)
 153.7
 
 <!-- SEG:m68865:entry:auto-1202 -->
-Na^+^(*aq*)
+Na[[sup:+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1203 -->
 –240.1
@@ -3614,7 +3614,7 @@ Na^+^(*aq*)
 59
 
 <!-- SEG:m68865:entry:auto-1206 -->
-Na~2~O(*s*)
+Na[[sub:2]]O({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1207 -->
 –414.2
@@ -3626,7 +3626,7 @@ Na~2~O(*s*)
 75.1
 
 <!-- SEG:m68865:entry:auto-1210 -->
-NaCl(*s*)
+NaCl({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1211 -->
 –411.2
@@ -3641,7 +3641,7 @@ NaCl(*s*)
 strontium
 
 <!-- SEG:m68865:entry:auto-1215 -->
-Sr^2+^(*aq*)
+Sr[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1216 -->
 –545.8
@@ -3656,7 +3656,7 @@ Sr^2+^(*aq*)
 sulfur
 
 <!-- SEG:m68865:entry:auto-1220 -->
-S~8~(*s*) (rhombic)
+S[[sub:8]]({{i}}s{{/i}}) (rhombic)
 
 <!-- SEG:m68865:entry:auto-1221 -->
 0
@@ -3668,7 +3668,7 @@ S~8~(*s*) (rhombic)
 256.8
 
 <!-- SEG:m68865:entry:auto-1224 -->
-S(*g*)
+S({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1225 -->
 278.81
@@ -3680,7 +3680,7 @@ S(*g*)
 167.82
 
 <!-- SEG:m68865:entry:auto-1228 -->
-S^2–^(*aq*)
+S[[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1229 -->
 41.8
@@ -3692,7 +3692,7 @@ S^2–^(*aq*)
 22
 
 <!-- SEG:m68865:entry:auto-1232 -->
-SO~2~(*g*)
+SO[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1233 -->
 –296.83
@@ -3704,7 +3704,7 @@ SO~2~(*g*)
 248.2
 
 <!-- SEG:m68865:entry:auto-1236 -->
-SO~3~(*g*)
+SO[[sub:3]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1237 -->
 –395.72
@@ -3716,7 +3716,7 @@ SO~3~(*g*)
 256.76
 
 <!-- SEG:m68865:entry:auto-1240 -->
-SO~4~ ^2–^(*aq*)
+SO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1241 -->
 –909.3
@@ -3728,7 +3728,7 @@ SO~4~ ^2–^(*aq*)
 20.1
 
 <!-- SEG:m68865:entry:auto-1244 -->
-S~2~O~3~ ^2–^(*aq*)
+S[[sub:2]]O[[sub:3]] [[sup:2–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1245 -->
 –648.5
@@ -3740,7 +3740,7 @@ S~2~O~3~ ^2–^(*aq*)
 67
 
 <!-- SEG:m68865:entry:auto-1248 -->
-H~2~S(*g*)
+H[[sub:2]]S({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1249 -->
 –20.6
@@ -3752,7 +3752,7 @@ H~2~S(*g*)
 205.8
 
 <!-- SEG:m68865:entry:auto-1252 -->
-HS^–^(*aq*)
+HS[[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1253 -->
 –17.7
@@ -3764,7 +3764,7 @@ HS^–^(*aq*)
 61.1
 
 <!-- SEG:m68865:entry:auto-1256 -->
-H~2~SO~4~(*l*)
+H[[sub:2]]SO[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1257 -->
 –813.989
@@ -3776,7 +3776,7 @@ H~2~SO~4~(*l*)
 156.90
 
 <!-- SEG:m68865:entry:auto-1260 -->
-HSO~4~ ^–^(*aq*)
+HSO[[sub:4]] [[sup:–]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1261 -->
 –885.75
@@ -3788,7 +3788,7 @@ HSO~4~ ^–^(*aq*)
 126.9
 
 <!-- SEG:m68865:entry:auto-1264 -->
-H~2~S~2~O~7~(*s*)
+H[[sub:2]]S[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1265 -->
 –1273.6
@@ -3800,7 +3800,7 @@ H~2~S~2~O~7~(*s*)
 —
 
 <!-- SEG:m68865:entry:auto-1268 -->
-SF~4~(*g*)
+SF[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1269 -->
 –728.43
@@ -3812,7 +3812,7 @@ SF~4~(*g*)
 291.12
 
 <!-- SEG:m68865:entry:auto-1272 -->
-SF~6~(*g*)
+SF[[sub:6]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1273 -->
 –1220.5
@@ -3824,7 +3824,7 @@ SF~6~(*g*)
 291.5
 
 <!-- SEG:m68865:entry:auto-1276 -->
-SCl~2~(*l*)
+SCl[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1277 -->
 –50
@@ -3836,7 +3836,7 @@ SCl~2~(*l*)
 —
 
 <!-- SEG:m68865:entry:auto-1280 -->
-SCl~2~(*g)*
+SCl[[sub:2]]({{i}}g){{/i}}
 
 <!-- SEG:m68865:entry:auto-1281 -->
 –19.7
@@ -3848,7 +3848,7 @@ SCl~2~(*g)*
 —
 
 <!-- SEG:m68865:entry:auto-1284 -->
-S~2~Cl~2~(*l*)
+S[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1285 -->
 –59.4
@@ -3860,7 +3860,7 @@ S~2~Cl~2~(*l*)
 —
 
 <!-- SEG:m68865:entry:auto-1288 -->
-S~2~Cl~2~(*g*)
+S[[sub:2]]Cl[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1289 -->
 –19.50
@@ -3872,7 +3872,7 @@ S~2~Cl~2~(*g*)
 319.45
 
 <!-- SEG:m68865:entry:auto-1292 -->
-SOCl~2~(*g*)
+SOCl[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1293 -->
 –212.55
@@ -3884,7 +3884,7 @@ SOCl~2~(*g*)
 309.66
 
 <!-- SEG:m68865:entry:auto-1296 -->
-SOCl~2~(*l*)
+SOCl[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1297 -->
 –245.6
@@ -3896,7 +3896,7 @@ SOCl~2~(*l*)
 —
 
 <!-- SEG:m68865:entry:auto-1300 -->
-SO~2~Cl~2~(*l*)
+SO[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1301 -->
 –394.1
@@ -3908,7 +3908,7 @@ SO~2~Cl~2~(*l*)
 —
 
 <!-- SEG:m68865:entry:auto-1304 -->
-SO~2~Cl~2~(g)
+SO[[sub:2]]Cl[[sub:2]](g)
 
 <!-- SEG:m68865:entry:auto-1305 -->
 –354.80
@@ -3923,7 +3923,7 @@ SO~2~Cl~2~(g)
 tin
 
 <!-- SEG:m68865:entry:auto-1309 -->
-Sn(*s*)
+Sn({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1310 -->
 0
@@ -3935,7 +3935,7 @@ Sn(*s*)
 51.2
 
 <!-- SEG:m68865:entry:auto-1313 -->
-Sn(*g*)
+Sn({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1314 -->
 301.2
@@ -3947,7 +3947,7 @@ Sn(*g*)
 168.5
 
 <!-- SEG:m68865:entry:auto-1317 -->
-SnO(*s*)
+SnO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1318 -->
 –285.8
@@ -3959,7 +3959,7 @@ SnO(*s*)
 56.5
 
 <!-- SEG:m68865:entry:auto-1321 -->
-SnO~2~(*s*)
+SnO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1322 -->
 –577.6
@@ -3971,7 +3971,7 @@ SnO~2~(*s*)
 49.0
 
 <!-- SEG:m68865:entry:auto-1325 -->
-SnCl~4~(*l*)
+SnCl[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1326 -->
 –511.3
@@ -3983,7 +3983,7 @@ SnCl~4~(*l*)
 258.6
 
 <!-- SEG:m68865:entry:auto-1329 -->
-SnCl~4~(*g*)
+SnCl[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1330 -->
 –471.5
@@ -3998,7 +3998,7 @@ SnCl~4~(*g*)
 titanium
 
 <!-- SEG:m68865:entry:auto-1334 -->
-Ti(*s*)
+Ti({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1335 -->
 0
@@ -4010,7 +4010,7 @@ Ti(*s*)
 30.7
 
 <!-- SEG:m68865:entry:auto-1338 -->
-Ti(*g*)
+Ti({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1339 -->
 473.0
@@ -4022,7 +4022,7 @@ Ti(*g*)
 180.3
 
 <!-- SEG:m68865:entry:auto-1342 -->
-TiO~2~(*s*)
+TiO[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1343 -->
 –944.0
@@ -4034,7 +4034,7 @@ TiO~2~(*s*)
 50.6
 
 <!-- SEG:m68865:entry:auto-1346 -->
-TiCl~4~(*l*)
+TiCl[[sub:4]]({{i}}l{{/i}})
 
 <!-- SEG:m68865:entry:auto-1347 -->
 –804.2
@@ -4046,7 +4046,7 @@ TiCl~4~(*l*)
 252.4
 
 <!-- SEG:m68865:entry:auto-1350 -->
-TiCl~4~(*g*)
+TiCl[[sub:4]]({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1351 -->
 –763.2
@@ -4061,7 +4061,7 @@ TiCl~4~(*g*)
 tungsten
 
 <!-- SEG:m68865:entry:auto-1355 -->
-W(*s*)
+W({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1356 -->
 0
@@ -4073,7 +4073,7 @@ W(*s*)
 32.6
 
 <!-- SEG:m68865:entry:auto-1359 -->
-W(*g*)
+W({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1360 -->
 849.4
@@ -4085,7 +4085,7 @@ W(*g*)
 174.0
 
 <!-- SEG:m68865:entry:auto-1363 -->
-WO~3~(*s*)
+WO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1364 -->
 –842.9
@@ -4100,7 +4100,7 @@ WO~3~(*s*)
 zinc
 
 <!-- SEG:m68865:entry:auto-1368 -->
-Zn(*s*)
+Zn({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1369 -->
 0
@@ -4112,7 +4112,7 @@ Zn(*s*)
 41.6
 
 <!-- SEG:m68865:entry:auto-1372 -->
-Zn(*g*)
+Zn({{i}}g{{/i}})
 
 <!-- SEG:m68865:entry:auto-1373 -->
 130.73
@@ -4124,7 +4124,7 @@ Zn(*g*)
 160.98
 
 <!-- SEG:m68865:entry:auto-1376 -->
-Zn^2+^(*aq*)
+Zn[[sup:2+]]({{i}}aq{{/i}})
 
 <!-- SEG:m68865:entry:auto-1377 -->
 –153.9
@@ -4136,7 +4136,7 @@ Zn^2+^(*aq*)
 –112.1
 
 <!-- SEG:m68865:entry:auto-1380 -->
-ZnO(*s*)
+ZnO({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1381 -->
 –350.5
@@ -4148,7 +4148,7 @@ ZnO(*s*)
 43.7
 
 <!-- SEG:m68865:entry:auto-1384 -->
-ZnCl~2~(*s*)
+ZnCl[[sub:2]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1385 -->
 –415.1
@@ -4160,7 +4160,7 @@ ZnCl~2~(*s*)
 111.5
 
 <!-- SEG:m68865:entry:auto-1388 -->
-ZnS(*s*)
+ZnS({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1389 -->
 –206.0
@@ -4172,7 +4172,7 @@ ZnS(*s*)
 57.7
 
 <!-- SEG:m68865:entry:auto-1392 -->
-ZnSO~4~(*s*)
+ZnSO[[sub:4]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1393 -->
 –982.8
@@ -4184,7 +4184,7 @@ ZnSO~4~(*s*)
 110.5
 
 <!-- SEG:m68865:entry:auto-1396 -->
-ZnCO~3~(*s*)
+ZnCO[[sub:3]]({{i}}s{{/i}})
 
 <!-- SEG:m68865:entry:auto-1397 -->
 –812.78
@@ -4199,7 +4199,7 @@ ZnCO~3~(*s*)
 complexes
 
 <!-- SEG:m68865:entry:auto-1401 -->
-[Co(NH~3~)~4~(NO~2~)~2~]NO~3~, *cis*
+[Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], {{i}}cis{{/i}}
 
 <!-- SEG:m68865:entry:auto-1402 -->
 –898.7
@@ -4211,7 +4211,7 @@ complexes
 —
 
 <!-- SEG:m68865:entry:auto-1405 -->
-[Co(NH~3~)~4~(NO~2~)~2~]NO~3~, *trans*
+[Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], {{i}}trans{{/i}}
 
 <!-- SEG:m68865:entry:auto-1406 -->
 –896.2
@@ -4223,7 +4223,7 @@ complexes
 —
 
 <!-- SEG:m68865:entry:auto-1409 -->
-NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
+NH[[sub:4]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]]
 
 <!-- SEG:m68865:entry:auto-1410 -->
 –837.6
@@ -4235,7 +4235,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1413 -->
-[Co(NH~3~)~6~][Co(NH~3~)~2~(NO~2~)~4~]~3~
+[Co(NH[[sub:3]])[[sub:6]]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]][[sub:3]]
 
 <!-- SEG:m68865:entry:auto-1414 -->
 –2733.0
@@ -4247,7 +4247,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1417 -->
-[Co(NH~3~)~4~Cl~2~]Cl, *cis*
+[Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]Cl, {{i}}cis{{/i}}
 
 <!-- SEG:m68865:entry:auto-1418 -->
 –874.9
@@ -4259,7 +4259,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1421 -->
-[Co(NH~3~)~4~Cl~2~]Cl, *trans*
+[Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]Cl, {{i}}trans{{/i}}
 
 <!-- SEG:m68865:entry:auto-1422 -->
 –877.4
@@ -4271,7 +4271,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1425 -->
-[Co(en)~2~(NO~2~)~2~]NO~3~, *cis*
+[Co(en)[[sub:2]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], {{i}}cis{{/i}}
 
 <!-- SEG:m68865:entry:auto-1426 -->
 –689.5
@@ -4283,7 +4283,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1429 -->
-[Co(en)~2~Cl~2~]Cl, *cis*
+[Co(en)[[sub:2]]Cl[[sub:2]]]Cl, {{i}}cis{{/i}}
 
 <!-- SEG:m68865:entry:auto-1430 -->
 –681.2
@@ -4295,7 +4295,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1433 -->
-[Co(en)~2~Cl~2~]Cl, *trans*
+[Co(en)[[sub:2]]Cl[[sub:2]]]Cl, {{i}}trans{{/i}}
 
 <!-- SEG:m68865:entry:auto-1434 -->
 –677.4
@@ -4307,7 +4307,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1437 -->
-[Co(en)~3~](ClO~4~)~3~
+[Co(en)[[sub:3]]](ClO[[sub:4]])[[sub:3]]
 
 <!-- SEG:m68865:entry:auto-1438 -->
 –762.7
@@ -4319,7 +4319,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1441 -->
-[Co(en)~3~]Br~2~
+[Co(en)[[sub:3]]]Br[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1442 -->
 –595.8
@@ -4331,7 +4331,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1445 -->
-[Co(en)~3~]I~2~
+[Co(en)[[sub:3]]]I[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1446 -->
 –475.3
@@ -4343,7 +4343,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1449 -->
-[Co(en)~3~]I~3~
+[Co(en)[[sub:3]]]I[[sub:3]]
 
 <!-- SEG:m68865:entry:auto-1450 -->
 –519.2
@@ -4355,7 +4355,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1453 -->
-[Co(NH~3~)~6~](ClO~4~)~3~
+[Co(NH[[sub:3]])[[sub:6]]](ClO[[sub:4]])[[sub:3]]
 
 <!-- SEG:m68865:entry:auto-1454 -->
 –1034.7
@@ -4367,7 +4367,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 615
 
 <!-- SEG:m68865:entry:auto-1457 -->
-[Co(NH~3~)~5~NO~2~](NO~3~)~2~
+[Co(NH[[sub:3]])[[sub:5]]NO[[sub:2]]](NO[[sub:3]])[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1458 -->
 –1088.7
@@ -4379,7 +4379,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 331
 
 <!-- SEG:m68865:entry:auto-1461 -->
-[Co(NH~3~)~6~](NO~3~)~3~
+[Co(NH[[sub:3]])[[sub:6]]](NO[[sub:3]])[[sub:3]]
 
 <!-- SEG:m68865:entry:auto-1462 -->
 –1282.0
@@ -4391,7 +4391,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 448
 
 <!-- SEG:m68865:entry:auto-1465 -->
-[Co(NH~3~)~5~Cl]Cl~2~
+[Co(NH[[sub:3]])[[sub:5]]Cl]Cl[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1466 -->
 –1017.1
@@ -4403,7 +4403,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 366.1
 
 <!-- SEG:m68865:entry:auto-1469 -->
-[Pt(NH~3~)~4~]Cl~2~
+[Pt(NH[[sub:3]])[[sub:4]]]Cl[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1470 -->
 –725.5
@@ -4415,7 +4415,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1473 -->
-[Ni(NH~3~)~6~]Cl~2~
+[Ni(NH[[sub:3]])[[sub:6]]]Cl[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1474 -->
 –994.1
@@ -4427,7 +4427,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1477 -->
-[Ni(NH~3~)~6~]Br~2~
+[Ni(NH[[sub:3]])[[sub:6]]]Br[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1478 -->
 –923.8
@@ -4439,7 +4439,7 @@ NH~4~[Co(NH~3~)~2~(NO~2~)~4~]
 —
 
 <!-- SEG:m68865:entry:auto-1481 -->
-[Ni(NH~3~)~6~]I~2~
+[Ni(NH[[sub:3]])[[sub:6]]]I[[sub:2]]
 
 <!-- SEG:m68865:entry:auto-1482 -->
 –808.3

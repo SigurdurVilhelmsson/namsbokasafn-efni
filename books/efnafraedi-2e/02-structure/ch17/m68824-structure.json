@@ -157,7 +157,16 @@
                   }
                 },
                 {
-                  "segmentId": "m68824:entry:auto-21",
+                  "paras": [
+                    {
+                      "segmentId": "m68824:entry:fs-idm239811792",
+                      "paraId": "fs-idm239811792"
+                    },
+                    {
+                      "segmentId": "m68824:entry:fs-idm218962512",
+                      "paraId": "fs-idm218962512"
+                    }
+                  ],
                   "attributes": {
                     "valign": "top",
                     "align": "left"
@@ -167,13 +176,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68824:entry:auto-22",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68824:entry:auto-23",
                   "attributes": {
@@ -194,25 +196,27 @@
                     "valign": "top",
                     "align": "left"
                   }
+                },
+                {
+                  "paras": [
+                    {
+                      "segmentId": "m68824:entry:fs-idm248001280",
+                      "paraId": "fs-idm248001280"
+                    },
+                    {
+                      "segmentId": "m68824:entry:fs-idm197346624",
+                      "paraId": "fs-idm197346624"
+                    }
+                  ],
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
                 }
               ]
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68824:entry:auto-26",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68824:entry:auto-27",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68824:entry:auto-28",
                   "attributes": {
@@ -222,6 +226,29 @@
                 },
                 {
                   "segmentId": "m68824:entry:auto-29",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-30",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "paras": [
+                    {
+                      "segmentId": "m68824:entry:fs-idm249738032",
+                      "paraId": "fs-idm249738032"
+                    },
+                    {
+                      "segmentId": "m68824:entry:fs-idm197184048",
+                      "paraId": "fs-idm197184048"
+                    }
+                  ],
                   "attributes": {
                     "valign": "top",
                     "align": "left"
@@ -327,7 +354,7 @@
       "class": null,
       "title": {
         "segmentId": "m68824:title:fs-idm251393488-title",
-        "text": "Potentials at Nonstandard Conditions:  The Nernst Equation"
+        "text": "Potentials at Nonstandard Conditions: The Nernst Equation"
       },
       "content": [
         {
@@ -560,30 +587,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68824:entry:auto-72",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68824:entry:auto-73",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68824:entry:auto-74",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68824:entry:auto-75",
                   "attributes": {}
                 }
@@ -609,6 +612,30 @@
               "cells": [
                 {
                   "segmentId": "m68824:entry:auto-78",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-79",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-80",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-81",
                   "attributes": {}
                 }
               ]

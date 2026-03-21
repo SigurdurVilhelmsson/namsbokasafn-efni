@@ -443,6 +443,14 @@
     "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>38</m:mn></m:mrow><m:mn>90</m:mn></m:msubsup><m:mtext>Sr</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>39</m:mn></m:mrow><m:mn>90</m:mn></m:msubsup><m:mtext>Y</m:mtext>\n\n<m:mo>+</m:mo><m:mrow>\n\n<m:msubsup><m:mrow/><m:mn>-1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext>\n\n</m:mrow></m:mrow></m:math>",
     "latex": "{_{{38}}^{90}\\text{Sr} \\, \\longrightarrow \\, _{{39}}^{90}\\text{Y} +{_{-1}^{{\\, 0}}\\text{e}}}"
   },
+  "math-112": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
+  "math-113": {
+    "mathml": "<m:math><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n<m:mtext>:</m:mtext><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext>\n\n</m:mrow></m:math>",
+    "latex": "{_{{\\, 6}}^{14}\\text{C} \\text{:}\\, _{{\\, 6}}^{12}\\text{C}}"
+  },
   "fs-idp134926448": {
     "mathml": "<m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext>\n\n<m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Pb</m:mtext>\n\n<m:mspace width=\"3em\"/><m:mtext>or</m:mtext><m:mspace width=\"3em\"/>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Po</m:mtext>\n\n<m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mrow>\n\n<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>α</m:mtext>\n\n</m:mrow><m:mo>+</m:mo>\n\n<m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Pb</m:mtext>\n\n</m:mrow></m:math>",
     "latex": "{_{{\\, 84}}^{210}\\text{Po} \\, \\longrightarrow \\, _{{2}}^{4}\\text{He} + _{{\\, 82}}^{206}\\text{Pb} \\, \\text{or}\\, _{{\\, 84}}^{210}\\text{Po} \\, \\longrightarrow \\, {_{{2}}^{4}\\text{α}}+ _{{\\, 82}}^{206}\\text{Pb}}",

@@ -1,0 +1,147 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Notkun geislasamsæta</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68857</md:content-id>
+  <md:title>Notkun geislasamsæta</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Skráð algeng not geislavirkra samsæta</item></list></md:abstract>
+  <md:uuid>15be4435-4470-4cb9-b6ce-fdb871aba9f1</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp54341648">Geislavirkar samsætur hafa sömu efnaeiginleika og stöðugar samsætur sama frumefnis, en þær gefa frá sér geislun sem hægt er að greina. Ef við skiptum einu (eða fleiri) atómi út fyrir geislasamsætu(r) í efnasambandi getum við fylgst með þeim með því að vakta geislavirkan útblástur þeirra. Slíkt efnasamband er kallað <term id="term-00001">geislavirkt snefilefni (e. radioactive tracer)</term> (eða <term id="term-00002">geislavirkur merkir (e. radioactive label)</term>). Geislasamsætur eru notaðar til að fylgja ferlum lífefnafræðilegra efnahvarfa eða til að ákvarða hvernig efni dreifist innan lífveru. Geislavirk snefilefni eru einnig notuð í mörgum læknisfræðilegum tilgangi, þar á meðal bæði til sjúkdómsgreiningar og meðferðar. Þau eru notuð til að mæla slit á vélum, greina jarðfræðilegar myndanir í kringum olíulindir og margt fleira.</para>
+<para id="eip-608">Geislaónæmisgreiningar (RIA), til dæmis, byggja á geislasamsætum til að greina tilvist og/eða styrk ákveðinna mótefnavaka. Tæknin var þróuð af Rosalyn Sussman Yalow og Solomon Berson á sjötta áratugnum og er þekkt fyrir gríðarlegt næmi, sem þýðir að hún getur greint og mælt mjög lítið magn af efni. Fyrir uppgötvun hennar byggðist flest svipuð greining á nægilega miklu magni til að framkalla sýnilegar niðurstöður. RIA olli byltingu og stækkaði heil fræðasvið, einkum innkirtlafræði, og er almennt notuð við greiningu á fíkniefnum, skimun í blóðbönkum, snemmgreiningu krabbameins, mælingu hormóna og greiningu á ofnæmi. Fyrir sitt mikilvæga framlag til læknisfræðinnar hlaut Yalow Nóbelsverðlaun og varð þar með önnur konan til að hljóta verðlaunin í læknisfræði.</para>
+<para id="fs-idp247341312">Geislasamsætur hafa gjörbylt læknisfræði (sjá <link document="m68871">viðauka M</link>), þar sem þær eru mikið notaðar. Yfir 10 milljónir kjarnalæknisfræðilegra aðgerða og meira en 100 milljónir kjarnalæknisfræðilegra prófa eru framkvæmdar árlega í Bandaríkjunum. Fjögur dæmigerð geislavirk snefilefni sem notuð eru í læknisfræði eru teknetín-99 <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mrow/><m:mn>43</m:mn><m:mn>99</m:mn></m:msubsup><m:mtext>Tc</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math>, þallín-201 <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>81</m:mn></m:mrow><m:mn>201</m:mn></m:msubsup><m:mtext>Tl</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math>, joð-131 <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>53</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>I</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math> og natrín-24 <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mrow/><m:mn>11</m:mn><m:mn>24</m:mn></m:msubsup><m:mtext>Na</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math>. Skemmdir vefir í hjarta, lifur og lungum taka sértækt upp ákveðin efnasambönd teknetíns-99. Eftir að því er sprautað er hægt að ákvarða staðsetningu teknetínsambandsins, og þar með skemmda vefjarins, með því að greina γ-geislana sem Tc-99 samsætan gefur frá sér. Þallín-201 (<link target-id="CNX_Chem_21_05_Thallium"/>) safnast fyrir í heilbrigðum hjartavef, þannig að samsæturnar tvær, Tc-99 og Tl-201, eru notaðar saman til að rannsaka hjartavef. Joð-131 safnast fyrir í skjaldkirtlinum, lifrinni og sumum hlutum heilans. Það er því hægt að nota til að fylgjast með stækkuðum skjaldkirtli og meðhöndla skjaldkirtilssjúkdóma, eins og Graves-sjúkdóm, auk lifrar- og heilaæxla. Saltlausnum sem innihalda efnasambönd natríns-24 er sprautað í blóðrásina til að hjálpa til við að finna stíflur í blóðflæði.</para>
+<figure id="CNX_Chem_21_05_Thallium">
+<media id="fs-idp42838624" class="scaled-down" alt="A photo is shown of two men, one walking on a treadmill with various wires connected to his torso region, and the other collecting blood pressure data from the first man.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_05_Thallium.jpg"/>
+</media>
+<caption>Að gefa sjúklingi þallín-201 og framkvæma síðan álagspróf gefur heilbrigðisstarfsfólki tækifæri til að greina sjónrænt starfsemi hjartans og blóðflæði. (heimild: breyting á verki eftir „Blue0ctane“/Wikimedia Commons)</caption>
+</figure>
+<para id="fs-idp117263328">Geislasamsætur sem notaðar eru í læknisfræði hafa yfirleitt stuttan helmingunartíma – til dæmis hefur hið útbreidda Tc-99m helmingunartíma upp á 6,01 klukkustund. Þetta gerir það að verkum að það er nánast ómögulegt að geyma Tc-99m og of dýrt að flytja það, svo það er framleitt á staðnum í staðinn. Sjúkrahús og aðrar heilbrigðisstofnanir nota Mo-99 (sem er aðallega unnið úr kjarnaklofnunarafurðum U-235) til að búa til Tc-99. Mo-99 gengst undir β-hrörnun með helmingunartíma upp á 66 klukkustundir og Tc-99 er síðan unnið út með efnafræðilegum aðferðum (<link target-id="CNX_Chem_21_05_Tc-99"/>). Móðurkjarninn Mo-99 er hluti af mólýbdatjón, <m:math><m:mrow><m:msub><m:mrow><m:mtext>MoO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo>;</m:mo></m:mrow></m:math>; þegar hún hrörnar myndar hún perteknetatjón, <m:math><m:mrow><m:msub><m:mrow><m:mtext>TcO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>. Þessar tvær vatnsleysanlegu jónir eru aðskildar með súlulitskiljun, þar sem mólýbdatjónin með hærri hleðslu sest á súrálið í súlunni og perteknetatjónin með lægri hleðslu fer í gegnum súluna í lausninni. Nokkur míkrógrömm af Mo-99 geta framleitt nóg af Tc-99 til að framkvæma allt að 10.000 próf.</para>
+<figure id="CNX_Chem_21_05_Tc-99" class="scaled-down">
+<media id="fs-idp19157312" alt="A photograph and a microscopic image are shown and labeled “a” and “b.” Photo a shows a person’s hand holding a graduated cylinder that contains a clear, colorless liquid and tilting the cylinder to pour it into a vertical, cylindrical glass tube. The tube has many separate glass components and is held in place by a test tube clamp. Image b shows a multitude of tiny, red dots on a black background. The dots are collected in four regions and dispersed elsewhere.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_05_Tc-99.jpg"/>
+</media>
+<caption>(a) Fyrsti Tc-99m rafallinn (um 1958) er notaður til að skilja Tc-99 frá Mo-99. <m:math><m:mrow><m:msub><m:mrow><m:mtext>MoO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math> er haldið eftir af fylkinu í súlunni, en <m:math><m:mrow><m:msub><m:mrow><m:mtext>TcO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> fer í gegn og er safnað. (b) Tc-99 var notað í þessari skönnun á hálsi sjúklings með Graves-sjúkdóm. Skönnunin sýnir staðsetningu hás styrks Tc-99. (heimild a: breyting á verki frá orkumálaráðuneyti Bandaríkjanna; heimild b: breyting á verki eftir „MBq“/Wikimedia Commons)</caption>
+</figure>
+<para id="fs-idp240963344">Geislasamsætur er einnig hægt að nota sem meðferð, yfirleitt í hærri skömmtum en sem snefilefni. <term id="term-00003">Geislameðferð (e. radiation therapy)</term> er notkun á orkuríkri geislun til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér (<link target-id="CNX_Chem_21_05_RadTherapy"/>). Krabbameinssjúklingur getur fengið <term id="term-00004">ytri geislameðferð (e. external beam radiation therapy)</term> sem gefin er með tæki utan líkamans, eða <term id="term-00005">innri geislameðferð (nálargeislun) (e. internal radiation therapy (brachytherapy))</term> frá geislavirku efni sem hefur verið komið fyrir í líkamanum. Athugið að <term id="term-00006">lyfjameðferð (e. chemotherapy)</term> er svipuð innri geislameðferð að því leyti að krabbameinsmeðferðinni er sprautað í líkamann, en er frábrugðin að því leyti að lyfjameðferð notar efnafræðileg efni frekar en geislavirk efni til að drepa krabbameinsfrumurnar.</para>
+<figure id="CNX_Chem_21_05_RadTherapy" class="scaled-down">
+<media id="fs-idp151344384" alt="Two diagrams are shown and labeled “a” and “b.” Diagram a shows a woman lying on a horizontal table with is being inserted into a dome-shaped machine. Diagram b shows a closer view of the woman’s head and upper torso in the machine. A series of beams, labeled “Gamma rays,” are shown to exit from slits in the edges of the machine, labeled “Radioactive cobalt,” and to penetrate her head, which is labeled “Target.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_05_RadTherapy.jpg"/>
+</media>
+<caption>Teiknimyndin í (a) sýnir kóbalt-60 tæki sem notað er við krabbameinsmeðferð. Skýringarmyndin í (b) sýnir hvernig burðargrind Co-60 tækisins sveiflast í boga, beinir geislun að marksvæðinu (æxlinu) og lágmarkar magn geislunar sem fer í gegnum nærliggjandi svæði.</caption>
+</figure>
+<para id="fs-idp202530192">Kóbalt-60 er tilbúin geislasamsæta sem framleidd er með nifteindavirkjun Co-59, sem síðan gengst undir β-hrörnun til að mynda Ni-60, ásamt losun γ-geislunar. Heildarferlið er:</para>
+<equation id="fs-idp40314416" class="unnumbered">
+
+  <m:math><m:mrow><m:msubsup><m:mrow/><m:mn>27</m:mn><m:mn>59</m:mn></m:msubsup>
+
+  <m:mtext>Co</m:mtext><m:mo>+</m:mo>
+
+<m:msubsup><m:mrow/><m:mn>0</m:mn><m:mn>1</m:mn></m:msubsup>
+
+<m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+
+<m:msubsup><m:mrow/><m:mn>27</m:mn><m:mn>60</m:mn></m:msubsup>
+
+<m:mtext>Co</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+
+<m:msubsup><m:mrow/><m:mn>28</m:mn><m:mn>60</m:mn></m:msubsup>
+
+<m:mtext>Ni</m:mtext><m:mo>+</m:mo>
+
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mn>0</m:mn></m:mrow></m:msubsup>
+
+<m:mtext>β</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn>
+
+<m:msubsup><m:mrow/><m:mn>0</m:mn><m:mn>0</m:mn></m:msubsup>
+
+<m:mtext>γ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp130664688">Heildarhrörnunarkerfið fyrir þetta er sýnt myndrænt í <link target-id="CNX_Chem_21_05_Co60Decay"/>.</para>
+<figure id="CNX_Chem_21_05_Co60Decay">
+<media id="fs-idp82360800" alt="A chart shows a horizontal line in the upper left corner labeled “superscript 60 subscript 27 C o” and “5.272 a” with two arrows facing right and downward leading from it. These arrows are labeled “1.48 M e v beta 0.12 percent sign” and “0.31 M e v beta 99.88 percent sign.” The upper of the two arrows points to a horizontal line and the lower arrow points to a second horizontal line. A downward facing arrow lies in between these two horizontal lines and is labeled “1.1732 M e V gamma.” A fourth horizontal line lies at the bottom of the diagram below the second and third lines. A downward facing arrow lies in between it and the third horizontal line. It is labeled “1.3325 M e V gamma.” Below the last horizontal line is the label “superscript 60 subscript 28 N i.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_05_Co60Decay.jpg"/>
+</media>
+<caption>Co-60 gengst undir röð geislavirkra hrörnunarferla. Gammageislunin er notuð í geislameðferð.</caption>
+</figure>
+<para id="fs-idp115972800">Geislasamsætur eru notaðar á margvíslegan hátt til að rannsaka hvarfganga efnahvarfa í plöntum og dýrum. Þetta felur í sér merkingu áburðar í rannsóknum á upptöku næringarefna í plöntum og vexti uppskeru, rannsóknir á meltingar- og mjólkurframleiðsluferlum í kúm og rannsóknir á vexti og efnaskiptum dýra og plantna.</para>
+<para id="fs-idm4363456">Til dæmis var geislasamsætan C-14 notuð til að útskýra smáatriði þess hvernig ljóstillífun á sér stað. Heildarefnahvarfið er:</para>
+<equation id="fs-idp161500800" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>6CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>6H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>6O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp103955008">en ferlið er mun flóknara og fer í gegnum röð skrefa þar sem ýmis lífræn efnasambönd myndast. Í rannsóknum á ferli þessa efnahvarfs voru plöntur látnar komast í snertingu við CO<sub>2</sub> sem innihélt háan styrk af <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext></m:mrow></m:math>. Með reglulegu millibili voru plönturnar greindar til að ákvarða hvaða lífrænu efnasambönd innihéldu kolefni-14 og hversu mikið af hverju efnasambandi var til staðar. Út frá tímaröðinni sem efnasamböndin komu fram í og magni hvers þeirra á tilteknum tímapunktum lærðu vísindamenn meira um ferli efnahvarfsins.</para>
+<para id="fs-idp7560688">Notkun geislavirkra efna í viðskiptalegum tilgangi er jafn fjölbreytt (<link target-id="CNX_Chem_21_05_UsesOfRad"/>). Þar má nefna að ákvarða þykkt filma og þunnra málmplata með því að nýta ígengniskraft ýmiss konar geislunar. Hægt er að greina galla í málmum sem notaðir eru í burðarvirki með orkuríkum gammageislum frá kóbalt-60 á svipaðan hátt og röntgengeislar eru notaðir til að skoða mannslíkamann. Í einni tegund meindýraeyðingar er flugum stjórnað með því að gera karlflugur ófrjóar með γ-geislun þannig að kvendýr sem para sig við þær eignast ekki afkvæmi. Mörg matvæli eru varin með geislun sem drepur örverur sem valda því að matvælin skemmast.</para>
+<figure id="CNX_Chem_21_05_UsesOfRad">
+<media id="fs-idp105478400" alt="Two photographs are shown and labeled “a” and “b.” Photo a shows a man looking at a lighted image on the wall. Photo b shows strawberries on a conveyor belt dropping into a series of collection chambers.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_05_UsesOfRad.jpg"/>
+</media>
+<caption>Algeng notkun geislunar í viðskiptalegum tilgangi felur í sér (a) röntgenskoðun á farangri á flugvelli og (b) varðveislu matvæla. (mynd a: breyting á verki frá bandaríska sjóhernum; mynd b: breyting á verki frá bandaríska landbúnaðarráðuneytinu)</caption>
+</figure>
+<para id="fs-idp105479248">Amerísín-241, α-geislari með helmingunartíma upp á 458 ár, er notað í örlitlu magni í jónandi reykskynjurum (<link target-id="CNX_Chem_21_05_SmokeAlarm"/>). Α-geislunin frá Am-241 jónar loftið milli tveggja rafskautsplata í jónunarhólfinu. Rafhlaða veitir spennu sem veldur hreyfingu jónanna og skapar þannig lítinn straum. Þegar reykur kemur inn í hólfið hindrast hreyfing jónanna og dregur úr rafleiðni loftsins. Þetta veldur verulegri minnkun á straumnum sem kemur viðvörun af stað.</para>
+<figure id="CNX_Chem_21_05_SmokeAlarm">
+<media id="fs-idp22507536" alt="A photograph and a diagram are shown. The photograph shows the interior of a smoke detector. A circular piece of plastic in the lower section of the detector is labeled “Alarm” while a metal disk in the top left of the photo is labeled “Ionization chamber.” A battery is on the top right of the detector. The diagram shows an expanded view of the ionization chamber. Inside of the cylindrical casing are two horizontal, circular plates labeled “Metal plates”; the top is labeled with a positive sign and the bottom with a negative sign. Wires are shown connected to the plates and the terminals of a battery on the exterior of the chamber. A disk in the bottom of the chamber is labeled “Americium source” and four arrows, labeled “Alpha particles,” face vertically from this disk, through a hole in the negative plate, and into the upper space of the chamber. Two molecules, with positive signs, made up of two blue spheres and two molecules, with positive signs, made up of two red spheres are in this space, as well as two yellow spheres labeled with negative signs and arrows facing downward. Eleven white dots surround two of the molecules on the right of the image and are labeled “smoke particles. Above the left side of the image is the phrase “No smoke, charged particles complete the circuit” while a phrase above the right side of the image states “Smoke uncharges the particles, circuit is broken, alarm is triggered.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_05_SmokeAlarm.jpg"/>
+</media>
+<caption>Inni í reykskynjara gefur Am-241 frá sér α-eindir sem jóna loftið og skapa lítinn straum. Í eldi hindra reykagnir flæði jóna, draga úr straumnum og koma viðvörun af stað. (mynd a: breyting á verki eftir „Muffet“/Wikimedia Commons)</caption>
+</figure>
+<section id="fs-idp11200000" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp17699024">Efnasambönd sem kallast geislavirk snefilefni er hægt að nota til að fylgjast með efnahvörfum, rekja dreifingu efnis, greina og meðhöndla sjúkdóma og margt fleira. Önnur geislavirk efni eru gagnleg til að hafa stjórn á meindýrum, sjá fyrir sér mannvirki, veita brunaviðvaranir og til margra annarra nota. Hundruð milljóna kjarnalæknisfræðilegra prófa og aðgerða, þar sem notaðar eru ýmsar geislasamsætur með tiltölulega stuttan helmingunartíma, eru framkvæmdar á hverju ári í Bandaríkjunum. Flestar þessara geislasamsæta hafa tiltölulega stuttan helmingunartíma; sumar eru með svo stuttan helmingunartíma að geislasamsætan verður að vera framleidd á staðnum á sjúkrastofnunum. Geislameðferð notar orkuríka geislun til að drepa krabbameinsfrumur með því að skemma DNA þeirra. Geislunin sem notuð er við þessa meðferð getur verið gefin utanaðkomandi eða innvortis.</para>
+</section>
+<section id="fs-idp96492688" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idp257856896">
+<problem id="fs-idp32410288">
+<para id="fs-idp224609904">Hvernig er hægt að nota geislavirkan núklíð til að sýna að jafnvægið:<newline/> <m:math><m:mrow><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math><newline/> sé kvikt jafnvægi?</para>
+</problem>
+<solution id="fs-idp45943008">
+<para id="fs-idp26794976">Ef annaðhvort geislavirkri Ag<sup>+</sup> eða geislavirkri Cl<sup>–</sup> er bætt í lausnina sem inniheldur tilgreint efnahvarf, og síðan gefinn tími til að ná jafnvægi, mun myndast geislavirkt botnfall sem upphaflega var laust við geislun.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp183594912">
+<problem id="fs-idp44440688">
+<para id="fs-idp3550720">Teknetín-99m hefur helmingunartíma upp á 6,01 klukkustund. Ef sjúklingur sem fær teknetín-99m í æð má fara heim af spítalanum þegar 75% af skammtinum hefur hrörnað, hvenær má sjúklingurinn þá fara?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp88874912">
+<problem id="fs-idm3885520">
+<para id="fs-idp146873664">Joð sem kemur inn í líkamann er geymt í skjaldkirtlinum þaðan sem því er sleppt til að stjórna vexti og efnaskiptum. Hægt er að mynda skjaldkirtilinn ef joð-131 er sprautað í líkamann. Í stærri skömmtum er I-133 einnig notað til að meðhöndla krabbamein í skjaldkirtli. I-131 hefur helmingunartíma upp á 8,70 daga og hrörnar með β<sup>−</sup>-geislun.</para>
+<para id="fs-idp150733248">(a) Skrifaðu jöfnu fyrir hrörnunina.</para>
+<para id="fs-idp215490544">(b) Hversu langan tíma tekur það fyrir 95,0% af skammti af I-131 að hrörna?</para>
+</problem>
+<solution id="fs-idp160513440">
+<para id="fs-idp200685328">(a) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>53</m:mn></m:mrow><m:mn>133</m:mn></m:msubsup>
+
+<m:mtext>I</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>54</m:mn></m:mrow><m:mn>133</m:mn></m:msubsup>
+
+<m:mtext>Xe</m:mtext><m:mo>+</m:mo>
+
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup>
+
+<m:mtext>e</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (b) 37,6 dagar</para></solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp80557904">
+<term>lyfjameðferð (e. chemotherapy)</term>
+<meaning id="fs-idp80557904-meaning">svipað og innri geislameðferð, en efnafræðileg efni frekar en geislavirk efni eru sett inn í líkamann til að drepa krabbameinsfrumur</meaning>
+</definition>
+<definition id="fs-idp44456896">
+<term>ytri geislameðferð (e. external beam radiation therapy)</term>
+<meaning id="fs-idp44456896-meaning">geislun sem gefin er með tæki utan líkamans</meaning>
+</definition>
+<definition id="fs-idp166135008">
+<term>innri geislameðferð (e. internal radiation therapy)</term>
+<meaning id="fs-idp166135008-meaning">(einnig, inngeislun) geislun frá geislavirku efni sem sett er inn í líkamann til að drepa krabbameinsfrumur</meaning>
+</definition>
+<definition id="fs-idp18406528">
+<term>geislameðferð (e. radiation therapy)</term>
+<meaning id="fs-idp18406528-meaning">notkun á orkuríkri geislun til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér</meaning>
+</definition>
+<definition id="fs-idp81777184">
+<term>geislavirkt snefilefni (e. radioactive tracer)</term>
+<meaning id="fs-idp81777184-meaning">(einnig, geislavirk merking) geislasamsæta sem er notuð til að fylgjast með eða rekja efni með því að vakta geislavirkan útblástur þess</meaning>
+</definition>
+</glossary>
+</document>

@@ -47,6 +47,14 @@
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
     "latex": "\\times"
   },
+  "math-13": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
   "fs-idp224481296": {
     "mathml": "<m:math><m:mrow><m:mtext>number of rems</m:mtext><m:mo>=</m:mo><m:mtext>RBE</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>number of rads</m:mtext></m:mrow></m:math>",
     "latex": "{\\text{number of rems}=\\text{RBE}\\, \\times \\, \\text{number of rads}}",

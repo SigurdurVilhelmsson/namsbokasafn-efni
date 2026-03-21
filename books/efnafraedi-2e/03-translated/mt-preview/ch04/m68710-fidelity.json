@@ -1,0 +1,36 @@
+{
+  "moduleId": "m68710",
+  "chapter": "ch04",
+  "timestamp": "2026-03-21T15:23:56.134Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 49,
+      "translated": 33,
+      "diff": -16,
+      "direction": "loss"
+    },
+    {
+      "tag": "item",
+      "source": 22,
+      "translated": 21,
+      "diff": -1,
+      "direction": "loss"
+    },
+    {
+      "tag": "list",
+      "source": 5,
+      "translated": 4,
+      "diff": -1,
+      "direction": "loss"
+    },
+    {
+      "tag": "para",
+      "source": 282,
+      "translated": 281,
+      "diff": -1,
+      "direction": "loss"
+    }
+  ]
+}

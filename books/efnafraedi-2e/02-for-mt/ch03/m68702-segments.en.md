@@ -23,7 +23,7 @@ Percent Composition
 Determining Percent Composition from Molecular or Empirical Formulas
 
 <!-- SEG:m68702:para:fs-idm153839088 -->
-Percent composition is also useful for evaluating the relative abundance of a given element in different compounds of known formulas. As one example, consider the common nitrogen-containing fertilizers ammonia (NH~3~), ammonium nitrate (NH~4~NO~3~), and urea (CH~4~N~2~O). The element nitrogen is the active ingredient for agricultural purposes, so the mass percentage of nitrogen in the compound is a practical and economic concern for consumers choosing among these fertilizers. For these sorts of applications, the percent composition of a compound is easily derived from its formula mass and the atomic masses of its constituent elements. A molecule of NH~3~ contains one N atom weighing 14.01 amu and three H atoms weighing a total of (3 [[MATH:1]] 1.008 amu) = 3.024 amu. The formula mass of ammonia is therefore (14.01 amu + 3.024 amu) = 17.03 amu, and its percent composition is:
+Percent composition is also useful for evaluating the relative abundance of a given element in different compounds of known formulas. As one example, consider the common nitrogen-containing fertilizers ammonia (NH[[sub:3]]), ammonium nitrate (NH[[sub:4]]NO[[sub:3]]), and urea (CH[[sub:4]]N[[sub:2]]O). The element nitrogen is the active ingredient for agricultural purposes, so the mass percentage of nitrogen in the compound is a practical and economic concern for consumers choosing among these fertilizers. For these sorts of applications, the percent composition of a compound is easily derived from its formula mass and the atomic masses of its constituent elements. A molecule of NH[[sub:3]] contains one N atom weighing 14.01 amu and three H atoms weighing a total of (3 [[MATH:1]] 1.008 amu) = 3.024 amu. The formula mass of ammonia is therefore (14.01 amu + 3.024 amu) = 17.03 amu, and its percent composition is:
 
 <!-- SEG:m68702:para:fs-idm159904272 -->
 This same approach may be taken considering a pair of molecules, a dozen molecules, or a mole of molecules, etc. The latter amount is most convenient and would simply involve the use of molar masses instead of atomic and formula masses, as demonstrated [#fs-idm162294688]. As long as the molecular or empirical formula of the compound in question is known, the percent composition may be derived from the atomic or molar masses of the compound's elements.
@@ -32,13 +32,13 @@ This same approach may be taken considering a pair of molecules, a dozen molecul
 Determining Percent Composition from a Molecular Formula
 
 <!-- SEG:m68702:para:fs-idm28923440 -->
-Aspirin is a compound with the molecular formula C~9~H~8~O~4~. What is its percent composition?
+Aspirin is a compound with the molecular formula C[[sub:9]]H[[sub:8]]O[[sub:4]]. What is its percent composition?
 
 <!-- SEG:m68702:para-title:fs-idm77779888-title -->
 Solution
 
 <!-- SEG:m68702:para:fs-idm77779888 -->
-To calculate the percent composition, the masses of C, H, and O in a known mass of C~9~H~8~O~4~ are needed. It is convenient to consider 1 mol of C~9~H~8~O~4~ and use its molar mass (180.159 g/mole, determined from the chemical formula) to calculate the percentages of each of its elements:
+To calculate the percent composition, the masses of C, H, and O in a known mass of C[[sub:9]]H[[sub:8]]O[[sub:4]] are needed. It is convenient to consider 1 mol of C[[sub:9]]H[[sub:8]]O[[sub:4]] and use its molar mass (180.159 g/mole, determined from the chemical formula) to calculate the percentages of each of its elements:
 
 <!-- SEG:m68702:para:fs-idp47168 -->
 Note that these percentages sum to equal 100.00% when appropriately rounded.
@@ -47,7 +47,7 @@ Note that these percentages sum to equal 100.00% when appropriately rounded.
 Check Your Learning
 
 <!-- SEG:m68702:para:fs-idm29762576 -->
-To three significant digits, what is the mass percentage of iron in the compound Fe~2~O~3~?
+To three significant digits, what is the mass percentage of iron in the compound Fe[[sub:2]]O[[sub:3]]?
 
 <!-- SEG:m68702:para:fs-idm72116192 -->
 69.9% Fe
@@ -59,7 +59,7 @@ Answer:
 69.9% Fe
 
 <!-- SEG:m68702:para:fs-idm144417840 -->
-The elemental makeup of a compound defines its chemical identity, and chemical formulas are the most succinct way of representing this elemental makeup. When a compound’s formula is unknown, measuring the mass of each of its constituent elements is often the first step in the process of determining the formula experimentally. The results of these measurements permit the calculation of the compound’s __percent composition__, defined as the percentage by mass of each element in the compound. For example, consider a gaseous compound composed solely of carbon and hydrogen. The percent composition of this compound could be represented as follows:
+The elemental makeup of a compound defines its chemical identity, and chemical formulas are the most succinct way of representing this elemental makeup. When a compound’s formula is unknown, measuring the mass of each of its constituent elements is often the first step in the process of determining the formula experimentally. The results of these measurements permit the calculation of the compound’s {{term}}percent composition{{/term}}, defined as the percentage by mass of each element in the compound. For example, consider a gaseous compound composed solely of carbon and hydrogen. The percent composition of this compound could be represented as follows:
 
 <!-- SEG:m68702:para:fs-idm144352192 -->
 If analysis of a 10.0-g sample of this gas showed it to contain 2.5 g H and 7.5 g C, the percent composition would be calculated to be 25% H and 75% C:
@@ -113,7 +113,7 @@ The bacterial fermentation of grain to produce ethanol forms a gas with a percen
 Solution
 
 <!-- SEG:m68702:para:fs-idp8854528 -->
-Since the scale for percentages is 100, it is most convenient to calculate the mass of elements present in a sample weighing 100 g. The calculation is “most convenient” because, per the definition for percent composition, the mass of a given element in grams is numerically equivalent to the element’s mass percentage. This numerical equivalence results from the definition of the “percentage” unit, whose name is derived from the Latin phrase *per centum* meaning “by the hundred.” Considering this definition, the mass percentages provided may be more conveniently expressed as fractions:
+Since the scale for percentages is 100, it is most convenient to calculate the mass of elements present in a sample weighing 100 g. The calculation is “most convenient” because, per the definition for percent composition, the mass of a given element in grams is numerically equivalent to the element’s mass percentage. This numerical equivalence results from the definition of the “percentage” unit, whose name is derived from the Latin phrase {{i}}per centum{{/i}} meaning “by the hundred.” Considering this definition, the mass percentages provided may be more conveniently expressed as fractions:
 
 <!-- SEG:m68702:para:fs-idp6456464 -->
 The molar amounts of carbon and oxygen in a 100-g sample are calculated by dividing each element’s mass by its molar mass:
@@ -122,7 +122,7 @@ The molar amounts of carbon and oxygen in a 100-g sample are calculated by divid
 Coefficients for the tentative empirical formula are derived by dividing each molar amount by the lesser of the two:
 
 <!-- SEG:m68702:para:fs-idm106276304 -->
-Since the resulting ratio is one carbon to two oxygen atoms, the empirical formula is CO~2~.
+Since the resulting ratio is one carbon to two oxygen atoms, the empirical formula is CO[[sub:2]].
 
 <!-- SEG:m68702:para-title:fs-idm153398992-title -->
 Check Your Learning
@@ -131,34 +131,34 @@ Check Your Learning
 What is the empirical formula of a compound containing 40.0% C, 6.71% H, and 53.28% O?
 
 <!-- SEG:m68702:para:fs-idm49848016 -->
-CH~2~O
+CH[[sub:2]]O
 
 <!-- SEG:m68702:note-title:fs-idm61160608-title -->
 Answer:
 
 <!-- SEG:m68702:para:fs-idm49848016 -->
-CH~2~O
+CH[[sub:2]]O
 
 <!-- SEG:m68702:caption:CNX_Chem_03_03_BrewTank-caption -->
 An oxide of carbon is removed from these fermentation tanks through the large copper pipes at the top. (credit: “Dual Freq”/Wikimedia Commons)
 
 <!-- SEG:m68702:para:fs-idm181573632 -->
-As previously mentioned, the most common approach to determining a compound’s chemical formula is to first measure the masses of its constituent elements. However, keep in mind that chemical formulas represent the relative *numbers*, not masses, of atoms in the substance. Therefore, any experimentally derived data involving mass must be used to derive the corresponding numbers of atoms in the compound. This is accomplished using molar masses to convert the mass of each element to a number of moles. These molar amounts are used to compute whole-number ratios that can be used to derive the empirical formula of the substance. Consider a sample of compound determined to contain 1.71 g C and 0.287 g H. The corresponding numbers of atoms (in moles) are:
+As previously mentioned, the most common approach to determining a compound’s chemical formula is to first measure the masses of its constituent elements. However, keep in mind that chemical formulas represent the relative {{i}}numbers{{/i}}, not masses, of atoms in the substance. Therefore, any experimentally derived data involving mass must be used to derive the corresponding numbers of atoms in the compound. This is accomplished using molar masses to convert the mass of each element to a number of moles. These molar amounts are used to compute whole-number ratios that can be used to derive the empirical formula of the substance. Consider a sample of compound determined to contain 1.71 g C and 0.287 g H. The corresponding numbers of atoms (in moles) are:
 
 <!-- SEG:m68702:para:fs-idm89096592 -->
-Thus, this compound may be represented by the formula C~0.142~H~0.284~. Per convention, formulas contain whole-number subscripts, which can be achieved by dividing each subscript by the smaller subscript:
+Thus, this compound may be represented by the formula C[[sub:0.142]]H[[sub:0.284]]. Per convention, formulas contain whole-number subscripts, which can be achieved by dividing each subscript by the smaller subscript:
 
 <!-- SEG:m68702:para:fs-idm154418400 -->
 (Recall that subscripts of “1” are not written but rather assumed if no other number is present.)
 
 <!-- SEG:m68702:para:fs-idm83793840 -->
-The empirical formula for this compound is thus CH~2~. This may or may not be the compound’s *molecular formula* as well; however, additional information is needed to make that determination (as discussed later in this section).
+The empirical formula for this compound is thus CH[[sub:2]]. This may or may not be the compound’s {{i}}molecular formula{{/i}} as well; however, additional information is needed to make that determination (as discussed later in this section).
 
 <!-- SEG:m68702:para:fs-idm172411952 -->
 Consider as another example a sample of compound determined to contain 5.31 g Cl and 8.40 g O. Following the same approach yields a tentative empirical formula of:
 
 <!-- SEG:m68702:para:fs-idm146854160 -->
-In this case, dividing by the smallest subscript still leaves us with a decimal subscript in the empirical formula. To convert this into a whole number, multiply each of the subscripts by two, retaining the same atom ratio and yielding Cl~2~O~7~ as the final empirical formula.
+In this case, dividing by the smallest subscript still leaves us with a decimal subscript in the empirical formula. To convert this into a whole number, multiply each of the subscripts by two, retaining the same atom ratio and yielding Cl[[sub:2]]O[[sub:7]] as the final empirical formula.
 
 <!-- SEG:m68702:para:fs-idm99418064 -->
 In summary, empirical formulas are derived from experimentally measured element masses by:
@@ -194,10 +194,10 @@ This problem provides the mass in grams of each element. Begin by finding the mo
 Next, derive the iron-to-oxygen molar ratio by dividing by the lesser number of moles:
 
 <!-- SEG:m68702:para:fs-idm169565728 -->
-The ratio is 1.000 mol of iron to 1.500 mol of oxygen (Fe~1~O~1.5~). Finally, multiply the ratio by two to get the smallest possible whole number subscripts while still maintaining the correct iron-to-oxygen ratio:
+The ratio is 1.000 mol of iron to 1.500 mol of oxygen (Fe[[sub:1]]O[[sub:1.5]]). Finally, multiply the ratio by two to get the smallest possible whole number subscripts while still maintaining the correct iron-to-oxygen ratio:
 
 <!-- SEG:m68702:para:fs-idm196066368 -->
-The empirical formula is Fe~2~O~3~.
+The empirical formula is Fe[[sub:2]]O[[sub:3]].
 
 <!-- SEG:m68702:para-title:fs-idm180356384-title -->
 Check Your Learning
@@ -206,13 +206,13 @@ Check Your Learning
 What is the empirical formula of a compound if a sample contains 0.130 g of nitrogen and 0.370 g of oxygen?
 
 <!-- SEG:m68702:para:fs-idm112291760 -->
-N~2~O~5~
+N[[sub:2]]O[[sub:5]]
 
 <!-- SEG:m68702:note-title:fs-idp52798448-title -->
 Answer:
 
 <!-- SEG:m68702:para:fs-idm112291760 -->
-N~2~O~5~
+N[[sub:2]]O[[sub:5]]
 
 <!-- SEG:m68702:caption:CNX_Chem_03_03_hematite-caption -->
 Hematite is an iron oxide that is used in jewelry. (credit: Mauro Cateb)
@@ -224,22 +224,22 @@ For additional worked examples illustrating the derivation of empirical formulas
 Derivation of Molecular Formulas
 
 <!-- SEG:m68702:para:fs-idp60635424 -->
-Recall that empirical formulas are symbols representing the *relative* numbers of a compound’s elements. Determining the *absolute* numbers of atoms that compose a single molecule of a covalent compound requires knowledge of both its empirical formula and its molecular mass or molar mass. These quantities may be determined experimentally by various measurement techniques. Molecular mass, for example, is often derived from the mass spectrum of the compound (see discussion of this technique in the previous chapter on atoms and molecules). Molar mass can be measured by a number of experimental methods, many of which will be introduced in later chapters of this text.
+Recall that empirical formulas are symbols representing the {{i}}relative{{/i}} numbers of a compound’s elements. Determining the {{i}}absolute{{/i}} numbers of atoms that compose a single molecule of a covalent compound requires knowledge of both its empirical formula and its molecular mass or molar mass. These quantities may be determined experimentally by various measurement techniques. Molecular mass, for example, is often derived from the mass spectrum of the compound (see discussion of this technique in the previous chapter on atoms and molecules). Molar mass can be measured by a number of experimental methods, many of which will be introduced in later chapters of this text.
 
 <!-- SEG:m68702:para:fs-idm152826480 -->
-Molecular formulas are derived by comparing the compound’s molecular or molar mass to its __empirical formula mass__. As the name suggests, an empirical formula mass is the sum of the average atomic masses of all the atoms represented in an empirical formula. If the molecular (or molar) mass of the substance is known, it may be divided by the empirical formula mass to yield the number of empirical formula units per molecule (*n*):
+Molecular formulas are derived by comparing the compound’s molecular or molar mass to its {{term}}empirical formula mass{{/term}}. As the name suggests, an empirical formula mass is the sum of the average atomic masses of all the atoms represented in an empirical formula. If the molecular (or molar) mass of the substance is known, it may be divided by the empirical formula mass to yield the number of empirical formula units per molecule ({{i}}n{{/i}}):
 
 <!-- SEG:m68702:para:fs-idp7653408 -->
-The molecular formula is then obtained by multiplying each subscript in the empirical formula by *n*, as shown by the generic empirical formula A~x~B~y~:
+The molecular formula is then obtained by multiplying each subscript in the empirical formula by {{i}}n{{/i}}, as shown by the generic empirical formula A[[sub:x]]B[[sub:y]]:
 
 <!-- SEG:m68702:para:fs-idm149844688 -->
-For example, consider a covalent compound whose empirical formula is determined to be CH~2~O. The empirical formula mass for this compound is approximately 30 amu (the sum of 12 amu for one C atom, 2 amu for two H atoms, and 16 amu for one O atom). If the compound’s molecular mass is determined to be 180 amu, this indicates that molecules of this compound contain six times the number of atoms represented in the empirical formula:
+For example, consider a covalent compound whose empirical formula is determined to be CH[[sub:2]]O. The empirical formula mass for this compound is approximately 30 amu (the sum of 12 amu for one C atom, 2 amu for two H atoms, and 16 amu for one O atom). If the compound’s molecular mass is determined to be 180 amu, this indicates that molecules of this compound contain six times the number of atoms represented in the empirical formula:
 
 <!-- SEG:m68702:para:fs-idm156812016 -->
 Molecules of this compound are then represented by molecular formulas whose subscripts are six times greater than those in the empirical formula:
 
 <!-- SEG:m68702:para:fs-idm146366240 -->
-Note that this same approach may be used when the molar mass (g/mol) instead of the molecular mass (amu) is used. In this case, *one mole* of empirical formula units and molecules is considered, as opposed to single units and molecules.
+Note that this same approach may be used when the molar mass (g/mol) instead of the molecular mass (amu) is used. In this case, {{i}}one mole{{/i}} of empirical formula units and molecules is considered, as opposed to single units and molecules.
 
 <!-- SEG:m68702:example-title:fs-idm153155296-title -->
 Determination of the Molecular Formula for Nicotine
@@ -257,7 +257,7 @@ Determining the molecular formula from the provided data will require comparison
 Next, calculate the molar ratios of these elements relative to the least abundant element, N.
 
 <!-- SEG:m68702:para:fs-idm152642880 -->
-The C-to-N and H-to-N molar ratios are adequately close to whole numbers, and so the empirical formula is C~5~H~7~N. The empirical formula mass for this compound is therefore 81.13 amu/formula unit, or 81.13 g/mol formula unit.
+The C-to-N and H-to-N molar ratios are adequately close to whole numbers, and so the empirical formula is C[[sub:5]]H[[sub:7]]N. The empirical formula mass for this compound is therefore 81.13 amu/formula unit, or 81.13 g/mol formula unit.
 
 <!-- SEG:m68702:para:fs-idm172291248 -->
 Calculate the molar mass for nicotine from the given mass and molar amount of compound:
@@ -275,13 +275,13 @@ Check Your Learning
 What is the molecular formula of a compound with a percent composition of 49.47% C, 5.201% H, 28.84% N, and 16.48% O, and a molecular mass of 194.2 amu?
 
 <!-- SEG:m68702:para:fs-idm152847216 -->
-C~8~H~10~N~4~O~2~
+C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
 
 <!-- SEG:m68702:note-title:fs-idm149132352-title -->
 Answer:
 
 <!-- SEG:m68702:para:fs-idm152847216 -->
-C~8~H~10~N~4~O~2~
+C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
 
 <!-- SEG:m68702:title:fs-idm130412048-title -->
 Key Concepts and Summary
@@ -296,37 +296,37 @@ What information is needed to determine the molecular formula of a compound from
 Calculate the following to four significant figures:
 
 <!-- SEG:m68702:problem:fs-idm177315056 -->
-(a) the percent composition of ammonia, NH~3~
+(a) the percent composition of ammonia, NH[[sub:3]]
 
 <!-- SEG:m68702:problem:fs-idm105706256 -->
-(b) the percent composition of photographic fixer solution (“hypo”), Na~2~S~2~O~3~
+(b) the percent composition of photographic fixer solution (“hypo”), Na[[sub:2]]S[[sub:2]]O[[sub:3]]
 
 <!-- SEG:m68702:problem:fs-idm105710800 -->
-(c) the percent of calcium ion in Ca~3~(PO~4~)~2~
+(c) the percent of calcium ion in Ca[[sub:3]](PO[[sub:4]])[[sub:2]]
 
 <!-- SEG:m68702:solution:fs-idm8723440 -->
-(a) % N = 82.24%, % H = 17.76%; (b) % Na = 29.08%, % S = 40.56%, % O = 30.36%; (c) % Ca^2+^ = 38.76%
+(a) % N = 82.24%, % H = 17.76%; (b) % Na = 29.08%, % S = 40.56%, % O = 30.36%; (c) % Ca[[sup:2+]] = 38.76%
 
 <!-- SEG:m68702:problem:fs-idp268768 -->
 Determine the following to four significant figures:
 
 <!-- SEG:m68702:problem:fs-idm149211856 -->
-(a) the percent composition of hydrazoic acid, HN~3~
+(a) the percent composition of hydrazoic acid, HN[[sub:3]]
 
 <!-- SEG:m68702:problem:fs-idm162962720 -->
-(b) the percent composition of TNT, C~6~H~2~(CH~3~)(NO~2~)~3~
+(b) the percent composition of TNT, C[[sub:6]]H[[sub:2]](CH[[sub:3]])(NO[[sub:2]])[[sub:3]]
 
 <!-- SEG:m68702:problem:fs-idm183984960 -->
-(c) the percent of SO~4~^2–^ in Al~2~(SO~4~)~3~
+(c) the percent of SO[[sub:4]][[sup:2–]] in Al[[sub:2]](SO[[sub:4]])[[sub:3]]
 
 <!-- SEG:m68702:problem:fs-idm151196704 -->
-Determine the percent ammonia, NH~3~, in Co(NH~3~)~6~Cl~3~, to three significant figures.
+Determine the percent ammonia, NH[[sub:3]], in Co(NH[[sub:3]])[[sub:6]]Cl[[sub:3]], to three significant figures.
 
 <!-- SEG:m68702:solution:fs-idp36459552 -->
-% NH~3~ = 38.2%
+% NH[[sub:3]] = 38.2%
 
 <!-- SEG:m68702:problem:fs-idm107182224 -->
-Determine the percent water in CuSO~4~∙5H~2~O to three significant figures.
+Determine the percent water in CuSO[[sub:4]]∙5H[[sub:2]]O to three significant figures.
 
 <!-- SEG:m68702:problem:fs-idm157957232 -->
 Determine the empirical formulas for compounds with the following percent compositions:
@@ -338,7 +338,7 @@ Determine the empirical formulas for compounds with the following percent compos
 (b) 40.0% carbon, 6.7% hydrogen, and 53.3% oxygen
 
 <!-- SEG:m68702:solution:fs-idm165665376 -->
-(a) CS~2~; (b) CH~2~O
+(a) CS[[sub:2]]; (b) CH[[sub:2]]O
 
 <!-- SEG:m68702:problem:fs-idm133574896 -->
 Determine the empirical formulas for compounds with the following percent compositions:
@@ -353,7 +353,7 @@ Determine the empirical formulas for compounds with the following percent compos
 A compound of carbon and hydrogen contains 92.3% C and has a molar mass of 78.1 g/mol. What is its molecular formula?
 
 <!-- SEG:m68702:solution:fs-idp6839584 -->
-C~6~H~6~
+C[[sub:6]]H[[sub:6]]
 
 <!-- SEG:m68702:problem:fs-idm8281104 -->
 Dichloroethane, a compound that is often used for dry cleaning, contains carbon, hydrogen, and chlorine. It has a molar mass of 99 g/mol. Analysis of a sample shows that it contains 24.3% carbon and 4.1% hydrogen. What is its molecular formula?
@@ -362,7 +362,7 @@ Dichloroethane, a compound that is often used for dry cleaning, contains carbon,
 Determine the empirical and molecular formula for chrysotile asbestos. Chrysotile has the following percent composition: 28.03% Mg, 21.60% Si, 1.16% H, and 49.21% O. The molar mass for chrysotile is 520.8 g/mol.
 
 <!-- SEG:m68702:solution:fs-idp63157456 -->
-Mg~3~Si~2~H~3~O~8~ (empirical formula), Mg~6~Si~4~H~6~O~16~ (molecular formula)
+Mg[[sub:3]]Si[[sub:2]]H[[sub:3]]O[[sub:8]] (empirical formula), Mg[[sub:6]]Si[[sub:4]]H[[sub:6]]O[[sub:16]] (molecular formula)
 
 <!-- SEG:m68702:problem:fs-idm174073760 -->
 Polymers are large molecules composed of simple units repeated many times. Thus, they often have relatively simple empirical formulas. Calculate the empirical formulas of the following polymers:
@@ -386,7 +386,7 @@ Polymers are large molecules composed of simple units repeated many times. Thus,
 A major textile dye manufacturer developed a new yellow dye. The dye has a percent composition of 75.95% C, 17.72% N, and 6.33% H by mass with a molar mass of about 240 g/mol. Determine the molecular formula of the dye.
 
 <!-- SEG:m68702:solution:fs-idm160039136 -->
-C~15~H~15~N~3~
+C[[sub:15]]H[[sub:15]]N[[sub:3]]
 
 <!-- SEG:m68702:title:fs-idp39993248-title -->
 Key Equations
@@ -398,7 +398,7 @@ Key Equations
 [[MATH:3]]
 
 <!-- SEG:m68702:entry:auto-134 -->
-(A~x~B~y~)~n~ = A~nx~B~ny~
+(A[[sub:x]]B[[sub:y]])[[sub:n]] = A[[sub:nx]]B[[sub:ny]]
 
 <!-- SEG:m68702:glossary-term:fs-idp78258880-term -->
 empirical formula mass

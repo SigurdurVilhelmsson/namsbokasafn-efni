@@ -11,10 +11,10 @@ Explain the function of a catalyst in terms of reaction mechanisms and potential
 List examples of catalysis in natural and industrial processes
 
 <!-- SEG:m68795:para:fs-idm241568976 -->
-Among the factors affecting chemical reaction rates discussed earlier in this chapter was the presence of a *catalyst*, a substance that can increase the reaction rate without being consumed in the reaction. The concepts introduced in the previous section on reaction mechanisms provide the basis for understanding how catalysts are able to accomplish this very important function.
+Among the factors affecting chemical reaction rates discussed earlier in this chapter was the presence of a {{i}}catalyst{{/i}}, a substance that can increase the reaction rate without being consumed in the reaction. The concepts introduced in the previous section on reaction mechanisms provide the basis for understanding how catalysts are able to accomplish this very important function.
 
 <!-- SEG:m68795:para:fs-idm627108512 -->
-[#CNX_Chem_12_07_CatReCoDig] shows reaction diagrams for a chemical process in the absence and presence of a catalyst. Inspection of the diagrams reveals several traits of these reactions. Consistent with the fact that the two diagrams represent the same overall reaction, both curves begin and end at the same energies (in this case, because products are more energetic than reactants, the reaction is endothermic). The reaction mechanisms, however, are clearly different. The uncatalyzed reaction proceeds via a one-step mechanism (one transition state observed), whereas the catalyzed reaction follows a two-step mechanism (two transition states observed) with *a notably lesser activation energy*. This difference illustrates the means by which a catalyst functions to accelerate reactions, namely, by providing an alternative reaction mechanism with a lower activation energy. Although the catalyzed reaction mechanism for a reaction needn’t necessarily involve a different number of steps than the uncatalyzed mechanism, it must provide a reaction path whose rate determining step is faster (lower *E*~a~).
+[#CNX_Chem_12_07_CatReCoDig] shows reaction diagrams for a chemical process in the absence and presence of a catalyst. Inspection of the diagrams reveals several traits of these reactions. Consistent with the fact that the two diagrams represent the same overall reaction, both curves begin and end at the same energies (in this case, because products are more energetic than reactants, the reaction is endothermic). The reaction mechanisms, however, are clearly different. The uncatalyzed reaction proceeds via a one-step mechanism (one transition state observed), whereas the catalyzed reaction follows a two-step mechanism (two transition states observed) with {{i}}a notably lesser activation energy{{/i}}. This difference illustrates the means by which a catalyst functions to accelerate reactions, namely, by providing an alternative reaction mechanism with a lower activation energy. Although the catalyzed reaction mechanism for a reaction needn’t necessarily involve a different number of steps than the uncatalyzed mechanism, it must provide a reaction path whose rate determining step is faster (lower {{i}}E{{/i}}[[sub:a]]).
 
 <!-- SEG:m68795:caption:CNX_Chem_12_07_CatReCoDig-caption -->
 Reaction diagrams for an endothermic process in the absence (red curve) and presence (blue curve) of a catalyst. The catalyzed pathway involves a two-step mechanism (note the presence of two transition states) and an intermediate species (represented by the valley between the two transitions states).
@@ -41,19 +41,19 @@ Check Your Learning
 Reaction diagrams for a chemical process with and without a catalyst are shown below. Both reactions involve a two-step mechanism with a rate-determining first step. Compute activation energies for the first step of each mechanism, and identify which corresponds to the catalyzed reaction. How do the second steps of these two mechanisms compare?
 
 <!-- SEG:m68795:para:fs-idm239441760 -->
-For the first step, *E*~a~ = 80 kJ for (a) and 70 kJ for (b), so diagram (b) depicts the catalyzed reaction. Activation energies for the second steps of both mechanisms are the same, 20 kJ.
+For the first step, {{i}}E{{/i}}[[sub:a]] = 80 kJ for (a) and 70 kJ for (b), so diagram (b) depicts the catalyzed reaction. Activation energies for the second steps of both mechanisms are the same, 20 kJ.
 
 <!-- SEG:m68795:note-title:fs-idm215189760-title -->
 Answer:
 
 <!-- SEG:m68795:para:fs-idm239441760 -->
-For the first step, *E*~a~ = 80 kJ for (a) and 70 kJ for (b), so diagram (b) depicts the catalyzed reaction. Activation energies for the second steps of both mechanisms are the same, 20 kJ.
+For the first step, {{i}}E{{/i}}[[sub:a]] = 80 kJ for (a) and 70 kJ for (b), so diagram (b) depicts the catalyzed reaction. Activation energies for the second steps of both mechanisms are the same, 20 kJ.
 
 <!-- SEG:m68795:title:fs-idm65053840-title -->
 Homogeneous Catalysts
 
 <!-- SEG:m68795:para:fs-idm243256336 -->
-A __homogeneous catalyst__ is present in the same phase as the reactants. It interacts with a reactant to form an intermediate substance, which then decomposes or reacts with another reactant in one or more steps to regenerate the original catalyst and form product.
+A {{term}}homogeneous catalyst{{/term}} is present in the same phase as the reactants. It interacts with a reactant to form an intermediate substance, which then decomposes or reacts with another reactant in one or more steps to regenerate the original catalyst and form product.
 
 <!-- SEG:m68795:para:fs-idm210214480 -->
 As an important illustration of homogeneous catalysis, consider the earth’s ozone layer. Ozone in the upper atmosphere, which protects the earth from ultraviolet radiation, is formed when oxygen molecules absorb ultraviolet light and undergo the reaction:
@@ -74,10 +74,10 @@ Notice that NO is a reactant in the first step of the mechanism and a product in
 Mario J. Molina
 
 <!-- SEG:m68795:para:fs-idm149608448 -->
-The 1995 Nobel Prize in Chemistry was shared by Paul J. Crutzen, Mario J. __Molina__ ([#CNX_Chem_12_07_Molina]), and F. Sherwood Rowland “for their work in atmospheric chemistry, particularly concerning the formation and decomposition of ozone.” [footnote: “The Nobel Prize in Chemistry 1995,” Nobel Prize.org, accessed February 18, 2015, http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1995/.] Molina, a Mexican citizen, carried out the majority of his work at the Massachusetts Institute of Technology (MIT).
+The 1995 Nobel Prize in Chemistry was shared by Paul J. Crutzen, Mario J. {{term}}Molina{{/term}} ([#CNX_Chem_12_07_Molina]), and F. Sherwood Rowland “for their work in atmospheric chemistry, particularly concerning the formation and decomposition of ozone.” {{fn}}“The Nobel Prize in Chemistry 1995,” Nobel Prize.org, accessed February 18, 2015, http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1995/.{{/fn}} Molina, a Mexican citizen, carried out the majority of his work at the Massachusetts Institute of Technology (MIT).
 
 <!-- SEG:m68795:para:fs-idm242073328 -->
-In 1974, Molina and Rowland published a paper in the journal *Nature* detailing the threat of chlorofluorocarbon gases to the stability of the ozone layer in earth’s upper atmosphere. The ozone layer protects earth from solar radiation by absorbing ultraviolet light. As chemical reactions deplete the amount of ozone in the upper atmosphere, a measurable “hole” forms above Antarctica, and an increase in the amount of solar ultraviolet radiation— strongly linked to the prevalence of skin cancers—reaches earth’s surface. The work of Molina and Rowland was instrumental in the adoption of the Montreal Protocol, an international treaty signed in 1987 that successfully began phasing out production of chemicals linked to ozone destruction.
+In 1974, Molina and Rowland published a paper in the journal {{i}}Nature{{/i}} detailing the threat of chlorofluorocarbon gases to the stability of the ozone layer in earth’s upper atmosphere. The ozone layer protects earth from solar radiation by absorbing ultraviolet light. As chemical reactions deplete the amount of ozone in the upper atmosphere, a measurable “hole” forms above Antarctica, and an increase in the amount of solar ultraviolet radiation— strongly linked to the prevalence of skin cancers—reaches earth’s surface. The work of Molina and Rowland was instrumental in the adoption of the Montreal Protocol, an international treaty signed in 1987 that successfully began phasing out production of chemicals linked to ozone destruction.
 
 <!-- SEG:m68795:para:fs-idm4297296 -->
 Molina and Rowland demonstrated that chlorine atoms from human-made chemicals can catalyze ozone destruction in a process similar to that by which NO accelerates the depletion of ozone. Chlorine atoms are generated when chlorocarbons or chlorofluorocarbons—once widely used as refrigerants and propellants—are photochemically decomposed by ultraviolet light or react with hydroxyl radicals. A sample mechanism is shown here using methyl chloride:
@@ -86,7 +86,7 @@ Molina and Rowland demonstrated that chlorine atoms from human-made chemicals ca
 Chlorine radicals break down ozone and are regenerated by the following catalytic cycle:
 
 <!-- SEG:m68795:para:fs-idm225343040 -->
-A single monatomic chlorine can break down thousands of ozone molecules. Luckily, the majority of atmospheric chlorine exists as the catalytically inactive forms Cl~2~ and ClONO~2~.
+A single monatomic chlorine can break down thousands of ozone molecules. Luckily, the majority of atmospheric chlorine exists as the catalytically inactive forms Cl[[sub:2]] and ClONO[[sub:2]].
 
 <!-- SEG:m68795:para:fs-idm215571280 -->
 After receiving his portion of the Nobel Prize, Molina continued his work in atmospheric chemistry at MIT.
@@ -113,7 +113,7 @@ In the mechanism for the pentose phosphate pathway, G6PD catalyzes the reaction 
 Heterogeneous Catalysts
 
 <!-- SEG:m68795:para:fs-idm31937584 -->
-A __heterogeneous catalyst__ is a catalyst that is present in a different phase (usually a solid) than the reactants. Such catalysts generally function by furnishing an active surface upon which a reaction can occur. Gas and liquid phase reactions catalyzed by heterogeneous catalysts occur on the surface of the catalyst rather than within the gas or liquid phase.
+A {{term}}heterogeneous catalyst{{/term}} is a catalyst that is present in a different phase (usually a solid) than the reactants. Such catalysts generally function by furnishing an active surface upon which a reaction can occur. Gas and liquid phase reactions catalyzed by heterogeneous catalysts occur on the surface of the catalyst rather than within the gas or liquid phase.
 
 <!-- SEG:m68795:para:fs-idm52671504 -->
 Heterogeneous catalysis typically involves the following processes:
@@ -134,7 +134,7 @@ Desorption of product(s) from the surface of the catalyst
 [#CNX_Chem_12_07_HetCats] illustrates the steps of a mechanism for the reaction of compounds containing a carbon–carbon double bond with hydrogen on a nickel catalyst. Nickel is the catalyst used in the hydrogenation of polyunsaturated fats and oils (which contain several carbon–carbon double bonds) to produce saturated fats and oils (which contain only carbon–carbon single bonds).
 
 <!-- SEG:m68795:caption:CNX_Chem_12_07_HetCats-caption -->
-Mechanism for the Ni-catalyzed reaction [[MATH:1]] (a) Hydrogen is adsorbed on the surface, breaking the H–H bonds and forming Ni–H bonds. (b) Ethylene is adsorbed on the surface, breaking the C–C π-bond and forming Ni–C bonds. (c) Atoms diffuse across the surface and form new C–H bonds when they collide. (d) C~2~H~6~ molecules desorb from the Ni surface.
+Mechanism for the Ni-catalyzed reaction [[MATH:1]] (a) Hydrogen is adsorbed on the surface, breaking the H–H bonds and forming Ni–H bonds. (b) Ethylene is adsorbed on the surface, breaking the C–C π-bond and forming Ni–C bonds. (c) Atoms diffuse across the surface and form new C–H bonds when they collide. (d) C[[sub:2]]H[[sub:6]] molecules desorb from the Ni surface.
 
 <!-- SEG:m68795:para:fs-idm108887776 -->
 Many important chemical products are prepared via industrial processes that use heterogeneous catalysts, including ammonia, nitric acid, sulfuric acid, and methanol. Heterogeneous catalysts are also used in the catalytic converters found on most gasoline-powered automobiles ([#CNX_Chem_12_07_CatConvert]).
@@ -236,7 +236,7 @@ The general mode of action for a catalyst is to provide a mechanism by which the
 Compare the functions of homogeneous and heterogeneous catalysts.
 
 <!-- SEG:m68795:problem:fs-idm224601824 -->
-Consider this scenario and answer the following questions: Chlorine atoms resulting from decomposition of chlorofluoromethanes, such as CCl~2~F~2~, catalyze the decomposition of ozone in the atmosphere. One simplified mechanism for the decomposition is:[[BR]] [[MATH:2]]
+Consider this scenario and answer the following questions: Chlorine atoms resulting from decomposition of chlorofluoromethanes, such as CCl[[sub:2]]F[[sub:2]], catalyze the decomposition of ozone in the atmosphere. One simplified mechanism for the decomposition is:[[BR]] [[MATH:2]]
 
 <!-- SEG:m68795:problem:fs-idm174347728 -->
 (a) Explain why chlorine atoms are catalysts in the gas-phase transformation:[[BR]] [[MATH:3]]
@@ -272,7 +272,7 @@ For each of the following pairs of reaction diagrams, identify which of the pair
 The lowering of the transition state energy indicates the effect of a catalyst. (a) B; (b) B
 
 <!-- SEG:m68795:problem:fs-idm245642464 -->
-For each of the following reaction diagrams, estimate the activation energy (*E*~a~) of the reaction:
+For each of the following reaction diagrams, estimate the activation energy ({{i}}E{{/i}}[[sub:a]]) of the reaction:
 
 <!-- SEG:m68795:problem:fs-idm211017072 -->
 (a)[[BR]] [[MEDIA:5]]
@@ -281,7 +281,7 @@ For each of the following reaction diagrams, estimate the activation energy (*E*
 (b)[[BR]] [[MEDIA:6]]
 
 <!-- SEG:m68795:problem:fs-idm159516400 -->
-For each of the following reaction diagrams, estimate the activation energy (*E*~a~) of the reaction:
+For each of the following reaction diagrams, estimate the activation energy ({{i}}E{{/i}}[[sub:a]]) of the reaction:
 
 <!-- SEG:m68795:problem:fs-idm197289104 -->
 (a)[[BR]] [[MEDIA:7]]

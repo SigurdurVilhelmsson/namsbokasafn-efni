@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68834",
-  "extractedAt": "2026-03-06T13:09:39.808Z",
+  "extractedAt": "2026-03-19T19:48:08.585Z",
   "sourceHash": "3ac071edace0db3b",
   "segmentCount": 36,
   "segmentIds": [
@@ -42,7 +42,7 @@
     "m68834:glossary-term:fs-idm108042736-term",
     "m68834:glossary-def:fs-idm108042736-def"
   ],
-  "equationCount": 21,
+  "equationCount": 24,
   "equationIds": [
     "math-1",
     "math-2",
@@ -54,6 +54,9 @@
     "math-8",
     "math-9",
     "math-10",
+    "math-11",
+    "math-12",
+    "math-13",
     "fs-idp35345312",
     "fs-idm95180416",
     "fs-idm53163360",

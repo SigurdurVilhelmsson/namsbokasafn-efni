@@ -139,6 +139,34 @@
     "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>TiCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>4Na</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Ti</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>4NaCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
     "latex": "{{{\\text{TiCl}}}_{4}(l)+\\text{4Na}(s)\\, \\longrightarrow \\, \\text{Ti}(s)+\\text{4NaCl}(s)}"
   },
+  "math-36": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{HSO}}}_{4}^{-}}"
+  },
+  "math-37": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{HSO}}}_{3}^{-}}"
+  },
+  "math-38": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{3}^{-}}"
+  },
+  "math-39": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{{2−}}}"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{SO}}}_{4}^{{2−}}}"
+  },
+  "math-41": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{SO}}}_{3}^{{2−}}}"
+  },
+  "math-42": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{O}}_{2}^{-}}"
+  },
   "fs-idm5414704": {
     "mathml": "<m:math><m:mrow><m:mtable columnalign=\"left\"><m:mtr columnalign=\"left\"><m:mtd columnalign=\"left\"><m:mrow><m:mn>6</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:munderover><m:mo>→</m:mo><m:mrow><m:mtext>light</m:mtext></m:mrow><m:mrow><m:mspace width=\"0.4em\"/><m:mtext>chlorophyll</m:mtext><m:mspace width=\"0.4em\"/></m:mrow></m:munderover></m:mrow><m:mspace width=\"0.2em\"/></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>6</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr columnalign=\"left\"><m:mtd columnalign=\"left\"><m:mrow><m:mtext>carbon</m:mtext></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mtext>water</m:mtext></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow/></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mtext>glucose</m:mtext></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mtext>oxygen</m:mtext></m:mrow></m:mtd></m:mtr><m:mtr columnalign=\"left\"><m:mtd columnalign=\"left\"><m:mrow><m:mtext>dioxide</m:mtext></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mrow/></m:mtd><m:mtd columnalign=\"left\"><m:mrow/></m:mtd><m:mtd columnalign=\"left\"><m:mrow/></m:mtd><m:mtd columnalign=\"left\"><m:mrow/></m:mtd></m:mtr></m:mtable></m:mrow></m:math>",
     "latex": "{\\begin{aligned} \\end{aligned}}",

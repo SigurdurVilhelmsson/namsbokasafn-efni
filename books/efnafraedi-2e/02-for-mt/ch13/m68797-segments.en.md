@@ -11,7 +11,7 @@ Describe the nature of equilibrium systems
 Explain the dynamic nature of a chemical equilibrium
 
 <!-- SEG:m68797:para:fs-idp222368384 -->
-The convention for writing chemical equations involves placing reactant formulas on the left side of a reaction arrow and product formulas on the right side. By this convention, and the definitions of “reactant” and “product,” a chemical equation represents the reaction in question as proceeding from left to right. __Reversible reactions__, however, may proceed in both forward (left to right) and reverse (right to left) directions. When the rates of the forward and reverse reactions are equal, the concentrations of the reactant and product species remain constant over time and the system is at __equilibrium__. The relative concentrations of reactants and products in equilibrium systems vary greatly; some systems contain mostly products at equilibrium, some contain mostly reactants, and some contain appreciable amounts of both.
+The convention for writing chemical equations involves placing reactant formulas on the left side of a reaction arrow and product formulas on the right side. By this convention, and the definitions of “reactant” and “product,” a chemical equation represents the reaction in question as proceeding from left to right. {{term}}Reversible reactions{{/term}}, however, may proceed in both forward (left to right) and reverse (right to left) directions. When the rates of the forward and reverse reactions are equal, the concentrations of the reactant and product species remain constant over time and the system is at {{term}}equilibrium{{/term}}. The relative concentrations of reactants and products in equilibrium systems vary greatly; some systems contain mostly products at equilibrium, some contain mostly reactants, and some contain appreciable amounts of both.
 
 <!-- SEG:m68797:para:fs-idp3488592 -->
 [#CNX_Chem_13_01_equilibrium] illustrates fundamental equilibrium concepts using the reversible decomposition of colorless dinitrogen tetroxide to yield brown nitrogen dioxide, an elementary reaction described by the equation:
@@ -20,13 +20,13 @@ The convention for writing chemical equations involves placing reactant formulas
 Note that a special double arrow is used to emphasize the reversible nature of the reaction.
 
 <!-- SEG:m68797:caption:CNX_Chem_13_01_equilibrium-caption -->
-(a) A sealed tube containing colorless N~2~O~4~ darkens as it decomposes to yield brown NO~2~. (b) Changes in concentration over time as the decomposition reaction achieves equilibrium. (c) At equilibrium, the forward and reverse reaction rates are equal.
+(a) A sealed tube containing colorless N[[sub:2]]O[[sub:4]] darkens as it decomposes to yield brown NO[[sub:2]]. (b) Changes in concentration over time as the decomposition reaction achieves equilibrium. (c) At equilibrium, the forward and reverse reaction rates are equal.
 
 <!-- SEG:m68797:para:fs-idp53505568 -->
 For this elementary process, rate laws for the forward and reverse reactions may be derived directly from the reaction stoichiometry:
 
 <!-- SEG:m68797:para:fs-idm379766304 -->
-As the reaction begins (*t* = 0), the concentration of the N~2~O~4~ reactant is finite and that of the NO~2~ product is zero, so the forward reaction proceeds at a finite rate while the reverse reaction rate is zero. As time passes, N~2~O~4~ is consumed and its concentration falls, while NO~2~ is produced and its concentration increases ([#CNX_Chem_13_01_equilibrium]**b**). The decreasing concentration of the reactant slows the forward reaction rate, and the increasing product concentration speeds the reverse reaction rate ([#CNX_Chem_13_01_equilibrium]**c**). This process continues until *the forward and reverse reaction rates become equal*, at which time the reaction has reached equilibrium, as characterized by constant concentrations of its reactants and products (shaded areas of [#CNX_Chem_13_01_equilibrium]**b** and [#CNX_Chem_13_01_equilibrium]**c**). It’s important to emphasize that chemical equilibria are dynamic; a reaction at equilibrium has not “stopped,” but is proceeding in the forward and reverse directions at the same rate. This dynamic nature is essential to understanding equilibrium behavior as discussed in this and subsequent chapters of the text.
+As the reaction begins ({{i}}t{{/i}} = 0), the concentration of the N[[sub:2]]O[[sub:4]] reactant is finite and that of the NO[[sub:2]] product is zero, so the forward reaction proceeds at a finite rate while the reverse reaction rate is zero. As time passes, N[[sub:2]]O[[sub:4]] is consumed and its concentration falls, while NO[[sub:2]] is produced and its concentration increases ([#CNX_Chem_13_01_equilibrium]{{b}}b{{/b}}). The decreasing concentration of the reactant slows the forward reaction rate, and the increasing product concentration speeds the reverse reaction rate ([#CNX_Chem_13_01_equilibrium]{{b}}c{{/b}}). This process continues until {{i}}the forward and reverse reaction rates become equal{{/i}}, at which time the reaction has reached equilibrium, as characterized by constant concentrations of its reactants and products (shaded areas of [#CNX_Chem_13_01_equilibrium]{{b}}b{{/b}} and [#CNX_Chem_13_01_equilibrium]{{b}}c{{/b}}). It’s important to emphasize that chemical equilibria are dynamic; a reaction at equilibrium has not “stopped,” but is proceeding in the forward and reverse directions at the same rate. This dynamic nature is essential to understanding equilibrium behavior as discussed in this and subsequent chapters of the text.
 
 <!-- SEG:m68797:caption:CNX_Chem_13_01_dynamic-caption -->
 A two-person juggling act illustrates the dynamic aspect of chemical equilibria. Each person is throwing and catching clubs at the same rate, and each holds a (approximately) constant number of clubs.
@@ -71,7 +71,7 @@ Is a system at equilibrium if the rate constants of the forward and reverse reac
 If the concentrations of products and reactants are equal, is the system at equilibrium?
 
 <!-- SEG:m68797:solution:fs-idp15954560 -->
-Not necessarily. A system at equilibrium is characterized by *constant* reactant and product concentrations, but the values of the reactant and product concentrations themselves need not be equal.
+Not necessarily. A system at equilibrium is characterized by {{i}}constant{{/i}} reactant and product concentrations, but the values of the reactant and product concentrations themselves need not be equal.
 
 <!-- SEG:m68797:glossary-term:fs-idp87452944-term -->
 equilibrium

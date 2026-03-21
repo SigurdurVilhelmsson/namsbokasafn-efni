@@ -1,19 +1,27 @@
 {
   "math-1": {
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rev</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"2em\"/><m:mtext>and</m:mtext><m:mspace width=\"2em\"/><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rev</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\text{Δ}{S}_{{\\text{sys}}}=\\, \\frac{{\\text{−}{q}_{{\\text{rev}}}}}{{{T}_{{\\text{sys}}}}}\\, \\text{and}\\, \\text{Δ}{S}_{{\\text{surr}}}=\\, \\frac{{{q}_{{\\text{rev}}}}}{{{T}_{{\\text{surr}}}}}}"
+    "latex": "{\\text{Δ}{S}_{{\\text{sys}}}=\\, \\frac{{\\text{−}{q}_{{\\text{rev}}}}}{{{T}_{{\\text{sys}}}}}\\, \\text{and}\\, \\text{Δ}{S}_{{\\text{surr}}}=\\, \\frac{{{q}_{{\\text{rev}}}}}{{{T}_{{\\text{surr}}}}}}",
+    "equationId": "fs-idp67516128",
+    "equationClass": "unnumbered"
   },
   "math-2": {
     "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:mrow><m:mo>|</m:mo> <m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub></m:mrow> <m:mo>|</m:mo></m:mrow><m:mo>&lt;</m:mo><m:mrow><m:mo>|</m:mo> <m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub></m:mrow> <m:mo>|</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>univ</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub><m:mo>></m:mo><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} {| {\\text{Δ}{S}_{{\\text{sys}}}} |}&lt;{| {\\text{Δ}{S}_{{\\text{surr}}}} |} \\\\ \\text{Δ}{S}_{{\\text{univ}}}=\\text{Δ}{S}_{{\\text{sys}}}+\\text{Δ}{S}_{{\\text{surr}}}>0 \\end{aligned}"
+    "latex": "\\begin{aligned} {| {\\text{Δ}{S}_{{\\text{sys}}}} |}&lt;{| {\\text{Δ}{S}_{{\\text{surr}}}} |} \\\\ \\text{Δ}{S}_{{\\text{univ}}}=\\text{Δ}{S}_{{\\text{sys}}}+\\text{Δ}{S}_{{\\text{surr}}}>0 \\end{aligned}",
+    "equationId": "fs-idm241116384",
+    "equationClass": "unnumbered"
   },
   "math-3": {
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rev</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"2em\"/><m:mtext>and</m:mtext><m:mspace width=\"2em\"/><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rev</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\text{Δ}{S}_{{\\text{sys}}}=\\, \\frac{{{q}_{{\\text{rev}}}}}{{{T}_{{\\text{sys}}}}}\\, \\text{and}\\, \\text{Δ}{S}_{{\\text{surr}}}=\\, \\frac{{\\text{−}{q}_{{\\text{rev}}}}}{{{T}_{{\\text{surr}}}}}}"
+    "latex": "{\\text{Δ}{S}_{{\\text{sys}}}=\\, \\frac{{{q}_{{\\text{rev}}}}}{{{T}_{{\\text{sys}}}}}\\, \\text{and}\\, \\text{Δ}{S}_{{\\text{surr}}}=\\, \\frac{{\\text{−}{q}_{{\\text{rev}}}}}{{{T}_{{\\text{surr}}}}}}",
+    "equationId": "fs-idp14273600",
+    "equationClass": "unnumbered"
   },
   "math-4": {
     "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:mrow><m:mo>|</m:mo> <m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub></m:mrow> <m:mo>|</m:mo></m:mrow><m:mo>≈</m:mo><m:mrow><m:mo>|</m:mo> <m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub></m:mrow> <m:mo>|</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>univ</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>sys</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>S</m:mi><m:mrow><m:mtext>surr</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} {| {\\text{Δ}{S}_{{\\text{sys}}}} |}\\approx {| {\\text{Δ}{S}_{{\\text{surr}}}} |} \\\\ \\text{Δ}{S}_{{\\text{univ}}}=\\text{Δ}{S}_{{\\text{sys}}}+\\text{Δ}{S}_{{\\text{surr}}}=0 \\end{aligned}"
+    "latex": "\\begin{aligned} {| {\\text{Δ}{S}_{{\\text{sys}}}} |}\\approx {| {\\text{Δ}{S}_{{\\text{surr}}}} |} \\\\ \\text{Δ}{S}_{{\\text{univ}}}=\\text{Δ}{S}_{{\\text{sys}}}+\\text{Δ}{S}_{{\\text{surr}}}=0 \\end{aligned}",
+    "equationId": "fs-idm250691808",
+    "equationClass": "unnumbered"
   },
   "math-5": {
     "mathml": "<m:math><m:mrow><m:mi>S</m:mi><m:mtext>°</m:mtext></m:mrow></m:math>",

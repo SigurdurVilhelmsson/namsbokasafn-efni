@@ -627,7 +627,7 @@
           "id": "fs-idp173892208",
           "title": {
             "segmentId": "m68818:example-title:fs-idp173892208-title",
-            "text": "Solution"
+            "text": "Determination of Δ{{i}}S{{/i}}°"
           },
           "content": [
             {
@@ -638,7 +638,11 @@
             {
               "type": "para",
               "id": "fs-idp180269712",
-              "segmentId": "m68818:para:fs-idp180269712"
+              "segmentId": "m68818:para:fs-idp180269712",
+              "title": {
+                "segmentId": "m68818:para-title:fs-idp180269712-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -693,7 +697,7 @@
           "id": "fs-idp34274768",
           "title": {
             "segmentId": "m68818:example-title:fs-idp34274768-title",
-            "text": "Solution"
+            "text": "Determination of Δ{{i}}S{{/i}}°"
           },
           "content": [
             {
@@ -704,7 +708,11 @@
             {
               "type": "para",
               "id": "fs-idp118976224",
-              "segmentId": "m68818:para:fs-idp118976224"
+              "segmentId": "m68818:para:fs-idp118976224",
+              "title": {
+                "segmentId": "m68818:para-title:fs-idp118976224-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -789,22 +797,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68818:entry:auto-99",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68818:entry:auto-100",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68818:entry:auto-101",
                   "attributes": {}
                 }
@@ -814,6 +806,22 @@
               "cells": [
                 {
                   "segmentId": "m68818:entry:auto-102",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68818:entry:auto-103",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68818:entry:auto-104",
                   "attributes": {}
                 }
               ]

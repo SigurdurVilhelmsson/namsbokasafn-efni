@@ -413,11 +413,26 @@
             },
             {
               "id": null,
-              "segmentId": "m68734:item:fs-idp170969264-item-3"
-            },
-            {
-              "id": null,
-              "segmentId": "m68734:item:fs-idp170969264-item-4"
+              "segmentId": "m68734:item:fs-idp170969264-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-idp203626048",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68734:item:fs-idp203626048-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68734:item:fs-idp203626048-item-2"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

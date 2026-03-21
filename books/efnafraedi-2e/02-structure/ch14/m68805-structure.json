@@ -466,7 +466,7 @@
           "id": "fs-idm223269056",
           "title": {
             "segmentId": "m68805:example-title:fs-idm223269056-title",
-            "text": "Solution"
+            "text": "Determination of {{i}}K{{/i}}[[sub:a]] from Equilibrium Concentrations"
           },
           "content": [
             {
@@ -477,7 +477,11 @@
             {
               "type": "para",
               "id": "fs-idm119280448",
-              "segmentId": "m68805:para:fs-idm119280448"
+              "segmentId": "m68805:para:fs-idm119280448",
+              "title": {
+                "segmentId": "m68805:para-title:fs-idm119280448-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -546,7 +550,7 @@
           "id": "fs-idm154542240",
           "title": {
             "segmentId": "m68805:example-title:fs-idm154542240-title",
-            "text": "Solution"
+            "text": "Determination of {{i}}K{{/i}}[[sub:b]] from Equilibrium Concentrations"
           },
           "content": [
             {
@@ -557,7 +561,11 @@
             {
               "type": "para",
               "id": "fs-idm64959408",
-              "segmentId": "m68805:para:fs-idm64959408"
+              "segmentId": "m68805:para:fs-idm64959408",
+              "title": {
+                "segmentId": "m68805:para-title:fs-idm64959408-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -612,7 +620,7 @@
           "id": "fs-idm1433984",
           "title": {
             "segmentId": "m68805:example-title:fs-idm1433984-title",
-            "text": "Solution"
+            "text": "Determination of {{i}}K{{/i}}[[sub:a]] or {{i}}K{{/i}}[[sub:b]] from pH"
           },
           "content": [
             {
@@ -623,7 +631,11 @@
             {
               "type": "para",
               "id": "fs-idm163708144",
-              "segmentId": "m68805:para:fs-idm163708144"
+              "segmentId": "m68805:para:fs-idm163708144",
+              "title": {
+                "segmentId": "m68805:para-title:fs-idm163708144-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1170,31 +1182,31 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68805:entry:auto-141",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68805:entry:auto-142",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68805:entry:auto-143",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68805:entry:auto-144",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68805:entry:auto-145",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68805:entry:auto-146",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68805:entry:auto-147",
                   "attributes": {}
                 }
               ]

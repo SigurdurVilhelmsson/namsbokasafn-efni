@@ -1,0 +1,36 @@
+{
+  "moduleId": "m68739",
+  "chapter": "ch07",
+  "timestamp": "2026-03-21T15:13:29.743Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "image",
+      "source": 77,
+      "translated": 85,
+      "diff": 8,
+      "direction": "overproduction"
+    },
+    {
+      "tag": "item",
+      "source": 39,
+      "translated": 34,
+      "diff": -5,
+      "direction": "loss"
+    },
+    {
+      "tag": "list",
+      "source": 11,
+      "translated": 10,
+      "diff": -1,
+      "direction": "loss"
+    },
+    {
+      "tag": "media",
+      "source": 77,
+      "translated": 85,
+      "diff": 8,
+      "direction": "overproduction"
+    }
+  ]
+}

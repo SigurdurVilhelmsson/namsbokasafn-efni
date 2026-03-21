@@ -1,0 +1,392 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Rafhlöður og efnarafalar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68825</md:content-id>
+  <md:title>Rafhlöður og efnarafalar</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla muntu geta:</para><list id="list-00001"><item>Lýst rafefnafræði nokkurra algengra rafhlaðna</item><item>Greint á milli virkni efnarafals og rafhlöðu</item></list></md:abstract>
+  <md:uuid>7c891b2b-af9e-411f-af9c-f6cc43c9ca1b</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp5014576">Margir tæknilegir hlutir tengjast síðustu tveggja alda rannsóknum í rafefnafræði, en enginn er augljósari en rafhlaðan. <term id="term-00001">Rafhlaða (e. battery)</term> er galvanískur rafall sem hefur verið sérstaklega hannaður og smíðaður á þann hátt sem hentar best fyrirhugaðri notkun hans sem raforkugjafi fyrir tiltekin not. Ein af fyrstu farsælu rafhlöðunum var <emphasis effect="italics">Daniell-rafallinn</emphasis>, sem byggði á sjálfgengri oxun sinks með kopar(II)-jónum (<link target-id="CNX_Chem_17_08_Daniell"/>):</para>
+<figure id="CNX_Chem_17_08_Daniell">
+<media id="fs-idm353407280" alt="This figure contains a patent drawing for an electrochemical cell on the left labelled Element Daniell and a diagram of an electrochemical cell on the right. In the diagram, two beakers are shown. Each is just over half full. The beaker on the left contains a blue solution. The beaker on the right contains a colorless solution. A glass tube in the shape of an inverted U connects the two beakers at the center of the diagram. The tube contents are colorless. The ends of the tubes are beneath the surface of the solutions in the beakers and a small grey plug is present at each end of the tube. The plug in the left beaker is labeled “Porous plug.” Each beaker shows a metal strip partially submerged in the liquid. The beaker on the left has a silver strip that is labeled “Z n anode” at the top. The beaker on the right has an orange brown strip that is labeled “C u cathode” at the top.  A wire extends up and toward the center from the top of each of these strips before stopping. The end of the left wire points up to a negative sign. The end of the right wire points up to a positive sign. An arrow points toward the left wire which is labeled “Flow of e superscript negative.” A curved arrow extends from the Z n strip into the surrounding solution. The tip of this arrow is labeled “Z n superscript 2 plus.” A curved arrow extends from the salt bridge into the beaker on the left into the blue solution. The tip of this arrow is labeled “S O subscript 4 superscript 2 negative.” A curved arrow extends from the solution in the beaker on the right to the C u strip. The base of this arrow is labeled “C u superscript 2 plus.” A curved arrow extends from the colorless solution to salt bridge in the beaker on the right. The base of this arrow is labeled “S O subscript 4 superscript 2 negative.” Just right of the center of the salt bridge on the tube an arrow is placed on the salt bridge that points down and to the right. The base of this arrow is labeled “Z n superscript 2 plus.” Just above this region of the tube appears the label “Flow of cations.” Just left of the center of the salt bridge on the tube an arrow is placed on the salt bridge that points down and to the left. The base of this arrow is labeled “S O subscript 4 superscript 2 negative.” Just above this region of the tube appears the label “Flow of anions.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_08_Daniell.jpg"/>
+</media>
+<caption>Mynd af Daniell-rafal úr tímariti frá 1904 (til vinstri) ásamt einfaldaðri mynd sem sýnir rafefnafræði rafalsins (til hægri). Í hönnuninni frá 1904 var notaður gljúpur leirpottur til að geyma innihald annars hálfkersins og til að þjóna sem saltbrú yfir í hitt hálfkerið.</caption>
+</figure>
+<equation id="fs-idm385208672" class="unnumbered"><m:math><m:mrow><m:mtext>Zn</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cu</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mo>+</m:mo></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⟶</m:mo><m:msup><m:mrow><m:mtext>Zn</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mo>+</m:mo></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Cu</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm383968784">Nútímarafhlöður eru til í mörgum myndum til að henta ýmsum notum, allt frá örsmáum hnapparafhlöðum sem sjá fyrir lítilli orkuþörf úra til mjög stórra rafhlaðna sem notaðar eru til að veita varaorku fyrir raforkukerfi sveitarfélaga. Sumar rafhlöður eru hannaðar fyrir einnota notkun og er ekki hægt að endurhlaða þær (<term id="term-00002">einnota rafhlöður (e. primary cells)</term>), á meðan aðrar byggja á þægilega afturkræfum efnahvörfum sem leyfa endurhleðslu með utanaðkomandi aflgjafa (<term id="term-00003">endurhlaðanlegar rafhlöður (e. secondary cells)</term>). Þessi kafli mun veita yfirlit yfir grundvallarþætti rafefnafræði nokkurra rafhlaðna sem flestir neytendur þekkja, og mun kynna tengt rafefnafræðilegt tæki sem kallast <emphasis effect="italics">efnarafall</emphasis> og getur boðið upp á bætta afköst í ákveðnum tilvikum.</para>
+<note id="fs-idm46594944" class="chemistry link-to-learning">
+<para id="fs-idm30434512">Farðu á þessa <link url="http://openstax.org/l/16batteries">síðu</link> til að læra meira um rafhlöður.</para>
+</note>
+<section id="fs-idm217316496">
+<title>Einnota rafhlöður</title>
+<para id="fs-idm163218640">Algeng einnota rafhlaða er <term id="term-00004">þurrafhlaðan (e. dry cell)</term>, sem notar sinkhylki bæði sem ílát og anóðu („–“ skaut) og grafítstöng sem katóðu („+“ skaut). Sinkhylkið er fyllt með rafkleyfismauki sem inniheldur mangan(IV)oxíð, sink(II)klóríð, ammóníumklóríð og vatn. Grafítstöng er dýft í rafkleyfismaukið til að fullkomna rafalinn. Sjálfgenga efnahvarfið í rafalanum felur í sér oxun sinks:</para>
+<equation id="fs-idm50961664" class="unnumbered"><m:math><m:mrow><m:mtext>anode reaction:</m:mtext><m:mspace width="0.2em"/><m:mtext>Zn</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Zn</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm136908960">og afoxun mangans(IV)</para>
+<equation id="fs-idm216376416" class="unnumbered"><m:math><m:mrow><m:mtext>reduction reaction:</m:mtext><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>MnO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Mn</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm327011760">sem saman gefa efnahvarf rafalsins:</para>
+<equation id="fs-idm375659600" class="unnumbered"><m:math><m:mrow><m:mtext>cell reaction:</m:mtext><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>MnO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Zn</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Zn</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Mn</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:msub><m:mi>E</m:mi><m:mtext>cell</m:mtext></m:msub><m:mo>~</m:mo><m:mn>1.5</m:mn><m:mspace width="0.2em"/><m:mtext>V</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm63164944">Spennan (<emphasis effect="italics">rafalspenna</emphasis>) þurrafhlöðu er um það bil 1,5 V. Þurrafhlöður eru fáanlegar í ýmsum stærðum (t.d. D, C, AA, AAA). Allar stærðir þurrafhlaðna samanstanda af sömu íhlutunum og sýna því sömu spennu, en stærri rafhlöður innihalda meira magn af oxunar-afoxunarhvarfefnum og geta því flutt samsvarandi meira magn af hleðslu. Eins og aðra galvaníska rafala er hægt að raðtengja þurrafhlöður til að fá rafhlöður með hærri spennu, ef þörf krefur.</para>
+<figure id="CNX_Chem_17_05_DryCell" class="scaled-down">
+<media id="fs-idm110257344" alt="A diagram of a cross section of a dry cell battery is shown. The overall shape of the cell is cylindrical. The lateral surface of the cylinder, indicated as a thin red line, is labeled “zinc can (electrode).” Just beneath this is a slightly thicker dark grey surface that covers the lateral surface, top, and bottom of the battery, which is labeled “Porous separator.” Inside is a purple region with many evenly spaced small darker purple dots, labeled “Paste of M n O subscript 2, N H subscript 4 C l, Z n C l subscript 2, water (cathode).” A dark grey rod, labeled “Carbon rod (electrode),” extends from the top of the battery, leaving a gap of less than one-fifth the height of the battery below the rod to the bottom of the cylinder. A thin grey line segment at the very bottom of the cylinder is labeled “Metal bottom cover (negative).” The very top of the cylinder has a thin grey surface that curves upward at the center over the top of the carbon electrode at the center of the cylinder. This upper surface is labeled “Metal top cover (positive).” A thin dark grey line just below this surface is labeled “Insulator.” Below this, above the purple region, and outside of the carbon electrode at the center is an orange region that is labeled “Seal.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_05_DryCell.jpg"/>
+</media>
+<caption>Skýringarmynd sýnir dæmigerða þurrafhlöðu.</caption>
+</figure>
+<note id="fs-idm43757664" class="chemistry link-to-learning">
+<para id="fs-idm25425376">Farðu á þessa <link url="http://openstax.org/l/16zinccarbon">síðu</link> til að læra meira um sink-kolefnisrafhlöður.</para>
+</note>
+<para id="fs-idm98547376"><term id="term-00005">Alkalínrafhlöður (e. alkaline batteries)</term> (<link target-id="CNX_Chem_17_05_AlkalineBat"/>) voru þróaðar á sjötta áratugnum til að bæta afköst þurrafhlöðunnar og voru hannaðar í kringum sömu oxunar-afoxunarpörin. Eins og nafnið gefur til kynna nota þessar tegundir rafhlaðna basíska rafkleyfa, oft kalíumhýdroxíð. Efnahvörfin eru</para>
+<equation id="fs-idp18271040" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:munder accentunder="true"><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtext>anode:</m:mtext><m:mspace width="4.5em"/><m:mtext>Zn</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>ZnO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="9.5em"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>cathode:</m:mtext><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>MnO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>Mn</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="9.5em"/></m:mtd></m:mtr></m:mtable><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>cell:</m:mtext><m:mspace width="5.7em"/><m:mtext>Zn</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>2MnO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>ZnO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>Mn</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>cell</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>+1.43 V</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm111516816">Alkalínrafhlaða getur skilað um þrisvar til fimm sinnum meiri orku en sink-kolefnis þurrafhlaða af svipaðri stærð. Alkalínrafhlöður eiga það til að leka kalíumhýdroxíði, svo þær ætti að fjarlægja úr tækjum við langtímageymslu. Þótt sumar alkalínrafhlöður séu endurhlaðanlegar eru flestar það ekki. Tilraunir til að endurhlaða alkalínrafhlöðu sem ekki er endurhlaðanleg leiða oft til þess að rafhlaðan rofnar og kalíumhýdroxíð rafkleyfinn lekur.</para>
+<figure id="CNX_Chem_17_05_AlkalineBat" class="scaled-down">
+<media id="fs-idm185949872" alt="A diagram of a cross section of an alkaline battery is shown. The overall shape of the cell is cylindrical. The lateral surface of the cylinder, indicated as a thin red line, is labeled “Outer casing.” Just beneath this is a thin, light grey surface that covers the lateral surface and top of the battery. Inside is a blue region with many evenly spaced small darker dots, labeled “M n O subscript 2 (cathode).” A thin dark grey layer is just inside, which is labeled “Ion conducting separator.” A purple region with many evenly spaced small darker dots fills the center of the battery and is labeled “ zinc (anode).” The very top of the battery has a thin grey curved surface over the central purple region. The curved surface above is labeled “Positive connection (plus).” At the base of the battery, an orange structure, labeled “Protective cap,” is located beneath the purple and blue central regions. This structure holds a grey structure that looks like a nail with its head at the bottom and pointed end extending upward into the center of the battery. This nail-like structure is labeled “Current pick up.” At the very bottom of the battery is a thin grey surface that is held by the protective cap. This surface is labeled “Negative terminal (negative).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_05_AlkalineBat.jpg"/>
+</media>
+<caption>Alkalínrafhlöður voru hannaðar sem endurbættar útgáfur af sink-kolefnis (þurr) rafhlöðum.</caption>
+</figure>
+<note id="fs-idm12771616" class="chemistry link-to-learning">
+<para id="fs-idm133981376">Farðu á þessa <link url="http://openstax.org/l/16alkaline">síðu</link> til að læra meira um alkalínrafhlöður.</para>
+</note>
+</section>
+<section id="fs-idm185701824">
+<title>Endurhlaðanlegar rafhlöður</title>
+<para id="fs-idm118882144"><term id="term-00006">Nikkel-kadmíum (e. nickel-cadmium)</term>, eða NiCd, rafhlöður (<link target-id="CNX_Chem_17_05_NiCd"/>) samanstanda af nikkelhúðaðri katóðu, kadmíumhúðaðri anóðu og kalíumhýdroxíð raftroði. Jákvæðu og neikvæðu plöturnar, sem eru varðar fyrir skammhlaupi með skilju, eru rúllaðar saman og settar í hylkið. Þetta er „rúllutertu“-hönnun og gerir NiCd-rafalnum kleift að skila mun meiri straumi en alkalínrafhlaða af svipaðri stærð. Efnahvörfin eru</para>
+<equation id="fs-idm129640416" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:munder accentunder="true"><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtext>anode:</m:mtext><m:mspace width="4.35em"/><m:mtext>Cd</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>Cd(OH)</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2e</m:mtext><m:mtext>−</m:mtext></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>cathode:</m:mtext><m:mspace width="0.28em"/><m:msub><m:mtext>NiO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>Ni(OH)</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="9.5em"/></m:mtd></m:mtr></m:mtable><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>cell:</m:mtext><m:mspace width="1.5em"/><m:mtext>Cd</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>NiO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>Cd(OH)</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>Ni(OH)</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>E</m:mi><m:mtext>cell</m:mtext></m:msub><m:mo>~</m:mo><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mtext>V</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm162639552">Ef rétt er farið með hana er hægt að endurhlaða NiCd-rafhlöðu um 1000 sinnum. Kadmíum er eitraður þungmálmur svo NiCd-rafhlöður ætti aldrei að rjúfa eða brenna og þeim skal fargað í samræmi við viðeigandi leiðbeiningar um eitraðan úrgang.</para>
+<figure id="CNX_Chem_17_05_NiCd">
+<media id="fs-idm53549888" alt="A diagram is shown of a cross section of a nickel cadmium battery. This battery is in a cylindrical shape. An outer red layer is labeled “case.” Just inside this layer is a thin, dark grey layer which is labeled at the bottom of the cylinder as “Negative electrode collector.” A silver rod extends upward through the center of the battery, which is surrounded by alternating layers, shown as vertical repeating bands, of yellow, purple, yellow, and blue. A slightly darker grey narrow band extends across the top of these alternating bands, which is labeled “Positive electrode collector.” A thin light grey band appears at the very bottom of the cylinder, which is labeled “Metal bottom cover (negative).” A small grey and white striped rectangular structure is present at the top of the central silver cylinder, which is labeled “Safety valve.” Above this is an orange layer that curves upward over the safety valve, which is labeled “Insulation ring.” Above this is a thin light grey layer that projects upward slightly at the center, which is labeled “Metal top cover (plus).” A light grey arrow points to a rectangle to the right that illustrates the layers at the center of the battery under magnification. From the central silver rod, the layers shown repeat the alternating pattern yellow, blue, yellow, and purple three times, with a final yellow layer covering the last purple layer. The outermost purple layer is labeled “Negative electrode.” The yellow layer beneath it is labeled “Separator.” The blue layer just inside is labeled “Positive electrode.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_05_NiCd.jpg"/>
+</media>
+<caption>NiCd-rafhlöður nota „rúllutertu“-hönnun sem eykur verulega magn straums sem rafhlaðan getur skilað samanborið við alkalínrafhlöðu af svipaðri stærð.</caption>
+</figure>
+<note id="fs-idm146941616" class="chemistry link-to-learning">
+<para id="fs-idm61052736">Farðu á þessa <link url="http://openstax.org/l/16NiCdrecharge">síðu</link> fyrir frekari upplýsingar um nikkel-kadmíum endurhlaðanlegar rafhlöður.</para>
+</note>
+<para id="fs-idm181217728"><term id="term-00007">Litíumjónarafhlöður (e. lithium ion batteries)</term> (<link target-id="CNX_Chem_17_05_LiIon"/>) eru meðal vinsælustu endurhlaðanlegu rafhlaðnanna og eru notaðar í mörgum færanlegum rafeindatækjum. Efnahvörfin eru</para>
+<equation id="fs-idm209213600" class="unnumbered"><m:math>
+    <m:mtable columnalign="left">
+      <m:mtr>
+        <m:mtd><m:munder accentunder="true">
+          <m:mtable columnalign="left">
+            <m:mtr>
+              <m:mtd><m:mtext>cathode:</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Li</m:mtext><m:mrow><m:mn>1</m:mn><m:mtext>−</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:msub><m:mtext>CoO</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msup><m:mtext>Li</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo>+</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>LiCoO</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="8em"/></m:mtd>
+            </m:mtr>
+            <m:mtr>
+               <m:mtd><m:mtext>anode:</m:mtext><m:mspace width="7.65em"/><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msub><m:mtext>LiC</m:mtext><m:mn>6</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msup><m:mtext>Li</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo>+</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo>+</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub></m:mtd>
+             </m:mtr>
+          </m:mtable>
+      <m:mo stretchy="true">¯</m:mo></m:munder></m:mtd>
+      </m:mtr>
+      <m:mtr>
+        <m:mtd><m:mtext>cell:</m:mtext><m:mspace width="3.8em"/><m:msub><m:mtext>Li</m:mtext><m:mrow><m:mn>1</m:mn><m:mtext>−</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:msub><m:mtext>CoO</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msub><m:mtext>LiC</m:mtext><m:mn>6</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>LiCoO</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:mspace width="4em"/><m:msub><m:mi>E</m:mi><m:mtext>cell</m:mtext></m:msub><m:mo>~</m:mo><m:mn>3.7</m:mn><m:mspace width="0.2em"/><m:mtext>V</m:mtext></m:mtd>
+      </m:mtr>
+    </m:mtable></m:math></equation>
+<para id="fs-idm162456704">Breytileg hlutfallaefnafræði kerfishvarfsins leiðir til breytileika í kerspennu, en við dæmigerðar aðstæður er <emphasis effect="italics">x</emphasis> yfirleitt ekki meira en 0,5 og kerspennan er um það bil 3,7 V. Litíumrafhlöður eru vinsælar vegna þess að þær geta veitt mikinn straum, eru léttari en sambærilegar rafhlöður af öðrum gerðum, framleiða nánast stöðuga spennu þegar þær afhlaðast og missa hleðsluna aðeins hægt þegar þær eru geymdar.</para>
+<figure id="CNX_Chem_17_05_LiIon">
+<media id="fs-idm137917328" alt="This figure shows a model of the flow of charge in a lithium ion battery. At the left, an approximately cubic structure formed by alternating red, grey, and purple spheres is labeled below as “Positive electrode.” The purple spheres are identified by the label “lithium.” The grey spheres are identified by the label “Metal.” The red spheres are identified by the label “oxygen.” Above this structure is the label “Charge” followed by a right pointing green arrow. At the right is a figure with layers of black interconnected spheres with purple spheres located in gaps between the layers. The black layers are labeled “Graphite layers.” Below the purple and black structure is the label “Negative electrode.” Above is the label “Discharge,” which is preceded by a blue arrow which points left. At the center of the diagram between the two structures are six purple spheres which are each labeled with a plus symbol. Three curved green arrows extend from the red, purple, and grey structure to each of the three closest purple plus labeled spheres. Green curved arrows extend from the right side of the upper and lower of these three purple plus labeled spheres to the black and purple layered structure. Three blue arrows extend from the purple and black layered structure to the remaining three purple plus labeled spheres at the center of the diagram. The base of each arrow has a circle formed by a dashed curved line in the layered structure. The lowest of the three purple plus marked spheres reached by the blue arrows has a second blue arrow extending from its left side which points to a purple sphere in the purple, green, and grey structure.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_05_LiIon.jpg"/>
+</media>
+<caption>Í litíumjónarafhlöðu flæðir hleðsla þegar litíumjónirnar flytjast milli anóðu og katóðu.</caption>
+</figure>
+<note id="fs-idm109562352" class="chemistry link-to-learning">
+<para id="fs-idm171820144">Farðu á þessa <link url="http://openstax.org/l/16lithiumion">síðu</link> til að fá frekari upplýsingar um litíumjónarafhlöður.</para>
+</note>
+<para id="fs-idm117231856"><term id="term-00008">Blýsýrurafhlaðan (e. lead acid battery)</term> (<link target-id="CNX_Chem_17_05_Lead"/>) er sú gerð aukarafhlaðna sem almennt er notuð í bifreiðum. Hún er ódýr og getur framleitt þann háa straum sem startmótorar bifreiða þurfa. Efnahvörfin fyrir blýsýrurafhlöðu eru</para>
+<equation id="fs-idm207953136" class="unnumbered"><m:math>
+<m:mtable columnalign="left">
+<m:mtr>
+<m:mtd>
+<m:munder accentunder="true">
+<m:mtable columnalign="left">
+<m:mtr>
+<m:mtd>
+<m:mtext>anode:</m:mtext>
+<m:mspace width="9.6em"/>
+<m:mtext>Pb</m:mtext>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msub>
+<m:mtext>HSO</m:mtext>
+<m:mn>4</m:mn>
+</m:msub>
+<m:msup>
+<m:mrow/>
+<m:mtext>−</m:mtext>
+</m:msup>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>a</m:mi>
+<m:mi>q</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mspace width="0.2em"/>
+<m:mo stretchy="false">⟶</m:mo>
+<m:mspace width="0.2em"/>
+<m:msub>
+<m:mtext>PbSO</m:mtext>
+<m:mn>4</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msup>
+<m:mtext>H</m:mtext>
+<m:mtext>+</m:mtext>
+</m:msup>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>a</m:mi>
+<m:mi>q</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msup>
+<m:mtext>2e</m:mtext>
+<m:mtext>−</m:mtext>
+</m:msup>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mtext>cathode: PbO</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msub>
+<m:mtext>HSO</m:mtext>
+<m:mn>4</m:mn>
+</m:msub>
+<m:msup>
+<m:mrow/>
+<m:mtext>−</m:mtext>
+</m:msup>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>a</m:mi>
+<m:mi>q</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msup>
+<m:mtext>3H</m:mtext>
+<m:mtext>+</m:mtext>
+</m:msup>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>a</m:mi>
+<m:mi>q</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msup>
+<m:mtext>2e</m:mtext>
+<m:mtext>−</m:mtext>
+</m:msup>
+<m:mspace width="0.2em"/>
+<m:mo stretchy="false">⟶</m:mo>
+<m:mspace width="0.2em"/>
+<m:msub>
+<m:mtext>PbSO</m:mtext>
+<m:mn>4</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mtext>O</m:mtext>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>l</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mspace width="9em"/>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo stretchy="true">¯</m:mo>
+</m:munder>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mtext>cell:</m:mtext>
+<m:mspace width="5.93em"/>
+<m:mtext>Pb</m:mtext>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:msub>
+<m:mtext>PbO</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:msub>
+<m:mtext>SO</m:mtext>
+<m:mn>4</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>a</m:mi>
+<m:mi>q</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mspace width="0.2em"/>
+<m:mo stretchy="false">⟶</m:mo>
+<m:mspace width="0.2em"/>
+<m:msub>
+<m:mtext>2PbSO</m:mtext>
+<m:mn>4</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mtext>O</m:mtext>
+<m:mo stretchy="false">(</m:mo>
+<m:mi>l</m:mi>
+<m:mo stretchy="false">)</m:mo>
+<m:mspace width="4em"/>
+<m:msub>
+<m:mi>E</m:mi>
+<m:mtext>cell</m:mtext>
+</m:msub>
+<m:mo>~</m:mo>
+<m:mn>2</m:mn>
+<m:mspace width="0.2em"/>
+<m:mtext>V</m:mtext>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+<para id="fs-idm180989456">Hvert ker framleiðir 2 V, þannig að sex ker eru raðtengd til að framleiða 12 V bílarafhlöðu. Blýsýrurafhlöður eru þungar og innihalda ætandi raflausn í vökvaformi, H<sub>2</sub>SO<sub>4</sub>(<emphasis effect="italics">aq</emphasis>), en eru oft samt sem áður valkosturinn vegna mikils straumþéttleika þeirra. Þar sem þessar rafhlöður innihalda umtalsvert magn af blýi verður alltaf að farga þeim á réttan hátt.</para>
+<figure id="CNX_Chem_17_05_Lead" class="scaled-down">
+<media id="fs-idm201055472" alt="A diagram of a lead acid battery is shown. A black outer casing, which is labeled “Protective casing” is in the form of a rectangular prism. Grey cylindrical projections extend upward from the upper surface of the battery in the back left and back right corners. At the back right corner, the projection is labeled “Positive terminal.” At the back right corner, the projection is labeled “Negative terminal.” The bottom layer of the battery diagram is a dark green color, which is labeled “Dilute H subscript 2 S O subscript 4.” A blue outer covering extends upward from this region near the top of the battery. Inside, alternating grey and white vertical “sheets” are packed together in repeating units within the battery. The battery has the sides cut away to show three of these repeating units which are separated by black vertical dividers, which are labeled as “cell dividers.” The grey layers in the repeating units are labeled “Negative electrode (lead).” The white layers are labeled “Postive electrode (lead dioxide).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_05_Lead.jpg"/>
+</media>
+<caption>Blýsýrurafhlaðan í bifreiðinni þinni samanstendur af sex kerum sem eru raðtengd til að gefa 12 V.</caption>
+</figure>
+<note id="fs-idp23883904" class="chemistry link-to-learning">
+<para id="fs-idm46497360">Farðu á þessa <link url="http://openstax.org/l/16leadacid">síðu</link> til að fá frekari upplýsingar um blýsýrurafhlöður.</para>
+</note>
+</section>
+<section id="fs-idm192053584">
+<title>Efnarafalar</title>
+<para id="fs-idm1074400"><term id="term-00009">Efnarafali (e. fuel cell)</term> er galvanískt ker sem notar hefðbundið brunahæft eldsneyti, oftast vetni eða metan, sem er stöðugt matað inn í kerfið ásamt oxara. (Annað, en ekki mjög vinsælt, nafn á efnarafala er <emphasis effect="italics">flæðirafhlaða</emphasis>.) Innan kerfisins gangast eldsneyti og oxari undir sömu oxunar-afoxunarefnafræði og þegar þau brenna, en það gerist með hvötuðu rafefnafræðilegu ferli sem er umtalsvert skilvirkara. Til dæmis notar dæmigerður vetnisefnarafali grafítraftroð sem eru ísett platínuhvötum til að hraða tveimur hálfkerahvörfunum:</para>
+<figure id="CNX_Chem_17_05_FuelCell">
+<media id="fs-idm127439648" alt="A diagram is shown of a hydrogen fuel cell. At the center is a vertical rectangle which is shaded dark gray and labeled “Electrolyte.” This region has two labels for H superscript plus in it. To the right and left are narrow vertical rectangles shaded light gray. The one to the right is labeled “Cathode” and the one to the left is labeled “Anode.” To the left of the left-most light gray region is a white region shaped like a closed left bracket. A yellow arrow points in to the white region with the label to show “Fuel In.” In the middle of the white area are two yellow arrows pointing toward the gray shading labeled “H subscript 2.” At the bottom of the white region is a yellow arrow pointing out that is labeled “Excess Fuel.” On the right side is another white region that makes a right closed bracket shape. There are two arrows with the label “Air In” and “H subscript 2 O” in the upper left side of this area pointing in. One arrow is light blue and one is dark blue. In the middle to the white area is a light blue arrow pointing toward the gray shading. The arrow is labeled “O subscript 2.” Below that are two dark blue arrows pointing out from the gray shading to the white area labeled “H subscript 2 O.” At the bottom of the white region are the light blue arrow for O subscript 2 and the dark blue arrow for H subscript 2 O pointing out. This is labeled “Unused Gases Out.” Black line segments extend upward from the light gray shaded regions. These line segments are connected by a horizontal segment that has a curly shape in a circle at the center. This shape is labeled “Electric Current.” In the left light gray shaded region above the yellow arrows is a red arrow pointing up, the label e superscript minus above it, and then another red arrow. The black line segment above this area also has the label e superscript minus. Where the line turns right to connect to the Electric Current shape is a right-facing red arrow. On the other side of the shape where the line turns downward to connect to the other light gray shaded region is a red downward-facing arrow. Below that arrow in the light gray region is the label e superscript minus, followed by a red down arrow, followed by another e superscript minus label that stops before the light blue arrow pointing in to the shaded area.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_05_FuelCell.jpg"/>
+</media>
+<caption>Í þessum vetnisefnarafala hvarfast súrefni úr loftinu við vetni og myndar vatn og rafmagn.</caption>
+</figure>
+<equation id="fs-idp50493600" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:munder accentunder="true"><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtext>Anode:</m:mtext><m:mspace width="6em"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>4e</m:mtext><m:mtext>−</m:mtext></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Cathode:</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>4e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>2H</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="8em"/></m:mtd></m:mtr></m:mtable><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Cell:</m:mtext><m:mspace width="3.5em"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>E</m:mi><m:mtext>cell</m:mtext></m:msub><m:mo>~</m:mo><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mtext>V</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm8272528">Þessar gerðir efnarafala framleiða yfirleitt spennu upp á um það bil 1,2 V. Í samanburði við brunahreyfil er orkunýtni efnarafala sem notar sama oxunar-afoxunarhvarf yfirleitt meira en tvöfalt meiri (~20%–25% fyrir hreyfil á móti ~50%–75% fyrir efnarafala). Vetnisefnarafalar eru almennt notaðir í lengri geimferðum og frumgerðir fyrir einkabifreiðar hafa verið þróaðar, þótt tæknin sé enn tiltölulega vanþróuð.</para>
+<note id="fs-idm62934704" class="chemistry link-to-learning">
+<para id="fs-idm178116384">Skoðaðu þennan <link url="http://openstax.org/l/16fuelcells">hlekk</link> til að læra meira um efnarafala.</para>
+</note>
+</section>
+<section id="fs-idm12033136" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp25116816">Galvanísk ker sem eru sérstaklega hönnuð til að virka sem rafmagnsgjafar eru kölluð rafhlöður. Margvíslegar bæði einnota rafhlöður (frumker) og endurhlaðanlegar rafhlöður (aukaker) eru fáanlegar í verslunum til að þjóna ýmsum tilgangi, með mikilvægum forskriftum eins og spennu, stærð og líftíma. Efnarafalar, stundum kallaðir flæðirafhlöður, eru tæki sem virkja orku sjálfgengra oxunar-afoxunarhvarfa sem venjulega eru tengd brunaferlum. Eins og rafhlöður gera efnarafalar kleift að rafeindaflutningur hvarfsins fari fram um ytri rás, en þeir þurfa stöðugt innflæði oxunar-afoxunarhvarfefna (eldsneytis og oxara) úr ytri geymi. Efnarafalar eru yfirleitt mun skilvirkari í að breyta orkunni sem losnar við hvarfið í nytsamlega vinnu í samanburði við brunahreyfla.</para>
+</section>
+<section id="fs-idm44558592" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idm149853488">
+<problem id="fs-idm216247104">
+<para id="fs-idm100216656">Ímyndaðu þér rafhlöðu sem er gerð úr einu hálfkeri sem samanstendur af koparraftroði í 1 <emphasis effect="italics">M</emphasis> CuSO<sub>4</sub> lausn og öðru hálfkeri sem samanstendur af blýraftroði í 1 <emphasis effect="italics">M</emphasis> Pb(NO<sub>3</sub>)<sub>2</sub> lausn.</para>
+<para id="fs-idm174664256">(a) Hver er staðalkerspenna rafhlöðunnar?</para>
+<para id="fs-idm112393424">(b) Hver eru efnahvörfin við anóðu, katóðu og heildarhvarfið?</para>
+<para id="fs-idm68398272">(c) Flest tæki sem eru hönnuð til að nota þurrafhlöður geta starfað á bilinu 1,0 til 1,5 V. Væri hægt að nota þetta ker til að búa til rafhlöðu sem gæti komið í stað þurrafhlöðu? Hvers vegna eða hvers vegna ekki.</para>
+<para id="fs-idm30769808">(d) Gerum ráð fyrir að brennisteinssýru sé bætt við hálfkerið með blýraftroðinu og að eitthvað PbSO<sub>4</sub>(<emphasis effect="italics">s</emphasis>) myndist. Myndi kerspennan aukast, minnka eða haldast óbreytt?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm100291296">
+<problem id="fs-idm170914480">
+<para id="fs-idm273297920">Ímyndaðu þér rafhlöðu með heildarhvarfið: <m:math><m:mrow><m:mtext>Cu</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cu</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math></para>
+<para id="fs-idm49639712">(a) Hvert er efnahvarfið við anóðu og katóðu?</para>
+<para id="fs-idm211133184">(b) Rafhlaða er „dauð“ þegar kerspenna hennar er núll. Hvert er gildi <emphasis effect="italics">Q</emphasis> þegar þessi rafhlaða er dauð?</para>
+<para id="fs-idm137339136">(c) Ef í ljós kom að í tiltekinni dauðri rafhlöðu var [Cu<sup>2+</sup>] = 0,11 <emphasis effect="italics">M</emphasis>, hver var þá styrkur silfurjónarinnar?</para>
+</problem>
+<solution id="fs-idm99031616">
+<para id="fs-idm181365776">(a) <m:math>
+<m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:mtext>anode: Cu</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>Cu</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>2e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="4em"/><m:msubsup><m:mi>E</m:mi><m:mrow><m:mtext>anode</m:mtext></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>0.34 V</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>cathode:</m:mtext><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mspace width="0.3em"/><m:mo>×</m:mo><m:mspace width="0.3em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="4em"/><m:msubsup><m:mi>E</m:mi><m:mrow><m:mtext>cathode</m:mtext></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>0.7996 V</m:mtext></m:mtd></m:mtr></m:mtable><m:mo>;</m:mo></m:math> (b) 3,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>15</sup>; (c) 5,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−9</sup> <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idm59169968">
+<problem id="fs-idm198512256">
+<para id="fs-idm205205056">Af hverju verða rafhlöður straumlausar en efnarafalar ekki?</para>
+</problem>
+<solution id="fs-idm206224368">
+<para id="fs-idm157115872">Rafhlöður eru lokaðar einingar og hafa takmarkað magn hvarfefna til að nota áður en þær verða straumlausar. Einnig geta myndefni efnahvarfa í rafhlöðum safnast fyrir og truflað efnahvarfið. Þar sem efnarafli er stöðugt veitt nýjum hvarfefnum og myndefni eru fjarlægð getur hann haldið áfram að virka svo lengi sem hvarfefni eru til staðar.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp39083136">
+<problem id="fs-idm265885616">
+<para id="fs-idm171961040">Notaðu Nernst-jöfnuna til að útskýra spennufallið sem sést í sumum rafhlöðum þegar þær afhlaðast.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm192431088">
+<problem id="fs-idm157418320">
+<para id="fs-idm144130976">Bílarafgeymar eru oft metnir með tilliti til „kaldræsiampera“ (e. cold-cranking amps), sem er mælikvarði á getu rafgeymisins til að virka í köldu veðri. Stingdu upp á ástæðu fyrir því hvers vegna geta rafgeymis til að skila straumi minnkar við lágt hitastig. (Vísbending: Íhugaðu hraðafræði efnahvarfa.)</para>
+</problem>
+<solution id="fs-idp17014976">
+<para id="fs-idm171425232">Samkvæmt hraðafræðikenningunni verða efnahvörf hægari við lægra hitastig vegna minni tíðni árekstra milli hvarfefnasameinda. Hraði oxunar-afoxunarhvarfanna sem eiga sér stað í rafhlöðum minnkar með hitastigi, sem leiðir til minni framleiðslu á rafstraumi.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm210620784">
+<term>alkalín-rafhlaða (e. alkaline battery)</term>
+<meaning id="fs-idm210620784-meaning">einnota rafhlaða svipuð <emphasis effect="italics">þurrefnarhlöðu</emphasis> sem notar basískan rafkleyfa (oft kalíumhýdroxíð); hönnuð til að vera endurbætt útgáfa af þurrefnarhlöðu, en með meiri orkugeymslu og minni leka á rafkleyfa en dæmigerð þurrefnarhlaða</meaning>
+</definition>
+<definition id="fs-idm170712416">
+<term>rafhlaða (e. battery)</term>
+<meaning id="fs-idm170712416-meaning">eitt eða fleiri galvanísk kerfi í röð, hönnuð til notkunar sem raforkugjafi</meaning>
+</definition>
+<definition id="fs-idm175851472">
+<term>þurrefnarhlaða (e. dry cell)</term>
+<meaning id="fs-idm175851472-meaning">einnota rafhlaða, einnig kölluð sink-kolefnisrafhlaða, byggð á sjálfgengri oxun sinks með mangan(IV)</meaning>
+</definition>
+<definition id="fs-idm127587472">
+<term>efnarafall (e. fuel cell)</term>
+<meaning id="fs-idm127587472-meaning">tæki svipuð galvanískum kerfum sem krefjast stöðugs aðflæðis oxunar-afoxunarhvarfefna; einnig kallað <emphasis effect="italics">flæðirafhlaða</emphasis></meaning>
+</definition>
+<definition id="fs-idm106622864">
+<term>blýsýrurafgeymir (e. lead acid battery)</term>
+<meaning id="fs-idm106622864-meaning">endurhlaðanlegur rafgeymir sem er algengur í bifreiðum; hann samanstendur yfirleitt af sex galvanískum kerfum sem byggja á Pb-hálfhvörfum í súrri lausn</meaning>
+</definition>
+<definition id="fs-idm118911936">
+<term>líþíumjónarafhlaða (e. lithium ion battery)</term>
+<meaning id="fs-idm118911936-meaning">víðnotuð endurhlaðanleg rafhlaða sem er algeng í færanlegum rafeindatækjum, byggð á flutningi líþíumjóna milli anóðu og katóðu</meaning>
+</definition>
+<definition id="fs-idm206318304">
+<term>nikkel-kadmíum rafhlaða (e. nickel-cadmium battery)</term>
+<meaning id="fs-idm206318304-meaning">endurhlaðanleg rafhlaða byggð á Ni/Cd hálfkerfum með svipuð notkunarsvið og líþíumjónarafhlöður</meaning>
+</definition>
+<definition id="fs-idm278014928">
+<term>einnota rafhlaða (e. primary cell)</term>
+<meaning id="fs-idm278014928-meaning">óendurhlaðanleg rafhlaða, eingöngu ætluð til einnota notkunar</meaning>
+</definition>
+<definition id="fs-idp55952432">
+<term>endurhlaðanleg rafhlaða (e. secondary cell)</term>
+<meaning id="fs-idp55952432-meaning">rafhlaða hönnuð til að leyfa endurhleðslu</meaning>
+</definition>
+</glossary>
+</document>

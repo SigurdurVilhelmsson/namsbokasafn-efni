@@ -50,19 +50,19 @@ Radon is found in buildings across the country, with amounts depending on where 
 Radon-222 seeps into houses and other buildings from rocks that contain uranium-238, a radon emitter. The radon enters through cracks in concrete foundations and basement floors, stone or porous cinderblock foundations, and openings for water and gas pipes.
 
 <!-- SEG:m68858:para:fs-idp26867440 -->
-There is a large difference in the magnitude of the biological effects of __nonionizing radiation__ (for example, light and microwaves) and __ionizing radiation__, emissions energetic enough to knock electrons out of molecules (for example, α and β particles, γ rays, X-rays, and high-energy ultraviolet radiation) ([#CNX_Chem_21_06_IonRadSpec]).
+There is a large difference in the magnitude of the biological effects of {{term}}nonionizing radiation{{/term}} (for example, light and microwaves) and {{term}}ionizing radiation{{/term}}, emissions energetic enough to knock electrons out of molecules (for example, α and β particles, γ rays, X-rays, and high-energy ultraviolet radiation) ([#CNX_Chem_21_06_IonRadSpec]).
 
 <!-- SEG:m68858:caption:CNX_Chem_21_06_IonRadSpec-caption -->
 Lower frequency, lower-energy electromagnetic radiation is nonionizing, and higher frequency, higher-energy electromagnetic radiation is ionizing.
 
 <!-- SEG:m68858:para:fs-idp146155504 -->
-Energy absorbed from nonionizing radiation speeds up the movement of atoms and molecules, which is equivalent to heating the sample. Although biological systems are sensitive to heat (as we might know from touching a hot stove or spending a day at the beach in the sun), a large amount of nonionizing radiation is necessary before dangerous levels are reached. Ionizing radiation, however, may cause much more severe damage by breaking bonds or removing electrons in biological molecules, disrupting their structure and function. The damage can also be done indirectly, by first ionizing H~2~O (the most abundant molecule in living organisms), which forms a H~2~O^+^ ion that reacts with water, forming a hydronium ion and a hydroxyl radical:
+Energy absorbed from nonionizing radiation speeds up the movement of atoms and molecules, which is equivalent to heating the sample. Although biological systems are sensitive to heat (as we might know from touching a hot stove or spending a day at the beach in the sun), a large amount of nonionizing radiation is necessary before dangerous levels are reached. Ionizing radiation, however, may cause much more severe damage by breaking bonds or removing electrons in biological molecules, disrupting their structure and function. The damage can also be done indirectly, by first ionizing H[[sub:2]]O (the most abundant molecule in living organisms), which forms a H[[sub:2]]O[[sup:+]] ion that reacts with water, forming a hydronium ion and a hydroxyl radical:
 
 <!-- SEG:m68858:para:fs-idp73842464 -->
 Because the hydroxyl radical has an unpaired electron, it is highly reactive. (This is true of any substance with unpaired electrons, known as a free radical.) This hydroxyl radical can react with all kinds of biological molecules (DNA, proteins, enzymes, and so on), causing damage to the molecules and disrupting physiological processes. Examples of direct and indirect damage are shown in [#CNX_Chem_21_06_Damage2].
 
 <!-- SEG:m68858:caption:CNX_Chem_21_06_Damage2-caption -->
-Ionizing radiation can (a) directly damage a biomolecule by ionizing it or breaking its bonds, or (b) create an H~2~O^+^ ion, which reacts with H~2~O to form a hydroxyl radical, which in turn reacts with the biomolecule, causing damage indirectly.
+Ionizing radiation can (a) directly damage a biomolecule by ionizing it or breaking its bonds, or (b) create an H[[sub:2]]O[[sup:+]] ion, which reacts with H[[sub:2]]O to form a hydroxyl radical, which in turn reacts with the biomolecule, causing damage indirectly.
 
 <!-- SEG:m68858:title:fs-idp25724032-title -->
 Measuring Radiation Exposure
@@ -104,7 +104,7 @@ amount of sample that undergoes 1 decay/second
 curie (Ci)
 
 <!-- SEG:m68858:entry:auto-36 -->
-amount of sample that undergoes 3.7 [[MATH:1]] 10^10^ decays/second
+amount of sample that undergoes 3.7 [[MATH:1]] 10[[sup:10]] decays/second
 
 <!-- SEG:m68858:entry:auto-37 -->
 absorbed dose
@@ -146,7 +146,7 @@ Rem = RBE [[MATH:3]] rad
 Amount of Radiation
 
 <!-- SEG:m68858:para:fs-idp77063152 -->
-Cobalt-60 (*t*~1/2~ = 5.26 y) is used in cancer therapy since the γ rays it emits can be focused in small areas where the cancer is located. A 5.00-g sample of Co-60 is available for cancer treatment.
+Cobalt-60 ({{i}}t{{/i}}[[sub:1/2]] = 5.26 y) is used in cancer therapy since the γ rays it emits can be focused in small areas where the cancer is located. A 5.00-g sample of Co-60 is available for cancer treatment.
 
 <!-- SEG:m68858:para:fs-idp145838784 -->
 (a) What is its activity in Bq?
@@ -173,25 +173,25 @@ And to convert this to decays per second:
 Check Your Learning
 
 <!-- SEG:m68858:para:fs-idp15286032 -->
-Tritium is a radioactive isotope of hydrogen (*t*~1/2~ = 12.32 y) that has several uses, including self-powered lighting, in which electrons emitted in tritium radioactive decay cause phosphorus to glow. Its nucleus contains one proton and two neutrons, and the atomic mass of tritium is 3.016 amu. What is the activity of a sample containing 1.00mg of tritium (a) in Bq and (b) in Ci?
+Tritium is a radioactive isotope of hydrogen ({{i}}t{{/i}}[[sub:1/2]] = 12.32 y) that has several uses, including self-powered lighting, in which electrons emitted in tritium radioactive decay cause phosphorus to glow. Its nucleus contains one proton and two neutrons, and the atomic mass of tritium is 3.016 amu. What is the activity of a sample containing 1.00mg of tritium (a) in Bq and (b) in Ci?
 
 <!-- SEG:m68858:para:fs-idm82342624 -->
-(a) 3.56 [[MATH:6]] 10^11^ Bq; (b) 0.962 Ci
+(a) 3.56 [[MATH:6]] 10[[sup:11]] Bq; (b) 0.962 Ci
 
 <!-- SEG:m68858:note-title:fs-idp14889200-title -->
 Answer:
 
 <!-- SEG:m68858:para:fs-idm82342624 -->
-(a) 3.56 [[MATH:7]] 10^11^ Bq; (b) 0.962 Ci
+(a) 3.56 [[MATH:7]] 10[[sup:11]] Bq; (b) 0.962 Ci
 
 <!-- SEG:m68858:para:fs-idm3484976 -->
-Several different devices are used to detect and measure radiation, including Geiger counters, scintillation counters (scintillators), and radiation dosimeters ([#CNX_Chem_21_06_Monitors]). Probably the best-known radiation instrument, the __Geiger counter__ (also called the Geiger-Müller counter) detects and measures radiation. Radiation causes the ionization of the gas in a Geiger-Müller tube. The rate of ionization is proportional to the amount of radiation. A __scintillation counter__ contains a scintillator—a material that emits light (luminesces) when excited by ionizing radiation—and a sensor that converts the light into an electric signal. __Radiation dosimeters__ also measure ionizing radiation and are often used to determine personal radiation exposure. Commonly used types are electronic, film badge, thermoluminescent, and quartz fiber dosimeters.
+Several different devices are used to detect and measure radiation, including Geiger counters, scintillation counters (scintillators), and radiation dosimeters ([#CNX_Chem_21_06_Monitors]). Probably the best-known radiation instrument, the {{term}}Geiger counter{{/term}} (also called the Geiger-Müller counter) detects and measures radiation. Radiation causes the ionization of the gas in a Geiger-Müller tube. The rate of ionization is proportional to the amount of radiation. A {{term}}scintillation counter{{/term}} contains a scintillator—a material that emits light (luminesces) when excited by ionizing radiation—and a sensor that converts the light into an electric signal. {{term}}Radiation dosimeters{{/term}} also measure ionizing radiation and are often used to determine personal radiation exposure. Commonly used types are electronic, film badge, thermoluminescent, and quartz fiber dosimeters.
 
 <!-- SEG:m68858:caption:CNX_Chem_21_06_Monitors-caption -->
 Devices such as (a) Geiger counters, (b) scintillators, and (c) dosimeters can be used to measure radiation. (credit c: modification of work by “osaMu”/Wikimedia commons)
 
 <!-- SEG:m68858:para:fs-idp31333632 -->
-A variety of units are used to measure various aspects of radiation ([#CNX_Chem_21_06_Exposure1]). The SI unit for rate of radioactive decay is the __becquerel (Bq)__, with 1 Bq = 1 disintegration per second. The __curie (Ci)__ and __millicurie (mCi)__ are much larger units and are frequently used in medicine (1 curie = 1 Ci = 3.7 [[MATH:8]] 10^10^ disintegrations per second). The SI unit for measuring radiation dose is the __gray (Gy)__, with 1 Gy = 1 J of energy absorbed per kilogram of tissue. In medical applications, the __radiation absorbed dose (rad)__ is more often used (1 rad = 0.01 Gy; 1 rad results in the absorption of 0.01 J/kg of tissue). The SI unit measuring tissue damage caused by radiation is the __sievert (Sv)__. This takes into account both the energy and the biological effects of the type of radiation involved in the radiation dose. The __roentgen equivalent for man (rem)__ is the unit for radiation damage that is used most frequently in medicine (100 rem = 1 Sv). Note that the tissue damage units (rem or Sv) includes the energy of the radiation dose (rad or Gy) along with a biological factor referred to as the __RBE__ (for __relative biological effectiveness__) that is an approximate measure of the relative damage done by the radiation. These are related by:
+A variety of units are used to measure various aspects of radiation ([#CNX_Chem_21_06_Exposure1]). The SI unit for rate of radioactive decay is the {{term}}becquerel (Bq){{/term}}, with 1 Bq = 1 disintegration per second. The {{term}}curie (Ci){{/term}} and {{term}}millicurie (mCi){{/term}} are much larger units and are frequently used in medicine (1 curie = 1 Ci = 3.7 [[MATH:8]] 10[[sup:10]] disintegrations per second). The SI unit for measuring radiation dose is the {{term}}gray (Gy){{/term}}, with 1 Gy = 1 J of energy absorbed per kilogram of tissue. In medical applications, the {{term}}radiation absorbed dose (rad){{/term}} is more often used (1 rad = 0.01 Gy; 1 rad results in the absorption of 0.01 J/kg of tissue). The SI unit measuring tissue damage caused by radiation is the {{term}}sievert (Sv){{/term}}. This takes into account both the energy and the biological effects of the type of radiation involved in the radiation dose. The {{term}}roentgen equivalent for man (rem){{/term}} is the unit for radiation damage that is used most frequently in medicine (100 rem = 1 Sv). Note that the tissue damage units (rem or Sv) includes the energy of the radiation dose (rad or Gy) along with a biological factor referred to as the {{term}}RBE{{/term}} (for {{term}}relative biological effectiveness{{/term}}) that is an approximate measure of the relative damage done by the radiation. These are related by:
 
 <!-- SEG:m68858:para:fs-idp192182752 -->
 with RBE approximately 10 for α radiation, 2(+) for protons and neutrons, and 1 for β and γ radiation.
@@ -212,7 +212,7 @@ The total annual radiation exposure for a person in the US is about 620 mrem. Th
 A short-term, sudden dose of a large amount of radiation can cause a wide range of health effects, from changes in blood chemistry to death. Short-term exposure to tens of rems of radiation will likely cause very noticeable symptoms or illness; a dose of about 500 rems is estimated to have a 50% probability of causing the death of the victim within 30 days of exposure. Exposure to radioactive emissions has a cumulative effect on the body during a person’s lifetime, which is another reason why it is important to avoid any unnecessary exposure to radiation. Health effects of short-term exposure to radiation are shown in [#fs-idp167827232].
 
 <!-- SEG:m68858:entry:auto-72 -->
-Health Effects of Radiation [footnote: Source: US Environmental Protection Agency]
+Health Effects of Radiation {{fn}}Source: US Environmental Protection Agency{{/fn}}
 
 <!-- SEG:m68858:entry:auto-73 -->
 Exposure (rem)
@@ -377,10 +377,10 @@ Based on what is known about Radon-222’s primary decay method, why is inhalati
 Alpha particles can be stopped by very thin shielding but have much stronger ionizing potential than beta particles, X-rays, and γ-rays. When inhaled, there is no protective skin covering the cells of the lungs, making it possible to damage the DNA in those cells and cause cancer.
 
 <!-- SEG:m68858:problem:fs-idm2835312 -->
-Given specimens uranium-232 (*t*~1/2~ = 68.9 y) and uranium-233 (*t*~1/2~ = 159,200 y) of equal mass, which one would have greater activity and why?
+Given specimens uranium-232 ({{i}}t{{/i}}[[sub:1/2]] = 68.9 y) and uranium-233 ({{i}}t{{/i}}[[sub:1/2]] = 159,200 y) of equal mass, which one would have greater activity and why?
 
 <!-- SEG:m68858:problem:fs-idp26788448 -->
-A scientist is studying a 2.234 g sample of thorium-229 (*t*~1/2~ = 7340 y) in a laboratory.
+A scientist is studying a 2.234 g sample of thorium-229 ({{i}}t{{/i}}[[sub:1/2]] = 7340 y) in a laboratory.
 
 <!-- SEG:m68858:problem:fs-idp161129568 -->
 (a) What is its activity in Bq?
@@ -389,10 +389,10 @@ A scientist is studying a 2.234 g sample of thorium-229 (*t*~1/2~ = 7340 y) in a
 (b) What is its activity in Ci?
 
 <!-- SEG:m68858:solution:fs-idm19699520 -->
-(a) 7.64 [[MATH:11]] 10^9^ Bq; (b) 2.06 [[MATH:12]] 10^−2^ Ci
+(a) 7.64 [[MATH:11]] 10[[sup:9]] Bq; (b) 2.06 [[MATH:12]] 10[[sup:−2]] Ci
 
 <!-- SEG:m68858:problem:fs-idp100946448 -->
-Given specimens neon-24 (*t*~1/2~ = 3.38 min) and bismuth-211 (*t*~1/2~ = 2.14 min) of equal mass, which one would have greater activity and why?
+Given specimens neon-24 ({{i}}t{{/i}}[[sub:1/2]] = 3.38 min) and bismuth-211 ({{i}}t{{/i}}[[sub:1/2]] = 2.14 min) of equal mass, which one would have greater activity and why?
 
 <!-- SEG:m68858:glossary-term:fs-idp13479088-term -->
 becquerel (Bq)
@@ -404,7 +404,7 @@ SI unit for rate of radioactive decay; 1 Bq = 1 disintegration/s
 curie (Ci)
 
 <!-- SEG:m68858:glossary-def:fs-idp40157072-def -->
-larger unit for rate of radioactive decay frequently used in medicine; 1 Ci = 3.7 × 1010 disintegrations/s
+larger unit for rate of radioactive decay frequently used in medicine; 1 Ci = 3.7 [[MATH:13]] 10[[sup:10]] disintegrations/s
 
 <!-- SEG:m68858:glossary-term:fs-idp77369424-term -->
 Geiger counter
@@ -428,7 +428,7 @@ radiation that can cause a molecule to lose an electron and form an ion
 millicurie (mCi)
 
 <!-- SEG:m68858:glossary-def:fs-idp48690544-def -->
-larger unit for rate of radioactive decay frequently used in medicine; 1 Ci = 3.7 × 1010 disintegrations/s
+larger unit for rate of radioactive decay frequently used in medicine; 1 Ci = 3.7 [[MATH:14]] 10[[sup:10]] disintegrations/s
 
 <!-- SEG:m68858:glossary-term:fs-idp8726208-term -->
 nonionizing radiation

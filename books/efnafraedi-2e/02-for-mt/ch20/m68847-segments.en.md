@@ -23,7 +23,7 @@ Alcohols
 Naming Alcohols
 
 <!-- SEG:m68847:para:fs-idm24572576 -->
-The name of an alcohol comes from the hydrocarbon from which it was derived. The final *-e* in the name of the hydrocarbon is replaced by *-ol*, and the carbon atom to which the –OH group is bonded is indicated by a number placed before the name. [footnote: The IUPAC adopted new nomenclature guidelines in 2013 that require this number to be placed as an “infix” rather than a prefix. For example, the new name for 2-propanol would be propan-2-ol. Widespread adoption of this new nomenclature will take some time, and students are encouraged to be familiar with both the old and new naming protocols.]
+The name of an alcohol comes from the hydrocarbon from which it was derived. The final {{i}}-e{{/i}} in the name of the hydrocarbon is replaced by {{i}}-ol{{/i}}, and the carbon atom to which the –OH group is bonded is indicated by a number placed before the name. {{fn}}The IUPAC adopted new nomenclature guidelines in 2013 that require this number to be placed as an “infix” rather than a prefix. For example, the new name for 2-propanol would be propan-2-ol. Widespread adoption of this new nomenclature will take some time, and students are encouraged to be familiar with both the old and new naming protocols.{{/fn}}
 
 <!-- SEG:m68847:example-title:fs-idm9024448-title -->
 Naming Alcohols
@@ -35,7 +35,7 @@ Consider the following example. How should it be named?
 Solution
 
 <!-- SEG:m68847:para:fs-idp3540976 -->
-The carbon chain contains five carbon atoms. If the hydroxyl group was not present, we would have named this molecule pentane. To address the fact that the hydroxyl group is present, we change the ending of the name to *-ol*. In this case, since the –OH is attached to carbon 2 in the chain, we would name this molecule 2-pentanol.
+The carbon chain contains five carbon atoms. If the hydroxyl group was not present, we would have named this molecule pentane. To address the fact that the hydroxyl group is present, we change the ending of the name to {{i}}-ol{{/i}}. In this case, since the –OH is attached to carbon 2 in the chain, we would name this molecule 2-pentanol.
 
 <!-- SEG:m68847:para-title:fs-idm65417856-title -->
 Check Your Learning
@@ -56,10 +56,10 @@ Answer:
 Incorporation of an oxygen atom into carbon- and hydrogen-containing molecules leads to new functional groups and new families of compounds. When the oxygen atom is attached by single bonds, the molecule is either an alcohol or ether.
 
 <!-- SEG:m68847:para:fs-idm33604032 -->
-__Alcohols__ are derivatives of hydrocarbons in which an –OH group has replaced a hydrogen atom. Although all alcohols have one or more hydroxyl (–OH) functional groups, they do not behave like bases such as NaOH and KOH. NaOH and KOH are ionic compounds that contain OH^–^ ions. Alcohols are covalent molecules; the –OH group in an alcohol molecule is attached to a carbon atom by a covalent bond.
+{{term}}Alcohols{{/term}} are derivatives of hydrocarbons in which an –OH group has replaced a hydrogen atom. Although all alcohols have one or more hydroxyl (–OH) functional groups, they do not behave like bases such as NaOH and KOH. NaOH and KOH are ionic compounds that contain OH[[sup:–]] ions. Alcohols are covalent molecules; the –OH group in an alcohol molecule is attached to a carbon atom by a covalent bond.
 
 <!-- SEG:m68847:para:fs-idm13274688 -->
-Ethanol, CH~3~CH~2~OH, also called ethyl alcohol, is a particularly important alcohol for human use. Ethanol is the alcohol produced by some species of yeast that is found in wine, beer, and distilled drinks. It has long been prepared by humans harnessing the metabolic efforts of yeasts in fermenting various sugars:
+Ethanol, CH[[sub:3]]CH[[sub:2]]OH, also called ethyl alcohol, is a particularly important alcohol for human use. Ethanol is the alcohol produced by some species of yeast that is found in wine, beer, and distilled drinks. It has long been prepared by humans harnessing the metabolic efforts of yeasts in fermenting various sugars:
 
 <!-- SEG:m68847:para:fs-idm8648512 -->
 Large quantities of ethanol are synthesized from the addition reaction of water with ethylene using an acid as a catalyst:
@@ -71,7 +71,7 @@ Alcohols containing two or more hydroxyl groups can be made. Examples include 1,
 Ethers
 
 <!-- SEG:m68847:para:fs-idp6654240 -->
-__Ethers__ are compounds that contain the functional group –O–. Ethers do not have a designated suffix like the other types of molecules we have named so far. In the IUPAC system, the oxygen atom and the smaller carbon branch are named as an alkoxy substituent and the remainder of the molecule as the base chain, as in alkanes. As shown in the following compound, the red symbols represent the smaller alkyl group and the oxygen atom, which would be named “methoxy.” The larger carbon branch would be ethane, making the molecule methoxyethane. Many ethers are referred to with common names instead of the IUPAC system names. For common names, the two branches connected to the oxygen atom are named separately and followed by “ether.” The common name for the compound shown in [#fs-idm48177328] is ethylmethyl ether:
+{{term}}Ethers{{/term}} are compounds that contain the functional group –O–. Ethers do not have a designated suffix like the other types of molecules we have named so far. In the IUPAC system, the oxygen atom and the smaller carbon branch are named as an alkoxy substituent and the remainder of the molecule as the base chain, as in alkanes. As shown in the following compound, the red symbols represent the smaller alkyl group and the oxygen atom, which would be named “methoxy.” The larger carbon branch would be ethane, making the molecule methoxyethane. Many ethers are referred to with common names instead of the IUPAC system names. For common names, the two branches connected to the oxygen atom are named separately and followed by “ether.” The common name for the compound shown in [#fs-idm48177328] is ethylmethyl ether:
 
 <!-- SEG:m68847:example-title:fs-idm48177328-title -->
 Naming Ethers
@@ -107,7 +107,7 @@ IUPAC: 2-methoxypropane; common: isopropylmethyl ether
 Ethers can be obtained from alcohols by the elimination of a molecule of water from two molecules of the alcohol. For example, when ethanol is treated with a limited amount of sulfuric acid and heated to 140 °C, diethyl ether and water are formed:
 
 <!-- SEG:m68847:para:fs-idp6657008 -->
-In the general formula for ethers, R—{=O=}—R, the hydrocarbon groups (R) may be the same or different. Diethyl ether, the most widely used compound of this class, is a colorless, volatile liquid that is highly flammable. It was first used in 1846 as an anesthetic, but better anesthetics have now largely taken its place. Diethyl ether and other ethers are presently used primarily as solvents for gums, fats, waxes, and resins. *Tertiary*-butyl methyl ether, C~4~H~9~OCH~3~ (abbreviated MTBE—italicized portions of names are not counted when ranking the groups alphabetically—so butyl comes before methyl in the common name), is used as an additive for gasoline. MTBE belongs to a group of chemicals known as oxygenates due to their capacity to increase the oxygen content of gasoline.
+In the general formula for ethers, R—{=O=}—R, the hydrocarbon groups (R) may be the same or different. Diethyl ether, the most widely used compound of this class, is a colorless, volatile liquid that is highly flammable. It was first used in 1846 as an anesthetic, but better anesthetics have now largely taken its place. Diethyl ether and other ethers are presently used primarily as solvents for gums, fats, waxes, and resins. {{i}}Tertiary{{/i}}-butyl methyl ether, C[[sub:4]]H[[sub:9]]OCH[[sub:3]] (abbreviated MTBE—italicized portions of names are not counted when ranking the groups alphabetically—so butyl comes before methyl in the common name), is used as an additive for gasoline. MTBE belongs to a group of chemicals known as oxygenates due to their capacity to increase the oxygen content of gasoline.
 
 <!-- SEG:m68847:para:fs-idp6043376 -->
 Want more practice naming ethers? This brief [video review](http://openstax.org/l/16ethers) summarizes the nomenclature for ethers.
@@ -116,7 +116,7 @@ Want more practice naming ethers? This brief [video review](http://openstax.org/
 Carbohydrates and Diabetes
 
 <!-- SEG:m68847:para:fs-idm73541184 -->
-Carbohydrates are large biomolecules made up of carbon, hydrogen, and oxygen. The dietary forms of carbohydrates are foods rich in these types of molecules, like pastas, bread, and candy. The name “carbohydrate” comes from the formula of the molecules, which can be described by the general formula C~m~(H~2~O)~n~, which shows that they are in a sense “carbon and water” or “hydrates of carbon.” In many cases, *m* and *n* have the same value, but they can be different. The smaller carbohydrates are generally referred to as “sugars,” the biochemical term for this group of molecules is “saccharide” from the Greek word for sugar ([#CNX_Chem_20_02_Sugars]). Depending on the number of sugar units joined together, they may be classified as monosaccharides (one sugar unit), disaccharides (two sugar units), oligosaccharides (a few sugars), or polysaccharides (the polymeric version of sugars—polymers were described in the feature box earlier in this chapter on recycling plastics). The scientific names of sugars can be recognized by the suffix *-ose* at the end of the name (for instance, fruit sugar is a monosaccharide called “fructose” and milk sugar is a disaccharide called lactose composed of two monosaccharides, glucose and galactose, connected together). Sugars contain some of the functional groups we have discussed: Note the alcohol groups present in the structures and how monosaccharide units are linked to form a disaccharide by formation of an ether.
+Carbohydrates are large biomolecules made up of carbon, hydrogen, and oxygen. The dietary forms of carbohydrates are foods rich in these types of molecules, like pastas, bread, and candy. The name “carbohydrate” comes from the formula of the molecules, which can be described by the general formula C[[sub:m]](H[[sub:2]]O)[[sub:n]], which shows that they are in a sense “carbon and water” or “hydrates of carbon.” In many cases, {{i}}m{{/i}} and {{i}}n{{/i}} have the same value, but they can be different. The smaller carbohydrates are generally referred to as “sugars,” the biochemical term for this group of molecules is “saccharide” from the Greek word for sugar ([#CNX_Chem_20_02_Sugars]). Depending on the number of sugar units joined together, they may be classified as monosaccharides (one sugar unit), disaccharides (two sugar units), oligosaccharides (a few sugars), or polysaccharides (the polymeric version of sugars—polymers were described in the feature box earlier in this chapter on recycling plastics). The scientific names of sugars can be recognized by the suffix {{i}}-ose{{/i}} at the end of the name (for instance, fruit sugar is a monosaccharide called “fructose” and milk sugar is a disaccharide called lactose composed of two monosaccharides, glucose and galactose, connected together). Sugars contain some of the functional groups we have discussed: Note the alcohol groups present in the structures and how monosaccharide units are linked to form a disaccharide by formation of an ether.
 
 <!-- SEG:m68847:para:fs-idm33645104 -->
 Organisms use carbohydrates for a variety of functions. Carbohydrates can store energy, such as the polysaccharides glycogen in animals or starch in plants. They also provide structural support, such as the polysaccharide cellulose in plants and the modified polysaccharide chitin in fungi and animals. The sugars ribose and deoxyribose are components of the backbones of RNA and DNA, respectively. Other sugars play key roles in the function of the immune system, in cell-cell recognition, and in many other biological roles.
@@ -167,7 +167,7 @@ Write condensed formulas and provide IUPAC names for the following compounds:
 (e) glycerine
 
 <!-- SEG:m68847:solution:fs-idp3456944 -->
-(a) ethyl alcohol, ethanol: CH~3~CH~2~OH; (b) methyl alcohol, methanol: CH~3~OH; (c) ethylene glycol, ethanediol: HOCH~2~CH~2~OH; (d) isopropyl alcohol, 2-propanol: CH~3~CH(OH)CH~3~; (e) glycerine, l,2,3-trihydroxypropane: HOCH~2~CH(OH)CH~2~OH
+(a) ethyl alcohol, ethanol: CH[[sub:3]]CH[[sub:2]]OH; (b) methyl alcohol, methanol: CH[[sub:3]]OH; (c) ethylene glycol, ethanediol: HOCH[[sub:2]]CH[[sub:2]]OH; (d) isopropyl alcohol, 2-propanol: CH[[sub:3]]CH(OH)CH[[sub:3]]; (e) glycerine, l,2,3-trihydroxypropane: HOCH[[sub:2]]CH(OH)CH[[sub:2]]OH
 
 <!-- SEG:m68847:problem:fs-idm32066720 -->
 Give the complete IUPAC name for each of the following compounds:
@@ -197,13 +197,13 @@ Give the complete IUPAC name and the common name for each of the following compo
 (a) 1-ethoxybutane, butyl ethyl ether; (b) 1-ethoxypropane, ethyl propyl ether; (c) 1-methoxypropane, methyl propyl ether
 
 <!-- SEG:m68847:problem:fs-idp1050336 -->
-Write the condensed structures of both isomers with the formula C~2~H~6~O. Label the functional group of each isomer.
+Write the condensed structures of both isomers with the formula C[[sub:2]]H[[sub:6]]O. Label the functional group of each isomer.
 
 <!-- SEG:m68847:problem:fs-idm25531216 -->
-Write the condensed structures of all isomers with the formula C~2~H~6~O~2~. Label the functional group (or groups) of each isomer.
+Write the condensed structures of all isomers with the formula C[[sub:2]]H[[sub:6]]O[[sub:2]]. Label the functional group (or groups) of each isomer.
 
 <!-- SEG:m68847:solution:fs-idm19769120 -->
-HOCH~2~CH~2~OH, two alcohol groups; CH~3~OCH~2~OH, ether and alcohol groups
+HOCH[[sub:2]]CH[[sub:2]]OH, two alcohol groups; CH[[sub:3]]OCH[[sub:2]]OH, ether and alcohol groups
 
 <!-- SEG:m68847:problem:fs-idm38003552 -->
 Draw the condensed formulas for each of the following compounds:
@@ -218,7 +218,7 @@ Draw the condensed formulas for each of the following compounds:
 (c) 2-ethoxybutane
 
 <!-- SEG:m68847:problem:fs-idm34523872 -->
-MTBE, Methyl *tert*-butyl ether, CH~3~OC(CH~3~)~3~, is used as an oxygen source in oxygenated gasolines. MTBE is manufactured by reacting 2-methylpropene with methanol.
+MTBE, Methyl {{i}}tert{{/i}}-butyl ether, CH[[sub:3]]OC(CH[[sub:3]])[[sub:3]], is used as an oxygen source in oxygenated gasolines. MTBE is manufactured by reacting 2-methylpropene with methanol.
 
 <!-- SEG:m68847:problem:fs-idm60182096 -->
 (a) Using Lewis structures, write the chemical equation representing the reaction.
@@ -227,7 +227,7 @@ MTBE, Methyl *tert*-butyl ether, CH~3~OC(CH~3~)~3~, is used as an oxygen source 
 (b) What volume of methanol, density 0.7915 g/mL, is required to produce exactly 1000 kg of MTBE, assuming a 100% yield?
 
 <!-- SEG:m68847:solution:fs-idm80638832 -->
-(a)[[BR]] [[MEDIA:7]][[BR]] (b) 4.593 [[MATH:1]] 10^2^ L
+(a)[[BR]] [[MEDIA:7]][[BR]] (b) 4.593 [[MATH:1]] 10[[sup:2]] L
 
 <!-- SEG:m68847:problem:fs-idp7151904 -->
 Write two complete balanced equations for each of the following reactions, one using condensed formulas and one using Lewis structures.

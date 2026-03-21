@@ -216,7 +216,7 @@
               "id": "fs-idm2891376",
               "title": {
                 "segmentId": "m68742:example-title:fs-idm2891376-title",
-                "text": "Solution"
+                "text": "Predicting Electron-pair Geometry and Molecular Structure: CO[[sub:2]] and BCl[[sub:3]]"
               },
               "content": [
                 {
@@ -237,7 +237,11 @@
                 {
                   "type": "para",
                   "id": "fs-idp64872464",
-                  "segmentId": "m68742:para:fs-idp64872464"
+                  "segmentId": "m68742:para:fs-idp64872464",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp64872464-title",
+                    "text": "Solution"
+                  }
                 },
                 {
                   "type": "para",
@@ -453,7 +457,7 @@
               "id": "fs-idp82124112",
               "title": {
                 "segmentId": "m68742:example-title:fs-idp82124112-title",
-                "text": "Solution"
+                "text": "Predicting Electron-pair Geometry and Molecular Structure: SF[[sub:4]]"
               },
               "content": [
                 {
@@ -464,7 +468,11 @@
                 {
                   "type": "para",
                   "id": "fs-idp95643040",
-                  "segmentId": "m68742:para:fs-idp95643040"
+                  "segmentId": "m68742:para:fs-idp95643040",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idp95643040-title",
+                    "text": "Solution"
+                  }
                 },
                 {
                   "type": "para",
@@ -520,7 +528,7 @@
               "id": "fs-idp47136656",
               "title": {
                 "segmentId": "m68742:example-title:fs-idp47136656-title",
-                "text": "Solution"
+                "text": "Predicting Electron-pair Geometry and Molecular Structure: XeF[[sub:4]]"
               },
               "content": [
                 {
@@ -531,7 +539,11 @@
                 {
                   "type": "para",
                   "id": "fs-idm15898032",
-                  "segmentId": "m68742:para:fs-idm15898032"
+                  "segmentId": "m68742:para:fs-idm15898032",
+                  "title": {
+                    "segmentId": "m68742:para-title:fs-idm15898032-title",
+                    "text": "Solution"
+                  }
                 },
                 {
                   "type": "para",

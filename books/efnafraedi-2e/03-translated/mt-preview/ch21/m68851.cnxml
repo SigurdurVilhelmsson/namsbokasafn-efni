@@ -1,0 +1,290 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Gerð og stöðugleiki kjarna</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68851</md:content-id>
+  <md:title>Gerð og stöðugleiki kjarna</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst gerð kjarna með tilliti til róteinda, nifteinda og rafeinda</item><item>Reiknað massagalla og bindiorku fyrir kjarna</item><item>Útskýrt þróun í hlutfallslegum stöðugleika kjarna</item></list></md:abstract>
+  <md:uuid>45860792-c5d9-436b-8bcf-3807f257eab6</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp11934128"><term id="term-00001">Kjarnaefnafræði (e. nuclear chemistry)</term> er fræðigrein sem fæst við rannsóknir á efnahvörfum sem fela í sér breytingar á gerð kjarna. Í kaflanum um frumeindir, sameindir og jónir var farið yfir grunnhugmyndina um gerð kjarna, þ.e. að kjarni frumeindar sé samsettur úr róteindum og, að undanskildu <m:math><m:mrow><m:msubsup><m:mrow/><m:mn>1</m:mn><m:mn>1</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mo>,</m:mo></m:mrow></m:math>, nifteindum. Rifjum upp að fjöldi róteinda í kjarna er kallaður sætistala (Z) frumefnisins og summa fjölda róteinda og nifteinda er massatala (A). Frumeindir með sömu sætistölu en mismunandi massatölu eru samsætur sama frumefnis. Þegar vísað er til einnar ákveðinnar tegundar kjarna notum við oft hugtakið <term id="term-00002">kjarnategund (e. nuclide)</term> og auðkennum hana með rithættinum <m:math><m:mrow><m:msubsup><m:mrow/><m:mtext>Z</m:mtext><m:mtext>A</m:mtext></m:msubsup><m:mtext>X</m:mtext><m:mo>,</m:mo></m:mrow></m:math> þar sem X er tákn frumefnisins, A er massatalan og Z er sætistalan (til dæmis <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext><m:mo>)</m:mo><m:mo>.</m:mo></m:math>). Oft er vísað til kjarnategundar með nafni frumefnisins, bandstriki og massatölunni. Til dæmis er <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext></m:math> kallað „kolefni-14“.</para>
+<para id="fs-idm77528832">Róteindir og nifteindir, sem sameiginlega eru kallaðar <term id="term-00003">kjarnaeindir (e. nucleons)</term>, eru þéttpakkaðar saman í kjarna. Með radíus um 10<sup>−15</sup> metra er kjarni frekar lítill í samanburði við radíus allrar frumeindarinnar, sem er um 10<sup>−10</sup> metrar. Kjarnar eru gríðarlega þéttir í samanburði við efni í heild, með eðlismassa að meðaltali 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>14</sup> grömm á rúmsentimetra. Til dæmis hefur vatn eðlismassa upp á 1 gramm á rúmsentimetra og iridíum, eitt þéttasta frumefni sem þekkt er, hefur eðlismassa upp á 22,6 g/cm<sup>3</sup>. Ef eðlismassi jarðar væri jafn meðaleðlismassa kjarna væri radíus jarðar aðeins um 200 metrar (raunverulegur radíus jarðar er um það bil 6,4 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> metrar, 30.000 sinnum stærri). <link target-id="fs-idp85198000"/> sýnir hversu mikill eðlismassi kjarna getur verið í náttúrunni.</para>
+<example id="fs-idp85198000">
+<para id="fs-idp771680"><title>Eðlismassi nifteindastjörnu</title>Nifteindastjörnur myndast þegar kjarni mjög massamikillar stjörnu verður fyrir þyngdarhruni, sem veldur því að ytri lög stjörnunnar springa í sprengistjörnu. Þær eru nánast alfarið samsettar úr nifteindum og eru þéttustu þekktu stjörnur alheimsins, með eðlismassa sem er sambærilegur við meðaleðlismassa frumeindarkjarna. Nifteindastjarna í fjarlægri vetrarbraut hefur massa sem jafngildir 2,4 sólmössum (1 sólar massi = <m:math><m:mrow><m:msub><m:mtext>M</m:mtext><m:mtext>☉</m:mtext></m:msub></m:mrow></m:math> = massi sólar = 1,99 <m:math><m:mo>×</m:mo></m:math> 10<sup>30</sup> kg) og þvermál 26 km.</para>
+<para id="fs-idp10832352">(a) Hver er eðlismassi þessarar nifteindastjörnu?</para>
+<para id="fs-idm83218560">(b) Hvernig er eðlismassi þessarar nifteindastjörnu í samanburði við eðlismassa úrankjarna, sem hefur þvermál um 15 fm (1 fm = 10<sup>–15</sup> m)?</para>
+<para id="fs-idp150064880"><title>Lausn</title>Við getum litið á bæði nifteindastjörnuna og U-235 kjarnann sem kúlur. Þá er eðlismassi beggja gefinn með:</para>
+<equation class="unnumbered" id="fs-idp34232608"><m:math><m:mrow><m:mi>d</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mi>V</m:mi></m:mfrac><m:mspace width="5em"/><m:mtext>with</m:mtext><m:mspace width="5em"/><m:mi>V</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>4</m:mn><m:mn>3</m:mn></m:mfrac><m:mi>π</m:mi><m:msup><m:mi>r</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm60509904">(a) Radíus nifteindastjörnunnar er <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.3em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>26 km</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.3em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext><m:mo>=</m:mo><m:mn>1.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext><m:mo>,</m:mo></m:mrow></m:math> þannig að eðlismassi nifteindastjörnunnar er:</para>
+<equation class="unnumbered" id="fs-idp107125664"><m:math><m:mrow><m:mi>d</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mi>V</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mrow><m:mfrac><m:mn>4</m:mn><m:mn>3</m:mn></m:mfrac><m:mi>π</m:mi><m:msup><m:mi>r</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2.4</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.99</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>30</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mfrac><m:mn>4</m:mn><m:mn>3</m:mn></m:mfrac><m:mi>π</m:mi><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>5.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>17</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>kg/m</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm95978752">(b) Radíus U-235 kjarnans er <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.3em"/><m:mo>×</m:mo><m:mn>15</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−15</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext><m:mo>=</m:mo><m:mn>7.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−15</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext><m:mo>,</m:mo></m:mrow></m:math> þannig að eðlismassi U-235 kjarnans er:</para>
+<equation class="unnumbered" id="fs-idm36016608"><m:math><m:mrow><m:mi>d</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mi>V</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mrow><m:mfrac><m:mn>4</m:mn><m:mn>3</m:mn></m:mfrac><m:mi>π</m:mi><m:msup><m:mi>r</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>235 amu</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>1.66</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−27</m:mn></m:mrow></m:msup><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:mtext>1 amu</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mfrac><m:mn>4</m:mn><m:mn>3</m:mn></m:mfrac><m:mi>π</m:mi><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>7.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−15</m:mn></m:mrow></m:msup><m:mtext>m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>17</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>kg/m</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp166819568">Þessi gildi eru nokkuð svipuð (af sömu stærðargráðu), en nifteindastjarnan er meira en tvöfalt þéttari en U-235 kjarninn.</para>
+<para id="fs-idp49863776"><title>Kannaðu þekkingu þína</title>Finndu eðlismassa nifteindastjörnu með massa 1,97 sólmassa og þvermál 13 km og berðu hann saman við eðlismassa vetniskjarna, sem hefur þvermál 1,75 fm (1 fm = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>–15</sup> m).</para>
+<note id="fs-idp24208128">
+<title>Answer:</title>
+<para id="fs-idp177279920">Eðlismassi nifteindastjörnunnar er 3,4 <m:math><m:mo>×</m:mo></m:math> 10<sup>18</sup> kg/m<sup>3</sup>. Eðlismassi vetniskjarna er 6,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>17</sup> kg/m<sup>3</sup>. Nifteindastjarnan er 5,7 sinnum þéttari en vetniskjarninn.</para>
+</note>
+</example>
+<para id="fs-idm88935120">Til að halda jákvætt hlöðnum róteindum saman í mjög litlu rúmmáli kjarna þarf mjög sterka aðdráttarkrafta því jákvætt hlaðnar róteindir hrinda hver annarri frá sér af miklum krafti í svo stuttri fjarlægð. Aðdráttarkrafturinn sem heldur kjarnanum saman er <term id="term-00004">sterki kjarnakrafturinn (e. strong nuclear force)</term>. (Sterki krafturinn er einn af fjórum grunnkröftum sem vitað er að séu til. Hinir eru rafsegulkrafturinn, þyngdarkrafturinn og veiki kjarnakrafturinn.) Þessi kraftur verkar á milli róteinda, á milli nifteinda og á milli róteinda og nifteinda. Hann er mjög ólíkur rafstöðukraftinum sem heldur neikvætt hlöðnum rafeindum í kringum jákvætt hlaðinn kjarna (aðdrátturinn milli gagnstæðra hleðslna). Í fjarlægðum sem eru minni en 10<sup>−15</sup> metrar og innan kjarnans er sterki kjarnakrafturinn mun sterkari en rafstöðufráhrindingin milli róteinda; í meiri fjarlægð og utan kjarnans er hann nánast ótilstaðar.</para>
+<note id="fs-idm37753808" class="chemistry link-to-learning">
+<para id="fs-idp91518256">Farðu inn á þessa <link url="http://openstax.org/l/16fourfund">vefsíðu</link> til að fá frekari upplýsingar um grunnkraftana fjóra.</para>
+</note>
+<section id="fs-idm9295456">
+<title>Kjarnabindiorka</title>
+<para id="fs-idm36435184">Sem einfalt dæmi um orkuna sem tengist sterka kjarnakraftinum skulum við skoða helínfrumeind sem samanstendur af tveimur róteindum, tveimur nifteindum og tveimur rafeindum. Heildarmassa þessara sex öreinda má reikna sem:</para>
+<equation id="fs-idm68022784" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1.0073 amu</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1.0087 amu</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.00055 amu</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>4.0331 amu</m:mtext></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mtext>protons</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>neutrons</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>electrons</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow/></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idp28406768">Hins vegar sýna massarófsmælingar að massi <m:math><m:msubsup><m:mrow/><m:mn>2</m:mn><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> frumeindar er 4,0026 amu, sem er minna en samanlagður massi sex öreindanna sem hún er gerð úr. Þessi munur á reiknuðum og tilraunamældum massa er þekktur sem <term id="term-00005">massagalli (e. mass defect)</term> frumeindarinnar. Í tilviki helíns gefur massagallinn til kynna „tap“ á massa upp á 4,0331 amu – 4,0026 amu = 0,0305 amu. Massatapið sem fylgir myndun frumeindar úr róteindum, nifteindum og rafeindum stafar af umbreytingu þess massa í orku sem losnar þegar frumeindin myndast. <term id="term-00006">Kjarnabindiorka (e. nuclear binding energy)</term> er orkan sem myndast þegar kjarnaeindir frumeindarinnar bindast saman; þetta er einnig orkan sem þarf til að kljúfa kjarna í róteindir og nifteindir sem hann er gerður úr. Í samanburði við bindiorku efnatengja eru kjarnabindiorkur <emphasis effect="italics">gríðarlega</emphasis> miklu meiri, eins og við munum læra í þessum kafla. Þar af leiðandi eru orkubreytingarnar sem tengjast kjarnahvörfum gríðarlega miklu meiri en þær sem eiga sér stað í efnahvörfum.</para>
+<para id="fs-idp77271552">Umbreytingin milli massa og orku er best sýnd með <term id="term-00007">jafngildisjöfnu massa og orku (e. mass-energy equivalence equation)</term> eins og Albert Einstein setti hana fram:</para>
+<equation id="fs-idm1551072" class="unnumbered"><m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>m</m:mi><m:msup><m:mi>c</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp18183904">þar sem <emphasis effect="italics">E</emphasis> er orka, <emphasis effect="italics">m</emphasis> er massi efnisins sem er að umbreytast og <emphasis effect="italics">c</emphasis> er ljóshraði í tómarúmi. Þessa jöfnu má nota til að finna orkumagnið sem verður til þegar efni umbreytist í orku. Með því að nota þessa jafngildisjöfnu massa og orku má reikna kjarnabindiorku kjarna út frá massagalla hans, eins og sýnt er í <link target-id="fs-idm18254784"/>. Ýmsar einingar eru almennt notaðar fyrir kjarnabindiorku, þar á meðal <term id="term-00008">rafeindavolt (eV) (e. electron volts (ev))</term>, þar sem 1 eV jafngildir því orkumagni sem þarf til að færa hleðslu rafeindar yfir rafspennumun upp á 1 volt, sem gerir 1 eV = 1,602 <m:math><m:mo>×</m:mo></m:math> 10<sup>–19</sup> J.</para>
+<example id="fs-idm18254784">
+<para id="fs-idm17489664"><title>Útreikningur á kjarnabindiorku</title>Ákvarðaðu bindiorkuna fyrir kjarnategundina <m:math><m:msubsup><m:mrow/><m:mn>2</m:mn><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> í:</para><para id="fs-idm41576528">(a) júlum á mól kjarna</para>
+<para id="fs-idm67177840">(b) júlum á kjarna</para>
+<para id="fs-idm36631472">(c) MeV á kjarna</para>
+<para id="fs-idp81004736"><title>Lausn</title>Massagalli <m:math><m:msubsup><m:mrow/><m:mn>2</m:mn><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> kjarna er 0,0305 amu, eins og sýnt var áður. Ákvarðaðu bindiorkuna í júlum á kjarnategund með því að nota jafngildisjöfnu massa og orku. Til að koma til móts við umbeðnar orkueiningar verður að gefa massagallann upp í kílógrömmum (munum að 1 J = 1 kg m<sup>2</sup>/s<sup>2</sup>).</para><para id="fs-idm55054176">(a) Fyrst skaltu gefa massagallann upp í g/mól. Það er auðvelt að gera það með hliðsjón af <emphasis effect="italics">tölulegu jafngildi</emphasis> atómmassa (amu) og mólmassa (g/mól) sem leiðir af skilgreiningum á einingunum amu og mól (vísað er til fyrri umfjöllunar í kaflanum um frumeindir, sameindir og jónir ef þörf krefur). Massagallinn er því 0,0305 g/mól. Til að koma til móts við einingar hinna liðanna í massa-orku jöfnunni verður að gefa massann upp í kg, þar sem 1 J = 1 kg m<sup>2</sup>/s<sup>2</sup>. Umreikningur gramma í kílógrömm gefur massagalla upp á 3,05 <m:math><m:mo>×</m:mo></m:math> 10<sup>–5</sup> kg/mól. Með því að setja þetta magn inn í jafngildisjöfnu massa og orku fæst:</para>
+<equation class="unnumbered" id="fs-idp76651600"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>m</m:mi><m:msup><m:mi>c</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.05</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.3em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>2.998</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>8</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext></m:mrow><m:mtext>s</m:mtext></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>2.74</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>12</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>m</m:mtext><m:mn>2</m:mn></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>2.74</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>12</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mtext>2.74 TJ mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm125097680">Athugið að þetta gríðarlega orkumagn tengist umbreytingu á mjög litlu magni af efni (um 30 mg, sem er nokkurn veginn massi dæmigerðs vatnsdropa).</para>
+<para id="fs-idm28777712">(b) Bindiorka fyrir einn kjarna er reiknuð út frá mólbindiorkunni með því að nota tölu Avogadros:</para>
+<equation class="unnumbered" id="fs-idm11809824"><m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>2.74</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>12</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>nuclei</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>4.55</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−12</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mo>=</m:mo><m:mtext>4.55 pJ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp34903136">(c) Munum að 1 eV = 1,602 <m:math><m:mo>×</m:mo></m:math> 10<sup>–19</sup> J. Með því að nota bindiorkuna sem reiknuð var í hluta (b):</para>
+<equation class="unnumbered" id="fs-idm75252944"><m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>4.55</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−12</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 eV</m:mtext></m:mrow><m:mrow><m:mn>1.602</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−19</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.84</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>7</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>eV</m:mtext><m:mo>=</m:mo><m:mtext>28.4 MeV</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp117760560"><title>Kannaðu þekkingu þína</title>Hver er bindiorkan fyrir kjarnategundina <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>9</m:mn></m:mrow><m:mn>19</m:mn></m:msubsup><m:mtext>F</m:mtext></m:math> (atómmassi: 18,9984 amu) í MeV á kjarna?</para><note id="fs-idm16440528">
+<title>Answer:</title>
+<para id="fs-idp26065248">148,4 MeV</para>
+</note>
+</example>
+<para id="fs-idp50673248">Þar sem orkubreytingar við rof og myndun tengja eru svo litlar í samanburði við orkubreytingar við rof eða myndun kjarna eru massabreytingar við öll venjuleg efnahvörf nánast ómælanlegar. Eins og lýst er í kaflanum um varmaefnafræði sýna orkumestu efnahvörfin entalpíur á stærðargráðunni <emphasis effect="italics">þúsundir</emphasis> kJ/mól, sem jafngildir massamun á nanógramma bili (10<sup>–9</sup> g). Á hinn bóginn eru bindiorkur kjarna yfirleitt á stærðargráðunni <emphasis effect="italics">milljarðar</emphasis> kJ/mól, sem samsvarar massamun á milligramma bili (10<sup>–3</sup> g).</para>
+</section>
+<section id="fs-idp105853456">
+<title>Stöðugleiki kjarna</title>
+<para id="fs-idm27681216">Kjarni er stöðugur ef ekki er hægt að breyta honum í aðra uppsetningu án þess að bæta við orku utan frá. Af þeim þúsundum kjarnategunda sem til eru, eru um 250 stöðugar. Línurit yfir fjölda nifteinda á móti fjölda róteinda fyrir stöðuga kjarna sýnir að stöðugar samsætur falla innan þröngs bands. Þetta svæði er þekkt sem <term id="term-00009">stöðugleikabeltið (e. band of stability)</term> (einnig kallað stöðugleikasvæði eða stöðugleikadalur). Beina línan á <link target-id="CNX_Chem_21_01_BandStable"/> táknar kjarna sem hafa hlutfallið 1:1 milli róteinda og nifteinda (n:p hlutfall). Athugið að léttari stöðugir kjarnar hafa almennt jafnmargar róteindir og nifteindir. Til dæmis hefur nitur-14 sjö róteindir og sjö nifteindir. Þyngri stöðugir kjarnar hafa hins vegar sífellt fleiri nifteindir en róteindir. Til dæmis: járn-56 hefur 30 nifteindir og 26 róteindir, sem gefur n:p hlutfallið 1,15, en stöðuga kjarnategundin blý-207 hefur 125 nifteindir og 82 róteindir, sem gefur n:p hlutfallið 1,52. Þetta er vegna þess að stærri kjarnar hafa meiri fráhrindikrafta milli róteinda og þurfa fleiri nifteindir til að veita uppbót með sterkum kjarnakröftum til að yfirstíga þessa rafstöðufráhrindingu og halda kjarnanum saman.</para>
+<figure id="CNX_Chem_21_01_BandStable">
+<media id="fs-idm82801808" alt="A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 0 to 180 in increments of 10. The y-axis is labeled “Number of protons, open parenthesis, Z, close parenthesis” and has values of 0 to 120 in increments of 10. A green shaded band of varying width, labeled “Radioactive,” extends from point 0 on both axes to 178 on the y-axis and 118 on the x-axis in a linear manner. The width of this band varies from 8 to 18 units in width according to the x-axis measurements. A blue line in a roughly zig-zag pattern runs through the middle of the shaded band and stops at 128 on the y-axis and 82 on the x-axis. This line is labeled “Nonradioactive.” An unlabeled, black, solid line extends from point 0, 0 to 120, 120 in a linear manner.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_01_BandStable.jpg"/>
+</media>
+<caption>Þetta línurit sýnir þær kjarnategundir sem vitað er að séu til og þær sem eru stöðugar. Stöðugu kjarnategundirnar eru merktar með bláu og óstöðugu kjarnategundirnar með grænu. Athugið að allar samsætur frumefna með sætistölu hærri en 83 eru óstöðugar. Heilbrota línan er línan þar sem n = Z.</caption>
+</figure>
+<para id="fs-idm67089056">Kjarnar sem eru vinstra eða hægra megin við stöðugleikabeltið eru óstöðugir og sýna <term id="term-00010">geislavirkni (e. radioactivity)</term>. Þeir breytast sjálfkrafa (hrörna) í aðra kjarna sem eru annaðhvort í, eða nær, stöðugleikabeltinu. Þessi kjarnahrörnunarbreyting breytir einni óstöðugri samsætu (eða <term id="term-00011">geislasamsætu (e. radioisotope)</term>) í aðra, stöðugri samsætu. Við munum fjalla um eðli og afurðir þessarar geislavirku hrörnunar í síðari köflum þessa kafla.</para>
+<para id="fs-idm18227760">Nokkrar athuganir má gera varðandi sambandið milli stöðugleika kjarna og byggingar hans. Kjarnar með sléttum tölum róteinda, nifteinda eða beggja eru líklegri til að vera stöðugir (sjá <link target-id="fs-idp70040672"/>). Kjarnar með ákveðnum fjölda kjarneinda, þekktum sem <term id="term-00012">töfratölur (e. magic numbers)</term>, eru stöðugir gegn kjarnahrörnun. Þessar tölur róteinda eða nifteinda (2, 8, 20, 28, 50, 82 og 126) mynda fullskipuð hvolf í kjarnanum. Þetta er svipað í hugmynd og stöðugu rafeindahvolfin sem sjást hjá eðallofttegundum. Kjarnar sem hafa töfratölur bæði róteinda og nifteinda, svo sem <m:math><m:mrow><m:msubsup><m:mrow/><m:mn>2</m:mn><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>8</m:mn></m:mrow><m:mn>16</m:mn></m:msubsup><m:mtext>O</m:mtext><m:mo>,</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msubsup><m:mrow/><m:mn>20</m:mn><m:mn>40</m:mn></m:msubsup><m:mtext>Ca</m:mtext><m:mo>,</m:mo></m:mrow></m:math> og <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>82</m:mn></m:mrow><m:mn>208</m:mn></m:msubsup><m:mtext>Pb</m:mtext><m:mo>,</m:mo></m:mrow></m:math> eru kallaðir „tvítöfrandi“ og eru sérstaklega stöðugir. Þessar tilhneigingar í stöðugleika kjarna má rökstyðja með því að skoða skammtafræðilegt líkan af orkuástöndum kjarna, hliðstætt því sem notað var til að lýsa rafeindaástöndum fyrr í þessari kennslubók. Smáatriði þessa líkans eru utan gildissviðs þessa kafla.</para>
+<table class="top-titled" id="fs-idp70040672" summary="This table has three columns and five rows. The first row is a header row, and it labels each column: “Number of Stable Isotopes,” “Proton Number,” and “Neutron Number.” Under the “Number of Stable Isotopes” column are the following numbers: 157, 53, 50, and 5. Under the “Proton Number” column are the following: even, even, odd, odd. Under the “Neutron Number” column are the following: even, odd, even, odd.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c3" align="center">Stöðugar kjarnasamsætur</entry>
+</row>
+<row valign="middle">
+<entry align="left">Fjöldi stöðugra samsæta</entry>
+<entry align="left">Fjöldi róteinda</entry>
+<entry align="left">Fjöldi nifteinda</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">157</entry>
+<entry align="left">slétt tala</entry>
+<entry align="left">slétt tala</entry>
+</row>
+<row valign="middle">
+<entry align="left">53</entry>
+<entry align="left">slétt tala</entry>
+<entry align="left">oddatala</entry>
+</row>
+<row valign="middle">
+<entry align="left">50</entry>
+<entry align="left">oddatala</entry>
+<entry align="left">slétt tala</entry>
+</row>
+<row valign="middle">
+<entry align="left">5</entry>
+<entry align="left">oddatala</entry>
+<entry align="left">oddatala</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm63271648">Hlutfallslegur stöðugleiki kjarna er í samhengi við <term id="term-00013">bindiorku hans á kjarneind (e. binding energy per nucleon)</term>, heildarbindiorku kjarnans deilt með fjölda kjarneinda í kjarnanum. Til dæmis sáum við í <link target-id="fs-idm18254784"/> að bindiorka fyrir <m:math><m:msubsup><m:mrow/><m:mn>2</m:mn><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> kjarna er 28,4 MeV. Bindiorkan <emphasis effect="italics">á kjarneind</emphasis> fyrir <m:math><m:msubsup><m:mrow/><m:mn>2</m:mn><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> kjarna er því:</para>
+<equation id="fs-idp200768" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>28.4 MeV</m:mtext></m:mrow><m:mrow><m:mtext>4 nucleons</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>7.10 MeV/nucleon</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp78837648">Í <link target-id="fs-idp47733552"/> lærum við hvernig á að reikna út bindiorku á kjarneind fyrir kjarnategund á ferlinum sem sýndur er á <link target-id="CNX_Chem_21_01_BindEnergy"/>.</para>
+<figure id="CNX_Chem_21_01_BindEnergy" class="scaled-down">
+<media id="fs-idm93760" alt="A graph is shown where the x-axis is labeled “binding energy per nucleon, open parenthesis, M e V, close parenthesis” and has values of 0 to 10 in increments of 1. The y-axis is labeled “Mass number” and has values of 0 to 260 in increments of 20. A line of best fit beginning at point 0, 0 is drawn through points “8, 5.5; 9, 7.3; 18, 7.1; 20, 7.5; 19, 7.9; 27, 7.8; 21, 8.1; 25, 8.4; 37, 8.6; 43, 8.8; 57, 8.6; 60, 8.9; 70, 9; 88, 8.8; 102, 8.9; 108, 8.5; 126, 8.7; 133, 8.8; 143, 8.2; 157, 8.1; 167, 8.2; 195, 7.9; 205, 7.9; 241, 7.3 and 255, 75. An upward-facing arrow near the bottom left of the graph is labeled “Fusion” while a left-facing arrow near the top right is labeled “Fission.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_01_BindEnergy.jpg"/>
+</media>
+<caption>Bindiorkan á kjarneind er mest fyrir kjarnategundir með massatölu um það bil 56.</caption>
+</figure>
+<example id="fs-idp47733552">
+<para id="fs-idm62997744"><title>Útreikningur á bindiorku á kjarneind</title>Járnkjarnategundin <m:math><m:msubsup><m:mrow/><m:mn>26</m:mn><m:mn>56</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math> liggur nálægt toppi bindiorkuferilsins (<link target-id="CNX_Chem_21_01_BindEnergy"/>) og er ein af stöðugustu kjarnategundunum. Hver er bindiorkan á kjarneind (í MeV) fyrir kjarnategundina <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>26</m:mn></m:mrow><m:mn>56</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math> (atómmassi 55,9349 amu)?</para><para id="fs-idp15576576"><title>Lausn</title>Eins og í <link target-id="fs-idm18254784"/> ákveðum við fyrst massagalla núklíðsins, sem er mismunurinn á massa 26 róteinda, 30 nifteinda og 26 rafeinda, og mældum massa <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>26</m:mn></m:mrow><m:mn>56</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math> frumeindar:</para><equation class="unnumbered" id="fs-idm131278944"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtext>Mass defect</m:mtext><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>26</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1.0073 amu</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>30</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mtext>1.0087 amu</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>26</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.00055 amu</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mtext>55.9349 amu</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>56.4651 amu</m:mtext><m:mo>−</m:mo><m:mtext>55.9349 amu</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>0.5302 amu</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp91322720">Næst reiknum við bindiorku fyrir einn kjarna út frá massagallanum með því að nota jöfnu massajafngildis:</para>
+<equation class="unnumbered" id="fs-idp90560128"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mi>E</m:mi><m:mo>=</m:mo><m:mi>m</m:mi><m:msup><m:mi>c</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mtext>0.5302 amu</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.6605</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−27</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:mtext>1 amu</m:mtext></m:mrow></m:mfrac><m:mspace width="0.3em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.998</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>8</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>m/s</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>7.913</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−11</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg</m:mtext><m:mtext>⋅</m:mtext><m:msup><m:mtext>m/s</m:mtext><m:mn>2</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>7.913</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−11</m:mn></m:mrow></m:msup><m:mtext>J</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp148855104">Síðan breytum við bindiorkunni í júlum á kjarna yfir í eininguna MeV á núklíð:</para>
+<equation class="unnumbered" id="fs-idm54914048"><m:math><m:mrow><m:mn>7.913</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−11</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 MeV</m:mtext></m:mrow><m:mrow><m:mn>1.602</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−13</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>J</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>493.9 MeV</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp84501712">Að lokum ákveðum við bindiorku á kjarnaeind með því að deila heildarbindiorku kjarnans með fjölda kjarnaeinda í frumeindinni:</para>
+<equation class="unnumbered" id="fs-idp136767392"><m:math><m:mrow><m:mtext>Binding energy per nucleon</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>493.9 MeV</m:mtext></m:mrow><m:mn>56</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>8.820 MeV/nucleon</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm37662944">Takið eftir að þetta er næstum 25% meira en bindiorka á kjarnaeind fyrir <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mo>.</m:mo></m:mrow></m:math></para><para id="fs-idp8906016">(Takið einnig eftir að þetta er sama ferli og í <link target-id="fs-idp85198000"/>, en með því viðbótarskrefi að deila heildarbindiorku kjarnans með fjölda kjarnaeinda.)</para>
+<para id="fs-idp90415648"><title>Kannaðu þekkingu þína</title>Hver er bindiorka á kjarnaeind í <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>9</m:mn></m:mrow><m:mn>19</m:mn></m:msubsup><m:mtext>F</m:mtext></m:math> (atómmassi, 18,9984 amu)?</para><note id="fs-idm62295296">
+<title>Answer:</title>
+<para id="fs-idm46993968">7,810 MeV/kjarnaeind</para>
+</note>
+</example>
+</section>
+<section id="fs-idm22567904" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp104867712">Frumeindarkjarni samanstendur af róteindum og nifteindum, sem sameiginlega eru kallaðar kjarnaeindir. Þrátt fyrir að róteindir hrindi hver annarri frá sér, er kjarninn haldinn þétt saman af skammdrægum en mjög sterkum krafti sem kallast sterki kjarnakrafturinn. Kjarni hefur minni massa en heildarmassi kjarnaeinda sinna. Þessi „týndi“ massi er massagallinn, sem hefur breyst í bindiorkuna sem heldur kjarnanum saman samkvæmt jöfnu Alberts Einsteins um jafngildi massa og orku, <emphasis effect="italics">E</emphasis> = <emphasis effect="italics">mc</emphasis><sup>2</sup>. Af þeim mörgu núklíðum sem til eru, er aðeins lítill fjöldi stöðugur. Núklíð með sléttum tölum róteinda eða nifteinda, eða þau með töfratölur kjarnaeinda, eru sérstaklega líkleg til að vera stöðug. Þessi stöðugu núklíð mynda þröngt stöðugleikabelti á grafi sem sýnir fjölda róteinda á móti fjölda nifteinda. Bindiorka á kjarnaeind er mest fyrir frumefni með massatölur nálægt 56; þetta eru stöðugustu kjarnarnir.</para>
+</section>
+<section id="fs-idp28539744" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><emphasis effect="italics">E</emphasis> = <emphasis effect="italics">mc</emphasis><sup>2</sup></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm26476112" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idm84959200">
+<problem id="fs-idp25319184">
+<para id="fs-idm5227312">Skrifið eftirfarandi samsætur með bandstriki (t.d. „kolefni-14“)</para>
+<para id="fs-idp78404736">(a) <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>11</m:mn></m:mrow><m:mn>24</m:mn></m:msubsup><m:mtext>Na</m:mtext></m:math></para><para id="fs-idm61611792">(b) <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>13</m:mn></m:mrow><m:mn>29</m:mn></m:msubsup><m:mtext>Al</m:mtext></m:math></para><para id="fs-idm45129152">(c) <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>36</m:mn></m:mrow><m:mn>73</m:mn></m:msubsup><m:mtext>Kr</m:mtext></m:math></para><para id="fs-idp119220976">(d) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>77</m:mn></m:mrow><m:mn>194</m:mn></m:msubsup><m:mtext>Ir</m:mtext></m:math></para></problem>
+<solution id="fs-idm130263488">
+<para id="fs-idm45208192">(a) natríum-24; (b) ál-29; (c) krypton-73; (d) iridíum-194</para>
+</solution>
+</exercise>
+<exercise id="fs-idm1122208">
+<problem id="fs-idm67376">
+<para id="fs-idm59548176">Skrifið eftirfarandi samsætur með núklíðtáknun (t.d. <m:math><m:mrow><m:mtext>"</m:mtext><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext><m:mtext>"</m:mtext><m:mo>)</m:mo></m:mrow></m:math></para><para id="fs-idp78762864">(a) súrefni-14</para>
+<para id="fs-idp51038896">(b) kopar-70</para>
+<para id="fs-idm60853712">(c) tantal-175</para>
+<para id="fs-idm56820256">(d) fransín-217</para>
+</problem>
+</exercise>
+<exercise id="fs-idm73167408">
+<problem id="fs-idm95583360">
+<para id="fs-idp72263728">Fyrir eftirfarandi samsætur þar sem upplýsingar vantar, fyllið inn í eyðurnar til að ljúka við táknunina</para>
+<para id="fs-idm36976592">(a) <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>14</m:mn></m:mrow><m:mn>34</m:mn></m:msubsup><m:mtext>X</m:mtext></m:math></para><para id="fs-idp91657136">(b) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.3em"/><m:mtext>X</m:mtext></m:mrow><m:mn>36</m:mn></m:msubsup><m:mtext>P</m:mtext></m:math></para><para id="fs-idm47972736">(c) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.3em"/><m:mtext>X</m:mtext></m:mrow><m:mn>57</m:mn></m:msubsup><m:mtext>Mn</m:mtext></m:math></para><para id="fs-idm2927904">(d) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>56</m:mn></m:mrow><m:mn>121</m:mn></m:msubsup><m:mtext>X</m:mtext></m:math></para></problem>
+<solution id="fs-idp81897760">
+<para id="fs-idm87925664">(a) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>14</m:mn></m:mrow><m:mn>34</m:mn></m:msubsup><m:mtext>Si</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (b) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>15</m:mn></m:mrow><m:mn>36</m:mn></m:msubsup><m:mtext>P</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (c) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>25</m:mn></m:mrow><m:mn>57</m:mn></m:msubsup><m:mtext>Mn</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (d) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>56</m:mn></m:mrow><m:mn>121</m:mn></m:msubsup><m:mtext>Ba</m:mtext></m:math></para></solution>
+</exercise>
+<exercise id="fs-idm82455680">
+<problem id="fs-idp34466176">
+<para id="fs-idm37442896">Fyrir hverja samsætu í <link target-id="fs-idm84959200"/>, ákvarðið fjölda róteinda, nifteinda og rafeinda í hlutlausri frumeind samsætunnar.</para></problem>
+</exercise>
+<exercise id="fs-idp89003008">
+<problem id="fs-idm43721104">
+<para id="fs-idp8334976">Skrifið núklíðtáknun, þar með talið hleðslu ef við á, fyrir frumeindir með eftirfarandi eiginleika:</para>
+<para id="fs-idp166416416">(a) 25 róteindir, 20 nifteindir, 24 rafeindir</para>
+<para id="fs-idp81543856">(b) 45 róteindir, 24 nifteindir, 43 rafeindir</para>
+<para id="fs-idm80884112">(c) 53 róteindir, 89 nifteindir, 54 rafeindir</para>
+<para id="fs-idm94149728">(d) 97 róteindir, 146 nifteindir, 97 rafeindir</para>
+</problem>
+<solution id="fs-idp85654304">
+<para id="fs-idm71516544">(a) <m:math><m:mrow><m:msubsup><m:mrow/><m:mn>25</m:mn><m:mn>45</m:mn></m:msubsup><m:msup><m:mtext>Mn</m:mtext><m:mrow><m:mn>+1</m:mn></m:mrow></m:msup><m:mo>;</m:mo></m:mrow></m:math> (b) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>45</m:mn></m:mrow><m:mn>69</m:mn></m:msubsup><m:msup><m:mtext>Rh</m:mtext><m:mrow><m:mn>+2</m:mn></m:mrow></m:msup><m:mo>;</m:mo></m:mrow></m:math> (c) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>53</m:mn></m:mrow><m:mn>142</m:mn></m:msubsup><m:msup><m:mtext>I</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>;</m:mo></m:mrow></m:math> (d) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>97</m:mn></m:mrow><m:mn>243</m:mn></m:msubsup><m:mtext>Bk</m:mtext></m:math></para></solution>
+</exercise>
+<exercise id="fs-idm91931648">
+<problem id="fs-idp16266912">
+<para id="fs-idp157296384">Reiknaðu eðlismassa <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>12</m:mn></m:mrow><m:mn>24</m:mn></m:msubsup><m:mtext>Mg</m:mtext></m:math> kjarnans í g/ml, að því gefnu að hann hafi dæmigert kjarnaþvermál 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>–13</sup> cm og sé kúlulaga.</para></problem>
+</exercise>
+<exercise id="fs-idp167345472">
+<problem id="fs-idm89912496">
+<para id="fs-idm69331248">Hver er meginmunurinn tvenns konar á kjarnahvörfum og venjulegum efnabreytingum?</para>
+</problem>
+<solution id="fs-idp1215088">
+<para id="fs-idm86113504">Kjarnahvörf breyta yfirleitt einni tegund kjarna í aðra; efnabreytingar endurraða frumeindum. Kjarnahvörf fela í sér mun meiri orku en efnahvörf og hafa mælanlegar massabreytingar.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm82186208">
+<problem id="fs-idm29609216">
+<para id="fs-idm83369984">Massi frumeindarinnar <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>11</m:mn></m:mrow><m:mn>23</m:mn></m:msubsup><m:mtext>Na</m:mtext></m:math> er 22,9898 amu.</para><para id="fs-idm85494352">(a) Reiknaðu bindiorku hennar á hverja frumeind í milljónum rafeindavolta.</para>
+<para id="fs-idp17813712">(b) Reiknaðu bindiorku hennar á hverja kjarnaeind.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm96451808">
+<problem id="fs-idm403184">
+<para id="fs-idm99606016">Hvaða af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er í <link target-id="CNX_Chem_21_01_BandStable"/>?</para>
+<para id="fs-idp13838000">(a) klór-37</para>
+<para id="fs-idm34413536">(b) kalsíum-40</para>
+<para id="fs-idm71120304">(c) <sup>204</sup>Bi</para>
+<para id="fs-idp114508512">(d) <sup>56</sup>Fe</para>
+<para id="fs-idm60703664">(e) <sup>206</sup>Pb</para>
+<para id="fs-idm123208016">(f) <sup>211</sup>Pb</para>
+<para id="fs-idp36580944">(g) <sup>222</sup>Rn</para>
+<para id="fs-idm72521024">(h) kolefni-14</para>
+</problem>
+<solution id="fs-idp34019552">
+<para id="fs-idm132447936">(a), (b), (c), (d) og (e)</para>
+</solution>
+</exercise>
+<exercise id="fs-idp43351040">
+<problem id="fs-idm22612112">
+<para id="fs-idp166773904">Hvaða af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er í <link target-id="CNX_Chem_21_01_BandStable"/>?</para>
+<para id="fs-idm118428384">(a) argon-40</para>
+<para id="fs-idm86111824">(b) súrefni-16</para>
+<para id="fs-idp181266880">(c) <sup>122</sup>Ba</para>
+<para id="fs-idm89699424">(d) <sup>58</sup>Ni</para>
+<para id="fs-idm79230544">(e) <sup>205</sup>Tl</para>
+<para id="fs-idm50779296">(f) <sup>210</sup>Tl</para>
+<para id="fs-idp80773664">(g) <sup>226</sup>Ra</para>
+<para id="fs-idm86405808">(h) magnesíum-24</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm88281984">
+<term>stöðugleikabelti (e. band of stability)</term>
+<meaning id="fs-idm88281984-meaning">(einnig, stöðugleikasvæði eða stöðugleikadalur) svæði á línuriti fjölda róteinda á móti fjölda nifteinda sem inniheldur stöðuga (ekki geislavirka) kjarna</meaning>
+</definition>
+<definition id="fs-idp85639552">
+<term>bindiorka á kjarnaeind (e. binding energy per nucleon)</term>
+<meaning id="fs-idp85639552-meaning">heildarbindiorka kjarnans deilt með fjölda kjarnaeinda í kjarnanum</meaning>
+</definition>
+<definition id="fs-idm98883968">
+<term>rafeindavolt (eV) (e. electron volt (ev))</term>
+<meaning id="fs-idm98883968-meaning">mælieining fyrir bindiorku kjarna, þar sem 1 eV jafngildir orkunni sem fæst við að færa rafeind yfir rafspennumun upp á 1 volt</meaning>
+</definition>
+<definition id="fs-idm146646496">
+<term>töfratala (e. magic number)</term>
+<meaning id="fs-idm146646496-meaning">kjarnar með ákveðnum fjölda kjarnaeinda sem eru innan stöðugleikabeltisins</meaning>
+</definition>
+<definition id="fs-idm49105504">
+<term>massagalli (e. mass defect)</term>
+<meaning id="fs-idm49105504-meaning">munur á massa frumeindar og samanlögðum massa undirfrumeinda hennar (eða massinn sem „tapast“ þegar kjarnaeindir koma saman til að mynda kjarna)</meaning>
+</definition>
+<definition id="fs-idp26221264">
+<term>jafngildisjafna massa og orku (e. mass-energy equivalence equation)</term>
+<meaning id="fs-idp26221264-meaning">Jafna Alberts Einstein sem sýnir að massi og orka eru jafngild</meaning>
+</definition>
+<definition id="fs-idm27477328">
+<term>kjarnbindiorka (e. nuclear binding energy)</term>
+<meaning id="fs-idm27477328-meaning">orka sem tapast þegar kjarnaeindir frumeindar bindast saman (eða orkan sem þarf til að kljúfa kjarna í róteindir og nifteindir)</meaning>
+</definition>
+<definition id="fs-idp125852496">
+<term>kjarnaefnafræði (e. nuclear chemistry)</term>
+<meaning id="fs-idp125852496-meaning">fræðigrein sem fæst við rannsóknir á byggingu frumeindarkjarna og ferla sem breyta byggingu kjarna</meaning>
+</definition>
+<definition id="fs-idm41591488">
+<term>kjarnaeind (e. nucleon)</term>
+<meaning id="fs-idm41591488-meaning">samheiti yfir róteindir og nifteindir í kjarna</meaning>
+</definition>
+<definition id="fs-idm80685920">
+<term>kjarnategund (e. nuclide)</term>
+<meaning id="fs-idm80685920-meaning">kjarni tiltekinnar samsætu</meaning>
+</definition>
+<definition id="fs-idp188698800">
+<term>geislavirkni (e. radioactivity)</term>
+<meaning id="fs-idp188698800-meaning">fyrirbæri sem óstöðug kjarnaeind sýnir þegar hún breytist sjálfgengt í stöðugri kjarnaeind; óstöðug kjarnaeind er sögð vera geislavirk</meaning>
+</definition>
+<definition id="fs-idm38468176">
+<term>geislasamsæta (e. radioisotope)</term>
+<meaning id="fs-idm38468176-meaning">samsæta sem er óstöðug og breytist í aðra, stöðugri samsætu</meaning>
+</definition>
+<definition id="fs-idp26284960">
+<term>sterki kjarnakrafturinn (e. strong nuclear force)</term>
+<meaning id="fs-idp26284960-meaning">aðdráttarkraftur milli kjarnaeinda sem heldur kjarna saman</meaning>
+</definition>
+</glossary>
+</document>

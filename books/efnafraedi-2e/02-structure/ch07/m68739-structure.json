@@ -288,7 +288,34 @@
           "items": [
             {
               "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-1"
+              "segmentId": "m68739:item:fs-idm8107808-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-idp47568320",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp47568320-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp47568320-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp47568320-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp47568320-item-4"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": null,
@@ -296,43 +323,76 @@
             },
             {
               "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-3"
+              "segmentId": "m68739:item:fs-idm8107808-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-idp233104",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp233104-item-1"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-4"
+              "segmentId": "m68739:item:fs-idm8107808-item-4",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-idp28108576",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp28108576-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idp28108576-item-2"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-5"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-6"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-7"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-8"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-9"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-10"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-11"
-            },
-            {
-              "id": null,
-              "segmentId": "m68739:item:fs-idm8107808-item-12"
+              "segmentId": "m68739:item:fs-idm8107808-item-5",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-idm72332608",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idm72332608-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idm72332608-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idm72332608-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68739:item:fs-idm72332608-item-4"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

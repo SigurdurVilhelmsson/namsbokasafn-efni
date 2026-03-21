@@ -1,0 +1,525 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<!-- FIDELITY-WARNING: m68733 has 2 structural discrepancy(ies)
+  emphasis: source=328 translated=321 (-7 loss)
+  sub: source=44 translated=42 (-2 loss)
+  Review needed before publication. Run cnxml-fidelity-check.js for details.
+-->
+<title>Þróun skammtakenningarinnar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68733</md:content-id>
+  <md:title>Þróun skammtakenningarinnar</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Útvíkkað hugtakið um tvíeðli bylgju og eindar, sem sást í rafsegulgeislun, yfir á efni líka</item><item>Skilið almennu hugmyndina á bak við skammtafræðilega lýsingu á rafeindum í frumeind og að hún noti hugmyndina um þrívíð bylgjuföll, eða svigrúm, sem skilgreina líkindadreifingu þess að finna rafeind á tilteknum stað í rúmi</item><item>Talið upp og lýst eiginleikum fjögurra skammtatalna sem mynda grunninn að því að skilgreina að fullu ástand rafeindar í frumeind</item></list></md:abstract>
+  <md:uuid>11dd0544-b543-4912-aeac-4879dd964ec0</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm176608480">Líkan Bohrs útskýrði tilraunagögn fyrir vetnisfrumeindina og var almennt viðurkennt, en það vakti einnig margar spurningar. Hvers vegna voru rafeindir aðeins á sporbaugum í föstum fjarlægðum sem skilgreindar voru með einni skammtatölu <emphasis effect="italics">n</emphasis> = 1, 2, 3 og svo framvegis, en aldrei þar á milli? Hvers vegna virkaði líkanið svo vel til að lýsa vetni og einnar rafeindar jónum, en gat ekki spáð rétt fyrir um útblástursróf helíums eða nokkurra stærri frumeinda? Til að svara þessum spurningum þurftu vísindamenn að endurskoða algjörlega hugsun sína um efni.</para>
+<section id="fs-idm145314080">
+<title>Hegðun í smásæja heiminum</title>
+<para id="fs-idm12558432">Við vitum hvernig efni hegðar sér í stórsæja heiminum – hlutir sem eru nógu stórir til að sjást með berum augum fylgja lögmálum klassískrar eðlisfræði. Billjardkúla sem hreyfist á borði mun hegða sér eins og eind: Hún heldur áfram í beinni línu nema hún rekist á aðra kúlu eða borðbrúnina, eða verði fyrir áhrifum frá einhverjum öðrum krafti (svo sem núningi). Kúlan hefur vel skilgreinda stöðu og hraða (eða vel skilgreindan skriðþunga, <emphasis effect="italics">p</emphasis> = <emphasis effect="italics">mv,</emphasis> skilgreindan af massa <emphasis effect="italics">m</emphasis> og hraða <emphasis effect="italics">v</emphasis>) á hverju gefnu augnabliki. Með öðrum orðum, kúlan hreyfist eftir klassískum ferli. Þetta er dæmigerð hegðun klassísks hlutar.</para>
+<para id="fs-idm159209888">Þegar bylgjur víxlverka sýna þær víxlunarmynstur sem ekki sjást hjá stórsæjum eindum eins og billjardkúlunni. Til dæmis geta víxlverkandi bylgjur á yfirborði vatns myndað víxlunarmynstur svipuð þeim sem sýnd eru á <link target-id="CNX_Chem_06_03_waterw"/>. Þetta er dæmi um bylgjuhegðun á stórsæjum skala og það er ljóst að eindir og bylgjur eru mjög ólík fyrirbæri í stórsæja heiminum.</para>
+<figure id="CNX_Chem_06_03_waterw" class="scaled-down">
+<media id="fs-idm91841872" alt="A photograph is shown of ripples in water. The ripples display an interference pattern with each other.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_waterw.jpg"/>
+</media>
+<caption>Víxlunarmynstur á yfirborði vatns myndast við víxlverkun bylgna. Bylgjurnar stafa af endurkasti vatns frá steinunum. (heimild: breyting á verki eftir Sukanto Debnath)</caption>
+</figure>
+<para id="fs-idm161134656">Eftir því sem tækniframfarir gerðu vísindamönnum kleift að rannsaka smásæja heiminn í meiri smáatriðum, varð það æ ljósara á þriðja áratug 20. aldar að mjög litlir efnisbútar fylgja öðrum reglum en þeim sem við sjáum fyrir stóra hluti. Ótvíræður aðskilnaður bylgna og einda átti ekki lengur við í smásæja heiminum.</para>
+<para id="fs-idm151523216">Einn af þeim fyrstu til að veita sérstakri hegðun smásæja heimsins athygli var Louis <term class="no-emphasis" id="term-00001">de Broglie</term>. Hann spurði spurningarinnar: Ef rafsegulgeislun getur haft eindarlíkan karakter, geta rafeindir og aðrar smásæjar eindir sýnt bylgjulíkan karakter? Í doktorsritgerð sinni frá 1925 útvíkkaði de Broglie tvíeðli ljóss, sem Einstein notaði til að leysa þverstæðu ljóhrifa, yfir á efnislegar eindir. Hann spáði því að eind með massa <emphasis effect="italics">m</emphasis> og hraða <emphasis effect="italics">v</emphasis> (það er, með línulegan skriðþunga <emphasis effect="italics">p</emphasis>) ætti einnig að sýna hegðun bylgju með bylgjulengdargildið <emphasis effect="italics">λ</emphasis>, gefið með þessari jöfnu þar sem <emphasis effect="italics">h</emphasis> er hinn kunnuglegi Plancks-fasti:</para>
+<equation id="fs-idp110855072" class="unnumbered"><m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>h</m:mi><m:mrow><m:mi>m</m:mi><m:mi>v</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>h</m:mi><m:mi>p</m:mi></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm234395904">Þetta er kallað <emphasis effect="italics">de Broglie-bylgjulengdin</emphasis>. Ólíkt öðrum gildum <emphasis effect="italics">λ</emphasis> sem rædd eru í þessum kafla, er de Broglie-bylgjulengdin einkenni einda og annarra hluta, ekki rafsegulgeislunar (athugið að þessi jafna felur í sér hraða [<emphasis effect="italics">v</emphasis>, m/s], ekki tíðni [<emphasis effect="italics">ν</emphasis>, Hz]. Þótt þessi tvö tákn virðist nær eins, þýða þau mjög ólíka hluti). Þar sem Bohr hafði sett fram tilgátu um að rafeindin væri eind á sporbaug um kjarnann á skömmtuðum brautum, hélt de Broglie því fram að hægt væri að útskýra skömmtunartilgátu Bohrs ef rafeindin væri ekki talin eind, heldur hringlaga standbylgja þannig að aðeins heiltala af bylgjulengdum gæti passað nákvæmlega innan brautarinnar (<link target-id="CNX_Chem_06_03_elecw"/>).</para>
+<figure id="CNX_Chem_06_03_elecw" class="scaled-down">
+<media id="fs-idm68754864" alt="This figure includes a circle formed from a dashed line. A sinusoidal wave pattern indicated with a solid red line is wrapped around the circle, centered about the edge of the circle. Line segments extend outward from the circle extending through 2 wave crests along the circle. A double ended arrow is drawn between these segments and is labeled, “wavelength, lambda.” A dashed double headed arrow is drawn from the center to the edge of the circle and is labeled, “radius r.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_elecw.jpg"/>
+</media>
+<caption>Ef litið er á rafeind sem bylgju sem hringsólar um kjarnann, verður heiltala af bylgjulengdum að passa inn í brautina til að þessi standbylgjuhegðun sé möguleg.</caption>
+</figure>
+<para id="fs-idp34135808">Fyrir hringlaga braut með radíus <emphasis effect="italics">r</emphasis> er ummálið 2<emphasis effect="italics">πr</emphasis>, og því er skilyrði de Broglies:</para>
+<equation id="fs-idm78157712" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>r</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>λ</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mo>…</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm114335872">Stuttu eftir að de Broglie setti fram hugmyndina um bylgjueðli efnis sýndu tveir vísindamenn hjá Bell Laboratories, C. J. <term class="no-emphasis" id="term-00002">Davisson</term> og L. H. <term class="no-emphasis" id="term-00003">Germer</term>, með tilraunum fram á að rafeindir geta sýnt bylgjuhegðun með því að sýna fram á víxlunarmynstur fyrir rafeindir sem ferðast í gegnum reglubundið atómmynstur í kristal. Reglulega biluðu atómlögin þjónuðu sem raufar, eins og notað er í öðrum víxlunartilraunum. Þar sem bilið milli laganna sem þjóna sem raufar þarf að vera svipað að stærð og bylgjulengd prófaðrar bylgju til að víxlunarmynstur myndist, notuðu Davisson og Germer kristallað nikkelmarkmið fyrir „raufarnar“ sínar, þar sem bilið milli atómanna innan grindarinnar var um það bil það sama og de Broglie-bylgjulengdir rafeindanna sem þeir notuðu. <link target-id="CNX_Chem_06_03_Electrnin"/> sýnir víxlunarmynstur. Það er sláandi líkt víxlunarmynstrum fyrir ljós sem sýnd eru í Rafsegulorka fyrir ljós sem fer í gegnum tvær þéttar, mjóar raufar. Tvíeðli efnis, bylgju- og eindaeðli, má sjá í <link target-id="CNX_Chem_06_03_Electrnin"/> með því að fylgjast með því hvað gerist ef árekstrar rafeinda eru skráðir yfir langan tíma. Í upphafi, þegar aðeins fáar rafeindir hafa verið skráðar, sýna þær greinilega eindalíka hegðun, þar sem þær hafa komið í litlum staðbundnum pökkum sem virðast vera tilviljanakenndir. Eftir því sem fleiri og fleiri rafeindir komu og voru skráðar, kom fram skýrt víxlunarmynstur sem er einkenni bylgjuhegðunar. Þannig virðist sem þótt rafeindir séu litlar staðbundnar eindir, fylgir hreyfing þeirra ekki hreyfijöfnum klassískrar aflfræði, heldur er hún stjórnað af einhvers konar bylgjujöfnu. Þannig er tvíeðli bylgju og eindar, sem fyrst sást með ljóseindum, í raun grundvallarhegðun sem er eðlislæg öllum skammtaeindum.</para>
+<figure id="CNX_Chem_06_03_Electrnin">
+<media id="fs-idm29319408" alt="This figure has two parts. Part a shows a diagram of an electron source emitting waves that pass through two narrow slits in a barrier. A wave interference pattern results on the opposite side of the barrier that result in evenly spaced, relatively wide horizontal grey lines on a black surface. The black surface is placed at a distance beyond the barrier. Part b shows an electron source at the far left. Two gold arrows point toward two narrow horizontal slits in a barrier. Around these arrows are many small golden dots. On the right side of the barrier, the gold dots are more widely dispersed. A black surface a distance beyond the barrier shows evenly, yet widely dispersed gold dots. An arrow is present below this black surface and is labeled, “Time.” A second black surface is shown to the right that has many more golden dots that appear to be organizing into a pattern of evenly spaced horizontal line segments. A third black surface is shown even further to the right in which many more gold dots are shown in a very clearly established, evenly spaced pattern of horizontal line segments.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_Electrnin.jpg"/>
+</media>
+<caption>(a) Víxlunarmynstur rafeinda sem fara í gegnum mjög þéttar raufar sýnir að skammtaeindir eins og rafeindir geta sýnt bylgjuhegðun. (b) Tilraunaniðurstöðurnar sem sýndar eru hér sýna tvíeðli bylgju og eindar í rafeindum.</caption>
+</figure>
+<note id="fs-idm22236656" class="chemistry link-to-learning">
+<para id="fs-idp43121536">Skoðaðu Dr. Quantum – Double Slit Experiment <link url="http://openstax.org/l/16duality">teiknimynd</link> til að fá auðskiljanlega lýsingu á tvíeðli bylgju og eindar og tengdum tilraunum.</para>
+</note>
+<example id="fs-idm90452432">
+<para id="fs-idm9842576"><title>Útreikningur á bylgjulengd eindar</title>Ef rafeind ferðast á hraðanum 1,000 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup> m s<sup>–1</sup> og hefur massa 9,109 <m:math><m:mo>×</m:mo></m:math> 10<sup>–28</sup> g, hver er bylgjulengd hennar?</para>
+<para id="fs-idm75342400"><title>Lausn</title>Við getum notað jöfnu de Broglie til að leysa þetta verkefni, en við verðum fyrst að gera einingabreytingu á fasta Plancks. Þú lærðir áður að 1 J = 1 kg m<sup>2</sup>/s<sup>2</sup>. Þannig getum við skrifað <emphasis effect="italics">h</emphasis> = 6,626 <m:math><m:mo>×</m:mo></m:math> 10<sup>–34</sup> J s sem 6,626 <m:math><m:mo>×</m:mo></m:math> 10<sup>–34</sup> kg m<sup>2</sup>/s.</para>
+<equation id="fs-idm6762624" class="unnumbered"><m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>h</m:mi><m:mrow><m:mi>m</m:mi><m:mi>v</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<equation id="fs-idm25057728" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>6.626</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−34</m:mn></m:mrow></m:msup><m:msup><m:mrow><m:mspace width="0.2em"/><m:mtext>kg m</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msup><m:mtext>/s</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>9.109</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−31</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.000</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>7</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>m/s</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>7.274</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−11</m:mn></m:mrow></m:msup><m:mtext>m</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm20925440">Þetta er lítið gildi, en það er verulega stærra en stærð rafeindar í klassískri (einda) sýn. Þessi stærð er af sömu stærðargráðu og stærð atóms. Þetta þýðir að bylgjuhegðun rafeinda verður áberandi í atómi.</para>
+<para id="fs-idm66230464"><title>Skoðaðu hvað þú hefur lært</title>Reiknaðu bylgjulengd hafnarbolta með massa 100 g sem ferðast á hraðanum 35 m s<sup>–1</sup>, að því gefnu að hægt sé að líkja honum við eina eind.</para>
+<note id="fs-idp27867504"><title>Answer:</title>
+<para id="fs-idp68691712">1,9 <m:math><m:mo>×</m:mo></m:math> 10<sup>–34</sup> m.</para>
+<para id="fs-idm108992816">Við hugsum aldrei um að hafnarbolta sem kastað er hafi bylgjulengd, þar sem þessi bylgjulengd er svo lítil að það er ómögulegt fyrir skilningarvit okkar eða nokkurt þekkt tæki að greina hana.</para>
+</note>
+</example>
+<para id="fs-idp75634352">Werner Heisenberg íhugaði takmörk þess hversu nákvæmlega við getum mælt eiginleika rafeindar eða annarra smásærra einda. Hann komst að því að það er grundvallartakmörkun á því hversu nákvæmlega hægt er að mæla bæði staðsetningu eindar og skriðþunga hennar samtímis. Því nákvæmar sem við mælum skriðþunga eindar, því ónákvæmar getum við ákvarðað staðsetningu hennar á þeim tíma, og öfugt. Þetta er tekið saman í því sem við köllum nú <term id="term-00004">óvissulögmál Heisenbergs (e. heisenberg uncertainty principle)</term>: <emphasis effect="italics">Það er í grundvallaratriðum ómögulegt að ákvarða samtímis og nákvæmlega bæði skriðþunga og staðsetningu eindar</emphasis>. Fyrir eind með massa <emphasis effect="italics">m</emphasis> sem hreyfist með hraða <emphasis effect="italics">v<sub>x</sub></emphasis> í <emphasis effect="italics">x</emphasis> stefnu (eða jafngilt með skriðþunga <emphasis effect="italics">p</emphasis><sub>x</sub>), verður margfeldi óvissunnar í staðsetningunni, Δ<emphasis effect="italics">x</emphasis>, og óvissunnar í skriðþunganum, Δ<emphasis effect="italics">p<sub>x</sub></emphasis>, að vera stærra en eða jafnt og <m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mi>ℏ</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> (þar sem <m:math><m:mrow><m:mi>ℏ</m:mi><m:mspace width="0.2em"/><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>h</m:mi><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> er gildi fasta Plancks deilt með 2<emphasis effect="italics">π</emphasis>).</para>
+<equation id="fs-idm168356880" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>x</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>Δ</m:mtext><m:msub><m:mi>p</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>Δ</m:mtext><m:mi>x</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>m</m:mi><m:mtext>Δ</m:mtext><m:mi>v</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>≥</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>ℏ</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm168918512">Þessi jafna gerir okkur kleift að reikna út takmörkin fyrir því hversu nákvæmlega við getum vitað bæði samtímis staðsetningu hlutar og skriðþunga hans. Til dæmis, ef við bætum mælingu okkar á staðsetningu rafeindar þannig að óvissan í staðsetningunni (Δ<emphasis effect="italics">x</emphasis>) hafi gildi, segjum, 1 pm (10<sup>–12</sup> m, um 1% af þvermáli vetnisatóms), þá verður ákvörðun okkar á skriðþunga hennar að hafa óvissu með gildi sem er að minnsta kosti</para>
+<equation id="fs-idm14343584" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo>[</m:mo> <m:mrow><m:mtext>Δ</m:mtext><m:mi>p</m:mi><m:mo>=</m:mo><m:mi>m</m:mi><m:mtext>Δ</m:mtext><m:mi>v</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>ħ</m:mi><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mtext>Δ</m:mtext><m:mi>x</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow> <m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.055</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−34</m:mn></m:mrow></m:msup><m:msup><m:mrow><m:mspace width="0.2em"/><m:mtext>kg m</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msup><m:mtext>/s</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:msup><m:mn>0</m:mn><m:mrow><m:mn>−12</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:msup><m:mn>0</m:mn><m:mrow><m:mn>−23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>kg m/s</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp15835984">Gildi <emphasis effect="italics">ħ</emphasis> er ekki stórt, þannig að óvissan í staðsetningu eða skriðþunga stórsæjs hlutar eins og hafnabolta er of óveruleg til að hægt sé að sjá hana. Hins vegar er massi smásæjs hlutar eins og rafeindar nógu lítill til að óvissan geti verið stór og marktæk.</para>
+<para id="fs-idm139875104">Þess skal getið að óvissulögmál Heisenbergs takmarkast ekki aðeins við óvissu í staðsetningu og skriðþunga, heldur tengir það einnig saman aðrar hreyfistærðir. Til dæmis, þegar frumeind gleypir ljóseind og færist úr einu orkuástandi í annað, er óvissan í orkunni og óvissan í tímanum sem þarf fyrir færsluna á svipaðan hátt tengd, sem Δ<emphasis effect="italics">E</emphasis> Δ<emphasis effect="italics">t</emphasis> ≥ <m:math><m:mrow><m:mfrac><m:mi>ℏ</m:mi><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math></para>
+<para id="fs-idp75105920">Lögmál Heisenbergs setur endanleg mörk fyrir því hvað er hægt að vita í vísindum. Sýna má fram á að óvissulögmálið sé afleiðing tvíeðlis bylgju og eindar, sem er kjarninn í því sem greinir nútíma skammtakenningu frá klassískri aflfræði.</para>
+<note id="fs-idp86836032" class="chemistry link-to-learning">
+<para id="fs-idm179040464">Lestu þessa <link url="http://openstax.org/l/16uncertainty">grein</link> sem lýsir nýlegri stórsærri sýningu á óvissulögmálinu beitt á smásæja hluti.</para>
+</note>
+</section>
+<section id="fs-idm2526400">
+<title>Skammtafræðilíkan frumeindarinnar</title>
+<para id="fs-idm146032560">Skömmu eftir að de Broglie birti hugmyndir sínar um að betra væri að hugsa um rafeindina í vetnisfrumeind sem hringlaga standbylgju í stað eindar sem hreyfist á skömmtuðum hringlaga brautum, útvíkkaði Erwin Schrödinger vinnu de Broglies með því að leiða út það sem í dag er þekkt sem Schrödinger-jafnan. Þegar Schrödinger beitti jöfnu sinni á vetnislíkar frumeindir gat hann endurskapað jöfnu Bohrs fyrir orkuna og þar með Rydberg-formúluna sem stjórnar vetnisrófinu. Schrödinger lýsti rafeindum sem þrívíðum kyrrstæðum bylgjum, eða <term id="term-00005">bylgjuföllum (e. wavefunctions)</term>, táknuðum með gríska stafnum psí, <emphasis effect="italics">ψ</emphasis>. Nokkrum árum síðar lagði Max <term class="no-emphasis" id="term-00006">Born</term> fram túlkun á bylgjufallinu <emphasis effect="italics">ψ</emphasis> sem er enn viðurkennd í dag: Rafeindir eru enn eindir, og því eru bylgjurnar sem <emphasis effect="italics">ψ</emphasis> táknar ekki efnislegar bylgjur heldur flóknar líkindasviðsvíddir. Annars veldis stærð bylgjufalls <m:math><m:mrow><m:msup><m:mrow><m:mtext>∣</m:mtext><m:mi>ψ</m:mi><m:mtext>∣</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> lýsir líkunum á því að skammtaeindin sé nálægt ákveðnum stað í rúminu. Þetta þýðir að hægt er að nota bylgjuföll til að ákvarða dreifingu eðlismassa rafeindarinnar miðað við kjarnann í frumeind. Í sinni almennustu mynd má skrifa Schrödinger-jöfnuna sem:</para>
+<equation id="fs-idm195751440" class="unnumbered"><m:math><m:mrow><m:mover accent="true"><m:mi>H</m:mi><m:mo>^</m:mo></m:mover><m:mi>ψ</m:mi><m:mo>=</m:mo><m:mi>E</m:mi><m:mi>ψ</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm1012848"><m:math><m:mover accent="true"><m:mi>H</m:mi><m:mo>^</m:mo></m:mover></m:math> er Hamilton-virkinn, safn stærðfræðilegra aðgerða sem tákna heildarorku skammtaeindarinnar (svo sem rafeindar í frumeind), <emphasis effect="italics">ψ</emphasis> er bylgjufall þessarar eindar sem hægt er að nota til að finna sérstaka dreifingu líkinda á að finna eindina, og <m:math><m:mi>E</m:mi></m:math> er raunverulegt gildi heildarorku eindarinnar.</para>
+<para id="fs-idm134389936">Vinna Schrödingers, ásamt vinnu Heisenbergs og margra annarra vísindamanna sem fetuðu í fótspor þeirra, er almennt kölluð <term id="term-00007">skammtafræði (e. quantum mechanics)</term>.</para>
+<note id="fs-idm148452752" class="chemistry link-to-learning">
+<para id="fs-idp90020512">Þú gætir líka hafa heyrt um Schrödinger vegna frægrar hugsunartilraunar hans. <link url="http://openstax.org/l/16superpos">Þessi saga</link> útskýrir hugtökin samstæðu og flækju í tengslum við kött í kassa með eitri.</para>
+</note>
+</section>
+<section id="fs-idp27284864">
+<title>Skilningur á skammtakenningu rafeinda í frumeindum</title>
+<para id="fs-idm167395376">Markmið þessa kafla er að skilja rafeindasvigrúm (staðsetningu rafeinda í frumeindum), mismunandi orku þeirra og aðra eiginleika. Notkun skammtakenningarinnar veitir besta skilninginn á þessum efnum. Þessi þekking er undanfari efnatengja.</para>
+<para id="fs-idm119067296">Eins og áður var lýst geta rafeindir í frumeindum aðeins verið á stökum orkustigum en ekki á milli þeirra. Sagt er að orka rafeindar í frumeind sé skömmtuð, það er, hún getur aðeins tekið ákveðin sérstök gildi og getur stokkið frá einu orkustigi til annars en ekki færst mjúklega eða verið á milli þessara stiga.</para>
+<para id="fs-idm171695728">Orkustigin eru merkt með <emphasis effect="italics">n</emphasis> gildi, þar sem <emphasis effect="italics">n</emphasis> = 1, 2, 3, …. Almennt séð er orka rafeindar í frumeind meiri fyrir hærri gildi <emphasis effect="italics">n</emphasis>. Þessi tala, <emphasis effect="italics">n</emphasis>, er kölluð höfuðskammtatalan. <term id="term-00008">Höfuðskammtatalan (e. principal quantum number)</term> skilgreinir staðsetningu orkustigsins. Það er í raun sama hugtak og <emphasis effect="italics">n</emphasis> í lýsingu Bohr-frumeindarinnar. Annað nafn á höfuðskammtatölunni er hvolfnúmer. <term id="term-00009">Hvolf (e. shells)</term> frumeindar má hugsa sér sem sammiðja hringi sem geisla út frá kjarnanum. Rafeindirnar sem tilheyra ákveðnu hvolfi eru líklegastar til að finnast innan samsvarandi hringlaga svæðis. Því lengra sem við förum frá kjarnanum, því hærra er hvolfnúmerið og þar með hærra orkustigið (<link target-id="CNX_Chem_06_03_Qnumbers"/>). Jákvætt hlaðnar róteindir í kjarnanum stöðga rafeindasvigrúmin með rafstöðuaðdráttarkrafti milli jákvæðra hleðslna róteindanna og neikvæðra hleðslna rafeindanna. Þannig að því lengra sem rafeindin er frá kjarnanum, því meiri orku hefur hún.</para>
+<figure id="CNX_Chem_06_03_Qnumbers" class="scaled-down"><media id="fs-idp33771488" alt="This figure contains a central green sphere labeled “nucleus.” There is a plus sign in the middle of the sphere. This sphere is encircled by 3 concentric, evenly spaced rings. The first and closest to the center is labeled, “n equals 1.” The second ring is labeled, “n equals 2,” and the third ring is labeled, “n equals 3.” An arrow is drawn from the edge of the central sphere to the right extending out of the concentric rings. It is labeled, “increasing energy.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_Qnumbers.jpg"/>
+</media>
+<caption>Mismunandi hvolf eru númeruð með höfuðskammtatölum.</caption></figure>
+<para id="fs-idm166868080">Þetta skammtafræðilíkan fyrir staðsetningu rafeinda í frumeind er hægt að nota til að skoða rafeindaskipti, atburðina þegar rafeind færist frá einu orkustigi til annars. Ef skiptin eru yfir á hærra orkustig er orka tekin upp og orkubreytingin hefur jákvætt gildi. Til að fá þá orku sem nauðsynleg er fyrir skiptin yfir á hærra orkustig gleypir frumeindin ljóseind. Skipti yfir á lægra orkustig felur í sér losun orku og orkubreytingin er neikvæð. Þessu ferli fylgir losun ljóseindar frá frumeindinni. Eftirfarandi jafna tekur saman þessi tengsl og byggir á vetnisfrumeindinni:</para>
+<equation id="fs-idm7360128" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>final</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>initial</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>−2.18</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mtext>f</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mtext>i</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>J</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm187603312">Gildin <emphasis effect="italics">n</emphasis><sub>f</sub> og <emphasis effect="italics">n</emphasis><sub>i</sub> eru loka- og upphafsorkuástand rafeindarinnar. <link document="m68732" target-id="fs-idp30549440"/> í fyrri hluta kaflans sýnir útreikninga á slíkum orkubreytingum.</para>
+<para id="fs-idm12861216">Höfuðskammtatalan er ein af þremur skammtatölum sem notaðar eru til að lýsa svigrúmi. <term id="term-00010">Frumeindasvigrúm (e. atomic orbital)</term> er almennt svæði í frumeind þar sem líklegast er að rafeind sé að finna. Skammtafræðilíkanið tilgreinir líkurnar á að finna rafeind í þrívíðu rúmi í kringum kjarnann og byggir á lausnum Schrödinger-jöfnunnar. Auk þess skilgreinir höfuðskammtatalan orku rafeindar í vetnisfrumeind eða vetnislíkri frumeind eða jón (frumeind eða jón með aðeins eina rafeind) og almenna svæðið þar sem aðskilin orkustig rafeinda í fjölrafeindafrumeindum og jónum eru staðsett.</para>
+<para id="fs-idm174719856">Önnur skammtatala er <emphasis effect="italics">l</emphasis>, <term id="term-00011">auka (hverfiþunga) skammtatalan (e. secondary (angular momentum) quantum number)</term>. Hún er heiltala sem getur tekið gildin, <emphasis effect="italics">l =</emphasis> 0, 1, 2, …, <emphasis effect="italics">n</emphasis> – 1. Þetta þýðir að svigrúm með <emphasis effect="italics">n</emphasis> = 1 getur aðeins haft eitt gildi fyrir <emphasis effect="italics">l</emphasis>, <emphasis effect="italics">l</emphasis> = 0, en <emphasis effect="italics">n</emphasis> = 2 leyfir <emphasis effect="italics">l</emphasis> = 0 og <emphasis effect="italics">l</emphasis> = 1, og svo framvegis. Á meðan höfuðskammtatalan, <emphasis effect="italics">n</emphasis>, skilgreinir almenna stærð og orku svigrúmsins, tilgreinir auka skammtatalan <emphasis effect="italics">l</emphasis> lögun svigrúmsins. Svigrúm með sama gildi fyrir <emphasis effect="italics">l</emphasis> skilgreina <term id="term-00012">undirhvolf (e. subshell)</term>.</para>
+<para id="fs-idm13232848">Svigrúm með <emphasis effect="italics">l</emphasis> = 0 eru kölluð <term id="term-00013"><emphasis effect="italics">s</emphasis>-svigrúm (e. <emphasis effect="italics">s</emphasis> orbitals)</term> og þau mynda <emphasis effect="italics">s</emphasis>-undirhvolfin. Gildið <emphasis effect="italics">l</emphasis> = 1 samsvarar <emphasis effect="italics">p</emphasis>-svigrúmum. Fyrir gefið <emphasis effect="italics">n</emphasis> mynda <term id="term-00014"><emphasis effect="italics">p</emphasis>-svigrúm (e. <emphasis effect="italics">p</emphasis> orbitals)</term> <emphasis effect="italics">p</emphasis>-undirhvolf (t.d. 3<emphasis effect="italics">p</emphasis> ef <emphasis effect="italics">n</emphasis> = 3). Svigrúm með <emphasis effect="italics">l</emphasis> = 2 eru kölluð <term id="term-00015"><emphasis effect="italics">d</emphasis>-svigrúm (e. <emphasis effect="italics">d</emphasis> orbitals)</term>, og á eftir þeim koma <emphasis effect="italics">f-,</emphasis> <emphasis effect="italics">g- og h-</emphasis>svigrúm fyrir <emphasis effect="italics">l</emphasis> = 3, 4 og 5.</para>
+<para id="fs-idm184616288">Það eru ákveðnar fjarlægðir frá kjarnanum þar sem líkindaþéttleiki þess að finna rafeind á tilteknu svigrúmi er núll. Með öðrum orðum, gildi bylgjufallsins <emphasis effect="italics">ψ</emphasis> er núll í þessari fjarlægð fyrir þetta svigrúm. Slíkt gildi radíusar <emphasis effect="italics">r</emphasis> er kallað radíal-nóða. Fjöldi radíal-nóða í svigrúmi er <emphasis effect="italics">n</emphasis> – <emphasis effect="italics">l</emphasis> – 1.</para>
+<figure id="CNX_Chem_06_03_sOrbit">
+<media id="fs-idm165672208" alt="This figure provides images and graphs to illustrate the probability of finding an electron in 1 s, 2 s, and 3 s orbitals as a function of the distance from the nucleus. The 1 s orbital is shown as a sphere with a chunk missing. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a maximum height and rapidly declines. The label, “1 s” appears below the graph. The 2 s orbital is shown as a red sphere with a blue middle. A chunk is missing from the sphere. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a significantly higher absolute maximum height, and then rapidly declines. The label “2s” appears below it. The 3 s orbital is a blue sphere with a red sphere and another blue sphere at its core. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a second relative maximum height, a significantly higher absolute maximum, and then declines more gradually than illustrated in the previous 2 graphs. The label, “3 s,” appears below the graph.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_sorbit.jpg"/>
+</media>
+<caption>Gröfin sýna líkurnar (<emphasis effect="italics">y</emphasis>-ás) á að finna rafeind fyrir 1<emphasis effect="italics">s</emphasis>, 2<emphasis effect="italics">s</emphasis>, 3<emphasis effect="italics">s</emphasis> svigrúmin sem fall af fjarlægð frá kjarnanum.</caption>
+</figure>
+<para id="fs-idm183763120">Skoðum dæmin í <link target-id="CNX_Chem_06_03_sOrbit"/>. Svigrúmin sem sýnd eru eru af <emphasis effect="italics">s</emphasis>-gerð, þannig að <emphasis effect="italics">l</emphasis> = 0 fyrir þau öll. Það má sjá af gröfum líkindaþéttleikans að það eru 1 – 0 – 1 = 0 staðir þar sem þéttleikinn er núll (nóður) fyrir 1<emphasis effect="italics">s</emphasis> (<emphasis effect="italics">n</emphasis> = 1), 2 – 0 – 1 = 1 nóða fyrir 2<emphasis effect="italics">s</emphasis>, og 3 – 0 – 1 = 2 nóður fyrir 3<emphasis effect="italics">s</emphasis> svigrúmin.</para>
+<para id="fs-idm158802176">Rafeindaþéttleikadreifing <emphasis effect="italics">s</emphasis>-undirhvolfs er kúlulaga og <emphasis effect="italics">p</emphasis>-undirhvolfið hefur handlóðalögun. <emphasis effect="italics">d</emphasis>- og <term id="term-00016"><emphasis effect="italics">f</emphasis>-svigrúmin (e. <emphasis effect="italics">f</emphasis> orbitals)</term> eru flóknari. Þessar löganir tákna þrívíðu svæðin þar sem líklegt er að rafeindina sé að finna.</para>
+<figure id="CNX_Chem_06_03_Oshapes"><media id="fs-idm313200" alt="This diagram illustrates the shapes and quantities of all s, p, d, and f orbitals. The s sublevel is composed of a single spherical orbital. The p sublevel is composed of 3 dumbbell shaped orbitals oriented along the x, y, and z axes. The five d sublevels and seven f sublevels are considerably more complex.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_Oshapes.jpg"/>
+</media>
+
+<caption>Lögun <emphasis effect="italics">s</emphasis>-, <emphasis effect="italics">p</emphasis>-, <emphasis effect="italics">d</emphasis>- og <emphasis effect="italics">f</emphasis>-svigrúma.</caption></figure>
+<para id="fs-idm130253136"><term id="term-00017">Segulskammtatalan (e. magnetic quantum number)</term>, <emphasis effect="italics">m<sub>l</sub></emphasis>, tilgreinir hlutfallslega staðsetningu tiltekins svigrúms í rúmi. Almennt séð getur <emphasis effect="italics">m<sub>l</sub></emphasis> verið jafnt og –<emphasis effect="italics">l</emphasis>, –(<emphasis effect="italics">l –</emphasis> 1), …, 0, …, (<emphasis effect="italics">l</emphasis> – 1), <emphasis effect="italics">l</emphasis>. Heildarfjöldi mögulegra svigrúma með sama gildi fyrir <emphasis effect="italics">l</emphasis> (þ.e. í sama undirhvolfi) er 2<emphasis effect="italics">l</emphasis> + 1. Þannig er eitt <emphasis effect="italics">s</emphasis>-svigrúm í <emphasis effect="italics">s</emphasis>-undirhvolfi (<emphasis effect="italics">l</emphasis> = 0), þrjú <emphasis effect="italics">p</emphasis>-svigrúm í <emphasis effect="italics">p</emphasis>-undirhvolfi (<emphasis effect="italics">l</emphasis> = 1), fimm <emphasis effect="italics">d</emphasis>-svigrúm í <emphasis effect="italics">d</emphasis>-undirhvolfi (<emphasis effect="italics">l</emphasis> = 2), sjö <emphasis effect="italics">f</emphasis>-svigrúm í <emphasis effect="italics">f</emphasis>-undirhvolfi (<emphasis effect="italics">l</emphasis> = 3) og svo framvegis. Höfuðskammtatalan skilgreinir almennt gildi rafeindarorkunnar. Hverfiþungaskammtatalan ákvarðar lögun svigrúmsins. Og segulskammtatalan tilgreinir stefnu svigrúmsins í rúmi, eins og sjá má á <link target-id="CNX_Chem_06_03_Oshapes"/>.</para>
+<figure id="CNX_Chem_06_03_subshells"><media id="fs-idm149251120" alt="This diagram shown has an upward pointing arrow at the left which is labeled “E.” To the right of this arrow near the bottom of the image is a single line which is labeled, “1 s.” Above and just to the right is another black line that is labeled, “2 s.” Slightly up and to the right is a grouping of three black lines labeled, “2 p.” Above and to the right is a single black line labeled, “3 s.” Slightly up and to the right is a grouping of three black lines that are labeled, “3 p.” Just above and to the right is a grouping of 5 black lines labeled, “3 d.” Slightly below and to the right is a single black line which is labeled, “4 s.” Just above and to the right, at a level slightly higher than the previous black lines, is a grouping of three black lines all labeled, “4 p.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_subshells.jpg"/>
+</media>
+
+<caption>Myndritið sýnir orku rafeindasvigrúma í fjölrafeindafrumeind.</caption></figure>
+<para id="fs-idm83747248"><link target-id="CNX_Chem_06_03_subshells"/> sýnir orkustig fyrir ýmis svigrúm. Talan fyrir framan heiti svigrúmsins (svo sem 2<emphasis effect="italics">s</emphasis>, 3<emphasis effect="italics">p</emphasis> og svo framvegis) stendur fyrir höfuðskammtatöluna, <emphasis effect="italics">n</emphasis>. Bókstafurinn í heiti svigrúmsins skilgreinir undirhvolfið með tiltekinni hverfiþungaskammtatölu <emphasis effect="italics">l</emphasis> = 0 fyrir <emphasis effect="italics">s</emphasis>-svigrúm, 1 fyrir <emphasis effect="italics">p</emphasis>-svigrúm, 2 fyrir <emphasis effect="italics">d</emphasis>-svigrúm. Að lokum eru fleiri en eitt mögulegt svigrúm fyrir <emphasis effect="italics">l</emphasis> ≥ 1, þar sem hvert þeirra samsvarar tilteknu gildi <emphasis effect="italics">m<sub>l</sub></emphasis>. Þegar um er að ræða vetnisfrumeind eða einnar rafeindar jón (svo sem He<sup>+</sup>, Li<sup>2+</sup> og svo framvegis) er orka allra svigrúma með sama <emphasis effect="italics">n</emphasis> sú sama. Þetta er kallað úrkynjun og orkustigin fyrir sömu höfuðskammtatölu, <emphasis effect="italics">n</emphasis>, eru kölluð <term id="term-00018">úrkynjuð svigrúm (e. degenerate orbitals)</term>. Hins vegar, í frumeindum með fleiri en eina rafeind, er þessi úrkynjun afnumin með víxlverkunum rafeinda og svigrúm sem tilheyra mismunandi undirhvolfum hafa mismunandi orku, eins og sýnt er á <link target-id="CNX_Chem_06_03_subshells"/>. Svigrúm innan sama undirhvolfs eru enn úrkynjuð og hafa sömu orku.</para>
+<para id="fs-idp135680192">Þótt þrjár skammtatölur sem fjallað var um í fyrri málsgreinum virki vel til að lýsa rafeindasvigrúmum, sýndu sumar tilraunir að þær dugðu ekki til að útskýra allar niðurstöður sem komu fram. Á þriðja áratug 20. aldar var sýnt fram á að þegar línuróf vetnis eru skoðuð í afar mikilli upplausn eru sumar línur í raun ekki stakir toppar heldur pör af línum sem liggja þétt saman. Þetta er svokölluð fínbygging rófsins og gefur til kynna að það sé viðbótar lítill munur á orku rafeinda jafnvel þegar þær eru staðsettar í sama svigrúmi. Þessar athuganir leiddu Samuel Goudsmit og George Uhlenbeck til að leggja til að rafeindir hefðu fjórðu skammtatöluna. Þeir kölluðu þetta <term id="term-00019">spuna-skammtatöluna (e. spin quantum number)</term>, eða <term id="term-00020"><emphasis effect="italics">m<sub>s</sub></emphasis></term>.</para>
+<para id="fs-idm136117120">Hinar þrjár skammtatölurnar, <emphasis effect="italics">n</emphasis>, <emphasis effect="italics">l</emphasis> og <emphasis effect="italics">m<sub>l</sub></emphasis>, eru eiginleikar tiltekinna frumeindasvigrúma sem einnig skilgreina í hvaða hluta rýmisins rafeind er líklegust til að vera. Svígrúm eru afleiðing þess að leysa Schrödinger-jöfnuna fyrir rafeindir í frumeindum. Rafeindaspuninn er annars konar eiginleiki. Hann er algjört skammtafræðilegt fyrirbæri án hliðstæðu í hinum klassíska heimi. Auk þess er ekki hægt að leiða hann út með því að leysa Schrödinger-jöfnuna og hann tengist ekki venjulegum rúmhnitum (eins og kartesísku hnitunum <emphasis effect="italics">x</emphasis>, <emphasis effect="italics">y</emphasis> og <emphasis effect="italics">z</emphasis>). Rafeindaspuni lýsir innri „snúningi“ eða „spunagangi“ rafeindar. Hver rafeind hegðar sér eins og agnarsmár segull eða agnarsmár snúningur með hverfiþunga, eða eins og lykkja með rafstraumi, jafnvel þótt ekki sé hægt að sjá þennan snúning eða straum með tilliti til rúmhnita.</para>
+<para id="fs-idm82083456">Stærð heildarspunans getur aðeins haft eitt gildi og rafeind getur aðeins „spunnið“ í einu af tveimur skömmtuðum ástöndum. Annað er kallað α-ástönd, þar sem <emphasis effect="italics">z</emphasis>-þáttur spunans er í jákvæðri stefnu <emphasis effect="italics">z</emphasis>-ássins. Þetta samsvarar spunaskammtatölunni <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>. Hitt er kallað β-ástönd, þar sem <emphasis effect="italics">z</emphasis>-þáttur spunans er neikvæður og <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>. Sérhver rafeind, óháð því í hvaða frumeindasvigrúmi hún er, getur aðeins haft annað hvort þessara tveggja gilda spunaskammtatölunnar. Orka rafeinda með <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> og <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> er mismunandi ef ytra segulsvið er beitt.</para>
+<figure id="CNX_Chem_06_03_spin" class="scaled-down"><media id="fs-idm7831072" alt="This diagram has an upward pointing arrow at the left which is labeled, “B subscript 0.” To the right, two spheres are shown. The first has a gray square at the top labeled, “N,” and a second gray square at the bottom labeled, “S.” A curved arrow is pointing right across the surface of the sphere and a gray arrow points upward through the center of the sphere. This sphere is labeled, “Spin plus one-half, spin-up.” The sphere just to the right has a gray square above it labeled, “S,” and a gray square below it labeled, “N.” This sphere has a curved arrow on its surface that is directed to the left and a gray arrow through the center of the sphere that points downward. This sphere is labeled, “Spin negative one-half spin-down.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_spin.jpg"/>
+</media>
+<caption>Rafeindir með spunagildin <m:math><m:mrow><m:mo>±</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> í ytra segulsviði.</caption></figure>
+<para id="fs-idm91739088"><link target-id="CNX_Chem_06_03_spin"/> sýnir þetta fyrirbæri. Rafeind hegðar sér eins og agnarsmár segull. Segulvægi hennar beinist upp (í jákvæða stefnu <emphasis effect="italics">z</emphasis>-ássins) fyrir spunaskammtatöluna <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> og niður (í neikvæða stefnu <emphasis effect="italics">z</emphasis>-ássins) fyrir spunaskammtatöluna <m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>. Segull hefur lægri orku ef segulvægi hans er samstillt ytra segulsviðinu (vinstri rafeindin á <link target-id="CNX_Chem_06_03_spin"/>) og hærri orku ef segulvægið er andstætt beitta sviðinu. Þess vegna hefur rafeind með <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> örlítið lægri orku í ytra sviði í jákvæðri <emphasis effect="italics">z</emphasis>-stefnu og rafeind með <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> hefur örlítið hærri orku í sama sviði. Þetta gildir jafnvel fyrir rafeind sem er í sama svigrúmi í frumeind. Róflína sem samsvarar umskiptum rafeinda úr sama svigrúmi en með mismunandi spunaskammtatölur hefur tvö möguleg orkugildi; þannig mun línan í rófinu sýna fínskiptingu.</para>
+</section>
+<section id="fs-idm162650560">
+<title>Einsetulögmál Pauli</title>
+<para id="fs-idm225354640">Rafeind í frumeind er að fullu lýst með fjórum skammtatölum: <emphasis effect="italics">n</emphasis>, <emphasis effect="italics">l</emphasis>, <emphasis effect="italics">m<sub>l</sub></emphasis> og <emphasis effect="italics">m<sub>s</sub></emphasis>. Fyrstu þrjár skammtatölurnar skilgreina svigrúmið og fjórða skammtatalan lýsir innri eiginleika rafeindar sem kallast spuni. Austurríski eðlisfræðingurinn Wolfgang Pauli setti fram almenna reglu sem gefur okkur síðustu upplýsingarnar sem við þurfum til að skilja almenna hegðun rafeinda í frumeindum. <term id="term-00021">Einsetulögmál Pauli (e. pauli exclusion principle)</term> má setja fram á eftirfarandi hátt: Engar tvær rafeindir í sömu frumeind geta haft nákvæmlega sama mengi allra fjögurra skammtatalnanna. Þetta þýðir að tvær rafeindir geta deilt sama svigrúmi (sama mengi skammtatalnanna <emphasis effect="italics">n</emphasis>, <emphasis effect="italics">l</emphasis> og <emphasis effect="italics">m<sub>l</sub></emphasis>) aðeins ef spunaskammtatölur þeirra <emphasis effect="italics">m<sub>s</sub></emphasis> hafa mismunandi gildi. Þar sem spunaskammtatalan getur aðeins haft tvö gildi <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mo>±</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>,</m:mo></m:mrow></m:math> geta ekki fleiri en tvær rafeindir verið í sama svigrúmi (og ef tvær rafeindir eru í sama svigrúmi verða þær að hafa andstæðan spuna). Þess vegna getur hvert frumeindasvigrúm aðeins verið mannað af núll, einni eða tveimur rafeindum.</para>
+<para id="fs-idm86324032">Eiginleikar og merking skammtatalna rafeinda í frumeindum eru teknir saman í stuttu máli í <link target-id="fs-idm21167392"/>.</para>
+<table id="fs-idm21167392" summary="This table has four columns and five rows. The first row is a header row, and it labels each column: “Name,” “Symbol,” “Allowed values,” and “Physical meaning.” Under the “name” column are the following phrases: “Principle quantum number,” “Angular moment or azimuthal quantum number,” “Magnetic quantum number,” and “Spin quantum number.” Under the “symbol” column are the following: “n,” “l,” “m subscript l,” and “m subscript s.” Under the “allowed values” column are the following: “1, 2, 3, 4, ….,” “0 is less than or equal to l which is less than or equal to n minus 1,” “negative l is less than or equal to m subscript l which is less than or equal to l,” and “one half, negative sign.” Under the “physical meaning” column are the following: “Shell, the general region for the value of energy for an electron on the orbital,” “Subshell, the shape of the orbital,” “Orientation of the orbital,” “Direction of the intrinsic quantum ‘spinning’ of the electron.”">
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c4" align="center">Skammtatölur, eiginleikar þeirra og mikilvægi</entry>
+</row>
+<row valign="top">
+<entry align="left">Nafn</entry>
+<entry align="left">Tákn</entry>
+<entry align="left">Leyfileg gildi</entry>
+<entry align="left">Eðlisfræðileg merking</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">höfuðskammtatala</entry>
+<entry align="left"><emphasis effect="italics">n</emphasis></entry>
+<entry align="left">1, 2, 3, 4, …</entry>
+<entry align="left">hvolf, almenna svæðið fyrir orkugildi rafeindar í svigrúminu</entry>
+</row>
+<row valign="top">
+<entry align="left">hverfiþungaskammtatala eða aukaskammtatala</entry>
+<entry align="left"><emphasis effect="italics">l</emphasis></entry>
+<entry align="left">0 ≤ <emphasis effect="italics">l</emphasis> ≤ <emphasis effect="italics">n</emphasis> – 1</entry>
+<entry align="left">undirhvolf, lögun svigrúmsins</entry>
+</row>
+<row valign="top">
+<entry align="left">segulskammtatala</entry>
+<entry align="left"><emphasis effect="italics">m<sub>l</sub></emphasis></entry>
+<entry align="left">– <emphasis effect="italics">l</emphasis> ≤ <emphasis effect="italics">m<sub>l</sub></emphasis> ≤ <emphasis effect="italics">l</emphasis></entry>
+<entry align="left">stefna svigrúmsins</entry>
+</row>
+<row valign="top">
+<entry align="left">spunaskammtatala</entry>
+<entry align="left"><emphasis effect="italics">m<sub>s</sub></emphasis></entry>
+<entry align="left"><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+<entry align="left">stefna innri skammtafræðilegs „spunagangs“ rafeindarinnar</entry>
+</row>
+</tbody>
+
+</tgroup>
+</table>
+<example id="fs-idm127242304">
+<para id="fs-idm213000384"><title>Að vinna með hvolf og undirhvolf</title>Gefðu upp fjölda undirhvolfa, fjölda svigrúma í hverju undirhvolfi og gildin á <emphasis effect="italics">l</emphasis> og <emphasis effect="italics">m<sub>l</sub></emphasis> fyrir svigrúmin í <emphasis effect="italics">n</emphasis> = 4 hvolfi frumeindar.</para>
+<para id="fs-idm132218624"><title>Lausn</title>Fyrir <emphasis effect="italics">n</emphasis> = 4 getur <emphasis effect="italics">l</emphasis> haft gildin 0, 1, 2 og 3. Þannig finnast <emphasis effect="italics">s</emphasis>, <emphasis effect="italics">p</emphasis>, <emphasis effect="italics">d</emphasis> og <emphasis effect="italics">f</emphasis> undirhvolf í <emphasis effect="italics">n</emphasis> = 4 hvolfi frumeindar. Fyrir <emphasis effect="italics">l</emphasis> = 0 (<emphasis effect="italics">s</emphasis> undirhvolfið) getur <emphasis effect="italics">m<sub>l</sub></emphasis> aðeins verið 0. Því er aðeins eitt 4<emphasis effect="italics">s</emphasis> svigrúm. Fyrir <emphasis effect="italics">l</emphasis> = 1 (<emphasis effect="italics">p</emphasis>-gerð svigrúma) getur <emphasis effect="italics">m</emphasis> haft gildin –1, 0, +1, þannig að við finnum þrjú 4<emphasis effect="italics">p</emphasis> svigrúm. Fyrir <emphasis effect="italics">l</emphasis> = 2 (<emphasis effect="italics">d</emphasis>-gerð svigrúma) getur <emphasis effect="italics">m<sub>l</sub></emphasis> haft gildin –2, –1, 0, +1, +2, þannig að við höfum fimm 4<emphasis effect="italics">d</emphasis> svigrúm. Þegar <emphasis effect="italics">l</emphasis> = 3 (<emphasis effect="italics">f</emphasis>-gerð svigrúma) getur <emphasis effect="italics">m<sub>l</sub></emphasis> haft gildin –3, –2, –1, 0, +1, +2, +3 og við getum haft sjö 4<emphasis effect="italics">f</emphasis> svigrúm. Þannig finnum við samtals 16 svigrúm í <emphasis effect="italics">n</emphasis> = 4 hvolfi frumeindar.</para>
+<para id="fs-idm25316128"><title>Kannaðu þekkingu þína</title>Greindu undirhvolfið þar sem rafeindir með eftirfarandi skammtatölur finnast: (a) <emphasis effect="italics">n</emphasis> = 3, <emphasis effect="italics">l</emphasis> = 1; (b) <emphasis effect="italics">n</emphasis> = 5, <emphasis effect="italics">l</emphasis> = 3; (c) <emphasis effect="italics">n</emphasis> = 2, <emphasis effect="italics">l</emphasis> = 0.</para>
+<note id="fs-idm161649072"><title>Answer:</title>
+<para id="fs-idm161138128">(a) 3<emphasis effect="italics">p</emphasis> (b) 5<emphasis effect="italics">f</emphasis> (c) 2s</para>
+</note>
+</example>
+<example id="fs-idm169030688">
+<para id="fs-idm68824256"><title>Hámarksfjöldi rafeinda</title>Reiknaðu hámarksfjölda rafeinda sem geta rúmast í hvolfi með (a) <emphasis effect="italics">n</emphasis> = 2, (b) <emphasis effect="italics">n</emphasis> = 5 og (c) <emphasis effect="italics">n</emphasis> sem breytu. Athugaðu að þú ert aðeins að skoða svigrúmin með tilgreindu <emphasis effect="italics">n</emphasis> gildi, ekki þau á lægri orkustigum.</para>
+<para id="fs-idm174701168"><title>Lausn</title>(a) Þegar <emphasis effect="italics">n</emphasis> = 2 eru fjögur svigrúm (eitt 2<emphasis effect="italics">s</emphasis> svigrúm og þrjú svigrúm merkt 2<emphasis effect="italics">p</emphasis>). Þessi fjögur svigrúm geta innihaldið átta rafeindir.</para>
+<para id="fs-idm146693328">(b) Þegar <emphasis effect="italics">n</emphasis> = 5 eru fimm undirhvolf svigrúma sem við þurfum að leggja saman:</para>
+<equation id="fs-idm204408304" class="unnumbered"><m:math><m:mtable equalrows="true" columnalign="left"><m:mtr/>
+<m:mtr><m:mtd><m:mspace width="0.7em"/><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>orbital labeled</m:mtext><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mi>s</m:mi></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mspace width="0.7em"/><m:mn>3</m:mn><m:mspace width="0.2em"/><m:mtext>orbitals labeled</m:mtext><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mi>p</m:mi></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mspace width="0.7em"/><m:mn>5</m:mn><m:mspace width="0.2em"/><m:mtext>orbitals labeled</m:mtext><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mi>d</m:mi></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mspace width="0.7em"/><m:mn>7</m:mn><m:mspace width="0.2em"/><m:mtext>orbitals labeled</m:mtext><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mi>f</m:mi></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mn>9</m:mn><m:mspace width="0.2em"/><m:mtext>orbitals labeled</m:mtext><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mi>g</m:mi></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mspace width="0.2em"/><m:mn>25</m:mn><m:mspace width="0.2em"/><m:mtext>orbitals total</m:mtext></m:mtd>
+</m:mtr></m:mtable></m:math></equation><para id="fs-idm145553968">Enn og aftur, hvert svigrúm rúmar tvær rafeindir, þannig að 50 rafeindir geta rúmast í þessu hvolfi.</para>
+<para id="fs-idm106652512">(c) Fjöldi svigrúma í hvaða hvolfi <emphasis effect="italics">n</emphasis> sem er verður <emphasis effect="italics">n</emphasis><sup>2</sup><sub>.</sub> Það geta verið allt að tvær rafeindir í hverju svigrúmi, þannig að hámarksfjöldi rafeinda verður 2 <m:math><m:mo>×</m:mo></m:math> n<sup>2</sup>.</para><para id="fs-idm13201440"><title>Kannaðu þekkingu þína</title>Ef hvolf inniheldur að hámarki 32 rafeindir, hver er þá höfuðskammtatalan, <emphasis effect="italics">n</emphasis>?</para>
+<note id="fs-idm166820736"><title>Answer:</title>
+<para id="fs-idm135023952"><emphasis effect="italics">n</emphasis> = 4</para>
+</note>
+</example>
+<example id="fs-idm161581600">
+<para id="fs-idm88167648"><title>Að vinna með skammtatölur</title>Fylltu út eftirfarandi töflu fyrir frumeindasvigrúm:</para>
+<!-- table handled separately -->
+<para id="fs-idm65557984"><title>Lausn</title>Hægt er að fylla út töfluna með eftirfarandi reglum:</para>
+<list id="fs-idm186359744" list-type="bulleted" bullet-style="bullet">
+<item>Heiti svigrúmsins er <emphasis effect="italics">nl</emphasis>, þar sem <emphasis effect="italics">l</emphasis> = 0, 1, 2, 3, 4, 5, … er varpað yfir á bókstafaröðina s, <emphasis effect="italics">p</emphasis>, <emphasis effect="italics">d</emphasis>, <emphasis effect="italics">f</emphasis>, <emphasis effect="italics">g</emphasis>, <emphasis effect="italics">h</emphasis>, …,</item>
+<item>Úrkynjun <emphasis effect="italics">m<sub>l</sub></emphasis> er fjöldi svigrúma innan <emphasis effect="italics">l</emphasis> undirhvolfs, og er því 2<emphasis effect="italics">l</emphasis> + 1 (það er eitt <emphasis effect="italics">s</emphasis> svigrúm, þrjú <emphasis effect="italics">p</emphasis> svigrúm, fimm <emphasis effect="italics">d</emphasis> svigrúm, sjö <emphasis effect="italics">f</emphasis> svigrúm, og svo framvegis).</item>
+<item>Fjöldi geislanóða er jafn <emphasis effect="italics">n –</emphasis> <emphasis effect="italics">l</emphasis> – 1.</item>
+</list>
+<!-- table handled separately -->
+<para id="fs-idm278629648"><title>Kannaðu þekkingu þína</title>Hversu mörg svigrúm hafa <emphasis effect="italics">l</emphasis> = 2 og <emphasis effect="italics">n</emphasis> = 3?</para>
+<note id="fs-idm55454448"><title>Answer:</title>
+<para id="fs-idm129700624">Fimm úrkynjuðu 3<emphasis effect="italics">d</emphasis> svigrúmin</para>
+</note>
+</example>
+<table id="fs-idm179835952" class="unnumbered" summary="This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” two blank cells, and “5 d.” Under the “n” column is a blank cell, 4, 7, and another blank cell. Under the “l” column is a blank cell, 1, and two more blank cells. Under the “m subscript l degeneracy” column are two blank cells, 7, and then one more blank cell. Under the “number radial nodes” column are two blank cells, 3, and then one more blank cell.">
+<label/>
+<tgroup cols="5">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<colspec colnum="5" colname="c5"/>
+<thead>
+<row valign="top">
+<entry align="left">Svigrúm</entry>
+<entry align="left"><emphasis effect="italics">n</emphasis></entry>
+<entry align="left"><emphasis effect="italics">l</emphasis></entry>
+<entry align="left">Úrkynjun <emphasis effect="italics">m<sub>l</sub></emphasis></entry>
+<entry align="left">Geislanóður (fjöldi)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">4<emphasis effect="italics">f</emphasis></entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">1</entry>
+<entry align="left">1</entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+</row>
+<row valign="top">
+<entry align="left">7</entry>
+<entry align="left">7</entry>
+<entry align="left">3</entry>
+<entry align="left">7</entry>
+<entry align="left">3</entry>
+</row>
+<row valign="top">
+<entry align="left">5<emphasis effect="italics">d</emphasis></entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+<entry align="left"></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table id="fs-idm91407168" class="unnumbered" summary="This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” “4 p,” “7 f,” and “5 d.” Under the “n” column are: 4, 4, 7, and 5. Under the “l” column are: 3, 1, 3, and 2. Under the “m subscript l degeneracy” column are: 7, 3, 7, and 5. Under the “number radial nodes” column are: 0, 2, 3, and 2.">
+<label/>
+<tgroup cols="5">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<colspec colnum="5" colname="c5"/>
+<thead>
+<row valign="top">
+<entry align="left">Svigrúm</entry>
+<entry align="left"><emphasis effect="italics">n</emphasis></entry>
+<entry align="left"><emphasis effect="italics">l</emphasis></entry>
+<entry align="left">Úrkynjun <emphasis effect="italics">m<sub>l</sub></emphasis></entry>
+<entry align="left">Geislanóður (fjöldi)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">4<emphasis effect="italics">f</emphasis></entry>
+<entry align="left">4</entry>
+<entry align="left">3</entry>
+<entry align="left">7</entry>
+<entry align="left">0</entry>
+</row>
+<row valign="top">
+<entry align="left">4<emphasis effect="italics">p</emphasis></entry>
+<entry align="left">4</entry>
+<entry align="left">1</entry>
+<entry align="left">3</entry>
+<entry align="left">2</entry>
+</row>
+<row valign="top">
+<entry align="left">7<emphasis effect="italics">f</emphasis></entry>
+<entry align="left">7</entry>
+<entry align="left">3</entry>
+<entry align="left">7</entry>
+<entry align="left">3</entry>
+</row>
+<row valign="top">
+<entry align="left">5<emphasis effect="italics">d</emphasis></entry>
+<entry align="left">5</entry>
+<entry align="left">2</entry>
+<entry align="left">5</entry>
+<entry align="left">2</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="fs-idm55472464" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm175984864">Stórsæir hlutir hegða sér eins og eindir. Smásæir hlutir (eins og rafeindir) hafa eiginleika bæði eindar og bylgju. Ekki er hægt að ákvarða nákvæma ferla þeirra. Skammtafræðilíkan frumeinda lýsir þrívíðri staðsetningu rafeindarinnar á <emphasis effect="italics">líkindahátt</emphasis> samkvæmt stærðfræðilegu falli sem kallast bylgjufall, oft táknað sem <emphasis effect="italics">Θ</emphasis>. Bylgjuföll frumeinda eru einnig kölluð frumeindasvigrúm. Ferningsveldi stærðar bylgjufallsins lýsir líkindadreifingu þess að finna rafeindina á tilteknu svæði í rúmi. Þess vegna lýsa frumeindasvigrúm þeim svæðum í frumeind þar sem líklegast er að finna rafeindir.</para>
+<para id="fs-idm163127152">Frumeindasvigrúm einkennist af þremur skammtatölum. Höfuðskammtatalan, <emphasis effect="italics">n</emphasis>, getur verið hvaða jákvæða heiltala sem er. Almenna svæðið fyrir orkugildi svigrúmsins og meðalfjarlægð rafeindar frá kjarnanum tengjast <emphasis effect="italics">n</emphasis>. Sagt er að svigrúm með sama gildi á <emphasis effect="italics">n</emphasis> séu í sama hvolfi. Auka- (hverfiþunga) skammtatalan, <emphasis effect="italics">l</emphasis>, getur haft hvaða heiltölugildi sem er frá 0 til <emphasis effect="italics">n</emphasis> – 1. Þessi skammtatala lýsir lögun eða gerð svigrúmsins. Svigrúm með sömu höfuðskammtatölu og sama <emphasis effect="italics">l</emphasis> gildi tilheyra sama undirhvolfi. Segulskammtatalan, <emphasis effect="italics">m<sub>l</sub></emphasis>, með 2<emphasis effect="italics">l</emphasis> + 1 gildum á bilinu –<emphasis effect="italics">l</emphasis> til +<emphasis effect="italics">l</emphasis>, lýsir stefnu svigrúmsins í rúmi. Að auki hefur hver rafeind spunaskammtatölu, <emphasis effect="italics">m<sub>s</sub></emphasis>, sem getur verið jöfn <m:math><m:mrow><m:mo>±</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Engar tvær rafeindir í sömu frumeind geta haft sama gildasett fyrir allar fjórar skammtatölurnar.</para>
+</section>
+<section id="fs-idm162744496" class="exercises">
+<title>Efnafræði – Verkefni í lok kafla</title>
+<exercise id="fs-idp68295120"><problem id="fs-idp43503936">
+<para id="fs-idm56354048">Hvernig eru Bohr-líkanið og skammtafræðilíkanið af vetnisfrumeindinni svipuð? Hvernig eru þau ólík?</para></problem>
+<solution id="fs-idp39356480">
+<para id="fs-idm153742384">Í báðum líkönum er miðlægur, jákvætt hlaðinn kjarni með rafeindum sem hreyfast um kjarnann í samræmi við rafstöðumætti Coulomb. Bohr-líkanið <emphasis effect="italics">gerir ráð fyrir</emphasis> að rafeindirnar hreyfist á hringlaga brautum sem hafa skammtaða orku, hverfiþunga og radíus sem tilgreindir eru með einni skammtatölu, <emphasis effect="italics">n</emphasis> = 1, 2, 3, …, en þessi skömmtun er ad hoc-forsenda sem Bohr setti fram til að fella skömmtun inn í í grundvallaratriðum klassíska aflfræðilega lýsingu á frumeindinni. Bohr gerði einnig ráð fyrir að rafeindir á braut um kjarnann gefi venjulega hvorki frá sér né gleypi rafsegulgeislun, en geri það þegar rafeindin skiptir yfir á aðra braut. Í skammtafræðilíkaninu hreyfast rafeindirnar ekki á nákvæmum brautum (slíkar brautir brjóta í bága við óvissulögmál Heisenbergs) og í staðinn er notuð líkindatúlkun á staðsetningu rafeindarinnar á hverjum tíma, með stærðfræðilegu falli <emphasis effect="italics">ψ</emphasis> sem kallast bylgjufall og hægt er að nota til að ákvarða staðbundna líkindadreifingu rafeindarinnar. Þessi bylgjuföll, eða svigrúm, eru þrívíðar staðbylgjur sem hægt er að tilgreina með þremur skammtatölum sem koma náttúrulega fram úr undirliggjandi stærðfræði þeirra (engar ad hoc-forsendur nauðsynlegar): höfuðskammtatölunni, <emphasis effect="italics">n</emphasis> (sú sama og Bohr notaði), sem tilgreinir hvolf þannig að svigrúm með sama <emphasis effect="italics">n</emphasis> hafa öll sömu orku og um það bil sömu staðbundnu úтbreiðslu; aukaskammtatölunni <emphasis effect="italics">l</emphasis>, sem er mælikvarði á hverfiþunga svigrúmsins og samsvarar almennri lögun svigrúmanna, auk þess að tilgreina undirhvolf þannig að svigrúm með sama <emphasis effect="italics">l</emphasis> (og <emphasis effect="italics">n</emphasis>) hafa öll sömu orku; og segulskammtatölunni <emphasis effect="italics">m</emphasis>, sem er mælikvarði á <emphasis effect="italics">z</emphasis>-þátt hverfiþungans og samsvarar stefnumörkun svigrúmanna. Bohr-líkanið gefur sömu jöfnu fyrir orkuna og skammtafræðijafnan og því gera bæði rétt grein fyrir stakrænu rófi vetnis (dæmi um að fá rétt svör af röngum ástæðum, eitthvað sem margir efnafræðinemar geta kannast við), en gefur ranga jöfnu fyrir hverfiþungann (brautir Bohrs hafa allar nauðsynlega hverfiþunga sem er ekki núll, en sum skammtasvigrúm [<emphasis effect="italics">s</emphasis>-svigrúm] geta haft núll hverfiþunga).</para></solution></exercise>
+<exercise id="fs-idm185773696"><problem id="fs-idp66815744">
+<para id="fs-idm76135056">Hver eru leyfileg gildi fyrir hverja af skammtatölunum fjórum: <emphasis effect="italics">n</emphasis>, <emphasis effect="italics">l</emphasis>, <emphasis effect="italics">m<sub>l</sub></emphasis> og <emphasis effect="italics">m<sub>s</sub></emphasis>?</para></problem>
+</exercise>
+<exercise id="fs-idm127368704"><problem id="fs-idm128669984">
+<para id="fs-idm21185232">Lýstu eiginleikum rafeindar sem tengjast hverri af eftirfarandi fjórum skammtatölum: <emphasis effect="italics">n</emphasis>, <emphasis effect="italics">l</emphasis>, <emphasis effect="italics">m<sub>l</sub></emphasis> og <emphasis effect="italics">m<sub>s</sub></emphasis>.</para></problem>
+<solution id="fs-idm68859024">
+<para id="fs-idm141689136"><emphasis effect="italics">n</emphasis> ákvarðar almennt svið fyrir gildi orku og líklegar fjarlægðir sem rafeindin getur verið frá kjarnanum. <emphasis effect="italics">l</emphasis> ákvarðar lögun svigrúmsins. <emphasis effect="italics">m<sub>1</sub></emphasis> ákvarðar stefnumörkun svigrúma með sama <emphasis effect="italics">l</emphasis>-gildi miðað við hvert annað. <emphasis effect="italics">m<sub>s</sub></emphasis> ákvarðar spuna rafeindar.</para></solution></exercise>
+<exercise id="fs-idp16534928"><problem id="fs-idp20951104">
+<para id="fs-idm9901216">Svaraðu eftirfarandi spurningum:</para>
+<para id="fs-idm109883392">(a) Án þess að nota skammtatölur, lýstu muninum á hvolfum, undirhvolfum og svigrúmum frumeindar.</para>
+<para id="fs-idm132276800">(b) Hvernig eru skammtatölur hvolfa, undirhvolfa og svigrúma frumeindar frábrugðnar?</para></problem>
+</exercise>
+<exercise id="fs-idm226431552"><problem id="fs-idm65695376">
+<para id="fs-idm214520128">Tilgreindu undirhvolfið þar sem rafeindir með eftirfarandi skammtatölur finnast:</para>
+<para id="fs-idp56428624">(a) <emphasis effect="italics">n</emphasis> = 2, <emphasis effect="italics">l</emphasis> = 1</para>
+<para id="fs-idm187643104">(b) <emphasis effect="italics">n</emphasis> = 4, <emphasis effect="italics">l</emphasis> = 2</para>
+<para id="fs-idm22374672">(c) <emphasis effect="italics">n</emphasis> = 6, <emphasis effect="italics">l</emphasis> = 0</para></problem>
+<solution id="fs-idm9934032">
+<para id="fs-idm21799104">(a) 2<emphasis effect="italics">p</emphasis>; (b) 4<emphasis effect="italics">d</emphasis>; (c) 6<emphasis effect="italics">s</emphasis></para></solution></exercise>
+<exercise id="fs-idm65709728"><problem id="fs-idm139613104">
+<para id="fs-idp34462880">Hvaða undirhvolf sem lýst er í fyrri spurningu innihalda úrkynjuð svigrúm? Hversu mörg úrkynjuð svigrúm eru í hverju þeirra?</para></problem>
+</exercise>
+<exercise id="fs-idm5890656"><problem id="fs-idm79110656">
+<para id="fs-idm109115616">Tilgreindu undirhvolfið þar sem rafeindir með eftirfarandi skammtatölur finnast:</para>
+<para id="fs-idm151987104">(a) <emphasis effect="italics">n</emphasis> = 3, <emphasis effect="italics">l</emphasis> = 2</para>
+<para id="fs-idm161053968">(b) <emphasis effect="italics">n</emphasis> = 1, <emphasis effect="italics">l</emphasis> = 0</para>
+<para id="fs-idm57606112">(c) <emphasis effect="italics">n</emphasis> = 4, <emphasis effect="italics">l</emphasis> = 3</para></problem>
+<solution id="fs-idm68229680">
+<para id="fs-idm21203088">(a)<emphasis effect="italics"> 3d;</emphasis> (b) 1<emphasis effect="italics">s;</emphasis> (c) 4<emphasis effect="italics">f</emphasis></para></solution></exercise>
+<exercise id="fs-idm109521552"><problem id="fs-idm137252288">
+<para id="fs-idm119068896">Hvaða undirhvolf sem lýst er í fyrri spurningu innihalda úrkynjuð svigrúm? Hversu mörg úrkynjuð svigrúm eru í hverju þeirra?</para></problem>
+</exercise>
+<exercise id="fs-idm153995968"><problem id="fs-idm196566880">
+<para id="fs-idm94929024">Teiknaðu jaðaryfirborð <m:math><m:mrow><m:msub><m:mi>d</m:mi><m:mrow><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mtext>−</m:mtext><m:msup><m:mi>y</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:msub></m:mrow></m:math> og <emphasis effect="italics">p<sub>y</sub></emphasis> svigrúms. Gættu þess að sýna og merkja ásana.</para></problem>
+<solution id="fs-idm94251808">
+<media id="fs-idm73762336" alt="This figure contains two diagrams. The first is of a 2 p subscript y orbital. The second is of a d subscript x squared minus y squared orbital. The first diagram has two spherical shapes joined at the origin when oriented along the y axis on an x y and z coordinate plane. The second diagram shows four ellipsoid lobes with ends centered around the origin. Two of these ellipsoid lobes are oriented along the x axis and two are oriented along the y axis on the x y and z coordinate plane.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_Ex9soln_img.jpg"/>
+</media></solution></exercise>
+<exercise id="fs-idm109481472"><problem id="fs-idm136699376">
+<para id="fs-idp70405328">Teiknaðu <emphasis effect="italics">p<sub>x</sub></emphasis> og <emphasis effect="italics">d<sub>xz</sub></emphasis> svigrúmin. Gættu þess að sýna og merkja hnitin.</para></problem>
+</exercise>
+<exercise id="fs-idm139949520"><problem id="fs-idm137614176">
+<para id="fs-idm139601840">Skoðaðu svigrúmin sem sýnd eru hér í útlínum.</para>
+<media id="fs-idm55642896" class="scaled-down" alt="This figure contains three diagrams. In x, a circle is drawn with a dot at the center. In y, two nearly ellipsoid shapes are oriented horizontally with a dot between them. In z, four shapes like those in y are oriented in an x shape with a dot at the center.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_OrbOutline_img.jpg"/>
+</media>
+<para id="fs-idm9922432">(a) Hver er hámarksfjöldi rafeinda sem rúmast í svigrúmi af gerð (x)? Af gerð (y)? Af gerð (z)?</para>
+<para id="fs-idm66251616">(b) Hversu mörg svigrúm af gerð (x) finnast í hvolfi með <emphasis effect="italics">n</emphasis> = 2? Hversu mörg af gerð (y)? Hversu mörg af gerð (z)?</para>
+<para id="fs-idm95832304">(c) Skrifaðu mengi skammtatalna fyrir rafeind í svigrúmi af gerð (x) í hvolfi með <emphasis effect="italics">n</emphasis> = 4. Fyrir svigrúm af gerð (y) í hvolfi með <emphasis effect="italics">n</emphasis> = 2. Fyrir svigrúm af gerð (z) í hvolfi með <emphasis effect="italics">n</emphasis> = 3.</para>
+<para id="fs-idm165503392">(d) Hvert er lægsta mögulega gildi <emphasis effect="italics">n</emphasis> fyrir svigrúm af gerð (x)? Af gerð (y)? Af gerð (z)?</para>
+<para id="fs-idm63155984">(e) Hver eru möguleg gildi <emphasis effect="italics">l</emphasis> og <emphasis effect="italics">m<sub>l</sub></emphasis> fyrir svigrúm af gerð (x)? Af gerð (y)? Af gerð (z)?</para></problem>
+<solution id="fs-idm82172944">
+<para id="fs-idm90450992">(a) x. 2, y. 2, z. 2; (b) x. 1, y. 3, z. 0; (c) x. 4 0 0 <m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> y. 2 1 0 <m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> z. 3 2 0 <m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (d) x. 1, y. 2, z. 3; (e) x. <emphasis effect="italics">l</emphasis> = 0, <emphasis effect="italics">m<sub>l</sub></emphasis> = 0, y. <emphasis effect="italics">l</emphasis> = 1, <emphasis effect="italics">m<sub>l</sub> =</emphasis> –1, 0, eða <emphasis effect="italics">+</emphasis>1, z. <emphasis effect="italics">l</emphasis> = 2, <emphasis effect="italics">m<sub>l</sub></emphasis> = –2, –1, 0, +1, +2</para></solution></exercise>
+<exercise id="fs-idm165892704"><problem id="fs-idm152067344">
+<para id="fs-idp1974272">Lýstu óvissulögmáli Heisenbergs. Lýstu í stuttu máli hvað lögmálið felur í sér.</para></problem>
+</exercise>
+<exercise id="fs-idm130545344"><problem id="fs-idm10062944">
+<para id="fs-idm159667904">Hversu margar rafeindir gætu verið í öðru hvolfi frumeindar ef spunaskammtatalan <emphasis effect="italics">m<sub>s</sub></emphasis> gæti haft þrjú gildi í stað aðeins tveggja? (Vísbending: Íhugaðu einsetulögmál Pauli.)</para></problem>
+<solution id="fs-idm164499408">
+<para id="fs-idm128894672">12</para></solution></exercise>
+<exercise id="fs-idm68696640"><problem id="fs-idm10527280">
+<para id="fs-idm167401120">Hver af eftirfarandi jöfnum lýsir eindahegðun? Hver lýsir bylgjuhegðun? Fela einhverjar í sér báðar gerðir hegðunar? Lýstu ástæðum fyrir vali þínu.</para>
+<para id="fs-idp41728">(a) <emphasis effect="italics">c</emphasis> = <emphasis effect="italics">λν</emphasis></para>
+<para id="fs-idm177928192">(b) <m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>m</m:mi><m:msup><m:mi>ν</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idm133326496">(c) <m:math><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:mi>Z</m:mi></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idm140528512">(d) <emphasis effect="italics">E = hν</emphasis></para>
+<para id="fs-idm152486448">(e) <m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>h</m:mi><m:mrow><m:mi>m</m:mi><m:mi>ν</m:mi></m:mrow></m:mfrac></m:mrow></m:math></para></problem>
+</exercise>
+<exercise id="fs-idm24126560"><problem id="fs-idm145952864">
+<para id="fs-idm133893888">Skrifaðu mengi skammtatalna fyrir hverja rafeind með <emphasis effect="italics">n</emphasis> = 4 í Se-frumeind.</para></problem>
+<solution id="fs-idm29306320">
+<!-- table handled separately --></solution></exercise>
+<table id="fs-idm2123072" summary="This table has four columns and seven rows. The first row is a header row, and it labels each column: “n,” “l,” “m subscript l,” and “s.” Under the “n” column are the following numbers: 4, 4, 4, 4, 4, and 4. Under the “l” column are the following numbers: 0, 0, 1, 1, 1, and 1. Under the “m subscript l” column are the following numbers: 0, 0, negative 1, 0, positive 1, and negative 1. Under the “s” column are the following numbers: positive one half, negative one half, positive one half, positive one half, positive one half, and negative one half." class="unnumbered">
+<label/>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="left"><emphasis effect="italics">n</emphasis></entry>
+<entry align="left"><emphasis effect="italics">l</emphasis></entry>
+<entry align="left"><emphasis effect="italics">m<sub>l</sub></emphasis></entry>
+<entry align="left"><emphasis effect="italics">s</emphasis></entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">0</entry>
+<entry align="left">0</entry>
+<entry align="left"><m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">0</entry>
+<entry align="left">0</entry>
+<entry align="left"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">1</entry>
+<entry align="left">−1</entry>
+<entry align="left"><m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">1</entry>
+<entry align="left">0</entry>
+<entry align="left"><m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">1</entry>
+<entry align="left">+1</entry>
+<entry align="left"><m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">1</entry>
+<entry align="left">−1</entry>
+<entry align="left"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm176142304">
+<term>hliðarskammtatala (skriðþungaskammtatala) (l) (e. secondary (angular momentum) quantum number (l))</term>
+<meaning id="fs-idm176142304-meaning">skammtatala sem greinir á milli mismunandi lögunar svigrúma; hún er einnig mælikvarði á hverfiþunga svigrúmsins</meaning>
+</definition>
+<definition id="fs-idm147438368">
+<term>frumeindasvigrúm (e. atomic orbital)</term>
+<meaning id="fs-idm147438368-meaning">stærðfræðilegt fall sem lýsir hegðun rafeindar í frumeind (einnig kallað bylgjufall)</meaning>
+</definition>
+<definition id="fs-idp12032">
+<term>d-svigrúm (e. d orbital)</term>
+<meaning id="fs-idp12032-meaning">svæði í rúmi með háan rafeindaþéttleika sem er annaðhvort fjórblaða eða inniheldur handlóða- og kleinuhringslögun; lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 2.</meaning>
+</definition>
+<definition id="fs-idm442273488">
+<term>Orkujöfn svigrúm (e. degenerate orbitals)</term>
+<meaning id="fs-idm442273488-meaning">svigrúm sem hafa sömu orku</meaning>
+</definition>
+<definition id="fs-idm56391008">
+<term>rafeindaþéttleiki (e. electron density)</term>
+<meaning id="fs-idm56391008-meaning">mælikvarði á líkurnar á að finna rafeind á tilteknu svæði í rúmi, hann er jafn kvaðratinu af algildi bylgjufallsins <emphasis effect="italics">ψ</emphasis></meaning>
+</definition>
+<definition id="fs-idm124229040">
+<term>f-svigrúm (e. f orbital)</term>
+<meaning id="fs-idm124229040-meaning">margblaða svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 3</meaning>
+</definition>
+<definition id="fs-idm7039408">
+<term>Óvissulögmál Heisenbergs (e. heisenberg uncertainty principle)</term>
+<meaning id="fs-idm7039408-meaning">regla sem segir að ómögulegt sé að ákvarða nákvæmlega á sama tíma tiltekna samtengda hreyfifræðilega eiginleika, eins og skriðþunga og staðsetningu eindar. Óvissulögmálið er afleiðing af tvíeðli skammtaeinda, þ.e. að þær sýna bæði bylgju- og eindaeiginleika</meaning>
+</definition>
+<definition id="fs-idm166903488">
+<term>segulskammtatala (ml) (e. magnetic quantum number (ml))</term>
+<meaning id="fs-idm166903488-meaning">skammtatala sem táknar stefnu frumeindasvigrúms í kringum kjarnann</meaning>
+</definition>
+<definition id="fs-idm147658080">
+<term>p-svigrúm (e. p orbital)</term>
+<meaning id="fs-idm147658080-meaning">hantellaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 1</meaning>
+</definition>
+<definition id="fs-idm120400016">
+<term>einsetulögmál Pauli (e. pauli exclusion principle)</term>
+<meaning id="fs-idm120400016-meaning">kveður á um að engar tvær rafeindir í frumeind geti haft sama gildi fyrir allar fjórar skammtatölurnar</meaning>
+</definition>
+<definition id="fs-idm140352128">
+<term>höfuðskammtatala (n) (e. principal quantum number (n))</term>
+<meaning id="fs-idm140352128-meaning">skammtatala sem tilgreinir hvolfið sem rafeind skipar í frumeind</meaning>
+</definition>
+<definition id="fs-idm160875424">
+<term>skammtafræði (e. quantum mechanics)</term>
+<meaning id="fs-idm160875424-meaning">fræðasvið sem felur í sér skömmtun orku, tvíeðli bylgju og eindar og óvissulögmál Heisenbergs til að lýsa efni</meaning>
+</definition>
+<definition id="fs-idm144189680">
+<term>s-svigrúm (e. s orbital)</term>
+<meaning id="fs-idm144189680-meaning">kúlulaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 0</meaning>
+</definition>
+<definition id="fs-idm174396336">
+<term>hvolf (e. shell)</term>
+<meaning id="fs-idm174396336-meaning">frumeindasvigrúm með sömu höfuðskammtatölu, <emphasis effect="italics">n</emphasis></meaning>
+</definition>
+<definition id="fs-idm137493808">
+<term>spunaskammtatala (ms) (e. spin quantum number (ms))</term>
+<meaning id="fs-idm137493808-meaning">tala sem tilgreinir stefnu rafeindaspuna, annaðhvort <m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> eða <m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></meaning>
+</definition>
+<definition id="fs-idm148470816">
+<term>undirhvolf (e. subshell)</term>
+<meaning id="fs-idm148470816-meaning">frumeindasvigrúm með sömu gildum fyrir <emphasis effect="italics">n</emphasis> og <emphasis effect="italics">l</emphasis></meaning>
+</definition>
+<definition id="fs-idm163956768">
+<term>bylgjufall (ψ) (e. wavefunction (ψ))</term>
+<meaning id="fs-idm163956768-meaning">stærðfræðileg lýsing á frumeindasvigrúmi sem lýsir lögun svigrúmsins; það er hægt að nota til að reikna út líkurnar á að finna rafeindina á tilteknum stað í svigrúminu, auk hreyfistærða eins og orku og hverfiþunga</meaning>
+</definition>
+</glossary>
+</document>

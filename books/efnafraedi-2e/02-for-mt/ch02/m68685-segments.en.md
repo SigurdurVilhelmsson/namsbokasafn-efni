@@ -11,10 +11,10 @@ State the postulates of Dalton’s atomic theory
 Use postulates of Dalton’s atomic theory to explain the laws of definite and multiple proportions
 
 <!-- SEG:m68685:item:fs-idp28280144-item-1 -->
-Matter is composed of exceedingly small particles called atoms. An __atom__ is the smallest unit of an element that can participate in a chemical change.
+Matter is composed of exceedingly small particles called atoms. An {{term}}atom{{/term}} is the smallest unit of an element that can participate in a chemical change.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-2 -->
-An __element__ consists of only one type of atom, which has a mass that is characteristic of the element and is the same for all atoms of that element ([#CNX_Chem_02_01_Dalton1]). A macroscopic sample of an element contains an incredibly large number of atoms, all of which have identical chemical properties.
+An {{term}}element{{/term}} consists of only one type of atom, which has a mass that is characteristic of the element and is the same for all atoms of that element ([#CNX_Chem_02_01_Dalton1]). A macroscopic sample of an element contains an incredibly large number of atoms, all of which have identical chemical properties.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-3 -->
 Atoms of one element differ in properties from atoms of all other elements.
@@ -26,13 +26,13 @@ A compound consists of atoms of two or more elements combined in a small, whole-
 Atoms are neither created nor destroyed during a chemical change, but are instead rearranged to yield substances that are different from those present before the change ([#CNX_Chem_02_01_Dalton3]).
 
 <!-- SEG:m68685:para:fs-idp22389648 -->
-The earliest recorded discussion of the basic structure of matter comes from ancient Greek philosophers, the scientists of their day. In the fifth century BC, Leucippus and Democritus argued that all matter was composed of small, finite particles that they called *atomos*, a term derived from the Greek word for “indivisible.” They thought of atoms as moving particles that differed in shape and size, and which could join together. Later, Aristotle and others came to the conclusion that matter consisted of various combinations of the four “elements”—fire, earth, air, and water—and could be infinitely divided. Interestingly, these philosophers thought about atoms and “elements” as philosophical concepts, but apparently never considered performing experiments to test their ideas.
+The earliest recorded discussion of the basic structure of matter comes from ancient Greek philosophers, the scientists of their day. In the fifth century BC, Leucippus and Democritus argued that all matter was composed of small, finite particles that they called {{i}}atomos{{/i}}, a term derived from the Greek word for “indivisible.” They thought of atoms as moving particles that differed in shape and size, and which could join together. Later, Aristotle and others came to the conclusion that matter consisted of various combinations of the four “elements”—fire, earth, air, and water—and could be infinitely divided. Interestingly, these philosophers thought about atoms and “elements” as philosophical concepts, but apparently never considered performing experiments to test their ideas.
 
 <!-- SEG:m68685:para:fs-idp136823072 -->
-The Aristotelian view of the composition of matter held sway for over two thousand years, until English schoolteacher John Dalton helped to revolutionize chemistry with his hypothesis that the behavior of matter could be explained using an atomic theory. First published in 1807, many of Dalton’s hypotheses about the microscopic features of matter are still valid in modern atomic theory. Here are the postulates of __Dalton’s atomic theory__.
+The Aristotelian view of the composition of matter held sway for over two thousand years, until English schoolteacher John Dalton helped to revolutionize chemistry with his hypothesis that the behavior of matter could be explained using an atomic theory. First published in 1807, many of Dalton’s hypotheses about the microscopic features of matter are still valid in modern atomic theory. Here are the postulates of {{term}}Dalton’s atomic theory{{/term}}.
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton1-caption -->
-A pre-1982 copper penny (left) contains approximately 3 [[MATH:1]] 10^22^ copper atoms (several dozen are represented as brown spheres at the right), each of which has the same chemical properties. (credit: modification of work by “slgckgc”/Flickr)
+A pre-1982 copper penny (left) contains approximately 3 [[MATH:1]] 10[[sup:22]] copper atoms (several dozen are represented as brown spheres at the right), each of which has the same chemical properties. (credit: modification of work by “slgckgc”/Flickr)
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton2-caption -->
 Copper(II) oxide, a powdery, black compound, results from the combination of two types of atoms—copper (brown spheres) and oxygen (red spheres)—in a 1:1 ratio. (credit: modification of work by “Chemicalinterest”/Wikimedia Commons)
@@ -71,7 +71,7 @@ Answer:
 The starting materials consist of four green spheres and two purple spheres. The products consist of four green spheres and two purple spheres. This does not violate any of Dalton’s postulates: Atoms are neither created nor destroyed, but are redistributed in small, whole-number ratios.
 
 <!-- SEG:m68685:para:fs-idp28034944 -->
-Dalton knew of the experiments of French chemist Joseph Proust, who demonstrated that *all samples of a pure compound contain the same elements in the same proportion by mass*. This statement is known as the __law of definite proportions__ or the __law of constant composition__. The suggestion that the numbers of atoms of the elements in a given compound always exist in the same ratio is consistent with these observations. For example, when different samples of isooctane (a component of gasoline and one of the standards used in the octane rating system) are analyzed, they are found to have a carbon-to-hydrogen mass ratio of 5.33:1, as shown in [#fs-idp114534448].
+Dalton knew of the experiments of French chemist Joseph Proust, who demonstrated that {{i}}all samples of a pure compound contain the same elements in the same proportion by mass{{/i}}. This statement is known as the {{term}}law of definite proportions{{/term}} or the {{term}}law of constant composition{{/term}}. The suggestion that the numbers of atoms of the elements in a given compound always exist in the same ratio is consistent with these observations. For example, when different samples of isooctane (a component of gasoline and one of the standards used in the octane rating system) are analyzed, they are found to have a carbon-to-hydrogen mass ratio of 5.33:1, as shown in [#fs-idp114534448].
 
 <!-- SEG:m68685:entry:auto-26 -->
 Constant Composition of Isooctane
@@ -128,7 +128,7 @@ C
 It is worth noting that although all samples of a particular compound have the same mass ratio, the converse is not true in general. That is, samples that have the same mass ratio are not necessarily the same substance. For example, there are many compounds other than isooctane that also have a carbon-to-hydrogen mass ratio of 5.33:1.00.
 
 <!-- SEG:m68685:para:fs-idp113358288 -->
-Dalton also used data from Proust, as well as results from his own experiments, to formulate another interesting law. The __law of multiple proportions__ states that *when two elements react to form more than one compound, a fixed mass of one element will react with masses of the other element in a ratio of small, whole numbers*. For example, copper and chlorine can form a green, crystalline solid with a mass ratio of 0.558 g chlorine to 1 g copper, as well as a brown crystalline solid with a mass ratio of 1.116 g chlorine to 1 g copper. These ratios by themselves may not seem particularly interesting or informative; however, if we take a ratio of these ratios, we obtain a useful and possibly surprising result: a small, whole-number ratio.
+Dalton also used data from Proust, as well as results from his own experiments, to formulate another interesting law. The {{term}}law of multiple proportions{{/term}} states that {{i}}when two elements react to form more than one compound, a fixed mass of one element will react with masses of the other element in a ratio of small, whole numbers{{/i}}. For example, copper and chlorine can form a green, crystalline solid with a mass ratio of 0.558 g chlorine to 1 g copper, as well as a brown crystalline solid with a mass ratio of 1.116 g chlorine to 1 g copper. These ratios by themselves may not seem particularly interesting or informative; however, if we take a ratio of these ratios, we obtain a useful and possibly surprising result: a small, whole-number ratio.
 
 <!-- SEG:m68685:para:fs-idp35032848 -->
 This 2-to-1 ratio means that the brown compound has twice the amount of chlorine per amount of copper as the green compound.
@@ -158,7 +158,7 @@ In compound B, the mass ratio of oxygen to carbon is:[[BR]] [[MATH:6]]
 The ratio of these ratios is:[[BR]] [[MATH:7]]
 
 <!-- SEG:m68685:para:fs-idm85625680 -->
-This supports the law of multiple proportions. This means that A and B are different compounds, with A having one-half as much oxygen per amount of carbon (or twice as much carbon per amount of oxygen) as B. A possible pair of compounds that would fit this relationship would be A = CO and B = CO~2~.
+This supports the law of multiple proportions. This means that A and B are different compounds, with A having one-half as much oxygen per amount of carbon (or twice as much carbon per amount of oxygen) as B. A possible pair of compounds that would fit this relationship would be A = CO and B = CO[[sub:2]].
 
 <!-- SEG:m68685:para-title:fs-idp13365184-title -->
 Check Your Learning

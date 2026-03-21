@@ -179,7 +179,7 @@
       "class": null,
       "title": {
         "segmentId": "m68811:title:fs-idp11911328-title",
-        "text": "Solution"
+        "text": "{{i}}K{{/i}}[[sub:sp]] and Solubility"
       },
       "content": [
         {
@@ -202,7 +202,7 @@
           "id": "fs-idp844816",
           "title": {
             "segmentId": "m68811:example-title:fs-idp844816-title",
-            "text": "Check Your Learning"
+            "text": "Calculation of {{i}}K{{/i}}[[sub:sp]] from Equilibrium Concentrations"
           },
           "content": [
             {
@@ -218,7 +218,11 @@
             {
               "type": "para",
               "id": "fs-idp15206752",
-              "segmentId": "m68811:para:fs-idp15206752"
+              "segmentId": "m68811:para:fs-idp15206752",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp15206752-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -228,7 +232,11 @@
             {
               "type": "para",
               "id": "fs-idp16640",
-              "segmentId": "m68811:para:fs-idp16640"
+              "segmentId": "m68811:para:fs-idp16640",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp16640-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -273,7 +281,7 @@
           "id": "fs-idp261504",
           "title": {
             "segmentId": "m68811:example-title:fs-idp261504-title",
-            "text": "Solution"
+            "text": "Determination of Molar Solubility from {{i}}K{{/i}}[[sub:sp]]"
           },
           "content": [
             {
@@ -284,7 +292,11 @@
             {
               "type": "para",
               "id": "fs-idp264928",
-              "segmentId": "m68811:para:fs-idp264928"
+              "segmentId": "m68811:para:fs-idp264928",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp264928-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -357,7 +369,7 @@
           "id": "fs-idp647936",
           "title": {
             "segmentId": "m68811:example-title:fs-idp647936-title",
-            "text": "Solution"
+            "text": "Determination of Molar Solubility from {{i}}K{{/i}}[[sub:sp]]"
           },
           "content": [
             {
@@ -368,7 +380,11 @@
             {
               "type": "para",
               "id": "fs-idp651872",
-              "segmentId": "m68811:para:fs-idp651872"
+              "segmentId": "m68811:para:fs-idp651872",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp651872-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -441,13 +457,21 @@
           "id": "fs-idp836192",
           "title": {
             "segmentId": "m68811:example-title:fs-idp836192-title",
-            "text": "Solution"
+            "text": "Determination of {{i}}K{{/i}}[[sub:sp]] from Gram Solubility"
           },
           "content": [
             {
               "type": "para",
               "id": "fs-idp836448",
               "segmentId": "m68811:para:fs-idp836448"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp612896",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp612896-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -531,7 +555,7 @@
           "id": "fs-idp91888",
           "title": {
             "segmentId": "m68811:example-title:fs-idp91888-title",
-            "text": "Solution"
+            "text": "Calculating the Solubility of Hg[[sub:2]]Cl[[sub:2]]"
           },
           "content": [
             {
@@ -547,7 +571,11 @@
             {
               "type": "para",
               "id": "fs-idp15521184",
-              "segmentId": "m68811:para:fs-idp15521184"
+              "segmentId": "m68811:para:fs-idp15521184",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp15521184-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -709,7 +737,7 @@
           "id": "fs-idp69099520",
           "title": {
             "segmentId": "m68811:example-title:fs-idp69099520-title",
-            "text": "Solution"
+            "text": "Precipitation of Mg(OH)[[sub:2]]"
           },
           "content": [
             {
@@ -721,6 +749,14 @@
               "type": "para",
               "id": "fs-idp15170960",
               "segmentId": "m68811:para:fs-idp15170960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp15174912",
+              "title": {
+                "segmentId": "m68811:para-title:fs-idp15174912-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1538,7 +1574,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68811:entry:auto-217",
+                  "segmentId": "m68811:entry:auto-224",
                   "attributes": {}
                 }
               ]

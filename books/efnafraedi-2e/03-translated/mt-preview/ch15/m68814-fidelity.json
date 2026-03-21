@@ -1,0 +1,15 @@
+{
+  "moduleId": "m68814",
+  "chapter": "ch15",
+  "timestamp": "2026-03-20T12:08:07.087Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "link",
+      "source": 5,
+      "translated": 7,
+      "diff": 2,
+      "direction": "overproduction"
+    }
+  ]
+}

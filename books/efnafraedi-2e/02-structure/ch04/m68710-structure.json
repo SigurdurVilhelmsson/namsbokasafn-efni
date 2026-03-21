@@ -1373,19 +1373,34 @@
             },
             {
               "id": null,
-              "segmentId": "m68710:item:fs-idp29396208-item-3"
+              "segmentId": "m68710:item:fs-idp29396208-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-idm48186672",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idm48186672-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idm48186672-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idm48186672-item-3"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": null,
               "segmentId": "m68710:item:fs-idp29396208-item-4"
-            },
-            {
-              "id": null,
-              "segmentId": "m68710:item:fs-idp29396208-item-5"
-            },
-            {
-              "id": null,
-              "segmentId": "m68710:item:fs-idp29396208-item-6"
             }
           ]
         },

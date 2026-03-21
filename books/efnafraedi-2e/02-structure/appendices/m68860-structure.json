@@ -753,7 +753,7 @@
       "class": null,
       "title": {
         "segmentId": "m68860:title:fs-idm180300896-title",
-        "text": "Two-Dimensional (*x*-*y*) Graphing"
+        "text": "Two-Dimensional ({{i}}x{{/i}}-{{i}}y{{/i}}) Graphing"
       },
       "content": [
         {
@@ -771,7 +771,7 @@
           "id": "fs-idp9271248",
           "title": {
             "segmentId": "m68860:example-title:fs-idp9271248-title",
-            "text": "Graphing the Dependence of *y* on *x*"
+            "text": "Graphing the Dependence of {{i}}y{{/i}} on {{i}}x{{/i}}"
           },
           "content": [
             {

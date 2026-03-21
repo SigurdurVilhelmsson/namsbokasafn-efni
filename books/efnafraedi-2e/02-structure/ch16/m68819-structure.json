@@ -179,7 +179,10 @@
       "type": "section",
       "id": "fs-idm348811808",
       "class": null,
-      "title": null,
+      "title": {
+        "segmentId": "m68819:title:fs-idm348811808-title",
+        "text": "What’s “Free” about Δ{{i}}G{{/i}}?"
+      },
       "content": [
         {
           "type": "para",
@@ -242,7 +245,7 @@
           "id": "fs-idm117444432",
           "title": {
             "segmentId": "m68819:example-title:fs-idm117444432-title",
-            "text": "Solution"
+            "text": "Using Standard Enthalpy and Entropy Changes to Calculate Δ{{i}}G{{/i}}°"
           },
           "content": [
             {
@@ -253,7 +256,11 @@
             {
               "type": "para",
               "id": "fs-idm222992784",
-              "segmentId": "m68819:para:fs-idm222992784"
+              "segmentId": "m68819:para:fs-idm222992784",
+              "title": {
+                "segmentId": "m68819:para-title:fs-idm222992784-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -352,27 +359,11 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-46",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-47",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68819:entry:auto-48",
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68819:entry:auto-49",
                   "attributes": {
@@ -384,17 +375,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-51",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-51",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68819:entry:auto-52",
                   "attributes": {
@@ -406,9 +397,25 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68819:entry:auto-54",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-55",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-56",
                   "attributes": {
                     "align": "center"
                   }
@@ -442,7 +449,7 @@
           "id": "fs-idm202485584",
           "title": {
             "segmentId": "m68819:example-title:fs-idm202485584-title",
-            "text": "Solution"
+            "text": "Using Standard Free Energies of Formation to Calculate Δ{{i}}G{{/i}}°"
           },
           "content": [
             {
@@ -458,7 +465,11 @@
             {
               "type": "para",
               "id": "fs-idm70679856",
-              "segmentId": "m68819:para:fs-idm70679856"
+              "segmentId": "m68819:para:fs-idm70679856",
+              "title": {
+                "segmentId": "m68819:para-title:fs-idm70679856-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -577,33 +588,11 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-71",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-72",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-73",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68819:entry:auto-74",
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68819:entry:auto-75",
                   "attributes": {
@@ -621,17 +610,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-78",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-78",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68819:entry:auto-79",
                   "attributes": {
@@ -649,17 +638,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-82",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-82",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68819:entry:auto-83",
                   "attributes": {
@@ -677,9 +666,31 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68819:entry:auto-86",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-87",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-88",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-89",
                   "attributes": {
                     "align": "center"
                   }
@@ -1138,7 +1149,7 @@
           "id": "fs-idm192477856",
           "title": {
             "segmentId": "m68819:example-title:fs-idm192477856-title",
-            "text": "Solution"
+            "text": "Calculating Δ{{i}}G{{/i}} under Nonstandard Conditions"
           },
           "content": [
             {
@@ -1154,7 +1165,11 @@
             {
               "type": "para",
               "id": "fs-idm218730976",
-              "segmentId": "m68819:para:fs-idm218730976"
+              "segmentId": "m68819:para:fs-idm218730976",
+              "title": {
+                "segmentId": "m68819:para-title:fs-idm218730976-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1229,7 +1244,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-157",
+                  "segmentId": "m68819:entry:auto-161",
                   "attributes": {
                     "align": "center",
                     "namest": "c1",
@@ -1241,34 +1256,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-158",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-159",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-160",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68819:entry:auto-161",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68819:entry:auto-162",
                   "attributes": {
                     "align": "center"
@@ -1277,6 +1264,12 @@
                 {
                   "segmentId": "m68819:entry:auto-163",
                   "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-164",
+                  "attributes": {
                     "align": "left"
                   }
                 }
@@ -1284,12 +1277,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68819:entry:auto-164",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
                 {
                   "segmentId": "m68819:entry:auto-165",
                   "attributes": {
@@ -1299,6 +1286,12 @@
                 {
                   "segmentId": "m68819:entry:auto-166",
                   "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-167",
+                  "attributes": {
                     "align": "left"
                   }
                 }
@@ -1307,12 +1300,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-167",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68819:entry:auto-168",
                   "attributes": {
                     "align": "center"
@@ -1320,6 +1307,34 @@
                 },
                 {
                   "segmentId": "m68819:entry:auto-169",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-170",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-171",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-172",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-173",
                   "attributes": {
                     "align": "left"
                   }
@@ -1466,7 +1481,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-187",
+                  "segmentId": "m68819:entry:auto-191",
                   "attributes": {}
                 }
               ]

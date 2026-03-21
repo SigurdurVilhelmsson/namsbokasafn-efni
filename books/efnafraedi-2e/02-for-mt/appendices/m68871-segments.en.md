@@ -8,19 +8,19 @@ Half-Lives for Several Radioactive Isotopes
 Isotope
 
 <!-- SEG:m68871:entry:auto-4 -->
-Half-Life [footnote: y = years, d = days, h = hours, m = minutes, s = seconds]
+Half-Life {{fn}}y = years, d = days, h = hours, m = minutes, s = seconds{{/fn}}
 
 <!-- SEG:m68871:entry:auto-5 -->
-Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fission]
+Type of Emission {{fn}}{{i}}E.C.{{/i}} = electron capture, {{i}}S.F.{{/i}} = Spontaneous fission{{/fn}}
 
 <!-- SEG:m68871:entry:auto-6 -->
 Isotope
 
 <!-- SEG:m68871:entry:auto-7 -->
-Half-Life [footnote: y = years, d = days, h = hours, m = minutes, s = seconds]
+Half-Life {{fn}}y = years, d = days, h = hours, m = minutes, s = seconds{{/fn}}
 
 <!-- SEG:m68871:entry:auto-8 -->
-Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fission]
+Type of Emission {{fn}}{{i}}E.C.{{/i}} = electron capture, {{i}}S.F.{{/i}} = Spontaneous fission{{/fn}}
 
 <!-- SEG:m68871:entry:auto-9 -->
 [[MATH:1]]
@@ -62,7 +62,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:9]]
 
 <!-- SEG:m68871:entry:auto-22 -->
-4.1 [[MATH:10]] 10^−22^ s
+4.1 [[MATH:10]] 10[[sup:−22]] s
 
 <!-- SEG:m68871:entry:auto-23 -->
 [[MATH:11]]
@@ -89,7 +89,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:16]]
 
 <!-- SEG:m68871:entry:auto-31 -->
-3 [[MATH:17]] 10^−7^ s
+3 [[MATH:17]] 10[[sup:−7]] s
 
 <!-- SEG:m68871:entry:auto-32 -->
 [[MATH:18]]
@@ -116,7 +116,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:23]]
 
 <!-- SEG:m68871:entry:auto-40 -->
-1.27 [[MATH:24]] 10^9^ y
+1.27 [[MATH:24]] 10[[sup:9]] y
 
 <!-- SEG:m68871:entry:auto-41 -->
 [[MATH:25]]
@@ -143,7 +143,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:30]]
 
 <!-- SEG:m68871:entry:auto-49 -->
-1.0 [[MATH:31]] 10^−4^ s
+1.0 [[MATH:31]] 10[[sup:−4]] s
 
 <!-- SEG:m68871:entry:auto-50 -->
 [[MATH:32]]
@@ -152,7 +152,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:33]]
 
 <!-- SEG:m68871:entry:auto-52 -->
-2.6 [[MATH:34]] 10^6^ y
+2.6 [[MATH:34]] 10[[sup:6]] y
 
 <!-- SEG:m68871:entry:auto-53 -->
 [[MATH:35]]
@@ -188,7 +188,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:42]]
 
 <!-- SEG:m68871:entry:auto-64 -->
-4.7 [[MATH:43]] 10^10^ y
+4.7 [[MATH:43]] 10[[sup:10]] y
 
 <!-- SEG:m68871:entry:auto-65 -->
 [[MATH:44]]
@@ -224,7 +224,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:51]]
 
 <!-- SEG:m68871:entry:auto-76 -->
-5.1 [[MATH:52]] 10^15^ y
+5.1 [[MATH:52]] 10[[sup:15]] y
 
 <!-- SEG:m68871:entry:auto-77 -->
 [[MATH:53]]
@@ -260,7 +260,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:60]]
 
 <!-- SEG:m68871:entry:auto-88 -->
-5 [[MATH:61]] 10^15^ y
+5 [[MATH:61]] 10[[sup:15]] y
 
 <!-- SEG:m68871:entry:auto-89 -->
 [[MATH:62]]
@@ -305,7 +305,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:71]]
 
 <!-- SEG:m68871:entry:auto-103 -->
-1.4 [[MATH:72]] 10^10^ y
+1.4 [[MATH:72]] 10[[sup:10]] y
 
 <!-- SEG:m68871:entry:auto-104 -->
 [[MATH:73]]
@@ -368,7 +368,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:87]]
 
 <!-- SEG:m68871:entry:auto-124 -->
-1.59 [[MATH:88]] 10^5^ y
+1.59 [[MATH:88]] 10[[sup:5]] y
 
 <!-- SEG:m68871:entry:auto-125 -->
 [[MATH:89]]
@@ -386,7 +386,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:92]]
 
 <!-- SEG:m68871:entry:auto-130 -->
-2.45 [[MATH:93]] 10^5^ y
+2.45 [[MATH:93]] 10[[sup:5]] y
 
 <!-- SEG:m68871:entry:auto-131 -->
 [[MATH:94]]
@@ -404,7 +404,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:97]]
 
 <!-- SEG:m68871:entry:auto-136 -->
-7.03 [[MATH:98]] 10^8^ y
+7.03 [[MATH:98]] 10[[sup:8]] y
 
 <!-- SEG:m68871:entry:auto-137 -->
 [[MATH:99]]
@@ -422,7 +422,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:102]]
 
 <!-- SEG:m68871:entry:auto-142 -->
-4.47 [[MATH:103]] 10^9^ y
+4.47 [[MATH:103]] 10[[sup:9]] y
 
 <!-- SEG:m68871:entry:auto-143 -->
 [[MATH:104]]
@@ -476,7 +476,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:115]]
 
 <!-- SEG:m68871:entry:auto-160 -->
-2.407 [[MATH:116]] 10^4^ y
+2.407 [[MATH:116]] 10[[sup:4]] y
 
 <!-- SEG:m68871:entry:auto-161 -->
 [[MATH:117]]
@@ -494,7 +494,7 @@ Type of Emission [footnote: *E.C.* = electron capture, *S.F.* = Spontaneous fiss
 [[MATH:120]]
 
 <!-- SEG:m68871:entry:auto-166 -->
-6.54 [[MATH:121]] 10^3^ y
+6.54 [[MATH:121]] 10[[sup:3]] y
 
 <!-- SEG:m68871:entry:auto-167 -->
 [[MATH:122]]

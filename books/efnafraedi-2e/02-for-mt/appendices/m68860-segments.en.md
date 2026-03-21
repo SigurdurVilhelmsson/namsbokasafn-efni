@@ -14,7 +14,7 @@ Convert all numbers to the same power of 10, add the digit terms of the numbers,
 Adding Exponentials
 
 <!-- SEG:m68860:para:fs-idp139858976 -->
-Add 5.00 [[MATH:1]] 10^−5^ and 3.00 [[MATH:2]] 10^−3^.
+Add 5.00 [[MATH:1]] 10[[sup:−5]] and 3.00 [[MATH:2]] 10[[sup:−3]].
 
 <!-- SEG:m68860:para-title:eip-idm5092144-title -->
 Solution
@@ -29,7 +29,7 @@ Convert all numbers to the same power of 10, take the difference of the digit te
 Subtracting Exponentials
 
 <!-- SEG:m68860:para:fs-idm86312640 -->
-Subtract 4.0 [[MATH:3]] 10^−7^ from 5.0 [[MATH:4]] 10^−6^.
+Subtract 4.0 [[MATH:3]] 10[[sup:−7]] from 5.0 [[MATH:4]] 10[[sup:−6]].
 
 <!-- SEG:m68860:para-title:fs-idm68345632-title -->
 Solution
@@ -44,7 +44,7 @@ Multiply the digit terms in the usual way and add the exponents of the exponenti
 Multiplying Exponentials
 
 <!-- SEG:m68860:para:fs-idp112728352 -->
-Multiply 4.2 [[MATH:5]] 10^−8^ by 2.0 [[MATH:6]] 10^3^.
+Multiply 4.2 [[MATH:5]] 10[[sup:−8]] by 2.0 [[MATH:6]] 10[[sup:3]].
 
 <!-- SEG:m68860:para-title:fs-idp65507056-title -->
 Solution
@@ -59,7 +59,7 @@ Divide the digit term of the numerator by the digit term of the denominator and 
 Dividing Exponentials
 
 <!-- SEG:m68860:para:fs-idm118372272 -->
-Divide 3.6 [[MATH:7]] 10^–5^ by 6.0 [[MATH:8]] 10^−4^.
+Divide 3.6 [[MATH:7]] 10[[sup:–5]] by 6.0 [[MATH:8]] 10[[sup:−4]].
 
 <!-- SEG:m68860:para-title:fs-idm40543920-title -->
 Solution
@@ -74,7 +74,7 @@ Square the digit term in the usual way and multiply the exponent of the exponent
 Squaring Exponentials
 
 <!-- SEG:m68860:para:fs-idm49413248 -->
-Square the number 4.0 [[MATH:9]] 10^−6^.
+Square the number 4.0 [[MATH:9]] 10[[sup:−6]].
 
 <!-- SEG:m68860:para-title:fs-idm30315376-title -->
 Solution
@@ -89,7 +89,7 @@ Cube the digit term in the usual way and multiply the exponent of the exponentia
 Cubing Exponentials
 
 <!-- SEG:m68860:para:fs-idm16246768 -->
-Cube the number 2 [[MATH:10]] 10^4^.
+Cube the number 2 [[MATH:10]] 10[[sup:4]].
 
 <!-- SEG:m68860:para-title:fs-idm51196352-title -->
 Solution
@@ -104,16 +104,16 @@ If necessary, decrease or increase the exponential term so that the power of 10 
 Finding the Square Root of Exponentials
 
 <!-- SEG:m68860:para:fs-idm48165808 -->
-Find the square root of 1.6 [[MATH:11]] 10^−7^.
+Find the square root of 1.6 [[MATH:11]] 10[[sup:−7]].
 
 <!-- SEG:m68860:para-title:fs-idp49785840-title -->
 Solution
 
 <!-- SEG:m68860:para:fs-idp659968 -->
-Exponential notation is used to express very large and very small numbers as a product of two numbers. The first number of the product, the *digit term*, is usually a number not less than 1 and not equal to or greater than 10. The second number of the product, the *exponential term*, is written as 10 with an exponent. Some examples of exponential notation are:
+Exponential notation is used to express very large and very small numbers as a product of two numbers. The first number of the product, the {{i}}digit term{{/i}}, is usually a number not less than 1 and not equal to or greater than 10. The second number of the product, the {{i}}exponential term{{/i}}, is written as 10 with an exponent. Some examples of exponential notation are:
 
 <!-- SEG:m68860:para:eip-985 -->
-The power (exponent) of 10 is equal to the number of places the decimal is shifted to give the digit number. The exponential method is particularly useful notation for very large and very small numbers. For example, 1,230,000,000 = 1.23 [[MATH:12]] 10^9^, and 0.00000000036 = 3.6 [[MATH:13]] 10^−10^.
+The power (exponent) of 10 is equal to the number of places the decimal is shifted to give the digit number. The exponential method is particularly useful notation for very large and very small numbers. For example, 1,230,000,000 = 1.23 [[MATH:12]] 10[[sup:9]], and 0.00000000036 = 3.6 [[MATH:13]] 10[[sup:−10]].
 
 <!-- SEG:m68860:title:fs-idm250853696-title -->
 Significant Figures
@@ -170,7 +170,7 @@ Common Logarithm
 1000
 
 <!-- SEG:m68860:entry:auto-58 -->
-10^3^
+10[[sup:3]]
 
 <!-- SEG:m68860:entry:auto-59 -->
 3
@@ -179,7 +179,7 @@ Common Logarithm
 10
 
 <!-- SEG:m68860:entry:auto-61 -->
-10^1^
+10[[sup:1]]
 
 <!-- SEG:m68860:entry:auto-62 -->
 1
@@ -188,7 +188,7 @@ Common Logarithm
 1
 
 <!-- SEG:m68860:entry:auto-64 -->
-10^0^
+10[[sup:0]]
 
 <!-- SEG:m68860:entry:auto-65 -->
 0
@@ -197,7 +197,7 @@ Common Logarithm
 0.1
 
 <!-- SEG:m68860:entry:auto-67 -->
-10^−1^
+10[[sup:−1]]
 
 <!-- SEG:m68860:entry:auto-68 -->
 −1
@@ -206,7 +206,7 @@ Common Logarithm
 0.001
 
 <!-- SEG:m68860:entry:auto-70 -->
-10^−3^
+10[[sup:−3]]
 
 <!-- SEG:m68860:entry:auto-71 -->
 −3
@@ -218,13 +218,13 @@ What is the common logarithm of 60? Because 60 lies between 10 and 100, which ha
 The common logarithm of a number less than 1 has a negative value. The logarithm of 0.03918 is −1.4069, or
 
 <!-- SEG:m68860:para:fs-idm300540512 -->
-To obtain the common logarithm of a number, use the *log* button on your calculator. To calculate a number from its logarithm, take the inverse log of the logarithm, or calculate 10*x* (where *x* is the logarithm of the number).
+To obtain the common logarithm of a number, use the {{i}}log{{/i}} button on your calculator. To calculate a number from its logarithm, take the inverse log of the logarithm, or calculate 10[[sup:{{i}}x{{/i}}]] (where {{i}}x{{/i}} is the logarithm of the number).
 
 <!-- SEG:m68860:para:fs-idm355694432 -->
-The natural logarithm of a number (ln) is the power to which *e* must be raised to equal the number; *e* is the constant 2.7182818. For example, the natural logarithm of 10 is 2.303; that is,
+The natural logarithm of a number (ln) is the power to which {{i}}e{{/i}} must be raised to equal the number; {{i}}e{{/i}} is the constant 2.7182818. For example, the natural logarithm of 10 is 2.303; that is,
 
 <!-- SEG:m68860:para:fs-idm315316192 -->
-To obtain the natural logarithm of a number, use the *ln* button on your calculator. To calculate a number from its natural logarithm, enter the natural logarithm and take the inverse ln of the natural logarithm, or calculate *e^x^* (where *x* is the natural logarithm of the number).
+To obtain the natural logarithm of a number, use the {{i}}ln{{/i}} button on your calculator. To calculate a number from its natural logarithm, enter the natural logarithm and take the inverse ln of the natural logarithm, or calculate {{i}}e[[sup:x]]{{/i}} (where {{i}}x{{/i}} is the natural logarithm of the number).
 
 <!-- SEG:m68860:para:fs-idm46275792 -->
 Logarithms are exponents; thus, operations involving logarithms follow the same rules as operations involving exponents.
@@ -251,13 +251,13 @@ The solution or roots for any quadratic equation can be calculated using the fol
 Solving Quadratic Equations
 
 <!-- SEG:m68860:para:fs-idm72976848 -->
-Solve the quadratic equation 3*x*^2^ + 13*x* − 10 = 0.
+Solve the quadratic equation 3{{i}}x{{/i}}[[sup:2]] + 13{{i}}x{{/i}} − 10 = 0.
 
 <!-- SEG:m68860:para-title:fs-idm175980608-title -->
 Solution
 
 <!-- SEG:m68860:para:fs-idm175980608 -->
-Substituting the values *a* = 3, *b* = 13, *c* = −10 in the formula, we obtain
+Substituting the values {{i}}a{{/i}} = 3, {{i}}b{{/i}} = 13, {{i}}c{{/i}} = −10 in the formula, we obtain
 
 <!-- SEG:m68860:para:fs-idm171950464 -->
 The two roots are therefore
@@ -266,25 +266,25 @@ The two roots are therefore
 Quadratic equations constructed on physical data always have real roots, and of these real roots, often only those having positive values are of any significance.
 
 <!-- SEG:m68860:title:fs-idm180300896-title -->
-Two-Dimensional (*x*-*y*) Graphing
+Two-Dimensional ({{i}}x{{/i}}-{{i}}y{{/i}}) Graphing
 
 <!-- SEG:m68860:para:fs-idm67130880 -->
-The relationship between any two properties of a system can be represented graphically by a two-dimensional data plot. Such a graph has two axes: a horizontal one corresponding to the independent variable, or the variable whose value is being controlled (*x*), and a vertical axis corresponding to the dependent variable, or the variable whose value is being observed or measured (*y*).
+The relationship between any two properties of a system can be represented graphically by a two-dimensional data plot. Such a graph has two axes: a horizontal one corresponding to the independent variable, or the variable whose value is being controlled ({{i}}x{{/i}}), and a vertical axis corresponding to the dependent variable, or the variable whose value is being observed or measured ({{i}}y{{/i}}).
 
 <!-- SEG:m68860:para:fs-idm78087840 -->
-When the value of *y* is changing as a function of *x* (that is, different values of *x* correspond to different values of *y*), a graph of this change can be plotted or sketched. The graph can be produced by using specific values for (*x*,*y*) data pairs.
+When the value of {{i}}y{{/i}} is changing as a function of {{i}}x{{/i}} (that is, different values of {{i}}x{{/i}} correspond to different values of {{i}}y{{/i}}), a graph of this change can be plotted or sketched. The graph can be produced by using specific values for ({{i}}x{{/i}},{{i}}y{{/i}}) data pairs.
 
 <!-- SEG:m68860:example-title:fs-idp9271248-title -->
-Graphing the Dependence of *y* on *x*
+Graphing the Dependence of {{i}}y{{/i}} on {{i}}x{{/i}}
 
 <!-- SEG:m68860:para:fs-idm176114816 -->
-This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each of these points can be plotted on a graph and connected to produce a graphical representation of the dependence of *y* on *x*.
+This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each of these points can be plotted on a graph and connected to produce a graphical representation of the dependence of {{i}}y{{/i}} on {{i}}x{{/i}}.
 
 <!-- SEG:m68860:entry:auto-95 -->
-*x*
+{{i}}x{{/i}}
 
 <!-- SEG:m68860:entry:auto-96 -->
-*y*
+{{i}}y{{/i}}
 
 <!-- SEG:m68860:entry:auto-97 -->
 1
@@ -311,19 +311,19 @@ This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each
 14
 
 <!-- SEG:m68860:para:fs-idm164107136 -->
-If the function that describes the dependence of *y* on *x* is known, it may be used to compute x,y data pairs that may subsequently be plotted.
+If the function that describes the dependence of {{i}}y{{/i}} on {{i}}x{{/i}} is known, it may be used to compute x,y data pairs that may subsequently be plotted.
 
 <!-- SEG:m68860:example-title:fs-idm173153104-title -->
 Plotting Data Pairs
 
 <!-- SEG:m68860:para:fs-idm144872640 -->
-If we know that *y* = *x*^2^ + 2, we can produce a table of a few (*x*,*y*) values and then plot the line based on the data shown here.
+If we know that {{i}}y{{/i}} = {{i}}x{{/i}}[[sup:2]] + 2, we can produce a table of a few ({{i}}x{{/i}},{{i}}y{{/i}}) values and then plot the line based on the data shown here.
 
 <!-- SEG:m68860:entry:auto-108 -->
-*x*
+{{i}}x{{/i}}
 
 <!-- SEG:m68860:entry:auto-109 -->
-*y* = *x*^2^ + 2
+{{i}}y{{/i}} = {{i}}x{{/i}}[[sup:2]] + 2
 
 <!-- SEG:m68860:entry:auto-110 -->
 1

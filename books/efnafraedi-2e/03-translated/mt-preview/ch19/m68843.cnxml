@@ -1,0 +1,593 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<!-- FIDELITY-WARNING: m68843 has 2 structural discrepancy(ies)
+  link: source=35 translated=37 (+2 overproduction)
+  sup: source=85 translated=86 (+1 overproduction)
+  Review needed before publication. Run cnxml-fidelity-check.js for details.
+-->
+<title>Girðiefnafræði hliðarmálma</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68843</md:content-id>
+  <md:title>Girðiefnafræði hliðarmálma</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Skráð einkennandi eiginleika girðisambanda</item><item>Lýst byggingu flóka sem innihalda eintennta og fjöltennta girðla</item><item>Notað staðlaðar nafnareglur til að nefna girðisambönd</item><item>Útskýrt og gefið dæmi um rúm- og spegilmyndaísómeríu</item><item>Borið kennsl á nokkur dæmi um girðisambönd í náttúrunni og tækni</item></list></md:abstract>
+  <md:uuid>21374116-b20b-4092-8a9d-0a89dfc7920e</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp120146608">Blóðrauðinn í blóðinu þínu, blaðgrænan í grænum plöntum, B-12 vítamín og hvatinn sem notaður er við framleiðslu á pólýetýleni innihalda öll girðisambönd. Jónir málma, sérstaklega hliðarmálma, eru líklegar til að mynda flóka. Mörg þessara sambanda eru mjög litrík (<link target-id="CNX_Chem_19_02_Colors"/>). Í því sem eftir er af þessum kafla munum við skoða byggingu og efnatengi þessara merkilegu sambanda.</para>
+<figure id="CNX_Chem_19_02_Colors" class="scaled-down">
+<media id="fs-idp7404384" alt="This figure shows six containers. Each is filled with a different color liquid. The first appears to be clear; the second appears to be purple; the third appears to be red; the fourth appears to be teal; the fifth appears to be blue; and the sixth also appears to be clear.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Colors.jpg"/>
+</media>
+<caption>Málmjónir sem innihalda að hluta til fyllt <emphasis effect="italics">d</emphasis>-undirhvolf mynda venjulega litaðar flókajónir; jónir með tómt <emphasis effect="italics">d</emphasis>-undirhvolf (<emphasis effect="italics">d</emphasis><sup>0</sup>) eða með fullfyllt <emphasis effect="italics">d</emphasis>-undirhvolf (<emphasis effect="italics">d</emphasis><sup>10</sup>) mynda venjulega litlausa flóka. Þessi mynd sýnir, frá vinstri til hægri, lausnir sem innihalda [<emphasis effect="italics">M</emphasis>(H<sub>2</sub>O)<sub>6</sub>]<sup>n+</sup> jónir með <emphasis effect="italics">M</emphasis> = Sc<sup>3+</sup>(<emphasis effect="italics">d</emphasis><sup>0</sup>), Cr<sup>3+</sup>(<emphasis effect="italics">d</emphasis><sup>3</sup>), Co<sup>2+</sup>(<emphasis effect="italics">d</emphasis><sup>7</sup>), Ni<sup>2+</sup>(<emphasis effect="italics">d</emphasis><sup>8</sup>), Cu<sup>2+</sup>(<emphasis effect="italics">d</emphasis><sup>9</sup>) og Zn<sup>2+</sup>(<emphasis effect="italics">d</emphasis><sup>10</sup>). (Heimild: Sahar Atwa)</caption>
+</figure>
+<para id="fs-idp92015616">Mundu að í flestum efnasamböndum aðalhópafrumefna sameinast gildisrafeindir einangraðra frumeinda og mynda efnatengi sem uppfylla átturegluna. Til dæmis skarast fjórar gildisrafeindir kolefnis við rafeindir frá fjórum vetnisfrumeindum og mynda CH<sub>4</sub>. Eina gildisrafeindin fer frá natríni og bætist við sjö gildisrafeindir klórs til að mynda jónaformúlueininguna NaCl (<link target-id="CNX_Chem_19_02_BondType"/>). Hliðarmálmar tengjast venjulega ekki á þennan hátt. Þeir mynda aðallega gildissamgild tengi, sem er tegund af Lewis-sýru-basa víxlverkun þar sem báðar rafeindirnar í efnatenginu koma frá gjafa (Lewis-basa) til rafeindaþega (Lewis-sýru). Lewis-sýran í girðiflóka, oft kölluð <term id="term-00001">miðmálmjón (e. central metal)</term> (eða frumeind), er oft hliðarmálmur eða innri hliðarmálmur, þó að aðalhópafrumefni geti einnig myndað <term id="term-00002">girðisambönd (e. coordination compounds)</term>. Lewis-basa gjafarnir, kallaðir <term id="term-00003">girðlar (e. ligands)</term>, geta verið margs konar efni—frumeindir, sameindir eða jónir. Eina skilyrðið er að þeir hafi eitt eða fleiri rafeindapör sem hægt er að gefa til miðmálmsins. Oftast felur þetta í sér <term id="term-00004">gjafafrumeind (e. donor atom)</term> með rafeindapar sem getur myndað gildistengi við málminn.</para>
+<figure id="CNX_Chem_19_02_BondType" class="scaled-down">
+<media id="fs-idp231200048" alt="Three electron dot models are shown. To the left, a central C atom is shown with H atoms bonded above, below, to the left, and to the right. Between the C atom and each H atom are two electron dots, one red, and one black, next to each other in pairs between the atoms. The second structure to the right shows N superscript plus sign followed by a C l atom in brackets. This C l atom has pairs of electron dots above, below, left, and right of the element symbol. A single electron dot on the left side of the symbol is shown in red. All others are black. Outside the brackets to the right, a negative sign appears as a superscript. The third structure on the far right has a central S c atom. This atom is surrounded by six pairs of evenly-spaced electron dots. These pairs of dots are positioned between the S c atom and each of the O atoms from six H subscript 2 O molecules. This entire structure is within brackets to the right of which is the superscript 3 plus.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_BondType.jpg"/>
+</media>
+<caption>(a) Samgild tengi fela í sér samnýtingu rafeinda og jónatengi fela í sér flutning rafeinda sem tengjast hverri tengifrumefni, eins og litaðar rafeindir sýna. (b) Gildissamgild tengi fela hins vegar í sér að rafeindir frá Lewis-basa eru gefnar til málmkjarna. Rafeindapörin frá sex vatnssameindum mynda tengi við skandíumjónina og mynda áttflötungsflóka. (Aðeins gefnu pörin eru sýnd.)</caption>
+</figure>
+<para id="fs-idp151225552"><term id="term-00005">Girðihvolfið (e. coordination sphere)</term> samanstendur af miðmálmjóninni eða -frumeindinni ásamt tengdum girðlum hennar. Hornklofar í formúlu umlykja girðihvolfið; efni utan hornklofanna eru ekki hluti af girðihvolfinu. <term id="term-00006">Girðitala (e. coordination number)</term> miðmálmjónarinnar eða -frumeindarinnar er fjöldi gjafafrumeinda sem eru tengdar henni. Girðitalan fyrir silfurjónina í [Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup> er tvö (<link target-id="CNX_Chem_19_02_CN"/>). Fyrir kopar(II)-jónina í [CuCl<sub>4</sub>]<sup>2−</sup> er girðitalan fjórir, en fyrir kóbalt(II)-jónina í [Co(H<sub>2</sub>O)<sub>6</sub>]<sup>2+</sup> er girðitalan sex. Hver þessara girðla er <term id="term-00007">eintenntur (e. monodentate)</term>, úr grísku fyrir „eintannað“, sem þýðir að þeir tengjast miðmálminum aðeins í gegnum eina frumeind. Í þessu tilfelli er fjöldi girðla og girðitalan jöfn.</para>
+<figure id="CNX_Chem_19_02_CN" class="scaled-down">
+<media id="fs-idp225513984" alt="Three structures are shown. In a, a central A g atom has N atoms bonded to the left and right as indicated by line segments. Three H atoms are similarly bonded to each N atom extending out and up, out to the side, and out and below each N atom. The structure is enclosed in brackets with a superscript plus sign to the right of the brackets. In b, a C u atom is at the center of the structure. Line segments indicate bonds to two C l atoms, one above and the other below and to the left of the central atom. To the right, a dashed wedge, narrow toward the C u atom and widening toward a C l atom, is shown at the right side of the central C u atom. A solid wedge is similarly directed toward a C l atom below and slightly right of the central C u atom. This structure is enclosed in brackets with a superscript 2 negative sign present to the right of the brackets. In c, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is a superscript 2 plus sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_CN.jpg"/>
+</media>
+<caption>Flókarnir (a) [Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup>, (b) [Cu(Cl)<sub>4</sub>]<sup>2−</sup> og (c) [Co(H<sub>2</sub>O)<sub>6</sub>]<sup>2+</sup> hafa girðitölurnar tvö, fjögur og sex, í sömu röð. Rúmfræði þessara flóka er sú sama og við höfum séð með VSEPR-kenningunni fyrir aðalhópafrumefni: línuleg, ferflötungur og áttflötungur.</caption>
+</figure>
+<para id="fs-idp37282080">Margir aðrir tenglar tengjast málminum á flóknari hátt. <term id="term-00008">Tvítenntir tenglar (e. bidentate ligands)</term> eru þeir þar sem tvær frumeindir tengjast miðjumálminum. Til dæmis inniheldur etýlendíamín (en, H<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>) tvær niturfrumeindir, sem hvor um sig hefur rafeindapar og getur virkað sem Lewis-basi (<link target-id="CNX_Chem_19_02_en"/>). Báðar frumeindirnar geta tengst einni miðjumálmsjón. Í flókanum [Co(en)<sub>3</sub>]<sup>3+</sup> eru þrír tvítenntir en-tenglar og girðitala kóbalt(III)-jónarinnar er sex. Algengustu girðitölurnar eru tvö, fjögur og sex, en dæmi eru þekkt um allar girðitölur frá 1 til 15.</para>
+<figure id="CNX_Chem_19_02_en" class="scaled-down">
+<media id="fs-idp39737888" alt="Two structures are shown. In a, H subscript 2 N appears at the left end of the structure. A short line segment extends up and to the right from the N atom to a C atom in a C H subscript 2 group. A short line segment extends down and to the right to another C atom in a C H subscript 2 group. A final short line segment extends from this C H subscript 2 group up and to the right to the N atom of an N H subscript 2 group. Each N atom in the structure has a pair of electron dots at its top. In b, a central C o atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming 3 rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript 3 plus sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_en.jpg"/>
+</media>
+<caption>(a) Etýlendíamín (en) tengillinn inniheldur tvær frumeindir með rafeindapörum sem geta tengst miðjumálminum. (b) Kóbalt(III)-flókinn <m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>Co</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>en</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup></m:mrow></m:math> inniheldur þrjá slíka tengla og myndar hver þeirra tvö tengi við kóbaltjónina.</caption>
+</figure>
+<para id="fs-idp32736688">Hver sá tengill sem tengist miðjumálmsjón með fleiri en einni gjafafrumeind er <term id="term-00009">fjöltenntur tengill (e. polydentate ligand)</term> (eða „margar tennur“) vegna þess að hann getur „bitið“ í miðjumálminn með fleiri en einu tengi. Hugtakið <term id="term-00010">klóefni (e. chelate)</term> (borið fram „KLÓ-efni“) úr grísku orði yfir „kló“ er einnig notað til að lýsa þessari tegund víxlverkunar. Margir fjöltenntir tenglar eru <term id="term-00011">klótenglar (e. chelating ligands)</term> og flóki sem samanstendur af einum eða fleiri slíkum tenglum og miðjumálmi er klóefni. Klótengill er einnig þekktur sem klóbindir. Klótengill heldur málmjóninni nokkurn veginn eins og krabbaklær myndu halda um kúlu. <link target-id="CNX_Chem_19_02_en"/> sýndi eitt dæmi um klóefni. Hem-flókinn í hemóglóbíni er annað mikilvægt dæmi (<link target-id="CNX_Chem_19_02_heme"/>). Hann inniheldur fjöltenntan tengil með fjórum gjafafrumeindum sem tengjast járni.</para>
+<figure id="CNX_Chem_19_02_heme" class="scaled-down">
+<media id="fs-idp57882256" alt="A structure is shown for the single ligand heme. At the center of this structure is an F e atom. From this atom, four single bonds extend up and to the right and left and below and to the right and left to four N atoms which are shown in red. Each N atom is a component of a 5 member ring with four C atoms. Each of these rings has a double bond between the C atoms that are not bonded to the N atom. The C atoms that are bonded to N atoms are connected to C atoms that serve as links between the 5-member rings. The bond to the C atom clockwise from the 5-member ring in each case is a double bond. The bond to the C atom counterclockwise from the 5-member ring in each case is a single bond. To the left of the structure, two of the C atoms in the 5-member rings that are not bonded to N are bonded to C H subscript 3 groups. The other carbons in these rings that are not bonded to N atoms are bonded to groups above and below. Above is a C H group double bonded to a C H subscript 2 group. Below is a C H subscript 2 group bonded to another C H subscript 2 group, which is bonded to a C O subscript 2 H group. At the right side of the structure, the C atoms in the 5-member rings that are not bonded to N atoms are bonded to additional structures. The C atom at to the right in the 5-member ring at the upper right is bonded to a C H group which is in turn double bonded to a C H subscript 2 group. Similarly, the right most C atom from the 5-member ring in the lower right is bonded to a C H subscript 3 group. The C atom from the 5-member ring not bonded to an N atom in the upper right region of the structure is bonded to a C H subscript 3 group above. Similarly, the C atom on the 5-member ring not bonded to an N atom in the lower right region of the structure is bonded to a C H subscript 2 group that is bonded to another C H subscript 2 group, which is bonded to a C O subscript 2 H group below.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_heme.jpg"/>
+</media>
+<caption>Eini tengillinn, hem, inniheldur fjórar niturfrumeindir sem tengjast járni í hemóglóbíni til að mynda klóefni.</caption>
+</figure>
+<para id="fs-idp106041024">Fjöltenntir tenglar eru stundum auðkenndir með forskeytum sem gefa til kynna fjölda gjafafrumeinda í tenglinum. Eins og við höfum séð eru tenglar með eina gjafafrumeind, eins og NH<sub>3</sub>, Cl<sup>−</sup> og H<sub>2</sub>O, eintenntir tenglar. Tenglar með tvo gjafahópa eru tvítenntir tenglar. Etýlendíamín, H<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>, og anjón sýrunnar glýsíns, <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> (<link target-id="CNX_Chem_19_02_Gly"/>) eru dæmi um tvítennta tengla. Þrítenntir tenglar, fjórtenntir tenglar, fimmtenntir tenglar og sextenntir tenglar innihalda þrjár, fjórar, fimm og sex gjafafrumeindir, í sömu röð. Tengillinn í hem (<link target-id="CNX_Chem_19_02_heme"/>) er fjórtenntur tengill.</para>
+<figure id="CNX_Chem_19_02_Gly" class="scaled-down">
+<media id="fs-idp157070928" alt="A structure is shown. At the center of this structure is an P t atom. From this atom, two single bonds extend up and to the right and below and to the left to two O atoms which are shown in red. Similarly, two bonds extend up and to the left and down and to the right to N atoms in N H subscript 2 groups. The N atoms in these groups are in red. The N atoms are bonded to C H subscript 2 groups, which in turn are bonded to C atoms. These C atoms have doubly bonded O atoms bonded and oriented toward the outside of the structure. They are also singly bonded to the O atoms in the structure forming two rings connected by the central P t atom.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Gly.jpg"/>
+</media>
+<caption>Hver af anjónísku tenglunum sem sýndir eru tengist platínu(II) á tvítenntan hátt, þar sem bæði nitur- og súrefnisfrumeind tengjast málminum.</caption>
+</figure>
+<section id="fs-idp9182928">
+<title>Nafnakerfi flóka</title>
+<list id="fs-idp7606384" list-type="enumerated" number-style="arabic">
+<item>Ef girðisamband er jónískt skal nefna katjónina fyrst og anjónina síðan, í samræmi við venjulegt nafnakerfi.</item>
+<item>Nefndu tenglana fyrst, síðan miðmálminn. Nefndu tenglana í stafrófsröð. Neikvæðir tenglar (anjónir) hafa nöfn sem mynduð eru með því að bæta -<emphasis effect="italics">ó</emphasis> við stofnheiti hópsins. Sjá dæmi í <link target-id="fs-idp115554880"/>. Fyrir flesta hlutlausa tengla er nafn sameindarinnar notað. Fjórar algengar undantekningar eru <emphasis effect="italics">akva</emphasis> (H<sub>2</sub>O), <emphasis effect="italics">ammín</emphasis> (NH<sub>3</sub>), <emphasis effect="italics">karbónýl</emphasis> (CO) og <emphasis effect="italics">nítrósýl</emphasis> (NO). Til dæmis, nefndu [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>4</sub>] sem díammíntetraklórplatínu(IV).</item>
+<item>Ef fleiri en einn tengill af ákveðinni gerð er til staðar er fjöldinn gefinn til kynna með forskeytunum <emphasis effect="italics">dí</emphasis>- (fyrir tvo), <emphasis effect="italics">trí</emphasis>- (fyrir þrjá), <emphasis effect="italics">tetra</emphasis>- (fyrir fjóra), <emphasis effect="italics">penta</emphasis>- (fyrir fimm) og <emphasis effect="italics">hexa</emphasis>- (fyrir sex). Stundum eru forskeytin <emphasis effect="italics">bis</emphasis>- (fyrir tvo), <emphasis effect="italics">tris</emphasis>- (fyrir þrjá) og <emphasis effect="italics">tetrakis</emphasis>- (fyrir fjóra) notuð þegar nafn tengilsins inniheldur nú þegar <emphasis effect="italics">dí</emphasis>-, <emphasis effect="italics">trí</emphasis>- eða <emphasis effect="italics">tetra</emphasis>-, eða þegar nafn tengilsins byrjar á sérhljóða. Til dæmis notar jónin bis(bípýridýl)osmíum(II) bis- til að tákna að tveir tenglar eru tengdir Os og hver bípýridýl-tengill inniheldur tvo pýridín-hópa (C<sub>5</sub>H<sub>4</sub>N).</item>
+</list>
+<para id="fs-idp51192128">Nafnakerfi flókanna er byggt á kerfi sem Alfred Werner, svissneskur efnafræðingur og Nóbelsverðlaunahafi, lagði til, en framúrskarandi vinna hans fyrir meira en 100 árum lagði grunninn að skýrari skilningi á þessum efnasamböndum. Eftirfarandi fimm reglur eru notaðar til að nefna flóka:</para>
+<table id="fs-idp115554880" class="top-titled" summary="This table has two columns and 11 rows. The first row is a header and it labels each column, “Anionic Ligand,” and “Name.” Under “Anionic Ligand” are the following: F superscript negative sign, C l superscript negative sign, B r superscript negative sign, I superscript negative sign, C N superscript negative sign, N O subscript 3 superscript negative sign, O H superscript negative sign, O to the second power superscript negative sign, C subscript 2 O subscript 4 to the second power superscript negative sign, C O subscript 2 to the second power superscript negative sign. Under the “Name” are the following: fluoro, chloror, bromo, iodo, cyano, nitrato, hydroxo, oxo, oxalate, carbonato.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Dæmi um anjóníska tengla</entry>
+</row>
+<row valign="top">
+<entry align="left">Anjónískur tengill</entry>
+<entry align="left">Nafn</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">F<sup>−</sup></entry>
+<entry align="left">flúoró</entry>
+</row>
+<row valign="top">
+<entry align="left">Cl<sup>−</sup></entry>
+<entry align="left">klóró</entry>
+</row>
+<row valign="top">
+<entry align="left">Br<sup>−</sup></entry>
+<entry align="left">brómó</entry>
+</row>
+<row valign="top">
+<entry align="left">I<sup>−</sup></entry>
+<entry align="left">jódó</entry>
+</row>
+<row valign="top">
+<entry align="left">CN<sup>−</sup></entry>
+<entry align="left">síanó</entry>
+</row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">nítrató</entry>
+</row>
+<row valign="top">
+<entry align="left">OH<sup>−</sup></entry>
+<entry align="left">hýdroxó</entry>
+</row>
+<row valign="top">
+<entry align="left">O<sup>2–</sup></entry>
+<entry align="left">oxó</entry>
+</row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></entry>
+<entry align="left">oxalató</entry>
+</row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></entry>
+<entry align="left">karbónató</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp261455600">Þegar flókinn er annaðhvort katjón eða hlutlaus sameind er nafn miðfrumeindar málmsins stafað nákvæmlega eins og nafn frumefnisins og á eftir því kemur rómversk tala í sviga til að gefa til kynna oxunarástand þess (<link target-id="fs-idp99540896"/> og <link target-id="fs-idp97436016"/>). Þegar flókinn er anjón er viðskeytinu -at bætt við stofn nafns málmsins og á eftir kemur rómversk tala sem táknar oxunarástand hans (<link target-id="fs-idp240256816"/>). Stundum er latneskt heiti málmsins notað þegar enska heitið er klunnalegt. Til dæmis er <emphasis effect="italics">ferrat</emphasis> notað í stað <emphasis effect="italics">íronats</emphasis>, <emphasis effect="italics">plúmbat</emphasis> í stað <emphasis effect="italics">leadats</emphasis> og <emphasis effect="italics">stannat</emphasis> í stað <emphasis effect="italics">tinats</emphasis>. Oxunarástand málmsins er ákvarðað út frá hleðslum hvers tengils og heildarhleðslu girðisambandsins. Til dæmis, í [Cr(H<sub>2</sub>O)<sub>4</sub>Cl<sub>2</sub>]Br, hefur girðihvolfið (innan hornklofa) hleðsluna 1+ til að vega upp á móti brómíðjóninni. Vatnstenglarnir eru hlutlausir og klóríðtenglarnir eru anjónískir með hleðsluna 1− hvor. Til að ákvarða oxunarástand málmsins setjum við heildarhleðsluna jafna summu tenglanna og málmsins: +1 = −2 + <emphasis effect="italics">x</emphasis>, þannig að oxunarástandið (<emphasis effect="italics">x</emphasis>) er jafnt og 3+.</para>
+<table id="fs-idp99540896" class="top-titled" summary="This table has two columns and five rows. In the first column are the following: [ C o ( N H subscript 3 ) subscript 6 ] C l subscript 3, [ P t ( N H subscript 3 ) subscript 4 C l subscript 2 ] to the second power superscript positive sign, [ A g ( N H subscript 3 ) subscript 2 ] superscript positive sign, [ C r ( H subscript 2 O ) subscript 4 C l subscript 2 ] C l, [ C o ( H subscript 2 N C H subscript 2 C H subscript 2 N H subscript 2 ) subscript 3 ] subscript 2 ( S O subscript 4 ) subscript 3. In the second column are the following: Hexaamminecobalt ( I I I ) chloride, Tetraamminedichloroplatinum ( I V ) ion, Diamminesilve ( I ) ion, Tetraaquadichlorochromium ( I I I ) chloride, Tris ( ethylenediamine ) cobalt ( I I I ) sulfate.">
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Dæmi þar sem flókinn er katjón</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">[Co(NH<sub>3</sub>)<sub>6</sub>]Cl<sub>3</sub></entry>
+<entry align="left">hexaammínkóbalt(III)klóríð</entry>
+</row>
+<row valign="top">
+<entry align="left">[Pt(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]<sup>2+</sup></entry>
+<entry align="left">tetraammíndíklórplatínu(IV)jón</entry>
+</row>
+<row valign="top">
+<entry align="left">[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup></entry>
+<entry align="left">díammínsilfur(I)jón</entry>
+</row>
+<row valign="top">
+<entry align="left">[Cr(H<sub>2</sub>O)<sub>4</sub>Cl<sub>2</sub>]Cl</entry>
+<entry align="left">tetraakvadíklórkróm(III)klóríð</entry>
+</row>
+<row valign="top">
+<entry align="left">[Co(H<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>)<sub>3</sub>]<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></entry>
+<entry align="left">tris(etýlendíamín)kóbalt(III)súlfat</entry>
+</row>
+</tbody>
+
+
+</tgroup>
+</table>
+<table id="fs-idp97436016" class="top-titled" summary="This table has two columns and two rows. In the first row are the following: [ P t ( N H subscript 3 ) subscript 2 C l subscript 4 ], [ N i ( H subscript 2 N C H subscript 2 C H subscript 2 N H subscript 2 ) subscript 2 C l subscript 2 ]. In the second column are the following: Diamminetetrachloroplatiumn ( I V ), Dichlorobis ( ethylenediamine ) nickel ( I I ).">
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Dæmi þar sem flókinn er hlutlaus</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">[Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>4</sub>]</entry>
+<entry align="left">díammíntetraklórplatína(IV)</entry>
+</row>
+<row valign="top">
+<entry align="left">[Ni(H<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>)<sub>2</sub>Cl<sub>2</sub>]</entry>
+<entry align="left">díklórbis(etýlendíamín)nikkel(II)</entry>
+</row>
+</tbody>
+
+</tgroup>
+</table>
+<table id="fs-idp240256816" class="top-titled" summary="This table has two columns and two rows. In the first column is the following: [ P t C l subscript 6 ] to the second power superscript negative sign, N a subscript 2 [ S n C l subscript 6 ]. The second column are the following Hexachloroplatinate ( I V ) ion, Sodium hexachlorostannate ( I V ).">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Dæmi þar sem flókinn er anjón</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">[PtCl<sub>6</sub>]<sup>2−</sup></entry>
+<entry align="left">hexaklórplatinat(IV)jón</entry>
+</row>
+<row valign="top">
+<entry align="left">Na<sub>2</sub>[SnCl<sub>6</sub>]</entry>
+<entry align="left">natríumhexaklórstannat(IV)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<note id="fs-idp19588672" class="chemistry link-to-learning">
+<para id="fs-idp115410176">Heldurðu að þú skiljir nafngiftir girðisambanda? Þú getur skoðað fleiri dæmi og prófað þig með <link url="http://openstax.org/l/16namingcomps">netprófum</link> á vefsvæði Háskólans í Sydney.</para>
+</note>
+<example id="fs-idp246755792">
+<para id="fs-idp311893584"><title>Girðitölur og oxunarástönd</title>Finndu heiti eftirfarandi flétta og gefðu upp hnitunartölu miðjumálmatómsins.</para>
+<para id="fs-idp150844896">(a) Na<sub>2</sub>[PtCl<sub>6</sub>]</para>
+<para id="fs-idp67156976">(b) K<sub>3</sub>[Fe(C<sub>2</sub>O<sub>4</sub>)<sub>3</sub>]</para>
+<para id="fs-idp76361984">(c) [Co(NH<sub>3</sub>)<sub>5</sub>Cl]Cl<sub>2</sub></para>
+<para id="fs-idp11270272"><title>Lausn</title>(a) Það eru tvær Na<sup>+</sup> jónir, þannig að hnitunarhvolfið hefur neikvæða hleðslu upp á tvö: [PtCl<sub>6</sub>]<sup>2−</sup>. Það eru sex anjónískir klóríðtenglar, þannig að −2 = −6 + <emphasis effect="italics">x</emphasis>, og oxunarástand platínunnar er 4+. Heiti fléttunnar er natríumhexaklórplatínat(IV) og hnitunartalan er sex. (b) Hnitunarhvolfið hefur hleðsluna 3− (miðað við kalíum) og oxalattenglarnir hafa hvor um sig hleðsluna 2−, þannig að oxunarástand málmsins er gefið með −3 = −6 + <emphasis effect="italics">x</emphasis>, og þetta er járn(III) flétta. Heitið er kalíumtrisoxalatferrat(III) (athugið að tris er notað í stað tri vegna þess að heiti tengilsins byrjar á sérhljóða). Vegna þess að oxalat er tvítengill hefur þessi flétta hnitunartöluna sex. (c) Í þessu dæmi hefur hnitunarhvolfið katjóníska hleðslu upp á 2+. NH<sub>3</sub> tengillinn er hlutlaus, en klórtengillinn hefur hleðsluna 1−. Oxunarástandið er fundið með +2 = −1 + <emphasis effect="italics">x</emphasis> og er 3+, þannig að fléttan er pentaammínklórkóbalt(III)klóríð og hnitunartalan er sex.</para><para id="fs-idp19652080"><title>Kannaðu þekkingu þína</title>Fléttan kalíumdísýanóargentat(I) er notuð til að búa til sótthreinsandi efnasambönd. Gefðu upp formúlu og hnitunartölu.</para>
+<note id="fs-idp64014688"><title>Answer:</title>
+<para id="fs-idp49529584">K[Ag(CN)<sub>2</sub>]; hnitunartala tvö</para>
+</note>
+</example>
+</section>
+<section id="fs-idp225700912">
+<title>Bygging flétta</title>
+<para id="fs-idp38320320">Hjá fléttum hliðarmálma ræður hnitunartalan löguninni í kringum miðjumálmjónina. Algengustu byggingarform flétta í hnitunarefnasamböndum eru ferflötungur, fjórflötungur og áttflötungur, sem samsvara hnitunartölunum fjórir, fjórir og sex. Hnitunartölur hærri en sex eru sjaldgæfari og gefa af sér ýmsar byggingar (sjá <link target-id="CNX_Chem_19_02_structures"/> og <link target-id="fs-idp162520608"/>):</para>
+<figure id="CNX_Chem_19_02_structures" class="scaled-down">
+<media id="fs-idp159515584" alt="This figure contains three diagrams in black and white. The first is labeled, “Pentagonal Bipyramid.” It has 10 isosceles triangle faces, five at the top, joined at a vertex, making a point projecting upward at the top of the figure, and five below, joined at a vertex, making a point projecting downward, at the base of the figure. The second is labeled, “Square Antiprism.” It has flat upper and lower square surfaces and sides made up of 8 equilateral triangles. The sides alternate in orientation between pointing up and pointing down. The third diagram is labeled, “Dodecahedron.” It has twelve isosceles triangle faces.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_structures.jpg"/>
+</media>
+<caption>Þetta eru lögun nokkurra flétta með hnitunartölurnar sjö og átta.</caption>
+</figure>
+<table id="fs-idp162520608" class="top-titled" summary="This table has three columns and 12 rows. The first row is a header row, and it labels each column, “Coordination Number,” “Molecular Geometry,” and “Example.” In the “Coordination Number” column are the following: 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9 and above. Under the “Molecular Geometry” column are the following: linear, trigonal planar, tetrahedral ( d superscript 0 or d superscript 10 ) and low oxidation states for M, square planar ( d superscript 8 ), trigonal bipyramidal, octahedral, pentagonal bipyramid, square antiprism, dodecahedron, and more complicated structures. Under the “Example” column are the following: [ A g ( N H subscript 3 ) subscript 2 ] superscript positive sign, [ C u ( C N ) subscript 3 ] superscript two negative sign, [ N I ( C O ) subscript 4], [ N i C l subscript 4 ] superscript two negative sign, [ C o C l subscript 5 ] superscript two negative sign, [ V O ( C N ) subscript 4 ] superscript two negative sign, [ C o C l subscript 6 ] superscript three negative sign, [ Z r F subscript 7 ] superscript three negative sign, [ R e F subscript 8 ] superscript two negative sign, [ M o ( C N ) subscript 8] superscript four negative sign, [ R e H subscript 9 ] superscript two negative sign."><tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Hnitunartölur og sameindalögun</entry>
+</row>
+<row valign="top">
+<entry align="left">Hnitunartala</entry>
+<entry align="left">Sameindalögun</entry>
+<entry align="left">Dæmi</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">2</entry>
+<entry align="left">línuleg</entry>
+<entry align="left">[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">3</entry>
+<entry align="left">þríhyrndur flötur</entry>
+<entry align="left">[Cu(CN)<sub>3</sub>]<sup>2−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">fjórflötungur (<emphasis effect="italics">d</emphasis><sup>0</sup> eða <emphasis effect="italics">d</emphasis><sup>10</sup>), lág oxunarástönd fyrir M</entry>
+<entry align="left">[Ni(CO)<sub>4</sub>]</entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">ferflötungur (<emphasis effect="italics">d</emphasis><sup>8</sup>)</entry>
+<entry align="left">[Ni(CN)<sub>4</sub>]<sup>2−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">5</entry>
+<entry align="left">þríhyrndur tvípíramídi</entry>
+<entry align="left">[CoCl<sub>5</sub>]<sup>2−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">5</entry>
+<entry align="left">ferpíramídi</entry>
+<entry align="left">[VO(CN)<sub>4</sub>]<sup>2−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">6</entry>
+<entry align="left">áttflötungur</entry>
+<entry align="left">[CoCl<sub>6</sub>]<sup>3−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">7</entry>
+<entry align="left">fimmhyrndur tvípíramídi</entry>
+<entry align="left">[ZrF<sub>7</sub>]<sup>3−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">8</entry>
+<entry align="left">ferstrendingsandprísma</entry>
+<entry align="left">[ReF<sub>8</sub>]<sup>2−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">8</entry>
+<entry align="left">tólfflötungur</entry>
+<entry align="left">[Mo(CN)<sub>8</sub>]<sup>4−</sup></entry>
+</row>
+<row valign="top">
+<entry align="left">9 og hærra</entry>
+<entry align="left">flóknari byggingar</entry>
+<entry align="left">[ReH<sub>9</sub>]<sup>2−</sup></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp57061536">Ólíkt aðalflokka frumeindum þar sem bæði bindandi og óbindandi rafeindir ákvarða lögun sameindarinnar, breyta óbindandi <emphasis effect="italics">d</emphasis>-rafeindir ekki fyrirkomulagi bindlanna. Áttflötunga komplexar hafa hnitsetningartöluna sex og sex gjafafrumeindirnar eru staðsettar á hornum áttflötungs umhverfis miðlægu málmjónina. Dæmi eru sýnd á <link target-id="CNX_Chem_19_02_oct"/>. Klóríð- og nítratanjónirnar í [Co(H<sub>2</sub>O)<sub>6</sub>]Cl<sub>2</sub> og <link url="NO<sub>3</sub>">Cr(en)<sub>3</sub></link><sub>3</sub>, og kalíumkatjónirnar í K<sub>2</sub>[PtCl<sub>6</sub>], eru fyrir utan hornklofana og eru ekki bundnar málmjóninni.</para>
+<figure id="CNX_Chem_19_02_oct">
+<media id="fs-idp127345808" alt="Three structures are shown. In a, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 plus. Following this to the right appears 2 C l superscript negative sign. In b, a central C r atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 plus. Following to the right is 3 N O subscript 3 superscript negative sign. In c, 2 K superscript plus is followed by a structure in brackets. Inside the brackets is a central P t atom. From the P t atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to C l atoms. Similarly, solid wedges below to both the right and left indicate bonds to two more C l atoms. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 negative sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_oct.jpg"/>
+</media>
+<caption>Margir komplexar hliðarmálma taka upp áttflötunga lögun, þar sem sex gjafafrumeindir mynda 90° tengihorn umhverfis miðjufrumeindina við aðliggjandi bindla. Athugið að aðeins bindlar innan hnitsetningarsviðsins hafa áhrif á lögunina umhverfis málmmiðjuna.</caption>
+</figure>
+<para id="fs-idp217009760">Fyrir hliðarmálma með hnitsetningartöluna fjóra eru tvær mismunandi löganir mögulegar: ferflötungs- eða ferflatningslögun. Ólíkt aðalflokka frumefnum, þar sem hægt er að spá fyrir um þessar löganir með VSEPR-kenningunni, þarf ítarlegri umfjöllun um svigrúm hliðarmálma (sem fjallað er um í kaflanum um kristalsviðskenninguna) til að spá fyrir um hvaða komplexar verða ferflötungs- og hverjir ferflatningslaga. Í ferflötungakomplexum eins og [Zn(CN)<sub>4</sub>]<sup>2−</sup> (<link target-id="CNX_Chem_19_02_4geom"/>), myndar hvert bindlapar 109,5° horn. Í ferflatningskomplexum, eins og [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>], hefur hver bindill tvo aðra bindla í 90° horni (kallað <emphasis effect="italics">cis</emphasis>-staða) og einn viðbótarbindil í 180° horni, í <emphasis effect="italics">trans</emphasis>-stöðu.</para>
+<figure id="CNX_Chem_19_02_4geom" class="scaled-down">
+<media id="fs-idp42483712" alt="Two structures are shown. In a, inside of brackets, a central Z n atom is bonded to 4 C atoms in a tetrahedral spatial arrangement. Short line segments are used to represent a bond extending above and down and to the left of the Z n atom. A dashed wedge with the vertex at the Z n atom and wide end at the C atom is used to represent a bond down and to the right of the Z n atom. The final bond is indicated by a similar solid wedge again directed down and only slightly right of the center beneath the Z n atom. Four groups of three parallel short line segments are shown indicating triple bonds extending from each C atom opposite the bond with Z n to an associated N atom. Outside the brackets a superscript of 2 negative is shown. In b, at the center of this structure is a P t atom. From this atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to the N atom of an N H subscript 3 group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a C l atom.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_4geom.jpg"/>
+</media>
+<caption>Hliðarmálmar með hnitsetningartöluna fjögur geta tekið upp ferflötungslögun (a) eins og í K<sub>2</sub>[Zn(CN)<sub>4</sub>] eða ferflatningslögun (b) eins og sýnt er í [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>].</caption>
+</figure>
+</section>
+<section id="fs-idp85285584">
+<title>Ísómerur í komplexum</title>
+<para id="fs-idp68367824">Ísómerur eru mismunandi efnafræðilegar tegundir sem hafa sömu efnaformúlu. Komplexar hliðarmálma eru oft til sem <emphasis effect="bold">rúmísómerur</emphasis>, þar sem sömu frumeindir eru tengdar með sömu tegundum tengja en með mismunandi stefnumörkun í rúmi. Hnitsetningarkomplexar með tvo mismunandi bindla í <emphasis effect="italics">cis</emphasis>- og <emphasis effect="italics">trans</emphasis>-stöðum miðað við ákveðinn bindil mynda ísómerur. Til dæmis hefur áttflötungajónin [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]<sup>+</sup> tvær ísómerur. Í <term id="term-00012"><emphasis effect="italics">cis</emphasis>-forminu (e. <emphasis effect="italics">cis</emphasis> configuration)</term> eru klóríðbindlarnir tveir hlið við hlið (<link target-id="CNX_Chem_19_02_cistrans"/>). Hin ísómeran, <term id="term-00013"><emphasis effect="italics">trans</emphasis>-formið (e. <emphasis effect="italics">trans</emphasis> configuration)</term>, hefur klóríðbindlana tvo beint á móti hvor öðrum.</para>
+<figure id="CNX_Chem_19_02_cistrans" class="scaled-down">
+<media id="fs-idp151577024" alt="Two structures are shown. The first is labeled, “Violet, cis form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below the structure. Above and to both the right and left, dashed wedges with their vertex at the C o atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to a C l atom on the right and the O atom of an H subscript 2 O group on the left. This structure is enclosed in brackets. Outside the brackets to the right is the superscript plus sign. The second is labeled, “Green, trans form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is also enclosed in brackets with a superscript plus sign outside the brackets to the right.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_cistrans.jpg"/>
+</media>
+<caption><emphasis effect="italics">Cis</emphasis>- og <emphasis effect="italics">trans</emphasis>-ísómerur [Co(H<sub>2</sub>O)<sub>4</sub>Cl<sub>2</sub>]<sup>+</sup> innihalda sömu bindla tengda sömu málmjón, en rúmfyrirkomulagið veldur því að þessi tvö efnasambönd hafa mjög ólíka eiginleika.</caption>
+</figure>
+<para id="fs-idm258352">Mismunandi rúmísómerur efnis eru mismunandi efnasambönd. Þær sýna mismunandi eiginleika, jafnvel þótt þær hafi sömu formúlu. Til dæmis eru ísómerurnar tvær af [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]NO<sub>3</sub> mismunandi á litinn; <emphasis effect="italics">cis</emphasis>-formið er fjólublátt og <emphasis effect="italics">trans</emphasis>-formið er grænt. Enn fremur hafa þessar ísómerur mismunandi tvískautsvægi, leysni og hvarfgirni. Sem dæmi um hvernig fyrirkomulagið í rúmi getur haft áhrif á eiginleika sameindarinnar, skulum við skoða skautun [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]NO<sub>3</sub> ísómeranna tveggja. Mundu að skautun sameindar eða jónar ræðst af tvískautum tengjanna (sem stafa af mismun á rafneikvæðni tengdra atóma) og fyrirkomulagi þeirra í rúmi. Í annarri ísómerunni valda <emphasis effect="italics">cis</emphasis>-klóríðbindlar meiri rafeindaþéttleika á annarri hlið sameindarinnar en hinni, sem gerir hana skautaða. Í <emphasis effect="italics">trans</emphasis>-ísómerunni er hver bindill beint á móti sams konar bindli, þannig að tvískautsvægi tengjanna núllast út og sameindin er óskautuð.</para>
+<example id="fs-idp279300448">
+<para id="fs-idp162672064"><title>Rúmísómerur</title>Greindu hvaða rúmísómera af [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>] er sýnd á <link target-id="CNX_Chem_19_02_4geom"/>. Teiknaðu hina rúmísómeruna og gefðu upp fullt nafn hennar.</para>
+<para id="fs-idp123193616"><title>Lausn</title>Á <link target-id="CNX_Chem_19_02_4geom"/> eru klóríðbindlarnir tveir í <emphasis effect="italics">cis</emphasis>-stöðum. Hitt formið er sýnt á <link target-id="CNX_Chem_19_02_transplatin"/>. Þegar tilteknar ísómerur eru nafngreindar er forskeytið sett fyrir framan nafnið. Þess vegna er þessi komplex <emphasis effect="italics">trans</emphasis>-díammíndíklóróplatína(II).</para>
+<!-- figure handled separately --><para id="fs-idp290676064"><title>Kannaðu þekkingu þína</title>Teiknaðu jónina <emphasis effect="italics">trans</emphasis>-díakva-<emphasis effect="italics">trans</emphasis>-díbrómó-<emphasis effect="italics">trans</emphasis>-díklórókóbalt(II).</para>
+<note id="fs-idm14256976"><title>Answer:</title>
+<media id="fs-idp9187376" class="scaled-down" alt="The structure in this figure shows a structure inside brackets. A central C o atom is shown with line segments indicating bonds to C l atoms above and below the structure. Above and to the left, a dashed wedge with its vertex at the C o atom widening as it moves out from the atom indicates a bond with the O atom of a H subscript 2 O group. A second dashed wedge indicates a bond with the central C o atom with a B r atom up and to the right. Similarly, a solid wedge below and to the left indicates a bond with a B r atom. A second solid wedge below and to the right indicates a bond with the O atom of an H subscript 2 O group. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 negative sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_H2O2Br2.jpg"/>
+</media>
+</note>
+</example>
+<figure id="CNX_Chem_19_02_transplatin" class="scaled-down"><media id="fs-idp19204944" alt="A structure is shown with a central P t atom. From this atom, a dashed wedge with its vertex at the P t extends up and to the left toward the C l atom, indicating a bond, and widening as it moves out. Another dashed wedge with its vertex at the P t extends up and to the right toward the N H 3 atom, indicating a bond, and widening as it moves out. Similarly, a solid wedge below and to the left indicates a bond with an H 3 N atom and another solid wedge below and to the right indicates a bond with a C l atom.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_transplatin.jpg"/>
+</media>
+
+<caption><emphasis effect="italics">Trans</emphasis>-ísómeran af [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>] hefur hvern bindil beint á móti aðlægum bindli.</caption></figure>
+<para id="fs-idp18845840">Önnur mikilvæg tegund ísómera eru <term id="term-00014">handhverfur (e. optical isomers)</term>, eða <term id="term-00015">spegilmyndaísómerur (e. enantiomers)</term>, þar sem tveir hlutir eru nákvæmar spegilmyndir hvor af öðrum en ekki er hægt að leggja þá saman þannig að allir hlutar passi saman. Þetta þýðir að handhverfur eru ósamfellanlegar spegilmyndir. Klassískt dæmi um þetta er par af höndum, þar sem hægri og vinstri hönd eru spegilmyndir hvor af annarri en ekki er hægt að leggja þær saman. Handhverfur eru mjög mikilvægar í lífrænni efnafræði og lífefnafræði vegna þess að lifandi kerfi innihalda oft eina ákveðna handhverfu en ekki hina. Ólíkt rúmísómerum hafa pör af handhverfum eins eiginleika (suðumark, skautun, leysni o.s.frv.). Handhverfur eru aðeins ólíkar í því hvernig þær hafa áhrif á skautað ljós og hvernig þær hvarfast við aðrar handhverfur. Fyrir hnetti mynda mörg hnettasambönd eins og [M(en)<sub>3</sub>]<sup>n+</sup> [þar sem M<sup>n+</sup> er miðlæg málmjón eins og járn(III) eða kóbalt(II)] spegilmyndaísómerur, eins og sýnt er í <link target-id="CNX_Chem_19_02_enant"/>. Þessar tvær ísómerur munu hvarfast á mismunandi hátt við aðrar handhverfur. Til dæmis eru DNA-gormar handhverfur og formið sem kemur fyrir í náttúrunni (hægrihandar-DNA) mun aðeins bindast annarri ísómerunni af [M(en)<sub>3</sub>]<sup>n+</sup> en ekki hinni.</para>
+<figure id="CNX_Chem_19_02_enant" class="scaled-down">
+<media id="fs-idp148990176" alt="Two structures are shown with a vertical dashed line segment between them. The structure left of this line segment has a central M representing a metal atom. To this atom, six N H subscript 2 groups are attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central M atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This structure has the overall appearance of a flower with three petals, two of which are equidistant from the dashed line. A mirror image of this structure appears on the right side of the dashed line, again with two of the “petals” equidistant from the dashed line to its left.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_enant.jpg"/>
+</media>
+<caption>Hnetturinn [M(en)<sub>3</sub>]<sup>n+</sup> (M<sup>n+</sup> = málmjón, en = etýlendíamín) hefur ósamfellanlega spegilmynd.</caption>
+</figure>
+<para id="fs-idp30489296">[Co(en)<sub>2</sub>Cl<sub>2</sub>]<sup>+</sup> jónin sýnir rúmísómeríu (<emphasis effect="italics">cis</emphasis>/<emphasis effect="italics">trans</emphasis>) og <emphasis effect="italics">cis</emphasis>-ísómera hennar er til sem par af handhverfum (<link target-id="CNX_Chem_19_02_Coen2Cl2"/>).</para>
+<figure id="CNX_Chem_19_02_Coen2Cl2">
+<media id="fs-idm2902000" alt="This figure includes three structures. The first two are labeled “cis form (optical isomers).” These structures are followed by a vertical dashed line segment to the right of which appears a third structure that is labeled “trans form.” The first structure includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper left of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript plus. The second structure, which appears to the be mirror image of the first structure, includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper right of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript plus sign. The third, trans structure includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and bottom of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript plus sign. This final structure has rings of atoms on opposite sides of the structure.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Coen2Cl2.jpg"/>
+</media>
+<caption>Þrjú ísómeruform af [Co(en)<sub>2</sub>Cl<sub>2</sub>]<sup>+</sup> eru til. <emphasis effect="italics">Trans</emphasis>-ísómeran, sem myndast þegar klóratómin eru staðsett í 180° horni, hefur mjög ólíka eiginleika en <emphasis effect="italics">cis</emphasis>-ísómerurnar. Spegilmyndir <emphasis effect="italics">cis</emphasis>-ísómerunnar mynda par af handhverfum, sem hafa eins hegðun nema þegar þær hvarfast við aðrar spegilmyndaísómerur.</caption>
+</figure>
+<para id="fs-idp79204432"><term id="term-00016">Tengslísómerur (e. linkage isomers)</term> koma fram þegar hnettasambandið inniheldur bindil sem getur tengst miðju hliðarmálmsins í gegnum tvö mismunandi atóm. Til dæmis getur CN-bindillinn tengst í gegnum kolefnisatómið (sýanó) eða í gegnum köfnunarefnisatómið (ísósýanó). Á sama hátt getur SCN<sup>-</sup> tengst í gegnum brennisteins- eða köfnunarefnisatómið, sem gefur tvö aðskilin efnasambönd ([Co(NH<sub>3</sub>)<sub>5</sub>SCN]<sup>2+</sup> eða [Co(NH<sub>3</sub>)<sub>5</sub>NCS]<sup>2+</sup>).</para>
+<para id="fs-idp58946640"><term id="term-00017">Jónunarísómerur (e. ionization isomers)</term> (eða <term id="term-00018">hnettísómerur (e. coordination isomers)</term>) koma fram þegar einum anjónískum bindli í innra hnetthvolfinu er skipt út fyrir mótjónina úr ytra hnetthvolfinu. Einfalt dæmi um tvær jónunarísómerur eru [CoCl<sub>6</sub>][Br] og [CoCl<sub>5</sub>Br][Cl].</para>
+</section>
+<section id="fs-idp33494848">
+<title>Hnettir í náttúru og tækni</title>
+<para id="fs-idp217075840">Blaðgræna, græna litarefnið í plöntum, er hnettur sem inniheldur magnesín (<link target-id="CNX_Chem_19_02_ChlorBlue"/>). Þetta er dæmi um aðalflokksfrumefni í hnetti. Plöntur virðast grænar vegna þess að blaðgræna gleypir rautt og fjólublátt ljós; endurkastað ljósið virðist því grænt. Orkan sem myndast við ljósgleypnina er notuð við ljóstillífun.</para>
+</section>
+<figure id="CNX_Chem_19_02_ChlorBlue">
+<media id="fs-idp167959792" alt="Structural formulas are shown for two complex molecules. The first has a central M g atom, to which N atoms are bonded above, below, left, and right. Each N atom is a component of a 5 member ring with four C atoms. Each of these rings has a double bond between the C atoms that are not bonded to the N atom. The C atoms that are bonded to N atoms are connected to C atoms that serve as links between the 5-member rings. The bond to the C atom clockwise from the 5-member ring in each case is a double bond. The bond to the C atom counterclockwise from the 5-member ring in each case is a single bond. To the left of the structure, two of the C atoms in the 5-member rings that are not bonded to N atoms are bonded to C H subscript 3 groups. The other carbons in these rings that are not bonded to N atoms are bonded to groups above and below. A variety of groups are attached outside this interconnected system of rings, including four C H subscript 3 groups, a C H subscript 2 C H subscript 2, C O O C subscript 20, H subscript 39 group, a C H C H subscript 2 group with a double bond between the C atoms, additional branching to form a five-member carbon ring to which an O atom is double bonded and a C O O C H subscript 3 group is attached. The second structure has a central C u atom to which four N atoms that participate in 5-member rings with C atoms are bonded. Unlike the first molecule, these 5-member rings are joined by N atoms between them, with a double bond on the counter clockwise side and a single bond on the clockwise side of each of the four N atoms that link the rings. On the side of each 5-member ring opposite its N atom, four additional carbon atoms are bonded, forming 6-member carbon rings with alternating double bonds. The double bonds are not present on the bonds that are shared with the 5-member rings.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_ChlorBlue.jpg"/>
+</media>
+<caption>(a) Blaðgræna kemur fyrir í nokkrum mismunandi myndum, sem allar hafa sömu grunnbyggingu í kringum magnesíummiðjuna. (b) Koparþalósýanínblátt, ferningslaga flatt koparflóki, er til staðar í sumum bláum litarefnum.</caption>
+</figure>
+<note id="fs-idp34790896" class="chemistry everyday-life">
+<title>Hvatar úr hliðarmálmum</title>
+<para id="fs-idp55376000">Eitt mikilvægasta notagildi hliðarmálma er sem hvatar í iðnaði. Eins og þú manst úr kaflanum um efnahvörf, eykur hvati hraða efnahvarfs með því að lækka virkjunarorkuna og endurmyndast í hvataferlinu. Yfir 90% allra framleiddra vara eru gerðar með hjálp eins eða fleiri hvata. Hæfileikinn til að binda tengla og breyta oxunarástandi gerir hvata úr hliðarmálmum vel til þess fallna að nota í hvötun. Vanadínoxíð er notað til að framleiða 230.000.000 tonn af brennisteinssýru um allan heim á hverju ári, sem aftur er notuð til að búa til allt frá áburði til niðursuðudósa. Plastefni eru framleidd með hjálp hvata úr hliðarmálmum, ásamt þvottaefnum, áburði, málningu og fleiru (sjá <link target-id="CNX_Chem_19_02_Cat"/>). Mjög flókin lyf eru framleidd með hvötum sem eru sértækir og hvarfast við eitt tiltekið tengi af mörgum mögulegum. Hvatar gera ferla hagkvæmari og umhverfisvænni. Þróun nýrra hvata og betri skilningur á núverandi kerfum eru mikilvæg svið í núverandi rannsóknum.</para>
+<figure id="CNX_Chem_19_02_Cat">
+<media id="fs-idp96122704" alt="This figure includes three photographs. In a, a photo shows store shelving filled with a variety of brands of laundry detergent. In b, a photo shows a can of yellow paint being stirred. In c, a bag of fertilizer is shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Cat.jpg"/>
+</media>
+<caption>(a) Þvottaefni, (b) málning og (c) áburður eru allt framleitt með notkun hvata úr hliðarmálmum. (heimild a: breyting á verki eftir „Mr. Brian“/Flickr; heimild b: breyting á verki eftir Ewen Roberts; heimild c: breyting á verki eftir „osseous“/Flickr)</caption>
+</figure>
+</note>
+<note id="fs-idp5832384" class="chemistry chemist-portrait">
+<title>Deanna D’Alessandro</title>
+<para id="fs-idp93768928">Dr. Deanna D’Alessandro þróar ný málminnihaldandi efni sem sýna einstaka raf-, ljós- og segulfræðilega eiginleika. Rannsóknir hennar sameina svið grundvallar ólífrænnar efnafræði og eðlisefnafræði við efnisverkfræði. Hún vinnur að mörgum mismunandi verkefnum sem byggja á hliðarmálmum. Til dæmis er ein tegund efnasambands sem hún er að þróa fær um að fanga úrgangsefnið koldíoxíð frá orkuverum og breyta því með hvötun í gagnlegar afurðir (sjá <link target-id="CNX_Chem_19_02_CatConvert"/>).</para>
+<figure id="CNX_Chem_19_02_CatConvert" class="scaled-down">
+<media id="fs-idp17428880" alt="An image is shown of a catalytic converter. At the upper left, a blue arrow pointing into a pipe that enters a larger, widened chamber is labeled, “Dirty emissions.” A small black arrow that points to the lower right is positioned along the upper left side of the widened region. This arrow is labeled, “Additional oxygen from air pump.” The image shows the converter with the upper surface removed, exposing a red-brown interior. The portion of the converter closes to the dirty emissions inlet shows small, spherical components in an interior layer. This layer is labeled, “Three-way reduction catalyst.” The middle region shows closely packed small brown rods that are aligned parallel to the dirty emissions inlet pipe. The final nearly quarter of the interior of the catalytic converter again shows a layer of closely packed small, red-brown circles. Two large light grey arrows extend from this layer to the open region at the lower right of the image to the label, “Clean emissions.” ">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_CatConvert.jpg"/>
+</media>
+<caption>Hvatar breyta koldíoxíðsútblæstri frá orkuverum í nytsamleg myndefni og finnast einnig í bílum, líkt og sá sem sýndur er hér.</caption>
+</figure>
+<para id="fs-idp31297136">Annað verkefni felur í sér þróun á gljúpum, svamplíkum efnum sem eru „ljósvirk“. Ljósgleypni veldur því að holrými svampsins breyta um stærð, sem gerir kleift að stjórna gasflæði. Þetta hefur mörg möguleg notagildi, allt frá því að knýja bíla með vetnisrafölum til að búa til betri rafeindaíhluti. Þótt þau séu ekki flóki, eru sjálfdekkjandi sólgleraugu dæmi um ljósvirkt efni.</para>
+<para id="fs-idp125612336">Horfðu á þetta <link url="http://openstax.org/l/16DeannaD">myndband</link> til að læra meira um þessar rannsóknir og hlustaðu á dr. D'Alessandro (sýnd á <link target-id="CNX_Chem_19_02_chmprofile"/>) lýsa hvernig það er að vera rannsóknarefnafræðingur.</para>
+<figure id="CNX_Chem_19_02_chmprofile" class="scaled-down">
+<media id="fs-idp274883520" alt="This is a photo of doctor Deanna D’Alessandro.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_chmprofile.jpg"/>
+</media>
+<caption>Dr. Deanna D'Alessandro er rannsakandi á sviði virkra efna. Vinna hennar sameinar svið ólífrænnar efnafræði og eðlisefnafræði við verkfræði, þar sem hún vinnur með hliðarmálma til að skapa ný kerfi til að knýja bíla og umbreyta orku (heimild: mynd með leyfi Deanna D'Alessandro).</caption>
+</figure>
+</note>
+<para id="fs-idp54814592">Margir aðrir samhæfingarflókar eru einnig skærlitir. Ferningslaga flatti kopar(II)flókinn ftalósýanínblár (frá <link target-id="CNX_Chem_19_02_ChlorBlue"/>) er einn af mörgum flókum sem notaðir eru sem litarefni eða litunarefni. Þessi flóki er notaður í blátt blek, bláar gallabuxur og ákveðnar bláar málningartegundir.</para>
+<para id="fs-idp36165472">Bygging hem (<link target-id="CNX_Chem_19_02_heme2"/>), járnflókans í hemóglóbíni, er mjög svipuð og í blaðgrænu. Í hemóglóbíni er rauði hemflókinn tengdur stórri prótínsameind (glóbíni) með því að prótínið festist við hemtengilinn. Súrefnissameindir eru fluttar með hemóglóbíni í blóðinu með því að bindast járnkjarnanum. Þegar hemóglóbínið missir súrefnið sitt breytist liturinn í blá-rauðan. Hemóglóbín flytur aðeins súrefni ef járnið er Fe<sup>2+</sup>; oxun járnsins í Fe<sup>3+</sup> kemur í veg fyrir súrefnisflutning.</para>
+<figure id="CNX_Chem_19_02_heme2" class="scaled-down">
+<media id="fs-idp69296" alt="A colorful model of a hemoglobin structure is shown. The molecule has four distinct quadrants that are filled with spiral, ribbon-like regions. The upper right quadrant is lavender, lower right is gold, lower left is light blue, and upper left is green. In each of these regions, clusters of approximately 25 red dots in nearly linear arrangements are present near the center.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_heme2.jpg"/>
+</media>
+<caption>Hemóglóbín inniheldur fjórar prótínundireiningar og hver þeirra hefur járnkjarna sem er tengdur við hemtengil (sýndur með rauðu), sem er samhæfður við glóbínprótín. Hver undireining er sýnd í mismunandi lit.</caption>
+</figure>
+<para id="fs-idp85288896">Flókamyndandi efni eru oft notuð til að mýkja vatn vegna þess að þau binda jónir eins og Ca<sup>2+</sup>, Mg<sup>2+</sup> og Fe<sup>2+</sup>, sem gera vatn hart. Margar málmjónir eru einnig óæskilegar í matvælum vegna þess að þessar jónir geta hvatað efnahvörf sem breyta lit matvæla. Samhæfingarflókar eru gagnlegir sem rotvarnarefni. Til dæmis samhæfist tengillinn EDTA, (HO<sub>2</sub>CCH<sub>2</sub>)<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>N(CH<sub>2</sub>CO<sub>2</sub>H)<sub>2</sub>, við málmjónir í gegnum sex gjafafrumeindir og kemur í veg fyrir að málmarnir hvarfist (<link target-id="CNX_Chem_19_02_EDTA"/>). Þessi tengill er einnig notaður til að einangra málmjónir í pappírsframleiðslu, vefnaðarvöru og þvottaefnum og hefur einnig notagildi í lyfjafræði.</para>
+<figure id="CNX_Chem_19_02_EDTA" class="scaled-down">
+<media id="fs-idp39831312" alt="This structure shows a metal atom, represented by M in red. Single bonds extending from the M are also shown in red. Bonds are indicated with O atoms by line segments extending above and below. Dashed wedges extend up and to the left to an N atom and up and to the right to an O atom, and solid wedges extend below and to the left to an N atom and below and to the right to an O atom. The O atoms bonded to the M atom each have a negative sign associated with them and they are each bonded to a C atom which is in turn double bonded to an O atom and single bonded to a C atom in a C H subscript 2 group. This last C atom in each case is single bonded to one of the N atoms, resulting in two five-member rings of which the M atom is a part. To the left of each N atom, are single bonds to the C in C H subscript 2 groups, which in turn are connected with a single bond, forming another five-member ring with the two N atoms and the M atom. Extending up and to the left of the upper N atom is a bond to the C atom of another C H subscript 2 group. This group is in turn bonded to a C atom which is double bonded to an O atom and single bonded to the O atom that is bonded to the M atom at the top of the structure, again forming a five-member ring. The same bonding structure repeats at the bottom of the structure extending from the N atom bonded at the lower left of the M atom. All single bonded O atoms in this structure have negative charges associated with them.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_EDTA.jpg"/>
+</media>
+<caption>Tengillinn EDTA binst þétt við ýmsar málmjónir með því að mynda sextennta flóka.</caption>
+</figure>
+<para id="fs-idp158915696">Flókamyndandi efni sem binda málmjónir eru einnig notuð sem lyf. British Anti-Lewisite (BAL), HSCH<sub>2</sub>CH(SH)CH<sub>2</sub>OH, er lyf sem var þróað í fyrri heimsstyrjöldinni sem mótefni gegn hernaðargasinu Lewisite sem byggir á arseni. BAL er nú notað til að meðhöndla eitrun af völdum þungmálma, svo sem arsens, kvikasilfurs, þallíums og króms. Lyfið er tengill og virkar með því að búa til vatnsleysanlegan klóflóka úr málminum; nýrun losa sig síðan við þennan málmklóflóka (<link target-id="CNX_Chem_19_02_BalEnt"/>). Annar fjöltenntur tengill, enteróbaktín, sem er einangraður úr ákveðnum bakteríum, er notaður til að mynda flóka með járni og þar með stjórna alvarlegri járnofhleðslu sem finnst hjá sjúklingum sem þjást af blóðsjúkdómum eins og Cooley-blóðleysi og þurfa tíðar blóðgjafir. Þegar blóðið úr blóðgjöfinni brotnar niður verður of mikið álag á venjuleg efnaskiptaferli sem fjarlægja járn og umframmagn járns getur safnast upp í lífshættulegt magn. Enteróbaktín myndar vatnsleysanlegan flóka með umframjárni og líkaminn getur losað sig við þennan flóka á öruggan hátt.</para>
+<figure id="CNX_Chem_19_02_BalEnt" class="scaled-down">
+<media id="fs-idp10272368" alt="This figure includes two structures. In a, a five member ring is shown with an S atom at the top with additional atoms single bonded in the following order clockwise around the pentagonal ring; M atom, S atom, C atom of a C H subscript 2 group, followed by a C atom of a C H group. The final C atom is bonded to the original S atom completing the ring. The C in the C H group is at the upper left of the structure. This C has a C H subscript 2 group bonded above to which an O H group is bonded to the right. In b, a complex structure is shown. It has an open central region and multiple ring structures. A single F e atom is included, appearing to be bonded to six O atoms. Fifteen total O atoms are bonded into the structure along with three N atoms and multiple C atoms and H atoms. Nine O atoms are single bonded and are incorporated into rings and six are double bonded, extending outward from ring structures. ">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_BalEnt.jpg"/>
+</media>
+<caption>Samhæfingarflókar eru notaðir sem lyf. (a) British Anti-Lewisite er notað til að meðhöndla þungmálmaeitrun með því að samhæfa málma (M), og enteróbaktín (b) gerir kleift að fjarlægja umframjárn úr blóðinu.</caption>
+</figure>
+<example id="fs-idp8695360">
+<para id="fs-idp2238224"><title>Klóflókameðferð</title>Tenglar eins og BAL og enteróbaktín eru mikilvægir í læknismeðferðum við þungmálmaeitrun. Hins vegar geta klóflókameðferðir raskað eðlilegum styrk jóna í líkamanum, sem leiðir til alvarlegra aukaverkana, þannig að vísindamenn eru í leit að nýjum klóflókalyfjum. Eitt lyf sem hefur verið þróað er dímerkaptósuccinsýra (DMSA), sýnd á <link target-id="CNX_Chem_19_02_DMSA"/>. Tilgreindu hvaða frumeindir í þessari sameind gætu virkað sem gjafafrumeindir.</para>
+<!-- figure handled separately -->
+<para id="fs-idp35716832"><title>Lausn</title>Allar súrefnis- og brennisteinsfrumeindirnar hafa rafeindapör sem hægt er að nota til að samhæfast við málmkjarna, þannig að það eru sex mögulegar gjafafrumeindir. Rúmfræðilega geta aðeins tvær þessara frumeinda samhæfst við málm í einu. Algengasta bindingin felur í sér samhæfingu einnar brennisteinsfrumeindar og einnar súrefnisfrumeindar, sem myndar fimm liða hring með málminum.</para>
+<para id="fs-idp59621280"><title>Skoðaðu þekkingu þína</title>Sumir sem stunda óhefðbundnar lækningar mæla með klóflókameðferðum við kvillum sem eru ekki greinilega tengdir þungmálmum, svo sem krabbameini og einhverfu, þótt mörg vísindasamtök letji slíka iðkun. <footnote id="fs-idp19722736">National Council against Health Fraud, <emphasis effect="italics">NCAHF Policy Statement on Chelation Therapy</emphasis>, (Peabody, MA, 2002).</footnote> Nefndu að minnsta kosti tvo líffræðilega mikilvæga málma sem klóflókameðferð gæti raskað.</para>
+<note id="fs-idp9554032"><title>Answer:</title>
+<para id="fs-idp13836096">Ca, Fe, Zn og Cu</para>
+</note>
+</example>
+<figure id="CNX_Chem_19_02_DMSA" class="scaled-down">
+<media id="fs-idp97148096" alt="A structure is shown that has an H atom on the far left which is single bonded to an O atom to its right. This atom is bonded to a C atom just below and to the right. This C atom has a double bonded O atom below and is bonded to the C atom of a C H group. Above this C atom, a solid wedge extends upward to the S atom of an S H group. A bond extends from this last C atom to another C atom of a second C H group below and to the right. A dashed wedge extends from this C atom to the S of an S H group below. A single bond extends up and to the right of the C atom to another C atom. This last C atom has a double bonded O atom above. A single bond extends to a second O atom below and to the right. To the right of this O atom, an H atom is connected with a single bond. All S and O atoms in the structure are shown with two unshared pairs of electron dots.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_DMSA.jpg"/>
+</media>
+<caption>Dímerkapróravsýra er notuð til að meðhöndla þungmálmaeitrun.</caption>
+</figure>
+<para id="fs-idp58173136">Tenglar eru einnig notaðir í rafhúðunariðnaði. Þegar málmjónir eru afoxaðar til að framleiða þunnar málmhúðir geta málmar klessst saman og myndað þyrpingar og nanóagnir. Þegar girðisambönd málma eru notuð halda tenglarnir málmfrumeindunum aðskildum hverri frá annarri. Í ljós hefur komið að margir málmar húðast sem sléttara, jafnara, fallegra og viðloðnara yfirborð þegar þeir eru húðaðir úr lausn sem inniheldur málminn sem flókajón. Þannig eru flókar eins og [Ag(CN)<sub>2</sub>]<sup>−</sup> og [Au(CN)<sub>2</sub>]<sup>−</sup> mikið notaðir í rafhúðunariðnaði.</para>
+<para id="fs-idp128300928">Árið 1965 uppgötvuðu vísindamenn við Michigan State University að til væri platínuflóki sem hindraði frumuskiptingu í ákveðnum örverum. Síðari vinna sýndi að flókinn var <emphasis effect="italics">cis</emphasis>-díammíndíklórplatína(II), [Pt(NH<sub>3</sub>)<sub>2</sub>(Cl)<sub>2</sub>], og að <emphasis effect="italics">trans</emphasis>-hverfan var ekki virk. Hindrun frumuskiptingar benti til þess að þetta ferningslaga flata efnasamband gæti verið krabbameinslyf. Árið 1978 samþykkti Matvæla- og lyfjaeftirlit Bandaríkjanna þetta efnasamband, þekkt sem cisplatín, til notkunar við meðferð ákveðinna tegunda krabbameins. Síðan þá hafa mörg svipuð platínusambönd verið þróuð til meðferðar á krabbameini. Í öllum tilvikum eru þetta <emphasis effect="italics">cis</emphasis>-hverfur en aldrei <emphasis effect="italics">trans</emphasis>-hverfur. Díammín (NH<sub>3</sub>)<sub>2</sub> hlutinn er óbreyttur en aðrir hópar koma í stað díklór [(Cl)<sub>2</sub>] hlutans. Nýrri lyfin eru meðal annars karbóplatín, oxalíplatín og satraplatín.</para>
+<section id="fs-idp136064256" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm3937184">Hliðarmálmar og aðalflokksfrumefni geta myndað hnettasambönd, eða hnetti, þar sem miðlægt málmatóm eða jón er tengd einum eða fleiri bindlum með samgildum hnettatengjum. Bindlar með fleiri en einu gjafaatómi eru kallaðir fjöltannabindlar og mynda klóefni. Algengustu rúmfræðiformin sem finnast í hnettum eru ferflötungur og ferhyrningsflatningur (bæði með hnettitöluna fjögur) og áttflötungur (með hnettitöluna sex). <emphasis effect="italics">Cis</emphasis>- og <emphasis effect="italics">trans</emphasis>-stillingar eru mögulegar í sumum áttflötungs- og ferhyrningsflatningshnettum. Auk þessara rúmísómera eru handhverfur (sameindir eða jónir sem eru spegilmyndir en ekki samfellanlegar) mögulegar í ákveðnum áttflötungshnettum. Hnettasambönd hafa margvísleg not, þar á meðal súrefnisflutning í blóði, vatnshreinsun og lyfjanotkun.</para>
+</section>
+<section id="fs-idp99118624" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idp178303616">
+<problem id="fs-idp274048752">
+<para id="fs-idp137517056">Tilgreindu hnettitölu miðmálmsatómsins í hverju eftirfarandi hnettasambanda:</para>
+<para id="fs-idp1254176">(a) [Pt(H<sub>2</sub>O)<sub>2</sub>Br<sub>2</sub>]</para>
+<para id="fs-idm202688">(b) [Pt(NH<sub>3</sub>)(py)(Cl)(Br)] (py = pýridín, C<sub>5</sub>H<sub>5</sub>N)</para>
+<para id="fs-idp38349728">(c) [Zn(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>]</para>
+<para id="fs-idp104868400">(d) [Zn(NH<sub>3</sub>)(py)(Cl)(Br)]</para>
+<para id="fs-idp95037984">(e) [Ni(H<sub>2</sub>O)<sub>4</sub>Cl<sub>2</sub>]</para>
+<para id="fs-idp58691568">(f) [Fe(en)<sub>2</sub>(CN)<sub>2</sub>]<sup>+</sup> (en = etýlendíamín, C<sub>2</sub>H<sub>8</sub>N<sub>2</sub>)</para>
+</problem>
+</exercise>
+<exercise id="fs-idp151424672">
+<problem id="fs-idp104672160">
+<para id="fs-idp1506880">Gefðu upp hnitsetningartölur og skrifaðu formúlur fyrir eftirfarandi, þar með talið allar ísómerur þar sem við á:</para>
+<para id="fs-idm2144192">(a) tetrahýdroxósinkat(II) jón (ferflötungur)</para>
+<para id="fs-idp49932096">(b) hexasýanópalladat(IV) jón</para>
+<para id="fs-idp188441376">(c) díklóróárat(I) jón (athugið að <emphasis effect="italics">aurum</emphasis> er latína fyrir „gull“)</para>
+<para id="fs-idp37713168">(d) díammíndíklóróplatína(II)</para><para id="fs-idp91072960">(e) kalíum díammíntetraklórókrómat(III)</para><para id="fs-idp64176720">(f) hexaammínkóbalt(III) hexasýanókrómat(III)</para><para id="fs-idp59722176">(g) díbrómóbis(etýlendíamín) kóbalt(III) nítrat</para>
+</problem>
+<solution id="fs-idp215212352">
+<para id="fs-idp288666720">(a) 4, [Zn(OH)<sub>4</sub>]<sup>2−</sup>; (b) 6, [Pd(CN)<sub>6</sub>]<sup>2−</sup>; (c) 2, [AuCl<sub>2</sub>]<sup>−</sup>; (d) 4, [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>]; (e) 6, K[Cr(NH<sub>3</sub>)<sub>2</sub>Cl<sub>4</sub>]; (f) 6, [Co(NH<sub>3</sub>)<sub>6</sub>][Cr(CN)<sub>6</sub>]; (g) 6, [Co(en)<sub>2</sub>Br<sub>2</sub>]NO<sub>3</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp104842000">
+<problem id="fs-idp39533248">
+<para id="fs-idp244069600">Gefðu upp hnitsetningartölu fyrir hverja málmjón í eftirfarandi efnasamböndum:</para>
+<para id="fs-idp66182016">(a) [Co(CO<sub>3</sub>)<sub>3</sub>]<sup>3−</sup> (athugið að CO<sub>3</sub><sup>2−</sup> er tvítönna bindill í þessari komplexjón)</para><para id="fs-idp38453456">(b) [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup></para>
+<para id="fs-idp72201152">(c) [Co(NH<sub>3</sub>)<sub>4</sub>Br<sub>2</sub>]<sub>2</sub>(SO<sub>4</sub>)</para>
+<para id="fs-idp88473488">(d) [Pt(NH<sub>3</sub>)<sub>4</sub>][PtCl<sub>4</sub>]</para>
+<para id="fs-idp74765776">(e) <link url="NO<sub>3</sub>">Cr(en)<sub>3</sub></link><sub>3</sub></para>
+<para id="fs-idp53542624">(f) [Pd(NH<sub>3</sub>)<sub>2</sub>Br<sub>2</sub>] (ferhyrndur flatningur)</para>
+<para id="fs-idp75347168">(g) K<sub>3</sub>[Cu(Cl)<sub>5</sub>]</para>
+<para id="fs-idp20243712">(h) [Zn(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>]</para>
+</problem>
+</exercise>
+<exercise id="fs-idp5586896">
+<problem id="fs-idp90286032">
+<para id="fs-idp83328608">Teiknaðu byggingu eftirfarandi komplexjóna. Tilgreindu allar <emphasis effect="italics">cis</emphasis>, <emphasis effect="italics">trans</emphasis> og handhverfar ísómerur.</para>
+<para id="fs-idp243193648">(a) [Pt(H<sub>2</sub>O)<sub>2</sub>Br<sub>2</sub>] (ferhyrndur flatningur)</para>
+<para id="fs-idp58068512">(b) [Pt(NH<sub>3</sub>)(py)(Cl)(Br)] (ferhyrndur flatningur, py = pýridín, C<sub>5</sub>H<sub>5</sub>N)</para>
+<para id="fs-idp226786864">(c) [Zn(NH<sub>3</sub>)<sub>3</sub>Cl]<sup>+</sup> (ferflötungur)</para><para id="fs-idm14282624">(d) [Pt(NH<sub>3</sub>)<sub>3</sub>Cl]<sup>+</sup> (ferhyrndur flatningur)</para><para id="fs-idp68312320">(e) [Ni(H<sub>2</sub>O)<sub>4</sub>Cl<sub>2</sub>]</para>
+<para id="fs-idm1778016">(f) [Co(C<sub>2</sub>O<sub>4</sub>)<sub>2</sub>Cl<sub>2</sub>]<sup>3−</sup> (athugið að <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math> er tvítönna oxalatjónin, <m:math><m:mrow><m:mo>−</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para></problem>
+<solution id="fs-idp35988272">
+<para id="fs-idp93813424">(a) [Pt(H<sub>2</sub>O)<sub>2</sub>Br<sub>2</sub>]:<newline/> <media id="fs-idp9574672" alt="Two structures are shown. At the center of each is a P t atom. The structure on the left is labeled, “cis.” From this atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to a second B r atom. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to the O atom of an H subscript 2 O group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a second O atom of an H subscript 2 O group. The structure on the right is labeled, “trans.” From the central P t atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the O atom of an H subscript 2 O group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to the O atom of a second H subscript 2 O group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a second B r atom.;"><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Answer4a_img.jpg"/></media><newline/> (b) [Pt(NH<sub>3</sub>)(py)(Cl)(Br)]:<newline/> <media id="fs-idp90764336" alt="Three structures are shown. At the center of each is a P t atom. From this atom in the first structure on the left, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to p y. The middle structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to p y. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a to a C l atom. The third structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to p y. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a B r atom.;"><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Answer4b_img.jpg"/></media><newline/> (c) [Zn(NH<sub>3</sub>)<sub>3</sub>Cl]<sup>+</sup> :<newline/> <media id="fs-idp126313472" alt="Inside of brackets, a central Z n atom is bonded to a C l atom and three N atoms in N H subscript 3 groups in a tetrahedral spatial arrangement. Short line segments are used to represent a bond extending above to the C l atom and down and to the left to the N of the N H subscript 3 group from the Z n atom. A dashed wedge with the vertex at the Z n atom and wide end at the N atom of an N H subscript 3 group is used to represent a bond down and to the right of the Z n atom. The final bond is indicated by a similar solid wedge again directed down and only slightly right of center beneath the Z n atom to the N of an N H subscript 3 group. Outside the brackets a superscript plus sign is shown.;"><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Answer4c_img.jpg"/></media><newline/> (d) [Pt(NH<sub>3</sub>)<sub>3</sub>Cl]<sup>+</sup> :<newline/> <media id="fs-idp168038944" alt="This structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to the N atom of an N H subscript 3 group. Similarly, two single bonds represented by solid wedges extend from vertices at the P t atom down and to the right and down and to the left to the N atoms of N H subscript 3 groups. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. This structure is enclosed in brackets with superscript plus sign appearing to the right of the brackets.;"><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Answer4d_img.jpg"/></media><newline/> (e) [Ni(H<sub>2</sub>O)<sub>4</sub>Cl<sub>2</sub>]:<newline/> <media id="fs-idp48279792" alt="Two structures are shown. The first is labeled, “trans.” Below this label inside brackets is a central N i atom. From the N i atom, line segments indicate bonds to C l atoms above and below. Above and to both the right and left, dashed wedges with their vertex at the N i atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is enclosed in brackets. The second structure is labeled, “cis.” Inside brackets is a central N i atom. From the N i atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, a solid wedge below to the right indicates a bond with a C l atom and a solid wedge to the lower left indicates a bond to the O atoms of an H subscript 2 O group. This structure is also enclosed in brackets.;"><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Answer4e_img.jpg"/></media><newline/> (f) [Co(C<sub>2</sub>O<sub>4</sub>)<sub>2</sub>Cl<sub>2</sub>]<sup>3−</sup>:<newline/> <media id="fs-idm29297584" alt="This figure includes three structures. The first structure includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper left of the structure. The remaining four bonds extend from the central C o atom to O atoms. The O atoms are each connected to C atoms which are each connected with double bonds to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript 3 negative sign. The second structure, which appears to the be mirror image of the first structure, includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper right of the structure. The remaining four bonds extend from the central C o atom to O atoms. The O atoms are each connected to C atoms which are each connected with double bonds to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 negative sign. The third structure includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and bottom of the structure. The remaining four bonds extend from the central C o atom to the O atoms. The O atoms are each connected to C atoms which are in turn each double bonded to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets, to the right, is a superscript 3 negative sign. This final structure has rings of atoms on opposite sides of the structure."><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_Answer4f_img.jpg"/></media></para></solution>
+</exercise>
+<exercise id="fs-idp55630960">
+<problem id="fs-idp227628256">
+<para id="fs-idm62688336">Teiknið skýringarmyndir fyrir allar <emphasis effect="italics">cis</emphasis>, <emphasis effect="italics">trans</emphasis> og handhverfar ísómerur sem gætu verið til fyrir eftirfarandi (en er etýlendíamín):</para>
+<para id="fs-idp278094160">(a) [Co(en)<sub>2</sub>(NO<sub>2</sub>)Cl]<sup>+</sup></para>
+<para id="fs-idm3473200">(b) [Co(en)<sub>2</sub>Cl<sub>2</sub>]<sup>+</sup></para>
+<para id="fs-idp240653552">(c) [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>4</sub>]</para>
+<para id="fs-idp217660976">(d) [Cr(en)<sub>3</sub>]<sup>3+</sup></para>
+<para id="fs-idp129128096">(e) [Pt(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>]</para>
+</problem>
+</exercise>
+<exercise id="fs-idp39161552">
+<problem id="fs-idp56403008">
+<para id="fs-idp174791264">Nefnið hvert efnasamband eða jón sem gefin er í <link target-id="fs-idp104842000"/>, þar með talið oxunarástand málmsins.</para></problem>
+<solution id="fs-idp50104672">
+<para id="fs-idp56287648">(a) tríkarbónatócóbaltat(III)jón; (b) tetraammínkopar(II)jón; (c) tetraammíndíbrómócóbalt(III)súlfat; (d) tetraammínplatína(II)tetraklóróplatinat(II); (e) <emphasis effect="italics">tris-</emphasis>(etýlendíamín)króm(III)nítrat; (f) díammíndíbrómópalladíum(II); (g) kalíumpentaklórókúprat(II); (h) díammíndíklórósink(II)</para>
+</solution>
+</exercise>
+<exercise id="fs-idp39687552">
+<problem id="fs-idp68940112">
+<para id="fs-idp57091024">Nefnið hvert efnasamband eða jón sem gefin er í <link target-id="fs-idp55630960"/>.</para></problem>
+</exercise>
+<exercise id="fs-idp74861776">
+<problem id="fs-idp128290992">
+<para id="fs-idp108752272">Tilgreinið hvort eftirfarandi komplexar hafi ísómerur.</para>
+<para id="fs-idp36945120">(a) tetrahedrískur [Ni(CO)<sub>2</sub>(Cl)<sub>2</sub>]</para>
+<para id="fs-idp95290608">(b) þríhyrnd tvípýramídísk [Mn(CO)<sub>4</sub>NO]</para>
+<para id="fs-idp82903136">(c) [Pt(en)<sub>2</sub>Cl<sub>2</sub>]Cl<sub>2</sub></para>
+</problem>
+<solution id="fs-idp80290816">
+<para id="fs-idp117271104">(a) engar; (b) engar; (c) Tveir Cl-ligandar geta verið <emphasis effect="italics">cis</emphasis> eða <emphasis effect="italics">trans</emphasis>. Þegar þeir eru <emphasis effect="italics">cis</emphasis> verður einnig til handhverf ísómera.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp128328592">
+<problem id="fs-idp171762128">
+<para id="fs-idp7428240">Spáið fyrir um hvort karbónatligandinn <m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>muni tengjast málmiðju sem eintannar, tvítannar eða þrítannar ligandi.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp128328048">
+<problem id="fs-idp58805216">
+<para id="fs-idp9775424">Teiknið rúm-, tengsla- og jónunarísómerur fyrir [CoCl<sub>5</sub>CN][CN].</para>
+</problem>
+<solution id="fs-idp5486896">
+<para id="fs-idm35199712"><media id="fs-idp225955008" alt="This figure shows eight structures, each inside brackets in three rows. The first row contains three structures, the second row contains three structures, and the third row contains two structures. These structures are described in increasing order moving left to right and top to bottom in the figure. Each includes a central C o atom with line segments indicating bonds above and below the central atom. Above and to both the left and right, dashed wedges with vertices at the C o atom widening as they move out from the atom indicates single bonds. Similarly, solid wedges below and to both the left and right indicate single bonds. Outside each structure in brackets, to the right, an element or group is identified in brackets as a superscript. In the first structure, the C atom of a C N group is bonded to the C o atom. All 5 remaining bonds are with C l atoms. C N appears in brackets as a superscript outside the structure. In the second structure, the N atom of a C N group is bonded to the C o atom. All 5 remaining bonds are with C l atoms. C N appears in brackets as a superscript outside the structure. In the third structure, the C atom of two C N groups are bonded to the C o atom at the top and bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the fourth structure, the C atom of a C N groups is bonded to the C o atom at the top and the N atom of a C N group which is bonded at the bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the fifth structure, the N atom of two C N groups are bonded to the C o atom at the top and bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the sixth structure, the C atom of two C N groups are bonded to the C o atom at the top and upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the seventh structure, the C atom of a C N group is bonded to the C o atom at the top of the structure and the N atom of a C N group is bonded at the upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the eighth structure, the N atom of two C N groups are bonded to the C o atom at the top and upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure."><image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_ex10ans_img.jpg"/></media></para></solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp65460624">
+<term>tvítannar ligandi (e. bidentate ligand)</term>
+<meaning id="fs-idp65460624-meaning">ligandi sem tengist einni málmiðju með samhæfðum tengjum frá tveimur mismunandi atómum</meaning>
+</definition>
+<definition id="fs-idp53705200">
+<term>málmiðja (e. central metal)</term>
+<meaning id="fs-idp53705200-meaning">jón eða atóm sem einn eða fleiri ligandar eru tengdir við með samhæfðum samgildum tengjum</meaning>
+</definition>
+<definition id="fs-idp64634960">
+<term>klóefni (e. chelate)</term>
+<meaning id="fs-idp64634960-meaning">komplex myndaður úr fjöltönnuðum liganda sem er tengdur við málmiðju</meaning>
+</definition>
+<definition id="fs-idp51669120">
+<term>klóligandi (e. chelating ligand)</term>
+<meaning id="fs-idp51669120-meaning">ligandi sem tengist málmiðjujón með tengjum frá tveimur eða fleiri gjafafrumeindum</meaning>
+</definition>
+<definition id="fs-idp15506400">
+<term>cis-afstaða (e. cis configuration)</term>
+<meaning id="fs-idp15506400-meaning">afstaða rúmísómeru þar sem tveir sambærilegir hópar eru á sömu hlið ímyndaðrar viðmiðunarlínu á sameindinni</meaning>
+</definition>
+<definition id="fs-idp246761680">
+<term>hæfnieinasamband (e. coordination compound)</term>
+<meaning id="fs-idp246761680-meaning">efni sem samanstendur af atómum, sameindum eða jónum sem eru tengd við miðjuatóm með Lewis-sýru-basa víxlverkunum</meaning>
+</definition>
+<definition id="fs-idp55828544">
+<term>hæfni- eða samhæfingartala (e. coordination number)</term>
+<meaning id="fs-idp55828544-meaning">fjöldi samhæfðra samgildra tengja við málmiðjuatóm í komplex eða fjöldi nálægustu snertinga við atóm í kristalformi</meaning>
+</definition>
+<definition id="fs-idp56324672">
+<term>hæfnisvið (e. coordination sphere)</term>
+<meaning id="fs-idp56324672-meaning">málmiðjuatóm eða jón ásamt tengdum ligöndum í komplex</meaning>
+</definition>
+<definition id="fs-idp275481408">
+<term>gjafafrumeind (e. donor atom)</term>
+<meaning id="fs-idp275481408-meaning">atóm í liganda með stakt rafeindapar sem myndar samhæft samgilt tengi við málmiðju</meaning>
+</definition>
+<definition id="fs-idp165361216">
+<term>jónunarísómera (e. ionization isomer)</term>
+<meaning id="fs-idp165361216-meaning">(eða samhæfingarísómera) ísómera þar sem anjónískum liganda er skipt út fyrir mótjónina í innra hæfnisviðinu</meaning>
+</definition>
+<definition id="fs-idp279277792">
+<term>ligandi (e. ligand)</term>
+<meaning id="fs-idp279277792-meaning">jón eða hlutlaus sameind sem er tengd við málmiðjujón í hæfnieinasambandi</meaning>
+</definition>
+<definition id="fs-idp63930000">
+<term>tengslaísómera (e. linkage isomer)</term>
+<meaning id="fs-idp63930000-meaning">hæfnieinasamband sem býr yfir liganda sem getur tengst hliðarmálmi á tvo mismunandi vegu (CN<sup>−</sup> á móti NC<sup>−</sup>)</meaning>
+</definition>
+<definition id="fs-idp8060128">
+<term>eintanna (e. monodentate)</term>
+<meaning id="fs-idp8060128-meaning">bindill sem tengist miðlægri málmjón með aðeins einu samgildu samræmingartengi</meaning>
+</definition>
+<definition id="fs-idp216879616">
+<term>hverfisómerur (e. optical isomer)</term>
+<meaning id="fs-idp216879616-meaning">(einnig, andhverfur) sameind sem er óyfirleggjanleg spegilmynd með eins efna- og eðlisfræðilega eiginleika, nema þegar hún hvarfast við aðrar hverfisómerur</meaning>
+</definition>
+<definition id="fs-idp158869120">
+<term>fjöltanna bindill (e. polydentate ligand)</term>
+<meaning id="fs-idp158869120-meaning">bindill sem er tengdur miðlægri málmjón með tengjum frá tveimur eða fleiri gjafafrumeindum, nefndur með forskeytum sem tilgreina hversu margir gjafar eru til staðar (t.d. sextanna = sex samræmingartengi mynduð)</meaning>
+</definition>
+<definition id="fs-idp75431424">
+<term>trans-afstaða (e. trans configuration)</term>
+<meaning id="fs-idp75431424-meaning">afstaða rúmísómeru þar sem tveir svipaðir hópar eru á gagnstæðum hliðum ímyndaðrar viðmiðunarlínu á sameindinni</meaning>
+</definition>
+</glossary>
+</document>

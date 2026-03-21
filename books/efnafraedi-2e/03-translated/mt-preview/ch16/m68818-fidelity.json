@@ -1,0 +1,29 @@
+{
+  "moduleId": "m68818",
+  "chapter": "ch16",
+  "timestamp": "2026-03-20T12:08:07.093Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 77,
+      "translated": 69,
+      "diff": -8,
+      "direction": "loss"
+    },
+    {
+      "tag": "link",
+      "source": 7,
+      "translated": 6,
+      "diff": -1,
+      "direction": "loss"
+    },
+    {
+      "tag": "para",
+      "source": 73,
+      "translated": 72,
+      "diff": -1,
+      "direction": "loss"
+    }
+  ]
+}

@@ -11,13 +11,13 @@ Explain the dimensional analysis (factor label) approach to mathematical calcula
 Use dimensional analysis to carry out unit conversions for a given property and computations involving two or more properties
 
 <!-- SEG:m68683:para:fs-idm319461744 -->
-It is often the case that a quantity of interest may not be easy (or even possible) to measure directly but instead must be calculated from other directly measured properties and appropriate mathematical relationships. For example, consider measuring the average speed of an athlete running sprints. This is typically accomplished by measuring the *time* required for the athlete to run from the starting line to the finish line, and the *distance* between these two lines, and then computing *speed* from the equation that relates these three properties:
+It is often the case that a quantity of interest may not be easy (or even possible) to measure directly but instead must be calculated from other directly measured properties and appropriate mathematical relationships. For example, consider measuring the average speed of an athlete running sprints. This is typically accomplished by measuring the {{i}}time{{/i}} required for the athlete to run from the starting line to the finish line, and the {{i}}distance{{/i}} between these two lines, and then computing {{i}}speed{{/i}} from the equation that relates these three properties:
 
 <!-- SEG:m68683:para:fs-idm350487392 -->
 An Olympic-quality sprinter can run 100 m in approximately 10 s, corresponding to an average speed of
 
 <!-- SEG:m68683:para:fs-idm308822992 -->
-(For this and the next calculation, assume the trailing zeros are significant digits.) Note that this simple arithmetic involves dividing the numbers of each measured quantity to yield the number of the computed quantity (100/10 = 10) *and likewise* dividing the units of each measured quantity to yield the unit of the computed quantity (m/s = m/s). Now, consider using this same relation to predict the time required for a person running at this speed to travel a distance of 25 m. The same relation among the three properties is used, but in this case, the two quantities provided are a speed (10 m/s) and a distance (25 m). To yield the sought property, time, the equation must be rearranged appropriately:
+(For this and the next calculation, assume the trailing zeros are significant digits.) Note that this simple arithmetic involves dividing the numbers of each measured quantity to yield the number of the computed quantity (100/10 = 10) {{i}}and likewise{{/i}} dividing the units of each measured quantity to yield the unit of the computed quantity (m/s = m/s). Now, consider using this same relation to predict the time required for a person running at this speed to travel a distance of 25 m. The same relation among the three properties is used, but in this case, the two quantities provided are a speed (10 m/s) and a distance (25 m). To yield the sought property, time, the equation must be rearranged appropriately:
 
 <!-- SEG:m68683:para:fs-idm24572080 -->
 The time can then be computed as:
@@ -26,13 +26,13 @@ The time can then be computed as:
 Again, arithmetic on the numbers (25/10 = 2.5) was accompanied by the same arithmetic on the units (m/(m/s) = s) to yield the number and unit of the result, 2.5 s. Note that, just as for numbers, when a unit is divided by an identical unit (in this case, m/m), the result is “1”—or, as commonly phrased, the units “cancel.”
 
 <!-- SEG:m68683:para:fs-idp44099792 -->
-These calculations are examples of a versatile mathematical approach known as __dimensional analysis__ (or the __factor-label method__). Dimensional analysis is based on this premise: *the units of quantities must be subjected to the same mathematical operations as their associated numbers*. This method can be applied to computations ranging from simple unit conversions to more complex, multi-step calculations involving several different quantities.
+These calculations are examples of a versatile mathematical approach known as {{term}}dimensional analysis{{/term}} (or the {{term}}factor-label method{{/term}}). Dimensional analysis is based on this premise: {{i}}the units of quantities must be subjected to the same mathematical operations as their associated numbers{{/i}}. This method can be applied to computations ranging from simple unit conversions to more complex, multi-step calculations involving several different quantities.
 
 <!-- SEG:m68683:title:fs-idm285086480-title -->
 Conversion Factors and Dimensional Analysis
 
 <!-- SEG:m68683:para:fs-idm273312256 -->
-A ratio of two equivalent quantities expressed with different measurement units can be used as a __unit conversion factor__. For example, the lengths of 2.54 cm and 1 in. are equivalent (by definition), and so a unit conversion factor may be derived from the ratio,
+A ratio of two equivalent quantities expressed with different measurement units can be used as a {{term}}unit conversion factor{{/term}}. For example, the lengths of 2.54 cm and 1 in. are equivalent (by definition), and so a unit conversion factor may be derived from the ratio,
 
 <!-- SEG:m68683:para:fs-idm205801120 -->
 Several other commonly used conversion factors are given in [#fs-idm222237232].
@@ -65,13 +65,13 @@ Mass
 1 qt = 0.94635 L
 
 <!-- SEG:m68683:entry:auto-23 -->
-1 lb = 453.59 g [footnote: Strictly speaking, the ounce and pound are units of weight, *W* (a force equal to the product of mass and gravitational acceleration, *W* = *mg*). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for *g* at the surface of the earth.]
+1 lb = 453.59 g {{fn}}Strictly speaking, the ounce and pound are units of weight, {{i}}W{{/i}} (a force equal to the product of mass and gravitational acceleration, {{i}}W{{/i}} = {{i}}mg{{/i}}). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for {{i}}g{{/i}} at the surface of the earth.{{/fn}}
 
 <!-- SEG:m68683:entry:auto-24 -->
 1 km = 0.62137 mi
 
 <!-- SEG:m68683:entry:auto-25 -->
-1 ft^3^ = 28.317 L
+1 ft[[sup:3]] = 28.317 L
 
 <!-- SEG:m68683:entry:auto-26 -->
 1 (avoirdupois) oz = 28.349 g
@@ -89,7 +89,7 @@ Mass
 When a quantity (such as distance in inches) is multiplied by an appropriate unit conversion factor, the quantity is converted to an equivalent value with different units (such as distance in centimeters). For example, a basketball player’s vertical jump of 34 inches can be converted to centimeters by:
 
 <!-- SEG:m68683:para:fs-idm291646272 -->
-Since this simple arithmetic involves *quantities*, the premise of dimensional analysis requires that we multiply both *numbers and units*. The numbers of these two quantities are multiplied to yield the number of the product quantity, 86, whereas the units are multiplied to yield [[MATH:1]]. Just as for numbers, a ratio of identical units is also numerically equal to one, [[MATH:2]] and the unit product thus simplifies to *cm*. (When identical units divide to yield a factor of 1, they are said to “cancel.”) Dimensional analysis may be used to confirm the proper application of unit conversion factors as demonstrated in the following example.
+Since this simple arithmetic involves {{i}}quantities{{/i}}, the premise of dimensional analysis requires that we multiply both {{i}}numbers and units{{/i}}. The numbers of these two quantities are multiplied to yield the number of the product quantity, 86, whereas the units are multiplied to yield [[MATH:1]]. Just as for numbers, a ratio of identical units is also numerically equal to one, [[MATH:2]] and the unit product thus simplifies to {{i}}cm{{/i}}. (When identical units divide to yield a factor of 1, they are said to “cancel.”) Dimensional analysis may be used to confirm the proper application of unit conversion factors as demonstrated in the following example.
 
 <!-- SEG:m68683:example-title:fs-idm150235328-title -->
 Using a Unit Conversion Factor
@@ -125,7 +125,7 @@ Answer:
 8.844 L
 
 <!-- SEG:m68683:para:fs-idm262838208 -->
-Beyond simple unit conversions, the factor-label method can be used to solve more complex problems involving computations. Regardless of the details, the basic approach is the same—all the *factors* involved in the calculation must be appropriately oriented to ensure that their *labels* (units) will appropriately cancel and/or combine to yield the desired unit in the result. As your study of chemistry continues, you will encounter many opportunities to apply this approach.
+Beyond simple unit conversions, the factor-label method can be used to solve more complex problems involving computations. Regardless of the details, the basic approach is the same—all the {{i}}factors{{/i}} involved in the calculation must be appropriately oriented to ensure that their {{i}}labels{{/i}} (units) will appropriately cancel and/or combine to yield the desired unit in the result. As your study of chemistry continues, you will encounter many opportunities to apply this approach.
 
 <!-- SEG:m68683:example-title:fs-idm305814320-title -->
 Computing Quantities from Measurement Results and Known Mathematical Relations
@@ -155,19 +155,19 @@ Check Your Learning
 What is the volume in liters of 1.000 oz, given that 1 L = 1.0567 qt and 1 qt = 32 oz (exactly)?
 
 <!-- SEG:m68683:para:fs-idm292695264 -->
-2.957 × 10^−2^ L
+2.957 × 10[[sup:−2]] L
 
 <!-- SEG:m68683:item:fs-idm287602768-item-1 -->
-*Convert quarts to liters.* [[MATH:5]]
+{{i}}Convert quarts to liters.{{/i}} [[MATH:5]]
 
 <!-- SEG:m68683:item:fs-idm287602768-item-2 -->
-*Convert liters to milliliters.* [[MATH:6]]
+{{i}}Convert liters to milliliters.{{/i}} [[MATH:6]]
 
 <!-- SEG:m68683:note-title:fs-idm207792224-title -->
 Answer:
 
 <!-- SEG:m68683:para:fs-idm292695264 -->
-2.957 × 10^−2^ L
+2.957 × 10[[sup:−2]] L
 
 <!-- SEG:m68683:example-title:fs-idm306560960-title -->
 Computing Quantities from Measurement Results and Known Mathematical Relations
@@ -224,10 +224,10 @@ Answer:
 Conversion of Temperature Units
 
 <!-- SEG:m68683:para:fs-idm262720192 -->
-We use the word __temperature__ to refer to the hotness or coldness of a substance. One way we measure a change in temperature is to use the fact that most substances expand when their temperature increases and contract when their temperature decreases. The liquid in a common glass thermometer changes its volume as the temperature changes, and the position of the trapped liquid's surface along a printed scale may be used as a measure of temperature.
+We use the word {{term}}temperature{{/term}} to refer to the hotness or coldness of a substance. One way we measure a change in temperature is to use the fact that most substances expand when their temperature increases and contract when their temperature decreases. The liquid in a common glass thermometer changes its volume as the temperature changes, and the position of the trapped liquid's surface along a printed scale may be used as a measure of temperature.
 
 <!-- SEG:m68683:para:fs-idm308860096 -->
-Temperature scales are defined relative to selected reference temperatures: Two of the most commonly used are the freezing and boiling temperatures of water at a specified atmospheric pressure. On the Celsius scale, 0 °C is defined as the freezing temperature of water and 100 °C as the boiling temperature of water. The space between the two temperatures is divided into 100 equal intervals, which we call degrees. On the __Fahrenheit__ scale, the freezing point of water is defined as 32 °F and the boiling temperature as 212 °F. The space between these two points on a Fahrenheit thermometer is divided into 180 equal parts (degrees).
+Temperature scales are defined relative to selected reference temperatures: Two of the most commonly used are the freezing and boiling temperatures of water at a specified atmospheric pressure. On the Celsius scale, 0 °C is defined as the freezing temperature of water and 100 °C as the boiling temperature of water. The space between the two temperatures is divided into 100 equal intervals, which we call degrees. On the {{term}}Fahrenheit{{/term}} scale, the freezing point of water is defined as 32 °F and the boiling temperature as 212 °F. The space between these two points on a Fahrenheit thermometer is divided into 180 equal parts (degrees).
 
 <!-- SEG:m68683:para:fs-idm288396336 -->
 Defining the Celsius and Fahrenheit temperature scales as described in the previous paragraph results in a slightly more complex relationship between temperature values on these two scales than for different units of measure for other properties. Most measurement units for a given property are directly proportional to one another (y = mx). Using familiar length units as one example:
@@ -236,13 +236,13 @@ Defining the Celsius and Fahrenheit temperature scales as described in the previ
 where y = length in feet, x = length in inches, and the proportionality constant, m, is the conversion factor. The Celsius and Fahrenheit temperature scales, however, do not share a common zero point, and so the relationship between these two scales is a linear one rather than a proportional one (y = mx + b). Consequently, converting a temperature from one of these scales into the other requires more than simple multiplication by a conversion factor, m; it also must take into account differences in the scales’ zero points (b).
 
 <!-- SEG:m68683:para:fs-idm292928800 -->
-The linear equation relating Celsius and Fahrenheit temperatures is easily derived from the two temperatures used to define each scale. Representing the Celsius temperature as *x* and the Fahrenheit temperature as *y*, the slope, *m*, is computed to be:
+The linear equation relating Celsius and Fahrenheit temperatures is easily derived from the two temperatures used to define each scale. Representing the Celsius temperature as {{i}}x{{/i}} and the Fahrenheit temperature as {{i}}y{{/i}}, the slope, {{i}}m{{/i}}, is computed to be:
 
 <!-- SEG:m68683:para:fs-idm206340880 -->
-The *y*-intercept of the equation, *b*, is then calculated using either of the equivalent temperature pairs, (100 °C, 212 °F) or (0 °C, 32 °F), as:
+The {{i}}y{{/i}}-intercept of the equation, {{i}}b{{/i}}, is then calculated using either of the equivalent temperature pairs, (100 °C, 212 °F) or (0 °C, 32 °F), as:
 
 <!-- SEG:m68683:para:fs-idm218561008 -->
-The equation relating the temperature (*T*) scales is then:
+The equation relating the temperature ({{i}}T{{/i}}) scales is then:
 
 <!-- SEG:m68683:para:fs-idm208304512 -->
 An abbreviated form of this equation that omits the measurement units is:
@@ -392,13 +392,13 @@ How many milliliters of a soft drink are contained in a 12.0-oz can?
 A barrel of oil is exactly 42 gal. How many liters of oil are in a barrel?
 
 <!-- SEG:m68683:problem:fs-idm127485184 -->
-The diameter of a red blood cell is about 3 [[MATH:16]] 10^−4^ in. What is its diameter in centimeters?
+The diameter of a red blood cell is about 3 [[MATH:16]] 10[[sup:−4]] in. What is its diameter in centimeters?
 
 <!-- SEG:m68683:solution:fs-idp32913072 -->
-8 [[MATH:17]] 10^−4^ cm
+8 [[MATH:17]] 10[[sup:−4]] cm
 
 <!-- SEG:m68683:problem:fs-idm227698368 -->
-The distance between the centers of the two oxygen atoms in an oxygen molecule is 1.21 [[MATH:18]] 10^−8^ cm. What is this distance in inches?
+The distance between the centers of the two oxygen atoms in an oxygen molecule is 1.21 [[MATH:18]] 10[[sup:−8]] cm. What is this distance in inches?
 
 <!-- SEG:m68683:problem:fs-idm294701072 -->
 Is a 197-lb weight lifter light enough to compete in a class limited to those weighing 90 kg or less?
@@ -413,7 +413,7 @@ A very good 197-lb weight lifter lifted 192 kg in a move called the clean and je
 Many medical laboratory tests are run using 5.0 μL blood serum. What is this volume in milliliters?
 
 <!-- SEG:m68683:solution:fs-idm137236672 -->
-5.0 [[MATH:19]] 10^−3^ mL
+5.0 [[MATH:19]] 10[[sup:−3]] mL
 
 <!-- SEG:m68683:problem:fs-idm392857904 -->
 If an aspirin tablet contains 325 mg aspirin, how many grams of aspirin does it contain?
@@ -449,7 +449,7 @@ Use scientific (exponential) notation to express the following quantities in ter
 (i) 0.15 mK
 
 <!-- SEG:m68683:solution:fs-idm211581456 -->
-(a) 1.3 [[MATH:20]] 10^−4^ kg; (b) 2.32 [[MATH:21]] 10^8^ kg; (c) 5.23 [[MATH:22]] 10^−12^ m; (d) 8.63 [[MATH:23]] 10^−5^ kg; (e) 3.76 [[MATH:24]] 10^−1^ m; (f) 5.4 [[MATH:25]] 10^−5^ m; (g) 1 [[MATH:26]] 10^12^ s; (h) 2.7 [[MATH:27]] 10^−11^ s; (i) 1.5 [[MATH:28]] 10^−4^ K
+(a) 1.3 [[MATH:20]] 10[[sup:−4]] kg; (b) 2.32 [[MATH:21]] 10[[sup:8]] kg; (c) 5.23 [[MATH:22]] 10[[sup:−12]] m; (d) 8.63 [[MATH:23]] 10[[sup:−5]] kg; (e) 3.76 [[MATH:24]] 10[[sup:−1]] m; (f) 5.4 [[MATH:25]] 10[[sup:−5]] m; (g) 1 [[MATH:26]] 10[[sup:12]] s; (h) 2.7 [[MATH:27]] 10[[sup:−11]] s; (i) 1.5 [[MATH:28]] 10[[sup:−4]] K
 
 <!-- SEG:m68683:problem:fs-idm308818096 -->
 Complete the following conversions between SI units.
@@ -494,7 +494,7 @@ Milk is sold by the liter in many countries. What is the volume of exactly 1/2 g
 A long ton is defined as exactly 2240 lb. What is this mass in kilograms?
 
 <!-- SEG:m68683:solution:fs-idp176467360 -->
-1.0160 [[MATH:29]] 10^3^ kg
+1.0160 [[MATH:29]] 10[[sup:3]] kg
 
 <!-- SEG:m68683:problem:fs-idm142857008 -->
 Make the conversion indicated in each of the following:
@@ -506,13 +506,13 @@ Make the conversion indicated in each of the following:
 (b) the greatest depth of the ocean, about 6.5 mi, to kilometers
 
 <!-- SEG:m68683:problem:fs-idp1437328 -->
-(c) the area of the state of Oregon, 96,981 mi^2^, to square kilometers
+(c) the area of the state of Oregon, 96,981 mi[[sup:2]], to square kilometers
 
 <!-- SEG:m68683:problem:fs-idm124542480 -->
 (d) the volume of 1 gill (exactly 4 oz) to milliliters
 
 <!-- SEG:m68683:problem:fs-idm210560384 -->
-(e) the estimated volume of the oceans, 330,000,000 mi^3^, to cubic kilometers.
+(e) the estimated volume of the oceans, 330,000,000 mi[[sup:3]], to cubic kilometers.
 
 <!-- SEG:m68683:problem:fs-idm216546816 -->
 (f) the mass of a 3525-lb car to kilograms
@@ -530,13 +530,13 @@ Make the conversion indicated in each of the following:
 (b) the height of Mt. Kilimanjaro, at 19,565 ft, the highest mountain in Africa, to kilometers
 
 <!-- SEG:m68683:problem:fs-idm307271088 -->
-(c) the area of an 8.5- × 11-inch sheet of paper in cm^2^
+(c) the area of an 8.5- × 11-inch sheet of paper in cm[[sup:2]]
 
 <!-- SEG:m68683:problem:fs-idm127105888 -->
-(d) the displacement volume of an automobile engine, 161 in.^3^, to liters
+(d) the displacement volume of an automobile engine, 161 in.[[sup:3]], to liters
 
 <!-- SEG:m68683:problem:fs-idm218455584 -->
-(e) the estimated mass of the atmosphere, 5.6 × 10^15^ tons, to kilograms
+(e) the estimated mass of the atmosphere, 5.6 × 10[[sup:15]] tons, to kilograms
 
 <!-- SEG:m68683:problem:fs-idm98022832 -->
 (f) the mass of a bushel of rye, 32.0 lb, to kilograms
@@ -545,13 +545,13 @@ Make the conversion indicated in each of the following:
 (g) the mass of a 5.00-grain aspirin tablet to milligrams (1 grain = 0.00229 oz)
 
 <!-- SEG:m68683:solution:fs-idm134479920 -->
-(a) 394 ft; (b) 5.9634 km; (c) 6.0 [[MATH:30]] 10^2^; (d) 2.64 L; (e) 5.1 [[MATH:31]] 10^18^ kg; (f) 14.5 kg; (g) 324 mg
+(a) 394 ft; (b) 5.9634 km; (c) 6.0 [[MATH:30]] 10[[sup:2]]; (d) 2.64 L; (e) 5.1 [[MATH:31]] 10[[sup:18]] kg; (f) 14.5 kg; (g) 324 mg
 
 <!-- SEG:m68683:problem:fs-idm142862320 -->
-Many chemistry conferences have held a 50-Trillion Angstrom Run (two significant figures). How long is this run in kilometers and in miles? (1 Å = 1 [[MATH:32]] 10^−10^ m)
+Many chemistry conferences have held a 50-Trillion Angstrom Run (two significant figures). How long is this run in kilometers and in miles? (1 Å = 1 [[MATH:32]] 10[[sup:−10]] m)
 
 <!-- SEG:m68683:problem:fs-idm142857600 -->
-A chemist’s 50-Trillion Angstrom Run (see [#fs-idm219388000]) would be an archeologist’s 10,900 cubit run. How long is one cubit in meters and in feet? (1 Å = 1 [[MATH:33]] 10^−8^ cm)
+A chemist’s 50-Trillion Angstrom Run (see [#fs-idm219388000]) would be an archeologist’s 10,900 cubit run. How long is one cubit in meters and in feet? (1 Å = 1 [[MATH:33]] 10[[sup:−8]] cm)
 
 <!-- SEG:m68683:solution:fs-idp194388912 -->
 0.46 m; 1.5 ft/cubit
@@ -593,22 +593,22 @@ Solve these problems about lumber dimensions.
 The mercury content of a stream was believed to be above the minimum considered safe—1 part per billion (ppb) by weight. An analysis indicated that the concentration was 0.68 parts per billion. What quantity of mercury in grams was present in 15.0 L of the water, the density of which is 0.998 g/ml? [[MATH:42]]
 
 <!-- SEG:m68683:problem:fs-idm121592912 -->
-Calculate the density of aluminum if 27.6 cm^3^ has a mass of 74.6 g.
+Calculate the density of aluminum if 27.6 cm[[sup:3]] has a mass of 74.6 g.
 
 <!-- SEG:m68683:solution:fs-idm209433984 -->
-2.70 g/cm^3^
+2.70 g/cm[[sup:3]]
 
 <!-- SEG:m68683:problem:fs-idp63994848 -->
-Osmium is one of the densest elements known. What is its density if 2.72 g has a volume of 0.121 cm^3^?
+Osmium is one of the densest elements known. What is its density if 2.72 g has a volume of 0.121 cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm62194528 -->
 Calculate these masses.
 
 <!-- SEG:m68683:problem:fs-idp56604960 -->
-(a) What is the mass of 6.00 cm^3^ of mercury, density = 13.5939 g/cm^3^?
+(a) What is the mass of 6.00 cm[[sup:3]] of mercury, density = 13.5939 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm84745936 -->
-(b) What is the mass of 25.0 mL octane, density = 0.702 g/cm^3^?
+(b) What is the mass of 25.0 mL octane, density = 0.702 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:solution:fs-idp10159024 -->
 (a) 81.6 g; (b) 17.6 g
@@ -617,7 +617,7 @@ Calculate these masses.
 Calculate these masses.
 
 <!-- SEG:m68683:problem:fs-idm277853776 -->
-(a) What is the mass of 4.00 cm^3^ of sodium, density = 0.97 g/cm^3^ ?
+(a) What is the mass of 4.00 cm[[sup:3]] of sodium, density = 0.97 g/cm[[sup:3]] ?
 
 <!-- SEG:m68683:problem:fs-idm304880 -->
 (b) What is the mass of 125 mL gaseous chlorine, density = 3.16 g/L?
@@ -626,7 +626,7 @@ Calculate these masses.
 Calculate these volumes.
 
 <!-- SEG:m68683:problem:fs-idm290040480 -->
-(a) What is the volume of 25 g iodine, density = 4.93 g/cm^3^?
+(a) What is the volume of 25 g iodine, density = 4.93 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm307942992 -->
 (b) What is the volume of 3.28 g gaseous hydrogen, density = 0.089 g/L?
@@ -638,10 +638,10 @@ Calculate these volumes.
 Calculate these volumes.
 
 <!-- SEG:m68683:problem:fs-idm26116432 -->
-(a) What is the volume of 11.3 g graphite, density = 2.25 g/cm^3^?
+(a) What is the volume of 11.3 g graphite, density = 2.25 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm198676560 -->
-(b) What is the volume of 39.657 g bromine, density = 2.928 g/cm^3^?
+(b) What is the volume of 39.657 g bromine, density = 2.928 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm127944384 -->
 Convert the boiling temperature of gold, 2966 °C, into degrees Fahrenheit and kelvin.

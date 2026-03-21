@@ -1,0 +1,340 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<!-- FIDELITY-WARNING: m68735 has 2 structural discrepancy(ies)
+  emphasis: source=75 translated=76 (+1 overproduction)
+  sub: source=33 translated=34 (+1 overproduction)
+  Review needed before publication. Run cnxml-fidelity-check.js for details.
+-->
+<title>Lotubundinn breytileiki í eiginleikum frumefna</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68735</md:content-id>
+  <md:title>Lotubundinn breytileiki í eiginleikum frumefna</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst og útskýrt þá þróun sem sést í atómstærð, jónunarorku og rafsækni frumefnanna</item></list></md:abstract>
+  <md:uuid>c9c8f370-dce6-4fb9-ae62-f36f87a900f0</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm133801872">Frumefnin í hópum (lóðréttum dálkum) lotukerfisins sýna svipaða efnafræðilega hegðun. Þessi líkindi eiga sér stað vegna þess að meðlimir hóps hafa sama fjölda og dreifingu rafeinda í ystu hvolfum sínum. Hins vegar eru einnig önnur mynstur í efnaeiginleikum í lotukerfinu. Til dæmis, þegar við förum niður eftir hópi, eykst málmkenndur eiginleiki frumeindanna. Súrefni, efst í hópi 16 (6A), er litlaus lofttegund; í miðjum hópnum er selen hálfleiðandi fast efni; og neðar er pólóníum silfurgrátt fast efni sem leiðir rafmagn.</para>
+<para id="fs-idm139046976">Þegar við förum þvert yfir lotu frá vinstri til hægri bætist róteind við kjarnann og rafeind við ysta hvolfið fyrir hvert frumefni í röð. Þegar við förum niður eftir frumefnum í hópi helst fjöldi rafeinda í ysta hvolfinu óbreyttur, en höfuðskammtatalan hækkar um einn í hvert sinn. Skilningur á rafeindaskipan frumefnanna gerir okkur kleift að skoða suma af þeim eiginleikum sem stjórna efnafræðilegri hegðun þeirra. Þessir eiginleikar breytast lotubundið eftir því sem rafeindaskipan frumefnanna breytist. Þeir eru (1) stærð (radíus) frumeinda og jóna, (2) jónunarorkur og (3) rafsækni.</para>
+<note id="fs-idm65430592" class="chemistry link-to-learning">
+<para id="fs-idp8713040">Skoðaðu <link url="http://openstax.org/l/16pertrends">myndrænar framsetningar</link> á þeim lotubundnu eiginleikum sem ræddir eru í þessum kafla (og mörgum fleiri). Með örfáum smellum geturðu búið til þrívíddarútgáfur af lotukerfinu sem sýna atómstærð eða gröf yfir jónunarorkur allra mældra frumefna.</para>
+</note>
+<section id="fs-idm46575248">
+<title>Breytileiki í samgildum radíus</title>
+<para id="fs-idm81399712">Skammtafræðilega myndin gerir það erfitt að ákvarða ákveðna stærð frumeindar. Hins vegar eru nokkrar hagnýtar leiðir til að skilgreina radíus frumeinda og þar með ákvarða hlutfallslegar stærðir þeirra sem gefa nokkurn veginn svipuð gildi. Við munum nota <term id="term-00001">samgildan radíus (e. covalent radius)</term> (<link target-id="CNX_Chem_06_05_CovalradiT"/>), sem er skilgreindur sem helmingurinn af fjarlægðinni milli kjarna tveggja eins frumeinda þegar þær eru tengdar með samgildu tengi (þessi mæling er möguleg vegna þess að frumeindir innan sameinda halda enn að miklu leyti sinni frumeindareinkennum). Við vitum að þegar við förum niður eftir hópi hækkar höfuðskammtatalan, <emphasis effect="italics">n</emphasis>, um einn fyrir hvert frumefni. Þannig bætast rafeindirnar við á svæði sem er sífellt fjarlægara kjarnanum. Afleiðingin er sú að stærð frumeindarinnar (og samgildur radíus hennar) hlýtur að aukast þegar við aukum fjarlægð ystu rafeindanna frá kjarnanum. Þessi þróun er sýnd fyrir samgilda radíusa halógenanna í <link target-id="fs-idp28766560"/> og <link target-id="CNX_Chem_06_05_CovalradiT"/>. Þróunina fyrir allt lotukerfið má sjá í <link target-id="CNX_Chem_06_05_CovalradiT"/>.</para>
+<table id="fs-idp28766560" class="top-titled" summary="This table has three columns and six rows. The first row is a header row, and it labels each column: “Atom,” “Covalent Radius, picometers,” and “Nuclear Charge.” Under the “Atom” column are the following: F, C l, B r, I, and A t. Under the “Covalent Radius, picometers” column are the following: 64, 99, 114, 133, and 148. Under the “Nuclear Charge” column are the following: positive 9, positive 17, positive 35, positive 53, and positive 85.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Samgildir radíusar halógenhópsins</entry>
+</row>
+<row valign="top">
+<entry>Frumeind</entry>
+<entry>Samgildur radíus (pm)</entry>
+<entry>Kjarnhleðsla</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry>F</entry>
+<entry>64</entry>
+<entry>+9</entry>
+</row>
+<row valign="top">
+<entry>Cl</entry>
+<entry>99</entry>
+<entry>+17</entry>
+</row>
+<row valign="top">
+<entry>Br</entry>
+<entry>114</entry>
+<entry>+35</entry>
+</row>
+<row valign="top">
+<entry>I</entry>
+<entry>133</entry>
+<entry>+53</entry>
+</row>
+<row valign="top">
+<entry>At</entry>
+<entry>148</entry>
+<entry>+85</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<figure id="CNX_Chem_06_05_CovalradiT">
+<media id="fs-idm144132800" alt="This figure has two parts: a and b. In figure a, four diatomic molecules are shown to illustrate the method of determining the atomic radius of an atom. The first model, in light green, is used to find the F atom radius. Two spheres are pushed very tightly together. The distance between the centers of the two atoms is indicated above the diagram with a double-headed arrow labeled “128 picometers (pm).” The end points of this arrow connect to line segments that extend to the atomic radii below. Beneath the molecule is the label, “F radius equals 128 pm divided by 2 equals 64 pm.” The next three models are similarly used to show the atomic radii of additional atoms. The second diatomic molecule is in a darker shade of green. The distance between the radii is 198 pm. Beneath the molecule is the label, “Cl radius equals 198 pm divided by 2 equals 99 pm.” The third diatomic molecule is in red. The distance between the radii is 228 pm. Beneath the molecule is the label, “Br radius equals 228 pm divided by 2 equals 114 pm.” The fourth diatomic molecule is in purple. The distance between the radii is 266 pm. Beneath the molecule is the label, “I radius equals 266 pm divided by 2 equals 133 pm.” In figure b, a periodic table layout is used to compare relative sizes of atoms, using green spheres. No spheres are provided for the noble or inert gas—group 18 elements. General trends noted are increasing circle size moving from top to bottom in a group, with a general tendency toward increasing atomic radii toward the lower left corner of the periodic table.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_CovalradiT.jpg"/>
+</media>
+<caption>(a) Radíus frumeindar er skilgreindur sem helmingurinn af fjarlægðinni milli kjarnanna í sameind sem samanstendur af tveimur eins frumeindum sem tengdar eru með samgildu tengi. Atómradíus halógenanna eykst niður eftir hópnum eftir því sem <emphasis effect="italics">n</emphasis> hækkar. (b) Samgildir radíusar frumefnanna eru sýndir í réttum hlutföllum. Almenna þróunin er sú að radíusar aukast niður eftir hópi og minnka þvert yfir lotu.</caption>
+</figure>
+<figure id="CNX_Chem_06_05_Radiigraph">
+<media id="fs-idm164235920" alt="This graph entitled, “Atomic Radii,” is labeled, “Atomic Number,” on the horizontal axis and, “Radius (p m),” on the vertical axis. Markings are provided every 10 units up to 60 on the horizontal axis beginning at zero. Vertical lines extend from the horizontal axis upward at each of these markings. The vertical axis begins at 0 and increases by 50’s up to 300. Horizontal lines are drawn across the graph at multiples of 50. A black jagged line connects the radii values for elements with atomic numbers 1 through 60 on the graph. Peaks are evident at the locations of the alkali metals: L i, N a, K, R b, and C s, at which points on the graph purple dots are placed and elements are labeled in purple. Similarly, minima exist at the locations of noble or inert gases: H e, N e, A r, K r, X e, and R n, at which points blue dots are placed and element symbols are provided in blue. The locations of period 4 and period 5 transition elements are provided with green dots. These points are clustered together in two locations on the graph which are circled in red and labeled accordingly. The green dots for the transition elements along with the line that connects them form a U shape on the graph within each of the red circles drawn. The atomic radii for the alkali metals in picometers are: L i 167, N a 190, K 243, R b 265, and C s 298. The atomic radii of the noble or inert gases included in the graph in picometers are: H e 31, N e 38, A r 71, K r 88, and X e 108.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_Radiigraph.jpg"/>
+</media>
+<caption>Innan hverrar lotu minnkar atómradíusinn eftir því sem <emphasis effect="italics">Z</emphasis> eykst; til dæmis frá K til Kr. Innan hvers hóps (t.d. alkalímálmarnir sýndir með fjólubláu) er þróunin sú að atómradíusinn eykst eftir því sem <emphasis effect="italics">Z</emphasis> eykst.</caption>
+</figure>
+<para id="fs-idm121307184">Eins og sýnt er í <link target-id="CNX_Chem_06_05_Radiigraph"/>, þegar við förum þvert yfir lotu frá vinstri til hægri, komumst við almennt að því að hvert frumefni hefur minni samgildan radíus en frumefnið á undan. Þetta kann að virðast þversagnakennt því það gefur til kynna að frumeindir með fleiri rafeindir hafi minni atómradíus. Þetta má útskýra með hugtakinu <term id="term-00002">virk kjarnhleðsla, <emphasis effect="italics">Z</emphasis><sub>eff</sub> (e. effective nuclear charge, <emphasis effect="italics">z</emphasis><sub>eff</sub>)</term>. Þetta er aðdráttarkrafturinn sem kjarninn beitir á tiltekna rafeind, að teknu tilliti til allra fráhrindikrafta milli rafeinda. Fyrir vetni er aðeins ein rafeind og því eru kjarnhleðslan (<emphasis effect="italics">Z</emphasis>) og virka kjarnhleðslan (<emphasis effect="italics">Z</emphasis><sub>eff</sub>) jafnar. Fyrir allar aðrar frumeindir <emphasis effect="italics">skygja</emphasis> innri rafeindirnar að hluta til á ytri rafeindirnar fyrir aðdráttarkrafti kjarnans, og því:</para>
+<equation id="fs-idm124657104" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>Z</m:mi><m:mrow><m:mtext>eff</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mi>Z</m:mi><m:mo>−</m:mo><m:mi>s</m:mi><m:mi>h</m:mi><m:mi>i</m:mi><m:mi>e</m:mi><m:mi>l</m:mi><m:mi>d</m:mi><m:mi>i</m:mi><m:mi>n</m:mi><m:mi>g</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm139062592">Hlífun ræðst af líkunum á því að önnur rafeind sé á milli rafeindarinnar sem um ræðir og kjarnans, sem og af fráhrindikröftum milli rafeinda sem rafeindin verður fyrir. Kjarnarafeindir eru góðar í að hlífð, á meðan rafeindir í sama gildishvolfi hindra ekki kjarnaaðdráttinn sem hver þeirra verður fyrir jafn skilvirkt. Þannig eykst <emphasis effect="italics">Z</emphasis> um einn í hvert sinn sem við færumst frá einu frumefni til þess næsta yfir lotu, en hlífunin eykst aðeins lítillega. Þess vegna eykst <emphasis effect="italics">Z</emphasis><sub>eff</sub> þegar við færumst frá vinstri til hægri yfir lotu. Sterkari aðdráttarkrafturinn (hærri virk kjarnhleðsla) sem rafeindir hægra megin í lotukerfinu verða fyrir dregur þær nær kjarnanum, sem gerir samgilda radíusana minni.</para>
+<para id="fs-idm117962416">Þannig, eins og við gætum búist við, er auðveldast að fjarlægja ystu rafeindirnar eða gildisrafeindirnar vegna þess að þær hafa hæstu orkuna, eru meira hlífðar og eru lengst frá kjarnanum. Að jafnaði, þegar aðalflokka frumefni mynda katjónir, gera þau það með því að tapa <emphasis effect="italics">ns</emphasis> eða <emphasis effect="italics">np</emphasis> rafeindunum sem bættust síðast við í Aufbau-ferlinu. Hliðarmálmar tapa hins vegar <emphasis effect="italics">ns</emphasis> rafeindunum áður en þeir byrja að tapa (<emphasis effect="italics">n</emphasis> – 1)<emphasis effect="italics">d</emphasis> rafeindunum, jafnvel þótt <emphasis effect="italics">ns</emphasis> rafeindunum sé bætt við fyrst samkvæmt Aufbau-reglunni.</para>
+<example id="fs-idm167417008">
+<para id="fs-idp96283344"><title>Að raða frumeindaradíusum</title>Spáðu fyrir um röð vaxandi samgilds radíusar fyrir Ge, Fl, Br, Kr.</para>
+<para id="fs-idm170368896"><title>Lausn</title>Radíus eykst þegar við færumst niður eftir flokki, þannig að Ge &lt; Fl (Athugið: Fl er táknið fyrir fleróvín, frumefni 114, EKKI flúor). Radíus minnkar þegar við færumst yfir lotu, þannig að Kr &lt; Br &lt; Ge. Þegar þessar tilhneigingar eru settar saman fáum við Kr &lt; Br &lt; Ge &lt; Fl.</para>
+<para id="fs-idm138739760"><title>Skoðaðu þekkingu þína</title>Nefndu dæmi um frumeind sem er minni en flúor.</para>
+<note id="fs-idm123362928"><title>Answer:</title>
+<para id="fs-idm176919040">Ne eða He</para></note>
+</example>
+</section>
+<section id="fs-idm56440528">
+<title>Breytingar á jónaradíusum</title>
+<para id="fs-idm83408752">Jónaradíus er mælikvarðinn sem notaður er til að lýsa stærð jónar. Katjón hefur alltaf færri rafeindir og sama fjölda róteinda og móðurfrumeindin; hún er minni en frumeindin sem hún er mynduð úr (<link target-id="CNX_Chem_06_05_Ionradii"/>). Til dæmis er samgildur radíus álfrumeindar (1<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>6</sup>3<emphasis effect="italics">s</emphasis><sup>2</sup>3<emphasis effect="italics">p</emphasis><sup>1</sup>) 118 pm, en jónaradíus Al<sup>3+</sup> (1<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>6</sup>) er 68 pm. Þegar rafeindir eru fjarlægðar úr ysta gildishvolfinu verða kjarnarafeindirnar sem eftir eru og skipa minni hvolf fyrir meiri virkri kjarnhleðslu <emphasis effect="italics">Z</emphasis><sub>eff</sub> (eins og rætt var) og dragast enn nær kjarnanum.</para>
+<figure id="CNX_Chem_06_05_Ionradii" class="scaled-down">
+<media id="fs-idm119556048" alt="The figure includes spheres in green to represent the relative sizes of A l and S atoms. The relatively large A l sphere in the upper left is labeled 118. The significantly smaller S sphere in the upper right is labeled 104. Beneath each of these spheres is a red sphere. The red sphere in the lower left is very small in comparison to the other spheres and is labeled, “A l superscript 3 plus 68.” The red sphere in the lower right is significantly larger than the other spheres and is labeled, “S superscript 2 negative 170. “">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_Ionradii.jpg"/>
+</media>
+<caption>Radíus katjónar er minni en móðurfrumeindarinnar (Al), vegna rafeindanna sem töpuðust; radíus anjónar er stærri en móðurfrumeindarinnar (S), vegna rafeindanna sem bættust við.</caption>
+</figure>
+<para id="fs-idm65452096">Katjónir með stærri hleðslur eru minni en katjónir með minni hleðslur (t.d. hefur V<sup>2+</sup> jónaradíus upp á 79 pm, á meðan radíus V<sup>3+</sup> er 64 pm). Þegar farið er niður eftir flokkum lotukerfisins sjáum við að katjónir samliggjandi frumefna með sömu hleðslu hafa yfirleitt stærri radíusa, sem samsvarar aukningu á höfuðskammtatölunni, <emphasis effect="italics">n</emphasis>.</para>
+<para id="fs-idm145149808">Anjón (neikvæð jón) myndast við álagningu einnar eða fleiri rafeinda á gildishvolf frumeindar. Þetta leiðir til meiri fráhrindikrafts milli rafeindanna og minnkunar á <emphasis effect="italics">Z</emphasis><sub>eff</sub> á hverja rafeind. Bæði áhrifin (aukinn fjöldi rafeinda og minnkað <emphasis effect="italics">Z</emphasis><sub>eff</sub>) valda því að radíus anjónar er stærri en radíus móðurfrumeindarinnar (<link target-id="CNX_Chem_06_05_Ionradii"/>). Til dæmis hefur brennisteinsfrumeind ([Ne]3<emphasis effect="italics">s</emphasis><sup>2</sup>3<emphasis effect="italics">p</emphasis><sup>4</sup>) samgildan radíus upp á 104 pm, en jónaradíus súlfíðanjónarinnar ([Ne]3<emphasis effect="italics">s</emphasis><sup>2</sup>3<emphasis effect="italics">p</emphasis><sup>6</sup>) er 170 pm. Fyrir samliggjandi frumefni sem færast niður eftir hvaða flokki sem er, hafa anjónir hærri höfuðskammtatölur og þar af leiðandi stærri radíusa.</para>
+<para id="fs-idm1670816">Frumeindir og jónir sem hafa sömu rafeindaskipan eru sagðar <term id="term-00003">jafnrafeinda (e. isoelectronic)</term>. Dæmi um jafnrafeinda agnir eru N<sup>3–</sup>, O<sup>2–</sup>, F<sup>–</sup>, Ne, Na<sup>+</sup>, Mg<sup>2+</sup> og Al<sup>3+</sup> (1<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>6</sup>). Önnur jafnrafeinda röð er P<sup>3–</sup>, S<sup>2–</sup>, Cl<sup>–</sup>, Ar, K<sup>+</sup>, Ca<sup>2+</sup> og Sc<sup>3+</sup> ([Ne]3<emphasis effect="italics">s</emphasis><sup>2</sup>3<emphasis effect="italics">p</emphasis><sup>6</sup>). Fyrir frumeindir eða jónir sem eru jafnrafeinda ræður fjöldi róteinda stærðinni. Því meiri sem kjarnahleðslan er, því minni er radíusinn í röð jafnrafeinda jóna og frumeinda.</para>
+</section>
+<section id="fs-idm122150768">
+<title>Breytingar á jónunarorku</title>
+<para id="fs-idm65502944">Orkumagnið sem þarf til að fjarlægja lausbundnustu rafeindina úr frumeind á gasformi í grunnástandi hennar er kallað fyrsta <term id="term-00004">jónunarorka (e. ionization energy)</term> hennar (IE<sub>1</sub>). Fyrsta jónunarorka frumefnis, X, er orkan sem þarf til að mynda katjón með +1 hleðslu:</para>
+<equation id="fs-idm119836992" class="unnumbered"><m:math><m:mrow><m:mtext>X</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>X</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>e</m:mtext></m:mrow><m:mo>−</m:mo></m:msup><m:mspace width="2em"/><m:msub><m:mrow><m:mtext>IE</m:mtext></m:mrow><m:mn>1</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm139914704">Orkan sem þarf til að fjarlægja næstlausbundnustu rafeindina er kölluð önnur jónunarorka (IE<sub>2</sub>).</para>
+<equation id="fs-idp4728832" class="unnumbered"><m:math><m:mrow><m:msup><m:mtext>X</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>X</m:mtext><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width="2em"/><m:msub><m:mrow><m:mtext>IE</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp85408992">Orkan sem þarf til að fjarlægja þriðju rafeindina er þriðja jónunarorka, og svo framvegis. Það þarf alltaf orku til að fjarlægja rafeindir úr frumeindum eða jónum, þannig að jónunarferli eru innvermin og IE-gildi eru alltaf jákvæð. Fyrir stærri frumeindir er lausbundnasta rafeindin staðsett lengra frá kjarnanum og því er auðveldara að fjarlægja hana. Þannig, eftir því sem stærð (frumeindarradíus) eykst, ætti jónunarorkan að minnka. Ef við tengjum þessa rökfræði við það sem við höfum nýlega lært um radíusa, myndum við búast við að fyrsta jónunarorka minnki niður eftir hóp og aukist þegar farið er yfir lotu.</para>
+<para id="fs-idm79820288"><link target-id="CNX_Chem_06_05_Firstiongr"/> sýnir á línuriti sambandið milli fyrstu jónunarorku og sætistölu nokkurra frumefna. Gildin fyrir fyrstu jónunarorku frumefnanna eru gefin í <link target-id="CNX_Chem_06_05_Firstionen"/>. Innan lotu eykst IE<sub>1</sub> almennt með vaxandi <emphasis effect="italics">Z</emphasis>. Niður eftir hóp minnkar IE<sub>1</sub> gildið almennt með vaxandi <emphasis effect="italics">Z</emphasis>. Það eru þó nokkur kerfisbundin frávik frá þessari þróun. Taktu eftir að jónunarorka bórs (sætistala 5) er minni en beryllíums (sætistala 4) þrátt fyrir að kjarnahleðsla bórs sé meiri um eina róteind. Þetta má skýra með því að orka undirhvolfanna eykst eftir því sem <emphasis effect="italics">l</emphasis> eykst, vegna ígengni og skermunar (eins og áður var fjallað um í þessum kafla). Innan hvers hvolfs hafa <emphasis effect="italics">s</emphasis>-rafeindir lægri orku en <emphasis effect="italics">p</emphasis>-rafeindir. Þetta þýðir að erfiðara er að fjarlægja <emphasis effect="italics">s</emphasis>-rafeind úr frumeind en <emphasis effect="italics">p</emphasis>-rafeind í sama hvolfi. Rafeindin sem er fjarlægð við jónun beryllíums ([He]2<emphasis effect="italics">s</emphasis><sup>2</sup>) er <emphasis effect="italics">s</emphasis>-rafeind, en rafeindin sem er fjarlægð við jónun bórs ([He]2<emphasis effect="italics">s</emphasis><sup>2</sup>2<emphasis effect="italics">p</emphasis><sup>1</sup>) er <emphasis effect="italics">p</emphasis>-rafeind; þetta leiðir til lægri fyrstu jónunarorku fyrir bór, jafnvel þótt kjarnahleðsla þess sé meiri um eina róteind. Þannig sjáum við lítið frávik frá spáðri þróun í hvert sinn sem nýtt undirhvolf hefst.</para>
+<figure id="CNX_Chem_06_05_Firstiongr">
+<media id="fs-idm130209312" alt="This figure includes a graph labeled, “Atomic Number,” on the horizontal axis and, “Ionization Energy (k J divided by mol),” on the vertical axis. Markings are provided on the horizontal axis at 10, 18, 36, 54, and 86. Vertical lines extend from the horizontal axis upward at each of these values. The vertical axis begins at 0 and increases by 500’s up to 2500. Horizontal lines are drawn across the graph at multiples of 500. A red jagged line connects the ionization energies for elements with atomic numbers 1 through 86 on the graph. Peaks are evident at the locations of the noble or inert gases: H e, N e, A r, K r, X e, and R n. Similarly, minima exist at the locations of the alkali metals: L i, N a, K, R b, and C s. Elements labeled on the graph and their associated ionization energies are as follows: H 1310, H e 2370, L i 520, B e 900, B 800, C 1090, N 1400, O 1310, F 1680, N e 2080, N a 490, M g 730, P 1060, A r 1520, K 420, Z n 910, A s 960, B r 1140, K r 1350, R b 400, C d 870, X e 1170, T l 590, and R n 1030.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_Firstiongr.jpg"/>
+</media>
+<caption>Fyrsta jónunarorka frumefnanna í fyrstu sex lotunum er sýnd á línuriti gagnvart sætistölu þeirra.</caption>
+</figure>
+<figure id="CNX_Chem_06_05_Firstionen"><media id="fs-idp85824640" alt="The figure includes a periodic table with the title, “First Ionization Energies of Some Elements (k J per mol).” The table identifies the row or period number at the left in purple, and group or column numbers in blue above each column. First ionization energies listed top to bottom for group 1 are: H 1310, L i 520, N a 490, K 420, R b 400, C s 380, and three dots are placed in the box for F r. In group 2 the values are: B e 900, M g 730, C a 590, S r 550, and B a 500. In group 3 the values are: S c 630, Y 620, and L a 540. In group 4, the values are: T i 660, Z r 660, H f 700. In group 5, the values are: V 650, N b 670, and T a 760. In group 6, the values are: C r 660, M o 680, and W 770. In group 7, the values are: M n 710, T c 700, and R e 760. In group 8, the values are: F e 760, R u 720, and O s 840. In group 9, the values are: C o 760, R h 720, and I r 890. In group 10, the values are: N i 730, P d 800, and P t 870. In group 11, the values are: C u 740, A g 730, and A u 890. In group 12, the values are: Z n 910, C d 870, and H g 1000. In group 13, the values are: B 800, A l 580, G a 580, I n 560, and T l 590. In group 14, the values are: C 1090, S i 780, G e 780, S n 700, and P b 710. In group 15, the values are: N 1400, P 1060, A s 960, S b 830, and B i 800. In group 16, the values are: O 1310, S 1000, S e 950, T e 870, and P o 810. In group 17, the values are: F 1680, C l 1250, B r 1140, I 1010, and A t has three dots. In group 18, the values listed are: B e 2370, N e 2080, A r 1520, K r 1350, X e 1170, and R n 1030.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_Firstionen.jpg"/>
+</media>
+
+<caption>Þessi útgáfa af lotukerfinu sýnir fyrstu jónunarorku (IE<sub>1</sub>), í kJ/mól, fyrir valin frumefni.</caption></figure>
+<para id="fs-idm146806928">Annað frávik kemur fram þegar svigrúm verða meira en hálffyllt. Fyrsta jónunarorka súrefnis er örlítið minni en niturs, þrátt fyrir þróunina í átt að auknum IE<sub>1</sub> gildum yfir lotu. Ef við skoðum svigrúmsmynd súrefnis sjáum við að með því að fjarlægja eina rafeind mun rafeinda-rafeinda fráhrindingin sem stafar af pörun rafeinda í 2<emphasis effect="italics">p</emphasis>-svigrúminu hverfa og eftir verður hálffyllt svigrúm (sem er orkulega hagstætt). Hliðstæðar breytingar eiga sér stað í næstu lotum (taktu eftir dýfunni fyrir brennistein á eftir fosfór í <link target-id="CNX_Chem_06_05_Firstionen"/>).</para>
+<media id="CNX_Chem_06_05_Oxygen122_img" class="scaled-down" alt="This figure includes the element symbol O followed by the electron configuration 1 s superscript 2 2 s superscript 2 2 p superscript 4. An orbital diagram follows, which consists of two individual squares, labeled as, “1 s,” and, “2 s,” below followed by a grouping of three connected squares which are labeled, “2 p.” All boxes are oriented in a row. The two individual squares and the first square in the row of connected squares contain a pair of half arrows. One half arrow in each pair points up, and one points down. The downward pointing arrow in the first square in the row of connected squares is red. The remaining two squares each contain single upward pointing half arrows.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_Oxygen122_img.jpg"/>
+</media>
+<para id="fs-idm10621984">Að fjarlægja rafeind úr katjón er erfiðara en að fjarlægja rafeind úr hlutlausri frumeind vegna meira rafstöðuaðdráttar að katjóninni. Sömuleiðis er erfiðara að fjarlægja rafeind úr katjón með hærri jákvæðri hleðslu en að fjarlægja rafeind úr jón með lægri hleðslu. Þannig eykst síðari jónunarorka fyrir eitt frumefni alltaf. Eins og sést í <link target-id="fs-idp3693744"/> er mikil aukning í jónunarorku fyrir hvert frumefni. Þetta stökk samsvarar því að fjarlægja kjarnarafeindir, sem er erfiðara að fjarlægja en gildisrafeindir. Til dæmis hafa Sc og Ga bæði þrjár gildisrafeindir, þannig að snögg aukning á jónunarorku á sér stað eftir þriðju jónun.</para>
+<table id="fs-idp3693744" class="top-titled" summary="This table has eight columns and seven rows. The first row is a header row, and it labels each column: “Element,” “I E subscript 1,” “I E subscript 2,” “I E subscript 3,” “I E subscript 4,” “I E subscript 5,” “I E subscript 6,” and “I E subscript 7.” Under the “Element” column are: K, C a, S c, G a, G e, and A s. Under the “I E subscript 1” column are the values: 418.8, 589.8, 633.1, 578.8, 762.2, and 944.5. Under the “I E subscript 2” column are the following values: 3051.8, 1145.4, 1235.0, 1979.4, 1537.5, and 1793.6. The value 3051.8 appears in red. Under the column “I E subscript 3” column are the values: 4419.6, 4912.4, 2388.7, 2964.6, 3302.1, and 2735.5. Under the “I E subscript 4” column are the values: 5876.9, 6490.6, 7090.6, 6180, 4410.6, and 4836.8. Under the “I E subscript 5” column are the values: 7975.5, 8153.0, 8842.9, 8298.7, 9021.4, and 6042.9. Under the “I E subscript 6” column are the values: 9590.6, 10495.7, 10679.0, 10873.9, not available, and 12311.5. Under the “I E subscript 7” column are the values: 11343, 12272.9, 13315.0, 13594.8, not available, and not available.">
+<tgroup cols="8">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<colspec colnum="5" colname="c5"/>
+<colspec colnum="6" colname="c6"/>
+<colspec colnum="7" colname="c7"/>
+<colspec colnum="8" colname="c8"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c8" align="center">Síðari jónunarorka fyrir valin frumefni (kJ/mól)</entry>
+</row>
+<row valign="top">
+<entry><emphasis effect="bold">Frumefni</emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>1</sub></emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>2</sub></emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>3</sub></emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>4</sub></emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>5</sub></emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>6</sub></emphasis></entry>
+<entry><emphasis effect="bold">IE<sub>7</sub></emphasis></entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry>K</entry>
+<entry>418,8</entry>
+<entry>3051,8</entry>
+<entry>4419,6</entry>
+<entry>5876,9</entry>
+<entry>7975,5</entry>
+<entry>9590,6</entry>
+<entry>11343</entry>
+</row>
+<row valign="top">
+<entry>Ca</entry>
+<entry>589,8</entry>
+<entry>1145,4</entry>
+<entry>4912,4</entry>
+<entry>6490,6</entry>
+<entry>8153,0</entry>
+<entry>10495,7</entry>
+<entry>12272,9</entry>
+</row>
+<row valign="top">
+<entry>Sc</entry>
+<entry>633,1</entry>
+<entry>1235,0</entry>
+<entry>2388,7</entry>
+<entry>7090,6</entry>
+<entry>8842,9</entry>
+<entry>10679,0</entry>
+<entry>13315,0</entry>
+</row>
+<row valign="top">
+<entry>Ga</entry>
+<entry>578,8</entry>
+<entry>1979,4</entry>
+<entry>2964,6</entry>
+<entry>6180</entry>
+<entry>8298,7</entry>
+<entry>10873,9</entry>
+<entry>13594,8</entry>
+</row>
+<row valign="top">
+<entry>Ge</entry>
+<entry>762,2</entry>
+<entry>1537,5</entry>
+<entry>3302,1</entry>
+<entry>4410,6</entry>
+<entry>9021,4</entry>
+<entry>Ekki tiltækt</entry>
+<entry>Ekki tiltækt</entry>
+</row>
+<row valign="top">
+<entry>As</entry>
+<entry>944,5</entry>
+<entry>1793,6</entry>
+<entry>2735,5</entry>
+<entry>4836,8</entry>
+<entry>6042,9</entry>
+<entry>12311,5</entry>
+<entry>Ekki tiltækt</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<example id="fs-idm65177120">
+<para id="fs-idm98864816"><title>Röðun jónunarorku</title>Spáðu fyrir um röð vaxandi orku fyrir eftirfarandi ferli: IE<sub>1</sub> fyrir Al, IE<sub>1</sub> fyrir In, IE<sub>2</sub> fyrir Na, IE<sub>3</sub> fyrir Al.</para>
+<para id="fs-idp9426864"><title>Lausn</title>Það er auðveldara að fjarlægja 5<emphasis effect="italics">p</emphasis><sup>1</sup> rafeindina úr In en að fjarlægja 3<emphasis effect="italics">p</emphasis><sup>1</sup> rafeindina úr Al vegna þess að hærra <emphasis effect="italics">n</emphasis> svigrúmið er lengra frá kjarnanum, þannig að IE<sub>1</sub>(In) &lt; IE<sub>1</sub>(Al). Jónun þriðju rafeindarinnar úr <m:math><m:mrow><m:mtext>Al:</m:mtext><m:mspace width="2em"/><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> krefst meiri orku vegna þess að katjónin Al<sup>2+</sup> beitir sterkari aðdráttarkrafti á rafeindina en hlutlausa Al frumeindin, þannig að IE<sub>1</sub>(Al) &lt; IE<sub>3</sub>(Al). Önnur jónunarorka fyrir natríum fjarlægir kjarnarafeind, sem er mun orkumeira ferli en að fjarlægja gildisrafeindir. Þegar allt þetta er tekið saman fáum við: IE<sub>1</sub>(In) &lt; IE<sub>1</sub>(Al) &lt; IE<sub>3</sub>(Al) &lt; IE<sub>2</sub>(Na).</para>
+<para id="fs-idm57911728"><title>Skoðaðu þekkingu þína</title>Hvað hefur lægsta gildið fyrir IE<sub>1</sub>: O, Po, Pb eða Ba?</para>
+<note id="fs-idm148104624"><title>Answer:</title>
+<para id="fs-idm69877488">Ba</para></note>
+</example>
+</section>
+<section id="fs-idm632640">
+<title>Breytingar á rafeindasækni</title>
+<para id="fs-idm62970128"><term id="term-00005">Rafeindasækni (e. electron affinity)</term> (EA) er orkubreytingin fyrir það ferli að bæta rafeind við gasfrumeind til að mynda anjón (neikvæða jón).</para>
+<equation id="fs-idm30321680" class="unnumbered"><m:math><m:mrow><m:mtext>X</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>X</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="2em"/><m:msub><m:mrow><m:mtext>EA</m:mtext></m:mrow><m:mn>1</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm33809440">Þetta ferli getur verið annaðhvort innvermið eða útvermið, allt eftir frumefninu. Rafeindasækni sumra frumefna er gefin í <link target-id="CNX_Chem_06_05_Elaffin"/>. Þú getur séð að mörg þessara frumefna hafa neikvæð gildi fyrir EA, sem þýðir að orka losnar þegar gasfrumeindin tekur við rafeind. Hins vegar, fyrir sum frumefni, þarf orku til að frumeindin verði neikvætt hlaðin og gildi EA þeirra er jákvætt. Rétt eins og með jónunarorku eru síðari EA-gildi tengd myndun jóna með meiri hleðslu. Önnur EA er orkan sem tengist því að bæta rafeind við anjón til að mynda –2 jón, og svo framvegis.</para>
+<para id="fs-idp8026512">Eins og við gætum spáð fyrir um verður auðveldara að bæta rafeind við röð frumeinda eftir því sem virk kjarnhleðsla frumeindanna eykst. Við sjáum að þegar við förum frá vinstri til hægri yfir lotu hefur rafsæknin tilhneigingu til að verða neikvæðari. Undantekningarnar sem finnast meðal frumefna í hópi 2 (2A), hópi 15 (5A) og hópi 18 (8A) má skilja út frá rafeindaskipan þessara hópa. Eðallofttegundirnar, hópur 18 (8A), hafa fullskipað hvolf og rafeindinni sem bætist við verður að koma fyrir á hærra <emphasis effect="italics">n</emphasis>-orkustigi, sem er erfiðara. Hópur 2 (2A) hefur fullskipað <emphasis effect="italics">ns</emphasis>-undirhvolf og því fer næsta rafeind sem bætist við inn á <emphasis effect="italics">np</emphasis>-undirhvolfið sem hefur hærri orku, þannig að aftur er rafsæknigildið ekki eins og þróunin myndi spá fyrir um. Að lokum hefur hópur 15 (5A) hálffullskipað <emphasis effect="italics">np</emphasis>-undirhvolf og næstu rafeind verður að para saman við rafeind sem þegar er til staðar á <emphasis effect="italics">np</emphasis>-undirhvolfinu. Í öllum þessum tilvikum raskar upphaflegur hlutfallslegur stöðugleiki rafeindaskipanarinnar þróuninni í rafsækni.</para>
+<para id="fs-idp68162064">Við gætum einnig búist við því að frumeindin efst í hverjum hópi hefði neikvæðustu rafsæknina; fyrstu jónunarorkur þeirra benda til þess að þessar frumeindir hafi mestu virku kjarnhleðsluna. Hins vegar, þegar við förum niður eftir hópi, sjáum við að <emphasis effect="italics">annað</emphasis> frumefnið í hópnum hefur oftast neikvæðustu rafsæknina. Þetta má rekja til smæðar <emphasis effect="italics">n</emphasis> = 2 hvolfsins og þeirra miklu fráhrindikrafta milli rafeinda sem af því leiðir. Til dæmis hefur klór, með rafsæknigildið –348 kJ/mól, hæsta gildi allra frumefna í lotukerfinu. Rafsækni flúors er –322 kJ/mól. Þegar við bætum rafeind við flúorfrumeind til að mynda flúoríðanjón (F<sup>–</sup>), bætum við rafeind við <emphasis effect="italics">n</emphasis> = 2 hvolfið. Rafeindin laðast að kjarnanum, en það er einnig umtalsverður fráhrindikraftur frá hinum rafeindunum sem þegar eru til staðar í þessu litla girðihvolfi. Klórfrumeindin hefur sömu rafeindaskipan í girðihvolfinu, en vegna þess að rafeindin sem bætist við fer inn í <emphasis effect="italics">n</emphasis> = 3 hvolfið, tekur hún mun stærra svæði og fráhrindikraftar milli rafeinda minnka. Rafeindin sem bætist við verður ekki fyrir jafn miklum fráhrindikrafti og klórfrumeindin tekur við viðbótarrafeind með meiri auðveldum, sem leiðir til neikvæðari rafsækni.</para>
+<figure id="CNX_Chem_06_05_Elaffin"><media id="fs-idm80294800" alt="The figure includes a periodic table with the title, “Electron Affinity Values for Selected Elements (k J per mol).” The table identifies the row or period number at the left in purple, and group or column numbers in blue above each column. Electron affinity values for representative elements are indicated with values marked with asterisks identifying calculated values. The electron affinity values for group 1 (column 1) elements are provided with the element symbols in the table as follows: H negative 72, L i negative 60, N a negative 53, K negative 48, R b negative 46, and C s negative 45. In group 2, the values are: B e positive 240 asterisk, M g positive 230 asterisk, C a positive 150 asterisk, S r positive 160 asterisk, and B a positive 50 asterisk. In group 13, the values are: B negative 23, A l negative 44, G a negative 40 asterisk, I n negative 40 asterisk, and T l negative 50. In group 14, the values are: C negative 123, S i negative 120, G e negative 115, S n negative 121, and P b negative 101. In group 15 the values are: N 0, P negative 74, A s negative 7, S b negative 101, and B i negative 101. In group 16, the values are: O negative 141, S negative 20, S e negative 195, T e negative 190, and P o negative 170. In group 17, the values are: F negative 322, C l negative 348, B r negative 324, I negative 295, and A t negative 270 asterisk. In group 18, the values are: H e positive 20 asterisk, N e negative 30, A r positive 35 asterisk, K r positive 40 asterisk, X e positive 40 asterisk, and R n positive 40 asterisk.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_06_05_Elaffin.jpg"/>
+</media>
+
+<caption>Þessi útgáfa af lotukerfinu sýnir rafsæknigildi (í kJ/mól) fyrir valin frumefni.</caption></figure>
+<para id="fs-idm144469568">Eiginleikarnir sem ræddir eru í þessum kafla (stærð frumeinda og jóna, virk kjarnhleðsla, jónunarorkur og rafsækni) eru lykilatriði til að skilja efnafræðilega hvarfgirni. Til dæmis, vegna þess að flúor hefur orkulega hagstæða rafsækni og stóra orkuhindrun fyrir jónun (IE), er mun auðveldara að mynda flúoranjónir en katjónir. Málmkenndir eiginleikar, þar á meðal rafleiðni og þanþol (hæfnin til að vera mótaður í plötur), eru háðir því að hafa rafeindir sem auðvelt er að fjarlægja. Þannig eykst málmkenndur eiginleiki þegar við förum niður eftir hópi og minnkar yfir lotu í sömu þróun og sést fyrir stærð frumeinda, því það er auðveldara að fjarlægja rafeind sem er lengra frá kjarnanum.</para>
+</section>
+<section id="fs-idp4924224" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm92804752">Rafeindaskipanir gera okkur kleift að skilja marga lotubundna eiginleika. Samgildur radíus eykst þegar við færumst niður eftir hópum vegna þess að <emphasis effect="italics">n</emphasis>-gildið (stærð svigrúms) eykst. Samgildur radíus minnkar að mestu þegar við færumst frá vinstri til hægri yfir lotu vegna þess að virk kjarnhleðsla sem rafeindirnar verða fyrir eykst og rafeindirnar dragast þéttar að kjarnanum. Radíus anjóna er stærri en móðurfrumeindarinnar, en radíus katjóna er minni, vegna þess að fjöldi gildisrafeinda hefur breyst á meðan kjarnhleðslan hefur haldist óbreytt. Jónunarorka (orkan sem tengist myndun katjónar) minnkar niður eftir hópum og eykst að mestu yfir lotu vegna þess að auðveldara er að fjarlægja rafeind úr stærra svigrúmi með hærri orku. Rafsækni (orkan sem tengist myndun anjónar) er hagstæðari (útvermin) þegar rafeindir eru settar í svigrúm með lægri orku, nær kjarnanum. Þess vegna verður rafsækni sífellt neikvæðari þegar við færumst frá vinstri til hægri yfir lotukerfið og minnkar þegar við færumst niður eftir hópum. Bæði fyrir gögn um jónunarorku og rafsækni eru undantekningar frá þessum lotubundnu eiginleikum þegar um er að ræða fullfyllt eða hálffyllt undirhvolf.</para>
+</section>
+<section id="fs-idm85407248" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idp42367872"><problem id="fs-idm44218896">
+<para id="fs-idp87713840">Spáðu fyrir um hvaða frumeind hefur minnsta frumeindarradíusinn miðað við staðsetningu þeirra í lotukerfinu: Mg, Sr, Si, Cl, I.</para></problem>
+<solution id="fs-idm144559472">
+<para id="fs-idm46047824">Cl</para></solution></exercise>
+<exercise id="fs-idp30124176"><problem id="fs-idm108750528">
+<para id="fs-idm155052000">Spáðu fyrir um hvaða frumeind hefur stærsta frumeindarradíusinn miðað við staðsetningu þeirra í lotukerfinu: Li, Rb, N, F, I.</para></problem>
+</exercise>
+<exercise id="fs-idm155159840"><problem id="fs-idm165616592">
+<para id="fs-idm13478336">Spáðu fyrir um hvaða frumeind hefur hæstu fyrstu jónunarorkuna miðað við staðsetningu þeirra í lotukerfinu: Mg, Ba, B, O, Te.</para></problem>
+<solution id="fs-idp4439488">
+<para id="fs-idm137764592">O</para></solution></exercise>
+<exercise id="fs-idm54929680"><problem id="fs-idp67831408">
+<para id="fs-idm340912">Spáðu fyrir um hvaða frumeind hefur lægstu fyrstu jónunarorkuna miðað við staðsetningu þeirra í lotukerfinu: Li, Cs, N, F, I.</para></problem>
+</exercise>
+<exercise id="fs-idm155125392"><problem id="fs-idp23388560">
+<para id="fs-idm156789200">Raðaðu eftirfarandi frumeindum í röð vaxandi fyrstu jónunarorku miðað við staðsetningu þeirra í lotukerfinu: F, Li, N, Rb</para></problem>
+<solution id="fs-idm10976144">
+<para id="fs-idm151309888">Rb &lt; Li &lt; N &lt; F</para></solution></exercise>
+<exercise id="fs-idm147454816"><problem id="fs-idm56481744">
+<para id="fs-idm10255376">Raðaðu eftirfarandi frumeindum í röð vaxandi fyrstu jónunarorku miðað við staðsetningu þeirra í lotukerfinu: Mg, O, S, Si</para></problem>
+</exercise>
+<exercise id="fs-idm150214960"><problem id="fs-idp79978576">
+<para id="fs-idm132427728">Frumeindir hvaða hóps í lotukerfinu hafa rafeindaskipan gildishvolfs <emphasis effect="italics">ns</emphasis><sup>2</sup><emphasis effect="italics">np</emphasis><sup>3</sup>?</para></problem>
+<solution id="fs-idm121700320">
+<para id="fs-idm11200592">15 (5A)</para></solution></exercise>
+<exercise id="fs-idm121823200"><problem id="fs-idm140970272">
+<para id="fs-idm119024400">Frumeindir hvaða hóps í lotukerfinu hafa rafeindaskipan gildishvolfs <emphasis effect="italics">ns</emphasis><sup>2</sup>?</para></problem>
+</exercise>
+<exercise id="fs-idm74793552"><problem id="fs-idm66081696">
+<para id="fs-idm190433936">Raðaðu eftirfarandi frumeindum í röð vaxandi radíusar miðað við staðsetningu þeirra í lotukerfinu: Mg, Ca, Rb, Cs.</para></problem>
+<solution id="fs-idm93429488">
+<para id="fs-idm144863024">Mg &lt; Ca &lt; Rb &lt; Cs</para></solution></exercise>
+<exercise id="fs-idm116086704"><problem id="fs-idm2560400">
+<para id="fs-idp107277632">Raðaðu eftirfarandi frumeindum í röð vaxandi radíusar miðað við staðsetningu þeirra í lotukerfinu: Sr, Ca, Si, Cl.</para></problem>
+</exercise>
+<exercise id="fs-idm107831680"><problem id="fs-idm124732752">
+<para id="fs-idm108600608">Raðaðu eftirfarandi jónum í röð vaxandi radíusar miðað við staðsetningu þeirra í lotukerfinu: K<sup>+</sup>, Ca<sup>2+</sup>, Al<sup>3+</sup>, Si<sup>4+</sup>.</para></problem>
+<solution id="fs-idm171686432">
+<para id="fs-idm166668720">Si<sup>4+</sup> &lt; Al<sup>3+</sup> &lt; Ca<sup>2+</sup> &lt; K<sup>+</sup></para></solution></exercise>
+<exercise id="fs-idm44955136"><problem id="fs-idm126053136">
+<para id="fs-idm131827120">Raðaðu eftirfarandi jónum í röð vaxandi radíusar: Li<sup>+</sup>, Mg<sup>2+</sup>, Br<sup>–</sup>, Te<sup>2–</sup>.</para></problem>
+</exercise>
+<exercise id="fs-idm119922592"><problem id="fs-idm96101792">
+<para id="fs-idp2854256">Hvaða frumeind og/eða jón er (eru) ísórafeinda við Br<sup>+</sup>: Se<sup>2+</sup>, Se, As<sup>–</sup>, Kr, Ga<sup>3+</sup>, Cl<sup>–</sup>?</para></problem>
+<solution id="fs-idm161761984">
+<para id="fs-idm56398192">Se, As<sup>−</sup></para></solution></exercise>
+<exercise id="fs-idm176990768"><problem id="fs-idm163060480">
+<para id="fs-idp44391696">Hver af eftirfarandi frumeindum og jónum er (eru) ísórafeinda við S<sup>2+</sup>: Si<sup>4+</sup>, Cl<sup>3+</sup>, Ar, As<sup>3+</sup>, Si, Al<sup>3+</sup>?</para></problem>
+</exercise>
+<exercise id="fs-idm64525920"><problem id="fs-idm86093568">
+<para id="fs-idm46185392">Berðu saman bæði fjölda róteinda og rafeinda í hverri til að raða eftirfarandi jónum í röð vaxandi radíusar: As<sup>3–</sup>, Br<sup>–</sup>, K<sup>+</sup>, Mg<sup>2+</sup>.</para></problem>
+<solution id="fs-idm150348544">
+<para id="fs-idp96768">Mg<sup>2+</sup> &lt; K<sup>+</sup> &lt; Br<sup>–</sup> &lt; As<sup>3–</sup></para></solution></exercise>
+<exercise id="fs-idm2181648"><problem id="fs-idp841136">
+<para id="fs-idp121484432">Af þessum fimm frumefnum, Al, Cl, I, Na, Rb, hvert þeirra hefur útvermnasta hvarfið? (E táknar frumeind.) Hvaða nafn er gefið orkunni fyrir hvarfið? (Vísbending: Taktu eftir að ferlið sem sýnt er samsvarar <emphasis effect="italics">ekki</emphasis> rafsækni.)<newline/> <m:math><m:mrow><m:msup><m:mtext>E</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>E</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+<exercise id="fs-idm68979552"><problem id="fs-idm139950960">
+<para id="fs-idm164099648">Af þessum fimm frumefnum, Sn, Si, Sb, O, Te, hvert þeirra hefur innvermnasta hvarfið? (E táknar frumeind.) Hvaða nafn er gefið orkunni fyrir hvarfið?<newline/> <m:math><m:mrow><m:mtext>E</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>E</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math></para></problem>
+<solution id="fs-idm72642112">
+<para id="fs-idm70370352">O, IE<sub>1</sub></para></solution></exercise>
+<exercise id="fs-idm108984736"><problem id="fs-idm154818192">
+<para id="fs-idp100098560">Jónaradíusar jónanna S<sup>2–</sup>, Cl<sup>–</sup> og K<sup>+</sup> eru 184, 181 og 138 pm í sömu röð. Útskýrðu hvers vegna þessar jónir hafa mismunandi stærð þrátt fyrir að þær innihaldi sama fjölda rafeinda.</para></problem>
+</exercise>
+<exercise id="fs-idm177180640"><problem id="fs-idm116439504">
+<para id="fs-idm155036256">Hvaða frumeind í aðalhópi má búast við að hafi lægstu aðra jónunarorkuna?</para></problem>
+<solution id="fs-idm574400">
+<para id="fs-idm146296448">Ra</para></solution></exercise>
+<exercise id="fs-idp177066416"><problem id="fs-idm134245088">
+<para id="fs-idm69403904">Útskýrðu hvers vegna Al er í hópi 13 frekar en í hópi 3?</para></problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm57959600">
+<term>samgildur radíus (e. covalent radius)</term>
+<meaning id="fs-idm57959600-meaning">helmingurinn af fjarlægðinni milli kjarna tveggja eins frumeinda þegar þær eru tengdar með samgildu tengi</meaning>
+</definition>
+<definition id="fs-idm98337504">
+<term>virk kjarnhleðsla (e. effective nuclear charge)</term>
+<meaning id="fs-idm98337504-meaning">hleðsla sem leiðir til Coulomb-kraftsins sem kjarninn beitir á rafeind, reiknuð sem kjarnhleðsla að frádreginni hlífun</meaning>
+</definition>
+<definition id="fs-idm161962320">
+<term>rafsækni (e. electron affinity)</term>
+<meaning id="fs-idm161962320-meaning">orkubreyting sem fylgir álagningu rafeindar á frumeind eða jón í gasfasa</meaning>
+</definition>
+<definition id="fs-idm107820416">
+<term>jónunarorka (e. ionization energy)</term>
+<meaning id="fs-idm107820416-meaning">orka sem þarf til að fjarlægja rafeind úr frumeind eða jón í gasfasa</meaning>
+</definition>
+<definition id="fs-idp94243488">
+<term>ísórafeinda (e. isoelectronic)</term>
+<meaning id="fs-idp94243488-meaning">hópur jóna eða frumeinda sem hafa eins rafeindaskipanir</meaning>
+</definition>
+</glossary>
+</document>

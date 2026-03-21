@@ -1,0 +1,475 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Umskipting og kjarnorka</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68856</md:content-id>
+  <md:title>Umskipting og kjarnorka</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst myndun þverúranískra kjarnategunda</item><item>Útskýrt ferli kjarnaklofnunar og kjarnasamruna</item><item>Tengt saman hugtökin markmassi og keðjuverkun kjarnahvarfa</item><item>Dregið saman grunnkröfur fyrir kjarnakljúfa sem byggja á kjarnaklofnun og kjarnasamruna</item></list></md:abstract>
+  <md:uuid>642a0e3e-a83d-4a0f-8898-feba31e555bd</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm164645616">Eftir uppgötvun geislavirkni var svið kjarnaefnafræðinnar skapað og þróaðist hratt á fyrri hluta tuttugustu aldar. Fjöldi nýrra uppgötvana á fjórða og fimmta áratugnum, ásamt seinni heimsstyrjöldinni, leiddi samanlagt til upphafs kjarnorkualdar um miðja tuttugustu öld. Vísindamenn lærðu að búa til ný efni og komust að því að ákveðnar samsætur tiltekinna frumefna gátu framleitt áður óþekkt magn af orku, með möguleika á að valda gríðarlegum skaða í stríði, auk þess að framleiða gífurlegt afl fyrir þarfir samfélagsins á friðartímum.</para>
+<section id="fs-idm14799328">
+<title>Myndun kjarnategunda</title>
+<para id="fs-idp8018320"><term id="term-00001">Kjarnaumskipting (e. nuclear transmutation)</term> er umbreyting einnar kjarnategundar í aðra. Hún getur átt sér stað með geislavirkri hrörnun kjarna eða með efnahvarfi kjarna við aðra eind. Fyrsti manngerði kjarninn var framleiddur á rannsóknarstofu Ernest Rutherford árið 1919 með <term id="term-00002">umskiptingar (e. transmutation)</term>hvarfi, þar sem ein tegund kjarna var skotin með öðrum kjörnum eða nifteindum. Rutherford skaut á niturfrumeindir með háhraða α-eindum úr náttúrulegri geislavirkri samsætu radíums og sá róteindir verða til í efnahvarfinu:</para>
+<equation id="fs-idm234904096" class="unnumbered"><m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>7</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>N</m:mtext><m:mo>+</m:mo><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>8</m:mn></m:mrow><m:mn>17</m:mn></m:msubsup><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>H</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm149290720">Kjarnarnir <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>8</m:mn></m:mrow><m:mn>17</m:mn></m:msubsup><m:mtext>O</m:mtext></m:math> og <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>H</m:mtext></m:math> sem myndast eru stöðugir, þannig að engar frekari (kjarna)breytingar eiga sér stað.</para>
+<para id="fs-idm208566640">Til að ná þeirri hreyfiorku sem nauðsynleg er til að framkalla umskiptingarhvörf eru notuð tæki sem kallast <term id="term-00003">eindahraðlar (e. particle accelerators)</term>. Þessi tæki nota segul- og rafsvið til að auka hraða kjarnaeinda. Í öllum hröðlum hreyfast eindirnar í lofttæmi til að forðast árekstra við gassameindir. Þegar nifteinda er þörf fyrir umskiptingarhvarf eru þær yfirleitt fengnar úr geislavirkum hrörnunarhvörfum eða úr ýmsum kjarnahvörfum sem eiga sér stað í kjarnakljúfum. Í kaflanum „Efnafræði í daglegu lífi“ sem fylgir hér á eftir er fjallað um frægan eindahraðal sem komst í heimsfréttirnar.</para>
+<note id="fs-idp15502880" class="chemistry everyday-life">
+<title>Eindahraðall CERN</title>
+<para id="fs-idp30135024">CERN („Conseil Européen pour la Recherche Nucléaire“ eða Evrópuráðið um kjarnorkurannsóknir), sem staðsett er nálægt Genf, er fremsta rannsóknarmiðstöð heims á sviði grunneinda sem mynda efni. Þar er að finna 27 kílómetra langan, hringlaga stóra róteindaárekstrarhraðalinn (LHC), stærsta eindahraðal heims (<link target-id="CNX_Chem_21_04_CERN"/>). Í LHC eru eindir hraðaðar upp í mikla orku og látnar rekast hver á aðra eða á kyrrstæð skotmörk á nærri ljóshraða. Ofurleiðandi rafseglar eru notaðir til að mynda sterkt segulsvið sem leiðir eindirnar um hringinn. Sérhæfðir, sérsmíðaðir nemar fylgjast með og skrá niðurstöður þessara árekstra, sem síðan eru greindar af vísindamönnum CERN með öflugum tölvum.</para>
+<figure id="CNX_Chem_21_04_CERN" class="scaled-down">
+<media id="fs-idm173874464" alt="Two photos are shown and labeled “a” and “b.” Photo a shows an aerial view of the Large Hadron Collider. Photo b shows a tunnel of concrete with rails on the ground and tubes and wires running along the wall. Two people walk along the tunnel.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_CERN.jpg"/>
+</media>
+<caption>Lítill hluti af LHC sést með starfsmönnum sem ferðast meðfram honum. (heimild: Christophe Delaere)</caption>
+</figure>
+<para id="fs-idm84503424">Árið 2012 tilkynnti CERN að tilraunir í LHC hefðu sýnt fyrstu merki um Higgs-bóseindina, grunneind sem hjálpar til við að útskýra uppruna massa í grunneindum. Þessi langþráða uppgötvun vakti heimsathygli og leiddi til þess að François Englert og Peter Higgs hlutu Nóbelsverðlaunin í eðlisfræði árið 2013, en þeir höfðu spáð fyrir um tilvist þessarar eindar tæpum 50 árum áður.</para></note>
+<note id="fs-idm101445472" class="chemistry link-to-learning">
+<para id="fs-idm212810400">Frægi eðlisfræðingurinn Brian Cox talar um vinnu sína við stóra róteindaárekstrarhraðalinn hjá CERN og býður upp á skemmtilega og grípandi <link url="http://openstax.org/l/16tedCERN">kynnisferð</link> um þetta risavaxna verkefni og eðlisfræðina á bak við það.</para>
+<para id="fs-idm59797120">Skoðaðu stutt <link url="http://openstax.org/l/16CERNvideo">myndband</link> frá CERN sem lýsir grunnatriðum þess hvernig eindahraðlar þess virka.</para>
+</note>
+<para id="fs-idm137219600">Fyrir 1940 var þyngsta þekkta frumefnið úran, með sætistöluna 92. Nú hafa mörg tilbúin frumefni verið mynduð og einangruð, þar á meðal nokkur í svo stórum stíl að þau hafa haft djúpstæð áhrif á samfélagið. Eitt þeirra – frumefni 93, neptúníum (Np) – var fyrst búið til árið 1940 af McMillan og Abelson með því að skjóta nifteindum á úran-238. Við efnahvarfið myndast óstöðugt úran-239, með helmingunartíma upp á 23,5 mínútur, sem síðan hrörnar í neptúníum-239. Neptúníum-239 er einnig geislavirkt, með helmingunartíma upp á 2,36 daga, og það hrörnar í plútoníum-239. Kjarnahvörfin eru:</para>
+<equation id="fs-idm171538896" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>U</m:mtext></m:mtd></m:mtr><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mspace width="2.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>U</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mspace width="4.9em"/><m:mtext>half-life</m:mtext><m:mo>=</m:mo><m:mtext>23.5 min</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="1.7em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mspace width="5em"/><m:mtext>half-life</m:mtext><m:mo>=</m:mo><m:mtext>2.36 days</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm319341104">Plútoníum myndast nú að mestu í kjarnakljúfum sem aukaafurð við kjarnaklofnun U-235. Við þessa kjarnaklofnun losna fleiri nifteindir (sjá næsta kafla), og sumar þeirra sameinast U-238 kjörnum og mynda úran-239; það gengst undir β-hrörnun og myndar neptúníum-239, sem aftur gengst undir β-hrörnun og myndar plútoníum-239 eins og sýnt er í þremur fyrri jöfnunum. Þessi ferli eru tekin saman í jöfnunni:</para>
+<equation id="fs-idm797056" class="unnumbered"><m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>U</m:mtext><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.4em"/><m:msup><m:mtext>β</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.4em"/></m:mrow></m:mover><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.4em"/><m:msup><m:mtext>β</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.4em"/></m:mrow></m:mover><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm188198128">Þyngri samsætur plútoníums – Pu-240, Pu-241 og Pu-242 – myndast einnig þegar léttari plútoníumkjarnar fanga nifteindir. Hluti af þessu mjög geislavirka plútoníumi er notað til að framleiða hernaðarvopn og afgangurinn veldur alvarlegum geymsluvanda þar sem helmingunartími þeirra er frá þúsundum upp í hundruð þúsunda ára.</para>
+<para id="fs-idm202710144">Þrátt fyrir að þeir hafi ekki verið framleiddir í sama magni og plútoníum hafa margir aðrir tilbúnir kjarnar verið búnir til. Kjarnalæknisfræði hefur þróast út frá hæfninni til að breyta frumeindum einnar tegundar í aðrar tegundir frumeinda. Geislavirkar samsætur nokkurra tuga frumefna eru nú notaðar í læknisfræðilegum tilgangi. Geislunin sem myndast við hrörnun þeirra er notuð til að mynda eða meðhöndla ýmis líffæri eða líkamshluta, meðal annars.</para>
+<para id="fs-idm110032080">Frumefni með hærri sætistölu en 92 (úran) eru kölluð <term id="term-00004">þverúranar (e. transuranium elements)</term>. Þegar þetta er skrifað hafa 22 þverúranar verið framleiddir og formlega viðurkenndir af IUPAC; tilkynnt hefur verið um myndun nokkurra annarra frumefna en beðið er eftir samþykki. Sum þessara frumefna eru sýnd í <link target-id="fs-idm128006320"/>.</para>
+<table id="fs-idm128006320" class="top-titled" summary="This table has four columns and ten rows. The first row is a header row and it labels each column: “Name,” “Symbol,” “Atomic Number,” and “Reaction.” Under the “Name” column are the following: americium, curium, californium, einsteinium, mendelevium, nobelium, rutherfordium, seaborgium, and meitnerium. Under the “Symbol” column are the following: A m, C m, C f, E s, M d, N o, R f, S g, and M t. Under the “Atomic Number” column are the following: 95; 96; 98; 99; 101; 102; 104; 106; and 107. Under the “Reaction column are the following reactions: superscript 239 stacked over subscript 94 P u plus superscript 1 stacked over subscript 0 n yields superscript 240 stacked over subscript 95 A m plus superscript 0 stacked over negative 1 e; superscript 239 stacked over subscript 94 P u plus superscript 4 stacked over subscript 2 H e yields superscript 242 stacked over subscript 96 C m plus superscript 1 stacked over subscript 0 n; superscript 242 stacked over subscript 96 C m plus superscript 4 stacked over subscript 2 H e yields superscript 243 stacked over subscript 97 B k plus 2 superscript 1 stacked over subscript 0 n; superscript 238 stacked over subscript 92 U plus 15 superscript 1 stacked over subscript 0 n yields superscript 253 stacked over subscript 99 E s plus 7 superscript 0 stacked over negative 1 e; superscript 253 stacked over subscript 99 E s plus superscript 4 stacked over subscript 2 H e yields superscript 256 stacked over subscript 101 M d plus superscript 1 stacked over subscript 0 n; superscript 246 stacked over subscript 96 C m plus superscript 12 stacked over subscript 6 C yields superscript 257 stacked over subscript 104 R f plus 4 superscript 1 stacked over subscript 0 n; superscript 206 stacked over subscript 82 P b plus superscript 54 stacked over subscript 24 C r yields superscript 257 stacked over subscript 106 S g plus 3 superscript 1 stacked over subscript 0 n; in the same row as the previous equation: superscript 249 stacked over subscript 98 C f plus superscript 18 stacked over subscript 8 O yields superscript 263 stacked over subscript 106 S g plus 4 superscript 1 stacked over subscript 0 n; and superscript 209 stacked over subscript 83 B i plus superscript 58 stacked over subscript 26 F e yields superscript 266 stacked over subscript 109 M t plus superscript 1 stacked over subscript 0 n.">
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead valign="middle">
+<row valign="middle">
+<entry namest="c1" nameend="c4" align="center">Framleiðsla nokkurra þverúrana</entry>
+</row>
+<row valign="middle">
+<entry align="left">Nafn</entry>
+<entry align="left">Tákn</entry>
+<entry align="left">Sætistala</entry>
+<entry align="left">Efnahvarf</entry>
+</row>
+</thead>
+<tbody valign="middle">
+<row valign="middle">
+<entry align="left">amerísín</entry>
+<entry align="left">Am</entry>
+<entry align="left">95</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>95</m:mn></m:mrow><m:mn>240</m:mn></m:msubsup><m:mtext>Am</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">kúrín</entry>
+<entry align="left">Cm</entry>
+<entry align="left">96</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>96</m:mn></m:mrow><m:mn>242</m:mn></m:msubsup><m:mtext>Cm</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">kalifornín</entry>
+<entry align="left">Cf</entry>
+<entry align="left">98</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>96</m:mn></m:mrow><m:mn>242</m:mn></m:msubsup><m:mtext>Cm</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>98</m:mn></m:mrow><m:mn>245</m:mn></m:msubsup><m:mtext>Cf</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">einsteinín</entry>
+<entry align="left">Es</entry>
+<entry align="left">99</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext><m:mo>+</m:mo><m:mn>15</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>99</m:mn></m:mrow><m:mn>253</m:mn></m:msubsup><m:mtext>Es</m:mtext><m:mo>+</m:mo><m:mn>7</m:mn>
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">mendelevín</entry>
+<entry align="left">Md</entry>
+<entry align="left">101</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>99</m:mn></m:mrow><m:mn>253</m:mn></m:msubsup><m:mtext>Es</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>101</m:mn></m:mrow><m:mn>256</m:mn></m:msubsup><m:mtext>Md</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">nóbelín</entry>
+<entry align="left">No</entry>
+<entry align="left">102</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>96</m:mn></m:mrow><m:mn>246</m:mn></m:msubsup><m:mtext>Cm</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>102</m:mn></m:mrow><m:mn>254</m:mn></m:msubsup><m:mtext>No</m:mtext><m:mo>+</m:mo><m:mn>4</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">rutherfordín</entry>
+<entry align="left">Rf</entry>
+<entry align="left">104</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>98</m:mn></m:mrow><m:mn>249</m:mn></m:msubsup><m:mtext>Cf</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>12</m:mn></m:msubsup><m:mtext>C</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>104</m:mn></m:mrow><m:mn>257</m:mn></m:msubsup><m:mtext>Rf</m:mtext><m:mo>+</m:mo><m:mn>4</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">seaborgín</entry>
+<entry align="left">Sg</entry>
+<entry align="left">106</entry>
+<entry align="left"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>82</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Pb</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>24</m:mn></m:mrow><m:mn>54</m:mn></m:msubsup><m:mtext>Cr</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>106</m:mn></m:mrow><m:mn>257</m:mn></m:msubsup><m:mtext>Sg</m:mtext><m:mo>+</m:mo><m:mn>3</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>98</m:mn></m:mrow><m:mn>249</m:mn></m:msubsup><m:mtext>Cf</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>8</m:mn></m:mrow><m:mn>18</m:mn></m:msubsup><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>106</m:mn></m:mrow><m:mn>263</m:mn></m:msubsup><m:mtext>Sg</m:mtext><m:mo>+</m:mo><m:mn>4</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mtd></m:mtr></m:mtable></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">meitnerín</entry>
+<entry align="left">Mt</entry>
+<entry align="left">107</entry>
+<entry align="left"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>83</m:mn></m:mrow><m:mn>209</m:mn></m:msubsup><m:mtext>Bi</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>26</m:mn></m:mrow><m:mn>58</m:mn></m:msubsup><m:mtext>Fe</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>109</m:mn></m:mrow><m:mn>266</m:mn></m:msubsup><m:mtext>Mt</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></entry>
+</row>
+</tbody>
+
+
+
+
+</tgroup>
+</table>
+</section>
+<section id="fs-idm178123200">
+<title>Kjarnaklofnun</title>
+<section id="fs-idm211205296">
+<title>Kjarnaofnar</title>
+<para id="fs-idm211204656">Keðjuverkunum klofnanlegra efna er hægt að stjórna og viðhalda án sprengingar í <term id="term-00012">kjarnaofni (e. nuclear reactor)</term> (<link target-id="CNX_Chem_21_04_NuclearPwr"/>). Sérhver kjarnaofn sem framleiðir afl með kjarnaklofnun úrans eða plútóns með nifteindaárás verður að hafa að minnsta kosti fimm hluta: kjarnaeldsneyti sem samanstendur af klofnanlegu efni, hægiefni, kælivökva, stýristangir og hlífðar- og innilokunarkerfi. Við munum fjalla nánar um þessa hluta síðar í kaflanum. Kjarnaofninn virkar með því að aðskilja klofnanlegt kjarnaefni þannig að markmassi geti ekki myndast og stjórna bæði flæði og upptöku nifteinda til að hægt sé að stöðva kjarnaklofnunarefnahvörfin. Í kjarnaofni sem notaður er til rafmagnsframleiðslu er orkan sem losnar við kjarnaklofnunarefnahvörf fanguð sem varmaorka og notuð til að sjóða vatn og framleiða gufu. Gufan er notuð til að snúa hverfli sem knýr rafal til rafmagnsframleiðslu.</para>
+<figure id="CNX_Chem_21_04_NuclearPwr">
+<media id="fs-idm35246480" alt="A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_NuclearPwr.jpg"/>
+</media>
+<caption>(a) Diablo Canyon-kjarnorkuverið nálægt San Luis Obispo er eina kjarnorkuverið sem nú er í rekstri í Kaliforníu. Hvolfþökin eru innilokunarmannvirki fyrir kjarnaofnana og í brúnu byggingunni er hverfillinn þar sem rafmagn er framleitt. Sjór er notaður til kælingar. (b) Diablo Canyon notar þrýstivatnsofn, eina af nokkrum mismunandi gerðum kjarnaklofnunarofna sem notaðir eru um allan heim til að framleiða rafmagn. Orka frá kjarnaklofnunarefnahvörfum í kjarnanum hitar vatn í lokuðu þrýstikerfi. Varmi frá þessu kerfi framleiðir gufu sem knýr hverfil sem aftur framleiðir rafmagn. (Heimild a: breyting á verki eftir „Mike“ Michael L. Baird; heimild b: breyting á verki eftir Nuclear Regulatory Commission)</caption>
+</figure>
+</section>
+<para id="fs-idm313917616">Mörg þyngri frumefni með minni bindiorku á hverja kjarneind geta sundrast í stöðugri frumefni sem hafa meðalþungan massatölu og meiri bindiorku á hverja kjarneind – það er að segja massatölur og bindiorku á hverja kjarneind sem eru nær „toppnum“ á bindiorkuritinu nálægt 56 (sjá <link document="m68851" target-id="CNX_Chem_21_01_BindEnergy"/>). Stundum myndast einnig nifteindir. Þessi sundrun er kölluð <term id="term-00005">kjarnaklofnun (e. fission)</term>, það er þegar stór kjarni brotnar í smærri hluta. Brotinu er fremur tilviljunarkennt og myndar mikinn fjölda mismunandi afurða. Kjarnaklofnun á sér yfirleitt ekki stað náttúrulega heldur er hún framkölluð með nifteindaárás. Fyrsta tilkynnta kjarnaklofnunin átti sér stað árið 1939 þegar þrír þýskir vísindamenn, Lise Meitner, Otto Hahn og Fritz Strassman, gerðu árás á úran-235 frumeindir með hægfara nifteindum sem klufu U-238 kjarnana í smærri brot sem samanstóðu af nokkrum nifteindum og frumefnum nálægt miðju lotukerfisins. Síðan þá hefur kjarnaklofnun sést í mörgum öðrum samsætum, þar á meðal flestum aktiníðsamsætum sem hafa oddatölu nifteinda. Dæmigert kjarnaklofnunarefnahvarf er sýnt í <link target-id="CNX_Chem_21_04_Fission1"/>.</para>
+<figure id="CNX_Chem_21_04_Fission1">
+<media id="fs-idm247309120" alt="A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a vertical dumbbell shaped collection of the same white and green spheres labeled “superscript, 236, subscript 92, U, Unstable nucleus.” Two right-facing arrows lead from the top and bottom of this structure to two new spheres that are also composed of green and white spheres and are slightly smaller than the others. The top sphere is labeled “superscript, 92, subscript 36, K r” while the lower one is labeled “superscript, 141, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “3, superscript, 1, subscript 0, n.” A balanced nuclear equation is written below the diagram and says “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_Fission1.jpg"/>
+</media>
+<caption>Þegar hægfara nifteind rekst á klofnanlegan U-235 kjarna sogast hún inn og myndar óstöðugan U-236 kjarna. U-236 kjarninn brotnar síðan hratt niður í tvo smærri kjarna (í þessu tilfelli Ba-141 og Kr-92) ásamt nokkrum nifteindum (venjulega tveimur eða þremur) og losar mjög mikið magn af orku.</caption>
+</figure>
+<para id="fs-idm70978352">Meðal myndefna úr kjarnaklofnunarhvarfi Meitner, Hahn og Strassman voru barín, krypton, lantan og serín, sem öll hafa stöðugri kjarna en úran-235. Síðan þá hafa hundruð mismunandi samsæta sést meðal myndefna klofnanlegra efna. Nokkur af þeim mörgu efnahvörfum sem eiga sér stað fyrir U-235, og graf sem sýnir dreifingu klofnunarafurða þess og nýtni þeirra, eru sýnd á <link target-id="CNX_Chem_21_04_Fission2"/>. Svipuð kjarnaklofnunarhvörf hafa sést með öðrum úransamsætum, sem og með ýmsum öðrum samsætum eins og þeim sem eru af plútóníum.</para>
+<figure id="CNX_Chem_21_04_Fission2">
+<media id="fs-idm215700944" alt="Five nuclear equations and a graph are shown. The first equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript, 144, subscript 54, X e, plus sign, 2, superscript, 1, subscript 0, n.” The second equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript, 146, subscript 57, L a, plus sign, 3, superscript, 1, subscript 0, n.” The third equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 97, subscript 37, R b, plus sign, superscript, 137, subscript 55, C s, plus sign, 3, superscript, 1, subscript 0, n.” The fourth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 137, subscript 52, T e, plus sign, superscript, 97, subscript 40, Z r, plus sign, 2, superscript, 1, subscript 0, n.” The fifth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.” A graph is also shown where the y-axis is labeled “Fission yield, open parenthesis, percent sign, close parenthesis” and has values of 0 to 9 in increments of 1 while the x-axis is labeled “Mass number” and has values of 60 to 180 in increments of 20. The graph begins near point “65, 0” and rises rapidly to near “92, 6.6,” then drops just as rapidly to “107, 0” and remains there to point “127, 0.” The graph then rises again to near “132, 8,” then goes up and down a bit before falling to a point “153, 0,” and going horizontal.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_Fission2.jpg"/>
+</media>
+<caption>(a) Kjarnaklofnun U-235 framleiðir ýmsar klofnunarafurðir. (b) Stærri klofnunarafurðir U-235 eru yfirleitt ein samsæta með massatölu í kringum 85–105 og önnur samsæta með massatölu sem er um 50% stærri, þ.e. um 130–150.</caption>
+</figure>
+<note id="fs-idm209540560" class="chemistry link-to-learning">
+<para id="fs-idm227794880">Skoðaðu þennan <link url="http://openstax.org/l/16fission">link</link> til að sjá eftirlíkingu af kjarnaklofnun.</para>
+</note>
+<para id="fs-idm199179680">Gífurleg orka myndast við kjarnaklofnun þungefna. Til dæmis, þegar eitt mól af U-235 gengst undir kjarnaklofnun, vega myndefnin um 0,2 grömmum minna en hvarfefnin; þessi „týndi“ massi breytist í mjög mikið magn af orku, um 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>10</sup> kJ á hvert mól af U-235. Kjarnaklofnunarhvörf framleiða ótrúlega mikið magn af orku samanborið við efnahvörf. Kjarnaklofnun á 1 kílógrammi af úrani-235, til dæmis, framleiðir um 2,5 milljón sinnum meiri orku en myndast við bruna á 1 kílógrammi af kolum.</para>
+<para id="fs-idm187374960">Eins og lýst var áður, þegar U-235 gengst undir kjarnaklofnun, myndar það tvo „meðalstóra“ kjarna og tvær eða þrjár nifteindir. Þessar nifteindir geta síðan valdið kjarnaklofnun annarra úran-235 atóma, sem aftur á móti gefa af sér fleiri nifteindir sem geta valdið kjarnaklofnun enn fleiri kjarna, og svo framvegis. Ef þetta gerist fáum við kjarna-<term id="term-00006">keðjuhvarf (e. chain reaction)</term> (sjá <link target-id="CNX_Chem_21_04_ChnReact1"/>). Á hinn bóginn, ef of margar nifteindir sleppa úr efnismassanum án þess að víxlverka við kjarna, þá verður ekkert keðjuhvarf.</para>
+<figure id="CNX_Chem_21_04_ChnReact1">
+<media id="fs-idm32833520" alt="A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. The upper of these two images is labeled “superscript, 93, subscript 36, K r” while the lower of the two is labeled “superscript, 142, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “ superscript, 1, subscript 0, n.”  An equation below this portion of the diagram reads ““superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 140, subscript 56, B a, plus sign, superscript 90, subscript 36, K r, plus sign, 3, superscript 1, subscript 0, n.”  A right-facing arrow leads from each of these white spheres to three larger spheres, each composed of many smaller green and white spheres and labeled, from top to bottom as “a, superscript,235, subscript 92, U,” “b, superscript,235, subscript 92, U” and “c, superscript,235, subscript 92, U.” Each of these spheres is followed by a right-facing arrow which points to a pair of smaller spheres composed of the same green and white spheres with starburst patterns in between each pair labeled “Energy.” The spheres of the top pair are labeled, from top to bottom, “superscript, 96, subscript 37, R b” and “superscript, 137, subscript 55, C s.” The spheres of the middle pair are labeled, from top to bottom, “superscript, 90, subscript 38, S r” and “superscript, 144, subscript 54, X e.” The spheres of the bottom pair are labeled, from top to bottom, “superscript, 87, subscript 35, B r” and “superscript, 146, subscript 57, L a.” Each pair of spheres is followed by three right-facing arrows leading to three white spheres labeled “superscript, 1, subscript 0, n.”  Below the diagram are three nuclear equations. Equation a reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 96, subscript 37, R b, plus sign, superscript 137, subscript 55, C s, plus sign, 3, superscript 1, subscript 0, n.” Equation b reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript144, subscript 54, X e, plus sign, 2, superscript 1, subscript 0, n.” Equation c reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript 146, subscript 57, L a, plus sign, 3, superscript 1, subscript 0, n”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_ChnReact1.jpg"/>
+</media>
+<caption>Kjarnaklofnun stórs kjarna, eins og U-235, framleiðir tvær eða þrjár nifteindir, sem hver um sig getur valdið kjarnaklofnun annars kjarna með þeim efnahvörfum sem sýnd eru. Ef þetta ferli heldur áfram verður kjarnakeðjuhvarf.</caption>
+</figure>
+<para id="fs-idm210900592">Efni sem getur viðhaldið kjarnaklofnunarkeðjuhvarfi er sagt vera <term id="term-00007">klofnanlegt (e. fissile)</term> eða <term id="term-00008">kleyft (e. fissionable)</term>. (Tæknilega séð getur kleyft efni gengist undir kjarnaklofnun með nifteindum af hvaða orku sem er, en klofnanlegt efni krefst háorkunifteinda.) Kjarnaklofnun verður sjálfbær þegar fjöldi nifteinda sem myndast við kjarnaklofnun er jafn eða meiri en fjöldi nifteinda sem frásogast af klofnandi kjörnum auk þeirra sem sleppa út í umhverfið. Það magn klofnanlegs efnis sem styður sjálfbært keðjuhvarf er <term id="term-00009">markmassi (e. critical mass)</term>. Magn klofnanlegs efnis sem getur ekki viðhaldið keðjuhvarfi er <term id="term-00010">undirmarkmassi (e. subcritical mass)</term>. Magn efnis þar sem hraði kjarnaklofnunar eykst er þekkt sem <term id="term-00011">yfirmarkmassi (e. supercritical mass)</term>. Markmassinn fer eftir gerð efnisins: hreinleika þess, hitastigi, lögun sýnisins og hvernig nifteindahvörfunum er stjórnað (<link target-id="CNX_Chem_21_04_CritMass"/>).</para>
+<figure id="CNX_Chem_21_04_CritMass" class="scaled-down">
+<media id="fs-idm205094672" alt="The images are shown and labeled “a,” “b” and “c.” Image a, labeled “Sub-critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seven small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image b, labeled “Critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seventeen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image c, labeled “Critical mass from neutron deflection,” shows a blue circle background, lying in a larger purple circle, with a white sphere near the outer, top, left edge of the purple circle. A downward, right-facing arrow indicates that the white sphere enters both of the circles. Thirteen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the blue circle, and a couple outside of the purple circle, in seemingly random directions.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_CritMass.jpg"/>
+</media>
+<caption>(a) Í undirmarkmassa er kleyfa efnið of lítið og leyfir of mörgum nifteindum að sleppa úr efninu, þannig að keðjuhvarf á sér ekki stað. (b) Í markmassa veldur nógu stór fjöldi nifteinda í kleyfa efninu kjarnaklofnun til að skapa keðjuhvarf.</caption>
+</figure>
+<para id="fs-idm26833280">Kjarnorkusprengja (<link target-id="CNX_Chem_21_04_FissnBomb"/>) inniheldur nokkur pund af klofnanlegu efni, <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>235</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math> eða <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext><m:mo>,</m:mo></m:mrow></m:math>, nifteindagjafa og sprengibúnað til að þjappa því hratt saman í lítið rúmmál. Þegar klofnanlegt efni er í litlum bútum er hlutfall nifteinda sem sleppa í gegnum tiltölulega stórt yfirborðsflatarmál mikið og keðjuhvarf á sér ekki stað. Þegar litlu bútarnir af klofnanlegu efni eru færðir hratt saman til að mynda einingu með massa sem er stærri en markmassinn, minnkar hlutfallslegur fjöldi nifteinda sem sleppa út og keðjuhvarf og sprenging verða.</para>
+<figure id="CNX_Chem_21_04_FissnBomb"><media id="fs-idm218899984" alt="Two diagrams are shown, each to the left of a photo, and labeled “a” and “b.” Diagram a shows the outer casing of a bomb that has a long, tubular shape with a squared-off tail. Components in the shell show a tube with a white disk labeled “Detonator” on the left, an orange disk with a bright yellow starburst drawn around it labeled “Conventional explosive” in the middle and a right-facing arrow leading to a blue disk in the nose of the bomb labeled “uranium 235.” A small blue cone next to the orange disk is shares the label of “uranium 235.” A black and white photo next to this diagram shows a far-off shot of a rising cloud over a landscape. Diagram b shows the outer casing of a bomb that has a short, rounded shape with a squared-off tail. Components in the shell show a large orange circle labeled “Conventional explosive” with a series of black dots around its edge, labeled “Detonators,” and a yellow starburst behind it. White arrows face from the outer edge of the orange circle to a blue circle in the center with a yellow core. The blue circle is labeled “plutonium 239” while the yellow core is labeled “beryllium, dash, polonium initiator.” A black and white photo next to this diagram shows a far-off shot of a giant rising cloud over a landscape.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_FissnBomb.jpg"/>
+</media>
+
+<caption>(a) Kjarnaklofnunarsprengjan sem eyðilagði Hiroshima 6. ágúst 1945 samanstóð af tveimur undirmarkmössum af U-235, þar sem hefðbundin sprengiefni voru notuð til að skjóta öðrum undirmarkmassanum inn í hinn og skapa þannig markmassa fyrir kjarnorkusprenginguna. (b) Plútóníumsprengjan sem eyðilagði Nagasaki 9. ágúst 1945 samanstóð af holri kúlu úr plútóníum sem var þjappað hratt saman með hefðbundnum sprengiefnum. Þetta leiddi til styrks plútóníums í miðjunni sem var meiri en sá markmassi sem nauðsynlegur var fyrir kjarnorkusprenginguna.</caption></figure>
+</section>
+<section id="fs-idm141510160">
+<title>Kjarnorkueldsneyti</title>
+<para id="fs-idm201280112"><term id="term-00013">Kjarnorkueldsneyti (e. nuclear fuel)</term> samanstendur af kleyfri samsætu, svo sem úrani-235, sem verður að vera til staðar í nægilegu magni til að tryggja sjálfbært keðjuhvarf. Í Bandaríkjunum innihalda úrangrýti frá 0,05–0,3% af úranoxíðinu U<sub>3</sub>O<sub>8</sub>; úranið í grýtinu er um 99,3% ókleyft U-238 með aðeins 0,7% kleyfu U-235. Kjarnaofnar krefjast eldsneytis með hærri styrk af U-235 en finnst í náttúrunni; það er venjulega auðgað til að hafa um 5% af úranmassa sem U-235. Við þennan styrk er ekki hægt að ná þeim yfirmarkmassa sem nauðsynlegur er fyrir kjarnorkusprengingu. Hægt er að auðga úran með gasdreifingu (eina aðferðin sem nú er notuð í Bandaríkjunum), með því að nota gasskilvindu eða með leysiaðskilnaði.</para>
+<para id="fs-idm198579952">Í auðgunarverksmiðju fyrir gasdreifingu þar sem U-235 eldsneyti er útbúið, fer UF<sub>6</sub> (úranhexaflúoríð) gas við lágan þrýsting í gegnum hindranir með götum sem eru rétt nógu stór til að UF<sub>6</sub> komist í gegn. Hinar örlítið léttari <sup>235</sup>UF<sub>6</sub> sameindir sveima örlítið hraðar í gegnum hindrunina en hinar þyngri <sup>238</sup>UF<sub>6</sub> sameindir. Þetta ferli er endurtekið í gegnum hundruð hindrana, sem eykur smám saman styrk <sup>235</sup>UF<sub>6</sub> upp að því stigi sem kjarnaofninn þarfnast. Grundvöllur þessa ferlis, lögmál Grahams, er lýst í kaflanum um gös. Auðgaða UF<sub>6</sub> gasinu er safnað saman, kælt þar til það storknar og síðan flutt í framleiðslustöð þar sem það er gert að eldsneytissamstæðum. Hver eldsneytissamstæða samanstendur af eldsneytisstöngum sem innihalda margar fingurbjargastórar, keramik-hjúpaðar, auðgaðar úran (venjulega UO<sub>2</sub>) eldsneytistöflur. Nútíma kjarnaofnar geta innihaldið allt að 10 milljónir eldsneytistaflna. Orkumagnið í hverri þessara taflna jafngildir því sem er í næstum tonni af kolum eða 150 göllonum af olíu.</para>
+</section>
+<section id="fs-idm46698944">
+<title>Hægjuefni kjarnaofna</title>
+<para id="fs-idm227090448">Nifteindir sem myndast við kjarnahvörf hreyfast of hratt til að valda kjarnaklofnun (sjá aftur í <link target-id="CNX_Chem_21_04_CritMass"/>). Fyrst þarf að hægja á þeim svo eldsneytið geti gleypt þær og framkallað frekari kjarnahvörf. <term id="term-00014">Hægjuefni kjarnaofns (e. nuclear moderator)</term> er efni sem hægir á nifteindum niður í hraða sem er nógu lágur til að valda kjarnaklofnun. Fyrstu kjarnaofnarnir notuðu háhreint grafít sem hægjuefni. Nútíma kjarnaofnar í Bandaríkjunum nota eingöngu þungt vatn <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mtext>H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math> eða létt vatn (venjulegt H<sub>2</sub>O), en sumir kjarnaofnar í öðrum löndum nota önnur efni, svo sem koldíoxíð, beryllíum eða grafít.</para>
+</section>
+<section id="fs-idm82082624">
+<title>Kælivökvar kjarnaofna</title>
+<para id="fs-idm17481184"><term id="term-00015">Kælivökvi kjarnaofns (e. reactor coolant)</term> er notaður til að flytja varmann sem myndast við kjarnaklofnunarhvarfið yfir í ytri suðuketil og hverfil, þar sem honum er breytt í rafmagn. Oft eru notaðar tvær skarast kælivökvalykkjur; þetta vinnur gegn flutningi geislavirkni frá kjarnaofninum yfir í aðalkælivökvalykkjuna. Öll kjarnorkuver í Bandaríkjunum nota vatn sem kælivökva. Aðrir kælivökvar eru meðal annars bráðið natríum, blý, blý-bismút efnablanda eða bráðin sölt.</para>
+</section>
+<section id="fs-idm24992032">
+<title>Stýristangir</title>
+<para id="fs-idm24991392">Kjarnaofnar nota <term id="term-00016">stýristangir (e. control rods)</term> (<link target-id="CNX_Chem_21_04_ControlRod"/>) til að stjórna klofnunarhraða kjarnaeldsneytisins með því að stilla fjölda hægfara nifteinda sem eru til staðar til að halda hraða keðjuverkunarinnar á öruggu stigi. Stýristangir eru gerðar úr bór, kadmíum, hafníum eða öðrum frumefnum sem geta gleypt nifteindir. Bór-10 gleypir til dæmis nifteindir með efnahvarfi sem myndar litíum-7 og alfaagnir:</para>
+<equation id="fs-idp23083712" class="unnumbered"><m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>5</m:mn></m:mrow><m:mn>10</m:mn></m:msubsup><m:mtext>B</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>3</m:mn></m:mrow><m:mn>7</m:mn></m:msubsup><m:mtext>Li</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm103571680">Þegar stýristangasamstæður eru settar inn í eldsneytiseininguna í kjarnaofnskjarnanum gleypa þær stærri hluta hægfara nifteindanna og hægja þannig á hraða kjarnaklofnunarhvarfsins og minnka aflið sem framleitt er. Aftur á móti, ef stýristangirnar eru fjarlægðar, gleypast færri nifteindir og klofnunarhraði og orkuframleiðsla aukast. Í neyðartilvikum er hægt að stöðva keðjuverkunina með því að setja allar stýristangirnar að fullu inn í kjarnann á milli eldsneytisstanganna.</para>
+<figure id="CNX_Chem_21_04_ControlRod">
+<media id="fs-idm201459040" alt="Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cut-away view of a vertical tube with a flat, horizontal plate near the bottom that connects to a series of vertical pipes lined up next to one another and labeled “Fuel rods.” A second horizontal plate labeled “Grid” lies at the top of the pipes and a second set of thinner, vertical pipes, labeled “Control rods,” leads from this plate to the top of the container. The walls of the container are labeled “Steel pressure vessel.” A blue, right-facing arrow leads from an entry point in the left side of the container and is followed by a second, down-facing blue arrow and a curved, right-facing arrow that trace along the outer, bottom edge of the container. A blue and red arrow follows these and faces up the right side of the container to an exit near the right face where a red, right-facing arrow leads out. Diagram b is a cut-away image of a vertical, rectangular, three dimensional set of vertical pipes. The pipes are labeled “Fuel rods” and are inserted into an upper and lower horizontal plate labeled “Grid.” Four thin rods extend above the pipes and are labeled “Control rods.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_ControlRod.jpg"/>
+</media>
+<caption>Kjarnaofnskjarninn sem sýndur er í (a) inniheldur eldsneytis- og stýristangasamstæðuna sem sýnd er í (b). (heimild: breyting á verki eftir E. Generalic, http://glossary.periodni.com/glossary.php?en=control+rod)</caption>
+</figure>
+</section>
+<section id="fs-idm70291520">
+<title>Varnarhjúpur og innilokunarkerfi</title>
+<para id="fs-idm145034464">Meðan á notkun stendur framleiðir kjarnaofn nifteindir og aðra geislun. Jafnvel þegar slökkt er á honum eru niðurbrotsefni geislavirk. Auk þess er starfandi kjarnaofn mjög heitur og hár þrýstingur myndast vegna hringrásar vatns eða annars kælivökva í gegnum hann. Því verður kjarnaofn að þola hátt hitastig og þrýsting og vernda starfsfólk fyrir geislun. Kjarnaofnar eru búnir <term id="term-00017">innilokunarkerfi (e. containment system)</term> (eða varnarhjúp) sem samanstendur af þremur hlutum:</para>
+<list id="fs-idm145807312" list-type="enumerated" number-style="arabic">
+<item>Kjarnaofnshylkið, stálhvolf sem er 3–20 sentímetra þykkt og gleypir, ásamt hægjuefninu, mikið af geisluninni sem kjarnaofninn framleiðir</item>
+<item>Aðalvarnarhjúpur úr 1–3 metrum af hárþéttni steinsteypu</item>
+<item>Starfsmannavörn úr léttari efnum sem verndar starfsfólk fyrir γ-geislum og röntgengeislum</item>
+</list>
+<para id="fs-idp10678448">Auk þess eru kjarnaofnar oft þaktir stál- eða steinsteypuhvelfingu sem er hönnuð til að inniloka öll geislavirk efni sem gætu losnað við slys í kjarnaofni.</para>
+<note id="fs-idm198746496" class="chemistry link-to-learning">
+<para id="fs-idm232050864">Smelltu hér til að horfa á <link url="http://openstax.org/l/16nucreactors">3 mínútna myndband</link> frá Nuclear Energy Institute um hvernig kjarnaofnar virka.</para>
+</note>
+<para id="fs-idm153414256">Kjarnorkuver eru hönnuð þannig að þau geta ekki myndað yfirkritískan massa af klofnanlegu efni og geta því ekki valdið kjarnorkusprengingu. En eins og sagan hefur sýnt geta bilanir í kerfum og öryggisráðstöfunum valdið skelfilegum slysum, þar á meðal efnafræðilegum sprengingum og kjarnabræðslum (skemmdum á kjarnaofnskjarnanum vegna ofhitnunar). Eftirfarandi grein um efnafræði í daglegu lífi kannar þrjú alræmd bræðsluslys.</para>
+<note id="fs-idm111616544" class="chemistry everyday-life">
+<title>Kjarnorkuslys</title>
+<para id="fs-idm111615776">Mikilvægi kælingar og innilokunar er rækilega sýnt fram á með þremur stórum slysum sem urðu í kjarnaofnum í kjarnorkuverum í Bandaríkjunum (Three Mile Island), fyrrum Sovétríkjunum (Tsjernobyl) og Japan (Fukushima).</para>
+<para id="fs-idm111615392">Í mars 1979 bilaði kælikerfi kjarnakljúfs 2 í Þriggja mílna eyju kjarnorkuverinu í Pennsylvaníu og kælivatnið lak úr kljúfnum niður á gólf varnarbyggingarinnar. Eftir að dælurnar stöðvuðust ofhitnuðu kjarnakljúfarnir vegna mikils hita frá geislavirkri hrörnun sem myndast fyrstu dagana eftir að kjarnakljúfur er stöðvaður. Hitastig kjarnans náði að minnsta kosti 2200 °C og efri hluti kjarnans byrjaði að bráðna. Auk þess byrjaði sirkonblendihlífin á eldsneytisstöngunum að hvarfast við gufu og mynda vetni:</para>
+<equation id="fs-idm211914096" class="unnumbered"><m:math><m:mrow><m:mtext>Zr</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>ZrO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm226605200">Vetnið safnaðist fyrir í varnarbyggingunni og óttast var að hætta væri á sprengingu í blöndu vetnis og lofts í byggingunni. Þar af leiðandi var vetnisgasi og geislavirkum gösum (aðallega krypton og xenon) hleypt út úr byggingunni. Innan viku var kælivatnsflæði komið á aftur og kjarninn byrjaði að kólna. Verksmiðjan var lokuð í næstum 10 ár á meðan hreinsunarferlið stóð yfir.</para>
+<para id="fs-idm70819920">Þrátt fyrir að æskilegt sé að engu geislavirku efni sé sleppt er losun geislavirks kryptons og xenons, eins og gerðist í Þriggja mílna eyju verinu, meðal þess sem er þolanlegast. Þessi gös dreifast auðveldlega í andrúmsloftinu og mynda því ekki svæði með mikilli geislavirkni. Þar að auki eru þetta eðallofttegundir og eru ekki teknar upp í plöntu- og dýralíf í fæðukeðjunni. Nánast ekkert af þungu frumefnunum úr kjarna kljúfsins slapp út í umhverfið og engin hreinsun var nauðsynleg á svæðinu utan varnarbyggingarinnar (<link target-id="CNX_Chem_21_04_3MileIslnd"/>).</para>
+<figure id="CNX_Chem_21_04_3MileIslnd" class="scaled-down">
+<media id="fs-idm210185648" alt="Two photos, labeled “a” and “b” are shown. Photo a is an aerial view of a nuclear power plant. Photo b shows a small group of men walking through a room filled with electronics.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_3MileIslnd.jpg"/>
+</media>
+<caption>(a) Á þessari mynd frá 2010 af Þriggja mílna eyju sjást mannvirkin sem eftir eru af skemmda kjarnakljúf 2 til vinstri, en aðskilinn kjarnakljúfur 1, sem varð ekki fyrir áhrifum af slysinu, heldur áfram að framleiða orku enn þann dag í dag (hægri). (b) Jimmy Carter forseti heimsótti stjórnherbergi kjarnakljúfs 2 nokkrum dögum eftir slysið árið 1979.</caption>
+</figure>
+<para id="fs-idm203575296">Annað stórt kjarnorkuslys sem varðaði kjarnakljúf átti sér stað í apríl 1986 í Tsjernobyl-kjarnorkuverinu í Úkraínu, sem þá var enn hluti af fyrrverandi Sovétríkjunum. Á meðan unnið var á lágum afköstum í óleyfilegri tilraun með suma öryggisbúnaðinn úr sambandi, varð einn af kjarnakljúfum versins óstöðugur. Keðjuverkun hans varð stjórnlaus og jókst upp í stig langt umfram það sem kljúfurinn var hannaður fyrir. Gufuþrýstingurinn í kljúfnum hækkaði í 100 til 500 sinnum meiri en fullur afkastaþrýstingur og sprengdi kljúfinn. Þar sem kljúfurinn var ekki lokaður inni í varnarbyggingu spýttist mikið magn geislavirks efnis út og viðbótar klofnunarafurðir losnuðu þegar grafít (kolefnis) hægjan í kjarnanum kviknaði og brann. Eldurinn var slökktur, en yfir 200 starfsmenn verksmiðjunnar og slökkviliðsmenn fengu bráða geislaveiki og að minnsta kosti 32 létust fljótlega af völdum geislunarinnar. Spáð er að um 4000 fleiri dauðsföll muni eiga sér stað meðal neyðarstarfsmanna og fyrrverandi íbúa Tsjernobyl vegna krabbameins og hvítblæðis af völdum geislunar. Kljúfurinn hefur síðan verið hjúpaður stáli og steinsteypu, mannvirki sem nú er að grotna niður og er þekkt sem sarkófaginn. Næstum 30 árum síðar eru enn veruleg geislavandamál á svæðinu og Tsjernobyl er að mestu leyti auðn.</para>
+<para id="fs-idm188013392">Árið 2011 skemmdist Fukushima Daiichi kjarnorkuverið í Japan mikið í 9,0 stiga jarðskjálfta og flóðbylgju sem fylgdi í kjölfarið. Þrír kjarnakljúfar sem voru í gangi á þeim tíma voru sjálfkrafa stöðvaðir og neyðarrafalar fóru í gang til að knýja rafeindabúnað og kælikerfi. Hins vegar flæddi flóðbylgjan fljótt yfir neyðarrafalana og sló út rafmagnið til dælanna sem dældu kælivatni um kjarnakljúfana. Háhitagufa í kjarnakljúfunum hvarfaðist við sirkonblöndu og myndaði vetnisgas. Gasið slapp út í varnarbygginguna og blanda vetnis og lofts sprakk. Geislavirkt efni losnaði úr varnarhylkjunum vegna vísvitandi loftunar til að minnka vetnisþrýsting, vísvitandi losunar kælivatns í sjóinn og vegna tilviljunarkenndra eða stjórnlausra atburða.</para>
+<para id="fs-idm28149168">Rýmingarsvæði í kringum skemmda verið náði yfir 12,4 mílur og talið er að 200.000 manns hafi verið fluttir af svæðinu. Öllum 48 kjarnorkuverum Japans var í kjölfarið lokað og voru þau enn lokuð í desember 2014. Frá hamförunum hefur almenningsálitið breyst úr því að vera að mestu leyti fylgjandi í að vera að mestu leyti andvígt aukinni notkun kjarnorkuvera og endurræsing kjarnorkuáætlunar Japans er enn í biðstöðu (<link target-id="CNX_Chem_21_04_Fukushima"/>).</para>
+<figure id="CNX_Chem_21_04_Fukushima">
+<media id="fs-idm109901200" alt="A photo and a map, labeled “a” and “b,” respectively, are shown. Photo a shows a man in a body-covering safety suit working near a series of blue, plastic coated containers. Map b shows a section of land with the ocean on each side. Near the upper right side of the land is a small red dot, labeled “greater than, 12.5, m R backslash, h r,” that is surrounded by a zone of orange that extends in the upper left direction labeled “2.17, dash, 12.5, m R backslash, h r.” The orange is surrounded by an outline of yellow labeled “1.19, dash, 2.17, m R backslash, h r” and a wider outline of green labeled “0.25, dash, 1.19, m R backslash, h r.” A large area of light blue, labeled “0.03, dash, 0.25, m R backslash, h r” surrounds the green area and extends to the lower middle of the map. A large section of the lower middle and left of the land is covered by dark blue, labeled “less than 0.03, m R backslash, h r.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_Fukushima.jpg"/>
+</media>
+<caption>(a) Eftir slysið þurfti að fjarlægja mengaðan úrgang og (b) rýmingarsvæði var sett upp í kringum verið á svæðum sem fengu stóra skammta af geislavirku niðurfalli. (mynd a: breyting á verki eftir „Live Action Hero“/Flickr)</caption>
+</figure>
+</note>
+<para id="fs-idp45909184">Orkan sem framleidd er af kjarnakljúf sem knúinn er með auðguðu úrani stafar af klofnun úrans sem og af klofnun plútons sem myndast við rekstur kljúfsins. Eins og áður hefur verið rætt myndast plúton úr samruna nifteinda og úrans í eldsneytinu. Í hvaða kjarnakljúf sem er breytist aðeins um 0,1% af massa eldsneytisins í orku. Hin 99,9% eru eftir í eldsneytisstöngunum sem klofnunarafurðir og ónotað eldsneyti. Allar klofnunarafurðir gleypa nifteindir og eftir nokkra mánuði til nokkur ár, allt eftir kljúfnum, verður að fjarlægja klofnunarafurðirnar með því að skipta um eldsneytisstangir. Annars myndi styrkur þessara klofnunarafurða aukast og gleypa fleiri nifteindir þar til kljúfurinn gæti ekki lengur starfað.</para>
+<para id="fs-idm28146592">Notaðar eldsneytisstangir innihalda ýmsar afurðir, sem samanstanda af óstöðugum kjörnum með sætistölur frá 25 til 60, nokkur transúranísk frumefni, þar á meðal plúton og ameríkín, og óhvarfaðar úran samsætur. Óstöðugu kjarnarnir og transúranísku samsæturnar gefa notuðu eldsneyti hættulega mikla geislavirkni. Langlífu samsæturnar þurfa þúsundir ára til að hrörna niður á öruggt stig. Endanleg örlög kjarnakljúfsins sem mikilvægs orkugjafa í Bandaríkjunum hvíla líklega á því hvort hægt sé að þróa pólitískt og vísindalega fullnægjandi tækni til að vinna úr og geyma íhluti notaðra eldsneytisstanga.</para>
+<note id="fs-idm28145520" class="chemistry link-to-learning">
+<para id="fs-idm189788352">Kannaðu upplýsingarnar í þessum <link url="http://openstax.org/l/16wastemgmt">hlekk</link> til að læra um aðferðir við meðhöndlun kjarnorkuúrgangs.</para>
+</note>
+</section>
+<section id="fs-idm26275296">
+<title>Kjarnasamruni og samrunakljúfar</title>
+<para id="fs-idm69471456">Ferlið þar sem mjög léttum kjörnum er breytt í þyngri kjarna fylgir einnig umbreyting massa í mikið magn orku, ferli sem kallast <term id="term-00018">samruni (e. fusion)</term>. Helsti orkugjafi sólarinnar er samrunahvarf þar sem fjórir vetniskjarnar renna saman og mynda einn helíumkjarna og tvær jáeindir. Þetta er nettóhvarf flóknari atburðarásar:</para>
+<equation id="fs-idm273862304" class="unnumbered"><m:math><m:mrow><m:mn>4</m:mn><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup>
+<m:mtext>H</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup>
+<m:mtext>He</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn>
+<m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup>
+<m:msup><m:mtext>e</m:mtext><m:mo>+</m:mo></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm178516816">Helíumkjarni hefur massa sem er 0,7% minni en massi fjögurra vetniskjarna; þessum tapaða massa er breytt í orku við samrunann. Þetta hvarf framleiðir um 3,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>11</sup> kJ af orku á hvert mól af <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> sem myndast. Þetta er nokkuð meira en orkan sem myndast við kjarnaklofnun á einu móli af U-235 (1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>10</sup> kJ), og yfir 3 milljón sinnum meira en orkan sem myndast við (efnafræðilegan) bruna á einu móli af oktani (5471 kJ).</para>
+<para id="fs-idm244318448">Það hefur verið ákvarðað að kjarnar þungra samsæta vetnis, tvívetniskjarni, <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mtext>H</m:mtext></m:math> og þrívetniskjarni, <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>3</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mo>,</m:mo></m:mrow></m:math> gangist undir samruna við gríðarlega hátt hitastig (varmakjarnasamruni). Þeir mynda helíumkjarna og nifteind:</para>
+<equation id="fs-idm154271120" class="unnumbered"><m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>3</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp29836288">Þessi breyting á sér stað með massatapi upp á 0,0188 amu, sem samsvarar losun 1,69 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> kílójúla á hvert mól af <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> sem myndast. Mjög hátt hitastig er nauðsynlegt til að gefa kjörnunum næga hreyfiorku til að yfirstíga mjög sterka fráhrindikrafta sem stafa af jákvæðum hleðslum á kjörnum þeirra svo þeir geti rekist saman.</para>
+<para id="fs-idm168712784">Nothæf samrunahvörf krefjast mjög hás hitastigs til að komast af stað — um 15.000.000 K eða meira. Við þetta hitastig sundrast allar sameindir í atóm og atómin jónast og mynda plasma. Þessar aðstæður eiga sér stað á gríðarlega mörgum stöðum um allan alheiminn — stjörnur eru knúnar áfram af samruna. Menn hafa þegar fundið út hvernig á að skapa nógu hátt hitastig til að ná fram samruna í stórum stíl í varmakjarnavopnum. Varmakjarnavopn eins og vetnissprengja inniheldur kjarnaklofnunarsprengju sem, þegar hún springur, gefur frá sér næga orku til að framkalla það gríðarlega háa hitastig sem er nauðsynlegt til að samruni geti átt sér stað.</para>
+<para id="fs-idm26188048">Önnur mun hagkvæmari leið til að skapa samrunahvörf er í <term id="term-00019">samrunakljúfi (e. fusion reactor)</term>, kjarnakljúfi þar sem samrunahvörfum léttra kjarna er stjórnað. Vegna þess að engin föst efni eru stöðug við svo hátt hitastig geta vélræn tæki ekki haldið plasma þar sem samrunahvörf eiga sér stað. Tvær aðferðir til að halda plasma við þann þéttleika og hitastig sem nauðsynlegt er fyrir samrunahvarf eru nú í brennidepli mikilla rannsókna: innilokun með segulsviði og með notkun fókusaðra leysigeisla (<link target-id="CNX_Chem_21_04_Fusion"/>). Fjöldi stórra verkefna vinnur að því að ná einu stærsta markmiði vísindanna: að fá vetniseldsneyti til að kvikna og framleiða meiri orku en það magn sem lagt er í að ná því gríðarlega háa hitastigi og þrýstingi sem krafist er fyrir samruna. Þegar þetta er skrifað eru engir sjálfbærir samrunakljúfar í notkun í heiminum, þótt smærri stýrð samrunahvörf hafi verið keyrð í mjög stuttan tíma.</para>
+<figure id="CNX_Chem_21_04_Fusion" class="scaled-down">
+<media id="fs-idm26185504" alt="Two photos are shown and labeled “a” and “b.” Photo a shows a model of the ITER reactor made up of colorful components. Photo b shows a close-up view of the end of a long, mechanical arm made up of many metal components.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_04_Fusion.jpg"/>
+</media>
+<caption>(a) Þetta líkan er af International Thermonuclear Experimental Reactor (ITER) kljúfnum. ITER, sem er nú í byggingu í Suður-Frakklandi og áætlað er að verði lokið árið 2027, verður stærsti tilrauna-Tokamak kjarnasamrunakljúfur heims með það að markmiði að ná fram stórfelldri, viðvarandi orkuframleiðslu. (b) Árið 2012 framleiddi National Ignition Facility við Lawrence Livermore National Laboratory í stutta stund yfir 500.000.000.000 vött (500 teravött, eða 500 TW) af hámarksafli og skilaði 1.850.000 júlum (1,85 MJ) af orku, mesta leysiorka sem nokkru sinni hefur verið framleidd og 1000 sinnum meiri orkunotkun en í öllum Bandaríkjunum á hverju augnabliki. Þótt það hafi aðeins staðið yfir í nokkra milljarðshluta úr sekúndu, náðu 192 leysarnir þeim skilyrðum sem þarf til að kveikja í kjarnasamruna. Þessi mynd sýnir skotmarkið fyrir leysigeislann. (heimild a: breyting á verki eftir Stephan Mosel)</caption>
+</figure>
+</section>
+<section id="fs-idm189160608" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm172997504">Mögulegt er að framleiða ný atóm með því að varpa kjörnum eða háhraða ögnum á önnur atóm. Afurðir þessara umbreytingahvarfa geta verið stöðugar eða geislavirkar. Fjöldi tilbúinna frumefna, þar á meðal teknetín, astatín og þunguraníð, hafa verið framleidd á þennan hátt.</para>
+<para id="fs-idm66855808">Kjarnorka, sem og sprengingar kjarnavopna, geta myndast með klofnun (hvörf þar sem þungum kjarna er skipt í tvo eða fleiri léttari kjarna og nokkrar nifteindir). Vegna þess að nifteindirnar geta valdið frekari klofnunarhvörfum þegar þær sameinast öðrum þungum kjörnum getur keðjuverkun orðið til. Nothæf orka fæst ef klofnunarferlið fer fram í kjarnakljúfi. Umbreyting léttra kjarna í þyngri kjarna (samruni) framleiðir einnig orku. Eins og er hefur þessari orku ekki verið haldið nægilega vel og er of dýr til að vera raunhæf fyrir orkuframleiðslu í atvinnuskyni.</para>
+</section>
+<section id="fs-idm234493952" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idm122155008">
+<problem id="fs-idm194968736">
+<para id="fs-idm179134416">Skrifaðu jafnaða kjarnahvarfajöfnu fyrir framleiðslu eftirfarandi þunguraníða:</para>
+<para id="fs-idm202190128">(a) berkelín-244, myndað við hvarf Am-241 og He-4</para>
+<para id="fs-idm32448240">(b) fermín-254, myndað við hvarf Pu-239 með miklum fjölda nifteinda</para>
+<para id="fs-idm84813904">(c) lawrensín-257, myndað við hvarf Cf-250 og B-11</para>
+<para id="fs-idm30976288">(d) dubnín-260, myndað við hvarf Cf-249 og N-15</para>
+</problem>
+<solution id="fs-idm153978528">
+<para id="fs-idm67594464">(a) <m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>95</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Am</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>97</m:mn></m:mrow><m:mn>244</m:mn></m:msubsup><m:mtext>Bk</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (b) <m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext><m:mo>+</m:mo><m:mn>15</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>100</m:mn></m:mrow><m:mn>254</m:mn></m:msubsup><m:mtext>Fm</m:mtext><m:mo>+</m:mo><m:mn>6</m:mn>
+<m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (c) <m:math><m:mrow>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>98</m:mn></m:mrow><m:mn>250</m:mn></m:msubsup><m:mtext>Cf</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>5</m:mn></m:mrow><m:mn>11</m:mn></m:msubsup><m:mtext>B</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>103</m:mn></m:mrow><m:mn>257</m:mn></m:msubsup><m:mtext>Lr</m:mtext><m:mo>+</m:mo><m:mn>4</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext><m:mo>;</m:mo></m:mrow></m:math> (d) <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>98</m:mn></m:mrow><m:mn>249</m:mn></m:msubsup><m:mtext>Cf</m:mtext><m:mo>+</m:mo>
+<m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>7</m:mn></m:mrow><m:mn>15</m:mn></m:msubsup><m:mtext>N</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mrow><m:mn>105</m:mn></m:mrow><m:mn>260</m:mn></m:msubsup><m:mtext>Db</m:mtext><m:mo>+</m:mo><m:mn>4</m:mn>
+<m:msubsup><m:mrow/><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>n</m:mtext></m:mrow></m:math></para></solution>
+</exercise>
+<exercise id="fs-idm227188304">
+<problem id="fs-idm101459920">
+<para id="fs-idm78153856">Hvernig er kjarnaklofnun frábrugðin kjarnasamruna? Hvers vegna eru bæði þessi ferli útvermin?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm39373072">
+<problem id="fs-idm198329680">
+<para id="fs-idm65683024">Bæði kjarnasamruni og kjarnaklofnun eru kjarnahvörf. Hvers vegna er mjög hár hiti nauðsynlegur fyrir samruna en ekki fyrir klofnun?</para>
+</problem>
+<solution id="fs-idm189652432">
+<para id="fs-idm133404128">Tveir kjarnar verða að rekast saman til að samruni eigi sér stað. Hár hiti er nauðsynlegur til að gefa kjörnunum næga hreyfiorku til að yfirstíga mjög sterkan fráhrindikraft sem stafar af jákvæðri hleðslu þeirra.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm153436832">
+<problem id="fs-idm69626800">
+<para id="fs-idm189138560">Tilgreindu þau skilyrði sem eru nauðsynleg til að keðjuverkun kjarnaklofnunar eigi sér stað. Útskýrðu hvernig hægt er að stjórna henni til að framleiða orku, en ekki sprengingu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm213403024">
+<problem id="fs-idp6556624">
+<para id="fs-idp116280736">Lýstu íhlutum kjarnaofns.</para>
+</problem>
+<solution id="fs-idm212956752">
+<para id="fs-idm228732384">Kjarnaofn samanstendur af eftirfarandi:
+<list id="eip-idm652671392" list-type="enumerated" number-style="arabic">
+<item>Kjarnaeldsneyti. Klofnanleg samsæta verður að vera til staðar í nægilega miklu magni til að viðhalda stýrðri keðjuverkun. Geislavirka samsætan er geymd í rörum sem kallast eldsneytisstaflar.</item>
+<item>Hægir. Hægir hægir á nifteindum sem myndast við kjarnahvörf svo að eldsneytið geti gleypt þær og valdið frekari kjarnahvörfum.<newline/></item>
+<item>Kælivökvi. Kælivökvinn flytur hita frá kjarnaklofnunarhvarfinu yfir í ytri gufuketil og hverfil þar sem honum er breytt í rafmagn.<newline/></item>
+<item>Stjórnkerfi. Stjórnkerfið samanstendur af stjórnstöngum sem komið er fyrir á milli eldsneytisstafla til að gleypa nifteindir og er notað til að stilla fjölda nifteinda og halda hraða keðjuverkunarinnar á öruggu stigi.<newline/></item>
+<item>Hlífðar- og innilokunarkerfi. Hlutverk þessa íhlutar er að vernda starfsfólk fyrir geislun sem myndast við kjarnahvörfin og að standast háan þrýsting sem stafar af háhitahvörfum.</item>
+</list></para></solution>
+</exercise>
+<exercise id="fs-idm209547408">
+<problem id="fs-idm74632496">
+<para id="fs-idm43150496">Í venjulegri notkun eru bæði hægir og stjórnstangir nauðsynlegar til að reka keðjuverkun kjarnaklofnunar á öruggan hátt í orkuframleiðsluskyni. Tilgreindu hlutverk hvors um sig og útskýrðu hvers vegna báðir eru nauðsynlegir.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm210381584">
+<problem id="fs-idm210381328">
+<para id="fs-idm210381072">Lýstu því hvernig stöðuorku úrans er breytt í raforku í kjarnorkuveri.</para>
+</problem>
+<solution id="fs-idm210380432">
+<para id="fs-idm210380176">Klofnun úrans myndar hita sem er fluttur yfir í ytri gufugjafa (ketil). Gufan sem myndast knýr hverfil sem knýr rafal.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm210379536">
+<problem id="fs-idm210379280">
+<para id="fs-idm210379024">Massi vetnisatóms <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math> er 1,007825 amu; massi þrítínsatóms <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>3</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math> er 3,01605 amu; og massi α-agnar er 4,00150 amu. Hversu mikil orka í kílójúlum á mól af <m:math><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext></m:math> sem myndast losnar við eftirfarandi samrunahvarf: <m:math><m:mrow><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>1</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mo>+</m:mo><m:msubsup><m:mrow/><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>3</m:mn></m:msubsup><m:mtext>H</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mrow/><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>4</m:mn></m:msubsup><m:mtext>He</m:mtext><m:mo>.</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm128080144">
+<term>keðjuverkun (e. chain reaction)</term>
+<meaning id="fs-idm128080144-meaning">endurtekin kjarnaklofnun sem verður þegar nifteindir sem losna við klofnun rekast á önnur atóm</meaning>
+</definition>
+<definition id="fs-idm220735792">
+<term>innilokunarkerfi (e. containment system)</term>
+<meaning id="fs-idm220735792-meaning">(einnig hlíf) þrískipt mannvirki úr efnum sem verndar ytra byrði kjarnaklofnunarofns og starfsfólk fyrir háum hita, þrýstingi og geislun inni í ofninum</meaning>
+</definition>
+<definition id="fs-idm206270992">
+<term>stjórnstöng (e. control rod)</term>
+<meaning id="fs-idm206270992-meaning">efni sem stungið er inn í eldsneytissamstæðuna sem gleypir nifteindir og hægt er að hækka eða lækka til að stilla hraða kjarnaklofnunarhvarfs</meaning>
+</definition>
+<definition id="fs-idm1727408">
+<term>markmassi (e. critical mass)</term>
+<meaning id="fs-idm1727408-meaning">magn klofnanlegs efnis sem viðheldur sjálfbærri keðjuverkun (kjarnaklofnunar)</meaning>
+</definition>
+<definition id="fs-idm208194016">
+<term>klofnanlegt (e. fissile (or fissionable))</term>
+<meaning id="fs-idm208194016-meaning">þegar efni er fært um að viðhalda kjarnaklofnunarhvarfi</meaning>
+</definition>
+<definition id="fs-idm195851664">
+<term>kjarnaklofnun (e. fission)</term>
+<meaning id="fs-idm195851664-meaning">klofnun þyngri kjarna í tvo eða fleiri léttari kjarna, yfirleitt samfara umbreytingu massa í mikið magn orku</meaning>
+</definition>
+<definition id="fs-idm135521664">
+<term>kjarnasamruni (e. fusion)</term>
+<meaning id="fs-idm135521664-meaning">samruni mjög léttra kjarna í þyngri kjarna, samfara umbreytingu massa í mikið magn orku</meaning>
+</definition>
+<definition id="fs-idp7149200">
+<term>kjarnasamrunaofn (e. fusion reactor)</term>
+<meaning id="fs-idp7149200-meaning">kjarnaofn þar sem samrunahvörfum léttra kjarna er stjórnað</meaning>
+</definition>
+<definition id="fs-idm227895952">
+<term>kjarnaeldsneyti (e. nuclear fuel)</term>
+<meaning id="fs-idm227895952-meaning">klofnanleg samsæta sem er til staðar í nægilegu magni til að tryggja sjálfbæra keðjuverkun í kjarnaofni</meaning>
+</definition>
+<definition id="fs-idm204101584">
+<term>kjarnahægir (e. nuclear moderator)</term>
+<meaning id="fs-idm204101584-meaning">efni sem hægir á nifteindum niður í nægilega lágan hraða til að valda kjarnaklofnun</meaning>
+</definition>
+<definition id="fs-idm39349824">
+<term>kjarnaofn (e. nuclear reactor)</term>
+<meaning id="fs-idm39349824-meaning">umhverfi sem framleiðir orku með kjarnaklofnun þar sem keðjuverkuninni er stjórnað og hún viðhaldið án sprengingar</meaning>
+</definition>
+<definition id="fs-idm74066144">
+<term>kjarnaumbreyting (e. nuclear transmutation)</term>
+<meaning id="fs-idm74066144-meaning">umbreyting eins núklíðs í annað núklíð</meaning>
+</definition>
+<definition id="fs-idm66620880">
+<term>agnahraðall (e. particle accelerator)</term>
+<meaning id="fs-idm66620880-meaning">tæki sem notar raf- og segulsvið til að auka hreyfiorku kjarna sem notaðir eru í umbreytingarhvörfum</meaning>
+</definition>
+<definition id="fs-idm187262736">
+<term>kælivökvi ofns (e. reactor coolant)</term>
+<meaning id="fs-idm187262736-meaning">búnaður sem notaður er til að flytja varma sem myndast við kjarnaklofnun í kjarnaofni yfir í ytri suðuketil og hverfil þar sem honum er breytt í rafmagn</meaning>
+</definition>
+<definition id="fs-idm151497488">
+<term>undirmarksstærð (e. subcritical mass)</term>
+<meaning id="fs-idm151497488-meaning">magn klofnanlegs efnis sem getur ekki viðhaldið keðjuverkun; minna en marksstærð</meaning>
+</definition>
+<definition id="fs-idm27779984">
+<term>yfirmarksstærð (e. supercritical mass)</term>
+<meaning id="fs-idm27779984-meaning">magn efnis þar sem tíðni kjarnaklofnunar fer vaxandi</meaning>
+</definition>
+<definition id="fs-idm223971840">
+<term>ummyndunarhvarf (e. transmutation reaction)</term>
+<meaning id="fs-idm223971840-meaning">skothríð á eina tegund kjarna með öðrum kjörnum eða nifteindum</meaning>
+</definition>
+<definition id="fs-idm188168144">
+<term>þverúran (e. transuranium element)</term>
+<meaning id="fs-idm188168144-meaning">frumefni með sætistölu hærri en 92; þessi frumefni finnast ekki í náttúrunni</meaning>
+</definition>
+</glossary>
+</document>

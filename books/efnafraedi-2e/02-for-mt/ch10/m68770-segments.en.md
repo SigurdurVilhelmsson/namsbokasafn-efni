@@ -14,7 +14,7 @@ Describe the main types of crystalline solids: ionic solids, metallic solids, co
 Explain the ways in which crystal defects can occur in a solid
 
 <!-- SEG:m68770:para:fs-idm142034528 -->
-When most liquids are cooled, they eventually freeze and form __crystalline solids__, solids in which the atoms, ions, or molecules are arranged in a definite repeating pattern. It is also possible for a liquid to freeze before its molecules become arranged in an orderly pattern. The resulting materials are called __amorphous solids__ or noncrystalline solids (or, sometimes, glasses). The particles of such solids lack an ordered internal structure and are randomly arranged ([#CNX_Chem_10_05_TypesSol]).
+When most liquids are cooled, they eventually freeze and form {{term}}crystalline solids{{/term}}, solids in which the atoms, ions, or molecules are arranged in a definite repeating pattern. It is also possible for a liquid to freeze before its molecules become arranged in an orderly pattern. The resulting materials are called {{term}}amorphous solids{{/term}} or noncrystalline solids (or, sometimes, glasses). The particles of such solids lack an ordered internal structure and are randomly arranged ([#CNX_Chem_10_05_TypesSol]).
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_TypesSol-caption -->
 The entities of a solid phase may be arranged in a regular, repeating pattern (crystalline solids) or randomly (amorphous).
@@ -23,7 +23,7 @@ The entities of a solid phase may be arranged in a regular, repeating pattern (c
 Metals and ionic compounds typically form ordered, crystalline solids. Substances that consist of large molecules, or a mixture of molecules whose movements are more restricted, often form amorphous solids. For examples, candle waxes are amorphous solids composed of large hydrocarbon molecules. Some substances, such as silicon dioxide (shown in [#CNX_Chem_10_05_BoronOxide]), can form either crystalline or amorphous solids, depending on the conditions under which it is produced. Also, amorphous solids may undergo a transition to the crystalline state under appropriate conditions.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_BoronOxide-caption -->
-(a) Silicon dioxide, SiO~2~, is abundant in nature as one of several crystalline forms of the mineral quartz. (b) Rapid cooling of molten SiO~2~ yields an amorphous solid known as “fused silica”.
+(a) Silicon dioxide, SiO[[sub:2]], is abundant in nature as one of several crystalline forms of the mineral quartz. (b) Rapid cooling of molten SiO[[sub:2]] yields an amorphous solid known as “fused silica”.
 
 <!-- SEG:m68770:para:fs-idp94426432 -->
 Crystalline solids are generally classified according to the nature of the forces that hold its particles together. These forces are primarily responsible for the physical properties exhibited by the bulk solids. The following sections provide descriptions of the major types of crystalline solids: ionic, metallic, covalent network, and molecular.
@@ -32,7 +32,7 @@ Crystalline solids are generally classified according to the nature of the force
 Ionic Solids
 
 <!-- SEG:m68770:para:fs-idp61138560 -->
-__Ionic solids__, such as sodium chloride and nickel oxide, are composed of positive and negative ions that are held together by electrostatic attractions, which can be quite strong ([#CNX_Chem_10_05_IonicSolid]). Many ionic crystals also have high melting points. This is due to the very strong attractions between the ions—in ionic compounds, the attractions between full charges are (much) larger than those between the partial charges in polar molecular compounds. This will be looked at in more detail in a later discussion of lattice energies. Although they are hard, they also tend to be brittle, and they shatter rather than bend. Ionic solids do not conduct electricity; however, they do conduct when molten or dissolved because their ions are free to move. Many simple compounds formed by the reaction of a metallic element with a nonmetallic element are ionic.
+{{term}}Ionic solids{{/term}}, such as sodium chloride and nickel oxide, are composed of positive and negative ions that are held together by electrostatic attractions, which can be quite strong ([#CNX_Chem_10_05_IonicSolid]). Many ionic crystals also have high melting points. This is due to the very strong attractions between the ions—in ionic compounds, the attractions between full charges are (much) larger than those between the partial charges in polar molecular compounds. This will be looked at in more detail in a later discussion of lattice energies. Although they are hard, they also tend to be brittle, and they shatter rather than bend. Ionic solids do not conduct electricity; however, they do conduct when molten or dissolved because their ions are free to move. Many simple compounds formed by the reaction of a metallic element with a nonmetallic element are ionic.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_IonicSolid-caption -->
 Sodium chloride is an ionic solid.
@@ -41,7 +41,7 @@ Sodium chloride is an ionic solid.
 Metallic Solids
 
 <!-- SEG:m68770:para:fs-idp89753840 -->
-__Metallic solids__ such as crystals of copper, aluminum, and iron are formed by metal atoms ([#CNX_Chem_10_05_Metallic]). The structure of metallic crystals is often described as a uniform distribution of atomic nuclei within a “sea” of delocalized electrons. The atoms within such a metallic solid are held together by a unique force known as *metallic bonding* that gives rise to many useful and varied bulk properties. All exhibit high thermal and electrical conductivity, metallic luster, and malleability. Many are very hard and quite strong. Because of their malleability (the ability to deform under pressure or hammering), they do not shatter and, therefore, make useful construction materials. The melting points of the metals vary widely. Mercury is a liquid at room temperature, and the alkali metals melt below 200 °C. Several post-transition metals also have low melting points, whereas the transition metals melt at temperatures above 1000 °C. These differences reflect differences in strengths of metallic bonding among the metals.
+{{term}}Metallic solids{{/term}} such as crystals of copper, aluminum, and iron are formed by metal atoms ([#CNX_Chem_10_05_Metallic]). The structure of metallic crystals is often described as a uniform distribution of atomic nuclei within a “sea” of delocalized electrons. The atoms within such a metallic solid are held together by a unique force known as {{i}}metallic bonding{{/i}} that gives rise to many useful and varied bulk properties. All exhibit high thermal and electrical conductivity, metallic luster, and malleability. Many are very hard and quite strong. Because of their malleability (the ability to deform under pressure or hammering), they do not shatter and, therefore, make useful construction materials. The melting points of the metals vary widely. Mercury is a liquid at room temperature, and the alkali metals melt below 200 °C. Several post-transition metals also have low melting points, whereas the transition metals melt at temperatures above 1000 °C. These differences reflect differences in strengths of metallic bonding among the metals.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_Metallic-caption -->
 Copper is a metallic solid.
@@ -50,7 +50,7 @@ Copper is a metallic solid.
 Covalent Network Solid
 
 <!-- SEG:m68770:para:fs-idm59353248 -->
-__Covalent network solids__ include crystals of diamond, silicon, some other nonmetals, and some covalent compounds such as silicon dioxide (sand) and silicon carbide (carborundum, the abrasive on sandpaper). Many minerals have networks of covalent bonds. The atoms in these solids are held together by a network of covalent bonds, as shown in [#CNX_Chem_10_05_NtwrkSolid]. To break or to melt a covalent network solid, covalent bonds must be broken. Because covalent bonds are relatively strong, covalent network solids are typically characterized by hardness, strength, and high melting points. For example, diamond is one of the hardest substances known and melts above 3500 °C.
+{{term}}Covalent network solids{{/term}} include crystals of diamond, silicon, some other nonmetals, and some covalent compounds such as silicon dioxide (sand) and silicon carbide (carborundum, the abrasive on sandpaper). Many minerals have networks of covalent bonds. The atoms in these solids are held together by a network of covalent bonds, as shown in [#CNX_Chem_10_05_NtwrkSolid]. To break or to melt a covalent network solid, covalent bonds must be broken. Because covalent bonds are relatively strong, covalent network solids are typically characterized by hardness, strength, and high melting points. For example, diamond is one of the hardest substances known and melts above 3500 °C.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_NtwrkSolid-caption -->
 A covalent crystal contains a three-dimensional network of covalent bonds, as illustrated by the structures of diamond, silicon dioxide, silicon carbide, and graphite. Graphite is an exceptional example, composed of planar sheets of covalent crystals that are held together in layers by noncovalent forces. Unlike typical covalent solids, graphite is very soft and electrically conductive.
@@ -59,10 +59,10 @@ A covalent crystal contains a three-dimensional network of covalent bonds, as il
 Molecular Solid
 
 <!-- SEG:m68770:para:fs-idm41841264 -->
-__Molecular solids__, such as ice, sucrose (table sugar), and iodine, as shown in [#CNX_Chem_10_05_MolSolids], are composed of neutral molecules. The strengths of the attractive forces between the units present in different crystals vary widely, as indicated by the melting points of the crystals. Small symmetrical molecules (nonpolar molecules), such as H~2~, N~2~, O~2~, and F~2~, have weak attractive forces and form molecular solids with very low melting points (below −200 °C). Substances consisting of larger, nonpolar molecules have larger attractive forces and melt at higher temperatures. Molecular solids composed of molecules with permanent dipole moments (polar molecules) melt at still higher temperatures. Examples include ice (melting point, 0 °C) and table sugar (melting point, 185 °C).
+{{term}}Molecular solids{{/term}}, such as ice, sucrose (table sugar), and iodine, as shown in [#CNX_Chem_10_05_MolSolids], are composed of neutral molecules. The strengths of the attractive forces between the units present in different crystals vary widely, as indicated by the melting points of the crystals. Small symmetrical molecules (nonpolar molecules), such as H[[sub:2]], N[[sub:2]], O[[sub:2]], and F[[sub:2]], have weak attractive forces and form molecular solids with very low melting points (below −200 °C). Substances consisting of larger, nonpolar molecules have larger attractive forces and melt at higher temperatures. Molecular solids composed of molecules with permanent dipole moments (polar molecules) melt at still higher temperatures. Examples include ice (melting point, 0 °C) and table sugar (melting point, 185 °C).
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_MolSolids-caption -->
-Carbon dioxide (CO~2~) consists of small, nonpolar molecules and forms a molecular solid with a melting point of −78 °C. Iodine (I~2~) consists of larger, nonpolar molecules and forms a molecular solid that melts at 114 °C.
+Carbon dioxide (CO[[sub:2]]) consists of small, nonpolar molecules and forms a molecular solid with a melting point of −78 °C. Iodine (I[[sub:2]]) consists of larger, nonpolar molecules and forms a molecular solid that melts at 114 °C.
 
 <!-- SEG:m68770:title:fs-idm126346448-title -->
 Properties of Solids
@@ -101,7 +101,7 @@ ionic bonds
 hard, brittle, conducts electricity as a liquid but not as a solid, high to very high melting points
 
 <!-- SEG:m68770:entry:auto-35 -->
-NaCl, Al~2~O~3~
+NaCl, Al[[sub:2]]O[[sub:3]]
 
 <!-- SEG:m68770:entry:auto-36 -->
 metallic
@@ -131,7 +131,7 @@ covalent bonds
 very hard, not conductive, very high melting points
 
 <!-- SEG:m68770:entry:auto-45 -->
-C (diamond), SiO~2~, SiC
+C (diamond), SiO[[sub:2]], SiC
 
 <!-- SEG:m68770:entry:auto-46 -->
 molecular
@@ -146,16 +146,16 @@ IMFs
 variable hardness, variable brittleness, not conductive, low melting points
 
 <!-- SEG:m68770:entry:auto-50 -->
-H~2~O, CO~2~, I~2~, C~12~H~22~O~11~
+H[[sub:2]]O, CO[[sub:2]], I[[sub:2]], C[[sub:12]]H[[sub:22]]O[[sub:11]]
 
 <!-- SEG:m68770:note-title:fs-idp29074784-title -->
 Graphene: Material of the Future
 
 <!-- SEG:m68770:para:fs-idm75890720 -->
-Carbon is an essential element in our world. The unique properties of carbon atoms allow the existence of carbon-based life forms such as ourselves. Carbon forms a huge variety of substances that we use on a daily basis, including those shown in [#CNX_Chem_10_05_Carbon]. You may be familiar with diamond and graphite, the two most common *allotropes* of carbon. (Allotropes are different structural forms of the same element.) Diamond is one of the hardest-known substances, whereas graphite is soft enough to be used as pencil lead. These very different properties stem from the different arrangements of the carbon atoms in the different allotropes.
+Carbon is an essential element in our world. The unique properties of carbon atoms allow the existence of carbon-based life forms such as ourselves. Carbon forms a huge variety of substances that we use on a daily basis, including those shown in [#CNX_Chem_10_05_Carbon]. You may be familiar with diamond and graphite, the two most common {{i}}allotropes{{/i}} of carbon. (Allotropes are different structural forms of the same element.) Diamond is one of the hardest-known substances, whereas graphite is soft enough to be used as pencil lead. These very different properties stem from the different arrangements of the carbon atoms in the different allotropes.
 
 <!-- SEG:m68770:para:fs-idp141658128 -->
-You may be less familiar with a recently discovered form of carbon: graphene. Graphene was first isolated in 2004 by using tape to peel off thinner and thinner layers from graphite. It is essentially a single sheet (one atom thick) of graphite. Graphene, illustrated in [#CNX_Chem_10_05_Graphene], is not only strong and lightweight, but it is also an excellent conductor of electricity and heat. These properties may prove very useful in a wide range of applications, such as vastly improved computer chips and circuits, better batteries and solar cells, and stronger and lighter structural materials. The 2010 Nobel Prize in Physics was awarded to Andre __Geim__ and Konstantin __Novoselov__ for their pioneering work with graphene.
+You may be less familiar with a recently discovered form of carbon: graphene. Graphene was first isolated in 2004 by using tape to peel off thinner and thinner layers from graphite. It is essentially a single sheet (one atom thick) of graphite. Graphene, illustrated in [#CNX_Chem_10_05_Graphene], is not only strong and lightweight, but it is also an excellent conductor of electricity and heat. These properties may prove very useful in a wide range of applications, such as vastly improved computer chips and circuits, better batteries and solar cells, and stronger and lighter structural materials. The 2010 Nobel Prize in Physics was awarded to Andre {{term}}Geim{{/term}} and Konstantin {{term}}Novoselov{{/term}} for their pioneering work with graphene.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_Carbon-caption -->
 Diamond is extremely hard because of the strong bonding between carbon atoms in all directions. Graphite (in pencil lead) rubs off onto paper due to the weak attractions between the carbon layers. An image of a graphite surface shows the distance between the centers of adjacent carbon atoms. (credit left photo: modification of work by Steve Jurvetson; credit middle photo: modification of work by United States Geological Survey)
@@ -167,7 +167,7 @@ Graphene sheets can be formed into buckyballs, nanotubes, and stacked layers.
 Crystal Defects
 
 <!-- SEG:m68770:para:fs-idm62566768 -->
-In a crystalline solid, the atoms, ions, or molecules are arranged in a definite repeating pattern, but occasional defects may occur in the pattern. Several types of defects are known, as illustrated in [#CNX_Chem_10_05_CrystDfcts]. __Vacancies__ are defects that occur when positions that should contain atoms or ions are vacant. Less commonly, some atoms or ions in a crystal may occupy positions, called __interstitial sites__, located between the regular positions for atoms. Other distortions are found in impure crystals, as, for example, when the cations, anions, or molecules of the impurity are too large to fit into the regular positions without distorting the structure. Trace amounts of impurities are sometimes added to a crystal (a process known as *doping)* in order to create defects in the structure that yield desirable changes in its properties. For example, silicon crystals are doped with varying amounts of different elements to yield suitable electrical properties for their use in the manufacture of semiconductors and computer chips.
+In a crystalline solid, the atoms, ions, or molecules are arranged in a definite repeating pattern, but occasional defects may occur in the pattern. Several types of defects are known, as illustrated in [#CNX_Chem_10_05_CrystDfcts]. {{term}}Vacancies{{/term}} are defects that occur when positions that should contain atoms or ions are vacant. Less commonly, some atoms or ions in a crystal may occupy positions, called {{term}}interstitial sites{{/term}}, located between the regular positions for atoms. Other distortions are found in impure crystals, as, for example, when the cations, anions, or molecules of the impurity are too large to fit into the regular positions without distorting the structure. Trace amounts of impurities are sometimes added to a crystal (a process known as {{i}}doping){{/i}} in order to create defects in the structure that yield desirable changes in its properties. For example, silicon crystals are doped with varying amounts of different elements to yield suitable electrical properties for their use in the manufacture of semiconductors and computer chips.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_CrystDfcts-caption -->
 Types of crystal defects include vacancies, interstitial atoms, and substitutions impurities.
@@ -185,7 +185,7 @@ Chemistry End of Chapter Exercises
 What types of liquids typically form amorphous solids?
 
 <!-- SEG:m68770:problem:fs-idp27916784 -->
-At very low temperatures oxygen, O~2~, freezes and forms a crystalline solid. Which best describes these crystals?
+At very low temperatures oxygen, O[[sub:2]], freezes and forms a crystalline solid. Which best describes these crystals?
 
 <!-- SEG:m68770:problem:fs-idp121435344 -->
 (a) ionic
@@ -233,7 +233,7 @@ Ice has a crystalline structure stabilized by hydrogen bonding. These intermolec
 Identify the type of crystalline solid (metallic, network covalent, ionic, or molecular) formed by each of the following substances:
 
 <!-- SEG:m68770:problem:fs-idm74815568 -->
-(a) SiO~2~
+(a) SiO[[sub:2]]
 
 <!-- SEG:m68770:problem:fs-idp22967904 -->
 (b) KCl
@@ -242,34 +242,34 @@ Identify the type of crystalline solid (metallic, network covalent, ionic, or mo
 (c) Cu
 
 <!-- SEG:m68770:problem:fs-idm104303120 -->
-(d) CO~2~
+(d) CO[[sub:2]]
 
 <!-- SEG:m68770:problem:fs-idm2801856 -->
 (e) C (diamond)
 
 <!-- SEG:m68770:problem:fs-idm82184496 -->
-(f) BaSO~4~
+(f) BaSO[[sub:4]]
 
 <!-- SEG:m68770:problem:fs-idm20239552 -->
-(g) NH~3~
+(g) NH[[sub:3]]
 
 <!-- SEG:m68770:problem:fs-idp144741184 -->
-(h) NH~4~F
+(h) NH[[sub:4]]F
 
 <!-- SEG:m68770:problem:fs-idm73664720 -->
-(i) C~2~H~5~OH
+(i) C[[sub:2]]H[[sub:5]]OH
 
 <!-- SEG:m68770:problem:fs-idm56158384 -->
 Identify the type of crystalline solid (metallic, network covalent, ionic, or molecular) formed by each of the following substances:
 
 <!-- SEG:m68770:problem:fs-idp76027056 -->
-(a) CaCl~2~
+(a) CaCl[[sub:2]]
 
 <!-- SEG:m68770:problem:fs-idp148583904 -->
 (b) SiC
 
 <!-- SEG:m68770:problem:fs-idp38742432 -->
-(c) N~2~
+(c) N[[sub:2]]
 
 <!-- SEG:m68770:problem:fs-idp141096640 -->
 (d) Fe
@@ -278,16 +278,16 @@ Identify the type of crystalline solid (metallic, network covalent, ionic, or mo
 (e) C (graphite)
 
 <!-- SEG:m68770:problem:fs-idp39812928 -->
-(f) CH~3~CH~2~CH~2~CH~3~
+(f) CH[[sub:3]]CH[[sub:2]]CH[[sub:2]]CH[[sub:3]]
 
 <!-- SEG:m68770:problem:fs-idp60374400 -->
 (g) HCl
 
 <!-- SEG:m68770:problem:fs-idm128937696 -->
-(h) NH~4~NO~3~
+(h) NH[[sub:4]]NO[[sub:3]]
 
 <!-- SEG:m68770:problem:fs-idm64156272 -->
-(i) K~3~PO~4~
+(i) K[[sub:3]]PO[[sub:4]]
 
 <!-- SEG:m68770:solution:fs-idp151661632 -->
 (a) ionic; (b) covalent network; (c) molecular; (d) metallic; (e) covalent network; (f) molecular; (g) molecular; (h) ionic; (i) ionic

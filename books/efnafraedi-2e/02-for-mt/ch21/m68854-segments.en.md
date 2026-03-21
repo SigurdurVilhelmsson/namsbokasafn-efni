@@ -23,7 +23,7 @@ Describe common radiometric dating techniques
 Following the somewhat serendipitous discovery of radioactivity by Becquerel, many prominent scientists began to investigate this new, intriguing phenomenon. Among them were Marie Curie (the first woman to win a Nobel Prize, and the only person to win two Nobel Prizes in different sciences—chemistry and physics), who was the first to coin the term “radioactivity,” and Ernest Rutherford (of gold foil experiment fame), who investigated and named three of the most common types of radiation. During the beginning of the twentieth century, many radioactive substances were discovered, the properties of radiation were investigated and quantified, and a solid understanding of radiation and nuclear decay was developed.
 
 <!-- SEG:m68854:para:fs-idp202642016 -->
-The spontaneous change of an unstable nuclide into another is __radioactive decay__. The unstable nuclide is called the __parent nuclide__; the nuclide that results from the decay is known as the __daughter nuclide__. The daughter nuclide may be stable, or it may decay itself. The radiation produced during radioactive decay is such that the daughter nuclide lies closer to the band of stability than the parent nuclide, so the location of a nuclide relative to the band of stability can serve as a guide to the kind of decay it will undergo ([#CNX_Chem_21_03_Reaction1]).
+The spontaneous change of an unstable nuclide into another is {{term}}radioactive decay{{/term}}. The unstable nuclide is called the {{term}}parent nuclide{{/term}}; the nuclide that results from the decay is known as the {{term}}daughter nuclide{{/term}}. The daughter nuclide may be stable, or it may decay itself. The radiation produced during radioactive decay is such that the daughter nuclide lies closer to the band of stability than the parent nuclide, so the location of a nuclide relative to the band of stability can serve as a guide to the kind of decay it will undergo ([#CNX_Chem_21_03_Reaction1]).
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Reaction1-caption -->
 A nucleus of uranium-238 (the parent nuclide) undergoes α decay to form thorium-234 (the daughter nuclide). The alpha particle removes two protons (green) and two neutrons (gray) from the uranium-238 nucleus.
@@ -41,31 +41,31 @@ Ernest Rutherford’s experiments involving the interaction of radiation with a 
 Alpha particles, which are attracted to the negative plate and deflected by a relatively small amount, must be positively charged and relatively massive. Beta particles, which are attracted to the positive plate and deflected a relatively large amount, must be negatively charged and relatively light. Gamma rays, which are unaffected by the electric field, must be uncharged.
 
 <!-- SEG:m68854:para:fs-idm41800032 -->
-__Alpha (α) decay__ is the emission of an α particle from the nucleus. For example, polonium-210 undergoes α decay:
+{{term}}Alpha (α) decay{{/term}} is the emission of an α particle from the nucleus. For example, polonium-210 undergoes α decay:
 
 <!-- SEG:m68854:para:fs-idp202270256 -->
 Alpha decay occurs primarily in heavy nuclei (A > 200, Z > 83). Because the loss of an α particle gives a daughter nuclide with a mass number four units smaller and an atomic number two units smaller than those of the parent nuclide, the daughter nuclide has a larger n:p ratio than the parent nuclide. If the parent nuclide undergoing α decay lies below the band of stability (refer to [m68851#CNX_Chem_21_01_BandStable]), the daughter nuclide will lie closer to the band.
 
 <!-- SEG:m68854:para:fs-idm2875904 -->
-__Beta (β) decay__ is the emission of an electron from a nucleus. Iodine-131 is an example of a nuclide that undergoes β decay:
+{{term}}Beta (β) decay{{/term}} is the emission of an electron from a nucleus. Iodine-131 is an example of a nuclide that undergoes β decay:
 
 <!-- SEG:m68854:para:fs-idp100287120 -->
 Beta decay, which can be thought of as the conversion of a neutron into a proton and a β particle, is observed in nuclides with a large n:p ratio. The beta particle (electron) emitted is from the atomic nucleus and is not one of the electrons surrounding the nucleus. Such nuclei lie above the band of stability. Emission of an electron does not change the mass number of the nuclide but does increase the number of its protons and decrease the number of its neutrons. Consequently, the n:p ratio is decreased, and the daughter nuclide lies closer to the band of stability than did the parent nuclide.
 
 <!-- SEG:m68854:para:fs-idp8043424 -->
-__Gamma emission (γ emission)__ is observed when a nuclide is formed in an excited state and then decays to its ground state with the emission of a γ ray, a quantum of high-energy electromagnetic radiation. The presence of a nucleus in an excited state is often indicated by an asterisk (*). Cobalt-60 emits γ radiation and is used in many applications including cancer treatment:
+{{term}}Gamma emission (γ emission){{/term}} is observed when a nuclide is formed in an excited state and then decays to its ground state with the emission of a γ ray, a quantum of high-energy electromagnetic radiation. The presence of a nucleus in an excited state is often indicated by an asterisk (*). Cobalt-60 emits γ radiation and is used in many applications including cancer treatment:
 
 <!-- SEG:m68854:para:fs-idp50313008 -->
 There is no change in mass number or atomic number during the emission of a γ ray unless the γ emission accompanies one of the other modes of decay.
 
 <!-- SEG:m68854:para:fs-idp18009856 -->
-__Positron emission (β^+^ decay__) is the emission of a positron from the nucleus. Oxygen-15 is an example of a nuclide that undergoes positron emission:
+{{term}}Positron emission (β[[sup:+]] decay{{/term}}) is the emission of a positron from the nucleus. Oxygen-15 is an example of a nuclide that undergoes positron emission:
 
 <!-- SEG:m68854:para:fs-idp125268336 -->
 Positron emission is observed for nuclides in which the n:p ratio is low. These nuclides lie below the band of stability. Positron decay is the conversion of a proton into a neutron with the emission of a positron. The n:p ratio increases, and the daughter nuclide lies closer to the band of stability than did the parent nuclide.
 
 <!-- SEG:m68854:para:fs-idp123320528 -->
-__Electron capture__ occurs when one of the inner electrons in an atom is captured by the atom’s nucleus. For example, potassium-40 undergoes electron capture:
+{{term}}Electron capture{{/term}} occurs when one of the inner electrons in an atom is captured by the atom’s nucleus. For example, potassium-40 undergoes electron capture:
 
 <!-- SEG:m68854:para:fs-idm42894208 -->
 Electron capture occurs when an inner shell electron combines with a proton and is converted into a neutron. The loss of an inner shell electron leaves a vacancy that will be filled by one of the outer electrons. As the outer electron drops into the vacancy, it will emit energy. In most cases, the energy emitted will be in the form of an X-ray. Like positron emission, electron capture occurs for “proton-rich” nuclei that lie below the band of stability. Electron capture has the same effect on the nucleus as does positron emission: The atomic number is decreased by one and the mass number does not change. This increases the n:p ratio, and the daughter nuclide lies closer to the band of stability than did the parent nuclide. Whether electron capture or positron emission occurs is difficult to predict. The choice is primarily due to kinetic factors, with the one requiring the smaller activation energy being the one more likely to occur.
@@ -83,7 +83,7 @@ PET Scan
 Positron emission tomography (PET) scans use radiation to diagnose and track health conditions and monitor medical treatments by revealing how parts of a patient’s body function ([#CNX_Chem_21_03_PETScan]). To perform a PET scan, a positron-emitting radioisotope is produced in a cyclotron and then attached to a substance that is used by the part of the body being investigated. This “tagged” compound, or radiotracer, is then put into the patient (injected via IV or breathed in as a gas), and how it is used by the tissue reveals how that organ or other area of the body functions.
 
 <!-- SEG:m68854:para:fs-idp13254880 -->
-For example, F-18 is produced by proton bombardment of ^18^O [[MATH:1]] and incorporated into a glucose analog called fludeoxyglucose (FDG). How FDG is used by the body provides critical diagnostic information; for example, since cancers use glucose differently than normal tissues, FDG can reveal cancers. The ^18^F emits positrons that interact with nearby electrons, producing a burst of gamma radiation. This energy is detected by the scanner and converted into a detailed, three-dimensional, color image that shows how that part of the patient’s body functions. Different levels of gamma radiation produce different amounts of brightness and colors in the image, which can then be interpreted by a radiologist to reveal what is going on. PET scans can detect heart damage and heart disease, help diagnose Alzheimer’s disease, indicate the part of a brain that is affected by epilepsy, reveal cancer, show what stage it is, and how much it has spread, and whether treatments are effective. Unlike magnetic resonance imaging and X-rays, which only show how something looks, the big advantage of PET scans is that they show how something functions. PET scans are now usually performed in conjunction with a computed tomography scan.
+For example, F-18 is produced by proton bombardment of [[sup:18]]O [[MATH:1]] and incorporated into a glucose analog called fludeoxyglucose (FDG). How FDG is used by the body provides critical diagnostic information; for example, since cancers use glucose differently than normal tissues, FDG can reveal cancers. The [[sup:18]]F emits positrons that interact with nearby electrons, producing a burst of gamma radiation. This energy is detected by the scanner and converted into a detailed, three-dimensional, color image that shows how that part of the patient’s body functions. Different levels of gamma radiation produce different amounts of brightness and colors in the image, which can then be interpreted by a radiologist to reveal what is going on. PET scans can detect heart damage and heart disease, help diagnose Alzheimer’s disease, indicate the part of a brain that is affected by epilepsy, reveal cancer, show what stage it is, and how much it has spread, and whether treatments are effective. Unlike magnetic resonance imaging and X-rays, which only show how something looks, the big advantage of PET scans is that they show how something functions. PET scans are now usually performed in conjunction with a computed tomography scan.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_PETScan-caption -->
 A PET scanner (a) uses radiation to provide an image of how part of a patient’s body functions. The scans it produces can be used to image a healthy brain (b) or can be used for diagnosing medical conditions such as Alzheimer’s disease (c). (credit a: modification of work by Jens Maus)
@@ -92,7 +92,7 @@ A PET scanner (a) uses radiation to provide an image of how part of a patient’
 Radioactive Decay Series
 
 <!-- SEG:m68854:para:fs-idp54304864 -->
-The naturally occurring radioactive isotopes of the heaviest elements fall into chains of successive disintegrations, or decays, and all the species in one chain constitute a radioactive family, or __radioactive decay series__. Three of these series include most of the naturally radioactive elements of the periodic table. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is no longer significant on the earth because of the short half-lives of the species involved. Each series is characterized by a parent (first member) that has a long half-life and a series of daughter nuclides that ultimately lead to a stable end-product—that is, a nuclide on the band of stability ([#CNX_Chem_21_03_DecayS]). In all three series, the end-product is a stable isotope of lead. The neptunium series, previously thought to terminate with bismuth-209, terminates with thallium-205.
+The naturally occurring radioactive isotopes of the heaviest elements fall into chains of successive disintegrations, or decays, and all the species in one chain constitute a radioactive family, or {{term}}radioactive decay series{{/term}}. Three of these series include most of the naturally radioactive elements of the periodic table. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is no longer significant on the earth because of the short half-lives of the species involved. Each series is characterized by a parent (first member) that has a long half-life and a series of daughter nuclides that ultimately lead to a stable end-product—that is, a nuclide on the band of stability ([#CNX_Chem_21_03_DecayS]). In all three series, the end-product is a stable isotope of lead. The neptunium series, previously thought to terminate with bismuth-209, terminates with thallium-205.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DecayS-caption -->
 Uranium-238 undergoes a radioactive decay series consisting of 14 separate steps before producing stable lead-206. This series consists of eight α decays and six β decays.
@@ -101,7 +101,7 @@ Uranium-238 undergoes a radioactive decay series consisting of 14 separate steps
 Radioactive Half-Lives
 
 <!-- SEG:m68854:para:fs-idp135905344 -->
-Radioactive decay follows first-order kinetics. Since first-order reactions have already been covered in detail in the kinetics chapter, we will now apply those concepts to nuclear decay reactions. Each radioactive nuclide has a characteristic, constant __half-life__ (*t*~1/2~), the time required for half of the atoms in a sample to decay. An isotope’s half-life allows us to determine how long a sample of a useful isotope will be available, and how long a sample of an undesirable or dangerous isotope must be stored before it decays to a low-enough radiation level that is no longer a problem.
+Radioactive decay follows first-order kinetics. Since first-order reactions have already been covered in detail in the kinetics chapter, we will now apply those concepts to nuclear decay reactions. Each radioactive nuclide has a characteristic, constant {{term}}half-life{{/term}} ({{i}}t{{/i}}[[sub:1/2]]), the time required for half of the atoms in a sample to decay. An isotope’s half-life allows us to determine how long a sample of a useful isotope will be available, and how long a sample of an undesirable or dangerous isotope must be stored before it decays to a low-enough radiation level that is no longer a problem.
 
 <!-- SEG:m68854:para:fs-idm89252176 -->
 For example, cobalt-60, an isotope that emits gamma rays used to treat cancer, has a half-life of 5.27 years ([#CNX_Chem_21_03_HalfLife]). In a given cobalt-60 source, since half of the [[MATH:2]] nuclei decay every 5.27 years, both the amount of material and the intensity of the radiation emitted is cut in half every 5.27 years. (Note that for a given substance, the intensity of radiation that it produces is directly proportional to the rate of decay of the substance and the amount of the substance.) This is as expected for a process following first-order kinetics. Thus, a cobalt-60 source that is used for cancer treatment must be replaced regularly to continue to be effective.
@@ -110,19 +110,19 @@ For example, cobalt-60, an isotope that emits gamma rays used to treat cancer, h
 For cobalt-60, which has a half-life of 5.27 years, 50% remains after 5.27 years (one half-life), 25% remains after 10.54 years (two half-lives), 12.5% remains after 15.81 years (three half-lives), and so on.
 
 <!-- SEG:m68854:para:fs-idm84262544 -->
-Since nuclear decay follows first-order kinetics, we can adapt the mathematical relationships used for first-order chemical reactions. We generally substitute the number of nuclei, *N*, for the concentration. If the rate is stated in nuclear decays per second, we refer to it as the activity of the radioactive sample. The rate for radioactive decay is:
+Since nuclear decay follows first-order kinetics, we can adapt the mathematical relationships used for first-order chemical reactions. We generally substitute the number of nuclei, {{i}}N{{/i}}, for the concentration. If the rate is stated in nuclear decays per second, we refer to it as the activity of the radioactive sample. The rate for radioactive decay is:
 
 <!-- SEG:m68854:para:fs-idp16246080 -->
-decay rate = *λN* with *λ* = the decay constant for the particular radioisotope
+decay rate = {{i}}λN{{/i}} with {{i}}λ{{/i}} = the decay constant for the particular radioisotope
 
 <!-- SEG:m68854:para:fs-idm22877072 -->
-The decay constant, *λ*, which is the same as a rate constant discussed in the kinetics chapter. It is possible to express the decay constant in terms of the half-life, *t*~1/2~:
+The decay constant, {{i}}λ{{/i}}, which is the same as a rate constant discussed in the kinetics chapter. It is possible to express the decay constant in terms of the half-life, {{i}}t{{/i}}[[sub:1/2]]:
 
 <!-- SEG:m68854:para:fs-idp20089360 -->
-The first-order equations relating amount, *N*, and time are:
+The first-order equations relating amount, {{i}}N{{/i}}, and time are:
 
 <!-- SEG:m68854:para:fs-idp61393104 -->
-where *N*~0~ is the initial number of nuclei or moles of the isotope, and *N~t~* is the number of nuclei/moles remaining at time *t*. [#fs-idp79391408] applies these calculations to find the rates of radioactive decay for specific nuclides.
+where {{i}}N{{/i}}[[sub:0]] is the initial number of nuclei or moles of the isotope, and {{i}}N[[sub:t]]{{/i}} is the number of nuclei/moles remaining at time {{i}}t{{/i}}. [#fs-idp79391408] applies these calculations to find the rates of radioactive decay for specific nuclides.
 
 <!-- SEG:m68854:example-title:fs-idp79391408-title -->
 Rates of Radioactive Decay
@@ -146,13 +146,13 @@ Solution
 (a) The value of the rate constant is given by:
 
 <!-- SEG:m68854:para:fs-idp141655056 -->
-(b) The fraction of [[MATH:7]] that is left after time *t* is given by [[MATH:8]] Rearranging the first-order relationship *N~t~* = *N*~0~*e*–*λt* to solve for this ratio yields:
+(b) The fraction of [[MATH:7]] that is left after time {{i}}t{{/i}} is given by [[MATH:8]] Rearranging the first-order relationship {{i}}N[[sub:t]]{{/i}} = {{i}}N{{/i}}[[sub:0]]{{i}}e{{/i}}[[sup:–{{i}}λt{{/i}}]] to solve for this ratio yields:
 
 <!-- SEG:m68854:para:fs-idm19598048 -->
 The fraction of [[MATH:9]] that will remain after 15.0 years is 0.138. Or put another way, 13.8% of the [[MATH:10]] originally present will remain after 15 years.
 
 <!-- SEG:m68854:para:fs-idp82234704 -->
-(c) 2.00% of the original amount of [[MATH:11]] is equal to 0.0200 [[MATH:12]] *N*~0~. Substituting this into the equation for time for first-order kinetics, we have:
+(c) 2.00% of the original amount of [[MATH:11]] is equal to 0.0200 [[MATH:12]] {{i}}N{{/i}}[[sub:0]]. Substituting this into the equation for time for first-order kinetics, we have:
 
 <!-- SEG:m68854:para-title:fs-idp7893440-title -->
 Check Your Learning
@@ -170,13 +170,13 @@ Answer:
 11.1 days
 
 <!-- SEG:m68854:para:fs-idp76857680 -->
-Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10^19^ years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10^–3^ seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [#fs-idp14399952], and others are listed in Appendix M.
+Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [#fs-idp14399952], and others are listed in Appendix M.
 
 <!-- SEG:m68854:entry:auto-59 -->
 Half-lives of Radioactive Isotopes Important to Medicine
 
 <!-- SEG:m68854:entry:auto-60 -->
-Type [footnote: The “m” in Tc-99m stands for “metastable,” indicating that this is an unstable, high-energy state of Tc-99. Metastable isotopes emit γ radiation to rid themselves of excess energy and become (more) stable.]
+Type {{fn}}The “m” in Tc-99m stands for “metastable,” indicating that this is an unstable, high-energy state of Tc-99. Metastable isotopes emit γ radiation to rid themselves of excess energy and become (more) stable.{{/fn}}
 
 <!-- SEG:m68854:entry:auto-61 -->
 Decay Mode
@@ -191,7 +191,7 @@ Uses
 F-18
 
 <!-- SEG:m68854:entry:auto-65 -->
-β^+^ decay
+β[[sup:+]] decay
 
 <!-- SEG:m68854:entry:auto-66 -->
 110. minutes
@@ -254,13 +254,13 @@ Radiometric Dating
 Radioactive Dating Using Carbon-14
 
 <!-- SEG:m68854:para:fs-idm42065648 -->
-The radioactivity of carbon-14 provides a method for dating objects that were a part of a living organism. This method of radiometric dating, which is also called __radiocarbon dating__ or carbon-14 dating, is accurate for dating carbon-containing substances that are up to about 30,000 years old, and can provide reasonably accurate dates up to a maximum of about 50,000 years old.
+The radioactivity of carbon-14 provides a method for dating objects that were a part of a living organism. This method of radiometric dating, which is also called {{term}}radiocarbon dating{{/term}} or carbon-14 dating, is accurate for dating carbon-containing substances that are up to about 30,000 years old, and can provide reasonably accurate dates up to a maximum of about 50,000 years old.
 
 <!-- SEG:m68854:para:fs-idp34827216 -->
 Naturally occurring carbon consists of three isotopes: [[MATH:19]] which constitutes about 99% of the carbon on earth; [[MATH:20]] about 1% of the total; and trace amounts of [[MATH:21]] Carbon-14 forms in the upper atmosphere by the reaction of nitrogen atoms with neutrons from cosmic rays in space:
 
 <!-- SEG:m68854:para:fs-idp25818480 -->
-All isotopes of carbon react with oxygen to produce CO~2~ molecules. The ratio of [[MATH:22]] to [[MATH:23]] depends on the ratio of [[MATH:24]] to [[MATH:25]] in the atmosphere. The natural abundance of [[MATH:26]] in the atmosphere is approximately 1 part per trillion; until recently, this has generally been constant over time, as seen is gas samples found trapped in ice. The incorporation of [[MATH:27]] and [[MATH:28]] into plants is a regular part of the photosynthesis process, which means that the [[MATH:29]] ratio found in a living plant is the same as the [[MATH:30]] ratio in the atmosphere. But when the plant dies, it no longer traps carbon through photosynthesis. Because [[MATH:31]] is a stable isotope and does not undergo radioactive decay, its concentration in the plant does not change. However, carbon-14 decays by β emission with a half-life of 5730 years:
+All isotopes of carbon react with oxygen to produce CO[[sub:2]] molecules. The ratio of [[MATH:22]] to [[MATH:23]] depends on the ratio of [[MATH:24]] to [[MATH:25]] in the atmosphere. The natural abundance of [[MATH:26]] in the atmosphere is approximately 1 part per trillion; until recently, this has generally been constant over time, as seen is gas samples found trapped in ice. The incorporation of [[MATH:27]] and [[MATH:28]] into plants is a regular part of the photosynthesis process, which means that the [[MATH:29]] ratio found in a living plant is the same as the [[MATH:30]] ratio in the atmosphere. But when the plant dies, it no longer traps carbon through photosynthesis. Because [[MATH:31]] is a stable isotope and does not undergo radioactive decay, its concentration in the plant does not change. However, carbon-14 decays by β emission with a half-life of 5730 years:
 
 <!-- SEG:m68854:para:fs-idm11295264 -->
 Thus, the [[MATH:32]] ratio gradually decreases after the plant dies. The decrease in the ratio with time provides a measure of the time that has elapsed since the death of the plant (or other organism that ate the plant). [#CNX_Chem_21_03_CarbonDate] visually depicts this process.
@@ -284,10 +284,10 @@ A tiny piece of paper (produced from formerly living plant matter) taken from th
 Solution
 
 <!-- SEG:m68854:para:fs-idp4802464 -->
-The rate of decay (number of disintegrations/minute/gram of carbon) is proportional to the amount of radioactive C-14 left in the paper, so we can substitute the rates for the amounts, *N*, in the relationship:
+The rate of decay (number of disintegrations/minute/gram of carbon) is proportional to the amount of radioactive C-14 left in the paper, so we can substitute the rates for the amounts, {{i}}N{{/i}}, in the relationship:
 
 <!-- SEG:m68854:para:fs-idp12237584 -->
-where the subscript 0 represents the time when the plants were cut to make the paper, and the subscript *t* represents the current time.
+where the subscript 0 represents the time when the plants were cut to make the paper, and the subscript {{i}}t{{/i}} represents the current time.
 
 <!-- SEG:m68854:para:fs-idm9913056 -->
 The decay constant can be determined from the half-life of C-14, 5730 years:
@@ -317,7 +317,7 @@ about 3350 years ago, or approximately 1340 BC
 Carbon-14 dating has shown that these pages from the Dead Sea Scrolls were written or copied on paper made from plants that died between 100 BC and AD 50.
 
 <!-- SEG:m68854:para:fs-idp143543968 -->
-There have been some significant, well-documented changes to the [[MATH:36]] ratio. The accuracy of a straightforward application of this technique depends on the [[MATH:37]] ratio in a living plant being the same now as it was in an earlier era, but this is not always valid. Due to the increasing accumulation of CO~2~ molecules (largely [[MATH:38]] in the atmosphere caused by combustion of fossil fuels (in which essentially all of the [[MATH:39]] has decayed), the ratio of [[MATH:40]] in the atmosphere may be changing. This manmade increase in [[MATH:41]] in the atmosphere causes the [[MATH:42]] ratio to decrease, and this in turn affects the ratio in currently living organisms on the earth. Fortunately, however, we can use other data, such as tree dating via examination of annual growth rings, to calculate correction factors. With these correction factors, accurate dates can be determined. In general, radioactive dating only works for about 10 half-lives; therefore, the limit for carbon-14 dating is about 57,000 years.
+There have been some significant, well-documented changes to the [[MATH:36]] ratio. The accuracy of a straightforward application of this technique depends on the [[MATH:37]] ratio in a living plant being the same now as it was in an earlier era, but this is not always valid. Due to the increasing accumulation of CO[[sub:2]] molecules (largely [[MATH:38]] in the atmosphere caused by combustion of fossil fuels (in which essentially all of the [[MATH:39]] has decayed), the ratio of [[MATH:40]] in the atmosphere may be changing. This manmade increase in [[MATH:41]] in the atmosphere causes the [[MATH:42]] ratio to decrease, and this in turn affects the ratio in currently living organisms on the earth. Fortunately, however, we can use other data, such as tree dating via examination of annual growth rings, to calculate correction factors. With these correction factors, accurate dates can be determined. In general, radioactive dating only works for about 10 half-lives; therefore, the limit for carbon-14 dating is about 57,000 years.
 
 <!-- SEG:m68854:title:fs-idp103641152-title -->
 Radioactive Dating Using Nuclides Other than Carbon-14
@@ -329,7 +329,7 @@ Radioactive dating can also use other radioactive nuclides with longer half-live
 Radioactive Dating of Rocks
 
 <!-- SEG:m68854:para:fs-idm84298880 -->
-An igneous rock contains 9.58 [[MATH:43]] 10^–5^ g of U-238 and 2.51 [[MATH:44]] 10^–5^ g of Pb-206, and much, much smaller amounts of Pb-208. Determine the approximate time at which the rock formed.
+An igneous rock contains 9.58 [[MATH:43]] 10[[sup:–5]] g of U-238 and 2.51 [[MATH:44]] 10[[sup:–5]] g of Pb-206, and much, much smaller amounts of Pb-208. Determine the approximate time at which the rock formed.
 
 <!-- SEG:m68854:para-title:fs-idp15526736-title -->
 Solution
@@ -350,10 +350,10 @@ The total amount of U-238 originally present in the rock is therefore:
 The amount of time that has passed since the formation of the rock is given by:
 
 <!-- SEG:m68854:para:fs-idp188052736 -->
-with *N*~0~ representing the original amount of U-238 and *N~t~* representing the present amount of U-238.
+with {{i}}N{{/i}}[[sub:0]] representing the original amount of U-238 and {{i}}N[[sub:t]]{{/i}} representing the present amount of U-238.
 
 <!-- SEG:m68854:para:fs-idp178175456 -->
-U-238 decays into Pb-206 with a half-life of 4.5 [[MATH:45]] 10^9^ y, so the decay constant *λ* is:
+U-238 decays into Pb-206 with a half-life of 4.5 [[MATH:45]] 10[[sup:9]] y, so the decay constant {{i}}λ{{/i}} is:
 
 <!-- SEG:m68854:para:fs-idp46289376 -->
 Substituting and solving, we have:
@@ -365,19 +365,19 @@ Therefore, the rock is approximately 1.7 billion years old.
 Check Your Learning
 
 <!-- SEG:m68854:para:fs-idp219511184 -->
-A sample of rock contains 6.14 [[MATH:46]] 10^–4^ g of Rb-87 and 3.51 [[MATH:47]] 10^–5^ g of Sr-87. Calculate the age of the rock. (The half-life of the β decay of Rb-87 is 4.7 [[MATH:48]] 10^10^ y.)
+A sample of rock contains 6.14 [[MATH:46]] 10[[sup:–4]] g of Rb-87 and 3.51 [[MATH:47]] 10[[sup:–5]] g of Sr-87. Calculate the age of the rock. (The half-life of the β decay of Rb-87 is 4.7 [[MATH:48]] 10[[sup:10]] y.)
 
 <!-- SEG:m68854:para:fs-idm14245664 -->
-3.7 [[MATH:49]] 10^9^ y
+3.7 [[MATH:49]] 10[[sup:9]] y
 
 <!-- SEG:m68854:note-title:fs-idp66566112-title -->
 Answer:
 
 <!-- SEG:m68854:para:fs-idm14245664 -->
-3.7 [[MATH:50]] 10^9^ y
+3.7 [[MATH:50]] 10[[sup:9]] y
 
 <!-- SEG:m68854:para:fs-idm40273488 -->
-Several radioisotopes have half-lives and other properties that make them useful for purposes of “dating” the origin of objects such as archaeological artifacts, formerly living organisms, or geological formations. This process is __radiometric dating__ and has been responsible for many breakthrough scientific discoveries about the geological history of the earth, the evolution of life, and the history of human civilization. We will explore some of the most common types of radioactive dating and how the particular isotopes work for each type.
+Several radioisotopes have half-lives and other properties that make them useful for purposes of “dating” the origin of objects such as archaeological artifacts, formerly living organisms, or geological formations. This process is {{term}}radiometric dating{{/term}} and has been responsible for many breakthrough scientific discoveries about the geological history of the earth, the evolution of life, and the history of human civilization. We will explore some of the most common types of radioactive dating and how the particular isotopes work for each type.
 
 <!-- SEG:m68854:title:fs-idm64039712-title -->
 Key Concepts and Summary
@@ -389,7 +389,7 @@ Nuclei that have unstable n:p ratios undergo spontaneous radioactive decay. The 
 Key Equations
 
 <!-- SEG:m68854:entry:auto-131 -->
-decay rate = *λN*
+decay rate = {{i}}λN{{/i}}
 
 <!-- SEG:m68854:entry:auto-132 -->
 [[MATH:51]]
@@ -401,7 +401,7 @@ Chemistry End of Chapter Exercises
 What are the types of radiation emitted by the nuclei of radioactive elements?
 
 <!-- SEG:m68854:solution:fs-idm33283872 -->
-α (helium nuclei), β (electrons), β^+^ (positrons), and η (neutrons) may be emitted from a radioactive element, all of which are particles; γ rays also may be emitted.
+α (helium nuclei), β (electrons), β[[sup:+]] (positrons), and η (neutrons) may be emitted from a radioactive element, all of which are particles; γ rays also may be emitted.
 
 <!-- SEG:m68854:problem:fs-idm2773856 -->
 What changes occur to the atomic number and mass of a nucleus during each of the following decay scenarios?
@@ -428,7 +428,7 @@ What is the change in the nucleus that results from the following decay scenario
 (a) emission of a β particle
 
 <!-- SEG:m68854:problem:fs-idp177484800 -->
-(b) emission of a β^+^ particle
+(b) emission of a β[[sup:+]] particle
 
 <!-- SEG:m68854:problem:fs-idp122950864 -->
 (c) capture of an electron
@@ -443,7 +443,7 @@ Many nuclides with atomic numbers greater than 83 decay by processes such as ele
 Why is electron capture accompanied by the emission of an X-ray?
 
 <!-- SEG:m68854:solution:fs-idp123519008 -->
-The electron pulled into the nucleus was most likely found in the 1*s* orbital. As an electron falls from a higher energy level to replace it, the difference in the energy of the replacement electron in its two energy levels is given off as an X-ray.
+The electron pulled into the nucleus was most likely found in the 1{{i}}s{{/i}} orbital. As an electron falls from a higher energy level to replace it, the difference in the energy of the replacement electron in its two energy levels is given off as an X-ray.
 
 <!-- SEG:m68854:problem:fs-idp142495840 -->
 Explain, in terms of [m68851#CNX_Chem_21_01_BandStable], how unstable heavy nuclides (atomic number > 83) may decompose to form nuclides of greater stability (a) if they are below the band of stability and (b) if they are above the band of stability.
@@ -518,13 +518,13 @@ Predict by what mode(s) of spontaneous radioactive decay each of the following u
 (d) [[MATH:73]]
 
 <!-- SEG:m68854:problem:fs-idp17960336 -->
-(e) ^18^F
+(e) [[sup:18]]F
 
 <!-- SEG:m68854:problem:fs-idp7359744 -->
-(f) ^129^Ba
+(f) [[sup:129]]Ba
 
 <!-- SEG:m68854:problem:fs-idm31917904 -->
-(g) ^237^Pu
+(g) [[sup:237]]Pu
 
 <!-- SEG:m68854:problem:fs-idp176277168 -->
 Write a nuclear reaction for each step in the formation of [[MATH:74]] from [[MATH:75]] which proceeds by a series of decay reactions involving the step-wise emission of α, β, β, α, α, α, α particles, in that order.
@@ -542,7 +542,7 @@ Define the term half-life and illustrate it with an example.
 Half-life is the time required for half the atoms in a sample to decay. Example (answers may vary): For C-14, the half-life is 5770 years. A 10-g sample of C-14 would contain 5 g of C-14 after 5770 years; a 0.20-g sample of C-14 would contain 0.10 g after 5770 years.
 
 <!-- SEG:m68854:problem:fs-idm37225376 -->
-A 1.00 [[MATH:85]] 10^–6^-g sample of nobelium, [[MATH:86]] has a half-life of 55 seconds after it is formed. What is the percentage of [[MATH:87]] remaining at the following times?
+A 1.00 [[MATH:85]] 10[[sup:–6]]-g sample of nobelium, [[MATH:86]] has a half-life of 55 seconds after it is formed. What is the percentage of [[MATH:87]] remaining at the following times?
 
 <!-- SEG:m68854:problem:fs-idp172348128 -->
 (a) 5.0 min after it forms
@@ -551,28 +551,28 @@ A 1.00 [[MATH:85]] 10^–6^-g sample of nobelium, [[MATH:86]] has a half-life of
 (b) 1.0 h after it forms
 
 <!-- SEG:m68854:problem:fs-idm3633744 -->
-^239^Pu is a nuclear waste byproduct with a half-life of 24,000 y. What fraction of the ^239^Pu present today will be present in 1000 y?
+[[sup:239]]Pu is a nuclear waste byproduct with a half-life of 24,000 y. What fraction of the [[sup:239]]Pu present today will be present in 1000 y?
 
 <!-- SEG:m68854:solution:fs-idp213478640 -->
 [[MATH:88]] or 97.3%
 
 <!-- SEG:m68854:problem:fs-idm33356592 -->
-The isotope ^208^Tl undergoes β decay with a half-life of 3.1 min.
+The isotope [[sup:208]]Tl undergoes β decay with a half-life of 3.1 min.
 
 <!-- SEG:m68854:problem:fs-idp143445632 -->
 (a) What isotope is produced by the decay?
 
 <!-- SEG:m68854:problem:fs-idp78376656 -->
-(b) How long will it take for 99.0% of a sample of pure ^208^Tl to decay?
+(b) How long will it take for 99.0% of a sample of pure [[sup:208]]Tl to decay?
 
 <!-- SEG:m68854:problem:fs-idp211861968 -->
-(c) What percentage of a sample of pure ^208^Tl remains un-decayed after 1.0 h?
+(c) What percentage of a sample of pure [[sup:208]]Tl remains un-decayed after 1.0 h?
 
 <!-- SEG:m68854:problem:fs-idm43874912 -->
-If 1.000 g of [[MATH:89]] produces 0.0001 mL of the gas [[MATH:90]] at STP (standard temperature and pressure) in 24 h, what is the half-life of ^226^Ra in years?
+If 1.000 g of [[MATH:89]] produces 0.0001 mL of the gas [[MATH:90]] at STP (standard temperature and pressure) in 24 h, what is the half-life of [[sup:226]]Ra in years?
 
 <!-- SEG:m68854:solution:fs-idp2575712 -->
-2 [[MATH:91]] 10^3^ y
+2 [[MATH:91]] 10[[sup:3]] y
 
 <!-- SEG:m68854:problem:fs-idp126089680 -->
 The isotope [[MATH:92]] is one of the extremely hazardous species in the residues from nuclear power generation. The strontium in a 0.500-g sample diminishes to 0.393 g in 10.0 y. Calculate the half-life.
@@ -581,16 +581,16 @@ The isotope [[MATH:92]] is one of the extremely hazardous species in the residue
 Technetium-99 is often used for assessing heart, liver, and lung damage because certain technetium compounds are absorbed by damaged tissues. It has a half-life of 6.0 h. Calculate the rate constant for the decay of [[MATH:93]]
 
 <!-- SEG:m68854:solution:fs-idp35524320 -->
-0.12 h^–1^
+0.12 h[[sup:–1]]
 
 <!-- SEG:m68854:problem:fs-idp53369552 -->
-What is the age of mummified primate skin that contains 8.25% of the original quantity of ^14^C?
+What is the age of mummified primate skin that contains 8.25% of the original quantity of [[sup:14]]C?
 
 <!-- SEG:m68854:problem:fs-idp125426976 -->
 A sample of rock was found to contain 8.23 mg of rubidium-87 and 0.47 mg of strontium-87.
 
 <!-- SEG:m68854:problem:fs-idm22718704 -->
-(a) Calculate the age of the rock if the half-life of the decay of rubidium by β emission is 4.7 [[MATH:94]] 10^10^ y.
+(a) Calculate the age of the rock if the half-life of the decay of rubidium by β emission is 4.7 [[MATH:94]] 10[[sup:10]] y.
 
 <!-- SEG:m68854:problem:fs-idp75993408 -->
 (b) If some [[MATH:95]] was initially present in the rock, would the rock be younger, older, or the same age as the age calculated in (a)? Explain your answer.
@@ -599,31 +599,31 @@ A sample of rock was found to contain 8.23 mg of rubidium-87 and 0.47 mg of stro
 (a) 3.8 billion years; (b) The rock would be younger than the age calculated in part (a). If Sr was originally in the rock, the amount produced by radioactive decay would equal the present amount minus the initial amount. As this amount would be smaller than the amount used to calculate the age of the rock and the age is proportional to the amount of Sr, the rock would be younger.
 
 <!-- SEG:m68854:problem:fs-idp133778576 -->
-A laboratory investigation shows that a sample of uranium ore contains 5.37 mg of [[MATH:96]] and 2.52 mg of [[MATH:97]] Calculate the age of the ore. The half-life of [[MATH:98]] is 4.5 [[MATH:99]] 10^9^ yr.
+A laboratory investigation shows that a sample of uranium ore contains 5.37 mg of [[MATH:96]] and 2.52 mg of [[MATH:97]] Calculate the age of the ore. The half-life of [[MATH:98]] is 4.5 [[MATH:99]] 10[[sup:9]] yr.
 
 <!-- SEG:m68854:problem:fs-idp165416288 -->
-Plutonium was detected in trace amounts in natural uranium deposits by Glenn Seaborg and his associates in 1941. They proposed that the source of this ^239^Pu was the capture of neutrons by ^238^U nuclei. Why is this plutonium not likely to have been trapped at the time the solar system formed 4.7 [[MATH:100]] 10^9^ years ago?
+Plutonium was detected in trace amounts in natural uranium deposits by Glenn Seaborg and his associates in 1941. They proposed that the source of this [[sup:239]]Pu was the capture of neutrons by [[sup:238]]U nuclei. Why is this plutonium not likely to have been trapped at the time the solar system formed 4.7 [[MATH:100]] 10[[sup:9]] years ago?
 
 <!-- SEG:m68854:solution:fs-idp172871712 -->
-*c* = 0; This shows that no Pu-239 could remain since the formation of the earth. Consequently, the plutonium now present could not have been formed with the uranium.
+{{i}}c{{/i}} = 0; This shows that no Pu-239 could remain since the formation of the earth. Consequently, the plutonium now present could not have been formed with the uranium.
 
 <!-- SEG:m68854:problem:fs-idp217024288 -->
 A [[MATH:101]] atom (mass = 7.0169 amu) decays into a [[MATH:102]] atom (mass = 7.0160 amu) by electron capture. How much energy (in millions of electron volts, MeV) is produced by this reaction?
 
 <!-- SEG:m68854:problem:fs-idp71110896 -->
-A [[MATH:103]] atom (mass = 8.0246 amu) decays into a [[MATH:104]] atom (mass = 8.0053 amu) by loss of a β^+^ particle (mass = 0.00055 amu) or by electron capture. How much energy (in millions of electron volts) is produced by this reaction?
+A [[MATH:103]] atom (mass = 8.0246 amu) decays into a [[MATH:104]] atom (mass = 8.0053 amu) by loss of a β[[sup:+]] particle (mass = 0.00055 amu) or by electron capture. How much energy (in millions of electron volts) is produced by this reaction?
 
 <!-- SEG:m68854:solution:fs-idp103673504 -->
 17.5 MeV
 
 <!-- SEG:m68854:problem:fs-idp131958896 -->
-Isotopes such as ^26^Al (half-life: 7.2 [[MATH:105]] 10^5^ years) are believed to have been present in our solar system as it formed, but have since decayed and are now called extinct nuclides.
+Isotopes such as [[sup:26]]Al (half-life: 7.2 [[MATH:105]] 10[[sup:5]] years) are believed to have been present in our solar system as it formed, but have since decayed and are now called extinct nuclides.
 
 <!-- SEG:m68854:problem:fs-idp31169120 -->
-(a) ^26^Al decays by β^+^ emission or electron capture. Write the equations for these two nuclear transformations.
+(a) [[sup:26]]Al decays by β[[sup:+]] emission or electron capture. Write the equations for these two nuclear transformations.
 
 <!-- SEG:m68854:problem:fs-idp179184448 -->
-(b) The earth was formed about 4.7 [[MATH:106]] 10^9^ (4.7 billion) years ago. How old was the earth when 99.999999% of the ^26^Al originally present had decayed?
+(b) The earth was formed about 4.7 [[MATH:106]] 10[[sup:9]] (4.7 billion) years ago. How old was the earth when 99.999999% of the [[sup:26]]Al originally present had decayed?
 
 <!-- SEG:m68854:problem:fs-idm28111776 -->
 Write a balanced equation for each of the following nuclear reactions:
@@ -704,7 +704,7 @@ unstable nuclide that changes spontaneously into another (daughter) nuclide
 positron emission
 
 <!-- SEG:m68854:glossary-def:fs-idm24356480-def -->
-(also, β+ decay) conversion of a proton into a neutron, which remains in the nucleus, and a positron, which is emitted
+(also, β[[sup:+]] decay) conversion of a proton into a neutron, which remains in the nucleus, and a positron, which is emitted
 
 <!-- SEG:m68854:glossary-term:fs-idp79161920-term -->
 radioactive decay
@@ -722,24 +722,7 @@ chains of successive disintegrations (radioactive decays) that ultimately lead t
 radiocarbon dating
 
 <!-- SEG:m68854:glossary-def:fs-idp10803760-def -->
-highly accurate means of dating objects 30,000–50,000 years old that were derived from once-living matter; achieved by calculating the ratio of 
-
-614C
-
-:
-
-612C
-
-
- in the object vs. the ratio of 
-
-614C
-
-:
-
-612C
-
- in the present-day atmosphere
+highly accurate means of dating objects 30,000–50,000 years old that were derived from once-living matter; achieved by calculating the ratio of [[MATH:112]] in the object vs. the ratio of [[MATH:113]] in the present-day atmosphere
 
 <!-- SEG:m68854:glossary-term:fs-idp171940160-term -->
 radiometric dating

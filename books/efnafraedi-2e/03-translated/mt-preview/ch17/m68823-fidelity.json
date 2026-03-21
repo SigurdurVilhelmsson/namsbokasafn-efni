@@ -1,0 +1,29 @@
+{
+  "moduleId": "m68823",
+  "chapter": "ch17",
+  "timestamp": "2026-03-20T12:08:07.106Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "link",
+      "source": 12,
+      "translated": 11,
+      "diff": -1,
+      "direction": "loss"
+    },
+    {
+      "tag": "m:math",
+      "source": 66,
+      "translated": 64,
+      "diff": -2,
+      "direction": "loss"
+    },
+    {
+      "tag": "sub",
+      "source": 20,
+      "translated": 24,
+      "diff": 4,
+      "direction": "overproduction"
+    }
+  ]
+}

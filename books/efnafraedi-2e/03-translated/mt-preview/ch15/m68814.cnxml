@@ -1,0 +1,394 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<!-- FIDELITY-WARNING: m68814 has 1 structural discrepancy(ies)
+  link: source=5 translated=7 (+2 overproduction)
+  Review needed before publication. Run cnxml-fidelity-check.js for details.
+-->
+<title>Tengd jafnvægi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68814</md:content-id>
+  <md:title>Tengd jafnvægi</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla muntu geta:</para><list id="list-00001"><item>Lýst dæmum um kerfi sem fela í sér tvö (eða fleiri) tengd efnajafnvægi</item><item>Reiknað styrk hvarfefna og myndefna fyrir kerfi með tengdum jafnvægum</item></list></md:abstract>
+  <md:uuid>ea7735a0-36bd-4f45-b0d7-13aa92a3f9b9</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm703568">Eins og fjallað var um í fyrri köflum um jafnvægi fela <emphasis effect="italics">tengd jafnvægi</emphasis> í sér tvö eða fleiri aðskilin efnahvörf sem deila einu eða fleiri hvarfefnum eða myndefnum. Í þessum hluta kaflans verður fjallað um leysnijafnvægi sem er tengt sýru-basa- og flókasambandshvörfum.</para>
+<para id="fs-idp11174336">Umhverfislega mikilvægt dæmi sem sýnir tengsl leysni- og sýru-basajafnvægis eru áhrif súrnunar sjávar á heilsu kóralrifja í hafinu. Þessi rif eru byggð á stoðgrindum úr torleystu kalsíumkarbónati sem kórallar (lítil sjávarhryggleysingjar) seyta frá sér. Viðeigandi upplausnarjafnvægi er:</para>
+<equation id="fs-idp15122656" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mo>+</m:mo></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mo>−</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>8.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>9</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm514068208">Vaxandi styrkur koldíoxíðs í andrúmsloftinu stuðlar að auknu sýrustigi sjávar vegna upplausnar, vatnsrofs og sýrujónunar koldíoxíðs:</para>
+<equation id="fs-idp11178176" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idp7072" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idm331440" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="center"><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo> </m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mo>−</m:mo></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo> </m:mo></m:mtd><m:mtd/><m:mtd columnalign="center"><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>a</m:mtext><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>7</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<equation id="fs-idm357967056" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="center"><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mo>−</m:mo></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2</m:mn><m:mo>−</m:mo><m:mspace width="0.2em"/></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mo>+</m:mo></m:msup><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd/><m:mtd columnalign="center"><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>a</m:mtext><m:mn>2</m:mn><m:mo> </m:mo></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>11</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idm375631728">Skoðun á þessum jafnvægum sýnir að karbónatjónin tekur þátt í upplausn kalsíumkarbónats og sýruvatnsrofi bíkarbónatjónar. Með því að sameina upplausnarjöfnuna og öfuga jöfnu sýruvatnsrofsins fæst:</para>
+<equation id="fs-idm386291088" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="center"><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mo>+</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mo>+</m:mo></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mo>−</m:mo></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo> </m:mo></m:mtd><m:mtd/><m:mtd columnalign="center"><m:mi>K</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>a</m:mtext><m:mn>2</m:mn></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>180</m:mn></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idm173712">Jafnvægisfastinn fyrir þetta heildarefnahvarf er mun stærri en <emphasis effect="italics">K<sub>sp</sub></emphasis> fyrir kalsíumkarbónat, sem gefur til kynna að leysni þess eykst verulega í súrum lausnum. Eftir því sem magn koldíoxíðs í andrúmsloftinu eykst og sýrustig sjávar hækkar verða kalsíumkarbónatstoðgrindur kóralrifja viðkvæmari fyrir upplausn og þar af leiðandi óheilbrigðari (<link target-id="CNX_Chem_15_03_CoralReef"/>).</para>
+<figure id="CNX_Chem_15_03_CoralReef" class="scaled-down">
+<media id="fs-idp11078816" alt="This figure contains two photographs of coral reefs. In a, a colorful reef that includes hues of purple and pink corals is shown in blue green water with fish swimming in the background. In b, grey-green mossy looking coral is shown in a blue aquatic environment. This photo does not have the colorful appearance or fish that were shown in figure a.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_15_03_CoralReef.jpg"/>
+</media>
+<caption>Heilbrigð kóralrif (a) styðja við þétt og fjölbreytt lífríki sjávar um alla fæðukeðjuna. En þegar kórallar geta ekki byggt upp og viðhaldið kalsíumkarbónatstoðgrindum sínum á fullnægjandi hátt vegna of mikillar súrnunar sjávar, getur hið óheilbrigða rif (b) aðeins hýst lítinn hluta þeirra tegunda sem áður voru og staðbundin fæðukeðja byrjar að hrynja. (mynd a: breytt útgáfa af verki NOAA Photo Library; mynd b: breytt útgáfa af verki „prilfish“/Flickr)</caption>
+</figure>
+<note id="fs-idm683648" class="chemistry link-to-learning">
+<para id="fs-idm278224">Lærðu meira um <link url="http://openstax.org/l/16acidicocean">súrnun</link> sjávar og hvernig hún hefur áhrif á aðrar sjávarlífverur.</para>
+<para id="fs-idm277216">Á þessari <link url="http://openstax.org/l/16coralreef">síðu</link> eru ítarlegar upplýsingar um hvernig súrnun sjávar hefur sérstaklega áhrif á kóralrif.</para>
+</note>
+<para id="fs-idp11065808">Sú mikla aukning á leysni við aukið sýrustig sem lýst er hér að ofan fyrir kalsíumkarbónat er dæmigerð fyrir sölt sem innihalda basískar anjónir (t.d. karbónat, flúoríð, hýdroxíð, súlfíð). Annað kunnuglegt dæmi er myndun tannskemmda í glerungi tanna. Helsti steinefnahluti glerungs er kalsíumhýdroxýapatít (<link target-id="CNX_Chem_15_03_Apatite"/>), torleyst jónaefni þar sem upplausnarjafnvægið er:</para>
+<figure id="CNX_Chem_15_03_Apatite" class="scaled-down">
+<media id="fs-idp482016" alt="This figure includes an image of two large light blue apatite crystals in a mineral conglomerate that includes white, grey, and tan crystals. The blue apatite crystals have a dull, dusty, or powdered appearance.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_15_03_Apatite.jpg"/>
+</media>
+<caption>Kristall steinefnisins hýdroxýapatíts, Ca<sub>5</sub>(PO<sub>4</sub>)<sub>3</sub>OH, er sýndur hér. Hreina efnasambandið er hvítt, en eins og mörg önnur steinefni er þetta sýni litað vegna óhreininda.</caption>
+</figure>
+<equation id="fs-idp12952768" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>Ca</m:mtext><m:mtext>5</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>P</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>5</m:mn><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>3−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp11125264">Þetta efnasamband leysist upp og gefur tvær mismunandi basískar jónir: þríróteindir fosfatjónir</para>
+<equation id="fs-idp14746208" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>3−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mn>+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idp15108576" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mn>+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idp14710208" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mn>+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">aq</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm689360">og einróteindir hýdroxíðjónir:</para>
+<equation id="fs-idm688976" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mn>+</m:mn></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm171072">Af þessum tveimur basísku myndefnum er hýdroxíðið auðvitað langtum sterkari basinn (það er sterkasti basinn sem getur verið til í vatnslausn) og því er það ríkjandi þátturinn sem gefur efnasambandinu sýruháðan leysni. Tannskemmdir myndast þegar sýruúrgangur baktería sem vaxa á yfirborði tanna flýtir fyrir upplausn tannglerungs með því að hvarfast að fullu við sterka basann hýdroxíð og hliðra þannig jafnvægi leysni hýdroxýapatíts til hægri. Sum tannkrem og munnskol innihalda viðbætt NaF eða SnF<sub>2</sub> sem gerir glerunginn sýruþolnari með því að skipta sterka basanum hýdroxíði út fyrir veika basann flúoríð:</para>
+<equation id="fs-idm447520" class="unnumbered"><m:math><m:mrow><m:mtext>NaF</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mtext>5</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>P</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mtext>5</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>P</m:mtext><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>F</m:mtext><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mn>+</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp11192864">Veika basajónin flúoríð hvarfast aðeins að hluta til við sýruúrgang bakteríanna, sem leiðir til minni hliðrunar á leysnijafnvæginu og aukins viðnáms gegn sýruupplausn. Sjáðu kaflann Efnafræði í daglegu lífi um hlutverk flúoríðs í að koma í veg fyrir tannskemmdir fyrir frekari upplýsingar.</para>
+<note id="fs-idm790400" class="chemistry everyday-life">
+<title>Hlutverk flúoríðs í að koma í veg fyrir tannskemmdir</title>
+<para id="fs-idm789520">Eins og við sáum áður hjálpa flúoríðjónir til við að vernda tennurnar okkar með því að hvarfast við hýdroxýlapatít og mynda flúorapatít, Ca<sub>5</sub>(PO<sub>4</sub>)<sub>3</sub>F. Þar sem það skortir hýdroxíðjón er flúorapatít þolnara gegn árásum sýra í munni okkar og er því torleystara, sem verndar tennurnar. Vísindamenn uppgötvuðu að náttúrulega flúorbætt vatn gæti verið gagnlegt fyrir tennurnar og því varð algeng venja að bæta flúoríði í drykkjarvatn. Tannkrem og munnskol innihalda einnig magn af flúoríði (<link target-id="CNX_Chem_15_03_Toothpaste"/>).</para>
+<figure id="CNX_Chem_15_03_Toothpaste" class="scaled-down">
+<media id="fs-idm726352" alt="Replace with updated art; figure in “99” art folder is current and correct">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_15_03_Toothpaste.jpg"/>
+</media>
+<caption>Flúoríð, sem finnst í mörgum tannkremum, hjálpar til við að koma í veg fyrir tannskemmdir (heimild: Kerry Ceszyk).</caption>
+</figure>
+<para id="fs-idp12947280">Því miður getur umframmagn flúoríðs vegið upp á móti kostum þess. Náttúrulegar uppsprettur drykkjarvatns í ýmsum heimshlutum hafa mismunandi styrk flúoríðs og á stöðum þar sem styrkurinn er hár er fólk viðkvæmt fyrir ákveðinni heilsufarsáhættu þegar engin önnur uppspretta drykkjarvatns er til staðar. Alvarlegasta aukaverkun umframmagns flúoríðs er beinasjúkdómurinn beinþéttniflórun. Þegar umframmagn flúoríðs er í líkamanum getur það valdið því að liðir stirðna og bein þykkna. Það getur haft alvarleg áhrif á hreyfigetu og getur haft neikvæð áhrif á skjaldkirtilinn. Beinþéttniflórun er sjúkdómur sem yfir 2,7 milljónir manna þjást af um allan heim. Þannig að þótt flúoríð geti verndað tennurnar okkar gegn skemmdum, setur Umhverfisverndarstofnun Bandaríkjanna (US Environmental Protection Agency) hámarksgildi 4 ppm (4 mg/L) af flúoríði í drykkjarvatni í Bandaríkjunum. Magn flúoríðs í vatni er ekki reglugerðarbundið í öllum löndum, þannig að flórun er vandamál á svæðum með hátt magn flúoríðs í grunnvatni.</para>
+</note>
+<para id="fs-idp19645632">Leysni jónaefna getur einnig aukist þegar upplausn er tengd myndun flókajónar. Til dæmis leysist álhýdroxíð upp í lausn af natríumhýdroxíði eða öðrum sterkum basa vegna myndunar flókajónarinnar <m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math></para>
+<media id="fs-idp137004736" class="scaled-down" alt="An H atom is bonded to an O atom. The O atom has 2 dots above it and 2 dots below it. The O atom is bonded to an A l atom, which has three additional O atoms bonded to it as well. Each of these additional O atoms has 4 dots arranged around it, and is bonded to an H atom. This entire molecule is contained in brackets, to the right of which is a superscripted negative sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_15_02_AlOH4_img.jpg"/>
+</media>
+<para id="fs-idm55619648">Jöfnurnar fyrir upplausn álhýdroxíðs, myndun flókajónarinnar og samanlögð (heildar) jafna eru sýndar hér að neðan. Eins og sést á tiltölulega háu gildi K fyrir heildarhvarfið, eykur tenging flókamyndunar við upplausn verulega leysni Al(OH)<sub>3</sub>.</para>
+<equation id="fs-idp25643760" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="center"><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd columnalign="center"><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>32</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="center"><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd columnalign="center"><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>f</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>1.1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>33</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="center"><m:mtext>Net:</m:mtext><m:mspace width="0.2em"/><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd columnalign="center"><m:mi>K</m:mi><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:mn>22</m:mn></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<example id="fs-idm596544">
+<para id="fs-idm596288"><title>Aukinn leysni í súrum lausnum</title>Reiknaðu og berðu saman mólarleysni fyrir álhýdroxíð, Al(OH)<sub>3</sub>, uppleyst í (a) hreinu vatni og (b) stuðpúða sem inniheldur 0,100 <emphasis effect="italics">M</emphasis> ediksýru og 0,100 <emphasis effect="italics">M</emphasis> natríumasetat.</para><para id="fs-idm450480"><title>Lausn</title>(a) Mólarleysni álhýdroxíðs í vatni er reiknað með því aðeins að taka tillit til upplausnarjafnvægis eins og sýnt hefur verið í nokkrum fyrri dæmum:</para>
+<equation id="fs-idm514344192" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>Al(OH)</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:munderover><m:mo stretchy="false">⇌</m:mo><m:mrow/><m:mrow/></m:munderover><m:mspace width="0.2em"/><m:msubsup><m:mtext>Al</m:mtext><m:mrow/><m:mrow><m:mn>3</m:mn><m:mo>+</m:mo></m:mrow></m:msubsup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>3OH</m:mtext><m:mo>−</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="2em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>2</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>10</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>32</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>molar solubility in water</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>3</m:mn><m:mo>+</m:mo></m:mrow></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>32</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:mn>27</m:mn></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:mn>4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/>
+<m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mo>−</m:mo><m:mn>9</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm324374096">(b) Styrkur hýdroxíðjónar í stuðpúðalausninni er auðveldlega reiknaður með Henderson-Hasselbalch-jöfnunni:</para>
+<equation id="fs-idm381513040" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtext>pH</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>pK</m:mtext><m:mtext>a</m:mtext></m:msub><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow><m:mtext>COO</m:mtext></m:mrow><m:mo>−</m:mo></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>COOH</m:mtext></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mtext>pH</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.74</m:mn><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>0.100</m:mn><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:mn>0.100</m:mn></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.74</m:mn></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm378269776">Við þetta pH er styrkur hýdroxíðjónar</para>
+<equation id="fs-idm352371264" class="unnumbered"><m:math><m:mrow><m:mtable columnalign="left"><m:mtr><m:mtd><m:mrow><m:mtext>pOH</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>14.00</m:mn><m:mspace width="0.2em"/><m:mo>–</m:mo><m:mspace width="0.2em"/><m:mn>4.74</m:mn><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>9.26</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>−</m:mo></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>9.26</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>5.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>10</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idm373349040">Leysni Al(OH)<sub>3</sub> í þessum stuðpúða er síðan reiknaður út frá leysnimargfeldisjöfnu þess:</para>
+<equation id="fs-idm508638352" class="unnumbered"><m:math><m:mrow><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="center"><m:mrow><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>3</m:mn><m:mo>+</m:mo></m:mrow></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>−</m:mo></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mtext>molar solubility in buffer</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>3</m:mn><m:mo>+</m:mo></m:mrow></m:msup></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>−</m:mo></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>32</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>/</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>5.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>10</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation><para id="fs-idm329760656">Í samanburði við hreint vatn er leysni álhýdroxíðs í þessum vægt súra stuðpúða um það bil tíu milljón sinnum meiri (þó enn tiltölulega lágur).</para>
+<para id="fs-idm329760"><title>Kannaðu þekkingu þína</title>Hver er leysni álhýdroxíðs í stuðpúða sem samanstendur af 0,100 <emphasis effect="italics">M</emphasis> maurasýru og 0,100 <emphasis effect="italics">M</emphasis> natríumformati?</para>
+<note id="fs-idp14780320"><title>Answer:</title>
+<para id="fs-idp15140704">0,1 <emphasis effect="italics">M</emphasis></para>
+</note>
+</example>
+<example id="fs-idp14732576">
+<para id="fs-idp14732832"><title>Margföld jafnvægi</title>Óframkölluð silfurhalíð eru fjarlægð úr ljósmyndafilmu þegar þau hvarfast við natríumþíósúlfat (Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub>, kallað hypo) og mynda flókajónina <m:math><m:mrow><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>3−</m:mtext></m:mrow></m:msup></m:mrow></m:math> (<emphasis effect="italics">K</emphasis><sub>f</sub> = 4,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>13</sup>).</para>
+<media id="fs-idp120368" class="scaled-down" alt="A chemical reaction is shown using structural formulas. On the left, A g superscript plus is followed by a plus sign, the number 2, and a structure in brackets. The structure is composed of a central S atom which has O atoms single bonded above, right, and below. A second S atom is single bonded to the left. Each of these bonded atoms has 6 dots around it. Outside the brackets is a superscript 2 negative. Following a bidirectional arrow is a structure in brackets with a central A g atom. To the left and right, S atoms are single bonded to the A g atom. Each of these S atoms has four dots around it, and an S atom connected with a single bond moving out from the central A g atom, forming the ends of the structure. Each of these atoms has three O atoms attached with single bonds above, below, and at the end of the structure. Each O atom has six dots around it. Outside the brackets is a superscript 3 negative.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_15_03_AgBr_img.jpg"/>
+</media>
+<para id="fs-idm316832">Hver er massi Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> sem þarf til að útbúa 1,00 L af lausn sem leysir upp 1,00 g af AgBr með myndun <m:math><m:mrow><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>3−</m:mtext></m:msup><m:mo>?</m:mo></m:mrow></m:math></para>
+<para id="fs-idp111920"><title>Lausn</title>Tvö jafnvægi eiga sér stað þegar silfurbrómíð leysist upp í vatnslausn af þíósúlfati sem inniheldur <m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math> jónina:</para><para id="fs-idp114896">upplausn: <m:math><m:mrow><m:mtext>AgBr</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>5.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−13</m:mtext></m:mrow></m:msup></m:mrow></m:math></para><para id="fs-idm241312">flókamyndun: <m:math><m:mrow><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>2S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>3−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:mn>4.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>13</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="eip-881">Með því að sameina þessar tvær jafnvægisjöfnur fæst</para><para id="eip-601"><m:math><m:mtable>
+<m:mtr><m:mtd><m:mrow>
+<m:mtext>AgBr</m:mtext><m:mo stretchy="false">(</m:mo>
+<m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mn>2–</m:mn></m:msup>
+<m:mo stretchy="false">(</m:mo><m:mtext fontstyle="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mtd>
+<m:mtd><m:mo>⇌</m:mo></m:mtd>
+<m:mtd>
+<m:mrow><m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mn>3–</m:mn></m:msup><m:mo stretchy="false">(</m:mo>
+<m:mtext fontstyle="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo>  
+
+<m:mo stretchy="false">+</m:mo><m:msup><m:mtext>Br</m:mtext><m:mn>–</m:mn></m:msup>
+<m:mo stretchy="false">(</m:mo>
+<m:mtext fontstyle="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo>
+</m:mrow></m:mtd>
+</m:mtr>
+
+<m:mtr><m:mtd><m:mi>K</m:mi><m:mo>=</m:mo>
+<m:mfrac><m:mrow>
+<m:mo stretchy="false">[</m:mo><m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mn>3–</m:mn></m:msup><m:mo stretchy="false">]</m:mo>
+<m:mo stretchy="false">[</m:mo><m:msup><m:mtext>Br</m:mtext><m:mo>–</m:mo></m:msup>
+<m:mo stretchy="false">]</m:mo>
+</m:mrow>
+<m:mrow>
+<m:mo stretchy="false">[</m:mo>
+<m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mn>2–</m:mn></m:msup><m:mo stretchy="false">]</m:mo><m:msup><m:mrow/><m:mn>2</m:mn></m:msup>
+</m:mrow>
+</m:mfrac>
+<m:mo stretchy="false">=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>sp</m:mtext></m:msub><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub>
+<m:mo stretchy="false">=</m:mo><m:mn>24</m:mn>
+</m:mtd>
+<m:mtd/>
+</m:mtr>
+</m:mtable></m:math></para><para id="fs-idm385058992">Styrkur brómíðs sem myndast við upplausn 1,00 g af AgBr í 1,00 L af lausn er</para><equation id="fs-idm371607456" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msup><m:mtext>Br</m:mtext><m:mo>–</m:mo></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo>
+<m:mfrac>
+<m:mrow>
+<m:mn>1.00</m:mn><m:mspace width="0.5em"/><m:mtext>g AgBr</m:mtext><m:mo>×</m:mo>
+<m:mfrac>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.5em"/><m:mtext>mol AgBr</m:mtext></m:mrow>
+<m:mrow><m:mn>187.77</m:mn><m:mspace width="0.5em"/><m:mtext>g/mol</m:mtext></m:mrow>
+</m:mfrac>
+<m:mo>×</m:mo>
+<m:mfrac>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.5em"/><m:msup><m:mtext>mol Br</m:mtext><m:mo>–</m:mo></m:msup></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.5em"/><m:mtext>mol AgBr</m:mtext></m:mrow>
+</m:mfrac>
+</m:mrow>
+
+<m:mrow><m:mn>1.00</m:mn><m:mspace width="0.5em"/><m:mtext>L</m:mtext></m:mrow>
+</m:mfrac>
+<m:mo>=</m:mo>
+<m:mn>0.00532</m:mn><m:mspace width="0.5em"/><m:mi>M</m:mi>
+  </m:mrow></m:math></equation><para id="fs-idm378998352">Hlutfallaefnafræði upplausnarjafnvægisins gefur til kynna að sami styrkur af silfurjón í vatnslausn muni myndast, 0,00532 M, og hið mjög háa gildi <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow></m:math> tryggir að nánast öll uppleysta silfurjónin verði bundin í flóka með þíósúlfatjón:</para><equation id="fs-idm362932864" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">[</m:mo>
+<m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mn>3–</m:mn></m:msup>
+<m:mo stretchy="false">]</m:mo>
+<m:mo>=</m:mo><m:mn>0.00532</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation><para id="fs-idm366152720">Með því að umraða K-jöfnunni fyrir sameinuðu jafnvægisjöfnurnar og leysa fyrir styrk þíósúlfatjónar fæst</para><equation id="fs-idm366919280" class="unnumbered"><m:math><m:mrow>
+<m:mo stretchy="false">[</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mn>2–</m:mn></m:msup><m:mo stretchy="false">]</m:mo>
+<m:mo>=</m:mo>
+<m:mfrac>
+<m:mrow><m:msqrt><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mn>3–</m:mn></m:msup>
+<m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msup><m:mtext>Br</m:mtext><m:mo>–</m:mo></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:msqrt></m:mrow>
+<m:mi>K</m:mi>
+</m:mfrac>
+<m:mo>=</m:mo><m:msqrt>
+<m:mfrac>
+<m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.00532</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mo stretchy="false">)</m:mo>
+<m:mo stretchy="false">(</m:mo><m:mn>0.00532</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mo stretchy="false">)</m:mo>
+</m:mrow>
+<m:mrow><m:mn>24</m:mn></m:mrow>
+</m:mfrac></m:msqrt>
+<m:mo>=</m:mo>
+<m:mn>0.0011</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi>
+</m:mrow></m:math></equation><para id="fs-idm388155072">Að lokum er hægt að reikna heildarmassa <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að veita nægilegt þíósúlfat til að gefa þá styrki sem nefndir eru hér að ofan.</para>
+<para id="eip-672">Massi <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að gefa 0,00532 M <m:math><m:mrow><m:mtext>Ag</m:mtext><m:mo>(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mo>)</m:mo><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mn>3–</m:mn></m:msup> </m:mrow></m:math></para><equation id="fs-idm330874144" class="unnumbered"><m:math><m:mrow>
+<m:mn>0.00532</m:mn>
+<m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
+<m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub>
+<m:msup><m:mrow/><m:mn>3–</m:mn></m:msup></m:mrow>
+<m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow>
+</m:mfrac>
+<m:mo>×</m:mo>
+<m:mfrac><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
+<m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub>
+<m:msup><m:mrow/><m:mn>3–</m:mn></m:msup>
+</m:mrow>
+</m:mfrac>
+<m:mo>×</m:mo>
+<m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
+</m:mfrac>
+<m:mo>×</m:mo>
+<m:mfrac><m:mrow><m:mn>158.1</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+</m:mfrac>
+<m:mo>=</m:mo>
+<m:mn>1.68</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math></equation><para id="fs-idm124142688">Massi <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að gefa 0,00110 M <m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
+<m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:msup><m:mrow/><m:mn>2–</m:mn></m:msup> </m:mrow></m:math></para><equation id="eip-108"><m:math><m:mrow>
+<m:mn>0.0011</m:mn>
+<m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
+<m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
+<m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow>
+</m:mfrac>
+<m:mo>×</m:mo>
+<m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
+<m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+
+</m:mrow>
+</m:mfrac>
+<m:mo>×</m:mo>
+<m:mfrac><m:mrow><m:mn>158.1</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+</m:mfrac>
+<m:mo>=</m:mo>
+<m:mn>0.17</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math></equation><para id="eip-528">Massi <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að leysa upp 1,00 g af AgBr í 1,00 L af vatni er því 1,68 g + 0,17 g = 1,85 g</para><para id="fs-idm58241696"><title>Kannaðu þekkingu þína</title>AgCl(<emphasis effect="italics">s</emphasis>), silfurklóríð, hefur mjög lítinn leysni: <m:math><m:mrow><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math> <emphasis effect="italics">K</emphasis><sub>sp</sub> = 1,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>–10</sup>. Með því að bæta við ammóníaki eykst leysni AgCl verulega vegna þess að flókajón myndast: <m:math><m:mrow><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math> <emphasis effect="italics">K</emphasis><sub>f</sub> = 1,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup>. Hver er massi NH<sub>3</sub> sem þarf til að útbúa 1,00 L af lausn sem leysir upp 2,00 g af AgCl með myndun <m:math><m:mrow><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>?</m:mo></m:mrow></m:math></para><note id="fs-idm81440704"><title>Answer:</title>1.00 L of a solution prepared with 5.0 g NH<sub>3</sub> dissolves 2.0 g of AgCl.</note></example>
+<section id="fs-idm305648" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm304720">Kerfi sem fela í sér tvö eða fleiri efnafræðileg jafnvægi sem deila einu eða fleiri hvarfefnum eða myndefnum eru kölluð samtengd jafnvægi. Algeng dæmi um samtengd jafnvægi eru aukinn leysni sumra efnasambanda í súrum lausnum (samtengd upplausnar- og hlutleysingarjafnvægi) og í lausnum sem innihalda bindla (samtengd upplausnar- og flókamyndunarjafnvægi). Hægt er að beita jafnvægisverkfærum úr öðrum köflum til að lýsa og framkvæma útreikninga á þessum kerfum.</para>
+</section>
+<section id="fs-idm302736" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idm301808">
+<problem id="fs-idm301552">
+<para id="fs-idm301296">Sagt er að mettuð lausn af örlítið auðleystum rafkleyfa í snertingu við eitthvað af fasta rafkleyfanum sé kerfi í jafnvægi. Útskýrðu. Hvers vegna er slíkt kerfi kallað misleitt jafnvægi?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm299312">
+<problem id="fs-idm299056">
+<para id="fs-idm298800">Reiknaðu jafnvægisstyrk Ni<sup>2+</sup> í 1,0-<emphasis effect="italics">M</emphasis> lausn <link url="NO<sub>3</sub>">Ni(NH<sub>3</sub>)<sub>6</sub></link><sub>2</sub>.</para>
+</problem>
+<solution id="fs-idm295712">
+<para id="fs-idm295456">0,014 <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idp12915808">
+<problem id="fs-idp12916064">
+<para id="fs-idp12916320">Reiknaðu jafnvægisstyrk Zn<sup>2+</sup> í 0,30-<emphasis effect="italics">M</emphasis> lausn af <m:math><m:mrow><m:mtext>Zn</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>CN</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp457072">
+<problem id="fs-idp457328">
+<para id="fs-idp457584">Reiknaðu jafnvægisstyrk Cu<sup>2+</sup> í lausn sem upphaflega var með 0,050 <emphasis effect="italics">M</emphasis> Cu<sup>2+</sup> og 1,00 <emphasis effect="italics">M</emphasis> NH<sub>3</sub>.</para>
+</problem>
+<solution id="fs-idp460608">
+<para id="fs-idp460864">7,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>–15</sup> <emphasis effect="italics">M</emphasis></para></solution>
+</exercise>
+<exercise id="fs-idm356832">
+<problem id="fs-idm356576">
+<para id="fs-idm356320">Reiknaðu jafnvægisstyrk Zn<sup>2+</sup> í lausn sem upphaflega var með 0,150 <emphasis effect="italics">M</emphasis> Zn<sup>2+</sup> og 2,50 <emphasis effect="italics">M</emphasis> CN<sup>–</sup>.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp135248">
+<problem id="fs-idp135504">
+<para id="fs-idp135760">Reiknaðu jafnvægisstyrk Fe<sup>3+</sup> þegar 0,0888 mólum af K<sub>3</sub>[Fe(CN)<sub>6</sub>] er bætt við lausn með 0,00010 <emphasis effect="italics">M</emphasis> CN<sup>–</sup>.</para>
+</problem>
+<solution id="fs-idp138528">
+<para id="fs-idp138784">4,4 <m:math><m:mo>×</m:mo></m:math> 10<sup>−22</sup> <emphasis effect="italics">M</emphasis></para></solution>
+</exercise>
+<exercise id="fs-idp103984">
+<problem id="fs-idp104240">
+<para id="fs-idp104496">Reiknaðu jafnvægisstyrk Co<sup>2+</sup> þegar 0,010 mólum af <link url="NO<sub>3</sub>">Co(NH<sub>3</sub>)<sub>6</sub></link><sub>2</sub> er bætt við lausn með 0,25 <emphasis effect="italics">M</emphasis> NH<sub>3</sub>. Gerðu ráð fyrir að rúmmálið sé 1,00 L.</para></problem>
+</exercise>
+<exercise id="fs-idm455072">
+<problem id="fs-idm454816">
+<para id="fs-idm454560">Reiknaðu mólarleysni Sn(OH)<sub>2</sub> í stuðpúðalausn sem inniheldur jafnan styrk af NH<sub>3</sub> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mn>+</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp14750992">
+<problem id="fs-idp14751248">
+<para id="fs-idp14751504">Reiknaðu mólarleysni Al(OH)<sub>3</sub> í stuðpúðalausn með 0,100 <emphasis effect="italics">M</emphasis> NH<sub>3</sub> og 0,400 <emphasis effect="italics">M</emphasis> <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mn>+</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp14755888">
+<para id="fs-idp14756144">[OH<sup>−</sup>] = 4,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup>; [Al<sup>3+</sup>] = 2 <m:math><m:mo>×</m:mo></m:math> 10<sup>–16</sup> (mólarleysni)</para></solution>
+</exercise>
+<exercise id="fs-idp11095024">
+<problem id="fs-idp11095280">
+<para id="fs-idp11095536">Hver er mólarleysni CaF<sub>2</sub> í 0,100-<emphasis effect="italics">M</emphasis> lausn af HF? <emphasis effect="italics">K</emphasis><sub>a</sub> fyrir HF = 6,4 <m:math><m:mo>×</m:mo></m:math> 10<sup>–4</sup>.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp11209952">
+<problem id="fs-idp11210208">
+<para id="fs-idp11210464">Hver er mólarleysni BaSO<sub>4</sub> í 0,250-<emphasis effect="italics">M</emphasis> lausn af NaHSO<sub>4</sub>? <emphasis effect="italics">K</emphasis><sub>a</sub> fyrir <m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> = 1,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>–2</sup>.</para>
+</problem>
+<solution id="fs-idp11215840">
+<para id="fs-idp11216096"><m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mi>sp</m:mi></m:msub><m:mo>=</m:mo><m:mo stretchy="false">[</m:mo><m:msup><m:mtext>Ba</m:mtext><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo stretchy="false">[</m:mo><m:msup><m:mtext>Ba</m:mtext><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">]</m:mo><m:mo>(</m:mo><m:mn>0.049</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1.08</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>–10</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:msup><m:mtext>Ba</m:mtext><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2.2</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>–9</m:mn></m:msup></m:mrow></m:math>; (mólarleysni)</para></solution>
+</exercise>
+<exercise id="fs-idp65312">
+<problem id="fs-idp65568">
+<para id="fs-idp65824">Hver er mólarleysni Tl(OH)<sub>3</sub> í 0,10-<emphasis effect="italics">M</emphasis> lausn af NH<sub>3</sub>?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp510128">
+<problem id="fs-idp510384">
+<para id="fs-idp510640">Hver er mólarleysni Pb(OH)<sub>2</sub> í 0,138-<emphasis effect="italics">M</emphasis> lausn af CH<sub>3</sub>NH<sub>2</sub>?</para>
+</problem>
+<solution id="fs-idp512976">
+<para id="fs-idp513232">[OH<sup>−</sup>] = 7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis>; [Pb<sup>2+</sup>] = 2,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>–11</sup> (mólarleysni)</para></solution>
+</exercise>
+<exercise id="fs-idm397184">
+<problem id="fs-idm396928">
+<para id="fs-idm396672">Lausn af 0,075 <emphasis effect="italics">M</emphasis> CoBr<sub>2</sub> er mettuð með H<sub>2</sub>S ([H<sub>2</sub>S] = 0,10 <emphasis effect="italics">M</emphasis>). Hvert er lægsta pH-gildið þar sem CoS byrjar að falla út?</para>
+<para id="fs-idm393824"><m:math><m:mrow><m:mtext>CoS</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo>
+  <m:msup><m:mrow><m:mtext>Co</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo><m:msup><m:mtext>S</m:mtext><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo>
+  <m:mspace width="4em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>2.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+  <m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>27</m:mtext></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idm382784"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>S</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn>
+  <m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup>
+  <m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo><m:msup><m:mtext>S</m:mtext><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup>
+  <m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/>
+  <m:mi>K</m:mi><m:mo>=</m:mo><m:mn>8.9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−27</m:mtext></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idm235264">
+<problem id="fs-idm235008">
+<para id="fs-idm234752">0,125-<emphasis effect="italics">M</emphasis> lausn af Mn(NO<sub>3</sub>)<sub>2</sub> er mettuð með H<sub>2</sub>S ([H<sub>2</sub>S] = 0,10 <emphasis effect="italics">M</emphasis>). Við hvaða pH byrjar MnS að falla út?</para>
+<para id="fs-idm231456"><m:math><m:mrow><m:mtext>MnS</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Mn</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>S</m:mtext><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo>
+  <m:mspace width="4em"/>
+  <m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>2.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−13</m:mtext></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idm220416"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>S</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>S</m:mtext><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:mi>K</m:mi><m:mo>=</m:mo><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−26</m:mtext></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idm205568">
+<para id="fs-idm205312">7,66</para></solution>
+</exercise>
+<exercise id="fs-idp12821792">
+<problem id="fs-idp12822048">
+<para id="fs-idp12822304">Bæði AgCl og AgI leysast upp í NH<sub>3</sub>.</para>
+<para id="fs-idp12823120">(a) Hversu mikill massi af AgI leysist upp í 1,0 L af 1,0 <emphasis effect="italics">M</emphasis> NH<sub>3</sub>?</para>
+<para id="fs-idp12824576">(b) Hversu mikill massi af AgCl leysist upp í 1,0 L af 1,0 <emphasis effect="italics">M</emphasis> NH<sub>3</sub>?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp11595856">
+<problem id="fs-idp11596112">
+<para id="fs-idp11596368">Eftirfarandi spurning er tekin úr Chemistry Advanced Placement Examination og er notuð með leyfi Educational Testing Service.</para>
+<para id="fs-idp11596912">Leysið eftirfarandi dæmi:</para>
+<para id="fs-idp11597344"><m:math><m:mrow><m:msub><m:mrow><m:mtext>MgF</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Mg</m:mtext></m:mrow><m:mrow><m:mtext>2+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mtext>F</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp11605424">Í mettaðri lausn af MgF<sub>2</sub> við 18 °C er styrkur Mg<sup>2+</sup> 1,21 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup> <emphasis effect="italics">M</emphasis>. Jafnvægið er sýnt með jöfnunni hér að ofan.</para>
+<para id="fs-idp11608320">(a) Skrifið stæðuna fyrir leysnimargfeldisfastann, <emphasis effect="italics">K</emphasis><sub>sp</sub>, og reiknið gildi hans við 18 °C.</para>
+<para id="fs-idp11609664">(b) Reiknið jafnvægisstyrk Mg<sup>2+</sup> í 1,000 L af mettaðri MgF<sub>2</sub> lausn við 18 °C sem 0,100 mól af föstu KF hefur verið bætt út í. KF leysist upp að fullu. Gerið ráð fyrir að rúmmálsbreytingin sé hverfandi.</para>
+<para id="fs-idp11611248">(c) Spáið fyrir um hvort botnfall af MgF<sub>2</sub> muni myndast þegar 100,0 ml af 3,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup>-<emphasis effect="italics">M</emphasis> lausn af Mg(NO<sub>3</sub>)<sub>2</sub> er blandað saman við 200,0 ml af 2,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup>-<emphasis effect="italics">M</emphasis> lausn af NaF við 18 °C. Sýnið útreikningana til stuðnings spá ykkar.</para>
+<para id="fs-idp11616240">(d) Við 27 °C er styrkur Mg<sup>2+</sup> í mettaðri lausn af MgF<sub>2</sub> 1,17 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup> <emphasis effect="italics">M</emphasis>. Er upplausn MgF<sub>2</sub> í vatni innvermið eða útvermið ferli? Rökstyðjið niðurstöðu ykkar.</para>
+</problem>
+<solution id="fs-idp11619744">
+<para id="fs-idp11620000">(a) <emphasis effect="italics">K</emphasis><sub>sp</sub> = [Mg<sup>2+</sup>][F<sup>–</sup>]<sup>2</sup> = (1,21 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup>)(2 <m:math><m:mo>×</m:mo></m:math> 1,21 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup>)<sup>2</sup> = 7,09 <m:math><m:mo>×</m:mo></m:math> 10<sup>–9</sup><newline/> (b) 7,09 <m:math><m:mo>×</m:mo></m:math> 10<sup>–7</sup> <emphasis effect="italics">M</emphasis><newline/> (c) Ákvarðið styrk Mg<sup>2+</sup> og F<sup>–</sup> sem verður til staðar í lokarúmmálinu. Berið saman gildi jónamargfeldisins [Mg<sup>2+</sup>][F<sup>–</sup>]<sup>2</sup> við <emphasis effect="italics">K</emphasis><sub>sp</sub>. Ef þetta gildi er stærra en <emphasis effect="italics">K</emphasis><sub>sp</sub> mun útfelling eiga sér stað. <newline/> 0,1000 L <m:math><m:mo>×</m:mo></m:math> 3,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup> <emphasis effect="italics">M</emphasis> Mg(NO<sub>3</sub>)<sub>2</sub> = 0,3000 L <m:math><m:mo>×</m:mo></m:math> <emphasis effect="italics">M</emphasis> Mg(NO<sub>3</sub>)<sub>2</sub><newline/> <emphasis effect="italics">M</emphasis> Mg(NO<sub>3</sub>)<sub>2</sub> = 1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup> <emphasis effect="italics">M</emphasis><newline/> 0,2000 L <m:math><m:mo>×</m:mo></m:math> 2,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup> <emphasis effect="italics">M</emphasis> NaF = 0,3000 L <m:math><m:mo>×</m:mo></m:math> <emphasis effect="italics">M</emphasis> NaF<newline/> <emphasis effect="italics">M</emphasis> NaF = 1,33 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup> <emphasis effect="italics">M</emphasis><newline/> jónamargfeldi = (1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup>)(1,33 <m:math><m:mo>×</m:mo></m:math> 10<sup>–3</sup>)<sup>2</sup> = 1,77 <m:math><m:mo>×</m:mo></m:math> 10<sup>–9</sup> Þetta gildi er minna en <emphasis effect="italics">K</emphasis><sub>sp</sub>, þannig að engin útfelling mun eiga sér stað.<newline/> (d) MgF<sub>2</sub> er minna leysanlegt við 27 °C en við 18 °C. Þar sem viðbættur varmi virkar eins og viðbætt hvarfefni, þegar hann birtist á myndefnahliðinni, segir lögmál Le Châteliers að jafnvægið muni færast yfir á hvarfefnahliðina til að vinna gegn álaginu. Afleiðingin er sú að minna af efninu leysist upp. Þetta ástand er til staðar í okkar tilfelli. Þess vegna er efnahvarfið útvermið.</para></solution>
+</exercise>
+<exercise id="fs-idp12964976">
+<problem id="fs-idp12965232">
+<para id="fs-idp12965488">Hver af eftirfarandi efnasamböndum, þegar þau eru leyst upp í 0,01-<emphasis effect="italics">M</emphasis> lausn af HClO<sub>4</sub>, hefur meiri leysni en í hreinu vatni: CuCl, CaCO<sub>3</sub>, MnS, PbBr<sub>2</sub>, CaF<sub>2</sub>? Útskýrðu svarið.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp12972608">
+<problem id="fs-idp12972864">
+<para id="fs-idp12973120">Hver af eftirfarandi efnasamböndum, þegar þau eru leyst upp í 0,01-<emphasis effect="italics">M</emphasis> lausn af HClO<sub>4</sub>, hefur meiri leysni en í hreinu vatni: AgBr, BaF<sub>2</sub>, Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>, ZnS, PbI<sub>2</sub>? Útskýrðu svarið.</para></problem>
+<solution id="fs-idp12976624">
+<para id="fs-idp12976880">BaF<sub>2</sub>, Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>, ZnS; hvert þeirra er salt af veikri sýru og <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mn>+</m:mn></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> úr perklórsýru dregur úr jafnvægisstyrk anjónarinnar og eykur þar með styrk katjónanna</para>
+</solution>
+</exercise>
+<exercise id="fs-idp12981920">
+<problem id="fs-idp12982176">
+<para id="fs-idp12982432">Hver eru áhrifin á magn fasts Mg(OH)<sub>2</sub> sem leysist upp og styrk Mg<sup>2+</sup> og OH<sup>–</sup> þegar hverju af eftirfarandi er bætt við efnablöndu af föstu Mg(OH)<sub>2</sub> og vatni í jafnvægi?</para>
+<para id="fs-idp12984528">(a) MgCl<sub>2</sub></para>
+<para id="fs-idp12985168">(b) KOH</para>
+<para id="fs-idp12985552">(c) HClO<sub>4</sub></para>
+<para id="fs-idp12986192">(d) NaNO<sub>3</sub></para>
+<para id="fs-idp12986832">(e) Mg(OH)<sub>2</sub></para></problem>
+</exercise>
+<exercise id="fs-idp12990000">
+<problem id="fs-idp12990256">
+<para id="fs-idp12990512">Hver eru áhrifin á magn CaHPO<sub>4</sub> sem leysist upp og styrk Ca<sup>2+</sup> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> þegar hverju af eftirfarandi er bætt við efnablöndu af föstu CaHPO<sub>4</sub> og vatni í jafnvægi?</para>
+<para id="fs-idp12993888">(a) CaCl<sub>2</sub></para>
+<para id="fs-idp12994528">(b) HCl</para>
+<para id="fs-idp12994912">(c) KClO<sub>4</sub></para>
+<para id="fs-idp12995552">(d) NaOH</para>
+<para id="fs-idp12995936">(e) CaHPO<sub>4</sub></para>
+</problem>
+<solution id="fs-idp12996704">
+<para id="fs-idp12996960">Áhrif á magn fasts CaHPO<sub>4</sub>, [Ca<sup>2+</sup>], [OH<sup>–</sup>]: (a) eykst, eykst, minnkar; (b) minnkar, eykst, minnkar; (c) engin áhrif, engin áhrif, engin áhrif; (d) minnkar, eykst, minnkar; (e) eykst, engin áhrif, engin áhrif</para>
+</solution>
+</exercise>
+<exercise id="fs-idp12998992">
+<problem id="fs-idp12999248">
+<para id="fs-idp12999504">Auðkennið allar efnategundir sem eru til staðar í vatnslausn af Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> og raðið þessum tegundum í lækkandi röð eftir styrk þeirra. (Vísbending: Mundu að <m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>3−</m:mtext></m:mrow></m:msup></m:mrow></m:math> jónin er veikur basi.)</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp13121024">
+<term>tengd jafnvægi (e. coupled equilibria)</term>
+<meaning id="fs-idp13121024-meaning">kerfi sem einkennist af samtímis jafnvægi tveggja eða fleiri efnahvarfa sem deila einu eða fleiri hvarfefnum eða myndefnum</meaning>
+</definition>
+</glossary>
+</document>

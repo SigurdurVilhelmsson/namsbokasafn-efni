@@ -1,0 +1,15 @@
+{
+  "moduleId": "m68863",
+  "chapter": "appendices",
+  "timestamp": "2026-03-20T12:08:07.184Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 5,
+      "translated": 6,
+      "diff": 1,
+      "direction": "overproduction"
+    }
+  ]
+}

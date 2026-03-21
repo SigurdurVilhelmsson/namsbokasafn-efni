@@ -32,7 +32,7 @@ kilometer (km)
 angstrom (Å)
 
 <!-- SEG:m68861:entry:auto-12 -->
-= 10^–8^ cm (exact, definition)[[BR]]= 10^–10^ m (exact, definition)
+= 10[[sup:–8]] cm (exact, definition)[[BR]]= 10[[sup:–10]] m (exact, definition)
 
 <!-- SEG:m68861:entry:auto-13 -->
 yard (yd)
@@ -59,19 +59,19 @@ Units of Volume
 liter (L)
 
 <!-- SEG:m68861:entry:auto-21 -->
-= 0.001 m^3^ (exact, definition)[[BR]]= 1000 cm^3^ (exact, definition)[[BR]]= 1.057 (US) quarts
+= 0.001 m[[sup:3]] (exact, definition)[[BR]]= 1000 cm[[sup:3]] (exact, definition)[[BR]]= 1.057 (US) quarts
 
 <!-- SEG:m68861:entry:auto-22 -->
 milliliter (mL)
 
 <!-- SEG:m68861:entry:auto-23 -->
-= 0.001 L (exact, definition)[[BR]]= 1 cm^3^ (exact, definition)
+= 0.001 L (exact, definition)[[BR]]= 1 cm[[sup:3]] (exact, definition)
 
 <!-- SEG:m68861:entry:auto-24 -->
 microliter [[MATH:1]]
 
 <!-- SEG:m68861:entry:auto-25 -->
-= 10^–6^ L (exact, definition)[[BR]]= 10^–3^ cm^3^ (exact, definition)
+= 10[[sup:–6]] L (exact, definition)[[BR]]= 10[[sup:–3]] cm[[sup:3]] (exact, definition)
 
 <!-- SEG:m68861:entry:auto-26 -->
 liquid quart (US)
@@ -110,7 +110,7 @@ milligram (mg)
 kilogram (kg)
 
 <!-- SEG:m68861:entry:auto-38 -->
-= 1000 g (exact, definition)[[BR]]= 2.205 lb [footnote: Strictly speaking, the ounce and pound are units of weight, *W* (a force equal to the product of mass and gravitational acceleration, *W* = *mg*). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for *g* at the surface of the earth.]
+= 1000 g (exact, definition)[[BR]]= 2.205 lb {{fn}}Strictly speaking, the ounce and pound are units of weight, {{i}}W{{/i}} (a force equal to the product of mass and gravitational acceleration, {{i}}W{{/i}} = {{i}}mg{{/i}}). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for {{i}}g{{/i}} at the surface of the earth.{{/fn}}
 
 <!-- SEG:m68861:entry:auto-39 -->
 ton (metric)
@@ -155,19 +155,19 @@ Units of Energy
 1 thermochemical calorie (cal)
 
 <!-- SEG:m68861:entry:auto-53 -->
-= 4.184 [[MATH:2]] 10^7 ^ erg
+= 4.184 [[MATH:2]] 10[[sup:7 ]] erg
 
 <!-- SEG:m68861:entry:auto-54 -->
 erg
 
 <!-- SEG:m68861:entry:auto-55 -->
-= 10^–7^ J (exact, definition)
+= 10[[sup:–7]] J (exact, definition)
 
 <!-- SEG:m68861:entry:auto-56 -->
 electron-volt (eV)
 
 <!-- SEG:m68861:entry:auto-57 -->
-= 1.60218 [[MATH:3]] 10^−19^ J = 23.061 kcal mol^−1^
+= 1.60218 [[MATH:3]] 10[[sup:−19]] J = 23.061 kcal mol[[sup:−1]]
 
 <!-- SEG:m68861:entry:auto-58 -->
 liter∙atmosphere
@@ -185,7 +185,7 @@ nutritional calorie (Cal)
 British thermal unit (BTU)
 
 <!-- SEG:m68861:entry:auto-63 -->
-= 1054.804 J [footnote: BTU is the amount of energy needed to heat one pound of water by one degree Fahrenheit. Therefore, the exact relationship of BTU to joules and other energy units depends on the temperature at which BTU is measured. 59 °F (15 °C) is the most widely used reference temperature for BTU definition in the United States. At this temperature, the conversion factor is the one provided in this table.]
+= 1054.804 J {{fn}}BTU is the amount of energy needed to heat one pound of water by one degree Fahrenheit. Therefore, the exact relationship of BTU to joules and other energy units depends on the temperature at which BTU is measured. 59 °F (15 °C) is the most widely used reference temperature for BTU definition in the United States. At this temperature, the conversion factor is the one provided in this table.{{/fn}}
 
 <!-- SEG:m68861:entry:auto-64 -->
 Units of Pressure
@@ -200,16 +200,16 @@ torr
 pascal (Pa)
 
 <!-- SEG:m68861:entry:auto-68 -->
-= N m^–2^ (exact, definition)[[BR]]= kg m^–1^ s^–2^ (exact, definition)
+= N m[[sup:–2]] (exact, definition)[[BR]]= kg m[[sup:–1]] s[[sup:–2]] (exact, definition)
 
 <!-- SEG:m68861:entry:auto-69 -->
 atmosphere (atm)
 
 <!-- SEG:m68861:entry:auto-70 -->
-= 760 mm Hg (exact, definition)[[BR]]= 760 torr (exact, definition)[[BR]]= 101,325 N m^–2^ (exact, definition)[[BR]]= 101,325 Pa (exact, definition)
+= 760 mm Hg (exact, definition)[[BR]]= 760 torr (exact, definition)[[BR]]= 101,325 N m[[sup:–2]] (exact, definition)[[BR]]= 101,325 Pa (exact, definition)
 
 <!-- SEG:m68861:entry:auto-71 -->
 bar
 
 <!-- SEG:m68861:entry:auto-72 -->
-= 10^5^ Pa (exact, definition)[[BR]]= 10^5^ kg m^–1^ s^–2^ (exact, definition)
+= 10[[sup:5]] Pa (exact, definition)[[BR]]= 10[[sup:5]] kg m[[sup:–1]] s[[sup:–2]] (exact, definition)

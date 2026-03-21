@@ -1,0 +1,127 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Sjálfsprotti</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68816</md:content-id>
+  <md:title>Sjálfsprotti</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Greint á milli sjálfsprottinna og ósjálfsprottinna ferla</item><item>Lýst dreifingu efnis og orku sem fylgir ákveðnum sjálfsprottnum ferlum</item></list></md:abstract>
+  <md:uuid>2ede4220-1cbf-413c-a0b2-fe8139651991</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp116177632">Ferli hafa náttúrulega tilhneigingu til að eiga sér stað í eina átt við tilteknar aðstæður. Vatn rennur náttúrulega niður á við, en til að það renni upp á við þarf utanaðkomandi íhlutun, svo sem notkun dælu. Járn sem er útsett fyrir andrúmslofti jarðar tærist, en ryð breytist ekki í járn án markvissrar efnafræðilegrar meðhöndlunar. <term id="term-00001">Sjálfsprottið ferli (e. spontaneous process)</term> er ferli sem á sér stað náttúrulega við ákveðnar aðstæður. <term id="term-00002">Ósjálfsprottið ferli (e. nonspontaneous process)</term> á sér hins vegar ekki stað nema það sé „knúið áfram“ af stöðugri orkuinnspýtingu frá utanaðkomandi uppsprettu. Ferli sem er sjálfsprottið í eina átt við tilteknar aðstæður er ósjálfsprottið í öfuga átt. Við stofuhita og dæmigerðan loftþrýsting mun ís til dæmis bráðna sjálfkrafa, en vatn mun ekki frjósa sjálfkrafa.</para>
+<para id="fs-idp3956976">Sjálfsprotti ferlis er <emphasis effect="italics">ekki</emphasis> í tengslum við hraða ferlisins. Sjálfsprottin breyting getur verið svo hröð að hún er nánast samstundis eða svo hæg að ekki er hægt að fylgjast með henni á neinum raunhæfum tíma. Til að lýsa þessu hugtaki skulum við skoða hrörnun geislavirkra samsæta, efni sem fjallað er ítarlegar um í kaflanum um kjarnaefnafræði. Geislavirk hrörnun er samkvæmt skilgreiningu sjálfsprottið ferli þar sem kjarnar óstöðugra samsæta gefa frá sér geislun þegar þeim er breytt í stöðugri kjarna. Öll hrörnunarferli eiga sér stað sjálfkrafa, en hraðinn sem mismunandi samsætur hrörna á er mjög breytilegur. Teknetín-99m er vinsæl geislasamsæta fyrir læknisfræðilegar myndgreiningarrannsóknir sem gengst undir tiltölulega hraða hrörnun og sýnir um það bil sex klukkustunda helmingunartíma. Úran-238 er algengasta samsæta úrans og hrörnun þess á sér stað mun hægar og sýnir helmingunartíma sem er meira en fjórir milljarðar ára (<link target-id="CNX_Chem_16_01_decayrates"/>).</para>
+<figure id="CNX_Chem_16_01_decayrates" class="scaled-down">
+<media id="fs-idp34729504" alt="A graph of two lines is shown where the y-axis is labeled, “amount of isotope remaining ( percent sign ),” and has values zero through one hundred, in increments of ten, written along the axis. The x-axis is labeled, “time ( hours )” and has values zero through seven, in increments of one, written along the axis. The first graph, drawn with a blue line, begins at the top left value of one hundred on the y-axis and zero on the x-axis and falls steeply over the first three minutes, then the graphed line becomes almost horizontal until it reaches seven minutes on the x-axis. The second graph, drawn in red, begins at the same point as the first, but remains perfectly horizontal with no change along the y-axis. A legend labels the red line as, 'U dash 238,' and the blue line as, 'T c dash 99 m'.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_16_01_decayrates.jpg"/>
+</media>
+<caption>Bæði U-238 og Tc-99m gangast undir sjálfsprottna geislavirka hrörnun, en á gjörólíkum hraða. Á einni viku mun nánast allt Tc-99m sýni hafa hrörnað en ekkert af U-238 sýninu.</caption>
+</figure>
+<para id="fs-idm7164864">Sem annað dæmi má nefna umbreytingu demants í grafít (<link target-id="CNX_Chem_16_01_carbon"/>).</para>
+<figure id="CNX_Chem_16_01_carbon" class="scaled-down">
+<media id="fs-idp24588688" alt="Two pairs of images are shown. The left pair, labeled, “C, ( diamond ),” has a picture of a diamond held by a pair of plyers and a diagram of the molecular arrangement. The second pair, labeled, “C ( graphite ),” has a picture of a large, black, slightly shiny rock and a diagram of four sheets composed of many atoms arranged in large squares in a stacked arrangement with space between each.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_16_01_carbon.jpg"/></media>
+<caption>Umbreyting kolefnis úr demantsfjölbreytunni í grafítfjölbreytuna er sjálfsprottin við venjulegan þrýsting, en hraði hennar er ómælanlega hægur við lágt til miðlungshátt hitastig. Þetta ferli er þekkt sem <emphasis effect="italics">grafítmyndun</emphasis> og hægt er að auka hraða þess í auðmælanleg gildi við hitastig á bilinu 1000–2000 K. (myndinneign „demantur“: breyting á verki eftir „Fancy Diamonds“/Flickr; myndinneign „grafít“: breyting á verki eftir images-of-elements.com/carbon.php)</caption>
+</figure>
+<equation id="fs-idm44290000" class="unnumbered"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mtext>diamond</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>C</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mtext>graphite</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp124196272">Fasamyndin fyrir kolefni sýnir að grafít er stöðugt form þessa frumefnis við venjulegan loftþrýsting, en demantur er stöðuga fjölbreytan við mjög háan þrýsting, eins og þann sem er til staðar við jarðfræðilega myndun þess. Varroaflfræðilegir útreikningar af því tagi sem lýst er í síðasta hluta þessa kafla benda til þess að umbreyting demants í grafít við venjulegan þrýsting eigi sér stað sjálfkrafa, en samt sést að demantar eru til og haldast við þessar aðstæður. Þrátt fyrir að ferlið sé sjálfsprottið við dæmigerðar umhverfisaðstæður er hraði þess afar hægur; því eru demantar í raun og veru „eilífir“ í öllum hagnýtum tilgangi. Aðstæður sem þessar leggja áherslu á mikilvægan greinarmun á varroaflfræðilegum og hvarfhvatafræðilegum þáttum ferlis. Í þessu tiltekna tilviki er sagt að demantar séu <emphasis effect="italics">varroaflfræðilega óstöðugir</emphasis> en <emphasis effect="italics">hvarfhvatalega stöðugir</emphasis> við umhverfisaðstæður.</para>
+<section id="fs-idp11303728">
+<title>Dreifing efnis og orku</title>
+<para id="fs-idp148339312">Til að halda áfram umræðunni um varroaflfræðileg hugtök í þeim tilgangi að spá fyrir um sjálfsprotta skulum við nú íhuga einangrað kerfi sem samanstendur af tveimur flöskum sem eru tengdar með lokuðum loka. Í upphafi er kjörgas í annarri flöskunni og hin flaskan er tóm (<emphasis effect="italics">P</emphasis> = 0). (<link target-id="CNX_Chem_16_02_Gas"/>). Þegar lokinn er opnaður þenst gasið sjálfkrafa út til að fylla báðar flöskurnar jafnt. Ef við rifjum upp skilgreininguna á þrýstings-rúmmálsvinnu úr kaflanum um varmaefnafræði, athugið að engin vinna hefur verið unnin vegna þess að þrýstingurinn í lofttæmi er núll.</para>
+<equation id="fs-idm38278672" class="unnumbered"><m:math><m:mrow><m:mi>w</m:mi><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mi>P</m:mi><m:mtext>Δ</m:mtext><m:mi>V</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mspace width="5em"/><m:mo stretchy="false">(</m:mo><m:mi>P</m:mi><m:mo>=</m:mo><m:mtext>0 in a vacuum</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm42330576">Athugið einnig að þar sem kerfið er einangrað hefur enginn hiti verið skipt við umhverfið (<emphasis effect="italics">q</emphasis> = 0). <emphasis effect="italics">Fyrsta lögmál varmafræðinnar</emphasis> staðfestir að engin breyting hefur orðið á innri orku kerfisins vegna þessa ferlis.</para>
+<equation id="fs-idp27062144" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>U</m:mi><m:mo>=</m:mo><m:mi>q</m:mi><m:mo>+</m:mo><m:mi>w</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mn>0</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math></equation>
+<para id="fs-idm47467840">Sjálfsprotti þessa ferlis er því ekki afleiðing neinnar orkubreytingar sem fylgir ferlinu. Þess í stað virðist drifkrafturinn tengjast <emphasis effect="italics">meiri og jafnari dreifingu efnis</emphasis> sem verður þegar gasið fær að þenjast út. Í upphafi samanstóð kerfið af einni flösku sem innihélt efni og annarri flösku sem innihélt ekkert. Eftir að sjálfsprottna útþenslan átti sér stað dreifðist efnið bæði víðar (tók tvöfalt upprunalegt rúmmál sitt) og jafnar (var til staðar í jöfnu magni í hvorri flösku).</para>
+<figure id="CNX_Chem_16_02_Gas">
+<media id="fs-idp117381408" alt="A diagram shows two two-sided flasks connected by a right-facing arrow labeled “Spontaneous” and a left-facing arrow labeled “Nonspontaneous.” Each pair of flasks are connected to one another by a tube with a stopcock. In the left pair of flasks, the left flask contains thirty particles evenly dispersed while the right flask contains nothing and the stopcock is closed. The right pair of flasks has an open stopcock and equal numbers of particles in both flasks.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_16_02_Gas.jpg"/></media>
+<caption>Einangrað kerfi samanstendur af kjörgasi í einni flösku sem er tengd með lokuðum loka við aðra flösku sem inniheldur lofttæmi. Þegar lokinn er opnaður dreifist gasið sjálfkrafa jafnt á milli flaskanna.</caption>
+</figure>
+<para id="fs-idp202853936">Íhugið nú tvo hluti með mismunandi hitastig: hlut X með hitastigið <emphasis effect="italics">T</emphasis><sub>X</sub> og hlut Y með hitastigið <emphasis effect="italics">T</emphasis><sub>Y</sub>, þar sem <emphasis effect="italics">T</emphasis><sub>X</sub> > <emphasis effect="italics">T</emphasis><sub>Y</sub> (<link target-id="CNX_Chem_16_02_Temperature"/>). Þegar þessir hlutir komast í snertingu flæðir hiti sjálfkrafa frá heitari hlutnum (X) yfir í þann kaldari (Y). Þetta samsvarar tapi á varmaorku hjá X og aukningu á varmaorku hjá Y.</para>
+<equation id="fs-idp36377040" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mtext>X</m:mtext></m:msub><m:mo>&lt;</m:mo><m:mn>0</m:mn><m:mspace width="2em"/><m:mtext>and</m:mtext><m:mspace width="2em"/><m:msub><m:mi>q</m:mi><m:mtext>Y</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mtext>X</m:mtext></m:msub><m:mo>></m:mo><m:mn>0</m:mn></m:mrow></m:math></equation>
+<para id="fs-idp120750768">Frá sjónarhóli þessa tveggja hluta kerfis varð enginn hreinn ávinningur eða tap á varmaorku, heldur var tiltæk varmaorka endurdreifð á milli hlutanna tveggja. Þetta sjálfsprottið ferli leiddi til <emphasis effect="italics">jafnari dreifingar orku</emphasis>.</para>
+<figure id="CNX_Chem_16_02_Temperature" class="scaled-down">
+<media id="fs-idp106848832" alt="Two diagrams are shown. The left diagram is comprised of two separated squares; the left is red and labeled “X” and the right is blue and labeled “Y.” Below this diagram is the label “T subscript X, a greater than sign, T subscript Y.” The right diagram shows the boxes next to one another, shaded red on the left, blue on the right, and blended red and blue together in the middle. The left box is red and labeled “X,” the right is blue and labeled “Y” and a right-facing arrow labeled “Heat” is written above them. Below this diagram is the label “X and Y in contact.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_16_02_Temperature.jpg"/></media>
+<caption>Þegar tveir hlutir með mismunandi hitastig komast í snertingu flæðir hiti sjálfkrafa frá heitari hlutnum yfir í þann kaldari.</caption>
+</figure>
+<para id="fs-idp55398608">Eins og sýnt er með ferlunum tveimur sem lýst er hér að ofan, er mikilvægur þáttur í að ákvarða sjálfsprottni ferlis að hve miklu leyti það breytir dreifingu efnis og/eða orku. Í báðum tilvikum átti sér stað sjálfsprottið ferli sem leiddi til jafnari dreifingar efnis eða orku.</para>
+<example id="fs-idp106049744">
+<para id="fs-idp152996288"><title>Endurdreifing efnis í sjálfsprotnu ferli</title>Lýstu því hvernig efni endurdreifist þegar eftirfarandi sjálfsprottin ferli eiga sér stað:</para>
+<para id="fs-idm25379552">(a) Fast efni þurrgufar.</para>
+<para id="fs-idm37056304">(b) Gas þéttist.</para>
+<para id="fs-idp198218368">(c) Matarlitardropa er bætt í vatnsglas og myndar lausn með jöfnum lit.</para>
+<para id="fs-idm3905664"><title>Lausn</title></para>
+<!-- figure handled separately -->
+<para id="fs-idm48323968">(a) Þurrgunfun er umbreyting fasts efnis (tiltölulega hár eðlismassi) í gas (mun minni eðlismassi). Þetta ferli leiðir til mun meiri dreifingar efnis, þar sem sameindirnar munu taka mun meira rúmmál eftir fasaumbreytinguna úr föstu efni í gas.</para>
+<para id="fs-idm4737472">(b) Þétting er umbreyting gass (tiltölulega lágur eðlismassi) í vökva (mun meiri eðlismassi). Þetta ferli leiðir til mun minni dreifingar efnis, þar sem sameindirnar munu taka mun minna rúmmál eftir fasaumbreytinguna úr gasi í vökva.</para><para id="fs-idp54655312">(c) Ferlið sem um ræðir er flæði. Þetta ferli leiðir til jafnari dreifingar efnis, þar sem upphafsástand kerfisins felur í sér tvö svæði með mismunandi styrk litarefnis (hár í dropanum, núll í vatninu) og lokaástand kerfisins inniheldur einn styrk litarefnis út í gegn.</para>
+<para id="fs-idp118266672"><title>Skoðaðu þekkingu þína</title>Lýstu því hvernig orka endurdreifist þegar skeið við stofuhita er sett í bolla af heitu kaffi.</para>
+<note id="fs-idp37406832">
+<title>Answer:</title>
+<para id="fs-idm37784928">Hiti mun sjálfkrafa flæða frá heitari hlutnum (kaffinu) yfir í kaldari hlutinn (skeiðina), sem leiðir til jafnari dreifingar varmaorku þegar skeiðin hitnar og kaffið kólnar.</para>
+</note>
+</example>
+<figure id="CNX_Chem_16_02_Process" class="scaled-down">
+<media id="fs-idp205626528" alt="This figure has three photos labeled, “a,” “b,” and “c.” Photo a shows a glass with a solid in water. There is steam or smoke coming from the top of the glass. Photo b shows the bottom half of a glass with water sticking to its outside surface. Photo c shows three images of the same container. The first shows a clear liquid in the container. The second shows a red liquid mixing with the clear liquid in the container. The third shows a red liquid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_16_02_Process.jpg"/></media>
+<caption>(heimild a: breyting á verki eftir Jenny Downing; heimild b: breyting á verki eftir „Fuzzy Gerdes“/Flickr; heimild c: breyting á verki eftir Paul A. Flowers)</caption>
+</figure>
+</section>
+<section id="fs-idp205751344" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp119937936">Efna- og eðlisfræðileg ferli hafa náttúrulega tilhneigingu til að eiga sér stað í eina átt við ákveðnar aðstæður. Sjálfsprottið ferli á sér stað án þess að þörf sé á stöðugri orkuinnspýtingu frá utanaðkomandi uppsprettu, á meðan ósjálfsprottið ferli krefst slíks. Kerfi sem gangast undir sjálfsprottið ferli geta upplifað orkuaukningu eða -tap, en þau munu upplifa breytingu á því hvernig efni og/eða orka dreifist innan kerfisins.</para>
+</section>
+<section id="fs-idp129007792" class="exercises">
+<title>Efnafræði - Verkefni í lok kafla</title>
+<exercise id="fs-idp114103472">
+<problem id="fs-idp47296000">
+<para id="fs-idp44432768">Hvað er sjálfsprottið efnahvarf?</para>
+</problem>
+<solution id="fs-idm37608304">
+<para id="fs-idp3338160">Efnahvarf hefur náttúrulega tilhneigingu til að eiga sér stað og gerist án stöðugrar orkuinnspýtingar frá utanaðkomandi uppsprettu.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp120021296">
+<problem id="fs-idp39639056">
+<para id="fs-idp4177920">Hvað er ósjálfsprottið efnahvarf?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp1018800">
+<problem id="fs-idp39629728">
+<para id="fs-idm38492096">Tilgreindu hvort eftirfarandi ferli séu sjálfsprottin eða ósjálfsprottin.</para>
+<para id="fs-idp120550832">(a) Fljótandi vatn frýs við hitastig undir frostmarki sínu</para>
+<para id="fs-idm37736192">(b) Fljótandi vatn frýs við hitastig yfir frostmarki sínu</para>
+<para id="fs-idm48959584">(c) Bruni bensíns</para>
+<para id="fs-idp38555600">(d) Bolta er kastað upp í loftið</para>
+<para id="fs-idp119506064">(e) Regndropi fellur til jarðar</para>
+<para id="fs-idp122965168">(f) Járn ryðgar í röku andrúmslofti</para>
+</problem>
+<solution id="fs-idp150227776">
+<para id="fs-idm42437472">(a) sjálfsprottið; (b) ósjálfsprottið; (c) sjálfsprottið; (d) ósjálfsprottið; (e) sjálfsprottið; (f) sjálfsprottið</para>
+</solution>
+</exercise>
+<exercise id="fs-idp158359616">
+<problem id="fs-idp129321088">
+<para id="fs-idm2629152">Helíumfyllt blaðra tæmist sjálfkrafa yfir nótt þegar He-atóm flæða gegnum vegg blöðrunnar. Lýstu endurdreifingu efnis og/eða orku sem fylgir þessu ferli.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm103719792">
+<problem id="fs-idp82208848">
+<para id="fs-idp143371728">Mörg plastefni eru lífrænar fjölliður sem innihalda kolefni og vetni. Oxun þessara plastefna í lofti til að mynda koltvísýring og vatn er sjálfsprottið ferli; þó hafa plastefni tilhneigingu til að vera viðvarandi í umhverfinu. Útskýrðu.</para>
+</problem>
+<solution id="fs-idp119412752">
+<para id="fs-idp65039344">Þrátt fyrir að oxun plastefna sé sjálfsprottin er oxunarhraðinn mjög hægur. Plastefni eru því hvarfhvatalega stöðug og brotna ekki niður að marki, jafnvel yfir tiltölulega langan tíma.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp119850016">
+<term>ósjálfsprottið ferli (e. nonspontaneous process)</term>
+<meaning id="fs-idp119850016-meaning">ferli sem krefst stöðugrar orkuinnspýtingar frá utanaðkomandi uppsprettu</meaning>
+</definition>
+<definition id="fs-idm57405936">
+<term>sjálfsprottin breyting (e. spontaneous change)</term>
+<meaning id="fs-idm57405936-meaning">ferli sem á sér stað án stöðugrar orkuinnspýtingar frá utanaðkomandi uppsprettu</meaning>
+</definition>
+</glossary>
+</document>

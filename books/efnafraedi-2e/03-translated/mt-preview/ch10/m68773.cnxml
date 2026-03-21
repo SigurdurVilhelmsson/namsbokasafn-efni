@@ -1,0 +1,588 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Grindargerðir í kristalkenndum fastefnum</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68773</md:content-id>
+  <md:title>Grindargerðir í kristalkenndum fastefnum</md:title>
+  <md:abstract><para id="para-00001">Þegar þessum kafla lýkur muntu geta:</para><list id="list-00001"><item>Lýst fyrirkomulagi frumeinda og jóna í kristalgerðum</item><item>Reiknað jónradíusa með því að nota mál grindareininga</item><item>Útskýrt notkun mælinga með röntgengeisladreifingu við að ákvarða kristalgerðir</item></list></md:abstract>
+  <md:uuid>a8b4c42a-9ddf-4669-9143-2c4feec1dbff</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp100544560">Yfir 90% af náttúrulegum og manngerðum föstum efnum eru kristalkennd. Flest föst efni myndast með reglulegu fyrirkomulagi einda sinna vegna þess að heildaraðdráttarkraftar milli einda eru hámarkaðir og heildarorka milli sameinda er lágmörkuð þegar eindirnar pakkast á sem hagkvæmastan hátt. Reglulegt fyrirkomulag á frumeindastigi endurspeglast oft á stórsæju stigi. Í þessari einingu munum við kanna nokkur smáatriði um gerðir kristalkenndra fastefna úr málmum og jónum og læra hvernig þessar gerðir eru ákvarðaðar með tilraunum.</para>
+<section id="fs-idp80429552">
+<title>Gerðir málma</title>
+<para id="fs-idp31452144">Við hefjum umfjöllun okkar um kristalkennd föst efni með því að skoða frumefni úr málmum, sem eru tiltölulega einföld þar sem hvert þeirra inniheldur aðeins eina tegund frumeindar. Hreinn málmur er kristalkennt fast efni þar sem málmfrumeindum er pakkað þétt saman í endurteknu mynstri. Sumir eiginleikar málma almennt, svo sem sveigjanleiki þeirra og teygjanleiki, stafa að miklu leyti af því að eins frumeindir raðast í reglulegt mynstur. Mismunandi eiginleikar eins málms samanborið við annan ráðast að hluta til af stærð frumeinda þeirra og sérkennum rúmfyrirkomulags þeirra. Við munum kanna líkindi og mun á fjórum algengustu kristalgerðum málma í köflunum sem fylgja.</para>
+</section>
+<section id="fs-idp31505600">
+<title>Grindareiningar málma</title>
+<para id="fs-idm2181616">Gerð kristalkennds fastefnis, hvort sem það er málmur eða ekki, er best lýst með því að skoða einföldustu endurtekningareiningu þess, sem er kölluð <term id="term-00001">grindareining (e. unit cell)</term> þess. Grindareiningin samanstendur af grindarpunktum sem tákna staðsetningu frumeinda eða jóna. Öll gerðin samanstendur síðan af þessari grindareiningu sem endurtekur sig í þremur víddum, eins og sýnt er á <link target-id="CNX_Chem_10_06_UnitCell1"/>.</para>
+<figure id="CNX_Chem_10_06_UnitCell1" class="scaled-down">
+<media id="fs-idp111181360" alt="A diagram of two images is shown. In the first image, a cube with a sphere at each corner is shown. The cube is labeled “Unit cell” and the spheres at the corners are labeled “Lattice points.” The second image shows the same cube, but this time it is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_UnitCell1.jpg"/>
+</media>
+<caption>Grindareining sýnir staðsetningu grindarpunkta sem endurtaka sig í allar áttir.</caption>
+</figure>
+<para id="fs-idp68860560">Við skulum hefja rannsókn okkar á kristalgrindargerð og grindareiningum með einföldustu gerðinni og grunngrindareiningunni. Til að sjá þetta fyrir sér, ímyndaðu þér að taka mikinn fjölda eins kúlna, eins og tennisbolta, og raða þeim jafnt í ílát. Einfaldasta leiðin til að gera þetta væri að búa til lög þar sem kúlurnar í einu lagi eru beint fyrir ofan þær í laginu fyrir neðan, eins og sýnt er á <link target-id="CNX_Chem_10_06_SimpleCub1"/>. Þetta fyrirkomulag er kallað <term id="term-00002">einföld teningslaga gerð (e. simple cubic structure)</term> og grindareiningin er kölluð <term id="term-00003">einföld teningslaga grindareining (e. simple cubic unit cell)</term> eða frumstæð teningslaga grindareining.</para>
+<figure id="CNX_Chem_10_06_SimpleCub1" class="scaled-down">
+<media id="fs-idp75647456" alt="A diagram of three images is shown. In the first image, a cube with a sphere at each corner is shown. The spheres at the corners are circled. The second image shows the same cube, but this time the spheres at the corners are larger and shaded in. In the third image, the cube is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_SimpleCub1.jpg"/>
+</media>
+<caption>Þegar málmfrumeindum er raðað með kúlum í einu lagi beint fyrir ofan eða neðan kúlur í öðru lagi, er grindargerðin kölluð einföld teningslaga. Athugið að kúlurnar snertast.</caption>
+</figure>
+<para id="fs-idm2044016">Í einfaldri teningslaga gerð eru kúlurnar ekki pakkaðar eins þétt og þær gætu verið og þær „fylla“ aðeins um 52% af rúmmáli ílátsins. Þetta er tiltölulega óhagkvæmt fyrirkomulag og aðeins einn málmur (pólon, Po) kristallast í einfaldri teningslaga gerð. Eins og sýnt er á <link target-id="CNX_Chem_10_06_SimpleCub2"/> samanstendur fast efni með þessari tegund fyrirkomulags af plani (eða lögum) þar sem hver frumeind snertir aðeins fjóra næstu nágranna í sínu lagi; eina frumeind beint fyrir ofan sig í laginu fyrir ofan; og eina frumeind beint fyrir neðan sig í laginu fyrir neðan. Fjöldi annarra einda sem hver eind í kristalkenndu fastefni snertir er þekktur sem <term id="term-00004">girðitala (e. coordination number)</term> þess. Fyrir pólonfrumeind í einfaldri teningslaga röðun er girðitalan því sex.</para>
+<figure id="CNX_Chem_10_06_SimpleCub2" class="scaled-down">
+<media id="fs-idp759920" alt="A diagram of two images is shown. In the first image, eight stacked cubes that make up one large cube are shown. Three lines that run from top to bottom, front to back and sided to side in the middle of the structure are shaded darker than the rest of the lines. The second image shows the same set of cubes, but this time spheres at the end of each line are numbered; the horizontal line that goes left to right is labeled with a “2” and a “5,” the vertical line is labeled with a “1” and a “6” and the line that goes horizontally front to back is labeled with a “3” and a “4.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_SimpleCub2.jpg"/>
+</media>
+<caption>Frumeind í einfaldri teningslaga grindargerð snertir sex aðrar frumeindir, þannig að hún hefur girðitöluna sex.</caption>
+</figure>
+<para id="fs-idm15054992">Í einfaldri teningslaga grind er grindareiningin sem endurtekur sig í allar áttir teningur sem er skilgreindur af miðjum átta frumeinda, eins og sýnt er á <link target-id="CNX_Chem_10_06_SimpleCub3"/>. Frumeindir á aðliggjandi hornum þessarar grindareiningar snertast, þannig að brúnlengd þessarar einingar er jöfn tveimur atómradíusum, eða einu atómþvermáli. Teningslaga grindareining inniheldur aðeins þá hluta þessara frumeinda sem eru innan hennar. Þar sem frumeind á horni einfaldrar teningslaga grindareiningar er innan samtals átta grindareininga, er aðeins einn áttundi hluti þeirrar frumeindar innan tiltekinnar grindareiningar. Og þar sem hver einföld teningslaga grindareining hefur eina frumeind á hverju af átta „hornum“ sínum, er <m:math><m:mrow><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> frumeind innan einnar einfaldrar teningslaga grindareiningar.</para>
+<figure id="CNX_Chem_10_06_SimpleCub3" class="scaled-down">
+<media id="fs-idm54718224" alt="A diagram of two images is shown. In the first image, eight spheres are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The dots are labeled “Lattice points” while a label under the image reads “Simple cubic lattice cell.” The second image shows the portion of each sphere that lie inside the cube. The corners of the cube are shown with small circles labeled “Lattice points” and the phrase “8 corners” is written below the image.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_SimpleCub3.jpg"/>
+</media>
+<caption>Einföld teningslaga grindareining inniheldur einn áttunda hluta frumeindar á hverju af átta hornum sínum, þannig að hún inniheldur samtals eina frumeind.</caption>
+</figure>
+<example id="fs-idm39353008">
+<para id="fs-idp168483760"><title>Útreikningur á atómradíus og eðlismassa fyrir málma, 1. hluti</title>Brúnlengd grindareiningar alfa-pólons er 336 pm.</para>
+<para id="fs-idp31912208">(a) Ákvarðaðu radíus pólonfrumeindar.</para>
+<para id="fs-idp27972848">(b) Ákvarðaðu eðlismassa alfa-pólons.</para>
+<para id="fs-idm50199232"><title>Lausn</title>Alfa-pólon kristallast í einfaldri teningslaga grindareiningu:</para>
+<media id="fs-idp27312864" class="scaled-down" alt="A diagram shows a cube with a one eighth portion of eight spheres inside the cube, one section in each corner. Along the bottom right side of the cube are two double ended arrows that each stretch along half of the total distance across the cube. Each arrow is labeled “r.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_SimpCube_img.jpg"/>
+</media>
+<para id="fs-idp69327632">(a) Tvær aðliggjandi Po-frumeindir snertast, þannig að brúnlengd þessarar einingar er jöfn tveimur Po-atómradíusum: <emphasis effect="italics">l</emphasis> = 2<emphasis effect="italics">r</emphasis>. Þess vegna er radíus Po <m:math><m:mrow><m:mi>r</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>l</m:mi><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>336 pm</m:mtext></m:mrow><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>168 pm</m:mtext><m:mo>.</m:mo></m:mrow></m:math></para>
+<para id="fs-idp25499616">(b) Eðlismassi er gefinn með <m:math><m:mrow><m:mtext>density</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Eðlismassa pólóns má finna með því að ákvarða eðlismassa grindareiningar þess (massanum sem er innan grindareiningar deilt með rúmmáli grindareiningarinnar). Þar sem grindareining Po inniheldur einn áttunda úr Po-frumeind á hverju af átta hornum sínum, inniheldur grindareiningin eina Po-frumeind.</para>
+<para id="fs-idp79700432">Massa Po-grindareiningar má finna með:</para>
+<equation class="unnumbered" id="fs-idm6438944"><m:math><m:mrow><m:mtext>1 Po unit cell</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 Po atom</m:mtext></m:mrow><m:mrow><m:mtext>1 Po unit cell</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol Po</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>Po atoms</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>208.998</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Po</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>3.47</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm23492592">Rúmmál Po-grindareiningar má finna með:</para>
+<equation class="unnumbered" id="fs-idp81487792"><m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>l</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>336</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−10</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>3.79</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp24905488">(Athugið að brúnlengdinni var breytt úr pm í cm til að fá venjulegar rúmmálseiningar fyrir eðlismassa.)</para>
+<para id="fs-idp39660704">Þess vegna er eðlismassi <m:math><m:mrow><m:mtext>Po</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.471</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>3.79</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>9.16 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></para>
+<para id="fs-idp83271488"><title>Kannaðu þekkingu þína</title>Brúnlengd grindareiningar fyrir nikkel er 0,3524 nm. Eðlismassi Ni er 8,90 g/cm<sup>3</sup>. Kristallast nikkel í einfaldri teningslaga byggingu? Útskýrðu.</para>
+<note id="fs-idp113302880">
+<title>Answer:</title>
+<para id="fs-idp76470512">Nei. Ef Ni væri einföld teningslaga bygging væri eðlismassi þess gefinn með:<newline/> <m:math><m:mrow><m:mtext>1 Ni atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol Ni</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>Ni atoms</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>58.693</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Ni</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>9.746</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math><newline/> <m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>l</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.524</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−8</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>4.376</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math><newline/> Þá væri eðlismassi Ni <m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>9.746</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>4.376</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−23</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>2.23 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math><newline/> Þar sem raunverulegur eðlismassi Ni er ekki nálægt þessu, myndar Ni ekki einfalda teningslaga byggingu.</para>
+</note>
+</example>
+<para id="fs-idp589840">Flestir málmkristallar eru ein af fjórum megingerðum grindareininga. Í bili munum við einbeita okkur að þremur teningslaga grindareiningum: einfaldri teningslaga (sem við höfum þegar séð), <term id="term-00005">miðlægri teningslaga grindareiningu (e. body-centered cubic unit cell)</term> og <term id="term-00006">hliðlægri teningslaga grindareiningu (e. face-centered cubic unit cell)</term> – sem allar eru sýndar í <link target-id="CNX_Chem_10_06_CubUntCll"/>. (Athugið að í raun eru til sjö mismunandi grindarkerfi, sum hver með fleiri en eina gerð af grind, sem gerir samtals 14 mismunandi gerðir af grindareiningum. Við geymum flóknari rúmfræði til síðar í þessum kafla.)</para>
+<figure id="CNX_Chem_10_06_CubUntCll" class="scaled-down">
+<media id="fs-idp131181888" alt="Three pairs of images are shown. The first three images are in a row and are labeled “Lattice point locations” while the second three images are in a row labeled “Cubic unit cells.” The first image in the top row shows a cube with black dots at each corner while the first image in the second row is composed of eight spheres that are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The name under this image reads “Simple cubic.” The second image in the top row shows a cube with black dots at each corner and a red dot in the center while the second image in the second row is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape. The name under this image reads “Body-centered cubic.” The third image in the top row shows a cube with black dots at each corner and red dots in the center of each face while the third image in the second row is composed of eight spheres that are stacked together to form a cube with six more spheres located in the center of each face of the cube. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_CubUntCll.jpg"/>
+</media>
+<caption>Teningslaga grindareiningar málma sýna (á efri myndunum) staðsetningu grindarpunkta og (á neðri myndunum) málmfrumeindir staðsettar í grindareiningunni.</caption>
+</figure>
+<para id="fs-idp78313376">Sumir málmar kristallast í fyrirkomulagi sem hefur teningslaga grindareiningu með frumeindum á öllum hornum og frumeind í miðjunni, eins og sýnt er í <link target-id="CNX_Chem_10_06_BdyCntrdCb"/>. Þetta er kallað <term id="term-00007">miðlægt teningslaga (BCC) fast efni (e. body-centered cubic (bcc) solid)</term>. Frumeindir í hornum BCC-grindareiningar snertast ekki en snerta frumeindina í miðjunni. BCC-grindareining inniheldur tvær frumeindir: einn áttunda úr frumeind á hverju af átta hornum <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn></m:mrow></m:math> frumeind frá hornunum) auk einnar frumeindar úr miðjunni. Sérhver frumeind í þessari byggingu snertir fjórar frumeindir í laginu fyrir ofan og fjórar frumeindir í laginu fyrir neðan. Þannig hefur frumeind í BCC-byggingu girðitöluna átta.</para>
+<figure id="CNX_Chem_10_06_BdyCntrdCb" class="scaled-down">
+<media id="fs-idp131155392" alt="Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center while the second image is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape.  The name under this image reads “Body-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_BdyCntrdCb.jpg"/>
+</media>
+<caption>Í miðlægri teningslaga byggingu snertast frumeindir í tilteknu lagi ekki. Hver frumeind snertir fjórar frumeindir í laginu fyrir ofan og fjórar frumeindir í laginu fyrir neðan.</caption>
+</figure>
+<para id="fs-idm23808480">Frumeindum í BCC-fyrirkomulagi er pakkað mun skilvirkara saman en í einfaldri teningslaga byggingu og taka um 68% af heildarrúmmálinu. Samsmíða málmar með BCC-byggingu eru meðal annars K, Ba, Cr, Mo, W og Fe við stofuhita. (Frumefni eða efnasambönd sem kristallast með sömu byggingu eru sögð vera <term id="term-00008">samsmíða (e. isomorphous)</term>.)</para>
+<para id="fs-idp30613264">Margir aðrir málmar, svo sem ál, kopar og blý, kristallast í fyrirkomulagi sem hefur teningslaga grindareiningu með frumeindum á öllum hornum og í miðju hvers hliðarflatar, eins og sýnt er í <link target-id="CNX_Chem_10_06_FcCntrdCbc"/>. Þetta fyrirkomulag er kallað <term id="term-00009">hliðlægt teningslaga (FCC) fast efni (e. face-centered cubic (fcc) solid)</term>. FCC-grindareining inniheldur fjórar frumeindir: einn áttunda úr frumeind á hverju af átta hornum <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> frumeind frá hornunum) og hálfa frumeind á hverjum af sex hliðarflötum <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> frumeindir frá hliðarflötunum). Frumeindirnar á hornunum snerta frumeindirnar í miðjum aðliggjandi hliðarflata meðfram hornalínum flatanna á teningnum. Vegna þess að frumeindirnar eru á eins grindarpunktum hafa þær eins umhverfi.</para>
+<figure id="CNX_Chem_10_06_FcCntrdCbc" class="scaled-down">
+<media id="fs-idp64550784" alt="Three images are shown. The first image shows a cube with black dots at each corner and red dots in the center of each face of the cube while the second image is composed of eight spheres that are stacked together to form a cube with six more spheres, one located on each face of the structure. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_FcCntrdCbc.jpg"/>
+</media>
+<caption>Hliðlægt teningslaga fast efni hefur frumeindir á hornum og, eins og nafnið gefur til kynna, í miðjum hliðarflata grindareininga sinna.</caption>
+</figure>
+<para id="fs-idp4268832">Frumeindum í FCC-fyrirkomulagi er pakkað eins þétt saman og mögulegt er, þar sem frumeindir taka 74% af rúmmálinu. Þessi bygging er einnig kölluð <term id="term-00010">teningslaga þéttpökkun (CCP) (e. cubic closest packing (ccp))</term>. Í CCP eru þrjú endurtekin lög af sexhyrningslaga frumeindum. Hver frumeind snertir sex frumeindir í sínu eigin lagi, þrjár í laginu fyrir ofan og þrjár í laginu fyrir neðan. Í þessu fyrirkomulagi snertir hver frumeind 12 nágranna og hefur því girðitöluna 12. Sú staðreynd að FCC- og CCP-fyrirkomulag eru jafngild er kannski ekki augljós í fljótu bragði, en hvers vegna þau eru í raun sama byggingin er sýnd í <link target-id="CNX_Chem_10_06_CbcCltPckd"/>.</para>
+<figure id="CNX_Chem_10_06_CbcCltPckd" class="scaled-down">
+<media id="fs-idp31732224" alt="Three images are shown. In the first image, a side view shows a layer of blue spheres, labeled “C” stacked on top of, and sitting in between the gaps in a second layer that is composed of green spheres, labeled “B,” which are sitting atop a purple layer of spheres labeled “A.” A label below this image reads “Side view.” The second image shows a top view of the same layers of spheres, where the top layer is “C,” the second layer is “B” and the lowest layer is “C.” This image is labeled “Top view” and written under this is the phrase “Cubic closest packed structure.” The third image shows an upper view of the side of a cube composed of two sets of the repeating layers shown in the other images. The layers are arranged “C, B, A, C, B, A, C” and the phrase written under this image reads “Rotated view.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_CbcCltPckd.jpg"/>
+</media>
+<caption>CCP-fyrirkomulag samanstendur af þremur endurteknum lögum (ABCABC…) af sexhyrningslaga frumeindum. Frumeindir í CCP-byggingu hafa girðitöluna 12 vegna þess að þær snerta sex frumeindir í sínu lagi, auk þriggja frumeinda í laginu fyrir ofan og þriggja frumeinda í laginu fyrir neðan. Með því að snúa sjónarhorninu okkar getum við séð að CCP-bygging hefur grindareiningu með hlið sem inniheldur frumeind úr lagi A á einu horni, frumeindir úr lagi B þvert yfir hornalínu (á tveimur hornum og í miðri hliðinni) og frumeind úr lagi C á horninu sem eftir er. Þetta er það sama og hliðlæg teningslaga bygging.</caption>
+</figure>
+<para id="fs-idp178963488">Þar sem þéttari pökkun hámarkar heildaraðdráttarkrafta milli frumeinda og lágmarkar heildarorku milli sameinda, pakkast frumeindir í flestum málmum á þennan hátt. Við finnum tvær gerðir af þéttustu pökkun í einföldum málmkristöllum: CCP, sem við höfum þegar kynnst, og <term id="term-00011">sexhyrningslaga þéttasta pökkun (HCP) (e. hexagonal closest packing (hcp))</term> sem sýnd er á <link target-id="CNX_Chem_10_06_ClstPckng2"/>. Báðar samanstanda af endurteknum lögum af sexhyrningslaga frumeindum. Í báðum gerðum er annað lag (B) sett ofan á fyrsta lagið (A) þannig að hver frumeind í öðru laginu er í snertingu við þrjár frumeindir í fyrsta laginu. Þriðja lagið er staðsett á einn af tveimur vegu. Í HCP eru frumeindir í þriðja laginu beint fyrir ofan frumeindir í fyrsta laginu (þ.e. þriðja lagið er einnig af gerð A) og stöflunin samanstendur af víxlum á þéttpökkuðum lögum af gerð A og gerð B (þ.e. ABABAB⋯). Í CCP eru frumeindir í þriðja laginu ekki fyrir ofan frumeindir í hvorugu af fyrstu tveimur lögunum (þ.e. þriðja lagið er af gerð C) og stöflunin samanstendur af víxlum á þéttpökkuðum lögum af gerð A, gerð B og gerð C (þ.e. ABCABCABC⋯). Um tveir þriðju allra málma kristallast í þéttpökkuðum fylkjum með girðitöluna 12. Málmar sem kristallast í HCP-byggingu eru meðal annars Cd, Co, Li, Mg, Na og Zn og málmar sem kristallast í CCP-byggingu eru meðal annars Ag, Al, Ca, Cu, Ni, Pb og Pt.</para>
+<figure id="CNX_Chem_10_06_ClstPckng2" class="scaled-down">
+<media id="fs-idp9696" alt="Two images are shown. The first image, labeled “Hexagonal closest packed,” shows seven green spheres arranged in a circular sheet lying atop another sheet that is the same except the spheres are purple. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating green and purple layers of spheres lie below the first pair. The second image shows seven blue spheres, labeled “Layer C,” arranged in a circular sheet laying atop another sheet, labeled “Layer B” that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating purple and then blue layers of spheres lie below the first pair. The purple layer is labeled “Layer A” and the phrase written below this image reads “Cubic closest packed.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_ClstPckng2.jpg"/>
+</media>
+<caption>Í báðum gerðum þéttustu pökkunar eru frumeindir pakkaðar eins þétt og mögulegt er. Sexhyrningslaga þéttasta pökkun samanstendur af tveimur víxl lögum (ABABAB…). Hliðlæg þéttasta pökkun samanstendur af þremur víxl lögum (ABCABCABC…).</caption>
+</figure>
+<example id="fs-idp79703472">
+<para id="fs-idp29827472"><title>Útreikningur á atómradíus og eðlismassa málma, 2. hluti</title>Kalsíum kristallast í hliðlægri teningslaga byggingu. Brúnlengd grindareiningar þess er 558,8 pm.</para>
+<para id="fs-idm25444464">(a) Hver er atómradíus Ca í þessari byggingu?</para>
+<para id="fs-idm42411680">(b) Reiknaðu eðlismassa Ca.</para>
+<para id="fs-idm41533968"><title>Lausn</title><media id="fs-idm35041920" class="scaled-down" alt="An image of a cube is shown. A one-eighth section of a sphere is shown inside each corner of the cube and a full sphere is shown in the middle of the cube. A line stretched across the front face of the cube from the top left corner to the bottom right corner is labeled “4 r.” The left and bottom sides of the cube are labeled “a.”"><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_Ex100602_img.jpg"/></media></para>
+<para id="fs-idp82336960">(a) Í FCC-byggingu snertast Ca-frumeindir þvert yfir hornalínu hliðarinnar, þannig að lengd hornalínunnar er jöfn fjórum Ca-atómradíusum (d = 4<emphasis effect="italics">r</emphasis>). Tvær aðliggjandi brúnir og hornalína hliðarinnar mynda rétthyrndan þríhyrning, þar sem lengd hvorrar hliðar er jöfn 558,8 pm og lengd langhliðarinnar er jöfn fjórum Ca-atómradíusum:</para>
+<equation class="unnumbered" id="fs-idp26872608"><m:math><m:mrow><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>d</m:mi><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width="0.2em"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width="0.2em"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>4</m:mn><m:mi>r</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp36481888">Lausn þessa gefur <m:math><m:mrow><m:mi>r</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width="0.2em"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width="0.2em"/><m:mtext>pm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mn>16</m:mn></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>197.6 pm for a Ca radius</m:mtext><m:mo>.</m:mo></m:mrow></m:math></para><para id="fs-idp129403904">(b) Eðlismassi er gefinn með <m:math><m:mrow><m:mtext>density</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Eðlismassa kalsíums má finna með því að ákvarða eðlismassa grindareiningar þess: til dæmis, massanum sem er innan grindareiningar deilt með rúmmáli grindareiningarinnar. Hliðlæg Ca-grindareining hefur einn áttunda úr frumeind á hverju af átta hornunum (<m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> frumeind) og hálfa frumeind á hverri af sex hliðunum (<m:math><m:mrow><m:mn>6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> frumeindir), samtals fjórar frumeindir í grindareiningunni.</para>
+<para id="fs-idp191844336">Massa grindareiningarinnar má finna með:</para>
+<equation class="unnumbered" id="fs-idp94173200"><m:math><m:mrow><m:mtext>1 Ca unit cell</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>4 Ca atoms</m:mtext></m:mrow><m:mrow><m:mtext>1 Ca unit cell</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol Ca</m:mtext></m:mrow><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>Ca atoms</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>40.078</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>1 mol Ca</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.662</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp178468672">Rúmmál Ca-grindareiningar má finna með:</para>
+<equation class="unnumbered" id="fs-idm35315152"><m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:msup><m:mi>a</m:mi><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>558.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−10</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>cm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>1.745</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp37113296">(Athugið að brúnlengdinni var breytt úr pm í cm til að fá venjulegar rúmmálseiningar fyrir eðlismassa.)</para>
+<para id="fs-idp4016128">Þá er eðlismassi <m:math><m:mrow><m:mtext>Ca</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2.662</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>1.745</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>−22</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>1.53 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></para><para id="fs-idp27984704"><title>Kannaðu þekkingu þína</title>Silfur kristallast í FCC-byggingu. Brúnlengd grindareiningar þess er 409 pm.</para>
+<para id="fs-idp63739072">(a) Hver er atómradíus Ag í þessari byggingu?</para>
+<para id="fs-idp100438656">(b) Reiknaðu eðlismassa Ag.</para>
+<note id="fs-idp137915824">
+<title>Answer:</title>
+<para id="fs-idm27761408">(a) 144 pm; (b) 10,5 g/cm<sup>3</sup></para>
+</note>
+</example>
+<para id="fs-idp26628704">Almennt er grindareining skilgreind með lengdum þriggja ása (<emphasis effect="italics">a</emphasis>, <emphasis effect="italics">b</emphasis> og <emphasis effect="italics">c</emphasis>) og hornunum (<emphasis effect="italics">α</emphasis>, <emphasis effect="italics">β</emphasis> og <emphasis effect="italics">γ</emphasis>) á milli þeirra, eins og sýnt er á <link target-id="CNX_Chem_10_06_GenUnitCll"/>. Ásarnir eru skilgreindir sem lengdirnar milli punkta í rúmgrindinni. Af því leiðir að ásar grindareiningar tengja saman punkta með eins umhverfi.</para>
+<figure id="CNX_Chem_10_06_GenUnitCll" class="scaled-down">
+<media id="fs-idm117541936" alt="A cube is shown where each corner has a black dot drawn on it. A circle in the bottom of the cube is composed of three double-ended arrows. The left top of this circle is labeled “alpha,” the top right is labeled “beta” and the bottom is labeled “gamma.” The bottom left corner of the cube is labeled “a” while the bottom of the back face is labeled “b” and the top, back, left corner is labeled “c.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_GenUnitCll.jpg"/>
+</media>
+<caption>Grindareining er skilgreind með lengdum þriggja ása hennar (<emphasis effect="italics">a</emphasis>, <emphasis effect="italics">b</emphasis> og <emphasis effect="italics">c</emphasis>) og hornunum (<emphasis effect="italics">α</emphasis>, <emphasis effect="italics">β</emphasis> og <emphasis effect="italics">γ</emphasis>) milli ásanna.</caption>
+</figure>
+<para id="fs-idm92224">Það eru sjö mismunandi grindarkerfi, sum hver með fleiri en eina gerð af grind, sem gefur samtals fjórtán mismunandi einingarsellur, sem hafa þau form sem sýnd eru á <link target-id="CNX_Chem_10_06_CrystalSys"/>.</para>
+<figure id="CNX_Chem_10_06_CrystalSys">
+<media id="fs-idp25979984" alt="A table is composed of two columns and eight rows. The header row reads “System / Axes / Angles” and “Unit Cells .” The first column reads “Cubic, a equals b equals c, alpha equals beta equals gamma equals 90 degrees,” “Tetragonal, a equals b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Orthorhombic, a does not equal b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Monoclinic, a does not equal b does not equal c, alpha equals gamma equals 90 degrees, beta does not equal 90 degrees,” “Triclinic, a does not equal b does not equal c, alpha does not equal beta does not equal gamma does not equal 90 degrees,” “Hexagonal, a equals b does not equal c, alpha equals beta equals 90 degrees, gamma equals 120 degrees,” “Rhombohedral, a equals b equals c, alpha equals beta equals gamma does not equal 90 degrees.” The second column is composed of diagrams. The first set of diagrams in the first cell show a cube with spheres at each corner labeled “Simple,” a cube with spheres in each corner and on each face labeled “Face-centered” and a cube with spheres in each corner and one in the center labeled “Body-centered.” The second set of diagrams in the second cell show a vertical rectangle with spheres at each corner labeled “Simple” and a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered.” The third set of diagrams in the third cell show a vertical rectangle with spheres at each corner labeled “Simple,” a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered,” a vertical rectangle with spheres in each corner and one on the top and bottom faces labeled “Base-centered,” and a vertical rectangle with spheres in each corner and one on each face labeled “Face-centered.” The fourth set of diagrams in the fourth cell show a vertical rectangle with spheres at each corner that is slanted to one side labeled “Simple” and a vertical rectangle with spheres in each corner that is slanted to one side and has two spheres in the center is labeled “Body-centered.” The fifth diagrams in the fifth cell show a cube that is slanted with spheres at each corner while the sixth diagram in the sixth cell shows a pair of hexagonal rings that are connected together to form a six-sided shape with spheres at each corner. The seventh diagram in the seventh cell shows a rectangle that is slanted with spheres at each corner.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_CrystalSys.jpg"/>
+</media>
+<caption>Það eru sjö mismunandi grindarkerfi og 14 mismunandi einingarsellur.</caption>
+</figure>
+</section>
+<section id="fs-idp29462288">
+<title>Bygging jónakristalla</title>
+<para id="fs-idp123644576">Jónakristallar samanstanda af tveimur eða fleiri mismunandi tegundum jóna sem yfirleitt hafa mismunandi stærð. Pökkun þessara jóna í kristalbyggingu er flóknari en pökkun málmatóma sem eru af sömu stærð.</para>
+<para id="fs-idp192354256">Flestar einatóma jónir hegða sér eins og hlaðnar kúlur og aðdráttarkraftur þeirra að jónum með gagnstæða hleðslu er sá sami í allar áttir. Þar af leiðandi myndast stöðugar byggingar fyrir jónaefnasambönd (1) þegar jónir af einni hleðslu eru umkringdar af eins mörgum jónum og mögulegt er af gagnstæðri hleðslu og (2) þegar katjónirnar og anjónirnar eru í snertingu hver við aðra. Byggingar eru ákvarðaðar af tveimur meginþáttum: hlutfallslegri stærð jónanna og hlutfalli fjölda jákvæðra og neikvæðra jóna í efnasambandinu.</para>
+<para id="fs-idp1330336">Í einföldum jónabyggingum finnum við yfirleitt anjónirnar, sem eru venjulega stærri en katjónirnar, raðaðar í þéttpakkað fylki. (Eins og áður hefur komið fram gera viðbótarrafeindir sem dragast að sama kjarna anjónir stærri og færri rafeindir sem dragast að sama kjarna gera katjónir minni samanborið við atómin sem þær eru myndaðar úr.) Minni katjónirnar fylla venjulega aðra af tveimur gerðum af <term id="term-00012">holum (e. holes)</term> (eða millirýmum) sem eru á milli anjónanna. Minni holan finnst á milli þriggja anjóna í einu plani og einnar anjónar í aðliggjandi plani. Anjónirnar fjórar sem umlykja þessa holu raðast á horn ferflötungs, þannig að holan er kölluð <term id="term-00013">ferflötungshola (e. tetrahedral hole)</term>. Stærri gerð holunnar finnst í miðju sex anjóna (þrjár í einu lagi og þrjár í aðliggjandi lagi) sem staðsettar eru á hornum áttflötungs; þetta er kallað <term id="term-00014">áttflötungshola (e. octahedral hole)</term>. <link target-id="CNX_Chem_10_06_TetOctHole"/> sýnir báðar þessar gerðir af holum.</para>
+<figure id="CNX_Chem_10_06_TetOctHole" class="scaled-down">
+<media id="fs-idp26945552" alt="An image shows a top-view of a layer of blue spheres arranged in a sheet lying atop another sheet that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. A third sheet composed of purple spheres lies at the bottom. The spaces created between the spheres in each layer are labeled “Octahedral holes” and “Tetrahedral holes.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_TetOctHole.jpg"/>
+</media>
+<caption>Katjónir geta fyllt tvær gerðir af holum á milli anjóna: áttflötungsholur eða ferflötungsholur.</caption>
+</figure>
+<para id="fs-idp44872240">Það fer eftir hlutfallslegri stærð katjóna og anjóna, katjónir jónaefnasambands geta fyllt ferflötungs- eða áttflötungsholur, eins og sýnt er á <link target-id="CNX_Chem_10_06_IntIonst"/>. Tiltölulega litlar katjónir fylla ferflötungsholur og stærri katjónir fylla áttflötungsholur. Ef katjónirnar eru of stórar til að passa í áttflötungsholurnar geta anjónirnar tekið upp opnari byggingu, svo sem einfalt teningsfylki. Stærri katjónirnar geta þá fyllt stærri teningsholurnar sem verða til vegna opnara bilsins.</para>
+<figure id="CNX_Chem_10_06_IntIonst">
+<media id="fs-idp191262336" alt="A diagram of three images is shown. In the first image, eight stacked cubes, with purple spheres at each corner, that make up one large cube are shown. The bottom left cube is different. It has green spheres at each corner and has four orange and six light purple spheres located on the faces of the cube. Labels below this structure read “Tetrahedral hole” and “Cation radius is about 22.5 to 41.4 percent of the anion radius. In the second image, eight stacked cubes, with alternating orange and green spheres at each corner, make up one large cube that is shown. The bottom left cube has darker lines that connect the spheres together. Labels below this structure read “Octahedral hole” and “Cation radius is about 41.4 to 73.2 percent of the anion radius. In the third image, eight stacked cubes, with purple spheres at each corner and light purple spheres on their interior faces, make up one large cube that is shown. Labels below this structure read “Cubic hole” and “Cation radius is about 73.2 to 100 percent of the anion radius.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_IntIonst.jpg"/>
+</media>
+<caption>Stærð katjónar og lögun holunnar sem efnasambandið fyllir eru í beinum tengslum.</caption>
+</figure>
+<para id="fs-idp78541312">Það eru tvær ferflötungsholur fyrir hverja anjón í annaðhvort HCP- eða CCP-fylki anjóna. Efnasamband sem kristallast í þéttpökkuðu fylki anjóna með katjónum í ferflötungsholunum getur haft hámarks katjón:anjón hlutfall upp á 2:1; allar ferflötungsholurnar eru fylltar við þetta hlutfall. Dæmi eru Li<sub>2</sub>O, Na<sub>2</sub>O, Li<sub>2</sub>S og Na<sub>2</sub>S. Efnasambönd með hlutfall sem er lægra en 2:1 geta einnig kristallast í þéttpökkuðu fylki anjóna með katjónum í ferflötungsholunum, ef jónastærðirnar passa. Í þessum efnasamböndum eru sumar ferflötungsholurnar þó áfram auðar.</para>
+<example id="fs-idm32665648">
+<para id="fs-idp35089808"><title>Fylling ferflötungshola</title>Sinksúlfíð er mikilvæg iðnaðaruppspretta sinks og er einnig notað sem hvítt litarefni í málningu. Sinksúlfíð kristallast með sinkjónum sem fylla helming ferflötungsholanna í þéttpökkuðu fylki súlfíðjóna. Hver er formúla sinksúlfíðs?</para>
+<para id="fs-idp1180272"><title>Lausn</title>Þar sem það eru tvær ferflötungsholur fyrir hverja anjón (súlfíðjón) og helmingur þessara hola er fylltur af sinkjónum, þá hlýtur að vera <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mo>,</m:mo></m:mrow></m:math> eða 1, sinkjón fyrir hverja súlfíðjón. Þannig er formúlan ZnS.</para>
+<para id="fs-idp135414368"><title>Kannaðu þekkingu þína</title>Líþíumseleníði má lýsa sem þéttpökkuðu fylki seleníðjóna með líþíumjónum í öllum ferflötungsholunum. Hver er formúla líþíumseleníðs?</para>
+<note id="fs-idm14652080">
+<title>Answer:</title>
+<para id="fs-idm22840560">Li<sub>2</sub>Se</para>
+</note>
+</example>
+<para id="fs-idp29314000">Hlutfall áttflötungshola og anjóna í annaðhvort HCP- eða CCP-byggingu er 1:1. Þannig geta efnasambönd með katjónum í áttflötungsholum í þéttpökkuðu fylki anjóna haft hámarks katjón:anjón hlutfall upp á 1:1. Í NiO, MnS, NaCl og KH eru til dæmis allar áttflötungsholurnar fylltar. Hlutföll sem eru lægri en 1:1 sjást þegar sumar áttflötungsholurnar eru áfram tómar.</para>
+<example id="fs-idp118444096">
+<para id="fs-idm48293552"><title>Hlutfallaefnafræði jónaefna</title>Safír er áloxíð. Áloxíð kristallast með áljónum í tveimur þriðju hlutum áttflötungsholanna í þéttpökkuðu fylki oxíðjóna. Hver er formúla áloxíðs?</para>
+<para id="fs-idm46506768"><title>Lausn</title>Þar sem það er eitt áttflötungshol fyrir hverja anjón (oxíðjón) og aðeins tveir þriðju hlutar þessara hola eru setnir, verður hlutfall áls og súrefnis að vera <m:math><m:mrow><m:mfrac><m:mn>2</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:math>:1, sem myndi gefa <m:math><m:mrow><m:msub><m:mrow><m:mtext>Al</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>/</m:mtext><m:mn>3</m:mn></m:mrow></m:msub><m:mtext>O</m:mtext><m:mo>.</m:mo></m:mrow></m:math>. Einfaldasta heiltöluhlutfallið er 2:3, þannig að formúlan er Al<sub>2</sub>O<sub>3</sub>.</para>
+<para id="fs-idp8140096"><title>Prófaðu þekkingu þína</title>Hvíta litarefnið títanoxíð kristallast með títanjónum í helmingi áttflötungsholanna í þéttpökkuðu fylki oxíðjóna. Hver er formúla títanoxíðs?</para>
+<note id="fs-idp78151552">
+<title>Answer:</title>
+<para id="fs-idp30972928">TiO<sub>2</sub></para>
+</note>
+</example>
+<para id="fs-idm13402192">Í einföldu teningslaga fylki anjóna er eitt teningshol sem katjón getur setið í fyrir hverja anjón í fylkinu. Í CsCl, og í öðrum efnasamböndum með sömu byggingu, eru öll teningsholin setin. Helmingur teningsholanna er setinn í SrH<sub>2</sub>, UO<sub>2</sub>, SrCl<sub>2</sub> og CaF<sub>2</sub>.</para>
+<para id="fs-idm23769904">Mismunandi gerðir jónaefna kristallast oft í sömu byggingu þegar hlutfallsleg stærð jóna þeirra og hlutfallaefnafræði þeirra (þeir tveir meginþættir sem ákvarða byggingu) eru svipaðar.</para>
+</section>
+<section id="fs-idp5178368">
+<title>Grindareiningar jónaefna</title>
+<para id="fs-idp68737616">Mörg jónaefni kristallast með teningslaga grindareiningum og við munum nota þessi efnasambönd til að lýsa almennum eiginleikum jónabygginga.</para>
+<para id="fs-idm42504800">Þegar jónaefni er samsett úr katjónum og anjónum af svipaðri stærð í hlutfallinu 1:1 myndar það yfirleitt einfalda teningslaga grind. Sesínklóríð, CsCl, (sýnt á <link target-id="CNX_Chem_10_07_CsClStrctr"/>) er dæmi um þetta, þar sem Cs<sup>+</sup> og Cl<sup>−</sup> hafa radíus upp á 174 pm og 181 pm, í sömu röð. Við getum hugsað okkur þetta sem klóríðjónir sem mynda einfalda teningslaga grindareiningu, með sesínjón í miðjunni; eða sem sesínjónir sem mynda grindareiningu með klóríðjón í miðjunni; eða sem einfaldar teningslaga grindareiningar myndaðar af Cs<sup>+</sup> jónum sem skarast við grindareiningar myndaðar af Cl<sup>−</sup> jónum. Sesínjónir og klóríðjónir snertast eftir rúmskálínum grindareininganna. Ein sesínjón og ein klóríðjón eru til staðar í hverri grindareiningu, sem gefur hlutfallaefnafræðina 1:1 sem krafist er í formúlu sesínklóríðs. Athugið að það er enginn grindarpunktur í miðju einingarinnar og CsCl er ekki með BCC-grind þar sem sesínjón er ekki eins og klóríðjón.</para>
+<figure id="CNX_Chem_10_07_CsClStrctr" class="scaled-down">
+<media id="fs-idm89247392" alt="Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one smaller sphere in the center. The name under this image reads “simple cubic structure.” The third image shows five horizontal layers of purple spheres with layers of smaller green spheres in between.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_07_CsClStrctr.jpg"/>
+</media>
+<caption>Jónaefni með katjónum og anjónum af svipaðri stærð, eins og CsCl, mynda venjulega einfalda teningslaga grind. Hægt er að lýsa þeim með grindareiningum með annaðhvort katjónum á hornunum eða anjónum á hornunum.</caption>
+</figure>
+<para id="fs-idm48376560">Við höfum sagt að staðsetning grindarpunkta sé handahófskennd. Þetta sést á annarri lýsingu á CsCl-grindinni þar sem grindarpunktarnir eru staðsettir í miðjum sesínjónanna. Í þessari lýsingu eru sesínjónirnar staðsettar á grindarpunktunum á hornum einingarinnar og klóríðjónin er staðsett í miðju einingarinnar. Grindareiningarnar tvær eru ólíkar en þær lýsa eins grindum.</para>
+<para id="fs-idp36716000">Þegar jónaefni er samsett úr katjónum og anjónum í hlutfallinu 1:1 sem eru verulega ólíkar að stærð, kristallast það venjulega með FCC-grindareiningu, eins og sýnt er á <link target-id="CNX_Chem_10_07_NaClStrctr"/>. Natríumklóríð, NaCl, er dæmi um þetta, þar sem Na<sup>+</sup> og Cl<sup>−</sup> hafa radíus upp á 102 pm og 181 pm, í sömu röð. Við getum hugsað okkur þetta sem klóríðjónir sem mynda FCC-einingu, með natríumjónum staðsettum í áttflötungsholunum í miðju brúna einingarinnar og í miðju einingarinnar. Natríum- og klóríðjónirnar snertast eftir brúnum einingarinnar. Grindareiningin inniheldur fjórar natríumjónir og fjórar klóríðjónir, sem gefur hlutfallaefnafræðina 1:1 sem krafist er í formúlunni, NaCl.</para>
+<figure id="CNX_Chem_10_07_NaClStrctr" class="scaled-down"><media id="fs-idm94066176" alt="Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one much larger sphere in the center. The name under this image reads “Body-centered simple cubic structure.” The third image shows seven horizontal layers of alternating purple and green spheres that are slightly offset with one another and form a large cube.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_07_NaClStrctr.jpg"/>
+</media>
+
+<caption>Jónaefni með anjónum sem eru mun stærri en katjónir, eins og NaCl, mynda venjulega FCC-grind. Hægt er að lýsa þeim með FCC-grindareiningum með katjónum í áttflötungsholunum.</caption></figure>
+<para id="fs-idm15393568">Teningsform sinkúlfíðs, sinkblendis, kristallast einnig í FCC-grindareiningu, eins og sýnt er á <link target-id="CNX_Chem_10_06_ZnSStrctr"/>. Þessi grind inniheldur súlfíðjónir á grindarpunktum FCC-grindar. (Fyrirkomulag súlfíðjóna er eins og fyrirkomulag klóríðjóna í natríumklóríði.) Radíus sinkjónar er aðeins um 40% af radíus súlfíðjónar, þannig að þessar litlu Zn<sup>2+</sup> jónir eru staðsettar í ferflötungsholum til skiptis, það er að segja í helmingi ferflötungsholanna. Það eru fjórar sinkjónir og fjórar súlfíðjónir í grindareiningunni, sem gefur reynsluformúluna ZnS.</para>
+<figure id="CNX_Chem_10_06_ZnSStrctr" class="scaled-down">
+<media id="fs-idp113309184" alt="Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that form the corners of a cube with six other spheres located in the face of the cube. The spheres are connected to one another by lines. The name under this image reads “Z n S, face-centered unit cell.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_ZnSStrctr.jpg"/>
+</media>
+<caption>ZnS, sinksúlfíð (eða sinkblendi) myndar FCC-grindareiningu með súlfíðjónum á grindarpunktunum og mun minni sinkjónum sem fylla helming ferflötungsholanna í grindinni.</caption>
+</figure>
+<para id="fs-idm41755200">Kalsíumflúoríð-grindareining, eins og sú sem sýnd er á <link target-id="CNX_Chem_10_07_CaF2Strctr"/>, er einnig FCC-grindareining, en í þessu tilfelli eru katjónirnar staðsettar á grindarpunktunum; jafngildar kalsíumjónir eru staðsettar á grindarpunktum FCC-grindar. Öll ferflötungssætin í FCC-fylkingu kalsíumjóna eru fyllt af flúoríðjónum. Það eru fjórar kalsíumjónir og átta flúoríðjónir í grindareiningu, sem gefur kalsíum:flúor hlutfallið 1:2, eins og krafist er í efnaformúlunni, CaF<sub>2</sub>. Nákvæm skoðun á <link target-id="CNX_Chem_10_07_CaF2Strctr"/> mun leiða í ljós einfalda teningslaga fylkingu flúoríðjóna með kalsíumjónum í helmingi teningsholanna. Ekki er hægt að lýsa grindinni með <term id="term-00015">rúmgrind (e. space lattice)</term> punkta á flúoríðjónunum vegna þess að flúoríðjónirnar hafa ekki allar eins umhverfi. Afstaða kalsíumjónanna fjögurra í kringum flúoríðjónirnar er mismunandi.</para>
+<figure id="CNX_Chem_10_07_CaF2Strctr" class="scaled-down">
+<media id="fs-idp104119168" alt="Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight small green spheres that form the corners of a cube with six other small green spheres located in the faces of the cube. Eight larger green spheres are spaced inside the cube and all of the spheres are connect to one another by lines. The name under this image reads “C a F, subscript 2, face-centered unit cell.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_07_CaF2Strctr.jpg"/>
+</media>
+<caption>Kalsíumflúoríð, CaF<sub>2</sub>, myndar FCC-grindareiningu með kalsíumjónum (grænum) á grindarpunktunum og flúoríðjónum (rauðum) sem fylla öll ferflötungssætin á milli þeirra.</caption>
+</figure>
+</section>
+<section id="fs-idp39715296">
+<title>Útreikningur á jónaradíusum</title>
+<para id="fs-idp122188096">Ef við þekkjum brúnlengd grindareiningar jónaefnis og staðsetningu jónanna í einingunni, getum við reiknað út jónaradíusa fyrir jónirnar í efnasambandinu ef við gerum ráð fyrir ákveðnu formi og snertingu einstakra jóna.</para>
+<example id="fs-idp160437296">
+<para id="fs-idp187605664"><title>Útreikningur á jónaradíusum</title>Brúnlengd grindareiningar LiCl (NaCl-lík grind, FCC) er 0,514 nm eða 5,14 Å. Að því gefnu að litíumjónin sé nógu lítil til að klóríðjónirnar séu í snertingu, eins og á <link target-id="CNX_Chem_10_07_NaClStrctr"/>, reiknaðu út jónaradíus klóríðjónarinnar.</para>
+<para id="fs-idp78068752">Athugið: Lengdareiningin angström, Å, er oft notuð til að tákna víddir á atómstærð og jafngildir 10<sup>−10</sup> m.</para>
+<para id="fs-idp75732016"><title>Lausn</title>Á hlið LiCl-grindareiningar snertast klóríðjónir yfir skálínu hliðarinnar:</para>
+<media id="fs-idp111782608" class="scaled-down" alt="Three images are shown. The first shows a cube of alternating green and purple spheres. A smaller cube within that cube is outlined and a larger version of it appears next. This figure is a grey cube that appears to be made up of spheres. There are small spaces between each sphere. There is a right triangle outlined in this cube and a larger version of it appears next. This right triangle has two sides labeled “a,” and the hypotenuse, which spans two half-circles and one full one is labeled, “r, 2 r, and r.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_LiClstrctr.jpg"/>
+</media>
+<para id="fs-idp129708496">Ef við teiknum rétthyrndan þríhyrning á hlið grindareiningarinnar sjáum við að lengd hornalínunnar er jöfn fjórum klóríðgeislum (einn geisli frá hverri hornklóríðjón og einn þvermál — sem jafngildir tveimur geislum — frá klóríðjóninni í miðju hliðarinnar), þannig að <emphasis effect="italics">d</emphasis> = 4<emphasis effect="italics">r</emphasis>. Samkvæmt Pýþagórasarreglunni höfum við:</para>
+<equation class="unnumbered" id="fs-idm1060368"><m:math><m:mrow><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>d</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp4732816">sem gefur:</para>
+<equation class="unnumbered" id="fs-idp113603824"><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width="0.2em"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width="0.2em"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>4</m:mn><m:mi>r</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>16</m:mn><m:msup><m:mi>r</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp179486080">Lausnin á þessu gefur:</para>
+<equation class="unnumbered" id="fs-idm21982336"><m:math><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width="0.2em"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.514</m:mn><m:mspace width="0.2em"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mn>16</m:mn></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.182 nm</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>1.82 Å</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>for a Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mtext>radius</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm39172320"><title>Kannaðu þekkingu þína</title>Kantlengd grindareiningar KCl (NaCl-lík bygging, FCC) er 6,28 Å. Að því gefnu að snerting sé milli anjónar og katjónar meðfram kantinum, reiknaðu geisla kalíumjónarinnar. Geisli klóríðjónarinnar er 1,82 Å.</para>
+<note id="fs-idp173458848">
+<title>Answer:</title>
+<para id="fs-idm6422368">Geisli kalíumjónarinnar er 1,33 Å.</para>
+</note>
+</example>
+<para id="fs-idm38255968">Það er mikilvægt að gera sér grein fyrir því að gildi fyrir jónageisla sem reiknuð eru út frá kantlengdum grindareininga byggja á fjölmörgum forsendum, svo sem að jónir séu fullkomlega kúlulaga, sem eru í besta falli nálganir. Þess vegna eru slík reiknuð gildi sjálf áætluð og ekki er hægt að ganga of langt í samanburði. Engu að síður hefur þessi aðferð reynst gagnleg til að reikna út jónageisla út frá tilraunamælingum eins og röntgenkristallafræðilegum ákvörðunum.</para>
+</section>
+<section id="fs-idp109859728">
+<title>Röntgenkristallafræði</title>
+<para id="fs-idp81646992">Hægt er að ákvarða stærð grindareiningar og fyrirkomulag frumeinda í kristal út frá mælingum á <emphasis effect="italics">ljósbroti</emphasis> röntgengeisla í kristalnum, sem kallast <term id="term-00016">röntgenkristallafræði (e. x-ray crystallography)</term>. <term id="term-00017">Ljósbrot (e. diffraction)</term> er stefnubreyting rafsegulbylgju þegar hún rekst á efnislega hindrun með stærð sem er sambærileg við bylgjulengd ljóssins. Röntgengeislar eru rafsegulgeislun með bylgjulengdir sem eru um það bil jafn langar og fjarlægðin milli nágrannafrumeinda í kristöllum (í stærðargráðunni nokkur Å).</para>
+<para id="fs-idp191124480">Þegar geisli af einlitum röntgengeislum lendir á kristal dreifast geislar hans í allar áttir af frumeindunum innan kristalsins. Þegar dreifðar bylgjur sem ferðast í sömu átt mætast, verða þær fyrir <emphasis effect="italics">samliðun</emphasis>, ferli þar sem bylgjurnar sameinast og valda annaðhvort aukningu eða minnkun á útslagi (styrk) eftir því hversu mikið bil er á milli hámarka bylgjanna sem sameinast (sjá <link target-id="CNX_Chem_10_06_ConDec"/>).</para>
+<figure id="CNX_Chem_10_06_ConDec" class="scaled-down">
+<media id="fs-idp39628848" alt="A pair of images is shown that has four sections. In the first section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves align with one another. The phrase below this reads “Constructive interference.” A right facing arrow leads from the first section to the second, which shows one larger sinusoidal curve that has higher and lower peaks and troughs. A section from the top of one curve to the top of the next curve is labeled “lambda” and the phrase below this reads “Maxima and minima reinforce.” In the second section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves do not align with one another. The phrase below this reads “Destructive interference.” A right facing arrow leads from the first section to the second, which shows one flat line. The phrase below this reads “Maxima and minima cancel.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_ConDec.jpg"/>
+</media>
+<caption>Ljósbylgjur sem eru á sama stað verða fyrir samliðun og sameinast til að mynda bylgjur með meiri (a) eða minni (b) styrk, eftir því hvernig hámark og lágmark þeirra liggja saman.</caption>
+</figure>
+<para id="fs-idp19420096">Þegar röntgengeislar með ákveðna bylgjulengd, <emphasis effect="italics">λ</emphasis>, dreifast af frumeindum í aðliggjandi kristalplönum sem eru aðskilin með fjarlægðinni <emphasis effect="italics">d</emphasis>, geta þeir orðið fyrir uppbyggjandi samliðun þegar mismunurinn á vegalengdum sem bylgjurnar tvær fara áður en þær sameinast er heiltölumargfeldi, <emphasis effect="italics">n</emphasis>, af bylgjulengdinni. Þetta skilyrði er uppfyllt þegar horn brotna geislans, <emphasis effect="italics">θ</emphasis>, tengist bylgjulengdinni og fjarlægðinni milli frumeinda með jöfnunni:</para>
+<equation id="fs-idm77205344" class="unnumbered"><m:math><m:mrow><m:mi>n</m:mi><m:mi>λ</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>d</m:mi><m:mspace width="0.2em"/><m:mtext>sin</m:mtext><m:mspace width="0.2em"/><m:mi>θ</m:mi></m:mrow></m:math></equation>
+<para id="fs-idp173470256">Þetta samband er þekkt sem <term id="term-00018">Bragg-jafnan (e. bragg equation)</term> til heiðurs W. H. <term class="no-emphasis" id="term-00019">Bragg</term>, enska eðlisfræðingnum sem fyrstur útskýrði þetta fyrirbæri. <link target-id="CNX_Chem_10_06_XRyDiff1"/> sýnir tvö dæmi um brotna geisla frá sömu tveimur kristalplönunum. Myndin efst sýnir bylgjur sem brotna við Bragg-hornið, sem leiðir til uppbyggjandi samliðunar, en sú neðri sýnir ljósbrot við annað horn sem uppfyllir ekki Bragg-skilyrðið, sem leiðir til eyðandi samliðunar.</para>
+<figure id="CNX_Chem_10_06_XRyDiff1" class="scaled-down">
+<media id="fs-idm39196256" alt="Two similar figures are shown. The first figure, labeled “Constructive Interference,” shows two horizontal rows of seven black dots with a line passing through them. The fourth dots of each row have a vertical line connecting them. The distance between these rows is labeled “d.” A beam labeled “Incident beam” descends at an angle labeled “theta” until it hits the line connecting the fourth dots, after which a diffracted beam ascends at the same angle “theta.” A dotted line is drawn across the diffracted beam. The second figure, labeled “Destructive interference,” is very similar, except that the angles “theta” are far more acute, making the slopes of the beams more shallow.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_XRyDiff1.jpg"/>
+</media>
+<caption>Ljósbrot röntgengeisla sem dreifast af frumeindum innan kristals gerir kleift að ákvarða fjarlægðina milli frumeindanna. Efri myndin sýnir uppbyggjandi samliðun milli tveggja dreifðra bylgna og afleiddrar brotinnar bylgju með háum styrk. Neðri myndin sýnir eyðandi samliðun og brotna bylgju með lágum styrk.</caption>
+</figure>
+<note id="fs-idp27762640" class="chemistry link-to-learning">
+<para id="fs-idp26359616">Farðu á þessa <link url="http://openstax.org/l/16bragg">síðu</link> til að fá frekari upplýsingar um Bragg-jöfnuna og hermi sem gerir þér kleift að kanna áhrif hverrar breytu á styrk brotnu bylgjunnar.</para>
+</note>
+<para id="fs-idp184548576">Hægt er að nota röntgengeislabrotmæli, eins og þann sem sýndur er á <link target-id="CNX_Chem_10_07_XRyDiff2"/>, til að mæla hornin sem röntgengeislar brotna við þegar þeir víxlverka við kristal eins og lýst var áður. Út frá slíkum mælingum er hægt að nota Bragg-jöfnuna til að reikna út fjarlægðir milli frumeinda eins og sýnt er í eftirfarandi dæmi.</para>
+<figure id="CNX_Chem_10_07_XRyDiff2" class="scaled-down">
+<media id="fs-idp8694464" alt="A diagram, labeled “a” shows a cube on the left with a channel bored into its right side labeled “X dash ray source.” A beam is leaving from this channel and traveling in a horizontal line toward an oval-shaped, short tube, labeled “Collimator to focus beam” and “X dash ray diffraction,” where it passes through a cube labeled “Crystalline material” and scatters onto a vertical sheet labeled “Imaging surface.” A second diagram, labeled “b,” shows a square sheet with a large dot in the center labeled “X dash ray beam,” that is surrounded by smaller dots arranged in rings and labeled “Diffracted X dash rays.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_07_XRyDiff2.jpg"/>
+</media>
+<caption>(a) Í ljósbrotmæli lendir geisli af röntgengeislum á kristölluðu efni og myndar (b) röntgengeislabrotsmynstur sem hægt er að greina til að ákvarða kristalbygginguna.</caption>
+</figure>
+<example id="fs-idp19350688">
+<para id="fs-idm68901456"><title>Notkun Bragg-jöfnunnar</title>Í ljósbrotmæli voru röntgengeislar með bylgjulengdina 0,1315 nm notaðir til að mynda ljósbrotsmynstur fyrir kopar. Fyrsta stigs ljósbrot (<emphasis effect="italics">n</emphasis> = 1) átti sér stað við hornið <emphasis effect="italics">θ</emphasis> = 25,25°. Ákvarðaðu bilið milli ljósbrotsplananna í kopar.</para>
+<para id="fs-idm14041952"><title>Lausn</title>Fjarlægðin milli plananna er fundin með því að leysa Bragg-jöfnuna, <emphasis effect="italics">nλ</emphasis> = 2<emphasis effect="italics">d</emphasis> sin <emphasis effect="italics">θ</emphasis>, fyrir <emphasis effect="italics">d</emphasis>.</para>
+<para id="fs-idp26891808">Þetta gefur: <m:math><m:mrow><m:mi>d</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>λ</m:mi></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>sin</m:mtext><m:mspace width="0.2em"/><m:mi>θ</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.1315</m:mn><m:mspace width="0.2em"/><m:mtext>nm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>sin</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>25.25</m:mn><m:mtext>°</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.154 nm</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp83773936"><title>Kannaðu þekkingu þína</title>Kristall með 0,394 nm bil milli flata dreifir röntgengeislum með bylgjulengdina 0,147 nm. Hvert er hornið fyrir fyrsta stigs dreifingu?</para>
+<note id="fs-idp31154560">
+<title>Answer:</title>
+<para id="fs-idp69715072">10,8°</para></note>
+</example>
+<note id="fs-idp2037904" class="chemistry chemist-portrait">
+<title>Röntgenkristallafræðingurinn Rosalind Franklin</title>
+<para id="fs-idp1774112">Uppgötvun Francis <term class="no-emphasis" id="term-00020">Crick</term> og James <term class="no-emphasis" id="term-00021">Watson</term> á byggingu DNA árið 1953 er eitt af stóru afrekunum í sögu vísindanna. Þeir hlutu Nóbelsverðlaunin í lífeðlis- eða læknisfræði árið 1962, ásamt Maurice <term class="no-emphasis" id="term-00022">Wilkins</term>, sem lagði fram tilraunasönnun fyrir byggingu DNA. Breski efnafræðingurinn Rosalind <term class="no-emphasis" id="term-00023">Franklin</term> lagði ómetanlegt af mörkum til þessa stórvirkis með vinnu sinni við að mæla röntgendreifingarmyndir af DNA. Snemma á ferli sínum reyndust rannsóknir Franklin á byggingu kola gagnlegar fyrir stríðsrekstur Breta. Eftir að hafa fært áherslur sínar yfir á líffræðileg kerfi í upphafi sjötta áratugarins uppgötvuðu Franklin og doktorsneminn Raymond Gosling að DNA samanstendur af tveimur formum: löngum, þunnum þræði sem myndast þegar það er blautt (gerð „B“) og stuttum, breiðum þræði sem myndast þegar það er þurrkað (gerð „A“). Röntgendreifingarmyndir hennar af DNA (<link target-id="CNX_Chem_10_06_RFranklin"/>) veittu þær mikilvægu upplýsingar sem gerðu Watson og Crick kleift að staðfesta að DNA myndar tvöfaldan gorm og að ákvarða smáatriði um stærð þess og byggingu. Franklin gerði einnig brautryðjendarannsóknir á veirum og RNA sem inniheldur erfðaupplýsingar þeirra og afhjúpaði nýjar upplýsingar sem gjörbreyttu þekkingargrunni sviðsins. Eftir að hafa fengið krabbamein í eggjastokkum hélt Franklin áfram að vinna þar til hún lést árið 1958, 37 ára að aldri. Meðal margra viðurkenninga fyrir störf hennar eftir dauða hennar breytti Chicago Medical School of Finch University of Health Sciences nafni sínu í Rosalind Franklin University of Medicine and Science árið 2004 og tók upp mynd af frægri röntgendreifingarmynd hennar af DNA sem opinbert merki háskólans.</para>
+<figure id="CNX_Chem_10_06_RFranklin" class="scaled-down">
+<media id="fs-idp53384576" alt="An image shows a circular illustration with rings of dots that are blurred together.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_06_RFranklin.jpg"/>
+</media>
+<caption>Þessi mynd sýnir röntgendreifingarmynd svipaða þeirri sem Franklin fann í rannsóknum sínum. (heimild: National Institutes of Health)</caption>
+</figure>
+</note>
+</section>
+<section id="fs-idp26936448" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp129498528">Lýsa má byggingu kristallaðra málma og einfaldra jónaefnasambanda með tilliti til pökkunar kúlna. Málmfrumeindir geta pakkast í sexstrendum þéttpökkuðum byggingum, teningslaga þéttpökkuðum byggingum, miðlægum byggingum og einföldum teningslaga byggingum. Anjónirnar í einföldum jónabyggingum taka oft eina af þessum byggingum og katjónirnar fylla upp í rýmin sem eftir eru á milli anjónanna. Litlar katjónir fylla venjulega ferflötungsholur í þéttpökkuðu fylki anjóna. Stærri katjónir fylla venjulega áttflötungsholur. Enn stærri katjónir geta fyllt teningslaga holur í einföldu teningslaga fylki anjóna. Lýsa má byggingu fasts efnis með því að tilgreina stærð og lögun grindareiningar og innihald hennar. Hægt er að ákvarða gerð byggingar og mál grindareiningarinnar með röntgendreifingarmælingum.</para>
+</section>
+<section id="fs-idp29862416" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mi>n</m:mi><m:mi>λ</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>d</m:mi><m:mspace width="0.2em"/><m:mtext>sin</m:mtext><m:mspace width="0.2em"/><m:mi>θ</m:mi></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idp81672976" class="exercises">
+<title>Efnafræði – verkefni í lok kafla</title>
+<exercise id="fs-idp28635312">
+<problem id="fs-idp173421088">
+<para id="fs-idp129727632">Lýstu kristalbyggingu járns, sem kristallast með tveimur jafngildum málmfrumeindum í teningslaga grindareiningu.</para>
+</problem>
+<solution id="fs-idp80594736">
+<para id="fs-idp3953760">Bygging þessa lághitaforms járns (undir 910 °C) er miðlæg teningslaga. Það er einn áttundi úr frumeind á hverju af átta hornum teningsins og ein frumeind í miðju teningsins.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp129665808">
+<problem id="fs-idp64405248">
+<para id="fs-idp53667248">Lýstu kristalbyggingu Pt, sem kristallast með fjórum jafngildum málmfrumeindum í teningslaga grindareiningu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp83460192">
+<problem id="fs-idp28148720">
+<para id="fs-idp26769504">Hver er girðitala krómfrumeindar í miðlægri teningslaga byggingu króms?</para>
+</problem>
+<solution id="fs-idm28421520">
+<para id="fs-idp81841696">átta</para>
+</solution>
+</exercise>
+<exercise id="fs-idp26737392">
+<problem id="fs-idm22783648">
+<para id="fs-idm12826720">Hver er girðitala álfrumeindar í hliðlægri teningslaga byggingu áls?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp101733424">
+<problem id="fs-idp78547232">
+<para id="fs-idm39315232">Kóbaltmálmur kristallast í sexstrendri þéttpakkaðri byggingu. Hver er girðitala kóbaltfrumeindar?</para>
+</problem>
+<solution id="fs-idp64984272">
+<para id="fs-idp29502000">12</para>
+</solution>
+</exercise>
+<exercise id="fs-idm14554640">
+<problem id="fs-idm45742576">
+<para id="fs-idp131174592">Nikkelmálmur kristallast í teningslaga þéttpakkaðri byggingu. Hver er girðitala nikkelfrumeindar?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp53261968">
+<problem id="fs-idp28622816">
+<para id="fs-idp31136736">Volfram kristallast í miðlægri teningslaga grindareiningu með brúnlengdina 3,165 Å.</para>
+<para id="fs-idp81385152">(a) Hver er atómradíus volframs í þessari byggingu?</para>
+<para id="fs-idp123432224">(b) Reiknaðu eðlismassa volframs.</para>
+</problem>
+<solution id="fs-idp129678688">
+<para id="fs-idm27663520">(a) 1,370 Å; (b) 19,26 g/cm</para>
+</solution>
+</exercise>
+<exercise id="fs-idp53519632">
+<problem id="fs-idp192123184">
+<para id="fs-idp51988096">Platína (atómradíus = 1,38 Å) kristallast í teningslaga þéttpakkaðri byggingu. Reiknaðu brúnlengd hliðlægrar teningslaga grindareiningar og eðlismassa platínu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp45151232">
+<problem id="fs-idp110778176">
+<para id="fs-idm36404192">Baríum kristallast í miðlægri teningslaga grindareiningu með brúnlengdina 5,025 Å</para>
+<para id="fs-idp29513328">(a) Hver er atómradíus baríums í þessari byggingu?</para>
+<para id="fs-idm40747632">(b) Reiknaðu eðlismassa baríums.</para>
+</problem>
+<solution id="fs-idp180927840">
+<para id="fs-idp71746416">(a) 2,176 Å; (b) 3,595 g/cm<sup>3</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idm25352864">
+<problem id="fs-idp22409312">
+<para id="fs-idm39163760">Ál (atómradíus = 1,43 Å) kristallast í teningslaga þéttpakkaðri byggingu. Reiknaðu brúnlengd hliðlægrar teningslaga grindareiningar og eðlismassa áls.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm95309216">
+<problem id="fs-idm29083664">
+<para id="fs-idp182731968">Eðlismassi áls er 2,7 g/cm<sup>3</sup>; eðlismassi kísils er 2,3 g/cm<sup>3</sup>. Útskýrðu hvers vegna Si hefur minni eðlismassa þrátt fyrir að hafa þyngri atóm.</para>
+</problem>
+<solution id="fs-idm86687680">
+<para id="fs-idm17016160">Kristalbygging Si sýnir að það er minna þéttpakkað (girðitala 4) í föstu formi en Al (girðitala 12).</para>
+</solution>
+</exercise>
+<exercise id="fs-idp21112320">
+<problem id="fs-idp76532672">
+<para id="fs-idm2208224">Finna má laust rými í málmi með því að draga rúmmál atómanna í grindareiningu frá rúmmáli einingarinnar. Reiknaðu hlutfall lauss rýmis í hverri af þremur teningsgrindunum ef öll atóm í hverri þeirra eru jafnstór og snerta næstu nágranna sína. Hver þessara bygginga táknar skilvirkustu pökkunina? Það er að segja, hver pakkar með minnsta magninu af ónotuðu rými?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp171132368">
+<problem id="fs-idp107721808">
+<para id="fs-idp122151152">Kadmínsúlfíð, sem listamenn nota stundum sem gult litarefni, kristallast þannig að kadmín fyllir helming ferflötungsholanna í þéttpökkuðu fylki súlfíðjóna. Hver er formúla kadmínsúlfíðs? Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idp75827936">
+<para id="fs-idm14571344">Í þéttpökkuðu fylki eru tvær ferflötungsholur fyrir hverja anjón. Ef aðeins helmingur ferflötungsholanna er fylltur er fjöldi anjóna og katjóna jafn. Formúlan fyrir kadmínsúlfíð er CdS.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp51480864">
+<problem id="fs-idp162576608">
+<para id="fs-idp72022784">Efnasamband úr kadmíni, tini og fosfór er notað við framleiðslu sumra hálfleiðara. Það kristallast þannig að kadmín fyllir fjórðung ferflötungsholanna og tin fyllir fjórðung ferflötungsholanna í þéttpökkuðu fylki fosfíðjóna. Hver er formúla efnasambandsins? Útskýrðu svarið.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp161152672">
+<problem id="fs-idp115619344">
+<para id="fs-idp63697616">Hver er formúla segulmagnaðs oxíðs kóbalts, sem notað er í segulbönd, sem kristallast þannig að kóbaltatómin fylla einn áttunda ferflötungsholanna og helming áttflötungsholanna í þéttpökkuðu fylki oxíðjóna?</para>
+</problem>
+<solution id="fs-idp6650976">
+<para id="fs-idp179182976">Co<sub>3</sub>O<sub>4</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp78371824">
+<problem id="fs-idp78352960">
+<para id="fs-idp83426304">Efnasamband sem inniheldur sink, ál og brennistein kristallast með þéttpökkuðu fylki súlfíðjóna. Sinkjónir finnast í einum áttunda ferflötungsholanna og áljónir í helmingi áttflötungsholanna. Hver er reynsluformúla efnasambandsins?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp122808832">
+<problem id="fs-idp73228752">
+<para id="fs-idm18156720">Efnasamband þallíns og joðs kristallast í einföldu teningslaga fylki joðíðjóna með þallínjónum í öllum teningsholunum. Hver er formúla þessa joðíðs? Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idm34692448">
+<para id="fs-idp56072368">Í einföldu teningslaga fylki getur aðeins ein teningshola verið fyllt af katjón fyrir hverja anjón í fylkinu. Hlutfall þallíns og joðíðs verður að vera 1:1; því er formúlan fyrir þallín TlI.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp80534576">
+<problem id="fs-idm35004176">
+<para id="fs-idp82484416">Hvert eftirfarandi frumefna hvarfast við brennistein og myndar fast efni þar sem brennisteinsatómin mynda þéttpakkað fylki með öllum áttflötungsholunum fylltum: Li, Na, Be, Ca eða Al?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp72582816">
+<problem id="fs-idp180698032">
+<para id="fs-idp129569040">Hvert er massahlutfall títans í rútíl, steintegund sem inniheldur títan og súrefni, ef bygginguna má lýsa sem þéttpökkuðu fylki oxíðjóna með títanjónum í helmingi áttflötungsholanna? Hver er oxunartala títans?</para>
+</problem>
+<solution id="fs-idm31265456">
+<para id="fs-idm25475168">59,95%; Oxunartala títans er +4.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp81080000">
+<problem id="fs-idp113155920">
+<para id="fs-idp8709376">Útskýrðu hvers vegna efnafræðilega lík alkalímálmklóríð NaCl og CsCl hafa mismunandi byggingu, en efnafræðilega ólík NaCl og MnS hafa sömu byggingu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp80497568">
+<problem id="fs-idp123444912">
+<para id="fs-idp109499216">Þegar steindir mynduðust úr bráðinni kviku tóku mismunandi jónir sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mismunandi hleðslu jóna þeirra. Stingdu upp á skýringu.</para>
+</problem>
+<solution id="fs-idp108844384">
+<para id="fs-idp168557184">Báðar jónirnar eru svipaðar að stærð: Mg, 0,65; Li, 0,60. Þessi líkindi gera það að verkum að þær geta skiptst á frekar auðveldlega. Mismunurinn á hleðslu er yfirleitt jafnaður með því að Si<sup>4+</sup> skiptir um sæti við Al<sup>3+</sup>.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp68651232">
+<problem id="fs-idp103956160">
+<para id="fs-idp62730896">Rúbidínjoðíð kristallast með teningslaga grindareiningu sem inniheldur joðíðjónir á hornunum og rúbidínjón í miðjunni. Hver er formúla efnasambandsins?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp62207184">
+<problem id="fs-idp121636240">
+<para id="fs-idp56178512">Eitt af hinum ýmsu manganoxíðum kristallast með teningslaga grindareiningu sem inniheldur manganjónir á hornunum og í miðjunni. Oxíðjónir eru staðsettar í miðju hvers brúnar grindareiningarinnar. Hver er formúla efnasambandsins?</para>
+</problem>
+<solution id="fs-idp18389136">
+<para id="fs-idp104149760">Mn<sub>2</sub>O<sub>3</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp8185568">
+<problem id="fs-idp115754032">
+<para id="fs-idp78579456">NaH kristallast með sömu kristalbyggingu og NaCl. Brúnlengd teningslaga grindareiningar NaH er 4,880 Å.</para>
+<para id="fs-idp182758880">(a) Reiknaðu jónradíus H<sup>−</sup>. (Jónradíus Li<sup>+</sup> er 0,0,95 Å.)</para>
+<para id="fs-idp29502496">(b) Reiknaðu eðlismassa NaH.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp178999856">
+<problem id="fs-idp179000112">
+<para id="fs-idm2190992">Við hitastig yfir ~175 °C kristallast þallín(I)joðíð með sömu byggingu og CsCl. Brúnlengd grindareiningar TlI er 4,20 Å. Að því gefnu að snerting sé á milli miðjusettar Tl<sup>+</sup> jónar og I<sup>−</sup> jóna á hornum tenings grindareiningar, reiknaðu jónradíus TI<sup>+</sup>. (Jónradíus I<sup>−</sup> er 2,16 Å.)</para>
+</problem>
+<solution id="fs-idp185900448">
+<para id="fs-idp103838048">1,48 Å</para>
+</solution>
+</exercise>
+<exercise id="fs-idp64501504">
+<problem id="fs-idp160931776">
+<para id="fs-idm6458944">Teningslaga grindareining inniheldur manganjónir á hornunum og flúoríðjónir í miðju hvers brúnar.</para>
+<para id="fs-idp173090624">(a) Hver er reynsluformúla þessa efnasambands? Útskýrðu svarið.</para>
+<para id="fs-idp69359568">(b) Hver er girðitala Mn<sup>3+</sup> jónarinnar?</para>
+<para id="fs-idp29573472">(c) Reiknaðu út kantlengd grindareiningarinnar ef radíus Mn<sup>3+</sup> jónar er 0,65 Å.</para>
+<para id="fs-idp191611584">(d) Reiknaðu út eðlismassa efnasambandsins.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp68785344">
+<problem id="fs-idp173591008">
+<para id="fs-idp173591264">Hvert er bilið milli kristalsflata sem dreifa röntgengeislum með bylgjulengdina 1,541 Å við hornið <emphasis effect="italics">θ</emphasis> = 15,55° (fyrsta stigs dreifing)?</para>
+</problem>
+<solution id="fs-idp168620944">
+<para id="fs-idm32975984">2,874 Å</para>
+</solution>
+</exercise>
+<exercise id="fs-idm23848128">
+<problem id="fs-idm23847872">
+<para id="fs-idp191523072">Dreifingarmælir sem notar röntgengeisla með bylgjulengdina 0,2287 nm myndaði fyrsta stigs dreifingartopp fyrir kristalhornið <emphasis effect="italics">θ</emphasis> = 16,21°. Ákvarðaðu bilið milli dreifingarflatanna í þessum kristal.</para></problem>
+</exercise>
+<exercise id="fs-idp184563440">
+<problem id="fs-idp184563696">
+<para id="fs-idp80463840">Málmur með bil milli flata sem er jafnt og 0,4164 nm dreifir röntgengeislum með bylgjulengdina 0,2879 nm. Hvert er dreifingarhornið fyrir fyrsta stigs dreifingartoppinn?</para>
+</problem>
+<solution id="fs-idp76618704">
+<para id="fs-idp76618960">20,2°</para>
+</solution>
+</exercise>
+<exercise id="fs-idp31363760">
+<problem id="fs-idp31364016">
+<para id="fs-idp173611808">Gull kristallast í hliðlægri teningslaga grindareiningu. Annars stigs endurkast (n = 2) röntgengeisla frá flötunum sem mynda toppa og botna grindareininganna er við <emphasis effect="italics">Θ</emphasis> = 22,20°. Bylgjulengd röntgengeislanna er 1,54 Å. Hver er eðlismassi málmgulls?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp20057536">
+<problem id="fs-idp20057792">
+<para id="fs-idm33749072">Þegar rafeind í örvaðri mólýbdenfrumeind fellur úr L-hvolfi í K-hvolf er röntgengeisli gefinn frá sér. Þessir röntgengeislar beygjast undir 7,75° horni af völdum flata með 2,64 Å aðskilnaði. Hver er orkumunurinn á milli K-hvolfs og L-hvolfs í mólýbdeni, að því gefnu að um fyrsta stigs beygingu sé að ræða?</para></problem>
+<solution id="fs-idm33748560">
+<para id="fs-idp191525264">1,74 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> eV</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp190835184">
+<term>miðlægt teningslaga (BCC) fast efni (e. body-centered cubic (bcc) solid)</term>
+<meaning id="fs-idp190835184-meaning">kristalbygging sem hefur teningslaga grindareiningu með grindarpunkta á hornum og í miðju einingarinnar</meaning>
+</definition>
+<definition id="fs-idp178458288">
+<term>miðlæg teningslaga grindareining (e. body-centered cubic unit cell)</term>
+<meaning id="fs-idp178458288-meaning">einfaldasta endurtekningareining miðlægs teningslaga kristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju teningsins</meaning>
+</definition>
+<definition id="fs-idp168577936">
+<term>Bragg-jafnan (e. bragg equation)</term>
+<meaning id="fs-idp168577936-meaning">jafna sem tengir hornin sem röntgengeislar beygjast undir af völdum frumeinda í kristal</meaning>
+</definition>
+<definition id="fs-idp29496752">
+<term>girðitala (e. coordination number)</term>
+<meaning id="fs-idp29496752-meaning">fjöldi frumeinda sem eru næst tiltekinni frumeind í kristal eða miðlægri málmfrumeind í flóka</meaning>
+</definition>
+<definition id="fs-idp56136784">
+<term>teningslaga þéttpökkun (CCP) (e. cubic closest packing (ccp))</term>
+<meaning id="fs-idp56136784-meaning">kristalbygging þar sem flötum þéttpakkaðra frumeinda eða jóna er staflað sem röð þriggja laga á víxl með mismunandi afstöðu (ABC)</meaning>
+</definition>
+<definition id="fs-idp160423360">
+<term>beyging (e. diffraction)</term>
+<meaning id="fs-idp160423360-meaning">stefnubreyting rafsegulgeislunar sem verður þegar hún rekst á efnislega hindrun af viðeigandi stærð</meaning>
+</definition>
+<definition id="fs-idp20057136">
+<term>hliðlægt teningslaga (FCC) fast efni (e. face-centered cubic (fcc) solid)</term>
+<meaning id="fs-idp20057136-meaning">kristalbygging sem samanstendur af teningslaga grindareiningu með grindarpunkta á hornum og í miðju hvers flata</meaning>
+</definition>
+<definition id="fs-idp82357824">
+<term>hliðlæg teningslaga grindareining (e. face-centered cubic unit cell)</term>
+<meaning id="fs-idp82357824-meaning">einfaldasta endurtekningareining hliðlægs teningslaga kristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju hvers flata</meaning>
+</definition>
+<definition id="fs-idp81517488">
+<term>sexhyrnd þéttpökkun (HCP) (e. hexagonal closest packing (hcp))</term>
+<meaning id="fs-idp81517488-meaning">kristalbygging þar sem þéttpökkuðum lögum frumeinda eða jóna er staflað sem röð tveggja laga á víxl með mismunandi afstöðu (AB)</meaning>
+</definition>
+<definition id="fs-idp33871280">
+<term>gat (e. hole)</term>
+<meaning id="fs-idp33871280-meaning">(einnig, millirými) rými milli frumeinda í kristal</meaning>
+</definition>
+<definition id="fs-idp75734960">
+<term>jafngerður (e. isomorphous)</term>
+<meaning id="fs-idp75734960-meaning">með sömu kristalbyggingu</meaning>
+</definition>
+<definition id="fs-idm28944640">
+<term>áttflötungsgat (e. octahedral hole)</term>
+<meaning id="fs-idm28944640-meaning">opið rými í kristal í miðju sex einda sem staðsettar eru á hornum áttflötungs</meaning>
+</definition>
+<definition id="fs-idp179472016">
+<term>einföld teningslaga grindareining (e. simple cubic unit cell)</term>
+<meaning id="fs-idp179472016-meaning">(einnig, frumstæð teningslaga grindareining) grindareining í einfaldri teningslaga byggingu</meaning>
+</definition>
+<definition id="fs-idm47773456">
+<term>einföld teningslaga bygging (e. simple cubic structure)</term>
+<meaning id="fs-idm47773456-meaning">kristalbygging með teningslaga grindareiningu með grindarpunkta aðeins á hornunum</meaning>
+</definition>
+<definition id="fs-idm12811536">
+<term>rúmgrind (e. space lattice)</term>
+<meaning id="fs-idm12811536-meaning">allir punktar í kristal sem hafa eins umhverfi</meaning>
+</definition>
+<definition id="fs-idm116347536">
+<term>ferflötungsgat (e. tetrahedral hole)</term>
+<meaning id="fs-idm116347536-meaning">ferflötungsrými sem myndað er af fjórum frumeindum eða jónum í kristal</meaning>
+</definition>
+<definition id="fs-idp173597120">
+<term>grindareining (e. unit cell)</term>
+<meaning id="fs-idp173597120-meaning">minnsti hluti rúmgrindar sem er endurtekinn í þremur víddum til að mynda alla grindina</meaning>
+</definition>
+<definition id="fs-idm40748576">
+<term>röntgenkristallafræði (e. x-ray crystallography)</term>
+<meaning id="fs-idm40748576-meaning">tilraunatækni til að ákvarða fjarlægðir milli frumeinda í kristal með því að mæla hornin sem röntgengeislar beygjast undir þegar þeir fara í gegnum kristallinn</meaning>
+</definition>
+</glossary>
+</document>

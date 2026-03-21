@@ -14,28 +14,28 @@ Interpret electrode potentials in terms of relative oxidant and reductant streng
 Calculate cell potentials and predict redox spontaneity using standard electrode potentials
 
 <!-- SEG:m68823:para:fs-idm199022000 -->
-Unlike the spontaneous oxidation of copper by aqueous silver(I) ions described in section 17.2, immersing a copper wire in an aqueous solution of lead(II) ions yields no reaction. The two species, Ag^+^*(aq)* and Pb^2+^*(aq)*, thus show a distinct difference in their redox activity towards copper: the silver ion spontaneously oxidized copper, but the lead ion did not. Electrochemical cells permit this relative redox activity to be quantified by an easily measured property, *potential*. This property is more commonly called *voltage* when referenced in regard to electrical applications, and it is a measure of energy accompanying the transfer of charge. Potentials are measured in the volt unit, defined as one joule of energy per one coulomb of charge, V = J/C.
+Unlike the spontaneous oxidation of copper by aqueous silver(I) ions described in section 17.2, immersing a copper wire in an aqueous solution of lead(II) ions yields no reaction. The two species, Ag[[sup:+]]{{i}}(aq){{/i}} and Pb[[sup:2+]]{{i}}(aq){{/i}}, thus show a distinct difference in their redox activity towards copper: the silver ion spontaneously oxidized copper, but the lead ion did not. Electrochemical cells permit this relative redox activity to be quantified by an easily measured property, {{i}}potential{{/i}}. This property is more commonly called {{i}}voltage{{/i}} when referenced in regard to electrical applications, and it is a measure of energy accompanying the transfer of charge. Potentials are measured in the volt unit, defined as one joule of energy per one coulomb of charge, V = J/C.
 
 <!-- SEG:m68823:para:fs-idm173091280 -->
-When measured for purposes of electrochemistry, a potential reflects the driving force for a specific type of charge transfer process, namely, the transfer of electrons between redox reactants. Considering the nature of potential in this context, it is clear that the potential of a single half-cell or a single electrode can’t be measured; “transfer” of electrons requires both a donor and recipient, in this case a reductant and an oxidant, respectively. Instead, a half-cell potential may only be assessed relative to that of another half-cell. It is only the *difference in potential* between two half-cells that may be measured, and these measured potentials are called __cell potentials, E~cell~__, defined as
+When measured for purposes of electrochemistry, a potential reflects the driving force for a specific type of charge transfer process, namely, the transfer of electrons between redox reactants. Considering the nature of potential in this context, it is clear that the potential of a single half-cell or a single electrode can’t be measured; “transfer” of electrons requires both a donor and recipient, in this case a reductant and an oxidant, respectively. Instead, a half-cell potential may only be assessed relative to that of another half-cell. It is only the {{i}}difference in potential{{/i}} between two half-cells that may be measured, and these measured potentials are called {{term}}cell potentials, E[[sub:cell]]{{/term}}, defined as
 
 <!-- SEG:m68823:para:fs-idm172543920 -->
-where E~cathode~ and E~anode~ are the potentials of two different half-cells functioning as specified in the subscripts. As for other thermodynamic quantities, the __standard cell potential, E°~cell~__, is a cell potential measured when both half-cells are under standard-state conditions (1 *M* concentrations, 1 bar pressures, 298 K):
+where E[[sub:cathode]] and E[[sub:anode]] are the potentials of two different half-cells functioning as specified in the subscripts. As for other thermodynamic quantities, the {{term}}standard cell potential, E°[[sub:cell]]{{/term}}, is a cell potential measured when both half-cells are under standard-state conditions (1 {{i}}M{{/i}} concentrations, 1 bar pressures, 298 K):
 
 <!-- SEG:m68823:para:fs-idm201762368 -->
-To simplify the collection and sharing of potential data for half-reactions, the scientific community has designated one particular half-cell to serve as a universal reference for cell potential measurements, assigning it a potential of exactly 0 V. This half-cell is the __standard hydrogen electrode (SHE)__ and it is based on half-reaction below:
+To simplify the collection and sharing of potential data for half-reactions, the scientific community has designated one particular half-cell to serve as a universal reference for cell potential measurements, assigning it a potential of exactly 0 V. This half-cell is the {{term}}standard hydrogen electrode (SHE){{/term}} and it is based on half-reaction below:
 
 <!-- SEG:m68823:para:fs-idm198492112 -->
-A typical SHE contains an inert platinum electrode immersed in precisely 1 *M* aqueous H^+^ and a stream of bubbling H~2~ gas at 1 bar pressure, all maintained at a temperature of 298 K (see [#CNX_Chem_17_03_SHE]).
+A typical SHE contains an inert platinum electrode immersed in precisely 1 {{i}}M{{/i}} aqueous H[[sup:+]] and a stream of bubbling H[[sub:2]] gas at 1 bar pressure, all maintained at a temperature of 298 K (see [#CNX_Chem_17_03_SHE]).
 
 <!-- SEG:m68823:caption:CNX_Chem_17_03_SHE-caption -->
 A standard hydrogen electrode (SHE).
 
 <!-- SEG:m68823:para:fs-idm475267408 -->
-The assigned potential of the SHE permits the definition of a conveniently measured potential for a single half-cell. The __electrode potential (E~X~)__ for a half-cell *X* is defined as *the potential measured for a cell comprised of X acting as cathode and the SHE acting as anode*:
+The assigned potential of the SHE permits the definition of a conveniently measured potential for a single half-cell. The {{term}}electrode potential (E[[sub:X]]){{/term}} for a half-cell {{i}}X{{/i}} is defined as {{i}}the potential measured for a cell comprised of X acting as cathode and the SHE acting as anode{{/i}}:
 
 <!-- SEG:m68823:para:fs-idm210033168 -->
-When the half-cell *X* is under standard-state conditions, its potential is the __standard electrode potential, E°~X~__. Since the definition of cell potential requires the half-cells function as cathodes, these potentials are sometimes called *standard reduction potentials*.
+When the half-cell {{i}}X{{/i}} is under standard-state conditions, its potential is the {{term}}standard electrode potential, E°[[sub:X]]{{/term}}. Since the definition of cell potential requires the half-cells function as cathodes, these potentials are sometimes called {{i}}standard reduction potentials{{/i}}.
 
 <!-- SEG:m68823:para:fs-idm167563696 -->
 This approach to measuring electrode potentials is illustrated in [#CNX_Chem_17_03_GalvanCu], which depicts a cell comprised of an SHE connected to a copper(II)/copper(0) half-cell under standard-state conditions. A voltmeter in the external circuit allows measurement of the potential difference between the two half-cells. Since the Cu half-cell is designated as the cathode in the definition of cell potential, it is connected to the red (positive) input of the voltmeter, while the designated SHE anode is connected to the black (negative) input. These connections insure that the sign of the measured potential will be consistent with the sign conventions of electrochemistry per the various definitions discussed above. A cell potential of +0.337 V is measured, and so
@@ -56,7 +56,7 @@ Selected Standard Reduction Potentials at 25 °C
 Half-Reaction
 
 <!-- SEG:m68823:entry:auto-20 -->
-*E*° (V)
+{{i}}E{{/i}}° (V)
 
 <!-- SEG:m68823:entry:auto-21 -->
 [[MATH:2]]
@@ -314,16 +314,16 @@ Answer:
 Interpreting Electrode and Cell Potentials
 
 <!-- SEG:m68823:para:fs-idm183275696 -->
-Thinking carefully about the definitions of cell and electrode potentials and the observations of spontaneous redox change presented thus far, a significant relation is noted. The previous section described the spontaneous oxidation of copper by aqueous silver(I) ions, but no observed reaction with aqueous lead(II) ions. Results of the calculations in [#fs-idm10620896] have just shown *the spontaneous process is described by a positive cell potential* while *the nonspontaneous process exhibits a negative cell potential*. And so, with regard to the relative effectiveness (“strength”) with which aqueous Ag^+^ and Pb^2+^ ions oxidize Cu under standard conditions, *the stronger oxidant is the one exhibiting the greater standard electrode potential, E°*. Since by convention electrode potentials are for reduction processes, an increased value of *E°* corresponds to an increased driving force behind the reduction of the species (hence increased effectiveness of its action as an *oxidizing agent* on some other species). Negative values for electrode potentials are simply a consequence of assigning a value of 0 V to the SHE, indicating the reactant of the half-reaction is a weaker oxidant than aqueous hydrogen ions.
+Thinking carefully about the definitions of cell and electrode potentials and the observations of spontaneous redox change presented thus far, a significant relation is noted. The previous section described the spontaneous oxidation of copper by aqueous silver(I) ions, but no observed reaction with aqueous lead(II) ions. Results of the calculations in [#fs-idm10620896] have just shown {{i}}the spontaneous process is described by a positive cell potential{{/i}} while {{i}}the nonspontaneous process exhibits a negative cell potential{{/i}}. And so, with regard to the relative effectiveness (“strength”) with which aqueous Ag[[sup:+]] and Pb[[sup:2+]] ions oxidize Cu under standard conditions, {{i}}the stronger oxidant is the one exhibiting the greater standard electrode potential, E°{{/i}}. Since by convention electrode potentials are for reduction processes, an increased value of {{i}}E°{{/i}} corresponds to an increased driving force behind the reduction of the species (hence increased effectiveness of its action as an {{i}}oxidizing agent{{/i}} on some other species). Negative values for electrode potentials are simply a consequence of assigning a value of 0 V to the SHE, indicating the reactant of the half-reaction is a weaker oxidant than aqueous hydrogen ions.
 
 <!-- SEG:m68823:para:fs-idm225182656 -->
-Applying this logic to the numerically ordered listing of standard electrode potentials in [#fs-idm42585168] shows this listing to be likewise in order of the oxidizing strength of the half-reaction’s reactant species, decreasing from strongest oxidant (most positive *E*°) to weakest oxidant (most negative *E*°). Predictions regarding the spontaneity of redox reactions under standard state conditions can then be easily made by simply comparing the relative positions of their table entries. By definition, *E*°~cell~ is positive when *E*°~cathode~ > *E*°~anode~, and so any redox reaction in which the oxidant’s entry is above the reductant’s entry is predicted to be spontaneous.
+Applying this logic to the numerically ordered listing of standard electrode potentials in [#fs-idm42585168] shows this listing to be likewise in order of the oxidizing strength of the half-reaction’s reactant species, decreasing from strongest oxidant (most positive {{i}}E{{/i}}°) to weakest oxidant (most negative {{i}}E{{/i}}°). Predictions regarding the spontaneity of redox reactions under standard state conditions can then be easily made by simply comparing the relative positions of their table entries. By definition, {{i}}E{{/i}}°[[sub:cell]] is positive when {{i}}E{{/i}}°[[sub:cathode]] > {{i}}E{{/i}}°[[sub:anode]], and so any redox reaction in which the oxidant’s entry is above the reductant’s entry is predicted to be spontaneous.
 
 <!-- SEG:m68823:para:fs-idm223903632 -->
-Reconsideration of the two redox reactions in [#fs-idm10620896] provides support for this fact. The entry for the silver(I)/silver(0) half-reaction is above that for the copper(II)/copper(0) half-reaction, and so the oxidation of Cu by Ag^+^ is predicted to be spontaneous (*E*°~cathode~ > *E*°~anode~ and so *E*°~cell~ > 0). Conversely, the entry for the lead(II)/lead(0) half-cell is beneath that for copper(II)/copper(0), and the oxidation of Cu by Pb^2+^ is nonspontaneous (*E*°~cathode~ &lt; *E*°~anode~ and so *E*°~cell~ &lt; 0).
+Reconsideration of the two redox reactions in [#fs-idm10620896] provides support for this fact. The entry for the silver(I)/silver(0) half-reaction is above that for the copper(II)/copper(0) half-reaction, and so the oxidation of Cu by Ag[[sup:+]] is predicted to be spontaneous ({{i}}E{{/i}}°[[sub:cathode]] > {{i}}E{{/i}}°[[sub:anode]] and so {{i}}E{{/i}}°[[sub:cell]] > 0). Conversely, the entry for the lead(II)/lead(0) half-cell is beneath that for copper(II)/copper(0), and the oxidation of Cu by Pb[[sup:2+]] is nonspontaneous ({{i}}E{{/i}}°[[sub:cathode]] &lt; {{i}}E{{/i}}°[[sub:anode]] and so {{i}}E{{/i}}°[[sub:cell]] &lt; 0).
 
 <!-- SEG:m68823:para:fs-idm225106800 -->
-Recalling the chapter on thermodynamics, the spontaneities of the forward and reverse reactions of a reversible process show a reciprocal relationship: if a process is spontaneous in one direction, it is non-spontaneous in the opposite direction. As an indicator of spontaneity for redox reactions, the potential of a cell reaction shows a consequential relationship in its arithmetic sign. The spontaneous oxidation of copper by lead(II) ions is *not* observed,
+Recalling the chapter on thermodynamics, the spontaneities of the forward and reverse reactions of a reversible process show a reciprocal relationship: if a process is spontaneous in one direction, it is non-spontaneous in the opposite direction. As an indicator of spontaneity for redox reactions, the potential of a cell reaction shows a consequential relationship in its arithmetic sign. The spontaneous oxidation of copper by lead(II) ions is {{i}}not{{/i}} observed,
 
 <!-- SEG:m68823:para:fs-idm222165888 -->
 and so the reverse reaction, the oxidation of lead by copper(II) ions, is predicted to occur spontaneously:
@@ -344,7 +344,7 @@ Solution
 Referring to the tabulated half-reactions, the redox reaction in question can be represented by the equations below:
 
 <!-- SEG:m68823:para:fs-idm477280336 -->
-The entry for the putative oxidant, Fe^2+^, appears *above* the entry for the reductant, Cr, and so a spontaneous reaction is predicted per the quick approach described above. Supporting this predication by calculating the standard cell potential for this reaction gives
+The entry for the putative oxidant, Fe[[sup:2+]], appears {{i}}above{{/i}} the entry for the reductant, Cr, and so a spontaneous reaction is predicted per the quick approach described above. Supporting this predication by calculating the standard cell potential for this reaction gives
 
 <!-- SEG:m68823:para:fs-idm183601984 -->
 The positive value for the standard cell potential indicates the process is spontaneous under standard state conditions.
@@ -368,7 +368,7 @@ Answer:
 Key Concepts and Summary
 
 <!-- SEG:m68823:para:fs-idp43740416 -->
-The property of potential, *E*, is the energy associated with the separation/transfer of charge. In electrochemistry, the potentials of cells and half-cells are thermodynamic quantities that reflect the driving force or the spontaneity of their redox processes. The cell potential of an electrochemical cell is the difference in between its cathode and anode. To permit easy sharing of half-cell potential data, the standard hydrogen electrode (SHE) is assigned a potential of exactly 0 V and used to define a single electrode potential for any given half-cell. The electrode potential of a half-cell, *E~X~*, is the cell potential of said half-cell acting as a cathode when connected to a SHE acting as an anode. When the half-cell is operating under standard state conditions, its potential is the standard electrode potential, *E*°~X~. Standard electrode potentials reflect the relative oxidizing strength of the half-reaction’s reactant, with stronger oxidants exhibiting larger (more positive) *E°~X~* values. Tabulations of standard electrode potentials may be used to compute standard cell potentials, *E°~cell~*, for many redox reactions. The arithmetic sign of a cell potential indicates the spontaneity of the cell reaction, with positive values for spontaneous reactions and negative values for nonspontaneous reactions (spontaneous in the reverse direction).
+The property of potential, {{i}}E{{/i}}, is the energy associated with the separation/transfer of charge. In electrochemistry, the potentials of cells and half-cells are thermodynamic quantities that reflect the driving force or the spontaneity of their redox processes. The cell potential of an electrochemical cell is the difference in between its cathode and anode. To permit easy sharing of half-cell potential data, the standard hydrogen electrode (SHE) is assigned a potential of exactly 0 V and used to define a single electrode potential for any given half-cell. The electrode potential of a half-cell, {{i}}E[[sub:X]]{{/i}}, is the cell potential of said half-cell acting as a cathode when connected to a SHE acting as an anode. When the half-cell is operating under standard state conditions, its potential is the standard electrode potential, {{i}}E{{/i}}°[[sub:X]]. Standard electrode potentials reflect the relative oxidizing strength of the half-reaction’s reactant, with stronger oxidants exhibiting larger (more positive) {{i}}E°[[sub:X]]{{/i}} values. Tabulations of standard electrode potentials may be used to compute standard cell potentials, {{i}}E°[[sub:cell]]{{/i}}, for many redox reactions. The arithmetic sign of a cell potential indicates the spontaneity of the cell reaction, with positive values for spontaneous reactions and negative values for nonspontaneous reactions (spontaneous in the reverse direction).
 
 <!-- SEG:m68823:title:fs-idm175821376-title -->
 Key Equations
@@ -422,10 +422,10 @@ Write the balanced cell reaction for the cell schematic below, calculate the sta
 [[MATH:52]] +1.16 V; spontaneous
 
 <!-- SEG:m68823:problem:fs-idp72666912 -->
-Determine the cell reaction and standard cell potential at 25 °C for a cell made from a cathode half-cell consisting of a silver electrode in 1 *M* silver nitrate solution and an anode half-cell consisting of a zinc electrode in 1 *M* zinc nitrate. Is the reaction spontaneous at standard conditions?
+Determine the cell reaction and standard cell potential at 25 °C for a cell made from a cathode half-cell consisting of a silver electrode in 1 {{i}}M{{/i}} silver nitrate solution and an anode half-cell consisting of a zinc electrode in 1 {{i}}M{{/i}} zinc nitrate. Is the reaction spontaneous at standard conditions?
 
 <!-- SEG:m68823:problem:fs-idm3160720 -->
-Determine the cell reaction and standard cell potential at 25 °C for a cell made from an anode half-cell containing a cadmium electrode in 1 *M* cadmium nitrate and a cathode half-cell consisting of an aluminum electrode in 1 *M* aluminum nitrate solution. Is the reaction spontaneous at standard conditions?
+Determine the cell reaction and standard cell potential at 25 °C for a cell made from an anode half-cell containing a cadmium electrode in 1 {{i}}M{{/i}} cadmium nitrate and a cathode half-cell consisting of an aluminum electrode in 1 {{i}}M{{/i}} aluminum nitrate solution. Is the reaction spontaneous at standard conditions?
 
 <!-- SEG:m68823:solution:fs-idp175884016 -->
 [[MATH:53]] −1.259 V; nonspontaneous
@@ -437,7 +437,7 @@ Write the balanced cell reaction for the cell schematic below, calculate the sta
 standard cell potential (Ecell°)
 
 <!-- SEG:m68823:glossary-def:fs-idp227872832-def -->
-the cell potential when all reactants and products are in their standard states (1 bar or 1 atm or gases; 1 M for solutes), usually at 298.15 K
+the cell potential when all reactants and products are in their standard states (1 bar or 1 atm or gases; 1 {{i}}M{{/i}} for solutes), usually at 298.15 K
 
 <!-- SEG:m68823:glossary-term:fs-idp198657264-term -->
 standard hydrogen electrode (SHE)
@@ -449,4 +449,4 @@ half-cell based on hydrogen ion production, assigned a potential of exactly 0 V 
 standard electrode potential ((EX°))
 
 <!-- SEG:m68823:glossary-def:fs-idm4867824-def -->
-electrode potential measured under standard conditions (1 bar or 1 atm for gases; 1 M for solutes) usually at 298.15 K
+electrode potential measured under standard conditions (1 bar or 1 atm for gases; 1 {{i}}M{{/i}} for solutes) usually at 298.15 K

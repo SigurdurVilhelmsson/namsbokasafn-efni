@@ -17,7 +17,7 @@ Define half-life and carry out related calculations
 Identify the order of a reaction from concentration/time data
 
 <!-- SEG:m68791:para:fs-idp89497264 -->
-The rate laws discussed thus far relate the rate and the concentrations of reactants. We can also determine a second form of each rate law that relates the concentrations of reactants and time. These are called __integrated rate laws__. We can use an integrated rate law to determine the amount of reactant or product present after a period of time or to estimate the time required for a reaction to proceed to a certain extent. For example, an integrated rate law is used to determine the length of time a radioactive material must be stored for its radioactivity to decay to a safe level.
+The rate laws discussed thus far relate the rate and the concentrations of reactants. We can also determine a second form of each rate law that relates the concentrations of reactants and time. These are called {{term}}integrated rate laws{{/term}}. We can use an integrated rate law to determine the amount of reactant or product present after a period of time or to estimate the time required for a reaction to proceed to a certain extent. For example, an integrated rate law is used to determine the length of time a radioactive material must be stored for its radioactivity to decay to a safe level.
 
 <!-- SEG:m68791:para:fs-idp93158656 -->
 Using calculus, the differential rate law for a chemical reaction can be integrated with respect to time to give an equation that relates the amount of reactant or product present in a reaction mixture to the elapsed time of the reaction. This process can either be very straightforward or very complex, depending on the complexity of the differential rate law. For purposes of discussion, we will focus on the resulting integrated rate laws for first-, second-, and zero-order reactions.
@@ -26,10 +26,10 @@ Using calculus, the differential rate law for a chemical reaction can be integra
 First-Order Reactions
 
 <!-- SEG:m68791:para:fs-idm144782000 -->
-Integration of the rate law for a simple first-order reaction (rate = *k*[*A*]) results in an equation describing how the reactant concentration varies with time:
+Integration of the rate law for a simple first-order reaction (rate = {{i}}k{{/i}}[{{i}}A{{/i}}]) results in an equation describing how the reactant concentration varies with time:
 
 <!-- SEG:m68791:para:fs-idm63176528 -->
-where [*A*]*t* is the concentration of *A* at any time *t*, [*A*]~0~ is the initial concentration of *A*, and *k* is the first-order rate constant.
+where [{{i}}A{{/i}}]{{i}}t{{/i}} is the concentration of {{i}}A{{/i}} at any time {{i}}t{{/i}}, [{{i}}A{{/i}}][[sub:0]] is the initial concentration of {{i}}A{{/i}}, and {{i}}k{{/i}} is the first-order rate constant.
 
 <!-- SEG:m68791:para:fs-idm512172928 -->
 For mathematical convenience, this equation may be rearranged to other formats, including direct and indirect proportionalities:
@@ -41,10 +41,10 @@ and a format showing a linear dependence of concentration in time:
 The Integrated Rate Law for a First-Order Reaction
 
 <!-- SEG:m68791:para:fs-idm87528896 -->
-The rate constant for the first-order decomposition of cyclobutane, C~4~H~8~ at 500 °C is 9.2 [[MATH:1]] 10^−3^ s^−1^:
+The rate constant for the first-order decomposition of cyclobutane, C[[sub:4]]H[[sub:8]] at 500 °C is 9.2 [[MATH:1]] 10[[sup:−3]] s[[sup:−1]]:
 
 <!-- SEG:m68791:para:fs-idm139703904 -->
-How long will it take for 80.0% of a sample of C~4~H~8~ to decompose?
+How long will it take for 80.0% of a sample of C[[sub:4]]H[[sub:8]] to decompose?
 
 <!-- SEG:m68791:para-title:fs-idm133511056-title -->
 Solution
@@ -53,7 +53,7 @@ Solution
 Since the relative change in reactant concentration is provided, a convenient format for the integrated rate law is:
 
 <!-- SEG:m68791:para:fs-idm149413632 -->
-The initial concentration of C~4~H~8~, [*A*]~0~, is not provided, but the provision that 80.0% of the sample has decomposed is enough information to solve this problem. Let *x* be the initial concentration, in which case the concentration after 80.0% decomposition is 20.0% of *x* or 0.200*x.* Rearranging the rate law to isolate *t* and substituting the provided quantities yields:
+The initial concentration of C[[sub:4]]H[[sub:8]], [{{i}}A{{/i}}][[sub:0]], is not provided, but the provision that 80.0% of the sample has decomposed is enough information to solve this problem. Let {{i}}x{{/i}} be the initial concentration, in which case the concentration after 80.0% decomposition is 20.0% of {{i}}x{{/i}} or 0.200{{i}}x.{{/i}} Rearranging the rate law to isolate {{i}}t{{/i}} and substituting the provided quantities yields:
 
 <!-- SEG:m68791:para-title:fs-idp38768624-title -->
 Check Your Learning
@@ -62,7 +62,7 @@ Check Your Learning
 Iodine-131 is a radioactive isotope that is used to diagnose and treat some forms of thyroid cancer. Iodine-131 decays to xenon-131 according to the equation:
 
 <!-- SEG:m68791:para:fs-idm29159424 -->
-The decay is first-order with a rate constant of 0.138 d^−1^. How many days will it take for 90% of the iodine−131 in a 0.500 *M* solution of this substance to decay to Xe-131?
+The decay is first-order with a rate constant of 0.138 d[[sup:−1]]. How many days will it take for 90% of the iodine−131 in a 0.500 {{i}}M{{/i}} solution of this substance to decay to Xe-131?
 
 <!-- SEG:m68791:para:fs-idm22449888 -->
 16.7 days
@@ -77,28 +77,28 @@ Answer:
 In the next example exercise, a linear format for the integrated rate law will be convenient:
 
 <!-- SEG:m68791:para:fs-idm134557872 -->
-A plot of ln[*A*]*t* versus *t* for a first-order reaction is a straight line with a slope of −*k* and a *y*-intercept of ln[*A*]~0~. If a set of rate data are plotted in this fashion but do *not* result in a straight line, the reaction is not first order in *A*.
+A plot of ln[{{i}}A{{/i}}][[sub:{{i}}t{{/i}}]] versus {{i}}t{{/i}} for a first-order reaction is a straight line with a slope of −{{i}}k{{/i}} and a {{i}}y{{/i}}-intercept of ln[{{i}}A{{/i}}][[sub:0]]. If a set of rate data are plotted in this fashion but do {{i}}not{{/i}} result in a straight line, the reaction is not first order in {{i}}A{{/i}}.
 
 <!-- SEG:m68791:example-title:fs-idp35909968-title -->
 Graphical Determination of Reaction Order and Rate Constant
 
 <!-- SEG:m68791:para:fs-idm76041456 -->
-Show that the data in [m68786#CNX_Chem_12_01_KDataH2O2] can be represented by a first-order rate law by graphing ln[H~2~O~2~] versus time. Determine the rate constant for the decomposition of H~2~O~2~ from these data.
+Show that the data in [m68786#CNX_Chem_12_01_KDataH2O2] can be represented by a first-order rate law by graphing ln[H[[sub:2]]O[[sub:2]]] versus time. Determine the rate constant for the decomposition of H[[sub:2]]O[[sub:2]] from these data.
 
 <!-- SEG:m68791:para-title:fs-idm136711920-title -->
 Solution
 
 <!-- SEG:m68791:para:fs-idm136711920 -->
-The data from [m68786#CNX_Chem_12_01_KDataH2O2] are tabulated below, and a plot of ln[H~2~O~2~] is shown in [#CNX_Chem_12_04_FrstOKin].
+The data from [m68786#CNX_Chem_12_01_KDataH2O2] are tabulated below, and a plot of ln[H[[sub:2]]O[[sub:2]]] is shown in [#CNX_Chem_12_04_FrstOKin].
 
 <!-- SEG:m68791:para:fs-idm88773168 -->
-The plot of ln[H~2~O~2~] versus time is linear, indicating that the reaction may be described by a first-order rate law.
+The plot of ln[H[[sub:2]]O[[sub:2]]] versus time is linear, indicating that the reaction may be described by a first-order rate law.
 
 <!-- SEG:m68791:para:fs-idm97546480 -->
 According to the linear format of the first-order integrated rate law, the rate constant is given by the negative of this plot’s slope.
 
 <!-- SEG:m68791:para:fs-idm145444128 -->
-The slope of this line may be derived from two values of ln[H~2~O~2~] at different values of *t* (one near each end of the line is preferable). For example, the value of ln[H~2~O~2~] when *t* is 0.00 h is 0.000; the value when *t* = 24.00 h is −2.772
+The slope of this line may be derived from two values of ln[H[[sub:2]]O[[sub:2]]] at different values of {{i}}t{{/i}} (one near each end of the line is preferable). For example, the value of ln[H[[sub:2]]O[[sub:2]]] when {{i}}t{{/i}} is 0.00 h is 0.000; the value when {{i}}t{{/i}} = 24.00 h is −2.772
 
 <!-- SEG:m68791:para-title:fs-idp92343136-title -->
 Check Your Learning
@@ -107,22 +107,22 @@ Check Your Learning
 Graph the following data to determine whether the reaction [[MATH:2]] is first order.
 
 <!-- SEG:m68791:para:fs-idp73329760 -->
-The plot of ln[*A*]*t* vs. *t* is not linear, indicating the reaction is not first order:[[BR]]
+The plot of ln[{{i}}A{{/i}}][[sub:{{i}}t{{/i}}]] vs. {{i}}t{{/i}} is not linear, indicating the reaction is not first order:[[BR]]
 
 <!-- SEG:m68791:note-title:fs-idm206842256-title -->
 Answer:
 
 <!-- SEG:m68791:para:fs-idp73329760 -->
-The plot of ln[*A*]*t* vs. *t* is not linear, indicating the reaction is not first order:[[BR]]
+The plot of ln[{{i}}A{{/i}}][[sub:{{i}}t{{/i}}]] vs. {{i}}t{{/i}} is not linear, indicating the reaction is not first order:[[BR]]
 
 <!-- SEG:m68791:entry:auto-40 -->
 Time (h)
 
 <!-- SEG:m68791:entry:auto-41 -->
-[H~2~O~2~] (*M*)
+[H[[sub:2]]O[[sub:2]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-42 -->
-ln[H~2~O~2~]
+ln[H[[sub:2]]O[[sub:2]]]
 
 <!-- SEG:m68791:entry:auto-43 -->
 0.00
@@ -170,13 +170,13 @@ ln[H~2~O~2~]
 −2.772
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_FrstOKin-caption -->
-A linear relationship between ln[H~2~O~2~] and time suggests the decomposition of hydrogen peroxide is a first-order reaction.
+A linear relationship between ln[H[[sub:2]]O[[sub:2]]] and time suggests the decomposition of hydrogen peroxide is a first-order reaction.
 
 <!-- SEG:m68791:entry:auto-59 -->
 Time (s)
 
 <!-- SEG:m68791:entry:auto-60 -->
-[*A*]
+[{{i}}A{{/i}}]
 
 <!-- SEG:m68791:entry:auto-61 -->
 4.0
@@ -224,10 +224,10 @@ where the terms in the equation have their usual meanings as defined earlier.
 The Integrated Rate Law for a Second-Order Reaction
 
 <!-- SEG:m68791:para:fs-idp6881136 -->
-The reaction of butadiene gas (C~4~H~6~) to yield C~8~H~12~ gas is described by the equation:
+The reaction of butadiene gas (C[[sub:4]]H[[sub:6]]) to yield C[[sub:8]]H[[sub:12]] gas is described by the equation:
 
 <!-- SEG:m68791:para:fs-idp68803280 -->
-This “dimerization” reaction is second order with a rate constant equal to 5.76 [[MATH:3]] 10^−2^ L mol^−1^ min^−1^ under certain conditions. If the initial concentration of butadiene is 0.200 *M*, what is the concentration after 10.0 min?
+This “dimerization” reaction is second order with a rate constant equal to 5.76 [[MATH:3]] 10[[sup:−2]] L mol[[sup:−1]] min[[sup:−1]] under certain conditions. If the initial concentration of butadiene is 0.200 {{i}}M{{/i}}, what is the concentration after 10.0 min?
 
 <!-- SEG:m68791:para-title:fs-idm47025104-title -->
 Solution
@@ -236,7 +236,7 @@ Solution
 For a second-order reaction, the integrated rate law is written
 
 <!-- SEG:m68791:para:fs-idm25993952 -->
-We know three variables in this equation: [*A*]~0~ = 0.200 mol/L, *k* = 5.76 [[MATH:4]] 10^−2^ L/mol/min, and *t* = 10.0 min. Therefore, we can solve for [*A*], the fourth variable:
+We know three variables in this equation: [{{i}}A{{/i}}][[sub:0]] = 0.200 mol/L, {{i}}k{{/i}} = 5.76 [[MATH:4]] 10[[sup:−2]] L/mol/min, and {{i}}t{{/i}} = 10.0 min. Therefore, we can solve for [{{i}}A{{/i}}], the fourth variable:
 
 <!-- SEG:m68791:para:fs-idm85057584 -->
 Therefore 0.179 mol/L of butadiene remain at the end of 10.0 min, compared to the 0.200 mol/L that was originally present.
@@ -245,7 +245,7 @@ Therefore 0.179 mol/L of butadiene remain at the end of 10.0 min, compared to th
 Check Your Learning
 
 <!-- SEG:m68791:para:fs-idp90256 -->
-If the initial concentration of butadiene is 0.0200 *M*, what is the concentration remaining after 20.0 min?
+If the initial concentration of butadiene is 0.0200 {{i}}M{{/i}}, what is the concentration remaining after 20.0 min?
 
 <!-- SEG:m68791:para:fs-idm23200256 -->
 0.0195 mol/L
@@ -260,7 +260,7 @@ Answer:
 The integrated rate law for second-order reactions has the form of the equation of a straight line:
 
 <!-- SEG:m68791:para:fs-idm67290896 -->
-A plot of [[MATH:5]] versus *t* for a second-order reaction is a straight line with a slope of *k* and a *y*-intercept of [[MATH:6]] If the plot is not a straight line, then the reaction is not second order.
+A plot of [[MATH:5]] versus {{i}}t{{/i}} for a second-order reaction is a straight line with a slope of {{i}}k{{/i}} and a {{i}}y{{/i}}-intercept of [[MATH:6]] If the plot is not a straight line, then the reaction is not second order.
 
 <!-- SEG:m68791:example-title:fs-idp69093472-title -->
 Graphical Determination of Reaction Order and Rate Constant
@@ -275,13 +275,13 @@ Solution
 [[TABLE:fs-idm140502592]]
 
 <!-- SEG:m68791:para:fs-idm190212352 -->
-In order to distinguish a first-order reaction from a second-order reaction, prepare a plot of ln[C~4~H~6~]*t* versus *t* and compare it to a plot of [[MATH:12]] versus *t*. The values needed for these plots follow.
+In order to distinguish a first-order reaction from a second-order reaction, prepare a plot of ln[C[[sub:4]]H[[sub:6]]][[sub:{{i}}t{{/i}}]] versus {{i}}t{{/i}} and compare it to a plot of [[MATH:12]] versus {{i}}t{{/i}}. The values needed for these plots follow.
 
 <!-- SEG:m68791:para:fs-idp69115360 -->
-The plots are shown in [#CNX_Chem_12_04_2OrdKin], which clearly shows the plot of ln[C~4~H~6~]*t* versus *t* is not linear, therefore the reaction is not first order. The plot of [[MATH:13]] versus *t* is linear, indicating that the reaction is second order.
+The plots are shown in [#CNX_Chem_12_04_2OrdKin], which clearly shows the plot of ln[C[[sub:4]]H[[sub:6]]][[sub:{{i}}t{{/i}}]] versus {{i}}t{{/i}} is not linear, therefore the reaction is not first order. The plot of [[MATH:13]] versus {{i}}t{{/i}} is linear, indicating that the reaction is second order.
 
 <!-- SEG:m68791:para:fs-idm339836784 -->
-According to the second-order integrated rate law, the rate constant is equal to the slope of the [[MATH:14]] versus *t* plot. Using the data for *t* = 0 *s* and *t* = 6200 *s*, the rate constant is estimated as follows:
+According to the second-order integrated rate law, the rate constant is equal to the slope of the [[MATH:14]] versus {{i}}t{{/i}} plot. Using the data for {{i}}t{{/i}} = 0 {{i}}s{{/i}} and {{i}}t{{/i}} = 6200 {{i}}s{{/i}}, the rate constant is estimated as follows:
 
 <!-- SEG:m68791:para-title:fs-idm56284464-title -->
 Check Your Learning
@@ -290,49 +290,49 @@ Check Your Learning
 Do the following data fit a second-order rate law?
 
 <!-- SEG:m68791:para:fs-idp122966448 -->
-Yes. The plot of [[MATH:15]] vs. *t* is linear:
+Yes. The plot of [[MATH:15]] vs. {{i}}t{{/i}} is linear:
 
 <!-- SEG:m68791:note-title:fs-idm72354384-title -->
 Answer:
 
 <!-- SEG:m68791:para:fs-idp122966448 -->
-Yes. The plot of [[MATH:16]] vs. *t* is linear:
+Yes. The plot of [[MATH:16]] vs. {{i}}t{{/i}} is linear:
 
 <!-- SEG:m68791:entry:auto-101 -->
 Time (s)
 
 <!-- SEG:m68791:entry:auto-102 -->
-[C~4~H~6~] (*M*)
+[C[[sub:4]]H[[sub:6]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-103 -->
 0
 
 <!-- SEG:m68791:entry:auto-104 -->
-1.00 [[MATH:17]] 10^−2^
+1.00 [[MATH:17]] 10[[sup:−2]]
 
 <!-- SEG:m68791:entry:auto-105 -->
 1600
 
 <!-- SEG:m68791:entry:auto-106 -->
-5.04 [[MATH:18]] 10^−3^
+5.04 [[MATH:18]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-107 -->
 3200
 
 <!-- SEG:m68791:entry:auto-108 -->
-3.37 [[MATH:19]] 10^−3^
+3.37 [[MATH:19]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-109 -->
 4800
 
 <!-- SEG:m68791:entry:auto-110 -->
-2.53 [[MATH:20]] 10^−3^
+2.53 [[MATH:20]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-111 -->
 6200
 
 <!-- SEG:m68791:entry:auto-112 -->
-2.08 [[MATH:21]] 10^−3^
+2.08 [[MATH:21]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-113 -->
 Time (s)
@@ -341,7 +341,7 @@ Time (s)
 [[MATH:22]]
 
 <!-- SEG:m68791:entry:auto-115 -->
-ln[C~4~H~6~]
+ln[C[[sub:4]]H[[sub:6]]]
 
 <!-- SEG:m68791:entry:auto-116 -->
 0
@@ -389,13 +389,13 @@ ln[C~4~H~6~]
 −6.175
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_2OrdKin-caption -->
-These two graphs show first- and second-order plots for the dimerization of C~4~H~6~. The linear trend in the second-order plot (right) indicates that the reaction follows second-order kinetics.
+These two graphs show first- and second-order plots for the dimerization of C[[sub:4]]H[[sub:6]]. The linear trend in the second-order plot (right) indicates that the reaction follows second-order kinetics.
 
 <!-- SEG:m68791:entry:auto-132 -->
 Time (s)
 
 <!-- SEG:m68791:entry:auto-133 -->
-[*A*] (*M*)
+[{{i}}A{{/i}}] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-134 -->
 5
@@ -440,13 +440,13 @@ Zero-Order Reactions
 For zero-order reactions, the differential rate law is:
 
 <!-- SEG:m68791:para:fs-idm91448320 -->
-A zero-order reaction thus exhibits a constant reaction rate, regardless of the concentration of its reactant(s). This may seem counterintuitive, since the reaction rate certainly can’t be finite when the reactant concentration is zero. For purposes of this introductory text, it will suffice to note that zero-order kinetics are observed for some reactions only under certain specific conditions. These same reactions exhibit different kinetic behaviors when the specific conditions aren’t met, and for this reason the more prudent term *pseudo-zero-order* is sometimes used.
+A zero-order reaction thus exhibits a constant reaction rate, regardless of the concentration of its reactant(s). This may seem counterintuitive, since the reaction rate certainly can’t be finite when the reactant concentration is zero. For purposes of this introductory text, it will suffice to note that zero-order kinetics are observed for some reactions only under certain specific conditions. These same reactions exhibit different kinetic behaviors when the specific conditions aren’t met, and for this reason the more prudent term {{i}}pseudo-zero-order{{/i}} is sometimes used.
 
 <!-- SEG:m68791:para:fs-idp73236848 -->
 The integrated rate law for a zero-order reaction is a linear function:
 
 <!-- SEG:m68791:para:fs-idm99514160 -->
-A plot of [*A*] versus *t* for a zero-order reaction is a straight line with a slope of *−k* and a *y*-intercept of [*A*]~0~. [#CNX_Chem_12_04_AmDecomK] shows a plot of [NH~3~] versus *t* for the thermal decomposition of ammonia at the surface of two different heated solids. The decomposition reaction exhibits first-order behavior at a quartz (SiO~2~) surface, as suggested by the exponentially decaying plot of concentration versus time. On a tungsten surface, however, the plot is linear, indicating zero-order kinetics.
+A plot of [{{i}}A{{/i}}] versus {{i}}t{{/i}} for a zero-order reaction is a straight line with a slope of {{i}}−k{{/i}} and a {{i}}y{{/i}}-intercept of [{{i}}A{{/i}}][[sub:0]]. [#CNX_Chem_12_04_AmDecomK] shows a plot of [NH[[sub:3]]] versus {{i}}t{{/i}} for the thermal decomposition of ammonia at the surface of two different heated solids. The decomposition reaction exhibits first-order behavior at a quartz (SiO[[sub:2]]) surface, as suggested by the exponentially decaying plot of concentration versus time. On a tungsten surface, however, the plot is linear, indicating zero-order kinetics.
 
 <!-- SEG:m68791:example-title:fs-idm339943456-title -->
 Graphical Determination of Zero-Order Rate Constant
@@ -458,13 +458,13 @@ Use the data plot in [#CNX_Chem_12_04_AmDecomK] to graphically estimate the zero
 Solution
 
 <!-- SEG:m68791:para:fs-idm382849456 -->
-The integrated rate law for zero-order kinetics describes a linear plot of reactant concentration, [*A*]*t*, versus time, *t*, with a slope equal to the negative of the rate constant, −*k*. Following the mathematical approach of previous examples, the slope of the linear data plot (for decomposition on W) is estimated from the graph. Using the ammonia concentrations at *t* = 0 and *t* = 1000 s:
+The integrated rate law for zero-order kinetics describes a linear plot of reactant concentration, [{{i}}A{{/i}}][[sub:{{i}}t{{/i}}]], versus time, {{i}}t{{/i}}, with a slope equal to the negative of the rate constant, −{{i}}k{{/i}}. Following the mathematical approach of previous examples, the slope of the linear data plot (for decomposition on W) is estimated from the graph. Using the ammonia concentrations at {{i}}t{{/i}} = 0 and {{i}}t{{/i}} = 1000 s:
 
 <!-- SEG:m68791:para-title:fs-idm376604432-title -->
 Check Your Learning
 
 <!-- SEG:m68791:para:fs-idm376604432 -->
-The zero-order plot in [#CNX_Chem_12_04_AmDecomK] shows an initial ammonia concentration of 0.0028 mol L^−1^ decreasing linearly with time for 1000 s. Assuming no change in this zero-order behavior, at what time (min) will the concentration reach 0.0001 mol L^−1^?
+The zero-order plot in [#CNX_Chem_12_04_AmDecomK] shows an initial ammonia concentration of 0.0028 mol L[[sup:−1]] decreasing linearly with time for 1000 s. Assuming no change in this zero-order behavior, at what time (min) will the concentration reach 0.0001 mol L[[sup:−1]]?
 
 <!-- SEG:m68791:para:fs-idm508285088 -->
 35 min
@@ -476,7 +476,7 @@ Answer:
 35 min
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_AmDecomK-caption -->
-The decomposition of NH~3~ on a tungsten (W) surface is a zero-order reaction, whereas on a quartz (SiO~2~) surface, the reaction is first order.
+The decomposition of NH[[sub:3]] on a tungsten (W) surface is a zero-order reaction, whereas on a quartz (SiO[[sub:2]]) surface, the reaction is first order.
 
 <!-- SEG:m68791:title:fs-idp6500464-title -->
 The Half-Life of a Reaction
@@ -488,13 +488,13 @@ First-Order Reactions
 An equation relating the half-life of a first-order reaction to its rate constant may be derived from the integrated rate law as follows:
 
 <!-- SEG:m68791:para:fs-idp33747664 -->
-Invoking the definition of half-life, symbolized [[MATH:23]] requires that the concentration of *A* at this point is one-half its initial concentration: [[MATH:24]] [[MATH:25]]
+Invoking the definition of half-life, symbolized [[MATH:23]] requires that the concentration of {{i}}A{{/i}} at this point is one-half its initial concentration: [[MATH:24]] [[MATH:25]]
 
 <!-- SEG:m68791:para:fs-idp123084256 -->
 Substituting these terms into the rearranged integrated rate law and simplifying yields the equation for half-life:
 
 <!-- SEG:m68791:para:fs-idm124479504 -->
-This equation describes an expected inverse relation between the half-life of the reaction and its rate constant, *k*. Faster reactions exhibit larger rate constants and correspondingly shorter half-lives. Slower reactions exhibit smaller rate constants and longer half-lives.
+This equation describes an expected inverse relation between the half-life of the reaction and its rate constant, {{i}}k{{/i}}. Faster reactions exhibit larger rate constants and correspondingly shorter half-lives. Slower reactions exhibit smaller rate constants and longer half-lives.
 
 <!-- SEG:m68791:example-title:fs-idm35443680-title -->
 Calculation of a First-order Rate Constant using Half-Life
@@ -506,13 +506,13 @@ Calculate the rate constant for the first-order decomposition of hydrogen peroxi
 Solution
 
 <!-- SEG:m68791:para:fs-idp122074992 -->
-Inspecting the concentration/time data in [#CNX_Chem_12_04_HPerDcmp] shows the half-life for the decomposition of H~2~O~2~ is 2.16 [[MATH:26]] 10^4^ s:
+Inspecting the concentration/time data in [#CNX_Chem_12_04_HPerDcmp] shows the half-life for the decomposition of H[[sub:2]]O[[sub:2]] is 2.16 [[MATH:26]] 10[[sup:4]] s:
 
 <!-- SEG:m68791:para-title:fs-idp33836864-title -->
 Check Your Learning
 
 <!-- SEG:m68791:para:fs-idp33836864 -->
-The first-order radioactive decay of iodine-131 exhibits a rate constant of 0.138 d^−1^. What is the half-life for this decay?
+The first-order radioactive decay of iodine-131 exhibits a rate constant of 0.138 d[[sup:−1]]. What is the half-life for this decay?
 
 <!-- SEG:m68791:para:fs-idm101854176 -->
 5.02 d.
@@ -524,7 +524,7 @@ Answer:
 5.02 d.
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_HPerDcmp-caption -->
-The decomposition of H~2~O~2~ [[MATH:27]] at 40 °C is illustrated. The intensity of the color symbolizes the concentration of H~2~O~2~ at the indicated times; H~2~O~2~ is actually colorless.
+The decomposition of H[[sub:2]]O[[sub:2]] [[MATH:27]] at 40 °C is illustrated. The intensity of the color symbolizes the concentration of H[[sub:2]]O[[sub:2]] at the indicated times; H[[sub:2]]O[[sub:2]] is actually colorless.
 
 <!-- SEG:m68791:title:fs-idm87302368-title -->
 Second-Order Reactions
@@ -536,10 +536,10 @@ Following the same approach as used for first-order reactions, an equation relat
 or
 
 <!-- SEG:m68791:para:fs-idp8098000 -->
-Restrict *t* to *t*~1/2~
+Restrict {{i}}t{{/i}} to {{i}}t{{/i}}[[sub:1/2]]
 
 <!-- SEG:m68791:para:fs-idm25226832 -->
-define [*A*]*t* as one-half [*A*]~0~
+define [{{i}}A{{/i}}][[sub:{{i}}t{{/i}}]] as one-half [{{i}}A{{/i}}][[sub:0]]
 
 <!-- SEG:m68791:para:fs-idm148624880 -->
 and then substitute into the integrated rate law and simplify:
@@ -578,25 +578,25 @@ Second-Order
 rate law
 
 <!-- SEG:m68791:entry:auto-194 -->
-rate = *k*
+rate = {{i}}k{{/i}}
 
 <!-- SEG:m68791:entry:auto-195 -->
-rate = *k*[*A*]
+rate = {{i}}k{{/i}}[{{i}}A{{/i}}]
 
 <!-- SEG:m68791:entry:auto-196 -->
-rate = *k*[*A*]^2^
+rate = {{i}}k{{/i}}[{{i}}A{{/i}}][[sup:2]]
 
 <!-- SEG:m68791:entry:auto-197 -->
 units of rate constant
 
 <!-- SEG:m68791:entry:auto-198 -->
-*M* s^−1^
+{{i}}M{{/i}} s[[sup:−1]]
 
 <!-- SEG:m68791:entry:auto-199 -->
-s^−1^
+s[[sup:−1]]
 
 <!-- SEG:m68791:entry:auto-200 -->
-*M*^−1^ s^−1^
+{{i}}M{{/i}}[[sup:−1]] s[[sup:−1]]
 
 <!-- SEG:m68791:entry:auto-201 -->
 integrated rate law
@@ -614,25 +614,25 @@ integrated rate law
 plot needed for linear fit of rate data
 
 <!-- SEG:m68791:entry:auto-206 -->
-[*A*] vs. *t*
+[{{i}}A{{/i}}] vs. {{i}}t{{/i}}
 
 <!-- SEG:m68791:entry:auto-207 -->
-ln[*A*] vs. *t*
+ln[{{i}}A{{/i}}] vs. {{i}}t{{/i}}
 
 <!-- SEG:m68791:entry:auto-208 -->
-[[MATH:34]] vs. *t*
+[[MATH:34]] vs. {{i}}t{{/i}}
 
 <!-- SEG:m68791:entry:auto-209 -->
 relationship between slope of linear plot and rate constant
 
 <!-- SEG:m68791:entry:auto-210 -->
-*k* = −slope
+{{i}}k{{/i}} = −slope
 
 <!-- SEG:m68791:entry:auto-211 -->
-*k* = −slope
+{{i}}k{{/i}} = −slope
 
 <!-- SEG:m68791:entry:auto-212 -->
-*k* = slope
+{{i}}k{{/i}} = slope
 
 <!-- SEG:m68791:entry:auto-213 -->
 half-life
@@ -656,7 +656,7 @@ What is the half-life for the butadiene dimerization reaction described in [#fs-
 Solution
 
 <!-- SEG:m68791:para:fs-idm376934816 -->
-The reaction in question is second order, is initiated with a 0.200 mol L^−1^ reactant solution, and exhibits a rate constant of 0.0576 L mol^−1^ min^−1^. Substituting these quantities into the second-order half-life equation:
+The reaction in question is second order, is initiated with a 0.200 mol L[[sup:−1]] reactant solution, and exhibits a rate constant of 0.0576 L mol[[sup:−1]] min[[sup:−1]]. Substituting these quantities into the second-order half-life equation:
 
 <!-- SEG:m68791:para-title:fs-idm327019216-title -->
 Check Your Learning
@@ -674,7 +674,7 @@ Answer:
 18 min
 
 <!-- SEG:m68791:para:fs-idm99562880 -->
-The __half-life of a reaction (*t*~1/2~)__ is the time required for one-half of a given amount of reactant to be consumed. In each succeeding half-life, half of the remaining concentration of the reactant is consumed. Using the decomposition of hydrogen peroxide ([m68786#CNX_Chem_12_01_KDataH2O2]) as an example, we find that during the first half-life (from 0.00 hours to 6.00 hours), the concentration of H~2~O~2~ decreases from 1.000 *M* to 0.500 *M*. During the second half-life (from 6.00 hours to 12.00 hours), it decreases from 0.500 *M* to 0.250 *M*; during the third half-life, it decreases from 0.250 *M* to 0.125 *M*. The concentration of H~2~O~2~ decreases by half during each successive period of 6.00 hours. The decomposition of hydrogen peroxide is a first-order reaction, and, as can be shown, the half-life of a first-order reaction is independent of the concentration of the reactant. However, half-lives of reactions with other orders depend on the concentrations of the reactants.
+The {{term}}half-life of a reaction ({{i}}t{{/i}}[[sub:1/2]]){{/term}} is the time required for one-half of a given amount of reactant to be consumed. In each succeeding half-life, half of the remaining concentration of the reactant is consumed. Using the decomposition of hydrogen peroxide ([m68786#CNX_Chem_12_01_KDataH2O2]) as an example, we find that during the first half-life (from 0.00 hours to 6.00 hours), the concentration of H[[sub:2]]O[[sub:2]] decreases from 1.000 {{i}}M{{/i}} to 0.500 {{i}}M{{/i}}. During the second half-life (from 6.00 hours to 12.00 hours), it decreases from 0.500 {{i}}M{{/i}} to 0.250 {{i}}M{{/i}}; during the third half-life, it decreases from 0.250 {{i}}M{{/i}} to 0.125 {{i}}M{{/i}}. The concentration of H[[sub:2]]O[[sub:2]] decreases by half during each successive period of 6.00 hours. The decomposition of hydrogen peroxide is a first-order reaction, and, as can be shown, the half-life of a first-order reaction is independent of the concentration of the reactant. However, half-lives of reactions with other orders depend on the concentrations of the reactants.
 
 <!-- SEG:m68791:title:fs-idm63099680-title -->
 Key Concepts and Summary
@@ -710,13 +710,13 @@ half-life for a second-order reaction [[MATH:43]]
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68791:problem:fs-idm141317296 -->
-Describe how graphical methods can be used to determine the order of a reaction and its rate constant from a series of data that includes the concentration of *A* at varying times.
+Describe how graphical methods can be used to determine the order of a reaction and its rate constant from a series of data that includes the concentration of {{i}}A{{/i}} at varying times.
 
 <!-- SEG:m68791:problem:fs-idm145856736 -->
 Use the data provided to graphically determine the order and rate constant of the following reaction: [[MATH:44]]
 
 <!-- SEG:m68791:solution:fs-idp6601344 -->
-Plotting a graph of ln[SO~2~Cl~2~] versus *t* reveals a linear trend; therefore we know this is a first-order reaction:[[BR]] [[MEDIA:1]][[BR]] *k* = 2.20 [[MATH:45]] 10^–5^ s^−1^
+Plotting a graph of ln[SO[[sub:2]]Cl[[sub:2]]] versus {{i}}t{{/i}} reveals a linear trend; therefore we know this is a first-order reaction:[[BR]] [[MEDIA:1]][[BR]] {{i}}k{{/i}} = 2.20 [[MATH:45]] 10[[sup:–5]] s[[sup:−1]]
 
 <!-- SEG:m68791:entry:auto-241 -->
 Time (s)
@@ -725,16 +725,16 @@ Time (s)
 0
 
 <!-- SEG:m68791:entry:auto-243 -->
-5.00 [[MATH:46]] 10^3^
+5.00 [[MATH:46]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-244 -->
-1.00 [[MATH:47]] 10^4^
+1.00 [[MATH:47]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-245 -->
-1.50 [[MATH:48]] 10^4^
+1.50 [[MATH:48]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-246 -->
-[SO~2~Cl~2~] (*M*)
+[SO[[sub:2]]Cl[[sub:2]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-247 -->
 0.100
@@ -752,16 +752,16 @@ Time (s)
 Time (s)
 
 <!-- SEG:m68791:entry:auto-252 -->
-2.50 [[MATH:49]] 10^4^
+2.50 [[MATH:49]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-253 -->
-3.00 [[MATH:50]] 10^4^
+3.00 [[MATH:50]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-254 -->
-4.00 [[MATH:51]] 10^4^
+4.00 [[MATH:51]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-255 -->
-[SO~2~Cl~2~] (*M*)
+[SO[[sub:2]]Cl[[sub:2]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-256 -->
 0.0577
@@ -776,7 +776,7 @@ Time (s)
 Pure ozone decomposes slowly to oxygen, [[MATH:52]] Use the data provided in a graphical method and determine the order and rate constant of the reaction.[[BR]] [[TABLE:fs-idp72766816]]
 
 <!-- SEG:m68791:solution:fs-idm228482928 -->
-[[MEDIA:2]][[BR]] The plot is nicely linear, so the reaction is second order. *k* = 50.1 L mol^−1^ h^−1^
+[[MEDIA:2]][[BR]] The plot is nicely linear, so the reaction is second order. {{i}}k{{/i}} = 50.1 L mol[[sup:−1]] h[[sup:−1]]
 
 <!-- SEG:m68791:entry:auto-261 -->
 Time (h)
@@ -785,52 +785,52 @@ Time (h)
 0
 
 <!-- SEG:m68791:entry:auto-263 -->
-2.0 [[MATH:66]] 10^3^
+2.0 [[MATH:66]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-264 -->
-7.6 [[MATH:67]] 10^3^
+7.6 [[MATH:67]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-265 -->
-1.00 [[MATH:68]] 10^4^
+1.00 [[MATH:68]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-266 -->
-[O~3~] (*M*)
+[O[[sub:3]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-267 -->
-1.00 [[MATH:69]] 10^−5^
+1.00 [[MATH:69]] 10[[sup:−5]]
 
 <!-- SEG:m68791:entry:auto-268 -->
-4.98 [[MATH:70]] 10^−6^
+4.98 [[MATH:70]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-269 -->
-2.07 [[MATH:71]] 10^−6^
+2.07 [[MATH:71]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-270 -->
-1.66 [[MATH:72]] 10^−6^
+1.66 [[MATH:72]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-271 -->
 Time (h)
 
 <!-- SEG:m68791:entry:auto-272 -->
-1.23 [[MATH:73]] 10^4^
+1.23 [[MATH:73]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-273 -->
-1.43 [[MATH:74]] 10^4^
+1.43 [[MATH:74]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-274 -->
-1.70 [[MATH:75]] 10^4^
+1.70 [[MATH:75]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-275 -->
-[O~3~] (*M*)
+[O[[sub:3]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-276 -->
-1.39 [[MATH:76]] 10^−6^
+1.39 [[MATH:76]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-277 -->
-1.22 [[MATH:77]] 10^−6^
+1.22 [[MATH:77]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-278 -->
-1.05 [[MATH:78]] 10^−6^
+1.05 [[MATH:78]] 10[[sup:−6]]
 
 <!-- SEG:m68791:problem:fs-idp122307472 -->
 From the given data, use a graphical method to determine the order and rate constant of the following reaction:[[BR]] [[MATH:79]][[BR]] [[TABLE:fs-idm133654768]]
@@ -863,7 +863,7 @@ Time (s)
 40.0
 
 <!-- SEG:m68791:entry:auto-289 -->
-[*X*] (*M*)
+[{{i}}X{{/i}}] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-290 -->
 0.0990
@@ -890,76 +890,76 @@ Time (s)
 0.0125
 
 <!-- SEG:m68791:problem:fs-idp75257216 -->
-What is the half-life for the first-order decay of phosphorus-32? [[MATH:80]] The rate constant for the decay is 4.85 [[MATH:81]] 10^−2^ day^−1^.
+What is the half-life for the first-order decay of phosphorus-32? [[MATH:80]] The rate constant for the decay is 4.85 [[MATH:81]] 10[[sup:−2]] day[[sup:−1]].
 
 <!-- SEG:m68791:solution:fs-idm96856080 -->
 14.3 d
 
 <!-- SEG:m68791:problem:fs-idp123053008 -->
-What is the half-life for the first-order decay of carbon-14? [[MATH:82]] The rate constant for the decay is 1.21 [[MATH:83]] 10^−4^ year^−1^.
+What is the half-life for the first-order decay of carbon-14? [[MATH:82]] The rate constant for the decay is 1.21 [[MATH:83]] 10[[sup:−4]] year[[sup:−1]].
 
 <!-- SEG:m68791:problem:fs-idp120043280 -->
-What is the half-life for the decomposition of NOCl when the concentration of NOCl is 0.15 *M*? The rate constant for this second-order reaction is 8.0 [[MATH:84]] 10^−8^ L mol^−1^ s^−1^.
+What is the half-life for the decomposition of NOCl when the concentration of NOCl is 0.15 {{i}}M{{/i}}? The rate constant for this second-order reaction is 8.0 [[MATH:84]] 10[[sup:−8]] L mol[[sup:−1]] s[[sup:−1]].
 
 <!-- SEG:m68791:solution:fs-idm23381360 -->
-8.3 [[MATH:85]] 10^7^ s
+8.3 [[MATH:85]] 10[[sup:7]] s
 
 <!-- SEG:m68791:problem:fs-idm71090288 -->
-What is the half-life for the decomposition of O~3~ when the concentration of O~3~ is 2.35 [[MATH:86]] 10^−6^ *M*? The rate constant for this second-order reaction is 50.4 L mol^−1^ h^−1^.
+What is the half-life for the decomposition of O[[sub:3]] when the concentration of O[[sub:3]] is 2.35 [[MATH:86]] 10[[sup:−6]] {{i}}M{{/i}}? The rate constant for this second-order reaction is 50.4 L mol[[sup:−1]] h[[sup:−1]].
 
 <!-- SEG:m68791:problem:fs-idm110942832 -->
-The reaction of compound *A* to give compounds *C* and *D* was found to be second-order in *A*. The rate constant for the reaction was determined to be 2.42 L mol^−1^ s^−1^. If the initial concentration is 0.500 mol/L, what is the value of t~1/2~?
+The reaction of compound {{i}}A{{/i}} to give compounds {{i}}C{{/i}} and {{i}}D{{/i}} was found to be second-order in {{i}}A{{/i}}. The rate constant for the reaction was determined to be 2.42 L mol[[sup:−1]] s[[sup:−1]]. If the initial concentration is 0.500 mol/L, what is the value of t[[sub:1/2]]?
 
 <!-- SEG:m68791:solution:fs-idm46875440 -->
 0.826 s
 
 <!-- SEG:m68791:problem:fs-idm82643728 -->
-The half-life of a reaction of compound *A* to give compounds *D* and *E* is 8.50 min when the initial concentration of *A* is 0.150 M. How long will it take for the concentration to drop to 0.0300 M if the reaction is (a) first order with respect to *A* or (b) second order with respect to *A*?
+The half-life of a reaction of compound {{i}}A{{/i}} to give compounds {{i}}D{{/i}} and {{i}}E{{/i}} is 8.50 min when the initial concentration of {{i}}A{{/i}} is 0.150 M. How long will it take for the concentration to drop to 0.0300 M if the reaction is (a) first order with respect to {{i}}A{{/i}} or (b) second order with respect to {{i}}A{{/i}}?
 
 <!-- SEG:m68791:problem:fs-idp55839088 -->
-Some bacteria are resistant to the antibiotic penicillin because they produce penicillinase, an enzyme with a molecular weight of 3 [[MATH:87]] 10^4^ g/mol that converts penicillin into inactive molecules. Although the kinetics of enzyme-catalyzed reactions can be complex, at low concentrations this reaction can be described by a rate law that is first order in the catalyst (penicillinase) and that also involves the concentration of penicillin. From the following data: 1.0 L of a solution containing 0.15 µg (0.15 [[MATH:88]] 10^−6^ g) of penicillinase, determine the order of the reaction with respect to penicillin and the value of the rate constant.[[BR]] [[TABLE:fs-idp79245440]]
+Some bacteria are resistant to the antibiotic penicillin because they produce penicillinase, an enzyme with a molecular weight of 3 [[MATH:87]] 10[[sup:4]] g/mol that converts penicillin into inactive molecules. Although the kinetics of enzyme-catalyzed reactions can be complex, at low concentrations this reaction can be described by a rate law that is first order in the catalyst (penicillinase) and that also involves the concentration of penicillin. From the following data: 1.0 L of a solution containing 0.15 µg (0.15 [[MATH:88]] 10[[sup:−6]] g) of penicillinase, determine the order of the reaction with respect to penicillin and the value of the rate constant.[[BR]] [[TABLE:fs-idp79245440]]
 
 <!-- SEG:m68791:solution:fs-idp69326720 -->
-The reaction is first order. *k* = 1.0 [[MATH:95]] 10^7^ L mol^−1^ min^−1^
+The reaction is first order. {{i}}k{{/i}} = 1.0 [[MATH:95]] 10[[sup:7]] L mol[[sup:−1]] min[[sup:−1]]
 
 <!-- SEG:m68791:entry:auto-309 -->
-[Penicillin] (*M*)
+[Penicillin] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-310 -->
-Rate (mol L^−1^ min^−1^)
+Rate (mol L[[sup:−1]] min[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-311 -->
-2.0 [[MATH:96]] 10^−6^
+2.0 [[MATH:96]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-312 -->
-1.0 [[MATH:97]] 10^−10^
+1.0 [[MATH:97]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-313 -->
-3.0 [[MATH:98]] 10^−6^
+3.0 [[MATH:98]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-314 -->
-1.5 [[MATH:99]] 10^−10^
+1.5 [[MATH:99]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-315 -->
-4.0 [[MATH:100]] 10^−6^
+4.0 [[MATH:100]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-316 -->
-2.0 [[MATH:101]] 10^−10^
+2.0 [[MATH:101]] 10[[sup:−10]]
 
 <!-- SEG:m68791:problem:fs-idm22532432 -->
 Both technetium-99 and thallium-201 are used to image heart muscle in patients with suspected heart problems. The half-lives are 6 h and 73 h, respectively. What percent of the radioactivity would remain for each of the isotopes after 2 days (48 h)?
 
 <!-- SEG:m68791:problem:fs-idm84405120 -->
-There are two molecules with the formula C~3~H~6~. Propene, [[MATH:102]] is the monomer of the polymer polypropylene, which is used for indoor-outdoor carpets. Cyclopropane is used as an anesthetic:[[BR]] [[MEDIA:3]]
+There are two molecules with the formula C[[sub:3]]H[[sub:6]]. Propene, [[MATH:102]] is the monomer of the polymer polypropylene, which is used for indoor-outdoor carpets. Cyclopropane is used as an anesthetic:[[BR]] [[MEDIA:3]]
 
 <!-- SEG:m68791:problem:fs-idm21762608 -->
-When heated to 499 °C, cyclopropane rearranges (isomerizes) and forms propene with a rate constant of[[BR]]5.95 [[MATH:103]] 10^−4^ s^−1^. What is the half-life of this reaction? What fraction of the cyclopropane remains after 0.75 h at 499 °C?
+When heated to 499 °C, cyclopropane rearranges (isomerizes) and forms propene with a rate constant of[[BR]]5.95 [[MATH:103]] 10[[sup:−4]] s[[sup:−1]]. What is the half-life of this reaction? What fraction of the cyclopropane remains after 0.75 h at 499 °C?
 
 <!-- SEG:m68791:solution:fs-idp5273216 -->
-1.16 × 10^3^ s ; 20% remains
+1.16 × 10[[sup:3]] s ; 20% remains
 
 <!-- SEG:m68791:problem:fs-idm45931824 -->
-Fluorine-18 is a radioactive isotope that decays by positron emission to form oxygen-18 with a half-life of 109.7 min. (A positron is a particle with the mass of an electron and a single unit of positive charge; the equation is [[MATH:104]] Physicians use ^18^F to study the brain by injecting a quantity of fluoro-substituted glucose into the blood of a patient. The glucose accumulates in the regions where the brain is active and needs nourishment.
+Fluorine-18 is a radioactive isotope that decays by positron emission to form oxygen-18 with a half-life of 109.7 min. (A positron is a particle with the mass of an electron and a single unit of positive charge; the equation is [[MATH:104]] Physicians use [[sup:18]]F to study the brain by injecting a quantity of fluoro-substituted glucose into the blood of a patient. The glucose accumulates in the regions where the brain is active and needs nourishment.
 
 <!-- SEG:m68791:problem:fs-idm57070352 -->
 (a) What is the rate constant for the decomposition of fluorine-18?
@@ -968,7 +968,7 @@ Fluorine-18 is a radioactive isotope that decays by positron emission to form ox
 (b) If a sample of glucose containing radioactive fluorine-18 is injected into the blood, what percent of the radioactivity will remain after 5.59 h?
 
 <!-- SEG:m68791:problem:fs-idm57069424 -->
-(c) How long does it take for 99.99% of the ^18^F to decay?
+(c) How long does it take for 99.99% of the [[sup:18]]F to decay?
 
 <!-- SEG:m68791:problem:fs-idp89139280 -->
 Suppose that the half-life of steroids taken by an athlete is 42 days. Assuming that the steroids biodegrade by a first-order process, how long would it take for [[MATH:105]] of the initial dose to remain in the athlete’s body?
@@ -986,7 +986,7 @@ Nitroglycerine is an extremely sensitive explosive. In a series of carefully con
 [[TABLE:fs-idm247275488]]
 
 <!-- SEG:m68791:entry:auto-330 -->
-Initial [C~3~H~5~N~3~O~9~] (*M*)
+Initial [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-331 -->
 4.88
@@ -1013,7 +1013,7 @@ Initial [C~3~H~5~N~3~O~9~] (*M*)
 1.72
 
 <!-- SEG:m68791:entry:auto-339 -->
-*t* (s)
+{{i}}t{{/i}} (s)
 
 <!-- SEG:m68791:entry:auto-340 -->
 300
@@ -1067,10 +1067,10 @@ Initial [C~3~H~5~N~3~O~9~] (*M*)
 35.4
 
 <!-- SEG:m68791:entry:auto-357 -->
-[*A*]~0~ (*M*)
+[{{i}}A{{/i}}][[sub:0]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-358 -->
-*k* [[MATH:107]] 10^3^ (s^−1^)
+{{i}}k{{/i}} [[MATH:107]] 10[[sup:3]] (s[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-359 -->
 4.88
@@ -1124,7 +1124,7 @@ Initial [C~3~H~5~N~3~O~9~] (*M*)
 For the past 10 years, the unsaturated hydrocarbon 1,3-butadiene [[MATH:108]] has ranked 38th among the top 50 industrial chemicals. It is used primarily for the manufacture of synthetic rubber. An isomer exists also as cyclobutene:[[BR]] [[MEDIA:4]]
 
 <!-- SEG:m68791:problem:fs-idp18442736 -->
-The isomerization of cyclobutene to butadiene is first-order and the rate constant has been measured as 2.0 [[MATH:109]] 10^−4^ s^−1^ at 150 °C in a 0.53-L flask. Determine the partial pressure of cyclobutene and its concentration after 30.0 minutes if an isomerization reaction is carried out at 150 °C with an initial pressure of 55 torr.
+The isomerization of cyclobutene to butadiene is first-order and the rate constant has been measured as 2.0 [[MATH:109]] 10[[sup:−4]] s[[sup:−1]] at 150 °C in a 0.53-L flask. Determine the partial pressure of cyclobutene and its concentration after 30.0 minutes if an isomerization reaction is carried out at 150 °C with an initial pressure of 55 torr.
 
 <!-- SEG:m68791:glossary-term:fs-idm46849712-term -->
 half-life of a reaction (tl/2)
@@ -1142,37 +1142,37 @@ equation that relates the concentration of a reactant to elapsed time of reactio
 Time (s)
 
 <!-- SEG:m68791:entry:auto-382 -->
-[C~4~H~6~] (*M*)
+[C[[sub:4]]H[[sub:6]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-383 -->
 0
 
 <!-- SEG:m68791:entry:auto-384 -->
-1.00 [[MATH:7]] 10^−2^
+1.00 [[MATH:7]] 10[[sup:−2]]
 
 <!-- SEG:m68791:entry:auto-385 -->
 1600
 
 <!-- SEG:m68791:entry:auto-386 -->
-5.04 [[MATH:8]] 10^−3^
+5.04 [[MATH:8]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-387 -->
 3200
 
 <!-- SEG:m68791:entry:auto-388 -->
-3.37 [[MATH:9]] 10^−3^
+3.37 [[MATH:9]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-389 -->
 4800
 
 <!-- SEG:m68791:entry:auto-390 -->
-2.53 [[MATH:10]] 10^−3^
+2.53 [[MATH:10]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-391 -->
 6200
 
 <!-- SEG:m68791:entry:auto-392 -->
-2.08 [[MATH:11]] 10^−3^
+2.08 [[MATH:11]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-393 -->
 Time (h)
@@ -1181,52 +1181,52 @@ Time (h)
 0
 
 <!-- SEG:m68791:entry:auto-395 -->
-2.0 [[MATH:53]] 10^3^
+2.0 [[MATH:53]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-396 -->
-7.6 [[MATH:54]] 10^3^
+7.6 [[MATH:54]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-397 -->
-1.00 [[MATH:55]] 10^4^
+1.00 [[MATH:55]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-398 -->
-[O~3~] (*M*)
+[O[[sub:3]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-399 -->
-1.00 [[MATH:56]] 10^−5^
+1.00 [[MATH:56]] 10[[sup:−5]]
 
 <!-- SEG:m68791:entry:auto-400 -->
-4.98 [[MATH:57]] 10^−6^
+4.98 [[MATH:57]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-401 -->
-2.07 [[MATH:58]] 10^−6^
+2.07 [[MATH:58]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-402 -->
-1.66 [[MATH:59]] 10^−6^
+1.66 [[MATH:59]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-403 -->
 Time (h)
 
 <!-- SEG:m68791:entry:auto-404 -->
-1.23 [[MATH:60]] 10^4^
+1.23 [[MATH:60]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-405 -->
-1.43 [[MATH:61]] 10^4^
+1.43 [[MATH:61]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-406 -->
-1.70 [[MATH:62]] 10^4^
+1.70 [[MATH:62]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-407 -->
-[O~3~] (*M*)
+[O[[sub:3]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-408 -->
-1.39 [[MATH:63]] 10^−6^
+1.39 [[MATH:63]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-409 -->
-1.22 [[MATH:64]] 10^−6^
+1.22 [[MATH:64]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-410 -->
-1.05 [[MATH:65]] 10^−6^
+1.05 [[MATH:65]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-411 -->
 Time (s)
@@ -1256,7 +1256,7 @@ Time (s)
 40.0
 
 <!-- SEG:m68791:entry:auto-420 -->
-[*X*] (*M*)
+[{{i}}X{{/i}}] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-421 -->
 0.0990
@@ -1283,31 +1283,31 @@ Time (s)
 0.0125
 
 <!-- SEG:m68791:entry:auto-429 -->
-[Penicillin] (*M*)
+[Penicillin] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-430 -->
-Rate (mol L^−1^ min^−1^)
+Rate (mol L[[sup:−1]] min[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-431 -->
-2.0 [[MATH:89]] 10^−6^
+2.0 [[MATH:89]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-432 -->
-1.0 [[MATH:90]] 10^−10^
+1.0 [[MATH:90]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-433 -->
-3.0 [[MATH:91]] 10^−6^
+3.0 [[MATH:91]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-434 -->
-1.5 [[MATH:92]] 10^−10^
+1.5 [[MATH:92]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-435 -->
-4.0 [[MATH:93]] 10^−6^
+4.0 [[MATH:93]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-436 -->
-2.0 [[MATH:94]] 10^−10^
+2.0 [[MATH:94]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-437 -->
-Initial [C~3~H~5~N~3~O~9~] (*M*)
+Initial [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-438 -->
 4.88
@@ -1334,7 +1334,7 @@ Initial [C~3~H~5~N~3~O~9~] (*M*)
 1.72
 
 <!-- SEG:m68791:entry:auto-446 -->
-*t* (s)
+{{i}}t{{/i}} (s)
 
 <!-- SEG:m68791:entry:auto-447 -->
 300
@@ -1388,10 +1388,10 @@ Initial [C~3~H~5~N~3~O~9~] (*M*)
 35.4
 
 <!-- SEG:m68791:entry:auto-464 -->
-[*A*]~0~ (*M*)
+[{{i}}A{{/i}}][[sub:0]] ({{i}}M{{/i}})
 
 <!-- SEG:m68791:entry:auto-465 -->
-*k* [[MATH:106]] 10^3^ (s^−1^)
+{{i}}k{{/i}} [[MATH:106]] 10[[sup:3]] (s[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-466 -->
 4.88

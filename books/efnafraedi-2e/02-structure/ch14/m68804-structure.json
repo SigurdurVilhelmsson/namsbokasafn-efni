@@ -273,7 +273,7 @@
       "id": "fs-idp62701056",
       "title": {
         "segmentId": "m68804:example-title:fs-idp62701056-title",
-        "text": "Solution"
+        "text": "Calculation of pH from [H[[sub:3]]O[[sup:+]]]"
       },
       "content": [
         {
@@ -284,7 +284,11 @@
         {
           "type": "para",
           "id": "fs-idm103954896",
-          "segmentId": "m68804:para:fs-idm103954896"
+          "segmentId": "m68804:para:fs-idm103954896",
+          "title": {
+            "segmentId": "m68804:para-title:fs-idm103954896-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -601,14 +605,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68804:entry:auto-75",
-                  "attributes": {}
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68804:entry:auto-76",
                   "attributes": {}
                 }
@@ -634,6 +630,14 @@
               "cells": [
                 {
                   "segmentId": "m68804:entry:auto-79",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68804:entry:auto-80",
                   "attributes": {}
                 }
               ]

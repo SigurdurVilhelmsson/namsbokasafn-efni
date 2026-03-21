@@ -21,19 +21,27 @@
   },
   "math-6": {
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>b</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>2.53</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>m</m:mi><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.33</m:mn><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0.83</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Δ}{T}_{\\text{b}}={K}_{\\text{b}}m=2.53\\, \\text{°}\\text{C}\\, {m}^{{−1}}\\, \\times \\, 0.33\\, m=0.83\\, \\text{°}\\text{C}}"
+    "latex": "{\\text{Δ}{T}_{\\text{b}}={K}_{\\text{b}}m=2.53\\, \\text{°}\\text{C}\\, {m}^{{−1}}\\, \\times \\, 0.33\\, m=0.83\\, \\text{°}\\text{C}}",
+    "equationId": "fs-idm42069584",
+    "equationClass": "unnumbered"
   },
   "math-7": {
     "mathml": "<m:math><m:mrow><m:mtext>Boiling temperature</m:mtext><m:mo>=</m:mo><m:mn>80.1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mn>0.83</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mn>80.9</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Boiling temperature}=80.1\\, \\text{°}\\text{C}+0.83\\, \\text{°}\\text{C}=80.9\\, \\text{°}\\text{C}}"
+    "latex": "{\\text{Boiling temperature}=80.1\\, \\text{°}\\text{C}+0.83\\, \\text{°}\\text{C}=80.9\\, \\text{°}\\text{C}}",
+    "equationId": "fs-idp67539712",
+    "equationClass": "unnumbered"
   },
   "math-8": {
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>5.12</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>m</m:mi><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.33</m:mn><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>1.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Δ}{T}_{\\text{f}}={K}_{\\text{f}}m=5.12\\, \\text{°}\\text{C}\\, {m}^{{−1}}\\, \\times \\, 0.33\\, m=1.7\\, \\text{°}\\text{C}}"
+    "latex": "{\\text{Δ}{T}_{\\text{f}}={K}_{\\text{f}}m=5.12\\, \\text{°}\\text{C}\\, {m}^{{−1}}\\, \\times \\, 0.33\\, m=1.7\\, \\text{°}\\text{C}}",
+    "equationId": "fs-idm84391712",
+    "equationClass": "unnumbered"
   },
   "math-9": {
     "mathml": "<m:math><m:mrow><m:mtext>Freezing Temperature</m:mtext><m:mo>=</m:mo><m:mn>5.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>−</m:mo><m:mn>1.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mn>3.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Freezing Temperature}=5.5\\, \\text{°}\\text{C}-1.7\\, \\text{°}\\text{C}=3.8\\, \\text{°}\\text{C}}"
+    "latex": "{\\text{Freezing Temperature}=5.5\\, \\text{°}\\text{C}-1.7\\, \\text{°}\\text{C}=3.8\\, \\text{°}\\text{C}}",
+    "equationId": "fs-idp241028320",
+    "equationClass": "unnumbered"
   },
   "math-10": {
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
@@ -41,19 +49,27 @@
   },
   "math-11": {
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:mn>5.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>−</m:mo><m:mn>2.32</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mn>3.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Δ}{T}_{\\text{f}}=5.5\\, \\text{°}\\text{C}-2.32\\, \\text{°}\\text{C}=3.2\\, \\text{°}\\text{C}}"
+    "latex": "{\\text{Δ}{T}_{\\text{f}}=5.5\\, \\text{°}\\text{C}-2.32\\, \\text{°}\\text{C}=3.2\\, \\text{°}\\text{C}}",
+    "equationId": "fs-idp98641088",
+    "equationClass": "unnumbered"
   },
   "math-12": {
     "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd columnalign=\"center\"><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mi>m</m:mi></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>3.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow><m:mrow><m:mn>5.12</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>m</m:mi><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.63</m:mn><m:mspace width=\"0.2em\"/><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} \\text{Δ}{T}_{\\text{f}}={K}_{\\text{f}}m \\\\ m\\, =\\, \\frac{{\\text{Δ}{T}_{\\text{f}}}}{{{K}_{\\text{f}}}}\\, =\\, \\frac{{3.2\\, \\text{°}\\text{C}}}{{5.12\\, \\text{°}\\text{C}\\, {m}^{{−1}}}}\\, =\\, 0.63\\, m \\end{aligned}"
+    "latex": "\\begin{aligned} \\text{Δ}{T}_{\\text{f}}={K}_{\\text{f}}m \\\\ m\\, =\\, \\frac{{\\text{Δ}{T}_{\\text{f}}}}{{{K}_{\\text{f}}}}\\, =\\, \\frac{{3.2\\, \\text{°}\\text{C}}}{{5.12\\, \\text{°}\\text{C}\\, {m}^{{−1}}}}\\, =\\, 0.63\\, m \\end{aligned}",
+    "equationId": "fs-idp8054864",
+    "equationClass": "unnumbered"
   },
   "math-13": {
     "mathml": "<m:math><m:mrow><m:mtext>Moles of solute</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.63</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mn>1.00</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.0550</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:menclose><m:mo>=</m:mo><m:mn>0.035</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Moles of solute}\\, =\\, \\frac{{0.63\\, \\text{mol solute}}}{{1.00\\, \\sout{{\\text{kg solvent}}}}}\\, \\times \\, 0.0550\\, \\sout{{\\text{kg solvent}}}=0.035\\, \\text{mol}}"
+    "latex": "{\\text{Moles of solute}\\, =\\, \\frac{{0.63\\, \\text{mol solute}}}{{1.00\\, \\sout{{\\text{kg solvent}}}}}\\, \\times \\, 0.0550\\, \\sout{{\\text{kg solvent}}}=0.035\\, \\text{mol}}",
+    "equationId": "fs-idp57152640",
+    "equationClass": "unnumbered"
   },
   "math-14": {
     "mathml": "<m:math><m:mrow><m:mtext>Molar mass</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>4.00</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>0.035</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>1.1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mtext>g/mol</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{Molar mass}\\, =\\, \\frac{{4.00\\, \\text{g}}}{{0.035\\, \\text{mol}}}\\, =\\, 1.1\\, \\times \\, {{10}}^{2}\\text{g/mol}}"
+    "latex": "{\\text{Molar mass}\\, =\\, \\frac{{4.00\\, \\text{g}}}{{0.035\\, \\text{mol}}}\\, =\\, 1.1\\, \\times \\, {{10}}^{2}\\text{g/mol}}",
+    "equationId": "fs-idp67442432",
+    "equationClass": "unnumbered"
   },
   "math-15": {
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
@@ -65,15 +81,21 @@
   },
   "math-17": {
     "mathml": "<m:math><m:mtable><m:mtr/><m:mtr><m:mtd><m:mi>Π</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>5.9</m:mn><m:mspace width=\"0.2em\"/><m:mtext>torr</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width=\"0.2em\"/><m:mtext>torr</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>7.8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mtext>atm</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>Π</m:mi><m:mo>=</m:mo><m:mtext mathvariant=\"italic\">MRT</m:mtext></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mi>M</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>Π</m:mi><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>7.8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L atm/mol K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>295</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>3.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>M</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} Π\\, =\\, \\frac{{5.9\\, \\text{torr}\\, \\times \\, 1\\, \\text{atm}}}{{760\\, \\text{torr}}}\\, =\\, 7.8\\, \\times \\, {10}^{{−3}}\\text{atm} \\\\ Π=\\text{MRT} \\\\ M\\, =\\, \\frac{Π}{{RT}}\\, =\\, \\frac{{7.8\\, \\times \\, {{10}}^{{−3}}\\, \\text{atm}}}{{{({0.08206\\, \\text{L atm/mol K}})}{({295\\, \\text{K}})}}}\\, =\\, 3.2\\, \\times \\, {10}^{{−4}}\\text{M} \\end{aligned}"
+    "latex": "\\begin{aligned} Π\\, =\\, \\frac{{5.9\\, \\text{torr}\\, \\times \\, 1\\, \\text{atm}}}{{760\\, \\text{torr}}}\\, =\\, 7.8\\, \\times \\, {10}^{{−3}}\\text{atm} \\\\ Π=\\text{MRT} \\\\ M\\, =\\, \\frac{Π}{{RT}}\\, =\\, \\frac{{7.8\\, \\times \\, {{10}}^{{−3}}\\, \\text{atm}}}{{{({0.08206\\, \\text{L atm/mol K}})}{({295\\, \\text{K}})}}}\\, =\\, 3.2\\, \\times \\, {10}^{{−4}}\\text{M} \\end{aligned}",
+    "equationId": "fs-idp41145344",
+    "equationClass": "unnumbered"
   },
   "math-18": {
     "mathml": "<m:math><m:mrow><m:mtext>moles of hemoglobin</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>3.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.500</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:menclose><m:mo>=</m:mo><m:mn>1.6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{moles of hemoglobin}\\, =\\, \\frac{{3.2\\, \\times \\, {{10}}^{{−4}}\\text{mol}}}{{1\\, \\sout{{\\text{L solution}}}}}\\, \\times \\, 0.500\\, \\sout{{\\text{L solution}}}=1.6\\, \\times \\, {{10}}^{{−4}}\\text{mol}}"
+    "latex": "{\\text{moles of hemoglobin}\\, =\\, \\frac{{3.2\\, \\times \\, {{10}}^{{−4}}\\text{mol}}}{{1\\, \\sout{{\\text{L solution}}}}}\\, \\times \\, 0.500\\, \\sout{{\\text{L solution}}}=1.6\\, \\times \\, {{10}}^{{−4}}\\text{mol}}",
+    "equationId": "fs-idp96934912",
+    "equationClass": "unnumbered"
   },
   "math-19": {
     "mathml": "<m:math><m:mrow><m:mtext>molar mass</m:mtext><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>10.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>1.6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>6.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mtext>g/mol</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{molar mass}\\, =\\, \\frac{{10.0\\, \\text{g}}}{{1.6\\, \\times \\, {{10}}^{{−4}}\\text{mol}}}\\, =\\, 6.2\\, \\times \\, {{10}}^{4}\\text{g/mol}}"
+    "latex": "{\\text{molar mass}\\, =\\, \\frac{{10.0\\, \\text{g}}}{{1.6\\, \\times \\, {{10}}^{{−4}}\\text{mol}}}\\, =\\, 6.2\\, \\times \\, {{10}}^{4}\\text{g/mol}}",
+    "equationId": "fs-idm54977888",
+    "equationClass": "unnumbered"
   },
   "math-20": {
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",

@@ -533,7 +533,7 @@
           "id": "fs-idm171178400",
           "title": {
             "segmentId": "m68806:example-title:fs-idm171178400-title",
-            "text": "Solution"
+            "text": "Hydrolysis of [Al(H[[sub:2]]O)[[sub:6]]][[sup:3+]]"
           },
           "content": [
             {
@@ -544,7 +544,11 @@
             {
               "type": "para",
               "id": "fs-idp112354272",
-              "segmentId": "m68806:para:fs-idp112354272"
+              "segmentId": "m68806:para:fs-idp112354272",
+              "title": {
+                "segmentId": "m68806:para-title:fs-idp112354272-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",

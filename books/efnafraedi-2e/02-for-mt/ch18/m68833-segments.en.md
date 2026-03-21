@@ -11,7 +11,7 @@ Describe the properties, preparation, and compounds of hydrogen
 Hydrogen is the most abundant element in the universe. The sun and other stars are composed largely of hydrogen. Astronomers estimate that 90% of the atoms in the universe are hydrogen atoms. Hydrogen is a component of more compounds than any other element. Water is the most abundant compound of hydrogen found on earth. Hydrogen is an important part of petroleum, many minerals, cellulose and starch, sugar, fats, oils, alcohols, acids, and thousands of other substances.
 
 <!-- SEG:m68833:para:fs-idp106673632 -->
-At ordinary temperatures, hydrogen is a colorless, odorless, tasteless, and nonpoisonous gas consisting of the diatomic molecule H~2~. Hydrogen is composed of three isotopes, and unlike other elements, these isotopes have different names and chemical symbols: protium, ^1^H, deuterium, ^2^H (or “D”), and tritium ^3^H (or “T”). In a naturally occurring sample of hydrogen, there is one atom of deuterium for every 7000 H atoms and one atom of radioactive tritium for every 10^18^ H atoms. The chemical properties of the different isotopes are very similar because they have identical electron structures, but they differ in some physical properties because of their differing atomic masses. Elemental deuterium and tritium have lower vapor pressure than ordinary hydrogen. Consequently, when liquid hydrogen evaporates, the heavier isotopes are concentrated in the last portions to evaporate. Electrolysis of heavy water, D~2~O, yields deuterium. Most tritium originates from nuclear reactions.
+At ordinary temperatures, hydrogen is a colorless, odorless, tasteless, and nonpoisonous gas consisting of the diatomic molecule H[[sub:2]]. Hydrogen is composed of three isotopes, and unlike other elements, these isotopes have different names and chemical symbols: protium, [[sup:1]]H, deuterium, [[sup:2]]H (or “D”), and tritium [[sup:3]]H (or “T”). In a naturally occurring sample of hydrogen, there is one atom of deuterium for every 7000 H atoms and one atom of radioactive tritium for every 10[[sup:18]] H atoms. The chemical properties of the different isotopes are very similar because they have identical electron structures, but they differ in some physical properties because of their differing atomic masses. Elemental deuterium and tritium have lower vapor pressure than ordinary hydrogen. Consequently, when liquid hydrogen evaporates, the heavier isotopes are concentrated in the last portions to evaporate. Electrolysis of heavy water, D[[sub:2]]O, yields deuterium. Most tritium originates from nuclear reactions.
 
 <!-- SEG:m68833:title:fs-idp264237088-title -->
 Preparation of Hydrogen
@@ -23,7 +23,7 @@ From Steam and Carbon or Hydrocarbons
 Water is the cheapest and most abundant source of hydrogen. Passing steam over coke (an impure form of elemental carbon) at 1000 °C produces a mixture of carbon monoxide and hydrogen known as water gas:
 
 <!-- SEG:m68833:para:fs-idp58801168 -->
-Water gas is as an industrial fuel. It is possible to produce additional hydrogen by mixing the water gas with steam in the presence of a catalyst to convert the CO to CO~2~. This reaction is the water gas shift reaction.
+Water gas is as an industrial fuel. It is possible to produce additional hydrogen by mixing the water gas with steam in the presence of a catalyst to convert the CO to CO[[sub:2]]. This reaction is the water gas shift reaction.
 
 <!-- SEG:m68833:para:fs-idp148628304 -->
 It is also possible to prepare a mixture of hydrogen and carbon monoxide by passing hydrocarbons from natural gas or petroleum and steam over a nickel-based catalyst. Propane is an example of a hydrocarbon reactant:
@@ -32,7 +32,7 @@ It is also possible to prepare a mixture of hydrogen and carbon monoxide by pass
 Electrolysis
 
 <!-- SEG:m68833:para:fs-idp79258016 -->
-Hydrogen forms when direct current electricity passes through water containing an electrolyte such as H~2~SO~4~, as illustrated in [#CNX_Chem_18_05_Electrolys]. Bubbles of hydrogen form at the cathode, and oxygen evolves at the anode. The net reaction is:
+Hydrogen forms when direct current electricity passes through water containing an electrolyte such as H[[sub:2]]SO[[sub:4]], as illustrated in [#CNX_Chem_18_05_Electrolys]. Bubbles of hydrogen form at the cathode, and oxygen evolves at the anode. The net reaction is:
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_Electrolys-caption -->
 The electrolysis of water produces hydrogen and oxygen. Because there are twice as many hydrogen atoms as oxygen atoms and both elements are diatomic, there is twice the volume of hydrogen produced at the cathode as there is oxygen produced at the anode.
@@ -50,7 +50,7 @@ The reaction of iron with an acid produces hydrogen. Here, iron reacts with hydr
 Reaction of Ionic Metal Hydrides with Water
 
 <!-- SEG:m68833:para:fs-idp172230192 -->
-It is possible to produce hydrogen from the reaction of hydrides of the active metals, which contain the very strongly basic H^−^ anion, with water:
+It is possible to produce hydrogen from the reaction of hydrides of the active metals, which contain the very strongly basic H[[sup:−]] anion, with water:
 
 <!-- SEG:m68833:para:fs-idp115381648 -->
 Metal hydrides are expensive but convenient sources of hydrogen, especially where space and weight are important factors. They are important in the inflation of life jackets, life rafts, and military balloons.
@@ -65,10 +65,10 @@ Reactions
 Reactions with Elements
 
 <!-- SEG:m68833:para:fs-idp90253696 -->
-When heated, hydrogen reacts with the metals of group 1 and with Ca, Sr, and Ba (the more active metals in group 2). The compounds formed are crystalline, ionic hydrides that contain the hydride anion, H^−^, a strong reducing agent and a strong base, which reacts vigorously with water and other acids to form hydrogen gas.
+When heated, hydrogen reacts with the metals of group 1 and with Ca, Sr, and Ba (the more active metals in group 2). The compounds formed are crystalline, ionic hydrides that contain the hydride anion, H[[sup:−]], a strong reducing agent and a strong base, which reacts vigorously with water and other acids to form hydrogen gas.
 
 <!-- SEG:m68833:para:fs-idp263935152 -->
-The reactions of hydrogen with nonmetals generally produce *acidic* hydrogen compounds with hydrogen in the 1+ oxidation state. The reactions become more exothermic and vigorous as the electronegativity of the nonmetal increases. Hydrogen reacts with nitrogen and sulfur only when heated, but it reacts explosively with fluorine (forming HF) and, under some conditions, with chlorine (forming HCl). A mixture of hydrogen and oxygen explodes if ignited. Because of the explosive nature of the reaction, it is necessary to exercise caution when handling hydrogen (or any other combustible gas) to avoid the formation of an explosive mixture in a confined space. Although most hydrides of the nonmetals are acidic, ammonia and phosphine (PH~3~) are very, very weak acids and generally function as bases. There is a summary of these reactions of hydrogen with the elements in [#fs-idp87200896].
+The reactions of hydrogen with nonmetals generally produce {{i}}acidic{{/i}} hydrogen compounds with hydrogen in the 1+ oxidation state. The reactions become more exothermic and vigorous as the electronegativity of the nonmetal increases. Hydrogen reacts with nitrogen and sulfur only when heated, but it reacts explosively with fluorine (forming HF) and, under some conditions, with chlorine (forming HCl). A mixture of hydrogen and oxygen explodes if ignited. Because of the explosive nature of the reaction, it is necessary to exercise caution when handling hydrogen (or any other combustible gas) to avoid the formation of an explosive mixture in a confined space. Although most hydrides of the nonmetals are acidic, ammonia and phosphine (PH[[sub:3]]) are very, very weak acids and generally function as bases. There is a summary of these reactions of hydrogen with the elements in [#fs-idp87200896].
 
 <!-- SEG:m68833:entry:auto-25 -->
 Chemical Reactions of Hydrogen with Other Elements
@@ -110,7 +110,7 @@ requires heating; low yield
 [[MATH:6]]
 
 <!-- SEG:m68833:entry:auto-38 -->
-X = F, Cl, Br, and I; explosive with F~2~; low yield with I~2~
+X = F, Cl, Br, and I; explosive with F[[sub:2]]; low yield with I[[sub:2]]
 
 <!-- SEG:m68833:title:fs-idp55019952-title -->
 Reaction with Compounds
@@ -125,7 +125,7 @@ Hydrogen may also reduce the metal ions in some metal oxides to lower oxidation 
 Under normal conditions, hydrogen is relatively inactive chemically, but when heated, it enters into many chemical reactions.
 
 <!-- SEG:m68833:para:fs-idp151776640 -->
-Two thirds of the world’s hydrogen production is devoted to the manufacture of ammonia, which is a fertilizer and used in the manufacture of nitric acid. Large quantities of hydrogen are also important in the process of __hydrogenation__, discussed in the chapter on organic chemistry.
+Two thirds of the world’s hydrogen production is devoted to the manufacture of ammonia, which is a fertilizer and used in the manufacture of nitric acid. Large quantities of hydrogen are also important in the process of {{term}}hydrogenation{{/term}}, discussed in the chapter on organic chemistry.
 
 <!-- SEG:m68833:para:fs-idp268499792 -->
 It is possible to use hydrogen as a nonpolluting fuel. The reaction of hydrogen with oxygen is a very exothermic reaction, releasing 286 kJ of energy per mole of water formed. Hydrogen burns without explosion under controlled conditions. The oxygen-hydrogen torch, because of the high heat of combustion of hydrogen, can achieve temperatures up to 2800 °C. The hot flame of this torch is useful in cutting thick sheets of many metals. Liquid hydrogen is also an important rocket fuel ([#CNX_Chem_18_05_LiqHliqO]).
@@ -134,7 +134,7 @@ It is possible to use hydrogen as a nonpolluting fuel. The reaction of hydrogen 
 Before the fleet’s retirement in 2011, liquid hydrogen and liquid oxygen were used in the three main engines of a space shuttle. Two compartments in the large tank held these liquids until the shuttle was launched. (credit: “reynermedia”/Flickr)
 
 <!-- SEG:m68833:para:fs-idp30011296 -->
-An uncombined hydrogen atom consists of a nucleus and one valence electron in the 1*s* orbital. The *n* = 1 valence shell has a capacity for two electrons, and hydrogen can rightfully occupy two locations in the periodic table. It is possible to consider hydrogen a group 1 element because hydrogen can lose an electron to form the cation, H^+^. It is also possible to consider hydrogen to be a group 17 element because it needs only one electron to fill its valence orbital to form a hydride ion, H^−^, or it can share an electron to form a single, covalent bond. In reality, hydrogen is a unique element that almost deserves its own location in the periodic table.
+An uncombined hydrogen atom consists of a nucleus and one valence electron in the 1{{i}}s{{/i}} orbital. The {{i}}n{{/i}} = 1 valence shell has a capacity for two electrons, and hydrogen can rightfully occupy two locations in the periodic table. It is possible to consider hydrogen a group 1 element because hydrogen can lose an electron to form the cation, H[[sup:+]]. It is also possible to consider hydrogen to be a group 17 element because it needs only one electron to fill its valence orbital to form a hydride ion, H[[sup:−]], or it can share an electron to form a single, covalent bond. In reality, hydrogen is a unique element that almost deserves its own location in the periodic table.
 
 <!-- SEG:m68833:title:fs-idp82925088-title -->
 Hydrogen Compounds
@@ -143,16 +143,16 @@ Hydrogen Compounds
 Nitrogen Hydrogen Compounds
 
 <!-- SEG:m68833:para:fs-idp63169696 -->
-Ammonia, NH~3~, forms naturally when any nitrogen-containing organic material decomposes in the absence of air. The laboratory preparation of ammonia is by the reaction of an ammonium salt with a strong base such as sodium hydroxide. The acid-base reaction with the weakly acidic ammonium ion gives ammonia, illustrated in [#CNX_Chem_18_05_Ammonia]. Ammonia also forms when ionic nitrides react with water. The nitride ion is a much stronger base than the hydroxide ion:
+Ammonia, NH[[sub:3]], forms naturally when any nitrogen-containing organic material decomposes in the absence of air. The laboratory preparation of ammonia is by the reaction of an ammonium salt with a strong base such as sodium hydroxide. The acid-base reaction with the weakly acidic ammonium ion gives ammonia, illustrated in [#CNX_Chem_18_05_Ammonia]. Ammonia also forms when ionic nitrides react with water. The nitride ion is a much stronger base than the hydroxide ion:
 
 <!-- SEG:m68833:para:fs-idp141680832 -->
-The commercial production of ammonia is by the direct combination of the elements in the __Haber process__:
+The commercial production of ammonia is by the direct combination of the elements in the {{term}}Haber process{{/term}}:
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_Ammonia-caption -->
 The structure of ammonia is shown with a central nitrogen atom and three hydrogen atoms.
 
 <!-- SEG:m68833:para:fs-idp99199120 -->
-Ammonia is a colorless gas with a sharp, pungent odor. Smelling salts utilize this powerful odor. Gaseous ammonia readily liquefies to give a colorless liquid that boils at −33 °C. Due to intermolecular hydrogen bonding, the enthalpy of vaporization of liquid ammonia is higher than that of any other liquid except water, so ammonia is useful as a refrigerant. Ammonia is quite soluble in water (658 L at STP dissolves in 1 L H~2~O).
+Ammonia is a colorless gas with a sharp, pungent odor. Smelling salts utilize this powerful odor. Gaseous ammonia readily liquefies to give a colorless liquid that boils at −33 °C. Due to intermolecular hydrogen bonding, the enthalpy of vaporization of liquid ammonia is higher than that of any other liquid except water, so ammonia is useful as a refrigerant. Ammonia is quite soluble in water (658 L at STP dissolves in 1 L H[[sub:2]]O).
 
 <!-- SEG:m68833:para:fs-idp139212576 -->
 The chemical properties of ammonia are as follows:
@@ -161,22 +161,22 @@ The chemical properties of ammonia are as follows:
 Ammonia acts as a Brønsted base, as discussed in the chapter on acid-base chemistry. The ammonium ion is similar in size to the potassium ion; compounds of the two ions exhibit many similarities in their structures and solubilities.
 
 <!-- SEG:m68833:item:fs-idp73406480-item-2 -->
-Ammonia can display acidic behavior, although it is a much weaker acid than water. Like other acids, ammonia reacts with metals, although it is so weak that high temperatures are necessary. Hydrogen and (depending on the stoichiometry) amides (salts of [[MATH:7]] imides (salts of NH^2−^), or nitrides (salts of N^3−^) form.
+Ammonia can display acidic behavior, although it is a much weaker acid than water. Like other acids, ammonia reacts with metals, although it is so weak that high temperatures are necessary. Hydrogen and (depending on the stoichiometry) amides (salts of [[MATH:7]] imides (salts of NH[[sup:2−]]), or nitrides (salts of N[[sup:3−]]) form.
 
 <!-- SEG:m68833:item:fs-idp73406480-item-3 -->
-The nitrogen atom in ammonia has its lowest possible oxidation state (3−) and thus is not susceptible to reduction. However, it can be oxidized. Ammonia burns in air, giving NO and water. Hot ammonia and the ammonium ion are active reducing agents. Of particular interest are the oxidations of ammonium ion by nitrite ion, [[MATH:8]] to yield pure nitrogen and by nitrate ion to yield nitrous oxide, N~2~O.
+The nitrogen atom in ammonia has its lowest possible oxidation state (3−) and thus is not susceptible to reduction. However, it can be oxidized. Ammonia burns in air, giving NO and water. Hot ammonia and the ammonium ion are active reducing agents. Of particular interest are the oxidations of ammonium ion by nitrite ion, [[MATH:8]] to yield pure nitrogen and by nitrate ion to yield nitrous oxide, N[[sub:2]]O.
 
 <!-- SEG:m68833:item:fs-idp73406480-item-4 -->
-There are a number of compounds that we can consider derivatives of ammonia through the replacement of one or more hydrogen atoms with some other atom or group of atoms. Inorganic derivations include chloramine, NH~2~Cl, and hydrazine, N~2~H~4~:
+There are a number of compounds that we can consider derivatives of ammonia through the replacement of one or more hydrogen atoms with some other atom or group of atoms. Inorganic derivations include chloramine, NH[[sub:2]]Cl, and hydrazine, N[[sub:2]]H[[sub:4]]:
 
 <!-- SEG:m68833:para:fs-idp58524336 -->
-Chloramine, NH~2~Cl, results from the reaction of sodium hypochlorite, NaOCl, with ammonia in basic solution. In the presence of a large excess of ammonia at low temperature, the chloramine reacts further to produce hydrazine, N~2~H~4~:
+Chloramine, NH[[sub:2]]Cl, results from the reaction of sodium hypochlorite, NaOCl, with ammonia in basic solution. In the presence of a large excess of ammonia at low temperature, the chloramine reacts further to produce hydrazine, N[[sub:2]]H[[sub:4]]:
 
 <!-- SEG:m68833:para:fs-idp124001328 -->
 Anhydrous hydrazine is relatively stable in spite of its positive free energy of formation:
 
 <!-- SEG:m68833:para:fs-idp119078176 -->
-Hydrazine is a fuming, colorless liquid that has some physical properties remarkably similar to those of H~2~O (it melts at 2 °C, boils at 113.5 °C, and has a density at 25 °C of 1.00 g/mL). It burns rapidly and completely in air with substantial evolution of heat:
+Hydrazine is a fuming, colorless liquid that has some physical properties remarkably similar to those of H[[sub:2]]O (it melts at 2 °C, boils at 113.5 °C, and has a density at 25 °C of 1.00 g/mL). It burns rapidly and completely in air with substantial evolution of heat:
 
 <!-- SEG:m68833:para:fs-idm9753616 -->
 Like ammonia, hydrazine is both a Brønsted base and a Lewis base, although it is weaker than ammonia. It reacts with strong acids and forms two series of salts that contain the [[MATH:9]] and [[MATH:10]] ions, respectively. Some rockets use hydrazine as a fuel.
@@ -185,52 +185,52 @@ Like ammonia, hydrazine is both a Brønsted base and a Lewis base, although it i
 Phosphorus Hydrogen Compounds
 
 <!-- SEG:m68833:para:fs-idp52708560 -->
-The most important hydride of phosphorus is phosphine, PH~3~, a gaseous analog of ammonia in terms of both formula and structure. Unlike ammonia, it is not possible to form phosphine by direct union of the elements. There are two methods for the preparation of phosphine. One method is by the action of an acid on an ionic phosphide. The other method is the disproportionation of white phosphorus with hot concentrated base to produce phosphine and the hydrogen phosphite ion:
+The most important hydride of phosphorus is phosphine, PH[[sub:3]], a gaseous analog of ammonia in terms of both formula and structure. Unlike ammonia, it is not possible to form phosphine by direct union of the elements. There are two methods for the preparation of phosphine. One method is by the action of an acid on an ionic phosphide. The other method is the disproportionation of white phosphorus with hot concentrated base to produce phosphine and the hydrogen phosphite ion:
 
 <!-- SEG:m68833:para:fs-idp265270448 -->
-Phosphine is a colorless, very poisonous gas, which has an odor like that of decaying fish. Heat easily decomposes phosphine [[MATH:11]] and the compound burns in air. The major uses of phosphine are as a fumigant for grains and in semiconductor processing. Like ammonia, gaseous phosphine unites with gaseous hydrogen halides, forming phosphonium compounds like PH~4~Cl and PH~4~I. Phosphine is a much weaker base than ammonia; therefore, these compounds decompose in water, and the insoluble PH~3~ escapes from solution.
+Phosphine is a colorless, very poisonous gas, which has an odor like that of decaying fish. Heat easily decomposes phosphine [[MATH:11]] and the compound burns in air. The major uses of phosphine are as a fumigant for grains and in semiconductor processing. Like ammonia, gaseous phosphine unites with gaseous hydrogen halides, forming phosphonium compounds like PH[[sub:4]]Cl and PH[[sub:4]]I. Phosphine is a much weaker base than ammonia; therefore, these compounds decompose in water, and the insoluble PH[[sub:3]] escapes from solution.
 
 <!-- SEG:m68833:title:fs-idp173455968-title -->
 Sulfur Hydrogen Compounds
 
 <!-- SEG:m68833:para:fs-idp30136192 -->
-Hydrogen sulfide, H~2~S, is a colorless gas that is responsible for the offensive odor of rotten eggs and of many hot springs. Hydrogen sulfide is as toxic as hydrogen cyanide; therefore, it is necessary to exercise great care in handling it. Hydrogen sulfide is particularly deceptive because it paralyzes the olfactory nerves; after a short exposure, one does not smell it.
+Hydrogen sulfide, H[[sub:2]]S, is a colorless gas that is responsible for the offensive odor of rotten eggs and of many hot springs. Hydrogen sulfide is as toxic as hydrogen cyanide; therefore, it is necessary to exercise great care in handling it. Hydrogen sulfide is particularly deceptive because it paralyzes the olfactory nerves; after a short exposure, one does not smell it.
 
 <!-- SEG:m68833:para:fs-idm2233792 -->
-The production of hydrogen sulfide by the direct reaction of the elements (H~2~ + S) is unsatisfactory because the yield is low. A more effective preparation method is the reaction of a metal sulfide with a dilute acid. For example:
+The production of hydrogen sulfide by the direct reaction of the elements (H[[sub:2]] + S) is unsatisfactory because the yield is low. A more effective preparation method is the reaction of a metal sulfide with a dilute acid. For example:
 
 <!-- SEG:m68833:para:fs-idp23012800 -->
-It is easy to oxidize the sulfur in metal sulfides and in hydrogen sulfide, making metal sulfides and H~2~S good reducing agents. In acidic solutions, hydrogen sulfide reduces Fe^3+^ to Fe^2+^, [[MATH:12]] to Mn^2+^, [[MATH:13]] to Cr^3+^, and HNO~3~ to NO~2~. The sulfur in H~2~S usually oxidizes to elemental sulfur, unless a large excess of the oxidizing agent is present. In which case, the sulfide may oxidize to [[MATH:14]] or [[MATH:15]] (or to SO~2~ or SO~3~ in the absence of water):
+It is easy to oxidize the sulfur in metal sulfides and in hydrogen sulfide, making metal sulfides and H[[sub:2]]S good reducing agents. In acidic solutions, hydrogen sulfide reduces Fe[[sup:3+]] to Fe[[sup:2+]], [[MATH:12]] to Mn[[sup:2+]], [[MATH:13]] to Cr[[sup:3+]], and HNO[[sub:3]] to NO[[sub:2]]. The sulfur in H[[sub:2]]S usually oxidizes to elemental sulfur, unless a large excess of the oxidizing agent is present. In which case, the sulfide may oxidize to [[MATH:14]] or [[MATH:15]] (or to SO[[sub:2]] or SO[[sub:3]] in the absence of water):
 
 <!-- SEG:m68833:para:fs-idp242896784 -->
-This oxidation process leads to the removal of the hydrogen sulfide found in many sources of natural gas. The deposits of sulfur in volcanic regions may be the result of the oxidation of H~2~S present in volcanic gases.
+This oxidation process leads to the removal of the hydrogen sulfide found in many sources of natural gas. The deposits of sulfur in volcanic regions may be the result of the oxidation of H[[sub:2]]S present in volcanic gases.
 
 <!-- SEG:m68833:para:fs-idp41845872 -->
-Hydrogen sulfide is a weak diprotic acid that dissolves in water to form hydrosulfuric acid. The acid ionizes in two stages, yielding hydrogen sulfide ions, HS^−^, in the first stage and sulfide ions, S^2−^, in the second. Since hydrogen sulfide is a weak acid, aqueous solutions of soluble sulfides and hydrogen sulfides are basic:
+Hydrogen sulfide is a weak diprotic acid that dissolves in water to form hydrosulfuric acid. The acid ionizes in two stages, yielding hydrogen sulfide ions, HS[[sup:−]], in the first stage and sulfide ions, S[[sup:2−]], in the second. Since hydrogen sulfide is a weak acid, aqueous solutions of soluble sulfides and hydrogen sulfides are basic:
 
 <!-- SEG:m68833:title:fs-idm8364256-title -->
 Halogen Hydrogen Compounds
 
 <!-- SEG:m68833:para:fs-idp30119280 -->
-Binary compounds containing only hydrogen and a halogen are __hydrogen halides__. At room temperature, the pure hydrogen halides HF, HCl, HBr, and HI are gases.
+Binary compounds containing only hydrogen and a halogen are {{term}}hydrogen halides{{/term}}. At room temperature, the pure hydrogen halides HF, HCl, HBr, and HI are gases.
 
 <!-- SEG:m68833:para:fs-idp45585904 -->
 In general, it is possible to prepare the halides by the general techniques used to prepare other acids. Fluorine, chlorine, and bromine react directly with hydrogen to form the respective hydrogen halide. This is a commercially important reaction for preparing hydrogen chloride and hydrogen bromide.
 
 <!-- SEG:m68833:para:fs-idp39542256 -->
-The acid-base reaction between a nonvolatile strong acid and a metal halide will yield a hydrogen halide. The escape of the gaseous hydrogen halide drives the reaction to completion. For example, the usual method of preparing hydrogen fluoride is by heating a mixture of calcium fluoride, CaF~2~, and concentrated sulfuric acid:
+The acid-base reaction between a nonvolatile strong acid and a metal halide will yield a hydrogen halide. The escape of the gaseous hydrogen halide drives the reaction to completion. For example, the usual method of preparing hydrogen fluoride is by heating a mixture of calcium fluoride, CaF[[sub:2]], and concentrated sulfuric acid:
 
 <!-- SEG:m68833:para:fs-idp158621184 -->
-Gaseous hydrogen fluoride is also a by-product in the preparation of phosphate fertilizers by the reaction of fluoroapatite, Ca~5~(PO~4~)~3~F, with sulfuric acid. The reaction of concentrated sulfuric acid with a chloride salt produces hydrogen chloride both commercially and in the laboratory.
+Gaseous hydrogen fluoride is also a by-product in the preparation of phosphate fertilizers by the reaction of fluoroapatite, Ca[[sub:5]](PO[[sub:4]])[[sub:3]]F, with sulfuric acid. The reaction of concentrated sulfuric acid with a chloride salt produces hydrogen chloride both commercially and in the laboratory.
 
 <!-- SEG:m68833:para:fs-idp56913984 -->
 In most cases, sodium chloride is the chloride of choice because it is the least expensive chloride. Hydrogen bromide and hydrogen iodide cannot be prepared using sulfuric acid because this acid is an oxidizing agent capable of oxidizing both bromide and iodide. However, it is possible to prepare both hydrogen bromide and hydrogen iodide using an acid such as phosphoric acid because it is a weaker oxidizing agent. For example:
 
 <!-- SEG:m68833:para:fs-idp577024 -->
-All of the hydrogen halides are very soluble in water, forming hydrohalic acids. With the exception of hydrogen fluoride, which has a strong hydrogen-fluoride bond, they are strong acids. Reactions of hydrohalic acids with metals, metal hydroxides, oxides, or carbonates produce salts of the halides. Most chloride salts are soluble in water. AgCl, PbCl~2~, and Hg~2~Cl~2~ are the commonly encountered exceptions.
+All of the hydrogen halides are very soluble in water, forming hydrohalic acids. With the exception of hydrogen fluoride, which has a strong hydrogen-fluoride bond, they are strong acids. Reactions of hydrohalic acids with metals, metal hydroxides, oxides, or carbonates produce salts of the halides. Most chloride salts are soluble in water. AgCl, PbCl[[sub:2]], and Hg[[sub:2]]Cl[[sub:2]] are the commonly encountered exceptions.
 
 <!-- SEG:m68833:para:fs-idp77718272 -->
-The halide ions give the substances the properties associated with X^−^(*aq*). The heavier halide ions (Cl^−^, Br^−^, and I^−^) can act as reducing agents, and the lighter halogens or other oxidizing agents will oxidize them:
+The halide ions give the substances the properties associated with X[[sup:−]]({{i}}aq{{/i}}). The heavier halide ions (Cl[[sup:−]], Br[[sup:−]], and I[[sup:−]]) can act as reducing agents, and the lighter halogens or other oxidizing agents will oxidize them:
 
 <!-- SEG:m68833:para:fs-idp47526048 -->
 For example, bromine oxidizes iodine:
@@ -242,7 +242,7 @@ Hydrofluoric acid is unique in its reactions with sand (silicon dioxide) and wit
 The volatile silicon tetrafluoride escapes from these reactions. Because hydrogen fluoride attacks glass, it can frost or etch glass and is used to etch markings on thermometers, burets, and other glassware.
 
 <!-- SEG:m68833:para:fs-idm89281360 -->
-The largest use for hydrogen fluoride is in production of hydrochlorofluorocarbons for refrigerants, in plastics, and in propellants. The second largest use is in the manufacture of cryolite, Na~3~AlF~6~, which is important in the production of aluminum. The acid is also important in the production of other inorganic fluorides (such as BF~3~), which serve as catalysts in the industrial synthesis of certain organic compounds.
+The largest use for hydrogen fluoride is in production of hydrochlorofluorocarbons for refrigerants, in plastics, and in propellants. The second largest use is in the manufacture of cryolite, Na[[sub:3]]AlF[[sub:6]], which is important in the production of aluminum. The acid is also important in the production of other inorganic fluorides (such as BF[[sub:3]]), which serve as catalysts in the industrial synthesis of certain organic compounds.
 
 <!-- SEG:m68833:para:fs-idp152109872 -->
 Hydrochloric acid is relatively inexpensive. It is an important and versatile acid in industry and is important for the manufacture of metal chlorides, dyes, glue, glucose, and various other chemicals. A considerable amount is also important for the activation of oil wells and as pickle liquor—an acid used to remove oxide coating from iron or steel that is to be galvanized, tinned, or enameled. The amounts of hydrobromic acid and hydroiodic acid used commercially are insignificant by comparison.
@@ -266,7 +266,7 @@ Why does hydrogen not exhibit an oxidation state of 1− when bonded to nonmetal
 The electronegativity of the nonmetals is greater than that of hydrogen. Thus, the negative charge is better represented on the nonmetal, which has the greater tendency to attract electrons in the bond to itself.
 
 <!-- SEG:m68833:problem:fs-idp231122608 -->
-The reaction of calcium hydride, CaH~2~, with water can be characterized as a Lewis acid-base reaction:[[BR]] [[MATH:16]]
+The reaction of calcium hydride, CaH[[sub:2]], with water can be characterized as a Lewis acid-base reaction:[[BR]] [[MATH:16]]
 
 <!-- SEG:m68833:problem:fs-idm12512512 -->
 Identify the Lewis acid and the Lewis base among the reactants. The reaction is also an oxidation-reduction reaction. Identify the oxidizing agent, the reducing agent, and the changes in oxidation number that occur in the reaction.
@@ -278,13 +278,13 @@ In drawing Lewis structures, we learn that a hydrogen atom forms only one bond i
 Hydrogen has only one orbital with which to bond to other atoms. Consequently, only one two-electron bond can form.
 
 <!-- SEG:m68833:problem:fs-idm1591344 -->
-What mass of CaH~2~ is necessary to react with water to provide enough hydrogen gas to fill a balloon at 20 °C and 0.8 atm pressure with a volume of 4.5 L? The balanced equation is:[[BR]] [[MATH:17]]
+What mass of CaH[[sub:2]] is necessary to react with water to provide enough hydrogen gas to fill a balloon at 20 °C and 0.8 atm pressure with a volume of 4.5 L? The balanced equation is:[[BR]] [[MATH:17]]
 
 <!-- SEG:m68833:problem:fs-idp280994432 -->
 What mass of hydrogen gas results from the reaction of 8.5 g of KH with water?[[BR]] [[MATH:18]]
 
 <!-- SEG:m68833:solution:fs-idp94913264 -->
-0.43 g H~2~
+0.43 g H[[sub:2]]
 
 <!-- SEG:m68833:glossary-term:fs-idp50608080-term -->
 Haber process
@@ -302,4 +302,4 @@ binary compound formed between hydrogen and the halogens: HF, HCl, HBr, and HI
 hydrogenation
 
 <!-- SEG:m68833:glossary-def:fs-idm8608880-def -->
-addition of hydrogen (H2) to reduce a compound
+addition of hydrogen (H[[sub:2]]) to reduce a compound

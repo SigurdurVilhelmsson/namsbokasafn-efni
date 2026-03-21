@@ -14,13 +14,13 @@ Define the atomic mass unit and average atomic mass
 Calculate average atomic mass and isotopic abundance
 
 <!-- SEG:m68692:para:fs-idp188136384 -->
-The development of modern atomic theory revealed much about the inner structure of atoms. It was learned that an atom contains a very small nucleus composed of positively charged protons and uncharged neutrons, surrounded by a much larger volume of space containing negatively charged electrons. The nucleus contains the majority of an atom’s mass because protons and neutrons are much heavier than electrons, whereas electrons occupy almost all of an atom’s volume. The diameter of an atom is on the order of 10^−10^ m, whereas the diameter of the nucleus is roughly 10^−15^ m—about 100,000 times smaller. For a perspective about their relative sizes, consider this: If the nucleus were the size of a blueberry, the atom would be about the size of a football stadium ([#CNX_Chem_02_03_AtomSize]).
+The development of modern atomic theory revealed much about the inner structure of atoms. It was learned that an atom contains a very small nucleus composed of positively charged protons and uncharged neutrons, surrounded by a much larger volume of space containing negatively charged electrons. The nucleus contains the majority of an atom’s mass because protons and neutrons are much heavier than electrons, whereas electrons occupy almost all of an atom’s volume. The diameter of an atom is on the order of 10[[sup:−10]] m, whereas the diameter of the nucleus is roughly 10[[sup:−15]] m—about 100,000 times smaller. For a perspective about their relative sizes, consider this: If the nucleus were the size of a blueberry, the atom would be about the size of a football stadium ([#CNX_Chem_02_03_AtomSize]).
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSize-caption -->
 If an atom could be expanded to the size of a football stadium, the nucleus would be the size of a single blueberry. (credit middle: modification of work by “babyknight”/Wikimedia Commons; credit right: modification of work by Paxson Woelber)
 
 <!-- SEG:m68692:para:fs-idm171776576 -->
-Atoms—and the protons, neutrons, and electrons that compose them—are extremely small. For example, a carbon atom weighs less than 2 [[MATH:1]] 10^−23^ g, and an electron has a charge of less than 2 [[MATH:2]] 10^−19^ C (coulomb). When describing the properties of tiny objects such as atoms, we use appropriately small units of measure, such as the __unified atomic mass unit (u)__ and the __fundamental unit of charge (e)__. The unified atomic mass unit is defined as exactly 1/12 of the mass of a single atom of the carbon-12 isotope (more on isotopes is provided later in this section) and is equal to 1.6605 [[MATH:3]] 10^−24^ g. The __dalton (Da)__ is an alternative mass unit that is equivalent to the u. Many literature resources, including this text, use the older term atomic mass unit (amu) when referring to the u or the Da. The fundamental unit of charge (also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:4]] 10^−19^ C.
+Atoms—and the protons, neutrons, and electrons that compose them—are extremely small. For example, a carbon atom weighs less than 2 [[MATH:1]] 10[[sup:−23]] g, and an electron has a charge of less than 2 [[MATH:2]] 10[[sup:−19]] C (coulomb). When describing the properties of tiny objects such as atoms, we use appropriately small units of measure, such as the {{term}}unified atomic mass unit (u){{/term}} and the {{term}}fundamental unit of charge (e){{/term}}. The unified atomic mass unit is defined as exactly 1/12 of the mass of a single atom of the carbon-12 isotope (more on isotopes is provided later in this section) and is equal to 1.6605 [[MATH:3]] 10[[sup:−24]] g. The {{term}}dalton (Da){{/term}} is an alternative mass unit that is equivalent to the u. Many literature resources, including this text, use the older term atomic mass unit (amu) when referring to the u or the Da. The fundamental unit of charge (also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:4]] 10[[sup:−19]] C.
 
 <!-- SEG:m68692:para:fs-idm166273840 -->
 A proton has a mass of 1.0073 amu and a charge of 1+. A neutron is a slightly heavier particle with a mass 1.0087 amu and a charge of zero; as its name suggests, it is neutral. The electron has a charge of 1− and is a much lighter particle with a mass of about 0.00055 amu (it would take about 1800 electrons to equal the mass of one proton). The properties of these fundamental particles are summarized in [#fs-idp90857696]. (An observant student might notice that the sum of an atom’s subatomic particles does not equal the atom’s actual mass: The total mass of six protons, six neutrons, and six electrons is 12.0993 amu, slightly larger than 12.00 amu. This “missing” mass is known as the mass defect, and you will learn about it in the chapter on nuclear chemistry.)
@@ -53,7 +53,7 @@ electron
 outside nucleus
 
 <!-- SEG:m68692:entry:auto-19 -->
-−1.602 [[MATH:5]] 10^−19^
+−1.602 [[MATH:5]] 10[[sup:−19]]
 
 <!-- SEG:m68692:entry:auto-20 -->
 1−
@@ -62,7 +62,7 @@ outside nucleus
 0.00055
 
 <!-- SEG:m68692:entry:auto-22 -->
-0.00091 [[MATH:6]] 10^−24^
+0.00091 [[MATH:6]] 10[[sup:−24]]
 
 <!-- SEG:m68692:entry:auto-23 -->
 proton
@@ -71,7 +71,7 @@ proton
 nucleus
 
 <!-- SEG:m68692:entry:auto-25 -->
-1.602 [[MATH:7]]10^−19^
+1.602 [[MATH:7]]10[[sup:−19]]
 
 <!-- SEG:m68692:entry:auto-26 -->
 1+
@@ -80,7 +80,7 @@ nucleus
 1.00727
 
 <!-- SEG:m68692:entry:auto-28 -->
-1.67262 [[MATH:8]] 10^−24^
+1.67262 [[MATH:8]] 10[[sup:−24]]
 
 <!-- SEG:m68692:entry:auto-29 -->
 neutron
@@ -98,19 +98,19 @@ nucleus
 1.00866
 
 <!-- SEG:m68692:entry:auto-34 -->
-1.67493 [[MATH:9]] 10^−24^
+1.67493 [[MATH:9]] 10[[sup:−24]]
 
 <!-- SEG:m68692:para:fs-idp27048016 -->
-The number of protons in the nucleus of an atom is its __atomic number (Z)__. This is the defining trait of an element: Its value determines the identity of the atom. For example, any atom that contains six protons is the element carbon and has the atomic number 6, regardless of how many neutrons or electrons it may have. A neutral atom must contain the same number of positive and negative charges, so the number of protons equals the number of electrons. Therefore, the atomic number also indicates the number of electrons in an atom. The total number of protons and neutrons in an atom is called its __mass number (A)__. The number of neutrons is therefore the difference between the mass number and the atomic number: A – Z = number of neutrons.
+The number of protons in the nucleus of an atom is its {{term}}atomic number (Z){{/term}}. This is the defining trait of an element: Its value determines the identity of the atom. For example, any atom that contains six protons is the element carbon and has the atomic number 6, regardless of how many neutrons or electrons it may have. A neutral atom must contain the same number of positive and negative charges, so the number of protons equals the number of electrons. Therefore, the atomic number also indicates the number of electrons in an atom. The total number of protons and neutrons in an atom is called its {{term}}mass number (A){{/term}}. The number of neutrons is therefore the difference between the mass number and the atomic number: A – Z = number of neutrons.
 
 <!-- SEG:m68692:para:fs-idm159569776 -->
-Atoms are electrically neutral if they contain the same number of positively charged protons and negatively charged electrons. When the numbers of these subatomic particles are *not* equal, the atom is electrically charged and is called an __ion__. The charge of an atom is defined as follows:
+Atoms are electrically neutral if they contain the same number of positively charged protons and negatively charged electrons. When the numbers of these subatomic particles are {{i}}not{{/i}} equal, the atom is electrically charged and is called an {{term}}ion{{/term}}. The charge of an atom is defined as follows:
 
 <!-- SEG:m68692:para:fs-idp142952368 -->
 Atomic charge = number of protons − number of electrons
 
 <!-- SEG:m68692:para:fs-idp59351760 -->
-As will be discussed in more detail later in this chapter, atoms (and molecules) typically acquire charge by gaining or losing electrons. An atom that gains one or more electrons will exhibit a negative charge and is called an __anion__. Positively charged atoms called __cations__ are formed when an atom loses one or more electrons. For example, a neutral sodium atom (Z = 11) has 11 electrons. If this atom loses one electron, it will become a cation with a 1+ charge (11 − 10 = 1+). A neutral oxygen atom (Z = 8) has eight electrons, and if it gains two electrons it will become an anion with a 2− charge (8 − 10 = 2−).
+As will be discussed in more detail later in this chapter, atoms (and molecules) typically acquire charge by gaining or losing electrons. An atom that gains one or more electrons will exhibit a negative charge and is called an {{term}}anion{{/term}}. Positively charged atoms called {{term}}cations{{/term}} are formed when an atom loses one or more electrons. For example, a neutral sodium atom (Z = 11) has 11 electrons. If this atom loses one electron, it will become a cation with a 1+ charge (11 − 10 = 1+). A neutral oxygen atom (Z = 8) has eight electrons, and if it gains two electrons it will become an anion with a 2− charge (8 − 10 = 2−).
 
 <!-- SEG:m68692:example-title:fs-idm5511728-title -->
 Composition of an Atom
@@ -149,7 +149,7 @@ Answer:
 Chemical Symbols
 
 <!-- SEG:m68692:para:fs-idm48306304 -->
-A __chemical symbol__ is an abbreviation that we use to indicate an element or an atom of an element. For example, the symbol for mercury is Hg ([#CNX_Chem_02_03_SiSymbol]). We use the same symbol to indicate one atom of mercury (microscopic domain) or to label a container of many atoms of the element mercury (macroscopic domain).
+A {{term}}chemical symbol{{/term}} is an abbreviation that we use to indicate an element or an atom of an element. For example, the symbol for mercury is Hg ([#CNX_Chem_02_03_SiSymbol]). We use the same symbol to indicate one atom of mercury (microscopic domain) or to label a container of many atoms of the element mercury (macroscopic domain).
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_SiSymbol-caption -->
 The symbol Hg represents the element mercury regardless of the amount; it could represent one atom of mercury or a large amount of mercury.
@@ -182,7 +182,7 @@ Al
 iron
 
 <!-- SEG:m68692:entry:auto-62 -->
-Fe (from *ferrum*)
+Fe (from {{i}}ferrum{{/i}})
 
 <!-- SEG:m68692:entry:auto-63 -->
 bromine
@@ -194,7 +194,7 @@ Br
 lead
 
 <!-- SEG:m68692:entry:auto-66 -->
-Pb (from *plumbum*)
+Pb (from {{i}}plumbum{{/i}})
 
 <!-- SEG:m68692:entry:auto-67 -->
 calcium
@@ -218,7 +218,7 @@ C
 mercury
 
 <!-- SEG:m68692:entry:auto-74 -->
-Hg (from *hydrargyrum*)
+Hg (from {{i}}hydrargyrum{{/i}})
 
 <!-- SEG:m68692:entry:auto-75 -->
 chlorine
@@ -254,13 +254,13 @@ Co
 potassium
 
 <!-- SEG:m68692:entry:auto-86 -->
-K (from *kalium*)
+K (from {{i}}kalium{{/i}})
 
 <!-- SEG:m68692:entry:auto-87 -->
 copper
 
 <!-- SEG:m68692:entry:auto-88 -->
-Cu (from *cuprum*)
+Cu (from {{i}}cuprum{{/i}})
 
 <!-- SEG:m68692:entry:auto-89 -->
 silicon
@@ -278,19 +278,19 @@ F
 silver
 
 <!-- SEG:m68692:entry:auto-94 -->
-Ag (from* argentum*)
+Ag (from{{i}} argentum{{/i}})
 
 <!-- SEG:m68692:entry:auto-95 -->
 gold
 
 <!-- SEG:m68692:entry:auto-96 -->
-Au (from *aurum*)
+Au (from {{i}}aurum{{/i}})
 
 <!-- SEG:m68692:entry:auto-97 -->
 sodium
 
 <!-- SEG:m68692:entry:auto-98 -->
-Na (from *natrium*)
+Na (from {{i}}natrium{{/i}})
 
 <!-- SEG:m68692:entry:auto-99 -->
 helium
@@ -314,7 +314,7 @@ H
 tin
 
 <!-- SEG:m68692:entry:auto-106 -->
-Sn (from *stannum*)
+Sn (from {{i}}stannum{{/i}})
 
 <!-- SEG:m68692:entry:auto-107 -->
 iodine
@@ -329,7 +329,7 @@ zinc
 Zn
 
 <!-- SEG:m68692:para:fs-idm105035264 -->
-Traditionally, the discoverer (or discoverers) of a new element names the element. However, until the name is recognized by the International Union of Pure and Applied Chemistry (IUPAC), the recommended name of the new element is based on the Latin word(s) for its atomic number. For example, element 106 was called unnilhexium (Unh), element 107 was called unnilseptium (Uns), and element 108 was called unniloctium (Uno) for several years. These elements are now named after scientists (or occasionally locations); for example, element 106 is now known as *seaborgium* (Sg) in honor of Glenn Seaborg, a Nobel Prize winner who was active in the discovery of several heavy elements. Element 109 was named in honor of Lise Meitner, who discovered nuclear fission, a phenomenon that would have world-changing impacts; Meitner also contributed to the discovery of some major isotopes, discussed immediately below.
+Traditionally, the discoverer (or discoverers) of a new element names the element. However, until the name is recognized by the International Union of Pure and Applied Chemistry (IUPAC), the recommended name of the new element is based on the Latin word(s) for its atomic number. For example, element 106 was called unnilhexium (Unh), element 107 was called unnilseptium (Uns), and element 108 was called unniloctium (Uno) for several years. These elements are now named after scientists (or occasionally locations); for example, element 106 is now known as {{i}}seaborgium{{/i}} (Sg) in honor of Glenn Seaborg, a Nobel Prize winner who was active in the discovery of several heavy elements. Element 109 was named in honor of Lise Meitner, who discovered nuclear fission, a phenomenon that would have world-changing impacts; Meitner also contributed to the discovery of some major isotopes, discussed immediately below.
 
 <!-- SEG:m68692:para:fs-idm3892928 -->
 Visit this [site](http://openstax.org/l/16IUPAC) to learn more about IUPAC, the International Union of Pure and Applied Chemistry, and explore its periodic table.
@@ -338,13 +338,13 @@ Visit this [site](http://openstax.org/l/16IUPAC) to learn more about IUPAC, the 
 Isotopes
 
 <!-- SEG:m68692:para:fs-idm240748912 -->
-The symbol for a specific isotope of any element is written by placing the mass number as a superscript to the left of the element symbol ([#CNX_Chem_02_03_AtomSym]). The atomic number is sometimes written as a subscript preceding the symbol, but since this number defines the element’s identity, as does its symbol, it is often omitted. For example, magnesium exists as a mixture of three isotopes, each with an atomic number of 12 and with mass numbers of 24, 25, and 26, respectively. These isotopes can be identified as ^24^Mg, ^25^Mg, and ^26^Mg. These isotope symbols are read as “element, mass number” and can be symbolized consistent with this reading. For instance, ^24^Mg is read as “magnesium 24,” and can be written as “magnesium-24” or “Mg-24.” ^25^Mg is read as “magnesium 25,” and can be written as “magnesium-25” or “Mg-25.” All magnesium atoms have 12 protons in their nucleus. They differ only because a ^24^Mg atom has 12 neutrons in its nucleus, a ^25^Mg atom has 13 neutrons, and a ^26^Mg has 14 neutrons.
+The symbol for a specific isotope of any element is written by placing the mass number as a superscript to the left of the element symbol ([#CNX_Chem_02_03_AtomSym]). The atomic number is sometimes written as a subscript preceding the symbol, but since this number defines the element’s identity, as does its symbol, it is often omitted. For example, magnesium exists as a mixture of three isotopes, each with an atomic number of 12 and with mass numbers of 24, 25, and 26, respectively. These isotopes can be identified as [[sup:24]]Mg, [[sup:25]]Mg, and [[sup:26]]Mg. These isotope symbols are read as “element, mass number” and can be symbolized consistent with this reading. For instance, [[sup:24]]Mg is read as “magnesium 24,” and can be written as “magnesium-24” or “Mg-24.” [[sup:25]]Mg is read as “magnesium 25,” and can be written as “magnesium-25” or “Mg-25.” All magnesium atoms have 12 protons in their nucleus. They differ only because a [[sup:24]]Mg atom has 12 neutrons in its nucleus, a [[sup:25]]Mg atom has 13 neutrons, and a [[sup:26]]Mg has 14 neutrons.
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSym-caption -->
 The symbol for an atom indicates the element via its usual two-letter symbol, the mass number as a left superscript, the atomic number as a left subscript (sometimes omitted), and the charge as a right superscript.
 
 <!-- SEG:m68692:para:fs-idm198096624 -->
-Information about the naturally occurring isotopes of elements with atomic numbers 1 through 10 is given in [#fs-idm87646592]. Note that in addition to standard names and symbols, the isotopes of hydrogen are often referred to using common names and accompanying symbols. Hydrogen-2, symbolized ^2^H, is also called deuterium and sometimes symbolized D. Hydrogen-3, symbolized ^3^H, is also called tritium and sometimes symbolized T.
+Information about the naturally occurring isotopes of elements with atomic numbers 1 through 10 is given in [#fs-idm87646592]. Note that in addition to standard names and symbols, the isotopes of hydrogen are often referred to using common names and accompanying symbols. Hydrogen-2, symbolized [[sup:2]]H, is also called deuterium and sometimes symbolized D. Hydrogen-3, symbolized [[sup:3]]H, is also called tritium and sometimes symbolized T.
 
 <!-- SEG:m68692:entry:auto-117 -->
 Nuclear Compositions of Atoms of the Very Light Elements
@@ -803,13 +803,13 @@ Use this [Build an Atom simulator](http://openstax.org/l/16PhetAtomBld) to build
 Atomic Mass
 
 <!-- SEG:m68692:para:fs-idp64485984 -->
-Because each proton and each neutron contribute approximately one amu to the mass of an atom, and each electron contributes far less, the __atomic mass__ of a single atom is approximately equal to its mass number (a whole number). However, the average masses of atoms of most elements are not whole numbers because most elements exist naturally as mixtures of two or more isotopes.
+Because each proton and each neutron contribute approximately one amu to the mass of an atom, and each electron contributes far less, the {{term}}atomic mass{{/term}} of a single atom is approximately equal to its mass number (a whole number). However, the average masses of atoms of most elements are not whole numbers because most elements exist naturally as mixtures of two or more isotopes.
 
 <!-- SEG:m68692:para:fs-idp249209552 -->
 The mass of an element shown in a periodic table or listed in a table of atomic masses is a weighted, average mass of all the isotopes present in a naturally occurring sample of that element. This is equal to the sum of each individual isotope’s mass multiplied by its fractional abundance.
 
 <!-- SEG:m68692:para:fs-idp53715664 -->
-For example, the element boron is composed of two isotopes: About 19.9% of all boron atoms are ^10^B with a mass of 10.0129 amu, and the remaining 80.1% are ^11^B with a mass of 11.0093 amu. The average atomic mass for boron is calculated to be:
+For example, the element boron is composed of two isotopes: About 19.9% of all boron atoms are [[sup:10]]B with a mass of 10.0129 amu, and the remaining 80.1% are [[sup:11]]B with a mass of 11.0093 amu. The average atomic mass for boron is calculated to be:
 
 <!-- SEG:m68692:para:fs-idm114336768 -->
 It is important to understand that no single boron atom weighs exactly 10.8 amu; 10.8 amu is the average mass of all boron atoms, and individual boron atoms weigh either approximately 10 amu or 11 amu.
@@ -818,7 +818,7 @@ It is important to understand that no single boron atom weighs exactly 10.8 amu;
 Calculation of Average Atomic Mass
 
 <!-- SEG:m68692:para:fs-idm202281808 -->
-A meteorite found in central Indiana contains traces of the noble gas neon picked up from the solar wind during the meteorite’s trip through the solar system. Analysis of a sample of the gas showed that it consisted of 91.84% ^20^Ne (mass 19.9924 amu), 0.47% ^21^Ne (mass 20.9940 amu), and 7.69% ^22^Ne (mass 21.9914 amu). What is the average mass of the neon in the solar wind?
+A meteorite found in central Indiana contains traces of the noble gas neon picked up from the solar wind during the meteorite’s trip through the solar system. Analysis of a sample of the gas showed that it consisted of 91.84% [[sup:20]]Ne (mass 19.9924 amu), 0.47% [[sup:21]]Ne (mass 20.9940 amu), and 7.69% [[sup:22]]Ne (mass 21.9914 amu). What is the average mass of the neon in the solar wind?
 
 <!-- SEG:m68692:para-title:fs-idm194071296-title -->
 Solution
@@ -833,7 +833,7 @@ The average mass of a neon atom in the solar wind is 20.15 amu. (The average mas
 Check Your Learning
 
 <!-- SEG:m68692:para:fs-idm187119072 -->
-A sample of magnesium is found to contain 78.70% of ^24^Mg atoms (mass 23.98 amu), 10.13% of ^25^Mg atoms (mass 24.99 amu), and 11.17% of ^26^Mg atoms (mass 25.98 amu). Calculate the average mass of a Mg atom.
+A sample of magnesium is found to contain 78.70% of [[sup:24]]Mg atoms (mass 23.98 amu), 10.13% of [[sup:25]]Mg atoms (mass 24.99 amu), and 11.17% of [[sup:26]]Mg atoms (mass 25.98 amu). Calculate the average mass of a Mg atom.
 
 <!-- SEG:m68692:para:fs-idm169485088 -->
 24.31 amu
@@ -851,31 +851,31 @@ We can also do variations of this type of calculation, as shown in the next exam
 Calculation of Percent Abundance
 
 <!-- SEG:m68692:para:fs-idm170542656 -->
-Naturally occurring chlorine consists of ^35^Cl (mass 34.96885 amu) and ^37^Cl (mass 36.96590 amu), with an average mass of 35.453 amu. What is the percent composition of Cl in terms of these two isotopes?
+Naturally occurring chlorine consists of [[sup:35]]Cl (mass 34.96885 amu) and [[sup:37]]Cl (mass 36.96590 amu), with an average mass of 35.453 amu. What is the percent composition of Cl in terms of these two isotopes?
 
 <!-- SEG:m68692:para-title:fs-idm111544320-title -->
 Solution
 
 <!-- SEG:m68692:para:fs-idm111544320 -->
-The average mass of chlorine is the fraction that is ^35^Cl times the mass of ^35^Cl plus the fraction that is ^37^Cl times the mass of ^37^Cl.
+The average mass of chlorine is the fraction that is [[sup:35]]Cl times the mass of [[sup:35]]Cl plus the fraction that is [[sup:37]]Cl times the mass of [[sup:37]]Cl.
 
 <!-- SEG:m68692:para:fs-idp35897648 -->
-If we let *x* represent the fraction that is ^35^Cl, then the fraction that is ^37^Cl is represented by 1.00 − *x*.
+If we let {{i}}x{{/i}} represent the fraction that is [[sup:35]]Cl, then the fraction that is [[sup:37]]Cl is represented by 1.00 − {{i}}x{{/i}}.
 
 <!-- SEG:m68692:para:fs-idm78207296 -->
-(The fraction that is ^35^Cl + the fraction that is ^37^Cl must add up to 1, so the fraction of ^37^Cl must equal 1.00 − the fraction of ^35^Cl.)
+(The fraction that is [[sup:35]]Cl + the fraction that is [[sup:37]]Cl must add up to 1, so the fraction of [[sup:37]]Cl must equal 1.00 − the fraction of [[sup:35]]Cl.)
 
 <!-- SEG:m68692:para:fs-idm174110736 -->
 Substituting this into the average mass equation, we have:
 
 <!-- SEG:m68692:para:fs-idm84424288 -->
-So solving yields: *x* = 0.7576, which means that 1.00 − 0.7576 = 0.2424. Therefore, chlorine consists of 75.76% ^35^Cl and 24.24% ^37^Cl.
+So solving yields: {{i}}x{{/i}} = 0.7576, which means that 1.00 − 0.7576 = 0.2424. Therefore, chlorine consists of 75.76% [[sup:35]]Cl and 24.24% [[sup:37]]Cl.
 
 <!-- SEG:m68692:para-title:fs-idm140620960-title -->
 Check Your Learning
 
 <!-- SEG:m68692:para:fs-idm140620960 -->
-Naturally occurring copper consists of ^63^Cu (mass 62.9296 amu) and ^65^Cu (mass 64.9278 amu), with an average mass of 63.546 amu. What is the percent composition of Cu in terms of these two isotopes?
+Naturally occurring copper consists of [[sup:63]]Cu (mass 62.9296 amu) and [[sup:65]]Cu (mass 64.9278 amu), with an average mass of 63.546 amu. What is the percent composition of Cu in terms of these two isotopes?
 
 <!-- SEG:m68692:para:fs-idm194575792 -->
 69.15% Cu-63 and 30.85% Cu-65
@@ -893,7 +893,7 @@ Visit this [site](http://openstax.org/l/16PhetAtomMass) to make mixtures of the 
 As you will learn, isotopes are important in nature and especially in human understanding of science and medicine. Let's consider just one natural, stable isotope: Oxygen-18, which is noted in the table above and is referred to as one of the environmental isotopes. It is important in paleoclimatology, for example, because scientists can use the ratio between Oxygen-18 and Oxygen-16 in an ice core to determine the temperature of precipitation over time. Oxygen-18 was also critical to the discovery of metabolic pathways and the mechanisms of enzymes. Mildred Cohn pioneered the usage of these isotopes to act as tracers, so that researchers could follow their path through reactions and gain a better understanding of what is happening. One of her first discoveries provided insight into the phosphorylation of glucose that takes place in mitochondria. And the methods of using isotopes for this research contributed to entire fields of study.
 
 <!-- SEG:m68692:para:fs-idp64386064 -->
-The occurrence and natural abundances of isotopes can be experimentally determined using an instrument called a mass spectrometer. Mass spectrometry (MS) is widely used in chemistry, forensics, medicine, environmental science, and many other fields to analyze and help identify the substances in a sample of material. In a typical mass spectrometer ([#CNX_Chem_02_03_MassSpec]), the sample is vaporized and exposed to a high-energy electron beam that causes the sample’s atoms (or molecules) to become electrically charged, typically by losing one or more electrons. These cations then pass through a (variable) electric or magnetic field that deflects each cation’s path to an extent that depends on both its mass and charge (similar to how the path of a large steel ball rolling past a magnet is deflected to a lesser extent than that of a small steel ball). The ions are detected, and a plot of the relative number of ions generated versus their mass-to-charge ratios (a *mass spectrum*) is made. The height of each vertical feature or peak in a mass spectrum is proportional to the fraction of cations with the specified mass-to-charge ratio. Since its initial use during the development of modern atomic theory, MS has evolved to become a powerful tool for chemical analysis in a wide range of applications.
+The occurrence and natural abundances of isotopes can be experimentally determined using an instrument called a mass spectrometer. Mass spectrometry (MS) is widely used in chemistry, forensics, medicine, environmental science, and many other fields to analyze and help identify the substances in a sample of material. In a typical mass spectrometer ([#CNX_Chem_02_03_MassSpec]), the sample is vaporized and exposed to a high-energy electron beam that causes the sample’s atoms (or molecules) to become electrically charged, typically by losing one or more electrons. These cations then pass through a (variable) electric or magnetic field that deflects each cation’s path to an extent that depends on both its mass and charge (similar to how the path of a large steel ball rolling past a magnet is deflected to a lesser extent than that of a small steel ball). The ions are detected, and a plot of the relative number of ions generated versus their mass-to-charge ratios (a {{i}}mass spectrum{{/i}}) is made. The height of each vertical feature or peak in a mass spectrum is proportional to the fraction of cations with the specified mass-to-charge ratio. Since its initial use during the development of modern atomic theory, MS has evolved to become a powerful tool for chemical analysis in a wide range of applications.
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_MassSpec-caption -->
 Analysis of zirconium in a mass spectrometer produces a mass spectrum with peaks showing the different isotopes of Zr.
@@ -905,7 +905,7 @@ See an [animation](http://openstax.org/l/16MassSpec) that explains mass spectrom
 Key Concepts and Summary
 
 <!-- SEG:m68692:para:fs-idm148166800 -->
-An atom consists of a small, positively charged nucleus surrounded by electrons. The nucleus contains protons and neutrons; its diameter is about 100,000 times smaller than that of the atom. The mass of one atom is usually expressed in atomic mass units (amu), which is referred to as the atomic mass. An amu is defined as exactly [[MATH:33]] of the mass of a carbon-12 atom and is equal to 1.6605 [[MATH:34]] 10^−24^ g.
+An atom consists of a small, positively charged nucleus surrounded by electrons. The nucleus contains protons and neutrons; its diameter is about 100,000 times smaller than that of the atom. The mass of one atom is usually expressed in atomic mass units (amu), which is referred to as the atomic mass. An amu is defined as exactly [[MATH:33]] of the mass of a carbon-12 atom and is equal to 1.6605 [[MATH:34]] 10[[sup:−24]] g.
 
 <!-- SEG:m68692:para:fs-idp228494288 -->
 Protons are relatively heavy particles with a charge of 1+ and a mass of 1.0073 amu. Neutrons are relatively heavy particles with no charge and a mass of 1.0087 amu. Electrons are light particles with a charge of 1− and a mass of 0.00055 amu. The number of protons in the nucleus is called the atomic number (Z) and is the property that defines an atom’s elemental identity. The sum of the numbers of protons and neutrons in the nucleus is called the mass number and, expressed in amu, is approximately equal to the mass of the atom. An atom is neutral when it contains equal numbers of electrons and protons.
@@ -941,7 +941,7 @@ Write the symbol for each of the following ions:
 (d) the ion with 24 electrons, 30 neutrons, and a 3+ charge
 
 <!-- SEG:m68692:solution:fs-idm90412768 -->
-(a) ^133^Cs^+^; (b) ^127^I^−^; (c) ^31^P^3−^; (d) ^57^Co^3+^
+(a) [[sup:133]]Cs[[sup:+]]; (b) [[sup:127]]I[[sup:−]]; (c) [[sup:31]]P[[sup:3−]]; (d) [[sup:57]]Co[[sup:3+]]
 
 <!-- SEG:m68692:problem:fs-idm201509280 -->
 Write the symbol for each of the following ions:
@@ -977,7 +977,7 @@ Open the [Build an Atom simulation](http://openstax.org/l/16PhetAtomBld) and cli
 (e) Check the “Stable/Unstable” box. Was your answer to (d) correct? If not, first predict what you can do to make a stable atom of your element, and then do it and see if it works. Explain your reasoning.
 
 <!-- SEG:m68692:solution:fs-idm124722320 -->
-(a) Carbon-12, ^12^C; (b) This atom contains six protons and six neutrons. There are six electrons in a neutral ^12^C atom. The net charge of such a neutral atom is zero, and the mass number is 12. (c) The preceding answers are correct. (d) The atom will be stable since C-12 is a stable isotope of carbon. (e) The preceding answer is correct. Other answers for this exercise are possible if a different element of isotope is chosen.
+(a) Carbon-12, [[sup:12]]C; (b) This atom contains six protons and six neutrons. There are six electrons in a neutral [[sup:12]]C atom. The net charge of such a neutral atom is zero, and the mass number is 12. (c) The preceding answers are correct. (d) The atom will be stable since C-12 is a stable isotope of carbon. (e) The preceding answer is correct. Other answers for this exercise are possible if a different element of isotope is chosen.
 
 <!-- SEG:m68692:problem:fs-idm65098400 -->
 Open the [Build an Atom simulation](http://openstax.org/l/16PhetAtomBld).
@@ -998,7 +998,7 @@ Open the [Build an Atom simulation](http://openstax.org/l/16PhetAtomBld).
 (b) Now remove one electron to make an ion and give the symbol for the ion you have created.
 
 <!-- SEG:m68692:solution:fs-idm134038192 -->
-(a) Lithium-6 contains three protons, three neutrons, and three electrons. The isotope symbol is ^6^Li or [[MATH:36]] (b) ^6^Li^+^ or [[MATH:37]]
+(a) Lithium-6 contains three protons, three neutrons, and three electrons. The isotope symbol is [[sup:6]]Li or [[MATH:36]] (b) [[sup:6]]Li[[sup:+]] or [[MATH:37]]
 
 <!-- SEG:m68692:problem:fs-idm56944480 -->
 Determine the number of protons, neutrons, and electrons in the following isotopes that are used in medical diagnoses:
@@ -1097,22 +1097,22 @@ Let us use neon as an example. Since there are three isotopes, there is no way t
 An element has the following natural abundances and isotopic masses: 90.92% abundance with 19.99 amu, 0.26% abundance with 20.99 amu, and 8.82% abundance with 21.99 amu. Calculate the average atomic mass of this element.
 
 <!-- SEG:m68692:problem:fs-idm58355904 -->
-Average atomic masses listed by IUPAC are based on a study of experimental results. Bromine has two isotopes, ^79^Br and ^81^Br, whose masses (78.9183 and 80.9163 amu, respectively) and abundances (50.69% and 49.31%, respectively) were determined in earlier experiments. Calculate the average atomic mass of bromine based on these experiments.
+Average atomic masses listed by IUPAC are based on a study of experimental results. Bromine has two isotopes, [[sup:79]]Br and [[sup:81]]Br, whose masses (78.9183 and 80.9163 amu, respectively) and abundances (50.69% and 49.31%, respectively) were determined in earlier experiments. Calculate the average atomic mass of bromine based on these experiments.
 
 <!-- SEG:m68692:solution:fs-idm9833872 -->
 79.90 amu
 
 <!-- SEG:m68692:problem:fs-idm130368688 -->
-Variations in average atomic mass may be observed for elements obtained from different sources. Lithium provides an example of this. The isotopic composition of lithium from naturally occurring minerals is 7.5% ^6^Li and 92.5% ^7^Li, which have masses of 6.01512 amu and 7.01600 amu, respectively. A commercial source of lithium, recycled from a military source, was 3.75% ^6^Li (and the rest ^7^Li). Calculate the average atomic mass values for each of these two sources.
+Variations in average atomic mass may be observed for elements obtained from different sources. Lithium provides an example of this. The isotopic composition of lithium from naturally occurring minerals is 7.5% [[sup:6]]Li and 92.5% [[sup:7]]Li, which have masses of 6.01512 amu and 7.01600 amu, respectively. A commercial source of lithium, recycled from a military source, was 3.75% [[sup:6]]Li (and the rest [[sup:7]]Li). Calculate the average atomic mass values for each of these two sources.
 
 <!-- SEG:m68692:problem:fs-idm197867280 -->
-The average atomic masses of some elements may vary, depending upon the sources of their ores. Naturally occurring boron consists of two isotopes with accurately known masses (^10^B, 10.0129 amu and ^11^B, 11.00931 amu). The actual atomic mass of boron can vary from 10.807 to 10.819, depending on whether the mineral source is from Turkey or the United States. Calculate the percent abundances leading to the two values of the average atomic masses of boron from these two countries.
+The average atomic masses of some elements may vary, depending upon the sources of their ores. Naturally occurring boron consists of two isotopes with accurately known masses ([[sup:10]]B, 10.0129 amu and [[sup:11]]B, 11.00931 amu). The actual atomic mass of boron can vary from 10.807 to 10.819, depending on whether the mineral source is from Turkey or the United States. Calculate the percent abundances leading to the two values of the average atomic masses of boron from these two countries.
 
 <!-- SEG:m68692:solution:fs-idm4806656 -->
 Turkey source: 20.3% (of 10.0129 amu isotope); US source: 19.1% (of 10.0129 amu isotope)
 
 <!-- SEG:m68692:problem:fs-idm65589760 -->
-The ^18^O:^16^O abundance ratio in some meteorites is greater than that used to calculate the average atomic mass of oxygen on earth. Is the average mass of an oxygen atom in these meteorites greater than, less than, or equal to that of a terrestrial oxygen atom?
+The [[sup:18]]O:[[sup:16]]O abundance ratio in some meteorites is greater than that used to calculate the average atomic mass of oxygen on earth. Is the average mass of an oxygen atom in these meteorites greater than, less than, or equal to that of a terrestrial oxygen atom?
 
 <!-- SEG:m68692:glossary-term:fs-idm68508272-term -->
 anion
@@ -1130,7 +1130,7 @@ average mass of atoms of an element, expressed in amu
 atomic mass unit (amu)
 
 <!-- SEG:m68692:glossary-def:fs-idm20897872-def -->
-(also, unified atomic mass unit, u, or Dalton, Da) unit of mass equal to [[MATH:48]] of the mass of a ^12^C atom
+(also, unified atomic mass unit, u, or Dalton, Da) unit of mass equal to [[MATH:48]] of the mass of a [[sup:12]]C atom
 
 <!-- SEG:m68692:glossary-term:fs-idp42201168-term -->
 atomic number (Z)
@@ -1160,7 +1160,7 @@ alternative unit equivalent to the atomic mass unit
 fundamental unit of charge
 
 <!-- SEG:m68692:glossary-def:fs-idp226765840-def -->
-(also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:49]] 10^−19^ C
+(also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:49]] 10[[sup:−19]] C
 
 <!-- SEG:m68692:glossary-term:fs-idp277782656-term -->
 ion

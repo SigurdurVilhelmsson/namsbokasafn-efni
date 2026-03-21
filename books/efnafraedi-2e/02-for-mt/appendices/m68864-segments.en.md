@@ -5,10 +5,10 @@ Composition of Commercial Acids and Bases
 Composition of Commercial Acids and Bases
 
 <!-- SEG:m68864:entry:auto-3 -->
-Acid or Base [footnote: Acids and bases are commercially available as aqueous solutions. This table lists properties (densities and concentrations) of common acid and base solutions. Nominal values are provided in cases where the manufacturer cites a range of concentrations and densities.]
+Acid or Base {{fn}}Acids and bases are commercially available as aqueous solutions. This table lists properties (densities and concentrations) of common acid and base solutions. Nominal values are provided in cases where the manufacturer cites a range of concentrations and densities.{{/fn}}
 
 <!-- SEG:m68864:entry:auto-4 -->
-Density (g/mL) [footnote: This column contains specific gravity data. In the case of this table, specific gravity is the ratio of density of a substance to the density of pure water at the same conditions. Specific gravity is often cited on commercial labels.]
+Density (g/mL) {{fn}}This column contains specific gravity data. In the case of this table, specific gravity is the ratio of density of a substance to the density of pure water at the same conditions. Specific gravity is often cited on commercial labels.{{/fn}}
 
 <!-- SEG:m68864:entry:auto-5 -->
 Percentage by Mass
@@ -29,7 +29,7 @@ acetic acid, glacial
 17.4
 
 <!-- SEG:m68864:entry:auto-11 -->
-aqueous ammonia [footnote: This solution is sometimes called “ammonium hydroxide,” although this term is not chemically accurate.]
+aqueous ammonia {{fn}}This solution is sometimes called “ammonium hydroxide,” although this term is not chemically accurate.{{/fn}}
 
 <!-- SEG:m68864:entry:auto-12 -->
 0.90

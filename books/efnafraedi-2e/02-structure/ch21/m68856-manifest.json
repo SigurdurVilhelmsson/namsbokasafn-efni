@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68856",
-  "extractedAt": "2026-03-06T13:09:40.312Z",
+  "extractedAt": "2026-03-21T15:10:13.537Z",
   "sourceHash": "eb7ca93de392034a",
-  "segmentCount": 175,
+  "segmentCount": 180,
   "segmentIds": [
     "m68856:title:auto-1",
     "m68856:abstract:auto-2",
@@ -140,6 +140,11 @@
     "m68856:problem:fs-idm189138560",
     "m68856:problem:fs-idp116280736",
     "m68856:solution:fs-idm228732384",
+    "m68856:item:eip-idm652671392-item-1",
+    "m68856:item:eip-idm652671392-item-2",
+    "m68856:item:eip-idm652671392-item-3",
+    "m68856:item:eip-idm652671392-item-4",
+    "m68856:item:eip-idm652671392-item-5",
     "m68856:problem:fs-idm43150496",
     "m68856:problem:fs-idm210381072",
     "m68856:solution:fs-idm210380176",
@@ -230,7 +235,7 @@
     "exercise": 8,
     "note": 6,
     "equation": 6,
-    "list": 1,
+    "list": 2,
     "media": 0,
     "glossary": 18
   },

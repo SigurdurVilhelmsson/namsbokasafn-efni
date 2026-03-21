@@ -1,0 +1,22 @@
+{
+  "moduleId": "m68733",
+  "chapter": "ch06",
+  "timestamp": "2026-03-20T12:08:06.969Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 328,
+      "translated": 321,
+      "diff": -7,
+      "direction": "loss"
+    },
+    {
+      "tag": "sub",
+      "source": 44,
+      "translated": 42,
+      "diff": -2,
+      "direction": "loss"
+    }
+  ]
+}

@@ -211,7 +211,7 @@
           "id": "fs-idm203397264",
           "title": {
             "segmentId": "m68758:example-title:fs-idm203397264-title",
-            "text": "Calculation of *u*~rms~"
+            "text": "Calculation of {{i}}u{{/i}}[[sub:rms]]"
           },
           "content": [
             {

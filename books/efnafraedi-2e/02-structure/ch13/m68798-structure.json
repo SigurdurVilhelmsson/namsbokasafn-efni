@@ -744,7 +744,7 @@
           "id": "fs-idp74619616",
           "title": {
             "segmentId": "m68798:example-title:fs-idp74619616-title",
-            "text": "Calculation of *K~P~*"
+            "text": "Calculation of {{i}}K[[sub:P]]{{/i}}"
           },
           "content": [
             {

@@ -1,0 +1,275 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<!-- FIDELITY-WARNING: m68769 has 1 structural discrepancy(ies)
+  emphasis: source=3 translated=0 (-3 loss)
+  Review needed before publication. Run cnxml-fidelity-check.js for details.
+-->
+<title>Fasarit</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68769</md:content-id>
+  <md:title>Fasarit</md:title>
+  <md:abstract><para id="para-00001">Þegar þessum kafla lýkur munt þú geta:</para><list id="list-00001"><item>Útskýrt gerð og notkun á dæmigerðu fasariti</item><item>Notað fasarit til að bera kennsl á stöðuga fasa við gefið hitastig og þrýsting og til að lýsa fasabreytingum sem verða vegna breytinga á þessum eiginleikum</item><item>Lýst yfirborðskenndum vökvafasa efnis</item></list></md:abstract>
+  <md:uuid>23152758-9f27-4c49-91a6-0f989a5d8d7b</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm105011872">Í fyrri einingu var lýst breytileika jafnvægisgufunarþrýstings vökva með hitastigi. Með hliðsjón af skilgreiningunni á suðumarki sýna gröf af gufunarþrýstingi á móti hitastigi hvernig suðumark vökva breytist með þrýstingi. Einnig var lýst notkun hitunar- og kólnunarferla til að ákvarða bræðslumark (eða frostmark) efnis. Með því að gera slíkar mælingar yfir breitt þrýstingssvið fást gögn sem hægt er að setja fram á myndrænan hátt sem fasarit. <term id="term-00001">Fasarit (e. phase diagram)</term> sameinar gröf af þrýstingi á móti hitastigi fyrir jafnvægi fasaskipta milli vökva og gass, fasts efnis og vökva og fasts efnis og gass fyrir tiltekið efni. Þessi rit sýna hvaða efnishamur er til staðar við sérstakar aðstæður þrýstings og hitastigs og gefa einnig upp þrýstingsháð fasaskiptahitastig (bræðslumörk, þurrgufunarmörk, suðumörk). Dæmigert fasarit fyrir hreint efni er sýnt á mynd <link target-id="CNX_Chem_10_04_PhaseDi"/>.</para>
+<figure id="CNX_Chem_10_04_PhaseDi" class="scaled-down">
+<media id="fs-idm57234192" alt="A graph is shown where the x-axis is labeled “Temperature” and the y-axis is labeled “Pressure.” A line extends from the lower left bottom of the graph sharply upward to a point that is a third across the x-axis. A second line begins at the lower third of the first line at a point labeled “triple point” and extends to the upper right corner of the graph where it is labeled “critical point.” The two lines bisect the graph area to create three sections, labeled “solid” near the top left, “liquid” in the top middle and “gas” near the bottom right. A pair of horizontal arrows, one left-facing and labeled “deposition” and one right-facing and labeled” sublimation,” are drawn on top of the bottom section of the first line. A second pair of horizontal arrows, one left-facing and labeled “freezing” and one right-facing and labeled “melting”, are drawn on top of the upper section of the first line. A third pair of horizontal arrows, one left-facing and labeled “condensation” and one right-facing and labeled ”vaporization,” are drawn on top of the middle section of the second line.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_PhaseDi.jpg"/>
+</media>
+<caption>Efnishamur efnis og hitastig fasaskipta þess eru sýnd á myndrænan hátt í fasariti.</caption>
+</figure>
+<para id="fs-idm53315104">Til að sýna fram á notagildi þessara grafa skulum við skoða fasarit fyrir vatn sem sýnt er á mynd <link target-id="CNX_Chem_10_04_H2OPhasDi2"/>.</para>
+<figure id="CNX_Chem_10_04_H2OPhasDi2" class="scaled-down">
+<media id="fs-idp24684528" alt="A graph is shown where the x-axis is labeled “Temperature in degrees Celsius” and the y-axis is labeled “Pressure ( k P a ).” A line extends from the origin of the graph which is labeled “A” sharply upward to a point in the bottom third of the diagram labeled “B” where it branches into a line that slants slightly backward until it hits the highest point on the y-axis labeled “D” and a second line that extends to the upper right corner of the graph labeled “C”. C is labeled “Critical point, with a dotted line extending downward to the x-axis labeled 374 degrees Celsius, and another dotted line extending to the y-axis labeled 22,089 k P a. The two lines bisect the graph area to create three sections, labeled “Ice (solid)” near the middle left, “Water (liquid)” in the top middle and “Water vapor (gas)” near the bottom middle. Point B is labeled “Triple point” and has a dotted line extending downward to the x-axis labeled 0.01, and another dotted line extending to the y-axis labeled 0.6. Halfway between points B and C a dotted line extends from the originally discussed line downward to the point 100 degrees Celsius on the x-axis, and another dotted line extends to the y-axis at 101 k P a. Another dotted line extends from this dotted line downward at 0 degrees Celsius.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_H2OPhasDi2.jpg"/>
+</media>
+<caption>Þrýstings- og hitastigsásarnir á þessu fasariti fyrir vatn eru ekki teiknaðir með föstum kvarða til að sýna nokkra mikilvæga eiginleika.</caption>
+</figure>
+<para id="fs-idm201945904">Við getum notað fasaritið til að bera kennsl á efnisham vatnssýnis við tilteknar aðstæður þrýstings og hitastigs. Til dæmis samsvarar þrýstingur upp á 50 kPa og hitastig upp á −10 °C svæðinu á ritinu sem merkt er „ís“. Við þessar aðstæður er vatn aðeins til sem fast efni (ís). Þrýstingur upp á 50 kPa og hitastig upp á 50 °C samsvarar svæðinu „vatn“ — hér er vatn aðeins til sem vökvi. Við 25 kPa og 200 °C er vatn aðeins til í gasfasa. Athugið að á H<sub>2</sub>O-fasaritinu eru þrýstings- og hitastigsásarnir ekki teiknaðir með föstum kvarða til að hægt sé að sýna nokkra mikilvæga eiginleika eins og hér er lýst.</para>
+<para id="fs-idm129813280">Ferillinn BC á mynd <link target-id="CNX_Chem_10_04_H2OPhasDi2"/> er graf gufunarþrýstings á móti hitastigi eins og lýst var í fyrri einingu þessa kafla. Þessi „vökva-gufu“-ferill aðskilur vökva- og gassvæði fasaritsins og gefur upp suðumark vatns við hvaða þrýsting sem er. Til dæmis, við 1 atm er suðumarkið 100 °C. Takið eftir að vökva-gufu-ferillinn endar við hitastigið 374 °C og þrýstinginn 218 atm, sem gefur til kynna að vatn geti ekki verið til sem vökvi yfir þessu hitastigi, óháð þrýstingi. Eðliseiginleikar vatns við þessar aðstæður eru mitt á milli eiginleika vökva- og gasfasa þess. Þessi einstaki efnishamur er kallaður yfirborðskenndur vökvi, efni sem verður lýst nánar í næsta hluta þessarar einingar.</para>
+<para id="fs-idm23251664">Fast efni-gufu-ferillinn, merktur AB á mynd <link target-id="CNX_Chem_10_04_H2OPhasDi2"/>, sýnir hitastig og þrýsting þar sem ís og vatnsgufa eru í jafnvægi. Þessi hitastigs- og þrýstingsgagnapör samsvara þurrgufunar- eða hrímunarstigum vatns. Ef við gætum þysjað inn á fast efni-gas-línuna á mynd <link target-id="CNX_Chem_10_04_H2OPhasDi2"/> myndum við sjá að ís hefur gufunarþrýsting um 0,20 kPa við −10 °C. Þannig að ef við setjum frosið sýni í lofttæmi með þrýstingi sem er lægri en 0,20 kPa mun ísinn þurrgufa. Þetta er grundvöllur „frostþurrkunarferlisins“ sem oft er notað til að varðveita matvæli, eins og ísinn sem sýndur er á mynd <link target-id="CNX_Chem_10_04_FreezeDry"/>.</para>
+<figure id="CNX_Chem_10_04_FreezeDry" class="scaled-down">
+<media id="fs-idm142599808" alt="A photograph shows a package with a rocket being launched on the front and a block of pink, white and brown striped solid in a wrapper next to it.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_FreezeDry.jpg"/>
+</media>
+<caption>Frostþurrkuð matvæli, eins og þessi ís, eru þurrkuð með þurrgufun við þrýsting undir þrípunkti vatns. (heimild: „alwao“/Flickr)</caption>
+</figure>
+<para id="fs-idm92413200">Fast efni-vökva-ferillinn merktur BD sýnir hitastig og þrýsting þar sem ís og fljótandi vatn eru í jafnvægi, sem táknar bræðslu-/frostmörk vatns. Athugið að þessi ferill hefur örlítið neikvæða hallatölu (mjög ýkt til skýringar), sem gefur til kynna að bræðslumark vatns lækkar lítillega þegar þrýstingur eykst. Vatn er óvenjulegt efni að þessu leyti, þar sem flest efni sýna hækkun á bræðslumarki með auknum þrýstingi. Þessi hegðun er að hluta til ábyrg fyrir hreyfingu jökla, eins og þess sem sýndur er á mynd <link target-id="CNX_Chem_10_04_IceMelt"/>. Botn jökuls verður fyrir gríðarlegum þrýstingi vegna þyngdar sinnar sem getur brætt hluta íssins og myndað lag af fljótandi vatni sem jökullinn getur runnið auðveldar á.</para>
+<figure id="CNX_Chem_10_04_IceMelt" class="scaled-down">
+<media id="fs-idp19576624" alt="A photograph shows an aerial view of a land mass. The white mass of a glacier is shown near the top left quadrant of the photo and leads to two branching blue rivers. The open land is shown in brown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_IceMelt.jpg"/>
+</media>
+<caption>Gríðarlegur þrýstingur undir jöklum veldur bráðnun að hluta til og myndar vatnslag sem smyr og auðveldar hreyfingu jökulsins. Þessi gervihnattamynd sýnir frambrún Perito Moreno jökulsins í Argentínu. (heimild: NASA)</caption>
+</figure>
+<para id="fs-idm105744432">Skurðpunktur allra þriggja ferlanna er merktur B á mynd <link target-id="CNX_Chem_10_04_H2OPhasDi2"/>. Við þrýstinginn og hitastigið sem þessi punktur táknar eru þrír fasar vatns til samtímis í jafnvægi. Þetta hitastigs- og þrýstingsgagnapar er kallað <term id="term-00002">þrípunktur (e. triple point)</term>. Við þrýsting sem er lægri en þrípunkturinn getur vatn ekki verið til sem vökvi, óháð hitastigi.</para>
+<example id="fs-idm211145632">
+<para id="fs-idm84608528"><title>Ákvörðun á efnishami vatns</title>Notaðu fasarit fyrir vatn sem gefið er á mynd <link target-id="CNX_Chem_10_04_H2OPhasDi2"/> til að ákvarða efnisham vatns við eftirfarandi hitastig og þrýsting:</para>
+<para id="fs-idm168463184">(a) −10 °C og 50 kPa</para>
+<para id="fs-idm57178832">(b) 25 °C og 90 kPa</para>
+<para id="fs-idm183935200">(c) 50 °C og 40 kPa</para>
+<para id="fs-idm82705648">(d) 80 °C og 5 kPa</para>
+<para id="fs-idp30582544">(e) −10 °C og 0,3 kPa</para>
+<para id="fs-idm113072192">(f) 50 °C og 0,3 kPa</para>
+<para id="fs-idm114532848"><title>Lausn</title>Með því að nota fasarit fyrir vatn getum við ákvarðað að ástand vatns við hvert uppgefið hitastig og þrýsting er sem hér segir: (a) fast efni; (b) vökvi; (c) vökvi; (d) gas; (e) fast efni; (f) gas.</para>
+<para id="fs-idm37551344"><title>Skoðaðu þekkingu þína</title>Hvaða fasabreytingum getur vatn tekið þegar hitastigið breytist ef þrýstingnum er haldið við 0,3 kPa? Ef þrýstingnum er haldið við 50 kPa?</para>
+<note id="fs-idm222446944">
+<title>Answer:</title>
+<para id="fs-idm153965536">Við 0,3 kPa: <m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math> við −58 °C. Við 50 kPa: <m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>l</m:mtext></m:mrow></m:math> við 0 °C, l → g við 78 °C</para>
+</note>
+</example>
+<para id="fs-idm71881152">Skoðum fasarit fyrir koldíoxíð sem sýnt er á <link target-id="CNX_Chem_10_04_CO2phasdi"/> sem annað dæmi. Kúrfa fösts efnis og vökva sýnir jákvæða hallatölu, sem gefur til kynna að bræðslumark CO<sub>2</sub> hækki með þrýstingi eins og hjá flestum efnum (vatn er athyglisverð undantekning eins og áður var lýst). Taktu eftir að þrípunkturinn er vel yfir 1 atm, sem gefur til kynna að koldíoxíð geti ekki verið til sem vökvi við umhverfisþrýsting. Þess í stað veldur kæling á koldíoxíði í gasformi við 1 atm útfellingu þess í fast efni. Á sama hátt bráðnar fast koldíoxíð ekki við 1 atm þrýsting heldur þurrgufar og myndar CO<sub>2</sub> í gasformi. Að lokum, taktu eftir að markpunktur koldíoxíðs sést við tiltölulega lágt hitastig og þrýsting í samanburði við vatn.</para>
+<figure id="CNX_Chem_10_04_CO2phasdi" class="scaled-down"><media id="fs-idm185557312" alt="A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of negative 100 to 100 in increments of 25 and the y-axis is labeled “Pressure ( k P a )” and has values of 10 to 1,000,000. A line extends from the lower left bottom of the graph upward to a point around“27, 9000,” where it ends. The space under this curve is labeled “Gas.” A second line extends in a curve from point around “-55, 500” to “27, 1,000,000.” The area to the left of this line and above the first line is labeled “Solid” while the area to the right is labeled “Liquid.” A section on the graph under the second line and past the point “28” on the x-axis is labeled “S C F.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_CO2PhasDi.jpg"/>
+</media>
+
+<caption>Fasarit fyrir koldíoxíð er sýnt. Þrýstingsásinn er teiknaður á lograkvarða til að rúma stórt gildissvið.</caption></figure>
+<example id="fs-idm81431296">
+<para id="fs-idm184169664"><title>Ákvörðun ástands koldíoxíðs</title>Notaðu fasaritið fyrir koldíoxíð sem sýnt er á <link target-id="CNX_Chem_10_04_CO2phasdi"/> til að ákvarða ástand CO<sub>2</sub> við eftirfarandi hitastig og þrýsting:</para>
+<para id="fs-idm52543376">(a) −30 °C og 2000 kPa</para>
+<para id="fs-idm152653552">(b) −90 °C og 1000 kPa</para><para id="fs-idm133410832">(c) −60 °C og 100 kPa</para>
+<para id="fs-idm19013760">(d) −40 °C og 1500 kPa</para>
+<para id="fs-idm202256048">(e) 0 °C og 100 kPa</para>
+<para id="fs-idm25749152">(f) 20 °C og 100 kPa</para>
+<para id="fs-idm215910416"><title>Lausn</title>Með því að nota fasaritið fyrir koldíoxíð sem fylgir með getum við ákvarðað að ástand CO<sub>2</sub> við hvert uppgefið hitastig og þrýsting er sem hér segir: (a) vökvi; (b) fast efni; (c) gas; (d) vökvi; (e) gas; (f) gas.</para>
+<para id="fs-idm66941424"><title>Skoðaðu þekkingu þína</title>Greindu hvaða fasabreytingum koldíoxíð mun gangast undir þegar hitastig þess er hækkað úr −100 °C á meðan þrýstingi er haldið föstum við 1500 kPa. Við 50 kPa. Við hvaða áætlaða hitastig eiga þessar fasabreytingar sér stað?</para>
+<note id="fs-idm25675280">
+<title>Answer:</title>
+<para id="fs-idm56827360">við 1500 kPa: <m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>l</m:mtext></m:mrow></m:math> við −55 °C, <m:math><m:mrow><m:mtext>l</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math> við −10 °C;</para>
+<para id="fs-idm110315760">við 50 kPa: <m:math><m:mrow><m:mtext>s</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math> við −60 °C</para></note>
+</example>
+<section id="fs-idp26089360">
+<title>Ofurmarksvökvar</title>
+<para id="fs-idm114606944">Ef við setjum vatnssýni í lokað ílát við 25 °C, fjarlægjum loftið og látum jafnvægi milli uppgufunar og þéttingar komast á, sitjum við eftir með blöndu af vatni á vökvaformi og vatnsgufu við 0,03 atm þrýsting. Greinileg mörk sjást á milli hins eðlisþyngri vökva og hins eðlisléttara gass. Þegar við hækkum hitastigið eykst þrýstingur vatnsgufunnar, eins og lýst er með vökva-gas-ferlinum í fasariti vatns (<link target-id="CNX_Chem_10_04_H2OPhasDi2"/>), og tveggja fasa jafnvægi vökva- og gasfasa helst. Við 374 °C hitastig hefur gufuþrýstingurinn hækkað í 218 atm og öll frekari hitahækkun veldur því að mörkin milli vökva- og gufufasans hverfa. Allt vatnið í ílátinu er nú til staðar í einum fasa þar sem eðliseiginleikarnir eru mitt á milli eiginleika gas- og vökvaástands. Þessi fasi efnis er kallaður <term id="term-00003">yfirmarksflæðiefni (e. supercritical fluid)</term> og hitastigið og þrýstingurinn sem þessi fasi er til fyrir ofan er <term id="term-00004">markpunkturinn (e. critical point)</term> (<link target-id="CNX_Chem_10_04_CritFluid"/>). Fyrir ofan markhitastig sitt er ekki hægt að breyta gasi í vökva, sama hversu miklum þrýstingi er beitt. Þrýstingurinn sem þarf til að breyta gasi í vökva við markhitastig þess er kallaður markþrýstingur. Markhitastig og markþrýstingur nokkurra algengra efna eru gefin upp í eftirfarandi töflu.</para>
+<table id="fs-idm180459824" class="unnumbered" summary="This table contains eight rows and three columns. The first row is a header row, and it labels each column: “Substance,” “Critical Temperature ( K ),” and “Critical Pressure ( a t m ).” Under the “Substance” column are the following: hydrogen, nitrogen, oxygen, carbon dioxide, ammonia, sulfur dioxide, and water. Under the “Critical Temperature ( K )” column are the following: 33.2, 126.0, 154.3, 304.2, 405.5, 430.3, and 647.1. Under the “Critical Pressure ( a t m )” column are the following: 12.8, 33.5, 49.7, 73.0, 111.5, 77.7, and 217.7.">
+<label/>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry align="left">Efni</entry>
+<entry align="left">Markhitastig (°C)</entry>
+<entry align="left">Markþrýstingur (kPa)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">vetni</entry>
+<entry align="left">−240,0</entry>
+<entry align="left">1300</entry>
+</row>
+<row valign="top">
+<entry align="left">nitur</entry>
+<entry align="left">−147,2</entry>
+<entry align="left">3400</entry>
+</row>
+<row valign="top">
+<entry align="left">súrefni</entry>
+<entry align="left">−118,9</entry>
+<entry align="left">5000</entry>
+</row>
+<row valign="top">
+<entry align="left">koldíoxíð</entry>
+<entry align="left">31,1</entry>
+<entry align="left">7400</entry>
+</row>
+<row valign="top">
+<entry align="left">ammóníak</entry>
+<entry align="left">132,4</entry>
+<entry align="left">11.300</entry>
+</row>
+<row valign="top">
+<entry align="left">brennisteinsdíoxíð</entry>
+<entry align="left">157,2</entry>
+<entry align="left">7800</entry>
+</row>
+<row valign="top">
+<entry align="left">vatn</entry>
+<entry align="left">374,0</entry>
+<entry align="left">22.000</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<figure id="CNX_Chem_10_04_CritFluid">
+<media id="fs-idm115619344" alt="Four photographs are shown where each shows a circular container with a green and red float in each. In the left diagram, the container is half filled with a colorless liquid and the floats sit on the surface of the liquid. In the second photo, the green float is near the top and the red float lies near the bottom of the container. In the third photo, the fluid is darker and the green float sits halfway up the container while the red is sitting at the bottom. In the right photo, the liquid is colorless again and the two floats sit on the surface.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_CritFluid.jpg"/>
+</media>
+<caption>(a) Lokað ílát með koldíoxíði á vökvaformi rétt undir markpunkti þess er hitað, sem leiðir til (b) myndunar yfirmarksflæðiefnisfasans. Með því að kæla yfirmarksflæðiefnið lækkar hitastig þess og þrýstingur niður fyrir markpunktinn, sem leiðir til þess að aðskildir vökva- og gasfasar myndast aftur (c og d). Litaðir flotar sýna mun á eðlismassa milli vökva-, gas- og yfirmarksflæðiefnisástandsins. (heimild: breytt útgáfa af verki eftir „mrmrobin“/YouTube)</caption>
+</figure>
+<note id="fs-idm96917712" class="chemistry link-to-learning">
+<para id="fs-idm81770576">Skoðaðu <link url="http://openstax.org/l/16supercrit">fasaskiptin úr vökva í yfirmarksflæðiefni</link> fyrir koldíoxíð.</para>
+</note>
+<para id="fs-idp19605424">Líkt og gas mun yfirmarksflæðiefni þenjast út og fylla ílát, en eðlismassi þess er mun meiri en dæmigerður eðlismassi gasa og er yfirleitt nálægt eðlismassa vökva. Á svipaðan hátt og vökvar geta þessi flæðiefni leyst upp órokgjörn uppleyst efni. Þau sýna þó nánast enga yfirborðsspennu og hafa mjög lága seigju, svo þau geta á skilvirkari hátt smogið inn í mjög lítil op í fastri efnablöndu og fjarlægt uppleysanlega efnisþætti. Þessir eiginleikar gera yfirmarksflæðiefni að afar gagnlegum leysum fyrir margs konar notkun. Til dæmis er yfirmarks-koldíoxíð orðið mjög vinsæll leysir í matvælaiðnaði og er notað til að koffínlosa kaffi, fjarlægja fitu úr kartöfluflögum og draga út bragð- og ilmsambönd úr sítrusolíum. Það er eiturlaust, tiltölulega ódýrt og er ekki talið mengandi. Eftir notkun er auðvelt að endurheimta CO<sub>2</sub> með því að lækka þrýstinginn og safna gasinu sem myndast.</para>
+<example id="fs-idm51838704">
+<para id="fs-idm134827136"><title>Markhitastig koldíoxíðs</title>Ef við hristum koldíoxíðslökkvitæki á köldum degi (18 °C) heyrum við CO<sub>2</sub> á vökvaformi skvampast inni í kútnum. Hins vegar virðist sami kútur ekki innihalda neinn vökva á heitum sumardegi (35 °C). Útskýrðu þessar athuganir.</para>
+<para id="fs-idm194167232"><title>Lausn</title>Á kalda deginum er hitastig CO<sub>2</sub> undir markhitastigi CO<sub>2</sub>, 304 K eða 31 °C, þannig að CO<sub>2</sub> á vökvaformi er til staðar í kútnum. Á heita deginum er hitastig CO<sub>2</sub> hærra en markhitastig þess sem er 31 °C. Fyrir ofan þetta hitastig getur enginn þrýstingur, sama hversu mikill hann er, breytt CO<sub>2</sub> í vökva, þannig að ekkert CO<sub>2</sub> á vökvaformi er til í slökkvitækinu.</para><para id="fs-idp29978288"><title>Skoðaðu þekkingu þína</title>Hægt er að breyta ammóníaki í vökva með þjöppun við stofuhita; ekki er hægt að breyta súrefni í vökva við þessar aðstæður. Hvers vegna sýna þessi tvö gös ólíka hegðun?</para>
+<note id="fs-idm199828080">
+<title>Answer:</title>
+<para id="fs-idm96591504">Markhitastig ammóníaks er 405,5 K, sem er hærra en stofuhiti. Markhitastig súrefnis er undir stofuhita; því er ekki hægt að breyta súrefni í vökva við stofuhita.</para>
+</note>
+</example>
+<note id="fs-idp20092656" class="chemistry everyday-life">
+<title>Decaffeinating Coffee Using Supercritical CO<sub>2</sub></title>
+<para id="fs-idp19473808">Kaffi er næst mest selda verslunarvara í heimi, á eftir jarðolíu. Fólk um allan heim elskar ilm og bragð kaffis. Mörg okkar treysta líka á einn þátt kaffisins – koffín – til að koma okkur í gang á morgnana eða halda okkur vakandi síðdegis. En seint á daginn geta örvandi áhrif kaffis komið í veg fyrir að þú sofnir, svo þú gætir valið að drekka koffínlaust kaffi á kvöldin.</para>
+<para id="fs-idp27102688">Frá því snemma á 20. öld hafa margar aðferðir verið notaðar til að fjarlægja koffín úr kaffi. Allar hafa þær kosti og galla og byggja allar á eðlis- og efnaeiginleikum koffíns. Þar sem koffín er nokkuð skautuð sameind leysist það vel upp í vatni, sem er skautaður vökvi. Hins vegar, þar sem mörg af hinum rúmlega 400 efnasamböndunum sem stuðla að bragði og ilmi kaffis leysast einnig upp í H<sub>2</sub>O, geta ferli þar sem koffín er fjarlægt með heitu vatni einnig fjarlægt sum þessara efnasambanda, sem hefur slæm áhrif á lykt og bragð koffínlausa kaffisins. Díklórmetan (CH<sub>2</sub>Cl<sub>2</sub>) og etýlasetat (CH<sub>3</sub>CO<sub>2</sub>C<sub>2</sub>H<sub>5</sub>) hafa svipaða skautun og koffín og eru því mjög áhrifaríkir leysar til að draga út koffín, en báðir fjarlægja einnig bragð- og ilmefni og notkun þeirra krefst langs útdráttar- og hreinsunartíma. Þar sem báðir þessir leysar eru eitraðir hafa komið fram áhyggjur af heilsufarsáhrifum leifa af leysinum sem verða eftir í koffínlausa kaffinu.</para>
+<para id="fs-idm60471152">Útdráttur með yfirmarks-vökva með koldíoxíði er nú mikið notaður sem skilvirkari og umhverfisvænni aðferð til að fjarlægja koffín (<link target-id="CNX_Chem_10_04_SupCritCof"/>). Við hitastig yfir 304,2 K og þrýsting yfir 7376 kPa er CO<sub>2</sub> yfirmarks-vökvi, með eiginleika bæði gass og vökva. Eins og gas smýgur það djúpt inn í kaffibaunirnar; eins og vökvi leysir það á áhrifaríkan hátt upp ákveðin efni. Útdráttur með yfirmarks-koldíoxíði úr gufusoðnum kaffibaunum fjarlægir 97–99% af koffíninu og skilur bragð- og ilmefnasambönd kaffisins eftir óskert. Þar sem CO<sub>2</sub> er gas við staðalaðstæður er auðvelt að fjarlægja það úr útdregnu kaffibaununum, sem og að endurheimta koffínið úr útdrættinum. Koffínið sem endurheimt er úr kaffibaunum með þessu ferli er verðmætt myndefni sem hægt er að nota síðar sem aukefni í önnur matvæli eða lyf.</para>
+<figure id="CNX_Chem_10_04_SupCritCof">
+<media id="fs-idm140720928" alt="Two images are shown and labeled “a” and “b.” Image a shows a molecule composed of a five member ring composed of two blue spheres and three black spheres. One of the blue spheres is bonded to a black sphere bonded to three white spheres and one of the black spheres is bonded to a white sphere. The other two black spheres are double bonded together and make up one side of a six-membered ring that is also composed of two more black spheres and two blue spheres, both of which are bonded to a black sphere bonded to three white spheres. The black spheres are each double bonded to red spheres. Image b shows a diagram of two vertical tubes that lie next to one another. The left-hand tube is labeled “Extraction vessel.” A small tube labeled “Soaked beans” leads into the top of the tube and a label at the bottom of the tube reads “Decaffeinated beans.” The right tube is labeled “Absorption vessel.” A tube near the top of this tube is labeled “Water” and another tube leads from the right tube to the left. This tube is labeled with a left-facing arrow and the phrase “supercritical carbon dioxide.” There is a tube leading away from the bottom which is labeled, “Caffeine and water.” There is another tube that leads from the extraction vessel to the absorption vessel which is labeled, “supercritical C O subscript 2 plus caffeine.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_SupCritCof.jpg"/>
+</media>
+<caption>(a) Koffínsameindir hafa bæði skautuð og óskautuð svæði, sem gerir þær auðleystar í leysum með mismunandi skautun. (b) Skýringarmyndin sýnir dæmigert ferli til að fjarlægja koffín með yfirmarks-koldíoxíði.</caption>
+</figure>
+</note>
+</section>
+<section id="fs-idm39505456" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm183316720">Skilyrði hitastigs og þrýstings þar sem efni er til í föstu, fljótandi og loftkenndu ástandi eru tekin saman á fasariti fyrir það efni. Fasarit eru samsettar línur af jafnvægiskúrfum þrýstings og hitastigs sem tákna sambandið milli hitastigs fasaskipta og þrýstings. Skurðpunktur þriggja kúrfa á fasariti táknar þrípunkt efnis – hitastigið og þrýstinginn þar sem þrír mismunandi fasar eru í jafnvægi. Við þrýsting undir þrípunkti fasts efnis, vökva og gass getur efni ekki verið til í fljótandi ástandi, óháð hitastigi þess. Endapunktur vökva-gas kúrfu táknar markpunkt efnisins, þrýstinginn og hitastigið þar sem vökvafasi getur ekki verið til.</para>
+</section>
+<section id="fs-idm278580384" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idm158754672">
+<problem id="fs-idp23344912">
+<para id="fs-idm39432752">Ákvarðaðu ástand vatns út frá fasariti fyrir vatn (<link target-id="CNX_Chem_10_04_H2OPhasDi2"/>) við:</para>
+<para id="fs-idm134552448">(a) 35 °C og 85 kPa</para>
+<para id="fs-idm163033728">(b) −15 °C og 40 kPa</para>
+<para id="fs-idm172957072">(c) −15 °C og 0,1 kPa</para>
+<para id="fs-idm231411984">(d) 75 °C og 3 kPa</para>
+<para id="fs-idm66774336">(e) 40 °C og 0,1 kPa</para>
+<para id="fs-idm185057600">(f) 60 °C og 50 kPa</para>
+</problem>
+</exercise>
+<exercise id="fs-idm163161056">
+<problem id="fs-idm133014752">
+<para id="fs-idm84701392">Hvaða fasaskipti munu eiga sér stað þegar vatn er beitt mismunandi þrýstingi við fast hitastig 0,005 °C? Við 40 °C? Við −40 °C?</para>
+</problem>
+<solution id="fs-idm77722336">
+<para id="fs-idm187242192">Við lágan þrýsting og 0,005 °C er vatnið gas. Þegar þrýstingurinn eykst í 4,6 torr verður vatnið að föstu efni; þegar þrýstingurinn eykst enn frekar verður það að vökva. Við 40 °C er vatn við lágan þrýsting gufa; við þrýsting hærri en um 75 torr breytist það í vökva. Við −40 °C fer vatn úr gasi yfir í fast efni þegar þrýstingurinn eykst yfir mjög lág gildi.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm134300544">
+<problem id="fs-idm235861728">
+<para id="fs-idm132659600">Þrýstipottar gera kleift að elda mat hraðar vegna þess að hærri þrýstingur inni í þrýstipottinum eykur suðumark vatns. Ákveðinn þrýstipottur er með öryggisventil sem er stilltur til að hleypa út gufu ef þrýstingurinn fer yfir 3,4 atm. Hvert er áætlað hámarkshitastig sem hægt er að ná inni í þessum þrýstipotti? Útskýrðu rökstuðning þinn.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm79316176">
+<problem id="fs-idm134044560">
+<para id="fs-idm45352704">Ákvarðaðu ástand CO<sub>2</sub> út frá fasariti fyrir koldíoxíð í <link target-id="CNX_Chem_10_04_CO2phasdi"/> við:</para>
+<para id="fs-idp25830864">(a) 20 °C og 1000 kPa</para>
+<para id="fs-idm157071424">(b) 10 °C og 2000 kPa</para>
+<para id="fs-idm132072448">(c) 10 °C og 100 kPa</para>
+<para id="fs-idp4587376">(d) −40 °C og 500 kPa</para>
+<para id="fs-idm130055632">(e) −80 °C og 1500 kPa</para>
+<para id="fs-idp19689536">(f) −80 °C og 10 kPa</para>
+</problem>
+<solution id="fs-idm57541872">
+<para id="fs-idm300012672">(a) gas; (b) gas; (c) gas; (d) gas; (e) fast efni; (f) gas</para></solution>
+</exercise>
+<exercise id="fs-idm31738208">
+<problem id="fs-idm156362256">
+<para id="fs-idm134708944">Ákvarðaðu fasabreytingarnar sem koldíoxíð gengur í gegnum þegar þrýstingur er aukinn við fast hitastig (a) −50 °C og (b) 50 °C. Ef hitastiginu er haldið við −40 °C? Við 20 °C? (Sjá fasaritið í <link target-id="CNX_Chem_10_04_CO2phasdi"/>.)</para>
+</problem>
+</exercise>
+<exercise id="fs-idm184592816">
+<problem id="fs-idm142079360">
+<para id="fs-idm132186736">Ímyndaðu þér hólk sem inniheldur efnablöndu af fljótandi koldíoxíði í jafnvægi við koldíoxíð á gasformi við upphafsþrýsting upp á 65 atm og hitastig upp á 20 °C. Teiknaðu línurit sem sýnir breytingu á þrýstingi hólksins með tímanum þegar koldíoxíði á gasformi er sleppt út við fast hitastig.</para>
+</problem>
+<solution id="fs-idm58299872">
+<para id="fs-idm137306816"><newline/> <media id="fs-idm183173568" alt="An x-axis is labeled at the left as “Full” and at the right as “Empty.” A y-axis is labeled at the top as “P.” Beneath the x-axis is the label “Amount released.” A horizontal line that then slopes downward is drawn about halfway up the vertical line and labeled on the left as “65 a t m.” About two-thirds of the way across the x-axis, it slopes downward in a straight line to meet the “empty” label on the bottom right of the axis."><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_Ex06answer_img.jpg"/></media></para></solution>
+</exercise>
+<exercise id="fs-idm180256816">
+<problem id="fs-idm195191088">
+<para id="fs-idm243757936">Þurrís, CO<sub>2</sub>(s), bráðnar ekki við loftþrýsting. Hann þurrgufar við hitastigið −78 °C. Hver er lægsti þrýstingur sem CO<sub>2</sub>(s) bráðnar við og myndar CO<sub>2</sub>(l)? Við hvaða hitastig gerist þetta um það bil? (Sjá fasaritið í <link target-id="CNX_Chem_10_04_CO2phasdi"/>.)</para>
+</problem>
+</exercise>
+<exercise id="fs-idp24718944">
+<problem id="fs-idm133877872">
+<para id="fs-idp26455568">Ef mikið óveður veldur rafmagnsleysi gæti verið nauðsynlegt að nota þvottasnúru til að þurrka þvott. Víða um land í svartasta skammdeginu frýs þvotturinn fljótt þegar hann er hengdur á snúruna. Ef það snjóar ekki, þornar hann samt? Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idm79944048">
+<para id="fs-idm31793728">Já, ísinn mun þurrgufa, þó það geti tekið nokkra daga. Ís hefur lágan gufunarþrýsting og sumar íssameindir mynda gas og sleppa úr ískristöllunum. Eftir því sem tíminn líður breytist meira og meira af fasta efninu í gas þar til fötin eru að lokum orðin þurr.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm97492688">
+<problem id="fs-idm97956064">
+<para id="fs-idm58313408">Er hægt að breyta nitri í vökva við stofuhita (um 25 °C)? Er hægt að breyta brennisteinsdíoxíði í vökva við stofuhita? Útskýrðu svör þín.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm135170880">
+<problem id="fs-idp7466256">
+<para id="fs-idm59313520">Frumefnið kolefni hefur einn gasfasa, einn vökvafasa og tvo mismunandi fasar í föstu efni, eins og sýnt er á fasaritinu:</para><media id="fs-idm159452496" class="scaled-down" alt="This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_CPhaseDi_img.jpg"/>
+</media>
+<para id="fs-idm196192784">(a) Merktu gas- og vökvasvæðin inn á fasaritið.</para>
+<para id="fs-idm229105216">(b) Grafít er stöðugasti fasi kolefnis við venjulegar aðstæður. Merktu grafítfasann inn á fasaritið.</para>
+<para id="fs-idm195445328">(c) Ef grafít við venjulegar aðstæður er hitað í 2500 K á meðan þrýstingur er aukinn í 10<sup>10</sup> Pa, breytist það í demant. Merktu demantsfasann.</para>
+<para id="fs-idm202684832">(d) Hringdu utan um hvern þrípunkt á fasaritinu.</para>
+<para id="fs-idm96211488">(e) Í hvaða fasa er kolefni við 5000 K og 10<sup>8</sup> Pa?</para>
+<para id="fs-idm61578832">(f) Ef hitastig kolefnissýnis eykst úr 3000 K í 5000 K við fastan þrýsting upp á 10<sup>6</sup> Pa, hvaða fasabreyting á sér stað, ef einhver?</para>
+</problem>
+<solution id="fs-idm278692800">
+<para id="fs-idm88428112">(a)<newline/> <media id="fs-idm121487888" alt="This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The two quadrants to the right are labeled, “Water ( liquid )” and “Water vapor ( gas ).”"><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_Exercise10a_img.jpg"/></media><newline/> (b)<newline/> <media id="fs-idm69191024" class="scaled-down-30" alt="This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The quadrant to the left is labeled, “Graphite.”"><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_Exercise10b_img.jpg"/></media><newline/> (c)<newline/> <media id="fs-idm81439280" class="scaled-down-30" alt="This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The top quadrant is labeled, “Diamond.”"><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_Exercise10c_img.jpg"/></media><newline/> (d)<newline/> <media id="fs-idm209382816" alt="This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The four quadrants are labeled, “Diamond” at the top, “Graphite”, to the left, “water ( liquid )” to the top right, and “water vapor ( gas ),” to the bottom right. There is a red circle where the liquid, gas, and graphite lines intersect."><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_04_Exercise10d_img.jpg"/></media><newline/> (e) vökvafasi (f) þurrgufun</para></solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm66977664">
+<term>markpunktur (e. critical point)</term>
+<meaning id="fs-idm66977664-meaning">hitastig og þrýstingur þar sem ekki er lengur hægt að þétta gas í vökva</meaning>
+</definition>
+<definition id="fs-idm186055200">
+<term>fasarit (e. phase diagram)</term>
+<meaning id="fs-idm186055200-meaning">þrýstings-hitastigs-graf sem sýnir aðstæður þar sem fasar efnis geta verið til staðar</meaning>
+</definition>
+<definition id="fs-idm208980304">
+<term>ofurmarksvökvi (e. supercritical fluid)</term>
+<meaning id="fs-idm208980304-meaning">efni við hitastig og þrýsting yfir markpunkti sínum; sýnir eiginleika sem eru mitt á milli eiginleika gas- og vökvaástands</meaning>
+</definition>
+<definition id="fs-idm153679600">
+<term>þrípunktur (e. triple point)</term>
+<meaning id="fs-idm153679600-meaning">hitastig og þrýstingur þar sem þrír fasar efnis eru í jafnvægi</meaning>
+</definition>
+</glossary>
+</document>

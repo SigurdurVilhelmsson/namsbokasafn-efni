@@ -220,17 +220,57 @@ function extractInlineText(
     return count > 1 ? `[[SPACE:${count}]]` : '[[SPACE]]';
   });
 
-  // Convert leaf-level inline markup to markdown FIRST, before processing
-  // outer tags like <term>, <link>, <footnote>. This prevents stripTags()
-  // from discarding nested inline markup (e.g., <sup> inside <term>).
-  text = text.replace(/<sub>([^<]*)<\/sub>/g, '~$1~');
-  text = text.replace(/<sup>([^<]*)<\/sup>/g, '^$1^');
+  // Collapse redundantly nested identical emphasis tags from source CNXML.
+  // OpenStax has bugs like <emphasis effect="italics"><emphasis effect="italics">l</emphasis></emphasis>
+  // which would produce doubled markers {{i}}{{i}}l{{/i}}{{/i}} that fail to round-trip.
+  let changed = true;
+  while (changed) {
+    const before = text;
+    text = text.replace(
+      /<emphasis(\s+effect="[^"]*")([^>]*)>\s*<emphasis\1[^>]*>([\s\S]*?)<\/emphasis>\s*<\/emphasis>/g,
+      '<emphasis$1$2>$3</emphasis>'
+    );
+    changed = text !== before;
+  }
+
+  // Convert leaf-level inline markup to API-safe placeholders FIRST,
+  // before processing outer tags like <term>, <link>, <footnote>.
+  //
+  // Sub/sup use [[sub:content]] / [[sup:content]] bracket placeholders.
+  // These follow the proven [[MATH:N]] pattern that survives the Málstaður API.
+  // Content is non-translatable (chemical formulas, numbers, charges).
+  //
+  // Emphasis uses {{i}}text{{/i}} / {{b}}text{{/b}} paired markers.
+  // The double-curly-brace pattern doesn't look like standard markdown,
+  // so the API should pass it through instead of "helpfully" stripping it.
+  text = text.replace(/<sub>([\s\S]*?)<\/sub>/g, (match, inner) => {
+    if (inner.includes('<')) {
+      let c = inner
+        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{i}}$1{{/i}}')
+        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{b}}$1{{/b}}');
+      c = stripTags(c).trim();
+      return `[[sub:${c}]]`;
+    }
+    return `[[sub:${inner}]]`;
+  });
+  text = text.replace(/<sup>([\s\S]*?)<\/sup>/g, (match, inner) => {
+    if (inner.includes('<')) {
+      let c = inner
+        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{i}}$1{{/i}}')
+        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{b}}$1{{/b}}');
+      c = stripTags(c).trim();
+      return `[[sup:${c}]]`;
+    }
+    return `[[sup:${inner}]]`;
+  });
   // Handle emphasis with effect= attribute (italics, bold, underline)
+  // Uses {{i}}...{{/i}} and {{b}}...{{/b}} paired markers that survive
+  // the MT API better than markdown *text* and **text**.
   text = text.replace(
     /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
     (match, effect, inner) => {
-      if (effect === 'italics') return `*${inner}*`;
-      if (effect === 'bold') return `**${inner}**`;
+      if (effect === 'italics') return `{{i}}${inner}{{/i}}`;
+      if (effect === 'bold') return `{{b}}${inner}{{/b}}`;
       if (effect === 'underline') return `++${inner}++`;
       return inner;
     }
@@ -244,7 +284,7 @@ function extractInlineText(
       return `{=${inner}=}`;
     }
     // No class, no effect — default to italic (common in CNXML for bare emphasis)
-    return `*${inner}*`;
+    return `{{i}}${inner}{{/i}}`;
   });
 
   // Handle terms - inner markup is already markdown at this point
@@ -259,7 +299,7 @@ function extractInlineText(
     } else {
       collectedTermAttrs.push(null);
     }
-    return `__${stripTags(inner).trim()}__`;
+    return `{{term}}${stripTags(inner).trim()}{{/term}}`;
   });
 
   // Handle links - preserve URL context
@@ -319,7 +359,7 @@ function extractInlineText(
     } else {
       collectedFootnoteAttrs.push(null);
     }
-    return ` [footnote: ${stripTags(inner).trim()}]`;
+    return ` {{fn}}${stripTags(inner).trim()}{{/fn}}`;
   });
 
   // Strip remaining tags
@@ -416,8 +456,10 @@ function extractSegments(cnxml, options = {}) {
     structure.abstract = abstractStructure;
   }
 
-  // Extract content
-  const content = doc.rawContent;
+  // Extract content — normalize self-closing paras to prevent extraction errors.
+  // Self-closing <para id="..."/> causes the extraction regex to consume content
+  // up to the next </para>, absorbing the following real paragraph.
+  const content = doc.rawContent.replace(/<para\s+id="([^"]+)"\s*\/>/g, '<para id="$1"></para>');
 
   // Process sections and top-level elements in document order
   const sections = extractNestedElements(content, 'section');
@@ -1232,20 +1274,64 @@ function processExercise(
     const solutionParas = extractElements(solutionMatch[1], 'para');
     exerciseStructure.solution = { content: [] };
     for (const para of solutionParas) {
-      const text = extractInlineText(
-        para.content,
-        mathMap,
-        counters,
-        inlineMediaMap,
-        inlineTablesMap
-      );
-      if (text) {
-        const segId = addSegment('solution', text, para.id);
-        exerciseStructure.solution.content.push({
-          type: 'para',
-          id: para.id,
-          segmentId: segId,
-        });
+      // Check for nested lists inside the paragraph
+      const nestedLists = extractElements(para.content, 'list');
+
+      if (nestedLists.length > 0) {
+        // Extract text part (before/between nested lists)
+        let textContent = para.content;
+        for (const nl of nestedLists) {
+          textContent = textContent.replace(nl.fullMatch, '');
+        }
+        textContent = textContent.trim();
+
+        if (textContent) {
+          const text = extractInlineText(
+            textContent,
+            mathMap,
+            counters,
+            inlineMediaMap,
+            inlineTablesMap
+          );
+          if (text) {
+            const segId = addSegment('solution', text, para.id);
+            exerciseStructure.solution.content.push({
+              type: 'para',
+              id: para.id,
+              segmentId: segId,
+            });
+          }
+        }
+
+        // Process nested lists as separate structure entries
+        for (const nl of nestedLists) {
+          const listStructure = processList(
+            nl,
+            moduleId,
+            addSegment,
+            mathMap,
+            counters,
+            inlineMediaMap,
+            inlineTablesMap
+          );
+          exerciseStructure.solution.content.push(listStructure);
+        }
+      } else {
+        const text = extractInlineText(
+          para.content,
+          mathMap,
+          counters,
+          inlineMediaMap,
+          inlineTablesMap
+        );
+        if (text) {
+          const segId = addSegment('solution', text, para.id);
+          exerciseStructure.solution.content.push({
+            type: 'para',
+            id: para.id,
+            segmentId: segId,
+          });
+        }
       }
     }
   }
@@ -1325,22 +1411,60 @@ function processList(
     items: [],
   };
 
-  const items = extractElements(list.content, 'item');
+  // Use extractNestedElements for items because items can contain nested
+  // items via sublists (e.g., <item>text<list><item>...</item></list></item>).
+  // The non-greedy regex in extractElements would match the inner </item> first.
+  const items = extractNestedElements(list.content, 'item');
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-    const text = extractInlineText(
-      item.content,
-      mathMap,
-      counters,
-      inlineMediaMap,
-      inlineTablesMap
-    );
-    if (text) {
-      const itemId = addSegment('item', text, item.id || `${list.id}-item-${i + 1}`);
+
+    // Check for nested lists inside this item
+    const nestedLists = extractNestedElements(item.content, 'list');
+
+    if (nestedLists.length > 0) {
+      // Split: extract text part (before/between nested lists)
+      let textContent = item.content;
+      for (const nl of nestedLists) {
+        textContent = textContent.replace(nl.fullMatch, '');
+      }
+      textContent = textContent.trim();
+
+      const text = extractInlineText(
+        textContent,
+        mathMap,
+        counters,
+        inlineMediaMap,
+        inlineTablesMap
+      );
+      const itemSegId = text
+        ? addSegment('item', text, item.id || `${list.id}-item-${i + 1}`)
+        : null;
+
+      // Recursively process nested lists
+      const children = nestedLists.map((nl) =>
+        processList(nl, moduleId, addSegment, mathMap, counters, inlineMediaMap, inlineTablesMap)
+      );
+
       listStructure.items.push({
         id: item.id,
-        segmentId: itemId,
+        segmentId: itemSegId,
+        children,
       });
+    } else {
+      const text = extractInlineText(
+        item.content,
+        mathMap,
+        counters,
+        inlineMediaMap,
+        inlineTablesMap
+      );
+      if (text) {
+        const itemId = addSegment('item', text, item.id || `${list.id}-item-${i + 1}`);
+        listStructure.items.push({
+          id: item.id,
+          segmentId: itemId,
+        });
+      }
     }
   }
 

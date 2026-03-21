@@ -1,0 +1,22 @@
+{
+  "moduleId": "m68735",
+  "chapter": "ch06",
+  "timestamp": "2026-03-20T12:08:06.973Z",
+  "perfect": false,
+  "discrepancies": [
+    {
+      "tag": "emphasis",
+      "source": 75,
+      "translated": 76,
+      "diff": 1,
+      "direction": "overproduction"
+    },
+    {
+      "tag": "sub",
+      "source": 33,
+      "translated": 34,
+      "diff": 1,
+      "direction": "overproduction"
+    }
+  ]
+}

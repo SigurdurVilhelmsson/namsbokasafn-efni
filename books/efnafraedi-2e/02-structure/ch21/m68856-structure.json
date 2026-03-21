@@ -1044,6 +1044,35 @@
                 "type": "para",
                 "id": "fs-idm228732384",
                 "segmentId": "m68856:solution:fs-idm228732384"
+              },
+              {
+                "type": "list",
+                "id": "eip-idm652671392",
+                "listType": "enumerated",
+                "numberStyle": "arabic",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m68856:item:eip-idm652671392-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m68856:item:eip-idm652671392-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m68856:item:eip-idm652671392-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m68856:item:eip-idm652671392-item-4"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m68856:item:eip-idm652671392-item-5"
+                  }
+                ]
               }
             ]
           }

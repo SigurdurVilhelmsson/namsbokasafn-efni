@@ -1,0 +1,642 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Sameindabygging og skautun</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68742</md:content-id>
+  <md:title>Sameindabygging og skautun</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla getur þú:</para><list id="list-00001"><item>Spáð fyrir um byggingu lítilla sameinda með VSEPR-kenningunni (kenningunni um fráhrindingu rafeindapara í gildishvolfi)</item><item>Útskýrt hugtökin skautuð samgild tengi og skautun sameinda</item><item>Metur skautun sameindar út frá efnatengjum hennar og byggingu</item></list></md:abstract>
+  <md:uuid>ff774d31-ee45-4f0d-a362-fdd00c5f17da</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp51102864">Hingað til höfum við notað tvívíðar Lewis myndir til að tákna sameindir. Sameindabygging er hins vegar í raun þrívíð og það er mikilvægt að geta lýst efnatengjum sameinda með tilliti til lengdar þeirra, horna og hlutfallslegrar staðsetningar í rúmi (<link target-id="CNX_Chem_07_06_CH2O"/>). <term id="term-00001">Tengishorn (e. bond angle)</term> er hornið milli tveggja efnatengja sem deila sameiginlegri frumeind, yfirleitt mælt í gráðum. <term id="term-00002">Tengifjarlægð (e. bond distance)</term> (eða tengilengd) er fjarlægðin milli kjarna tveggja tengdra frumeinda eftir beinni línu sem tengir kjarnana. Tengifjarlægðir eru mældar í ångströmum (1 Å = 10<sup>–10</sup> m) eða píkómetrum (1 pm = 10<sup>–12</sup> m, 100 pm = 1 Å).</para>
+<figure id="CNX_Chem_07_06_CH2O">
+<media id="fs-idp55258784" alt="A pair of images are shown. The left image shows a carbon atom with three atoms bonded in a triangular arrangement around it. There are two hydrogen atoms bonded on the left side of the carbon and the angle between them is labeled, “118 degrees” and, “Bond angle.” The carbon is also double bonded to an oxygen atom. The double bond is shaded and there is a bracket which labels the bond, “Bond length ( angstrom ), ( center to center ),” and, “1.21 angstrom.” The right image shows a ball-and-stick model of the same elements. The hydrogen atoms are white, the carbon atom is black, and the oxygen atom is red." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CH2O.jpg"/>
+</media>
+<caption>Tengifjarlægðir (lengdir) og horn eru sýnd fyrir formaldehýðsameindina, H<sub>2</sub>CO.</caption>
+</figure>
+<section id="fs-idp391168">
+<title>VSEPR-kenningin</title>
+<section id="fs-idm5284928">
+<title>Lögun rafeindapara samanborið við sameindabyggingu</title>
+<para id="fs-idp238100128">Það er mikilvægt að hafa í huga að lögun rafeindapara í kringum miðfrumeind er <emphasis effect="italics">ekki</emphasis> það sama og sameindabygging hennar. Lögun rafeindapara sem sýnd er í <link target-id="CNX_Chem_07_06_Egeom"/> lýsir öllum svæðum þar sem rafeindir eru staðsettar, bæði í efnatengjum og sem stök rafeindapör. Sameindabygging lýsir staðsetningu <emphasis effect="italics">frumeindanna</emphasis>, ekki rafeindanna.</para>
+<para id="fs-idm334496">Við greinum á milli þessara tveggja aðstæðna með því að nefna lögunina sem inniheldur <emphasis effect="italics">öll</emphasis> rafeindapör <term id="term-00009">lögun rafeindapara (e. electron-pair geometry)</term>. Byggingin sem aðeins tekur til staðsetningar frumeindanna í sameindinni er kölluð <term id="term-00010">sameindabygging (e. molecular structure)</term>. Lögun rafeindapara verður sú sama og sameindabyggingin þegar engin stök rafeindapör eru í kringum miðfrumeindina, en þær verða ólíkar þegar stök rafeindapör eru á miðfrumeindinni.</para>
+<para id="fs-idp48943296">Til dæmis hefur metansameindin, CH<sub>4</sub>, sem er aðalefnið í jarðgasi, fjögur bindandi rafeindapör í kringum miðlæga kolefnisfrumeind; lögun rafeindaparanna er ferflötungur, eins og sameindabyggingin (<link target-id="CNX_Chem_07_06_CH4"/>). Aftur á móti hefur ammóníaksameindin, NH<sub>3</sub>, einnig fjögur rafeindapör tengd niturfrumeindinni og hefur því ferflötungslögun rafeindapara. Eitt þessara svæða er hins vegar stakt rafeindapar, sem er ekki hluti af sameindabyggingunni, og þetta staka rafeindapar hefur áhrif á lögun sameindarinnar (<link target-id="CNX_Chem_07_06_NH3"/>).</para>
+<figure id="CNX_Chem_07_06_CH4">
+<media id="fs-idp102024640" alt="A Lewis structure shows a carbon atom single bonded to four hydrogen atoms. This structure uses wedges and dashes to give it a three dimensional appearance." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CH4.jpg"/>
+</media>
+<caption>Sameindabygging metansameindarinnar, CH<sub>4</sub>, er sýnd með ferflötungsfyrirkomulagi vetnisfrumeindanna. VSEPR-myndir eins og þessi eru oft teiknaðar með fleyg- og strikamerkingum, þar sem heilar línur tákna efnatengi í plani blaðsins, fylltir fleygar tákna efnatengi sem koma upp úr planinu og strikaðar línur tákna efnatengi sem fara niður í planið.</caption>
+</figure>
+<figure id="CNX_Chem_07_06_NH3">
+<media id="fs-idp50682928" alt="Three images are shown and labeled, “a,” “b,” and “c.” Image a shows a nitrogen atom single bonded to three hydrogen atoms. There are four oval-shaped orbs that surround each hydrogen and one facing away from the rest of the molecule. These orbs are located in a tetrahedral arrangement. Image b shows a ball-and-stick model of the nitrogen single bonded to the three hydrogen atoms. Image c is the same as image a, but there are four curved, double headed arrows that circle the molecule and are labeled, “106.8 degrees.”" class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_NH3.jpg"/>
+</media>
+<caption>(a) Lögun rafeindapara fyrir ammóníaksameindina er ferflötungur með einu staku rafeindapari og þremur eintengjum. (b) Sameindabyggingin, þríhyrningslaga pýramídi, er ákvörðuð út frá lögun rafeindaparanna. (c) Raunveruleg tengishorn víkja lítillega frá kjörhornum vegna þess að staka rafeindaparið tekur stærra rými en eintengin, sem veldur því að HNH-hornið er örlítið minna en 109,5°.</caption>
+</figure>
+<para id="fs-idp38238416">Eins og sést í <link target-id="CNX_Chem_07_06_NH3"/> geta litlar skekkjur frá kjörhornum í <link target-id="CNX_Chem_07_06_Egeom"/> stafað af mismunandi fráhrindingu milli ýmissa svæða rafeindaþéttleika. VSEPR-kenningin spáir fyrir um þessar skekkjur með því að setja upp röðun á fráhrindingu og röðun á stærð rýmis sem mismunandi gerðir rafeindapara taka. Röðun fráhrindingar rafeindapara frá mestu til minnstu fráhrindingar er:</para>
+<equation id="fs-idm222312400" class="unnumbered"><m:math><m:mrow><m:mtext>lone pair-lone pair</m:mtext><m:mo>></m:mo><m:mtext>lone pair-bonding pair</m:mtext><m:mo>></m:mo><m:mtext>bonding pair-bonding pair</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp7623536">Þessi röðun fráhrindingar ákvarðar stærð rýmisins sem mismunandi svæði rafeinda taka. Stakt rafeindapar tekur stærra rými en rafeindirnar í þrítengi; rafeindir í þrítengi taka síðan meira pláss en þær í tvítengi, og svo framvegis. Stærðarröðin frá stærstu til minnstu er:</para>
+<equation id="fs-idm99105600" class="unnumbered"><m:math><m:mrow><m:mtext>lone pair</m:mtext><m:mo>></m:mo><m:mtext>triple bond</m:mtext><m:mo>></m:mo><m:mtext>double bond</m:mtext><m:mo>></m:mo><m:mtext>single bond</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp215771104">Lítum á formaldehýð, H<sub>2</sub>CO, sem er notað sem rotvarnarefni fyrir líffræðileg og líffærafræðileg sýni (<link target-id="CNX_Chem_07_06_CH2O"/>). Þessi sameind hefur svæði með miklum rafeindaþéttleika sem samanstanda af tveimur eintengjum og einu tvítengi. Grunnlögunin er þríhyrningslaga flatt með 120° tengishornum, en við sjáum að tvítengið veldur örlítið stærri hornum (121°) og hornið milli eintengjanna er örlítið minna (118°).</para>
+<para id="fs-idp125916256">Í ammoníaksameindinni eru vetnisfrumeindirnar þrjár, sem tengdar eru miðlægu niturfrumeindinni, ekki raðaðar í flata, þríhyrningslaga flata sameindabyggingu, heldur í þrívíðan þríhyrningslaga pýramída (<link target-id="CNX_Chem_07_06_NH3"/>) með niturfrumeindina á toppnum og vetnisfrumeindirnar þrjár sem mynda grunninn. Kjörhornin í þríhyrningslaga pýramída eru byggð á rafeindapara rúmfræði ferflötungs. Aftur eru smávægileg frávik frá kjörhorninu vegna þess að stök rafeindapör taka stærra rými en rafeindir í efnatengjum. H–N–H tengihornin í NH<sub>3</sub> eru örlítið minni en 109,5° hornið í venjulegum ferflötungi (<link target-id="CNX_Chem_07_06_Egeom"/>) vegna þess að fráhrindikrafturinn milli staks rafeindapars og tengipars er meiri en fráhrindikrafturinn milli tveggja tengipara (<link target-id="CNX_Chem_07_06_NH3"/>). <link target-id="CNX_Chem_07_06_molgeom"/> sýnir kjörsameindabyggingar sem spáð er fyrir um á grundvelli rafeindapara rúmfræði fyrir ýmsar samsetningar stakra rafeindapara og tengipara.</para>
+<figure id="CNX_Chem_07_06_molgeom"><media id="fs-idp63301888" alt="A table is shown that is comprised of six rows and six columns. The header row reads: “Number of Electron Regions,” “Electron region geometries; 0 lone pair,” “1 lone pair,” “2 lone pairs,” “3 lone pairs,” and “4 lone pairs.” The first column contains the numbers 2, 3, 4, 5, and 6. The first space in the second column contains a structure in which the letter E is single bonded to the letter X on each side. The angle of the bonds is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The second space in the second column contains a structure in which the letter E is single bonded to the letter X on three sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “120 degrees.” The structure is labeled, “Trigonal planar.” The third space in the second column contains a structure in which the letter E is single bonded to the letter X four times. The angle between the bonds is labeled with a curved, double headed arrow and the value, “109 degrees.” The structure is labeled, “Tetrahedral.” The fourth space in the second column contains a structure in which the letter E is single bonded to the letter X on five sides. The angle between the bonds is labeled with a curved, double headed arrow and the values “90 and 120 degrees.” The structure is labeled, “Trigonal bipyramid.” The fifth space in the second column contains a structure in which the letter E is single bonded to the letter X on six sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “90 degrees.” The structure is labeled, “Octahedral.” The first space in the third column is empty while the second contains a structure in which the letter E is single bonded to the letter X on each side and has a lone pair of electrons. The angle between the bonds is labeled with a curved, double headed arrow and the value, “less than 120 degrees.” The structure is labeled, “Bent or angular.” The third space in the third column contains a structure in which the letter E is single bonded to the letter X three times and to a lone pair of electrons. It is labeled with a curved, double headed arrow and the value, “less than 109 degrees.” The structure is labeled, “Trigonal pyramid.” The fourth space in the third column contains a structure in which the letter E is single bonded to the letter X on four sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the values, “less than 90 and less than 120 degrees.” The structure is labeled, “Sawhorse or seesaw.” The fifth space in the third column contains a structure in which the letter E is single bonded to the letter X on five sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “Square pyramidal.” The first and second spaces in the fourth column are empty while the third contains a structure in which the letter E is single bonded to the letter X on each side and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than less than 109 degrees.” The structure is labeled, “Bent or angular.” The fourth space in the fourth column contains a structure in which the letter E is single bonded to the letter X three times and to two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The fifth space in the fourth column contains a structure in which the letter E is single bonded to the letter X on four sides and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “90 degrees.” The structure is labeled, “Square planar.” The first, second and third spaces in the fifth column are empty while the fourth contains a structure in which the letter E is single bonded to the letter X on each side and has three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The fifth space in the fifth column contains a structure in which the letter E is single bonded to the letter X three times and to three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The first, second, third, and fourth spaces in the sixth column are empty while the fifth contains a structure in which the letter E is single bonded to the letter X on each side and has four lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “180 degrees.” The structure is labeled, “Linear.” All the structures use wedges and dashes to give them three dimensional appearances.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_molgeom.jpg"/>
+</media>
+
+<caption>Sameindabyggingarnar eru eins og rafeindapara rúmfræðin þegar engin stök rafeindapör eru til staðar (fyrsti dálkur). Fyrir tiltekinn fjölda rafeindapara (lína) eru sameindabyggingar fyrir eitt eða fleiri stök rafeindapör ákvarðaðar út frá breytingum á samsvarandi rafeindapara rúmfræði.</caption></figure>
+<para id="fs-idp3259504">Samkvæmt VSEPR-kenningunni eru staðsetningar endastæðra frumeinda (X í <link target-id="CNX_Chem_07_06_molgeom"/>) jafngildar innan línulegrar, þríhyrningslaga flatrar og ferflötungs rafeindapara rúmfræði (fyrstu þrjár línurnar í töflunni). Það skiptir ekki máli hvaða X er skipt út fyrir stakt rafeindapar því hægt er að snúa sameindunum til að breyta stöðum. Fyrir þríhyrningslaga tvípýramída rafeindapara rúmfræði eru hins vegar tvær aðskildar X-stöður, eins og sýnt er í <link target-id="CNX_Chem_07_06_Axeq"/>: <term id="term-00011">áslæg staða (e. axial position)</term> (ef við höldum á líkani af þríhyrningslaga tvípýramída við áslægu stöðurnar tvær, höfum við ás sem við getum snúið líkaninu um) og <term id="term-00012">miðbaugslæg staða (e. equatorial position)</term> (þrjár stöður mynda miðbaug um miðju sameindarinnar). Eins og sýnt er í <link target-id="CNX_Chem_07_06_molgeom"/> er áslæga staðan umkringd 90° tengihornum, en miðbaugslæga staðan hefur meira pláss tiltækt vegna 120° tengihornanna. Í þríhyrningslaga tvípýramída rafeindapara rúmfræði taka stök rafeindapör alltaf miðbaugslægar stöður því þessar rúmbetri stöður geta auðveldlega rúmað stærri stök rafeindapör.</para>
+<para id="fs-idm50931488">Fræðilega séð getum við komið með þrjár mögulegar uppraðanir fyrir þrjú efnatengi og tvö stök rafeindapör fyrir ClF<sub>3</sub> sameindina (<link target-id="CNX_Chem_07_06_Axeq"/>). Stöðuga byggingin er sú sem setur stöku rafeindapörin í miðbaugslægar stöður, sem gefur T-laga sameindabyggingu.</para>
+<figure id="CNX_Chem_07_06_Axeq">
+<media id="fs-idp53854176" alt="Four sets of images are shown and labeled, “a,” “b,” “c,” and “d.” Each image is separated by a dashed vertical line. Image a shows a six-faced, bi-pyramidal structure where the central vertical axis is labeled, “Axial,” and the horizontal plane is labeled, “Equatorial.” Image b shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms on the upper and lower ends, and one fluorine in the left horizontal position. Image c shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center and three fluorine atoms in each horizontal position. Image d shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms in the horizontal positions, and one in the axial bottom position.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_Axeq.jpg"/>
+</media>
+<caption>(a) Í þríhyrningslaga tvípýramída eru áslægu stöðurnar tvær staðsettar beint á móti hvor annarri, en miðbaugslægu stöðurnar þrjár eru staðsettar í þríhyrningslaga fyrirkomulagi. (b–d) Stöku rafeindapörin tvö (rauðar línur) í ClF<sub>3</sub> geta haft nokkrar mögulegar uppraðanir, en T-laga sameindabyggingin (b) er sú sem raunverulega sést, í samræmi við að stærri stöku rafeindapörin taka bæði miðbaugslægar stöður.</caption>
+</figure>
+<para id="fs-idp56476752">Þegar miðlæg frumeind hefur tvö stök rafeindapör og fjögur tengisvæði, höfum við áttflötungs rafeindapara rúmfræði. Stöku rafeindapörin tvö eru á gagnstæðum hliðum áttflötungsins (180° á milli), sem gefur ferningslaga flata sameindabyggingu sem lágmarkar fráhrindikrafta milli stakra rafeindapara (<link target-id="CNX_Chem_07_06_molgeom"/>).</para>
+</section>
+<section id="fs-idm759712">
+<title>Að spá fyrir um rafeindapara rúmfræði og sameindabyggingu</title>
+<para id="fs-idp147829184">Eftirfarandi aðferð notar VSEPR-kenninguna til að ákvarða rafeindapara rúmfræði og sameindabyggingar:</para>
+<list id="fs-idp267826096" list-type="enumerated" number-style="arabic">
+<item>Skrifaðu Lewis mynd sameindarinnar eða fjölfrumeinda jónarinnar.</item>
+<item>Teldu fjölda svæða með rafeindaþéttleika (stök rafeindapör og efnatengi) í kringum miðlægu frumeindina. Einfalt, tvöfalt eða þrefalt efnatengi telst sem eitt svæði með rafeindaþéttleika.</item>
+<item>Greindu rafeindapara rúmfræðina út frá fjölda svæða með rafeindaþéttleika: línuleg, þríhyrningslaga flöt, ferflötungur, þríhyrningslaga tvípýramídi eða áttflötungur (<link target-id="CNX_Chem_07_06_molgeom"/>, fyrsti dálkur).</item>
+<item>Notaðu fjölda stakra rafeindapara til að ákvarða sameindabygginguna (<link target-id="CNX_Chem_07_06_molgeom"/>). Ef fleiri en ein uppröðun stakra rafeindapara og efnatengja er möguleg, veldu þá sem lágmarkar fráhrindikrafta, og mundu að stök rafeindapör taka meira pláss en fjöltengi, sem taka meira pláss en eintengi. Í þríhyrningslaga tvípýramída uppröðun er fráhrindikraftur lágmarkaður þegar hvert stakt rafeindapar er í miðbaugslægri stöðu. Í áttflötungs uppröðun með tveimur stökum rafeindapörum er fráhrindikraftur lágmarkaður þegar stöku rafeindapörin eru á gagnstæðum hliðum miðlægu frumeindarinnar.</item>
+</list>
+<para id="fs-idp53389712">Eftirfarandi dæmi sýna notkun VSEPR-kenningarinnar til að spá fyrir um sameindabyggingu sameinda eða jóna sem hafa engin stök rafeindapör. Í þessu tilfelli er sameindabyggingin eins og rafeindapara rúmfræðin.</para>
+<example id="fs-idm2891376">
+<para id="fs-idp238154208"><title>Að spá fyrir um rafeindapara rúmfræði og sameindabyggingu: CO<sub>2</sub> og BCl<sub>3</sub></title>Spáðu fyrir um rafeindapara rúmfræði og sameindabyggingu fyrir hvort tveggja af eftirfarandi:</para>
+<para id="fs-idp55144288">(a) koldíoxíð, CO<sub>2</sub>, sameind sem myndast við bruna jarðefnaeldsneytis</para>
+<para id="fs-idm8091088">(b) bórtríklóríð, BCl<sub>3</sub>, mikilvægt iðnaðarefni</para>
+<para id="fs-idp64872464"><title>Lausn</title>(a) Við skrifum Lewis mynd CO<sub>2</sub> sem:</para>
+<media id="fs-idp65356192" alt="A Lewis structure shows a carbon atom double bonded on both the left and right sides to oxygen atoms that each have two lone pairs of electrons." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CO2_img.jpg"/>
+</media>
+<para id="fs-idp56144384">Þetta sýnir okkur tvö svæði með háum rafeindaþéttleika í kringum kolefnisfrumeindina — hvert tvítengi telst sem eitt svæði og það eru engin stök rafeindapör á kolefnisfrumeindinni. Með því að nota VSEPR-kenninguna spáum við því að svæðin tvö með rafeindaþéttleika raði sér á gagnstæðar hliðar miðjufrumeindarinnar með 180° tengihorn. Rúmfræði rafeindapara og sameindabygging eru eins og CO<sub>2</sub> sameindir eru línulegar.</para>
+<para id="fs-idp280648672">(b) Við skrifum Lewis mynd af BCl<sub>3</sub> svona:</para>
+<media id="fs-idp62627904" alt="A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which has three lone pairs of electrons." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_BCl3_img.jpg"/>
+</media>
+<para id="fs-idp34925552">Þannig sjáum við að BCl<sub>3</sub> inniheldur þrjú efnatengi og það eru engin stök rafeindapör á bór. Fyrirkomulag þriggja svæða með háum rafeindaþéttleika gefur þríhyrningslaga flata rúmfræði rafeindapara. B–Cl efnatengin liggja í plani með 120° horn á milli þeirra. BCl<sub>3</sub> hefur einnig þríhyrningslaga flata sameindabyggingu (<link target-id="CNX_Chem_07_06_BCl3mol"/>).</para>
+<!-- figure handled separately -->
+<para id="fs-idp211059664">Rúmfræði rafeindapara og sameindabygging BCl<sub>3</sub> eru bæði þríhyrningslaga flöt. Athugið að VSEPR-rúmfræðin gefur til kynna rétt tengihorn (120°), ólíkt Lewis myndinni sem sýnd er hér að ofan.</para>
+<para id="fs-idp67131872"><title>Kannaðu þekkingu þína</title>Karbonat, <m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>,</m:mo></m:mrow></m:math> er algeng fjölfrumeinda jón sem finnst í ýmsum efnum, allt frá eggjaskurnum til sýrubindandi lyfja. Hver er rúmfræði rafeindapara og sameindabygging þessarar fjölfrumeinda jónar?</para>
+<note id="fs-idp125452800"><title>Answer:</title>
+<para id="fs-idp55819408">Rúmfræði rafeindapara er þríhyrningslaga flöt og sameindabyggingin er þríhyrningslaga flöt. Vegna samómunar eru öll þrjú C–O efnatengin eins. Hvort sem þau eru eintengi, tvítengi eða meðaltal af þessu tvennu, telst hvert efnatengi sem eitt svæði rafeindaþéttleika.</para>
+</note>
+</example>
+<figure id="CNX_Chem_07_06_BCl3mol">
+<media id="fs-idp108737552" alt="A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which is oriented in the same flat plane. This figure uses dashes and wedges to give it a three-dimensional appearance." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_BCl3mol.jpg"/>
+</media>
+</figure>
+<example id="fs-idp17356704">
+<para id="fs-idp83628624"><title>Að spá fyrir um rúmfræði rafeindapara og sameindabyggingu: Ammóníum</title>Tvö af 50 mest framleiddu efnum í Bandaríkjunum, ammóníumnítrat og ammóníumsúlfat, sem bæði eru notuð sem áburður, innihalda ammóníumjónina. Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> katjónarinnar.</para>
+<para id="fs-idp86467024"><title>Lausn</title>Við skrifum Lewis mynd af <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> svona:</para>
+<media id="fs-idp83671296" alt="A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_NH4_img.jpg"/></media>
+<para id="fs-idm9973280">Við sjáum að <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math> inniheldur fjögur efnatengi frá niturfrumeindinni yfir í vetnisfrumeindir og engin stök rafeindapör. Við búumst við að svæðin fjögur með háum rafeindaþéttleika raði sér þannig að þau vísi að hornum ferflötungs með miðlægu niturfrumeindina í miðjunni (<link target-id="CNX_Chem_07_06_molgeom"/>). Þess vegna er rúmfræði rafeindapara <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> ferflötungur og sameindabyggingin er einnig ferflötungur (<link target-id="CNX_Chem_07_06_NH4mol"/>).</para>
+<!-- figure handled separately -->
+<para id="fs-idp94577296"><title>Kannaðu þekkingu þína</title>Finndu sameind með þríhyrningslaga tvípýramída sameindabyggingu.</para>
+<note id="fs-idp57227744">
+<title>Answer:</title>
+<para id="fs-idp18533456">Sérhver sameind með fimm rafeindapör í kringum miðjufrumeindirnar, þar með talin engin stök rafeindapör, verður þríhyrningslaga tvípýramídi. PF<sub>5</sub> er algengt dæmi.</para>
+</note>
+</example>
+<figure id="CNX_Chem_07_06_NH4mol">
+<media id="fs-idp51778960" alt="A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign. This figure uses dashes and wedges to displays its three planes in a tetrahedral shape." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_NH4mol.jpg"/></media>
+<caption>Ammóníumjónin sýnir ferflötungs rúmfræði rafeindapara sem og ferflötungs sameindabyggingu.</caption>
+</figure>
+<para id="fs-idm16091952">Næstu dæmi sýna áhrif stakra rafeindapara á sameindabyggingu.</para>
+<example id="fs-idm16663792">
+<para id="fs-idm10296544"><title>Að spá fyrir um rúmfræði rafeindapara og sameindabyggingu: Stök rafeindapör á miðjufrumeindinni</title>Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu vatnssameindar.</para>
+<para id="fs-idp10258608"><title>Lausn</title>Lewis mynd af H<sub>2</sub>O gefur til kynna að það séu fjögur svæði með háum rafeindaþéttleika í kringum súrefnisfrumeindina: tvö stök rafeindapör og tvö efnatengi:</para>
+<media id="fs-idp166304416" alt="A Lewis structure depicts an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_H2O_img.jpg"/></media>
+<para id="fs-idp35029328">Við spáum því að þessum fjórum svæðum sé raðað á ferflötungshátt (<link target-id="CNX_Chem_07_06_H2Omol"/>), eins og sýnt er í <link target-id="CNX_Chem_07_06_molgeom"/>. Þannig er rúmfræði rafeindapara ferflötungur og sameindabyggingin er beygð með horni sem er aðeins minna en 109,5°. Í raun er tengihornið 104,5°.</para>
+<!-- figure handled separately -->
+<para id="fs-idp51567744"><title>Kannaðu þekkingu þína</title>Hýdróníumjónin, H<sub>3</sub>O<sup>+</sup>, myndast þegar sýrur eru leystar upp í vatni. Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu þessarar katjónar.</para>
+<note id="fs-idp47211728"><title>Answer:</title>
+<para id="fs-idp103296688">rúmfræði rafeindapara: ferflötungur; sameindabygging: þríhyrningslaga pýramídi</para>
+</note>
+</example>
+<figure id="CNX_Chem_07_06_H2Omol">
+<media id="fs-idp67053904" alt="Two diagrams are shown and labeled, “a” and “b.” Diagram a shows an oxygen atom in the center of a four-sided pyramid shape. Diagram b shows the same image as diagram a, but this time there are hydrogen atoms located at two corners of the pyramid shape." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_H2Omol.jpg"/></media>
+<caption>(a) H<sub>2</sub>O hefur fjögur svæði rafeindaþéttleika í kringum miðjufrumeindina, þannig að hún hefur ferflötungs rúmfræði rafeindapara. (b) Tvö af rafeindasvæðunum eru stök rafeindapör, þannig að sameindabyggingin er beygð.</caption>
+</figure>
+<example id="fs-idp82124112">
+<para id="fs-idp54014736"><title>Að spá fyrir um rúmfræði rafeindapara og sameindabyggingu: SF<sub>4</sub></title>Brennisteinsflúoríð, SF<sub>4</sub>, er afar verðmætt til framleiðslu á flúorinnihaldandi efnasamböndum sem notuð eru sem illgresiseyðar (þ.e. SF<sub>4</sub> er notað sem flúorunarefni). Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu SF<sub>4</sub> sameindar.</para>
+<para id="fs-idp95643040"><title>Lausn</title>Lewis mynd SF<sub>4</sub> sýnir fimm svæði með rafeindaþéttleika í kringum brennisteinsfrumeindina: eitt stakt rafeindapar og fjögur bindandi rafeindapör:</para>
+<media id="fs-idp33968176" alt="A Lewis diagram depicts a sulfur atom with one lone pair of electrons single bonded to four fluorine atoms, each with three lone pairs of electrons." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_SF4_img.jpg"/></media>
+<para id="fs-idp72937360">Við búumst við að þessi fimm svæði taki sér rúmfræði rafeindapara í formi þríhyrningslaga tvípýramída. Til að lágmarka fráhrindikrafta staka rafeindaparsins tekur það eina af miðbaugstöðunum. Sameindabyggingin (<link target-id="CNX_Chem_07_06_SF4mol"/>) er í formi rólu (<link target-id="CNX_Chem_07_06_molgeom"/>).</para>
+<!-- figure handled separately -->
+<para id="fs-idp24574032"><title>Kannaðu þekkingu þína</title>Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu fyrir sameindir af XeF<sub>2</sub>.</para>
+<note id="fs-idp54082656"><title>Answer:</title><para id="fs-idp90752208">Rúmfræði rafeindapara er þríhyrningslaga tvípýramídi. Sameindabyggingin er línuleg.</para>
+</note>
+</example>
+<figure id="CNX_Chem_07_06_SF4mol">
+<media id="fs-idp116937376" alt="Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a sulfur atom in the center of a six-sided bi-pyramidal shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at four corners of the pyramid shape and they are connected to the sulfur atom by single lines." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_SF4mol.jpg"/></media>
+<caption>(a) SF4 hefur þríhyrningslaga tvípýramída fyrirkomulag á fimm svæðum rafeindaþéttleika. (b) Eitt svæðanna er stakt rafeindapar, sem leiðir til rólulaga sameindabyggingar.</caption>
+</figure>
+<example id="fs-idp47136656">
+<para id="fs-idp125690208"><title>Að spá fyrir um rúmfræði rafeindapara og sameindabyggingu: XeF<sub>4</sub></title>Af öllum eðallofttegundum er xenon sú hvarfgjarnasta og hvarfast oft við frumefni eins og súrefni og flúor. Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu XeF<sub>4</sub> sameindarinnar.</para>
+<para id="fs-idm15898032"><title>Lausn</title>Lewis mynd XeF<sub>4</sub> sýnir sex svæði með miklum rafeindaþéttleika í kringum xenonfrumeindina: tvö stök rafeindapör og fjögur tengi:</para>
+<media id="fs-idp19835824" alt="A Lewis structure depicts a xenon atom with two lone pairs of electrons that is single bonded to four fluorine atoms, each with three lone pairs of electrons." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_XeF4_img.jpg"/></media>
+<para id="fs-idp60591280">Þessi sex svæði taka sér áttflötungsfyrirkomulag (<link target-id="CNX_Chem_07_06_molgeom"/>), sem er rúmfræði rafeindaparanna. Til að lágmarka fráhrindikrafta ættu stöku rafeindapörin að vera á gagnstæðum hliðum miðfrumeindarinnar (<link target-id="CNX_Chem_07_06_XeF4mol"/>). Frumeindirnar fimm eru allar í sama plani og hafa ferningslaga flata sameindabyggingu.</para>
+<!-- figure handled separately -->
+<para id="fs-idp225615216"><title>Kannaðu þekkingu þína</title>Í ákveðinni sameind hefur miðfrumeindin þrjú stök rafeindapör og tvö tengi. Hver verður rúmfræði rafeindapara og sameindabyggingin?</para>
+<note id="fs-idm25808"><title>Answer:</title><para id="fs-idp81639856">rúmfræði rafeindapara: þríhyrningslaga tvípýramídi; sameindabygging: línuleg</para>
+</note>
+</example>
+<figure id="CNX_Chem_07_06_XeF4mol">
+<media id="fs-idp88527200" alt="Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a xenon atom in the center of an eight-sided octahedral shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at the four corners of the shape in the horizontal plane. They are connected to the xenon by single lines." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_XEF4mol.jpg"/></media>
+<caption>(a) XeF<sub>4</sub> tekur sér áttflötungsfyrirkomulag með tveimur stökum rafeindapörum (rauðar línur) og fjórum tengjum í rúmfræði rafeindaparanna. (b) Sameindabyggingin er ferningslaga flöt þar sem stöku rafeindapörin eru beint á móti hvoru öðru.</caption>
+</figure>
+</section>
+<section id="fs-idp54051968">
+<title>Sameindabygging fyrir fjölmiðjusameindir</title>
+<para id="fs-idp78438784">Þegar sameind eða fjölfrumeinda jón hefur aðeins eina miðfrumeind, lýsir sameindabyggingin lögun sameindarinnar að fullu. Stærri sameindir hafa ekki eina miðfrumeind, heldur eru þær tengdar með keðju innri frumeinda sem hver um sig hefur „staðbundna“ rúmfræði. Hvernig þessar staðbundnu byggingar raðast upp miðað við hvor aðra hefur einnig áhrif á lögun sameindarinnar, en slíkar vangaveltur eru að mestu leyti utan gildissviðs þessarar inngangsumræðu. Í okkar tilgangi munum við aðeins einbeita okkur að því að ákvarða staðbundnar byggingar.</para>
+<example id="fs-idp116942080"><para id="fs-idp73376736"><title>Að spá fyrir um byggingu í fjölmiðjusameindum</title>Lewis mynd fyrir einföldustu amínósýruna, glýsín, H<sub>2</sub>NCH<sub>2</sub>CO<sub>2</sub>H, er sýnd hér. Spáðu fyrir um staðbundna rúmfræði fyrir niturfrumeindina, kolefnisfrumeindirnar tvær og súrefnisfrumeindina með vetnisfrumeind tengdri:</para>
+<media id="fs-idp113615744" alt="A Lewis structure depicts a nitrogen atom with one lone pair of electrons that is single bonded to two hydrogen atoms and a carbon atom, which is, in turn, single bonded to two hydrogen atoms and another carbon atom. This carbon atom is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_gly_img.jpg"/></media>
+<para id="fs-idm8994208"><title>Lausn</title></para>
+<media id="fs-idp21522704" alt="A Lewis structure depicts a nitrogen atom with one lone pair of electrons that is single bonded to two hydrogen atoms and a carbon atom. The atoms described are drawn with bonds that indicate a three-dimensional, tetrahedral shape around the nitrogen atom. The carbon is, in turn, single bonded to two hydrogen atoms and another carbon atom, and again, a tetrahedral, three dimensional configuration is indicated by the types of bonds. This second carbon atom is double bonded to an oxygen atom and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom." class="scaled-down">
+<image class="scaled-down" mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_gly3D_img.jpg"/></media>
+<para id="fs-idp15590912">Líttu á hverja miðfrumeind fyrir sig. Rúmfræði rafeindaparanna:</para>
+<list id="fs-idp8766640" list-type="bulleted" bullet-style="bullet">
+<item>nitur––fjögur svæði rafeindaþéttleika; ferflötungur</item>
+<item>kolefni (<emphasis effect="underline">C</emphasis>H<sub>2</sub>)––fjögur svæði með rafeindaþéttleika; ferflötungur</item>
+<item>kolefni (<emphasis effect="underline">C</emphasis>O<sub>2</sub>)—þrjú svæði með rafeindaþéttleika; þríhyrningslaga flatt</item>
+<item>súrefni (<emphasis effect="underline">O</emphasis>H)—fjögur svæði með rafeindaþéttleika; ferflötungur</item>
+</list>
+<para id="fs-idp86037232">Staðbundnar byggingar:</para>
+<list id="fs-idp18275136" list-type="bulleted" bullet-style="bullet">
+<item>köfnunarefni––þrjú efnatengi, eitt rafeindapar; þríhyrningslaga pýramídi</item>
+<item>kolefni (<emphasis effect="underline">C</emphasis>H<sub>2</sub>)—fjögur efnatengi, engin rafeindapör; ferflötungur</item>
+<item>kolefni (<emphasis effect="underline">C</emphasis>O<sub>2</sub>)—þrjú efnatengi (tvítengi telst sem eitt efnatengi), engin rafeindapör; þríhyrningslaga flatt</item>
+<item>súrefni (<emphasis effect="underline">O</emphasis>H)—tvö efnatengi, tvö rafeindapör; beygður (109°)</item>
+</list>
+<para id="fs-idp7781728"><title>Kannaðu þekkingu þína</title>Önnur amínósýra er alanín, sem hefur Lewis myndina sem sýnd er hér. Spáðu fyrir um rúmfræði rafeindapara og staðbundna byggingu niturfrumeindarinnar, kolefnisfrumeindanna þriggja og súrefnisfrumeindarinnar með vetni tengdu:</para>
+<media id="fs-idp248617216" alt="A Lewis structure depicts a nitrogen atom with two lone pairs of electrons that is single bonded to two hydrogen atoms and a carbon atom, which is, in turn, single bonded to a hydrogen atom, a methyl group and another carbon atom. This carbon atom is single bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_ala_img.jpg"/></media>
+<note id="fs-idm44767872"><title>Answer:</title><para id="fs-idp66198816">rúmfræði rafeindapara: nitur––ferflötungur; kolefni (<emphasis effect="underline">C</emphasis>H)—ferflötungur; kolefni (<emphasis effect="underline">C</emphasis>H<sub>3</sub>)—ferflötungur; kolefni (<emphasis effect="underline">C</emphasis>O<sub>2</sub>)—þríhyrningslaga flatt; súrefni (<emphasis effect="underline">O</emphasis>H)—ferflötungur; staðbundnar byggingar: nitur—þríhyrningslaga pýramídi; kolefni (<emphasis effect="underline">C</emphasis>H)—ferflötungur; kolefni (<emphasis effect="underline">C</emphasis>H<sub>3</sub>)—ferflötungur; kolefni (<emphasis effect="underline">C</emphasis>O<sub>2</sub>)—þríhyrningslaga flatt; súrefni (<emphasis effect="underline">O</emphasis>H)—beygð (109°)</para>
+</note>
+</example>
+<note id="fs-idp90797184" class="chemistry link-to-learning">
+<para id="fs-idp159959216"><link url="http://openstax.org/l/16MolecShape">Sameindaformhermirinn</link> gerir þér kleift að byggja ýmsar sameindir og æfa þig í að nefna rafeindapara-rúmfræði þeirra og sameindaform.</para>
+</note>
+<example id="fs-idp54012352">
+<para id="fs-idp52927344"><title>Sameindahermun</title>Með því að nota <link url="http://openstax.org/l/16MolecShape">herminn fyrir lögun sameinda</link> getum við stjórnað því hvort efnatengishorn og/eða stök rafeindapör eru sýnd með því að haka í eða afhaka reitina undir „Options“ (Valkostir) hægra megin. Við getum einnig notað „Name“ (Nafn) gátreitina neðst til vinstri til að sýna eða fela rúmfræði rafeindapara (kallað „electron geometry“ í herminum) og/eða byggingu sameindarinnar (kallað „molecular shape“ í herminum).</para>
+<para id="fs-idp224051488">Byggðu HCN-sameindina í herminum út frá eftirfarandi Lewis-byggingu:</para>
+<equation id="fs-idp102593872" class="unnumbered"><m:math><m:mrow><m:mtext>H–C</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp88631840">Smelltu á hverja tegund efnatengis eða stakt rafeindapar hægra megin til að bæta þeim hóp við miðjufrumeindina. Þegar þú ert komin(n) með alla sameindina skaltu snúa henni til að skoða hina fyrirspáðu byggingu sameindarinnar. Hver er þessi bygging sameindarinnar?</para>
+<para id="fs-idp93177200"><title>Lausn</title>Bygging sameindarinnar er línuleg.</para>
+<para id="fs-idp50724128"><title>Kannaðu þekkingu þína</title>Byggðu flóknari sameind í herminum. Greindu rúmfræði rafeindahópsins, byggingu sameindarinnar og efnatengishorn. Reyndu síðan að finna efnaformúlu sem myndi passa við bygginguna sem þú hefur teiknað.</para>
+<note id="fs-idp52028320"><title>Answer:</title><para id="fs-idp73534304">Svör eru breytileg. Til dæmis hefur frumeind með fjögur eintengi, eitt tvítengi og eitt stakt rafeindapar áttflötungs-rúmfræði rafeindahóps og ferningspýramída-byggingu sameindar. XeOF<sub>4</sub> er sameind sem tekur sér þessa byggingu.</para>
+</note>
+</example>
+</section>
+<para id="fs-idp36050992"><term id="term-00003">Kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR-kenningin) (e. valence shell electron-pair repulsion theory (vsepr theory))</term> gerir okkur kleift að spá fyrir um byggingu sameindar, þar á meðal áætluð efnatengishorn í kringum miðjufrumeind, út frá skoðun á fjölda efnatengja og stakra rafeindapara í Lewis-byggingu hennar. VSEPR-líkanið gerir ráð fyrir að rafeindapör í gildishvolfi miðjufrumeindar muni raða sér þannig að fráhrinding milli þessara rafeindapara sé í lágmarki með því að hámarka fjarlægðina á milli þeirra. Rafeindirnar í gildishvolfi miðjufrumeindar mynda annaðhvort tengirafeindapör, sem eru aðallega staðsett á milli tengdra frumeinda, eða stök rafeindapör. Rafstöðufráhrinding þessara rafeinda minnkar þegar hin ýmsu svæði með háan rafeindaþéttleika taka sér stöður eins langt frá hvoru öðru og mögulegt er.</para>
+<para id="fs-idp46353584">VSEPR-kenningin spáir fyrir um röðun rafeindapara í kringum hverja miðjufrumeind og, yfirleitt, rétta röðun frumeinda í sameind. Við ættum þó að skilja að kenningin tekur aðeins tillit til fráhrindingar rafeindapara. Aðrar víxlverkanir, svo sem fráhrinding milli kjarna og aðdráttur milli kjarna og rafeinda, koma einnig við sögu í endanlegri röðun sem frumeindir taka sér í tiltekinni byggingu sameindar.</para>
+<para id="fs-idp122770240">Sem einfalt dæmi um VSEPR-kenninguna skulum við spá fyrir um byggingu BeF<sub>2</sub>-sameindar á gasformi. Lewis-bygging BeF<sub>2</sub> (<link target-id="CNX_Chem_07_06_BeF2"/>) sýnir aðeins tvö rafeindapör í kringum miðjufrumeindina beryllíum. Með tvö efnatengi og engin stök rafeindapör á miðjufrumeindinni eru efnatengin eins langt í burtu frá hvort öðru og mögulegt er og rafstöðufráhrindingin milli þessara svæða með háan rafeindaþéttleika er minnkuð í lágmark þegar þau eru á gagnstæðum hliðum miðjufrumeindarinnar. Efnatengishornið er 180° (<link target-id="CNX_Chem_07_06_BeF2"/>).</para>
+<figure id="CNX_Chem_07_06_BeF2">
+<media id="fs-idp229524848" alt="A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”" class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_BeF2.jpg"/>
+</media>
+<caption>BeF<sub>2</sub>-sameindin tekur sér línulega byggingu þar sem efnategnin tvö eru eins langt frá hvort öðru og mögulegt er, á gagnstæðum hliðum Be-frumeindarinnar.</caption>
+</figure>
+<para id="fs-idp87297072"><link target-id="CNX_Chem_07_06_Egeom"/> sýnir þetta og aðrar rúmfræðilegar raðanir rafeindapara sem lágmarka fráhrindingu milli svæða með háan rafeindaþéttleika (efnatengi og/eða stök rafeindapör). Tvö svæði með rafeindaþéttleika í kringum miðjufrumeind í sameind mynda <term id="term-00004">línulega (e. linear)</term> rúmfræði; þrjú svæði mynda <term id="term-00005">þríhyrningsplana (e. trigonal planar)</term> rúmfræði; fjögur svæði mynda <term id="term-00006">fjórflötungs (e. tetrahedral)</term> rúmfræði; fimm svæði mynda <term id="term-00007">þríhyrnings-tvípýramída (e. trigonal bipyramidal)</term> rúmfræði; og sex svæði mynda <term id="term-00008">áttflötungs (e. octahedral)</term> rúmfræði.</para>
+<figure id="CNX_Chem_07_06_Egeom"><media id="fs-idp73717728" alt="A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_Egeom.jpg"/>
+</media>
+
+<caption>Grunnrúmfræði rafeindapara sem VSEPR-kenningin spáir fyrir um hámarkar rýmið í kringum öll svæði með rafeindaþéttleika (efnatengi eða stök rafeindapör).</caption></figure>
+</section>
+<section id="fs-idp149289584">
+<title>Skautun sameinda og tvískautsvægi</title>
+<section id="fs-idp83627232">
+<title>Eiginleikar skautaðra sameinda</title>
+<para id="fs-idp272047168">Skautaðar sameindir hafa tilhneigingu til að raða sér upp þegar þær eru settar í rafsvið þannig að jákvæði endi sameindarinnar snýr að neikvæðu plötunni og neikvæði endinn að jákvæðu plötunni (<link target-id="CNX_Chem_07_06_Dipolfield"/>). Við getum notað rafmagnaðan hlut til að laða að skautaðar sameindir, en óskautaðar sameindir laðast ekki að. Einnig eru skautaðir leysar betri í að leysa upp skautuð efni og óskautaðir leysar eru betri í að leysa upp óskautuð efni.</para>
+<figure id="CNX_Chem_07_06_Dipolfield">
+<media id="fs-idp19283840" alt="Two diagrams are shown and labeled “a” and “b.” Diagram a shows two vertical, gray electrodes. There are five molecules in between. The molecules are separate from one another and are composed of a hydrogen atom bonded to a fluorine atom. The fluorine atom is labeled with a dipole symbol and a superscripted negative sign while the hydrogen atom is labeled with a dipole symbol and a superscripted positive sign. The molecules are randomly oriented in the space. The right diagram also shows two vertical gray electrodes, the left labeled as negative and the right labeled as positive. The space between is yellow. The same molecules are present, but this time they are all facing horizontally, with the hydrogen-end of each molecule facing toward the negative electrode.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_Dipolfield.jpg"/></media>
+<caption>(a) Sameindir eru alltaf tilviljanakennt dreifðar í vökvafasa þegar ekkert rafsvið er til staðar. (b) Þegar rafsviði er beitt munu skautaðar sameindir eins og HF raða sér upp með tvískautin í stefnu sviðsins.</caption>
+</figure>
+<note id="fs-idp56552448" class="chemistry link-to-learning">
+<para id="fs-idp103820464"><link url="http://openstax.org/l/16MolecPolarity">Hermirinn fyrir skautun sameinda</link> býður upp á margar leiðir til að kanna tvískautsvægi efnatengja og sameinda.</para>
+</note>
+<example id="fs-idm708128">
+<para id="fs-idp55551344"><title>Hermar fyrir skautun</title>Opnaðu <link url="http://openstax.org/l/16MolecPolarity">herminn um skautun sameinda</link> og veldu flipann „Þrjár frumeindir“ efst. Þetta ætti að sýna ABC-sameind með þremur rafneikvæðnistillum. Þú getur sýnt eða falið tvískautsvægi tengja, tvískautsvægi sameinda og hluthleðslur hægra megin. Ef kveikt er á rafsviðinu sést hvort sameindin hreyfist þegar hún verður fyrir sviði, svipað og í <link target-id="CNX_Chem_07_06_Dipolfield"/>.</para>
+<para id="fs-idp55109824">Notaðu rafneikvæðnistillana til að ákvarða hvernig tvískautsvægi sameindarinnar mun líta út fyrir upphaflega beygðu sameindina ef:</para>
+<para id="fs-idp21212352">(a) A og C eru mjög rafneikvæðar og B er í miðju sviðsins.</para>
+<para id="fs-idp83795840">(b) A er mjög rafneikvæð og B og C eru það ekki.</para>
+<para id="fs-idp60999152"><title>Lausn</title>(a) Tvískautsvægi sameindarinnar vísar beint á milli A og C.</para>
+<para id="fs-idp33577488">(b) Tvískautsvægi sameindarinnar vísar meðfram A–B-efnatenginu, í átt að A.</para>
+<para id="fs-idp55689408"><title>Kannaðu þekkingu þína</title>Ákvarðaðu hluthleðslurnar sem gefa stærstu mögulegu tvískautsvægi tengja.</para>
+<note id="fs-idp670160"><title>Answer:</title><para id="fs-idp280660528">Stærstu tvískautsvægi tengja verða til við stærstu hluthleðslurnar. Lausnirnar tvær hér að ofan sýna hversu ójafnt rafeindunum er deilt í efnatenginu. Tvískautsvægi tengjanna verða stærst þegar rafneikvæðnismunurinn er mestur. Stýringarnar fyrir A og C ættu að vera stilltar á aðra öfgarnar og B ætti að vera stillt á hina öfgina. Þó að stærð tvískautsvægis tengisins breytist ekki eftir því hvort B er rafneikvæðasta eða minnst rafneikvæða frumeindin, mun stefna tvískautsvægisins gera það.</para>
+</note>
+</example>
+</section>
+<para id="fs-idp30351200">Eins og áður hefur komið fram tengja skautuð samgild efnatengi saman tvær frumeindir með mismunandi rafneikvæðni, sem veldur því að önnur frumeindin fær jákvæða hluthleðslu (δ+) og hin neikvæða hluthleðslu (δ–), þar sem rafeindirnar dragast að rafneikvæðari frumeindinni. Þessi aðskilnaður hleðslu gefur tilefni til <term id="term-00013">tvískautsvægis efnatengis (e. bond dipole moment)</term>. Stærð tvískautsvægis efnatengis er táknuð með gríska stafnum mú (<emphasis effect="italics">µ</emphasis>) og er gefin með formúlunni sem sýnd er hér, þar sem Q er stærð hluthleðslnanna (ákvörðuð af rafneikvæðnismuninum) og r er fjarlægðin milli hleðslnanna:</para>
+<equation id="fs-idp16382464" class="unnumbered"><m:math><m:mrow><m:mi fontstyle="italic">μ</m:mi><m:mo>=</m:mo><m:mtext>Qr</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp33849296">Þetta tvískautsvægi tengis má tákna sem <term id="term-00014">vigur (e. vector)</term>, stærð sem hefur bæði stefnu og stærð (<link target-id="CNX_Chem_07_06_BondVector"/>). Tvískautsvigrar eru sýndir sem örvar sem vísa meðfram efnateginu frá minna rafneikvæðu frumeindinni í átt að þeirri rafneikvæðari. Lítið plúsmerki er teiknað á minna rafneikvæða endann til að gefa til kynna að sá endi efnatengisins sé með jákvæða hluthleðslu. Lengd örvarinnar er í réttu hlutfalli við stærð rafneikvæðnismunarins milli frumeindanna tveggja.</para>
+<figure id="CNX_Chem_07_06_BondVector">
+<media id="fs-idp53563840" alt="Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”" class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_BondVector.jpg"/></media>
+<caption>(a) Lítill munur er á rafneikvæðni milli C og H, táknað með stuttum vigri. (b) Rafneikvæðnismunurinn milli B og F er mun meiri, þannig að vigurinn sem táknar tvískautsvægi tengisins er mun lengri.</caption>
+</figure>
+<para id="fs-idp52773168">Heil sameind getur einnig haft aðskilnað hleðslu, allt eftir sameindabyggingu hennar og skautun hvers efnatengis. Ef slíkur hleðsluaðskilnaður er til staðar er sagt að sameindin sé <term id="term-00015">skautuð sameind (e. polar molecule)</term> (eða tvískaut); annars er sagt að sameindin sé óskautuð. <term id="term-00016">Tvískautsvægið (e. dipole moment)</term> mælir umfang heildarhleðsluaðskilnaðar í sameindinni í heild. Við ákvörðum tvískautsvægið með því að leggja saman tvískautsvægi efnategjanna í þrívíðu rúmi, með hliðsjón af sameindabyggingunni.</para>
+<para id="fs-idm10056464">Fyrir tvíatóma sameindir er aðeins eitt efnatengi, þannig að tvískautsvægi þess ákvarðar skautun sameindarinnar. Hrein efni úr tvíatóma sameindum eins og Br<sub>2</sub> og N<sub>2</sub> hafa engan mun á rafneikvæðni, þannig að tvískautsvægi þeirra er núll. Fyrir efnasambönd úr tvíatóma sameindum eins og CO er lítið tvískautsvægi. Fyrir HF er stærra tvískautsvægi vegna þess að munurinn á rafneikvæðni er meiri.</para>
+<para id="fs-idp218363312">Þegar sameind inniheldur fleiri en eitt efnatengi verður að taka tillit til rúmfræðinnar. Ef efnatengin í sameind eru þannig uppröðuð að tvískautsvægi þeirra núllast út (vigur-summa er jöfn núlli), þá er sameindin óskautuð. Þetta er staðan í CO<sub>2</sub> (<link target-id="CNX_Chem_07_06_CO2H2Odip"/>). Hvert efnatengi er skautað, en sameindin í heild er óskautuð. Út frá Lewis-byggingunni og með VSEPR-kenningunni ályktum við að CO<sub>2</sub>-sameindin sé línuleg með skautuð C=O-efnatengi á gagnstæðum hliðum kolefnisfrumeindarinnar. Tvískautsvægi tengjanna núllast út vegna þess að þau vísa í gagnstæðar áttir. Í tilfelli vatnssameindarinnar (<link target-id="CNX_Chem_07_06_CO2H2Odip"/>) sýnir Lewis-byggingin aftur að það eru tvö efnatengi við miðjufrumeind og rafneikvæðnismunurinn sýnir aftur að hvort þessara efnatengja hefur tvískautsvægi sem er ekki núll. Í þessu tilfelli er sameindabyggingin hins vegar beygð vegna einliða rafeindapara á O og tvískautsvægi tengjanna tveggja núllast ekki út. Þess vegna hefur vatn heildartvískautsvægi og er skautuð sameind (tvískaut).</para>
+<figure id="CNX_Chem_07_06_CO2H2Odip">
+<media id="fs-idp102085104" alt="Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”" class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CO2H2Odip.jpg"/></media>
+<caption>Heildartvískautsvægi sameindar fer eftir tvískautsvægi einstakra efnatengja og hvernig þau raðast. (a) Hvert CO-tengi hefur tvískautsvægi en þau vísa í gagnstæðar áttir þannig að CO<sub>2</sub>-sameindin í heild er óskautuð. (b) Aftur á móti er vatn skautað vegna þess að tvískautsvægi OH-tengjanna núllast ekki út.</caption>
+</figure>
+<para id="fs-idp54246320">OCS-sameindin hefur svipaða byggingu og CO<sub>2</sub>, en brennisteinsfrumeind hefur komið í stað einnar súrefnisfrumeindarinnar. Til að ákvarða hvort þessi sameind sé skautuð teiknum við sameindabygginguna. VSEPR-kenningin spáir fyrir um línulega sameind:</para>
+<media id="fs-idp52090304" class="scaled-down" alt="An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_OSC_img.jpg"/>
+</media>
+<para id="fs-idp225382864">C-O-tengið er töluvert skautað. Þótt C og S hafi mjög svipuð rafneikvæðnisgildi er S örlítið rafneikvæðara en C og því er C-S-tengið aðeins örlítið skautað. Þar sem súrefni er rafneikvæðara en brennisteinn er súrefnisendinn á sameindinni neikvæði endinn.</para>
+<para id="fs-idp66532464">Klórmetan, CH<sub>3</sub>Cl, er ferflötungssameind með þremur örlítið skautuðum C-H-tengjum og einu skautaðra C-Cl-tengi. Hlutfallsleg rafneikvæðni tengdu frumeindanna er H &lt; C &lt; Cl og því vísa öll tvískautsvægi tengjanna í átt að Cl-enda sameindarinnar og leggjast saman og mynda töluvert tvískautsvægi (sameindirnar eru tiltölulega skautaðar).</para>
+<media id="fs-idm3023712" class="scaled-down" alt="An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CHCl3_img.jpg"/>
+</media>
+<para id="fs-idp214036816">Fyrir sameindir með mikla samhverfu eins og BF<sub>3</sub> (þríhyrningsflatningur), CH<sub>4</sub> (ferflötungur), PF<sub>5</sub> (þríhyrnd tvípýramída) og SF<sub>6</sub> (áttflötungur) eru öll tengin með sömu skautun (sama tvískautsvægi tengis) og þau raðast í rúmfræði sem gefur óskautaðar sameindir (tvískautsvægi er núll). Sameindir með minni rúmfræðilega samhverfu geta þó verið skautaðar jafnvel þótt öll tvískautsvægi tengja séu eins. Fyrir þessar sameindir eru stefnur jafnra tvískautsvægis tengja þannig að þær leggjast saman og gefa tvískautsvægi sem er ekki núll og skautaða sameind. Dæmi um slíkar sameindir eru brennisteinsvetni, H<sub>2</sub>S (ólínuleg), og ammóníak, NH<sub>3</sub> (þríhyrndur pýramídi).</para>
+<media id="fs-idp35612832" class="scaled-down" alt="Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_SH2NH3_img.jpg"/>
+</media>
+<para id="fs-idp51111376">Til að draga saman, til að vera skautuð verður sameind að:</para>
+<list id="fs-idp94928768" list-type="enumerated" number-style="arabic">
+<item>Innihalda að minnsta kosti eitt skautað samgilt efnatengi.</item>
+<item>Hafa sameindabyggingu þannig að summa vigra hvers tvískautsvægis tengis núllist ekki út.</item>
+</list>
+</section>
+<section id="fs-idp238464336" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp12666320">VSEPR-kenningin spáir fyrir um þrívíddarfyrirkomulag frumeinda í sameind. Hún segir að girðitalarafeindir muni taka sér rúmfræði rafeindapara sem lágmarkar fráhrindikrafta milli svæða með háan rafeindaþéttleika (efnatengi og/eða stök rafeindapör). Sameindabygging, sem vísar aðeins til staðsetningar frumeinda í sameind en ekki rafeinda, er aðeins jafngild rúmfræði rafeindapara þegar engin stök rafeindapör eru í kringum miðfrumeindina. Tvískautsvægi mælir aðskilnað hleðslu. Fyrir eitt efnatengi er tvískautsvægi tengisins ákvarðað af mismuninum á rafneikvæðni milli frumeindanna tveggja. Fyrir sameind er heildartvískautsvægið ákvarðað bæði af tvískautsvægi einstakra tengja og hvernig þessi tvískaut raðast í sameindabyggingunni. Skautaðar sameindir (þær sem hafa umtalsvert tvískautsvægi) víxlverka við rafsvið, en óskautaðar sameindir gera það ekki.</para>
+</section>
+<section id="fs-idp125299408" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idp14744000">
+<problem id="fs-idp86124192">
+<para id="fs-idp159838848">Útskýrðu hvers vegna HOH-sameindin er bogin en HBeH-sameindin er línuleg.</para>
+</problem>
+<solution id="fs-idp34099520">
+<para id="fs-idp56108944">Staðsetning tveggja setta af ópöruðum rafeindum í vatni neyðir efnatengin til að taka sér ferflötungsfyrirkomulag og HOH-sameindin sem af því hlýst er bogin. HBeH-sameindin (þar sem Be hefur aðeins tvær rafeindir til að tengjast tveimur rafeindum frá vetnunum) verður að hafa rafeindapörin eins langt frá hvort öðru og mögulegt er og er því línuleg.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp281408272">
+<problem id="fs-idp34834928">
+<para id="fs-idm7215344">Hvaða eiginleika Lewis-byggingar er hægt að nota til að segja til um hvort rúmfræði rafeindapara og sameindabygging sameindar (eða jónar) verði eins?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm2043120">
+<problem id="fs-idm7068336">
+<para id="fs-idp49887536">Útskýrðu muninn á rúmfræði rafeindapara og sameindabyggingu.</para>
+</problem>
+<solution id="fs-idp87329744">
+<para id="fs-idp63935008">Það verður að vera pláss fyrir hvert rafeindapar, hvort sem það er í efnatengi eða til staðar sem stök rafeindapör. Rúmfræði rafeindapara tekur tillit til staðsetningar allra rafeinda. Sameindabygging tekur aðeins tillit til rúmfræði tengipara.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp134531056">
+<problem id="fs-idp102108912">
+<para id="fs-idp57263952">Hvers vegna er H–N–H-hornið í NH<sub>3</sub> minna en H–C–H-tengishornið í CH<sub>4</sub>? Hvers vegna er H–N–H-hornið í <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math> eins og H–C–H-tengishornið í CH<sub>4</sub>?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp170194320">
+<problem id="fs-idm441712">
+<para id="fs-idp37335120">Útskýrðu hvernig sameind sem inniheldur skautuð efnatengi getur verið óskautuð.</para>
+</problem>
+<solution id="fs-idp98161136">
+<para id="fs-idp102492096">Svo lengi sem skautuðu efnatengin vega hvort annað upp (til dæmis ef tvær eins frumeindir eru staðsettar beint á móti hvor annarri miðað við miðfrumeindina) getur sameindin verið óskautuð.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm5235936">
+<problem id="fs-idp238668928">
+<para id="fs-idp62443808">Almennt gildir að MX<sub>n</sub>-sameindir (þar sem M táknar miðfrumeind og X táknar endastæðar frumeindir; n = 2–5) eru skautaðar ef eitt eða fleiri stök rafeindapör eru á M. NH<sub>3</sub> (M = N, X = H, n = 3) er dæmi. Það eru tvær sameindabyggingar með stökum rafeindapörum sem eru undantekningar frá þessari reglu. Hverjar eru þær?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp57252544">
+<problem id="fs-idp89282944">
+<para id="fs-idp40736832">Spáðu fyrir um rúmfræði rafeindapara og sameindabyggingu hverrar af eftirfarandi sameindum eða jónum:</para>
+<para id="fs-idp35520768">(a) SF<sub>6</sub></para>
+<para id="fs-idp238944112">(b) PCl<sub>5</sub></para>
+<para id="fs-idp213898976">(c) BeH<sub>2</sub></para>
+<para id="fs-idp40771056">(d) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp53649904">
+<para id="fs-idp57801216">(a) Bæði rafeindapara- og sameindabygging eru áttflötungur. (b) Bæði rafeindapara- og sameindabygging eru þríhyrningslaga tvípýramídi. (c) Bæði rafeindapara- og sameindabygging eru línuleg. (d) Bæði rafeindapara- og sameindabygging eru þríhyrningslaga flöt.</para></solution>
+</exercise>
+<exercise id="fs-idm179024">
+<problem id="fs-idm4819536">
+<para id="fs-idp54448032">Tilgreindu rafeindaparabyggingu og sameindabyggingu hverrar eftirfarandi sameindar eða jónar:</para>
+<para id="fs-idp51210016">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>IF</m:mtext></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math></para>
+<para id="fs-idp121685056">(b) CF<sub>4</sub></para>
+<para id="fs-idm5935968">(c) BF<sub>3</sub></para>
+<para id="fs-idp16517536">(d) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SiF</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp6163344">(e) BeCl<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp67177072">
+<problem id="fs-idp33527104">
+<para id="fs-idp124058640">Hver er rafeindaparabygging og sameindabygging hverrar eftirfarandi sameindar eða jónar?</para>
+<para id="fs-idp5812400">(a) ClF<sub>5</sub></para>
+<para id="fs-idp243542528">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp17458144">(c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>TeCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp125667168">(d) PCl<sub>3</sub></para>
+<para id="fs-idm84300160">(e) SeF<sub>4</sub></para>
+<para id="fs-idp53810496">(f) <m:math><m:mrow><m:msub><m:mrow><m:mtext>PH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp17066496">
+<para id="fs-idp29612832">(a) rafeindaparabygging: áttflötungur, sameindabygging: ferningslaga pýramídi; (b) rafeindaparabygging: ferflötungur, sameindabygging: beygð; (c) rafeindaparabygging: áttflötungur, sameindabygging: ferningslaga flatt; (d) rafeindaparabygging: ferflötungur, sameindabygging: þríhyrningslaga pýramídi; (e) rafeindaparabygging: þríhyrningslaga tvípýramídi, sameindabygging: róla; (f) rafeindaparabygging: ferflötungur, sameindabygging: beygð (109°)</para></solution>
+</exercise>
+<exercise id="fs-idm5404912">
+<problem id="fs-idp271688496">
+<para id="fs-idp218150896">Spáðu fyrir um rafeindaparabyggingu og sameindabyggingu hverrar eftirfarandi jónar:</para>
+<para id="fs-idp102358528">(a) H<sub>3</sub>O<sup>+</sup></para>
+<para id="fs-idm12592304">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp36456848">(c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>SnCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math></para><para id="fs-idm2007648">(d) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BrCl</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp86896256">(e) ICl<sub>3</sub></para>
+<para id="fs-idp3710000">(f) XeF<sub>4</sub></para>
+<para id="fs-idp93814864">(g) SF<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp123628080">
+<problem id="fs-idp103423888">
+<para id="fs-idp55745136">Tilgreindu rafeindaparabyggingu og sameindabyggingu hverrar eftirfarandi sameindar:</para>
+<para id="fs-idm436144">(a) ClNO (N er miðjufrumeindin)</para>
+<para id="fs-idp48356992">(b) CS<sub>2</sub></para>
+<para id="fs-idp12929104">(c) Cl<sub>2</sub>CO (C er miðjufrumeindin)</para>
+<para id="fs-idp56511792">(d) Cl<sub>2</sub>SO (S er miðjufrumeindin)</para>
+<para id="fs-idp51595808">(e) SO<sub>2</sub>F<sub>2</sub> (S er miðjufrumeindin)</para>
+<para id="fs-idp53734816">(f) XeO<sub>2</sub>F<sub>2</sub> (Xe er miðjufrumeindin)</para>
+<para id="fs-idp156204096">(g) <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClOF</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math> (Cl er miðjufrumeindin)</para>
+</problem>
+<solution id="fs-idp52524672">
+<para id="fs-idm27861968">(a) rafeindaparabygging: þríhyrningslaga flatt, sameindabygging: beygð (120°); (b) rafeindaparabygging: línuleg, sameindabygging: línuleg; (c) rafeindaparabygging: þríhyrningslaga flatt, sameindabygging: þríhyrningslaga flatt; (d) rafeindaparabygging: ferflötungur, sameindabygging: þríhyrningslaga pýramídi; (e) rafeindaparabygging: ferflötungur, sameindabygging: ferflötungur; (f) rafeindaparabygging: þríhyrningslaga tvípýramídi, sameindabygging: róla; (g) rafeindaparabygging: ferflötungur, sameindabygging: þríhyrningslaga pýramídi</para>
+</solution>
+</exercise>
+<exercise id="fs-idp23296480">
+<problem id="fs-idp102692464">
+<para id="fs-idp54048880">Spáðu fyrir um rafeindaparabyggingu og sameindabyggingu hverrar eftirfarandi:</para>
+<para id="fs-idm5290576">(a) IOF<sub>5</sub> (I er miðjufrumeindin)</para>
+<para id="fs-idp64231008">(b) POCl<sub>3</sub> (P er miðjufrumeindin)</para>
+<para id="fs-idp3722176">(c) Cl<sub>2</sub>SeO (Se er miðjufrumeindin)</para>
+<para id="fs-idp134228160">(d) ClSO<sup>+</sup> (S er miðjufrumeindin)</para>
+<para id="fs-idp61402064">(e) F<sub>2</sub>SO (S er miðjufrumeindin)</para>
+<para id="fs-idp239186240">(f) <m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp91952720">(g) <m:math><m:mrow><m:msub><m:mtext>SiO</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>4−</m:mtext></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp87226080">
+<problem id="fs-idp51919216">
+<para id="fs-idp55226560">Hverjar af eftirfarandi sameindum og jónum innihalda skautuð tengi? Hverjar þessara sameinda og jóna hafa tvískautavægi?</para>
+<para id="fs-idp126895904">(a) ClF<sub>5</sub></para>
+<para id="fs-idp53542704">(b) <m:math><m:mrow><m:msub><m:mtext>ClO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp4015872">(c) <m:math><m:mrow><m:msub><m:mtext>TeCl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp97706816">(d) PCl<sub>3</sub></para>
+<para id="fs-idp165680608">(e) SeF<sub>4</sub></para>
+<para id="fs-idp273207072">(f) <m:math><m:mrow><m:msub><m:mtext>PH</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm15992272">(g) XeF<sub>2</sub></para>
+</problem>
+<solution id="fs-idp53801072">
+<para id="fs-idp118872384">Allar þessar sameindir og jónir innihalda skautuð efnatengi. Aðeins ClF<sub>5</sub>, <m:math><m:mrow><m:msub><m:mtext>ClO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> PCl<sub>3</sub>, SeF<sub>4</sub> og <m:math><m:mrow><m:msub><m:mtext>PH</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> hafa tvískautavægi.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp24689744">
+<problem id="fs-idp60505984">
+<para id="fs-idp63414272">Hverjar þessara sameinda og jóna innihalda skautuð efnatengi? Hverjar þessara sameinda og jóna hafa tvískautavægi?</para><para id="fs-idp56929024">(a) H<sub>3</sub>O<sup>+</sup></para>
+<para id="fs-idp277459024">(b) <m:math><m:mrow><m:msub><m:mtext>PCl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp87186688">(c) <m:math><m:mrow><m:msub><m:mtext>SnCl</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp9124128">(d) <m:math><m:mrow><m:msub><m:mtext>BrCl</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm5861184">(e) ICl<sub>3</sub></para>
+<para id="fs-idp57675856">(f) XeF<sub>4</sub></para>
+<para id="fs-idp87443872">(g) SF<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp60611664">
+<problem id="fs-idp82592688">
+<para id="fs-idm4173120">Hverjar eftirfarandi sameinda hafa tvískautavægi?</para>
+<para id="fs-idm63011456">(a) CS<sub>2</sub></para>
+<para id="fs-idp62630464">(b) SeS<sub>2</sub></para>
+<para id="fs-idm2101312">(c) CCl<sub>2</sub>F<sub>2</sub></para>
+<para id="fs-idp149413888">(d) PCl<sub>3</sub> (P er miðjufrumeindin)</para>
+<para id="fs-idp34105056">(e) ClNO (N er miðjufrumeindin)</para>
+</problem>
+<solution id="fs-idp243592912">
+<para id="fs-idp86019136">SeS<sub>2</sub>, CCl<sub>2</sub>F<sub>2</sub>, PCl<sub>3</sub> og ClNO hafa öll tvískautavægi.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm62749296">
+<problem id="fs-idm748592">
+<para id="fs-idp52399328">Auðkennið sameindirnar með tvískautavægi:</para>
+<para id="fs-idp18907856">(a) SF<sub>4</sub></para>
+<para id="fs-idp103453536">(b) CF<sub>4</sub></para>
+<para id="fs-idp56309664">(c) Cl<sub>2</sub>CCBr<sub>2</sub></para>
+<para id="fs-idp18592496">(d) CH<sub>3</sub>Cl</para>
+<para id="fs-idp92336480">(e) H<sub>2</sub>CO</para>
+</problem>
+</exercise>
+<exercise id="fs-idp32930976">
+<problem id="fs-idp5695824">
+<para id="fs-idp92386128">Sameindin XF<sub>3</sub> hefur tvískautavægi. Er X bór eða fosfór?</para>
+</problem>
+<solution id="fs-idp56267216">
+<para id="fs-idp60075728">P</para>
+</solution>
+</exercise>
+<exercise id="fs-idp90274464">
+<problem id="fs-idp38141360">
+<para id="fs-idp70387584">Sameindin XCl<sub>2</sub> hefur tvískautavægi. Er X beryllíum eða brennisteinn?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp164286384">
+<problem id="fs-idp225402368">
+<para id="fs-idp66689280">Er sameindin Cl<sub>2</sub>BBCl<sub>2</sub> skautuð eða óskautuð?</para>
+</problem>
+<solution id="fs-idp85724608">
+<para id="fs-idp126748304">óskautuð</para>
+</solution>
+</exercise>
+<exercise id="fs-idp95408832">
+<problem id="fs-idp58328928">
+<para id="fs-idp58329184">Það eru þrjár mögulegar byggingar fyrir PCl<sub>2</sub>F<sub>3</sub> með fosfór sem miðfrumeind. Teiknaðu þær og ræddu hvernig mælingar á tvískautsvægi gætu hjálpað til við að greina á milli þeirra.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp16503888">
+<problem id="fs-idp239171200">
+<para id="fs-idp119317296">Lýstu sameindabyggingunni í kringum tilgreinda frumeind eða frumeindir:</para>
+<para id="fs-idp88439632">(a) brennisteinsfrumeindin í brennisteinssýru, H<sub>2</sub>SO<sub>4</sub> [(HO)<sub>2</sub>SO<sub>2</sub>]</para>
+<para id="fs-idp82125392">(b) klórfrumeindin í klórsýru, HClO<sub>3</sub> [HOClO<sub>2</sub>]</para>
+<para id="fs-idp83702064">(c) súrefnisfrumeindin í vetnisperoxíði, HOOH</para>
+<para id="fs-idp65337408">(d) niturfrumeindin í saltpéturssýru, HNO<sub>3</sub> [HONO<sub>2</sub>]</para>
+<para id="fs-idp52188688">(e) súrefnisfrumeindin í OH-hópnum í saltpéturssýru, HNO<sub>3</sub> [HONO<sub>2</sub>]</para>
+<para id="fs-idp60784320">(f) miðsúrefnisfrumeindin í ósonsameindinni, O<sub>3</sub></para>
+<para id="fs-idp95341616">(g) hver kolefnisfrumeindanna í própíni, CH<sub>3</sub>CCH</para>
+<para id="fs-idp124220336">(h) kolefnisfrumeindin í Freon, CCl<sub>2</sub>F<sub>2</sub></para>
+<para id="fs-idp92064960">(i) hver kolefnisfrumeindanna í alleni, H<sub>2</sub>CCCH<sub>2</sub></para>
+</problem>
+<solution id="fs-idp121709536">
+<para id="fs-idp164162368">(a) fjórflötungur; (b) þríhyrningslaga pýramídi; (c) beygður (109°); (d) þríhyrningslaga flatt; (e) beygður (&lt;120°); (f) beygður (109°); (g) <emphasis effect="underline">C</emphasis>H<sub>3</sub>CCH fjórflötungur, CH<sub>3</sub><emphasis effect="underline">CC</emphasis>H línulegur; (h) fjórflötungur; (i) H<sub>2</sub>C<emphasis effect="underline">C</emphasis>CH<sub>2</sub> línulegur; H<sub>2</sub><emphasis effect="underline">C</emphasis>C<emphasis effect="underline">C</emphasis>H<sub>2</sub> þríhyrningslaga flatt</para>
+</solution>
+</exercise>
+<exercise id="fs-idp120029040">
+<problem id="fs-idp10303184">
+<para id="fs-idp10303440">Teiknaðu Lewis myndir og spáðu fyrir um lögun hvers efnasambands eða jónar:</para>
+<para id="fs-idp83673168">(a) CO<sub>2</sub></para>
+<para id="fs-idm12721344">(b) <m:math><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idm634736">(c) SO<sub>3</sub></para>
+<para id="fs-idp52514704">(d) <m:math><m:mrow><m:msub><m:mtext>SO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp149682416">
+<problem id="fs-idp38088592">
+<para id="fs-idp38088848">Sameind með formúluna AB<sub>2</sub>, þar sem A og B tákna mismunandi frumeindir, gæti haft eina af þremur mismunandi lögunum. Teiknaðu og nefndu þrjár mismunandi laganir sem þessi sameind gæti haft. Gefðu dæmi um sameind eða jón fyrir hverja lögun.</para>
+</problem>
+<solution id="fs-idp12058976"><para id="fs-idm4023008"><newline/> <media id="fs-idp35110688" alt="Three Lewis diagrams are shown. The first diagram shows the letter A single bonded to the left and right to the letter B. An example, “C O subscript 2,” and the term, “linear,” are written beside this diagram. The second diagram shows the letter A with two lone pairs of electrons, single bonded to the left and lower right to the letter B. An example, “H subscript 2 O,” and the term, “bent with an approximately 109 degree angle,” are written beside this diagram. The third diagram shows the letter A with one lone electron pair, single bonded to the left and lower right to the letter B. An example, “S O subscript 2,” and the term, “bent with an approximately 120 degree angle,” are written beside this diagram."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_Ques23ans_img.jpg"/></media></para>
+</solution>
+</exercise>
+<exercise id="fs-idp126465632">
+<problem id="fs-idm81567280">
+<para id="fs-idm81567024">Sameind með formúluna AB<sub>3</sub>, þar sem A og B tákna mismunandi frumeindir, gæti haft eina af þremur mismunandi lögunum. Teiknaðu og nefndu þrjár mismunandi laganir sem þessi sameind gæti haft. Gefðu dæmi um sameind eða jón sem hefur hverja lögun.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp122940912">
+<problem id="fs-idp122941168">
+<para id="fs-idp56538896">Teiknaðu Lewis-rafeindapunktamyndir fyrir þessar sameindir, þar með talið vok myndir þar sem við á:</para>
+<para id="fs-idp7387296">(a) <m:math><m:mrow><m:msub><m:mtext>CS</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math></para>
+<para id="fs-idp134617040">(b) CS<sub>2</sub></para>
+<para id="fs-idp86658096">(c) CS</para>
+<para id="fs-idp88863520">(d) spáðu fyrir um sameindalögun fyrir <m:math><m:mrow><m:msub><m:mtext>CS</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> og CS<sub>2</sub> og útskýrðu hvernig þú komst að niðurstöðum þínum</para>
+</problem>
+<solution id="fs-idp288854528">
+<para id="fs-idp61624784">(a)<newline/> <media id="fs-idp25564320" alt="The figure shows three Lewis structures that are each surrounded by brackets and have a superscripted 2 negative sign. They are written with a double-headed arrow in between each diagram. The first of this trio has a carbon atom single bonded to two sulfur atoms, each of which has thee lone pairs of electrons, and double bonded to a third sulfur atom with two lone pairs of electrons. The second and third diagrams have the same atoms present, but each time the double bond moves between a different carbon and sulfur pair. The lone electron pairs also shift to correspond with the bond changes."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CS3a_img.jpg"/></media><newline/> (b)<newline/> <media id="fs-idp164171792" alt="The Lewis structure shows a carbon atom double bonded to two sulfur atoms, each of which has two lone pairs of electrons."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CS3b_img.jpg"/></media><newline/> (c)<newline/> <media id="fs-idp24461984" alt="This diagram shows a carbon with one lone electron pair triple bonded to a sulfur with one lone electron pair."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_CS3c_img.jpg"/></media><newline/> (d) <m:math><m:mrow><m:msub><m:mtext>CS</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> inniheldur þrjú svæði með rafeindaþéttleika (öll eru efnatengi án stakra rafeindapara); lögunin er þríhyrningslaga flatt; CS<sub>2</sub> hefur aðeins tvö svæði með rafeindaþéttleika (öll efnatengi án stakra rafeindapara); lögunin er línuleg</para></solution>
+</exercise>
+<exercise id="fs-idm2150336">
+<problem id="fs-idm2150080">
+<para id="fs-idp81563600">Hver er sameindabygging stöðuga formsins af FNO<sub>2</sub>? (N er miðfrumeindin.)</para>
+</problem>
+</exercise>
+<exercise id="fs-idp73458400">
+<problem id="fs-idp73458656">
+<para id="fs-idp214455904">Efnasamband með mólmassa um 42 g/mól inniheldur 85,7% kolefni og 14,3% vetni. Hver er sameindabygging þess?</para>
+</problem>
+<solution id="fs-idp130145392">
+<para id="fs-idp130145648">Lewis myndin er gerð úr þremur einingum, en frumeindunum verður að endurraða:<newline/> <media id="fs-idp93503152" alt="A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to a hydrogen atom and double bonded to a third carbon atom which is single bonded to two hydrogen atoms."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_06_Ques28ans_img.jpg"/></media></para>
+</solution>
+</exercise>
+<exercise id="fs-idp67065360">
+<problem id="fs-idp67065616">
+<para id="fs-idp63767408">Notaðu <link url="http://openstax.org/l/16MolecPolarity">herminn</link> til að framkvæma eftirfarandi æfingar fyrir tveggja frumeinda sameind:</para>
+<para id="fs-idp112678528">(a) Stilltu rafneikvæðnigildið þannig að tvískaut efnatengisins vísi í átt að B. Ákvarðaðu síðan hver rafneikvæðnigildin verða að vera til að skipta um stefnu tvískautsins þannig að það vísi í átt að A.</para>
+<para id="fs-idp34175728">(b) Með jákvæðri hlutahleðslu á A, kveiktu á rafsviðinu og lýstu því sem gerist.</para>
+<para id="fs-idp34176112">(c) Með lítilli neikvæðri hlutahleðslu á A, kveiktu á rafsviðinu og lýstu því sem gerist.</para>
+<para id="fs-idp115732448">(d) Endurstilltu allt og kveiktu síðan á rafsviðinu með stórri neikvæðri hlutahleðslu á A og lýstu því sem gerist.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp56829344">
+<problem id="fs-idp56829600">
+<para id="fs-idp67165664">Notaðu <link url="http://openstax.org/l/16MolecPolarity">herminn</link> til að gera eftirfarandi æfingar fyrir raunverulega sameind. Þú gætir þurft að snúa sameindunum í þrívídd til að sjá ákveðin tvískaut.</para>
+<para id="fs-idp102821904">(a) Teiknaðu tvískaut efnatengja og tvískaut sameindar (ef einhver er) fyrir O<sub>3</sub>. Útskýrðu athuganir þínar.</para>
+<para id="fs-idp81480992">(b) Skoðaðu tvískaut efnatengjanna fyrir NH<sub>3</sub>. Notaðu þessi tvískaut til að spá fyrir um hvort N eða H sé rafneikvæðara.</para>
+<para id="fs-idp213909024">(c) Spáðu fyrir um hvort NH<sub>3</sub> ætti að hafa tvískaut sameindar og ef svo er, í hvaða átt það myndi vísa. Hakaðu í reitinn fyrir tvískaut sameindar til að prófa tilgátu þína.</para>
+</problem>
+<solution id="fs-idp51557408">
+<para id="fs-idp51557664">Tvískaut sameindarinnar vísar frá vetnisfrumeindunum.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp46580240">
+<problem id="fs-idp46580496">
+<para id="fs-idp250860400">Notaðu <link url="http://openstax.org/l/16MolecShape">herminn fyrir lögun sameinda</link> til að byggja sameind. Byrjaðu á miðfrumeindinni og smelltu á tvítengið til að bæta við einu tvítengi. Bættu síðan við einu eintengi og einu einu rafeindapari. Snúðu sameindinni til að sjá alla lögunina. Nefndu rúmfræði rafeindahópsins og sameindabygginguna og spáðu fyrir um tengihornið. Smelltu síðan á gátreitina neðst og hægra megin í herminum til að athuga svörin þín.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp17379424">
+<problem id="fs-idp17379680">
+<para id="fs-idp25136064">Notaðu <link url="http://openstax.org/l/16MolecShape">herminn fyrir lögun sameinda</link> til að kanna raunverulegar sameindir. Í flipanum „Raunverulegar sameindir“ (Real Molecules) skaltu velja H<sub>2</sub>O. Skiptu á milli „raunverulegs“ (real) og „líkan“ (model) ham. Útskýrðu muninn sem sést.</para>
+</problem>
+<solution id="fs-idp147105408">
+<para id="fs-idp62144768">Byggingarnar eru mjög svipaðar. Í líkanhamnum tekur hver rafeindahópur jafn mikið pláss, þannig að tengihornið er sýnt sem 109,5°. Í „raunverulega“ hamnum eru einu rafeindapörin stærri, sem veldur því að vetnin þjappast saman. Þetta leiðir til minna horns, 104,5°.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp37961056">
+<problem id="fs-idp37961312">
+<para id="fs-idm5201232">Notaðu <link url="http://openstax.org/l/16MolecShape">herminn fyrir lögun sameinda</link> til að kanna raunverulegar sameindir. Í flipanum „Raunverulegar sameindir“ (Real Molecules) skaltu velja „líkan“ (model) ham og S<sub>2</sub>O. Hvert er tengihornið í líkaninu? Útskýrðu hvort „raunverulega“ tengihornið ætti að vera stærra eða minna en hið fullkomna líkanhorn.</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp280671424">
+<term>ásstaða (e. axial position)</term>
+<meaning id="fs-idp280671424-meaning">staðsetning í þríhyrndri tvípýramídalögun þar sem önnur frumeind er í 180° horni og miðbaugstöðurnar eru í 90° horni</meaning>
+</definition>
+<definition id="fs-idp51366688">
+<term>tengihorn (e. bond angle)</term>
+<meaning id="fs-idp51366688-meaning">horn milli tveggja samgildra tengja sem deila sameiginlegri frumeind</meaning>
+</definition>
+<definition id="fs-idp64874768">
+<term>tengifjarlægð (e. bond distance)</term>
+<meaning id="fs-idp64874768-meaning">(einnig, tengilengd) fjarlægð milli kjarna tveggja tengdra frumeinda</meaning>
+</definition>
+<definition id="fs-idp60998304">
+<term>tvískautsvægi efnatengis (e. bond dipole moment)</term>
+<meaning id="fs-idp60998304-meaning">aðskilnaður hleðslu í efnatengi sem fer eftir mismun á rafneikvæðni og tengifjarlægð, táknað með hluthleðslum eða vigri</meaning>
+</definition>
+<definition id="fs-idp12081312">
+<term>tvískautsvægi (e. dipole moment)</term>
+<meaning id="fs-idp12081312-meaning">eiginleiki sameindar sem lýsir aðskilnaði hleðslu, ákvarðaður af summu einstakra tengivæga byggt á sameindabyggingunni</meaning>
+</definition>
+<definition id="fs-idp86864304">
+<term>rúmfræði rafeindapara (e. electron-pair geometry)</term>
+<meaning id="fs-idp86864304-meaning">fyrirkomulag allra svæða rafeindaþéttleika (efnatengi, ein pör eða ópöruð rafeind) umhverfis miðfrumeind</meaning>
+</definition>
+<definition id="fs-idp113684160">
+<term>miðbaugstaða (e. equatorial position)</term>
+<meaning id="fs-idp113684160-meaning">ein af þremur stöðum í þríhyrndri tvípýramídalögun með 120° horn á milli þeirra; ásstöðurnar eru staðsettar í 90° horni</meaning>
+</definition>
+<definition id="fs-idp35872064">
+<term>línulegur (e. linear)</term>
+<meaning id="fs-idp35872064-meaning">lögun þar sem tveir ytri hópar eru staðsettir á gagnstæðum hliðum miðfrumeindar</meaning>
+</definition>
+<definition id="fs-idp108813632">
+<term>sameindabygging (e. molecular structure)</term>
+<meaning id="fs-idp108813632-meaning">bygging sem felur aðeins í sér staðsetningu frumeindanna í sameindinni</meaning>
+</definition>
+<definition id="fs-idp80913744">
+<term>áttflötungur (e. octahedral)</term>
+<meaning id="fs-idp80913744-meaning">lögun þar sem sex ytri hópar eru staðsettir umhverfis miðfrumeind þannig að þrívíddarlögun myndast með fjórum hópum sem mynda ferning og hinir tveir mynda toppa tveggja pýramída, einn fyrir ofan og einn fyrir neðan ferningsplanið</meaning>
+</definition>
+<definition id="fs-idp57075984">
+<term>skautuð sameind (e. polar molecule)</term>
+<meaning id="fs-idp57075984-meaning">(einnig, tvískaut) sameind með heildartvískautsvægi</meaning>
+</definition>
+<definition id="fs-idp51917808">
+<term>ferflötungur (e. tetrahedral)</term>
+<meaning id="fs-idp51917808-meaning">lögun þar sem fjórir ytri hópar eru staðsettir umhverfis miðfrumeind þannig að þrívíddarlögun myndast með fjórum hornum og 109,5° hornum milli hvers pars og miðfrumeindarinnar</meaning>
+</definition>
+<definition id="fs-idp124673792">
+<term>þríhyrndur tvípýramídi (e. trigonal bipyramidal)</term>
+<meaning id="fs-idp124673792-meaning">lögun þar sem fimm ytri hópar eru staðsettir umhverfis miðfrumeind þannig að þrír mynda flatan þríhyrning með 120° hornum milli hvers pars og miðfrumeindarinnar, og hinir tveir mynda toppa tveggja pýramída, einn fyrir ofan og einn fyrir neðan þríhyrningsplanið</meaning>
+</definition>
+<definition id="fs-idp36467056">
+<term>þríhyrningslaga flatt (e. trigonal planar)</term>
+<meaning id="fs-idp36467056-meaning">lögun þar sem þrír ytri hópar raðast í flatan þríhyrning í kringum miðjufrumeind með 120° horn á milli hvers pars og miðjufrumeindarinnar</meaning>
+</definition>
+<definition id="fs-idp27828880">
+<term>kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR) (e. valence shell electron-pair repulsion theory (vsepr))</term>
+<meaning id="fs-idp27828880-meaning">kenning sem notuð er til að spá fyrir um efnatengishorn í sameind með því að staðsetja svæði með háum rafeindaþéttleika eins langt frá hvort öðru og mögulegt er til að lágmarka rafstöðufráhrindingu</meaning>
+</definition>
+<definition id="fs-idp103056288">
+<term>vigur (e. vector)</term>
+<meaning id="fs-idp103056288-meaning">stærð sem hefur bæði stærðargráðu og stefnu</meaning>
+</definition>
+</glossary>
+</document>

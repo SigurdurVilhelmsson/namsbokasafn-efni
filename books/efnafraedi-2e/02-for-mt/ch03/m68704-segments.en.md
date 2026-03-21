@@ -17,10 +17,10 @@ The previous section introduced molarity, a very useful measurement unit for eva
 Mass Percentage
 
 <!-- SEG:m68704:para:fs-idm26991728 -->
-Earlier in this chapter, percent composition was introduced as a measure of the relative amount of a given element in a compound. Percentages are also commonly used to express the composition of mixtures, including solutions. The __mass percentage__ of a solution component is defined as the ratio of the component’s mass to the solution’s mass, expressed as a percentage:
+Earlier in this chapter, percent composition was introduced as a measure of the relative amount of a given element in a compound. Percentages are also commonly used to express the composition of mixtures, including solutions. The {{term}}mass percentage{{/term}} of a solution component is defined as the ratio of the component’s mass to the solution’s mass, expressed as a percentage:
 
 <!-- SEG:m68704:para:fs-idm3484528 -->
-Mass percentage is also referred to by similar names such as *percent mass, percent weight, weight/weight percent*, and other variations on this theme. The most common symbol for mass percentage is simply the percent sign, %, although more detailed symbols are often used including %mass, %weight, and (w/w)%. Use of these more detailed symbols can prevent confusion of mass percentages with other types of percentages, such as volume percentages (to be discussed later in this section).
+Mass percentage is also referred to by similar names such as {{i}}percent mass, percent weight, weight/weight percent{{/i}}, and other variations on this theme. The most common symbol for mass percentage is simply the percent sign, %, although more detailed symbols are often used including %mass, %weight, and (w/w)%. Use of these more detailed symbols can prevent confusion of mass percentages with other types of percentages, such as volume percentages (to be discussed later in this section).
 
 <!-- SEG:m68704:para:fs-idm21823696 -->
 Mass percentages are popular concentration units for consumer products. The label of a typical liquid bleach bottle ([#CNX_Chem_03_05_bleach]) cites the concentration of its active ingredient, sodium hypochlorite (NaOCl), as being 7.4%. A 100.0-g sample of bleach would therefore contain 7.4 g of NaOCl.
@@ -98,7 +98,7 @@ Answer:
 Volume Percentage
 
 <!-- SEG:m68704:para:fs-idp14105408 -->
-Liquid volumes over a wide range of magnitudes are conveniently measured using common and relatively inexpensive laboratory equipment. The concentration of a solution formed by dissolving a liquid solute in a liquid solvent is therefore often expressed as a __volume percentage__, %vol or (v/v)%:
+Liquid volumes over a wide range of magnitudes are conveniently measured using common and relatively inexpensive laboratory equipment. The concentration of a solution formed by dissolving a liquid solute in a liquid solvent is therefore often expressed as a {{term}}volume percentage{{/term}}, %vol or (v/v)%:
 
 <!-- SEG:m68704:example-title:fs-idm1441136-title -->
 Calculations using Volume Percentage
@@ -116,7 +116,7 @@ Per the definition of volume percentage, the isopropanol volume is 70% of the to
 Check Your Learning
 
 <!-- SEG:m68704:para:fs-idp44207936 -->
-Wine is approximately 12% ethanol (CH~3~CH~2~OH) by volume. Ethanol has a molar mass of 46.06 g/mol and a density 0.789 g/mL. How many moles of ethanol are present in a 750-mL bottle of wine?
+Wine is approximately 12% ethanol (CH[[sub:3]]CH[[sub:2]]OH) by volume. Ethanol has a molar mass of 46.06 g/mol and a density 0.789 g/mL. How many moles of ethanol are present in a 750-mL bottle of wine?
 
 <!-- SEG:m68704:para:fs-idm15159936 -->
 1.5 mol ethanol
@@ -131,7 +131,7 @@ Answer:
 Mass-Volume Percentage
 
 <!-- SEG:m68704:para:fs-idm16796176 -->
-“Mixed” percentage units, derived from the mass of solute and the volume of solution, are popular for certain biochemical and medical applications. A __mass-volume percent__ is a ratio of a solute’s mass to the solution’s volume expressed as a percentage. The specific units used for solute mass and solution volume may vary, depending on the solution. For example, physiological saline solution, used to prepare intravenous fluids, has a concentration of 0.9% mass/volume (m/v), indicating that the composition is 0.9 g of solute per 100 mL of solution. The concentration of glucose in blood (commonly referred to as “blood sugar”) is also typically expressed in terms of a mass-volume ratio. Though not expressed explicitly as a percentage, its concentration is usually given in milligrams of glucose per deciliter (100 mL) of blood ([#CNX_Chem_03_05_saline]).
+“Mixed” percentage units, derived from the mass of solute and the volume of solution, are popular for certain biochemical and medical applications. A {{term}}mass-volume percent{{/term}} is a ratio of a solute’s mass to the solution’s volume expressed as a percentage. The specific units used for solute mass and solution volume may vary, depending on the solution. For example, physiological saline solution, used to prepare intravenous fluids, has a concentration of 0.9% mass/volume (m/v), indicating that the composition is 0.9 g of solute per 100 mL of solution. The concentration of glucose in blood (commonly referred to as “blood sugar”) is also typically expressed in terms of a mass-volume ratio. Though not expressed explicitly as a percentage, its concentration is usually given in milligrams of glucose per deciliter (100 mL) of blood ([#CNX_Chem_03_05_saline]).
 
 <!-- SEG:m68704:caption:CNX_Chem_03_05_saline-caption -->
 “Mixed” mass-volume units are commonly encountered in medical settings. (a) The NaCl concentration of physiological saline is 0.9% (m/v). (b) This device measures glucose levels in a sample of blood. The normal range for glucose concentration in blood (fasting) is around 70–100 mg/dL. (credit a: modification of work by “The National Guard”/Flickr; credit b: modification of work by Biswarup Ganguly)
@@ -140,7 +140,7 @@ Mass-Volume Percentage
 Parts per Million and Parts per Billion
 
 <!-- SEG:m68704:para:fs-idm39037584 -->
-Very low solute concentrations are often expressed using appropriately small units such as __parts per million (ppm)__ or __parts per billion (ppb)__. Like percentage (“part per hundred”) units, ppm and ppb may be defined in terms of masses, volumes, or mixed mass-volume units. There are also ppm and ppb units defined with respect to numbers of atoms and molecules.
+Very low solute concentrations are often expressed using appropriately small units such as {{term}}parts per million (ppm){{/term}} or {{term}}parts per billion (ppb){{/term}}. Like percentage (“part per hundred”) units, ppm and ppb may be defined in terms of masses, volumes, or mixed mass-volume units. There are also ppm and ppb units defined with respect to numbers of atoms and molecules.
 
 <!-- SEG:m68704:para:fs-idm18786352 -->
 The mass-based definitions of ppm and ppb are given here:
@@ -161,7 +161,7 @@ According to the EPA, when the concentration of lead in tap water reaches 15 ppb
 Solution
 
 <!-- SEG:m68704:para:fs-idm2696240 -->
-The definitions of the ppm and ppb units may be used to convert the given concentration from ppb to ppm. Comparing these two unit definitions shows that ppm is 1000 times greater than ppb (1 ppm = 10^3^ ppb). Thus:
+The definitions of the ppm and ppb units may be used to convert the given concentration from ppb to ppm. Comparing these two unit definitions shows that ppm is 1000 times greater than ppb (1 ppm = 10[[sup:3]] ppb). Thus:
 
 <!-- SEG:m68704:para:fs-idm35694560 -->
 The definition of the ppb unit may be used to calculate the requested mass if the mass of the solution is provided. Since the volume of solution (300 mL) is given, its density must be used to derive the corresponding mass. Assume the density of tap water to be roughly the same as that of pure water (~1.00 g/mL), since the concentrations of any dissolved substances should not be very large. Rearranging the equation defining the ppb unit and substituting the given quantities yields:
@@ -191,7 +191,7 @@ Section Summary
 In addition to molarity, a number of other solution concentration units are used in various applications. Percentage concentrations based on the solution components’ masses, volumes, or both are useful for expressing relatively high concentrations, whereas lower concentrations are conveniently expressed using ppm or ppb units. These units are popular in environmental, medical, and other fields where mole-based units such as molarity are not as commonly used.
 
 <!-- SEG:m68704:problem:fs-idm27367376 -->
-Consider this question: What mass of a concentrated solution of nitric acid (68.0% HNO~3~ by mass) is needed to prepare 400.0 g of a 10.0% solution of HNO~3~ by mass?
+Consider this question: What mass of a concentrated solution of nitric acid (68.0% HNO[[sub:3]] by mass) is needed to prepare 400.0 g of a 10.0% solution of HNO[[sub:3]] by mass?
 
 <!-- SEG:m68704:problem:fs-idp3249520 -->
 (a) Outline the steps necessary to answer the question.
@@ -200,7 +200,7 @@ Consider this question: What mass of a concentrated solution of nitric acid (68.
 (b) Answer the question.
 
 <!-- SEG:m68704:solution:fs-idm1849696 -->
-(a) The dilution equation can be used, appropriately modified to accommodate mass-based concentration units: [[MATH:2]]. This equation can be rearranged to isolate mass~1~ and the given quantities substituted into this equation. (b) 58.8 g
+(a) The dilution equation can be used, appropriately modified to accommodate mass-based concentration units: [[MATH:2]]. This equation can be rearranged to isolate mass[[sub:1]] and the given quantities substituted into this equation. (b) 58.8 g
 
 <!-- SEG:m68704:problem:fs-idm9508704 -->
 What mass of a 4.00% NaOH solution by mass contains 15.0 g of NaOH?
@@ -212,43 +212,43 @@ What mass of solid NaOH (97.0% NaOH by mass) is required to prepare 1.00 L of a 
 114 g
 
 <!-- SEG:m68704:problem:fs-idm2819984 -->
-What mass of HCl is contained in 45.0 mL of an aqueous HCl solution that has a density of 1.19 g cm^–3^ and contains 37.21% HCl by mass?
+What mass of HCl is contained in 45.0 mL of an aqueous HCl solution that has a density of 1.19 g cm[[sup:–3]] and contains 37.21% HCl by mass?
 
 <!-- SEG:m68704:problem:fs-idm23489136 -->
-The hardness of water (hardness count) is usually expressed in parts per million (by mass) of CaCO~3~, which is equivalent to milligrams of CaCO~3~ per liter of water. What is the molar concentration of Ca^2+ ^ions in a water sample with a hardness count of 175 mg CaCO~3~/L?
+The hardness of water (hardness count) is usually expressed in parts per million (by mass) of CaCO[[sub:3]], which is equivalent to milligrams of CaCO[[sub:3]] per liter of water. What is the molar concentration of Ca[[sup:2+ ]]ions in a water sample with a hardness count of 175 mg CaCO[[sub:3]]/L?
 
 <!-- SEG:m68704:solution:fs-idm8356352 -->
-1.75 [[MATH:3]] 10^−3^ *M*
+1.75 [[MATH:3]] 10[[sup:−3]] {{i}}M{{/i}}
 
 <!-- SEG:m68704:problem:fs-idp16215312 -->
 The level of mercury in a stream was suspected to be above the minimum considered safe (1 part per billion by weight). An analysis indicated that the concentration was 0.68 parts per billion. Assume a density of 1.0 g/mL and calculate the molarity of mercury in the stream.
 
 <!-- SEG:m68704:problem:fs-idp6805168 -->
-In Canada and the United Kingdom, devices that measure blood glucose levels provide a reading in millimoles per liter. If a measurement of 5.3 m*M* is observed, what is the concentration of glucose (C~6~H~12~O~6~) in mg/dL?
+In Canada and the United Kingdom, devices that measure blood glucose levels provide a reading in millimoles per liter. If a measurement of 5.3 m{{i}}M{{/i}} is observed, what is the concentration of glucose (C[[sub:6]]H[[sub:12]]O[[sub:6]]) in mg/dL?
 
 <!-- SEG:m68704:solution:fs-idp18917136 -->
 95 mg/dL
 
 <!-- SEG:m68704:problem:fs-idm2541936 -->
-A throat spray is 1.40% by mass phenol, C~6~H~5~OH, in water. If the solution has a density of 0.9956 g/mL, calculate the molarity of the solution.
+A throat spray is 1.40% by mass phenol, C[[sub:6]]H[[sub:5]]OH, in water. If the solution has a density of 0.9956 g/mL, calculate the molarity of the solution.
 
 <!-- SEG:m68704:problem:fs-idm32118672 -->
 Copper(I) iodide (CuI) is often added to table salt as a dietary source of iodine. How many moles of CuI are contained in 1.00 lb (454 g) of table salt containing 0.0100% CuI by mass?
 
 <!-- SEG:m68704:solution:fs-idp24969648 -->
-2.38 [[MATH:4]] 10^−4^ mol
+2.38 [[MATH:4]] 10[[sup:−4]] mol
 
 <!-- SEG:m68704:problem:fs-idm85228448 -->
-A cough syrup contains 5.0% ethyl alcohol, C~2~H~5~OH, by mass. If the density of the solution is 0.9928 g/mL, determine the molarity of the alcohol in the cough syrup.
+A cough syrup contains 5.0% ethyl alcohol, C[[sub:2]]H[[sub:5]]OH, by mass. If the density of the solution is 0.9928 g/mL, determine the molarity of the alcohol in the cough syrup.
 
 <!-- SEG:m68704:problem:fs-idm1848576 -->
-D5W is a solution used as an intravenous fluid. It is a 5.0% by mass solution of dextrose (C~6~H~12~O~6~) in water. If the density of D5W is 1.029 g/mL, calculate the molarity of dextrose in the solution.
+D5W is a solution used as an intravenous fluid. It is a 5.0% by mass solution of dextrose (C[[sub:6]]H[[sub:12]]O[[sub:6]]) in water. If the density of D5W is 1.029 g/mL, calculate the molarity of dextrose in the solution.
 
 <!-- SEG:m68704:solution:fs-idp13989120 -->
 0.29 M
 
 <!-- SEG:m68704:problem:fs-idm3980816 -->
-Find the molarity of a 40.0% by mass aqueous solution of sulfuric acid, H~2~SO~4~, for which the density is 1.3057 g/mL.
+Find the molarity of a 40.0% by mass aqueous solution of sulfuric acid, H[[sub:2]]SO[[sub:4]], for which the density is 1.3057 g/mL.
 
 <!-- SEG:m68704:title:fs-idm8172720-title -->
 Key Equations
@@ -278,13 +278,13 @@ ratio of solute mass to solution volume, expressed as a percentage
 parts per billion (ppb)
 
 <!-- SEG:m68704:glossary-def:fs-idp23298832-def -->
-ratio of solute-to-solution mass multiplied by 10^9^
+ratio of solute-to-solution mass multiplied by 10[[sup:9]]
 
 <!-- SEG:m68704:glossary-term:fs-idm85251264-term -->
 parts per million (ppm)
 
 <!-- SEG:m68704:glossary-def:fs-idm85251264-def -->
-ratio of solute-to-solution mass multiplied by 10^6^
+ratio of solute-to-solution mass multiplied by 10[[sup:6]]
 
 <!-- SEG:m68704:glossary-term:fs-idp17597424-term -->
 volume percentage

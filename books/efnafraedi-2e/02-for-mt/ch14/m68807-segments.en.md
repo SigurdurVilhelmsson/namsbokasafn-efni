@@ -8,25 +8,25 @@ By the end of this section, you will be able to:
 Extend previously introduced equilibrium concepts to acids and bases that may donate or accept more than one proton
 
 <!-- SEG:m68807:para:fs-idp98649872 -->
-Acids are classified by the number of protons per molecule that they can give up in a reaction. Acids such as HCl, HNO~3~, and HCN that contain one ionizable hydrogen atom in each molecule are called __monoprotic acids__. Their reactions with water are:
+Acids are classified by the number of protons per molecule that they can give up in a reaction. Acids such as HCl, HNO[[sub:3]], and HCN that contain one ionizable hydrogen atom in each molecule are called {{term}}monoprotic acids{{/term}}. Their reactions with water are:
 
 <!-- SEG:m68807:para:fs-idp136804288 -->
-Even though it contains four hydrogen atoms, acetic acid, CH~3~CO~2~H, is also monoprotic because only the hydrogen atom from the carboxyl group (COOH) reacts with bases:
+Even though it contains four hydrogen atoms, acetic acid, CH[[sub:3]]CO[[sub:2]]H, is also monoprotic because only the hydrogen atom from the carboxyl group (COOH) reacts with bases:
 
 <!-- SEG:m68807:para:fs-idp199141696 -->
 Similarly, monoprotic bases are bases that will accept a single proton.
 
 <!-- SEG:m68807:para:fs-idp13686896 -->
-__Diprotic acids__ contain two ionizable hydrogen atoms per molecule; ionization of such acids occurs in two steps. The first ionization always takes place to a greater extent than the second ionization. For example, sulfuric acid, a strong acid, ionizes as follows:
+{{term}}Diprotic acids{{/term}} contain two ionizable hydrogen atoms per molecule; ionization of such acids occurs in two steps. The first ionization always takes place to a greater extent than the second ionization. For example, sulfuric acid, a strong acid, ionizes as follows:
 
 <!-- SEG:m68807:para:fs-idp137460528 -->
-This __stepwise ionization__ process occurs for all polyprotic acids. Carbonic acid, H~2~CO~3~, is an example of a weak diprotic acid. The first ionization of carbonic acid yields hydronium ions and bicarbonate ions in small amounts.
+This {{term}}stepwise ionization{{/term}} process occurs for all polyprotic acids. Carbonic acid, H[[sub:2]]CO[[sub:3]], is an example of a weak diprotic acid. The first ionization of carbonic acid yields hydronium ions and bicarbonate ions in small amounts.
 
 <!-- SEG:m68807:para:fs-idp84456096 -->
 The bicarbonate ion can also act as an acid. It ionizes and forms hydronium ions and carbonate ions in even smaller quantities.
 
 <!-- SEG:m68807:para:fs-idm74401760 -->
-[[MATH:1]] is larger than [[MATH:2]] by a factor of 10^4^, so H~2~CO~3~ is the dominant producer of hydronium ion in the solution. This means that little of the [[MATH:3]] formed by the ionization of H~2~CO~3~ ionizes to give hydronium ions (and carbonate ions), and the concentrations of H~3~O^+^ and [[MATH:4]] are practically equal in a pure aqueous solution of H~2~CO~3~.
+[[MATH:1]] is larger than [[MATH:2]] by a factor of 10[[sup:4]], so H[[sub:2]]CO[[sub:3]] is the dominant producer of hydronium ion in the solution. This means that little of the [[MATH:3]] formed by the ionization of H[[sub:2]]CO[[sub:3]] ionizes to give hydronium ions (and carbonate ions), and the concentrations of H[[sub:3]]O[[sup:+]] and [[MATH:4]] are practically equal in a pure aqueous solution of H[[sub:2]]CO[[sub:3]].
 
 <!-- SEG:m68807:para:fs-idm68059056 -->
 If the first ionization constant of a weak diprotic acid is larger than the second by a factor of at least 20, it is appropriate to treat the first ionization separately and calculate concentrations resulting from it before calculating concentrations of species resulting from subsequent ionization. This approach is demonstrated in the following example exercise.
@@ -35,49 +35,49 @@ If the first ionization constant of a weak diprotic acid is larger than the seco
 Ionization of a Diprotic Acid
 
 <!-- SEG:m68807:para:fs-idp100346864 -->
-“Carbonated water” contains a palatable amount of dissolved carbon dioxide. The solution is acidic because CO~2~ reacts with water to form carbonic acid, H~2~CO~3~. What are [[MATH:5]] [[MATH:6]] and [[MATH:7]] in a saturated solution of CO~2~ with an initial [H~2~CO~3~] = 0.033 *M*?
+“Carbonated water” contains a palatable amount of dissolved carbon dioxide. The solution is acidic because CO[[sub:2]] reacts with water to form carbonic acid, H[[sub:2]]CO[[sub:3]]. What are [[MATH:5]] [[MATH:6]] and [[MATH:7]] in a saturated solution of CO[[sub:2]] with an initial [H[[sub:2]]CO[[sub:3]]] = 0.033 {{i}}M{{/i}}?
 
 <!-- SEG:m68807:para-title:fs-idm27159024-title -->
 Solution
 
 <!-- SEG:m68807:para:fs-idm27159024 -->
-As indicated by the ionization constants, H~2~CO~3~ is a much stronger acid than [[MATH:8]] so the stepwise ionization reactions may be treated separately.
+As indicated by the ionization constants, H[[sub:2]]CO[[sub:3]] is a much stronger acid than [[MATH:8]] so the stepwise ionization reactions may be treated separately.
 
 <!-- SEG:m68807:para:fs-idm165541424 -->
-The first ionization reaction is[[BR]] [[MATH:9]][[BR]] Using provided information, an ICE table for this first step is prepared:[[BR]] [[MEDIA:1]][[BR]] Substituting the equilibrium concentrations into the equilibrium equation gives[[BR]] [[MATH:10]][[BR]] Assuming *x* &lt;&lt; 0.033 and solving the simplified equation yields[[BR]] [[MATH:11]][[BR]] The ICE table defined *x* as equal to the bicarbonate ion molarity and the hydronium ion molarity:[[BR]] [[MATH:12]][[BR]] [[MATH:13]]
+The first ionization reaction is[[BR]] [[MATH:9]][[BR]] Using provided information, an ICE table for this first step is prepared:[[BR]] [[MEDIA:1]][[BR]] Substituting the equilibrium concentrations into the equilibrium equation gives[[BR]] [[MATH:10]][[BR]] Assuming {{i}}x{{/i}} &lt;&lt; 0.033 and solving the simplified equation yields[[BR]] [[MATH:11]][[BR]] The ICE table defined {{i}}x{{/i}} as equal to the bicarbonate ion molarity and the hydronium ion molarity:[[BR]] [[MATH:12]][[BR]] [[MATH:13]]
 
 <!-- SEG:m68807:para:fs-idm162694608 -->
 Using the bicarbonate ion concentration computed above, the second ionization is subjected to a similar equilibrium calculation:
 
 <!-- SEG:m68807:para:fs-idp167647504 -->
-To summarize: at equilibrium [H~2~CO~3~] = 0.033 *M*; [[MATH:14]] = 1.2 [[MATH:15]] 10^−4^; [[MATH:16]] [[MATH:17]]
+To summarize: at equilibrium [H[[sub:2]]CO[[sub:3]]] = 0.033 {{i}}M{{/i}}; [[MATH:14]] = 1.2 [[MATH:15]] 10[[sup:−4]]; [[MATH:16]] [[MATH:17]]
 
 <!-- SEG:m68807:para-title:fs-idp3314688-title -->
 Check Your Learning
 
 <!-- SEG:m68807:para:fs-idp3314688 -->
-The concentration of H~2~S in a saturated aqueous solution at room temperature is approximately 0.1 *M*. Calculate [[MATH:18]] [HS^−^], and [S^2−^] in the solution:
+The concentration of H[[sub:2]]S in a saturated aqueous solution at room temperature is approximately 0.1 {{i}}M{{/i}}. Calculate [[MATH:18]] [HS[[sup:−]]], and [S[[sup:2−]]] in the solution:
 
 <!-- SEG:m68807:para:fs-idm69876496 -->
-[H~2~S] = 0.1 *M*; [[MATH:19]] = [HS^−^] = 0.000094 *M*; [S^2−^] = 1 [[MATH:20]] 10^−19^ *M*
+[H[[sub:2]]S] = 0.1 {{i}}M{{/i}}; [[MATH:19]] = [HS[[sup:−]]] = 0.000094 {{i}}M{{/i}}; [S[[sup:2−]]] = 1 [[MATH:20]] 10[[sup:−19]] {{i}}M{{/i}}
 
 <!-- SEG:m68807:note-title:fs-idm58434032-title -->
 Answer:
 
 <!-- SEG:m68807:para:fs-idm69876496 -->
-[H~2~S] = 0.1 *M*; [[MATH:21]] = [HS^−^] = 0.000094 *M*; [S^2−^] = 1 [[MATH:22]] 10^−19^ *M*
+[H[[sub:2]]S] = 0.1 {{i}}M{{/i}}; [[MATH:21]] = [HS[[sup:−]]] = 0.000094 {{i}}M{{/i}}; [S[[sup:2−]]] = 1 [[MATH:22]] 10[[sup:−19]] {{i}}M{{/i}}
 
 <!-- SEG:m68807:para:fs-idm49318672 -->
-A __triprotic acid__ is an acid that has three ionizable H atoms. Phosphoric acid is one example:
+A {{term}}triprotic acid{{/term}} is an acid that has three ionizable H atoms. Phosphoric acid is one example:
 
 <!-- SEG:m68807:para:fs-idp15743456 -->
-As for the diprotic acid examples, each successive ionization reaction is less extensive than the former, reflected in decreasing values for the stepwise acid ionization constants. This is a general characteristic of polyprotic acids and successive ionization constants often differ by a factor of about 10^5^ to 10^6^.
+As for the diprotic acid examples, each successive ionization reaction is less extensive than the former, reflected in decreasing values for the stepwise acid ionization constants. This is a general characteristic of polyprotic acids and successive ionization constants often differ by a factor of about 10[[sup:5]] to 10[[sup:6]].
 
 <!-- SEG:m68807:para:fs-idp108834896 -->
-This set of three dissociation reactions may appear to make calculations of equilibrium concentrations in a solution of H~3~PO~4~ complicated. However, because the successive ionization constants differ by a factor of 10^5^ to 10^6^, large differences exist in the small changes in concentration accompanying the ionization reactions. This allows the use of math-simplifying assumptions and processes, as demonstrated in the examples above.
+This set of three dissociation reactions may appear to make calculations of equilibrium concentrations in a solution of H[[sub:3]]PO[[sub:4]] complicated. However, because the successive ionization constants differ by a factor of 10[[sup:5]] to 10[[sup:6]], large differences exist in the small changes in concentration accompanying the ionization reactions. This allows the use of math-simplifying assumptions and processes, as demonstrated in the examples above.
 
 <!-- SEG:m68807:para:fs-idm225165120 -->
-Polyprotic bases are capable of accepting more than one hydrogen ion. The carbonate ion is an example of a __diprotic base__, because it can accept two protons, as shown below. Similar to the case for polyprotic acids, note the ionization constants decrease with ionization step. Likewise, equilibrium calculations involving polyprotic bases follow the same approaches as those for polyprotic acids.
+Polyprotic bases are capable of accepting more than one hydrogen ion. The carbonate ion is an example of a {{term}}diprotic base{{/term}}, because it can accept two protons, as shown below. Similar to the case for polyprotic acids, note the ionization constants decrease with ionization step. Likewise, equilibrium calculations involving polyprotic bases follow the same approaches as those for polyprotic acids.
 
 <!-- SEG:m68807:title:fs-idm40783936-title -->
 Key Concepts and Summary
@@ -89,43 +89,43 @@ An acid that contains more than one ionizable proton is a polyprotic acid. These
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68807:problem:fs-idm49321712 -->
-Which of the following concentrations would be practically equal in a calculation of the equilibrium concentrations in a 0.134-*M* solution of H~2~CO~3~, a diprotic acid: [[MATH:23]] [OH^−^], [H~2~CO~3~], [[MATH:24]] [[MATH:25]] No calculations are needed to answer this question.
+Which of the following concentrations would be practically equal in a calculation of the equilibrium concentrations in a 0.134-{{i}}M{{/i}} solution of H[[sub:2]]CO[[sub:3]], a diprotic acid: [[MATH:23]] [OH[[sup:−]]], [H[[sub:2]]CO[[sub:3]]], [[MATH:24]] [[MATH:25]] No calculations are needed to answer this question.
 
 <!-- SEG:m68807:solution:fs-idm77925872 -->
-[H~3~O^+^] and [[MATH:26]] are practically equal
+[H[[sub:3]]O[[sup:+]]] and [[MATH:26]] are practically equal
 
 <!-- SEG:m68807:problem:fs-idm54573072 -->
-Calculate the concentration of each species present in a 0.050-*M* solution of H~2~S.
+Calculate the concentration of each species present in a 0.050-{{i}}M{{/i}} solution of H[[sub:2]]S.
 
 <!-- SEG:m68807:problem:fs-idm17589920 -->
-Calculate the concentration of each species present in a 0.010-*M* solution of phthalic acid, C~6~H~4~(CO~2~H)~2~.[[BR]] [[MATH:27]]
+Calculate the concentration of each species present in a 0.010-{{i}}M{{/i}} solution of phthalic acid, C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)[[sub:2]].[[BR]] [[MATH:27]]
 
 <!-- SEG:m68807:solution:fs-idp126090960 -->
-[C~6~H~4~(CO~2~H)~2~] 7.2 [[MATH:28]] 10^−3^ *M*, [C~6~H~4~(CO~2~H)(CO~2~)^−^] = [H~3~O^+^] 2.8 [[MATH:29]] 10^−3^ *M*, [[MATH:30]]3.9 [[MATH:31]] 10^−6^ *M*, [OH^−^] 3.6 [[MATH:32]] 10^−12^ *M*
+[C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)[[sub:2]]] 7.2 [[MATH:28]] 10[[sup:−3]] {{i}}M{{/i}}, [C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)(CO[[sub:2]])[[sup:−]]] = [H[[sub:3]]O[[sup:+]]] 2.8 [[MATH:29]] 10[[sup:−3]] {{i}}M{{/i}}, [[MATH:30]]3.9 [[MATH:31]] 10[[sup:−6]] {{i}}M{{/i}}, [OH[[sup:−]]] 3.6 [[MATH:32]] 10[[sup:−12]] {{i}}M{{/i}}
 
 <!-- SEG:m68807:problem:fs-idm71902576 -->
-Salicylic acid, HOC~6~H~4~CO~2~H, and its derivatives have been used as pain relievers for a long time. Salicylic acid occurs in small amounts in the leaves, bark, and roots of some vegetation (most notably historically in the bark of the willow tree). Extracts of these plants have been used as medications for centuries. The acid was first isolated in the laboratory in 1838.
+Salicylic acid, HOC[[sub:6]]H[[sub:4]]CO[[sub:2]]H, and its derivatives have been used as pain relievers for a long time. Salicylic acid occurs in small amounts in the leaves, bark, and roots of some vegetation (most notably historically in the bark of the willow tree). Extracts of these plants have been used as medications for centuries. The acid was first isolated in the laboratory in 1838.
 
 <!-- SEG:m68807:problem:fs-idm57292128 -->
-(a) Both functional groups of salicylic acid ionize in water, with *K*~a~ = 1.0 [[MATH:33]] 10^−3^ for the—CO~2~H group and 4.2 [[MATH:34]] 10^−13^ for the −OH group. What is the pH of a saturated solution of the acid (solubility = 1.8 g/L).
+(a) Both functional groups of salicylic acid ionize in water, with {{i}}K{{/i}}[[sub:a]] = 1.0 [[MATH:33]] 10[[sup:−3]] for the—CO[[sub:2]]H group and 4.2 [[MATH:34]] 10[[sup:−13]] for the −OH group. What is the pH of a saturated solution of the acid (solubility = 1.8 g/L).
 
 <!-- SEG:m68807:problem:fs-idm9714880 -->
-(b) Aspirin was discovered as a result of efforts to produce a derivative of salicylic acid that would not be irritating to the stomach lining. Aspirin is acetylsalicylic acid, CH~3~CO~2~C~6~H~4~CO~2~H. The −CO~2~H functional group is still present, but its acidity is reduced, *K*~a~ = 3.0 [[MATH:35]] 10^−4^. What is the pH of a solution of aspirin with the same concentration as a saturated solution of salicylic acid (See Part a).
+(b) Aspirin was discovered as a result of efforts to produce a derivative of salicylic acid that would not be irritating to the stomach lining. Aspirin is acetylsalicylic acid, CH[[sub:3]]CO[[sub:2]]C[[sub:6]]H[[sub:4]]CO[[sub:2]]H. The −CO[[sub:2]]H functional group is still present, but its acidity is reduced, {{i}}K{{/i}}[[sub:a]] = 3.0 [[MATH:35]] 10[[sup:−4]]. What is the pH of a solution of aspirin with the same concentration as a saturated solution of salicylic acid (See Part a).
 
 <!-- SEG:m68807:problem:fs-idp51100224 -->
-The ion HTe^−^ is an amphiprotic species; it can act as either an acid or a base.
+The ion HTe[[sup:−]] is an amphiprotic species; it can act as either an acid or a base.
 
 <!-- SEG:m68807:problem:fs-idm18295328 -->
-(a) What is *K*~a~ for the acid reaction of HTe^−^ with H~2~O?
+(a) What is {{i}}K{{/i}}[[sub:a]] for the acid reaction of HTe[[sup:−]] with H[[sub:2]]O?
 
 <!-- SEG:m68807:problem:fs-idp102730016 -->
-(b) What is *K*~b~ for the reaction in which HTe^−^ functions as a base in water?
+(b) What is {{i}}K{{/i}}[[sub:b]] for the reaction in which HTe[[sup:−]] functions as a base in water?
 
 <!-- SEG:m68807:problem:fs-idp3251712 -->
-(c) Demonstrate whether or not the second ionization of H~2~Te can be neglected in the calculation of [HTe^−^] in a 0.10 M solution of H~2~Te.
+(c) Demonstrate whether or not the second ionization of H[[sub:2]]Te can be neglected in the calculation of [HTe[[sup:−]]] in a 0.10 M solution of H[[sub:2]]Te.
 
 <!-- SEG:m68807:solution:fs-idp19287888 -->
-(a) [[MATH:36]][[BR]] (b) [[MATH:37]][[BR]] (c) [[MATH:38]][[BR]] Solving for *x* gives 1.5 [[MATH:39]] 10^−11^ *M*. Therefore, compared with 0.014 *M*, this value is negligible (1.1 [[MATH:40]] 10^−7^%).
+(a) [[MATH:36]][[BR]] (b) [[MATH:37]][[BR]] (c) [[MATH:38]][[BR]] Solving for {{i}}x{{/i}} gives 1.5 [[MATH:39]] 10[[sup:−11]] {{i}}M{{/i}}. Therefore, compared with 0.014 {{i}}M{{/i}}, this value is negligible (1.1 [[MATH:40]] 10[[sup:−7]]%).
 
 <!-- SEG:m68807:glossary-term:fs-idp88439392-term -->
 diprotic acid

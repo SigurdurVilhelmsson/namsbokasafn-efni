@@ -1,0 +1,413 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Stuðpúðar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68808</md:content-id>
+  <md:title>Stuðpúðar</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla muntu geta:</para><list id="list-00001"><item>Lýst samsetningu og virkni sýru-basa stuðpúða</item><item>Reiknað pH stuðpúða fyrir og eftir álagningu sýru eða basa</item></list></md:abstract>
+  <md:uuid>2e4b2717-6fb3-4f91-a019-0a99b8b01921</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm117447344">Lausn sem inniheldur umtalsvert magn af veiku samoka sýru-basa pari er kölluð stuðpúðalausn, eða <term id="term-00001">stuðpúði (e. buffer)</term>. Stuðpúðalausnir standast breytingar á pH þegar litlu magni af sterkri sýru eða sterkum basa er bætt við (<link target-id="CNX_Chem_14_06_compare"/>). Lausn af ediksýru og natríumasetati (CH<sub>3</sub>COOH + CH<sub>3</sub>COONa) er dæmi um stuðpúða sem samanstendur af veikri sýru og salti hennar. Dæmi um stuðpúða sem samanstendur af veikum basa og salti hans er lausn af ammóníaki og ammóníumklóríði (NH<sub>3</sub>(<emphasis effect="italics">aq</emphasis>) + NH<sub>4</sub>Cl(<emphasis effect="italics">aq</emphasis>)).</para>
+<figure id="CNX_Chem_14_06_compare" class="scaled-down">
+<media id="fs-idm104574592" alt="Two images are shown. Image a on the left shows two beakers that each contain yellow solutions. The beaker on the left is labeled “Unbuffered” and the beaker on the right is labeled “p H equals 8.0 buffer.” Image b similarly shows 2 beakers. The beaker on the left contains a bright orange solution and is labeled “Unbuffered.” The beaker on the right is labeled “p H equals 8.0 buffer.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_06_compare.jpg"/>
+</media>
+<caption>(a) Óstuðpúðuð lausn til vinstri og stuðpúðuð lausn til hægri hafa sama pH (pH 8); þær eru basiskar og sýna gulan lit litvísisins metýlappelsínuguls við þetta pH. (b) Eftir álagningu á 1 ml af 0,01-<emphasis effect="italics">M</emphasis> HCl-lausn hefur pH stuðpúðuðu lausnarinnar ekki breyst merkjanlega en óstuðpúðaða lausnin er orðin súr, eins og sést á litabreytingu metýlappelsínuguls, sem verður rautt við pH um 4. (Heimild: breytt útgáfa af vinnu Mark Ott)</caption>
+</figure>
+<section id="fs-idm112960288">
+<title>Hvernig stuðpúðar virka</title>
+<para id="fs-idm127493136">Til að sýna fram á virkni stuðpúðalausnar skulum við skoða efnablöndu af nokkurn veginn jöfnu magni af ediksýru og natríumasetati. Tilvist veiks samoka sýru-basa pars í lausninni veitir henni getu til að hlutleysa takmarkað magn af sterkri sýru eða basa sem bætt er við. Til dæmis mun sterkur basi sem bætt er í þessa lausn hlutleysa hýdróníumjón, sem veldur því að jafnvægi jónunar ediksýru hliðrast til hægri og myndar viðbótarmagn af veika samoka basanum (asetatjón):</para>
+<equation id="fs-idm105688000" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp41915456">Sömuleiðis mun sterk sýra sem bætt er í þessa stuðpúðalausn hliðra ofangreindu jónunarjafnvægi til vinstri og mynda viðbótarmagn af veiku samoka sýrunni (ediksýru). <link target-id="CNX_Chem_14_06_bufferchrt"/> sýnir myndrænt breytingar á styrk samoka para sem verða í þessari stuðpúðalausn þegar sterkri sýru og basa er bætt við. Stuðpúðavirkni lausnarinnar er í raun afleiðing þess að viðbætt sterk sýra og basi breytast í veiku sýruna og basann sem mynda samoka par stuðpúðans. Veikari sýran og basinn gangast aðeins undir smávægilega jónun, samanborið við fullkomna jónun sterkrar sýru og basa, og því breytist pH lausnarinnar mun minna en það myndi gera í óstuðpúðaðri lausn.</para>
+<figure id="CNX_Chem_14_06_bufferchrt"><media id="fs-idp38705984" alt="This figure begins with a chemical reaction at the top: C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O superscript positive sign ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ). Below the text is a figure that resembles a bar graph. In the middle are two bars of equal height. One is labeled, “C H subscript 3 C O O H,” and the other is labeled, “C H subscript 3 C O O superscript negative sign.” There is a dotted line at the same height of the bars which extends to the left and right. Above these two bars is the phrase, “Buffer solution equimolar in acid and base.” There is an arrow pointing to the right which is labeled, “Add O H superscript negative sign.” The arrow points to two bars again, but this time the C H subscript 3 C O O H bar is shorter than that C H subscript 3 C O O superscript negative sign bar. Above these two bars is the phrase, “Buffer solution after addition of strong base.” From the middle bars again, there is an arrow that points left. The arrow is labeled, “Add H subscript 3 O superscript positive sign.” This arrow points to two bars again, but this time the C H subscript 3 C O O H bar is taller than the C H subscript 3 C O O superscript negative sign bar. These two bars are labeled, “Buffer solution after addition of strong acid.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_06_bufferchrt.jpg"/>
+</media>
+
+<caption>Stuðpúðavirkni í efnablöndu af ediksýru og asetatsalti.</caption></figure>
+<example id="fs-idm144695456"><para id="fs-idm145736240"><title>pH-breytingar í stuðpúðuðum og óstuðpúðuðum lausnum</title>Asetatstuðpúðar eru notaðir í lífefnafræðilegum rannsóknum á ensímum og öðrum efnaþáttum frumna til að koma í veg fyrir pH-breytingar sem gætu haft áhrif á lífefnafræðilega virkni þessara efnasambanda.</para>
+<para id="fs-idp41841344">(a) Reiknaðu pH asetatstuðpúða sem er efnablanda með 0,10 <emphasis effect="italics">M</emphasis> ediksýru og 0,10 <emphasis effect="italics">M</emphasis> natríumasetati.</para>
+<para id="fs-idm197032080">(b) Reiknaðu pH eftir að 1,0 ml af 0,10 NaOH er bætt við 100 ml af þessum stuðpúða.</para>
+<para id="fs-idm215059040">(c) Til samanburðar, reiknaðu pH eftir að 1,0 ml af 0,10 <emphasis effect="italics">M</emphasis> NaOH er bætt við 100 ml af óstuðpúðaðri lausn með pH 4,74.</para>
+<para id="fs-idm105719280"><title>Lausn</title></para>
+<para id="fs-idm224056512">(a) Með því að fylgja ICE-aðferðinni við þennan jafnvægisútreikning fæst eftirfarandi:</para>
+<media id="fs-idm123715040" alt="This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “[ C H subscript 3 C O subscript 2 H ] [ H subscript 2 O ] equilibrium arrow H subscript 3 O superscript plus sign [ C H subscript 3 C O subscript 2 superscript negative sign ].” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus sign x. The second column is blank. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0.10, positive x, 0.10 plus sign x.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_06_ICETable16_img.jpg"/>
+</media>
+<para id="fs-idm192051584">Með því að setja jafnvægisstyrksliðina inn í <emphasis effect="italics">K</emphasis><sub>a</sub> jöfnuna, gera ráð fyrir að <emphasis effect="italics">x</emphasis> &lt;&lt; 0,10, og leysa einfölduðu jöfnuna fyrir <emphasis effect="italics">x</emphasis> fæst</para>
+<equation id="fs-idm7012176" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mi>M</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idm109618832" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idm165278336" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></equation>
+<equation id="fs-idm111454032" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mn>4.74</m:mn></m:mrow></m:math></equation>
+<para id="fs-idp98075040">(b) Reiknaðu pH eftir að 1,0 ml af 0,10 <emphasis effect="italics">M</emphasis> NaOH er bætt við 100 ml af þessum stuðpúða.</para>
+<para id="fs-idm196351552">Álagning á sterkum basa mun hlutleysa hluta af ediksýrunni og mynda samoka basann asetatjón. Reiknaðu nýjan styrk þessara tveggja stuðpúðaþátta og endurtaktu síðan jafnvægisútreikninginn úr lið (a) með þessum nýja styrk.</para><equation id="fs-idm110133872" class="unnumbered"><m:math><m:mrow><m:mn>0.0010</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mtext>mol NaOH</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol NaOH</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm223581568">Upphaflegt mólmagn ediksýru er</para>
+<equation id="fs-idm53635376" class="unnumbered"><m:math><m:mrow><m:mn>0.100</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.100</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm162724496">Magn ediksýru sem eftir er eftir að hluti hennar hefur verið hlutleystur af viðbættum basa er</para>
+<equation id="fs-idm91870896" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>0.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.99</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm178487280">Nýmyndaða asetatjónin, ásamt upphaflega til staðar asetatinu, gefur lokastyrk asetats upp á</para>
+<equation id="fs-idp82833792" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NaCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm213828416">Reiknaðu mólstyrk fyrir báða stuðpúðaþættina:</para>
+<equation id="fs-idm165714384" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>9.9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>0.101</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.098</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idp22032080" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NaCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>0.101</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.100</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm198587408">Með því að nota þennan styrk má reikna pH lausnarinnar eins og í lið (a) hér að ofan, sem gefur pH = 4,75 (aðeins lítillega frábrugðið því sem var áður en sterkum basanum var bætt við).</para>
+<para id="fs-idm140802864">(c) Til samanburðar, reiknaðu pH eftir að 1,0 ml af 0,10 <emphasis effect="italics">M</emphasis> NaOH er bætt við 100 ml af óstuðpúðaðri lausn með pH 4,74.</para>
+<para id="fs-idm216667360">Magn oxóníumjónarinnar sem upphaflega er til staðar í lausninni er</para>
+<equation id="fs-idm181266816" class="unnumbered"><m:math>
+<m:mrow>
+<m:mo stretchy="false">[</m:mo><m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msup>
+<m:mtext>O</m:mtext>
+<m:mo>+</m:mo>
+</m:msup>
+<m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msup>
+<m:mrow>
+<m:mn>10</m:mn></m:mrow>
+<m:mrow>
+<m:mo>−</m:mo><m:mn>4.74</m:mn></m:mrow>
+</m:msup>
+<m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mrow>
+<m:mn>10</m:mn></m:mrow>
+<m:mrow>
+<m:mo>−</m:mo><m:mn>5</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow>
+</m:math>
+</equation>
+<equation id="fs-idm226340192" class="unnumbered"><m:math>
+<m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msup>
+<m:mtext>O</m:mtext>
+<m:mo>+</m:mo>
+</m:msup>
+<m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.100</m:mn><m:mspace width="0.2em"/><m:mi>L</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−5</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mi>M</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−6</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msup>
+<m:mtext>O</m:mtext>
+<m:mo>+</m:mo>
+</m:msup>
+
+</m:math>
+</equation>
+<para id="fs-idm213735984">Magn hýdroxíðjónarinnar sem bætt er í lausnina er</para>
+<equation id="fs-idm167813376" class="unnumbered"><m:math>
+<m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup>
+<m:mtext>OH</m:mtext>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.0010</m:mn><m:mspace width="0.2em"/><m:mi>L</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−4</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup>
+<m:mtext>OH</m:mtext>
+<m:mo>−</m:mo>
+</m:msup>
+
+</m:math>
+</equation>
+<para id="fs-idm184173168">Viðbætt hýdroxíð mun hlutleysa oxóníumjónina með efnahvarfinu</para>
+<equation id="fs-idm213939888" class="unnumbered"><m:math>
+<m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msup>
+<m:mtext>O</m:mtext>
+<m:mo>+</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup>
+<m:mtext>OH</m:mtext>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>⇋</m:mo><m:mn>2</m:mn><m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo>
+</m:math>
+</equation>
+<para id="fs-idm174460304">Hlutfallaefnafræði þessa efnahvarfs, 1:1, sýnir að umframmagn af hýdroxíði hefur verið bætt við (meira mólmagn en af oxóníumjóninni sem var upphaflega til staðar).</para>
+<para id="fs-idm201883456">Magn hýdroxíðjónarinnar sem eftir er er</para>
+<equation id="fs-idm215027392" class="unnumbered"><m:math>
+<m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−4</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−6</m:mn></m:mrow>
+</m:msup>
+<m:mtext>mol</m:mtext><m:mo>=</m:mo><m:mn>9.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−5</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup>
+<m:mtext>OH</m:mtext>
+<m:mo>−</m:mo>
+</m:msup>
+
+</m:math>
+</equation>
+<para id="fs-idm225014800">sem samsvarar mólstyrk hýdroxíðs upp á</para>
+<equation id="fs-idm215810016" class="unnumbered"><m:math>
+<m:mn>9.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−5</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup>
+<m:mtext>OH</m:mtext>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mtext>/</m:mtext><m:mn>0.101</m:mn><m:mspace width="0.2em"/><m:mi>L</m:mi><m:mo>=</m:mo><m:mn>9.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−4</m:mn></m:mrow>
+</m:msup>
+<m:mspace width="0.2em"/><m:mi>M</m:mi>
+</m:math>
+</equation>
+<para id="fs-idm198420016">pH lausnarinnar er þá reiknað</para>
+<equation id="fs-idm226155632" class="unnumbered"><m:math>
+<m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mo stretchy="false">(</m:mo><m:mn>9.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mn>−4</m:mn></m:mrow>
+</m:msup>
+<m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>10.99</m:mn>
+</m:math>
+</equation>
+<para id="fs-idm215525104">Í þessari óstýrðu lausn veldur álagning basans verulegri hækkun á pH (úr 4,74 í 10,99) samanborið við mjög litla aukningu sem sást í stuðpúðalausninni í hluta (b) (úr 4,74 í 4,75).</para>
+<para id="fs-idm159189968"><title>Kannaðu þekkingu þína</title>Sýndu að með því að bæta 1,0 ml af 0,10 <emphasis effect="italics">M</emphasis> HCl breytist pH 100 ml af 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> <emphasis effect="italics">M</emphasis> HCl-lausn úr 4,74 í 3,00.</para>
+<note id="fs-idm145837936">
+<title>Answer:</title>
+<para id="fs-idm119337184">Upphafs-pH 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> <emphasis effect="italics">M</emphasis> HCl; pH = −log[H<sub>3</sub>O<sup>+</sup>] = −log[1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup>] = 4,74<newline/> Mól af H<sub>3</sub>O<sup>+</sup> í 100 ml 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> <emphasis effect="italics">M</emphasis> HCl; 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> mól/L <m:math><m:mo>×</m:mo></m:math> 0,100 L = 1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup><newline/> Mól af H<sub>3</sub>O<sup>+</sup> bætt við með álagningu 1,0 ml af 0,10 <emphasis effect="italics">M</emphasis> HCl: 0,10 mól/L <m:math><m:mo>×</m:mo></m:math> 0,0010 L = 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mól; loka-pH eftir álagningu 1,0 ml af 0,10 <emphasis effect="italics">M</emphasis> HCl:<newline/> <equation id="fs-idm103691008" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>total moles</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mrow><m:mtext>total volume</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mo>+</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>101</m:mn><m:mspace width="0.2em"/><m:mtext>mL</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>mL</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>3.00</m:mn></m:mrow></m:math></equation></para></note>
+</example>
+</section>
+<section id="fs-idp107911744">
+<title>Stuðpúðageta</title>
+<para id="fs-idm68764768">Stuðpúðalausnir hafa ekki ótakmarkaða getu til að halda pH-gildinu tiltölulega stöðugu (<link target-id="CNX_Chem_14_06_exhaust"/>). Þess í stað byggir geta stuðpúðalausnar til að standast breytingar á pH á því að umtalsvert magn af samoka veiku sýru-basa pari hennar sé til staðar. Þegar nægilega mikilli sterkri sýru eða basa er bætt við til að lækka styrk annars hvors meðlims stuðpúðaparsins verulega, skerðist stuðpúðavirkni lausnarinnar.</para>
+<figure id="CNX_Chem_14_06_exhaust" class="scaled-down">
+<media id="fs-idm195031712" alt="Three Vernier LabQuest devices measure pH: 8.00 (yellow solution), 7.66 (yellow solution), and 1.53 (red solution), demonstrating a range of pH values.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_06_exhaust.jpg"/>
+</media>
+<caption>Litur litvísisins (metýlappelsínugulur) sýnir að lítið magn af sýru sem bætt er í stuðpúðalausn með pH 8 (bikarglasið til vinstri) hefur lítil áhrif á stuðpúðakerfið (miðbikarglasið). Hins vegar tæmir mikið magn af sýru stuðpúðagetu lausnarinnar og pH breytist verulega (bikarglasið til hægri). (Heimild: breyting á vinnu eftir Mark Ott)</caption>
+</figure>
+<para id="fs-idm103629216"><term id="term-00002">Stuðpúðageta (e. buffer capacity)</term> er það magn sýru eða basa sem hægt er að bæta við tiltekið rúmmál stuðpúðalausnar áður en pH breytist verulega, venjulega um eina einingu. Stuðpúðageta fer eftir magni veikrar sýru og samoka basa hennar sem eru í stuðpúðablöndu. Til dæmis hefur 1 L af lausn sem er 1,0 <emphasis effect="italics">M</emphasis> í ediksýru og 1,0 <emphasis effect="italics">M</emphasis> í natríumasetati meiri stuðpúðagetu en 1 L af lausn sem er 0,10 <emphasis effect="italics">M</emphasis> í ediksýru og 0,10 <emphasis effect="italics">M</emphasis> í natríumasetati, jafnvel þótt báðar lausnirnar hafi sama pH. Fyrri lausnin hefur meiri stuðpúðagetu vegna þess að hún inniheldur meira af ediksýru og asetatjón.</para>
+</section>
+<section id="fs-idm124351376">
+<title>Val á hentugum stuðpúðablöndum</title>
+<list id="fs-idm128259280" list-type="enumerated" number-style="arabic">
+<item>Góð stuðpúðaefnablanda ætti að hafa nokkurn veginn jafnan styrk beggja efnisþátta sinna. Stuðpúðalausn hefur almennt glatað notagildi sínu þegar annar efnisþáttur stuðpúðaparsins er minna en um 10% af hinum. <link target-id="CNX_Chem_14_06_buffer"/> sýnir hvernig pH breytist fyrir stuðpúða úr ediksýru og asetatjón þegar basa er bætt við. Upphafs-pH er 4,74. Breyting um 1 pH-einingu verður þegar styrkur ediksýru minnkar niður í 11% af styrk asetatjónarinnar.<newline/></item>
+<item>Veikar sýrur og sölt þeirra henta betur sem stuðpúðar fyrir pH undir 7; veikir basar og sölt þeirra henta betur sem stuðpúðar fyrir pH yfir 7.</item>
+</list>
+<para id="fs-idp2820144">Það eru tvær gagnlegar þumalputtareglur til að velja stuðpúðaefnablöndur:</para>
+<figure id="CNX_Chem_14_06_buffer" class="scaled-down">
+<media id="fs-idm112112448" alt="A graph is shown with a horizontal axis labeled “Added m L of 0.10 M N a O H” which has markings and vertical gridlines every 10 units from 0 to 110. The vertical axis is labeled “p H” and is marked every 1 unit beginning at 0 extending to 11. A break is shown in the vertical axis between 0 and 4. A red curve is drawn on the graph which increases gradually from the point (0, 4.8) up to about (100, 7) after which the graph has a vertical section up to about (100, 11). The curve is labeled [ C H subscript 3 C O subscript 2 H ] is 11 percent of [ C H subscript 3 CO subscript 2 superscript negative].">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_06_buffer.jpg"/>
+</media>
+<caption>Breyting á pH eftir því sem vaxandi magni af 0,10-<emphasis effect="italics">M</emphasis> NaOH-lausn er bætt við 100 ml af stuðpúðalausn þar sem upphaflega er [CH<sub>3</sub>CO<sub>2</sub>H] = 0,10 <emphasis effect="italics">M</emphasis> og <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mo>.</m:mo></m:mrow></m:math> Takið eftir verulega minnkaðri stuðpúðavirkni eftir að stuðpúðagetu er náð, sem leiðir til snarprar hækkunar á pH þegar meiri sterkum basa er bætt við.</caption>
+</figure>
+<para id="fs-idm53419232">Blóð er mikilvægt dæmi um stuðpúðalausn, þar sem aðalsýran og -jónin sem bera ábyrgð á stuðpúðavirkni eru kolsýra, H<sub>2</sub>CO<sub>3</sub>, og bíkarbónatjónin, <m:math><m:mrow><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math> Þegar hýdróníumjón kemur inn í blóðrásina er hún aðallega fjarlægð með hvarfinu:</para>
+<equation id="fs-idm106059312" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm109728256">Viðbætt hýdroxíðjón er fjarlægð með hvarfinu:</para>
+<equation id="fs-idm145990368" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp65661488">Sterka sýran eða basinn sem bætt er við breytist þannig í raun í mun veikari sýru eða basa stuðpúðaparsins (H<sub>3</sub>O<sup>+</sup> breytist í H<sub>2</sub>CO<sub>3</sub> og OH<sup>-</sup> breytist í HCO<sub>3</sub><sup>-</sup>). pH-gildi mannsblóðs helst því mjög nálægt gildinu sem ákvarðast af pKa stuðpúðaparanna, í þessu tilfelli 7,35. Venjulegar sveiflur í pH-gildi blóðs eru yfirleitt minni en 0,1 og pH-breytingar um 0,4 eða meira eru líklega banvænar.</para>
+</section>
+<section id="fs-idm153676976">
+<title>Henderson-Hasselbalch-jafnan</title>
+<para id="fs-idm154866768">Jónunarfastajöfnuna fyrir lausn af veikri sýru má skrifa sem:</para>
+<equation id="fs-idm43593456" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mtext>A</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mtext>[HA]</m:mtext></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm87196592">Ef jöfnunni er umskipað til að leysa fyrir [H<sub>3</sub>O<sup>+</sup>] fæst:</para>
+<equation id="fs-idm97934592" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mtext>[HA]</m:mtext></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mtext>A</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp10558896">Ef neikvæði logrinn er tekinn af báðum hliðum þessarar jöfnu fæst</para>
+<equation id="fs-idp26801296" class="unnumbered"><m:math><m:mrow><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>−log</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mtext>− log</m:mtext><m:mfrac><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>HA</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mtext>A</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>,</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp7990848">sem má skrifa sem</para>
+<equation id="fs-idp2699408" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mtext>A</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>HA</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp97287200">þar sem p<emphasis effect="italics">K</emphasis><sub>a</sub> er neikvæði logrinn af jónunarfastanum fyrir veiku sýruna (p<emphasis effect="italics">K</emphasis><sub>a</sub> = −log <emphasis effect="italics">K</emphasis><sub>a</sub>). Þessi jafna tengir saman pH, jónunarfastann fyrir veika sýru og styrk veika samsýru-basaparsins í stuðpúðalausn. Vísindamenn nota oft þessa jöfnu, sem kölluð er <term id="term-00003">Henderson-Hasselbalch-jafnan (e. henderson-hasselbalch equation)</term>, til að reikna út pH stuðpúðalausna. Mikilvægt er að hafa í huga að forsendan um að „<emphasis effect="italics">x</emphasis> sé lítið“ verður að vera gild til að nota þessa jöfnu.</para>
+<note id="fs-idp1420208" class="chemistry chemist-portrait">
+<title>Lawrence Joseph Henderson og Karl Albert Hasselbalch</title>
+<para id="fs-idm68026080">Lawrence Joseph <term class="no-emphasis" id="term-00004">Henderson</term> (1878–1942) var bandarískur læknir, lífefnafræðingur og lífeðlisfræðingur, svo fátt eitt sé nefnt af mörgum viðfangsefnum hans. Hann lauk læknaprófi frá Harvard og var síðan í 2 ár við nám í Strassborg, sem þá var hluti af Þýskalandi, áður en hann sneri aftur og tók við lektorsstöðu við Harvard. Hann varð að lokum prófessor við Harvard og starfaði þar alla sína ævi. Hann uppgötvaði að sýru-basa jafnvægi í mannsblóði er stjórnað af stuðpúðakerfi sem myndast af uppleystu koldíoxíði í blóði. Hann skrifaði jöfnu árið 1908 til að lýsa kolsýru-karbónat stuðpúðakerfinu í blóði. Henderson var víðlesinn; auk mikilvægra rannsókna sinna á lífeðlisfræði blóðs skrifaði hann einnig um aðlögun lífvera og samspil þeirra við umhverfi sitt, um félagsfræði og um háskólamenntun. Hann stofnaði einnig Þreyturannsóknarstofuna (Fatigue Laboratory) við Harvard Business School, sem rannsakaði lífeðlisfræði mannsins með sérstakri áherslu á vinnu í iðnaði, hreyfingu og næringu.</para>
+<para id="fs-idp6637456">Árið 1916 var Karl Albert <term class="no-emphasis" id="term-00005">Hasselbalch</term> (1874–1962), danskur læknir og efnafræðingur, meðhöfundur að grein með Christian Bohr árið 1904 sem lýsti Bohr-áhrifunum, sem sýndu að geta blóðrauða í blóði til að bindast súrefni var í öfugu hlutfalli við sýrustig blóðsins og styrk koldíoxíðs. pH-kvarðinn var kynntur til sögunnar árið 1909 af öðrum Dana, Sørensen, og árið 1912 birti Hasselbalch mælingar á pH-gildi blóðs. Árið 1916 setti Hasselbalch jöfnu Hendersons fram á lograkvarða, í samræmi við lograkvarða pH, og þannig varð Henderson-Hasselbalch-jafnan til.</para>
+</note>
+<note id="fs-idm2834272" class="chemistry sciences-interconnect"><label/>
+<title>Læknisfræði: Stuðpúðakerfið í blóði</title>
+<para id="fs-idm108618160">Venjulegt pH-gildi mannsblóðs er um 7,4. Karbónat-stuðpúðakerfið í blóðinu notar eftirfarandi jafnvægishvarf:</para>
+<equation id="fs-idm2229488" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm43954064">Styrkur kolsýru, H<sub>2</sub>CO<sub>3</sub>, er um það bil 0,0012 <emphasis effect="italics">M</emphasis> og styrkur vetniskarbónatjónarinnar, <m:math><m:mrow><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>, er um 0,024 <emphasis effect="italics">M</emphasis>. Með því að nota Henderson-Hasselbalch-jöfnuna og p<emphasis effect="italics">K</emphasis><sub>a</sub> kolsýru við líkamshita getum við reiknað út pH-gildi blóðs:</para>
+<equation id="fs-idp15032160" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>base</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>acid</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>6.4</m:mn><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mn>0.024</m:mn></m:mrow><m:mrow><m:mn>0.0012</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>7.7</m:mn></m:mrow></m:math></equation><para id="fs-idm108864208">Sú staðreynd að styrkur H<sub>2</sub>CO<sub>3</sub> er umtalsvert lægri en styrkur <m:math><m:mrow><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jónarinnar kann að virðast óvenjuleg, en þetta ójafnvægi stafar af því að flestar aukaafurðir efnaskipta okkar sem berast í blóðrásina eru súrar. Þess vegna verður hlutfallið af basa að vera stærra en af sýru, svo að afkastageta stuðpúðans verði ekki uppurin.</para>
+<para id="fs-idm136676864">Mjólkursýra myndast í vöðvum okkar þegar við hreyfum okkur. Þegar mjólkursýran berst í blóðrásina er hún hlutleyst af <m:math><m:mrow><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jóninni og myndar H<sub>2</sub>CO<sub>3</sub>. Ensím hraðar síðan niðurbroti umframmagns kolsýru í koldíoxíð og vatn, sem hægt er að losna við með öndun. Reyndar, auk stjórnunaráhrifa kolsýrustuðpúðakerfisins á pH blóðsins, notar líkaminn öndun til að stjórna pH blóðsins. Ef pH blóðsins lækkar of mikið, fjarlægir aukin öndun CO<sub>2</sub> úr blóðinu í gegnum lungun og knýr jafnvægisefnahvarfið þannig að [H<sub>3</sub>O<sup>+</sup>] lækkar. Ef blóðið er of basískt eykur hægari öndun styrk CO<sub>2</sub> í blóðinu, sem knýr jafnvægisefnahvarfið í hina áttina, eykur [H<sup>+</sup>] og endurheimtir viðeigandi pH.</para>
+</note>
+<note id="fs-idp49477328" class="chemistry link-to-learning">
+<para id="fs-idm108605600">Skoðaðu <link url="http://openstax.org/l/16BufferSystem">upplýsingar</link> um stuðpúðakerfið sem finnst í náttúrulegu vatni.</para>
+</note>
+</section>
+<section id="fs-idm104045184" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm115041904">Lausnir sem innihalda umtalsvert magn af veiku samoka sýru-basa pari kallast stuðpúðar. Stuðpúðalausn mun aðeins verða fyrir smávægilegum breytingum á pH þegar litlu magni af sýru eða basa er bætt við. Álagning á miklu magni af sýru eða basa getur farið fram úr stuðpúðagetu, neytt mestalls af öðrum samoka efninu og komið í veg fyrir frekari stuðpúðavirkni.</para>
+</section>
+<section id="fs-idm101899904" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry>p<emphasis effect="italics">K</emphasis><sub>a</sub> = −log <emphasis effect="italics">K</emphasis><sub>a</sub></entry>
+</row>
+<row><entry>p<emphasis effect="italics">K</emphasis><sub>b</sub> = −log <emphasis effect="italics">K</emphasis><sub>b</sub></entry>
+</row>
+<row><entry><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mtext>A</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>HA</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idp119412416" class="exercises">
+<exercise id="fs-idm2126064">
+<problem id="fs-idm143472640">
+<para id="fs-idp15824512">Útskýrðu hvers vegna hægt er að útbúa stuðpúða úr efnablöndu af NH<sub>4</sub>Cl og NaOH en ekki úr NH<sub>3</sub> og NaOH.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm81726160">
+<problem id="fs-idp14857472">
+<para id="fs-idm103659360">Útskýrðu hvers vegna pH breytist ekki marktækt þegar litlu magni af sýru eða basa er bætt við lausn sem inniheldur jafn mikið af sýrunni H<sub>3</sub>PO<sub>4</sub> og salti af samoka basa hennar, NaH<sub>2</sub>PO<sub>4</sub>.</para>
+</problem>
+<solution id="fs-idp11820624">
+<para id="fs-idp81063024">Umframmagn H<sub>3</sub>O<sup>+</sup> er aðallega fjarlægt með efnahvarfinu: <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math><newline/> Umframmagn basa er fjarlægt með efnahvarfinu: <m:math><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para></solution>
+</exercise>
+<exercise id="fs-idp21075184">
+<problem id="fs-idm162152320">
+<para id="fs-idm25948352">Útskýrðu hvers vegna pH breytist ekki marktækt þegar litlu magni af sýru eða basa er bætt við lausn sem inniheldur jafn mikið af basanum NH<sub>3</sub> og salti af samoka sýru hans, NH<sub>4</sub>Cl.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp10424992">
+<problem id="fs-idm113996224">
+<para id="fs-idm118172320">Hvað er [H<sub>3</sub>O<sup>+</sup>] í lausn af 0,25 <emphasis effect="italics">M</emphasis> CH<sub>3</sub>CO<sub>2</sub>H og 0,030 <emphasis effect="italics">M</emphasis> NaCH<sub>3</sub>CO<sub>2</sub>?<newline/> <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idm1744464">
+<para id="fs-idm115330864">[H<sub>3</sub>O<sup>+</sup>] = 1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idm163403536">
+<problem id="fs-idm57321696">
+<para id="fs-idm63656480">Hvað er [H<sub>3</sub>O<sup>+</sup>] í lausn af 0,075 <emphasis effect="italics">M</emphasis> HNO<sub>2</sub> og 0,030 <emphasis effect="italics">M</emphasis> NaNO<sub>2</sub>?<newline/> <m:math><m:mrow><m:msub><m:mrow><m:mtext>HNO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>4.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp11460800">
+<problem id="fs-idm87207664">
+<para id="fs-idm165406368">Hvað er [OH<sup>−</sup>] í lausn af 0,125 <emphasis effect="italics">M</emphasis> CH<sub>3</sub>NH<sub>2</sub> og 0,130 <emphasis effect="italics">M</emphasis> CH<sub>3</sub>NH<sub>3</sub>Cl?<newline/> <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mo>=</m:mo><m:mn>4.4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idm177719888">
+<para id="fs-idm233737504">[OH<sup>−</sup>] = 4,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idm111908400">
+<problem id="fs-idm68209600">
+<para id="fs-idm57608480">Hvað er [OH<sup>−</sup>] í lausn af 1,25 <emphasis effect="italics">M</emphasis> NH<sub>3</sub> og 0,78 <emphasis effect="italics">M</emphasis> NH<sub>4</sub>NO<sub>3</sub>?<newline/> <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idm108992432">
+<problem id="fs-idm108992176">
+<para id="fs-idp157984">Hver eru áhrifin á styrk ediksýru, hýdróníumjónar og asetatjónar þegar eftirfarandi er bætt við súra stuðpúðalausn með jöfnum styrk ediksýru og natríumasetats:</para>
+<para id="fs-idm109613408">(a) HCl</para>
+<para id="fs-idm109613024">(b) KCH<sub>3</sub>CO<sub>2</sub></para>
+<para id="fs-idm152181744">(c) NaCl</para>
+<para id="fs-idm152181360">(d) KOH</para>
+<para id="fs-idm105458864">(e) CH<sub>3</sub>CO<sub>2</sub>H</para>
+</problem>
+<solution id="fs-idm123082048">
+<para id="fs-idm123081792">(a) Viðbætt HCl mun auka styrk H<sub>3</sub>O<sup>+</sup> lítillega, sem mun hvarfast við <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> og mynda CH<sub>3</sub>CO<sub>2</sub>H í ferlinu. Þannig minnkar <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> og [CH<sub>3</sub>CO<sub>2</sub>H] eykst. (b) Viðbætt KCH<sub>3</sub>CO<sub>2</sub> mun auka styrk <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> sem mun hvarfast við H<sub>3</sub>O<sup>+</sup> og mynda CH<sub>3</sub>CO<sub>2</sub>H í ferlinu. Þannig minnkar [H<sub>3</sub>O<sup>+</sup>] lítillega og [CH<sub>3</sub>CO<sub>2</sub>H] eykst. (c) Viðbætt NaCl mun engin áhrif hafa á styrk jónanna. (d) Viðbætt KOH mun mynda OH<sup>−</sup> jónir, sem munu hvarfast við H<sub>3</sub>O<sup>+</sup> og þannig minnka [H<sub>3</sub>O<sup>+</sup>]. Eitthvað af CH<sub>3</sub>CO<sub>2</sub>H til viðbótar mun sundrast og mynda <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> jónir í ferlinu. Þannig minnkar [CH<sub>3</sub>CO<sub>2</sub>H] lítillega og <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> eykst. (e) Viðbætt CH<sub>3</sub>CO<sub>2</sub>H mun auka styrk þess, sem veldur því að meira af því sundrast og myndar meira af <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> og H<sub>3</sub>O<sup>+</sup> í ferlinu. Þannig eykst [H<sub>3</sub>O<sup>+</sup>] lítillega og <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> eykst.</para></solution>
+</exercise>
+<exercise id="fs-idm126903712">
+<problem id="fs-idp55794496">
+<para id="fs-idp55794752">Hver eru áhrifin á styrk ammóníaks, hýdroxíðjónar og ammóníumjónar þegar eftirfarandi er bætt út í basíska stuðpúðalausn með jöfnum styrk ammóníaks og ammóníumnítrats:</para>
+<para id="fs-idp70891616">(a) KI</para>
+<para id="fs-idp55795008">(b) NH<sub>3</sub></para>
+<para id="fs-idp49994400">(c) HI</para>
+<para id="fs-idm69978240">(d) NaOH</para>
+<para id="fs-idm69977856">(e) NH<sub>4</sub>Cl</para>
+</problem>
+</exercise>
+<exercise id="fs-idp11558384">
+<problem id="fs-idp11558640">
+<para id="fs-idm1392768">Hvert verður pH stuðpúðalausnar sem er búin til úr 0,20 mólum af NH<sub>3</sub>, 0,40 mólum af NH<sub>4</sub>NO<sub>3</sub> og nægu vatni til að gefa 1,00 L af lausn?</para>
+</problem>
+<solution id="fs-idm130070448">
+<para id="fs-idm130070192">pH = 8,95</para>
+</solution>
+</exercise>
+<exercise id="fs-idm128715952">
+<problem id="fs-idm128715696">
+<para id="fs-idm128715440">Reiknaðu pH stuðpúðalausnar sem er búin til úr 0,155 mólum af fosfórsýru, 0,250 mólum af KH<sub>2</sub>PO<sub>4</sub> og nægu vatni til að búa til 0,500 L af lausn.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm105355104">
+<problem id="fs-idm105354848">
+<para id="fs-idm146630688">Hversu miklu af föstu efni NaCH<sub>3</sub>CO<sub>2</sub>•3H<sub>2</sub>O verður að bæta við 0,300 L af 0,50-<emphasis effect="italics">M</emphasis> ediksýrulausn til að fá stuðpúða með pH 5,00? (Vísbending: Gerðu ráð fyrir óverulegri breytingu á rúmmáli þegar fasta efninu er bætt við.)</para>
+</problem>
+<solution id="fs-idm141810560">
+<para id="fs-idm71413376">37 g (0,27 mól)</para>
+</solution>
+</exercise>
+<exercise id="fs-idp80593472">
+<problem id="fs-idp55194448">
+<para id="fs-idp55194704">Hvaða massa af NH<sub>4</sub>Cl verður að bæta við 0,750 L af 0,100-<emphasis effect="italics">M</emphasis> lausn af NH<sub>3</sub> til að fá stuðpúðalausn með pH 9,26? (Vísbending: Gerðu ráð fyrir óverulegri breytingu á rúmmáli þegar fasta efninu er bætt við.)</para>
+</problem>
+</exercise>
+<exercise id="fs-idm148474576">
+<problem id="fs-idm64046784">
+<para id="fs-idm64046528">Stuðpúðalausn er búin til úr jöfnu rúmmáli af 0,200 <emphasis effect="italics">M</emphasis> ediksýru og 0,600 <emphasis effect="italics">M</emphasis> natríumasetati. Notaðu 1,80 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> sem <emphasis effect="italics">K</emphasis><sub>a</sub> fyrir ediksýru.</para>
+<para id="fs-idm28191808">(a) Hvert er pH lausnarinnar?</para>
+<para id="fs-idm96193136">(b) Er lausnin súr eða basísk?</para>
+<para id="fs-idm96192752">(c) Hvert er pH lausnar sem myndast þegar 3,00 ml af 0,034 <emphasis effect="italics">M</emphasis> HCl er bætt við 0,200 L af upprunalega stuðpúðanum?</para>
+</problem>
+<solution id="fs-idm84079584">
+<para id="fs-idp147776">(a) pH = 5,222; (b) Lausnin er súr. (c) pH = 5,220</para></solution>
+</exercise>
+<exercise id="fs-idm111629776">
+<problem id="fs-idm104905504">
+<para id="fs-idm104905248">5,36 g sýni af NH<sub>4</sub>Cl var bætt út í 25,0 ml af 1,00 <emphasis effect="italics">M</emphasis> NaOH og lausnin sem myndaðist var</para>
+<para id="fs-idm2218160">þynnt í 0,100 L.</para>
+<para id="fs-idm105728688">(a) Hvert er pH þessarar stuðpúðalausnar?</para>
+<para id="fs-idm105728304">(b) Er lausnin súr eða basísk?</para>
+<para id="fs-idm105727920">(c) Hvert er pH lausnar sem myndast þegar 3,00 ml af 0,034 <emphasis effect="italics">M</emphasis> HCl er bætt við lausnina?</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp88494848">
+<term>stuðpúðageta (e. buffer capacity)</term>
+<meaning id="fs-idp88494848-meaning">magn sýru eða basa sem hægt er að bæta við rúmmál stuðpúðalausnar áður en pH hennar breytist verulega (venjulega um eina pH-einingu)</meaning>
+</definition>
+<definition id="fs-idp88495904">
+<term>stuðpúði (e. buffer)</term>
+<meaning id="fs-idp88495904-meaning">blanda af umtalsverðu magni af veiku sýru-basa pari. pH stuðpúða þolir breytingar þegar litlu magni af sýru eða basa er bætt við</meaning>
+</definition>
+<definition id="fs-idm71412016">
+<term>Henderson-Hasselbalch-jafnan (e. henderson-hasselbalch equation)</term>
+<meaning id="fs-idm71412016-meaning">lógaritmísk útgáfa af jöfnu sýrujónunarfastans, sniðin á hentugan hátt til að reikna út pH stuðpúðalausna</meaning>
+</definition>
+</glossary>
+</document>

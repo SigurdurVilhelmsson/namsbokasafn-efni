@@ -11,16 +11,16 @@ Explain the concept of atomic orbital hybridization
 Determine the hybrid orbitals associated with various molecular geometries
 
 <!-- SEG:m68745:para:fs-idp15190992 -->
-Thinking in terms of overlapping atomic orbitals is one way for us to explain how chemical bonds form in diatomic molecules. However, to understand how molecules with more than two atoms form stable bonds, we require a more detailed model. As an example, let us consider the water molecule, in which we have one oxygen atom bonding to two hydrogen atoms. Oxygen has the electron configuration 1*s*^2^2*s*^2^2*p*^4^, with two unpaired electrons (one in each of the two 2*p* orbitals). Valence bond theory would predict that the two O–H bonds form from the overlap of these two 2*p* orbitals with the 1*s* orbitals of the hydrogen atoms. If this were the case, the bond angle would be 90°, as shown in [#CNX_Chem_08_02_H2Ovb], because *p* orbitals are perpendicular to each other. Experimental evidence shows that the bond angle is 104.5°, not 90°. The prediction of the valence bond theory model does not match the real-world observations of a water molecule; a different model is needed.
+Thinking in terms of overlapping atomic orbitals is one way for us to explain how chemical bonds form in diatomic molecules. However, to understand how molecules with more than two atoms form stable bonds, we require a more detailed model. As an example, let us consider the water molecule, in which we have one oxygen atom bonding to two hydrogen atoms. Oxygen has the electron configuration 1{{i}}s{{/i}}[[sup:2]]2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:4]], with two unpaired electrons (one in each of the two 2{{i}}p{{/i}} orbitals). Valence bond theory would predict that the two O–H bonds form from the overlap of these two 2{{i}}p{{/i}} orbitals with the 1{{i}}s{{/i}} orbitals of the hydrogen atoms. If this were the case, the bond angle would be 90°, as shown in [#CNX_Chem_08_02_H2Ovb], because {{i}}p{{/i}} orbitals are perpendicular to each other. Experimental evidence shows that the bond angle is 104.5°, not 90°. The prediction of the valence bond theory model does not match the real-world observations of a water molecule; a different model is needed.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_H2Ovb-caption -->
-The hypothetical overlap of two of the 2*p* orbitals on an oxygen atom (red) with the 1*s* orbitals of two hydrogen atoms (blue) would produce a bond angle of 90°. This is not consistent with experimental evidence. [footnote: Note that orbitals may sometimes be drawn in an elongated “balloon” shape rather than in a more realistic “plump” shape in order to make the geometry easier to visualize.]
+The hypothetical overlap of two of the 2{{i}}p{{/i}} orbitals on an oxygen atom (red) with the 1{{i}}s{{/i}} orbitals of two hydrogen atoms (blue) would produce a bond angle of 90°. This is not consistent with experimental evidence. {{fn}}Note that orbitals may sometimes be drawn in an elongated “balloon” shape rather than in a more realistic “plump” shape in order to make the geometry easier to visualize.{{/fn}}
 
 <!-- SEG:m68745:para:fs-idm11485424 -->
-Quantum-mechanical calculations suggest why the observed bond angles in H~2~O differ from those predicted by the overlap of the 1*s* orbital of the hydrogen atoms with the 2*p* orbitals of the oxygen atom. The mathematical expression known as the wave function, *ψ*, contains information about each orbital and the wavelike properties of electrons in an isolated atom. When atoms are bound together in a molecule, the wave functions combine to produce new mathematical descriptions that have different shapes. This process of combining the wave functions for atomic orbitals is called __hybridization__ and is mathematically accomplished by the *linear combination of atomic orbitals*, LCAO, (a technique that we will encounter again later). The new orbitals that result are called __hybrid orbitals__. The valence orbitals in an *isolated* oxygen atom are a 2*s* orbital and three 2*p* orbitals. The valence orbitals in an oxygen atom in a water molecule differ; they consist of four equivalent hybrid orbitals that point approximately toward the corners of a tetrahedron ([#CNX_Chem_08_02_H2Otet]). Consequently, the overlap of the O and H orbitals should result in a tetrahedral bond angle (109.5°). The observed angle of 104.5° is experimental evidence for which quantum-mechanical calculations give a useful explanation: Valence bond theory must include a hybridization component to give accurate predictions.
+Quantum-mechanical calculations suggest why the observed bond angles in H[[sub:2]]O differ from those predicted by the overlap of the 1{{i}}s{{/i}} orbital of the hydrogen atoms with the 2{{i}}p{{/i}} orbitals of the oxygen atom. The mathematical expression known as the wave function, {{i}}ψ{{/i}}, contains information about each orbital and the wavelike properties of electrons in an isolated atom. When atoms are bound together in a molecule, the wave functions combine to produce new mathematical descriptions that have different shapes. This process of combining the wave functions for atomic orbitals is called {{term}}hybridization{{/term}} and is mathematically accomplished by the {{i}}linear combination of atomic orbitals{{/i}}, LCAO, (a technique that we will encounter again later). The new orbitals that result are called {{term}}hybrid orbitals{{/term}}. The valence orbitals in an {{i}}isolated{{/i}} oxygen atom are a 2{{i}}s{{/i}} orbital and three 2{{i}}p{{/i}} orbitals. The valence orbitals in an oxygen atom in a water molecule differ; they consist of four equivalent hybrid orbitals that point approximately toward the corners of a tetrahedron ([#CNX_Chem_08_02_H2Otet]). Consequently, the overlap of the O and H orbitals should result in a tetrahedral bond angle (109.5°). The observed angle of 104.5° is experimental evidence for which quantum-mechanical calculations give a useful explanation: Valence bond theory must include a hybridization component to give accurate predictions.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_H2Otet-caption -->
-(a) A water molecule has four regions of electron density, so VSEPR theory predicts a tetrahedral arrangement of hybrid orbitals. (b) Two of the hybrid orbitals on oxygen contain lone pairs, and the other two overlap with the 1*s* orbitals of hydrogen atoms to form the O–H bonds in H~2~O. This description is more consistent with the experimental structure.
+(a) A water molecule has four regions of electron density, so VSEPR theory predicts a tetrahedral arrangement of hybrid orbitals. (b) Two of the hybrid orbitals on oxygen contain lone pairs, and the other two overlap with the 1{{i}}s{{/i}} orbitals of hydrogen atoms to form the O–H bonds in H[[sub:2]]O. This description is more consistent with the experimental structure.
 
 <!-- SEG:m68745:para:fs-idm27133328 -->
 The following ideas are important in understanding hybridization:
@@ -47,109 +47,109 @@ Hybrid orbitals overlap to form σ bonds. Unhybridized orbitals overlap to form 
 In the following sections, we shall discuss the common types of hybrid orbitals.
 
 <!-- SEG:m68745:title:fs-idp3790928-title -->
-*sp* Hybridization
+{{i}}sp{{/i}} Hybridization
 
 <!-- SEG:m68745:para:fs-idp208078752 -->
-The beryllium atom in a gaseous BeCl~2~ molecule is an example of a central atom with no lone pairs of electrons in a linear arrangement of three atoms. There are two regions of valence electron density in the BeCl~2~ molecule that correspond to the two covalent Be–Cl bonds. To accommodate these two electron domains, two of the Be atom’s four valence orbitals will mix to yield two hybrid orbitals. This hybridization process involves mixing of the valence *s* orbital with one of the valence *p* orbitals to yield two equivalent __*sp* hybrid orbitals__ that are oriented in a linear geometry ([#CNX_Chem_08_02_spGeom]). In this figure, the set of *sp* orbitals appears similar in shape to the original *p* orbital, but there is an important difference. The number of atomic orbitals combined always equals the number of hybrid orbitals formed. The *p* orbital is one orbital that can hold up to two electrons. The *sp* set is two equivalent orbitals that point 180° from each other. The two electrons that were originally in the *s* orbital are now distributed to the two *sp* orbitals, which are half filled. In gaseous BeCl~2~, these half-filled hybrid orbitals will overlap with orbitals from the chlorine atoms to form two identical σ bonds.
+The beryllium atom in a gaseous BeCl[[sub:2]] molecule is an example of a central atom with no lone pairs of electrons in a linear arrangement of three atoms. There are two regions of valence electron density in the BeCl[[sub:2]] molecule that correspond to the two covalent Be–Cl bonds. To accommodate these two electron domains, two of the Be atom’s four valence orbitals will mix to yield two hybrid orbitals. This hybridization process involves mixing of the valence {{i}}s{{/i}} orbital with one of the valence {{i}}p{{/i}} orbitals to yield two equivalent {{term}}{{i}}sp{{/i}} hybrid orbitals{{/term}} that are oriented in a linear geometry ([#CNX_Chem_08_02_spGeom]). In this figure, the set of {{i}}sp{{/i}} orbitals appears similar in shape to the original {{i}}p{{/i}} orbital, but there is an important difference. The number of atomic orbitals combined always equals the number of hybrid orbitals formed. The {{i}}p{{/i}} orbital is one orbital that can hold up to two electrons. The {{i}}sp{{/i}} set is two equivalent orbitals that point 180° from each other. The two electrons that were originally in the {{i}}s{{/i}} orbital are now distributed to the two {{i}}sp{{/i}} orbitals, which are half filled. In gaseous BeCl[[sub:2]], these half-filled hybrid orbitals will overlap with orbitals from the chlorine atoms to form two identical σ bonds.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_spGeom-caption -->
-Hybridization of an *s* orbital (blue) and a *p* orbital (red) of the same atom produces two *sp* hybrid orbitals (yellow). Each hybrid orbital is oriented primarily in just one direction. Note that each *sp* orbital contains one lobe that is significantly larger than the other. The set of two *sp* orbitals are oriented at 180°, which is consistent with the geometry for two domains.
+Hybridization of an {{i}}s{{/i}} orbital (blue) and a {{i}}p{{/i}} orbital (red) of the same atom produces two {{i}}sp{{/i}} hybrid orbitals (yellow). Each hybrid orbital is oriented primarily in just one direction. Note that each {{i}}sp{{/i}} orbital contains one lobe that is significantly larger than the other. The set of two {{i}}sp{{/i}} orbitals are oriented at 180°, which is consistent with the geometry for two domains.
 
 <!-- SEG:m68745:para:fs-idm48014688 -->
 We illustrate the electronic differences in an isolated Be atom and in the bonded Be atom in the orbital energy-level diagram in [#CNX_Chem_08_02_spDiag]. These diagrams represent each orbital by a horizontal line (indicating its energy) and each electron by an arrow. Energy increases toward the top of the diagram. We use one upward arrow to indicate one electron in an orbital and two arrows (up and down) to indicate two electrons of opposite spin.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_spDiag-caption -->
-This orbital energy-level diagram shows the *sp* hybridized orbitals on Be in the linear BeCl~2~ molecule. Each of the two *sp* hybrid orbitals holds one electron and is thus half filled and available for bonding via overlap with a Cl 3*p* orbital.
+This orbital energy-level diagram shows the {{i}}sp{{/i}} hybridized orbitals on Be in the linear BeCl[[sub:2]] molecule. Each of the two {{i}}sp{{/i}} hybrid orbitals holds one electron and is thus half filled and available for bonding via overlap with a Cl 3{{i}}p{{/i}} orbital.
 
 <!-- SEG:m68745:para:fs-idp39983216 -->
-When atomic orbitals hybridize, the valence electrons occupy the newly created orbitals. The Be atom had two valence electrons, so each of the *sp* orbitals gets one of these electrons. Each of these electrons pairs up with the unpaired electron on a chlorine atom when a hybrid orbital and a chlorine orbital overlap during the formation of the Be–Cl bonds.
+When atomic orbitals hybridize, the valence electrons occupy the newly created orbitals. The Be atom had two valence electrons, so each of the {{i}}sp{{/i}} orbitals gets one of these electrons. Each of these electrons pairs up with the unpaired electron on a chlorine atom when a hybrid orbital and a chlorine orbital overlap during the formation of the Be–Cl bonds.
 
 <!-- SEG:m68745:para:fs-idp175314000 -->
-Any central atom surrounded by just two regions of valence electron density in a molecule will exhibit *sp* hybridization. Other examples include the mercury atom in the linear HgCl~2~ molecule, the zinc atom in Zn(CH~3~)~2~, which contains a linear C–Zn–C arrangement, and the carbon atoms in HCCH and CO~2~.
+Any central atom surrounded by just two regions of valence electron density in a molecule will exhibit {{i}}sp{{/i}} hybridization. Other examples include the mercury atom in the linear HgCl[[sub:2]] molecule, the zinc atom in Zn(CH[[sub:3]])[[sub:2]], which contains a linear C–Zn–C arrangement, and the carbon atoms in HCCH and CO[[sub:2]].
 
 <!-- SEG:m68745:para:fs-idp2353136 -->
 Check out the University of Wisconsin-Oshkosh [website](http://openstax.org/l/16hybridorbital) to learn about visualizing hybrid orbitals in three dimensions.
 
 <!-- SEG:m68745:title:fs-idp10041360-title -->
-*sp*^2^ Hybridization
+{{i}}sp{{/i}}[[sup:2]] Hybridization
 
 <!-- SEG:m68745:para:fs-idp31553584 -->
-The valence orbitals of a central atom surrounded by three regions of electron density consist of a set of three __*sp*^2^ hybrid orbitals__ and one unhybridized *p* orbital. This arrangement results from *sp*^2^ hybridization, the mixing of one *s* orbital and two *p* orbitals to produce three identical hybrid orbitals oriented in a trigonal planar geometry ([#CNX_Chem_08_02_sp2Geom]).
+The valence orbitals of a central atom surrounded by three regions of electron density consist of a set of three {{term}}{{i}}sp{{/i}}[[sup:2]] hybrid orbitals{{/term}} and one unhybridized {{i}}p{{/i}} orbital. This arrangement results from {{i}}sp{{/i}}[[sup:2]] hybridization, the mixing of one {{i}}s{{/i}} orbital and two {{i}}p{{/i}} orbitals to produce three identical hybrid orbitals oriented in a trigonal planar geometry ([#CNX_Chem_08_02_sp2Geom]).
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp2Geom-caption -->
-The hybridization of an *s* orbital (blue) and two *p* orbitals (red) produces three equivalent *sp*^2^ hybridized orbitals (yellow) oriented at 120° with respect to each other. The remaining unhybridized *p* orbital is not shown here, but is located along the z axis.
+The hybridization of an {{i}}s{{/i}} orbital (blue) and two {{i}}p{{/i}} orbitals (red) produces three equivalent {{i}}sp{{/i}}[[sup:2]] hybridized orbitals (yellow) oriented at 120° with respect to each other. The remaining unhybridized {{i}}p{{/i}} orbital is not shown here, but is located along the z axis.
 
 <!-- SEG:m68745:para:fs-idp50954864 -->
 Although quantum mechanics yields the “plump” orbital lobes as depicted in [#CNX_Chem_08_02_sp2Geom], sometimes for clarity these orbitals are drawn thinner and without the minor lobes, as in [#CNX_Chem_08_02_sp2Conv], to avoid obscuring other features of a given illustration. We will use these “thinner” representations whenever the true view is too crowded to easily visualize.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp2Conv-caption -->
-This alternate way of drawing the trigonal planar *sp*^2^ hybrid orbitals is sometimes used in more crowded figures.
+This alternate way of drawing the trigonal planar {{i}}sp{{/i}}[[sup:2]] hybrid orbitals is sometimes used in more crowded figures.
 
 <!-- SEG:m68745:para:fs-idp13130576 -->
-The observed structure of the borane molecule, BH~3,~ suggests *sp*^2^ hybridization for boron in this compound. The molecule is trigonal planar, and the boron atom is involved in three bonds to hydrogen atoms ([#CNX_Chem_08_02_BH3]). We can illustrate the comparison of orbitals and electron distribution in an isolated boron atom and in the bonded atom in BH~3~ as shown in the orbital energy level diagram in [#CNX_Chem_08_02_BH3Diag]. We redistribute the three valence electrons of the boron atom in the three *sp*^2^ hybrid orbitals, and each boron electron pairs with a hydrogen electron when B–H bonds form.
+The observed structure of the borane molecule, BH[[sub:3,]] suggests {{i}}sp{{/i}}[[sup:2]] hybridization for boron in this compound. The molecule is trigonal planar, and the boron atom is involved in three bonds to hydrogen atoms ([#CNX_Chem_08_02_BH3]). We can illustrate the comparison of orbitals and electron distribution in an isolated boron atom and in the bonded atom in BH[[sub:3]] as shown in the orbital energy level diagram in [#CNX_Chem_08_02_BH3Diag]. We redistribute the three valence electrons of the boron atom in the three {{i}}sp{{/i}}[[sup:2]] hybrid orbitals, and each boron electron pairs with a hydrogen electron when B–H bonds form.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_BH3-caption -->
-BH~3~ is an electron-deficient molecule with a trigonal planar structure.
+BH[[sub:3]] is an electron-deficient molecule with a trigonal planar structure.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_BH3Diag-caption -->
-In an isolated B atom, there are one 2*s* and three 2*p* valence orbitals. When boron is in a molecule with three regions of electron density, three of the orbitals hybridize and create a set of three *sp*^2^ orbitals and one unhybridized 2*p* orbital. The three half-filled hybrid orbitals each overlap with an orbital from a hydrogen atom to form three σ bonds in BH~3~.
+In an isolated B atom, there are one 2{{i}}s{{/i}} and three 2{{i}}p{{/i}} valence orbitals. When boron is in a molecule with three regions of electron density, three of the orbitals hybridize and create a set of three {{i}}sp{{/i}}[[sup:2]] orbitals and one unhybridized 2{{i}}p{{/i}} orbital. The three half-filled hybrid orbitals each overlap with an orbital from a hydrogen atom to form three σ bonds in BH[[sub:3]].
 
 <!-- SEG:m68745:para:fs-idp53853968 -->
-Any central atom surrounded by three regions of electron density will exhibit *sp*^2^ hybridization. This includes molecules with a lone pair on the central atom, such as ClNO ([#CNX_Chem_08_02_sp2Ex]), or molecules with two single bonds and a double bond connected to the central atom, as in formaldehyde, CH~2~O, and ethene, H~2~CCH~2~.
+Any central atom surrounded by three regions of electron density will exhibit {{i}}sp{{/i}}[[sup:2]] hybridization. This includes molecules with a lone pair on the central atom, such as ClNO ([#CNX_Chem_08_02_sp2Ex]), or molecules with two single bonds and a double bond connected to the central atom, as in formaldehyde, CH[[sub:2]]O, and ethene, H[[sub:2]]CCH[[sub:2]].
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp2Ex-caption -->
-The central atom(s) in each of the structures shown contain three regions of electron density and are *sp*^2^ hybridized. As we know from the discussion of VSEPR theory, a region of electron density contains all of the electrons that point in one direction. A lone pair, an unpaired electron, a single bond, or a multiple bond would each count as one region of electron density.
+The central atom(s) in each of the structures shown contain three regions of electron density and are {{i}}sp{{/i}}[[sup:2]] hybridized. As we know from the discussion of VSEPR theory, a region of electron density contains all of the electrons that point in one direction. A lone pair, an unpaired electron, a single bond, or a multiple bond would each count as one region of electron density.
 
 <!-- SEG:m68745:title:fs-idm76169824-title -->
-*sp*^3^ Hybridization
+{{i}}sp{{/i}}[[sup:3]] Hybridization
 
 <!-- SEG:m68745:para:fs-idp165799040 -->
-The valence orbitals of an atom surrounded by a tetrahedral arrangement of bonding pairs and lone pairs consist of a set of four __*sp*^3^ hybrid orbitals__. The hybrids result from the mixing of one *s* orbital and all three *p* orbitals that produces four identical *sp*^3^ hybrid orbitals ([#CNX_Chem_08_02_sp3Geom]). Each of these hybrid orbitals points toward a different corner of a tetrahedron.
+The valence orbitals of an atom surrounded by a tetrahedral arrangement of bonding pairs and lone pairs consist of a set of four {{term}}{{i}}sp{{/i}}[[sup:3]] hybrid orbitals{{/term}}. The hybrids result from the mixing of one {{i}}s{{/i}} orbital and all three {{i}}p{{/i}} orbitals that produces four identical {{i}}sp{{/i}}[[sup:3]] hybrid orbitals ([#CNX_Chem_08_02_sp3Geom]). Each of these hybrid orbitals points toward a different corner of a tetrahedron.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp3Geom-caption -->
-The hybridization of an *s* orbital (blue) and three *p* orbitals (red) produces four equivalent *sp*^3^ hybridized orbitals (yellow) oriented at 109.5° with respect to each other.
+The hybridization of an {{i}}s{{/i}} orbital (blue) and three {{i}}p{{/i}} orbitals (red) produces four equivalent {{i}}sp{{/i}}[[sup:3]] hybridized orbitals (yellow) oriented at 109.5° with respect to each other.
 
 <!-- SEG:m68745:para:fs-idm6466416 -->
-A molecule of methane, CH~4~, consists of a carbon atom surrounded by four hydrogen atoms at the corners of a tetrahedron. The carbon atom in methane exhibits *sp*^3^ hybridization. We illustrate the orbitals and electron distribution in an isolated carbon atom and in the bonded atom in CH~4~ in [#CNX_Chem_08_02_sp3Diag]. The four valence electrons of the carbon atom are distributed equally in the hybrid orbitals, and each carbon electron pairs with a hydrogen electron when the C–H bonds form.
+A molecule of methane, CH[[sub:4]], consists of a carbon atom surrounded by four hydrogen atoms at the corners of a tetrahedron. The carbon atom in methane exhibits {{i}}sp{{/i}}[[sup:3]] hybridization. We illustrate the orbitals and electron distribution in an isolated carbon atom and in the bonded atom in CH[[sub:4]] in [#CNX_Chem_08_02_sp3Diag]. The four valence electrons of the carbon atom are distributed equally in the hybrid orbitals, and each carbon electron pairs with a hydrogen electron when the C–H bonds form.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp3Diag-caption -->
-The four valence atomic orbitals from an isolated carbon atom all hybridize when the carbon bonds in a molecule like CH~4~ with four regions of electron density. This creates four equivalent *sp*^3^ hybridized orbitals. Overlap of each of the hybrid orbitals with a hydrogen orbital creates a C–H σ bond.
+The four valence atomic orbitals from an isolated carbon atom all hybridize when the carbon bonds in a molecule like CH[[sub:4]] with four regions of electron density. This creates four equivalent {{i}}sp{{/i}}[[sup:3]] hybridized orbitals. Overlap of each of the hybrid orbitals with a hydrogen orbital creates a C–H σ bond.
 
 <!-- SEG:m68745:para:fs-idp214759888 -->
-In a methane molecule, the 1*s* orbital of each of the four hydrogen atoms overlaps with one of the four *sp*^3^ orbitals of the carbon atom to form a sigma (σ) bond. This results in the formation of four strong, equivalent covalent bonds between the carbon atom and each of the hydrogen atoms to produce the methane molecule, CH~4~.
+In a methane molecule, the 1{{i}}s{{/i}} orbital of each of the four hydrogen atoms overlaps with one of the four {{i}}sp{{/i}}[[sup:3]] orbitals of the carbon atom to form a sigma (σ) bond. This results in the formation of four strong, equivalent covalent bonds between the carbon atom and each of the hydrogen atoms to produce the methane molecule, CH[[sub:4]].
 
 <!-- SEG:m68745:para:fs-idp55772464 -->
-The structure of ethane, C~2~H~6,~ is similar to that of methane in that each carbon in ethane has four neighboring atoms arranged at the corners of a tetrahedron—three hydrogen atoms and one carbon atom ([#CNX_Chem_08_02_ethane]). However, in ethane an *sp*^3^ orbital of one carbon atom overlaps end to end with an *sp*^3^ orbital of a second carbon atom to form a σ bond between the two carbon atoms. Each of the remaining *sp*^3^ hybrid orbitals overlaps with an *s* orbital of a hydrogen atom to form carbon–hydrogen σ bonds. The structure and overall outline of the bonding orbitals of ethane are shown in [#CNX_Chem_08_02_ethane]. The orientation of the two CH~3~ groups is not fixed relative to each other. Experimental evidence shows that rotation around σ bonds occurs easily.
+The structure of ethane, C[[sub:2]]H[[sub:6,]] is similar to that of methane in that each carbon in ethane has four neighboring atoms arranged at the corners of a tetrahedron—three hydrogen atoms and one carbon atom ([#CNX_Chem_08_02_ethane]). However, in ethane an {{i}}sp{{/i}}[[sup:3]] orbital of one carbon atom overlaps end to end with an {{i}}sp{{/i}}[[sup:3]] orbital of a second carbon atom to form a σ bond between the two carbon atoms. Each of the remaining {{i}}sp{{/i}}[[sup:3]] hybrid orbitals overlaps with an {{i}}s{{/i}} orbital of a hydrogen atom to form carbon–hydrogen σ bonds. The structure and overall outline of the bonding orbitals of ethane are shown in [#CNX_Chem_08_02_ethane]. The orientation of the two CH[[sub:3]] groups is not fixed relative to each other. Experimental evidence shows that rotation around σ bonds occurs easily.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_ethane-caption -->
-(a) In the ethane molecule, C~2~H~6~, each carbon has four *sp*^3^ orbitals. (b) These four orbitals overlap to form seven σ bonds.
+(a) In the ethane molecule, C[[sub:2]]H[[sub:6]], each carbon has four {{i}}sp{{/i}}[[sup:3]] orbitals. (b) These four orbitals overlap to form seven σ bonds.
 
 <!-- SEG:m68745:para:fs-idm7245936 -->
-An *sp*^3^ hybrid orbital can also hold a lone pair of electrons. For example, the nitrogen atom in ammonia is surrounded by three bonding pairs and a lone pair of electrons directed to the four corners of a tetrahedron. The nitrogen atom is *sp*^3^ hybridized with one hybrid orbital occupied by the lone pair.
+An {{i}}sp{{/i}}[[sup:3]] hybrid orbital can also hold a lone pair of electrons. For example, the nitrogen atom in ammonia is surrounded by three bonding pairs and a lone pair of electrons directed to the four corners of a tetrahedron. The nitrogen atom is {{i}}sp{{/i}}[[sup:3]] hybridized with one hybrid orbital occupied by the lone pair.
 
 <!-- SEG:m68745:para:fs-idp158687664 -->
-The molecular structure of water is consistent with a tetrahedral arrangement of two lone pairs and two bonding pairs of electrons. Thus we say that the oxygen atom is *sp*^3^ hybridized, with two of the hybrid orbitals occupied by lone pairs and two by bonding pairs. Since lone pairs occupy more space than bonding pairs, structures that contain lone pairs have bond angles slightly distorted from the ideal. Perfect tetrahedra have angles of 109.5°, but the observed angles in ammonia (107.3°) and water (104.5°) are slightly smaller. Other examples of *sp*^3^ hybridization include CCl~4~, PCl~3~, and NCl~3~.
+The molecular structure of water is consistent with a tetrahedral arrangement of two lone pairs and two bonding pairs of electrons. Thus we say that the oxygen atom is {{i}}sp{{/i}}[[sup:3]] hybridized, with two of the hybrid orbitals occupied by lone pairs and two by bonding pairs. Since lone pairs occupy more space than bonding pairs, structures that contain lone pairs have bond angles slightly distorted from the ideal. Perfect tetrahedra have angles of 109.5°, but the observed angles in ammonia (107.3°) and water (104.5°) are slightly smaller. Other examples of {{i}}sp{{/i}}[[sup:3]] hybridization include CCl[[sub:4]], PCl[[sub:3]], and NCl[[sub:3]].
 
 <!-- SEG:m68745:title:fs-idm100176160-title -->
-*sp*^3^*d* and *sp*^3^*d*^2^ Hybridization
+{{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} and {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] Hybridization
 
 <!-- SEG:m68745:para:fs-idp62922832 -->
-To describe the five bonding orbitals in a trigonal bipyramidal arrangement, we must use five of the valence shell atomic orbitals (the *s* orbital, the three *p* orbitals, and one of the *d* orbitals), which gives five __*sp*^3^*d* hybrid orbitals__. With an octahedral arrangement of six hybrid orbitals, we must use six valence shell atomic orbitals (the *s* orbital, the three *p* orbitals, and two of the *d* orbitals in its valence shell), which gives six __*sp*^3^*d*^2^ hybrid orbitals__. These hybridizations are only possible for atoms that have *d* orbitals in their valence subshells (that is, not those in the first or second period).
+To describe the five bonding orbitals in a trigonal bipyramidal arrangement, we must use five of the valence shell atomic orbitals (the {{i}}s{{/i}} orbital, the three {{i}}p{{/i}} orbitals, and one of the {{i}}d{{/i}} orbitals), which gives five {{term}}{{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybrid orbitals{{/term}}. With an octahedral arrangement of six hybrid orbitals, we must use six valence shell atomic orbitals (the {{i}}s{{/i}} orbital, the three {{i}}p{{/i}} orbitals, and two of the {{i}}d{{/i}} orbitals in its valence shell), which gives six {{term}}{{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybrid orbitals{{/term}}. These hybridizations are only possible for atoms that have {{i}}d{{/i}} orbitals in their valence subshells (that is, not those in the first or second period).
 
 <!-- SEG:m68745:para:fs-idp213231264 -->
-In a molecule of phosphorus pentachloride, PCl~5~, there are five P–Cl bonds (thus five pairs of valence electrons around the phosphorus atom) directed toward the corners of a trigonal bipyramid. We use the 3*s* orbital, the three 3*p* orbitals, and one of the 3*d* orbitals to form the set of five *sp*^3^*d* hybrid orbitals ([#CNX_Chem_08_02_sp3d]) that are involved in the P–Cl bonds. Other atoms that exhibit *sp*^3^*d* hybridization include the sulfur atom in SF~4~ and the chlorine atoms in ClF~3~ and in [[MATH:1]] (The electrons on fluorine atoms are omitted for clarity.)
+In a molecule of phosphorus pentachloride, PCl[[sub:5]], there are five P–Cl bonds (thus five pairs of valence electrons around the phosphorus atom) directed toward the corners of a trigonal bipyramid. We use the 3{{i}}s{{/i}} orbital, the three 3{{i}}p{{/i}} orbitals, and one of the 3{{i}}d{{/i}} orbitals to form the set of five {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybrid orbitals ([#CNX_Chem_08_02_sp3d]) that are involved in the P–Cl bonds. Other atoms that exhibit {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybridization include the sulfur atom in SF[[sub:4]] and the chlorine atoms in ClF[[sub:3]] and in [[MATH:1]] (The electrons on fluorine atoms are omitted for clarity.)
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp3d_img-caption -->
-The three compounds pictured exhibit *sp*^3^*d* hybridization in the central atom and a trigonal bipyramid form. SF~4~ and [[MATH:2]] have one lone pair of electrons on the central atom, and ClF~3~ has two lone pairs giving it the T-shape shown.
+The three compounds pictured exhibit {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybridization in the central atom and a trigonal bipyramid form. SF[[sub:4]] and [[MATH:2]] have one lone pair of electrons on the central atom, and ClF[[sub:3]] has two lone pairs giving it the T-shape shown.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_sp3d-caption -->
-(a) The five regions of electron density around phosphorus in PCl~5~ require five hybrid *sp*^3^*d* orbitals. (b) These orbitals combine to form a trigonal bipyramidal structure with each large lobe of the hybrid orbital pointing at a vertex. As before, there are also small lobes pointing in the opposite direction for each orbital (not shown for clarity).
+(a) The five regions of electron density around phosphorus in PCl[[sub:5]] require five hybrid {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} orbitals. (b) These orbitals combine to form a trigonal bipyramidal structure with each large lobe of the hybrid orbital pointing at a vertex. As before, there are also small lobes pointing in the opposite direction for each orbital (not shown for clarity).
 
 <!-- SEG:m68745:para:fs-idm28471216 -->
-The sulfur atom in sulfur hexafluoride, SF~6~, exhibits *sp*^3^*d*^2^ hybridization. A molecule of sulfur hexafluoride has six bonding pairs of electrons connecting six fluorine atoms to a single sulfur atom. There are no lone pairs of electrons on the central atom. To bond six fluorine atoms, the 3*s* orbital, the three 3*p* orbitals, and two of the 3*d* orbitals form six equivalent *sp*^3^*d*^2^ hybrid orbitals, each directed toward a different corner of an octahedron. Other atoms that exhibit *sp*^3^*d*^2^ hybridization include the phosphorus atom in [[MATH:3]] the iodine atom in the interhalogens [[MATH:4]] IF~5~, [[MATH:5]] [[MATH:6]] and the xenon atom in XeF~4~.
+The sulfur atom in sulfur hexafluoride, SF[[sub:6]], exhibits {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybridization. A molecule of sulfur hexafluoride has six bonding pairs of electrons connecting six fluorine atoms to a single sulfur atom. There are no lone pairs of electrons on the central atom. To bond six fluorine atoms, the 3{{i}}s{{/i}} orbital, the three 3{{i}}p{{/i}} orbitals, and two of the 3{{i}}d{{/i}} orbitals form six equivalent {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybrid orbitals, each directed toward a different corner of an octahedron. Other atoms that exhibit {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybridization include the phosphorus atom in [[MATH:3]] the iodine atom in the interhalogens [[MATH:4]] IF[[sub:5]], [[MATH:5]] [[MATH:6]] and the xenon atom in XeF[[sub:4]].
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_SF6-caption -->
-(a) Sulfur hexafluoride, SF~6~, has an octahedral structure that requires *sp*^3^*d*^2^ hybridization. (b) The six *sp*^3^*d*^2^ orbitals form an octahedral structure around sulfur. Again, the minor lobe of each orbital is not shown for clarity.
+(a) Sulfur hexafluoride, SF[[sub:6]], has an octahedral structure that requires {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybridization. (b) The six {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] orbitals form an octahedral structure around sulfur. Again, the minor lobe of each orbital is not shown for clarity.
 
 <!-- SEG:m68745:title:fs-idm70341472-title -->
 Assignment of Hybrid Orbitals to Central Atoms
@@ -167,10 +167,10 @@ Determine the number of regions of electron density around an atom using VSEPR t
 Assign the set of hybridized orbitals from [#CNX_Chem_08_02_HybrdOrbit] that corresponds to this geometry.
 
 <!-- SEG:m68745:caption:CNX_Chem_08_02_HybrdOrbit-caption -->
-The shapes of hybridized orbital sets are consistent with the electron-pair geometries. For example, an atom surrounded by three regions of electron density is *sp*^2^ hybridized, and the three *sp*^2^ orbitals are arranged in a trigonal planar fashion.
+The shapes of hybridized orbital sets are consistent with the electron-pair geometries. For example, an atom surrounded by three regions of electron density is {{i}}sp{{/i}}[[sup:2]] hybridized, and the three {{i}}sp{{/i}}[[sup:2]] orbitals are arranged in a trigonal planar fashion.
 
 <!-- SEG:m68745:para:fs-idp61891472 -->
-It is important to remember that hybridization was devised to rationalize experimentally observed molecular geometries. The model works well for molecules containing small central atoms, in which the valence electron pairs are close together in space. However, for larger central atoms, the valence-shell electron pairs are farther from the nucleus, and there are fewer repulsions. Their compounds exhibit structures that are often not consistent with VSEPR theory, and hybridized orbitals are not necessary to explain the observed data. For example, we have discussed the H–O–H bond angle in H~2~O, 104.5°, which is more consistent with *sp*^3^ hybrid orbitals (109.5°) on the central atom than with 2*p* orbitals (90°). Sulfur is in the same group as oxygen, and H~2~S has a similar Lewis structure. However, it has a much smaller bond angle (92.1°), which indicates much less hybridization on sulfur than oxygen. Continuing down the group, tellurium is even larger than sulfur, and for H~2~Te, the observed bond angle (90°) is consistent with overlap of the 5*p* orbitals, without invoking hybridization. We invoke hybridization where it is necessary to explain the observed structures.
+It is important to remember that hybridization was devised to rationalize experimentally observed molecular geometries. The model works well for molecules containing small central atoms, in which the valence electron pairs are close together in space. However, for larger central atoms, the valence-shell electron pairs are farther from the nucleus, and there are fewer repulsions. Their compounds exhibit structures that are often not consistent with VSEPR theory, and hybridized orbitals are not necessary to explain the observed data. For example, we have discussed the H–O–H bond angle in H[[sub:2]]O, 104.5°, which is more consistent with {{i}}sp{{/i}}[[sup:3]] hybrid orbitals (109.5°) on the central atom than with 2{{i}}p{{/i}} orbitals (90°). Sulfur is in the same group as oxygen, and H[[sub:2]]S has a similar Lewis structure. However, it has a much smaller bond angle (92.1°), which indicates much less hybridization on sulfur than oxygen. Continuing down the group, tellurium is even larger than sulfur, and for H[[sub:2]]Te, the observed bond angle (90°) is consistent with overlap of the 5{{i}}p{{/i}} orbitals, without invoking hybridization. We invoke hybridization where it is necessary to explain the observed structures.
 
 <!-- SEG:m68745:example-title:fs-idp175627360-title -->
 Assigning Hybridization
@@ -182,28 +182,28 @@ Ammonium sulfate is important as a fertilizer. What is the hybridization of the 
 Solution
 
 <!-- SEG:m68745:para:fs-idp150033040 -->
-The Lewis structure of sulfate shows there are four regions of electron density. The hybridization is *sp*^3^.
+The Lewis structure of sulfate shows there are four regions of electron density. The hybridization is {{i}}sp{{/i}}[[sup:3]].
 
 <!-- SEG:m68745:para-title:fs-idm10091104-title -->
 Check Your Learning
 
 <!-- SEG:m68745:para:fs-idm10091104 -->
-What is the hybridization of the selenium atom in SeF~4~?
+What is the hybridization of the selenium atom in SeF[[sub:4]]?
 
 <!-- SEG:m68745:para:fs-idm65914448 -->
-The selenium atom is *sp*^3^*d* hybridized.
+The selenium atom is {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybridized.
 
 <!-- SEG:m68745:note-title:fs-idm8762288-title -->
 Answer:
 
 <!-- SEG:m68745:para:fs-idm65914448 -->
-The selenium atom is *sp*^3^*d* hybridized.
+The selenium atom is {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybridized.
 
 <!-- SEG:m68745:example-title:fs-idm15564528-title -->
 Assigning Hybridization
 
 <!-- SEG:m68745:para:fs-idm176016512 -->
-Urea, NH~2~C(O)NH~2~, is sometimes used as a source of nitrogen in fertilizers. What is the hybridization of the carbon atom in urea?
+Urea, NH[[sub:2]]C(O)NH[[sub:2]], is sometimes used as a source of nitrogen in fertilizers. What is the hybridization of the carbon atom in urea?
 
 <!-- SEG:m68745:para-title:fs-idm1735632-title -->
 Solution
@@ -212,28 +212,28 @@ Solution
 The Lewis structure of urea is
 
 <!-- SEG:m68745:para:fs-idp22488768 -->
-The carbon atom is surrounded by three regions of electron density, positioned in a trigonal planar arrangement. The hybridization in a trigonal planar electron pair geometry is *sp*^2^ ([#CNX_Chem_08_02_HybrdOrbit]), which is the hybridization of the carbon atom in urea.
+The carbon atom is surrounded by three regions of electron density, positioned in a trigonal planar arrangement. The hybridization in a trigonal planar electron pair geometry is {{i}}sp{{/i}}[[sup:2]] ([#CNX_Chem_08_02_HybrdOrbit]), which is the hybridization of the carbon atom in urea.
 
 <!-- SEG:m68745:para-title:fs-idp25312384-title -->
 Check Your Learning
 
 <!-- SEG:m68745:para:fs-idp25312384 -->
-Acetic acid, H~3~CC(O)OH, is the molecule that gives vinegar its odor and sour taste. What is the hybridization of the two carbon atoms in acetic acid?
+Acetic acid, H[[sub:3]]CC(O)OH, is the molecule that gives vinegar its odor and sour taste. What is the hybridization of the two carbon atoms in acetic acid?
 
 <!-- SEG:m68745:para:fs-idp180575168 -->
-H~3~++C++, *sp*^3^; ++C++(O)OH, *sp*^2^
+H[[sub:3]]++C++, {{i}}sp{{/i}}[[sup:3]]; ++C++(O)OH, {{i}}sp{{/i}}[[sup:2]]
 
 <!-- SEG:m68745:note-title:fs-idp92570160-title -->
 Answer:
 
 <!-- SEG:m68745:para:fs-idp180575168 -->
-H~3~++C++, *sp*^3^; ++C++(O)OH, *sp*^2^
+H[[sub:3]]++C++, {{i}}sp{{/i}}[[sup:3]]; ++C++(O)OH, {{i}}sp{{/i}}[[sup:2]]
 
 <!-- SEG:m68745:title:fs-idm69243360-title -->
 Key Concepts and Summary
 
 <!-- SEG:m68745:para:fs-idm25402912 -->
-We can use hybrid orbitals, which are mathematical combinations of some or all of the valence atomic orbitals, to describe the electron density around covalently bonded atoms. These hybrid orbitals either form sigma (σ) bonds directed toward other atoms of the molecule or contain lone pairs of electrons. We can determine the type of hybridization around a central atom from the geometry of the regions of electron density about it. Two such regions imply *sp* hybridization; three, *sp*^2^ hybridization; four, *sp*^3^ hybridization; five, *sp*^3^*d* hybridization; and six, *sp*^3^*d*^2^ hybridization. Pi (π) bonds are formed from unhybridized atomic orbitals (*p* or *d* orbitals).
+We can use hybrid orbitals, which are mathematical combinations of some or all of the valence atomic orbitals, to describe the electron density around covalently bonded atoms. These hybrid orbitals either form sigma (σ) bonds directed toward other atoms of the molecule or contain lone pairs of electrons. We can determine the type of hybridization around a central atom from the geometry of the regions of electron density about it. Two such regions imply {{i}}sp{{/i}} hybridization; three, {{i}}sp{{/i}}[[sup:2]] hybridization; four, {{i}}sp{{/i}}[[sup:3]] hybridization; five, {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybridization; and six, {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybridization. Pi (π) bonds are formed from unhybridized atomic orbitals ({{i}}p{{/i}} or {{i}}d{{/i}} orbitals).
 
 <!-- SEG:m68745:title:fs-idp58929664-title -->
 Chemistry End of Chapter Exercises
@@ -248,46 +248,46 @@ Hybridization is introduced to explain the geometry of bonding orbitals in valen
 Give the shape that describes each hybrid orbital set:
 
 <!-- SEG:m68745:problem:fs-idm99955904 -->
-(a) *sp*^2^
+(a) {{i}}sp{{/i}}[[sup:2]]
 
 <!-- SEG:m68745:problem:fs-idp100279488 -->
-(b) *sp*^3^*d*
+(b) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}
 
 <!-- SEG:m68745:problem:fs-idm11761440 -->
-(c) *sp*
+(c) {{i}}sp{{/i}}
 
 <!-- SEG:m68745:problem:fs-idm14469120 -->
-(d) *sp*^3^*d*^2^
+(d) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]]
 
 <!-- SEG:m68745:problem:fs-idm13942544 -->
-Explain why a carbon atom cannot form five bonds using *sp*^3^*d* hybrid orbitals.
+Explain why a carbon atom cannot form five bonds using {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybrid orbitals.
 
 <!-- SEG:m68745:solution:fs-idp44512224 -->
-There are no *d* orbitals in the valence shell of carbon.
+There are no {{i}}d{{/i}} orbitals in the valence shell of carbon.
 
 <!-- SEG:m68745:problem:fs-idp29219232 -->
 What is the hybridization of the central atom in each of the following?
 
 <!-- SEG:m68745:problem:fs-idm50812144 -->
-(a) BeH~2~
+(a) BeH[[sub:2]]
 
 <!-- SEG:m68745:problem:fs-idp141971872 -->
-(b) SF~6~
+(b) SF[[sub:6]]
 
 <!-- SEG:m68745:problem:fs-idm88013888 -->
 (c) [[MATH:8]]
 
 <!-- SEG:m68745:problem:fs-idm64223984 -->
-(d) PCl~5~
+(d) PCl[[sub:5]]
 
 <!-- SEG:m68745:problem:fs-idp580400 -->
-A molecule with the formula AB~3~ could have one of four different shapes. Give the shape and the hybridization of the central A atom for each.
+A molecule with the formula AB[[sub:3]] could have one of four different shapes. Give the shape and the hybridization of the central A atom for each.
 
 <!-- SEG:m68745:solution:fs-idm14765376 -->
-trigonal planar, *sp*^2^; trigonal pyramidal (one lone pair on A) *sp*^3^; T-shaped (two lone pairs on A *sp*^3^*d*, or (three lone pairs on A) *sp*^3^*d*^2^
+trigonal planar, {{i}}sp{{/i}}[[sup:2]]; trigonal pyramidal (one lone pair on A) {{i}}sp{{/i}}[[sup:3]]; T-shaped (two lone pairs on A {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}, or (three lone pairs on A) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]]
 
 <!-- SEG:m68745:problem:fs-idm38892720 -->
-Methionine, CH~3~SCH~2~CH~2~CH(NH~2~)CO~2~H, is an amino acid found in proteins. The Lewis structure of this compound is shown below. What is the hybridization type of each carbon, oxygen, the nitrogen, and the sulfur?
+Methionine, CH[[sub:3]]SCH[[sub:2]]CH[[sub:2]]CH(NH[[sub:2]])CO[[sub:2]]H, is an amino acid found in proteins. The Lewis structure of this compound is shown below. What is the hybridization type of each carbon, oxygen, the nitrogen, and the sulfur?
 
 <!-- SEG:m68745:problem:fs-idp31878144 -->
 Sulfuric acid is manufactured by a series of reactions represented by the following equations:[[BR]][[MATH:9]][[BR]][[MATH:10]][[BR]][[MATH:11]]
@@ -296,22 +296,22 @@ Sulfuric acid is manufactured by a series of reactions represented by the follow
 Draw a Lewis structure, predict the molecular geometry by VSEPR, and determine the hybridization of sulfur for the following:
 
 <!-- SEG:m68745:problem:fs-idp573360 -->
-(a) circular S~8~ molecule
+(a) circular S[[sub:8]] molecule
 
 <!-- SEG:m68745:problem:fs-idm36381616 -->
-(b) SO~2~ molecule
+(b) SO[[sub:2]] molecule
 
 <!-- SEG:m68745:problem:fs-idm59299376 -->
-(c) SO~3~ molecule
+(c) SO[[sub:3]] molecule
 
 <!-- SEG:m68745:problem:fs-idm27566560 -->
-(d) H~2~SO~4~ molecule (the hydrogen atoms are bonded to oxygen atoms)
+(d) H[[sub:2]]SO[[sub:4]] molecule (the hydrogen atoms are bonded to oxygen atoms)
 
 <!-- SEG:m68745:solution:fs-idp38901616 -->
-(a) Each S has a bent (109°) geometry, *sp*^3^[[BR]] [[MEDIA:1]][[BR]] (b) Bent (120°), *sp*^2^[[BR]] [[MEDIA:2]][[BR]] (c) Trigonal planar, *sp*^2^[[BR]] [[MEDIA:3]][[BR]] (d) Tetrahedral, *sp*^3^[[BR]] [[MEDIA:4]]
+(a) Each S has a bent (109°) geometry, {{i}}sp{{/i}}[[sup:3]][[BR]] [[MEDIA:1]][[BR]] (b) Bent (120°), {{i}}sp{{/i}}[[sup:2]][[BR]] [[MEDIA:2]][[BR]] (c) Trigonal planar, {{i}}sp{{/i}}[[sup:2]][[BR]] [[MEDIA:3]][[BR]] (d) Tetrahedral, {{i}}sp{{/i}}[[sup:3]][[BR]] [[MEDIA:4]]
 
 <!-- SEG:m68745:problem:fs-idp2405168 -->
-Two important industrial chemicals, ethene, C~2~H~4~, and propene, C~3~H~6~, are produced by the steam (or thermal) cracking process:[[BR]] [[MATH:12]]
+Two important industrial chemicals, ethene, C[[sub:2]]H[[sub:4]], and propene, C[[sub:3]]H[[sub:6]], are produced by the steam (or thermal) cracking process:[[BR]] [[MATH:12]]
 
 <!-- SEG:m68745:problem:fs-idm16899312 -->
 For each of the four carbon compounds, do the following:
@@ -329,7 +329,7 @@ For each of the four carbon compounds, do the following:
 Analysis of a compound indicates that it contains 77.55% Xe and 22.45% F by mass.
 
 <!-- SEG:m68745:problem:fs-idm1080832 -->
-(a) What is the empirical formula for this compound? *(Assume this is also the molecular formula in responding to the remaining parts of this exercise)*.
+(a) What is the empirical formula for this compound? {{i}}(Assume this is also the molecular formula in responding to the remaining parts of this exercise){{/i}}.
 
 <!-- SEG:m68745:problem:fs-idp206649712 -->
 (b) Write a Lewis structure for the compound.
@@ -341,25 +341,25 @@ Analysis of a compound indicates that it contains 77.55% Xe and 22.45% F by mass
 (d) What hybridization is consistent with the shape you predicted?
 
 <!-- SEG:m68745:solution:fs-idp53996864 -->
-(a) XeF~2~[[BR]](b)[[BR]][[MEDIA:5]][[BR]] (c) linear (d) *sp*^3^*d*
+(a) XeF[[sub:2]][[BR]](b)[[BR]][[MEDIA:5]][[BR]] (c) linear (d) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}
 
 <!-- SEG:m68745:problem:fs-idm182436448 -->
-Consider nitrous acid, HNO~2~ (HONO).
+Consider nitrous acid, HNO[[sub:2]] (HONO).
 
 <!-- SEG:m68745:problem:fs-idm80626448 -->
 (a) Write a Lewis structure.
 
 <!-- SEG:m68745:problem:fs-idm45896464 -->
-(b) What are the electron pair and molecular geometries of the internal oxygen and nitrogen atoms in the HNO~2~ molecule?
+(b) What are the electron pair and molecular geometries of the internal oxygen and nitrogen atoms in the HNO[[sub:2]] molecule?
 
 <!-- SEG:m68745:problem:fs-idm68830752 -->
-(c) What is the hybridization on the internal oxygen and nitrogen atoms in HNO~2~?
+(c) What is the hybridization on the internal oxygen and nitrogen atoms in HNO[[sub:2]]?
 
 <!-- SEG:m68745:problem:fs-idp25434064 -->
-Strike-anywhere matches contain a layer of KClO~3~ and a layer of P~4~S~3~. The heat produced by the friction of striking the match causes these two compounds to react vigorously, which sets fire to the wooden stem of the match. KClO~3~ contains the [[MATH:13]] ion. P~4~S~3~ is an unusual molecule with the skeletal structure.
+Strike-anywhere matches contain a layer of KClO[[sub:3]] and a layer of P[[sub:4]]S[[sub:3]]. The heat produced by the friction of striking the match causes these two compounds to react vigorously, which sets fire to the wooden stem of the match. KClO[[sub:3]] contains the [[MATH:13]] ion. P[[sub:4]]S[[sub:3]] is an unusual molecule with the skeletal structure.
 
 <!-- SEG:m68745:problem:fs-idp10208368 -->
-(a) Write Lewis structures for P~4~S~3~ and the [[MATH:14]] ion.
+(a) Write Lewis structures for P[[sub:4]]S[[sub:3]] and the [[MATH:14]] ion.
 
 <!-- SEG:m68745:problem:fs-idp158515072 -->
 (b) Describe the geometry about the P atoms, the S atom, and the Cl atom in these species.
@@ -368,22 +368,22 @@ Strike-anywhere matches contain a layer of KClO~3~ and a layer of P~4~S~3~. The 
 (c) Assign a hybridization to the P atoms, the S atom, and the Cl atom in these species.
 
 <!-- SEG:m68745:problem:fs-idm49707984 -->
-(d) Determine the oxidation states and formal charge of the atoms in P~4~S~3~ and the [[MATH:15]] ion.
+(d) Determine the oxidation states and formal charge of the atoms in P[[sub:4]]S[[sub:3]] and the [[MATH:15]] ion.
 
 <!-- SEG:m68745:solution:fs-idp50482432 -->
-(a)[[BR]] [[MEDIA:6]][[BR]] (b) P atoms, trigonal pyramidal; S atoms, bent, with two lone pairs; Cl atoms, trigonal pyramidal; (c) Hybridization about P, S, and Cl is, in all cases, *sp*^3^; (d) Oxidation states P +1, S[[MATH:16]] Cl +5, O –2. Formal charges: P 0; S 0; Cl +2: O –1
+(a)[[BR]] [[MEDIA:6]][[BR]] (b) P atoms, trigonal pyramidal; S atoms, bent, with two lone pairs; Cl atoms, trigonal pyramidal; (c) Hybridization about P, S, and Cl is, in all cases, {{i}}sp{{/i}}[[sup:3]]; (d) Oxidation states P +1, S[[MATH:16]] Cl +5, O –2. Formal charges: P 0; S 0; Cl +2: O –1
 
 <!-- SEG:m68745:problem:fs-idm63316720 -->
 Identify the hybridization of each carbon atom in the following molecule. (The arrangement of atoms is given; you need to determine how many bonds connect each pair of atoms.)
 
 <!-- SEG:m68745:problem:fs-idm32562944 -->
-Write Lewis structures for NF~3~ and PF~5~. On the basis of hybrid orbitals, explain the fact that NF~3~, PF~3~, and PF~5~ are stable molecules, but NF~5~ does not exist.
+Write Lewis structures for NF[[sub:3]] and PF[[sub:5]]. On the basis of hybrid orbitals, explain the fact that NF[[sub:3]], PF[[sub:3]], and PF[[sub:5]] are stable molecules, but NF[[sub:5]] does not exist.
 
 <!-- SEG:m68745:solution:fs-idm31702720 -->
-Phosphorus and nitrogen can form *sp*^3^ hybrids to form three bonds and hold one lone pair in PF~3~ and NF~3~, respectively. However, nitrogen has no valence *d* orbitals, so it cannot form a set of *sp*^3^*d* hybrid orbitals to bind five fluorine atoms in NF~5~. Phosphorus has *d* orbitals and can bind five fluorine atoms with *sp*^3^*d* hybrid orbitals in PF~5~.
+Phosphorus and nitrogen can form {{i}}sp{{/i}}[[sup:3]] hybrids to form three bonds and hold one lone pair in PF[[sub:3]] and NF[[sub:3]], respectively. However, nitrogen has no valence {{i}}d{{/i}} orbitals, so it cannot form a set of {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybrid orbitals to bind five fluorine atoms in NF[[sub:5]]. Phosphorus has {{i}}d{{/i}} orbitals and can bind five fluorine atoms with {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybrid orbitals in PF[[sub:5]].
 
 <!-- SEG:m68745:problem:fs-idp197831120 -->
-In addition to NF~3~, two other fluoro derivatives of nitrogen are known: N~2~F~4~ and N~2~F~2~. What shapes do you predict for these two molecules? What is the hybridization for the nitrogen in each molecule?
+In addition to NF[[sub:3]], two other fluoro derivatives of nitrogen are known: N[[sub:2]]F[[sub:4]] and N[[sub:2]]F[[sub:2]]. What shapes do you predict for these two molecules? What is the hybridization for the nitrogen in each molecule?
 
 <!-- SEG:m68745:glossary-term:fs-idp102362976-term -->
 hybrid orbital
@@ -401,28 +401,28 @@ model that describes the changes in the atomic orbitals of an atom when it forms
 sp hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm71427776-def -->
-one of a set of two orbitals with a linear arrangement that results from combining one *s* and one *p* orbital
+one of a set of two orbitals with a linear arrangement that results from combining one {{i}}s{{/i}} and one {{i}}p{{/i}} orbital
 
 <!-- SEG:m68745:glossary-term:fs-idm48701168-term -->
 sp2 hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm48701168-def -->
-one of a set of three orbitals with a trigonal planar arrangement that results from combining one *s* and two *p* orbitals
+one of a set of three orbitals with a trigonal planar arrangement that results from combining one {{i}}s{{/i}} and two {{i}}p{{/i}} orbitals
 
 <!-- SEG:m68745:glossary-term:fs-idp88964992-term -->
 sp3 hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idp88964992-def -->
-one of a set of four orbitals with a tetrahedral arrangement that results from combining one *s* and three *p* orbitals
+one of a set of four orbitals with a tetrahedral arrangement that results from combining one {{i}}s{{/i}} and three {{i}}p{{/i}} orbitals
 
 <!-- SEG:m68745:glossary-term:fs-idm16838896-term -->
 sp3d hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm16838896-def -->
-one of a set of five orbitals with a trigonal bipyramidal arrangement that results from combining one *s*, three *p*, and one *d* orbital
+one of a set of five orbitals with a trigonal bipyramidal arrangement that results from combining one {{i}}s{{/i}}, three {{i}}p{{/i}}, and one {{i}}d{{/i}} orbital
 
 <!-- SEG:m68745:glossary-term:fs-idm47317072-term -->
 sp3d2 hybrid orbital
 
 <!-- SEG:m68745:glossary-def:fs-idm47317072-def -->
-one of a set of six orbitals with an octahedral arrangement that results from combining one *s*, three *p*, and two *d* orbitals
+one of a set of six orbitals with an octahedral arrangement that results from combining one {{i}}s{{/i}}, three {{i}}p{{/i}}, and two {{i}}d{{/i}} orbitals

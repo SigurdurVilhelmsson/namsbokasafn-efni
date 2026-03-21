@@ -1,0 +1,446 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Vatnsrof salta</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68806</md:content-id>
+  <md:title>Vatnsrof salta</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Spáð fyrir um hvort saltlausn verði súr, basisk eða hlutlaus</item><item>Reiknað styrk hinna ýmsu efnaeinda í saltlausn</item><item>Lýst sýrujónun vatnaðra málmjóna</item></list></md:abstract>
+  <md:uuid>df527820-3877-419d-97a3-62386ce24df9</md:uuid>
+</metadata>
+
+<content>
+<section id="fs-idp37481072">
+<title>Sölt með súrum jónum</title>
+<para id="fs-idm649972064">Sölt eru jónísk efnasambönd sem samanstanda af katjónum og anjónum, og getur hvor þeirra um sig tekið þátt í sýru- eða basajónunarhvarfi með vatni. Vatnslausnir salta geta því verið súrar, basiskar eða hlutlausar, allt eftir hlutfallslegum sýru-basa styrk jónanna sem mynda saltið. Til dæmis, þegar ammóníumklóríð er leyst upp í vatni, sundrast það eins og jafnan sýnir:</para>
+<equation id="fs-idm209439760" class="unnumbered"><m:math>
+<m:mrow>
+<m:msub>
+<m:mrow>
+<m:mtext>NH</m:mtext></m:mrow>
+<m:mn>4</m:mn>
+</m:msub>
+<m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub>
+<m:mrow>
+<m:mtext>NH</m:mtext></m:mrow>
+<m:mn>4</m:mn>
+</m:msub>
+<m:msup>
+<m:mrow/>
+<m:mo>+</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup>
+<m:mrow>
+<m:mtext>Cl</m:mtext></m:mrow>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow>
+</m:math>
+</equation>
+<para id="fs-idm240546096">Ammóníumjónin er samoka sýra basans ammóníaks, NH<sub>3</sub>; sýrujónunarhvarf hennar (eða sýruvatnsrof) er táknað með:</para>
+<equation id="fs-idm137491888a" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mrow><m:mi>K</m:mi></m:mrow><m:mrow><m:mtext>a</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mi>K</m:mi></m:mrow><m:mrow><m:mtext>w</m:mtext></m:mrow></m:msub><m:mtext>/</m:mtext><m:msub><m:mrow><m:mi>K</m:mi></m:mrow><m:mrow><m:mtext>b</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm238452464">Þar sem ammóníak er veikur basi er <emphasis effect="italics">K</emphasis><sub>b</sub> mælanlegur og <emphasis effect="italics">K</emphasis><sub>a</sub> > 0 (ammóníumjón er veik sýra).</para>
+<para id="fs-idm249820848">Klóríðjónin er samoka basi saltsýru, og því er basajónunarhvarf hennar (eða <emphasis effect="italics">basavatnsrof</emphasis>) táknað með:</para>
+<equation id="fs-idm248062064" class="unnumbered"><m:math>
+<m:mrow>
+<m:msup>
+<m:mrow>
+<m:mtext>Cl</m:mtext></m:mrow>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup>
+<m:mrow>
+<m:mtext>OH</m:mtext></m:mrow>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub>
+<m:mi>K</m:mi>
+<m:mtext>b</m:mtext>
+</m:msub>
+<m:mo>=</m:mo><m:msub>
+<m:mi>K</m:mi>
+<m:mtext>w</m:mtext>
+</m:msub>
+<m:mtext>/</m:mtext><m:msub>
+<m:mi>K</m:mi>
+<m:mtext>a</m:mtext>
+</m:msub>
+</m:mrow>
+</m:math>
+</equation>
+<para id="fs-idm656133776">Þar sem HCl er sterk sýra er <emphasis effect="italics">K</emphasis><sub>a</sub> ómælanlega stór og <emphasis effect="italics">K</emphasis><sub>b</sub> ≈ 0 (klóríðjónir gangast ekki undir markvert vatnsrof).</para>
+<para id="fs-idm212824304">Þegar ammóníumklóríð er leyst upp í vatni myndast því lausn af veikum sýrukatjónum (<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>) og óvirkum anjónum (Cl<sup>−</sup>), sem leiðir til súrrar lausnar.</para>
+<example id="fs-idp38392128">
+<para id="fs-idm172853552"><title>Útreikningur á pH súrrar saltlausnar</title>Anilín er amín sem er notað til að framleiða litarefni. Það er einangrað sem anilínklóríð, <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo><m:mtext>Cl</m:mtext><m:mo>,</m:mo></m:mrow></m:math>, salt sem er búið til með efnahvarfi veika basans anilíns og saltsýru. Hvert er pH 0,233 <emphasis effect="italics">M</emphasis> lausnar af anilínklóríði?</para><equation id="fs-idm149245808" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm45558496"><title>Lausn</title><emphasis effect="italics">K</emphasis><sub>a</sub> fyrir anilínjónina er leitt af <emphasis effect="italics">K</emphasis><sub>b</sub> fyrir samoka basa hennar, anilín (sjá <link document="m68867">viðauka I</link>):</para>
+<equation id="fs-idm169067840" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−14</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>4.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></equation><para id="fs-idm169484640">Með því að nota uppgefnar upplýsingar er IBE-tafla (upphafs-, breytingar-, jafnvægis-) fyrir þetta kerfi útbúin:</para>
+<media id="fs-idm4192576" alt="This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium ( M ). The second column has the header of “C subscript 6 H subscript 5 N H subscript 3 superscript positive sign plus sign H subscript 2 O equilibrium sign C subscript 6 H subscript 5 N H subscript 2 plus sign H subscript 3 O superscript positive sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.233, negative x, 0.233 minus x. The second column is blank for all three rows. The third column has the following: 0, positive x, x. The fourth column has the following: approximately 0, positive x, x." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_04_steps1_img.jpg"/>
+</media>
+<para id="fs-idm175121360">Með því að setja þessa jafnvægisstyrki inn í <emphasis effect="italics">K</emphasis><sub>a</sub> jöfnuna fæst:</para>
+<equation id="fs-idm248611472" class="unnumbered"><m:math>
+<m:mtable columnalign="left">
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mtext>K</m:mtext>
+<m:mi>a</m:mi>
+</m:msub>
+<m:mo>=</m:mo><m:mo stretchy="false">[</m:mo><m:msub>
+<m:mtext>C</m:mtext>
+<m:mn>6</m:mn>
+</m:msub>
+<m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>5</m:mn>
+</m:msub>
+<m:msub>
+<m:mtext>NH</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msup>
+<m:mtext>O</m:mtext>
+<m:mo>+</m:mo>
+</m:msup>
+<m:mo stretchy="false">]</m:mo><m:mtext>/</m:mtext><m:mo stretchy="false">[</m:mo><m:msub>
+<m:mtext>C</m:mtext>
+<m:mn>6</m:mn>
+</m:msub>
+<m:msub>
+<m:mtext>H</m:mtext>
+<m:mn>5</m:mn>
+</m:msub>
+<m:msub>
+<m:mtext>NH</m:mtext>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msup>
+<m:mrow/>
+<m:mo>+</m:mo>
+</m:msup>
+<m:mo stretchy="false">]</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>2.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+<m:mn>10</m:mn>
+<m:mrow>
+<m:mtext>−</m:mtext><m:mn>5</m:mn></m:mrow>
+</m:msup>
+<m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo><m:mtext>/</m:mtext><m:mn>0.233</m:mn><m:mo>−</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+<para id="fs-idm252541328">Ef gert er ráð fyrir að <emphasis effect="italics">x</emphasis> &lt;&lt; 0,233 er jafnan einfölduð og leyst fyrir <emphasis effect="italics">x</emphasis>:</para>
+<equation id="fs-idm204343104" class="unnumbered"><m:math>
+ <m:mtable columnalign="left">
+  <m:mtr/>
+  <m:mtr/>
+  <m:mtr>
+   <m:mtd>
+    <m:mn>2.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup>
+     <m:mn>10</m:mn>
+     <m:mrow>
+      <m:mtext>−</m:mtext><m:mn>5</m:mn></m:mrow>
+    </m:msup>
+    <m:mo>=</m:mo><m:msup>
+     <m:mi>x</m:mi>
+     <m:mn>2</m:mn>
+    </m:msup>
+    <m:mtext>/</m:mtext><m:mn>0.233</m:mn>
+   </m:mtd>
+  </m:mtr>
+  <m:mtr>
+   <m:mtd>
+    <m:mi>x</m:mi><m:mo>=</m:mo><m:mn>0.0023</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi>
+   </m:mtd>
+  </m:mtr>
+ </m:mtable>
+</m:math>
+</equation>
+<para id="fs-idm228289760">IBE-taflan skilgreinir x sem mólstyrk hýdróníumjónarinnar og því er pH reiknað sem:</para>
+<equation id="fs-idm247349056" class="unnumbered"><m:math>
+ <m:mrow>
+  <m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mo stretchy="false">[</m:mo><m:msub>
+   <m:mtext>H</m:mtext>
+   <m:mn>3</m:mn>
+  </m:msub>
+  <m:msup>
+   <m:mtext>O</m:mtext>
+   <m:mo>+</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mtext>log</m:mtext><m:mo stretchy="false">(</m:mo><m:mn>0.0023</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>2.64</m:mn></m:mrow>
+</m:math>
+</equation>
+<para id="fs-idm156700000"><title>Prófaðu þekkingu þína</title>Hver er styrkur hýdróníumjóna í 0,100-<emphasis effect="italics">M</emphasis> lausn af ammóníumnítrati, NH<sub>4</sub>NO<sub>3</sub>, salti sem samanstendur af jónunum <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>? Hvor er sterkari sýran, <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> eða <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>?</m:mo></m:mrow></m:math>?</para>
+<note id="fs-idm54595904">
+<title>Answer:</title>
+<para id="fs-idp43419152">[H<sub>3</sub>O<sup>+</sup>] = 7,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> <emphasis effect="italics">M</emphasis>; <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> er sterkari sýran.</para>
+</note>
+</example>
+</section>
+<section id="fs-idm135179984">
+<title>Sölt með basiskum jónum</title>
+<para id="fs-idm119438896">Sem annað dæmi skulum við skoða upplausn natríumasetats í vatni:</para>
+<equation id="fs-idm243373152" class="unnumbered"><m:math>
+<m:mrow>
+<m:msub>
+<m:mrow>
+<m:mtext>NaCH</m:mtext></m:mrow>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msub>
+<m:mrow>
+<m:mtext>CO</m:mtext></m:mrow>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>⇋</m:mo><m:msup><m:mtext>Na</m:mtext><m:mo>+</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub>
+<m:mrow>
+<m:mtext>CH</m:mtext></m:mrow>
+<m:mn>3</m:mn>
+</m:msub>
+<m:msub>
+<m:mrow>
+<m:mtext>CO</m:mtext></m:mrow>
+<m:mn>2</m:mn>
+</m:msub>
+<m:msup>
+<m:mrow/>
+<m:mo>−</m:mo>
+</m:msup>
+<m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow>
+</m:math>
+</equation>
+<para id="fs-idm237096048">Natríumjónin gengst ekki undir markverða sýru- eða basajónun og hefur engin áhrif á pH lausnarinnar. Þetta kann að virðast augljóst af formúlu jónarinnar, sem sýnir engin vetnis- eða súrefnisatóm, en sumar uppleystar málmjónir virka sem veikar sýrur, eins og fjallað er um síðar í þessum kafla.</para>
+<para id="fs-idm248142864">Asetatjónin, <m:math>
+ <m:msub>
+  <m:mtext>CH</m:mtext>
+  <m:mn>3</m:mn>
+ </m:msub>
+ <m:msub>
+  <m:mtext>CO</m:mtext>
+  <m:mn>2</m:mn>
+ </m:msub>
+ <m:msup>
+  <m:mrow/>
+  <m:mo>−</m:mo>
+ </m:msup><m:mtext>,</m:mtext>
+ </m:math>, er samoka basi ediksýru, CH<sub>3</sub>CO<sub>2</sub>H, og því er basajónunarhvarf hennar (eða <emphasis effect="italics">basavatnsrof</emphasis>) táknað með:</para>
+<equation id="fs-idm641525520" class="unnumbered"><m:math>
+ <m:mrow>
+  <m:msub>
+   <m:mrow>
+    <m:mtext>CH</m:mtext></m:mrow>
+   <m:mn>3</m:mn>
+  </m:msub>
+  <m:msub>
+   <m:mrow>
+    <m:mtext>CO</m:mtext></m:mrow>
+   <m:mn>2</m:mn>
+  </m:msub>
+  <m:msup>
+   <m:mrow/>
+   <m:mo>−</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub>
+   <m:mtext>H</m:mtext>
+   <m:mn>2</m:mn>
+  </m:msub>
+  <m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub>
+   <m:mrow>
+    <m:mtext>CH</m:mtext></m:mrow>
+   <m:mn>3</m:mn>
+  </m:msub>
+  <m:msub>
+   <m:mrow>
+    <m:mtext>CO</m:mtext></m:mrow>
+   <m:mn>2</m:mn>
+  </m:msub>
+  <m:mtext>H</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>OH</m:mtext><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:msub>
+   <m:mi>K</m:mi>
+   <m:mtext>b</m:mtext>
+  </m:msub>
+  <m:mo>=</m:mo><m:msub>
+   <m:mi>K</m:mi>
+   <m:mtext>w</m:mtext>
+  </m:msub>
+  <m:mtext>/</m:mtext><m:msub>
+   <m:mi>K</m:mi>
+   <m:mtext>a</m:mtext>
+  </m:msub>
+  </m:mrow>
+</m:math>
+</equation>
+<para id="fs-idm249385760">Þar sem ediksýra er veik sýra er <emphasis effect="italics">K</emphasis><sub>a</sub> hennar mælanlegur og <emphasis effect="italics">K</emphasis><sub>b</sub> > 0 (asetatjón er veikur basi).</para>
+<para id="fs-idm248895632">Þegar natríumasetat er leyst upp í vatni myndast lausn af óvirkum katjónum (Na<sup>+</sup>) og veikum basaanjónum <m:math>
+ <m:mrow>
+  <m:msub>
+   <m:mrow>
+    <m:mtext>(CH</m:mtext></m:mrow>
+   <m:mn>3</m:mn>
+  </m:msub>
+  <m:msub>
+   <m:mrow>
+    <m:mtext>CO</m:mtext></m:mrow>
+   <m:mn>2</m:mn>
+  </m:msub>
+  <m:msup>
+   <m:mrow/>
+   <m:mo>−</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow>
+</m:math>, sem leiðir til basiskrar lausnar.</para>
+<example id="fs-idp37320880">
+<para id="fs-idm168517392"><title>Jafnvægi í lausn salts af veikri sýru og sterkum basa</title>Ákvarðaðu styrk ediksýru í lausn með <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0.050</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math> og [OH<sup>−</sup>] = 2,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> <emphasis effect="italics">M</emphasis> við jafnvægi. Efnahvarfið er:</para>
+<equation id="fs-idm148031584" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm2736464"><title>Lausn</title>Uppgefnir jafnvægisstyrkir og gildi fyrir jafnvægisfastann gera okkur kleift að reikna út óþekkta jafnvægisstyrkinn. Ferlið sem um ræðir er basajónun asetatjónarinnar, þar sem</para>
+<equation id="fs-idm62642320" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>for</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>for</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−14</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>5.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm121126768">Með því að setja tiltæk gildi inn í jöfnuna fyrir <emphasis effect="italics">K</emphasis><sub>b</sub> fæst</para>
+<equation id="fs-idm218140928" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>5.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
+<equation id="fs-idp923936" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">(</m:mo><m:mn>2.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.050</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>5.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm45670544">Með því að leysa ofangreinda jöfnu fyrir mólstyrk ediksýru fæst [CH<sub>3</sub>CO<sub>2</sub>H] = 1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> <emphasis effect="italics">M</emphasis>.</para>
+<para id="fs-idm54917312"><title>Skoðaðu þekkingu þína</title>Hvert er pH 0,083-<emphasis effect="italics">M</emphasis> lausnar af NaCN?</para><note id="fs-idm95967568">
+<title>Answer:</title>
+<para id="fs-idm7663712">11,11</para></note>
+</example>
+</section>
+<section id="fs-idm81229520">
+<title>Sölt með súrum og basískum jónum</title>
+<para id="fs-idp31152">Sum sölt eru samsett úr bæði súrum og basískum jónum og því fer pH lausna þeirra eftir hlutfallslegum styrk þessara tveggja efna. Sömuleiðis innihalda sum sölt eina jón sem er amfiprótísk og því mun hlutfallslegur styrkur sýru- og basa-eiginleika þessarar jónar ákvarða áhrif hennar á pH lausnarinnar. Fyrir báðar tegundir salta gerir samanburður á <emphasis effect="italics">K</emphasis><sub>a</sub> og <emphasis effect="italics">K</emphasis><sub>b</sub> gildum kleift að spá fyrir um sýru-basa stöðu lausnarinnar, eins og sýnt er í eftirfarandi dæmi.</para>
+<example id="fs-idm161229856">
+<para id="fs-idm219032992"><title>Ákvörðun á súru eða basísku eðli salta</title>Ákvarðaðu hvort vatnslausnir eftirfarandi salta séu súrar, basískar eða hlutlausar:</para>
+<para id="fs-idm55604816">(a) KBr</para>
+<para id="fs-idp65280880">(b) NaHCO<sub>3</sub></para>
+<para id="fs-idm82359664">(c) Na<sub>2</sub>HPO<sub>4</sub></para>
+<para id="fs-idm18348400">(d) NH<sub>4</sub>F</para>
+<para id="fs-idm117618912"><title>Lausn</title>Skoðaðu hverja jón fyrir sig með tilliti til áhrifa hennar á pH lausnarinnar, eins og sýnt er hér:</para>
+<para id="fs-idm56643648">(a) K<sup>+</sup> katjónin er óvirk og hefur ekki áhrif á pH. Brómíðjónin er samoka basi sterkrar sýru og hefur því hverfandi basastyrk (engin markverð basajónun). Lausnin er hlutlaus.</para>
+<para id="fs-idm168102384">(b) Na<sup>+</sup> katjónin er óvirk og hefur ekki áhrif á pH lausnarinnar; á meðan <m:math><m:mrow><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> anjónin er amfiprótísk. <emphasis effect="italics">K</emphasis><sub>a</sub> fyrir <m:math><m:mrow><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> er 4,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup>, og <emphasis effect="italics">K</emphasis><sub>b</sub> hennar er <m:math><m:mrow><m:mfrac><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−14</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>4.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>2.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></para><para id="fs-idm98756192">Þar sem <emphasis effect="italics">K</emphasis><sub>b</sub> >> <emphasis effect="italics">K</emphasis><sub>a</sub>, er lausnin basísk.</para>
+<para id="fs-idp9214400">(c) Na<sup>+</sup> katjónin er óvirk og hefur ekki áhrif á pH lausnarinnar, á meðan <m:math><m:mrow><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> anjónin er amfiprótísk. <emphasis effect="italics">K</emphasis><sub>a</sub> fyrir <m:math><m:mrow><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>2−</m:mtext></m:msup></m:mrow></m:math> er 4,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−13</sup>,</para><para id="fs-idp53880096">og <emphasis effect="italics">K</emphasis><sub>b</sub> hennar er <m:math><m:mrow><m:mfrac><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−14</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>6.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Þar sem <emphasis effect="italics">K</emphasis><sub>b</sub> >> <emphasis effect="italics">K</emphasis><sub>a</sub>, er lausnin basísk.</para><para id="fs-idp10452272">(d) <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> jónin er súr (sjá umræðu hér að ofan) og F<sup>−</sup> jónin er basísk (samoka basi veiku sýrunnar HF). Með því að bera saman jónunarfastana tvo: <emphasis effect="italics">K</emphasis><sub>a</sub> fyrir <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup></m:mrow></m:math> er 5,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> og <emphasis effect="italics">K</emphasis><sub>b</sub> fyrir F<sup>−</sup> er 1,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup>, þannig að lausnin er súr, þar sem <emphasis effect="italics">K</emphasis><sub>a</sub> > <emphasis effect="italics">K</emphasis><sub>b</sub>.</para>
+<para id="fs-idm140849264"><title>Skoðaðu þekkingu þína</title>Ákvarðaðu hvort vatnslausnir eftirfarandi salta séu súrar, basískar eða hlutlausar:</para>
+<para id="fs-idm15098896">(a) K<sub>2</sub>CO<sub>3</sub></para>
+<para id="fs-idm75225328">(b) CaCl<sub>2</sub></para>
+<para id="fs-idm290933120">(c) KH<sub>2</sub>PO<sub>4</sub></para>
+<para id="fs-idm223869584">(d) (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub></para>
+<note id="fs-idm42020240">
+<title>Answer:</title>
+<para id="fs-idm5299888">(a) basísk; (b) hlutlaus; (c) súr; (d) basísk</para></note>
+</example>
+</section>
+<section id="fs-idm108915120">
+<title>Jónun vökvaðra málmjóna</title>
+<para id="fs-idm252144288">Ólíkt málmjónum úr hópum 1 og 2 í fyrri dæmum (Na<sup>+</sup>, Ca<sup>2+</sup>, o.s.frv.), virka sumar málmjónir sem sýrur í vatnslausnum. Þessar jónir eru ekki aðeins lauslega leystar af vatnssameindum þegar þær leysast upp, heldur eru þær samgilt tengdar föstum fjölda vatnssameinda til að mynda flókajón (sjá kafla um hnitunarefnafræði). Sem dæmi er upplausn álnítrats í vatni venjulega táknuð sem</para>
+<equation id="fs-idm253215984" class="unnumbered"><m:math>
+ <m:mrow>
+  <m:mtext>Al</m:mtext><m:mo stretchy="false">(</m:mo><m:msub>
+   <m:mrow>
+    <m:mtext>NO</m:mtext></m:mrow>
+   <m:mn>3</m:mn>
+  </m:msub>
+  <m:msub><m:mo stretchy="false">)</m:mo><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup>
+   <m:mrow>
+    <m:mtext>Al</m:mtext></m:mrow>
+   <m:mrow><m:mn>3</m:mn><m:mo>+</m:mo></m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub>
+   <m:mrow>
+    <m:mtext>NO</m:mtext></m:mrow>
+   <m:mn>3</m:mn>
+  </m:msub>
+  <m:msup>
+   <m:mrow/>
+   <m:mo>−</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow>
+</m:math>
+</equation>
+<para id="fs-idm252419632">Ál(III)jónin hvarfast þó í raun við sex vatnssameindir til að mynda stöðuga flókajón og því er nákvæmari framsetning á upplausnarferlinu</para>
+<equation id="fs-idm117678832" class="unnumbered"><m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm251913856">Eins og sýnt er í <link target-id="CNX_Chem_14_04_hydronium"/>, fela <m:math>
+ <m:mrow>
+  <m:mtext>Al</m:mtext><m:msub>
+   <m:mrow>
+    <m:mo stretchy="false">(</m:mo><m:msub>
+     <m:mtext>H</m:mtext>
+     <m:mtext>2</m:mtext>
+    </m:msub>
+    <m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow>
+   <m:mn>6</m:mn>
+  </m:msub>
+  <m:msup>
+   <m:mrow/>
+   <m:mrow>
+    <m:mn>3+</m:mn></m:mrow>
+  </m:msup>
+  </m:mrow>
+</m:math> jónirnar í sér efnatengi milli miðlægrar Al-frumeindar og O-frumeinda sex vatnssameindanna. Afleiðingin er sú að O–H efnatengi tengdu vatnssameindanna eru skautaðri en í ótengdum vatnssameindum, sem gerir það að verkum að tengdu sameindirnar eru líklegri til að gefa frá sér vetnisjón:</para>
+<equation id="fs-idm108244016" class="unnumbered"><m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>O</m:mtext><m:msup><m:mrow><m:mtext>H</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>1.4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm137552288">Samoka basinn sem myndast við þetta ferli inniheldur fimm aðrar tengdar vatnssameindir sem geta virkað sem sýrur og því er raðbundinn eða skrefbundinn flutningur róteinda mögulegur eins og sýnt er í fáeinum jöfnum hér að neðan:</para>
+<equation id="fs-idm46178496" class="unnumbered"><m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>O</m:mtext><m:mtext>H</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idm2413712" class="unnumbered"><m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idp12750352" class="unnumbered"><m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp8711664">Þetta er dæmi um fjölróteindasýru, sem er umræðuefni í síðari hluta þessa kafla.</para>
+<figure id="CNX_Chem_14_04_hydronium" class="scaled-down">
+<media id="fs-idp82299440" alt="A reaction is shown using ball and stick models. On the left, inside brackets with a superscript of 3 plus outside to the right is structure labeled “[ A l ( H subscript 2 O ) subscript 6 ] superscript 3 plus.” Inside the brackets is s central grey atom to which 6 red atoms are bonded in an arrangement that distributes them evenly about the central grey atom. Each red atom has two smaller white atoms attached in a forked or bent arrangement. Outside the brackets to the right is a space-filling model that includes a red central sphere with two smaller white spheres attached in a bent arrangement. Beneath this structure is the label “H subscript 2 O.” A double sided arrow follows. Another set of brackets follows to the right of the arrows which have a superscript of two plus outside to the right. The structure inside the brackets is similar to that on the left, except a white atom is removed from the structure. The label below is also changed to “[ A l ( H subscript 2 O ) subscript 5 O H ] superscript 2 plus.” To the right of this structure and outside the brackets is a space filling model with a central red sphere to which 3 smaller white spheres are attached. This structure is labeled “H subscript 3 O superscript plus.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_04_hydronium.jpg"/>
+</media>
+<caption>Þegar áljón hvarfast við vatn verður vökvaða áljónin að veikri sýru.</caption>
+</figure>
+<para id="fs-idm167123728">Fyrir utan alkalímálma (hópur 1) og suma jarðalkalímálma (hópur 2) munu flestar aðrar málmjónir gangast undir sýrujónun að einhverju leyti þegar þær eru leystar upp í vatni. Sýrustyrkur þessara flókajóna eykst venjulega með aukinni hleðslu og minnkandi stærð málmjónanna. Fyrsta skrefs sýrujónunarjöfnur fyrir nokkrar aðrar súrar málmjónir eru sýndar hér að neðan:</para>
+<equation id="fs-idp56836016" class="unnumbered"><m:math><m:mrow><m:mtext>Fe</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Fe</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mrow><m:mi>p</m:mi><m:mi>K</m:mi></m:mrow><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>2.74</m:mn></m:mrow></m:math></equation>
+<equation id="fs-idm116986352" class="unnumbered"><m:math><m:mrow><m:mtext>Cu</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Cu</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mrow><m:mi>p</m:mi><m:mi>K</m:mi></m:mrow><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mo>~</m:mo><m:mn>6.3</m:mn></m:mrow></m:math></equation>
+<equation id="fs-idm166964496" class="unnumbered"><m:math><m:mrow><m:mtext>Zn</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Zn</m:mtext><m:msub><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mrow><m:mi>p</m:mi><m:mi>K</m:mi></m:mrow><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>9.6</m:mn></m:mrow></m:math></equation>
+<example id="fs-idm171178400">
+<para id="fs-idm122608832"><title>Vatnsrof [Al(H<sub>2</sub>O)<sub>6</sub>]<sup>3+</sup></title>Reiknaðu pH 0,10-<emphasis effect="italics">M</emphasis> lausnar af álklóríði, sem leysist alveg upp og gefur vökvaða áljónina <m:math><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup></m:mrow></m:math> í lausn.</para>
+<para id="fs-idp112354272"><title>Lausn</title>Jafna efnahvarfsins og <emphasis effect="italics">K</emphasis><sub>a</sub> eru:<newline/> <equation id="fs-idm224297104" class="unnumbered"><m:math><m:mrow><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mtext>2+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>1.4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></equation><newline/> ICE-tafla með uppgefnum upplýsingum er<newline/> <media id="fs-idm136267808" alt="This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “A l ( H subscript 2 O ) subscript 6 superscript 3 positive sign plus H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus A l ( H subscript 2 O ) subscript 5 ( O H ) superscript 2 positive sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x."><image mime-type="image/jpeg" src="../../media/CNX_Chem_14_04_ICETable13_img.jpg"/></media><newline/> Með því að setja segðirnar fyrir jafnvægisstyrkinn inn í jöfnuna fyrir jónunarfastann fæst:<newline/> <equation id="fs-idm98439712" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3+</m:mn></m:mrow></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac></m:mrow></m:math></equation><newline/> <equation id="fs-idm167107760" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>0.10</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math></equation><newline/> Ef gert er ráð fyrir að <emphasis effect="italics">x</emphasis> &lt;&lt; 0,10 og einfaldaða jafnan er leyst fæst:<newline/> <equation id="fs-idp4666608" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation><newline/> ICE-taflan skilgreindi <emphasis effect="italics">x</emphasis> sem jafnt og styrk hýdróníumjónarinnar og því er pH reiknað sem<newline/> <equation id="fs-idm156052944" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation><newline/> <equation id="fs-idm161964736" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.92</m:mn><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>an acidic solution</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation></para>
+<para id="fs-idm175924752"><title>Kannaðu þekkingu þína</title>Hvað er <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>Al</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2+</m:mn></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math> í 0,15-<emphasis effect="italics">M</emphasis> lausn af Al(NO<sub>3</sub>)<sub>3</sub> sem inniheldur nægilega mikið af sterkri sýru HNO<sub>3</sub> til að koma [H<sub>3</sub>O<sup>+</sup>] í 0,10 <emphasis effect="italics">M</emphasis>?</para>
+<note id="fs-idm38454832">
+<title>Answer:</title>
+<para id="fs-idp86512272">2,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> <emphasis effect="italics">M</emphasis></para>
+</note>
+</example>
+</section>
+<section id="fs-idm180137840" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp3314288">Jónirnar sem mynda sölt geta haft súra eða basíska eiginleika og jónast þegar þær eru leystar upp í vatni til að mynda súrar eða basískar lausnir. Súrar katjónir eru venjulega samoka félagar veikra basa og basískar anjónir eru samoka félagar veikra sýra. Margar málmjónir tengjast vatnssameindum þegar þær leysast upp og mynda flókajónir sem geta virkað sem sýrur.</para>
+</section>
+<section id="fs-idm46050816" class="exercises">
+<title>Efnafræði – Æfingar í lok kafla</title>
+<exercise id="fs-idm95651552">
+<problem id="fs-idm116458960">
+<para id="fs-idm280233072">Ákvarðaðu hvort vatnslausnir eftirfarandi salta séu súrar, basískar eða hlutlausar:</para>
+<para id="fs-idm142584336">(a) Al(NO<sub>3</sub>)<sub>3</sub></para>
+<para id="fs-idm136682096">(b) RbI</para>
+<para id="fs-idp68276672">(c) KHCO<sub>2</sub></para>
+<para id="fs-idm121100032">(d) CH<sub>3</sub>NH<sub>3</sub>Br</para>
+</problem>
+</exercise>
+<exercise id="fs-idm161278480">
+<problem id="fs-idm30137504">
+<para id="fs-idm245309936">Ákvarðaðu hvort vatnslausnir eftirfarandi salta séu súrar, basískar eða hlutlausar:</para>
+<para id="fs-idm118859616">(a) FeCl<sub>3</sub></para>
+<para id="fs-idm120181856">(b) K<sub>2</sub>CO<sub>3</sub></para>
+<para id="fs-idm127849104">(c) NH<sub>4</sub>Br</para>
+<para id="fs-idm10166912">(d) KClO<sub>4</sub></para>
+</problem>
+<solution id="fs-idp107371776">
+<para id="fs-idm10437840">(a) súr; (b) basísk; (c) súr; (d) hlutlaus</para>
+</solution>
+</exercise>
+<exercise id="fs-idm1823584">
+<problem id="fs-idm138043888">
+<para id="fs-idp30279488">Nóvokaín, C<sub>13</sub>H<sub>21</sub>O<sub>2</sub>N<sub>2</sub>Cl, er salt basans prókaíns og saltsýru. Jónunarfasti prókaíns er 7 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup>. Er lausn af nóvokaíni súr eða basísk? Hver er styrkur [H<sub>3</sub>O<sup>+</sup>], [OH<sup>−</sup>] og hvert er pH 2,0% massalausnar af nóvokaíni, að því gefnu að eðlismassi lausnarinnar sé 1,0 g/ml?</para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

@@ -1,0 +1,551 @@
+{
+  "generated": "2026-03-20T12:30:00Z",
+  "pipeline": "extract→api-translate→inject (new API-proof markers, Phase 3 re-translation complete)",
+  "summary": {
+    "totalChecked": 148,
+    "perfect": 101,
+    "withDiscrepancies": 47,
+    "skippedUntranslated": 0,
+    "totalDiscrepancies": 250,
+    "dominantCause": "~2% API {{i}} emphasis marker loss + structural anomalies in 3 modules",
+    "htmlRendered": 267,
+    "chaptersRendered": 22
+  },
+  "categories": {
+    "legacyMarkerLoss": {
+      "description": "Modules translated with old markers (__term__, *emphasis*, ^sup^) before API-proof marker migration. These show term overproduction, emphasis/sup/sub losses, and newline losses.",
+      "affectedChapters": ["ch02", "ch03", "ch04", "ch05", "ch08", "ch09", "ch12", "ch13", "appendices"],
+      "action": "re-translate with --force in Phase 3 to use new API-proof markers",
+      "fixable": true
+    },
+    "apiEmphasisLoss": {
+      "description": "Málstaður API occasionally drops {{i}}/{{/i}} emphasis markers (~2.3% loss rate). Affects italics only — terms, footnotes, sup, sub markers survive at ~0%.",
+      "affectedChapters": ["ch06", "ch07", "ch10", "ch11", "ch14", "ch15", "ch16", "ch17", "ch18"],
+      "action": "cosmetic — missing italics on occasional words, does not affect content accuracy",
+      "fixable": false
+    },
+    "sourceDoubledEmphasis": {
+      "description": "OpenStax source CNXML has redundant nested <emphasis> tags. Fixed in extraction (2026-03-20) but m68778 IS segments were already translated with doubled markers.",
+      "affectedModules": ["m68778"],
+      "action": "re-translate m68778 with --force after re-extraction",
+      "fixable": true
+    },
+    "structuralAnomalies": {
+      "description": "Module-specific structural discrepancies (image/media counts, list/item counts) not fitting the emphasis pattern. May be injection code edge cases or source structure issues.",
+      "affectedModules": ["m68739", "m68710", "m68727"],
+      "action": "manual review — investigate if rendering looks correct despite tag count differences",
+      "fixable": "investigate"
+    }
+  },
+  "modules": [
+    {
+      "moduleId": "m68692", "chapter": "ch02",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "term", "source": 21, "translated": 23, "diff": 2}],
+      "notes": "Old __term__ markers caused term overproduction (+2)"
+    },
+    {
+      "moduleId": "m68696", "chapter": "ch02",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sup", "source": 46, "translated": 37, "diff": -9}],
+      "notes": "Old ^sup^ markers lost by MT"
+    },
+    {
+      "moduleId": "m68703", "chapter": "ch03",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sub", "source": 118, "translated": 116, "diff": -2}],
+      "notes": "Old ~sub~ markers lost by MT"
+    },
+    {
+      "moduleId": "m68704", "chapter": "ch03",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sup", "source": 7, "translated": 6, "diff": -1}],
+      "notes": "Old ^sup^ marker lost by MT"
+    },
+    {
+      "moduleId": "m68710", "chapter": "ch04",
+      "category": "structuralAnomalies",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 49, "translated": 48, "diff": -1},
+        {"tag": "item", "source": 22, "translated": 20, "diff": -2},
+        {"tag": "list", "source": 5, "translated": 3, "diff": -2},
+        {"tag": "para", "source": 282, "translated": 281, "diff": -1},
+        {"tag": "sub", "source": 130, "translated": 129, "diff": -1},
+        {"tag": "sup", "source": 72, "translated": 66, "diff": -6}
+      ],
+      "notes": "55 missing segments (incomplete IS translation). Structural losses from incomplete injection."
+    },
+    {
+      "moduleId": "m68726", "chapter": "ch05",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sub", "source": 52, "translated": 48, "diff": -4}],
+      "notes": "Old ~sub~ markers lost by MT"
+    },
+    {
+      "moduleId": "m68727", "chapter": "ch05",
+      "category": "structuralAnomalies",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 194, "translated": 206, "diff": 12},
+        {"tag": "m:math", "source": 180, "translated": 187, "diff": 7},
+        {"tag": "sub", "source": 157, "translated": 159, "diff": 2}
+      ],
+      "notes": "Tag overcounting — translated has MORE tags than source. Possible injection producing extra elements."
+    },
+    {
+      "moduleId": "m68729", "chapter": "ch06",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 57, "translated": 55, "diff": -2}],
+      "notes": "API dropped 2 {{i}} markers"
+    },
+    {
+      "moduleId": "m68733", "chapter": "ch06",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 328, "translated": 321, "diff": -7},
+        {"tag": "sub", "source": 44, "translated": 42, "diff": -2}
+      ],
+      "notes": "API dropped emphasis markers. Single-char emphasis (quantum number variables) particularly vulnerable."
+    },
+    {
+      "moduleId": "m68734", "chapter": "ch06",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 455, "translated": 453, "diff": -2},
+        {"tag": "item", "source": 11, "translated": 10, "diff": -1},
+        {"tag": "list", "source": 4, "translated": 3, "diff": -1}
+      ],
+      "notes": "Minor emphasis loss + list/item structural issue"
+    },
+    {
+      "moduleId": "m68735", "chapter": "ch06",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 75, "translated": 76, "diff": 1},
+        {"tag": "sub", "source": 33, "translated": 34, "diff": 1}
+      ],
+      "notes": "Slight overcounting in translated — possibly injection producing extra elements"
+    },
+    {
+      "moduleId": "m68739", "chapter": "ch07",
+      "category": "structuralAnomalies",
+      "discrepancies": [
+        {"tag": "image", "source": 77, "translated": 85, "diff": 8},
+        {"tag": "item", "source": 39, "translated": 30, "diff": -9},
+        {"tag": "list", "source": 11, "translated": 6, "diff": -5},
+        {"tag": "media", "source": 77, "translated": 85, "diff": 8}
+      ],
+      "notes": "Significant structural anomaly — image/media overcounting, list/item undercounting. Needs manual investigation."
+    },
+    {
+      "moduleId": "m68745", "chapter": "ch08",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 187, "translated": 183, "diff": -4},
+        {"tag": "sup", "source": 85, "translated": 72, "diff": -13}
+      ],
+      "notes": "Old marker losses — sup particularly bad (-13)"
+    },
+    {
+      "moduleId": "m68747", "chapter": "ch08",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 80, "translated": 85, "diff": 5},
+        {"tag": "sub", "source": 130, "translated": 116, "diff": -14},
+        {"tag": "sup", "source": 6, "translated": 7, "diff": 1}
+      ],
+      "notes": "Old marker losses — sub particularly bad (-14)"
+    },
+    {
+      "moduleId": "m68750", "chapter": "ch09",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 23, "translated": 32, "diff": 9},
+        {"tag": "m:math", "source": 23, "translated": 22, "diff": -1},
+        {"tag": "newline", "source": 5, "translated": 0, "diff": -5},
+        {"tag": "sub", "source": 3, "translated": 2, "diff": -1},
+        {"tag": "sup", "source": 16, "translated": 15, "diff": -1},
+        {"tag": "term", "source": 18, "translated": 9, "diff": -9}
+      ],
+      "notes": "Old marker losses — term overproduction/loss pattern typical of __term__ format"
+    },
+    {
+      "moduleId": "m68751", "chapter": "ch09",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 142, "translated": 151, "diff": 9},
+        {"tag": "footnote", "source": 1, "translated": 0, "diff": -1},
+        {"tag": "sub", "source": 61, "translated": 57, "diff": -4},
+        {"tag": "sup", "source": 20, "translated": 16, "diff": -4},
+        {"tag": "term", "source": 21, "translated": 10, "diff": -11}
+      ],
+      "notes": "Old marker losses — term (-11), footnote (-1)"
+    },
+    {
+      "moduleId": "m68752", "chapter": "ch09",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 44, "translated": 49, "diff": 5},
+        {"tag": "footnote", "source": 1, "translated": 0, "diff": -1},
+        {"tag": "link", "source": 16, "translated": 15, "diff": -1},
+        {"tag": "newline", "source": 9, "translated": 0, "diff": -9},
+        {"tag": "sub", "source": 173, "translated": 170, "diff": -3},
+        {"tag": "term", "source": 10, "translated": 4, "diff": -6}
+      ],
+      "notes": "Old marker losses — footnote, newline, term all affected"
+    },
+    {
+      "moduleId": "m68754", "chapter": "ch09",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 5, "translated": 10, "diff": 5},
+        {"tag": "newline", "source": 5, "translated": 0, "diff": -5},
+        {"tag": "term", "source": 10, "translated": 5, "diff": -5}
+      ],
+      "notes": "Old marker losses"
+    },
+    {
+      "moduleId": "m68758", "chapter": "ch09",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 21, "translated": 20, "diff": -1},
+        {"tag": "sub", "source": 25, "translated": 23, "diff": -2}
+      ],
+      "notes": "Old marker losses"
+    },
+    {
+      "moduleId": "m68759", "chapter": "ch09",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 20, "translated": 22, "diff": 2},
+        {"tag": "term", "source": 4, "translated": 2, "diff": -2}
+      ],
+      "notes": "Old marker losses"
+    },
+    {
+      "moduleId": "m68764", "chapter": "ch10",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "image", "source": 10, "translated": 11, "diff": 1},
+        {"tag": "media", "source": 10, "translated": 11, "diff": 1}
+      ],
+      "notes": "Slight image/media overcounting"
+    },
+    {
+      "moduleId": "m68768", "chapter": "ch10",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 44, "translated": 41, "diff": -3}],
+      "notes": "API dropped 2-3 {{i}} markers"
+    },
+    {
+      "moduleId": "m68769", "chapter": "ch10",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 3, "translated": 0, "diff": -3}],
+      "notes": "API dropped all 3 {{i}} markers — short emphasis spans vulnerable"
+    },
+    {
+      "moduleId": "m68778", "chapter": "ch11",
+      "category": "sourceDoubledEmphasis",
+      "discrepancies": [{"tag": "emphasis", "source": 35, "translated": 29, "diff": -6}],
+      "notes": "6 doubled <emphasis> tags in source CNXML. Extraction fix applied 2026-03-20 but IS segments pre-date fix. Re-translate to resolve."
+    },
+    {
+      "moduleId": "m68781", "chapter": "ch11",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 11, "translated": 6, "diff": -5},
+        {"tag": "sub", "source": 25, "translated": 24, "diff": -1}
+      ],
+      "notes": "API dropped 5 {{i}} markers"
+    },
+    {
+      "moduleId": "m68783", "chapter": "ch11",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 134, "translated": 133, "diff": -1},
+        {"tag": "sub", "source": 182, "translated": 180, "diff": -2}
+      ],
+      "notes": "Minor API marker loss"
+    },
+    {
+      "moduleId": "m68786", "chapter": "ch12",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 32, "translated": 31, "diff": -1}],
+      "notes": "Old marker loss"
+    },
+    {
+      "moduleId": "m68789", "chapter": "ch12",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 105, "translated": 104, "diff": -1}],
+      "notes": "Re-translated with new markers. Was emphasis:-1,sup:-4 with old markers. sup now perfect."
+    },
+    {
+      "moduleId": "m68793", "chapter": "ch12",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 64, "translated": 62, "diff": -2}],
+      "notes": "Old marker loss"
+    },
+    {
+      "moduleId": "m68797", "chapter": "ch13",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 7, "translated": 9, "diff": 2},
+        {"tag": "term", "source": 4, "translated": 2, "diff": -2}
+      ],
+      "notes": "Old marker losses"
+    },
+    {
+      "moduleId": "m68798", "chapter": "ch13",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 206, "translated": 208, "diff": 2},
+        {"tag": "link", "source": 10, "translated": 9, "diff": -1},
+        {"tag": "newline", "source": 6, "translated": 0, "diff": -6},
+        {"tag": "sub", "source": 187, "translated": 180, "diff": -7},
+        {"tag": "sup", "source": 22, "translated": 17, "diff": -5},
+        {"tag": "term", "source": 10, "translated": 5, "diff": -5}
+      ],
+      "notes": "Old marker losses — multiple tag types affected. Also 2 missing segments."
+    },
+    {
+      "moduleId": "m68799", "chapter": "ch13",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "newline", "source": 15, "translated": 0, "diff": -15},
+        {"tag": "term", "source": 2, "translated": 1, "diff": -1}
+      ],
+      "notes": "Old marker losses — all newlines lost"
+    },
+    {
+      "moduleId": "m68801", "chapter": "ch13",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "link", "source": 4, "translated": 3, "diff": -1},
+        {"tag": "newline", "source": 1, "translated": 0, "diff": -1}
+      ],
+      "notes": "Old marker losses"
+    },
+    {
+      "moduleId": "m68805", "chapter": "ch14",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 185, "translated": 186, "diff": 1}],
+      "notes": "Slight overcounting — not a loss"
+    },
+    {
+      "moduleId": "m68809", "chapter": "ch14",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 39, "translated": 38, "diff": -1}],
+      "notes": "Minor API marker loss"
+    },
+    {
+      "moduleId": "m68811", "chapter": "ch15",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 254, "translated": 252, "diff": -2},
+        {"tag": "sub", "source": 372, "translated": 371, "diff": -1}
+      ],
+      "notes": "Minor API marker loss"
+    },
+    {
+      "moduleId": "m68813", "chapter": "ch15",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 40, "translated": 41, "diff": 1},
+        {"tag": "sub", "source": 62, "translated": 64, "diff": 2},
+        {"tag": "term", "source": 18, "translated": 19, "diff": 1}
+      ],
+      "notes": "Slight overcounting — not a loss"
+    },
+    {
+      "moduleId": "m68814", "chapter": "ch15",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "link", "source": 5, "translated": 7, "diff": 2}],
+      "notes": "Overcounting links — possible injection artefact"
+    },
+    {
+      "moduleId": "m68818", "chapter": "ch16",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 77, "translated": 69, "diff": -8},
+        {"tag": "link", "source": 7, "translated": 6, "diff": -1},
+        {"tag": "para", "source": 73, "translated": 72, "diff": -1}
+      ],
+      "notes": "API dropped 7 {{i}} markers. Confirmed EN=75, IS=68."
+    },
+    {
+      "moduleId": "m68819", "chapter": "ch16",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 209, "translated": 201, "diff": -8},
+        {"tag": "m:math", "source": 179, "translated": 178, "diff": -1},
+        {"tag": "sub", "source": 47, "translated": 48, "diff": 1}
+      ],
+      "notes": "API dropped 6 {{i}} markers. Also 1 missing segment."
+    },
+    {
+      "moduleId": "m68821", "chapter": "ch17",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 30, "translated": 25, "diff": -5},
+        {"tag": "sub", "source": 19, "translated": 18, "diff": -1}
+      ],
+      "notes": "API dropped 4 {{i}} markers"
+    },
+    {
+      "moduleId": "m68822", "chapter": "ch17",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 19, "translated": 18, "diff": -1},
+        {"tag": "sub", "source": 16, "translated": 15, "diff": -1}
+      ],
+      "notes": "Minor API marker loss"
+    },
+    {
+      "moduleId": "m68823", "chapter": "ch17",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "link", "source": 12, "translated": 11, "diff": -1},
+        {"tag": "m:math", "source": 66, "translated": 64, "diff": -2},
+        {"tag": "sub", "source": 20, "translated": 24, "diff": 4}
+      ],
+      "notes": "Mixed — link and math loss, sub overcounting"
+    },
+    {
+      "moduleId": "m68826", "chapter": "ch17",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "title", "source": 4, "translated": 3, "diff": -1}],
+      "notes": "Title tag loss — unusual"
+    },
+    {
+      "moduleId": "m68830", "chapter": "ch18",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 1, "translated": 0, "diff": -1}],
+      "notes": "Single emphasis lost — short span vulnerable"
+    },
+    {
+      "moduleId": "m68837", "chapter": "ch18",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "sub", "source": 158, "translated": 163, "diff": 5}],
+      "notes": "Sub overcounting — injection artefact"
+    },
+    {
+      "moduleId": "m68860", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 40, "translated": 37, "diff": -3},
+        {"tag": "sup", "source": 23, "translated": 21, "diff": -2},
+        {"tag": "title", "source": 35, "translated": 34, "diff": -1}
+      ],
+      "notes": "Old marker losses. Also 5 missing segments."
+    },
+    {
+      "moduleId": "m68861", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "m:math", "source": 3, "translated": 2, "diff": -1},
+        {"tag": "newline", "source": 17, "translated": 0, "diff": -17},
+        {"tag": "sup", "source": 20, "translated": 19, "diff": -1}
+      ],
+      "notes": "Old marker losses — all 17 newlines lost"
+    },
+    {
+      "moduleId": "m68863", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 5, "translated": 6, "diff": 1}],
+      "notes": "Slight overcounting"
+    },
+    {
+      "moduleId": "m68865", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 340, "translated": 330, "diff": -10},
+        {"tag": "link", "source": 0, "translated": 4, "diff": 4},
+        {"tag": "sup", "source": 51, "translated": 37, "diff": -14}
+      ],
+      "notes": "Worst appendix — large sup loss (-14), emphasis loss (-10)"
+    },
+    {
+      "moduleId": "m68868", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sup", "source": 99, "translated": 80, "diff": -19}],
+      "notes": "Large sup loss — old ^sup^ markers badly damaged by MT"
+    },
+    {
+      "moduleId": "m68869", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sup", "source": 23, "translated": 21, "diff": -2}],
+      "notes": "Old marker loss"
+    },
+    {
+      "moduleId": "m68871", "chapter": "appendices",
+      "category": "legacyMarkerLoss",
+      "discrepancies": [{"tag": "sup", "source": 15, "translated": 14, "diff": -1}],
+      "notes": "Old marker loss"
+    },
+    {
+      "moduleId": "m68843", "chapter": "ch19",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "link", "source": 35, "translated": 37, "diff": 2},
+        {"tag": "sup", "source": 85, "translated": 86, "diff": 1}
+      ],
+      "notes": "Slight overcounting — not a loss"
+    },
+    {
+      "moduleId": "m68844", "chapter": "ch19",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 127, "translated": 128, "diff": 1},
+        {"tag": "sub", "source": 153, "translated": 152, "diff": -1}
+      ],
+      "notes": "Minor sub loss"
+    },
+    {
+      "moduleId": "m68846", "chapter": "ch20",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 63, "translated": 61, "diff": -2},
+        {"tag": "sup", "source": 16, "translated": 15, "diff": -1},
+        {"tag": "term", "source": 25, "translated": 26, "diff": 1}
+      ],
+      "notes": "API dropped 2 emphasis markers"
+    },
+    {
+      "moduleId": "m68847", "chapter": "ch20",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 9, "translated": 8, "diff": -1}],
+      "notes": "Single emphasis loss"
+    },
+    {
+      "moduleId": "m68848", "chapter": "ch20",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "emphasis", "source": 10, "translated": 9, "diff": -1}],
+      "notes": "Single emphasis loss"
+    },
+    {
+      "moduleId": "m68852", "chapter": "ch21",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [{"tag": "m:math", "source": 55, "translated": 53, "diff": -2}],
+      "notes": "2 math elements lost"
+    },
+    {
+      "moduleId": "m68854", "chapter": "ch21",
+      "category": "apiEmphasisLoss",
+      "discrepancies": [
+        {"tag": "emphasis", "source": 25, "translated": 24, "diff": -1},
+        {"tag": "link", "source": 15, "translated": 14, "diff": -1},
+        {"tag": "sub", "source": 12, "translated": 11, "diff": -1},
+        {"tag": "sup", "source": 42, "translated": 43, "diff": 1}
+      ],
+      "notes": "API retry succeeded. Minor losses. Chunk 2/2 had truncation on first attempt."
+    },
+    {
+      "moduleId": "m68856", "chapter": "ch21",
+      "category": "structuralAnomalies",
+      "discrepancies": [
+        {"tag": "item", "source": 12, "translated": 7, "diff": -5},
+        {"tag": "list", "source": 3, "translated": 2, "diff": -1}
+      ],
+      "notes": "List/item structural loss — similar pattern to m68739 (ch07). Needs investigation."
+    }
+  ]
+}

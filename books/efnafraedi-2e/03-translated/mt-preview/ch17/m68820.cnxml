@@ -1,0 +1,19 @@
+<document xmlns="http://cnx.rice.edu/cnxml" class="introduction">
+<title>Inngangur</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68820</md:content-id>
+  <md:title>Inngangur</md:title>
+  <md:abstract><list id="list-00001"><item>Jöfnun oxunar-afoxunarhvarfa</item><item>Galvanísk rafefnafræðileg hólf</item><item>Staðalafoxunarspenna</item><item>Nernst-jafnan</item><item>Rafhlöður og efnarafalar</item><item>Tæring</item><item>Rafgreining</item></list></md:abstract>
+  <md:uuid>7c92f9c8-534d-4d39-ac6c-cbb9798c92da</md:uuid>
+</metadata>
+
+<content>
+<figure id="CNX_Chem_17_00_EVCharging" class="splash">
+<media id="fs-idm189620448" alt="A photograph is shown of a parked car plugged into a charging station in a paved parking area. The parking area is situated in a wooded area. People are walking in the background in the park-like atmosphere.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_17_00_EVCharging.jpg"/>
+</media>
+<caption>Rafbílar eru knúnir af rafhlöðum, tækjum sem virkja orku sjálfgengra oxunar-afoxunarhvarfa. (heimild: breyting á verki eftir Robert Couse-Baker)</caption>
+</figure>
+<para id="fs-idm9057728">Í öðrum kafla þessarar bókar var efnafræði oxunar-afoxunarhvarfa (redox) kynnt. Þessi mikilvægi efnahvarfaflokkur er skilgreindur með breytingum á oxunartölum eins eða fleiri frumefna í hvarfefnum og hann nær yfir undirflokk efnahvarfa sem fela í sér flutning rafeinda milli hvarfefnategunda. Um aldamótin 1800 hófu efnafræðingar að kanna leiðir til að flytja þessar rafeindir <emphasis effect="italics">óbeint</emphasis> um ytri rafrás frekar en beint með náinni snertingu oxunar-afoxunarhvarfefna. Á þeim tveimur öldum sem liðnar eru hefur svið <emphasis effect="italics">rafefnafræðinnar</emphasis> þróast og veitt verulega innsýn í grundvallarþætti oxunar-afoxunarefnafræði auk fjölda tæknilausna, allt frá málmvinnsluferlum á iðnaðarskala til öflugra, endurhlaðanlegra rafhlaðna fyrir rafbíla (<link target-id="CNX_Chem_17_00_EVCharging"/>). Í þessum kafla verður fjallað um grundvallarhugtök rafefnafræðinnar.</para>
+</content>
+</document>

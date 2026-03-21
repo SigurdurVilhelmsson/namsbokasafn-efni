@@ -229,7 +229,7 @@
           "id": "fs-idm160727824",
           "title": {
             "segmentId": "m68793:example-title:fs-idm160727824-title",
-            "text": "Determination of *E*~a~"
+            "text": "Determination of {{i}}E{{/i}}[[sub:a]]"
           },
           "content": [
             {

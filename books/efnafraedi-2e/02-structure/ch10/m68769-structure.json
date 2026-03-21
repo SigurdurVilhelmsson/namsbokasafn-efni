@@ -589,7 +589,10 @@
           "type": "note",
           "id": "fs-idp20092656",
           "class": "chemistry everyday-life",
-          "title": null,
+          "title": {
+            "segmentId": "m68769:note-title:fs-idp20092656-title",
+            "text": "Decaffeinating Coffee Using Supercritical CO[[sub:2]]"
+          },
           "content": [
             {
               "type": "para",

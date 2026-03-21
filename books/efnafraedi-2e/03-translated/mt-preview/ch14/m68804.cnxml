@@ -1,0 +1,262 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>pH og pOH</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68804</md:content-id>
+  <md:title>pH og pOH</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Útskýrt flokkun vatnslausna sem súrra, basískra eða hlutlausra</item><item>Lýst styrk hýdróníum- og hýdroxíðjóna á pH- og pOH-kvarða</item><item>Framkvæmt útreikninga sem tengjast pH og pOH</item></list></md:abstract>
+  <md:uuid>9b866cac-4fb8-4db9-a92c-2cb4cabeefd0</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp11137424">Eins og áður hefur komið fram eru hýdróníum- og hýdroxíðjónir til staðar bæði í hreinu vatni og í öllum vatnslausnum og styrkur þeirra er í öfugu hlutfalli eins og jónafurð vatns (<emphasis effect="italics">K</emphasis><sub>w</sub>) ákvarðar. Styrkur þessara jóna í lausn er oft afgerandi þáttur í eiginleikum lausnarinnar og efnafræðilegri hegðun annarra uppleystra efna hennar og sérstakur orðaforði hefur verið þróaður til að lýsa þessum styrk í afstæðum skilningi. Lausn er <term id="term-00001">hlutlaus (e. neutral)</term> ef hún inniheldur jafnan styrk hýdróníum- og hýdroxíðjóna; <term id="term-00002">súr (e. acidic)</term> ef hún inniheldur meiri styrk hýdróníumjóna en hýdroxíðjóna; og <term id="term-00003">basísk (e. basic)</term> ef hún inniheldur minni styrk hýdróníumjóna en hýdroxíðjóna.</para>
+<para id="fs-idm21650320">Algeng leið til að tjá stærðir sem geta spannað margar stærðargráður er að nota lograkvarða. Einn slíkur kvarði sem er mjög vinsæll fyrir efnafræðilegan styrk og jafnvægisfasta byggist á p-fallinu, sem er skilgreint eins og sýnt er þar sem „X“ er stærðin sem um ræðir og „log“ er tugalogrinn:</para>
+<equation id="fs-idp27819744" class="unnumbered"><m:math><m:mrow><m:mtext>pX</m:mtext><m:mo>=</m:mo><m:mtext>−log X</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm40569744"><term id="term-00004">pH</term> lausnar er því skilgreint eins og sýnt er hér, þar sem [H<sub>3</sub>O<sup>+</sup>] er mólstyrkur hýdróníumjónarinnar í lausninni:</para>
+<equation id="fs-idm104306928" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:math></equation>
+<para id="fs-idm112635600">Með því að endurraða þessari jöfnu til að einangra mólstyrk hýdróníumjónarinnar fæst jafngild tjáning:</para>
+<equation id="fs-idm34387328" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−pH</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp55544688">Sömuleiðis má tjá mólstyrk hýdroxíðjónarinnar sem p-fall, eða <term id="term-00005">pOH</term>:</para>
+<equation id="fs-idp66748048" class="unnumbered"><m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:math></equation>
+<para id="fs-idp67153952">eða</para>
+<equation id="fs-idp102994080" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−pOH</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm97029664">Loks er auðvelt að leiða sambandið milli þessara tveggja jónastyrkja, tjáð sem p-föll, út frá <emphasis effect="italics">K</emphasis><sub>w</sub>-tjáningunni:</para>
+<equation id="fs-idp158230176" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub><m:mo>=</m:mo><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math></equation>
+<equation id="fs-idp50288944" class="unnumbered"><m:math><m:mrow><m:mtext>−log</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:math></equation>
+<equation id="fs-idm65790448" class="unnumbered"><m:math><m:mrow><m:mtext>p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>w</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>pH</m:mtext><m:mo>+</m:mo><m:mtext>pOH</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp11266224">Við 25 °C er gildi <emphasis effect="italics">K</emphasis><sub>w</sub> 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−14</sup> og því:</para>
+<equation id="fs-idm26101984" class="unnumbered"><m:math><m:mrow><m:mn>14.00</m:mn><m:mo>=</m:mo><m:mtext>pH</m:mtext><m:mo>+</m:mo><m:mtext>pOH</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm103103632">Eins og sýnt var í <link document="m68803" target-id="fs-idm123712192"/> er mólstyrkur hýdróníumjóna í hreinu vatni (eða hvaða hlutlausu lausn sem er) 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis> við 25 °C. pH og pOH hlutlausrar lausnar við þetta hitastig eru því:</para>
+<equation id="fs-idp111835440" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:msup><m:mn>0</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.00</m:mn></m:mrow></m:math></equation>
+<equation id="fs-idm65159184" class="unnumbered"><m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:msup><m:mn>0</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.00</m:mn></m:mrow></m:math></equation>
+<para id="fs-idp108462720">Og því, <emphasis effect="italics">við þetta hitastig</emphasis>, eru súrar lausnir þær sem hafa mólstyrk hýdróníumjóna meiri en 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis> og mólstyrk hýdroxíðjóna minni en 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis> (sem samsvarar pH-gildum undir 7,00 og pOH-gildum yfir 7,00). Basískar lausnir eru þær sem hafa mólstyrk hýdróníumjóna minni en 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis> og mólstyrk hýdroxíðjóna meiri en 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis> (sem samsvarar pH-gildum yfir 7,00 og pOH-gildum undir 7,00).</para>
+<para id="fs-idm84564368">Þar sem sjálfjónunarfastinn <emphasis effect="italics">K</emphasis><sub>w</sub> er háður hitastigi verða þessi tengsl milli pH-gilda og lýsingarorðanna súr/hlutlaus/basísk önnur við annað hitastig en 25 °C. Til dæmis sýndi „Prófaðu þekkingu þína“-æfingin sem fylgdi <link document="m68803" target-id="fs-idm123712192"/> að mólstyrkur hýdróníumjóna í hreinu vatni við 80 °C er 4,9 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>, sem samsvarar pH- og pOH-gildunum:</para>
+<equation id="fs-idm62771680" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>4.9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>6.31</m:mn></m:mrow></m:math></equation>
+<equation id="fs-idm102114704" class="unnumbered"><m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>4.9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>6.31</m:mn></m:mrow></m:math></equation>
+<para id="fs-idm67617872">Við þetta hitastig hafa hlutlausar lausnir því pH = pOH = 6,31, súrar lausnir hafa pH undir 6,31 og pOH yfir 6,31, en basískar lausnir hafa pH yfir 6,31 og pOH undir 6,31. Þessi greinarmunur getur verið mikilvægur þegar rannsökuð eru ákveðin ferli sem eiga sér stað við annað hitastig, svo sem ensímhvörf í jafnheitum lífverum við hitastig í kringum 36–40 °C. Nema annað sé tekið fram er gert ráð fyrir að tilvísanir í pH-gildi miðist við 25 °C (<link target-id="fs-idp56820128"/>).</para>
+<table id="fs-idp56820128" class="top-titled" summary="This table has three columns and four rows. The first row is a header row, and it labels each column: “Classification,” “Relative ion concentrations,” and “p H at 25 degrees C.” Under the “Classification” column are the following: “acidic,” “neutral,” and “basic.” Under the “Relative ion concentrations” column are the following, “[ H subscript 2 O superscript plus sign ] is greater than [ O H superscript negative sign],” “[ H subscript 2 O superscript plus sign ] equals [ O H superscript negative sign ],” and, “[ H subscript 2 O superscript plus sign ] is less than [ O H superscript negative sing ].” Under the “p H at 25 degrees C” column are the following: “p H is less than 7,” “p H equals 7,” and “p H is greater than 7.”">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Samantekt á samböndum fyrir súrar, basískar og hlutlausar lausnir</entry>
+</row>
+<row valign="top">
+<entry align="center">Flokkun</entry>
+<entry align="center">Afstæður jónastyrkur</entry>
+<entry align="center">pH við 25 °C</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="center">súr</entry>
+<entry align="center">[H<sub>3</sub>O<sup>+</sup>] > [OH<sup>−</sup>]</entry>
+<entry align="center">pH &lt; 7</entry>
+</row>
+<row valign="top">
+<entry align="center">hlutlaus</entry>
+<entry align="center">[H<sub>3</sub>O<sup>+</sup>] = [OH<sup>−</sup>]</entry>
+<entry align="center">pH = 7</entry>
+</row>
+<row valign="top">
+<entry align="center">basískur</entry>
+<entry align="center">[H<sub>3</sub>O<sup>+</sup>] &lt; [OH<sup>−</sup>]</entry>
+<entry align="center">pH > 7</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp96882128"><link target-id="CNX_Chem_14_02_phscale"/> sýnir sambandið milli [H<sub>3</sub>O<sup>+</sup>], [OH<sup>−</sup>], pH og pOH fyrir lausnir sem eru flokkaðar sem súrar, basískar og hlutlausar.</para>
+<figure id="CNX_Chem_14_02_phscale">
+<media id="fs-idm15160336" alt="A table is provided with 5 columns. The first column is labeled “left bracket H subscript 3 O superscript plus right bracket (M).” Powers of ten are listed in the column beginning at 10 superscript 1, including 10 superscript 0 or 1, 10 superscript negative 1, decreasing by single powers of 10 to 10 superscript negative 15. The second column is labeled “left bracket O H superscript negative right bracket (M).” Powers of ten are listed in the column beginning at 10 superscript negative 15, increasing by single powers of 10 to including 10 superscript 0 or 1, and 10 superscript 1. The third column is labeled “p H.” Values listed in this column are integers beginning at negative 1, increasing by ones up to 14. The fourth column is labeled “p O H.” Values in this column are integers beginning at 15, decreasing by ones up to negative 1. The fifth column is labeled “Sample Solution.” A vertical line at the left of the column has tick marks corresponding to each p H level in the table. Substances are listed next to this line segment with line segments connecting them to the line to show approximate p H and p O H values. 1 M H C l is listed at a p H of 0. Gastric juices are listed at a p H of about 1.5. Lime juice is listed at a p H of about 2, followed by 1 M C H subscript 3 C O subscript 2 H, followed by stomach acid at a p H value of nearly 3. Wine is listed around 3.5. Coffee is listed just past 5. Pure water is listed at a p H of 7. Pure blood is just beyond 7. Milk of Magnesia is listed just past a p H of 10.5. Household ammonia is listed just before a pH of 12. 1 M N a O H is listed at a p H of 0. To the right of this labeled arrow is an arrow that points up and down through the height of the column. A beige strip passes through the table and to this double headed arrow at p H 7. To the left of the double headed arrow in this beige strip is the label “neutral.” A narrow beige strip runs through the arrow. Just above and below this region, the arrow is purple. It gradually turns to a bright red as it extends upward. At the top of the arrow, near the head of the arrow is the label “acidic.” Similarly, the lower region changes color from purple to blue moving to the bottom of the column. The head at this end of the arrow is labeled “basic.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_02_phscale.jpg"/>
+</media>
+<caption>pH- og pOH-kvarðarnir tákna styrk H<sub>3</sub>O<sup>+</sup> og OH<sup>−</sup>, í sömu röð. pH- og pOH-gildi nokkurra algengra efna við 25 °C eru sýnd á þessu skýringarmynd.</caption>
+</figure>
+<example id="fs-idp62701056">
+<para id="fs-idp97421056"><title>Útreikningur á pH út frá [H<sub>3</sub>O<sup>+</sup>]</title>Hvað er pH-gildi magasýru, sem er HCl-lausn með styrk hýdróníumjóna upp á 1,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis>?</para>
+<para id="fs-idm103954896"><title>Lausn</title><equation id="fs-idm98702480" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:math></equation> <equation id="fs-idm79624528" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mtext>−log(</m:mtext><m:mn>1.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation> <equation id="fs-idm7356256" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mtext>−</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>−2.92</m:mn></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>2.92</m:mn></m:mrow></m:math></equation><newline/> (Notkun logra er útskýrð í <link document="m68859">viðauka B</link>. Þegar logri er tekinn af gildi skal halda jafn mörgum aukastöfum í niðurstöðunni og markverðir stafir eru í gildinu.)</para>
+<para id="fs-idp57469360"><title>Prófaðu þekkingu þína</title>Vatn sem kemst í snertingu við loft inniheldur kolsýru, H<sub>2</sub>CO<sub>3</sub>, vegna efnahvarfs milli koldíoxíðs og vatns:</para>
+<equation id="fs-idm45568144" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm106049328">Loftmettað vatn hefur styrk hýdróníumjóna upp á 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> <emphasis effect="italics">M</emphasis> vegna uppleysts CO<sub>2</sub>, sem er um 20 sinnum meiri en í hreinu vatni. Reiknaðu pH lausnarinnar við 25 °C.</para>
+<note id="fs-idm61631152">
+<title>Answer:</title><para id="fs-idm99369680">5,70</para></note>
+</example>
+<example id="fs-idp57695872">
+<para id="fs-idm102910496"><title>Útreikningur á styrk hýdróníumjóna út frá pH</title>Reiknaðu styrk hýdróníumjóna í blóði, en pH-gildi þess er 7,3.</para>
+<para id="fs-idp11945040"><title>Lausn</title><equation id="fs-idm108531776" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>7.3</m:mn></m:mrow></m:math></equation> <equation id="fs-idm49363536" class="unnumbered"><m:math><m:mrow><m:mtext>log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>−7.3</m:mn></m:mrow></m:math></equation> <equation id="fs-idp46442128" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7.3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.4em"/><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>antilog of −7.3</m:mtext></m:mrow></m:math></equation> <equation id="fs-idm58086272" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mn>5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation><newline/> (Í reiknivél skal taka andlogra, eða „andhverfan“ logra, af −7,3, eða reikna 10<sup>−7,3</sup>.)</para>
+<para id="fs-idp487584"><title>Prófaðu þekkingu þína</title>Reiknaðu styrk hýdróníumjóna í lausn með pH-gildi −1,07.</para>
+<note id="fs-idp89672320">
+<title>Answer:</title>
+<para id="fs-idm9452560">12 <emphasis effect="italics">M</emphasis></para>
+</note>
+</example>
+<note id="fs-idp48828576" class="chemistry sciences-interconnect">
+<title>Umhverfisvísindi</title>
+<para id="fs-idm116727232">Venjulegt regnvatn hefur pH-gildi á bilinu 5 til 6 vegna uppleysts CO<sub>2</sub> sem myndar kolsýru:</para>
+<equation id="fs-idp66992000" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idm103550896" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp13883280">Súrt regn er regnvatn með pH-gildi undir 5 vegna ýmissa oxíða málmleysingja, þar á meðal CO<sub>2</sub>, SO<sub>2</sub>, SO<sub>3</sub>, NO og NO<sub>2</sub>, sem leysast upp í vatninu og hvarfast við það og mynda ekki aðeins kolsýru, heldur einnig brennisteinssýru og saltpéturssýru. Myndun og síðari jónun brennisteinssýru er sýnd hér:</para>
+<equation id="fs-idp39536896" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idp62631392" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp93018416">Koldíoxíð er náttúrulega til staðar í andrúmsloftinu því flestar lífverur framleiða það sem úrgangsefni við efnaskipti. Koldíoxíð myndast einnig þegar eldar losa kolefni sem geymt er í gróðri eða jarðefnaeldsneyti. Brennisteinsþríoxíð í andrúmsloftinu myndast náttúrulega við eldvirkni, en það kemur einnig frá bruna jarðefnaeldsneytis, sem inniheldur snefil af brennisteini, og frá ferlinu við að „rista“ málmgrýti úr málmsúlfíðum við málmhreinsun. Nituroxíð myndast í brunahreyflum þar sem hátt hitastig gerir nitri og súrefni í loftinu kleift að bindast efnafræðilega.</para>
+<para id="fs-idm22038432">Súrt regn er sérstakt vandamál á iðnaðarsvæðum þar sem myndefnum frá bruna og bræðslu er sleppt út í loftið án þess að brennisteins- og nituroxíð séu fjarlægð. Í Norður-Ameríku og Evrópu fram á níunda áratuginn olli það eyðileggingu skóga og ferskvatnsvatna, þegar sýrustig regnsins drap í raun tré, skemmdi jarðveg og gerði vötn óbyggileg fyrir allar nema sýruþolnustu tegundirnar. Súrt regn tærir einnig styttur og framhliðar bygginga sem eru gerðar úr marmara og kalksteini (<link target-id="CNX_Chem_14_02_AcidRain"/>). Reglur sem takmarka magn brennisteins- og nituroxíða sem iðnaður og bifreiðar mega losa út í andrúmsloftið hafa dregið úr alvarleika sýruskemmda á bæði náttúrulegu og manngerðu umhverfi í Norður-Ameríku og Evrópu. Það er nú vaxandi vandamál á iðnaðarsvæðum í Kína og Indlandi.</para>
+<para id="fs-idm22123696">Fyrir frekari upplýsingar um súrt regn, heimsæktu þennan <link url="http://openstax.org/l/16EPA">vef</link> sem Umhverfisstofnun Bandaríkjanna (US Environmental Protection Agency) hýsir.</para>
+<figure id="CNX_Chem_14_02_AcidRain" class="scaled-down">
+<media id="fs-idp11790976" alt="Two photos are shown. Photograph a on the left shows the upper portion of trees against a bright blue sky. The tops of several trees at the center of the photograph have bare branches and appear to be dead. Image b shows a statue of a man that appears to from the revolutionary war era in either marble or limestone.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_02_AcidRain.jpg"/>
+</media>
+<caption>(a) Súrt regn gerir tré viðkvæmari fyrir þurrkum og skordýraplágum og eyðir næringarefnum úr jarðveginum. (b) Það tærir einnig styttur sem eru skornar úr marmara eða kalksteini. (mynd a: breyting á verki eftir Chris M Morris; mynd b: breyting á verki eftir „Eden, Janine and Jim“/Flickr)</caption>
+</figure>
+</note>
+<example id="fs-idm90070400">
+<para id="fs-idp57499040"><title>Útreikningur á pOH</title>Hvert er pOH og pH í 0,0125-<emphasis effect="italics">M</emphasis> lausn af kalíumhýdroxíði, KOH?</para>
+<para id="fs-idm55606544"><title>Lausn</title>Kalíumhýdroxíð er mjög auðleyst jónaefni og sundrast alveg þegar það er leyst upp í þynntri lausn, sem gefur [OH<sup>−</sup>] = 0,0125 <emphasis effect="italics">M</emphasis>:</para>
+<equation id="fs-idp97197664" class="unnumbered"><m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mspace width="0.2em"/><m:mn>0.0125</m:mn></m:mrow></m:math></equation>
+<equation id="fs-idp138082848" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mrow><m:mtext>−</m:mtext><m:mo>(</m:mo><m:mrow><m:mo>−</m:mo><m:mn>1.903</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1.903</m:mn></m:mrow></m:math></equation>
+<para id="fs-idm11584304">Finna má pH út frá pOH:</para>
+<equation id="fs-idm77730624" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>+</m:mo><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn></m:mrow></m:math></equation>
+<equation id="fs-idm71245120" class="unnumbered"><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mn>1.903</m:mn><m:mo>=</m:mo><m:mn>12.10</m:mn></m:mrow></m:math></equation>
+<para id="fs-idm147912592"><title>Kannaðu þekkingu þína</title>Styrkur oxóníumjóna í ediki er um það bil 4 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis>. Hver eru samsvarandi gildi pOH og pH?</para>
+<note id="fs-idm58824960"><title>Answer:</title>
+<para id="fs-idm165995920">pOH = 11,6, pH = 2,4</para>
+</note>
+</example>
+<para id="fs-idm165634608">Sýrustig lausnar er venjulega metið með tilraunum með mælingu á pH-gildi hennar. pOH lausnar er yfirleitt ekki mælt, þar sem auðvelt er að reikna það út frá pH-gildi sem ákvarðað er með tilraunum. Hægt er að mæla pH lausnar beint með pH-mæli (<link target-id="CNX_Chem_14_02_pHMeter"/>).</para>
+<figure id="CNX_Chem_14_02_pHMeter">
+<media id="fs-idp134372032" alt="This figure contains two images. The first, image a, is of an analytical digital p H meter on a laboratory counter. The second, image b, is of a portable hand held digital p H meter.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_02_pHMeter.jpg"/>
+</media>
+<caption>(a) pH-mælir í rannsóknargæðum sem notaður er á rannsóknarstofu getur haft upplausn upp á 0,001 pH-einingar, hittni upp á ± 0,002 pH-einingar og kostað yfir 1000 dali. (b) Færanlegur pH-mælir hefur minni upplausn (0,01 pH-einingar), minni hittni (± 0,2 pH-einingar) og mun lægra verð. (mynd b: breyting á verki eftir Jacopo Werther)</caption>
+</figure>
+<para id="fs-idp57700960">Einnig er hægt að meta pH lausnar sjónrænt með lituðum litvísum (<link target-id="CNX_Chem_14_02_indicator"/>). Sýru-basa jafnvægið sem gerir kleift að nota þessi litarefni sem litvísa fyrir pH-mælingar er lýst í síðari hluta þessa kafla.</para>
+<figure id="CNX_Chem_14_02_indicator">
+<media id="fs-idp11928656" alt="This figure contains two images. The first shows a variety of colors of solutions in labeled beakers. A red solution in a beaker is labeled “0.10 M H C l.” An orange solution is labeled “0.10 M C H subscript 3 C O O H.” A yellow-orange solution is labeled “0.1 M N H subscript 4 C l.” A yellow solution is labeled “deionized water.” A second solution beaker is labeled “0.10 M K C l.” A green solution is labeled “0.10 M aniline.” A blue solution is labeled “0.10 M N H subscript 4 C l (a q).” A final beaker containing a dark blue solution is labeled “0.10 M N a O H.” Image b shows pHydrion paper that is used for measuring pH in the range of p H from 1 to 12. The color scale for identifying p H based on color is shown along with several of the test strips used to evaluate p H.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_14_02_indicator.jpg"/>
+</media>
+<caption>(a) Lausn sem inniheldur litarefnablöndu, sem kallast alheimslitvísir, tekur á sig mismunandi liti eftir pH-gildi hennar. (b) Þægilegar prófunarstrimlar, kallaðir pH-pappír, innihalda innfelld litarefni sem gefa litabreytingar sem eru háðar pH við snertingu við vatnslausnir. (mynd: breyting á verki eftir Sahar Atwa)</caption>
+</figure>
+<section id="fs-idm51820592" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp58752272">Styrkur oxóníum- og hýdroxíðjóna í vatnsmiðlum er oft táknaður með logaritmískum pH- og pOH-gildum. Við 25 °C krefst sjálfsprótónun vatns þess að summa pH og pOH sé jöfn 14 fyrir hvaða vatnslausn sem er. Hlutfallslegur styrkur oxóníum- og hýdroxíðjóna í lausn skilgreinir stöðu hennar sem súra ([H<sub>3</sub>O<sup>+</sup>] > [OH<sup>−</sup>]), basíska ([H<sub>3</sub>O<sup>+</sup>] &lt; [OH<sup>−</sup>]) eða hlutlausa ([H<sub>3</sub>O<sup>+</sup>] = [OH<sup>−</sup>]). Við 25 °C gefur pH &lt; 7 til kynna súra lausn, pH > 7 basíska lausn og pH = 7 hlutlausa lausn.</para>
+</section>
+<section id="fs-idp66998992" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mtext>pH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow></m:math></entry>
+</row>
+<row><entry>pOH = −log[OH<sup>−</sup>]</entry>
+</row>
+<row><entry>[H<sub>3</sub>O<sup>+</sup>] = 10<sup>−pH</sup></entry>
+</row>
+<row><entry>[OH<sup>−</sup>] = 10<sup>−pOH</sup></entry>
+</row>
+<row><entry>pH + pOH = p<emphasis effect="italics">K</emphasis><sub>w</sub> = 14,00 við 25 °C</entry></row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm61137872" class="exercises">
+<title>Efnafræði - Æfingar í lok kafla</title>
+<exercise id="fs-idp63054032"><problem id="fs-idp57993664">
+<para id="fs-idm105009936">Útskýrðu hvers vegna sýni af hreinu vatni við 40 °C er hlutlaust þótt [H<sub>3</sub>O<sup>+</sup>] = 1,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>. <emphasis effect="italics">K</emphasis><sub>w</sub> er 2,9 <m:math><m:mo>×</m:mo></m:math> 10<sup>−14</sup> við 40 °C.</para>
+</problem>
+<solution id="fs-idp57620032">
+<para id="fs-idm57658080">Í hlutlausri lausn er [H<sub>3</sub>O<sup>+</sup>] = [OH<sup>−</sup>]. Við 40 °C er [H<sub>3</sub>O<sup>+</sup>] = [OH<sup>−</sup>] = (2,910 × 10<sup>−14</sup>)<sup>1/2</sup> = 1,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup>.</para></solution>
+</exercise>
+<exercise id="fs-idm59232064">
+<problem id="fs-idm111412048">
+<para id="fs-idm103446336">Jónunarfasti vatns (<emphasis effect="italics">K</emphasis><sub>w</sub>) er 2,9 <m:math><m:mo>×</m:mo></m:math> 10<sup>−14</sup> við 40 °C. Reiknaðu [H<sub>3</sub>O<sup>+</sup>], [OH<sup>−</sup>], pH og pOH fyrir hreint vatn við 40 °C.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp62460480">
+<problem id="fs-idm118037232">
+<para id="fs-idm58452160">Jónunarfasti vatns (<emphasis effect="italics">K</emphasis><sub>w</sub>) er 9,311 <m:math><m:mo>×</m:mo></m:math> 10<sup>−14</sup> við 60 °C. Reiknaðu [H<sub>3</sub>O<sup>+</sup>], [OH<sup>−</sup>], pH og pOH fyrir hreint vatn við 60 °C.</para></problem>
+<solution id="fs-idm86228288">
+<para id="fs-idm6526512"><emphasis effect="italics">x</emphasis> = 3,051 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis> = [H<sub>3</sub>O<sup>+</sup>] = [OH<sup>−</sup>]; pH = −log3,051 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> = −(−6,5156) = 6,5156; pOH = pH = 6,5156</para></solution>
+</exercise>
+<exercise id="fs-idp100037936">
+<problem id="fs-idm133230528">
+<para id="fs-idm193547792">Reiknaðu pH og pOH fyrir hverja eftirfarandi lausna við 25 °C þar sem efnin jónast að fullu:</para>
+<para id="fs-idm62343936">(a) 0,200 <emphasis effect="italics">M</emphasis> HCl</para>
+<para id="fs-idm110199712">(b) 0,0143 <emphasis effect="italics">M</emphasis> NaOH</para>
+<para id="fs-idm139511424">(c) 3,0 <emphasis effect="italics">M</emphasis> HNO<sub>3</sub></para>
+<para id="fs-idm85222640">(d) 0,0031 <emphasis effect="italics">M</emphasis> Ca(OH)<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idm78388032">
+<problem id="fs-idp5531424">
+<para id="fs-idm103266944">Reiknaðu pH og pOH fyrir hverja eftirfarandi lausna við 25 °C þar sem efnin jónast að fullu:</para>
+<para id="fs-idm85929872">(a) 0,000259 <emphasis effect="italics">M</emphasis> HClO<sub>4</sub></para>
+<para id="fs-idm105046336">(b) 0,21 <emphasis effect="italics">M</emphasis> NaOH</para>
+<para id="fs-idm71623520">(c) 0,000071 <emphasis effect="italics">M</emphasis> Ba(OH)<sub>2</sub></para>
+<para id="fs-idm90266032">(d) 2,5 <emphasis effect="italics">M</emphasis> KOH</para>
+</problem>
+<solution id="fs-idp82965184">
+<para id="fs-idp96688048">(a) pH = 3,587; pOH = 10,413; (b) pOH = 0,68; pH = 13,32; (c) pOH = 3,85; pH = 10,15; (d) pOH = −0,40; pH = 14,4</para></solution>
+</exercise>
+<exercise id="fs-idm113520992">
+<problem id="fs-idm96702128">
+<para id="fs-idp57446720">Hvert er pH og pOH í 2,0 M HCl lausn, sem jónast að fullu?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp61935360">
+<problem id="fs-idp46399056">
+<para id="fs-idm68044912">Hver er styrkur oxóníumjóna og hýdroxíðjóna í lausn með pH 6,52?</para>
+</problem>
+<solution id="fs-idm117888064">
+<para id="fs-idm86400944">[H<sub>3</sub>O<sup>+</sup>] = 3,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>; [OH<sup>−</sup>] = 3,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup> <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idm93267520">
+<problem id="fs-idp62546496">
+<para id="fs-idp137408320">Reiknaðu styrk vetnisjóna og styrk hýdroxíðjóna í víni út frá pH-gildi þess. Sjá <link target-id="CNX_Chem_14_02_phscale"/> fyrir gagnlegar upplýsingar.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp268784">
+<problem id="fs-idm38151312">
+<para id="fs-idm117014192">Reiknaðu styrk oxóníumjóna og styrk hýdroxíðjóna í límónusafa út frá pH-gildi hans. Sjá <link target-id="CNX_Chem_14_02_phscale"/> fyrir gagnlegar upplýsingar.</para>
+</problem>
+<solution id="fs-idp129019440">
+<para id="fs-idp135394192">[H<sub>3</sub>O<sup>+</sup>] = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> <emphasis effect="italics">M</emphasis>; [OH<sup>−</sup>] = 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−12</sup> <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+<exercise id="fs-idm60999568">
+<problem id="fs-idm95843200">
+<para id="fs-idp10174528">Styrkur oxóníumjóna í sýni af regnvatni reynist vera 1,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> <emphasis effect="italics">M</emphasis> við 25 °C. Hver er styrkur hýdroxíðjóna í regnvatninu?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm209904880">
+<problem id="fs-idp143540592">
+<para id="fs-idm121774336">Styrkur hýdroxíðjóna í heimilisammoníaki er 3,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis> við 25 °C. Hver er styrkur oxóníumjóna í lausninni?</para>
+</problem>
+<solution id="fs-idm15687280">
+<para id="fs-idm81860944">[OH<sup>−</sup>] = 3,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−12</sup> <emphasis effect="italics">M</emphasis></para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm64563696">
+<term>súr (e. acidic)</term>
+<meaning id="fs-idm64563696-meaning">lausn þar sem [H<sub>3</sub>O<sup>+</sup>] > [OH<sup>−</sup>]</meaning>
+</definition>
+<definition id="fs-idm111671584">
+<term>basískur (e. basic)</term>
+<meaning id="fs-idm111671584-meaning">lausn þar sem [H<sub>3</sub>O<sup>+</sup>] &lt; [OH<sup>−</sup>]</meaning>
+</definition>
+<definition id="fs-idp143891408">
+<term>hlutlaus (e. neutral)</term>
+<meaning id="fs-idp143891408-meaning">lýsir lausn þar sem [H<sub>3</sub>O<sup>+</sup>] = [OH<sup>−</sup>]</meaning>
+</definition>
+<definition id="fs-idm103907536">
+<term>pH</term>
+<meaning id="fs-idm103907536-meaning">lograkvarði yfir styrk oxóníumjóna í lausn</meaning>
+</definition>
+<definition id="fs-idp46966768">
+<term>pOH</term>
+<meaning id="fs-idp46966768-meaning">lograkvarði yfir styrk hýdroxíðjóna í lausn</meaning>
+</definition>
+</glossary>
+</document>

@@ -11,7 +11,7 @@ Identify the mathematical relationships between the various properties of gases
 Use the ideal gas law, and related gas laws, to compute the values of various gas properties under specified conditions
 
 <!-- SEG:m68751:para:fs-idm111531200 -->
-During the seventeenth and especially eighteenth centuries, driven both by a desire to understand nature and a quest to make balloons in which they could fly ([#CNX_Chem_09_02_Ballooning]), a number of scientists established the relationships between the macroscopic physical properties of gases, that is, pressure, volume, temperature, and amount of gas. Although their measurements were not precise by today’s standards, they were able to determine the mathematical relationships between pairs of these variables (e.g., pressure and temperature, pressure and volume) that hold for an *ideal* gas—a hypothetical construct that real gases approximate under certain conditions. Eventually, these individual laws were combined into a single equation—the *ideal gas law*—that relates gas quantities for gases and is quite accurate for low pressures and moderate temperatures. We will consider the key developments in individual relationships (for pedagogical reasons not quite in historical order), then put them together in the ideal gas law.
+During the seventeenth and especially eighteenth centuries, driven both by a desire to understand nature and a quest to make balloons in which they could fly ([#CNX_Chem_09_02_Ballooning]), a number of scientists established the relationships between the macroscopic physical properties of gases, that is, pressure, volume, temperature, and amount of gas. Although their measurements were not precise by today’s standards, they were able to determine the mathematical relationships between pairs of these variables (e.g., pressure and temperature, pressure and volume) that hold for an {{i}}ideal{{/i}} gas—a hypothetical construct that real gases approximate under certain conditions. Eventually, these individual laws were combined into a single equation—the {{i}}ideal gas law{{/i}}—that relates gas quantities for gases and is quite accurate for low pressures and moderate temperatures. We will consider the key developments in individual relationships (for pedagogical reasons not quite in historical order), then put them together in the ideal gas law.
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Ballooning-caption -->
 In 1783, the first (a) hydrogen-filled balloon flight, (b) manned hot air balloon flight, and (c) manned hydrogen-filled balloon flight occurred. When the hydrogen-filled balloon depicted in (a) landed, the frightened villagers of Gonesse reportedly destroyed it with pitchforks and knives. The launch of the latter was reportedly viewed by 400,000 people in Paris.
@@ -26,19 +26,19 @@ Imagine filling a rigid container attached to a pressure gauge with gas and then
 The effect of temperature on gas pressure: When the hot plate is off, the pressure of the gas in the sphere is relatively low. As the gas is heated, the pressure of the gas in the sphere increases.
 
 <!-- SEG:m68751:para:fs-idm111816736 -->
-This relationship between temperature and pressure is observed for any sample of gas confined to a constant volume. An example of experimental pressure-temperature data is shown for a sample of air under these conditions in [#CNX_Chem_09_02_Amontons2]. We find that temperature and pressure are linearly related, and if the temperature is on the kelvin scale, then *P* and *T* are directly proportional (again, when *volume and moles of gas are held constant*); if the temperature on the kelvin scale increases by a certain factor, the gas pressure increases by the same factor.
+This relationship between temperature and pressure is observed for any sample of gas confined to a constant volume. An example of experimental pressure-temperature data is shown for a sample of air under these conditions in [#CNX_Chem_09_02_Amontons2]. We find that temperature and pressure are linearly related, and if the temperature is on the kelvin scale, then {{i}}P{{/i}} and {{i}}T{{/i}} are directly proportional (again, when {{i}}volume and moles of gas are held constant{{/i}}); if the temperature on the kelvin scale increases by a certain factor, the gas pressure increases by the same factor.
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Amontons2-caption -->
 For a constant volume and amount of air, the pressure and temperature are directly proportional, provided the temperature is in kelvin. (Measurements cannot be made at lower temperatures because of the condensation of the gas.) When this line is extrapolated to lower pressures, it reaches a pressure of 0 at –273 °C, which is 0 on the kelvin scale and the lowest possible temperature, called absolute zero.
 
 <!-- SEG:m68751:para:fs-idm33029376 -->
-Guillaume Amontons was the first to empirically establish the relationship between the pressure and the temperature of a gas (~1700), and Joseph Louis Gay-Lussac determined the relationship more precisely (~1800). Because of this, the *P*-*T* relationship for gases is known as either __Amontons’s law__ or __Gay-Lussac’s law__. Under either name, it states that *the pressure of a given amount of gas is directly proportional to its temperature on the kelvin scale when the volume is held constant*. Mathematically, this can be written:
+Guillaume Amontons was the first to empirically establish the relationship between the pressure and the temperature of a gas (~1700), and Joseph Louis Gay-Lussac determined the relationship more precisely (~1800). Because of this, the {{i}}P{{/i}}-{{i}}T{{/i}} relationship for gases is known as either {{term}}Amontons’s law{{/term}} or {{term}}Gay-Lussac’s law{{/term}}. Under either name, it states that {{i}}the pressure of a given amount of gas is directly proportional to its temperature on the kelvin scale when the volume is held constant{{/i}}. Mathematically, this can be written:
 
 <!-- SEG:m68751:para:fs-idp12374848 -->
-where ∝ means “is proportional to,” and *k* is a proportionality constant that depends on the identity, amount, and volume of the gas.
+where ∝ means “is proportional to,” and {{i}}k{{/i}} is a proportionality constant that depends on the identity, amount, and volume of the gas.
 
 <!-- SEG:m68751:para:fs-idm100617456 -->
-For a confined, constant volume of gas, the ratio [[MATH:1]] is therefore constant (i.e., [[MATH:2]]). If the gas is initially in “Condition 1” (with *P* = *P*~1~ and *T* = *T*~1~), and then changes to “Condition 2” (with *P* = *P*~2~ and *T* = *T*~2~), we have that [[MATH:3]] and [[MATH:4]] which reduces to [[MATH:5]] This equation is useful for pressure-temperature calculations for a confined gas at constant volume. Note that temperatures must be on the kelvin scale for any gas law calculations (0 on the kelvin scale and the lowest possible temperature is called __absolute zero__). (Also note that there are at least three ways we can describe how the pressure of a gas changes as its temperature changes: We can use a table of values, a graph, or a mathematical equation.)
+For a confined, constant volume of gas, the ratio [[MATH:1]] is therefore constant (i.e., [[MATH:2]]). If the gas is initially in “Condition 1” (with {{i}}P{{/i}} = {{i}}P{{/i}}[[sub:1]] and {{i}}T{{/i}} = {{i}}T{{/i}}[[sub:1]]), and then changes to “Condition 2” (with {{i}}P{{/i}} = {{i}}P{{/i}}[[sub:2]] and {{i}}T{{/i}} = {{i}}T{{/i}}[[sub:2]]), we have that [[MATH:3]] and [[MATH:4]] which reduces to [[MATH:5]] This equation is useful for pressure-temperature calculations for a confined gas at constant volume. Note that temperatures must be on the kelvin scale for any gas law calculations (0 on the kelvin scale and the lowest possible temperature is called {{term}}absolute zero{{/term}}). (Also note that there are at least three ways we can describe how the pressure of a gas changes as its temperature changes: We can use a table of values, a graph, or a mathematical equation.)
 
 <!-- SEG:m68751:example-title:fs-idm66260928-title -->
 Predicting Change in Pressure with Temperature
@@ -59,7 +59,7 @@ Solution
 (a) The can contains an amount of isobutane gas at a constant volume, so if the temperature is increased by heating, the pressure will increase proportionately. High temperature could lead to high pressure, causing the can to burst. (Also, isobutane is combustible, so incineration could cause the can to explode.)
 
 <!-- SEG:m68751:para:fs-idp91458240 -->
-(b) We are looking for a pressure change due to a temperature change at constant volume, so we will use Amontons’s/Gay-Lussac’s law. Taking *P*~1~ and *T*~1~ as the initial values, *T*~2~ as the temperature where the pressure is unknown and *P*~2~ as the unknown pressure, and converting °C to K, we have:
+(b) We are looking for a pressure change due to a temperature change at constant volume, so we will use Amontons’s/Gay-Lussac’s law. Taking {{i}}P{{/i}}[[sub:1]] and {{i}}T{{/i}}[[sub:1]] as the initial values, {{i}}T{{/i}}[[sub:2]] as the temperature where the pressure is unknown and {{i}}P{{/i}}[[sub:2]] as the unknown pressure, and converting °C to K, we have:
 
 <!-- SEG:m68751:para:fs-idm99533072 -->
 Rearranging and solving gives: [[MATH:6]]
@@ -68,7 +68,7 @@ Rearranging and solving gives: [[MATH:6]]
 Check Your Learning
 
 <!-- SEG:m68751:para:fs-idm87475200 -->
-A sample of nitrogen, N~2~, occupies 45.0 mL at 27 °C and 600 torr. What pressure will it have if cooled to –73 °C while the volume remains constant?
+A sample of nitrogen, N[[sub:2]], occupies 45.0 mL at 27 °C and 600 torr. What pressure will it have if cooled to –73 °C while the volume remains constant?
 
 <!-- SEG:m68751:para:fs-idm117579760 -->
 400 torr
@@ -95,28 +95,28 @@ These examples of the effect of temperature on the volume of a given amount of a
 The volume and temperature are linearly related for 1 mole of methane gas at a constant pressure of 1 atm. If the temperature is in kelvin, volume and temperature are directly proportional. The line stops at 111 K because methane liquefies at this temperature; when extrapolated, it intersects the graph’s origin, representing a temperature of absolute zero.
 
 <!-- SEG:m68751:para:fs-idp38621856 -->
-The relationship between the volume and temperature of a given amount of gas at constant pressure is known as Charles’s law in recognition of the French scientist and balloon flight pioneer Jacques Alexandre César Charles. __Charles’s law__ states that *the volume of a given amount of gas is directly proportional to its temperature on the kelvin scale when the pressure is held constant*.
+The relationship between the volume and temperature of a given amount of gas at constant pressure is known as Charles’s law in recognition of the French scientist and balloon flight pioneer Jacques Alexandre César Charles. {{term}}Charles’s law{{/term}} states that {{i}}the volume of a given amount of gas is directly proportional to its temperature on the kelvin scale when the pressure is held constant{{/i}}.
 
 <!-- SEG:m68751:para:fs-idp174747472 -->
 Mathematically, this can be written as:
 
 <!-- SEG:m68751:para:fs-idp134528 -->
-with *k* being a proportionality constant that depends on the amount and pressure of the gas.
+with {{i}}k{{/i}} being a proportionality constant that depends on the amount and pressure of the gas.
 
 <!-- SEG:m68751:para:fs-idp8180592 -->
-For a confined, constant pressure gas sample, [[MATH:7]] is constant (i.e., the ratio = *k*), and as seen with the *P*-*T* relationship, this leads to another form of Charles’s law: [[MATH:8]]
+For a confined, constant pressure gas sample, [[MATH:7]] is constant (i.e., the ratio = {{i}}k{{/i}}), and as seen with the {{i}}P{{/i}}-{{i}}T{{/i}} relationship, this leads to another form of Charles’s law: [[MATH:8]]
 
 <!-- SEG:m68751:example-title:fs-idm45782128-title -->
 Predicting Change in Volume with Temperature
 
 <!-- SEG:m68751:para:fs-idp8413888 -->
-A sample of carbon dioxide, CO~2~, occupies 0.300 L at 10 °C and 750 torr. What volume will the gas have at 30 °C and 750 torr?
+A sample of carbon dioxide, CO[[sub:2]], occupies 0.300 L at 10 °C and 750 torr. What volume will the gas have at 30 °C and 750 torr?
 
 <!-- SEG:m68751:para-title:fs-idp207430880-title -->
 Solution
 
 <!-- SEG:m68751:para:fs-idp207430880 -->
-Because we are looking for the volume change caused by a temperature change at constant pressure, this is a job for Charles’s law. Taking *V*~1~ and *T*~1~ as the initial values, *T*~2~ as the temperature at which the volume is unknown and *V*~2~ as the unknown volume, and converting °C into K we have:
+Because we are looking for the volume change caused by a temperature change at constant pressure, this is a job for Charles’s law. Taking {{i}}V{{/i}}[[sub:1]] and {{i}}T{{/i}}[[sub:1]] as the initial values, {{i}}T{{/i}}[[sub:2]] as the temperature at which the volume is unknown and {{i}}V{{/i}}[[sub:2]] as the unknown volume, and converting °C into K we have:
 
 <!-- SEG:m68751:para:fs-idp170393776 -->
 Rearranging and solving gives: [[MATH:9]]
@@ -128,7 +128,7 @@ This answer supports our expectation from Charles’s law, namely, that raising 
 Check Your Learning
 
 <!-- SEG:m68751:para:fs-idp28974272 -->
-A sample of oxygen, O~2~, occupies 32.2 mL at 30 °C and 452 torr. What volume will it occupy at –70 °C and the same pressure?
+A sample of oxygen, O[[sub:2]], occupies 32.2 mL at 30 °C and 452 torr. What volume will it occupy at –70 °C and the same pressure?
 
 <!-- SEG:m68751:para:fs-idp96328352 -->
 21.6 mL
@@ -143,13 +143,13 @@ Answer:
 Measuring Temperature with a Volume Change
 
 <!-- SEG:m68751:para:fs-idp100881520 -->
-Temperature is sometimes measured with a gas thermometer by observing the change in the volume of the gas as the temperature changes at constant pressure. The hydrogen in a particular hydrogen gas thermometer has a volume of 150.0 cm^3^ when immersed in a mixture of ice and water (0.00 °C). When immersed in boiling liquid ammonia, the volume of the hydrogen, at the same pressure, is 131.7 cm^3^. Find the temperature of boiling ammonia on the kelvin and Celsius scales.
+Temperature is sometimes measured with a gas thermometer by observing the change in the volume of the gas as the temperature changes at constant pressure. The hydrogen in a particular hydrogen gas thermometer has a volume of 150.0 cm[[sup:3]] when immersed in a mixture of ice and water (0.00 °C). When immersed in boiling liquid ammonia, the volume of the hydrogen, at the same pressure, is 131.7 cm[[sup:3]]. Find the temperature of boiling ammonia on the kelvin and Celsius scales.
 
 <!-- SEG:m68751:para-title:fs-idm38946752-title -->
 Solution
 
 <!-- SEG:m68751:para:fs-idm38946752 -->
-When immersed in an ice-water bath at 0.00 °C (*T*~1~), the thermometer’s gas volume is 150.0 cm^3^ (*V*~1~). When immersed in boiling liquid ammonia (*T*~2~), the thermometer’s gas volume is 131.7 cm^3^. The relation between volume and temperature at constant pressure is provided by Charles’s Law:
+When immersed in an ice-water bath at 0.00 °C ({{i}}T{{/i}}[[sub:1]]), the thermometer’s gas volume is 150.0 cm[[sup:3]] ({{i}}V{{/i}}[[sub:1]]). When immersed in boiling liquid ammonia ({{i}}T{{/i}}[[sub:2]]), the thermometer’s gas volume is 131.7 cm[[sup:3]]. The relation between volume and temperature at constant pressure is provided by Charles’s Law:
 
 <!-- SEG:m68751:para:fs-idp6920384 -->
 Rearrangement gives [[MATH:10]]
@@ -179,19 +179,19 @@ Volume and Pressure: Boyle’s Law
 If we partially fill an airtight syringe with air, the syringe contains a specific amount of air at constant temperature, say 25 °C. If we slowly push in the plunger while keeping temperature constant, the gas in the syringe is compressed into a smaller volume and its pressure increases; if we pull out the plunger, the volume increases and the pressure decreases. This example of the effect of volume on the pressure of a given amount of a confined gas is true in general. Decreasing the volume of a contained gas will increase its pressure, and increasing its volume will decrease its pressure. In fact, if the volume increases by a certain factor, the pressure decreases by the same factor, and vice versa. Volume-pressure data for an air sample at room temperature are graphed in [#CNX_Chem_09_03_BoylesLaw1].
 
 <!-- SEG:m68751:caption:CNX_Chem_09_03_BoylesLaw1-caption -->
-When a gas occupies a smaller volume, it exerts a higher pressure; when it occupies a larger volume, it exerts a lower pressure (assuming the amount of gas and the temperature do not change). Since *P* and *V* are inversely proportional, a graph of [[MATH:11]] vs. *V* is linear.
+When a gas occupies a smaller volume, it exerts a higher pressure; when it occupies a larger volume, it exerts a lower pressure (assuming the amount of gas and the temperature do not change). Since {{i}}P{{/i}} and {{i}}V{{/i}} are inversely proportional, a graph of [[MATH:11]] vs. {{i}}V{{/i}} is linear.
 
 <!-- SEG:m68751:para:fs-idm298625584 -->
-Unlike the *P*-*T* and *V*-*T* relationships, pressure and volume are not directly proportional to each other. Instead, *P* and *V* exhibit inverse proportionality: Increasing the pressure results in a decrease of the volume of the gas. Mathematically this can be written:
+Unlike the {{i}}P{{/i}}-{{i}}T{{/i}} and {{i}}V{{/i}}-{{i}}T{{/i}} relationships, pressure and volume are not directly proportional to each other. Instead, {{i}}P{{/i}} and {{i}}V{{/i}} exhibit inverse proportionality: Increasing the pressure results in a decrease of the volume of the gas. Mathematically this can be written:
 
 <!-- SEG:m68751:para:fs-idm132946352 -->
-with *k* being a constant. Graphically, this relationship is shown by the straight line that results when plotting the inverse of the pressure [[MATH:12]] versus the volume (*V*), or the inverse of volume [[MATH:13]] versus the pressure (*P*). Graphs with curved lines are difficult to read accurately at low or high values of the variables, and they are more difficult to use in fitting theoretical equations and parameters to experimental data. For those reasons, scientists often try to find a way to “linearize” their data. If we plot *P* versus *V*, we obtain a hyperbola (see [#CNX_Chem_09_02_Boyleslaw2]).
+with {{i}}k{{/i}} being a constant. Graphically, this relationship is shown by the straight line that results when plotting the inverse of the pressure [[MATH:12]] versus the volume ({{i}}V{{/i}}), or the inverse of volume [[MATH:13]] versus the pressure ({{i}}P{{/i}}). Graphs with curved lines are difficult to read accurately at low or high values of the variables, and they are more difficult to use in fitting theoretical equations and parameters to experimental data. For those reasons, scientists often try to find a way to “linearize” their data. If we plot {{i}}P{{/i}} versus {{i}}V{{/i}}, we obtain a hyperbola (see [#CNX_Chem_09_02_Boyleslaw2]).
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Boyleslaw2-caption -->
-The relationship between pressure and volume is inversely proportional. (a) The graph of *P* vs. *V* is a hyperbola, whereas (b) the graph of [[MATH:14]] vs. *V* is linear.
+The relationship between pressure and volume is inversely proportional. (a) The graph of {{i}}P{{/i}} vs. {{i}}V{{/i}} is a hyperbola, whereas (b) the graph of [[MATH:14]] vs. {{i}}V{{/i}} is linear.
 
 <!-- SEG:m68751:para:fs-idm207692112 -->
-The relationship between the volume and pressure of a given amount of gas at constant temperature was first published by the English natural philosopher Robert Boyle over 300 years ago. It is summarized in the statement now known as __Boyle’s law__: *The volume of a given amount of gas held at constant temperature is inversely proportional to the pressure under which it is measured.*
+The relationship between the volume and pressure of a given amount of gas at constant temperature was first published by the English natural philosopher Robert Boyle over 300 years ago. It is summarized in the statement now known as {{term}}Boyle’s law{{/term}}: {{i}}The volume of a given amount of gas held at constant temperature is inversely proportional to the pressure under which it is measured.{{/i}}
 
 <!-- SEG:m68751:example-title:fs-idp10418864-title -->
 Volume of a Gas Sample
@@ -200,10 +200,10 @@ Volume of a Gas Sample
 The sample of gas in [#CNX_Chem_09_03_BoylesLaw1] has a volume of 15.0 mL at a pressure of 13.0 psi. Determine the pressure of the gas at a volume of 7.5 mL, using:
 
 <!-- SEG:m68751:para:fs-idm127753872 -->
-(a) the *P*-*V* graph in [#CNX_Chem_09_03_BoylesLaw1]
+(a) the {{i}}P{{/i}}-{{i}}V{{/i}} graph in [#CNX_Chem_09_03_BoylesLaw1]
 
 <!-- SEG:m68751:para:fs-idm129344864 -->
-(b) the [[MATH:15]] vs. *V* graph in [#CNX_Chem_09_03_BoylesLaw1]
+(b) the [[MATH:15]] vs. {{i}}V{{/i}} graph in [#CNX_Chem_09_03_BoylesLaw1]
 
 <!-- SEG:m68751:para:fs-idm92820144 -->
 (c) the Boyle’s law equation
@@ -215,22 +215,22 @@ Comment on the likely accuracy of each method.
 Solution
 
 <!-- SEG:m68751:para:fs-idm126059440 -->
-(a) Estimating from the *P*-*V* graph gives a value for *P* somewhere around 27 psi.
+(a) Estimating from the {{i}}P{{/i}}-{{i}}V{{/i}} graph gives a value for {{i}}P{{/i}} somewhere around 27 psi.
 
 <!-- SEG:m68751:para:fs-idm112322224 -->
-(b) Estimating from the [[MATH:16]] versus *V* graph give a value of about 26 psi.
+(b) Estimating from the [[MATH:16]] versus {{i}}V{{/i}} graph give a value of about 26 psi.
 
 <!-- SEG:m68751:para:fs-idm124214336 -->
-(c) From Boyle’s law, we know that the product of pressure and volume (*PV*) for a given sample of gas at a constant temperature is always equal to the same value. Therefore we have *P*~1~*V*~1~ = *k* and *P*~2~*V*~2~ = *k* which means that *P*~1~*V*~1~ = *P*~2~*V*~2~.
+(c) From Boyle’s law, we know that the product of pressure and volume ({{i}}PV{{/i}}) for a given sample of gas at a constant temperature is always equal to the same value. Therefore we have {{i}}P{{/i}}[[sub:1]]{{i}}V{{/i}}[[sub:1]] = {{i}}k{{/i}} and {{i}}P{{/i}}[[sub:2]]{{i}}V{{/i}}[[sub:2]] = {{i}}k{{/i}} which means that {{i}}P{{/i}}[[sub:1]]{{i}}V{{/i}}[[sub:1]] = {{i}}P{{/i}}[[sub:2]]{{i}}V{{/i}}[[sub:2]].
 
 <!-- SEG:m68751:para:fs-idm207111184 -->
-Using *P*~1~ and *V*~1~ as the known values 13.0 psi and 15.0 mL, *P*~2~ as the pressure at which the volume is unknown, and *V*~2~ as the unknown volume, we have:
+Using {{i}}P{{/i}}[[sub:1]] and {{i}}V{{/i}}[[sub:1]] as the known values 13.0 psi and 15.0 mL, {{i}}P{{/i}}[[sub:2]] as the pressure at which the volume is unknown, and {{i}}V{{/i}}[[sub:2]] as the unknown volume, we have:
 
 <!-- SEG:m68751:para:fs-idm167382656 -->
 Solving:
 
 <!-- SEG:m68751:para:fs-idm146893296 -->
-It was more difficult to estimate well from the *P*-*V* graph, so (a) is likely more inaccurate than (b) or (c). The calculation will be as accurate as the equation and measurements allow.
+It was more difficult to estimate well from the {{i}}P{{/i}}-{{i}}V{{/i}} graph, so (a) is likely more inaccurate than (b) or (c). The calculation will be as accurate as the equation and measurements allow.
 
 <!-- SEG:m68751:para-title:fs-idm111326864-title -->
 Check Your Learning
@@ -239,10 +239,10 @@ Check Your Learning
 The sample of gas in [#CNX_Chem_09_03_BoylesLaw1] has a volume of 30.0 mL at a pressure of 6.5 psi. Determine the volume of the gas at a pressure of 11.0 psi, using:
 
 <!-- SEG:m68751:para:fs-idm161358576 -->
-(a) the *P*-*V* graph in [#CNX_Chem_09_03_BoylesLaw1]
+(a) the {{i}}P{{/i}}-{{i}}V{{/i}} graph in [#CNX_Chem_09_03_BoylesLaw1]
 
 <!-- SEG:m68751:para:fs-idm130543696 -->
-(b) the [[MATH:17]] vs. *V* graph in [#CNX_Chem_09_03_BoylesLaw1]
+(b) the [[MATH:17]] vs. {{i}}V{{/i}} graph in [#CNX_Chem_09_03_BoylesLaw1]
 
 <!-- SEG:m68751:para:fs-idm208892896 -->
 (c) the Boyle’s law equation
@@ -251,13 +251,13 @@ The sample of gas in [#CNX_Chem_09_03_BoylesLaw1] has a volume of 30.0 mL at a p
 Comment on the likely accuracy of each method.
 
 <!-- SEG:m68751:para:fs-idm53855168 -->
-(a) about 17–18 mL; (b) ~18 mL; (c) 17.7 mL; it was more difficult to estimate well from the *P*-*V* graph, so (a) is likely more inaccurate than (b); the calculation will be as accurate as the equation and measurements allow
+(a) about 17–18 mL; (b) ~18 mL; (c) 17.7 mL; it was more difficult to estimate well from the {{i}}P{{/i}}-{{i}}V{{/i}} graph, so (a) is likely more inaccurate than (b); the calculation will be as accurate as the equation and measurements allow
 
 <!-- SEG:m68751:note-title:fs-idp7933296-title -->
 Answer:
 
 <!-- SEG:m68751:para:fs-idm53855168 -->
-(a) about 17–18 mL; (b) ~18 mL; (c) 17.7 mL; it was more difficult to estimate well from the *P*-*V* graph, so (a) is likely more inaccurate than (b); the calculation will be as accurate as the equation and measurements allow
+(a) about 17–18 mL; (b) ~18 mL; (c) 17.7 mL; it was more difficult to estimate well from the {{i}}P{{/i}}-{{i}}V{{/i}} graph, so (a) is likely more inaccurate than (b); the calculation will be as accurate as the equation and measurements allow
 
 <!-- SEG:m68751:note-title:fs-idm202428608-title -->
 Breathing and Boyle’s Law
@@ -272,13 +272,13 @@ Breathing occurs because expanding and contracting lung volume creates small pre
 Moles of Gas and Volume: Avogadro’s Law
 
 <!-- SEG:m68751:para:fs-idm52917120 -->
-The Italian scientist Amedeo Avogadro advanced a hypothesis in 1811 to account for the behavior of gases, stating that equal volumes of all gases, measured under the same conditions of temperature and pressure, contain the same number of molecules. Over time, this relationship was supported by many experimental observations as expressed by __Avogadro’s law__: *For a confined gas, the volume (V) and number of moles (n) are directly proportional if the pressure and temperature both remain constant*.
+The Italian scientist Amedeo Avogadro advanced a hypothesis in 1811 to account for the behavior of gases, stating that equal volumes of all gases, measured under the same conditions of temperature and pressure, contain the same number of molecules. Over time, this relationship was supported by many experimental observations as expressed by {{term}}Avogadro’s law{{/term}}: {{i}}For a confined gas, the volume (V) and number of moles (n) are directly proportional if the pressure and temperature both remain constant{{/i}}.
 
 <!-- SEG:m68751:para:fs-idp65662512 -->
 In equation form, this is written as:
 
 <!-- SEG:m68751:para:fs-idm94717808 -->
-Mathematical relationships can also be determined for the other variable pairs, such as *P* versus *n*, and *n* versus *T*.
+Mathematical relationships can also be determined for the other variable pairs, such as {{i}}P{{/i}} versus {{i}}n{{/i}}, and {{i}}n{{/i}} versus {{i}}T{{/i}}.
 
 <!-- SEG:m68751:para:fs-idm91270672 -->
 Visit this [interactive PhET simulation](http://openstax.org/l/16IdealGasLaw) to investigate the relationships between pressure, volume, temperature, and amount of gas. Use the simulation to examine the effect of changing one parameter on another while holding the other parameters constant (as described in the preceding sections on the various gas laws).
@@ -290,43 +290,43 @@ The Ideal Gas Law
 To this point, four separate laws have been discussed that relate pressure, volume, temperature, and the number of moles of the gas:
 
 <!-- SEG:m68751:item:fs-idp25403616-item-1 -->
-Boyle’s law: *PV* = constant at constant *T* and *n*
+Boyle’s law: {{i}}PV{{/i}} = constant at constant {{i}}T{{/i}} and {{i}}n{{/i}}
 
 <!-- SEG:m68751:item:fs-idp25403616-item-2 -->
-Amontons’s law: [[MATH:18]] = constant at constant *V* and *n*
+Amontons’s law: [[MATH:18]] = constant at constant {{i}}V{{/i}} and {{i}}n{{/i}}
 
 <!-- SEG:m68751:item:fs-idp25403616-item-3 -->
-Charles’s law: [[MATH:19]] = constant at constant *P* and *n*
+Charles’s law: [[MATH:19]] = constant at constant {{i}}P{{/i}} and {{i}}n{{/i}}
 
 <!-- SEG:m68751:item:fs-idp25403616-item-4 -->
-Avogadro’s law: [[MATH:20]] = constant at constant *P* and *T*
+Avogadro’s law: [[MATH:20]] = constant at constant {{i}}P{{/i}} and {{i}}T{{/i}}
 
 <!-- SEG:m68751:para:fs-idp47645536 -->
-Combining these four laws yields the __ideal gas law__, a relation between the pressure, volume, temperature, and number of moles of a gas:
+Combining these four laws yields the {{term}}ideal gas law{{/term}}, a relation between the pressure, volume, temperature, and number of moles of a gas:
 
 <!-- SEG:m68751:para:fs-idp83793536 -->
-where *P* is the pressure of a gas, *V* is its volume, *n* is the number of moles of the gas, *T* is its temperature on the kelvin scale, and *R* is a constant called the __ideal gas constant__ or the universal gas constant. The units used to express pressure, volume, and temperature will determine the proper form of the gas constant as required by dimensional analysis, the most commonly encountered values being 0.08206 L atm mol^–1^ K^–1^ and 8.314 kPa L mol^–1^ K^–1^.
+where {{i}}P{{/i}} is the pressure of a gas, {{i}}V{{/i}} is its volume, {{i}}n{{/i}} is the number of moles of the gas, {{i}}T{{/i}} is its temperature on the kelvin scale, and {{i}}R{{/i}} is a constant called the {{term}}ideal gas constant{{/term}} or the universal gas constant. The units used to express pressure, volume, and temperature will determine the proper form of the gas constant as required by dimensional analysis, the most commonly encountered values being 0.08206 L atm mol[[sup:–1]] K[[sup:–1]] and 8.314 kPa L mol[[sup:–1]] K[[sup:–1]].
 
 <!-- SEG:m68751:para:fs-idp100115520 -->
-Gases whose properties of *P*, *V*, and *T* are accurately described by the ideal gas law (or the other gas laws) are said to exhibit *ideal behavior* or to approximate the traits of an __ideal gas__. An ideal gas is a hypothetical construct that may be used along with *kinetic molecular theory* to effectively explain the gas laws as will be described in a later module of this chapter. Although all the calculations presented in this module assume ideal behavior, this assumption is only reasonable for gases under conditions of relatively low pressure and high temperature. In the final module of this chapter, a modified gas law will be introduced that accounts for the *non-ideal* behavior observed for many gases at relatively high pressures and low temperatures.
+Gases whose properties of {{i}}P{{/i}}, {{i}}V{{/i}}, and {{i}}T{{/i}} are accurately described by the ideal gas law (or the other gas laws) are said to exhibit {{i}}ideal behavior{{/i}} or to approximate the traits of an {{term}}ideal gas{{/term}}. An ideal gas is a hypothetical construct that may be used along with {{i}}kinetic molecular theory{{/i}} to effectively explain the gas laws as will be described in a later module of this chapter. Although all the calculations presented in this module assume ideal behavior, this assumption is only reasonable for gases under conditions of relatively low pressure and high temperature. In the final module of this chapter, a modified gas law will be introduced that accounts for the {{i}}non-ideal{{/i}} behavior observed for many gases at relatively high pressures and low temperatures.
 
 <!-- SEG:m68751:para:fs-idp9263600 -->
-The ideal gas equation contains five terms, the gas constant *R* and the variable properties *P*, *V*, *n*, and *T*. Specifying any four of these terms will permit use of the ideal gas law to calculate the fifth term as demonstrated in the following example exercises.
+The ideal gas equation contains five terms, the gas constant {{i}}R{{/i}} and the variable properties {{i}}P{{/i}}, {{i}}V{{/i}}, {{i}}n{{/i}}, and {{i}}T{{/i}}. Specifying any four of these terms will permit use of the ideal gas law to calculate the fifth term as demonstrated in the following example exercises.
 
 <!-- SEG:m68751:example-title:fs-idm72969744-title -->
 Using the Ideal Gas Law
 
 <!-- SEG:m68751:para:fs-idm36042832 -->
-Methane, CH~4~, is being considered for use as an alternative automotive fuel to replace gasoline. One gallon of gasoline could be replaced by 655 g of CH~4~. What is the volume of this much methane at 25 °C and 745 torr?
+Methane, CH[[sub:4]], is being considered for use as an alternative automotive fuel to replace gasoline. One gallon of gasoline could be replaced by 655 g of CH[[sub:4]]. What is the volume of this much methane at 25 °C and 745 torr?
 
 <!-- SEG:m68751:para-title:fs-idp9667456-title -->
 Solution
 
 <!-- SEG:m68751:para:fs-idp9667456 -->
-We must rearrange *PV* = *nRT* to solve for *V*: [[MATH:21]]
+We must rearrange {{i}}PV{{/i}} = {{i}}nRT{{/i}} to solve for {{i}}V{{/i}}: [[MATH:21]]
 
 <!-- SEG:m68751:para:fs-idp84134864 -->
-If we choose to use *R* = 0.08206 L atm mol^–1^ K^–1^, then the amount must be in moles, temperature must be in kelvin, and pressure must be in atm.
+If we choose to use {{i}}R{{/i}} = 0.08206 L atm mol[[sup:–1]] K[[sup:–1]], then the amount must be in moles, temperature must be in kelvin, and pressure must be in atm.
 
 <!-- SEG:m68751:para:fs-idm113078592 -->
 Converting into the “right” units:
@@ -350,7 +350,7 @@ Answer:
 350 bar
 
 <!-- SEG:m68751:para:fs-idp141407616 -->
-If the number of moles of an ideal gas are kept constant under two different sets of conditions, a useful mathematical relationship called the combined gas law is obtained: [[MATH:22]] using units of atm, L, and K. Both sets of conditions are equal to the product of *n* [[MATH:23]] *R* (where *n* = the number of moles of the gas and *R* is the ideal gas law constant).
+If the number of moles of an ideal gas are kept constant under two different sets of conditions, a useful mathematical relationship called the combined gas law is obtained: [[MATH:22]] using units of atm, L, and K. Both sets of conditions are equal to the product of {{i}}n{{/i}} [[MATH:23]] {{i}}R{{/i}} (where {{i}}n{{/i}} = the number of moles of the gas and {{i}}R{{/i}} is the ideal gas law constant).
 
 <!-- SEG:m68751:example-title:fs-idp23616944-title -->
 Using the Combined Gas Law
@@ -362,10 +362,10 @@ When filled with air, a typical scuba tank with a volume of 13.2 L has a pressur
 Solution
 
 <!-- SEG:m68751:para:fs-idm78575136 -->
-Letting *1* represent the air in the scuba tank and *2* represent the air in the lungs, and noting that body temperature (the temperature the air will be in the lungs) is 37 °C, we have:
+Letting {{i}}1{{/i}} represent the air in the scuba tank and {{i}}2{{/i}} represent the air in the lungs, and noting that body temperature (the temperature the air will be in the lungs) is 37 °C, we have:
 
 <!-- SEG:m68751:para:fs-idp72690672 -->
-Solving for *V*~2~:
+Solving for {{i}}V{{/i}}[[sub:2]]:
 
 <!-- SEG:m68751:para:fs-idp54320688 -->
 (Note: Be advised that this particular example is one in which the assumption of ideal gas behavior is not very reasonable, since it involves gases at relatively high pressures and low temperatures. Despite this limitation, the calculated volume can be viewed as a good “ballpark” estimate.)
@@ -404,7 +404,7 @@ Scuba divers, whether at the Great Barrier Reef or in the Caribbean, must be awa
 Standard Conditions of Temperature and Pressure
 
 <!-- SEG:m68751:para:fs-idp92943776 -->
-We have seen that the volume of a given quantity of gas and the number of molecules (moles) in a given volume of gas vary with changes in pressure and temperature. Chemists sometimes make comparisons against a __standard temperature and pressure (STP)__ for reporting properties of gases: 273.15 K and 1 atm (101.325 kPa). [footnote: The IUPAC definition of standard pressure was changed from 1 atm to 1 bar (100 kPa) in 1982, but the prior definition remains in use by many literature resources and will be used in this text.] At STP, one mole of an ideal gas has a volume of about 22.4 L—this is referred to as the __standard molar volume__ ([#CNX_Chem_09_02_HENH3O2]).
+We have seen that the volume of a given quantity of gas and the number of molecules (moles) in a given volume of gas vary with changes in pressure and temperature. Chemists sometimes make comparisons against a {{term}}standard temperature and pressure (STP){{/term}} for reporting properties of gases: 273.15 K and 1 atm (101.325 kPa). {{fn}}The IUPAC definition of standard pressure was changed from 1 atm to 1 bar (100 kPa) in 1982, but the prior definition remains in use by many literature resources and will be used in this text.{{/fn}} At STP, one mole of an ideal gas has a volume of about 22.4 L—this is referred to as the {{term}}standard molar volume{{/term}} ([#CNX_Chem_09_02_HENH3O2]).
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_HENH3O2-caption -->
 Regardless of its chemical identity, one mole of gas behaving ideally occupies a volume of ~22.4 L at STP.
@@ -416,13 +416,13 @@ Key Concepts and Summary
 The behavior of gases can be described by several laws based on experimental observations of their properties. The pressure of a given amount of gas is directly proportional to its absolute temperature, provided that the volume does not change (Amontons’s law). The volume of a given gas sample is directly proportional to its absolute temperature at constant pressure (Charles’s law). The volume of a given amount of gas is inversely proportional to its pressure when temperature is held constant (Boyle’s law). Under the same conditions of temperature and pressure, equal volumes of all gases contain the same number of molecules (Avogadro’s law).
 
 <!-- SEG:m68751:para:fs-idp115685936 -->
-The equations describing these laws are special cases of the ideal gas law, *PV* = *nRT*, where *P* is the pressure of the gas, *V* is its volume, *n* is the number of moles of the gas, *T* is its kelvin temperature, and *R* is the ideal (universal) gas constant.
+The equations describing these laws are special cases of the ideal gas law, {{i}}PV{{/i}} = {{i}}nRT{{/i}}, where {{i}}P{{/i}} is the pressure of the gas, {{i}}V{{/i}} is its volume, {{i}}n{{/i}} is the number of moles of the gas, {{i}}T{{/i}} is its kelvin temperature, and {{i}}R{{/i}} is the ideal (universal) gas constant.
 
 <!-- SEG:m68751:title:fs-idm157803264-title -->
 Key Equations
 
 <!-- SEG:m68751:entry:auto-142 -->
-*PV* = *nRT*
+{{i}}PV{{/i}} = {{i}}nRT{{/i}}
 
 <!-- SEG:m68751:title:fs-idm132049520-title -->
 Chemistry End of Chapter Exercises
@@ -458,7 +458,7 @@ The curve would be farther to the right and higher up, but the same basic shape.
 In addition to the data found in [#CNX_Chem_09_03_BoylesLaw1], what other information do we need to find the mass of the sample of air used to determine the graph?
 
 <!-- SEG:m68751:problem:fs-idm223838704 -->
-Determine the volume of 1 mol of CH~4~ gas at 150 K and 1 atm, using [#CNX_Chem_09_02_Charles2].
+Determine the volume of 1 mol of CH[[sub:4]] gas at 150 K and 1 atm, using [#CNX_Chem_09_02_Charles2].
 
 <!-- SEG:m68751:solution:fs-idp31441392 -->
 About 12.5 L
@@ -476,7 +476,7 @@ Determine the pressure of the gas in the syringe shown in [#CNX_Chem_09_03_Boyle
 A spray can is used until it is empty except for the propellant gas, which has a pressure of 1344 torr at 23 °C. If the can is thrown into a fire (T = 475 °C), what will be the pressure in the hot can?
 
 <!-- SEG:m68751:solution:fs-idm234500544 -->
-3.40 [[MATH:24]] 10^3^ torr
+3.40 [[MATH:24]] 10[[sup:3]] torr
 
 <!-- SEG:m68751:problem:fs-idm188609648 -->
 What is the temperature of an 11.2-L sample of carbon monoxide, CO, at 744 torr if it occupies 13.3 L at 55 °C and 744 torr?
@@ -500,34 +500,34 @@ A weather balloon contains 8.80 moles of helium at a pressure of 0.992 atm and a
 The volume of an automobile air bag was 66.8 L when inflated at 25 °C with 77.8 g of nitrogen gas. What was the pressure in the bag in kPa?
 
 <!-- SEG:m68751:problem:fs-idm72005728 -->
-How many moles of gaseous boron trifluoride, BF~3~, are contained in a 4.3410-L bulb at 788.0 K if the pressure is 1.220 atm? How many grams of BF~3~?
+How many moles of gaseous boron trifluoride, BF[[sub:3]], are contained in a 4.3410-L bulb at 788.0 K if the pressure is 1.220 atm? How many grams of BF[[sub:3]]?
 
 <!-- SEG:m68751:solution:fs-idm209223808 -->
-8.190 [[MATH:25]] 10^–2^ mol; 5.553 g
+8.190 [[MATH:25]] 10[[sup:–2]] mol; 5.553 g
 
 <!-- SEG:m68751:problem:fs-idm130364096 -->
-Iodine, I~2~, is a solid at room temperature but sublimes (converts from a solid into a gas) when warmed. What is the temperature in a 73.3-mL bulb that contains 0.292 g of I~2~ vapor at a pressure of 0.462 atm?
+Iodine, I[[sub:2]], is a solid at room temperature but sublimes (converts from a solid into a gas) when warmed. What is the temperature in a 73.3-mL bulb that contains 0.292 g of I[[sub:2]] vapor at a pressure of 0.462 atm?
 
 <!-- SEG:m68751:problem:fs-idm141545152 -->
 How many grams of gas are present in each of the following cases?
 
 <!-- SEG:m68751:problem:fs-idm78787920 -->
-(a) 0.100 L of CO~2~ at 307 torr and 26 °C
+(a) 0.100 L of CO[[sub:2]] at 307 torr and 26 °C
 
 <!-- SEG:m68751:problem:fs-idm162758736 -->
-(b) 8.75 L of C~2~H~4~, at 378.3 kPa and 483 K
+(b) 8.75 L of C[[sub:2]]H[[sub:4]], at 378.3 kPa and 483 K
 
 <!-- SEG:m68751:problem:fs-idm197462832 -->
 (c) 221 mL of Ar at 0.23 torr and –54 °C
 
 <!-- SEG:m68751:solution:fs-idp16283888 -->
-(a) 7.24 [[MATH:26]] 10^–2^ g; (b) 23.1 g; (c) 1.5 [[MATH:27]] 10^–4^ g
+(a) 7.24 [[MATH:26]] 10[[sup:–2]] g; (b) 23.1 g; (c) 1.5 [[MATH:27]] 10[[sup:–4]] g
 
 <!-- SEG:m68751:problem:fs-idm151037808 -->
-A high altitude balloon is filled with 1.41 [[MATH:28]] 10^4^ L of hydrogen at a temperature of 21 °C and a pressure of 745 torr. What is the volume of the balloon at a height of 20 km, where the temperature is –48 °C and the pressure is 63.1 torr?
+A high altitude balloon is filled with 1.41 [[MATH:28]] 10[[sup:4]] L of hydrogen at a temperature of 21 °C and a pressure of 745 torr. What is the volume of the balloon at a height of 20 km, where the temperature is –48 °C and the pressure is 63.1 torr?
 
 <!-- SEG:m68751:problem:fs-idm226416640 -->
-A cylinder of medical oxygen has a volume of 35.4 L, and contains O~2~ at a pressure of 151 atm and a temperature of 25 °C. What volume of O~2~ does this correspond to at normal body conditions, that is, 1 atm and 37 °C?
+A cylinder of medical oxygen has a volume of 35.4 L, and contains O[[sub:2]] at a pressure of 151 atm and a temperature of 25 °C. What volume of O[[sub:2]] does this correspond to at normal body conditions, that is, 1 atm and 37 °C?
 
 <!-- SEG:m68751:solution:fs-idm210873680 -->
 5561 L
@@ -536,49 +536,49 @@ A cylinder of medical oxygen has a volume of 35.4 L, and contains O~2~ at a pres
 A large scuba tank ([#CNX_Chem_09_02_Scuba]) with a volume of 18 L is rated for a pressure of 220 bar. The tank is filled at 20 °C and contains enough air to supply 1860 L of air to a diver at a pressure of 2.37 atm (a depth of 45 feet). Was the tank filled to capacity at 20 °C?
 
 <!-- SEG:m68751:problem:fs-idm242471664 -->
-A 20.0-L cylinder containing 11.34 kg of butane, C~4~H~10~, was opened to the atmosphere. Calculate the mass of the gas remaining in the cylinder if it were opened and the gas escaped until the pressure in the cylinder was equal to the atmospheric pressure, 0.983 atm, and a temperature of 27 °C.
+A 20.0-L cylinder containing 11.34 kg of butane, C[[sub:4]]H[[sub:10]], was opened to the atmosphere. Calculate the mass of the gas remaining in the cylinder if it were opened and the gas escaped until the pressure in the cylinder was equal to the atmospheric pressure, 0.983 atm, and a temperature of 27 °C.
 
 <!-- SEG:m68751:solution:fs-idm250627520 -->
 46.4 g
 
 <!-- SEG:m68751:problem:fs-idm211956816 -->
-While resting, the average 70-kg human male consumes 14 L of pure O~2~ per hour at 25 °C and 100 kPa. How many moles of O~2~ are consumed by a 70 kg man while resting for 1.0 h?
+While resting, the average 70-kg human male consumes 14 L of pure O[[sub:2]] per hour at 25 °C and 100 kPa. How many moles of O[[sub:2]] are consumed by a 70 kg man while resting for 1.0 h?
 
 <!-- SEG:m68751:problem:fs-idm33917680 -->
 For a given amount of gas showing ideal behavior, draw labeled graphs of:
 
 <!-- SEG:m68751:problem:fs-idm187706512 -->
-(a) the variation of *P* with *V*
+(a) the variation of {{i}}P{{/i}} with {{i}}V{{/i}}
 
 <!-- SEG:m68751:problem:fs-idm118579008 -->
-(b) the variation of *V* with *T*
+(b) the variation of {{i}}V{{/i}} with {{i}}T{{/i}}
 
 <!-- SEG:m68751:problem:fs-idm247454720 -->
-(c) the variation of *P* with *T*
+(c) the variation of {{i}}P{{/i}} with {{i}}T{{/i}}
 
 <!-- SEG:m68751:problem:fs-idm149859408 -->
-(d) the variation of [[MATH:29]] with *V*
+(d) the variation of [[MATH:29]] with {{i}}V{{/i}}
 
 <!-- SEG:m68751:solution:fs-idm121529056 -->
 For a gas exhibiting ideal behavior:[[BR]] [[MEDIA:1]]
 
 <!-- SEG:m68751:problem:fs-idm158397552 -->
-A liter of methane gas, CH~4~, at STP contains more atoms of hydrogen than does a liter of pure hydrogen gas, H~2~, at STP. Using Avogadro’s law as a starting point, explain why.
+A liter of methane gas, CH[[sub:4]], at STP contains more atoms of hydrogen than does a liter of pure hydrogen gas, H[[sub:2]], at STP. Using Avogadro’s law as a starting point, explain why.
 
 <!-- SEG:m68751:problem:fs-idm180268096 -->
-The effect of chlorofluorocarbons (such as CCl~2~F~2~) on the depletion of the ozone layer is well known. The use of substitutes, such as CH~3~CH~2~F(*g*), for the chlorofluorocarbons, has largely corrected the problem. Calculate the volume occupied by 10.0 g of each of these compounds at STP:
+The effect of chlorofluorocarbons (such as CCl[[sub:2]]F[[sub:2]]) on the depletion of the ozone layer is well known. The use of substitutes, such as CH[[sub:3]]CH[[sub:2]]F({{i}}g{{/i}}), for the chlorofluorocarbons, has largely corrected the problem. Calculate the volume occupied by 10.0 g of each of these compounds at STP:
 
 <!-- SEG:m68751:problem:fs-idm198422416 -->
-(a) CCl~2~F~2~(*g*)
+(a) CCl[[sub:2]]F[[sub:2]]({{i}}g{{/i}})
 
 <!-- SEG:m68751:problem:fs-idm139801328 -->
-(b) CH~3~CH~2~F(*g*)
+(b) CH[[sub:3]]CH[[sub:2]]F({{i}}g{{/i}})
 
 <!-- SEG:m68751:solution:fs-idm152319568 -->
-(a) 1.85 L CCl~2~F~2~; (b) 4.66 L CH~3~CH~2~F
+(a) 1.85 L CCl[[sub:2]]F[[sub:2]]; (b) 4.66 L CH[[sub:3]]CH[[sub:2]]F
 
 <!-- SEG:m68751:problem:fs-idm192031120 -->
-As 1 g of the radioactive element radium decays over 1 year, it produces 1.16 [[MATH:30]] 10^18^ alpha particles (helium nuclei). Each alpha particle becomes an atom of helium gas. What is the pressure in pascal of the helium gas produced if it occupies a volume of 125 mL at a temperature of 25 °C?
+As 1 g of the radioactive element radium decays over 1 year, it produces 1.16 [[MATH:30]] 10[[sup:18]] alpha particles (helium nuclei). Each alpha particle becomes an atom of helium gas. What is the pressure in pascal of the helium gas produced if it occupies a volume of 125 mL at a temperature of 25 °C?
 
 <!-- SEG:m68751:problem:fs-idm19205792 -->
 A balloon with a volume of 100.21 L at 21 °C and 0.981 atm is released and just barely clears the top of Mount Crumpit in British Columbia. If the final volume of the balloon is 144.53 L at a temperature of 5.24 °C, what is the pressure experienced by the balloon as it clears Mount Crumpit?
@@ -635,7 +635,7 @@ hypothetical gas whose physical properties are perfectly described by the gas la
 ideal gas constant (R)
 
 <!-- SEG:m68751:glossary-def:fs-idm78852976-def -->
-constant derived from the ideal gas equation *R* = 0.08206 L atm mol^–1^ K^–1^ or 8.314 L kPa mol^–1^ K^–1^
+constant derived from the ideal gas equation {{i}}R{{/i}} = 0.08206 L atm mol[[sup:–1]] K[[sup:–1]] or 8.314 L kPa mol[[sup:–1]] K[[sup:–1]]
 
 <!-- SEG:m68751:glossary-term:fs-idm111878496-term -->
 ideal gas law

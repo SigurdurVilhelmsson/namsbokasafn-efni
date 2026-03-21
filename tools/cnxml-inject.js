@@ -186,9 +186,9 @@ function restoreTermMarkers(isSegments, enSegments) {
   let restoredCount = 0;
   let strippedCount = 0;
 
-  // Regex to find inline markers in order: __term__ or **bold**
-  // Uses lazy .+? for bold to handle content with single * inside (e.g., **work (*w*)**)
-  const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*)/g;
+  // Regex to find inline markers in order: __term__, **bold**, or {{b}}bold{{/b}}
+  // Handles both legacy markdown bold and new API-safe bold markers.
+  const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\})/g;
   // In IS segments from the old web UI, all markers are **text** (MT converted __ to **)
   const isStarPattern = /\*\*(.+?)\*\*/g;
   // In IS segments from the API, terms stay as __text__ (API preserves them)
@@ -197,6 +197,26 @@ function restoreTermMarkers(isSegments, enSegments) {
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
     if (!enText) continue;
+
+    // New {{term}} format: EN uses {{term}}text{{/term}} markers.
+    // Only strip __term__ from IS when IS also has {{term}} markers — this proves
+    // the IS was API-translated with new extraction, and __term__ are glossary artifacts.
+    // If IS has __term__ but NO {{term}}, it's a legacy translation — keep them.
+    const enHasNewTerms = enText.includes('{{term}}');
+    if (enHasNewTerms) {
+      const isHasNewTerms = isText.includes('{{term}}');
+      if (isHasNewTerms) {
+        // Both use new format: any __term__ in IS is API glossary overproduction
+        const legacyTerms = isText.match(/__[^_]+__/g);
+        if (legacyTerms) {
+          const stripped = isText.replace(/__([^_]+)__/g, '$1');
+          strippedCount += legacyTerms.length;
+          isSegments.set(segId, stripped);
+        }
+      }
+      // Skip legacy logic — EN uses new format, so positional **→__ matching doesn't apply
+      continue;
+    }
 
     // Count EN term markers (__text__)
     const enTermCount = (enText.match(/__[^_]+__/g) || []).length;
@@ -271,64 +291,82 @@ function restoreSupersubMarkers(isSegments, enSegments) {
   let supStripped = 0;
   let subStripped = 0;
 
-  // Patterns for sup (^text^) and sub (~text~) — same as in reverseInlineMarkup
-  // Must avoid matching standalone ^ or ~ and match only word-attached markers
+  // Patterns for legacy sup (^text^) and sub (~text~)
   const supPattern = /\^([^\s^]{1,15})\^/g;
   const subPattern = /~([^\s~]{1,15})~/g;
+  // Patterns for new API-safe [[sup:content]] and [[sub:content]]
+  const newSupPattern = /\[\[sup:[^\]]+\]\]/g;
+  const newSubPattern = /\[\[sub:[^\]]+\]\]/g;
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
     if (!enText) continue;
 
-    // Count sup markers in EN vs IS
-    const enSupCount = (enText.match(supPattern) || []).length;
+    // Count sup markers in EN vs IS — include BOTH old and new formats.
+    // This prevents false "excess" detection when EN uses new [[sup:...]] format
+    // but IS still uses old ^text^ format from a prior translation.
+    const enSupCount =
+      (enText.match(supPattern) || []).length + (enText.match(newSupPattern) || []).length;
     supPattern.lastIndex = 0;
-    const isSupCount = (isText.match(supPattern) || []).length;
+    const isSupCount =
+      (isText.match(supPattern) || []).length + (isText.match(newSupPattern) || []).length;
     supPattern.lastIndex = 0;
 
     let result = isText;
 
     if (isSupCount > enSupCount) {
-      // Strip excess sup markers from end (keep first N matching EN count)
-      const target = isSupCount - enSupCount;
-      let stripped = 0;
-      // Replace from the end: collect all matches, strip the last N
-      const matches = [];
-      let m;
+      // Strip excess legacy sup markers from end (keep first N matching EN count)
+      // Only strip old ^text^ markers — new [[sup:...]] markers are API-safe
+      const isLegacySupCount = (isText.match(supPattern) || []).length;
       supPattern.lastIndex = 0;
-      while ((m = supPattern.exec(result)) !== null) {
-        matches.push({ start: m.index, end: m.index + m[0].length, inner: m[1] });
-      }
-      // Strip from end
-      for (let i = matches.length - 1; i >= 0 && stripped < target; i--) {
-        const match = matches[i];
-        result = result.substring(0, match.start) + match.inner + result.substring(match.end);
-        stripped++;
-        supStripped++;
+      const enLegacySupCount = (enText.match(supPattern) || []).length;
+      supPattern.lastIndex = 0;
+      if (isLegacySupCount > enLegacySupCount) {
+        const target = isLegacySupCount - enLegacySupCount;
+        let stripped = 0;
+        const matches = [];
+        let m;
+        supPattern.lastIndex = 0;
+        while ((m = supPattern.exec(result)) !== null) {
+          matches.push({ start: m.index, end: m.index + m[0].length, inner: m[1] });
+        }
+        for (let i = matches.length - 1; i >= 0 && stripped < target; i--) {
+          const match = matches[i];
+          result = result.substring(0, match.start) + match.inner + result.substring(match.end);
+          stripped++;
+          supStripped++;
+        }
       }
     }
 
-    // Count sub markers in EN vs IS
-    const enSubCount = (enText.match(subPattern) || []).length;
+    // Count sub markers in EN vs IS — include BOTH old and new formats
+    const enSubCount =
+      (enText.match(subPattern) || []).length + (enText.match(newSubPattern) || []).length;
     subPattern.lastIndex = 0;
-    const isSubCount = (result.match(subPattern) || []).length;
+    const isSubCount =
+      (result.match(subPattern) || []).length + (result.match(newSubPattern) || []).length;
     subPattern.lastIndex = 0;
 
     if (isSubCount > enSubCount) {
-      // Strip excess sub markers from end
-      const target = isSubCount - enSubCount;
-      let stripped = 0;
-      const matches = [];
-      let m;
+      const isLegacySubCount = (result.match(subPattern) || []).length;
       subPattern.lastIndex = 0;
-      while ((m = subPattern.exec(result)) !== null) {
-        matches.push({ start: m.index, end: m.index + m[0].length, inner: m[1] });
-      }
-      for (let i = matches.length - 1; i >= 0 && stripped < target; i--) {
-        const match = matches[i];
-        result = result.substring(0, match.start) + match.inner + result.substring(match.end);
-        stripped++;
-        subStripped++;
+      const enLegacySubCount = (enText.match(subPattern) || []).length;
+      subPattern.lastIndex = 0;
+      if (isLegacySubCount > enLegacySubCount) {
+        const target = isLegacySubCount - enLegacySubCount;
+        let stripped = 0;
+        const matches = [];
+        let m;
+        subPattern.lastIndex = 0;
+        while ((m = subPattern.exec(result)) !== null) {
+          matches.push({ start: m.index, end: m.index + m[0].length, inner: m[1] });
+        }
+        for (let i = matches.length - 1; i >= 0 && stripped < target; i--) {
+          const match = matches[i];
+          result = result.substring(0, match.start) + match.inner + result.substring(match.end);
+          stripped++;
+          subStripped++;
+        }
       }
     }
 
@@ -515,66 +553,66 @@ function restoreMathMarkers(isSegments, enSegments) {
     if (enMathMatches.length === 0 || isMathMatches.length >= enMathMatches.length) continue;
 
     // IS is missing some [[MATH:N]] markers.
-    // Build a set of which MATH IDs are present in IS
     const isMathIds = new Set(isMathMatches);
-
-    // Find missing ones
     const missingMaths = enMathMatches.filter((m) => !isMathIds.has(m));
     if (missingMaths.length === 0) continue;
-
-    // Strategy: use the EN segment as a structural template.
-    // Split EN by [[MATH:N]] to get the text fragments between placeholders.
-    // For each missing placeholder, find the preceding text fragment in IS
-    // and insert the placeholder after it.
-    //
-    // This works well for short, structured segments like:
-    //   EN: "(b) [[MATH:39]] [[MATH:40]]"
-    //   IS: "(b) NH~4~^+^, SO~4~^2-^"
-    //
-    // We find "(b) " in both, then know [[MATH:39]] should follow.
 
     let result = isText;
     let modified = false;
 
-    // For each missing math, try to find the text that immediately precedes it in EN
-    for (const missing of missingMaths) {
-      const mathIdx = enText.indexOf(missing);
-      if (mathIdx < 0) continue;
-
-      // Get the text fragment before this math in EN (up to 30 chars, or from previous math/start)
-      const beforeInEn = enText.substring(Math.max(0, mathIdx - 30), mathIdx);
-
-      // Find a recognizable anchor: last few non-placeholder chars
-      // Strip other [[MATH:N]]/[[BR]] to get the actual text
-      const anchor = beforeInEn
-        .replace(/\[\[(MATH|BR|MEDIA):[^\]]*\]\]/g, '')
-        .trim()
-        .slice(-15);
-
-      if (anchor.length < 2) continue;
-
-      // Find this anchor in IS and insert the missing math placeholder after it
-      const anchorIdx = result.indexOf(anchor);
-      if (anchorIdx >= 0) {
-        // Find the end of the anchor in IS, skip any text that the API may have
-        // inserted in place of the math (up to next anchor or end of segment)
-        const insertPos = anchorIdx + anchor.length;
-
-        // Look for the next [[MATH:N]] or end of string after this position in IS
-        const nextMathInIs = result.indexOf('[[MATH:', insertPos);
-        const nextAnchorEnd = nextMathInIs >= 0 ? nextMathInIs : result.length;
-
-        // The API's inlined text is between insertPos and nextAnchorEnd
-        // Replace it with the placeholder (keep any separator chars like commas)
-        const inlinedText = result.substring(insertPos, nextAnchorEnd).trim();
-
-        if (inlinedText.length > 0 && inlinedText.length < 40) {
-          // Replace the inlined text with the placeholder
-          const before = result.substring(0, insertPos);
-          const after = result.substring(nextAnchorEnd);
-          result = `${before} ${missing}${after}`;
+    // Strategy 1: Separator-based restoration for (a), (b), (c) labeled segments.
+    // Try this FIRST because it's more precise — it scopes each replacement to
+    // its labeled chunk, preventing anchor-based greedy replacement from
+    // overwriting text in adjacent chunks.
+    const hasSeparators = /\([a-z]\)/.test(enText);
+    if (hasSeparators) {
+      const separatorRestored = restoreMathBySeparators(isText, enText);
+      if (separatorRestored !== null) {
+        const newMathCount = (separatorRestored.match(/\[\[MATH:\d+\]\]/g) || []).length;
+        if (newMathCount > isMathMatches.length) {
+          restoredCount += newMathCount - isMathMatches.length;
+          result = separatorRestored;
           modified = true;
-          restoredCount++;
+        }
+      }
+    }
+
+    // Strategy 2: Anchor-based restoration (fallback for non-separator segments)
+    const currentMathCount = (result.match(/\[\[MATH:\d+\]\]/g) || []).length;
+    if (currentMathCount < enMathMatches.length) {
+      const currentMissing = enMathMatches.filter((m) => !result.includes(m));
+      for (const missing of currentMissing) {
+        if (result.includes(missing)) continue;
+
+        const mathIdx = enText.indexOf(missing);
+        if (mathIdx < 0) continue;
+
+        const beforeInEn = enText.substring(Math.max(0, mathIdx - 30), mathIdx);
+        const anchor = beforeInEn
+          .replace(/\[\[(MATH|BR|MEDIA):[^\]]*\]\]/g, '')
+          .trim()
+          .slice(-15);
+
+        if (anchor.length < 2) continue;
+
+        const anchorIdx = result.indexOf(anchor);
+        if (anchorIdx >= 0) {
+          const insertPos = anchorIdx + anchor.length;
+          const nextMathInIs = result.indexOf('[[MATH:', insertPos);
+          // Also use label separators as boundaries to avoid greedy replacement
+          const nextSepInIs = result.slice(insertPos).search(/\([a-z]\)/);
+          let nextAnchorEnd = result.length;
+          if (nextMathInIs >= 0) nextAnchorEnd = Math.min(nextAnchorEnd, nextMathInIs);
+          if (nextSepInIs >= 0) nextAnchorEnd = Math.min(nextAnchorEnd, insertPos + nextSepInIs);
+          const inlinedText = result.substring(insertPos, nextAnchorEnd).trim();
+
+          if (inlinedText.length > 0 && inlinedText.length < 40) {
+            const before = result.substring(0, insertPos);
+            const after = result.substring(nextAnchorEnd);
+            result = `${before} ${missing}${after}`;
+            modified = true;
+            restoredCount++;
+          }
         }
       }
     }
@@ -585,6 +623,112 @@ function restoreMathMarkers(isSegments, enSegments) {
   }
 
   return { segments: isSegments, restoredCount };
+}
+
+/**
+ * Restore MATH markers by splitting segments at letter-label separators.
+ *
+ * Handles cases like "(b) [[MATH:39]] [[MATH:40]]" where the API replaced
+ * the markers with inline chemical formulas. Splits both EN and IS by
+ * (a), (b), (c), etc. and restores within each chunk.
+ *
+ * @param {string} isText - Current IS text (possibly partially restored)
+ * @param {string} enText - Original EN text with [[MATH:N]] markers
+ * @returns {string|null} Restored text, or null if no restoration possible
+ */
+function restoreMathBySeparators(isText, enText) {
+  const sepRegex = /(\([a-z]\))/g;
+
+  const enParts = enText.split(sepRegex);
+  const isParts = isText.split(sepRegex);
+
+  // Must have same number of parts (same separator structure)
+  if (enParts.length !== isParts.length || enParts.length < 3) return null;
+
+  // Verify separators match
+  for (let i = 0; i < enParts.length; i++) {
+    const enIsSep = /^\([a-z]\)$/.test(enParts[i]);
+    const isIsSep = /^\([a-z]\)$/.test(isParts[i]);
+    if (enIsSep !== isIsSep) return null;
+    if (enIsSep && enParts[i] !== isParts[i]) return null;
+  }
+
+  const resultParts = [];
+  let anyRestored = false;
+
+  for (let i = 0; i < enParts.length; i++) {
+    const enPart = enParts[i];
+    const isPart = isParts[i];
+
+    // Separator — keep as-is
+    if (/^\([a-z]\)$/.test(enPart)) {
+      resultParts.push(isPart);
+      continue;
+    }
+
+    // Content chunk — check for missing MATH
+    const chunkMaths = enPart.match(/\[\[MATH:\d+\]\]/g) || [];
+    const isChunkMathCount = (isPart.match(/\[\[MATH:\d+\]\]/g) || []).length;
+
+    if (chunkMaths.length === 0 || isChunkMathCount >= chunkMaths.length) {
+      resultParts.push(isPart);
+      continue;
+    }
+
+    // Missing MATH markers in this chunk — attempt restoration
+    const firstMathIdx = enPart.indexOf(chunkMaths[0]);
+    const enPrefix = enPart.substring(0, firstMathIdx);
+    const lastMath = chunkMaths[chunkMaths.length - 1];
+    const lastMathEnd = enPart.lastIndexOf(lastMath) + lastMath.length;
+    const enSuffix = enPart.substring(lastMathEnd);
+
+    if (enPrefix.trim().length === 0) {
+      // No meaningful text before MATHs — replace IS content with MATH markers
+      const leading = isPart.match(/^(\s*)/)[1];
+      const suffixTrimmed = enSuffix.trim();
+      if (suffixTrimmed) {
+        const suffixIdx = isPart.lastIndexOf(suffixTrimmed);
+        if (suffixIdx > leading.length) {
+          resultParts.push(leading + chunkMaths.join(' ') + isPart.substring(suffixIdx));
+        } else {
+          resultParts.push(leading + chunkMaths.join(' ') + enSuffix);
+        }
+      } else {
+        resultParts.push(leading + chunkMaths.join(' '));
+      }
+      anyRestored = true;
+    } else {
+      // Has text before MATHs — use shared punctuation as anchor
+      const punctMatch = enPrefix.match(/[,;:]\s*$/);
+      if (punctMatch) {
+        const punct = punctMatch[0].trimEnd();
+        const punctIdx = isPart.indexOf(punct);
+        if (punctIdx >= 0) {
+          const insertPos = punctIdx + punct.length;
+          const mathStr = ' ' + chunkMaths.join(' ');
+          const suffixTrimmed = enSuffix.trim();
+          if (suffixTrimmed) {
+            const suffixIdx = isPart.indexOf(suffixTrimmed, insertPos);
+            if (suffixIdx >= 0) {
+              resultParts.push(
+                isPart.substring(0, insertPos) + mathStr + isPart.substring(suffixIdx)
+              );
+            } else {
+              resultParts.push(isPart.substring(0, insertPos) + mathStr);
+            }
+          } else {
+            resultParts.push(isPart.substring(0, insertPos) + mathStr);
+          }
+          anyRestored = true;
+          continue;
+        }
+      }
+      // Fallback: can't find anchor — keep IS text
+      resultParts.push(isPart);
+    }
+  }
+
+  return anyRestored ? resultParts.join('') : null;
 }
 
 /**
@@ -604,11 +748,11 @@ function restoreMathMarkers(isSegments, enSegments) {
 function annotateInlineTerms(isSegments, enSegments) {
   let annotatedCount = 0;
 
-  // Same regex strategy as restoreTermMarkers():
-  // EN has distinct __term__ and **bold** — extract only __term__ texts
-  const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*)/g;
-  // IS already has __term__ restored (after restoreTermMarkers)
-  const isTermPattern = /__([^_]+)__/g;
+  // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}
+  const enMarkerPattern =
+    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\})/g;
+  // IS: both new {{term}} and legacy __term__ formats
+  const isTermPattern = /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__)/g;
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
@@ -620,17 +764,22 @@ function annotateInlineTerms(isSegments, enSegments) {
     enMarkerPattern.lastIndex = 0;
     while ((enMatch = enMarkerPattern.exec(enText)) !== null) {
       if (enMatch[2] !== undefined) {
-        // __term__ match — record the term text
+        // {{term}}text{{/term}} match
         enTermTexts.push(enMatch[2]);
+      } else if (enMatch[3] !== undefined) {
+        // __term__ match
+        enTermTexts.push(enMatch[3]);
       }
-      // **bold** — skip
+      // **bold** or {{b}} — skip
     }
 
     if (enTermTexts.length === 0) continue;
 
-    // Replace IS __term__ markers positionally
+    // Replace IS term markers positionally (handles both {{term}} and __term__ formats)
     let termIndex = 0;
-    const annotated = isText.replace(isTermPattern, (match, inner) => {
+    const annotated = isText.replace(isTermPattern, (match, _full, newInner, legacyInner) => {
+      const inner = newInner !== undefined ? newInner : legacyInner;
+      const isNewFormat = newInner !== undefined;
       if (termIndex >= enTermTexts.length) return match;
 
       const enTerm = enTermTexts[termIndex].toLowerCase();
@@ -640,6 +789,9 @@ function annotateInlineTerms(isSegments, enSegments) {
       if (inner.toLowerCase() === enTerm) return match;
 
       annotatedCount++;
+      if (isNewFormat) {
+        return `{{term}}${inner} (e. ${enTerm}){{/term}}`;
+      }
       return `__${inner} (e. ${enTerm})__`;
     });
 
@@ -819,6 +971,33 @@ function reverseInlineMarkup(
     return match; // Keep placeholder if not found
   });
 
+  // Restore API-safe [[sub:content]] and [[sup:content]] placeholders to CNXML.
+  // These bracket placeholders survive the Málstaður API (like [[MATH:N]]).
+  // Handle nested emphasis markers {{i}}text{{/i}} inside the content.
+  result = result.replace(/\[\[sub:([^\]]+)\]\]/g, (match, content) => {
+    const inner = content
+      .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+      .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+    return `<sub>${inner}</sub>`;
+  });
+  result = result.replace(/\[\[sup:([^\]]+)\]\]/g, (match, content) => {
+    const inner = content
+      .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+      .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+    return `<sup>${inner}</sup>`;
+  });
+
+  // Restore API-safe {{i}}text{{/i}} and {{b}}text{{/b}} emphasis markers to CNXML.
+  // These paired markers survive the API better than markdown *text* and **text**.
+  result = result.replace(
+    /\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g,
+    '<emphasis effect="bold">$1</emphasis>'
+  );
+  result = result.replace(
+    /\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g,
+    '<emphasis effect="italics">$1</emphasis>'
+  );
+
   // IMPORTANT: Extract MathML blocks before applying term wrapping to prevent
   // term markers from being applied inside MathML (which causes malformed XML)
   const mathBlocks = [];
@@ -827,7 +1006,24 @@ function reverseInlineMarkup(
     return `{{MATHBLOCK:${mathBlocks.length - 1}}}`;
   });
 
-  // Convert emphasis markers back to CNXML
+  // BACKWARD COMPAT: Convert legacy combined sub/sup + emphasis patterns.
+  // Old extraction used ~*t*~ for <sub><emphasis>t</emphasis></sub>.
+  // Bold variants first (** before *) to avoid partial matching.
+  result = result.replace(
+    /~\*\*([^*~]+)\*\*~/g,
+    '<sub><emphasis effect="bold">$1</emphasis></sub>'
+  );
+  result = result.replace(/~\*([^*~]+)\*~/g, '<sub><emphasis effect="italics">$1</emphasis></sub>');
+  result = result.replace(
+    /\^\*\*([^*^]+)\*\*\^/g,
+    '<sup><emphasis effect="bold">$1</emphasis></sup>'
+  );
+  result = result.replace(
+    /\^\*([^*^]+)\*\^/g,
+    '<sup><emphasis effect="italics">$1</emphasis></sup>'
+  );
+
+  // BACKWARD COMPAT: Convert legacy markdown emphasis markers to CNXML
   result = result.replace(/\+\+(.+?)\+\+/g, '<emphasis effect="underline">$1</emphasis>');
   result = result.replace(/\*\*([^*]+)\*\*/g, '<emphasis effect="bold">$1</emphasis>');
   result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
@@ -849,7 +1045,11 @@ function reverseInlineMarkup(
     result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
   }
 
-  // Convert term markers back to CNXML (simplified - without IDs)
+  // API-safe term markers: {{term}}text{{/term}} → <term>text</term>
+  // Must come BEFORE legacy __term__ handler so new format takes priority
+  result = result.replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '<term>$1</term>');
+
+  // BACKWARD COMPAT: Convert legacy term markers back to CNXML
   // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
   result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
   result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
@@ -859,9 +1059,11 @@ function reverseInlineMarkup(
     return mathBlocks[parseInt(index)];
   });
 
-  // Restore sup/sub inside terms (from ^..^ and ~..~ markdown)
+  // Restore sup/sub inside terms — handle both new [[sub:...]] and legacy ~..~ formats
   result = result.replace(/<term>([\s\S]*?)<\/term>/g, (match, inner) => {
     const restored = inner
+      .replace(/\[\[sub:([^\]]+)\]\]/g, '<sub>$1</sub>')
+      .replace(/\[\[sup:([^\]]+)\]\]/g, '<sup>$1</sup>')
       .replace(/\^([^^]{1,15})\^/g, '<sup>$1</sup>')
       .replace(/~([^~]{1,15})~/g, '<sub>$1</sub>');
     return `<term>${restored}</term>`;
@@ -904,7 +1106,11 @@ function reverseInlineMarkup(
   result = result.replace(/(?<=[^\s~])~([^\s~]{1,15})~/g, '<sub>$1</sub>');
   result = result.replace(/(?<=[^\s^])\^([^\s^]{1,15})\^/g, '<sup>$1</sup>');
 
-  // Convert footnotes back — handle both English marker and MT-translated Icelandic
+  // API-safe footnote markers: {{fn}}text{{/fn}} → <footnote>text</footnote>
+  // Must come BEFORE legacy [footnote:] handler so new format takes priority
+  result = result.replace(/\{\{fn\}\}([\s\S]*?)\{\{\/fn\}\}/g, '<footnote>$1</footnote>');
+
+  // BACKWARD COMPAT: Convert legacy footnotes back — handle both English and MT-translated Icelandic
   // Use lazy [\s\S]+? with lookahead to handle footnotes containing ] (e.g., math placeholders)
   result = result.replace(
     / \[(?:footnote|neðanmálsgrein): ([\s\S]+?)\](?=\s|$|[.,;:<\[])/g,
@@ -1033,6 +1239,13 @@ function collectBlockEquationIds(elements, idSet) {
 
 function buildCnxml(structure, segments, equations, originalCnxml, options = {}, inlineAttrs = {}) {
   const verbose = options.verbose || false;
+
+  // Normalize self-closing entries in original CNXML for pattern matching.
+  // Self-closing <entry align="left"/> doesn't match the <entry...>...</entry>
+  // replacement regex used by buildTable().
+  // Note: self-closing <para/> is NOT normalized here — it requires re-extraction
+  // (Fix F in cnxml-extract.js) to align the structure.json with the normalized content.
+  originalCnxml = originalCnxml.replace(/<entry([^>]*)\/>/g, '<entry$1></entry>');
 
   // Collect block-level equation IDs to prevent duplication in reverseInlineMarkup
   const blockEquationIds = new Set();
@@ -1518,6 +1731,34 @@ function buildTable(element, getSeg, originalCnxml) {
 }
 
 /**
+ * Check if a list in the CNXML contains any already-replaced para IDs.
+ * Used to prevent replaceListItems from overwriting paras that were
+ * already individually translated in buildExample/buildExercise.
+ *
+ * Root cause: when a list's <item> elements contain <para> children,
+ * the para-replacement pass (step 1) translates them individually.
+ * If replaceListItems then replaces the entire <item> content (step 2),
+ * it overwrites the already-translated paras with flat text, destroying
+ * the <para> wrappers and their translated content.
+ */
+function listContainsReplacedParas(cnxml, listElement, replacedParaIds) {
+  if (!listElement || !listElement.id || replacedParaIds.size === 0) return false;
+
+  // Find the list's content in the CNXML
+  const listPattern = new RegExp(`<list\\s+id="${listElement.id}"[^>]*>[\\s\\S]*?</list>`);
+  const match = listPattern.exec(cnxml);
+  if (!match) return false;
+
+  const listContent = match[0];
+  for (const paraId of replacedParaIds) {
+    if (listContent.includes(`id="${paraId}"`)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
  * Replace list items within CNXML extracted from an example, exercise, or note.
  * Items are matched by position within the list element.
  */
@@ -1580,6 +1821,7 @@ function buildExample(element, getSeg, equations, originalCnxml) {
       // When we replace paragraph content, we need to preserve this title.
       // Other paras may have their own titles (e.g., "Check Your Learning") which should also be preserved.
       let isFirstPara = true;
+      const replacedParaIds = new Set();
       for (const child of element.content || []) {
         if (child.type === 'para' && child.id) {
           const paraText = child.segmentId ? getSeg(child.segmentId) : '';
@@ -1598,12 +1840,16 @@ function buildExample(element, getSeg, equations, originalCnxml) {
           const titleElement = titleText ? `<title>${titleText}</title>` : '';
           const replacementText = `<para id="${child.id}">${titleElement}${paraText}</para>`;
           exampleCnxml = exampleCnxml.replace(paraPattern, replacementText);
+          replacedParaIds.add(child.id);
 
           isFirstPara = false;
         }
-        // Replace list items
+        // Replace list items — but skip if the list contains paras already
+        // replaced above (they'd be overwritten with flat text, losing <para> wrappers)
         if (child.type === 'list') {
-          exampleCnxml = replaceListItems(exampleCnxml, child, getSeg);
+          if (!listContainsReplacedParas(exampleCnxml, child, replacedParaIds)) {
+            exampleCnxml = replaceListItems(exampleCnxml, child, getSeg);
+          }
         }
       }
 
@@ -1633,7 +1879,10 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
     if (match) {
       let exerciseCnxml = match[0];
 
-      // Replace problem paragraphs and lists
+      // Replace problem and solution paragraphs and lists.
+      // Track replaced para IDs to prevent list replacement from overwriting them.
+      const replacedParaIds = new Set();
+
       if (element.problem) {
         for (const child of element.problem.content || []) {
           if (child.type === 'para' && child.id && child.segmentId) {
@@ -1647,32 +1896,49 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
                 paraPattern,
                 `<para id="${child.id}">${paraText}</para>`
               );
+              replacedParaIds.add(child.id);
             }
           }
           if (child.type === 'list') {
-            exerciseCnxml = replaceListItems(exerciseCnxml, child, getSeg);
+            if (!listContainsReplacedParas(exerciseCnxml, child, replacedParaIds)) {
+              exerciseCnxml = replaceListItems(exerciseCnxml, child, getSeg);
+            }
           }
         }
       }
 
-      // Replace solution paragraphs and lists
       if (element.solution) {
-        for (const child of element.solution.content || []) {
+        const solContent = element.solution.content || [];
+        for (let ci = 0; ci < solContent.length; ci++) {
+          const child = solContent[ci];
           if (child.type === 'para' && child.id && child.segmentId) {
             const paraText = getSeg(child.segmentId);
             if (paraText) {
+              // Check if the next content entry is a list that was originally
+              // nested inside this para (extracted as a sibling by the extractor).
+              // If so, build the list and embed it inside the para.
+              let embeddedListCnxml = '';
+              while (ci + 1 < solContent.length && solContent[ci + 1].type === 'list') {
+                const listChild = solContent[ci + 1];
+                embeddedListCnxml += '\n' + buildList(listChild, getSeg);
+                ci++;
+              }
+
               const paraPattern = new RegExp(
                 `<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`,
                 'g'
               );
               exerciseCnxml = exerciseCnxml.replace(
                 paraPattern,
-                `<para id="${child.id}">${paraText}</para>`
+                `<para id="${child.id}">${paraText}${embeddedListCnxml}</para>`
               );
+              replacedParaIds.add(child.id);
             }
           }
           if (child.type === 'list') {
-            exerciseCnxml = replaceListItems(exerciseCnxml, child, getSeg);
+            if (!listContainsReplacedParas(exerciseCnxml, child, replacedParaIds)) {
+              exerciseCnxml = replaceListItems(exerciseCnxml, child, getSeg);
+            }
           }
         }
       }
@@ -1842,8 +2108,18 @@ function buildList(element, getSeg) {
 
   for (const item of element.items || []) {
     const itemText = getSeg(item.segmentId);
-    if (itemText) {
-      const itemIdAttr = item.id ? ` id="${item.id}"` : '';
+    const itemIdAttr = item.id ? ` id="${item.id}"` : '';
+
+    if (item.children && item.children.length > 0) {
+      // Item has nested lists — build them recursively
+      lines.push(`<item${itemIdAttr}>${itemText || ''}`);
+      for (const child of item.children) {
+        if (child.type === 'list') {
+          lines.push(buildList(child, getSeg));
+        }
+      }
+      lines.push('</item>');
+    } else if (itemText) {
       lines.push(`<item${itemIdAttr}>${itemText}</item>`);
     }
   }
@@ -2116,8 +2392,19 @@ async function main() {
       const { structure, segments, equations, originalCnxml, enSegments, inlineAttrs } =
         loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir);
 
-      // Restore __term__ markers that MT converted to **bold** (web UI pipeline)
-      // or strip extra __term__ markers added by API glossary (API pipeline)
+      // Detect API vs web UI segments: API-translated segments contain
+      // {{i}}, {{b}}, {{term}}, or {{fn}} markers that survive the API.
+      const isApiTranslated = [...segments.values()].some(
+        (s) =>
+          s.includes('{{i}}') ||
+          s.includes('{{b}}') ||
+          s.includes('{{term}}') ||
+          s.includes('{{fn}}')
+      );
+
+      // Restore/strip term markers (needed for both pipelines):
+      // - New {{term}} format: strips any __term__ glossary artifacts from IS
+      // - Legacy __term__ format: restores **bold** → __term__ from web UI MT
       const { restoredCount, strippedCount } = restoreTermMarkers(segments, enSegments);
       if (args.verbose && restoredCount > 0) {
         console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
@@ -2126,33 +2413,40 @@ async function main() {
         console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
       }
 
-      // Limit sup/sub markers in IS to match EN counts (prevents overproduction)
-      const { supStripped, subStripped } = restoreSupersubMarkers(segments, enSegments);
-      if (supStripped > 0 || subStripped > 0) {
-        console.error(
-          `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
-        );
+      // Web-UI-only restoration functions — skip for API-translated segments.
+      // The API preserves [[sub:]], [[sup:]], [[MEDIA:N]], and [[BR]] markers,
+      // so these repair functions are unnecessary and could cause false positives.
+      if (!isApiTranslated) {
+        // Limit sup/sub markers in IS to match EN counts (prevents overproduction)
+        const { supStripped, subStripped } = restoreSupersubMarkers(segments, enSegments);
+        if (supStripped > 0 || subStripped > 0) {
+          console.error(
+            `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
+          );
+        }
+
+        // Restore [[MEDIA:N]] placeholders dropped by web UI MT
+        const { restoredCount: mediaRestoredCount } = restoreMediaMarkers(segments, enSegments);
+        if (mediaRestoredCount > 0) {
+          console.error(
+            `  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`
+          );
+        }
+
+        // Restore [[BR]] placeholders from EN source into IS segments
+        const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
+        if (args.verbose && brRestoredCount > 0) {
+          console.error(`  Restored ${brRestoredCount} newline placeholder(s) from EN source`);
+        }
       }
 
-      // Restore [[MEDIA:N]] placeholders dropped by web UI MT
-      const { restoredCount: mediaRestoredCount } = restoreMediaMarkers(segments, enSegments);
-      if (mediaRestoredCount > 0) {
-        console.error(`  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`);
-      }
-
-      // Restore [[MATH:N]] placeholders that the API resolved to plain text
+      // Restore [[MATH:N]] placeholders that the API resolved to plain text (both pipelines)
       const { restoredCount: mathRestoredCount } = restoreMathMarkers(segments, enSegments);
       if (mathRestoredCount > 0) {
         console.error(`  Restored ${mathRestoredCount} [[MATH:N]] placeholder(s) from EN source`);
       }
 
-      // Restore [[BR]] placeholders from EN source into IS segments
-      const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
-      if (args.verbose && brRestoredCount > 0) {
-        console.error(`  Restored ${brRestoredCount} newline placeholder(s) from EN source`);
-      }
-
-      // Annotate inline terms with English originals: __IS (e. en)__
+      // Annotate inline terms with English originals: __IS (e. en)__ or {{term}}IS (e. en){{/term}}
       if (args.annotateEn) {
         const { annotatedCount } = annotateInlineTerms(segments, enSegments);
         if (args.verbose && annotatedCount > 0) {
@@ -2217,8 +2511,10 @@ export {
   restoreSupersubMarkers,
   restoreMediaMarkers,
   restoreMathMarkers,
+  restoreMathBySeparators,
   restoreNewlines,
   annotateInlineTerms,
   parseSegments,
   reverseInlineMarkup,
+  buildCnxml,
 };

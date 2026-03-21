@@ -1,0 +1,324 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<!-- FIDELITY-WARNING: m68764 has 2 structural discrepancy(ies)
+  image: source=10 translated=11 (+1 overproduction)
+  media: source=10 translated=11 (+1 overproduction)
+  Review needed before publication. Run cnxml-fidelity-check.js for details.
+-->
+<title>Eiginleikar vökva</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68764</md:content-id>
+  <md:title>Eiginleikar vökva</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla getur þú:</para><list id="list-00001"><item>Greint á milli viðloðunarkrafta og samloðunarkrafta</item><item>Skilgreint seigju, yfirborðsspennu og hárpípukraft</item><item>Lýst hlutverki aðdráttarkrafta milli sameinda í hverjum þessara eiginleika/fyrirbæra</item></list></md:abstract>
+  <md:uuid>846e6c50-e81e-4658-b938-857b5169e73c</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm130666608">Þegar þú hellir vatni í glas eða setur bensín á bíl tekurðu eftir því að vatnið og bensínið renna greiðlega. En þegar þú hellir sírópi yfir pönnukökur eða bætir olíu á bílvél sérðu að sírópið og vélarolían renna ekki jafn auðveldlega. <term id="term-00001">Seigja (e. viscosity)</term> vökva er mælikvarði á viðnám hans gegn flæði. Vatn, bensín og aðrir vökvar sem renna greiðlega hafa lága seigju. Hunang, síróp, vélarolía og aðrir vökvar sem renna ekki greiðlega, eins og þeir sem sýndir eru á <link target-id="CNX_Chem_10_02_Viscosity"/>, hafa hærri seigju. Við getum mælt seigju með því að mæla hraðann sem málmkúla fellur í gegnum vökva (kúlan fellur hægar í gegnum seigari vökva) eða með því að mæla hraðann sem vökvi rennur í gegnum mjótt rör (seigari vökvar renna hægar).</para>
+<figure id="CNX_Chem_10_02_Viscosity" class="scaled-down">
+<media id="fs-idm87904672" alt="Two photographs are shown and labeled “a” and “b.” Photo a shows a jar of honey with a dipper drizzling it onto a biscuit. More biscuits are shown in a basket in the background. Photo b shows the engine of a car and a person adding motor oil to the engine.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Viscosity.jpg"/>
+</media>
+<caption>(a) Hunang og (b) vélarolía eru dæmi um vökva með mikla seigju; þeir renna hægt. (heimild a: breytt útgáfa af verki eftir Scott Bauer; heimild b: breytt útgáfa af verki eftir David Nagy)</caption>
+</figure>
+<para id="fs-idm133174592">Millikraftar (IMFs) milli sameinda vökva, stærð og lögun sameindanna og hitastig ákvarða hversu auðveldlega vökvi rennur. Eins og <link target-id="fs-idm123780960"/> sýnir, því flóknari sem bygging sameindanna í vökva er og því sterkari sem millikraftarnir milli þeirra eru, því erfiðara er fyrir þær að hreyfast fram hjá hver annarri og því meiri er seigja vökvans. Þegar hitastig hækkar hreyfast sameindirnar hraðar og hreyfiorka þeirra verður færari um að yfirstíga kraftana sem halda þeim saman; þannig minnkar seigja vökvans.</para>
+<table id="fs-idm123780960" class="top-titled" summary="This table has three columns and eight rows. The first row is a header row, and it labels each column, “Substance,” “Formula,” and “Viscosity ( m P a dot s ).” Under the “Substance” column are the following: water, mercury, ethanol, octane, ethylene glycol, honey, and motor oil. Under the “Formula” column are the following: H subscript 2 O; H g; C subscript 2 H subscript 5 O H; C subscript 8 H subscript 18; C H subscript 2 ( O H ) C H subscript 2 ( O H ); variable; and variable. Under the “Viscosity ( m P a dot s )” column are the following: 0.890, 1.526, 1.074, 0.508, 16.1, approximately 2000 to 10000, and approximately 50 to 500.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c3" align="center">Seigja algengra efna við 25 °C</entry>
+</row>
+<row valign="middle">
+<entry align="center">Efni</entry>
+<entry align="center">Formúla</entry>
+<entry align="center">Seigja (mPa·s)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="center">vatn</entry>
+<entry align="center">H<sub>2</sub>O</entry>
+<entry align="center">0,890</entry>
+</row>
+<row valign="middle">
+<entry align="center">kvikasilfur</entry>
+<entry align="center">Hg</entry>
+<entry align="center">1,526</entry>
+</row>
+<row valign="middle">
+<entry align="center">etanól</entry>
+<entry align="center">C<sub>2</sub>H<sub>5</sub>OH</entry>
+<entry align="center">1,074</entry>
+</row>
+<row valign="middle">
+<entry align="center">oktan</entry>
+<entry align="center">C<sub>8</sub>H<sub>18</sub></entry>
+<entry align="center">0,508</entry>
+</row>
+<row valign="middle">
+<entry align="center">etýlen glýkól</entry>
+<entry align="center">CH<sub>2</sub>(OH)CH<sub>2</sub>(OH)</entry>
+<entry align="center">16,1</entry>
+</row>
+<row valign="middle">
+<entry align="center">hunang</entry>
+<entry align="center">breytilegt</entry>
+<entry align="center">~2.000–10.000</entry>
+</row>
+<row valign="middle">
+<entry align="center">vélarolía</entry>
+<entry align="center">breytilegt</entry>
+<entry align="center">~50–500</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm45103712">Ýmsir millikraftar milli eins sameinda í efni eru dæmi um <term id="term-00002">samloðunarkrafta (e. cohesive forces)</term>. Sameindirnar inni í vökva eru umkringdar öðrum sameindum og laðast jafnt í allar áttir af samloðunarkröftum innan vökvans. Hins vegar laðast sameindirnar á yfirborði vökva aðeins að um helmingi færri sameindum. Vegna ójafnvægis í aðdráttarkröftum á yfirborðssameindirnar dragast vökvar saman og mynda lögun sem lágmarkar fjölda sameinda á yfirborðinu – það er að segja, lögun með minnsta mögulega yfirborðsflatarmáli. Lítill vökvadropi hefur tilhneigingu til að taka á sig kúlulaga form, eins og sýnt er á <link target-id="CNX_Chem_10_02_Droplet"/>, því í kúlu er hlutfall yfirborðsflatarmáls og rúmmáls í lágmarki. Stærri dropar verða fyrir meiri áhrifum frá þyngdarafli, loftmótstöðu, yfirborðsviðbrögðum og svo framvegis, og eru því síður kúlulaga.</para>
+<figure id="CNX_Chem_10_02_Droplet" class="scaled-down">
+<media id="fs-idm162957840" alt="A photo of a spider’s web with droplets of water attached to it is shown. Two images are shown the right of the photo and arrows lead from the photo to the images. The upper image shows twenty eight blue spheres stacked one atop the other in the bottom of a circular background. Five arrows are drawn pointing to the sides and downward from the sphere in the top middle of the drawing. The lower image shows another circular background of the same size as the first, but this time the blue spheres fill the image and are packed closely together. A sphere in the middle has six arrows pointing in all directions away from it.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Droplet.jpg"/>
+</media>
+<caption>Aðdráttarkraftar valda kúlulaga vatnsdropa sem lágmarkar yfirborðsflatarmál; samloðunarkraftar halda kúlunni saman; viðloðunarkraftar halda dropanum föstum við vefinn. (heimild myndar: breytt útgáfa af verki eftir „OliBac“/Flickr)</caption>
+</figure>
+<para id="fs-idm78773504"><term id="term-00003">Yfirborðsspenna (e. surface tension)</term> er skilgreind sem orkan sem þarf til að auka yfirborðsflatarmál vökva, eða krafturinn sem þarf til að lengja yfirborð vökva um ákveðna vegalengd. Þessi eiginleiki stafar af samloðunarkröftum milli sameinda á yfirborði vökva og veldur því að yfirborð vökva hegðar sér eins og strekkt gúmmíhimna. Yfirborðsspenna nokkurra vökva er sýnd í <link target-id="fs-idm139826368"/>. Af algengum vökvum sýnir vatn sérstaklega mikla yfirborðsspennu vegna sterkra vetnistengja milli sameinda þess. Vegna þessarar miklu yfirborðsspennu myndar yfirborð vatns tiltölulega „seiga himnu“ sem þolir töluverðan kraft án þess að rofna. Stálnál sem er varlega lögð á vatn mun fljóta. Sum skordýr, eins og það sem sýnt er á <link target-id="CNX_Chem_10_02_Strider"/>, hreyfast á yfirborði vatnsins þótt þau séu eðlisþyngri en vatn, því yfirborðsspennan heldur þeim uppi.</para>
+<table id="fs-idm139826368" class="top-titled" summary="This table has three columns and six rows. The first row is a header row, and it labels each column: “Substance,” “Formula,” and “Surface tension ( m N / m ).” Under the “Substance” column are the following: water, mercury, ethanol, octane, ethylene glycol. Under the “Formula” column are the following: H subscript 2 O; H g; C subscript 2 H subscript 5 O H; C subscript 8 H subscript 18; C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Surface tension ( m N / m )” column are the following: 71.99, 458.48, 21.97, 21.14, 47.99.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c3" align="center">Yfirborðsspenna algengra efna við 25 °C</entry>
+</row>
+<row valign="middle">
+<entry align="center">Efni</entry>
+<entry align="center">Formúla</entry>
+<entry align="center">Yfirborðsspenna (mN/m)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="center">vatn</entry>
+<entry align="center">H<sub>2</sub>O</entry>
+<entry align="center">71,99</entry>
+</row>
+<row valign="middle">
+<entry align="center">kvikasilfur</entry>
+<entry align="center">Hg</entry>
+<entry align="center">458,48</entry>
+</row>
+<row valign="middle">
+<entry align="center">etanól</entry>
+<entry align="center">C<sub>2</sub>H<sub>5</sub>OH</entry>
+<entry align="center">21,97</entry>
+</row>
+<row valign="middle">
+<entry align="center">oktan</entry>
+<entry align="center">C<sub>8</sub>H<sub>18</sub></entry>
+<entry align="center">21,14</entry>
+</row>
+<row valign="middle">
+<entry align="center">etýlen glýkól</entry>
+<entry align="center">CH<sub>2</sub>(OH)CH<sub>2</sub>(OH)</entry>
+<entry align="center">47,99</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<figure id="CNX_Chem_10_02_Strider" class="scaled-down">
+<media id="fs-idm60357712" alt="A photo and a diagram as shown and a right-facing arrow leads from the photo to the image. The photo shows an insect standing on the surface of a sample of water. The image shows a square background that is two thirds covered in blue spheres that are closely packet together. A brown line starts at the upper left corner of the background and rests on top of the first row of spheres. The sphere directly under this low point of the line has four arrows drawn on it that face to both sides and downward. A sphere in the bottom center of the image has six arrows drawn on it that all face outward in different directions.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Strider.jpg"/>
+</media>
+<caption>Yfirborðsspenna (hægra megin) kemur í veg fyrir að þetta skordýr, „skautaskrítla“, sökkvi í vatnið.</caption>
+</figure>
+<para id="eip-424">Yfirborðsspenna verður fyrir áhrifum af ýmsum breytum, þar á meðal þegar öðrum efnum er bætt á yfirborðið. Seint á 19. öld hóf Agnes Pockels, sem í upphafi var meinað að stunda vísindastörf en lærði á eigin spýtur, að rannsaka áhrif og eiginleika sápu- og fitufilma í vatni. Með heimatilbúnum tækjum þróaði hún tæki sem kallast trog til að mæla yfirborðsmengun og áhrif hennar. Með stuðningi hins virta vísindamanns Lord Rayleigh sýndi grein hennar frá 1891 að yfirborðsmengun dregur verulega úr yfirborðsspennu og einnig að breyting á eiginleikum yfirborðsins (með því að þjappa því saman eða þenja það út) hefur einnig áhrif á yfirborðsspennu. Áratugum síðar byggðu Irving Langmuir og Katharine Blodgett á vinnu Pockels í sínu eigin trogi og náðu mikilvægum framförum í yfirborðsefnafræði. Langmuir var frumkvöðull í aðferðum til að framleiða filmeindir í einu sameindalagi; Blodgett beitti þessum aðferðum við þróun á glampalausu gleri (sem er mikilvægt fyrir kvikmyndagerð og önnur not) og rannsakaði einnig aðferðir sem tengjast hreinsun yfirborða, sem eru mikilvægar við framleiðslu hálfleiðara.</para>
+<para id="fs-idm245342800">Aðdráttarkraftar milli tveggja <emphasis effect="italics">ólíkra</emphasis> sameinda kallast <term id="term-00004">viðloðunarkraftar (e. adhesive forces)</term>. Íhugaðu hvað gerist þegar vatn kemst í snertingu við yfirborð. Ef viðloðunarkraftar milli vatnssameinda og sameinda yfirborðsins eru veikir í samanburði við samloðunarkrafta milli vatnssameindanna, þá „bleytir“ vatnið ekki yfirborðið. Til dæmis bleytir vatn ekki vaxborin yfirborð eða mörg plastefni eins og pólýetýlen. Vatn myndar dropa á þessum yfirborðum vegna þess að samloðunarkraftarnir innan dropanna eru meiri en viðloðunarkraftarnir milli vatnsins og plastsins. Vatn dreifist út á gleri vegna þess að viðloðunarkrafturinn milli vatns og glers er meiri en samloðunarkraftarnir innan vatnsins. Þegar vatn er lokað inni í glerröri hefur yfirborð þess (meniscus) íhvolfa lögun vegna þess að vatnið bleytir glerið og skríður upp með hlið rörsins. Á hinn bóginn eru samloðunarkraftar milli kvikasilfursatóma mun meiri en viðloðunarkraftar milli kvikasilfurs og glers. Kvikasilfur bleytir því ekki gler og myndar kúpt yfirborð þegar það er lokað inni í röri vegna þess að samloðunarkraftarnir innan kvikasilfursins hafa tilhneigingu til að draga það saman í dropa (<link target-id="CNX_Chem_10_02_Meniscus"/>).</para>
+<figure id="CNX_Chem_10_02_Meniscus" class="scaled-down">
+<media id="fs-idm172871296" alt="This figure shows two test tubes. The test tube on the left contains mercury with a meniscus that rounds up. The test tube on the right contains water with a meniscus that rounds down.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Meniscus.jpg"/>
+</media>
+<caption>Munur á hlutfallslegum styrk samloðunar- og viðloðunarkrafta veldur mismunandi lögun yfirborðs fyrir kvikasilfur (vinstri) og vatn (hægri) í glerrörum. (heimild: Mark Ott)</caption>
+</figure>
+<para id="fs-idp26089824">Ef þú setur annan enda pappírshandklæðis í vín sem hellst hefur niður, eins og sýnt er á <link target-id="CNX_Chem_10_02_Wicking"/>, dregst vökvinn upp í pappírshandklæðið. Svipað ferli á sér stað í handklæði úr taui þegar þú notar það til að þerra þig eftir sturtu. Þetta eru dæmi um <term id="term-00005">hárpípukraft (e. capillary action)</term> — þegar vökvi flæðir innan gljúps efnis vegna aðdráttar vökvasameindanna að yfirborði efnisins og að öðrum vökvasameindum. Viðloðunarkraftarnir milli vökvans og gljúpa efnisins, ásamt samloðunarkröftunum innan vökvans, geta verið nógu sterkir til að færa vökvann upp á við gegn þyngdaraflinu.</para>
+<figure id="CNX_Chem_10_02_Wicking">
+<media id="fs-idp30571392" alt="A photo and a diagram are shown. In the photo, a paper towel is dipped into a bowl full of a red liquid sitting on a countertop. The red liquid is traveling up the lower part of the paper towel, and this section of the photo has a square drawn around it. A right-facing arrow leads from this square to the image. The image is square and has a background of two types of molecules, mixed together. The first type of molecule is composed of two bonded black spheres, one of which is single bonded to three white spheres and one of which is single bonded to two white spheres and a red sphere that is itself bonded to a white sphere. The other type of molecule is composed of six black spheres bonded together in a row and bonded to other red and white spheres. Six upward-facing arrows are drawn on top of this background. They have positive signs on their lower ends and negative signs on their heads. Four upward-facing arrows are drawn with their signs reversed.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Wicking.jpg"/>
+</media>
+<caption>Vín dregst upp í pappírshandklæði (vinstri) vegna sterkra aðdráttarkrafta vatns- (og etanól-) sameinda að −OH hópum á sellulósaþráðum handklæðisins og sterkra aðdráttarkrafta vatnssameinda að öðrum vatns- (og etanól-) sameindum (hægri). (heimild ljósmyndar: breyting á verki eftir Mark Blaser)</caption>
+</figure>
+<para id="fs-idm57496496">Handklæði drekka í sig vökva eins og vatn vegna þess að þræðir handklæðis eru gerðir úr sameindum sem dragast að vatnssameindum. Flest handklæði úr taui eru úr bómull og pappírshandklæði eru yfirleitt gerð úr pappírsmassa. Hvort tveggja samanstendur af löngum sellulósasameindum sem innihalda marga −OH hópa. Vatnssameindir dragast að þessum −OH hópum og mynda vetnistengi við þá, sem dregur H<sub>2</sub>O sameindirnar upp eftir sellulósasameindunum. Vatnssameindirnar dragast einnig hver að annarri, þannig að mikið magn af vatni dregst upp í sellulósaþræðina.</para>
+<para id="fs-idm84525088">Hárpípukraftur getur einnig komið fram þegar annar endi rörs með litlu þvermáli er dýft í vökva, eins og sýnt er á <link target-id="CNX_Chem_10_02_CapRise"/>. Ef vökvasameindirnar dragast sterklega að rörsameindunum skríður vökvinn upp innan í rörinu þar til þyngd vökvans og viðloðunarkraftarnir ná jafnvægi. Því minna sem þvermál rörsins er, því hærra klifrar vökvinn. Það er að hluta til vegna hárpípukrafts í plöntufrumum sem kallast viðaræðar (xylem) sem vatn og uppleyst næringarefni eru flutt frá jarðvegi upp í gegnum rætur og inn í plöntu. Hárpípukraftur er grundvöllur þunnlagaskiljunar, rannsóknarstofutækni sem almennt er notuð til að aðskilja lítið magn af blöndum. Þú treystir á stöðugt framboð af tárum til að halda augunum rökum og á hárpípukraft til að dæla táravökva burt.</para>
+<figure id="CNX_Chem_10_02_CapRise">
+<media id="fs-idm60323520" alt="An image of two beakers and a tube is shown. The first beaker, drawn on the left and labeled “Water,” is drawn half-full of a blue liquid. Two open-ended capillary tubes are placed vertically in the beaker and inserted into the liquid. The liquid is shown higher in the tubes than in the beaker and is labeled “Capillary attraction.” The second beaker, drawn in the middle and labeled “Mercury,” is drawn half-full of a gray liquid. Two open-ended capillary tubes are placed vertically in the beaker and inserted into the liquid. The liquid is shown lower in the tubes than in the beaker and is labeled “Capillary repulsion.” Lines point to the vertical tubes and label them “Capillary tubes.” A separate drawing of one of the vertical tubes from the first beaker is shown on the right. A right-facing arrow leads from the liquid in the tube to a square call-out box that shows a close-up view of the liquid’s surface. The distance across the tube is labeled “2 r” in this image.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_CapRise.jpg"/>
+</media>
+<caption>Háð hlutfallslegum styrk viðloðunar- og samloðunarkrafta getur vökvi risið (eins og vatn) eða fallið (eins og kvikasilfur) í glerhárpípu. Hversu mikið vökvinn rís (eða fellur) er í beinu hlutfalli við yfirborðsspennu vökvans og í öfugu hlutfalli við eðlismassa vökvans og radíus rörsins.</caption>
+</figure>
+<para id="fs-idm45302000">Hæðin sem vökvi mun rísa í hárpípu ræðst af nokkrum þáttum eins og sýnt er í eftirfarandi jöfnu:</para>
+<equation id="fs-idm228846576" class="unnumbered"><m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>cos</m:mtext><m:mspace width="0.2em"/><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>r</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm202037120">Í þessari jöfnu er <emphasis effect="italics">h</emphasis> hæð vökvans inni í hárpípunni miðað við yfirborð vökvans utan pípunnar, <emphasis effect="italics">T</emphasis> er yfirborðsspenna vökvans, <emphasis effect="italics">θ</emphasis> er snertihorn milli vökvans og pípunnar, <emphasis effect="italics">r</emphasis> er radíus pípunnar, <emphasis effect="italics">ρ</emphasis> er eðlismassi vökvans og <emphasis effect="italics">g</emphasis> er þyngdarhröðun, 9,8 m/s<sup>2</sup>. Þegar pípan er úr efni sem vökvasameindirnar dragast sterkt að munu þær dreifast alveg út á yfirborðið, sem samsvarar snertihorni upp á 0°. Þetta er staðan þegar vatn rís í glerpípu.</para>
+<example id="fs-idp7578512">
+<para id="fs-idm96381152"><title>Hárpípukraftur</title>Við 25 °C, hversu hátt mun vatn rísa í glerhárpípu með 0,25 mm innra þvermál?</para>
+<para id="fs-idm132283168">Fyrir vatn er <emphasis effect="italics">T</emphasis> = 71,99 mN/m og <emphasis effect="italics">ρ</emphasis> = 1,0 g/cm<sup>3</sup>.</para>
+<para id="fs-idm215629536"><title>Lausn</title>Vökvinn mun rísa í hæðina <emphasis effect="italics">h</emphasis> sem gefin er með: <m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>cos</m:mtext><m:mspace width="0.2em"/><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>r</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idm131978784">Njúton er skilgreint sem kg m/s<sup>2</sup>, og því jafngildir uppgefin yfirborðsspenna 0,07199 kg/s<sup>2</sup>. Uppgefnum eðlismassa verður að breyta í einingar sem styttast út á viðeigandi hátt: <emphasis effect="italics">ρ</emphasis> = 1000 kg/m<sup>3</sup>. Þvermál pípunnar í metrum er 0,00025 m, þannig að radíusinn er 0,000125 m. Fyrir glerpípu sem dýft er í vatn er snertihornið <emphasis effect="italics">θ</emphasis> = 0°, þannig að cos <emphasis effect="italics">θ</emphasis> = 1. Að lokum er þyngdarhröðun á jörðinni <emphasis effect="italics">g</emphasis> = 9,8 m/s<sup>2</sup>. Með því að setja þessi gildi inn í jöfnuna og stytta út einingar fáum við:</para>
+<equation id="fs-idm60135360" class="unnumbered"><m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.07199</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>kg/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.000125</m:mn><m:mspace width="0.2em"/><m:mtext>m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>kg/m</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>9.8</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.12</m:mn><m:mspace width="0.2em"/><m:mtext>m</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>12 cm</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp19907056"><title>Kannaðu þekkingu þína</title>Vatn rís í glerhárpípu upp í 8,4 cm hæð. Hvert er þvermál hárpípunnar?</para>
+<note id="fs-idm209726944">
+<title>Answer:</title>
+<para id="fs-idm166392576">þvermál = 0,36 mm</para>
+</note>
+</example>
+<note id="fs-idm192709088" class="chemistry everyday-life">
+<title>Læknisfræðileg notkun hárpípukrafts</title>
+<para id="fs-idm184385920">Margar læknisrannsóknir krefjast þess að lítið magn af blóði sé tekið, til dæmis til að ákvarða magn glúkósa hjá sykursjúkum eða blóðkornahlutfall (hematókrít) hjá íþróttamanni. Þessi aðgerð er auðveld vegna hárpípukrafts, sem er hæfni vökva til að flæða upp eftir mjórri pípu gegn þyngdaraflinu, eins og sýnt er á <link target-id="CNX_Chem_10_02_BloodDraw"/>. Þegar stungið er á fingur myndast blóðdropi sem heldur sér saman vegna yfirborðsspennu – ójafnvægis millimólekúlkrafta á yfirborði dropans. Þegar opinn endi mjórrar glerpípu snertir svo blóðdropann draga viðloðunarkraftar milli sameinda í blóðinu og þeirra á gleryfirborðinu blóðið upp í pípuna. Hversu langt blóðið fer upp í pípuna fer eftir þvermáli pípunnar (og tegund vökvans). Lítil pípa hefur tiltölulega stórt yfirborðsflatarmál fyrir gefið rúmmál blóðs, sem leiðir til stærri (hlutfallslegra) aðdráttarkrafta, sem gerir blóðinu kleift að dragast lengra upp í pípuna. Vökvinn sjálfur heldur sér saman með eigin samloðunarkröftum. Þegar þyngd vökvans í pípunni myndar niðurkraft sem er jafn uppkraftinum sem tengist hárpípukraftinum hættir vökvinn að rísa.</para>
+<figure id="CNX_Chem_10_02_BloodDraw" class="scaled-down">
+<media id="fs-idm141860432" alt="A photograph shows a person’s hand being held by a person wearing medical gloves. A thin glass tube is pressed against the persons finger and blood is moving up the tube.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_BloodDraw.jpg"/>
+</media>
+<caption>Blóði er safnað fyrir læknisfræðilega greiningu með hárpípukrafti, sem dregur blóð inn í glerpípu með litlu þvermáli. (heimild: breyting á verki eftir Centers for Disease Control and Prevention)</caption>
+</figure>
+</note>
+<section id="fs-idm72910144" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm161069280">Millimólekúlkraftar milli sameinda í vökvafasa eru mismunandi eftir efnafræðilegri samsetningu þeirra og leiða til samsvarandi breytileika í ýmsum eðliseiginleikum. Samloðunarkraftar milli eins sameinda eru ábyrgir fyrir seigju vökva (viðnámi gegn flæði) og yfirborðsspennu (teygjanleika vökvayfirborðs). Viðloðunarkraftar milli sameinda vökva og annarra sameinda sem mynda yfirborð í snertingu við vökvann eru ábyrgir fyrir fyrirbærum eins og yfirborðsbleytingu og hárpípukrafti.</para>
+</section>
+<section id="fs-idm31673664" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry><m:math><m:mrow><m:mi>h</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>cos</m:mtext><m:mspace width="0.2em"/><m:mi>θ</m:mi></m:mrow><m:mrow><m:mi>r</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:mfrac></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm81325184" class="exercises">
+<title>Efnafræði – Verkefni í lok kafla</title>
+<exercise id="fs-idm178529488">
+<problem id="fs-idp20517968">
+<para id="fs-idm197064800">Tilraunaglösin sem sýnd eru hér innihalda jafn mikið af tilgreindum vélarolíum. Eins málmkúlum var sleppt á sama tíma ofan í hvert glas og stuttu síðar höfðu kúlurnar fallið niður í þá hæð sem sýnd er á myndinni.</para>
+<para id="fs-idm141902368">Raðaðu vélarolíunum eftir vaxandi seigju og útskýrðu rökstuðning þinn:</para>
+<media id="fs-idp21803824" class="scaled-down" alt="An image of four graduated cylinders sitting on a table labeled “Oil viscosity ( S A E )” is shown. The left-hand cylinder, labeled “20,” is mostly filled with light tan liquid and a metal ball is drawn in the lower fifth of the cylinder, but not on the bottom. The second cylinder, labeled “30,” is mostly filled with light brown liquid and a metal ball is drawn about three-fourths of the way down cylinder. The third cylinder, labeled “40,” is mostly filled with medium brown liquid and a metal ball is drawn halfway down the cylinder. The right-hand cylinder, labeled “50,” is mostly filled with brown liquid and a metal ball is drawn near the top of the liquid in the cylinder.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Testtubeoi_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idm82765632">
+<problem id="fs-idp7685184">
+<para id="fs-idm164104512">Þrátt fyrir að stál sé eðlisþyngra en vatn er hægt að láta stálnál eða bréfaklemmu fljóta ef hún er lögð varlega eftir endilöngu á yfirborð kyrrs vatns. Útskýrðu á sameindastigi hvernig þetta er mögulegt.<newline/> <media id="fs-idm208311120" alt="A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water."><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Needlefloa_img.jpg"/></media> (heimild: Cory Zanker)</para></problem>
+<solution id="fs-idm128797504">
+<para id="fs-idm152759136">Vatnssameindirnar hafa sterka millimólekúlkrafta vetnistengja. Vatnssameindirnar dragast því sterkt hver að annarri og sýna tiltölulega mikla yfirborðsspennu og mynda eins konar „himnu“ á yfirborði sínu. Þessi himna getur borið uppi pöddur eða bréfaklemmu ef þær eru settar varlega á vatnið.</para>
+</solution>
+</exercise>
+<figure id="CNX_Chem_10_02_Needlefloa" class="scaled-down">
+<media id="fs-idm208311120" alt="A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Needlefloa_img.jpg"/>
+</media>
+<caption>(heimild: Cory Zanker)</caption>
+</figure>
+<exercise id="fs-idm187023264">
+<problem id="fs-idp19910816">
+<para id="fs-idm45257152">Yfirborðsspennu- og seigjugildi fyrir díetýleter, asetón, etanól og etýlen glýkól eru sýnd hér.<newline/> <media id="fs-idm61393264" alt="This table has four columns and five rows. The first row is a header row, and it labels each column: “Compound,” “Molecule,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a dot s ).” Under the “compound” column are the following: diethyl ether C subscript 2 H subscript 5 O C subscript 2 H subscript 5; acetone C subscript 2 H subscript 5 O C subscript 2 H subscript 5; ethanol C subscript 2 H subscript 5 O H; ethylene glycol C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Molecule” column are ball-and-stick representations of each compound. The first shows two grey spheres bonded together. The first grey sphere is also bonded to three white spheres. The second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to another grey sphere. The grey sphere is bonded to two white spheres and another grey sphere. The last grey sphere is bonded to three white spheres. The second shows three grey spheres bonded tighter. The two grey spheres on the end are each bonded to three white spheres. The grey sphere in the middle is bonded to one red sphere. The third shows two grey spheres bonded together. The first grey sphere is bonded to three white spheres and the second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to a white sphere. The fourth shows two grey spheres bonded together. Each grey sphere is bonded to two white spheres and a red sphere. Each red sphere is also bonded to one white sphere. Under the “Surface Tension ( m N / m )” column are the following: 17, 23, 22 and 48. Under the “Viscosity ( m P a dot s )” column are the following: 0.22, 0.31, 1.07, and 16.1."><image mime-type="image/jpeg" src="../../media/CNX_Chem_10_02_Question4_img.jpg"/></media></para>
+<para id="fs-idm59094592">(a) Útskýrðu muninn á seigju þeirra með tilliti til stærðar og lögunar sameinda þeirra og millikrafta þeirra.</para>
+<para id="fs-idm133108016">(b) Útskýrðu muninn á yfirborðsspennu þeirra með tilliti til stærðar og lögunar sameinda þeirra og millikrafta þeirra:</para>
+</problem>
+</exercise>
+<exercise id="fs-idm183311984">
+<problem id="fs-idm175606544">
+<para id="fs-idp31046720">Þú hefur kannski heyrt einhvern nota orðatiltækið „hægara en síróp að vetri til“ til að lýsa ferli sem gengur hægt. Útskýrðu hvers vegna þetta er viðeigandi orðatiltæki með því að nota hugtök um stærð og lögun sameinda, milliverkanir sameinda og áhrif breytts hitastigs.</para>
+</problem>
+<solution id="fs-idm78594320">
+<para id="fs-idm80358384">Hitastig hefur áhrif á millikrafta: Því hærra sem hitastigið er, því meiri er hreyfiorka sameindanna og því meira sem millikraftar þeirra eru yfirstignir, og því er vökvinn fljótandi (minna seigur). Því lægra sem hitastigið er, því minna eru millikraftarnir yfirstignir, og því er vökvinn seigari.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm91274448">
+<problem id="fs-idm91274192">
+<para id="fs-idm84555824">Oft er mælt með því að láta bílvélar ganga í lausagangi til að hitna áður en ekið er af stað, sérstaklega á köldum vetrardögum. Þótt ávinningurinn af langvarandi lausagangi sé vafasamur, er það vissulega rétt að heit vél er sparneytnari en köld. Útskýrðu ástæðuna fyrir þessu.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm92213792">
+<problem id="fs-idm92213536">
+<para id="fs-idm57322944">Yfirborðsspenna og seigja vatns við nokkur mismunandi hitastig eru gefin í þessari töflu.<newline/> [[TABLE:fs-idm84550336]]</para>
+<para id="fs-idm133407872">(a) Þegar hitastig hækkar, hvað gerist með yfirborðsspennu vatns? Útskýrðu hvers vegna þetta gerist, með tilliti til milliverkana sameinda og áhrifa breytts hitastigs.</para>
+<para id="fs-idm47328896">(b) Þegar hitastig hækkar, hvað gerist með seigju vatns? Útskýrðu hvers vegna þetta gerist, með tilliti til milliverkana sameinda og áhrifa breytts hitastigs.</para>
+</problem>
+<solution id="fs-idm121605168">
+<para id="fs-idm52338928">(a) Þegar vatnið nær hærra hitastigi er aukin hreyfiorka sameinda þess áhrifaríkari við að yfirstíga vetnistengi og því minnkar yfirborðsspenna þess. Yfirborðsspenna og millikraftar eru í beinu sambandi. (b) Sama þróun sést í seigju og í yfirborðsspennu, og af sömu ástæðu.</para>
+</solution>
+</exercise>
+<table id="fs-idm84550336" class="unnumbered" summary="This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.">
+<label/>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="middle">
+<entry align="center">Vatn</entry>
+<entry align="center">Yfirborðsspenna (mN/m)</entry>
+<entry align="center">Seigja (mPa s)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="center">0 °C</entry>
+<entry align="center">75,6</entry>
+<entry align="center">1,79</entry>
+</row>
+<row valign="middle">
+<entry align="center">20 °C</entry>
+<entry align="center">72,8</entry>
+<entry align="center">1,00</entry>
+</row>
+<row valign="middle">
+<entry align="center">60 °C</entry>
+<entry align="center">66,2</entry>
+<entry align="center">0,47</entry>
+</row>
+<row valign="middle">
+<entry align="center">100 °C</entry>
+<entry align="center">58,9</entry>
+<entry align="center">0,28</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<exercise id="fs-idp26872272">
+<problem id="fs-idp26872528">
+<para id="fs-idm237890176">Við 25 °C, hversu hátt mun vatn stíga í hárpípulaga glerröri með innra þvermál 0,63 mm? Sjá <link target-id="fs-idp7578512"/> fyrir nauðsynlegar upplýsingar.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm169275296">
+<problem id="fs-idp576080">
+<para id="fs-idm189246496">Vatn stígur í hárpípulaga glerröri upp í 17 cm hæð. Hvert er þvermál hárpípunnar?</para>
+</problem>
+<solution id="fs-idm203216544">
+<para id="fs-idm115532848">1,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> m</para></solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm87859280">
+<term>viðloðunarkraftur (e. adhesive force)</term>
+<meaning id="fs-idm87859280-meaning">aðdráttarkraftur milli sameinda með mismunandi efnafræðilega eiginleika</meaning>
+</definition>
+<definition id="fs-idm184465568">
+<term>hárpípukraftur (e. capillary action)</term>
+<meaning id="fs-idm184465568-meaning">flæði vökva innan gljúps efnis vegna aðdráttar vökvasameinda að yfirborði efnisins og að öðrum vökvasameindum</meaning>
+</definition>
+<definition id="fs-idm114308784">
+<term>samloðunarkraftur (e. cohesive force)</term>
+<meaning id="fs-idm114308784-meaning">aðdráttarkraftur milli eins sameinda</meaning>
+</definition>
+<definition id="fs-idm79392464">
+<term>yfirborðsspenna (e. surface tension)</term>
+<meaning id="fs-idm79392464-meaning">orka sem þarf til að auka flatarmál, eða lengd, yfirborðs vökva um tiltekna stærð</meaning>
+</definition>
+<definition id="fs-idm129199712">
+<term>seigja (e. viscosity)</term>
+<meaning id="fs-idm129199712-meaning">mælikvarði á viðnám vökva gegn flæði</meaning>
+</definition>
+</glossary>
+</document>

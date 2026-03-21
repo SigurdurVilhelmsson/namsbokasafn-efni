@@ -293,16 +293,16 @@ Vapor Pressure (Pa)
 101324.7
 
 <!-- SEG:m68863:entry:auto-99 -->
-Water K~w~ and pK~w~ at Different Temperatures (°C)
+Water K[[sub:w]] and pK[[sub:w]] at Different Temperatures (°C)
 
 <!-- SEG:m68863:entry:auto-100 -->
 Temperature
 
 <!-- SEG:m68863:entry:auto-101 -->
-K~w~ 10^–14^
+K[[sub:w]] 10[[sup:–14]]
 
 <!-- SEG:m68863:entry:auto-102 -->
-pK~w~ [footnote: pK~w~ = –log~10~(K~w~)]
+pK[[sub:w]] {{fn}}pK[[sub:w]] = –log[[sub:10]](K[[sub:w]]){{/fn}}
 
 <!-- SEG:m68863:entry:auto-103 -->
 0
@@ -443,13 +443,13 @@ pK~w~ [footnote: pK~w~ = –log~10~(K~w~)]
 Specific Heat Capacity for Water
 
 <!-- SEG:m68863:entry:auto-149 -->
-C°(H~2~O(*l*)) = 4.184 J∙g^-1^∙°C^-1^
+C°(H[[sub:2]]O({{i}}l{{/i}})) = 4.184 J∙g[[sup:-1]]∙°C[[sup:-1]]
 
 <!-- SEG:m68863:entry:auto-150 -->
-C°(H~2~O(*s*)) = 2.093 J∙g^−1^∙°C^−1^
+C°(H[[sub:2]]O({{i}}s{{/i}})) = 2.093 J∙g[[sup:−1]]∙°C[[sup:−1]]
 
 <!-- SEG:m68863:entry:auto-151 -->
-C°(H~2~O(*g*)) = 1.864 J∙g^−1^∙°C^−1^
+C°(H[[sub:2]]O({{i}}g{{/i}})) = 1.864 J∙g[[sup:−1]]∙°C[[sup:−1]]
 
 <!-- SEG:m68863:entry:auto-152 -->
 Standard Water Melting and Boiling Temperatures and Enthalpies of the Transitions
@@ -458,7 +458,7 @@ Standard Water Melting and Boiling Temperatures and Enthalpies of the Transition
 Temperature (K)
 
 <!-- SEG:m68863:entry:auto-154 -->
-Δ*H* (kJ/mol)
+Δ{{i}}H{{/i}} (kJ/mol)
 
 <!-- SEG:m68863:entry:auto-155 -->
 melting
@@ -482,10 +482,10 @@ boiling
 Water Cryoscopic (Freezing Point Depression) and Ebullioscopic (Boiling Point Elevation) Constants
 
 <!-- SEG:m68863:entry:auto-162 -->
-K~f~ = 1.86°C∙kg∙mol^−1^ (cryoscopic constant)
+K[[sub:f]] = 1.86°C∙kg∙mol[[sup:−1]] (cryoscopic constant)
 
 <!-- SEG:m68863:entry:auto-163 -->
-K~b~ = 0.51°C∙kg∙mol^−1^ (ebullioscopic constant)
+K[[sub:b]] = 0.51°C∙kg∙mol[[sup:−1]] (ebullioscopic constant)
 
 <!-- SEG:m68863:caption:CNX_Chem_00_EE_LiqWatAbso-caption -->
-The plot shows the extent of light absorption versus wavelength for water. Absorption is reported in reciprocal meters and corresponds to the inverse of the distance light may travel through water before its intensity is diminished by 1/*e* (~37%).
+The plot shows the extent of light absorption versus wavelength for water. Absorption is reported in reciprocal meters and corresponds to the inverse of the distance light may travel through water before its intensity is diminished by 1/{{i}}e{{/i}} (~37%).

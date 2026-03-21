@@ -1,10 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
-<title>Helmingunartími nokkurra geislavirkra
-samsætna</title>
+<title>Helmingunartími nokkurra geislavirkra samsæta</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68871</md:content-id>
-  <md:title>Helmingunartími nokkurra geislavirkra
-samsætna</md:title>
+  <md:title>Helmingunartími nokkurra geislavirkra samsæta</md:title>
   <md:abstract/>
   <md:uuid>f4401758-74d6-459b-9c6d-52055945a1d1</md:uuid>
 </metadata>
@@ -20,26 +18,21 @@ samsætna</md:title>
 <colspec colnum="6" colname="c6"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c6" align="center">Helmingunartími nokkurra geislavirkra
-samsætna</entry>
+<entry namest="c1" nameend="c6" align="center">Helmingunartími nokkurra geislavirkra samsæta</entry>
 </row>
 <row valign="middle">
 <entry align="left">Samsæta</entry>
-<entry align="left">Helmingunartími<footnote id="fs-idp94055520">y = ár, d =
-dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
-<entry align="left">Tegund ljómunar<footnote id="fs-idp208188688"><emphasis effect="italics">E.C.</emphasis> =
-rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnun</footnote></entry>
+<entry align="left">Helmingunartími <footnote id="fs-idp94055520">y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
+<entry align="left">Tegund útblásturs <footnote id="fs-idp208188688"><emphasis effect="italics">E.C.</emphasis> = rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng kjarnaklofnun</footnote></entry>
 <entry align="left">Samsæta</entry>
-<entry align="left">Helmingunartími<footnote id="fs-idp6707392">y = ár, d =
-dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
-<entry align="left">Tegund ljómunar<footnote id="fs-idp119558320"><emphasis effect="italics">E.C.</emphasis> =
-rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnun</footnote></entry>
+<entry align="left">Helmingunartími <footnote id="fs-idp6707392">y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
+<entry align="left">Tegund útblásturs <footnote id="fs-idp119558320"><emphasis effect="italics">E.C.</emphasis> = rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng kjarnaklofnun</footnote></entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext></m:math></entry>
-<entry align="left">5730 ár</entry>
+<entry align="left">5730 y</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>83</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Bi</m:mtext></m:math></entry>
 <entry align="left">5,01 d</entry>
@@ -63,7 +56,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>11</m:mn><m:mn>24</m:mn></m:msubsup><m:mtext>Na</m:mtext></m:math></entry>
-<entry align="left">15,00 klst.</entry>
+<entry align="left">15,00 h</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>84</m:mn></m:mrow><m:mn>212</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math></entry>
 <entry align="left">3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> s</entry>
@@ -79,7 +72,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>19</m:mn><m:mn>40</m:mn></m:msubsup><m:mtext>K</m:mtext></m:math></entry>
-<entry align="left">1,27 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> ár</entry>
+<entry align="left">1,27 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> y</entry>
 <entry align="left"><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>β</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>84</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math></entry>
 <entry align="left">3,05 m</entry>
@@ -95,7 +88,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>26</m:mn><m:mn>60</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math></entry>
-<entry align="left">2,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> ár</entry>
+<entry align="left">2,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> y</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>85</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>At</m:mtext></m:math></entry>
 <entry align="left">1,6 s</entry>
@@ -103,7 +96,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>27</m:mn><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext></m:math></entry>
-<entry align="left">5,27 ár</entry>
+<entry align="left">5,27 y</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>86</m:mn></m:mrow><m:mn>220</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:math></entry>
 <entry align="left">55,6 s</entry>
@@ -111,7 +104,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>37</m:mn><m:mn>87</m:mn></m:msubsup><m:mtext>Rb</m:mtext></m:math></entry>
-<entry align="left">4,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>10</sup> ár</entry>
+<entry align="left">4,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>10</sup> y</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:math></entry>
 <entry align="left">3,82 d</entry>
@@ -119,7 +112,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>38</m:mn><m:mn>90</m:mn></m:msubsup><m:mtext>Sr</m:mtext></m:math></entry>
-<entry align="left">29 ár</entry>
+<entry align="left">29 y</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>88</m:mn></m:mrow><m:mn>224</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math></entry>
 <entry align="left">3,66 d</entry>
@@ -127,7 +120,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>49</m:mn></m:mrow><m:mn>115</m:mn></m:msubsup><m:mtext>In</m:mtext></m:math></entry>
-<entry align="left">5,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>15</sup> ár</entry>
+<entry align="left">5,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>15</sup> y</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math></entry>
 <entry align="left">1600 ár</entry>
@@ -151,7 +144,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>81</m:mn></m:mrow><m:mn>208</m:mn></m:msubsup><m:mtext>Tl</m:mtext></m:math></entry>
-<entry align="left">3.07 m</entry>
+<entry align="left">3,07 mín.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>90</m:mn></m:mrow><m:mn>228</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math></entry>
 <entry align="left">1,913 ár</entry>
@@ -170,12 +163,12 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 <entry align="left">10,6 klst.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>90</m:mn></m:mrow><m:mn>233</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math></entry>
-<entry align="left">22 m</entry>
+<entry align="left">22 mín.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>82</m:mn></m:mrow><m:mn>214</m:mn></m:msubsup><m:mtext>Pb</m:mtext></m:math></entry>
-<entry align="left">26,8 m</entry>
+<entry align="left">26,8 mín.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>90</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math></entry>
 <entry align="left"><m:math><m:mrow><m:mtext>24.10 d</m:mtext></m:mrow></m:math></entry>
@@ -215,7 +208,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math></entry>
-<entry align="left">4.47 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> ár</entry>
+<entry align="left">4,47 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>100</m:mn><m:mn>254</m:mn></m:msubsup><m:mtext>Fm</m:mtext></m:math></entry>
 <entry align="left">3,24 klst.</entry>
@@ -231,7 +224,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext></m:math></entry>
-<entry align="left">2,3 d.</entry>
+<entry align="left">2,3 d</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>101</m:mn><m:mn>256</m:mn></m:msubsup><m:mtext>Md</m:mtext></m:math></entry>
 <entry align="left">76 mín.</entry>
@@ -239,7 +232,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math></entry>
-<entry align="left">2,407 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> ár</entry>
+<entry align="left">2,407 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> á</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>102</m:mn><m:mn>254</m:mn></m:msubsup><m:mtext>No</m:mtext></m:math></entry>
 <entry align="left">55 s</entry>
@@ -247,7 +240,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math></entry>
-<entry align="left">6,54 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> ár</entry>
+<entry align="left">6,54 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> á</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>103</m:mn><m:mn>257</m:mn></m:msubsup><m:mtext>Lr</m:mtext></m:math></entry>
 <entry align="left">0,65 s</entry>
@@ -255,7 +248,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math></entry>
-<entry align="left">14,4 ár</entry>
+<entry align="left">14,4 á</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>105</m:mn><m:mn>260</m:mn></m:msubsup><m:mtext>Ha</m:mtext></m:math></entry>
 <entry align="left">1,5 s</entry>
@@ -263,7 +256,7 @@ rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng klofnu
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>95</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Am</m:mtext></m:math></entry>
-<entry align="left">432,2 ár</entry>
+<entry align="left">432,2 á</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>106</m:mn><m:mn>263</m:mn></m:msubsup><m:mtext>Sg</m:mtext></m:math></entry>
 <entry align="left">0,8 s</entry>

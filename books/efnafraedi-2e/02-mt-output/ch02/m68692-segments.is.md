@@ -2,7 +2,7 @@
 Frumeindabygging og táknmál
 
 <!-- SEG:m68692:abstract:auto-2 -->
-Þegar þessum kafla lýkur muntu geta:
+Í lok þessa kafla muntu geta:
 
 <!-- SEG:m68692:abstract-item:abstract-item-1 -->
 Skrifað og túlkað tákn sem sýna sætistölu, massatölu og hleðslu frumeindar eða jónar
@@ -14,16 +14,16 @@ Skilgreint atómmassaeiningu og meðalatómmassa
 Reiknað út meðalatómmassa og hlutfallslegt magn samsæta
 
 <!-- SEG:m68692:para:fs-idp188136384 -->
-Þróun nútíma frumeindakenningar leiddi margt í ljós um innri byggingu frumeinda. Í ljós kom að frumeind inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa frumeindarinnar vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, á meðan rafeindir taka nær allt rúmmál frumeindarinnar. Þvermál frumeindar er í kringum 10^−10^ m, en þvermál kjarnans er um það bil 10^−15^ m — um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslegar stærðir þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri frumeindin á stærð við fótboltaleikvang ([#CNX_Chem_02_03_AtomSize]).
+Þróun nútímafrumeindakenningarinnar leiddi margt í ljós um innri byggingu frumeinda. Í ljós kom að frumeind inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa frumeindarinnar vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, á meðan rafeindir taka nær allt rúmmál frumeindarinnar. Þvermál frumeindar er í stærðargráðunni 10[[sup:−10]] m, en þvermál kjarnans er um það bil 10[[sup:−15]] m – um 100.000 sinnum minna. Til að setja hlutfallslegar stærðir þeirra í samhengi má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri frumeindin á stærð við fótboltaleikvang ([#CNX_Chem_02_03_AtomSize]).
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSize-caption -->
-Ef frumeind væri stækkuð upp í stærð fótboltaleikvangs væri kjarninn á stærð við eitt bláber. (heimild miðja: breyting á verki eftir „babyknight“/Wikimedia Commons; heimild hægri: breyting á verki eftir Paxson Woelber)
+Ef hægt væri að stækka frumeind upp í stærð fótboltaleikvangs væri kjarninn á stærð við eitt bláber. (heimild miðja: breyting á verki eftir „babyknight“/Wikimedia Commons; heimild hægri: breyting á verki eftir Paxson Woelber)
 
 <!-- SEG:m68692:para:fs-idm171776576 -->
-Frumeindir — og róteindirnar, nifteindirnar og rafeindirnar sem þær samanstanda af — eru afar litlar. Til dæmis vegur kolefnisfrumeind minna en 2 [[MATH:1]] 10^−23^ g og rafeind hefur hleðslu sem er minni en 2 [[MATH:2]] 10^−19^ C (kúlomb). Þegar eiginleikum örsmárra hluta eins og frumeinda er lýst notum við viðeigandi litlar mælieiningar, svo sem __sameinaða atómmassaeiningu (u)__ og __grunneiningu hleðslu (e)__. Sameinaða atómmassaeiningin er skilgreind sem nákvæmlega 1/12 af massa einnar frumeindar af kolefni-12 samsætu (nánar um samsætur síðar í þessum kafla) og jafngildir 1,6605 [[MATH:3]] 10^−24^ g. __Dalton (Da)__ er önnur massaeining sem jafngildir u. Margar heimildir, þar á meðal þessi texti, nota eldra hugtakið atómmassaeining (amu) þegar vísað er til u eða Da. Grunneining hleðslu (einnig kölluð einingahleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 [[MATH:4]] 10^−19^ C.
+Frumeindir – og róteindirnar, nifteindirnar og rafeindirnar sem þær samanstanda af – eru afar smáar. Til dæmis vegur kolefnisfrumeind minna en 2 [[MATH:1]] 10[[sup:−23]] g og rafeind hefur hleðslu sem er minni en 2 [[MATH:2]] 10[[sup:−19]] C (kúlomb). Þegar eiginleikum örsmárra hluta eins og frumeinda er lýst notum við viðeigandi litlar mælieiningar, svo sem {{term}}sameinaða atómmassaeiningu (u){{/term}} og {{term}}grunneiningu hleðslu (e){{/term}}. Sameinaða atómmassaeiningin er skilgreind sem nákvæmlega 1/12 af massa einnar frumeindar af kolefni-12 samsætu (nánar um samsætur síðar í þessum kafla) og jafngildir 1,6605 [[MATH:3]] 10[[sup:−24]] g. {{term}}Dalton (Da){{/term}} er önnur massaeining sem jafngildir u. Í mörgum heimildum, þar á meðal þessum texta, er eldra hugtakið atómmassaeining (amu) notað þegar vísað er til u eða Da. Grunneining hleðslu (einnig kölluð einingarhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 [[MATH:4]] 10[[sup:−19]] C.
 
 <!-- SEG:m68692:para:fs-idm166273840 -->
-Róteind hefur massa 1,0073 amu og hleðslu 1+. Nifteind er örlítið þyngri ögn með massa 1,0087 amu og enga hleðslu; eins og nafnið gefur til kynna er hún hlutlaus. Rafeindin hefur hleðslu 1− og er mun léttari ögn með massa um 0,00055 amu (það þyrfti um 1800 rafeindir til að jafna massa einnar róteindar). Eiginleikar þessara grundvallaragna eru teknir saman í [#fs-idp90857696]. (Glöggur nemandi gæti tekið eftir því að summa öreinda frumeindar jafngildir ekki raunverulegum massa frumeindarinnar: Heildarmassi sex róteinda, sex nifteinda og sex rafeinda er 12,0993 amu, sem er örlítið meira en 12,00 amu. Þessi „týndi“ massi er þekktur sem massagalli og þú munt læra um hann í kaflanum um kjarnakemíu.)
+Róteind hefur massa 1,0073 amu og hleðslu 1+. Nifteind er örlítið þyngri eind með massa 1,0087 amu og hleðslu núll; eins og nafnið gefur til kynna er hún hlutlaus. Rafeindin hefur hleðslu 1− og er mun léttari eind með massa um 0,00055 amu (það þyrfti um 1800 rafeindir til að jafna massa einnar róteindar). Eiginleikar þessara grunneinda eru teknir saman í [#fs-idp90857696]. (Glöggur nemandi gæti tekið eftir því að summa öreinda frumeindar jafngildir ekki raunverulegum massa frumeindarinnar: Heildarmassi sex róteinda, sex nifteinda og sex rafeinda er 12,0993 amu, sem er örlítið meira en 12,00 amu. Þessi „týndi“ massi er þekktur sem massagalli og þú munt læra um hann í kaflanum um kjarnaefnafræði.)
 
 <!-- SEG:m68692:entry:auto-10 -->
 Eiginleikar öreinda
@@ -38,7 +38,7 @@ Staðsetning
 Hleðsla (C)
 
 <!-- SEG:m68692:entry:auto-14 -->
-Einingahleðsla
+Einingarhleðsla
 
 <!-- SEG:m68692:entry:auto-15 -->
 Massi (amu)
@@ -50,10 +50,10 @@ Massi (g)
 rafeind
 
 <!-- SEG:m68692:entry:auto-18 -->
-fyrir utan kjarna
+utan kjarna
 
 <!-- SEG:m68692:entry:auto-19 -->
-−1,602 [[MATH:5]] 10^−19^
+−1,602 [[MATH:5]] 10[[sup:−19]]
 
 <!-- SEG:m68692:entry:auto-20 -->
 1−
@@ -62,7 +62,7 @@ fyrir utan kjarna
 0,00055
 
 <!-- SEG:m68692:entry:auto-22 -->
-0,00091 [[MATH:6]] 10^−24^
+0,00091 [[MATH:6]] 10[[sup:−24]]
 
 <!-- SEG:m68692:entry:auto-23 -->
 róteind
@@ -71,7 +71,7 @@ róteind
 í kjarna
 
 <!-- SEG:m68692:entry:auto-25 -->
-1,602 [[MATH:7]]10^−19^
+1,602 [[MATH:7]]10[[sup:−19]]
 
 <!-- SEG:m68692:entry:auto-26 -->
 1+
@@ -80,7 +80,7 @@ róteind
 1,00727
 
 <!-- SEG:m68692:entry:auto-28 -->
-1,67262 [[MATH:8]] 10^−24^
+1,67262 [[MATH:8]] 10[[sup:−24]]
 
 <!-- SEG:m68692:entry:auto-29 -->
 nifteind
@@ -98,34 +98,34 @@ nifteind
 1,00866
 
 <!-- SEG:m68692:entry:auto-34 -->
-1,67493 [[MATH:9]] 10^−24^
+1,67493 [[MATH:9]] 10[[sup:−24]]
 
 <!-- SEG:m68692:para:fs-idp27048016 -->
-Fjöldi róteinda í kjarna frumeindar er __sætistala__ hennar __(Z)__. Þetta er skilgreinandi einkenni frumefnis: gildi hennar ákvarðar auðkenni frumeindarinnar. Til dæmis er sérhver frumeind sem inniheldur sex róteindir frumefnið kolefni og hefur sætistöluna 6, óháð því hversu margar nifteindir eða rafeindir hún kann að hafa. Hlutlaus frumeind verður að innihalda jafnmargar jákvæðar og neikvæðar hleðslur, þannig að fjöldi róteinda jafngildir fjölda rafeinda. Þess vegna gefur sætistalan einnig til kynna fjölda rafeinda í frumeind. Heildarfjöldi róteinda og nifteinda í frumeind er kallaður __massatala__ hennar __(A)__. Fjöldi nifteinda er því mismunurinn á massatölu og sætistölu: A – Z = fjöldi nifteinda.
+Fjöldi róteinda í kjarna frumeindar er {{term}}sætistala (Z){{/term}} hennar. Þetta er einkennandi eiginleiki frumefnis: gildið ákvarðar auðkenni frumeindarinnar. Til dæmis er sérhver frumeind sem inniheldur sex róteindir frumefnið kolefni og hefur sætistöluna 6, óháð því hversu margar nifteindir eða rafeindir hún kann að hafa. Hlutlaus frumeind verður að innihalda jafnmargar jákvæðar og neikvæðar hleðslur, þannig að fjöldi róteinda er jafn fjölda rafeinda. Þess vegna gefur sætistalan einnig til kynna fjölda rafeinda í frumeind. Heildarfjöldi róteinda og nifteinda í frumeind er kallaður {{term}}massatala (A){{/term}} hennar. Fjöldi nifteinda er því mismunurinn á massatölu og sætistölu: A – Z = fjöldi nifteinda.
 
 <!-- SEG:m68692:para:fs-idm159569776 -->
-Atóm eru rafhlutlaus ef þau innihalda jafnmargar jákvætt hlaðnar róteindir og neikvætt hlaðnar rafeindir. Þegar fjöldi þessara öreinda er *ekki* jafn er atómið rafmagnað og kallast __jón__. Hleðsla atóms er skilgreind sem hér segir:
+Frumeindir eru rafhlutlausar ef þær innihalda jafnmargar jákvætt hlaðnar róteindir og neikvætt hlaðnar rafeindir. Þegar fjöldi þessara öreinda er {{i}}ekki{{/i}} jafn er frumeindin rafhlöðin og kallast {{term}}jón{{/term}}. Hleðsla frumeindar er skilgreind sem hér segir:
 
 <!-- SEG:m68692:para:fs-idp142952368 -->
-Atómhleðsla = fjöldi róteinda − fjöldi rafeinda
+Frumeindarhleðsla = fjöldi róteinda − fjöldi rafeinda
 
 <!-- SEG:m68692:para:fs-idp59351760 -->
-Eins og fjallað verður nánar um síðar í þessum kafla öðlast atóm (og sameindir) yfirleitt hleðslu með því að fá eða missa rafeindir. Atóm sem fær eina eða fleiri rafeindir fær neikvæða hleðslu og kallast __anjón__. Jákvætt hlaðin atóm sem kallast __katjónir__ myndast þegar atóm missir eina eða fleiri rafeindir. Til dæmis hefur hlutlaust natríumatóm (Z = 11) 11 rafeindir. Ef þetta atóm missir eina rafeind verður það að katjón með 1+ hleðslu (11 − 10 = 1+). Hlutlaust súrefnisatóm (Z = 8) hefur átta rafeindir og ef það fær tvær rafeindir verður það að anjón með 2− hleðslu (8 − 10 = 2−).
+Eins og fjallað verður nánar um síðar í þessum kafla öðlast frumeindir (og sameindir) yfirleitt hleðslu með því að fá eða missa rafeindir. Frumeind sem fær eina eða fleiri rafeindir mun sýna neikvæða hleðslu og kallast {{term}}anjón{{/term}}. Jákvætt hlaðnar frumeindir sem kallast {{term}}katjónir{{/term}} myndast þegar frumeind missir eina eða fleiri rafeindir. Til dæmis hefur hlutlaus natríumfrumeind (Z = 11) 11 rafeindir. Ef þessi frumeind missir eina rafeind verður hún að katjón með 1+ hleðslu (11 − 10 = 1+). Hlutlaus súrefnisfrumeind (Z = 8) hefur átta rafeindir og ef hún fær tvær rafeindir verður hún að anjón með 2− hleðslu (8 − 10 = 2−).
 
 <!-- SEG:m68692:example-title:fs-idm5511728-title -->
-Samsetning atóms
+Samsetning frumeindar
 
 <!-- SEG:m68692:para:fs-idm54131248 -->
 Joð er nauðsynlegt snefilefni í fæðunni; það er nauðsynlegt til að framleiða skjaldkirtilshormón. Ófullnægjandi joð í fæðunni getur leitt til þróunar á skjaldkirtilsstækkun ([#CNX_Chem_02_03_Iodine]).
 
 <!-- SEG:m68692:para:fs-idm90509824 -->
-Með því að bæta litlu magni af joði í matarsalt (joðbætt salt) hefur þessu heilbrigðisvandamáli í raun verið útrýmt í Bandaríkjunum, en allt að 40% jarðarbúa eru enn í hættu á joðskorti. Joðatómum er bætt við sem anjónum og hver þeirra hefur 1− hleðslu og massatöluna 127. Ákvarðaðu fjölda róteinda, nifteinda og rafeinda í einni af þessum joðanjónum.
+Álagning lítils magns af joði í matarsalt (joðbætt salt) hefur í raun útrýmt þessu heilbrigðisvandamáli í Bandaríkjunum, en allt að 40% jarðarbúa eru enn í hættu á joðskorti. Joðfrumeindunum er bætt við sem anjónum og hver þeirra hefur 1− hleðslu og massatöluna 127. Ákvarðaðu fjölda róteinda, nifteinda og rafeinda í einni af þessum joðanjónum.
 
 <!-- SEG:m68692:para-title:fs-idp104898720-title -->
 Lausn
 
 <!-- SEG:m68692:para:fs-idp104898720 -->
-Sætistala joðs (53) segir okkur að hlutlaust joðatóm inniheldur 53 róteindir í kjarna sínum og 53 rafeindir utan kjarnans. Þar sem summa fjölda róteinda og nifteinda er jöfn massatölunni, 127, er fjöldi nifteinda 74 (127 − 53 = 74). Þar sem joðinu er bætt við sem 1− anjón er fjöldi rafeinda 54 [53 – (1–) = 54].
+Sætistala joðs (53) segir okkur að hlutlaus joðfrumeind inniheldur 53 róteindir í kjarna sínum og 53 rafeindir utan kjarnans. Þar sem summa fjölda róteinda og nifteinda er jöfn massatölunni, 127, er fjöldi nifteinda 74 (127 − 53 = 74). Þar sem joðinu er bætt við sem 1− anjón er fjöldi rafeinda 54 [53 – (1–) = 54].
 
 <!-- SEG:m68692:para-title:fs-idp39901584-title -->
 Kannaðu þekkingu þína
@@ -143,19 +143,19 @@ Svar:
 78 róteindir; 117 nifteindir; hleðslan er 4+
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_Iodine-caption -->
-(a) Ófullnægjandi joð í fæðunni getur valdið stækkun á skjaldkirtli sem kallast skjaldkirtilsstækkun. (b) Með því að bæta litlu magni af joði í salt, sem kemur í veg fyrir myndun skjaldkirtilsstækkunar, hefur tekist að útrýma þessu vandamáli í Bandaríkjunum þar sem saltneysla er mikil. (heimild a: breyting á verki eftir „Almazi“/Wikimedia Commons; heimild b: breyting á verki eftir Mike Mozart)
+(a) Ófullnægjandi joð í fæðunni getur valdið stækkun á skjaldkirtlinum sem kallast skjaldkirtilsstækkun. (b) Álagning lítils magns af joði í salt, sem kemur í veg fyrir myndun skjaldkirtilsstækkunar, hefur hjálpað til við að útrýma þessu vandamáli í Bandaríkjunum þar sem saltneysla er mikil. (heimild a: breyting á verki eftir „Almazi“/Wikimedia Commons; heimild b: breyting á verki eftir Mike Mozart)
 
 <!-- SEG:m68692:title:fs-idm176092496-title -->
 Efnatákn
 
 <!-- SEG:m68692:para:fs-idm48306304 -->
-__Efnatákn__ er skammstöfun sem við notum til að tákna frumefni eða atóm frumefnis. Til dæmis er táknið fyrir kvikasilfur Hg ([#CNX_Chem_02_03_SiSymbol]). Við notum sama tákn til að tákna eitt kvikasilfursatóm (smásætt svið) eða til að merkja ílát með mörgum atómum af frumefninu kvikasilfri (stórsætt svið).
+{{term}}Efnatákn{{/term}} er skammstöfun sem við notum til að tákna frumefni eða frumeind frumefnis. Til dæmis er táknið fyrir kvikasilfur Hg ([#CNX_Chem_02_03_SiSymbol]). Við notum sama tákn til að tákna eina kvikasilfursfrumeind (smásætt svið) eða til að merkja ílát með mörgum frumeindum frumefnisins kvikasilfurs (stórsætt svið).
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_SiSymbol-caption -->
-Táknið Hg táknar frumefnið kvikasilfur óháð magni; það gæti táknað eitt kvikasilfursatóm eða mikið magn af kvikasilfri.
+Táknið Hg táknar frumefnið kvikasilfur óháð magni; það gæti táknað eina kvikasilfursfrumeind eða mikið magn af kvikasilfri.
 
 <!-- SEG:m68692:para:fs-idm91050016 -->
-Táknin fyrir nokkur algeng frumefni og atóm þeirra eru skráð í [#fs-idm36686800]. Sum tákn eru dregin af algengu heiti frumefnisins; önnur eru skammstafanir á heitinu á öðru tungumáli. Flest tákn hafa einn eða tvo stafi, en þriggja stafa tákn hafa verið notuð til að lýsa sumum frumefnum sem hafa sætistölu hærri en 112. Til að forðast rugling við aðra rithætti er aðeins fyrsti stafur táknsins hástafur. Til dæmis er Co táknið fyrir frumefnið kóbalt, en CO er rithátturinn fyrir efnasambandið kolsýring, sem inniheldur atóm af frumefnunum kolefni (C) og súrefni (O). Öll þekkt frumefni og tákn þeirra eru í lotukerfinu í [m68695#CNX_Chem_02_05_PerTable1] (einnig að finna í [viðauka A](#fs-idm379479808)).
+Tákn fyrir nokkur algeng frumefni og frumeindir þeirra eru skráð í [#fs-idm36686800]. Sum tákn eru dregin af almennu heiti frumefnisins; önnur eru skammstafanir á heitinu á öðru tungumáli. Flest tákn hafa einn eða tvo stafi, en þriggja stafa tákn hafa verið notuð til að lýsa sumum frumefnum sem hafa sætistölu hærri en 112. Til að forðast rugling við aðrar rithættir er aðeins fyrsti stafur tákns skrifaður með hástaf. Til dæmis er Co táknið fyrir frumefnið kóbalt, en CO er rithátturinn fyrir efnasambandið kolsýring, sem inniheldur frumeindir frumefnanna kolefnis (C) og súrefnis (O). Öll þekkt frumefni og tákn þeirra eru í lotukerfinu í [m68695#CNX_Chem_02_05_PerTable1] (einnig að finna í [viðauka A](#fs-idm379479808)).
 
 <!-- SEG:m68692:entry:auto-54 -->
 Nokkur algeng frumefni og tákn þeirra
@@ -182,7 +182,7 @@ Al
 járn
 
 <!-- SEG:m68692:entry:auto-62 -->
-Fe (úr *ferrum*)
+Fe (úr {{i}}ferrum{{/i}})
 
 <!-- SEG:m68692:entry:auto-63 -->
 bróm
@@ -194,7 +194,7 @@ Br
 blý
 
 <!-- SEG:m68692:entry:auto-66 -->
-Pb (úr *plumbum*)
+Pb (úr {{i}}plumbum{{/i}})
 
 <!-- SEG:m68692:entry:auto-67 -->
 kalsíum
@@ -218,7 +218,7 @@ C
 kvikasilfur
 
 <!-- SEG:m68692:entry:auto-74 -->
-Hg (úr *hydrargyrum*)
+Hg (úr {{i}}hydrargyrum{{/i}})
 
 <!-- SEG:m68692:entry:auto-75 -->
 klór
@@ -227,127 +227,127 @@ klór
 Cl
 
 <!-- SEG:m68692:entry:auto-77 -->
-Nitur
+nitur
 
 <!-- SEG:m68692:entry:auto-78 -->
 N
 
 <!-- SEG:m68692:entry:auto-79 -->
-Króm
+króm
 
 <!-- SEG:m68692:entry:auto-80 -->
 Cr
 
 <!-- SEG:m68692:entry:auto-81 -->
-Súrefni
+súrefni
 
 <!-- SEG:m68692:entry:auto-82 -->
 O
 
 <!-- SEG:m68692:entry:auto-83 -->
-Kóbalt
+kóbalt
 
 <!-- SEG:m68692:entry:auto-84 -->
 Co
 
 <!-- SEG:m68692:entry:auto-85 -->
-Kalíum
+kalíum
 
 <!-- SEG:m68692:entry:auto-86 -->
-K (úr *kalium*)
+K (úr {{i}}kalium{{/i}})
 
 <!-- SEG:m68692:entry:auto-87 -->
-Kopar
+kopar
 
 <!-- SEG:m68692:entry:auto-88 -->
-Cu (úr *cuprum*)
+Cu (úr {{i}}cuprum{{/i}})
 
 <!-- SEG:m68692:entry:auto-89 -->
-Kísill
+kísill
 
 <!-- SEG:m68692:entry:auto-90 -->
 Si
 
 <!-- SEG:m68692:entry:auto-91 -->
-Flúor
+flúor
 
 <!-- SEG:m68692:entry:auto-92 -->
 F
 
 <!-- SEG:m68692:entry:auto-93 -->
-Silfur
+silfur
 
 <!-- SEG:m68692:entry:auto-94 -->
-Ag (úr* argentum*)
+Ag (úr{{i}} argentum{{/i}})
 
 <!-- SEG:m68692:entry:auto-95 -->
-Gull
+gull
 
 <!-- SEG:m68692:entry:auto-96 -->
-Au (úr *aurum*)
+Au (úr {{i}}aurum{{/i}})
 
 <!-- SEG:m68692:entry:auto-97 -->
-Natríum
+natríum
 
 <!-- SEG:m68692:entry:auto-98 -->
-Na (úr *natrium*)
+Na (úr {{i}}natrium{{/i}})
 
 <!-- SEG:m68692:entry:auto-99 -->
-Helíum
+helíum
 
 <!-- SEG:m68692:entry:auto-100 -->
 He
 
 <!-- SEG:m68692:entry:auto-101 -->
-Brennisteinn
+brennisteinn
 
 <!-- SEG:m68692:entry:auto-102 -->
 S
 
 <!-- SEG:m68692:entry:auto-103 -->
-Vetni
+vetni
 
 <!-- SEG:m68692:entry:auto-104 -->
 H
 
 <!-- SEG:m68692:entry:auto-105 -->
-Tin
+tin
 
 <!-- SEG:m68692:entry:auto-106 -->
-Sn (úr *stannum*)
+Sn (úr {{i}}stannum{{/i}})
 
 <!-- SEG:m68692:entry:auto-107 -->
-Joð
+joð
 
 <!-- SEG:m68692:entry:auto-108 -->
 I
 
 <!-- SEG:m68692:entry:auto-109 -->
-Sink
+sink
 
 <!-- SEG:m68692:entry:auto-110 -->
 Zn
 
 <!-- SEG:m68692:para:fs-idm105035264 -->
-Venjan er sú að sá eða þeir sem uppgötva nýtt frumefni gefi því nafn. Hins vegar, þar til nafnið er viðurkennt af Alþjóðasambandi um hreina og hagnýta efnafræði (IUPAC), er ráðlagt nafn nýja frumefnisins byggt á latneskum orðum fyrir sætistölu þess. Til dæmis var frumefni 106 kallað unnilhexíum (Unh), frumefni 107 var kallað unnilseptíum (Uns) og frumefni 108 var kallað unniloktíum (Uno) í nokkur ár. Þessi frumefni eru nú nefnd eftir vísindamönnum (eða stöku sinnum stöðum); til dæmis er frumefni 106 nú þekkt sem *seaborgíum* (Sg) til heiðurs Glenn Seaborg, Nóbelsverðlaunahafa sem var virkur í uppgötvun nokkurra þungra frumefna. Frumefni 109 var nefnt til heiðurs Lise Meitner, sem uppgötvaði kjarnaklofnun, fyrirbæri sem hafði heimsendabreytingar í för með sér; Meitner lagði einnig sitt af mörkum til uppgötvunar nokkurra mikilvægra samsæta, sem fjallað er um hér á eftir.
+Venjan er sú að sá eða þeir sem uppgötva nýtt frumefni gefa því nafn. Hins vegar, þar til nafnið er viðurkennt af Alþjóðasamtökum um hreina og hagnýta efnafræði (IUPAC), er ráðlagt nafn nýja frumefnisins byggt á latneska orðinu eða orðunum fyrir sætistölu þess. Til dæmis var frumefni 106 kallað unnilhexíum (Unh), frumefni 107 var kallað unnilseptíum (Uns) og frumefni 108 var kallað unniloktíum (Uno) í nokkur ár. Þessi frumefni eru nú nefnd eftir vísindamönnum (eða stöku sinnum stöðum); til dæmis er frumefni 106 nú þekkt sem {{i}}seaborgíum{{/i}} (Sg) til heiðurs Glenn Seaborg, Nóbelsverðlaunahafa sem tók virkan þátt í uppgötvun nokkurra þungra frumefna. Frumefni 109 var nefnt til heiðurs Lise Meitner, sem uppgötvaði kjarnaklofnun, fyrirbæri sem hafði heimsendandi áhrif; Meitner lagði einnig sitt af mörkum til uppgötvunar nokkurra mikilvægra samsæta, sem fjallað er um strax hér á eftir.
 
 <!-- SEG:m68692:para:fs-idm3892928 -->
-Farðu inn á þessa [síðu](http://openstax.org/l/16IUPAC) til að læra meira um IUPAC, Alþjóðasamband um hreina og hagnýta efnafræði, og skoða lotukerfi þess.
+Farðu inn á þessa [síðu](http://openstax.org/l/16IUPAC) til að fræðast meira um IUPAC, Alþjóðasamtök um hreina og hagnýta efnafræði, og skoða lotukerfi þeirra.
 
 <!-- SEG:m68692:title:fs-idp42149200-title -->
 Samsætur
 
 <!-- SEG:m68692:para:fs-idm240748912 -->
-Tákn fyrir tiltekna samsætu hvers frumefnis er skrifað með því að setja massatöluna sem háskrift vinstra megin við tákn frumefnisins ([#CNX_Chem_02_03_AtomSym]). Sætistalan er stundum skrifuð sem lágskrift á undan tákninu, en þar sem þessi tala skilgreinir auðkenni frumefnisins, eins og tákn þess gerir, er henni oft sleppt. Til dæmis er magnesíum til sem blanda af þremur samsætum, hver með sætistöluna 12 og massatölurnar 24, 25 og 26, í sömu röð. Þessar samsætur má auðkenna sem ^24^Mg, ^25^Mg og ^26^Mg. Þessi samsætutákn eru lesin sem „frumefni, massatala“ og hægt er að tákna þau í samræmi við þennan lestur. Til dæmis er ^24^Mg lesið sem „magnesíum 24“ og má skrifa sem „magnesíum-24“ eða „Mg-24“. ^25^Mg er lesið sem „magnesíum 25“ og má skrifa sem „magnesíum-25“ eða „Mg-25“. Öll magnesíum atóm hafa 12 róteindir í kjarna sínum. Þau eru aðeins ólík vegna þess að ^24^Mg atóm hefur 12 nifteindir í kjarna sínum, ^25^Mg atóm hefur 13 nifteindir og ^26^Mg hefur 14 nifteindir.
+Táknið fyrir tiltekna samsætu hvers frumefnis er skrifað með því að setja massatöluna sem hávísir vinstra megin við tákn frumefnisins ([#CNX_Chem_02_03_AtomSym]). Sætistalan er stundum skrifuð sem lágvísir á undan tákninu, en þar sem þessi tala skilgreinir auðkenni frumefnisins, eins og tákn þess gerir, er henni oft sleppt. Til dæmis er magnesíum til sem efnablanda þriggja samsæta, hver með sætistöluna 12 og með massatölurnar 24, 25 og 26, í sömu röð. Þessar samsætur má auðkenna sem [[sup:24]]Mg, [[sup:25]]Mg og [[sup:26]]Mg. Þessi samsætutákn eru lesin sem „frumefni, massatala“ og hægt er að tákna þau í samræmi við þann lestur. Til dæmis er [[sup:24]]Mg lesið sem „magnesíum 24“ og hægt er að skrifa það sem „magnesíum-24“ eða „Mg-24“. [[sup:25]]Mg er lesið sem „magnesíum 25“ og hægt er að skrifa það sem „magnesíum-25“ eða „Mg-25“. Allar magnesíumfrumeindir hafa 12 róteindir í kjarna sínum. Þær eru aðeins ólíkar vegna þess að [[sup:24]]Mg-frumeind hefur 12 nifteindir í kjarna sínum, [[sup:25]]Mg-frumeind hefur 13 nifteindir og [[sup:26]]Mg hefur 14 nifteindir.
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSym-caption -->
-Tákn fyrir atóm gefur til kynna frumefnið með venjulegu tveggja stafa tákni þess, massatöluna sem háskrift vinstra megin, sætistöluna sem lágskrift vinstra megin (stundum sleppt) og hleðsluna sem háskrift hægra megin.
+Tákn frumeindar gefur til kynna frumefnið með venjulegu tveggja stafa tákni þess, massatöluna sem vinstri hávísi, sætistöluna sem vinstri lágvísi (stundum sleppt) og hleðsluna sem hægri hávísi.
 
 <!-- SEG:m68692:para:fs-idm198096624 -->
-Upplýsingar um náttúrulega fyrirfinnandi samsætur frumefna með sætistölur 1 til 10 eru gefnar í [#fs-idm87646592]. Athugið að auk staðlaðra nafna og tákna er oft vísað til samsæta vetnis með algengum nöfnum og meðfylgjandi táknum. Vetni-2, táknað ^2^H, er einnig kallað þungavetni og stundum táknað D. Vetni-3, táknað ^3^H, er einnig kallað þrívetni og stundum táknað T.
+Upplýsingar um náttúrulegar samsætur frumefna með sætistölur 1 til 10 eru gefnar í [#fs-idm87646592]. Athugið að auk staðlaðra heita og tákna er oft vísað til samsæta vetnis með algengum heitum og tilheyrandi táknum. Vetni-2, táknað með [[sup:2]]H, er einnig kallað tvívetni og stundum táknað með D. Vetni-3, táknað með [[sup:3]]H, er einnig kallað þrívetni og stundum táknað með T.
 
 <!-- SEG:m68692:entry:auto-117 -->
-Kjarnasamsetning atóma mjög léttra frumefna
+Kjarnasamsetning frumeinda léttustu frumefnanna
 
 <!-- SEG:m68692:entry:auto-118 -->
 Frumefni
@@ -368,7 +368,7 @@ Fjöldi nifteinda
 Massi (u)
 
 <!-- SEG:m68692:entry:auto-124 -->
-% Náttúruleg gnægð
+% náttúruleg gnægð
 
 <!-- SEG:m68692:entry:auto-125 -->
 vetni
@@ -425,7 +425,7 @@ vetni
 3,01605
 
 <!-- SEG:m68692:entry:auto-143 -->
-— (snefil)
+— (snefilefni)
 
 <!-- SEG:m68692:entry:auto-144 -->
 helíum
@@ -620,10 +620,10 @@ kolefni
 14,0032
 
 <!-- SEG:m68692:entry:auto-208 -->
-— (snefil)
+— (snefilefni)
 
 <!-- SEG:m68692:entry:auto-209 -->
-köfnunarefni
+nitur
 
 <!-- SEG:m68692:entry:auto-210 -->
 [[MATH:23]]
@@ -797,43 +797,43 @@ neon
 9,25
 
 <!-- SEG:m68692:para:fs-idm243168608 -->
-Notaðu þennan [hermi til að byggja atóm](http://openstax.org/l/16PhetAtomBld) til að byggja atóm fyrstu 10 frumefnanna, sjá hvaða samsætur eru til, kanna stöðugleika kjarna og öðlast reynslu af táknum samsæta.
+Notaðu þennan [hermi til að byggja frumeind](http://openstax.org/l/16PhetAtomBld) til að byggja frumeindir fyrstu 10 frumefnanna, sjá hvaða samsætur eru til, kanna stöðugleika kjarnans og öðlast reynslu af táknum samsæta.
 
 <!-- SEG:m68692:title:fs-idm54315440-title -->
 Atómmassi
 
 <!-- SEG:m68692:para:fs-idp64485984 -->
-Vegna þess að hver róteind og hver nifteind leggur til um það bil eina amu í massa atóms, og hver rafeind leggur til mun minna, er __atómmassi__ staks atóms um það bil jafn massatölu þess (heil tala). Hins vegar eru meðalmassar atóma flestra frumefna ekki heilar tölur vegna þess að flest frumefni eru náttúrulega til sem blöndur tveggja eða fleiri samsæta.
+Vegna þess að hver róteind og hver nifteind leggur til um það bil eina amu-einingu í massa frumeindar og hver rafeind leggur til mun minna, er {{term}}atómmassi{{/term}} stakrar frumeindar um það bil jafn massatölu hennar (heil tala). Hins vegar eru meðalmassar frumeinda flestra frumefna ekki heilar tölur því flest frumefni eru náttúrulega til sem efnablöndur tveggja eða fleiri samsæta.
 
 <!-- SEG:m68692:para:fs-idp249209552 -->
-Massi frumefnis sem sýndur er í lotukerfi eða skráður í töflu yfir atómmassa er vegið meðaltal massa allra samsæta sem eru til staðar í náttúrulegu sýni af því frumefni. Þetta jafngildir summu massa hverrar einstakrar samsætu margfaldaðri með hlutfallslegri gnægð hennar.
+Massi frumefnis sem sýndur er í lotukerfi eða skráður í töflu yfir atómmassa er vegið meðaltal massa allra samsæta sem eru til staðar í náttúrulegu sýni af því frumefni. Þetta jafngildir summu massa hverrar stakrar samsætu margfaldaðri með hlutfallslegu magni hennar.
 
 <!-- SEG:m68692:para:fs-idp53715664 -->
-Til dæmis er frumefnið bór samsett úr tveimur samsætum: Um 19,9% allra bóratóma eru ^10^B með massann 10,0129 amu og hin 80,1% eru ^11^B með massann 11,0093 amu. Meðalatómmassi bórs er reiknaður út sem:
+Til dæmis samanstendur frumefnið bór af tveimur samsætum: Um 19,9% allra bórfrumeinda eru [[sup:10]]B með massann 10,0129 amu og hin 80,1% eru [[sup:11]]B með massann 11,0093 amu. Meðalatómmassi bórs er reiknaður þannig:
 
 <!-- SEG:m68692:para:fs-idm114336768 -->
-Það er mikilvægt að skilja að ekkert stakt bóratóm vegur nákvæmlega 10,8 amu; 10,8 amu er meðalmassi allra bóratóma og einstök bóratóm vega annaðhvort um það bil 10 amu eða 11 amu.
+Það er mikilvægt að skilja að engin stök bórfrumeind vegur nákvæmlega 10,8 amu; 10,8 amu er meðalmassi allra bórfrumeinda og stakar bórfrumeindir vega annaðhvort um það bil 10 amu eða 11 amu.
 
 <!-- SEG:m68692:example-title:fs-idm139194256-title -->
 Útreikningur á meðalatómmassa
 
 <!-- SEG:m68692:para:fs-idm202281808 -->
-Loftsteinn sem fannst í miðri Indiana-fylki inniheldur snefil af eðalgasinu neoni sem hann tók upp úr sólvindinum á ferð sinni um sólkerfið. Greining á sýni af gasinu sýndi að það samanstóð af 91,84% ^20^Ne (massi 19,9924 amu), 0,47% ^21^Ne (massi 20,9940 amu) og 7,69% ^22^Ne (massi 21,9914 amu). Hver er meðalmassi neonsins í sólvindinum?
+Loftsteinn sem fannst í miðri Indiana-fylki inniheldur snefil af eðalgasinu neon sem hann tók upp úr sólvindinum á ferð sinni um sólkerfið. Greining á sýni af gasinu sýndi að það samanstóð af 91,84% [[sup:20]]Ne (massi 19,9924 amu), 0,47% [[sup:21]]Ne (massi 20,9940 amu) og 7,69% [[sup:22]]Ne (massi 21,9914 amu). Hver er meðalmassi neonsins í sólvindinum?
 
 <!-- SEG:m68692:para-title:fs-idm194071296-title -->
 Lausn
 
 <!-- SEG:m68692:para:fs-idm194071296 -->
-[[MATH:32]]
-
-<!-- SEG:m68692:para:fs-idm3186256 -->
-Meðalmassi neonatóms í sólvindinum er 20,15 amu. (Meðalmassi neonatóms á jörðu niðri er 20,1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
+[[MATH:32]]<!-- SEG:m68692:para:fs-idm3186256 -->
+Meðalmassi neonfrumeindar í sólvindinum er 20,15 amu. (Meðalmassi neonfrumeindar á jörðu niðri er 20,1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
 
 <!-- SEG:m68692:para-title:fs-idm187119072-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68692:para:fs-idm187119072 -->
-Sýni af magnesíum reynist innihalda 78,70% af ^24^Mg atómum (massi 23,98 amu), 10,13% af ^25^Mg atómum (massi 24,99 amu) og 11,17% af ^26^Mg atómum (massi 25,98 amu). Reiknaðu meðalmassa Mg atóms.<!-- SEG:m68692:para:fs-idm169485088 -->
+Sýni af magnesíum inniheldur 78,70% af [[sup:24]]Mg frumeindum (massi 23,98 amu), 10,13% af [[sup:25]]Mg frumeindum (massi 24,99 amu) og 11,17% af [[sup:26]]Mg frumeindum (massi 25,98 amu). Reiknaðu meðalmassa Mg-frumeindar.
+
+<!-- SEG:m68692:para:fs-idm169485088 -->
 24,31 amu
 
 <!-- SEG:m68692:note-title:fs-idm155890528-title -->
@@ -846,34 +846,34 @@ Svar:
 Við getum einnig gert afbrigði af þessari tegund útreikninga, eins og sýnt er í næsta dæmi.
 
 <!-- SEG:m68692:example-title:fs-idm233489360-title -->
-Útreikningur á hlutfallslegu magni
+Útreikningur á hlutfallslegri gnægð
 
 <!-- SEG:m68692:para:fs-idm170542656 -->
-Klór sem finnst í náttúrunni samanstendur af ^35^Cl (massi 34,96885 amu) og ^37^Cl (massi 36,96590 amu), með meðalmassa upp á 35,453 amu. Hver er hlutfallsleg samsetning Cl með tilliti til þessara tveggja samsæta?
+Klór sem finnst í náttúrunni samanstendur af [[sup:35]]Cl (massi 34,96885 amu) og [[sup:37]]Cl (massi 36,96590 amu), með meðalmassa 35,453 amu. Hver er prósentusamsetning Cl með tilliti til þessara tveggja samsæta?
 
 <!-- SEG:m68692:para-title:fs-idm111544320-title -->
 Lausn
 
 <!-- SEG:m68692:para:fs-idm111544320 -->
-Meðalmassi klórs er hlutfallið sem er ^35^Cl sinnum massi ^35^Cl plús hlutfallið sem er ^37^Cl sinnum massi ^37^Cl.
+Meðalmassi klórs er hlutfallið sem er [[sup:35]]Cl sinnum massi [[sup:35]]Cl plús hlutfallið sem er [[sup:37]]Cl sinnum massi [[sup:37]]Cl.
 
 <!-- SEG:m68692:para:fs-idp35897648 -->
-Ef við látum *x* tákna hlutfallið sem er ^35^Cl, þá er hlutfallið sem er ^37^Cl táknað með 1,00 − *x*.
+Ef við látum {{i}}x{{/i}} tákna hlutfallið sem er [[sup:35]]Cl, þá er hlutfallið sem er [[sup:37]]Cl táknað með 1,00 − {{i}}x{{/i}}.
 
 <!-- SEG:m68692:para:fs-idm78207296 -->
-(Hlutfallið sem er ^35^Cl + hlutfallið sem er ^37^Cl verður að vera samtals 1, þannig að hlutfall ^37^Cl verður að vera jafnt og 1,00 − hlutfall ^35^Cl.)
+(Hlutfallið sem er [[sup:35]]Cl + hlutfallið sem er [[sup:37]]Cl verður að leggjast saman og vera 1, þannig að hlutfall [[sup:37]]Cl verður að vera jafnt og 1,00 − hlutfall [[sup:35]]Cl.)
 
 <!-- SEG:m68692:para:fs-idm174110736 -->
 Með því að setja þetta inn í jöfnuna fyrir meðalmassa fáum við:
 
 <!-- SEG:m68692:para:fs-idm84424288 -->
-Lausnin gefur því: *x* = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Þess vegna samanstendur klór af 75,76% ^35^Cl og 24,24% ^37^Cl.
+Lausnin gefur: {{i}}x{{/i}} = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Þess vegna samanstendur klór af 75,76% [[sup:35]]Cl og 24,24% [[sup:37]]Cl.
 
 <!-- SEG:m68692:para-title:fs-idm140620960-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68692:para:fs-idm140620960 -->
-Kopar sem finnst í náttúrunni samanstendur af ^63^Cu (massi 62,9296 amu) og ^65^Cu (massi 64,9278 amu), með meðalmassa upp á 63,546 amu. Hver er hlutfallsleg samsetning Cu með tilliti til þessara tveggja samsæta?
+Kopar sem finnst í náttúrunni samanstendur af [[sup:63]]Cu (massi 62,9296 amu) og [[sup:65]]Cu (massi 64,9278 amu), með meðalmassa 63,546 amu. Hver er prósentusamsetning Cu með tilliti til þessara tveggja samsæta?
 
 <!-- SEG:m68692:para:fs-idm194575792 -->
 69,15% Cu-63 og 30,85% Cu-65
@@ -885,31 +885,31 @@ Svar:
 69,15% Cu-63 og 30,85% Cu-65
 
 <!-- SEG:m68692:para:fs-idp99251296 -->
-Farðu á þessa [síðu](http://openstax.org/l/16PhetAtomMass) til að búa til efnablöndur af helstu samsætum fyrstu 18 frumefnanna, öðlast reynslu af meðalatómmassa og kanna náttúruleg samsætuhlutföll með hermilíkaninu Isotopes and Atomic Mass.
+Farðu á þessa [síðu](http://openstax.org/l/16PhetAtomMass) til að búa til efnablöndur af helstu samsætum fyrstu 18 frumefnanna, öðlast reynslu af meðalatómmassa og kanna náttúruleg samsætuhlutföll með því að nota hermiforritið Isotopes and Atomic Mass.
 
 <!-- SEG:m68692:para:eip-837 -->
-Eins og þú munt læra eru samsætur mikilvægar í náttúrunni og sérstaklega í skilningi mannsins á vísindum og læknisfræði. Lítum aðeins á eina náttúrulega, stöðuga samsætu: Súrefni-18, sem er getið í töflunni hér að ofan og er nefnd ein af umhverfissamsætunum. Hún er mikilvæg í fornaloftsfræði, til dæmis, vegna þess að vísindamenn geta notað hlutfallið milli súrefnis-18 og súrefnis-16 í ískjarna til að ákvarða hitastig útfellingar yfir tíma. Súrefni-18 var einnig lykilatriði í uppgötvun efnaskiptaferla og hvarfganga ensíma. Mildred Cohn var frumkvöðull í notkun þessara samsæta sem snefilefna, svo að rannsakendur gætu fylgst með ferli þeirra í gegnum efnahvörf og öðlast betri skilning á því sem er að gerast. Ein af fyrstu uppgötvunum hennar veitti innsýn í fosfórun glúkósa sem á sér stað í hvatberum. Og aðferðirnar við að nota samsætur fyrir þessar rannsóknir lögðu grunn að heilum fræðasviðum.
+Eins og þú munt læra eru samsætur mikilvægar í náttúrunni og sérstaklega í skilningi mannsins á vísindum og læknisfræði. Lítum aðeins á eina náttúrulega, stöðuga samsætu: Súrefni-18, sem er nefnd í töflunni hér að ofan og er kölluð ein af umhverfissamsætunum. Hún er mikilvæg í fornaldarloftslagsfræði, til dæmis, vegna þess að vísindamenn geta notað hlutfallið milli súrefnis-18 og súrefnis-16 í ískjarna til að ákvarða hitastig útfellingar yfir tíma. Súrefni-18 var einnig mikilvægt við uppgötvun efnaskiptaferla og hvarfganga ensíma. Mildred Cohn var frumkvöðull í notkun þessara samsæta sem snefilefna, svo að rannsakendur gætu fylgst með ferli þeirra í gegnum efnahvörf og öðlast betri skilning á því sem er að gerast. Ein af fyrstu uppgötvunum hennar veitti innsýn í fosfórun glúkósa sem á sér stað í hvatberum. Og aðferðirnar við að nota samsætur fyrir þessar rannsóknir lögðu grunn að heilum fræðasviðum.
 
 <!-- SEG:m68692:para:fs-idp64386064 -->
-Tilvist og náttúrulegt magn samsæta er hægt að ákvarða með tilraunum með því að nota tæki sem kallast massagreinir. Massagreining (MS) er mikið notuð í efnafræði, réttarvísindum, læknisfræði, umhverfisvísindum og mörgum öðrum sviðum til að greina og hjálpa til við að bera kennsl á efnin í sýni. Í dæmigerðum massagreini ([#CNX_Chem_02_03_MassSpec]) er sýnið gufað upp og látið verða fyrir orkuríkum rafeindageisla sem veldur því að frumeindir (eða sameindir) sýnisins verða rafmagnslega hlaðnar, yfirleitt með því að missa eina eða fleiri rafeindir. Þessar katjónir fara síðan í gegnum (breytilegt) raf- eða segulsvið sem beygir braut hverrar katjónar að því marki sem fer eftir bæði massa hennar og hleðslu (svipað og braut stórrar stálkúlu sem veltur framhjá segli beygist í minna mæli en braut lítillar stálkúlu). Jónirnar eru greindar og teiknað er línurit yfir hlutfallslegan fjölda jóna sem myndast á móti massa-á-móti-hleðslu hlutfalli þeirra (*massaróf*). Hæð hvers lóðrétts þáttar eða topps í massarófi er í réttu hlutfalli við brot katjóna með tilgreint massa-á-móti-hleðslu hlutfall. Frá fyrstu notkun þess við þróun nútíma frumeindakenningar hefur massagreining þróast í að verða öflugt tæki til efnafræðilegrar greiningar í margs konar notkun.
+Tilvist og náttúrulega gnægð samsæta er hægt að ákvarða með tilraunum með því að nota tæki sem kallast massagreinir. Massagreining (MS) er mikið notuð í efnafræði, réttarvísindum, læknisfræði, umhverfisvísindum og mörgum öðrum sviðum til að greina og hjálpa til við að bera kennsl á efnin í sýni úr efni. Í dæmigerðum massagreini ([#CNX_Chem_02_03_MassSpec]) er sýnið gufað upp og látið verða fyrir orkuríkum rafeindageisla sem veldur því að frumeindir (eða sameindir) sýnisins verða rafmagnslega hlaðnar, yfirleitt með því að missa eina eða fleiri rafeindir. Þessar katjónir fara síðan í gegnum (breytilegt) raf- eða segulsvið sem sveigir braut hverrar katjónar að því marki sem fer bæði eftir massa hennar og hleðslu (svipað og braut stórrar stálkúlu sem veltur framhjá segli sveigist í minna mæli en braut lítillar stálkúlu). Jónirnar eru greindar og teiknað er línurit af hlutfallslegum fjölda jóna sem myndast á móti massa-á-móti-hleðslu hlutfalli þeirra ({{i}}massaróf{{/i}}). Hæð hvers lóðrétts einkennis eða topps í massarófi er í réttu hlutfalli við hlutfall katjóna með tilgreint massa-á-móti-hleðslu hlutfall. Frá fyrstu notkun þess við þróun nútíma atómkenningar hefur massagreining þróast í að verða öflugt tæki til efnagreiningar í margs konar notkun.
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_MassSpec-caption -->
 Greining á sirkoni í massagreini framleiðir massaróf með toppum sem sýna mismunandi samsætur Zr.
 
 <!-- SEG:m68692:para:fs-idm136290400 -->
-Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec) sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry) frá Royal Society for Chemistry fyrir stutta lýsingu á grundvallaratriðum massagreiningar.
+Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec) sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry) frá Royal Society for Chemistry til að fá stutta lýsingu á grundvallaratriðum massagreiningar.
 
 <!-- SEG:m68692:title:fs-idm131201632-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68692:para:fs-idm148166800 -->
-Frumeind samanstendur af litlum, jákvætt hlöðnum kjarna sem er umkringdur rafeindum. Kjarninn inniheldur róteindir og nifteindir; þvermál hans er um 100.000 sinnum minna en þvermál frumeindarinnar. Massi einnar frumeindar er venjulega gefinn upp í atómmassaeiningum (amu), sem er kallað atómmassi. Eitt amu er skilgreint sem nákvæmlega [[MATH:33]] af massa kolefnis-12 frumeindar og er jafnt og 1,6605 [[MATH:34]] 10^−24^ g.
+Frumeind samanstendur af litlum, jákvætt hlöðnum kjarna sem er umkringdur rafeindum. Kjarninn inniheldur róteindir og nifteindir; þvermál hans er um 100.000 sinnum minna en þvermál frumeindarinnar. Massi einnar frumeindar er venjulega gefinn upp í atómmassaeiningum (amu), sem er vísað til sem atómmassi. Eitt amu er skilgreint sem nákvæmlega [[MATH:33]] af massa kolefnis-12 frumeindar og jafngildir 1,6605 [[MATH:34]] 10[[sup:−24]] g.
 
 <!-- SEG:m68692:para:fs-idp228494288 -->
-Róteindir eru tiltölulega þungar agnir með hleðsluna 1+ og massa 1,0073 amu. Nifteindir eru tiltölulega þungar agnir án hleðslu og með massa 1,0087 amu. Rafeindir eru léttar agnir með hleðsluna 1− og massa 0,00055 amu. Fjöldi róteinda í kjarnanum er kallaður sætistala (Z) og er sá eiginleiki sem skilgreinir hvaða frumefni frumeindin er. Summa fjölda róteinda og nifteinda í kjarnanum er kölluð massatala og, gefin upp í amu, er hún um það bil jöfn massa frumeindarinnar. Frumeind er hlutlaus þegar hún inniheldur jafnmargar rafeindir og róteindir.
+Róteindir eru tiltölulega þungar agnir með hleðsluna 1+ og massa upp á 1,0073 amu. Nifteindir eru tiltölulega þungar agnir án hleðslu og með massa upp á 1,0087 amu. Rafeindir eru léttar agnir með hleðsluna 1− og massa upp á 0,00055 amu. Fjöldi róteinda í kjarnanum er kallaður sætistala (Z) og er sá eiginleiki sem skilgreinir hvaða frumefni frumeindin er. Samanlagður fjöldi róteinda og nifteinda í kjarnanum er kallaður massatala og, gefinn upp í amu, er hann um það bil jafn massa frumeindarinnar. Frumeind er hlutlaus þegar hún inniheldur jafnmargar rafeindir og róteindir.
 
 <!-- SEG:m68692:para:fs-idm194069072 -->
-Samsætur frumefnis eru frumeindir með sömu sætistölu en mismunandi massatölu; samsætur frumefnis eru því aðeins ólíkar að því leyti hve margar nifteindir eru í kjarnanum. Þegar frumefni í náttúrunni er samsett úr nokkrum samsætum, táknar atómmassi frumefnisins meðaltal massa viðkomandi samsæta. Efnatákn auðkennir frumeindir í efni með táknum, sem eru eins, tveggja eða þriggja stafa skammstafanir fyrir frumeindirnar.
+Samsætur frumefnis eru frumeindir með sömu sætistölu en mismunandi massatölu; samsætur frumefnis eru því aðeins frábrugðnar hver annarri hvað varðar fjölda nifteinda í kjarnanum. Þegar náttúrulegt frumefni er samsett úr nokkrum samsætum, táknar atómmassi frumefnisins meðaltal massa viðkomandi samsæta. Efnatákn auðkennir frumeindir í efni með táknum, sem eru einn, tveir eða þrír stafir sem eru skammstafanir fyrir frumeindirnar.
 
 <!-- SEG:m68692:title:fs-idm7298256-title -->
 Lykiljafna
@@ -918,13 +918,13 @@ Lykiljafna
 [[MATH:35]]
 
 <!-- SEG:m68692:title:fs-idm53754640-title -->
-Efnafræði: Æfingar í lok kafla
+Efnafræði – Æfingar í lok kafla
 
 <!-- SEG:m68692:problem:fs-idp164438208 -->
-Á hvaða hátt eru samsætur tiltekins frumefnis alltaf ólíkar? Á hvaða hátt(um) eru þær alltaf eins?
+Á hvaða hátt eru samsætur tiltekins frumefnis alltaf ólíkar? Á hvaða hátt/háttum eru þær alltaf eins?
 
 <!-- SEG:m68692:problem:fs-idm122332368 -->
-Skrifaðu tákn fyrir hverja af eftirfarandi jónum:
+Skrifaðu táknið fyrir hverja af eftirfarandi jónum:
 
 <!-- SEG:m68692:problem:fs-idp77154592 -->
 (a) jónin með 1+ hleðslu, sætistölu 55 og massatölu 133
@@ -939,10 +939,10 @@ Skrifaðu tákn fyrir hverja af eftirfarandi jónum:
 (d) jónin með 24 rafeindir, 30 nifteindir og 3+ hleðslu
 
 <!-- SEG:m68692:solution:fs-idm90412768 -->
-(a) ^133^Cs^+^; (b) ^127^I^−^; (c) ^31^P^3−^; (d) ^57^Co^3+^
+(a) [[sup:133]]Cs[[sup:+]]; (b) [[sup:127]]I[[sup:−]]; (c) [[sup:31]]P[[sup:3−]]; (d) [[sup:57]]Co[[sup:3+]]
 
 <!-- SEG:m68692:problem:fs-idm201509280 -->
-Skrifaðu tákn fyrir hverja af eftirfarandi jónum:
+Skrifaðu táknið fyrir hverja af eftirfarandi jónum:
 
 <!-- SEG:m68692:problem:fs-idm110862992 -->
 (a) jónin með 3+ hleðslu, 28 rafeindir og massatölu 71
@@ -957,7 +957,7 @@ Skrifaðu tákn fyrir hverja af eftirfarandi jónum:
 (d) jónin með 2+ hleðslu, sætistölu 38 og massatölu 87
 
 <!-- SEG:m68692:problem:fs-idp112094752 -->
-Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld) og smelltu á táknið „Frumeind“.
+Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld) og smelltu á táknið Frumeind.
 
 <!-- SEG:m68692:problem:fs-idm134679936 -->
 (a) Veldu eitt af fyrstu 10 frumefnunum sem þú vilt byggja og gefðu upp tákn þess.
@@ -972,10 +972,10 @@ Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld) og smell
 (d) Spáðu fyrir um hvort frumeindin þín verði stöðug eða óstöðug. Rökstyddu svarið.
 
 <!-- SEG:m68692:problem:fs-idp22922768 -->
-(e) Hakaðu í reitinn „Stöðug/Óstöðug“. Var svar þitt við (d) rétt? Ef ekki, spáðu fyrst fyrir um hvað þú getur gert til að búa til stöðuga frumeind af þínu frumefni, gerðu það síðan og athugaðu hvort það virkar. Útskýrðu rökstuðning þinn.
+(e) Hakaðu í reitinn „Stöðug/Óstöðug“. Var svar þitt við (d) rétt? Ef ekki, spáðu fyrst fyrir um hvað þú getur gert til að búa til stöðuga frumeind af þínu frumefni, gerðu það síðan og sjáðu hvort það virkar. Útskýrðu rökstuðning þinn.
 
 <!-- SEG:m68692:solution:fs-idm124722320 -->
-(a) Kolefni-12, ^12^C; (b) Þessi frumeind inniheldur sex róteindir og sex nifteindir. Það eru sex rafeindir í hlutlausri ^12^C frumeind. Heildarhleðsla slíkrar hlutlausrar frumeindar er núll og massatalan er 12. (c) Fyrri svör eru rétt. (d) Frumeindin verður stöðug þar sem C-12 er stöðug samsæta kolefnis. (e) Fyrra svar er rétt. Önnur svör við þessari æfingu eru möguleg ef annað frumefni eða samsæta er valin.
+(a) Kolefni-12, [[sup:12]]C; (b) Þessi frumeind inniheldur sex róteindir og sex nifteindir. Það eru sex rafeindir í hlutlausri [[sup:12]]C frumeind. Heildarhleðsla slíkrar hlutlausrar frumeindar er núll og massatalan er 12. (c) Fyrri svör eru rétt. (d) Frumeindin verður stöðug þar sem C-12 er stöðug samsæta kolefnis. (e) Fyrra svar er rétt. Önnur svör við þessari æfingu eru möguleg ef annað frumefni eða samsæta er valin.
 
 <!-- SEG:m68692:problem:fs-idm65098400 -->
 Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld).
@@ -984,7 +984,7 @@ Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld).
 (a) Dragðu róteindir, nifteindir og rafeindir yfir á frumeindarsniðmátið til að búa til hlutlausa frumeind af súrefni-16 og gefðu upp samsætutákn fyrir þessa frumeind.
 
 <!-- SEG:m68692:problem:fs-idm95106464 -->
-(b) Bættu nú við tveimur rafeindum til viðbótar til að búa til jón og gefðu upp tákn fyrir jónina sem þú hefur búið til.
+(b) Bættu nú við tveimur rafeindum í viðbót til að mynda jón og gefðu upp tákn jónarinnar sem þú hefur myndað.
 
 <!-- SEG:m68692:problem:fs-idm7673184 -->
 Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld).
@@ -993,13 +993,13 @@ Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld).
 (a) Dragðu róteindir, nifteindir og rafeindir yfir á frumeindarsniðmátið til að búa til hlutlausa frumeind af litíum-6 og gefðu upp samsætutákn fyrir þessa frumeind.
 
 <!-- SEG:m68692:problem:fs-idm31990784 -->
-(b) Fjarlægðu nú eina rafeind til að búa til jón og gefðu upp tákn fyrir jónina sem þú hefur búið til.
+(b) Fjarlægðu nú eina rafeind til að búa til jón og gefðu upp tákn jónarinnar sem þú hefur myndað.
 
 <!-- SEG:m68692:solution:fs-idm134038192 -->
-(a) Litíum-6 inniheldur þrjár róteindir, þrjár nifteindir og þrjár rafeindir. Samsætutáknið er ^6^Li eða [[MATH:36]] (b) ^6^Li^+^ eða [[MATH:37]]
+(a) Litíum-6 inniheldur þrjár róteindir, þrjár nifteindir og þrjár rafeindir. Samsætutáknið er [[sup:6]]Li eða [[MATH:36]] (b) [[sup:6]]Li[[sup:+]] eða [[MATH:37]]
 
 <!-- SEG:m68692:problem:fs-idm56944480 -->
-Ákvarðið fjölda róteinda, nifteinda og rafeinda í eftirfarandi samsætum sem eru notaðar við sjúkdómsgreiningar:
+Ákvarðaðu fjölda róteinda, nifteinda og rafeinda í eftirfarandi samsætum sem eru notaðar við sjúkdómsgreiningar:
 
 <!-- SEG:m68692:problem:fs-idp210466544 -->
 (a) sætistala 9, massatala 18, hleðsla 1−
@@ -1014,10 +1014,10 @@ Opnaðu [herminn Byggðu frumeind](http://openstax.org/l/16PhetAtomBld).
 (d) sætistala 81, atómmassatala 201, hleðsla 1+
 
 <!-- SEG:m68692:problem:fs-idm32839584 -->
-(e) Nefnið frumefnin í liðum (a), (b), (c) og (d).
+(e) Nefndu frumefnin í liðum (a), (b), (c) og (d).
 
 <!-- SEG:m68692:problem:fs-idm36757440 -->
-Eftirfarandi eru eiginleikar samsæta tveggja frumefna sem eru nauðsynleg í mataræði okkar. Ákvarðið fjölda róteinda, nifteinda og rafeinda í hvorri og nefnið þær.
+Eftirfarandi eru eiginleikar samsæta tveggja frumefna sem eru nauðsynleg í mataræði okkar. Ákvarðaðu fjölda róteinda, nifteinda og rafeinda í hvorri og nefndu þær.
 
 <!-- SEG:m68692:problem:fs-idp210102512 -->
 (a) sætistala 26, massatala 58, hleðsla 2+
@@ -1029,7 +1029,7 @@ Eftirfarandi eru eiginleikar samsæta tveggja frumefna sem eru nauðsynleg í ma
 (a) Járn, 26 róteindir, 24 rafeindir og 32 nifteindir; (b) joð, 53 róteindir, 54 rafeindir og 74 nifteindir
 
 <!-- SEG:m68692:problem:fs-idm114349376 -->
-Gefið upp fjölda róteinda, rafeinda og nifteinda í hlutlausum atómum hverrar eftirfarandi samsætu:
+Tilgreindu fjölda róteinda, rafeinda og nifteinda í hlutlausum frumeindum hverrar eftirfarandi samsætu:
 
 <!-- SEG:m68692:problem:fs-idm164756320 -->
 (a) [[MATH:38]]
@@ -1047,7 +1047,7 @@ Gefið upp fjölda róteinda, rafeinda og nifteinda í hlutlausum atómum hverra
 (e) [[MATH:42]]
 
 <!-- SEG:m68692:problem:fs-idm53375216 -->
-Gefið upp fjölda róteinda, rafeinda og nifteinda í hlutlausum atómum hverrar eftirfarandi samsætu:
+Tilgreindu fjölda róteinda, rafeinda og nifteinda í hlutlausum frumeindum hverrar eftirfarandi samsætu:
 
 <!-- SEG:m68692:problem:fs-idm84436384 -->
 (a) [[MATH:43]]
@@ -1068,49 +1068,49 @@ Gefið upp fjölda róteinda, rafeinda og nifteinda í hlutlausum atómum hverra
 (a) 3 róteindir, 3 rafeindir, 4 nifteindir; (b) 52 róteindir, 52 rafeindir, 73 nifteindir; (c) 47 róteindir, 47 rafeindir, 62 nifteindir; (d) 7 róteindir, 7 rafeindir, 8 nifteindir; (e) 15 róteindir, 15 rafeindir, 16 nifteindir
 
 <!-- SEG:m68692:problem:fs-idm93231328 -->
-Smelltu á [síðuna](http://openstax.org/l/16PhetAtomMass) og veldu flipann „Blanda samsætum“ („Mix Isotopes“), feldu reitina „Hlutfallsleg samsetning“ („Percent Composition“) og „Meðalatómmassi“ („Average Atomic Mass“) og veldu síðan frumefnið bór.
+Smelltu á [síðuna](http://openstax.org/l/16PhetAtomMass) og veldu flipann „Blanda samsætum“, feldu reitina „Hlutfallsleg samsetning“ og „Meðalatómmassi“ og veldu síðan frumefnið bór.
 
 <!-- SEG:m68692:problem:fs-idm84386240 -->
-(a) Skrifaðu tákn bór-samsætanna sem sýndar eru sem náttúrulega fyrirfinnandi í umtalsverðu magni.
+(a) Skrifaðu tákn samsæta bórs sem sýndar eru sem náttúrulegar í umtalsverðu magni.
 
 <!-- SEG:m68692:problem:fs-idm170152672 -->
-(b) Spáðu fyrir um hlutfallslegt magn (prósentur) þessara bór-samsæta sem finnast í náttúrunni. Útskýrðu rökstuðninginn á bak við val þitt.
+(b) Spáðu fyrir um hlutfallslegt magn (prósentur) þessara bórsamsæta sem finnast í náttúrunni. Útskýrðu rökstuðninginn á bak við val þitt.
 
 <!-- SEG:m68692:problem:fs-idm198099104 -->
-(c) Bættu samsætum í svarta kassann til að búa til efnablöndu sem samsvarar spá þinni í (b). Þú getur dregið samsætur úr hólfunum sínum eða smellt á „Meira“ („More“) og fært síðan sleðana að viðeigandi magni.
+(c) Bættu samsætum í svarta kassann til að búa til efnablöndu sem samsvarar spá þinni í (b). Þú getur dregið samsætur úr hólfunum sínum eða smellt á „Meira“ og fært síðan sleðana að viðeigandi magni.
 
 <!-- SEG:m68692:problem:fs-idp8871856 -->
-(d) Sýndu reitina „Hlutfallsleg samsetning“ („Percent Composition“) og „Meðalatómmassi“ („Average Atomic Mass“). Hversu vel passar efnablandan þín við spá þína? Ef nauðsyn krefur, aðlagaðu magn samsætanna til að passa við spá þína.
+(d) Sýndu reitina „Hlutfallsleg samsetning“ og „Meðalatómmassi“. Hversu vel passar efnablandan þín við spá þína? Ef nauðsyn krefur, aðlagaðu magn samsætanna til að passa við spá þína.
 
 <!-- SEG:m68692:problem:fs-idm169266752 -->
-(e) Veldu „Náttúrulega“ efnablöndu samsæta („Nature's mix of isotopes“) og berðu hana saman við spá þína. Hversu vel stenst spá þín samanburð við náttúrulega fyrirfinnandi efnablöndu? Útskýrðu. Ef nauðsyn krefur, aðlagaðu magnið þitt til að það passi eins vel og mögulegt er við „náttúrulega“ magnið.
+(e) Veldu „Náttúrulega“ efnablöndu samsæta og berðu hana saman við spá þína. Hversu vel stenst spá þín samanburð við náttúrulega efnablöndu? Útskýrðu. Ef nauðsyn krefur, aðlagaðu magnið þitt til að það passi eins vel og mögulegt er við „náttúrulegt“ magn.
 
 <!-- SEG:m68692:problem:fs-idm195304464 -->
-Endurtaktu [#fs-idm28786800] með því að nota frumefni sem hefur þrjár náttúrulega fyrirfinnandi samsætur.
+Endurtaktu [#fs-idm28786800] með því að nota frumefni sem hefur þrjár náttúrulegar samsætur.
 
 <!-- SEG:m68692:solution:fs-idp79309808 -->
-Notum neon sem dæmi. Þar sem það eru þrjár samsætur er engin leið til að vera viss um að spá nákvæmlega fyrir um hlutföllin til að fá heildarmeðalatómmassann 20,18 amu. Giskum á að hlutföllin séu 9% Ne-22, 91% Ne-20 og aðeins snefill af Ne-21. Meðalmassinn yrði 20,18 amu. Athugun á náttúrulegri blöndu samsæta sýnir að hlutföllin eru 90,48% Ne-20, 9,25% Ne-22 og 0,27% Ne-21, svo það þarf að aðlaga áætlað magn okkar lítillega.
+Notum neon sem dæmi. Þar sem það eru þrjár samsætur er engin leið til að vera viss um að spá nákvæmlega fyrir um hlutföllin til að fá meðalatómmassann 20,18 amu. Giskum á að hlutföllin séu 9% Ne-22, 91% Ne-20 og aðeins snefill af Ne-21. Meðalmassinn yrði 20,18 amu. Þegar náttúruleg blanda samsætanna er skoðuð kemur í ljós að hlutföllin eru 90,48% Ne-20, 9,25% Ne-22 og 0,27% Ne-21, þannig að það þarf að aðlaga ágiskun okkar lítillega.
 
 <!-- SEG:m68692:problem:fs-idm150169904 -->
 Frumefni hefur eftirfarandi náttúruleg hlutföll og samsætumassa: 90,92% hlutfall með 19,99 amu, 0,26% hlutfall með 20,99 amu og 8,82% hlutfall með 21,99 amu. Reiknaðu meðalatómmassa þessa frumefnis.
 
 <!-- SEG:m68692:problem:fs-idm58355904 -->
-Meðalatómmassar skráðir af IUPAC eru byggðir á rannsókn á niðurstöðum tilrauna. Bróm hefur tvær samsætur, ^79^Br og ^81^Br, en massar þeirra (78,9183 og 80,9163 amu, í sömu röð) og hlutföll (50,69% og 49,31%, í sömu röð) voru ákvörðuð í fyrri tilraunum. Reiknaðu meðalatómmassa bróms byggt á þessum tilraunum.
+Meðalatómmassar sem IUPAC gefur upp eru byggðir á rannsóknum á niðurstöðum tilrauna. Bróm hefur tvær samsætur, [[sup:79]]Br og [[sup:81]]Br, en massar þeirra (78,9183 og 80,9163 amu, í sömu röð) og hlutföll (50,69% og 49,31%, í sömu röð) voru ákvörðuð í fyrri tilraunum. Reiknaðu meðalatómmassa bróms út frá þessum tilraunum.
 
 <!-- SEG:m68692:solution:fs-idm9833872 -->
 79,90 amu
 
 <!-- SEG:m68692:problem:fs-idm130368688 -->
-Breytingar á meðalatómmassa má sjá hjá frumefnum sem fengin eru úr mismunandi uppsprettum. Litíum er dæmi um þetta. Samsætusamsetning litíums úr náttúrulegum steinefnum er 7,5% ^6^Li og 92,5% ^7^Li, sem hafa massana 6,01512 amu og 7,01600 amu, í sömu röð. Litíum úr verslunaruppsprettu, endurunnið úr hernaðaruppsprettu, var 3,75% ^6^Li (og afgangurinn ^7^Li). Reiknaðu meðalatómmassagildin fyrir hvora þessara tveggja uppspretta.
+Breytingar á meðalatómmassa má sjá hjá frumefnum sem fást úr mismunandi uppsprettum. Litíum er dæmi um þetta. Samsætusamsetning litíums úr náttúrulegum steinefnum er 7,5% [[sup:6]]Li og 92,5% [[sup:7]]Li, sem hafa massana 6,01512 amu og 7,01600 amu, í sömu röð. Viðskiptaleg uppspretta litíums, endurunnið úr hernaðarlegri uppsprettu, var 3,75% [[sup:6]]Li (og afgangurinn [[sup:7]]Li). Reiknaðu meðalatómmassagildin fyrir hvora þessara tveggja uppspretta.
 
 <!-- SEG:m68692:problem:fs-idm197867280 -->
-Meðalatómmassar sumra frumefna geta verið breytilegir, eftir því hvaðan málmgrýti þeirra kemur. Náttúrulegt bór samanstendur af tveimur samsætum með nákvæmlega þekkta massa (^10^B, 10,0129 amu og ^11^B, 11,00931 amu). Raunverulegur atómmassi bórs getur verið breytilegur frá 10,807 til 10,819, eftir því hvort steinefnauppsprettan er frá Tyrklandi eða Bandaríkjunum. Reiknaðu prósentumagn sem leiðir til tveggja gilda meðalatómmassa bórs frá þessum tveimur löndum.
+Meðalatómmassar sumra frumefna geta verið breytilegir, eftir því hvaðan málmgrýti þeirra kemur. Náttúrulegt bór samanstendur af tveimur samsætum með nákvæmlega þekkta massa ([[sup:10]]B, 10,0129 amu og [[sup:11]]B, 11,00931 amu). Raunverulegur atómmassi bórs getur verið breytilegur frá 10,807 til 10,819, eftir því hvort steinefnauppsprettan er frá Tyrklandi eða Bandaríkjunum. Reiknaðu prósentuhlutföllin sem leiða til tveggja gilda meðalatómmassa bórs frá þessum tveimur löndum.
 
 <!-- SEG:m68692:solution:fs-idm4806656 -->
 Uppspretta frá Tyrklandi: 20,3% (af 10,0129 amu samsætu); uppspretta frá Bandaríkjunum: 19,1% (af 10,0129 amu samsætu)
 
 <!-- SEG:m68692:problem:fs-idm65589760 -->
-Hlutfall magns ^18^O:^16^O í sumum loftsteinum er hærra en það sem notað er til að reikna út meðalatómmassa súrefnis á jörðinni. Er meðalmassi súrefnisfrumeindar í þessum loftsteinum meiri en, minni en eða jafn og meðalmassi súrefnisfrumeindar á jörðinni?
+Hlutfall [[sup:18]]O:[[sup:16]]O í sumum loftsteinum er hærra en það sem notað er til að reikna meðalatómmassa súrefnis á jörðinni. Er meðalmassi súrefnisfrumeindar í þessum loftsteinum meiri en, minni en eða jafn og meðalmassi súrefnisfrumeindar á jörðinni?
 
 <!-- SEG:m68692:glossary-term:fs-idm68508272-term -->
 anjón
@@ -1128,7 +1128,7 @@ meðalmassi frumeinda frumefnis, gefinn upp í amu
 atómmassaeining (amu)
 
 <!-- SEG:m68692:glossary-def:fs-idm20897872-def -->
-(einnig, sameinuð atómmassaeining, u, eða Dalton, Da) massaeining jöfn [[MATH:48]] af massa ^12^C frumeindar
+(einnig, sameinuð atómmassaeining, u, eða Dalton, Da) massaeining jöfn [[MATH:48]] af massa [[sup:12]]C frumeindar
 
 <!-- SEG:m68692:glossary-term:fs-idp42201168-term -->
 sætistala (Z)
@@ -1158,7 +1158,7 @@ Dalton (Da)
 grunneining hleðslu
 
 <!-- SEG:m68692:glossary-def:fs-idp226765840-def -->
-(einnig kölluð einingarhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 [[MATH:49]] 10^−19^ C
+(einnig kölluð einingarhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 [[MATH:49]] 10[[sup:−19]] C
 
 <!-- SEG:m68692:glossary-term:fs-idp277782656-term -->
 jón

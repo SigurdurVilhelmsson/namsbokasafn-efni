@@ -1,0 +1,634 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Styrkur jóna- og samgildra tengja</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68741</md:content-id>
+  <md:title>Styrkur jóna- og samgildra tengja</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst orkufræði myndunar og rofs samgildra og jónatengja</item><item>Notað Born-Haber-hringrásina til að reikna út grindarorku fyrir jónaefnasambönd</item><item>Notað meðaltalstengjaorku samgildra tengja til að áætla vermibreytingar efnahvarfa</item></list></md:abstract>
+  <md:uuid>d9a2a6fa-520e-4317-a0c5-56da7bece584</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp176876736">Styrkur efnatengis lýsir því hversu sterkt hver frumeind er tengd annarri frumeind og þar af leiðandi hversu mikla orku þarf til að rjúfa efnatengið milli frumeindanna tveggja. Í þessum kafla munt þú læra um tengisstyrk samgildra tengja og bera hann síðan saman við styrk jónatengja, sem er skyldur grindarorku efnasambands.</para>
+<section id="fs-idp66065152">
+<title>Tengisstyrkur: Samgild tengi</title>
+<para id="fs-idm12470240">Stöðugar sameindir eru til vegna þess að samgild tengi halda frumeindunum saman. Við mælum styrk samgilds tengis með þeirri orku sem þarf til að rjúfa það, þ.e. þeirri orku sem er nauðsynleg til að aðskilja tengdu frumeindirnar. Aðskilnaður hvers pars tengdra frumeinda krefst orku (sjá <link document="m68738" target-id="CNX_Chem_07_02_Morse"/>). Því sterkara sem efnatengi er, því meiri orku þarf til að rjúfa það.</para>
+<para id="fs-idp84340368">Orkan sem þarf til að rjúfa tiltekið samgilt tengi í einu móli af gaskenndum sameindum er kölluð tengjaorka eða tengjaklofnunarorka. Tengjaorka fyrir tvíatóma sameind, D<sub>X–Y</sub>, er skilgreind sem staðalvermibreyting fyrir innvermið efnahvarf:</para>
+<equation id="fs-idm36464112" class="unnumbered"><m:math><m:mrow><m:mtext>XY</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>X</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>Y</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="3em"/><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>X−Y</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mtext>°</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm12974112">Til dæmis er tengjaorka hreins samgilds H–H tengis, D<sub>H–H</sub>, 436 kJ á mól af rofnum H–H tengjum:</para>
+<equation id="fs-idp119487888" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>H</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="3em"/><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>H−H</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mtext>°</m:mtext><m:mo>=</m:mo><m:mn>436</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp244347920">Sameindir með þremur eða fleiri frumeindum hafa tvö eða fleiri efnatengi. Summa allra tengjaorkna í slíkri sameind er jöfn staðalvermibreytingu fyrir innvermið efnahvarf sem rýfur öll efnatengi í sameindinni. Til dæmis er summa fjögurra C–H tengjaorkna í CH<sub>4</sub>, 1660 kJ, jöfn staðalvermibreytingu efnahvarfsins:</para>
+<media id="fs-idp286503296" class="scaled-down" alt="A reaction is shown with Lewis structures. The first structure shows a carbon atom single bonded to four hydrogen atoms with the symbol, “( g )” written next to it. A right-facing arrow points to the letter “C” and the symbol “( g ),” which is followed by a plus sign. Next is the number 4, the letter “H” and the symbol, “( g ).” To the right of this equation is another equation: capital delta H superscript degree symbol equals 1660 k J.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_CH4bond_img.jpg"/>
+</media>
+<para id="fs-idp85707472">Meðaltals C–H tengjaorkan, D<sub>C–H</sub>, er 1660/4 = 415 kJ/mól vegna þess að fjögur mól af C–H tengjum eru rofin á hvert mól efnahvarfsins. Þrátt fyrir að C–H tengin fjögur séu jafngild í upprunalegu sameindinni, þurfa þau ekki öll sömu orku til að rofna; þegar fyrsta efnatengið er rofið (sem krefst 439 kJ/mól), er auðveldara að rjúfa hin efnatengin. Gildið 415 kJ/mól er meðaltal, ekki nákvæmt gildi sem þarf til að rjúfa eitthvert eitt efnatengi.</para>
+<para id="fs-idp26225392">Styrkur efnatengis milli tveggja frumeinda eykst eftir því sem fjöldi rafeindapara í efnahvarfinu eykst. Almennt, þegar tengisstyrkur eykst, minnkar tengilengdin. Þannig sjáum við að þrítengi eru sterkari og styttri en tvítengi milli sömu tveggja frumeinda; sömuleiðis eru tvítengi sterkari og styttri en eintengi milli sömu tveggja frumeinda. Meðaltalstengjaorkur fyrir nokkur algeng efnatengi koma fram í <link target-id="fs-idp13638832"/> og samanburður á tengilengdum og tengisstyrk fyrir nokkur algeng efnatengi kemur fram í <link target-id="fs-idm44464336"/>. Þegar ein frumeind tengist ýmsum frumeindum í flokki, minnkar tengisstyrkurinn venjulega þegar við förum niður flokkinn. Til dæmis er C–F 439 kJ/mól, C–Cl er 330 kJ/mól og C–Br er 275 kJ/mól.</para>
+<table id="fs-idp13638832" summary="This table has six columns and twenty-four rows. The first row is a header row that labels the columns: “Bond,” “Bond Energy,” “Bond,” “Bond Energy,” “Bond,” and, “Bond Energy.” Under the first “Bond” column are the values: H bond to H with a single bond; H bonds to C with a single bond; H bonds to N with a single bond; H bonds to O with a single bond; H bonds to F with a single bond; H bonds to S i with a single bond; H bonds to P with a single bond; H bonds to S with a single bond; H bonds to C l with a single bond; H bonds to B r with a single bond; H bonds to I with a single bond; C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; C bonds to O with a triple bond; C bonds to F with a single bond; C bonds to S i with a single bond; and C bonds to P with a single bond. Under the first “Bond Energy” column are the values: 436; 415; 390; 464; 569; 395; 320; 340; 432; 370; 295; 345; 611; 837; 290; 615; 891; 350; 741; 1080; 439; 360; and 265. Under the second “Bond” column are the values: C bonds to S with a single bond; C bonds to C l with a single bond; C bonds to B r with a single bond; C bonds to I with a single bond; N bonds to N with a single bond; N bonds to N with a double bond; N bonds to N with a triple bond; N bonds to O with a single bond; N bonds to F with a single bond; N bonds to P with a single bond; N bonds to C l with a single bond; N bonds to B r with a single bond; O bonds to O with a single bond; O bonds to O with a double bond; O bonds to F with a single bond; O bonds to S i with a single bond; O bonds to P with a single bond; O bonds to C l with a single bond; O bonds to I with a single bond; F bonds to F with a single bond; F bonds to S i with a single bond; F bonds to P with a single bond; and F bonds to S with a single bond. Under the second “Bond Energy” column are the values: 260; 330; 275; 240; 160; 418; 946; 200; 270; 210; 200; 245; 140; 498; 160; 370; 350; 205; 200; 160; 540; 489; and 285. Under the third “Bond” column are the values: F bonds to C l with a single bond; F bonds to B r with a single bond; S i bonds to S i with a single bond; S i bonds to P with a single bond; S i bonds to S with a single bond; S i bonds to C l with a single bond; S i bonds to B r with a single bond; S i bonds to I with a single bond; P bonds to P with a single bond; P bonds to S with a single bond; P bonds to C l with a single bond; P bonds to B r with a single bond; P bonds to I with a single bond; S bonds to S with a single bond; S bonds to C l with a single bond; S bonds to B r with a single bond; C l bonds to C l with a single bond; C l bonds to B r with a single bond; C l bonds to I with a single bond; B r bonds to B r with a single bond; B r bonds to I with a single bond; I bonds to I with a single bond; and the last cell in the column is empty. Under the third “Bond Energy” column are the values: 255; 235; 230; 215; 225; 359; 290; 215; 215; 230; 330; 270; 215; 215; 250; 215; 243; 220; 210; 190; 180; 150; and the last cell in the column is empty."><tgroup cols="8">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<colspec colnum="5" colname="c5"/>
+<colspec colnum="6" colname="c6"/>
+
+<thead>
+<row>
+<entry namest="c1" nameend="c6" align="center">Tengjaorkur (kJ/mól)</entry>
+</row>
+<row valign="top">
+<entry align="left">Efnatengi</entry>
+<entry align="left">Tengjaorka</entry>
+<entry align="left">Efnatengi</entry>
+<entry align="left">Tengjaorka</entry>
+<entry align="left">Efnatengi</entry>
+<entry align="left">Tengjaorka</entry></row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">H–H</entry>
+<entry align="left">436</entry>
+<entry align="left">C–S</entry>
+<entry align="left">260</entry>
+<entry align="left">F–Cl</entry>
+<entry align="left">255</entry></row>
+<row valign="top">
+<entry align="left">H–C</entry>
+<entry align="left">415</entry>
+<entry align="left">C–Cl</entry>
+<entry align="left">330</entry>
+<entry align="left">F–Br</entry>
+<entry align="left">235</entry></row>
+<row valign="top">
+<entry align="left">H–N</entry>
+<entry align="left">390</entry>
+<entry align="left">C–Br</entry>
+<entry align="left">275</entry>
+<entry align="left">Si–Si</entry>
+<entry align="left">230</entry></row>
+<row valign="top">
+<entry align="left">H–O</entry>
+<entry align="left">464</entry>
+<entry align="left">C–I</entry>
+<entry align="left">240</entry>
+<entry align="left">Si–P</entry>
+<entry align="left">215</entry></row>
+<row valign="top">
+<entry align="left">H–F</entry>
+<entry align="left">569</entry>
+<entry align="left">N–N</entry>
+<entry align="left">160</entry>
+<entry align="left">Si–S</entry>
+<entry align="left">225</entry></row>
+<row valign="top">
+<entry align="left">H–Si</entry>
+<entry align="left">395</entry>
+<entry align="left"><m:math><m:mrow><m:mtext>N</m:mtext><m:mo>=</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></entry>
+<entry align="left">418</entry>
+<entry align="left">Si–Cl</entry>
+<entry align="left">359</entry></row>
+<row valign="top">
+<entry align="left">H–P</entry>
+<entry align="left">320</entry>
+<entry align="left"><m:math><m:mrow><m:mtext>N</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></entry>
+<entry align="left">946</entry>
+<entry align="left">Si–Br</entry>
+<entry align="left">290</entry></row>
+<row valign="top">
+<entry align="left">H–S</entry>
+<entry align="left">340</entry>
+<entry align="left">N–O</entry>
+<entry align="left">200</entry>
+<entry align="left">Si–I</entry>
+<entry align="left">215</entry></row>
+<row valign="top">
+<entry align="left">H–Cl</entry>
+<entry align="left">432</entry>
+<entry align="left">N–F</entry>
+<entry align="left">270</entry>
+<entry align="left">P–P</entry>
+<entry align="left">215</entry></row>
+<row valign="top">
+<entry align="left">H–Br</entry>
+<entry align="left">370</entry>
+<entry align="left">N–P</entry>
+<entry align="left">210</entry>
+<entry align="left">P–S</entry>
+<entry align="left">230</entry></row>
+<row valign="top">
+<entry align="left">H–I</entry>
+<entry align="left">295</entry>
+<entry align="left">N–Cl</entry>
+<entry align="left">200</entry>
+<entry align="left">P–Cl</entry>
+<entry align="left">330</entry></row>
+<row valign="top">
+<entry align="left">C–C</entry>
+<entry align="left">345</entry>
+<entry align="left">N–Br</entry>
+<entry align="left">245</entry>
+<entry align="left">P–Br</entry>
+<entry align="left">270</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math></entry>
+<entry align="left">611</entry>
+<entry align="left">O–O</entry>
+<entry align="left">140</entry>
+<entry align="left">P–I</entry>
+<entry align="left">215</entry></row>
+<row valign="top">
+<entry><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math></entry>
+<entry align="left">837</entry>
+<entry align="left"><m:math><m:mrow><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext></m:mrow></m:math></entry>
+<entry align="left">498</entry>
+<entry align="left">S–S</entry>
+<entry align="left">215</entry></row>
+<row valign="top">
+<entry align="left">C–N</entry>
+<entry align="left">290</entry>
+<entry align="left">O–F</entry>
+<entry align="left">160</entry>
+<entry align="left">S–Cl</entry>
+<entry align="left">250</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></entry>
+<entry align="left">615</entry>
+<entry align="left">O–Si</entry>
+<entry align="left">370</entry>
+<entry align="left">S–Br</entry>
+<entry align="left">215</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></entry>
+<entry align="left">891</entry>
+<entry align="left">O–P</entry>
+<entry align="left">350</entry>
+<entry align="left">Cl–Cl</entry>
+<entry align="left">243</entry></row>
+<row valign="top">
+<entry align="left">C–O</entry>
+<entry align="left">350</entry>
+<entry align="left">O–Cl</entry>
+<entry align="left">205</entry>
+<entry align="left">Cl–Br</entry>
+<entry align="left">220</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext></m:mrow></m:math></entry>
+<entry align="left">741</entry>
+<entry align="left">O–I</entry>
+<entry align="left">200</entry>
+<entry align="left">Cl–I</entry>
+<entry align="left">210</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>O</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1080</entry>
+<entry align="left">F–F</entry>
+<entry align="left">160</entry>
+<entry align="left">Br–Br</entry>
+<entry align="left">190</entry></row>
+<row valign="top">
+<entry align="left">C–F</entry>
+<entry align="left">439</entry>
+<entry align="left">F–Si</entry>
+<entry align="left">540</entry>
+<entry align="left">Br–I</entry>
+<entry align="left">180</entry></row>
+<row valign="top">
+<entry align="left">C–Si</entry>
+<entry align="left">360</entry>
+<entry align="left">F–P</entry>
+<entry align="left">489</entry>
+<entry align="left">I–I</entry>
+<entry align="left">150</entry></row>
+<row valign="top">
+<entry align="left">C–P</entry>
+<entry align="left">265</entry>
+<entry align="left">F–S</entry>
+<entry align="left">285</entry><entry></entry><entry></entry></row>
+</tbody>
+</tgroup>
+</table>
+<table id="fs-idm44464336" class="top-titled" summary="This table has three columns and ten rows. The first row is a header row that labels the columns: “Bond,” “Bond Length in angstroms,” and, “Bond Energy in k J / mol.” Under the column “Bond” are the values: C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; and C bonds to O with a triple bond. Under the column “Bond Length in angstroms” are the values: 1.54; 1.34; 1.20; 1.43; 1.38; 1.16; 1.43; 1.23; and 1.13. Under the column “Bond Energy in k J / mol” are the values: 345; 611; 837; 290; 615; 891; 350; 741; and 1080.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Meðaltengslengdir og tengjaorka fyrir nokkur algeng efnatengi</entry>
+</row>
+<row valign="top">
+<entry align="left">Efnatengi</entry>
+<entry align="left">Tengslengd (Å)</entry>
+<entry align="left">Tengjaorka (kJ/mól)</entry></row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">C–C</entry>
+<entry align="left">1,54</entry>
+<entry align="left">345</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1,34</entry>
+<entry align="left">611</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1,20</entry>
+<entry align="left">837</entry></row>
+<row valign="top">
+<entry align="left">C–N</entry>
+<entry align="left">1,43</entry>
+<entry align="left">290</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1,38</entry>
+<entry align="left">615</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1,16</entry>
+<entry align="left">891</entry></row>
+<row valign="top">
+<entry align="left">C–O</entry>
+<entry align="left">1,43</entry>
+<entry align="left">350</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1,23</entry>
+<entry align="left">741</entry></row>
+<row valign="top">
+<entry align="left"><m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>O</m:mtext></m:mrow></m:math></entry>
+<entry align="left">1,13</entry>
+<entry align="left">1080</entry></row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idp29959728">Við getum notað tengjaorku til að reikna út nálgaðar vermibreytingar fyrir efnahvörf þar sem myndunarvermi er ekki tiltækt. Útreikningar af þessu tagi segja okkur einnig hvort efnahvarf sé útvermið eða innvermið. Útvermið efnahvarf (neikvætt Δ<emphasis effect="italics">H</emphasis>, varmi myndast) verður þegar efnatengin í myndefnunum eru sterkari en efnatengin í hvarfefnunum. Innvermið efnahvarf (jákvætt Δ<emphasis effect="italics">H</emphasis>, varmi bundinn) verður þegar efnatengin í myndefnunum eru veikari en í hvarfefnunum.</para>
+<para id="fs-idp234028832">Vermibreytingin, Δ<emphasis effect="italics">H</emphasis>, fyrir efnahvarf er um það bil jöfn summu orkunnar sem þarf til að rjúfa öll efnatengi í hvarfefnunum (orka „inn“, jákvætt formerki) plús orkan sem losnar þegar öll efnatengi myndast í myndefnunum (orka „út“, neikvætt formerki). Þetta má setja fram stærðfræðilega á eftirfarandi hátt:</para>
+<equation id="fs-idm40243760" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:msub><m:mtext>ƩD</m:mtext><m:mrow><m:mtext>bonds broken</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mtext>ƩD</m:mtext><m:mrow><m:mtext>bonds formed</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idp118053616">Í þessari jöfnu þýðir táknið Σ „summa af“ og D táknar tengjaorkuna í kílójúlum á mól, sem er alltaf jákvæð tala. Tengjaorkan er fengin úr töflu (eins og <link target-id="fs-idm44464336"/>) og fer eftir því hvort tiltekið efnatengi er eintengi, tvítengi eða þrítengi. Þegar vermi er reiknað á þennan hátt er því mikilvægt að við skoðum efnatengin í öllum hvarfefnum og myndefnum. Þar sem D-gildi eru yfirleitt meðaltöl fyrir eina tegund efnatengis í mörgum mismunandi sameindum gefur þessi útreikningur gróft mat, en ekki nákvæmt gildi, fyrir hvarfvermi.</para>
+<para id="fs-idp17129504">Lítum á eftirfarandi efnahvarf:</para>
+<equation id="fs-idp51383312" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
+<para id="fs-idp77710320">eða</para>
+<equation id="fs-idp56299152" class="unnumbered"><m:math><m:mrow><m:mtext>H–H</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>Cl–Cl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>H–Cl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
+<para id="fs-idp201091440">Til að mynda tvö mól af HCl þarf að rjúfa eitt mól af H–H efnatengjum og eitt mól af Cl–Cl efnatengjum. Orkan sem þarf til að rjúfa þessi efnatengi er summa tengjaorku H–H efnatengisins (436 kJ/mól) og Cl–Cl efnatengisins (243 kJ/mól). Við efnahvarfið myndast tvö mól af H–Cl efnatengjum (tengjaorka = 432 kJ/mól), sem losar 2 <m:math><m:mo>×</m:mo></m:math> 432 kJ; eða 864 kJ. Þar sem efnatengin í myndefnunum eru sterkari en í hvarfefnunum losar efnahvarfið meiri orku en það notar:</para>
+<equation id="fs-idp14860448" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="right"><m:mtext>Δ</m:mtext><m:mi>H</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:msub><m:mtext>ƩD</m:mtext><m:mrow><m:mtext>bonds broken</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mtext>ƩD</m:mtext><m:mrow><m:mtext>bonds formed</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mtext>Δ</m:mtext><m:mi>H</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>H−H</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>Cl−Cl</m:mtext></m:mrow></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>H−Cl</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>[</m:mo><m:mrow><m:mn>436</m:mn><m:mo>+</m:mo><m:mn>243</m:mn></m:mrow><m:mo>]</m:mo></m:mrow><m:mo>−</m:mo><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>432</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>−185</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp29639024">Þessi umframorka losnar sem varmi, þannig að efnahvarfið er útvermið. <link document="m68865">Viðauki G</link> gefur gildi fyrir staðalmólmyndunarvermi HCl(g), <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup></m:mrow><m:mo>,</m:mo></m:math>, sem er –92,307 kJ/mól. Tvisvar sinnum það gildi er –184,6 kJ, sem er í góðu samræmi við svarið sem fékkst áður fyrir myndun tveggja móla af HCl.</para>
+<example id="fs-idm33428592">
+<para id="fs-idp71590928"><title>Notkun tengjaorku til að reikna nálgaðar vermibreytingar</title>Metanól, CH<sub>3</sub>OH, gæti verið frábær valkostur sem eldsneyti. Háhitaefnahvarf gufu og kolefnis myndar efnablöndu af lofttegundunum kolmónoxíði, CO, og vetni, H<sub>2</sub>, sem hægt er að framleiða metanól úr. Reiknaðu nálgaða vermibreytingu, Δ<emphasis effect="italics">H</emphasis>, fyrir efnahvarfið hér með því að nota tengjaorkuna í <link target-id="fs-idm44464336"/>:</para>
+<equation class="unnumbered" id="fs-idp93467344"><m:math><m:mrow><m:mtext>CO</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
+<para id="fs-idp41458304"><title>Lausn</title>Fyrst þurfum við að skrifa Lewis myndir hvarfefnanna og myndefnanna:</para>
+<media id="fs-idp525280" alt="A set of Lewis diagrams show a chemical reaction. The first structure shows a carbon atom with a lone pair of electrons triple bonded to an oxygen with a lone pair of electrons. To the right of this structure is a plus sign, then the number 2 followed by a hydrogen atom single bonded to a hydrogen atom. To the right of this structure is a right-facing arrow followed by a hydrogen atom single bonded to a carbon atom that is single bonded to two hydrogen atoms and an oxygen atom with two lone pairs of electrons. The oxygen atom is also single bonded to a hydrogen atom." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_CH3OHLew_img.jpg"/>
+</media>
+<para id="fs-idp202067232">Af þessu sjáum við að Δ<emphasis effect="italics">H</emphasis> fyrir þetta efnahvarf felur í sér orkuna sem þarf til að rjúfa C–O þrítengi og tvö H–H eintengi, auk orkunnar sem myndast við myndun þriggja C–H eintengja, eins C–O eintengis og eins O–H eintengis. Við getum sett þetta fram á eftirfarandi hátt:</para>
+<equation class="unnumbered" id="fs-idp76020096"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="right"><m:mtext>Δ</m:mtext><m:mi>H</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:msub><m:mrow><m:mtext>ƩD</m:mtext></m:mrow><m:mrow><m:mtext>bonds broken</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mrow><m:mtext>ƩD</m:mtext></m:mrow><m:mrow><m:mtext>bonds formed</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mtext>Δ</m:mtext><m:mi>H</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>O</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>H−H</m:mtext></m:mrow></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mrow><m:mo>[</m:mo><m:mrow><m:mn>3</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>C−H</m:mtext></m:mrow></m:msub></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>C−O</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>O−H</m:mtext></m:mrow></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp53734416">Með því að nota gildin fyrir tengjaorku í <link target-id="fs-idm44464336"/> fáum við:</para>
+<equation class="unnumbered" id="fs-idm103164880"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="right"><m:mtext>Δ</m:mtext><m:mi>H</m:mi></m:mtd><m:mtd><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mrow><m:mn>1080</m:mn><m:mo>+</m:mo><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>436</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>[</m:mo><m:mrow><m:mn>3</m:mn><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>415</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>350</m:mn><m:mo>+</m:mo><m:mn>464</m:mn></m:mrow><m:mo>]</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo><m:mn>−107</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp126256512">Við getum borið þetta gildi saman við gildið sem er reiknað út frá <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup></m:mrow></m:math> gögnum úr viðauka G:</para>
+<equation class="unnumbered" id="fs-idp158903840"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="right"><m:mtext>Δ</m:mtext><m:mi>H</m:mi></m:mtd><m:mtd><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup><m:mtext>CO</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mrow><m:mo>−</m:mo><m:mn>201.0</m:mn></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>[</m:mo><m:mrow><m:mn>−110.52</m:mn><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0</m:mn></m:mrow><m:mo>]</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo><m:mn>−90.5</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp56832128">Taktu eftir að það er nokkuð verulegur munur á gildunum sem reiknuð eru með þessum tveimur mismunandi aðferðum. Þetta gerist vegna þess að D-gildi eru <emphasis effect="italics">meðaltal</emphasis> mismunandi styrkleika efnatengja; þess vegna gefa þau oft aðeins gróft samræmi við önnur gögn.</para>
+<para id="fs-idp36454672"><title>Kannaðu þekkingu þína</title>Etýlalkóhól, CH<sub>3</sub>CH<sub>2</sub>OH, var eitt af fyrstu lífrænu efnunum sem menn framleiddu vísvitandi. Það hefur margvísleg not í iðnaði og er alkóhólið sem er í áfengum drykkjum. Það er hægt að fá með gerjun sykurs eða framleiða með vötnun etýlens í eftirfarandi efnahvarfi:</para>
+<media id="fs-idp144672" alt="A set of Lewis structures show a chemical reaction. The first structure shows two carbon atoms that are double bonded together and are each single bonded to two hydrogen atoms. This structure is followed by a plus sign, then an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. A right-facing arrow leads to a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms and an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a hydrogen atom as well." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_Ethanol_img.jpg"/>
+</media>
+<para id="fs-idp27645248">Notaðu tengiorkurnar í <link target-id="fs-idm44464336"/> til að reikna út áætlaða vermibreytingu, Δ<emphasis effect="italics">H</emphasis>, fyrir þetta efnahvarf.</para>
+<note id="fs-idp88406224">
+<title>Answer:</title>
+<para id="fs-idp24314032">–35 kJ</para>
+</note>
+</example>
+</section>
+<section id="fs-idm34679504">
+<title>Styrkur jónatengja og grindarorka</title>
+<para id="fs-idm57606496">Jónaefni er stöðugt vegna rafstöðuaðdráttar milli jákvæðra og neikvæðra jóna þess. Grindarorka efnasambands er mælikvarði á styrk þessa aðdráttar. <term id="term-00001">Grindarorka (Δ<emphasis effect="italics">H</emphasis><sub>grind</sub>) (e. lattice energy (δ<emphasis effect="italics">h</emphasis><sub>lattice</sub>))</term> jónaefnis er skilgreind sem orkan sem þarf til að aðskilja eitt mól af föstu efninu í jónir þess á gasformi. Fyrir jónaefnið MX er grindarorkan vermibreytingin fyrir ferlið:</para>
+<equation id="fs-idp69066736" class="unnumbered"><m:math><m:mrow><m:mtext>MX</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>M</m:mtext><m:mrow><m:mi>n</m:mi><m:mtext>+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>X</m:mtext><m:mrow><m:mi>n</m:mi><m:mtext>−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm45000976">Taktu eftir að við notum þá venju að jónaefnið er aðskilið í jónir, þannig að grindarorkurnar okkar verða <emphasis effect="italics">innvermnar</emphasis> (jákvæð gildi). Sumar bækur nota jafngilda en andstæða venju og skilgreina grindarorku sem orkuna sem losnar þegar aðskildar jónir sameinast og mynda grind og gefa upp neikvæð (útvermin) gildi. Þess vegna, ef þú flettir upp grindarorkum í annarri heimild, vertu viss um að athuga hvaða skilgreining er notuð. Í báðum tilfellum gefur hærra tölugildi grindarorku til kynna stöðugra jónaefni. Fyrir natríumklóríð er Δ<emphasis effect="italics">H</emphasis><sub>grind</sub> = 769 kJ. Það þarf því 769 kJ til að aðskilja eitt mól af föstu NaCl í Na<sup>+</sup> og Cl<sup>–</sup> jónir á gasformi. Þegar eitt mól af Na<sup>+</sup> og eitt mól af Cl<sup>–</sup> jónum á gasformi mynda fast NaCl losna 769 kJ af varma.</para>
+<para id="fs-idp17453088">Grindarorkuna Δ<emphasis effect="italics">H</emphasis><sub>grind</sub> jónakristalls má setja fram með eftirfarandi jöfnu (leidd út frá lögmáli Coulombs, sem stjórnar kröftum milli rafhleðsla):</para>
+<equation id="fs-idm6917696" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>C</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:msub><m:mtext>R</m:mtext><m:mtext>o</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idp14812032">þar sem C er fasti sem fer eftir gerð kristalgrindarinnar; Z<sup>+</sup> og Z<sup>–</sup> eru hleðslur jónanna; og R<sub>o</sub> er fjarlægðin milli jóna (summa geisla jákvæðu og neikvæðu jónanna). Þannig eykst grindarorka jónakristalls hratt þegar hleðslur jónanna aukast og stærð jónanna minnkar. Þegar allar aðrar breytur eru óbreyttar fjórfaldast grindarorkan ef hleðsla bæði katjónarinnar og anjónarinnar er tvöfölduð. Til dæmis er grindarorka LiF (Z<sup>+</sup> og Z<sup>–</sup> = 1) 1023 kJ/mól, en grindarorka MgO (Z<sup>+</sup> og Z<sup>–</sup> = 2) er 3900 kJ/mól (R<sub>o</sub> er næstum því það sama — um 200 pm fyrir bæði efnasamböndin).</para>
+<para id="fs-idp119064064">Mismunandi fjarlægðir milli atóma gefa mismunandi grindarorku. Til dæmis getum við borið saman grindarorku MgF<sub>2</sub> (2957 kJ/mól) og MgI<sub>2</sub> (2327 kJ/mól) til að sjá áhrif minni jónastærðar F<sup>–</sup> samanborið við I<sup>–</sup> á grindarorkuna.</para>
+<example id="fs-idp16649648">
+<para id="fs-idm39273856"><title>Samanburður á grindarorku</title>Dýrindis gimsteinninn rúbín er áloxíð, Al<sub>2</sub>O<sub>3</sub>, sem inniheldur snefil af Cr<sup>3+</sup>. Efnasambandið Al<sub>2</sub>Se<sub>3</sub> er notað við framleiðslu sumra hálfleiðara. Hvort hefur meiri grindarorku, Al<sub>2</sub>O<sub>3</sub> eða Al<sub>2</sub>Se<sub>3</sub>?</para>
+<para id="fs-idm3251216"><title>Lausn</title>Í þessum tveimur jónaefnum eru hleðslurnar Z<sup>+</sup> og Z<sup>–</sup> þær sömu, þannig að munurinn á grindarorkunni fer eftir R<sub>o</sub>. O<sup>2–</sup> jónin er minni en Se<sup>2–</sup> jónin. Þess vegna hefði Al<sub>2</sub>O<sub>3</sub> styttri fjarlægð milli jóna en Al<sub>2</sub>Se<sub>3</sub> og Al<sub>2</sub>O<sub>3</sub> hefði meiri grindarorku.</para>
+<para id="fs-idp49595360"><title>Kannaðu þekkingu þína</title>Sinkoxíð, ZnO, er mjög áhrifarík sólarvörn. Hvernig myndi grindarorka ZnO vera í samanburði við NaCl?</para>
+<note id="fs-idp176836208">
+<title>Answer:</title>
+<para id="fs-idp821600">ZnO hefði meiri grindarorku vegna þess að Z-gildin fyrir bæði katjónina og anjónina í ZnO eru hærri og fjarlægðin milli jóna í ZnO er minni en í NaCl.</para>
+</note>
+</example>
+</section>
+<section id="fs-idp112167568">
+<title>Born-Haber-hringferlið</title>
+<para id="fs-idp51725632">Ekki er hægt að mæla grindarorku beint. Hins vegar er hægt að reikna grindarorkuna með jöfnunni sem gefin var í fyrri hlutanum eða með því að nota varmaefnafræðilegt hringferli. <term id="term-00002">Born-Haber-hringferlið (e. born-haber cycle)</term> er beiting á lögmáli Hess sem skiptir myndun jónaefnis niður í röð einstakra skrefa:</para>
+<list id="fs-idp77725760" list-type="bulleted" bullet-style="bullet">
+<item><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math> staðalmyndunarvermi efnasambandsins</item>
+<item><emphasis effect="italics">IE</emphasis>, jónunarorka málmsins</item>
+<item><emphasis effect="italics">EA</emphasis>, rafsækni málmleysingjans</item>
+<item><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>s</m:mi><m:mo>°</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math> þurrgufunarvermi málmsins</item>
+<item><emphasis effect="italics">D</emphasis>, tengjaklofnunarorka málmleysingjans</item>
+<item>Δ<emphasis effect="italics">H</emphasis><sub>grind</sub>, grindarorka efnasambandsins</item>
+</list>
+<para id="fs-idm6705632"><link target-id="CNX_Chem_07_05_BornHaber"/> sýnir Born-Haber-hringrásina fyrir myndun fasts sesíumflúoríðs.</para>
+<figure id="CNX_Chem_07_05_BornHaber">
+<media id="fs-idp9559440" alt="A diagram is shown. An upward facing arrow is drawn to the far left of the chart and is labeled “H increasing.” A horizontal line is drawn at the bottom of the chart. A downward-facing, vertical arrow to the left side of this line is labeled, “Overall change.” Beside this arrow is another label, “capital delta H subscript f, equals negative 553.5 k J per mol, ( Enthalpy of formation ).” Three horizontal lines, one above the other, and all above the bottom line, are labeled, from bottom to top, as: “C s ( s ), plus sign, one half F subscript 2, ( g ),” “C s ( g ), plus sign, one half F subscript 2, ( g ),” and “C s, superscript positive sign, ( g ), plus sign, one half F subscript 2, ( g ).” Each of these lines is connected by an upward-facing vertical arrow. Each arrow is labeled, “capital delta H subscript 1, equals 76.5 k J per mol, ( Enthalpy of sublimation ),” “capital delta H subscript 2, equals 375.7 k J per mol, ( ionization energy ),” and “capital delta H subscript 3 equals 79.4 k J / mol ( one half dissociation energy ).” Another horizontal line is drawn in the center top portion of the diagram and is labeled “C s, superscript positive sign, ( g ), plus sign, F, ( g ).” There is one more horizontal line drawn to the right of the overall diagram and located halfway down the image. An arrow connects the top line to this line and is labeled, “capital delta H equals negative 328.2 k J / mol ( electron affinity ).” The line is labeled, “C s superscript positive sign ( g ) plus F superscript negative sign ( g ).” The arrow connecting this line to the bottom line is labeled, “negative capital delta H subscript lattice equals negative 756.9 k J / mol.” The arrow points to a label on the bottom line which reads, “C s F ( s ).”" class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_BornHaber.jpg"/>
+</media>
+<caption>Born-Haber-hringrásin sýnir afstæða orku hvers skrefs sem felst í myndun jónaefnis úr nauðsynlegum frumefnum í viðmiðunarástandi þeirra.</caption>
+</figure>
+<para id="fs-idp53345328">Við byrjum með frumefnin í algengasta ástandi þeirra, Cs(<emphasis effect="italics">s</emphasis>) og F<sub>2</sub>(<emphasis effect="italics">g</emphasis>). <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>s</m:mi><m:mo>°</m:mo></m:msubsup></m:mrow></m:math> táknar umbreytingu fasts sesíums í gas og síðan breytir jónunarorkan gasförmuðum sesíumatómum í katjónir. Í næsta skrefi tökum við tillit til orkunnar sem þarf til að rjúfa F–F-efnatengið til að mynda flúoratóm. Að breyta einu móli af flúoratómum í flúoríðjónir er útvermið ferli, þannig að þetta skref gefur frá sér orku (rafsæknina) og er sýnt sem lækkun eftir <emphasis effect="italics">y</emphasis>-ásnum. Við höfum nú eitt mól af Cs-katjónum og eitt mól af F-anjónum. Þessar jónir sameinast og mynda fast sesíumflúoríð. Vermibreytingin í þessu skrefi er neikvæða gildið á grindarorkunni, þannig að hún er einnig útvermið stærð. Heildarorkan sem felst í þessari umbreytingu er jöfn myndunarverminu, <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math>, sem ákvarðað er með tilraunum, fyrir efnasambandið úr frumefnum þess. Í þessu tilviki er heildarbreytingin útvermið.</para>
+<para id="fs-idm23453808">Einnig er hægt að nota lögmál Hess til að sýna sambandið milli vermis einstakra skrefa og myndunarvermis. <link target-id="fs-idm33829552"/> sýnir þetta fyrir flúoríð, CsF.</para>
+<table id="fs-idm33829552" summary="This table has two columns and six rows. The first row is labeled, “Enthalpy of sublimation of C s ( s )” and the enthalpy reaction is C s ( s ) yields C s ( g ). Beside this equation is capital delta H which equals capital delta H subscript s superscript degree symbol which also equals 76.5 k J. The second row is labeled, “One-half of the bond energy of C l subscript 2.” The equation for this is one half C l subscript 2 ( g ) yields C l ( g ). Beside this equation is capital delta H equals one half D which also equals 122 k J. The third row is labeled, “Ionization Energy of N a ( g ).” The equation for the ionization energy of N a ( g ) is N a ( g ) yields N a superscript positive sign ( g ) plus lower case e superscript negative sign. Beside this equation is capital delta H equals I E which also equals 496 k J. The fourth row is labeled, “Negative of the electron affinity of C l.” The equation for this is C l ( g ) plus lowercase e superscript negative sign yields C l superscript negative sign ( g ). Beside this equation is capital delta H equals negative E A which also equals negative 368 k J. The fifth row is labeled “Negative of the lattice energy of N a C l ( s ).” The equation for this is N a superscript positive sign ( g ) plus C l superscript negative sign ( g ) yields N a C l ( s ). Beside this equation is capital delta H equals negative capital delta H subscript lattice which also equals unknown. The sixth and final row is labeled, “Enthalpy of formation of N a C l ( s ), add steps 1 - 5.” The equation for this is capital delta H equals capital delta H subscript f superscript degree symbol which also equals capital delta H subscript s superscript degree symbol plus one-half D plus I E plus negative E A plus negative capital delta H subscript lattice. Underneath that equation, is another which is N a ( s ) plus one-half C l subscript 2 ( g ) yields N a C l ( s ) which equals negative 411 k J." class="column-header"><label/>
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<tbody>
+<row valign="middle">
+<entry align="left">Þurrgufunarvermi Cs(<emphasis effect="italics">s</emphasis>)</entry>
+<entry align="left"><m:math><m:mrow><m:mtext>Cs</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Cs</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
+<entry align="left"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>s</m:mi><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mn>76.5</m:mn><m:mtext>kJ/mol</m:mtext></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">Helmingur af tengjaorku F<sub>2</sub></entry>
+<entry align="left"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>F</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>F</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
+<entry align="left"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>D</m:mi><m:mo>=</m:mo><m:mn>79.4</m:mn><m:mtext>kJ/mol</m:mtext></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">Jónunarorka Cs(<emphasis effect="italics">g</emphasis>)</entry>
+<entry align="left"><m:math><m:mrow><m:mtext>Cs</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Cs</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></entry>
+<entry align="left"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mi>I</m:mi><m:mi>E</m:mi><m:mo>=</m:mo><m:mn>375.7</m:mn><m:mtext>kJ/mol</m:mtext></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">Rafsækni F</entry>
+<entry align="left"><m:math><m:mrow><m:mtext>F</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>F</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+<entry align="left"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mi>E</m:mi><m:mi>A</m:mi><m:mo>=</m:mo><m:mn>−328.2</m:mn><m:mtext>kJ/mol</m:mtext></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">Neikvætt gildi grindarorku CsF(<emphasis effect="italics">s</emphasis>)</entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mrow><m:mtext>Cs</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>F</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>CsF</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
+<entry align="left"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mtext>−Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mo>?</m:mo></m:math></entry>
+</row>
+<row valign="middle">
+<entry align="left">Myndunarvermi CsF(<emphasis effect="italics">s</emphasis>), leggja saman skref 1–5</entry>
+<entry align="left"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>f</m:mi><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>s</m:mi><m:mo>°</m:mo></m:msubsup><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>D</m:mi><m:mo>+</m:mo><m:mi>I</m:mi><m:mi>E</m:mi><m:mo>+</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>E</m:mi><m:mi>A</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mo>−</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>Cs</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>CsF</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:math></entry>
+<entry align="left"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−553.5</m:mn><m:mtext>kJ/mol</m:mtext></m:math></entry>
+</row>
+</tbody>
+
+</tgroup>
+</table>
+<para id="fs-idp28364752">Þannig er hægt að reikna grindarorkuna út frá öðrum gildum. Fyrir sesíumflúoríð, með því að nota þessi gögn, er grindarorkan:</para>
+<equation id="fs-idp37818096" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>76.5</m:mn><m:mo>+</m:mo><m:mn>79.4</m:mn><m:mo>+</m:mo><m:mn>375.7</m:mn><m:mo>+</m:mo><m:mo>(</m:mo><m:mn>–328.2</m:mn><m:mo>)</m:mo><m:mo>–</m:mo><m:mo>(</m:mo><m:mn>–553.5</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>756.9</m:mn><m:mspace width="0.2em"/><m:mtext>kJ/mol</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm78151632">Einnig er hægt að nota Born-Haber-hringrásina til að reikna út hvaða aðra stærð sem er í jöfnunni fyrir grindarorku, að því gefnu að afgangurinn sé þekktur. Til dæmis, ef viðeigandi þurrgufunarvermi <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mi>s</m:mi><m:mo>°</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math>, jónunarorka (IE), tengjaklofnunarvermi (D), grindarorka Δ<emphasis effect="italics">H</emphasis><sub>grind,</sub> og staðalmyndunarvermi <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup></m:mrow></m:math> eru þekkt, er hægt að nota Born-Haber-hringrásina til að ákvarða rafsækni atóms.</para>
+<para id="fs-idm10039728">Grindarorka sem reiknuð er fyrir jónaefnasambönd er yfirleitt mun hærri en tengjaklofnunarorka sem mæld er fyrir samgild efnatengi. Á meðan grindarorka er yfirleitt á bilinu 600–4000 kJ/mól (stundum jafnvel hærri) er tengjaklofnunarorka fyrir einföld efnatengi yfirleitt á milli 150–400 kJ/mól. Hafðu þó í huga að þetta eru ekki beint sambærileg gildi. Fyrir jónaefnasambönd er grindarorka tengd mörgum víxlverkunum þar sem katjónir og anjónir pakkast saman í stækkaða grind. Fyrir samgild efnatengi er tengjaklofnunarorka tengd víxlverkun aðeins tveggja atóma.</para>
+</section>
+<section id="fs-idp234492208" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm21693280">Styrkur samgilds efnatengis er mældur með tengjaklofnunarorku þess, þ.e. því orkumagni sem þarf til að rjúfa tiltekið efnatengi í einu móli af sameindum. Fjölföld efnatengi eru sterkari en einföld efnatengi milli sömu atóma. Hægt er að áætla vermi efnahvarfs út frá þeirri orku sem þarf til að rjúfa efnatengi og þeirri orku sem losnar þegar ný efnatengi myndast. Fyrir jónatengi er grindarorkan sú orka sem þarf til að aðskilja eitt mól af efnasambandi í jónir sínar á gasfasa. Grindarorka eykst fyrir jónir með hærri hleðslur og styttri fjarlægð milli jóna. Grindarorka er oft reiknuð með Born-Haber-hringferli, varmaefnafræðilegu hringferli sem nær yfir öll orkuþrepin sem felast í því að breyta frumefnum í jónaefnasamband.</para>
+</section>
+<section id="fs-idm37663600" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry>Tengjaorka fyrir tvíatóma sameind: <m:math><m:mrow><m:mtext>XY</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>X</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>Y</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="3em"/><m:msub><m:mtext>D</m:mtext><m:mrow><m:mtext>X–Y</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mtext>°</m:mtext></m:mrow></m:math></entry>
+</row>
+<row><entry>Vermibreyting: Δ<emphasis effect="italics">H</emphasis> = ĉD<sub>rofin efnatengi</sub> – ĉD<sub>mynduð efnatengi</sub></entry>
+</row>
+<row><entry>Grindarorka fyrir fast efni MX: <m:math><m:mrow><m:mtext>MX</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>M</m:mtext><m:mrow><m:mi>n</m:mi><m:mtext>+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>X</m:mtext><m:mrow><m:mi>n</m:mi><m:mtext>−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub></m:mrow></m:math></entry>
+</row>
+<row><entry>Grindarorka fyrir jónakristal: <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>C</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mtext>+</m:mtext></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:msub><m:mtext>R</m:mtext><m:mtext>o</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:math></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idp75946800" class="exercises">
+<title>Efnafræði – Verkefni í lok kafla</title>
+<exercise id="fs-idp18527664">
+<problem id="fs-idm31250240">
+<para id="fs-idp75695024">Hvaða efnatengi í hverju af eftirfarandi efnatengjapörum er sterkast?</para>
+<para id="fs-idp174181168">(a) C–C eða <m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp191457408">(b) C–N eða <m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>N</m:mtext></m:mrow></m:math></para>
+<para id="fs-idm37995600">(c)<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>O</m:mtext></m:mrow></m:math> eða <m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>O</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp19512320">(d) H–F eða H–Cl</para>
+<para id="fs-idm2333776">(e) C–H eða O–H</para>
+<para id="fs-idp120232048">(f) C–N eða C–O</para>
+</problem>
+</exercise>
+<exercise id="fs-idp16780032">
+<problem id="fs-idp37241056">
+<para id="fs-idm20426752">Notið tengjaorkurnar í <link target-id="fs-idp13638832"/> til að ákvarða áætlaða vermibreytingu fyrir hvert eftirfarandi efnahvarfa:</para>
+<para id="fs-idp13624240">(a) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>HBr</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+<para id="fs-idm48592992">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>I</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>HI</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+<para id="fs-idm27033728">(c) <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp55504208">
+<para id="fs-idm5136112">(a) −114 kJ; (b) 30 kJ; (c) −1055 kJ</para></solution>
+</exercise>
+<exercise id="fs-idp57429280">
+<problem id="fs-idp48795376">
+<para id="fs-idp240397744">Notið tengjaorkurnar í <link target-id="fs-idp13638832"/> til að ákvarða áætlaða vermibreytingu fyrir hvert eftirfarandi efnahvarfa:</para>
+<para id="fs-idp188770912">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>ClF</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp123909120">(b) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp30139536">(c) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp28520976">
+<problem id="fs-idp28294656">
+<para id="fs-idp220216256">Þegar sameind getur myndað tvær mismunandi byggingar er byggingin með sterkari efnatengjunum yfirleitt stöðugra formið. Notið tengjaorkur til að spá fyrir um rétta byggingu hýdroxýlamínsameindarinnar:</para>
+<media id="fs-idm6604832" alt="Two Lewis structures are shows with the word “or” written in between them. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms. It is also bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is bonded to a hydrogen atom. The right structure shows a nitrogen atom single bonded to three hydrogen atoms and an oxygen atom with three lone pairs of electrons.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_Hydroxya_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idp16844192">
+<para id="fs-idm52245504">Meiri tengjaorka er í myndinni til vinstri. Það er stöðugra formið.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp20766256">
+<problem id="fs-idm6034544">
+<para id="fs-idm22015856">Hvernig er tengjaorka HCl(<emphasis effect="italics">g</emphasis>) frábrugðin staðalmyndunarvermi HCl(<emphasis effect="italics">g</emphasis>)?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp19159472">
+<problem id="fs-idm7424064">
+<para id="fs-idp16480976">Notið gögn um staðalmyndunarvermi í <link document="m68865">viðauka G</link> og sýnið hvernig hægt er að nota staðalmyndunarvermi HCl(<emphasis effect="italics">g</emphasis>) til að ákvarða tengjaorkuna.</para>
+</problem>
+<solution id="fs-idp65612672">
+<para id="fs-idm85832672"><newline/><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:mtext>HCl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>Cl</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>1</m:mn><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>−Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>f</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>HCl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mo>°</m:mo></m:msubsup></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="8.5em"/><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>2</m:mn><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>f</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>H</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mo>°</m:mo></m:msubsup></m:mtd></m:mtr><m:mtr><m:mtd><m:munder accentunder="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Cl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="8em"/><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>3</m:mn><m:mo>°</m:mo></m:msubsup><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>f</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>Cl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mo>°</m:mo></m:msubsup></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>HCl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>H</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>Cl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="5.5em"/><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>°</m:mo></m:msup><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>1</m:mn><m:mo>°</m:mo></m:msubsup><m:mo>+</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>2</m:mn><m:mo>°</m:mo></m:msubsup><m:mo>+</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>3</m:mn><m:mo>°</m:mo></m:msubsup></m:mtd></m:mtr></m:mtable></m:math><newline/> <m:math><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd><m:mrow><m:msub><m:mi>D</m:mi><m:mrow><m:mtext>HCl</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>°</m:mo></m:msup></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>f</m:mtext><m:mo stretchy="false">[</m:mo><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo>+</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>f</m:mtext><m:mo stretchy="false">[</m:mo><m:mtext>H</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo>+</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mrow><m:mtext>f</m:mtext><m:mo stretchy="false">[</m:mo><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:mo>°</m:mo></m:msubsup></m:mrow></m:mtd></m:mtr><m:mtr/><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow/></m:mtd><m:mtd><m:mo>=</m:mo><m:mrow><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−92.307</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>217.97</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mo>+</m:mo><m:mn>121.3</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:mtd></m:mtr><m:mtr columnalign="left"><m:mtd><m:mrow/></m:mtd><m:mtd><m:mo>=</m:mo><m:mrow><m:mn>431.6</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:math></para></solution>
+</exercise>
+<exercise id="fs-idp65498352">
+<problem id="fs-idp23041056">
+<para id="fs-idp23041312">Notið gögn um staðalmyndunarvermi í <link document="m68865">viðauka G</link> og reiknið tengjaorku kolefnis-brennisteins tvítengisins í CS<sub>2</sub>.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp19660960">
+<problem id="fs-idp16871040">
+<para id="fs-idp16871296">Notið gögn um staðalmyndunarvermi í <link document="m68865">viðauka G</link> og ákvarðið hvort efnatengið er sterkara: S–F efnatengið í SF<sub>4</sub>(<emphasis effect="italics">g</emphasis>) eða í SF<sub>6</sub>(<emphasis effect="italics">g</emphasis>)?</para>
+</problem>
+<solution id="fs-idp19698336">
+<para id="fs-idm223998784">S–F efnatengið í SF<sub>4</sub> er sterkara.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm2894352">
+<problem id="fs-idm2894096">
+<para id="fs-idp88452992">Notið gögn um staðalmyndunarvermi í <link document="m68865">viðauka G</link> og ákvarðið hvort efnatengið er sterkara: P–Cl efnatengið í PCl<sub>3</sub>(<emphasis effect="italics">g</emphasis>) eða í PCl<sub>5</sub>(<emphasis effect="italics">g</emphasis>)?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm22310960">
+<problem id="fs-idp16666336">
+<para id="fs-idp16666592">Ljúkið við eftirfarandi Lewis-byggingu með því að bæta við efnatengjum (ekki atómum) og gefið síðan til kynna lengsta efnatengið:</para>
+<media id="fs-idp123644096" alt="A Lewis structure is shown that is missing its bonds. It shows a horizontal row of six carbon atoms, equally spaced. Three hydrogen atoms are drawn around the first carbon, two around the second, one above the fifth, and two by the sixth.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_C6H8Lew_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idp44310208">
+<para id="fs-idp46735152"><newline/><media id="fs-idp57448112" alt="A Lewis structure is shown. A carbon atom that is single bonded to three hydrogen atoms is bonded to a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms. The second carbon atom is single bonded to a third carbon atom that is triple bonded to a fourth carbon atom and single bonded to a fifth carbon atom. The fifth carbon atom is single bonded to a hydrogen atom and double bonded to a sixth carbon atom that is single bonded to two hydrogen atoms."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_C6H8ans_img.jpg"/></media><newline/> C–C einföldu efnatengin eru lengst.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp57420000">
+<problem id="fs-idp78457408">
+<para id="fs-idp78457664">Notaðu tengjaorkuna til að reikna út áætlað gildi Δ<emphasis effect="italics">H</emphasis> fyrir eftirfarandi efnahvarf. Hvert er stöðugra form FNO<sub>2</sub>?</para>
+<media id="fs-idp40889632" alt="Two Lewis structures are shown with a right-facing arrow in between. The left structure shows a nitrogen atom double bonded to an oxygen atom with two lone pairs of electrons. It is also bonded to a fluorine atom and another oxygen atom, each with three lone pairs of electrons. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons. This nitrogen atom is single bonded to an oxygen with two lone pairs of electrons. The oxygen atom is single bonded to a fluorine atom with three lone pairs of electrons.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_05_FNO2_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idp12625232">
+<problem id="fs-idp15947632">
+<para id="fs-idp15947888">Notaðu meginreglur um byggingu frumeinda til að svara eftirfarandi: <footnote id="fs-idp7089072">Þessi spurning er tekin úr Chemistry Advanced Placement Examination og er notuð með leyfi Educational Testing Service.</footnote></para>
+<para id="fs-idm3330960">(a) Radíus Ca-frumeindarinnar er 197 pm; radíus Ca<sup>2+</sup>-jónarinnar er 99 pm. Gerðu grein fyrir þessum mun.</para>
+<para id="fs-idp235052400">(b) Grindarorka CaO(<emphasis effect="italics">s</emphasis>) er –3460 kJ/mól; grindarorka K<sub>2</sub>O er –2240 kJ/mól. Gerðu grein fyrir þessum mun.</para>
+<para id="fs-idp15127728">(c) Útskýrðu muninn á Ca og K með tilliti til fyrstu og annarrar jónunarorku þeirra, með hliðsjón af þessum jónunargildum.</para>
+<!-- table handled separately -->
+<para id="fs-idm33928080">(d) Fyrsta jónunarorka Mg er 738 kJ/mól og Al er 578 kJ/mól. Gerðu grein fyrir þessum mun.</para>
+</problem>
+<solution id="fs-idp77726624">
+<para id="fs-idp77726880">(a) Þegar tvær rafeindir eru fjarlægðar úr girðihvolfinu missir Ca-radíusinn ysta orkuhvolfið og fer aftur niður á lægra <emphasis effect="italics">n</emphasis> = 3 hvolfið, sem hefur mun minni radíus. (b) +2 hleðslan á kalsíum togar súrefnið mun nær samanborið við K og eykur þar með grindarorkuna miðað við jón með minni hleðslu. (c) Að fjarlægja 4<emphasis effect="italics">s</emphasis>-rafeindina í Ca krefst meiri orku en að fjarlægja 4<emphasis effect="italics">s</emphasis>-rafeindina í K vegna sterkara aðdráttarkrafts kjarnans og þeirrar aukaorku sem þarf til að rjúfa pörun rafeindanna. Önnur jónunarorka fyrir K krefst þess að rafeind sé fjarlægð af lægra orkuhvolfi, þar sem aðdráttarkraftur kjarnans á rafeindina er mun sterkari. Auk þess þarf orku til að afpara tvær rafeindir á fullu svigrúmi. Fyrir Ca krefst önnur jónunarorkan þess aðeins að stök rafeind sé fjarlægð af óvörðu ytra orkuhvolfinu. (d) Í Al er rafeindin sem fjarlægð er tiltölulega óvarin og ópöruð á <emphasis effect="italics">p</emphasis>-svigrúmi. Hærri orkan fyrir Mg endurspeglar aðallega afpörun 2<emphasis effect="italics">s</emphasis>-rafeindarinnar.</para>
+</solution>
+</exercise>
+<table id="fs-idm30060832" summary="This table has three columns and three rows. The first row is a header row that labels the columns: “Element,” “First Ionization Energy in k J / mol,” and “Second Ionization Energy in k J / mol.” Under the column “Element” are the letters: K and C a. Under the column “First Ionization Energy in k J / mol” are the values: 419 and 590. Under the column “Second Ionization Energy in k J / mol” are the values: 3050 and 1140." class="unnumbered">
+<label/>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry align="left">Frumefni</entry>
+<entry align="left">Fyrsta jónunarorka (kJ/mól)</entry>
+<entry align="left">Önnur jónunarorka (kJ/mól)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">K</entry>
+<entry align="left">419</entry>
+<entry align="left">3050</entry>
+</row>
+<row valign="top">
+<entry align="left">Ca</entry>
+<entry align="left">590</entry>
+<entry align="left">1140</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<exercise id="fs-idp46666496">
+<problem id="fs-idp46666752">
+<para id="fs-idp794240">Grindarorka LiF er 1023 kJ/mól og Li–F-fjarlægðin er 200,8 pm. NaF kristallast í sömu byggingu og LiF en með Na–F-fjarlægð upp á 231 pm. Hvert eftirfarandi gilda er næst grindarorku NaF: 510, 890, 1023, 1175 eða 4090 kJ/mól? Útskýrðu valið.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp236067168">
+<problem id="fs-idp236067424">
+<para id="fs-idp236067680">Fyrir hvaða af eftirfarandi efnum þarf minnsta orku til að breyta einu móli af föstu efni í aðskildar jónir?</para>
+<para id="fs-idp211527872">(a) MgO</para>
+<para id="fs-idp90299856">(b) SrO</para>
+<para id="fs-idp90300240">(c) KF</para>
+<para id="fs-idp174354464">(d) CsF</para>
+<para id="fs-idp174354848">(e) MgF<sub>2</sub></para>
+</problem>
+<solution id="fs-idm38686272">
+<para id="fs-idm38686016">(d)</para>
+</solution>
+</exercise>
+<exercise id="fs-idm39061296">
+<problem id="fs-idm39061040">
+<para id="fs-idm39060784">Efnahvarf málms, M, við halógen, X<sub>2</sub>, er útvermið efnahvarf eins og sýnt er með þessari jöfnu: <m:math><m:mrow><m:mtext>M</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>X</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>MX</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Tilgreindu fyrir hvern eftirfarandi liða hvor kosturinn gerir efnahvarfið útvermnara. Útskýrðu svörin.</para>
+<para id="fs-idp48865984">(a) stór radíus á móti litlum radíus fyrir M<sup>+2</sup></para>
+<para id="fs-idm52945984">(b) há jónunarorka á móti lágri jónunarorku fyrir M</para>
+<para id="fs-idm37748736">(c) vaxandi tengjaorka fyrir halógenið</para>
+<para id="fs-idm37748352">(d) minnkandi rafsækni fyrir halógenið</para>
+<para id="fs-idm38878512">(e) vaxandi stærð anjónarinnar sem halógenið myndar</para>
+</problem>
+</exercise>
+<exercise id="fs-idp55219680">
+<problem id="fs-idp10681296">
+<para id="fs-idp10681552">Grindarorka LiF er 1023 kJ/mól og Li–F-fjarlægðin er 201 pm. MgO kristallast í sömu byggingu og LiF en með Mg–O-fjarlægð upp á 205 pm. Hvert eftirfarandi gilda er næst grindarorku MgO: 256 kJ/mól, 512 kJ/mól, 1023 kJ/mól, 2046 kJ/mól eða 4008 kJ/mól? Útskýrðu valið.</para>
+</problem>
+<solution id="fs-idm27862768">
+<para id="fs-idm27862512">4008 kJ/mól; báðar jónirnar í MgO hafa tvöfalda hleðslu jónanna í LiF; tengilengdin er mjög svipuð og bæði efnin hafa sömu byggingu; búast má við fjórföldun orkunnar miðað við jöfnuna fyrir grindarorku</para>
+</solution>
+</exercise>
+<exercise id="fs-idm27862256">
+<problem id="fs-idp23005264">
+<para id="fs-idp23005520">Hvaða efnasamband í hvoru eftirfarandi pari hefur stærri grindarorku? Ath.: Mg<sup>2+</sup> og Li<sup>+</sup> hafa svipaðan radíus; O<sup>2–</sup> og F<sup>–</sup> hafa svipaðan radíus. Útskýrðu val þitt.</para>
+<para id="fs-idm42318048">(a) MgO eða MgSe</para>
+<para id="fs-idp14229536">(b) LiF eða MgO</para>
+<para id="fs-idp14229920">(c) Li<sub>2</sub>O eða LiCl</para>
+<para id="fs-idm39601280">(d) Li<sub>2</sub>Se eða MgO</para>
+</problem>
+</exercise>
+<exercise id="fs-idp29388832">
+<problem id="fs-idp19286528">
+<para id="fs-idp19286784">Hvaða efnasamband í hverju eftirfarandi pari hefur stærri grindarorku? Athugið: Ba<sup>2+</sup> og</para>
+<para id="fs-idp1147008">K<sup>+</sup> hafa svipaðan radíus; S<sup>2–</sup> og Cl<sup>–</sup> hafa svipaðan radíus. Útskýrðu val þitt.</para>
+<para id="fs-idp26686336">(a) K<sub>2</sub>O eða Na<sub>2</sub>O</para>
+<para id="fs-idp81635552">(b) K<sub>2</sub>S eða BaS</para>
+<para id="fs-idp55153232">(c) KCl eða BaS</para>
+<para id="fs-idp55110752">(d) BaS eða BaCl<sub>2</sub></para>
+</problem>
+<solution id="fs-idm42840528">
+<para id="fs-idm42840272">(a) Na<sub>2</sub>O; Na<sup>+</sup> hefur minni radíus en K<sup>+</sup>; (b) BaS; Ba hefur stærri hleðslu en K; (c) BaS; Ba og S hafa stærri hleðslur; (d) BaS; S hefur stærri hleðslu</para>
+</solution>
+</exercise>
+<exercise id="fs-idp51586816">
+<problem id="fs-idp51587072">
+<para id="fs-idp51587328">Hvaða af eftirfarandi efnasamböndum krefst mestrar orku til að breyta einu móli af föstu efni í aðskildar jónir?</para>
+<para id="fs-idm8325008">(a) MgO</para>
+<para id="fs-idm8324624">(b) SrO</para>
+<para id="fs-idm2086432">(c) KF</para>
+<para id="fs-idm2086048">(d) CsF</para>
+<para id="fs-idp185408896">(e) MgF<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp56209472">
+<problem id="fs-idp56209728">
+<para id="fs-idp16978800">Hvaða af eftirfarandi efnasamböndum krefst mestrar orku til að breyta einu móli af föstu efni í aðskildar jónir?</para>
+<para id="fs-idp16979312">(a) K<sub>2</sub>S</para>
+<para id="fs-idp58281056">(b) K<sub>2</sub>O</para>
+<para id="fs-idp48854512">(c) CaS</para>
+<para id="fs-idp123580176">(d) Cs<sub>2</sub>S</para>
+<para id="fs-idp110456432">(e) CaO</para>
+</problem>
+<solution id="fs-idm33170544">
+<para id="fs-idm33170288">(e)</para>
+</solution>
+</exercise>
+<exercise id="fs-idp15208208">
+<problem id="fs-idp15208464">
+<para id="fs-idp15208720">Grindarorka KF er 794 kJ/mól og fjarlægðin milli jóna er 269 pm. Na–F</para>
+<para id="fs-idp18704480">fjarlægðin í NaF, sem hefur sömu byggingu og KF, er 231 pm. Hvaða af eftirfarandi gildum er besta nálgunin á grindarorku NaF: 682 kJ/mól, 794 kJ/mól, 924 kJ/mól, 1588 kJ/mól eða 3175 kJ/mól? Útskýrðu svar þitt.</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp10319376">
+<term>tengjaorka (e. bond energy)</term>
+<meaning id="fs-idp10319376-meaning">(einnig, tengjaklofnunarorka) orka sem þarf til að rjúfa samgilt tengi í efni á gasfasa</meaning>
+</definition>
+<definition id="fs-idp39711472">
+<term>Born-Haber-hringur (e. born-haber cycle)</term>
+<meaning id="fs-idp39711472-meaning">varmefnafræðilegur hringur sem tengir saman hin ýmsu orkuþrep sem eiga sér stað við myndun jónaefnis í föstu formi úr viðeigandi frumefnum</meaning>
+</definition>
+<definition id="fs-idp29295648">
+<term>grindarorka (ΔHgrind) (e. lattice energy (δhlattice))</term>
+<meaning id="fs-idp29295648-meaning">orka sem þarf til að aðskilja eitt mól af jónaefni í föstu formi í jónir þess á gasfasa</meaning>
+</definition>
+</glossary>
+</document>
