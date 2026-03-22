@@ -42,6 +42,13 @@ import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/par
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
+import {
+  parseCnxmlFragment,
+  serializeCnxmlFragment,
+  replaceParaContent as replaceParaContentDom,
+  replaceListItems as replaceListItemsDom,
+  removeElementsByTag,
+} from './lib/cnxml-dom.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -2145,6 +2152,105 @@ function buildExample(element, getSeg, equations, originalCnxml) {
 }
 
 /**
+ * DOM-based shadow of buildExample.
+ * Same signature, same behavior, but uses DOM manipulation instead of regex.
+ * Comparison-tested against the regex version before deployment.
+ */
+function buildExampleDom(element, getSeg, equations, originalCnxml) {
+  if (!element.id) {
+    return buildGenericElement('example', element, getSeg, equations, originalCnxml);
+  }
+
+  // Step 1: Extract example from original CNXML (same regex as buildExample)
+  const examplePattern = new RegExp(
+    `<example\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/example>`,
+    'g'
+  );
+  const match = examplePattern.exec(originalCnxml);
+  if (!match) {
+    return buildGenericElement('example', element, getSeg, equations, originalCnxml);
+  }
+
+  // Step 2: Parse into DOM
+  const { doc } = parseCnxmlFragment(match[0]);
+  const exampleEl = doc.getElementById(element.id);
+  if (!exampleEl) return match[0]; // fallback
+
+  // Step 3: Replace para content and list items via DOM.
+  // Track replaced para IDs: if a list contains an already-replaced para,
+  // skip list-item replacement to avoid destroying the para content
+  // (paras are not block-level in the DOM util, so replaceListItems would remove them).
+  const replacedParaIds = new Set();
+  let isFirstPara = true;
+
+  for (const child of element.content || []) {
+    if (child.type === 'para' && child.id) {
+      const paraEl = doc.getElementById(child.id);
+      if (!paraEl) {
+        isFirstPara = false;
+        continue;
+      }
+
+      const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+
+      let titleText = '';
+      if (isFirstPara && element.title?.segmentId) {
+        titleText = getSeg(element.title.segmentId) || '';
+      } else if (child.title?.segmentId) {
+        titleText = getSeg(child.title.segmentId) || child.title.text || '';
+      }
+
+      const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
+      replaceParaContentDom(doc, paraEl, paraText, titleCnxml);
+      replacedParaIds.add(child.id);
+      isFirstPara = false;
+    }
+
+    if (child.type === 'list' && child.id) {
+      const listEl = doc.getElementById(child.id);
+      if (listEl && child.items) {
+        // Guard: skip if list contains paras we already replaced
+        const listHasReplacedParas = [...replacedParaIds].some((paraId) => {
+          const paraEl = doc.getElementById(paraId);
+          return paraEl && isDescendantOf(paraEl, listEl);
+        });
+        if (!listHasReplacedParas) {
+          replaceListItemsDom(doc, listEl, child.items, getSeg);
+        }
+      }
+    }
+  }
+
+  // Step 4: Remove figures and tables (handled by section-level builders).
+  // Equations are NOT removed — they pass through unchanged inside examples.
+  removeElementsByTag(exampleEl, ['figure', 'table']);
+
+  // Step 5: Serialize
+  let result = serializeCnxmlFragment(exampleEl);
+
+  // Step 6: Deduplicate media and equations.
+  // The DOM preserves block children (equations) inside list items, but the
+  // translated text also includes them via expanded [[MATH:N]] markers,
+  // producing duplicates. Same pattern as deduplicateMedia.
+  result = deduplicateMedia(result);
+  result = deduplicateElementsById(result, 'equation');
+
+  return result;
+}
+
+/**
+ * Check if a node is a descendant of a given ancestor element.
+ */
+function isDescendantOf(node, ancestor) {
+  let current = node.parentNode;
+  while (current) {
+    if (current === ancestor) return true;
+    current = current.parentNode;
+  }
+  return false;
+}
+
+/**
  * Build an exercise element.
  */
 function buildExercise(element, getSeg, equations, originalCnxml) {
@@ -2546,6 +2652,27 @@ function deduplicateMedia(cnxml) {
   );
 }
 
+/**
+ * Remove duplicate elements of a given tag name, keeping the first occurrence.
+ * Used to deduplicate equations that appear both as preserved block children
+ * in the DOM and as expanded [[MATH:N]] markers in the translated text.
+ * @param {string} cnxml - CNXML content
+ * @param {string} tagName - Tag name to deduplicate (e.g., 'equation')
+ * @returns {string} CNXML with duplicates removed
+ */
+function deduplicateElementsById(cnxml, tagName) {
+  const seenIds = new Set();
+  const pattern = new RegExp(
+    `<${tagName}\\s+[^>]*\\bid="([^"]+)"[^>]*>[\\s\\S]*?<\\/${tagName}>`,
+    'g'
+  );
+  return cnxml.replace(pattern, (match, id) => {
+    if (seenIds.has(id)) return '';
+    seenIds.add(id);
+    return match;
+  });
+}
+
 // =====================================================================
 // FILE I/O
 // =====================================================================
@@ -2855,6 +2982,7 @@ export {
   buildCnxml,
   // Exported for comparison testing (DOM vs regex refactor)
   buildExample,
+  buildExampleDom,
   buildExercise,
   buildNote,
 };
