@@ -2,7 +2,7 @@
 Vermi
 
 <!-- SEG:m68727:abstract:auto-2 -->
-Þegar þú hefur lokið við þennan kafla getur þú:
+Í lok þessa kafla muntu geta:
 
 <!-- SEG:m68727:abstract-item:abstract-item-1 -->
 Lýst fyrsta lögmáli varmafræðinnar
@@ -11,52 +11,52 @@ Lýst fyrsta lögmáli varmafræðinnar
 Skilgreint vermi og útskýrt flokkun þess sem ástandsfall
 
 <!-- SEG:m68727:abstract-item:abstract-item-3 -->
-Skrifað og stillt varmaefnafræðilegar jöfnur
+Skrifað og stillt af varmaefnafræðilegar jöfnur
 
 <!-- SEG:m68727:abstract-item:abstract-item-4 -->
 Reiknað vermisbreytingar fyrir ýmis efnahvörf
 
 <!-- SEG:m68727:abstract-item:abstract-item-5 -->
-Útskýrt lögmál Hess og notað það til að reikna út vermi efnahvarfa
+Útskýrt lögmál Hess og notað það til að reikna út hvarfvermi
 
 <!-- SEG:m68727:para:fs-idp160276224 -->
-Varmaefnafræði er grein innan {{term}}efnavarmafræði{{/term}}, vísindagreinarinnar sem fjallar um tengslin milli varma, vinnu og annarra orkuforma í samhengi við efna- og eðlisferli. Þar sem við einbeitum okkur að varmaefnafræði í þessum kafla þurfum við að skoða nokkur algeng hugtök úr varmafræði.
+Varmaefnafræði er grein innan {{term}}varmaefnafræði{{/term}}, vísindanna sem fjalla um tengslin milli varma, vinnu og annarra orkuforma í samhengi við efna- og eðlisfræðilega ferla. Þar sem við einbeitum okkur að varmaefnafræði í þessum kafla þurfum við að skoða nokkur algeng hugtök úr varmafræði.
 
 <!-- SEG:m68727:para:fs-idp5509104 -->
-Efni virka sem orkugeymslur, sem þýðir að orku er hægt að bæta við þau eða fjarlægja úr þeim. Orka er geymd í efni þegar hreyfiorka atóma þess eða sameinda er aukin. Meiri hreyfiorka getur verið í formi aukinnar skriðhreyfingar (ferðalög eða hreyfingar í beinni línu), titrings eða snúnings atóma eða sameinda. Þegar varmaorka tapast minnkar styrkur þessara hreyfinga og hreyfiorkan minnkar. Heildarsumma allra mögulegra orkutegunda sem eru til staðar í efni er kölluð {{term}}innri orka ([[i:U]]) {{/term}}, stundum táknuð með [[i:E]].
+Efni virka sem orkugeymslur, sem þýðir að hægt er að bæta orku við þau eða fjarlægja orku úr þeim. Orka er geymd í efni þegar hreyfiorka atóma þess eða sameinda er aukin. Meiri hreyfiorka getur verið í formi aukinnar færslu (ferðalags eða hreyfingar í beinni línu), titrings eða snúnings atómanna eða sameindanna. Þegar varmaorka tapast minnkar styrkur þessara hreyfinga og hreyfiorkan minnkar. Heildarsumma allra mögulegra orkutegunda sem eru til staðar í efni er kölluð {{term}}innri orka ([[i:U]]){{/term}}, stundum táknuð sem [[i:E]].
 
 <!-- SEG:m68727:para:fs-idm1690784 -->
-Þegar kerfi gengur í gegnum breytingu getur innri orka þess breyst og orka getur flust frá kerfinu yfir í umhverfið, eða frá umhverfinu yfir í kerfið. Orka flyst inn í kerfi þegar það gleypir varma ([[i:q]]) frá umhverfinu eða þegar umhverfið framkvæmir vinnu ([[i:w]]) á kerfinu. Til dæmis flyst orka inn í málmvír við stofuhita ef honum er dýft í heitt vatn (vírinn gleypir varma úr vatninu), eða ef þú beygir vírinn hratt fram og til baka (vírinn verður heitari vegna vinnunnar sem er framkvæmd á honum). Báðir ferlar auka innri orku vírsins, sem endurspeglast í hækkun á hitastigi hans. Aftur á móti flyst orka út úr kerfi þegar varmi tapast úr kerfinu, eða þegar kerfið framkvæmir vinnu á umhverfinu.
+Þegar kerfi gengur í gegnum breytingu getur innri orka þess breyst og orka getur flust frá kerfinu yfir í umhverfið eða frá umhverfinu yfir í kerfið. Orka flyst inn í kerfi þegar það gleypir varma ([[i:q]]) frá umhverfinu eða þegar umhverfið vinnur vinnu ([[i:w]]) á kerfinu. Til dæmis flyst orka inn í málmvír við stofuhita ef honum er dýft í heitt vatn (vírinn gleypir varma úr vatninu) eða ef þú beygir vírinn hratt fram og til baka (vírinn verður heitari vegna vinnunnar sem unnin er á honum). Báðir ferlar auka innri orku vírsins, sem endurspeglast í hækkun á hitastigi hans. Aftur á móti flyst orka út úr kerfi þegar varmi tapast úr kerfinu eða þegar kerfið vinnur vinnu á umhverfinu.
 
 <!-- SEG:m68727:para:fs-idp16545808 -->
 Sambandið milli innri orku, varma og vinnu má tákna með jöfnunni:
 
 <!-- SEG:m68727:para:fs-idp146392048 -->
-eins og sýnt er á [[xref:CNX_Chem_05_03_Systemqw]]. Þetta er ein útgáfa af {{term}}fyrsta lögmáli varmafræðinnar{{/term}} og sýnir að innri orka kerfis breytist með varmaflæði inn í eða út úr kerfinu (jákvætt [[i:q]] er varmaflæði inn; neikvætt [[i:q]] er varmaflæði út) eða vinnu sem er framkvæmd á eða af kerfinu. Vinnan, [[i:w]], er jákvæð ef hún er framkvæmd á kerfinu og neikvæð ef hún er framkvæmd af kerfinu.
+eins og sýnt er í [[xref:CNX_Chem_05_03_Systemqw]]. Þetta er ein útgáfa af {{term}}fyrsta lögmáli varmafræðinnar{{/term}} og hún sýnir að innri orka kerfis breytist með varmaflæði inn í eða út úr kerfinu (jákvætt [[i:q]] er varmaflæði inn; neikvætt [[i:q]] er varmaflæði út) eða vinnu sem er unnin á eða af kerfinu. Vinnan, [[i:w]], er jákvæð ef hún er unnin á kerfinu og neikvæð ef hún er unnin af kerfinu.
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_Systemqw-caption -->
-Innri orku, [[i:U]], kerfis má breyta með varmaflæði og vinnu. Ef varmi flæðir inn í kerfið, [[i:q]][[sub:inn]], eða vinna er framkvæmd á kerfinu, [[i:w]][[sub:á]], eykst innri orka þess, Δ[[i:U]] > 0. Ef varmi flæðir út úr kerfinu, [[i:q]][[sub:út]], eða vinna er framkvæmd af kerfinu, [[i:w]][[sub:af]], minnkar innri orka þess, Δ[[i:U]] &lt; 0.
+Innri orku, [[i:U]], kerfis má breyta með varmaflæði og vinnu. Ef varmi flæðir inn í kerfið, [[i:q]][[sub:inn]], eða vinna er unnin á kerfinu, [[i:w]][[sub:á]], eykst innri orka þess, Δ[[i:U]] > 0. Ef varmi flæðir út úr kerfinu, [[i:q]][[sub:út]], eða vinna er unnin af kerfinu, [[i:w]][[sub:af]], minnkar innri orka þess, Δ[[i:U]] < 0.
 
 <!-- SEG:m68727:para:fs-idp6896176 -->
-Sú tegund vinnu sem kallast {{term}}þensluvinna{{/term}} (eða þrýstings-rúmmálsvinna) á sér stað þegar kerfi þrýstir á móti umhverfinu gegn hamlandi þrýstingi, eða þegar umhverfið þjappar kerfinu saman. Dæmi um þetta á sér stað við notkun brunahreyfils. Efnahvarf bensíns og súrefnis er útvermið. Hluti þessarar orku losnar sem varmi og hluti framkvæmir vinnu með því að ýta stimplinum í strokknum. Efnin sem taka þátt í efnahvarfinu eru kerfið og hreyfillinn og restin af alheiminum eru umhverfið. Kerfið tapar orku bæði með því að hitna og með því að framkvæma vinnu á umhverfinu og innri orka þess minnkar. (Hreyfillinn getur haldið bílnum á hreyfingu vegna þess að þetta ferli er endurtekið mörgum sinnum á sekúndu á meðan hreyfillinn er í gangi.) Við munum skoða hvernig ákvarða má magn vinnu sem fylgir efna- eða eðlisbreytingu í kaflanum um varmafræði.
+Sú tegund vinnu sem kallast {{term}}þensluvinna{{/term}} (eða þrýstings-rúmmálsvinna) á sér stað þegar kerfi þrýstir á móti umhverfinu gegn hamlandi þrýstingi eða þegar umhverfið þjappar kerfinu saman. Dæmi um þetta á sér stað við notkun brunahreyfils. Efnahvarf bensíns og súrefnis er útvermið. Hluti þessarar orku losnar sem varmi og hluti vinnur vinnu með því að ýta stimplinum í strokknum. Efnin sem taka þátt í efnahvarfinu eru kerfið og hreyfillinn og restin af alheiminum eru umhverfið. Kerfið tapar orku bæði með því að hitna og með því að vinna vinnu á umhverfinu og innri orka þess minnkar. (Hreyfillinn getur haldið bílnum á hreyfingu vegna þess að þetta ferli er endurtekið mörgum sinnum á sekúndu á meðan hreyfillinn er í gangi.) Við munum skoða hvernig á að ákvarða magn vinnu sem fylgir efna- eða eðlisbreytingu í kaflanum um varmafræði.
 
 <!-- SEG:m68727:para:fs-idp13166816 -->
-Þessi sýn á [[link:brunahreyfil|http://openstax.org/l/16combustion]] sýnir umbreytingu orku sem myndast við útvermið brunaefnahvarf eldsneytis eins og bensíns í hreyfiorku.
+Þessi sýn á [[link:brunahreyfil|http://openstax.org/l/16combustion]] sýnir umbreytingu orku sem myndast við útvermið brunahvarf eldsneytis eins og bensíns í hreyfiorku.
 
 <!-- SEG:m68727:para:fs-idp120420048 -->
-Eins og fjallað var um má tákna sambandið milli innri orku, varma og vinnu sem Δ[[i:U]] = [[i:q]] + [[i:w]]. Innri orka er dæmi um {{term}}ástandsfall{{/term}} (eða ástandsbreytu), en varmi og vinna eru ekki ástandsföll. Gildi ástandsfalls veltur aðeins á því ástandi sem kerfi er í, en ekki á því hvernig því ástandi er náð. Ef stærð er ekki ástandsfall, þá veltur gildi hennar [[i:vissulega]] á því hvernig ástandinu er náð. Dæmi um ástandsfall er hæð yfir sjávarmáli eða landhæð. Ef þú stendur á tindi Kilimanjaro-fjalls ertu í 5895 m hæð og það skiptir ekki máli hvort þú gekkst þangað eða stökkst þangað í fallhlíf. Vegalengdin sem þú fórst til að komast á tind Kilimanjaro er hins vegar ekki ástandsfall. Þú gætir klifið á tindinn eftir beinni leið eða eftir krókóttari og lengri leið ([[xref:CNX_Chem_05_03_Summit]]). Vegalengdirnar sem farnar eru væru mismunandi (vegalengd er ekki ástandsfall) en hæðin sem náð er væri sú sama (hæð yfir sjávarmáli er ástandsfall).
+Eins og rætt var um má tákna sambandið milli innri orku, varma og vinnu sem Δ[[i:U]] = [[i:q]] + [[i:w]]. Innri orka er dæmi um {{term}}ástandsfall{{/term}} (eða ástandsbreytu), en varmi og vinna eru ekki ástandsföll. Gildi ástandsfalls veltur aðeins á því ástandi sem kerfi er í, en ekki á því hvernig því ástandi var náð. Ef stærð er ekki ástandsfall veltur gildi hennar á því [[i:hvernig]] ástandinu er náð. Dæmi um ástandsfall er hæð yfir sjávarmáli eða landhæð. Ef þú stendur á tindi Kilimanjaro-fjalls ertu í 5895 m hæð og það skiptir ekki máli hvort þú gekkst þangað eða féllst þangað í fallhlíf. Vegalengdin sem þú fórst á topp Kilimanjaro er hins vegar ekki ástandsfall. Þú gætir klifið á tindinn eftir beinni leið eða eftir krókóttari og lengri leið ([[xref:CNX_Chem_05_03_Summit]]). Vegalengdirnar sem farnar eru væru mismunandi (vegalengd er ekki ástandsfall) en hæðin sem náð er væri sú sama (hæð yfir sjávarmáli er ástandsfall).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_Summit-caption -->
-Leiðir X og Y tákna tvær mismunandi leiðir á tind Kilimanjaro-fjalls. Báðar hafa sömu hæðarbreytingu (hæð yfir sjávarmáli eða landhæð á fjalli er ástandsfall; það veltur ekki á leiðinni), en þær hafa mjög mismunandi vegalengdir (gengin vegalengd er ekki ástandsfall; hún veltur á leiðinni). (Heimild: breyting á verki eftir Paul Shaffner)
+Leiðir X og Y tákna tvær mismunandi leiðir á tind Kilimanjaro-fjalls. Báðar hafa sömu hæðarbreytingu (hæð yfir sjávarmáli eða landhæð á fjalli er ástandsfall; hún veltur ekki á leiðinni), en þær hafa mjög mismunandi vegalengdir (gengin vegalengd er ekki ástandsfall; hún veltur á leiðinni). (heimild: breytt útgáfa af verki eftir Paul Shaffner)
 
 <!-- SEG:m68727:para:fs-idp107461968 -->
 Efnafræðingar nota venjulega eiginleika sem kallast {{term}}vermi ([[i:H]]){{/term}} til að lýsa varmafræði efna- og eðlisfræðilegra ferla. Vermi er skilgreint sem summa innri orku kerfis ([[i:U]]) og stærðfræðilegs margfeldis þrýstings þess ([[i:P]]) og rúmmáls ([[i:V]]):
 
 <!-- SEG:m68727:para:fs-idm20812336 -->
-Vermi er einnig ástandsstærð. Ekki er hægt að mæla vermigildi fyrir tiltekin efni beint; aðeins er hægt að ákvarða vermi[[i:breytingar]] fyrir efna- eða eðlisfræðileg ferli. Fyrir ferli sem eiga sér stað við fastan þrýsting (algengt skilyrði fyrir margar efna- og eðlisfræðilegar breytingar) er {{term}}vermibreytingin (Δ[[i:H]]){{/term}}:
+Vermi er einnig ástandsfall. Ekki er hægt að mæla vermigildi fyrir tiltekin efni beint; aðeins er hægt að ákvarða vermi[[i:breytingar]] fyrir efna- eða eðlisfræðileg ferli. Fyrir ferli sem eiga sér stað við fastan þrýsting (algengt skilyrði fyrir margar efna- og eðlisfræðilegar breytingar) er {{term}}vermibreytingin (Δ[[i:H]]){{/term}}:
 
 <!-- SEG:m68727:para:fs-idm15694224 -->
-Stærðfræðilega margfeldið [[i:P]]Δ[[i:V]] táknar vinnu ([[i:w]]), þ.e. þensluvinnu eða þrýstings-rúmmálsvinnu eins og fram hefur komið. Samkvæmt skilgreiningum þeirra verða formerki Δ[[i:V]] og [[i:w]] alltaf andstæð:
+Stærðfræðilega margfeldið [[i:P]]Δ[[i:V]] táknar vinnu ([[i:w]]), þ.e. þensluvinnu eða þrýstings-rúmmálsvinnu eins og fram hefur komið. Samkvæmt skilgreiningum þeirra munu reikningsleg formerki Δ[[i:V]] og [[i:w]] alltaf vera andstæð:
 
 <!-- SEG:m68727:para:fs-idp7052304 -->
 Með því að setja þessa jöfnu og skilgreininguna á innri orku inn í jöfnuna fyrir vermibreytingu fæst:
@@ -68,52 +68,52 @@ Með því að setja þessa jöfnu og skilgreininguna á innri orku inn í jöfn
 Þannig að ef efna- eða eðlisfræðilegt ferli er framkvæmt við fastan þrýsting þar sem eina vinnan sem unnin er stafar af þenslu eða samdrætti, þá eru varmaflæðið ([[i:q[[sub:p]]]]) og vermibreytingin (Δ[[i:H]]) fyrir ferlið jöfn.
 
 <!-- SEG:m68727:para:fs-idm22504976 -->
-Varminn sem losnar þegar þú notar Bunsen brennara er jafn vermibreytingu metanbrunans sem á sér stað, þar sem hann gerist við nánast fastan þrýsting andrúmsloftsins. Aftur á móti er varminn sem myndast við efnahvarf mælt í sprengihitamæli ([[docref:m68726#CNX_Chem_05_02_BombCalor]]) ekki jafn Δ[[i:H]] vegna þess að lokað málmílát með föstu rúmmáli kemur í veg fyrir að þrýstingurinn haldist fastur (hann getur aukist eða minnkað ef efnahvarfið skilar auknu eða minnkuðu magni af loftkenndum efnum). Efnafræðingar framkvæma venjulega tilraunir við venjulegar aðstæður í andrúmslofti, við fastan ytri þrýsting með [[i:q]] = Δ[[i:H]], sem gerir vermi að hentugasta valkostinum til að ákvarða varmabreytingar fyrir efnahvörf.
+Varminn sem losnar þegar þú notar Bunsen brennara er jafn vermibreytingu metanbrunans sem á sér stað, þar sem hann gerist við nánast stöðugan þrýsting andrúmsloftsins. Aftur á móti er varminn sem myndast við efnahvarf mælt í sprengihitamæli ([[docref:m68726#CNX_Chem_05_02_BombCalor]]) ekki jafn Δ[[i:H]] vegna þess að lokað málmílát með föstu rúmmáli kemur í veg fyrir að þrýstingurinn haldist stöðugur (hann getur aukist eða minnkað ef efnahvarfið skilar auknu eða minnkuðu magni af loftkenndum efnum). Efnafræðingar framkvæma venjulega tilraunir við venjulegar aðstæður í andrúmslofti, við stöðugan ytri þrýsting með [[i:q]] = Δ[[i:H]], sem gerir vermi að hentugasta valkostinum til að ákvarða varmabreytingar fyrir efnahvörf.
 
 <!-- SEG:m68727:para:fs-idp25166224 -->
 Eftirfarandi venjur gilda þegar Δ[[i:H]] er notað:
 
 <!-- SEG:m68727:item:fs-idm49861360-item-1 -->
-Neikvætt gildi vermibreytingar, Δ[[i:H]] < 0, gefur til kynna útvermið efnahvarf; jákvætt gildi, Δ[[i:H]] > 0, gefur til kynna innvermið efnahvarf. Ef stefnu efnajöfnu er snúið við, er formerki Δ[[i:H]] hennar breytt (ferli sem er innvermið í eina átt er útvermið í gagnstæða átt).
+Neikvætt gildi vermibreytingar, Δ[[i:H]] < 0, gefur til kynna útvermið efnahvarf; jákvætt gildi, Δ[[i:H]] > 0, gefur til kynna innvermið efnahvarf. Ef stefnu efnajöfnu er snúið við, er reikningslegu formerki Δ[[i:H]] hennar breytt (ferli sem er innvermið í eina átt er útvermið í gagnstæða átt).
 
 <!-- SEG:m68727:item:fs-idm49861360-item-2 -->
-Efnafræðingar nota varmaefnajöfnu til að tákna breytingar á bæði efni og orku. Í varmaefnajöfnu er vermibreyting efnahvarfs sýnd sem Δ[[i:H]] gildi á eftir jöfnu efnahvarfsins. Þetta Δ[[i:H]] gildi gefur til kynna þann varmamagn sem tengist efnahvarfinu sem felur í sér fjölda móla hvarfefna og myndefna [[i:eins og sýnt er í efnajöfnunni]]. Tökum sem dæmi þessa jöfnu: [[MATH:1]] Þessi jafna gefur til kynna að þegar 1 mól af vetnisgasi og [[MATH:3]] mól af súrefnisgasi við ákveðið hitastig og þrýsting breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma út í umhverfið. Ef stuðlar efnajöfnunnar eru margfaldaðir með einhverjum þætti, verður vermibreytingin að vera margfölduð með sama þætti (Δ[[i:H]] er úthverfur eiginleiki): [[MATH:2]]
+Efnafræðingar nota varmaefnajöfnu til að tákna breytingar á bæði efni og orku. Í varmaefnajöfnu er vermibreyting efnahvarfs sýnd sem Δ[[i:H]] gildi á eftir jöfnu efnahvarfsins. Þetta Δ[[i:H]] gildi gefur til kynna það varmamagn sem tengist efnahvarfinu sem felur í sér fjölda móla hvarfefna og myndefna [[i:eins og sýnt er í efnajöfnunni]]. Tökum sem dæmi þessa jöfnu: [[MATH:1]] Þessi jafna gefur til kynna að þegar 1 mól af vetnisgasi og [[MATH:3]] mól af súrefnisgasi við ákveðið hitastig og þrýsting breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma út í umhverfið. Ef stuðlar efnajöfnunnar eru margfaldaðir með einhverjum þætti, verður að margfalda vermibreytinguna með sama þætti (Δ[[i:H]] er úthverfur eiginleiki): [[MATH:2]]
 
 <!-- SEG:m68727:item:fs-idm49861360-item-3 -->
-Vermibreyting efnahvarfs fer eftir ástandi hvarfefna og myndefna og því verður að sýna þau. Til dæmis, þegar 1 mól af vetnisgasi og [[MATH:5]] mól af súrefnisgasi breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma. Ef vatn á gasformi myndast losna aðeins 242 kJ af varma. [[MATH:4]]
+Vermibreyting efnahvarfs fer eftir ástandi hvarfefna og myndefna, svo það verður að sýna þau. Til dæmis, þegar 1 mól af vetnisgasi og [[MATH:5]] mól af súrefnisgasi breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma. Ef vatn á gasformi myndast, losna aðeins 242 kJ af varma. [[MATH:4]]
 
 <!-- SEG:m68727:para:fs-idm11576944 -->
-Neikvætt gildi vermibreytingar, Δ[[i:H]] < 0, gefur til kynna útvermið efnahvarf; jákvætt gildi, Δ[[i:H]] > 0, gefur til kynna innvermið efnahvarf. Ef stefnu efnajöfnu er snúið við, er formerki Δ[[i:H]] hennar breytt (ferli sem er innvermið í eina átt er útvermið í gagnstæða átt).
+Neikvætt gildi vermibreytingar, Δ[[i:H]] < 0, gefur til kynna útvermið efnahvarf; jákvætt gildi, Δ[[i:H]] > 0, gefur til kynna innvermið efnahvarf. Ef stefnu efnajöfnu er snúið við, er reikningslegu formerki Δ[[i:H]] hennar breytt (ferli sem er innvermið í eina átt er útvermið í gagnstæða átt).
 
 <!-- SEG:m68727:para:fs-idp165042832 -->
-Efnafræðingar nota varmaefnajöfnu til að tákna breytingar á bæði efni og orku. Í varmaefnajöfnu er vermibreyting efnahvarfs sýnd sem Δ[[i:H]] gildi á eftir jöfnu efnahvarfsins. Þetta Δ[[i:H]] gildi gefur til kynna þann varmamagn sem tengist efnahvarfinu sem felur í sér fjölda móla hvarfefna og myndefna [[i:eins og sýnt er í efnajöfnunni]]. Tökum sem dæmi þessa jöfnu:
+Efnafræðingar nota varmaefnajöfnu til að tákna breytingar á bæði efni og orku. Í varmaefnajöfnu er vermibreyting efnahvarfs sýnd sem Δ[[i:H]] gildi á eftir jöfnu efnahvarfsins. Þetta Δ[[i:H]] gildi gefur til kynna það varmamagn sem tengist efnahvarfinu sem felur í sér fjölda móla hvarfefna og myndefna [[i:eins og sýnt er í efnajöfnunni]]. Tökum sem dæmi þessa jöfnu:
 
 <!-- SEG:m68727:para:fs-idm35882976 -->
-Þessi jafna gefur til kynna að þegar 1 mól af vetnisgasi og [[MATH:6]] mól af súrefnisgasi við ákveðið hitastig og þrýsting breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma út í umhverfið. Ef stuðlar efnajöfnunnar eru margfaldaðir með einhverjum þætti, verður vermibreytingin að vera margfölduð með sama þætti (Δ[[i:H]] er úthverfur eiginleiki):
+Þessi jafna gefur til kynna að þegar 1 mól af vetnisgasi og [[MATH:6]] mól af súrefnisgasi við ákveðið hitastig og þrýsting breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma út í umhverfið. Ef stuðlar efnajöfnunnar eru margfaldaðir með einhverjum þætti, verður að margfalda vermibreytinguna með sama þætti (Δ[[i:H]] er úthverfur eiginleiki):
 
 <!-- SEG:m68727:para:fs-idm72030880 -->
-Vermibreyting efnahvarfs fer eftir ástandi hvarfefna og myndefna og því verður að sýna þau. Til dæmis, þegar 1 mól af vetnisgasi og [[MATH:7]] mól af súrefnisgasi breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma. Ef vatn á gasformi myndast losna aðeins 242 kJ af varma.
+Vermibreyting efnahvarfs fer eftir ástandi hvarfefna og myndefna, svo það verður að sýna þau. Til dæmis, þegar 1 mól af vetnisgasi og [[MATH:7]] mól af súrefnisgasi breytast í 1 mól af fljótandi vatni við sama hitastig og þrýsting, losna 286 kJ af varma. Ef vatn á gasformi myndast, losna aðeins 242 kJ af varma.
 
 <!-- SEG:m68727:example-title:fs-idm9240992-title -->
 Að skrifa varmaefnajöfnur
 
 <!-- SEG:m68727:para:fs-idp52228448 -->
-Þegar 0,0500 mól af HCl([[i:aq]]) hvarfast við 0,0500 mól af NaOH([[i:aq]]) og myndar 0,0500 mól af NaCl([[i:aq]]), losna 2,9 kJ af varma. Skrifaðu stillta varmaefnafræðilega jöfnu fyrir efnahvarf eins móls af HCl.
+Þegar 0,0500 mól af HCl([[i:aq]]) hvarfast við 0,0500 mól af NaOH([[i:aq]]) og myndar 0,0500 mól af NaCl([[i:aq]]) losna 2,9 kJ af varma. Skrifaðu upp stillta varmefnafræðilega jöfnu fyrir efnahvarf eins móls af HCl.
 
 <!-- SEG:m68727:para-title:fs-idm10084896-title -->
 Lausn
 
 <!-- SEG:m68727:para:fs-idm10084896 -->
-Fyrir efnahvarf 0,0500 móla af sýru (HCl) er [[i:q]] = −2,9 kJ. Hvarfefnin eru gefin í hlutfallaefnafræðilegum skömmtum (sama mólhlutfall og í stilltri jöfnu) og því má nota magn sýrunnar til að reikna út mólverminbreytingu. Þar sem Δ[[i:H]] er ytri eiginleiki er hann í réttu hlutfalli við magn sýru sem er hlutleyst:
+Fyrir efnahvarf 0,0500 móla af sýru (HCl) er [[i:q]] = −2,9 kJ. Hvarfefnin eru gefin í hlutfallaefnafræðilegum skömmtum (sama mólhlutfall og í stilltri jöfnu) og því má nota magn sýrunnar til að reikna út mólverminbreytingu. Þar sem Δ[[i:H]] er ytri eiginleiki er hann í réttu hlutfalli við magn sýrunnar sem er hlutleyst:
 
 <!-- SEG:m68727:para:fs-idp13720784 -->
-Varmaefnafræðilega jafnan er þá
+Varmefnafræðilega jafnan er þá
 
 <!-- SEG:m68727:para-title:fs-idp6958160-title -->
-Prófaðu þekkingu þína
+Kannaðu þekkingu þína
 
 <!-- SEG:m68727:para:fs-idp6958160 -->
-Þegar 1,34 g af Zn([[i:s]]) hvarfast við 60,0 ml af 0,750 M HCl([[i:aq]]), losna 3,14 kJ af varma. Ákvarðaðu vermibreytinguna á hvert mól af sinki sem hvarfast í efnahvarfinu:
+Þegar 1,34 g af Zn([[i:s]]) hvarfast við 60,0 ml af 0,750 M HCl([[i:aq]]) losna 3,14 kJ af varma. Ákvarðaðu vermibreytinguna á mól af sinki sem hvarfast í efnahvarfinu:
 
 <!-- SEG:m68727:para:fs-idp35719536 -->
 Δ[[i:H]] = −153 kJ
@@ -125,13 +125,13 @@ Svar:
 Δ[[i:H]] = −153 kJ
 
 <!-- SEG:m68727:para:fs-idm14305808 -->
-Vertu viss um að taka tillit til bæði hlutfallaefnafræði og takmarkandi hvarfefna þegar þú ákvarðar Δ[[i:H]] fyrir efnahvarf.
+Gættu þess að taka bæði hlutfallaefnafræði og takmarkandi hvarfefni til greina þegar þú ákvarðar Δ[[i:H]] fyrir efnahvarf.
 
 <!-- SEG:m68727:example-title:fs-idp107963312-title -->
-Að skrifa varmaefnafræðilegar jöfnur
+Að skrifa varmefnafræðilegar jöfnur
 
 <!-- SEG:m68727:para:fs-idm6526496 -->
-Hlaupbangsi inniheldur 2,67 g af súkrósa, C[[sub:12]]H[[sub:22]]O[[sub:11]]. Þegar hann hvarfast við 7,19 g af kalíumklórati, KClO[[sub:3]], losna 43,7 kJ af varma. Skrifaðu varmaefnafræðilega jöfnu fyrir efnahvarf eins móls af súkrósa:
+Hlaupbangsi inniheldur 2,67 g af súkrósa, C[[sub:12]]H[[sub:22]]O[[sub:11]]. Þegar hann hvarfast við 7,19 g af kalíumklórati, KClO[[sub:3]], losna 43,7 kJ af varma. Skrifaðu varmefnafræðilega jöfnu fyrir efnahvarf eins móls af súkrósa:
 
 <!-- SEG:m68727:para-title:fs-idm42247408-title -->
 Lausn
@@ -146,16 +146,16 @@ Uppgefið magn hvarfefnanna tveggja er
 Uppgefið mólhlutfall perklórats á móti súkrósa er þá
 
 <!-- SEG:m68727:para:fs-idm379230752 -->
-Stilta jafnan sýnir að það þarf 8 mól af KClO[[sub:3]] til að hvarfast við 1 mól af C[[sub:12]]H[[sub:22]]O[[sub:11]]. Þar sem uppgefið magn af KClO[[sub:3]] er minna en hlutfallaefnafræðilega magnið er það takmarkandi hvarfefnið og má nota það til að reikna út vermibreytinguna:
+Stilla jafnan sýnir að það þarf 8 mól af KClO[[sub:3]] til að hvarfast við 1 mól af C[[sub:12]]H[[sub:22]]O[[sub:11]]. Þar sem uppgefið magn af KClO[[sub:3]] er minna en hlutfallaefnafræðilegt magn er það takmarkandi hvarfefnið og má nota það til að reikna út vermibreytinguna:
 
 <!-- SEG:m68727:para:fs-idm386464528 -->
 Þar sem jafnan, eins og hún er skrifuð, táknar efnahvarf 8 móla af KClO[[sub:3]], er vermibreytingin
 
 <!-- SEG:m68727:para:fs-idm379229776 -->
-Vermibreytingin fyrir þetta efnahvarf er −5960 kJ og varmaefnafræðilega jafnan er:
+Vermibreytingin fyrir þetta efnahvarf er −5960 kJ og varmefnafræðilega jafnan er:
 
 <!-- SEG:m68727:para-title:fs-idp82549456-title -->
-Prófaðu þekkingu þína
+Kannaðu þekkingu þína
 
 <!-- SEG:m68727:para:fs-idp82549456 -->
 Þegar 1,42 g af járni hvarfast við 1,80 g af klór myndast 3,22 g af FeCl[[sub:2]]([[i:s]]) og 8,60 kJ af varma losnar. Hver er vermibreytingin fyrir efnahvarfið þegar 1 mól af FeCl[[sub:2]]([[i:s]]) myndast?
@@ -170,28 +170,28 @@ Svar:
 Δ[[i:H]] = −338 kJ
 
 <!-- SEG:m68727:para:fs-idm18196832 -->
-Vermibreytingar eru venjulega settar fram í töflum fyrir efnahvörf þar sem bæði hvarfefni og myndefni eru við sömu aðstæður. {{term}}Staðalástand{{/term}} er almennt viðurkennt sett af skilyrðum sem notað er sem viðmiðunarpunktur til að ákvarða eiginleika við aðrar aðstæður. Fyrir efnafræðinga vísar staðalástand IUPAC til efna við 1 bar þrýsting og lausna við 1 M, og tilgreinir ekki hitastig. Margar varmaefnafræðilegar töflur sýna gildi með staðalástandi 1 atm. Þar sem Δ[[i:H]] efnahvarfs breytist mjög lítið við svo litlar breytingar á þrýstingi (1 bar = 0,987 atm), eru Δ[[i:H]] gildi (nema fyrir nákvæmustu mælingar) í raun þau sömu við báðar gerðir staðalskilyrða. Við munum setja upphafstáknið „o“ í hávísun í tákn vermibreytingar til að tákna staðalástand. Þar sem venjulegt (en ekki tæknilega staðlað) hitastig er 298,15 K, verður gert ráð fyrir þessu hitastigi nema annað hitastig sé tilgreint. Þannig er táknið [[MATH:8]] notað til að tákna vermibreytingu fyrir ferli sem á sér stað við þessar aðstæður. (Táknið Δ[[i:H]] er notað til að tákna vermibreytingu fyrir efnahvarf sem á sér stað við óstaðlaðar aðstæður.)
+Vermibreytingar eru venjulega settar fram í töflum fyrir efnahvörf þar sem bæði hvarfefni og myndefni eru við sömu aðstæður. {{term}}Staðalástand{{/term}} er almennt viðurkennt sett af aðstæðum sem notað er sem viðmiðunarpunktur til að ákvarða eiginleika við aðrar aðstæður. Fyrir efnafræðinga vísar staðalástand IUPAC til efna við 1 bar þrýsting og lausna við 1 M, og tilgreinir ekki hitastig. Margar varmefnafræðilegar töflur sýna gildi með staðalástandi 1 atm. Þar sem Δ[[i:H]] efnahvarfs breytist mjög lítið við svo litlar breytingar á þrýstingi (1 bar = 0,987 atm) eru Δ[[i:H]] gildi (nema fyrir nákvæmustu mældu gildin) í raun þau sömu við báðar þessar staðalaðstæður. Við munum setja upphafstáknið „o“ í hávísitölu í vermibreytingartákninu til að tákna staðalástand. Þar sem venjulegt (en ekki tæknilega staðlað) hitastig er 298,15 K, verður gert ráð fyrir þessu hitastigi nema annað hitastig sé tilgreint. Þannig er táknið [[MATH:8]] notað til að tákna vermibreytingu fyrir ferli sem á sér stað við þessar aðstæður. (Táknið Δ[[i:H]] er notað til að tákna vermibreytingu fyrir efnahvarf sem á sér stað við óstaðlaðar aðstæður.)
 
 <!-- SEG:m68727:para:fs-idp148022240 -->
-Vermibreytingar fyrir margar tegundir efna- og eðlisfræðilegra ferla eru fáanlegar í heimildaritum, þar á meðal fyrir brunaefnahvörf, fasabreytingar og myndunarhvörf. Þegar við ræðum þessar stærðir er mikilvægt að gefa gaum að [[i:magnbundnum]] eiginleika vermis og vermibreytinga. Þar sem vermibreyting fyrir tiltekið efnahvarf er í réttu hlutfalli við magn efnanna sem koma við sögu, er hægt að gefa hana upp á þeim grundvelli (þ.e. sem Δ[[i:H]] fyrir tiltekið magn hvarfefna). Hins vegar finnst okkur oft gagnlegra að deila einum magnbundnum eiginleika (Δ[[i:H]]) með öðrum (efnismagni) og gefa upp [[i:óháð]] gildi Δ[[i:H]] á grundvelli magns, oft „staðlað“ á mólbasis. (Athugið að þetta er svipað því að ákvarða óháða eiginleikann eðlisvarma út frá magnbundna eiginleikanum varmarýmd, eins og áður hefur komið fram.)
+Vermibreytingar fyrir margar tegundir efna- og eðlisfræðilegra ferla eru fáanlegar í heimildaritum, þar á meðal fyrir bruna, fasabreytingar og myndunarhvörf. Þegar við ræðum þessar stærðir er mikilvægt að gefa gaum að [[i:útþenslu]]eðli vermis og vermibreytinga. Þar sem vermibreyting fyrir tiltekið efnahvarf er í réttu hlutfalli við magn efnanna sem koma við sögu, má gefa hana upp á þeim grundvelli (þ.e. sem Δ[[i:H]] fyrir tiltekið magn hvarfefna). Hins vegar finnst okkur oft gagnlegra að deila einum útþenslueiginleika (Δ[[i:H]]) með öðrum (efnismagni) og gefa upp [[i:innþenslu]]gildi Δ[[i:H]] á grundvelli magns, oft „staðlað“ á mólbasis. (Athugið að þetta er svipað og að ákvarða innþenslueiginleikann eðlisvarma út frá útþenslueiginleikanum varmarýmd, eins og áður hefur komið fram.)
 
 <!-- SEG:m68727:title:fs-idp4580336-title -->
-Staðalbrunavermi
+Stöðluð brunavermi
 
 <!-- SEG:m68727:para:fs-idp8281184 -->
-{{term}}Staðalbrunavermi{{/term}} [[MATH:9]] er vermibreytingin þegar 1 mól af efni brennur (hvarfast kröftuglega við súrefni) við staðalaðstæður; það er stundum kallað „brunavermi“. Til dæmis er brunavermi etanóls, −1366,8 kJ/mól, það varmamagn sem myndast þegar eitt mól af etanóli gengst undir fullkominn bruna við 25 °C og 1 loftþrýsting, þar sem myndefnin eru einnig við 25 °C og 1 atm.
+{{term}}Stöðluð brunavermi{{/term}} [[MATH:9]] er vermibreytingin þegar 1 mól af efni brennur (hvarfast kröftuglega við súrefni) við staðlaðar aðstæður; hún er stundum kölluð „brunavermi“. Til dæmis er brunavermi etanóls, −1366,8 kJ/mól, það varmamagn sem myndast þegar eitt mól af etanóli gengst undir fullkominn bruna við 25 °C og 1 loftþyngdar þrýsting, sem gefur af sér myndefni sem eru einnig við 25 °C og 1 atm.
 
 <!-- SEG:m68727:para:fs-idm75327968 -->
-Brunavermi fyrir mörg efni hefur verið mælt; nokkur þeirra eru talin upp í [[xref:fs-idp98710048]]. Mörg aðgengileg efni með hátt brunavermi eru notuð sem eldsneyti, þar á meðal vetni, kolefni (sem kol eða viðarkol) og {{term}}kolvetni{{/term}} (efnasambönd sem innihalda aðeins vetni og kolefni), svo sem metan, própan og helstu efnisþættir bensíns.
+Brunavermi margra efna hefur verið mæld; nokkur þeirra eru talin upp í [[xref:fs-idp98710048]]. Mörg aðgengileg efni með mikla brunavermi eru notuð sem eldsneyti, þar á meðal vetni, kolefni (sem kol eða viðarkol) og {{term}}kolvetni{{/term}} (efnasambönd sem innihalda aðeins vetni og kolefni), svo sem metan, própan og helstu efnisþættir bensíns.
 
 <!-- SEG:m68727:entry:auto-63 -->
-Staðalbrunavermi á mólbasis
+Stöðluð mólbrunavermi
 
 <!-- SEG:m68727:entry:auto-64 -->
 Efni
 
 <!-- SEG:m68727:entry:auto-65 -->
-Brunaefnahvarf
+Brunahvarf
 
 <!-- SEG:m68727:entry:auto-66 -->
 Brunavermi, [[MATH:10]][[MATH:11]]
@@ -290,13 +290,13 @@ metanól
 Notkun brunavermis
 
 <!-- SEG:m68727:para:fs-idp186633648 -->
-Eins og [[xref:CNX_Chem_05_03_GasBurning]] gefur til kynna er bruni bensíns mjög útvermið ferli. Við skulum ákvarða áætlað varmamagn sem myndast við bruna á 1,00 L af bensíni, að því gefnu að brunavermi bensíns sé það sama og fyrir ísóoktan, sem er algengur efnisþáttur í bensíni. Eðlismassi ísóoktans er 0,692 g/ml.
+Eins og [[xref:CNX_Chem_05_03_GasBurning]] gefur til kynna er bruni bensíns mjög útvermið ferli. Við skulum ákvarða áætlað varmamagn sem myndast við bruna á 1,00 L af bensíni, að því gefnu að brunavermi bensíns sé sú sama og ísóoktans, sem er algengur efnisþáttur í bensíni. Eðlismassi ísóoktans er 0,692 g/ml.
 
 <!-- SEG:m68727:para-title:fs-idp177773984-title -->
 Lausn
 
 <!-- SEG:m68727:para:fs-idp177773984 -->
-Byrjum á þekktu magni (1,00 L af ísóoktani) og framkvæmum umreikninga milli eininga þar til við fáum æskilegt magn af varma eða orku. Brunavermi ísóoktans gefur okkur einn af nauðsynlegu umreikningsstuðlunum. [[xref:fs-idp98710048]] gefur þetta gildi sem −5460 kJ á 1 mól af ísóoktani (C[[sub:8]]H[[sub:18]]).
+Við byrjum með þekkt magn (1,00 L af ísóoktani) og getum framkvæmt umreikninga milli eininga þar til við fáum æskilegt magn varma eða orku. Brunavermi ísóoktans gefur okkur einn af nauðsynlegu umreikningsstuðlunum. [[xref:fs-idp98710048]] gefur þetta gildi sem −5460 kJ á 1 mól af ísóoktani (C[[sub:8]]H[[sub:18]]).
 
 <!-- SEG:m68727:para:fs-idp6149360 -->
 Með því að nota þessi gögn,
@@ -323,25 +323,25 @@ Svar:
 6,25 [[MATH:23]] 10[[sup:3]] kJ
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_GasBurning-caption -->
-Bruni bensíns er mjög útvermið efnahvarf. (Heimild: breyting á verki eftir „AlexEagle“/Flickr)
+Bruni bensíns er mjög útvermið efnahvarf. (heimild: breyting á verki eftir „AlexEagle“/Flickr)
 
 <!-- SEG:m68727:note-title:fs-idp90130208-title -->
 Ný orkutækni byggð á þörungum (lífeldsneyti)
 
 <!-- SEG:m68727:para:fs-idp90130976 -->
-Eftir því sem birgðir jarðefnaeldsneytis minnka og verða dýrari í vinnslu er stöðugt leitað að nýjum eldsneytisgjöfum fyrir framtíðina. Meðal þeirra lífeldsneyta sem lofa mestu góðu eru þau sem unnin eru úr þörungum ([[xref:CNX_Chem_05_03_AlgalFuel1]]). Þær þörungategundir sem notaðar eru eru eiturlausar, lífbrjótanlegar og meðal hraðvöxnustu lífvera heims. Um 50% af þyngd þörunga er olía, sem auðveldlega má breyta í eldsneyti eins og lífdísil. Þörungar geta gefið af sér 26.000 gallon af {{term}}lífeldsneyti{{/term}} á hektara — mun meiri orku á flatareiningu en aðrar nytjaplöntur. Sumir þörungastofnar geta dafnað í ísöltu vatni sem ekki er hægt að nota til ræktunar annarra plantna. Þörungar geta framleitt lífdísil, lífbensín, etanól, bútanól, metan og jafnvel þotueldsneyti.
+Eftir því sem birgðir jarðefnaeldsneytis minnka og verður dýrara að vinna það, er stöðugt leitað að nýjum eldsneytisgjöfum fyrir framtíðina. Meðal þeirra lífeldsneyta sem lofa mestu góðu eru þau sem unnin eru úr þörungum ([[xref:CNX_Chem_05_03_AlgalFuel1]]). Þær þörungategundir sem notaðar eru, eru óeitraðar, lífbrjótanlegar og meðal hraðvöxnustu lífvera heims. Um 50% af þyngd þörunga er olía, sem auðveldlega má breyta í eldsneyti eins og lífdísil. Þörungar geta gefið af sér 26.000 gallon af {{term}}lífeldsneyti{{/term}} á hvern hektara — mun meiri orku á flatareiningu en aðrar nytjaplöntur. Sumir þörungastofnar geta dafnað í ísöltu vatni sem ekki er hægt að nota til ræktunar annarra plantna. Þörungar geta framleitt lífdísil, lífbensín, etanól, bútanól, metan og jafnvel þotueldsneyti.
 
 <!-- SEG:m68727:para:fs-idp157750544 -->
-Samkvæmt orkumálaráðuneyti Bandaríkjanna (US Department of Energy) geta aðeins 39.000 ferkílómetrar (um 0,4% af landsvæði Bandaríkjanna eða minna en [[MATH:24]] af því svæði sem notað er til að rækta maís) framleitt nægilegt þörungaeldsneyti til að koma í stað alls jarðolíu-eldsneytis sem notað er í Bandaríkjunum. Kostnaður við þörungaeldsneyti verður sífellt samkeppnishæfari — til dæmis framleiðir bandaríski flugherinn (US Air Force) þotueldsneyti úr þörungum á heildarkostnaði undir 5 dollurum á gallon. {{fn}}Fyrir frekari upplýsingar um þörungaeldsneyti, sjá http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.{{/fn}} Ferlið sem notað er til að framleiða þörungaeldsneyti er sem hér segir: rækta þörungana (sem nota sólarljós sem orkugjafa og CO[[sub:2]] sem hráefni); uppskera þörungana; vinna eldsneytisefnasamböndin (eða forveraefni þeirra) úr þeim; vinna þau eftir þörfum (t.d. framkvæma umestrun til að búa til lífdísil); hreinsa; og dreifa ([[xref:CNX_Chem_05_03_AlgalFuel2]]).
+Samkvæmt orkumálaráðuneyti Bandaríkjanna (US Department of Energy) geta aðeins 39.000 ferkílómetrar (um 0,4% af landsvæði Bandaríkjanna eða minna en [[MATH:24]] af því svæði sem notað er til að rækta maís) framleitt nægilegt þörungaeldsneyti til að koma í stað alls jarðolíu-eldsneytis sem notað er í Bandaríkjunum. Kostnaður við þörungaeldsneyti verður sífellt samkeppnishæfari — til dæmis framleiðir bandaríski flugherinn (US Air Force) þotueldsneyti úr þörungum á heildarkostnaði undir 5 dollurum á gallon. {{fn}}Fyrir frekari upplýsingar um þörungaeldsneyti, sjá http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.{{/fn}} Ferlið sem notað er til að framleiða þörungaeldsneyti er sem hér segir: rækta þörungana (sem nota sólarljós sem orkugjafa og CO[[sub:2]] sem hráefni); uppskera þörungana; vinna eldsneytissamböndin (eða forverasambönd); vinna eftir þörfum (t.d. framkvæma umestrun til að búa til lífdísil); hreinsa; og dreifa ([[xref:CNX_Chem_05_03_AlgalFuel2]]).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption -->
-(a) Örsmáar þörunglífverur er hægt að (b) rækta í miklu magni og að lokum (c) breyta í nytsamlegt eldsneyti eins og lífdísil. (Heimild a: breyting á verki eftir Micah Sittig; heimild b: breyting á verki eftir Robert Kerton; heimild c: breyting á verki eftir John F. Williams)
+(a) Örsmáar þörunglífverur er hægt að (b) rækta í miklu magni og að lokum (c) breyta í nytsamlegt eldsneyti eins og lífdísil. (heimild a: breyting á verki eftir Micah Sittig; heimild b: breyting á verki eftir Robert Kerton; heimild c: breyting á verki eftir John F. Williams)
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_AlgalFuel2-caption -->
-Þörungar breyta sólarljósi og koldíoxíði í olíu sem er uppskorin, unnin, hreinsuð og umbreytt í margvíslegt endurnýjanlegt eldsneyti.
+Þörungar breyta sólarljósi og koldíoxíði í olíu sem er uppskorin, unnin, hreinsuð og umbreytt í ýmsar gerðir endurnýjanlegs eldsneytis.
 
 <!-- SEG:m68727:para:fs-idp93921200 -->
-Smelltu [[link:hér|http://openstax.org/l/16biofuel]] til að læra meira um ferlið við framleiðslu á lífeldsneyti úr þörungum.
+Smelltu [[link:here|http://openstax.org/l/16biofuel]] til að læra meira um ferlið við að búa til lífeldsneyti úr þörungum.
 
 <!-- SEG:m68727:title:fs-idp93922352-title -->
 Stöðluð myndunarvermi<!-- SEG:m68727:para:fs-idp93922992 -->
@@ -354,13 +354,13 @@ Staðalmyndunarvermi CO[[sub:2]]([[i:g]]) er −393,5 kJ/mól. Þetta er vermibr
 þar sem byrjað er með hvarfefnin við 1 atm þrýsting og 25 °C (þar sem kolefnið er til staðar sem grafít, stöðugasta form kolefnis við þessar aðstæður) og endað með einu móli af CO[[sub:2]], einnig við 1 atm og 25 °C. Fyrir niturdíoxíð, NO[[sub:2]]([[i:g]]), er [[MATH:26]] 33,2 kJ/mól. Þetta er vermibreytingin fyrir efnahvarfið:
 
 <!-- SEG:m68727:para:fs-idp173428336 -->
-Efnahvarfsjafna með [[MATH:27]] móli af N[[sub:2]] og 1 móli af O[[sub:2]] er rétt í þessu tilfelli vegna þess að staðalmyndunarvermi vísar alltaf til 1 móls af myndefni, NO[[sub:2]]([[i:g]]).
+Efnahvarfsjafna með [[MATH:27]] mól af N[[sub:2]] og 1 mól af O[[sub:2]] er rétt í þessu tilfelli vegna þess að staðalmyndunarvermi vísar alltaf til 1 móls af myndefni, NO[[sub:2]]([[i:g]]).
 
 <!-- SEG:m68727:para:fs-idp173432432 -->
-Þú finnur töflu yfir staðalmyndunarvermi margra algengra efna í [[docref:Appendix G|m68865]]. Þessi gildi sýna að myndunarhvörf geta verið allt frá mjög útvermnum (eins og −2984 kJ/mól fyrir myndun P[[sub:4]]O[[sub:10]]) til sterklega innverminna (eins og +226,7 kJ/mól fyrir myndun asetýlens, C[[sub:2]]H[[sub:2]]). Samkvæmt skilgreiningu er staðalmyndunarvermi frumefnis í sínu stöðugasta formi jafnt og núll við staðalaðstæður, sem er 1 atm fyrir gös og 1 M fyrir lausnir.
+Þú finnur töflu yfir staðalmyndunarvermi margra algengra efna í [[docref:Appendix G|m68865]]. Þessi gildi sýna að myndunarhvörf spanna allt frá því að vera mjög útvermin (eins og −2984 kJ/mól fyrir myndun P[[sub:4]]O[[sub:10]]) til þess að vera sterklega innvermin (eins og +226,7 kJ/mól fyrir myndun asetýlens, C[[sub:2]]H[[sub:2]]). Samkvæmt skilgreiningu er staðalmyndunarvermi frumefnis í sínu stöðugasta formi jafnt og núll við staðalaðstæður, sem er 1 atm fyrir lofttegundir og 1 M fyrir lausnir.
 
 <!-- SEG:m68727:example-title:fs-idp167759616-title -->
-Útreikningur á myndunarvermi
+Mat á myndunarvermi
 
 <!-- SEG:m68727:para:fs-idp167759872 -->
 Óson, O[[sub:3]]([[i:g]]), myndast úr súrefni, O[[sub:2]]([[i:g]]), í innvermnu ferli. Útfjólublá geislun er orkugjafinn sem knýr þetta efnahvarf í efri lofthjúpnum. Að því gefnu að bæði hvarfefni og myndefni efnahvarfsins séu í sínu staðalformi, ákvarðaðu staðalmyndunarvermi, [[MATH:28]], ósons út frá eftirfarandi upplýsingum:
@@ -369,13 +369,13 @@ Efnahvarfsjafna með [[MATH:27]] móli af N[[sub:2]] og 1 móli af O[[sub:2]] er
 Lausn
 
 <!-- SEG:m68727:para:fs-idp166467632 -->
-[[MATH:29]] er vermibreytingin fyrir myndun eins móls af efni í sínu staðalformi úr frumefnunum í sínu staðalformi. Þannig er [[MATH:30]] fyrir O[[sub:3]]([[i:g]]) vermibreytingin fyrir efnahvarfið:
+[[MATH:29]] er vermibreytingin fyrir myndun eins móls af efni í staðalformi sínu úr frumefnunum í sínu staðalformi. Þannig er [[MATH:30]] fyrir O[[sub:3]]([[i:g]]) vermibreytingin fyrir efnahvarfið:
 
 <!-- SEG:m68727:para:fs-idp95008768 -->
-Fyrir myndun 2ja móla af O[[sub:3]]([[i:g]]), [[MATH:31]] Þetta hlutfall, [[MATH:32]], er hægt að nota sem umreikningsstuðul til að finna varmann sem myndast þegar 1 mól af O[[sub:3]]([[i:g]]) myndast, sem er myndunarvermi fyrir O[[sub:3]]([[i:g]]):
+Fyrir myndun 2ja móla af O[[sub:3]]([[i:g]]), [[MATH:31]] Þetta hlutfall, [[MATH:32]], er hægt að nota sem umreikningsstuðul til að finna varmann sem myndast þegar 1 mól af O[[sub:3]]([[i:g]]) er myndað, sem er myndunarvermi fyrir O[[sub:3]]([[i:g]]):
 
 <!-- SEG:m68727:para:fs-idp186495680 -->
-Þess vegna, [[MATH:33]]
+Þess vegna er [[MATH:33]]
 
 <!-- SEG:m68727:para-title:fs-idp167644640-title -->
 Kannaðu þekkingu þína
@@ -393,10 +393,10 @@ Svar:
 Fyrir efnahvarfið [[MATH:35]]
 
 <!-- SEG:m68727:example-title:fs-idp186597312-title -->
-Að skrifa efnahvarfsjafnir fyrir [[MATH:36]]
+Að skrifa efnahvarfsjafna fyrir [[MATH:36]]
 
 <!-- SEG:m68727:para:fs-idp186597568 -->
-Skrifaðu efnahvarfsjafnir fyrir myndunarvermi fyrir:
+Skrifaðu efnahvarfsjöfnur fyrir myndunarvarma fyrir:
 
 <!-- SEG:m68727:para:fs-idp186600640 -->
 (a) C[[sub:2]]H[[sub:5]]OH([[i:l]])
@@ -408,7 +408,7 @@ Skrifaðu efnahvarfsjafnir fyrir myndunarvermi fyrir:
 Lausn
 
 <!-- SEG:m68727:para:fs-idp186604352 -->
-Mundu að [[MATH:37]] efnahvarfsjafnir eru fyrir myndun 1 móls af efnasambandinu úr upprunalegum frumefnum þess við staðalaðstæður, þá höfum við:
+Mundu að [[MATH:37]] efnahvarfsjafna er fyrir myndun 1 móls af efnasambandinu úr upprunafrumefnum þess við staðalaðstæður, við höfum:
 
 <!-- SEG:m68727:para:fs-idp166486208 -->
 (a) [[MATH:38]]
@@ -423,7 +423,7 @@ Athugið: Staðalform kolefnis er grafít og fosfór er til sem P[[sub:4]].
 Kannaðu þekkingu þína
 
 <!-- SEG:m68727:para:fs-idp166525568 -->
-Skrifaðu efnahvarfsjafnir fyrir myndunarvermi fyrir:
+Skrifaðu efnahvarfsjöfnur fyrir myndunarvarma fyrir:
 
 <!-- SEG:m68727:para:fs-idp166526208 -->
 (a) C[[sub:2]]H[[sub:5]]OC[[sub:2]]H[[sub:5]]([[i:l]])
@@ -444,10 +444,10 @@ Svar:
 Lögmál Hess
 
 <!-- SEG:m68727:para:fs-idp218912624 -->
-Það eru tvær leiðir til að ákvarða varmamagn sem fylgir efnabreytingu: mæla það með tilraunum eða reikna það út frá öðrum vermibreytingum sem ákvarðaðar hafa verið með tilraunum. Sum efnahvörf er erfitt, ef ekki ómögulegt, að rannsaka og gera nákvæmar mælingar á með tilraunum. Og jafnvel þegar efnahvarf er ekki erfitt að framkvæma eða mæla er hentugt að geta ákvarðað varmann sem fylgir efnahvarfi án þess að þurfa að gera tilraun.
+Það eru tvær leiðir til að ákvarða varmamagn sem fylgir efnabreytingu: mæla það með tilraunum eða reikna það út frá öðrum vermibreytingum sem ákvarðaðar hafa verið með tilraunum. Sum efnahvörf er erfitt, ef ekki ómögulegt, að rannsaka og gera nákvæmar mælingar á með tilraunum. Og jafnvel þegar ekki er erfitt að framkvæma efnahvarf eða mæla það, er hentugt að geta ákvarðað varmann sem fylgir efnahvarfi án þess að þurfa að framkvæma tilraun.
 
 <!-- SEG:m68727:para:fs-idp177508528 -->
-Þessi tegund útreikninga felur yfirleitt í sér notkun á {{term}}lögmáli Hess{{/term}}, sem segir: [[i:Ef hægt er að skrifa ferli sem summu nokkurra skrefbundinna ferla er vermibreyting heildarferlisins jöfn summu vermibreytinga hinna ýmsu skrefa]]. Lögmál Hess gildir vegna þess að vermi er ástandsfall: Vermibreytingar ráðast aðeins af því hvar efnaferli byrjar og endar, en ekki af leiðinni sem það fer frá byrjun til enda. Til dæmis getum við hugsað okkur efnahvarf kolefnis við súrefni til að mynda koldíoxíð sem efnahvarf sem gerist annaðhvort beint eða í tveggja þrepa ferli. Beina ferlið er skrifað:
+Þessi tegund útreikninga felur yfirleitt í sér notkun á {{term}}lögmáli Hess{{/term}}, sem segir: [[i:Ef hægt er að skrifa ferli sem summu nokkurra skrefbundinna ferla, er vermibreyting heildarferlisins jöfn summu vermibreytinga hinna ýmsu skrefa]]. Lögmál Hess er gilt vegna þess að vermi er ástandsfall: Vermibreytingar eru aðeins háðar því hvar efnaferli byrjar og endar, en ekki hvaða leið það fer frá upphafi til enda. Til dæmis getum við hugsað okkur efnahvarf kolefnis við súrefni til að mynda koldíoxíð sem eitthvað sem gerist annaðhvort beint eða í tveggja þrepa ferli. Beina ferlið er skrifað:
 
 <!-- SEG:m68727:para:fs-idp51924752 -->
 Í tveggja þrepa ferlinu myndast fyrst kolmónoxíð:
@@ -459,25 +459,25 @@ Síðan hvarfast kolmónoxíð frekar og myndar koldíoxíð:
 Jafnan sem lýsir heildarefnahvarfinu er summa þessara tveggja efnabreytinga:
 
 <!-- SEG:m68727:para:fs-idp40118928 -->
-Vegna þess að CO sem myndast í 1. skrefi eyðist í 2. skrefi er nettóbreytingin:
+Vegna þess að CO sem myndast í skrefi 1 er notað upp í skrefi 2 er nettóbreytingin:
 
 <!-- SEG:m68727:para:fs-idp128370320 -->
 Samkvæmt lögmáli Hess er vermibreyting efnahvarfsins jöfn summu vermibreytinga skrefanna.
 
 <!-- SEG:m68727:para:fs-idp10365136 -->
-Niðurstaðan er sýnd á [[xref:CNX_Chem_05_03_HessCO2]]. Við sjáum að Δ[[i:H]] heildarefnahvarfsins er það sama hvort sem það gerist í einu eða tveimur skrefum. Þessi niðurstaða (heildar-Δ[[i:H]] fyrir efnahvarfið = summa Δ[[i:H]]-gilda fyrir „skref“ efnahvarfsins í heildarefnahvarfinu) gildir almennt fyrir efna- og eðlisfræðileg ferli.
+Niðurstaðan er sýnd á [[xref:CNX_Chem_05_03_HessCO2]]. Við sjáum að Δ[[i:H]] heildarefnahvarfsins er það sama hvort sem það gerist í einu skrefi eða tveimur. Þessi niðurstaða (heildar-Δ[[i:H]] fyrir efnahvarfið = summa Δ[[i:H]]-gilda fyrir „skref“ efnahvarfsins í heildarefnahvarfinu) gildir almennt fyrir efna- og eðlisfræðileg ferli.
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_HessCO2-caption -->
-Líta má á myndun CO[[sub:2]]([[i:g]]) úr frumefnum sínum sem ferli í tveimur skrefum, sem leggjast saman og mynda heildarefnahvarfið, eins og lögmál Hess lýsir. Láréttu bláu línurnar tákna vermi. Í útvermnu ferli eru myndefnin með lægra vermi en hvarfefnin.
+Líta má á myndun CO[[sub:2]]([[i:g]]) úr frumefnum sínum sem ferli í tveimur skrefum, sem samanlagt mynda heildarefnahvarfið, eins og lögmál Hess lýsir. Láréttu bláu línurnar tákna vermi. Í útvermnu ferli hafa myndefnin lægra vermi en hvarfefnin.
 
 <!-- SEG:m68727:para:fs-idp167197264 -->
-Áður en við æfum okkur frekar í notkun lögmáls Hess skulum við rifja upp tvo mikilvæga eiginleika Δ[[i:H]].
+Áður en við æfum okkur frekar í að nota lögmál Hess skulum við rifja upp tvo mikilvæga eiginleika Δ[[i:H]].
 
 <!-- SEG:m68727:item:fs-idp167198464-item-1 -->
-Δ[[i:H]] er í beinu hlutfalli við magn hvarfefna eða myndefna. Til dæmis er vermibreytingin fyrir efnahvarfið sem myndar 1 mól af NO[[sub:2]]([[i:g]]) +33,2 kJ: [[MATH:44]] Þegar 2 mól af NO[[sub:2]] (tvöfalt meira) myndast verður Δ[[i:H]] tvöfalt stærra: [[MATH:45]] Almennt gildir að ef við margföldum eða deilum jöfnu með tölu, þá á einnig að margfalda eða deila vermibreytingunni með sömu tölu.
+Δ[[i:H]] er í beinu hlutfalli við magn hvarfefna eða myndefna. Til dæmis er vermibreytingin fyrir efnahvarfið sem myndar 1 mól af NO[[sub:2]]([[i:g]]) +33,2 kJ: [[MATH:44]] Þegar 2 mól af NO[[sub:2]] (tvöfalt meira) myndast verður Δ[[i:H]] tvöfalt stærra: [[MATH:45]] Almennt gildir að ef við margföldum eða deilum jöfnu með tölu, þá ætti einnig að margfalda eða deila vermibreytingunni með sömu tölu.
 
 <!-- SEG:m68727:item:fs-idp167198464-item-2 -->
-Δ[[i:H]] fyrir efnahvarf í eina átt er jafnstórt og með öfugu formerki við Δ[[i:H]] fyrir efnahvarfið í öfuga átt. Til dæmis, ef gefið er: [[MATH:46]] Þá er vermibreytingin fyrir „öfuga“ efnahvarfið einnig „öfug“: [[MATH:47]]
+Δ[[i:H]] fyrir efnahvarf í eina átt er jafnt að stærð og með öfugu formerki við Δ[[i:H]] fyrir efnahvarfið í öfuga átt. Til dæmis, ef gefið er að: [[MATH:46]] Þá er vermibreytingin fyrir „öfuga“ efnahvarfið einnig „öfug“: [[MATH:47]]
 
 <!-- SEG:m68727:para:fs-idp167199328 -->
 Δ[[i:H]] er í beinu hlutfalli við magn hvarfefna eða myndefna. Til dæmis er vermibreytingin fyrir efnahvarfið sem myndar 1 mól af NO[[sub:2]]([[i:g]]) +33,2 kJ:
@@ -486,10 +486,10 @@ Líta má á myndun CO[[sub:2]]([[i:g]]) úr frumefnum sínum sem ferli í tveim
 Þegar 2 mól af NO[[sub:2]] (tvöfalt meira) myndast verður Δ[[i:H]] tvöfalt stærra:
 
 <!-- SEG:m68727:para:fs-idp146331072 -->
-Almennt gildir að ef við margföldum eða deilum jöfnu með tölu, þá á einnig að margfalda eða deila vermibreytingunni með sömu tölu.
+Almennt gildir að ef við margföldum eða deilum jöfnu með tölu, þá ætti einnig að margfalda eða deila vermibreytingunni með sömu tölu.
 
 <!-- SEG:m68727:para:fs-idp146331744 -->
-Δ[[i:H]] fyrir efnahvarf í eina átt er jafnstórt og með öfugu formerki við Δ[[i:H]] fyrir efnahvarfið í öfuga átt. Til dæmis, ef gefið er:
+Δ[[i:H]] fyrir efnahvarf í eina átt er jafnt að stærð og með öfugu formerki við Δ[[i:H]] fyrir efnahvarfið í öfuga átt. Til dæmis, ef gefið er að:
 
 <!-- SEG:m68727:para:fs-idp146344672 -->
 Þá er vermibreytingin fyrir „öfuga“ efnahvarfið einnig „öfug“:
@@ -498,7 +498,7 @@ Almennt gildir að ef við margföldum eða deilum jöfnu með tölu, þá á ei
 Skrefbundinn útreikningur á [[MATH:48]] með lögmáli Hess
 
 <!-- SEG:m68727:para:fs-idp185549072 -->
-Ákvarðið myndunarvermi, [[MATH:49]] fyrir FeCl[[sub:3]]([[i:s]]) út frá vermibreytingum eftirfarandi tveggja þrepa ferlis sem á sér stað við staðalaðstæður:
+Ákvarðaðu myndunarvermi, [[MATH:49]] fyrir FeCl[[sub:3]]([[i:s]]) út frá vermibreytingum eftirfarandi tveggja þrepa ferlis sem á sér stað við staðalaðstæður:
 
 <!-- SEG:m68727:para-title:fs-idp190748768-title -->
 Lausn
@@ -507,7 +507,7 @@ Lausn
 Við erum að reyna að finna staðalmyndunarvermi FeCl[[sub:3]]([[i:s]]), sem er jafnt og Δ[[i:H]]° fyrir efnahvarfið:
 
 <!-- SEG:m68727:para:fs-idp190763840 -->
-Þegar við skoðum efnahvörfin sjáum við að efnahvarfið sem við viljum finna Δ[[i:H]]° fyrir er summa hinna tveggja efnahvarfanna með þekkt Δ[[i:H]]-gildi, þannig að við verðum að leggja saman Δ[[i:H]]-gildi þeirra:
+Þegar við skoðum efnahvörfin sjáum við að efnahvarfið sem við viljum finna Δ[[i:H]]° fyrir er summa tveggja efnahvarfa með þekkt Δ[[i:H]]-gildi, þannig að við verðum að leggja saman Δ[[i:H]]-gildi þeirra:
 
 <!-- SEG:m68727:para:fs-idp149506592 -->
 Myndunarvermi, [[MATH:50]] fyrir FeCl[[sub:3]]([[i:s]]) er −399,5 kJ/mól.
@@ -531,13 +531,13 @@ Svar:
 66,4 kJ
 
 <!-- SEG:m68727:para:fs-idp146899760 -->
-Hér er flóknara dæmi sem sýnir hugsunarferlið sem felst í því að leysa mörg verkefni með lögmáli Hess. Það sýnir hvernig við getum fundið margar staðalmyndunarvermistölur (og önnur gildi Δ[[i:H]]) ef erfitt er að ákvarða þær með tilraunum.
+Hér er flóknara dæmi sem sýnir hugsunarferlið sem felst í því að leysa mörg verkefni með lögmáli Hess. Það sýnir hvernig við getum fundið mörg stöðluð myndunarvermi (og önnur gildi Δ[[i:H]]) ef erfitt er að ákvarða þau með tilraunum.
 
 <!-- SEG:m68727:example-title:fs-idp146901200-title -->
 Erfiðara verkefni með lögmáli Hess
 
 <!-- SEG:m68727:para:fs-idp146901456 -->
-Klór mónóflúoríð getur hvarfast við flúor og myndað klór tríflúoríð:
+Klóreinflúoríð getur hvarfast við flúor og myndað klórþríflúoríð:
 
 <!-- SEG:m68727:para:fs-idp146902208 -->
 [[i:(i)]] [[MATH:51]]
@@ -558,7 +558,7 @@ Notaðu efnahvörfin hér til að ákvarða Δ[[i:H]]° fyrir efnahvarf [[i:(i)]
 Lausn
 
 <!-- SEG:m68727:para:fs-idp167247104 -->
-Markmið okkar er að meðhöndla og sameina efnahvörf [[i:(ii)]], [[i:(iii)]] og [[i:(iv)]] þannig að þau leggist saman og myndi efnahvarf [[i:(i)]]. Ef við förum frá vinstri til hægri í [[i:(i)]] sjáum við fyrst að ClF([[i:g]]) er nauðsynlegt sem hvarfefni. Þetta er hægt að fá með því að margfalda efnahvarf [[i:(iii)]] með [[MATH:55]], sem þýðir að Δ[[i:H]]°-breytingin er einnig margfölduð með [[MATH:56]]:
+Markmið okkar er að hagræða og sameina efnahvörf [[i:(ii)]], [[i:(iii)]] og [[i:(iv)]] þannig að þau leggist saman og myndi efnahvarf [[i:(i)]]. Ef við förum frá vinstri til hægri í [[i:(i)]] sjáum við fyrst að ClF([[i:g]]) er nauðsynlegt sem hvarfefni. Þetta er hægt að fá með því að margfalda efnahvarf [[i:(iii)]] með [[MATH:55]], sem þýðir að Δ[[i:H]]°-breytingin er einnig margfölduð með [[MATH:56]]:
 
 <!-- SEG:m68727:para:fs-idp160398800 -->
 Næst sjáum við að F[[sub:2]] er einnig nauðsynlegt sem hvarfefni. Til að fá það snúum við við og helmingum efnahvarf [[i:(ii)]], sem þýðir að Δ[[i:H]]° skiptir um formerki og er helmingað:
@@ -570,7 +570,7 @@ Til að fá ClF[[sub:3]] sem myndefni snúum við við [[i:(iv)]] og breytum for
 Athugum nú hvort þessi efnahvörf leggist saman og myndi efnahvarfið sem við viljum:
 
 <!-- SEG:m68727:para:fs-idp154356656 -->
-Hvarfefnin [[MATH:57]] og [[MATH:58]] stytta út myndefnið O[[sub:2]]; myndefnið [[MATH:59]] styttir út hvarfefnið [[MATH:60]] og hvarfefnið [[MATH:61]] er stytt út af myndefnunum [[MATH:62]] og OF[[sub:2]]. Eftir standa aðeins hvarfefnin ClF([[i:g]]) og F[[sub:2]]([[i:g]]) og myndefnið ClF[[sub:3]]([[i:g]]), sem er það sem við viljum. Þar sem summan af þessum þremur breyttu efnahvörfum gefur efnahvarfið sem við leitum að, mun summan af þremur breyttu Δ[[i:H]]°-gildunum gefa hið æskilega Δ[[i:H]]°:
+Hvarfefnin [[MATH:57]] og [[MATH:58]] stytta út myndefnið O[[sub:2]]; myndefnið [[MATH:59]] styttir út hvarfefnið [[MATH:60]] og hvarfefnið [[MATH:61]] er stytt út af myndefnunum [[MATH:62]] og OF[[sub:2]]. Eftir standa aðeins hvarfefnin ClF([[i:g]]) og F[[sub:2]]([[i:g]]) og myndefnið ClF[[sub:3]]([[i:g]]), sem er það sem við viljum. Þar sem summan af þessum þremur breyttu efnahvörfum gefur efnahvarfið sem um ræðir, mun summan af þremur breyttu Δ[[i:H]]°-gildunum gefa hið æskilega Δ[[i:H]]°:
 
 <!-- SEG:m68727:para-title:fs-idp154380128-title -->
 Kannaðu þekkingu þína
@@ -606,7 +606,7 @@ Svar:
 −1407 kJ
 
 <!-- SEG:m68727:para:fs-idp120713504 -->
-Við getum einnig notað {{term}}lögmál Hess{{/term}} til að ákvarða vermibreytingu hvers efnahvarfs ef samsvarandi myndunarvermi hvarfefna og myndefna eru tiltæk. Skrefin sem við skoðum eru: (i) niðurbrot hvarfefnanna í frumefni sín (þar sem vermibreytingarnar eru í réttu hlutfalli við neikvæð gildi myndunarvermis hvarfefnanna), fylgt eftir af (ii) endursamsetningu frumefnanna til að gefa myndefnin (þar sem vermibreytingarnar eru í réttu hlutfalli við myndunarvermi myndefnanna). Staðalvermibreyting heildarefnahvarfsins er því jöfn: (ii) summu staðalmyndunarvermis allra myndefna plús (i) summu neikvæðra gilda staðalmyndunarvermis hvarfefnanna. Þessu er venjulega endurraðað örlítið og skrifað á eftirfarandi hátt, þar sem Σ táknar „summa af“ og [[i:n]] stendur fyrir stuðla efnajöfnunnar:
+Við getum einnig notað {{term}}lögmál Hess{{/term}} til að ákvarða vermibreytingu hvers efnahvarfs ef samsvarandi myndunarvermi hvarfefna og myndefna eru tiltæk. Skrefin sem við skoðum eru: (i) sundrun hvarfefna í frumefni sín (þar sem vermibreytingarnar eru í réttu hlutfalli við neikvætt gildi myndunarvermis hvarfefnanna), fylgt eftir af (ii) endursamsetningu frumefnanna til að gefa myndefnin (þar sem vermibreytingarnar eru í réttu hlutfalli við myndunarvermi myndefnanna). Stöðluð vermibreyting heildarefnahvarfsins er því jöfn: (ii) summu staðlaðra myndunarverma allra myndefna plús (i) summu neikvæðra gilda staðlaðra myndunarverma hvarfefnanna. Þessu er venjulega endurraðað lítillega og skrifað á eftirfarandi hátt, þar sem Σ táknar „summa af“ og [[i:n]] stendur fyrir efnajöfnustuðla:
 
 <!-- SEG:m68727:para:fs-idp120729664 -->
 Eftirfarandi dæmi sýnir í smáatriðum hvers vegna þessi jafna er gild og hvernig á að nota hana til að reikna út vermibreytingu fyrir tiltekið efnahvarf.
@@ -615,7 +615,7 @@ Eftirfarandi dæmi sýnir í smáatriðum hvers vegna þessi jafna er gild og hv
 Notkun lögmáls Hess
 
 <!-- SEG:m68727:para:fs-idp134549264 -->
-Hver er staðalvermibreytingin fyrir efnahvarfið:
+Hver er stöðluð vermibreyting fyrir efnahvarfið:
 
 <!-- SEG:m68727:para-title:fs-idp146127120-title -->
 Lausn: Notkun jöfnunnar
@@ -627,25 +627,25 @@ Notaðu sérstaka form lögmáls Hess sem gefið var áður og gildi úr [[docre
 Lausn: Rökstuðningur fyrir því hvers vegna almenna jafnan gildir
 
 <!-- SEG:m68727:para:fs-idp134564208 -->
-Einnig getum við skrifað þetta efnahvarf sem summu niðurbrots 3NO[[sub:2]]([[i:g]]) og 1H[[sub:2]]O([[i:l]]) í frumefni sín og myndun 2HNO[[sub:3]]([[i:aq]]) og 1NO([[i:g]]) úr frumefnum sínum. Með því að skrifa út þessi efnahvörf og taka eftir tengslum þeirra við [[MATH:68]] gildin fyrir þessi efnasambönd (úr [[docref:Appendix G|m68865]]), fáum við:
+Einnig getum við skrifað þetta efnahvarf sem summu niðurbrots 3NO[[sub:2]]([[i:g]]) og 1H[[sub:2]]O([[i:l]]) í frumefni sín, og myndun 2HNO[[sub:3]]([[i:aq]]) og 1NO([[i:g]]) úr frumefnum sínum. Með því að skrifa út þessi efnahvörf og taka eftir tengslum þeirra við [[MATH:68]] gildin fyrir þessi efnasambönd (úr [[docref:Appendix G|m68865]]), fáum við:
 
 <!-- SEG:m68727:para:fs-idp155650064 -->
-Summa þessara efnahvarfajafna gefur okkur efnahvarfið sem við höfum áhuga á:
+Ef við leggjum saman þessar efnahvarfsjöfnur fáum við efnahvarfið sem við höfum áhuga á:
 
 <!-- SEG:m68727:para:fs-idp155662480 -->
-Summa vermibreytinga þeirra gefur gildið sem við viljum ákvarða:
+Ef við leggjum saman vermibreytingar þeirra fáum við gildið sem við viljum ákvarða:
 
 <!-- SEG:m68727:para:fs-idp146119648 -->
 Þannig að staðalvermibreytingin fyrir þetta efnahvarf er Δ[[i:H]]° = −138,4 kJ.
 
 <!-- SEG:m68727:para:fs-idp146120784 -->
-Athugið að þessi niðurstaða fékkst með því að (1) margfalda [[MATH:69]] hvers myndefnis með mólstuðli þess og leggja þau gildi saman, (2) margfalda [[MATH:70]] hvers hvarfefnis með mólstuðli þess og leggja þau gildi saman, og síðan (3) draga niðurstöðuna úr (2) frá niðurstöðunni úr (1). Þetta er einnig aðferðin sem notuð er með almennu jöfnunni, eins og sýnt er.
+Athugið að þessi niðurstaða fékkst með því að (1) margfalda [[MATH:69]] hvers myndefnis með mælifræðilegum stuðli þess og leggja þau gildi saman, (2) margfalda [[MATH:70]] hvers hvarfefnis með mælifræðilegum stuðli þess og leggja þau gildi saman, og síðan (3) draga niðurstöðuna úr (2) frá niðurstöðunni úr (1). Þetta er einnig aðferðin sem notuð er með almennu jöfnunni, eins og sýnt er.
 
 <!-- SEG:m68727:para-title:fs-idp165556368-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68727:para:fs-idp165556368 -->
-Reiknaðu brunavermi fyrir 1 mól af etanóli, C[[sub:2]]H[[sub:5]]OH([[i:l]]), þegar H[[sub:2]]O([[i:l]]) og CO[[sub:2]]([[i:g]]) myndast. Notið eftirfarandi myndunarvermi: C[[sub:2]]H[[sub:5]]OH([[i:l]]), −278 kJ/mól; H[[sub:2]]O([[i:l]]), −286 kJ/mól; og CO[[sub:2]]([[i:g]]), −394 kJ/mól.
+Reiknaðu brunavermi fyrir 1 mól af etanóli, C[[sub:2]]H[[sub:5]]OH([[i:l]]), þegar H[[sub:2]]O([[i:l]]) og CO[[sub:2]]([[i:g]]) myndast. Notaðu eftirfarandi myndunarvermi: C[[sub:2]]H[[sub:5]]OH([[i:l]]), −278 kJ/mól; H[[sub:2]]O([[i:l]]), −286 kJ/mól; og CO[[sub:2]]([[i:g]]), −394 kJ/mól.
 
 <!-- SEG:m68727:para:fs-idp165564336 -->
 −1368 kJ/mól
@@ -657,13 +657,13 @@ Svar:
 −1368 kJ/mól
 
 <!-- SEG:m68727:title:fs-idp165565104-title -->
-Hugtök og samantekt
+Lykilhugtök og samantekt
 
 <!-- SEG:m68727:para:fs-idp165565984 -->
-Ef efnabreyting fer fram við fastan þrýsting og eina vinnan sem unnin er stafar af þenslu eða samdrætti, er [[i:q]] fyrir breytinguna kallað vermibreyting með tákninu Δ[[i:H]], eða [[MATH:71]] fyrir efnahvörf sem eiga sér stað við staðalaðstæður við 298 K. Gildi Δ[[i:H]] fyrir efnahvarf í eina átt er jafnt að stærð, en með öfugu formerki, og Δ[[i:H]] fyrir efnahvarfið í öfuga átt, og Δ[[i:H]] er í beinu hlutfalli við magn hvarfefna og myndefna. Staðalmyndunarvermi, [[MATH:72]], er vermibreytingin sem fylgir myndun 1 móls af efni úr frumefnum í sínu stöðugasta ástandi við 1 bar og 298,15 K. Ef myndunarvermi eru tiltæk fyrir hvarfefni og myndefni efnahvarfs, má reikna vermibreytinguna með lögmáli Hess: Ef hægt er að skrifa ferli sem summu nokkurra skrefbundinna ferla, er vermibreyting heildarferlisins jöfn summu vermibreytinga hinna ýmsu skrefa.
+Ef efnabreyting fer fram við fastan þrýsting og eina vinnan sem unnin er stafar af þenslu eða samdrætti, er [[i:q]] fyrir breytinguna kallað vermibreyting með tákninu Δ[[i:H]], eða [[MATH:71]] fyrir efnahvörf sem eiga sér stað við staðalaðstæður við 298 K. Gildi Δ[[i:H]] fyrir efnahvarf í eina átt er jafnt að stærð, en með öfugu formerki, og Δ[[i:H]] fyrir efnahvarf í gagnstæða átt, og Δ[[i:H]] er í beinu hlutfalli við magn hvarfefna og myndefna. Staðalmyndunarvermi, [[MATH:72]], er vermibreytingin sem fylgir myndun 1 móls af efni úr frumefnum í sínum stöðugustu ástandi við 1 bar og 298,15 K. Ef myndunarvermi eru tiltæk fyrir hvarfefni og myndefni efnahvarfs, er hægt að reikna vermibreytinguna með lögmáli Hess: Ef hægt er að skrifa ferli sem summu nokkurra skrefbundinna ferla, er vermibreyting heildarferlisins jöfn summu vermibreytinga hinna ýmsu skrefa.
 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
-Lykiljafna
+Lykiljöfnur
 
 <!-- SEG:m68727:entry:auto-224 -->
 [[MATH:73]]
@@ -672,7 +672,7 @@ Lykiljafna
 [[MATH:74]]
 
 <!-- SEG:m68727:title:fs-idp167491136-title -->
-Efnafræði - Verkefni í lok kafla
+Efnafræði – Verkefni í lok kafla
 
 <!-- SEG:m68727:problem:fs-idp167492528 -->
 Útskýrðu hvernig varminn sem mældur er í [[docref:m68726#fs-idm19242032]] er frábrugðinn vermibreytingunni fyrir útvermið efnahvarf sem lýst er með eftirfarandi jöfnu:[[BR]][[MATH:75]]
@@ -681,7 +681,7 @@ Efnafræði - Verkefni í lok kafla
 Vermibreyting tilgreinds efnahvarfs er fyrir nákvæmlega 1 mól af HCl og 1 mól af NaOH; varminn í dæminu myndast af 0,0500 mólum af HCl og 0,0500 mólum af NaOH.
 
 <!-- SEG:m68727:problem:fs-idm121017200 -->
-Notaðu gögnin í hlutanum „Kannaðu þekkingu þína“ í [[docref:m68726#fs-idm19242032]] til að reikna Δ[[i:H]] í kJ/mól af AgNO[[sub:3]]([[i:aq]]) fyrir efnahvarfið: [[MATH:76]]
+Notaðu gögnin í hlutanum „Kannaðu þekkingu þína“ í [[docref:m68726#fs-idm19242032]] til að reikna út Δ[[i:H]] í kJ/mól af AgNO[[sub:3]]([[i:aq]]) fyrir efnahvarfið: [[MATH:76]]
 
 <!-- SEG:m68727:problem:fs-idp146868384 -->
 Reiknaðu upplausnarvermi (Δ[[i:H]] fyrir upplausnina) á mól af NH[[sub:4]]NO[[sub:3]] við aðstæðurnar sem lýst er í [[docref:m68726#fs-idp325184]].
@@ -690,16 +690,16 @@ Reiknaðu upplausnarvermi (Δ[[i:H]] fyrir upplausnina) á mól af NH[[sub:4]]NO
 25 kJ mól[[sup:−1]]
 
 <!-- SEG:m68727:problem:fs-idp140737280 -->
-Reiknaðu Δ[[i:H]] fyrir efnahvarfið sem lýst er með jöfnunni. ([[i:Vísbending]]: Notaðu gildið fyrir áætlað magn varma sem efnahvarfið gleypir sem þú reiknaðir út í fyrra dæmi.)[[BR]][[MATH:77]]
+Reiknaðu Δ[[i:H]] fyrir efnahvarfið sem lýst er með jöfnunni. ([[i:Vísbending]]: Notaðu gildið fyrir áætlað magn varma sem efnahvarfið gleypir sem þú reiknaðir út í fyrri æfingu.)[[BR]][[MATH:77]]
 
 <!-- SEG:m68727:problem:fs-idp107667792 -->
-Reiknaðu upplausnarvermi (Δ[[i:H]] fyrir upplausnina) á mól af CaCl[[sub:2]] (vísað er til [[docref:m68726#fs-idm68277040]]).
+Reiknaðu upplausnarvermi (Δ[[i:H]] fyrir upplausnina) á mól af CaCl[[sub:2]] (sjá [[docref:m68726#fs-idm68277040]]).
 
 <!-- SEG:m68727:solution:fs-idp107669568 -->
 81 kJ mól[[sup:−1]]
 
 <!-- SEG:m68727:problem:fs-idp103276592 -->
-Þrátt fyrir að gasið sem notað er í oxýasetýlen-suðuloga ([[docref:m68724#CNX_Chem_05_01_OxyacTorch]]) sé í raun hreint asetýlen, er varminn sem myndast við bruna eins móls af asetýleni í slíkum loga líklega ekki jafn brunavermi asetýlens sem skráð er í [[xref:fs-idp98710048]]. Með hliðsjón af aðstæðunum sem töflugögnin eru gefin fyrir, stingdu upp á skýringu.
+Þrátt fyrir að gasið sem notað er í oxýasetýlen-suðuloga ([[docref:m68724#CNX_Chem_05_01_OxyacTorch]]) sé í raun hreint asetýlen, er varminn sem myndast við bruna eins móls af asetýleni í slíkum loga líklega ekki jafn brunavermi asetýlens sem skráð er í [[xref:fs-idp98710048]]. Íhugaðu aðstæðurnar sem töflugögnin eru gefin fyrir og komdu með útskýringu.
 
 <!-- SEG:m68727:problem:fs-idp103281472 -->
 Hversu mikill varmi myndast við bruna á 4,00 mólum af asetýleni við staðalaðstæður?
@@ -738,10 +738,10 @@ Sýni sem inniheldur 0,562 g af kolefni er brennt í súrefni í sprengihitamæl
 15,5 kJ/°C
 
 <!-- SEG:m68727:problem:fs-idp25402576 -->
-Áður en klórflúorkolefni voru tekin í notkun var brennisteinsdíoxíð (gufunarvermi, 6,00 kcal/mól) notað í ísskápa á heimilum. Hvaða massa af SO[[sub:2]] þarf að gufa upp til að fjarlægja jafn mikinn varma og uppgufun á 1,00 kg af CCl[[sub:2]]F[[sub:2]] (gufunarvermi er 17,4 kJ/mól)?
+Áður en klórflúorkolefni voru tekin í notkun var brennisteinsdíoxíð (gufunarvermi, 6,00 kkal/mól) notað í ísskápa á heimilum. Hvaða massa af SO[[sub:2]] þarf að gufa upp til að fjarlægja jafn mikinn varma og uppgufun á 1,00 kg af CCl[[sub:2]]F[[sub:2]] (gufunarvermi er 17,4 kJ/mól)?
 
 <!-- SEG:m68727:problem:fs-idp25404288 -->
-Gufunarefnahvörfin fyrir SO[[sub:2]] og CCl[[sub:2]]F[[sub:2]] eru [[MATH:80]] og [[MATH:81]] hvort um sig.
+Gufunarhvarfið fyrir SO[[sub:2]] og CCl[[sub:2]]F[[sub:2]] eru [[MATH:80]] og [[MATH:81]] hvort um sig.
 
 <!-- SEG:m68727:problem:fs-idp140767408 -->
 Hægt er að hita heimili með því að dæla heitu vatni í gegnum ofna. Hvaða massi af vatni mun veita sama magn af varma þegar það er kælt úr 95,0 í 35,0 °C, og varminn sem fæst þegar 100 g af gufu er kælt úr 110 °C í 100 °C?
@@ -768,11 +768,11 @@ Hversu mörg kílójúl af varma losna þegar nákvæmlega 1 mól af mangani, Mn
 459,6 kJ
 
 <!-- SEG:m68727:problem:fs-idp161292160 -->
-Hversu mörg kílójúl af varma losna þegar nákvæmlega 1 mól af járni, Fe, er brennt til að mynda Fe[[sub:2]]O[[sub:3]]([[i:s]]) við staðalaðstæður?<!-- SEG:m68727:problem:fs-idp1843116624 -->
-Eftirfarandi röð efnahvarfa á sér stað við framleiðslu á saltpéturssýru í vatnslausn í iðnaði:[[BR]][[MATH:83]][[BR]][[MATH:84]][[BR]][[MATH:85]]
+Hversu mörg kílójúl af varma losna þegar nákvæmlega 1 mól af járni, Fe, er brennt til að mynda Fe[[sub:2]]O[[sub:3]]([[i:s]]) við staðalaðstæður?<!-- SEG:m68727:problem:fs-idp184316624 -->
+Eftirfarandi röð efnahvarfa á sér stað við iðnaðarframleiðslu á saltpéturssýru í vatnslausn:[[BR]][[MATH:83]][[BR]][[MATH:84]][[BR]][[MATH:85]]
 
 <!-- SEG:m68727:problem:fs-idm165324304 -->
-Ákvarðaðu heildarvermibreytinguna fyrir framleiðslu á einu móli af saltpéturssýru í vatnslausn með þessu ferli. Aukaafurðir heildarefnahvarfsins eru vatn og niturmónoxíð.
+Ákvarðaðu heildarvermibreytinguna fyrir framleiðslu á einu móli af saltpéturssýru í vatnslausn með þessu ferli. Meðmyndefni heildarefnahvarfsins eru vatn og niturmónoxíð.
 
 <!-- SEG:m68727:solution:fs-idp145934880 -->
 −494 kJ/mól
@@ -898,7 +898,7 @@ Reiknaðu brunavermi bútans, C[[sub:4]]H[[sub:10]]([[i:g]]), fyrir myndun H[[su
 −2660 kJ mól[[sup:−1]]
 
 <!-- SEG:m68727:problem:fs-idp214812704 -->
-Bæði própan og bútan eru notuð sem gaseldsneyti. Hvaða efnasamband framleiðir meiri varma á hvert gramm þegar það brennur?
+Bæði própan og bútan eru notuð sem gaseldsneyti. Hvaða efnasamband framleiðir meiri varma á hvert gramm þegar það er brennt?
 
 <!-- SEG:m68727:problem:fs-idp214849712 -->
 Hvíta litarefnið TiO[[sub:2]] er framleitt með efnahvarfi títantetraklóríðs, TiCl[[sub:4]], við vatnsgufu í gasfasa: [[MATH:117]]
@@ -916,7 +916,7 @@ Vatnsgas, efnablanda af H[[sub:2]] og CO, er mikilvægt iðnaðareldsneyti sem f
 (a) Að því gefnu að koks hafi sama myndunarvermi og grafít, reiknaðu [[MATH:119]] fyrir þetta efnahvarf.
 
 <!-- SEG:m68727:problem:fs-idp195115456 -->
-(b) Metanól, fljótandi eldsneyti sem gæti hugsanlega komið í stað bensíns, er hægt að framleiða úr vatnsgasi og viðbótarvetni við hátt hitastig og þrýsting í návist viðeigandi hvata: [[MATH:120]]
+(b) Metanól, fljótandi eldsneyti sem gæti komið í stað bensíns, er hægt að framleiða úr vatnsgasi og viðbótarvetni við hátt hitastig og þrýsting í návist viðeigandi hvata: [[MATH:120]]
 
 <!-- SEG:m68727:problem:fs-idp160835168 -->
 Við aðstæður efnahvarfsins myndast metanól sem gas. Reiknaðu [[MATH:121]] fyrir þetta efnahvarf og fyrir þéttingu á metanóli úr gasi yfir í vökva.
@@ -931,10 +931,10 @@ Við aðstæður efnahvarfsins myndast metanól sem gas. Reiknaðu [[MATH:121]] 
 −122,8 kJ
 
 <!-- SEG:m68727:problem:fs-idp43583712 -->
-Ákvarðaðu út frá gögnunum í [[xref:fs-idp98710048]] hvaða eldsneyti af eftirfarandi framleiðir mesta varmamagnið á hvert gramm þegar það brennur við staðalaðstæður: CO([[i:g]]), CH[[sub:4]]([[i:g]]) eða C[[sub:2]]H[[sub:2]]([[i:g]]).
+Ákvarðaðu út frá gögnunum í [[xref:fs-idp98710048]] hvort eftirfarandi eldsneytis framleiðir mesta varmamagnið á hvert gramm þegar það er brennt við staðalaðstæður: CO([[i:g]]), CH[[sub:4]]([[i:g]]) eða C[[sub:2]]H[[sub:2]]([[i:g]]).
 
 <!-- SEG:m68727:problem:fs-idp208963664 -->
-Brunavermi harðkola er að meðaltali −35 kJ/g, en bensíns 1,28 [[MATH:124]] 10[[sup:5]] kJ/gal. Hversu mörg kílógrömm af harðkolum gefa sama varmamagn og fæst úr 1,0 galloni af bensíni? Gerðu ráð fyrir að eðlismassi bensíns sé 0,692 g/ml (sami eðlismassi og ísóoktans).
+Brunavermi steinkola er að meðaltali −35 kJ/g, en bensíns 1,28 [[MATH:124]] 10[[sup:5]] kJ/gallon. Hversu mörg kílógrömm af steinkolum gefa sama varmamagn og fæst úr 1,0 galloni af bensíni? Gerðu ráð fyrir að eðlismassi bensíns sé 0,692 g/ml (sami eðlismassi og ísóoktan).
 
 <!-- SEG:m68727:solution:fs-idp208968992 -->
 3,7 kg
@@ -943,19 +943,19 @@ Brunavermi harðkola er að meðaltali −35 kJ/g, en bensíns 1,28 [[MATH:124]]
 Etanól, C[[sub:2]]H[[sub:5]]OH, er notað sem eldsneyti fyrir vélknúin ökutæki, sérstaklega í Brasilíu.
 
 <!-- SEG:m68727:problem:fs-idp208989120 -->
-(a) Skrifaðu stillta jöfnu fyrir bruna etanóls yfir í CO[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:g]]) og reiknaðu brunavermi fyrir 1 mól af etanóli með því að nota gögnin í [[docref:Appendix G|m68865]].
+(a) Skrifaðu stillta jöfnu fyrir bruna etanóls yfir í CO[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:g]]) og reiknaðu brunaverma fyrir 1 mól af etanóli með því að nota gögnin í [[docref:Appendix G|m68865]].
 
 <!-- SEG:m68727:problem:fs-idp208992384 -->
-(b) Eðlismassi etanóls er 0,7893 g/ml. Reiknaðu brunavermi fyrir nákvæmlega 1 L af etanóli.
+(b) Eðlismassi etanóls er 0,7893 g/ml. Reiknaðu brunaverma fyrir nákvæmlega 1 L af etanóli.
 
 <!-- SEG:m68727:problem:fs-idp208992896 -->
-(c) Að því gefnu að akstursdrægni bifreiðar sé í beinu hlutfalli við brunavermi eldsneytisins, reiknaðu hversu miklu lengra mætti búast við að bifreið komist á 1 L af bensíni en á 1 L af etanóli. Gerðu ráð fyrir að bensín hafi brunavermi og eðlismassa n-oktans, C[[sub:8]]H[[sub:18]] [[MATH:125]] eðlismassi = 0,7025 g/ml).
+(c) Að því gefnu að akstursdrægni bifreiðar sé í beinu hlutfalli við brunaverma eldsneytisins, reiknaðu hversu miklu lengra mætti búast við að bifreið komist á 1 L af bensíni en á 1 L af etanóli. Gerðu ráð fyrir að bensín hafi brunaverma og eðlismassa n-oktans, C[[sub:8]]H[[sub:18]] [[MATH:125]] eðlismassi = 0,7025 g/ml).
 
 <!-- SEG:m68727:problem:fs-idp181957776 -->
-Meðal þeirra efna sem hvarfast við súrefni og hafa verið til skoðunar sem hugsanlegt eldflaugaeldsneyti eru díbóran [B[[sub:2]]H[[sub:6]], myndar B[[sub:2]]O[[sub:3]]([[i:s]]) og H[[sub:2]]O([[i:g]])], metan [CH[[sub:4]], myndar CO[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:g]])] og hýdrasín [N[[sub:2]]H[[sub:4]], myndar N[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:g]])]. Á grundvelli þess varma sem losnar frá 1,00 g af hverju efni í efnahvarfi þess við súrefni, hvaða efnasamband býður upp á besta möguleikann sem eldflaugaeldsneyti? [[MATH:126]] B[[sub:2]]H[[sub:6]]([[i:g]]), CH[[sub:4]]([[i:g]]) og N[[sub:2]]H[[sub:4]]([[i:l]]) má finna í [[docref:Appendix G|m68865]].
+Meðal þeirra efna sem hvarfast við súrefni og hafa verið til skoðunar sem hugsanlegt eldflaugaeldsneyti eru díbóran [B[[sub:2]]H[[sub:6]], myndar B[[sub:2]]O[[sub:3]]([[i:s]]) og H[[sub:2]]O([[i:g]])], metan [CH[[sub:4]], myndar CO[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:g]])] og hýdrasín [N[[sub:2]]H[[sub:4]], myndar N[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:g]])]. Á grundvelli þess varma sem losnar frá 1,00 g af hverju efni í efnahvarfi þess við súrefni, hvaða af þessum efnasamböndum býður upp á besta möguleikann sem eldflaugaeldsneyti? [[MATH:126]] B[[sub:2]]H[[sub:6]]([[i:g]]), CH[[sub:4]]([[i:g]]) og N[[sub:2]]H[[sub:4]]([[i:l]]) má finna í [[docref:Appendix G|m68865]].
 
 <!-- SEG:m68727:solution:fs-idp7380800 -->
-Miðað við þá forsendu að besta eldflaugaeldsneytið sé það sem gefur frá sér mestan varma er B[[sub:2]]H[[sub:6]] aðalefnið.
+Miðað við þá forsendu að besta eldflaugaeldsneytið sé það sem gefur frá sér mestan varma, er B[[sub:2]]H[[sub:6]] aðalefnið.
 
 <!-- SEG:m68727:problem:fs-idp124892192 -->
 Hversu mikill varmi myndast þegar 1,25 g af krómmálmi hvarfast við súrefnisgas við staðalaðstæður?
@@ -988,10 +988,10 @@ Própan, C[[sub:3]]H[[sub:8]], er kolvetni sem er almennt notað sem eldsneyti.
 (a) Skrifaðu stillta jöfnu fyrir fullkominn bruna própangass.
 
 <!-- SEG:m68727:problem:fs-idp211819616 -->
-(b) Reiknaðu rúmmál lofts við 25 °C og 1,00 atm sem þarf til að brenna 25,0 grömmum af própani að fullu. Gerðu ráð fyrir að loft sé 21,0 prósent O[[sub:2]] miðað við rúmmál. (Vísbending: Við munum sjá hvernig þessi útreikningur er gerður í síðari kafla um gös – notaðu í bili upplýsingarnar um að 1,00 L af lofti við 25 °C og 1,00 atm inniheldur 0,275 g af O[[sub:2]].)
+(b) Reiknaðu rúmmál lofts við 25 °C og 1,00 atm þrýsting sem þarf til að brenna 25,0 grömmum af própani að fullu. Gerðu ráð fyrir að loft sé 21,0 prósent O[[sub:2]] að rúmmáli. (Vísbending: Við munum sjá hvernig þessi útreikningur er gerður í síðari kafla um gös – notaðu í bili upplýsingarnar um að 1,00 L af lofti við 25 °C og 1,00 atm inniheldur 0,275 g af O[[sub:2]].)
 
 <!-- SEG:m68727:problem:fs-idp211821472 -->
-(c) Brunavarmi própans er −2.219,2 kJ/mól. Reiknaðu myndunarvarma, [[MATH:129]] própans, að því gefnu að [[MATH:130]] H[[sub:2]]O([[i:l]]) = −285,8 kJ/mól og [[MATH:131]] CO[[sub:2]]([[i:g]]) = −393,5 kJ/mól.
+(c) Brunavarmi própans er −2.219,2 kJ/mól. Reiknaðu myndunarvermi, [[MATH:129]] própans, að því gefnu að [[MATH:130]] H[[sub:2]]O([[i:l]]) = −285,8 kJ/mól og [[MATH:131]] CO[[sub:2]]([[i:g]]) = −393,5 kJ/mól.
 
 <!-- SEG:m68727:problem:fs-idp211832480 -->
 (d) Að því gefnu að allur varminn sem losnar við bruna 25,0 gramma af própani flytjist yfir í 4,00 kílógrömm af vatni, reiknaðu hitastigsaukningu vatnsins.
@@ -1000,13 +1000,13 @@ Própan, C[[sub:3]]H[[sub:8]], er kolvetni sem er almennt notað sem eldsneyti.
 (a) [[MATH:132]] (b) 330 L loft; (c) −104,5 kJ mól[[sup:−1]]; (d) 75,4 °C
 
 <!-- SEG:m68727:problem:fs-idp165246960 -->
-Í nýlegum vetrarmánuði í Sheboygan, Wisconsin, var nauðsynlegt að fá 3500 kWst af varma frá jarðgasofni með 89% nýtni til að halda litlu húsi volgu (nýtni gasofns er hlutfall þess varma sem myndast við bruna sem flyst inn í húsið).
+Í nýlegum vetrarmánuði í Sheboygan, Wisconsin, þurfti að fá 3500 kWst af varma frá jarðgasofni með 89% nýtni til að halda litlu húsi volgu (nýtni gasofns er hlutfall þess varma sem myndast við bruna og flyst inn í húsið).
 
 <!-- SEG:m68727:problem:fs-idp165247664 -->
-(a) Gerðu ráð fyrir að jarðgas sé hreint metan og ákvarðaðu rúmmál jarðgassins í rúmfetum sem þurfti til að hita húsið. Meðalhitastig jarðgassins var 56 °F; við þetta hitastig og þrýstinginn 1 atm hefur jarðgas eðlismassann 0,681 g/L.
+(a) Gerðu ráð fyrir að jarðgas sé hreint metan og ákvarðaðu rúmmál jarðgassins í rúmfetum sem þurfti til að hita húsið. Meðalhitastig jarðgassins var 56 °F; við þetta hitastig og 1 atm þrýsting hefur jarðgas eðlismassann 0,681 g/L.
 
 <!-- SEG:m68727:problem:fs-idp165248432 -->
-(b) Hversu marga gallona af LPG (gasvökva) þyrfti til að koma í staðinn fyrir jarðgasið sem notað var? Gerðu ráð fyrir að LPG sé fljótandi própan [C[[sub:3]]H[[sub:8]]: eðlismassi, 0,5318 g/mL; brunarvermi, 2219 kJ/mól fyrir myndun CO[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:l]])] og að ofninn sem notaður er til að brenna LPG hafi sömu nýtni og gasofninn.
+(b) Hversu mörg gallon af LPG (gasvökva) þyrfti til að koma í staðinn fyrir jarðgasið sem notað var? Gerðu ráð fyrir að LPG sé fljótandi própan [C[[sub:3]]H[[sub:8]]: eðlismassi, 0,5318 g/mL; brunvermi, 2219 kJ/mól fyrir myndun CO[[sub:2]]([[i:g]]) og H[[sub:2]]O([[i:l]])] og að ofninn sem notaður er til að brenna LPG hafi sömu nýtni og gasofninn.
 
 <!-- SEG:m68727:problem:fs-idp165251760 -->
 (c) Hver er massi koldíoxíðs sem myndast við bruna metansins sem notað er til að hita húsið?
@@ -1015,19 +1015,19 @@ Própan, C[[sub:3]]H[[sub:8]], er kolvetni sem er almennt notað sem eldsneyti.
 (d) Hver er massi vatns sem myndast við bruna metansins sem notað er til að hita húsið?
 
 <!-- SEG:m68727:problem:fs-idp165252640 -->
-(e) Hvert er rúmmál lofts sem þarf til að sjá fyrir súrefni fyrir bruna metansins sem notað er til að hita húsið? Loft inniheldur 23% súrefni miðað við massa. Meðaleðlismassi lofts yfir mánuðinn var 1,22 g/L.
+(e) Hvaða rúmmál lofts þarf til að sjá fyrir súrefninu fyrir bruna metansins sem notað er til að hita húsið? Loft inniheldur 23% súrefni miðað við massa. Meðaleðlismassi lofts yfir mánuðinn var 1,22 g/L.
 
 <!-- SEG:m68727:problem:fs-idp165253248 -->
 (f) Hversu margar kílóvattstundir (1 kWst = 3,6 [[MATH:133]] 10[[sup:6]] J) af rafmagni þyrfti til að veita þann varma sem nauðsynlegur er til að hita húsið? Athugið að rafmagn er 100% skilvirkt við að framleiða varma inni í húsi.
 
 <!-- SEG:m68727:problem:fs-idp165259776 -->
-(g) Þrátt fyrir að rafmagn sé 100% skilvirkt við að framleiða varma inni í húsi er framleiðsla og dreifing rafmagns ekki 100% skilvirk. Nýtni framleiðslu og dreifingar rafmagns sem framleitt er í kolaorkuveri er um 40%. Ákveðin tegund kola gefur 2,26 kWst á pund við bruna. Hver er massi þessara kola í kílógrömmum sem þarf til að framleiða þá raforku sem nauðsynleg er til að hita húsið ef nýtni framleiðslu og dreifingar er 40%?
+(g) Þrátt fyrir að rafmagn sé 100% skilvirkt við að framleiða varma inni í húsi er framleiðsla og dreifing rafmagns ekki 100% skilvirk. Nýtni framleiðslu og dreifingar rafmagns sem framleitt er í kolaorkuveri er um 40%. Ákveðin tegund kola gefur 2,26 kWst á hvert pund við bruna. Hvaða massa af þessum kolum í kílógrömmum þarf til að framleiða þá raforku sem nauðsynleg er til að hita húsið ef nýtni framleiðslu og dreifingar er 40%?
 
 <!-- SEG:m68727:glossary-term:fs-idp102379584-term -->
 efnavarmafræði
 
 <!-- SEG:m68727:glossary-def:fs-idp102379584-def -->
-svið vísinda sem fjallar um tengslin milli varma, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum
+svið vísinda sem fjallar um tengsl milli varma, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum
 
 <!-- SEG:m68727:glossary-term:fs-idp102380512-term -->
 vermi (H)
@@ -1063,7 +1063,7 @@ ef hægt er að tákna ferli sem summu nokkurra skrefa er vermibreyting ferlisin
 kolvetni
 
 <!-- SEG:m68727:glossary-def:fs-idp102386192-def -->
-efnasamband sem samanstendur eingöngu af vetni og kolefni; aðalhluti jarðefnaeldsneytis
+efnasamband sem samanstendur eingöngu af vetni og kolefni; aðalþáttur jarðefnaeldsneytis
 
 <!-- SEG:m68727:glossary-term:fs-idp102386960-term -->
 innri orka (U)
@@ -1075,7 +1075,7 @@ heildarsumma allra mögulegra tegunda orku sem er til staðar í efni eða efnum
 staðalbrunavermi (ΔHc°)
 
 <!-- SEG:m68727:glossary-def:fs-idp102388352-def -->
-varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður
+varmi sem losnar þegar eitt mól af efnasambandi verður fyrir fullkomnum bruna við staðalaðstæður
 
 <!-- SEG:m68727:glossary-term:fs-idp102391904-term -->
 staðalmyndunarvermi (ΔHf°)
@@ -1084,10 +1084,10 @@ staðalmyndunarvermi (ΔHf°)
 vermibreyting efnahvarfs þar sem 1 mól af hreinu efni myndast úr frumefnum sínum í sínu stöðugasta ástandi við staðalaðstæður
 
 <!-- SEG:m68727:glossary-term:fs-idp102395520-term -->
-staðalástånd
+staðalástand
 
 <!-- SEG:m68727:glossary-def:fs-idp102395520-def -->
-sett af eðlisfræðilegum skilyrðum sem eru viðurkennd sem almenn viðmiðunarskilyrði til að skrásetja varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólstyrk, venjulega við 298,15 K hitastig
+sett af eðlisfræðilegum aðstæðum sem eru viðurkenndar sem almennar viðmiðunaraðstæður til að skrásetja varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólstyrk, venjulega við 298,15 K hitastig
 
 <!-- SEG:m68727:glossary-term:fs-idp102396512-term -->
 ástandsfall

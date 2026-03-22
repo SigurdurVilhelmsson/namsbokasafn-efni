@@ -250,7 +250,7 @@
 </media>
 <caption>(a) Lausn og hreinn leysir eru í upphafi aðskilin með himnuflæðishimnu. (b) Nettóflutningur leysisameinda yfir í lausnina á sér stað þar til flæðiþrýstingur hennar veldur jöfnum flutningshraða í báðar áttir.</caption>
 </figure>
-<para id="fs-idp66789904">Þegar himnuflæði fer fram í búnaði eins og þeim sem sýndur er á <link target-id="CNX_Chem_11_04_osmosis"/> eykst rúmmál lausnarinnar þegar hún þynnist við uppsöfnun leysis. Þetta veldur því að yfirborð lausnarinnar hækkar, sem eykur vökvastöðuþrýsting hennar (vegna þunga lausnarsúlunnar í rörinu) og leiðir til hraðari flutnings leysisameinda aftur yfir á hreina leysishliðina. Þegar þrýstingurinn nær gildi sem gefur andstæðan flutningshraða leysis sem er jafn himnuflæðishraðanum, stöðvast heildarflutningur leysis. Þessi þrýstingur er kallaður <term id="term-00010">flæðiþrýstingur (<emphasis effect="italics">Π</emphasis>) (e. osmotic pressure (<emphasis effect="italics">π</emphasis>))</term> lausnarinnar. Flæðiþrýstingur þunnrar lausnar er tengdur mólstyrk hennar, <emphasis effect="italics">M</emphasis>, og alkulshita, <emphasis effect="italics">T</emphasis>, samkvæmt jöfnunni</para>
+<para id="fs-idp66789904">Þegar himnuflæði fer fram í búnaði eins og þeim sem sýndur er á <link target-id="CNX_Chem_11_04_osmosis"/> eykst rúmmál lausnarinnar þegar hún þynnist við uppsöfnun leysis. Þetta veldur því að yfirborð lausnarinnar hækkar, sem eykur vökvastöðuþrýsting hennar (vegna þunga lausnarsúlunnar í rörinu) og leiðir til hraðari flutnings leysisameinda aftur yfir á hreina leysishliðina. Þegar þrýstingurinn nær gildi sem gefur andstæðan flutningshraða leysis sem er jafn himnuflæðishraðanum, stöðvast heildarflutningur leysis. Þessi þrýstingur er kallaður <term id="term-00010">flæðiþrýstingur (<emphasis effect="italics">Π</emphasis>) (e. osmotic pressure (π))</term> lausnarinnar. Flæðiþrýstingur þunnrar lausnar er tengdur mólstyrk hennar, <emphasis effect="italics">M</emphasis>, og alkulshita, <emphasis effect="italics">T</emphasis>, samkvæmt jöfnunni</para>
 <equation id="fs-idp52754144" class="unnumbered"><m:math><m:mrow><m:mi>Π</m:mi><m:mo>=</m:mo><m:mi>M</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
 <para id="fs-idm58472592">þar sem <emphasis effect="italics">R</emphasis> er algildi gasfastans.</para>
 <example id="fs-idp189701856">
@@ -335,7 +335,7 @@
 <para id="fs-idp106679776">Ef við skoðum fyrra dæmið og gerum ráð fyrir fullkominni klofnun, þá inniheldur 1,0 <emphasis effect="italics">m</emphasis> vatnslausn af NaCl 2,0 mól af jónum (1,0 mól Na<sup>+</sup> og 1,0 mól Cl<sup>−</sup>) á hvert kílógramm af vatni, og búist er við að frostmarkslækkun hennar sé</para>
 <equation id="fs-idp189695024" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:mn>2.0</m:mn><m:mspace width="0.2em"/><m:mtext>mol ions/kg water</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1.86</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C kg water/mol ion</m:mtext><m:mo>=</m:mo><m:mn>3.7</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp138040256">Þegar þessi lausn er hins vegar raunverulega útbúin og frostmarkslækkun hennar mæld, fæst gildið 3,4 °C. Svipað misræmi sést fyrir önnur jónísk efnasambönd og munurinn á mældum og væntum gildum samsafneiginleika verður yfirleitt meiri eftir því sem styrkur leysta efnisins eykst. Þessar athuganir benda til þess að jónir natríumklóríðs (og annarra sterkra rafkleyfa) séu ekki að fullu klofnar í lausn.</para>
-<para id="fs-idp84456528">Til að taka tillit til þessa og forðast villur sem fylgja forsendunni um fullkomna klofnun er notaður tilraunakenndur mælikvarði sem nefndur er til heiðurs þýska efnafræðingnum og Nóbelsverðlaunahafanum Jacobus Henricus van't Hoff. <term id="term-00016">van't Hoff-stuðullinn (<emphasis effect="italics">i</emphasis>) (e. van’t hoff factor (<emphasis effect="italics">i</emphasis>))</term> er skilgreindur sem hlutfall uppleystra agna í lausn á móti fjölda uppleystra formúlueininga:</para>
+<para id="fs-idp84456528">Til að taka tillit til þessa og forðast villur sem fylgja forsendunni um fullkomna klofnun er notaður tilraunakenndur mælikvarði sem nefndur er til heiðurs þýska efnafræðingnum og Nóbelsverðlaunahafanum Jacobus Henricus van't Hoff. <term id="term-00016">van't Hoff-stuðullinn (<emphasis effect="italics">i</emphasis>) (e. van’t hoff factor (i))</term> er skilgreindur sem hlutfall uppleystra agna í lausn á móti fjölda uppleystra formúlueininga:</para>
 <equation id="fs-idp129426672" class="unnumbered"><m:math><m:mrow><m:mi>i</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>moles of particles in solution</m:mtext></m:mrow><m:mrow><m:mtext>moles of formula units dissolved</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp100413216">Gildi fyrir mælda van't Hoff-stuðla fyrir nokkur leyst efni, ásamt spáðum gildum sem gera ráð fyrir fullkominni klofnun, eru sýnd í <link target-id="fs-idp191832160"/>.</para>
 <table id="fs-idp191832160" class="top-titled" summary="This table provides electrolytes, particles in solution, i (predicted), and i (Measured). H C l yields H superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. N a C l yields N a superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. M g S O subscript 4 yields M g superscript 2 plus and S O subscript 4 superscript 2 minus particles in solution with a predicted i value of 2 and a measured value of 1.3. M g C l subscript 2 yields M g superscript 2 plus and C l superscript minus particles in solution with a predicted i value of 3 and a measured value of 2.7. F e C l subscript 3 yields Fe superscript 3 plus and C l superscript minus particles in solution with a predicted i value of 4 and a measured value of 3.4. Glucose yields C subscript 12 H subscript 22 O subscript 11 particles in solution with a predicted i value of 1 and a measured value of 1.0.">
@@ -822,7 +822,7 @@
 <meaning id="fs-idp141106960-meaning">af jöfnum osmósuþrýstingi</meaning>
 </definition>
 <definition id="fs-idp141108496">
-<term>mólalstyrkur (m) (e. molality (m))</term>
+<term><emphasis effect="italics">m</emphasis>ólalstyrkur (m) (e. molality (m))</term>
 <meaning id="fs-idp141108496-meaning">styrkleikaeining skilgreind sem hlutfall mólfjölda uppleysts efnis og massa leysisins í kílógrömmum</meaning>
 </definition>
 <definition id="fs-idp141112944">
@@ -830,7 +830,7 @@
 <meaning id="fs-idp141112944-meaning">dreifing leysisameinda í gegnum hálfgegndræpa himnu</meaning>
 </definition>
 <definition id="fs-idp141114480">
-<term>osmósuþrýstingur (Π) (e. osmotic pressure (π))</term>
+<term>osmósuþrýstingur (<emphasis effect="italics">Π</emphasis>) (e. osmotic pressure (π))</term>
 <meaning id="fs-idp141114480-meaning">mótþrýstingur sem þarf til að koma í veg fyrir heildarflutning leysisameinda í gegnum hálfgegndræpa himnu</meaning>
 </definition>
 <definition id="fs-idp141116656">
@@ -842,7 +842,7 @@
 <meaning id="fs-idp11032848-meaning">himna sem hleypir ákveðnum jónum eða sameindum sértækt í gegn</meaning>
 </definition>
 <definition id="fs-idp11034384">
-<term>van't Hoff-stuðull (i) (e. van’t hoff factor (i))</term>
+<term>van't Hoff-stuðull (<emphasis effect="italics">i</emphasis>) (e. van’t hoff factor (i))</term>
 <meaning id="fs-idp11034384-meaning">hlutfallið milli mólfjölda agna í lausn og mólfjölda formúlueininga sem leystar eru upp í lausninni</meaning>
 </definition>
 </glossary>

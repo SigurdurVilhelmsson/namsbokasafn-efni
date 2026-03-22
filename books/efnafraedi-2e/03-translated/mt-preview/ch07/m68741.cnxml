@@ -297,7 +297,7 @@
 </section>
 <section id="fs-idm34679504">
 <title>Styrkur jónatengja og grindarorka</title>
-<para id="fs-idm57606496">Jónaefni er stöðugt vegna rafstöðuaðdráttar milli jákvæðra og neikvæðra jóna þess. Grindarorka efnasambands er mælikvarði á styrk þessa aðdráttar. <term id="term-00001">Grindarorka (Δ<emphasis effect="italics">H</emphasis><sub>grind</sub>) (e. lattice energy (δ<emphasis effect="italics">h</emphasis><sub>lattice</sub>))</term> jónaefnis er skilgreind sem orkan sem þarf til að aðskilja eitt mól af föstu efninu í jónir þess á gasformi. Fyrir jónaefnið MX er grindarorkan vermibreytingin fyrir ferlið:</para>
+<para id="fs-idm57606496">Jónaefni er stöðugt vegna rafstöðuaðdráttar milli jákvæðra og neikvæðra jóna þess. Grindarorka efnasambands er mælikvarði á styrk þessa aðdráttar. <term id="term-00001">Grindarorka (Δ<emphasis effect="italics">H</emphasis><sub>grind</sub>) (e. lattice energy (δhlattice))</term> jónaefnis er skilgreind sem orkan sem þarf til að aðskilja eitt mól af föstu efninu í jónir þess á gasformi. Fyrir jónaefnið MX er grindarorkan vermibreytingin fyrir ferlið:</para>
 <equation id="fs-idp69066736" class="unnumbered"><m:math><m:mrow><m:mtext>MX</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mtext>M</m:mtext><m:mrow><m:mi>n</m:mi><m:mtext>+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>X</m:mtext><m:mrow><m:mi>n</m:mi><m:mtext>−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>lattice</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm45000976">Taktu eftir að við notum þá venju að jónaefnið er aðskilið í jónir, þannig að grindarorkurnar okkar verða <emphasis effect="italics">innvermnar</emphasis> (jákvæð gildi). Sumar bækur nota jafngilda en andstæða venju og skilgreina grindarorku sem orkuna sem losnar þegar aðskildar jónir sameinast og mynda grind og gefa upp neikvæð (útvermin) gildi. Þess vegna, ef þú flettir upp grindarorkum í annarri heimild, vertu viss um að athuga hvaða skilgreining er notuð. Í báðum tilfellum gefur hærra tölugildi grindarorku til kynna stöðugra jónaefni. Fyrir natríumklóríð er Δ<emphasis effect="italics">H</emphasis><sub>grind</sub> = 769 kJ. Það þarf því 769 kJ til að aðskilja eitt mól af föstu NaCl í Na<sup>+</sup> og Cl<sup>–</sup> jónir á gasformi. Þegar eitt mól af Na<sup>+</sup> og eitt mól af Cl<sup>–</sup> jónum á gasformi mynda fast NaCl losna 769 kJ af varma.</para>
 <para id="fs-idp17453088">Grindarorkuna Δ<emphasis effect="italics">H</emphasis><sub>grind</sub> jónakristalls má setja fram með eftirfarandi jöfnu (leidd út frá lögmáli Coulombs, sem stjórnar kröftum milli rafhleðsla):</para>
@@ -627,7 +627,7 @@
 <meaning id="fs-idp39711472-meaning">varmefnafræðilegur hringur sem tengir saman hin ýmsu orkuþrep sem eiga sér stað við myndun jónaefnis í föstu formi úr viðeigandi frumefnum</meaning>
 </definition>
 <definition id="fs-idp29295648">
-<term>grindarorka (ΔHgrind) (e. lattice energy (δhlattice))</term>
+<term>grindarorka (Δ<emphasis effect="italics">H</emphasis>grind) (e. lattice energy (δhlattice))</term>
 <meaning id="fs-idp29295648-meaning">orka sem þarf til að aðskilja eitt mól af jónaefni í föstu formi í jónir þess á gasfasa</meaning>
 </definition>
 </glossary>

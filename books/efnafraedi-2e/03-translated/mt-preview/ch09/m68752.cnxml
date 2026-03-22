@@ -93,7 +93,7 @@
 </media>
 
 <caption>Ef strokkum með jöfnu rúmmáli sem innihalda gös við þrýstinginn 300 kPa, 450 kPa og 600 kPa er öllum blandað saman í strokk af sömu stærð er heildarþrýstingur gasblöndunnar 1350 kPa.</caption></figure>
-<para id="fs-idp110759216">Hlutþrýstingur gass A tengist heildarþrýstingi gasblöndunnar í gegnum <term id="term-00004">mólhlutfall (<emphasis effect="italics">X</emphasis>) (e. mole fraction (<emphasis effect="italics">x</emphasis>))</term> þess, styrkleikaeiningu sem er skilgreind sem fjöldi móla í efnisþætti lausnar deilt með heildarfjölda móla allra efnisþátta:</para>
+<para id="fs-idp110759216">Hlutþrýstingur gass A tengist heildarþrýstingi gasblöndunnar í gegnum <term id="term-00004">mólhlutfall (<emphasis effect="italics">X</emphasis>) (e. mole fraction (x))</term> þess, styrkleikaeiningu sem er skilgreind sem fjöldi móla í efnisþætti lausnar deilt með heildarfjölda móla allra efnisþátta:</para>
 <equation id="fs-idp18188304" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub><m:mspace width="2em"/><m:mtext>where</m:mtext><m:mspace width="2em"/><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp75739968">þar sem <emphasis effect="italics">P<sub>A</sub></emphasis>, <emphasis effect="italics">X<sub>A</sub></emphasis> og <emphasis effect="italics">n<sub>A</sub></emphasis> eru hlutþrýstingur, mólhlutfall og mólfjöldi gass A, og <emphasis effect="italics">n<sub>Total</sub></emphasis> er mólfjöldi allra efnisþátta í efnablöndunni.</para>
 <example id="fs-idp143452448">
@@ -614,7 +614,7 @@
 <meaning id="fs-idp142977184-meaning">heildarþrýstingur efnablöndu kjörgasa er jafn summu hlutþrýstings íhlutagasanna</meaning>
 </definition>
 <definition id="fs-idp1132336">
-<term>mólhlutfall (X) (e. mole fraction (x))</term>
+<term>mólhlutfall (<emphasis effect="italics">X</emphasis>) (e. mole fraction (x))</term>
 <meaning id="fs-idp1132336-meaning">styrkleikaeining skilgreind sem hlutfall mólmagns íhlutar í efnablöndu og heildarfjölda móla allra íhluta efnablöndunnar</meaning>
 </definition>
 <definition id="fs-idp104769888">

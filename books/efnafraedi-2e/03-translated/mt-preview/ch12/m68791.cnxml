@@ -454,7 +454,7 @@
 </note>
 </example>
 </section>
-<para id="fs-idm99562880"><term id="term-00002">Helmingunartími efnahvarfs (<emphasis effect="italics">t</emphasis><sub>1/2</sub>) (e. half-life of a reaction (<emphasis effect="italics">t</emphasis><sub>1/2</sub>))</term> er sá tími sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur af þeim styrk hvarfefnis sem eftir er. Ef við notum sundrun vetnisperoxíðs (<link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/>) sem dæmi, sjáum við að á fyrsta helmingunartímanum (frá 0,00 klst. til 6,00 klst.) minnkar styrkur H<sub>2</sub>O<sub>2</sub> úr 1,000 <emphasis effect="italics">M</emphasis> í 0,500 <emphasis effect="italics">M</emphasis>. Á öðrum helmingunartímanum (frá 6,00 klst. til 12,00 klst.) minnkar hann úr 0,500 <emphasis effect="italics">M</emphasis> í 0,250 <emphasis effect="italics">M</emphasis>; á þriðja helmingunartímanum minnkar hann úr 0,250 <emphasis effect="italics">M</emphasis> í 0,125 <emphasis effect="italics">M</emphasis>. Styrkur H<sub>2</sub>O<sub>2</sub> helmingast á hverju 6,00 klukkustunda tímabili. Sundrun vetnisperoxíðs er fyrsta stigs efnahvarf og eins og sýna má fram á er helmingunartími fyrsta stigs efnahvarfs óháður styrk hvarfefnisins. Hins vegar er helmingunartími efnahvarfa af öðrum stigum háður styrk hvarfefnanna.</para>
+<para id="fs-idm99562880"><term id="term-00002">Helmingunartími efnahvarfs (<emphasis effect="italics">t</emphasis><sub>1/2</sub>) (e. half-life of a reaction (t1/2))</term> er sá tími sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur af þeim styrk hvarfefnis sem eftir er. Ef við notum sundrun vetnisperoxíðs (<link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/>) sem dæmi, sjáum við að á fyrsta helmingunartímanum (frá 0,00 klst. til 6,00 klst.) minnkar styrkur H<sub>2</sub>O<sub>2</sub> úr 1,000 <emphasis effect="italics">M</emphasis> í 0,500 <emphasis effect="italics">M</emphasis>. Á öðrum helmingunartímanum (frá 6,00 klst. til 12,00 klst.) minnkar hann úr 0,500 <emphasis effect="italics">M</emphasis> í 0,250 <emphasis effect="italics">M</emphasis>; á þriðja helmingunartímanum minnkar hann úr 0,250 <emphasis effect="italics">M</emphasis> í 0,125 <emphasis effect="italics">M</emphasis>. Styrkur H<sub>2</sub>O<sub>2</sub> helmingast á hverju 6,00 klukkustunda tímabili. Sundrun vetnisperoxíðs er fyrsta stigs efnahvarf og eins og sýna má fram á er helmingunartími fyrsta stigs efnahvarfs óháður styrk hvarfefnisins. Hins vegar er helmingunartími efnahvarfa af öðrum stigum háður styrk hvarfefnanna.</para>
 </section>
 <section id="fs-idm63099680" class="summary">
 <title>Lykilhugtök og samantekt</title>
@@ -850,7 +850,7 @@
 </content>
 <glossary>
 <definition id="fs-idm46849712">
-<term>helmingunartími efnahvarfs (t1/2) (e. half-life of a reaction (tl/2))</term>
+<term>helmingunar<emphasis effect="italics">t</emphasis>ími efnahvarfs (t1/2) (e. half-life of a reaction (tl/2))</term>
 <meaning id="fs-idm46849712-meaning">tíminn sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast</meaning>
 </definition>
 <definition id="fs-idm46847680">

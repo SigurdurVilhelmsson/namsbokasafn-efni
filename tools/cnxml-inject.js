@@ -40,6 +40,7 @@ import path from 'path';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
+import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 
 // =====================================================================
@@ -784,16 +785,19 @@ function annotateInlineTerms(isSegments, enSegments) {
       const isNewFormat = newInner !== undefined;
       if (termIndex >= enTermTexts.length) return match;
 
-      // Convert inline markers in EN term text to CNXML so annotations don't inject
-      // raw API markers (like [[sup:3]], {{i}}) into IS segments — which would trigger
-      // hasApiMarkers and disable legacy pattern conversion in reverseInlineMarkup().
-      // Converting to CNXML preserves tag counts (emphasis, sup, sub) in the output.
+      // Strip inline markers from EN term text to plain text for annotations.
+      // Annotations are reference hints "(e. english term)" — they don't exist in
+      // source CNXML, so any CNXML tags (sub, sup, emphasis) inside them would be
+      // overcounted by the fidelity check. Plain text avoids this side-effect and
+      // also prevents raw API markers from leaking into IS segments.
       const enTermRaw = enTermTexts[termIndex];
       const enTerm = enTermRaw
-        .replace(/\[\[sup:([^\]]+)\]\]/g, '<sup>$1</sup>')
-        .replace(/\[\[sub:([^\]]+)\]\]/g, '<sub>$1</sub>')
-        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>')
-        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+        .replace(/\[\[sup:([^\]]+)\]\]/g, '$1')
+        .replace(/\[\[sub:([^\]]+)\]\]/g, '$1')
+        .replace(/\[\[i:([^\]]+)\]\]/g, '$1')
+        .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
+        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
+        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
         .toLowerCase();
       termIndex++;
 
@@ -813,6 +817,62 @@ function annotateInlineTerms(isSegments, enSegments) {
   }
 
   return { segments: isSegments, annotatedCount };
+}
+
+/**
+ * Restore inline emphasis/sub/sup markup in a translated glossary term
+ * by matching against the original CNXML term element.
+ *
+ * The extraction strips inline markup from glossary terms (e.g., "heat (q)"
+ * instead of "heat ([[i:q]])"). This function restores the markup by finding
+ * the same text in the translated term (mathematical variables like q, C, m
+ * are preserved exactly in translation).
+ *
+ * @param {string} translatedTerm - Translated term text (from getSeg)
+ * @param {string} originalRawTerm - Original CNXML term content (with markup)
+ * @returns {string} Term with inline markup restored
+ */
+function restoreGlossaryTermMarkup(translatedTerm, originalRawTerm) {
+  if (!originalRawTerm || !originalRawTerm.includes('<')) return translatedTerm;
+
+  let result = translatedTerm;
+
+  // Restore MathML elements from original term. The extraction strips these,
+  // losing formulas like (ΔG°f) from glossary terms. We append them to the
+  // translated term since they're notation that should be language-independent.
+  const mathBlocks = originalRawTerm.match(/<m:math[\s\S]*?<\/m:math>/g);
+  if (mathBlocks) {
+    // Count existing math in result to avoid duplicates
+    const existingMath = (result.match(/<m:math/g) || []).length;
+    for (let i = existingMath; i < mathBlocks.length; i++) {
+      result = result + ' ' + mathBlocks[i];
+    }
+  }
+
+  // Collect all inline markup from original term
+  const inlinePattern =
+    /<(emphasis)\s+effect="([^"]+)">([^<]+)<\/emphasis>|<(sub|sup)>([^<]+)<\/\4>/g;
+  let match;
+
+  while ((match = inlinePattern.exec(originalRawTerm)) !== null) {
+    const isEmphasis = !!match[1];
+    const tag = isEmphasis ? 'emphasis' : match[4];
+    const effect = isEmphasis ? match[2] : null;
+    const text = isEmphasis ? match[3] : match[5];
+
+    // Build the CNXML replacement
+    const replacement = isEmphasis
+      ? `<emphasis effect="${effect}">${text}</emphasis>`
+      : `<${tag}>${text}</${tag}>`;
+
+    // Only restore if the exact text appears in the translated term
+    // and isn't already wrapped (prevents double-wrapping)
+    if (result.includes(text) && !result.includes(replacement)) {
+      result = result.replace(text, replacement);
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -1442,27 +1502,39 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     const enSegments = options.enSegments;
     const annotateEn = options.annotateEn !== false;
 
+    // Build map of original glossary term markup for restoring emphasis/sub/sup.
+    // The extraction strips inline markup from glossary terms; this recovers it
+    // from the original CNXML so translated terms have matching tag counts.
+    const originalGlossaryTerms = new Map();
+    const originalGlossary = extractGlossary(originalCnxml);
+    for (const g of originalGlossary) {
+      if (g.rawTerm) originalGlossaryTerms.set(g.id, g.rawTerm);
+    }
+
     lines.push('<glossary>');
     for (const item of structure.glossary.items) {
       const termText = getSeg(item.termSegmentId);
       const defText = getSeg(item.definitionSegmentId);
       if (termText && defText) {
-        // Annotate glossary term with English original
-        let annotatedTerm = termText;
+        // Restore inline markup (emphasis, sub, sup) from original glossary term.
+        // Mathematical variables (q, C, m, v) are preserved in translation,
+        // so matching by text content is reliable.
+        let annotatedTerm = restoreGlossaryTermMarkup(termText, originalGlossaryTerms.get(item.id));
         if (annotateEn && enSegments && item.termSegmentId) {
           const enTermRaw = enSegments.get(item.termSegmentId);
           if (enTermRaw) {
-            // EN glossary terms may have markers — convert to CNXML
+            // Strip markers from EN glossary term text to plain text for annotations.
+            // Same rationale as annotateInlineTerms(): annotations are reference hints,
+            // not structural content, so they shouldn't add CNXML tags.
             const enTerm = enTermRaw
               .replace(/__([^_]+)__/g, '$1')
               .replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '$1')
-              .replace(/\[\[sup:([^\]]+)\]\]/g, '<sup>$1</sup>')
-              .replace(/\[\[sub:([^\]]+)\]\]/g, '<sub>$1</sub>')
-              .replace(
-                /\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g,
-                '<emphasis effect="italics">$1</emphasis>'
-              )
-              .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+              .replace(/\[\[sup:([^\]]+)\]\]/g, '$1')
+              .replace(/\[\[sub:([^\]]+)\]\]/g, '$1')
+              .replace(/\[\[i:([^\]]+)\]\]/g, '$1')
+              .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
+              .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
+              .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
               .trim()
               .toLowerCase();
             // Strip any __term__ markers from IS text for comparison
@@ -1493,7 +1565,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
 
   lines.push('</document>');
 
-  const output = lines.join('\n');
+  let output = lines.join('\n');
+
+  // Deduplicate media elements at the document level.
+  // Examples/exercises preserve original CNXML (with inline media), and the
+  // structure tree may also emit standalone media blocks for the same IDs.
+  output = deduplicateMedia(output);
 
   // Verify: check for unresolved [[MATH:N]] placeholders in output
   const unresolvedMath = output.match(/\[\[MATH:(\d+)\]\]/g) || [];
@@ -1864,6 +1941,94 @@ function replaceListItems(cnxml, listElement, getSeg) {
 }
 
 /**
+ * Replace a para's text content while preserving nested block elements.
+ *
+ * The non-greedy regex `<para id="X">[\s\S]*?</para>` stops at the first
+ * inner `</para>` when a para contains nested lists/equations with inner paras.
+ * This function uses depth-aware matching to find the full outer para, then
+ * replaces only the text portion (before nested block elements) while keeping
+ * nested lists, equations, figures, etc. intact.
+ *
+ * @param {string} cnxml - CNXML content
+ * @param {string} paraId - ID of the para to replace
+ * @param {string} newText - New text content (already processed through reverseInlineMarkup)
+ * @param {string} titleElement - Title CNXML to insert (e.g., `<title>...</title>` or '')
+ * @param {string[]} stripFromNested - Tag names to strip from preserved nested content
+ *   (elements that were extracted as sibling structure entries, e.g., equations)
+ * @returns {string} Modified CNXML, or original if para not found
+ */
+function replaceParaPreservingNested(cnxml, paraId, newText, titleElement, stripFromNested = []) {
+  const openPattern = new RegExp(`<para\\s+id="${paraId}"[^>]*>`);
+  const openMatch = openPattern.exec(cnxml);
+  if (!openMatch) return cnxml;
+
+  const paraStart = openMatch.index;
+  const openEnd = paraStart + openMatch[0].length;
+
+  // Find the matching </para> with depth tracking
+  let depth = 1;
+  let pos = openEnd;
+  let closeStart = -1;
+  while (depth > 0 && pos < cnxml.length) {
+    const nextOpen = cnxml.indexOf('<para', pos);
+    const nextClose = cnxml.indexOf('</para>', pos);
+    if (nextClose === -1) break;
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth++;
+      pos = nextOpen + 5;
+    } else {
+      depth--;
+      if (depth === 0) {
+        closeStart = nextClose;
+      }
+      pos = nextClose + 7;
+    }
+  }
+
+  if (closeStart === -1) return cnxml; // Couldn't find matching close
+
+  const innerContent = cnxml.substring(openEnd, closeStart);
+
+  // Only activate when the para contains a nested <para> — this is the specific
+  // condition that breaks the non-greedy regex (it stops at the inner </para>).
+  // For paras with other nested block elements but no inner paras, the non-greedy
+  // regex works fine and produces better results.
+  if (!/<para\s/.test(innerContent)) {
+    return cnxml; // Signal to caller to use the fallback regex
+  }
+
+  // Find the first nested block element (list, equation, figure, table, note)
+  const firstBlockMatch = innerContent.match(
+    /^([\s\S]*?)(<(?:list|equation|figure|table|note|media)\s)/
+  );
+
+  if (!firstBlockMatch) {
+    // No nested block elements — replace entirely (same as current behavior)
+    return cnxml.substring(0, openEnd) + titleElement + newText + cnxml.substring(closeStart);
+  }
+
+  // Replace only the text before the first block element, keep blocks intact
+  let blocksAndAfter = innerContent.substring(firstBlockMatch[1].length);
+
+  // Strip elements from the preserved nested content that were extracted as
+  // sibling structure entries (they'll be output separately by the build pipeline).
+  // Without this, equations/figures/tables inside the preserved list would be
+  // duplicated — once from the preserved content and once from buildEquation() etc.
+  if (stripFromNested.length > 0) {
+    blocksAndAfter = stripNestedElements(blocksAndAfter, stripFromNested);
+  }
+
+  return (
+    cnxml.substring(0, openEnd) +
+    titleElement +
+    newText +
+    '\n' +
+    blocksAndAfter +
+    cnxml.substring(closeStart)
+  );
+}
+
+/**
  * Build an example element.
  */
 function buildExample(element, getSeg, equations, originalCnxml) {
@@ -1909,11 +2074,46 @@ function buildExample(element, getSeg, equations, originalCnxml) {
           }
 
           const titleElement = titleText ? `<title>${titleText}</title>` : '';
-          const replacementText = `<para id="${child.id}">${titleElement}${paraText}</para>`;
-          // Use non-greedy regex — depth-aware replacement would remove nested
-          // content (lists, equations) that the extraction separated into siblings.
-          const paraPattern = new RegExp(`<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`, 'g');
-          exampleCnxml = exampleCnxml.replace(paraPattern, replacementText);
+
+          // Collect sibling element types that the extraction pulled out of this
+          // para as separate structure entries (equations, figures, tables).
+          // These need to be stripped from preserved nested content to avoid
+          // duplication with their standalone build outputs.
+          const siblingBlockTypes = new Set();
+          for (const sibling of element.content || []) {
+            if (sibling !== child && sibling.type) {
+              siblingBlockTypes.add(sibling.type);
+            }
+          }
+          // Map structure types to CNXML tag names
+          const stripTags = [...siblingBlockTypes].filter((t) =>
+            ['equation', 'figure', 'table'].includes(t)
+          );
+
+          // Try nested-preserving replacement first: if the para contains nested
+          // block elements (lists, equations), replace only the text portion while
+          // keeping nested content intact. Falls back to non-greedy regex for
+          // simple paras (which is equivalent and slightly faster).
+          const preserved = replaceParaPreservingNested(
+            exampleCnxml,
+            child.id,
+            paraText,
+            titleElement,
+            stripTags
+          );
+          if (preserved !== exampleCnxml) {
+            exampleCnxml = preserved;
+          } else {
+            // Fallback: non-greedy regex for paras not matched by depth-aware method
+            const paraPattern = new RegExp(
+              `<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`,
+              'g'
+            );
+            exampleCnxml = exampleCnxml.replace(
+              paraPattern,
+              `<para id="${child.id}">${titleElement}${paraText}</para>`
+            );
+          }
           replacedParaIds.add(child.id);
 
           isFirstPara = false;
@@ -1931,6 +2131,11 @@ function buildExample(element, getSeg, equations, originalCnxml) {
       // Strip figures (handled by buildFigure) and tables (handled by buildTable
       // from the structure tree — keeping them here would produce duplicates).
       exampleCnxml = stripNestedElements(exampleCnxml, ['figure', 'table']);
+
+      // Remove duplicate media elements — the original CNXML has media inside
+      // items/paras, and the translated segments may also generate media from
+      // [[MEDIA:N]] markers, producing two copies with the same ID.
+      exampleCnxml = deduplicateMedia(exampleCnxml);
 
       return exampleCnxml;
     }
@@ -1962,14 +2167,20 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
           if (child.type === 'para' && child.id && child.segmentId) {
             const paraText = getSeg(child.segmentId);
             if (paraText) {
-              const paraPattern = new RegExp(
-                `<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`,
-                'g'
-              );
-              exerciseCnxml = exerciseCnxml.replace(
-                paraPattern,
-                `<para id="${child.id}">${paraText}</para>`
-              );
+              // Use nested-preserving replacement to handle paras containing lists
+              const preserved = replaceParaPreservingNested(exerciseCnxml, child.id, paraText, '');
+              if (preserved !== exerciseCnxml) {
+                exerciseCnxml = preserved;
+              } else {
+                const paraPattern = new RegExp(
+                  `<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`,
+                  'g'
+                );
+                exerciseCnxml = exerciseCnxml.replace(
+                  paraPattern,
+                  `<para id="${child.id}">${paraText}</para>`
+                );
+              }
               replacedParaIds.add(child.id);
             }
           }
@@ -2021,6 +2232,9 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
       // Strip figures (handled by buildFigure) and tables (handled by buildTable
       // from the structure tree — keeping them here would produce duplicates).
       exerciseCnxml = stripNestedElements(exerciseCnxml, ['figure', 'table']);
+
+      // Remove duplicate media elements (same issue as buildExample)
+      exerciseCnxml = deduplicateMedia(exerciseCnxml);
 
       return exerciseCnxml;
     }
@@ -2306,6 +2520,30 @@ function stripNestedElements(cnxml, tagNames) {
   }
 
   return result;
+}
+
+/**
+ * Remove duplicate media elements from CNXML.
+ * When buildExample/buildExercise preserves original CNXML (which has <media>
+ * elements) AND the translated segment text also generates <media> from
+ * [[MEDIA:N]] markers, both copies appear in the output. This function keeps
+ * only the first occurrence of each media ID.
+ * @param {string} cnxml - CNXML content
+ * @returns {string} CNXML with duplicate media removed
+ */
+function deduplicateMedia(cnxml) {
+  const seenMediaIds = new Set();
+  // Match <media id="xxx" ...>...</media> blocks
+  return cnxml.replace(
+    /<media\s+([^>]*\bid="([^"]+)"[^>]*)>[\s\S]*?<\/media>/g,
+    (match, attrs, id) => {
+      if (seenMediaIds.has(id)) {
+        return ''; // Remove duplicate
+      }
+      seenMediaIds.add(id);
+      return match;
+    }
+  );
 }
 
 // =====================================================================

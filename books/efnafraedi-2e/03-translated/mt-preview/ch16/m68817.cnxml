@@ -15,7 +15,7 @@
 </media>
 <caption>(a) Rannsóknir Nicholas Léonard Sadi Carnot á gufuknúnum vélum og (b) síðari rannsókn Rudolfs Clausius á þeim niðurstöðum leiddu til byltingarkenndra uppgötvana um sjálfgenga varmaflæðisferla.</caption>
 </figure>
-<para id="fs-idm194920048">Líkt og aðrir varmafræðilegir eiginleikar er þetta nýja stærð ástandsfall, þannig að breyting hennar veltur aðeins á upphafs- og lokaástandi kerfis. Árið 1865 nefndi Clausius þennan eiginleika <term id="term-00004">óreiðu (<emphasis effect="italics">S</emphasis>) (e. entropy (<emphasis effect="italics">s</emphasis>))</term> og skilgreindi breytingu hennar fyrir hvaða ferli sem er á eftirfarandi hátt:</para>
+<para id="fs-idm194920048">Líkt og aðrir varmafræðilegir eiginleikar er þetta nýja stærð ástandsfall, þannig að breyting hennar veltur aðeins á upphafs- og lokaástandi kerfis. Árið 1865 nefndi Clausius þennan eiginleika <term id="term-00004">óreiðu (<emphasis effect="italics">S</emphasis>) (e. entropy (s))</term> og skilgreindi breytingu hennar fyrir hvaða ferli sem er á eftirfarandi hátt:</para>
 <equation id="fs-idm146915824" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>S</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rev</m:mtext></m:mrow></m:msub></m:mrow><m:mi>T</m:mi></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm100781680">Óreiðubreytingin fyrir raunverulegan, óafturkræfan feril er þá jöfn þeirri fyrir fræðilega afturkræfa ferilinn sem felur í sér sömu upphafs- og lokaástönd.</para>
 <section id="fs-idp19898544">
@@ -221,7 +221,7 @@
 </content>
 <glossary>
 <definition id="fs-idm225836896">
-<term>óreiða (S) (e. entropy (s))</term>
+<term>óreiða (<emphasis effect="italics">S</emphasis>) (e. entropy (s))</term>
 <meaning id="fs-idm225836896-meaning">ástandsfall sem er mælikvarði á dreifingu efnis og/eða orku innan kerfis, ákvarðað af fjölda smáástanda kerfisins; oft lýst sem mælikvarða á óreglu kerfisins</meaning>
 </definition>
 <definition id="fs-idm228328464">

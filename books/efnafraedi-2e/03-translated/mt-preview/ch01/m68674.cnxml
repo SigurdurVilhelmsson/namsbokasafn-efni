@@ -191,9 +191,9 @@
 <title>Afleiddar SI-einingar</title>
 <section id="fs-idm16046736">
 <title>Rúmmál</title>
-<para id="fs-idm77137776"><term id="term-00011">Rúmmál (e. volume)</term> er mælikvarði á það rými sem hlutur tekur. Stöðluð SI-eining rúmmáls er skilgreind með grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðlað rúmmál er <term id="term-00012">rúmmetri (m<sup>3</sup>) (e. cubic meter (m<sup>3</sup>))</term>, teningur með brúnlengd nákvæmlega einn metra. Til að skammta einn rúmmetra af vatni gætum við smíðað teningslaga kassa með brúnlengd nákvæmlega einn metra. Þessi kassi myndi rúma einn rúmmetra af vatni eða einhverju öðru efni.</para>
+<para id="fs-idm77137776"><term id="term-00011">Rúmmál (e. volume)</term> er mælikvarði á það rými sem hlutur tekur. Stöðluð SI-eining rúmmáls er skilgreind með grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðlað rúmmál er <term id="term-00012">rúmmetri (m<sup>3</sup>) (e. cubic meter (m3))</term>, teningur með brúnlengd nákvæmlega einn metra. Til að skammta einn rúmmetra af vatni gætum við smíðað teningslaga kassa með brúnlengd nákvæmlega einn metra. Þessi kassi myndi rúma einn rúmmetra af vatni eða einhverju öðru efni.</para>
 <para id="fs-idm81813264">Algengari rúmmálseining er leidd af desimetra (0,1 m, eða 10 cm). Teningur með brúnlengd nákvæmlega einn desimetra hefur rúmmálið einn rúmdesimetri (dm<sup>3</sup>). <term id="term-00013">Lítri (L) (e. liter (l))</term> er algengara heiti á rúmdesimetra. Einn lítri er um 1,06 kvart.</para>
-<para id="fs-idm163691744"><term id="term-00014">Rúmsentimetri (cm<sup>3</sup>) (e. cubic centimeter (cm<sup>3</sup>))</term> er rúmmál tenings með brúnlengd nákvæmlega einn sentimetra. Skammstöfunin <emphasis effect="bold">cc</emphasis> (úr ensku <emphasis effect="bold">c</emphasis>ubic <emphasis effect="bold">c</emphasis>entimeter) er oft notuð af heilbrigðisstarfsfólki. Einn rúmsentimetri jafngildir einum <term id="term-00015">millilítra (mL) (e. milliliter (ml))</term> og er 1/1000 úr lítra.</para>
+<para id="fs-idm163691744"><term id="term-00014">Rúmsentimetri (cm<sup>3</sup>) (e. cubic centimeter (cm3))</term> er rúmmál tenings með brúnlengd nákvæmlega einn sentimetra. Skammstöfunin <emphasis effect="bold">cc</emphasis> (úr ensku <emphasis effect="bold">c</emphasis>ubic <emphasis effect="bold">c</emphasis>entimeter) er oft notuð af heilbrigðisstarfsfólki. Einn rúmsentimetri jafngildir einum <term id="term-00015">millilítra (mL) (e. milliliter (ml))</term> og er 1/1000 úr lítra.</para>
 <figure id="CNX_Chem_01_04_Volume" class="scaled-down">
 <media id="fs-idm75233216" alt="Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_Volume.jpg"/>
@@ -420,11 +420,11 @@
 <meaning id="fs-idm285658848-meaning">hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum skala</meaning>
 </definition>
 <definition id="fs-idm227540096">
-<term>rúmsentimetri (cm3 eða cc) (e. cubic centimeter (cm3 or cc))</term>
+<term>rúmsentimetri (cm<sup>3</sup> eða cc) (e. cubic centimeter (cm3 or cc))</term>
 <meaning id="fs-idm227540096-meaning">rúmmál tenings með brúnarlengd nákvæmlega 1 cm</meaning>
 </definition>
 <definition id="fs-idm244788352">
-<term>rúmmetri (m3) (e. cubic meter (m3))</term>
+<term>rúmmetri (m<sup>3</sup>) (e. cubic meter (m3))</term>
 <meaning id="fs-idm244788352-meaning">SI-eining rúmmáls</meaning>
 </definition>
 <definition id="fs-idm147403536">

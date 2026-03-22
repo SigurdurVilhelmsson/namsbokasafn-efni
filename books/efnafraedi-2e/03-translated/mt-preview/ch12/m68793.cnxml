@@ -35,7 +35,7 @@
 <para id="fs-idm207258608">Árekstrakenningin útskýrir hvers vegna flestir hvarfhraðar aukast þegar styrkur eykst. Með aukningu á styrk hvers hvarfefnis aukast líkurnar á árekstrum milli sameinda vegna þess að það eru fleiri sameindir á rúmmálseiningu. Fleiri árekstrar þýða meiri hvarfhraða, að því gefnu að orka árekstranna sé nægileg.</para>
 <section id="fs-idm122484320">
 <title>Virkjunarorka og Arrheniusarjafnan</title>
-<para id="fs-idm102149680">Lágmarksorkan sem er nauðsynleg til að mynda myndefni við árekstur milli hvarfefna kallast <term id="term-00004">virkjunarorka (<emphasis effect="italics">E</emphasis><sub>a</sub>) (e. activation energy (<emphasis effect="italics">e</emphasis><sub>a</sub>))</term>. Hvernig þessi orka er í samanburði við hreyfiorku sem árekstrarsameindir hvarfefna veita er aðalþátturinn sem hefur áhrif á hraða efnahvarfs. Ef virkjunarorkan er mun stærri en meðalhreyfiorka sameindanna mun efnahvarfið ganga hægt þar sem aðeins fáar hraðfara sameindir munu hafa næga orku til að hvarfast. Ef virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt.</para>
+<para id="fs-idm102149680">Lágmarksorkan sem er nauðsynleg til að mynda myndefni við árekstur milli hvarfefna kallast <term id="term-00004">virkjunarorka (<emphasis effect="italics">E</emphasis><sub>a</sub>) (e. activation energy (ea))</term>. Hvernig þessi orka er í samanburði við hreyfiorku sem árekstrarsameindir hvarfefna veita er aðalþátturinn sem hefur áhrif á hraða efnahvarfs. Ef virkjunarorkan er mun stærri en meðalhreyfiorka sameindanna mun efnahvarfið ganga hægt þar sem aðeins fáar hraðfara sameindir munu hafa næga orku til að hvarfast. Ef virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt.</para>
 <para id="fs-idm3588352"><link target-id="CNX_Chem_12_05_RCooDgm"/> sýnir hvernig orka efnakerfis breytist þegar það gengur í gegnum efnahvarf sem breytir hvarfefnum í myndefni samkvæmt jöfnunni</para>
 <equation id="fs-idm156839952" class="unnumbered"><m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi></m:mrow></m:math></equation>
 <para id="fs-idm92123120">Þessi <term id="term-00005">hvarfrit (e. reaction diagrams)</term> eru mikið notuð í efnahraðafræði til að sýna ýmsa eiginleika efnahvarfsins sem um ræðir. Ef litið er á ritið frá vinstri til hægri samanstendur kerfið í upphafi aðeins af hvarfefnum, <emphasis effect="italics">A</emphasis> + <emphasis effect="italics">B</emphasis>. Hvarfefnasameindir með nægilega orku geta rekist á og myndað orkuríkan virkjaðan flóka eða virkniástand. Óstöðuga virkniástandið getur síðan brotnað niður og myndað stöðugar afurðir, <emphasis effect="italics">C</emphasis> + <emphasis effect="italics">D</emphasis>. Ritið sýnir virkjunarorku efnahvarfsins, <emphasis effect="italics">E<sub>a</sub></emphasis>, sem orkumuninn á milli hvarfefnanna og virkniástandsins. Með því að nota tiltekna orku, <emphasis effect="italics">vermibreytingu</emphasis> (sjá kafla um varmaefnafræði), er vermibreyting efnahvarfsins, Δ<emphasis effect="italics">H</emphasis>, metin sem orkumunurinn á milli hvarfefnanna og afurðanna. Í þessu tilfelli er efnahvarfið útvermið (Δ<emphasis effect="italics">H</emphasis> &lt; 0) þar sem það leiðir til minnkunar á vermi kerfisins.</para>
@@ -359,7 +359,7 @@
 <meaning id="fs-idm89472432-meaning">(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast í efnahvarfi</meaning>
 </definition>
 <definition id="fs-idm162201904">
-<term>virkjunarorka (Ea) (e. activation energy (ea))</term>
+<term>virkjun<sub>a</sub>rorka (<emphasis effect="italics">E</emphasis>a) (e. activation energy (ea))</term>
 <meaning id="fs-idm162201904-meaning">lágmarksorka sem er nauðsynleg til að efnahvarf geti átt sér stað</meaning>
 </definition>
 <definition id="fs-idm187159584">
@@ -371,7 +371,7 @@
 <meaning id="fs-idm101548864-meaning">líkan sem leggur áherslu á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um hraðafræði efnahvarfa</meaning>
 </definition>
 <definition id="fs-idm206488448">
-<term>tíðnistuðull (A) (e. frequency factor (a))</term>
+<term>tíðnistuðull (<emphasis effect="italics">A</emphasis>) (e. frequency factor (a))</term>
 <meaning id="fs-idm206488448-meaning">jöfnunarstuðull í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis</meaning>
 </definition>
 <definition id="fs-idm355773584">

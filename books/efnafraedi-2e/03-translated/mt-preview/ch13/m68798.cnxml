@@ -8,7 +8,7 @@
 </metadata>
 
 <content>
-<para id="fs-idp120703584">Staða afturkræfs efnahvarfs er á þægilegan hátt metin með því að reikna út <term id="term-00001">hvarfstuðul (<emphasis effect="italics">Q</emphasis>) (e. reaction quotient (<emphasis effect="italics">q</emphasis>))</term> þess. Fyrir afturkræft efnahvarf sem lýst er með</para>
+<para id="fs-idp120703584">Staða afturkræfs efnahvarfs er á þægilegan hátt metin með því að reikna út <term id="term-00001">hvarfstuðul (<emphasis effect="italics">Q</emphasis>) (e. reaction quotient (q))</term> þess. Fyrir afturkræft efnahvarf sem lýst er með</para>
 <equation id="fs-idp5986304" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo>+</m:mo><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp11973152">er hvarfstuðullinn leiddur beint út frá hlutfallaefnafræði stilltrar jöfnu sem</para>
 <equation id="fs-idp44297776" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy="false">[</m:mo><m:mtext>D</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -46,7 +46,7 @@
 <para id="fs-idm378445456">Ef efnahvarfið byrjar með eingöngu myndefni er gildi <emphasis effect="italics">Q<sub>c</sub></emphasis> í upphafi óskilgreint (ómælanlega stórt, eða óendanlegt):</para>
 <equation id="fs-idm324502592" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>SO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mn>0</m:mn></m:mrow></m:mfrac><m:mo stretchy="false">→</m:mo><m:mtext>∞</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm374784256">Í þessu tilfelli stefnir efnahvarfið í átt að jafnvægi í öfuga átt. Styrkur myndefnis og teljari <emphasis effect="italics">Q<sub>c</sub></emphasis> minnka með tímanum, styrkur hvarfefna og nefnari <emphasis effect="italics">Q<sub>c</sub></emphasis> aukast, og hvarfstuðullinn minnkar þar af leiðandi þar til hann verður stöðugur við jafnvægi.</para>
-<para id="fs-idm389114784">Stöðuga gildið á <emphasis effect="italics">Q</emphasis> sem kerfi sýnir við jafnvægi er kallað <term id="term-00002">jafnvægisfastinn, <emphasis effect="italics">K</emphasis> (e. equilibrium constant, <emphasis effect="italics">k</emphasis>)</term>:</para>
+<para id="fs-idm389114784">Stöðuga gildið á <emphasis effect="italics">Q</emphasis> sem kerfi sýnir við jafnvægi er kallað <term id="term-00002">jafnvægisfastinn, <emphasis effect="italics">K</emphasis> (e. equilibrium constant, k)</term>:</para>
 <equation id="fs-idp266400656" class="unnumbered"><m:math><m:mrow><m:mi>K</m:mi><m:mo>≡</m:mo><m:mi>Q</m:mi><m:mspace width="0.2em"/><m:mtext>at equilibrium</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm328721280">Samanburður á gagnapunktunum í <link target-id="CNX_Chem_13_02_quotient"/> sýnir að báðar tilraunaaðstæðurnar leiddu til sama gildis fyrir jafnvægisfastann. Þetta er almenn athugun fyrir öll jafnvægiskerfi, þekkt sem <term id="term-00003">lögmálið um massaverkun (e. law of mass action)</term>: Við gefið hitastig er hvarfstuðull kerfis í jafnvægi fasti.</para>
 <example id="fs-idp54423808">
@@ -467,7 +467,7 @@
 </content>
 <glossary>
 <definition id="fs-idp63345136">
-<term>jafnvægisfasti (K) (e. equilibrium constant (k))</term>
+<term>jafnvægisfasti (<emphasis effect="italics">K</emphasis>) (e. equilibrium constant (k))</term>
 <meaning id="fs-idp63345136-meaning">gildi hvarfstuðuls fyrir kerfi í jafnvægi; má gefa upp með styrkjum (<emphasis effect="italics">K<sub>c</sub></emphasis>) eða hlutþrýstingi (<emphasis effect="italics">K<sub>p</sub></emphasis>)</meaning>
 </definition>
 <definition id="fs-idp102632368">
@@ -483,7 +483,7 @@
 <meaning id="fs-idp89564720-meaning">þegar afturkræft efnahvarf hefur náð jafnvægi við ákveðið hitastig, helst hvarfstuðullinn óbreyttur</meaning>
 </definition>
 <definition id="fs-idp74361936">
-<term>hvarfstuðull (Q) (e. reaction quotient (q))</term>
+<term>hvarfstuðull (<emphasis effect="italics">Q</emphasis>) (e. reaction quotient (q))</term>
 <meaning id="fs-idp74361936-meaning">stærðfræðilegt fall sem lýsir hlutfallslegu magni hvarfefna og myndefna í efnablöndu; má gefa upp með styrkjum (<emphasis effect="italics">Q<sub>c</sub></emphasis>) eða þrýstingi (<emphasis effect="italics">Q<sub>p</sub></emphasis>)</meaning>
 </definition>
 </glossary>

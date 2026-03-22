@@ -322,8 +322,11 @@ function extractInlineText(
     }
     return match; // Not a document link — leave for later regexes
   });
-  // Document links with content
-  text = text.replace(/<link\s([^>]*)>([\s\S]*?)<\/link>/g, (match, attrs, inner) => {
+  // Document links with content.
+  // The negative lookbehind (?<!\/) prevents matching self-closing tags like
+  // <link target-id="..."/> — without it, the regex treats /> as [attrs]/ + >,
+  // consuming the self-closing tag AND all text up to the next </link>.
+  text = text.replace(/<link\s([^>]*)(?<!\/)>([\s\S]*?)<\/link>/g, (match, attrs, inner) => {
     const parsedAttrs = parseAttributes(attrs);
     if (parsedAttrs.document && parsedAttrs['target-id']) {
       const linkText = stripTags(inner).trim();
@@ -346,9 +349,9 @@ function extractInlineText(
     return `[[xref:${targetId}]]`;
   });
 
-  // Cross-references with content
+  // Cross-references with content (lookbehind prevents matching self-closing tags)
   text = text.replace(
-    /<link[^>]*target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
+    /<link[^>]*target-id="([^"]*)"[^>]*(?<!\/)>([\s\S]*?)<\/link>/g,
     (match, targetId, inner) => {
       const linkText = stripTags(inner).trim();
       return linkText ? `[[xref:${linkText}|${targetId}]]` : `[[xref:${targetId}]]`;
@@ -520,7 +523,13 @@ function extractSegments(cnxml, options = {}) {
   if (glossaryTerms.length > 0) {
     const glossaryStructure = { type: 'glossary', items: [] };
     for (const term of glossaryTerms) {
-      const termSegId = addSegment('glossary-term', term.term, `${term.id}-term`);
+      // Process term through extractInlineText to preserve emphasis, sub, sup.
+      // Without this, terms like "heat (<emphasis>q</emphasis>)" extract as "heat (q)"
+      // and the emphasis is permanently lost through the pipeline.
+      const termText = term.rawTerm
+        ? extractInlineText(term.rawTerm, mathMap, counters)
+        : term.term;
+      const termSegId = addSegment('glossary-term', termText, `${term.id}-term`);
       // Process meaning through extractInlineText to preserve emphasis, links, etc.
       const meaningText = term.rawMeaning
         ? extractInlineText(term.rawMeaning, mathMap, counters)

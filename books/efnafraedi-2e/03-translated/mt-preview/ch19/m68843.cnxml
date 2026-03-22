@@ -305,7 +305,7 @@
 </section>
 <section id="fs-idp85285584">
 <title>Ísómerur í komplexum</title>
-<para id="fs-idp68367824">Ísómerur eru mismunandi efnafræðilegar tegundir sem hafa sömu efnaformúlu. Komplexar hliðarmálma eru oft til sem <emphasis effect="bold">rúmísómerur</emphasis>, þar sem sömu frumeindir eru tengdar með sömu tegundum tengja en með mismunandi stefnumörkun í rúmi. Hnitsetningarkomplexar með tvo mismunandi bindla í <emphasis effect="italics">cis</emphasis>- og <emphasis effect="italics">trans</emphasis>-stöðum miðað við ákveðinn bindil mynda ísómerur. Til dæmis hefur áttflötungajónin [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]<sup>+</sup> tvær ísómerur. Í <term id="term-00012"><emphasis effect="italics">cis</emphasis>-forminu (e. <emphasis effect="italics">cis</emphasis> configuration)</term> eru klóríðbindlarnir tveir hlið við hlið (<link target-id="CNX_Chem_19_02_cistrans"/>). Hin ísómeran, <term id="term-00013"><emphasis effect="italics">trans</emphasis>-formið (e. <emphasis effect="italics">trans</emphasis> configuration)</term>, hefur klóríðbindlana tvo beint á móti hvor öðrum.</para>
+<para id="fs-idp68367824">Ísómerur eru mismunandi efnafræðilegar tegundir sem hafa sömu efnaformúlu. Komplexar hliðarmálma eru oft til sem <emphasis effect="bold">rúmísómerur</emphasis>, þar sem sömu frumeindir eru tengdar með sömu tegundum tengja en með mismunandi stefnumörkun í rúmi. Hnitsetningarkomplexar með tvo mismunandi bindla í <emphasis effect="italics">cis</emphasis>- og <emphasis effect="italics">trans</emphasis>-stöðum miðað við ákveðinn bindil mynda ísómerur. Til dæmis hefur áttflötungajónin [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]<sup>+</sup> tvær ísómerur. Í <term id="term-00012"><emphasis effect="italics">cis</emphasis>-forminu (e. cis configuration)</term> eru klóríðbindlarnir tveir hlið við hlið (<link target-id="CNX_Chem_19_02_cistrans"/>). Hin ísómeran, <term id="term-00013"><emphasis effect="italics">trans</emphasis>-formið (e. trans configuration)</term>, hefur klóríðbindlana tvo beint á móti hvor öðrum.</para>
 <figure id="CNX_Chem_19_02_cistrans" class="scaled-down">
 <media id="fs-idp151577024" alt="Two structures are shown. The first is labeled, “Violet, cis form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below the structure. Above and to both the right and left, dashed wedges with their vertex at the C o atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to a C l atom on the right and the O atom of an H subscript 2 O group on the left. This structure is enclosed in brackets. Outside the brackets to the right is the superscript plus sign. The second is labeled, “Green, trans form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is also enclosed in brackets with a superscript plus sign outside the brackets to the right.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_cistrans.jpg"/>
@@ -537,7 +537,7 @@
 <meaning id="fs-idp51669120-meaning">ligandi sem tengist málmiðjujón með tengjum frá tveimur eða fleiri gjafafrumeindum</meaning>
 </definition>
 <definition id="fs-idp15506400">
-<term>cis-afstaða (e. cis configuration)</term>
+<term><emphasis effect="italics">cis</emphasis>-afstaða (e. cis configuration)</term>
 <meaning id="fs-idp15506400-meaning">afstaða rúmísómeru þar sem tveir sambærilegir hópar eru á sömu hlið ímyndaðrar viðmiðunarlínu á sameindinni</meaning>
 </definition>
 <definition id="fs-idp246761680">
@@ -581,7 +581,7 @@
 <meaning id="fs-idp158869120-meaning">bindill sem er tengdur miðlægri málmjón með tengjum frá tveimur eða fleiri gjafafrumeindum, nefndur með forskeytum sem tilgreina hversu margir gjafar eru til staðar (t.d. sextanna = sex samræmingartengi mynduð)</meaning>
 </definition>
 <definition id="fs-idp75431424">
-<term>trans-afstaða (e. trans configuration)</term>
+<term><emphasis effect="italics">trans</emphasis>-afstaða (e. trans configuration)</term>
 <meaning id="fs-idp75431424-meaning">afstaða rúmísómeru þar sem tveir svipaðir hópar eru á gagnstæðum hliðum ímyndaðrar viðmiðunarlínu á sameindinni</meaning>
 </definition>
 </glossary>

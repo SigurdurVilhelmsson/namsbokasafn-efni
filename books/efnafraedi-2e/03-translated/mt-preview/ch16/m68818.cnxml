@@ -73,7 +73,7 @@
 <para id="fs-idm3499504">Í fyrri hlutanum var lýst hinum ýmsu þáttum dreifingar efnis og orku sem stuðla að óreiðu kerfis. Með þessa þætti í huga skulum við skoða óreiðu hreins, fullkomlega kristallaðs efnis á föstu formi sem býr ekki yfir neinni hreyfiorku (þ.e. við alkul, 0 K). Þetta kerfi má lýsa með einu smáástandi, þar sem hreinleiki þess, fullkomin kristalbygging og algjör hreyfingarleysi þýðir að það er aðeins einn mögulegur staður fyrir hverja eins frumeind eða sameind sem myndar kristallinn (<emphasis effect="italics">W</emphasis> = 1). Samkvæmt Boltzmann-jöfnunni er óreiða þessa kerfis núll.</para>
 <equation id="fs-idp179521936" class="unnumbered"><m:math><m:mrow><m:mi>S</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width="0.2em"/><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>W</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width="0.2em"/><m:mtext>ln</m:mtext><m:mspace width="0.1em"/><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math></equation>
 <para id="fs-idm15206896">Þetta takmarkandi skilyrði fyrir óreiðu kerfis táknar <term id="term-00002">þriðja lögmál varmafræðinnar (e. third law of thermodynamics)</term>: <emphasis effect="italics">óreiða hreins, fullkomins kristallaðs efnis við 0 K er núll.</emphasis></para>
-<para id="fs-idp12220368">Hægt er að gera nákvæmar varmamælingar til að ákvarða hitastigsháð óreiðu efnis og til að leiða út algild óreiðugildi við sérstakar aðstæður. <term id="term-00003">Staðalóreiða (<emphasis effect="italics">S</emphasis>°) (e. standard entropies (<emphasis effect="italics">s</emphasis>°))</term> er fyrir eitt mól af efni við staðalaðstæður (þrýstingur 1 bar og hitastig 298,15 K; sjá nánar um staðalaðstæður í kaflanum um varmaefnafræði í þessari bók). <term id="term-00004">Staðalóreiðubreytingu (Δ<emphasis effect="italics">S</emphasis>°) (e. standard entropy change (δ<emphasis effect="italics">s</emphasis>°))</term> fyrir efnahvarf má reikna út með því að nota staðalóreiðugildi eins og sýnt er hér að neðan:</para>
+<para id="fs-idp12220368">Hægt er að gera nákvæmar varmamælingar til að ákvarða hitastigsháð óreiðu efnis og til að leiða út algild óreiðugildi við sérstakar aðstæður. <term id="term-00003">Staðalóreiða (<emphasis effect="italics">S</emphasis>°) (e. standard entropies (s°))</term> er fyrir eitt mól af efni við staðalaðstæður (þrýstingur 1 bar og hitastig 298,15 K; sjá nánar um staðalaðstæður í kaflanum um varmaefnafræði í þessari bók). <term id="term-00004">Staðalóreiðubreytingu (Δ<emphasis effect="italics">S</emphasis>°) (e. standard entropy change (δs°))</term> fyrir efnahvarf má reikna út með því að nota staðalóreiðugildi eins og sýnt er hér að neðan:</para>
 <equation id="fs-idp35409536" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>S</m:mi><m:mtext>°</m:mtext><m:mo>=</m:mo><m:mo>∑</m:mo><m:mi>ν</m:mi><m:mi>S</m:mi><m:mtext>°</m:mtext><m:mtext>(products)</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mo>∑</m:mo><m:mi>ν</m:mi><m:mi>S</m:mi><m:mtext>°</m:mtext><m:mtext>(reactants)</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm44012816">þar sem ν táknar efnismagnsstuðla í stilltri efnajöfnu sem táknar ferlið. Til dæmis, Δ<emphasis effect="italics">S</emphasis>° fyrir eftirfarandi efnahvarf við stofuhita</para>
 <equation id="fs-idm48571920" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D,</m:mtext></m:mrow></m:math></equation>
@@ -299,11 +299,11 @@
 <meaning id="fs-idp194754048-meaning">öll sjálfsprottin ferli fela í sér aukningu á óreiðu alheimsins</meaning>
 </definition>
 <definition id="fs-idp170415152">
-<term>staðalóreiða (S°) (e. standard entropy (s°))</term>
+<term>staðalóreiða (<emphasis effect="italics">S</emphasis>°) (e. standard entropy (s°))</term>
 <meaning id="fs-idp170415152-meaning">óreiða fyrir eitt mól af efni við 1 bar þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K</meaning>
 </definition>
 <definition id="fs-idp85418944">
-<term>staðalóreiðubreyting (ΔS°) (e. standard entropy change (δs°))</term>
+<term>staðalóreiðubreyting (Δ<emphasis effect="italics">S</emphasis>°) (e. standard entropy change (δs°))</term>
 <meaning id="fs-idp85418944-meaning">óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðugildum</meaning>
 </definition>
 <definition id="fs-idp90512720">

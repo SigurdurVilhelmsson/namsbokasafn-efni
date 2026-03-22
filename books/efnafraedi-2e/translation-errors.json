@@ -1,14 +1,24 @@
 {
-  "generated": "2026-03-22T14:14:16.202Z",
+  "generated": "2026-03-22T18:22:09.440Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
-    "perfect": 110,
-    "withDiscrepancies": 38,
+    "perfect": 113,
+    "withDiscrepancies": 35,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 141
+    "totalDiscrepancies": 85
   },
   "modules": [
+    {
+      "moduleId": "m68700",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
     {
       "moduleId": "m68709",
       "chapter": "ch04",
@@ -25,18 +35,16 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": -2
-        },
-        {
-          "tag": "item",
           "diff": -1
-        },
+        }
+      ]
+    },
+    {
+      "moduleId": "m68716",
+      "chapter": "ch04",
+      "discrepancies": [
         {
-          "tag": "list",
-          "diff": -1
-        },
-        {
-          "tag": "para",
+          "tag": "emphasis",
           "diff": -1
         }
       ]
@@ -47,21 +55,15 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": -16
+          "diff": 12
+        },
+        {
+          "tag": "m:math",
+          "diff": 2
         },
         {
           "tag": "sub",
           "diff": 2
-        }
-      ]
-    },
-    {
-      "moduleId": "m68729",
-      "chapter": "ch06",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": -2
         }
       ]
     },
@@ -71,11 +73,7 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": -6
-        },
-        {
-          "tag": "sub",
-          "diff": -1
+          "diff": -4
         }
       ]
     },
@@ -94,14 +92,6 @@
       "chapter": "ch06",
       "discrepancies": [
         {
-          "tag": "emphasis",
-          "diff": 1
-        },
-        {
-          "tag": "sub",
-          "diff": 1
-        },
-        {
           "tag": "term",
           "diff": 1
         }
@@ -112,47 +102,21 @@
       "chapter": "ch07",
       "discrepancies": [
         {
-          "tag": "image",
-          "diff": 8
-        },
-        {
           "tag": "item",
           "diff": -5
         },
         {
           "tag": "list",
           "diff": -1
-        },
-        {
-          "tag": "media",
-          "diff": 8
         }
       ]
     },
     {
-      "moduleId": "m68747",
-      "chapter": "ch08",
+      "moduleId": "m68741",
+      "chapter": "ch07",
       "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": 2
-        },
         {
           "tag": "sub",
-          "diff": 1
-        },
-        {
-          "tag": "sup",
-          "diff": 1
-        }
-      ]
-    },
-    {
-      "moduleId": "m68751",
-      "chapter": "ch09",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
           "diff": -1
         }
       ]
@@ -174,14 +138,6 @@
         {
           "tag": "emphasis",
           "diff": -1
-        },
-        {
-          "tag": "image",
-          "diff": 1
-        },
-        {
-          "tag": "media",
-          "diff": 1
         },
         {
           "tag": "term",
@@ -224,10 +180,6 @@
       "chapter": "ch11",
       "discrepancies": [
         {
-          "tag": "emphasis",
-          "diff": -1
-        },
-        {
           "tag": "sub",
           "diff": -2
         }
@@ -249,10 +201,20 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": -5
+          "diff": -4
         },
         {
           "tag": "term",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68791",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "sub",
           "diff": -1
         }
       ]
@@ -263,7 +225,7 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": -2
+          "diff": -1
         }
       ]
     },
@@ -292,22 +254,8 @@
       "chapter": "ch15",
       "discrepancies": [
         {
-          "tag": "sub",
-          "diff": -1
-        }
-      ]
-    },
-    {
-      "moduleId": "m68813",
-      "chapter": "ch15",
-      "discrepancies": [
-        {
           "tag": "emphasis",
-          "diff": 2
-        },
-        {
-          "tag": "sub",
-          "diff": 2
+          "diff": 1
         }
       ]
     },
@@ -330,45 +278,9 @@
       ]
     },
     {
-      "moduleId": "m68819",
-      "chapter": "ch16",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": 2
-        },
-        {
-          "tag": "m:math",
-          "diff": -1
-        },
-        {
-          "tag": "sub",
-          "diff": 1
-        }
-      ]
-    },
-    {
-      "moduleId": "m68821",
-      "chapter": "ch17",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": -1
-        },
-        {
-          "tag": "sub",
-          "diff": -1
-        }
-      ]
-    },
-    {
       "moduleId": "m68822",
       "chapter": "ch17",
       "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": -1
-        },
         {
           "tag": "sub",
           "diff": -1
@@ -382,14 +294,6 @@
         {
           "tag": "link",
           "diff": -1
-        },
-        {
-          "tag": "m:math",
-          "diff": -2
-        },
-        {
-          "tag": "sub",
-          "diff": 4
         }
       ]
     },
@@ -419,7 +323,11 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": 1
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": -1
         }
       ]
     },
@@ -458,34 +366,12 @@
       ]
     },
     {
-      "moduleId": "m68852",
-      "chapter": "ch21",
-      "discrepancies": [
-        {
-          "tag": "m:math",
-          "diff": -2
-        }
-      ]
-    },
-    {
       "moduleId": "m68854",
       "chapter": "ch21",
       "discrepancies": [
         {
-          "tag": "emphasis",
-          "diff": -1
-        },
-        {
           "tag": "link",
           "diff": -1
-        },
-        {
-          "tag": "sub",
-          "diff": -1
-        },
-        {
-          "tag": "sup",
-          "diff": 1
         }
       ]
     },

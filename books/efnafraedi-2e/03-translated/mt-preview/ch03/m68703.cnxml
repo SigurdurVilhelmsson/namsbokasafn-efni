@@ -18,7 +18,7 @@
 <para id="fs-idm60561504">Lausnir hafa áður verið skilgreindar sem einsleitar efnablöndur, sem þýðir að samsetning efnablöndunnar (og þar með eiginleikar hennar) er einsleit um allt rúmmál hennar. Lausnir eru algengar í náttúrunni og hafa einnig verið nýttar í margs konar tækni af mannavöldum. Nánari umfjöllun um eiginleika lausna er að finna í kaflanum um lausnir og kvoðulausnir, en hér er kynning á nokkrum af grunneiginleikum lausna.</para>
 <para id="fs-idm635664">Hlutfallslegt magn tiltekins efnisþáttar í lausn er kallað <term id="term-00001">styrkur (e. concentration)</term> hans. Oft, þó ekki alltaf, inniheldur lausn einn efnisþátt með styrk sem er verulega meiri en allra annarra efnisþátta. Þessi efnisþáttur er kallaður <term id="term-00002">leysir (e. solvent)</term> og má líta á hann sem miðilinn sem hinir efnisþættirnir dreifast eða <term id="term-00003">leysast upp (e. dissolved)</term> í. Lausnir þar sem vatn er leysirinn eru að sjálfsögðu mjög algengar á plánetunni okkar. Lausn þar sem vatn er leysirinn er kölluð <term id="term-00004">vatnslausn (e. aqueous solution)</term>.</para>
 <para id="fs-idm64279024"><term id="term-00005">Leysið efni (e. solute)</term> er efnisþáttur í lausn sem er venjulega til staðar í mun lægri styrk en leysirinn. Styrk leystra efna er oft lýst með þáttbundnum hugtökum eins og <term id="term-00006">þynnt (e. dilute)</term> (tiltölulega lágur styrkur) og <term id="term-00007">óþynnt (e. concentrated)</term> (tiltölulega hár styrkur).</para>
-<para id="fs-idm62212352">Styrk er hægt að meta megindlega með ýmsum mælieiningum, sem hver um sig hentar fyrir tiltekin not. <term id="term-00008">Mólstyrkur (<emphasis effect="italics">M</emphasis>) (e. molarity (<emphasis effect="italics">m</emphasis>))</term> er gagnleg styrkleining fyrir mörg not í efnafræði. Mólstyrkur er skilgreindur sem fjöldi móla af leystu efni í nákvæmlega 1 lítra (1 L) af lausninni:</para>
+<para id="fs-idm62212352">Styrk er hægt að meta megindlega með ýmsum mælieiningum, sem hver um sig hentar fyrir tiltekin not. <term id="term-00008">Mólstyrkur (<emphasis effect="italics">M</emphasis>) (e. molarity (m))</term> er gagnleg styrkleining fyrir mörg not í efnafræði. Mólstyrkur er skilgreindur sem fjöldi móla af leystu efni í nákvæmlega 1 lítra (1 L) af lausninni:</para>
 <equation id="fs-idm57520096" class="unnumbered"><m:math><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow></m:math></equation>
 <example id="fs-idm98982768">
 <para id="fs-idm10181424"><title>Útreikningur á mólstyrk</title>355 ml sýni af gosdrykk inniheldur 0,133 mól af súkrósa (borðsykri). Hver er mólstyrkur súkrósa í drykknum?</para>
@@ -318,7 +318,7 @@
 <meaning id="fs-idm26671264-meaning">lýsir ferlinu þar sem efnisþættir leysis efnis dreifast í leysi</meaning>
 </definition>
 <definition id="fs-idm26669728">
-<term>mólstyrkur (M) (e. molarity (m))</term>
+<term>mólstyrkur (<emphasis effect="italics">M</emphasis>) (e. molarity (m))</term>
 <meaning id="fs-idm26669728-meaning">styrkleikaeining, skilgreind sem fjöldi móla af leysi efnis uppleyst í 1 lítra af lausn</meaning>
 </definition>
 <definition id="fs-idm26667568">

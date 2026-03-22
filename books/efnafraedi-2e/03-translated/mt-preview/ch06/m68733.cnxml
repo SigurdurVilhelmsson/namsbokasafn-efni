@@ -88,7 +88,7 @@
 <para id="fs-idm187603312">Gildin <emphasis effect="italics">n</emphasis><sub>f</sub> og <emphasis effect="italics">n</emphasis><sub>i</sub> eru loka- og upphafsorkuástönd rafeindarinnar. <link document="m68732" target-id="fs-idp30549440"/> í fyrri hluta kaflans sýnir útreikninga á slíkum orkubreytingum.</para>
 <para id="fs-idm12861216">Höfuðskammtatalan er ein af þremur skammtatölum sem notaðar eru til að lýsa svigrúmi. <term id="term-00010">Frumeindasvigrúm (e. atomic orbital)</term> er almennt svæði í frumeind þar sem líklegast er að finna rafeind. Skammtafræðilíkanið tilgreinir líkurnar á að finna rafeind í þrívíðu rúmi í kringum kjarnann og byggir á lausnum Schrödinger-jöfnunnar. Auk þess skilgreinir höfuðskammtatalan orku rafeindar í vetnisfrumeind eða vetnislíkri jón (frumeind eða jón með aðeins eina rafeind) og almenna svæðið þar sem aðskilin orkustig rafeinda í fjölrafeinda frumeindum og jónum eru staðsett.</para>
 <para id="fs-idm174719856">Önnur skammtatala er <emphasis effect="italics">l</emphasis>, <term id="term-00011">hliðarskammtatala (hverfiþungaskammtatala) (e. secondary (angular momentum) quantum number)</term>. Hún er heiltala sem getur tekið gildin <emphasis effect="italics">l =</emphasis> 0, 1, 2, …, <emphasis effect="italics">n</emphasis> – 1. Þetta þýðir að svigrúm með <emphasis effect="italics">n</emphasis> = 1 getur aðeins haft eitt gildi fyrir <emphasis effect="italics">l</emphasis>, <emphasis effect="italics">l</emphasis> = 0, en <emphasis effect="italics">n</emphasis> = 2 leyfir <emphasis effect="italics">l</emphasis> = 0 og <emphasis effect="italics">l</emphasis> = 1, og svo framvegis. Á meðan höfuðskammtatalan, <emphasis effect="italics">n</emphasis>, skilgreinir almenna stærð og orku svigrúmsins, þá tilgreinir hliðarskammtatalan <emphasis effect="italics">l</emphasis> lögun svigrúmsins. Svigrúm með sama gildi fyrir <emphasis effect="italics">l</emphasis> mynda <term id="term-00012">undirhvolf (e. subshell)</term>.</para>
-<para id="fs-idm13232848">Svigrúm með <emphasis effect="italics">l</emphasis> = 0 eru kölluð <term id="term-00013"><emphasis effect="italics">s</emphasis>-svigrúm (e. <emphasis effect="italics">s</emphasis> orbitals)</term> og þau mynda <emphasis effect="italics">s</emphasis>-undirhvolfin. Gildið <emphasis effect="italics">l</emphasis> = 1 samsvarar <emphasis effect="italics">p</emphasis>-svigrúmum. Fyrir tiltekið <emphasis effect="italics">n</emphasis> mynda <term id="term-00014"><emphasis effect="italics">p</emphasis>-svigrúm (e. <emphasis effect="italics">p</emphasis> orbitals)</term> <emphasis effect="italics">p</emphasis>-undirhvolf (t.d. 3<emphasis effect="italics">p</emphasis> ef <emphasis effect="italics">n</emphasis> = 3). Svigrúmin með <emphasis effect="italics">l</emphasis> = 2 eru kölluð <term id="term-00015"><emphasis effect="italics">d</emphasis>-svigrúm (e. <emphasis effect="italics">d</emphasis> orbitals)</term>, og á eftir þeim koma <emphasis effect="italics">f-,</emphasis> <emphasis effect="italics">g- og h-</emphasis>svigrúmin fyrir <emphasis effect="italics">l</emphasis> = 3, 4 og 5.</para>
+<para id="fs-idm13232848">Svigrúm með <emphasis effect="italics">l</emphasis> = 0 eru kölluð <term id="term-00013"><emphasis effect="italics">s</emphasis>-svigrúm (e. s orbitals)</term> og þau mynda <emphasis effect="italics">s</emphasis>-undirhvolfin. Gildið <emphasis effect="italics">l</emphasis> = 1 samsvarar <emphasis effect="italics">p</emphasis>-svigrúmum. Fyrir tiltekið <emphasis effect="italics">n</emphasis> mynda <term id="term-00014"><emphasis effect="italics">p</emphasis>-svigrúm (e. p orbitals)</term> <emphasis effect="italics">p</emphasis>-undirhvolf (t.d. 3<emphasis effect="italics">p</emphasis> ef <emphasis effect="italics">n</emphasis> = 3). Svigrúmin með <emphasis effect="italics">l</emphasis> = 2 eru kölluð <term id="term-00015"><emphasis effect="italics">d</emphasis>-svigrúm (e. d orbitals)</term>, og á eftir þeim koma <emphasis effect="italics">f-,</emphasis> <emphasis effect="italics">g- og h-</emphasis>svigrúmin fyrir <emphasis effect="italics">l</emphasis> = 3, 4 og 5.</para>
 <para id="fs-idm184616288">Það eru ákveðnar fjarlægðir frá kjarnanum þar sem líkindaþéttleiki þess að finna rafeind á tilteknu svigrúmi er núll. Með öðrum orðum, gildi bylgjufallsins <emphasis effect="italics">ψ</emphasis> er núll í þessari fjarlægð fyrir þetta svigrúm. Slíkt gildi radíusar <emphasis effect="italics">r</emphasis> er kallað geislanóða. Fjöldi geislanóða í svigrúmi er <emphasis effect="italics">n</emphasis> – <emphasis effect="italics">l</emphasis> – 1.</para>
 <figure id="CNX_Chem_06_03_sOrbit">
 <media id="fs-idm165672208" alt="This figure provides images and graphs to illustrate the probability of finding an electron in 1 s, 2 s, and 3 s orbitals as a function of the distance from the nucleus. The 1 s orbital is shown as a sphere with a chunk missing. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a maximum height and rapidly declines. The label, “1 s” appears below the graph. The 2 s orbital is shown as a red sphere with a blue middle. A chunk is missing from the sphere. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a significantly higher absolute maximum height, and then rapidly declines. The label “2s” appears below it. The 3 s orbital is a blue sphere with a red sphere and another blue sphere at its core. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a second relative maximum height, a significantly higher absolute maximum, and then declines more gradually than illustrated in the previous 2 graphs. The label, “3 s,” appears below the graph.">
@@ -97,7 +97,7 @@
 <caption>Gröfin sýna líkurnar (<emphasis effect="italics">y</emphasis>-ás) á að finna rafeind fyrir 1<emphasis effect="italics">s</emphasis>, 2<emphasis effect="italics">s</emphasis>, 3<emphasis effect="italics">s</emphasis> svigrúmin sem fall af fjarlægð frá kjarnanum.</caption>
 </figure>
 <para id="fs-idm183763120">Lítum á dæmin í <link target-id="CNX_Chem_06_03_sOrbit"/>. Svigrúmin sem sýnd eru eru af <emphasis effect="italics">s</emphasis>-gerð, þannig að <emphasis effect="italics">l</emphasis> = 0 fyrir þau öll. Af gröfum líkindaþéttleikans má sjá að það eru 1 – 0 – 1 = 0 staðir þar sem þéttleikinn er núll (nóður) fyrir 1<emphasis effect="italics">s</emphasis> (<emphasis effect="italics">n</emphasis> = 1), 2 – 0 – 1 = 1 nóða fyrir 2<emphasis effect="italics">s</emphasis>, og 3 – 0 – 1 = 2 nóður fyrir 3<emphasis effect="italics">s</emphasis> svigrúmin.</para>
-<para id="fs-idm158802176">Rafeindaþéttleikadreifing <emphasis effect="italics">s</emphasis>-undirhvolfs er kúlulaga og <emphasis effect="italics">p</emphasis>-undirhvolfið hefur lóðalögun. <term id="term-00016"><emphasis effect="italics">d</emphasis>- og <emphasis effect="italics">f</emphasis>-svigrúmin (e. <emphasis effect="italics">f</emphasis> orbitals)</term> eru flóknari. Þessar löganir tákna þrívíðu svæðin þar sem líklegt er að finna rafeindina.</para>
+<para id="fs-idm158802176">Rafeindaþéttleikadreifing <emphasis effect="italics">s</emphasis>-undirhvolfs er kúlulaga og <emphasis effect="italics">p</emphasis>-undirhvolfið hefur lóðalögun. <term id="term-00016"><emphasis effect="italics">d</emphasis>- og <emphasis effect="italics">f</emphasis>-svigrúmin (e. f orbitals)</term> eru flóknari. Þessar löganir tákna þrívíðu svæðin þar sem líklegt er að finna rafeindina.</para>
 <figure id="CNX_Chem_06_03_Oshapes"><media id="fs-idm313200" alt="This diagram illustrates the shapes and quantities of all s, p, d, and f orbitals. The s sublevel is composed of a single spherical orbital. The p sublevel is composed of 3 dumbbell shaped orbitals oriented along the x, y, and z axes. The five d sublevels and seven f sublevels are considerably more complex.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_06_03_Oshapes.jpg"/>
 </media>
@@ -110,7 +110,7 @@
 
 <caption>Myndin sýnir orku rafeindasvigrúma í fjölrafeinda frumeind.</caption></figure>
 <para id="fs-idm83747248"><link target-id="CNX_Chem_06_03_subshells"/> sýnir orkustig fyrir ýmis svigrúm. Talan á undan heiti svigrúmsins (eins og 2<emphasis effect="italics">s</emphasis>, 3<emphasis effect="italics">p</emphasis> og svo framvegis) stendur fyrir höfuðskammtatöluna, <emphasis effect="italics">n</emphasis>. Bókstafurinn í heiti svigrúmsins skilgreinir undirhvolfið með tiltekinni aukaskammtatölu <emphasis effect="italics">l</emphasis> = 0 fyrir <emphasis effect="italics">s</emphasis>-svigrúm, 1 fyrir <emphasis effect="italics">p</emphasis>-svigrúm, 2 fyrir <emphasis effect="italics">d</emphasis>-svigrúm. Að lokum eru fleiri en eitt mögulegt svigrúm fyrir <emphasis effect="italics">l</emphasis> ≥ 1, þar sem hvert þeirra samsvarar tilteknu gildi <emphasis effect="italics">m<sub>l</sub></emphasis>. Þegar um er að ræða vetnisfrumeind eða einnar rafeindar jón (eins og He<sup>+</sup>, Li<sup>2+</sup> og svo framvegis), er orka allra svigrúma með sama <emphasis effect="italics">n</emphasis> sú sama. Þetta er kallað úrkynjun og orkustigin fyrir sömu höfuðskammtatölu, <emphasis effect="italics">n</emphasis>, eru kölluð <term id="term-00018">úrkynjuð svigrúm (e. degenerate orbitals)</term>. Hins vegar, í frumeindum með fleiri en eina rafeind, er þessi úrkynjun afnumin með víxlverkunum milli rafeinda og svigrúm sem tilheyra mismunandi undirhvolfum hafa mismunandi orku, eins og sýnt er á <link target-id="CNX_Chem_06_03_subshells"/>. Svigrúm innan sama undirhvolfs eru enn úrkynjuð og hafa sömu orku.</para>
-<para id="fs-idp135680192">Þó að skammtatölurnar þrjár sem ræddar voru í fyrri málsgreinum virki vel til að lýsa svigrúmum rafeinda, sýndu sumar tilraunir að þær dugðu ekki til að útskýra allar niðurstöður sem komu fram. Á þriðja áratug 20. aldar var sýnt fram á að þegar línuróf vetnis eru skoðuð með afar mikilli upplausn eru sumar línur í raun ekki stakir toppar heldur pör af línum sem liggja þétt saman. Þetta er svokölluð fínbygging rófsins og gefur til kynna að það sé viðbótarmunur á orku rafeinda, jafnvel þegar þær eru staðsettar í sama svigrúmi. Þessar athuganir urðu til þess að Samuel Goudsmit og George Uhlenbeck lögðu til að rafeindir hefðu fjórðu skammtatöluna. Þeir kölluðu hana <term id="term-00019">spuna-skammtatöluna (e. spin quantum number)</term>, eða <term id="term-00020"><emphasis effect="italics">m<sub>s</sub></emphasis> (e. <emphasis effect="italics">m<sub>s</sub></emphasis>)</term>.</para>
+<para id="fs-idp135680192">Þó að skammtatölurnar þrjár sem ræddar voru í fyrri málsgreinum virki vel til að lýsa svigrúmum rafeinda, sýndu sumar tilraunir að þær dugðu ekki til að útskýra allar niðurstöður sem komu fram. Á þriðja áratug 20. aldar var sýnt fram á að þegar línuróf vetnis eru skoðuð með afar mikilli upplausn eru sumar línur í raun ekki stakir toppar heldur pör af línum sem liggja þétt saman. Þetta er svokölluð fínbygging rófsins og gefur til kynna að það sé viðbótarmunur á orku rafeinda, jafnvel þegar þær eru staðsettar í sama svigrúmi. Þessar athuganir urðu til þess að Samuel Goudsmit og George Uhlenbeck lögðu til að rafeindir hefðu fjórðu skammtatöluna. Þeir kölluðu hana <term id="term-00019">spuna-skammtatöluna (e. spin quantum number)</term>, eða <term id="term-00020"><emphasis effect="italics">m<sub>s</sub></emphasis> (e. ms)</term>.</para>
 <para id="fs-idm136117120">Hinar þrjár skammtatölurnar, <emphasis effect="italics">n</emphasis>, <emphasis effect="italics">l</emphasis> og <emphasis effect="italics">m<sub>l</sub></emphasis>, eru eiginleikar tiltekinna frumeindasvigrúma sem einnig skilgreina í hvaða hluta rýmisins líklegast er að finna rafeind. Svígrúm eru niðurstaða þess að leysa Schrödinger-jöfnuna fyrir rafeindir í frumeindum. Rafeindaspuni er annars konar eiginleiki. Hann er algjörlega skammtafræðilegt fyrirbæri án hliðstæðu í hinum klassíska heimi. Auk þess er ekki hægt að leiða hann út með því að leysa Schrödinger-jöfnuna og hann tengist ekki venjulegum rúmhnitum (eins og kartesísku hnitunum <emphasis effect="italics">x</emphasis>, <emphasis effect="italics">y</emphasis> og <emphasis effect="italics">z</emphasis>). Rafeindaspuni lýsir innri „snúningi“ eða „spunagangi“ rafeindar. Hver rafeind hegðar sér eins og agnarsmár segull eða agnarsmár snúningur með hverfiþunga, eða eins og lykkja með rafstraumi, jafnvel þótt ekki sé hægt að sjá þennan snúning eða straum með tilliti til rúmhnita.</para>
 <para id="fs-idm82083456">Stærð heildarspunans getur aðeins haft eitt gildi og rafeind getur aðeins „spunnið“ í einu af tveimur skömmtuðum ástöndum. Annað er kallað α-ástönd, þar sem <emphasis effect="italics">z</emphasis>-þáttur spunans er í jákvæðri stefnu <emphasis effect="italics">z</emphasis>-ássins. Þetta samsvarar spunaskammtatölunni <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Hitt er kallað β-ástönd, þar sem <emphasis effect="italics">z</emphasis>-þáttur spunans er neikvæður og <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Sérhver rafeind, óháð því í hvaða frumeindasvigrúmi hún er, getur aðeins haft annað hvort þessara tveggja gilda spunaskammtatölunnar. Orka rafeinda með <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mtext>​</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> og <m:math><m:mrow><m:msub><m:mi>m</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> er mismunandi ef ytra segulsvið er lagt á.</para>
 <figure id="CNX_Chem_06_03_spin" class="scaled-down"><media id="fs-idm7831072" alt="This diagram has an upward pointing arrow at the left which is labeled, “B subscript 0.” To the right, two spheres are shown. The first has a gray square at the top labeled, “N,” and a second gray square at the bottom labeled, “S.” A curved arrow is pointing right across the surface of the sphere and a gray arrow points upward through the center of the sphere. This sphere is labeled, “Spin plus one-half, spin-up.” The sphere just to the right has a gray square above it labeled, “S,” and a gray square below it labeled, “N.” This sphere has a curved arrow on its surface that is directed to the left and a gray arrow through the center of the sphere that points downward. This sphere is labeled, “Spin negative one-half spin-down.”">
@@ -449,7 +449,7 @@
 </content>
 <glossary>
 <definition id="fs-idm176142304">
-<term>hliðarskammtatala (l) (e. secondary (angular momentum) quantum number (l))</term>
+<term>h<emphasis effect="italics">l</emphasis>iðarskammtatala (l) (e. secondary (angular momentum) quantum number (l))</term>
 <meaning id="fs-idm176142304-meaning">skammtatala sem greinir á milli mismunandi lögunar svigrúma; hún er einnig mælikvarði á hverfiþunga svigrúmsins</meaning>
 </definition>
 <definition id="fs-idm147438368">
@@ -457,7 +457,7 @@
 <meaning id="fs-idm147438368-meaning">stærðfræðilegt fall sem lýsir hegðun rafeindar í frumeind (einnig kallað bylgjufall)</meaning>
 </definition>
 <definition id="fs-idp12032">
-<term>d-svigrúm (e. d orbital)</term>
+<term><emphasis effect="italics">d</emphasis>-svigrúm (e. d orbital)</term>
 <meaning id="fs-idp12032-meaning">rúmsvæði með háum rafeindaþéttleika sem er annaðhvort fjórblaða eða inniheldur handlóðs- og kleinuhringslögun; lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 2.</meaning>
 </definition>
 <definition id="fs-idm442273488">
@@ -469,7 +469,7 @@
 <meaning id="fs-idm56391008-meaning">mælikvarði á líkurnar á að finna rafeind á tilteknu svæði í rúmi, hann er jafn kvaðratinu af tölugildi bylgjufallsins <emphasis effect="italics">ψ</emphasis></meaning>
 </definition>
 <definition id="fs-idm124229040">
-<term>f-svigrúm (e. f orbital)</term>
+<term><emphasis effect="italics">f</emphasis>-svigrúm (e. f orbital)</term>
 <meaning id="fs-idm124229040-meaning">margblaða rúmsvæði með háum rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 3</meaning>
 </definition>
 <definition id="fs-idm7039408">
@@ -477,11 +477,11 @@
 <meaning id="fs-idm7039408-meaning">regla sem segir að ómögulegt sé að ákvarða nákvæmlega samtímis báða tiltekna samtengda hreyfifræðilega eiginleika eins og skriðþunga og staðsetningu eindar. Óvissulögmálið er afleiðing þess að skammtaeindir sýna tvíeðli bylgju og eindar</meaning>
 </definition>
 <definition id="fs-idm166903488">
-<term>segulskammtatala (ml) (e. magnetic quantum number (ml))</term>
+<term>segu<sub>l</sub>skammtatala (ml) (e. magnetic quantum number (ml))</term>
 <meaning id="fs-idm166903488-meaning">skammtatala sem táknar stefnu frumeindasvigrúms í kringum kjarnann</meaning>
 </definition>
 <definition id="fs-idm147658080">
-<term>p-svigrúm (e. p orbital)</term>
+<term><emphasis effect="italics">p</emphasis>-svigrúm (e. p orbital)</term>
 <meaning id="fs-idm147658080-meaning">handlóðslaga rúmsvæði með háum rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 1</meaning>
 </definition>
 <definition id="fs-idm120400016">
@@ -489,7 +489,7 @@
 <meaning id="fs-idm120400016-meaning">kveður á um að engar tvær rafeindir í frumeind geti haft sama gildi fyrir allar fjórar skammtatölurnar</meaning>
 </definition>
 <definition id="fs-idm140352128">
-<term>höfuðskammtatala (n) (e. principal quantum number (n))</term>
+<term>höfuðskammtatala (<emphasis effect="italics">n</emphasis>) (e. principal quantum number (n))</term>
 <meaning id="fs-idm140352128-meaning">skammtatala sem tilgreinir hvolfið sem rafeind skipar í frumeind</meaning>
 </definition>
 <definition id="fs-idm160875424">
@@ -497,7 +497,7 @@
 <meaning id="fs-idm160875424-meaning">fræðasvið sem felur í sér skömmtun orku, tvíeðli bylgju og eindar og óvissulögmál Heisenbergs til að lýsa efni</meaning>
 </definition>
 <definition id="fs-idm144189680">
-<term>s-svigrúm (e. s orbital)</term>
+<term><emphasis effect="italics">s</emphasis>-svigrúm (e. s orbital)</term>
 <meaning id="fs-idm144189680-meaning">kúlulaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 0</meaning>
 </definition>
 <definition id="fs-idm174396336">
@@ -505,7 +505,7 @@
 <meaning id="fs-idm174396336-meaning">frumeindasvigrúm með sömu höfuðskammtatölu, <emphasis effect="italics">n</emphasis></meaning>
 </definition>
 <definition id="fs-idm137493808">
-<term>spunaskammtatala (ms) (e. spin quantum number (ms))</term>
+<term><sub>s</sub>punaskammtatala (ms) (e. spin quantum number (ms))</term>
 <meaning id="fs-idm137493808-meaning">tala sem tilgreinir stefnu rafeindaspuna, annaðhvort <m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> eða <m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></meaning>
 </definition>
 <definition id="fs-idm148470816">
@@ -513,7 +513,7 @@
 <meaning id="fs-idm148470816-meaning">frumeindasvigrúm með sömu gildi fyrir <emphasis effect="italics">n</emphasis> og <emphasis effect="italics">l</emphasis></meaning>
 </definition>
 <definition id="fs-idm163956768">
-<term>bylgjufall (ψ) (e. wavefunction (ψ))</term>
+<term>bylgjufall (<emphasis effect="italics">ψ</emphasis>) (e. wavefunction (ψ))</term>
 <meaning id="fs-idm163956768-meaning">stærðfræðileg lýsing á frumeindasvigrúmi sem lýsir lögun svigrúmsins; það er hægt að nota til að reikna út líkurnar á að finna rafeindina á tilteknum stað í svigrúminu, auk aflfræðilegra breyta eins og orku og hverfiþunga</meaning>
 </definition>
 </glossary>
