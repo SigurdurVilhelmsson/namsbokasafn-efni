@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: 714 Vitest unit tests + 96 Playwright E2E tests
+- Test suite: 724 Vitest unit tests + 96 Playwright E2E tests
 
 ## Purpose
 
@@ -109,7 +109,7 @@ CNXML → Extract → EN Segments → MT → Initialize → Review → Inject �
 
 | Step | What | Tool/Service | Output |
 |------|------|--------------|--------|
-| 1a | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` |
+| 1a | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` (bracket markers: `[[i:]]`, `[[link:]]`, `[[xref:]]`, `[[docref:]]`) |
 | 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments (legacy — not needed with API) |
 | 2a | Machine translation | `api-translate.js` or malstadur.is web UI | `02-mt-output/` |
 | 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection (legacy — not needed with API) |
@@ -211,9 +211,33 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 | [test-results/api-marker-survival.md](test-results/api-marker-survival.md) | Málstaður API marker survival test results |
 | [ROADMAP.md](ROADMAP.md) | Development status |
 
+## Inline Marker Format (Bracket Pattern)
+
+Extraction uses API-safe `[[type:content]]` bracket markers that achieve **100% Málstaður API survival**:
+
+| Marker | CNXML Element | Example |
+|--------|--------------|---------|
+| `[[i:text]]` | `<emphasis effect="italics">` | `[[i:solid]]` → `[[i:fast efni]]` |
+| `[[b:text]]` | `<emphasis effect="bold">` | `[[b:important]]` |
+| `[[sub:content]]` | `<sub>` | `H[[sub:2]]O` |
+| `[[sup:content]]` | `<sup>` | `Ca[[sup:2+]]` |
+| `[[link:text\|url]]` | `<link url="...">` | `[[link:click here\|http://example.com]]` |
+| `[[xref:id]]` | `<link target-id="..."/>` | `[[xref:CNX_Chem_05_02]]` |
+| `[[xref:text\|id]]` | `<link target-id="...">` | `[[xref:Figure 5.2\|CNX_Chem_05_02]]` |
+| `[[docref:doc#target]]` | `<link document="..." target-id="..."/>` | `[[docref:m68674#fs-id123]]` |
+| `{{term}}text{{/term}}` | `<term>` | Legacy paired format, still works |
+| `{{fn}}text{{/fn}}` | `<footnote>` | Legacy paired format, still works |
+| `++text++` | `<emphasis effect="underline">` | No API-safe bracket variant yet |
+
+**Key insight:** The API translates content inside brackets while preserving the delimiters. Legacy `{{i}}...{{/i}}` paired markers had ~2.3% loss; bracket `[[i:text]]` has 0% loss.
+
+Injection handles both bracket and legacy formats (backward compat). Legacy patterns (`*text*`, `~text~`, `^text^`, `__term__`) are skipped for API-translated segments via `hasApiMarkers` guard.
+
 ## Current Priority
 
-**Full-book MT-preview published** — All 148 modules (21 chapters + appendices) translated and rendered to HTML. 101/148 modules have PERFECT structural fidelity. Error manifest: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with 714 Vitest + 96 Playwright tests.
+**Fidelity optimization** — 110/148 modules PERFECT (74%), 141 total discrepancies across 38 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with 724 Vitest + 96 Playwright tests.
+
+Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
 
 See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
 
