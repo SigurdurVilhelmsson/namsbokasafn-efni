@@ -40,6 +40,7 @@ import path from 'path';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
+import { updateTranslationErrors } from './lib/update-translation-errors.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -2579,6 +2580,15 @@ async function main() {
         console.log(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
       }
     }
+
+    // Update translation-errors.json with full-book fidelity state
+    const { perfect, withDiscrepancies, totalDiscrepancies } = updateTranslationErrors(BOOKS_DIR, {
+      track,
+      verbose: args.verbose,
+    });
+    console.log(
+      `\nFidelity summary: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies (${totalDiscrepancies} total)`
+    );
   } catch (error) {
     console.error('Error:', error.message);
     if (args.verbose) {

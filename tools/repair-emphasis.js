@@ -26,6 +26,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
+import { updateTranslationErrors } from './lib/update-translation-errors.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -348,6 +349,17 @@ function main() {
     console.log(`Repaired: ${totalRepaired}`);
     console.log(`Skipped: ${totalSkipped}`);
     console.log(`Modules patched: ${modulesRepaired}`);
+
+    // Update translation-errors.json if any repairs were made
+    if (modulesRepaired > 0) {
+      const { perfect, withDiscrepancies, totalDiscrepancies } = updateTranslationErrors(
+        BOOKS_DIR,
+        { track: args.track, verbose: args.verbose }
+      );
+      console.log(
+        `\nFidelity summary: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies (${totalDiscrepancies} total)`
+      );
+    }
   }
 }
 

@@ -1,87 +1,517 @@
 {
-  "generated": "2026-03-22T18:00:00Z",
+  "generated": "2026-03-22T14:14:16.202Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
     "perfect": 110,
     "withDiscrepancies": 38,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 141,
-    "dominantCause": "Residual emphasis loss (source dedup, annotation side-effects), structural injection issues (nested para/list), sub/sup overcounting from annotation markup",
-    "htmlRendered": 267,
-    "chaptersRendered": 22,
-    "improvementFromBaseline": "Was 102 PERFECT / 244 discrepancies on 2026-03-21. Now 110 / 141 (+8 PERFECT, -103 discrepancies, 42% reduction)"
-  },
-  "categories": {
-    "emphasisLoss": {
-      "description": "Residual emphasis discrepancies after [[i:text]] bracket marker migration. Most are -1 to -2 (minor). Larger losses in m68727 (-16, high emphasis density), m68778 (-6, source doubled emphasis), m68799 (-6). [[i:]] markers survive API at 100%; remaining losses are from source dedup, annotation side-effects, or emphasis inside preserved CNXML.",
-      "affectedModules": ["m68710", "m68727", "m68729", "m68733", "m68734", "m68751", "m68764", "m68768", "m68778", "m68783", "m68786", "m68789", "m68793", "m68799", "m68818", "m68821", "m68822", "m68846", "m68847", "m68848", "m68854"],
-      "fixable": "partially — source dedup (-6 in m68778) is correct normalization, not a bug"
-    },
-    "emphasisOvercounting": {
-      "description": "Translated CNXML has more emphasis than source. Caused by annotation markup or injection producing extra <emphasis> from [[i:]] in annotation text.",
-      "affectedModules": ["m68735", "m68747", "m68805", "m68813", "m68819", "m68844", "m68860", "m68863"],
-      "fixable": "investigate annotation emphasis leakage"
-    },
-    "subSupOvercounting": {
-      "description": "Translated has more <sub>/<sup> than source. Root cause: EN term annotations inject <sub>/<sup> from converted [[sub:]]/[[sup:]] markers, or injection preserves original CNXML sub/sup while also creating new ones from segment markers.",
-      "affectedModules": ["m68727", "m68735", "m68747", "m68813", "m68819", "m68823", "m68837", "m68854"],
-      "fixable": "strip sub/sup from annotation text, or deduplicate during injection"
-    },
-    "structuralInjection": {
-      "description": "Nested para/list/item issues from regex-based injection. Non-greedy </para> matching truncates at inner para boundaries. Media duplication from preserved CNXML + segment markers.",
-      "affectedModules": ["m68710", "m68739", "m68764"],
-      "fixable": "requires text-only para replacement or XML parser approach"
-    },
-    "mathAndLinkLoss": {
-      "description": "API drops [[MATH:N]] placeholders in rare cases. Link losses from cross-doc links without target-id not fully extracted.",
-      "affectedModules": ["m68819", "m68823", "m68852", "m68818", "m68854"],
-      "fixable": "partially — cross-doc link extraction improvement would help"
-    },
-    "miscellaneous": {
-      "description": "Title loss (m68826), title overcounting (m68860), term overcounting (m68709, m68735, m68764, m68789). Various single-instance issues.",
-      "affectedModules": ["m68826", "m68860", "m68709"],
-      "fixable": "investigate individually"
-    }
+    "totalDiscrepancies": 141
   },
   "modules": [
-    {"moduleId": "m68709", "chapter": "ch04", "discrepancies": [{"tag": "term", "diff": 1}]},
-    {"moduleId": "m68710", "chapter": "ch04", "discrepancies": [{"tag": "emphasis", "diff": -2}, {"tag": "item", "diff": -1}, {"tag": "list", "diff": -1}, {"tag": "para", "diff": -1}]},
-    {"moduleId": "m68727", "chapter": "ch05", "discrepancies": [{"tag": "emphasis", "diff": -16}, {"tag": "sub", "diff": 2}]},
-    {"moduleId": "m68729", "chapter": "ch06", "discrepancies": [{"tag": "emphasis", "diff": -2}]},
-    {"moduleId": "m68733", "chapter": "ch06", "discrepancies": [{"tag": "emphasis", "diff": -6}, {"tag": "sub", "diff": -1}]},
-    {"moduleId": "m68734", "chapter": "ch06", "discrepancies": [{"tag": "emphasis", "diff": -1}]},
-    {"moduleId": "m68735", "chapter": "ch06", "discrepancies": [{"tag": "emphasis", "diff": 1}, {"tag": "sub", "diff": 1}, {"tag": "term", "diff": 1}]},
-    {"moduleId": "m68739", "chapter": "ch07", "discrepancies": [{"tag": "image", "diff": 8}, {"tag": "item", "diff": -5}, {"tag": "list", "diff": -1}, {"tag": "media", "diff": 8}]},
-    {"moduleId": "m68747", "chapter": "ch08", "discrepancies": [{"tag": "emphasis", "diff": 2}, {"tag": "sub", "diff": 1}, {"tag": "sup", "diff": 1}]},
-    {"moduleId": "m68751", "chapter": "ch09", "discrepancies": [{"tag": "emphasis", "diff": -1}]},
-    {"moduleId": "m68752", "chapter": "ch09", "discrepancies": [{"tag": "sub", "diff": -1}]},
-    {"moduleId": "m68764", "chapter": "ch10", "discrepancies": [{"tag": "emphasis", "diff": -1}, {"tag": "image", "diff": 1}, {"tag": "media", "diff": 1}, {"tag": "term", "diff": 1}]},
-    {"moduleId": "m68768", "chapter": "ch10", "discrepancies": [{"tag": "emphasis", "diff": -1}]},
-    {"moduleId": "m68778", "chapter": "ch11", "discrepancies": [{"tag": "emphasis", "diff": -6}], "notes": "6 doubled <emphasis> in source CNXML — correct normalization, not marker loss"},
-    {"moduleId": "m68781", "chapter": "ch11", "discrepancies": [{"tag": "sub", "diff": -1}]},
-    {"moduleId": "m68783", "chapter": "ch11", "discrepancies": [{"tag": "emphasis", "diff": -1}, {"tag": "sub", "diff": -2}]},
-    {"moduleId": "m68786", "chapter": "ch12", "discrepancies": [{"tag": "emphasis", "diff": -1}]},
-    {"moduleId": "m68789", "chapter": "ch12", "discrepancies": [{"tag": "emphasis", "diff": -5}, {"tag": "term", "diff": -1}]},
-    {"moduleId": "m68793", "chapter": "ch12", "discrepancies": [{"tag": "emphasis", "diff": -2}]},
-    {"moduleId": "m68799", "chapter": "ch13", "discrepancies": [{"tag": "emphasis", "diff": -6}]},
-    {"moduleId": "m68805", "chapter": "ch14", "discrepancies": [{"tag": "emphasis", "diff": 1}]},
-    {"moduleId": "m68811", "chapter": "ch15", "discrepancies": [{"tag": "sub", "diff": -1}]},
-    {"moduleId": "m68813", "chapter": "ch15", "discrepancies": [{"tag": "emphasis", "diff": 2}, {"tag": "sub", "diff": 2}]},
-    {"moduleId": "m68818", "chapter": "ch16", "discrepancies": [{"tag": "emphasis", "diff": -1}, {"tag": "link", "diff": -1}, {"tag": "para", "diff": -1}]},
-    {"moduleId": "m68819", "chapter": "ch16", "discrepancies": [{"tag": "emphasis", "diff": 2}, {"tag": "m:math", "diff": -1}, {"tag": "sub", "diff": 1}]},
-    {"moduleId": "m68821", "chapter": "ch17", "discrepancies": [{"tag": "emphasis", "diff": -1}, {"tag": "sub", "diff": -1}]},
-    {"moduleId": "m68822", "chapter": "ch17", "discrepancies": [{"tag": "emphasis", "diff": -1}, {"tag": "sub", "diff": -1}]},
-    {"moduleId": "m68823", "chapter": "ch17", "discrepancies": [{"tag": "link", "diff": -1}, {"tag": "m:math", "diff": -2}, {"tag": "sub", "diff": 4}]},
-    {"moduleId": "m68826", "chapter": "ch17", "discrepancies": [{"tag": "title", "diff": -1}]},
-    {"moduleId": "m68837", "chapter": "ch18", "discrepancies": [{"tag": "sub", "diff": 5}]},
-    {"moduleId": "m68844", "chapter": "ch19", "discrepancies": [{"tag": "emphasis", "diff": 1}]},
-    {"moduleId": "m68846", "chapter": "ch20", "discrepancies": [{"tag": "emphasis", "diff": -2}, {"tag": "sup", "diff": -1}]},
-    {"moduleId": "m68847", "chapter": "ch20", "discrepancies": [{"tag": "emphasis", "diff": -1}]},
-    {"moduleId": "m68848", "chapter": "ch20", "discrepancies": [{"tag": "emphasis", "diff": -1}]},
-    {"moduleId": "m68852", "chapter": "ch21", "discrepancies": [{"tag": "m:math", "diff": -2}]},
-    {"moduleId": "m68854", "chapter": "ch21", "discrepancies": [{"tag": "emphasis", "diff": -1}, {"tag": "link", "diff": -1}, {"tag": "sub", "diff": -1}, {"tag": "sup", "diff": 1}]},
-    {"moduleId": "m68860", "chapter": "appendices", "discrepancies": [{"tag": "emphasis", "diff": 2}, {"tag": "title", "diff": 1}]},
-    {"moduleId": "m68863", "chapter": "appendices", "discrepancies": [{"tag": "emphasis", "diff": 1}]}
+    {
+      "moduleId": "m68709",
+      "chapter": "ch04",
+      "discrepancies": [
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68710",
+      "chapter": "ch04",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        },
+        {
+          "tag": "item",
+          "diff": -1
+        },
+        {
+          "tag": "list",
+          "diff": -1
+        },
+        {
+          "tag": "para",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68727",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -16
+        },
+        {
+          "tag": "sub",
+          "diff": 2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68729",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68733",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -6
+        },
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68734",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68735",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 1
+        },
+        {
+          "tag": "sub",
+          "diff": 1
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68739",
+      "chapter": "ch07",
+      "discrepancies": [
+        {
+          "tag": "image",
+          "diff": 8
+        },
+        {
+          "tag": "item",
+          "diff": -5
+        },
+        {
+          "tag": "list",
+          "diff": -1
+        },
+        {
+          "tag": "media",
+          "diff": 8
+        }
+      ]
+    },
+    {
+      "moduleId": "m68747",
+      "chapter": "ch08",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 2
+        },
+        {
+          "tag": "sub",
+          "diff": 1
+        },
+        {
+          "tag": "sup",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68751",
+      "chapter": "ch09",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68752",
+      "chapter": "ch09",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68764",
+      "chapter": "ch10",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "image",
+          "diff": 1
+        },
+        {
+          "tag": "media",
+          "diff": 1
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68768",
+      "chapter": "ch10",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68778",
+      "chapter": "ch11",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -6
+        }
+      ]
+    },
+    {
+      "moduleId": "m68781",
+      "chapter": "ch11",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68783",
+      "chapter": "ch11",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68786",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68789",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -5
+        },
+        {
+          "tag": "term",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68793",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68799",
+      "chapter": "ch13",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -6
+        }
+      ]
+    },
+    {
+      "moduleId": "m68805",
+      "chapter": "ch14",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68811",
+      "chapter": "ch15",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68813",
+      "chapter": "ch15",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 2
+        },
+        {
+          "tag": "sub",
+          "diff": 2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68818",
+      "chapter": "ch16",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "para",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68819",
+      "chapter": "ch16",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 2
+        },
+        {
+          "tag": "m:math",
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68821",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68822",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68823",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "m:math",
+          "diff": -2
+        },
+        {
+          "tag": "sub",
+          "diff": 4
+        }
+      ]
+    },
+    {
+      "moduleId": "m68826",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "title",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68837",
+      "chapter": "ch18",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": 5
+        }
+      ]
+    },
+    {
+      "moduleId": "m68844",
+      "chapter": "ch19",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68846",
+      "chapter": "ch20",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        },
+        {
+          "tag": "sup",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68847",
+      "chapter": "ch20",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68848",
+      "chapter": "ch20",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68852",
+      "chapter": "ch21",
+      "discrepancies": [
+        {
+          "tag": "m:math",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68854",
+      "chapter": "ch21",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": -1
+        },
+        {
+          "tag": "sup",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68860",
+      "chapter": "appendices",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 2
+        },
+        {
+          "tag": "title",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68863",
+      "chapter": "appendices",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 1
+        }
+      ]
+    }
   ]
 }
