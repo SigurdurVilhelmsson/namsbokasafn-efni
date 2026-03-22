@@ -110,7 +110,7 @@ Find the square root of 1.6 [[MATH:11]] 10[[sup:−7]].
 Solution
 
 <!-- SEG:m68860:para:fs-idp659968 -->
-Exponential notation is used to express very large and very small numbers as a product of two numbers. The first number of the product, the {{i}}digit term{{/i}}, is usually a number not less than 1 and not equal to or greater than 10. The second number of the product, the {{i}}exponential term{{/i}}, is written as 10 with an exponent. Some examples of exponential notation are:
+Exponential notation is used to express very large and very small numbers as a product of two numbers. The first number of the product, the [[i:digit term]], is usually a number not less than 1 and not equal to or greater than 10. The second number of the product, the [[i:exponential term]], is written as 10 with an exponent. Some examples of exponential notation are:
 
 <!-- SEG:m68860:para:eip-985 -->
 The power (exponent) of 10 is equal to the number of places the decimal is shifted to give the digit number. The exponential method is particularly useful notation for very large and very small numbers. For example, 1,230,000,000 = 1.23 [[MATH:12]] 10[[sup:9]], and 0.00000000036 = 3.6 [[MATH:13]] 10[[sup:−10]].
@@ -218,13 +218,13 @@ What is the common logarithm of 60? Because 60 lies between 10 and 100, which ha
 The common logarithm of a number less than 1 has a negative value. The logarithm of 0.03918 is −1.4069, or
 
 <!-- SEG:m68860:para:fs-idm300540512 -->
-To obtain the common logarithm of a number, use the {{i}}log{{/i}} button on your calculator. To calculate a number from its logarithm, take the inverse log of the logarithm, or calculate 10[[sup:{{i}}x{{/i}}]] (where {{i}}x{{/i}} is the logarithm of the number).
+To obtain the common logarithm of a number, use the [[i:log]] button on your calculator. To calculate a number from its logarithm, take the inverse log of the logarithm, or calculate 10[[sup:[[i:x]]]] (where [[i:x]] is the logarithm of the number).
 
 <!-- SEG:m68860:para:fs-idm355694432 -->
-The natural logarithm of a number (ln) is the power to which {{i}}e{{/i}} must be raised to equal the number; {{i}}e{{/i}} is the constant 2.7182818. For example, the natural logarithm of 10 is 2.303; that is,
+The natural logarithm of a number (ln) is the power to which [[i:e]] must be raised to equal the number; [[i:e]] is the constant 2.7182818. For example, the natural logarithm of 10 is 2.303; that is,
 
 <!-- SEG:m68860:para:fs-idm315316192 -->
-To obtain the natural logarithm of a number, use the {{i}}ln{{/i}} button on your calculator. To calculate a number from its natural logarithm, enter the natural logarithm and take the inverse ln of the natural logarithm, or calculate {{i}}e[[sup:x]]{{/i}} (where {{i}}x{{/i}} is the natural logarithm of the number).
+To obtain the natural logarithm of a number, use the [[i:ln]] button on your calculator. To calculate a number from its natural logarithm, enter the natural logarithm and take the inverse ln of the natural logarithm, or calculate [[i:e[[sup:x]]]] (where [[i:x]] is the natural logarithm of the number).
 
 <!-- SEG:m68860:para:fs-idm46275792 -->
 Logarithms are exponents; thus, operations involving logarithms follow the same rules as operations involving exponents.
@@ -251,13 +251,13 @@ The solution or roots for any quadratic equation can be calculated using the fol
 Solving Quadratic Equations
 
 <!-- SEG:m68860:para:fs-idm72976848 -->
-Solve the quadratic equation 3{{i}}x{{/i}}[[sup:2]] + 13{{i}}x{{/i}} − 10 = 0.
+Solve the quadratic equation 3[[i:x]][[sup:2]] + 13[[i:x]] − 10 = 0.
 
 <!-- SEG:m68860:para-title:fs-idm175980608-title -->
 Solution
 
 <!-- SEG:m68860:para:fs-idm175980608 -->
-Substituting the values {{i}}a{{/i}} = 3, {{i}}b{{/i}} = 13, {{i}}c{{/i}} = −10 in the formula, we obtain
+Substituting the values [[i:a]] = 3, [[i:b]] = 13, [[i:c]] = −10 in the formula, we obtain
 
 <!-- SEG:m68860:para:fs-idm171950464 -->
 The two roots are therefore
@@ -266,25 +266,25 @@ The two roots are therefore
 Quadratic equations constructed on physical data always have real roots, and of these real roots, often only those having positive values are of any significance.
 
 <!-- SEG:m68860:title:fs-idm180300896-title -->
-Two-Dimensional ({{i}}x{{/i}}-{{i}}y{{/i}}) Graphing
+Two-Dimensional ([[i:x]]-[[i:y]]) Graphing
 
 <!-- SEG:m68860:para:fs-idm67130880 -->
-The relationship between any two properties of a system can be represented graphically by a two-dimensional data plot. Such a graph has two axes: a horizontal one corresponding to the independent variable, or the variable whose value is being controlled ({{i}}x{{/i}}), and a vertical axis corresponding to the dependent variable, or the variable whose value is being observed or measured ({{i}}y{{/i}}).
+The relationship between any two properties of a system can be represented graphically by a two-dimensional data plot. Such a graph has two axes: a horizontal one corresponding to the independent variable, or the variable whose value is being controlled ([[i:x]]), and a vertical axis corresponding to the dependent variable, or the variable whose value is being observed or measured ([[i:y]]).
 
 <!-- SEG:m68860:para:fs-idm78087840 -->
-When the value of {{i}}y{{/i}} is changing as a function of {{i}}x{{/i}} (that is, different values of {{i}}x{{/i}} correspond to different values of {{i}}y{{/i}}), a graph of this change can be plotted or sketched. The graph can be produced by using specific values for ({{i}}x{{/i}},{{i}}y{{/i}}) data pairs.
+When the value of [[i:y]] is changing as a function of [[i:x]] (that is, different values of [[i:x]] correspond to different values of [[i:y]]), a graph of this change can be plotted or sketched. The graph can be produced by using specific values for ([[i:x]],[[i:y]]) data pairs.
 
 <!-- SEG:m68860:example-title:fs-idp9271248-title -->
-Graphing the Dependence of {{i}}y{{/i}} on {{i}}x{{/i}}
+Graphing the Dependence of [[i:y]] on [[i:x]]
 
 <!-- SEG:m68860:para:fs-idm176114816 -->
-This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each of these points can be plotted on a graph and connected to produce a graphical representation of the dependence of {{i}}y{{/i}} on {{i}}x{{/i}}.
+This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each of these points can be plotted on a graph and connected to produce a graphical representation of the dependence of [[i:y]] on [[i:x]].
 
 <!-- SEG:m68860:entry:auto-95 -->
-{{i}}x{{/i}}
+[[i:x]]
 
 <!-- SEG:m68860:entry:auto-96 -->
-{{i}}y{{/i}}
+[[i:y]]
 
 <!-- SEG:m68860:entry:auto-97 -->
 1
@@ -311,19 +311,19 @@ This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each
 14
 
 <!-- SEG:m68860:para:fs-idm164107136 -->
-If the function that describes the dependence of {{i}}y{{/i}} on {{i}}x{{/i}} is known, it may be used to compute x,y data pairs that may subsequently be plotted.
+If the function that describes the dependence of [[i:y]] on [[i:x]] is known, it may be used to compute x,y data pairs that may subsequently be plotted.
 
 <!-- SEG:m68860:example-title:fs-idm173153104-title -->
 Plotting Data Pairs
 
 <!-- SEG:m68860:para:fs-idm144872640 -->
-If we know that {{i}}y{{/i}} = {{i}}x{{/i}}[[sup:2]] + 2, we can produce a table of a few ({{i}}x{{/i}},{{i}}y{{/i}}) values and then plot the line based on the data shown here.
+If we know that [[i:y]] = [[i:x]][[sup:2]] + 2, we can produce a table of a few ([[i:x]],[[i:y]]) values and then plot the line based on the data shown here.
 
 <!-- SEG:m68860:entry:auto-108 -->
-{{i}}x{{/i}}
+[[i:x]]
 
 <!-- SEG:m68860:entry:auto-109 -->
-{{i}}y{{/i}} = {{i}}x{{/i}}[[sup:2]] + 2
+[[i:y]] = [[i:x]][[sup:2]] + 2
 
 <!-- SEG:m68860:entry:auto-110 -->
 1

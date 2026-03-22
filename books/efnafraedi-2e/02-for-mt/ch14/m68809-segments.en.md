@@ -26,7 +26,7 @@ A {{term}}titration curve{{/term}} is a plot of some solution property versus th
 Calculating pH for Titration Solutions: Strong Acid/Strong Base
 
 <!-- SEG:m68809:para:fs-idp245005248 -->
-A titration is carried out for 25.00 mL of 0.100 {{i}}M{{/i}} HCl (strong acid) with 0.100 {{i}}M{{/i}} of a strong base NaOH (the titration curve is shown in [#CNX_Chem_14_07_titration]). Calculate the pH at these volumes of added base solution:
+A titration is carried out for 25.00 mL of 0.100 [[i:M]] HCl (strong acid) with 0.100 [[i:M]] of a strong base NaOH (the titration curve is shown in [[xref:CNX_Chem_14_07_titration]]). Calculate the pH at these volumes of added base solution:
 
 <!-- SEG:m68809:para:fs-idp67154976 -->
 (a) 0.00 mL
@@ -44,13 +44,13 @@ A titration is carried out for 25.00 mL of 0.100 {{i}}M{{/i}} HCl (strong acid) 
 Solution
 
 <!-- SEG:m68809:para:fs-idp22584832 -->
-(a) Titrant volume = 0 mL. The solution pH is due to the acid ionization of HCl. Because this is a strong acid, the ionization is complete and the hydronium ion molarity is 0.100 {{i}}M{{/i}}. The pH of the solution is then
+(a) Titrant volume = 0 mL. The solution pH is due to the acid ionization of HCl. Because this is a strong acid, the ionization is complete and the hydronium ion molarity is 0.100 [[i:M]]. The pH of the solution is then
 
 <!-- SEG:m68809:para:fs-idm214456576 -->
 (b) Titrant volume = 12.50 mL. Since the acid sample and the base titrant are both monoprotic and equally concentrated, this titrant addition involves less than a stoichiometric amount of base, and so it is completely consumed by reaction with the excess acid in the sample. The concentration of acid remaining is computed by subtracting the consumed amount from the intial amount and then dividing by the solution volume:
 
 <!-- SEG:m68809:para:fs-idm197032080 -->
-(c) Titrant volume = 25.00 mL. This titrant addition involves a stoichiometric amount of base (the {{i}}equivalence point{{/i}}), and so only products of the neutralization reaction are in solution (water and NaCl). Neither the cation nor the anion of this salt undergo acid-base ionization; the only process generating hydronium ions is the autoprotolysis of water. The solution is neutral, having a pH = 7.00.
+(c) Titrant volume = 25.00 mL. This titrant addition involves a stoichiometric amount of base (the [[i:equivalence point]]), and so only products of the neutralization reaction are in solution (water and NaCl). Neither the cation nor the anion of this salt undergo acid-base ionization; the only process generating hydronium ions is the autoprotolysis of water. The solution is neutral, having a pH = 7.00.
 
 <!-- SEG:m68809:para:fs-idm173154048 -->
 (d) Titrant volume = 37.50 mL. This involves the addition of titrant in excess of the equivalence point. The solution pH is then calculated using the concentration of hydroxide ion:
@@ -62,7 +62,7 @@ pH = 14 − pOH = 14 + log([OH[[sup:−]]]) = 14 + log(0.0200) = 12.30
 Check Your Learning
 
 <!-- SEG:m68809:para:fs-idm15929056 -->
-Calculate the pH for the strong acid/strong base titration between 50.0 mL of 0.100 {{i}}M{{/i}} HNO[[sub:3]]({{i}}aq{{/i}}) and 0.200 {{i}}M{{/i}} NaOH (titrant) at the listed volumes of added base: 0.00 mL, 15.0 mL, 25.0 mL, and 40.0 mL.
+Calculate the pH for the strong acid/strong base titration between 50.0 mL of 0.100 [[i:M]] HNO[[sub:3]]([[i:aq]]) and 0.200 [[i:M]] NaOH (titrant) at the listed volumes of added base: 0.00 mL, 15.0 mL, 25.0 mL, and 40.0 mL.
 
 <!-- SEG:m68809:para:fs-idm89702512 -->
 0.00: 1.000; 15.0: 1.5111; 25.0: 7; 40.0: 12.523
@@ -77,7 +77,7 @@ Answer:
 Titration of a Weak Acid with a Strong Base
 
 <!-- SEG:m68809:para:fs-idp114806608 -->
-Consider the titration of 25.00 mL of 0.100 {{i}}M{{/i}} CH[[sub:3]]CO[[sub:2]]H with 0.100 {{i}}M{{/i}} NaOH. The reaction can be represented as:
+Consider the titration of 25.00 mL of 0.100 [[i:M]] CH[[sub:3]]CO[[sub:2]]H with 0.100 [[i:M]] NaOH. The reaction can be represented as:
 
 <!-- SEG:m68809:para:fs-idm41606112 -->
 Calculate the pH of the titration solution after the addition of the following volumes of NaOH titrant:
@@ -110,7 +110,7 @@ Solution
 Base ionization of acetate is represented by the equation
 
 <!-- SEG:m68809:para:fs-idp58734736 -->
-Assuming {{i}}x{{/i}} &lt;&lt; 0.0500, the pH may be calculated via the usual ICE approach: [[MATH:3]]
+Assuming [[i:x]] &lt;&lt; 0.0500, the pH may be calculated via the usual ICE approach: [[MATH:3]]
 
 <!-- SEG:m68809:para:fs-idm40620912 -->
 Note that the pH at the equivalence point of this titration is significantly greater than 7, as expected when titrating a weak acid with a strong base.
@@ -119,7 +119,7 @@ Note that the pH at the equivalence point of this titration is significantly gre
 (c) Titrant volume = 12.50 mL. This volume represents one-half of the stoichiometric amount of titrant, and so one-half of the acetic acid has been neutralized to yield an equivalent amount of acetate ion. The concentrations of these conjugate acid-base partners, therefore, are equal. A convenient approach to computing the pH is use of the Henderson-Hasselbalch equation:
 
 <!-- SEG:m68809:para:fs-idm42058672 -->
-(pH = p{{i}}K{{/i}}[[sub:a]] at the half-equivalence point in a titration of a weak acid)
+(pH = p[[i:K]][[sub:a]] at the half-equivalence point in a titration of a weak acid)
 
 <!-- SEG:m68809:para:fs-idp85997072 -->
 (d) Titrant volume = 37.50 mL. This volume represents a stoichiometric excess of titrant, and a reaction solution containing both the titration product, acetate ion, and the excess strong titrant. In such solutions, the solution pH is determined primarily by the amount of excess strong base:
@@ -128,7 +128,7 @@ Note that the pH at the equivalence point of this titration is significantly gre
 Check Your Learning
 
 <!-- SEG:m68809:para:fs-idm41682336 -->
-Calculate the pH for the weak acid/strong base titration between 50.0 mL of 0.100 {{i}}M{{/i}} HCOOH({{i}}aq{{/i}}) (formic acid) and 0.200 {{i}}M{{/i}} NaOH (titrant) at the listed volumes of added base: 0.00 mL, 15.0 mL, 25.0 mL, and 30.0 mL.
+Calculate the pH for the weak acid/strong base titration between 50.0 mL of 0.100 [[i:M]] HCOOH([[i:aq]]) (formic acid) and 0.200 [[i:M]] NaOH (titrant) at the listed volumes of added base: 0.00 mL, 15.0 mL, 25.0 mL, and 30.0 mL.
 
 <!-- SEG:m68809:para:fs-idm37877472 -->
 0.00 mL: 2.37; 15.0 mL: 3.92; 25.00 mL: 8.29; 30.0 mL: 12.097
@@ -140,34 +140,34 @@ Answer:
 0.00 mL: 2.37; 15.0 mL: 3.92; 25.00 mL: 8.29; 30.0 mL: 12.097
 
 <!-- SEG:m68809:para:fs-idm198420960 -->
-Performing additional calculations similar to those in the preceding example permits a more full assessment of titration curves. A summary of pH/volume data pairs for the strong and weak acid titrations is provided in [#fs-idm87178400] and plotted as titration curves in [#CNX_Chem_14_07_titration]. A comparison of these two curves illustrates several important concepts that are best addressed by identifying the four stages of a titration:
+Performing additional calculations similar to those in the preceding example permits a more full assessment of titration curves. A summary of pH/volume data pairs for the strong and weak acid titrations is provided in [[xref:fs-idm87178400]] and plotted as titration curves in [[xref:CNX_Chem_14_07_titration]]. A comparison of these two curves illustrates several important concepts that are best addressed by identifying the four stages of a titration:
 
 <!-- SEG:m68809:para:fs-idm201863856 -->
 initial state (added titrant volume = 0 mL): pH is determined by the acid being titrated; because the two acid samples are equally concentrated, the weak acid will exhibit a greater initial pH
 
 <!-- SEG:m68809:para:fs-idm444217232 -->
-pre-equivalence point (0 mL &lt; {{i}}V{{/i}} &lt; 25 mL): solution pH increases gradually and the acid is consumed by reaction with added titrant; composition includes unreacted acid and the reaction product, its conjugate base
+pre-equivalence point (0 mL &lt; [[i:V]] &lt; 25 mL): solution pH increases gradually and the acid is consumed by reaction with added titrant; composition includes unreacted acid and the reaction product, its conjugate base
 
 <!-- SEG:m68809:para:fs-idm183388016 -->
-equivalence point ({{i}}V{{/i}} = 25 mL): a drastic rise in pH is observed as the solution composition transitions from acidic to either neutral (for the strong acid sample) or basic (for the weak acid sample), with pH determined by ionization of the conjugate base of the acid
+equivalence point ([[i:V]] = 25 mL): a drastic rise in pH is observed as the solution composition transitions from acidic to either neutral (for the strong acid sample) or basic (for the weak acid sample), with pH determined by ionization of the conjugate base of the acid
 
 <!-- SEG:m68809:para:fs-idm183509856 -->
-postequivalence point ({{i}}V{{/i}} > 25 mL): pH is determined by the amount of excess strong base titrant added; since both samples are titrated with the same titrant, both titration curves appear similar at this stage.
+postequivalence point ([[i:V]] > 25 mL): pH is determined by the amount of excess strong base titrant added; since both samples are titrated with the same titrant, both titration curves appear similar at this stage.
 
 <!-- SEG:m68809:entry:auto-53 -->
 pH Values in the Titrations of a Strong Acid and of a Weak Acid
 
 <!-- SEG:m68809:entry:auto-54 -->
-Volume of 0.100 {{i}}M{{/i}} NaOH Added (mL)
+Volume of 0.100 [[i:M]] NaOH Added (mL)
 
 <!-- SEG:m68809:entry:auto-55 -->
 Moles of NaOH Added
 
 <!-- SEG:m68809:entry:auto-56 -->
-pH Values 0.100 {{i}}M{{/i}} HCl {{fn}}Titration of 25.00 mL of 0.100 {{i}}M{{/i}} HCl (0.00250 mol of HCI) with 0.100 {{i}}M{{/i}} NaOH.{{/fn}}
+pH Values 0.100 [[i:M]] HCl {{fn}}Titration of 25.00 mL of 0.100 [[i:M]] HCl (0.00250 mol of HCI) with 0.100 [[i:M]] NaOH.{{/fn}}
 
 <!-- SEG:m68809:entry:auto-57 -->
-pH Values 0.100 {{i}}M{{/i}} CH[[sub:3]]CO[[sub:2]]H {{fn}}Titration of 25.00 mL of 0.100 {{i}}M{{/i}} CH[[sub:3]]CO[[sub:2]]H (0.00250 mol of CH[[sub:3]]CO[[sub:2]]H) with 0.100 {{i}}M{{/i}} NaOH.{{/fn}}
+pH Values 0.100 [[i:M]] CH[[sub:3]]CO[[sub:2]]H {{fn}}Titration of 25.00 mL of 0.100 [[i:M]] CH[[sub:3]]CO[[sub:2]]H (0.00250 mol of CH[[sub:3]]CO[[sub:2]]H) with 0.100 [[i:M]] NaOH.{{/fn}}
 
 <!-- SEG:m68809:entry:auto-58 -->
 0.0
@@ -398,13 +398,13 @@ pH Values 0.100 {{i}}M{{/i}} CH[[sub:3]]CO[[sub:2]]H {{fn}}Titration of 25.00 mL
 12.52
 
 <!-- SEG:m68809:caption:CNX_Chem_14_07_titration-caption -->
-(a) The titration curve for the titration of 25.00 mL of 0.100 {{i}}M{{/i}} HCl (strong acid) with 0.100 {{i}}M{{/i}} NaOH (strong base) has an equivalence point of 7.00 pH. (b) The titration curve for the titration of 25.00 mL of 0.100 {{i}}M{{/i}} acetic acid (weak acid) with 0.100 {{i}}M{{/i}} NaOH (strong base) has an equivalence point of 8.72 pH.
+(a) The titration curve for the titration of 25.00 mL of 0.100 [[i:M]] HCl (strong acid) with 0.100 [[i:M]] NaOH (strong base) has an equivalence point of 7.00 pH. (b) The titration curve for the titration of 25.00 mL of 0.100 [[i:M]] acetic acid (weak acid) with 0.100 [[i:M]] NaOH (strong base) has an equivalence point of 8.72 pH.
 
 <!-- SEG:m68809:title:fs-idp22610576-title -->
 Acid-Base Indicators
 
 <!-- SEG:m68809:para:fs-idm39085312 -->
-Certain organic substances change color in dilute solution when the hydronium ion concentration reaches a particular value. For example, phenolphthalein is a colorless substance in any aqueous solution with a hydronium ion concentration greater than 5.0 [[MATH:4]] 10[[sup:−9]] {{i}}M{{/i}} (pH &lt; 8.3). In more basic solutions where the hydronium ion concentration is less than 5.0 [[MATH:5]] 10[[sup:−9]] {{i}}M{{/i}} (pH > 8.3), it is red or pink. Substances such as phenolphthalein, which can be used to determine the pH of a solution, are called {{term}}acid-base indicators{{/term}}. Acid-base indicators are either weak organic acids or weak organic bases.
+Certain organic substances change color in dilute solution when the hydronium ion concentration reaches a particular value. For example, phenolphthalein is a colorless substance in any aqueous solution with a hydronium ion concentration greater than 5.0 [[MATH:4]] 10[[sup:−9]] [[i:M]] (pH &lt; 8.3). In more basic solutions where the hydronium ion concentration is less than 5.0 [[MATH:5]] 10[[sup:−9]] [[i:M]] (pH > 8.3), it is red or pink. Substances such as phenolphthalein, which can be used to determine the pH of a solution, are called {{term}}acid-base indicators{{/term}}. Acid-base indicators are either weak organic acids or weak organic bases.
 
 <!-- SEG:m68809:para:fs-idm28417392 -->
 The equilibrium in a solution of the acid-base indicator methyl orange, a weak acid, can be represented by an equation in which we use HIn as a simple representation for the complex methyl orange molecule:
@@ -416,10 +416,10 @@ The anion of methyl orange, In[[sup:−]], is yellow, and the nonionized form, H
 The perceived color of an indicator solution is determined by the ratio of the concentrations of the two species In[[sup:−]] and HIn. If most of the indicator (typically about 60−90% or more) is present as In[[sup:−]], the perceived color of the solution is yellow. If most is present as HIn, then the solution color appears red. The Henderson-Hasselbalch equation is useful for understanding the relationship between the pH of an indicator solution and its composition (thus, perceived color):
 
 <!-- SEG:m68809:para:fs-idm188576256 -->
-In solutions where pH > p{{i}}K{{/i}}[[sub:a]], the logarithmic term must be positive, indicating an excess of the conjugate base form of the indicator (yellow solution). When pH &lt; p{{i}}K{{/i}}[[sub:a]], the log term must be negative, indicating an excess of the conjugate acid (red solution). When the solution pH is close to the indicator pKa, appreciable amounts of both conjugate partners are present, and the solution color is that of an additive combination of each (yellow and red, yielding orange). The {{term}}color change interval{{/term}} (or {{i}}pH interval{{/i}}) for an acid-base indicator is defined as the range of pH values over which a change in color is observed, and for most indicators this range is approximately p{{i}}K{{/i}}[[sub:a]] ± 1.
+In solutions where pH > p[[i:K]][[sub:a]], the logarithmic term must be positive, indicating an excess of the conjugate base form of the indicator (yellow solution). When pH &lt; p[[i:K]][[sub:a]], the log term must be negative, indicating an excess of the conjugate acid (red solution). When the solution pH is close to the indicator pKa, appreciable amounts of both conjugate partners are present, and the solution color is that of an additive combination of each (yellow and red, yielding orange). The {{term}}color change interval{{/term}} (or [[i:pH interval]]) for an acid-base indicator is defined as the range of pH values over which a change in color is observed, and for most indicators this range is approximately p[[i:K]][[sub:a]] ± 1.
 
 <!-- SEG:m68809:para:fs-idm92451888 -->
-There are many different acid-base indicators that cover a wide range of pH values and can be used to determine the approximate pH of an unknown solution by a process of elimination. Universal indicators and pH paper contain a mixture of indicators and exhibit different colors at different pHs. [#CNX_Chem_14_07_indicators] presents several indicators, their colors, and their color-change intervals.
+There are many different acid-base indicators that cover a wide range of pH values and can be used to determine the approximate pH of an unknown solution by a process of elimination. Universal indicators and pH paper contain a mixture of indicators and exhibit different colors at different pHs. [[xref:CNX_Chem_14_07_indicators]] presents several indicators, their colors, and their color-change intervals.
 
 <!-- SEG:m68809:caption:CNX_Chem_14_07_indicators-caption -->
 This chart illustrates the color change intervals for several acid-base indicators.
@@ -428,10 +428,10 @@ This chart illustrates the color change intervals for several acid-base indicato
 Titration curves for strong and weak acids illustrating the proper choice of acid-base indicator. Any of the three indicators will exhibit a reasonably sharp color change at the equivalence point of the strong acid titration, but only phenolphthalein is suitable for use in the weak acid titration.
 
 <!-- SEG:m68809:para:fs-idm188916592 -->
-The titration curves shown in [#CNX_Chem_14_07_titration2] illustrate the choice of a suitable indicator for specific titrations. In the strong acid titration, use of any of the three indicators should yield reasonably sharp color changes and accurate end point determinations. For this titration, the solution pH reaches the lower limit of the methyl orange color change interval after addition of ~24 mL of titrant, at which point the initially red solution would begin to appear orange. When 25 mL of titrant has been added (the equivalence point), the pH is well above the upper limit and the solution will appear yellow. The titration's end point may then be estimated as the volume of titrant that yields a distinct orange-to-yellow color change. This color change would be challenging for most human eyes to precisely discern. More-accurate estimates of the titration end point are possible using either litmus or phenolphthalein, both of which exhibit color change intervals that are encompassed by the steep rise in pH that occurs around the 25.00 mL equivalence point.
+The titration curves shown in [[xref:CNX_Chem_14_07_titration2]] illustrate the choice of a suitable indicator for specific titrations. In the strong acid titration, use of any of the three indicators should yield reasonably sharp color changes and accurate end point determinations. For this titration, the solution pH reaches the lower limit of the methyl orange color change interval after addition of ~24 mL of titrant, at which point the initially red solution would begin to appear orange. When 25 mL of titrant has been added (the equivalence point), the pH is well above the upper limit and the solution will appear yellow. The titration's end point may then be estimated as the volume of titrant that yields a distinct orange-to-yellow color change. This color change would be challenging for most human eyes to precisely discern. More-accurate estimates of the titration end point are possible using either litmus or phenolphthalein, both of which exhibit color change intervals that are encompassed by the steep rise in pH that occurs around the 25.00 mL equivalence point.
 
 <!-- SEG:m68809:para:fs-idm224614176 -->
-The weak acid titration curve in [#CNX_Chem_14_07_titration2] shows that only one of the three indicators is suitable for end point detection. If methyl orange is used in this titration, the solution will undergo a gradual red-to-orange-to-yellow color change over a relatively large volume interval (0–6 mL), completing the color change well before the equivalence point (25 mL) has been reached. Use of litmus would show a color change that begins after adding 7–8 mL of titrant and ends just before the equivalence point. Phenolphthalein, on the other hand, exhibits a color change interval that nicely brackets the abrupt change in pH occurring at the titration's equivalence point. A sharp color change from colorless to pink will be observed within a very small volume interval around the equivalence point.
+The weak acid titration curve in [[xref:CNX_Chem_14_07_titration2]] shows that only one of the three indicators is suitable for end point detection. If methyl orange is used in this titration, the solution will undergo a gradual red-to-orange-to-yellow color change over a relatively large volume interval (0–6 mL), completing the color change well before the equivalence point (25 mL) has been reached. Use of litmus would show a color change that begins after adding 7–8 mL of titrant and ends just before the equivalence point. Phenolphthalein, on the other hand, exhibits a color change interval that nicely brackets the abrupt change in pH occurring at the titration's equivalence point. A sharp color change from colorless to pink will be observed within a very small volume interval around the equivalence point.
 
 <!-- SEG:m68809:title:fs-idp81138704-title -->
 Key Concepts and Summary
@@ -449,7 +449,7 @@ At the equivalence point in the titration of a weak base with a strong acid, the
 Explain why an acid-base indicator changes color over a range of pH values rather than at a specific pH.
 
 <!-- SEG:m68809:problem:fs-idp255636720 -->
-Calculate the pH at the following points in a titration of 40 mL (0.040 L) of 0.100 {{i}}M{{/i}} barbituric acid ({{i}}K{{/i}}[[sub:a]] = 9.8 [[MATH:6]] 10[[sup:−5]]) with 0.100 {{i}}M{{/i}} KOH.
+Calculate the pH at the following points in a titration of 40 mL (0.040 L) of 0.100 [[i:M]] barbituric acid ([[i:K]][[sub:a]] = 9.8 [[MATH:6]] 10[[sup:−5]]) with 0.100 [[i:M]] KOH.
 
 <!-- SEG:m68809:problem:fs-idp164478416 -->
 (a) no KOH added
@@ -470,7 +470,7 @@ Calculate the pH at the following points in a titration of 40 mL (0.040 L) of 0.
 (a) pH = 2.50; (b) pH = 4.01; (c) pH = 5.60; (d) pH = 8.35; (e) pH = 11.08
 
 <!-- SEG:m68809:problem:fs-idp105330992 -->
-The indicator dinitrophenol is an acid with a {{i}}K{{/i}}[[sub:a]] of 1.1 [[MATH:7]] 10[[sup:−4]]. In a 1.0 [[MATH:8]] 10[[sup:−4]]-{{i}}M{{/i}} solution, it is colorless in acid and yellow in base. Calculate the pH range over which it goes from 10% ionized (colorless) to 90% ionized (yellow).
+The indicator dinitrophenol is an acid with a [[i:K]][[sub:a]] of 1.1 [[MATH:7]] 10[[sup:−4]]. In a 1.0 [[MATH:8]] 10[[sup:−4]]-[[i:M]] solution, it is colorless in acid and yellow in base. Calculate the pH range over which it goes from 10% ionized (colorless) to 90% ionized (yellow).
 
 <!-- SEG:m68809:glossary-term:fs-idp67176144-term -->
 acid-base indicator

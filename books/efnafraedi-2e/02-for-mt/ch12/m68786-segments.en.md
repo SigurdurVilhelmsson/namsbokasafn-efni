@@ -14,7 +14,7 @@ Derive rate expressions from the balanced equation for a given chemical reaction
 Calculate reaction rates from experimental data
 
 <!-- SEG:m68786:para:fs-idp37629504 -->
-A {{i}}rate{{/i}} is a measure of how some property varies with time. Speed is a familiar rate that expresses the distance traveled by an object in a given amount of time. Wage is a rate that represents the amount of money earned by a person working for a given amount of time. Likewise, the rate of a chemical reaction is a measure of how much reactant is consumed, or how much product is produced, by the reaction in a given amount of time.
+A [[i:rate]] is a measure of how some property varies with time. Speed is a familiar rate that expresses the distance traveled by an object in a given amount of time. Wage is a rate that represents the amount of money earned by a person working for a given amount of time. Likewise, the rate of a chemical reaction is a measure of how much reactant is consumed, or how much product is produced, by the reaction in a given amount of time.
 
 <!-- SEG:m68786:para:fs-idp11492384 -->
 The {{term}}rate of reaction{{/term}} is the change in the amount of a reactant or product per unit time. Reaction rates are therefore determined by measuring the time dependence of some property that can be related to reactant or product amounts. Rates of reactions that consume or produce gaseous substances, for example, are conveniently determined by measuring changes in volume or pressure. For reactions involving one or more colored substances, rates may be monitored via measurements of light absorption. For reactions involving aqueous electrolytes, rates may be measured via changes in a solution’s conductivity.
@@ -26,7 +26,7 @@ For reactants and products in solution, their relative amounts (concentrations) 
 The rate at which the hydrogen peroxide decomposes can be expressed in terms of the rate of change of its concentration, as shown here:
 
 <!-- SEG:m68786:para:fs-idp37715584 -->
-This mathematical representation of the change in species concentration over time is the {{term}}rate expression{{/term}} for the reaction. The brackets indicate molar concentrations, and the symbol delta (Δ) indicates “change in.” Thus, [[MATH:1]] represents the molar concentration of hydrogen peroxide at some time {{i}}t{{/i}}[[sub:1]]; likewise,[[MATH:2]] represents the molar concentration of hydrogen peroxide at a later time {{i}}t{{/i}}[[sub:2]]; and Δ[H[[sub:2]]O[[sub:2]]] represents the change in molar concentration of hydrogen peroxide during the time interval Δ{{i}}t{{/i}} (that is, {{i}}t{{/i}}[[sub:2]] − {{i}}t{{/i}}[[sub:1]]). Since the reactant concentration decreases as the reaction proceeds, Δ[H[[sub:2]]O[[sub:2]]] is a negative quantity. Reaction rates are, by convention, positive quantities, and so this negative change in concentration is multiplied by −1. [#CNX_Chem_12_01_KDataH2O2] provides an example of data collected during the decomposition of H[[sub:2]]O[[sub:2]].
+This mathematical representation of the change in species concentration over time is the {{term}}rate expression{{/term}} for the reaction. The brackets indicate molar concentrations, and the symbol delta (Δ) indicates “change in.” Thus, [[MATH:1]] represents the molar concentration of hydrogen peroxide at some time [[i:t]][[sub:1]]; likewise,[[MATH:2]] represents the molar concentration of hydrogen peroxide at a later time [[i:t]][[sub:2]]; and Δ[H[[sub:2]]O[[sub:2]]] represents the change in molar concentration of hydrogen peroxide during the time interval Δ[[i:t]] (that is, [[i:t]][[sub:2]] − [[i:t]][[sub:1]]). Since the reactant concentration decreases as the reaction proceeds, Δ[H[[sub:2]]O[[sub:2]]] is a negative quantity. Reaction rates are, by convention, positive quantities, and so this negative change in concentration is multiplied by −1. [[xref:CNX_Chem_12_01_KDataH2O2]] provides an example of data collected during the decomposition of H[[sub:2]]O[[sub:2]].
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_KDataH2O2-caption -->
 The rate of decomposition of H[[sub:2]]O[[sub:2]] in an aqueous solution decreases as the concentration of H[[sub:2]]O[[sub:2]] decreases.
@@ -38,19 +38,19 @@ To obtain the tabulated results for this decomposition, the concentration of hyd
 Notice that the reaction rates vary with time, decreasing as the reaction proceeds. Results for the last 6-hour period yield a reaction rate of:
 
 <!-- SEG:m68786:para:fs-idp101513872 -->
-This behavior indicates the reaction continually slows with time. Using the concentrations at the beginning and end of a time period over which the reaction rate is changing results in the calculation of an {{term}}average rate{{/term}} for the reaction over this time interval. At any specific time, the rate at which a reaction is proceeding is known as its {{term}}instantaneous rate{{/term}}. The instantaneous rate of a reaction at “time zero,” when the reaction commences, is its {{term}}initial rate{{/term}}. Consider the analogy of a car slowing down as it approaches a stop sign. The vehicle’s initial rate—analogous to the beginning of a chemical reaction—would be the speedometer reading at the moment the driver begins pressing the brakes ({{i}}t{{/i}}[[sub:0]]). A few moments later, the instantaneous rate at a specific moment—call it {{i}}t{{/i}}[[sub:1]]—would be somewhat slower, as indicated by the speedometer reading at that point in time. As time passes, the instantaneous rate will continue to fall until it reaches zero, when the car (or reaction) stops. Unlike instantaneous speed, the car’s average speed is not indicated by the speedometer; but it can be calculated as the ratio of the distance traveled to the time required to bring the vehicle to a complete stop (Δ{{i}}t{{/i}}). Like the decelerating car, the average rate of a chemical reaction will fall somewhere between its initial and final rates.
+This behavior indicates the reaction continually slows with time. Using the concentrations at the beginning and end of a time period over which the reaction rate is changing results in the calculation of an {{term}}average rate{{/term}} for the reaction over this time interval. At any specific time, the rate at which a reaction is proceeding is known as its {{term}}instantaneous rate{{/term}}. The instantaneous rate of a reaction at “time zero,” when the reaction commences, is its {{term}}initial rate{{/term}}. Consider the analogy of a car slowing down as it approaches a stop sign. The vehicle’s initial rate—analogous to the beginning of a chemical reaction—would be the speedometer reading at the moment the driver begins pressing the brakes ([[i:t]][[sub:0]]). A few moments later, the instantaneous rate at a specific moment—call it [[i:t]][[sub:1]]—would be somewhat slower, as indicated by the speedometer reading at that point in time. As time passes, the instantaneous rate will continue to fall until it reaches zero, when the car (or reaction) stops. Unlike instantaneous speed, the car’s average speed is not indicated by the speedometer; but it can be calculated as the ratio of the distance traveled to the time required to bring the vehicle to a complete stop (Δ[[i:t]]). Like the decelerating car, the average rate of a chemical reaction will fall somewhere between its initial and final rates.
 
 <!-- SEG:m68786:para:fs-idm65553280 -->
-The instantaneous rate of a reaction may be determined one of two ways. If experimental conditions permit the measurement of concentration changes over very short time intervals, then average rates computed as described earlier provide reasonably good approximations of instantaneous rates. Alternatively, a graphical procedure may be used that, in effect, yields the results that would be obtained if short time interval measurements were possible. In a plot of the concentration of hydrogen peroxide against time, the instantaneous rate of decomposition of H[[sub:2]]O[[sub:2]] at any time {{i}}t{{/i}} is given by the slope of a straight line that is tangent to the curve at that time ([#CNX_Chem_12_01_RRateIll]). These tangent line slopes may be evaluated using calculus, but the procedure for doing so is beyond the scope of this chapter.
+The instantaneous rate of a reaction may be determined one of two ways. If experimental conditions permit the measurement of concentration changes over very short time intervals, then average rates computed as described earlier provide reasonably good approximations of instantaneous rates. Alternatively, a graphical procedure may be used that, in effect, yields the results that would be obtained if short time interval measurements were possible. In a plot of the concentration of hydrogen peroxide against time, the instantaneous rate of decomposition of H[[sub:2]]O[[sub:2]] at any time [[i:t]] is given by the slope of a straight line that is tangent to the curve at that time ([[xref:CNX_Chem_12_01_RRateIll]]). These tangent line slopes may be evaluated using calculus, but the procedure for doing so is beyond the scope of this chapter.
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_RRateIll-caption -->
-This graph shows a plot of concentration versus time for a 1.000 {{i}}M{{/i}} solution of H[[sub:2]]O[[sub:2]]. The rate at any time is equal to the negative of the slope of a line tangent to the curve at that time. Tangents are shown at {{i}}t{{/i}} = 0 h (“initial rate”) and at {{i}}t{{/i}} = 12 h (“instantaneous rate” at 12 h).
+This graph shows a plot of concentration versus time for a 1.000 [[i:M]] solution of H[[sub:2]]O[[sub:2]]. The rate at any time is equal to the negative of the slope of a line tangent to the curve at that time. Tangents are shown at [[i:t]] = 0 h (“initial rate”) and at [[i:t]] = 12 h (“instantaneous rate” at 12 h).
 
 <!-- SEG:m68786:note-title:fs-idm69729856-title -->
 Reaction Rates in Analysis: Test Strips for Urinalysis
 
 <!-- SEG:m68786:para:fs-idp8375264 -->
-Physicians often use disposable test strips to measure the amounts of various substances in a patient’s urine ([#CNX_Chem_12_01_Urinestrip]). These test strips contain various chemical reagents, embedded in small pads at various locations along the strip, which undergo changes in color upon exposure to sufficient concentrations of specific substances. The usage instructions for test strips often stress that proper read time is critical for optimal results. This emphasis on read time suggests that kinetic aspects of the chemical reactions occurring on the test strip are important considerations.
+Physicians often use disposable test strips to measure the amounts of various substances in a patient’s urine ([[xref:CNX_Chem_12_01_Urinestrip]]). These test strips contain various chemical reagents, embedded in small pads at various locations along the strip, which undergo changes in color upon exposure to sufficient concentrations of specific substances. The usage instructions for test strips often stress that proper read time is critical for optimal results. This emphasis on read time suggests that kinetic aspects of the chemical reactions occurring on the test strip are important considerations.
 
 <!-- SEG:m68786:para:fs-idp37368560 -->
 The test for urinary glucose relies on a two-step process represented by the chemical equations shown here:
@@ -59,7 +59,7 @@ The test for urinary glucose relies on a two-step process represented by the che
 The first equation depicts the oxidation of glucose in the urine to yield glucolactone and hydrogen peroxide. The hydrogen peroxide produced subsequently oxidizes colorless iodide ion to yield brown iodine, which may be visually detected. Some strips include an additional substance that reacts with iodine to produce a more distinct color change.
 
 <!-- SEG:m68786:para:fs-idm13608336 -->
-The two test reactions shown above are inherently very slow, but their rates are increased by special enzymes embedded in the test strip pad. This is an example of {{i}}catalysis{{/i}}, a topic discussed later in this chapter. A typical glucose test strip for use with urine requires approximately 30 seconds for completion of the color-forming reactions. Reading the result too soon might lead one to conclude that the glucose concentration of the urine sample is lower than it actually is (a {{i}}false-negative{{/i}} result). Waiting too long to assess the color change can lead to a {{i}}false positive{{/i}} due to the slower (not catalyzed) oxidation of iodide ion by other substances found in urine.
+The two test reactions shown above are inherently very slow, but their rates are increased by special enzymes embedded in the test strip pad. This is an example of [[i:catalysis]], a topic discussed later in this chapter. A typical glucose test strip for use with urine requires approximately 30 seconds for completion of the color-forming reactions. Reading the result too soon might lead one to conclude that the glucose concentration of the urine sample is lower than it actually is (a [[i:false-negative]] result). Waiting too long to assess the color change can lead to a [[i:false positive]] due to the slower (not catalyzed) oxidation of iodide ion by other substances found in urine.
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_Urinestrip-caption -->
 Test strips are commonly used to detect the presence of specific substances in a person’s urine. Many test strips have several pads containing various reagents to permit the detection of multiple substances on a single strip. (credit: Iqbal Osman)
@@ -89,10 +89,10 @@ Note that a negative sign has been included as a factor to account for the oppos
 Similarly, the rate of formation of H[[sub:2]] is three times the rate of formation of N[[sub:2]] because three moles of H[[sub:2]] are produced for each mole of N[[sub:2]] produced.
 
 <!-- SEG:m68786:para:fs-idp24387584 -->
-[#CNX_Chem_12_01_NH3Decomp] illustrates the change in concentrations over time for the decomposition of ammonia into nitrogen and hydrogen at 1100 °C. Slopes of the tangent lines at {{i}}t{{/i}} = 500 s show that the instantaneous rates derived from all three species involved in the reaction are related by their stoichiometric factors. The rate of hydrogen production, for example, is observed to be three times greater than that for nitrogen production:
+[[xref:CNX_Chem_12_01_NH3Decomp]] illustrates the change in concentrations over time for the decomposition of ammonia into nitrogen and hydrogen at 1100 °C. Slopes of the tangent lines at [[i:t]] = 500 s show that the instantaneous rates derived from all three species involved in the reaction are related by their stoichiometric factors. The rate of hydrogen production, for example, is observed to be three times greater than that for nitrogen production:
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_NH3Decomp-caption -->
-Changes in concentrations of the reactant and products for the reaction [[MATH:3]] The rates of change of the three concentrations are related by the reaction stoichiometry, as shown by the different slopes of the tangents at {{i}}t{{/i}} = 500 s.
+Changes in concentrations of the reactant and products for the reaction [[MATH:3]] The rates of change of the three concentrations are related by the reaction stoichiometry, as shown by the different slopes of the tangents at [[i:t]] = 500 s.
 
 <!-- SEG:m68786:example-title:fs-idp40614224-title -->
 Expressions for Relative Reaction Rates
@@ -131,10 +131,10 @@ Answer:
 Reaction Rate Expressions for Decomposition of H[[sub:2]]O[[sub:2]]
 
 <!-- SEG:m68786:para:fs-idm62578304 -->
-The graph in [#CNX_Chem_12_01_RRateIll] shows the rate of the decomposition of H[[sub:2]]O[[sub:2]] over time:
+The graph in [[xref:CNX_Chem_12_01_RRateIll]] shows the rate of the decomposition of H[[sub:2]]O[[sub:2]] over time:
 
 <!-- SEG:m68786:para:fs-idm78350032 -->
-Based on these data, the instantaneous rate of decomposition of H[[sub:2]]O[[sub:2]] at {{i}}t{{/i}} = 11.1 h is determined to be[[BR]]3.20 [[MATH:7]] 10[[sup:−2]] mol/L/h, that is:
+Based on these data, the instantaneous rate of decomposition of H[[sub:2]]O[[sub:2]] at [[i:t]] = 11.1 h is determined to be[[BR]]3.20 [[MATH:7]] 10[[sup:−2]] mol/L/h, that is:
 
 <!-- SEG:m68786:para:fs-idp76303472 -->
 What is the instantaneous rate of production of H[[sub:2]]O and O[[sub:2]]?
@@ -230,7 +230,7 @@ Time (s)
 6200
 
 <!-- SEG:m68786:entry:auto-78 -->
-[C[[sub:4]]H[[sub:6]]] ({{i}}M{{/i}})
+[C[[sub:4]]H[[sub:6]]] ([[i:M]])
 
 <!-- SEG:m68786:entry:auto-79 -->
 1.00 [[MATH:18]] 10[[sup:−2]]
@@ -251,13 +251,13 @@ Time (s)
 A study of the rate of the reaction represented as [[MATH:23]] gave the following data:
 
 <!-- SEG:m68786:problem:fs-idm73606544 -->
-(a) Determine the average rate of disappearance of {{i}}A{{/i}} between 0.0 s and 10.0 s, and between 10.0 s and 20.0 s.
+(a) Determine the average rate of disappearance of [[i:A]] between 0.0 s and 10.0 s, and between 10.0 s and 20.0 s.
 
 <!-- SEG:m68786:problem:fs-idm51132096 -->
-(b) Estimate the instantaneous rate of disappearance of {{i}}A{{/i}} at 15.0 s from a graph of time versus [{{i}}A{{/i}}]. What are the units of this rate?
+(b) Estimate the instantaneous rate of disappearance of [[i:A]] at 15.0 s from a graph of time versus [[[i:A]]]. What are the units of this rate?
 
 <!-- SEG:m68786:problem:fs-idm80091760 -->
-(c) Use the rates found in parts (a) and (b) to determine the average rate of formation of {{i}}B{{/i}} between 0.00 s and 10.0 s, and the instantaneous rate of formation of {{i}}B{{/i}} at 15.0 s.
+(c) Use the rates found in parts (a) and (b) to determine the average rate of formation of [[i:B]] between 0.00 s and 10.0 s, and the instantaneous rate of formation of [[i:B]] at 15.0 s.
 
 <!-- SEG:m68786:solution:fs-idm15349328 -->
 (a) average rate, 0 − 10 s = 0.0375 mol L[[sup:−1]] s[[sup:−1]]; average rate, 10 − 20 s = 0.0265 mol L[[sup:−1]] s[[sup:−1]]; (b) instantaneous rate, 15 s = 0.023 mol L[[sup:−1]] s[[sup:−1]]; (c) average rate for B formation = 0.0188 mol L[[sup:−1]] s[[sup:−1]]; instantaneous rate for B formation = 0.012 mol L[[sup:−1]] s[[sup:−1]]
@@ -287,7 +287,7 @@ Time (s)
 35.0
 
 <!-- SEG:m68786:entry:auto-97 -->
-[{{i}}A{{/i}}] ({{i}}M{{/i}})
+[[[i:A]]] ([[i:M]])
 
 <!-- SEG:m68786:entry:auto-98 -->
 1.00
@@ -314,7 +314,7 @@ Time (s)
 Consider the following reaction in aqueous solution:[[BR]][[MATH:24]]
 
 <!-- SEG:m68786:problem:fs-idp2868784 -->
-If the rate of disappearance of Br[[sup:–]]({{i}}aq{{/i}}) at a particular moment during the reaction is 3.5 [[MATH:25]] 10[[sup:−4]] mol L[[sup:−1]] {{i}}s{{/i}}[[sup:−1]], what is the rate of appearance of Br[[sub:2]]({{i}}aq{{/i}}) at that moment?
+If the rate of disappearance of Br[[sup:–]]([[i:aq]]) at a particular moment during the reaction is 3.5 [[MATH:25]] 10[[sup:−4]] mol L[[sup:−1]] [[i:s]][[sup:−1]], what is the rate of appearance of Br[[sub:2]]([[i:aq]]) at that moment?
 
 <!-- SEG:m68786:glossary-term:fs-idp11569888-term -->
 average rate
@@ -326,7 +326,7 @@ rate of a chemical reaction computed as the ratio of a measured change in amount
 initial rate
 
 <!-- SEG:m68786:glossary-def:fs-idp24984224-def -->
-instantaneous rate of a chemical reaction at {{i}}t{{/i}} = 0 s (immediately after the reaction has begun)
+instantaneous rate of a chemical reaction at [[i:t]] = 0 s (immediately after the reaction has begun)
 
 <!-- SEG:m68786:glossary-term:fs-idp70925872-term -->
 instantaneous rate

@@ -35,10 +35,10 @@ Nonmetal oxides act as Lewis acids and react with oxide ions, Lewis bases, to fo
 Many Lewis acid-base reactions are displacement reactions in which one Lewis base displaces another Lewis base from an acid-base adduct, or in which one Lewis acid displaces another Lewis acid:
 
 <!-- SEG:m68813:para:fs-idm28146992 -->
-Another type of Lewis acid-base chemistry involves the formation of a complex ion (or a coordination complex) comprising a central atom, typically a transition metal cation, surrounded by ions or molecules called {{term}}ligands{{/term}}. These ligands can be neutral molecules like H[[sub:2]]O or NH[[sub:3]], or ions such as CN[[sup:–]] or OH[[sup:–]]. Often, the ligands act as Lewis bases, donating a pair of electrons to the central atom. These types of Lewis acid-base reactions are examples of a broad subdiscipline called {{i}}coordination chemistry{{/i}}—the topic of another chapter in this text.
+Another type of Lewis acid-base chemistry involves the formation of a complex ion (or a coordination complex) comprising a central atom, typically a transition metal cation, surrounded by ions or molecules called {{term}}ligands{{/term}}. These ligands can be neutral molecules like H[[sub:2]]O or NH[[sub:3]], or ions such as CN[[sup:–]] or OH[[sup:–]]. Often, the ligands act as Lewis bases, donating a pair of electrons to the central atom. These types of Lewis acid-base reactions are examples of a broad subdiscipline called [[i:coordination chemistry]]—the topic of another chapter in this text.
 
 <!-- SEG:m68813:para:fs-idm50768752 -->
-The equilibrium constant for the reaction of a metal ion with one or more ligands to form a coordination complex is called a {{term}}formation constant ({{i}}K{{/i}}[[sub:f]]){{/term}} (sometimes called a stability constant). For example, the complex ion [[MATH:1]]
+The equilibrium constant for the reaction of a metal ion with one or more ligands to form a coordination complex is called a {{term}}formation constant ([[i:K]][[sub:f]]){{/term}} (sometimes called a stability constant). For example, the complex ion [[MATH:1]]
 
 <!-- SEG:m68813:para:fs-idm21686128 -->
 is produced by the reaction
@@ -47,10 +47,10 @@ is produced by the reaction
 The formation constant for this reaction is
 
 <!-- SEG:m68813:para:fs-idm80631152 -->
-Alternatively, the reverse reaction (decomposition of the complex ion) can be considered, in which case the equilibrium constant is a {{term}}dissociation constant ({{i}}K{{/i}}[[sub:d]]){{/term}}. Per the relation between equilibrium constants for reciprocal reactions described, the dissociation constant is the mathematical inverse of the formation constant, {{i}}K[[sub:d]]{{/i}} = K[[sub:f]][[sup:–1]]. A tabulation of formation constants is provided in [Appendix K](doc:m68869).
+Alternatively, the reverse reaction (decomposition of the complex ion) can be considered, in which case the equilibrium constant is a {{term}}dissociation constant ([[i:K]][[sub:d]]){{/term}}. Per the relation between equilibrium constants for reciprocal reactions described, the dissociation constant is the mathematical inverse of the formation constant, [[i:K[[sub:d]]]] = K[[sub:f]][[sup:–1]]. A tabulation of formation constants is provided in [[docref:Appendix K|m68869]].
 
 <!-- SEG:m68813:para:fs-idp9510016 -->
-As an example of dissolution by complex ion formation, let us consider what happens when we add aqueous ammonia to a mixture of silver chloride and water. Silver chloride dissolves slightly in water, giving a small concentration of Ag[[sup:+]] ([Ag[[sup:+]]] = 1.3 [[MATH:2]] 10[[sup:–5]] {{i}}M{{/i}}):
+As an example of dissolution by complex ion formation, let us consider what happens when we add aqueous ammonia to a mixture of silver chloride and water. Silver chloride dissolves slightly in water, giving a small concentration of Ag[[sup:+]] ([Ag[[sup:+]]] = 1.3 [[MATH:2]] 10[[sup:–5]] [[i:M]]):
 
 <!-- SEG:m68813:para:fs-idp127318800 -->
 However, if NH[[sub:3]] is present in the water, the complex ion, [[MATH:3]] can form according to the equation:
@@ -68,7 +68,7 @@ More silver chloride then dissolves. If the concentration of ammonia is great en
 Dissociation of a Complex Ion
 
 <!-- SEG:m68813:para:fs-idm7205936 -->
-Calculate the concentration of the silver ion in a solution that initially is 0.10 {{i}}M{{/i}} with respect to [[MATH:5]]
+Calculate the concentration of the silver ion in a solution that initially is 0.10 [[i:M]] with respect to [[MATH:5]]
 
 <!-- SEG:m68813:para-title:fs-idm75540624-title -->
 Solution
@@ -77,34 +77,34 @@ Solution
 Applying the standard ICE approach to this reaction yields the following:
 
 <!-- SEG:m68813:para:fs-idp9002560 -->
-Substituting these equilibrium concentration terms into the {{i}}K{{/i}}[[sub:f]] expression gives
+Substituting these equilibrium concentration terms into the [[i:K]][[sub:f]] expression gives
 
 <!-- SEG:m68813:para:fs-idm192455888 -->
-The very large equilibrium constant means the amount of the complex ion that will dissociate, {{i}}x{{/i}}, will be very small. Assuming {{i}}x{{/i}} &lt;&lt; 0.1 permits simplifying the above equation:
+The very large equilibrium constant means the amount of the complex ion that will dissociate, [[i:x]], will be very small. Assuming [[i:x]] &lt;&lt; 0.1 permits simplifying the above equation:
 
 <!-- SEG:m68813:para:fs-idm16239152 -->
-Because only 1.1% of the [[MATH:6]] dissociates into Ag[[sup:+]] and NH[[sub:3]], the assumption that {{i}}x{{/i}} is small is justified.
+Because only 1.1% of the [[MATH:6]] dissociates into Ag[[sup:+]] and NH[[sub:3]], the assumption that [[i:x]] is small is justified.
 
 <!-- SEG:m68813:para:fs-idp135771888 -->
-Using this value of {{i}}x{{/i}} and the relations in the above ICE table allows calculation of all species’ equilibrium concentrations:
+Using this value of [[i:x]] and the relations in the above ICE table allows calculation of all species’ equilibrium concentrations:
 
 <!-- SEG:m68813:para:fs-idm88908448 -->
-The concentration of free silver ion in the solution is 0.0011 {{i}}M{{/i}}.
+The concentration of free silver ion in the solution is 0.0011 [[i:M]].
 
 <!-- SEG:m68813:para-title:fs-idp125455664-title -->
 Check Your Learning
 
 <!-- SEG:m68813:para:fs-idp125455664 -->
-Calculate the silver ion concentration, [Ag[[sup:+]]], of a solution prepared by dissolving 1.00 g of AgNO[[sub:3]] and 10.0 g of KCN in sufficient water to make 1.00 L of solution. (Hint: Because {{i}}K{{/i}}[[sub:f]] is very large, the silver/cyanide complex ion (see [Appendix K](doc:m68869)), assume the reaction goes to completion and then calculate the [Ag[[sup:+]]] produced by dissociation of the complex.)
+Calculate the silver ion concentration, [Ag[[sup:+]]], of a solution prepared by dissolving 1.00 g of AgNO[[sub:3]] and 10.0 g of KCN in sufficient water to make 1.00 L of solution. (Hint: Because [[i:K]][[sub:f]] is very large, the silver/cyanide complex ion (see [[docref:Appendix K|m68869]]), assume the reaction goes to completion and then calculate the [Ag[[sup:+]]] produced by dissociation of the complex.)
 
 <!-- SEG:m68813:para:fs-idm70030480 -->
-2.9 [[MATH:7]] 10[[sup:–22]] {{i}}M{{/i}}
+2.9 [[MATH:7]] 10[[sup:–22]] [[i:M]]
 
 <!-- SEG:m68813:note-title:fs-idp119941104-title -->
 Answer:
 
 <!-- SEG:m68813:para:fs-idm70030480 -->
-2.9 [[MATH:8]] 10[[sup:–22]] {{i}}M{{/i}}
+2.9 [[MATH:8]] 10[[sup:–22]] [[i:M]]
 
 <!-- SEG:m68813:title:fs-idp45945376-title -->
 Key Concepts and Summary
@@ -128,22 +128,22 @@ when the amount of solid is so small that a saturated solution is not produced
 Explain why the addition of NH[[sub:3]] or HNO[[sub:3]] to a saturated solution of Ag[[sub:2]]CO[[sub:3]] in contact with solid Ag[[sub:2]]CO[[sub:3]] increases the solubility of the solid.
 
 <!-- SEG:m68813:problem:fs-idm6072880 -->
-Calculate the cadmium ion concentration, [Cd[[sup:2+]]], in a solution prepared by mixing 0.100 L of 0.0100 {{i}}M{{/i}} Cd(NO[[sub:3]])[[sub:2]] with 0.150 L of 0.100 NH[[sub:3]]({{i}}aq{{/i}}).
+Calculate the cadmium ion concentration, [Cd[[sup:2+]]], in a solution prepared by mixing 0.100 L of 0.0100 [[i:M]] Cd(NO[[sub:3]])[[sub:2]] with 0.150 L of 0.100 NH[[sub:3]]([[i:aq]]).
 
 <!-- SEG:m68813:solution:fs-idm73920192 -->
-8.2 [[MATH:9]] 10[[sup:–5]] {{i}}M{{/i}}
+8.2 [[MATH:9]] 10[[sup:–5]] [[i:M]]
 
 <!-- SEG:m68813:problem:fs-idm21823296 -->
 Explain why addition of NH[[sub:3]] or HNO[[sub:3]] to a saturated solution of Cu(OH)[[sub:2]] in contact with solid Cu(OH)[[sub:2]] increases the solubility of the solid.
 
 <!-- SEG:m68813:problem:fs-idp10055184 -->
-Sometimes equilibria for complex ions are described in terms of dissociation constants, {{i}}K{{/i}}[[sub:d]]. For the complex ion [[MATH:10]] the dissociation reaction is:
+Sometimes equilibria for complex ions are described in terms of dissociation constants, [[i:K]][[sub:d]]. For the complex ion [[MATH:10]] the dissociation reaction is:
 
 <!-- SEG:m68813:problem:fs-idm68646192 -->
 [[MATH:11]] and [[MATH:12]]
 
 <!-- SEG:m68813:problem:fs-idp111955968 -->
-Calculate the value of the formation constant, {{i}}K{{/i}}[[sub:f]], for [[MATH:13]]
+Calculate the value of the formation constant, [[i:K]][[sub:f]], for [[MATH:13]]
 
 <!-- SEG:m68813:solution:fs-idp112133280 -->
 5 [[MATH:14]] 10[[sup:23]]
@@ -152,22 +152,22 @@ Calculate the value of the formation constant, {{i}}K{{/i}}[[sub:f]], for [[MATH
 Using the value of the formation constant for the complex ion [[MATH:15]] calculate the dissociation constant.
 
 <!-- SEG:m68813:problem:fs-idm101068320 -->
-Using the dissociation constant, {{i}}K{{/i}}[[sub:d]] = 3.3 [[MATH:16]] 10[[sup:–19]], calculate the equilibrium concentrations of Cd[[sup:2+]] and CN[[sup:–]] in a 0.250-{{i}}M{{/i}} solution of [[MATH:17]]
+Using the dissociation constant, [[i:K]][[sub:d]] = 3.3 [[MATH:16]] 10[[sup:–19]], calculate the equilibrium concentrations of Cd[[sup:2+]] and CN[[sup:–]] in a 0.250-[[i:M]] solution of [[MATH:17]]
 
 <!-- SEG:m68813:solution:fs-idm262777264 -->
-[[MEDIA:1]][[BR]] [Cd[[sup:2+]]] = 5.0 [[MATH:18]] 10[[sup:–5]] {{i}}M{{/i}}; [CN[[sup:–]]] = 2.0 [[MATH:19]] 10[[sup:–4]] {{i}}M{{/i}}
+[[MEDIA:1]][[BR]] [Cd[[sup:2+]]] = 5.0 [[MATH:18]] 10[[sup:–5]] [[i:M]]; [CN[[sup:–]]] = 2.0 [[MATH:19]] 10[[sup:–4]] [[i:M]]
 
 <!-- SEG:m68813:problem:fs-idp57024384 -->
-Using the dissociation constant, {{i}}K{{/i}}[[sub:d]] = 3.4 [[MATH:20]] 10[[sup:–15]], calculate the equilibrium concentrations of Zn[[sup:2+]] and OH[[sup:–]] in a 0.0465-{{i}}M{{/i}} solution of [[MATH:21]]
+Using the dissociation constant, [[i:K]][[sub:d]] = 3.4 [[MATH:20]] 10[[sup:–15]], calculate the equilibrium concentrations of Zn[[sup:2+]] and OH[[sup:–]] in a 0.0465-[[i:M]] solution of [[MATH:21]]
 
 <!-- SEG:m68813:problem:fs-idm73182032 -->
-Using the dissociation constant, {{i}}K{{/i}}[[sub:d]] = 2.2 [[MATH:22]] 10[[sup:–34]], calculate the equilibrium concentrations of Co[[sup:3+]] and NH[[sub:3]] in a 0.500-{{i}}M{{/i}} solution of [[MATH:23]]
+Using the dissociation constant, [[i:K]][[sub:d]] = 2.2 [[MATH:22]] 10[[sup:–34]], calculate the equilibrium concentrations of Co[[sup:3+]] and NH[[sub:3]] in a 0.500-[[i:M]] solution of [[MATH:23]]
 
 <!-- SEG:m68813:solution:fs-idm47971424 -->
-[Co[[sup:3+]]] = 3.0 [[MATH:24]] 10[[sup:–6]] {{i}}M{{/i}}; [NH[[sub:3]]] = 1.8 [[MATH:25]] 10[[sup:–5]] {{i}}M{{/i}}
+[Co[[sup:3+]]] = 3.0 [[MATH:24]] 10[[sup:–6]] [[i:M]]; [NH[[sub:3]]] = 1.8 [[MATH:25]] 10[[sup:–5]] [[i:M]]
 
 <!-- SEG:m68813:problem:fs-idm58110448 -->
-Using the dissociation constant, {{i}}K{{/i}}[[sub:d]] = 1 [[MATH:26]] 10[[sup:–44]], calculate the equilibrium concentrations of Fe[[sup:3+]] and CN[[sup:–]] in a 0.333 M solution of [[MATH:27]]
+Using the dissociation constant, [[i:K]][[sub:d]] = 1 [[MATH:26]] 10[[sup:–44]], calculate the equilibrium concentrations of Fe[[sup:3+]] and CN[[sup:–]] in a 0.333 M solution of [[MATH:27]]
 
 <!-- SEG:m68813:problem:fs-idm70882624 -->
 Calculate the mass of potassium cyanide ion that must be added to 100 mL of solution to dissolve 2.0 [[MATH:28]] 10[[sup:–2]] mol of silver cyanide, AgCN.
@@ -179,7 +179,7 @@ Calculate the mass of potassium cyanide ion that must be added to 100 mL of solu
 Calculate the minimum concentration of ammonia needed in 1.0 L of solution to dissolve 3.0 [[MATH:29]] 10[[sup:–3]] mol of silver bromide.
 
 <!-- SEG:m68813:problem:fs-idm48772160 -->
-A roll of 35-mm black and white photographic film contains about 0.27 g of unexposed AgBr before developing. What mass of Na[[sub:2]]S[[sub:2]]O[[sub:3]]·5H[[sub:2]]O (sodium thiosulfate pentahydrate or hypo) in 1.0 L of fixer is required to dissolve the AgBr as [[MATH:30]] ({{i}}K{{/i}}[[sub:f]] = 4.7 [[MATH:31]] 10[[sup:13]])?
+A roll of 35-mm black and white photographic film contains about 0.27 g of unexposed AgBr before developing. What mass of Na[[sub:2]]S[[sub:2]]O[[sub:3]]·5H[[sub:2]]O (sodium thiosulfate pentahydrate or hypo) in 1.0 L of fixer is required to dissolve the AgBr as [[MATH:30]] ([[i:K]][[sub:f]] = 4.7 [[MATH:31]] 10[[sup:13]])?
 
 <!-- SEG:m68813:solution:fs-idp15978880 -->
 0.79 g
@@ -245,10 +245,10 @@ Using Lewis structures, write balanced equations for the following reactions:
 (a)[[BR]] [[MEDIA:7]][[BR]] (b) [[MATH:46]][[BR]] [[MEDIA:8]][[BR]] (c) [[MATH:47]][[BR]] [[MEDIA:9]][[BR]] (d) [[MATH:48]][[BR]] [[MEDIA:10]]
 
 <!-- SEG:m68813:problem:fs-idm2667904 -->
-Calculate [[MATH:49]] in a solution prepared by adding 0.0200 mol of NaCl to 0.250 L of a 0.100-{{i}}M{{/i}} HgCl[[sub:2]] solution.
+Calculate [[MATH:49]] in a solution prepared by adding 0.0200 mol of NaCl to 0.250 L of a 0.100-[[i:M]] HgCl[[sub:2]] solution.
 
 <!-- SEG:m68813:problem:fs-idm82529888 -->
-In a titration of cyanide ion, 28.72 mL of 0.0100 {{i}}M{{/i}} AgNO[[sub:3]] is added before precipitation begins. [The reaction of Ag[[sup:+]] with CN[[sup:–]] goes to completion, producing the [[MATH:50]] complex.] Precipitation of solid AgCN takes place when excess Ag[[sup:+]] is added to the solution, above the amount needed to complete the formation of [[MATH:51]] How many grams of NaCN were in the original sample?
+In a titration of cyanide ion, 28.72 mL of 0.0100 [[i:M]] AgNO[[sub:3]] is added before precipitation begins. [The reaction of Ag[[sup:+]] with CN[[sup:–]] goes to completion, producing the [[MATH:50]] complex.] Precipitation of solid AgCN takes place when excess Ag[[sup:+]] is added to the solution, above the amount needed to complete the formation of [[MATH:51]] How many grams of NaCN were in the original sample?
 
 <!-- SEG:m68813:solution:fs-idp27819104 -->
 0.0281 g
@@ -266,13 +266,13 @@ In dilute aqueous solution HF acts as a weak acid. However, pure liquid HF (boil
 The simplest amino acid is glycine, H[[sub:2]]NCH[[sub:2]]CO[[sub:2]]H. The common feature of amino acids is that they contain the functional groups: an amine group, –NH[[sub:2]], and a carboxylic acid group, –CO[[sub:2]]H. An amino acid can function as either an acid or a base. For glycine, the acid strength of the carboxyl group is about the same as that of acetic acid, CH[[sub:3]]CO[[sub:2]]H, and the base strength of the amino group is slightly greater than that of ammonia, NH[[sub:3]].
 
 <!-- SEG:m68813:problem:fs-idp137523328 -->
-(a) Write the Lewis structures of the ions that form when glycine is dissolved in 1 {{i}}M{{/i}} HCl and in 1 {{i}}M{{/i}} KOH.
+(a) Write the Lewis structures of the ions that form when glycine is dissolved in 1 [[i:M]] HCl and in 1 [[i:M]] KOH.
 
 <!-- SEG:m68813:problem:fs-idp125358752 -->
 (b) Write the Lewis structure of glycine when this amino acid is dissolved in water. (Hint: Consider the relative base strengths of the –NH[[sub:2]] and [[MATH:55]] groups.)
 
 <!-- SEG:m68813:problem:fs-idm1806144 -->
-Boric acid, H[[sub:3]]BO[[sub:3]], is not a Brønsted-Lowry acid but a Lewis acid. (Hint: See the equation in [#fs-idm105219776])
+Boric acid, H[[sub:3]]BO[[sub:3]], is not a Brønsted-Lowry acid but a Lewis acid. (Hint: See the equation in [[xref:fs-idm105219776]])
 
 <!-- SEG:m68813:problem:fs-idp9486544 -->
 (a) Write an equation for its reaction with water.
@@ -284,7 +284,7 @@ Boric acid, H[[sub:3]]BO[[sub:3]], is not a Brønsted-Lowry acid but a Lewis aci
 (c) What is the hybridization on the boron, and is it consistent with the shape you have predicted?
 
 <!-- SEG:m68813:solution:fs-idm18232784 -->
-(a) [[MATH:56]] (b) The electronic and molecular shapes are the same—both tetrahedral. (c) The tetrahedral structure is consistent with {{i}}sp{{/i}}[[sup:3]] hybridization.
+(a) [[MATH:56]] (b) The electronic and molecular shapes are the same—both tetrahedral. (c) The tetrahedral structure is consistent with [[i:sp]][[sup:3]] hybridization.
 
 <!-- SEG:m68813:glossary-term:fs-idm90510160-term -->
 complex ion
@@ -302,13 +302,13 @@ coordinate covalent bond
 dissociation constant
 
 <!-- SEG:m68813:glossary-def:fs-idm25500528-def -->
-({{b}}{{i}}K{{/b}}[[sub:d]]{{/i}}) equilibrium constant for the decomposition of a complex ion into its components
+([[b:[[i:K]][[sub:d]]]]) equilibrium constant for the decomposition of a complex ion into its components
 
 <!-- SEG:m68813:glossary-term:fs-idp120133664-term -->
 formation constant
 
 <!-- SEG:m68813:glossary-def:fs-idp120133664-def -->
-({{b}}{{i}}K{{/b}}[[sub:f]]{{/i}}) (also, stability constant) equilibrium constant for the formation of a complex ion from its components
+([[b:[[i:K]][[sub:f]]]]) (also, stability constant) equilibrium constant for the formation of a complex ion from its components
 
 <!-- SEG:m68813:glossary-term:fs-idp11302544-term -->
 Lewis acid

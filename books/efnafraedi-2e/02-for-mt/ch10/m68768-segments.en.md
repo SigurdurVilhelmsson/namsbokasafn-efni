@@ -20,7 +20,7 @@ We witness and utilize changes of physical state, or phase transitions, in a gre
 Vaporization and Condensation
 
 <!-- SEG:m68768:para:fs-idm100542016 -->
-When a liquid vaporizes in a closed container, gas molecules cannot escape. As these gas phase molecules move randomly about, they will occasionally collide with the surface of the condensed phase, and in some cases, these collisions will result in the molecules re-entering the condensed phase. The change from the gas phase to the liquid is called {{term}}condensation{{/term}}. When the rate of condensation becomes equal to the rate of {{term}}vaporization{{/term}}, neither the amount of the liquid nor the amount of the vapor in the container changes. The vapor in the container is then said to be {{i}}in equilibrium{{/i}} with the liquid. Keep in mind that this is not a static situation, as molecules are continually exchanged between the condensed and gaseous phases. Such is an example of a {{term}}dynamic equilibrium{{/term}}, the status of a system in which reciprocal processes (for example, vaporization and condensation) occur at equal rates. The pressure exerted by the vapor in equilibrium with a liquid in a closed container at a given temperature is called the liquid’s {{term}}vapor pressure{{/term}} (or equilibrium vapor pressure). The area of the surface of the liquid in contact with a vapor and the size of the vessel have no effect on the vapor pressure, although they do affect the time required for the equilibrium to be reached. We can measure the vapor pressure of a liquid by placing a sample in a closed container, like that illustrated in [#CNX_Chem_10_03_VapPress1], and using a manometer to measure the increase in pressure that is due to the vapor in equilibrium with the condensed phase.
+When a liquid vaporizes in a closed container, gas molecules cannot escape. As these gas phase molecules move randomly about, they will occasionally collide with the surface of the condensed phase, and in some cases, these collisions will result in the molecules re-entering the condensed phase. The change from the gas phase to the liquid is called {{term}}condensation{{/term}}. When the rate of condensation becomes equal to the rate of {{term}}vaporization{{/term}}, neither the amount of the liquid nor the amount of the vapor in the container changes. The vapor in the container is then said to be [[i:in equilibrium]] with the liquid. Keep in mind that this is not a static situation, as molecules are continually exchanged between the condensed and gaseous phases. Such is an example of a {{term}}dynamic equilibrium{{/term}}, the status of a system in which reciprocal processes (for example, vaporization and condensation) occur at equal rates. The pressure exerted by the vapor in equilibrium with a liquid in a closed container at a given temperature is called the liquid’s {{term}}vapor pressure{{/term}} (or equilibrium vapor pressure). The area of the surface of the liquid in contact with a vapor and the size of the vessel have no effect on the vapor pressure, although they do affect the time required for the equilibrium to be reached. We can measure the vapor pressure of a liquid by placing a sample in a closed container, like that illustrated in [[xref:CNX_Chem_10_03_VapPress1]], and using a manometer to measure the increase in pressure that is due to the vapor in equilibrium with the condensed phase.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_VapPress1-caption -->
 In a closed container, dynamic equilibrium is reached when (a) the rate of molecules escaping from the liquid to become the gas (b) increases and eventually (c) equals the rate of gas molecules entering the liquid. When this equilibrium is reached, the vapor pressure of the gas is constant, although the vaporization and condensation processes continue.
@@ -86,7 +86,7 @@ Vapor Pressure at 20 °C
 0.56 kPa
 
 <!-- SEG:m68768:para:fs-idm73489328 -->
-As temperature increases, the vapor pressure of a liquid also increases due to the increased average KE of its molecules. Recall that at any given temperature, the molecules of a substance experience a range of kinetic energies, with a certain fraction of molecules having a sufficient energy to overcome IMF and escape the liquid (vaporize). At a higher temperature, a greater fraction of molecules have enough energy to escape from the liquid, as shown in [#CNX_Chem_10_03_VapPress3]. The escape of more molecules per unit of time and the greater average speed of the molecules that escape both contribute to the higher vapor pressure.
+As temperature increases, the vapor pressure of a liquid also increases due to the increased average KE of its molecules. Recall that at any given temperature, the molecules of a substance experience a range of kinetic energies, with a certain fraction of molecules having a sufficient energy to overcome IMF and escape the liquid (vaporize). At a higher temperature, a greater fraction of molecules have enough energy to escape from the liquid, as shown in [[xref:CNX_Chem_10_03_VapPress3]]. The escape of more molecules per unit of time and the greater average speed of the molecules that escape both contribute to the higher vapor pressure.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_VapPress3-caption -->
 Temperature affects the distribution of kinetic energies for the molecules in a liquid. At the higher temperature, more molecules have the necessary kinetic energy, KE, to escape from the liquid into the gas phase.
@@ -95,7 +95,7 @@ Temperature affects the distribution of kinetic energies for the molecules in a 
 Boiling Points
 
 <!-- SEG:m68768:para:fs-idm70709936 -->
-When the vapor pressure increases enough to equal the external atmospheric pressure, the liquid reaches its boiling point. The {{term}}boiling point{{/term}} of a liquid is the temperature at which its equilibrium vapor pressure is equal to the pressure exerted on the liquid by its gaseous surroundings. For liquids in open containers, this pressure is due to the earth’s atmosphere. The {{term}}normal boiling point{{/term}} of a liquid is defined as its boiling point when surrounding pressure is equal to 1 atm (101.3 kPa). [#CNX_Chem_10_03_VapPress2] shows the variation in vapor pressure with temperature for several different substances. Considering the definition of boiling point, these curves may be seen as depicting the dependence of a liquid’s boiling point on surrounding pressure.
+When the vapor pressure increases enough to equal the external atmospheric pressure, the liquid reaches its boiling point. The {{term}}boiling point{{/term}} of a liquid is the temperature at which its equilibrium vapor pressure is equal to the pressure exerted on the liquid by its gaseous surroundings. For liquids in open containers, this pressure is due to the earth’s atmosphere. The {{term}}normal boiling point{{/term}} of a liquid is defined as its boiling point when surrounding pressure is equal to 1 atm (101.3 kPa). [[xref:CNX_Chem_10_03_VapPress2]] shows the variation in vapor pressure with temperature for several different substances. Considering the definition of boiling point, these curves may be seen as depicting the dependence of a liquid’s boiling point on surrounding pressure.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_VapPress2-caption -->
 The boiling points of liquids are the temperatures at which their equilibrium vapor pressures equal the pressure of the surrounding atmosphere. Normal boiling points are those corresponding to a pressure of 1 atm (101.3 kPa.)
@@ -104,19 +104,19 @@ The boiling points of liquids are the temperatures at which their equilibrium va
 A Boiling Point at Reduced Pressure
 
 <!-- SEG:m68768:para:fs-idm208677136 -->
-A typical atmospheric pressure in Leadville, Colorado (elevation 10,200 feet) is 68 kPa. Use the graph in [#CNX_Chem_10_03_VapPress2] to determine the boiling point of water at this elevation.
+A typical atmospheric pressure in Leadville, Colorado (elevation 10,200 feet) is 68 kPa. Use the graph in [[xref:CNX_Chem_10_03_VapPress2]] to determine the boiling point of water at this elevation.
 
 <!-- SEG:m68768:para-title:fs-idm10799984-title -->
 Solution
 
 <!-- SEG:m68768:para:fs-idm10799984 -->
-The graph of the vapor pressure of water versus temperature in [#CNX_Chem_10_03_VapPress2] indicates that the vapor pressure of water is 68 kPa at about 90 °C. Thus, at about 90 °C, the vapor pressure of water will equal the atmospheric pressure in Leadville, and water will boil.
+The graph of the vapor pressure of water versus temperature in [[xref:CNX_Chem_10_03_VapPress2]] indicates that the vapor pressure of water is 68 kPa at about 90 °C. Thus, at about 90 °C, the vapor pressure of water will equal the atmospheric pressure in Leadville, and water will boil.
 
 <!-- SEG:m68768:para-title:fs-idm153672912-title -->
 Check Your Learning
 
 <!-- SEG:m68768:para:fs-idm153672912 -->
-The boiling point of ethyl ether was measured to be 10 °C at a base camp on the slopes of Mount Everest. Use [#CNX_Chem_10_03_VapPress2] to determine the approximate atmospheric pressure at the camp.
+The boiling point of ethyl ether was measured to be 10 °C at a base camp on the slopes of Mount Everest. Use [[xref:CNX_Chem_10_03_VapPress2]] to determine the approximate atmospheric pressure at the camp.
 
 <!-- SEG:m68768:para:fs-idm95497088 -->
 Approximately 40 kPa (0.4 atm)
@@ -131,13 +131,13 @@ Approximately 40 kPa (0.4 atm)
 The quantitative relation between a substance’s vapor pressure and its temperature is described by the {{term}}Clausius-Clapeyron equation{{/term}}:
 
 <!-- SEG:m68768:para:fs-idm95462576 -->
-where Δ{{i}}H{{/i}}[[sub:vap]] is the enthalpy of vaporization for the liquid, {{i}}R{{/i}} is the gas constant, and {{i}}A{{/i}} is a constant whose value depends on the chemical identity of the substance. Temperature T must be in Kelvin in this equation. This equation is often rearranged into logarithmic form to yield the linear equation:
+where Δ[[i:H]][[sub:vap]] is the enthalpy of vaporization for the liquid, [[i:R]] is the gas constant, and [[i:A]] is a constant whose value depends on the chemical identity of the substance. Temperature T must be in Kelvin in this equation. This equation is often rearranged into logarithmic form to yield the linear equation:
 
 <!-- SEG:m68768:para:fs-idm13032112 -->
 This linear equation may be expressed in a two-point format that is convenient for use in various computations, as demonstrated in the example exercises that follow. If at temperature T[[sub:1]], the vapor pressure is P[[sub:1]], and at temperature T[[sub:2]], the vapor pressure is P[[sub:2]], the corresponding linear equations are:
 
 <!-- SEG:m68768:para:fs-idm51875808 -->
-Since the constant, {{i}}A{{/i}}, is the same, these two equations may be rearranged to isolate ln {{i}}A{{/i}} and then set them equal to one another:
+Since the constant, [[i:A]], is the same, these two equations may be rearranged to isolate ln [[i:A]] and then set them equal to one another:
 
 <!-- SEG:m68768:para:fs-idm72918608 -->
 which can be combined into:
@@ -152,13 +152,13 @@ Isooctane (2,2,4-trimethylpentane) has an octane rating of 100. It is used as on
 Solution
 
 <!-- SEG:m68768:para:fs-idm195543920 -->
-The enthalpy of vaporization, Δ{{i}}H{{/i}}[[sub:vap]], can be determined by using the Clausius-Clapeyron equation:
+The enthalpy of vaporization, Δ[[i:H]][[sub:vap]], can be determined by using the Clausius-Clapeyron equation:
 
 <!-- SEG:m68768:para:fs-idm95291536 -->
-Since we have two vapor pressure-temperature values ({{i}}T{{/i}}[[sub:1]] = 34.0 °C = 307.2 K, {{i}}P{{/i}}[[sub:1]] = 10.0 kPa and {{i}}T{{/i}}[[sub:2]] = 98.8 °C = 372.0 K, {{i}}P{{/i}}[[sub:2]] = 100 kPa), we can substitute them into this equation and solve for Δ{{i}}H{{/i}}[[sub:vap]]. Rearranging the Clausius-Clapeyron equation and solving for Δ{{i}}H{{/i}}[[sub:vap]] yields:
+Since we have two vapor pressure-temperature values ([[i:T]][[sub:1]] = 34.0 °C = 307.2 K, [[i:P]][[sub:1]] = 10.0 kPa and [[i:T]][[sub:2]] = 98.8 °C = 372.0 K, [[i:P]][[sub:2]] = 100 kPa), we can substitute them into this equation and solve for Δ[[i:H]][[sub:vap]]. Rearranging the Clausius-Clapeyron equation and solving for Δ[[i:H]][[sub:vap]] yields:
 
 <!-- SEG:m68768:para:fs-idm201782400 -->
-Note that the pressure can be in any units, so long as they agree for both {{i}}P{{/i}} values, but the temperature must be in kelvin for the Clausius-Clapeyron equation to be valid.
+Note that the pressure can be in any units, so long as they agree for both [[i:P]] values, but the temperature must be in kelvin for the Clausius-Clapeyron equation to be valid.
 
 <!-- SEG:m68768:para-title:fs-idm101600256-title -->
 Check Your Learning
@@ -185,10 +185,10 @@ For benzene (C[[sub:6]]H[[sub:6]]), the normal boiling point is 80.1 °C and the
 Solution
 
 <!-- SEG:m68768:para:fs-idm220027984 -->
-If the temperature and vapor pressure are known at one point, along with the enthalpy of vaporization, Δ{{i}}H{{/i}}[[sub:vap,]] then the temperature that corresponds to a different vapor pressure (or the vapor pressure that corresponds to a different temperature) can be determined by using the Clausius-Clapeyron equation:
+If the temperature and vapor pressure are known at one point, along with the enthalpy of vaporization, Δ[[i:H]][[sub:vap,]] then the temperature that corresponds to a different vapor pressure (or the vapor pressure that corresponds to a different temperature) can be determined by using the Clausius-Clapeyron equation:
 
 <!-- SEG:m68768:para:fs-idm198425552 -->
-Since the normal boiling point is the temperature at which the vapor pressure equals atmospheric pressure at sea level, we know one vapor pressure-temperature value ({{i}}T{{/i}}[[sub:1]] = 80.1 °C = 353.3 K, {{i}}P{{/i}}[[sub:1]] = 101.3 kPa, Δ{{i}}H{{/i}}[[sub:vap]] = 30.8 kJ/mol) and want to find the temperature ({{i}}T{{/i}}[[sub:2]]) that corresponds to vapor pressure {{i}}P{{/i}}[[sub:2]] = 83.4 kPa. We can substitute these values into the Clausius-Clapeyron equation and then solve for {{i}}T{{/i}}[[sub:2]]. Rearranging the Clausius-Clapeyron equation and solving for {{i}}T{{/i}}[[sub:2]] yields:
+Since the normal boiling point is the temperature at which the vapor pressure equals atmospheric pressure at sea level, we know one vapor pressure-temperature value ([[i:T]][[sub:1]] = 80.1 °C = 353.3 K, [[i:P]][[sub:1]] = 101.3 kPa, Δ[[i:H]][[sub:vap]] = 30.8 kJ/mol) and want to find the temperature ([[i:T]][[sub:2]]) that corresponds to vapor pressure [[i:P]][[sub:2]] = 83.4 kPa. We can substitute these values into the Clausius-Clapeyron equation and then solve for [[i:T]][[sub:2]]. Rearranging the Clausius-Clapeyron equation and solving for [[i:T]][[sub:2]] yields:
 
 <!-- SEG:m68768:para-title:fs-idm164810384-title -->
 Check Your Learning
@@ -209,7 +209,7 @@ Answer:
 Enthalpy of Vaporization
 
 <!-- SEG:m68768:para:fs-idm238047040 -->
-Vaporization is an endothermic process. The cooling effect can be evident when you leave a swimming pool or a shower. When the water on your skin evaporates, it removes heat from your skin and causes you to feel cold. The energy change associated with the vaporization process is the enthalpy of vaporization, Δ{{i}}H{{/i}}[[sub:vap]]. For example, the vaporization of water at standard temperature is represented by:
+Vaporization is an endothermic process. The cooling effect can be evident when you leave a swimming pool or a shower. When the water on your skin evaporates, it removes heat from your skin and causes you to feel cold. The energy change associated with the vaporization process is the enthalpy of vaporization, Δ[[i:H]][[sub:vap]]. For example, the vaporization of water at standard temperature is represented by:
 
 <!-- SEG:m68768:para:fs-idm149636464 -->
 As described in the chapter on thermochemistry, the reverse of an endothermic process is exothermic. And so, the condensation of a gas releases heat:
@@ -218,7 +218,7 @@ As described in the chapter on thermochemistry, the reverse of an endothermic pr
 Using Enthalpy of Vaporization
 
 <!-- SEG:m68768:para:fs-idm70086528 -->
-One way our body is cooled is by evaporation of the water in sweat ([#CNX_Chem_10_03_Evap]). In very hot climates, we can lose as much as 1.5 L of sweat per day. Although sweat is not pure water, we can get an approximate value of the amount of heat removed by evaporation by assuming that it is. How much heat is required to evaporate 1.5 L of water (1.5 kg) at {{i}}T{{/i}} = 37 °C (normal body temperature); Δ{{i}}H{{/i}}[[sub:vap]] = 43.46 kJ/mol at 37 °C.
+One way our body is cooled is by evaporation of the water in sweat ([[xref:CNX_Chem_10_03_Evap]]). In very hot climates, we can lose as much as 1.5 L of sweat per day. Although sweat is not pure water, we can get an approximate value of the amount of heat removed by evaporation by assuming that it is. How much heat is required to evaporate 1.5 L of water (1.5 kg) at [[i:T]] = 37 °C (normal body temperature); Δ[[i:H]][[sub:vap]] = 43.46 kJ/mol at 37 °C.
 
 <!-- SEG:m68768:para-title:fs-idm146648608-title -->
 Solution
@@ -251,7 +251,7 @@ Evaporation of sweat helps cool the body. (credit: “Kullez”/Flickr)
 Melting and Freezing
 
 <!-- SEG:m68768:para:fs-idp14081632 -->
-When we heat a crystalline solid, we increase the average energy of its atoms, molecules, or ions and the solid gets hotter. At some point, the added energy becomes large enough to partially overcome the forces holding the molecules or ions of the solid in their fixed positions, and the solid begins the process of transitioning to the liquid state, or {{term}}melting{{/term}}. At this point, the temperature of the solid stops rising, despite the continual input of heat, and it remains constant until all of the solid is melted. Only after all of the solid has melted will continued heating increase the temperature of the liquid ([#CNX_Chem_10_03_MeltingIce]).
+When we heat a crystalline solid, we increase the average energy of its atoms, molecules, or ions and the solid gets hotter. At some point, the added energy becomes large enough to partially overcome the forces holding the molecules or ions of the solid in their fixed positions, and the solid begins the process of transitioning to the liquid state, or {{term}}melting{{/term}}. At this point, the temperature of the solid stops rising, despite the continual input of heat, and it remains constant until all of the solid is melted. Only after all of the solid has melted will continued heating increase the temperature of the liquid ([[xref:CNX_Chem_10_03_MeltingIce]]).
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_MeltingIce-caption -->
 (a) This beaker of ice has a temperature of −12.0 °C. (b) After 10 minutes the ice has absorbed enough heat from the air to warm to 0 °C. A small amount has melted. (c) Thirty minutes later, the ice has absorbed more heat, but its temperature is still 0 °C. The ice melts without changing its temperature. (d) Only after all the ice has melted does the heat absorbed cause the temperature to increase to 22.2 °C. (credit: modification of work by Mark Ott)
@@ -272,7 +272,7 @@ The reciprocal process, freezing, is an exothermic process whose enthalpy change
 Sublimation and Deposition
 
 <!-- SEG:m68768:para:fs-idm191153504 -->
-Some solids can transition directly into the gaseous state, bypassing the liquid state, via a process known as {{term}}sublimation{{/term}}. At room temperature and standard pressure, a piece of dry ice (solid CO[[sub:2]]) sublimes, appearing to gradually disappear without ever forming any liquid. Snow and ice sublime at temperatures below the melting point of water, a slow process that may be accelerated by winds and the reduced atmospheric pressures at high altitudes. When solid iodine is warmed, the solid sublimes and a vivid purple vapor forms ([#CNX_Chem_10_03_Sublimtn]). The reverse of sublimation is called {{term}}deposition{{/term}}, a process in which gaseous substances condense directly into the solid state, bypassing the liquid state. The formation of frost is an example of deposition.
+Some solids can transition directly into the gaseous state, bypassing the liquid state, via a process known as {{term}}sublimation{{/term}}. At room temperature and standard pressure, a piece of dry ice (solid CO[[sub:2]]) sublimes, appearing to gradually disappear without ever forming any liquid. Snow and ice sublime at temperatures below the melting point of water, a slow process that may be accelerated by winds and the reduced atmospheric pressures at high altitudes. When solid iodine is warmed, the solid sublimes and a vivid purple vapor forms ([[xref:CNX_Chem_10_03_Sublimtn]]). The reverse of sublimation is called {{term}}deposition{{/term}}, a process in which gaseous substances condense directly into the solid state, bypassing the liquid state. The formation of frost is an example of deposition.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_Sublimtn-caption -->
 Sublimation of solid iodine in the bottom of the tube produces a purple gas that subsequently deposits as solid iodine on the colder part of the tube above. (credit: modification of work by Mark Ott)
@@ -284,7 +284,7 @@ Like vaporization, the process of sublimation requires an input of energy to ove
 Likewise, the enthalpy change for the reverse process of deposition is equal in magnitude but opposite in sign to that for sublimation:
 
 <!-- SEG:m68768:para:fs-idm69412784 -->
-Consider the extent to which intermolecular attractions must be overcome to achieve a given phase transition. Converting a solid into a liquid requires that these attractions be only partially overcome; transition to the gaseous state requires that they be completely overcome. As a result, the enthalpy of fusion for a substance is less than its enthalpy of vaporization. This same logic can be used to derive an approximate relation between the enthalpies of all phase changes for a given substance. Though not an entirely accurate description, sublimation may be conveniently modeled as a sequential two-step process of melting followed by vaporization in order to apply Hess’s Law. Viewed in this manner, the enthalpy of sublimation for a substance may be estimated as the sum of its enthalpies of fusion and vaporization, as illustrated in [#CNX_Chem_10_03_PhaseChng]. For example:
+Consider the extent to which intermolecular attractions must be overcome to achieve a given phase transition. Converting a solid into a liquid requires that these attractions be only partially overcome; transition to the gaseous state requires that they be completely overcome. As a result, the enthalpy of fusion for a substance is less than its enthalpy of vaporization. This same logic can be used to derive an approximate relation between the enthalpies of all phase changes for a given substance. Though not an entirely accurate description, sublimation may be conveniently modeled as a sequential two-step process of melting followed by vaporization in order to apply Hess’s Law. Viewed in this manner, the enthalpy of sublimation for a substance may be estimated as the sum of its enthalpies of fusion and vaporization, as illustrated in [[xref:CNX_Chem_10_03_PhaseChng]]. For example:
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_PhaseChng-caption -->
 For a given substance, the sum of its enthalpy of fusion and enthalpy of vaporization is approximately equal to its enthalpy of sublimation.
@@ -293,10 +293,10 @@ For a given substance, the sum of its enthalpy of fusion and enthalpy of vaporiz
 Heating and Cooling Curves
 
 <!-- SEG:m68768:para:fs-idp17603264 -->
-In the chapter on thermochemistry, the relation between the amount of heat absorbed or released by a substance, {{i}}q{{/i}}, and its accompanying temperature change, Δ{{i}}T{{/i}}, was introduced:
+In the chapter on thermochemistry, the relation between the amount of heat absorbed or released by a substance, [[i:q]], and its accompanying temperature change, Δ[[i:T]], was introduced:
 
 <!-- SEG:m68768:para:fs-idm73087600 -->
-where {{i}}m{{/i}} is the mass of the substance and {{i}}c{{/i}} is its specific heat. The relation applies to matter being heated or cooled, but not undergoing a change in state. When a substance being heated or cooled reaches a temperature corresponding to one of its phase transitions, further gain or loss of heat is a result of diminishing or enhancing intermolecular attractions, instead of increasing or decreasing molecular kinetic energies. While a substance is undergoing a change in state, its temperature remains constant. [#CNX_Chem_10_03_HeatCurve] shows a typical heating curve.
+where [[i:m]] is the mass of the substance and [[i:c]] is its specific heat. The relation applies to matter being heated or cooled, but not undergoing a change in state. When a substance being heated or cooled reaches a temperature corresponding to one of its phase transitions, further gain or loss of heat is a result of diminishing or enhancing intermolecular attractions, instead of increasing or decreasing molecular kinetic energies. While a substance is undergoing a change in state, its temperature remains constant. [[xref:CNX_Chem_10_03_HeatCurve]] shows a typical heating curve.
 
 <!-- SEG:m68768:para:fs-idm178482560 -->
 Consider the example of heating a pot of water to boiling. A stove burner will supply heat at a roughly constant rate; initially, this heat serves to increase the water’s temperature. When the water reaches its boiling point, the temperature remains constant despite the continued input of heat from the stove burner. This same temperature is maintained by the water as long as it is boiling. If the burner setting is increased to provide heat at a greater rate, the water temperature does not rise, but instead the boiling becomes more vigorous (rapid). This behavior is observed for other phase transitions as well: For example, temperature remains constant while the change of state is in progress.
@@ -317,7 +317,7 @@ Solution
 The transition described involves the following steps:
 
 <!-- SEG:m68768:para:fs-idp5662336 -->
-The heat needed to change the temperature of a given substance (with no change in phase) is: {{i}}q{{/i}} = {{i}}m{{/i}} [[MATH:1]] {{i}}c{{/i}} [[MATH:2]] Δ{{i}}T{{/i}} (see previous chapter on thermochemistry). The heat needed to induce a given change in phase is given by {{i}}q{{/i}} = {{i}}n{{/i}} [[MATH:3]] Δ{{i}}H{{/i}}.
+The heat needed to change the temperature of a given substance (with no change in phase) is: [[i:q]] = [[i:m]] [[MATH:1]] [[i:c]] [[MATH:2]] Δ[[i:T]] (see previous chapter on thermochemistry). The heat needed to induce a given change in phase is given by [[i:q]] = [[i:n]] [[MATH:3]] Δ[[i:H]].
 
 <!-- SEG:m68768:para:fs-idm193222960 -->
 Using these equations with the appropriate values for specific heat of ice, water, and steam, and enthalpies of fusion and vaporization, we have:
@@ -428,7 +428,7 @@ They are equal when the pressure of gas above the liquid is exactly 1 atm.
 How does the boiling of a liquid differ from its evaporation?
 
 <!-- SEG:m68768:problem:fs-idm127448592 -->
-Use the information in [#CNX_Chem_10_03_VapPress2] to estimate the boiling point of water in Denver when the atmospheric pressure is 83.3 kPa.
+Use the information in [[xref:CNX_Chem_10_03_VapPress2]] to estimate the boiling point of water in Denver when the atmospheric pressure is 83.3 kPa.
 
 <!-- SEG:m68768:solution:fs-idm43978256 -->
 approximately 95 °C
@@ -461,7 +461,7 @@ Dispersion forces increase with molecular mass or size. As the number of atoms c
 Explain why the enthalpies of vaporization of the following substances increase in the order CH[[sub:4]] &lt; NH[[sub:3]] &lt; H[[sub:2]]O, even though all three substances have approximately the same molar mass.
 
 <!-- SEG:m68768:problem:fs-idm198895584 -->
-The enthalpy of vaporization of CO[[sub:2]]({{i}}l{{/i}}) is 9.8 kJ/mol. Would you expect the enthalpy of vaporization of CS[[sub:2]]({{i}}l{{/i}}) to be 28 kJ/mol, 9.8 kJ/mol, or −8.4 kJ/mol? Discuss the plausibility of each of these answers.
+The enthalpy of vaporization of CO[[sub:2]]([[i:l]]) is 9.8 kJ/mol. Would you expect the enthalpy of vaporization of CS[[sub:2]]([[i:l]]) to be 28 kJ/mol, 9.8 kJ/mol, or −8.4 kJ/mol? Discuss the plausibility of each of these answers.
 
 <!-- SEG:m68768:solution:fs-idm195420176 -->
 The boiling point of CS[[sub:2]] is higher than that of CO[[sub:2]] partially because of the higher molecular weight of CS[[sub:2]]; consequently, the attractive forces are stronger in CS[[sub:2]]. It would be expected, therefore, that the heat of vaporization would be greater than that of 9.8 kJ/mol for CO[[sub:2]]. A value of 28 kJ/mol would seem reasonable. A value of −8.4 kJ/mol would indicate a release of energy upon vaporization, which is clearly implausible.
@@ -503,13 +503,13 @@ How much heat is required to convert 422 g of liquid H[[sub:2]]O at 23.5 °C int
 Evaporation of sweat requires energy and thus take excess heat away from the body. Some of the water that you drink may eventually be converted into sweat and evaporate. If you drink a 20-ounce bottle of water that had been in the refrigerator at 3.8 °C, how much heat is needed to convert all of that water into sweat and then to vapor? (Note: Your body temperature is 36.6 °C. For the purpose of solving this problem, assume that the thermal properties of sweat are the same as for water.)
 
 <!-- SEG:m68768:problem:fs-idm202068832 -->
-Titanium tetrachloride, TiCl[[sub:4]], has a melting point of −23.2 °C and has a Δ{{i}}H{{/i}}[[sub: fusion]] = 9.37 kJ/mol.
+Titanium tetrachloride, TiCl[[sub:4]], has a melting point of −23.2 °C and has a Δ[[i:H]][[sub: fusion]] = 9.37 kJ/mol.
 
 <!-- SEG:m68768:problem:fs-idm57921664 -->
 (a) How much energy is required to melt 263.1 g TiCl[[sub:4]]?
 
 <!-- SEG:m68768:problem:fs-idp14023840 -->
-(b) For TiCl[[sub:4]], which will likely have the larger magnitude: Δ{{i}}H{{/i}}[[sub: fusion]] or Δ{{i}}H{{/i}}[[sub: vaporization]]? Explain your reasoning.
+(b) For TiCl[[sub:4]], which will likely have the larger magnitude: Δ[[i:H]][[sub: fusion]] or Δ[[i:H]][[sub: vaporization]]? Explain your reasoning.
 
 <!-- SEG:m68768:solution:fs-idm166606448 -->
 (a) 13.0 kJ; (b) It is likely that the heat of vaporization will have a larger magnitude since in the case of vaporization the intermolecular interactions have to be completely overcome, while melting weakens or destroys only some of them.
@@ -554,7 +554,7 @@ change from a liquid state to a solid state
 freezing point
 
 <!-- SEG:m68768:glossary-def:fs-idp5444368-def -->
-temperature at which the solid and liquid phases of a substance are in equilibrium; see also {{i}}melting point{{/i}}
+temperature at which the solid and liquid phases of a substance are in equilibrium; see also [[i:melting point]]
 
 <!-- SEG:m68768:glossary-term:fs-idm69563216-term -->
 melting
@@ -566,7 +566,7 @@ change from a solid state to a liquid state
 melting point
 
 <!-- SEG:m68768:glossary-def:fs-idm143011312-def -->
-temperature at which the solid and liquid phases of a substance are in equilibrium; see also {{i}}freezing point{{/i}}
+temperature at which the solid and liquid phases of a substance are in equilibrium; see also [[i:freezing point]]
 
 <!-- SEG:m68768:glossary-term:fs-idm205028976-term -->
 normal boiling point

@@ -38,7 +38,7 @@ Green plants continually replenish the oxygen in the atmosphere by a process cal
 Thus, the oxygen that became carbon dioxide and water by the metabolic processes in plants and animals returns to the atmosphere by photosynthesis.
 
 <!-- SEG:m68837:para:fs-idm13883760 -->
-When dry oxygen is passed between two electrically charged plates, {{term}}ozone{{/term}} (O[[sub:3]], illustrated in [#CNX_Chem_18_09_Ozone]), an allotrope of oxygen possessing a distinctive odor, forms. The formation of ozone from oxygen is an endothermic reaction, in which the energy comes from an electrical discharge, heat, or ultraviolet light:
+When dry oxygen is passed between two electrically charged plates, {{term}}ozone{{/term}} (O[[sub:3]], illustrated in [[xref:CNX_Chem_18_09_Ozone]]), an allotrope of oxygen possessing a distinctive odor, forms. The formation of ozone from oxygen is an endothermic reaction, in which the energy comes from an electrical discharge, heat, or ultraviolet light:
 
 <!-- SEG:m68837:para:fs-idp152283536 -->
 The sharp odor associated with sparking electrical equipment is due, in part, to ozone.
@@ -104,7 +104,7 @@ Ionic oxides all contain the oxide ion, a very powerful hydrogen ion acceptor. W
 The oxides of the metals of groups 1 and 2 and of thallium(I) oxide react with water and form hydroxides. Examples of such reactions are:
 
 <!-- SEG:m68837:para:fs-idp12102384 -->
-The oxides of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide is important in making firebrick, crucibles, furnace linings, and thermal insulation—applications that require chemical and thermal stability. Calcium oxide, sometimes called {{i}}quicklime{{/i}} or lime in the industrial market, is very reactive, and its principal uses reflect its reactivity. Pure calcium oxide emits an intense white light when heated to a high temperature (as illustrated in [#CNX_Chem_18_09_Limelight]). Blocks of calcium oxide heated by gas flames were the stage lights in theaters before electricity was available. This is the source of the phrase “in the limelight.”
+The oxides of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide is important in making firebrick, crucibles, furnace linings, and thermal insulation—applications that require chemical and thermal stability. Calcium oxide, sometimes called [[i:quicklime]] or lime in the industrial market, is very reactive, and its principal uses reflect its reactivity. Pure calcium oxide emits an intense white light when heated to a high temperature (as illustrated in [[xref:CNX_Chem_18_09_Limelight]]). Blocks of calcium oxide heated by gas flames were the stage lights in theaters before electricity was available. This is the source of the phrase “in the limelight.”
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Limelight-caption -->
 Calcium oxide has many industrial uses. When it is heated at high temperatures, it emits an intense white light.
@@ -122,7 +122,7 @@ Both CaO and Ca(OH)[[sub:2]] are useful as bases; they accept protons and neutra
 Alumina (Al[[sub:2]]O[[sub:3]]) occurs in nature as the mineral corundum, a very hard substance used as an abrasive for grinding and polishing. Corundum is important to the jewelry trade as ruby and sapphire. The color of ruby is due to the presence of a small amount of chromium; other impurities produce the wide variety of colors possible for sapphires. Artificial rubies and sapphires are now manufactured by melting aluminum oxide (melting point = 2050 °C) with small amounts of oxides to produce the desired colors and cooling the melt in such a way as to produce large crystals. Ruby lasers use synthetic ruby crystals.
 
 <!-- SEG:m68837:para:fs-idm78432624 -->
-Zinc oxide, ZnO, was a useful white paint pigment; however, pollutants tend to discolor the compound. The compound is also important in the manufacture of automobile tires and other rubber goods, and in the preparation of medicinal ointments. For example, zinc-oxide-based sunscreens, as shown in [#CNX_Chem_18_09_Sunblock], help prevent sunburn. The zinc oxide in these sunscreens is present in the form of very small grains known as nanoparticles. Lead dioxide is a constituent of charged lead storage batteries. Lead(IV) tends to revert to the more stable lead(II) ion by gaining two electrons, so lead dioxide is a powerful oxidizing agent.
+Zinc oxide, ZnO, was a useful white paint pigment; however, pollutants tend to discolor the compound. The compound is also important in the manufacture of automobile tires and other rubber goods, and in the preparation of medicinal ointments. For example, zinc-oxide-based sunscreens, as shown in [[xref:CNX_Chem_18_09_Sunblock]], help prevent sunburn. The zinc oxide in these sunscreens is present in the form of very small grains known as nanoparticles. Lead dioxide is a constituent of charged lead storage batteries. Lead(IV) tends to revert to the more stable lead(II) ion by gaining two electrons, so lead dioxide is a powerful oxidizing agent.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sunblock-caption -->
 Zinc oxide protects exposed skin from sunburn. (credit: modification of work by "osseous"/Flickr)
@@ -161,7 +161,7 @@ Most metal oxides are {{term}}base anhydrides{{/term}}. This is obvious for the 
 It is possible to prepare the insoluble hydroxides of beryllium, magnesium, and other representative metals by the addition of sodium hydroxide to a solution of a salt of the respective metal. The net ionic equations for the reactions involving a magnesium salt, an aluminum salt, and a zinc salt are:
 
 <!-- SEG:m68837:para:fs-idp83761344 -->
-An excess of hydroxide must be avoided when preparing aluminum, gallium, zinc, and tin(II) hydroxides, or the hydroxides will dissolve with the formation of the corresponding complex ions: [[MATH:1]] [[MATH:2]] [[MATH:3]] and [[MATH:4]] (see [#CNX_Chem_18_09_ZnHydroxid]). The important aspect of complex ions for this chapter is that they form by a Lewis acid-base reaction with the metal being the Lewis acid.
+An excess of hydroxide must be avoided when preparing aluminum, gallium, zinc, and tin(II) hydroxides, or the hydroxides will dissolve with the formation of the corresponding complex ions: [[MATH:1]] [[MATH:2]] [[MATH:3]] and [[MATH:4]] (see [[xref:CNX_Chem_18_09_ZnHydroxid]]). The important aspect of complex ions for this chapter is that they form by a Lewis acid-base reaction with the metal being the Lewis acid.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ZnHydroxid-caption -->
 (a) Mixing solutions of NaOH and Zn(NO[[sub:3]])[[sub:2]] produces a white precipitate of Zn(OH)[[sub:2]]. (b) Addition of an excess of NaOH results in dissolution of the precipitate. (credit: modification of work by Mark Ott)
@@ -173,7 +173,7 @@ Industry uses large quantities of sodium hydroxide as a cheap, strong base. Sodi
 Sodium hydroxide is an ionic compound and melts without decomposition. It is very soluble in water, giving off a great deal of heat and forming very basic solutions: 40 grams of sodium hydroxide dissolves in only 60 grams of water at 25 °C. Sodium hydroxide is employed in the production of other sodium compounds and is used to neutralize acidic solutions during the production of other chemicals such as petrochemicals and polymers.
 
 <!-- SEG:m68837:para:fs-idm33972064 -->
-Many of the applications of hydroxides are for the neutralization of acids (such as the antacid shown in [#CNX_Chem_18_09_CaOH2]) and for the preparation of oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because of its ready availability (from the reaction of water with calcium oxide prepared by the decomposition of limestone, CaCO[[sub:3]]), low cost, and activity, calcium hydroxide is used extensively in commercial applications needing a cheap, strong base. The reaction of hydroxides with appropriate acids is also used to prepare salts.
+Many of the applications of hydroxides are for the neutralization of acids (such as the antacid shown in [[xref:CNX_Chem_18_09_CaOH2]]) and for the preparation of oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because of its ready availability (from the reaction of water with calcium oxide prepared by the decomposition of limestone, CaCO[[sub:3]]), low cost, and activity, calcium hydroxide is used extensively in commercial applications needing a cheap, strong base. The reaction of hydroxides with appropriate acids is also used to prepare salts.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_CaOH2-caption -->
 Calcium carbonate, CaCO[[sub:3]], can be consumed in the form of an antacid to neutralize the effects of acid in your stomach. (credit: “Midnightcomm”/Wikimedia Commons)
@@ -203,7 +203,7 @@ Nonmetal Oxygen Compounds
 Sulfur Oxygen Compounds
 
 <!-- SEG:m68837:para:fs-idm62637712 -->
-The two common oxides of sulfur are sulfur dioxide, SO[[sub:2]], and sulfur trioxide, SO[[sub:3]]. The odor of burning sulfur comes from sulfur dioxide. Sulfur dioxide, shown in [#CNX_Chem_18_09_Sulfrdiox], occurs in volcanic gases and in the atmosphere near industrial plants that burn fuel containing sulfur compounds.
+The two common oxides of sulfur are sulfur dioxide, SO[[sub:2]], and sulfur trioxide, SO[[sub:3]]. The odor of burning sulfur comes from sulfur dioxide. Sulfur dioxide, shown in [[xref:CNX_Chem_18_09_Sulfrdiox]], occurs in volcanic gases and in the atmosphere near industrial plants that burn fuel containing sulfur compounds.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sulfrdiox-caption -->
 This image shows the molecular structure (left) and resonance forms (right) of sulfur dioxide.
@@ -212,7 +212,7 @@ This image shows the molecular structure (left) and resonance forms (right) of s
 Commercial production of sulfur dioxide is from either burning sulfur or roasting sulfide ores such as ZnS, FeS[[sub:2]], and Cu[[sub:2]]S in air. (Roasting, which forms the metal oxide, is the first step in the separation of many metals from their ores.) A convenient method for preparing sulfur dioxide in the laboratory is by the action of a strong acid on either sulfite salts containing the [[MATH:8]] ion or hydrogen sulfite salts containing [[MATH:9]] Sulfurous acid, H[[sub:2]]SO[[sub:3]], forms first, but quickly decomposes into sulfur dioxide and water. Sulfur dioxide also forms when many reducing agents react with hot, concentrated sulfuric acid. Sulfur trioxide forms slowly when heating sulfur dioxide and oxygen together, and the reaction is exothermic:
 
 <!-- SEG:m68837:para:fs-idp54699968 -->
-Sulfur dioxide is a gas at room temperature, and the SO[[sub:2]] molecule is bent. Sulfur trioxide melts at 17 °C and boils at 43 °C. In the vapor state, its molecules are single SO[[sub:3]] units (shown in [#CNX_Chem_18_09_Sulfrtriox]), but in the solid state, SO[[sub:3]] exists in several polymeric forms.
+Sulfur dioxide is a gas at room temperature, and the SO[[sub:2]] molecule is bent. Sulfur trioxide melts at 17 °C and boils at 43 °C. In the vapor state, its molecules are single SO[[sub:3]] units (shown in [[xref:CNX_Chem_18_09_Sulfrtriox]]), but in the solid state, SO[[sub:3]] exists in several polymeric forms.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sulfrtriox-caption -->
 This image shows the structure (top) of sulfur trioxide in the gas phase and its resonance forms (bottom).
@@ -227,7 +227,7 @@ Halogen Oxygen Compounds
 The halogens do not react directly with oxygen, but it is possible to prepare binary oxygen-halogen compounds by the reactions of the halogens with oxygen-containing compounds. Oxygen compounds with chlorine, bromine, and iodine are oxides because oxygen is the more electronegative element in these compounds. On the other hand, fluorine compounds with oxygen are fluorides because fluorine is the more electronegative element.
 
 <!-- SEG:m68837:para:fs-idp159291200 -->
-As a class, the oxides are extremely reactive and unstable, and their chemistry has little practical importance. Dichlorine oxide, formally called dichlorine monoxide, and chlorine dioxide, both shown in [#CNX_Chem_18_09_Cl2OClO2], are the only commercially important compounds. They are important as bleaching agents (for use with pulp and flour) and for water treatment.
+As a class, the oxides are extremely reactive and unstable, and their chemistry has little practical importance. Dichlorine oxide, formally called dichlorine monoxide, and chlorine dioxide, both shown in [[xref:CNX_Chem_18_09_Cl2OClO2]], are the only commercially important compounds. They are important as bleaching agents (for use with pulp and flour) and for water treatment.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Cl2OClO2-caption -->
 This image shows the structures of the (a) Cl[[sub:2]]O and (b) ClO[[sub:2]] molecules.
@@ -245,7 +245,7 @@ Nonmetal oxides form acids when allowed to react with water; these are acid anhy
 Nitrogen Oxyacids and Salts
 
 <!-- SEG:m68837:para:fs-idm61348288 -->
-Nitrogen pentaoxide, N[[sub:2]]O[[sub:5]], and NO[[sub:2]] react with water to form nitric acid, HNO[[sub:3]]. Alchemists, as early as the eighth century, knew nitric acid (shown in [#CNX_Chem_18_09_HNO3]) as {{i}}aqua fortis{{/i}} (meaning "strong water"). The acid was useful in the separation of gold from silver because it dissolves silver but not gold. Traces of nitric acid occur in the atmosphere after thunderstorms, and its salts are widely distributed in nature. There are tremendous deposits of Chile saltpeter, NaNO[[sub:3]], in the desert region near the boundary of Chile and Peru. Bengal saltpeter, KNO[[sub:3]], occurs in India and in other countries of the Far East.
+Nitrogen pentaoxide, N[[sub:2]]O[[sub:5]], and NO[[sub:2]] react with water to form nitric acid, HNO[[sub:3]]. Alchemists, as early as the eighth century, knew nitric acid (shown in [[xref:CNX_Chem_18_09_HNO3]]) as [[i:aqua fortis]] (meaning "strong water"). The acid was useful in the separation of gold from silver because it dissolves silver but not gold. Traces of nitric acid occur in the atmosphere after thunderstorms, and its salts are widely distributed in nature. There are tremendous deposits of Chile saltpeter, NaNO[[sub:3]], in the desert region near the boundary of Chile and Peru. Bengal saltpeter, KNO[[sub:3]], occurs in India and in other countries of the Far East.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_HNO3-caption -->
 This image shows the molecular structure (left) of nitric acid, HNO[[sub:3]] and its resonance forms (right).
@@ -269,10 +269,10 @@ The action of nitric acid on a metal rarely produces H[[sub:2]] (by reduction of
 Nonmetallic elements, such as sulfur, carbon, iodine, and phosphorus, undergo oxidation by concentrated nitric acid to their oxides or oxyacids, with the formation of NO[[sub:2]]:
 
 <!-- SEG:m68837:para:fs-idm7528336 -->
-Nitric acid oxidizes many compounds; for example, concentrated nitric acid readily oxidizes hydrochloric acid to chlorine and chlorine dioxide. A mixture of one part concentrated nitric acid and three parts concentrated hydrochloric acid (called {{i}}aqua regia{{/i}}, which means royal water) reacts vigorously with metals. This mixture is particularly useful in dissolving gold, platinum, and other metals that are more difficult to oxidize than hydrogen. A simplified equation to represent the action of {{i}}aqua regia{{/i}} on gold is:
+Nitric acid oxidizes many compounds; for example, concentrated nitric acid readily oxidizes hydrochloric acid to chlorine and chlorine dioxide. A mixture of one part concentrated nitric acid and three parts concentrated hydrochloric acid (called [[i:aqua regia]], which means royal water) reacts vigorously with metals. This mixture is particularly useful in dissolving gold, platinum, and other metals that are more difficult to oxidize than hydrogen. A simplified equation to represent the action of [[i:aqua regia]] on gold is:
 
 <!-- SEG:m68837:para:fs-idp621936 -->
-Although gold is generally unreactive, you can watch a [video](http://openstax.org/l/16gold) of the complex mixture of compounds present in {{i}}aqua regia{{/i}} dissolving it into solution.
+Although gold is generally unreactive, you can watch a [[link:video|http://openstax.org/l/16gold]] of the complex mixture of compounds present in [[i:aqua regia]] dissolving it into solution.
 
 <!-- SEG:m68837:para:fs-idm29734944 -->
 {{term}}Nitrates{{/term}}, salts of nitric acid, form when metals, oxides, hydroxides, or carbonates react with nitric acid. Most nitrates are soluble in water; indeed, one of the significant uses of nitric acid is to prepare soluble metal nitrates.
@@ -281,7 +281,7 @@ Although gold is generally unreactive, you can watch a [video](http://openstax.o
 Nitric acid finds extensive use in the laboratory and in chemical industries as a strong acid and strong oxidizing agent. It is important in the manufacture of explosives, dyes, plastics, and drugs. Salts of nitric acid (nitrates) are valuable as fertilizers. Gunpowder is a mixture of potassium nitrate, sulfur, and charcoal.
 
 <!-- SEG:m68837:para:fs-idm58939888 -->
-The reaction of N[[sub:2]]O[[sub:3]] with water gives a pale blue solution of nitrous acid, HNO[[sub:2]]. However, HNO[[sub:2]] (shown in [#CNX_Chem_18_09_NitrosAcid]) is easier to prepare by the addition of an acid to a solution of nitrite; nitrous acid is a weak acid, so the nitrite ion is basic in aqueous solution:
+The reaction of N[[sub:2]]O[[sub:3]] with water gives a pale blue solution of nitrous acid, HNO[[sub:2]]. However, HNO[[sub:2]] (shown in [[xref:CNX_Chem_18_09_NitrosAcid]]) is easier to prepare by the addition of an acid to a solution of nitrite; nitrous acid is a weak acid, so the nitrite ion is basic in aqueous solution:
 
 <!-- SEG:m68837:para:fs-idm29214096 -->
 Nitrous acid is very unstable and exists only in solution. It disproportionates slowly at room temperature (rapidly when heated) into nitric acid and nitric oxide. Nitrous acid is an active oxidizing agent with strong reducing agents, and strong oxidizing agents oxidize it to nitric acid.
@@ -299,7 +299,7 @@ The nitrites are much more stable than the acid, but nitrites, like nitrates, ca
 Phosphorus Oxyacids and Salts
 
 <!-- SEG:m68837:para:fs-idp99137072 -->
-Pure orthophosphoric acid, H[[sub:3]]PO[[sub:4]] (shown in [#CNX_Chem_18_09_Phosphate]), forms colorless, deliquescent crystals that melt at 42 °C. The common name of this compound is phosphoric acid, and is commercially available as a viscous 82% solution known as syrupy phosphoric acid. One use of phosphoric acid is as an additive to many soft drinks.
+Pure orthophosphoric acid, H[[sub:3]]PO[[sub:4]] (shown in [[xref:CNX_Chem_18_09_Phosphate]]), forms colorless, deliquescent crystals that melt at 42 °C. The common name of this compound is phosphoric acid, and is commercially available as a viscous 82% solution known as syrupy phosphoric acid. One use of phosphoric acid is as an additive to many soft drinks.
 
 <!-- SEG:m68837:para:fs-idm47466240 -->
 One commercial method of preparing orthophosphoric acid is to treat calcium phosphate rock with concentrated sulfuric acid:
@@ -311,7 +311,7 @@ Orthophosphoric acid, H[[sub:3]]PO[[sub:4]], is colorless when pure and has this
 Dilution of the products with water, followed by filtration to remove calcium sulfate, gives a dilute acid solution contaminated with calcium dihydrogen phosphate, Ca(H[[sub:2]]PO[[sub:4]])[[sub:2]], and other compounds associated with calcium phosphate rock. It is possible to prepare pure orthophosphoric acid by dissolving P[[sub:4]]O[[sub:10]] in water.
 
 <!-- SEG:m68837:para:fs-idp83768768 -->
-The action of water on P[[sub:4]]O[[sub:6]], PCl[[sub:3]], PBr[[sub:3]], or PI[[sub:3]] forms phosphorous acid, H[[sub:3]]PO[[sub:3]] (shown in [#CNX_Chem_18_09_PhosphAcid]). The best method for preparing pure phosphorous acid is by hydrolyzing phosphorus trichloride:
+The action of water on P[[sub:4]]O[[sub:6]], PCl[[sub:3]], PBr[[sub:3]], or PI[[sub:3]] forms phosphorous acid, H[[sub:3]]PO[[sub:3]] (shown in [[xref:CNX_Chem_18_09_PhosphAcid]]). The best method for preparing pure phosphorous acid is by hydrolyzing phosphorus trichloride:
 
 <!-- SEG:m68837:para:fs-idp57027376 -->
 Heating the resulting solution expels the hydrogen chloride and leads to the evaporation of water. When sufficient water evaporates, white crystals of phosphorous acid will appear upon cooling. The crystals are deliquescent, very soluble in water, and have an odor like that of garlic. The solid melts at 70.1 °C and decomposes at about 200 °C by disproportionation into phosphine and orthophosphoric acid:
@@ -326,7 +326,7 @@ Phosphorous acid forms only two series of salts, which contain the dihydrogen ph
 Sulfur Oxyacids and Salts
 
 <!-- SEG:m68837:para:fs-idm1538016 -->
-The preparation of sulfuric acid, H[[sub:2]]SO[[sub:4]] (shown in [#CNX_Chem_18_09_SulfrAcid]), begins with the oxidation of sulfur to sulfur trioxide and then converting the trioxide to sulfuric acid. Pure sulfuric acid is a colorless, oily liquid that freezes at 10.5 °C. It fumes when heated because the acid decomposes to water and sulfur trioxide. The heating process causes the loss of more sulfur trioxide than water, until reaching a concentration of 98.33% acid. Acid of this concentration boils at 338 °C without further change in concentration (a constant boiling solution) and is commercially concentrated H[[sub:2]]SO[[sub:4]]. The amount of sulfuric acid used in industry exceeds that of any other manufactured compound.
+The preparation of sulfuric acid, H[[sub:2]]SO[[sub:4]] (shown in [[xref:CNX_Chem_18_09_SulfrAcid]]), begins with the oxidation of sulfur to sulfur trioxide and then converting the trioxide to sulfuric acid. Pure sulfuric acid is a colorless, oily liquid that freezes at 10.5 °C. It fumes when heated because the acid decomposes to water and sulfur trioxide. The heating process causes the loss of more sulfur trioxide than water, until reaching a concentration of 98.33% acid. Acid of this concentration boils at 338 °C without further change in concentration (a constant boiling solution) and is commercially concentrated H[[sub:2]]SO[[sub:4]]. The amount of sulfuric acid used in industry exceeds that of any other manufactured compound.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_SulfrAcid-caption -->
 Sulfuric acid has a tetrahedral molecular structure.
@@ -335,7 +335,7 @@ Sulfuric acid has a tetrahedral molecular structure.
 The strong affinity of concentrated sulfuric acid for water makes it a good dehydrating agent. It is possible to dry gases and immiscible liquids that do not react with the acid by passing them through the acid.
 
 <!-- SEG:m68837:para:fs-idm32710656 -->
-Sulfuric acid is a strong diprotic acid that ionizes in two stages. In aqueous solution, the first stage is essentially complete. The secondary ionization is not nearly so complete, and [[MATH:12]] is a moderately strong acid (about 25% ionized in solution of a [[MATH:13]] salt: {{i}}K{{/i}}[[sub:a]] = 1.2 [[MATH:14]] 10[[sup:−2]]).
+Sulfuric acid is a strong diprotic acid that ionizes in two stages. In aqueous solution, the first stage is essentially complete. The secondary ionization is not nearly so complete, and [[MATH:12]] is a moderately strong acid (about 25% ionized in solution of a [[MATH:13]] salt: [[i:K]][[sub:a]] = 1.2 [[MATH:14]] 10[[sup:−2]]).
 
 <!-- SEG:m68837:para:fs-idm8078544 -->
 Being a diprotic acid, sulfuric acid forms both sulfates, such as Na[[sub:2]]SO[[sub:4]], and hydrogen sulfates, such as NaHSO[[sub:4]]. Most sulfates are soluble in water; however, the sulfates of barium, strontium, calcium, and lead are only slightly soluble in water.
@@ -347,7 +347,7 @@ Among the important sulfates are Na[[sub:2]]SO[[sub:4]]⋅10H[[sub:2]]O and Epso
 Hot, concentrated sulfuric acid is an oxidizing agent. Depending on its concentration, the temperature, and the strength of the reducing agent, sulfuric acid oxidizes many compounds and, in the process, undergoes reduction to SO[[sub:2]], [[MATH:16]] [[MATH:17]] S, H[[sub:2]]S[[sub:,]] or S[[sup:2−]].
 
 <!-- SEG:m68837:para:fs-idm4279232 -->
-Sulfur dioxide dissolves in water to form a solution of sulfurous acid, as expected for the oxide of a nonmetal. Sulfurous acid is unstable, and it is not possible to isolate anhydrous H[[sub:2]]SO[[sub:3]]. Heating a solution of sulfurous acid expels the sulfur dioxide. Like other diprotic acids, sulfurous acid ionizes in two steps: The hydrogen sulfite ion, [[MATH:18]] and the sulfite ion, [[MATH:19]] form. Sulfurous acid is a moderately strong acid. Ionization is about 25% in the first stage, but it is much less in the second ({{i}}K{{/i}}[[sub:a1]] = 1.2 [[MATH:20]] 10[[sup:−2]] and {{i}}K{{/i}}[[sub:a2]] = 6.2 [[MATH:21]] 10[[sup:−8]]).
+Sulfur dioxide dissolves in water to form a solution of sulfurous acid, as expected for the oxide of a nonmetal. Sulfurous acid is unstable, and it is not possible to isolate anhydrous H[[sub:2]]SO[[sub:3]]. Heating a solution of sulfurous acid expels the sulfur dioxide. Like other diprotic acids, sulfurous acid ionizes in two steps: The hydrogen sulfite ion, [[MATH:18]] and the sulfite ion, [[MATH:19]] form. Sulfurous acid is a moderately strong acid. Ionization is about 25% in the first stage, but it is much less in the second ([[i:K]][[sub:a1]] = 1.2 [[MATH:20]] 10[[sup:−2]] and [[i:K]][[sub:a2]] = 6.2 [[MATH:21]] 10[[sup:−8]]).
 
 <!-- SEG:m68837:para:fs-idp145310240 -->
 In order to prepare solid sulfite and hydrogen sulfite salts, it is necessary to add a stoichiometric amount of a base to a sulfurous acid solution and then evaporate the water. These salts also form from the reaction of SO[[sub:2]] with oxides and hydroxides. Heating solid sodium hydrogen sulfite forms sodium sulfite, sulfur dioxide, and water:
@@ -362,7 +362,7 @@ Solutions of sulfites are also very susceptible to air oxidation to produce sulf
 Halogen Oxyacids and Their Salts
 
 <!-- SEG:m68837:para:fs-idm47315952 -->
-The compounds HXO, HXO[[sub:2]], HXO[[sub:3]], and HXO[[sub:4]], where X represents Cl, Br, or I, are the hypohalous, halous, halic, and perhalic acids, respectively. The strengths of these acids increase from the hypohalous acids, which are very weak acids, to the perhalic acids, which are very strong. [#fs-idp152462192] lists the known acids, and, where known, their pK[[sub:a]] values are given in parentheses.
+The compounds HXO, HXO[[sub:2]], HXO[[sub:3]], and HXO[[sub:4]], where X represents Cl, Br, or I, are the hypohalous, halous, halic, and perhalic acids, respectively. The strengths of these acids increase from the hypohalous acids, which are very weak acids, to the perhalic acids, which are very strong. [[xref:fs-idp152462192]] lists the known acids, and, where known, their pK[[sub:a]] values are given in parentheses.
 
 <!-- SEG:m68837:entry:auto-123 -->
 Oxyacids of the Halogens
@@ -452,7 +452,7 @@ Sodium hypochlorite is an inexpensive bleach (Clorox) and germicide. The commerc
 The only definitely known halous acid is chlorous acid, HClO[[sub:2]], obtained by the reaction of barium chlorite with dilute sulfuric acid:
 
 <!-- SEG:m68837:para:fs-idm3702800 -->
-Filtering the insoluble barium sulfate leaves a solution of HClO[[sub:2]]. Chlorous acid is not stable; it slowly decomposes in solution to yield chlorine dioxide, hydrochloric acid, and water. Chlorous acid reacts with bases to give salts containing the chlorite ion (shown in [#CNX_Chem_18_09_ChloritIon]). Sodium chlorite finds an extensive application in the bleaching of paper because it is a strong oxidizing agent and does not damage the paper.
+Filtering the insoluble barium sulfate leaves a solution of HClO[[sub:2]]. Chlorous acid is not stable; it slowly decomposes in solution to yield chlorine dioxide, hydrochloric acid, and water. Chlorous acid reacts with bases to give salts containing the chlorite ion (shown in [[xref:CNX_Chem_18_09_ChloritIon]]). Sodium chlorite finds an extensive application in the bleaching of paper because it is a strong oxidizing agent and does not damage the paper.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ChloritIon-caption -->
 Chlorite ions, [[MATH:22]] are produced when chlorous acid reacts with bases.
@@ -461,7 +461,7 @@ Chlorite ions, [[MATH:22]] are produced when chlorous acid reacts with bases.
 Chloric acid, HClO[[sub:3]], and bromic acid, HBrO[[sub:3]], are stable only in solution. The reaction of iodine with concentrated nitric acid produces stable white iodic acid, HIO[[sub:3]]:
 
 <!-- SEG:m68837:para:fs-idm69933232 -->
-It is possible to obtain the lighter halic acids from their barium salts by reaction with dilute sulfuric acid. The reaction is analogous to that used to prepare chlorous acid. All of the halic acids are strong acids and very active oxidizing agents. The acids react with bases to form salts containing chlorate ions (shown in [#CNX_Chem_18_09_ClO3Ion]). Another preparative method is the electrochemical oxidation of a hot solution of a metal halide to form the appropriate metal chlorates. Sodium chlorate is a weed killer; potassium chlorate is used as an oxidizing agent.
+It is possible to obtain the lighter halic acids from their barium salts by reaction with dilute sulfuric acid. The reaction is analogous to that used to prepare chlorous acid. All of the halic acids are strong acids and very active oxidizing agents. The acids react with bases to form salts containing chlorate ions (shown in [[xref:CNX_Chem_18_09_ClO3Ion]]). Another preparative method is the electrochemical oxidation of a hot solution of a metal halide to form the appropriate metal chlorates. Sodium chlorate is a weed killer; potassium chlorate is used as an oxidizing agent.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ClO3Ion-caption -->
 Chlorate ions, [[MATH:23]] are produced when halic acids react with bases.
@@ -470,7 +470,7 @@ Chlorate ions, [[MATH:23]] are produced when halic acids react with bases.
 Perchloric acid, HClO[[sub:4]], forms when treating a perchlorate, such as potassium perchlorate, with sulfuric acid under reduced pressure. The HClO[[sub:4]] can be distilled from the mixture:
 
 <!-- SEG:m68837:para:fs-idp39285584 -->
-Dilute aqueous solutions of perchloric acid are quite stable thermally, but concentrations above 60% are unstable and dangerous. Perchloric acid and its salts are powerful oxidizing agents, as the very electronegative chlorine is more stable in a lower oxidation state than 7+. Serious explosions have occurred when heating concentrated solutions with easily oxidized substances. However, its reactions as an oxidizing agent are slow when perchloric acid is cold and dilute. The acid is among the strongest of all acids. Most salts containing the perchlorate ion (shown in [#CNX_Chem_18_09_PerchloIon]) are soluble. It is possible to prepare them from reactions of bases with perchloric acid and, commercially, by the electrolysis of hot solutions of their chlorides.
+Dilute aqueous solutions of perchloric acid are quite stable thermally, but concentrations above 60% are unstable and dangerous. Perchloric acid and its salts are powerful oxidizing agents, as the very electronegative chlorine is more stable in a lower oxidation state than 7+. Serious explosions have occurred when heating concentrated solutions with easily oxidized substances. However, its reactions as an oxidizing agent are slow when perchloric acid is cold and dilute. The acid is among the strongest of all acids. Most salts containing the perchlorate ion (shown in [[xref:CNX_Chem_18_09_PerchloIon]]) are soluble. It is possible to prepare them from reactions of bases with perchloric acid and, commercially, by the electrolysis of hot solutions of their chlorides.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_PerchloIon-caption -->
 Perchlorate ions, [[MATH:24]] can be produced when perchloric acid reacts with a base or by electrolysis of hot solutions of their chlorides.
@@ -578,7 +578,7 @@ Write balanced chemical equations for the following reactions:
 (a) [[MATH:31]] (b) [[MATH:32]] (c) [[MATH:33]] (d) [[MATH:34]] (e) [[MATH:35]]
 
 <!-- SEG:m68837:problem:fs-idm62046832 -->
-What volume of 0.250 {{i}}M{{/i}} H[[sub:2]]SO[[sub:4]] solution is required to neutralize a solution that contains 5.00 g of CaCO[[sub:3]]?
+What volume of 0.250 [[i:M]] H[[sub:2]]SO[[sub:4]] solution is required to neutralize a solution that contains 5.00 g of CaCO[[sub:3]]?
 
 <!-- SEG:m68837:problem:fs-idm31330912 -->
 Which is the stronger acid, HClO[[sub:4]] or HBrO[[sub:4]]? Why?

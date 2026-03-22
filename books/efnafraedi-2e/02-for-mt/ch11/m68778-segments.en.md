@@ -14,10 +14,10 @@ Predict whether a given mixture will yield a solution based on molecular propert
 Explain why some solutions either produce or absorb heat when they form
 
 <!-- SEG:m68778:para:fs-idp27309280 -->
-An earlier chapter of this text introduced {{i}}solutions{{/i}}, defined as homogeneous mixtures of two or more substances. Often, one component of a solution is present at a significantly greater concentration, in which case it is called the {{i}}solvent{{/i}}. The other components of the solution present in relatively lesser concentrations are called {{i}}solutes{{/i}}. Sugar is a covalent solid composed of sucrose molecules, C[[sub:12]]H[[sub:22]]O[[sub:11]]. When this compound dissolves in water, its molecules become uniformly distributed among the molecules of water:
+An earlier chapter of this text introduced [[i:solutions]], defined as homogeneous mixtures of two or more substances. Often, one component of a solution is present at a significantly greater concentration, in which case it is called the [[i:solvent]]. The other components of the solution present in relatively lesser concentrations are called [[i:solutes]]. Sugar is a covalent solid composed of sucrose molecules, C[[sub:12]]H[[sub:22]]O[[sub:11]]. When this compound dissolves in water, its molecules become uniformly distributed among the molecules of water:
 
 <!-- SEG:m68778:para:fs-idm1696368 -->
-The subscript “{{i}}aq{{/i}}” in the equation signifies that the sucrose molecules are solutes and are therefore {{i}}individually dispersed{{/i}} throughout the {{i}}aqueous solution{{/i}} (water is the solvent). Although sucrose molecules are heavier than water molecules, they remain dispersed throughout the solution; gravity does not cause them to “settle out” over time.
+The subscript “[[i:aq]]” in the equation signifies that the sucrose molecules are solutes and are therefore [[i:individually dispersed]] throughout the [[i:aqueous solution]] (water is the solvent). Although sucrose molecules are heavier than water molecules, they remain dispersed throughout the solution; gravity does not cause them to “settle out” over time.
 
 <!-- SEG:m68778:para:fs-idm75208096 -->
 Potassium dichromate, K[[sub:2]]Cr[[sub:2]]O[[sub:7]], is an ionic compound composed of colorless potassium ions, K[[sup:+]], and orange dichromate ions, [[MATH:1]] When a small amount of solid potassium dichromate is added to water, the compound dissolves and dissociates to yield potassium ions and dichromate ions uniformly distributed throughout the mixture ([#CNX_Chem_11_01_K2Cr2O7_1]), as indicated in this equation:
@@ -50,55 +50,55 @@ Solvent
 air
 
 <!-- SEG:m68778:entry:auto-18 -->
-O[[sub:2]]({{i}}g{{/i}})
+O[[sub:2]]([[i:g]])
 
 <!-- SEG:m68778:entry:auto-19 -->
-N[[sub:2]]({{i}}g{{/i}})
+N[[sub:2]]([[i:g]])
 
 <!-- SEG:m68778:entry:auto-20 -->
 soft drinks {{fn}}If bubbles of gas are observed within the liquid, the mixture is not homogeneous and, thus, not a solution.{{/fn}}
 
 <!-- SEG:m68778:entry:auto-21 -->
-CO[[sub:2]]({{i}}g{{/i}})
+CO[[sub:2]]([[i:g]])
 
 <!-- SEG:m68778:entry:auto-22 -->
-H[[sub:2]]O({{i}}l{{/i}})
+H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68778:entry:auto-23 -->
 hydrogen in palladium
 
 <!-- SEG:m68778:entry:auto-24 -->
-H[[sub:2]]({{i}}g{{/i}})
+H[[sub:2]]([[i:g]])
 
 <!-- SEG:m68778:entry:auto-25 -->
-Pd({{i}}s{{/i}})
+Pd([[i:s]])
 
 <!-- SEG:m68778:entry:auto-26 -->
 rubbing alcohol
 
 <!-- SEG:m68778:entry:auto-27 -->
-H[[sub:2]]O({{i}}l{{/i}})
+H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68778:entry:auto-28 -->
-C[[sub:3]]H[[sub:8]]O({{i}}l{{/i}}) (2-propanol)
+C[[sub:3]]H[[sub:8]]O([[i:l]]) (2-propanol)
 
 <!-- SEG:m68778:entry:auto-29 -->
 saltwater
 
 <!-- SEG:m68778:entry:auto-30 -->
-NaCl({{i}}s{{/i}})
+NaCl([[i:s]])
 
 <!-- SEG:m68778:entry:auto-31 -->
-H[[sub:2]]O({{i}}l{{/i}})
+H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68778:entry:auto-32 -->
 brass
 
 <!-- SEG:m68778:entry:auto-33 -->
-Zn({{i}}s{{/i}})
+Zn([[i:s]])
 
 <!-- SEG:m68778:entry:auto-34 -->
-Cu({{i}}s{{/i}})
+Cu([[i:s]])
 
 <!-- SEG:m68778:para:fs-idm100903680 -->
 Solutions exhibit these defining traits:
@@ -116,7 +116,7 @@ The components of a solution are dispersed on a molecular scale; they consist of
 The dissolved solute in a solution will not settle out or separate from the solvent.
 
 <!-- SEG:m68778:item:fs-idm73911888-item-5 -->
-The composition of a solution, or the concentrations of its components, can be varied continuously (within limits determined by the {{i}}solubility{{/i}} of the components, discussed in detail later in this chapter).
+The composition of a solution, or the concentrations of its components, can be varied continuously (within limits determined by the [[i:solubility]] of the components, discussed in detail later in this chapter).
 
 <!-- SEG:m68778:title:fs-idp65888-title -->
 The Formation of Solutions
@@ -173,16 +173,16 @@ Indicate the most important types of intermolecular attractions in each of the f
 (a) The solution in [#CNX_Chem_11_01_K2Cr2O7_1].
 
 <!-- SEG:m68778:problem:fs-idm57903504 -->
-(b) NO({{i}}l{{/i}}) in CO({{i}}l{{/i}})
+(b) NO([[i:l]]) in CO([[i:l]])
 
 <!-- SEG:m68778:problem:fs-idm24779824 -->
-(c) Cl[[sub:2]]({{i}}g{{/i}}) in Br[[sub:2]]({{i}}l{{/i}})
+(c) Cl[[sub:2]]([[i:g]]) in Br[[sub:2]]([[i:l]])
 
 <!-- SEG:m68778:problem:fs-idm58115840 -->
-(d) HCl({{i}}g{{/i}}) in benzene C[[sub:6]]H[[sub:6]]({{i}}l{{/i}})
+(d) HCl([[i:g]]) in benzene C[[sub:6]]H[[sub:6]]([[i:l]])
 
 <!-- SEG:m68778:problem:fs-idm98708672 -->
-(e) Methanol CH[[sub:3]]OH({{i}}l{{/i}}) in H[[sub:2]]O({{i}}l{{/i}})
+(e) Methanol CH[[sub:3]]OH([[i:l]]) in H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68778:solution:fs-idm73055536 -->
 (a) ion-dipole forces; (b) dipole-dipole forces; (c) dispersion forces; (d) dispersion forces; (e) hydrogen bonding
@@ -218,13 +218,13 @@ Solutions of hydrogen in palladium may be formed by exposing Pd metal to H[[sub:
 (c) Determine the percent by mass of hydrogen atoms in this solution.
 
 <!-- SEG:m68778:para:fs-idm54470368 -->
-The formation of a solution is an example of a {{term}}spontaneous process{{/term}}, a process that occurs under specified conditions without the requirement of energy from some external source. Sometimes a mixture is stirred to speed up the dissolution process, but this is not necessary; a homogeneous solution will form eventually. The topic of spontaneity is critically important to the study of chemical thermodynamics and is treated more thoroughly in a later chapter of this text. For purposes of this chapter’s discussion, it will suffice to consider two criteria that {{i}}favor{{/i}}, but do not guarantee, the spontaneous formation of a solution:
+The formation of a solution is an example of a {{term}}spontaneous process{{/term}}, a process that occurs under specified conditions without the requirement of energy from some external source. Sometimes a mixture is stirred to speed up the dissolution process, but this is not necessary; a homogeneous solution will form eventually. The topic of spontaneity is critically important to the study of chemical thermodynamics and is treated more thoroughly in a later chapter of this text. For purposes of this chapter’s discussion, it will suffice to consider two criteria that [[i:favor]], but do not guarantee, the spontaneous formation of a solution:
 
 <!-- SEG:m68778:item:fs-idm93605392-item-1 -->
 a decrease in the internal energy of the system (an exothermic change, as discussed in the previous chapter on thermochemistry)
 
 <!-- SEG:m68778:item:fs-idm93605392-item-2 -->
-an increased dispersal of matter in the system (which indicates an increase in the {{i}}entropy{{/i}} of the system, as you will learn about in the later chapter on thermodynamics)
+an increased dispersal of matter in the system (which indicates an increase in the [[i:entropy]] of the system, as you will learn about in the later chapter on thermodynamics)
 
 <!-- SEG:m68778:para:fs-idm32719984 -->
 In the process of dissolution, an internal energy change often, but not always, occurs as heat is absorbed or evolved. An increase in matter dispersal always results when a solution forms from the uniform distribution of solute molecules throughout a solvent.

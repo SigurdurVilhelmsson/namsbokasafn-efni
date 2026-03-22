@@ -443,13 +443,13 @@ pK[[sub:w]] {{fn}}pK[[sub:w]] = –log[[sub:10]](K[[sub:w]]){{/fn}}
 Specific Heat Capacity for Water
 
 <!-- SEG:m68863:entry:auto-149 -->
-C°(H[[sub:2]]O({{i}}l{{/i}})) = 4.184 J∙g[[sup:-1]]∙°C[[sup:-1]]
+C°(H[[sub:2]]O([[i:l]])) = 4.184 J∙g[[sup:-1]]∙°C[[sup:-1]]
 
 <!-- SEG:m68863:entry:auto-150 -->
-C°(H[[sub:2]]O({{i}}s{{/i}})) = 2.093 J∙g[[sup:−1]]∙°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:s]])) = 2.093 J∙g[[sup:−1]]∙°C[[sup:−1]]
 
 <!-- SEG:m68863:entry:auto-151 -->
-C°(H[[sub:2]]O({{i}}g{{/i}})) = 1.864 J∙g[[sup:−1]]∙°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:g]])) = 1.864 J∙g[[sup:−1]]∙°C[[sup:−1]]
 
 <!-- SEG:m68863:entry:auto-152 -->
 Standard Water Melting and Boiling Temperatures and Enthalpies of the Transitions
@@ -458,7 +458,7 @@ Standard Water Melting and Boiling Temperatures and Enthalpies of the Transition
 Temperature (K)
 
 <!-- SEG:m68863:entry:auto-154 -->
-Δ{{i}}H{{/i}} (kJ/mol)
+Δ[[i:H]] (kJ/mol)
 
 <!-- SEG:m68863:entry:auto-155 -->
 melting
@@ -488,4 +488,4 @@ K[[sub:f]] = 1.86°C∙kg∙mol[[sup:−1]] (cryoscopic constant)
 K[[sub:b]] = 0.51°C∙kg∙mol[[sup:−1]] (ebullioscopic constant)
 
 <!-- SEG:m68863:caption:CNX_Chem_00_EE_LiqWatAbso-caption -->
-The plot shows the extent of light absorption versus wavelength for water. Absorption is reported in reciprocal meters and corresponds to the inverse of the distance light may travel through water before its intensity is diminished by 1/{{i}}e{{/i}} (~37%).
+The plot shows the extent of light absorption versus wavelength for water. Absorption is reported in reciprocal meters and corresponds to the inverse of the distance light may travel through water before its intensity is diminished by 1/[[i:e]] (~37%).

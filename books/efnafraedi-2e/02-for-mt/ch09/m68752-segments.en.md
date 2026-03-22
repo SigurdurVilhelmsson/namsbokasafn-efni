@@ -17,28 +17,28 @@ State Dalton’s law of partial pressures and use it in calculations involving g
 The study of the chemical behavior of gases was part of the basis of perhaps the most fundamental chemical revolution in history. French nobleman Antoine {{term}}Lavoisier{{/term}}, widely regarded as the “father of modern chemistry,” changed chemistry from a qualitative to a quantitative science through his work with gases. He discovered the law of conservation of matter, discovered the role of oxygen in combustion reactions, determined the composition of air, explained respiration in terms of chemical reactions, and more. He was a casualty of the French Revolution, guillotined in 1794. Of his death, mathematician and astronomer Joseph-Louis Lagrange said, “It took the mob only a moment to remove his head; a century will not suffice to reproduce it.” {{fn}}“Quotations by Joseph-Louis Lagrange,” last modified February 2006, accessed February 10, 2015, http://www-history.mcs.st-andrews.ac.uk/Quotations/Lagrange.html{{/fn}} Much of the knowledge we do have about Lavoisier's contributions is due to his wife, Marie-Anne Paulze Lavoisier, who worked with him in his lab. A trained artist fluent in several languages, she created detailed illustrations of the equipment in his lab, and translated texts from foreign scientists to complement his knowledge. After his execution, she was instrumental in publishing Lavoisier's major treatise, which unified many concepts of chemistry and laid the groundwork for significant further study.
 
 <!-- SEG:m68752:para:fs-idm31863392 -->
-As described in an earlier chapter of this text, we can turn to chemical stoichiometry for answers to many of the questions that ask “How much?” The essential property involved in such use of stoichiometry is the amount of substance, typically measured in moles ({{i}}n{{/i}}). For gases, molar amount can be derived from convenient experimental measurements of pressure, temperature, and volume. Therefore, these measurements are useful in assessing the stoichiometry of pure gases, gas mixtures, and chemical reactions involving gases. This section will not introduce any new material or ideas, but will provide examples of applications and ways to integrate concepts already discussed.
+As described in an earlier chapter of this text, we can turn to chemical stoichiometry for answers to many of the questions that ask “How much?” The essential property involved in such use of stoichiometry is the amount of substance, typically measured in moles ([[i:n]]). For gases, molar amount can be derived from convenient experimental measurements of pressure, temperature, and volume. Therefore, these measurements are useful in assessing the stoichiometry of pure gases, gas mixtures, and chemical reactions involving gases. This section will not introduce any new material or ideas, but will provide examples of applications and ways to integrate concepts already discussed.
 
 <!-- SEG:m68752:title:fs-idp78729184-title -->
 Gas Density and Molar Mass
 
 <!-- SEG:m68752:para:fs-idm206784496 -->
-The ideal gas law described previously in this chapter relates the properties of pressure {{i}}P{{/i}}, volume {{i}}V{{/i}}, temperature {{i}}T{{/i}}, and molar amount {{i}}n{{/i}}. This law is universal, relating these properties in identical fashion regardless of the chemical identity of the gas:
+The ideal gas law described previously in this chapter relates the properties of pressure [[i:P]], volume [[i:V]], temperature [[i:T]], and molar amount [[i:n]]. This law is universal, relating these properties in identical fashion regardless of the chemical identity of the gas:
 
 <!-- SEG:m68752:para:fs-idm169385680 -->
-The density {{i}}d{{/i}} of a gas, on the other hand, is determined by its identity. As described in another chapter of this text, the density of a substance is a characteristic property that may be used to identify the substance.
+The density [[i:d]] of a gas, on the other hand, is determined by its identity. As described in another chapter of this text, the density of a substance is a characteristic property that may be used to identify the substance.
 
 <!-- SEG:m68752:para:fs-idm208643456 -->
-Rearranging the ideal gas equation to isolate {{i}}V{{/i}} and substituting into the density equation yields
+Rearranging the ideal gas equation to isolate [[i:V]] and substituting into the density equation yields
 
 <!-- SEG:m68752:para:fs-idm191484432 -->
-The ratio {{i}}m{{/i}}/{{i}}n{{/i}} is the definition of molar mass, {{i}}ℳ{{/i}}:
+The ratio [[i:m]]/[[i:n]] is the definition of molar mass, [[i:ℳ]]:
 
 <!-- SEG:m68752:para:fs-idm475542288 -->
 The density equation can then be written
 
 <!-- SEG:m68752:para:fs-idm178080080 -->
-This relation may be used for calculating the densities of gases of known identities at specified values of pressure and temperature as demonstrated in [#fs-idp128586304].
+This relation may be used for calculating the densities of gases of known identities at specified values of pressure and temperature as demonstrated in [[xref:fs-idp128586304]].
 
 <!-- SEG:m68752:example-title:fs-idp128586304-title -->
 Measuring Gas Density
@@ -77,7 +77,7 @@ and the definition of molar mass
 yields the following equation:
 
 <!-- SEG:m68752:para:fs-idm183947392 -->
-Determining the molar mass of a gas via this approach is demonstrated in [#fs-idp74274064].
+Determining the molar mass of a gas via this approach is demonstrated in [[xref:fs-idp74274064]].
 
 <!-- SEG:m68752:example-title:fs-idp74274064-title -->
 Determining the Molecular Formula of a Gas from its Molar Mass and Empirical Formula
@@ -152,7 +152,7 @@ Heating a sample of the liquid in a flask with a tiny hole at the top, which con
 Removing the flask from heat at the instant when the last bit of liquid becomes gas, at which time the flask will be filled with only gaseous sample at ambient pressure
 
 <!-- SEG:m68752:item:fs-idp104043696-item-3 -->
-Sealing the flask and permitting the gaseous sample to condense to liquid, and then weighing the flask to determine the sample’s mass (see [#CNX_Chem_09_03_liquidgas])
+Sealing the flask and permitting the gaseous sample to condense to liquid, and then weighing the flask to determine the sample’s mass (see [[xref:CNX_Chem_09_03_liquidgas]])
 
 <!-- SEG:m68752:note-title:fs-idp108389616-title -->
 Answer:
@@ -167,19 +167,19 @@ When the volatile liquid in the flask is heated past its boiling point, it becom
 The Pressure of a Mixture of Gases: Dalton’s Law
 
 <!-- SEG:m68752:para:fs-idp70155072 -->
-Unless they chemically react with each other, the individual gases in a mixture of gases do not affect each other’s pressure. Each individual gas in a mixture exerts the same pressure that it would exert if it were present alone in the container ([#CNX_Chem_09_03_DaltonLaw1]). The pressure exerted by each individual gas in a mixture is called its {{term}}partial pressure{{/term}}. This observation is summarized by {{term}}Dalton’s law of partial pressures{{/term}}: {{i}}The total pressure of a mixture of ideal gases is equal to the sum of the partial pressures of the component gases{{/i}}:
+Unless they chemically react with each other, the individual gases in a mixture of gases do not affect each other’s pressure. Each individual gas in a mixture exerts the same pressure that it would exert if it were present alone in the container ([[xref:CNX_Chem_09_03_DaltonLaw1]]). The pressure exerted by each individual gas in a mixture is called its {{term}}partial pressure{{/term}}. This observation is summarized by {{term}}Dalton’s law of partial pressures{{/term}}: [[i:The total pressure of a mixture of ideal gases is equal to the sum of the partial pressures of the component gases]]:
 
 <!-- SEG:m68752:para:fs-idp97232880 -->
-In the equation {{i}}P[[sub:Total]]{{/i}} is the total pressure of a mixture of gases, {{i}}P[[sub:A]]{{/i}} is the partial pressure of gas A; {{i}}P[[sub:B]]{{/i}} is the partial pressure of gas B; {{i}}P[[sub:C]]{{/i}} is the partial pressure of gas C; and so on.
+In the equation [[i:P[[sub:Total]]]] is the total pressure of a mixture of gases, [[i:P[[sub:A]]]] is the partial pressure of gas A; [[i:P[[sub:B]]]] is the partial pressure of gas B; [[i:P[[sub:C]]]] is the partial pressure of gas C; and so on.
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_DaltonLaw1-caption -->
 If equal-volume cylinders containing gasses at pressures of 300 kPa, 450 kPa, and 600 kPa are all combined in the same-size cylinder, the total pressure of the gas mixture is 1350 kPa.
 
 <!-- SEG:m68752:para:fs-idp110759216 -->
-The partial pressure of gas A is related to the total pressure of the gas mixture via its {{term}}mole fraction ({{i}}X{{/i}}){{/term}}, a unit of concentration defined as the number of moles of a component of a solution divided by the total number of moles of all components:
+The partial pressure of gas A is related to the total pressure of the gas mixture via its {{term}}mole fraction ([[i:X]]){{/term}}, a unit of concentration defined as the number of moles of a component of a solution divided by the total number of moles of all components:
 
 <!-- SEG:m68752:para:fs-idp75739968 -->
-where {{i}}P[[sub:A]]{{/i}}, {{i}}X[[sub:A]]{{/i}}, and {{i}}n[[sub:A]]{{/i}} are the partial pressure, mole fraction, and number of moles of gas A, respectively, and {{i}}n[[sub:Total]]{{/i}} is the number of moles of all components in the mixture.
+where [[i:P[[sub:A]]]], [[i:X[[sub:A]]]], and [[i:n[[sub:A]]]] are the partial pressure, mole fraction, and number of moles of gas A, respectively, and [[i:n[[sub:Total]]]] is the number of moles of all components in the mixture.
 
 <!-- SEG:m68752:example-title:fs-idp143452448-title -->
 The Pressure of a Mixture of Gases
@@ -236,7 +236,7 @@ A gas mixture used for anesthesia contains 2.83 mol oxygen, O[[sub:2]], and 8.41
 Solution
 
 <!-- SEG:m68752:para:fs-idp86077792 -->
-The mole fraction is given by [[MATH:10]] and the partial pressure is {{i}}P[[sub:A]]{{/i}} = {{i}}X[[sub:A]]{{/i}} [[MATH:11]] {{i}}P[[sub:Total]]{{/i}}.
+The mole fraction is given by [[MATH:10]] and the partial pressure is [[i:P[[sub:A]]]] = [[i:X[[sub:A]]]] [[MATH:11]] [[i:P[[sub:Total]]]].
 
 <!-- SEG:m68752:para:fs-idm32258688 -->
 For O[[sub:2]],
@@ -272,13 +272,13 @@ Answer:
 Collection of Gases over Water
 
 <!-- SEG:m68752:para:fs-idp264029648 -->
-A simple way to collect gases that do not react with water is to capture them in a bottle that has been filled with water and inverted into a dish filled with water. The pressure of the gas inside the bottle can be made equal to the air pressure outside by raising or lowering the bottle. When the water level is the same both inside and outside the bottle ([#CNX_Chem_09_03_WaterVapor]), the pressure of the gas is equal to the atmospheric pressure, which can be measured with a barometer.
+A simple way to collect gases that do not react with water is to capture them in a bottle that has been filled with water and inverted into a dish filled with water. The pressure of the gas inside the bottle can be made equal to the air pressure outside by raising or lowering the bottle. When the water level is the same both inside and outside the bottle ([[xref:CNX_Chem_09_03_WaterVapor]]), the pressure of the gas is equal to the atmospheric pressure, which can be measured with a barometer.
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_WaterVapor-caption -->
 When a reaction produces a gas that is collected above water, the trapped gas is a mixture of the gas produced by the reaction and water vapor. If the collection flask is appropriately positioned to equalize the water levels both within and outside the flask, the pressure of the trapped gas mixture will equal the atmospheric pressure outside the flask (see the earlier discussion of manometers).
 
 <!-- SEG:m68752:para:fs-idp221722032 -->
-However, there is another factor we must consider when we measure the pressure of the gas by this method. Water evaporates and there is always gaseous water (water vapor) above a sample of liquid water. As a gas is collected over water, it becomes saturated with water vapor and the total pressure of the mixture equals the partial pressure of the gas plus the partial pressure of the water vapor. The pressure of the pure gas is therefore equal to the total pressure minus the pressure of the water vapor—this is referred to as the “dry” gas pressure, that is, the pressure of the gas only, without water vapor. The {{term}}vapor pressure of water{{/term}}, which is the pressure exerted by water vapor in equilibrium with liquid water in a closed container, depends on the temperature ([#CNX_Chem_09_03_WaterVapor2]); more detailed information on the temperature dependence of water vapor can be found in [#fs-idm68841392], and vapor pressure will be discussed in more detail in the next chapter on liquids.
+However, there is another factor we must consider when we measure the pressure of the gas by this method. Water evaporates and there is always gaseous water (water vapor) above a sample of liquid water. As a gas is collected over water, it becomes saturated with water vapor and the total pressure of the mixture equals the partial pressure of the gas plus the partial pressure of the water vapor. The pressure of the pure gas is therefore equal to the total pressure minus the pressure of the water vapor—this is referred to as the “dry” gas pressure, that is, the pressure of the gas only, without water vapor. The {{term}}vapor pressure of water{{/term}}, which is the pressure exerted by water vapor in equilibrium with liquid water in a closed container, depends on the temperature ([[xref:CNX_Chem_09_03_WaterVapor2]]); more detailed information on the temperature dependence of water vapor can be found in [[xref:fs-idm68841392]], and vapor pressure will be discussed in more detail in the next chapter on liquids.
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_WaterVapor2-caption -->
 This graph shows the vapor pressure of water at sea level as a function of temperature.
@@ -524,7 +524,7 @@ Pressure (torr)
 Pressure of a Gas Collected Over Water
 
 <!-- SEG:m68752:para:fs-idp35760544 -->
-If 0.200 L of argon is collected over water at a temperature of 26 °C and a pressure of 750 torr in a system like that shown in [#CNX_Chem_09_03_WaterVapor], what is the partial pressure of argon?
+If 0.200 L of argon is collected over water at a temperature of 26 °C and a pressure of 750 torr in a system like that shown in [[xref:CNX_Chem_09_03_WaterVapor]], what is the partial pressure of argon?
 
 <!-- SEG:m68752:para-title:fs-idp18515888-title -->
 Solution
@@ -536,7 +536,7 @@ According to Dalton’s law, the total pressure in the bottle (750 torr) is the 
 Rearranging this equation to solve for the pressure of argon gives:
 
 <!-- SEG:m68752:para:fs-idp144314112 -->
-The pressure of water vapor above a sample of liquid water at 26 °C is 25.2 torr ([Appendix E](doc:m68863)), so:
+The pressure of water vapor above a sample of liquid water at 26 °C is 25.2 torr ([[docref:Appendix E|m68863]]), so:
 
 <!-- SEG:m68752:para-title:fs-idp98186880-title -->
 Check Your Learning
@@ -572,7 +572,7 @@ Sometimes we can take advantage of a simplifying feature of the stoichiometry of
 We can extend Avogadro’s law (that the volume of a gas is directly proportional to the number of moles of the gas) to chemical reactions with gases: Gases combine, or react, in definite and simple proportions by volume, provided that all gas volumes are measured at the same temperature and pressure. For example, since nitrogen and hydrogen gases react to produce ammonia gas according to [[MATH:15]] a given volume of nitrogen gas reacts with three times that volume of hydrogen gas to produce two times that volume of ammonia gas, if pressure and temperature remain constant.
 
 <!-- SEG:m68752:para:fs-idp16937680 -->
-The explanation for this is illustrated in [#CNX_Chem_09_03_Ammonia]. According to Avogadro’s law, equal volumes of gaseous N[[sub:2]], H[[sub:2]], and NH[[sub:3]], at the same temperature and pressure, contain the same number of molecules. Because one molecule of N[[sub:2]] reacts with three molecules of H[[sub:2]] to produce two molecules of NH[[sub:3]], the volume of H[[sub:2]] required is three times the volume of N[[sub:2]], and the volume of NH[[sub:3]] produced is two times the volume of N[[sub:2]].
+The explanation for this is illustrated in [[xref:CNX_Chem_09_03_Ammonia]]. According to Avogadro’s law, equal volumes of gaseous N[[sub:2]], H[[sub:2]], and NH[[sub:3]], at the same temperature and pressure, contain the same number of molecules. Because one molecule of N[[sub:2]] reacts with three molecules of H[[sub:2]] to produce two molecules of NH[[sub:3]], the volume of H[[sub:2]] required is three times the volume of N[[sub:2]], and the volume of NH[[sub:3]] produced is two times the volume of N[[sub:2]].
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_Ammonia-caption -->
 One volume of N[[sub:2]] combines with three volumes of H[[sub:2]] to form two volumes of NH[[sub:3]].
@@ -581,7 +581,7 @@ One volume of N[[sub:2]] combines with three volumes of H[[sub:2]] to form two v
 Reaction of Gases
 
 <!-- SEG:m68752:para:fs-idp31720640 -->
-Propane, C[[sub:3]]H[[sub:8]]({{i}}g{{/i}}), is used in gas grills to provide the heat for cooking. What volume of O[[sub:2]]({{i}}g{{/i}}) measured at 25 °C and 760 torr is required to react with 2.7 L of propane measured under the same conditions of temperature and pressure? Assume that the propane undergoes complete combustion.
+Propane, C[[sub:3]]H[[sub:8]]([[i:g]]), is used in gas grills to provide the heat for cooking. What volume of O[[sub:2]]([[i:g]]) measured at 25 °C and 760 torr is required to react with 2.7 L of propane measured under the same conditions of temperature and pressure? Assume that the propane undergoes complete combustion.
 
 <!-- SEG:m68752:para-title:fs-idp137922560-title -->
 Solution
@@ -614,7 +614,7 @@ Answer:
 Volumes of Reacting Gases
 
 <!-- SEG:m68752:para:fs-idp19707328 -->
-Ammonia is an important fertilizer and industrial chemical. Suppose that a volume of 683 billion cubic feet of gaseous ammonia, measured at 25 °C and 1 atm, was manufactured. What volume of H[[sub:2]]({{i}}g{{/i}}), measured under the same conditions, was required to prepare this amount of ammonia by reaction with N[[sub:2]]?
+Ammonia is an important fertilizer and industrial chemical. Suppose that a volume of 683 billion cubic feet of gaseous ammonia, measured at 25 °C and 1 atm, was manufactured. What volume of H[[sub:2]]([[i:g]]), measured under the same conditions, was required to prepare this amount of ammonia by reaction with N[[sub:2]]?
 
 <!-- SEG:m68752:para-title:fs-idp212669488-title -->
 Solution
@@ -629,7 +629,7 @@ The manufacture of 683 billion ft[[sup:3]] of NH[[sub:3]] required 1020 billion 
 Check Your Learning
 
 <!-- SEG:m68752:para:fs-idp37301360 -->
-What volume of O[[sub:2]]({{i}}g{{/i}}) measured at 25 °C and 760 torr is required to react with 17.0 L of ethylene, C[[sub:2]]H[[sub:4]]({{i}}g{{/i}}), measured under the same conditions of temperature and pressure? The products are CO[[sub:2]] and water vapor.
+What volume of O[[sub:2]]([[i:g]]) measured at 25 °C and 760 torr is required to react with 17.0 L of ethylene, C[[sub:2]]H[[sub:4]]([[i:g]]), measured under the same conditions of temperature and pressure? The products are CO[[sub:2]] and water vapor.
 
 <!-- SEG:m68752:para:fs-idm7381904 -->
 51.0 L
@@ -674,10 +674,10 @@ Answer:
 Greenhouse Gases and Climate Change
 
 <!-- SEG:m68752:para:fs-idp143406944 -->
-The thin skin of our atmosphere keeps the earth from being an ice planet and makes it habitable. In fact, this is due to less than 0.5% of the air molecules. Of the energy from the sun that reaches the earth, almost [[MATH:21]] is reflected back into space, with the rest absorbed by the atmosphere and the surface of the earth. Some of the energy that the earth absorbs is re-emitted as infrared (IR) radiation, a portion of which passes back out through the atmosphere into space. Most of this IR radiation, however, is absorbed by certain atmospheric gases, effectively trapping heat within the atmosphere in a phenomenon known as the {{i}}greenhouse effect{{/i}}. This effect maintains global temperatures within the range needed to sustain life on earth. Without our atmosphere, the earth's average temperature would be lower by more than 30 °C (nearly 60 °F). The major greenhouse gases (GHGs) are water vapor, carbon dioxide, methane, and ozone. Since the Industrial Revolution, human activity has been increasing the concentrations of GHGs, which have changed the energy balance and are significantly altering the earth’s climate ([#CNX_Chem_09_03_GlobalWarming]).
+The thin skin of our atmosphere keeps the earth from being an ice planet and makes it habitable. In fact, this is due to less than 0.5% of the air molecules. Of the energy from the sun that reaches the earth, almost [[MATH:21]] is reflected back into space, with the rest absorbed by the atmosphere and the surface of the earth. Some of the energy that the earth absorbs is re-emitted as infrared (IR) radiation, a portion of which passes back out through the atmosphere into space. Most of this IR radiation, however, is absorbed by certain atmospheric gases, effectively trapping heat within the atmosphere in a phenomenon known as the [[i:greenhouse effect]]. This effect maintains global temperatures within the range needed to sustain life on earth. Without our atmosphere, the earth's average temperature would be lower by more than 30 °C (nearly 60 °F). The major greenhouse gases (GHGs) are water vapor, carbon dioxide, methane, and ozone. Since the Industrial Revolution, human activity has been increasing the concentrations of GHGs, which have changed the energy balance and are significantly altering the earth’s climate ([[xref:CNX_Chem_09_03_GlobalWarming]]).
 
 <!-- SEG:m68752:para:fs-idm12984240 -->
-There is strong evidence from multiple sources that higher atmospheric levels of CO[[sub:2]] are caused by human activity, with fossil fuel burning accounting for about [[MATH:22]] of the recent increase in CO[[sub:2]]. Reliable data from ice cores reveals that CO[[sub:2]] concentration in the atmosphere is at the highest level in the past 800,000 years; other evidence indicates that it may be at its highest level in 20 million years. In recent years, the CO[[sub:2]] concentration has increased preindustrial levels of ~280 ppm to more than 400 ppm today ([#CNX_Chem_09_03_GlobalWarming2]).
+There is strong evidence from multiple sources that higher atmospheric levels of CO[[sub:2]] are caused by human activity, with fossil fuel burning accounting for about [[MATH:22]] of the recent increase in CO[[sub:2]]. Reliable data from ice cores reveals that CO[[sub:2]] concentration in the atmosphere is at the highest level in the past 800,000 years; other evidence indicates that it may be at its highest level in 20 million years. In recent years, the CO[[sub:2]] concentration has increased preindustrial levels of ~280 ppm to more than 400 ppm today ([[xref:CNX_Chem_09_03_GlobalWarming2]]).
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_GlobalWarming-caption -->
 Greenhouse gases trap enough of the sun’s energy to make the planet habitable—this is known as the greenhouse effect. Human activities are increasing greenhouse gas levels, warming the planet and causing more extreme weather events.
@@ -686,16 +686,16 @@ Greenhouse gases trap enough of the sun’s energy to make the planet habitable�
 CO[[sub:2]] levels over the past 700,000 years were typically from 200–300 ppm, with a steep, unprecedented increase over the past 50 years.
 
 <!-- SEG:m68752:para:fs-idp85689376 -->
-Click [here](http://openstax.org/l/16GlobalWarming) to see a 2-minute video explaining greenhouse gases and global warming.
+Click [[link:here|http://openstax.org/l/16GlobalWarming]] to see a 2-minute video explaining greenhouse gases and global warming.
 
 <!-- SEG:m68752:note-title:fs-idp18054480-title -->
 Susan Solomon
 
 <!-- SEG:m68752:para:fs-idp97050544 -->
-Atmospheric and climate scientist Susan {{term}}Solomon{{/term}} ([#CNX_Chem_09_03_SusanSolom]) is the author of one of {{i}}The New York Times{{/i}} books of the year ({{i}}The Coldest March{{/i}}, 2001), one of Time magazine’s 100 most influential people in the world (2008), and a working group leader of the Intergovernmental Panel on Climate Change (IPCC), which was the recipient of the 2007 Nobel Peace Prize. She helped determine and explain the cause of the formation of the ozone hole over Antarctica, and has authored many important papers on climate change. She has been awarded the top scientific honors in the US and France (the National Medal of Science and the Grande Medaille, respectively), and is a member of the National Academy of Sciences, the Royal Society, the French Academy of Sciences, and the European Academy of Sciences. Formerly a professor at the University of Colorado, she is now at MIT, and continues to work at NOAA.
+Atmospheric and climate scientist Susan {{term}}Solomon{{/term}} ([[xref:CNX_Chem_09_03_SusanSolom]]) is the author of one of [[i:The New York Times]] books of the year ([[i:The Coldest March]], 2001), one of Time magazine’s 100 most influential people in the world (2008), and a working group leader of the Intergovernmental Panel on Climate Change (IPCC), which was the recipient of the 2007 Nobel Peace Prize. She helped determine and explain the cause of the formation of the ozone hole over Antarctica, and has authored many important papers on climate change. She has been awarded the top scientific honors in the US and France (the National Medal of Science and the Grande Medaille, respectively), and is a member of the National Academy of Sciences, the Royal Society, the French Academy of Sciences, and the European Academy of Sciences. Formerly a professor at the University of Colorado, she is now at MIT, and continues to work at NOAA.
 
 <!-- SEG:m68752:para:fs-idp221818192 -->
-For more information, watch this [video](http://openstax.org/l/16SusanSolomon) about Susan Solomon.
+For more information, watch this [[link:video|http://openstax.org/l/16SusanSolomon]] about Susan Solomon.
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_SusanSolom-caption -->
 Susan Solomon’s research focuses on climate change and has been instrumental in determining the cause of the ozone hole over Antarctica. (credit: National Oceanic and Atmospheric Administration)
@@ -710,10 +710,10 @@ The ideal gas law can be used to derive a number of convenient equations relatin
 Key Equations
 
 <!-- SEG:m68752:entry:auto-238 -->
-{{i}}P[[sub:Total]]{{/i}} = {{i}}P[[sub:A]]{{/i}} + {{i}}P[[sub:B]]{{/i}} + {{i}}P[[sub:C]]{{/i}} + … = Ʃ[[sub:i]]{{i}}P{{/i}}[[sub:i]]
+[[i:P[[sub:Total]]]] = [[i:P[[sub:A]]]] + [[i:P[[sub:B]]]] + [[i:P[[sub:C]]]] + … = Ʃ[[sub:i]][[i:P]][[sub:i]]
 
 <!-- SEG:m68752:entry:auto-239 -->
-{{i}}P[[sub:A]]{{/i}} = {{i}}X[[sub:A]] P[[sub:Total]]{{/i}}
+[[i:P[[sub:A]]]] = [[i:X[[sub:A]] P[[sub:Total]]]]
 
 <!-- SEG:m68752:entry:auto-240 -->
 [[MATH:23]]
@@ -734,7 +734,7 @@ Calculate the density of Freon 12, CF[[sub:2]]Cl[[sub:2]], at 30.0 °C and 0.954
 Which is denser at the same temperature and pressure, dry air or air saturated with water vapor? Explain.
 
 <!-- SEG:m68752:problem:fs-idp212774384 -->
-A cylinder of O[[sub:2]]({{i}}g{{/i}}) used in breathing by patients with emphysema has a volume of 3.00 L at a pressure of 10.0 atm. If the temperature of the cylinder is 28.0 °C, what mass of oxygen is in the cylinder?
+A cylinder of O[[sub:2]]([[i:g]]) used in breathing by patients with emphysema has a volume of 3.00 L at a pressure of 10.0 atm. If the temperature of the cylinder is 28.0 °C, what mass of oxygen is in the cylinder?
 
 <!-- SEG:m68752:solution:fs-idp72246304 -->
 38.8 g
@@ -794,7 +794,7 @@ Yes
 A commercial mercury vapor analyzer can detect, in air, concentrations of gaseous Hg atoms (which are poisonous) as low as 2 [[MATH:24]] 10[[sup:−6]] mg/L of air. At this concentration, what is the partial pressure of gaseous mercury if the atmospheric pressure is 733 torr at 26 °C?
 
 <!-- SEG:m68752:problem:fs-idp69022144 -->
-A sample of carbon monoxide was collected over water at a total pressure of 756 torr and a temperature of 18 °C. What is the pressure of the carbon monoxide? (See [#fs-idm68841392] for the vapor pressure of water.)
+A sample of carbon monoxide was collected over water at a total pressure of 756 torr and a temperature of 18 °C. What is the pressure of the carbon monoxide? (See [[xref:fs-idm68841392]] for the vapor pressure of water.)
 
 <!-- SEG:m68752:solution:fs-idp34956096 -->
 740 torr
@@ -824,7 +824,7 @@ Cavendish prepared hydrogen in 1766 by the novel method of passing steam through
 (b) Answer the question.
 
 <!-- SEG:m68752:problem:fs-idp98992288 -->
-The chlorofluorocarbon CCl[[sub:2]]F[[sub:2]] can be recycled into a different compound by reaction with hydrogen to produce CH[[sub:2]]F[[sub:2]]({{i}}g{{/i}}), a compound useful in chemical manufacturing:[[BR]] [[MATH:27]]
+The chlorofluorocarbon CCl[[sub:2]]F[[sub:2]] can be recycled into a different compound by reaction with hydrogen to produce CH[[sub:2]]F[[sub:2]]([[i:g]]), a compound useful in chemical manufacturing:[[BR]] [[MATH:27]]
 
 <!-- SEG:m68752:problem:fs-idp144355856 -->
 (a) Outline the steps necessary to answer the following question: What volume of hydrogen at 225 atm and 35.5 °C would be required to react with 1 ton (1.000 [[MATH:28]] 10[[sup:3]] kg) of CCl[[sub:2]]F[[sub:2]]?
@@ -872,7 +872,7 @@ What volume of O[[sub:2]] at STP is required to oxidize 8.0 L of NO at STP to NO
 Consider the following questions:
 
 <!-- SEG:m68752:problem:fs-idm79444368 -->
-(a) What is the total volume of the CO[[sub:2]]({{i}}g{{/i}}) and H[[sub:2]]O({{i}}g{{/i}}) at 600 °C and 0.888 atm produced by the combustion of 1.00 L of C[[sub:2]]H[[sub:6]]({{i}}g{{/i}}) measured at STP?
+(a) What is the total volume of the CO[[sub:2]]([[i:g]]) and H[[sub:2]]O([[i:g]]) at 600 °C and 0.888 atm produced by the combustion of 1.00 L of C[[sub:2]]H[[sub:6]]([[i:g]]) measured at STP?
 
 <!-- SEG:m68752:problem:fs-idp143036432 -->
 (b) What is the partial pressure of H[[sub:2]]O in the product gases?

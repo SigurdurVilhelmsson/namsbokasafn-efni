@@ -23,7 +23,7 @@ Electrolysis
 The Preparation of Sodium
 
 <!-- SEG:m68830:para:fs-idp77704912 -->
-The most important method for the production of sodium is the electrolysis of molten sodium chloride; the set-up is a {{term}}Downs cell{{/term}}, shown in [#CNX_Chem_18_02_DownsCell]. The reaction involved in this process is:
+The most important method for the production of sodium is the electrolysis of molten sodium chloride; the set-up is a {{term}}Downs cell{{/term}}, shown in [[xref:CNX_Chem_18_02_DownsCell]]. The reaction involved in this process is:
 
 <!-- SEG:m68830:para:fs-idp72558800 -->
 The electrolysis cell contains molten sodium chloride (melting point 801 °C), to which calcium chloride has been added to lower the melting point to 600 °C (a colligative effect). The passage of a direct current through the cell causes the sodium ions to migrate to the negatively charged cathode and pick up electrons, reducing the ions to sodium metal. Chloride ions migrate to the positively charged anode, lose electrons, and undergo oxidation to chlorine gas. The overall cell reaction comes from adding the following reactions:
@@ -38,7 +38,7 @@ Pure sodium metal is isolated by electrolysis of molten sodium chloride using a 
 The Preparation of Aluminum
 
 <!-- SEG:m68830:para:fs-idp122485616 -->
-The preparation of aluminum utilizes a process invented in 1886 by Charles M. {{term}}Hall{{/term}}, who began to work on the problem while a student at Oberlin College in Ohio. Paul L. T. {{term}}Héroult{{/term}} discovered the process independently a month or two later in France. In honor to the two inventors, this electrolysis cell is known as the {{term}}Hall–Héroult cell{{/term}}. The Hall–Héroult cell is an electrolysis cell for the production of aluminum. [#CNX_Chem_18_02_HallHerCell] illustrates the Hall–Héroult cell.
+The preparation of aluminum utilizes a process invented in 1886 by Charles M. {{term}}Hall{{/term}}, who began to work on the problem while a student at Oberlin College in Ohio. Paul L. T. {{term}}Héroult{{/term}} discovered the process independently a month or two later in France. In honor to the two inventors, this electrolysis cell is known as the {{term}}Hall–Héroult cell{{/term}}. The Hall–Héroult cell is an electrolysis cell for the production of aluminum. [[xref:CNX_Chem_18_02_HallHerCell]] illustrates the Hall–Héroult cell.
 
 <!-- SEG:m68830:para:fs-idp233465360 -->
 The production of aluminum begins with the purification of bauxite, the most common source of aluminum. The reaction of bauxite, AlO(OH), with hot sodium hydroxide forms soluble sodium aluminate, while clay and other impurities remain undissolved:
@@ -47,7 +47,7 @@ The production of aluminum begins with the purification of bauxite, the most com
 After the removal of the impurities by filtration, the addition of acid to the aluminate leads to the reprecipitation of aluminum hydroxide:
 
 <!-- SEG:m68830:para:fs-idp46332064 -->
-The next step is to remove the precipitated aluminum hydroxide by filtration. Heating the hydroxide produces aluminum oxide, Al[[sub:2]]O[[sub:3]], which dissolves in a molten mixture of cryolite, Na[[sub:3]]AlF[[sub:6]], and calcium fluoride, CaF[[sub:2]]. Electrolysis of this solution takes place in a cell like that shown in [#CNX_Chem_18_02_HallHerCell]. Reduction of aluminum ions to the metal occurs at the cathode, while oxygen, carbon monoxide, and carbon dioxide form at the anode.
+The next step is to remove the precipitated aluminum hydroxide by filtration. Heating the hydroxide produces aluminum oxide, Al[[sub:2]]O[[sub:3]], which dissolves in a molten mixture of cryolite, Na[[sub:3]]AlF[[sub:6]], and calcium fluoride, CaF[[sub:2]]. Electrolysis of this solution takes place in a cell like that shown in [[xref:CNX_Chem_18_02_HallHerCell]]. Reduction of aluminum ions to the metal occurs at the cathode, while oxygen, carbon monoxide, and carbon dioxide form at the anode.
 
 <!-- SEG:m68830:caption:CNX_Chem_18_02_HallHerCell-caption -->
 An electrolytic cell is used for the production of aluminum. The electrolysis of a solution of cryolite and calcium fluoride results in aluminum metal at the cathode, and oxygen, carbon monoxide, and carbon dioxide at the anode.
@@ -155,7 +155,7 @@ Why is it possible for an active metal like aluminum to be useful as a structura
 Describe the production of metallic aluminum by electrolytic reduction.
 
 <!-- SEG:m68830:solution:fs-idp15402272 -->
-Extract from ore: [[MATH:6]][[BR]] Recover: [[MATH:7]][[BR]] Sinter: [[MATH:8]][[BR]] Dissolve in Na[[sub:3]]AlF[[sub:6]]({{i}}l{{/i}}) and electrolyze: [[MATH:9]]
+Extract from ore: [[MATH:6]][[BR]] Recover: [[MATH:7]][[BR]] Sinter: [[MATH:8]][[BR]] Dissolve in Na[[sub:3]]AlF[[sub:6]]([[i:l]]) and electrolyze: [[MATH:9]]
 
 <!-- SEG:m68830:problem:fs-idp223677712 -->
 What is the common ore of tin and how is tin separated from it?

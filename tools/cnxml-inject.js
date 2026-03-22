@@ -39,6 +39,7 @@ import fs from 'fs';
 import path from 'path';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import { compareTagCounts } from './cnxml-fidelity-check.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -782,7 +783,17 @@ function annotateInlineTerms(isSegments, enSegments) {
       const isNewFormat = newInner !== undefined;
       if (termIndex >= enTermTexts.length) return match;
 
-      const enTerm = enTermTexts[termIndex].toLowerCase();
+      // Convert inline markers in EN term text to CNXML so annotations don't inject
+      // raw API markers (like [[sup:3]], {{i}}) into IS segments — which would trigger
+      // hasApiMarkers and disable legacy pattern conversion in reverseInlineMarkup().
+      // Converting to CNXML preserves tag counts (emphasis, sup, sub) in the output.
+      const enTermRaw = enTermTexts[termIndex];
+      const enTerm = enTermRaw
+        .replace(/\[\[sup:([^\]]+)\]\]/g, '<sup>$1</sup>')
+        .replace(/\[\[sub:([^\]]+)\]\]/g, '<sub>$1</sub>')
+        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>')
+        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+        .toLowerCase();
       termIndex++;
 
       // Skip if IS and EN terms are the same (case-insensitive)
@@ -913,6 +924,13 @@ function reverseInlineMarkup(
 ) {
   let result = text;
 
+  // Detect if this segment was API-translated by looking for new-format markers.
+  // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
+  // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
+  const hasApiMarkers = /\{\{[ib]\}\}|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(
+    text
+  );
+
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
   result = result.replace(/\\\[/g, '[');
   result = result.replace(/\\\]/g, ']');
@@ -976,19 +994,29 @@ function reverseInlineMarkup(
   // Handle nested emphasis markers {{i}}text{{/i}} inside the content.
   result = result.replace(/\[\[sub:([^\]]+)\]\]/g, (match, content) => {
     const inner = content
+      .replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>')
+      .replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>')
       .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
       .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
     return `<sub>${inner}</sub>`;
   });
   result = result.replace(/\[\[sup:([^\]]+)\]\]/g, (match, content) => {
     const inner = content
+      .replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>')
+      .replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>')
       .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
       .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
     return `<sup>${inner}</sup>`;
   });
 
+  // Restore API-safe [[i:text]] and [[b:text]] bracket emphasis markers to CNXML.
+  // These match the proven [[sup:]]/[[sub:]] pattern. Must come BEFORE {{i}}/{{b}}
+  // because [[i:]] content might contain nested {{i}} from older extraction formats.
+  result = result.replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>');
+  result = result.replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>');
+
   // Restore API-safe {{i}}text{{/i}} and {{b}}text{{/b}} emphasis markers to CNXML.
-  // These paired markers survive the API better than markdown *text* and **text**.
+  // Legacy paired marker format — kept for backward compatibility.
   result = result.replace(
     /\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g,
     '<emphasis effect="bold">$1</emphasis>'
@@ -1006,27 +1034,38 @@ function reverseInlineMarkup(
     return `{{MATHBLOCK:${mathBlocks.length - 1}}}`;
   });
 
-  // BACKWARD COMPAT: Convert legacy combined sub/sup + emphasis patterns.
-  // Old extraction used ~*t*~ for <sub><emphasis>t</emphasis></sub>.
-  // Bold variants first (** before *) to avoid partial matching.
-  result = result.replace(
-    /~\*\*([^*~]+)\*\*~/g,
-    '<sub><emphasis effect="bold">$1</emphasis></sub>'
-  );
-  result = result.replace(/~\*([^*~]+)\*~/g, '<sub><emphasis effect="italics">$1</emphasis></sub>');
-  result = result.replace(
-    /\^\*\*([^*^]+)\*\*\^/g,
-    '<sup><emphasis effect="bold">$1</emphasis></sup>'
-  );
-  result = result.replace(
-    /\^\*([^*^]+)\*\^/g,
-    '<sup><emphasis effect="italics">$1</emphasis></sup>'
-  );
-
-  // BACKWARD COMPAT: Convert legacy markdown emphasis markers to CNXML
+  // Convert ++text++ underline markers — used by current extraction for ALL segments
+  // (underline has no API-safe {{u}} variant, so ++text++ is always the format)
   result = result.replace(/\+\+(.+?)\+\+/g, '<emphasis effect="underline">$1</emphasis>');
-  result = result.replace(/\*\*([^*]+)\*\*/g, '<emphasis effect="bold">$1</emphasis>');
-  result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
+
+  // BACKWARD COMPAT: Legacy patterns only for non-API segments.
+  // API segments use {{i}}/{{b}}/[[sub:]]/[[sup:]] — legacy *text*, ~text~, ^text^
+  // would create false-positive markup from translated content (chemical formulas, etc.)
+  if (!hasApiMarkers) {
+    // Convert legacy combined sub/sup + emphasis patterns.
+    // Old extraction used ~*t*~ for <sub><emphasis>t</emphasis></sub>.
+    // Bold variants first (** before *) to avoid partial matching.
+    result = result.replace(
+      /~\*\*([^*~]+)\*\*~/g,
+      '<sub><emphasis effect="bold">$1</emphasis></sub>'
+    );
+    result = result.replace(
+      /~\*([^*~]+)\*~/g,
+      '<sub><emphasis effect="italics">$1</emphasis></sub>'
+    );
+    result = result.replace(
+      /\^\*\*([^*^]+)\*\*\^/g,
+      '<sup><emphasis effect="bold">$1</emphasis></sup>'
+    );
+    result = result.replace(
+      /\^\*([^*^]+)\*\^/g,
+      '<sup><emphasis effect="italics">$1</emphasis></sup>'
+    );
+
+    // Convert legacy markdown emphasis markers to CNXML
+    result = result.replace(/\*\*([^*]+)\*\*/g, '<emphasis effect="bold">$1</emphasis>');
+    result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
+  }
 
   // Convert class-only emphasis markers {=text=} back to CNXML
   // Restore class from sidecar by occurrence index
@@ -1049,10 +1088,14 @@ function reverseInlineMarkup(
   // Must come BEFORE legacy __term__ handler so new format takes priority
   result = result.replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '<term>$1</term>');
 
-  // BACKWARD COMPAT: Convert legacy term markers back to CNXML
-  // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
-  result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
-  result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
+  // BACKWARD COMPAT: Convert legacy term markers back to CNXML (non-API only).
+  // API segments use {{term}} (already converted above); any remaining __text__
+  // would be false positives from translated content.
+  if (!hasApiMarkers) {
+    // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
+    result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
+    result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
+  }
 
   // Restore MathML blocks after term wrapping
   result = result.replace(/\{\{MATHBLOCK:(\d+)\}\}/g, (match, index) => {
@@ -1069,42 +1112,62 @@ function reverseInlineMarkup(
     return `<term>${restored}</term>`;
   });
 
-  // Convert self-closing document cross-references (e.g., [m68674#fs-idm81346144])
-  // Must come before generic [#...] to avoid partial match
-  result = result.replace(/\[([^\]#]+)#([^\]]+)\]/g, '<link document="$1" target-id="$2"/>');
+  // API-safe bracket link formats — unambiguous, no false positives
+  // [[xref:target-id]] or [[xref:text|target-id]]
+  result = result.replace(/\[\[xref:([^\]|]+)\|([^\]]+)\]\]/g, '<link target-id="$2">$1</link>');
+  result = result.replace(/\[\[xref:([^\]]+)\]\]/g, '<link target-id="$1"/>');
 
-  // Convert self-closing document links without target-id (e.g., [doc:m68860])
-  result = result.replace(/\[doc:([^\]]+)\]/g, '<link document="$1"/>');
+  // [[docref:doc#target]] or [[docref:text|doc#target]] or [[docref:text|doc]]
+  result = result.replace(
+    /\[\[docref:([^\]|]+)\|([^\]#]+)#([^\]]+)\]\]/g,
+    '<link document="$2" target-id="$3">$1</link>'
+  );
+  result = result.replace(/\[\[docref:([^\]|]+)\|([^\]]+)\]\]/g, '<link document="$2">$1</link>');
+  result = result.replace(
+    /\[\[docref:([^\]#]+)#([^\]]+)\]\]/g,
+    '<link document="$1" target-id="$2"/>'
+  );
+  result = result.replace(/\[\[docref:([^\]]+)\]\]/g, '<link document="$1"/>');
 
-  // Convert self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
-  result = result.replace(/\[#([^\]]+)\]/g, '<link target-id="$1"/>');
+  // [[link:text|url]]
+  result = result.replace(/\[\[link:([^\]|]+)\|([^\]]+)\]\]/g, '<link url="$2">$1</link>');
 
-  // Convert links with text back to CNXML
+  // BACKWARD COMPAT: Legacy link formats (for segments not yet re-translated)
+  // Self-closing document cross-references (e.g., [m68674#fs-idm81346144])
+  result = result.replace(/\[(m\d+)#([^\]]+)\]/g, '<link document="$1" target-id="$2"/>');
+
+  // Self-closing document links without target-id (e.g., [doc:m68860])
+  result = result.replace(/\[doc:(m\d+)\]/g, '<link document="$1"/>');
+
+  // Self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
+  result = result.replace(/\[#([A-Za-z_][\w.-]+)\]/g, '<link target-id="$1"/>');
+
+  // Links with text — only match valid reference patterns
   result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
-    if (url.startsWith('doc:')) {
-      // Cross-document link without target-id (e.g., doc:m68860)
+    if (url.startsWith('doc:m')) {
       return `<link document="${url.substring(4)}">${linkText}</link>`;
-    } else if (url.startsWith('#')) {
-      // Internal reference
+    } else if (url.startsWith('#') && /^#[A-Za-z_][\w.-]+$/.test(url)) {
       return `<link target-id="${url.substring(1)}">${linkText}</link>`;
-    } else if (url.includes('#')) {
-      // Cross-document reference with target
+    } else if (/^m\d+#/.test(url)) {
       const [doc, target] = url.split('#');
       return `<link document="${doc}" target-id="${target}">${linkText}</link>`;
-    } else {
-      // External URL
+    } else if (url.startsWith('http://') || url.startsWith('https://')) {
       return `<link url="${url}">${linkText}</link>`;
     }
+    return match;
   });
 
-  // Convert sub/sup back (only match when part of a word, not standalone approximations)
-  // First handle isotope notations specifically: space + ^number^ + letter (e.g., " ^14^C")
-  result = result.replace(/\s\^([0-9]+)\^([A-Z][a-z]?)/g, ' <sup>$1</sup>$2');
+  // Convert legacy sub/sup back — only for non-API segments.
+  // API segments already use [[sub:]] and [[sup:]] (converted above).
+  if (!hasApiMarkers) {
+    // First handle isotope notations: space + ^number^ + letter (e.g., " ^14^C")
+    result = result.replace(/\s\^([0-9]+)\^([A-Z][a-z]?)/g, ' <sup>$1</sup>$2');
 
-  // Then handle general sub/sup that are part of words
-  // Requires non-whitespace before tilde/caret and no whitespace in capture to avoid greedy matching
-  result = result.replace(/(?<=[^\s~])~([^\s~]{1,15})~/g, '<sub>$1</sub>');
-  result = result.replace(/(?<=[^\s^])\^([^\s^]{1,15})\^/g, '<sup>$1</sup>');
+    // General sub/sup that are part of words
+    // Requires non-whitespace before tilde/caret and no whitespace in capture
+    result = result.replace(/(?<=[^\s~])~([^\s~]{1,15})~/g, '<sub>$1</sub>');
+    result = result.replace(/(?<=[^\s^])\^([^\s^]{1,15})\^/g, '<sup>$1</sup>');
+  }
 
   // API-safe footnote markers: {{fn}}text{{/fn}} → <footnote>text</footnote>
   // Must come BEFORE legacy [footnote:] handler so new format takes priority
@@ -1388,9 +1451,17 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
         if (annotateEn && enSegments && item.termSegmentId) {
           const enTermRaw = enSegments.get(item.termSegmentId);
           if (enTermRaw) {
-            // EN glossary terms may have __term__ markers — strip them
+            // EN glossary terms may have markers — convert to CNXML
             const enTerm = enTermRaw
               .replace(/__([^_]+)__/g, '$1')
+              .replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '$1')
+              .replace(/\[\[sup:([^\]]+)\]\]/g, '<sup>$1</sup>')
+              .replace(/\[\[sub:([^\]]+)\]\]/g, '<sub>$1</sub>')
+              .replace(
+                /\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g,
+                '<emphasis effect="italics">$1</emphasis>'
+              )
+              .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
               .trim()
               .toLowerCase();
             // Strip any __term__ markers from IS text for comparison
@@ -1825,7 +1896,6 @@ function buildExample(element, getSeg, equations, originalCnxml) {
       for (const child of element.content || []) {
         if (child.type === 'para' && child.id) {
           const paraText = child.segmentId ? getSeg(child.segmentId) : '';
-          const paraPattern = new RegExp(`<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`, 'g');
 
           let titleText = '';
           // First para: use the example title
@@ -1839,6 +1909,9 @@ function buildExample(element, getSeg, equations, originalCnxml) {
 
           const titleElement = titleText ? `<title>${titleText}</title>` : '';
           const replacementText = `<para id="${child.id}">${titleElement}${paraText}</para>`;
+          // Use non-greedy regex — depth-aware replacement would remove nested
+          // content (lists, equations) that the extraction separated into siblings.
+          const paraPattern = new RegExp(`<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`, 'g');
           exampleCnxml = exampleCnxml.replace(paraPattern, replacementText);
           replacedParaIds.add(child.id);
 
@@ -2481,10 +2554,25 @@ async function main() {
         continue;
       }
 
+      // Round-trip validation: compare source vs translated tag counts
+      const fidelityDiffs = compareTagCounts(originalCnxml, result.cnxml);
+      if (fidelityDiffs.length > 0 && args.verbose) {
+        const totalDiff = fidelityDiffs.reduce((s, d) => s + Math.abs(d.diff), 0);
+        console.error(
+          `  Fidelity: ${fidelityDiffs.length} tag discrepancy(ies) (${totalDiff} total)`
+        );
+        for (const d of fidelityDiffs) {
+          console.error(
+            `    ${d.tag}: ${d.source} → ${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff})`
+          );
+        }
+      }
+
       const outputPath = writeOutput(args.chapter, moduleId, result.cnxml, track);
 
       const status = result.report.complete ? 'COMPLETE' : 'INCOMPLETE';
-      console.log(`${moduleId}: Translated CNXML written [${status}]`);
+      const fidelityStatus = fidelityDiffs.length === 0 ? ' [PERFECT fidelity]' : '';
+      console.log(`${moduleId}: Translated CNXML written [${status}]${fidelityStatus}`);
       console.log(`  → ${outputPath}`);
       if (!result.report.complete) {
         console.log(`  Missing segments: ${result.report.segmentsMissing.length}`);

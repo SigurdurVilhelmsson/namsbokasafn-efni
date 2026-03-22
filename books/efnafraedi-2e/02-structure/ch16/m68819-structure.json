@@ -181,7 +181,7 @@
       "class": null,
       "title": {
         "segmentId": "m68819:title:fs-idm348811808-title",
-        "text": "What’s “Free” about Δ{{i}}G{{/i}}?"
+        "text": "What’s “Free” about Δ[[i:G]]?"
       },
       "content": [
         {
@@ -245,7 +245,7 @@
           "id": "fs-idm117444432",
           "title": {
             "segmentId": "m68819:example-title:fs-idm117444432-title",
-            "text": "Using Standard Enthalpy and Entropy Changes to Calculate Δ{{i}}G{{/i}}°"
+            "text": "Using Standard Enthalpy and Entropy Changes to Calculate Δ[[i:G]]°"
           },
           "content": [
             {
@@ -449,7 +449,7 @@
           "id": "fs-idm202485584",
           "title": {
             "segmentId": "m68819:example-title:fs-idm202485584-title",
-            "text": "Using Standard Free Energies of Formation to Calculate Δ{{i}}G{{/i}}°"
+            "text": "Using Standard Free Energies of Formation to Calculate Δ[[i:G]]°"
           },
           "content": [
             {
@@ -1149,7 +1149,7 @@
           "id": "fs-idm192477856",
           "title": {
             "segmentId": "m68819:example-title:fs-idm192477856-title",
-            "text": "Calculating Δ{{i}}G{{/i}} under Nonstandard Conditions"
+            "text": "Calculating Δ[[i:G]] under Nonstandard Conditions"
           },
           "content": [
             {

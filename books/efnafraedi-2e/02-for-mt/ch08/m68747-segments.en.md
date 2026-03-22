@@ -23,10 +23,10 @@ Relate these electron configurations to the molecules’ stabilities and magneti
 For almost every covalent molecule that exists, we can now draw the Lewis structure, predict the electron-pair geometry, predict the molecular geometry, and come close to predicting bond angles. However, one of the most important molecules we know, the oxygen molecule O[[sub:2]], presents a problem with respect to its Lewis structure. We would write the following Lewis structure for O[[sub:2]]:
 
 <!-- SEG:m68747:para:fs-idm179265392 -->
-This electronic structure adheres to all the rules governing Lewis theory. There is an O=O double bond, and each oxygen atom has eight electrons around it. However, this picture is at odds with the magnetic behavior of oxygen. By itself, O[[sub:2]] is not magnetic, but it is attracted to magnetic fields. Thus, when we pour liquid oxygen past a strong magnet, it collects between the poles of the magnet and defies gravity, as in [m68743#CNX_Chem_08_00_LiqO2]. Such attraction to a magnetic field is called {{term}}paramagnetism{{/term}}, and it arises in molecules that have unpaired electrons. And yet, the Lewis structure of O[[sub:2]] indicates that all electrons are paired. How do we account for this discrepancy?
+This electronic structure adheres to all the rules governing Lewis theory. There is an O=O double bond, and each oxygen atom has eight electrons around it. However, this picture is at odds with the magnetic behavior of oxygen. By itself, O[[sub:2]] is not magnetic, but it is attracted to magnetic fields. Thus, when we pour liquid oxygen past a strong magnet, it collects between the poles of the magnet and defies gravity, as in [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Such attraction to a magnetic field is called {{term}}paramagnetism{{/term}}, and it arises in molecules that have unpaired electrons. And yet, the Lewis structure of O[[sub:2]] indicates that all electrons are paired. How do we account for this discrepancy?
 
 <!-- SEG:m68747:para:fs-idm140344208 -->
-Magnetic susceptibility measures the force experienced by a substance in a magnetic field. When we compare the weight of a sample to the weight measured in a magnetic field ([#CNX_Chem_08_04_Gouy]), paramagnetic samples that are attracted to the magnet will appear heavier because of the force exerted by the magnetic field. We can calculate the number of unpaired electrons based on the increase in weight.
+Magnetic susceptibility measures the force experienced by a substance in a magnetic field. When we compare the weight of a sample to the weight measured in a magnetic field ([[xref:CNX_Chem_08_04_Gouy]]), paramagnetic samples that are attracted to the magnet will appear heavier because of the force exerted by the magnetic field. We can calculate the number of unpaired electrons based on the increase in weight.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Gouy-caption -->
 A {{term}}Gouy{{/term}} balance compares the mass of a sample in the presence of a magnetic field with the mass with the electromagnet turned off to determine the number of unpaired electrons in a sample.
@@ -35,10 +35,10 @@ A {{term}}Gouy{{/term}} balance compares the mass of a sample in the presence of
 Experiments show that each O[[sub:2]] molecule has two unpaired electrons. The Lewis-structure model does not predict the presence of these two unpaired electrons. Unlike oxygen, the apparent weight of most molecules decreases slightly in the presence of an inhomogeneous magnetic field. Materials in which all of the electrons are paired are {{term}}diamagnetic{{/term}} and weakly repel a magnetic field. Paramagnetic and diamagnetic materials do not act as permanent magnets. Only in the presence of an applied magnetic field do they demonstrate attraction or repulsion.
 
 <!-- SEG:m68747:para:fs-idm182773888 -->
-View this [brief video](http://openstax.org/l/16diamagnetic) to see several demonstrations of paramagnetic and diamagnetic behavior.
+View this [[link:brief video|http://openstax.org/l/16diamagnetic]] to see several demonstrations of paramagnetic and diamagnetic behavior.
 
 <!-- SEG:m68747:para:fs-idm112096224 -->
-Molecular orbital theory (MO theory) provides an explanation of chemical bonding that accounts for the paramagnetism of the oxygen molecule. It also explains the bonding in a number of other molecules, such as violations of the octet rule and more molecules with more complicated bonding (beyond the scope of this text) that are difficult to describe with Lewis structures. Additionally, it provides a model for describing the energies of electrons in a molecule and the probable location of these electrons. Unlike valence bond theory, which uses hybrid orbitals that are assigned to one specific atom, MO theory uses the combination of atomic orbitals to yield molecular orbitals that are {{i}}delocalized{{/i}} over the entire molecule rather than being localized on its constituent atoms. MO theory also helps us understand why some substances are electrical conductors, others are semiconductors, and still others are insulators. [#fs-idm162808816] summarizes the main points of the two complementary bonding theories. Both theories provide different, useful ways of describing molecular structure.
+Molecular orbital theory (MO theory) provides an explanation of chemical bonding that accounts for the paramagnetism of the oxygen molecule. It also explains the bonding in a number of other molecules, such as violations of the octet rule and more molecules with more complicated bonding (beyond the scope of this text) that are difficult to describe with Lewis structures. Additionally, it provides a model for describing the energies of electrons in a molecule and the probable location of these electrons. Unlike valence bond theory, which uses hybrid orbitals that are assigned to one specific atom, MO theory uses the combination of atomic orbitals to yield molecular orbitals that are [[i:delocalized]] over the entire molecule rather than being localized on its constituent atoms. MO theory also helps us understand why some substances are electrical conductors, others are semiconductors, and still others are insulators. [[xref:fs-idm162808816]] summarizes the main points of the two complementary bonding theories. Both theories provide different, useful ways of describing molecular structure.
 
 <!-- SEG:m68747:entry:auto-15 -->
 Comparison of Bonding Theories
@@ -56,7 +56,7 @@ considers bonds as localized between one pair of atoms
 considers electrons delocalized throughout the entire molecule
 
 <!-- SEG:m68747:entry:auto-20 -->
-creates bonds from overlap of atomic orbitals ({{i}}s, p, d{{/i}}…) and hybrid orbitals ({{i}}sp, sp{{/i}}[[sup:2]], {{i}}sp{{/i}}[[sup:3]]…)
+creates bonds from overlap of atomic orbitals ([[i:s, p, d]]…) and hybrid orbitals ([[i:sp, sp]][[sup:2]], [[i:sp]][[sup:3]]…)
 
 <!-- SEG:m68747:entry:auto-21 -->
 combines atomic orbitals to form molecular orbitals (σ, σ*, π, π*)
@@ -77,40 +77,40 @@ predicts the arrangement of electrons in molecules
 needs multiple structures to describe resonance
 
 <!-- SEG:m68747:para:fs-idm11457392 -->
-{{term}}Molecular orbital theory{{/term}} describes the distribution of electrons in molecules in much the same way that the distribution of electrons in atoms is described using atomic orbitals. Using quantum mechanics, the behavior of an electron in a molecule is still described by a wave function, {{i}}Ψ{{/i}}, analogous to the behavior in an atom. Just like electrons around isolated atoms, electrons around atoms in molecules are limited to discrete (quantized) energies. The region of space in which a valence electron in a molecule is likely to be found is called a {{term}}molecular orbital ({{i}}Ψ{{/i}}[[sup:2]]){{/term}}. Like an atomic orbital, a molecular orbital is full when it contains two electrons with opposite spin.
+{{term}}Molecular orbital theory{{/term}} describes the distribution of electrons in molecules in much the same way that the distribution of electrons in atoms is described using atomic orbitals. Using quantum mechanics, the behavior of an electron in a molecule is still described by a wave function, [[i:Ψ]], analogous to the behavior in an atom. Just like electrons around isolated atoms, electrons around atoms in molecules are limited to discrete (quantized) energies. The region of space in which a valence electron in a molecule is likely to be found is called a {{term}}molecular orbital ([[i:Ψ]][[sup:2]]){{/term}}. Like an atomic orbital, a molecular orbital is full when it contains two electrons with opposite spin.
 
 <!-- SEG:m68747:para:fs-idm112433808 -->
 We will consider the molecular orbitals in molecules composed of two identical atoms (H[[sub:2]] or Cl[[sub:2]], for example). Such molecules are called {{term}}homonuclear diatomic molecules{{/term}}. In these diatomic molecules, several types of molecular orbitals occur.
 
 <!-- SEG:m68747:para:fs-idm141141248 -->
-The mathematical process of combining atomic orbitals to generate molecular orbitals is called the {{term}}linear combination of atomic orbitals (LCAO){{/term}}. The wave function describes the wavelike properties of an electron. Molecular orbitals are combinations of atomic orbital wave functions. Combining waves can lead to constructive interference, in which peaks line up with peaks, or destructive interference, in which peaks line up with troughs ([#CNX_Chem_08_04_waveadd]). In orbitals, the waves are three dimensional, and they combine with in-phase waves producing regions with a higher probability of electron density and out-of-phase waves producing nodes, or regions of no electron density.
+The mathematical process of combining atomic orbitals to generate molecular orbitals is called the {{term}}linear combination of atomic orbitals (LCAO){{/term}}. The wave function describes the wavelike properties of an electron. Molecular orbitals are combinations of atomic orbital wave functions. Combining waves can lead to constructive interference, in which peaks line up with peaks, or destructive interference, in which peaks line up with troughs ([[xref:CNX_Chem_08_04_waveadd]]). In orbitals, the waves are three dimensional, and they combine with in-phase waves producing regions with a higher probability of electron density and out-of-phase waves producing nodes, or regions of no electron density.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_waveadd-caption -->
 (a) When in-phase waves combine, constructive interference produces a wave with greater amplitude. (b) When out-of-phase waves combine, destructive interference produces a wave with less (or no) amplitude.
 
 <!-- SEG:m68747:para:fs-idm153714976 -->
-There are two types of molecular orbitals that can form from the overlap of two atomic {{i}}s{{/i}} orbitals on adjacent atoms. The two types are illustrated in [#CNX_Chem_08_04_ssigma]. The in-phase combination produces a lower energy {{term}}σ[[sub:{{i}}s{{/i}}]] molecular orbital{{/term}} (read as "sigma-s") in which most of the electron density is directly between the nuclei. The out-of-phase addition (which can also be thought of as subtracting the wave functions) produces a higher energy {{term}}[[MATH:1]] molecular orbital{{/term}} (read as "sigma-s-star") molecular orbital in which there is a node between the nuclei. The asterisk signifies that the orbital is an antibonding orbital. Electrons in a σ{{i}}[[sub:s]]{{/i}} orbital are attracted by both nuclei at the same time and are more stable (of lower energy) than they would be in the isolated atoms. Adding electrons to these orbitals creates a force that holds the two nuclei together, so we call these orbitals {{term}}bonding orbitals{{/term}}. Electrons in the [[MATH:2]] orbitals are located well away from the region between the two nuclei. The attractive force between the nuclei and these electrons pulls the two nuclei apart. Hence, these orbitals are called {{term}}antibonding orbitals{{/term}}. Electrons fill the lower-energy bonding orbital before the higher-energy antibonding orbital, just as they fill lower-energy atomic orbitals before they fill higher-energy atomic orbitals.
+There are two types of molecular orbitals that can form from the overlap of two atomic [[i:s]] orbitals on adjacent atoms. The two types are illustrated in [[xref:CNX_Chem_08_04_ssigma]]. The in-phase combination produces a lower energy {{term}}σ[[sub:[[i:s]]]] molecular orbital{{/term}} (read as "sigma-s") in which most of the electron density is directly between the nuclei. The out-of-phase addition (which can also be thought of as subtracting the wave functions) produces a higher energy {{term}}[[MATH:1]] molecular orbital{{/term}} (read as "sigma-s-star") molecular orbital in which there is a node between the nuclei. The asterisk signifies that the orbital is an antibonding orbital. Electrons in a σ[[i:[[sub:s]]]] orbital are attracted by both nuclei at the same time and are more stable (of lower energy) than they would be in the isolated atoms. Adding electrons to these orbitals creates a force that holds the two nuclei together, so we call these orbitals {{term}}bonding orbitals{{/term}}. Electrons in the [[MATH:2]] orbitals are located well away from the region between the two nuclei. The attractive force between the nuclei and these electrons pulls the two nuclei apart. Hence, these orbitals are called {{term}}antibonding orbitals{{/term}}. Electrons fill the lower-energy bonding orbital before the higher-energy antibonding orbital, just as they fill lower-energy atomic orbitals before they fill higher-energy atomic orbitals.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_ssigma-caption -->
-Sigma (σ) and sigma-star (σ*) molecular orbitals are formed by the combination of two {{i}}s{{/i}} atomic orbitals. The dots (·) indicate the locations of nuclei.
+Sigma (σ) and sigma-star (σ*) molecular orbitals are formed by the combination of two [[i:s]] atomic orbitals. The dots (·) indicate the locations of nuclei.
 
 <!-- SEG:m68747:para:fs-idm201921312 -->
-You can watch [animations](http://openstax.org/l/16molecorbital) visualizing the calculated atomic orbitals combining to form various molecular orbitals at the Orbitron website.
+You can watch [[link:animations|http://openstax.org/l/16molecorbital]] visualizing the calculated atomic orbitals combining to form various molecular orbitals at the Orbitron website.
 
 <!-- SEG:m68747:para:fs-idm148257600 -->
-In {{i}}p{{/i}} orbitals, the wave function gives rise to two lobes with opposite phases, analogous to how a two-dimensional wave has both parts above and below the average. We indicate the phases by shading the orbital lobes different colors. When orbital lobes of the same phase overlap, constructive wave interference increases the electron density. When regions of opposite phase overlap, the destructive wave interference decreases electron density and creates nodes. When {{i}}p{{/i}} orbitals overlap end to end, they create σ and σ* orbitals ([#CNX_Chem_08_04_pMOsigma]). If two atoms are located along the {{i}}x{{/i}}-axis in a Cartesian coordinate system, the two {{i}}p[[sub:x]]{{/i}} orbitals overlap end to end and form σ{{i}}[[sub:px]]{{/i}} (bonding) and [[MATH:3]] (antibonding) (read as "sigma-p-x" and "sigma-p-x star," respectively). Just as with {{i}}s{{/i}}-orbital overlap, the asterisk indicates the orbital with a node between the nuclei, which is a higher-energy, antibonding orbital.
+In [[i:p]] orbitals, the wave function gives rise to two lobes with opposite phases, analogous to how a two-dimensional wave has both parts above and below the average. We indicate the phases by shading the orbital lobes different colors. When orbital lobes of the same phase overlap, constructive wave interference increases the electron density. When regions of opposite phase overlap, the destructive wave interference decreases electron density and creates nodes. When [[i:p]] orbitals overlap end to end, they create σ and σ* orbitals ([[xref:CNX_Chem_08_04_pMOsigma]]). If two atoms are located along the [[i:x]]-axis in a Cartesian coordinate system, the two [[i:p[[sub:x]]]] orbitals overlap end to end and form σ[[i:[[sub:px]]]] (bonding) and [[MATH:3]] (antibonding) (read as "sigma-p-x" and "sigma-p-x star," respectively). Just as with [[i:s]]-orbital overlap, the asterisk indicates the orbital with a node between the nuclei, which is a higher-energy, antibonding orbital.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOsigma-caption -->
-Combining wave functions of two {{i}}p{{/i}} atomic orbitals along the internuclear axis creates two molecular orbitals, σ{{i}}[[sub:p]]{{/i}} and [[MATH:4]]
+Combining wave functions of two [[i:p]] atomic orbitals along the internuclear axis creates two molecular orbitals, σ[[i:[[sub:p]]]] and [[MATH:4]]
 
 <!-- SEG:m68747:para:fs-idm175046592 -->
-The side-by-side overlap of two {{i}}p{{/i}} orbitals gives rise to a {{term}}pi (π) bonding molecular orbital{{/term}} and a {{term}}π* antibonding molecular orbital{{/term}}, as shown in [#CNX_Chem_08_04_pMOpi]. In valence bond theory, we describe π bonds as containing a nodal plane containing the internuclear axis and perpendicular to the lobes of the {{i}}p{{/i}} orbitals, with electron density on either side of the node. In molecular orbital theory, we describe the π orbital by this same shape, and a π bond exists when this orbital contains electrons. Electrons in this orbital interact with both nuclei and help hold the two atoms together, making it a bonding orbital. For the out-of-phase combination, there are two nodal planes created, one along the internuclear axis and a perpendicular one between the nuclei.
+The side-by-side overlap of two [[i:p]] orbitals gives rise to a {{term}}pi (π) bonding molecular orbital{{/term}} and a {{term}}π* antibonding molecular orbital{{/term}}, as shown in [[xref:CNX_Chem_08_04_pMOpi]]. In valence bond theory, we describe π bonds as containing a nodal plane containing the internuclear axis and perpendicular to the lobes of the [[i:p]] orbitals, with electron density on either side of the node. In molecular orbital theory, we describe the π orbital by this same shape, and a π bond exists when this orbital contains electrons. Electrons in this orbital interact with both nuclei and help hold the two atoms together, making it a bonding orbital. For the out-of-phase combination, there are two nodal planes created, one along the internuclear axis and a perpendicular one between the nuclei.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOpi-caption -->
-Side-by-side overlap of each two {{i}}p{{/i}} orbitals results in the formation of two π molecular orbitals. Combining the out-of-phase orbitals results in an antibonding molecular orbital with two nodes. One contains the internuclear axis, and one is perpendicular to the axis. Combining the in-phase orbitals results in a bonding orbital. There is a node (blue) containing the internuclear axis with the two lobes of the orbital located above and below this node.
+Side-by-side overlap of each two [[i:p]] orbitals results in the formation of two π molecular orbitals. Combining the out-of-phase orbitals results in an antibonding molecular orbital with two nodes. One contains the internuclear axis, and one is perpendicular to the axis. Combining the in-phase orbitals results in a bonding orbital. There is a node (blue) containing the internuclear axis with the two lobes of the orbital located above and below this node.
 
 <!-- SEG:m68747:para:fs-idm130124992 -->
-In the molecular orbitals of diatomic molecules, each atom also has two sets of {{i}}p{{/i}} orbitals oriented side by side ({{i}}p[[sub:y]]{{/i}} and {{i}}p[[sub:z]]{{/i}}), so these four atomic orbitals combine pairwise to create two π orbitals and two π* orbitals. The π{{i}}[[sub:py]]{{/i}} and [[MATH:5]] orbitals are oriented at right angles to the π{{i}}[[sub:pz]]{{/i}} and [[MATH:6]] orbitals. Except for their orientation, the π{{i}}[[sub:py]]{{/i}} and π{{i}}[[sub:pz]]{{/i}} orbitals are identical and have the same energy; they are {{term}}degenerate orbitals{{/term}}. The [[MATH:7]] and [[MATH:8]] antibonding orbitals are also degenerate and identical except for their orientation. A total of six molecular orbitals results from the combination of the six atomic {{i}}p{{/i}} orbitals in two atoms: σ{{i}}[[sub:px]]{{/i}} and [[MATH:9]] π{{i}}[[sub:py]]{{/i}} and [[MATH:10]] π{{i}}[[sub:pz]]{{/i}} and [[MATH:11]]
+In the molecular orbitals of diatomic molecules, each atom also has two sets of [[i:p]] orbitals oriented side by side ([[i:p[[sub:y]]]] and [[i:p[[sub:z]]]]), so these four atomic orbitals combine pairwise to create two π orbitals and two π* orbitals. The π[[i:[[sub:py]]]] and [[MATH:5]] orbitals are oriented at right angles to the π[[i:[[sub:pz]]]] and [[MATH:6]] orbitals. Except for their orientation, the π[[i:[[sub:py]]]] and π[[i:[[sub:pz]]]] orbitals are identical and have the same energy; they are {{term}}degenerate orbitals{{/term}}. The [[MATH:7]] and [[MATH:8]] antibonding orbitals are also degenerate and identical except for their orientation. A total of six molecular orbitals results from the combination of the six atomic [[i:p]] orbitals in two atoms: σ[[i:[[sub:px]]]] and [[MATH:9]] π[[i:[[sub:py]]]] and [[MATH:10]] π[[i:[[sub:pz]]]] and [[MATH:11]]
 
 <!-- SEG:m68747:example-title:fs-idm91199824-title -->
 Molecular Orbitals
@@ -122,7 +122,7 @@ Predict what type (if any) of molecular orbital would result from adding the wav
 Solution
 
 <!-- SEG:m68747:para:fs-idp85051376 -->
-(a) is an in-phase combination, resulting in a σ[[sub:3{{i}}p{{/i}}]] orbital
+(a) is an in-phase combination, resulting in a σ[[sub:3[[i:p]]]] orbital
 
 <!-- SEG:m68747:para:fs-idp7458640 -->
 (b) will not result in a new orbital because the in-phase component (bottom) and out-of-phase component (top) cancel out. Only orbitals with the correct alignment can combine.
@@ -134,7 +134,7 @@ Solution
 Check Your Learning
 
 <!-- SEG:m68747:para:fs-idm173173712 -->
-Label the molecular orbital shown as {{i}}σ{{/i}} or π, bonding or antibonding and indicate where the node occurs.
+Label the molecular orbital shown as [[i:σ]] or π, bonding or antibonding and indicate where the node occurs.
 
 <!-- SEG:m68747:para:fs-idm99049568 -->
 The orbital is located along the internuclear axis, so it is a σ orbital. There is a node bisecting the internuclear axis, so it is an antibonding orbital.[[BR]]
@@ -149,7 +149,7 @@ The orbital is located along the internuclear axis, so it is a σ orbital. There
 Walter Kohn: Nobel Laureate
 
 <!-- SEG:m68747:para:fs-idm150138816 -->
-Walter {{term}}Kohn{{/term}} ([#CNX_Chem_08_04_Kohn]) is a theoretical physicist who studies the electronic structure of solids. His work combines the principles of quantum mechanics with advanced mathematical techniques. This technique, called density functional theory, makes it possible to compute properties of molecular orbitals, including their shape and energies. Kohn and mathematician John Pople were awarded the Nobel Prize in Chemistry in 1998 for their contributions to our understanding of electronic structure. Kohn also made significant contributions to the physics of semiconductors.
+Walter {{term}}Kohn{{/term}} ([[xref:CNX_Chem_08_04_Kohn]]) is a theoretical physicist who studies the electronic structure of solids. His work combines the principles of quantum mechanics with advanced mathematical techniques. This technique, called density functional theory, makes it possible to compute properties of molecular orbitals, including their shape and energies. Kohn and mathematician John Pople were awarded the Nobel Prize in Chemistry in 1998 for their contributions to our understanding of electronic structure. Kohn also made significant contributions to the physics of semiconductors.
 
 <!-- SEG:m68747:para:fs-idm51386912 -->
 Kohn’s biography has been remarkable outside the realm of physical chemistry as well. He was born in Austria, and during World War II he was part of the Kindertransport program that rescued 10,000 children from the Nazi regime. His summer jobs included discovering gold deposits in Canada and helping Polaroid explain how its instant film worked. Dr. Kohn passed away in 2016 at the age of 93.
@@ -161,7 +161,7 @@ Walter Kohn developed methods to describe molecular orbitals. (credit: image cou
 Computational Chemistry in Drug Design
 
 <!-- SEG:m68747:para:fs-idp11259136 -->
-While the descriptions of bonding described in this chapter involve many theoretical concepts, they also have many practical, real-world applications. For example, drug design is an important field that uses our understanding of chemical bonding to develop pharmaceuticals. This interdisciplinary area of study uses biology (understanding diseases and how they operate) to identify specific targets, such as a binding site that is involved in a disease pathway. By modeling the structures of the binding site and potential drugs, computational chemists can predict which structures can fit together and how effectively they will bind (see [#CNX_Chem_08_04_HIVProteas]). Thousands of potential candidates can be narrowed down to a few of the most promising candidates. These candidate molecules are then carefully tested to determine side effects, how effectively they can be transported through the body, and other factors. Dozens of important new pharmaceuticals have been discovered with the aid of computational chemistry, and new research projects are underway.
+While the descriptions of bonding described in this chapter involve many theoretical concepts, they also have many practical, real-world applications. For example, drug design is an important field that uses our understanding of chemical bonding to develop pharmaceuticals. This interdisciplinary area of study uses biology (understanding diseases and how they operate) to identify specific targets, such as a binding site that is involved in a disease pathway. By modeling the structures of the binding site and potential drugs, computational chemists can predict which structures can fit together and how effectively they will bind (see [[xref:CNX_Chem_08_04_HIVProteas]]). Thousands of potential candidates can be narrowed down to a few of the most promising candidates. These candidate molecules are then carefully tested to determine side effects, how effectively they can be transported through the body, and other factors. Dozens of important new pharmaceuticals have been discovered with the aid of computational chemistry, and new research projects are underway.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_HIVProteas-caption -->
 The molecule shown, HIV-1 protease, is an important target for pharmaceutical research. By designing molecules that bind to this protein, scientists are able to drastically inhibit the progress of the disease.
@@ -170,10 +170,10 @@ The molecule shown, HIV-1 protease, is an important target for pharmaceutical re
 Molecular Orbital Energy Diagrams
 
 <!-- SEG:m68747:para:fs-idm109157200 -->
-The relative energy levels of atomic and molecular orbitals are typically shown in a {{term}}molecular orbital diagram{{/term}} ([#CNX_Chem_08_04_FillMo]). For a diatomic molecule, the atomic orbitals of one atom are shown on the left, and those of the other atom are shown on the right. Each horizontal line represents one orbital that can hold two electrons. The molecular orbitals formed by the combination of the atomic orbitals are shown in the center. Dashed lines show which of the atomic orbitals combine to form the molecular orbitals. For each pair of atomic orbitals that combine, one lower-energy (bonding) molecular orbital and one higher-energy (antibonding) orbital result. Thus we can see that combining the six 2{{i}}p{{/i}} atomic orbitals results in three bonding orbitals (one σ and two π) and three antibonding orbitals (one σ* and two π*).
+The relative energy levels of atomic and molecular orbitals are typically shown in a {{term}}molecular orbital diagram{{/term}} ([[xref:CNX_Chem_08_04_FillMo]]). For a diatomic molecule, the atomic orbitals of one atom are shown on the left, and those of the other atom are shown on the right. Each horizontal line represents one orbital that can hold two electrons. The molecular orbitals formed by the combination of the atomic orbitals are shown in the center. Dashed lines show which of the atomic orbitals combine to form the molecular orbitals. For each pair of atomic orbitals that combine, one lower-energy (bonding) molecular orbital and one higher-energy (antibonding) orbital result. Thus we can see that combining the six 2[[i:p]] atomic orbitals results in three bonding orbitals (one σ and two π) and three antibonding orbitals (one σ* and two π*).
 
 <!-- SEG:m68747:para:fs-idm63353616 -->
-We predict the distribution of electrons in these molecular orbitals by filling the orbitals in the same way that we fill atomic orbitals, by the Aufbau principle. Lower-energy orbitals fill first, electrons spread out among degenerate orbitals before pairing, and each orbital can hold a maximum of two electrons with opposite spins ([#CNX_Chem_08_04_FillMo]). Just as we write electron configurations for atoms, we can write the molecular electronic configuration by listing the orbitals with superscripts indicating the number of electrons present. For clarity, we place parentheses around molecular orbitals with the same energy. In this case, each orbital is at a different energy, so parentheses separate each orbital. Thus we would expect a diatomic molecule or ion containing seven electrons (such as [[MATH:13]] would have the molecular electron configuration [[MATH:14]] It is common to omit the core electrons from molecular orbital diagrams and configurations and include only the valence electrons.
+We predict the distribution of electrons in these molecular orbitals by filling the orbitals in the same way that we fill atomic orbitals, by the Aufbau principle. Lower-energy orbitals fill first, electrons spread out among degenerate orbitals before pairing, and each orbital can hold a maximum of two electrons with opposite spins ([[xref:CNX_Chem_08_04_FillMo]]). Just as we write electron configurations for atoms, we can write the molecular electronic configuration by listing the orbitals with superscripts indicating the number of electrons present. For clarity, we place parentheses around molecular orbitals with the same energy. In this case, each orbital is at a different energy, so parentheses separate each orbital. Thus we would expect a diatomic molecule or ion containing seven electrons (such as [[MATH:13]] would have the molecular electron configuration [[MATH:14]] It is common to omit the core electrons from molecular orbital diagrams and configurations and include only the valence electrons.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_FillMo-caption -->
 This is the molecular orbital diagram for the homonuclear diatomic [[MATH:15]] showing the molecular orbitals of the valence shell only. The molecular orbitals are filled in the same manner as atomic orbitals, using the Aufbau principle and Hund’s rule.
@@ -191,7 +191,7 @@ When using Lewis structures to describe the distribution of electrons in molecul
 In the molecular orbital model, an electron contributes to a bonding interaction if it occupies a bonding orbital and it contributes to an antibonding interaction if it occupies an antibonding orbital. The bond order is calculated by subtracting the destabilizing (antibonding) electrons from the stabilizing (bonding) electrons. Since a bond consists of two electrons, we divide by two to get the bond order. We can determine bond order with the following equation:
 
 <!-- SEG:m68747:para:fs-idm8964432 -->
-The order of a covalent bond is a guide to its strength; a bond between two given atoms becomes stronger as the bond order increases ([m68744#fs-idp43355056]). If the distribution of electrons in the molecular orbitals between two atoms is such that the resulting bond would have a bond order of zero, a stable bond does not form. We next look at some specific examples of MO diagrams and bond orders.
+The order of a covalent bond is a guide to its strength; a bond between two given atoms becomes stronger as the bond order increases ([[docref:m68744#fs-idp43355056]]). If the distribution of electrons in the molecular orbitals between two atoms is such that the resulting bond would have a bond order of zero, a stable bond does not form. We next look at some specific examples of MO diagrams and bond orders.
 
 <!-- SEG:m68747:title:fs-idm174688448-title -->
 Bonding in Diatomic Molecules
@@ -200,28 +200,28 @@ Bonding in Diatomic Molecules
 The Diatomic Molecules of the Second Period
 
 <!-- SEG:m68747:para:fs-idp84255584 -->
-Eight possible homonuclear diatomic molecules might be formed by the atoms of the second period of the periodic table: Li[[sub:2]], Be[[sub:2]], B[[sub:2]], C[[sub:2]], N[[sub:2]], O[[sub:2]], F[[sub:2]], and Ne[[sub:2]]. However, we can predict that the Be[[sub:2]] molecule and the Ne[[sub:2]] molecule would not be stable. We can see this by a consideration of the molecular electron configurations ([#fs-idp20943328]).
+Eight possible homonuclear diatomic molecules might be formed by the atoms of the second period of the periodic table: Li[[sub:2]], Be[[sub:2]], B[[sub:2]], C[[sub:2]], N[[sub:2]], O[[sub:2]], F[[sub:2]], and Ne[[sub:2]]. However, we can predict that the Be[[sub:2]] molecule and the Ne[[sub:2]] molecule would not be stable. We can see this by a consideration of the molecular electron configurations ([[xref:fs-idp20943328]]).
 
 <!-- SEG:m68747:para:fs-idm159509520 -->
 We predict valence molecular orbital electron configurations just as we predict electron configurations of atoms. Valence electrons are assigned to valence molecular orbitals with the lowest possible energies. Consistent with Hund’s rule, whenever there are two or more degenerate molecular orbitals, electrons fill each orbital of that type singly before any pairing of electrons takes place.
 
 <!-- SEG:m68747:para:fs-idm130710736 -->
-As we saw in valence bond theory, σ bonds are generally more stable than π bonds formed from degenerate atomic orbitals. Similarly, in molecular orbital theory, σ orbitals are usually more stable than π orbitals. However, this is not always the case. The MOs for the valence orbitals of the second period are shown in [#CNX_Chem_08_04_X2MOs]. Looking at Ne[[sub:2]] molecular orbitals, we see that the order is consistent with the generic diagram shown in the previous section. However, for atoms with three or fewer electrons in the {{i}}p{{/i}} orbitals (Li through N) we observe a different pattern, in which the σ{{i}}[[sub:p]]{{/i}} orbital is higher in energy than the π{{i}}[[sub:p]]{{/i}} set. Obtain the molecular orbital diagram for a homonuclear diatomic ion by adding or subtracting electrons from the diagram for the neutral molecule.
+As we saw in valence bond theory, σ bonds are generally more stable than π bonds formed from degenerate atomic orbitals. Similarly, in molecular orbital theory, σ orbitals are usually more stable than π orbitals. However, this is not always the case. The MOs for the valence orbitals of the second period are shown in [[xref:CNX_Chem_08_04_X2MOs]]. Looking at Ne[[sub:2]] molecular orbitals, we see that the order is consistent with the generic diagram shown in the previous section. However, for atoms with three or fewer electrons in the [[i:p]] orbitals (Li through N) we observe a different pattern, in which the σ[[i:[[sub:p]]]] orbital is higher in energy than the π[[i:[[sub:p]]]] set. Obtain the molecular orbital diagram for a homonuclear diatomic ion by adding or subtracting electrons from the diagram for the neutral molecule.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_X2MOs-caption -->
 This shows the MO diagrams for each homonuclear diatomic molecule in the second period. The orbital energies decrease across the period as the effective nuclear charge increases and atomic radius decreases. Between N[[sub:2]] and O[[sub:2]], the order of the orbitals changes.
 
 <!-- SEG:m68747:para:fs-idm170513216 -->
-This switch in orbital ordering occurs because of a phenomenon called {{term}}s-p mixing{{/term}}. s-p mixing does not create new orbitals; it merely influences the energies of the existing molecular orbitals. The σ[[sub:s]] wavefunction mathematically combines with the σ[[sub:p]] wavefunction, with the result that the σ[[sub:s]] orbital becomes more stable, and the σ[[sub:p]] orbital becomes less stable ([#CNX_Chem_08_04_spmix]). Similarly, the antibonding orbitals also undergo s-p mixing, with the σ[[sub:s*]] becoming more stable and the σ[[sub:p*]] becoming less stable.
+This switch in orbital ordering occurs because of a phenomenon called {{term}}s-p mixing{{/term}}. s-p mixing does not create new orbitals; it merely influences the energies of the existing molecular orbitals. The σ[[sub:s]] wavefunction mathematically combines with the σ[[sub:p]] wavefunction, with the result that the σ[[sub:s]] orbital becomes more stable, and the σ[[sub:p]] orbital becomes less stable ([[xref:CNX_Chem_08_04_spmix]]). Similarly, the antibonding orbitals also undergo s-p mixing, with the σ[[sub:s*]] becoming more stable and the σ[[sub:p*]] becoming less stable.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_spmix-caption -->
 Without mixing, the MO pattern occurs as expected, with the σ[[sub:p]] orbital lower in energy than the π[[sub:p]] orbitals. When s-p mixing occurs, the orbitals shift as shown, with the σ[[sub:p]] orbital higher in energy than the π[[sub:p]] orbitals.
 
 <!-- SEG:m68747:para:fs-idm134586720 -->
-s-p mixing occurs when the {{i}}s{{/i}} and {{i}}p{{/i}} orbitals have similar energies. The energy difference between 2{{i}}s{{/i}} and 2{{i}}p{{/i}} orbitals in O, F, and Ne is greater than that in Li, Be, B, C, and N. Because of this, O[[sub:2]], F[[sub:2]], and Ne[[sub:2]] exhibit negligible s-p mixing (not sufficient to change the energy ordering), and their MO diagrams follow the normal pattern, as shown in [#CNX_Chem_08_04_X2MOs]. All of the other period 2 diatomic molecules do have s-p mixing, which leads to the pattern where the σ[[sub:p]] orbital is raised above the π[[sub:p]] set.
+s-p mixing occurs when the [[i:s]] and [[i:p]] orbitals have similar energies. The energy difference between 2[[i:s]] and 2[[i:p]] orbitals in O, F, and Ne is greater than that in Li, Be, B, C, and N. Because of this, O[[sub:2]], F[[sub:2]], and Ne[[sub:2]] exhibit negligible s-p mixing (not sufficient to change the energy ordering), and their MO diagrams follow the normal pattern, as shown in [[xref:CNX_Chem_08_04_X2MOs]]. All of the other period 2 diatomic molecules do have s-p mixing, which leads to the pattern where the σ[[sub:p]] orbital is raised above the π[[sub:p]] set.
 
 <!-- SEG:m68747:para:fs-idm113653568 -->
-Using the MO diagrams shown in [#CNX_Chem_08_04_X2MOs], we can add in the electrons and determine the molecular electron configuration and bond order for each of the diatomic molecules. As shown in [#fs-idp20943328], Be[[sub:2]] and Ne[[sub:2]] molecules would have a bond order of 0, and these molecules do not exist.
+Using the MO diagrams shown in [[xref:CNX_Chem_08_04_X2MOs]], we can add in the electrons and determine the molecular electron configuration and bond order for each of the diatomic molecules. As shown in [[xref:fs-idp20943328]], Be[[sub:2]] and Ne[[sub:2]] molecules would have a bond order of 0, and these molecules do not exist.
 
 <!-- SEG:m68747:entry:auto-76 -->
 Electron Configuration and Bond Order for Molecular Orbitals in Homonuclear Diatomic Molecules of Period Two Elements
@@ -308,19 +308,19 @@ Ne[[sub:2]] (unstable)
 0
 
 <!-- SEG:m68747:para:fs-idm113916160 -->
-The combination of two lithium atoms to form a lithium molecule, Li[[sub:2]], is analogous to the formation of H[[sub:2]], but the atomic orbitals involved are the valence 2{{i}}s{{/i}} orbitals. Each of the two lithium atoms has one valence electron. Hence, we have two valence electrons available for the σ[[sub:2{{i}}s{{/i}}]] bonding molecular orbital. Because both valence electrons would be in a bonding orbital, we would predict the Li[[sub:2]] molecule to be stable. The molecule is, in fact, present in appreciable concentration in lithium vapor at temperatures near the boiling point of the element. All of the other molecules in [#fs-idp20943328] with a bond order greater than zero are also known.
+The combination of two lithium atoms to form a lithium molecule, Li[[sub:2]], is analogous to the formation of H[[sub:2]], but the atomic orbitals involved are the valence 2[[i:s]] orbitals. Each of the two lithium atoms has one valence electron. Hence, we have two valence electrons available for the σ[[sub:2[[i:s]]]] bonding molecular orbital. Because both valence electrons would be in a bonding orbital, we would predict the Li[[sub:2]] molecule to be stable. The molecule is, in fact, present in appreciable concentration in lithium vapor at temperatures near the boiling point of the element. All of the other molecules in [[xref:fs-idp20943328]] with a bond order greater than zero are also known.
 
 <!-- SEG:m68747:para:fs-idm151745104 -->
-The O[[sub:2]] molecule has enough electrons to half fill the [[MATH:24]] level. We expect the two electrons that occupy these two degenerate orbitals to be unpaired, and this molecular electronic configuration for O[[sub:2]] is in accord with the fact that the oxygen molecule has two unpaired electrons ([#CNX_Chem_08_04_O2MO]). The presence of two unpaired electrons has proved to be difficult to explain using Lewis structures, but the molecular orbital theory explains it quite well. In fact, the unpaired electrons of the oxygen molecule provide a strong piece of support for the molecular orbital theory.
+The O[[sub:2]] molecule has enough electrons to half fill the [[MATH:24]] level. We expect the two electrons that occupy these two degenerate orbitals to be unpaired, and this molecular electronic configuration for O[[sub:2]] is in accord with the fact that the oxygen molecule has two unpaired electrons ([[xref:CNX_Chem_08_04_O2MO]]). The presence of two unpaired electrons has proved to be difficult to explain using Lewis structures, but the molecular orbital theory explains it quite well. In fact, the unpaired electrons of the oxygen molecule provide a strong piece of support for the molecular orbital theory.
 
 <!-- SEG:m68747:note-title:fs-idp89531968-title -->
 Band Theory
 
 <!-- SEG:m68747:para:fs-idm82290832 -->
-When two identical atomic orbitals on different atoms combine, two molecular orbitals result (see [#CNX_Chem_08_04_ssigma]). The bonding orbital is lower in energy than the original atomic orbitals because the atomic orbitals are in-phase in the molecular orbital. The antibonding orbital is higher in energy than the original atomic orbitals because the atomic orbitals are out-of-phase.
+When two identical atomic orbitals on different atoms combine, two molecular orbitals result (see [[xref:CNX_Chem_08_04_ssigma]]). The bonding orbital is lower in energy than the original atomic orbitals because the atomic orbitals are in-phase in the molecular orbital. The antibonding orbital is higher in energy than the original atomic orbitals because the atomic orbitals are out-of-phase.
 
 <!-- SEG:m68747:para:fs-idm4324976 -->
-In a solid, similar things happen, but on a much larger scale. Remember that even in a small sample there are a huge number of atoms (typically > 10[[sup:23]] atoms), and therefore a huge number of atomic orbitals that may be combined into molecular orbitals. When {{i}}N{{/i}} valence atomic orbitals, all of the same energy and each containing one (1) electron, are combined, {{i}}N{{/i}}/2 (filled) bonding orbitals and {{i}}N{{/i}}/2 (empty) antibonding orbitals will result. Each bonding orbital will show an energy lowering as the atomic orbitals are {{i}}mostly{{/i}} in-phase, but each of the bonding orbitals will be a little different and have slightly different energies. The antibonding orbitals will show an increase in energy as the atomic orbitals are {{i}}mostly{{/i}} out-of-phase, but each of the antibonding orbitals will also be a little different and have slightly different energies. The allowed energy levels for all the bonding orbitals are so close together that they form a band, called the valence band. Likewise, all the antibonding orbitals are very close together and form a band, called the conduction band. [#CNX_Chem_08_04_Band] shows the bands for three important classes of materials: insulators, semiconductors, and conductors.
+In a solid, similar things happen, but on a much larger scale. Remember that even in a small sample there are a huge number of atoms (typically > 10[[sup:23]] atoms), and therefore a huge number of atomic orbitals that may be combined into molecular orbitals. When [[i:N]] valence atomic orbitals, all of the same energy and each containing one (1) electron, are combined, [[i:N]]/2 (filled) bonding orbitals and [[i:N]]/2 (empty) antibonding orbitals will result. Each bonding orbital will show an energy lowering as the atomic orbitals are [[i:mostly]] in-phase, but each of the bonding orbitals will be a little different and have slightly different energies. The antibonding orbitals will show an increase in energy as the atomic orbitals are [[i:mostly]] out-of-phase, but each of the antibonding orbitals will also be a little different and have slightly different energies. The allowed energy levels for all the bonding orbitals are so close together that they form a band, called the valence band. Likewise, all the antibonding orbitals are very close together and form a band, called the conduction band. [[xref:CNX_Chem_08_04_Band]] shows the bands for three important classes of materials: insulators, semiconductors, and conductors.
 
 <!-- SEG:m68747:para:fs-idp22163776 -->
 In order to conduct electricity, electrons must move from the filled valence band to the empty conduction band where they can move throughout the solid. The size of the band gap, or the energy difference between the top of the valence band and the bottom of the conduction band, determines how easy it is to move electrons between the bands. Only a small amount of energy is required in a conductor because the band gap is very small. This small energy difference is “easy” to overcome, so they are good conductors of electricity. In an insulator, the band gap is so “large” that very few electrons move into the conduction band; as a result, insulators are poor conductors of electricity. Semiconductors conduct electricity when “moderate” amounts of energy are provided to move electrons out of the valence band and into the conduction band. Semiconductors, such as silicon, are found in many electronics.
@@ -341,13 +341,13 @@ Draw the molecular orbital diagram for the oxygen molecule, O[[sub:2]]. From thi
 Solution
 
 <!-- SEG:m68747:para:fs-idm92673360 -->
-We draw a molecular orbital energy diagram similar to that shown in [#CNX_Chem_08_04_X2MOs]. Each oxygen atom contributes six electrons, so the diagram appears as shown in [#CNX_Chem_08_04_O2MO].
+We draw a molecular orbital energy diagram similar to that shown in [[xref:CNX_Chem_08_04_X2MOs]]. Each oxygen atom contributes six electrons, so the diagram appears as shown in [[xref:CNX_Chem_08_04_O2MO]].
 
 <!-- SEG:m68747:para:fs-idp49533696 -->
 We calculate the bond order as
 
 <!-- SEG:m68747:para:fs-idm102792656 -->
-Oxygen's paramagnetism is explained by the presence of two unpaired electrons in the (π[[sub:2{{i}}py{{/i}}]], π[[sub:2{{i}}pz{{/i}}]])* molecular orbitals.
+Oxygen's paramagnetism is explained by the presence of two unpaired electrons in the (π[[sub:2[[i:py]]]], π[[sub:2[[i:pz]]]])* molecular orbitals.
 
 <!-- SEG:m68747:para-title:fs-idm78530944-title -->
 Check Your Learning
@@ -377,7 +377,7 @@ Give the molecular orbital configuration for the valence electrons in [[MATH:25]
 Solution
 
 <!-- SEG:m68747:para:fs-idm77202544 -->
-Looking at the appropriate MO diagram, we see that the π orbitals are lower in energy than the σ{{i}}[[sub:p]]{{/i}} orbital. The valence electron configuration for C[[sub:2]] is [[MATH:26]] Adding two more electrons to generate the [[MATH:27]] anion will give a valence electron configuration of [[MATH:28]] Since this has six more bonding electrons than antibonding, the bond order will be 3, and the ion should be stable.
+Looking at the appropriate MO diagram, we see that the π orbitals are lower in energy than the σ[[i:[[sub:p]]]] orbital. The valence electron configuration for C[[sub:2]] is [[MATH:26]] Adding two more electrons to generate the [[MATH:27]] anion will give a valence electron configuration of [[MATH:28]] Since this has six more bonding electrons than antibonding, the bond order will be 3, and the ion should be stable.
 
 <!-- SEG:m68747:para-title:fs-idm105620480-title -->
 Check Your Learning
@@ -395,13 +395,13 @@ Answer:
 two, paramagnetic
 
 <!-- SEG:m68747:para:fs-idm82029920 -->
-Creating molecular orbital diagrams for molecules with more than two atoms relies on the same basic ideas as the diatomic examples presented here. However, with more atoms, computers are required to calculate how the atomic orbitals combine. See [three-dimensional drawings](http://openstax.org/l/16orbitaldiag) of the molecular orbitals for C[[sub:6]]H[[sub:6]].
+Creating molecular orbital diagrams for molecules with more than two atoms relies on the same basic ideas as the diatomic examples presented here. However, with more atoms, computers are required to calculate how the atomic orbitals combine. See [[link:three-dimensional drawings|http://openstax.org/l/16orbitaldiag]] of the molecular orbitals for C[[sub:6]]H[[sub:6]].
 
 <!-- SEG:m68747:para:fs-idm182437472 -->
-A dihydrogen molecule (H[[sub:2]]) forms from two hydrogen atoms. When the atomic orbitals of the two atoms combine, the electrons occupy the molecular orbital of lowest energy, the σ[[sub:1{{i}}s{{/i}}]] bonding orbital. A dihydrogen molecule, H[[sub:2]], readily forms because the energy of a H[[sub:2]] molecule is lower than that of two H atoms. The σ[[sub:1{{i}}s{{/i}}]] orbital that contains both electrons is lower in energy than either of the two 1{{i}}s{{/i}} atomic orbitals.
+A dihydrogen molecule (H[[sub:2]]) forms from two hydrogen atoms. When the atomic orbitals of the two atoms combine, the electrons occupy the molecular orbital of lowest energy, the σ[[sub:1[[i:s]]]] bonding orbital. A dihydrogen molecule, H[[sub:2]], readily forms because the energy of a H[[sub:2]] molecule is lower than that of two H atoms. The σ[[sub:1[[i:s]]]] orbital that contains both electrons is lower in energy than either of the two 1[[i:s]] atomic orbitals.
 
 <!-- SEG:m68747:para:fs-idm108439328 -->
-A molecular orbital can hold two electrons, so both electrons in the H[[sub:2]] molecule are in the σ[[sub:1{{i}}s{{/i}}]] bonding orbital; the electron configuration is [[MATH:30]] We represent this configuration by a molecular orbital energy diagram ([#CNX_Chem_08_04_H2MO]) in which a single upward arrow indicates one electron in an orbital, and two (upward and downward) arrows indicate two electrons of opposite spin.
+A molecular orbital can hold two electrons, so both electrons in the H[[sub:2]] molecule are in the σ[[sub:1[[i:s]]]] bonding orbital; the electron configuration is [[MATH:30]] We represent this configuration by a molecular orbital energy diagram ([[xref:CNX_Chem_08_04_H2MO]]) in which a single upward arrow indicates one electron in an orbital, and two (upward and downward) arrows indicate two electrons of opposite spin.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_H2MO-caption -->
 The molecular orbital energy diagram predicts that H[[sub:2]] will be a stable molecule with lower energy than the separated atoms.
@@ -413,7 +413,7 @@ A dihydrogen molecule contains two bonding electrons and no antibonding electron
 Because the bond order for the H–H bond is equal to 1, the bond is a single bond.
 
 <!-- SEG:m68747:para:fs-idm142555728 -->
-A helium atom has two electrons, both of which are in its 1{{i}}s{{/i}} orbital. Two helium atoms do not combine to form a dihelium molecule, He[[sub:2]], with four electrons, because the stabilizing effect of the two electrons in the lower-energy bonding orbital would be offset by the destabilizing effect of the two electrons in the higher-energy antibonding molecular orbital. We would write the hypothetical electron configuration of He[[sub:2]] as [[MATH:31]] as in [#CNX_Chem_08_04_He2MO]. The net energy change would be zero, so there is no driving force for helium atoms to form the diatomic molecule. In fact, helium exists as discrete atoms rather than as diatomic molecules. The bond order in a hypothetical dihelium molecule would be zero.
+A helium atom has two electrons, both of which are in its 1[[i:s]] orbital. Two helium atoms do not combine to form a dihelium molecule, He[[sub:2]], with four electrons, because the stabilizing effect of the two electrons in the lower-energy bonding orbital would be offset by the destabilizing effect of the two electrons in the higher-energy antibonding molecular orbital. We would write the hypothetical electron configuration of He[[sub:2]] as [[MATH:31]] as in [[xref:CNX_Chem_08_04_He2MO]]. The net energy change would be zero, so there is no driving force for helium atoms to form the diatomic molecule. In fact, helium exists as discrete atoms rather than as diatomic molecules. The bond order in a hypothetical dihelium molecule would be zero.
 
 <!-- SEG:m68747:para:fs-idm166378064 -->
 A bond order of zero indicates that no bond is formed between two atoms.
@@ -425,7 +425,7 @@ The molecular orbital energy diagram predicts that He[[sub:2]] will not be a sta
 Key Concepts and Summary
 
 <!-- SEG:m68747:para:fs-idm157944352 -->
-Molecular orbital (MO) theory describes the behavior of electrons in a molecule in terms of combinations of the atomic wave functions. The resulting molecular orbitals may extend over all the atoms in the molecule. Bonding molecular orbitals are formed by in-phase combinations of atomic wave functions, and electrons in these orbitals stabilize a molecule. Antibonding molecular orbitals result from out-of-phase combinations of atomic wave functions and electrons in these orbitals make a molecule less stable. Molecular orbitals located along an internuclear axis are called σ MOs. They can be formed from {{i}}s{{/i}} orbitals or from {{i}}p{{/i}} orbitals oriented in an end-to-end fashion. Molecular orbitals formed from {{i}}p{{/i}} orbitals oriented in a side-by-side fashion have electron density on opposite sides of the internuclear axis and are called π orbitals.
+Molecular orbital (MO) theory describes the behavior of electrons in a molecule in terms of combinations of the atomic wave functions. The resulting molecular orbitals may extend over all the atoms in the molecule. Bonding molecular orbitals are formed by in-phase combinations of atomic wave functions, and electrons in these orbitals stabilize a molecule. Antibonding molecular orbitals result from out-of-phase combinations of atomic wave functions and electrons in these orbitals make a molecule less stable. Molecular orbitals located along an internuclear axis are called σ MOs. They can be formed from [[i:s]] orbitals or from [[i:p]] orbitals oriented in an end-to-end fashion. Molecular orbitals formed from [[i:p]] orbitals oriented in a side-by-side fashion have electron density on opposite sides of the internuclear axis and are called π orbitals.
 
 <!-- SEG:m68747:para:fs-idm113162704 -->
 We can describe the electronic structure of diatomic molecules by applying molecular orbital theory to the valence electrons of the atoms. Electrons fill molecular orbitals following the same rules that apply to filling atomic orbitals; Hund’s rule and the Aufbau principle tell us that lower-energy orbitals will fill first, electrons will spread out before they pair up, and each orbital can hold a maximum of two electrons with opposite spins. Materials with unpaired electrons are paramagnetic and attracted to a magnetic field, while those with all-paired electrons are diamagnetic and repelled by a magnetic field. Correctly predicting the magnetic properties of molecules is in advantage of molecular orbital theory over Lewis structures and valence bond theory.
@@ -440,7 +440,7 @@ Key Equations
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68747:problem:fs-idm52005904 -->
-Sketch the distribution of electron density in the bonding and antibonding molecular orbitals formed from two {{i}}s{{/i}} orbitals and from two {{i}}p{{/i}} orbitals.
+Sketch the distribution of electron density in the bonding and antibonding molecular orbitals formed from two [[i:s]] orbitals and from two [[i:p]] orbitals.
 
 <!-- SEG:m68747:problem:fs-idm131857600 -->
 How are the following similar, and how do they differ?
@@ -449,13 +449,13 @@ How are the following similar, and how do they differ?
 (a) σ molecular orbitals and π molecular orbitals
 
 <!-- SEG:m68747:problem:fs-idm142106032 -->
-(b) {{i}}ψ{{/i}} for an atomic orbital and {{i}}ψ{{/i}} for a molecular orbital
+(b) [[i:ψ]] for an atomic orbital and [[i:ψ]] for a molecular orbital
 
 <!-- SEG:m68747:problem:fs-idm72819696 -->
 (c) bonding orbitals and antibonding orbitals
 
 <!-- SEG:m68747:solution:fs-idm101918992 -->
-(a) Similarities: Both are bonding orbitals that can contain a maximum of two electrons. Differences: σ orbitals are end-to-end combinations of atomic orbitals, whereas π orbitals are formed by side-by-side overlap of orbitals. (b) Similarities: Both are quantum-mechanical constructs that represent the probability of finding the electron about the atom or the molecule. Differences: {{i}}ψ{{/i}} for an atomic orbital describes the behavior of only one electron at a time based on the atom. For a molecule, {{i}}ψ{{/i}} represents a mathematical combination of atomic orbitals. (c) Similarities: Both are orbitals that can contain two electrons. Differences: Bonding orbitals result in holding two or more atoms together. Antibonding orbitals have the effect of destabilizing any bonding that has occurred.
+(a) Similarities: Both are bonding orbitals that can contain a maximum of two electrons. Differences: σ orbitals are end-to-end combinations of atomic orbitals, whereas π orbitals are formed by side-by-side overlap of orbitals. (b) Similarities: Both are quantum-mechanical constructs that represent the probability of finding the electron about the atom or the molecule. Differences: [[i:ψ]] for an atomic orbital describes the behavior of only one electron at a time based on the atom. For a molecule, [[i:ψ]] represents a mathematical combination of atomic orbitals. (c) Similarities: Both are orbitals that can contain two electrons. Differences: Bonding orbitals result in holding two or more atoms together. Antibonding orbitals have the effect of destabilizing any bonding that has occurred.
 
 <!-- SEG:m68747:problem:fs-idm140245904 -->
 If molecular orbitals are created by combining five atomic orbitals from atom A and five atomic orbitals from atom B combine, how many molecular orbitals will result?
@@ -479,7 +479,7 @@ Bonding orbitals have electron density in close proximity to more than one nucle
 Calculate the bond order for an ion with this configuration:[[BR]] [[MATH:33]]
 
 <!-- SEG:m68747:problem:fs-idm141640192 -->
-Explain why an electron in the bonding molecular orbital in the H[[sub:2]] molecule has a lower energy than an electron in the 1{{i}}s{{/i}} atomic orbital of either of the separated hydrogen atoms.
+Explain why an electron in the bonding molecular orbital in the H[[sub:2]] molecule has a lower energy than an electron in the 1[[i:s]] atomic orbital of either of the separated hydrogen atoms.
 
 <!-- SEG:m68747:solution:fs-idm175049680 -->
 The pairing of the two bonding electrons lowers the energy of the system relative to the energy of the nonbonded electrons.
@@ -560,13 +560,13 @@ Compare the atomic and molecular orbital diagrams to identify the member of each
 Which of the period 2 homonuclear diatomic molecules are predicted to be paramagnetic?
 
 <!-- SEG:m68747:problem:fs-idm111685776 -->
-A friend tells you that the 2{{i}}s{{/i}} orbital for fluorine starts off at a much lower energy than the 2{{i}}s{{/i}} orbital for lithium, so the resulting σ[[sub:2{{i}}s{{/i}}]] molecular orbital in F[[sub:2]] is more stable than in Li[[sub:2]]. Do you agree?
+A friend tells you that the 2[[i:s]] orbital for fluorine starts off at a much lower energy than the 2[[i:s]] orbital for lithium, so the resulting σ[[sub:2[[i:s]]]] molecular orbital in F[[sub:2]] is more stable than in Li[[sub:2]]. Do you agree?
 
 <!-- SEG:m68747:solution:fs-idm149192752 -->
-Yes, fluorine is a smaller atom than Li, so atoms in the 2{{i}}s{{/i}} orbital are closer to the nucleus and more stable.
+Yes, fluorine is a smaller atom than Li, so atoms in the 2[[i:s]] orbital are closer to the nucleus and more stable.
 
 <!-- SEG:m68747:problem:fs-idm110121168 -->
-True or false: Boron contains 2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:1]] valence electrons, so only one {{i}}p{{/i}} orbital is needed to form molecular orbitals.
+True or false: Boron contains 2[[i:s]][[sup:2]]2[[i:p]][[sup:1]] valence electrons, so only one [[i:p]] orbital is needed to form molecular orbitals.
 
 <!-- SEG:m68747:problem:fs-idm153039552 -->
 What charge would be needed on F[[sub:2]] to generate an ion with a bond order of 2?
@@ -581,7 +581,7 @@ Predict whether the MO diagram for S[[sub:2]] would show s-p mixing or not.
 Explain why [[MATH:63]] is diamagnetic, while [[MATH:64]] which has the same number of valence electrons, is paramagnetic.
 
 <!-- SEG:m68747:solution:fs-idm119081680 -->
-N[[sub:2]] has s-p mixing, so the π orbitals are the last filled in [[MATH:65]] O[[sub:2]] does not have s-p mixing, so the σ{{i}}[[sub:p]]{{/i}} orbital fills before the π orbitals.
+N[[sub:2]] has s-p mixing, so the π orbitals are the last filled in [[MATH:65]] O[[sub:2]] does not have s-p mixing, so the σ[[i:[[sub:p]]]] orbital fills before the π orbitals.
 
 <!-- SEG:m68747:problem:fs-idm166052672 -->
 Using the MO diagrams, predict the bond order for the stronger bond in each pair:
@@ -692,4 +692,4 @@ antibonding molecular orbital formed by out-of-phase overlap of atomic orbital a
 s-p mixing
 
 <!-- SEG:m68747:glossary-def:fs-idp5821920-def -->
-change that causes σ{{i}}[[sub:p]]{{/i}} orbitals to be less stable than π{{i}}[[sub:p]]{{/i}} orbitals due to the mixing of {{i}}s{{/i}} and {{i}}p{{/i}}-based molecular orbitals of similar energies.
+change that causes σ[[i:[[sub:p]]]] orbitals to be less stable than π[[i:[[sub:p]]]] orbitals due to the mixing of [[i:s]] and [[i:p]]-based molecular orbitals of similar energies.

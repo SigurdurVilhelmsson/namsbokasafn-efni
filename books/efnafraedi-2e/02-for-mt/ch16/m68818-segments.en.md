@@ -14,49 +14,49 @@ Calculate entropy changes for phase transitions and chemical reactions under sta
 The Second Law of Thermodynamics
 
 <!-- SEG:m68818:para:fs-idp3609760 -->
-In the quest to identify a property that may reliably predict the spontaneity of a process, a promising candidate has been identified: entropy. Processes that involve an increase in entropy {{i}}of the system{{/i}} (Δ{{i}}S{{/i}} > 0) are very often spontaneous; however, examples to the contrary are plentiful. By expanding consideration of entropy changes to include {{i}}the surroundings{{/i}}, we may reach a significant conclusion regarding the relation between this property and spontaneity. In thermodynamic models, the system and surroundings comprise everything, that is, the universe, and so the following is true:
+In the quest to identify a property that may reliably predict the spontaneity of a process, a promising candidate has been identified: entropy. Processes that involve an increase in entropy [[i:of the system]] (Δ[[i:S]] > 0) are very often spontaneous; however, examples to the contrary are plentiful. By expanding consideration of entropy changes to include [[i:the surroundings]], we may reach a significant conclusion regarding the relation between this property and spontaneity. In thermodynamic models, the system and surroundings comprise everything, that is, the universe, and so the following is true:
 
 <!-- SEG:m68818:para:fs-idp115428960 -->
 To illustrate this relation, consider again the process of heat flow between two objects, one identified as the system and the other as the surroundings. There are three possibilities for such a process:
 
 <!-- SEG:m68818:item:fs-idm90348816-item-1 -->
-The objects are at different temperatures, and heat flows from the hotter to the cooler object. {{i}}This is always observed to occur spontaneously.{{/i}} Designating the hotter object as the system and invoking the definition of entropy yields the following: [[MATH:1]] The magnitudes of −{{i}}q{{/i}}[[sub:rev]] and {{i}}q{{/i}}[[sub:rev]] are equal, their opposite arithmetic signs denoting loss of heat by the system and gain of heat by the surroundings. Since {{i}}T{{/i}}[[sub:sys]] > {{i}}T{{/i}}[[sub:surr]] in this scenario, the entropy {{i}}decrease{{/i}} of the system will be less than the entropy {{i}}increase{{/i}} of the surroundings, and so {{i}}the entropy of the universe will increase{{/i}}: [[MATH:2]]
+The objects are at different temperatures, and heat flows from the hotter to the cooler object. [[i:This is always observed to occur spontaneously.]] Designating the hotter object as the system and invoking the definition of entropy yields the following: [[MATH:1]] The magnitudes of −[[i:q]][[sub:rev]] and [[i:q]][[sub:rev]] are equal, their opposite arithmetic signs denoting loss of heat by the system and gain of heat by the surroundings. Since [[i:T]][[sub:sys]] > [[i:T]][[sub:surr]] in this scenario, the entropy [[i:decrease]] of the system will be less than the entropy [[i:increase]] of the surroundings, and so [[i:the entropy of the universe will increase]]: [[MATH:2]]
 
 <!-- SEG:m68818:item:fs-idm90348816-item-2 -->
-The objects are at different temperatures, and heat flows from the cooler to the hotter object. {{i}}This is never observed to occur spontaneously.{{/i}} Again designating the hotter object as the system and invoking the definition of entropy yields the following: [[MATH:3]] The arithmetic signs of {{i}}q{{/i}}[[sub:rev]] denote the gain of heat by the system and the loss of heat by the surroundings. The magnitude of the entropy change for the surroundings will again be greater than that for the system, but in this case, the signs of the heat changes (that is, {{i}}the direction of the heat flow{{/i}}) will yield a negative value for Δ{{i}}S{{/i}}[[sub:univ]]. {{i}}This process involves a decrease in the entropy of the universe.{{/i}}
+The objects are at different temperatures, and heat flows from the cooler to the hotter object. [[i:This is never observed to occur spontaneously.]] Again designating the hotter object as the system and invoking the definition of entropy yields the following: [[MATH:3]] The arithmetic signs of [[i:q]][[sub:rev]] denote the gain of heat by the system and the loss of heat by the surroundings. The magnitude of the entropy change for the surroundings will again be greater than that for the system, but in this case, the signs of the heat changes (that is, [[i:the direction of the heat flow]]) will yield a negative value for Δ[[i:S]][[sub:univ]]. [[i:This process involves a decrease in the entropy of the universe.]]
 
 <!-- SEG:m68818:item:fs-idm90348816-item-3 -->
-The objects are at essentially the same temperature, {{i}}T{{/i}}[[sub:sys]] ≈ {{i}}T{{/i}}[[sub:surr]], and so the magnitudes of the entropy changes are essentially the same for both the system and the surroundings. In this case, the entropy change of the universe is zero, and the system is {{i}}at equilibrium{{/i}}. [[MATH:4]]
+The objects are at essentially the same temperature, [[i:T]][[sub:sys]] ≈ [[i:T]][[sub:surr]], and so the magnitudes of the entropy changes are essentially the same for both the system and the surroundings. In this case, the entropy change of the universe is zero, and the system is [[i:at equilibrium]]. [[MATH:4]]
 
 <!-- SEG:m68818:para:fs-idp26583536 -->
-These results lead to a profound statement regarding the relation between entropy and spontaneity known as the {{term}}second law of thermodynamics{{/term}}: {{i}}all spontaneous changes cause an increase in the entropy of the universe.{{/i}} A summary of these three relations is provided in [#fs-idp41455824].
+These results lead to a profound statement regarding the relation between entropy and spontaneity known as the {{term}}second law of thermodynamics{{/term}}: [[i:all spontaneous changes cause an increase in the entropy of the universe.]] A summary of these three relations is provided in [[xref:fs-idp41455824]].
 
 <!-- SEG:m68818:entry:auto-12 -->
 The Second Law of Thermodynamics
 
 <!-- SEG:m68818:entry:auto-13 -->
-Δ{{i}}S{{/i}}[[sub:univ]] > 0
+Δ[[i:S]][[sub:univ]] > 0
 
 <!-- SEG:m68818:entry:auto-14 -->
 spontaneous
 
 <!-- SEG:m68818:entry:auto-15 -->
-Δ{{i}}S{{/i}}[[sub:univ]] &lt; 0
+Δ[[i:S]][[sub:univ]] &lt; 0
 
 <!-- SEG:m68818:entry:auto-16 -->
 nonspontaneous (spontaneous in opposite direction)
 
 <!-- SEG:m68818:entry:auto-17 -->
-Δ{{i}}S{{/i}}[[sub:univ]] = 0
+Δ[[i:S]][[sub:univ]] = 0
 
 <!-- SEG:m68818:entry:auto-18 -->
 at equilibrium
 
 <!-- SEG:m68818:para:fs-idp172517200 -->
-For many realistic applications, the surroundings are vast in comparison to the system. In such cases, the heat gained or lost by the surroundings as a result of some process represents a very small, nearly infinitesimal, fraction of its total thermal energy. For example, combustion of a fuel in air involves transfer of heat from a system (the fuel and oxygen molecules undergoing reaction) to surroundings that are infinitely more massive (the earth’s atmosphere). As a result, {{i}}q{{/i}}[[sub:surr]] is a good approximation of {{i}}q{{/i}}[[sub:rev]], and the second law may be stated as the following:
+For many realistic applications, the surroundings are vast in comparison to the system. In such cases, the heat gained or lost by the surroundings as a result of some process represents a very small, nearly infinitesimal, fraction of its total thermal energy. For example, combustion of a fuel in air involves transfer of heat from a system (the fuel and oxygen molecules undergoing reaction) to surroundings that are infinitely more massive (the earth’s atmosphere). As a result, [[i:q]][[sub:surr]] is a good approximation of [[i:q]][[sub:rev]], and the second law may be stated as the following:
 
 <!-- SEG:m68818:para:fs-idp5341920 -->
-We may use this equation to predict the spontaneity of a process as illustrated in [#fs-idp33042160].
+We may use this equation to predict the spontaneity of a process as illustrated in [[xref:fs-idp33042160]].
 
 <!-- SEG:m68818:example-title:fs-idp33042160-title -->
 Will Ice Spontaneously Melt?
@@ -71,115 +71,115 @@ is 22.1 J/K and requires that the surroundings transfer 6.00 kJ of heat to the s
 Solution
 
 <!-- SEG:m68818:para:fs-idp54282352 -->
-We can assess the spontaneity of the process by calculating the entropy change of the universe. If Δ{{i}}S{{/i}}[[sub:univ]] is positive, then the process is spontaneous. At both temperatures, Δ{{i}}S{{/i}}[[sub:sys]] = 22.1 J/K and {{i}}q{{/i}}[[sub:surr]] = −6.00 kJ.
+We can assess the spontaneity of the process by calculating the entropy change of the universe. If Δ[[i:S]][[sub:univ]] is positive, then the process is spontaneous. At both temperatures, Δ[[i:S]][[sub:sys]] = 22.1 J/K and [[i:q]][[sub:surr]] = −6.00 kJ.
 
 <!-- SEG:m68818:para:fs-idp9805936 -->
 At −10.00 °C (263.15 K), the following is true:
 
 <!-- SEG:m68818:para:fs-idp43894736 -->
-{{i}}S{{/i}}[[sub:univ]] &lt; 0, so melting is nonspontaneous ({{i}}not{{/i}} spontaneous) at −10.0 °C.
+[[i:S]][[sub:univ]] &lt; 0, so melting is nonspontaneous ([[i:not]] spontaneous) at −10.0 °C.
 
 <!-- SEG:m68818:para:fs-idp156182416 -->
 At 10.00 °C (283.15 K), the following is true:
 
 <!-- SEG:m68818:para:fs-idp34700864 -->
-{{i}}S{{/i}}[[sub:univ]] > 0, so melting {{i}}is{{/i}} spontaneous at 10.00 °C.
+[[i:S]][[sub:univ]] > 0, so melting [[i:is]] spontaneous at 10.00 °C.
 
 <!-- SEG:m68818:para-title:fs-idp54808912-title -->
 Check Your Learning
 
 <!-- SEG:m68818:para:fs-idp54808912 -->
-Using this information, determine if liquid water will spontaneously freeze at the same temperatures. What can you say about the values of {{i}}S{{/i}}[[sub:univ]]?
+Using this information, determine if liquid water will spontaneously freeze at the same temperatures. What can you say about the values of [[i:S]][[sub:univ]]?
 
 <!-- SEG:m68818:para:fs-idp105321744 -->
-Entropy is a state function, so Δ{{i}}S{{/i}}[[sub:freezing]] = −Δ{{i}}S{{/i}}[[sub:melting]] = −22.1 J/K and {{i}}q{{/i}}[[sub:surr]] = +6.00 kJ. At −10.00 °C spontaneous, +0.7 J/K; at +10.00 °C nonspontaneous, −0.9 J/K.
+Entropy is a state function, so Δ[[i:S]][[sub:freezing]] = −Δ[[i:S]][[sub:melting]] = −22.1 J/K and [[i:q]][[sub:surr]] = +6.00 kJ. At −10.00 °C spontaneous, +0.7 J/K; at +10.00 °C nonspontaneous, −0.9 J/K.
 
 <!-- SEG:m68818:note-title:fs-idp106254880-title -->
 Answer:
 
 <!-- SEG:m68818:para:fs-idp105321744 -->
-Entropy is a state function, so Δ{{i}}S{{/i}}[[sub:freezing]] = −Δ{{i}}S{{/i}}[[sub:melting]] = −22.1 J/K and {{i}}q{{/i}}[[sub:surr]] = +6.00 kJ. At −10.00 °C spontaneous, +0.7 J/K; at +10.00 °C nonspontaneous, −0.9 J/K.
+Entropy is a state function, so Δ[[i:S]][[sub:freezing]] = −Δ[[i:S]][[sub:melting]] = −22.1 J/K and [[i:q]][[sub:surr]] = +6.00 kJ. At −10.00 °C spontaneous, +0.7 J/K; at +10.00 °C nonspontaneous, −0.9 J/K.
 
 <!-- SEG:m68818:title:fs-idp45100816-title -->
 The Third Law of Thermodynamics
 
 <!-- SEG:m68818:para:fs-idm3499504 -->
-The previous section described the various contributions of matter and energy dispersal that contribute to the entropy of a system. With these contributions in mind, consider the entropy of a pure, perfectly crystalline solid possessing no kinetic energy (that is, at a temperature of absolute zero, 0 K). This system may be described by a single microstate, as its purity, perfect crystallinity and complete lack of motion means there is but one possible location for each identical atom or molecule comprising the crystal ({{i}}W{{/i}} = 1). According to the Boltzmann equation, the entropy of this system is zero.
+The previous section described the various contributions of matter and energy dispersal that contribute to the entropy of a system. With these contributions in mind, consider the entropy of a pure, perfectly crystalline solid possessing no kinetic energy (that is, at a temperature of absolute zero, 0 K). This system may be described by a single microstate, as its purity, perfect crystallinity and complete lack of motion means there is but one possible location for each identical atom or molecule comprising the crystal ([[i:W]] = 1). According to the Boltzmann equation, the entropy of this system is zero.
 
 <!-- SEG:m68818:para:fs-idm15206896 -->
-This limiting condition for a system’s entropy represents the {{term}}third law of thermodynamics{{/term}}: {{i}}the entropy of a pure, perfect crystalline substance at 0 K is zero.{{/i}}
+This limiting condition for a system’s entropy represents the {{term}}third law of thermodynamics{{/term}}: [[i:the entropy of a pure, perfect crystalline substance at 0 K is zero.]]
 
 <!-- SEG:m68818:para:fs-idp12220368 -->
-Careful calorimetric measurements can be made to determine the temperature dependence of a substance’s entropy and to derive absolute entropy values under specific conditions. {{term}}Standard entropies ({{i}}S{{/i}}°){{/term}} are for one mole of substance under standard conditions (a pressure of 1 bar and a temperature of 298.15 K; see details regarding standard conditions in the thermochemistry chapter of this text). The {{term}}standard entropy change (Δ{{i}}S{{/i}}°){{/term}} for a reaction may be computed using standard entropies as shown below:
+Careful calorimetric measurements can be made to determine the temperature dependence of a substance’s entropy and to derive absolute entropy values under specific conditions. {{term}}Standard entropies ([[i:S]]°){{/term}} are for one mole of substance under standard conditions (a pressure of 1 bar and a temperature of 298.15 K; see details regarding standard conditions in the thermochemistry chapter of this text). The {{term}}standard entropy change (Δ[[i:S]]°){{/term}} for a reaction may be computed using standard entropies as shown below:
 
 <!-- SEG:m68818:para:fs-idm44012816 -->
-where ν represents stoichiometric coefficients in the balanced equation representing the process. For example, Δ{{i}}S{{/i}}° for the following reaction at room temperature
+where ν represents stoichiometric coefficients in the balanced equation representing the process. For example, Δ[[i:S]]° for the following reaction at room temperature
 
 <!-- SEG:m68818:para:fs-idp156085024 -->
 is computed as:
 
 <!-- SEG:m68818:para:fs-idp43524064 -->
-A partial listing of standard entropies is provided in [#fs-idm78597984], and additional values are provided in Appendix G. The example exercises that follow demonstrate the use of {{i}}S{{/i}}° values in calculating standard entropy changes for physical and chemical processes.
+A partial listing of standard entropies is provided in [[xref:fs-idm78597984]], and additional values are provided in Appendix G. The example exercises that follow demonstrate the use of [[i:S]]° values in calculating standard entropy changes for physical and chemical processes.
 
 <!-- SEG:m68818:entry:auto-42 -->
-{{b}}Substance{{/b}}
+[[b:Substance]]
 
 <!-- SEG:m68818:entry:auto-43 -->
-{{b}}[[MATH:5]] (J mol[[sup:−1]] K[[sup:−1]]){{/b}}
+[[b:[[MATH:5]] (J mol[[sup:−1]] K[[sup:−1]])]]
 
 <!-- SEG:m68818:entry:auto-44 -->
 carbon
 
 <!-- SEG:m68818:entry:auto-45 -->
-C({{i}}s{{/i}}, graphite)
+C([[i:s]], graphite)
 
 <!-- SEG:m68818:entry:auto-46 -->
 5.740
 
 <!-- SEG:m68818:entry:auto-47 -->
-C({{i}}s{{/i}}, diamond)
+C([[i:s]], diamond)
 
 <!-- SEG:m68818:entry:auto-48 -->
 2.38
 
 <!-- SEG:m68818:entry:auto-49 -->
-CO({{i}}g{{/i}})
+CO([[i:g]])
 
 <!-- SEG:m68818:entry:auto-50 -->
 197.7
 
 <!-- SEG:m68818:entry:auto-51 -->
-CO[[sub:2]]({{i}}g{{/i}})
+CO[[sub:2]]([[i:g]])
 
 <!-- SEG:m68818:entry:auto-52 -->
 213.8
 
 <!-- SEG:m68818:entry:auto-53 -->
-CH[[sub:4]]({{i}}g{{/i}})
+CH[[sub:4]]([[i:g]])
 
 <!-- SEG:m68818:entry:auto-54 -->
 186.3
 
 <!-- SEG:m68818:entry:auto-55 -->
-C[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
+C[[sub:2]]H[[sub:4]]([[i:g]])
 
 <!-- SEG:m68818:entry:auto-56 -->
 219.3
 
 <!-- SEG:m68818:entry:auto-57 -->
-C[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
+C[[sub:2]]H[[sub:6]]([[i:g]])
 
 <!-- SEG:m68818:entry:auto-58 -->
 229.2
 
 <!-- SEG:m68818:entry:auto-59 -->
-CH[[sub:3]]OH({{i}}l{{/i}})
+CH[[sub:3]]OH([[i:l]])
 
 <!-- SEG:m68818:entry:auto-60 -->
 126.8
 
 <!-- SEG:m68818:entry:auto-61 -->
-C[[sub:2]]H[[sub:5]]OH({{i}}l{{/i}})
+C[[sub:2]]H[[sub:5]]OH([[i:l]])
 
 <!-- SEG:m68818:entry:auto-62 -->
 160.7
@@ -188,37 +188,37 @@ C[[sub:2]]H[[sub:5]]OH({{i}}l{{/i}})
 hydrogen
 
 <!-- SEG:m68818:entry:auto-64 -->
-H[[sub:2]]({{i}}g{{/i}})
+H[[sub:2]]([[i:g]])
 
 <!-- SEG:m68818:entry:auto-65 -->
 130.7
 
 <!-- SEG:m68818:entry:auto-66 -->
-H({{i}}g{{/i}})
+H([[i:g]])
 
 <!-- SEG:m68818:entry:auto-67 -->
 114.7
 
 <!-- SEG:m68818:entry:auto-68 -->
-H[[sub:2]]O({{i}}g{{/i}})
+H[[sub:2]]O([[i:g]])
 
 <!-- SEG:m68818:entry:auto-69 -->
 188.8
 
 <!-- SEG:m68818:entry:auto-70 -->
-H[[sub:2]]O({{i}}l{{/i}})
+H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68818:entry:auto-71 -->
 70.0
 
 <!-- SEG:m68818:entry:auto-72 -->
-HCI({{i}}g{{/i}})
+HCI([[i:g]])
 
 <!-- SEG:m68818:entry:auto-73 -->
 186.8
 
 <!-- SEG:m68818:entry:auto-74 -->
-H[[sub:2]]S({{i}}g{{/i}})
+H[[sub:2]]S([[i:g]])
 
 <!-- SEG:m68818:entry:auto-75 -->
 205.7
@@ -227,13 +227,13 @@ H[[sub:2]]S({{i}}g{{/i}})
 oxygen
 
 <!-- SEG:m68818:entry:auto-77 -->
-O[[sub:2]]({{i}}g{{/i}})
+O[[sub:2]]([[i:g]])
 
 <!-- SEG:m68818:entry:auto-78 -->
 205.2
 
 <!-- SEG:m68818:example-title:fs-idp173892208-title -->
-Determination of Δ{{i}}S{{/i}}°
+Determination of Δ[[i:S]]°
 
 <!-- SEG:m68818:para:fs-idp155406304 -->
 Calculate the standard entropy change for the following process:
@@ -245,7 +245,7 @@ Solution
 Calculate the entropy change using standard entropies as shown above:
 
 <!-- SEG:m68818:para:fs-idm47317216 -->
-The value for Δ{{i}}S{{/i}}° is negative, as expected for this phase transition (condensation), which the previous section discussed.
+The value for Δ[[i:S]]° is negative, as expected for this phase transition (condensation), which the previous section discussed.
 
 <!-- SEG:m68818:para-title:fs-idp319200-title -->
 Check Your Learning
@@ -263,7 +263,7 @@ Answer:
 −120.6 J K[[sup:–1]] mol[[sup:–1]]
 
 <!-- SEG:m68818:example-title:fs-idp34274768-title -->
-Determination of Δ{{i}}S{{/i}}°
+Determination of Δ[[i:S]]°
 
 <!-- SEG:m68818:para:fs-idp44594448 -->
 Calculate the standard entropy change for the combustion of methanol, CH[[sub:3]]OH:
@@ -293,7 +293,7 @@ Answer:
 Key Concepts and Summary
 
 <!-- SEG:m68818:para:fs-idp116042384 -->
-The second law of thermodynamics states that a spontaneous process increases the entropy of the universe, {{i}}S{{/i}}[[sub:univ]] > 0. If Δ{{i}}S{{/i}}[[sub:univ]] &lt; 0, the process is nonspontaneous, and if Δ{{i}}S{{/i}}[[sub:univ]] = 0, the system is at equilibrium. The third law of thermodynamics establishes the zero for entropy as that of a perfect, pure crystalline solid at 0 K. With only one possible microstate, the entropy is zero. We may compute the standard entropy change for a process by using standard entropy values for the reactants and products involved in the process.
+The second law of thermodynamics states that a spontaneous process increases the entropy of the universe, [[i:S]][[sub:univ]] > 0. If Δ[[i:S]][[sub:univ]] &lt; 0, the process is nonspontaneous, and if Δ[[i:S]][[sub:univ]] = 0, the system is at equilibrium. The third law of thermodynamics establishes the zero for entropy as that of a perfect, pure crystalline solid at 0 K. With only one possible microstate, the entropy is zero. We may compute the standard entropy change for a process by using standard entropy values for the reactants and products involved in the process.
 
 <!-- SEG:m68818:title:fs-idp50875552-title -->
 Key Equations
@@ -305,7 +305,7 @@ Key Equations
 [[MATH:7]]
 
 <!-- SEG:m68818:entry:auto-103 -->
-Δ{{i}}S{{/i}}[[sub:univ]] = Δ{{i}}S{{/i}}[[sub:sys]] + Δ{{i}}S{{/i}}[[sub:surr]]
+Δ[[i:S]][[sub:univ]] = Δ[[i:S]][[sub:sys]] + Δ[[i:S]][[sub:surr]]
 
 <!-- SEG:m68818:entry:auto-104 -->
 [[MATH:8]]
@@ -314,7 +314,7 @@ Key Equations
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68818:problem:fs-idp50899456 -->
-What is the difference between Δ{{i}}S{{/i}} and Δ{{i}}S{{/i}}° for a chemical change?
+What is the difference between Δ[[i:S]] and Δ[[i:S]]° for a chemical change?
 
 <!-- SEG:m68818:problem:fs-idp86374576 -->
 Calculate [[MATH:9]] for the following changes.
@@ -356,7 +356,7 @@ Determine the entropy change for the combustion of gaseous propane, C[[sub:3]]H[
 “Thermite” reactions have been used for welding metal parts such as railway rails and in metal refining. One such thermite reaction is [[MATH:17]] Is the reaction spontaneous at room temperature under standard conditions? During the reaction, the surroundings absorb 851.8 kJ/mol of heat.
 
 <!-- SEG:m68818:problem:fs-idp169049744 -->
-Using the relevant [[MATH:18]] values listed in [Appendix G](doc:m68865), calculate [[MATH:19]] for the following changes:
+Using the relevant [[MATH:18]] values listed in [[docref:Appendix G|m68865]], calculate [[MATH:19]] for the following changes:
 
 <!-- SEG:m68818:problem:fs-idp101398384 -->
 (a) [[MATH:20]]
@@ -383,16 +383,16 @@ From the following information, determine [[MATH:22]] for the following:
 [[MATH:26]]
 
 <!-- SEG:m68818:problem:fs-idp15550848 -->
-By calculating Δ{{i}}S{{/i}}[[sub:univ]] at each temperature, determine if the melting of 1 mole of NaCl({{i}}s{{/i}}) is spontaneous at 500 °C and at 700 °C.[[BR]] [[MATH:27]]
+By calculating Δ[[i:S]][[sub:univ]] at each temperature, determine if the melting of 1 mole of NaCl([[i:s]]) is spontaneous at 500 °C and at 700 °C.[[BR]] [[MATH:27]]
 
 <!-- SEG:m68818:problem:fs-idp105474192 -->
 What assumptions are made about the thermodynamic information (entropy and enthalpy values) used to solve this problem?
 
 <!-- SEG:m68818:solution:fs-idp13901792 -->
-As Δ{{i}}S{{/i}}[[sub:univ]] &lt; 0 at each of these temperatures, melting is not spontaneous at either of them. The given values for entropy and enthalpy are for NaCl at 298 K. It is assumed that these do not change significantly at the higher temperatures used in the problem.
+As Δ[[i:S]][[sub:univ]] &lt; 0 at each of these temperatures, melting is not spontaneous at either of them. The given values for entropy and enthalpy are for NaCl at 298 K. It is assumed that these do not change significantly at the higher temperatures used in the problem.
 
 <!-- SEG:m68818:problem:fs-idp51175024 -->
-Use the standard entropy data in [Appendix G](doc:m68865) to determine the change in entropy for each of the following reactions. All the processes occur at the standard conditions and 25 °C.
+Use the standard entropy data in [[docref:Appendix G|m68865]] to determine the change in entropy for each of the following reactions. All the processes occur at the standard conditions and 25 °C.
 
 <!-- SEG:m68818:problem:fs-idm370443200 -->
 (a) [[MATH:28]]
@@ -413,7 +413,7 @@ Use the standard entropy data in [Appendix G](doc:m68865) to determine the chang
 (f) [[MATH:33]]
 
 <!-- SEG:m68818:problem:fs-idp127897104 -->
-Use the standard entropy data in [Appendix G](doc:m68865) to determine the change in entropy for each of the following reactions. All the processes occur at the standard conditions and 25 °C.
+Use the standard entropy data in [[docref:Appendix G|m68865]] to determine the change in entropy for each of the following reactions. All the processes occur at the standard conditions and 25 °C.
 
 <!-- SEG:m68818:problem:fs-idm249306432 -->
 (a) [[MATH:34]]

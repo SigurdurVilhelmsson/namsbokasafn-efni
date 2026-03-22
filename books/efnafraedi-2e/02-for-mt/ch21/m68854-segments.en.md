@@ -23,19 +23,19 @@ Describe common radiometric dating techniques
 Following the somewhat serendipitous discovery of radioactivity by Becquerel, many prominent scientists began to investigate this new, intriguing phenomenon. Among them were Marie Curie (the first woman to win a Nobel Prize, and the only person to win two Nobel Prizes in different sciences—chemistry and physics), who was the first to coin the term “radioactivity,” and Ernest Rutherford (of gold foil experiment fame), who investigated and named three of the most common types of radiation. During the beginning of the twentieth century, many radioactive substances were discovered, the properties of radiation were investigated and quantified, and a solid understanding of radiation and nuclear decay was developed.
 
 <!-- SEG:m68854:para:fs-idp202642016 -->
-The spontaneous change of an unstable nuclide into another is {{term}}radioactive decay{{/term}}. The unstable nuclide is called the {{term}}parent nuclide{{/term}}; the nuclide that results from the decay is known as the {{term}}daughter nuclide{{/term}}. The daughter nuclide may be stable, or it may decay itself. The radiation produced during radioactive decay is such that the daughter nuclide lies closer to the band of stability than the parent nuclide, so the location of a nuclide relative to the band of stability can serve as a guide to the kind of decay it will undergo ([#CNX_Chem_21_03_Reaction1]).
+The spontaneous change of an unstable nuclide into another is {{term}}radioactive decay{{/term}}. The unstable nuclide is called the {{term}}parent nuclide{{/term}}; the nuclide that results from the decay is known as the {{term}}daughter nuclide{{/term}}. The daughter nuclide may be stable, or it may decay itself. The radiation produced during radioactive decay is such that the daughter nuclide lies closer to the band of stability than the parent nuclide, so the location of a nuclide relative to the band of stability can serve as a guide to the kind of decay it will undergo ([[xref:CNX_Chem_21_03_Reaction1]]).
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Reaction1-caption -->
 A nucleus of uranium-238 (the parent nuclide) undergoes α decay to form thorium-234 (the daughter nuclide). The alpha particle removes two protons (green) and two neutrons (gray) from the uranium-238 nucleus.
 
 <!-- SEG:m68854:para:fs-idp131961680 -->
-Although the radioactive decay of a nucleus is too small to see with the naked eye, we can indirectly view radioactive decay in an environment called a cloud chamber. Click [here](http://openstax.org/l/16cloudchamb) to learn about cloud chambers and to view an interesting Cloud Chamber Demonstration from the Jefferson Lab.
+Although the radioactive decay of a nucleus is too small to see with the naked eye, we can indirectly view radioactive decay in an environment called a cloud chamber. Click [[link:here|http://openstax.org/l/16cloudchamb]] to learn about cloud chambers and to view an interesting Cloud Chamber Demonstration from the Jefferson Lab.
 
 <!-- SEG:m68854:title:fs-idp242071680-title -->
 Types of Radioactive Decay
 
 <!-- SEG:m68854:para:fs-idp130339440 -->
-Ernest Rutherford’s experiments involving the interaction of radiation with a magnetic or electric field ([#CNX_Chem_21_03_Radiation]) helped him determine that one type of radiation consisted of positively charged and relatively massive α particles; a second type was made up of negatively charged and much less massive β particles; and a third was uncharged electromagnetic waves, γ rays. We now know that α particles are high-energy helium nuclei, β particles are high-energy electrons, and γ radiation compose high-energy electromagnetic radiation. We classify different types of radioactive decay by the radiation produced.
+Ernest Rutherford’s experiments involving the interaction of radiation with a magnetic or electric field ([[xref:CNX_Chem_21_03_Radiation]]) helped him determine that one type of radiation consisted of positively charged and relatively massive α particles; a second type was made up of negatively charged and much less massive β particles; and a third was uncharged electromagnetic waves, γ rays. We now know that α particles are high-energy helium nuclei, β particles are high-energy electrons, and γ radiation compose high-energy electromagnetic radiation. We classify different types of radioactive decay by the radiation produced.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Radiation-caption -->
 Alpha particles, which are attracted to the negative plate and deflected by a relatively small amount, must be positively charged and relatively massive. Beta particles, which are attracted to the positive plate and deflected a relatively large amount, must be negatively charged and relatively light. Gamma rays, which are unaffected by the electric field, must be uncharged.
@@ -44,7 +44,7 @@ Alpha particles, which are attracted to the negative plate and deflected by a re
 {{term}}Alpha (α) decay{{/term}} is the emission of an α particle from the nucleus. For example, polonium-210 undergoes α decay:
 
 <!-- SEG:m68854:para:fs-idp202270256 -->
-Alpha decay occurs primarily in heavy nuclei (A > 200, Z > 83). Because the loss of an α particle gives a daughter nuclide with a mass number four units smaller and an atomic number two units smaller than those of the parent nuclide, the daughter nuclide has a larger n:p ratio than the parent nuclide. If the parent nuclide undergoing α decay lies below the band of stability (refer to [m68851#CNX_Chem_21_01_BandStable]), the daughter nuclide will lie closer to the band.
+Alpha decay occurs primarily in heavy nuclei (A > 200, Z > 83). Because the loss of an α particle gives a daughter nuclide with a mass number four units smaller and an atomic number two units smaller than those of the parent nuclide, the daughter nuclide has a larger n:p ratio than the parent nuclide. If the parent nuclide undergoing α decay lies below the band of stability (refer to [[docref:m68851#CNX_Chem_21_01_BandStable]]), the daughter nuclide will lie closer to the band.
 
 <!-- SEG:m68854:para:fs-idm2875904 -->
 {{term}}Beta (β) decay{{/term}} is the emission of an electron from a nucleus. Iodine-131 is an example of a nuclide that undergoes β decay:
@@ -71,7 +71,7 @@ Positron emission is observed for nuclides in which the n:p ratio is low. These 
 Electron capture occurs when an inner shell electron combines with a proton and is converted into a neutron. The loss of an inner shell electron leaves a vacancy that will be filled by one of the outer electrons. As the outer electron drops into the vacancy, it will emit energy. In most cases, the energy emitted will be in the form of an X-ray. Like positron emission, electron capture occurs for “proton-rich” nuclei that lie below the band of stability. Electron capture has the same effect on the nucleus as does positron emission: The atomic number is decreased by one and the mass number does not change. This increases the n:p ratio, and the daughter nuclide lies closer to the band of stability than did the parent nuclide. Whether electron capture or positron emission occurs is difficult to predict. The choice is primarily due to kinetic factors, with the one requiring the smaller activation energy being the one more likely to occur.
 
 <!-- SEG:m68854:para:fs-idp132245344 -->
-[#CNX_Chem_21_03_RadioDecay] summarizes these types of decay, along with their equations and changes in atomic and mass numbers.
+[[xref:CNX_Chem_21_03_RadioDecay]] summarizes these types of decay, along with their equations and changes in atomic and mass numbers.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_RadioDecay-caption -->
 This table summarizes the type, nuclear equation, representation, and any changes in the mass or atomic numbers for various types of decay.
@@ -80,7 +80,7 @@ This table summarizes the type, nuclear equation, representation, and any change
 PET Scan
 
 <!-- SEG:m68854:para:fs-idp214075136 -->
-Positron emission tomography (PET) scans use radiation to diagnose and track health conditions and monitor medical treatments by revealing how parts of a patient’s body function ([#CNX_Chem_21_03_PETScan]). To perform a PET scan, a positron-emitting radioisotope is produced in a cyclotron and then attached to a substance that is used by the part of the body being investigated. This “tagged” compound, or radiotracer, is then put into the patient (injected via IV or breathed in as a gas), and how it is used by the tissue reveals how that organ or other area of the body functions.
+Positron emission tomography (PET) scans use radiation to diagnose and track health conditions and monitor medical treatments by revealing how parts of a patient’s body function ([[xref:CNX_Chem_21_03_PETScan]]). To perform a PET scan, a positron-emitting radioisotope is produced in a cyclotron and then attached to a substance that is used by the part of the body being investigated. This “tagged” compound, or radiotracer, is then put into the patient (injected via IV or breathed in as a gas), and how it is used by the tissue reveals how that organ or other area of the body functions.
 
 <!-- SEG:m68854:para:fs-idp13254880 -->
 For example, F-18 is produced by proton bombardment of [[sup:18]]O [[MATH:1]] and incorporated into a glucose analog called fludeoxyglucose (FDG). How FDG is used by the body provides critical diagnostic information; for example, since cancers use glucose differently than normal tissues, FDG can reveal cancers. The [[sup:18]]F emits positrons that interact with nearby electrons, producing a burst of gamma radiation. This energy is detected by the scanner and converted into a detailed, three-dimensional, color image that shows how that part of the patient’s body functions. Different levels of gamma radiation produce different amounts of brightness and colors in the image, which can then be interpreted by a radiologist to reveal what is going on. PET scans can detect heart damage and heart disease, help diagnose Alzheimer’s disease, indicate the part of a brain that is affected by epilepsy, reveal cancer, show what stage it is, and how much it has spread, and whether treatments are effective. Unlike magnetic resonance imaging and X-rays, which only show how something looks, the big advantage of PET scans is that they show how something functions. PET scans are now usually performed in conjunction with a computed tomography scan.
@@ -92,7 +92,7 @@ A PET scanner (a) uses radiation to provide an image of how part of a patient’
 Radioactive Decay Series
 
 <!-- SEG:m68854:para:fs-idp54304864 -->
-The naturally occurring radioactive isotopes of the heaviest elements fall into chains of successive disintegrations, or decays, and all the species in one chain constitute a radioactive family, or {{term}}radioactive decay series{{/term}}. Three of these series include most of the naturally radioactive elements of the periodic table. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is no longer significant on the earth because of the short half-lives of the species involved. Each series is characterized by a parent (first member) that has a long half-life and a series of daughter nuclides that ultimately lead to a stable end-product—that is, a nuclide on the band of stability ([#CNX_Chem_21_03_DecayS]). In all three series, the end-product is a stable isotope of lead. The neptunium series, previously thought to terminate with bismuth-209, terminates with thallium-205.
+The naturally occurring radioactive isotopes of the heaviest elements fall into chains of successive disintegrations, or decays, and all the species in one chain constitute a radioactive family, or {{term}}radioactive decay series{{/term}}. Three of these series include most of the naturally radioactive elements of the periodic table. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is no longer significant on the earth because of the short half-lives of the species involved. Each series is characterized by a parent (first member) that has a long half-life and a series of daughter nuclides that ultimately lead to a stable end-product—that is, a nuclide on the band of stability ([[xref:CNX_Chem_21_03_DecayS]]). In all three series, the end-product is a stable isotope of lead. The neptunium series, previously thought to terminate with bismuth-209, terminates with thallium-205.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DecayS-caption -->
 Uranium-238 undergoes a radioactive decay series consisting of 14 separate steps before producing stable lead-206. This series consists of eight α decays and six β decays.
@@ -101,28 +101,28 @@ Uranium-238 undergoes a radioactive decay series consisting of 14 separate steps
 Radioactive Half-Lives
 
 <!-- SEG:m68854:para:fs-idp135905344 -->
-Radioactive decay follows first-order kinetics. Since first-order reactions have already been covered in detail in the kinetics chapter, we will now apply those concepts to nuclear decay reactions. Each radioactive nuclide has a characteristic, constant {{term}}half-life{{/term}} ({{i}}t{{/i}}[[sub:1/2]]), the time required for half of the atoms in a sample to decay. An isotope’s half-life allows us to determine how long a sample of a useful isotope will be available, and how long a sample of an undesirable or dangerous isotope must be stored before it decays to a low-enough radiation level that is no longer a problem.
+Radioactive decay follows first-order kinetics. Since first-order reactions have already been covered in detail in the kinetics chapter, we will now apply those concepts to nuclear decay reactions. Each radioactive nuclide has a characteristic, constant {{term}}half-life{{/term}} ([[i:t]][[sub:1/2]]), the time required for half of the atoms in a sample to decay. An isotope’s half-life allows us to determine how long a sample of a useful isotope will be available, and how long a sample of an undesirable or dangerous isotope must be stored before it decays to a low-enough radiation level that is no longer a problem.
 
 <!-- SEG:m68854:para:fs-idm89252176 -->
-For example, cobalt-60, an isotope that emits gamma rays used to treat cancer, has a half-life of 5.27 years ([#CNX_Chem_21_03_HalfLife]). In a given cobalt-60 source, since half of the [[MATH:2]] nuclei decay every 5.27 years, both the amount of material and the intensity of the radiation emitted is cut in half every 5.27 years. (Note that for a given substance, the intensity of radiation that it produces is directly proportional to the rate of decay of the substance and the amount of the substance.) This is as expected for a process following first-order kinetics. Thus, a cobalt-60 source that is used for cancer treatment must be replaced regularly to continue to be effective.
+For example, cobalt-60, an isotope that emits gamma rays used to treat cancer, has a half-life of 5.27 years ([[xref:CNX_Chem_21_03_HalfLife]]). In a given cobalt-60 source, since half of the [[MATH:2]] nuclei decay every 5.27 years, both the amount of material and the intensity of the radiation emitted is cut in half every 5.27 years. (Note that for a given substance, the intensity of radiation that it produces is directly proportional to the rate of decay of the substance and the amount of the substance.) This is as expected for a process following first-order kinetics. Thus, a cobalt-60 source that is used for cancer treatment must be replaced regularly to continue to be effective.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_HalfLife-caption -->
 For cobalt-60, which has a half-life of 5.27 years, 50% remains after 5.27 years (one half-life), 25% remains after 10.54 years (two half-lives), 12.5% remains after 15.81 years (three half-lives), and so on.
 
 <!-- SEG:m68854:para:fs-idm84262544 -->
-Since nuclear decay follows first-order kinetics, we can adapt the mathematical relationships used for first-order chemical reactions. We generally substitute the number of nuclei, {{i}}N{{/i}}, for the concentration. If the rate is stated in nuclear decays per second, we refer to it as the activity of the radioactive sample. The rate for radioactive decay is:
+Since nuclear decay follows first-order kinetics, we can adapt the mathematical relationships used for first-order chemical reactions. We generally substitute the number of nuclei, [[i:N]], for the concentration. If the rate is stated in nuclear decays per second, we refer to it as the activity of the radioactive sample. The rate for radioactive decay is:
 
 <!-- SEG:m68854:para:fs-idp16246080 -->
-decay rate = {{i}}λN{{/i}} with {{i}}λ{{/i}} = the decay constant for the particular radioisotope
+decay rate = [[i:λN]] with [[i:λ]] = the decay constant for the particular radioisotope
 
 <!-- SEG:m68854:para:fs-idm22877072 -->
-The decay constant, {{i}}λ{{/i}}, which is the same as a rate constant discussed in the kinetics chapter. It is possible to express the decay constant in terms of the half-life, {{i}}t{{/i}}[[sub:1/2]]:
+The decay constant, [[i:λ]], which is the same as a rate constant discussed in the kinetics chapter. It is possible to express the decay constant in terms of the half-life, [[i:t]][[sub:1/2]]:
 
 <!-- SEG:m68854:para:fs-idp20089360 -->
-The first-order equations relating amount, {{i}}N{{/i}}, and time are:
+The first-order equations relating amount, [[i:N]], and time are:
 
 <!-- SEG:m68854:para:fs-idp61393104 -->
-where {{i}}N{{/i}}[[sub:0]] is the initial number of nuclei or moles of the isotope, and {{i}}N[[sub:t]]{{/i}} is the number of nuclei/moles remaining at time {{i}}t{{/i}}. [#fs-idp79391408] applies these calculations to find the rates of radioactive decay for specific nuclides.
+where [[i:N]][[sub:0]] is the initial number of nuclei or moles of the isotope, and [[i:N[[sub:t]]]] is the number of nuclei/moles remaining at time [[i:t]]. [[xref:fs-idp79391408]] applies these calculations to find the rates of radioactive decay for specific nuclides.
 
 <!-- SEG:m68854:example-title:fs-idp79391408-title -->
 Rates of Radioactive Decay
@@ -146,13 +146,13 @@ Solution
 (a) The value of the rate constant is given by:
 
 <!-- SEG:m68854:para:fs-idp141655056 -->
-(b) The fraction of [[MATH:7]] that is left after time {{i}}t{{/i}} is given by [[MATH:8]] Rearranging the first-order relationship {{i}}N[[sub:t]]{{/i}} = {{i}}N{{/i}}[[sub:0]]{{i}}e{{/i}}[[sup:–{{i}}λt{{/i}}]] to solve for this ratio yields:
+(b) The fraction of [[MATH:7]] that is left after time [[i:t]] is given by [[MATH:8]] Rearranging the first-order relationship [[i:N[[sub:t]]]] = [[i:N]][[sub:0]][[i:e]][[sup:–[[i:λt]]]] to solve for this ratio yields:
 
 <!-- SEG:m68854:para:fs-idm19598048 -->
 The fraction of [[MATH:9]] that will remain after 15.0 years is 0.138. Or put another way, 13.8% of the [[MATH:10]] originally present will remain after 15 years.
 
 <!-- SEG:m68854:para:fs-idp82234704 -->
-(c) 2.00% of the original amount of [[MATH:11]] is equal to 0.0200 [[MATH:12]] {{i}}N{{/i}}[[sub:0]]. Substituting this into the equation for time for first-order kinetics, we have:
+(c) 2.00% of the original amount of [[MATH:11]] is equal to 0.0200 [[MATH:12]] [[i:N]][[sub:0]]. Substituting this into the equation for time for first-order kinetics, we have:
 
 <!-- SEG:m68854:para-title:fs-idp7893440-title -->
 Check Your Learning
@@ -170,7 +170,7 @@ Answer:
 11.1 days
 
 <!-- SEG:m68854:para:fs-idp76857680 -->
-Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [#fs-idp14399952], and others are listed in Appendix M.
+Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [[xref:fs-idp14399952]], and others are listed in Appendix M.
 
 <!-- SEG:m68854:entry:auto-59 -->
 Half-lives of Radioactive Isotopes Important to Medicine
@@ -263,7 +263,7 @@ Naturally occurring carbon consists of three isotopes: [[MATH:19]] which constit
 All isotopes of carbon react with oxygen to produce CO[[sub:2]] molecules. The ratio of [[MATH:22]] to [[MATH:23]] depends on the ratio of [[MATH:24]] to [[MATH:25]] in the atmosphere. The natural abundance of [[MATH:26]] in the atmosphere is approximately 1 part per trillion; until recently, this has generally been constant over time, as seen is gas samples found trapped in ice. The incorporation of [[MATH:27]] and [[MATH:28]] into plants is a regular part of the photosynthesis process, which means that the [[MATH:29]] ratio found in a living plant is the same as the [[MATH:30]] ratio in the atmosphere. But when the plant dies, it no longer traps carbon through photosynthesis. Because [[MATH:31]] is a stable isotope and does not undergo radioactive decay, its concentration in the plant does not change. However, carbon-14 decays by β emission with a half-life of 5730 years:
 
 <!-- SEG:m68854:para:fs-idm11295264 -->
-Thus, the [[MATH:32]] ratio gradually decreases after the plant dies. The decrease in the ratio with time provides a measure of the time that has elapsed since the death of the plant (or other organism that ate the plant). [#CNX_Chem_21_03_CarbonDate] visually depicts this process.
+Thus, the [[MATH:32]] ratio gradually decreases after the plant dies. The decrease in the ratio with time provides a measure of the time that has elapsed since the death of the plant (or other organism that ate the plant). [[xref:CNX_Chem_21_03_CarbonDate]] visually depicts this process.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_CarbonDate-caption -->
 Along with stable carbon-12, radioactive carbon-14 is taken in by plants and animals, and remains at a constant level within them while they are alive. After death, the C-14 decays and the C-14:C-12 ratio in the remains decreases. Comparing this ratio to the C-14:C-12 ratio in living organisms allows us to determine how long ago the organism lived (and died).
@@ -272,7 +272,7 @@ Along with stable carbon-12, radioactive carbon-14 is taken in by plants and ani
 For example, with the half-life of [[MATH:33]] being 5730 years, if the [[MATH:34]] ratio in a wooden object found in an archaeological dig is half what it is in a living tree, this indicates that the wooden object is 5730 years old. Highly accurate determinations of [[MATH:35]] ratios can be obtained from very small samples (as little as a milligram) by the use of a mass spectrometer.
 
 <!-- SEG:m68854:para:fs-idp134905456 -->
-Visit this [website](http://openstax.org/l/16phetradiom) to perform simulations of radiometric dating.
+Visit this [[link:website|http://openstax.org/l/16phetradiom]] to perform simulations of radiometric dating.
 
 <!-- SEG:m68854:example-title:fs-idm12472048-title -->
 Radiocarbon Dating
@@ -284,10 +284,10 @@ A tiny piece of paper (produced from formerly living plant matter) taken from th
 Solution
 
 <!-- SEG:m68854:para:fs-idp4802464 -->
-The rate of decay (number of disintegrations/minute/gram of carbon) is proportional to the amount of radioactive C-14 left in the paper, so we can substitute the rates for the amounts, {{i}}N{{/i}}, in the relationship:
+The rate of decay (number of disintegrations/minute/gram of carbon) is proportional to the amount of radioactive C-14 left in the paper, so we can substitute the rates for the amounts, [[i:N]], in the relationship:
 
 <!-- SEG:m68854:para:fs-idp12237584 -->
-where the subscript 0 represents the time when the plants were cut to make the paper, and the subscript {{i}}t{{/i}} represents the current time.
+where the subscript 0 represents the time when the plants were cut to make the paper, and the subscript [[i:t]] represents the current time.
 
 <!-- SEG:m68854:para:fs-idm9913056 -->
 The decay constant can be determined from the half-life of C-14, 5730 years:
@@ -296,7 +296,7 @@ The decay constant can be determined from the half-life of C-14, 5730 years:
 Substituting and solving, we have:
 
 <!-- SEG:m68854:para:fs-idp18759328 -->
-Therefore, the Dead Sea Scrolls are approximately 1900 years old ([#CNX_Chem_21_03_DSScrolls]).
+Therefore, the Dead Sea Scrolls are approximately 1900 years old ([[xref:CNX_Chem_21_03_DSScrolls]]).
 
 <!-- SEG:m68854:para-title:fs-idp79158784-title -->
 Check Your Learning
@@ -350,10 +350,10 @@ The total amount of U-238 originally present in the rock is therefore:
 The amount of time that has passed since the formation of the rock is given by:
 
 <!-- SEG:m68854:para:fs-idp188052736 -->
-with {{i}}N{{/i}}[[sub:0]] representing the original amount of U-238 and {{i}}N[[sub:t]]{{/i}} representing the present amount of U-238.
+with [[i:N]][[sub:0]] representing the original amount of U-238 and [[i:N[[sub:t]]]] representing the present amount of U-238.
 
 <!-- SEG:m68854:para:fs-idp178175456 -->
-U-238 decays into Pb-206 with a half-life of 4.5 [[MATH:45]] 10[[sup:9]] y, so the decay constant {{i}}λ{{/i}} is:
+U-238 decays into Pb-206 with a half-life of 4.5 [[MATH:45]] 10[[sup:9]] y, so the decay constant [[i:λ]] is:
 
 <!-- SEG:m68854:para:fs-idp46289376 -->
 Substituting and solving, we have:
@@ -389,7 +389,7 @@ Nuclei that have unstable n:p ratios undergo spontaneous radioactive decay. The 
 Key Equations
 
 <!-- SEG:m68854:entry:auto-131 -->
-decay rate = {{i}}λN{{/i}}
+decay rate = [[i:λN]]
 
 <!-- SEG:m68854:entry:auto-132 -->
 [[MATH:51]]
@@ -443,10 +443,10 @@ Many nuclides with atomic numbers greater than 83 decay by processes such as ele
 Why is electron capture accompanied by the emission of an X-ray?
 
 <!-- SEG:m68854:solution:fs-idp123519008 -->
-The electron pulled into the nucleus was most likely found in the 1{{i}}s{{/i}} orbital. As an electron falls from a higher energy level to replace it, the difference in the energy of the replacement electron in its two energy levels is given off as an X-ray.
+The electron pulled into the nucleus was most likely found in the 1[[i:s]] orbital. As an electron falls from a higher energy level to replace it, the difference in the energy of the replacement electron in its two energy levels is given off as an X-ray.
 
 <!-- SEG:m68854:problem:fs-idp142495840 -->
-Explain, in terms of [m68851#CNX_Chem_21_01_BandStable], how unstable heavy nuclides (atomic number > 83) may decompose to form nuclides of greater stability (a) if they are below the band of stability and (b) if they are above the band of stability.
+Explain, in terms of [[docref:m68851#CNX_Chem_21_01_BandStable]], how unstable heavy nuclides (atomic number > 83) may decompose to form nuclides of greater stability (a) if they are below the band of stability and (b) if they are above the band of stability.
 
 <!-- SEG:m68854:problem:fs-idp201795280 -->
 Which of the following nuclei is most likely to decay by positron emission? Explain your choice.
@@ -605,7 +605,7 @@ A laboratory investigation shows that a sample of uranium ore contains 5.37 mg o
 Plutonium was detected in trace amounts in natural uranium deposits by Glenn Seaborg and his associates in 1941. They proposed that the source of this [[sup:239]]Pu was the capture of neutrons by [[sup:238]]U nuclei. Why is this plutonium not likely to have been trapped at the time the solar system formed 4.7 [[MATH:100]] 10[[sup:9]] years ago?
 
 <!-- SEG:m68854:solution:fs-idp172871712 -->
-{{i}}c{{/i}} = 0; This shows that no Pu-239 could remain since the formation of the earth. Consequently, the plutonium now present could not have been formed with the uranium.
+[[i:c]] = 0; This shows that no Pu-239 could remain since the formation of the earth. Consequently, the plutonium now present could not have been formed with the uranium.
 
 <!-- SEG:m68854:problem:fs-idp217024288 -->
 A [[MATH:101]] atom (mass = 7.0169 amu) decays into a [[MATH:102]] atom (mass = 7.0160 amu) by electron capture. How much energy (in millions of electron volts, MeV) is produced by this reaction?

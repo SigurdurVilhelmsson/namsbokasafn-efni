@@ -20,7 +20,7 @@ Since reactions involving electron transfer are essential to the topic of electr
 Oxidation Numbers
 
 <!-- SEG:m68821:para:fs-idm244057120 -->
-By definition, a redox reaction is one that entails changes in {{i}}oxidation number{{/i}} (or {{i}}oxidation state{{/i}}) for one or more of the elements involved. The oxidation number of an element in a compound is essentially an assessment of how the electronic environment of its atoms is different in comparison to atoms of the pure element. By this description, {{i}}the oxidation number of an atom in an element is equal to zero{{/i}}. For an atom in a compound, {{i}}the oxidation number is equal to the charge the atom would have in the compound if the compound were ionic{{/i}}. Consequential to these rules, {{i}}the sum of oxidation numbers for all atoms in a molecule is equal to the charge on the molecule{{/i}}. To illustrate this formalism, examples from the two compound classes, ionic and covalent, will be considered.
+By definition, a redox reaction is one that entails changes in [[i:oxidation number]] (or [[i:oxidation state]]) for one or more of the elements involved. The oxidation number of an element in a compound is essentially an assessment of how the electronic environment of its atoms is different in comparison to atoms of the pure element. By this description, [[i:the oxidation number of an atom in an element is equal to zero]]. For an atom in a compound, [[i:the oxidation number is equal to the charge the atom would have in the compound if the compound were ionic]]. Consequential to these rules, [[i:the sum of oxidation numbers for all atoms in a molecule is equal to the charge on the molecule]]. To illustrate this formalism, examples from the two compound classes, ionic and covalent, will be considered.
 
 <!-- SEG:m68821:para:fs-idm215450704 -->
 Simple ionic compounds present the simplest examples to illustrate this formalism, since by definition the elements’ oxidation numbers are numerically equivalent to ionic charges. Sodium chloride, NaCl, is comprised of Na[[sup:+]] cations and Cl[[sup:−]] anions, and so oxidation numbers for sodium and chlorine are, +1 and −1, respectively. Calcium fluoride, CaF[[sub:2]], is comprised of Ca[[sup:2+]] cations and F[[sup:−]] anions, and so oxidation numbers for calcium and fluorine are, +2 and −1, respectively.
@@ -29,7 +29,7 @@ Simple ionic compounds present the simplest examples to illustrate this formalis
 Covalent compounds require a more challenging use of the formalism. Water is a covalent compound whose molecules consist of two H atoms bonded separately to a central O atom via polar covalent O−H bonds. The shared electrons comprising an O−H bond are more strongly attracted to the more electronegative O atom, and so it acquires a partial negative charge in the water molecule (relative to an O atom in elemental oxygen). Consequently, H atoms in a water molecule exhibit partial positive charges compared to H atoms in elemental hydrogen. The sum of the partial negative and partial positive charges for each water molecule is zero, and the water molecule is neutral.
 
 <!-- SEG:m68821:para:fs-idm254531968 -->
-Imagine that the polarization of shared electrons within the O−H bonds of water were 100% complete—the result would be {{i}}transfer{{/i}} of electrons from H to O, and water would be an ionic compound comprised of O[[sup:2−]] anions and H[[sup:+]] cations. And so, the oxidations numbers for oxygen and hydrogen in water are −2 and +1, respectively. Applying this same logic to carbon tetrachloride, CCl[[sub:4]], yields oxidation numbers of +4 for carbon and −1 for chlorine. In the nitrate ion, [[MATH:1]], the oxidation number for nitrogen is +5 and that for oxygen is −2, summing to equal the 1− charge on the molecule:
+Imagine that the polarization of shared electrons within the O−H bonds of water were 100% complete—the result would be [[i:transfer]] of electrons from H to O, and water would be an ionic compound comprised of O[[sup:2−]] anions and H[[sup:+]] cations. And so, the oxidations numbers for oxygen and hydrogen in water are −2 and +1, respectively. Applying this same logic to carbon tetrachloride, CCl[[sub:4]], yields oxidation numbers of +4 for carbon and −1 for chlorine. In the nitrate ion, [[MATH:1]], the oxidation number for nitrogen is +5 and that for oxygen is −2, summing to equal the 1− charge on the molecule:
 
 <!-- SEG:m68821:title:fs-idm241856016-title -->
 Balancing Redox Equations
@@ -38,10 +38,10 @@ Balancing Redox Equations
 The unbalanced equation below describes the decomposition of molten sodium chloride:
 
 <!-- SEG:m68821:para:fs-idm247937312 -->
-This reaction satisfies the criterion for redox classification, since the oxidation number for Na is decreased from +1 to 0 (it undergoes {{i}}reduction{{/i}}) and that for Cl is increased from −1 to 0 (it undergoes {{i}}oxidation{{/i}}). The equation in this case is easily balanced by inspection, requiring stoichiometric coefficients of 2 for the NaCl and Na:
+This reaction satisfies the criterion for redox classification, since the oxidation number for Na is decreased from +1 to 0 (it undergoes [[i:reduction]]) and that for Cl is increased from −1 to 0 (it undergoes [[i:oxidation]]). The equation in this case is easily balanced by inspection, requiring stoichiometric coefficients of 2 for the NaCl and Na:
 
 <!-- SEG:m68821:para:fs-idm237889808 -->
-Redox reactions that take place in aqueous solutions are commonly encountered in electrochemistry, and many involve water or its characteristic ions, H[[sup:+]]({{i}}aq{{/i}}) and OH[[sup:−]]({{i}}aq{{/i}}), as reactants or products. In these cases, equations representing the redox reaction can be very challenging to balance by inspection, and the use of a systematic approach called the {{i}}half-reaction method{{/i}} is helpful. This approach involves the following steps:
+Redox reactions that take place in aqueous solutions are commonly encountered in electrochemistry, and many involve water or its characteristic ions, H[[sup:+]]([[i:aq]]) and OH[[sup:−]]([[i:aq]]), as reactants or products. In these cases, equations representing the redox reaction can be very challenging to balance by inspection, and the use of a systematic approach called the [[i:half-reaction method]] is helpful. This approach involves the following steps:
 
 <!-- SEG:m68821:item:fs-idm195795872-item-1 -->
 Write skeletal equations for the oxidation and reduction half-reactions.
@@ -95,28 +95,28 @@ The reaction above results when using relatively diluted nitric acid. If concent
 [[MATH:2]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-1 -->
-{{i}}Write skeletal equations for the oxidation and reduction half-reactions.{{/i}}[[BR]] [[MATH:3]][[BR]] [[MATH:4]]
+[[i:Write skeletal equations for the oxidation and reduction half-reactions.]][[BR]] [[MATH:3]][[BR]] [[MATH:4]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-2 -->
-{{i}}Balance each half-reaction for all elements except H and O.{{/i}}[[BR]] [[MATH:5]][[BR]] [[MATH:6]]
+[[i:Balance each half-reaction for all elements except H and O.]][[BR]] [[MATH:5]][[BR]] [[MATH:6]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-3 -->
-{{i}}Balance each half-reaction for O by adding H[[sub:2]]O.{{/i}}[[BR]] [[MATH:7]][[BR]] [[MATH:8]]
+[[i:Balance each half-reaction for O by adding H[[sub:2]]O.]][[BR]] [[MATH:7]][[BR]] [[MATH:8]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-4 -->
-{{i}}Balance each half-reaction for H by adding H{{/i}}[[sup:+]].[[BR]] [[MATH:9]][[BR]] [[MATH:10]]
+[[i:Balance each half-reaction for H by adding H]][[sup:+]].[[BR]] [[MATH:9]][[BR]] [[MATH:10]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-5 -->
-{{i}}Balance each half-reaction for charge by adding electrons.{{/i}}[[BR]] [[MATH:11]][[BR]] [[MATH:12]]
+[[i:Balance each half-reaction for charge by adding electrons.]][[BR]] [[MATH:11]][[BR]] [[MATH:12]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-6 -->
-{{i}}If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal to the number produced in the other.{{/i}}[[BR]] [[MATH:13]][[BR]] [[MATH:14]]
+[[i:If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal to the number produced in the other.]][[BR]] [[MATH:13]][[BR]] [[MATH:14]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-7 -->
-{{i}}Add the two half-reactions and simplify.{{/i}}[[BR]] [[MATH:15]][[BR]] [[MATH:16]]
+[[i:Add the two half-reactions and simplify.]][[BR]] [[MATH:15]][[BR]] [[MATH:16]]
 
 <!-- SEG:m68821:item:fs-idm648692784-item-8 -->
-{{i}}If the reaction takes place in a basic medium, add OH[[sup:−]] ions the equation obtained in step 7 to neutralize the H[[sup:+]] ions (add in equal numbers to both sides of the equation) and simplify.{{/i}}[[BR]] This step not necessary since the solution is stipulated to be acidic.
+[[i:If the reaction takes place in a basic medium, add OH[[sup:−]] ions the equation obtained in step 7 to neutralize the H[[sup:+]] ions (add in equal numbers to both sides of the equation) and simplify.]][[BR]] This step not necessary since the solution is stipulated to be acidic.
 
 <!-- SEG:m68821:note-title:fs-idm642627152-title -->
 Answer:
@@ -146,28 +146,28 @@ Aqueous permanganate ion may also be reduced using aqueous bromide ion, Br[[sup:
 [[MATH:20]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-1 -->
-{{i}}Write skeletal equations for the oxidation and reduction half-reactions.{{/i}}[[BR]] [[MATH:21]][[BR]] [[MATH:22]]
+[[i:Write skeletal equations for the oxidation and reduction half-reactions.]][[BR]] [[MATH:21]][[BR]] [[MATH:22]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-2 -->
-{{i}}Balance each half-reaction for all elements except H and O.{{/i}}[[BR]] [[MATH:23]][[BR]] [[MATH:24]]
+[[i:Balance each half-reaction for all elements except H and O.]][[BR]] [[MATH:23]][[BR]] [[MATH:24]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-3 -->
-{{i}}Balance each half-reaction for O by adding H[[sub:2]]O.{{/i}}[[BR]] [[MATH:25]][[BR]] [[MATH:26]]
+[[i:Balance each half-reaction for O by adding H[[sub:2]]O.]][[BR]] [[MATH:25]][[BR]] [[MATH:26]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-4 -->
-{{i}}Balance each half-reaction for H by adding H[[sup:+]].{{/i}}[[BR]] [[MATH:27]][[BR]] [[MATH:28]]
+[[i:Balance each half-reaction for H by adding H[[sup:+]].]][[BR]] [[MATH:27]][[BR]] [[MATH:28]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-5 -->
-{{i}}Balance each half-reaction for charge by adding electrons.{{/i}}[[BR]] [[MATH:29]][[BR]] [[MATH:30]]
+[[i:Balance each half-reaction for charge by adding electrons.]][[BR]] [[MATH:29]][[BR]] [[MATH:30]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-6 -->
-{{i}}If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal to the number produced in the other.{{/i}}[[BR]] This step is not necessary since the number of electrons is already in balance.
+[[i:If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal to the number produced in the other.]][[BR]] This step is not necessary since the number of electrons is already in balance.
 
 <!-- SEG:m68821:item:fs-idm237208384-item-7 -->
-{{i}}Add the two half-reactions and simplify.{{/i}}[[BR]] [[MATH:31]][[BR]] [[MATH:32]]
+[[i:Add the two half-reactions and simplify.]][[BR]] [[MATH:31]][[BR]] [[MATH:32]]
 
 <!-- SEG:m68821:item:fs-idm237208384-item-8 -->
-{{i}}If the reaction takes place in a basic medium, add OH[[sup:−]] ions the equation obtained in step 7 to neutralize the H[[sup:+]] ions (add in equal numbers to both sides of the equation) and simplify.{{/i}}[[BR]] [[MATH:33]][[BR]] [[MATH:34]]
+[[i:If the reaction takes place in a basic medium, add OH[[sup:−]] ions the equation obtained in step 7 to neutralize the H[[sup:+]] ions (add in equal numbers to both sides of the equation) and simplify.]][[BR]] [[MATH:33]][[BR]] [[MATH:34]]
 
 <!-- SEG:m68821:note-title:fs-idm252213568-title -->
 Answer:
@@ -281,7 +281,7 @@ Why don’t hydroxide ions appear in equations for half-reactions occurring in a
 Why don’t hydrogen ions appear in equations for half-reactions occurring in basic solution?
 
 <!-- SEG:m68821:solution:fs-idp88267712 -->
-In basic solution, [OH[[sup:−]]] > 1 [[MATH:68]] 10[[sup:−7]] {{i}}M{{/i}} > [H[[sup:+]]]. Hydrogen ion cannot appear as a reactant because its concentration is essentially zero. If it were produced, it would instantly react with the excess hydroxide ion to produce water. Thus, hydrogen ion should {{i}}not{{/i}} appear as a reactant or product in basic solution.
+In basic solution, [OH[[sup:−]]] > 1 [[MATH:68]] 10[[sup:−7]] [[i:M]] > [H[[sup:+]]]. Hydrogen ion cannot appear as a reactant because its concentration is essentially zero. If it were produced, it would instantly react with the excess hydroxide ion to produce water. Thus, hydrogen ion should [[i:not]] appear as a reactant or product in basic solution.
 
 <!-- SEG:m68821:problem:fs-idp269088912 -->
 Why must the charge balance in oxidation-reduction reactions?

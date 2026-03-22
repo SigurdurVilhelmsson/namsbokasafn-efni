@@ -1,15 +1,16 @@
 {
-  "generated": "2026-03-20T12:30:00Z",
-  "pipeline": "extract→api-translate→inject (new API-proof markers, Phase 3 re-translation complete)",
+  "generated": "2026-03-21T17:00:00Z",
+  "pipeline": "extract→api-translate→inject + repair-emphasis (API marker guard, link tightening, annotation fix, emphasis repair)",
   "summary": {
     "totalChecked": 148,
-    "perfect": 101,
-    "withDiscrepancies": 47,
+    "perfect": 106,
+    "withDiscrepancies": 42,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 250,
-    "dominantCause": "~2% API {{i}} emphasis marker loss + structural anomalies in 3 modules",
+    "totalDiscrepancies": 215,
+    "dominantCause": "~2% API {{i}} emphasis marker loss (irreducible) + structural anomalies in m68739/m68710",
     "htmlRendered": 267,
-    "chaptersRendered": 22
+    "chaptersRendered": 22,
+    "improvementFromBaseline": "+4 PERFECT modules, -29 discrepancies (12% reduction)"
   },
   "categories": {
     "legacyMarkerLoss": {

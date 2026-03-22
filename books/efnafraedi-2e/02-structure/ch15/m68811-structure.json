@@ -179,7 +179,7 @@
       "class": null,
       "title": {
         "segmentId": "m68811:title:fs-idp11911328-title",
-        "text": "{{i}}K{{/i}}[[sub:sp]] and Solubility"
+        "text": "[[i:K]][[sub:sp]] and Solubility"
       },
       "content": [
         {
@@ -202,7 +202,7 @@
           "id": "fs-idp844816",
           "title": {
             "segmentId": "m68811:example-title:fs-idp844816-title",
-            "text": "Calculation of {{i}}K{{/i}}[[sub:sp]] from Equilibrium Concentrations"
+            "text": "Calculation of [[i:K]][[sub:sp]] from Equilibrium Concentrations"
           },
           "content": [
             {
@@ -281,7 +281,7 @@
           "id": "fs-idp261504",
           "title": {
             "segmentId": "m68811:example-title:fs-idp261504-title",
-            "text": "Determination of Molar Solubility from {{i}}K{{/i}}[[sub:sp]]"
+            "text": "Determination of Molar Solubility from [[i:K]][[sub:sp]]"
           },
           "content": [
             {
@@ -369,7 +369,7 @@
           "id": "fs-idp647936",
           "title": {
             "segmentId": "m68811:example-title:fs-idp647936-title",
-            "text": "Determination of Molar Solubility from {{i}}K{{/i}}[[sub:sp]]"
+            "text": "Determination of Molar Solubility from [[i:K]][[sub:sp]]"
           },
           "content": [
             {
@@ -457,7 +457,7 @@
           "id": "fs-idp836192",
           "title": {
             "segmentId": "m68811:example-title:fs-idp836192-title",
-            "text": "Determination of {{i}}K{{/i}}[[sub:sp]] from Gram Solubility"
+            "text": "Determination of [[i:K]][[sub:sp]] from Gram Solubility"
           },
           "content": [
             {

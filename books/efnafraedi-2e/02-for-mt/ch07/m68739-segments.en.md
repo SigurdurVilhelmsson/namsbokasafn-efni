@@ -20,7 +20,7 @@ Lewis Symbols
 We use Lewis symbols to describe valence electron configurations of atoms and monatomic ions. A {{term}}Lewis symbol{{/term}} consists of an elemental symbol surrounded by one dot for each of its valence electrons:
 
 <!-- SEG:m68739:para:fs-idm32212144 -->
-[#CNX_Chem_07_03_3rowLewis] shows the Lewis symbols for the elements of the third period of the periodic table.
+[[xref:CNX_Chem_07_03_3rowLewis]] shows the Lewis symbols for the elements of the third period of the periodic table.
 
 <!-- SEG:m68739:caption:CNX_Chem_07_03_3rowLewis-caption -->
 Lewis symbols illustrating the number of valence electrons for each element in the third period of the periodic table.
@@ -32,7 +32,7 @@ Lewis symbols can also be used to illustrate the formation of cations from atoms
 Likewise, they can be used to show the formation of anions from atoms, as shown here for chlorine and sulfur:
 
 <!-- SEG:m68739:para:fs-idm11027888 -->
-[#CNX_Chem_07_03_IonLewis] demonstrates the use of Lewis symbols to show the transfer of electrons during the formation of ionic compounds.
+[[xref:CNX_Chem_07_03_IonLewis]] demonstrates the use of Lewis symbols to show the transfer of electrons during the formation of ionic compounds.
 
 <!-- SEG:m68739:caption:CNX_Chem_07_03_IonLewis-caption -->
 Cations are formed when atoms lose electrons, represented by fewer Lewis dots, whereas anions are formed by atoms gaining electrons. The total number of electrons does not change.
@@ -104,10 +104,10 @@ Determine the total number of valence (outer shell) electrons in the molecule or
 For a molecule, we add the number of valence electrons on each atom in the molecule:[[BR]] [[MATH:2]]
 
 <!-- SEG:m68739:item:fs-idp47568320-item-2 -->
-For a {{i}}negative ion{{/i}}, such as [[MATH:4]] we add the number of valence electrons on the atoms to the number of negative charges on the ion (one electron is gained for each single negative charge):[[BR]] [[MATH:3]]
+For a [[i:negative ion]], such as [[MATH:4]] we add the number of valence electrons on the atoms to the number of negative charges on the ion (one electron is gained for each single negative charge):[[BR]] [[MATH:3]]
 
 <!-- SEG:m68739:item:fs-idp47568320-item-3 -->
-For a {{i}}positive ion{{/i}}, such as NO[[sup:+]], we add the number of valence electrons on the atoms in the ion and then subtract the number of positive charges on the ion (one electron is lost for each single positive charge) from the total number of valence electrons:[[BR]] [[MATH:5]]
+For a [[i:positive ion]], such as NO[[sup:+]], we add the number of valence electrons on the atoms in the ion and then subtract the number of positive charges on the ion (one electron is lost for each single positive charge) from the total number of valence electrons:[[BR]] [[MATH:5]]
 
 <!-- SEG:m68739:item:fs-idp47568320-item-4 -->
 Since OF[[sub:2]] is a neutral molecule, we simply add the number of valence electrons:[[BR]] [[MATH:6]]
@@ -155,7 +155,7 @@ NASA’s Cassini-Huygens mission detected a large cloud of toxic hydrogen cyanid
 Solution
 
 <!-- SEG:m68739:para:fs-idp90944512 -->
-{{i}}Calculate the number of valence electrons.{{/i}}[[BR]] HCN: (1 [[MATH:12]] 1) + (4 [[MATH:13]] 1) + (5 [[MATH:14]] 1) = 10[[BR]] H[[sub:3]]CCH[[sub:3]]: (1 [[MATH:15]] 3) + (2 [[MATH:16]] 4) + (1 [[MATH:17]] 3) = 14[[BR]] HCCH: (1 [[MATH:18]] 1) + (2 [[MATH:19]] 4) + (1 [[MATH:20]] 1) = 10[[BR]] NH[[sub:3]]: (5 [[MATH:21]] 1) + (3 [[MATH:22]] 1) = 8 {{i}}Draw a skeleton and connect the atoms with single bonds.{{/i}} Remember that H is never a central atom:[[BR]] [[MEDIA:7]] {{i}}Where needed, distribute electrons to the terminal atoms:{{/i}}[[BR]] [[MEDIA:8]][[BR]] HCN: six electrons placed on N[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: no terminal atoms capable of accepting electrons[[BR]] NH[[sub:3]]: no terminal atoms capable of accepting electrons {{i}}Where needed, place remaining electrons on the central atom:{{/i}}[[BR]] [[MEDIA:9]][[BR]] HCN: no electrons remain[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: four electrons placed on carbon[[BR]] NH[[sub:3]]: two electrons placed on nitrogen {{i}}Where needed, rearrange electrons to form multiple bonds in order to obtain an octet on each atom:{{/i}}[[BR]] HCN: form two more C–N bonds[[BR]] H[[sub:3]]CCH[[sub:3]]: all atoms have the correct number of electrons[[BR]] HCCH: form a triple bond between the two carbon atoms[[BR]] NH[[sub:3]]: all atoms have the correct number of electrons[[BR]] [[MEDIA:10]]
+[[i:Calculate the number of valence electrons.]][[BR]] HCN: (1 [[MATH:12]] 1) + (4 [[MATH:13]] 1) + (5 [[MATH:14]] 1) = 10[[BR]] H[[sub:3]]CCH[[sub:3]]: (1 [[MATH:15]] 3) + (2 [[MATH:16]] 4) + (1 [[MATH:17]] 3) = 14[[BR]] HCCH: (1 [[MATH:18]] 1) + (2 [[MATH:19]] 4) + (1 [[MATH:20]] 1) = 10[[BR]] NH[[sub:3]]: (5 [[MATH:21]] 1) + (3 [[MATH:22]] 1) = 8 [[i:Draw a skeleton and connect the atoms with single bonds.]] Remember that H is never a central atom:[[BR]] [[MEDIA:7]] [[i:Where needed, distribute electrons to the terminal atoms:]][[BR]] [[MEDIA:8]][[BR]] HCN: six electrons placed on N[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: no terminal atoms capable of accepting electrons[[BR]] NH[[sub:3]]: no terminal atoms capable of accepting electrons [[i:Where needed, place remaining electrons on the central atom:]][[BR]] [[MEDIA:9]][[BR]] HCN: no electrons remain[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: four electrons placed on carbon[[BR]] NH[[sub:3]]: two electrons placed on nitrogen [[i:Where needed, rearrange electrons to form multiple bonds in order to obtain an octet on each atom:]][[BR]] HCN: form two more C–N bonds[[BR]] H[[sub:3]]CCH[[sub:3]]: all atoms have the correct number of electrons[[BR]] HCCH: form a triple bond between the two carbon atoms[[BR]] NH[[sub:3]]: all atoms have the correct number of electrons[[BR]] [[MEDIA:10]]
 
 <!-- SEG:m68739:para-title:fs-idm58848848-title -->
 Check Your Learning
@@ -164,19 +164,19 @@ Check Your Learning
 Both carbon monoxide, CO, and carbon dioxide, CO[[sub:2]], are products of the combustion of fossil fuels. Both of these gases also cause problems: CO is toxic and CO[[sub:2]] has been implicated in global climate change. What are the Lewis structures of these two molecules?
 
 <!-- SEG:m68739:item:fs-idm4698672-item-1 -->
-{{i}}Calculate the number of valence electrons.{{/i}}[[BR]] HCN: (1 [[MATH:23]] 1) + (4 [[MATH:24]] 1) + (5 [[MATH:25]] 1) = 10[[BR]] H[[sub:3]]CCH[[sub:3]]: (1 [[MATH:26]] 3) + (2 [[MATH:27]] 4) + (1 [[MATH:28]] 3) = 14[[BR]] HCCH: (1 [[MATH:29]] 1) + (2 [[MATH:30]] 4) + (1 [[MATH:31]] 1) = 10[[BR]] NH[[sub:3]]: (5 [[MATH:32]] 1) + (3 [[MATH:33]] 1) = 8
+[[i:Calculate the number of valence electrons.]][[BR]] HCN: (1 [[MATH:23]] 1) + (4 [[MATH:24]] 1) + (5 [[MATH:25]] 1) = 10[[BR]] H[[sub:3]]CCH[[sub:3]]: (1 [[MATH:26]] 3) + (2 [[MATH:27]] 4) + (1 [[MATH:28]] 3) = 14[[BR]] HCCH: (1 [[MATH:29]] 1) + (2 [[MATH:30]] 4) + (1 [[MATH:31]] 1) = 10[[BR]] NH[[sub:3]]: (5 [[MATH:32]] 1) + (3 [[MATH:33]] 1) = 8
 
 <!-- SEG:m68739:item:fs-idm4698672-item-2 -->
-{{i}}Draw a skeleton and connect the atoms with single bonds.{{/i}} Remember that H is never a central atom:[[BR]] [[MEDIA:11]]
+[[i:Draw a skeleton and connect the atoms with single bonds.]] Remember that H is never a central atom:[[BR]] [[MEDIA:11]]
 
 <!-- SEG:m68739:item:fs-idm4698672-item-3 -->
-{{i}}Where needed, distribute electrons to the terminal atoms:{{/i}}[[BR]] [[MEDIA:12]][[BR]] HCN: six electrons placed on N[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: no terminal atoms capable of accepting electrons[[BR]] NH[[sub:3]]: no terminal atoms capable of accepting electrons
+[[i:Where needed, distribute electrons to the terminal atoms:]][[BR]] [[MEDIA:12]][[BR]] HCN: six electrons placed on N[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: no terminal atoms capable of accepting electrons[[BR]] NH[[sub:3]]: no terminal atoms capable of accepting electrons
 
 <!-- SEG:m68739:item:fs-idm4698672-item-4 -->
-{{i}}Where needed, place remaining electrons on the central atom:{{/i}}[[BR]] [[MEDIA:13]][[BR]] HCN: no electrons remain[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: four electrons placed on carbon[[BR]] NH[[sub:3]]: two electrons placed on nitrogen
+[[i:Where needed, place remaining electrons on the central atom:]][[BR]] [[MEDIA:13]][[BR]] HCN: no electrons remain[[BR]] H[[sub:3]]CCH[[sub:3]]: no electrons remain[[BR]] HCCH: four electrons placed on carbon[[BR]] NH[[sub:3]]: two electrons placed on nitrogen
 
 <!-- SEG:m68739:item:fs-idm4698672-item-5 -->
-{{i}}Where needed, rearrange electrons to form multiple bonds in order to obtain an octet on each atom:{{/i}}[[BR]] HCN: form two more C–N bonds[[BR]] H[[sub:3]]CCH[[sub:3]]: all atoms have the correct number of electrons[[BR]] HCCH: form a triple bond between the two carbon atoms[[BR]] NH[[sub:3]]: all atoms have the correct number of electrons[[BR]] [[MEDIA:14]]
+[[i:Where needed, rearrange electrons to form multiple bonds in order to obtain an octet on each atom:]][[BR]] HCN: form two more C–N bonds[[BR]] H[[sub:3]]CCH[[sub:3]]: all atoms have the correct number of electrons[[BR]] HCCH: form a triple bond between the two carbon atoms[[BR]] NH[[sub:3]]: all atoms have the correct number of electrons[[BR]] [[MEDIA:14]]
 
 <!-- SEG:m68739:note-title:fs-idm39244032-title -->
 Answer:
@@ -194,7 +194,7 @@ As early as the 1960s, chemists began to observe complex carbon structures, but 
 Kroto sought to use a machine developed by Richard Smalley's team at Rice University to learn more about these structures. Together with Robert Curl, who had introduced them, and three graduate students—James Heath, Sean O’Brien, and Yuan Liu—they performed an intensive series of experiments that led to a major discovery.
 
 <!-- SEG:m68739:para:eip-idm1447865056 -->
-In 1996, the Nobel Prize in Chemistry was awarded to Richard {{term}}Smalley{{/term}} ([#CNX_Chem_07_03_Smalley]), Robert Curl, and Harold Kroto for their work in discovering a new form of carbon, the C[[sub:60]] buckminsterfullerene molecule ([m68736#CNX_Chem_07_00_Bucky]). An entire class of compounds, including spheres and tubes of various shapes, were discovered based on C[[sub:60.]] This type of molecule, called a fullerene, shows promise in a variety of applications. Because of their size and shape, fullerenes can encapsulate other molecules, so they have shown potential in various applications from hydrogen storage to targeted drug delivery systems. They also possess unique electronic and optical properties that have been put to good use in solar powered devices and chemical sensors.
+In 1996, the Nobel Prize in Chemistry was awarded to Richard {{term}}Smalley{{/term}} ([[xref:CNX_Chem_07_03_Smalley]]), Robert Curl, and Harold Kroto for their work in discovering a new form of carbon, the C[[sub:60]] buckminsterfullerene molecule ([[docref:m68736#CNX_Chem_07_00_Bucky]]). An entire class of compounds, including spheres and tubes of various shapes, were discovered based on C[[sub:60.]] This type of molecule, called a fullerene, shows promise in a variety of applications. Because of their size and shape, fullerenes can encapsulate other molecules, so they have shown potential in various applications from hydrogen storage to targeted drug delivery systems. They also possess unique electronic and optical properties that have been put to good use in solar powered devices and chemical sensors.
 
 <!-- SEG:m68739:caption:CNX_Chem_07_03_Smalley-caption -->
 Richard Smalley (1943–2005), a professor of physics, chemistry, and astronomy at Rice University, was one of the leading advocates for fullerene chemistry. Upon his death in 2005, the US Senate honored him as the “Father of Nanotechnology.” (credit: United States Department of Energy)
@@ -212,19 +212,19 @@ We call molecules that contain an odd number of electrons {{term}}free radicals{
 To draw the Lewis structure for an odd-electron molecule like NO, we follow the same five steps we would for other molecules, but with a few minor changes:
 
 <!-- SEG:m68739:item:fs-idp52495568-item-1 -->
-{{i}}Determine the total number of valence (outer shell) electrons{{/i}}. The sum of the valence electrons is 5 (from N) + 6 (from O) = 11. The odd number immediately tells us that we have a free radical, so we know that not every atom can have eight electrons in its valence shell.
+[[i:Determine the total number of valence (outer shell) electrons]]. The sum of the valence electrons is 5 (from N) + 6 (from O) = 11. The odd number immediately tells us that we have a free radical, so we know that not every atom can have eight electrons in its valence shell.
 
 <!-- SEG:m68739:item:fs-idp52495568-item-2 -->
-{{i}}Draw a skeleton structure of the molecule{{/i}}. We can easily draw a skeleton with an N–O single bond:[[BR]] N–O
+[[i:Draw a skeleton structure of the molecule]]. We can easily draw a skeleton with an N–O single bond:[[BR]] N–O
 
 <!-- SEG:m68739:item:fs-idp52495568-item-3 -->
-{{i}}Distribute the remaining electrons as lone pairs on the terminal atoms{{/i}}. In this case, there is no central atom, so we distribute the electrons around both atoms. We give eight electrons to the more electronegative atom in these situations; thus oxygen has the filled valence shell:[[BR]] [[MEDIA:15]]
+[[i:Distribute the remaining electrons as lone pairs on the terminal atoms]]. In this case, there is no central atom, so we distribute the electrons around both atoms. We give eight electrons to the more electronegative atom in these situations; thus oxygen has the filled valence shell:[[BR]] [[MEDIA:15]]
 
 <!-- SEG:m68739:item:fs-idp52495568-item-4 -->
-{{i}}Place all remaining electrons on the central atom{{/i}}. Since there are no remaining electrons, this step does not apply.
+[[i:Place all remaining electrons on the central atom]]. Since there are no remaining electrons, this step does not apply.
 
 <!-- SEG:m68739:item:fs-idp52495568-item-5 -->
-{{i}}Rearrange the electrons to make multiple bonds with the central atom in order to obtain octets wherever possible.{{/i}} We know that an odd-electron molecule cannot have an octet for every atom, but we want to get each atom as close to an octet as possible. In this case, nitrogen has only five electrons around it. To move closer to an octet for nitrogen, we take one of the lone pairs from oxygen and use it to form a NO double bond. (We cannot take another lone pair of electrons on oxygen and form a triple bond because nitrogen would then have nine electrons:)[[BR]] [[MEDIA:16]]
+[[i:Rearrange the electrons to make multiple bonds with the central atom in order to obtain octets wherever possible.]] We know that an odd-electron molecule cannot have an octet for every atom, but we want to get each atom as close to an octet as possible. In this case, nitrogen has only five electrons around it. To move closer to an octet for nitrogen, we take one of the lone pairs from oxygen and use it to form a NO double bond. (We cannot take another lone pair of electrons on oxygen and form a triple bond because nitrogen would then have nine electrons:)[[BR]] [[MEDIA:16]]
 
 <!-- SEG:m68739:title:fs-idm70526624-title -->
 Electron-deficient Molecules
@@ -239,7 +239,7 @@ An atom like the boron atom in BF[[sub:3]], which does not have eight electrons,
 Hypervalent Molecules
 
 <!-- SEG:m68739:para:fs-idp22493408 -->
-Elements in the second period of the periodic table ({{i}}n{{/i}} = 2) can accommodate only eight electrons in their valence shell orbitals because they have only four valence orbitals (one 2{{i}}s{{/i}} and three 2{{i}}p{{/i}} orbitals). Elements in the third and higher periods ({{i}}n{{/i}} ≥ 3) have more than four valence orbitals and can share more than four pairs of electrons with other atoms because they have empty {{i}}d{{/i}} orbitals in the same shell. Molecules formed from these elements are sometimes called {{term}}hypervalent molecules{{/term}}. [#CNX_Chem_07_03_PF5SF6_img] shows the Lewis structures for two hypervalent molecules, PCl[[sub:5]] and SF[[sub:6.]]
+Elements in the second period of the periodic table ([[i:n]] = 2) can accommodate only eight electrons in their valence shell orbitals because they have only four valence orbitals (one 2[[i:s]] and three 2[[i:p]] orbitals). Elements in the third and higher periods ([[i:n]] ≥ 3) have more than four valence orbitals and can share more than four pairs of electrons with other atoms because they have empty [[i:d]] orbitals in the same shell. Molecules formed from these elements are sometimes called {{term}}hypervalent molecules{{/term}}. [[xref:CNX_Chem_07_03_PF5SF6_img]] shows the Lewis structures for two hypervalent molecules, PCl[[sub:5]] and SF[[sub:6.]]
 
 <!-- SEG:m68739:caption:CNX_Chem_07_03_PF5SF6_img-caption -->
 In PCl[[sub:5]], the central atom phosphorus shares five pairs of electrons. In SF[[sub:6]], sulfur shares six pairs of electrons.
@@ -281,13 +281,13 @@ Check Your Learning
 The halogens form a class of compounds called the interhalogens, in which halogen atoms covalently bond to each other. Write the Lewis structures for the interhalogens BrCl[[sub:3]] and [[MATH:34]]
 
 <!-- SEG:m68739:item:fs-idm17935232-item-1 -->
-{{i}}Calculate the number of valence electrons:{{/i}}[[BR]] XeF[[sub:2]]: 8 + (2 [[MATH:35]] 7) = 22[[BR]] XeF[[sub:6]]: 8 + (6 [[MATH:36]] 7) = 50
+[[i:Calculate the number of valence electrons:]][[BR]] XeF[[sub:2]]: 8 + (2 [[MATH:35]] 7) = 22[[BR]] XeF[[sub:6]]: 8 + (6 [[MATH:36]] 7) = 50
 
 <!-- SEG:m68739:item:fs-idm17935232-item-2 -->
-{{i}}Draw a skeleton joining the atoms by single bonds.{{/i}} Xenon will be the central atom because fluorine cannot be a central atom:[[BR]] [[MEDIA:17]]
+[[i:Draw a skeleton joining the atoms by single bonds.]] Xenon will be the central atom because fluorine cannot be a central atom:[[BR]] [[MEDIA:17]]
 
 <!-- SEG:m68739:item:fs-idm17935232-item-3 -->
-{{i}}Distribute the remaining electrons.{{/i}}[[BR]] XeF[[sub:2]]: We place three lone pairs of electrons around each F atom, accounting for 12 electrons and giving each F atom 8 electrons. Thus, six electrons (three lone pairs) remain. These lone pairs must be placed on the Xe atom. This is acceptable because Xe atoms have empty valence shell {{i}}d{{/i}} orbitals and can accommodate more than eight electrons. The Lewis structure of XeF[[sub:2]] shows two bonding pairs and three lone pairs of electrons around the Xe atom:[[BR]] [[MEDIA:18]][[BR]] XeF[[sub:6]]: We place three lone pairs of electrons around each F atom, accounting for 36 electrons. Two electrons remain, and this lone pair is placed on the Xe atom:[[BR]] [[MEDIA:19]]
+[[i:Distribute the remaining electrons.]][[BR]] XeF[[sub:2]]: We place three lone pairs of electrons around each F atom, accounting for 12 electrons and giving each F atom 8 electrons. Thus, six electrons (three lone pairs) remain. These lone pairs must be placed on the Xe atom. This is acceptable because Xe atoms have empty valence shell [[i:d]] orbitals and can accommodate more than eight electrons. The Lewis structure of XeF[[sub:2]] shows two bonding pairs and three lone pairs of electrons around the Xe atom:[[BR]] [[MEDIA:18]][[BR]] XeF[[sub:6]]: We place three lone pairs of electrons around each F atom, accounting for 36 electrons. Two electrons remain, and this lone pair is placed on the Xe atom:[[BR]] [[MEDIA:19]]
 
 <!-- SEG:m68739:note-title:fs-idp48519744-title -->
 Answer:
@@ -527,7 +527,7 @@ Write Lewis structures for:
 Correct the following statement: “The bonds in solid PbCl[[sub:2]] are ionic; the bond in a HCl molecule is covalent. Thus, all of the valence electrons in PbCl[[sub:2]] are located on the Cl[[sup:–]] ions, and all of the valence electrons in a HCl molecule are shared between the H and Cl atoms.”
 
 <!-- SEG:m68739:solution:fs-idm7862384 -->
-Two valence electrons per Pb atom are transferred to Cl atoms; the resulting Pb[[sup:2+]] ion has a 6{{i}}s{{/i}}[[sup:2]] valence shell configuration. Two of the valence electrons in the HCl molecule are shared, and the other six are located on the Cl atom as lone pairs of electrons.
+Two valence electrons per Pb atom are transferred to Cl atoms; the resulting Pb[[sup:2+]] ion has a 6[[i:s]][[sup:2]] valence shell configuration. Two of the valence electrons in the HCl molecule are shared, and the other six are located on the Cl atom as lone pairs of electrons.
 
 <!-- SEG:m68739:problem:fs-idp28075376 -->
 Write Lewis structures for the following molecules or ions:
@@ -557,19 +557,19 @@ Carbon tetrachloride was formerly used in fire extinguishers for electrical fire
 Identify the atoms that correspond to each of the following electron configurations. Then, write the Lewis symbol for the common ion formed from each atom:
 
 <!-- SEG:m68739:problem:fs-idp19768176 -->
-(a) 1{{i}}s{{/i}}[[sup:2]]2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:5]]
+(a) 1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:5]]
 
 <!-- SEG:m68739:problem:fs-idm80153488 -->
-(b) 1{{i}}s{{/i}}[[sup:2]]2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:6]]3{{i}}s{{/i}}[[sup:2]]
+(b) 1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]3[[i:s]][[sup:2]]
 
 <!-- SEG:m68739:problem:fs-idp65373872 -->
-(c) 1{{i}}s{{/i}}[[sup:2]]2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:6]]3{{i}}s{{/i}}[[sup:2]]3{{i}}p{{/i}}[[sup:6]]4{{i}}s{{/i}}[[sup:2]]3{{i}}d{{/i}}[[sup:10]]
+(c) 1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]4[[i:s]][[sup:2]]3[[i:d]][[sup:10]]
 
 <!-- SEG:m68739:problem:fs-idp23448016 -->
-(d) 1{{i}}s{{/i}}[[sup:2]]2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:6]]3{{i}}s{{/i}}[[sup:2]]3{{i}}p{{/i}}[[sup:6]]4{{i}}s{{/i}}[[sup:2]]3{{i}}d{{/i}}[[sup:10]]4{{i}}p{{/i}}[[sup:4]]
+(d) 1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]4[[i:s]][[sup:2]]3[[i:d]][[sup:10]]4[[i:p]][[sup:4]]
 
 <!-- SEG:m68739:problem:fs-idm116147776 -->
-(e) 1{{i}}s{{/i}}[[sup:2]]2{{i}}s{{/i}}[[sup:2]]2{{i}}p{{/i}}[[sup:6]]3{{i}}s{{/i}}[[sup:2]]3{{i}}p{{/i}}[[sup:6]]4{{i}}s{{/i}}[[sup:2]]3{{i}}d{{/i}}[[sup:10]]4{{i}}p{{/i}}[[sup:1]]
+(e) 1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]4[[i:s]][[sup:2]]3[[i:d]][[sup:10]]4[[i:p]][[sup:1]]
 
 <!-- SEG:m68739:problem:fs-idp177246704 -->
 The arrangement of atoms in several biologically important molecules is given here. Complete the Lewis structures of these molecules by adding multiple bonds and lone pairs. Do not add any more atoms.

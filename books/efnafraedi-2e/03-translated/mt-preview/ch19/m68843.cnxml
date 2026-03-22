@@ -1,9 +1,4 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<!-- FIDELITY-WARNING: m68843 has 2 structural discrepancy(ies)
-  link: source=35 translated=37 (+2 overproduction)
-  sup: source=85 translated=86 (+1 overproduction)
-  Review needed before publication. Run cnxml-fidelity-check.js for details.
--->
 <title>Girðiefnafræði hliðarmálma</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68843</md:content-id>
@@ -293,7 +288,7 @@
 </tbody>
 </tgroup>
 </table>
-<para id="fs-idp57061536">Ólíkt aðalflokka frumeindum þar sem bæði bindandi og óbindandi rafeindir ákvarða lögun sameindarinnar, breyta óbindandi <emphasis effect="italics">d</emphasis>-rafeindir ekki fyrirkomulagi bindlanna. Áttflötunga komplexar hafa hnitsetningartöluna sex og sex gjafafrumeindirnar eru staðsettar á hornum áttflötungs umhverfis miðlægu málmjónina. Dæmi eru sýnd á <link target-id="CNX_Chem_19_02_oct"/>. Klóríð- og nítratanjónirnar í [Co(H<sub>2</sub>O)<sub>6</sub>]Cl<sub>2</sub> og <link url="NO<sub>3</sub>">Cr(en)<sub>3</sub></link><sub>3</sub>, og kalíumkatjónirnar í K<sub>2</sub>[PtCl<sub>6</sub>], eru fyrir utan hornklofana og eru ekki bundnar málmjóninni.</para>
+<para id="fs-idp57061536">Ólíkt aðalflokka frumeindum þar sem bæði bindandi og óbindandi rafeindir ákvarða lögun sameindarinnar, breyta óbindandi <emphasis effect="italics">d</emphasis>-rafeindir ekki fyrirkomulagi bindlanna. Áttflötunga komplexar hafa hnitsetningartöluna sex og sex gjafafrumeindirnar eru staðsettar á hornum áttflötungs umhverfis miðlægu málmjónina. Dæmi eru sýnd á <link target-id="CNX_Chem_19_02_oct"/>. Klóríð- og nítratanjónirnar í [Co(H<sub>2</sub>O)<sub>6</sub>]Cl<sub>2</sub> og [Cr(en)<sub>3</sub>](NO<sub>3</sub>)<sub>3</sub>, og kalíumkatjónirnar í K<sub>2</sub>[PtCl<sub>6</sub>], eru fyrir utan hornklofana og eru ekki bundnar málmjóninni.</para>
 <figure id="CNX_Chem_19_02_oct">
 <media id="fs-idp127345808" alt="Three structures are shown. In a, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 plus. Following this to the right appears 2 C l superscript negative sign. In b, a central C r atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 plus. Following to the right is 3 N O subscript 3 superscript negative sign. In c, 2 K superscript plus is followed by a structure in brackets. Inside the brackets is a central P t atom. From the P t atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to C l atoms. Similarly, solid wedges below to both the right and left indicate bonds to two more C l atoms. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 negative sign.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_19_02_oct.jpg"/>
@@ -347,7 +342,7 @@
 </media>
 <caption>Þrjú ísómeruform af [Co(en)<sub>2</sub>Cl<sub>2</sub>]<sup>+</sup> eru til. <emphasis effect="italics">Trans</emphasis>-ísómeran, sem myndast þegar klóratómin eru staðsett í 180° horni, hefur mjög ólíka eiginleika en <emphasis effect="italics">cis</emphasis>-ísómerurnar. Spegilmyndir <emphasis effect="italics">cis</emphasis>-ísómerunnar mynda par af handhverfum, sem hafa eins hegðun nema þegar þær hvarfast við aðrar spegilmyndaísómerur.</caption>
 </figure>
-<para id="fs-idp79204432"><term id="term-00016">Tengslísómerur (e. linkage isomers)</term> koma fram þegar hnettasambandið inniheldur bindil sem getur tengst miðju hliðarmálmsins í gegnum tvö mismunandi atóm. Til dæmis getur CN-bindillinn tengst í gegnum kolefnisatómið (sýanó) eða í gegnum köfnunarefnisatómið (ísósýanó). Á sama hátt getur SCN<sup>-</sup> tengst í gegnum brennisteins- eða köfnunarefnisatómið, sem gefur tvö aðskilin efnasambönd ([Co(NH<sub>3</sub>)<sub>5</sub>SCN]<sup>2+</sup> eða [Co(NH<sub>3</sub>)<sub>5</sub>NCS]<sup>2+</sup>).</para>
+<para id="fs-idp79204432"><term id="term-00016">Tengslísómerur (e. linkage isomers)</term> koma fram þegar hnettasambandið inniheldur bindil sem getur tengst miðju hliðarmálmsins í gegnum tvö mismunandi atóm. Til dæmis getur CN-bindillinn tengst í gegnum kolefnisatómið (sýanó) eða í gegnum köfnunarefnisatómið (ísósýanó). Á sama hátt getur SCN^-^ tengst í gegnum brennisteins- eða köfnunarefnisatómið, sem gefur tvö aðskilin efnasambönd ([Co(NH<sub>3</sub>)<sub>5</sub>SCN]<sup>2+</sup> eða [Co(NH<sub>3</sub>)<sub>5</sub>NCS]<sup>2+</sup>).</para>
 <para id="fs-idp58946640"><term id="term-00017">Jónunarísómerur (e. ionization isomers)</term> (eða <term id="term-00018">hnettísómerur (e. coordination isomers)</term>) koma fram þegar einum anjónískum bindli í innra hnetthvolfinu er skipt út fyrir mótjónina úr ytra hnetthvolfinu. Einfalt dæmi um tvær jónunarísómerur eru [CoCl<sub>6</sub>][Br] og [CoCl<sub>5</sub>Br][Cl].</para>
 </section>
 <section id="fs-idp33494848">
@@ -462,7 +457,7 @@
 <para id="fs-idp66182016">(a) [Co(CO<sub>3</sub>)<sub>3</sub>]<sup>3−</sup> (athugið að CO<sub>3</sub><sup>2−</sup> er tvítönna bindill í þessari komplexjón)</para><para id="fs-idp38453456">(b) [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup></para>
 <para id="fs-idp72201152">(c) [Co(NH<sub>3</sub>)<sub>4</sub>Br<sub>2</sub>]<sub>2</sub>(SO<sub>4</sub>)</para>
 <para id="fs-idp88473488">(d) [Pt(NH<sub>3</sub>)<sub>4</sub>][PtCl<sub>4</sub>]</para>
-<para id="fs-idp74765776">(e) <link url="NO<sub>3</sub>">Cr(en)<sub>3</sub></link><sub>3</sub></para>
+<para id="fs-idp74765776">(e) [Cr(en)<sub>3</sub>](NO<sub>3</sub>)<sub>3</sub></para>
 <para id="fs-idp53542624">(f) [Pd(NH<sub>3</sub>)<sub>2</sub>Br<sub>2</sub>] (ferhyrndur flatningur)</para>
 <para id="fs-idp75347168">(g) K<sub>3</sub>[Cu(Cl)<sub>5</sub>]</para>
 <para id="fs-idp20243712">(h) [Zn(NH<sub>3</sub>)<sub>2</sub>Cl<sub>2</sub>]</para>

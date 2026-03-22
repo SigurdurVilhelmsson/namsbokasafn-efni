@@ -11,13 +11,13 @@ Explain the dimensional analysis (factor label) approach to mathematical calcula
 Use dimensional analysis to carry out unit conversions for a given property and computations involving two or more properties
 
 <!-- SEG:m68683:para:fs-idm319461744 -->
-It is often the case that a quantity of interest may not be easy (or even possible) to measure directly but instead must be calculated from other directly measured properties and appropriate mathematical relationships. For example, consider measuring the average speed of an athlete running sprints. This is typically accomplished by measuring the {{i}}time{{/i}} required for the athlete to run from the starting line to the finish line, and the {{i}}distance{{/i}} between these two lines, and then computing {{i}}speed{{/i}} from the equation that relates these three properties:
+It is often the case that a quantity of interest may not be easy (or even possible) to measure directly but instead must be calculated from other directly measured properties and appropriate mathematical relationships. For example, consider measuring the average speed of an athlete running sprints. This is typically accomplished by measuring the [[i:time]] required for the athlete to run from the starting line to the finish line, and the [[i:distance]] between these two lines, and then computing [[i:speed]] from the equation that relates these three properties:
 
 <!-- SEG:m68683:para:fs-idm350487392 -->
 An Olympic-quality sprinter can run 100 m in approximately 10 s, corresponding to an average speed of
 
 <!-- SEG:m68683:para:fs-idm308822992 -->
-(For this and the next calculation, assume the trailing zeros are significant digits.) Note that this simple arithmetic involves dividing the numbers of each measured quantity to yield the number of the computed quantity (100/10 = 10) {{i}}and likewise{{/i}} dividing the units of each measured quantity to yield the unit of the computed quantity (m/s = m/s). Now, consider using this same relation to predict the time required for a person running at this speed to travel a distance of 25 m. The same relation among the three properties is used, but in this case, the two quantities provided are a speed (10 m/s) and a distance (25 m). To yield the sought property, time, the equation must be rearranged appropriately:
+(For this and the next calculation, assume the trailing zeros are significant digits.) Note that this simple arithmetic involves dividing the numbers of each measured quantity to yield the number of the computed quantity (100/10 = 10) [[i:and likewise]] dividing the units of each measured quantity to yield the unit of the computed quantity (m/s = m/s). Now, consider using this same relation to predict the time required for a person running at this speed to travel a distance of 25 m. The same relation among the three properties is used, but in this case, the two quantities provided are a speed (10 m/s) and a distance (25 m). To yield the sought property, time, the equation must be rearranged appropriately:
 
 <!-- SEG:m68683:para:fs-idm24572080 -->
 The time can then be computed as:
@@ -26,7 +26,7 @@ The time can then be computed as:
 Again, arithmetic on the numbers (25/10 = 2.5) was accompanied by the same arithmetic on the units (m/(m/s) = s) to yield the number and unit of the result, 2.5 s. Note that, just as for numbers, when a unit is divided by an identical unit (in this case, m/m), the result is “1”—or, as commonly phrased, the units “cancel.”
 
 <!-- SEG:m68683:para:fs-idp44099792 -->
-These calculations are examples of a versatile mathematical approach known as {{term}}dimensional analysis{{/term}} (or the {{term}}factor-label method{{/term}}). Dimensional analysis is based on this premise: {{i}}the units of quantities must be subjected to the same mathematical operations as their associated numbers{{/i}}. This method can be applied to computations ranging from simple unit conversions to more complex, multi-step calculations involving several different quantities.
+These calculations are examples of a versatile mathematical approach known as {{term}}dimensional analysis{{/term}} (or the {{term}}factor-label method{{/term}}). Dimensional analysis is based on this premise: [[i:the units of quantities must be subjected to the same mathematical operations as their associated numbers]]. This method can be applied to computations ranging from simple unit conversions to more complex, multi-step calculations involving several different quantities.
 
 <!-- SEG:m68683:title:fs-idm285086480-title -->
 Conversion Factors and Dimensional Analysis
@@ -35,7 +35,7 @@ Conversion Factors and Dimensional Analysis
 A ratio of two equivalent quantities expressed with different measurement units can be used as a {{term}}unit conversion factor{{/term}}. For example, the lengths of 2.54 cm and 1 in. are equivalent (by definition), and so a unit conversion factor may be derived from the ratio,
 
 <!-- SEG:m68683:para:fs-idm205801120 -->
-Several other commonly used conversion factors are given in [#fs-idm222237232].
+Several other commonly used conversion factors are given in [[xref:fs-idm222237232]].
 
 <!-- SEG:m68683:entry:auto-14 -->
 Common Conversion Factors
@@ -65,7 +65,7 @@ Mass
 1 qt = 0.94635 L
 
 <!-- SEG:m68683:entry:auto-23 -->
-1 lb = 453.59 g {{fn}}Strictly speaking, the ounce and pound are units of weight, {{i}}W{{/i}} (a force equal to the product of mass and gravitational acceleration, {{i}}W{{/i}} = {{i}}mg{{/i}}). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for {{i}}g{{/i}} at the surface of the earth.{{/fn}}
+1 lb = 453.59 g {{fn}}Strictly speaking, the ounce and pound are units of weight, [[i:W]] (a force equal to the product of mass and gravitational acceleration, [[i:W]] = [[i:mg]]). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for [[i:g]] at the surface of the earth.{{/fn}}
 
 <!-- SEG:m68683:entry:auto-24 -->
 1 km = 0.62137 mi
@@ -89,13 +89,13 @@ Mass
 When a quantity (such as distance in inches) is multiplied by an appropriate unit conversion factor, the quantity is converted to an equivalent value with different units (such as distance in centimeters). For example, a basketball player’s vertical jump of 34 inches can be converted to centimeters by:
 
 <!-- SEG:m68683:para:fs-idm291646272 -->
-Since this simple arithmetic involves {{i}}quantities{{/i}}, the premise of dimensional analysis requires that we multiply both {{i}}numbers and units{{/i}}. The numbers of these two quantities are multiplied to yield the number of the product quantity, 86, whereas the units are multiplied to yield [[MATH:1]]. Just as for numbers, a ratio of identical units is also numerically equal to one, [[MATH:2]] and the unit product thus simplifies to {{i}}cm{{/i}}. (When identical units divide to yield a factor of 1, they are said to “cancel.”) Dimensional analysis may be used to confirm the proper application of unit conversion factors as demonstrated in the following example.
+Since this simple arithmetic involves [[i:quantities]], the premise of dimensional analysis requires that we multiply both [[i:numbers and units]]. The numbers of these two quantities are multiplied to yield the number of the product quantity, 86, whereas the units are multiplied to yield [[MATH:1]]. Just as for numbers, a ratio of identical units is also numerically equal to one, [[MATH:2]] and the unit product thus simplifies to [[i:cm]]. (When identical units divide to yield a factor of 1, they are said to “cancel.”) Dimensional analysis may be used to confirm the proper application of unit conversion factors as demonstrated in the following example.
 
 <!-- SEG:m68683:example-title:fs-idm150235328-title -->
 Using a Unit Conversion Factor
 
 <!-- SEG:m68683:para:fs-idp22709840 -->
-The mass of a competition frisbee is 125 g. Convert its mass to ounces using the unit conversion factor derived from the relationship 1 oz = 28.349 g ([#fs-idm222237232]).
+The mass of a competition frisbee is 125 g. Convert its mass to ounces using the unit conversion factor derived from the relationship 1 oz = 28.349 g ([[xref:fs-idm222237232]]).
 
 <!-- SEG:m68683:para-title:fs-idm290807904-title -->
 Solution
@@ -125,7 +125,7 @@ Answer:
 8.844 L
 
 <!-- SEG:m68683:para:fs-idm262838208 -->
-Beyond simple unit conversions, the factor-label method can be used to solve more complex problems involving computations. Regardless of the details, the basic approach is the same—all the {{i}}factors{{/i}} involved in the calculation must be appropriately oriented to ensure that their {{i}}labels{{/i}} (units) will appropriately cancel and/or combine to yield the desired unit in the result. As your study of chemistry continues, you will encounter many opportunities to apply this approach.
+Beyond simple unit conversions, the factor-label method can be used to solve more complex problems involving computations. Regardless of the details, the basic approach is the same—all the [[i:factors]] involved in the calculation must be appropriately oriented to ensure that their [[i:labels]] (units) will appropriately cancel and/or combine to yield the desired unit in the result. As your study of chemistry continues, you will encounter many opportunities to apply this approach.
 
 <!-- SEG:m68683:example-title:fs-idm305814320-title -->
 Computing Quantities from Measurement Results and Known Mathematical Relations
@@ -137,7 +137,7 @@ What is the density of common antifreeze in units of g/mL? A 4.00-qt sample of t
 Solution
 
 <!-- SEG:m68683:para:fs-idp14199296 -->
-Since [[MATH:3]], we need to divide the mass in grams by the volume in milliliters. In general: the number of units of B = the number of units of A [[MATH:4]] unit conversion factor. The necessary conversion factors are given in [#fs-idm222237232]: 1 lb = 453.59 g; 1 L = 1.0567 qt; 1 L = 1,000 mL. Mass may be converted from pounds to grams as follows:
+Since [[MATH:3]], we need to divide the mass in grams by the volume in milliliters. In general: the number of units of B = the number of units of A [[MATH:4]] unit conversion factor. The necessary conversion factors are given in [[xref:fs-idm222237232]]: 1 lb = 453.59 g; 1 L = 1.0567 qt; 1 L = 1,000 mL. Mass may be converted from pounds to grams as follows:
 
 <!-- SEG:m68683:para:fs-idm244171104 -->
 Volume may be converted from quarts to milliliters via two steps:
@@ -158,10 +158,10 @@ What is the volume in liters of 1.000 oz, given that 1 L = 1.0567 qt and 1 qt = 
 2.957 × 10[[sup:−2]] L
 
 <!-- SEG:m68683:item:fs-idm287602768-item-1 -->
-{{i}}Convert quarts to liters.{{/i}} [[MATH:5]]
+[[i:Convert quarts to liters.]] [[MATH:5]]
 
 <!-- SEG:m68683:item:fs-idm287602768-item-2 -->
-{{i}}Convert liters to milliliters.{{/i}} [[MATH:6]]
+[[i:Convert liters to milliliters.]] [[MATH:6]]
 
 <!-- SEG:m68683:note-title:fs-idm207792224-title -->
 Answer:
@@ -236,13 +236,13 @@ Defining the Celsius and Fahrenheit temperature scales as described in the previ
 where y = length in feet, x = length in inches, and the proportionality constant, m, is the conversion factor. The Celsius and Fahrenheit temperature scales, however, do not share a common zero point, and so the relationship between these two scales is a linear one rather than a proportional one (y = mx + b). Consequently, converting a temperature from one of these scales into the other requires more than simple multiplication by a conversion factor, m; it also must take into account differences in the scales’ zero points (b).
 
 <!-- SEG:m68683:para:fs-idm292928800 -->
-The linear equation relating Celsius and Fahrenheit temperatures is easily derived from the two temperatures used to define each scale. Representing the Celsius temperature as {{i}}x{{/i}} and the Fahrenheit temperature as {{i}}y{{/i}}, the slope, {{i}}m{{/i}}, is computed to be:
+The linear equation relating Celsius and Fahrenheit temperatures is easily derived from the two temperatures used to define each scale. Representing the Celsius temperature as [[i:x]] and the Fahrenheit temperature as [[i:y]], the slope, [[i:m]], is computed to be:
 
 <!-- SEG:m68683:para:fs-idm206340880 -->
-The {{i}}y{{/i}}-intercept of the equation, {{i}}b{{/i}}, is then calculated using either of the equivalent temperature pairs, (100 °C, 212 °F) or (0 °C, 32 °F), as:
+The [[i:y]]-intercept of the equation, [[i:b]], is then calculated using either of the equivalent temperature pairs, (100 °C, 212 °F) or (0 °C, 32 °F), as:
 
 <!-- SEG:m68683:para:fs-idm218561008 -->
-The equation relating the temperature ({{i}}T{{/i}}) scales is then:
+The equation relating the temperature ([[i:T]]) scales is then:
 
 <!-- SEG:m68683:para:fs-idm208304512 -->
 An abbreviated form of this equation that omits the measurement units is:
@@ -257,7 +257,7 @@ As mentioned earlier in this chapter, the SI unit of temperature is the kelvin (
 The freezing temperature of water on this scale is 273.15 K and its boiling temperature is 373.15 K. Notice the numerical difference in these two reference temperatures is 100, the same as for the Celsius scale, and so the linear relation between these two temperature scales will exhibit a slope of [[MATH:7]]. Following the same approach, the equations for converting between the kelvin and Celsius temperature scales are derived to be:
 
 <!-- SEG:m68683:para:fs-idm288599552 -->
-The 273.15 in these equations has been determined experimentally, so it is not exact. [#CNX_Chem_01_06_TempScales] shows the relationship among the three temperature scales.
+The 273.15 in these equations has been determined experimentally, so it is not exact. [[xref:CNX_Chem_01_06_TempScales]] shows the relationship among the three temperature scales.
 
 <!-- SEG:m68683:caption:CNX_Chem_01_06_TempScales-caption -->
 The Fahrenheit, Celsius, and kelvin temperature scales are compared.
@@ -419,7 +419,7 @@ Many medical laboratory tests are run using 5.0 μL blood serum. What is this vo
 If an aspirin tablet contains 325 mg aspirin, how many grams of aspirin does it contain?
 
 <!-- SEG:m68683:problem:fs-idm103945312 -->
-Use scientific (exponential) notation to express the following quantities in terms of the SI base units in [m68674#fs-idm81346144]:
+Use scientific (exponential) notation to express the following quantities in terms of the SI base units in [[docref:m68674#fs-idm81346144]]:
 
 <!-- SEG:m68683:problem:fs-idm287857616 -->
 (a) 0.13 g
@@ -551,7 +551,7 @@ Make the conversion indicated in each of the following:
 Many chemistry conferences have held a 50-Trillion Angstrom Run (two significant figures). How long is this run in kilometers and in miles? (1 Å = 1 [[MATH:32]] 10[[sup:−10]] m)
 
 <!-- SEG:m68683:problem:fs-idm142857600 -->
-A chemist’s 50-Trillion Angstrom Run (see [#fs-idm219388000]) would be an archeologist’s 10,900 cubit run. How long is one cubit in meters and in feet? (1 Å = 1 [[MATH:33]] 10[[sup:−8]] cm)
+A chemist’s 50-Trillion Angstrom Run (see [[xref:fs-idm219388000]]) would be an archeologist’s 10,900 cubit run. How long is one cubit in meters and in feet? (1 Å = 1 [[MATH:33]] 10[[sup:−8]] cm)
 
 <!-- SEG:m68683:solution:fs-idp194388912 -->
 0.46 m; 1.5 ft/cubit

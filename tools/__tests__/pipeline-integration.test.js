@@ -489,6 +489,47 @@ describe('restoreTermMarkers', () => {
     expect(segments.get('seg3')).toBe('__Varmi__ og **feitletrað**.');
     expect(restoredCount).toBe(2);
   });
+
+  // ─── New {{term}} format tests ───────────────────────────────────
+
+  it('should strip __term__ glossary artifacts when EN uses {{term}} format', () => {
+    const en = new Map([['seg1', 'This is {{term}}chemistry{{/term}}.']]);
+    const is = new Map([['seg1', 'Þetta er {{term}}efnafræði{{/term}} og __efnafræði__.']]);
+
+    const { segments, strippedCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('Þetta er {{term}}efnafræði{{/term}} og efnafræði.');
+    expect(strippedCount).toBe(1);
+  });
+
+  it('should leave {{term}} markers untouched when EN uses new format', () => {
+    const en = new Map([['seg1', '{{term}}Energy{{/term}} and {{term}}work{{/term}}.']]);
+    const is = new Map([['seg1', '{{term}}Orka{{/term}} og {{term}}vinna{{/term}}.']]);
+
+    const { segments, strippedCount, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('{{term}}Orka{{/term}} og {{term}}vinna{{/term}}.');
+    expect(strippedCount).toBe(0);
+    expect(restoredCount).toBe(0);
+  });
+
+  it('should strip multiple __term__ glossary artifacts from IS', () => {
+    const en = new Map([['seg1', '{{term}}Energy{{/term}} is important.']]);
+    const is = new Map([['seg1', '{{term}}Orka{{/term}} er __mikilvæg__ og __orka__.']]);
+
+    const { segments, strippedCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('{{term}}Orka{{/term}} er mikilvæg og orka.');
+    expect(strippedCount).toBe(2);
+  });
+
+  it('should keep legacy __term__ in IS when EN uses {{term}} but IS has no {{term}}', () => {
+    // Backward compat: EN re-extracted with new markers, but IS is old translation
+    const en = new Map([['seg1', '{{term}}Energy{{/term}} is a concept.']]);
+    const is = new Map([['seg1', '__Orka__ er hugtak.']]);
+
+    const { segments, strippedCount, restoredCount } = restoreTermMarkers(is, en);
+    expect(segments.get('seg1')).toBe('__Orka__ er hugtak.');
+    expect(strippedCount).toBe(0);
+    expect(restoredCount).toBe(0);
+  });
 });
 
 // =====================================================================
@@ -569,6 +610,39 @@ describe('annotateInlineTerms', () => {
     // No EN terms to match against — IS terms left untouched
     expect(segments.get('seg1')).toBe('Þetta er __mikilvægur__ texti.');
     expect(annotatedCount).toBe(0);
+  });
+
+  // ─── New {{term}} format tests ───────────────────────────────────
+
+  it('should annotate {{term}} markers with EN originals', () => {
+    const en = new Map([['seg1', '{{term}}Chemistry{{/term}} is a field.']]);
+    const is = new Map([['seg1', '{{term}}Efnafræði{{/term}} er fræðigrein.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('{{term}}Efnafræði (e. chemistry){{/term}} er fræðigrein.');
+    expect(annotatedCount).toBe(1);
+  });
+
+  it('should skip {{term}} annotation when IS and EN terms match', () => {
+    const en = new Map([['seg1', '{{term}}pH{{/term}} is important.']]);
+    const is = new Map([['seg1', '{{term}}pH{{/term}} er mikilvægt.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe('{{term}}pH{{/term}} er mikilvægt.');
+    expect(annotatedCount).toBe(0);
+  });
+
+  it('should annotate multiple {{term}} markers', () => {
+    const en = new Map([
+      ['seg1', '{{term}}Energy{{/term}} and {{term}}work{{/term}} are related.'],
+    ]);
+    const is = new Map([['seg1', '{{term}}Orka{{/term}} og {{term}}vinna{{/term}} eru skyld.']]);
+
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    expect(segments.get('seg1')).toBe(
+      '{{term}}Orka (e. energy){{/term}} og {{term}}vinna (e. work){{/term}} eru skyld.'
+    );
+    expect(annotatedCount).toBe(2);
   });
 });
 

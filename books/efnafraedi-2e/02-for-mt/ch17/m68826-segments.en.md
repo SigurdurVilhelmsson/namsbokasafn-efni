@@ -17,28 +17,28 @@ List some of the methods used to prevent or slow corrosion
 Statue of Liberty: Changing Colors
 
 <!-- SEG:m68826:para:fs-idp5636784 -->
-Statue of Liberty: Changing Colors The Statue of Liberty is a landmark every American recognizes. The Statue of Liberty is easily identified by its height, stance, and unique blue-green color ([#CNX_Chem_17_06_Statue]). When this statue was first delivered from France, its appearance was not green. It was brown, the color of its copper “skin.” So how did the Statue of Liberty change colors? The change in appearance was a direct result of corrosion. The copper that is the primary component of the statue slowly underwent oxidation from the air. The oxidation-reduction reactions of copper metal in the environment occur in several steps. Copper metal is oxidized to copper(I) oxide (Cu[[sub:2]]O), which is red, and then to copper(II) oxide, which is black
+Statue of Liberty: Changing Colors The Statue of Liberty is a landmark every American recognizes. The Statue of Liberty is easily identified by its height, stance, and unique blue-green color ([[xref:CNX_Chem_17_06_Statue]]). When this statue was first delivered from France, its appearance was not green. It was brown, the color of its copper “skin.” So how did the Statue of Liberty change colors? The change in appearance was a direct result of corrosion. The copper that is the primary component of the statue slowly underwent oxidation from the air. The oxidation-reduction reactions of copper metal in the environment occur in several steps. Copper metal is oxidized to copper(I) oxide (Cu[[sub:2]]O), which is red, and then to copper(II) oxide, which is black
 
 <!-- SEG:m68826:para:fs-idp86988528 -->
 Coal, which was often high in sulfur, was burned extensively in the early part of the last century. As a result, atmospheric sulfur trioxide, carbon dioxide, and water all reacted with the CuO
 
 <!-- SEG:m68826:para:fs-idm141572624 -->
-These three compounds are responsible for the characteristic blue-green patina seen on the Statue of Liberty (and other outdoor copper structures). Fortunately, formation of patina creates a protective layer on the copper surface, preventing further corrosion of the underlying copper. The formation of the protective layer is called {{i}}passivation{{/i}}, a phenomenon discussed further in another chapter of this text.
+These three compounds are responsible for the characteristic blue-green patina seen on the Statue of Liberty (and other outdoor copper structures). Fortunately, formation of patina creates a protective layer on the copper surface, preventing further corrosion of the underlying copper. The formation of the protective layer is called [[i:passivation]], a phenomenon discussed further in another chapter of this text.
 
 <!-- SEG:m68826:caption:CNX_Chem_17_06_Statue-caption -->
 (a) The Statue of Liberty is covered with a copper skin, and was originally brown, as shown in this painting. (b) Exposure to the elements has resulted in the formation of the blue-green patina seen today.
 
 <!-- SEG:m68826:para:fs-idp12347424 -->
-Perhaps the most familiar example of corrosion is the formation of rust on iron. Iron will rust when it is exposed to oxygen and water. Rust formation involves the creation of a galvanic cell at an iron surface, as illustrated in [#CNX_Chem_17_06_Statue]. The relevant redox reactions are described by the following equations:
+Perhaps the most familiar example of corrosion is the formation of rust on iron. Iron will rust when it is exposed to oxygen and water. Rust formation involves the creation of a galvanic cell at an iron surface, as illustrated in [[xref:CNX_Chem_17_06_Statue]]. The relevant redox reactions are described by the following equations:
 
 <!-- SEG:m68826:para:fs-idp87448896 -->
 Further reaction of the iron(II) product in humid air results in the production of an iron(III) oxide hydrate known as rust:
 
 <!-- SEG:m68826:para:fs-idm55785904 -->
-The stoichiometry of the hydrate varies, as indicated by the use of {{i}}x{{/i}} in the compound formula. Unlike the patina on copper, the formation of rust does not create a protective layer and so corrosion of the iron continues as the rust flakes off and exposes fresh iron to the atmosphere.
+The stoichiometry of the hydrate varies, as indicated by the use of [[i:x]] in the compound formula. Unlike the patina on copper, the formation of rust does not create a protective layer and so corrosion of the iron continues as the rust flakes off and exposes fresh iron to the atmosphere.
 
 <!-- SEG:m68826:caption:CNX_Chem_17_06_Rust-caption -->
-Corrosion can occur when a painted iron or steel surface is exposed to the environment by a scratch through the paint. A galvanic cell results that may be approximated by the simplified cell schematic Fe({{i}}s{{/i}}) | Fe[[sup:2+]]({{i}}aq{{/i}}) ||O[[sub:2]]({{i}}aq{{/i}}), H[[sub:2]]O({{i}}l{{/i}}) | Fe({{i}}s{{/i}}).
+Corrosion can occur when a painted iron or steel surface is exposed to the environment by a scratch through the paint. A galvanic cell results that may be approximated by the simplified cell schematic Fe([[i:s]]) | Fe[[sup:2+]]([[i:aq]]) ||O[[sub:2]]([[i:aq]]), H[[sub:2]]O([[i:l]]) | Fe([[i:s]]).
 
 <!-- SEG:m68826:para:fs-idm124143584 -->
 One way to keep iron from corroding is to keep it painted. The layer of paint prevents the water and oxygen necessary for rust formation from coming into contact with the iron. As long as the paint remains intact, the iron is protected from corrosion.
@@ -47,10 +47,10 @@ One way to keep iron from corroding is to keep it painted. The layer of paint pr
 Other strategies include alloying the iron with other metals. For example, stainless steel is an alloy of iron containing a small amount of chromium. The chromium tends to collect near the surface, where it corrodes and forms a passivating an oxide layer that protects the iron.
 
 <!-- SEG:m68826:para:fs-idp11604000 -->
-Iron and other metals may also be protected from corrosion by {{term}}galvanization{{/term}}, a process in which the metal to be protected is coated with a layer of a more readily oxidized metal, usually zinc. When the zinc layer is intact, it prevents air from contacting the underlying iron and thus prevents corrosion. If the zinc layer is breached by either corrosion or mechanical abrasion, the iron may still be protected from corrosion by a {{i}}cathodic protection{{/i}} process, which is described in the next paragraph.
+Iron and other metals may also be protected from corrosion by {{term}}galvanization{{/term}}, a process in which the metal to be protected is coated with a layer of a more readily oxidized metal, usually zinc. When the zinc layer is intact, it prevents air from contacting the underlying iron and thus prevents corrosion. If the zinc layer is breached by either corrosion or mechanical abrasion, the iron may still be protected from corrosion by a [[i:cathodic protection]] process, which is described in the next paragraph.
 
 <!-- SEG:m68826:para:fs-idm71940736 -->
-Another important way to protect metal is to make it the cathode in a galvanic cell. This is {{term}}cathodic protection{{/term}} and can be used for metals other than just iron. For example, the rusting of underground iron storage tanks and pipes can be prevented or greatly reduced by connecting them to a more active metal such as zinc or magnesium ([#CNX_Chem_17_06_Protect]). This is also used to protect the metal parts in water heaters. The more active metals (lower reduction potential) are called {{term}}sacrificial anodes{{/term}} because as they get used up as they corrode (oxidize) at the anode. The metal being protected serves as the cathode for the reduction of oxygen in air, and so it simply serves to conduct (not react with) the electrons being transferred. When the anodes are properly monitored and periodically replaced, the useful lifetime of the iron storage tank can be greatly extended.
+Another important way to protect metal is to make it the cathode in a galvanic cell. This is {{term}}cathodic protection{{/term}} and can be used for metals other than just iron. For example, the rusting of underground iron storage tanks and pipes can be prevented or greatly reduced by connecting them to a more active metal such as zinc or magnesium ([[xref:CNX_Chem_17_06_Protect]]). This is also used to protect the metal parts in water heaters. The more active metals (lower reduction potential) are called {{term}}sacrificial anodes{{/term}} because as they get used up as they corrode (oxidize) at the anode. The metal being protected serves as the cathode for the reduction of oxygen in air, and so it simply serves to conduct (not react with) the electrons being transferred. When the anodes are properly monitored and periodically replaced, the useful lifetime of the iron storage tank can be greatly extended.
 
 <!-- SEG:m68826:caption:CNX_Chem_17_06_Protect-caption -->
 Cathodic protection is a useful approach to electrochemically preventing corrosion of underground storage tanks.
@@ -107,7 +107,7 @@ While the reduction potential of lithium would make it capable of protecting the
 cathodic protection
 
 <!-- SEG:m68826:glossary-def:fs-idp84325552-def -->
-approach to preventing corrosion of a metal object by connecting it to a {{i}}sacrificial anode{{/i}} composed of a more readily oxidized metal
+approach to preventing corrosion of a metal object by connecting it to a [[i:sacrificial anode]] composed of a more readily oxidized metal
 
 <!-- SEG:m68826:glossary-term:fs-idm126591232-term -->
 corrosion

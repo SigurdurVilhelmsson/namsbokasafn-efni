@@ -1,26 +1,26 @@
 <!-- SEG:m68865:title:auto-1 -->
-Staðlaðir varmafræðilegir eiginleikar fyrir valin efni
+Staðalvarmafræðilegir eiginleikar fyrir valin efni
 
 <!-- SEG:m68865:entry:auto-2 -->
-Staðlaðir varmafræðilegir eiginleikar fyrir valin efni
+Staðalvarmafræðilegir eiginleikar fyrir valin efni
 
 <!-- SEG:m68865:entry:auto-3 -->
 Efni
 
 <!-- SEG:m68865:entry:auto-4 -->
-[[MATH:1]] (kJ mol[[sup:–1]])
+[[MATH:1]] (kJ mól[[sup:–1]])
 
 <!-- SEG:m68865:entry:auto-5 -->
-[[MATH:2]] (kJ mol[[sup:–1]])
+[[MATH:2]] (kJ mól[[sup:–1]])
 
 <!-- SEG:m68865:entry:auto-6 -->
-[[MATH:3]] (J K[[sup:–1]] mol[[sup:–1]])
+[[MATH:3]] (J K[[sup:–1]] mól[[sup:–1]])
 
 <!-- SEG:m68865:entry:auto-7 -->
 ál
 
 <!-- SEG:m68865:entry:auto-8 -->
-Al({{i}}s{{/i}})
+Al([[i:s]])
 
 <!-- SEG:m68865:entry:auto-9 -->
 0
@@ -32,7 +32,7 @@ Al({{i}}s{{/i}})
 28,3
 
 <!-- SEG:m68865:entry:auto-12 -->
-Al({{i}}g{{/i}})
+Al([[i:g]])
 
 <!-- SEG:m68865:entry:auto-13 -->
 324,4
@@ -44,7 +44,7 @@ Al({{i}}g{{/i}})
 164,54
 
 <!-- SEG:m68865:entry:auto-16 -->
-Al[[sup:3+]]({{i}}aq{{/i}})
+Al[[sup:3+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-17 -->
 –531
@@ -56,7 +56,7 @@ Al[[sup:3+]]({{i}}aq{{/i}})
 –321,7
 
 <!-- SEG:m68865:entry:auto-20 -->
-Al[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
+Al[[sub:2]]O[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-21 -->
 –1676
@@ -68,7 +68,7 @@ Al[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 50,92
 
 <!-- SEG:m68865:entry:auto-24 -->
-AlF[[sub:3]]({{i}}s{{/i}})
+AlF[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-25 -->
 –1510,4
@@ -80,7 +80,7 @@ AlF[[sub:3]]({{i}}s{{/i}})
 66,5
 
 <!-- SEG:m68865:entry:auto-28 -->
-AlCl[[sub:3]]({{i}}s{{/i}})
+AlCl[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-29 -->
 –704,2
@@ -92,7 +92,7 @@ AlCl[[sub:3]]({{i}}s{{/i}})
 110,67
 
 <!-- SEG:m68865:entry:auto-32 -->
-AlCl[[sub:3]]·6H[[sub:2]]O({{i}}s{{/i}})
+AlCl[[sub:3]]·6H[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68865:entry:auto-33 -->
 –2691,57
@@ -104,7 +104,7 @@ AlCl[[sub:3]]·6H[[sub:2]]O({{i}}s{{/i}})
 376,56
 
 <!-- SEG:m68865:entry:auto-36 -->
-Al[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
+Al[[sub:2]]S[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-37 -->
 –724,0
@@ -116,7 +116,7 @@ Al[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
 116,9
 
 <!-- SEG:m68865:entry:auto-40 -->
-Al[[sub:2]](SO[[sub:4]])[[sub:3]]({{i}}s{{/i}})
+Al[[sub:2]](SO[[sub:4]])[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-41 -->
 –3445,06
@@ -131,7 +131,7 @@ Al[[sub:2]](SO[[sub:4]])[[sub:3]]({{i}}s{{/i}})
 antimon
 
 <!-- SEG:m68865:entry:auto-45 -->
-Sb({{i}}s{{/i}})
+Sb([[i:s]])
 
 <!-- SEG:m68865:entry:auto-46 -->
 0
@@ -143,7 +143,7 @@ Sb({{i}}s{{/i}})
 45,69
 
 <!-- SEG:m68865:entry:auto-49 -->
-Sb({{i}}g{{/i}})
+Sb([[i:g]])
 
 <!-- SEG:m68865:entry:auto-50 -->
 262,34
@@ -155,7 +155,7 @@ Sb({{i}}g{{/i}})
 180,16
 
 <!-- SEG:m68865:entry:auto-53 -->
-Sb[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
+Sb[[sub:4]]O[[sub:6]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-54 -->
 –1440,55
@@ -167,7 +167,7 @@ Sb[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
 220,92
 
 <!-- SEG:m68865:entry:auto-57 -->
-SbCl[[sub:3]]({{i}}g{{/i}})
+SbCl[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-58 -->
 –313,8
@@ -179,7 +179,7 @@ SbCl[[sub:3]]({{i}}g{{/i}})
 337,80
 
 <!-- SEG:m68865:entry:auto-61 -->
-SbCl[[sub:5]]({{i}}g{{/i}})
+SbCl[[sub:5]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-62 -->
 –394,34
@@ -230,7 +230,7 @@ SbOCl(s)
 arsen
 
 <!-- SEG:m68865:entry:auto-78 -->
-As({{i}}s{{/i}})
+As([[i:s]])
 
 <!-- SEG:m68865:entry:auto-79 -->
 0
@@ -242,7 +242,7 @@ As({{i}}s{{/i}})
 35,1
 
 <!-- SEG:m68865:entry:auto-82 -->
-As({{i}}g{{/i}})
+As([[i:g]])
 
 <!-- SEG:m68865:entry:auto-83 -->
 302,5
@@ -254,7 +254,7 @@ As({{i}}g{{/i}})
 174,21
 
 <!-- SEG:m68865:entry:auto-86 -->
-As[[sub:4]]({{i}}g{{/i}})
+As[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-87 -->
 143,9
@@ -266,7 +266,7 @@ As[[sub:4]]({{i}}g{{/i}})
 314
 
 <!-- SEG:m68865:entry:auto-90 -->
-As[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
+As[[sub:4]]O[[sub:6]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-91 -->
 –1313,94
@@ -278,7 +278,7 @@ As[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
 214,22
 
 <!-- SEG:m68865:entry:auto-94 -->
-As[[sub:2]]O[[sub:5]]({{i}}s{{/i}})
+As[[sub:2]]O[[sub:5]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-95 -->
 –924,87
@@ -290,7 +290,7 @@ As[[sub:2]]O[[sub:5]]({{i}}s{{/i}})
 105,44
 
 <!-- SEG:m68865:entry:auto-98 -->
-AsCl[[sub:3]]({{i}}g{{/i}})
+AsCl[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-99 -->
 –261,50
@@ -302,7 +302,7 @@ AsCl[[sub:3]]({{i}}g{{/i}})
 327,06
 
 <!-- SEG:m68865:entry:auto-102 -->
-As[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
+As[[sub:2]]S[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-103 -->
 –169,03
@@ -314,7 +314,7 @@ As[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
 163,59
 
 <!-- SEG:m68865:entry:auto-106 -->
-AsH[[sub:3]]({{i}}g{{/i}})
+AsH[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-107 -->
 66,44
@@ -326,7 +326,7 @@ AsH[[sub:3]]({{i}}g{{/i}})
 222,78
 
 <!-- SEG:m68865:entry:auto-110 -->
-H[[sub:3]]AsO[[sub:4]]({{i}}s{{/i}})
+H[[sub:3]]AsO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-111 -->
 –906,3
@@ -341,7 +341,7 @@ H[[sub:3]]AsO[[sub:4]]({{i}}s{{/i}})
 barín
 
 <!-- SEG:m68865:entry:auto-115 -->
-Ba({{i}}s{{/i}})
+Ba([[i:s]])
 
 <!-- SEG:m68865:entry:auto-116 -->
 0
@@ -353,7 +353,7 @@ Ba({{i}}s{{/i}})
 62,5
 
 <!-- SEG:m68865:entry:auto-119 -->
-Ba({{i}}g{{/i}})
+Ba([[i:g]])
 
 <!-- SEG:m68865:entry:auto-120 -->
 180
@@ -365,7 +365,7 @@ Ba({{i}}g{{/i}})
 170,24
 
 <!-- SEG:m68865:entry:auto-123 -->
-Ba[[sup:2+]]({{i}}aq{{/i}})
+Ba[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-124 -->
 –537,6
@@ -377,7 +377,7 @@ Ba[[sup:2+]]({{i}}aq{{/i}})
 9,6
 
 <!-- SEG:m68865:entry:auto-127 -->
-BaO({{i}}s{{/i}})
+BaO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-128 -->
 –548,0
@@ -389,7 +389,7 @@ BaO({{i}}s{{/i}})
 72,1
 
 <!-- SEG:m68865:entry:auto-131 -->
-BaCl[[sub:2]]({{i}}s{{/i}})
+BaCl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-132 -->
 –855,0
@@ -401,7 +401,7 @@ BaCl[[sub:2]]({{i}}s{{/i}})
 123,7
 
 <!-- SEG:m68865:entry:auto-135 -->
-BaSO[[sub:4]]({{i}}s{{/i}})
+BaSO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-136 -->
 –1473,2
@@ -416,7 +416,7 @@ BaSO[[sub:4]]({{i}}s{{/i}})
 beryllín
 
 <!-- SEG:m68865:entry:auto-140 -->
-Be({{i}}s{{/i}})
+Be([[i:s]])
 
 <!-- SEG:m68865:entry:auto-141 -->
 0
@@ -428,7 +428,7 @@ Be({{i}}s{{/i}})
 9,50
 
 <!-- SEG:m68865:entry:auto-144 -->
-Be({{i}}g{{/i}})
+Be([[i:g]])
 
 <!-- SEG:m68865:entry:auto-145 -->
 324,3
@@ -440,7 +440,7 @@ Be({{i}}g{{/i}})
 136,27
 
 <!-- SEG:m68865:entry:auto-148 -->
-BeO({{i}}s{{/i}})
+BeO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-149 -->
 –609,4
@@ -455,7 +455,7 @@ BeO({{i}}s{{/i}})
 bismút
 
 <!-- SEG:m68865:entry:auto-153 -->
-Bi({{i}}s{{/i}})
+Bi([[i:s]])
 
 <!-- SEG:m68865:entry:auto-154 -->
 0
@@ -467,7 +467,7 @@ Bi({{i}}s{{/i}})
 56,74
 
 <!-- SEG:m68865:entry:auto-157 -->
-Bi({{i}}g{{/i}})
+Bi([[i:g]])
 
 <!-- SEG:m68865:entry:auto-158 -->
 207,1
@@ -479,7 +479,7 @@ Bi({{i}}g{{/i}})
 187,00
 
 <!-- SEG:m68865:entry:auto-161 -->
-Bi[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
+Bi[[sub:2]]O[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-162 -->
 –573,88
@@ -491,7 +491,7 @@ Bi[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 151,5
 
 <!-- SEG:m68865:entry:auto-165 -->
-BiCl[[sub:3]]({{i}}s{{/i}})
+BiCl[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-166 -->
 –379,07
@@ -503,7 +503,7 @@ BiCl[[sub:3]]({{i}}s{{/i}})
 176,98
 
 <!-- SEG:m68865:entry:auto-169 -->
-Bi[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
+Bi[[sub:2]]S[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-170 -->
 –143,1
@@ -518,7 +518,7 @@ Bi[[sub:2]]S[[sub:3]]({{i}}s{{/i}})
 bór
 
 <!-- SEG:m68865:entry:auto-174 -->
-B({{i}}s{{/i}})
+B([[i:s]])
 
 <!-- SEG:m68865:entry:auto-175 -->
 0
@@ -530,7 +530,7 @@ B({{i}}s{{/i}})
 5,86
 
 <!-- SEG:m68865:entry:auto-178 -->
-B({{i}}g{{/i}})
+B([[i:g]])
 
 <!-- SEG:m68865:entry:auto-179 -->
 565,0
@@ -542,7 +542,7 @@ B({{i}}g{{/i}})
 153,4
 
 <!-- SEG:m68865:entry:auto-182 -->
-B[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
+B[[sub:2]]O[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-183 -->
 –1273,5
@@ -554,7 +554,7 @@ B[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 53,97
 
 <!-- SEG:m68865:entry:auto-186 -->
-B[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
+B[[sub:2]]H[[sub:6]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-187 -->
 36,4
@@ -566,7 +566,7 @@ B[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
 232,1
 
 <!-- SEG:m68865:entry:auto-190 -->
-H[[sub:3]]BO[[sub:3]]({{i}}s{{/i}})
+H[[sub:3]]BO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-191 -->
 –1094,33
@@ -578,7 +578,7 @@ H[[sub:3]]BO[[sub:3]]({{i}}s{{/i}})
 88,83
 
 <!-- SEG:m68865:entry:auto-194 -->
-BF[[sub:3]]({{i}}g{{/i}})
+BF[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-195 -->
 –1136,0
@@ -590,7 +590,7 @@ BF[[sub:3]]({{i}}g{{/i}})
 254,4
 
 <!-- SEG:m68865:entry:auto-198 -->
-BCl[[sub:3]]({{i}}g{{/i}})
+BCl[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-199 -->
 –403,8
@@ -602,7 +602,7 @@ BCl[[sub:3]]({{i}}g{{/i}})
 290,1
 
 <!-- SEG:m68865:entry:auto-202 -->
-B[[sub:3]]N[[sub:3]]H[[sub:6]]({{i}}l{{/i}})
+B[[sub:3]]N[[sub:3]]H[[sub:6]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-203 -->
 –540,99
@@ -614,7 +614,7 @@ B[[sub:3]]N[[sub:3]]H[[sub:6]]({{i}}l{{/i}})
 199,58
 
 <!-- SEG:m68865:entry:auto-206 -->
-HBO[[sub:2]]({{i}}s{{/i}})
+HBO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-207 -->
 –794,25
@@ -629,7 +629,7 @@ HBO[[sub:2]]({{i}}s{{/i}})
 bróm
 
 <!-- SEG:m68865:entry:auto-211 -->
-Br[[sub:2]]({{i}}l{{/i}})
+Br[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-212 -->
 0
@@ -641,7 +641,7 @@ Br[[sub:2]]({{i}}l{{/i}})
 152,23
 
 <!-- SEG:m68865:entry:auto-215 -->
-Br[[sub:2]]({{i}}g{{/i}})
+Br[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-216 -->
 30,91
@@ -653,7 +653,7 @@ Br[[sub:2]]({{i}}g{{/i}})
 245,5
 
 <!-- SEG:m68865:entry:auto-219 -->
-Br({{i}}g{{/i}})
+Br([[i:g]])
 
 <!-- SEG:m68865:entry:auto-220 -->
 111,88
@@ -665,7 +665,7 @@ Br({{i}}g{{/i}})
 175,0
 
 <!-- SEG:m68865:entry:auto-223 -->
-Br[[sup:–]]({{i}}aq{{/i}})
+Br[[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-224 -->
 –120,9
@@ -677,7 +677,7 @@ Br[[sup:–]]({{i}}aq{{/i}})
 80,71
 
 <!-- SEG:m68865:entry:auto-227 -->
-BrF[[sub:3]]({{i}}g{{/i}})
+BrF[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-228 -->
 –255,60
@@ -689,7 +689,7 @@ BrF[[sub:3]]({{i}}g{{/i}})
 292,42
 
 <!-- SEG:m68865:entry:auto-231 -->
-HBr({{i}}g{{/i}})
+HBr([[i:g]])
 
 <!-- SEG:m68865:entry:auto-232 -->
 –36,3
@@ -701,10 +701,10 @@ HBr({{i}}g{{/i}})
 198,7
 
 <!-- SEG:m68865:entry:auto-235 -->
-kadmíum
+kadmín
 
 <!-- SEG:m68865:entry:auto-236 -->
-Cd({{i}}s{{/i}})
+Cd([[i:s]])
 
 <!-- SEG:m68865:entry:auto-237 -->
 0
@@ -716,7 +716,7 @@ Cd({{i}}s{{/i}})
 51,76
 
 <!-- SEG:m68865:entry:auto-240 -->
-Cd({{i}}g{{/i}})
+Cd([[i:g]])
 
 <!-- SEG:m68865:entry:auto-241 -->
 112,01
@@ -728,7 +728,7 @@ Cd({{i}}g{{/i}})
 167,75
 
 <!-- SEG:m68865:entry:auto-244 -->
-Cd[[sup:2+]]({{i}}aq{{/i}})
+Cd[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-245 -->
 –75,90
@@ -740,7 +740,7 @@ Cd[[sup:2+]]({{i}}aq{{/i}})
 –73,2
 
 <!-- SEG:m68865:entry:auto-248 -->
-CdO({{i}}s{{/i}})
+CdO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-249 -->
 –258,2
@@ -752,7 +752,7 @@ CdO({{i}}s{{/i}})
 54,8
 
 <!-- SEG:m68865:entry:auto-252 -->
-CdCl[[sub:2]]({{i}}s{{/i}})
+CdCl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-253 -->
 –391,5
@@ -764,7 +764,7 @@ CdCl[[sub:2]]({{i}}s{{/i}})
 115,3
 
 <!-- SEG:m68865:entry:auto-256 -->
-CdSO[[sub:4]]({{i}}s{{/i}})
+CdSO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-257 -->
 –933,3
@@ -776,7 +776,7 @@ CdSO[[sub:4]]({{i}}s{{/i}})
 123,0
 
 <!-- SEG:m68865:entry:auto-260 -->
-CdS({{i}}s{{/i}})
+CdS([[i:s]])
 
 <!-- SEG:m68865:entry:auto-261 -->
 –161,9
@@ -788,10 +788,10 @@ CdS({{i}}s{{/i}})
 64,9
 
 <!-- SEG:m68865:entry:auto-264 -->
-kalsíum
+kalsín
 
 <!-- SEG:m68865:entry:auto-265 -->
-Ca({{i}}s{{/i}})
+Ca([[i:s]])
 
 <!-- SEG:m68865:entry:auto-266 -->
 0
@@ -803,7 +803,7 @@ Ca({{i}}s{{/i}})
 41,6
 
 <!-- SEG:m68865:entry:auto-269 -->
-Ca({{i}}g{{/i}})
+Ca([[i:g]])
 
 <!-- SEG:m68865:entry:auto-270 -->
 178,2
@@ -815,7 +815,7 @@ Ca({{i}}g{{/i}})
 154,88
 
 <!-- SEG:m68865:entry:auto-273 -->
-Ca[[sup:2+]]({{i}}aq{{/i}})
+Ca[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-274 -->
 –542,96
@@ -827,7 +827,7 @@ Ca[[sup:2+]]({{i}}aq{{/i}})
 –55,2
 
 <!-- SEG:m68865:entry:auto-277 -->
-CaO({{i}}s{{/i}})
+CaO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-278 -->
 –634,9
@@ -839,7 +839,7 @@ CaO({{i}}s{{/i}})
 38,1
 
 <!-- SEG:m68865:entry:auto-281 -->
-Ca(OH)[[sub:2]]({{i}}s{{/i}})
+Ca(OH)[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-282 -->
 –985,2
@@ -863,7 +863,7 @@ CaSO[[sub:4]](s)
 106,5
 
 <!-- SEG:m68865:entry:auto-289 -->
-CaSO[[sub:4]]·2H[[sub:2]]O({{i}}s{{/i}})
+CaSO[[sub:4]]·2H[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68865:entry:auto-290 -->
 –2022,63
@@ -875,7 +875,7 @@ CaSO[[sub:4]]·2H[[sub:2]]O({{i}}s{{/i}})
 194,14
 
 <!-- SEG:m68865:entry:auto-293 -->
-CaCO[[sub:3]]({{i}}s{{/i}}) (kalsít)
+CaCO[[sub:3]]([[i:s]]) (kalsít)
 
 <!-- SEG:m68865:entry:auto-294 -->
 –1220,0
@@ -887,7 +887,7 @@ CaCO[[sub:3]]({{i}}s{{/i}}) (kalsít)
 110,0
 
 <!-- SEG:m68865:entry:auto-297 -->
-CaSO[[sub:3]]·H[[sub:2]]O({{i}}s{{/i}})
+CaSO[[sub:3]]·H[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68865:entry:auto-298 -->
 –1752,68
@@ -902,7 +902,7 @@ CaSO[[sub:3]]·H[[sub:2]]O({{i}}s{{/i}})
 kolefni
 
 <!-- SEG:m68865:entry:auto-302 -->
-C({{i}}s{{/i}}) (grafít)
+C([[i:s]]) (grafít)
 
 <!-- SEG:m68865:entry:auto-303 -->
 0
@@ -914,7 +914,7 @@ C({{i}}s{{/i}}) (grafít)
 5,740
 
 <!-- SEG:m68865:entry:auto-306 -->
-C({{i}}s{{/i}}) (demantur)
+C([[i:s]]) (demantur)
 
 <!-- SEG:m68865:entry:auto-307 -->
 1,89
@@ -926,7 +926,7 @@ C({{i}}s{{/i}}) (demantur)
 2,38
 
 <!-- SEG:m68865:entry:auto-310 -->
-C({{i}}g{{/i}})
+C([[i:g]])
 
 <!-- SEG:m68865:entry:auto-311 -->
 716,681
@@ -938,7 +938,7 @@ C({{i}}g{{/i}})
 158,1
 
 <!-- SEG:m68865:entry:auto-314 -->
-CO({{i}}g{{/i}})
+CO([[i:g]])
 
 <!-- SEG:m68865:entry:auto-315 -->
 –110,52
@@ -950,7 +950,7 @@ CO({{i}}g{{/i}})
 197,7
 
 <!-- SEG:m68865:entry:auto-318 -->
-CO[[sub:2]]({{i}}g{{/i}})
+CO[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-319 -->
 –393,51
@@ -962,7 +962,7 @@ CO[[sub:2]]({{i}}g{{/i}})
 213,8
 
 <!-- SEG:m68865:entry:auto-322 -->
-CO[[sub:3]] [[sup:2–]]({{i}}aq{{/i}})
+CO[[sub:3]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-323 -->
 –677,1
@@ -974,7 +974,7 @@ CO[[sub:3]] [[sup:2–]]({{i}}aq{{/i}})
 –56,9
 
 <!-- SEG:m68865:entry:auto-326 -->
-CH[[sub:4]]({{i}}g{{/i}})
+CH[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-327 -->
 –74,6
@@ -986,7 +986,7 @@ CH[[sub:4]]({{i}}g{{/i}})
 186,3
 
 <!-- SEG:m68865:entry:auto-330 -->
-CH[[sub:3]]OH({{i}}l{{/i}})
+CH[[sub:3]]OH([[i:l]])
 
 <!-- SEG:m68865:entry:auto-331 -->
 –239,2
@@ -998,7 +998,7 @@ CH[[sub:3]]OH({{i}}l{{/i}})
 126,8
 
 <!-- SEG:m68865:entry:auto-334 -->
-CH[[sub:3]]OH({{i}}g{{/i}})
+CH[[sub:3]]OH([[i:g]])
 
 <!-- SEG:m68865:entry:auto-335 -->
 –201,0
@@ -1009,20 +1009,20 @@ CH[[sub:3]]OH({{i}}g{{/i}})
 <!-- SEG:m68865:entry:auto-337 -->
 239,9
 
-<!-- SEG:m68865:entry:auto-338 -->
-CCl[[sub:4]]({{i}}l{{/i}})
+<!-- SEG:m68865:entry:auto-342 -->
+CCl[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-339 -->
 –128,2
 
-<!-- SEG:m68865:entry:auto-400 -->
+<!-- SEG:m68865:entry:auto-340 -->
 –62,5
 
 <!-- SEG:m68865:entry:auto-341 -->
 214,4
 
 <!-- SEG:m68865:entry:auto-342 -->
-CCl[[sub:4]]({{i}}g{{/i}})
+CCl[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-343 -->
 –95,7
@@ -1034,7 +1034,7 @@ CCl[[sub:4]]({{i}}g{{/i}})
 309,7
 
 <!-- SEG:m68865:entry:auto-346 -->
-CHCl[[sub:3]]({{i}}l{{/i}})
+CHCl[[sub:3]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-347 -->
 –134,1
@@ -1046,7 +1046,7 @@ CHCl[[sub:3]]({{i}}l{{/i}})
 201,7
 
 <!-- SEG:m68865:entry:auto-350 -->
-CHCl[[sub:3]]({{i}}g{{/i}})
+CHCl[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-351 -->
 –103,14
@@ -1058,7 +1058,7 @@ CHCl[[sub:3]]({{i}}g{{/i}})
 295,71
 
 <!-- SEG:m68865:entry:auto-354 -->
-CS[[sub:2]]({{i}}l{{/i}})
+CS[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-355 -->
 89,70
@@ -1070,7 +1070,7 @@ CS[[sub:2]]({{i}}l{{/i}})
 151,34
 
 <!-- SEG:m68865:entry:auto-358 -->
-CS[[sub:2]]({{i}}g{{/i}})
+CS[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-359 -->
 116,9
@@ -1082,7 +1082,7 @@ CS[[sub:2]]({{i}}g{{/i}})
 238,0
 
 <!-- SEG:m68865:entry:auto-362 -->
-C[[sub:2]]H[[sub:2]]({{i}}g{{/i}})
+C[[sub:2]]H[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-363 -->
 227,4
@@ -1094,7 +1094,7 @@ C[[sub:2]]H[[sub:2]]({{i}}g{{/i}})
 200,9
 
 <!-- SEG:m68865:entry:auto-366 -->
-C[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
+C[[sub:2]]H[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-367 -->
 52,4
@@ -1106,7 +1106,7 @@ C[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
 219,3
 
 <!-- SEG:m68865:entry:auto-370 -->
-C[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
+C[[sub:2]]H[[sub:6]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-371 -->
 –84,0
@@ -1118,7 +1118,7 @@ C[[sub:2]]H[[sub:6]]({{i}}g{{/i}})
 229,2
 
 <!-- SEG:m68865:entry:auto-374 -->
-CH[[sub:3]]CO[[sub:2]]H({{i}}l{{/i}})
+CH[[sub:3]]CO[[sub:2]]H([[i:l]])
 
 <!-- SEG:m68865:entry:auto-375 -->
 –484,3
@@ -1130,7 +1130,7 @@ CH[[sub:3]]CO[[sub:2]]H({{i}}l{{/i}})
 159,8
 
 <!-- SEG:m68865:entry:auto-378 -->
-CH[[sub:3]]CO[[sub:2]]H({{i}}g{{/i}})
+CH[[sub:3]]CO[[sub:2]]H([[i:g]])
 
 <!-- SEG:m68865:entry:auto-379 -->
 –434,84
@@ -1142,7 +1142,7 @@ CH[[sub:3]]CO[[sub:2]]H({{i}}g{{/i}})
 282,50
 
 <!-- SEG:m68865:entry:auto-382 -->
-C[[sub:2]]H[[sub:5]]OH({{i}}l{{/i}})
+C[[sub:2]]H[[sub:5]]OH([[i:l]])
 
 <!-- SEG:m68865:entry:auto-383 -->
 –277,6
@@ -1154,7 +1154,7 @@ C[[sub:2]]H[[sub:5]]OH({{i}}l{{/i}})
 160,7
 
 <!-- SEG:m68865:entry:auto-386 -->
-C[[sub:2]]H[[sub:5]]OH({{i}}g{{/i}})
+C[[sub:2]]H[[sub:5]]OH([[i:g]])
 
 <!-- SEG:m68865:entry:auto-387 -->
 –234,8
@@ -1166,7 +1166,7 @@ C[[sub:2]]H[[sub:5]]OH({{i}}g{{/i}})
 281,6
 
 <!-- SEG:m68865:entry:auto-390 -->
-HCO[[sub:3]] [[sup:–]]({{i}}aq{{/i}})
+HCO[[sub:3]] [[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-391 -->
 –691,11
@@ -1178,7 +1178,7 @@ HCO[[sub:3]] [[sup:–]]({{i}}aq{{/i}})
 95
 
 <!-- SEG:m68865:entry:auto-394 -->
-C[[sub:3]]H[[sub:8]]({{i}}g{{/i}})
+C[[sub:3]]H[[sub:8]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-395 -->
 –103,8
@@ -1190,7 +1190,7 @@ C[[sub:3]]H[[sub:8]]({{i}}g{{/i}})
 270,3
 
 <!-- SEG:m68865:entry:auto-398 -->
-C[[sub:6]]H[[sub:6]]({{i}}g{{/i}})
+C[[sub:6]]H[[sub:6]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-399 -->
 82,927
@@ -1202,7 +1202,7 @@ C[[sub:6]]H[[sub:6]]({{i}}g{{/i}})
 269,2
 
 <!-- SEG:m68865:entry:auto-402 -->
-C[[sub:6]]H[[sub:6]]({{i}}l{{/i}})
+C[[sub:6]]H[[sub:6]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-403 -->
 49,1
@@ -1214,7 +1214,7 @@ C[[sub:6]]H[[sub:6]]({{i}}l{{/i}})
 173,4
 
 <!-- SEG:m68865:entry:auto-406 -->
-CH[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
+CH[[sub:2]]Cl[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-407 -->
 –124,2
@@ -1226,7 +1226,7 @@ CH[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
 177,8
 
 <!-- SEG:m68865:entry:auto-410 -->
-CH[[sub:2]]Cl[[sub:2]]({{i}}g{{/i}})
+CH[[sub:2]]Cl[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-411 -->
 –95,4
@@ -1238,7 +1238,7 @@ CH[[sub:2]]Cl[[sub:2]]({{i}}g{{/i}})
 270,2
 
 <!-- SEG:m68865:entry:auto-414 -->
-CH[[sub:3]]Cl({{i}}g{{/i}})
+CH[[sub:3]]Cl([[i:g]])
 
 <!-- SEG:m68865:entry:auto-415 -->
 –81,9
@@ -1250,7 +1250,7 @@ CH[[sub:3]]Cl({{i}}g{{/i}})
 234,6
 
 <!-- SEG:m68865:entry:auto-418 -->
-C[[sub:2]]H[[sub:5]]Cl({{i}}l{{/i}})
+C[[sub:2]]H[[sub:5]]Cl([[i:l]])
 
 <!-- SEG:m68865:entry:auto-419 -->
 –136,52
@@ -1262,7 +1262,7 @@ C[[sub:2]]H[[sub:5]]Cl({{i}}l{{/i}})
 190,79
 
 <!-- SEG:m68865:entry:auto-422 -->
-C[[sub:2]]H[[sub:5]]Cl({{i}}g{{/i}})
+C[[sub:2]]H[[sub:5]]Cl([[i:g]])
 
 <!-- SEG:m68865:entry:auto-423 -->
 –112,17
@@ -1274,7 +1274,7 @@ C[[sub:2]]H[[sub:5]]Cl({{i}}g{{/i}})
 276,00
 
 <!-- SEG:m68865:entry:auto-426 -->
-C[[sub:2]]N[[sub:2]]({{i}}g{{/i}})
+C[[sub:2]]N[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-427 -->
 308,98
@@ -1286,7 +1286,7 @@ C[[sub:2]]N[[sub:2]]({{i}}g{{/i}})
 241,90
 
 <!-- SEG:m68865:entry:auto-430 -->
-HCN({{i}}l{{/i}})
+HCN([[i:l]])
 
 <!-- SEG:m68865:entry:auto-431 -->
 108,9
@@ -1298,7 +1298,7 @@ HCN({{i}}l{{/i}})
 112,8
 
 <!-- SEG:m68865:entry:auto-434 -->
-HCN({{i}}g{{/i}})
+HCN([[i:g]])
 
 <!-- SEG:m68865:entry:auto-435 -->
 135,5
@@ -1313,7 +1313,7 @@ HCN({{i}}g{{/i}})
 sesín
 
 <!-- SEG:m68865:entry:auto-439 -->
-Cs[[sup:+]]({{i}}aq{{/i}})
+Cs[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-440 -->
 –248
@@ -1328,7 +1328,7 @@ Cs[[sup:+]]({{i}}aq{{/i}})
 klór
 
 <!-- SEG:m68865:entry:auto-444 -->
-Cl[[sub:2]]({{i}}g{{/i}})
+Cl[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-445 -->
 0
@@ -1340,7 +1340,7 @@ Cl[[sub:2]]({{i}}g{{/i}})
 223,1
 
 <!-- SEG:m68865:entry:auto-448 -->
-Cl({{i}}g{{/i}})
+Cl([[i:g]])
 
 <!-- SEG:m68865:entry:auto-449 -->
 121,3
@@ -1352,7 +1352,7 @@ Cl({{i}}g{{/i}})
 165,2
 
 <!-- SEG:m68865:entry:auto-452 -->
-Cl[[sup:–]]({{i}}aq{{/i}})
+Cl[[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-453 -->
 –167,2
@@ -1364,7 +1364,7 @@ Cl[[sup:–]]({{i}}aq{{/i}})
 56,5
 
 <!-- SEG:m68865:entry:auto-456 -->
-ClF({{i}}g{{/i}})
+ClF([[i:g]])
 
 <!-- SEG:m68865:entry:auto-457 -->
 –54,48
@@ -1376,7 +1376,7 @@ ClF({{i}}g{{/i}})
 217,78
 
 <!-- SEG:m68865:entry:auto-460 -->
-ClF[[sub:3]]({{i}}g{{/i}})
+ClF[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-461 -->
 –158,99
@@ -1388,7 +1388,7 @@ ClF[[sub:3]]({{i}}g{{/i}})
 281,50
 
 <!-- SEG:m68865:entry:auto-464 -->
-Cl[[sub:2]]O({{i}}g{{/i}})
+Cl[[sub:2]]O([[i:g]])
 
 <!-- SEG:m68865:entry:auto-465 -->
 80,3
@@ -1400,7 +1400,7 @@ Cl[[sub:2]]O({{i}}g{{/i}})
 266,2
 
 <!-- SEG:m68865:entry:auto-468 -->
-Cl[[sub:2]]O[[sub:7]]({{i}}l{{/i}})
+Cl[[sub:2]]O[[sub:7]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-469 -->
 238,1
@@ -1412,7 +1412,7 @@ Cl[[sub:2]]O[[sub:7]]({{i}}l{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-472 -->
-Cl[[sub:2]]O[[sub:7]]({{i}}g{{/i}})
+Cl[[sub:2]]O[[sub:7]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-473 -->
 272,0
@@ -1424,7 +1424,7 @@ Cl[[sub:2]]O[[sub:7]]({{i}}g{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-476 -->
-HCl({{i}}g{{/i}})
+HCl([[i:g]])
 
 <!-- SEG:m68865:entry:auto-477 -->
 –92,307
@@ -1436,7 +1436,7 @@ HCl({{i}}g{{/i}})
 186,9
 
 <!-- SEG:m68865:entry:auto-480 -->
-HClO[[sub:4]]({{i}}l{{/i}})
+HClO[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-481 -->
 –40,58
@@ -1451,7 +1451,7 @@ HClO[[sub:4]]({{i}}l{{/i}})
 króm
 
 <!-- SEG:m68865:entry:auto-485 -->
-Cr({{i}}s{{/i}})
+Cr([[i:s]])
 
 <!-- SEG:m68865:entry:auto-486 -->
 0
@@ -1463,7 +1463,7 @@ Cr({{i}}s{{/i}})
 23,77
 
 <!-- SEG:m68865:entry:auto-489 -->
-Cr({{i}}g{{/i}})
+Cr([[i:g]])
 
 <!-- SEG:m68865:entry:auto-490 -->
 396,6
@@ -1475,7 +1475,7 @@ Cr({{i}}g{{/i}})
 174,50
 
 <!-- SEG:m68865:entry:auto-493 -->
-CrO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
+CrO[[sub:4]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-494 -->
 –881,2
@@ -1487,7 +1487,7 @@ CrO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 50,21
 
 <!-- SEG:m68865:entry:auto-497 -->
-Cr[[sub:2]]O[[sub:7]] [[sup:2–]]({{i}}aq{{/i}})
+Cr[[sub:2]]O[[sub:7]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-498 -->
 –1490,3
@@ -1499,7 +1499,7 @@ Cr[[sub:2]]O[[sub:7]] [[sup:2–]]({{i}}aq{{/i}})
 261,9
 
 <!-- SEG:m68865:entry:auto-501 -->
-Cr[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
+Cr[[sub:2]]O[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-502 -->
 –1139,7
@@ -1511,7 +1511,7 @@ Cr[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 81,2
 
 <!-- SEG:m68865:entry:auto-505 -->
-CrO[[sub:3]]({{i}}s{{/i}})
+CrO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-506 -->
 –589,5
@@ -1523,7 +1523,7 @@ CrO[[sub:3]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-509 -->
-(NH[[sub:4]])[[sub:2]]Cr[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
+(NH[[sub:4]])[[sub:2]]Cr[[sub:2]]O[[sub:7]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-510 -->
 –1806,7
@@ -1538,7 +1538,7 @@ CrO[[sub:3]]({{i}}s{{/i}})
 kóbalt
 
 <!-- SEG:m68865:entry:auto-514 -->
-Co({{i}}s{{/i}})
+Co([[i:s]])
 
 <!-- SEG:m68865:entry:auto-515 -->
 0
@@ -1550,7 +1550,7 @@ Co({{i}}s{{/i}})
 30,0
 
 <!-- SEG:m68865:entry:auto-518 -->
-Co[[sup:2+]]({{i}}aq{{/i}})
+Co[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-519 -->
 –67,4
@@ -1562,7 +1562,7 @@ Co[[sup:2+]]({{i}}aq{{/i}})
 –155
 
 <!-- SEG:m68865:entry:auto-522 -->
-Co[[sup:3+]]({{i}}aq{{/i}})
+Co[[sup:3+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-523 -->
 92
@@ -1574,7 +1574,9 @@ Co[[sup:3+]]({{i}}aq{{/i}})
 –305,0
 
 <!-- SEG:m68865:entry:auto-526 -->
-CoO({{i}}s{{/i}})<!-- SEG:m68865:entry:auto-527 -->
+CoO([[i:s]])
+
+<!-- SEG:m68865:entry:auto-527 -->
 –237,9
 
 <!-- SEG:m68865:entry:auto-528 -->
@@ -1584,7 +1586,7 @@ CoO({{i}}s{{/i}})<!-- SEG:m68865:entry:auto-527 -->
 52,97
 
 <!-- SEG:m68865:entry:auto-530 -->
-Co[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
+Co[[sub:3]]O[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-531 -->
 –910,02
@@ -1596,7 +1598,7 @@ Co[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
 114,22
 
 <!-- SEG:m68865:entry:auto-534 -->
-Co(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
+Co(NO[[sub:3]])[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-535 -->
 –420,5
@@ -1608,12 +1610,10 @@ Co(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-538 -->
-Kopar
+kopar
 
 <!-- SEG:m68865:entry:auto-539 -->
-Cu({{i}}s{{/i}})
-
-<!-- SEG:m68865:entry:auto-540 -->
+Cu([[i:s]])<!-- SEG:m68865:entry:auto-540 -->
 0
 
 <!-- SEG:m68865:entry:auto-541 -->
@@ -1623,7 +1623,7 @@ Cu({{i}}s{{/i}})
 33,15
 
 <!-- SEG:m68865:entry:auto-543 -->
-Cu({{i}}g{{/i}})
+Cu([[i:g]])
 
 <!-- SEG:m68865:entry:auto-544 -->
 338,32
@@ -1635,7 +1635,7 @@ Cu({{i}}g{{/i}})
 166,38
 
 <!-- SEG:m68865:entry:auto-547 -->
-Cu[[sup:+]]({{i}}aq{{/i}})
+Cu[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-548 -->
 51,9
@@ -1647,7 +1647,7 @@ Cu[[sup:+]]({{i}}aq{{/i}})
 –26
 
 <!-- SEG:m68865:entry:auto-551 -->
-Cu[[sup:2+]]({{i}}aq{{/i}})
+Cu[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-552 -->
 64,77
@@ -1659,7 +1659,7 @@ Cu[[sup:2+]]({{i}}aq{{/i}})
 –99,6
 
 <!-- SEG:m68865:entry:auto-555 -->
-CuO({{i}}s{{/i}})
+CuO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-556 -->
 –157,3
@@ -1671,7 +1671,7 @@ CuO({{i}}s{{/i}})
 42,63
 
 <!-- SEG:m68865:entry:auto-559 -->
-Cu[[sub:2]]O({{i}}s{{/i}})
+Cu[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68865:entry:auto-560 -->
 –168,6
@@ -1683,7 +1683,7 @@ Cu[[sub:2]]O({{i}}s{{/i}})
 93,14
 
 <!-- SEG:m68865:entry:auto-563 -->
-CuS({{i}}s{{/i}})
+CuS([[i:s]])
 
 <!-- SEG:m68865:entry:auto-564 -->
 –53,1
@@ -1695,7 +1695,7 @@ CuS({{i}}s{{/i}})
 66,5
 
 <!-- SEG:m68865:entry:auto-567 -->
-Cu[[sub:2]]S({{i}}s{{/i}})
+Cu[[sub:2]]S([[i:s]])
 
 <!-- SEG:m68865:entry:auto-568 -->
 –79,5
@@ -1707,7 +1707,7 @@ Cu[[sub:2]]S({{i}}s{{/i}})
 120,9
 
 <!-- SEG:m68865:entry:auto-571 -->
-CuSO[[sub:4]]({{i}}s{{/i}})
+CuSO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-572 -->
 –771,36
@@ -1719,7 +1719,7 @@ CuSO[[sub:4]]({{i}}s{{/i}})
 109,2
 
 <!-- SEG:m68865:entry:auto-575 -->
-Cu(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
+Cu(NO[[sub:3]])[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-576 -->
 –302,9
@@ -1734,7 +1734,7 @@ Cu(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
 Flúor
 
 <!-- SEG:m68865:entry:auto-580 -->
-F[[sub:2]]({{i}}g{{/i}})
+F[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-581 -->
 0
@@ -1746,7 +1746,7 @@ F[[sub:2]]({{i}}g{{/i}})
 202,8
 
 <!-- SEG:m68865:entry:auto-584 -->
-F({{i}}g{{/i}})
+F([[i:g]])
 
 <!-- SEG:m68865:entry:auto-585 -->
 79,4
@@ -1758,7 +1758,7 @@ F({{i}}g{{/i}})
 158,8
 
 <!-- SEG:m68865:entry:auto-588 -->
-F[[sup:–]]({{i}}aq{{/i}})
+F[[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-589 -->
 –332,6
@@ -1770,7 +1770,7 @@ F[[sup:–]]({{i}}aq{{/i}})
 –13,8
 
 <!-- SEG:m68865:entry:auto-592 -->
-F[[sub:2]]O({{i}}g{{/i}})
+F[[sub:2]]O([[i:g]])
 
 <!-- SEG:m68865:entry:auto-593 -->
 24,7
@@ -1782,7 +1782,7 @@ F[[sub:2]]O({{i}}g{{/i}})
 247,43
 
 <!-- SEG:m68865:entry:auto-596 -->
-HF({{i}}g{{/i}})
+HF([[i:g]])
 
 <!-- SEG:m68865:entry:auto-597 -->
 –273,3
@@ -1797,7 +1797,7 @@ HF({{i}}g{{/i}})
 Vetni
 
 <!-- SEG:m68865:entry:auto-601 -->
-H[[sub:2]]({{i}}g{{/i}})
+H[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-602 -->
 0
@@ -1809,7 +1809,7 @@ H[[sub:2]]({{i}}g{{/i}})
 130,7
 
 <!-- SEG:m68865:entry:auto-605 -->
-H({{i}}g{{/i}})
+H([[i:g]])
 
 <!-- SEG:m68865:entry:auto-606 -->
 217,97
@@ -1821,7 +1821,7 @@ H({{i}}g{{/i}})
 114,7
 
 <!-- SEG:m68865:entry:auto-609 -->
-H[[sup:+]]({{i}}aq{{/i}})
+H[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-610 -->
 0
@@ -1833,7 +1833,7 @@ H[[sup:+]]({{i}}aq{{/i}})
 0
 
 <!-- SEG:m68865:entry:auto-613 -->
-OH[[sup:–]]({{i}}aq{{/i}})
+OH[[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-614 -->
 –230,0
@@ -1845,7 +1845,7 @@ OH[[sup:–]]({{i}}aq{{/i}})
 –10,75
 
 <!-- SEG:m68865:entry:auto-617 -->
-H[[sub:3]]O[[sup:+]]({{i}}aq{{/i}})
+H[[sub:3]]O[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-618 -->
 –285,8
@@ -1854,7 +1854,7 @@ H[[sub:3]]O[[sup:+]]({{i}}aq{{/i}})
 69,91
 
 <!-- SEG:m68865:entry:auto-620 -->
-H[[sub:2]]O({{i}}l{{/i}})
+H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68865:entry:auto-621 -->
 –285,83
@@ -1866,7 +1866,7 @@ H[[sub:2]]O({{i}}l{{/i}})
 70,0
 
 <!-- SEG:m68865:entry:auto-624 -->
-H[[sub:2]]O({{i}}g{{/i}})
+H[[sub:2]]O([[i:g]])
 
 <!-- SEG:m68865:entry:auto-625 -->
 –241,82
@@ -1878,7 +1878,7 @@ H[[sub:2]]O({{i}}g{{/i}})
 188,8
 
 <!-- SEG:m68865:entry:auto-628 -->
-H[[sub:2]]O[[sub:2]]({{i}}l{{/i}})
+H[[sub:2]]O[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-629 -->
 –187,78
@@ -1890,7 +1890,7 @@ H[[sub:2]]O[[sub:2]]({{i}}l{{/i}})
 109,6
 
 <!-- SEG:m68865:entry:auto-632 -->
-H[[sub:2]]O[[sub:2]]({{i}}g{{/i}})
+H[[sub:2]]O[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-633 -->
 –136,3
@@ -1902,7 +1902,7 @@ H[[sub:2]]O[[sub:2]]({{i}}g{{/i}})
 232,7
 
 <!-- SEG:m68865:entry:auto-636 -->
-HF({{i}}g{{/i}})
+HF([[i:g]])
 
 <!-- SEG:m68865:entry:auto-637 -->
 –273,3
@@ -1914,7 +1914,7 @@ HF({{i}}g{{/i}})
 173,8
 
 <!-- SEG:m68865:entry:auto-640 -->
-HCl({{i}}g{{/i}})
+HCl([[i:g]])
 
 <!-- SEG:m68865:entry:auto-641 -->
 –92,307
@@ -1926,7 +1926,7 @@ HCl({{i}}g{{/i}})
 186,9
 
 <!-- SEG:m68865:entry:auto-644 -->
-HBr({{i}}g{{/i}})
+HBr([[i:g]])
 
 <!-- SEG:m68865:entry:auto-645 -->
 –36,3
@@ -1938,7 +1938,7 @@ HBr({{i}}g{{/i}})
 198,7
 
 <!-- SEG:m68865:entry:auto-648 -->
-HI({{i}}g{{/i}})
+HI([[i:g]])
 
 <!-- SEG:m68865:entry:auto-649 -->
 26,48
@@ -1950,7 +1950,7 @@ HI({{i}}g{{/i}})
 206,59
 
 <!-- SEG:m68865:entry:auto-652 -->
-H[[sub:2]]S({{i}}g{{/i}})
+H[[sub:2]]S([[i:g]])
 
 <!-- SEG:m68865:entry:auto-653 -->
 –20,6
@@ -1962,7 +1962,7 @@ H[[sub:2]]S({{i}}g{{/i}})
 205,8
 
 <!-- SEG:m68865:entry:auto-656 -->
-H[[sub:2]]Se({{i}}g){{/i}}
+H[[sub:2]]Se([[i:g)]]
 
 <!-- SEG:m68865:entry:auto-657 -->
 29,7
@@ -1986,10 +1986,10 @@ HNO[[sub:3]]
 —
 
 <!-- SEG:m68865:entry:auto-664 -->
-Joð
+joð
 
 <!-- SEG:m68865:entry:auto-665 -->
-I[[sub:2]]({{i}}s{{/i}})
+I[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-666 -->
 0
@@ -2001,7 +2001,7 @@ I[[sub:2]]({{i}}s{{/i}})
 116,14
 
 <!-- SEG:m68865:entry:auto-669 -->
-I[[sub:2]]({{i}}g{{/i}})
+I[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-670 -->
 62,438
@@ -2013,7 +2013,7 @@ I[[sub:2]]({{i}}g{{/i}})
 260,7
 
 <!-- SEG:m68865:entry:auto-673 -->
-I({{i}}g{{/i}})
+I([[i:g]])
 
 <!-- SEG:m68865:entry:auto-674 -->
 106,84
@@ -2025,7 +2025,7 @@ I({{i}}g{{/i}})
 180,8
 
 <!-- SEG:m68865:entry:auto-677 -->
-I[[sup:–]]({{i}}aq{{/i}})
+I[[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-678 -->
 –55,19
@@ -2037,7 +2037,7 @@ I[[sup:–]]({{i}}aq{{/i}})
 11,13
 
 <!-- SEG:m68865:entry:auto-681 -->
-IF({{i}}g{{/i}})
+IF([[i:g]])
 
 <!-- SEG:m68865:entry:auto-682 -->
 95,65
@@ -2049,7 +2049,7 @@ IF({{i}}g{{/i}})
 236,06
 
 <!-- SEG:m68865:entry:auto-685 -->
-ICl({{i}}g{{/i}})
+ICl([[i:g]])
 
 <!-- SEG:m68865:entry:auto-686 -->
 17,78
@@ -2061,7 +2061,7 @@ ICl({{i}}g{{/i}})
 247,44
 
 <!-- SEG:m68865:entry:auto-689 -->
-IBr({{i}}g{{/i}})
+IBr([[i:g]])
 
 <!-- SEG:m68865:entry:auto-690 -->
 40,84
@@ -2073,7 +2073,7 @@ IBr({{i}}g{{/i}})
 258,66
 
 <!-- SEG:m68865:entry:auto-693 -->
-IF[[sub:7]]({{i}}g{{/i}})
+IF[[sub:7]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-694 -->
 –943,91
@@ -2085,7 +2085,7 @@ IF[[sub:7]]({{i}}g{{/i}})
 346,44
 
 <!-- SEG:m68865:entry:auto-697 -->
-HI({{i}}g{{/i}})
+HI([[i:g]])
 
 <!-- SEG:m68865:entry:auto-698 -->
 26,48
@@ -2100,7 +2100,7 @@ HI({{i}}g{{/i}})
 járn
 
 <!-- SEG:m68865:entry:auto-702 -->
-Fe({{i}}s{{/i}})
+Fe([[i:s]])
 
 <!-- SEG:m68865:entry:auto-703 -->
 0
@@ -2112,7 +2112,7 @@ Fe({{i}}s{{/i}})
 27,3
 
 <!-- SEG:m68865:entry:auto-706 -->
-Fe({{i}}g{{/i}})
+Fe([[i:g]])
 
 <!-- SEG:m68865:entry:auto-707 -->
 416,3
@@ -2124,7 +2124,7 @@ Fe({{i}}g{{/i}})
 180,5
 
 <!-- SEG:m68865:entry:auto-710 -->
-Fe[[sup:2+]]({{i}}aq{{/i}})
+Fe[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-711 -->
 –89,1
@@ -2136,7 +2136,7 @@ Fe[[sup:2+]]({{i}}aq{{/i}})
 –137,7
 
 <!-- SEG:m68865:entry:auto-714 -->
-Fe[[sup:3+]]({{i}}aq{{/i}})
+Fe[[sup:3+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-715 -->
 –48,5
@@ -2148,7 +2148,7 @@ Fe[[sup:3+]]({{i}}aq{{/i}})
 –315,9
 
 <!-- SEG:m68865:entry:auto-718 -->
-Fe[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
+Fe[[sub:2]]O[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-719 -->
 –824,2
@@ -2160,7 +2160,7 @@ Fe[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 87,40
 
 <!-- SEG:m68865:entry:auto-722 -->
-Fe[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
+Fe[[sub:3]]O[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-723 -->
 –1118,4
@@ -2172,7 +2172,7 @@ Fe[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
 146,4
 
 <!-- SEG:m68865:entry:auto-726 -->
-Fe(CO)[[sub:5]]({{i}}l{{/i}})
+Fe(CO)[[sub:5]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-727 -->
 –774,04
@@ -2184,7 +2184,7 @@ Fe(CO)[[sub:5]]({{i}}l{{/i}})
 338,07
 
 <!-- SEG:m68865:entry:auto-730 -->
-Fe(CO)[[sub:5]]({{i}}g{{/i}})
+Fe(CO)[[sub:5]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-731 -->
 –733,87
@@ -2196,7 +2196,7 @@ Fe(CO)[[sub:5]]({{i}}g{{/i}})
 445,18
 
 <!-- SEG:m68865:entry:auto-734 -->
-FeCl[[sub:2]]({{i}}s{{/i}})
+FeCl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-735 -->
 –341,79
@@ -2208,7 +2208,7 @@ FeCl[[sub:2]]({{i}}s{{/i}})
 117,95
 
 <!-- SEG:m68865:entry:auto-738 -->
-FeCl[[sub:3]]({{i}}s{{/i}})
+FeCl[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-739 -->
 –399,49
@@ -2220,7 +2220,7 @@ FeCl[[sub:3]]({{i}}s{{/i}})
 142,3
 
 <!-- SEG:m68865:entry:auto-742 -->
-FeO({{i}}s{{/i}})
+FeO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-743 -->
 –272,0
@@ -2232,7 +2232,7 @@ FeO({{i}}s{{/i}})
 60,75
 
 <!-- SEG:m68865:entry:auto-746 -->
-Fe(OH)[[sub:2]]({{i}}s{{/i}})
+Fe(OH)[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-747 -->
 –569,0
@@ -2244,7 +2244,7 @@ Fe(OH)[[sub:2]]({{i}}s{{/i}})
 88
 
 <!-- SEG:m68865:entry:auto-750 -->
-Fe(OH)[[sub:3]]({{i}}s){{/i}}
+Fe(OH)[[sub:3]]([[i:s)]]
 
 <!-- SEG:m68865:entry:auto-751 -->
 –823,0
@@ -2256,7 +2256,7 @@ Fe(OH)[[sub:3]]({{i}}s){{/i}}
 106,7
 
 <!-- SEG:m68865:entry:auto-754 -->
-FeS({{i}}s{{/i}})
+FeS([[i:s]])
 
 <!-- SEG:m68865:entry:auto-755 -->
 –100,0
@@ -2268,7 +2268,7 @@ FeS({{i}}s{{/i}})
 60,29
 
 <!-- SEG:m68865:entry:auto-758 -->
-Fe[[sub:3]]C({{i}}s{{/i}})
+Fe[[sub:3]]C([[i:s]])
 
 <!-- SEG:m68865:entry:auto-759 -->
 25,10
@@ -2283,7 +2283,7 @@ Fe[[sub:3]]C({{i}}s{{/i}})
 blý
 
 <!-- SEG:m68865:entry:auto-763 -->
-Pb({{i}}s{{/i}})
+Pb([[i:s]])
 
 <!-- SEG:m68865:entry:auto-764 -->
 0
@@ -2295,7 +2295,7 @@ Pb({{i}}s{{/i}})
 64,81
 
 <!-- SEG:m68865:entry:auto-767 -->
-Pb({{i}}g{{/i}})
+Pb([[i:g]])
 
 <!-- SEG:m68865:entry:auto-768 -->
 195,2
@@ -2307,7 +2307,7 @@ Pb({{i}}g{{/i}})
 175,4
 
 <!-- SEG:m68865:entry:auto-771 -->
-Pb[[sup:2+]]({{i}}aq{{/i}})
+Pb[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-772 -->
 –1,7
@@ -2319,7 +2319,7 @@ Pb[[sup:2+]]({{i}}aq{{/i}})
 10,5
 
 <!-- SEG:m68865:entry:auto-775 -->
-PbO({{i}}s{{/i}}) (gult)
+PbO([[i:s]]) (gult)
 
 <!-- SEG:m68865:entry:auto-776 -->
 –217,32
@@ -2331,7 +2331,7 @@ PbO({{i}}s{{/i}}) (gult)
 68,70
 
 <!-- SEG:m68865:entry:auto-779 -->
-PbO({{i}}s{{/i}}) (rautt)
+PbO([[i:s]]) (rautt)
 
 <!-- SEG:m68865:entry:auto-780 -->
 –218,99
@@ -2343,7 +2343,7 @@ PbO({{i}}s{{/i}}) (rautt)
 66,5
 
 <!-- SEG:m68865:entry:auto-783 -->
-Pb(OH)[[sub:2]]({{i}}s{{/i}})
+Pb(OH)[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-784 -->
 –515,9
@@ -2355,7 +2355,7 @@ Pb(OH)[[sub:2]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-787 -->
-PbS({{i}}s{{/i}})
+PbS([[i:s]])
 
 <!-- SEG:m68865:entry:auto-788 -->
 –100,4
@@ -2367,7 +2367,7 @@ PbS({{i}}s{{/i}})
 91,2
 
 <!-- SEG:m68865:entry:auto-791 -->
-Pb(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
+Pb(NO[[sub:3]])[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-792 -->
 –451,9
@@ -2379,7 +2379,7 @@ Pb(NO[[sub:3]])[[sub:2]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-795 -->
-PbO[[sub:2]]({{i}}s{{/i}})
+PbO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-796 -->
 –277,4
@@ -2391,7 +2391,7 @@ PbO[[sub:2]]({{i}}s{{/i}})
 68,6
 
 <!-- SEG:m68865:entry:auto-799 -->
-PbCl[[sub:2]]({{i}}s{{/i}})
+PbCl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-800 -->
 –359,4
@@ -2406,7 +2406,7 @@ PbCl[[sub:2]]({{i}}s{{/i}})
 litíum
 
 <!-- SEG:m68865:entry:auto-804 -->
-Li({{i}}s{{/i}})
+Li([[i:s]])
 
 <!-- SEG:m68865:entry:auto-805 -->
 0
@@ -2418,7 +2418,7 @@ Li({{i}}s{{/i}})
 29,1
 
 <!-- SEG:m68865:entry:auto-808 -->
-Li({{i}}g{{/i}})
+Li([[i:g]])
 
 <!-- SEG:m68865:entry:auto-809 -->
 159,3
@@ -2430,7 +2430,7 @@ Li({{i}}g{{/i}})
 138,8
 
 <!-- SEG:m68865:entry:auto-812 -->
-Li[[sup:+]]({{i}}aq{{/i}})
+Li[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-813 -->
 –278,5
@@ -2442,7 +2442,7 @@ Li[[sup:+]]({{i}}aq{{/i}})
 13,4
 
 <!-- SEG:m68865:entry:auto-816 -->
-LiH({{i}}s{{/i}})
+LiH([[i:s]])
 
 <!-- SEG:m68865:entry:auto-817 -->
 –90,5
@@ -2454,7 +2454,7 @@ LiH({{i}}s{{/i}})
 20,0
 
 <!-- SEG:m68865:entry:auto-820 -->
-Li(OH)({{i}}s{{/i}})
+Li(OH)([[i:s]])
 
 <!-- SEG:m68865:entry:auto-821 -->
 –487,5
@@ -2466,7 +2466,7 @@ Li(OH)({{i}}s{{/i}})
 42,8
 
 <!-- SEG:m68865:entry:auto-824 -->
-LiF({{i}}s{{/i}})
+LiF([[i:s]])
 
 <!-- SEG:m68865:entry:auto-825 -->
 –616,0
@@ -2478,7 +2478,7 @@ LiF({{i}}s{{/i}})
 35,7
 
 <!-- SEG:m68865:entry:auto-828 -->
-Li[[sub:2]]CO[[sub:3]]({{i}}s{{/i}})
+Li[[sub:2]]CO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-829 -->
 –1216,04
@@ -2490,10 +2490,10 @@ Li[[sub:2]]CO[[sub:3]]({{i}}s{{/i}})
 90,17
 
 <!-- SEG:m68865:entry:auto-832 -->
-magnesíum
+magnesín
 
 <!-- SEG:m68865:entry:auto-833 -->
-Mg[[sup:2+]]({{i}}aq{{/i}})
+Mg[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-834 -->
 –466,9
@@ -2508,7 +2508,7 @@ Mg[[sup:2+]]({{i}}aq{{/i}})
 mangan
 
 <!-- SEG:m68865:entry:auto-838 -->
-Mn({{i}}s{{/i}})
+Mn([[i:s]])
 
 <!-- SEG:m68865:entry:auto-839 -->
 0
@@ -2520,7 +2520,7 @@ Mn({{i}}s{{/i}})
 32,0
 
 <!-- SEG:m68865:entry:auto-842 -->
-Mn({{i}}g{{/i}})
+Mn([[i:g]])
 
 <!-- SEG:m68865:entry:auto-843 -->
 280,7
@@ -2532,7 +2532,7 @@ Mn({{i}}g{{/i}})
 173,7
 
 <!-- SEG:m68865:entry:auto-846 -->
-Mn[[sup:2+]]({{i}}aq{{/i}})
+Mn[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-847 -->
 –220,8
@@ -2544,7 +2544,7 @@ Mn[[sup:2+]]({{i}}aq{{/i}})
 –73,6
 
 <!-- SEG:m68865:entry:auto-850 -->
-MnO({{i}}s{{/i}})
+MnO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-851 -->
 –385,2
@@ -2556,7 +2556,7 @@ MnO({{i}}s{{/i}})
 59,71
 
 <!-- SEG:m68865:entry:auto-854 -->
-MnO[[sub:2]]({{i}}s{{/i}})
+MnO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-855 -->
 –520,03
@@ -2568,7 +2568,7 @@ MnO[[sub:2]]({{i}}s{{/i}})
 53,05
 
 <!-- SEG:m68865:entry:auto-858 -->
-Mn[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
+Mn[[sub:2]]O[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-859 -->
 –958,97
@@ -2580,7 +2580,7 @@ Mn[[sub:2]]O[[sub:3]]({{i}}s{{/i}})
 110,46
 
 <!-- SEG:m68865:entry:auto-862 -->
-Mn[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
+Mn[[sub:3]]O[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-863 -->
 –1378,83
@@ -2592,7 +2592,7 @@ Mn[[sub:3]]O[[sub:4]]({{i}}s{{/i}})
 155,64
 
 <!-- SEG:m68865:entry:auto-866 -->
-MnO[[sub:4]] [[sup:–]](aq)
+MnO[[sub:4]] [[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-867 -->
 –541,4
@@ -2604,7 +2604,7 @@ MnO[[sub:4]] [[sup:–]](aq)
 191,2
 
 <!-- SEG:m68865:entry:auto-870 -->
-MnO[[sub:4]] [[sup:2–]](aq)
+MnO[[sub:4]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-871 -->
 –653,0
@@ -2619,7 +2619,7 @@ MnO[[sub:4]] [[sup:2–]](aq)
 kvikasilfur
 
 <!-- SEG:m68865:entry:auto-875 -->
-Hg(l)
+Hg([[i:l]])
 
 <!-- SEG:m68865:entry:auto-876 -->
 0
@@ -2631,7 +2631,7 @@ Hg(l)
 75,9
 
 <!-- SEG:m68865:entry:auto-879 -->
-Hg(g)
+Hg([[i:g]])
 
 <!-- SEG:m68865:entry:auto-880 -->
 61,4
@@ -2643,13 +2643,13 @@ Hg(g)
 175,0
 
 <!-- SEG:m68865:entry:auto-883 -->
-Hg[[sup:2+]](aq)
+Hg[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-884 -->
 164,8
 
 <!-- SEG:m68865:entry:auto-885 -->
-Hg[[sup:2+]](aq)
+Hg[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-886 -->
 172,4
@@ -2661,7 +2661,7 @@ Hg[[sup:2+]](aq)
 84,5
 
 <!-- SEG:m68865:entry:auto-889 -->
-HgO(s) (rautt)
+HgO([[i:s]]) (rautt)
 
 <!-- SEG:m68865:entry:auto-890 -->
 –90,83
@@ -2673,7 +2673,7 @@ HgO(s) (rautt)
 70,29
 
 <!-- SEG:m68865:entry:auto-893 -->
-HgO(s) (gult)
+HgO([[i:s]]) (gult)
 
 <!-- SEG:m68865:entry:auto-894 -->
 –90,46
@@ -2685,7 +2685,7 @@ HgO(s) (gult)
 71,13
 
 <!-- SEG:m68865:entry:auto-897 -->
-HgCl[[sub:2]](s)
+HgCl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-898 -->
 –224,3
@@ -2697,7 +2697,7 @@ HgCl[[sub:2]](s)
 146,0
 
 <!-- SEG:m68865:entry:auto-901 -->
-Hg[[sub:2]]Cl[[sub:2]](s)
+Hg[[sub:2]]Cl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-902 -->
 –265,4
@@ -2709,7 +2709,7 @@ Hg[[sub:2]]Cl[[sub:2]](s)
 191,6
 
 <!-- SEG:m68865:entry:auto-905 -->
-HgS(s) (rautt)
+HgS([[i:s]]) (rautt)
 
 <!-- SEG:m68865:entry:auto-906 -->
 –58,16
@@ -2721,7 +2721,7 @@ HgS(s) (rautt)
 82,4
 
 <!-- SEG:m68865:entry:auto-909 -->
-HgS(s) (svart)
+HgS([[i:s]]) (svart)
 
 <!-- SEG:m68865:entry:auto-910 -->
 –53,56
@@ -2733,7 +2733,7 @@ HgS(s) (svart)
 88,28
 
 <!-- SEG:m68865:entry:auto-913 -->
-HgSO[[sub:4]](s)
+HgSO[[sub:4]]([[i:s)]]
 
 <!-- SEG:m68865:entry:auto-914 -->
 –707,51
@@ -2748,7 +2748,7 @@ HgSO[[sub:4]](s)
 nikkel
 
 <!-- SEG:m68865:entry:auto-918 -->
-Ni[[sup:2+]](aq)
+Ni[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-919 -->
 –64,0
@@ -2763,7 +2763,7 @@ Ni[[sup:2+]](aq)
 nitur
 
 <!-- SEG:m68865:entry:auto-923 -->
-N[[sub:2]](g)
+N[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-924 -->
 0
@@ -2775,7 +2775,7 @@ N[[sub:2]](g)
 191,6
 
 <!-- SEG:m68865:entry:auto-927 -->
-N(g)
+N([[i:g]])
 
 <!-- SEG:m68865:entry:auto-928 -->
 472,704
@@ -2787,7 +2787,7 @@ N(g)
 153,3
 
 <!-- SEG:m68865:entry:auto-931 -->
-NO(g)
+NO([[i:g]])
 
 <!-- SEG:m68865:entry:auto-932 -->
 90,25
@@ -2799,7 +2799,7 @@ NO(g)
 210,8
 
 <!-- SEG:m68865:entry:auto-935 -->
-NO[[sub:2]](g)
+NO[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-936 -->
 33,2
@@ -2811,7 +2811,7 @@ NO[[sub:2]](g)
 240,1
 
 <!-- SEG:m68865:entry:auto-939 -->
-N[[sub:2]]O(g)
+N[[sub:2]]O([[i:g]])
 
 <!-- SEG:m68865:entry:auto-940 -->
 81,6
@@ -2823,7 +2823,7 @@ N[[sub:2]]O(g)
 220,0
 
 <!-- SEG:m68865:entry:auto-943 -->
-N[[sub:2]]O[[sub:3]](g)
+N[[sub:2]]O[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-944 -->
 83,72
@@ -2835,7 +2835,7 @@ N[[sub:2]]O[[sub:3]](g)
 312,17
 
 <!-- SEG:m68865:entry:auto-947 -->
-NO[[sub:3]] [[sup:–]]({{i}}aq{{/i}})
+NO[[sub:3]] [[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-948 -->
 –205,0
@@ -2847,7 +2847,7 @@ NO[[sub:3]] [[sup:–]]({{i}}aq{{/i}})
 146,4
 
 <!-- SEG:m68865:entry:auto-951 -->
-N[[sub:2]]O[[sub:4]]({{i}}g{{/i}})
+N[[sub:2]]O[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-952 -->
 11,1
@@ -2859,7 +2859,7 @@ N[[sub:2]]O[[sub:4]]({{i}}g{{/i}})
 304,4
 
 <!-- SEG:m68865:entry:auto-955 -->
-N[[sub:2]]O[[sub:5]]({{i}}g{{/i}})
+N[[sub:2]]O[[sub:5]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-956 -->
 11,3
@@ -2871,7 +2871,7 @@ N[[sub:2]]O[[sub:5]]({{i}}g{{/i}})
 355,7
 
 <!-- SEG:m68865:entry:auto-959 -->
-NH[[sub:3]]({{i}}g{{/i}})
+NH[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-960 -->
 –45,9
@@ -2883,7 +2883,7 @@ NH[[sub:3]]({{i}}g{{/i}})
 192,8
 
 <!-- SEG:m68865:entry:auto-963 -->
-NH[[sub:4]] [[sup:+]]({{i}}aq{{/i}})
+NH[[sub:4]] [[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-964 -->
 –132,5
@@ -2895,7 +2895,7 @@ NH[[sub:4]] [[sup:+]]({{i}}aq{{/i}})
 113,4
 
 <!-- SEG:m68865:entry:auto-967 -->
-N[[sub:2]]H[[sub:4]]({{i}}l{{/i}})
+N[[sub:2]]H[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-968 -->
 50,63
@@ -2907,7 +2907,7 @@ N[[sub:2]]H[[sub:4]]({{i}}l{{/i}})
 121,21
 
 <!-- SEG:m68865:entry:auto-971 -->
-N[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
+N[[sub:2]]H[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-972 -->
 95,4
@@ -2919,7 +2919,7 @@ N[[sub:2]]H[[sub:4]]({{i}}g{{/i}})
 238,5
 
 <!-- SEG:m68865:entry:auto-975 -->
-NH[[sub:4]]NO[[sub:3]]({{i}}s{{/i}})
+NH[[sub:4]]NO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-976 -->
 –365,56
@@ -2931,7 +2931,7 @@ NH[[sub:4]]NO[[sub:3]]({{i}}s{{/i}})
 151,08
 
 <!-- SEG:m68865:entry:auto-979 -->
-NH[[sub:4]]Cl({{i}}s{{/i}})
+NH[[sub:4]]Cl([[i:s]])
 
 <!-- SEG:m68865:entry:auto-980 -->
 –314,43
@@ -2943,7 +2943,7 @@ NH[[sub:4]]Cl({{i}}s{{/i}})
 94,6
 
 <!-- SEG:m68865:entry:auto-983 -->
-NH[[sub:4]]Br({{i}}s){{/i}}
+NH[[sub:4]]Br([[i:s)]]
 
 <!-- SEG:m68865:entry:auto-984 -->
 –270,8
@@ -2955,7 +2955,7 @@ NH[[sub:4]]Br({{i}}s){{/i}}
 113,0
 
 <!-- SEG:m68865:entry:auto-987 -->
-NH[[sub:4]]I({{i}}s{{/i}})
+NH[[sub:4]]I([[i:s]])
 
 <!-- SEG:m68865:entry:auto-988 -->
 –201,4
@@ -2967,7 +2967,7 @@ NH[[sub:4]]I({{i}}s{{/i}})
 117,0
 
 <!-- SEG:m68865:entry:auto-991 -->
-NH[[sub:4]]NO[[sub:2]]({{i}}s{{/i}})
+NH[[sub:4]]NO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-992 -->
 –256,5
@@ -2979,7 +2979,7 @@ NH[[sub:4]]NO[[sub:2]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-995 -->
-HNO[[sub:3]]({{i}}l{{/i}})
+HNO[[sub:3]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-996 -->
 –174,1
@@ -2991,7 +2991,7 @@ HNO[[sub:3]]({{i}}l{{/i}})
 155,6
 
 <!-- SEG:m68865:entry:auto-999 -->
-HNO[[sub:3]]({{i}}g{{/i}})
+HNO[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1000 -->
 –133,9
@@ -3003,7 +3003,7 @@ HNO[[sub:3]]({{i}}g{{/i}})
 266,9
 
 <!-- SEG:m68865:entry:auto-1003 -->
-HNO[[sub:3]]({{i}}aq{{/i}})
+HNO[[sub:3]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1004 -->
 –207,4
@@ -3018,7 +3018,7 @@ HNO[[sub:3]]({{i}}aq{{/i}})
 súrefni
 
 <!-- SEG:m68865:entry:auto-1008 -->
-O[[sub:2]]({{i}}g{{/i}})
+O[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1009 -->
 0
@@ -3030,7 +3030,7 @@ O[[sub:2]]({{i}}g{{/i}})
 205,2
 
 <!-- SEG:m68865:entry:auto-1012 -->
-O({{i}}g{{/i}})
+O([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1013 -->
 249,17
@@ -3042,7 +3042,7 @@ O({{i}}g{{/i}})
 161,1
 
 <!-- SEG:m68865:entry:auto-1016 -->
-O[[sub:3]]({{i}}g{{/i}})
+O[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1017 -->
 142,7
@@ -3057,7 +3057,7 @@ O[[sub:3]]({{i}}g{{/i}})
 fosfór
 
 <!-- SEG:m68865:entry:auto-1021 -->
-P[[sub:4]]({{i}}s{{/i}})
+P[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1022 -->
 0
@@ -3069,7 +3069,7 @@ P[[sub:4]]({{i}}s{{/i}})
 164,4
 
 <!-- SEG:m68865:entry:auto-1025 -->
-P[[sub:4]]({{i}}g{{/i}})
+P[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1026 -->
 58,91
@@ -3081,7 +3081,7 @@ P[[sub:4]]({{i}}g{{/i}})
 280,0
 
 <!-- SEG:m68865:entry:auto-1029 -->
-P({{i}}g{{/i}})
+P([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1030 -->
 314,64
@@ -3093,7 +3093,7 @@ P({{i}}g{{/i}})
 163,19
 
 <!-- SEG:m68865:entry:auto-1033 -->
-PH[[sub:3]]({{i}}g{{/i}})
+PH[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1034 -->
 5,4
@@ -3105,7 +3105,7 @@ PH[[sub:3]]({{i}}g{{/i}})
 210,2
 
 <!-- SEG:m68865:entry:auto-1037 -->
-PCl[[sub:3]]({{i}}g{{/i}})
+PCl[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1038 -->
 –287,0
@@ -3117,7 +3117,7 @@ PCl[[sub:3]]({{i}}g{{/i}})
 311,78
 
 <!-- SEG:m68865:entry:auto-1041 -->
-PCl[[sub:5]]({{i}}g{{/i}})
+PCl[[sub:5]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1042 -->
 –374,9
@@ -3129,7 +3129,7 @@ PCl[[sub:5]]({{i}}g{{/i}})
 364,4
 
 <!-- SEG:m68865:entry:auto-1045 -->
-P[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
+P[[sub:4]]O[[sub:6]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1046 -->
 –1640,1
@@ -3141,7 +3141,7 @@ P[[sub:4]]O[[sub:6]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1049 -->
-P[[sub:4]]O[[sub:10]]({{i}}s{{/i}})
+P[[sub:4]]O[[sub:10]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1050 -->
 –2984,0
@@ -3153,7 +3153,7 @@ P[[sub:4]]O[[sub:10]]({{i}}s{{/i}})
 228,86
 
 <!-- SEG:m68865:entry:auto-1053 -->
-PO[[sub:4]] [[sup:3–]]({{i}}aq{{/i}})
+PO[[sub:4]] [[sup:3–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1054 -->
 –1277
@@ -3165,7 +3165,9 @@ PO[[sub:4]] [[sup:3–]]({{i}}aq{{/i}})
 –222
 
 <!-- SEG:m68865:entry:auto-1057 -->
-HPO[[sub:3]]({{i}}s{{/i}})<!-- SEG:m68865:entry:auto-1058 -->
+HPO[[sub:3]]([[i:s]])
+
+<!-- SEG:m68865:entry:auto-1058 -->
 –948,5
 
 <!-- SEG:m68865:entry:auto-1059 -->
@@ -3175,7 +3177,7 @@ HPO[[sub:3]]({{i}}s{{/i}})<!-- SEG:m68865:entry:auto-1058 -->
 —
 
 <!-- SEG:m68865:entry:auto-1061 -->
-HPO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
+HPO[[sub:4]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1062 -->
 –1292,1
@@ -3187,7 +3189,7 @@ HPO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 –33
 
 <!-- SEG:m68865:entry:auto-1065 -->
-H[[sub:2]]PO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
+H[[sub:2]]PO[[sub:4]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1066 -->
 –1296,3
@@ -3199,7 +3201,7 @@ H[[sub:2]]PO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 90,4
 
 <!-- SEG:m68865:entry:auto-1069 -->
-H[[sub:3]]PO[[sub:2]]({{i}}s{{/i}})
+H[[sub:3]]PO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1070 -->
 –604,6
@@ -3211,7 +3213,7 @@ H[[sub:3]]PO[[sub:2]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1073 -->
-H[[sub:3]]PO[[sub:3]]({{i}}s{{/i}})
+H[[sub:3]]PO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1074 -->
 –964,4
@@ -3223,7 +3225,7 @@ H[[sub:3]]PO[[sub:3]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1077 -->
-H[[sub:3]]PO[[sub:4]]({{i}}s{{/i}})
+H[[sub:3]]PO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1078 -->
 –1279,0
@@ -3235,19 +3237,17 @@ H[[sub:3]]PO[[sub:4]]({{i}}s{{/i}})
 110,50
 
 <!-- SEG:m68865:entry:auto-1081 -->
-H[[sub:3]]PO[[sub:4]]{{i}}(l{{/i}})
+H[[sub:3]]PO[[sub:4]][[i:(l]])
 
 <!-- SEG:m68865:entry:auto-1082 -->
-–1266,9
-
-<!-- SEG:m68865:entry:auto-1083 -->
+–1266,9<!-- SEG:m68865:entry:auto-1083 -->
 –1124,3
 
 <!-- SEG:m68865:entry:auto-1084 -->
 110,5
 
 <!-- SEG:m68865:entry:auto-1085 -->
-H[[sub:4]]P[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
+H[[sub:4]]P[[sub:2]]O[[sub:7]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1086 -->
 –2241,0
@@ -3259,7 +3259,7 @@ H[[sub:4]]P[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1089 -->
-POCl[[sub:3]]({{i}}l{{/i}})
+POCl[[sub:3]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1090 -->
 –597,1
@@ -3271,7 +3271,7 @@ POCl[[sub:3]]({{i}}l{{/i}})
 222,5
 
 <!-- SEG:m68865:entry:auto-1093 -->
-POCl[[sub:3]]({{i}}g{{/i}})
+POCl[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1094 -->
 –558,5
@@ -3286,7 +3286,7 @@ POCl[[sub:3]]({{i}}g{{/i}})
 kalín
 
 <!-- SEG:m68865:entry:auto-1098 -->
-K({{i}}s{{/i}})
+K([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1099 -->
 0
@@ -3298,7 +3298,7 @@ K({{i}}s{{/i}})
 64,7
 
 <!-- SEG:m68865:entry:auto-1102 -->
-K({{i}}g{{/i}})
+K([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1103 -->
 89,0
@@ -3310,7 +3310,7 @@ K({{i}}g{{/i}})
 160,3
 
 <!-- SEG:m68865:entry:auto-1106 -->
-K[[sup:+]]({{i}}aq{{/i}})
+K[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1107 -->
 –252,4
@@ -3322,7 +3322,7 @@ K[[sup:+]]({{i}}aq{{/i}})
 102,5
 
 <!-- SEG:m68865:entry:auto-1110 -->
-KF({{i}}s{{/i}})
+KF([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1111 -->
 –576,27
@@ -3334,7 +3334,7 @@ KF({{i}}s{{/i}})
 66,57
 
 <!-- SEG:m68865:entry:auto-1114 -->
-KCl({{i}}s{{/i}})
+KCl([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1115 -->
 –436,5
@@ -3349,7 +3349,7 @@ KCl({{i}}s{{/i}})
 rúbidín
 
 <!-- SEG:m68865:entry:auto-1119 -->
-Rb[[sup:+]]({{i}}aq{{/i}})
+Rb[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1120 -->
 –246
@@ -3364,7 +3364,7 @@ Rb[[sup:+]]({{i}}aq{{/i}})
 kísill
 
 <!-- SEG:m68865:entry:auto-1124 -->
-Si({{i}}s{{/i}})
+Si([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1125 -->
 0
@@ -3376,7 +3376,7 @@ Si({{i}}s{{/i}})
 18,8
 
 <!-- SEG:m68865:entry:auto-1128 -->
-Si({{i}}g){{/i}}
+Si([[i:g)]]
 
 <!-- SEG:m68865:entry:auto-1129 -->
 450,0
@@ -3388,7 +3388,7 @@ Si({{i}}g){{/i}}
 168,0
 
 <!-- SEG:m68865:entry:auto-1132 -->
-SiO[[sub:2]]({{i}}s{{/i}})
+SiO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1133 -->
 –910,7
@@ -3400,7 +3400,7 @@ SiO[[sub:2]]({{i}}s{{/i}})
 41,5
 
 <!-- SEG:m68865:entry:auto-1136 -->
-SiH[[sub:4]]({{i}}g{{/i}})
+SiH[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1137 -->
 34,3
@@ -3412,7 +3412,7 @@ SiH[[sub:4]]({{i}}g{{/i}})
 204,6
 
 <!-- SEG:m68865:entry:auto-1140 -->
-H[[sub:2]]SiO[[sub:3]]({{i}}s{{/i}})
+H[[sub:2]]SiO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1141 -->
 –1188,67
@@ -3424,7 +3424,7 @@ H[[sub:2]]SiO[[sub:3]]({{i}}s{{/i}})
 133,89
 
 <!-- SEG:m68865:entry:auto-1144 -->
-H[[sub:4]]SiO[[sub:4]]({{i}}s{{/i}})
+H[[sub:4]]SiO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1145 -->
 –1481,14
@@ -3436,7 +3436,7 @@ H[[sub:4]]SiO[[sub:4]]({{i}}s{{/i}})
 192,46
 
 <!-- SEG:m68865:entry:auto-1148 -->
-SiF[[sub:4]]({{i}}g{{/i}})
+SiF[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1149 -->
 –1615,0
@@ -3448,7 +3448,7 @@ SiF[[sub:4]]({{i}}g{{/i}})
 282,8
 
 <!-- SEG:m68865:entry:auto-1152 -->
-SiCl[[sub:4]]({{i}}l{{/i}})
+SiCl[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1153 -->
 –687,0
@@ -3460,7 +3460,7 @@ SiCl[[sub:4]]({{i}}l{{/i}})
 239,7
 
 <!-- SEG:m68865:entry:auto-1156 -->
-SiCl[[sub:4]]({{i}}g{{/i}})
+SiCl[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1157 -->
 –662,75
@@ -3472,7 +3472,7 @@ SiCl[[sub:4]]({{i}}g{{/i}})
 330,62
 
 <!-- SEG:m68865:entry:auto-1160 -->
-SiC({{i}}s, beta-kúbískt{{/i}})
+SiC([[i:s, beta-kúbískur]])
 
 <!-- SEG:m68865:entry:auto-1161 -->
 –73,22
@@ -3484,7 +3484,7 @@ SiC({{i}}s, beta-kúbískt{{/i}})
 16,61
 
 <!-- SEG:m68865:entry:auto-1164 -->
-SiC({{i}}s, alfa-sexhyrnt{{/i}})
+SiC([[i:s, alfa-sexstrendur]])
 
 <!-- SEG:m68865:entry:auto-1165 -->
 –71,55
@@ -3496,10 +3496,10 @@ SiC({{i}}s, alfa-sexhyrnt{{/i}})
 16,48
 
 <!-- SEG:m68865:entry:auto-1168 -->
-Silfur
+silfur
 
 <!-- SEG:m68865:entry:auto-1169 -->
-Ag({{i}}s{{/i}})
+Ag([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1170 -->
 0
@@ -3511,7 +3511,7 @@ Ag({{i}}s{{/i}})
 42,55
 
 <!-- SEG:m68865:entry:auto-1173 -->
-Ag({{i}}g{{/i}})
+Ag([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1174 -->
 284,9
@@ -3523,7 +3523,7 @@ Ag({{i}}g{{/i}})
 172,89
 
 <!-- SEG:m68865:entry:auto-1177 -->
-Ag[[sup:+]]({{i}}aq{{/i}})
+Ag[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1178 -->
 105,6
@@ -3535,7 +3535,7 @@ Ag[[sup:+]]({{i}}aq{{/i}})
 72,68
 
 <!-- SEG:m68865:entry:auto-1181 -->
-Ag[[sub:2]]O({{i}}s{{/i}})
+Ag[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1182 -->
 –31,05
@@ -3547,7 +3547,7 @@ Ag[[sub:2]]O({{i}}s{{/i}})
 121,3
 
 <!-- SEG:m68865:entry:auto-1185 -->
-AgCl({{i}}s{{/i}})
+AgCl([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1186 -->
 –127,0
@@ -3559,7 +3559,7 @@ AgCl({{i}}s{{/i}})
 96,3
 
 <!-- SEG:m68865:entry:auto-1189 -->
-Ag[[sub:2]]S({{i}}s{{/i}})
+Ag[[sub:2]]S([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1190 -->
 –32,6
@@ -3571,10 +3571,10 @@ Ag[[sub:2]]S({{i}}s{{/i}})
 144,0
 
 <!-- SEG:m68865:entry:auto-1193 -->
-Natríum
+natríum
 
 <!-- SEG:m68865:entry:auto-1194 -->
-Na({{i}}s{{/i}})
+Na([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1195 -->
 0
@@ -3586,7 +3586,7 @@ Na({{i}}s{{/i}})
 51,3
 
 <!-- SEG:m68865:entry:auto-1198 -->
-Na({{i}}g{{/i}})
+Na([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1199 -->
 107,5
@@ -3598,7 +3598,7 @@ Na({{i}}g{{/i}})
 153,7
 
 <!-- SEG:m68865:entry:auto-1202 -->
-Na[[sup:+]]({{i}}aq{{/i}})
+Na[[sup:+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1203 -->
 –240,1
@@ -3610,7 +3610,7 @@ Na[[sup:+]]({{i}}aq{{/i}})
 59
 
 <!-- SEG:m68865:entry:auto-1206 -->
-Na[[sub:2]]O({{i}}s{{/i}})
+Na[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1207 -->
 –414,2
@@ -3622,7 +3622,7 @@ Na[[sub:2]]O({{i}}s{{/i}})
 75,1
 
 <!-- SEG:m68865:entry:auto-1210 -->
-NaCl({{i}}s{{/i}})
+NaCl([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1211 -->
 –411,2
@@ -3634,10 +3634,10 @@ NaCl({{i}}s{{/i}})
 72,1
 
 <!-- SEG:m68865:entry:auto-1214 -->
-Strontíum
+strontíum
 
 <!-- SEG:m68865:entry:auto-1215 -->
-Sr[[sup:2+]]({{i}}aq{{/i}})
+Sr[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1216 -->
 –545,8
@@ -3652,7 +3652,7 @@ Sr[[sup:2+]]({{i}}aq{{/i}})
 brennisteinn
 
 <!-- SEG:m68865:entry:auto-1220 -->
-S[[sub:8]]({{i}}s{{/i}}) (rombískur)
+S[[sub:8]]([[i:s]]) (tígulflötóttur)
 
 <!-- SEG:m68865:entry:auto-1221 -->
 0
@@ -3664,7 +3664,7 @@ S[[sub:8]]({{i}}s{{/i}}) (rombískur)
 256,8
 
 <!-- SEG:m68865:entry:auto-1224 -->
-S({{i}}g{{/i}})
+S([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1225 -->
 278,81
@@ -3676,7 +3676,7 @@ S({{i}}g{{/i}})
 167,82
 
 <!-- SEG:m68865:entry:auto-1228 -->
-S[[sup:2–]]({{i}}aq{{/i}})
+S[[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1229 -->
 41,8
@@ -3688,7 +3688,7 @@ S[[sup:2–]]({{i}}aq{{/i}})
 22
 
 <!-- SEG:m68865:entry:auto-1232 -->
-SO[[sub:2]]({{i}}g{{/i}})
+SO[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1233 -->
 –296,83
@@ -3700,7 +3700,7 @@ SO[[sub:2]]({{i}}g{{/i}})
 248,2
 
 <!-- SEG:m68865:entry:auto-1236 -->
-SO[[sub:3]]({{i}}g{{/i}})
+SO[[sub:3]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1237 -->
 –395,72
@@ -3712,7 +3712,7 @@ SO[[sub:3]]({{i}}g{{/i}})
 256,76
 
 <!-- SEG:m68865:entry:auto-1240 -->
-SO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
+SO[[sub:4]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1241 -->
 –909,3
@@ -3724,7 +3724,7 @@ SO[[sub:4]] [[sup:2–]]({{i}}aq{{/i}})
 20,1
 
 <!-- SEG:m68865:entry:auto-1244 -->
-S[[sub:2]]O[[sub:3]] [[sup:2–]]({{i}}aq{{/i}})
+S[[sub:2]]O[[sub:3]] [[sup:2–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1245 -->
 –648,5
@@ -3736,7 +3736,7 @@ S[[sub:2]]O[[sub:3]] [[sup:2–]]({{i}}aq{{/i}})
 67
 
 <!-- SEG:m68865:entry:auto-1248 -->
-H[[sub:2]]S({{i}}g{{/i}})
+H[[sub:2]]S([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1249 -->
 –20,6
@@ -3748,7 +3748,7 @@ H[[sub:2]]S({{i}}g{{/i}})
 205,8
 
 <!-- SEG:m68865:entry:auto-1252 -->
-HS[[sup:–]]({{i}}aq{{/i}})
+HS[[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1253 -->
 –17,7
@@ -3760,7 +3760,7 @@ HS[[sup:–]]({{i}}aq{{/i}})
 61,1
 
 <!-- SEG:m68865:entry:auto-1256 -->
-H[[sub:2]]SO[[sub:4]]({{i}}l{{/i}})
+H[[sub:2]]SO[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1257 -->
 –813,989
@@ -3772,7 +3772,7 @@ H[[sub:2]]SO[[sub:4]]({{i}}l{{/i}})
 156,90
 
 <!-- SEG:m68865:entry:auto-1260 -->
-HSO[[sub:4]] [[sup:–]]({{i}}aq{{/i}})
+HSO[[sub:4]] [[sup:–]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1261 -->
 –885,75
@@ -3784,7 +3784,7 @@ HSO[[sub:4]] [[sup:–]]({{i}}aq{{/i}})
 126,9
 
 <!-- SEG:m68865:entry:auto-1264 -->
-H[[sub:2]]S[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
+H[[sub:2]]S[[sub:2]]O[[sub:7]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1265 -->
 –1273,6
@@ -3796,7 +3796,7 @@ H[[sub:2]]S[[sub:2]]O[[sub:7]]({{i}}s{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1268 -->
-SF[[sub:4]]({{i}}g{{/i}})
+SF[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1269 -->
 –728,43
@@ -3808,7 +3808,7 @@ SF[[sub:4]]({{i}}g{{/i}})
 291,12
 
 <!-- SEG:m68865:entry:auto-1272 -->
-SF[[sub:6]]({{i}}g{{/i}})
+SF[[sub:6]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1273 -->
 –1220,5
@@ -3820,7 +3820,7 @@ SF[[sub:6]]({{i}}g{{/i}})
 291,5
 
 <!-- SEG:m68865:entry:auto-1276 -->
-SCl[[sub:2]]({{i}}l{{/i}})
+SCl[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1277 -->
 –50
@@ -3832,7 +3832,7 @@ SCl[[sub:2]]({{i}}l{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1280 -->
-SCl[[sub:2]]({{i}}g){{/i}}
+SCl[[sub:2]]([[i:g)]]
 
 <!-- SEG:m68865:entry:auto-1281 -->
 –19,7
@@ -3844,7 +3844,7 @@ SCl[[sub:2]]({{i}}g){{/i}}
 —
 
 <!-- SEG:m68865:entry:auto-1284 -->
-S[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
+S[[sub:2]]Cl[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1285 -->
 –59,4
@@ -3856,7 +3856,7 @@ S[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1288 -->
-S[[sub:2]]Cl[[sub:2]]({{i}}g{{/i}})
+S[[sub:2]]Cl[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1289 -->
 –19,50
@@ -3868,7 +3868,7 @@ S[[sub:2]]Cl[[sub:2]]({{i}}g{{/i}})
 319,45
 
 <!-- SEG:m68865:entry:auto-1292 -->
-SOCl[[sub:2]]({{i}}g{{/i}})
+SOCl[[sub:2]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1293 -->
 –212,55
@@ -3880,7 +3880,7 @@ SOCl[[sub:2]]({{i}}g{{/i}})
 309,66
 
 <!-- SEG:m68865:entry:auto-1296 -->
-SOCl[[sub:2]]({{i}}l{{/i}})
+SOCl[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1297 -->
 –245,6
@@ -3892,7 +3892,7 @@ SOCl[[sub:2]]({{i}}l{{/i}})
 —
 
 <!-- SEG:m68865:entry:auto-1300 -->
-SO[[sub:2]]Cl[[sub:2]]({{i}}l{{/i}})
+SO[[sub:2]]Cl[[sub:2]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1301 -->
 –394,1
@@ -3916,10 +3916,10 @@ SO[[sub:2]]Cl[[sub:2]](g)
 311,83
 
 <!-- SEG:m68865:entry:auto-1308 -->
-tin
+Tin
 
 <!-- SEG:m68865:entry:auto-1309 -->
-Sn({{i}}s{{/i}})
+Sn([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1310 -->
 0
@@ -3931,7 +3931,7 @@ Sn({{i}}s{{/i}})
 51,2
 
 <!-- SEG:m68865:entry:auto-1313 -->
-Sn({{i}}g{{/i}})
+Sn([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1314 -->
 301,2
@@ -3943,7 +3943,7 @@ Sn({{i}}g{{/i}})
 168,5
 
 <!-- SEG:m68865:entry:auto-1317 -->
-SnO({{i}}s{{/i}})
+SnO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1318 -->
 –285,8
@@ -3955,7 +3955,7 @@ SnO({{i}}s{{/i}})
 56,5
 
 <!-- SEG:m68865:entry:auto-1321 -->
-SnO[[sub:2]]({{i}}s{{/i}})
+SnO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1322 -->
 –577,6
@@ -3967,7 +3967,7 @@ SnO[[sub:2]]({{i}}s{{/i}})
 49,0
 
 <!-- SEG:m68865:entry:auto-1325 -->
-SnCl[[sub:4]]({{i}}l{{/i}})
+SnCl[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1326 -->
 –511,3
@@ -3979,7 +3979,7 @@ SnCl[[sub:4]]({{i}}l{{/i}})
 258,6
 
 <!-- SEG:m68865:entry:auto-1329 -->
-SnCl[[sub:4]]({{i}}g{{/i}})
+SnCl[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1330 -->
 –471,5
@@ -3991,10 +3991,10 @@ SnCl[[sub:4]]({{i}}g{{/i}})
 365,8
 
 <!-- SEG:m68865:entry:auto-1333 -->
-títan
+Títan
 
 <!-- SEG:m68865:entry:auto-1334 -->
-Ti({{i}}s{{/i}})
+Ti([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1335 -->
 0
@@ -4006,7 +4006,7 @@ Ti({{i}}s{{/i}})
 30,7
 
 <!-- SEG:m68865:entry:auto-1338 -->
-Ti({{i}}g{{/i}})
+Ti([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1339 -->
 473,0
@@ -4018,7 +4018,7 @@ Ti({{i}}g{{/i}})
 180,3
 
 <!-- SEG:m68865:entry:auto-1342 -->
-TiO[[sub:2]]({{i}}s{{/i}})
+TiO[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1343 -->
 –944,0
@@ -4030,7 +4030,7 @@ TiO[[sub:2]]({{i}}s{{/i}})
 50,6
 
 <!-- SEG:m68865:entry:auto-1346 -->
-TiCl[[sub:4]]({{i}}l{{/i}})
+TiCl[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-1347 -->
 –804,2
@@ -4042,7 +4042,7 @@ TiCl[[sub:4]]({{i}}l{{/i}})
 252,4
 
 <!-- SEG:m68865:entry:auto-1350 -->
-TiCl[[sub:4]]({{i}}g{{/i}})
+TiCl[[sub:4]]([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1351 -->
 –763,2
@@ -4057,7 +4057,7 @@ TiCl[[sub:4]]({{i}}g{{/i}})
 volfram
 
 <!-- SEG:m68865:entry:auto-1355 -->
-W({{i}}s{{/i}})
+W([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1356 -->
 0
@@ -4069,7 +4069,7 @@ W({{i}}s{{/i}})
 32,6
 
 <!-- SEG:m68865:entry:auto-1359 -->
-W({{i}}g{{/i}})
+W([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1360 -->
 849,4
@@ -4081,7 +4081,7 @@ W({{i}}g{{/i}})
 174,0
 
 <!-- SEG:m68865:entry:auto-1363 -->
-WO[[sub:3]]({{i}}s{{/i}})
+WO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1364 -->
 –842,9
@@ -4096,7 +4096,7 @@ WO[[sub:3]]({{i}}s{{/i}})
 sink
 
 <!-- SEG:m68865:entry:auto-1368 -->
-Zn({{i}}s{{/i}})
+Zn([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1369 -->
 0
@@ -4108,7 +4108,7 @@ Zn({{i}}s{{/i}})
 41,6
 
 <!-- SEG:m68865:entry:auto-1372 -->
-Zn({{i}}g{{/i}})
+Zn([[i:g]])
 
 <!-- SEG:m68865:entry:auto-1373 -->
 130,73
@@ -4120,7 +4120,7 @@ Zn({{i}}g{{/i}})
 160,98
 
 <!-- SEG:m68865:entry:auto-1376 -->
-Zn[[sup:2+]]({{i}}aq{{/i}})
+Zn[[sup:2+]]([[i:aq]])
 
 <!-- SEG:m68865:entry:auto-1377 -->
 –153,9
@@ -4132,7 +4132,7 @@ Zn[[sup:2+]]({{i}}aq{{/i}})
 –112,1
 
 <!-- SEG:m68865:entry:auto-1380 -->
-ZnO({{i}}s{{/i}})
+ZnO([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1381 -->
 –350,5
@@ -4144,7 +4144,7 @@ ZnO({{i}}s{{/i}})
 43,7
 
 <!-- SEG:m68865:entry:auto-1384 -->
-ZnCl[[sub:2]]({{i}}s{{/i}})
+ZnCl[[sub:2]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1385 -->
 –415,1
@@ -4156,7 +4156,7 @@ ZnCl[[sub:2]]({{i}}s{{/i}})
 111,5
 
 <!-- SEG:m68865:entry:auto-1388 -->
-ZnS({{i}}s{{/i}})
+ZnS([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1389 -->
 –206,0
@@ -4168,7 +4168,7 @@ ZnS({{i}}s{{/i}})
 57,7
 
 <!-- SEG:m68865:entry:auto-1392 -->
-ZnSO[[sub:4]]({{i}}s{{/i}})
+ZnSO[[sub:4]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1393 -->
 –982,8
@@ -4180,7 +4180,7 @@ ZnSO[[sub:4]]({{i}}s{{/i}})
 110,5
 
 <!-- SEG:m68865:entry:auto-1396 -->
-ZnCO[[sub:3]]({{i}}s{{/i}})
+ZnCO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68865:entry:auto-1397 -->
 –812,78
@@ -4192,10 +4192,10 @@ ZnCO[[sub:3]]({{i}}s{{/i}})
 82,42
 
 <!-- SEG:m68865:entry:auto-1400 -->
-Jónafléttur
+flókar
 
 <!-- SEG:m68865:entry:auto-1401 -->
-[Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], {{i}}cis{{/i}}
+[Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], [[i:cis]]
 
 <!-- SEG:m68865:entry:auto-1402 -->
 –898,7
@@ -4207,7 +4207,7 @@ Jónafléttur
 —
 
 <!-- SEG:m68865:entry:auto-1405 -->
-[Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], {{i}}trans{{/i}}
+[Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], [[i:trans]]
 
 <!-- SEG:m68865:entry:auto-1406 -->
 –896,2
@@ -4243,7 +4243,7 @@ NH[[sub:4]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]]
 —
 
 <!-- SEG:m68865:entry:auto-1417 -->
-[Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]Cl, {{i}}cis{{/i}}
+[Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]Cl, [[i:cis]]
 
 <!-- SEG:m68865:entry:auto-1418 -->
 –874,9
@@ -4255,7 +4255,7 @@ NH[[sub:4]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]]
 —
 
 <!-- SEG:m68865:entry:auto-1421 -->
-[Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]Cl, {{i}}trans{{/i}}
+[Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]Cl, [[i:trans]]
 
 <!-- SEG:m68865:entry:auto-1422 -->
 –877,4
@@ -4267,7 +4267,7 @@ NH[[sub:4]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]]
 —
 
 <!-- SEG:m68865:entry:auto-1425 -->
-[Co(en)[[sub:2]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], {{i}}cis{{/i}}
+[Co(en)[[sub:2]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], [[i:cis]]
 
 <!-- SEG:m68865:entry:auto-1426 -->
 –689,5
@@ -4279,7 +4279,7 @@ NH[[sub:4]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]]
 —
 
 <!-- SEG:m68865:entry:auto-1429 -->
-[Co(en)[[sub:2]]Cl[[sub:2]]]Cl, {{i}}cis{{/i}}
+[Co(en)[[sub:2]]Cl[[sub:2]]]Cl, [[i:cis]]
 
 <!-- SEG:m68865:entry:auto-1430 -->
 –681,2
@@ -4291,7 +4291,7 @@ NH[[sub:4]][Co(NH[[sub:3]])[[sub:2]](NO[[sub:2]])[[sub:4]]]
 —
 
 <!-- SEG:m68865:entry:auto-1433 -->
-[Co(en)[[sub:2]]Cl[[sub:2]]]Cl, {{i}}trans{{/i}}
+[Co(en)[[sub:2]]Cl[[sub:2]]]Cl, [[i:trans]]
 
 <!-- SEG:m68865:entry:auto-1434 -->
 –677,4

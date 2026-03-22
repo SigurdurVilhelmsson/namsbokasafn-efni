@@ -3,27 +3,27 @@
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68778</md:content-id>
   <md:title>Upplausnarferlið</md:title>
-  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla getur þú:</para><list id="list-00001"><item>Lýst grunneiginleikum lausna og hvernig þær myndast</item><item>Sagt fyrir um hvort tiltekin efnablanda muni mynda lausn út frá sameindaeiginleikum innihaldsefna hennar</item><item>Útskýrt hvers vegna sumar lausnir annaðhvort mynda eða gleypa varma þegar þær myndast</item></list></md:abstract>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst grunneiginleikum lausna og hvernig þær myndast</item><item>Spáð fyrir um hvort tiltekin efnablanda muni mynda lausn út frá sameindaeiginleikum innihaldsefna hennar</item><item>Útskýrt hvers vegna sumar lausnir annaðhvort mynda eða gleypa varma þegar þær myndast</item></list></md:abstract>
   <md:uuid>c6004026-5f7c-4474-81ca-2b52ef029d8b</md:uuid>
 </metadata>
 
 <content>
-<para id="fs-idp27309280">Í fyrri kafla þessarar bókar var fjallað um <emphasis effect="italics">lausnir</emphasis>, sem eru skilgreindar sem einsleitar efnablöndur tveggja eða fleiri efna. Oft er einn hluti lausnar til staðar í verulega meiri styrk og er þá kallaður <emphasis effect="italics">leysir</emphasis>. Aðrir hlutar lausnarinnar sem eru til staðar í tiltölulega minni styrk eru kallaðir <emphasis effect="italics">leysið efni</emphasis>. Sykur er samgilt fast efni sem samanstendur af súkrósasameindum, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>. Þegar þetta efnasamband leysist upp í vatni dreifast sameindir þess jafnt á meðal vatnssameindanna:</para>
+<para id="fs-idp27309280">Í fyrri kafla þessa texta voru <emphasis effect="italics">lausnir</emphasis> kynntar til sögunnar, skilgreindar sem einsleitar efnablöndur tveggja eða fleiri efna. Oft er einn hluti lausnar til staðar í verulega meiri styrk og er þá kallaður <emphasis effect="italics">leysir</emphasis>. Aðrir hlutar lausnarinnar sem eru til staðar í tiltölulega minni styrk eru kallaðir <emphasis effect="italics">leysið efni</emphasis>. Sykur er samgilt fast efni sem samanstendur af súkrósasameindum, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>. Þegar þetta efnasamband leysist upp í vatni dreifast sameindir þess jafnt á meðal vatnssameindanna:</para>
 <equation id="fs-idp4046912" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idm1696368">Neðanskriftin „<emphasis effect="italics">aq</emphasis>“ í jöfnunni táknar að súkrósasameindirnar eru leyst efni og eru því <emphasis effect="italics">einstaklingsbundið dreifðar</emphasis> um alla <emphasis effect="italics">vatnslausnina</emphasis> (vatn er leysirinn). Þrátt fyrir að súkrósasameindir séu þyngri en vatnssameindir haldast þær dreifðar um lausnina; þyngdaraflið veldur því ekki að þær „setjist til“ með tímanum.</para>
-<para id="fs-idm75208096">Kalíumdíkrómat, K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>, er jónaefni sem samanstendur af litlausum kalíumjónum, K<sup>+</sup>, og appelsínugulum díkrómatjónum, <m:math><m:mrow><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Þegar litlu magni af föstu kalíumdíkrómati er bætt út í vatn leysist efnasambandið upp og sundrast og myndar kalíumjónir og díkrómatjónir sem dreifast jafnt um alla efnablönduna (<link target-id="CNX_Chem_11_01_K2Cr2O7_1"/>), eins og sýnt er í þessari jöfnu:</para>
+<para id="fs-idm1696368">Neðanskriftin „<emphasis effect="italics">aq</emphasis>“ í jöfnunni táknar að súkrósasameindirnar eru leyst efni og eru því <emphasis effect="italics">dreifðar hver fyrir sig</emphasis> um alla <emphasis effect="italics">vatnslausnina</emphasis> (vatn er leysirinn). Þrátt fyrir að súkrósasameindir séu þyngri en vatnssameindir haldast þær dreifðar um alla lausnina; þyngdaraflið veldur því ekki að þær „setjist til“ með tímanum.</para>
+<para id="fs-idm75208096">Kalíumdíkrómat, K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>, er jónaefni sem samanstendur af litlausum kalíumjónum, K<sup>+</sup>, og appelsínugulum díkrómatjónum, <m:math><m:mrow><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Þegar litlu magni af föstu kalíumdíkrómati er bætt út í vatn leysist efnasambandið upp og sundrast og gefur af sér kalíumjónir og díkrómatjónir sem dreifast jafnt um alla efnablönduna (<link target-id="CNX_Chem_11_01_K2Cr2O7_1"/>), eins og sýnt er í þessari jöfnu:</para>
 <figure id="CNX_Chem_11_01_K2Cr2O7_1" class="scaled-down">
 <media id="fs-idm31373696" alt="The first photo shows a small mound of an orange crystalline solid. There is a right-facing arrow. The second photo shows a translucent, colorless liquid in a clear container. There is a right-facing arrow. The third photo shows a translucent orange liquid in a clear, covered container.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_01_K2Cr2O7_1.jpg"/>
 </media>
-<caption>Þegar kalíumdíkrómati (K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>) er blandað saman við vatn myndar það einsleita appelsínugula lausn. (Heimild: breyting á verki eftir Mark Ott)</caption>
+<caption>Þegar kalíumdíkrómati (K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>) er blandað saman við vatn myndar það einsleita appelsínugula lausn. (heimild: breyting á verki eftir Mark Ott)</caption>
 </figure>
 <equation id="fs-idm25804880" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msup><m:mtext>K</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:mtext>C</m:mtext><m:msub><m:mtext>r</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>2−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idm32498064">Eins og með blöndu sykurs og vatns er þessi efnablanda einnig vatnslausn. Leystu efnin, kalíum- og díkrómatjónir, haldast einstaklingsbundið dreifðar á meðal leysisameindanna (vatns).</para>
+<para id="fs-idm32498064">Eins og með efnablöndu sykurs og vatns er þessi efnablanda einnig vatnslausn. Leystu efnin í henni, kalíum- og díkrómatjónir, haldast dreifðar hver fyrir sig á meðal leysisameindanna (vatnsins).</para>
 <note id="fs-idm80955760" class="chemistry link-to-learning">
-<para id="fs-idm40076400">Farðu á þessa <link url="http://openstax.org/l/16Phetsugar">sýndartilraunastofu</link> til að skoða hermun á upplausn algengra samgildra og jónískra efna (sykurs og salts) í vatni.</para>
+<para id="fs-idm40076400">Farðu á þessa <link url="http://openstax.org/l/16Phetsugar">sýndartilraunastofu</link> til að skoða hermun á upplausn algengra samgildra efna og jónaefna (sykurs og salts) í vatni.</para>
 </note>
-<para id="fs-idm72001728">Vatn er svo oft notað sem leysir að orðið lausn er farið að merkja vatnslausn í huga margra. Hins vegar getur nánast hvaða gas, vökvi eða fast efni sem er virkað sem leysir. Margar <term id="term-00001">málmblöndur (e. alloys)</term> eru fastar lausnir þar sem einn málmur er leystur upp í öðrum; til dæmis innihalda fimm senta myntir í Bandaríkjunum nikkel leyst upp í kopar. Loft er gaslausn, einsleit efnablanda niturs, súrefnis og nokkurra annarra gastegunda. Súrefni (gas), alkóhól (vökvi) og sykur (fast efni) leysast öll upp í vatni (vökva) og mynda vökvalausnir. <link target-id="fs-idp13681744"/> sýnir dæmi um nokkrar mismunandi lausnir og fasa leystu efnanna og leysanna.</para>
+<para id="fs-idm72001728">Vatn er svo oft notað sem leysir að orðið lausn er farið að gefa í skyn vatnslausn fyrir mörgum. Hins vegar getur nánast hvaða gas, vökvi eða fast efni sem er virkað sem leysir. Margar <term id="term-00001">málmblöndur (e. alloys)</term> eru fastar lausnir þar sem einn málmur er leystur upp í öðrum; til dæmis innihalda fimm senta myntir í Bandaríkjunum nikkel leyst upp í kopar. Loft er gaslausn, einsleit efnablanda niturs, súrefnis og nokkurra annarra gastegunda. Súrefni (gas), alkóhól (vökvi) og sykur (fast efni) leysast öll upp í vatni (vökva) og mynda vökvalausnir. <link target-id="fs-idp13681744"/> sýnir dæmi um nokkrar mismunandi lausnir og fasa leystu efnanna og leysanna.</para>
 <table id="fs-idp13681744" class="top-titled" summary="The table provides solutes and solvents for a variety of solutions. In air, the solute is O subscript 2 g and the solvent is N subscript 2 g. In soft drinks, the solute is C O subscript 2 g and the solvent is H subscript 2 O l. In hydrogen in palladium, H subscript 2 g is the solute and P d s is the solvent. In rubbing alcohol, H subscript 2 O l is the solute and C subscript 3 H subscript 8 O l or 2 – propanol is the solvent. In saltwater, N a C l s is the solute and H subscript 2 O l is the solvent. In brass, Z n s is the solute and C u s is the solvent.">
 <tgroup cols="3">
 <colspec colnum="1" colname="c1"/>
@@ -41,51 +41,51 @@
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">loft</entry>
-<entry align="left">O<sub>2</sub>(g)</entry>
-<entry align="left">N<sub>2</sub>(g)</entry>
+<entry align="left">Loft</entry>
+<entry align="left">O<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
+<entry align="left">N<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
 </row>
 <row valign="middle">
-<entry align="left">gosdrykkir <footnote id="fs-idm28264816">Ef gasbólur sjást í vökvanum er efnablandan ekki einsleit og því ekki lausn.</footnote></entry>
-<entry align="left">CO<sub>2</sub>(g)</entry>
-<entry align="left">H<sub>2</sub>O(l)</entry>
+<entry align="left">Gosdrykkir<footnote id="fs-idm28264816">Ef gasbólur sjást í vökvanum er efnablandan ekki einsleit og því ekki lausn.</footnote></entry>
+<entry align="left">CO<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
+<entry align="left">H<sub>2</sub>O(<emphasis effect="italics">l</emphasis>)</entry>
 </row>
 <row valign="middle">
-<entry align="left">vetni í palladíum</entry>
-<entry align="left">H<sub>2</sub>(g)</entry>
-<entry align="left">Pd(s)</entry>
+<entry align="left">Vetni í palladíum</entry>
+<entry align="left">H<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
+<entry align="left">Pd(<emphasis effect="italics">s</emphasis>)</entry>
 </row>
 <row valign="middle">
-<entry align="left">nuddspritt</entry>
-<entry align="left">H<sub>2</sub>O(l)</entry>
-<entry align="left">C<sub>3</sub>H<sub>8</sub>O(l) (2-própanól)</entry>
+<entry align="left">Nuddspritt</entry>
+<entry align="left">H<sub>2</sub>O(<emphasis effect="italics">l</emphasis>)</entry>
+<entry align="left">C<sub>3</sub>H<sub>8</sub>O(<emphasis effect="italics">l</emphasis>) (2-própanól)</entry>
 </row>
 <row valign="middle">
-<entry align="left">saltvatn</entry>
-<entry align="left">NaCl(s)</entry>
-<entry align="left">H<sub>2</sub>O(l)</entry>
+<entry align="left">Saltvatn</entry>
+<entry align="left">NaCl(<emphasis effect="italics">s</emphasis>)</entry>
+<entry align="left">H<sub>2</sub>O(<emphasis effect="italics">l</emphasis>)</entry>
 </row>
 <row valign="middle">
-<entry align="left">messing</entry>
-<entry align="left">Zn(s)</entry>
-<entry align="left">Cu(s)</entry>
+<entry align="left">Messing</entry>
+<entry align="left">Zn(<emphasis effect="italics">s</emphasis>)</entry>
+<entry align="left">Cu(<emphasis effect="italics">s</emphasis>)</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
-<para id="fs-idm100903680">Lausnir hafa þessi einkennandi megineinkenni:</para>
+<para id="fs-idm100903680">Lausnir sýna þessi einkennandi megineinkenni:</para>
 <list id="fs-idm73911888" list-type="bulleted" bullet-style="bullet">
 <item>Þær eru einsleitar; eftir að lausn hefur verið blönduð hefur hún sömu samsetningu alls staðar (samsetning hennar er jöfn).</item>
-<item>Eðlisástand lausnar – fast efni, vökvi eða gas – er yfirleitt það sama og leysisins, eins og dæmin í <link target-id="fs-idp13681744"/> sýna.</item>
-<item>Innihaldsefni lausnar eru dreifð á sameindakvarða; þau samanstanda af efnablöndu aðskilinna agna leysta efnisins (sameinda, atóma og/eða jóna) sem hver um sig er umlukin agnategundum leysisins.</item>
-<item>Uppleysta efnið í lausn fellur ekki út eða skilst frá leysinum.</item>
-<item>Samsetningu lausnar, eða styrk íhluta hennar, er hægt að breyta stöðugt (innan marka sem ákvarðast af <emphasis effect="italics">leysni</emphasis> íhlutanna, sem fjallað er um síðar í þessum kafla).</item>
+<item>Eðlisástand lausnar — fast efni, vökvi eða gas — er yfirleitt það sama og leysisins, eins og dæmin í <link target-id="fs-idp13681744"/> sýna.</item>
+<item>Innihaldsefni lausnar eru dreifð á sameindastigi; þau samanstanda af efnablöndu aðskilinna agna leysta efnisins (sameinda, atóma og/eða jóna) sem hver um sig er umlukin leysiefnum.</item>
+<item>Leysta efnið í lausn mun ekki setjast til eða skiljast frá leysinum.</item>
+<item>Efnasamsetningu lausnar, eða styrk íhluta hennar, er hægt að breyta stöðugt (innan marka sem ákvarðast af <emphasis effect="italics">solubility</emphasis> íhlutanna, sem fjallað er um síðar í þessum kafla).</item>
 </list>
 <section id="fs-idp65888">
 <title>Myndun lausna</title>
 <section id="fs-idm71104864" class="summary">
 <title>Lykilhugtök og samantekt</title>
-<para id="fs-idm78884832">Lausn myndast þegar tvö eða fleiri efni blandast saman eðlisfræðilega og mynda efnablöndu sem er einsleit á sameindastigi. Leysirinn er sá íhluti sem er í hæstum styrk og ákvarðar fasa lausnarinnar. Leystu efnin eru hinir íhlutirnir sem eru venjulega í lægri styrk en leysirinn. Lausnir geta myndast á innverminn eða útverminn hátt, eftir hlutfallslegum stærðum millisameindakrafta milli leysta efnisins og leysisins. Kjörlausnir myndast án teljanlegrar orkubreytingar.</para>
+<para id="fs-idm78884832">Lausn myndast þegar tvö eða fleiri efni blandast saman eðlisfræðilega og mynda efnablöndu sem er einsleit á sameindastigi. Leysirinn er sá íhluti sem er í hæstum styrk og ákvarðar fasa lausnarinnar. Leystu efnin eru hinir íhlutirnir sem eru venjulega í lægri styrk en leysirinn. Lausnir geta myndast á innverminn eða útverminn hátt, eftir hlutfallslegum styrk aðdráttarkrafta millisameinda leysis efnis og leysis. Kjörlausnir myndast án verulegrar orkubreytingar.</para>
 </section>
 <section id="fs-idm34912672" class="exercises">
 <title>Efnafræði – Æfingar í lok kafla</title>
@@ -94,7 +94,7 @@
 <para id="fs-idm53906736">Hvernig eru lausnir frábrugðnar efnasamböndum? Frá öðrum efnablöndum?</para>
 </problem>
 <solution id="fs-idm54101280">
-<para id="fs-idm30909248">Samsetning lausnar getur verið breytileg en samsetning efnasambands ekki. Lausnir eru einsleitar á sameindastigi en aðrar efnablöndur eru misleitar.</para>
+<para id="fs-idm30909248">Efnasamsetning lausnar getur verið breytileg en efnasamsetning efnasambands ekki. Lausnir eru einsleitar á sameindastigi en aðrar efnablöndur eru misleitar.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm105740080">
@@ -104,13 +104,13 @@
 </exercise>
 <exercise id="fs-idm84066432">
 <problem id="fs-idm35525072">
-<para id="fs-idm25522416">Þegar KNO<sub>3</sub> er leyst upp í vatni er lausnin sem myndast verulega kaldari en vatnið var upphaflega.</para>
+<para id="fs-idm25522416">Þegar KNO<sub>3</sub> er leyst upp í vatni verður lausnin sem myndast verulega kaldari en vatnið var upphaflega.</para>
 <para id="fs-idm75633264">(a) Er upplausn KNO<sub>3</sub> innvermið eða útvermið ferli?</para>
-<para id="fs-idm41516112">(b) Hvaða ályktanir getur þú dregið um millisameindakraftana sem eiga þátt í ferlinu?</para>
+<para id="fs-idm41516112">(b) Hvaða ályktanir getur þú dregið um millisameinda-aðdráttarkraftana sem eiga þátt í ferlinu?</para>
 <para id="fs-idm80982688">(c) Er lausnin sem myndast kjörlausn?</para>
 </problem>
 <solution id="fs-idm53013312">
-<para id="fs-idm55862704">(a) Ferlið er innvermið þar sem lausnin notar varma. (b) Aðdráttarkrafturinn milli K<sup>+</sup> og <m:math><m:mrow><m:mtext>N</m:mtext><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jónanna er sterkari en milli jónanna og vatnssameindanna (jóna-jóna víxlverkanirnar hafa lægri, neikvæðari orku). Þess vegna eykur upplausnarferlið orku sameindavíxlverkananna og það notar varmaorku lausnarinnar til að bæta upp mismuninn. (c) Nei, kjörlausn myndast án teljanlegrar losunar eða upptöku varma.</para>
+<para id="fs-idm55862704">(a) Ferlið er innvermið þar sem lausnin tekur til sín varma. (b) Aðdráttarkrafturinn milli K<sup>+</sup> og <m:math><m:mrow><m:mtext>N</m:mtext><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jónanna er sterkari en milli jónanna og vatnssameindanna (jóna-jóna víxlverkanir hafa lægri, neikvæðari orku). Þess vegna eykur upplausnarferlið orku millisameindavíxlverkananna og það notar varmaorku lausnarinnar til að bæta upp mismuninn. (c) Nei, kjörlausn myndast án verulegrar varmalosunar eða varmaupptöku.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm33766240">
@@ -123,7 +123,7 @@
 </exercise>
 <exercise id="fs-idm6481344">
 <problem id="fs-idm61332992">
-<para id="fs-idm51192336">Tilgreindu mikilvægustu gerðir millisameindakrafta í hverri af eftirfarandi lausnum:</para>
+<para id="fs-idm51192336">Tilgreindu mikilvægustu gerðir millisameinda-aðdráttarkrafta í hverri af eftirfarandi lausnum:</para>
 <para id="fs-idm96983392">(a) Lausnin í <link target-id="CNX_Chem_11_01_K2Cr2O7_1"/>.</para>
 <para id="fs-idm57903504">(b) NO(<emphasis effect="italics">l</emphasis>) í CO(<emphasis effect="italics">l</emphasis>)</para>
 <para id="fs-idm24779824">(c) Cl<sub>2</sub>(<emphasis effect="italics">g</emphasis>) í Br<sub>2</sub>(<emphasis effect="italics">l</emphasis>)</para>
@@ -146,42 +146,42 @@
 <para id="fs-idm75932528">Varmi losnar þegar sumar lausnir myndast; varmi frásogast þegar aðrar lausnir myndast. Gefðu sameindalega skýringu á muninum á þessum tveimur gerðum sjálfgengra ferla.</para>
 </problem>
 <solution id="fs-idm21267712">
-<para id="fs-idp542224">Varmi losnar þegar heildar-millisameindakraftar (IMFs) milli leysta efnisins og leysisameindanna eru sterkari en heildar-millisameindakraftarnir í hreina leysta efninu og í hreina leysinum: Að rjúfa veikari millisameindarkrafta og mynda sterkari millisameindarkrafta losar varma. Varmi frásogast þegar heildar-millisameindakraftarnir í lausninni eru veikari en heildarkraftarnir í hreina leysta efninu og í hreina leysinum: Að rjúfa sterkari millisameindarkrafta og mynda veikari millisameindarkrafta frásogar varma.</para>
+<para id="fs-idp542224">Varmi losnar þegar heildar-millisameindakraftar (MMK) milli leysta efnisins og leysisameindanna eru sterkari en heildar-MMK í hreinu leysta efninu og í hreinum leysi: Að rjúfa veikari MMK og mynda sterkari MMK losar varma. Varmi frásogast þegar heildar-MMK í lausninni eru veikari en heildarkraftar í hreinu leysta efninu og í hreinum leysi: Að rjúfa sterkari MMK og mynda veikari MMK frásogar varma.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm30601328"><problem id="fs-idm1141728">
 <para id="fs-idm95752816">Lausnir af vetni í palladíum má mynda með því að láta Pd-málm komast í snertingu við H<sub>2</sub>-gas. Styrkur vetnis í palladíum fer eftir þrýstingi H<sub>2</sub>-gassins sem beitt er, en á flóknari hátt en hægt er að lýsa með lögmáli Henrys. Við ákveðnar aðstæður eru 0,94 g af vetnisgasi leyst upp í 215 g af palladíummálmi (eðlismassi lausnar = 10,8 g cm<sup>3</sup>).</para><para id="fs-idm57599376">(a) Ákvarðaðu mólstyrk þessarar lausnar.</para><para id="fs-idm1141216">(b) Ákvarðaðu mólalstyrk þessarar lausnar.</para><para id="fs-idm10434256">(c) Ákvarðaðu massaprósentu vetnisatóma í þessari lausn.</para></problem>
 </exercise>
 </section>
-<para id="fs-idm54470368">Myndun lausnar er dæmi um <term id="term-00002">sjálfgengt ferli (e. spontaneous process)</term>, ferli sem á sér stað við tilgreindar aðstæður án þess að þurfa orku frá utanaðkomandi uppsprettu. Stundum er efnablöndu hrært í til að flýta fyrir upplausnarferlinu, en það er ekki nauðsynlegt; einsleit lausn mun að lokum myndast. Efnið um sjálfgengi er afar mikilvægt fyrir rannsóknir á varmafræði efna og er fjallað nánar um það í síðari kafla þessarar bókar. Í umfjöllun þessa kafla nægir að líta á tvö skilyrði sem <emphasis effect="italics">styðja</emphasis> við, en tryggja ekki, sjálfgenga myndun lausnar:</para>
+<para id="fs-idm54470368">Myndun lausnar er dæmi um <term id="term-00002">sjálfgengt ferli (e. spontaneous process)</term>, ferli sem á sér stað við tilteknar aðstæður án þess að þurfa orku frá utanaðkomandi uppsprettu. Stundum er efnablöndu hrært til að flýta fyrir upplausnarferlinu, en það er ekki nauðsynlegt; einsleit lausn mun myndast að lokum. Sjálfgengi er afar mikilvægt viðfangsefni í efnavarmafræði og er fjallað nánar um það í síðari kafla þessarar bókar. Í umfjöllun þessa kafla nægir að líta á tvö skilyrði sem <emphasis effect="italics">styðja</emphasis>, en tryggja ekki, sjálfgenga myndun lausnar:</para>
 <list id="fs-idm93605392" list-type="enumerated" number-style="arabic">
-<item>lækkun á innri orku kerfisins (útvermin breyting, eins og fjallað var um í fyrri kafla um varmaefnafræði)</item>
+<item>minnkun á innri orku kerfisins (útvermin breyting, eins og rætt var í fyrri kafla um varmaefnafræði)</item>
 <item>aukin dreifing efnis í kerfinu (sem gefur til kynna aukningu á <emphasis effect="italics">óreiðu</emphasis> kerfisins, eins og þú munt læra um í síðari kafla um varmafræði)</item>
 </list>
-<para id="fs-idm32719984">Í upplausnarferlinu verður oft, en ekki alltaf, breyting á innri orku þegar varmi frásogast eða losnar. Aukning á dreifingu efnis verður alltaf þegar lausn myndast úr jafnri dreifingu sameinda leysta efnisins um allan leysinn.</para>
-<para id="fs-idm23823840">Þegar styrkur millisameindakrafa aðdráttar milli agna leysta efnisins og leysisins í lausn er ekki frábrugðinn þeim sem eru til staðar í aðskildum hlutum, myndast lausnin án fylgjandi orkubreytingar. Slík lausn er kölluð <term id="term-00003">kjörlausn (e. ideal solution)</term>. Efnablanda kjörlofttegunda (eða lofttegunda eins og helíums og argons, sem nálgast mjög kjörhegðun) er dæmi um kjörlausn, þar sem einingarnar sem mynda þessar lofttegundir verða ekki fyrir neinum marktækum millisameindaöflum.</para>
-<para id="fs-idm90097568">Þegar ílát með helíum og argon eru tengd saman blandast lofttegundirnar sjálfkrafa vegna sveims og mynda lausn (<link target-id="CNX_Chem_11_01_HeArsol"/>). Myndun þessarar lausnar felur greinilega í sér aukningu á dreifingu efnis, þar sem helíum- og argonatómin taka rúmmál sem er tvöfalt stærra en það sem hvort um sig tók fyrir blöndun.</para>
+<para id="fs-idm32719984">Í upplausnarferlinu verður oft, en ekki alltaf, breyting á innri orku þegar varmi er tekinn upp eða losaður. Alltaf verður aukning á dreifingu efnis þegar lausn myndast úr jafnri dreifingu sameinda leysta efnisins um allan leysinn.</para>
+<para id="fs-idm23823840">Þegar styrkur millisameindatogkrafta milli agna leysta efnisins og leysisins í lausn er ekki frábrugðinn þeim sem eru til staðar í aðskildum efnisþáttum, myndast lausnin án nokkurrar orkubreytingar. Slík lausn er kölluð <term id="term-00003">kjörlausn (e. ideal solution)</term>. Efnablanda kjörgasa (eða gasa eins og helíums og argons, sem nálgast mjög kjörhegðun) er dæmi um kjörlausn, þar sem einingarnar sem mynda þessi gös verða ekki fyrir neinum marktækum millisameindatogkröftum.</para>
+<para id="fs-idm90097568">Þegar ílát með helíum og argon eru tengd saman blandast gösin sjálfkrafa vegna sveims og mynda lausn (<link target-id="CNX_Chem_11_01_HeArsol"/>). Myndun þessarar lausnar felur greinilega í sér aukningu á dreifingu efnis, þar sem helíum- og argonatóm taka rúmmál sem er tvöfalt stærra en það sem hvort um sig tók fyrir blöndun.</para>
 <figure id="CNX_Chem_11_01_HeArsol">
 <media id="fs-idm50751088" alt="Two figures are shown. The first contains two spherical containers joined by a closed stopcock. The container to the left is labeled H e. It holds about thirty evenly dispersed, small, light blue spheres. The container on the right is labeled A r and contains about thirty slightly larger blue-green spheres. The second, similar figure has an open stopcock between the two spherical containers. The light blue and green spheres are evenly dispersed and present in both containers.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_01_HeArsol.jpg"/>
 </media>
 <caption>Sýni af helíum og argon blandast sjálfkrafa og mynda lausn.</caption>
 </figure>
-<para id="fs-idm67575520">Kjörlausnir geta einnig myndast þegar vökvar með svipaða byggingu eru blandaðir saman. Til dæmis mynda blöndur af alkóhólunum metanóli (CH<sub>3</sub>OH) og etanóli (C<sub>2</sub>H<sub>5</sub>OH) kjörlausnir, eins og blöndur af kolvetnunum pentani, C<sub>5</sub>H<sub>12</sub>, og hexani, C<sub>6</sub>H<sub>14</sub>. Ef metanól og etanól, eða pentan og hexan, eru sett í kúlurnar sem sýndar eru á <link target-id="CNX_Chem_11_01_HeArsol"/> mun það leiða til sama sveims og síðari blöndunar þessara vökva og sést fyrir He- og Ar-lofttegundirnar (þó á mun hægari hraða), sem gefur lausnir án marktækrar orkubreytingar. Ólíkt blöndu lofttegunda verða þó hlutar þessara vökva-vökva lausna fyrir millisameinda aðdráttarkröftum. En þar sem sameindir efnanna tveggja sem er blandað saman eru byggingarlega mjög svipaðar, eru millisameinda aðdráttarkraftar milli eins og ólíkra sameinda í raun þeir sömu, og upplausnarferlið felur því ekki í sér neina umtalsverða aukningu eða minnkun á orku. Þessi dæmi sýna hvernig aukin dreifing efnis ein og sér getur veitt þann drifkraft sem þarf til að valda sjálfgengri myndun lausnar. Í sumum tilfellum getur hlutfallslegur styrkur millisameinda aðdráttarkrafta milli agna leysta efnisins og leysisins hins vegar komið í veg fyrir upplausn.</para>
-<para id="fs-idm24702144">Þrjár gerðir millisameinda aðdráttarkrafta eru viðeigandi fyrir upplausnarferlið: milli agna leysta efnisins, milli agna leysisins og milli agna leysta efnisins og leysisins. Eins og sýnt er á <link target-id="CNX_Chem_11_01_solusolv"/> má líta á myndun lausnar sem þrepaskipt ferli þar sem orku er neytt til að yfirstíga aðdráttarkrafta milli agna leysta efnisins og milli agna leysisins (innvermin ferli) og losnar þegar aðdráttarkraftar milli agna leysta efnisins og leysisins myndast (útvermið ferli sem kallast <term id="term-00004">leysing (e. solvation)</term>). Hlutfallsleg stærð orkubreytinga sem tengjast þessum þrepaskiptu ferlum ákvarðar hvort upplausnarferlið í heild sinni muni losa eða gleypa orku. Í sumum tilfellum myndast lausnir ekki vegna þess að orkan sem þarf til að aðskilja agnir leysta efnisins og leysisins er svo miklu meiri en orkan sem losnar við leysingu.</para>
+<para id="fs-idm67575520">Kjörlausnir geta einnig myndast þegar vökvar með svipaða byggingu eru blandaðir saman. Til dæmis mynda blöndur alkóhólanna metanóls (CH<sub>3</sub>OH) og etanóls (C<sub>2</sub>H<sub>5</sub>OH) kjörlausnir, eins og blöndur kolvetnanna pentans, C<sub>5</sub>H<sub>12</sub>, og hexans, C<sub>6</sub>H<sub>14</sub>. Ef metanól og etanól, eða pentan og hexan, eru sett í kúlurnar sem sýndar eru á <link target-id="CNX_Chem_11_01_HeArsol"/> mun það leiða til sama sveims og síðari blöndunar þessara vökva og sést fyrir He- og Ar-gösin (þó mun hægar), sem gefur lausnir án marktækrar orkubreytingar. Ólíkt gasblöndu verða efnisþættir þessara vökva-vökva lausna þó fyrir millisameindatogkröftum. En þar sem sameindir efnanna tveggja sem blandað er saman eru mjög svipaðar að byggingu, eru millisameindatogkraftar milli eins og ólíkra sameinda í raun þeir sömu, og upplausnarferlið felur því ekki í sér neina verulega aukningu eða minnkun á orku. Þessi dæmi sýna hvernig aukin dreifing efnis ein og sér getur veitt þann drifkraft sem þarf til að valda sjálfgengri myndun lausnar. Í sumum tilfellum getur hlutfallslegur styrkur millisameindatogkrafta milli agna leysta efnisins og leysisins hins vegar komið í veg fyrir upplausn.</para>
+<para id="fs-idm24702144">Þrjár gerðir millisameindatogkrafta eru mikilvægar fyrir upplausnarferlið: leyst efni-leyst efni, leysir-leysir og leyst efni-leysir. Eins og sýnt er á <link target-id="CNX_Chem_11_01_solusolv"/> má líta á myndun lausnar sem þrepaskipt ferli þar sem orku er neytt til að yfirstíga togkrafta milli leysta efnisins og leysisins (innvermin ferli) og orka losnar þegar togkraftar milli leysta efnisins og leysisins myndast (útvermið ferli sem kallast <term id="term-00004">leysishýðing (e. solvation)</term>). Hlutfallsleg stærð orkubreytinga sem tengjast þessum þrepaskiptu ferlum ákvarðar hvort upplausnarferlið í heild sinni losar eða tekur upp orku. Í sumum tilfellum myndast lausnir ekki vegna þess að orkan sem þarf til að aðskilja agnir leysta efnisins og leysisins er svo miklu meiri en orkan sem losnar við leysishýðingu.</para>
 <figure id="CNX_Chem_11_01_solusolv">
 <media id="fs-idm145554960" alt="The top, central region of the figure shows solute particles as seven blue spheres and solvent particles as 16 red spheres in separate, labeled boxes. The particles in these boxes are touching. An arrow labeled “Step 1” points left of the solute box, and shows the blue spheres no longer touching in another box labeled “expanded solute.” An arrow labeled “Step 2” points right from the solvent box and shows the red spheres no longer touching in another box labeled “expanded solvent.” Arrows proceed from the bottom of the expanded solute and expanded solvent boxes and join at the bottom of the figure where a step 3 label is shown. The joined arrows point to a box just above in which the red and blue spheres are mixed together and touching. The solute and solvent boxes are joined by another arrow labeled “direct formation of solution” which points downward at the center of the figure. This arrow also points to the box containing mixed red and blue spheres near the bottom of the figure.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_01_solusolv.jpg"/>
 </media>
-<caption>Þessi skýringarmynd sýnir beina myndun lausnar sem ímyndað þrepaskipt ferli. Þrep 1 og 2 fela í sér aðskilnað/þenslu sameinda leysta efnisins og leysisins, sem bæði krefjast orkuinnlags til að yfirstíga millisameindakrafta og eru því innvermin. Þrep 3 felur í sér að koma á millisameinda aðdráttarkröftum milli sameinda leysta efnisins og leysisins (leysing), og er því útvermið.</caption>
+<caption>Þessi skýringarmynd sýnir beina myndun lausnar sem ímyndað þrepaskipt ferli. Þrep 1 og 2 fela í sér aðskilnað/þenslu sameinda leysta efnisins og leysisins, sem bæði krefjast orkuinnlags til að yfirstíga millisameindatogkrafta og eru því innvermin. Þrep 3 felur í sér myndun millisameindatogkrafta milli sameinda leysta efnisins og leysisins (leysishýðing), og er því útvermið.</caption>
 </figure>
-<para id="fs-idm96486640">Lítum á dæmi um jónaefni sem leysist upp í vatni. Myndun lausnarinnar krefst þess að rafstöðukraftar milli katjóna og anjóna efnasambandsins (leysiefni-leysiefni) séu algjörlega yfirstignir um leið og aðdráttarkraftar myndast milli þessara jóna og vatnssameinda (leysiefni-leysir). Einnig þarf að yfirstíga vetnistengi milli tiltölulega lítils hluta vatnssameindanna til að rúma uppleyst efni. Ef rafstöðukraftar leysta efnisins eru verulega meiri en leysingarkraftarnir er upplausnarferlið verulega innvermið og efnasambandið leysist ef til vill ekki upp að neinu marki. Kalsíumkarbónat, aðalefnið í kóralrifum, er eitt dæmi um slíkt „óleyst“ jónaefni (sjá <link document="m68776" target-id="CNX_Chem_11_00_coralreef"/>). Á hinn bóginn, ef leysingarkraftarnir eru mun sterkari en rafstöðukraftar efnasambandsins, er upplausnin verulega útvermin og efnasambandið getur verið mjög vel leysanlegt. Algengt dæmi um þessa tegund jónaefnis er natríumhýdroxíð, almennt þekkt sem lútur.</para>
-<para id="fs-idm37742128">Eins og fram kom í upphafi þessa kafla er sjálfgeng lausnarmyndun studd, en ekki tryggð, af útvermnum upplausnarferlum. Þótt mörg auðleyst efnasambönd leysist vissulega upp með losun varma, leysast sum upp á innverminn hátt. Ammóníumnítrat (NH<sub>4</sub>NO<sub>3</sub>) er eitt slíkt dæmi og er notað til að búa til skyndikælipoka, eins og þann sem sýndur er á <link target-id="CNX_Chem_11_01_Icepack"/>, sem eru notaðir til að meðhöndla meiðsli. Þunnveggjaður plastpoki með vatni er lokaður inni í stærri poka með föstu NH<sub>4</sub>NO<sub>3</sub>. Þegar minni pokinn er rofinn myndast lausn af NH<sub>4</sub>NO<sub>3</sub> sem gleypir varma úr umhverfinu (slasaða svæðinu sem pokinn er lagður á) og myndar kaldan bakstur sem dregur úr bólgu. Innvermin upplausn eins og þessi krefst meiri orku til að aðskilja agnir leysta efnisins en fæst til baka þegar agnirnar leysast upp, en hún er engu að síður sjálfgeng vegna aukinnar óreiðu sem fylgir myndun lausnarinnar.</para>
+<para id="fs-idm96486640">Lítum á dæmi um jónaefni sem leysist upp í vatni. Myndun lausnarinnar krefst þess að rafstöðukraftar milli katjóna og anjóna efnasambandsins (leyst efni-leyst efni) séu að fullu yfirstignir um leið og togkraftar myndast milli þessara jóna og vatnssameinda (leyst efni-leysir). Einnig þarf að yfirstíga vetnistengi milli tiltölulega lítils hluta vatnssameindanna til að rúma uppleyst efni. Ef rafstöðukraftar leysta efnisins eru verulega meiri en leysishýðingarkraftarnir er upplausnarferlið verulega innvermið og efnasambandið leysist ef til vill ekki upp að neinu marki. Kalsíumkarbónat, aðalefnisþáttur kóralrifja, er eitt dæmi um slíkt „óleysanlegt“ jónaefni (sjá <link document="m68776" target-id="CNX_Chem_11_00_coralreef"/>). Á hinn bóginn, ef leysishýðingarkraftarnir eru mun sterkari en rafstöðukraftar efnasambandsins, er upplausnin verulega útvermin og efnasambandið getur verið mjög auðleyst. Algengt dæmi um þessa tegund jónaefnis er natríumhýdroxíð, almennt þekkt sem lútur.</para>
+<para id="fs-idm37742128">Eins og fram kom í upphafi þessa kafla er sjálfgeng lausnarmyndun líklegri, en ekki tryggð, við útvermin upplausnarferli. Þótt mörg auðleyst efnasambönd leysist vissulega upp með losun varma, leysast sum upp á innverminn hátt. Ammóníumnítrat (NH<sub>4</sub>NO<sub>3</sub>) er eitt slíkt dæmi og er notað til að búa til skyndikuldabakstra, eins og þann sem sýndur er á mynd <link target-id="CNX_Chem_11_01_Icepack"/>, sem eru notaðir til að meðhöndla meiðsli. Þunnveggjaður plastpoki með vatni er lokaður inni í stærri poka með föstu NH<sub>4</sub>NO<sub>3</sub>. Þegar minni pokinn er rofinn myndast lausn af NH<sub>4</sub>NO<sub>3</sub> sem gleypir varma úr umhverfinu (meidda svæðinu sem baksturinn er lagður á) og myndar kaldan bakstur sem dregur úr bólgu. Innvermin upplausn eins og þessi krefst meiri orku til að aðskilja agnir leysta efnisins en fæst til baka þegar leystu efnin leysast upp, en hún er engu að síður sjálfgeng vegna aukinnar óreiðu sem fylgir myndun lausnarinnar.</para>
 <figure id="CNX_Chem_11_01_Icepack" class="scaled-down">
 <media id="fs-idm26849248" alt="This figure shows a single use instant cold pack with labels indicating an inner bag of water surrounded by white particulate ammonium nitrate.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_01_Icepack.jpg"/>
 </media>
-<caption>Skyndikælipoki verður kaldur þegar ákveðin sölt, eins og ammóníumnítrat, leysast upp í vatni – sem er innvermið ferli.</caption>
+<caption>Skyndikuldabakstur verður kaldur þegar ákveðin sölt, eins og ammóníumnítrat, leysast upp í vatni – sem er innvermið ferli.</caption>
 </figure>
 <note id="fs-idm57797360" class="chemistry link-to-learning">
 <para id="fs-idm36370704">Horfðu á þetta stutta <link url="http://openstax.org/l/16endoexo">myndband</link> sem sýnir innvermin og útvermin upplausnarferli.</para>
@@ -191,19 +191,19 @@
 <glossary>
 <definition id="fs-idm104294208">
 <term>melmi (e. alloy)</term>
-<meaning id="fs-idm104294208-meaning">föst efnablanda úr málmkenndu frumefni og einu eða fleiri viðbótarfrumefnum</meaning>
+<meaning id="fs-idm104294208-meaning">föst efnablanda málms og eins eða fleiri viðbótarfrumefna</meaning>
 </definition>
 <definition id="fs-idm54772688">
 <term>kjörlausn (e. ideal solution)</term>
-<meaning id="fs-idm54772688-meaning">lausn sem myndast án fylgjandi orkubreytingar</meaning>
+<meaning id="fs-idm54772688-meaning">lausn sem myndast án þess að orkubreyting fylgi</meaning>
 </definition>
 <definition id="fs-idm91470352">
-<term>leysing (e. solvation)</term>
-<meaning id="fs-idm91470352-meaning">útvermið ferli þar sem millisameindakraftar milli leysta efnisins og leysisins í lausn koma á</meaning>
+<term>upplausn (e. solvation)</term>
+<meaning id="fs-idm91470352-meaning">útvermið ferli þar sem millisameindakraftar myndast milli leysta efnisins og leysisins í lausn</meaning>
 </definition>
 <definition id="fs-idm55870880">
 <term>sjálfgengt ferli (e. spontaneous process)</term>
-<meaning id="fs-idm55870880-meaning">eðlis- eða efnabreyting sem verður án álagningar orku frá utanaðkomandi uppsprettu</meaning>
+<meaning id="fs-idm55870880-meaning">eðlis- eða efnabreyting sem verður án orkuálagningar frá utanaðkomandi uppsprettu</meaning>
 </definition>
 </glossary>
 </document>

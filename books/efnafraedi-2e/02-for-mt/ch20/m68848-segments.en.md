@@ -14,7 +14,7 @@ Another class of organic molecules contains a carbon atom connected to an oxygen
 Aldehydes and Ketones
 
 <!-- SEG:m68848:para:fs-idp50721744 -->
-Both {{term}}aldehydes{{/term}} and {{term}}ketones{{/term}} contain a {{term}}carbonyl group{{/term}}, a functional group with a carbon-oxygen double bond. The names for aldehyde and ketone compounds are derived using similar nomenclature rules as for alkanes and alcohols, and include the class-identifying suffixes {{i}}-al{{/i}} and {{i}}-one{{/i}}, respectively:
+Both {{term}}aldehydes{{/term}} and {{term}}ketones{{/term}} contain a {{term}}carbonyl group{{/term}}, a functional group with a carbon-oxygen double bond. The names for aldehyde and ketone compounds are derived using similar nomenclature rules as for alkanes and alcohols, and include the class-identifying suffixes [[i:-al]] and [[i:-one]], respectively:
 
 <!-- SEG:m68848:para:fs-idp87077168 -->
 In an aldehyde, the carbonyl group is bonded to at least one hydrogen atom. In a ketone, the carbonyl group is bonded to two carbon atoms:
@@ -23,10 +23,10 @@ In an aldehyde, the carbonyl group is bonded to at least one hydrogen atom. In a
 As text, an aldehyde group is represented as –CHO; a ketone is represented as –C(O)– or –CO–.
 
 <!-- SEG:m68848:para:fs-idp17452784 -->
-In both aldehydes and ketones, the geometry around the carbon atom in the carbonyl group is trigonal planar; the carbon atom exhibits {{i}}sp{{/i}}[[sup:2]] hybridization. Two of the {{i}}sp{{/i}}[[sup:2]] orbitals on the carbon atom in the carbonyl group are used to form σ bonds to the other carbon or hydrogen atoms in a molecule. The remaining {{i}}sp{{/i}}[[sup:2]] hybrid orbital forms a σ bond to the oxygen atom. The unhybridized {{i}}p{{/i}} orbital on the carbon atom in the carbonyl group overlaps a {{i}}p{{/i}} orbital on the oxygen atom to form the π bond in the double bond.
+In both aldehydes and ketones, the geometry around the carbon atom in the carbonyl group is trigonal planar; the carbon atom exhibits [[i:sp]][[sup:2]] hybridization. Two of the [[i:sp]][[sup:2]] orbitals on the carbon atom in the carbonyl group are used to form σ bonds to the other carbon or hydrogen atoms in a molecule. The remaining [[i:sp]][[sup:2]] hybrid orbital forms a σ bond to the oxygen atom. The unhybridized [[i:p]] orbital on the carbon atom in the carbonyl group overlaps a [[i:p]] orbital on the oxygen atom to form the π bond in the double bond.
 
 <!-- SEG:m68848:para:fs-idm60696832 -->
-Like the [[MATH:1]] bond in carbon dioxide, the [[MATH:2]] bond of a carbonyl group is polar (recall that oxygen is significantly more electronegative than carbon, and the shared electrons are pulled toward the oxygen atom and away from the carbon atom). Many of the reactions of aldehydes and ketones start with the reaction between a Lewis base and the carbon atom at the positive end of the polar [[MATH:3]] bond to yield an unstable intermediate that subsequently undergoes one or more structural rearrangements to form the final product ([#CNX_Chem_20_03_COgeom_img]).
+Like the [[MATH:1]] bond in carbon dioxide, the [[MATH:2]] bond of a carbonyl group is polar (recall that oxygen is significantly more electronegative than carbon, and the shared electrons are pulled toward the oxygen atom and away from the carbon atom). Many of the reactions of aldehydes and ketones start with the reaction between a Lewis base and the carbon atom at the positive end of the polar [[MATH:3]] bond to yield an unstable intermediate that subsequently undergoes one or more structural rearrangements to form the final product ([[xref:CNX_Chem_20_03_COgeom_img]]).
 
 <!-- SEG:m68848:caption:CNX_Chem_20_03_COgeom_img-caption -->
 The carbonyl group is polar, and the geometry of the bonds around the central carbon is trigonal planar.
@@ -86,7 +86,7 @@ Dimethyl ketone, CH[[sub:3]]COCH[[sub:3]], commonly called acetone, is the simpl
 Carboxylic Acids and Esters
 
 <!-- SEG:m68848:para:fs-idp11635888 -->
-The odor of vinegar is caused by the presence of acetic acid, a carboxylic acid, in the vinegar. The odor of ripe bananas and many other fruits is due to the presence of esters, compounds that can be prepared by the reaction of a carboxylic acid with an alcohol. Because esters do not have hydrogen bonds between molecules, they have lower vapor pressures than the alcohols and carboxylic acids from which they are derived (see [#CNX_Chem_20_03_CarboxEst1_img]).
+The odor of vinegar is caused by the presence of acetic acid, a carboxylic acid, in the vinegar. The odor of ripe bananas and many other fruits is due to the presence of esters, compounds that can be prepared by the reaction of a carboxylic acid with an alcohol. Because esters do not have hydrogen bonds between molecules, they have lower vapor pressures than the alcohols and carboxylic acids from which they are derived (see [[xref:CNX_Chem_20_03_CarboxEst1_img]]).
 
 <!-- SEG:m68848:caption:CNX_Chem_20_03_CarboxEst1_img-caption -->
 Esters are responsible for the odors associated with various plants and their fruits.
@@ -110,13 +110,13 @@ We prepare carboxylic acids by the oxidation of aldehydes or alcohols whose –O
 Esters are produced by the reaction of acids with alcohols. For example, the ester ethyl acetate, CH[[sub:3]]CO[[sub:2]]CH[[sub:2]]CH[[sub:3]], is formed when acetic acid reacts with ethanol:
 
 <!-- SEG:m68848:para:fs-idp50413488 -->
-The simplest carboxylic acid is formic acid, HCO[[sub:2]]H, known since 1670. Its name comes from the Latin word {{i}}formicus{{/i}}, which means “ant”; it was first isolated by the distillation of red ants. It is partially responsible for the pain and irritation of ant and wasp stings, and is responsible for a characteristic odor of ants that can be sometimes detected in their nests.
+The simplest carboxylic acid is formic acid, HCO[[sub:2]]H, known since 1670. Its name comes from the Latin word [[i:formicus]], which means “ant”; it was first isolated by the distillation of red ants. It is partially responsible for the pain and irritation of ant and wasp stings, and is responsible for a characteristic odor of ants that can be sometimes detected in their nests.
 
 <!-- SEG:m68848:para:fs-idp55932432 -->
 Acetic acid, CH[[sub:3]]CO[[sub:2]]H, constitutes 3–6% vinegar. Cider vinegar is produced by allowing apple juice to ferment without oxygen present. Yeast cells present in the juice carry out the fermentation reactions. The fermentation reactions change the sugar present in the juice to ethanol, then to acetic acid. Pure acetic acid has a penetrating odor and produces painful burns. It is an excellent solvent for many organic and some inorganic compounds, and it is essential in the production of cellulose acetate, a component of many synthetic fibers such as rayon.
 
 <!-- SEG:m68848:para:fs-idp43651248 -->
-The distinctive and attractive odors and flavors of many flowers, perfumes, and ripe fruits are due to the presence of one or more esters ([#CNX_Chem_20_03_strawberry]). Among the most important of the natural esters are fats (such as lard, tallow, and butter) and oils (such as linseed, cottonseed, and olive oils), which are esters of the trihydroxyl alcohol glycerine, C[[sub:3]]H[[sub:5]](OH)[[sub:3]], with large carboxylic acids, such as palmitic acid, CH[[sub:3]](CH[[sub:2]])[[sub:14]]CO[[sub:2]]H, stearic acid, CH[[sub:3]](CH[[sub:2]])[[sub:16]]CO[[sub:2]]H, and oleic acid, [[MATH:4]] Oleic acid is an unsaturated acid; it contains a [[MATH:5]] double bond. Palmitic and stearic acids are saturated acids that contain no double or triple bonds.
+The distinctive and attractive odors and flavors of many flowers, perfumes, and ripe fruits are due to the presence of one or more esters ([[xref:CNX_Chem_20_03_strawberry]]). Among the most important of the natural esters are fats (such as lard, tallow, and butter) and oils (such as linseed, cottonseed, and olive oils), which are esters of the trihydroxyl alcohol glycerine, C[[sub:3]]H[[sub:5]](OH)[[sub:3]], with large carboxylic acids, such as palmitic acid, CH[[sub:3]](CH[[sub:2]])[[sub:14]]CO[[sub:2]]H, stearic acid, CH[[sub:3]](CH[[sub:2]])[[sub:16]]CO[[sub:2]]H, and oleic acid, [[MATH:4]] Oleic acid is an unsaturated acid; it contains a [[MATH:5]] double bond. Palmitic and stearic acids are saturated acids that contain no double or triple bonds.
 
 <!-- SEG:m68848:caption:CNX_Chem_20_03_strawberry-caption -->
 Over 350 different volatile molecules (many members of the ester family) have been identified in strawberries. (credit: Rebecca Siegel)
@@ -188,7 +188,7 @@ Write a condensed structural formula, such as CH[[sub:3]]CH[[sub:3]], and descri
 (c) ethyl propyl ether
 
 <!-- SEG:m68848:problem:fs-idp56168864 -->
-(d) {{i}}cis{{/i}}-4-bromo-2-heptene
+(d) [[i:cis]]-4-bromo-2-heptene
 
 <!-- SEG:m68848:problem:fs-idp53887088 -->
 (e) 2,2,3-trimethylhexane

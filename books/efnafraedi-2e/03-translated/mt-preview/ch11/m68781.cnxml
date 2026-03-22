@@ -1,9 +1,4 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<!-- FIDELITY-WARNING: m68781 has 2 structural discrepancy(ies)
-  emphasis: source=11 translated=6 (-5 loss)
-  sub: source=25 translated=24 (-1 loss)
-  Review needed before publication. Run cnxml-fidelity-check.js for details.
--->
 <title>Rafkleyfar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68781</md:content-id>
@@ -13,66 +8,66 @@
 </metadata>
 
 <content>
-<para id="fs-idp18381520">Þegar sum efni eru leyst upp í vatni verða þau fyrir annaðhvort eðlis- eða efnabreytingu sem myndar jónir í lausninni. Þessi efni mynda mikilvægan flokk efnasambanda sem kallast <term id="term-00001">rafkleyfar (e. electrolytes)</term>. Efni sem mynda ekki jónir þegar þau eru leyst upp kallast <term id="term-00002">órafkleyf efni (e. nonelectrolytes)</term>. Ef eðlis- eða efnaferlið sem myndar jónirnar er í raun 100% skilvirkt (allt uppleysta efnasambandið myndar jónir), þá er efnið þekkt sem <term id="term-00003">sterkur rafkleyfi (e. strong electrolyte)</term>. Ef aðeins tiltölulega lítið brot af uppleysta efninu gengst undir jónmyndunarferlið er það kallað <term id="term-00004">veikur rafkleyfi (e. weak electrolyte)</term>.</para>
-<para id="fs-idm8509568">Efni má flokka sem sterk, veik eða órafkleyf með því að mæla rafleiðni vatnslausnar sem inniheldur efnið. Til að leiða rafmagn verður efni að innihalda frjálst hreyfanlegar, hlaðnar agnir. Þekktust er rafleiðni í gegnum málmvíra, en þar eru hreyfanlegu, hlaðnu agnirnar rafeindir. Lausnir geta einnig leitt rafmagn ef þær innihalda uppleystar jónir og eykst rafleiðnin eftir því sem styrkur jóna eykst. Með því að setja spennu á rafskaut sem dýft er í lausn er hægt að meta hlutfallslegan styrk uppleystra jóna, annaðhvort megindlega, með því að mæla rafstrauminn, eða eigindlega, með því að fylgjast með ljósstyrk ljósaperu sem er hluti af rafrásinni (<link target-id="CNX_Chem_11_02_electrolyt"/>).</para>
+<para id="fs-idp18381520">Þegar sum efni eru leyst upp í vatni verða þau fyrir annaðhvort eðlis- eða efnabreytingu sem myndar jónir í lausninni. Þessi efni mynda mikilvægan flokk efnasambanda sem kallast <term id="term-00001">rafkleyfar (e. electrolytes)</term>. Efni sem mynda ekki jónir þegar þau eru leyst upp kallast <term id="term-00002">órafkleyf efni (e. nonelectrolytes)</term>. Ef eðlis- eða efnaferlið sem myndar jónirnar er nánast 100% skilvirkt (allt uppleysta efnasambandið myndar jónir) er efnið þekkt sem <term id="term-00003">sterkur rafkleyfi (e. strong electrolyte)</term>. Ef aðeins tiltölulega lítill hluti uppleysta efnisins fer í gegnum jónmyndunarferlið er það kallað <term id="term-00004">veikur rafkleyfi (e. weak electrolyte)</term>.</para>
+<para id="fs-idm8509568">Efni má flokka sem sterk, veik eða órafkleyf með því að mæla rafleiðni vatnslausnar sem inniheldur efnið. Til að leiða rafmagn verður efni að innihalda frjálst hreyfanlegar, hlaðnar agnir. Þekktast er rafleiðni í gegnum málmvíra, þar sem hreyfanlegu, hlaðnu agnirnar eru rafeindir. Lausnir geta einnig leitt rafmagn ef þær innihalda uppleystar jónir og eykst rafleiðnin eftir því sem styrkur jóna eykst. Með því að setja spennu á rafskaut sem dýft er í lausn er hægt að meta hlutfallslegan styrk uppleystra jóna, annaðhvort megindlega, með því að mæla rafstrauminn, eða eigindlega, með því að fylgjast með ljósstyrk ljósaperu sem er hluti af rafrásinni (<link target-id="CNX_Chem_11_02_electrolyt"/>).</para>
 <figure id="CNX_Chem_11_02_electrolyt">
 <media id="fs-idm7287312" alt="This diagram shows three separate beakers. Each has a wire plugged into a wall outlet. In each case, the wire leads from the wall to the beaker and is split resulting in two ends. One end leads to a light bulb and continues on to a rectangle labeled with a plus sign. The other end leads to a rectangle labeled with a minus sign. The rectangles are in a solution. In the first beaker, labeled “Ethanol No Conductivity,” four pairs of linked small green spheres suspended in the solution between the rectangles. In the second beaker, labeled “K C l Strong Conductivity,” six individual green spheres, three labeled plus and three labeled minus are suspended in the solution. Each of the six spheres has an arrow extending from it pointing to the rectangle labeled with the opposite sign. In the third beaker, labeled “Acetic acid solution Weak conductivity,” two pairs of joined green spheres and two individual spheres, one labeled plus and one labeled minus are shown suspended between the two rectangles. The plus labeled sphere has an arrow pointing to the rectangle labeled minus and the minus labeled sphere has an arrow pointing to the rectangle labeled plus.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_02_electrolyt.jpg"/>
 </media>
-<caption>Lausnir órafkleyfra efna eins og etanóls innihalda ekki uppleystar jónir og geta ekki leitt rafmagn. Lausnir rafkleyfa innihalda jónir sem leyfa rafmagni að flæða. Rafleiðni rafkleyflausnar er háð styrk rafkleyfisins.</caption>
+<caption>Lausnir órafkleyfra efna eins og etanóls innihalda ekki uppleystar jónir og geta ekki leitt rafmagn. Lausnir rafkleyfa innihalda jónir sem leyfa rafmagni að flæða. Rafleiðni rafkleyflausnar er tengd styrk rafkleyfisins.</caption>
 </figure>
 <section id="fs-idm25275856">
 <title>Jónarafkleyfar</title>
-<para id="fs-idp2501472">Vatn og aðrar skautaðar sameindir dragast að jónum, eins og sýnt er á <link target-id="CNX_Chem_11_02_waterions"/>. Rafstöðuaðdráttur milli jónar og sameindar með tvískaut er kallaður <term id="term-00005">jóna-tvískauts aðdráttur (e. ion-dipole attraction)</term>. Þessir aðdráttarkraftar gegna mikilvægu hlutverki við upplausn jónaefna í vatni.</para>
+<para id="fs-idp2501472">Vatn og aðrar skautaðar sameindir dragast að jónum, eins og sýnt er á <link target-id="CNX_Chem_11_02_waterions"/>. Rafstöðuaðdráttur milli jónar og sameindar með tvískaut er kallaður <term id="term-00005">jóna-tvískauta aðdráttur (e. ion-dipole attraction)</term>. Þessir aðdráttarkraftar gegna mikilvægu hlutverki við upplausn jónaefna í vatni.</para>
 <figure id="CNX_Chem_11_02_waterions" class="scaled-down">
 <media id="fs-idm117781392" alt="The diagram shows eight purple spheres labeled K superscript plus and eight green spheres labeled C l superscript minus mixed and touching near the center of the diagram. Outside of this cluster of spheres are seventeen clusters of three spheres, which include one red and two white spheres. A red sphere in one of these clusters is labeled O. A white sphere is labeled H. Two of the green C l superscript minus spheres are surrounded by three of the red and white clusters, with the red spheres closer to the green spheres than the white spheres. One of the K superscript plus purple spheres is surrounded by four of the red and white clusters. The white spheres of these clusters are closest to the purple spheres.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_02_waterions.jpg"/>
 </media>
 <caption>Þegar kalíumklóríð (KCl) leysist upp í vatni verða jónirnar vökvaðar. Skautuðu vatnssameindirnar dragast að hleðslum K<sup>+</sup> og Cl<sup>−</sup> jónanna. Vatnssameindir fyrir framan og aftan jónirnar eru ekki sýndar.</caption>
 </figure>
-<para id="fs-idp43584496">Þegar jónaefni leysast upp í vatni skiljast jónirnar í fasta efninu að og dreifast jafnt um lausnina vegna þess að vatnssameindir umlykja og leysa jónirnar og draga þannig úr sterkum rafstöðukröftum milli þeirra. Þetta ferli er eðlisbreyting sem kallast <term id="term-00006">aðskilnaður (e. dissociation)</term>. Við flestar aðstæður munu jónaefni aðskiljast nánast að fullu þegar þau eru leyst upp og eru því flokkuð sem sterkir rafkleyfar. Jafnvel torleyst jónaefni eru sterkir rafkleyfar, þar sem það litla magn sem leysist upp mun aðskiljast að fullu.</para>
-<para id="fs-idp39918704">Hugleiddu hvað gerist á smásæjum mælikvarða þegar föstu KCl er bætt út í vatn. Jóna-tvískauts kraftar draga jákvæða (vetnis) enda skautuðu vatnssameindanna að neikvæðu klóríðjónunum á yfirborði fasta efnisins og þeir draga neikvæðu (súrefnis) endana að jákvæðu kalíumjónunum. Vatnssameindirnar umlykja stakar K<sup>+</sup> og Cl<sup>−</sup> jónir, draga úr sterkum millijónakröftum sem binda jónirnar saman og leyfa þeim að hreyfast út í lausnina sem leystar jónir, eins og <link target-id="CNX_Chem_11_02_waterions"/> sýnir. Með því að yfirstíga rafstöðuaðdráttinn er sjálfstæð hreyfing hverrar vökvaðrar jónar í þunnri lausn möguleg þegar jónirnar færast úr föstum stöðum í óuppleysta efnasambandinu yfir í víðdreifðar, leystar jónir í lausn.</para>
+<para id="fs-idp43584496">Þegar jónaefni leysast upp í vatni skiljast jónirnar í fasta efninu að og dreifast jafnt um lausnina vegna þess að vatnssameindir umlykja og leysa jónirnar og draga þannig úr sterkum rafstöðukröftum milli þeirra. Þetta ferli er eðlisbreyting sem kallast <term id="term-00006">sundrun (e. dissociation)</term>. Við flestar aðstæður sundrast jónaefni nánast alveg þegar þau eru leyst upp og eru því flokkuð sem sterkir rafkleyfar. Jafnvel torleyst jónaefni eru sterkir rafkleyfar, þar sem litla magnið sem leysist upp sundrast alveg.</para>
+<para id="fs-idp39918704">Skoðum hvað gerist á smásæjum mælikvarða þegar föstu KCl er bætt út í vatn. Jóna-tvískauta kraftar draga jákvæða (vetnis) enda skautuðu vatnssameindanna að neikvæðu klóríðjónunum á yfirborði fasta efnisins og þeir draga neikvæðu (súrefnis) endana að jákvæðu kalíumjónunum. Vatnssameindirnar umlykja stakar K<sup>+</sup> og Cl<sup>−</sup> jónir, draga úr sterkum millijónakröftum sem binda jónirnar saman og leyfa þeim að hreyfast út í lausnina sem leystar jónir, eins og <link target-id="CNX_Chem_11_02_waterions"/> sýnir. Með því að yfirstíga rafstöðuaðdráttinn er sjálfstæð hreyfing hverrar vökvaðrar jónar í þunnri lausn möguleg þegar jónirnar færast úr föstum stöðum í óuppleysta efnasambandinu yfir í víðdreifðar, leystar jónir í lausn.</para>
 </section>
 <section id="fs-idp29082528">
 <title>Samgildir rafkleyfar</title>
 <para id="fs-idp617792">Hreint vatn er afar lélegur rafleiðari vegna þess að það er aðeins mjög lítið jónað – aðeins um tvær af hverjum 1 milljarði sameinda jónast við 25 °C. Vatn jónast þegar ein vatnssameind gefur frá sér róteind (H<sup>+</sup> jón) til annarrar vatnssameindar og myndar þannig hýdróníum- og hýdroxíðjónir.</para>
 <equation id="fs-idp45812272" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idm10993712">Í sumum tilfellum leiða lausnir, sem gerðar eru úr samgildum efnasamböndum, rafmagn vegna þess að sameindir leysis efnisins hvarfast efnafræðilega við leysinn og mynda jónir. Til dæmis er hreint vetnisklóríð gas sem samanstendur af samgildum HCl sameindum. Þetta gas inniheldur engar jónir. Hins vegar er vatnslausn af HCl mjög góður leiðari, sem bendir til þess að umtalsverður styrkur jóna sé til staðar í lausninni.</para>
-<para id="fs-idm25981680">Vegna þess að HCl er <emphasis effect="italics">sýra</emphasis> hvarfast sameindir hennar við vatn og flytja H<sup>+</sup> jónir til að mynda hýdróníumjónir (H<sub>3</sub>O<sup>+</sup>) og klóríðjónir (Cl<sup>−</sup>):</para>
+<para id="fs-idm10993712">Í sumum tilfellum leiða lausnir úr samgildum efnasamböndum rafmagn vegna þess að sameindir leysis efnisins hvarfast efnafræðilega við leysinn og mynda jónir. Til dæmis er hreint vetnisklóríð gas sem samanstendur af samgildum HCl-sameindum. Þetta gas inniheldur engar jónir. Hins vegar er vatnslausn af HCl mjög góður leiðari, sem bendir til þess að umtalsverður styrkur jóna sé til staðar í lausninni.</para>
+<para id="fs-idm25981680">Vegna þess að HCl er <emphasis effect="italics">sýra</emphasis> hvarfast sameindir þess við vatn og flytja H<sup>+</sup> jónir til að mynda hýdróníumjónir (H<sub>3</sub>O<sup>+</sup>) og klóríðjónir (Cl<sup>−</sup>):</para>
 <media id="fs-idp29456368" class="scaled-down" alt="A chemical equation is shown. To the left, two hydrogen atoms are linked, each with a single dash to a central oxygen atom to the left and below the oxygen symbol, which has two pairs of dots, above and to the right of the atom. A plus sign is shown to the right, then a hydrogen atom linked to the left side of chlorine atom by a single dash with three pairs of dots, above, to the right, and below the element symbol. An arrow points to the products which are three hydrogen atoms linked by single dashes to a central oxygen atom shown in brackets with superscript plus. The oxygen atom has a single pair of dots above the element symbol. This is followed by a plus and C l superscript minus. This symbol is surrounded by four pairs of dots, above and below and to the left and right of the element symbol.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_02_H3O_CL_img.jpg"/>
 </media>
-<para id="fs-idm4855136">Þetta efnahvarf er í raun 100% fullkomið fyrir HCl (þ.e. það er <emphasis effect="italics">sterk sýra</emphasis> og þar af leiðandi sterkur rafkleyfi). Á sama hátt mynda veikar sýrur og basar, sem hvarfast aðeins að hluta, tiltölulega lágan styrk jóna þegar þau eru leyst upp í vatni og eru flokkuð sem veikir rafkleyfar. Lesandinn gæti viljað rifja upp umfjöllunina um sterkar og veikar sýrur sem er að finna í fyrri kafla þessarar bókar um flokka efnahvarfa og hlutfallaefnafræði.</para>
+<para id="fs-idm4855136">Þetta efnahvarf er nánast 100% fullkomið fyrir HCl (þ.e. það er <emphasis effect="italics">sterk sýra</emphasis> og þar af leiðandi sterkur rafkleyfi). Á sama hátt mynda veikar sýrur og basar, sem hvarfast aðeins að hluta, tiltölulega lágan styrk jóna þegar þau eru leyst upp í vatni og eru flokkuð sem veikir rafkleyfar. Lesandinn gæti viljað rifja upp umfjöllunina um sterkar og veikar sýrur sem er að finna í fyrri kafla þessarar bókar um hvarfflokka og hlutfallaefnafræði.</para>
 </section>
 <section id="fs-idm11909136" class="summary">
 <title>Lykilhugtök og samantekt</title>
-<para id="fs-idp18654544">Efni sem leysast upp í vatni og mynda jónir kallast rafkleyfar. Rafkleyfar geta verið samgild efnasambönd sem hvarfast efnafræðilega við vatn og mynda jónir (til dæmis sýrur og basar), eða þau geta verið jónaefni sem klofna og mynda katjónir og anjónir þegar þau eru leyst upp. Upplausn jónaefnis er auðvelduð með jóna-tvískauta aðdráttarkröftum milli jóna efnasambandsins og skautaðra vatnssameinda. Auðleyst jónaefni og sterkar sýrur jónast að fullu og eru sterkir rafkleyfar, en veikar sýrur og basar jónast aðeins að litlu leyti og eru veikir rafkleyfar. Órafkleyf efni eru efni sem mynda ekki jónir þegar þau eru leyst upp í vatni.</para>
+<para id="fs-idp18654544">Efni sem leysast upp í vatni og mynda jónir kallast rafkleyfar. Rafkleyfar geta verið samgild efnasambönd sem hvarfast efnafræðilega við vatn og mynda jónir (til dæmis sýrur og basar), eða þau geta verið jónaefni sem klofna og mynda katjónir og anjónir sínar þegar þau eru leyst upp. Upplausn jónaefnis er auðvelduð með aðdráttarkröftum milli jóna efnasambandsins og skautaðra vatnssameinda. Auðleyst jónaefni og sterkar sýrur jónast að fullu og eru sterkir rafkleyfar, en veikar sýrur og basar jónast aðeins að litlu leyti og eru veikir rafkleyfar. Órafkleyf efni eru efni sem mynda ekki jónir þegar þau eru leyst upp í vatni.</para>
 </section>
 <section id="fs-idm559200" class="exercises">
-<title>Efnafræði – verkefni í lok kafla</title>
+<title>Efnafræði – Æfingar í lok kafla</title>
 <exercise id="fs-idp1366224">
 <problem id="fs-idp15031216">
-<para id="fs-idm27333072">Skýrðu hvers vegna jónirnar Na<sup>+</sup> og Cl<sup>−</sup> eru sterkt leysisblandaðar í vatni en ekki í hexani, leysi sem samanstendur af óskautuðum sameindum.</para></problem>
+<para id="fs-idm27333072">Útskýrðu hvers vegna jónirnar Na<sup>+</sup> og Cl<sup>−</sup> eru sterkt leysishjúpaðar í vatni en ekki í hexani, leysi sem samanstendur af óskautuðum sameindum.</para></problem>
 <solution id="fs-idp22937920">
-<para id="fs-idp840624">Kristallar af NaCl leysast upp í vatni, skautuðum vökva með mjög stórt tvískautavægi, og einstakar jónir verða sterkt leysisblandaðar. Hexan er óskautaður vökvi með tvískautavægi núll og hefur því ekki marktæk víxlverkun við jónir NaCl kristallanna.</para>
+<para id="fs-idp840624">Kristallar af NaCl leysast upp í vatni, skautuðum vökva með mjög stórt tvískautsvægi, og einstakar jónir verða sterkt leysishjúpaðar. Hexan er óskautaður vökvi með tvískautsvægi núll og hefur því ekki marktæk víxlverkun við jónir NaCl-kristallanna.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm26375616">
 <problem id="fs-idm48317472">
-<para id="fs-idm11906688">Skýrðu hvers vegna lausnir af HBr í benseni (óskautuðum leysi) eru óleiðandi, en lausnir í vatni (skautuðum leysi) eru leiðandi.</para>
+<para id="fs-idm11906688">Útskýrðu hvers vegna lausnir af HBr í benseni (óskautuðum leysi) eru óleiðandi, en lausnir í vatni (skautuðum leysi) eru leiðandi.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp608736">
 <problem id="fs-idm46212160">
 <para id="fs-idm30316720">Skoðaðu eftirfarandi lausnir:</para>
-<para id="fs-idm78750672">(a) Hver af eftirfarandi skissum sýnir best jónirnar í lausn af Fe(NO<sub>3</sub>)<sub>3</sub>(aq)?</para>
+<para id="fs-idm78750672">(a) Hver af eftirfarandi skissum táknar best jónirnar í lausn af Fe(NO<sub>3</sub>)<sub>3</sub>(<emphasis effect="italics">aq</emphasis>)?</para>
 <media id="fs-idm58752" alt="In this figure, three beakers labeled x, y, and z are shown containing various arrangements of blue and red spheres suspended in solution. In beaker x, three small red spheres surround a single central blue sphere in small clusters which in turn are grouped in threes around a single red sphere, forming four larger clusters. In beaker y, the four large clusters are present without the central red spheres. Four individual red spheres are now present. In beaker z, the large clusters are not present. Twelve of the small clusters of three red and one blue sphere are present along with four single red spheres.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_02_Fe(NO3)3_img.jpg"/>
 </media>
 <para id="fs-idm44321280">(b) Skrifaðu stillta efnajöfnu sem sýnir afurðir upplausnar Fe(NO<sub>3</sub>)<sub>3</sub>.</para>
 </problem>
 <solution id="fs-idm15172320">
-<para id="fs-idm125662992">(a) Fe(NO<sub>3</sub>)<sub>3</sub> er sterkur rafkleyfi og ætti því að klofna að fullu í Fe<sup>3+</sup> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jónir. Þess vegna sýnir (z) lausnina best. (b) <m:math><m:mrow><m:mtext>Fe</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para></solution>
+<para id="fs-idm125662992">(a) Fe(NO<sub>3</sub>)<sub>3</sub> er sterkur rafkleyfi og ætti því að klofna að fullu í Fe<sup>3+</sup> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jónir. Þess vegna táknar (z) lausnina best. (b) <m:math><m:mrow><m:mtext>Fe</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mrow><m:mtext>3+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mtext>−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para></solution>
 </exercise>
 <exercise id="fs-idm785520">
 <problem id="fs-idm57125184">
@@ -84,28 +79,28 @@
 <para id="fs-idp55791360">Hver er væntanleg rafleiðni eftirfarandi lausna?</para>
 <para id="fs-idm38868560">(a) NaOH(<emphasis effect="italics">aq</emphasis>)</para>
 <para id="fs-idm10517104">(b) HCl(<emphasis effect="italics">aq</emphasis>)</para>
-<para id="fs-idm50140880">(c) C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(aq) (glúkósi)</para>
-<para id="fs-idm49304096">(d) NH<sub>3</sub>(aq)</para></problem>
+<para id="fs-idm50140880">(c) C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(<emphasis effect="italics">aq</emphasis>) (glúkósi)</para>
+<para id="fs-idm49304096">(d) NH<sub>3</sub>(<emphasis effect="italics">aq</emphasis>)</para></problem>
 <solution id="fs-idm6139600">
-<para id="fs-idm70158128">(a) mikil leiðni (uppleysta efnið er jónaefni sem klofnar við upplausn); (b) mikil leiðni (uppleysta efnið er sterk sýra og jónast að fullu við upplausn); (c) óleiðandi (uppleysta efnið er samgilt efnasamband, hvorki sýra né basi, óhvarfgjarnt gagnvart vatni); (d) lítil leiðni (uppleysta efnið er veikur basi og jónast að hluta til við upplausn)</para>
+<para id="fs-idm70158128">(a) mikil leiðni (uppleysta efnið er jónaefni sem klofnar við upplausn); (b) mikil leiðni (uppleysta efnið er sterk sýra og jónast að fullu við upplausn); (c) óleiðandi (uppleysta efnið er samgilt efnasamband, hvorki sýra né basi, hvarfast ekki við vatn); (d) lítil leiðni (uppleysta efnið er veikur basi og jónast að hluta við upplausn)</para>
 </solution>
 </exercise>
 <exercise id="fs-idm22188736">
 <problem id="fs-idm44373776">
-<para id="fs-idm5817440">Hvers vegna eru flest <emphasis effect="italics">föst</emphasis> jónaefni rafmagnsóleiðandi, en vatnslausnir jónaefna eru góðir leiðarar? Myndir þú búast við að <emphasis effect="italics">fljótandi</emphasis> (bráðið) jónaefni væri rafmagnsleiðandi eða óleiðandi? Skýrðu svarið.</para>
+<para id="fs-idm5817440">Hvers vegna eru flest <emphasis effect="italics">föst</emphasis> jónaefni rafmagnsóleiðandi, en vatnslausnir jónaefna eru góðir leiðarar? Myndir þú búast við að <emphasis effect="italics">fljótandi</emphasis> (bráðið) jónaefni væri rafmagnsleiðandi eða óleiðandi? Útskýrðu.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm39772000">
 <problem id="fs-idm69993344">
-<para id="fs-idp23193408">Tilgreindu mikilvægustu gerð millisameindakrafta sem bera ábyrgð á leysisblöndun í hverri af eftirfarandi lausnum:</para>
+<para id="fs-idp23193408">Tilgreindu mikilvægustu gerð millimólekúlkrafta sem bera ábyrgð á leysishjúpun í hverri af eftirfarandi lausnum:</para>
 <para id="fs-idm12881936">(a) lausnirnar í <link target-id="CNX_Chem_11_02_waterions"/></para>
 <para id="fs-idp1970576">(b) metanól, CH<sub>3</sub>OH, leyst upp í etanóli, C<sub>2</sub>H<sub>5</sub>OH</para>
 <para id="fs-idp26142352">(c) metan, CH<sub>4</sub>, leyst upp í benseni, C<sub>6</sub>H<sub>6</sub></para>
 <para id="fs-idm143739184">(d) skautaða halókolefnið CF<sub>2</sub>Cl<sub>2</sub> leyst upp í skautaða halókolefninu CF<sub>2</sub>ClCFCl<sub>2</sub></para>
-<para id="fs-idp26201488">(e) O<sub>2</sub>(l) í N<sub>2</sub>(l)</para>
+<para id="fs-idp26201488">(e) O<sub>2</sub>(<emphasis effect="italics">l</emphasis>) í N<sub>2</sub>(<emphasis effect="italics">l</emphasis>)</para>
 </problem>
 <solution id="fs-idm99654464">
-<para id="fs-idp39750656">(a) jóna-tvískaut; (b) vetnistengi; (c) dreifikraftar; (d) tvískauta-tvískauta aðdráttarkraftar; (e) dreifikraftar</para>
+<para id="fs-idp39750656">(a) jóna-tvískauts; (b) vetnistengi; (c) dreifingarkraftar; (d) tvískauts-tvískauts aðdráttarkraftar; (e) dreifingarkraftar</para>
 </solution>
 </exercise>
 </section>
@@ -113,15 +108,15 @@
 <glossary>
 <definition id="fs-idm32680960">
 <term>klofnun (e. dissociation)</term>
-<meaning id="fs-idm32680960-meaning">eðlisfræðilegt ferli sem fylgir upplausn jónaefnis þar sem jónir efnasambandsins leysisblandast og dreifast um lausnina</meaning>
+<meaning id="fs-idm32680960-meaning">eðlisfræðilegt ferli sem fylgir upplausn jónaefnis þar sem jónir efnasambandsins verða leysishjúpaðar og dreifast um lausnina</meaning>
 </definition>
 <definition id="fs-idm10926960">
 <term>rafkleyfi (e. electrolyte)</term>
 <meaning id="fs-idm10926960-meaning">efni sem myndar jónir þegar það er leyst upp í vatni</meaning>
 </definition>
 <definition id="fs-idp1071840">
-<term>jóna-tvískauta aðdráttarkraftur (e. ion-dipole attraction)</term>
-<meaning id="fs-idp1071840-meaning">rafstöðufræðilegur aðdráttarkraftur milli jónar og skautaðrar sameindar</meaning>
+<term>jóna-tvískauts aðdráttarkraftur (e. ion-dipole attraction)</term>
+<meaning id="fs-idp1071840-meaning">rafstöðuaðdráttur milli jónar og skautaðrar sameindar</meaning>
 </definition>
 <definition id="fs-idp10683312">
 <term>órafkleyft efni (e. nonelectrolyte)</term>

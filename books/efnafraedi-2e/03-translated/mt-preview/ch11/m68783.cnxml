@@ -1,37 +1,32 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<!-- FIDELITY-WARNING: m68783 has 2 structural discrepancy(ies)
-  emphasis: source=134 translated=133 (-1 loss)
-  sub: source=182 translated=180 (-2 loss)
-  Review needed before publication. Run cnxml-fidelity-check.js for details.
--->
 <title>Samþynningareiginleikar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68783</md:content-id>
   <md:title>Samþynningareiginleikar</md:title>
-  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst styrk íhluta lausnar með mólhlutfalli og mólalstyrk</item><item>Lýst áhrifum styrks leysts efnis á ýmsa eiginleika lausnar (gufunarþrýsting, suðumark, frostmark og himnuflæðisþrýsting)</item><item>Framkvæmt útreikninga með stærðfræðijöfnum sem lýsa þessum ýmsu samþynningaráhrifum</item><item>Lýst ferli eimingar og hagnýtri notkun þess</item><item>Útskýrt ferli himnuflæðis og lýst hvernig það er hagnýtt í iðnaði og náttúru</item></list></md:abstract>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst styrk efnisþátta í lausn með mólhlutfalli og mólalstyrk</item><item>Lýst áhrifum styrks leysts efnis á ýmsa eiginleika lausnar (gufunarþrýsting, suðumark, frostmark og himnuflæðisþrýsting)</item><item>Framkvæmt útreikninga með stærðfræðijöfnum sem lýsa þessum ýmsu samþynningaráhrifum</item><item>Lýst ferli eimingar og hagnýtri notkun þess</item><item>Útskýrt ferli himnuflæðis og lýst hvernig það er nýtt í iðnaði og náttúru</item></list></md:abstract>
   <md:uuid>41124640-ce56-4231-9851-d5169f64335f</md:uuid>
 </metadata>
 
 <content>
-<para id="fs-idp74224880">Eiginleikar lausnar eru frábrugðnir eiginleikum hreins leysis eða leysta efnisins. Margir eiginleikar lausna eru háðir efnafræðilegu eðli leysta efnisins. Í samanburði við hreint vatn er lausn af vetnisklóríði súrari, lausn af ammóníaki er basískari, lausn af natríumklóríði er eðlisþyngri og lausn af súkrósa er seigari. Það eru þó nokkrir eiginleikar lausna sem eru <emphasis effect="italics">aðeins</emphasis> háðir heildarstyrk leystra efnaagna, óháð eðli þeirra. Þessir <term id="term-00001">samþynningareiginleikar (e. colligative properties)</term> fela í sér lækkun gufunarþrýstings, hækkun suðumarks, lækkun frostmarks og himnuflæðisþrýsting. Þetta litla safn eiginleika er afar mikilvægt fyrir mörg náttúrufyrirbæri og tæknilega notkun, eins og lýst verður í þessum kafla.</para>
+<para id="fs-idp74224880">Eiginleikar lausnar eru frábrugðnir eiginleikum hreins leysts efnis (eða efna) eða leysis. Margir eiginleikar lausnar eru háðir efnafræðilegu eðli leysta efnisins. Í samanburði við hreint vatn er lausn af vetnisklóríði súrari, lausn af ammóníaki er basískari, lausn af natríumklóríði er eðlisþyngri og lausn af súkrósa er seigari. Það eru þó nokkrir eiginleikar lausna sem eru <emphasis effect="italics">aðeins</emphasis> háðir heildarstyrk leystra efnisagna, óháð eðli þeirra. Þessir <term id="term-00001">samþynningareiginleikar (e. colligative properties)</term> fela í sér lækkun gufunarþrýstings, hækkun suðumarks, lækkun frostmarks og himnuflæðisþrýsting. Þessi litli hópur eiginleika er afar mikilvægur fyrir mörg náttúrufyrirbæri og tæknilega notkun, eins og lýst verður í þessum kafla.</para>
 <section id="fs-idp94607584">
 <title>Mólhlutfall og mólalstyrkur</title>
-<para id="fs-idp135152880">Nokkrar einingar sem almennt eru notaðar til að gefa upp styrk íhluta lausna voru kynntar í fyrri kafla þessarar bókar, en hver þeirra hefur ákveðna kosti til notkunar í mismunandi tilgangi. Til dæmis er mólstyrkur (<emphasis effect="italics">M</emphasis>) hentug eining til notkunar í efnajöfnureikningum, þar sem hann er skilgreindur út frá mólmagni leystra efnaagna:</para>
+<para id="fs-idp135152880">Nokkrar einingar sem almennt eru notaðar til að lýsa styrk efnisþátta í lausn voru kynntar í fyrri kafla þessarar bókar, en hver þeirra hefur ákveðna kosti fyrir mismunandi notkun. Til dæmis er mólstyrkur (<emphasis effect="italics">M</emphasis>) hentug eining til notkunar í efnajöfnureikningum, þar sem hann er skilgreindur út frá mólmagni leystra efnisagna:</para>
 <equation id="fs-idm17190592" class="unnumbered"><m:math><m:mrow><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idp53552496">Þar sem rúmmál lausna breytist með hitastigi, breytist mólstyrkur sömuleiðis. Þegar styrkur er gefinn upp sem mólstyrkur verður styrkur lausnar með sama fjölda leystra efnaagna og leysisagna mismunandi við mismunandi hitastig, vegna samdráttar/þenslu lausnarinnar. Hentugri fyrir útreikninga sem varða marga samþynningareiginleika eru styrkeiningar byggðar á mólum, en gildi þeirra eru ekki háð hitastigi. Tvær slíkar einingar eru <emphasis effect="italics">mólhlutfall</emphasis> (kynnt í fyrri kafla um lofttegundir) og <emphasis effect="italics">mólalstyrkur</emphasis>.</para>
-<para id="fs-idp89990944">Mólhlutfall, <emphasis effect="italics">X</emphasis>, íhluta er hlutfall mólmagns hans og heildarfjölda móla allra íhluta lausnarinnar:</para>
+<para id="fs-idp53552496">Vegna þess að rúmmál lausna breytist með hitastigi, breytist mólstyrkur sömuleiðis. Þegar styrkur er gefinn upp sem mólstyrkur mun styrkur lausnar með sama fjölda leystra efnisagna og leysisagna vera mismunandi við mismunandi hitastig, vegna samdráttar/þenslu lausnarinnar. Hentugri fyrir útreikninga sem varða marga samþynningareiginleika eru styrkeiningar byggðar á mólum, en gildi þeirra eru ekki háð hitastigi. Tvær slíkar einingar eru <emphasis effect="italics">mólhlutfall</emphasis> (kynnt í fyrri kafla um lofttegundir) og <emphasis effect="italics">mólalstyrkur</emphasis>.</para>
+<para id="fs-idp89990944">Mólhlutfall, <emphasis effect="italics">X</emphasis>, efnisþáttar er hlutfall mólmagns hans og heildarfjölda móla allra efnisþátta lausnarinnar:</para>
 <equation id="fs-idm18363168" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mtext>A</m:mtext></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:mtext>A</m:mtext></m:mrow><m:mrow><m:mtext>total mol of all components</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idm378409280">Samkvæmt þessari skilgreiningu er summa mólhlutfalla allra íhluta lausnarinnar (leysins og allra leystra efna) jöfn einum.</para>
+<para id="fs-idm378409280">Samkvæmt þessari skilgreiningu er summa mólhlutfalla allra efnisþátta lausnarinnar (leysirinn og öll leystu efnin) jöfn einum.</para>
 <para id="fs-idm64867536"><term id="term-00002">Mólalstyrkur (e. molality)</term> er styrkeining sem er skilgreind sem hlutfall fjölda móla leysts efnis og massa leysisins í kílógrömmum:</para>
 <equation id="fs-idp135246576" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm62416064">Þar sem þessar einingar eru reiknaðar út með því að nota aðeins massa og mólmagn, breytast þær ekki með hitastigi og henta því betur fyrir notkun sem krefst styrks sem er óháður hitastigi, þar á meðal nokkrir samþynningareiginleikar, eins og lýst verður í þessum kafla.</para>
 <example id="fs-idp183990080">
 <para id="fs-idp139747984"><title>Útreikningur á mólhlutfalli og mólalstyrk</title>Frostlögurinn í flestum bílakælum er blanda af jöfnum rúmmálum etýlen glýkóls og vatns, með litlu magni af öðrum aukefnum sem koma í veg fyrir tæringu. Hvert er (a) mólhlutfall og (b) mólalstyrkur etýlen glýkóls, C<sub>2</sub>H<sub>4</sub>(OH)<sub>2</sub>, í lausn sem er útbúin úr 2,22 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>3</sup> g af etýlen glýkóli og 2,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>3</sup> g af vatni (u.þ.b. 2 L af glýkóli og 2 L af vatni)?</para>
-<para id="fs-idm53042176"><title>Lausn</title>(a) Mólhlutfall etýlen glýkóls má reikna með því að finna fyrst mólmagn beggja íhluta lausnarinnar og setja síðan þessi mögn inn í skilgreininguna á mólhlutfalli.</para>
-<equation id="fs-idp10457760" class="unnumbered"><m:math><m:mtable><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>2.22</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>62.07</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mn>2.00</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mrow><m:mn>18.02</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>111</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>X</m:mi><m:mrow><m:mtext>ethylene</m:mtext><m:mspace width="0.2em"/><m:mtext>glycol</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mspace width="0.3em"/><m:mfrac><m:mrow><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>35.8</m:mn><m:mo>+</m:mo><m:mn>111</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>mol total</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.244</m:mn></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm73013600">Taktu eftir að mólhlutfall er víddlaus eiginleiki, þar sem það er hlutfall eiginleika með sömu einingar (mól).</para>
+<para id="fs-idm53042176"><title>Lausn</title>(a) Mólhlutfall etýlen glýkóls má reikna með því að finna fyrst mólmagn beggja efnisþátta lausnarinnar og setja síðan þessi mögn inn í skilgreininguna á mólhlutfalli.</para>
+<equation id="fs-idp10457760" class="unnumbered"><m:math><m:mtable><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>2.22</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>62.07</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>=</m:mo><m:mn>2.00</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mrow><m:mn>18.02</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>111</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>X</m:mi><m:mrow><m:mtext>ethylene</m:mtext><m:mspace width="0.2em"/><m:mtext>glycol</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mspace width="0.3em"/><m:mfrac><m:mrow><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>35.8</m:mn><m:mo>+</m:mo><m:mn>111</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>mol total</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.244</m:mn></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm73013600">Taktu eftir að mólhlutfall er víddarlaus eiginleiki, þar sem það er hlutfall eiginleika með sömu einingar (mól).</para>
 <para id="fs-idm58568512">(b) Finndu mól leysta efnisins og massa leysisins (í kg).</para>
-<para id="fs-idp25611568">Notaðu fyrst gefinn massa etýlen glýkóls og mólmassa þess til að finna mól leysta efnisins:</para>
-<equation id="fs-idm41327520" class="unnumbered"><m:math><m:mrow><m:mn>2.22</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>62.07</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation><para id="fs-idm45702496">Breyttu síðan massa vatnsins úr grömmum í kílógrömm:</para>
+<para id="fs-idp25611568">Notaðu fyrst uppgefinn massa etýlen glýkóls og mólmassa þess til að finna mól leysta efnisins:</para>
+<equation id="fs-idm41327520" class="unnumbered"><m:math><m:mrow><m:mn>2.22</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>62.07</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation><para id="fs-idm45702496">Umbreyttu síðan massa vatnsins úr grömmum í kílógrömm:</para>
 <equation id="fs-idm120629232" class="unnumbered"><m:math><m:mrow><m:mn>2.00</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>2.00 kg</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>
 </equation><para id="fs-idp55874016">Reiknaðu að lokum mólalstyrk samkvæmt skilgreiningu hans:</para>
 <equation id="fs-idp101394176" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd columnalign="right"><m:mtext>molality</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd columnalign="right"><m:mtext>molality</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>35.8</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mtext>molality</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>17.9</m:mn><m:mspace width="0.2em"/><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation>
@@ -42,9 +37,9 @@
 </example>
 <example id="fs-idp32863264">
 <para id="fs-idm38437328"><title>Umbreyting mólhlutfalls og mólalstyrks</title>Reiknaðu mólhlutfall leysta efnisins og leysisins í 3,0 <emphasis effect="italics">m</emphasis> lausn af natríumklóríði.</para>
-<para id="fs-idp102839264"><title>Lausn</title>Umbreyting úr einni styrkleikaeiningu í aðra er gerð með því að bera fyrst saman skilgreiningar eininganna tveggja. Í þessu tilfelli hafa báðar einingar sama teljarann (mól af leystu efni) en mismunandi nefnara. Uppgefinn mólalstyrkur má skrifa sem:</para>
+<para id="fs-idp102839264"><title>Lausn</title>Umbreyting úr einni styrkeiningu í aðra er framkvæmd með því að bera fyrst saman skilgreiningar eininganna tveggja. Í þessu tilviki hafa báðar einingarnar sama teljara (mól leysts efnis) en mismunandi nefnara. Uppgefinn mólalstyrk má skrifa sem:</para>
 <equation id="fs-idp92880496" class="unnumbered"><m:math><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.0</m:mn><m:mspace width="0.2em"/><m:mtext>mol NaCl</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idm54367952">Teljari mólhlutfalls þessarar lausnar er því 3,0 mól NaCl. Nefnarann má reikna út með því að finna mólmagn vatns sem samsvarar 1,0 kg</para>
+<para id="fs-idm54367952">Teljari mólhlutfalls þessarar lausnar er því 3,0 mól NaCl. Hægt er að reikna nefnarann með því að leiða út mólmagn vatns sem samsvarar 1,0 kg</para>
 <equation id="fs-idm35653328" class="unnumbered"><m:math><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mrow><m:mn>18.02</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>55</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp135101040">og setja síðan þessi mólmagn inn í skilgreininguna fyrir mólhlutfall.</para>
 <equation id="fs-idm36515600" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mrow><m:mtext>mol NaCl</m:mtext><m:mo>+</m:mo><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:mfrac></m:mtd></m:mtr>
@@ -62,19 +57,19 @@
 <para id="fs-idp96947872">1,53 <emphasis effect="italics">m</emphasis></para></note>
 </example>
 <example id="fs-idm370293600">
-<para id="fs-idm361303008"><title>Umbreytingar á mólalstyrk og mólstyrk</title>Inndæling í bláæð á 0,556 <emphasis effect="italics">M</emphasis> vatnslausn af glúkósa (eðlismassi 1,04 g/ml) er hluti af sumum meðferðum eftir aðgerð. Hver er mólalstyrkur glúkósa í þessari lausn?</para>
-<para id="fs-idm372843760"><title>Lausn</title>Uppgefinn mólstyrkur má skrifa nákvæmlega sem:</para>
+<para id="fs-idm361303008"><title>Umbreytingar á mólalstyrk og mólstyrk</title>Inndæling 0,556 <emphasis effect="italics">M</emphasis> vatnslausnar af glúkósa (eðlismassi 1,04 g/ml) í æð er hluti af sumum meðferðum eftir aðgerð. Hver er mólalstyrkur glúkósa í þessari lausn?</para>
+<para id="fs-idm372843760"><title>Lausn</title>Uppgefinn mólstyrk má skrifa á eftirfarandi hátt:</para>
 <equation id="fs-idm381973808" class="unnumbered"><m:math><m:mrow><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.556</m:mn><m:mspace width="0.2em"/><m:mtext>mol glucose/1 L solution</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idm377090992">Hugleiddu skilgreininguna á mólalstyrk:</para>
+<para id="fs-idm377090992">Lítum á skilgreininguna á mólalstyrk:</para>
 <equation id="fs-idm374248816" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>mol solute/kg solvent</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idm339441856">Magn glúkósa í 1 L af þessari lausn er 0,556 mól, þannig að þörf er á massa vatns í þessu rúmmáli lausnar.</para>
+<para id="fs-idm339441856">Magn glúkósa í 1 lítra af þessari lausn er 0,556 mól, þannig að þörf er á massa vatnsins í þessu rúmmáli lausnar.</para>
 <para id="fs-idm366120736">Fyrst skal reikna massa 1,00 L af lausninni:</para>
 <equation id="fs-idm382263312" class="unnumbered"><m:math><m:mrow><m:mo>(</m:mo><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mtext>L soln</m:mtext><m:mo>)</m:mo><m:mspace width="0.2em"/><m:mo>(</m:mo><m:mn>1.04</m:mn><m:mspace width="0.2em"/><m:mn>g/mL</m:mn><m:mo>)</m:mo><m:mspace width="0.2em"/><m:mo>(</m:mo><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>mL/1L</m:mtext><m:mo>)</m:mo><m:mspace width="0.2em"/><m:mo>(</m:mo><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>kg/1000 g</m:mtext><m:mo>)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.04</m:mn><m:mspace width="0.2em"/><m:mtext>kg soln</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm371628048">Þetta er massi bæði vatnsins og leysta efnisins, glúkósa, og því verður að draga massa glúkósans frá. Reiknaðu massa glúkósa út frá mólmagni hans:</para>
 <equation id="fs-idm377502224" class="unnumbered"><m:math><m:mrow><m:mo>(</m:mo><m:mn>0.556</m:mn><m:mspace width="0.2em"/><m:mtext>mol glucose</m:mtext><m:mo>)</m:mo><m:mspace width="0.2em"/><m:mo>(</m:mo><m:mn>180.2</m:mn><m:mspace width="0.2em"/><m:mtext>g/1 mol</m:mtext><m:mo>)</m:mo><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>100.2 g or 0.1002 kg</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm376623200">Með því að draga massa glúkósans frá fæst massi vatnsins í lausninni:</para>
 <equation id="fs-idm373987152" class="unnumbered"><m:math><m:mrow><m:mn>1.04</m:mn><m:mspace width="0.2em"/><m:mtext>kg solution</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mn>0.1002</m:mn><m:mspace width="0.2em"/><m:mtext>kg glucose</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.94</m:mn><m:mspace width="0.2em"/><m:mtext>kg water</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idm378146928">Að lokum er mólalstyrkur glúkósa í þessari lausn reiknaður sem:</para>
+<para id="fs-idm378146928">Loks er mólalstyrkur glúkósa í þessari lausn reiknaður sem:</para>
 <equation id="fs-idm375688416" class="unnumbered"><m:math><m:mrow><m:mi>m</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.556</m:mn><m:mspace width="0.2em"/><m:mtext>mol glucose/0.94 kg water</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>0.59 m</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm373673360"><title>Kannaðu þekkingu þína</title>Saltpéturssýra, HNO<sub>3</sub><emphasis effect="italics">(aq)</emphasis>, er fáanleg í verslunum sem 33,7 m vatnslausn (eðlismassi = 1,35 g/ml). Hver er mólstyrkur þessarar lausnar?</para>
 <note id="fs-idm379675456"><title>Answer:</title>
@@ -85,7 +80,7 @@
 <title>Lækkun gufunarþrýstings</title>
 <para id="fs-idp32351520">Eins og lýst er í kaflanum um vökva og föst efni er jafnvægisgufunarþrýstingur vökva sá þrýstingur sem gasfasi hans beitir þegar uppgufun og þétting eiga sér stað á jöfnum hraða:</para>
 <equation id="fs-idp40737376" class="unnumbered"><m:math><m:mrow><m:mtext>liquid</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mtext>gas</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idp89994672">Að leysa upp órokgjarnt efni í rokgjörnum vökva leiðir til lækkunar á gufunarþrýstingi vökvans. Þetta fyrirbæri má rökstyðja með því að skoða áhrif viðbættra sameinda leysta efnisins á uppgufunar- og þéttingarferli vökvans. Til að gufa upp verða leysisameindir að vera til staðar á yfirborði lausnarinnar. Tilvist leysta efnisins minnkar yfirborðsflatarmálið sem er tiltækt fyrir leysisameindir og dregur þar með úr hraða uppgufunar leysisins. Þar sem hraði þéttingar er óbreyttur vegna tilvistar leysta efnisins er nettóárangurinn sá að jafnvægi milli uppgufunar og þéttingar næst með færri leysisameindum í gasfasanum (þ.e. við lægri gufunarþrýsting) (<link target-id="CNX_Chem_11_04_RaoultLaw"/>). Þótt þessi túlkun sé gagnleg tekur hún ekki tillit til nokkurra mikilvægra þátta í samræðiseðli lækkunar gufunarþrýstings. Nákvæmari skýring felur í sér eiginleikann <emphasis effect="italics">óreiðu</emphasis>, sem er umræðuefni í síðari kafla um varmafræði. Til að skilja lækkun gufunarþrýstings vökva er fullnægjandi að taka fram að dreifðara eðli efnis í lausn, samanborið við aðskilda fasa leysis og leysts efnis, þjónar því að koma á stöðugleika í leysisameindunum og hindra uppgufun þeirra. Lægri gufunarþrýstingur verður til og samsvarandi hærra suðumark eins og lýst er í næsta hluta þessa kafla.</para>
+<para id="fs-idp89994672">Að leysa upp órokgjarnt efni í rokgjörnum vökva leiðir til lækkunar á gufunarþrýstingi vökvans. Þetta fyrirbæri má rökstyðja með því að skoða áhrif viðbættra sameinda leysta efnisins á uppgufunar- og þéttingarferli vökvans. Til að gufa upp verða leysisameindir að vera til staðar á yfirborði lausnarinnar. Tilvist leysta efnisins minnkar yfirborðsflatarmálið sem er tiltækt fyrir leysisameindir og dregur þar með úr hraða uppgufunar leysisins. Þar sem tilvist leysta efnisins hefur ekki áhrif á hraða þéttingar er nettóárangurinn sá að jafnvægi milli uppgufunar og þéttingar næst með færri leysisameindum í gasfasanum (þ.e. við lægri gufunarþrýsting) (<link target-id="CNX_Chem_11_04_RaoultLaw"/>). Þótt þessi túlkun sé gagnleg tekur hún ekki tillit til nokkurra mikilvægra þátta í samræðiseðli lækkunar gufunarþrýstings. Nákvæmari skýring felur í sér eiginleikann <emphasis effect="italics">óreiðu</emphasis>, sem er umræðuefni í síðari kafla um varmafræði. Til að skilja lækkun gufunarþrýstings vökva nægir að taka fram að dreifðara eðli efnis í lausn, samanborið við aðskilda fasa leysis og leysts efnis, þjónar í raun til að koma á stöðugleika í leysisameindunum og hindra uppgufun þeirra. Lægri gufunarþrýstingur verður til og samsvarandi hærra suðumark eins og lýst er í næsta hluta þessa kafla.</para>
 <figure id="CNX_Chem_11_04_RaoultLaw">
 <media id="fs-idp97024192" alt="This figure contains two images. Figure a is labeled “pure water.” It shows a beaker half-filled with liquid. In the liquid, eleven molecules are evenly dispersed in the liquid each consisting of one central red sphere and two slightly smaller white spheres are shown. Four molecules near the surface of the liquid have curved arrows drawn from them pointing to the space above the liquid in the beaker. Above the liquid, twelve molecules are shown, with arrows pointing from three of them into the liquid below. Figure b is labeled “Aqueous solution.” It is similar to figure a except that eleven blue spheres, slightly larger in size than the molecules, are dispersed evenly in the liquid. Only four curved arrows appear in this diagram with two from the molecules in the liquid pointing to the space above and two from molecules in the space above the liquid pointing into the liquid below.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_RaoultLaw.jpg"/>
@@ -95,24 +90,24 @@
 <para id="fs-idm44600736">Sambandinu milli gufunarþrýstings íhluta lausnar og styrks þessara íhluta er lýst með <term id="term-00003">lögmáli Raoults (e. raoult’s law)</term>: <emphasis effect="italics">Hlutþrýstingur sem einhver íhluti kjörlausnar beitir er jafn gufunarþrýstingi hreina íhlutans margfaldað með mólhlutfalli hans í lausninni.</emphasis></para>
 <equation id="fs-idp102905728" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>A</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mtext>A</m:mtext></m:msub><m:msubsup><m:mi>P</m:mi><m:mtext>A</m:mtext><m:mo>*</m:mo></m:msubsup></m:mrow></m:math></equation>
 <para id="fs-idm37530832">þar sem <emphasis effect="italics">P</emphasis><sub>A</sub> er hlutþrýstingur sem íhluti A beitir í lausninni, <m:math><m:mrow><m:msubsup><m:mi>P</m:mi><m:mtext>A</m:mtext><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> er gufunarþrýstingur hreins A og <emphasis effect="italics">X</emphasis><sub>A</sub> er mólhlutfall A í lausninni.</para>
-<para id="fs-idp141610960">Með því að rifja upp að heildarþrýstingur gasblöndu er jafn summu hlutþrýstinga allra íhluta hennar (lögmál Daltons um hlutþrýsting) er heildargufunarþrýstingur sem lausn með <emphasis effect="italics">i</emphasis> íhlutum beitir:</para>
+<para id="fs-idp141610960">Með því að rifja upp að heildarþrýstingur gasblöndu er jafn summu hlutþrýstinga allra íhluta hennar (lögmál Daltons um hlutþrýsting) er heildargufunarþrýstingur sem lausn með <emphasis effect="italics">i</emphasis> íhlutum beitir</para>
 <equation id="fs-idm31233600" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mstyle displaystyle="true"><m:munder><m:mo>∑</m:mo><m:mi>i</m:mi></m:munder><m:mrow><m:msub><m:mi>P</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:mstyle><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mstyle displaystyle="true"><m:munder><m:mo>∑</m:mo><m:mi>i</m:mi></m:munder><m:mrow><m:msub><m:mi>X</m:mi><m:mi>i</m:mi></m:msub><m:msubsup><m:mi>P</m:mi><m:mi>i</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:mstyle></m:mrow></m:math></equation>
-<para id="fs-idm41590080">Órokgjarnt efni er efni þar sem gufunarþrýstingur er hverfandi (<emphasis effect="italics">P</emphasis>* ≈ 0), og því er gufunarþrýstingur yfir lausn sem inniheldur aðeins órokgjörn uppleyst efni eingöngu vegna leysisins:</para>
+<para id="fs-idm41590080">Órokgjarnt efni er efni þar sem gufunarþrýstingur er hverfandi (<emphasis effect="italics">P</emphasis>* ≈ 0), og því er gufunarþrýstingur yfir lausn sem inniheldur aðeins órokgjörn leyst efni eingöngu vegna leysisins:</para>
 <equation id="fs-idm26515248" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:mtext>solvent</m:mtext></m:mrow></m:msub><m:msubsup><m:mi>P</m:mi><m:mrow><m:mtext>solvent</m:mtext></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math></equation>
 <example id="fs-idp189679696">
-<para id="fs-idm56681472"><title>Útreikningur á gufunarþrýstingi</title>Reiknaðu gufunarþrýsting kjörlausnar sem inniheldur 92,1 g af glýseríni, C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>, og 184,4 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH, við 40 °C. Gufunarþrýstingur hreins etanóls er 0,178 atm við 40 °C. Glýserín er í raun órokgjarnt við þetta hitastig.</para>
-<para id="fs-idp44503184"><title>Lausn</title>Þar sem leysirinn er eini rokgjarni hluti þessarar lausnar má reikna gufunarþrýsting hans samkvæmt lögmáli Raoults:</para>
+<para id="fs-idm56681472"><title>Útreikningur á gufunarþrýstingi</title>Reiknið gufunarþrýsting kjörlausnar sem inniheldur 92,1 g af glýseríni, C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>, og 184,4 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH, við 40 °C. Gufunarþrýstingur hreins etanóls er 0,178 atm við 40 °C. Glýserín er í raun órokgjarnt við þetta hitastig.</para>
+<para id="fs-idp44503184"><title>Lausn</title>Þar sem leysirinn er eini rokgjarni hluti þessarar lausnar má reikna gufunarþrýsting hennar samkvæmt lögmáli Raoults á þennan hátt:</para>
 <equation id="fs-idp31418608" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:mtext>solvent</m:mtext></m:mrow></m:msub><m:msubsup><m:mi>P</m:mi><m:mrow><m:mtext>solvent</m:mtext></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math></equation>
 <para id="fs-idm114263808">Fyrst skaltu reikna mólmagn hvers efnisþáttar lausnarinnar með því að nota uppgefin massagögn.</para>
 <equation id="fs-idm39560176" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mn>92.1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>3</m:mn></m:msub></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>3</m:mn></m:msub></m:mrow><m:mrow><m:mn>92.094</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>3</m:mn></m:msub></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext>OH</m:mtext><m:msub><m:mo stretchy="false">)</m:mo><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>184.4</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow><m:mrow><m:mn>46.069</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.000</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idp14815984">Næst skaltu reikna mólhlutfall leysisins (etanóls) og nota lögmál Raoults til að reikna gufunarþrýsting lausnarinnar.</para><equation id="fs-idm59398112" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>4.000</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mo>+</m:mo><m:mn>4.000</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.800</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>solv</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:mtext>solv</m:mtext></m:mrow></m:msub><m:msubsup><m:mi>P</m:mi><m:mrow><m:mtext>solv</m:mtext></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>=</m:mo><m:mn>0.800</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.178</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mo>=</m:mo><m:mn>0.142</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
-<para id="fs-idm111724384"><title>Spyrðu sjálfan þig</title>Lausn inniheldur 5,00 g af þvagefni, CO(NH<sub>2</sub>)<sub>2</sub> (órokgjarnt uppleyst efni) og 0,100 kg af vatni. Ef gufunarþrýstingur hreins vatns við 25 °C er 23,7 torr, hver er þá gufunarþrýstingur lausnarinnar ef gert er ráð fyrir kjörhegðun?</para>
+<para id="fs-idm111724384"><title>Kannaðu þekkingu þína</title>Lausn inniheldur 5,00 g af þvagefni, CO(NH<sub>2</sub>)<sub>2</sub> (órokgjarnt leysið efni) og 0,100 kg af vatni. Ef gufunarþrýstingur hreins vatns við 25 °C er 23,7 torr, hver er þá gufunarþrýstingur lausnarinnar ef gert er ráð fyrir kjörhegðun?</para>
 <note id="fs-idm58368656"><title>Answer:</title>
 <para id="fs-idp96948896">23,4 torr</para></note>
 </example>
 </section>
 <section id="fs-idp189189824">
 <title>Eiming lausna</title>
-<para id="fs-idm341204416">Lausnir þar sem efnisþættirnir hafa verulega mismunandi gufunarþrýsting má aðskilja með sértæku uppgufunarferli sem kallast eiming. Lítum á einfalt dæmi um efnablöndu tveggja rokgjarnra vökva, A og B, þar sem A er rokgjarnari vökvinn. Hægt er að nota lögmál Raoults til að sýna að gufan yfir lausninni er auðguð af efnisþætti A, það er að segja, mólhlutfall A í gufunni er hærra en mólhlutfall A í vökvanum (sjá æfingu 65 í lok kaflans). Með því að hita efnablönduna á viðeigandi hátt er hægt að gufa upp efnisþátt A, þétta hann og safna honum saman – og þannig í raun aðskilja hann frá efnisþætti B.</para>
+<para id="fs-idm341204416">Lausnir þar sem efnisþættirnir hafa verulega mismunandi gufunarþrýsting má aðskilja með sértæku uppgufunarferli sem kallast eiming. Lítum á einfalt dæmi um efnablöndu tveggja rokgjarnra vökva, A og B, þar sem A er rokgjarnari vökvinn. Hægt er að nota lögmál Raoults til að sýna fram á að gufan yfir lausninni sé auðguð af efnisþætti A, það er að segja, mólhlutfall A í gufunni er hærra en mólhlutfall A í vökvanum (sjá verkefni 65 í lok kaflans). Með því að hita efnablönduna á viðeigandi hátt er hægt að gufa upp efnisþátt A, þétta hann og safna honum saman – og þannig aðskilja hann frá efnisþætti B.</para>
 <para id="fs-idp99432368">Eiming er víða notuð, bæði á rannsóknarstofum og í iðnaði, til að hreinsa jarðolíu, einangra gerjunarafurðir og hreinsa vatn. Dæmigerður búnaður fyrir eimingu á rannsóknarstofu er sýndur á <link target-id="CNX_Chem_11_04_LabDistill"/>.</para>
 <figure id="CNX_Chem_11_04_LabDistill">
 <media id="fs-idp129114224" alt="Figure a contains a photograph of a common laboratory distillation unit. Figure b provides a diagram labeling typical components of a laboratory distillation unit, including a stirrer/heat plate with heat and stirrer speed control, a heating bath of oil or sand, stirring means such as boiling chips, a still pot, a still head, a thermometer for boiling point temperature reading, a condenser with a cool water inlet and outlet, a still receiver with a vacuum or gas inlet, a receiving flask for holding distillate, and a cooling bath.">
@@ -120,7 +115,7 @@
 </media>
 <caption>Dæmigerð eimingareining fyrir rannsóknarstofu er sýnd á (a) ljósmynd og (b) skýringarmynd af íhlutunum. (heimild a: breyting á verki eftir „Rifleman82“/Wikimedia commons; heimild b: breyting á verki eftir „Slashme“/Wikimedia Commons)</caption>
 </figure>
-<para id="fs-idm44238960">Olíuhreinsunarstöðvar nota stórfellda <emphasis effect="italics">hluteimingu</emphasis> til að aðskilja efnisþætti hráolíu. Hráolían er hituð upp í hátt hitastig við botn hás <emphasis effect="italics">eimingarturns</emphasis>, sem gufar upp marga efnisþáttanna sem stíga upp innan turnsins. Þegar uppgufaðir efnisþættir ná nægilega köldum svæðum á leið sinni upp, þéttast þeir og er safnað saman. Vökvarnir sem safnast saman eru einfaldari efnablöndur af kolvetnum og öðrum jarðolíusamböndum sem hafa viðeigandi samsetningu fyrir ýmsa notkun (t.d. dísilolíu, steinolíu, bensín), eins og sýnt er á <link target-id="CNX_Chem_11_04_refinery"/>.</para>
+<para id="fs-idm44238960">Olíuhreinsunarstöðvar nota stórfellda <emphasis effect="italics">hluteimingu</emphasis> til að aðskilja efnisþætti hráolíu. Hráolían er hituð upp í hátt hitastig neðst í háum <emphasis effect="italics">hluteimingarturni</emphasis>, sem gufar upp marga efnisþættina sem stíga upp í turninum. Þegar uppgufuðu efnisþættirnir ná nægilega köldum svæðum á leið sinni upp, þéttast þeir og er safnað saman. Vökvarnir sem safnast saman eru einfaldari efnablöndur af kolvetnum og öðrum jarðolíusamböndum sem hafa viðeigandi samsetningu fyrir ýmis not (t.d. dísilolíu, steinolíu, bensín), eins og sýnt er á <link target-id="CNX_Chem_11_04_refinery"/>.</para>
 <figure id="CNX_Chem_11_04_refinery">
 <media id="fs-idm45846832" alt="This figure contains a photo of a refinery, showing large columnar structures. A diagram of a fractional distillation column used in separating crude oil is also shown. Near the bottom of the column, an arrow pointing into the column shows a point of entry for heated crude oil. The column contains several layers at which different components are removed. At the very bottom, residue materials are removed as indicated by an arrow out of the column. At each successive level, different materials are removed proceeding from the bottom to the top of the column. The materials are fuel oil, followed by diesel oil, kerosene, naptha, gasoline, and refinery gas at the very top. To the right of the column diagram, a double sided arrow is shown that is blue at the top and gradually changes color to red moving downward. The blue top of the arrow is labeled, “small molecules: low boiling point, very volatile, flows easily, ignites easily.” The red bottom of the arrow is labeled, “large molecules: high boiling point, not very volatile, does not flow easily, does not ignite easily.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_refinery.jpg"/>
@@ -130,10 +125,10 @@
 </section>
 <section id="fs-idm80924336">
 <title>Suðumarkshækkun</title>
-<para id="fs-idm11969360">Eins og lýst er í kaflanum um vökva og föst efni er <emphasis effect="italics">suðumark</emphasis> vökva það hitastig þar sem gufunarþrýstingur hans er jafn umhverfisloftþrýstingi. Þar sem gufunarþrýstingur lausnar lækkar vegna tilvistar órokgjarnra uppleystra efna, er rökrétt að suðumark lausnarinnar hækki í kjölfarið. Gufunarþrýstingur eykst með hitastigi og því þarf lausn hærra hitastig en hreinn leysir til að ná tilteknum gufunarþrýstingi, þar með talið þeim sem jafngildir þrýstingi umhverfisloftsins. Hækkun suðumarks sem sést þegar órokgjarnt uppleyst efni er leyst upp í leysi, Δ<emphasis effect="italics">T</emphasis><sub>b</sub>, er kölluð <term id="term-00004">suðumarkshækkun (e. boiling point elevation)</term> og er í beinu hlutfalli við mólalstyrk uppleystra efnaeinda:</para>
+<para id="fs-idm11969360">Eins og lýst er í kaflanum um vökva og föst efni er <emphasis effect="italics">suðumark</emphasis> vökva það hitastig þar sem gufunarþrýstingur hans er jafn umhverfisloftþrýstingi. Þar sem gufunarþrýstingur lausnar lækkar vegna tilvistar órokgjarnra leystra efna, er rökrétt að suðumark lausnarinnar hækki í kjölfarið. Gufunarþrýstingur eykst með hitastigi og því þarf lausn hærra hitastig en hreinn leysir til að ná tilteknum gufunarþrýstingi, þar með talið þeim sem jafngildir þrýstingi umhverfisloftsins. Sú hækkun á suðumarki sem sést þegar órokgjarnt leysið efni er leyst upp í leysi, Δ<emphasis effect="italics">T</emphasis><sub>b</sub>, er kölluð <term id="term-00004">suðumarkshækkun (e. boiling point elevation)</term> og er í beinu hlutfalli við mólalstyrk leystu efnanna:</para>
 <equation id="fs-idp43526688" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>b</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mi>m</m:mi></m:mrow></m:math></equation>
-<para id="fs-idm72955888">þar sem <emphasis effect="italics">K</emphasis><sub>b</sub> er <term id="term-00005">suðumarkshækkunarfasti (e. boiling point elevation constant)</term>, eða <emphasis effect="italics">ebullioscopic-fasti</emphasis> og <emphasis effect="italics">m</emphasis> er mólalstyrkur (mólalítet) allra uppleystra efnaeinda.</para>
-<para id="fs-idp83055184">Suðumarkshækkunarfastar eru einkennandi eiginleikar sem ráðast af auðkenni leysisins. Gildi <emphasis effect="italics">K</emphasis><sub>b</sub> fyrir nokkra leysa eru talin upp í <link target-id="fs-idm37127680"/>.</para>
+<para id="fs-idm72955888">þar sem <emphasis effect="italics">K</emphasis><sub>b</sub> er <term id="term-00005">suðumarkshækkunarfasti (e. boiling point elevation constant)</term>, eða <emphasis effect="italics">ebullioscopic fasti</emphasis> og <emphasis effect="italics">m</emphasis> er mólalstyrkur (mólalítet) allra leystra efna.</para>
+<para id="fs-idp83055184">Suðumarkshækkunarfastar eru einkennandi eiginleikar sem ráðast af eiginleikum leysisins. Gildi <emphasis effect="italics">K</emphasis><sub>b</sub> fyrir nokkra leysa eru talin upp í <link target-id="fs-idm37127680"/>.</para>
 <table id="fs-idm37127680" class="top-titled" summary="The table provides boiling points in degrees Celsius at 1 atmosphere of pressure, K subscript b in C m superscript negative 1, freezing point in degrees Celsius at 1 atmosphere of pressure, and K subscript f in C m superscript negative 1for five solvents. Water has the following values: 100.00, 0.512, 0.00, and 1.86. Hydrogen acetate has the following values: 118.1, 3.07, 16.6, and 3.9. Benzene has the following values: 80.1, 2.53, 5.5, 5.12. Chloroform has the following values: 61.26, 3.63, −63.5, and 4.68. Nitrobenzene has the following values: 210.9, 5.24, 5.67, 8.1">
 <tgroup cols="5"><colspec colnum="1" colname="c1"/>
 <colspec colnum="2" colname="c2"/>
@@ -171,7 +166,7 @@
 
 </tgroup>
 </table>
-<para id="fs-idp26191216">Umfang lækkunar á gufunarþrýstingi leysis og hækkunar á suðumarki fer eftir heildarfjölda einda leysta efnisins í tilteknu magni leysis, en ekki massa, stærð eða efnafræðilegum eiginleikum eindanna. 1 <emphasis effect="italics">m</emphasis> vatnslausn af súkrósa (342 g/mól) og 1 <emphasis effect="italics">m</emphasis> vatnslausn af etýlen glýkóli (62 g/mól) munu sýna sama suðumark því hvor lausn hefur eitt mól af eindum leysta efnisins (sameindum) á hvert kílógramm af leysi.</para>
+<para id="fs-idp26191216">Umfang lækkunar á gufunarþrýstingi leysis og hækkunar á suðumarki fer eftir heildarfjölda agna leysta efnisins í tilteknu magni leysis, en ekki massa, stærð eða efnafræðilegu eðli agnanna. 1 <emphasis effect="italics">m</emphasis> vatnslausn af súkrósa (342 g/mól) og 1 <emphasis effect="italics">m</emphasis> vatnslausn af etýlen glýkóli (62 g/mól) munu sýna sama suðumark því hvor lausn hefur eitt mól af ögnum leysta efnisins (sameindum) á hvert kílógramm af leysi.</para>
 <example id="fs-idp5504000">
 <para id="fs-idp139740576"><title>Útreikningur á suðumarki lausnar</title>Miðað við hegðun kjörlausnar, hvert er suðumark 0,33 <emphasis effect="italics">m</emphasis> lausnar af órokgjörnu leystu efni í benseni?</para>
 <para id="fs-idm58398256"><title>Lausn</title>Notaðu jöfnuna sem tengir suðumarkshækkun við mólalstyrk leysta efnisins til að leysa þetta verkefni í tveimur skrefum.</para>
@@ -185,35 +180,35 @@
 <para id="fs-idp86735936"><title>Kannaðu þekkingu þína</title>Miðað við hegðun kjörlausnar, hvert er suðumark frostlagarins sem lýst er í <link target-id="fs-idp183990080"/>?</para><note id="fs-idm69400592"><title>Answer:</title>
 <para id="fs-idm60690288">109,2 °C</para></note>
 </example>
-<example id="fs-idm46335744"><para id="fs-idm124291232"><title>Suðumark joðlausnar</title>Finndu suðumark lausnar af 92,1 g af joði, I<sub>2</sub>, í 800,0 g af klóróformi, CHCl<sub>3</sub>, að því gefnu að joðið sé órokgjarnt og lausnin sé kjörlausn.</para>
+<example id="fs-idm46335744"><para id="fs-idm124291232"><title>Suðumark joðlausnar</title>Finndu suðumark lausnar með 92,1 g af joði, I<sub>2</sub>, í 800,0 g af klóróformi, CHCl<sub>3</sub>, að því gefnu að joðið sé órokgjarnt og lausnin sé kjörlausn.</para>
 <para id="fs-idp83223616"><title>Lausn</title>Fjögurra skrefa aðferð til að leysa þetta verkefni er lýst hér að neðan.</para>
 <media id="fs-idp95700448" class="scaled-down" alt="This is a diagram with five boxes oriented horizontally and linked together with arrows numbered 1 to 4 pointing from each box in succession to the next one to the right. The first box is labeled, “Mass of iodine.” Arrow 1 points from this box to a second box labeled, “Moles of iodine.” Arrow 2 points from this box to to a third box labeled, “Molality of solution.” Arrow labeled 3 points from this box to a fourth box labeled, “Change in boiling point.” Arrow 4 points to a fifth box labeled, “New boiling point.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_EX03Steps_img.jpg"/>
 </media>
 <list id="fs-idm38965696" list-type="enumerated" number-style="arabic" class="stepwise">
-<item><emphasis effect="italics">Umbreyttu grömmum af</emphasis> I<sub>2</sub> <emphasis effect="italics">í mól með því að nota mólmassa</emphasis> I<sub>2</sub> <emphasis effect="italics">í einingabreytingarstuðlinum.</emphasis><newline/> Niðurstaða: 0,363 mól</item>
+<item><emphasis effect="italics">Umbreyttu grömmum í mól af</emphasis> I<sub>2</sub> <emphasis effect="italics">með því að nota mólmassa</emphasis> I<sub>2</sub> <emphasis effect="italics">í einingabreytingarstuðlinum.</emphasis><newline/> Niðurstaða: 0,363 mól</item>
 <item><emphasis effect="italics">Ákvarðaðu mólalstyrk lausnarinnar út frá fjölda móla leysta efnisins og massa leysisins, í kílógrömmum.</emphasis><newline/> Niðurstaða: 0,454 <emphasis effect="italics">m</emphasis></item>
 <item><emphasis effect="italics">Notaðu beina hlutfallið milli breytingar á suðumarki og mólalstyrks til að ákvarða hversu mikið suðumarkið breytist.</emphasis><newline/> Niðurstaða: 1,65 °C</item>
 <item><emphasis effect="italics">Ákvarðaðu nýja suðumarkið út frá suðumarki hreina leysisins og breytingunni.</emphasis><newline/> Niðurstaða: 62,91 °C<newline/> Yfirfarðu hverja niðurstöðu sem sjálfsmat.</item>
 </list>
-<para id="fs-idp139925536"><title>Kannaðu þekkingu þína</title>Hvert er suðumark lausnar af 1,0 g af glýseríni, C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>, í 47,8 g af vatni? Gerðu ráð fyrir kjörlausn.</para>
+<para id="fs-idp139925536"><title>Kannaðu þekkingu þína</title>Hvert er suðumark lausnar með 1,0 g af glýseríni, C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>, í 47,8 g af vatni? Gerðu ráð fyrir kjörlausn.</para>
 <note id="fs-idp191396352"><title>Answer:</title>
 <para id="fs-idm59771536">100,12 °C</para></note>
 </example>
 </section>
 <section id="fs-idm65221808">
 <title>Frostmarkslækkun</title>
-<para id="fs-idp140532496">Lausnir storkna við lægra hitastig en hreinir vökvar. Þetta fyrirbæri er nýtt í aðferðum til „afísunar“ þar sem salt (<link target-id="CNX_Chem_11_04_rocksalt"/>), kalsíumklóríð eða þvagefni er notað til að bræða ís á vegum og gangstéttum, og við notkun etýlen glýkóls sem „frostlögur“ í vatnskössum bifreiða. Sjór storknar við lægra hitastig en ferskvatn og því haldast Norður- og Suður-Íshafið ófrosið jafnvel við hitastig undir 0 °C (eins og líkamsvökvar fiska og annarra kaldrifjaðra sjávardýra sem lifa í þessum höfum).</para>
+<para id="fs-idp140532496">Lausnir frjósa við lægra hitastig en hreinir vökvar. Þetta fyrirbæri er nýtt í „afísunaraðferðum“ þar sem salt (<link target-id="CNX_Chem_11_04_rocksalt"/>), kalsíumklóríð eða þvagefni er notað til að bræða ís á vegum og gangstéttum, og við notkun etýlen glýkóls sem „frostlagar“ í vatnskössum bifreiða. Sjór frýs við lægra hitastig en ferskvatn og því haldast Norður-Íshafið og Suður-Íshafið ófrosin jafnvel við hitastig undir 0 °C (eins og líkamsvökvar fiska og annarra kaldrifjaðra sjávardýra sem lifa í þessum höfum).</para>
 <figure id="CNX_Chem_11_04_rocksalt" class="scaled-down"><media id="fs-idm2229600" alt="This is a photo of damp brick pavement on which a white crystalline material has been spread.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_rocksalt.jpg"/>
 </media>
-<caption>Steinsalt (NaCl), kalsíumklóríð (CaCl<sub>2</sub>) eða efnablanda af þessu tvennu er notað til að bræða ís. (heimild: breyting á verki eftir Eddie Welker)</caption>
+<caption>Steinsalt (NaCl), kalsíumklóríð (CaCl<sub>2</sub>), eða efnablanda af þessu tvennu er notað til að bræða ís. (heimild: breyting á verki eftir Eddie Welker)</caption>
 </figure>
-<para id="fs-idm62944160">Lækkun á frostmarki þunnrar lausnar miðað við hreinan leysi, Δ<emphasis effect="italics">T</emphasis><sub>f</sub>, er kölluð <term id="term-00006">frostmarkslækkun (e. freezing point depression)</term> og er í beinu hlutfalli við mólalstyrk leysta efnisins</para>
+<para id="fs-idm62944160">Lækkun frostmarks þunnrar lausnar samanborið við hreinan leysi, Δ<emphasis effect="italics">T</emphasis><sub>f</sub>, er kölluð <term id="term-00006">frostmarkslækkun (e. freezing point depression)</term> og er í beinu hlutfalli við mólalstyrk leysta efnisins</para>
 <equation id="fs-idp41100400" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mi>m</m:mi></m:mrow></m:math></equation>
-<para id="fs-idp15307136">þar sem <emphasis effect="italics">m</emphasis> er mólalstyrkur leysta efnisins og <emphasis effect="italics">K</emphasis><sub>f</sub> er kallaður <term id="term-00007">frostmarkslækkunarfasti (e. freezing point depression constant)</term> (eða <emphasis effect="italics">krýóskópískur fasti</emphasis>). Rétt eins og með suðumarkshækkunarfastana eru þetta einkennandi eiginleikar þar sem gildi þeirra ráðast af efnafræðilegum eiginleikum leysisins. Gildi <emphasis effect="italics">K</emphasis><sub>f</sub> fyrir nokkra leysa eru talin upp í <link target-id="fs-idm37127680"/>.</para>
+<para id="fs-idp15307136">þar sem <emphasis effect="italics">m</emphasis> er mólalstyrkur leysta efnisins og <emphasis effect="italics">K</emphasis><sub>f</sub> er kallaður <term id="term-00007">frostmarkslækkunarfasti (e. freezing point depression constant)</term> (eða <emphasis effect="italics">krýóskópískur fasti</emphasis>). Rétt eins og með suðumarkshækkunarfastana eru þetta einkennandi eiginleikar þar sem gildin ráðast af efnafræðilegu eðli leysisins. Gildin fyrir <emphasis effect="italics">K</emphasis><sub>f</sub> fyrir nokkra leysa eru skráð í <link target-id="fs-idm37127680"/>.</para>
 <example id="fs-idp14106448">
-<para id="fs-idm51193216"><title>Útreikningur á frostmarki lausnar</title>Miðað við hegðun kjörlausnar, hvert er frostmark 0,33 <emphasis effect="italics">m</emphasis> lausnar af órokgjörnu órafkleyfu efni í benseni sem lýst er í <link target-id="fs-idp5504000"/>?</para><para id="fs-idm51191952"><title>Lausn</title>Notaðu jöfnuna sem tengir frostmarkslækkun við mólalstyrk leysta efnisins til að leysa þetta verkefni í tveimur skrefum.</para>
+<para id="fs-idm51193216"><title>Útreikningur á frostmarki lausnar</title>Miðað við að lausnin sé kjörlausn, hvert er frostmark 0,33 <emphasis effect="italics">m</emphasis> lausnar af órokgjörnu órafkleyfu efni í benseni sem lýst er í <link target-id="fs-idp5504000"/>?</para><para id="fs-idm51191952"><title>Lausn</title>Notaðu jöfnuna sem tengir frostmarkslækkun við mólalstyrk leysta efnisins til að leysa þetta verkefni í tveimur skrefum.</para>
 <media id="fs-idm98789600" class="scaled-down" alt="This is a diagram with three boxes connected with two arrows pointing to the right. The first box is labeled, “Molality of solution,” followed by an arrow labeled, “1,” pointing to a second box labeled, “Change in freezing point,” followed by an arrow labeled, “2” pointing to a third box labeled, “New freezing point.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_Ex04Steps_img.jpg"/>
 </media>
@@ -221,14 +216,14 @@
 <item><emphasis effect="italics">Reiknaðu breytinguna á frostmarki.</emphasis><newline/> <equation id="fs-idm84391712" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>5.12</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>m</m:mi><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.33</m:mn><m:mspace width="0.2em"/><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>1.7</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math></equation></item>
 <item><emphasis effect="italics">Dragðu frostmarksbreytinguna frá frostmarki hreina leysisins.</emphasis><newline/> <equation id="fs-idp241028320" class="unnumbered"><m:math><m:mrow><m:mtext>Freezing Temperature</m:mtext><m:mo>=</m:mo><m:mn>5.5</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>−</m:mo><m:mn>1.7</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mn>3.8</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math></equation></item>
 </list>
-<para id="fs-idp138267744"><title>Spyrðu sjálfan þig</title>Miðað við hegðun kjörlausnar, hvert er frostmark 1,85 <emphasis effect="italics">m</emphasis> lausnar af órokgjörnu órafkleyfu efni í nítróbenseni?</para>
+<para id="fs-idp138267744"><title>Kannaðu þekkingu þína</title>Miðað við að lausnin sé kjörlausn, hvert er frostmark 1,85 <emphasis effect="italics">m</emphasis> lausnar af órokgjörnu órafkleyfu efni í nítróbenseni?</para>
 <note id="fs-idm48913776"><title>Answer:</title>
 <para id="fs-idp190854592">−9,3 °C</para></note>
 </example>
 <note id="fs-idm63324816" class="chemistry everyday-life">
 <title>Samþynningareiginleikar og afísun</title>
-<para id="fs-idp175903616">Natríumklóríð og hliðstæður þess úr 2. hóp, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, vegna þess að lausn af einhverju þessara salta hefur lægra frostmark en 0 °C, sem er frostmark hreins vatns. Málmsöltin úr 2. hóp eru oft blönduð við ódýrara og aðgengilegra natríumklóríð („steinsalt“) til notkunar á vegum, þar sem þau eru yfirleitt nokkuð minna tærandi en NaCl og þau valda meiri frostmarkslækkun, þar sem þau sundrast og gefa af sér þrjár agnir á hverja formúleiningu, frekar en tvær agnir eins og natríumklóríð.</para>
-<para id="fs-idp139731616">Vegna þess að þessi jónaefnasambönd hafa tilhneigingu til að flýta fyrir tæringu málma væri ekki skynsamlegt að nota þau í frostlög fyrir kælikerfi bílsins þíns eða til að afísa flugvél fyrir flugtak. Í slíkum tilvikum eru samgild efnasambönd, eins og etýlen- eða própýlenglýkól, oft notuð. Glýkólin sem notuð eru í kælivökva lækka ekki aðeins frostmark vökvans, heldur hækka þau einnig suðumarkið, sem gerir vökvann gagnlegan bæði að vetri og sumri. Upphituðum glýkólum er oft úðað á yfirborð flugvéla fyrir flugtak í slæmu veðri að vetri til að fjarlægja ís sem þegar hefur myndast og koma í veg fyrir frekari ísmyndun, sem væri sérstaklega hættuleg ef hún myndaðist á stjórnflötum flugvélarinnar (<link target-id="CNX_Chem_11_04_deice"/>).</para>
+<para id="fs-idp175903616">Natríumklóríð og hliðstæður þess úr hópi 2, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, þar sem lausn af einhverju þessara salta hefur frostmark undir 0 °C, sem er frostmark hreins vatns. Málmsöltin úr hópi 2 eru oft blönduð við ódýrara og aðgengilegra natríumklóríð („steinsalt“) til notkunar á vegum, þar sem þau eru síður tærandi en NaCl og valda meiri frostmarkslækkun, þar sem þau sundrast og gefa af sér þrjár agnir á hverja formúleiningu, í stað tveggja agna eins og natríumklóríð.</para>
+<para id="fs-idp139731616">Vegna þess að þessi jónaefnasambönd hafa tilhneigingu til að flýta fyrir tæringu málma væri ekki skynsamlegt að nota þau í frostlög fyrir kælikerfi bílsins eða til að afísa flugvél fyrir flugtak. Í slíkum tilvikum eru samgild efnasambönd, eins og etýlen- eða própýlenglýkól, oft notuð. Glýkólin sem notuð eru í kælivökva lækka ekki aðeins frostmark vökvans, heldur hækka þau einnig suðumarkið, sem gerir vökvann gagnlegan bæði að vetri og sumri. Upphituðum glýkólum er oft úðað á yfirborð flugvéla fyrir flugtak í slæmu veðri að vetri til að fjarlægja ís sem þegar hefur myndast og koma í veg fyrir frekari ísmyndun, sem væri sérstaklega hættuleg ef hún myndaðist á stjórnflötum flugvélarinnar (<link target-id="CNX_Chem_11_04_deice"/>).</para>
 <figure id="CNX_Chem_11_04_deice" class="scaled-down"><media id="fs-idp133082032" alt="This figure contains two photos. The first photo is a rear view of a large highway maintenance truck carrying a bright orange de-icer sign. A white material appears to be deposited at the rear of the truck onto the roadway. The second image is of an airplane being sprayed with a solution to remove ice prior to take off.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_deice.jpg"/>
 </media>
@@ -236,98 +231,98 @@
 </section>
 <section id="fs-idp13633296">
 <title>Fasarit fyrir lausn</title>
-<para id="fs-idp129023680">Samþjöppunaráhrifin á gufunarþrýsting, suðumark og frostmark sem lýst var í fyrri hlutanum eru á þægilegan hátt tekin saman með því að bera saman fasarit fyrir hreinan vökva og lausn sem unnin er úr þeim vökva (<link target-id="CNX_Chem_11_04_phasediag"/>).</para>
+<para id="fs-idp129023680">Samþjöppunaráhrifunum á gufunarþrýsting, suðumark og frostmark sem lýst var í fyrri hluta er á þægilegan hátt tekið saman með því að bera saman fasarit fyrir hreinan vökva og lausn sem unnin er úr þeim vökva (<link target-id="CNX_Chem_11_04_phasediag"/>).</para>
 <figure id="CNX_Chem_11_04_phasediag">
 <media id="fs-idp105222176" alt="This phase diagram indicates the pressure in atmospheres of water and a solution at various temperatures. The graph shows the freezing point of water and the freezing point of the solution, with the difference between these two values identified as delta T subscript f. The graph shows the boiling point of water and the boiling point of the solution, with the difference between these two values identified as delta T subscript b. Similarly, the difference in the pressure of water and the solution at the boiling point of water is shown and identified as delta P. This difference in pressure is labeled vapor pressure lowering. The lower level of the vapor pressure curve for the solution as opposed to that of pure water shows vapor pressure lowering in the solution. Background colors on the diagram indicate the presence of water and the solution in the solid state to the left, liquid state in the central upper region, and gas to the right.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_phasediag.jpg"/>
 </media>
 <caption>Fasarit fyrir hreinan leysi (heilar línur) og lausn sem mynduð er með því að leysa upp órokgjarnt leysið efni í leysinum (brotnar línur).</caption>
 </figure>
-<para id="fs-idp41257984">Vökva-gufu ferillinn fyrir lausnina er staðsettur <emphasis effect="italics">fyrir neðan</emphasis> samsvarandi feril fyrir leysinn, sem sýnir <emphasis effect="italics">lækkun</emphasis> gufunarþrýstings, Δ<emphasis effect="italics">P</emphasis>, sem verður vegna upplausnar órokgjarns leysis efnis. Þar af leiðandi, við hvaða þrýsting sem er, sést suðumark lausnarinnar við hærra hitastig en fyrir hreina leysinn, sem endurspeglar suðumarkshækkunina, Δ<emphasis effect="italics">T</emphasis><sub>b</sub>, sem tengist tilvist órokgjarns leysis efnis. Fast efni-vökvi ferillinn fyrir lausnina er hliðraður til vinstri miðað við ferilinn fyrir hreina leysinn, sem táknar frostmarkslækkunina, Δ<emphasis effect="italics">T</emphasis><sub>f</sub>, sem fylgir myndun lausnar. Að lokum, takið eftir að fast efni-gas ferlarnir fyrir leysinn og lausn hans eru eins. Þetta á við um margar lausnir sem samanstanda af fljótandi leysum og órokgjörnum leystum efnum. Rétt eins og við uppgufun, þegar lausn af þessu tagi er fryst, eru það í raun aðeins <emphasis effect="italics">leysisameindirnar</emphasis> sem gangast undir fasabreytinguna úr vökva í fast efni og mynda hreint fast efni af leysinum sem útilokar agnir leysta efnisins. Föstu og loftkenndu fasarnir samanstanda því aðeins af leysi, og því eru breytingar milli þessara fasa ekki háðar samþjöppunaráhrifum.</para>
+<para id="fs-idp41257984">Vökva-gufu-ferillinn fyrir lausnina er staðsettur <emphasis effect="italics">fyrir neðan</emphasis> samsvarandi feril fyrir leysinn, sem sýnir <emphasis effect="italics">lækkun</emphasis> gufunarþrýstings, Δ<emphasis effect="italics">P</emphasis>, sem stafar af upplausn órokgjarns leysis efnis. Þar af leiðandi, við hvaða þrýsting sem er, sést suðumark lausnarinnar við hærra hitastig en fyrir hreina leysinn, sem endurspeglar suðumarkshækkunina, Δ<emphasis effect="italics">T</emphasis><sub>b</sub>, sem tengist tilvist órokgjarns leysis efnis. Fast-vökva-ferillinn fyrir lausnina er færður til vinstri miðað við feril hreina leysisins, sem táknar frostmarkslækkunina, Δ<emphasis effect="italics">T</emphasis><sub>f</sub>, sem fylgir myndun lausnar. Að lokum skal tekið eftir því að fast-gas-ferlarnir fyrir leysinn og lausn hans eru eins. Þetta á við um margar lausnir sem samanstanda af fljótandi leysum og órokgjörnum leystum efnum. Rétt eins og við uppgufun, þegar lausn af þessu tagi er fryst, eru það í raun aðeins <emphasis effect="italics">leysi</emphasis>sameindirnar sem gangast undir umskiptin frá vökva yfir í fast efni og mynda hreint fast efni leysis sem útilokar agnir leysta efnisins. Föstu og loftkenndu fasarnir samanstanda því eingöngu af leysi og því eru umskipti milli þessara fasa ekki háð samþjöppunaráhrifum.</para>
 </section>
 <section id="fs-idp129025744">
 <title>Himnuflæði og flæðiþrýstingur lausna</title>
-<para id="fs-idm50348928">Fjöldi náttúrulegra og tilbúinna efna sýnir <emphasis effect="italics">sértækt gegndræpi</emphasis>, sem þýðir að aðeins sameindir eða jónir af ákveðinni stærð, lögun, skautun, hleðslu og svo framvegis geta farið í gegnum (gegnsýrt) efnið. Líffræðilegar frumuhimnur eru glæsileg dæmi um sértækt gegndræpi í náttúrunni, á meðan skilunarhimnur sem notaðar eru til að fjarlægja efnaskiptaúrgang úr blóði eru einfaldara tæknilegt dæmi. Óháð því hvernig þau kunna að vera framleidd eru þessi efni almennt kölluð <term id="term-00008">hálfgegndræpar himnur (e. semipermeable membranes)</term>.</para>
-<para id="fs-idp858960">Íhugið búnaðinn sem sýndur er á <link target-id="CNX_Chem_11_04_osmosis"/>, þar sem sýni af hreinum leysi og lausn eru aðskilin með himnu sem aðeins leysisameindir geta farið í gegnum. Leysisameindir munu dreifast yfir himnuna í báðar áttir. Þar sem styrkur <emphasis effect="italics">leysisins</emphasis> er meiri í hreina leysinum en í lausninni munu þessar sameindir dreifast frá leysishlið himnunnar yfir á lausnarhliðina á meiri hraða en í öfuga átt. Niðurstaðan er nettóflutningur leysisameinda frá hreina leysinum yfir í lausnina. Dreifingardrifinn flutningur leysisameinda í gegnum hálfgegndræpa himnu er ferli sem kallast <term id="term-00009">himnuflæði (e. osmosis)</term>.</para>
+<para id="fs-idm50348928">Fjöldi náttúrulegra og tilbúinna efna sýna <emphasis effect="italics">sértæka gegndræpi</emphasis>, sem þýðir að aðeins sameindir eða jónir af ákveðinni stærð, lögun, skautun, hleðslu og svo framvegis geta farið í gegnum (gegnsýrt) efnið. Líffræðilegar frumuhimnur eru glæsileg dæmi um sértækt gegndræpi í náttúrunni, á meðan skilunarhimnur sem notaðar eru til að fjarlægja efnaskiptaúrgang úr blóði eru einfaldara tæknilegt dæmi. Óháð því hvernig þau kunna að vera framleidd eru þessi efni almennt kölluð <term id="term-00008">hálfgegndræpar himnur (e. semipermeable membranes)</term>.</para>
+<para id="fs-idp858960">Lítum á búnaðinn sem sýndur er á <link target-id="CNX_Chem_11_04_osmosis"/>, þar sem sýni af hreinum leysi og lausn eru aðskilin með himnu sem aðeins leysisameindir geta farið í gegnum. Leysisameindir munu flæða yfir himnuna í báðar áttir. Þar sem styrkur <emphasis effect="italics">leysisins</emphasis> er meiri í hreina leysinum en í lausninni munu þessar sameindir flæða frá leysishlið himnunnar yfir á lausnarhliðina á meiri hraða en í öfuga átt. Niðurstaðan er nettóflutningur leysisameinda frá hreina leysinum yfir í lausnina. Flæðidrifinn flutningur leysisameinda í gegnum hálfgegndræpa himnu er ferli sem kallast <term id="term-00009">himnuflæði (e. osmosis)</term>.</para>
 <figure id="CNX_Chem_11_04_osmosis" class="scaled-down">
 <media id="fs-idm58360672" alt="The figure shows two U shaped tubes with a semi permeable membrane placed at the base of the U. In figure a, pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows pointing from three small yellow spheres on both sides of the membrane cross over the membrane. An arrow drawn from one of the large blue spheres does not cross the membrane, but rather is reflected back from the surface of the membrane. The levels of liquid in both sides of the U shaped tube are equal. In figure b, arrows again point from small yellow spheres across the semipermeable membrane from both sides. This diagram shows the level of liquid in the left, pure solvent, side to be significantly lower than the liquid level on the right. Dashed lines are drawn from these two liquid levels into the middle of the U-shaped tube and between them is a red, double-headed, vertical arrow next to the term osmotic pressure.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_osmosis.jpg"/>
 </media>
 <caption>(a) Lausn og hreinn leysir eru í upphafi aðskilin með himnuflæðishimnu. (b) Nettóflutningur leysisameinda yfir í lausnina á sér stað þar til flæðiþrýstingur hennar veldur jöfnum flutningshraða í báðar áttir.</caption>
 </figure>
-<para id="fs-idp66789904">Þegar himnuflæði fer fram í búnaði eins og þeim sem sýndur er á <link target-id="CNX_Chem_11_04_osmosis"/>, eykst rúmmál lausnarinnar þegar hún þynnist við uppsöfnun leysis. Þetta veldur því að yfirborð lausnarinnar hækkar, sem eykur vökvastöðuþrýsting hennar (vegna þyngdar lausnarsúlunnar í rörinu) og leiðir til hraðari flutnings leysisameinda aftur yfir á hreina leysishliðina. Þegar þrýstingurinn nær gildi sem gefur andstæðan flutningshraða leysis sem er jafn himnuflæðishraðanum, stöðvast heildarflutningur leysis. Þessi þrýstingur er kallaður <term id="term-00010">flæðiþrýstingur (<emphasis effect="italics">Π</emphasis>) (e. osmotic pressure (<emphasis effect="italics">π</emphasis>))</term> lausnarinnar. Flæðiþrýstingur þunnrar lausnar er tengdur mólstyrk hennar, <emphasis effect="italics">M</emphasis>, og algeru hitastigi, <emphasis effect="italics">T</emphasis>, samkvæmt jöfnunni</para>
+<para id="fs-idp66789904">Þegar himnuflæði fer fram í búnaði eins og þeim sem sýndur er á <link target-id="CNX_Chem_11_04_osmosis"/> eykst rúmmál lausnarinnar þegar hún þynnist við uppsöfnun leysis. Þetta veldur því að yfirborð lausnarinnar hækkar, sem eykur vökvastöðuþrýsting hennar (vegna þunga lausnarsúlunnar í rörinu) og leiðir til hraðari flutnings leysisameinda aftur yfir á hreina leysishliðina. Þegar þrýstingurinn nær gildi sem gefur andstæðan flutningshraða leysis sem er jafn himnuflæðishraðanum, stöðvast heildarflutningur leysis. Þessi þrýstingur er kallaður <term id="term-00010">flæðiþrýstingur (<emphasis effect="italics">Π</emphasis>) (e. osmotic pressure (<emphasis effect="italics">π</emphasis>))</term> lausnarinnar. Flæðiþrýstingur þunnrar lausnar er tengdur mólstyrk hennar, <emphasis effect="italics">M</emphasis>, og alkulshita, <emphasis effect="italics">T</emphasis>, samkvæmt jöfnunni</para>
 <equation id="fs-idp52754144" class="unnumbered"><m:math><m:mrow><m:mi>Π</m:mi><m:mo>=</m:mo><m:mi>M</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
-<para id="fs-idm58472592">þar sem <emphasis effect="italics">R</emphasis> er alheims gasfastinn.</para>
+<para id="fs-idm58472592">þar sem <emphasis effect="italics">R</emphasis> er algildi gasfastans.</para>
 <example id="fs-idp189701856">
-<para id="fs-idm56671264"><title>Útreikningur á flæðiþrýstingi</title>Miðað við hegðun kjörlausnar, hver er flæðiþrýstingur (atm) 0,30 <emphasis effect="italics">M</emphasis> glúkósalausnar í vatni sem er notuð til innrennslis í æð við líkamshita, 37 °C?</para>
+<para id="fs-idm56671264"><title>Útreikningur á flæðiþrýstingi</title>Miðað við hegðun kjörlausnar, hver er flæðiþrýstingurinn (atm) í 0,30 <emphasis effect="italics">M</emphasis> lausn af glúkósa í vatni sem er notuð í innrennslisgjöf í æð við líkamshita, 37 °C?</para>
 <para id="fs-idp129025040"><title>Lausn</title>Finndu flæðiþrýstinginn, <emphasis effect="italics">Π</emphasis>, með því að nota formúluna <emphasis effect="italics">Π</emphasis> = <emphasis effect="italics">MRT</emphasis>, þar sem <emphasis effect="italics">T</emphasis> er á Kelvin-kvarða (310 K) og gildi <emphasis effect="italics">R</emphasis> er gefið upp í viðeigandi einingum (0,08206 L atm/mól K).</para>
 <equation id="fs-idp2055216" class="unnumbered">
   <m:math><m:mtable><m:mtr/><m:mtr><m:mtd columnalign="right"><m:mi>Π</m:mi></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo><m:mi>M</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mtd></m:mtr><m:mtr><m:mtd/>
-  <m:mtd columnalign="left"><m:mo>=</m:mo><m:mn>0.30</m:mn><m:mspace width="0.2em"/><m:mtext>mol/L</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.08206 L atm/mol K</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>310 K</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mn>7.6</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm13907968"><title>Athugaðu þekkingu þína</title>Miðað við hegðun kjörlausnar, hver er flæðiþrýstingurinn (atm) í lausn með rúmmálið 0,750 L sem inniheldur 5,0 g af metanóli, CH<sub>3</sub>OH, í vatni við 37 °C?</para>
+  <m:mtd columnalign="left"><m:mo>=</m:mo><m:mn>0.30</m:mn><m:mspace width="0.2em"/><m:mtext>mol/L</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.08206 L atm/mol K</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>310 K</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mn>7.6</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm13907968"><title>Skoðaðu þekkingu þína</title>Miðað við hegðun kjörlausnar, hver er flæðiþrýstingurinn (atm) í lausn með rúmmálið 0,750 L sem inniheldur 5,0 g af metanóli, CH<sub>3</sub>OH, í vatni við 37 °C?</para>
 <note id="fs-idp21860928"><title>Answer:</title>
 <para id="fs-idm38797232">5,3 atm</para></note>
 </example>
-<para id="fs-idp135138240">Ef lausn er sett í tæki eins og sýnt er á <link target-id="CNX_Chem_11_04_rvosmosis"/> og beitt er þrýstingi sem er meiri en flæðiþrýstingur lausnarinnar, snýst himnuflæðið við og leysissameindir þrýstast úr lausninni yfir í hreina leysinn. Þessi tækni, sem kallast öfugt himnuflæði, er notuð við stórfellda afsöltun sjávar og í minni mæli til að framleiða hágæða kranavatn til drykkjar.</para>
+<para id="fs-idp135138240">Ef lausn er sett í tæki eins og það sem sýnt er á <link target-id="CNX_Chem_11_04_rvosmosis"/>, veldur það að beita þrýstingi sem er meiri en flæðiþrýstingur lausnarinnar að himnuflæði snýst við og þrýstir leysisameindum úr lausninni yfir í hreina leysinn. Þessi tækni, sem kallast öfugt himnuflæði, er notuð við stórfellda afsöltun sjávar og í minni mæli til að framleiða hágæða kranavatn til drykkjar.</para>
 <figure id="CNX_Chem_11_04_rvosmosis" class="scaled-down">
 <media id="fs-idm34643696" alt="The figure shows a U shaped tube with a semi permeable membrane placed at the base of the U. Pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows point from four small yellow spheres to the left of the membrane. On the right side of the U, there is a disk that is the same width of the tube and appears to block it. The disk is at the same level as the solution. An arrow points down from the top of the tube to the disk and is labeled, “Pressure greater than Π subscript solution.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_rvosmosis.jpg"/>
 </media>
-<caption>Með því að beita þrýstingi sem er meiri en flæðiþrýstingur lausnar snýst himnuflæði við. Leysissameindir úr lausninni eru þrýstar yfir í hreina leysinn.</caption>
+<caption>Að beita þrýstingi sem er meiri en flæðiþrýstingur lausnar mun snúa himnuflæði við. Leysisameindum úr lausninni er þrýst yfir í hreina leysinn.</caption>
 </figure>
 <note id="fs-idm17300528" class="chemistry everyday-life">
 <title>Vatnshreinsun með öfugu himnuflæði</title>
-<para id="fs-idp71311280">Í himnuflæðisferli sér sveim um að flytja vatn í gegnum hálfgegndræpa himnu úr lausn með lægri styrk yfir í lausn með hærri styrk. Flæðiþrýstingur er sá þrýstingur sem þarf að beita á lausnina með hærri styrk til að stöðva himnuflæðið. Ef meiri þrýstingi er beitt fer vatnið úr lausninni með hærri styrk yfir í lausn með lægri styrk (hreinni lausn). Þetta er kallað öfugt himnuflæði. Öfugt himnuflæði (RO) er notað til að hreinsa vatn í mörgum tilgangi, allt frá afsöltunarstöðvum í strandborgum, til vatnshreinsivéla í matvöruverslunum (<link target-id="CNX_Chem_11_04_waterpur"/>) og minni öfugt himnuflæðis eininga fyrir heimili. Með handknúinni dælu er hægt að nota litlar RO-einingar í þriðja heims löndum, á hamfarasvæðum og í björgunarbátum. Herinn okkar hefur ýmsar rafknúnar RO-einingar sem hægt er að flytja í farartækjum til afskekktra staða.</para>
+<para id="fs-idp71311280">Í himnuflæðisferli sér sveim um að flytja vatn í gegnum hálfgegndræpa himnu úr lausn með lægri styrk yfir í lausn með hærri styrk. Flæðiþrýstingur er sá þrýstingur sem þarf að beita á lausnina með hærri styrk til að stöðva himnuflæði. Ef meiri þrýstingi er beitt fer vatnið úr lausninni með hærri styrk yfir í lausn með lægri styrk (hreinni). Þetta er kallað öfugt himnuflæði. Öfugt himnuflæði (RO) er notað til að hreinsa vatn í mörgum tilgangi, allt frá afsöltunarstöðvum í strandborgum, til vatnshreinsivéla í matvöruverslunum (<link target-id="CNX_Chem_11_04_waterpur"/>), og minni öfugt himnuflæðiskerfa fyrir heimili. Með handknúinni dælu er hægt að nota lítil RO-kerfi í þróunarlöndum, á hamfarasvæðum og í björgunarbátum. Herir okkar hafa margs konar rafknúin RO-kerfi sem hægt er að flytja í farartækjum til afskekktra staða.</para>
 <figure id="CNX_Chem_11_04_waterpur">
 <media id="fs-idp117713424" alt="This figure shows two photos of reverse osmosis systems. The first is a small system that appears easily portable. The second is larger and situated outdoors.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_waterpur.jpg"/>
 </media>
-<caption>Kerfi fyrir öfugt himnuflæði til að hreinsa drykkjarvatn eru sýnd hér í (a) litlum og (b) stórum skala. (heimild a: breyting á verki eftir Jerry Kirkhart; heimild b: breyting á verki eftir Willard J. Lathrop)</caption>
+<caption>Öfugt himnuflæðiskerfi til að hreinsa drykkjarvatn eru sýnd hér í (a) litlum og (b) stórum skala. (mynd a: breyting á verki eftir Jerry Kirkhart; mynd b: breyting á verki eftir Willard J. Lathrop)</caption>
 </figure>
 </note>
-<para id="fs-idp53491872">Dæmi um himnuflæði eru augljós í mörgum líffræðilegum kerfum þar sem frumur eru umluktar hálfgegndræpum himnum. Gulrætur og sellerí sem hafa orðið lin vegna vatnstaps geta orðið stökk aftur með því að setja þau í vatn. Vatn fer inn í gulrótar- eða sellerífrumurnar með himnuflæði. Gúrka sem er sett í þétta saltlausn tapar vatni með himnuflæði og gleypir í sig salt til að verða að súrum gúrkum. Himnuflæði getur einnig haft áhrif á dýrafrumur. Styrkur leystra efna er sérstaklega mikilvægur þegar lausnum er sprautað í líkamann. Leyst efni í líkamsfrumuvökva og blóðsermi gefa þessum lausnum flæðiþrýsting upp á um það bil 7,7 atm. Lausnir sem sprautað er í líkamann verða að hafa sama flæðiþrýsting og blóðsermi; það er, þær eiga að vera <term id="term-00011">jafnþrýstnar (ísótónískar) (e. isotonic)</term> við blóðsermi. Ef lausn með lægri styrk, <term id="term-00012">undirþrýstin (hýpótónísk) (e. hypotonic)</term> lausn, er sprautað í nægilegu magni til að þynna blóðsermið, fer vatn úr þynnta serminu inn í blóðfrumurnar með himnuflæði, sem veldur því að frumurnar þenjast út og rofna. Þetta ferli er kallað <term id="term-00013">blóðrof (hemólýsa) (e. hemolysis)</term>. Þegar lausn með hærri styrk, <term id="term-00014">yfirþrýstin (hýpertónísk) (e. hypertonic)</term> lausn, er sprautað, tapa frumurnar vatni yfir í lausnina með hærri styrk, skreppa saman og deyja hugsanlega í ferli sem kallast <term id="term-00015">frumuskropp (krenasjón) (e. crenation)</term>. Þessi áhrif eru sýnd á <link target-id="CNX_Chem_11_04_bloodcell"/>.</para>
+<para id="fs-idp53491872">Dæmi um himnuflæði eru augljós í mörgum líffræðilegum kerfum þar sem frumur eru umluktar hálfgegndræpum himnum. Gulrætur og sellerí sem hafa orðið lin vegna vatnstaps er hægt að gera stökk aftur með því að setja þau í vatn. Vatn fer inn í gulrótar- eða sellerífrumurnar með himnuflæði. Gúrka sem er sett í þétta saltlausn tapar vatni með himnuflæði og gleypir í sig salt til að verða að súrum gúrkum. Himnuflæði getur einnig haft áhrif á dýrafrumur. Styrkur uppleystra efna er sérstaklega mikilvægur þegar lausnum er sprautað inn í líkamann. Uppleyst efni í líkamsfrumuvökva og blóðsermi gefa þessum lausnum flæðiþrýsting sem er um það bil 7,7 atm. Lausnir sem sprautað er inn í líkamann verða að hafa sama flæðiþrýsting og blóðsermi; það er, þær eiga að vera <term id="term-00011">samþrýstnar (ísótónískar) (e. isotonic)</term> við blóðsermi. Ef lausn með lægri styrk, <term id="term-00012">undirþrýstin (hýpótónísk) (e. hypotonic)</term> lausn, er sprautað í nægilegu magni til að þynna blóðsermið, fer vatn úr þynnta serminu inn í blóðfrumurnar með himnuflæði, sem veldur því að frumurnar þenjast út og springa. Þetta ferli er kallað <term id="term-00013">blóðrof (hemólýsa) (e. hemolysis)</term>. Þegar lausn með hærri styrk, <term id="term-00014">yfirþrýstin (hýpertónísk) (e. hypertonic)</term> lausn, er sprautað, tapa frumurnar vatni yfir í lausnina með hærri styrk, skreppa saman og deyja hugsanlega í ferli sem kallast <term id="term-00015">frumuskreyfing (krenatíon) (e. crenation)</term>. Þessi áhrif eru sýnd á <link target-id="CNX_Chem_11_04_bloodcell"/>.</para>
 <figure id="CNX_Chem_11_04_bloodcell">
 <media id="fs-idp138335360" alt="This figure shows three scenarios relating to red blood cell membranes. In a, H subscript 2 O has two arrows drawn from it pointing into a red disk. Beneath it in a circle are eleven similar disks with a bulging appearance, one of which appears to have burst with blue liquid erupting from it. In b, the image is similar except that rather than having two arrows pointing into the red disk, one points in and a second points out toward the H subscript 2 O. In the circle beneath, twelve of the red disks are present. In c, both arrows are drawn from a red shriveled disk toward the H subscript 2 O. In the circle below, twelve shriveled disks are shown.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_bloodcell.jpg"/>
 </media>
-<caption>Himnur rauðra blóðkorna eru vatnsgegndræpar og munu (a) þenjast út og hugsanlega rofna í undirþrýstinni lausn; (b) halda eðlilegu rúmmáli og lögun í jafnþrýstinni lausn; og (c) skreppa saman og hugsanlega deyja í yfirþrýstinni lausn. (heimild a/b/c: breytingar á verki eftir „LadyofHats“/Wikimedia commons)</caption>
+<caption>Himnur rauðra blóðkorna eru vatnsgegndræpar og munu (a) bólgna og hugsanlega springa í undirþrýstinni lausn; (b) halda eðlilegu rúmmáli og lögun í samþrýstinni lausn; og (c) skreppa saman og hugsanlega deyja í yfirþrýstinni lausn. (mynd a/b/c: breytingar á verki eftir „LadyofHats“/Wikimedia commons)</caption>
 </figure>
 </section>
 <section id="fs-idp128916512">
 <title>Ákvörðun mólmassa</title>
-<para id="fs-idm4463392">Flæðiþrýstingur og breytingar á frostmarki, suðumarki og gufunarþrýstingi eru í beinu hlutfalli við fjölda agna leysta efnisins sem er til staðar í tilteknu magni af lausn. Þar af leiðandi gerir mæling á einum þessara eiginleika fyrir lausn sem er búin til með þekktum massa af leystu efni kleift að ákvarða mólmassa leysta efnisins.</para>
+<para id="fs-idm4463392">Flæðiþrýstingur og breytingar á frostmarki, suðumarki og gufunarþrýstingi eru í beinu hlutfalli við fjölda uppleystra efnaeinda sem eru til staðar í tilteknu magni af lausn. Þar af leiðandi gerir mæling á einum þessara eiginleika fyrir lausn sem er búin til með þekktum massa af uppleystu efni kleift að ákvarða mólmassa uppleysta efnisins.</para>
 <example id="fs-idp128313856">
-<para id="fs-idp128868560"><title>Ákvörðun mólmassa út frá frostmarkslækkun</title>Lausn af 4,00 g af efni sem ekki er rafsalt, leyst upp í 55,0 g af benseni, reynist frjósa við 2,32 °C. Miðað við hegðun kjörlausnar, hver er mólmassi þessa efnasambands?</para>
+<para id="fs-idp128868560"><title>Ákvörðun mólmassa út frá frostmarkslækkun</title>Lausn af 4,00 g af órafefni uppleystu í 55,0 g af benseni reynist frjósa við 2,32 °C. Miðað við hegðun kjörlausnar, hver er mólmassi þessa efnasambands?</para>
 <para id="fs-idm60947264"><title>Lausn</title>Leystu þetta verkefni með eftirfarandi skrefum.</para>
 <media id="fs-idm56612480" class="scaled-down" alt="This is diagram with five boxes oriented horizontally and linked together with arrows numbered 1 to 4 pointing from each box in succession to the next one to the right. The first box is labeled, “Freezing point of solution.” Arrow 1 points from this box to a second box labeled, “delta T subscript f.” Arrow 2 points from this box to to a third box labeled “Molal concentration of compound.” Arrow labeled 3 points from this box to a fourth box labeled, “Moles of compound in sample.” Arrow 4 points to a fifth box labeled, “Molar mass of compound.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_Ex07Steps_img.jpg"/>
 </media>
 <list id="fs-idm46223904" list-type="enumerated" number-style="arabic" class="stepwise">
 <item><emphasis effect="italics">Ákvarðaðu breytinguna á frostmarki út frá mældu frostmarki og frostmarki hreins bensens</emphasis> (<link target-id="fs-idm37127680"/>).<newline/> <equation id="fs-idp98641088" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:mn>5.5</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>−</m:mo><m:mn>2.32</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mn>3.2</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math></equation></item>
-<item><emphasis effect="italics">Ákvarðaðu mólalstyrkinn út frá K</emphasis><sub>f</sub>, <emphasis effect="italics">frostmarkslækkunarfastanum fyrir bensen</emphasis> (<link target-id="fs-idm37127680"/>), <emphasis effect="italics">og</emphasis> Δ<emphasis effect="italics">T</emphasis><sub>f</sub>.<newline/> <equation id="fs-idp8054864" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="center"><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mi>m</m:mi></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mi>m</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.2</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow><m:mrow><m:mn>5.12</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>m</m:mi><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.63</m:mn><m:mspace width="0.2em"/><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation></item>
-<item><emphasis effect="italics">Ákvarðaðu fjölda móla af efnasambandinu í lausninni út frá mólalstyrknum og massa leysisins sem notaður var til að búa til lausnina.</emphasis><newline/> <equation id="fs-idp57152640" class="unnumbered"><m:math><m:mrow><m:mtext>Moles of solute</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.63</m:mn><m:mspace width="0.2em"/><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.0550</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:menclose><m:mo>=</m:mo><m:mn>0.035</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:math></equation></item>
+<item><emphasis effect="italics">Ákvarðaðu mólstyrkinn út frá K</emphasis><sub>f</sub>, <emphasis effect="italics">frostmarkslækkunarfastanum fyrir bensen</emphasis> (<link target-id="fs-idm37127680"/>), <emphasis effect="italics">og</emphasis> Δ<emphasis effect="italics">T</emphasis><sub>f</sub>.<newline/> <equation id="fs-idp8054864" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="center"><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub><m:mi>m</m:mi></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mi>m</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>f</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.2</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow><m:mrow><m:mn>5.12</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>m</m:mi><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.63</m:mn><m:mspace width="0.2em"/><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+<item><emphasis effect="italics">Ákvarðaðu fjölda móla af efnasambandinu í lausninni út frá mólstyrknum og massa leysisins sem notaður var til að búa til lausnina.</emphasis><newline/> <equation id="fs-idp57152640" class="unnumbered"><m:math><m:mrow><m:mtext>Moles of solute</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.63</m:mn><m:mspace width="0.2em"/><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.0550</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>kg solvent</m:mtext></m:mrow></m:menclose><m:mo>=</m:mo><m:mn>0.035</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:math></equation></item>
 <item><emphasis effect="italics">Ákvarðaðu mólmassann út frá massa leysta efnisins og fjölda móla í þeim massa.</emphasis><newline/> <equation id="fs-idp67442432" class="unnumbered"><m:math><m:mrow><m:mtext>Molar mass</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>4.00</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>0.035</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mtext>g/mol</m:mtext></m:mrow></m:math></equation></item>
 </list>
-<para id="fs-idm56606800"><title>Athugaðu þekkingu þína</title>Lausn af 35,7 g af efni sem ekki er rafsalt í 220,0 g af klóróformi hefur suðumark 64,5 °C. Miðað við hegðun kjörlausnar, hver er mólmassi þessa efnasambands?</para>
+<para id="fs-idm56606800"><title>Skoðaðu þekkingu þína</title>Lausn af 35,7 g af órafefni í 220,0 g af klóróformi hefur suðumark 64,5 °C. Miðað við hegðun kjörlausnar, hver er mólmassi þessa efnasambands?</para>
 <note id="fs-idp188055808"><title>Answer:</title><para id="fs-idp129560688">1,8 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g/mól</para></note></example>
 <example id="fs-idp132624672">
 <para id="fs-idp132624928"><title>Ákvörðun mólmassa út frá flæðiþrýstingi</title>0,500 L sýni af vatnslausn sem inniheldur 10,0 g af hemóglóbíni hefur flæðiþrýsting upp á 5,9 torr við 22 °C. Að því gefnu að um kjörlausn sé að ræða, hver er mólmassi hemóglóbíns?</para>
-<para id="fs-idp67431952"><title>Lausn</title>Hér er ein leið sem hægt er að nota til að leysa dæmið:</para>
+<para id="fs-idp67431952"><title>Lausn</title>Hér er ein leið sem hægt er að nota til að leysa verkefnið:</para>
 <media id="fs-idp37440656" class="scaled-down" alt="This is a diagram with four boxes oriented horizontally and linked together with arrows numbered 1 to 3 pointing from each box in succession to the next one to the right. The first box is labeled, “Osmotic pressure.” Arrow 1 points from this box to a second box labeled, “Molar concentration.” Arrow 2 points from this box to to a third box labeled, “Moles of hemoglobin in sample.” Arrow labeled 3 points from this box to a fourth box labeled, “Molar mass of hemoglobin.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_Ex08Steps_img.jpg"/>
 </media>
 <list id="fs-idm4438560" list-type="enumerated" number-style="arabic" class="stepwise">
-<item><emphasis effect="italics">Umbreyttu flæðiþrýstingnum í loftþrýstingseiningar (atm) og ákvarðaðu síðan mólstyrkinn út frá flæðiþrýstingnum.</emphasis><newline/> <equation id="fs-idp41145344" class="unnumbered"><m:math><m:mtable><m:mtr/><m:mtr><m:mtd><m:mi>Π</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>5.9</m:mn><m:mspace width="0.2em"/><m:mtext>torr</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:mtext>torr</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>7.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mtext>atm</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>Π</m:mi><m:mo>=</m:mo><m:mtext mathvariant="italic">MRT</m:mtext></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>Π</m:mi><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>7.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:mtext>L atm/mol K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>295</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>3.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>M</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+<item><emphasis effect="italics">Umbreyttu flæðiþrýstingnum í andrúmsloft, ákvarðaðu síðan mólstyrkinn út frá flæðiþrýstingnum.</emphasis><newline/> <equation id="fs-idp41145344" class="unnumbered"><m:math><m:mtable><m:mtr/><m:mtr><m:mtd><m:mi>Π</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>5.9</m:mn><m:mspace width="0.2em"/><m:mtext>torr</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:mtext>torr</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>7.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mtext>atm</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>Π</m:mi><m:mo>=</m:mo><m:mtext mathvariant="italic">MRT</m:mtext></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>Π</m:mi><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>7.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:mtext>L atm/mol K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>295</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>3.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>M</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation></item>
 <item><emphasis effect="italics">Ákvarðaðu fjölda móla af hemóglóbíni í lausninni út frá styrknum og rúmmáli lausnarinnar.</emphasis><newline/> <equation id="fs-idp96934912" class="unnumbered"><m:math><m:mrow><m:mtext>moles of hemoglobin</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.500</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:menclose><m:mo>=</m:mo><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext></m:mrow></m:math></equation></item>
 <item><emphasis effect="italics">Ákvarðaðu mólmassann út frá massa hemóglóbínsins og fjölda móla í þeim massa.</emphasis><newline/> <equation id="fs-idm54977888" class="unnumbered"><m:math><m:mrow><m:mtext>molar mass</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>6.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mtext>g/mol</m:mtext></m:mrow></m:math></equation></item>
 </list>
-<para id="fs-idp189571392"><title>Skoðaðu þekkingu þína</title>Að því gefnu að um kjörlausn sé að ræða, hver er mólmassi prótíns ef lausn með 0,02 g af prótíninu í 25,0 ml af lausn hefur flæðiþrýsting upp á 0,56 torr við 25 °C?</para>
+<para id="fs-idp189571392"><title>Skoðaðu þekkingu þína</title>Að því gefnu að um kjörlausn sé að ræða, hver er mólmassi próteins ef lausn með 0,02 g af próteininu í 25,0 ml af lausn hefur flæðiþrýsting upp á 0,56 torr við 25 °C?</para>
 <note id="fs-idp128728480"><title>Answer:</title>
 <para id="fs-idp128729120">3 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> g/mól</para></note>
 </example>
 </section>
 <section id="fs-idp14420592">
-<title>Sameiginlegir eiginleikar rafkleyfra efna</title>
-<para id="fs-idp14421232">Eins og áður hefur komið fram í þessum kafla eru sameiginlegir eiginleikar lausnar einungis háðir fjölda, en ekki tegund, uppleystra efnisagna. Styrkleikahugtökin í jöfnunum fyrir ýmsa sameiginlega eiginleika (frostmarkslækkun, suðumarkshækkun, flæðiþrýstingur) eiga við um <emphasis effect="italics">allar agnir leysta efnisins sem eru til staðar í lausninni</emphasis>. Í þeim lausnum sem fjallað hefur verið um hingað til í þessum kafla hafa leystu efnin verið órafkleyf efni sem leysast upp eðlisfræðilega án klofnunar eða annarra fylgiferla. Hver sameind sem leysist upp gefur eina uppleysta sameind af leysta efninu. Upplausn rafkleyfs efnis er hins vegar ekki svo einföld, eins og sýnt er með tveimur algengum dæmum hér að neðan:</para>
+<title>Samsafneiginleikar rafkleyfa</title>
+<para id="fs-idp14421232">Eins og áður hefur komið fram í þessum kafla eru samsafneiginleikar lausnar einungis háðir fjölda, en ekki tegund, uppleystra efna. Styrkleikahugtökin í jöfnunum fyrir ýmsa samsafneiginleika (frostmarkslækkun, suðumarkshækkun, flæðiþrýstingur) eiga við um <emphasis effect="italics">allar tegundir leystra efna sem eru til staðar í lausninni</emphasis>. Í þeim lausnum sem fjallað hefur verið um hingað til í þessum kafla hafa leystu efnin verið órafkleyf efni sem leysast upp eðlisfræðilega án klofnunar eða annarra fylgiferla. Hver sameind sem leysist upp gefur eina uppleysta sameind af leysta efninu. Upplausn rafkleyfis er hins vegar ekki svo einföld, eins og sýnt er með tveimur algengum dæmum hér að neðan:</para>
 <equation id="fs-idm366139824" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="left"><m:mtext fontstyle="italic">dissociation</m:mtext></m:mtd><m:mtd/><m:mtd/>
 <m:mtd columnalign="left"><m:mtext>NaCl(s)</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
 <m:msup><m:mtext>Na</m:mtext><m:mtext>+</m:mtext></m:msup><m:mtext>(aq)</m:mtext>
@@ -337,10 +332,10 @@
 <m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
 <m:msup><m:mtext>Cl</m:mtext><m:mtext>−</m:mtext></m:msup><m:mtext>(aq)</m:mtext><m:mo>+</m:mo>
 <m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mtext>(aq)</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
-<para id="fs-idp106679776">Ef við skoðum fyrra dæmið og gerum ráð fyrir fullkominni klofnun, þá inniheldur 1,0 <emphasis effect="italics">m</emphasis> vatnslausn af NaCl 2,0 mól af jónum (1,0 mól Na<sup>+</sup> og 1,0 mól Cl<sup>−</sup>) á hvert kílógramm af vatni og búast má við að frostmarkslækkun hennar sé</para>
+<para id="fs-idp106679776">Ef við skoðum fyrra dæmið og gerum ráð fyrir fullkominni klofnun, þá inniheldur 1,0 <emphasis effect="italics">m</emphasis> vatnslausn af NaCl 2,0 mól af jónum (1,0 mól Na<sup>+</sup> og 1,0 mól Cl<sup>−</sup>) á hvert kílógramm af vatni, og búist er við að frostmarkslækkun hennar sé</para>
 <equation id="fs-idp189695024" class="unnumbered"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>T</m:mi><m:mtext>f</m:mtext></m:msub><m:mo>=</m:mo><m:mn>2.0</m:mn><m:mspace width="0.2em"/><m:mtext>mol ions/kg water</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1.86</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C kg water/mol ion</m:mtext><m:mo>=</m:mo><m:mn>3.7</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
-<para id="fs-idp138040256">Þegar þessi lausn er hins vegar raunverulega útbúin og frostmarkslækkun hennar mæld fæst gildið 3,4 °C. Svipað misræmi sést fyrir önnur jónísk efnasambönd og munurinn á mældum og væntum gildum sameiginlegra eiginleika verður yfirleitt meiri eftir því sem styrkur leysta efnisins eykst. Þessar athuganir benda til þess að jónir natríumklóríðs (og annarra sterkra rafkleyfra efna) séu ekki að fullu klofnar í lausn.</para>
-<para id="fs-idp84456528">Til að taka tillit til þessa og forðast villur sem fylgja forsendunni um fullkomna klofnun er notaður tilraunakenndur mælikvarði sem nefndur er til heiðurs þýska efnafræðingnum og Nóbelsverðlaunahafanum Jacobus Henricus van't Hoff. <term id="term-00016">van't Hoff-stuðullinn (<emphasis effect="italics">i</emphasis>) (e. van’t hoff factor (<emphasis effect="italics">i</emphasis>))</term> er skilgreindur sem hlutfall agna leysta efnisins í lausn á móti fjölda uppleystra formúlueininga:</para>
+<para id="fs-idp138040256">Þegar þessi lausn er hins vegar raunverulega útbúin og frostmarkslækkun hennar mæld, fæst gildið 3,4 °C. Svipað misræmi sést fyrir önnur jónísk efnasambönd og munurinn á mældum og væntum gildum samsafneiginleika verður yfirleitt meiri eftir því sem styrkur leysta efnisins eykst. Þessar athuganir benda til þess að jónir natríumklóríðs (og annarra sterkra rafkleyfa) séu ekki að fullu klofnar í lausn.</para>
+<para id="fs-idp84456528">Til að taka tillit til þessa og forðast villur sem fylgja forsendunni um fullkomna klofnun er notaður tilraunakenndur mælikvarði sem nefndur er til heiðurs þýska efnafræðingnum og Nóbelsverðlaunahafanum Jacobus Henricus van't Hoff. <term id="term-00016">van't Hoff-stuðullinn (<emphasis effect="italics">i</emphasis>) (e. van’t hoff factor (<emphasis effect="italics">i</emphasis>))</term> er skilgreindur sem hlutfall uppleystra agna í lausn á móti fjölda uppleystra formúlueininga:</para>
 <equation id="fs-idp129426672" class="unnumbered"><m:math><m:mrow><m:mi>i</m:mi><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>moles of particles in solution</m:mtext></m:mrow><m:mrow><m:mtext>moles of formula units dissolved</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp100413216">Gildi fyrir mælda van't Hoff-stuðla fyrir nokkur leyst efni, ásamt spáðum gildum sem gera ráð fyrir fullkominni klofnun, eru sýnd í <link target-id="fs-idp191832160"/>.</para>
 <table id="fs-idp191832160" class="top-titled" summary="This table provides electrolytes, particles in solution, i (predicted), and i (Measured). H C l yields H superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. N a C l yields N a superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. M g S O subscript 4 yields M g superscript 2 plus and S O subscript 4 superscript 2 minus particles in solution with a predicted i value of 2 and a measured value of 1.3. M g C l subscript 2 yields M g superscript 2 plus and C l superscript minus particles in solution with a predicted i value of 3 and a measured value of 2.7. F e C l subscript 3 yields Fe superscript 3 plus and C l superscript minus particles in solution with a predicted i value of 4 and a measured value of 3.4. Glucose yields C subscript 12 H subscript 22 O subscript 11 particles in solution with a predicted i value of 1 and a measured value of 1.0.">
@@ -408,27 +403,27 @@
 </tbody>
 </tgroup>
 </table>
-<para id="fs-idp18385680">Árið 1923 settu efnafræðingarnir Peter <term class="no-emphasis" id="term-00017">Debye</term> og Erich <term class="no-emphasis" id="term-00018">Hückel</term> fram kenningu til að útskýra það sem virtist vera ófullkomin jónun sterkra rafkleyfa. Þeir lögðu til að þótt aðdráttarkraftar milli jóna í vatnslausn minnki verulega vegna leysishýðingar jónanna og einangrandi áhrifa skautaða leysisins, þá væru þeir ekki alveg afnumdir. Leifaraðdráttarkraftarnir koma í veg fyrir að jónirnar hagi sér sem algjörlega sjálfstæðar eindir (<link target-id="CNX_Chem_11_04_ionpair"/>). Í sumum tilfellum getur jákvæð og neikvæð jón í raun snertst og myndað leysishýðaða einingu sem kallast jónapar. Þannig er <term id="term-00019">virkni (e. activity)</term>, eða virkur styrkur, tiltekinnar jónategundar minni en raunverulegur styrkur gefur til kynna. Jónir verða sífellt víðar aðskildar eftir því sem lausnin er þynntari og leifaraðdráttarkraftar milli jóna minnka stöðugt. Þannig er virkur styrkur jónanna (virkni þeirra) í afar þynntum lausnum í raun jafn raunverulegum styrk. Athugið að van't Hoff-stuðlarnir fyrir rafkleyfa í <link target-id="fs-idp191832160"/> eru fyrir 0,05 <emphasis effect="italics">m</emphasis> lausnir, en við þann styrk er gildi <emphasis effect="italics">i</emphasis> fyrir NaCl 1,9, öfugt við kjörgildið 2.</para>
+<para id="fs-idp18385680">Árið 1923 settu efnafræðingarnir Peter <term class="no-emphasis" id="term-00017">Debye</term> og Erich <term class="no-emphasis" id="term-00018">Hückel</term> fram kenningu til að útskýra það sem virtist vera ófullkomin jónun sterkra rafkleyfa. Þeir lögðu til að þótt aðdráttarkraftar milli jóna í vatnslausn minnki verulega vegna leysishýðingar jónanna og einangrandi áhrifa skautaða leysisins, þá væru þeir ekki alveg afnumdir. Leifaraðdráttarkraftarnir koma í veg fyrir að jónirnar hagi sér sem algjörlega sjálfstæðar agnir (<link target-id="CNX_Chem_11_04_ionpair"/>). Í sumum tilfellum getur jákvæð og neikvæð jón í raun snertst og myndað leysishýdda einingu sem kallast jónapar. Þannig er <term id="term-00019">virkni (e. activity)</term>, eða virkur styrkur, hvers konar jónar minni en raunverulegur styrkur gefur til kynna. Jónir verða sífellt víðar aðskildar eftir því sem lausnin er þynntari og leifaraðdráttarkraftar milli jóna verða minni og minni. Þannig eru virkir styrkir jónanna (virkni þeirra) í afar þynntum lausnum í raun jafnir raunverulegum styrkjum. Athugið að van't Hoff-stuðlarnir fyrir rafkleyfa í <link target-id="fs-idp191832160"/> eru fyrir 0,05 <emphasis effect="italics">m</emphasis> lausnir, en við þann styrk er gildi <emphasis effect="italics">i</emphasis> fyrir NaCl 1,9, öfugt við kjörgildið 2.</para>
 <figure id="CNX_Chem_11_04_ionpair" class="scaled-down">
 <media id="fs-idp133147136" alt="The diagram shows four purple spheres labeled K superscript plus and four green spheres labeled C l superscript minus dispersed in H subscript 2 O as shown by clusters of single red spheres with two white spheres attached. Red spheres represent oxygen and white represent hydrogen. In two locations, the purple and green spheres are touching. In these two locations, the diagram is labeled ion pair. All red and green spheres are surrounded by the white and red H subscript 2 O clusters. The white spheres are attracted to the purple spheres and the red spheres are attracted to the green spheres.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_ionpair.jpg"/>
 </media>
-<caption>Klofnun jónaefna í vatni er ekki alltaf fullkomin vegna myndunar jónapara.</caption>
+<caption>Klofnun jónaefnasambanda í vatni er ekki alltaf fullkomin vegna myndunar jónapara.</caption>
 </figure>
 <example id="fs-idp86700768">
-<para id="fs-idp14421616"><title>Frostmark lausnar rafkleyfis</title>Styrkur jóna í sjó er um það bil sá sami og í lausn sem inniheldur 4,2 g af NaCl uppleyst í 125 g af vatni. Notið þessar upplýsingar og áætlað gildi fyrir van't Hoff-stuðulinn (<link target-id="fs-idp191832160"/>) til að ákvarða frostmark lausnarinnar (gerið ráð fyrir hegðun kjörlausnar).</para>
+<para id="fs-idp14421616"><title>Frostmark lausnar rafkleyfis</title>Styrkur jóna í sjó er um það bil sá sami og í lausn sem inniheldur 4,2 g af NaCl leyst upp í 125 g af vatni. Notið þessar upplýsingar og áætlað gildi fyrir van't Hoff-stuðulinn (<link target-id="fs-idp191832160"/>) til að ákvarða frostmark lausnarinnar (gerið ráð fyrir hegðun kjörlausnar).</para>
 <para id="fs-idp102647856"><title>Lausn</title>Leysið þetta verkefni með eftirfarandi röð skrefa.</para>
 <media id="fs-idp102978912" class="scaled-down" alt="This is a diagram with six boxes oriented horizontally and linked together with arrows numbered 1 to 5 pointing from each box in succession to the next one to the right. The first box is labeled, “Mass of N a C l.” Arrow 1 points from this box to a second box labeled, “Moles of N a C l.” Arrow 2 points from this box to to a third box labeled, Moles of ions.” Arrow labeled 3 points from this box to a fourth box labeled, “Molality of solution.” Arrow 4 points to a fifth box labeled, “Change in freezing point.” Arrow 5 points to a sixth box labeled, “New freezing point.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_04_Ex09Steps_img.jpg"/>
 </media>
 <list id="fs-idp102978032" list-type="enumerated" number-style="arabic" class="stepwise">
-<item><emphasis effect="italics">Breytið úr grömmum í mól af NaCl með því að nota mólmassa NaCl í einingabreytingarstuðlinum.</emphasis><newline/>Niðurstaða: 0,072 mól NaCl</item>
-<item><emphasis effect="italics">Ákvarðið fjölda móla af jónum sem eru til staðar í lausninni með því að nota fjölda móla af jónum í 1 móli af NaCl sem breytistuðul (2 mól jónir/1 mól NaCl).</emphasis><newline/>Niðurstaða: 0,14 mól jónir</item>
+<item><emphasis effect="italics">Breytið úr grömmum í mól af NaCl með því að nota mólmassa NaCl í umreikningsstuðlinum.</emphasis><newline/>Niðurstaða: 0,072 mól NaCl</item>
+<item><emphasis effect="italics">Ákvarðið fjölda móla af jónum sem eru til staðar í lausninni með því að nota fjölda móla af jónum í 1 móli af NaCl sem umreikningsstuðul (2 mól jónir/1 mól NaCl).</emphasis><newline/>Niðurstaða: 0,14 mól jónir</item>
 <item><emphasis effect="italics">Ákvarðið mólalstyrk jónanna í lausninni út frá fjölda móla af jónum og massa leysisins, í kílógrömmum.</emphasis><newline/>Niðurstaða: 1,2 <emphasis effect="italics">m</emphasis></item>
 <item><emphasis effect="italics">Notið beint hlutfall milli breytingar á frostmarki og mólalstyrks til að ákvarða hversu mikið frostmarkið breytist.</emphasis><newline/>Niðurstaða: 2,1 °C</item>
-<item><emphasis effect="italics">Ákvarðið nýja frostmarkið út frá frostmarki hreina leysisins og breytingunni.</emphasis><newline/>Niðurstaða: −2,1 °C<newline/>Yfirfarið hverja niðurstöðu sem sjálfsmat og gætið þess að forðast námundunarvillur með því að halda aukastöfum í niðurstöðu hvers skrefs til að reikna út niðurstöðu næsta skrefs.</item>
+<item><emphasis effect="italics">Ákvarðið nýja frostmarkið út frá frostmarki hreina leysisins og breytingunni.</emphasis><newline/>Niðurstaða: −2,1 °C<newline/>Yfirfarið hverja niðurstöðu sem sjálfsmat og gætið þess að forðast námundunarvillur með því að halda aukanúmerum í niðurstöðu hvers skrefs til að reikna út niðurstöðu næsta skrefs.</item>
 </list>
-<para id="fs-idp140087280"><title>Kannið þekkingu ykkar</title>Reiknið frostmark lausnar af 0,724 g af CaCl<sub>2</sub> í 175 g af vatni, að því gefnu að um fullkomna klofnun og hegðun kjörlausnar sé að ræða.</para>
+<para id="fs-idp140087280"><title>Kannaðu þekkingu þína</title>Reiknaðu frostmark lausnar af 0,724 g af CaCl<sub>2</sub> í 175 g af vatni, að því gefnu að um fullkomna klofnun og hegðun kjörlausnar sé að ræða.</para>
 <note id="fs-idp139444144"><title>Answer:</title>
 <para id="fs-idp139444784">−0,208 °C</para>
 </note>
@@ -436,7 +431,7 @@
 </section>
 <section id="fs-idp136112224" class="summary">
 <title>Lykilhugtök og samantekt</title>
-<para id="fs-idp136112992">Eiginleikar lausnar sem ráðast eingöngu af styrk einda leysta efnisins eru kallaðir heildareiginleikar. Þeir fela í sér breytingar á gufunarþrýstingi, suðumarki og frostmarki leysisins í lausninni. Stærð þessara eiginleika ræðst eingöngu af heildarstyrk einda leysta efnisins í lausninni, ekki af gerð eindanna. Heildarstyrkur einda leysta efnisins í lausn ákvarðar einnig flæðiþrýsting hennar. Þetta er þrýstingurinn sem þarf að beita á lausnina til að koma í veg fyrir sveim sameinda hreins leysis í gegnum hálfgegndræpa himnu inn í lausnina. Jónaefni klofna hugsanlega ekki að fullu í lausn vegna virkniáhrifa og í þeim tilvikum geta heildareiginleikar sem sjást verið minni en spáð var fyrir um.</para>
+<para id="fs-idp136112992">Eiginleikar lausnar sem ráðast eingöngu af styrk agna leysta efnisins kallast samþáttaðir eiginleikar. Þeir fela í sér breytingar á gufuþrýstingi, suðumarki og frostmarki leysisins í lausninni. Stærð þessara eiginleika ræðst eingöngu af heildarstyrk agna leysta efnisins í lausninni, ekki af gerð agnanna. Heildarstyrkur agna leysta efnisins í lausn ákvarðar einnig osmósuþrýsting hennar. Þetta er þrýstingurinn sem þarf að beita á lausnina til að koma í veg fyrir flæði sameinda hreins leysis í gegnum hálfgegndræpa himnu inn í lausnina. Jónaefnasambönd klofna hugsanlega ekki að fullu í lausn vegna virkniáhrifa, en í þeim tilfellum geta athugaðir samþáttaðir eiginleikar verið minni en spáð var fyrir um.</para>
 </section>
 <section id="fs-idp102974528" class="key-equations">
 <title>Lykiljafna</title>
@@ -459,7 +454,7 @@
 <title>Efnafræði – Æfingar í lok kafla</title>
 <exercise id="fs-idp102655040">
 <problem id="fs-idp102655296">
-<para id="fs-idp102655552">Hvað af eftirfarandi tilheyrir stórsæja sviði lausna og hvað tilheyrir smásæja sviðinu: suðumarkshækkun, lögmál Henrys, vetnistengi, jóna-tvískauts aðdráttarkraftur, mólstyrkur, órafkleyft efni, óstoðfræðilegt efnasamband, himnuflæði, leyst jón?</para>
+<para id="fs-idp102655552">Hvað af eftirfarandi tilheyrir stórsæja sviði lausna og hvað tilheyrir smásæja sviðinu: suðumarkshækkun, lögmál Henrys, vetnistengi, jóna-tvískauta aðdráttarkraftur, mólstyrkur, órafkleyft efni, efnasamband með breytilegum hlutföllum, himnuflæði, leysihjúpuð jón?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp128725184">
@@ -467,52 +462,52 @@
 <para id="fs-idp129899584">Hver er smásæja skýringin á stórsæju hegðuninni sem sýnd er á <link document="m68782" target-id="CNX_Chem_11_03_oilwater2"/>?</para>
 </problem>
 <solution id="fs-idp129900480">
-<para id="fs-idp129900736">Styrkur tengjanna milli eins sameinda er meiri en styrkurinn milli ólíkra sameinda. Þess vegna munu sum svæði myndast þar sem vatnssameindir útiloka olíusameindir og önnur svæði þar sem olíusameindir útiloka vatnssameindir, sem myndar misleitt svæði.</para>
+<para id="fs-idp129900736">Styrkur efnatengja milli eins sameinda er meiri en styrkurinn milli ólíkra sameinda. Þess vegna munu sum svæði verða til þar sem vatnssameindirnar útiloka olíusameindir og önnur svæði þar sem olíusameindir útiloka vatnssameindir og mynda þannig misleitt svæði.</para>
 </solution>
 </exercise>
 <exercise id="fs-idp134512208">
 <problem id="fs-idp134512464">
-<para id="fs-idp134512720">Teiknaðu þáttbundið línurit af þrýstingi á móti tíma fyrir vatnsgufu yfir sýni af hreinu vatni og sykurlausn, þegar vökvarnir gufa upp í helming af upprunalegu rúmmáli sínu.</para>
+<para id="fs-idp134512720">Teiknaðu eigindlegt graf sem sýnir þrýsting á móti tíma fyrir vatnsgufu yfir sýni af hreinu vatni og sykurlausn, þar sem vökvarnir gufa upp um helming af upphaflegu rúmmáli sínu.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp169338128">
 <problem id="fs-idp138048336">
-<para id="fs-idp138048592">Lausn af kalíumnítrati, sem er rafkleyfi, og lausn af glýseríni (C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>), sem er órafkleyft efni, sjóða báðar við 100,3 °C. Hvaða aðrir eðliseiginleikar lausnanna tveggja eru eins?</para>
+<para id="fs-idp138048592">Lausn af kalíumnítrati, sem er raflausn, og lausn af glýseríni (C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>), sem er ekki raflausn, sjóða báðar við 100,3 °C. Hvaða aðrir eðliseiginleikar lausnanna tveggja eru eins?</para>
 </problem>
 <solution id="fs-idp129385856">
-<para id="fs-idp129386112">Báðar mynda einsleitar lausnir; suðumarkshækkun þeirra er sú sama, sem og gufuþrýstingslækkun þeirra. Flæðiþrýstingur og frostmarkslækkun eru einnig þau sömu fyrir báðar lausnir.</para>
+<para id="fs-idp129386112">Báðar mynda einsleitar lausnir; suðupunktshækkun þeirra er sú sama, sem og gufuþrýstingslækkun þeirra. Osmósuþrýstingur og frostmarkslækkun eru einnig þau sömu fyrir báðar lausnir.</para>
 </solution>
 </exercise>
 <exercise id="fs-idp102879040">
 <problem id="fs-idp102879296">
-<para id="fs-idp102879552">Hver eru mólhlutföll H<sub>3</sub>PO<sub>4</sub> og vatns í lausn með 14,5 g af H<sub>3</sub>PO<sub>4</sub> í 125 g af vatni?</para>
-<para id="fs-idp169642880">(a) Lýstu skrefunum sem þarf til að svara spurningunni.</para>
+<para id="fs-idp102879552">Hver eru mólbrot H<sub>3</sub>PO<sub>4</sub> og vatns í lausn með 14,5 g af H<sub>3</sub>PO<sub>4</sub> í 125 g af vatni?</para>
+<para id="fs-idp169642880">(a) Lýstu þeim skrefum sem eru nauðsynleg til að svara spurningunni.</para>
 <para id="fs-idp169643264">(b) Svaraðu spurningunni.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp169432880">
 <problem id="fs-idp169433136">
-<para id="fs-idp169433392">Hver eru mólhlutföll HNO<sub>3</sub> og vatns í þéttri lausn af saltpéturssýru (68,0% HNO<sub>3</sub> miðað við massa)?</para>
-<para id="fs-idp104451248">(a) Lýstu skrefunum sem þarf til að svara spurningunni.</para>
+<para id="fs-idp169433392">Hver eru mólbrot HNO<sub>3</sub> og vatns í þéttri lausn af saltpéturssýru (68,0% HNO<sub>3</sub> miðað við massa)?</para>
+<para id="fs-idp104451248">(a) Lýstu þeim skrefum sem eru nauðsynleg til að svara spurningunni.</para>
 <para id="fs-idp104451632">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp87083344">
-<para id="fs-idp87083600">(a) Finndu fjölda móla af HNO<sub>3</sub> og H<sub>2</sub>O í 100 g af lausninni. Finndu mólhlutföll efnanna. (b) Mólhlutfall HNO<sub>3</sub> er 0,378. Mólhlutfall H<sub>2</sub>O er 0,622.</para></solution>
+<para id="fs-idp87083600">(a) Finndu mólfjölda HNO<sub>3</sub> og H<sub>2</sub>O í 100 g af lausninni. Finndu mólbrot efnanna. (b) Mólbrot HNO<sub>3</sub> er 0,378. Mólbrot H<sub>2</sub>O er 0,622.</para></solution>
 </exercise>
 <exercise id="fs-idp977216">
 <problem id="fs-idp140871632">
-<para id="fs-idp140871888">Reiknaðu mólhlutfall hvers leysts efnis og leysis:</para>
+<para id="fs-idp140871888">Reiknaðu mólbrot hvers uppleysts efnis og leysis:</para>
 <para id="fs-idp140872272">(a) 583 g af H<sub>2</sub>SO<sub>4</sub> í 1,50 kg af vatni – sýrulausnin sem notuð er í bílarafgeyma</para>
-<para id="fs-idp102982608">(b) 0,86 g af NaCl í 1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g af vatni – natríumklóríðlausn fyrir inndælingu í bláæð</para>
+<para id="fs-idp102982608">(b) 0,86 g af NaCl í 1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g af vatni – lausn af natríumklóríði fyrir innspýtingu í bláæð</para>
 <para id="fs-idp189420624">(c) 46,85 g af kódeini, C<sub>18</sub>H<sub>21</sub>NO<sub>3</sub>, í 125,5 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH</para>
 <para id="fs-idp176540368">(d) 25 g af I<sub>2</sub> í 125 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH</para>
 </problem>
 </exercise>
 <exercise id="fs-idm61658912">
 <problem id="fs-idm61658656">
-<para id="fs-idm61658400">Reiknaðu mólhlutfall hvers leysts efnis og leysis:</para>
-<para id="fs-idm61658016">(a) 0,710 kg af natríumkarbónati (þvottasóda), Na<sub>2</sub>CO<sub>3</sub>, í 10,0 kg af vatni – mettuð lausn við 0 °C</para>
-<para id="fs-idp95972496">(b) 125 g af NH<sub>4</sub>NO<sub>3</sub> í 275 g af vatni – efnablanda sem notuð er til að búa til skyndikuldabakstur</para>
+<para id="fs-idm61658400">Reiknaðu mólbrot hvers uppleysts efnis og leysis:</para>
+<para id="fs-idm61658016">(a) 0,710 kg af natríumkarbónati (kristalsóda), Na<sub>2</sub>CO<sub>3</sub>, í 10,0 kg af vatni – mettuð lausn við 0 °C</para>
+<para id="fs-idp95972496">(b) 125 g af NH<sub>4</sub>NO<sub>3</sub> í 275 g af vatni – blanda sem notuð er til að búa til skyndikælipoka</para>
 <para id="fs-idp95973792">(c) 25 g af Cl<sub>2</sub> í 125 g af díklórmetani, CH<sub>2</sub>Cl<sub>2</sub></para>
 <para id="fs-idp562064">(d) 0,372 g af tetrahýdrópýridíni, C<sub>5</sub>H<sub>9</sub>N, í 125 g af klóróformi, CHCl<sub>3</sub></para></problem>
 <solution id="fs-idp128047088">
@@ -520,7 +515,7 @@
 </exercise>
 <exercise id="fs-idp82906048">
 <problem id="fs-idp82906304">
-<para id="fs-idp82906560">Reiknaðu mólhlutföll metanóls, CH<sub>3</sub>OH; etanóls, C<sub>2</sub>H<sub>5</sub>OH; og vatns í lausn sem er 40% metanól, 40% etanól og 20% vatn miðað við massa. (Gefðu þér að gögnin séu með tveimur markverðum stöfum.)</para>
+<para id="fs-idp82906560">Reiknaðu mólbrot metanóls, CH<sub>3</sub>OH; etanóls, C<sub>2</sub>H<sub>5</sub>OH; og vatns í lausn sem er 40% metanól, 40% etanól og 20% vatn miðað við massa. (Gefðu þér að gögnin séu með tveimur markverðum stöfum.)</para>
 </problem>
 </exercise>
 <exercise id="fs-idp36238320">
@@ -528,29 +523,29 @@
 <para id="fs-idp36238832">Hver er munurinn á 1 <emphasis effect="italics">M</emphasis> lausn og 1 <emphasis effect="italics">m</emphasis> lausn?</para>
 </problem>
 <solution id="fs-idp36239856">
-<para id="fs-idp36240112">Í 1 <emphasis effect="italics">M</emphasis> lausn er mólið í nákvæmlega 1 L af lausn. Í 1 <emphasis effect="italics">m</emphasis> lausn er mólið í nákvæmlega 1 kg af leysi.</para>
+<para id="fs-idp36240112">Í 1 <emphasis effect="italics">M</emphasis> lausn er eitt mól af efni í nákvæmlega 1 L af lausn. Í 1 <emphasis effect="italics">m</emphasis> lausn er eitt mól af efni í nákvæmlega 1 kg af leysi.</para>
 </solution>
 </exercise>
 <exercise id="fs-idp36241264">
 <problem id="fs-idp36241520">
-<para id="fs-idp36241776">Hver er mólalstyrkur fosfórsýru, H<sub>3</sub>PO<sub>4</sub>, í lausn með 14,5 g af H<sub>3</sub>PO<sub>4</sub> í 125 g af vatni?</para>
-<para id="fs-idp36243696">(a) Lýstu skrefunum sem þarf til að svara spurningunni.</para>
+<para id="fs-idp36241776">Hver er mólstyrkur fosfórsýru, H<sub>3</sub>PO<sub>4</sub>, í lausn með 14,5 g af H<sub>3</sub>PO<sub>4</sub> í 125 g af vatni?</para>
+<para id="fs-idp36243696">(a) Lýstu þeim skrefum sem eru nauðsynleg til að svara spurningunni.</para>
 <para id="fs-idp36244080">(b) Svaraðu spurningunni.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp36246800">
 <problem id="fs-idp36247056">
-<para id="fs-idp36247312">Hver er mólalstyrkur saltpéturssýru í þéttri lausn af saltpéturssýru (68,0% HNO<sub>3</sub> miðað við massa)?</para>
-<para id="fs-idp36248080">(a) Lýstu skrefunum sem þarf til að svara spurningunni.</para>
+<para id="fs-idp36247312">Hver er mólstyrkur saltpéturssýru í þéttri lausn af saltpéturssýru (68,0% HNO<sub>3</sub> miðað við massa)?</para>
+<para id="fs-idp36248080">(a) Lýstu þeim skrefum sem eru nauðsynleg til að svara spurningunni.</para>
 <para id="fs-idp36248464">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp129925184">
-<para id="fs-idp129925440">(a) Ákvarðaðu mólmassa HNO<sub>3</sub>. Ákvarðaðu fjölda móla af sýru í lausninni. Út frá fjölda móla og massa leysisins, ákvarðaðu mólalstyrkinn. (b) 33,7 <emphasis effect="italics">m</emphasis></para>
+<para id="fs-idp129925440">(a) Ákvarðaðu mólmassa HNO<sub>3</sub>. Ákvarðaðu mólfjölda sýru í lausninni. Út frá mólfjölda og massa leysisins, ákvarðaðu mólstyrkinn. (b) 33,7 <emphasis effect="italics">m</emphasis></para>
 </solution>
 </exercise>
 <exercise id="fs-idp172267408">
 <problem id="fs-idp172267664">
-<para id="fs-idp172267920">Reiknaðu mólalstyrk hverrar eftirfarandi lausnar:</para>
+<para id="fs-idp172267920">Reiknið mólalstyrk hverrar eftirfarandi lausnar:</para>
 <para id="fs-idp172268304">(a) 583 g af H<sub>2</sub>SO<sub>4</sub> í 1,50 kg af vatni – sýrulausnin sem notuð er í bílarafgeyma</para>
 <para id="fs-idp172269616">(b) 0,86 g af NaCl í 1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g af vatni – natríumklóríðlausn fyrir inndælingu í bláæð</para><para id="fs-idp172270160">(c) 46,85 g af kódeini, C<sub>18</sub>H<sub>21</sub>NO<sub>3</sub>, í 125,5 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH</para>
 <para id="fs-idp172272464">(d) 25 g af I<sub>2</sub> í 125 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH</para>
@@ -558,8 +553,8 @@
 </exercise>
 <exercise id="fs-idp172276944">
 <problem id="fs-idp172277200">
-<para id="fs-idp172277456">Reiknaðu mólalstyrk hverrar eftirfarandi lausnar:</para>
-<para id="fs-idp172277840">(a) 0,710 kg af natríumkarbónati (þvottasóda), Na<sub>2</sub>CO<sub>3</sub>, í 10,0 kg af vatni – mettuð lausn við 0 °C</para><para id="fs-idp172279120">(b) 125 g af NH<sub>4</sub>NO<sub>3</sub> í 275 g af vatni – efnablanda sem notuð er til að búa til skyndikuldapoka</para>
+<para id="fs-idp172277456">Reiknið mólalstyrk hverrar eftirfarandi lausnar:</para>
+<para id="fs-idp172277840">(a) 0,710 kg af natríumkarbónati (þvottasóda), Na<sub>2</sub>CO<sub>3</sub>, í 10,0 kg af vatni – mettuð lausn við 0 °C</para><para id="fs-idp172279120">(b) 125 g af NH<sub>4</sub>NO<sub>3</sub> í 275 g af vatni – blanda sem notuð er til að búa til skyndikælipoka</para>
 <para id="fs-idp172280416">(c) 25 g af Cl<sub>2</sub> í 125 g af díklórmetani, CH<sub>2</sub>Cl<sub>2</sub></para>
 <para id="fs-idp85806960">(d) 0,372 g af tetrahýdrópýridíni, C<sub>5</sub>H<sub>9</sub>N, í 125 g af klóróformi, CHCl<sub>3</sub></para></problem>
 <solution id="fs-idp85808496">
@@ -573,7 +568,7 @@
 </exercise>
 <exercise id="fs-idm62873376">
 <problem id="fs-idm62873120">
-<para id="fs-idm62872864">13,0% lausn af K<sub>2</sub>CO<sub>3</sub> miðað við massa hefur eðlismassann 1,09 g/cm<sup>3</sup>. Reiknaðu mólalstyrk lausnarinnar.</para>
+<para id="fs-idm62872864">13,0% lausn af K<sub>2</sub>CO<sub>3</sub> miðað við massa hefur eðlismassann 1,09 g/cm<sup>3</sup>. Reiknið mólalstyrk lausnarinnar.</para>
 </problem>
 <solution id="fs-idm62871200">
 <para id="fs-idm62870944">1,08 <emphasis effect="italics">m</emphasis></para>
@@ -581,89 +576,89 @@
 </exercise>
 <exercise id="fs-idp135093440">
 <problem id="fs-idp135093696">
-<para id="fs-idp135093952">Hvers vegna lækkar 1 mól af natríumklóríði frostmark 1 kg af vatni næstum tvöfalt meira en 1 mól af glýseríni?</para>
+<para id="fs-idp135093952">Af hverju lækkar 1 mól af natríumklóríði frostmark 1 kg af vatni næstum tvöfalt meira en 1 mól af glýseríni?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp40718720">
 <problem id="fs-idp40718976">
-<para id="fs-idp40719232">Miðað við hegðun kjörlausnar, hvert er suðumark lausnar af 115,0 g af órokgjörnum súkrósa, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, í 350,0 g af vatni?</para>
-<para id="fs-idp40720768">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara spurningunni</para>
-<para id="fs-idp40721152">(b) Svaraðu spurningunni</para>
+<para id="fs-idp40719232">Miðað við hegðun kjörlausnar, hvert er suðumark lausnar með 115,0 g af órokgjörnum súkrósa, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, í 350,0 g af vatni?</para>
+<para id="fs-idp40720768">(a) Lýsið í grófum dráttum skrefunum sem eru nauðsynleg til að svara spurningunni</para>
+<para id="fs-idp40721152">(b) Svarið spurningunni</para>
 </problem>
 <solution id="fs-idp40721664">
-<para id="fs-idp40721920">(a) Ákvarðaðu mólmassa súkrósa; ákvarðaðu fjölda móla af súkrósa í lausninni; breyttu massa leysisins í kílógrömm; út frá fjölda móla og massa leysisins, ákvarðaðu mólalstyrkinn; ákvarðaðu muninn á suðumarki vatns og suðumarki lausnarinnar; ákvarðaðu nýja suðumarkið. (b) 100,5 °C</para></solution>
+<para id="fs-idp40721920">(a) Ákvarðið mólmassa súkrósa; ákvarðið fjölda móla af súkrósa í lausninni; breytið massa leysisins í eininguna kílógrömm; út frá fjölda móla og massa leysisins, ákvarðið mólalstyrkinn; ákvarðið muninn á suðumarki vatns og suðumarki lausnarinnar; ákvarðið nýja suðumarkið. (b) 100,5 °C</para></solution>
 </exercise>
 <exercise id="fs-idp169311680">
 <problem id="fs-idp169311936">
-<para id="fs-idp169312192">Miðað við hegðun kjörlausnar, hvert er suðumark lausnar af 9,04 g af I<sub>2</sub> í 75,5 g af benseni, að því gefnu að I<sub>2</sub> sé órokgjarnt?</para>
-<para id="fs-idp169313344">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara spurningunni.</para>
-<para id="fs-idp169313728">(b) Svaraðu spurningunni.</para>
+<para id="fs-idp169312192">Miðað við hegðun kjörlausnar, hvert er suðumark lausnar með 9,04 g af I<sub>2</sub> í 75,5 g af benseni, að því gefnu að I<sub>2</sub> sé órokgjarnt?</para>
+<para id="fs-idp169313344">(a) Lýsið í grófum dráttum skrefunum sem eru nauðsynleg til að svara spurningunni.</para>
+<para id="fs-idp169313728">(b) Svarið spurningunni.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp140267616">
 <problem id="fs-idp140267872">
-<para id="fs-idp140268128">Miðað við hegðun kjörlausnar, hvert er frostmark lausnar af 115,0 g af súkrósa, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, í 350,0 g af vatni?</para>
-<para id="fs-idp140269792">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara spurningunni.</para>
-<para id="fs-idp140270176">(b) Svaraðu spurningunni.</para>
+<para id="fs-idp140268128">Miðað við hegðun kjörlausnar, hvert er frostmark lausnar með 115,0 g af súkrósa, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, í 350,0 g af vatni?</para>
+<para id="fs-idp140269792">(a) Lýsið í grófum dráttum skrefunum sem eru nauðsynleg til að svara spurningunni.</para>
+<para id="fs-idp140270176">(b) Svarið spurningunni.</para>
 </problem>
 <solution id="fs-idp140270688">
-<para id="fs-idp140270944">(a) Ákvarðaðu mólmassa súkrósa; ákvarðaðu fjölda móla af súkrósa í lausninni; breyttu massa leysisins í kílógrömm; út frá fjölda móla og massa leysisins, ákvarðaðu mólalstyrkinn; ákvarðaðu muninn á frostmarki vatns og frostmarki lausnarinnar; ákvarðaðu nýja frostmarkið. (b) −1,8 °C</para></solution>
+<para id="fs-idp140270944">(a) Ákvarðið mólmassa súkrósa; ákvarðið fjölda móla af súkrósa í lausninni; breytið massa leysisins í eininguna kílógrömm; út frá fjölda móla og massa leysisins, ákvarðið mólalstyrkinn; ákvarðið muninn á frostmarki vatns og frostmarki lausnarinnar; ákvarðið nýja frostmarkið. (b) −1,8 °C</para></solution>
 </exercise>
 <exercise id="fs-idp128908704">
 <problem id="fs-idp128908960">
-<para id="fs-idp128909216">Miðað við hegðun kjörlausnar, hvert er frostmark lausnar af 9,04 g af I<sub>2</sub> í 75,5 g af benseni?</para>
-<para id="fs-idm52053712">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara eftirfarandi spurningu.</para>
-<para id="fs-idm52053328">(b) Svaraðu spurningunni.</para>
+<para id="fs-idp128909216">Miðað við hegðun kjörlausnar, hvert er frostmark lausnar með 9,04 g af I<sub>2</sub> í 75,5 g af benseni?</para>
+<para id="fs-idm52053712">(a) Lýsið í grófum dráttum skrefunum sem eru nauðsynleg til að svara eftirfarandi spurningu.</para>
+<para id="fs-idm52053328">(b) Svarið spurningunni.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp95687760">
 <problem id="fs-idp95688016">
-<para id="fs-idp95688272">Miðað við hegðun kjörlausnar, hver er flæðiþrýstingur vatnslausnar með 1,64 g af Ca(NO<sub>3</sub>)<sub>2</sub> í vatni við 25 °C? Rúmmál lausnarinnar er 275 ml.</para>
-<para id="fs-idp95689552">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara spurningunni.</para>
-<para id="fs-idp95689936">(b) Svaraðu spurningunni.</para>
+<para id="fs-idp95688272">Miðað við hegðun kjörlausnar, hver er osmósuþrýstingur vatnslausnar með 1,64 g af Ca(NO<sub>3</sub>)<sub>2</sub> í vatni við 25 °C? Rúmmál lausnarinnar er 275 ml.</para>
+<para id="fs-idp95689552">(a) Lýsið í grófum dráttum skrefunum sem eru nauðsynleg til að svara spurningunni.</para>
+<para id="fs-idp95689936">(b) Svarið spurningunni.</para>
 </problem>
 <solution id="fs-idp95690448">
-<para id="fs-idp95690704">(a) Ákvarðaðu mólmassa Ca(NO<sub>3</sub>)<sub>2</sub>; ákvarðaðu fjölda móla af Ca(NO<sub>3</sub>)<sub>2</sub> í lausninni; ákvarðaðu fjölda móla af jónum í lausninni; ákvarðaðu mólstyrk jóna og síðan flæðiþrýstinginn. (b) 2,67 atm</para>
+<para id="fs-idp95690704">(a) Ákvarðið mólmassa Ca(NO<sub>3</sub>)<sub>2</sub>; ákvarðið fjölda móla af Ca(NO<sub>3</sub>)<sub>2</sub> í lausninni; ákvarðið fjölda móla jóna í lausninni; ákvarðið mólstyrk jóna og síðan osmósuþrýstinginn. (b) 2,67 atm</para>
 </solution>
 </exercise>
 <exercise id="fs-idp140011408">
 <problem id="fs-idp140011664">
-<para id="fs-idp140011920">Miðað við hegðun kjörlausnar, hver er flæðiþrýstingur lausnar af nautainsúlíni (mólmassi, 5700 g mól<sup>−1</sup>) við 18 °C ef 100,0 ml af lausninni innihalda 0,103 g af insúlíninu?</para>
-<para id="fs-idp140012848">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara spurningunni.</para>
+<para id="fs-idp140011920">Miðað við hegðun kjörlausnar, hver er osmósuþrýstingur vatnslausnar af nautainsúlíni (mólmassi, 5700 g mól<sup>−1</sup>) við 18 °C ef 100,0 ml af lausninni innihalda 0,103 g af insúlíninu?</para>
+<para id="fs-idp140012848">(a) Lýstu í grófum dráttum skrefunum sem eru nauðsynleg til að svara spurningunni.</para>
 <para id="fs-idp140013232">(b) Svaraðu spurningunni.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp133898592">
 <problem id="fs-idp133898848">
 <para id="fs-idp133899104">Lausn sem inniheldur 5,00 g af efnasambandi leyst upp í 25,00 g af koltetraklóríði (suðumark 76,8 °C; <emphasis effect="italics">K</emphasis><sub>b</sub> = 5,02 °C/<emphasis effect="italics">m</emphasis>) sýnir eðlilegt suðumark við 81,5 °C. Miðað við hegðun kjörlausnar, hver er mólmassi efnasambandsins?</para>
-<para id="fs-idp5557616">(a) Lýstu í grófum dráttum skrefunum sem þarf til að svara spurningunni.</para>
-<para id="fs-idp5558000">(b) Leystu dæmið.</para>
+<para id="fs-idp5557616">(a) Lýstu í grófum dráttum skrefunum sem eru nauðsynleg til að svara spurningunni.</para>
+<para id="fs-idp5558000">(b) Leystu verkefnið.</para>
 </problem>
 <solution id="fs-idp5558512">
-<para id="fs-idp5558768">(a) Ákvarðaðu mólalstyrkinn út frá breytingu á suðumarki og <emphasis effect="italics">K</emphasis><sub>b</sub>; ákvarðaðu mól leysta efnisins í lausninni út frá mólalstyrk og massa leysis; ákvarðaðu mólmassann út frá fjölda móla og massa leysta efnisins. (b) 2,1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g mól<sup>−1</sup></para>
+<para id="fs-idp5558768">(a) Ákvarðið mólalstyrkinn út frá breytingu á suðumarki og <emphasis effect="italics">K</emphasis><sub>b</sub>; ákvarðið mól uppleysts efnis í lausninni út frá mólalstyrk og massa leysis; ákvarðið mólmassann út frá fjölda móla og massa uppleysts efnis. (b) 2,1 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g mól<sup>−1</sup></para>
 </solution>
 </exercise>
 <exercise id="fs-idp128832096">
 <problem id="fs-idp128832352">
-<para id="fs-idp128832608">Sýni af lífrænu efnasambandi (órafkleyft efni) sem vó 1,35 g lækkaði frostmark 10,0 g af benseni um 3,66 °C. Reiknaðu mólmassa efnasambandsins, miðað við hegðun kjörlausnar.</para>
+<para id="fs-idp128832608">Sýni af lífrænu efnasambandi (ekki rafsalts) sem vó 1,35 g lækkaði frostmark 10,0 g af benseni um 3,66 °C. Reiknaðu mólmassa efnasambandsins, miðað við hegðun kjörlausnar.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm4591712">
 <problem id="fs-idm4591456">
-<para id="fs-idm4591200">1,0 <emphasis effect="italics">m</emphasis> lausn af HCl í benseni hefur frostmarkið 0,4 °C. Er HCl rafkleyfi í benseni? Útskýrðu.</para>
+<para id="fs-idm4591200">1,0 <emphasis effect="italics">m</emphasis> lausn af HCl í benseni hefur frostmarkið 0,4 °C. Er HCl rafsalt í benseni? Útskýrðu.</para>
 </problem>
 <solution id="fs-idm4589952">
-<para id="fs-idm4589696">Nei. Hreint bensen frýs við 5,5 °C og því er mælt frostmark þessarar lausnar lækkað um Δ<emphasis effect="italics">T</emphasis><sub>f</sub> = 5,5 − 0,4 = 5,1 °C. Gildið sem reiknað er, að því gefnu að engin jónun HCl eigi sér stað, er Δ<emphasis effect="italics">T</emphasis><sub>f</sub> = (1,0 m)(5,14 °C/<emphasis effect="italics">m</emphasis>) = 5,1 °C. Samræmi þessara gilda styður þá forsendu að HCl sé ekki jónað.</para>
+<para id="fs-idm4589696">Nei. Hreint bensen frýs við 5,5 °C og því er lækkun á frostmarki þessarar lausnar Δ<emphasis effect="italics">T</emphasis><sub>f</sub> = 5,5 − 0,4 = 5,1 °C. Gildið sem reiknað er, að því gefnu að engin jónun HCl eigi sér stað, er Δ<emphasis effect="italics">T</emphasis><sub>f</sub> = (1,0 m)(5,14 °C/<emphasis effect="italics">m</emphasis>) = 5,1 °C. Samræmi þessara gilda styður þá forsendu að HCl sé ekki jónað.</para>
 </solution>
 </exercise>
 <exercise id="fs-idm4586416">
 <problem id="fs-idm4586160">
-<para id="fs-idm4585904">Lausn inniheldur 5,00 g af þvagefni, CO(NH<sub>2</sub>)<sub>2</sub>, sem er órokgjarnt efnasamband, leyst upp í 0,100 kg af vatni. Ef gufunarþrýstingur hreins vatns við 25 °C er 23,7 torr, hver er þá gufunarþrýstingur lausnarinnar (miðað við hegðun kjörlausnar)?</para>
+<para id="fs-idm4585904">Lausn inniheldur 5,00 g af þvagefni, CO(NH<sub>2</sub>)<sub>2</sub>, sem er órokgjarnt efnasamband, leyst upp í 0,100 kg af vatni. Ef gufuþrýstingur hreins vatns við 25 °C er 23,7 torr, hver er gufuþrýstingur lausnarinnar (miðað við hegðun kjörlausnar)?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp140038656">
 <problem id="fs-idp140038912">
-<para id="fs-idp140039168">12,0 g sýni af órafkleyfu efni er leyst upp í 80,0 g af vatni. Lausnin frýs við −1,94 °C. Reiknaðu mólmassa efnisins, miðað við hegðun kjörlausnar.</para>
+<para id="fs-idp140039168">12,0 g sýni af efni sem er ekki rafsalt er leyst upp í 80,0 g af vatni. Lausnin frýs við −1,94 °C. Reiknaðu mólmassa efnisins, miðað við hegðun kjörlausnar.</para>
 </problem>
 <solution id="fs-idp140040000">
 <para id="fs-idp140040512">144 g mól<sup>−1</sup></para>
@@ -676,7 +671,7 @@
 </exercise>
 <exercise id="fs-idp58483920">
 <problem id="fs-idp58484176">
-<para id="fs-idp58484432">Reiknaðu suðumarkshækkun 0,100 kg af vatni sem inniheldur 0,010 mól af NaCl, 0,020 mól af Na<sub>2</sub>SO<sub>4</sub> og 0,030 mól af MgCl<sub>2</sub>, að því gefnu að þessir rafkleyfar sundrist að fullu og miðað við hegðun kjörlausnar.</para>
+<para id="fs-idp58484432">Reiknaðu suðumarkshækkun 0,100 kg af vatni sem inniheldur 0,010 mól af NaCl, 0,020 mól af Na<sub>2</sub>SO<sub>4</sub> og 0,030 mól af MgCl<sub>2</sub>, að því gefnu að þessir rafsaltar sundrist að fullu og lausnin sýni hegðun kjörlausnar.</para>
 </problem>
 <solution id="fs-idp58486224">
 <para id="fs-idp58486480">0,870 °C</para>
@@ -684,12 +679,12 @@
 </exercise>
 <exercise id="fs-idp141394336">
 <problem id="fs-idp141394592">
-<para id="fs-idp141394848">Hvernig gætir þú búið til 3,08 <emphasis effect="italics">m</emphasis> vatnslausn af glýseríni, C<sub>3</sub>H<sub>8</sub>O<sub>3</sub>? Miðað við hegðun kjörlausnar, hvert er frostmark þessarar lausnar?</para>
+<para id="fs-idp141394848">Hvernig gætir þú útbúið 3,08 <emphasis effect="italics">m</emphasis> vatnslausn af glýseríni, C<sub>3</sub>H<sub>8</sub>O<sub>3</sub>? Miðað við hegðun kjörlausnar, hvert er frostmark þessarar lausnar?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp70734848">
 <problem id="fs-idp70735104">
-<para id="fs-idp70735360">Sýni af brennisteini sem vó 0,210 g var leyst upp í 17,8 g af koltvísúlfíði, CS<sub>2</sub> (<emphasis effect="italics">K</emphasis><sub>b</sub> = 2,34 °C/<emphasis effect="italics">m</emphasis>). Ef suðumarkshækkunin var 0,107 °C, hver er þá formúla brennisteinssameindar í koltvísúlfíði (miðað við hegðun kjörlausnar)?</para>
+<para id="fs-idp70735360">Sýni af brennisteini sem vó 0,210 g var leyst upp í 17,8 g af koltvísúlfíði, CS<sub>2</sub> (<emphasis effect="italics">K</emphasis><sub>b</sub> = 2,34 °C/<emphasis effect="italics">m</emphasis>). Ef suðumarkshækkunin var 0,107 °C, hver er formúla brennisteinssameindar í koltvísúlfíði (miðað við hegðun kjörlausnar)?</para>
 </problem>
 <solution id="fs-idp70737776">
 <para id="fs-idp199918928">S<sub>8</sub></para>
@@ -697,24 +692,24 @@
 </exercise>
 <exercise id="fs-idm56693456">
 <problem id="fs-idm56693200">
-<para id="fs-idm56692944">Í mikilvægri tilraun sem gerð var fyrir mörgum árum hækkaði suðumark 44,69 g af vatni um 0,181 °C þegar 5,6977 g af kadmínjoðíði var leyst upp í því. Hvað bendir þetta til um eðli lausnar af CdI<sub>2</sub>?</para>
+<para id="fs-idm56692944">Í mikilvægri tilraun sem gerð var fyrir mörgum árum hækkuðu 5,6977 g af kadmínjoðíði í 44,69 g af vatni suðumarkið um 0,181 °C. Hvað bendir þetta til um eðli lausnar af CdI<sub>2</sub>?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp169417488">
 <problem id="fs-idp169417744">
-<para id="fs-idp169418000">Lýsósím er ensím sem klýfur frumuveggi. 0,100 L sýni af lýsósímlausn sem inniheldur 0,0750 g af ensíminu sýnir flæðiþrýsting upp á 1,32 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> atm við 25 °C. Að því gefnu að um kjörlausn sé að ræða, hver er mólmassi lýsósíms?</para></problem>
+<para id="fs-idp169418000">Lýsósím er ensím sem klýfur frumuveggi. 0,100 L sýni af lausn lýsósíms sem inniheldur 0,0750 g af ensíminu sýnir osmósuþrýsting upp á 1,32 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> atm við 25 °C. Miðað við hegðun kjörlausnar, hver er mólmassi lýsósíms?</para></problem>
 <solution id="fs-idp169421504">
 <para id="fs-idp169421760">1,39 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> g mól<sup>−1</sup></para>
 </solution>
 </exercise>
 <exercise id="fs-idp138340304">
 <problem id="fs-idp138340560">
-<para id="fs-idp138340816">Flæðiþrýstingur lausnar sem inniheldur 7,0 g af insúlíni á lítra er 23 torr við 25 °C. Að því gefnu að um kjörlausn sé að ræða, hver er mólmassi insúlíns?</para>
+<para id="fs-idp138340816">Osmósuþrýstingur lausnar sem inniheldur 7,0 g af insúlíni á lítra er 23 torr við 25 °C. Miðað við hegðun kjörlausnar, hver er mólmassi insúlíns?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp135108928">
 <problem id="fs-idp135109184">
-<para id="fs-idp135109440">Flæðiþrýstingur í blóði manna er 7,6 atm við 37 °C. Hve mikinn massa af glúkósa, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, þarf til að búa til 1,00 L af vatnslausn fyrir gjöf í æð ef lausnin verður að hafa sama flæðiþrýsting og blóð við líkamshita, 37 °C (að því gefnu að um kjörlausn sé að ræða)?</para>
+<para id="fs-idp135109440">Osmósuþrýstingur mannsblóðs er 7,6 atm við 37 °C. Hve mikinn massa af glúkósa, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, þarf til að búa til 1,00 L af vatnslausn fyrir gjöf í æð ef lausnin verður að hafa sama osmósuþrýsting og blóð við líkamshita, 37 °C (miðað við hegðun kjörlausnar)?</para>
 </problem>
 <solution id="fs-idp135111616">
 <para id="fs-idp135111872">54 g</para>
@@ -722,12 +717,12 @@
 </exercise>
 <exercise id="fs-idp18476208">
 <problem id="fs-idp18476464">
-<para id="fs-idp18476720">Að því gefnu að um kjörlausn sé að ræða, hvert er frostmark lausnar af díbrómbenseni, C<sub>6</sub>H<sub>4</sub>Br<sub>2</sub>, í 0,250 kg af benseni, ef lausnin sýður við 83,5 °C?</para>
+<para id="fs-idp18476720">Miðað við hegðun kjörlausnar, hvert er frostmark lausnar af díbrómbenseni, C<sub>6</sub>H<sub>4</sub>Br<sub>2</sub>, í 0,250 kg af benseni, ef lausnin sýður við 83,5 °C?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp166052128">
 <problem id="fs-idp166052384">
-<para id="fs-idp166052640">Að því gefnu að um kjörlausn sé að ræða, hvert er suðumark lausnar af NaCl í vatni ef lausnin frýs við −0,93 °C?</para>
+<para id="fs-idp166052640">Miðað við hegðun kjörlausnar, hvert er suðumark lausnar af NaCl í vatni ef lausnin frýs við −0,93 °C?</para>
 </problem>
 <solution id="fs-idp166053360">
 <para id="fs-idp166053616">100,26 °C</para>
@@ -735,18 +730,18 @@
 </exercise>
 <exercise id="fs-idm1532816">
 <problem id="fs-idm1532560">
-<para id="fs-idm1532304">Sykran frúktósi inniheldur 40,0% C, 6,7% H og 53,3% O miðað við massa. Lausn af 11,7 g af frúktósa í 325 g af etanóli hefur suðumark 78,59 °C. Suðumark etanóls er 78,35 °C og <emphasis effect="italics">K</emphasis><sub>b</sub> fyrir etanól er 1,20 °C/<emphasis effect="italics">m</emphasis>. Að því gefnu að um kjörlausn sé að ræða, hver er sameindaformúla frúktósa?</para>
+<para id="fs-idm1532304">Sykran frúktósi inniheldur 40,0% C, 6,7% H og 53,3% O miðað við massa. Lausn af 11,7 g af frúktósa í 325 g af etanóli hefur suðumark 78,59 °C. Suðumark etanóls er 78,35 °C og <emphasis effect="italics">K</emphasis><sub>b</sub> fyrir etanól er 1,20 °C/<emphasis effect="italics">m</emphasis>. Miðað við hegðun kjörlausnar, hver er sameindaformúla frúktósa?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp241232">
 <problem id="fs-idp241488">
-<para id="fs-idp241744">Gufunarþrýstingur metanóls, CH<sub>3</sub>OH, er 94 torr við 20 °C. Gufunarþrýstingur etanóls, C<sub>2</sub>H<sub>5</sub>OH, er 44 torr við sama hitastig.</para>
+<para id="fs-idp241744">Gufuþrýstingur metanóls, CH<sub>3</sub>OH, er 94 torr við 20 °C. Gufuþrýstingur etanóls, C<sub>2</sub>H<sub>5</sub>OH, er 44 torr við sama hitastig.</para>
 <para id="fs-idp243408">(a) Reiknaðu mólhlutfall metanóls og etanóls í lausn af 50,0 g af metanóli og 50,0 g af etanóli.</para>
-<para id="fs-idp2235616">(b) Etanól og metanól mynda lausn sem hegðar sér eins og kjörlausn. Reiknaðu gufunarþrýsting metanóls og etanóls yfir lausninni við 20 °C.</para>
+<para id="fs-idp2235616">(b) Etanól og metanól mynda lausn sem hegðar sér eins og kjörlausn. Reiknaðu gufuþrýsting metanóls og etanóls yfir lausninni við 20 °C.</para>
 <para id="fs-idp2236336">(c) Reiknaðu mólhlutfall metanóls og etanóls í gufunni yfir lausninni.</para>
 </problem>
 <solution id="fs-idp2236848">
-<para id="fs-idp2239328">(a) <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.590</m:mn><m:mo>;</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.410</m:mn><m:mo>;</m:mo></m:mrow></m:math> (b) Gufunarþrýstingur er: CH<sub>3</sub>OH: 55 torr; C<sub>2</sub>H<sub>5</sub>OH: 18 torr; (c) CH<sub>3</sub>OH: 0,75; C<sub>2</sub>H<sub>5</sub>OH: 0,25</para>
+<para id="fs-idp2239328">(a) <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.590</m:mn><m:mo>;</m:mo></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.410</m:mn><m:mo>;</m:mo></m:mrow></m:math> (b) Gufuþrýstingur er: CH<sub>3</sub>OH: 55 torr; C<sub>2</sub>H<sub>5</sub>OH: 18 torr; (c) CH<sub>3</sub>OH: 0,75; C<sub>2</sub>H<sub>5</sub>OH: 0,25</para>
 </solution>
 </exercise>
 <exercise id="fs-idp128680064">
@@ -763,20 +758,20 @@
 </exercise>
 <exercise id="fs-idp128684672">
 <problem id="fs-idp128684928">
-<para id="fs-idp128685184">Lífrænt efnasamband hefur samsetninguna 93,46% C og 6,54% H miðað við massa. Lausn af 0,090 g af þessu efnasambandi í 1,10 g af kamfóru bráðnar við 158,4 °C. Bræðslumark hreinnar kamfóru er 178,4 °C. <emphasis effect="italics">K</emphasis><sub>f</sub> fyrir kamfóru er 37,7 °C/<emphasis effect="italics">m</emphasis>. Að því gefnu að um kjörlausn sé að ræða, hver er sameindaformúla uppleysta efnisins? Sýndu útreikninga þína.</para>
+<para id="fs-idp128685184">Lífrænt efnasamband hefur samsetninguna 93,46% C og 6,54% H miðað við massa. Lausn af 0,090 g af þessu efnasambandi í 1,10 g af kamfóru bráðnar við 158,4 °C. Bræðslumark hreinnar kamfóru er 178,4 °C. <emphasis effect="italics">K</emphasis><sub>f</sub> fyrir kamfóru er 37,7 °C/<emphasis effect="italics">m</emphasis>. Miðað við hegðun kjörlausnar, hver er sameindaformúla uppleysta efnisins? Sýndu útreikninga þína.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp13479328">
 <problem id="fs-idp13479584">
-<para id="fs-idp13479840">Sýni af HgCl<sub>2</sub> sem vegur 9,41 g er leyst upp í 32,75 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH (<emphasis effect="italics">K</emphasis><sub>b</sub> = 1,20 °C/<emphasis effect="italics">m</emphasis>). Suðumarkshækkun lausnarinnar er 1,27 °C. Er HgCl<sub>2</sub> rafsaltslausn í etanóli? Sýndu útreikninga þína.</para>
+<para id="fs-idp13479840">Sýni af HgCl<sub>2</sub> sem vegur 9,41 g er leyst upp í 32,75 g af etanóli, C<sub>2</sub>H<sub>5</sub>OH (<emphasis effect="italics">K</emphasis><sub>b</sub> = 1,20 °C/<emphasis effect="italics">m</emphasis>). Suðumarkshækkun lausnarinnar er 1,27 °C. Er HgCl<sub>2</sub> raflausn í etanóli? Sýndu útreikninga þína.</para>
 </problem>
 <solution id="fs-idp431872">
-<para id="fs-idm46645536"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mtext>bp</m:mtext><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mi>m</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.20</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mtext>/</m:mtext><m:mi>m</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>9.41</m:mn><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mtext>mol Hg</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>271.496</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mn>0.03275</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.27</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math><newline/> Mæld breyting er jöfn fræðilegri breytingu; því á sér engin sundrun stað.</para>
+<para id="fs-idm46645536"><m:math><m:mrow><m:mtext>Δ</m:mtext><m:mtext>bp</m:mtext><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mtext>b</m:mtext></m:msub><m:mi>m</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.20</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext><m:mtext>/</m:mtext><m:mi>m</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>9.41</m:mn><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mtext>mol Hg</m:mtext><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>271.496</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mn>0.03275</m:mn><m:mspace width="0.2em"/><m:mtext>kg</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.27</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math><newline/> Mæld breyting er jöfn fræðilegri breytingu; þess vegna á sér engin sundrun stað.</para>
 </solution>
 </exercise>
 <exercise id="fs-idp445696">
 <problem id="fs-idp445952">
-<para id="fs-idp446208">Vitað er að salt er alkalímálmflúoríð. Fljótleg nálgunarákvörðun á frostmarki bendir til þess að 4 g af saltinu leyst upp í 100 g af vatni myndi lausn sem frýs við um það bil −1,4 °C. Að því gefnu að um kjörlausn sé að ræða, hver er formúla saltsins? Sýndu útreikninga þína.</para>
+<para id="fs-idp446208">Vitað er að salt er alkalímálmflúoríð. Fljótleg nálgunarákvörðun á frostmarki bendir til þess að 4 g af saltinu leyst upp í 100 g af vatni myndi lausn sem frýs við um það bil −1,4 °C. Miðað við hegðun kjörlausnar, hver er formúla saltsins? Sýndu útreikninga þína.</para>
 </problem>
 </exercise>
 </section>
@@ -788,67 +783,67 @@
 </definition>
 <definition id="fs-idp188856832">
 <term>suðumarkshækkunarfasti (e. boiling point elevation constant)</term>
-<meaning id="fs-idp188856832-meaning">hlutfallsfastinn í jöfnunni sem tengir suðumarkshækkun við mólalstyrk leysta efnisins; einnig þekktur sem suðumarksfasti</meaning>
+<meaning id="fs-idp188856832-meaning">jafnvægisfastinn í jöfnunni sem tengir suðumarkshækkun við mólalstyrk uppleysts efnis; einnig þekktur sem suðumarksfasti</meaning>
 </definition>
 <definition id="fs-idp188858528">
-<term>aðfallseiginleiki (e. colligative property)</term>
-<meaning id="fs-idp188858528-meaning">eiginleiki lausnar sem fer eingöngu eftir styrk leystu efniseindanna</meaning>
+<term>aðaleiginleiki (e. colligative property)</term>
+<meaning id="fs-idp188858528-meaning">eiginleiki lausnar sem fer eingöngu eftir styrk uppleystrar efnisagnar</meaning>
 </definition>
 <definition id="fs-idp141096064">
 <term>skorpnun (e. crenation)</term>
-<meaning id="fs-idp141096064-meaning">ferli þar sem líffræðilegar frumur skreppa saman vegna vatnstaps með himnuflæði</meaning>
+<meaning id="fs-idp141096064-meaning">ferli þar sem líffræðilegar frumur skreppa saman vegna vatnstaps með osmósu</meaning>
 </definition>
 <definition id="fs-idp141097600">
 <term>frostmarkslækkun (e. freezing point depression)</term>
-<meaning id="fs-idp141097600-meaning">lækkun á frostmarki vökva með álagningu leysis efnis</meaning>
+<meaning id="fs-idp141097600-meaning">lækkun á frostmarki vökva með því að bæta við uppleystu efni</meaning>
 </definition>
 <definition id="fs-idp141099136">
 <term>frostmarkslækkunarfasti (e. freezing point depression constant)</term>
-<meaning id="fs-idp141099136-meaning">(einnig frostmarksfasti) hlutfallsfasti í jöfnunni sem tengir frostmarkslækkun við mólalstyrk leysta efnisins</meaning>
+<meaning id="fs-idp141099136-meaning">(einnig, kríóskópískur fasti) hlutfallfasti í jöfnunni sem tengir frostmarkslækkun við mólalstyrk uppleysts efnis</meaning>
 </definition>
 <definition id="fs-idp141100816">
 <term>blóðrof (e. hemolysis)</term>
-<meaning id="fs-idp141100816-meaning">rof rauðra blóðkorna vegna uppsöfnunar á umframmagni vatns með himnuflæði</meaning>
+<meaning id="fs-idp141100816-meaning">rof rauðra blóðkorna vegna uppsöfnunar á of miklu vatni með osmósu</meaning>
 </definition>
 <definition id="fs-idp141102352">
-<term>yfirþrýstinn (e. hypertonic)</term>
-<meaning id="fs-idp141102352-meaning">af meiri flæðiþrýstingi</meaning>
+<term>háþrýstinn (e. hypertonic)</term>
+<meaning id="fs-idp141102352-meaning">af meiri osmósuþrýstingi</meaning>
 </definition>
 <definition id="fs-idp141103888">
-<term>undirþrýstinn (e. hypotonic)</term>
-<meaning id="fs-idp141103888-meaning">af minni flæðiþrýstingi</meaning>
+<term>lágþrýstinn (e. hypotonic)</term>
+<meaning id="fs-idp141103888-meaning">af minni osmósuþrýstingi</meaning>
 </definition>
 <definition id="fs-idp141105424">
 <term>jónapar (e. ion pair)</term>
-<meaning id="fs-idp141105424-meaning">leysishjúpað anjóna-/katjónapar sem haldið er saman af miðlungssterkum rafstöðukrafti</meaning>
+<meaning id="fs-idp141105424-meaning">leysihjúpað anjóna-/katjónapar sem haldið er saman af miðlungssterkum rafstöðukrafti</meaning>
 </definition>
 <definition id="fs-idp141106960">
 <term>jafnþrýstinn (e. isotonic)</term>
-<meaning id="fs-idp141106960-meaning">af jöfnum flæðiþrýstingi</meaning>
+<meaning id="fs-idp141106960-meaning">af jöfnum osmósuþrýstingi</meaning>
 </definition>
 <definition id="fs-idp141108496">
 <term>mólalstyrkur (m) (e. molality (m))</term>
-<meaning id="fs-idp141108496-meaning">styrkleikaeining skilgreind sem hlutfall mólfjölda leysta efnisins og massa leysisins í kílógrömmum</meaning>
+<meaning id="fs-idp141108496-meaning">styrkleikaeining skilgreind sem hlutfall mólfjölda uppleysts efnis og massa leysisins í kílógrömmum</meaning>
 </definition>
 <definition id="fs-idp141112944">
-<term>himnuflæði (e. osmosis)</term>
-<meaning id="fs-idp141112944-meaning">sveim leysisameinda í gegnum hálfgegndræpa himnu</meaning>
+<term>osmósa (e. osmosis)</term>
+<meaning id="fs-idp141112944-meaning">dreifing leysisameinda í gegnum hálfgegndræpa himnu</meaning>
 </definition>
 <definition id="fs-idp141114480">
-<term>flæðiþrýstingur (Π) (e. osmotic pressure (π))</term>
-<meaning id="fs-idp141114480-meaning">mótþrýstingur sem þarf til að koma í veg fyrir magnflutning leysisameinda í gegnum hálfgegndræpa himnu</meaning>
+<term>osmósuþrýstingur (Π) (e. osmotic pressure (π))</term>
+<meaning id="fs-idp141114480-meaning">mótþrýstingur sem þarf til að koma í veg fyrir heildarflutning leysisameinda í gegnum hálfgegndræpa himnu</meaning>
 </definition>
 <definition id="fs-idp141116656">
 <term>lögmál Raoults (e. raoult’s law)</term>
-<meaning id="fs-idp141116656-meaning">sambandið milli gufunarþrýstings lausnar og gufunarþrýstings og styrks íhluta hennar</meaning>
+<meaning id="fs-idp141116656-meaning">sambandið milli gufuþrýstings lausnar og gufuþrýstings og styrks íhluta hennar</meaning>
 </definition>
 <definition id="fs-idp11032848">
 <term>hálfgegndræp himna (e. semipermeable membrane)</term>
-<meaning id="fs-idp11032848-meaning">himna sem hleypir völdum jónum eða sameindum í gegn</meaning>
+<meaning id="fs-idp11032848-meaning">himna sem hleypir ákveðnum jónum eða sameindum sértækt í gegn</meaning>
 </definition>
 <definition id="fs-idp11034384">
 <term>van't Hoff-stuðull (i) (e. van’t hoff factor (i))</term>
-<meaning id="fs-idp11034384-meaning">hlutfall mólfjölda einda í lausn og mólfjölda formúlueininga sem leystar eru upp í lausninni</meaning>
+<meaning id="fs-idp11034384-meaning">hlutfallið milli mólfjölda agna í lausn og mólfjölda formúlueininga sem leystar eru upp í lausninni</meaning>
 </definition>
 </glossary>
 </document>

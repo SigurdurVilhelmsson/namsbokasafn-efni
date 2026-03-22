@@ -17,7 +17,7 @@ Relate electrolyte strength to solute-solvent attractive forces
 When some substances are dissolved in water, they undergo either a physical or a chemical change that yields ions in solution. These substances constitute an important class of compounds called {{term}}electrolytes{{/term}}. Substances that do not yield ions when dissolved are called {{term}}nonelectrolytes{{/term}}. If the physical or chemical process that generates the ions is essentially 100% efficient (all of the dissolved compound yields ions), then the substance is known as a {{term}}strong electrolyte{{/term}}. If only a relatively small fraction of the dissolved substance undergoes the ion-producing process, it is called a {{term}}weak electrolyte{{/term}}.
 
 <!-- SEG:m68781:para:fs-idm8509568 -->
-Substances may be identified as strong, weak, or nonelectrolytes by measuring the electrical conductance of an aqueous solution containing the substance. To conduct electricity, a substance must contain freely mobile, charged species. Most familiar is the conduction of electricity through metallic wires, in which case the mobile, charged entities are electrons. Solutions may also conduct electricity if they contain dissolved ions, with conductivity increasing as ion concentration increases. Applying a voltage to electrodes immersed in a solution permits assessment of the relative concentration of dissolved ions, either quantitatively, by measuring the electrical current flow, or qualitatively, by observing the brightness of a light bulb included in the circuit ([#CNX_Chem_11_02_electrolyt]).
+Substances may be identified as strong, weak, or nonelectrolytes by measuring the electrical conductance of an aqueous solution containing the substance. To conduct electricity, a substance must contain freely mobile, charged species. Most familiar is the conduction of electricity through metallic wires, in which case the mobile, charged entities are electrons. Solutions may also conduct electricity if they contain dissolved ions, with conductivity increasing as ion concentration increases. Applying a voltage to electrodes immersed in a solution permits assessment of the relative concentration of dissolved ions, either quantitatively, by measuring the electrical current flow, or qualitatively, by observing the brightness of a light bulb included in the circuit ([[xref:CNX_Chem_11_02_electrolyt]]).
 
 <!-- SEG:m68781:caption:CNX_Chem_11_02_electrolyt-caption -->
 Solutions of nonelectrolytes such as ethanol do not contain dissolved ions and cannot conduct electricity. Solutions of electrolytes contain ions that permit the passage of electricity. The conductivity of an electrolyte solution is related to the strength of the electrolyte.
@@ -26,7 +26,7 @@ Solutions of nonelectrolytes such as ethanol do not contain dissolved ions and c
 Ionic Electrolytes
 
 <!-- SEG:m68781:para:fs-idp2501472 -->
-Water and other polar molecules are attracted to ions, as shown in [#CNX_Chem_11_02_waterions]. The electrostatic attraction between an ion and a molecule with a dipole is called an {{term}}ion-dipole attraction{{/term}}. These attractions play an important role in the dissolution of ionic compounds in water.
+Water and other polar molecules are attracted to ions, as shown in [[xref:CNX_Chem_11_02_waterions]]. The electrostatic attraction between an ion and a molecule with a dipole is called an {{term}}ion-dipole attraction{{/term}}. These attractions play an important role in the dissolution of ionic compounds in water.
 
 <!-- SEG:m68781:caption:CNX_Chem_11_02_waterions-caption -->
 As potassium chloride (KCl) dissolves in water, the ions are hydrated. The polar water molecules are attracted by the charges on the K[[sup:+]] and Cl[[sup:−]] ions. Water molecules in front of and behind the ions are not shown.
@@ -35,7 +35,7 @@ As potassium chloride (KCl) dissolves in water, the ions are hydrated. The polar
 When ionic compounds dissolve in water, the ions in the solid separate and disperse uniformly throughout the solution because water molecules surround and solvate the ions, reducing the strong electrostatic forces between them. This process represents a physical change known as {{term}}dissociation{{/term}}. Under most conditions, ionic compounds will dissociate nearly completely when dissolved, and so they are classified as strong electrolytes. Even sparingly, soluble ionic compounds are strong electrolytes, since the small amount that does dissolve will dissociate completely.
 
 <!-- SEG:m68781:para:fs-idp39918704 -->
-Consider what happens at the microscopic level when solid KCl is added to water. Ion-dipole forces attract the positive (hydrogen) end of the polar water molecules to the negative chloride ions at the surface of the solid, and they attract the negative (oxygen) ends to the positive potassium ions. The water molecules surround individual K[[sup:+]] and Cl[[sup:−]] ions, reducing the strong interionic forces that bind the ions together and letting them move off into solution as solvated ions, as [#CNX_Chem_11_02_waterions] shows. Overcoming the electrostatic attraction permits the independent motion of each hydrated ion in a dilute solution as the ions transition from fixed positions in the undissolved compound to widely dispersed, solvated ions in solution.
+Consider what happens at the microscopic level when solid KCl is added to water. Ion-dipole forces attract the positive (hydrogen) end of the polar water molecules to the negative chloride ions at the surface of the solid, and they attract the negative (oxygen) ends to the positive potassium ions. The water molecules surround individual K[[sup:+]] and Cl[[sup:−]] ions, reducing the strong interionic forces that bind the ions together and letting them move off into solution as solvated ions, as [[xref:CNX_Chem_11_02_waterions]] shows. Overcoming the electrostatic attraction permits the independent motion of each hydrated ion in a dilute solution as the ions transition from fixed positions in the undissolved compound to widely dispersed, solvated ions in solution.
 
 <!-- SEG:m68781:title:fs-idp29082528-title -->
 Covalent Electrolytes
@@ -47,10 +47,10 @@ Pure water is an extremely poor conductor of electricity because it is only very
 In some cases, solutions prepared from covalent compounds conduct electricity because the solute molecules react chemically with the solvent to produce ions. For example, pure hydrogen chloride is a gas consisting of covalent HCl molecules. This gas contains no ions. However, an aqueous solution of HCl is a very good conductor, indicating that an appreciable concentration of ions exists within the solution.
 
 <!-- SEG:m68781:para:fs-idm25981680 -->
-Because HCl is an {{i}}acid{{/i}}, its molecules react with water, transferring H[[sup:+]] ions to form hydronium ions (H[[sub:3]]O[[sup:+]]) and chloride ions (Cl[[sup:−]]):
+Because HCl is an [[i:acid]], its molecules react with water, transferring H[[sup:+]] ions to form hydronium ions (H[[sub:3]]O[[sup:+]]) and chloride ions (Cl[[sup:−]]):
 
 <!-- SEG:m68781:para:fs-idm4855136 -->
-This reaction is essentially 100% complete for HCl (i.e., it is a {{i}}strong acid{{/i}} and, consequently, a strong electrolyte). Likewise, weak acids and bases that only react partially generate relatively low concentrations of ions when dissolved in water and are classified as weak electrolytes. The reader may wish to review the discussion of strong and weak acids provided in the earlier chapter of this text on reaction classes and stoichiometry.
+This reaction is essentially 100% complete for HCl (i.e., it is a [[i:strong acid]] and, consequently, a strong electrolyte). Likewise, weak acids and bases that only react partially generate relatively low concentrations of ions when dissolved in water and are classified as weak electrolytes. The reader may wish to review the discussion of strong and weak acids provided in the earlier chapter of this text on reaction classes and stoichiometry.
 
 <!-- SEG:m68781:title:fs-idm11909136-title -->
 Key Concepts and Summary
@@ -74,7 +74,7 @@ Explain why solutions of HBr in benzene (a nonpolar solvent) are nonconductive, 
 Consider the solutions presented:
 
 <!-- SEG:m68781:problem:fs-idm78750672 -->
-(a) Which of the following sketches best represents the ions in a solution of Fe(NO[[sub:3]])[[sub:3]]({{i}}aq{{/i}})?
+(a) Which of the following sketches best represents the ions in a solution of Fe(NO[[sub:3]])[[sub:3]]([[i:aq]])?
 
 <!-- SEG:m68781:problem:fs-idm44321280 -->
 (b) Write a balanced chemical equation showing the products of the dissolution of Fe(NO[[sub:3]])[[sub:3]].
@@ -89,28 +89,28 @@ Compare the processes that occur when methanol (CH[[sub:3]]OH), hydrogen chlorid
 What is the expected electrical conductivity of the following solutions?
 
 <!-- SEG:m68781:problem:fs-idm38868560 -->
-(a) NaOH({{i}}aq{{/i}})
+(a) NaOH([[i:aq]])
 
 <!-- SEG:m68781:problem:fs-idm10517104 -->
-(b) HCl({{i}}aq{{/i}})
+(b) HCl([[i:aq]])
 
 <!-- SEG:m68781:problem:fs-idm50140880 -->
-(c) C[[sub:6]]H[[sub:12]]O[[sub:6]]({{i}}aq{{/i}}) (glucose)
+(c) C[[sub:6]]H[[sub:12]]O[[sub:6]]([[i:aq]]) (glucose)
 
 <!-- SEG:m68781:problem:fs-idm49304096 -->
-(d) NH[[sub:3]]({{i}}aq{{/i}})
+(d) NH[[sub:3]]([[i:aq]])
 
 <!-- SEG:m68781:solution:fs-idm70158128 -->
 (a) high conductivity (solute is an ionic compound that will dissociate when dissolved); (b) high conductivity (solute is a strong acid and will ionize completely when dissolved); (c) nonconductive (solute is a covalent compound, neither acid nor base, unreactive towards water); (d) low conductivity (solute is a weak base and will partially ionize when dissolved)
 
 <!-- SEG:m68781:problem:fs-idm5817440 -->
-Why are most {{i}}solid{{/i}} ionic compounds electrically nonconductive, whereas aqueous solutions of ionic compounds are good conductors? Would you expect a {{i}}liquid{{/i}} (molten) ionic compound to be electrically conductive or nonconductive? Explain.
+Why are most [[i:solid]] ionic compounds electrically nonconductive, whereas aqueous solutions of ionic compounds are good conductors? Would you expect a [[i:liquid]] (molten) ionic compound to be electrically conductive or nonconductive? Explain.
 
 <!-- SEG:m68781:problem:fs-idp23193408 -->
 Indicate the most important type of intermolecular attraction responsible for solvation in each of the following solutions:
 
 <!-- SEG:m68781:problem:fs-idm12881936 -->
-(a) the solutions in [#CNX_Chem_11_02_waterions]
+(a) the solutions in [[xref:CNX_Chem_11_02_waterions]]
 
 <!-- SEG:m68781:problem:fs-idp1970576 -->
 (b) methanol, CH[[sub:3]]OH, dissolved in ethanol, C[[sub:2]]H[[sub:5]]OH
@@ -122,7 +122,7 @@ Indicate the most important type of intermolecular attraction responsible for so
 (d) the polar halocarbon CF[[sub:2]]Cl[[sub:2]] dissolved in the polar halocarbon CF[[sub:2]]ClCFCl[[sub:2]]
 
 <!-- SEG:m68781:problem:fs-idp26201488 -->
-(e) O[[sub:2]]({{i}}l{{/i}}) in N[[sub:2]]({{i}}l{{/i}})
+(e) O[[sub:2]]([[i:l]]) in N[[sub:2]]([[i:l]])
 
 <!-- SEG:m68781:solution:fs-idp39750656 -->
 (a) ion-dipole; (b) hydrogen bonds; (c) dispersion forces; (d) dipole-dipole attractions; (e) dispersion forces

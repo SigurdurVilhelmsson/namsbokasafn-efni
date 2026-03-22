@@ -20,13 +20,13 @@ Perform basic unit calculations and conversions in the metric and other unit sys
 Measurements provide much of the information that informs the hypotheses, theories, and laws describing the behavior of matter and energy in both the macroscopic and microscopic domains of chemistry. Every measurement provides three kinds of information: the size or magnitude of the measurement (a number); a standard of comparison for the measurement (a unit); and an indication of the uncertainty of the measurement. While the number and unit are explicitly represented when a quantity is written, the uncertainty is an aspect of the measurement result that is more implicitly represented and will be discussed later.
 
 <!-- SEG:m68674:para:fs-idm128012432 -->
-The number in the measurement can be represented in different ways, including decimal form and scientific notation. (Scientific notation is also known as exponential notation; a review of this topic can be found in [Appendix B](doc:m68860).) For example, the maximum takeoff weight of a Boeing 777-200ER airliner is 298,000 kilograms, which can also be written as 2.98 [[MATH:1]] 10[[sup:5]] kg. The mass of the average mosquito is about 0.0000025 kilograms, which can be written as 2.5 [[MATH:2]] 10[[sup:−6]] kg.
+The number in the measurement can be represented in different ways, including decimal form and scientific notation. (Scientific notation is also known as exponential notation; a review of this topic can be found in [[docref:Appendix B|m68860]].) For example, the maximum takeoff weight of a Boeing 777-200ER airliner is 298,000 kilograms, which can also be written as 2.98 [[MATH:1]] 10[[sup:5]] kg. The mass of the average mosquito is about 0.0000025 kilograms, which can be written as 2.5 [[MATH:2]] 10[[sup:−6]] kg.
 
 <!-- SEG:m68674:para:fs-idp178656 -->
 {{term}}Units{{/term}}, such as liters, pounds, and centimeters, are standards of comparison for measurements. A 2-liter bottle of a soft drink contains a volume of beverage that is twice that of the accepted volume of 1 liter. The meat used to prepare a 0.25-pound hamburger weighs one-fourth as much as the accepted weight of 1 pound. Without units, a number can be meaningless, confusing, or possibly life threatening. Suppose a doctor prescribes phenobarbital to control a patient’s seizures and states a dosage of “100” without specifying units. Not only will this be confusing to the medical professional giving the dose, but the consequences can be dire: 100 mg given three times per day can be effective as an anticonvulsant, but a single dose of 100 g is more than 10 times the lethal amount.
 
 <!-- SEG:m68674:para:fs-idm144392592 -->
-The measurement units for seven fundamental properties (“base units”) are listed in [#fs-idm81346144]. The standards for these units are fixed by international agreement, and they are called the {{term}}International System of Units{{/term}} or {{term}}SI Units{{/term}} (from the French, {{i}}Le Système International d’Unités{{/i}}). SI units have been used by the United States National Institute of Standards and Technology (NIST) since 1964. Units for other properties may be derived from these seven base units.
+The measurement units for seven fundamental properties (“base units”) are listed in [[xref:fs-idm81346144]]. The standards for these units are fixed by international agreement, and they are called the {{term}}International System of Units{{/term}} or {{term}}SI Units{{/term}} (from the French, [[i:Le Système International d’Unités]]). SI units have been used by the United States National Institute of Standards and Technology (NIST) since 1964. Units for other properties may be derived from these seven base units.
 
 <!-- SEG:m68674:entry:auto-11 -->
 Base Units of the SI System
@@ -104,7 +104,7 @@ candela
 cd
 
 <!-- SEG:m68674:para:eip-134 -->
-Everyday measurement units are often defined as fractions or multiples of other units. Milk is commonly packaged in containers of 1 gallon (4 quarts), 1 quart (0.25 gallon), and one pint (0.5 quart). This same approach is used with SI units, but these fractions or multiples are always powers of 10. Fractional or multiple SI units are named using a prefix and the name of the base unit. For example, a length of 1000 meters is also called a kilometer because the prefix {{i}}kilo{{/i}} means “one thousand,” which in scientific notation is 10[[sup:3]] (1 kilometer = 1000 m = 10[[sup:3]] m). The prefixes used and the powers to which 10 are raised are listed in [#fs-idm81128320].
+Everyday measurement units are often defined as fractions or multiples of other units. Milk is commonly packaged in containers of 1 gallon (4 quarts), 1 quart (0.25 gallon), and one pint (0.5 quart). This same approach is used with SI units, but these fractions or multiples are always powers of 10. Fractional or multiple SI units are named using a prefix and the name of the base unit. For example, a length of 1000 meters is also called a kilometer because the prefix [[i:kilo]] means “one thousand,” which in scientific notation is 10[[sup:3]] (1 kilometer = 1000 m = 10[[sup:3]] m). The prefixes used and the powers to which 10 are raised are listed in [[xref:fs-idm81128320]].
 
 <!-- SEG:m68674:entry:auto-37 -->
 Common Unit Prefixes
@@ -254,7 +254,7 @@ T
 5 terawatts (TW) = 5 [[MATH:13]] 10[[sup:12]] W (5,000,000,000,000 W)
 
 <!-- SEG:m68674:para:fs-idm169361696 -->
-Need a refresher or more practice with scientific notation? Visit this [site](http://openstax.org/l/16notation) to go over the basics of scientific notation.
+Need a refresher or more practice with scientific notation? Visit this [[link:site|http://openstax.org/l/16notation]] to go over the basics of scientific notation.
 
 <!-- SEG:m68674:title:fs-idp25374912-title -->
 SI Base Units
@@ -263,7 +263,7 @@ SI Base Units
 Length
 
 <!-- SEG:m68674:para:fs-idm64613648 -->
-The standard unit of {{term}}length{{/term}} in both the SI and original metric systems is the {{term}}meter (m){{/term}}. A meter was originally specified as 1/10,000,000 of the distance from the North Pole to the equator. It is now defined as the distance light in a vacuum travels in 1/299,792,458 of a second. A meter is about 3 inches longer than a yard ([#CNX_Chem_01_04_MYdCmIn]); one meter is about 39.37 inches or 1.094 yards. Longer distances are often reported in kilometers (1 km = 1000 m = 10[[sup:3]] m), whereas shorter distances can be reported in centimeters (1 cm = 0.01 m = 10[[sup:−2]] m) or millimeters (1 mm = 0.001 m = 10[[sup:−3]] m).
+The standard unit of {{term}}length{{/term}} in both the SI and original metric systems is the {{term}}meter (m){{/term}}. A meter was originally specified as 1/10,000,000 of the distance from the North Pole to the equator. It is now defined as the distance light in a vacuum travels in 1/299,792,458 of a second. A meter is about 3 inches longer than a yard ([[xref:CNX_Chem_01_04_MYdCmIn]]); one meter is about 39.37 inches or 1.094 yards. Longer distances are often reported in kilometers (1 km = 1000 m = 10[[sup:3]] m), whereas shorter distances can be reported in centimeters (1 cm = 0.01 m = 10[[sup:−2]] m) or millimeters (1 mm = 0.001 m = 10[[sup:−3]] m).
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_MYdCmIn-caption -->
 The relative lengths of 1 m, 1 yd, 1 cm, and 1 in. are shown (not actual size), as well as comparisons of 2.54 cm and 1 in., and of 1 m and 1.094 yd.
@@ -272,7 +272,7 @@ The relative lengths of 1 m, 1 yd, 1 cm, and 1 in. are shown (not actual size), 
 Mass
 
 <!-- SEG:m68674:para:fs-idp222999216 -->
-The standard unit of mass in the SI system is the {{term}}kilogram (kg){{/term}}. The kilogram was previously defined by the International Union of Pure and Applied Chemistry ({{term}}IUPAC{{/term}}) as the mass of a specific reference object. This object was originally one liter of pure water, and more recently it was a metal cylinder made from a platinum-iridium alloy with a height and diameter of 39 mm ([#CNX_Chem_01_04_Kilogram]). In May 2019, this definition was changed to one that is based instead on precisely measured values of several fundamental physical constants. {{fn}}For details see https://www.nist.gov/pml/weights-and-measures/si-units-mass{{/fn}}. One kilogram is about 2.2 pounds. The gram (g) is exactly equal to 1/1000 of the mass of the kilogram (10[[sup:−3]] kg).
+The standard unit of mass in the SI system is the {{term}}kilogram (kg){{/term}}. The kilogram was previously defined by the International Union of Pure and Applied Chemistry ({{term}}IUPAC{{/term}}) as the mass of a specific reference object. This object was originally one liter of pure water, and more recently it was a metal cylinder made from a platinum-iridium alloy with a height and diameter of 39 mm ([[xref:CNX_Chem_01_04_Kilogram]]). In May 2019, this definition was changed to one that is based instead on precisely measured values of several fundamental physical constants. {{fn}}For details see https://www.nist.gov/pml/weights-and-measures/si-units-mass{{/fn}}. One kilogram is about 2.2 pounds. The gram (g) is exactly equal to 1/1000 of the mass of the kilogram (10[[sup:−3]] kg).
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_Kilogram-caption -->
 This replica prototype kilogram as previously defined is housed at the National Institute of Standards and Technology (NIST) in Maryland. (credit: National Institutes of Standards and Technology)
@@ -299,13 +299,13 @@ Derived SI Units
 Volume
 
 <!-- SEG:m68674:para:fs-idm77137776 -->
-{{term}}Volume{{/term}} is the measure of the amount of space occupied by an object. The standard SI unit of volume is defined by the base unit of length ([#CNX_Chem_01_04_Volume]). The standard volume is a {{term}}cubic meter (m[[sup:3]]){{/term}}, a cube with an edge length of exactly one meter. To dispense a cubic meter of water, we could build a cubic box with edge lengths of exactly one meter. This box would hold a cubic meter of water or any other substance.
+{{term}}Volume{{/term}} is the measure of the amount of space occupied by an object. The standard SI unit of volume is defined by the base unit of length ([[xref:CNX_Chem_01_04_Volume]]). The standard volume is a {{term}}cubic meter (m[[sup:3]]){{/term}}, a cube with an edge length of exactly one meter. To dispense a cubic meter of water, we could build a cubic box with edge lengths of exactly one meter. This box would hold a cubic meter of water or any other substance.
 
 <!-- SEG:m68674:para:fs-idm81813264 -->
 A more commonly used unit of volume is derived from the decimeter (0.1 m, or 10 cm). A cube with edge lengths of exactly one decimeter contains a volume of one cubic decimeter (dm[[sup:3]]). A {{term}}liter (L){{/term}} is the more common name for the cubic decimeter. One liter is about 1.06 quarts.
 
 <!-- SEG:m68674:para:fs-idm163691744 -->
-A {{term}}cubic centimeter (cm[[sup:3]]){{/term}} is the volume of a cube with an edge length of exactly one centimeter. The abbreviation {{b}}cc{{/b}} (for {{b}}c{{/b}}ubic {{b}}c{{/b}}entimeter) is often used by health professionals. A cubic centimeter is equivalent to a {{term}}milliliter (mL){{/term}} and is 1/1000 of a liter.
+A {{term}}cubic centimeter (cm[[sup:3]]){{/term}} is the volume of a cube with an edge length of exactly one centimeter. The abbreviation [[b:cc]] (for [[b:c]]ubic [[b:c]]entimeter) is often used by health professionals. A cubic centimeter is equivalent to a {{term}}milliliter (mL){{/term}} and is 1/1000 of a liter.
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_Volume-caption -->
 (a) The relative volumes are shown for cubes of 1 m[[sup:3]], 1 dm[[sup:3]] (1 L), and 1 cm[[sup:3]] (1 mL) (not to scale). (b) The diameter of a dime is compared relative to the edge length of a 1-cm[[sup:3]] (1-mL) cube.
@@ -317,7 +317,7 @@ Density
 We use the mass and volume of a substance to determine its density. Thus, the units of density are defined by the base units of mass and length.
 
 <!-- SEG:m68674:para:fs-idm74744496 -->
-The {{term}}density{{/term}} of a substance is the ratio of the mass of a sample of the substance to its volume. The SI unit for density is the kilogram per cubic meter (kg/m[[sup:3]]). For many situations, however, this is an inconvenient unit, and we often use grams per cubic centimeter (g/cm[[sup:3]]) for the densities of solids and liquids, and grams per liter (g/L) for gases. Although there are exceptions, most liquids and solids have densities that range from about 0.7 g/cm[[sup:3]] (the density of gasoline) to 19 g/cm[[sup:3]] (the density of gold). The density of air is about 1.2 g/L. [#fs-idm45639696] shows the densities of some common substances.
+The {{term}}density{{/term}} of a substance is the ratio of the mass of a sample of the substance to its volume. The SI unit for density is the kilogram per cubic meter (kg/m[[sup:3]]). For many situations, however, this is an inconvenient unit, and we often use grams per cubic centimeter (g/cm[[sup:3]]) for the densities of solids and liquids, and grams per liter (g/L) for gases. Although there are exceptions, most liquids and solids have densities that range from about 0.7 g/cm[[sup:3]] (the density of gasoline) to 19 g/cm[[sup:3]] (the density of gold). The density of air is about 1.2 g/L. [[xref:fs-idm45639696]] shows the densities of some common substances.
 
 <!-- SEG:m68674:entry:auto-108 -->
 Densities of Common Substances
@@ -434,13 +434,13 @@ Answer:
 (a) 0.599 cm[[sup:3]]; (b) 8.91 g/cm[[sup:3]]
 
 <!-- SEG:m68674:para:fs-idm108028240 -->
-To learn more about the relationship between mass, volume, and density, use this [interactive simulator](http://openstax.org/l/16phetmasvolden) to explore the density of different materials.
+To learn more about the relationship between mass, volume, and density, use this [[link:interactive simulator|http://openstax.org/l/16phetmasvolden]] to explore the density of different materials.
 
 <!-- SEG:m68674:example-title:Example_01_04_02-title -->
 Using Displacement of Water to Determine Density
 
 <!-- SEG:m68674:para:fs-idm108240880 -->
-This exercise uses a [simulation](http://openstax.org/l/16phetmasvolden) to illustrate an alternative approach to the determination of density that involves measuring the object’s volume via displacement of water. Use the simulator to determine the densities iron and wood.
+This exercise uses a [[link:simulation|http://openstax.org/l/16phetmasvolden]] to illustrate an alternative approach to the determination of density that involves measuring the object’s volume via displacement of water. Use the simulator to determine the densities iron and wood.
 
 <!-- SEG:m68674:para-title:fs-idp206606992-title -->
 Solution
@@ -455,7 +455,7 @@ The density of the iron is then calculated to be:
 Remove the iron block from the beaker, change the block material to wood, and then repeat the mass and volume measurements. Unlike iron, the wood block does not sink in the water but instead floats on the water’s surface. To measure its volume, drag it beneath the water’s surface so that it is fully submerged.
 
 <!-- SEG:m68674:para:fs-idm92012848 -->
-Note: The sink versus float behavior illustrated in this example demonstrates the property of “buoyancy” (see end of chapter [#fs-idm307823136] and [#fs-idm160286704]).
+Note: The sink versus float behavior illustrated in this example demonstrates the property of “buoyancy” (see end of chapter [[xref:fs-idm307823136]] and [[xref:fs-idm160286704]]).
 
 <!-- SEG:m68674:para-title:fs-idp10631184-title -->
 Check Your Learning
@@ -608,7 +608,7 @@ A large piece of jewelry has a mass of 132.6 g. A graduated cylinder initially c
 (b) Assuming that the jewelry is made from only one substance, what substance is it likely to be? Explain.
 
 <!-- SEG:m68674:problem:fs-idm250881440 -->
-Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click the "turn fluid into water" button to adjust the density of liquid in the beaker to 1.00 g/mL.
+Visit this [[link:density simulation|http://openstax.org/l/16phetmasvolden]] and click the "turn fluid into water" button to adjust the density of liquid in the beaker to 1.00 g/mL.
 
 <!-- SEG:m68674:problem:fs-idm148389344 -->
 (a) Use the water displacement approach to measure the mass and volume of the unknown material (select the green block with question marks).
@@ -617,7 +617,7 @@ Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click
 (b) Use the measured mass and volume data from step (a) to calculate the density of the unknown material.
 
 <!-- SEG:m68674:problem:fs-idm338418880 -->
-(c) Assuming this material is a widely available copper-containing gemstone, what is its likely identity? Compare the measured density to the values tabulated at [this gemstone density guide](https://www.gemsociety.org/article/select-gems-ordered-density/).
+(c) Assuming this material is a widely available copper-containing gemstone, what is its likely identity? Compare the measured density to the values tabulated at [[link:this gemstone density guide|https://www.gemsociety.org/article/select-gems-ordered-density/]].
 
 <!-- SEG:m68674:problem:fs-idm310048112 -->
 (d) How are mass and density related for blocks of the same volume?
@@ -626,7 +626,7 @@ Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click
 (a) m = 18.58 g, V = 5.7 mL; (b) d = 3.3 g/mL; (c) malachite (basic copper carbonate, d = 3.25—4.10 g/mL).
 
 <!-- SEG:m68674:problem:fs-idm366109136 -->
-Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click the "reset" button to ensure all simulator parameters are at their default values.
+Visit this [[link:density simulation|http://openstax.org/l/16phetmasvolden]] and click the "reset" button to ensure all simulator parameters are at their default values.
 
 <!-- SEG:m68674:problem:fs-idm59188672 -->
 (a) Use the water displacement approach to measure the mass and volume of the red block.
@@ -638,7 +638,7 @@ Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click
 (c) Use the vertical green slide control to adjust the fluid density to values well above, then well below, and finally nearly equal to the density of the red block, reporting your observations.
 
 <!-- SEG:m68674:problem:fs-idp8023104 -->
-Visit this [density simulation](http://openstax.org/l/16phetmasvolden) and click the “turn fluid into water” button to adjust the density of liquid in the beaker to 1.00 g/mL. Change the block material to foam, and then wait patiently until the foam block stops bobbing up and down in the water.
+Visit this [[link:density simulation|http://openstax.org/l/16phetmasvolden]] and click the “turn fluid into water” button to adjust the density of liquid in the beaker to 1.00 g/mL. Change the block material to foam, and then wait patiently until the foam block stops bobbing up and down in the water.
 
 <!-- SEG:m68674:problem:fs-idm153136896 -->
 (a) The foam block should be floating on the surface of the water (that is, only partially submerged). What is the volume of water displaced?[[BR]] (b) Use the water volume from part (a) and the density of water (1.00 g/mL) to calculate the mass of water displaced. [[BR]] (c) Remove and weigh the foam block. How does the block’s mass compare to the mass of displaced water from part (b)?
@@ -716,7 +716,7 @@ SI unit of time
 SI units (International System of Units)
 
 <!-- SEG:m68674:glossary-def:fs-idm23328032-def -->
-standards fixed by international agreement in the International System of Units ({{i}}Le Système International d’Unités{{/i}})
+standards fixed by international agreement in the International System of Units ([[i:Le Système International d’Unités]])
 
 <!-- SEG:m68674:glossary-term:fs-idm331555696-term -->
 unit

@@ -17,7 +17,7 @@ Having covered the essential concepts of chemical equilibria in the preceding se
 Many of the useful equilibrium calculations that will be demonstrated here require terms representing changes in reactant and product concentrations. These terms are derived from the stoichiometry of the reaction, as illustrated by decomposition of ammonia:
 
 <!-- SEG:m68801:para:fs-idp42253680 -->
-As shown earlier in this chapter, this equilibrium may be established within a sealed container that initially contains either NH[[sub:3]] only, or a mixture of any two of the three chemical species involved in the equilibrium. Regardless of its initial composition, a reaction mixture will show the same relationships between changes in the concentrations of the three species involved, as dictated by the reaction stoichiometry (see also the related content on expressing reaction rates in the chapter on kinetics). For example, if the nitrogen concentration increases by an amount {{i}}x{{/i}}:
+As shown earlier in this chapter, this equilibrium may be established within a sealed container that initially contains either NH[[sub:3]] only, or a mixture of any two of the three chemical species involved in the equilibrium. Regardless of its initial composition, a reaction mixture will show the same relationships between changes in the concentrations of the three species involved, as dictated by the reaction stoichiometry (see also the related content on expressing reaction rates in the chapter on kinetics). For example, if the nitrogen concentration increases by an amount [[i:x]]:
 
 <!-- SEG:m68801:para:fs-idp249176544 -->
 the corresponding changes in the other species concentrations are
@@ -68,19 +68,19 @@ Complete the changes in concentrations for each of the following reactions:
 (c) [[MATH:9]]
 
 <!-- SEG:m68801:para:fs-idp181124784 -->
-(a) 2{{i}}x{{/i}}, {{i}}x{{/i}}, −2{{i}}x;{{/i}} (b) {{i}}x{{/i}}, −2{{i}}x;{{/i}} (c) 4{{i}}x{{/i}}, 7{{i}}x{{/i}}, −4{{i}}x{{/i}}, −6{{i}}x{{/i}} or −4{{i}}x{{/i}}, −7{{i}}x{{/i}}, 4{{i}}x{{/i}}, 6{{i}}x{{/i}}
+(a) 2[[i:x]], [[i:x]], −2[[i:x;]] (b) [[i:x]], −2[[i:x;]] (c) 4[[i:x]], 7[[i:x]], −4[[i:x]], −6[[i:x]] or −4[[i:x]], −7[[i:x]], 4[[i:x]], 6[[i:x]]
 
 <!-- SEG:m68801:note-title:fs-idp220089472-title -->
 Answer:
 
 <!-- SEG:m68801:para:fs-idp181124784 -->
-(a) 2{{i}}x{{/i}}, {{i}}x{{/i}}, −2{{i}}x;{{/i}} (b) {{i}}x{{/i}}, −2{{i}}x;{{/i}} (c) 4{{i}}x{{/i}}, 7{{i}}x{{/i}}, −4{{i}}x{{/i}}, −6{{i}}x{{/i}} or −4{{i}}x{{/i}}, −7{{i}}x{{/i}}, 4{{i}}x{{/i}}, 6{{i}}x{{/i}}
+(a) 2[[i:x]], [[i:x]], −2[[i:x;]] (b) [[i:x]], −2[[i:x;]] (c) 4[[i:x]], 7[[i:x]], −4[[i:x]], −6[[i:x]] or −4[[i:x]], −7[[i:x]], 4[[i:x]], 6[[i:x]]
 
 <!-- SEG:m68801:title:fs-idp197968752-title -->
 Calculation of an Equilibrium Constant
 
 <!-- SEG:m68801:para:fs-idp218682752 -->
-The equilibrium constant for a reaction is calculated from the equilibrium concentrations (or pressures) of its reactants and products. If these concentrations are known, the calculation simply involves their substitution into the K expression, as was illustrated by [m68798#fs-idp54423808]. A slightly more challenging example is provided next, in which the reaction stoichiometry is used to derive equilibrium concentrations from the information provided. The basic strategy of this computation is helpful for many types of equilibrium computations and relies on the use of terms for the reactant and product concentrations {{i}}initially{{/i}} present, for how they {{i}}change{{/i}} as the reaction proceeds, and for what they are when the system reaches {{i}}equilibrium{{/i}}. The acronym ICE is commonly used to refer to this mathematical approach, and the concentrations terms are usually gathered in a tabular format called an ICE table.
+The equilibrium constant for a reaction is calculated from the equilibrium concentrations (or pressures) of its reactants and products. If these concentrations are known, the calculation simply involves their substitution into the K expression, as was illustrated by [[docref:m68798#fs-idp54423808]]. A slightly more challenging example is provided next, in which the reaction stoichiometry is used to derive equilibrium concentrations from the information provided. The basic strategy of this computation is helpful for many types of equilibrium computations and relies on the use of terms for the reactant and product concentrations [[i:initially]] present, for how they [[i:change]] as the reaction proceeds, and for what they are when the system reaches [[i:equilibrium]]. The acronym ICE is commonly used to refer to this mathematical approach, and the concentrations terms are usually gathered in a tabular format called an ICE table.
 
 <!-- SEG:m68801:example-title:fs-idp157656016-title -->
 Calculation of an Equilibrium Constant
@@ -89,7 +89,7 @@ Calculation of an Equilibrium Constant
 Iodine molecules react reversibly with iodide ions to produce triiodide ions.
 
 <!-- SEG:m68801:para:fs-idp148807520 -->
-If a solution with the concentrations of I[[sub:2]] and I[[sup:−]] both equal to 1.000 [[MATH:10]] 10[[sup:−3]] {{i}}M{{/i}} before reaction gives an equilibrium concentration of I[[sub:2]] of 6.61 [[MATH:11]] 10[[sup:−4]] {{i}}M{{/i}}, what is the equilibrium constant for the reaction?
+If a solution with the concentrations of I[[sub:2]] and I[[sup:−]] both equal to 1.000 [[MATH:10]] 10[[sup:−3]] [[i:M]] before reaction gives an equilibrium concentration of I[[sub:2]] of 6.61 [[MATH:11]] 10[[sup:−4]] [[i:M]], what is the equilibrium constant for the reaction?
 
 <!-- SEG:m68801:para-title:fs-idp127545184-title -->
 Solution
@@ -101,13 +101,13 @@ To calculate the equilibrium constants, equilibrium concentrations are needed fo
 Provided are the initial concentrations of the reactants and the equilibrium concentration of the product. Use this information to derive terms for the equilibrium concentrations of the reactants, presenting all the information in an ICE table.
 
 <!-- SEG:m68801:para:fs-idp97043040 -->
-At equilibrium the concentration of I[[sub:2]] is 6.61 [[MATH:12]] 10[[sup:−4]] {{i}}M{{/i}} so that
+At equilibrium the concentration of I[[sub:2]] is 6.61 [[MATH:12]] 10[[sup:−4]] [[i:M]] so that
 
 <!-- SEG:m68801:para:fs-idp187828096 -->
 The ICE table may now be updated with numerical values for all its concentrations:
 
 <!-- SEG:m68801:para:fs-idp119052784 -->
-Finally, substitute the equilibrium concentrations into the {{i}}K{{/i}} expression and solve:
+Finally, substitute the equilibrium concentrations into the [[i:K]] expression and solve:
 
 <!-- SEG:m68801:para-title:fs-idp184338272-title -->
 Check Your Learning
@@ -119,13 +119,13 @@ Ethanol and acetic acid react and form water and ethyl acetate, the solvent resp
 When 1 mol each of C[[sub:2]]H[[sub:5]]OH and CH[[sub:3]]CO[[sub:2]]H are allowed to react in 1 L of the solvent dioxane, equilibrium is established when [[MATH:13]] mol of each of the reactants remains. Calculate the equilibrium constant for the reaction. (Note: Water is a solute in this reaction.)
 
 <!-- SEG:m68801:para:fs-idp65960208 -->
-{{i}}K[[sub:c]]{{/i}} = 4
+[[i:K[[sub:c]]]] = 4
 
 <!-- SEG:m68801:note-title:fs-idp119469616-title -->
 Answer:
 
 <!-- SEG:m68801:para:fs-idp65960208 -->
-{{i}}K[[sub:c]]{{/i}} = 4
+[[i:K[[sub:c]]]] = 4
 
 <!-- SEG:m68801:title:fs-idp165591440-title -->
 Calculation of a Missing Equilibrium Concentration
@@ -137,7 +137,7 @@ When the equilibrium constant and all but one equilibrium concentration are prov
 Calculation of a Missing Equilibrium Concentration
 
 <!-- SEG:m68801:para:fs-idp157895840 -->
-Nitrogen oxides are air pollutants produced by the reaction of nitrogen and oxygen at high temperatures. At 2000 °C, the value of the {{i}}K[[sub:c]]{{/i}} for the reaction, [[MATH:14]] is 4.1 [[MATH:15]] 10[[sup:−4]]. Calculate the equilibrium concentration of NO({{i}}g{{/i}}) in air at 1 atm pressure and 2000 °C. The equilibrium concentrations of N[[sub:2]] and O[[sub:2]] at this pressure and temperature are 0.036 M and 0.0089 M, respectively.
+Nitrogen oxides are air pollutants produced by the reaction of nitrogen and oxygen at high temperatures. At 2000 °C, the value of the [[i:K[[sub:c]]]] for the reaction, [[MATH:14]] is 4.1 [[MATH:15]] 10[[sup:−4]]. Calculate the equilibrium concentration of NO([[i:g]]) in air at 1 atm pressure and 2000 °C. The equilibrium concentrations of N[[sub:2]] and O[[sub:2]] at this pressure and temperature are 0.036 M and 0.0089 M, respectively.
 
 <!-- SEG:m68801:para-title:fs-idp115961824-title -->
 Solution
@@ -149,16 +149,16 @@ Substitute the provided quantities into the equilibrium constant expression and 
 Thus [NO] is 3.6 [[MATH:16]] 10[[sup:−4]] mol/L at equilibrium under these conditions.
 
 <!-- SEG:m68801:para:fs-idp72250176 -->
-To confirm this result, it may be used along with the provided equilibrium concentrations to calculate a value for {{i}}K{{/i}}:
+To confirm this result, it may be used along with the provided equilibrium concentrations to calculate a value for [[i:K]]:
 
 <!-- SEG:m68801:para:fs-idp114956208 -->
-This result is consistent with the provided value for {{i}}K{{/i}} within nominal uncertainty, differing by just 1 in the least significant digit’s place.
+This result is consistent with the provided value for [[i:K]] within nominal uncertainty, differing by just 1 in the least significant digit’s place.
 
 <!-- SEG:m68801:para-title:fs-idp340309456-title -->
 Check Your Learning
 
 <!-- SEG:m68801:para:fs-idp340309456 -->
-The equilibrium constant {{i}}K[[sub:c]]{{/i}} for the reaction of nitrogen and hydrogen to produce ammonia at a certain temperature is 6.00 [[MATH:17]] 10[[sup:−2]]. Calculate the equilibrium concentration of ammonia if the equilibrium concentrations of nitrogen and hydrogen are 4.26 {{i}}M{{/i}} and 2.09 {{i}}M{{/i}}, respectively.
+The equilibrium constant [[i:K[[sub:c]]]] for the reaction of nitrogen and hydrogen to produce ammonia at a certain temperature is 6.00 [[MATH:17]] 10[[sup:−2]]. Calculate the equilibrium concentration of ammonia if the equilibrium concentrations of nitrogen and hydrogen are 4.26 [[i:M]] and 2.09 [[i:M]], respectively.
 
 <!-- SEG:m68801:para:fs-idp301980848 -->
 1.53 mol/L
@@ -194,7 +194,7 @@ The last two example exercises of this chapter demonstrate the application of th
 Calculation of Equilibrium Concentrations
 
 <!-- SEG:m68801:para:fs-idp86926592 -->
-Under certain conditions, the equilibrium constant {{i}}K[[sub:c]]{{/i}} for the decomposition of PCl[[sub:5]]({{i}}g{{/i}}) into PCl[[sub:3]]({{i}}g{{/i}}) and Cl[[sub:2]]({{i}}g{{/i}}) is 0.0211. What are the equilibrium concentrations of PCl[[sub:5]], PCl[[sub:3]], and Cl[[sub:2]] in a mixture that initially contained only PCl[[sub:5]] at a concentration of 1.00 {{i}}M{{/i}}?
+Under certain conditions, the equilibrium constant [[i:K[[sub:c]]]] for the decomposition of PCl[[sub:5]]([[i:g]]) into PCl[[sub:3]]([[i:g]]) and Cl[[sub:2]]([[i:g]]) is 0.0211. What are the equilibrium concentrations of PCl[[sub:5]], PCl[[sub:3]], and Cl[[sub:2]] in a mixture that initially contained only PCl[[sub:5]] at a concentration of 1.00 [[i:M]]?
 
 <!-- SEG:m68801:para-title:fs-idp189382624-title -->
 Solution
@@ -203,28 +203,28 @@ Solution
 Use the stepwise process described earlier.
 
 <!-- SEG:m68801:para:fs-idp223439168 -->
-{{i}}Determine the direction the reaction proceeds.{{/i}}
+[[i:Determine the direction the reaction proceeds.]]
 
 <!-- SEG:m68801:para:fs-idp116836368 -->
 The balanced equation for the decomposition of PCl[[sub:5]] is
 
 <!-- SEG:m68801:para:fs-idp165437392 -->
-Because only the reactant is present initially {{i}}Q[[sub:c]]{{/i}} = 0 and the reaction will proceed to the right.
+Because only the reactant is present initially [[i:Q[[sub:c]]]] = 0 and the reaction will proceed to the right.
 
 <!-- SEG:m68801:para:fs-idp139975888 -->
-{{i}}Develop an ICE table.{{/i}}
+[[i:Develop an ICE table.]]
 
 <!-- SEG:m68801:para:fs-idp178328384 -->
-{{i}}Solve for the change and the equilibrium concentrations.{{/i}}
+[[i:Solve for the change and the equilibrium concentrations.]]
 
 <!-- SEG:m68801:para:fs-idp59993168 -->
 Substituting the equilibrium concentrations into the equilibrium constant equation gives
 
 <!-- SEG:m68801:para:fs-idp249227584 -->
-[Appendix B](doc:m68860) shows an equation of the form {{i}}ax{{/i}}[[sup:2]] + {{i}}bx{{/i}} + {{i}}c{{/i}} = 0 can be rearranged to solve for {{i}}x{{/i}}:
+[[docref:Appendix B|m68860]] shows an equation of the form [[i:ax]][[sup:2]] + [[i:bx]] + [[i:c]] = 0 can be rearranged to solve for [[i:x]]:
 
 <!-- SEG:m68801:para:fs-idp129244128 -->
-In this case, {{i}}a{{/i}} = 1, {{i}}b{{/i}} = 0.0211, and {{i}}c{{/i}} = −0.0211. Substituting the appropriate values for {{i}}a{{/i}}, {{i}}b{{/i}}, and {{i}}c{{/i}} yields:
+In this case, [[i:a]] = 1, [[i:b]] = 0.0211, and [[i:c]] = −0.0211. Substituting the appropriate values for [[i:a]], [[i:b]], and [[i:c]] yields:
 
 <!-- SEG:m68801:para:fs-idp78266176 -->
 The two roots of the quadratic are, therefore,
@@ -233,19 +233,19 @@ The two roots of the quadratic are, therefore,
 and
 
 <!-- SEG:m68801:para:fs-idp226605088 -->
-For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so {{i}}x{{/i}} = 0.135 {{i}}M{{/i}}.
+For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so [[i:x]] = 0.135 [[i:M]].
 
 <!-- SEG:m68801:para:fs-idp66450592 -->
 The equilibrium concentrations are
 
 <!-- SEG:m68801:para:fs-idm43994720 -->
-{{i}}Confirm the calculated equilibrium concentrations.{{/i}}
+[[i:Confirm the calculated equilibrium concentrations.]]
 
 <!-- SEG:m68801:para:fs-idp274032256 -->
-Substitution into the expression for {{i}}K[[sub:c]]{{/i}} (to check the calculation) gives
+Substitution into the expression for [[i:K[[sub:c]]]] (to check the calculation) gives
 
 <!-- SEG:m68801:para:fs-idp65922496 -->
-The equilibrium constant calculated from the equilibrium concentrations is equal to the value of {{i}}K[[sub:c]]{{/i}} given in the problem (when rounded to the proper number of significant figures).
+The equilibrium constant calculated from the equilibrium concentrations is equal to the value of [[i:K[[sub:c]]]] given in the problem (when rounded to the proper number of significant figures).
 
 <!-- SEG:m68801:para-title:fs-idp144188144-title -->
 Check Your Learning
@@ -254,10 +254,10 @@ Check Your Learning
 Acetic acid, CH[[sub:3]]CO[[sub:2]]H, reacts with ethanol, C[[sub:2]]H[[sub:5]]OH, to form water and ethyl acetate, CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]].
 
 <!-- SEG:m68801:para:fs-idp207855376 -->
-The equilibrium constant for this reaction with dioxane as a solvent is 4.0. What are the equilibrium concentrations for a mixture that is initially 0.15 {{i}}M{{/i}} in CH[[sub:3]]CO[[sub:2]]H, 0.15 {{i}}M{{/i}} in C[[sub:2]]H[[sub:5]]OH, 0.40 {{i}}M{{/i}} in CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]], and 0.40 {{i}}M{{/i}} in H[[sub:2]]O?
+The equilibrium constant for this reaction with dioxane as a solvent is 4.0. What are the equilibrium concentrations for a mixture that is initially 0.15 [[i:M]] in CH[[sub:3]]CO[[sub:2]]H, 0.15 [[i:M]] in C[[sub:2]]H[[sub:5]]OH, 0.40 [[i:M]] in CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]], and 0.40 [[i:M]] in H[[sub:2]]O?
 
 <!-- SEG:m68801:para:fs-idp349622384 -->
-[CH[[sub:3]]CO[[sub:2]]H] = 0.18 {{i}}M{{/i}}, [C[[sub:2]]H[[sub:5]]OH] = 0.18 {{i}}M{{/i}}, [CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]]] = 0.37 {{i}}M{{/i}}, [H[[sub:2]]O] = 0.37 {{i}}M{{/i}}
+[CH[[sub:3]]CO[[sub:2]]H] = 0.18 [[i:M]], [C[[sub:2]]H[[sub:5]]OH] = 0.18 [[i:M]], [CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]]] = 0.37 [[i:M]], [H[[sub:2]]O] = 0.37 [[i:M]]
 
 <!-- SEG:m68801:para-title:fs-idp347329920-title -->
 Check Your Learning
@@ -266,79 +266,79 @@ Check Your Learning
 A 1.00-L flask is filled with 1.00 mole of H[[sub:2]] and 2.00 moles of I[[sub:2]]. The value of the equilibrium constant for the reaction of hydrogen and iodine reacting to form hydrogen iodide is 50.5 under the given conditions. What are the equilibrium concentrations of H[[sub:2]], I[[sub:2]], and HI in moles/L?
 
 <!-- SEG:m68801:para:fs-idp222432912 -->
-[H[[sub:2]]] = 0.06 {{i}}M{{/i}}, [I[[sub:2]]] = 1.06 {{i}}M{{/i}}, [HI] = 1.88 {{i}}M{{/i}}
+[H[[sub:2]]] = 0.06 [[i:M]], [I[[sub:2]]] = 1.06 [[i:M]], [HI] = 1.88 [[i:M]]
 
 <!-- SEG:m68801:item:fs-idp88175472-item-1 -->
-{{i}}Determine the direction the reaction proceeds.{{/i}} The balanced equation for the decomposition of PCl[[sub:5]] is [[MATH:18]] Because only the reactant is present initially {{i}}Q[[sub:c]]{{/i}} = 0 and the reaction will proceed to the right.
+[[i:Determine the direction the reaction proceeds.]] The balanced equation for the decomposition of PCl[[sub:5]] is [[MATH:18]] Because only the reactant is present initially [[i:Q[[sub:c]]]] = 0 and the reaction will proceed to the right.
 
 <!-- SEG:m68801:item:fs-idp88175472-item-2 -->
-{{i}}Develop an ICE table.{{/i}} [[MEDIA:1]]
+[[i:Develop an ICE table.]] [[MEDIA:1]]
 
 <!-- SEG:m68801:item:fs-idp88175472-item-3 -->
-{{i}}Solve for the change and the equilibrium concentrations.{{/i}} Substituting the equilibrium concentrations into the equilibrium constant equation gives [[MATH:19]] [[MATH:20]] [[MATH:21]] [[MATH:22]] [[MATH:23]] [Appendix B](doc:m68860) shows an equation of the form {{i}}ax{{/i}}[[sup:2]] + {{i}}bx{{/i}} + {{i}}c{{/i}} = 0 can be rearranged to solve for {{i}}x{{/i}}: [[MATH:24]] In this case, {{i}}a{{/i}} = 1, {{i}}b{{/i}} = 0.0211, and {{i}}c{{/i}} = −0.0211. Substituting the appropriate values for {{i}}a{{/i}}, {{i}}b{{/i}}, and {{i}}c{{/i}} yields: [[MATH:25]] [[MATH:26]] [[MATH:27]] The two roots of the quadratic are, therefore, [[MATH:28]] and [[MATH:29]] For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so {{i}}x{{/i}} = 0.135 {{i}}M{{/i}}. The equilibrium concentrations are [[MATH:30]] [[MATH:31]] [[MATH:32]]
+[[i:Solve for the change and the equilibrium concentrations.]] Substituting the equilibrium concentrations into the equilibrium constant equation gives [[MATH:19]] [[MATH:20]] [[MATH:21]] [[MATH:22]] [[MATH:23]] [[docref:Appendix B|m68860]] shows an equation of the form [[i:ax]][[sup:2]] + [[i:bx]] + [[i:c]] = 0 can be rearranged to solve for [[i:x]]: [[MATH:24]] In this case, [[i:a]] = 1, [[i:b]] = 0.0211, and [[i:c]] = −0.0211. Substituting the appropriate values for [[i:a]], [[i:b]], and [[i:c]] yields: [[MATH:25]] [[MATH:26]] [[MATH:27]] The two roots of the quadratic are, therefore, [[MATH:28]] and [[MATH:29]] For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so [[i:x]] = 0.135 [[i:M]]. The equilibrium concentrations are [[MATH:30]] [[MATH:31]] [[MATH:32]]
 
 <!-- SEG:m68801:item:fs-idp88175472-item-4 -->
-{{i}}Confirm the calculated equilibrium concentrations.{{/i}} Substitution into the expression for {{i}}K[[sub:c]]{{/i}} (to check the calculation) gives [[MATH:33]] The equilibrium constant calculated from the equilibrium concentrations is equal to the value of {{i}}K[[sub:c]]{{/i}} given in the problem (when rounded to the proper number of significant figures).
+[[i:Confirm the calculated equilibrium concentrations.]] Substitution into the expression for [[i:K[[sub:c]]]] (to check the calculation) gives [[MATH:33]] The equilibrium constant calculated from the equilibrium concentrations is equal to the value of [[i:K[[sub:c]]]] given in the problem (when rounded to the proper number of significant figures).
 
 <!-- SEG:m68801:note-title:fs-idp128998512-title -->
 Answer:
 
 <!-- SEG:m68801:para:fs-idp349622384 -->
-[CH[[sub:3]]CO[[sub:2]]H] = 0.18 {{i}}M{{/i}}, [C[[sub:2]]H[[sub:5]]OH] = 0.18 {{i}}M{{/i}}, [CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]]] = 0.37 {{i}}M{{/i}}, [H[[sub:2]]O] = 0.37 {{i}}M{{/i}}
+[CH[[sub:3]]CO[[sub:2]]H] = 0.18 [[i:M]], [C[[sub:2]]H[[sub:5]]OH] = 0.18 [[i:M]], [CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]]] = 0.37 [[i:M]], [H[[sub:2]]O] = 0.37 [[i:M]]
 
 <!-- SEG:m68801:note-title:fs-idp148875216-title -->
 Answer:
 
 <!-- SEG:m68801:para:fs-idp222432912 -->
-[H[[sub:2]]] = 0.06 {{i}}M{{/i}}, [I[[sub:2]]] = 1.06 {{i}}M{{/i}}, [HI] = 1.88 {{i}}M{{/i}}
+[H[[sub:2]]] = 0.06 [[i:M]], [I[[sub:2]]] = 1.06 [[i:M]], [HI] = 1.88 [[i:M]]
 
 <!-- SEG:m68801:example-title:fs-idm94442464-title -->
 Calculation of Equilibrium Concentrations Using an Algebra-Simplifying Assumption
 
 <!-- SEG:m68801:para:fs-idm110827664 -->
-What are the concentrations at equilibrium of a 0.15 {{i}}M{{/i}} solution of HCN?
+What are the concentrations at equilibrium of a 0.15 [[i:M]] solution of HCN?
 
 <!-- SEG:m68801:para-title:fs-idm100326816-title -->
 Solution
 
 <!-- SEG:m68801:para:fs-idm100326816 -->
-Using “{{i}}x{{/i}}” to represent the concentration of each product at equilibrium gives this ICE table.
+Using “[[i:x]]” to represent the concentration of each product at equilibrium gives this ICE table.
 
 <!-- SEG:m68801:para:fs-idp22895280 -->
-Substitute the equilibrium concentration terms into the {{i}}K[[sub:c]]{{/i}} expression
+Substitute the equilibrium concentration terms into the [[i:K[[sub:c]]]] expression
 
 <!-- SEG:m68801:para:fs-idp77336512 -->
-rearrange to the quadratic form and solve for {{i}}x{{/i}}
+rearrange to the quadratic form and solve for [[i:x]]
 
 <!-- SEG:m68801:para:fs-idm36129424 -->
-Thus [H[[sup:+]]] = [CN[[sup:–]]] = {{i}}x{{/i}} = 8.6 [[MATH:34]] 10[[sup:–6]] {{i}}M{{/i}} and [HCN] = 0.15 – {{i}}x{{/i}} = 0.15 {{i}}M{{/i}}.
+Thus [H[[sup:+]]] = [CN[[sup:–]]] = [[i:x]] = 8.6 [[MATH:34]] 10[[sup:–6]] [[i:M]] and [HCN] = 0.15 – [[i:x]] = 0.15 [[i:M]].
 
 <!-- SEG:m68801:para:fs-idm8990656 -->
-Note in this case that the change in concentration is significantly less than the initial concentration (a consequence of the small {{i}}K{{/i}}), and so the initial concentration experiences a negligible change:
+Note in this case that the change in concentration is significantly less than the initial concentration (a consequence of the small [[i:K]]), and so the initial concentration experiences a negligible change:
 
 <!-- SEG:m68801:para:fs-idm167049456 -->
 This approximation allows for a more expedient mathematical approach to the calculation that avoids the need to solve for the roots of a quadratic equation:
 
 <!-- SEG:m68801:para:fs-idm90994400 -->
-The value of {{i}}x{{/i}} calculated is, indeed, much less than the initial concentration
+The value of [[i:x]] calculated is, indeed, much less than the initial concentration
 
 <!-- SEG:m68801:para:fs-idm107658528 -->
-and so the approximation was justified. If this simplified approach were to yield a value for {{i}}x{{/i}} that did {{i}}not{{/i}} justify the approximation, the calculation would need to be repeated without making the approximation.
+and so the approximation was justified. If this simplified approach were to yield a value for [[i:x]] that did [[i:not]] justify the approximation, the calculation would need to be repeated without making the approximation.
 
 <!-- SEG:m68801:para-title:fs-idm21377744-title -->
 Check Your Learning
 
 <!-- SEG:m68801:para:fs-idm21377744 -->
-What are the equilibrium concentrations in a 0.25 {{i}}M{{/i}} NH[[sub:3]] solution?
+What are the equilibrium concentrations in a 0.25 [[i:M]] NH[[sub:3]] solution?
 
 <!-- SEG:m68801:para:fs-idp139296 -->
-[[MATH:35]] [NH[[sub:3]]] = 0.25 {{i}}M{{/i}}
+[[MATH:35]] [NH[[sub:3]]] = 0.25 [[i:M]]
 
 <!-- SEG:m68801:note-title:fs-idm106766656-title -->
 Answer:
 
 <!-- SEG:m68801:para:fs-idp139296 -->
-[[MATH:36]] [NH[[sub:3]]] = 0.25 {{i}}M{{/i}}
+[[MATH:36]] [NH[[sub:3]]] = 0.25 [[i:M]]
 
 <!-- SEG:m68801:title:fs-idp274270144-title -->
 Key Concepts and Summary
@@ -356,10 +356,10 @@ A reaction is represented by this equation: [[MATH:37]]
 (a) Write the mathematical expression for the equilibrium constant.
 
 <!-- SEG:m68801:problem:fs-idp70284560 -->
-(b) Using concentrations ≤1 {{i}}M{{/i}}, identify two sets of concentrations that describe a mixture of A, B, and C at equilibrium.
+(b) Using concentrations ≤1 [[i:M]], identify two sets of concentrations that describe a mixture of A, B, and C at equilibrium.
 
 <!-- SEG:m68801:solution:fs-idp300912416 -->
-[[MATH:38]] [A] = 0.1 {{i}}M{{/i}}, [B] = 0.1 {{i}}M{{/i}}, [C] = 1 {{i}}M{{/i}}; and [A] = 0.01, [B] = 0.250, [C] = 0.791.
+[[MATH:38]] [A] = 0.1 [[i:M]], [B] = 0.1 [[i:M]], [C] = 1 [[i:M]]; and [A] = 0.01, [B] = 0.250, [C] = 0.791.
 
 <!-- SEG:m68801:problem:fs-idp60169872 -->
 A reaction is represented by this equation: [[MATH:39]]
@@ -368,7 +368,7 @@ A reaction is represented by this equation: [[MATH:39]]
 (a) Write the mathematical expression for the equilibrium constant.
 
 <!-- SEG:m68801:problem:fs-idp315971008 -->
-(b) Using concentrations of ≤1 {{i}}M{{/i}}, identify two sets of concentrations that describe a mixture of W, X, and Y at equilibrium.
+(b) Using concentrations of ≤1 [[i:M]], identify two sets of concentrations that describe a mixture of W, X, and Y at equilibrium.
 
 <!-- SEG:m68801:problem:fs-idp156675248 -->
 What is the value of the equilibrium constant at 500 °C for the formation of NH[[sub:3]] according to the following equation?
@@ -377,10 +377,10 @@ What is the value of the equilibrium constant at 500 °C for the formation of NH
 [[MATH:40]]
 
 <!-- SEG:m68801:problem:fs-idp292210576 -->
-An equilibrium mixture of NH[[sub:3]]({{i}}g{{/i}}), H[[sub:2]]({{i}}g{{/i}}), and N[[sub:2]]({{i}}g{{/i}}) at 500 °C was found to contain 1.35 {{i}}M{{/i}} H[[sub:2]], 1.15 {{i}}M{{/i}} N[[sub:2]], and 4.12 [[MATH:41]] 10[[sup:−1]] {{i}}M{{/i}} NH[[sub:3]].
+An equilibrium mixture of NH[[sub:3]]([[i:g]]), H[[sub:2]]([[i:g]]), and N[[sub:2]]([[i:g]]) at 500 °C was found to contain 1.35 [[i:M]] H[[sub:2]], 1.15 [[i:M]] N[[sub:2]], and 4.12 [[MATH:41]] 10[[sup:−1]] [[i:M]] NH[[sub:3]].
 
 <!-- SEG:m68801:solution:fs-idp349698576 -->
-{{i}}K[[sub:c]]{{/i}} = 6.00 [[MATH:42]] 10[[sup:−2]]
+[[i:K[[sub:c]]]] = 6.00 [[MATH:42]] 10[[sup:−2]]
 
 <!-- SEG:m68801:problem:fs-idp220010192 -->
 Hydrogen is prepared commercially by the reaction of methane and water vapor at elevated temperatures.
@@ -389,25 +389,25 @@ Hydrogen is prepared commercially by the reaction of methane and water vapor at 
 [[MATH:43]]
 
 <!-- SEG:m68801:problem:fs-idp126314528 -->
-What is the equilibrium constant for the reaction if a mixture at equilibrium contains gases with the following concentrations: CH[[sub:4]], 0.126 {{i}}M{{/i}}; H[[sub:2]]O, 0.242 {{i}}M{{/i}}; CO, 0.126 {{i}}M{{/i}}; H[[sub:2]] 1.15 {{i}}M{{/i}}, at a temperature of 760 °C?
+What is the equilibrium constant for the reaction if a mixture at equilibrium contains gases with the following concentrations: CH[[sub:4]], 0.126 [[i:M]]; H[[sub:2]]O, 0.242 [[i:M]]; CO, 0.126 [[i:M]]; H[[sub:2]] 1.15 [[i:M]], at a temperature of 760 °C?
 
 <!-- SEG:m68801:problem:fs-idp343440848 -->
-A 0.72-mol sample of PCl[[sub:5]] is put into a 1.00-L vessel and heated. At equilibrium, the vessel contains 0.40 mol of PCl[[sub:3]]({{i}}g{{/i}}) and 0.40 mol of Cl[[sub:2]]({{i}}g{{/i}}). Calculate the value of the equilibrium constant for the decomposition of PCl[[sub:5]] to PCl[[sub:3]] and Cl[[sub:2]] at this temperature.
+A 0.72-mol sample of PCl[[sub:5]] is put into a 1.00-L vessel and heated. At equilibrium, the vessel contains 0.40 mol of PCl[[sub:3]]([[i:g]]) and 0.40 mol of Cl[[sub:2]]([[i:g]]). Calculate the value of the equilibrium constant for the decomposition of PCl[[sub:5]] to PCl[[sub:3]] and Cl[[sub:2]] at this temperature.
 
 <!-- SEG:m68801:solution:fs-idp100948784 -->
-{{i}}K[[sub:c]]{{/i}} = 0.50
+[[i:K[[sub:c]]]] = 0.50
 
 <!-- SEG:m68801:problem:fs-idp72815968 -->
-At 1 atm and 25 °C, NO[[sub:2]] with an initial concentration of 1.00 {{i}}M{{/i}} is 0.0033% decomposed into NO and O[[sub:2]]. Calculate the value of the equilibrium constant for the reaction.
+At 1 atm and 25 °C, NO[[sub:2]] with an initial concentration of 1.00 [[i:M]] is 0.0033% decomposed into NO and O[[sub:2]]. Calculate the value of the equilibrium constant for the reaction.
 
 <!-- SEG:m68801:problem:fs-idp226439472 -->
 [[MATH:44]]
 
 <!-- SEG:m68801:problem:fs-idp70746288 -->
-Calculate the value of the equilibrium constant {{i}}K[[sub:P]]{{/i}} for the reaction [[MATH:45]] from these equilibrium pressures: NO, 0.050 atm; Cl[[sub:2]], 0.30 atm; NOCl, 1.2 atm.
+Calculate the value of the equilibrium constant [[i:K[[sub:P]]]] for the reaction [[MATH:45]] from these equilibrium pressures: NO, 0.050 atm; Cl[[sub:2]], 0.30 atm; NOCl, 1.2 atm.
 
 <!-- SEG:m68801:solution:fs-idp160967664 -->
-{{i}}K[[sub:P]]{{/i}} = 1.9 [[MATH:46]] 10[[sup:3]]
+[[i:K[[sub:P]]]] = 1.9 [[MATH:46]] 10[[sup:3]]
 
 <!-- SEG:m68801:problem:fs-idp59973296 -->
 When heated, iodine vapor dissociates according to this equation:
@@ -416,7 +416,7 @@ When heated, iodine vapor dissociates according to this equation:
 [[MATH:47]]
 
 <!-- SEG:m68801:problem:fs-idp71998288 -->
-At 1274 K, a sample exhibits a partial pressure of I[[sub:2]] of 0.1122 atm and a partial pressure due to I atoms of 0.1378 atm. Determine the value of the equilibrium constant, {{i}}K[[sub:P]]{{/i}}, for the decomposition at 1274 K.
+At 1274 K, a sample exhibits a partial pressure of I[[sub:2]] of 0.1122 atm and a partial pressure due to I atoms of 0.1378 atm. Determine the value of the equilibrium constant, [[i:K[[sub:P]]]], for the decomposition at 1274 K.
 
 <!-- SEG:m68801:problem:fs-idp148499280 -->
 A sample of ammonium chloride was heated in a closed container.
@@ -425,13 +425,13 @@ A sample of ammonium chloride was heated in a closed container.
 [[MATH:48]]
 
 <!-- SEG:m68801:problem:fs-idp169323488 -->
-At equilibrium, the pressure of NH[[sub:3]]({{i}}g{{/i}}) was found to be 1.75 atm. What is the value of the equilibrium constant {{i}}K[[sub:P]]{{/i}} for the decomposition at this temperature?
+At equilibrium, the pressure of NH[[sub:3]]([[i:g]]) was found to be 1.75 atm. What is the value of the equilibrium constant [[i:K[[sub:P]]]] for the decomposition at this temperature?
 
 <!-- SEG:m68801:solution:fs-idp148157632 -->
-{{i}}K[[sub:P]]{{/i}} = 3.06
+[[i:K[[sub:P]]]] = 3.06
 
 <!-- SEG:m68801:problem:fs-idp165910368 -->
-At a temperature of 60 °C, the vapor pressure of water is 0.196 atm. What is the value of the equilibrium constant {{i}}K[[sub:P]]{{/i}} for the vaporization equilibrium at 60 °C?
+At a temperature of 60 °C, the vapor pressure of water is 0.196 atm. What is the value of the equilibrium constant [[i:K[[sub:P]]]] for the vaporization equilibrium at 60 °C?
 
 <!-- SEG:m68801:problem:fs-idp118964416 -->
 [[MATH:49]]
@@ -476,7 +476,7 @@ Complete the following partial ICE tables.
 [[MATH:55]]
 
 <!-- SEG:m68801:solution:fs-idp98226336 -->
-(a) −2{{i}}x{{/i}}, +2{{i}}x{{/i}}; (b) [[MATH:56]], [[MATH:57]], −2{{i}}x{{/i}}; (c) −2{{i}}x{{/i}}, 3{{i}}x{{/i}}; (d) {{i}}x{{/i}}, –{{i}}x{{/i}}, −3{{i}}x{{/i}}; (e) +{{i}}x{{/i}}; (f) [[MATH:58]]
+(a) −2[[i:x]], +2[[i:x]]; (b) [[MATH:56]], [[MATH:57]], −2[[i:x]]; (c) −2[[i:x]], 3[[i:x]]; (d) [[i:x]], –[[i:x]], −3[[i:x]]; (e) +[[i:x]]; (f) [[MATH:58]]
 
 <!-- SEG:m68801:problem:fs-idp155256448 -->
 Complete the following partial ICE tables.
@@ -518,16 +518,16 @@ Complete the following partial ICE tables.
 [[MATH:64]]
 
 <!-- SEG:m68801:problem:fs-idp210079776 -->
-Why are there no changes specified for Ni in [#fs-idp189641568], part (f)? What property of Ni does change?
+Why are there no changes specified for Ni in [[xref:fs-idp189641568]], part (f)? What property of Ni does change?
 
 <!-- SEG:m68801:solution:fs-idp125353792 -->
 Activities of pure crystalline solids equal 1 and are constant; however, the mass of Ni does change.
 
 <!-- SEG:m68801:problem:fs-idp76682816 -->
-Why are there no changes specified for NH[[sub:4]]HS in [#fs-idp155255936], part (e)? What property of NH[[sub:4]]HS does change?
+Why are there no changes specified for NH[[sub:4]]HS in [[xref:fs-idp155255936]], part (e)? What property of NH[[sub:4]]HS does change?
 
 <!-- SEG:m68801:problem:fs-idp99981344 -->
-Analysis of the gases in a sealed reaction vessel containing NH[[sub:3]], N[[sub:2]], and H[[sub:2]] at equilibrium at 400 °C established the concentration of N[[sub:2]] to be 1.2 {{i}}M{{/i}} and the concentration of H[[sub:2]] to be 0.24 {{i}}M{{/i}}.
+Analysis of the gases in a sealed reaction vessel containing NH[[sub:3]], N[[sub:2]], and H[[sub:2]] at equilibrium at 400 °C established the concentration of N[[sub:2]] to be 1.2 [[i:M]] and the concentration of H[[sub:2]] to be 0.24 [[i:M]].
 
 <!-- SEG:m68801:problem:fs-idp119925376 -->
 [[MATH:65]]
@@ -536,7 +536,7 @@ Analysis of the gases in a sealed reaction vessel containing NH[[sub:3]], N[[sub
 Calculate the equilibrium molar concentration of NH[[sub:3]].
 
 <!-- SEG:m68801:solution:fs-idp274160400 -->
-[NH[[sub:3]]] = 9.1 [[MATH:66]] 10[[sup:−2]] {{i}}M{{/i}}
+[NH[[sub:3]]] = 9.1 [[MATH:66]] 10[[sup:−2]] [[i:M]]
 
 <!-- SEG:m68801:problem:fs-idp312744496 -->
 Calculate the number of moles of HI that are at equilibrium with 1.25 mol of H[[sub:2]] and 1.25 mol of I[[sub:2]] in a 5.00−L flask at 448 °C.
@@ -551,7 +551,7 @@ What is the pressure of BrCl in an equilibrium mixture of Cl[[sub:2]], Br[[sub:2
 [[MATH:68]]
 
 <!-- SEG:m68801:solution:fs-idp171028976 -->
-{{i}}P{{/i}}[[sub:BrCl]] = 4.9 [[MATH:69]] 10[[sup:−2]] atm
+[[i:P]][[sub:BrCl]] = 4.9 [[MATH:69]] 10[[sup:−2]] atm
 
 <!-- SEG:m68801:problem:fs-idp178545504 -->
 What is the pressure of CO[[sub:2]] in a mixture at equilibrium that contains 0.50 atm H[[sub:2]], 2.0 atm of H[[sub:2]]O, and 1.0 atm of CO at 990 °C?
@@ -566,10 +566,10 @@ Cobalt metal can be prepared by reducing cobalt(II) oxide with carbon monoxide.
 [[MATH:71]]
 
 <!-- SEG:m68801:problem:fs-idp313499840 -->
-What concentration of CO remains in an equilibrium mixture with [CO[[sub:2]]] = 0.100 {{i}}M{{/i}}?
+What concentration of CO remains in an equilibrium mixture with [CO[[sub:2]]] = 0.100 [[i:M]]?
 
 <!-- SEG:m68801:solution:fs-idp194615776 -->
-[CO] = 2.04 [[MATH:72]] 10[[sup:−4]] {{i}}M{{/i}}
+[CO] = 2.04 [[MATH:72]] 10[[sup:−4]] [[i:M]]
 
 <!-- SEG:m68801:problem:fs-idp231857968 -->
 Carbon reacts with water vapor at elevated temperatures.
@@ -578,7 +578,7 @@ Carbon reacts with water vapor at elevated temperatures.
 [[MATH:73]]
 
 <!-- SEG:m68801:problem:fs-idp119902960 -->
-Assuming a reaction mixture initially contains only reactants, what is the concentration of CO in an equilibrium mixture with [H[[sub:2]]O] = 0.500 {{i}}M{{/i}} at 1000 °C?
+Assuming a reaction mixture initially contains only reactants, what is the concentration of CO in an equilibrium mixture with [H[[sub:2]]O] = 0.500 [[i:M]] at 1000 °C?
 
 <!-- SEG:m68801:problem:fs-idp151660224 -->
 Sodium sulfate 10−hydrate, Na[[sub:2]]SO[[sub:4]]·10H[[sub:2]]O, dehydrates according to the equation
@@ -602,16 +602,16 @@ Calcium chloride 6−hydrate, CaCl[[sub:2]]·6H[[sub:2]]O, dehydrates according 
 What is the pressure of water vapor at equilibrium with a mixture of CaCl[[sub:2]]·6H[[sub:2]]O and CaCl[[sub:2]] at 25 °C?
 
 <!-- SEG:m68801:problem:fs-idp70670336 -->
-A student solved the following problem and found the equilibrium concentrations to be [SO[[sub:2]]] = 0.590 {{i}}M{{/i}}, [O[[sub:2]]] = 0.0450 {{i}}M{{/i}}, and [SO[[sub:3]]] = 0.260 {{i}}M{{/i}}. How could this student check the work without reworking the problem? The problem was: For the following reaction at 600 °C:
+A student solved the following problem and found the equilibrium concentrations to be [SO[[sub:2]]] = 0.590 [[i:M]], [O[[sub:2]]] = 0.0450 [[i:M]], and [SO[[sub:3]]] = 0.260 [[i:M]]. How could this student check the work without reworking the problem? The problem was: For the following reaction at 600 °C:
 
 <!-- SEG:m68801:problem:fs-idp144507328 -->
 [[MATH:77]]
 
 <!-- SEG:m68801:solution:fs-idp313517456 -->
-Calculate {{i}}Q{{/i}} based on the calculated concentrations and see if it is equal to {{i}}K[[sub:c]]{{/i}}. Because {{i}}Q{{/i}} does equal 4.32, the system must be at equilibrium.
+Calculate [[i:Q]] based on the calculated concentrations and see if it is equal to [[i:K[[sub:c]]]]. Because [[i:Q]] does equal 4.32, the system must be at equilibrium.
 
 <!-- SEG:m68801:problem:fs-idp359131968 -->
-A student solved the following problem and found [N[[sub:2]]O[[sub:4]]] = 0.16 {{i}}M{{/i}} at equilibrium. How could this student recognize that the answer was wrong without reworking the problem? The problem was: What is the equilibrium concentration of N[[sub:2]]O[[sub:4]] in a mixture formed from a sample of NO[[sub:2]] with a concentration of 0.10 {{i}}M{{/i}}?
+A student solved the following problem and found [N[[sub:2]]O[[sub:4]]] = 0.16 [[i:M]] at equilibrium. How could this student recognize that the answer was wrong without reworking the problem? The problem was: What is the equilibrium concentration of N[[sub:2]]O[[sub:4]] in a mixture formed from a sample of NO[[sub:2]] with a concentration of 0.10 [[i:M]]?
 
 <!-- SEG:m68801:problem:fs-idp99332816 -->
 [[MATH:78]]
@@ -629,13 +629,13 @@ Assume that the change in concentration of N[[sub:2]]O[[sub:4]] is small enough 
 (b) Confirm that the change is small enough to be neglected.
 
 <!-- SEG:m68801:solution:fs-idp123016912 -->
-(a) [NO[[sub:2]]] = 1.17 [[MATH:80]] 10[[sup:−3]] {{i}}M{{/i}}; [N[[sub:2]]O[[sub:4]]] = 0.128 {{i}}M{{/i}}; (b) The assumption that {{i}}x{{/i}} is negligibly small compared to 0.129 is confirmed by comparing the initial concentration of the N[[sub:2]]O[[sub:4]] to its concentration at equilibrium (they differ by just 1 in the least significant digit’s place).
+(a) [NO[[sub:2]]] = 1.17 [[MATH:80]] 10[[sup:−3]] [[i:M]]; [N[[sub:2]]O[[sub:4]]] = 0.128 [[i:M]]; (b) The assumption that [[i:x]] is negligibly small compared to 0.129 is confirmed by comparing the initial concentration of the N[[sub:2]]O[[sub:4]] to its concentration at equilibrium (they differ by just 1 in the least significant digit’s place).
 
 <!-- SEG:m68801:problem:fs-idp110623472 -->
 Assume that the change in concentration of COCl[[sub:2]] is small enough to be neglected in the following problem.
 
 <!-- SEG:m68801:problem:fs-idp110624240 -->
-(a) Calculate the equilibrium concentration of all species in an equilibrium mixture that results from the decomposition of COCl[[sub:2]] with an initial concentration of 0.3166 {{i}}M{{/i}}.
+(a) Calculate the equilibrium concentration of all species in an equilibrium mixture that results from the decomposition of COCl[[sub:2]] with an initial concentration of 0.3166 [[i:M]].
 
 <!-- SEG:m68801:problem:fs-idp111327968 -->
 [[MATH:81]]
@@ -656,22 +656,22 @@ Assume that the change in pressure of H[[sub:2]]S is small enough to be neglecte
 (b) Confirm that the change is small enough to be neglected.
 
 <!-- SEG:m68801:solution:fs-idp211916912 -->
-(a) [H[[sub:2]]S] = 0.810 atm, [H[[sub:2]]] = 0.014 atm, [S[[sub:2]]] = 0.0072 atm; (b) The assumption that 2{{i}}x{{/i}} is negligibly small compared to 0.824 is confirmed by comparing the initial concentration of the H[[sub:2]]S to its concentration at equilibrium (0.824 atm versus 0.810 atm, a difference of less than 2%).
+(a) [H[[sub:2]]S] = 0.810 atm, [H[[sub:2]]] = 0.014 atm, [S[[sub:2]]] = 0.0072 atm; (b) The assumption that 2[[i:x]] is negligibly small compared to 0.824 is confirmed by comparing the initial concentration of the H[[sub:2]]S to its concentration at equilibrium (0.824 atm versus 0.810 atm, a difference of less than 2%).
 
 <!-- SEG:m68801:problem:fs-idp124881904 -->
-What are all concentrations after a mixture that contains [H[[sub:2]]O] = 1.00 {{i}}M{{/i}} and [Cl[[sub:2]]O] = 1.00 {{i}}M{{/i}} comes to equilibrium at 25 °C?
+What are all concentrations after a mixture that contains [H[[sub:2]]O] = 1.00 [[i:M]] and [Cl[[sub:2]]O] = 1.00 [[i:M]] comes to equilibrium at 25 °C?
 
 <!-- SEG:m68801:problem:fs-idp212312544 -->
 [[MATH:83]]
 
 <!-- SEG:m68801:problem:fs-idp55521728 -->
-What are the concentrations of PCl[[sub:5]], PCl[[sub:3]], and Cl[[sub:2]] in an equilibrium mixture produced by the decomposition of a sample of pure PCl[[sub:5]] with [PCl[[sub:5]]] = 2.00 {{i}}M{{/i}}?
+What are the concentrations of PCl[[sub:5]], PCl[[sub:3]], and Cl[[sub:2]] in an equilibrium mixture produced by the decomposition of a sample of pure PCl[[sub:5]] with [PCl[[sub:5]]] = 2.00 [[i:M]]?
 
 <!-- SEG:m68801:problem:fs-idp323811520 -->
 [[MATH:84]]
 
 <!-- SEG:m68801:solution:fs-idp112178272 -->
-[PCl[[sub:5]]] = 1.80 {{i}}M{{/i}}; [Cl[[sub:2]]] = 0.195 {{i}}M{{/i}}; [PCl[[sub:3]]] = 0.195 {{i}}M{{/i}}.
+[PCl[[sub:5]]] = 1.80 [[i:M]]; [Cl[[sub:2]]] = 0.195 [[i:M]]; [PCl[[sub:3]]] = 0.195 [[i:M]].
 
 <!-- SEG:m68801:problem:fs-idp116933680 -->
 Calculate the number of grams of HI that are at equilibrium with 1.25 mol of H[[sub:2]] and 63.5 g of iodine at 448 °C.
@@ -683,16 +683,16 @@ Calculate the number of grams of HI that are at equilibrium with 1.25 mol of H[[
 507 g
 
 <!-- SEG:m68801:problem:fs-idp307490368 -->
-Butane exists as two isomers, {{i}}n{{/i}}−butane and isobutane.
+Butane exists as two isomers, [[i:n]]−butane and isobutane.
 
 <!-- SEG:m68801:problem:fs-idp194751264 -->
-{{i}}K[[sub:P]]{{/i}} = 2.5 at 25 °C
+[[i:K[[sub:P]]]] = 2.5 at 25 °C
 
 <!-- SEG:m68801:problem:fs-idp194752400 -->
 What is the pressure of isobutane in a container of the two isomers at equilibrium with a total pressure of 1.22 atm?
 
 <!-- SEG:m68801:problem:fs-idp99671024 -->
-What is the minimum mass of CaCO[[sub:3]] required to establish equilibrium at a certain temperature in a 6.50-L container if the equilibrium constant ({{i}}K[[sub:c]]{{/i}}) is 0.50 for the decomposition reaction of CaCO[[sub:3]] at that temperature?
+What is the minimum mass of CaCO[[sub:3]] required to establish equilibrium at a certain temperature in a 6.50-L container if the equilibrium constant ([[i:K[[sub:c]]]]) is 0.50 for the decomposition reaction of CaCO[[sub:3]] at that temperature?
 
 <!-- SEG:m68801:problem:fs-idp242568240 -->
 [[MATH:86]]
@@ -701,7 +701,7 @@ What is the minimum mass of CaCO[[sub:3]] required to establish equilibrium at a
 330 g
 
 <!-- SEG:m68801:problem:fs-idp186517712 -->
-The equilibrium constant ({{i}}K[[sub:c]]{{/i}}) for this reaction is 1.60 at 990 °C:
+The equilibrium constant ([[i:K[[sub:c]]]]) for this reaction is 1.60 at 990 °C:
 
 <!-- SEG:m68801:problem:fs-idp268193344 -->
 [[MATH:87]]
@@ -722,7 +722,7 @@ In a 3.0-L vessel, the following equilibrium partial pressures are measured: N[[
 (b) Hydrogen is removed from the vessel until the partial pressure of nitrogen, at equilibrium, is 250 torr. Calculate the partial pressures of the other substances under the new conditions.
 
 <!-- SEG:m68801:problem:fs-idp291800512 -->
-The equilibrium constant ({{i}}K[[sub:c]]{{/i}}) for this reaction is 5.0 at a given temperature.
+The equilibrium constant ([[i:K[[sub:c]]]]) for this reaction is 5.0 at a given temperature.
 
 <!-- SEG:m68801:problem:fs-idp291801776 -->
 [[MATH:90]]
@@ -734,7 +734,7 @@ The equilibrium constant ({{i}}K[[sub:c]]{{/i}}) for this reaction is 5.0 at a g
 (b) Maintaining the same temperature, additional H[[sub:2]] was added to the system, and some water vapor was removed by drying. A new equilibrium mixture was thereby established containing 0.40 mol of CO, 0.30 mol of water vapor, and 1.2 mol of H[[sub:2]] in a liter. How many moles of CO[[sub:2]] were in the new equilibrium mixture? Compare this with the quantity in part (a), and discuss whether the second value is reasonable. Explain how it is possible for the water vapor concentration to be the same in the two equilibrium solutions even though some vapor was removed before the second equilibrium was established.
 
 <!-- SEG:m68801:solution:fs-idp150248880 -->
-(a) 0.33 mol. (b) [CO[[sub:2]]] = 0.50 {{i}}M{{/i}}. Added H[[sub:2]] forms some water as a result of a shift to the left after H[[sub:2]] is added.
+(a) 0.33 mol. (b) [CO[[sub:2]]] = 0.50 [[i:M]]. Added H[[sub:2]] forms some water as a result of a shift to the left after H[[sub:2]] is added.
 
 <!-- SEG:m68801:problem:fs-idp157265648 -->
 Antimony pentachloride decomposes according to this equation:
@@ -752,7 +752,7 @@ Consider the equilibrium
 [[MATH:92]]
 
 <!-- SEG:m68801:problem:fs-idp129853008 -->
-(a) What is the expression for the equilibrium constant ({{i}}K[[sub:c]]{{/i}}) of the reaction?
+(a) What is the expression for the equilibrium constant ([[i:K[[sub:c]]]]) of the reaction?
 
 <!-- SEG:m68801:problem:fs-idp175439040 -->
 (b) How must the concentration of NH[[sub:3]] change to reach equilibrium if the reaction quotient is less than the equilibrium constant?
@@ -764,7 +764,7 @@ Consider the equilibrium
 (d) If the change in the pressure of NO[[sub:2]] is 28 torr as a mixture of the four gases reaches equilibrium, how much will the pressure of O[[sub:2]] change?
 
 <!-- SEG:m68801:solution:fs-idp115889776 -->
-(a) [[MATH:93]] (b) [NH[[sub:3]]] must increase for {{i}}Q[[sub:c]]{{/i}} to reach {{i}}K[[sub:c]]{{/i}}. (c) The increase in system volume would lower the partial pressures of all reactants (including NO[[sub:2]]). (d) [[MATH:94]]
+(a) [[MATH:93]] (b) [NH[[sub:3]]] must increase for [[i:Q[[sub:c]]]] to reach [[i:K[[sub:c]]]]. (c) The increase in system volume would lower the partial pressures of all reactants (including NO[[sub:2]]). (d) [[MATH:94]]
 
 <!-- SEG:m68801:problem:fs-idp222776272 -->
 The binding of oxygen by hemoglobin (Hb), giving oxyhemoglobin (HbO[[sub:2]]), is partially regulated by the concentration of H[[sub:3]]O[[sup:+]] and dissolved CO[[sub:2]] in the blood. Although the equilibrium is complicated, it can be summarized as
@@ -779,10 +779,10 @@ The binding of oxygen by hemoglobin (Hb), giving oxyhemoglobin (HbO[[sub:2]]), i
 (b) Explain why the production of lactic acid and CO[[sub:2]] in a muscle during exertion stimulates release of O[[sub:2]] from the oxyhemoglobin in the blood passing through the muscle.
 
 <!-- SEG:m68801:problem:fs-idp149802544 -->
-Liquid N[[sub:2]]O[[sub:3]] is dark blue at low temperatures, but the color fades and becomes greenish at higher temperatures as the compound decomposes to NO and NO[[sub:2]]. At 25 °C, a value of {{i}}K[[sub:P]]{{/i}} = 1.91 has been established for this decomposition. If 0.236 moles of N[[sub:2]]O[[sub:3]] are placed in a 1.52-L vessel at 25 °C, calculate the equilibrium partial pressures of N[[sub:2]]O[[sub:3]]({{i}}g{{/i}}), NO[[sub:2]]({{i}}g{{/i}}), and NO({{i}}g{{/i}}).
+Liquid N[[sub:2]]O[[sub:3]] is dark blue at low temperatures, but the color fades and becomes greenish at higher temperatures as the compound decomposes to NO and NO[[sub:2]]. At 25 °C, a value of [[i:K[[sub:P]]]] = 1.91 has been established for this decomposition. If 0.236 moles of N[[sub:2]]O[[sub:3]] are placed in a 1.52-L vessel at 25 °C, calculate the equilibrium partial pressures of N[[sub:2]]O[[sub:3]]([[i:g]]), NO[[sub:2]]([[i:g]]), and NO([[i:g]]).
 
 <!-- SEG:m68801:solution:fs-idp61057456 -->
 [[MATH:96]]
 
 <!-- SEG:m68801:problem:fs-idp97795424 -->
-A 1.00-L vessel at 400 °C contains the following equilibrium concentrations: N[[sub:2]], 1.00 {{i}}M{{/i}}; H[[sub:2]], 0.50 {{i}}M{{/i}}; and NH[[sub:3]], 0.25 {{i}}M{{/i}}. How many moles of hydrogen must be removed from the vessel to increase the concentration of nitrogen to 1.1 {{i}}M{{/i}}? The equilibrium reaction is[[BR]] [[MATH:97]]
+A 1.00-L vessel at 400 °C contains the following equilibrium concentrations: N[[sub:2]], 1.00 [[i:M]]; H[[sub:2]], 0.50 [[i:M]]; and NH[[sub:3]], 0.25 [[i:M]]. How many moles of hydrogen must be removed from the vessel to increase the concentration of nitrogen to 1.1 [[i:M]]? The equilibrium reaction is[[BR]] [[MATH:97]]

@@ -466,7 +466,7 @@
           "id": "fs-idm223269056",
           "title": {
             "segmentId": "m68805:example-title:fs-idm223269056-title",
-            "text": "Determination of {{i}}K{{/i}}[[sub:a]] from Equilibrium Concentrations"
+            "text": "Determination of [[i:K]][[sub:a]] from Equilibrium Concentrations"
           },
           "content": [
             {
@@ -550,7 +550,7 @@
           "id": "fs-idm154542240",
           "title": {
             "segmentId": "m68805:example-title:fs-idm154542240-title",
-            "text": "Determination of {{i}}K{{/i}}[[sub:b]] from Equilibrium Concentrations"
+            "text": "Determination of [[i:K]][[sub:b]] from Equilibrium Concentrations"
           },
           "content": [
             {
@@ -620,7 +620,7 @@
           "id": "fs-idm1433984",
           "title": {
             "segmentId": "m68805:example-title:fs-idm1433984-title",
-            "text": "Determination of {{i}}K{{/i}}[[sub:a]] or {{i}}K{{/i}}[[sub:b]] from pH"
+            "text": "Determination of [[i:K]][[sub:a]] or [[i:K]][[sub:b]] from pH"
           },
           "content": [
             {

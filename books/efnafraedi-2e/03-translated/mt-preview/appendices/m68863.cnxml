@@ -14,11 +14,11 @@
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c2">Eðlismassi vatns (g/ml) við mismunandi hitastig (°C)</entry>
+<entry namest="c1" nameend="c2">Eðlismassi vatns (g/mL) við mismunandi hitastig (°C)</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hitastig</entry>
-<entry align="left">Eðlismassi (g/ml)</entry>
+<entry align="left">Eðlismassi (g/mL)</entry>
 </row>
 </thead>
 <tbody>
@@ -28,7 +28,7 @@
 </row>
 <row valign="middle">
 <entry align="left">4</entry>
-<entry align="left">0,9999720 (hámarskseðlismassi)</entry>
+<entry align="left">0,9999720 (hámark eðlismassa)</entry>
 </row>
 <row valign="middle">
 <entry align="left">10</entry>
@@ -83,12 +83,12 @@
 <colspec colnum="3" colname="c3"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c3">Gufunarþrýstingur vatns við mismunandi hitastig (°C)</entry>
+<entry namest="c1" nameend="c3">Gufuþrýstingur vatns við mismunandi hitastig (°C)</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hitastig</entry>
-<entry align="left">Gufunarþrýstingur (torr)</entry>
-<entry align="left">Gufunarþrýstingur (Pa)</entry>
+<entry align="left">Gufuþrýstingur (torr)</entry>
+<entry align="left">Gufuþrýstingur (Pa)</entry>
 </row>
 </thead>
 <tbody>
@@ -215,7 +215,7 @@
 <colspec colnum="3" colname="c3"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c3">K<sub>v</sub> og pK<sub>v</sub> vatns við mismunandi hitastig (°C)</entry>
+<entry namest="c1" nameend="c3">K<sub>w</sub> og pK<sub>w</sub> vatns við mismunandi hitastig (°C)</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hitastig</entry>
@@ -315,13 +315,13 @@
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">C°(H<sub>2</sub>O(<emphasis effect="italics">l</emphasis>)) = 4,184 J⋅g<sup>−1</sup>⋅°C<sup>−1</sup></entry>
+<entry align="left">C°(H<sub>2</sub>O(<emphasis effect="italics">l</emphasis>)) = 4,184 J∙g<sup>-1</sup>∙°C<sup>-1</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">C°(H<sub>2</sub>O(<emphasis effect="italics">s</emphasis>)) = 2,093 J⋅g<sup>−1</sup>⋅°C<sup>−1</sup></entry>
+<entry align="left">C°(H<sub>2</sub>O(<emphasis effect="italics">s</emphasis>)) = 2,093 J∙g<sup>−1</sup>∙°C<sup>−1</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">C°(H<sub>2</sub>O(<emphasis effect="italics">g</emphasis>)) = 1,864 J⋅g<sup>−1</sup>⋅°C<sup>−1</sup></entry>
+<entry align="left">C°(H<sub>2</sub>O(<emphasis effect="italics">g</emphasis>)) = 1,864 J∙g<sup>−1</sup>∙°C<sup>−1</sup></entry>
 </row>
 </tbody>
 
@@ -335,7 +335,7 @@
 <colspec colnum="3" colname="c3"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c3">Staðalbræðslu- og suðuhitastig vatns og entalpíur fasaumbreytinga</entry>
+<entry namest="c1" nameend="c3">Staðlað bræðslu- og suðuhitastig vatns og entalpíur fasaumbreytinga</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hitastig (K)</entry>
@@ -366,10 +366,10 @@
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">K<sub>f</sub> = 1,86 °C⋅kg⋅mól<sup>−1</sup> (frostmarkslækkunarfasti)</entry>
+<entry align="left">K<sub>f</sub> = 1,86°C∙kg∙mól<sup>−1</sup> (frostmarkslækkunarfasti)</entry>
 </row>
 <row valign="middle">
-<entry align="left">K<sub>b</sub> = 0,51 °C⋅kg⋅mól<sup>−1</sup> (suðumarkshækkunarfasti)</entry>
+<entry align="left">K<sub>b</sub> = 0,51°C∙kg∙mól<sup>−1</sup> (suðumarkshækkunarfasti)</entry>
 </row>
 </tbody>
 </tgroup>
@@ -377,6 +377,6 @@
 <figure id="CNX_Chem_00_EE_LiqWatAbso"><media id="fs-idm364999968" alt="A line graph is titled “Water Full-Range Spectral Absorption Curve.” The x-axis is titled “Wavelength” and the y-axis is titled “Absorption ( 1 per meter ).” Evenly spaced tick marks on the x-axis denote 10 nanometers, 100 nanometers, 1 micrometer, 10 micrometers, 100 micrometers, 1 millimeter, and 10 millimeters. Evenly spaced tick marks on the y-axis denote 10 superscript negative two, 10 superscript negative one, 10 superscript zero, 10 superscript one, 10 superscript two, 10 superscript three, 10 superscript four, 10 superscript five, 10 superscript six, 10 superscript seven, and 10 superscript eight. Above the graph, horizontal lines indicate the range of wavelengths for U V, V I S, near I R , mid I R , far I R , and E H F. The graph contains one line that begins at 10 nanometers and a little more than 10 superscript six. Moving from left to right, this line ascends gradually until it reaches a point near 100 nanometers and 10 superscript eight. From this point, the line steeply descends to a point a little more than halfway between 100 nanometers and 1 micrometer, and slightly more than 10 superscript two. This point indicates the end of the range labeled “U V” and the beginning of the range labeled “V I S.” The range labeled “V I S” is shaded with a color spectrum including the full range of Roy G Biv colors. Here, the line briefly descends in the same path as before, and then steeply ascends to a point near 1 micrometer and 10 superscript zero. This point indicates the end of the range labeled “V I S” and the beginning of the range labeled “near I R.” The line continues its steep ascent, with short, abrupt descents in between, until it reaches a point a little more than halfway between 1 micrometer and 10 micrometers, and a little more than 10 superscript six. This point indicates the end of the range labeled “near I R” and the beginning of the range labeled “mid I R.” Here, the line moves steeply and sporadically up and down until it reaches a point a little more than halfway between 10 micrometers and 100 micrometers, and slightly more than 10 superscript five. This point indicates the end of the range labeled “Mid I R” and the beginning of the range labeled “Far I R.” The line descends very gradually to a point slightly more than 1 millimeter and slightly more than 10 superscript four. This point indicates the end of the range labeled “Far I R” and the beginning of the range labeled “E H F.” The line continues its gradual descent to 10 millimeters and slightly more than 10 superscript three. This point indicates the end of the range labeled “E H F.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_00_EE_LiqWatAbso.jpg"/>
 </media>
-<caption>Línuritið sýnir umfang ljósgleypni á móti bylgjulengd fyrir vatn. Gleypni er gefin upp í umhverfum metrum og samsvarar umhverfu þeirrar vegalengdar sem ljós getur ferðast í gegnum vatn áður en styrkur þess minnkar um 1/<emphasis effect="italics">e</emphasis> (~37%).</caption></figure>
+<caption>Línuritið sýnir umfang ljósgleypni á móti bylgjulengd fyrir vatn. Gleypni er gefin upp í metrum í mínus fyrsta veldi og samsvarar umhverfu þeirrar vegalengdar sem ljós getur ferðast í gegnum vatn áður en styrkur þess minnkar um 1/<emphasis effect="italics">e</emphasis> (~37%).</caption></figure>
 </content>
 </document>

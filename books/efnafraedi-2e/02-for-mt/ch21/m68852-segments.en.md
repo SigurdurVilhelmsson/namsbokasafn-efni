@@ -17,13 +17,13 @@ Changes of nuclei that result in changes in their atomic numbers, mass numbers, 
 Types of Particles in Nuclear Reactions
 
 <!-- SEG:m68852:para:fs-idm5999248 -->
-Many entities can be involved in nuclear reactions. The most common are protons, neutrons, alpha particles, beta particles, positrons, and gamma rays, as shown in [#CNX_Chem_21_02_Nuclearrxs]. Protons [[MATH:1]] also represented by the symbol [[MATH:2]] and neutrons [[MATH:3]] are the constituents of atomic nuclei, and have been described previously. {{term}}Alpha particles{{/term}} [[MATH:4]] also represented by the symbol [[MATH:5]] are high-energy helium nuclei. {{term}}Beta particles{{/term}} [[MATH:6]] also represented by the symbol [[MATH:7]] are high-energy electrons, and gamma rays are photons of very high-energy electromagnetic radiation. {{term}}Positrons{{/term}} [[MATH:8]] also represented by the symbol [[MATH:9]] are positively charged electrons (“anti-electrons”). The subscripts and superscripts are necessary for balancing nuclear equations, but are usually optional in other circumstances. For example, an alpha particle is a helium nucleus (He) with a charge of +2 and a mass number of 4, so it is symbolized [[MATH:10]] This works because, in general, the ion charge is not important in the balancing of nuclear equations.
+Many entities can be involved in nuclear reactions. The most common are protons, neutrons, alpha particles, beta particles, positrons, and gamma rays, as shown in [[xref:CNX_Chem_21_02_Nuclearrxs]]. Protons [[MATH:1]] also represented by the symbol [[MATH:2]] and neutrons [[MATH:3]] are the constituents of atomic nuclei, and have been described previously. {{term}}Alpha particles{{/term}} [[MATH:4]] also represented by the symbol [[MATH:5]] are high-energy helium nuclei. {{term}}Beta particles{{/term}} [[MATH:6]] also represented by the symbol [[MATH:7]] are high-energy electrons, and gamma rays are photons of very high-energy electromagnetic radiation. {{term}}Positrons{{/term}} [[MATH:8]] also represented by the symbol [[MATH:9]] are positively charged electrons (“anti-electrons”). The subscripts and superscripts are necessary for balancing nuclear equations, but are usually optional in other circumstances. For example, an alpha particle is a helium nucleus (He) with a charge of +2 and a mass number of 4, so it is symbolized [[MATH:10]] This works because, in general, the ion charge is not important in the balancing of nuclear equations.
 
 <!-- SEG:m68852:caption:CNX_Chem_21_02_Nuclearrxs-caption -->
 Although many species are encountered in nuclear reactions, this table summarizes the names, symbols, representations, and descriptions of the most common of these.
 
 <!-- SEG:m68852:para:fs-idp183438528 -->
-Note that positrons are exactly like electrons, except they have the opposite charge. They are the most common example of {{term}}antimatter{{/term}}, particles with the same mass but the opposite state of another property (for example, charge) than ordinary matter. When antimatter encounters ordinary matter, both are annihilated and their mass is converted into energy in the form of {{term}}gamma rays (γ){{/term}}—and other much smaller subnuclear particles, which are beyond the scope of this chapter—according to the mass-energy equivalence equation {{i}}E{{/i}} = {{i}}mc{{/i}}[[sup:2]], seen in the preceding section. For example, when a positron and an electron collide, both are annihilated and two gamma ray photons are created:
+Note that positrons are exactly like electrons, except they have the opposite charge. They are the most common example of {{term}}antimatter{{/term}}, particles with the same mass but the opposite state of another property (for example, charge) than ordinary matter. When antimatter encounters ordinary matter, both are annihilated and their mass is converted into energy in the form of {{term}}gamma rays (γ){{/term}}—and other much smaller subnuclear particles, which are beyond the scope of this chapter—according to the mass-energy equivalence equation [[i:E]] = [[i:mc]][[sup:2]], seen in the preceding section. For example, when a positron and an electron collide, both are annihilated and two gamma ray photons are created:
 
 <!-- SEG:m68852:para:fs-idp95362336 -->
 As seen in the chapter discussing light and electromagnetic radiation, gamma rays compose short wavelength, high-energy electromagnetic radiation and are (much) more energetic than better-known X-rays that can behave as particles in the wave-particle duality sense. Gamma rays are a type of high energy electromagnetic radiation produced when a nucleus undergoes a transition from a higher to a lower energy state, similar to how a photon is produced by an electronic transition from a higher to a lower energy level. Due to the much larger energy differences between nuclear energy shells, gamma rays emanating from a nucleus have energies that are typically millions of times larger than electromagnetic radiation emanating from electronic transitions.
@@ -41,7 +41,7 @@ The sum of the mass numbers of the reactants equals the sum of the mass numbers 
 The sum of the charges of the reactants equals the sum of the charges of the products.
 
 <!-- SEG:m68852:para:fs-idp75480592 -->
-If the atomic number and the mass number of all but one of the particles in a nuclear reaction are known, we can identify the particle by balancing the reaction. For instance, we could determine that [[MATH:11]] is a product of the nuclear reaction of [[MATH:12]] and [[MATH:13]] if we knew that a proton, [[MATH:14]] was one of the two products. [#fs-idp244468800] shows how we can identify a nuclide by balancing the nuclear reaction.
+If the atomic number and the mass number of all but one of the particles in a nuclear reaction are known, we can identify the particle by balancing the reaction. For instance, we could determine that [[MATH:11]] is a product of the nuclear reaction of [[MATH:12]] and [[MATH:13]] if we knew that a proton, [[MATH:14]] was one of the two products. [[xref:fs-idp244468800]] shows how we can identify a nuclide by balancing the nuclear reaction.
 
 <!-- SEG:m68852:example-title:fs-idp244468800-title -->
 Balancing Equations for Nuclear Reactions
@@ -212,7 +212,7 @@ For the reaction [[MATH:44]] if 100.0 g of carbon reacts, what volume of nitroge
 alpha particle
 
 <!-- SEG:m68852:glossary-def:fs-idm57603984-def -->
-{{b}}(α{{/b}} or [[MATH:45]] or [[MATH:46]] high-energy helium nucleus; a helium atom that has lost two electrons and contains two protons and two neutrons
+[[b:(α]] or [[MATH:45]] or [[MATH:46]] high-energy helium nucleus; a helium atom that has lost two electrons and contains two protons and two neutrons
 
 <!-- SEG:m68852:glossary-term:fs-idm54113552-term -->
 antimatter
@@ -230,7 +230,7 @@ beta particle
 gamma ray
 
 <!-- SEG:m68852:glossary-def:fs-idm12021616-def -->
-{{b}}(γ{{/b}} or [[MATH:50]] short wavelength, high-energy electromagnetic radiation that exhibits wave-particle duality
+[[b:(γ]] or [[MATH:50]] short wavelength, high-energy electromagnetic radiation that exhibits wave-particle duality
 
 <!-- SEG:m68852:glossary-term:fs-idm45950256-term -->
 nuclear reaction

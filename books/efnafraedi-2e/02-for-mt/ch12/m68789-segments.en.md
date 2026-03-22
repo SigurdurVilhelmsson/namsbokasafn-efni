@@ -14,16 +14,16 @@ Use rate laws to calculate reaction rates
 Use rate and concentration data to identify reaction orders and derive rate laws
 
 <!-- SEG:m68789:para:fs-idm238441168 -->
-As described in the previous module, the rate of a reaction is often affected by the concentrations of reactants. {{term}}Rate laws{{/term}} (sometimes called {{i}}differential rate laws{{/i}}) or {{term}}rate equations{{/term}} are mathematical expressions that describe the relationship between the rate of a chemical reaction and the concentration of its reactants. As an example, consider the reaction described by the chemical equation
+As described in the previous module, the rate of a reaction is often affected by the concentrations of reactants. {{term}}Rate laws{{/term}} (sometimes called [[i:differential rate laws]]) or {{term}}rate equations{{/term}} are mathematical expressions that describe the relationship between the rate of a chemical reaction and the concentration of its reactants. As an example, consider the reaction described by the chemical equation
 
 <!-- SEG:m68789:para:fs-idm656673904 -->
-where {{i}}a{{/i}} and {{i}}b{{/i}} are stoichiometric coefficients. The rate law for this reaction is written as:
+where [[i:a]] and [[i:b]] are stoichiometric coefficients. The rate law for this reaction is written as:
 
 <!-- SEG:m68789:para:fs-idp18257184 -->
-in which [{{i}}A{{/i}}] and [{{i}}B{{/i}}] represent the molar concentrations of reactants, and {{i}}k{{/i}} is the {{term}}rate constant{{/term}}, which is specific for a particular reaction at a particular temperature. The exponents {{i}}m{{/i}} and {{i}}n{{/i}} are the {{term}}reaction orders{{/term}} and are typically positive integers, though they can be fractions, negative, or zero. The rate constant {{i}}k{{/i}} and the reaction orders {{i}}m{{/i}} and {{i}}n{{/i}} must be determined experimentally by observing how the rate of a reaction changes as the concentrations of the reactants are changed. The rate constant {{i}}k{{/i}} is independent of the reactant concentrations, but it does vary with temperature.
+in which [[[i:A]]] and [[[i:B]]] represent the molar concentrations of reactants, and [[i:k]] is the {{term}}rate constant{{/term}}, which is specific for a particular reaction at a particular temperature. The exponents [[i:m]] and [[i:n]] are the {{term}}reaction orders{{/term}} and are typically positive integers, though they can be fractions, negative, or zero. The rate constant [[i:k]] and the reaction orders [[i:m]] and [[i:n]] must be determined experimentally by observing how the rate of a reaction changes as the concentrations of the reactants are changed. The rate constant [[i:k]] is independent of the reactant concentrations, but it does vary with temperature.
 
 <!-- SEG:m68789:para:fs-idm115903376 -->
-The reaction orders in a rate law describe the mathematical dependence of the rate on reactant concentrations. Referring to the generic rate law above, the reaction is {{i}}m{{/i}} order with respect to {{i}}A{{/i}} and {{i}}n{{/i}} order with respect to {{i}}B{{/i}}. For example, if {{i}}m{{/i}} = 1 and {{i}}n{{/i}} = 2, the reaction is first order in {{i}}A{{/i}} and second order in {{i}}B{{/i}}. The {{term}}overall reaction order{{/term}} is simply the sum of orders for each reactant. For the example rate law here, the reaction is third order overall (1 + 2 = 3). A few specific examples are shown below to further illustrate this concept.
+The reaction orders in a rate law describe the mathematical dependence of the rate on reactant concentrations. Referring to the generic rate law above, the reaction is [[i:m]] order with respect to [[i:A]] and [[i:n]] order with respect to [[i:B]]. For example, if [[i:m]] = 1 and [[i:n]] = 2, the reaction is first order in [[i:A]] and second order in [[i:B]]. The {{term}}overall reaction order{{/term}} is simply the sum of orders for each reactant. For the example rate law here, the reaction is third order overall (1 + 2 = 3). A few specific examples are shown below to further illustrate this concept.
 
 <!-- SEG:m68789:para:fs-idm217470464 -->
 The rate law:
@@ -53,7 +53,7 @@ Solution
 The reaction will have the form:
 
 <!-- SEG:m68789:para:fs-idm221521296 -->
-The reaction is second order in NO[[sub:2]]; thus {{i}}m{{/i}} = 2. The reaction is zero order in CO; thus {{i}}n{{/i}} = 0. The rate law is:
+The reaction is second order in NO[[sub:2]]; thus [[i:m]] = 2. The reaction is zero order in CO; thus [[i:n]] = 0. The rate law is:
 
 <!-- SEG:m68789:para:fs-idm250199824 -->
 Remember that a number raised to the zero power is equal to 1, thus [CO][[sup:0]] = 1, which is why the CO concentration term may be omitted from the rate law: the rate of reaction is solely dependent on the concentration of NO[[sub:2]]. A later chapter section on reaction mechanisms will explain how a reactant’s concentration can have no effect on a reaction rate despite being involved in the reaction.
@@ -65,7 +65,7 @@ Check Your Learning
 The rate law for the reaction:
 
 <!-- SEG:m68789:para:fs-idm122425904 -->
-has been determined to be rate = {{i}}k{{/i}}[NO][[sup:2]][H[[sub:2]]]. What are the orders with respect to each reactant, and what is the overall order of the reaction?
+has been determined to be rate = [[i:k]][NO][[sup:2]][H[[sub:2]]]. What are the orders with respect to each reactant, and what is the overall order of the reaction?
 
 <!-- SEG:m68789:para:fs-idm141295376 -->
 order in NO = 2; order in H[[sub:2]] = 1; overall order = 3
@@ -104,7 +104,7 @@ A common experimental approach to the determination of rate laws is the {{term}}
 Determining a Rate Law from Initial Rates
 
 <!-- SEG:m68789:para:fs-idm162746544 -->
-Ozone in the upper atmosphere is depleted when it reacts with nitrogen oxides. The rates of the reactions of nitrogen oxides with ozone are important factors in deciding how significant these reactions are in the formation of the ozone hole over Antarctica ([#CNX_Chem_12_03_OzoneHole]). One such reaction is the combination of nitric oxide, NO, with ozone, O[[sub:3]]:
+Ozone in the upper atmosphere is depleted when it reacts with nitrogen oxides. The rates of the reactions of nitrogen oxides with ozone are important factors in deciding how significant these reactions are in the formation of the ozone hole over Antarctica ([[xref:CNX_Chem_12_03_OzoneHole]]). One such reaction is the combination of nitric oxide, NO, with ozone, O[[sub:3]]:
 
 <!-- SEG:m68789:para:fs-idm116899456 -->
 This reaction has been studied in the laboratory, and the following rate data were determined at 25 °C.
@@ -119,16 +119,16 @@ Solution
 The rate law will have the form:
 
 <!-- SEG:m68789:para:fs-idm187393984 -->
-Determine the values of {{i}}m{{/i}}, {{i}}n{{/i}}, and {{i}}k{{/i}} from the experimental data using the following three-part process:
+Determine the values of [[i:m]], [[i:n]], and [[i:k]] from the experimental data using the following three-part process:
 
 <!-- SEG:m68789:para:fs-idp221247360 -->
-{{i}}Determine the value of{{/i}} m {{i}}from the data in which [NO] varies and [O[[sub:3]]] is constant.{{/i}} In the last three experiments, [NO] varies while [O[[sub:3]]] remains constant. When [NO] doubles from trial 3 to 4, the rate doubles, and when [NO] triples from trial 3 to 5, the rate also triples. Thus, the rate is also directly proportional to [NO], and {{i}}m{{/i}} in the rate law is equal to 1.
+[[i:Determine the value of]] m [[i:from the data in which [NO] varies and [O[[sub:3]]] is constant.]] In the last three experiments, [NO] varies while [O[[sub:3]]] remains constant. When [NO] doubles from trial 3 to 4, the rate doubles, and when [NO] triples from trial 3 to 5, the rate also triples. Thus, the rate is also directly proportional to [NO], and [[i:m]] in the rate law is equal to 1.
 
 <!-- SEG:m68789:para:fs-idm59663552 -->
-{{i}}Determine the value of{{/i}} n {{i}}from data in which [O[[sub:3]]] varies and [NO] is constant.{{/i}} In the first three experiments, [NO] is constant and [O[[sub:3]]] varies. The reaction rate changes in direct proportion to the change in [O[[sub:3]]]. When [O[[sub:3]]] doubles from trial 1 to 2, the rate doubles; when [O[[sub:3]]] triples from trial 1 to 3, the rate increases also triples. Thus, the rate is directly proportional to [O[[sub:3]]], and {{i}}n{{/i}} is equal to 1.The rate law is thus:[[BR]] [[MATH:1]]
+[[i:Determine the value of]] n [[i:from data in which [O[[sub:3]]] varies and [NO] is constant.]] In the first three experiments, [NO] is constant and [O[[sub:3]]] varies. The reaction rate changes in direct proportion to the change in [O[[sub:3]]]. When [O[[sub:3]]] doubles from trial 1 to 2, the rate doubles; when [O[[sub:3]]] triples from trial 1 to 3, the rate increases also triples. Thus, the rate is directly proportional to [O[[sub:3]]], and [[i:n]] is equal to 1.The rate law is thus:[[BR]] [[MATH:1]]
 
 <!-- SEG:m68789:para:fs-idm10220816 -->
-{{i}}Determine the value of{{/i}} k {{i}}from one set of concentrations and the corresponding rate{{/i}}. The data from trial 1 are used below:[[BR]] [[MATH:2]]
+[[i:Determine the value of]] k [[i:from one set of concentrations and the corresponding rate]]. The data from trial 1 are used below:[[BR]] [[MATH:2]]
 
 <!-- SEG:m68789:para-title:fs-idm352713280-title -->
 Check Your Learning
@@ -140,22 +140,22 @@ Acetaldehyde decomposes when heated to yield methane and carbon monoxide accordi
 Determine the rate law and the rate constant for the reaction from the following experimental data:
 
 <!-- SEG:m68789:para:fs-idm234756944 -->
-[[MATH:3]] with {{i}}k{{/i}} = 6.73 [[MATH:4]] 10[[sup:−6]] L/mol/s
+[[MATH:3]] with [[i:k]] = 6.73 [[MATH:4]] 10[[sup:−6]] L/mol/s
 
 <!-- SEG:m68789:item:fs-idp46707232-item-1 -->
-{{i}}Determine the value of{{/i}} m {{i}}from the data in which [NO] varies and [O[[sub:3]]] is constant.{{/i}} In the last three experiments, [NO] varies while [O[[sub:3]]] remains constant. When [NO] doubles from trial 3 to 4, the rate doubles, and when [NO] triples from trial 3 to 5, the rate also triples. Thus, the rate is also directly proportional to [NO], and {{i}}m{{/i}} in the rate law is equal to 1.
+[[i:Determine the value of]] m [[i:from the data in which [NO] varies and [O[[sub:3]]] is constant.]] In the last three experiments, [NO] varies while [O[[sub:3]]] remains constant. When [NO] doubles from trial 3 to 4, the rate doubles, and when [NO] triples from trial 3 to 5, the rate also triples. Thus, the rate is also directly proportional to [NO], and [[i:m]] in the rate law is equal to 1.
 
 <!-- SEG:m68789:item:fs-idp46707232-item-2 -->
-{{i}}Determine the value of{{/i}} n {{i}}from data in which [O[[sub:3]]] varies and [NO] is constant.{{/i}} In the first three experiments, [NO] is constant and [O[[sub:3]]] varies. The reaction rate changes in direct proportion to the change in [O[[sub:3]]]. When [O[[sub:3]]] doubles from trial 1 to 2, the rate doubles; when [O[[sub:3]]] triples from trial 1 to 3, the rate increases also triples. Thus, the rate is directly proportional to [O[[sub:3]]], and {{i}}n{{/i}} is equal to 1.The rate law is thus:[[BR]] [[MATH:5]]
+[[i:Determine the value of]] n [[i:from data in which [O[[sub:3]]] varies and [NO] is constant.]] In the first three experiments, [NO] is constant and [O[[sub:3]]] varies. The reaction rate changes in direct proportion to the change in [O[[sub:3]]]. When [O[[sub:3]]] doubles from trial 1 to 2, the rate doubles; when [O[[sub:3]]] triples from trial 1 to 3, the rate increases also triples. Thus, the rate is directly proportional to [O[[sub:3]]], and [[i:n]] is equal to 1.The rate law is thus:[[BR]] [[MATH:5]]
 
 <!-- SEG:m68789:item:fs-idp46707232-item-3 -->
-{{i}}Determine the value of{{/i}} k {{i}}from one set of concentrations and the corresponding rate{{/i}}. The data from trial 1 are used below:[[BR]] [[MATH:6]]
+[[i:Determine the value of]] k [[i:from one set of concentrations and the corresponding rate]]. The data from trial 1 are used below:[[BR]] [[MATH:6]]
 
 <!-- SEG:m68789:note-title:fs-idm217041008-title -->
 Answer:
 
 <!-- SEG:m68789:para:fs-idm234756944 -->
-[[MATH:7]] with {{i}}k{{/i}} = 6.73 [[MATH:8]] 10[[sup:−6]] L/mol/s
+[[MATH:7]] with [[i:k]] = 6.73 [[MATH:8]] 10[[sup:−6]] L/mol/s
 
 <!-- SEG:m68789:caption:CNX_Chem_12_03_OzoneHole-caption -->
 A contour map showing stratospheric ozone concentration and the “ozone hole” that occurs over Antarctica during its spring months. (credit: modification of work by NASA)
@@ -281,10 +281,10 @@ Solution
 The rate law for this reaction will have the form:
 
 <!-- SEG:m68789:para:fs-idm256345824 -->
-As in [#fs-idm234815200], approach this problem in a stepwise fashion, determining the values of {{i}}m{{/i}} and {{i}}n{{/i}} from the experimental data and then using these values to determine the value of {{i}}k{{/i}}. In this example, however, an explicit algebraic approach (vs. the implicit approach of the previous example) will be used to determine the values of {{i}}m{{/i}} and {{i}}n{{/i}}:
+As in [[xref:fs-idm234815200]], approach this problem in a stepwise fashion, determining the values of [[i:m]] and [[i:n]] from the experimental data and then using these values to determine the value of [[i:k]]. In this example, however, an explicit algebraic approach (vs. the implicit approach of the previous example) will be used to determine the values of [[i:m]] and [[i:n]]:
 
 <!-- SEG:m68789:para:fs-idm45955472 -->
-{{i}}Determine the value of{{/i}} m {{i}}from the data in which [NO] varies and [Cl[[sub:2]]] is constant{{/i}}. Write the ratios with the subscripts {{i}}x{{/i}} and {{i}}y{{/i}} to indicate data from two different trials:[[BR]] [[MATH:32]]
+[[i:Determine the value of]] m [[i:from the data in which [NO] varies and [Cl[[sub:2]]] is constant]]. Write the ratios with the subscripts [[i:x]] and [[i:y]] to indicate data from two different trials:[[BR]] [[MATH:32]]
 
 <!-- SEG:m68789:para:fs-idm287583408 -->
 Using the third trial and the first trial, in which [Cl[[sub:2]]] does not vary, gives:[[BR]] [[MATH:33]]
@@ -296,13 +296,13 @@ Canceling equivalent terms in the numerator and denominator leaves:[[BR]] [[MATH
 which simplifies to:[[BR]] [[MATH:35]]
 
 <!-- SEG:m68789:para:fs-idm253983824 -->
-Use logarithms to determine the value of the exponent {{i}}m{{/i}}:[[BR]] [[MATH:36]]
+Use logarithms to determine the value of the exponent [[i:m]]:[[BR]] [[MATH:36]]
 
 <!-- SEG:m68789:para:fs-idm137061360 -->
 Confirm the result[[BR]] [[MATH:37]]
 
 <!-- SEG:m68789:para:fs-idm355457040 -->
-{{i}}Determine the value of{{/i}} n {{i}}from data in which [Cl[[sub:2]]] varies and [NO] is constant.{{/i}}[[BR]] [[MATH:38]]
+[[i:Determine the value of]] n [[i:from data in which [Cl[[sub:2]]] varies and [NO] is constant.]][[BR]] [[MATH:38]]
 
 <!-- SEG:m68789:para:fs-idm221941584 -->
 Cancelation gives:[[BR]] [[MATH:39]]
@@ -311,13 +311,13 @@ Cancelation gives:[[BR]] [[MATH:39]]
 which simplifies to:
 
 <!-- SEG:m68789:para:fs-idm256497008 -->
-Thus {{i}}n{{/i}} must be 1, and the form of the rate law is:[[BR]] [[MATH:40]]
+Thus [[i:n]] must be 1, and the form of the rate law is:[[BR]] [[MATH:40]]
 
 <!-- SEG:m68789:para:fs-idm110493584 -->
-{{i}}Determine the numerical value of the rate constant{{/i}} k {{i}}with appropriate units.{{/i}} The units for the rate of a reaction are mol/L/s. The units for {{i}}k{{/i}} are whatever is needed so that substituting into the rate law expression affords the appropriate units for the rate. In this example, the concentration units are mol[[sup:3]]/L[[sup:3]]. The units for {{i}}k{{/i}} should be mol[[sup:−2]] L[[sup:2]]/s so that the rate is in terms of mol/L/s.
+[[i:Determine the numerical value of the rate constant]] k [[i:with appropriate units.]] The units for the rate of a reaction are mol/L/s. The units for [[i:k]] are whatever is needed so that substituting into the rate law expression affords the appropriate units for the rate. In this example, the concentration units are mol[[sup:3]]/L[[sup:3]]. The units for [[i:k]] should be mol[[sup:−2]] L[[sup:2]]/s so that the rate is in terms of mol/L/s.
 
 <!-- SEG:m68789:para:fs-idm53387488 -->
-To determine the value of {{i}}k{{/i}} once the rate law expression has been solved, simply plug in values from the first experimental trial and solve for {{i}}k{{/i}}:[[BR]] [[MATH:41]]
+To determine the value of [[i:k]] once the rate law expression has been solved, simply plug in values from the first experimental trial and solve for [[i:k]]:[[BR]] [[MATH:41]]
 
 <!-- SEG:m68789:para-title:fs-idm209905104-title -->
 Check Your Learning
@@ -326,25 +326,25 @@ Check Your Learning
 Use the provided initial rate data to derive the rate law for the reaction whose equation is:
 
 <!-- SEG:m68789:para:fs-idm296296016 -->
-Determine the rate law expression and the value of the rate constant {{i}}k{{/i}} with appropriate units for this reaction.
+Determine the rate law expression and the value of the rate constant [[i:k]] with appropriate units for this reaction.
 
 <!-- SEG:m68789:para:fs-idm19062704 -->
-[[MATH:42]][[BR]] 2.00 = 2.00[[sup:{{i}}y{{/i}}]][[BR]] {{i}}y{{/i}} = 1[[BR]] [[MATH:43]][[BR]] [[MATH:44]][[BR]] Substituting the concentration data from trial 1 and solving for {{i}}k{{/i}} yields:[[BR]] [[MATH:45]]
+[[MATH:42]][[BR]] 2.00 = 2.00[[sup:[[i:y]]]][[BR]] [[i:y]] = 1[[BR]] [[MATH:43]][[BR]] [[MATH:44]][[BR]] Substituting the concentration data from trial 1 and solving for [[i:k]] yields:[[BR]] [[MATH:45]]
 
 <!-- SEG:m68789:item:fs-idm47375696-item-1 -->
-{{i}}Determine the value of{{/i}} m {{i}}from the data in which [NO] varies and [Cl[[sub:2]]] is constant{{/i}}. Write the ratios with the subscripts {{i}}x{{/i}} and {{i}}y{{/i}} to indicate data from two different trials:[[BR]] [[MATH:46]] Using the third trial and the first trial, in which [Cl[[sub:2]]] does not vary, gives:[[BR]] [[MATH:47]] Canceling equivalent terms in the numerator and denominator leaves:[[BR]] [[MATH:48]] which simplifies to:[[BR]] [[MATH:49]] Use logarithms to determine the value of the exponent {{i}}m{{/i}}:[[BR]] [[MATH:50]] Confirm the result[[BR]] [[MATH:51]]
+[[i:Determine the value of]] m [[i:from the data in which [NO] varies and [Cl[[sub:2]]] is constant]]. Write the ratios with the subscripts [[i:x]] and [[i:y]] to indicate data from two different trials:[[BR]] [[MATH:46]] Using the third trial and the first trial, in which [Cl[[sub:2]]] does not vary, gives:[[BR]] [[MATH:47]] Canceling equivalent terms in the numerator and denominator leaves:[[BR]] [[MATH:48]] which simplifies to:[[BR]] [[MATH:49]] Use logarithms to determine the value of the exponent [[i:m]]:[[BR]] [[MATH:50]] Confirm the result[[BR]] [[MATH:51]]
 
 <!-- SEG:m68789:item:fs-idm47375696-item-2 -->
-{{i}}Determine the value of{{/i}} n {{i}}from data in which [Cl[[sub:2]]] varies and [NO] is constant.{{/i}}[[BR]] [[MATH:52]] Cancelation gives:[[BR]] [[MATH:53]] which simplifies to: [[MATH:54]] Thus {{i}}n{{/i}} must be 1, and the form of the rate law is:[[BR]] [[MATH:55]]
+[[i:Determine the value of]] n [[i:from data in which [Cl[[sub:2]]] varies and [NO] is constant.]][[BR]] [[MATH:52]] Cancelation gives:[[BR]] [[MATH:53]] which simplifies to: [[MATH:54]] Thus [[i:n]] must be 1, and the form of the rate law is:[[BR]] [[MATH:55]]
 
 <!-- SEG:m68789:item:fs-idm47375696-item-3 -->
-{{i}}Determine the numerical value of the rate constant{{/i}} k {{i}}with appropriate units.{{/i}} The units for the rate of a reaction are mol/L/s. The units for {{i}}k{{/i}} are whatever is needed so that substituting into the rate law expression affords the appropriate units for the rate. In this example, the concentration units are mol[[sup:3]]/L[[sup:3]]. The units for {{i}}k{{/i}} should be mol[[sup:−2]] L[[sup:2]]/s so that the rate is in terms of mol/L/s. To determine the value of {{i}}k{{/i}} once the rate law expression has been solved, simply plug in values from the first experimental trial and solve for {{i}}k{{/i}}:[[BR]] [[MATH:56]]
+[[i:Determine the numerical value of the rate constant]] k [[i:with appropriate units.]] The units for the rate of a reaction are mol/L/s. The units for [[i:k]] are whatever is needed so that substituting into the rate law expression affords the appropriate units for the rate. In this example, the concentration units are mol[[sup:3]]/L[[sup:3]]. The units for [[i:k]] should be mol[[sup:−2]] L[[sup:2]]/s so that the rate is in terms of mol/L/s. To determine the value of [[i:k]] once the rate law expression has been solved, simply plug in values from the first experimental trial and solve for [[i:k]]:[[BR]] [[MATH:56]]
 
 <!-- SEG:m68789:note-title:fs-idm214856768-title -->
 Answer:
 
 <!-- SEG:m68789:para:fs-idm19062704 -->
-[[MATH:57]][[BR]] 2.00 = 2.00[[sup:{{i}}y{{/i}}]][[BR]] {{i}}y{{/i}} = 1[[BR]] [[MATH:58]][[BR]] [[MATH:59]][[BR]] Substituting the concentration data from trial 1 and solving for {{i}}k{{/i}} yields:[[BR]] [[MATH:60]]
+[[MATH:57]][[BR]] 2.00 = 2.00[[sup:[[i:y]]]][[BR]] [[i:y]] = 1[[BR]] [[MATH:58]][[BR]] [[MATH:59]][[BR]] Substituting the concentration data from trial 1 and solving for [[i:k]] yields:[[BR]] [[MATH:60]]
 
 <!-- SEG:m68789:entry:auto-117 -->
 Trial
@@ -452,19 +452,19 @@ In some of our examples, the reaction orders in the rate law happen to be the sa
 Rate laws may exhibit fractional orders for some reactants, and negative reaction orders are sometimes observed when an increase in the concentration of one reactant causes a decrease in reaction rate. A few examples illustrating these points are provided:
 
 <!-- SEG:m68789:para:fs-idm284144576 -->
-It is important to note that {{i}}rate laws are determined by experiment only and are not reliably predicted by reaction stoichiometry.{{/i}}
+It is important to note that [[i:rate laws are determined by experiment only and are not reliably predicted by reaction stoichiometry.]]
 
 <!-- SEG:m68789:para:fs-idm218845648 -->
-The units for a rate constant will vary as appropriate to accommodate the overall order of the reaction. The unit of the rate constant for the second-order reaction described in [#fs-idm234815200] was determined to be [[MATH:62]] For the third-order reaction described in [#fs-idm285627376], the unit for {{i}}k{{/i}} was derived to be [[MATH:63]] Dimensional analysis requires the rate constant unit for a reaction whose overall order is {{i}}x{{/i}} to be [[MATH:64]] [#fs-idm233742304] summarizes the rate constant units for common reaction orders.
+The units for a rate constant will vary as appropriate to accommodate the overall order of the reaction. The unit of the rate constant for the second-order reaction described in [[xref:fs-idm234815200]] was determined to be [[MATH:62]] For the third-order reaction described in [[xref:fs-idm285627376]], the unit for [[i:k]] was derived to be [[MATH:63]] Dimensional analysis requires the rate constant unit for a reaction whose overall order is [[i:x]] to be [[MATH:64]] [[xref:fs-idm233742304]] summarizes the rate constant units for common reaction orders.
 
 <!-- SEG:m68789:entry:auto-154 -->
 Rate Constant Units for Common Reaction Orders
 
 <!-- SEG:m68789:entry:auto-155 -->
-Overall Reaction Order ({{i}}x{{/i}})
+Overall Reaction Order ([[i:x]])
 
 <!-- SEG:m68789:entry:auto-156 -->
-Rate Constant Unit (L[[sup:{{i}}x{{/i}}−1]] mol[[sup:1−{{i}}x{{/i}}]] s[[sup:−1]])
+Rate Constant Unit (L[[sup:[[i:x]]−1]] mol[[sup:1−[[i:x]]]] s[[sup:−1]])
 
 <!-- SEG:m68789:entry:auto-157 -->
 0 (zero)
@@ -497,7 +497,7 @@ Note that the units in this table were derived using specific units for concentr
 Key Concepts and Summary
 
 <!-- SEG:m68789:para:fs-idm262547408 -->
-Rate laws ({{i}}differential rate laws{{/i}}) provide a mathematical description of how changes in the concentration of a substance affect the rate of a chemical reaction. Rate laws are determined experimentally and cannot be predicted by reaction stoichiometry. The order of reaction describes how much a change in the concentration of each substance affects the overall rate, and the overall order of a reaction is the sum of the orders for each substance present in the reaction. Reaction orders are typically first order, second order, or zero order, but fractional and even negative orders are possible.
+Rate laws ([[i:differential rate laws]]) provide a mathematical description of how changes in the concentration of a substance affect the rate of a chemical reaction. Rate laws are determined experimentally and cannot be predicted by reaction stoichiometry. The order of reaction describes how much a change in the concentration of each substance affects the overall rate, and the overall order of a reaction is the sum of the orders for each substance present in the reaction. Reaction orders are typically first order, second order, or zero order, but fractional and even negative orders are possible.
 
 <!-- SEG:m68789:title:fs-idm273385984-title -->
 Chemistry End of Chapter Exercises
@@ -533,7 +533,7 @@ How will the rate of reaction change for the process: [[MATH:65]] if the rate la
 (a) Decreasing the pressure of NO[[sub:2]] from 0.50 atm to 0.250 atm.
 
 <!-- SEG:m68789:problem:fs-idp38847392 -->
-(b) Increasing the concentration of CO from 0.01 {{i}}M{{/i}} to 0.03 {{i}}M{{/i}}.
+(b) Increasing the concentration of CO from 0.01 [[i:M]] to 0.03 [[i:M]].
 
 <!-- SEG:m68789:solution:fs-idm107041296 -->
 (a) The process reduces the rate by a factor of 4. (b) Since CO does not appear in the rate law, the rate is not affected.
@@ -545,10 +545,10 @@ How will each of the following affect the rate of the reaction: [[MATH:67]] if t
 (a) Increasing the pressure of NO[[sub:2]] from 0.1 atm to 0.3 atm
 
 <!-- SEG:m68789:problem:fs-idm178794544 -->
-(b) Increasing the concentration of CO from 0.02 {{i}}M{{/i}} to 0.06 {{i}}M{{/i}}.
+(b) Increasing the concentration of CO from 0.02 [[i:M]] to 0.06 [[i:M]].
 
 <!-- SEG:m68789:problem:fs-idm192992480 -->
-Regular flights of supersonic aircraft in the stratosphere are of concern because such aircraft produce nitric oxide, NO, as a byproduct in the exhaust of their engines. Nitric oxide reacts with ozone, and it has been suggested that this could contribute to depletion of the ozone layer. The reaction [[MATH:69]] is first order with respect to both NO and O[[sub:3]] with a rate constant of 2.20 [[MATH:70]] 10[[sup:7]] L/mol/s. What is the instantaneous rate of disappearance of NO when [NO] = 3.3 [[MATH:71]] 10[[sup:−6]] {{i}}M{{/i}} and [O[[sub:3]]] = 5.9 [[MATH:72]] 10[[sup:−7]] {{i}}M{{/i}}?
+Regular flights of supersonic aircraft in the stratosphere are of concern because such aircraft produce nitric oxide, NO, as a byproduct in the exhaust of their engines. Nitric oxide reacts with ozone, and it has been suggested that this could contribute to depletion of the ozone layer. The reaction [[MATH:69]] is first order with respect to both NO and O[[sub:3]] with a rate constant of 2.20 [[MATH:70]] 10[[sup:7]] L/mol/s. What is the instantaneous rate of disappearance of NO when [NO] = 3.3 [[MATH:71]] 10[[sup:−6]] [[i:M]] and [O[[sub:3]]] = 5.9 [[MATH:72]] 10[[sup:−7]] [[i:M]]?
 
 <!-- SEG:m68789:solution:fs-idm220241088 -->
 4.3 [[MATH:73]] 10[[sup:−5]] mol/L/s
@@ -557,19 +557,19 @@ Regular flights of supersonic aircraft in the stratosphere are of concern becaus
 Radioactive phosphorus is used in the study of biochemical reaction mechanisms because phosphorus atoms are components of many biochemical molecules. The location of the phosphorus (and the location of the molecule it is bound in) can be detected from the electrons (beta particles) it produces:[[BR]] [[MATH:74]] [[BR]] rate = 4.85 [[MATH:75]] 10[[sup:−2]] [[MATH:76]]
 
 <!-- SEG:m68789:problem:fs-idm122111920 -->
-What is the instantaneous rate of production of electrons in a sample with a phosphorus concentration of 0.0033 {{i}}M{{/i}}?
+What is the instantaneous rate of production of electrons in a sample with a phosphorus concentration of 0.0033 [[i:M]]?
 
 <!-- SEG:m68789:problem:fs-idm234311904 -->
 The rate constant for the radioactive decay of [[sup:14]]C is 1.21 [[MATH:77]] 10[[sup:−4]] year[[sup:−1]]. The products of the decay are nitrogen atoms and electrons (beta particles):[[BR]] [[MATH:78]][[BR]] [[MATH:79]]
 
 <!-- SEG:m68789:problem:fs-idm233654624 -->
-What is the instantaneous rate of production of N atoms in a sample with a carbon-14 content of 6.5 [[MATH:80]] 10[[sup:−9]] {{i}}M{{/i}}?
+What is the instantaneous rate of production of N atoms in a sample with a carbon-14 content of 6.5 [[MATH:80]] 10[[sup:−9]] [[i:M]]?
 
 <!-- SEG:m68789:solution:fs-idm333817728 -->
 7.9 [[MATH:81]] 10[[sup:−13]] mol/L/year
 
 <!-- SEG:m68789:problem:fs-idm278447280 -->
-The decomposition of acetaldehyde is a second order reaction with a rate constant of 4.71 [[MATH:82]] 10[[sup:−8]] L mol[[sup:−1]] s[[sup:−1]]. What is the instantaneous rate of decomposition of acetaldehyde in a solution with a concentration of 5.55 [[MATH:83]] 10[[sup:−4]] {{i}}M{{/i}}?
+The decomposition of acetaldehyde is a second order reaction with a rate constant of 4.71 [[MATH:82]] 10[[sup:−8]] L mol[[sup:−1]] s[[sup:−1]]. What is the instantaneous rate of decomposition of acetaldehyde in a solution with a concentration of 5.55 [[MATH:83]] 10[[sup:−4]] [[i:M]]?
 
 <!-- SEG:m68789:problem:fs-idm84914160 -->
 Alcohol is removed from the bloodstream by a series of metabolic reactions. The first reaction produces acetaldehyde; then other products are formed. The following data have been determined for the rate at which alcohol is removed from the blood of an average male, although individual rates can vary by 25–30%. Women metabolize alcohol a little more slowly than men:[[BR]] [[TABLE:fs-idm121830912]]
@@ -578,10 +578,10 @@ Alcohol is removed from the bloodstream by a series of metabolic reactions. The 
 Determine the rate law, the rate constant, and the overall order for this reaction.
 
 <!-- SEG:m68789:solution:fs-idm204335424 -->
-rate = {{i}}k{{/i}}; {{i}}k{{/i}} = 2.0 [[MATH:90]] 10[[sup:−2]] mol L[[sup:−1]] h[[sup:−1]] (about 0.9 g L[[sup:−1]] h[[sup:−1]] for the average male); The reaction is zero order.
+rate = [[i:k]]; [[i:k]] = 2.0 [[MATH:90]] 10[[sup:−2]] mol L[[sup:−1]] h[[sup:−1]] (about 0.9 g L[[sup:−1]] h[[sup:−1]] for the average male); The reaction is zero order.
 
 <!-- SEG:m68789:entry:auto-195 -->
-[C[[sub:2]]H[[sub:5]]OH] ({{i}}M{{/i}})
+[C[[sub:2]]H[[sub:5]]OH] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-196 -->
 4.4 [[MATH:91]] 10[[sup:−2]]
@@ -611,7 +611,7 @@ Under certain conditions the decomposition of ammonia on a metal surface gives t
 Determine the rate law, the rate constant, and the overall order for this reaction.
 
 <!-- SEG:m68789:entry:auto-205 -->
-[NH[[sub:3]]] ({{i}}M{{/i}})
+[NH[[sub:3]]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-206 -->
 1.0 [[MATH:97]] 10[[sup:−3]]
@@ -641,10 +641,10 @@ Nitrosyl chloride, NOCl, decomposes to NO and Cl[[sub:2]].[[BR]] [[MATH:103]]
 Determine the rate law, the rate constant, and the overall order for this reaction from the following data:
 
 <!-- SEG:m68789:solution:fs-idp5189312 -->
-rate = {{i}}k{{/i}}[NOCl][[sup:2]]; {{i}}k{{/i}} = 8.0 [[MATH:104]] 10[[sup:−8]] L/mol/h; second order
+rate = [[i:k]][NOCl][[sup:2]]; [[i:k]] = 8.0 [[MATH:104]] 10[[sup:−8]] L/mol/h; second order
 
 <!-- SEG:m68789:entry:auto-216 -->
-[NOCl] ({{i}}M{{/i}})
+[NOCl] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-217 -->
 0.10
@@ -668,10 +668,10 @@ Rate (mol L[[sup:−1]] h[[sup:−1]])
 7.2 [[MATH:107]] 10[[sup:−9]]
 
 <!-- SEG:m68789:problem:fs-idm254308880 -->
-From the following data, determine the rate law, the rate constant, and the order with respect to {{i}}A{{/i}} for the reaction [[MATH:108]]
+From the following data, determine the rate law, the rate constant, and the order with respect to [[i:A]] for the reaction [[MATH:108]]
 
 <!-- SEG:m68789:entry:auto-225 -->
-[{{i}}A{{/i}}] ({{i}}M{{/i}})
+[[[i:A]]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-226 -->
 1.33 [[MATH:109]] 10[[sup:−2]]
@@ -704,7 +704,7 @@ The following initial rates of reaction have been observed for certain reactant 
 What is the rate law that describes the rate’s dependence on the concentrations of NO and Cl[[sub:2]]? What is the rate constant? What are the orders with respect to each reactant?
 
 <!-- SEG:m68789:solution:fs-idm174039344 -->
-rate = {{i}}k{{/i}}[NO][[sup:2]][Cl[[sub:2]]]; {{i}}k{{/i}} = 9.1 L[[sup:2]] mol[[sup:−2]] h[[sup:−1]]; second order in NO; first order in Cl[[sub:2]]
+rate = [[i:k]][NO][[sup:2]][Cl[[sub:2]]]; [[i:k]] = 9.1 L[[sup:2]] mol[[sup:−2]] h[[sup:−1]]; second order in NO; first order in Cl[[sub:2]]
 
 <!-- SEG:m68789:entry:auto-237 -->
 [NO] (mol/L)
@@ -749,7 +749,7 @@ Hydrogen reacts with nitrogen monoxide to form dinitrogen monoxide (laughing gas
 Determine the rate law, the rate constant, and the orders with respect to each reactant from the following data:
 
 <!-- SEG:m68789:entry:auto-251 -->
-[NO] ({{i}}M{{/i}})
+[NO] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-252 -->
 0.30
@@ -761,7 +761,7 @@ Determine the rate law, the rate constant, and the orders with respect to each r
 0.60
 
 <!-- SEG:m68789:entry:auto-255 -->
-[H[[sub:2]]] ({{i}}M{{/i}})
+[H[[sub:2]]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-256 -->
 0.35
@@ -788,16 +788,16 @@ Rate (mol L[[sup:−1]] s[[sup:−1]])
 For the reaction [[MATH:120]] the following data were obtained at 30 °C:
 
 <!-- SEG:m68789:problem:fs-idm356651248 -->
-(a) What is the order of the reaction with respect to [{{i}}A{{/i}}], and what is the rate law?
+(a) What is the order of the reaction with respect to [[[i:A]]], and what is the rate law?
 
 <!-- SEG:m68789:problem:fs-idm110876512 -->
 (b) What is the rate constant?
 
 <!-- SEG:m68789:solution:fs-idm168970144 -->
-(a) The rate law is second order in A and is written as rate = {{i}}k{{/i}}[{{i}}A{{/i}}][[sup:2]]. (b) {{i}}k{{/i}} = 7.88 [[MATH:121]] 10[[sup:−3]] L mol[[sup:−1]] s[[sup:−1]]
+(a) The rate law is second order in A and is written as rate = [[i:k]][[[i:A]]][[sup:2]]. (b) [[i:k]] = 7.88 [[MATH:121]] 10[[sup:−3]] L mol[[sup:−1]] s[[sup:−1]]
 
 <!-- SEG:m68789:entry:auto-267 -->
-[{{i}}A{{/i}}] ({{i}}M{{/i}})
+[[[i:A]]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-268 -->
 0.230
@@ -824,13 +824,13 @@ Rate (mol L[[sup:−1]] s[[sup:−1]])
 For the reaction [[MATH:125]] the following data were obtained at 30 °C:
 
 <!-- SEG:m68789:problem:fs-idm157857072 -->
-(a) What is the order of the reaction with respect to [{{i}}Q{{/i}}], and what is the rate law?
+(a) What is the order of the reaction with respect to [[[i:Q]]], and what is the rate law?
 
 <!-- SEG:m68789:problem:fs-idm187916448 -->
 (b) What is the rate constant?
 
 <!-- SEG:m68789:entry:auto-278 -->
-[{{i}}Q{{/i}}][[sub:initial]] ({{i}}M{{/i}})
+[[[i:Q]]][[sub:initial]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-279 -->
 0.170
@@ -857,7 +857,7 @@ Rate (mol L[[sup:−1]] s[[sup:−1]])
 The rate constant for the first-order decomposition at 45 °C of dinitrogen pentoxide, N[[sub:2]]O[[sub:5]], dissolved in chloroform, CHCl[[sub:3]], is 6.2 [[MATH:129]] 10[[sup:−4]] min[[sup:−1]].[[BR]] [[MATH:130]]
 
 <!-- SEG:m68789:problem:fs-idm287521616 -->
-What is the rate of the reaction when [N[[sub:2]]O[[sub:5]]] = 0.40 {{i}}M{{/i}}?
+What is the rate of the reaction when [N[[sub:2]]O[[sub:5]]] = 0.40 [[i:M]]?
 
 <!-- SEG:m68789:solution:fs-idm180347168 -->
 (a) 2.5 [[MATH:131]] 10[[sup:−4]] mol/L/min
@@ -875,7 +875,7 @@ The annual production of HNO[[sub:3]] in 2013 was 60 million metric tons Most of
 (c) [[MATH:134]]
 
 <!-- SEG:m68789:problem:fs-idm179213568 -->
-The first reaction is run by burning ammonia in air over a platinum catalyst. This reaction is fast. The reaction in equation (c) is also fast. The second reaction limits the rate at which nitric acid can be prepared from ammonia. If equation (b) is second order in NO and first order in O[[sub:2]], what is the rate of formation of NO[[sub:2]] when the oxygen concentration is 0.50 {{i}}M{{/i}} and the nitric oxide concentration is 0.75 {{i}}M{{/i}}? The rate constant for the reaction is 5.8 [[MATH:135]] 10[[sup:−6]] L[[sup:2]] mol[[sup:−2]] s[[sup:−1]].
+The first reaction is run by burning ammonia in air over a platinum catalyst. This reaction is fast. The reaction in equation (c) is also fast. The second reaction limits the rate at which nitric acid can be prepared from ammonia. If equation (b) is second order in NO and first order in O[[sub:2]], what is the rate of formation of NO[[sub:2]] when the oxygen concentration is 0.50 [[i:M]] and the nitric oxide concentration is 0.75 [[i:M]]? The rate constant for the reaction is 5.8 [[MATH:135]] 10[[sup:−6]] L[[sup:2]] mol[[sup:−2]] s[[sup:−1]].
 
 <!-- SEG:m68789:problem:fs-idm136971952 -->
 The following data have been determined for the reaction:[[BR]] [[MATH:136]]
@@ -884,7 +884,7 @@ The following data have been determined for the reaction:[[BR]] [[MATH:136]]
 Determine the rate law and the rate constant for this reaction.
 
 <!-- SEG:m68789:solution:fs-idm220253504 -->
-rate = {{i}}k{{/i}}[I[[sup:−]]][OCl[[sup:−]]]; {{i}}k{{/i}} = 6.1 [[MATH:137]] 10[[sup:−2]] L mol [[sup:−1]] s[[sup:−1]]
+rate = [[i:k]][I[[sup:−]]][OCl[[sup:−]]]; [[i:k]] = 6.1 [[MATH:137]] 10[[sup:−2]] L mol [[sup:−1]] s[[sup:−1]]
 
 <!-- SEG:m68789:entry:auto-297 -->
 1
@@ -896,7 +896,7 @@ rate = {{i}}k{{/i}}[I[[sup:−]]][OCl[[sup:−]]]; {{i}}k{{/i}} = 6.1 [[MATH:137
 3
 
 <!-- SEG:m68789:entry:auto-300 -->
-[[MATH:138]] ({{i}}M{{/i}})
+[[MATH:138]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-301 -->
 0.10
@@ -908,7 +908,7 @@ rate = {{i}}k{{/i}}[I[[sup:−]]][OCl[[sup:−]]]; {{i}}k{{/i}} = 6.1 [[MATH:137
 0.30
 
 <!-- SEG:m68789:entry:auto-304 -->
-[[MATH:139]] ({{i}}M{{/i}})
+[[MATH:139]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-305 -->
 0.050
@@ -962,7 +962,7 @@ reaction order
 value of an exponent in a rate law (for example, zero order for 0, first order for 1, second order for 2, and so on)
 
 <!-- SEG:m68789:entry:auto-322 -->
-[C[[sub:2]]H[[sub:5]]OH] ({{i}}M{{/i}})
+[C[[sub:2]]H[[sub:5]]OH] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-323 -->
 4.4 [[MATH:84]] 10[[sup:−2]]

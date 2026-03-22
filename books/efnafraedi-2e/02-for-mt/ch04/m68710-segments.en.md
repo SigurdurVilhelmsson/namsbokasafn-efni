@@ -26,13 +26,13 @@ Humans interact with one another in various and complex ways, and we classify th
 Precipitation Reactions and Solubility Rules
 
 <!-- SEG:m68710:para:fs-idp140132618169728 -->
-A {{term}}precipitation reaction{{/term}} is one in which dissolved substances react to form one (or more) solid products. Many reactions of this type involve the exchange of ions between ionic compounds in aqueous solution and are sometimes referred to as {{i}}double displacement{{/i}}, {{i}}double replacement{{/i}}, or {{i}}metathesis{{/i}} reactions. These reactions are common in nature and are responsible for the formation of coral reefs in ocean waters and kidney stones in animals. They are used widely in industry for production of a number of commodity and specialty chemicals. Precipitation reactions also play a central role in many chemical analysis techniques, including spot tests used to identify metal ions and {{i}}gravimetric methods{{/i}} for determining the composition of matter (see the last module of this chapter).
+A {{term}}precipitation reaction{{/term}} is one in which dissolved substances react to form one (or more) solid products. Many reactions of this type involve the exchange of ions between ionic compounds in aqueous solution and are sometimes referred to as [[i:double displacement]], [[i:double replacement]], or [[i:metathesis]] reactions. These reactions are common in nature and are responsible for the formation of coral reefs in ocean waters and kidney stones in animals. They are used widely in industry for production of a number of commodity and specialty chemicals. Precipitation reactions also play a central role in many chemical analysis techniques, including spot tests used to identify metal ions and [[i:gravimetric methods]] for determining the composition of matter (see the last module of this chapter).
 
 <!-- SEG:m68710:para:fs-idp140132617792992 -->
-The extent to which a substance may be dissolved in water, or any solvent, is quantitatively expressed as its {{term}}solubility{{/term}}, defined as the maximum concentration of a substance that can be achieved under specified conditions. Substances with relatively large solubilities are said to be {{term}}soluble{{/term}}. A substance will {{term}}precipitate{{/term}} when solution conditions are such that its concentration exceeds its solubility. Substances with relatively low solubilities are said to be {{term}}insoluble{{/term}}, and these are the substances that readily precipitate from solution. More information on these important concepts is provided in a later chapter on solutions. For purposes of predicting the identities of solids formed by precipitation reactions, one may simply refer to patterns of solubility that have been observed for many ionic compounds ([#fs-idp140132617697568]).
+The extent to which a substance may be dissolved in water, or any solvent, is quantitatively expressed as its {{term}}solubility{{/term}}, defined as the maximum concentration of a substance that can be achieved under specified conditions. Substances with relatively large solubilities are said to be {{term}}soluble{{/term}}. A substance will {{term}}precipitate{{/term}} when solution conditions are such that its concentration exceeds its solubility. Substances with relatively low solubilities are said to be {{term}}insoluble{{/term}}, and these are the substances that readily precipitate from solution. More information on these important concepts is provided in a later chapter on solutions. For purposes of predicting the identities of solids formed by precipitation reactions, one may simply refer to patterns of solubility that have been observed for many ionic compounds ([[xref:fs-idp140132617697568]]).
 
 <!-- SEG:m68710:entry:auto-12 -->
-{{b}}Soluble Ionic Compounds{{/b}}
+[[b:Soluble Ionic Compounds]]
 
 <!-- SEG:m68710:entry:auto-13 -->
 contain these ions
@@ -104,7 +104,7 @@ SO[[sub:4]][[sup:2-]]
 compounds with Ag[[sup:+]], Ba[[sup:2+]], Ca[[sup:2+]], Hg[[sub:2]][[sup:2+]], Pb[[sup:2+]] and Sr[[sup:2+]]
 
 <!-- SEG:m68710:entry:auto-36 -->
-{{b}}Insoluble Ionic Compounds{{/b}}
+[[b:Insoluble Ionic Compounds]]
 
 <!-- SEG:m68710:entry:auto-37 -->
 contain these ions
@@ -143,13 +143,13 @@ This observation is consistent with the solubility guidelines: The only insolubl
 The net ionic equation representing this reaction is:
 
 <!-- SEG:m68710:para:fs-idm52098368 -->
-Lead iodide is a bright yellow solid that was formerly used as an artist’s pigment known as iodine yellow ([#CNX_Chem_04_02_LeadIodide]). The properties of pure PbI[[sub:2]] crystals make them useful for fabrication of X-ray and gamma ray detectors.
+Lead iodide is a bright yellow solid that was formerly used as an artist’s pigment known as iodine yellow ([[xref:CNX_Chem_04_02_LeadIodide]]). The properties of pure PbI[[sub:2]] crystals make them useful for fabrication of X-ray and gamma ray detectors.
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_LeadIodide-caption -->
 A precipitate of PbI[[sub:2]] forms when solutions containing Pb[[sup:2+]] and I[[sup:−]] are mixed. (credit: Der Kreole/Wikimedia Commons)
 
 <!-- SEG:m68710:para:fs-idp157312304 -->
-The solubility guidelines in [#fs-idp140132617697568] may be used to predict whether a precipitation reaction will occur when solutions of soluble ionic compounds are mixed together. One merely needs to identify all the ions present in the solution and then consider if possible cation/anion pairing could result in an insoluble compound. For example, mixing solutions of silver nitrate and sodium chloride will yield a solution containing Ag[[sup:+]], [[MATH:1]] Na[[sup:+]], and Cl[[sup:−]] ions. Aside from the two ionic compounds originally present in the solutions, AgNO[[sub:3]] and NaCl, two additional ionic compounds may be derived from this collection of ions: NaNO[[sub:3]] and AgCl. The solubility guidelines indicate all nitrate salts are soluble but that AgCl is one of insoluble. A precipitation reaction, therefore, is predicted to occur, as described by the following equations:
+The solubility guidelines in [[xref:fs-idp140132617697568]] may be used to predict whether a precipitation reaction will occur when solutions of soluble ionic compounds are mixed together. One merely needs to identify all the ions present in the solution and then consider if possible cation/anion pairing could result in an insoluble compound. For example, mixing solutions of silver nitrate and sodium chloride will yield a solution containing Ag[[sup:+]], [[MATH:1]] Na[[sup:+]], and Cl[[sup:−]] ions. Aside from the two ionic compounds originally present in the solutions, AgNO[[sub:3]] and NaCl, two additional ionic compounds may be derived from this collection of ions: NaNO[[sub:3]] and AgCl. The solubility guidelines indicate all nitrate salts are soluble but that AgCl is one of insoluble. A precipitation reaction, therefore, is predicted to occur, as described by the following equations:
 
 <!-- SEG:m68710:example-title:fs-idp3608096-title -->
 Predicting Precipitation Reactions
@@ -203,16 +203,16 @@ An {{term}}acid-base reaction{{/term}} is one in which a hydrogen ion, H[[sup:+]
 For purposes of this brief introduction, we will consider only the more common types of acid-base reactions that take place in aqueous solutions. In this context, an {{term}}acid{{/term}} is a substance that will dissolve in water to yield hydronium ions, H[[sub:3]]O[[sup:+]]. As an example, consider the equation shown here:
 
 <!-- SEG:m68710:para:fs-idm10390992 -->
-The process represented by this equation confirms that hydrogen chloride is an acid. When dissolved in water, H[[sub:3]]O[[sup:+]] ions are produced by a chemical reaction in which H[[sup:+]] ions are transferred from HCl molecules to H[[sub:2]]O molecules ([#CNX_Chem_04_02_HClsoln]).
+The process represented by this equation confirms that hydrogen chloride is an acid. When dissolved in water, H[[sub:3]]O[[sup:+]] ions are produced by a chemical reaction in which H[[sup:+]] ions are transferred from HCl molecules to H[[sub:2]]O molecules ([[xref:CNX_Chem_04_02_HClsoln]]).
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_HClsoln-caption -->
 When hydrogen chloride gas dissolves in water, (a) it reacts as an acid, transferring protons to water molecules to yield (b) hydronium ions (and solvated chloride ions).
 
 <!-- SEG:m68710:para:fs-idm57695504 -->
-The nature of HCl is such that its reaction with water as just described is essentially 100% efficient: Virtually every HCl molecule that dissolves in water will undergo this reaction. Acids that completely react in this fashion are called {{term}}strong acids{{/term}}, and HCl is one among just a handful of common acid compounds that are classified as strong ([#fs-idp55395904]). A far greater number of compounds behave as {{term}}weak acids{{/term}} and only partially react with water, leaving a large majority of dissolved molecules in their original form and generating a relatively small amount of hydronium ions. Weak acids are commonly encountered in nature, being the substances partly responsible for the tangy taste of citrus fruits, the stinging sensation of insect bites, and the unpleasant smells associated with body odor. A familiar example of a weak acid is acetic acid, the main ingredient in food vinegars:
+The nature of HCl is such that its reaction with water as just described is essentially 100% efficient: Virtually every HCl molecule that dissolves in water will undergo this reaction. Acids that completely react in this fashion are called {{term}}strong acids{{/term}}, and HCl is one among just a handful of common acid compounds that are classified as strong ([[xref:fs-idp55395904]]). A far greater number of compounds behave as {{term}}weak acids{{/term}} and only partially react with water, leaving a large majority of dissolved molecules in their original form and generating a relatively small amount of hydronium ions. Weak acids are commonly encountered in nature, being the substances partly responsible for the tangy taste of citrus fruits, the stinging sensation of insect bites, and the unpleasant smells associated with body odor. A familiar example of a weak acid is acetic acid, the main ingredient in food vinegars:
 
 <!-- SEG:m68710:para:fs-idm23363712 -->
-When dissolved in water under typical conditions, only about 1% of acetic acid molecules are present in the ionized form, [[MATH:2]] ([#CNX_Chem_04_02_Citrus]). (The use of a double-arrow in the equation above denotes the partial reaction aspect of this process, a concept addressed fully in the chapters on chemical equilibrium.)
+When dissolved in water under typical conditions, only about 1% of acetic acid molecules are present in the ionized form, [[MATH:2]] ([[xref:CNX_Chem_04_02_Citrus]]). (The use of a double-arrow in the equation above denotes the partial reaction aspect of this process, a concept addressed fully in the chapters on chemical equilibrium.)
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_Citrus-caption -->
 (a) Fruits such as oranges, lemons, and grapefruit contain the weak acid citric acid. (b) Vinegars contain the weak acid acetic acid. (credit a: modification of work by Scott Bauer; credit b: modification of work by Brücke-Osteuropa/Wikimedia Commons)
@@ -272,7 +272,7 @@ Consider as an example the dissolution of lye (sodium hydroxide) in water:
 This equation confirms that sodium hydroxide is a base. When dissolved in water, NaOH dissociates to yield Na[[sup:+]] and OH[[sup:−]] ions. This is also true for any other ionic compound containing hydroxide ions. Since the dissociation process is essentially complete when ionic compounds dissolve in water under typical conditions, NaOH and other ionic hydroxides are all classified as strong bases.
 
 <!-- SEG:m68710:para:fs-idm50199792 -->
-Unlike ionic hydroxides, some compounds produce hydroxide ions when dissolved by chemically reacting with water molecules. In all cases, these compounds react only partially and so are classified as {{term}}weak bases{{/term}}. These types of compounds are also abundant in nature and important commodities in various technologies. For example, global production of the weak base ammonia is typically well over 100 million metric tons annually, being widely used as an agricultural fertilizer, a raw material for chemical synthesis of other compounds, and an active ingredient in household cleaners ([#CNX_Chem_04_02_ammonia]). When dissolved in water, ammonia reacts partially to yield hydroxide ions, as shown here:
+Unlike ionic hydroxides, some compounds produce hydroxide ions when dissolved by chemically reacting with water molecules. In all cases, these compounds react only partially and so are classified as {{term}}weak bases{{/term}}. These types of compounds are also abundant in nature and important commodities in various technologies. For example, global production of the weak base ammonia is typically well over 100 million metric tons annually, being widely used as an agricultural fertilizer, a raw material for chemical synthesis of other compounds, and an active ingredient in household cleaners ([[xref:CNX_Chem_04_02_ammonia]]). When dissolved in water, ammonia reacts partially to yield hydroxide ions, as shown here:
 
 <!-- SEG:m68710:para:fs-idm73811808 -->
 This is, by definition, an acid-base reaction, in this case involving the transfer of H[[sup:+]] ions from water molecules to ammonia molecules. Under typical conditions, only about 1% of the dissolved ammonia is present as [[MATH:3]] ions.
@@ -326,10 +326,10 @@ Answer:
 Stomach Antacids
 
 <!-- SEG:m68710:para:fs-idm55572160 -->
-Our stomachs contain a solution of roughly 0.03 {{i}}M{{/i}} HCl, which helps us digest the food we eat. The burning sensation associated with heartburn is a result of the acid of the stomach leaking through the muscular valve at the top of the stomach into the lower reaches of the esophagus. The lining of the esophagus is not protected from the corrosive effects of stomach acid the way the lining of the stomach is, and the results can be very painful. When we have heartburn, it feels better if we reduce the excess acid in the esophagus by taking an antacid. As you may have guessed, antacids are bases. One of the most common antacids is calcium carbonate, CaCO[[sub:3]]. The reaction,
+Our stomachs contain a solution of roughly 0.03 [[i:M]] HCl, which helps us digest the food we eat. The burning sensation associated with heartburn is a result of the acid of the stomach leaking through the muscular valve at the top of the stomach into the lower reaches of the esophagus. The lining of the esophagus is not protected from the corrosive effects of stomach acid the way the lining of the stomach is, and the results can be very painful. When we have heartburn, it feels better if we reduce the excess acid in the esophagus by taking an antacid. As you may have guessed, antacids are bases. One of the most common antacids is calcium carbonate, CaCO[[sub:3]]. The reaction,
 
 <!-- SEG:m68710:para:fs-idp31618928 -->
-not only neutralizes stomach acid, it also produces CO[[sub:2]]({{i}}g{{/i}}), which may result in a satisfying belch.
+not only neutralizes stomach acid, it also produces CO[[sub:2]]([[i:g]]), which may result in a satisfying belch.
 
 <!-- SEG:m68710:para:fs-idm158365360 -->
 Milk of Magnesia is a suspension of the sparingly soluble base magnesium hydroxide, Mg(OH)[[sub:2]]. It works according to the reaction:
@@ -347,7 +347,7 @@ Culinary Aspects of Chemistry
 Examples of acid-base chemistry are abundant in the culinary world. One example is the use of baking soda, or sodium bicarbonate in baking. NaHCO[[sub:3]] is a base. When it reacts with an acid such as lemon juice, buttermilk, or sour cream in a batter, bubbles of carbon dioxide gas are formed from decomposition of the resulting carbonic acid, and the batter “rises.” Baking powder is a combination of sodium bicarbonate, and one or more acid salts that react when the two chemicals come in contact with water in the batter.
 
 <!-- SEG:m68710:para:fs-idp3959248 -->
-Many people like to put lemon juice or vinegar, both of which are acids, on cooked fish ([#CNX_Chem_14_03_FishLemon]). It turns out that fish have volatile amines (bases) in their systems, which are neutralized by the acids to yield involatile ammonium salts. This reduces the odor of the fish, and also adds a “sour” taste that we seem to enjoy.
+Many people like to put lemon juice or vinegar, both of which are acids, on cooked fish ([[xref:CNX_Chem_14_03_FishLemon]]). It turns out that fish have volatile amines (bases) in their systems, which are neutralized by the acids to yield involatile ammonium salts. This reduces the odor of the fish, and also adds a “sour” taste that we seem to enjoy.
 
 <!-- SEG:m68710:para:fs-idm117278880 -->
 Pickling is a method used to preserve vegetables using a naturally produced acidic environment. The vegetable, such as a cucumber, is placed in a sealed jar submerged in a brine solution. The brine solution favors the growth of beneficial bacteria and suppresses the growth of harmful bacteria. The beneficial bacteria feed on starches in the cucumber and produce lactic acid as a waste product in a process called fermentation. The lactic acid eventually increases the acidity of the brine to a level that kills any harmful bacteria, which require a basic environment. Without the harmful bacteria consuming the cucumbers they are able to last much longer than if they were unprotected. A byproduct of the pickling process changes the flavor of the vegetables with the acid making them taste sour.
@@ -356,7 +356,7 @@ Pickling is a method used to preserve vegetables using a naturally produced acid
 A neutralization reaction takes place between citric acid in lemons or acetic acid in vinegar, and the bases in the flesh of fish.
 
 <!-- SEG:m68710:para:fs-idm40317104 -->
-Explore the microscopic [view](http://openstax.org/l/16AcidsBases) of strong and weak acids and bases.
+Explore the microscopic [[link:view|http://openstax.org/l/16AcidsBases]] of strong and weak acids and bases.
 
 <!-- SEG:m68710:title:fs-idm48520656-title -->
 Oxidation-Reduction Reactions
@@ -413,31 +413,31 @@ Write a balanced equation for the reaction between dichromate ion and iron(II) t
 Solution
 
 <!-- SEG:m68710:para:fs-idp3143536 -->
-{{i}}Write the two half-reactions{{/i}}.
+[[i:Write the two half-reactions]].
 
 <!-- SEG:m68710:para:fs-idm9107808 -->
 Each half-reaction will contain one reactant and one product with one element in common. [[MATH:5]] [[MATH:6]]
 
 <!-- SEG:m68710:para:fs-idm63161856 -->
-{{i}}Balance all elements except oxygen and hydrogen{{/i}}. The iron half-reaction is already balanced, but the chromium half-reaction shows two Cr atoms on the left and one Cr atom on the right. Changing the coefficient on the right side of the equation to 2 achieves balance with regard to Cr atoms. [[MATH:7]] [[MATH:8]]
+[[i:Balance all elements except oxygen and hydrogen]]. The iron half-reaction is already balanced, but the chromium half-reaction shows two Cr atoms on the left and one Cr atom on the right. Changing the coefficient on the right side of the equation to 2 achieves balance with regard to Cr atoms. [[MATH:7]] [[MATH:8]]
 
 <!-- SEG:m68710:para:fs-idm39730544 -->
-{{i}}Balance oxygen atoms by adding{{/i}} H[[sub:2]]O{{i}} molecules{{/i}}. The iron half-reaction does not contain O atoms. The chromium half-reaction shows seven O atoms on the left and none on the right, so seven water molecules are added to the right side. [[MATH:9]]
+[[i:Balance oxygen atoms by adding]] H[[sub:2]]O[[i: molecules]]. The iron half-reaction does not contain O atoms. The chromium half-reaction shows seven O atoms on the left and none on the right, so seven water molecules are added to the right side. [[MATH:9]]
 
 <!-- SEG:m68710:para:fs-idp2853568 -->
-{{i}}Balance hydrogen atoms by adding{{/i}} H[[sup:+]]{{i}}ions{{/i}}. The iron half-reaction does not contain H atoms. The chromium half-reaction shows 14 H atoms on the right and none on the left, so 14 hydrogen ions are added to the left side. [[MATH:10]] [[MATH:11]]
+[[i:Balance hydrogen atoms by adding]] H[[sup:+]][[i:ions]]. The iron half-reaction does not contain H atoms. The chromium half-reaction shows 14 H atoms on the right and none on the left, so 14 hydrogen ions are added to the left side. [[MATH:10]] [[MATH:11]]
 
 <!-- SEG:m68710:para:fs-idp23619040 -->
-{{i}}Balance charge by adding electrons{{/i}}. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe[[sup:2+]] ion) and 3+ on the right side (1 Fe[[sup:3+]] ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.
+[[i:Balance charge by adding electrons]]. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe[[sup:2+]] ion) and 3+ on the right side (1 Fe[[sup:3+]] ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.
 
 <!-- SEG:m68710:para:fs-idm52131936 -->
 The chromium half-reaction shows a total charge of (1 [[MATH:14]] 2−) + (14 [[MATH:15]] 1+) = 12+ on the left side [[MATH:16]] ion and 14 H[[sup:+]] ions). The total charge on the right side is (2 [[MATH:17]] 3+) = 6 + (2 Cr[[sup:3+]] ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:12]] [[MATH:13]]
 
 <!-- SEG:m68710:para:fs-idp2921088 -->
-{{i}}Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction{{/i}}. To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. [[MATH:18]] [[MATH:19]]
+[[i:Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction]]. To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. [[MATH:18]] [[MATH:19]]
 
 <!-- SEG:m68710:para:fs-idp73258288 -->
-{{i}}Add the balanced half-reactions and cancel species that appear on both sides of the equation{{/i}}. [[MATH:20]]
+[[i:Add the balanced half-reactions and cancel species that appear on both sides of the equation]]. [[MATH:20]]
 
 <!-- SEG:m68710:para:fs-idp66154720 -->
 Only the six electrons are redundant species. Removing them from each side of the equation yields the simplified, balanced equation here: [[MATH:21]]
@@ -449,28 +449,28 @@ A final check of atom and charge balance confirms the equation is balanced.
 Check Your Learning
 
 <!-- SEG:m68710:para:fs-idp193051584 -->
-In basic solution, molecular chlorine, Cl[[sub:2]], reacts with hydroxide ions, OH[[sup:−]], to yield chloride ions, Cl[[sup:−]]. and chlorate ions, ClO[[sub:3]][[sup:−]]. HINT: This is a {{i}}disproportionation reaction{{/i}} in which the element chlorine is both oxidized and reduced. Write a balanced equation for this reaction.
+In basic solution, molecular chlorine, Cl[[sub:2]], reacts with hydroxide ions, OH[[sup:−]], to yield chloride ions, Cl[[sup:−]]. and chlorate ions, ClO[[sub:3]][[sup:−]]. HINT: This is a [[i:disproportionation reaction]] in which the element chlorine is both oxidized and reduced. Write a balanced equation for this reaction.
 
 <!-- SEG:m68710:item:fs-idp34895184-item-1 -->
-{{i}}Write the two half-reactions{{/i}}. Each half-reaction will contain one reactant and one product with one element in common. [[MATH:22]] [[MATH:23]]
+[[i:Write the two half-reactions]]. Each half-reaction will contain one reactant and one product with one element in common. [[MATH:22]] [[MATH:23]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-2 -->
-{{i}}Balance all elements except oxygen and hydrogen{{/i}}. The iron half-reaction is already balanced, but the chromium half-reaction shows two Cr atoms on the left and one Cr atom on the right. Changing the coefficient on the right side of the equation to 2 achieves balance with regard to Cr atoms. [[MATH:24]] [[MATH:25]]
+[[i:Balance all elements except oxygen and hydrogen]]. The iron half-reaction is already balanced, but the chromium half-reaction shows two Cr atoms on the left and one Cr atom on the right. Changing the coefficient on the right side of the equation to 2 achieves balance with regard to Cr atoms. [[MATH:24]] [[MATH:25]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-3 -->
-{{i}}Balance oxygen atoms by adding{{/i}} H[[sub:2]]O{{i}} molecules{{/i}}. The iron half-reaction does not contain O atoms. The chromium half-reaction shows seven O atoms on the left and none on the right, so seven water molecules are added to the right side. [[MATH:26]]
+[[i:Balance oxygen atoms by adding]] H[[sub:2]]O[[i: molecules]]. The iron half-reaction does not contain O atoms. The chromium half-reaction shows seven O atoms on the left and none on the right, so seven water molecules are added to the right side. [[MATH:26]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-4 -->
-{{i}}Balance hydrogen atoms by adding{{/i}} H[[sup:+]]{{i}}ions{{/i}}. The iron half-reaction does not contain H atoms. The chromium half-reaction shows 14 H atoms on the right and none on the left, so 14 hydrogen ions are added to the left side. [[MATH:27]] [[MATH:28]]
+[[i:Balance hydrogen atoms by adding]] H[[sup:+]][[i:ions]]. The iron half-reaction does not contain H atoms. The chromium half-reaction shows 14 H atoms on the right and none on the left, so 14 hydrogen ions are added to the left side. [[MATH:27]] [[MATH:28]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-5 -->
-{{i}}Balance charge by adding electrons{{/i}}. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe[[sup:2+]] ion) and 3+ on the right side (1 Fe[[sup:3+]] ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.The chromium half-reaction shows a total charge of (1 [[MATH:31]] 2−) + (14 [[MATH:32]] 1+) = 12+ on the left side [[MATH:33]] ion and 14 H[[sup:+]] ions). The total charge on the right side is (2 [[MATH:34]] 3+) = 6 + (2 Cr[[sup:3+]] ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:29]] [[MATH:30]]
+[[i:Balance charge by adding electrons]]. The iron half-reaction shows a total charge of 2+ on the left side (1 Fe[[sup:2+]] ion) and 3+ on the right side (1 Fe[[sup:3+]] ion). Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.The chromium half-reaction shows a total charge of (1 [[MATH:31]] 2−) + (14 [[MATH:32]] 1+) = 12+ on the left side [[MATH:33]] ion and 14 H[[sup:+]] ions). The total charge on the right side is (2 [[MATH:34]] 3+) = 6 + (2 Cr[[sup:3+]] ions). Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. [[MATH:29]] [[MATH:30]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-6 -->
-{{i}}Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction{{/i}}. To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. [[MATH:35]] [[MATH:36]]
+[[i:Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction]]. To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. [[MATH:35]] [[MATH:36]]
 
 <!-- SEG:m68710:item:fs-idp34895184-item-7 -->
-{{i}}Add the balanced half-reactions and cancel species that appear on both sides of the equation{{/i}}. [[MATH:37]] Only the six electrons are redundant species. Removing them from each side of the equation yields the simplified, balanced equation here: [[MATH:38]]
+[[i:Add the balanced half-reactions and cancel species that appear on both sides of the equation]]. [[MATH:37]] Only the six electrons are redundant species. Removing them from each side of the equation yields the simplified, balanced equation here: [[MATH:38]]
 
 <!-- SEG:m68710:note-title:fs-idm39281984-title -->
 Answer:
@@ -527,7 +527,7 @@ charge
 24+
 
 <!-- SEG:m68710:para:fs-idp3801440 -->
-Earth’s atmosphere contains about 20% molecular oxygen, O[[sub:2]], a chemically reactive gas that plays an essential role in the metabolism of aerobic organisms and in many environmental processes that shape the world. The term {{term}}oxidation{{/term}} was originally used to describe chemical reactions involving O[[sub:2]], but its meaning has evolved to refer to a broad and important reaction class known as {{i}}oxidation-reduction (redox) reactions{{/i}}. A few examples of such reactions will be used to develop a clear picture of this classification.
+Earth’s atmosphere contains about 20% molecular oxygen, O[[sub:2]], a chemically reactive gas that plays an essential role in the metabolism of aerobic organisms and in many environmental processes that shape the world. The term {{term}}oxidation{{/term}} was originally used to describe chemical reactions involving O[[sub:2]], but its meaning has evolved to refer to a broad and important reaction class known as [[i:oxidation-reduction (redox) reactions]]. A few examples of such reactions will be used to develop a clear picture of this classification.
 
 <!-- SEG:m68710:para:fs-idm49954608 -->
 Some redox reactions involve the transfer of electrons between reactant entities to yield ionic products, such as the reaction between sodium and chlorine to yield sodium chloride:
@@ -536,16 +536,16 @@ Some redox reactions involve the transfer of electrons between reactant entities
 It is helpful to view the process with regard to each individual reactant, that is, to represent the fate of each reactant in the form of an equation called a {{term}}half-reaction{{/term}}:
 
 <!-- SEG:m68710:para:fs-idp97564400 -->
-These equations show that Na atoms {{i}}lose electrons{{/i}} while Cl atoms (in the Cl[[sub:2]] molecule) {{i}}gain electrons{{/i}}, the “{{i}}s{{/i}}” subscripts for the resulting ions signifying they are present in the form of a solid ionic compound. For redox reactions of this sort, the loss and gain of electrons define the complementary processes that occur:
+These equations show that Na atoms [[i:lose electrons]] while Cl atoms (in the Cl[[sub:2]] molecule) [[i:gain electrons]], the “[[i:s]]” subscripts for the resulting ions signifying they are present in the form of a solid ionic compound. For redox reactions of this sort, the loss and gain of electrons define the complementary processes that occur:
 
 <!-- SEG:m68710:para:fs-idp6686448 -->
-In this reaction, then, sodium is {{i}}oxidized{{/i}} and chlorine undergoes {{term}}reduction{{/term}}. Viewed from a more active perspective, sodium functions as a {{term}}reducing agent (reductant){{/term}}, since it provides electrons to (or reduces) chlorine. Likewise, chlorine functions as an {{term}}oxidizing agent (oxidant){{/term}}, as it effectively removes electrons from (oxidizes) sodium.
+In this reaction, then, sodium is [[i:oxidized]] and chlorine undergoes {{term}}reduction{{/term}}. Viewed from a more active perspective, sodium functions as a {{term}}reducing agent (reductant){{/term}}, since it provides electrons to (or reduces) chlorine. Likewise, chlorine functions as an {{term}}oxidizing agent (oxidant){{/term}}, as it effectively removes electrons from (oxidizes) sodium.
 
 <!-- SEG:m68710:para:fs-idp108466096 -->
 Some redox processes, however, do not involve the transfer of electrons. Consider, for example, a reaction similar to the one yielding NaCl:
 
 <!-- SEG:m68710:para:fs-idp168168224 -->
-The product of this reaction is a covalent compound, so transfer of electrons in the explicit sense is not involved. To clarify the similarity of this reaction to the previous one and permit an unambiguous definition of redox reactions, a property called {{i}}oxidation number{{/i}} has been defined. The {{term}}oxidation number{{/term}} (or {{term}}oxidation state{{/term}}) of an element in a compound is the charge its atoms would possess {{i}}if the compound were ionic{{/i}}. The following guidelines are used to assign oxidation numbers to each element in a molecule or ion.
+The product of this reaction is a covalent compound, so transfer of electrons in the explicit sense is not involved. To clarify the similarity of this reaction to the previous one and permit an unambiguous definition of redox reactions, a property called [[i:oxidation number]] has been defined. The {{term}}oxidation number{{/term}} (or {{term}}oxidation state{{/term}}) of an element in a compound is the charge its atoms would possess [[i:if the compound were ionic]]. The following guidelines are used to assign oxidation numbers to each element in a molecule or ion.
 
 <!-- SEG:m68710:item:fs-idp29396208-item-1 -->
 The oxidation number of an atom in an elemental substance is zero.
@@ -638,16 +638,16 @@ Answer:
 (a) N, +5; (b) Al, +3; (c) N, −3; (d) P, +5
 
 <!-- SEG:m68710:para:fs-idp45838960 -->
-Using the oxidation number concept, an all-inclusive definition of redox reaction has been established. {{term}}Oxidation-reduction (redox) reactions{{/term}} are those in which one or more elements involved undergo a change in oxidation number. (While the vast majority of redox reactions involve changes in oxidation number for two or more elements, a few interesting exceptions to this rule do exist [#fs-idp180799104].) Definitions for the complementary processes of this reaction class are correspondingly revised as shown here:
+Using the oxidation number concept, an all-inclusive definition of redox reaction has been established. {{term}}Oxidation-reduction (redox) reactions{{/term}} are those in which one or more elements involved undergo a change in oxidation number. (While the vast majority of redox reactions involve changes in oxidation number for two or more elements, a few interesting exceptions to this rule do exist [[xref:fs-idp180799104]].) Definitions for the complementary processes of this reaction class are correspondingly revised as shown here:
 
 <!-- SEG:m68710:para:fs-idm1410784 -->
 Returning to the reactions used to introduce this topic, they may now both be identified as redox processes. In the reaction between sodium and chlorine to yield sodium chloride, sodium is oxidized (its oxidation number increases from 0 in Na to +1 in NaCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl[[sub:2]] to −1 in NaCl). In the reaction between molecular hydrogen and chlorine, hydrogen is oxidized (its oxidation number increases from 0 in H[[sub:2]] to +1 in HCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl[[sub:2]] to −1 in HCl).
 
 <!-- SEG:m68710:para:fs-idp112552240 -->
-Several subclasses of redox reactions are recognized, including {{term}}combustion reactions{{/term}} in which the reductant (also called a {{i}}fuel{{/i}}) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [m68730#CNX_Chem_04_00_Rocket] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
+Several subclasses of redox reactions are recognized, including {{term}}combustion reactions{{/term}} in which the reductant (also called a [[i:fuel]]) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [[docref:m68730#CNX_Chem_04_00_Rocket]] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
 
 <!-- SEG:m68710:para:fs-idm5712736 -->
-Watch a brief [video](http://openstax.org/l/16hybridrocket) showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA. The first engines firing at[[BR]]3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.
+Watch a brief [[link:video|http://openstax.org/l/16hybridrocket]] showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA. The first engines firing at[[BR]]3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.
 
 <!-- SEG:m68710:para:fs-idm580304 -->
 {{term}}Single-displacement (replacement) reactions{{/term}} are redox reactions in which an ion in solution is displaced (or replaced) via the oxidation of a metallic element. One common example of this type of reaction is the acid oxidation of certain metals:
@@ -656,7 +656,7 @@ Watch a brief [video](http://openstax.org/l/16hybridrocket) showing the test fir
 Metallic elements may also be oxidized by solutions of other metal salts; for example:
 
 <!-- SEG:m68710:para:fs-idm10678768 -->
-This reaction may be observed by placing copper wire in a solution containing a dissolved silver salt. Silver ions in solution are reduced to elemental silver at the surface of the copper wire, and the resulting Cu[[sup:2+]] ions dissolve in the solution to yield a characteristic blue color ([#CNX_Chem_04_02_CuAgNO3]).
+This reaction may be observed by placing copper wire in a solution containing a dissolved silver salt. Silver ions in solution are reduced to elemental silver at the surface of the copper wire, and the resulting Cu[[sup:2+]] ions dissolve in the solution to yield a characteristic blue color ([[xref:CNX_Chem_04_02_CuAgNO3]]).
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_CuAgNO3-caption -->
 (a) A copper wire is shown next to a solution containing silver(I) ions. (b) Displacement of dissolved silver ions by copper ions results in (c) accumulation of gray-colored silver metal on the wire and development of a blue color in the solution, due to dissolved copper ions. (credit: modification of work by Mark Ott)
@@ -692,16 +692,16 @@ Redox reactions are identified per definition if one or more elements undergo a 
 (a) This is not a redox reaction, since oxidation numbers remain unchanged for all elements.
 
 <!-- SEG:m68710:para:fs-idp218627312 -->
-(b) This is a redox reaction. Gallium is oxidized, its oxidation number increasing from 0 in Ga({{i}}l{{/i}}) to +3 in GaBr[[sub:3]]({{i}}s{{/i}}). The reducing agent is Ga({{i}}l{{/i}}). Bromine is reduced, its oxidation number decreasing from 0 in Br[[sub:2]]({{i}}l{{/i}}) to −1 in GaBr[[sub:3]]({{i}}s{{/i}}). The oxidizing agent is Br[[sub:2]]({{i}}l{{/i}}).
+(b) This is a redox reaction. Gallium is oxidized, its oxidation number increasing from 0 in Ga([[i:l]]) to +3 in GaBr[[sub:3]]([[i:s]]). The reducing agent is Ga([[i:l]]). Bromine is reduced, its oxidation number decreasing from 0 in Br[[sub:2]]([[i:l]]) to −1 in GaBr[[sub:3]]([[i:s]]). The oxidizing agent is Br[[sub:2]]([[i:l]]).
 
 <!-- SEG:m68710:para:fs-idp223712368 -->
-(c) This is a redox reaction. It is a particularly interesting process, as it involves the same element, oxygen, undergoing both oxidation and reduction (a so-called {{i}}disproportionation reaction){{/i}}. Oxygen is oxidized, its oxidation number increasing from −1 in H[[sub:2]]O[[sub:2]]({{i}}aq{{/i}}) to 0 in O[[sub:2]]({{i}}g{{/i}}). Oxygen is also reduced, its oxidation number decreasing from −1 in H[[sub:2]]O[[sub:2]]({{i}}aq{{/i}}) to −2 in H[[sub:2]]O({{i}}l{{/i}}). For disproportionation reactions, the same substance functions as an oxidant and a reductant.
+(c) This is a redox reaction. It is a particularly interesting process, as it involves the same element, oxygen, undergoing both oxidation and reduction (a so-called [[i:disproportionation reaction)]]. Oxygen is oxidized, its oxidation number increasing from −1 in H[[sub:2]]O[[sub:2]]([[i:aq]]) to 0 in O[[sub:2]]([[i:g]]). Oxygen is also reduced, its oxidation number decreasing from −1 in H[[sub:2]]O[[sub:2]]([[i:aq]]) to −2 in H[[sub:2]]O([[i:l]]). For disproportionation reactions, the same substance functions as an oxidant and a reductant.
 
 <!-- SEG:m68710:para:fs-idm40215792 -->
 (d) This is not a redox reaction, since oxidation numbers remain unchanged for all elements.
 
 <!-- SEG:m68710:para:fs-idm55300832 -->
-(e) This is a redox reaction (combustion). Carbon is oxidized, its oxidation number increasing from −2 in C[[sub:2]]H[[sub:4]]({{i}}g{{/i}}) to +4 in CO[[sub:2]]({{i}}g{{/i}}). The reducing agent (fuel) is C[[sub:2]]H[[sub:4]]({{i}}g{{/i}}). Oxygen is reduced, its oxidation number decreasing from 0 in O[[sub:2]]({{i}}g{{/i}}) to −2 in H[[sub:2]]O({{i}}l{{/i}}). The oxidizing agent is O[[sub:2]]({{i}}g{{/i}}).
+(e) This is a redox reaction (combustion). Carbon is oxidized, its oxidation number increasing from −2 in C[[sub:2]]H[[sub:4]]([[i:g]]) to +4 in CO[[sub:2]]([[i:g]]). The reducing agent (fuel) is C[[sub:2]]H[[sub:4]]([[i:g]]). Oxygen is reduced, its oxidation number decreasing from 0 in O[[sub:2]]([[i:g]]) to −2 in H[[sub:2]]O([[i:l]]). The oxidizing agent is O[[sub:2]]([[i:g]]).
 
 <!-- SEG:m68710:para-title:fs-idm9371232-title -->
 Check Your Learning
@@ -713,13 +713,13 @@ This equation describes the production of tin(II) chloride:
 Is this a redox reaction? If so, provide a more specific name for the reaction if appropriate, and identify the oxidant and reductant.
 
 <!-- SEG:m68710:para:fs-idm50940704 -->
-Yes, a single-replacement reaction. Sn({{i}}s{{/i}}){{i}}is the reductant, HCl(g{{/i}}) is the oxidant.
+Yes, a single-replacement reaction. Sn([[i:s]])[[i:is the reductant, HCl(g]]) is the oxidant.
 
 <!-- SEG:m68710:note-title:fs-idp105853680-title -->
 Answer:
 
 <!-- SEG:m68710:para:fs-idm50940704 -->
-Yes, a single-replacement reaction. Sn({{i}}s{{/i}}){{i}}is the reductant, HCl(g{{/i}}) is the oxidant.
+Yes, a single-replacement reaction. Sn([[i:s]])[[i:is the reductant, HCl(g]]) is the oxidant.
 
 <!-- SEG:m68710:title:fs-idm51820592-title -->
 Key Concepts and Summary
@@ -914,7 +914,7 @@ Identify the atoms that are oxidized and reduced, the change in oxidation state 
 Complete and balance the following acid-base equations:
 
 <!-- SEG:m68710:problem:fs-idp63939984 -->
-(a) HCl gas reacts with solid Ca(OH)[[sub:2]]({{i}}s{{/i}}).
+(a) HCl gas reacts with solid Ca(OH)[[sub:2]]([[i:s]]).
 
 <!-- SEG:m68710:problem:fs-idm54386864 -->
 (b) A solution of Sr(OH)[[sub:2]] is added to a solution of HNO[[sub:3]].

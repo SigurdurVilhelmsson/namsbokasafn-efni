@@ -11,7 +11,7 @@ Acid
 Formula
 
 <!-- SEG:m68866:entry:auto-5 -->
-{{i}}K[[sub:a]]{{/i}} at 25 °C
+[[i:K[[sub:a]]]] at 25 °C
 
 <!-- SEG:m68866:entry:auto-6 -->
 Lewis Structure

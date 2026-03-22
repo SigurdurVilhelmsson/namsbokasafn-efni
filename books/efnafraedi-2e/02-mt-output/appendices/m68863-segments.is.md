@@ -2,13 +2,13 @@
 Eiginleikar vatns
 
 <!-- SEG:m68863:entry:auto-2 -->
-Eðlismassi vatns (g/ml) við mismunandi hitastig (°C)
+Eðlismassi vatns (g/mL) við mismunandi hitastig (°C)
 
 <!-- SEG:m68863:entry:auto-3 -->
 Hitastig
 
 <!-- SEG:m68863:entry:auto-4 -->
-Eðlismassi (g/ml)
+Eðlismassi (g/mL)
 
 <!-- SEG:m68863:entry:auto-5 -->
 0
@@ -20,7 +20,7 @@ Eðlismassi (g/ml)
 4
 
 <!-- SEG:m68863:entry:auto-8 -->
-0,9999720 (hámarskseðlismassi)
+0,9999720 (hámark eðlismassa)
 
 <!-- SEG:m68863:entry:auto-9 -->
 10
@@ -83,16 +83,16 @@ Eðlismassi (g/ml)
 0,9584
 
 <!-- SEG:m68863:entry:auto-29 -->
-Gufunarþrýstingur vatns við mismunandi hitastig (°C)
+Gufuþrýstingur vatns við mismunandi hitastig (°C)
 
 <!-- SEG:m68863:entry:auto-30 -->
 Hitastig
 
 <!-- SEG:m68863:entry:auto-31 -->
-Gufunarþrýstingur (torr)
+Gufuþrýstingur (torr)
 
 <!-- SEG:m68863:entry:auto-32 -->
-Gufunarþrýstingur (Pa)
+Gufuþrýstingur (Pa)
 
 <!-- SEG:m68863:entry:auto-33 -->
 0
@@ -293,7 +293,7 @@ Gufunarþrýstingur (Pa)
 101324,7
 
 <!-- SEG:m68863:entry:auto-99 -->
-K[[sub:v]] og pK[[sub:v]] vatns við mismunandi hitastig (°C)
+K[[sub:w]] og pK[[sub:w]] vatns við mismunandi hitastig (°C)
 
 <!-- SEG:m68863:entry:auto-100 -->
 Hitastig
@@ -443,22 +443,22 @@ pK[[sub:v]] {{fn}}pK[[sub:v]] = –log[[sub:10]](K[[sub:v]]){{/fn}}
 Eðlisvarmi vatns
 
 <!-- SEG:m68863:entry:auto-149 -->
-C°(H[[sub:2]]O({{i}}l{{/i}})) = 4,184 J⋅g[[sup:−1]]⋅°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:l]])) = 4,184 J∙g[[sup:-1]]∙°C[[sup:-1]]
 
 <!-- SEG:m68863:entry:auto-150 -->
-C°(H[[sub:2]]O({{i}}s{{/i}})) = 2,093 J⋅g[[sup:−1]]⋅°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:s]])) = 2,093 J∙g[[sup:−1]]∙°C[[sup:−1]]
 
 <!-- SEG:m68863:entry:auto-151 -->
-C°(H[[sub:2]]O({{i}}g{{/i}})) = 1,864 J⋅g[[sup:−1]]⋅°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:g]])) = 1,864 J∙g[[sup:−1]]∙°C[[sup:−1]]
 
 <!-- SEG:m68863:entry:auto-152 -->
-Staðalbræðslu- og suðuhitastig vatns og entalpíur fasaumbreytinga
+Staðlað bræðslu- og suðuhitastig vatns og entalpíur fasaumbreytinga
 
 <!-- SEG:m68863:entry:auto-153 -->
 Hitastig (K)
 
 <!-- SEG:m68863:entry:auto-154 -->
-Δ{{i}}H{{/i}} (kJ/mól)
+Δ[[i:H]] (kJ/mól)
 
 <!-- SEG:m68863:entry:auto-155 -->
 bráðnun
@@ -482,10 +482,10 @@ suða
 Frostmarkslækkunar- og suðumarkshækkunarfastar vatns
 
 <!-- SEG:m68863:entry:auto-162 -->
-K[[sub:f]] = 1,86 °C⋅kg⋅mól[[sup:−1]] (frostmarkslækkunarfasti)
+K[[sub:f]] = 1,86°C∙kg∙mól[[sup:−1]] (frostmarkslækkunarfasti)
 
 <!-- SEG:m68863:entry:auto-163 -->
-K[[sub:b]] = 0,51 °C⋅kg⋅mól[[sup:−1]] (suðumarkshækkunarfasti)
+K[[sub:b]] = 0,51°C∙kg∙mól[[sup:−1]] (suðumarkshækkunarfasti)
 
 <!-- SEG:m68863:caption:CNX_Chem_00_EE_LiqWatAbso-caption -->
-Línuritið sýnir umfang ljósgleypni á móti bylgjulengd fyrir vatn. Gleypni er gefin upp í umhverfum metrum og samsvarar umhverfu þeirrar vegalengdar sem ljós getur ferðast í gegnum vatn áður en styrkur þess minnkar um 1/{{i}}e{{/i}} (~37%).
+Línuritið sýnir umfang ljósgleypni á móti bylgjulengd fyrir vatn. Gleypni er gefin upp í metrum í mínus fyrsta veldi og samsvarar umhverfu þeirrar vegalengdar sem ljós getur ferðast í gegnum vatn áður en styrkur þess minnkar um 1/[[i:e]] (~37%).

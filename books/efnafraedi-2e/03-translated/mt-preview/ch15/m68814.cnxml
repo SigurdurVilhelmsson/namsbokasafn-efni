@@ -1,8 +1,4 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<!-- FIDELITY-WARNING: m68814 has 1 structural discrepancy(ies)
-  link: source=5 translated=7 (+2 overproduction)
-  Review needed before publication. Run cnxml-fidelity-check.js for details.
--->
 <title>Tengd jafnvægi</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68814</md:content-id>
@@ -226,7 +222,7 @@
 </exercise>
 <exercise id="fs-idm299312">
 <problem id="fs-idm299056">
-<para id="fs-idm298800">Reiknaðu jafnvægisstyrk Ni<sup>2+</sup> í 1,0-<emphasis effect="italics">M</emphasis> lausn <link url="NO<sub>3</sub>">Ni(NH<sub>3</sub>)<sub>6</sub></link><sub>2</sub>.</para>
+<para id="fs-idm298800">Reiknaðu jafnvægisstyrk Ni<sup>2+</sup> í 1,0-<emphasis effect="italics">M</emphasis> lausn [Ni(NH<sub>3</sub>)<sub>6</sub>](NO<sub>3</sub>)<sub>2</sub>.</para>
 </problem>
 <solution id="fs-idm295712">
 <para id="fs-idm295456">0,014 <emphasis effect="italics">M</emphasis></para>
@@ -258,7 +254,7 @@
 </exercise>
 <exercise id="fs-idp103984">
 <problem id="fs-idp104240">
-<para id="fs-idp104496">Reiknaðu jafnvægisstyrk Co<sup>2+</sup> þegar 0,010 mólum af <link url="NO<sub>3</sub>">Co(NH<sub>3</sub>)<sub>6</sub></link><sub>2</sub> er bætt við lausn með 0,25 <emphasis effect="italics">M</emphasis> NH<sub>3</sub>. Gerðu ráð fyrir að rúmmálið sé 1,00 L.</para></problem>
+<para id="fs-idp104496">Reiknaðu jafnvægisstyrk Co<sup>2+</sup> þegar 0,010 mólum af [Co(NH<sub>3</sub>)<sub>6</sub>](NO<sub>3</sub>)<sub>2</sub> er bætt við lausn með 0,25 <emphasis effect="italics">M</emphasis> NH<sub>3</sub>. Gerðu ráð fyrir að rúmmálið sé 1,00 L.</para></problem>
 </exercise>
 <exercise id="fs-idm455072">
 <problem id="fs-idm454816">

@@ -11,19 +11,19 @@ Describe the function of a galvanic cell and its components
 Use cell notation to symbolize the composition and construction of galvanic cells
 
 <!-- SEG:m68822:para:fs-idm180176640 -->
-As demonstration of spontaneous chemical change, [#CNX_Chem_17_02_CuAg] shows the result of immersing a coiled wire of copper into an aqueous solution of silver nitrate. A gradual but visually impressive change spontaneously occurs as the initially colorless solution becomes increasingly blue, and the initially smooth copper wire becomes covered with a porous gray solid.
+As demonstration of spontaneous chemical change, [[xref:CNX_Chem_17_02_CuAg]] shows the result of immersing a coiled wire of copper into an aqueous solution of silver nitrate. A gradual but visually impressive change spontaneously occurs as the initially colorless solution becomes increasingly blue, and the initially smooth copper wire becomes covered with a porous gray solid.
 
 <!-- SEG:m68822:caption:CNX_Chem_17_02_CuAg-caption -->
-A copper wire and an aqueous solution of silver nitrate (left) are brought into contact (center) and a spontaneous transfer of electrons occurs, creating blue Cu[[sup:2+]]({{i}}aq{{/i}}) and gray Ag({{i}}s{{/i}}) (right).
+A copper wire and an aqueous solution of silver nitrate (left) are brought into contact (center) and a spontaneous transfer of electrons occurs, creating blue Cu[[sup:2+]]([[i:aq]]) and gray Ag([[i:s]]) (right).
 
 <!-- SEG:m68822:para:fs-idm216506080 -->
-These observations are consistent with (i) the oxidation of elemental copper to yield copper(II) ions, Cu[[sup:2+]]{{i}}(aq){{/i}}, which impart a blue color to the solution, and (ii) the reduction of silver(I) ions to yield elemental silver, which deposits as a fluffy solid on the copper wire surface. And so, {{i}}the direct transfer of electrons from the copper wire to the aqueous silver ions is spontaneous{{/i}} under the employed conditions. A summary of this redox system is provided by these equations:
+These observations are consistent with (i) the oxidation of elemental copper to yield copper(II) ions, Cu[[sup:2+]][[i:(aq)]], which impart a blue color to the solution, and (ii) the reduction of silver(I) ions to yield elemental silver, which deposits as a fluffy solid on the copper wire surface. And so, [[i:the direct transfer of electrons from the copper wire to the aqueous silver ions is spontaneous]] under the employed conditions. A summary of this redox system is provided by these equations:
 
 <!-- SEG:m68822:para:fs-idm201862608 -->
-Consider the construction of a device that contains all the reactants and products of a redox system like the one here, but prevents physical contact between the reactants. Direct transfer of electrons is, therefore, prevented; transfer, instead, takes place indirectly through an external circuit that contacts the separated reactants. Devices of this sort are generally referred to as {{i}}electrochemical cells{{/i}}, and those in which a spontaneous redox reaction takes place are called {{term}}galvanic cells{{/term}} (or {{term}}voltaic cells{{/term}}).
+Consider the construction of a device that contains all the reactants and products of a redox system like the one here, but prevents physical contact between the reactants. Direct transfer of electrons is, therefore, prevented; transfer, instead, takes place indirectly through an external circuit that contacts the separated reactants. Devices of this sort are generally referred to as [[i:electrochemical cells]], and those in which a spontaneous redox reaction takes place are called {{term}}galvanic cells{{/term}} (or {{term}}voltaic cells{{/term}}).
 
 <!-- SEG:m68822:para:fs-idm196674112 -->
-A galvanic cell based on the spontaneous reaction between copper and silver(I) is depicted in [#CNX_Chem_17_02_Galvanicel]. The cell is comprised of two {{term}}half-cells{{/term}}, each containing the redox conjugate pair (“couple”) of a single reactant. The half-cell shown at the left contains the Cu(0)/Cu(II) couple in the form of a solid copper foil and an aqueous solution of copper nitrate. The right half-cell contains the Ag(I)/Ag(0) couple as solid silver foil and an aqueous silver nitrate solution. An external circuit is connected to each half-cell at its solid foil, meaning the Cu and Ag foil each function as an {{i}}electrode{{/i}}. By definition, the {{term}}anode{{/term}} of an electrochemical cell is the electrode at which oxidation occurs (in this case, the Cu foil) and the {{term}}cathode{{/term}} is the electrode where reduction occurs (the Ag foil). The redox reactions in a galvanic cell occur only at the interface between each half-cell’s reaction mixture and its electrode. To keep the reactants separate while maintaining charge-balance, the two half-cell solutions are connected by a tube filled with inert electrolyte solution called a {{term}}salt bridge{{/term}}. The spontaneous reaction in this cell produces Cu[[sup:2+]] cations in the anode half-cell and consumes Ag[[sup:+]] ions in the cathode half-cell, resulting in a compensatory flow of inert ions from the salt bridge that maintains charge balance. Increasing concentrations of Cu[[sup:2+]] in the anode half-cell are balanced by an influx of NO[[sub:3]][[sup:−]] from the salt bridge, while a flow of Na[[sup:+]] into the cathode half-cell compensates for the decreasing Ag[[sup:+]] concentration.
+A galvanic cell based on the spontaneous reaction between copper and silver(I) is depicted in [[xref:CNX_Chem_17_02_Galvanicel]]. The cell is comprised of two {{term}}half-cells{{/term}}, each containing the redox conjugate pair (“couple”) of a single reactant. The half-cell shown at the left contains the Cu(0)/Cu(II) couple in the form of a solid copper foil and an aqueous solution of copper nitrate. The right half-cell contains the Ag(I)/Ag(0) couple as solid silver foil and an aqueous silver nitrate solution. An external circuit is connected to each half-cell at its solid foil, meaning the Cu and Ag foil each function as an [[i:electrode]]. By definition, the {{term}}anode{{/term}} of an electrochemical cell is the electrode at which oxidation occurs (in this case, the Cu foil) and the {{term}}cathode{{/term}} is the electrode where reduction occurs (the Ag foil). The redox reactions in a galvanic cell occur only at the interface between each half-cell’s reaction mixture and its electrode. To keep the reactants separate while maintaining charge-balance, the two half-cell solutions are connected by a tube filled with inert electrolyte solution called a {{term}}salt bridge{{/term}}. The spontaneous reaction in this cell produces Cu[[sup:2+]] cations in the anode half-cell and consumes Ag[[sup:+]] ions in the cathode half-cell, resulting in a compensatory flow of inert ions from the salt bridge that maintains charge balance. Increasing concentrations of Cu[[sup:2+]] in the anode half-cell are balanced by an influx of NO[[sub:3]][[sup:−]] from the salt bridge, while a flow of Na[[sup:+]] into the cathode half-cell compensates for the decreasing Ag[[sup:+]] concentration.
 
 <!-- SEG:m68822:caption:CNX_Chem_17_02_Galvanicel-caption -->
 A galvanic cell based on the spontaneous reaction between copper and silver(I) ions.
@@ -44,10 +44,10 @@ All interfaces between component phases are represented by vertical parallel lin
 By convention, the schematic begins with the anode and proceeds left-to-right identifying phases and interfaces encountered within the cell, ending with the cathode
 
 <!-- SEG:m68822:para:fs-idm178198704 -->
-A verbal description of the cell as viewed from anode-to-cathode is often a useful first-step in writing its schematic. For example, the galvanic cell shown in [#CNX_Chem_17_02_Galvanicel] consists of a solid copper anode immersed in an aqueous solution of copper(II) nitrate that is connected via a salt bridge to an aqueous silver(I) nitrate solution, immersed in which is a solid silver cathode. Converting this statement to symbolism following the above guidelines results in the cell schematic:
+A verbal description of the cell as viewed from anode-to-cathode is often a useful first-step in writing its schematic. For example, the galvanic cell shown in [[xref:CNX_Chem_17_02_Galvanicel]] consists of a solid copper anode immersed in an aqueous solution of copper(II) nitrate that is connected via a salt bridge to an aqueous silver(I) nitrate solution, immersed in which is a solid silver cathode. Converting this statement to symbolism following the above guidelines results in the cell schematic:
 
 <!-- SEG:m68822:para:fs-idm183571200 -->
-Consider a different galvanic cell (see [#CNX_Chem_17_02_Oxidareduc]) based on the spontaneous reaction between solid magnesium and aqueous iron(III) ions:
+Consider a different galvanic cell (see [[xref:CNX_Chem_17_02_Oxidareduc]]) based on the spontaneous reaction between solid magnesium and aqueous iron(III) ions:
 
 <!-- SEG:m68822:para:fs-idm215655008 -->
 In this cell, a solid magnesium anode is immersed in an aqueous solution of magnesium chloride that is connected via a salt bridge to an aqueous solution containing a mixture of iron(III) chloride and iron(II) chloride, immersed in which is a platinum cathode. The cell schematic is then written as
@@ -155,22 +155,22 @@ Balance each reaction below, and write a cell schematic representing the reactio
 Identify the oxidant and reductant in each reaction of the previous exercise.
 
 <!-- SEG:m68822:solution:fs-idm157915712 -->
-Species oxidized = reducing agent: (a) Al({{i}}s{{/i}}); (b) NO({{i}}g{{/i}}); (c) Mg({{i}}s{{/i}}); and (d) MnO[[sub:2]]({{i}}s{{/i}}); Species reduced = oxidizing agent: (a) Zr[[sup:4+]]({{i}}aq{{/i}}); (b) Ag[[sup:+]]({{i}}aq{{/i}}); (c) [[MATH:19]]; and (d) [[MATH:20]]
+Species oxidized = reducing agent: (a) Al([[i:s]]); (b) NO([[i:g]]); (c) Mg([[i:s]]); and (d) MnO[[sub:2]]([[i:s]]); Species reduced = oxidizing agent: (a) Zr[[sup:4+]]([[i:aq]]); (b) Ag[[sup:+]]([[i:aq]]); (c) [[MATH:19]]; and (d) [[MATH:20]]
 
 <!-- SEG:m68822:problem:fs-idm97771920 -->
 From the information provided, use cell notation to describe the following systems:
 
 <!-- SEG:m68822:problem:fs-idm88906080 -->
-(a) In one half-cell, a solution of Pt(NO[[sub:3]])[[sub:2]] forms Pt metal, while in the other half-cell, Cu metal goes into a Cu(NO[[sub:3]])[[sub:2]] solution with all solute concentrations 1 {{i}}M{{/i}}.
+(a) In one half-cell, a solution of Pt(NO[[sub:3]])[[sub:2]] forms Pt metal, while in the other half-cell, Cu metal goes into a Cu(NO[[sub:3]])[[sub:2]] solution with all solute concentrations 1 [[i:M]].
 
 <!-- SEG:m68822:problem:fs-idm95770176 -->
-(b) The cathode consists of a gold electrode in a 0.55 {{i}}M{{/i}} Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 {{i}}M{{/i}} Mg(NO[[sub:3]])[[sub:2]] solution.
+(b) The cathode consists of a gold electrode in a 0.55 [[i:M]] Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]] solution.
 
 <!-- SEG:m68822:problem:fs-idm104480000 -->
-(c) One half-cell consists of a silver electrode in a 1 {{i}}M{{/i}} AgNO[[sub:3]] solution, and in the other half-cell, a copper electrode in 1 {{i}}M{{/i}} Cu(NO[[sub:3]])[[sub:2]] is oxidized.
+(c) One half-cell consists of a silver electrode in a 1 [[i:M]] AgNO[[sub:3]] solution, and in the other half-cell, a copper electrode in 1 [[i:M]] Cu(NO[[sub:3]])[[sub:2]] is oxidized.
 
 <!-- SEG:m68822:problem:fs-idm102325056 -->
-Why is a salt bridge necessary in galvanic cells like the one in [#CNX_Chem_17_02_Galvanicel]?
+Why is a salt bridge necessary in galvanic cells like the one in [[xref:CNX_Chem_17_02_Galvanicel]]?
 
 <!-- SEG:m68822:solution:fs-idm201827808 -->
 Without the salt bridge, the circuit would be open (or broken) and no current could flow. With a salt bridge, each half-cell remains electrically neutral and current can flow through the circuit.
@@ -221,7 +221,7 @@ difference in potential of the cathode and anode half-cells
 galvanic (voltaic) cell
 
 <!-- SEG:m68822:glossary-def:fs-idm159189392-def -->
-electrochemical cell in which a spontaneous redox reaction takes place; also called a {{i}}voltaic cell{{/i}}
+electrochemical cell in which a spontaneous redox reaction takes place; also called a [[i:voltaic cell]]
 
 <!-- SEG:m68822:glossary-term:fs-idm19899136-term -->
 inert electrode

@@ -246,8 +246,8 @@ function extractInlineText(
   text = text.replace(/<sub>([\s\S]*?)<\/sub>/g, (match, inner) => {
     if (inner.includes('<')) {
       let c = inner
-        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{i}}$1{{/i}}')
-        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{b}}$1{{/b}}');
+        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[i:$1]]')
+        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[b:$1]]');
       c = stripTags(c).trim();
       return `[[sub:${c}]]`;
     }
@@ -256,21 +256,22 @@ function extractInlineText(
   text = text.replace(/<sup>([\s\S]*?)<\/sup>/g, (match, inner) => {
     if (inner.includes('<')) {
       let c = inner
-        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{i}}$1{{/i}}')
-        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '{{b}}$1{{/b}}');
+        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[i:$1]]')
+        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[b:$1]]');
       c = stripTags(c).trim();
       return `[[sup:${c}]]`;
     }
     return `[[sup:${inner}]]`;
   });
   // Handle emphasis with effect= attribute (italics, bold, underline)
-  // Uses {{i}}...{{/i}} and {{b}}...{{/b}} paired markers that survive
-  // the MT API better than markdown *text* and **text**.
+  // Uses [[i:text]] and [[b:text]] bracket markers matching the proven
+  // [[sup:]]/[[sub:]] pattern that has ~0% API loss rate.
+  // Backward compat: injection also handles legacy {{i}}...{{/i}} format.
   text = text.replace(
     /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
     (match, effect, inner) => {
-      if (effect === 'italics') return `{{i}}${inner}{{/i}}`;
-      if (effect === 'bold') return `{{b}}${inner}{{/b}}`;
+      if (effect === 'italics') return `[[i:${inner}]]`;
+      if (effect === 'bold') return `[[b:${inner}]]`;
       if (effect === 'underline') return `++${inner}++`;
       return inner;
     }
@@ -284,7 +285,7 @@ function extractInlineText(
       return `{=${inner}=}`;
     }
     // No class, no effect — default to italic (common in CNXML for bare emphasis)
-    return `{{i}}${inner}{{/i}}`;
+    return `[[i:${inner}]]`;
   });
 
   // Handle terms - inner markup is already markdown at this point
@@ -302,18 +303,22 @@ function extractInlineText(
     return `{{term}}${stripTags(inner).trim()}{{/term}}`;
   });
 
-  // Handle links - preserve URL context
+  // Handle links using API-safe bracket format [[type:content]].
+  // All link types use a consistent pattern that survives MT APIs.
+  // The | separator divides link text from the reference target.
+  // Backward compat: injection also handles legacy [text](url) format.
+
+  // External URL links
   text = text.replace(/<link[^>]*url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
-    return `[${stripTags(inner)}](${url})`;
+    return `[[link:${stripTags(inner)}|${url}]]`;
   });
 
-  // Handle document links (must come before generic target-id to avoid being consumed)
-  // Match links containing both document= and target-id= in any attribute order
+  // Document links (must come before generic target-id to avoid being consumed)
   // Self-closing document links first
   text = text.replace(/<link\s([^>]*)\/>/g, (match, attrs) => {
     const parsedAttrs = parseAttributes(attrs);
     if (parsedAttrs.document && parsedAttrs['target-id']) {
-      return `[${parsedAttrs.document}#${parsedAttrs['target-id']}]`;
+      return `[[docref:${parsedAttrs.document}#${parsedAttrs['target-id']}]]`;
     }
     return match; // Not a document link — leave for later regexes
   });
@@ -323,30 +328,30 @@ function extractInlineText(
     if (parsedAttrs.document && parsedAttrs['target-id']) {
       const linkText = stripTags(inner).trim();
       return linkText
-        ? `[${linkText}](${parsedAttrs.document}#${parsedAttrs['target-id']})`
-        : `[${parsedAttrs.document}#${parsedAttrs['target-id']}]`;
+        ? `[[docref:${linkText}|${parsedAttrs.document}#${parsedAttrs['target-id']}]]`
+        : `[[docref:${parsedAttrs.document}#${parsedAttrs['target-id']}]]`;
     }
     // Document link without target-id (links to entire module)
     if (parsedAttrs.document && !parsedAttrs['target-id']) {
       const linkText = stripTags(inner).trim();
       return linkText
-        ? `[${linkText}](doc:${parsedAttrs.document})`
-        : `[doc:${parsedAttrs.document}]`;
+        ? `[[docref:${linkText}|${parsedAttrs.document}]]`
+        : `[[docref:${parsedAttrs.document}]]`;
     }
     return match; // Not a document link — leave for later regexes
   });
 
-  // Handle self-closing cross-references (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
+  // Self-closing cross-references (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
   text = text.replace(/<link[^>]*target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
-    return `[#${targetId}]`;
+    return `[[xref:${targetId}]]`;
   });
 
-  // Handle cross-references with content
+  // Cross-references with content
   text = text.replace(
     /<link[^>]*target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
     (match, targetId, inner) => {
       const linkText = stripTags(inner).trim();
-      return linkText ? `[${linkText}](#${targetId})` : `[#${targetId}]`;
+      return linkText ? `[[xref:${linkText}|${targetId}]]` : `[[xref:${targetId}]]`;
     }
   );
 
