@@ -2853,4 +2853,8 @@ export {
   parseSegments,
   reverseInlineMarkup,
   buildCnxml,
+  // Exported for comparison testing (DOM vs regex refactor)
+  buildExample,
+  buildExercise,
+  buildNote,
 };
