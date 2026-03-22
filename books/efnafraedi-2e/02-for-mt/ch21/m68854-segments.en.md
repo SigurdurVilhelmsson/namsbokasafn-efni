@@ -170,7 +170,7 @@ Answer:
 11.1 days
 
 <!-- SEG:m68854:para:fs-idp76857680 -->
-Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [[xref:fs-idp14399952]], and others are listed in Appendix M.
+Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [[xref:fs-idp14399952]], and others are listed in [[docref:Appendix M|m68871]].
 
 <!-- SEG:m68854:entry:auto-59 -->
 Half-lives of Radioactive Isotopes Important to Medicine
@@ -689,7 +689,7 @@ gamma (γ) emission
 decay of an excited-state nuclide accompanied by emission of a gamma ray
 
 <!-- SEG:m68854:glossary-term:fs-idp172569488-term -->
-half-life (t1/2)
+half-life ([[i:t]][[sub:1/2]])
 
 <!-- SEG:m68854:glossary-def:fs-idp172569488-def -->
 time required for half of the atoms in a radioactive sample to decay

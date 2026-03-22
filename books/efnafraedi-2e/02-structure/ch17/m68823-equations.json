@@ -215,6 +215,14 @@
     "mathml": "<m:math><m:mrow><m:mtext>Pt</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>│</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>│</m:mo><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>║</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>│</m:mo><m:mtext>Pt</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
     "latex": "{\\text{Pt}(s)│{\\text{H}}_{2}(g)│{\\text{H}}^{\\text{+}}(aq)║{{\\text{Br}}}_{2}(aq),\\, {{\\text{Br}}}^{\\text{−}}(aq)│\\text{Pt}(s)}"
   },
+  "math-55": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msubsup><m:mi>E</m:mi><m:mrow><m:mtext>cell</m:mtext></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{({E}_{{\\text{cell}}}^{^{\\circ}})}"
+  },
+  "math-56": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msubsup><m:mi>E</m:mi><m:mrow><m:mi>X</m:mi></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{({E}_{{X}}^{^{\\circ}})}"
+  },
   "fs-idm173268864": {
     "mathml": "<m:math><m:mrow><m:msub><m:mtext>E</m:mtext><m:mrow><m:mtext>cell</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mtext>E</m:mtext><m:mrow><m:mtext>cathode</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mtext>E</m:mtext><m:mrow><m:mtext>anode</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
     "latex": "{{\\text{E}}_{{\\text{cell}}}={\\text{E}}_{{\\text{cathode}}}-{\\text{E}}_{{\\text{anode}}}}",

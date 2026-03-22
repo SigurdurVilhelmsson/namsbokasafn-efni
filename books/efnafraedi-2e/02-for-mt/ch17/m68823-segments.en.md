@@ -47,7 +47,7 @@ Tabulations of E° values for other half-cells measured in a similar fashion are
 A cell permitting experimental measurement of the standard electrode potential for the half-reaction [[MATH:1]]
 
 <!-- SEG:m68823:para:fs-idm218785168 -->
-[[xref:fs-idm42585168]] provides a listing of standard electrode potentials for a selection of half-reactions in numerical order, and a more extensive alphabetical listing is given in Appendix L.
+[[xref:fs-idm42585168]] provides a listing of standard electrode potentials for a selection of half-reactions in numerical order, and a more extensive alphabetical listing is given in [[docref:Appendix L|m68870]].
 
 <!-- SEG:m68823:entry:auto-18 -->
 Selected Standard Reduction Potentials at 25 °C
@@ -434,7 +434,7 @@ Determine the cell reaction and standard cell potential at 25 °C for a cell mad
 Write the balanced cell reaction for the cell schematic below, calculate the standard cell potential, and note whether the reaction is spontaneous under standard state conditions.[[BR]] [[MATH:54]]
 
 <!-- SEG:m68823:glossary-term:fs-idp227872832-term -->
-standard cell potential (Ecell°)
+standard cell potential [[MATH:55]]
 
 <!-- SEG:m68823:glossary-def:fs-idp227872832-def -->
 the cell potential when all reactants and products are in their standard states (1 bar or 1 atm or gases; 1 [[i:M]] for solutes), usually at 298.15 K
@@ -446,7 +446,7 @@ standard hydrogen electrode (SHE)
 half-cell based on hydrogen ion production, assigned a potential of exactly 0 V under standard state conditions, used as the universal reference for measuring electrode potential
 
 <!-- SEG:m68823:glossary-term:fs-idm4867824-term -->
-standard electrode potential ((EX°))
+standard electrode potential ([[MATH:56]])
 
 <!-- SEG:m68823:glossary-def:fs-idm4867824-def -->
 electrode potential measured under standard conditions (1 bar or 1 atm for gases; 1 [[i:M]] for solutes) usually at 298.15 K

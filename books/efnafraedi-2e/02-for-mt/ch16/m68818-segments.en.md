@@ -119,7 +119,7 @@ where ν represents stoichiometric coefficients in the balanced equation represe
 is computed as:
 
 <!-- SEG:m68818:para:fs-idp43524064 -->
-A partial listing of standard entropies is provided in [[xref:fs-idm78597984]], and additional values are provided in Appendix G. The example exercises that follow demonstrate the use of [[i:S]]° values in calculating standard entropy changes for physical and chemical processes.
+A partial listing of standard entropies is provided in [[xref:fs-idm78597984]], and additional values are provided in [[docref:Appendix G|m68865]]. The example exercises that follow demonstrate the use of [[i:S]]° values in calculating standard entropy changes for physical and chemical processes.
 
 <!-- SEG:m68818:entry:auto-42 -->
 [[b:Substance]]
@@ -443,13 +443,13 @@ second law of thermodynamics
 all spontaneous processes involve an increase in the entropy of the universe
 
 <!-- SEG:m68818:glossary-term:fs-idp170415152-term -->
-standard entropy (S°)
+standard entropy ([[i:S]]°)
 
 <!-- SEG:m68818:glossary-def:fs-idp170415152-def -->
 entropy for one mole of a substance at 1 bar pressure; tabulated values are usually determined at 298.15 K
 
 <!-- SEG:m68818:glossary-term:fs-idp85418944-term -->
-standard entropy change (ΔS°)
+standard entropy change (Δ[[i:S]]°)
 
 <!-- SEG:m68818:glossary-def:fs-idp85418944-def -->
 change in entropy for a reaction calculated using the standard entropies
