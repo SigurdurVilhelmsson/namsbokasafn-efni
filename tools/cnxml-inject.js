@@ -1058,34 +1058,41 @@ function reverseInlineMarkup(
     return match; // Keep placeholder if not found
   });
 
-  // Restore API-safe [[sub:content]] and [[sup:content]] placeholders to CNXML.
-  // These bracket placeholders survive the Málstaður API (like [[MATH:N]]).
-  // Handle nested emphasis markers {{i}}text{{/i}} inside the content.
-  result = result.replace(/\[\[sub:([^\]]+)\]\]/g, (match, content) => {
-    const inner = content
-      .replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>')
-      .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
-    return `<sub>${inner}</sub>`;
-  });
-  result = result.replace(/\[\[sup:([^\]]+)\]\]/g, (match, content) => {
-    const inner = content
-      .replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>')
-      .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
-    return `<sup>${inner}</sup>`;
-  });
+  // ── Bracket markers: innermost-first resolution ───────────────────
+  // Nested bracket markers like [[sup:[[i:x]]−1]] and [[i:[[sub:p]]]]
+  // require processing from the inside out. Each iteration converts
+  // leaf-level markers (content with no [ or ] chars). After conversion,
+  // outer markers become leaf-level for the next iteration.
+  // Typically resolves in 1-2 iterations (max nesting depth + 1).
+  let bracketChanged = true;
+  while (bracketChanged) {
+    const before = result;
 
-  // Restore API-safe [[i:text]] and [[b:text]] bracket emphasis markers to CNXML.
-  // These match the proven [[sup:]]/[[sub:]] pattern. Must come BEFORE {{i}}/{{b}}
-  // because [[i:]] content might contain nested {{i}} from older extraction formats.
-  result = result.replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>');
-  result = result.replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>');
+    // Leaf-level emphasis: [[i:text]] and [[b:text]] where text has no brackets
+    result = result.replace(/\[\[i:([^\[\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>');
+    result = result.replace(/\[\[b:([^\[\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>');
+
+    // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no brackets.
+    // Inner legacy {{i}}/{{b}} handled for backward compat with older segments.
+    result = result.replace(/\[\[sub:([^\[\]]+)\]\]/g, (match, content) => {
+      const inner = content
+        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+      return `<sub>${inner}</sub>`;
+    });
+    result = result.replace(/\[\[sup:([^\[\]]+)\]\]/g, (match, content) => {
+      const inner = content
+        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+      return `<sup>${inner}</sup>`;
+    });
+
+    bracketChanged = result !== before;
+  }
 
   // Restore API-safe {{i}}text{{/i}} and {{b}}text{{/b}} emphasis markers to CNXML.
   // Legacy paired marker format — kept for backward compatibility.
+  // (Runs after bracket loop since bracket content may contain legacy markers)
   result = result.replace(
     /\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g,
     '<emphasis effect="bold">$1</emphasis>'
