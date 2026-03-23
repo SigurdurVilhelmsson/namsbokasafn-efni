@@ -1647,7 +1647,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'example':
       return buildExampleDom(element, getSeg, equations, originalCnxml);
     case 'exercise':
-      return buildExercise(element, getSeg, equations, originalCnxml);
+      return buildExerciseDom(element, getSeg, equations, originalCnxml);
     case 'note':
       return buildNote(element, getSeg, equations, originalCnxml, ctx);
     case 'equation':
@@ -2367,6 +2367,82 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
 }
 
 /**
+ * DOM-based shadow of buildExercise.
+ * Same signature, same behavior, but uses DOM manipulation instead of regex.
+ */
+function buildExerciseDom(element, getSeg, equations, originalCnxml) {
+  if (!element.id) return null;
+
+  const exercisePattern = new RegExp(
+    `<exercise\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/exercise>`,
+    'g'
+  );
+  const match = exercisePattern.exec(originalCnxml);
+  if (!match) return null;
+
+  const { doc } = parseCnxmlFragment(match[0]);
+  const exerciseEl = doc.getElementById(element.id);
+  if (!exerciseEl) return match[0];
+
+  // Process problem and solution content via DOM
+  const replacedParaIds = new Set();
+
+  function processContent(contentArray) {
+    for (const child of contentArray || []) {
+      if (child.type === 'para' && child.id && child.segmentId) {
+        const paraEl = doc.getElementById(child.id);
+        if (!paraEl) continue;
+
+        const paraText = getSeg(child.segmentId);
+        if (!paraText) continue;
+
+        // Embedded list detection (same heuristic as buildExampleDom):
+        // if para text has expanded math and a sibling list is inside, remove list
+        const paraHasExpandedContent = /<m:math/.test(paraText);
+        if (paraHasExpandedContent) {
+          for (const sibling of contentArray) {
+            if (sibling !== child && sibling.type === 'list' && sibling.id) {
+              const siblingEl = doc.getElementById(sibling.id);
+              if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
+                siblingEl.parentNode.removeChild(siblingEl);
+              }
+            }
+          }
+        }
+
+        replaceParaContentDom(doc, paraEl, paraText, '');
+        replacedParaIds.add(child.id);
+      }
+
+      if (child.type === 'list' && child.id) {
+        const listEl = doc.getElementById(child.id);
+        if (listEl && child.items) {
+          const listHasReplacedParas = [...replacedParaIds].some((paraId) => {
+            const pEl = doc.getElementById(paraId);
+            return pEl && isDescendantOf(pEl, listEl);
+          });
+          if (!listHasReplacedParas) {
+            replaceListItemsDom(doc, listEl, child.items, getSeg);
+          }
+        }
+      }
+    }
+  }
+
+  if (element.problem) processContent(element.problem.content);
+  if (element.solution) processContent(element.solution.content);
+
+  // Strip figures and tables (built by section-level builders)
+  removeElementsByTag(exerciseEl, ['figure', 'table']);
+
+  let result = serializeCnxmlFragment(exerciseEl);
+  result = deduplicateMedia(result);
+  result = deduplicateElementsById(result, 'equation');
+
+  return result;
+}
+
+/**
  * Build a note element.
  */
 function buildNote(element, getSeg, equations, originalCnxml, ctx) {
@@ -3001,5 +3077,6 @@ export {
   buildExample,
   buildExampleDom,
   buildExercise,
+  buildExerciseDom,
   buildNote,
 };
