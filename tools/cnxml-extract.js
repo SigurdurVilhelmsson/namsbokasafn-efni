@@ -1057,7 +1057,11 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
   const rows = extractNestedElements(table.content, 'row');
   for (const row of rows) {
     const rowStructure = { cells: [] };
-    const entries = extractElements(row.content, 'entry');
+    // Expand self-closing <entry.../> so extractElements matches all entries.
+    // Without this, [^>]* in the regex consumes the / from />, merging
+    // two entries into one match and misaligning cell indices.
+    const expandedRow = row.content.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
+    const entries = extractElements(expandedRow, 'entry');
     for (const entry of entries) {
       // Check for multi-para cells (entries containing multiple <para> elements)
       const cellParas = extractElements(entry.content, 'para');
