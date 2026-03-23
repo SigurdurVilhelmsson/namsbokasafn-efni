@@ -587,3 +587,49 @@ describe('reverseInlineMarkup hybrid {{i:text}} markers', () => {
     expect(result).toContain('<emphasis effect="italics">ef jafnvægiskerfi er raskað');
   });
 });
+
+// ─── Bracket markers with literal brackets in content ─────────────
+
+describe('reverseInlineMarkup literal brackets in content', () => {
+  const emptyEq = {};
+
+  it('should handle [[i:text]] preceded by literal [ — chemistry [[[i:v]], m/s]', () => {
+    const result = reverseInlineMarkup('[[[i:v]], m/s]', emptyEq);
+    expect(result).toContain('<emphasis effect="italics">v</emphasis>');
+    expect(result).toContain('['); // literal brackets preserved
+  });
+
+  it('should handle emphasis with [NO] concentration notation inside', () => {
+    const input = '[[i:determine from data where [NO] changes]]';
+    const result = reverseInlineMarkup(input, emptyEq);
+    expect(result).toContain(
+      '<emphasis effect="italics">determine from data where [NO] changes</emphasis>'
+    );
+    expect(result).not.toContain('[[i:');
+  });
+
+  it('should handle emphasis with [O<sub>3</sub>] after sub conversion', () => {
+    // After the loop converts [[sub:3]] to <sub>3</sub>, the content has [O<sub>3</sub>]
+    // Simulate the post-sub-conversion state:
+    const input = '[[i:data where [O<sub>3</sub>] is constant]]';
+    const result = reverseInlineMarkup(input, emptyEq);
+    expect(result).toContain(
+      '<emphasis effect="italics">data where [O<sub>3</sub>] is constant</emphasis>'
+    );
+  });
+
+  it('should still handle nested markers correctly after the fix', () => {
+    const result = reverseInlineMarkup('σ[[i:[[sub:s]]]]', emptyEq);
+    expect(result).toContain('<emphasis effect="italics"><sub>s</sub></emphasis>');
+  });
+
+  it('should handle the full m68789 pattern: emphasis with [NO] and nested [[sub:]]', () => {
+    const input = '[[i:determine m from data where [NO] changes and [O[[sub:3]]] is constant.]]';
+    const result = reverseInlineMarkup(input, emptyEq);
+    expect(result).toContain('<emphasis effect="italics">');
+    expect(result).toContain('[NO]');
+    expect(result).toContain('[O<sub>3</sub>]');
+    expect(result).not.toContain('[[i:');
+    expect(result).not.toContain('[[sub:');
+  });
+});
