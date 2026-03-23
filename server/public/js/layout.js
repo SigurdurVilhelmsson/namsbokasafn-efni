@@ -30,7 +30,7 @@
 <aside class="sidebar" id="app-sidebar" aria-label="Aðalvalmynd">
   <div class="sidebar-logo">
     <h1>Námsbókasafn</h1>
-    <div class="logo-sub" style="font-size:var(--text-xs);color:var(--text-muted);margin-top:2px">Þýðingaverkflæði</div>
+    <div class="logo-sub" style="font-size:var(--text-xs);color:var(--text-muted);margin-top:2px">Ritstjórnarumhverfi</div>
   </div>
   <nav class="sidebar-nav" aria-label="Flakk">
     <!-- Primary section — daily work tools -->
