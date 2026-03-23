@@ -2223,13 +2223,16 @@ function buildExampleDom(element, getSeg, equations, originalCnxml) {
       // into the para text). Detected by: para text contains expanded math
       // AND a sibling list is a DOM child of this para.
       const paraHasExpandedContent = paraText && /<m:math/.test(paraText);
+      let skipParaText = false;
       if (paraHasExpandedContent) {
         for (const sibling of element.content || []) {
           if (sibling !== child && sibling.type === 'list' && sibling.id) {
             const siblingEl = doc.getElementById(sibling.id);
             if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
-              // Remove the list — its content is in the para segment
-              siblingEl.parentNode.removeChild(siblingEl);
+              // The extraction flattened the nested list into the para segment.
+              // Preserve the list for the list handler — only inject the title.
+              skipParaText = true;
+              break;
             }
           }
         }
@@ -2243,7 +2246,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml) {
       }
 
       const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
-      replaceParaContentDom(doc, paraEl, paraText, titleCnxml);
+      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, titleCnxml);
       replacedParaIds.add(child.id);
       isFirstPara = false;
     }

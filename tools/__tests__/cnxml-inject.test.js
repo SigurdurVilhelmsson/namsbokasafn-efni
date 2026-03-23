@@ -5,6 +5,7 @@ import {
   restoreMathMarkers,
   restoreMathBySeparators,
   buildCnxml,
+  buildExampleDom,
 } from '../cnxml-inject.js';
 
 // ─── parseSegments ────────────────────────────────────────────────
@@ -690,5 +691,84 @@ describe('table injection: self-closing entry expansion', () => {
     const expanded = rowContent.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
     // No self-closing entries: should be unchanged
     expect(expanded).toBe(rowContent);
+  });
+});
+
+// ─── Nested list preservation in buildExampleDom ──────────────────
+
+describe('buildExampleDom nested list in para', () => {
+  // Regression test for m68739 where a <para> directly containing a <list>
+  // was destroyed. The extraction flattens para+list into one segment; when
+  // that segment contains expanded math the old code REMOVED the nested list
+  // from the DOM and injected the entire flat text, losing 5 items and 1 list.
+  //
+  // The fix: detect the nested list, set skipParaText=true, and let the list
+  // handler process its items normally.
+
+  it('should preserve nested list when para contains math in translated segment', () => {
+    const element = {
+      type: 'example',
+      id: 'ex-nested',
+      title: { segmentId: 'm00001:example-title:ex-nested-title', text: 'Example' },
+      content: [
+        {
+          type: 'para',
+          id: 'para-solution',
+          segmentId: 'm00001:para:para-solution',
+          title: { segmentId: 'm00001:para-title:para-solution-title', text: 'Solution' },
+        },
+        {
+          type: 'list',
+          id: 'list-nested',
+          listType: 'enumerated',
+          items: [
+            { id: 'item-a', segmentId: 'm00001:item:item-a' },
+            { id: 'item-b', segmentId: 'm00001:item:item-b' },
+          ],
+        },
+      ],
+    };
+
+    const segments = new Map([
+      ['m00001:example-title:ex-nested-title', 'Dæmi'],
+      [
+        'm00001:para:para-solution',
+        // Translated segment contains math (expanded content) — this is what
+        // triggers the "paraHasExpandedContent" branch
+        'Lausn með <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mn>42</m:mn></m:math>',
+      ],
+      ['m00001:para-title:para-solution-title', 'Lausn'],
+      ['m00001:item:item-a', 'Liður (a)'],
+      ['m00001:item:item-b', 'Liður (b)'],
+    ]);
+
+    const getSeg = (id) => segments.get(id) ?? '';
+
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<example id="ex-nested">
+<para id="para-solution">
+<title>Solution</title>
+<list id="list-nested" list-type="enumerated">
+<item id="item-a">Item A original text</item>
+<item id="item-b">Item B original text</item>
+</list>
+</para>
+</example>
+</content>
+</document>`;
+
+    const result = buildExampleDom(element, getSeg, {}, originalCnxml);
+
+    // The list must survive — not be destroyed
+    expect(result).toContain('<list id="list-nested"');
+    // The translated list items must appear
+    expect(result).toContain('Liður (a)');
+    expect(result).toContain('Liður (b)');
+    // The original English item text must NOT appear (items were replaced)
+    expect(result).not.toContain('Item A original text');
+    expect(result).not.toContain('Item B original text');
   });
 });
