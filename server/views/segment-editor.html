@@ -1042,6 +1042,37 @@
     .seg-save-ind.dirty { color: var(--warning); }
     .seg-save-ind.saving { color: var(--accent); }
     .seg-save-ind.saved { color: var(--success); }
+
+    /* --- Module progress bar --- */
+    .module-progress {
+      margin-bottom: var(--spacing-md);
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .module-progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.375rem;
+    }
+
+    .module-progress-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .module-progress .progress-bar {
+      height: 0.375rem;
+    }
+
+    /* --- Status filter hidden rows --- */
+    .segment-row.filter-hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -1137,6 +1168,16 @@
         </div>
         <div class="stats-bar" id="stats-bar"></div>
 
+        <!-- Progress bar -->
+        <div class="module-progress" id="module-progress" style="display:none;">
+          <div class="module-progress-info">
+            <span class="module-progress-text" id="module-progress-text"></span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" id="module-progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
         <div class="filter-bar">
           <label>Sýna:</label>
           <select id="filter-type">
@@ -1146,6 +1187,15 @@
             <option value="term-issues">Hugtakavandamál</option>
             <option value="title">Titlar</option>
             <option value="para">Málsgreinar</option>
+          </select>
+          <label>Staða:</label>
+          <select id="filter-status">
+            <option value="all">Allir</option>
+            <option value="unedited">Óbreyttir</option>
+            <option value="pending">Breytt</option>
+            <option value="approved">Samþykkt</option>
+            <option value="rejected">Hafnað</option>
+            <option value="discuss">Í umræðu</option>
           </select>
           <label>Flokkur:</label>
           <select id="filter-category">

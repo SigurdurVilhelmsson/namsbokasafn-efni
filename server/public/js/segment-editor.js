@@ -334,7 +334,43 @@ function renderModule() {
   }
 
   renderStats();
+  renderProgress();
   renderSegments();
+}
+
+function renderProgress() {
+  const progressEl = document.getElementById('module-progress');
+  const textEl = document.getElementById('module-progress-text');
+  const fillEl = document.getElementById('module-progress-fill');
+  if (!progressEl || !moduleData) return;
+
+  const total = moduleData.segmentCount || moduleData.segments?.length || 0;
+  if (total === 0) {
+    progressEl.style.display = 'none';
+    return;
+  }
+
+  // Count segments that have at least one edit (any status)
+  let editedCount = 0;
+  for (const seg of moduleData.segments) {
+    const edits = moduleData.edits[seg.segmentId] || [];
+    if (edits.length > 0) {
+      editedCount++;
+    }
+  }
+
+  const pct = Math.round((editedCount / total) * 100);
+  textEl.textContent = UI.segmentEditor.progress(editedCount, total);
+  fillEl.style.width = pct + '%';
+
+  // Color the bar based on completion
+  if (pct === 100) {
+    fillEl.style.background = 'var(--success)';
+  } else if (pct > 0) {
+    fillEl.style.background = 'var(--accent)';
+  }
+
+  progressEl.style.display = 'block';
 }
 
 function renderStats() {
@@ -389,10 +425,11 @@ function renderSegments() {
   const tbody = document.getElementById('segments-body');
   const filterType = document.getElementById('filter-type').value;
   const filterCat = document.getElementById('filter-category').value;
+  const filterStatus = document.getElementById('filter-status').value;
 
   let segments = moduleData.segments;
 
-  // Apply filters
+  // Apply type filters
   if (filterType === 'edited') {
     segments = segments.filter((s) => moduleData.edits[s.segmentId]?.length > 0);
   } else if (filterType === 'pending') {
@@ -413,6 +450,18 @@ function renderSegments() {
     segments = segments.filter((s) => {
       const edits = moduleData.edits[s.segmentId] || [];
       return edits.some((e) => e.category === filterCat);
+    });
+  }
+
+  // Apply status filter
+  if (filterStatus !== 'all') {
+    segments = segments.filter((s) => {
+      const edits = moduleData.edits[s.segmentId] || [];
+      const latestEdit = edits[0];
+      if (filterStatus === 'unedited') {
+        return !latestEdit;
+      }
+      return latestEdit && latestEdit.status === filterStatus;
     });
   }
 
@@ -960,6 +1009,7 @@ document.getElementById('btn-back').addEventListener('click', () => {
 // ================================================================
 document.getElementById('filter-type').addEventListener('change', renderSegments);
 document.getElementById('filter-category').addEventListener('change', renderSegments);
+document.getElementById('filter-status').addEventListener('change', renderSegments);
 
 // ================================================================
 // HELPERS
@@ -1696,7 +1746,7 @@ function wrapSelection(textareaId, prefix, suffix) {
 // KEYBOARD SHORTCUTS
 // ================================================================
 document.addEventListener('keydown', (e) => {
-  // Escape to close active edit panel (with unsaved-edit guard)
+  // Escape: revert unsaved changes in focused textarea, or close panel
   if (e.key === 'Escape') {
     // O5: Close term lookup results if visible
     const termResults = document.getElementById('term-lookup-results');
@@ -1704,6 +1754,45 @@ document.addEventListener('keydown', (e) => {
       termResults.classList.remove('active');
       return;
     }
+
+    // If focused in an edit textarea, revert its content to last saved state
+    const focused = document.activeElement;
+    if (
+      focused &&
+      focused.tagName === 'TEXTAREA' &&
+      focused.id?.startsWith('textarea-') &&
+      focused._segmentId
+    ) {
+      const segId = focused._segmentId;
+      if (dirtyEdits.has(segId) && moduleData) {
+        const seg = moduleData.segments.find((s) => s.segmentId === segId);
+        if (seg) {
+          const latestEdit = moduleData.edits[segId]?.[0];
+          const hasActiveEdit =
+            latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
+          focused.value = hasActiveEdit ? latestEdit.edited_content : seg.is;
+          dirtyEdits.delete(segId);
+          // Update per-segment indicator
+          const ind = document.getElementById('seg-ind-' + cssId(segId));
+          if (ind) {
+            ind.textContent = UI.segmentEditor.reverted;
+            ind.className = 'seg-save-ind saved';
+            setTimeout(() => {
+              ind.textContent = '';
+              ind.className = 'seg-save-ind';
+            }, 2000);
+          }
+          // Update preview
+          const previewEl = document.getElementById('preview-' + cssId(segId));
+          if (previewEl) previewEl.innerHTML = renderMarkdownPreview(focused.value);
+          updateSaveStatusBar();
+          e.preventDefault();
+          return;
+        }
+      }
+    }
+
+    // Otherwise close the active edit panel (existing behavior)
     const activePanel = document.querySelector('.edit-panel.active');
     if (activePanel) {
       const textarea = activePanel.querySelector('textarea');
@@ -1716,8 +1805,39 @@ document.addEventListener('keydown', (e) => {
       const row = activePanel.closest('tr');
       if (row) row.classList.remove('editing');
       if (segId) {
+        // Restore original text when closing
+        if (moduleData) {
+          const seg = moduleData.segments.find((s) => s.segmentId === segId);
+          if (seg && textarea) {
+            const latestEdit = moduleData.edits[segId]?.[0];
+            textarea.value = latestEdit ? latestEdit.edited_content : seg.is;
+          }
+        }
         dirtyEdits.delete(segId);
         updateSaveStatusBar();
+      }
+    }
+  }
+
+  // Ctrl+S to save the current segment (prevent browser save dialog)
+  if (e.key === 's' && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    const focused = document.activeElement;
+    if (
+      focused &&
+      focused.tagName === 'TEXTAREA' &&
+      focused.id?.startsWith('textarea-') &&
+      focused._segmentId
+    ) {
+      saveEdit(focused._segmentId);
+    } else {
+      // If not focused on a textarea, find the single active edit panel
+      const activePanel = document.querySelector('.edit-panel.active');
+      if (activePanel) {
+        const textarea = activePanel.querySelector('textarea');
+        if (textarea?._segmentId) {
+          saveEdit(textarea._segmentId);
+        }
       }
     }
   }

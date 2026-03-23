@@ -159,6 +159,17 @@ const UI = {
     noEnglish: 'Engin enska',
     sentForReview: 'Sent til yfirlestrar!',
     viewReview: 'Skoða yfirlestur →',
+    progress: function (edited, total) {
+      return edited + '/' + total + ' bútar breytt';
+    },
+    filterStatus: 'Staða:',
+    filterStatusAll: 'Allir',
+    filterStatusUnedited: 'Óbreyttir',
+    filterStatusEdited: 'Breytt',
+    filterStatusApproved: 'Samþykkt',
+    filterStatusRejected: 'Hafnað',
+    filterStatusDiscuss: 'Í umræðu',
+    reverted: 'Afturkallað',
   },
 
   // ── Localization editor specific ────────────────────────────
