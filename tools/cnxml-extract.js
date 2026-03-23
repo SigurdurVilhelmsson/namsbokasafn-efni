@@ -1480,8 +1480,14 @@ function processList(
         children,
       });
     } else {
+      // Check if item content is a single <para> wrapper — if so, record it so
+      // the injector can preserve the <para> element around the translated text.
+      const paraWrapMatch = item.content.trim().match(/^(<para[^>]*>)([\s\S]*?)<\/para>\s*$/);
+      const innerContent = paraWrapMatch ? paraWrapMatch[2] : item.content;
+      const paraOpenTag = paraWrapMatch ? paraWrapMatch[1] : null;
+
       const text = extractInlineText(
-        item.content,
+        innerContent,
         mathMap,
         counters,
         inlineMediaMap,
@@ -1489,10 +1495,16 @@ function processList(
       );
       if (text) {
         const itemId = addSegment('item', text, item.id || `${list.id}-item-${i + 1}`);
-        listStructure.items.push({
+        const itemEntry = {
           id: item.id,
           segmentId: itemId,
-        });
+        };
+        if (paraOpenTag) {
+          // Extract the para's id attribute so the injector can reproduce the element
+          const paraIdMatch = paraOpenTag.match(/id="([^"]+)"/);
+          itemEntry.wrapsPara = { openTag: paraOpenTag, id: paraIdMatch ? paraIdMatch[1] : null };
+        }
+        listStructure.items.push(itemEntry);
       }
     }
   }

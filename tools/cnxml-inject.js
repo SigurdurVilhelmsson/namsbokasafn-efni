@@ -1962,6 +1962,16 @@ function replaceListItems(cnxml, listElement, getSeg) {
         const translatedText = getSeg(item.segmentId);
         if (translatedText) {
           const itemIdAttr = item.id ? ` id="${item.id}"` : '';
+          // If the original item wraps content in a <para>, preserve that wrapper.
+          // (paras inside list items are extracted as item segments, not standalone
+          // para segments, but the <para> element must remain in the CNXML.)
+          const paraWrapMatch = originalItem.match(
+            /^<item[^>]*>\s*(<para[^>]*>)[\s\S]*?<\/para>\s*<\/item>$/
+          );
+          if (paraWrapMatch) {
+            const paraOpenTag = paraWrapMatch[1];
+            return `<item${itemIdAttr}>${paraOpenTag}${translatedText}</para></item>`;
+          }
           return `<item${itemIdAttr}>${translatedText}</item>`;
         }
       }
@@ -2767,7 +2777,12 @@ function buildList(element, getSeg) {
       }
       lines.push('</item>');
     } else if (itemText) {
-      lines.push(`<item${itemIdAttr}>${itemText}</item>`);
+      if (item.wrapsPara) {
+        // Original item content was wrapped in a <para> — preserve that element
+        lines.push(`<item${itemIdAttr}>${item.wrapsPara.openTag}${itemText}</para></item>`);
+      } else {
+        lines.push(`<item${itemIdAttr}>${itemText}</item>`);
+      }
     }
   }
 
