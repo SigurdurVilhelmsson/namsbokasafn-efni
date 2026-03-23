@@ -455,6 +455,128 @@
     .save-indicator.saved { color: var(--success); }
     .save-indicator.error { color: var(--error); }
 
+    /* --- Localization progress indicator (5A) --- */
+    .loc-progress-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+      display: none;
+    }
+    .loc-progress-card.visible { display: block; }
+    .loc-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-sm);
+    }
+    .loc-progress-label {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .loc-progress-count {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    .loc-progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .loc-progress-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      transition: width 0.3s;
+    }
+
+    /* --- Segment category badge (5B) --- */
+    .seg-category-badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.625rem;
+      font-weight: 500;
+      margin-top: 0.25rem;
+      white-space: nowrap;
+    }
+    .seg-category-badge.unit-conversion { background: var(--accent-subtle); color: var(--accent); }
+    .seg-category-badge.cultural-adaptation { background: var(--warning-subtle); color: var(--warning); }
+    .seg-category-badge.example-replacement { background: var(--bg-elevated); color: var(--text-secondary); }
+    .seg-category-badge.formatting { background: var(--success-subtle, rgba(16, 185, 129, 0.08)); color: var(--success); }
+
+    /* --- Guidelines panel (5C) --- */
+    .guidelines-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-lg);
+      overflow: hidden;
+    }
+    .guidelines-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--bg-elevated);
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: background var(--transition-fast);
+    }
+    .guidelines-header:hover { background: var(--bg-hover); }
+    .guidelines-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .guidelines-toggle {
+      font-size: 0.625rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+    .guidelines-panel.collapsed .guidelines-toggle {
+      transform: rotate(-90deg);
+    }
+    .guidelines-body {
+      padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+      border-top: 1px solid var(--border);
+    }
+    .guidelines-panel.collapsed .guidelines-body {
+      display: none;
+    }
+    .guidelines-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .guidelines-list li {
+      padding: 0.4rem 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .guidelines-list li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+    }
+
     .math-placeholder {
       display: inline;
       padding: 0.1rem 0.3rem;
@@ -1014,6 +1136,25 @@
          ================================================================ -->
     <div class="view-panel active" id="view-editor">
 
+      <!-- Guidelines Panel (5C) -->
+      <div class="guidelines-panel collapsed" id="guidelines-panel">
+        <button class="guidelines-header" onclick="edToggleGuidelines()">
+          <span class="guidelines-header-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            Lei&#240;beiningar
+          </span>
+          <span class="guidelines-toggle">&#9660;</span>
+        </button>
+        <div class="guidelines-body">
+          <ul class="guidelines-list">
+            <li>Breyta einingum &#250;r imperial &#237; SI</li>
+            <li>Sta&#240;f&#230;ra d&#230;mi fyrir &#237;slenskan veruleika</li>
+            <li>Var&#240;veita fr&#230;&#240;ilega n&#225;kv&#230;mni</li>
+            <li>Nota sam&#254;ykkt hugt&#246;k &#250;r or&#240;asafni</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Module Selector -->
       <div class="module-selector-card" id="module-selector">
         <h2>Velja einingu til sta&#240;f&#230;rslu (Pass 2)</h2>
@@ -1035,6 +1176,16 @@
         </div>
         <div id="modules-list" style="display: none;">
           <h3 style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:600;margin-bottom:var(--spacing-sm)">Einingar &#237; kafla:</h3>
+          <!-- Localization Progress (5A) -->
+          <div class="loc-progress-card" id="loc-progress-card">
+            <div class="loc-progress-header">
+              <span class="loc-progress-label">Sta&#240;f&#230;rsla kafla</span>
+              <span class="loc-progress-count" id="loc-progress-count"></span>
+            </div>
+            <div class="loc-progress-bar">
+              <div class="loc-progress-bar-fill" id="loc-progress-fill" style="width:0%"></div>
+            </div>
+          </div>
           <div id="modules-container"></div>
         </div>
       </div>

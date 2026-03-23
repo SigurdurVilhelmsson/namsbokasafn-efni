@@ -54,6 +54,40 @@ var ED_AUTOSAVE_MS = 60000;
 
 const ED_API_BASE = '/api/localization-editor';
 
+// Track latest category per segment from edit history (5B)
+let edSegmentCategories = {};
+
+// ----------------------------------------------------------------
+// GUIDELINES PANEL (5C)
+// ----------------------------------------------------------------
+
+function edToggleGuidelines() {
+  var panel = document.getElementById('guidelines-panel');
+  var isCollapsed = panel.classList.contains('collapsed');
+  panel.classList.toggle('collapsed', !isCollapsed);
+  try {
+    localStorage.setItem('loc-guidelines-collapsed', isCollapsed ? 'false' : 'true');
+  } catch (e) {
+    /* localStorage may be unavailable */
+  }
+}
+
+function edRestoreGuidelinesState() {
+  try {
+    var collapsed = localStorage.getItem('loc-guidelines-collapsed');
+    var panel = document.getElementById('guidelines-panel');
+    if (collapsed === 'false') {
+      panel.classList.remove('collapsed');
+    } else {
+      panel.classList.add('collapsed');
+    }
+  } catch (e) {
+    /* localStorage may be unavailable */
+  }
+}
+
+edRestoreGuidelinesState();
+
 // ----------------------------------------------------------------
 // SAVE STATUS BAR
 // ----------------------------------------------------------------
@@ -333,7 +367,26 @@ edChapterSelect.addEventListener('change', async function () {
 
     if (!data.modules || data.modules.length === 0) {
       container.innerHTML = '<p class="placeholder-text">' + UI.common.noModulesFound + '</p>';
+      document.getElementById('loc-progress-card').classList.remove('visible');
       return;
+    }
+
+    // 5A: Compute and show chapter-level localization progress
+    var totalModules = data.modules.filter(function (m) {
+      return m.hasFaithful;
+    }).length;
+    var localizedModules = data.modules.filter(function (m) {
+      return m.hasLocalized;
+    }).length;
+    var progressCard = document.getElementById('loc-progress-card');
+    if (totalModules > 0) {
+      var pct = Math.round((localizedModules / totalModules) * 100);
+      document.getElementById('loc-progress-count').textContent =
+        localizedModules + '/' + totalModules + ' hlutir sta\u00F0f\u00E6r\u00F0ir (' + pct + '%)';
+      document.getElementById('loc-progress-fill').style.width = pct + '%';
+      progressCard.classList.add('visible');
+    } else {
+      progressCard.classList.remove('visible');
     }
 
     container.innerHTML = data.modules
@@ -403,6 +456,33 @@ async function edLoadModule(moduleId) {
 
     // Track file version for conflict detection
     edLastModified = edModuleData.lastModified || null;
+
+    // 5B: Load edit history to get latest category per segment
+    edSegmentCategories = {};
+    try {
+      var histData = await fetchJson(
+        ED_API_BASE +
+          '/' +
+          edCurrentBook +
+          '/' +
+          edCurrentChapter +
+          '/' +
+          moduleId +
+          '/history?limit=200',
+        { credentials: 'include' }
+      );
+      if (histData.history && histData.history.length > 0) {
+        // History is ordered by created_at DESC; first occurrence per segment is the latest
+        for (var hi = 0; hi < histData.history.length; hi++) {
+          var entry = histData.history[hi];
+          if (entry.category && !edSegmentCategories[entry.segment_id]) {
+            edSegmentCategories[entry.segment_id] = entry.category;
+          }
+        }
+      }
+    } catch (e) {
+      // Non-critical — continue without category badges
+    }
 
     // Claim module for cross-tab conflict detection
     tabGuard.claim('loc:' + edCurrentBook + '/' + edCurrentChapter + '/' + moduleId);
@@ -597,6 +677,7 @@ function edRenderSegmentRow(seg) {
     '">' +
     (seg.hasLocalized && !pending ? 'Vista\u00F0' : '') +
     '</span>' +
+    edRenderCategoryBadge(seg.segmentId) +
     '</td>' +
     '<td class="col-actions" style="position:relative">' +
     '<button class="btn-save-seg" onclick="edSaveSingleSegment(\'' +
@@ -1133,6 +1214,27 @@ function edRenderMarkdownPreview(text) {
 
 function edCssId(segmentId) {
   return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
+}
+
+// 5B: Category badge labels (Icelandic)
+var edCategoryLabels = {
+  'unit-conversion': 'Einingabreyting',
+  'cultural-adaptation': 'Menningarlegt',
+  'example-replacement': 'D\u00E6maskipti',
+  formatting: 'Sni\u00F0',
+};
+
+/**
+ * Render a small category badge for a segment if it has been localized with a category.
+ * Uses edSegmentCategories lookup (populated from edit history on module load).
+ */
+function edRenderCategoryBadge(segmentId) {
+  var category = edSegmentCategories[segmentId];
+  if (!category) return '';
+  var label = edCategoryLabels[category] || category;
+  return (
+    '<span class="seg-category-badge ' + escapeHtml(category) + '">' + escapeHtml(label) + '</span>'
+  );
 }
 
 // ----------------------------------------------------------------
