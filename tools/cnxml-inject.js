@@ -1645,7 +1645,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'table':
       return buildTable(element, getSeg, originalCnxml);
     case 'example':
-      return buildExample(element, getSeg, equations, originalCnxml);
+      return buildExampleDom(element, getSeg, equations, originalCnxml);
     case 'exercise':
       return buildExercise(element, getSeg, equations, originalCnxml);
     case 'note':
@@ -2192,6 +2192,23 @@ function buildExampleDom(element, getSeg, equations, originalCnxml) {
       }
 
       const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+
+      // Check if this para contains a sibling list whose content is already
+      // included in the para's segment (the extraction flattens nested lists
+      // into the para text). Detected by: para text contains expanded math
+      // AND a sibling list is a DOM child of this para.
+      const paraHasExpandedContent = paraText && /<m:math/.test(paraText);
+      if (paraHasExpandedContent) {
+        for (const sibling of element.content || []) {
+          if (sibling !== child && sibling.type === 'list' && sibling.id) {
+            const siblingEl = doc.getElementById(sibling.id);
+            if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
+              // Remove the list — its content is in the para segment
+              siblingEl.parentNode.removeChild(siblingEl);
+            }
+          }
+        }
+      }
 
       let titleText = '';
       if (isFirstPara && element.title?.segmentId) {

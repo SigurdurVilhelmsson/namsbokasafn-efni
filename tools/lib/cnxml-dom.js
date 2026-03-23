@@ -15,7 +15,10 @@ const MATHML_NS = 'http://www.w3.org/1998/Math/MathML';
 // Block-level CNXML elements that are preserved during para content replacement.
 // Everything else (text nodes, emphasis, sub, sup, term, link, newline, space,
 // m:math, footnote, etc.) is considered inline and gets replaced.
-const BLOCK_TAGS = new Set(['list', 'equation', 'figure', 'table', 'note', 'media']);
+// Note: 'para' is included because CNXML allows nested paras — the extraction
+// flattens them into sibling structure entries, so inner paras must be preserved
+// as block children to be processed individually.
+const BLOCK_TAGS = new Set(['list', 'equation', 'figure', 'table', 'note', 'media', 'para']);
 
 /**
  * Parse a CNXML fragment string into a DOM document.
