@@ -32,9 +32,14 @@ let BOOKS_DIR = 'books/efnafraedi-2e';
 function countTags(cnxml) {
   // Strip MathML blocks before counting — they are preserved as-is
   // and contain m:math, m:mrow, m:mo etc. that inflate counts
-  const withoutMath = cnxml.replace(/<m:math[\s\S]*?<\/m:math>/g, '<m:math/>');
+  let normalized = cnxml.replace(/<m:math[\s\S]*?<\/m:math>/g, '<m:math/>');
+  // Collapse nested emphasis of same type: <emphasis X><emphasis X> → <emphasis X>
+  // OpenStax source occasionally has redundant nesting that flattens during translation.
+  // Renders identically — not a real fidelity difference.
+  normalized = normalized.replace(/<emphasis([^>]*)><emphasis\1>/g, '<emphasis$1>');
+  normalized = normalized.replace(/<\/emphasis><\/emphasis>/g, '</emphasis>');
   const counts = new Map();
-  const matches = withoutMath.matchAll(/<([a-zA-Z][a-zA-Z0-9:]*?)[\s>/]/g);
+  const matches = normalized.matchAll(/<([a-zA-Z][a-zA-Z0-9:]*?)[\s>/]/g);
   for (const m of matches) {
     const tag = m[1];
     counts.set(tag, (counts.get(tag) || 0) + 1);
