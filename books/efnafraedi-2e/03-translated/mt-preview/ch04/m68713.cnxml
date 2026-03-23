@@ -21,7 +21,7 @@
 <example id="fs-idp48900096">
 <para id="fs-idp77269456"><title>Mól hvarfefnis sem þarf í efnahvarfi</title>Hversu mörg mól af I<sub>2</sub> þarf til að hvarfast við 0,429 mól af Al samkvæmt eftirfarandi jöfnu (sjá <link target-id="CNX_Chem_04_03_iodine"/>)?</para>
 <equation class="unnumbered" id="fs-idp147980704"><m:math><m:mrow><m:mn>2</m:mn><m:mtext>Al</m:mtext><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>AlI</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
-<!-- figure handled separately -->
+
 <para id="fs-idm34598272"><title>Lausn</title>Ef vísað er í stilltu efnajöfnuna er hlutfallaþátturinn sem tengir efnin tvö sem um ræðir <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>3 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mtext>2 mol Al</m:mtext></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>. Mólmagn joðs er leitt út með því að margfalda uppgefið mólmagn áls með þessum þætti:</para>
 <media id="fs-idp136092800" alt="This figure shows two pink rectangles. The first is labeled, “Moles of A l.” This rectangle is followed by an arrow pointing right to a second rectangle labeled, “Moles of I subscript 2.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_04_03_moleratio1_img.jpg"/>

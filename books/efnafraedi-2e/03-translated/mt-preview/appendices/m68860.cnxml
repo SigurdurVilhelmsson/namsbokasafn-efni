@@ -143,7 +143,7 @@
 <equation id="fs-idp313341712" class="unnumbered"><m:math><m:mrow><m:mtext>60</m:mtext><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>10</m:mtext></m:mrow><m:mrow><m:mtext>1</m:mtext><m:mtext>.7782</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm251201152">Almenni logrinn af tölu sem er lægri en 1 hefur neikvætt gildi. Logrinn af 0,03918 er −1,4069, eða</para>
 <equation id="fs-idp105907136" class="unnumbered"><m:math><m:mrow><m:mn>0.03918</m:mn><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>1.4069</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>1.4069</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idm300540512">Til að fá almenna logrann af tölu, notaðu <emphasis effect="italics">log</emphasis> takkann á vasareikninum þínum. Til að reikna tölu út frá logranum, taktu andhverfan logra af logranum, eða reiknaðu 10<sup><emphasis effect="italics">x</sup></emphasis> (þar sem <emphasis effect="italics">x</emphasis> er logrinn af tölunni).</para>
+<para id="fs-idm300540512">Til að fá almenna logrann af tölu, notaðu <emphasis effect="italics">log</emphasis> takkann á vasareikninum þínum. Til að reikna tölu út frá logranum, taktu andhverfan logra af logranum, eða reiknaðu 10<sup><emphasis effect="italics">x</emphasis></sup> (þar sem <emphasis effect="italics">x</emphasis> er logrinn af tölunni).</para>
 <para id="fs-idm355694432">Náttúrlegi logrinn af tölu (ln) er veldið sem þarf að hefja <emphasis effect="italics">e</emphasis> í til að fá þá tölu; <emphasis effect="italics">e</emphasis> er fastinn 2,7182818. Til dæmis er náttúrlegi logrinn af 10 jafnt og 2,303; það er,</para>
 <equation id="fs-idm16900160" class="unnumbered"><m:math><m:mrow><m:mtext>10</m:mtext><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>2</m:mtext><m:mtext>.303</m:mtext></m:mrow></m:msup><m:mo>=</m:mo><m:mtext>2</m:mtext><m:msup><m:mrow><m:mtext>.7182818</m:mtext></m:mrow><m:mrow><m:mtext>2</m:mtext><m:mtext>.303</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm315316192">Til að fá náttúrlega logrann af tölu, notaðu <emphasis effect="italics">ln</emphasis> takkann á vasareikninum þínum. Til að reikna tölu út frá náttúrlega logranum, sláðu inn náttúrlega logrann og taktu andhverfan ln af náttúrlega logranum, eða reiknaðu <emphasis effect="italics">e<sup>x</sup></emphasis> (þar sem <emphasis effect="italics">x</emphasis> er náttúrlegi logrinn af tölunni).</para>
@@ -177,7 +177,7 @@
 <para id="fs-idm78087840">Þegar gildi <emphasis effect="italics">y</emphasis> breytist sem fall af <emphasis effect="italics">x</emphasis> (það er að segja, mismunandi gildi <emphasis effect="italics">x</emphasis> samsvara mismunandi gildum <emphasis effect="italics">y</emphasis>), er hægt að teikna eða skissa graf yfir þessa breytingu. Grafið er hægt að búa til með því að nota ákveðin gildi fyrir (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gagnapör.</para>
 <example id="fs-idp9271248">
 <para id="fs-idm111716000"><title>Graphing the Dependence of <emphasis effect="italics">y</emphasis> on <emphasis effect="italics">x</emphasis></title></para>
-<!-- table handled separately -->
+
 <para id="fs-idm176114816"><title>Graf yfir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis></title>Þessi tafla inniheldur eftirfarandi punkta: (1,5), (2,10), (3,7) og (4,14). Hægt er að teikna hvern þessara punkta á graf og tengja þá saman til að búa til myndræna framsetningu á fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis>.</para>
 <media id="fs-idm174022560" class="scaled-down" alt="A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Dependence_img.jpg"/>
@@ -217,7 +217,7 @@
 <para id="fs-idm164107136">Ef fallið sem lýsir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis> er þekkt, er hægt að nota það til að reikna út x,y gagnapör sem síðan er hægt að teikna.</para>
 <example id="fs-idm173153104">
 <para id="fs-idm144872640"><title>Teikning gagnapara</title>Ef við vitum að <emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis><sup>2</sup> + 2, getum við búið til töflu með nokkrum (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gildum og síðan teiknað línuna út frá gögnunum sem sýnd eru hér.</para>
-<!-- table handled separately -->
+
 <media id="fs-idp112843584" class="scaled-down" alt="A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Function_img.jpg"/>
 </media>

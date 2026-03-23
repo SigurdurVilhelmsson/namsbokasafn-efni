@@ -104,7 +104,7 @@
 <example id="fs-idp325184">
 <para id="fs-idm52519632"><title>Varmaflæði í skyndikælipoka</title>Þegar fast ammóníumnítrat leysist upp í vatni verður lausnin köld. Þetta er grundvöllur „skyndikælipoka“ (<link target-id="CNX_Chem_05_02_IcePack"/>). Þegar 3,21 g af föstu NH<sub>4</sub>NO<sub>3</sub> leysist upp í 50,0 g af vatni við 24,9 °C í varmamæli lækkar hitastigið í 20,3 °C.</para>
 <para id="fs-idp41329920">Reiknaðu gildi <emphasis effect="italics">q</emphasis> fyrir þetta efnahvarf og útskýrðu merkingu formerkis þess. Tilgreindu allar forsendur sem þú gafst þér.</para>
-<!-- figure handled separately -->
+
 <para id="fs-idp364256"><title>Lausn</title>Við gefum okkur þá forsendu að varmamælirinn komi í veg fyrir varmaflutning milli lausnarinnar og ytra umhverfis hennar (þar með talið varmamælisins sjálfs), en í því tilfelli gildir:</para>
 <equation id="fs-idm127206368" class="unnumbered"><m:math><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rxn</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>soln</m:mtext></m:mrow></m:msub></m:math></equation>
 <para id="fs-idm76420496">þar sem „efn“ og „lsn“ eru notaðar sem styttingar fyrir „efnahvarf“ og „lausn“.</para>

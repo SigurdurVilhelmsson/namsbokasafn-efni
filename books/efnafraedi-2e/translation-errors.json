@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-23T08:50:58.403Z",
+  "generated": "2026-03-23T10:37:51.373Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
-    "perfect": 116,
-    "withDiscrepancies": 32,
+    "perfect": 115,
+    "withDiscrepancies": 33,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 81
+    "totalDiscrepancies": 78
   },
   "modules": [
     {
@@ -220,16 +220,6 @@
       ]
     },
     {
-      "moduleId": "m68799",
-      "chapter": "ch13",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": -6
-        }
-      ]
-    },
-    {
       "moduleId": "m68805",
       "chapter": "ch14",
       "discrepancies": [
@@ -245,7 +235,7 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": 1
+          "diff": -1
         }
       ]
     },
@@ -255,6 +245,10 @@
       "discrepancies": [
         {
           "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "link",
           "diff": -1
         },
         {
@@ -269,6 +263,16 @@
       "discrepancies": [
         {
           "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68823",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "link",
           "diff": -1
         }
       ]
@@ -337,6 +341,16 @@
       "discrepancies": [
         {
           "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68854",
+      "chapter": "ch21",
+      "discrepancies": [
+        {
+          "tag": "link",
           "diff": -1
         }
       ]
