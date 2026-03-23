@@ -1852,6 +1852,13 @@ function buildTable(element, getSeg, originalCnxml) {
     if (match) {
       let tableCnxml = match[0];
 
+      // Expand self-closing <entry.../> to <entry...></entry> so the
+      // replacement regex can match all entries and cellIdx stays aligned.
+      // Without this, <entry align="left"/> gets mismatched by the regex
+      // (the / becomes part of attributes), consuming the NEXT entry's
+      // </entry> and causing cell misalignment + content duplication.
+      tableCnxml = tableCnxml.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
+
       // Replace entry content with translations
       // This is simplified - a full implementation would need to match entries by position
       let rowIdx = 0;
