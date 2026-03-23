@@ -1094,3 +1094,20 @@ sett af eðlisfræðilegum skilyrðum sem eru viðurkennd sem sameiginleg viðmi
 
 <!-- SEG:m68727:glossary-def:fs-idp102396512-def -->
 eiginleiki sem fer eingöngu eftir ástandi kerfis en ekki leiðinni sem farin var til að ná því ástandi
+<!-- SEG:m68727:entry:auto-59 -->
+Stöðluð mólbrunavermi
+
+<!-- SEG:m68727:entry:auto-60 -->
+Efni
+
+<!-- SEG:m68727:entry:auto-61 -->
+Brunahvarf
+
+<!-- SEG:m68727:entry:auto-62 -->
+Brunavermi, [[MATH:8]][[MATH:9]]
+
+<!-- SEG:m68727:entry:auto-215 -->
+[[MATH:71]]
+
+<!-- SEG:m68727:entry:auto-216 -->
+[[MATH:72]]

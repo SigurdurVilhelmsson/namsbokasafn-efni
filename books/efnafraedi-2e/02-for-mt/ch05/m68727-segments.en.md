@@ -82,18 +82,6 @@ Chemists use a thermochemical equation to represent the changes in both matter a
 <!-- SEG:m68727:item:fs-idm49861360-item-3 -->
 The enthalpy change of a reaction depends on the physical states of the reactants and products, so these must be shown. For example, when 1 mole of hydrogen gas and [[MATH:5]] mole of oxygen gas change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released. If gaseous water forms, only 242 kJ of heat are released. [[MATH:4]]
 
-<!-- SEG:m68727:para:fs-idm11576944 -->
-A negative value of an enthalpy change, Δ[[i:H]] &lt; 0, indicates an exothermic reaction; a positive value, Δ[[i:H]] > 0, indicates an endothermic reaction. If the direction of a chemical equation is reversed, the arithmetic sign of its Δ[[i:H]] is changed (a process that is endothermic in one direction is exothermic in the opposite direction).
-
-<!-- SEG:m68727:para:fs-idp165042832 -->
-Chemists use a thermochemical equation to represent the changes in both matter and energy. In a thermochemical equation, the enthalpy change of a reaction is shown as a Δ[[i:H]] value following the equation for the reaction. This Δ[[i:H]] value indicates the amount of heat associated with the reaction involving the number of moles of reactants and products [[i:as shown in the chemical equation]]. For example, consider this equation:
-
-<!-- SEG:m68727:para:fs-idm35882976 -->
-This equation indicates that when 1 mole of hydrogen gas and [[MATH:6]] mole of oxygen gas at some temperature and pressure change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released to the surroundings. If the coefficients of the chemical equation are multiplied by some factor, the enthalpy change must be multiplied by that same factor (Δ[[i:H]] is an extensive property):
-
-<!-- SEG:m68727:para:fs-idm72030880 -->
-The enthalpy change of a reaction depends on the physical states of the reactants and products, so these must be shown. For example, when 1 mole of hydrogen gas and [[MATH:7]] mole of oxygen gas change to 1 mole of liquid water at the same temperature and pressure, 286 kJ of heat are released. If gaseous water forms, only 242 kJ of heat are released.
-
 <!-- SEG:m68727:example-title:fs-idm9240992-title -->
 Writing Thermochemical Equations
 
@@ -170,7 +158,7 @@ Answer:
 Δ[[i:H]] = −338 kJ
 
 <!-- SEG:m68727:para:fs-idm18196832 -->
-Enthalpy changes are typically tabulated for reactions in which both the reactants and products are at the same conditions. A {{term}}standard state{{/term}} is a commonly accepted set of conditions used as a reference point for the determination of properties under other different conditions. For chemists, the IUPAC standard state refers to materials under a pressure of 1 bar and solutions at 1 M, and does not specify a temperature. Many thermochemical tables list values with a standard state of 1 atm. Because the Δ[[i:H]] of a reaction changes very little with such small changes in pressure (1 bar = 0.987 atm), Δ[[i:H]] values (except for the most precisely measured values) are essentially the same under both sets of standard conditions. We will include a superscripted “o” in the enthalpy change symbol to designate standard state. Since the usual (but not technically standard) temperature is 298.15 K, this temperature will be assumed unless some other temperature is specified. Thus, the symbol [[MATH:8]] is used to indicate an enthalpy change for a process occurring under these conditions. (The symbol Δ[[i:H]] is used to indicate an enthalpy change for a reaction occurring under nonstandard conditions.)
+Enthalpy changes are typically tabulated for reactions in which both the reactants and products are at the same conditions. A {{term}}standard state{{/term}} is a commonly accepted set of conditions used as a reference point for the determination of properties under other different conditions. For chemists, the IUPAC standard state refers to materials under a pressure of 1 bar and solutions at 1 M, and does not specify a temperature. Many thermochemical tables list values with a standard state of 1 atm. Because the Δ[[i:H]] of a reaction changes very little with such small changes in pressure (1 bar = 0.987 atm), Δ[[i:H]] values (except for the most precisely measured values) are essentially the same under both sets of standard conditions. We will include a superscripted “o” in the enthalpy change symbol to designate standard state. Since the usual (but not technically standard) temperature is 298.15 K, this temperature will be assumed unless some other temperature is specified. Thus, the symbol [[MATH:6]] is used to indicate an enthalpy change for a process occurring under these conditions. (The symbol Δ[[i:H]] is used to indicate an enthalpy change for a reaction occurring under nonstandard conditions.)
 
 <!-- SEG:m68727:para:fs-idp148022240 -->
 The enthalpy changes for many types of chemical and physical processes are available in the reference literature, including those for combustion reactions, phase transitions, and formation reactions. As we discuss these quantities, it is important to pay attention to the [[i:extensive]] nature of enthalpy and enthalpy changes. Since the enthalpy change for a given reaction is proportional to the amounts of substances involved, it may be reported on that basis (i.e., as the Δ[[i:H]] for specific amounts of reactants). However, we often find it more useful to divide one extensive property (Δ[[i:H]]) by another (amount of substance), and report a per-amount [[i:intensive]] value of Δ[[i:H]], often “normalized” to a per-mole basis. (Note that this is similar to determining the intensive property specific heat from the extensive property heat capacity, as seen previously.)
@@ -179,111 +167,111 @@ The enthalpy changes for many types of chemical and physical processes are avail
 Standard Enthalpy of Combustion
 
 <!-- SEG:m68727:para:fs-idp8281184 -->
-{{term}}Standard enthalpy of combustion{{/term}} [[MATH:9]] is the enthalpy change when 1 mole of a substance burns (combines vigorously with oxygen) under standard state conditions; it is sometimes called “heat of combustion.” For example, the enthalpy of combustion of ethanol, −1366.8 kJ/mol, is the amount of heat produced when one mole of ethanol undergoes complete combustion at 25 °C and 1 atmosphere pressure, yielding products also at 25 °C and 1 atm.
+{{term}}Standard enthalpy of combustion{{/term}} [[MATH:7]] is the enthalpy change when 1 mole of a substance burns (combines vigorously with oxygen) under standard state conditions; it is sometimes called “heat of combustion.” For example, the enthalpy of combustion of ethanol, −1366.8 kJ/mol, is the amount of heat produced when one mole of ethanol undergoes complete combustion at 25 °C and 1 atmosphere pressure, yielding products also at 25 °C and 1 atm.
 
 <!-- SEG:m68727:para:fs-idm75327968 -->
 Enthalpies of combustion for many substances have been measured; a few of these are listed in [[xref:fs-idp98710048]]. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and {{term}}hydrocarbons{{/term}} (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
 
-<!-- SEG:m68727:entry:auto-63 -->
+<!-- SEG:m68727:entry:auto-59 -->
 Standard Molar Enthalpies of Combustion
 
-<!-- SEG:m68727:entry:auto-64 -->
+<!-- SEG:m68727:entry:auto-60 -->
 Substance
 
-<!-- SEG:m68727:entry:auto-65 -->
+<!-- SEG:m68727:entry:auto-61 -->
 Combustion Reaction
 
-<!-- SEG:m68727:entry:auto-66 -->
-Enthalpy of Combustion, [[MATH:10]][[MATH:11]]
+<!-- SEG:m68727:entry:auto-62 -->
+Enthalpy of Combustion, [[MATH:8]][[MATH:9]]
 
-<!-- SEG:m68727:entry:auto-67 -->
+<!-- SEG:m68727:entry:auto-63 -->
 carbon
 
-<!-- SEG:m68727:entry:auto-68 -->
-[[MATH:12]]
+<!-- SEG:m68727:entry:auto-64 -->
+[[MATH:10]]
 
-<!-- SEG:m68727:entry:auto-69 -->
+<!-- SEG:m68727:entry:auto-65 -->
 −393.5
 
-<!-- SEG:m68727:entry:auto-70 -->
+<!-- SEG:m68727:entry:auto-66 -->
 hydrogen
 
-<!-- SEG:m68727:entry:auto-71 -->
-[[MATH:13]]
+<!-- SEG:m68727:entry:auto-67 -->
+[[MATH:11]]
 
-<!-- SEG:m68727:entry:auto-72 -->
+<!-- SEG:m68727:entry:auto-68 -->
 −285.8
 
-<!-- SEG:m68727:entry:auto-73 -->
+<!-- SEG:m68727:entry:auto-69 -->
 magnesium
 
-<!-- SEG:m68727:entry:auto-74 -->
-[[MATH:14]]
+<!-- SEG:m68727:entry:auto-70 -->
+[[MATH:12]]
 
-<!-- SEG:m68727:entry:auto-75 -->
+<!-- SEG:m68727:entry:auto-71 -->
 −601.6
 
-<!-- SEG:m68727:entry:auto-76 -->
+<!-- SEG:m68727:entry:auto-72 -->
 sulfur
 
-<!-- SEG:m68727:entry:auto-77 -->
-[[MATH:15]]
+<!-- SEG:m68727:entry:auto-73 -->
+[[MATH:13]]
 
-<!-- SEG:m68727:entry:auto-78 -->
+<!-- SEG:m68727:entry:auto-74 -->
 −296.8
 
-<!-- SEG:m68727:entry:auto-79 -->
+<!-- SEG:m68727:entry:auto-75 -->
 carbon monoxide
 
-<!-- SEG:m68727:entry:auto-80 -->
-[[MATH:16]]
+<!-- SEG:m68727:entry:auto-76 -->
+[[MATH:14]]
 
-<!-- SEG:m68727:entry:auto-81 -->
+<!-- SEG:m68727:entry:auto-77 -->
 −283.0
 
-<!-- SEG:m68727:entry:auto-82 -->
+<!-- SEG:m68727:entry:auto-78 -->
 methane
 
-<!-- SEG:m68727:entry:auto-83 -->
-[[MATH:17]]
+<!-- SEG:m68727:entry:auto-79 -->
+[[MATH:15]]
 
-<!-- SEG:m68727:entry:auto-84 -->
+<!-- SEG:m68727:entry:auto-80 -->
 −890.8
 
-<!-- SEG:m68727:entry:auto-85 -->
+<!-- SEG:m68727:entry:auto-81 -->
 acetylene
 
-<!-- SEG:m68727:entry:auto-86 -->
-[[MATH:18]]
+<!-- SEG:m68727:entry:auto-82 -->
+[[MATH:16]]
 
-<!-- SEG:m68727:entry:auto-87 -->
+<!-- SEG:m68727:entry:auto-83 -->
 −1301.1
 
-<!-- SEG:m68727:entry:auto-88 -->
+<!-- SEG:m68727:entry:auto-84 -->
 ethanol
 
-<!-- SEG:m68727:entry:auto-89 -->
-[[MATH:19]]
+<!-- SEG:m68727:entry:auto-85 -->
+[[MATH:17]]
 
-<!-- SEG:m68727:entry:auto-90 -->
+<!-- SEG:m68727:entry:auto-86 -->
 −1366.8
 
-<!-- SEG:m68727:entry:auto-91 -->
+<!-- SEG:m68727:entry:auto-87 -->
 methanol
 
-<!-- SEG:m68727:entry:auto-92 -->
-[[MATH:20]]
+<!-- SEG:m68727:entry:auto-88 -->
+[[MATH:18]]
 
-<!-- SEG:m68727:entry:auto-93 -->
+<!-- SEG:m68727:entry:auto-89 -->
 −726.1
 
-<!-- SEG:m68727:entry:auto-94 -->
+<!-- SEG:m68727:entry:auto-90 -->
 isooctane
 
-<!-- SEG:m68727:entry:auto-95 -->
-[[MATH:21]]
+<!-- SEG:m68727:entry:auto-91 -->
+[[MATH:19]]
 
-<!-- SEG:m68727:entry:auto-96 -->
+<!-- SEG:m68727:entry:auto-92 -->
 –5465.5
 
 <!-- SEG:m68727:example-title:fs-idp90124816-title -->
@@ -314,13 +302,13 @@ Check Your Learning
 How much heat is produced by the combustion of 125 g of acetylene?
 
 <!-- SEG:m68727:para:fs-idp49734384 -->
-6.25 [[MATH:22]] 10[[sup:3]] kJ
+6.25 [[MATH:20]] 10[[sup:3]] kJ
 
 <!-- SEG:m68727:note-title:fs-idp49733872-title -->
 Answer:
 
 <!-- SEG:m68727:para:fs-idp49734384 -->
-6.25 [[MATH:23]] 10[[sup:3]] kJ
+6.25 [[MATH:21]] 10[[sup:3]] kJ
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_GasBurning-caption -->
 The combustion of gasoline is very exothermic. (credit: modification of work by “AlexEagle”/Flickr)
@@ -332,7 +320,7 @@ Emerging Algae-Based Energy Technologies (Biofuels)
 As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae ([[xref:CNX_Chem_05_03_AlgalFuel1]]). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of {{term}}biofuel{{/term}} per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.
 
 <!-- SEG:m68727:para:fs-idp157750544 -->
-According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than [[MATH:24]] of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon. {{fn}}For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.{{/fn}} The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO[[sub:2]] as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ([[xref:CNX_Chem_05_03_AlgalFuel2]]).
+According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than [[MATH:22]] of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon. {{fn}}For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.{{/fn}} The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO[[sub:2]] as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ([[xref:CNX_Chem_05_03_AlgalFuel2]]).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption -->
 (a) Tiny algal organisms can be (b) grown in large quantities and eventually (c) turned into a useful fuel such as biodiesel. (credit a: modification of work by Micah Sittig; credit b: modification of work by Robert Kerton; credit c: modification of work by John F. Williams)
@@ -347,16 +335,16 @@ Click [[link:here|http://openstax.org/l/16biofuel]] to learn more about the proc
 Standard Enthalpy of Formation
 
 <!-- SEG:m68727:para:fs-idp93922992 -->
-A {{term}}standard enthalpy of formation [[MATH:25]]{{/term}} is an enthalpy change for a reaction in which exactly 1 mole of a pure substance is formed from free elements in their most stable states under standard state conditions. These values are especially useful for computing or predicting enthalpy changes for chemical reactions that are impractical or dangerous to carry out, or for processes for which it is difficult to make measurements. If we have values for the appropriate standard enthalpies of formation, we can determine the enthalpy change for any reaction, which we will practice in the next section on Hess’s law.
+A {{term}}standard enthalpy of formation [[MATH:23]]{{/term}} is an enthalpy change for a reaction in which exactly 1 mole of a pure substance is formed from free elements in their most stable states under standard state conditions. These values are especially useful for computing or predicting enthalpy changes for chemical reactions that are impractical or dangerous to carry out, or for processes for which it is difficult to make measurements. If we have values for the appropriate standard enthalpies of formation, we can determine the enthalpy change for any reaction, which we will practice in the next section on Hess’s law.
 
 <!-- SEG:m68727:para:fs-idp185900096 -->
 The standard enthalpy of formation of CO[[sub:2]]([[i:g]]) is −393.5 kJ/mol. This is the enthalpy change for the exothermic reaction:
 
 <!-- SEG:m68727:para:fs-idp165684992 -->
-starting with the reactants at a pressure of 1 atm and 25 °C (with the carbon present as graphite, the most stable form of carbon under these conditions) and ending with one mole of CO[[sub:2]], also at 1 atm and 25 °C. For nitrogen dioxide, NO[[sub:2]]([[i:g]]), [[MATH:26]] is 33.2 kJ/mol. This is the enthalpy change for the reaction:
+starting with the reactants at a pressure of 1 atm and 25 °C (with the carbon present as graphite, the most stable form of carbon under these conditions) and ending with one mole of CO[[sub:2]], also at 1 atm and 25 °C. For nitrogen dioxide, NO[[sub:2]]([[i:g]]), [[MATH:24]] is 33.2 kJ/mol. This is the enthalpy change for the reaction:
 
 <!-- SEG:m68727:para:fs-idp173428336 -->
-A reaction equation with [[MATH:27]] mole of N[[sub:2]] and 1 mole of O[[sub:2]] is correct in this case because the standard enthalpy of formation always refers to 1 mole of product, NO[[sub:2]]([[i:g]]).
+A reaction equation with [[MATH:25]] mole of N[[sub:2]] and 1 mole of O[[sub:2]] is correct in this case because the standard enthalpy of formation always refers to 1 mole of product, NO[[sub:2]]([[i:g]]).
 
 <!-- SEG:m68727:para:fs-idp173432432 -->
 You will find a table of standard enthalpies of formation of many common substances in [[docref:Appendix G|m68865]]. These values indicate that formation reactions range from highly exothermic (such as −2984 kJ/mol for the formation of P[[sub:4]]O[[sub:10]]) to strongly endothermic (such as +226.7 kJ/mol for the formation of acetylene, C[[sub:2]]H[[sub:2]]). By definition, the standard enthalpy of formation of an element in its most stable form is equal to zero under standard conditions, which is 1 atm for gases and 1 M for solutions.
@@ -365,19 +353,19 @@ You will find a table of standard enthalpies of formation of many common substan
 Evaluating an Enthalpy of Formation
 
 <!-- SEG:m68727:para:fs-idp167759872 -->
-Ozone, O[[sub:3]]([[i:g]]), forms from oxygen, O[[sub:2]]([[i:g]]), by an endothermic process. Ultraviolet radiation is the source of the energy that drives this reaction in the upper atmosphere. Assuming that both the reactants and products of the reaction are in their standard states, determine the standard enthalpy of formation, [[MATH:28]] of ozone from the following information:
+Ozone, O[[sub:3]]([[i:g]]), forms from oxygen, O[[sub:2]]([[i:g]]), by an endothermic process. Ultraviolet radiation is the source of the energy that drives this reaction in the upper atmosphere. Assuming that both the reactants and products of the reaction are in their standard states, determine the standard enthalpy of formation, [[MATH:26]] of ozone from the following information:
 
 <!-- SEG:m68727:para-title:fs-idp166467632-title -->
 Solution
 
 <!-- SEG:m68727:para:fs-idp166467632 -->
-[[MATH:29]] is the enthalpy change for the formation of one mole of a substance in its standard state from the elements in their standard states. Thus, [[MATH:30]] for O[[sub:3]]([[i:g]]) is the enthalpy change for the reaction:
+[[MATH:27]] is the enthalpy change for the formation of one mole of a substance in its standard state from the elements in their standard states. Thus, [[MATH:28]] for O[[sub:3]]([[i:g]]) is the enthalpy change for the reaction:
 
 <!-- SEG:m68727:para:fs-idp95008768 -->
-For the formation of 2 mol of O[[sub:3]]([[i:g]]), [[MATH:31]] This ratio, [[MATH:32]] can be used as a conversion factor to find the heat produced when 1 mole of O[[sub:3]]([[i:g]]) is formed, which is the enthalpy of formation for O[[sub:3]]([[i:g]]):
+For the formation of 2 mol of O[[sub:3]]([[i:g]]), [[MATH:29]] This ratio, [[MATH:30]] can be used as a conversion factor to find the heat produced when 1 mole of O[[sub:3]]([[i:g]]) is formed, which is the enthalpy of formation for O[[sub:3]]([[i:g]]):
 
 <!-- SEG:m68727:para:fs-idp186495680 -->
-Therefore, [[MATH:33]]
+Therefore, [[MATH:31]]
 
 <!-- SEG:m68727:para-title:fs-idp167644640-title -->
 Check Your Learning
@@ -386,16 +374,16 @@ Check Your Learning
 Hydrogen gas, H[[sub:2]], reacts explosively with gaseous chlorine, Cl[[sub:2]], to form hydrogen chloride, HCl([[i:g]]). What is the enthalpy change for the reaction of 1 mole of H[[sub:2]]([[i:g]]) with 1 mole of Cl[[sub:2]]([[i:g]]) if both the reactants and products are at standard state conditions? The standard enthalpy of formation of HCl([[i:g]]) is −92.3 kJ/mol.
 
 <!-- SEG:m68727:para:fs-idp167649504 -->
-For the reaction [[MATH:34]]
+For the reaction [[MATH:32]]
 
 <!-- SEG:m68727:note-title:fs-idp167648992-title -->
 Answer:
 
 <!-- SEG:m68727:para:fs-idp167649504 -->
-For the reaction [[MATH:35]]
+For the reaction [[MATH:33]]
 
 <!-- SEG:m68727:example-title:fs-idp186597312-title -->
-Writing Reaction Equations for [[MATH:36]]
+Writing Reaction Equations for [[MATH:34]]
 
 <!-- SEG:m68727:para:fs-idp186597568 -->
 Write the heat of formation reaction equations for:
@@ -410,13 +398,13 @@ Write the heat of formation reaction equations for:
 Solution
 
 <!-- SEG:m68727:para:fs-idp186604352 -->
-Remembering that [[MATH:37]] reaction equations are for forming 1 mole of the compound from its constituent elements under standard conditions, we have:
+Remembering that [[MATH:35]] reaction equations are for forming 1 mole of the compound from its constituent elements under standard conditions, we have:
 
 <!-- SEG:m68727:para:fs-idp166486208 -->
-(a) [[MATH:38]]
+(a) [[MATH:36]]
 
 <!-- SEG:m68727:para:fs-idp145132528 -->
-(b) [[MATH:39]]
+(b) [[MATH:37]]
 
 <!-- SEG:m68727:para:fs-idp166524800 -->
 Note: The standard state of carbon is graphite, and phosphorus exists as P[[sub:4]].
@@ -434,13 +422,13 @@ Write the heat of formation reaction equations for:
 (b) Na[[sub:2]]CO[[sub:3]]([[i:s]])
 
 <!-- SEG:m68727:para:fs-idp185934944 -->
-(a) [[MATH:40]] (b) [[MATH:41]]
+(a) [[MATH:38]] (b) [[MATH:39]]
 
 <!-- SEG:m68727:note-title:fs-idp185934432-title -->
 Answer:
 
 <!-- SEG:m68727:para:fs-idp185934944 -->
-(a) [[MATH:42]] (b) [[MATH:43]]
+(a) [[MATH:40]] (b) [[MATH:41]]
 
 <!-- SEG:m68727:title:fs-idp218911984-title -->
 Hess’s Law
@@ -476,31 +464,16 @@ The formation of CO[[sub:2]]([[i:g]]) from its elements can be thought of as occ
 Before we further practice using Hess’s law, let us recall two important features of Δ[[i:H]].
 
 <!-- SEG:m68727:item:fs-idp167198464-item-1 -->
-Δ[[i:H]] is directly proportional to the quantities of reactants or products. For example, the enthalpy change for the reaction forming 1 mole of NO[[sub:2]]([[i:g]]) is +33.2 kJ: [[MATH:44]] When 2 moles of NO[[sub:2]] (twice as much) are formed, the Δ[[i:H]] will be twice as large: [[MATH:45]] In general, if we multiply or divide an equation by a number, then the enthalpy change should also be multiplied or divided by the same number.
+Δ[[i:H]] is directly proportional to the quantities of reactants or products. For example, the enthalpy change for the reaction forming 1 mole of NO[[sub:2]]([[i:g]]) is +33.2 kJ: [[MATH:42]] When 2 moles of NO[[sub:2]] (twice as much) are formed, the Δ[[i:H]] will be twice as large: [[MATH:43]] In general, if we multiply or divide an equation by a number, then the enthalpy change should also be multiplied or divided by the same number.
 
 <!-- SEG:m68727:item:fs-idp167198464-item-2 -->
-Δ[[i:H]] for a reaction in one direction is equal in magnitude and opposite in sign to Δ[[i:H]] for the reaction in the reverse direction. For example, given that: [[MATH:46]] Then, for the “reverse” reaction, the enthalpy change is also “reversed”: [[MATH:47]]
-
-<!-- SEG:m68727:para:fs-idp167199328 -->
-Δ[[i:H]] is directly proportional to the quantities of reactants or products. For example, the enthalpy change for the reaction forming 1 mole of NO[[sub:2]]([[i:g]]) is +33.2 kJ:
-
-<!-- SEG:m68727:para:fs-idp160715680 -->
-When 2 moles of NO[[sub:2]] (twice as much) are formed, the Δ[[i:H]] will be twice as large:
-
-<!-- SEG:m68727:para:fs-idp146331072 -->
-In general, if we multiply or divide an equation by a number, then the enthalpy change should also be multiplied or divided by the same number.
-
-<!-- SEG:m68727:para:fs-idp146331744 -->
-Δ[[i:H]] for a reaction in one direction is equal in magnitude and opposite in sign to Δ[[i:H]] for the reaction in the reverse direction. For example, given that:
-
-<!-- SEG:m68727:para:fs-idp146344672 -->
-Then, for the “reverse” reaction, the enthalpy change is also “reversed”:
+Δ[[i:H]] for a reaction in one direction is equal in magnitude and opposite in sign to Δ[[i:H]] for the reaction in the reverse direction. For example, given that: [[MATH:44]] Then, for the “reverse” reaction, the enthalpy change is also “reversed”: [[MATH:45]]
 
 <!-- SEG:m68727:example-title:fs-idp185548816-title -->
-Stepwise Calculation of [[MATH:48]] Using Hess’s Law
+Stepwise Calculation of [[MATH:46]] Using Hess’s Law
 
 <!-- SEG:m68727:para:fs-idp185549072 -->
-Determine the enthalpy of formation, [[MATH:49]] of FeCl[[sub:3]]([[i:s]]) from the enthalpy changes of the following two-step process that occurs under standard state conditions:
+Determine the enthalpy of formation, [[MATH:47]] of FeCl[[sub:3]]([[i:s]]) from the enthalpy changes of the following two-step process that occurs under standard state conditions:
 
 <!-- SEG:m68727:para-title:fs-idp190748768-title -->
 Solution
@@ -512,7 +485,7 @@ We are trying to find the standard enthalpy of formation of FeCl[[sub:3]]([[i:s]
 Looking at the reactions, we see that the reaction for which we want to find Δ[[i:H]]° is the sum of the two reactions with known Δ[[i:H]] values, so we must sum their Δ[[i:H]]s:
 
 <!-- SEG:m68727:para:fs-idp149506592 -->
-The enthalpy of formation, [[MATH:50]] of FeCl[[sub:3]]([[i:s]]) is −399.5 kJ/mol.
+The enthalpy of formation, [[MATH:48]] of FeCl[[sub:3]]([[i:s]]) is −399.5 kJ/mol.
 
 <!-- SEG:m68727:para-title:fs-idp149511040-title -->
 Check Your Learning
@@ -542,25 +515,25 @@ A More Challenging Problem Using Hess’s Law
 Chlorine monofluoride can react with fluorine to form chlorine trifluoride:
 
 <!-- SEG:m68727:para:fs-idp146902208 -->
-[[i:(i)]] [[MATH:51]]
+[[i:(i)]] [[MATH:49]]
 
 <!-- SEG:m68727:para:fs-idp146912304 -->
 Use the reactions here to determine the Δ[[i:H]]° for reaction [[i:(i)]]:
 
 <!-- SEG:m68727:para:fs-idp146913936 -->
-[[i:(ii)]] [[MATH:52]]
+[[i:(ii)]] [[MATH:50]]
 
 <!-- SEG:m68727:para:fs-idp107305424 -->
-[[i:(iii)]] [[MATH:53]]
+[[i:(iii)]] [[MATH:51]]
 
 <!-- SEG:m68727:para:fs-idp107323264 -->
-[[i:(iv)]] [[MATH:54]]
+[[i:(iv)]] [[MATH:52]]
 
 <!-- SEG:m68727:para-title:fs-idp167247104-title -->
 Solution
 
 <!-- SEG:m68727:para:fs-idp167247104 -->
-Our goal is to manipulate and combine reactions [[i:(ii)]], [[i:(iii)]], and [[i:(iv)]] such that they add up to reaction [[i:(i)]]. Going from left to right in [[i:(i)]], we first see that ClF([[i:g]]) is needed as a reactant. This can be obtained by multiplying reaction [[i:(iii)]] by [[MATH:55]] which means that the Δ[[i:H]]° change is also multiplied by [[MATH:56]]
+Our goal is to manipulate and combine reactions [[i:(ii)]], [[i:(iii)]], and [[i:(iv)]] such that they add up to reaction [[i:(i)]]. Going from left to right in [[i:(i)]], we first see that ClF([[i:g]]) is needed as a reactant. This can be obtained by multiplying reaction [[i:(iii)]] by [[MATH:53]] which means that the Δ[[i:H]]° change is also multiplied by [[MATH:54]]
 
 <!-- SEG:m68727:para:fs-idp160398800 -->
 Next, we see that F[[sub:2]] is also needed as a reactant. To get this, reverse and halve reaction [[i:(ii)]], which means that the Δ[[i:H]]° changes sign and is halved:
@@ -572,7 +545,7 @@ To get ClF[[sub:3]] as a product, reverse [[i:(iv)]], changing the sign of Δ[[i
 Now check to make sure that these reactions add up to the reaction we want:
 
 <!-- SEG:m68727:para:fs-idp154356656 -->
-Reactants [[MATH:57]] and [[MATH:58]] cancel out product O[[sub:2]]; product [[MATH:59]] cancels reactant [[MATH:60]] and reactant [[MATH:61]] is cancelled by products [[MATH:62]] and OF[[sub:2]]. This leaves only reactants ClF([[i:g]]) and F[[sub:2]]([[i:g]]) and product ClF[[sub:3]]([[i:g]]), which are what we want. Since summing these three modified reactions yields the reaction of interest, summing the three modified Δ[[i:H]]° values will give the desired Δ[[i:H]]°:
+Reactants [[MATH:55]] and [[MATH:56]] cancel out product O[[sub:2]]; product [[MATH:57]] cancels reactant [[MATH:58]] and reactant [[MATH:59]] is cancelled by products [[MATH:60]] and OF[[sub:2]]. This leaves only reactants ClF([[i:g]]) and F[[sub:2]]([[i:g]]) and product ClF[[sub:3]]([[i:g]]), which are what we want. Since summing these three modified reactions yields the reaction of interest, summing the three modified Δ[[i:H]]° values will give the desired Δ[[i:H]]°:
 
 <!-- SEG:m68727:para-title:fs-idp154380128-title -->
 Check Your Learning
@@ -581,22 +554,22 @@ Check Your Learning
 Aluminum chloride can be formed from its elements:
 
 <!-- SEG:m68727:para:fs-idp154380768 -->
-[[i:(i)]] [[MATH:63]]
+[[i:(i)]] [[MATH:61]]
 
 <!-- SEG:m68727:para:fs-idp154392528 -->
 Use the reactions here to determine the Δ[[i:H]]° for reaction [[i:(i)]]:
 
 <!-- SEG:m68727:para:fs-idp154394160 -->
-[[i:(ii)]] [[MATH:64]]
+[[i:(ii)]] [[MATH:62]]
 
 <!-- SEG:m68727:para:fs-idp154404880 -->
-[[i:(iii)]] [[MATH:65]]
+[[i:(iii)]] [[MATH:63]]
 
 <!-- SEG:m68727:para:fs-idp174989824 -->
-[[i:(iv)]] [[MATH:66]]
+[[i:(iv)]] [[MATH:64]]
 
 <!-- SEG:m68727:para:fs-idp175003104 -->
-[[i:(v)]] [[MATH:67]]
+[[i:(v)]] [[MATH:65]]
 
 <!-- SEG:m68727:para:fs-idp120712864 -->
 −1407 kJ
@@ -629,7 +602,7 @@ Use the special form of Hess’s law given previously, and values from [[docref:
 Solution: Supporting Why the General Equation Is Valid
 
 <!-- SEG:m68727:para:fs-idp134564208 -->
-Alternatively, we can write this reaction as the sum of the decompositions of 3NO[[sub:2]]([[i:g]]) and 1H[[sub:2]]O([[i:l]]) into their constituent elements, and the formation of 2HNO[[sub:3]]([[i:aq]]) and 1NO([[i:g]]) from their constituent elements. Writing out these reactions, and noting their relationships to the [[MATH:68]] values for these compounds (from [[docref:Appendix G|m68865]] ), we have:
+Alternatively, we can write this reaction as the sum of the decompositions of 3NO[[sub:2]]([[i:g]]) and 1H[[sub:2]]O([[i:l]]) into their constituent elements, and the formation of 2HNO[[sub:3]]([[i:aq]]) and 1NO([[i:g]]) from their constituent elements. Writing out these reactions, and noting their relationships to the [[MATH:66]] values for these compounds (from [[docref:Appendix G|m68865]] ), we have:
 
 <!-- SEG:m68727:para:fs-idp155650064 -->
 Summing these reaction equations gives the reaction we are interested in:
@@ -641,7 +614,7 @@ Summing their enthalpy changes gives the value we want to determine:
 So the standard enthalpy change for this reaction is Δ[[i:H]]° = −138.4 kJ.
 
 <!-- SEG:m68727:para:fs-idp146120784 -->
-Note that this result was obtained by (1) multiplying the [[MATH:69]] of each product by its stoichiometric coefficient and summing those values, (2) multiplying the [[MATH:70]] of each reactant by its stoichiometric coefficient and summing those values, and then (3) subtracting the result found in (2) from the result found in (1). This is also the procedure in using the general equation, as shown.
+Note that this result was obtained by (1) multiplying the [[MATH:67]] of each product by its stoichiometric coefficient and summing those values, (2) multiplying the [[MATH:68]] of each reactant by its stoichiometric coefficient and summing those values, and then (3) subtracting the result found in (2) from the result found in (1). This is also the procedure in using the general equation, as shown.
 
 <!-- SEG:m68727:para-title:fs-idp165556368-title -->
 Check Your Learning
@@ -662,28 +635,28 @@ Answer:
 Key Concepts and Summary
 
 <!-- SEG:m68727:para:fs-idp165565984 -->
-If a chemical change is carried out at constant pressure and the only work done is caused by expansion or contraction, [[i:q]] for the change is called the enthalpy change with the symbol Δ[[i:H]], or [[MATH:71]] for reactions occurring under standard state conditions at 298 K. The value of Δ[[i:H]] for a reaction in one direction is equal in magnitude, but opposite in sign, to Δ[[i:H]] for the reaction in the opposite direction, and Δ[[i:H]] is directly proportional to the quantity of reactants and products. The standard enthalpy of formation, [[MATH:72]] is the enthalpy change accompanying the formation of 1 mole of a substance from the elements in their most stable states at 1 bar and 298.15 K. If the enthalpies of formation are available for the reactants and products of a reaction, the enthalpy change can be calculated using Hess’s law: If a process can be written as the sum of several stepwise processes, the enthalpy change of the total process equals the sum of the enthalpy changes of the various steps.
+If a chemical change is carried out at constant pressure and the only work done is caused by expansion or contraction, [[i:q]] for the change is called the enthalpy change with the symbol Δ[[i:H]], or [[MATH:69]] for reactions occurring under standard state conditions at 298 K. The value of Δ[[i:H]] for a reaction in one direction is equal in magnitude, but opposite in sign, to Δ[[i:H]] for the reaction in the opposite direction, and Δ[[i:H]] is directly proportional to the quantity of reactants and products. The standard enthalpy of formation, [[MATH:70]] is the enthalpy change accompanying the formation of 1 mole of a substance from the elements in their most stable states at 1 bar and 298.15 K. If the enthalpies of formation are available for the reactants and products of a reaction, the enthalpy change can be calculated using Hess’s law: If a process can be written as the sum of several stepwise processes, the enthalpy change of the total process equals the sum of the enthalpy changes of the various steps.
 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
 Key Equations
 
-<!-- SEG:m68727:entry:auto-224 -->
-[[MATH:73]]
+<!-- SEG:m68727:entry:auto-215 -->
+[[MATH:71]]
 
-<!-- SEG:m68727:entry:auto-225 -->
-[[MATH:74]]
+<!-- SEG:m68727:entry:auto-216 -->
+[[MATH:72]]
 
 <!-- SEG:m68727:title:fs-idp167491136-title -->
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68727:problem:fs-idp167492528 -->
-Explain how the heat measured in [[docref:m68726#fs-idm19242032]] differs from the enthalpy change for the exothermic reaction described by the following equation:[[BR]][[MATH:75]]
+Explain how the heat measured in [[docref:m68726#fs-idm19242032]] differs from the enthalpy change for the exothermic reaction described by the following equation:[[BR]][[MATH:73]]
 
 <!-- SEG:m68727:solution:fs-idp167503872 -->
 The enthalpy change of the indicated reaction is for exactly 1 mol HCL and 1 mol NaOH; the heat in the example is produced by 0.0500 mol HCl and 0.0500 mol NaOH.
 
 <!-- SEG:m68727:problem:fs-idm121017200 -->
-Using the data in the check your learning section of [[docref:m68726#fs-idm19242032]], calculate Δ[[i:H]] in kJ/mol of AgNO[[sub:3]]([[i:aq]]) for the reaction: [[MATH:76]]
+Using the data in the check your learning section of [[docref:m68726#fs-idm19242032]], calculate Δ[[i:H]] in kJ/mol of AgNO[[sub:3]]([[i:aq]]) for the reaction: [[MATH:74]]
 
 <!-- SEG:m68727:problem:fs-idp146868384 -->
 Calculate the enthalpy of solution (Δ[[i:H]] for the dissolution) per mole of NH[[sub:4]]NO[[sub:3]] under the conditions described in [[docref:m68726#fs-idp325184]].
@@ -692,7 +665,7 @@ Calculate the enthalpy of solution (Δ[[i:H]] for the dissolution) per mole of N
 25 kJ mol[[sup:−1]]
 
 <!-- SEG:m68727:problem:fs-idp140737280 -->
-Calculate Δ[[i:H]] for the reaction described by the equation. ([[i:Hint]]: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[BR]][[MATH:77]]
+Calculate Δ[[i:H]] for the reaction described by the equation. ([[i:Hint]]: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[BR]][[MATH:75]]
 
 <!-- SEG:m68727:problem:fs-idp107667792 -->
 Calculate the enthalpy of solution (Δ[[i:H]] for the dissolution) per mole of CaCl[[sub:2]] (refer to [[docref:m68726#fs-idm68277040]]).
@@ -716,7 +689,7 @@ How much heat is produced by combustion of 125 g of methanol under standard stat
 How many moles of isooctane must be burned to produce 100 kJ of heat under standard state conditions?
 
 <!-- SEG:m68727:solution:fs-idm219837376 -->
-1.83 [[MATH:78]] 10[[sup:−2]] mol
+1.83 [[MATH:76]] 10[[sup:−2]] mol
 
 <!-- SEG:m68727:problem:fs-idp169467952 -->
 What mass of carbon monoxide must be burned to produce 175 kJ of heat under standard state conditions?
@@ -728,7 +701,7 @@ When 2.50 g of methane burns in oxygen, 125 kJ of heat is produced. What is the 
 –802 kJ mol[[sup:−1]]
 
 <!-- SEG:m68727:problem:fs-idp155925136 -->
-How much heat is produced when 100 mL of 0.250 M HCl (density, 1.00 g/mL) and 200 mL of 0.150 M NaOH (density, 1.00 g/mL) are mixed?[[BR]][[MATH:79]]
+How much heat is produced when 100 mL of 0.250 M HCl (density, 1.00 g/mL) and 200 mL of 0.150 M NaOH (density, 1.00 g/mL) are mixed?[[BR]][[MATH:77]]
 
 <!-- SEG:m68727:problem:fs-idm11092064 -->
 If both solutions are at the same temperature and the specific heat of the products is 4.19 J/g °C, how much will the temperature increase? What assumption did you make in your calculation?
@@ -743,7 +716,7 @@ A sample of 0.562 g of carbon is burned in oxygen in a bomb calorimeter, produci
 Before the introduction of chlorofluorocarbons, sulfur dioxide (enthalpy of vaporization, 6.00 kcal/mol) was used in household refrigerators. What mass of SO[[sub:2]] must be evaporated to remove as much heat as evaporation of 1.00 kg of CCl[[sub:2]]F[[sub:2]] (enthalpy of vaporization is 17.4 kJ/mol)?
 
 <!-- SEG:m68727:problem:fs-idp25404288 -->
-The vaporization reactions for SO[[sub:2]] and CCl[[sub:2]]F[[sub:2]] are [[MATH:80]] and [[MATH:81]] respectively.
+The vaporization reactions for SO[[sub:2]] and CCl[[sub:2]]F[[sub:2]] are [[MATH:78]] and [[MATH:79]] respectively.
 
 <!-- SEG:m68727:problem:fs-idp140767408 -->
 Homes may be heated by pumping hot water through radiators. What mass of water will provide the same amount of heat when cooled from 95.0 to 35.0 °C, as the heat provided when 100 g of steam is cooled from 110 °C to 100 °C?
@@ -755,7 +728,7 @@ Homes may be heated by pumping hot water through radiators. What mass of water w
 Which of the enthalpies of combustion in [[xref:fs-idp98710048]] the table are also standard enthalpies of formation?
 
 <!-- SEG:m68727:problem:fs-idp165422368 -->
-Does the standard enthalpy of formation of H[[sub:2]]O([[i:g]]) differ from Δ[[i:H]]° for the reaction [[MATH:82]]
+Does the standard enthalpy of formation of H[[sub:2]]O([[i:g]]) differ from Δ[[i:H]]° for the reaction [[MATH:80]]
 
 <!-- SEG:m68727:solution:fs-idp165434480 -->
 Yes.
@@ -773,7 +746,7 @@ How many kilojoules of heat will be released when exactly 1 mole of manganese, M
 How many kilojoules of heat will be released when exactly 1 mole of iron, Fe, is burned to form Fe[[sub:2]]O[[sub:3]]([[i:s]]) at standard state conditions?
 
 <!-- SEG:m68727:problem:fs-idp184316624 -->
-The following sequence of reactions occurs in the commercial production of aqueous nitric acid:[[BR]][[MATH:83]][[BR]][[MATH:84]][[BR]][[MATH:85]]
+The following sequence of reactions occurs in the commercial production of aqueous nitric acid:[[BR]][[MATH:81]][[BR]][[MATH:82]][[BR]][[MATH:83]]
 
 <!-- SEG:m68727:problem:fs-idm165324304 -->
 Determine the total enthalpy change for the production of one mole of aqueous nitric acid by this process. Coproducts of the net reaction include water and nitrogen monoxide.
@@ -782,58 +755,58 @@ Determine the total enthalpy change for the production of one mole of aqueous ni
 −494 kJ/mol
 
 <!-- SEG:m68727:problem:fs-idp154783040 -->
-Both graphite and diamond burn.[[BR]][[MATH:86]]
+Both graphite and diamond burn.[[BR]][[MATH:84]]
 
 <!-- SEG:m68727:problem:fs-idp1114976 -->
-For the conversion of graphite to diamond:[[BR]][[MATH:87]]
+For the conversion of graphite to diamond:[[BR]][[MATH:85]]
 
 <!-- SEG:m68727:problem:fs-idm24454080 -->
 Which produces more heat, the combustion of graphite or the combustion of diamond?
 
 <!-- SEG:m68727:problem:fs-idp161090880 -->
-From the molar heats of formation in [[docref:Appendix G|m68865]], determine how much heat is required to evaporate one mole of water: [[MATH:88]]
+From the molar heats of formation in [[docref:Appendix G|m68865]], determine how much heat is required to evaporate one mole of water: [[MATH:86]]
 
 <!-- SEG:m68727:solution:fs-idp157704496 -->
 44.01 kJ/mol
 
 <!-- SEG:m68727:problem:fs-idp157715136 -->
-Which produces more heat?[[BR]][[MATH:89]][[BR]] or[[BR]][[MATH:90]]
+Which produces more heat?[[BR]][[MATH:87]][[BR]] or[[BR]][[MATH:88]]
 
 <!-- SEG:m68727:problem:fs-idm22161072 -->
-for the phase change [[MATH:91]]
+for the phase change [[MATH:89]]
 
 <!-- SEG:m68727:problem:fs-idp155266144 -->
-Calculate [[MATH:92]] for the process[[BR]][[MATH:93]]
+Calculate [[MATH:90]] for the process[[BR]][[MATH:91]]
 
 <!-- SEG:m68727:problem:fs-idm114989872 -->
-from the following information:[[BR]][[MATH:94]]
+from the following information:[[BR]][[MATH:92]]
 
 <!-- SEG:m68727:solution:fs-idp198391216 -->
 −394 kJ
 
 <!-- SEG:m68727:problem:fs-idp173455168 -->
-Calculate [[MATH:95]] for the process [[MATH:96]]
+Calculate [[MATH:93]] for the process [[MATH:94]]
 
 <!-- SEG:m68727:problem:fs-idm116484704 -->
-from the following information:[[BR]][[MATH:97]]
+from the following information:[[BR]][[MATH:95]]
 
 <!-- SEG:m68727:problem:fs-idp128497888 -->
-Calculate Δ[[i:H]] for the process [[MATH:98]]
+Calculate Δ[[i:H]] for the process [[MATH:96]]
 
 <!-- SEG:m68727:problem:fs-idm141516000 -->
-from the following information:[[BR]][[MATH:99]]
+from the following information:[[BR]][[MATH:97]]
 
 <!-- SEG:m68727:solution:fs-idp149326576 -->
 265 kJ
 
 <!-- SEG:m68727:problem:fs-idp204534736 -->
-Calculate [[MATH:100]] for the process [[MATH:101]]
+Calculate [[MATH:98]] for the process [[MATH:99]]
 
 <!-- SEG:m68727:problem:fs-idm80871856 -->
-from the following information:[[BR]][[MATH:102]]
+from the following information:[[BR]][[MATH:100]]
 
 <!-- SEG:m68727:problem:fs-idp28900272 -->
-Calculate the standard molar enthalpy of formation of NO([[i:g]]) from the following data:[[BR]][[MATH:103]]
+Calculate the standard molar enthalpy of formation of NO([[i:g]]) from the following data:[[BR]][[MATH:101]]
 
 <!-- SEG:m68727:solution:fs-idp164763184 -->
 90.3 kJ/mol
@@ -842,31 +815,31 @@ Calculate the standard molar enthalpy of formation of NO([[i:g]]) from the follo
 Using the data in [[docref:Appendix G|m68865]], calculate the standard enthalpy change for each of the following reactions:
 
 <!-- SEG:m68727:problem:fs-idp149474336 -->
-(a) [[MATH:104]]
+(a) [[MATH:102]]
 
 <!-- SEG:m68727:problem:fs-idp149482400 -->
-(b) [[MATH:105]]
+(b) [[MATH:103]]
 
 <!-- SEG:m68727:problem:fs-idp8022960 -->
-(c) [[MATH:106]]
+(c) [[MATH:104]]
 
 <!-- SEG:m68727:problem:fs-idp8034992 -->
-(d) [[MATH:107]]
+(d) [[MATH:105]]
 
 <!-- SEG:m68727:problem:fs-idp126941376 -->
 Using the data in [[docref:Appendix G|m68865]], calculate the standard enthalpy change for each of the following reactions:
 
 <!-- SEG:m68727:problem:fs-idp126942624 -->
-(a) [[MATH:108]]
+(a) [[MATH:106]]
 
 <!-- SEG:m68727:problem:fs-idp126951072 -->
-(b) [[MATH:109]]
+(b) [[MATH:107]]
 
 <!-- SEG:m68727:problem:fs-idp104058128 -->
-(c) [[MATH:110]]
+(c) [[MATH:108]]
 
 <!-- SEG:m68727:problem:fs-idp104069008 -->
-(d) [[MATH:111]]
+(d) [[MATH:109]]
 
 <!-- SEG:m68727:solution:fs-idp104083728 -->
 (a) −1615.0 kJ mol[[sup:−1]]; (b) −484.3 kJ mol[[sup:−1]]; (c) 164.2 kJ; (d) −232.1 kJ
@@ -875,19 +848,19 @@ Using the data in [[docref:Appendix G|m68865]], calculate the standard enthalpy 
 The following reactions can be used to prepare samples of metals. Determine the enthalpy change under standard state conditions for each.
 
 <!-- SEG:m68727:problem:fs-idp161657840 -->
-(a) [[MATH:112]]
+(a) [[MATH:110]]
 
 <!-- SEG:m68727:problem:fs-idp161666800 -->
-(b) [[MATH:113]]
+(b) [[MATH:111]]
 
 <!-- SEG:m68727:problem:fs-idp161675760 -->
-(c) [[MATH:114]]
+(c) [[MATH:112]]
 
 <!-- SEG:m68727:problem:fs-idp161688688 -->
-(d) [[MATH:115]]
+(d) [[MATH:113]]
 
 <!-- SEG:m68727:problem:fs-idp184431072 -->
-The decomposition of hydrogen peroxide, H[[sub:2]]O[[sub:2]], has been used to provide thrust in the control jets of various space vehicles. Using the data in [[docref:Appendix G|m68865]], determine how much heat is produced by the decomposition of exactly 1 mole of H[[sub:2]]O[[sub:2]] under standard conditions.[[BR]][[MATH:116]]
+The decomposition of hydrogen peroxide, H[[sub:2]]O[[sub:2]], has been used to provide thrust in the control jets of various space vehicles. Using the data in [[docref:Appendix G|m68865]], determine how much heat is produced by the decomposition of exactly 1 mole of H[[sub:2]]O[[sub:2]] under standard conditions.[[BR]][[MATH:114]]
 
 <!-- SEG:m68727:solution:fs-idm226656768 -->
 −54.04 kJ mol[[sup:−1]]
@@ -905,7 +878,7 @@ Calculate the enthalpy of combustion of butane, C[[sub:4]]H[[sub:10]]([[i:g]]) f
 Both propane and butane are used as gaseous fuels. Which compound produces more heat per gram when burned?
 
 <!-- SEG:m68727:problem:fs-idp214849712 -->
-The white pigment TiO[[sub:2]] is prepared by the reaction of titanium tetrachloride, TiCl[[sub:4]], with water vapor in the gas phase: [[MATH:117]]
+The white pigment TiO[[sub:2]] is prepared by the reaction of titanium tetrachloride, TiCl[[sub:4]], with water vapor in the gas phase: [[MATH:115]]
 
 <!-- SEG:m68727:problem:fs-idp145354032 -->
 How much heat is evolved in the production of exactly 1 mole of TiO[[sub:2]]([[i:s]]) under standard state conditions?
@@ -914,22 +887,22 @@ How much heat is evolved in the production of exactly 1 mole of TiO[[sub:2]]([[i
 –66.4 kJ
 
 <!-- SEG:m68727:problem:fs-idp195101632 -->
-Water gas, a mixture of H[[sub:2]] and CO, is an important industrial fuel produced by the reaction of steam with red hot coke, essentially pure carbon: [[MATH:118]]
+Water gas, a mixture of H[[sub:2]] and CO, is an important industrial fuel produced by the reaction of steam with red hot coke, essentially pure carbon: [[MATH:116]]
 
 <!-- SEG:m68727:problem:fs-idp195112128 -->
-(a) Assuming that coke has the same enthalpy of formation as graphite, calculate [[MATH:119]] for this reaction.
+(a) Assuming that coke has the same enthalpy of formation as graphite, calculate [[MATH:117]] for this reaction.
 
 <!-- SEG:m68727:problem:fs-idp195115456 -->
-(b) Methanol, a liquid fuel that could possibly replace gasoline, can be prepared from water gas and additional hydrogen at high temperature and pressure in the presence of a suitable catalyst: [[MATH:120]]
+(b) Methanol, a liquid fuel that could possibly replace gasoline, can be prepared from water gas and additional hydrogen at high temperature and pressure in the presence of a suitable catalyst: [[MATH:118]]
 
 <!-- SEG:m68727:problem:fs-idp160835168 -->
-Under the conditions of the reaction, methanol forms as a gas. Calculate [[MATH:121]] for this reaction and for the condensation of gaseous methanol to liquid methanol.
+Under the conditions of the reaction, methanol forms as a gas. Calculate [[MATH:119]] for this reaction and for the condensation of gaseous methanol to liquid methanol.
 
 <!-- SEG:m68727:problem:fs-idp160838496 -->
 (c) Calculate the heat of combustion of 1 mole of liquid methanol to H[[sub:2]]O([[i:g]]) and CO[[sub:2]]([[i:g]]).
 
 <!-- SEG:m68727:problem:fs-idp160736192 -->
-In the early days of automobiles, illumination at night was provided by burning acetylene, C[[sub:2]]H[[sub:2]]. Though no longer used as auto headlamps, acetylene is still used as a source of light by some cave explorers. The acetylene is (was) prepared in the lamp by the reaction of water with calcium carbide, CaC[[sub:2]]:[[BR]][[MATH:122]][[BR]] Calculate the standard enthalpy of the reaction. The [[MATH:123]] of CaC[[sub:2]] is −15.14 kcal/mol.
+In the early days of automobiles, illumination at night was provided by burning acetylene, C[[sub:2]]H[[sub:2]]. Though no longer used as auto headlamps, acetylene is still used as a source of light by some cave explorers. The acetylene is (was) prepared in the lamp by the reaction of water with calcium carbide, CaC[[sub:2]]:[[BR]][[MATH:120]][[BR]] Calculate the standard enthalpy of the reaction. The [[MATH:121]] of CaC[[sub:2]] is −15.14 kcal/mol.
 
 <!-- SEG:m68727:solution:fs-idp160756880 -->
 −122.8 kJ
@@ -938,7 +911,7 @@ In the early days of automobiles, illumination at night was provided by burning 
 From the data in [[xref:fs-idp98710048]], determine which of the following fuels produces the greatest amount of heat per gram when burned under standard conditions: CO([[i:g]]), CH[[sub:4]]([[i:g]]), or C[[sub:2]]H[[sub:2]]([[i:g]]).
 
 <!-- SEG:m68727:problem:fs-idp208963664 -->
-The enthalpy of combustion of hard coal averages −35 kJ/g, that of gasoline, 1.28 [[MATH:124]] 10[[sup:5]] kJ/gal. How many kilograms of hard coal provide the same amount of heat as is available from 1.0 gallon of gasoline? Assume that the density of gasoline is 0.692 g/mL (the same as the density of isooctane).
+The enthalpy of combustion of hard coal averages −35 kJ/g, that of gasoline, 1.28 [[MATH:122]] 10[[sup:5]] kJ/gal. How many kilograms of hard coal provide the same amount of heat as is available from 1.0 gallon of gasoline? Assume that the density of gasoline is 0.692 g/mL (the same as the density of isooctane).
 
 <!-- SEG:m68727:solution:fs-idp208968992 -->
 3.7 kg
@@ -953,10 +926,10 @@ Ethanol, C[[sub:2]]H[[sub:5]]OH, is used as a fuel for motor vehicles, particula
 (b) The density of ethanol is 0.7893 g/mL. Calculate the enthalpy of combustion of exactly 1 L of ethanol.
 
 <!-- SEG:m68727:problem:fs-idp208992896 -->
-(c) Assuming that an automobile’s mileage is directly proportional to the heat of combustion of the fuel, calculate how much farther an automobile could be expected to travel on 1 L of gasoline than on 1 L of ethanol. Assume that gasoline has the heat of combustion and the density of n–octane, C[[sub:8]]H[[sub:18]] [[MATH:125]] density = 0.7025 g/mL).
+(c) Assuming that an automobile’s mileage is directly proportional to the heat of combustion of the fuel, calculate how much farther an automobile could be expected to travel on 1 L of gasoline than on 1 L of ethanol. Assume that gasoline has the heat of combustion and the density of n–octane, C[[sub:8]]H[[sub:18]] [[MATH:123]] density = 0.7025 g/mL).
 
 <!-- SEG:m68727:problem:fs-idp181957776 -->
-Among the substances that react with oxygen and that have been considered as potential rocket fuels are diborane [B[[sub:2]]H[[sub:6]], produces B[[sub:2]]O[[sub:3]]([[i:s]]) and H[[sub:2]]O([[i:g]])], methane [CH[[sub:4]], produces CO[[sub:2]]([[i:g]]) and H[[sub:2]]O([[i:g]])], and hydrazine [N[[sub:2]]H[[sub:4]], produces N[[sub:2]]([[i:g]]) and H[[sub:2]]O([[i:g]])]. On the basis of the heat released by 1.00 g of each substance in its reaction with oxygen, which of these compounds offers the best possibility as a rocket fuel? The [[MATH:126]] of B[[sub:2]]H[[sub:6]]([[i:g]]), CH[[sub:4]]([[i:g]]), and N[[sub:2]]H[[sub:4]]([[i:l]]) may be found in [[docref:Appendix G|m68865]].
+Among the substances that react with oxygen and that have been considered as potential rocket fuels are diborane [B[[sub:2]]H[[sub:6]], produces B[[sub:2]]O[[sub:3]]([[i:s]]) and H[[sub:2]]O([[i:g]])], methane [CH[[sub:4]], produces CO[[sub:2]]([[i:g]]) and H[[sub:2]]O([[i:g]])], and hydrazine [N[[sub:2]]H[[sub:4]], produces N[[sub:2]]([[i:g]]) and H[[sub:2]]O([[i:g]])]. On the basis of the heat released by 1.00 g of each substance in its reaction with oxygen, which of these compounds offers the best possibility as a rocket fuel? The [[MATH:124]] of B[[sub:2]]H[[sub:6]]([[i:g]]), CH[[sub:4]]([[i:g]]), and N[[sub:2]]H[[sub:4]]([[i:l]]) may be found in [[docref:Appendix G|m68865]].
 
 <!-- SEG:m68727:solution:fs-idp7380800 -->
 On the assumption that the best rocket fuel is the one that gives off the most heat, B[[sub:2]]H[[sub:6]] is the prime candidate.
@@ -965,7 +938,7 @@ On the assumption that the best rocket fuel is the one that gives off the most h
 How much heat is produced when 1.25 g of chromium metal reacts with oxygen gas under standard conditions?
 
 <!-- SEG:m68727:problem:fs-idp124902464 -->
-Ethylene, C[[sub:2]]H[[sub:4]], a byproduct from the fractional distillation of petroleum, is fourth among the 50 chemical compounds produced commercially in the largest quantities. About 80% of synthetic ethanol is manufactured from ethylene by its reaction with water in the presence of a suitable catalyst. [[MATH:127]]
+Ethylene, C[[sub:2]]H[[sub:4]], a byproduct from the fractional distillation of petroleum, is fourth among the 50 chemical compounds produced commercially in the largest quantities. About 80% of synthetic ethanol is manufactured from ethylene by its reaction with water in the presence of a suitable catalyst. [[MATH:125]]
 
 <!-- SEG:m68727:problem:fs-idp124915056 -->
 Using the data in the table in [[docref:Appendix G|m68865]], calculate Δ[[i:H]]° for the reaction.
@@ -974,7 +947,7 @@ Using the data in the table in [[docref:Appendix G|m68865]], calculate Δ[[i:H]]
 −88.2 kJ
 
 <!-- SEG:m68727:problem:fs-idp149398400 -->
-The oxidation of the sugar glucose, C[[sub:6]]H[[sub:12]]O[[sub:6]], is described by the following equation:[[BR]][[MATH:128]]
+The oxidation of the sugar glucose, C[[sub:6]]H[[sub:12]]O[[sub:6]], is described by the following equation:[[BR]][[MATH:126]]
 
 <!-- SEG:m68727:problem:fs-idp149417584 -->
 The metabolism of glucose gives the same products, although the glucose reacts with oxygen in a series of steps in the body.
@@ -995,13 +968,13 @@ Propane, C[[sub:3]]H[[sub:8]], is a hydrocarbon that is commonly used as a fuel.
 (b) Calculate the volume of air at 25 °C and 1.00 atmosphere that is needed to completely combust 25.0 grams of propane. Assume that air is 21.0 percent O[[sub:2]] by volume. (Hint: We will see how to do this calculation in a later chapter on gases—for now use the information that 1.00 L of air at 25 °C and 1.00 atm contains 0.275 g of O[[sub:2]].)
 
 <!-- SEG:m68727:problem:fs-idp211821472 -->
-(c) The heat of combustion of propane is −2,219.2 kJ/mol. Calculate the heat of formation, [[MATH:129]] of propane given that [[MATH:130]] of H[[sub:2]]O([[i:l]]) = −285.8 kJ/mol and [[MATH:131]] of CO[[sub:2]]([[i:g]]) = −393.5 kJ/mol.
+(c) The heat of combustion of propane is −2,219.2 kJ/mol. Calculate the heat of formation, [[MATH:127]] of propane given that [[MATH:128]] of H[[sub:2]]O([[i:l]]) = −285.8 kJ/mol and [[MATH:129]] of CO[[sub:2]]([[i:g]]) = −393.5 kJ/mol.
 
 <!-- SEG:m68727:problem:fs-idp211832480 -->
 (d) Assuming that all of the heat released in burning 25.0 grams of propane is transferred to 4.00 kilograms of water, calculate the increase in temperature of the water.
 
 <!-- SEG:m68727:solution:fs-idp211833440 -->
-(a) [[MATH:132]] (b) 330 L air; (c) −104.5 kJ mol[[sup:−1]]; (d) 75.4 °C
+(a) [[MATH:130]] (b) 330 L air; (c) −104.5 kJ mol[[sup:−1]]; (d) 75.4 °C
 
 <!-- SEG:m68727:problem:fs-idp165246960 -->
 During a recent winter month in Sheboygan, Wisconsin, it was necessary to obtain 3500 kWh of heat provided by a natural gas furnace with 89% efficiency to keep a small house warm (the efficiency of a gas furnace is the percent of the heat produced by combustion that is transferred into the house).
@@ -1022,7 +995,7 @@ During a recent winter month in Sheboygan, Wisconsin, it was necessary to obtain
 (e) What volume of air is required to provide the oxygen for the combustion of the methane used to heat the house? Air contains 23% oxygen by mass. The average density of air during the month was 1.22 g/L.
 
 <!-- SEG:m68727:problem:fs-idp165253248 -->
-(f) How many kilowatt–hours (1 kWh = 3.6 [[MATH:133]] 10[[sup:6]] J) of electricity would be required to provide the heat necessary to heat the house? Note electricity is 100% efficient in producing heat inside a house.
+(f) How many kilowatt–hours (1 kWh = 3.6 [[MATH:131]] 10[[sup:6]] J) of electricity would be required to provide the heat necessary to heat the house? Note electricity is 100% efficient in producing heat inside a house.
 
 <!-- SEG:m68727:problem:fs-idp165259776 -->
 (g) Although electricity is 100% efficient in producing heat inside a house, production and distribution of electricity is not 100% efficient. The efficiency of production and distribution of electricity produced in a coal-fired power plant is about 40%. A certain type of coal provides 2.26 kWh per pound upon combustion. What mass of this coal in kilograms will be required to produce the electrical energy necessary to heat the house if the efficiency of generation and distribution is 40%?
@@ -1034,13 +1007,13 @@ chemical thermodynamics
 area of science that deals with the relationships between heat, work, and all forms of energy associated with chemical and physical processes
 
 <!-- SEG:m68727:glossary-term:fs-idp102380512-term -->
-enthalpy (H)
+enthalpy ([[i:H]])
 
 <!-- SEG:m68727:glossary-def:fs-idp102380512-def -->
 sum of a system’s internal energy and the mathematical product of its pressure and volume
 
 <!-- SEG:m68727:glossary-term:fs-idp102382096-term -->
-enthalpy change (ΔH)
+enthalpy change (Δ[[i:H]])
 
 <!-- SEG:m68727:glossary-def:fs-idp102382096-def -->
 heat released or absorbed by a system under constant pressure during a chemical or physical process
@@ -1070,19 +1043,19 @@ hydrocarbon
 compound composed only of hydrogen and carbon; the major component of fossil fuels
 
 <!-- SEG:m68727:glossary-term:fs-idp102386960-term -->
-internal energy (U)
+internal energy ([[i:U]])
 
 <!-- SEG:m68727:glossary-def:fs-idp102386960-def -->
 total of all possible kinds of energy present in a substance or substances
 
 <!-- SEG:m68727:glossary-term:fs-idp102388352-term -->
-standard enthalpy of combustion (ΔHc°)
+standard enthalpy of combustion [[MATH:132]]
 
 <!-- SEG:m68727:glossary-def:fs-idp102388352-def -->
 heat released when one mole of a compound undergoes complete combustion under standard conditions
 
 <!-- SEG:m68727:glossary-term:fs-idp102391904-term -->
-standard enthalpy of formation (ΔHf°)
+standard enthalpy of formation [[MATH:133]]
 
 <!-- SEG:m68727:glossary-def:fs-idp102391904-def -->
 enthalpy change of a chemical reaction in which 1 mole of a pure substance is formed from its elements in their most stable states under standard state conditions

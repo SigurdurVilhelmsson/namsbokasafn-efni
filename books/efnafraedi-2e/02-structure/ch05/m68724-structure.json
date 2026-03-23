@@ -492,6 +492,12 @@
                   }
                 },
                 {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
                   "segmentId": "m68724:entry:auto-64",
                   "attributes": {
                     "align": "center"

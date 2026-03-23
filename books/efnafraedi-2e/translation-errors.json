@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-23T16:05:24.150Z",
+  "generated": "2026-03-23T16:48:38.760Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
     "perfect": 119,
     "withDiscrepancies": 29,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 55
+    "totalDiscrepancies": 49
   },
   "modules": [
     {
@@ -44,16 +44,12 @@
       "chapter": "ch05",
       "discrepancies": [
         {
-          "tag": "emphasis",
-          "diff": 12
-        },
-        {
           "tag": "m:math",
-          "diff": 2
+          "diff": 3
         },
         {
-          "tag": "sub",
-          "diff": 2
+          "tag": "para",
+          "diff": -7
         }
       ]
     },
