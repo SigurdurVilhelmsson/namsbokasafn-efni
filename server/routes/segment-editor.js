@@ -265,8 +265,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
 
       res.json({
@@ -345,8 +345,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
     } catch (err) {
       const status = err.message.includes('already has') ? 409 : 500;
@@ -570,8 +570,8 @@ router.post(
           section: result.module_id || '',
           description: `${req.user.username} lauk yfirferð á ${result.module_id || req.params.reviewId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -746,8 +746,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
 
       res.json({
@@ -811,8 +811,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
 
       res.json({

@@ -69,21 +69,20 @@ const TERM_SOURCES = [
 ];
 
 /**
- * Initialize database connection
+ * Singleton database connection — reuses a single instance across all calls.
+ * Prevents file handle leaks from creating new Database() instances per call.
  */
+let _db;
 function getDb() {
   if (_testDb) return _testDb;
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
   }
-  return new Database(DB_PATH);
-}
-
-function closeDb(db) {
-  if (db && db !== _testDb) {
-    db.close();
-  }
+  return _db;
 }
 
 /**
@@ -163,7 +162,6 @@ function searchTerms(query = '', options = {}) {
     params.push(limit, offset);
 
     const terms = db.prepare(sql).all(...params);
-    closeDb(db);
 
     return {
       terms: terms.map(formatTerm),
@@ -175,7 +173,6 @@ function searchTerms(query = '', options = {}) {
       },
     };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -224,10 +221,8 @@ function lookupTerm(query, bookId = null) {
       .prepare(sql)
       .all(searchExact, searchStart, searchContains, searchContains, searchContains, bookId);
 
-    closeDb(db);
     return terms.map(formatTerm);
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -267,8 +262,6 @@ function getTerm(id) {
       )
       .all(id);
 
-    closeDb(db);
-
     if (!term) return null;
 
     return {
@@ -276,7 +269,6 @@ function getTerm(id) {
       discussions,
     };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -330,7 +322,6 @@ function createTerm(data, userId, username) {
       .get(english, bookId, bookId);
 
     if (existing) {
-      closeDb(db);
       throw new Error(`Term "${english}" already exists`);
     }
 
@@ -359,10 +350,9 @@ function createTerm(data, userId, username) {
       );
 
     const term = getTerm(result.lastInsertRowid);
-    closeDb(db);
+
     return term;
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -410,17 +400,14 @@ function updateTerm(id, updates) {
     }
 
     if (setClauses.length === 0) {
-      closeDb(db);
       return getTerm(id);
     }
 
     params.push(id);
     db.prepare(`UPDATE terminology_terms SET ${setClauses.join(', ')} WHERE id = ?`).run(...params);
 
-    closeDb(db);
     return getTerm(id);
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -443,7 +430,6 @@ function approveTerm(id, userId, username) {
     }
 
     if (term.status === 'approved') {
-      closeDb(db);
       return getTerm(id);
     }
 
@@ -455,10 +441,8 @@ function approveTerm(id, userId, username) {
     `
     ).run(userId, username, id);
 
-    closeDb(db);
     return getTerm(id);
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -493,10 +477,8 @@ function disputeTerm(id, comment, userId, username, proposedTranslation = null) 
     `
     ).run(id, userId, username, comment, proposedTranslation);
 
-    closeDb(db);
     return getTerm(id);
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -532,10 +514,9 @@ function addDiscussion(termId, comment, userId, username, proposedTranslation = 
     const discussion = db
       .prepare('SELECT * FROM terminology_discussions WHERE id = ?')
       .get(result.lastInsertRowid);
-    closeDb(db);
+
     return discussion;
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -572,11 +553,9 @@ function getReviewQueue(options = {}) {
     params.push(limit, offset);
 
     const terms = db.prepare(sql).all(...params);
-    closeDb(db);
 
     return terms.map(formatTerm);
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -666,8 +645,6 @@ function importFromCSV(filePath, userId, username, options = {}) {
     `
     ).run(path.basename(filePath), userId, username, added, updated, skipped);
 
-    closeDb(db);
-
     return {
       success: true,
       added,
@@ -676,7 +653,6 @@ function importFromCSV(filePath, userId, username, options = {}) {
       total: records.length,
     };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -774,8 +750,6 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
     `
     ).run(userId, username, added, updated, skipped);
 
-    closeDb(db);
-
     return {
       success: true,
       added,
@@ -784,7 +758,6 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
       total: data.length,
     };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -805,7 +778,6 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
     // Get book ID
     const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
     if (!book) {
-      closeDb(db);
       throw new Error(`Book not found: ${bookSlug}`);
     }
 
@@ -828,7 +800,6 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
     }
 
     if (keyTermsFiles.length === 0) {
-      closeDb(db);
       return { success: true, added: 0, skipped: 0, total: 0, message: 'No key-terms files found' };
     }
 
@@ -898,8 +869,6 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
       ).run(`${bookSlug}/ch${chapterNum || 'all'}`, userId, username, added, skipped);
     }
 
-    closeDb(db);
-
     return {
       success: true,
       added,
@@ -908,7 +877,6 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
       filesProcessed: keyTermsFiles.length,
     };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -1037,11 +1005,8 @@ function importGlossaryTerms(terms, userId, username, options = {}) {
     `
     ).run(source, 'glossary-import', userId, username, added, updated + enriched, skipped);
 
-    closeDb(db);
-
     return { success: true, added, updated, enriched, skipped, errors, total: terms.length };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -1111,8 +1076,6 @@ function getStats(bookId = null) {
       )
       .all();
 
-    closeDb(db);
-
     return {
       total: stats?.total || 0,
       byStatus: {
@@ -1132,7 +1095,6 @@ function getStats(bookId = null) {
       recentImports,
     };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -1147,10 +1109,9 @@ function deleteTerm(id) {
 
   try {
     const result = db.prepare('DELETE FROM terminology_terms WHERE id = ?').run(id);
-    closeDb(db);
+
     return { success: result.changes > 0 };
   } catch (err) {
-    closeDb(db);
     throw err;
   }
 }
@@ -1240,7 +1201,6 @@ function findTermsInSegments(segments, bookId = null) {
     sql += ` ORDER BY LENGTH(english) DESC`; // Longest first for greedy matching
 
     const terms = db.prepare(sql).all(...params);
-    closeDb(db);
 
     // Build regex patterns for each term (word-boundary match)
     const termPatterns = terms.map((t) => ({
@@ -1323,7 +1283,6 @@ function findTermsInSegments(segments, bookId = null) {
     return result;
   } catch (err) {
     try {
-      closeDb(db);
     } catch {
       /* ignore */
     }

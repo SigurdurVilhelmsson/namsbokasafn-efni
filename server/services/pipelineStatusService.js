@@ -49,21 +49,18 @@ function _getTestDb() {
   return _testDb;
 }
 
+let _db;
 function getDb() {
   if (_testDb) return _testDb;
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
   }
-  const db = new Database(DB_PATH);
-  db.pragma('journal_mode = WAL');
-  return db;
-}
-
-function closeDb(db) {
-  if (db && db !== _testDb) {
-    db.close();
-  }
+  return _db;
 }
 
 // --- Helpers ---
@@ -119,7 +116,6 @@ function getChapterStage(bookSlug, chapterNum) {
 
     return { currentStage, stages, publication };
   } finally {
-    closeDb(db);
   }
 }
 
@@ -202,7 +198,6 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
 
     return result;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -279,7 +274,6 @@ function revertStage(bookSlug, chapterNum, user, note) {
 
     return result;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -351,7 +345,6 @@ function getStageHistory(bookSlug, chapterNum) {
 
     return entries;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -365,7 +358,6 @@ function getStageHistory(bookSlug, chapterNum) {
 function syncStatusJsonCache(bookSlug, chapterNum) {
   if (_testDb) return; // No filesystem in tests
 
-  const db = getDb();
   try {
     const chDir = chapterDir(chapterNum);
     const statusPath = path.join(BOOKS_DIR, bookSlug, 'chapters', chDir, 'status.json');
@@ -438,7 +430,6 @@ function syncStatusJsonCache(bookSlug, chapterNum) {
       err.message
     );
   } finally {
-    closeDb(db);
   }
 }
 

@@ -20,24 +20,19 @@ function _setTestDb(db) {
 }
 
 /**
- * Get database connection
+ * Singleton database connection — reuses a single instance across all calls.
  */
+let _db;
 function getDb() {
   if (_testDb) return _testDb;
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
   }
-  return new Database(DB_PATH);
-}
-
-/**
- * Close database connection (skips closing if using test DB)
- */
-function closeDb(db) {
-  if (db && db !== _testDb) {
-    db.close();
-  }
+  return _db;
 }
 
 /**
@@ -51,7 +46,6 @@ function isUserTableReady() {
       .get();
     return !!result;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -71,7 +65,6 @@ function findByProviderId(providerId) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -93,7 +86,6 @@ function findByUsername(username) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -113,7 +105,6 @@ function findByEmail(email) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -131,7 +122,6 @@ function updateProviderInfo(userId, providerId, email) {
       userId
     );
   } finally {
-    closeDb(db);
   }
 }
 
@@ -157,7 +147,6 @@ function findById(id) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -230,7 +219,6 @@ function listUsers(options = {}) {
 
     return { users, total };
   } finally {
-    closeDb(db);
   }
 }
 
@@ -277,7 +265,6 @@ function createUser(userData, createdBy = null) {
 
     return findById(result.lastInsertRowid);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -334,7 +321,6 @@ function updateUser(id, updates, _updatedBy = null) {
 
     return findById(id);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -366,7 +352,6 @@ function deleteUser(id) {
     db.prepare('DELETE FROM users WHERE id = ?').run(id);
     return true;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -410,7 +395,6 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
 
     return findById(userId);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -432,7 +416,6 @@ function removeBookAccess(userId, bookSlug) {
 
     return findById(userId);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -450,7 +433,6 @@ function updateLastLogin(id) {
     `
     ).run(id);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -506,7 +488,6 @@ function upsertFromProvider(providerUser, options = {}) {
 
     return findById(result.lastInsertRowid);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -576,7 +557,6 @@ function hasChapterAccess(userId, bookSlug, chapter) {
     if (err.message && err.message.includes('no such table')) return true;
     throw err;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -597,7 +577,6 @@ function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
     `
     ).run(userId, bookSlug, parseInt(chapter, 10), assignedBy);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -615,7 +594,6 @@ function removeChapterAssignment(userId, bookSlug, chapter) {
       'DELETE FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? AND chapter = ?'
     ).run(userId, bookSlug, parseInt(chapter, 10));
   } finally {
-    closeDb(db);
   }
 }
 
@@ -636,7 +614,6 @@ function getChapterAssignments(userId, bookSlug) {
     if (err.message && err.message.includes('no such table')) return [];
     throw err;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -657,7 +634,6 @@ function getAllChapterAssignments(userId) {
     if (err.message && err.message.includes('no such table')) return [];
     throw err;
   } finally {
-    closeDb(db);
   }
 }
 

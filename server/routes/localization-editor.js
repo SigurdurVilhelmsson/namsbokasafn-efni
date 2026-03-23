@@ -252,8 +252,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} breytti ${segmentId} í ${req.params.moduleId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
     } catch (err) {
       console.error('Error saving localized segment:', err.message);
@@ -397,8 +397,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} vistaði ${Object.keys(editLookup).length} hluta í ${req.params.moduleId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        console.error('Activity log failed:', logErr.message);
       }
     } catch (err) {
       console.error('Error saving localized segments:', err.message);

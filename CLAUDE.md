@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: 724 Vitest unit tests + 96 Playwright E2E tests
+- Test suite: ~978 Vitest unit tests + 96 Playwright E2E tests
 
 ## Purpose
 
@@ -50,14 +50,14 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 - **Server:** Linode Ubuntu, nginx, Node.js
 - **Sister repo:** namsbokasafn-vefur (web publishing service)
 - **Domain:** namsbokasafn.is (migrated from efnafraedi.app)
-- **Authentication:** GitHub OAuth for the workflow server
+- **Authentication:** Microsoft Entra ID (Azure AD) OAuth for the workflow server
 - **Scale:** Small educational project — 1-2 developers, ~5 editors
 
 ## Tech Stack
 
-- **Runtime:** Node.js 24 LTS
+- **Runtime:** Node.js >=20 (CI runs on 20; 24 LTS compatible)
 - **Pipeline tools:** Custom CLI scripts in `tools/`
-- **Server:** Express 5 workflow interface in `server/`, better-sqlite3 12, Helmet, JWT auth
+- **Server:** Express 5 editorial workflow server in `server/`, better-sqlite3 12, Helmet, JWT auth
 - **Content format:** CNXML → Markdown (intermediate) → HTML
 - **Testing:** Vitest (unit), Playwright (E2E)
 - **Dependencies:** See package.json
@@ -235,7 +235,7 @@ Injection handles both bracket and legacy formats (backward compat). Legacy patt
 
 ## Current Priority
 
-**Fidelity optimization** — 110/148 modules PERFECT (74%), 141 total discrepancies across 38 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with 724 Vitest + 96 Playwright tests.
+**Fidelity optimization** — 119/148 modules PERFECT (80%), 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~978 Vitest + 96 Playwright tests.
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
 
