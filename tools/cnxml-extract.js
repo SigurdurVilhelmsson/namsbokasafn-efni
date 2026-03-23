@@ -748,10 +748,21 @@ function processTopLevelContent(
   }
 
   const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
-
-  const paras = extractElements(contentForSimpleElements, 'para');
-  const equations = extractElements(contentForSimpleElements, 'equation');
   const lists = extractNestedElements(contentForSimpleElements, 'list');
+
+  // Strip list content before para extraction — paras inside list items
+  // are already captured as item segments by processList(). Without this,
+  // they get extracted as BOTH item AND standalone para segments, causing
+  // duplication (m68727: +12 emphasis, +2 m:math, +2 sub).
+  let contentForParas = contentForSimpleElements;
+  for (const list of lists) {
+    if (list.fullMatch) {
+      contentForParas = contentForParas.replace(list.fullMatch, '');
+    }
+  }
+
+  const paras = extractElements(contentForParas, 'para');
+  const equations = extractElements(contentForSimpleElements, 'equation');
 
   // Add all elements with their positions
   // For elements without fullMatch, find by id attribute

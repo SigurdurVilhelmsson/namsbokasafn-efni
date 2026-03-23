@@ -399,3 +399,81 @@ describe('formatSegmentsMarkdown', () => {
     expect(md).toBe('');
   });
 });
+
+// ─── Fix: no duplicate para extraction from list items ────────────
+
+describe('para extraction does not duplicate list item content', () => {
+  it('should not extract paras inside list items as standalone segments', () => {
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" id="m00001" module-id="m00001" cnxml-version="0.7">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+<md:content-id>m00001</md:content-id>
+<md:title>Test</md:title>
+</metadata>
+<content>
+<section id="s1">
+<title>Section</title>
+<list id="list-1" list-type="bulleted">
+<item><para id="para-in-item">This is inside a list item</para></item>
+</list>
+<para id="standalone-para">This is a standalone paragraph</para>
+</section>
+</content>
+</document>`;
+
+    const result = extractSegments(cnxml, { moduleId: 'm00001' });
+
+    // The standalone para should be extracted
+    const standaloneSeg = result.segments.find((s) => s.id && s.id.includes('standalone-para'));
+    expect(standaloneSeg).toBeDefined();
+    expect(standaloneSeg.text).toContain('standalone paragraph');
+
+    // The para-in-item text should appear at most once (as an item segment, not also a standalone para)
+    const paraInItemSegs = result.segments.filter((s) => s.id && s.id.includes('para-in-item'));
+    expect(paraInItemSegs.length).toBeLessThanOrEqual(1);
+
+    // There should be no segment with type 'para' that has the para-in-item id
+    const paraTypeSeg = result.segments.find(
+      (s) => s.type === 'para' && s.id && s.id.includes('para-in-item')
+    );
+    expect(paraTypeSeg).toBeUndefined();
+  });
+
+  it('should not double-count item text when list items wrap paras', () => {
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" id="m00005" module-id="m00005" cnxml-version="0.7">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+<md:content-id>m00005</md:content-id>
+<md:title>Test</md:title>
+</metadata>
+<content>
+<section id="s1">
+<title>Section</title>
+<list id="list-2" list-type="bulleted">
+<item id="item-a"><para id="item-para-a">First item with <emphasis effect="italics">emphasis</emphasis></para></item>
+<item id="item-b"><para id="item-para-b">Second item with <emphasis effect="italics">more</emphasis></para></item>
+</list>
+</section>
+</content>
+</document>`;
+
+    const result = extractSegments(cnxml, { moduleId: 'm00005' });
+
+    // Each item's text should appear in exactly one segment (as 'item' type, not also as 'para')
+    const segsWithFirstItemText = result.segments.filter(
+      (s) => s.text && s.text.includes('First item with')
+    );
+    expect(segsWithFirstItemText.length).toBe(1);
+    expect(segsWithFirstItemText[0].type).toBe('item');
+
+    const segsWithSecondItemText = result.segments.filter(
+      (s) => s.text && s.text.includes('Second item with')
+    );
+    expect(segsWithSecondItemText.length).toBe(1);
+    expect(segsWithSecondItemText[0].type).toBe('item');
+
+    // No 'para' type segment should exist for item-para-a or item-para-b
+    const paraTypeSegs = result.segments.filter((s) => s.type === 'para');
+    expect(paraTypeSegs.length).toBe(0);
+  });
+});
