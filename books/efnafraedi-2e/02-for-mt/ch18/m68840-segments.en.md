@@ -74,7 +74,7 @@ Give the hybridization of xenon in each of the following. You may wish to review
 (e) XeOF[[sub:4]]
 
 <!-- SEG:m68840:solution:fs-idp28786176 -->
-(a) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} hybridized; (b) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybridized; (c) {{i}}sp{{/i}}[[sup:3]] hybridized; (d) {{i}}sp{{/i}}[[sup:3]] hybridized; (e) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] hybridized;
+(a) [[i:sp]][[sup:3]][[i:d]] hybridized; (b) [[i:sp]][[sup:3]][[i:d]][[sup:2]] hybridized; (c) [[i:sp]][[sup:3]] hybridized; (d) [[i:sp]][[sup:3]] hybridized; (e) [[i:sp]][[sup:3]][[i:d]][[sup:2]] hybridized;
 
 <!-- SEG:m68840:problem:fs-idm84355280 -->
 What is the molecular structure of each of the following molecules? You may wish to review the chapter on chemical bonding and molecular geometry.
@@ -134,13 +134,13 @@ What is the oxidation state of the noble gas in each of the following? You may w
 (e) XeO[[sub:3]]
 
 <!-- SEG:m68840:problem:fs-idm27212064 -->
-A mixture of xenon and fluorine was heated. A sample of the white solid that formed reacted with hydrogen to yield 81 mL of xenon (at STP) and hydrogen fluoride, which was collected in water, giving a solution of hydrofluoric acid. The hydrofluoric acid solution was titrated, and 68.43 mL of 0.3172 {{i}}M{{/i}} sodium hydroxide was required to reach the equivalence point. Determine the empirical formula for the white solid and write balanced chemical equations for the reactions involving xenon.
+A mixture of xenon and fluorine was heated. A sample of the white solid that formed reacted with hydrogen to yield 81 mL of xenon (at STP) and hydrogen fluoride, which was collected in water, giving a solution of hydrofluoric acid. The hydrofluoric acid solution was titrated, and 68.43 mL of 0.3172 [[i:M]] sodium hydroxide was required to reach the equivalence point. Determine the empirical formula for the white solid and write balanced chemical equations for the reactions involving xenon.
 
 <!-- SEG:m68840:solution:fs-idp29245728 -->
 The empirical formula is XeF[[sub:6]], and the balanced reactions are: [[MATH:5]]
 
 <!-- SEG:m68840:problem:fs-idm120825520 -->
-Basic solutions of Na[[sub:4]]XeO[[sub:6]] are powerful oxidants. What mass of Mn(NO[[sub:3]])[[sub:2]]•6H[[sub:2]]O reacts with 125.0 mL of a 0.1717 {{i}}M{{/i}} basic solution of Na[[sub:4]]XeO[[sub:6]] that contains an excess of sodium hydroxide if the products include Xe and solution of sodium permanganate?
+Basic solutions of Na[[sub:4]]XeO[[sub:6]] are powerful oxidants. What mass of Mn(NO[[sub:3]])[[sub:2]]•6H[[sub:2]]O reacts with 125.0 mL of a 0.1717 [[i:M]] basic solution of Na[[sub:4]]XeO[[sub:6]] that contains an excess of sodium hydroxide if the products include Xe and solution of sodium permanganate?
 
 <!-- SEG:m68840:glossary-term:fs-idm39818672-term -->
 halide

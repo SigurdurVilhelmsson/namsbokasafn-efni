@@ -32,7 +32,7 @@ It is also possible to prepare a mixture of hydrogen and carbon monoxide by pass
 Electrolysis
 
 <!-- SEG:m68833:para:fs-idp79258016 -->
-Hydrogen forms when direct current electricity passes through water containing an electrolyte such as H[[sub:2]]SO[[sub:4]], as illustrated in [#CNX_Chem_18_05_Electrolys]. Bubbles of hydrogen form at the cathode, and oxygen evolves at the anode. The net reaction is:
+Hydrogen forms when direct current electricity passes through water containing an electrolyte such as H[[sub:2]]SO[[sub:4]], as illustrated in [[xref:CNX_Chem_18_05_Electrolys]]. Bubbles of hydrogen form at the cathode, and oxygen evolves at the anode. The net reaction is:
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_Electrolys-caption -->
 The electrolysis of water produces hydrogen and oxygen. Because there are twice as many hydrogen atoms as oxygen atoms and both elements are diatomic, there is twice the volume of hydrogen produced at the cathode as there is oxygen produced at the anode.
@@ -41,7 +41,7 @@ The electrolysis of water produces hydrogen and oxygen. Because there are twice 
 Reaction of Metals with Acids
 
 <!-- SEG:m68833:para:fs-idp119542896 -->
-This is the most convenient laboratory method of producing hydrogen. Metals with lower reduction potentials reduce the hydrogen ion in dilute acids to produce hydrogen gas and metal salts. For example, as shown in [#CNX_Chem_18_05_IronHCl], iron in dilute hydrochloric acid produces hydrogen gas and iron(II) chloride:
+This is the most convenient laboratory method of producing hydrogen. Metals with lower reduction potentials reduce the hydrogen ion in dilute acids to produce hydrogen gas and metal salts. For example, as shown in [[xref:CNX_Chem_18_05_IronHCl]], iron in dilute hydrochloric acid produces hydrogen gas and iron(II) chloride:
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_IronHCl-caption -->
 The reaction of iron with an acid produces hydrogen. Here, iron reacts with hydrochloric acid. (credit: Mark Ott)
@@ -68,7 +68,7 @@ Reactions with Elements
 When heated, hydrogen reacts with the metals of group 1 and with Ca, Sr, and Ba (the more active metals in group 2). The compounds formed are crystalline, ionic hydrides that contain the hydride anion, H[[sup:−]], a strong reducing agent and a strong base, which reacts vigorously with water and other acids to form hydrogen gas.
 
 <!-- SEG:m68833:para:fs-idp263935152 -->
-The reactions of hydrogen with nonmetals generally produce {{i}}acidic{{/i}} hydrogen compounds with hydrogen in the 1+ oxidation state. The reactions become more exothermic and vigorous as the electronegativity of the nonmetal increases. Hydrogen reacts with nitrogen and sulfur only when heated, but it reacts explosively with fluorine (forming HF) and, under some conditions, with chlorine (forming HCl). A mixture of hydrogen and oxygen explodes if ignited. Because of the explosive nature of the reaction, it is necessary to exercise caution when handling hydrogen (or any other combustible gas) to avoid the formation of an explosive mixture in a confined space. Although most hydrides of the nonmetals are acidic, ammonia and phosphine (PH[[sub:3]]) are very, very weak acids and generally function as bases. There is a summary of these reactions of hydrogen with the elements in [#fs-idp87200896].
+The reactions of hydrogen with nonmetals generally produce [[i:acidic]] hydrogen compounds with hydrogen in the 1+ oxidation state. The reactions become more exothermic and vigorous as the electronegativity of the nonmetal increases. Hydrogen reacts with nitrogen and sulfur only when heated, but it reacts explosively with fluorine (forming HF) and, under some conditions, with chlorine (forming HCl). A mixture of hydrogen and oxygen explodes if ignited. Because of the explosive nature of the reaction, it is necessary to exercise caution when handling hydrogen (or any other combustible gas) to avoid the formation of an explosive mixture in a confined space. Although most hydrides of the nonmetals are acidic, ammonia and phosphine (PH[[sub:3]]) are very, very weak acids and generally function as bases. There is a summary of these reactions of hydrogen with the elements in [[xref:fs-idp87200896]].
 
 <!-- SEG:m68833:entry:auto-25 -->
 Chemical Reactions of Hydrogen with Other Elements
@@ -128,13 +128,13 @@ Under normal conditions, hydrogen is relatively inactive chemically, but when he
 Two thirds of the world’s hydrogen production is devoted to the manufacture of ammonia, which is a fertilizer and used in the manufacture of nitric acid. Large quantities of hydrogen are also important in the process of {{term}}hydrogenation{{/term}}, discussed in the chapter on organic chemistry.
 
 <!-- SEG:m68833:para:fs-idp268499792 -->
-It is possible to use hydrogen as a nonpolluting fuel. The reaction of hydrogen with oxygen is a very exothermic reaction, releasing 286 kJ of energy per mole of water formed. Hydrogen burns without explosion under controlled conditions. The oxygen-hydrogen torch, because of the high heat of combustion of hydrogen, can achieve temperatures up to 2800 °C. The hot flame of this torch is useful in cutting thick sheets of many metals. Liquid hydrogen is also an important rocket fuel ([#CNX_Chem_18_05_LiqHliqO]).
+It is possible to use hydrogen as a nonpolluting fuel. The reaction of hydrogen with oxygen is a very exothermic reaction, releasing 286 kJ of energy per mole of water formed. Hydrogen burns without explosion under controlled conditions. The oxygen-hydrogen torch, because of the high heat of combustion of hydrogen, can achieve temperatures up to 2800 °C. The hot flame of this torch is useful in cutting thick sheets of many metals. Liquid hydrogen is also an important rocket fuel ([[xref:CNX_Chem_18_05_LiqHliqO]]).
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_LiqHliqO-caption -->
 Before the fleet’s retirement in 2011, liquid hydrogen and liquid oxygen were used in the three main engines of a space shuttle. Two compartments in the large tank held these liquids until the shuttle was launched. (credit: “reynermedia”/Flickr)
 
 <!-- SEG:m68833:para:fs-idp30011296 -->
-An uncombined hydrogen atom consists of a nucleus and one valence electron in the 1{{i}}s{{/i}} orbital. The {{i}}n{{/i}} = 1 valence shell has a capacity for two electrons, and hydrogen can rightfully occupy two locations in the periodic table. It is possible to consider hydrogen a group 1 element because hydrogen can lose an electron to form the cation, H[[sup:+]]. It is also possible to consider hydrogen to be a group 17 element because it needs only one electron to fill its valence orbital to form a hydride ion, H[[sup:−]], or it can share an electron to form a single, covalent bond. In reality, hydrogen is a unique element that almost deserves its own location in the periodic table.
+An uncombined hydrogen atom consists of a nucleus and one valence electron in the 1[[i:s]] orbital. The [[i:n]] = 1 valence shell has a capacity for two electrons, and hydrogen can rightfully occupy two locations in the periodic table. It is possible to consider hydrogen a group 1 element because hydrogen can lose an electron to form the cation, H[[sup:+]]. It is also possible to consider hydrogen to be a group 17 element because it needs only one electron to fill its valence orbital to form a hydride ion, H[[sup:−]], or it can share an electron to form a single, covalent bond. In reality, hydrogen is a unique element that almost deserves its own location in the periodic table.
 
 <!-- SEG:m68833:title:fs-idp82925088-title -->
 Hydrogen Compounds
@@ -143,7 +143,7 @@ Hydrogen Compounds
 Nitrogen Hydrogen Compounds
 
 <!-- SEG:m68833:para:fs-idp63169696 -->
-Ammonia, NH[[sub:3]], forms naturally when any nitrogen-containing organic material decomposes in the absence of air. The laboratory preparation of ammonia is by the reaction of an ammonium salt with a strong base such as sodium hydroxide. The acid-base reaction with the weakly acidic ammonium ion gives ammonia, illustrated in [#CNX_Chem_18_05_Ammonia]. Ammonia also forms when ionic nitrides react with water. The nitride ion is a much stronger base than the hydroxide ion:
+Ammonia, NH[[sub:3]], forms naturally when any nitrogen-containing organic material decomposes in the absence of air. The laboratory preparation of ammonia is by the reaction of an ammonium salt with a strong base such as sodium hydroxide. The acid-base reaction with the weakly acidic ammonium ion gives ammonia, illustrated in [[xref:CNX_Chem_18_05_Ammonia]]. Ammonia also forms when ionic nitrides react with water. The nitride ion is a much stronger base than the hydroxide ion:
 
 <!-- SEG:m68833:para:fs-idp141680832 -->
 The commercial production of ammonia is by the direct combination of the elements in the {{term}}Haber process{{/term}}:
@@ -230,7 +230,7 @@ In most cases, sodium chloride is the chloride of choice because it is the least
 All of the hydrogen halides are very soluble in water, forming hydrohalic acids. With the exception of hydrogen fluoride, which has a strong hydrogen-fluoride bond, they are strong acids. Reactions of hydrohalic acids with metals, metal hydroxides, oxides, or carbonates produce salts of the halides. Most chloride salts are soluble in water. AgCl, PbCl[[sub:2]], and Hg[[sub:2]]Cl[[sub:2]] are the commonly encountered exceptions.
 
 <!-- SEG:m68833:para:fs-idp77718272 -->
-The halide ions give the substances the properties associated with X[[sup:−]]({{i}}aq{{/i}}). The heavier halide ions (Cl[[sup:−]], Br[[sup:−]], and I[[sup:−]]) can act as reducing agents, and the lighter halogens or other oxidizing agents will oxidize them:
+The halide ions give the substances the properties associated with X[[sup:−]]([[i:aq]]). The heavier halide ions (Cl[[sup:−]], Br[[sup:−]], and I[[sup:−]]) can act as reducing agents, and the lighter halogens or other oxidizing agents will oxidize them:
 
 <!-- SEG:m68833:para:fs-idp47526048 -->
 For example, bromine oxidizes iodine:

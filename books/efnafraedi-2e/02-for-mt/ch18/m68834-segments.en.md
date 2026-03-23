@@ -29,7 +29,7 @@ It is possible to isolate the solids by evaporation of the water from the soluti
 Although they are insoluble in pure water, alkaline earth carbonates dissolve readily in water containing carbon dioxide because hydrogen carbonate salts form. For example, caves and sinkholes form in limestone when CaCO[[sub:3]] dissolves in water containing dissolved carbon dioxide:
 
 <!-- SEG:m68834:para:fs-idm40761024 -->
-Hydrogen carbonates of the alkaline earth metals remain stable only in solution; evaporation of the solution produces the carbonate. Stalactites and stalagmites, like those shown in [#CNX_Chem_18_06_Cave], form in caves when drops of water containing dissolved calcium hydrogen carbonate evaporate to leave a deposit of calcium carbonate.
+Hydrogen carbonates of the alkaline earth metals remain stable only in solution; evaporation of the solution produces the carbonate. Stalactites and stalagmites, like those shown in [[xref:CNX_Chem_18_06_Cave]], form in caves when drops of water containing dissolved calcium hydrogen carbonate evaporate to leave a deposit of calcium carbonate.
 
 <!-- SEG:m68834:caption:CNX_Chem_18_06_Cave-caption -->
 (a) Stalactites and (b) stalagmites are cave formations of calcium carbonate. (credit a: modification of work by Arvind Govindaraj; credit b: modification of work by the National Park Service.)
@@ -41,7 +41,7 @@ The two carbonates used commercially in the largest quantities are sodium carbon
 Carbonates are moderately strong bases. Aqueous solutions are basic because the carbonate ion accepts hydrogen ion from water in this reversible reaction:
 
 <!-- SEG:m68834:para:fs-idp146223104 -->
-Carbonates react with acids to form salts of the metal, gaseous carbon dioxide, and water. The reaction of calcium carbonate, the active ingredient of the antacid Tums, with hydrochloric acid (stomach acid), as shown in [#CNX_Chem_18_06_CarbonCO2], illustrates the reaction:
+Carbonates react with acids to form salts of the metal, gaseous carbon dioxide, and water. The reaction of calcium carbonate, the active ingredient of the antacid Tums, with hydrochloric acid (stomach acid), as shown in [[xref:CNX_Chem_18_06_CarbonCO2]], illustrates the reaction:
 
 <!-- SEG:m68834:caption:CNX_Chem_18_06_CarbonCO2-caption -->
 The reaction of calcium carbonate with hydrochloric acid is shown. (credit: Mark Ott)
@@ -86,7 +86,7 @@ Complete and balance the following chemical equations:
 (a) [[MATH:8]] (b) [[MATH:9]][[BR]](c) [[MATH:10]]
 
 <!-- SEG:m68834:problem:fs-idp27024304 -->
-Heating a sample of Na[[sub:2]]CO[[sub:3]]⋅{{i}}x{{/i}}H[[sub:2]]O weighing 4.640 g until the removal of the water of hydration leaves 1.720 g of anhydrous Na[[sub:2]]CO[[sub:3]]. What is the formula of the hydrated compound?
+Heating a sample of Na[[sub:2]]CO[[sub:3]]⋅[[i:x]]H[[sub:2]]O weighing 4.640 g until the removal of the water of hydration leaves 1.720 g of anhydrous Na[[sub:2]]CO[[sub:3]]. What is the formula of the hydrated compound?
 
 <!-- SEG:m68834:glossary-term:fs-idm122363760-term -->
 bicarbonate anion
@@ -104,4 +104,4 @@ salt of the anion [[MATH:12]] often formed by the reaction of carbon dioxide wit
 hydrogen carbonate
 
 <!-- SEG:m68834:glossary-def:fs-idm108042736-def -->
-salt of carbonic acid, H[[sub:2]]CO[[sub:3]] (containing the anion [[MATH:13]] in which one hydrogen atom has been replaced; an acid carbonate; also known as {{i}}bicarbonate ion{{/i}}
+salt of carbonic acid, H[[sub:2]]CO[[sub:3]] (containing the anion [[MATH:13]] in which one hydrogen atom has been replaced; an acid carbonate; also known as [[i:bicarbonate ion]]

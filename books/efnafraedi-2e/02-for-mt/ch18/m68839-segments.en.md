@@ -17,7 +17,7 @@ The elements in group 17 are the halogens. These are the elements fluorine, chlo
 Occurrence and Preparation
 
 <!-- SEG:m68839:para:fs-idm11606784 -->
-All of the halogens occur in seawater as halide ions. The concentration of the chloride ion is 0.54 {{i}}M{{/i}}; that of the other halides is less than 10[[sup:–4]] {{i}}M{{/i}}. Fluoride also occurs in minerals such as CaF[[sub:2]], Ca(PO[[sub:4]])[[sub:3]]F, and Na[[sub:3]]AlF[[sub:6]]. Chloride also occurs in the Great Salt Lake and the Dead Sea, and in extensive salt beds that contain NaCl, KCl, or MgCl[[sub:2]]. Part of the chlorine in your body is present as hydrochloric acid, which is a component of stomach acid. Bromine compounds occur in the Dead Sea and underground brines. Iodine compounds are found in small quantities in Chile saltpeter, underground brines, and sea kelp. Iodine is essential to the function of the thyroid gland.
+All of the halogens occur in seawater as halide ions. The concentration of the chloride ion is 0.54 [[i:M]]; that of the other halides is less than 10[[sup:–4]] [[i:M]]. Fluoride also occurs in minerals such as CaF[[sub:2]], Ca(PO[[sub:4]])[[sub:3]]F, and Na[[sub:3]]AlF[[sub:6]]. Chloride also occurs in the Great Salt Lake and the Dead Sea, and in extensive salt beds that contain NaCl, KCl, or MgCl[[sub:2]]. Part of the chlorine in your body is present as hydrochloric acid, which is a component of stomach acid. Bromine compounds occur in the Dead Sea and underground brines. Iodine compounds are found in small quantities in Chile saltpeter, underground brines, and sea kelp. Iodine is essential to the function of the thyroid gland.
 
 <!-- SEG:m68839:para:fs-idp21138960 -->
 The best sources of halogens (except iodine) are halide salts. It is possible to oxidize the halide ions to free diatomic halogen molecules by various methods, depending on the ease of oxidation of the halide ion. Fluoride is the most difficult to oxidize, whereas iodide is the easiest.
@@ -41,7 +41,7 @@ Some iodine comes from the oxidation of iodine chloride, ICl, or iodic acid, HlO
 Properties of the Halogens
 
 <!-- SEG:m68839:para:fs-idm48830656 -->
-Fluorine is a pale yellow gas, chlorine is a greenish-yellow gas, bromine is a deep reddish-brown liquid, and iodine is a grayish-black crystalline solid. Liquid bromine has a high vapor pressure, and the reddish vapor is readily visible in [#CNX_Chem_18_11_Gases]. Iodine crystals have a noticeable vapor pressure. When gently heated, these crystals sublime and form a beautiful deep violet vapor.
+Fluorine is a pale yellow gas, chlorine is a greenish-yellow gas, bromine is a deep reddish-brown liquid, and iodine is a grayish-black crystalline solid. Liquid bromine has a high vapor pressure, and the reddish vapor is readily visible in [[xref:CNX_Chem_18_11_Gases]]. Iodine crystals have a noticeable vapor pressure. When gently heated, these crystals sublime and form a beautiful deep violet vapor.
 
 <!-- SEG:m68839:caption:CNX_Chem_18_11_Gases-caption -->
 Chlorine is a pale yellow-green gas (left), gaseous bromine is deep orange (center), and gaseous iodine is purple (right). (Fluorine is so reactive that it is too dangerous to handle.) (credit: Sahar Atwa)
@@ -50,7 +50,7 @@ Chlorine is a pale yellow-green gas (left), gaseous bromine is deep orange (cent
 Bromine is only slightly soluble in water, but it is miscible in all proportions in less polar (or nonpolar) solvents such as chloroform, carbon tetrachloride, and carbon disulfide, forming solutions that vary from yellow to reddish-brown, depending on the concentration.
 
 <!-- SEG:m68839:para:fs-idm83258560 -->
-Iodine is soluble in chloroform, carbon tetrachloride, carbon disulfide, and many hydrocarbons, giving violet solutions of I[[sub:2]] molecules. Iodine dissolves only slightly in water, giving brown solutions. It is quite soluble in aqueous solutions of iodides, with which it forms brown solutions. These brown solutions result because iodine molecules have empty valence {{i}}d{{/i}} orbitals and can act as weak Lewis acids towards the iodide ion. The equation for the reversible reaction of iodine (Lewis acid) with the iodide ion (Lewis base) to form triiodide ion, [[MATH:1]] is:
+Iodine is soluble in chloroform, carbon tetrachloride, carbon disulfide, and many hydrocarbons, giving violet solutions of I[[sub:2]] molecules. Iodine dissolves only slightly in water, giving brown solutions. It is quite soluble in aqueous solutions of iodides, with which it forms brown solutions. These brown solutions result because iodine molecules have empty valence [[i:d]] orbitals and can act as weak Lewis acids towards the iodide ion. The equation for the reversible reaction of iodine (Lewis acid) with the iodide ion (Lewis base) to form triiodide ion, [[MATH:1]] is:
 
 <!-- SEG:m68839:para:fs-idm71841200 -->
 The easier it is to oxidize the halide ion, the more difficult it is for the halogen to act as an oxidizing agent. Fluorine generally oxidizes an element to its highest oxidation state, whereas the heavier halogens may not. For example, when excess fluorine reacts with sulfur, SF[[sub:6]] forms. Chlorine gives SCl[[sub:2]] and bromine, S[[sub:2]]Br[[sub:2]]. Iodine does not react with sulfur.
@@ -95,7 +95,7 @@ The binary compounds of a metal with the halogens are the {{term}}halides{{/term
 The direct reaction of a metal and a halogen produce the halide of the metal. Examples of these oxidation-reduction reactions include:
 
 <!-- SEG:m68839:para:fs-idm131537424 -->
-Reactions of the alkali metals with elemental halogens are very exothermic and often quite violent. Under controlled conditions, they provide exciting demonstrations for budding students of chemistry. You can view the [initial heating](http://openstax.org/l/16sodium) of the sodium that removes the coating of sodium hydroxide, sodium peroxide, and residual mineral oil to expose the reactive surface. The reaction with chlorine gas then proceeds very nicely.
+Reactions of the alkali metals with elemental halogens are very exothermic and often quite violent. Under controlled conditions, they provide exciting demonstrations for budding students of chemistry. You can view the [[link:initial heating|http://openstax.org/l/16sodium]] of the sodium that removes the coating of sodium hydroxide, sodium peroxide, and residual mineral oil to expose the reactive surface. The reaction with chlorine gas then proceeds very nicely.
 
 <!-- SEG:m68839:para:fs-idm67915760 -->
 If a metal can exhibit two oxidation states, it may be necessary to control the stoichiometry in order to obtain the halide with the lower oxidation state. For example, preparation of tin(II) chloride requires a 1:1 ratio of Sn to Cl[[sub:2]], whereas preparation of tin(IV) chloride requires a 1:2 ratio:
@@ -110,13 +110,13 @@ The active representative metals also react with solutions of hydrogen halides t
 Hydroxides, carbonates, and some oxides react with solutions of the hydrogen halides to form solutions of halide salts. It is possible to prepare additional salts by the reaction of these hydroxides, carbonates, and oxides with aqueous solution of other acids:
 
 <!-- SEG:m68839:para:fs-idm12706304 -->
-A few halides and many of the other salts of the representative metals are insoluble. It is possible to prepare these insoluble salts by metathesis reactions that occur when solutions of soluble salts are mixed (see [#CNX_Chem_18_11_PercipHgI2]). Metathesis reactions are examined in the chapter on the stoichiometry of chemical reactions.
+A few halides and many of the other salts of the representative metals are insoluble. It is possible to prepare these insoluble salts by metathesis reactions that occur when solutions of soluble salts are mixed (see [[xref:CNX_Chem_18_11_PercipHgI2]]). Metathesis reactions are examined in the chapter on the stoichiometry of chemical reactions.
 
 <!-- SEG:m68839:caption:CNX_Chem_18_11_PercipHgI2-caption -->
 Solid HgI[[sub:2]] forms when solutions of KI and Hg(NO[[sub:3]])[[sub:2]] are mixed. (credit: Sahar Atwa)
 
 <!-- SEG:m68839:para:fs-idm16247664 -->
-Several halides occur in large quantities in nature. The ocean and underground brines contain many halides. For example, magnesium chloride in the ocean is the source of magnesium ions used in the production of magnesium. Large underground deposits of sodium chloride, like the salt mine shown in [#CNX_Chem_18_11_SaltMine], occur in many parts of the world. These deposits serve as the source of sodium and chlorine in almost all other compounds containing these elements. The chlor-alkali process is one example.
+Several halides occur in large quantities in nature. The ocean and underground brines contain many halides. For example, magnesium chloride in the ocean is the source of magnesium ions used in the production of magnesium. Large underground deposits of sodium chloride, like the salt mine shown in [[xref:CNX_Chem_18_11_SaltMine]], occur in many parts of the world. These deposits serve as the source of sodium and chlorine in almost all other compounds containing these elements. The chlor-alkali process is one example.
 
 <!-- SEG:m68839:caption:CNX_Chem_18_11_SaltMine-caption -->
 Underground deposits of sodium chloride are found throughout the world and are often mined. This is a tunnel in the Kłodawa salt mine in Poland. (credit: Jarek Zok)
@@ -125,13 +125,13 @@ Underground deposits of sodium chloride are found throughout the world and are o
 Interhalogens
 
 <!-- SEG:m68839:para:fs-idm123500464 -->
-Compounds formed from two or more different halogens are {{term}}interhalogens{{/term}}. Interhalogen molecules consist of one atom of the heavier halogen bonded by single bonds to an odd number of atoms of the lighter halogen. The structures of IF[[sub:3]], IF[[sub:5]], and IF[[sub:7]] are illustrated in [#CNX_Chem_18_11_IF3IF5IF7]. Formulas for other interhalogens, each of which comes from the reaction of the respective halogens, are in [#fs-idm73111648].
+Compounds formed from two or more different halogens are {{term}}interhalogens{{/term}}. Interhalogen molecules consist of one atom of the heavier halogen bonded by single bonds to an odd number of atoms of the lighter halogen. The structures of IF[[sub:3]], IF[[sub:5]], and IF[[sub:7]] are illustrated in [[xref:CNX_Chem_18_11_IF3IF5IF7]]. Formulas for other interhalogens, each of which comes from the reaction of the respective halogens, are in [[xref:fs-idm73111648]].
 
 <!-- SEG:m68839:caption:CNX_Chem_18_11_IF3IF5IF7-caption -->
 The structure of IF[[sub:3]] is T-shaped (left), IF[[sub:5 ]]is square pyramidal (center), and IF[[sub:7]] is pentagonal bipyramidal (right).
 
 <!-- SEG:m68839:para:fs-idm127930720 -->
-Note from [#fs-idm73111648] that fluorine is able to oxidize iodine to its maximum oxidation state, 7+, whereas bromine and chlorine, which are more difficult to oxidize, achieve only the 5+-oxidation state. A 7+-oxidation state is the limit for the halogens. Because smaller halogens are grouped about a larger one, the maximum number of smaller atoms possible increases as the radius of the larger atom increases. Many of these compounds are unstable, and most are extremely reactive. The interhalogens react like their component halides; halogen fluorides, for example, are stronger oxidizing agents than are halogen chlorides.
+Note from [[xref:fs-idm73111648]] that fluorine is able to oxidize iodine to its maximum oxidation state, 7+, whereas bromine and chlorine, which are more difficult to oxidize, achieve only the 5+-oxidation state. A 7+-oxidation state is the limit for the halogens. Because smaller halogens are grouped about a larger one, the maximum number of smaller atoms possible increases as the radius of the larger atom increases. Many of these compounds are unstable, and most are extremely reactive. The interhalogens react like their component halides; halogen fluorides, for example, are stronger oxidizing agents than are halogen chlorides.
 
 <!-- SEG:m68839:para:fs-idm19980944 -->
 The ionic polyhalides of the alkali metals, such as KI[[sub:3]], KICl[[sub:2]], KICl[[sub:4]], CsIBr[[sub:2]], and CsBrCl[[sub:2]], which contain an anion composed of at least three halogen atoms, are closely related to the interhalogens. As seen previously, the formation of the polyhalide anion [[MATH:2]] is responsible for the solubility of iodine in aqueous solutions containing an iodide ion.
@@ -152,46 +152,46 @@ YX[[sub:5]]
 YX[[sub:7]]
 
 <!-- SEG:m68839:entry:auto-52 -->
-ClF({{i}}g{{/i}})
+ClF([[i:g]])
 
 <!-- SEG:m68839:entry:auto-53 -->
-ClF[[sub:3]]({{i}}g{{/i}})
+ClF[[sub:3]]([[i:g]])
 
 <!-- SEG:m68839:entry:auto-54 -->
-ClF[[sub:5]]({{i}}g{{/i}})
+ClF[[sub:5]]([[i:g]])
 
 <!-- SEG:m68839:entry:auto-55 -->
-BrF({{i}}g{{/i}})
+BrF([[i:g]])
 
 <!-- SEG:m68839:entry:auto-56 -->
-BrF[[sub:3]]({{i}}l{{/i}})
+BrF[[sub:3]]([[i:l]])
 
 <!-- SEG:m68839:entry:auto-57 -->
-BrF[[sub:5]]({{i}}l{{/i}})
+BrF[[sub:5]]([[i:l]])
 
 <!-- SEG:m68839:entry:auto-58 -->
-BrCl({{i}}g{{/i}})
+BrCl([[i:g]])
 
 <!-- SEG:m68839:entry:auto-59 -->
-IF({{i}}s{{/i}})
+IF([[i:s]])
 
 <!-- SEG:m68839:entry:auto-60 -->
-IF[[sub:3]]({{i}}s{{/i}})
+IF[[sub:3]]([[i:s]])
 
 <!-- SEG:m68839:entry:auto-61 -->
-IF[[sub:5]]({{i}}l{{/i}})
+IF[[sub:5]]([[i:l]])
 
 <!-- SEG:m68839:entry:auto-62 -->
-IF[[sub:7]]({{i}}g{{/i}})
+IF[[sub:7]]([[i:g]])
 
 <!-- SEG:m68839:entry:auto-63 -->
-ICl({{i}}l{{/i}})
+ICl([[i:l]])
 
 <!-- SEG:m68839:entry:auto-64 -->
-ICl[[sub:3]]({{i}}s{{/i}})
+ICl[[sub:3]]([[i:s]])
 
 <!-- SEG:m68839:entry:auto-65 -->
-IBr({{i}}s{{/i}})
+IBr([[i:s]])
 
 <!-- SEG:m68839:title:fs-idm72031536-title -->
 Applications
@@ -320,4 +320,4 @@ What is the oxidation state of the halogen in each of the following?
 (a) I: 7+; (b) I: 7+; (c) Cl: 4+; (d) I: 3+; Cl: 1−; (e) F: 0
 
 <!-- SEG:m68839:problem:fs-idm88900800 -->
-Physiological saline concentration—that is, the sodium chloride concentration in our bodies—is approximately 0.16 {{i}}M{{/i}}. A saline solution for contact lenses is prepared to match the physiological concentration. If you purchase 25 mL of contact lens saline solution, how many grams of sodium chloride have you bought?
+Physiological saline concentration—that is, the sodium chloride concentration in our bodies—is approximately 0.16 [[i:M]]. A saline solution for contact lenses is prepared to match the physiological concentration. If you purchase 25 mL of contact lens saline solution, how many grams of sodium chloride have you bought?

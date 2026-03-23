@@ -11,7 +11,7 @@ Describe the properties, preparation, and uses of phosphorus
 The industrial preparation of phosphorus is by heating calcium phosphate, obtained from phosphate rock, with sand and coke:
 
 <!-- SEG:m68836:para:fs-idp5816832 -->
-The phosphorus distills out of the furnace and is condensed into a solid or burned to form P[[sub:4]]O[[sub:10]]. The preparation of many other phosphorus compounds begins with P[[sub:4]]O[[sub:10]]. The acids and phosphates are useful as fertilizers and in the chemical industry. Other uses are in the manufacture of special alloys such as ferrophosphorus and phosphor bronze. Phosphorus is important in making pesticides, matches, and some plastics. Phosphorus is an active nonmetal. In compounds, phosphorus usually occurs in oxidation states of 3−, 3+, and 5+. Phosphorus exhibits oxidation numbers that are unusual for a group 15 element in compounds that contain phosphorus-phosphorus bonds; examples include diphosphorus tetrahydride, H[[sub:2]]P-PH[[sub:2]], and tetraphosphorus trisulfide, P[[sub:4]]S[[sub:3]], illustrated in [#CNX_Chem_18_08_P4S3].
+The phosphorus distills out of the furnace and is condensed into a solid or burned to form P[[sub:4]]O[[sub:10]]. The preparation of many other phosphorus compounds begins with P[[sub:4]]O[[sub:10]]. The acids and phosphates are useful as fertilizers and in the chemical industry. Other uses are in the manufacture of special alloys such as ferrophosphorus and phosphor bronze. Phosphorus is important in making pesticides, matches, and some plastics. Phosphorus is an active nonmetal. In compounds, phosphorus usually occurs in oxidation states of 3−, 3+, and 5+. Phosphorus exhibits oxidation numbers that are unusual for a group 15 element in compounds that contain phosphorus-phosphorus bonds; examples include diphosphorus tetrahydride, H[[sub:2]]P-PH[[sub:2]], and tetraphosphorus trisulfide, P[[sub:4]]S[[sub:3]], illustrated in [[xref:CNX_Chem_18_08_P4S3]].
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_P4S3-caption -->
 P[[sub:4]]S[[sub:3]] is a component of the heads of strike-anywhere matches.
@@ -20,7 +20,7 @@ P[[sub:4]]S[[sub:3]] is a component of the heads of strike-anywhere matches.
 Phosphorus Oxygen Compounds
 
 <!-- SEG:m68836:para:fs-idp85748768 -->
-Phosphorus forms two common oxides, phosphorus(III) oxide (or tetraphosphorus hexaoxide), P[[sub:4]]O[[sub:6]], and phosphorus(V) oxide (or tetraphosphorus decaoxide), P[[sub:4]]O[[sub:10]], both shown in [#CNX_Chem_18_08_P4O6P4O10]. Phosphorus(III) oxide is a white crystalline solid with a garlic-like odor. Its vapor is very poisonous. It oxidizes slowly in air and inflames when heated to 70 °C, forming P[[sub:4]]O[[sub:10]]. Phosphorus(III) oxide dissolves slowly in cold water to form phosphorous acid, H[[sub:3]]PO[[sub:3]].
+Phosphorus forms two common oxides, phosphorus(III) oxide (or tetraphosphorus hexaoxide), P[[sub:4]]O[[sub:6]], and phosphorus(V) oxide (or tetraphosphorus decaoxide), P[[sub:4]]O[[sub:10]], both shown in [[xref:CNX_Chem_18_08_P4O6P4O10]]. Phosphorus(III) oxide is a white crystalline solid with a garlic-like odor. Its vapor is very poisonous. It oxidizes slowly in air and inflames when heated to 70 °C, forming P[[sub:4]]O[[sub:10]]. Phosphorus(III) oxide dissolves slowly in cold water to form phosphorous acid, H[[sub:3]]PO[[sub:3]].
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_P4O6P4O10-caption -->
 This image shows the molecular structures of P[[sub:4]]O[[sub:6]] (left) and P[[sub:4]]O[[sub:10]] (right).
@@ -38,7 +38,7 @@ Phosphorus Halogen Compounds
 Phosphorus will react directly with the halogens, forming trihalides, PX[[sub:3]], and pentahalides, PX[[sub:5]]. The trihalides are much more stable than the corresponding nitrogen trihalides; nitrogen pentahalides do not form because of nitrogen’s inability to form more than four bonds.
 
 <!-- SEG:m68836:para:fs-idp182518880 -->
-The chlorides PCl[[sub:3]] and PCl[[sub:5]], both shown in [#CNX_Chem_18_08_PCl3PCl5], are the most important halides of phosphorus. Phosphorus trichloride is a colorless liquid that is prepared by passing chlorine over molten phosphorus. Phosphorus pentachloride is an off-white solid that is prepared by oxidizing the trichloride with excess chlorine. The pentachloride sublimes when warmed and forms an equilibrium with the trichloride and chlorine when heated.
+The chlorides PCl[[sub:3]] and PCl[[sub:5]], both shown in [[xref:CNX_Chem_18_08_PCl3PCl5]], are the most important halides of phosphorus. Phosphorus trichloride is a colorless liquid that is prepared by passing chlorine over molten phosphorus. Phosphorus pentachloride is an off-white solid that is prepared by oxidizing the trichloride with excess chlorine. The pentachloride sublimes when warmed and forms an equilibrium with the trichloride and chlorine when heated.
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_PCl3PCl5-caption -->
 This image shows the molecular structure of PCl[[sub:3]] (left) and PCl[[sub:5]] (right) in the gas phase.
@@ -47,7 +47,7 @@ This image shows the molecular structure of PCl[[sub:3]] (left) and PCl[[sub:5]]
 Like most other nonmetal halides, both phosphorus chlorides react with an excess of water and yield hydrogen chloride and an oxyacid: PCl[[sub:3]] yields phosphorous acid H[[sub:3]]PO[[sub:3]] and PCl[[sub:5]] yields phosphoric acid, H[[sub:3]]PO[[sub:4]].
 
 <!-- SEG:m68836:para:fs-idm44217280 -->
-The pentahalides of phosphorus are Lewis acids because of the empty valence {{i}}d{{/i}} orbitals of phosphorus. These compounds readily react with halide ions (Lewis bases) to give the anion [[MATH:1]] Whereas phosphorus pentafluoride is a molecular compound in all states, X-ray studies show that solid phosphorus pentachloride is an ionic compound, [[MATH:2]] as are phosphorus pentabromide, [[MATH:3]][Br[[sup:−]]], and phosphorus pentaiodide, [[MATH:4]][I[[sup:−]]].
+The pentahalides of phosphorus are Lewis acids because of the empty valence [[i:d]] orbitals of phosphorus. These compounds readily react with halide ions (Lewis bases) to give the anion [[MATH:1]] Whereas phosphorus pentafluoride is a molecular compound in all states, X-ray studies show that solid phosphorus pentachloride is an ionic compound, [[MATH:2]] as are phosphorus pentabromide, [[MATH:3]][Br[[sup:−]]], and phosphorus pentaiodide, [[MATH:4]][I[[sup:−]]].
 
 <!-- SEG:m68836:title:fs-idp183301136-title -->
 Key Concepts and Summary
@@ -122,7 +122,7 @@ Complete and balance each of the following chemical equations. (In some cases, t
 Describe the hybridization of phosphorus in each of the following compounds: P[[sub:4]]O[[sub:10]], P[[sub:4]]O[[sub:6]], PH[[sub:4]]I (an ionic compound), PBr[[sub:3]], H[[sub:3]]PO[[sub:4]], H[[sub:3]]PO[[sub:3]], PH[[sub:3]], and P[[sub:2]]H[[sub:4]]. You may wish to review the chapter on advanced theories of covalent bonding.
 
 <!-- SEG:m68836:problem:fs-idp219284192 -->
-What volume of 0.200 {{i}}M{{/i}} NaOH is necessary to neutralize the solution produced by dissolving 2.00 g of PCl[[sub:3]] is an excess of water? Note that when H[[sub:3]]PO[[sub:3]] is titrated under these conditions, only one proton of the acid molecule reacts.
+What volume of 0.200 [[i:M]] NaOH is necessary to neutralize the solution produced by dissolving 2.00 g of PCl[[sub:3]] is an excess of water? Note that when H[[sub:3]]PO[[sub:3]] is titrated under these conditions, only one proton of the acid molecule reacts.
 
 <!-- SEG:m68836:solution:fs-idp25603936 -->
 291 mL
