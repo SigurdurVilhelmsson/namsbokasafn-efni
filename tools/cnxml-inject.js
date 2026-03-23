@@ -996,9 +996,8 @@ function reverseInlineMarkup(
   // Detect if this segment was API-translated by looking for new-format markers.
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
-  const hasApiMarkers = /\{\{[ib]\}\}|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(
-    text
-  );
+  const hasApiMarkers =
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(text);
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
   result = result.replace(/\\\[/g, '[');
@@ -1101,6 +1100,11 @@ function reverseInlineMarkup(
     /\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g,
     '<emphasis effect="italics">$1</emphasis>'
   );
+
+  // Handle hybrid {{i:text}} format — API occasionally converts [[brackets]]
+  // to {{braces}}. Same self-contained pattern, different delimiters.
+  result = result.replace(/\{\{i:([^}]+)\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+  result = result.replace(/\{\{b:([^}]+)\}\}/g, '<emphasis effect="bold">$1</emphasis>');
 
   // IMPORTANT: Extract MathML blocks before applying term wrapping to prevent
   // term markers from being applied inside MathML (which causes malformed XML)
