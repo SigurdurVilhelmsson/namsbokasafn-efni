@@ -509,3 +509,52 @@ describe('reverseInlineMarkup link regex tightening', () => {
     expect(result).toContain('<link document="m68674" target-id="fs-id123"/>');
   });
 });
+
+// ─── Nested bracket markers (both nesting directions) ─────────────
+
+describe('reverseInlineMarkup nested bracket markers', () => {
+  const emptyEq = {};
+
+  // Direction 1: sub/sup wrapping emphasis (rate laws, exponents)
+  it('should handle [[sup:[[i:x]]−1]] — emphasis inside superscript', () => {
+    const result = reverseInlineMarkup('rate = k[[sup:[[i:x]]−1]]', emptyEq);
+    expect(result).toContain('<sup><emphasis effect="italics">x</emphasis>−1</sup>');
+    expect(result).not.toContain('[[i:');
+    expect(result).not.toContain('[[sup:');
+  });
+
+  it('should handle [[sub:[[i:t]]]] — emphasis inside subscript', () => {
+    const result = reverseInlineMarkup('Tíminn er [[sub:[[i:t]]]]', emptyEq);
+    expect(result).toContain('<sub><emphasis effect="italics">t</emphasis></sub>');
+  });
+
+  it('should handle [[sup:[[b:x]]2]] — bold inside superscript', () => {
+    const result = reverseInlineMarkup('gildi [[sup:[[b:x]]2]]', emptyEq);
+    expect(result).toContain('<sup><emphasis effect="bold">x</emphasis>2</sup>');
+  });
+
+  // Direction 2: emphasis wrapping sub/sup (molecular orbital notation)
+  it('should handle [[i:[[sub:s]]]] — subscript inside emphasis', () => {
+    const result = reverseInlineMarkup('σ[[i:[[sub:s]]]]', emptyEq);
+    expect(result).toContain('<emphasis effect="italics"><sub>s</sub></emphasis>');
+    expect(result).not.toContain('[[sub:');
+    expect(result).not.toContain('[[i:');
+  });
+
+  it('should handle [[i:[[sub:p]]]] — subscript inside emphasis (p orbital)', () => {
+    const result = reverseInlineMarkup('σ[[i:[[sub:p]]]]', emptyEq);
+    expect(result).toContain('<emphasis effect="italics"><sub>p</sub></emphasis>');
+  });
+
+  it('should handle [[b:[[sup:2]]]] — superscript inside bold', () => {
+    const result = reverseInlineMarkup('x[[b:[[sup:2]]]]', emptyEq);
+    expect(result).toContain('<emphasis effect="bold"><sup>2</sup></emphasis>');
+  });
+
+  // Adjacent (non-nested) — should still work
+  it('should handle adjacent [[i:q]][[sub:in]] — emphasis then subscript', () => {
+    const result = reverseInlineMarkup('[[i:q]][[sub:in]]', emptyEq);
+    expect(result).toContain('<emphasis effect="italics">q</emphasis>');
+    expect(result).toContain('<sub>in</sub>');
+  });
+});
