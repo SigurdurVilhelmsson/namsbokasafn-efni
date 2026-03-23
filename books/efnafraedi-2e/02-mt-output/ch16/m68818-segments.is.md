@@ -119,7 +119,7 @@ Hægt er að gera nákvæmar varmamælingar til að ákvarða hitastigsháð ór
 er reiknað sem:
 
 <!-- SEG:m68818:para:fs-idp43524064 -->
-Listi yfir nokkur staðalóreiðugildi er í [[xref:fs-idm78597984]] og frekari gildi eru í viðauka G. Dæmin sem fylgja sýna notkun [[i:S]]°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli.
+Listi yfir nokkur staðalóreiðugildi er í [[xref:fs-idm78597984]] og frekari gildi eru í [[docref:viðauka G|m68865]]. Dæmin sem fylgja sýna notkun [[i:S]]°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli.
 
 <!-- SEG:m68818:entry:auto-42 -->
 [[b:Efni]]
