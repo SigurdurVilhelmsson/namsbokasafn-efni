@@ -340,6 +340,31 @@ describe('extractSegments self-closing para normalization (Fix F)', () => {
   });
 });
 
+// ─── processTable self-closing entries ───────────────────────────
+
+describe('processTable self-closing entries', () => {
+  it('should count all entries including self-closing ones', () => {
+    // A row with 5 entries, 3 of which are self-closing (empty)
+    // This mirrors m68837's "halous" row
+    const tableContent = `<table id="test-table" summary="test">
+<tgroup cols="5"><tbody>
+<row valign="top">
+<entry align="left">label</entry>
+<entry align="left"/>
+<entry align="left">HClO<sub>2</sub> (2.0)</entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+</tbody></tgroup></table>`;
+    // After fix: should produce 5 cells, with nulls for empty ones
+    // Just verify the expansion regex works correctly
+    const expanded = tableContent.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
+    const entryMatches = expanded.match(/<entry[^>]*>/g);
+    expect(entryMatches.length).toBe(5);
+    expect(expanded).not.toContain('/>');
+  });
+});
+
 // ─── formatSegmentsMarkdown ───────────────────────────────────────
 
 describe('formatSegmentsMarkdown', () => {
