@@ -633,3 +633,62 @@ describe('reverseInlineMarkup literal brackets in content', () => {
     expect(result).not.toContain('[[sub:');
   });
 });
+
+// ─── Self-closing table entry alignment ───────────────────────────
+
+describe('table injection: self-closing entry expansion', () => {
+  // Regression test for m68837 where self-closing <entry align="left"/>
+  // caused cellIdx misalignment and content duplication.
+  // The bug: /<entry([^>]*)>([\s\S]*?)<\/entry>/g applied to a row
+  // containing a self-closing entry treats the / as part of [^>]*
+  // (attributes), then ([\s\S]*?) consumes up to the NEXT </entry>,
+  // swallowing a real entry and misaligning all subsequent cellIdx values.
+
+  it('entry regex WITHOUT expansion misaligns cells when self-closing entries are present', () => {
+    // Row with a self-closing entry followed by a content entry
+    const rowContent = '<entry align="left"/><entry align="left">content (2.0)</entry>';
+
+    const entryRegex = /<entry([^>]*)>([\s\S]*?)<\/entry>/g;
+    const matches = [];
+    let m;
+    while ((m = entryRegex.exec(rowContent)) !== null) {
+      matches.push({ attrs: m[1], content: m[2] });
+    }
+
+    // With the bug: regex matches only ONE entry, not two.
+    // The self-closing entry's /> causes attrs to include "/" and
+    // content captures everything up to the lone </entry>.
+    // So: attrs = ' align="left"/', content = '<entry align="left">content (2.0)'
+    // Only 1 match instead of 2 — cellIdx is misaligned.
+    expect(matches.length).toBe(1); // BUG: should be 2
+    // And the content of the "match" contains the swallowed second entry
+    expect(matches[0].content).toContain('<entry'); // BUG: inner entry leaked into content
+  });
+
+  it('entry regex WITH expansion correctly finds all entries', () => {
+    const rowContent = '<entry align="left"/><entry align="left">content (2.0)</entry>';
+
+    // Apply the fix: expand self-closing entries first
+    const expanded = rowContent.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
+    expect(expanded).toBe('<entry align="left"></entry><entry align="left">content (2.0)</entry>');
+
+    const entryRegex = /<entry([^>]*)>([\s\S]*?)<\/entry>/g;
+    const matches = [];
+    let m;
+    while ((m = entryRegex.exec(expanded)) !== null) {
+      matches.push({ attrs: m[1], content: m[2] });
+    }
+
+    // With fix: 2 entries, cellIdx stays aligned
+    expect(matches.length).toBe(2);
+    expect(matches[0].content).toBe(''); // empty cell
+    expect(matches[1].content).toBe('content (2.0)'); // correct cell
+  });
+
+  it('expansion does not affect normal entries with closing tags', () => {
+    const rowContent = '<entry>cell A</entry><entry align="center">cell B</entry>';
+    const expanded = rowContent.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
+    // No self-closing entries: should be unchanged
+    expect(expanded).toBe(rowContent);
+  });
+});
