@@ -558,3 +558,32 @@ describe('reverseInlineMarkup nested bracket markers', () => {
     expect(result).toContain('<sub>in</sub>');
   });
 });
+
+// ─── Hybrid {{i:text}} marker format ─────────────────────────────
+
+describe('reverseInlineMarkup hybrid {{i:text}} markers', () => {
+  const emptyEq = {};
+
+  it('should convert {{i:text}} to emphasis', () => {
+    const result = reverseInlineMarkup('Þetta er {{i:röskun}} fyrirbæri', emptyEq);
+    expect(result).toContain('<emphasis effect="italics">röskun</emphasis>');
+  });
+
+  it('should convert {{b:text}} to bold emphasis', () => {
+    const result = reverseInlineMarkup('Þetta er {{b:mikilvægt}} efni', emptyEq);
+    expect(result).toContain('<emphasis effect="bold">mikilvægt</emphasis>');
+  });
+
+  it('should convert hybrid alongside other API markers', () => {
+    const input = '{{term}}efnafræði{{/term}} og {{i:tilfærsla}} í jafnvægi';
+    const result = reverseInlineMarkup(input, emptyEq);
+    expect(result).toContain('<term>efnafræði</term>');
+    expect(result).toContain('<emphasis effect="italics">tilfærsla</emphasis>');
+  });
+
+  it('should handle hybrid marker with long phrase', () => {
+    const input = '{{i:ef jafnvægiskerfi er raskað mun kerfið gangast undir tilfærslu}}';
+    const result = reverseInlineMarkup(input, emptyEq);
+    expect(result).toContain('<emphasis effect="italics">ef jafnvægiskerfi er raskað');
+  });
+});
