@@ -296,6 +296,78 @@
     }
 
     /* ========================================
+       DEFINITION EXPANDABLE ROW
+       ======================================== */
+
+    .term-definition-row {
+      grid-column: 1 / -1;
+      padding: 0.5rem 1rem 0.75rem;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      display: none;
+    }
+
+    .term-definition-row.visible {
+      display: block;
+    }
+
+    .term-definition-row .def-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: var(--text-xs);
+      margin-bottom: 2px;
+    }
+
+    .term-definition-row .def-text {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .term-definition-row .def-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .term-card .def-toggle {
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+      transition: color var(--transition-fast);
+    }
+
+    .term-card .def-toggle:hover {
+      color: var(--accent);
+    }
+
+    /* ========================================
+       GLOBAL TERMS CHECKBOX
+       ======================================== */
+
+    .filter-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .filter-checkbox input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .filter-checkbox label {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* ========================================
        PAGINATION
        ======================================== */
 
@@ -603,6 +675,10 @@
             <option value="">Allir upprunar</option>
           </select>
         </div>
+        <div class="filter-checkbox">
+          <input type="checkbox" id="filter-global" onchange="searchTerms(); updateFilterBadge();">
+          <label for="filter-global">S&#253;na almenn hugta&#246;k</label>
+        </div>
         <span class="filter-count" id="active-filters-badge" style="display: none;">
           <strong id="active-filter-num">0</strong> s&#237;ur virkar
         </span>
@@ -644,9 +720,9 @@
     <div class="terms-header">
       <h2 id="results-title">Or&#240;asafn</h2>
       <div style="display: flex; gap: 0.5rem;">
-        <button class="btn btn-sm btn-secondary" onclick="exportGlossary('csv')" title="S&#230;kja sem CSV">
+        <button class="btn btn-sm btn-secondary" onclick="exportGlossary('csv')" title="Flytja &#250;t s&#237;u&#240; or&#240; sem CSV">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-          Flytja &#250;t
+          Flytja &#250;t CSV
         </button>
         <button class="btn btn-sm btn-secondary" onclick="showImportModal()">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -702,6 +778,14 @@
             <label class="form-label">Uppruni</label>
             <select id="term-source" class="form-select"></select>
           </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Skilgreining (enska)</label>
+          <textarea id="term-definition-en" class="form-textarea" rows="2" placeholder="English definition..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Skilgreining (&#237;slenska)</label>
+          <textarea id="term-definition-is" class="form-textarea" rows="2" placeholder="&#205;slensk skilgreining..."></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Athugasemdir</label>
@@ -883,11 +967,13 @@
       const category = document.getElementById('filter-category').value;
       const status = document.getElementById('filter-status').value;
       const source = document.getElementById('filter-source').value;
+      const includeGlobal = document.getElementById('filter-global').checked;
 
       let activeCount = 0;
       if (category) activeCount++;
       if (status) activeCount++;
       if (source) activeCount++;
+      if (includeGlobal) activeCount++;
 
       const badge = document.getElementById('active-filters-badge');
       const num = document.getElementById('active-filter-num');
@@ -976,6 +1062,7 @@
       const category = document.getElementById('filter-category').value;
       const status = document.getElementById('filter-status').value;
       const bookSlug = document.getElementById('filter-book')?.value || '';
+      const includeGlobal = document.getElementById('filter-global').checked;
 
       const params = new URLSearchParams({
         limit: pageSize,
@@ -986,6 +1073,7 @@
       if (category) params.set('category', category);
       if (status) params.set('status', status);
       if (bookSlug) params.set('bookSlug', bookSlug);
+      if (includeGlobal) params.set('includeGlobal', 'true');
 
       const tbody = document.getElementById('terms-body');
       tbody.innerHTML = '<div class="terms-state">Hle\u00F0ur...</div>';
@@ -1003,9 +1091,11 @@
         document.getElementById('results-title').textContent =
           'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' or\u00F0)';
 
-        tbody.innerHTML = data.terms.map(term => `
+        tbody.innerHTML = data.terms.map(term => {
+          const hasDef = term.definitionEn || term.definitionIs;
+          return `
           <div class="term-card" tabindex="0" role="button" onclick="showTermDetail(${term.id})" onkeydown="if(event.key==='Enter')showTermDetail(${term.id})">
-            <span class="term-en">${escapeHtml(term.english)}</span>
+            <span class="term-en">${escapeHtml(term.english)}${hasDef ? ' <span class="def-toggle" onclick="event.stopPropagation(); toggleDefinition(' + term.id + ')" title="S\u00FDna skilgreiningu">&#9432;</span>' : ''}</span>
             <span class="term-is">${term.icelandic ? escapeHtml(term.icelandic) : '<em class="placeholder-badge">Vantar \u00FE\u00FD\u00F0ingu</em>'}</span>
             <span class="term-category">${formatCategory(term.category)}</span>
             <span class="term-status"><span class="status-badge status-${term.status}">${formatStatus(term.status)}</span></span>
@@ -1015,14 +1105,27 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               </button>
             </span>
-          </div>
-        `).join('');
+          </div>` + (hasDef ? `
+          <div class="term-definition-row" id="def-row-${term.id}">
+            ${term.definitionEn ? '<div class="def-label">Skilgreining (EN)</div><div class="def-text">' + escapeHtml(term.definitionEn) + '</div>' : ''}
+            ${term.definitionIs ? '<div class="def-label">Skilgreining (IS)</div><div class="def-text">' + escapeHtml(term.definitionIs) + '</div>' : ''}
+          </div>` : '');
+        }).join('');
 
         // Update pagination
         renderPagination(data.pagination);
 
       } catch (err) {
         tbody.innerHTML = '<div class="terms-state error">Villa: ' + escapeHtml(err.message) + '</div>';
+      }
+    }
+
+    // ─── Definition Toggle ──────────────────────────────────────────
+
+    function toggleDefinition(termId) {
+      const row = document.getElementById('def-row-' + termId);
+      if (row) {
+        row.classList.toggle('visible');
       }
     }
 
@@ -1166,6 +1269,8 @@
       document.getElementById('term-alternatives').value = '';
       document.getElementById('term-category').value = 'other';
       document.getElementById('term-source').value = 'manual';
+      document.getElementById('term-definition-en').value = '';
+      document.getElementById('term-definition-is').value = '';
       document.getElementById('term-notes').value = '';
       document.getElementById('term-english').disabled = false;
       document.getElementById('term-modal').style.display = 'flex';
@@ -1184,6 +1289,8 @@
           document.getElementById('term-alternatives').value = term.alternatives?.join(', ') || '';
           document.getElementById('term-category').value = term.category;
           document.getElementById('term-source').value = term.source;
+          document.getElementById('term-definition-en').value = term.definitionEn || '';
+          document.getElementById('term-definition-is').value = term.definitionIs || '';
           document.getElementById('term-notes').value = term.notes || '';
           document.getElementById('term-modal').style.display = 'flex';
         });
@@ -1196,6 +1303,8 @@
         .split(',').map(s => s.trim()).filter(s => s);
       const category = document.getElementById('term-category').value;
       const source = document.getElementById('term-source').value;
+      const definitionEn = document.getElementById('term-definition-en').value.trim();
+      const definitionIs = document.getElementById('term-definition-is').value.trim();
       const notes = document.getElementById('term-notes').value.trim();
 
       if (!english) {
@@ -1205,6 +1314,8 @@
 
       const body = { english, icelandic, category, source, notes };
       if (alternatives.length > 0) body.alternatives = alternatives;
+      if (definitionEn) body.definitionEn = definitionEn;
+      if (definitionIs) body.definitionIs = definitionIs;
 
       try {
         const url = currentTermId ? '/api/terminology/' + currentTermId : '/api/terminology';
@@ -1549,12 +1660,19 @@
 
     async function exportGlossary(format) {
       const bookSlug = document.getElementById('filter-book')?.value || '';
-      if (!bookSlug) {
-        alert('Veldu b\u00F3k til a\u00F0 flytja \u00FAt.');
-        return;
-      }
+      const category = document.getElementById('filter-category').value;
+      const status = document.getElementById('filter-status').value;
+      const query = document.getElementById('search-input').value;
+      const includeGlobal = document.getElementById('filter-global').checked;
 
-      const url = '/api/terminology/export?bookSlug=' + encodeURIComponent(bookSlug) + '&format=' + format;
+      const params = new URLSearchParams({ format: format });
+      if (bookSlug) params.set('bookSlug', bookSlug);
+      if (category) params.set('category', category);
+      if (status) params.set('status', status);
+      if (query) params.set('q', query);
+      if (includeGlobal) params.set('includeGlobal', 'true');
+
+      const url = '/api/terminology/export?' + params.toString();
       try {
         const res = await fetch(url, { credentials: 'include' });
         if (!res.ok) throw new Error('Villa vi\u00F0 \u00FAtflutning');

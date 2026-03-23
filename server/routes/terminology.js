@@ -75,17 +75,20 @@ const upload = multer({
  * Query params:
  *   q: Search query
  *   bookId: Filter by book ID
+ *   bookSlug: Filter by book slug (alternative to bookId)
+ *   includeGlobal: Include global terms alongside book terms (default: false)
  *   category: Filter by category
  *   status: Filter by status
  *   limit: Max results (default 50)
  *   offset: Pagination offset
  */
 router.get('/', requireAuth, (req, res) => {
-  const { q, category, status, limit, offset } = req.query;
+  const { q, category, status, includeGlobal, limit, offset } = req.query;
 
   try {
     const result = terminology.searchTerms(q, {
       bookId: resolveBookId(req.query),
+      includeGlobal: includeGlobal === 'true',
       category,
       status,
       limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
@@ -188,23 +191,28 @@ router.get('/categories', requireAuth, (req, res) => {
 
 /**
  * GET /api/terminology/export
- * Export the full glossary as JSON or CSV
+ * Export the glossary as JSON or CSV with optional filters
  *
  * Query params:
- *   bookId: Book ID (required)
+ *   bookId: Book ID (optional — omit for all terms)
+ *   bookSlug: Book slug alternative to bookId
+ *   includeGlobal: Include global terms (default: false)
+ *   q: Search query (optional)
+ *   category: Filter by category (optional)
+ *   status: Filter by status (optional)
  *   format: 'json' or 'csv' (default: json)
  */
 router.get('/export', requireAuth, (req, res) => {
-  const { format = 'json' } = req.query;
+  const { format = 'json', q, category, status, includeGlobal } = req.query;
 
   const bookId = resolveBookId(req.query);
-  if (!bookId) {
-    return res.status(400).json({ error: 'bookId or bookSlug is required' });
-  }
 
   try {
-    const result = terminology.searchTerms('', {
+    const result = terminology.searchTerms(q || '', {
       bookId,
+      includeGlobal: includeGlobal === 'true',
+      category,
+      status,
       limit: 10000,
       offset: 0,
     });

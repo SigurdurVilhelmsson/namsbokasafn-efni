@@ -100,7 +100,7 @@ function closeDb(db) {
  */
 function searchTerms(query = '', options = {}) {
   const db = getDb();
-  const { bookId, category, status, limit = 50, offset = 0 } = options;
+  const { bookId, includeGlobal, category, status, limit = 50, offset = 0 } = options;
 
   try {
     let sql = `
@@ -122,13 +122,21 @@ function searchTerms(query = '', options = {}) {
     }
 
     // Book filter (null = global terms, specific ID = book terms)
+    // includeGlobal controls whether global terms (book_id IS NULL) are shown
+    // alongside book-specific terms
     if (bookId !== undefined) {
       if (bookId === null) {
         sql += ` AND t.book_id IS NULL`;
-      } else {
+      } else if (includeGlobal) {
         sql += ` AND (t.book_id = ? OR t.book_id IS NULL)`;
         params.push(bookId);
+      } else {
+        sql += ` AND t.book_id = ?`;
+        params.push(bookId);
       }
+    } else if (includeGlobal) {
+      // No book selected but includeGlobal is explicitly true — show only global
+      sql += ` AND t.book_id IS NULL`;
     }
 
     // Category filter
