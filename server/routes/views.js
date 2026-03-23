@@ -25,7 +25,6 @@ router.get('/library', (req, res) => sendView(res, 'books.html'));
 router.get('/admin', (req, res) => sendView(res, 'admin.html'));
 router.get('/profile', (req, res) => sendView(res, 'profile.html'));
 router.get('/feedback', (req, res) => sendView(res, 'feedback.html'));
-router.get('/pipeline/:bookSlug/:chapterNum', (req, res) => sendView(res, 'chapter-pipeline.html'));
 
 // ─── Legacy redirects ────────────────────────────────────────────
 
@@ -63,6 +62,7 @@ router.get('/analytics', (req, res) => res.redirect(301, '/admin?tab=analytics')
 router.get('/workflow', (req, res) => res.redirect(301, '/'));
 router.get('/dashboard', (req, res) => res.redirect(301, '/'));
 router.get('/pipeline', (req, res) => res.redirect(301, '/progress'));
+router.get('/pipeline/:bookSlug/:chapterNum', (req, res) => res.redirect(301, '/progress'));
 router.get('/issues', (req, res) => res.redirect(301, '/'));
 router.get('/for-teachers', (req, res) => res.redirect(301, '/'));
 

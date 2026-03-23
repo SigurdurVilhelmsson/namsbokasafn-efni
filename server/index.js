@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
 /**
- * Translation Pipeline API Server (Phase 2)
+ * Námsbókasafn Editorial Workflow Server
  *
  * Provides REST endpoints for:
- * - Processing CNXML files through the translation pipeline
- * - Fetching OpenStax modules
- * - Checking pipeline status
- * - GitHub OAuth authentication
- * - Multi-step workflow management
- * - Issue tracking and classification
- * - Image translation tracking
- * - PR-based content sync
+ * - Segment-level linguistic editing (Pass 1)
+ * - Localization editing (Pass 2)
+ * - Terminology management
+ * - Editorial progress tracking
+ * - User and book administration
+ * - Publication management
+ *
+ * Pipeline orchestration (extract, translate, inject, render) is handled
+ * via CLI tools. See tools/cnxml-extract.js, tools/api-translate.js, etc.
  *
  * Usage:
  *   npm start                    # Start on default port (3000)
@@ -45,51 +46,39 @@ const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
-// Import Phase 1 routes
-const modulesRoutes = require('./routes/modules');
-const statusRoutes = require('./routes/status');
-const matecatRoutes = require('./routes/matecat');
+// ─── Route imports ──────────────────────────────────────────────────────────
 
-// Import Phase 2 routes
+// Authentication & user management
 const authRoutes = require('./routes/auth');
-const workflowRoutes = require('./routes/workflow');
-const issuesRoutes = require('./routes/issues');
-const syncRoutes = require('./routes/sync');
-const imagesRoutes = require('./routes/images');
-const viewRoutes = require('./routes/views');
-const booksRoutes = require('./routes/books');
+const profileRoutes = require('./routes/profile');
 const { requireAuth } = require('./middleware/requireAuth');
 
-// Import Phase 3 routes
-const notificationsRoutes = require('./routes/notifications');
-const activityRoutes = require('./routes/activity');
-
-// Import Phase 4 routes (Translation Management)
-const adminRoutes = require('./routes/admin');
-const sectionsRoutes = require('./routes/sections');
-
-// Import Phase 5 routes (Terminology & Suggestions)
+// Editorial workflow
+const segmentEditorRoutes = require('./routes/segment-editor');
+const localizationEditorRoutes = require('./routes/localization-editor');
 const terminologyRoutes = require('./routes/terminology');
 const suggestionsRoutes = require('./routes/suggestions');
 
-// Import My Work routes (translator dashboard)
+// Administration & status
+const statusRoutes = require('./routes/status');
+const adminRoutes = require('./routes/admin');
+const booksRoutes = require('./routes/books');
+const sectionsRoutes = require('./routes/sections');
 const myWorkRoutes = require('./routes/my-work');
 
-// Import Phase 6 routes (Publication)
+// Pipeline (inject/render for apply-and-render flow)
+const pipelineRoutes = require('./routes/pipeline');
+const pipelineStatusRoutes = require('./routes/pipeline-status');
 const publicationRoutes = require('./routes/publication');
 
-// Import Phase 7 routes (Pilot Support)
+// Support
+const notificationsRoutes = require('./routes/notifications');
+const activityRoutes = require('./routes/activity');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
 
-// Import Phase 8 routes (Segment Editor, Pipeline, Localization Editor)
-const segmentEditorRoutes = require('./routes/segment-editor');
-const pipelineRoutes = require('./routes/pipeline');
-const localizationEditorRoutes = require('./routes/localization-editor');
-const pipelineStatusRoutes = require('./routes/pipeline-status');
-
-// Import Profile routes
-const profileRoutes = require('./routes/profile');
+// HTML views
+const viewRoutes = require('./routes/views');
 
 // Load version from package.json
 const serverVersion = require('./package.json').version;
@@ -228,56 +217,39 @@ app.use((req, res, next) => {
   next();
 });
 
-// Phase 1 API Routes
-app.use('/api/modules', modulesRoutes);
-app.use('/api/status', statusRoutes);
-app.use('/api/matecat', matecatRoutes);
+// ─── API Routes ─────────────────────────────────────────────────────────────
 
-// Phase 2 API Routes
-// Apply stricter rate limiting only to login/callback (not session checks like /me)
+// Authentication
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/callback', authLimiter);
 app.use('/api/auth', authRoutes);
-app.use('/api/books', booksRoutes);
-app.use('/api/workflow', workflowRoutes);
-app.use('/api/issues', issuesRoutes);
-app.use('/api/sync', syncRoutes);
-app.use('/api/images', imagesRoutes);
+app.use('/api/profile', profileRoutes);
 
-// Phase 3 API Routes
-app.use('/api/notifications', notificationsRoutes);
-app.use('/api/activity', activityRoutes);
-
-// Phase 4 API Routes (Translation Management)
-app.use('/api/admin', adminRoutes);
-app.use('/api/sections', sectionsRoutes);
-
-// Phase 5 API Routes (Terminology & Suggestions)
+// Editorial workflow
+app.use('/api/segment-editor', segmentEditorRoutes);
+app.use('/api/localization-editor', localizationEditorRoutes);
 app.use('/api/terminology', terminologyRoutes);
 app.use('/api/suggestions', suggestionsRoutes);
 
-// My Work API Routes (translator dashboard)
+// Administration & status
+app.use('/api/status', statusRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/books', booksRoutes);
+app.use('/api/sections', sectionsRoutes);
 app.use('/api/my-work', myWorkRoutes);
 
-// Phase 6 API Routes (Publication)
+// Pipeline (inject/render, job tracking, publication)
+app.use('/api/pipeline', pipelineRoutes);
+app.use('/api/pipeline-status', pipelineStatusRoutes);
 app.use('/api/publication', publicationRoutes);
 
-// Phase 7 API Routes (Pilot Support)
+// Support
+app.use('/api/notifications', notificationsRoutes);
+app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
 app.post('/api/analytics/event', publicSubmitLimiter);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
-
-// Phase 8 API Routes (Segment Editor, Pipeline, Localization Editor)
-app.use('/api/segment-editor', segmentEditorRoutes);
-app.use('/api/pipeline', pipelineRoutes);
-app.use('/api/localization-editor', localizationEditorRoutes);
-
-// Pipeline Status API Routes
-app.use('/api/pipeline-status', pipelineStatusRoutes);
-
-// Profile API Routes
-app.use('/api/profile', profileRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -285,14 +257,13 @@ app.get('/api/health', (req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     version: serverVersion,
-    phase: 13,
   });
 });
 
 // API documentation
 app.get('/api', (req, res) => {
   res.json({
-    name: 'Translation Pipeline API',
+    name: 'Námsbókasafn Editorial API',
     version: serverVersion,
     status: 'ok',
     health: '/api/health',
@@ -348,25 +319,21 @@ app.use((err, req, res, _next) => {
 const server = app.listen(PORT, HOST, () => {
   console.log('');
   console.log('═'.repeat(55));
-  console.log(`Translation Pipeline API Server v${serverVersion}`);
+  console.log(`Námsbókasafn Editorial Server v${serverVersion}`);
   console.log('═'.repeat(55));
   console.log('');
   console.log(`  Server: http://${HOST}:${PORT}`);
   console.log(`  API:    http://${HOST}:${PORT}/api`);
-  console.log(`  Web UI: http://${HOST}:${PORT}/workflow`);
   console.log('');
-  console.log('Key Endpoints:');
-  console.log('  GET  /api/status/:book      Get pipeline status');
-  console.log('  GET  /api/auth/login        GitHub OAuth login');
-  console.log('  POST /api/workflow/resume   Resume workflow session');
-  console.log('  POST /api/pipeline/run      Inject + render (HEAD_EDITOR)');
+  console.log('Editorial Workflow:');
+  console.log('  /editor           Segment editor (Pass 1)');
+  console.log('  /localization     Localization editor (Pass 2)');
+  console.log('  /terminology      Terminology manager');
+  console.log('  /progress         Editorial progress dashboard');
   console.log('');
-  console.log('Web Interface:');
-  console.log('  /workflow         Multi-step workflow wizard');
-  console.log('  /segment-editor   Segment-level linguistic editor');
-  console.log('  /localization-editor  Segment-level localization (Pass 2)');
-  console.log('  /pipeline         Pipeline flow dashboard');
-  console.log('  /editor           Segment editor + review queue');
+  console.log('Administration:');
+  console.log('  /admin            User & book management');
+  console.log('  /library          Book & chapter overview');
   console.log('');
   console.log('Press Ctrl+C to stop');
   console.log('');

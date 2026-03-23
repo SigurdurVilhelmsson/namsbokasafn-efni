@@ -28,8 +28,8 @@ describe('Server startup smoke tests', () => {
       (m) => m[1]
     );
 
-    it('index.js imports at least 20 route files', () => {
-      expect(routeRequires.length).toBeGreaterThanOrEqual(20);
+    it('index.js imports at least 14 route files', () => {
+      expect(routeRequires.length).toBeGreaterThanOrEqual(14);
     });
 
     for (const route of routeRequires) {
@@ -67,26 +67,26 @@ describe('Server startup smoke tests', () => {
   });
 
   describe('migration file inventory', () => {
-    it('all 27 migration files exist on disk', () => {
+    it('all 30 migration files exist on disk', () => {
       const migrationsDir = join(serverDir, 'migrations');
       const files = readdirSync(migrationsDir)
         .filter((f) => f.endsWith('.js'))
         .sort();
 
-      expect(files.length).toBe(27);
+      expect(files.length).toBe(30);
 
-      // Verify sequential numbering 001-027
-      for (let i = 1; i <= 27; i++) {
+      // Verify sequential numbering 001-030
+      for (let i = 1; i <= 30; i++) {
         const prefix = String(i).padStart(3, '0');
         const match = files.find((f) => f.startsWith(prefix));
         expect(match).toBeTruthy();
       }
     });
 
-    it('migrationRunner references all 27 migrations', () => {
+    it('migrationRunner references all 30 migrations', () => {
       const source = readFileSync(join(serverDir, 'services', 'migrationRunner.js'), 'utf-8');
 
-      for (let i = 1; i <= 27; i++) {
+      for (let i = 1; i <= 30; i++) {
         const prefix = String(i).padStart(3, '0');
         expect(source).toContain(`'../migrations/${prefix}-`);
       }

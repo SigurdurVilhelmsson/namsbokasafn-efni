@@ -316,12 +316,6 @@
       user-select: none;
     }
 
-    .pipeline-secondary {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-    }
-
     /* Stats row within detail */
     .detail-stats {
       display: grid;
@@ -838,35 +832,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 Opna ritstj&#243;ra
               </a>
-              <!-- Pipeline actions (head-editor+) — smart buttons that chain steps automatically -->
+              <!-- Publication actions (head-editor+) -->
               <div class="pipeline-actions" id="pipeline-actions" style="display:none">
-                <button class="btn btn-sm btn-secondary" id="btn-download-en" onclick="smartDownloadEN()"
-                  title="S&#230;kja EN Markdown &#8212; keyrir &#250;tdr&#225;tt ef &#254;arf">&#8595; S&#230;kja EN</button>
-                <label class="btn btn-sm btn-secondary" id="btn-upload-is"
-                  title="Hla&#240;a upp IS &#254;&#253;&#240;ingum">
-                  <input type="file" multiple accept=".md" style="display:none" onchange="smartUploadIS(this.files)">
-                  &#8593; Hla&#240;a upp IS</label>
-                <span class="pipeline-separator">|</span>
                 <button class="btn btn-sm btn-secondary" id="btn-publish-mt" disabled
                   onclick="publishChapter('mt-preview')">Birta MT</button>
                 <button class="btn btn-sm btn-primary" id="btn-publish-faithful" disabled
                   onclick="publishChapter('faithful')" style="display:none">Birta</button>
                 <button class="btn btn-sm btn-primary" id="btn-publish-localized" disabled
                   onclick="publishChapter('localized')" style="display:none">Birta staðf.</button>
-                <span class="tm-badge" id="pipeline-action-badge" style="display:none"></span>
                 <span class="tm-badge" id="publish-badge" style="display:none"></span>
-              </div>
-
-              <!-- Secondary actions (head-editor+) -->
-              <div class="pipeline-secondary" id="pipeline-secondary" style="display:none">
-                <button class="btn btn-sm btn-secondary" disabled id="btn-prepare-tm" onclick="prepareTm()"
-                  title="Undirb&#250;a &#254;&#253;&#240;ingarminni (TM) fyrir Matecat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-                  Undirb. TM
-                </button>
-                <button class="btn btn-sm btn-secondary" id="btn-reextract" onclick="runExtract()"
-                  title="Endurdraga &#250;t EN Markdown &#250;r CNXML" style="font-size:0.8em">&#8634; Draga &#250;t</button>
-                <span class="tm-badge" id="prepare-tm-badge" style="display:none"></span>
               </div>
 
               <!-- Download published HTML -->
@@ -974,11 +948,6 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
               Opna ritstj&#243;ra
             </a>
-            <button class="btn btn-sm btn-secondary" id="cv-btn-prepare-tm" style="display:none" onclick="cvPrepareTm()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-              Undirb&#250;a TM
-            </button>
-            <span class="tm-badge" id="cv-prepare-tm-badge" style="display:none"></span>
           </div>
         </div>
 
@@ -1140,12 +1109,10 @@
     var selectedBook = null;
     var selectedChapter = null;
     var chapterData = null;
-    var tmPollingTimer = null;
     var pipelinePollingTimer = null;
     var currentChapterStatus = {};
     var cvCurrentBook = null;
     var cvCurrentChapter = null;
-    var cvTmPollingTimer = null;
     var imgCurrentBook = '';
 
     // Status labels for sections (from chapter.html and books.html)
@@ -1471,11 +1438,8 @@
 
       // Reset pipeline buttons to disabled state
       document.getElementById('pipeline-actions').style.display = 'none';
-      document.getElementById('pipeline-secondary').style.display = 'none';
       document.getElementById('btn-download-pub').style.display = 'none';
-      document.getElementById('pipeline-action-badge').style.display = 'none';
       document.getElementById('publish-badge').style.display = 'none';
-      document.getElementById('prepare-tm-badge').style.display = 'none';
       currentChapterStatus = {};
       clearInterval(pipelinePollingTimer);
 
@@ -1687,9 +1651,8 @@
       var isHeadEditor = role === 'head-editor' || role === 'admin';
 
       if (isHeadEditor) {
-        // Show the pipeline action containers
+        // Show the publication action containers
         document.getElementById('pipeline-actions').style.display = '';
-        document.getElementById('pipeline-secondary').style.display = '';
 
         // Publish MT — enabled after MT output is uploaded
         document.getElementById('btn-publish-mt').disabled = !mtOutput.complete;
@@ -1713,15 +1676,6 @@
           btnLocalized.style.display = 'none';
         }
 
-        // Secondary: Prepare TM — after linguistic review
-        document.getElementById('btn-prepare-tm').disabled = !linguisticReview.complete;
-        if (tmCreated.complete) {
-          var tmBadge = document.getElementById('prepare-tm-badge');
-          tmBadge.style.display = '';
-          tmBadge.textContent = 'TM tilb\u00fai\u00f0';
-          tmBadge.className = 'tm-badge completed';
-        }
-
         // Published HTML download: available if any publication track complete
         var pubFaithful = publication.faithful || {};
         var pubMtPreview = publication.mtPreview || {};
@@ -1732,359 +1686,8 @@
       }
     }
 
-    // Prepare TM
-    async function prepareTm() {
-      var tmBtn = document.getElementById('btn-prepare-tm');
-      var tmBadge = document.getElementById('prepare-tm-badge');
-
-      tmBtn.disabled = true;
-      tmBadge.style.display = '';
-      tmBadge.textContent = '\u00cd gangi...';
-      tmBadge.className = 'tm-badge running';
-
-      try {
-        var data = await fetchJson('/api/pipeline/prepare-tm', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
-        });
-
-        pollTmJob(data.jobId, 'btn-prepare-tm', 'prepare-tm-badge');
-      } catch (err) {
-        tmBadge.textContent = 'Villa';
-        tmBadge.className = 'tm-badge failed';
-        tmBtn.disabled = false;
-      }
-    }
-
-    function pollTmJob(jobId, btnId, badgeId) {
-      clearInterval(tmPollingTimer);
-
-      tmPollingTimer = setInterval(async function() {
-        try {
-          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
-          var job = result.job;
-          var tmBtn = document.getElementById(btnId);
-          var tmBadge = document.getElementById(badgeId);
-
-          if (job.status === 'completed') {
-            clearInterval(tmPollingTimer);
-            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
-            tmBadge.className = 'tm-badge completed';
-            tmBtn.disabled = false;
-          } else if (job.status === 'failed') {
-            clearInterval(tmPollingTimer);
-            tmBadge.textContent = 'Mist\u00f3kst';
-            tmBadge.className = 'tm-badge failed';
-            tmBtn.disabled = false;
-          } else {
-            tmBadge.textContent = '\u00cd gangi...';
-          }
-        } catch (e) {
-          // Polling error - ignore, will retry
-        }
-      }, 1500);
-    }
-
-    // ========================================================================
-    // PIPELINE ACTION FUNCTIONS
-    // ========================================================================
-
-    /**
-     * Promise-based pipeline step runner — POSTs to endpoint, polls for completion.
-     * Returns a promise that resolves when the job completes, rejects on failure.
-     */
-    function runPipelineStep(endpoint, badgeText) {
-      var badge = document.getElementById('pipeline-action-badge');
-      badge.style.display = '';
-      badge.textContent = badgeText || '\u00cd gangi...';
-      badge.className = 'tm-badge running';
-
-      return new Promise(async function(resolve, reject) {
-        try {
-          var data = await fetchJson('/api/pipeline/' + endpoint, {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ book: selectedBook, chapter: selectedChapter })
-          });
-          var timer = setInterval(async function() {
-            try {
-              var result = await fetchJson('/api/pipeline/jobs/' + data.jobId, { credentials: 'include' });
-              var job = result.job;
-              if (job.status === 'completed') {
-                clearInterval(timer);
-                resolve(job);
-              } else if (job.status === 'failed') {
-                clearInterval(timer);
-                reject(new Error(job.error || 'Skref mist\u00f3kst'));
-              }
-            } catch (e) {
-              // Polling error — ignore, will retry
-            }
-          }, 1500);
-        } catch (err) {
-          badge.textContent = 'Villa';
-          badge.className = 'tm-badge failed';
-          reject(err);
-        }
-      });
-    }
-
-    /**
-     * Smart download: auto-runs extract + protect if needed, then downloads ZIP.
-     */
-    async function smartDownloadEN() {
-      var btn = document.getElementById('btn-download-en');
-      var badge = document.getElementById('pipeline-action-badge');
-      btn.disabled = true;
-
-      try {
-        var s = currentChapterStatus;
-
-        if (!s.extraction || !s.extraction.complete) {
-          await runPipelineStep('extract', 'Dregur \u00fat...');
-        }
-
-        if (!s.mtReady || !s.mtReady.complete) {
-          await runPipelineStep('protect', 'Verndar...');
-        }
-
-        // Use fetch to detect server-side protection errors (409)
-        badge.style.display = 'none';
-        var downloadUrl = '/api/books/' + selectedBook + '/download?chapter=' + selectedChapter + '&type=en-md';
-        var resp = await fetch(downloadUrl, { credentials: 'include' });
-        if (resp.status === 409) {
-          // Auto-recover: run protect step and retry download
-          badge.style.display = '';
-          badge.textContent = 'Verndar...';
-          badge.className = 'tm-badge running';
-          await runPipelineStep('protect', 'Verndar...');
-          resp = await fetch(downloadUrl, { credentials: 'include' });
-        }
-        if (!resp.ok) {
-          throw new Error('HTTP ' + resp.status);
-        }
-        // Trigger download from the fetched blob
-        var blob = await resp.blob();
-        var a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        var disposition = resp.headers.get('Content-Disposition') || '';
-        var match = disposition.match(/filename="?([^"]+)"?/);
-        a.download = match ? match[1] : 'download.zip';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(a.href);
-        loadChapterStatus(selectedBook, selectedChapter);
-      } catch (err) {
-        badge.style.display = '';
-        badge.textContent = 'Villa';
-        badge.className = 'tm-badge failed';
-      }
-
-      btn.disabled = false;
-    }
-
-    /**
-     * Smart upload: uploads MT files, warns on overwrite, auto-runs unprotect.
-     * Enhanced: checks for faithful translations and shows a more informative
-     * warning when reviewed work exists.
-     */
-    async function smartUploadIS(files) {
-      if (!files || files.length === 0) return;
-
-      var s = currentChapterStatus;
-      if (s.mtOutput && s.mtOutput.complete) {
-        // Check for faithful translations (enhanced warning)
-        var faithfulCount = 0;
-        try {
-          var faithfulData = await fetchJson(
-            '/api/books/' + selectedBook + '/chapters/' + selectedChapter + '/faithful-count',
-            { credentials: 'include' }
-          );
-          faithfulCount = faithfulData.count || 0;
-        } catch (e) {
-          // Non-critical — proceed with basic warning
-        }
-
-        var msg;
-        if (faithfulCount > 0) {
-          msg = '\u00de\u00fd\u00f0ingar eru \u00feegar til.\n\n';
-          msg += 'Yfirfar\u00f0ar \u00fe\u00fd\u00f0ingar eru til fyrir ' + faithfulCount + ' einingar.\n';
-          msg += 'N\u00fdtt MT-\u00fattak mun ekki skrifa yfir \u00fe\u00e6r, en ritstj\u00f3rinn\n';
-          msg += 'mun s\u00fdna n\u00fdtt MT sem grunn fyrir \u00f3yfirfar\u00f0ar einingar.\n\n';
-          msg += 'Viltu halda \u00e1fram?';
-        } else {
-          msg = '\u00de\u00fd\u00f0ingar eru \u00feegar til. Skrifa yfir?';
-        }
-
-        if (!confirm(msg)) {
-          document.querySelector('#btn-upload-is input[type="file"]').value = '';
-          return;
-        }
-      }
-
-      var badge = document.getElementById('pipeline-action-badge');
-      badge.style.display = '';
-      badge.textContent = 'Hle\u00f0ur upp...';
-      badge.className = 'tm-badge running';
-
-      var formData = new FormData();
-      for (var i = 0; i < files.length; i++) {
-        formData.append('files', files[i]);
-      }
-
-      try {
-        var res = await fetch('/api/books/' + selectedBook + '/chapters/' + selectedChapter + '/import-mt', {
-          method: 'POST',
-          credentials: 'include',
-          body: formData
-        });
-        if (!res.ok) {
-          var errData = await res.json();
-          throw new Error(errData.error || 'HTTP ' + res.status);
-        }
-        var uploadResult = await res.json();
-
-        // Check for missing segment markers
-        if (uploadResult.markerWarning) {
-          badge.textContent = 'Vi\u00f0v\u00f6run';
-          badge.className = 'tm-badge failed';
-          alert('\u26a0 ' + uploadResult.markerWarning.message +
-            '\n\nGakktu \u00far skugga um a\u00f0 hlutamerki (SEG tags) s\u00e9u til sta\u00f0ar \u00ed \u00fe\u00fdddum skr\u00e1m.');
-          // Reset file input but don't auto-run unprotect on marker-less files
-          document.querySelector('#btn-upload-is input[type="file"]').value = '';
-          return;
-        }
-
-        // Auto-run unprotect after upload
-        await runPipelineStep('unprotect', 'Afverndar...');
-
-        badge.textContent = 'Tilb\u00fai\u00f0';
-        badge.className = 'tm-badge completed';
-        loadChapterStatus(selectedBook, selectedChapter);
-      } catch (err) {
-        badge.textContent = 'Villa: ' + err.message;
-        badge.className = 'tm-badge failed';
-      }
-
-      // Reset file input so same files can be re-selected
-      document.querySelector('#btn-upload-is input[type="file"]').value = '';
-    }
-
-    /**
-     * Re-extract: for the secondary power-user button.
-     * Checks for downstream work (faithful translations, approved edits) before
-     * proceeding, and shows a confirmation dialog if any would be invalidated.
-     */
-    async function runExtract() {
-      var btn = document.getElementById('btn-reextract');
-      btn.disabled = true;
-      var badge = document.getElementById('pipeline-action-badge');
-
-      try {
-        // Step 1: Attempt extraction (may require confirmation)
-        var body = { book: selectedBook, chapter: selectedChapter };
-        var res = await fetch('/api/pipeline/extract', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-
-        // Handle confirmation-required response
-        if (res.status === 409) {
-          var errData = await res.json();
-          if (errData.requiresConfirmation) {
-            var impact = errData.impact;
-            var msg = 'Endur\u00fatdr\u00e1ttur mun skrifa yfir n\u00faverandi EN-hluta.\n\n';
-            if (impact.extractedModules > 0) {
-              msg += ' \u2022 ' + impact.extractedModules + ' einingar \u00feegar \u00fatdregnar\n';
-            }
-            if (impact.faithfulModules > 0) {
-              msg += ' \u2022 ' + impact.faithfulModules + ' einingar me\u00f0 yfirfarna \u00fe\u00fd\u00f0ingu\n';
-            }
-            if (impact.localizedModules > 0) {
-              msg += ' \u2022 ' + impact.localizedModules + ' einingar me\u00f0 sta\u00f0f\u00e6ringu\n';
-            }
-            if (impact.approvedEdits > 0) {
-              msg += ' \u2022 ' + impact.approvedEdits + ' sam\u00feykktar breytingar \u00ed gagnagrunni\n';
-            }
-            msg += '\nViltu halda \u00e1fram?';
-
-            if (!confirm(msg)) {
-              btn.disabled = false;
-              return;
-            }
-
-            // User confirmed — re-send with confirmed flag
-            body.confirmed = true;
-            res = await fetch('/api/pipeline/extract', {
-              method: 'POST',
-              credentials: 'include',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(body)
-            });
-
-            if (!res.ok) {
-              var errData2 = await res.json().catch(function() { return {}; });
-              throw new Error(errData2.error || 'Villa');
-            }
-          } else {
-            // Not a confirmation request (e.g., job already running)
-            throw new Error(errData.error || 'Villa');
-          }
-        }
-
-        if (!res.ok) {
-          var errBody = await res.json().catch(function() { return {}; });
-          throw new Error(errBody.error || 'HTTP ' + res.status);
-        }
-
-        // Step 2: Extraction started — poll for completion
-        var data = await res.json();
-        badge.style.display = '';
-        badge.textContent = 'Dregur \u00fat...';
-        badge.className = 'tm-badge running';
-
-        await new Promise(function(resolve, reject) {
-          var pollCount = 0;
-          var maxPolls = 200; // 200 × 1.5s = 5 minutes
-          var timer = setInterval(async function() {
-            if (++pollCount > maxPolls) {
-              clearInterval(timer);
-              reject(new Error('Timar\u00fan — \u00fatdr\u00e1ttur tók of langan t\u00edma'));
-              return;
-            }
-            try {
-              var result = await fetchJson('/api/pipeline/jobs/' + data.jobId, { credentials: 'include' });
-              var job = result.job;
-              if (job.status === 'completed') {
-                clearInterval(timer);
-                resolve(job);
-              } else if (job.status === 'failed') {
-                clearInterval(timer);
-                reject(new Error(job.error || '\u00datdr\u00e1ttur mist\u00f3kst'));
-              }
-            } catch (e) {
-              // Polling error — ignore, will retry
-            }
-          }, 1500);
-        });
-
-        badge.textContent = '\u00datdr\u00e1ttur loki\u00f0';
-        badge.className = 'tm-badge completed';
-        loadChapterStatus(selectedBook, selectedChapter);
-      } catch (err) {
-        badge.style.display = '';
-        badge.textContent = 'Villa';
-        badge.className = 'tm-badge failed';
-      }
-
-      btn.disabled = false;
-    }
+    // Pipeline orchestration functions (prepareTm, runPipelineStep, smartDownloadEN,
+    // smartUploadIS, runExtract) have been moved to CLI tools.
 
     async function publishChapter(track) {
       var badge = document.getElementById('publish-badge');
@@ -2364,75 +1967,9 @@
         var linguisticReview = stages.linguisticReview || {};
         var tmCreated = stages.tmCreated || {};
 
-        var tmBtn = document.getElementById('cv-btn-prepare-tm');
-        var tmBadge = document.getElementById('cv-prepare-tm-badge');
-
-        if (linguisticReview.complete) {
-          tmBtn.style.display = '';
-
-          if (tmCreated.complete) {
-            tmBadge.style.display = '';
-            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
-            tmBadge.className = 'tm-badge completed';
-          }
-        }
       } catch (err) {
         console.error('Error loading chapter status:', err);
       }
-    }
-
-    async function cvPrepareTm() {
-      var tmBtn = document.getElementById('cv-btn-prepare-tm');
-      var tmBadge = document.getElementById('cv-prepare-tm-badge');
-
-      tmBtn.disabled = true;
-      tmBadge.style.display = '';
-      tmBadge.textContent = '\u00cd gangi...';
-      tmBadge.className = 'tm-badge running';
-
-      try {
-        var data = await fetchJson('/api/pipeline/prepare-tm', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ book: cvCurrentBook, chapter: cvCurrentChapter })
-        });
-
-        pollCvTmJob(data.jobId);
-      } catch (err) {
-        tmBadge.textContent = 'Villa';
-        tmBadge.className = 'tm-badge failed';
-        tmBtn.disabled = false;
-      }
-    }
-
-    function pollCvTmJob(jobId) {
-      clearInterval(cvTmPollingTimer);
-
-      cvTmPollingTimer = setInterval(async function() {
-        try {
-          var result = await fetchJson('/api/pipeline/jobs/' + jobId, { credentials: 'include' });
-          var job = result.job;
-          var tmBtn = document.getElementById('cv-btn-prepare-tm');
-          var tmBadge = document.getElementById('cv-prepare-tm-badge');
-
-          if (job.status === 'completed') {
-            clearInterval(cvTmPollingTimer);
-            tmBadge.textContent = 'TM tilb\u00fai\u00f0';
-            tmBadge.className = 'tm-badge completed';
-            tmBtn.disabled = false;
-          } else if (job.status === 'failed') {
-            clearInterval(cvTmPollingTimer);
-            tmBadge.textContent = 'Mist\u00f3kst';
-            tmBadge.className = 'tm-badge failed';
-            tmBtn.disabled = false;
-          } else {
-            tmBadge.textContent = '\u00cd gangi...';
-          }
-        } catch (e) {
-          // Polling error - ignore
-        }
-      }, 1500);
     }
 
     // ========================================================================
