@@ -48,6 +48,7 @@ import {
   replaceParaContent as replaceParaContentDom,
   replaceListItems as replaceListItemsDom,
   removeElementsByTag,
+  insertCnxmlBefore,
 } from './lib/cnxml-dom.js';
 
 // =====================================================================
@@ -1649,7 +1650,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'exercise':
       return buildExerciseDom(element, getSeg, equations, originalCnxml);
     case 'note':
-      return buildNote(element, getSeg, equations, originalCnxml, ctx);
+      return buildNoteDom(element, getSeg, equations, originalCnxml, ctx);
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
@@ -2556,6 +2557,138 @@ function buildNote(element, getSeg, equations, originalCnxml, ctx) {
 }
 
 /**
+ * DOM-based shadow of buildNote.
+ * Same signature, same behavior, but uses DOM manipulation instead of regex.
+ * Keeps the regex nesting check (note inside example/exercise) since it
+ * operates on the full originalCnxml, not the note fragment.
+ */
+function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
+  if (!element.id) {
+    return buildGenericElement('note', element, getSeg, equations, originalCnxml);
+  }
+
+  // Nesting check: skip notes inside examples/exercises (same regex as old version)
+  const noteMatch = originalCnxml.match(new RegExp(`<note\\s+id="${element.id}"`));
+  if (noteMatch) {
+    const notePos = noteMatch.index;
+
+    const examplePattern = /<example[^>]*>[\s\S]*?<\/example>/g;
+    let exMatch;
+    while ((exMatch = examplePattern.exec(originalCnxml)) !== null) {
+      if (notePos > exMatch.index && notePos < exMatch.index + exMatch[0].length) {
+        return null;
+      }
+    }
+
+    const exercisePattern = /<exercise[^>]*>[\s\S]*?<\/exercise>/g;
+    let exerMatch;
+    while ((exerMatch = exercisePattern.exec(originalCnxml)) !== null) {
+      if (notePos > exerMatch.index && notePos < exerMatch.index + exerMatch[0].length) {
+        return null;
+      }
+    }
+  }
+
+  // Extract note from original CNXML
+  const notePattern = new RegExp(`<note\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/note>`, 'g');
+  const match = notePattern.exec(originalCnxml);
+  if (!match) {
+    return buildGenericElement('note', element, getSeg, equations, originalCnxml);
+  }
+
+  // Parse into DOM
+  const { doc } = parseCnxmlFragment(match[0]);
+  const noteEl = doc.getElementById(element.id);
+  if (!noteEl) return match[0];
+
+  // Replace title
+  if (element.title && element.title.segmentId) {
+    const titleText = getSeg(element.title.segmentId);
+    if (titleText) {
+      const titleEls = noteEl.getElementsByTagName('title');
+      if (titleEls.length > 0) {
+        const titleEl = titleEls[0];
+        // Clear existing content and insert translated text as CNXML
+        // (title text from getSeg may contain inline markup like <sub>, <sup>)
+        while (titleEl.firstChild) titleEl.removeChild(titleEl.firstChild);
+        insertCnxmlBefore(doc, titleEl, titleText, null);
+      }
+    }
+  }
+
+  // Replace paragraphs and lists via DOM
+  const replacedParaIds = new Set();
+  for (const child of element.content || []) {
+    if (child.type === 'para' && child.id && child.segmentId) {
+      const paraEl = doc.getElementById(child.id);
+      if (!paraEl) continue;
+
+      const paraText = getSeg(child.segmentId);
+      if (!paraText) continue;
+
+      // Same embedded-list detection as buildExampleDom
+      const paraHasExpandedContent = /<m:math/.test(paraText);
+      if (paraHasExpandedContent) {
+        for (const sibling of element.content || []) {
+          if (sibling !== child && sibling.type === 'list' && sibling.id) {
+            const siblingEl = doc.getElementById(sibling.id);
+            if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
+              siblingEl.parentNode.removeChild(siblingEl);
+            }
+          }
+        }
+      }
+
+      replaceParaContentDom(doc, paraEl, paraText, '');
+      replacedParaIds.add(child.id);
+    }
+
+    if (child.type === 'list' && child.id) {
+      const listEl = doc.getElementById(child.id);
+      if (listEl && child.items) {
+        const listHasReplacedParas = [...replacedParaIds].some((paraId) => {
+          const pEl = doc.getElementById(paraId);
+          return pEl && isDescendantOf(pEl, listEl);
+        });
+        if (!listHasReplacedParas) {
+          replaceListItemsDom(doc, listEl, child.items, getSeg);
+        }
+      }
+    }
+  }
+
+  // Replace figure captions inside the note (figures are kept, not stripped).
+  if (ctx && ctx.figureCaptions) {
+    const figures = noteEl.getElementsByTagName('figure');
+    for (let i = 0; i < figures.length; i++) {
+      const figEl = figures[i];
+      const figId = figEl.getAttribute('id');
+      if (!figId) continue;
+
+      const captionSegId = ctx.figureCaptions[figId];
+      if (captionSegId) {
+        const captionText = getSeg(captionSegId);
+        if (captionText) {
+          // Find and replace caption content
+          const captions = figEl.getElementsByTagName('caption');
+          if (captions.length > 0) {
+            const captionEl = captions[0];
+            while (captionEl.firstChild) captionEl.removeChild(captionEl.firstChild);
+            insertCnxmlBefore(doc, captionEl, captionText, null);
+          }
+        }
+        ctx.figuresHandledInNotes.add(figId);
+      }
+    }
+  }
+
+  // Strip tables, examples, exercises (figures and equations are kept)
+  removeElementsByTag(noteEl, ['table', 'example', 'exercise']);
+
+  return serializeCnxmlFragment(noteEl);
+}
+
+/**
  * Build an equation element.
  */
 function buildEquation(element, equations, originalCnxml) {
@@ -3079,4 +3212,5 @@ export {
   buildExercise,
   buildExerciseDom,
   buildNote,
+  buildNoteDom,
 };
